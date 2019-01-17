@@ -5,6 +5,7 @@ description: W tym samouczku przedstawiono sposób tworzenia wewnętrznego podst
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 1ed77e8573479665d0caac15941d6b6c6ab790cb
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53262354"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232621"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Samouczek: Równoważenie obciążenia ruchu wewnętrznego przy użyciu podstawowego modułu równoważenia obciążenia w witrynie Azure Portal
 
@@ -63,7 +64,7 @@ Najpierw utwórz sieć wirtualną. W sieci wirtualnej utwórz dwie maszyny wirtu
 1. Wybierz kartę **Sieć** lub wybierz pozycję **Dalej: Dyski**, a następnie pozycję **Dalej: Sieć**. 
    
    Upewnij się, że zostały wybrane następujące opcje:
-   - **Sieć wirtualna**: **MyVNet**
+   - **Sieć wirtualna**: **MojaSiećWirtualna**
    - **Podsieć**: **MyBackendSubnet**
    
    W obszarze **Sieciowa grupa zabezpieczeń**:

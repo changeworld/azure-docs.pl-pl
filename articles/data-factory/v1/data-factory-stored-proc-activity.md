@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: e1c563f33030795d52cc686bf52497f927ace6bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3f13cb2626394d16a127b172bb69c4ab88121cdb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017705"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352533"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Działanie procedury składowanej programu SQL Server
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -43,7 +43,7 @@ Działania dotyczącego procedury składowanej umożliwia wywoływanie procedury
 
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- Baza danych programu SQL Server.  Jeśli używasz programu SQL Server, należy zainstalować bramę zarządzania danymi na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, który ma dostęp do bazy danych. Brama zarządzania danymi jest składnikiem, który nawiązuje połączenie danych źródła w lokalnych/na maszynie Wirtualnej platformy Azure z usługami w chmurze w sposób bezpieczny i zarządzane. Zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md) artykuł, aby uzyskać szczegółowe informacje.
+- SQL Server Database.  Jeśli używasz programu SQL Server, należy zainstalować bramę zarządzania danymi na tym samym komputerze, który jest hostem bazy danych lub na osobnym komputerze, który ma dostęp do bazy danych. Brama zarządzania danymi jest składnikiem, który nawiązuje połączenie danych źródła w lokalnych/na maszynie Wirtualnej platformy Azure z usługami w chmurze w sposób bezpieczny i zarządzane. Zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md) artykuł, aby uzyskać szczegółowe informacje.
 
 > [!IMPORTANT]
 > Podczas kopiowania danych do usługi Azure SQL Database lub SQL Server, można skonfigurować **SqlSink** w działaniu kopiowania, aby wywołać procedurę składowaną przy użyciu **sqlWriterStoredProcedureName** właściwości. Aby uzyskać więcej informacji, zobacz [wywołaj procedurę składowaną z działaniem kopiowania](data-factory-invoke-stored-procedure-from-copy-activity.md). Aby uzyskać szczegółowe informacje o właściwości zobacz następujące artykuły łącznika: [Usługa Azure SQL Database](data-factory-azure-sql-connector.md#copy-activity-properties), [programu SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties). Wywoływanie procedury składowanej podczas kopiowania danych do usługi Azure SQL Data Warehouse za pomocą działania kopiowania nie jest obsługiwane. Jednak działanie procedury składowanej umożliwia wywoływanie procedury przechowywanej w usłudze SQL Data Warehouse. 
@@ -76,7 +76,7 @@ Następujące Instruktaż używa działania dotyczącego procedury składowanej 
 2. Utwórz następującą **procedury składowanej** który wstawia dane w celu **sampletable**.
 
     ```SQL
-    CREATE PROCEDURE sp_sample @DateTime nvarchar(127)
+    CREATE PROCEDURE usp_sample @DateTime nvarchar(127)
     AS
 
     BEGIN
@@ -108,7 +108,7 @@ Następujące Instruktaż używa działania dotyczącego procedury składowanej 
    ![Strona główna fabryki danych](media/data-factory-stored-proc-activity/data-factory-home-page.png)
 
 ### <a name="create-an-azure-sql-linked-service"></a>Tworzenie połączonej usługi Azure SQL
-Po utworzeniu fabryki danych, tworzenie SQL platformy Azure połączonej usługi, która łączy usługi Azure SQL database, który zawiera tabelę sampletable i sp_sample procedurą składowaną, z fabryką danych.
+Po utworzeniu fabryki danych, tworzenie SQL platformy Azure połączonej usługi, która łączy usługi Azure SQL database, który zawiera tabelę sampletable i usp_sample procedurą składowaną, z fabryką danych.
 
 1. Kliknij przycisk **autora i wdrażanie** na **usługi Data Factory** bloku **SProcDF** można uruchomić edytora fabryki danych.
 2. Kliknij przycisk **nowy magazyn danych** na polecenia paska, a następnie wybierz **usługi Azure SQL Database**. Powinien zostać wyświetlony skrypt JSON do tworzenia połączonej usługi Azure SQL w edytorze.
@@ -160,7 +160,7 @@ Teraz Utwórzmy potoku za pomocą działania procedury składowanej.
 Zwróć uwagę, następujące właściwości: 
 
 - **Typu** właściwość jest ustawiona na **SqlServerStoredProcedure**. 
-- **StoredProcedureName** w typie właściwości jest równa **sp_sample** (Nazwa procedury składowanej).
+- **StoredProcedureName** w typie właściwości jest równa **usp_sample** (Nazwa procedury składowanej).
 - **StoredProcedureParameters** sekcja zawiera jeden parametr o nazwie **daty/godziny**. Nazwa i wielkość liter w wyrazie parametru w formacie JSON muszą być zgodne, nazwa i wielkość liter w wyrazie parametr w definicji procedury składowanej. Jeśli potrzebujesz przekazać wartości null dla parametru, należy użyć składni: `"param1": null` (tylko małe litery).
  
 1. Kliknij przycisk **... Więcej** paska poleceń i kliknij przycisk **nowy potok**.
@@ -174,7 +174,7 @@ Zwróć uwagę, następujące właściwości:
                 {
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-                        "storedProcedureName": "sp_sample",
+                        "storedProcedureName": "usp_sample",
                         "storedProcedureParameters": {
                             "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)"
                         }
@@ -340,7 +340,7 @@ CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable2(Id);
 **Procedura składowana:**
 
 ```SQL
-CREATE PROCEDURE sp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
+CREATE PROCEDURE usp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
 
 AS
 
@@ -355,7 +355,7 @@ Teraz Przekaż **scenariusza** parametru i wartości z działania procedury skł
 ```JSON
 "typeProperties":
 {
-    "storedProcedureName": "sp_sample",
+    "storedProcedureName": "usp_sample",
     "storedProcedureParameters":
     {
         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
@@ -394,7 +394,7 @@ Teraz Przekaż **scenariusza** parametru i wartości z działania procedury skł
             {
                 "type": "SqlServerStoredProcedure",
                 "typeProperties": {
-                    "storedProcedureName": "sp_sample2",
+                    "storedProcedureName": "usp_sample2",
                     "storedProcedureParameters": {
                         "DateTime": "$$Text.Format('{0:yyyy-MM-dd HH:mm:ss}', SliceStart)",
                         "Scenario": "Document sample"
