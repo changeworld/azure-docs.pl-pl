@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.openlocfilehash: 9385ccf61f8cb8de0b3a459ac00c05b32d2630e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536886"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353332"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Co to jest Azure Database for MySQL?
 Usługa Azure Database for MySQL to usługa relacyjnej bazy danych w chmurze firmy Microsoft, w oparciu o [MySQL Community Edition](https://www.mysql.com/products/community/) aparatu bazy danych, w wersji 5.6 i w wersji 5.7. Usługa Azure Database for MySQL oferuje:
@@ -36,7 +36,7 @@ Aby uzyskać zestaw przykładów interfejsu wiersza polecenia platformy Azure, z
 - [Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Database for MySQL](sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Dostosowanie wydajności i skalowania w kilka sekund
-Usługa Azure Database for MySQL oferuje kilka warstwy usług: Podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Każda z warstw oferuje inną wydajność i różne możliwości w celu obsługi różnych obciążeń bazy danych, zarówno niewielkich, jak i ogromnych. Możesz utworzyć swoją pierwszą aplikację na podstawie małej bazy danych za jedynie kilka dolarów miesięcznie, a następnie dostosować skalowanie do potrzeb rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów. Zapłacisz tylko za potrzebne zasoby i tylko wtedy, gdy będą używane. Aby uzyskać szczegółowe informacje, zobacz  [Warstwy cenowe](concepts-service-tiers.md).
+Usługa Azure Database for MySQL oferuje kilka warstwy usług: Podstawowa, Ogólnego przeznaczenia i Zoptymalizowane pod kątem pamięci. Każda z warstw oferuje inną wydajność i różne możliwości w celu obsługi różnych obciążeń bazy danych, zarówno niewielkich, jak i ogromnych. Możesz utworzyć swoją pierwszą aplikację na podstawie małej bazy danych za jedynie kilka dolarów miesięcznie, a następnie dostosować skalowanie do potrzeb rozwiązania. Dynamiczna skalowalność umożliwia bazie danych przezroczyste odpowiadanie na gwałtownie zmieniające się wymagania dotyczące zasobów. Zapłacisz tylko za potrzebne zasoby i tylko wtedy, gdy będą używane. Aby uzyskać szczegółowe informacje, zobacz  [Warstwy cenowe](concepts-service-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Monitorowanie i zgłaszanie alertów
 Jak podjąć decyzję o tym, kiedy należy regulować w górę i w dół? Możesz użyć wbudowanych funkcji monitorowania wydajności i alertów w połączeniu z ocenami wydajności opartymi na rdzeniach wirtualnych. Za pomocą tych narzędzi możesz szybko ocenić wpływ skalowania rdzeni wirtualnych w górę lub w dół na podstawie bieżących lub przewidywanych wymagań dotyczących wydajności. Aby uzyskać szczegółowe informacje, zobacz [Alerty](howto-alert-on-metric.md).
@@ -47,7 +47,7 @@ Umowa dotycząca poziomu usług (SLA) o czołowej w branży dostępności 99,99%
 ## <a name="secure-your-data"></a>Zabezpieczanie danych
 Usługi bazy danych platformy Azure mają tradycje zabezpieczeń danych, które przestrzega — Azure Database for MySQL, dzięki funkcjom ograniczania dostępu, ochrony danych magazynowanych i magazynowanych i ułatwiają monitorowanie aktywności. Odwiedź [Centrum zaufania Azure](https://www.microsoft.com/en-us/trustcenter/security), aby uzyskać informacje o zabezpieczeniach platformy Azure.
 
-Usługa Azure Database for MySQL — używa szyfrowania magazynu dla magazynowanych danych. Dane, w tym kopie zapasowe, są szyfrowane na dysku (z wyjątkiem plików tymczasowych utworzonych przez aparat podczas uruchamiania zapytań). Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
+Usługa Azure Database for MySQL — używa szyfrowania magazynu dla danych magazynowanych i jest zgodne ze standardem FIPS 140-2. Dane, w tym kopie zapasowe, są szyfrowane na dysku (z wyjątkiem plików tymczasowych utworzonych przez aparat podczas uruchamiania zapytań). Usługa korzysta z 256-bitowego szyfru AES zawartego w szyfrowaniu magazynu platformy Azure, a klucze są zarządzane przez system. Szyfrowanie magazynu jest zawsze włączone i nie można go wyłączyć.
 
 Domyślnie usługa Azure Database for MySQL jest skonfigurowany do żądania [zabezpieczenia połączenia SSL](./concepts-ssl-connection-security.md) dla danych magazynowanych za pośrednictwem sieci. Wymuszanie połączeń SSL między serwerem bazy danych a aplikacjami klienckimi ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją. Opcjonalnie możesz wyłączyć wymaganie protokołu SSL dla połączeń z usługą bazy danych, jeśli Twoja aplikacja kliencka nie obsługuje łączności SSL.
 

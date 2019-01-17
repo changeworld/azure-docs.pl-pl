@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a034e41f5b12ffb8f043f14d90284617316f18d2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0e3022296dd1a3e1221bb44c94df787660df2a70
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723046"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359888"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Dostęp do danych w chmurze w notesie
 
@@ -69,7 +69,7 @@ Przykładowy notes przedstawia pracę z tabel i obiektów blob, takich jak używ
 Usługi Azure Cosmos DB udostępnia pełni indeksowanych magazyn danych NoSQL dla dokumentów JSON). Poniższe artykuły zawierają szereg różne sposoby pracy z usługą Cosmos DB za pomocą języka Python:
 
 - [Aplikacja kompilacji przez interfejs API SQL za pomocą języka Python](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Tworzenie aplikacji Flask za pomocą usługi Azure Cosmos DB dla interfejsu API usługi MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [Tworzenie aplikacji Flask za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [Utwórz bazę danych grafów przy użyciu języka Python i interfejsu API języka Gremlin](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [Tworzenie aplikacji bazy danych Cassandra z językiem Python i usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [Tworzenie aplikacji interfejsu API za pomocą języka Python i usługi Azure Cosmos DB tabeli](https://docs.microsoft.com/azure/cosmos-db/create-table-python)

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: trinadhk
-ms.openlocfilehash: 64e012b84f863196592133da52b35736e486c9ce
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a0cbb8650a818c3ae6c839d69bbc9b94f8d080ca
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266928"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351400"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -55,14 +55,19 @@ Migawek przyrostowych znajdują się na koncie magazynu maszyny Wirtualnej, któ
 
 
 ## <a name="upgrading-to-instant-restore"></a>Uaktualnianie do natychmiastowe Przywracanie
-Jeśli używasz witryny Azure portal, zostanie wyświetlone powiadomienie na pulpicie nawigacyjnym magazynu. To powiadomienie odnosi się do obsługi dużych dysków oraz ulepszenia dotyczące prędkości i przywracania kopii zapasowych. Alternatywnie możesz przejść do strony właściwości magazynu można pobrać opcji uaktualniania.
 
+Jeśli używasz witryny Azure portal, zostanie wyświetlone powiadomienie na pulpicie nawigacyjnym magazynu. To powiadomienie odnosi się do obsługi dużych dysków oraz ulepszenia dotyczące prędkości i przywracania kopii zapasowych.
 
 ![Zadanie tworzenia kopii zapasowej w modelu wdrażania usługi Resource Manager stosu kopii zapasowej maszyny Wirtualnej — zgłoszenia pomocy technicznej](./media/backup-azure-vms/instant-rp-banner.png)
 
 Aby otworzyć ekran dla uaktualnienie do przywrócenia błyskawiczne, wybierz baner.
 
 ![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej modelu wdrażania usługi Resource Manager — uaktualnianie](./media/backup-azure-vms/instant-rp.png)
+
+Alternatywnie, można przejść do **właściwości** strona magazynu można pobrać **uaktualnienia** opcji w obszarze **stosu kopii zapasowej maszyny Wirtualnej**.
+
+![Zadanie tworzenia kopii zapasowej w stos kopii zapasowej maszyny Wirtualnej — strona właściwości](./media/backup-azure-vms/instant-restore-capability-properties.png)
+
 
 ## <a name="upgrade-to-instant-restore-using-powershell"></a>Uaktualnij, aby przywrócić błyskawiczne przy użyciu programu PowerShell
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1a3855b7b95224e0f872764f6710f9fa907780a7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025457"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358715"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapowanie schematu w działaniu kopiowania
 W tym artykule opisano, jakie działania kopiowania w usłudze Azure Data Factory mapowanie schematu i mapowanie typu danych ze źródła danych do ujścia danych podczas wykonywania kopii danych.
@@ -142,7 +142,7 @@ Jeśli używasz składni `"columnMappings": "UserId: MyUserId, Group: MyGroup, N
 
 ## <a name="schema-mapping"></a>mapowanie schematu
 
-Mapowanie schematu ma zastosowanie, gdy kopiowanie danych między hierarchiczne ukształtowane dane i tabelarycznym ukształtowane dane, np. skopiuj z REST bazy danych MongoDB do pliku tekstowego i skopiuj z bazy danych SQL, aby interfejsem API MongoDB usługi Azure Cosmos DB. Następujące właściwości są obsługiwane w działaniu kopiowania `translator` sekcji:
+Mapowanie schematu ma zastosowanie, gdy kopiowanie danych między hierarchiczne ukształtowane dane i tabelarycznym ukształtowane dane, np. kopiowanie danych z bazy danych MongoDB REST do pliku tekstowego i kopiowanie danych z programu SQL API usługi Azure Cosmos DB dla bazy danych MongoDB. Następujące właściwości są obsługiwane w działaniu kopiowania `translator` sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -181,7 +181,7 @@ Na przykład, jeśli masz bazy danych MongoDB dokumentów o następującej zawar
 
 i chcesz skopiować do tabeli usługi Azure SQL w następującym formacie, spłaszczając dane wewnątrz tablicy *(order_pd i order_price)* i cross join ze wspólnymi informacjami głównymi *(liczba, Data i miasta)* :
 
-| orderNumber | DataZamówienia. | order_pd | order_price | city |
+| orderNumber | orderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
 | 01 | 20170122 | P1 | 23 | Seattle |
 | 01 | 20170122 | P2 | 13 | Seattle |

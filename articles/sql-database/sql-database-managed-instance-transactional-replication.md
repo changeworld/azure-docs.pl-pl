@@ -12,16 +12,23 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/08/2019
-ms.openlocfilehash: 1839ca0d2495a07f6fc734501540cddcdcb28e18
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d94173f9b1940613c26451658b90c956c71876fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332873"
+ms.locfileid: "54353247"
 ---
 # <a name="transactional-replication-with-azure-sql-logical-server-and-azure-sql-managed-instance"></a>Replikacja transakcyjna z serwerem logicznym SQL platformy Azure i wystąpienia zarządzanego Azure SQL
 
 Replikacja transakcyjna to funkcja usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server, która pozwala na replikowanie danych z tabeli w usłudze Azure SQL Database lub SQL Server do tabel umieszczone na zdalne bazy danych. Ta funkcja służy do synchronizowania wielu tabel w różnych bazach danych.
+
+## <a name="when-to-use-transactional-replication"></a>Kiedy należy używać replikacji transakcyjnej
+
+Replikacja transakcyjna jest przydatne w następujących scenariuszach:
+- Opublikuj zmiany wprowadzone w co najmniej jedną tabelę w bazie danych, a następnie dystrybuować je do jednej lub wielu programu SQL Server lub Azure SQL baz danych, które subskrybuje zmiany.
+- Zachowaj kilka rozproszonych baz danych w stanie zsynchronizowane.
+- Migrowanie baz danych z jednego programu SQL Server lub wystąpienia zarządzanego do innej bazy danych, stale publikując zmiany.
 
 ## <a name="overview"></a>Przegląd 
 Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustracji:  
@@ -81,16 +88,19 @@ Ogólnie rzecz biorąc wydawcy i dystrybutora musi być w chmurze lub lokalnie. 
 
 ![Pojedyncze wystąpienie jako wydawcą i dystrybutorem ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Wydawcą i dystrybutorem są skonfigurowane w ramach jednego wystąpienia zarządzanego. 
+Wydawcą i dystrybutorem są skonfigurowane w ramach jednego wystąpienia zarządzanego i dystrybucja zmian do innego wystąpienia zarządzanego, pojedynczej bazy danych lub program SQL Server w środowisku lokalnym. W tej konfiguracji wydawcy/dystrybutora wystąpienia zarządzanego nie można skonfigurować za pomocą [replikacji geograficznej i automatycznie grupy trybu failover](sql-database-auto-failover-group.md).
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Wydawcy o dystrybutorze zdalnym na wystąpienie zarządzane
+
+W tej konfiguracji jednego wystąpienia zarządzanego publikuje zmiany dystrybutora umieszczone na inne wystąpienie zarządzane, który może obsługiwać wiele wystąpień zarządzanych źródła i dystrybucję zmian do jednej lub wielu obiektów docelowych na wystąpieniu zarządzanym, pojedynczą bazę danych lub SQL Server.
 
 ![Oddzielne wystąpienia dla wydawcy i dystrybucji](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
 Wydawcą i dystrybutorem są konfigurowane na dwa wystąpienia zarządzanego. W tej konfiguracji
 
 - Oba wystąpienia zarządzane przez usługę znajdują się na tej samej sieci wirtualnej.
-- Oba wystąpienia zarządzane przez usługę znajdują się w tej samej lokalizacji. 
+- Oba wystąpienia zarządzane przez usługę znajdują się w tej samej lokalizacji.
+- Wystąpienia zarządzane, które hostują opublikowane i baz danych dystrybutora nie może być [replikacją geograficzną za pomocą grupy trybu failover automatycznie](sql-database-auto-failover-group.md).
 
 ### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-managed-instance-or-logical-server"></a>Wydawcą i dystrybutorem lokalnie przy użyciu subskrybenta na wystąpieniu zarządzanym usługi lub serwera logicznego 
 

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8282901dfcacb7ca0330274d114cd4c2990fdec1
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 321f6fc043147c0a1559c93fb5ada3d33d9e3dd9
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330454"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359973"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Jak wykonać aprowizację maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell
 
@@ -101,9 +101,10 @@ $OSDiskName = $VMName + "OSDisk"
 ```
 
 ### <a name="choose-a-sql-server-image"></a>Wybierz obraz programu SQL Server
-Zdefiniuj obraz programu SQL Server, należy użyć dla maszyny wirtualnej.
 
-1. Najpierw Wyświetl listę wszystkich ofert dotyczących obrazów programu SQL Server za pomocą **Get-AzureRmVMImageOffer** polecenia:
+Aby zdefiniować obrazu programu SQL Server do użycia dla maszyny wirtualnej, należy użyć następujących zmiennych. 
+
+1. Najpierw Wyświetl listę wszystkich ofert dotyczących obrazów programu SQL Server przy użyciu `Get-AzureRmVMImageOffer` polecenia. To polecenie wyświetla listę bieżących obrazów, które są dostępne w witrynie Azure Portal, a także starsze obrazy, które mogą być instalowane tylko przy użyciu programu PowerShell:
 
    ```PowerShell
    Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'

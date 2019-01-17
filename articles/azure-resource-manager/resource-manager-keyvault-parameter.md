@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: a885fda23bb76091705ebe388f40a6eae7b56416
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078074"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351513"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Użyj usługi Azure Key Vault, aby przekazać wartość parametru secure podczas wdrażania
 
@@ -84,14 +84,14 @@ Add-Type -AssemblyName System.Web
 [System.Web.Security.Membership]::GeneratePassword(16,3)
 ```
 
-Dla przy użyciu szablonu usługi Resource Manager: zobacz [samouczek: integracja usługi Azure Key Vault we wdrożeniu szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+Aby uzyskać przy użyciu szablonu usługi Resource Manager: Zobacz [samouczka: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
 
 > [!NOTE]
-> Każda usługa ma określone wymagania dotyczące hasła. Na przykład wymagania dotyczące maszyny wirtualnej platformy Azure znajduje się w temacie [jakie są wymagania dotyczące hasła, podczas tworzenia maszyny Wirtualnej?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+> Każda usługa platformy Azure ma określone wymagania dotyczące hasła. Na przykład wymagania dotyczące maszyny wirtualnej platformy Azure znajduje się w temacie [jakie są wymagania dotyczące hasła, podczas tworzenia maszyny Wirtualnej?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="enable-access-to-the-secret"></a>Zapewnianie dostępu do klucza tajnego
 
-Inne niż ustawienie `enabledForTemplateDeployment` do `true`, użytkownik wdrożenie szablonu musi mieć `Microsoft.KeyVault/vaults/deploy/action` uprawnień dla zakresu, który zawiera usługi Key Vault, łącznie z grupy zasobów i usługi Key Vault. [Właściciela](../role-based-access-control/built-in-roles.md#owner) i [Współautor](../role-based-access-control/built-in-roles.md#contributor) zarówno rola udzielenia tego dostępu. Jeśli utworzysz usługę Key Vault, jesteś właścicielem, dzięki czemu masz uprawnienia. W przypadku usługi Key Vault w ramach różnych subskrypcji, właściciel usługi Key Vault musi grand dostępu.
+Inne niż ustawienie `enabledForTemplateDeployment` do `true`, użytkownik wdrożenie szablonu musi mieć `Microsoft.KeyVault/vaults/deploy/action` uprawnień dla zakresu, który zawiera usługi Key Vault, łącznie z grupy zasobów i usługi Key Vault. [Właściciela](../role-based-access-control/built-in-roles.md#owner) i [Współautor](../role-based-access-control/built-in-roles.md#contributor) zarówno rola udzielenia tego dostępu. Jeśli utworzysz usługę Key Vault, jesteś właścicielem, dzięki czemu masz uprawnienia. W przypadku usługi Key Vault w ramach różnych subskrypcji, właściciel usługi Key Vault musi udzielić dostępu.
 
 Poniższa procedura pokazuje, jak utworzyć rolę z minimalną permssion i przypisywania użytkownika
 1. Utwórz plik JSON definicji roli niestandardowej:

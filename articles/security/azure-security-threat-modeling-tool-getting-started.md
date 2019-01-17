@@ -3,9 +3,9 @@ title: Wprowadzenie do platformy Azure — narzędzia do modelowania zagrożeń 
 description: Jest to bardziej Przegląd, wyróżnianie narzędzie do modelowania zagrożeń w działaniu.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 340c92d2830069a9d957f4ece79416a707062629
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: jegeib
+ms.openlocfilehash: 6315e6d39a3b68854beb6563d075e3c79ca93a69
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096778"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359480"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Wprowadzenie do narzędzia do modelowania zagrożeń
 
-Zespołu Cloud i Enterprise narzędzia zabezpieczeń udostępniona w wersji zapoznawczej narzędzia do modelowania zagrożeń tym roku jako wolną  **[kliknij do pobierania](https://aka.ms/tmtpreview)**. Zmiana mechanizm dostarczania pozwala nam wypychania najnowsze ulepszenia i poprawki dla klientów każdym otwarciu narzędzia, dzięki czemu łatwiejsze do utrzymania i użycia.
+2018 modelowania narzędzia w programie Microsoft Threat został wydany jako wersji Ogólnodostępnej w września 2018 jako wolną  **[kliknij do pobierania](https://aka.ms/threatmodelingtool)**. Zmiana mechanizm dostarczania pozwala nam wypychania najnowsze ulepszenia i poprawki dla klientów każdym otwarciu narzędzia, dzięki czemu łatwiejsze do utrzymania i użycia.
 Ten artykuł przeprowadzi Cię przez proces wprowadzenie zagrożeń firmy Microsoft SDL podejście do modelowania i pokazano, jak użyć narzędzia do tworzenia modeli doskonałe zagrożeń szkieletu do procesu z zabezpieczeniami.
 
 W tym artykule jest oparta na wiedzy na temat zagrożenia SDL modelowania podejście. Szybki przegląd można znaleźć **[aplikacji sieci Web do modelowania zagrożeń](https://msdn.microsoft.com/library/ms978516.aspx)** zarchiwizowane wersję **[odkryć zabezpieczeń wady przy użyciu podejścia STRIDE](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** Opublikowany artykuł w witrynie MSDN w 2006 r.
@@ -67,14 +67,14 @@ W tej sekcji firma Microsoft wykonaj następujące czynności:
 
 Ich przechodzenia przez proces tworzenia ich pierwszy model zagrożeń.
 
-> Ricardo: Witaj Cristina, pracowałem nad diagram modelu zagrożeń i chce, aby upewnić się, mamy szczegóły prawo. Proszę o pomoc go przejrzeć?
-> Cristina: całkowicie. Przyjrzyjmy się.
+> Ricardo: Cristina cześć I pracuje diagram modelu zagrożeń i chciała upewnij się, że mamy szczegóły prawo. Proszę o pomoc go przejrzeć?
+> Cristina: Naturalnie. Przyjrzyjmy się.
 > Ricardo zostanie otwarte narzędzie i udostępnia Cristina swojego ekranu.
 
 ![Model zagrożeń podstawowe](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: Ok wygląda prosty, ale możesz zapoznać się ze mną go?
-> Ricardo: się! Poniżej przedstawiono podział:
+> Cristina: Dobrze, wygląda prosty, ale możesz zapoznać się ze mną go?
+> Ricardo: Się! Poniżej przedstawiono podział:
 > - Nasze ludzi użytkownika jest rysowana w formie poza jednostki — kwadrat
 > - Są one wysyłania poleceń do serwera sieci Web — okręgu
 > - Serwer sieci Web jest konsultacji bazy danych (dwie linie)
@@ -111,7 +111,7 @@ Opis wprowadzonych mu weź pod uwagę znaczenie Dodawanie mechanizm uwierzytelni
 Jak Ricardo pojawiły się w zagrożeń w obszarze ujawnienie informacji, on zrealizowany planu kontroli dostępu, wymagane niektóre konta tylko do odczytu do inspekcji i Generowanie raportu. ADAM zastanawiasz się, czy powinna to być nowych zagrożeń, ale środki zaradcze są takie same, więc on odpowiednio oznaczone zagrożenia.
 On również traktować o ujawnienie informacji nieco i zrealizowane, że taśm kopii zapasowych zostały będzie musiało jeszcze szyfrowania, zadania dla zespołu operacyjnego.
 
-Zagrożenia, nie ma zastosowania do projektu z powodu istniejących środków zaradczych lub zabezpieczeń gwarantuje można ją zmienić na "Nie dotyczy" z listy rozwijanej stanu. Istnieją trzy inne opcje: Nierozpoczęte — domyślnie zaznaczoną opcję konieczne badanie — używane do śledzenie elementów i Mitigated — po w pełni są prace.
+Zagrożenia, nie ma zastosowania do projektu z powodu istniejących środków zaradczych lub zabezpieczeń gwarantuje można ją zmienić na "Nie dotyczy" z listy rozwijanej stanu. Istnieją trzy inne opcje: Nierozpoczęte — domyślnie zaznaczoną opcję konieczne badanie — umożliwia śledzenie elementów i Mitigated — po w pełni są prace.
 
 ## <a name="reports--sharing"></a>Raporty i udostępnianie
 
@@ -143,4 +143,4 @@ Podejście do modelowania, które firma Microsoft została przedstawiona w tym m
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wyślij swoje pytania, komentarze i zagadnień związanych z tmtextsupport@microsoft.com. **[Pobierz](https://aka.ms/tmtpreview)**  narzędzie do modelowania zagrożeń na rozpoczęcie pracy.
+Wyślij swoje pytania, komentarze i zagadnień związanych z tmtextsupport@microsoft.com. **[Pobierz](https://aka.ms/threatmodelingtool)**  narzędzie do modelowania zagrożeń na rozpoczęcie pracy.

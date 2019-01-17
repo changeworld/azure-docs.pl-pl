@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c2d121106218c0965cd8f4e07776cf8d2578543f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651456"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354165"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak używać pakietu zawartości usługi Azure Active Directory usługi Power BI
 
@@ -32,7 +32,7 @@ Usługa Power BI zawartości, że pakiet usługi Azure Active Directory (Azure A
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy licencję usługi Azure AD premium (P1/P2) używać pakietu zawartości. Zobacz [wprowadzenie do usługi Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) uaktualnić swoją wersję usługi Azure Active Directory.
+Należy licencję usługi Azure AD premium (P1/P2) używać pakietu zawartości. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md).
 
 ## <a name="install-the-content-pack"></a>Zainstalowanie pakietu zawartości
 
@@ -101,13 +101,45 @@ Jeśli chcesz zaktualizować pakiet zawartości do nowszej wersji:
 
 Po upewnieniu się, że nowa wersja pakietu zawartości działa zgodnie z oczekiwaniami, możesz usunąć starą wersję, jeśli to konieczne, usuwając podstawowych raportów i zestawów danych skojarzonych z tym pakietem zawartości.
 
-## <a name="still-having-issues"></a>Nadal masz problemy? 
+## <a name="troubleshoot-content-pack-errors"></a>Rozwiązywanie problemów z błędami pakietu zawartości
 
-Zapoznaj się z [przewodnikiem rozwiązywania problemów](troubleshoot-content-pack.md). Ogólną pomoc dotyczącą usługi Power BI można znaleźć w następujących [artykułach pomocy](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+Podczas pracy z pakietem zawartości, możliwe jest wystąpiły następujące błędy: 
+
+- [Odświeżanie nie powiodło się](#refresh-failed) 
+- [Nie można zaktualizować poświadczeń źródła danych](#failed-to-update-data-source-credentials) 
+- [Importowanie danych trwa zbyt długo](#data-import-is-too-slow) 
+
+Ogólną pomoc dotyczącą usługi Power BI można znaleźć w następujących [artykułach pomocy](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
+
+### <a name="refresh-failed"></a>Niepowodzenie odświeżania 
+ 
+**Jak ten błąd jest udostępniane**: Wyślij wiadomość e-mail z usługi Power BI lub stan niepowodzenia w historii odświeżania. 
+
+
+| Przyczyna | Jak naprawić |
+| ---   | ---        |
+| Odśwież błędu, który może być spowodowane błędy, jeśli poświadczenia użytkowników, nawiązywania połączenia z pakietem zawartości zostały resetowania, ale nie są aktualizowane w ustawieniach połączenia pakietu zawartości. | W usłudze Power BI, Znajdź zestaw danych, odpowiadający pulpitu nawigacyjnego dzienników aktywności usługi Azure AD (**rejestruje działanie usługi Azure Active Directory**), wybierz harmonogram odświeżania, a następnie wprowadź swoje poświadczenia usługi Azure AD. |
+| Odświeżanie może zakończyć się niepowodzeniem z powodu problemów z danych podstawowych pakietu zawartości. | [Bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+ 
+### <a name="failed-to-update-data-source-credentials"></a>Nie można zaktualizować poświadczeń źródła danych 
+ 
+**Jak ten błąd jest udostępniane**: W usłudze Power BI, po nawiązaniu połączenia z pakietem zawartości dzienników aktywności usługi Azure AD. 
+
+| Przyczyna | Jak naprawić |
+| ---   | ---        |
+| Użytkownik nawiązujący połączenie nie jest administratorem globalnym lub Czytelnik zabezpieczeń lub administrator zabezpieczeń. | Użyj konta administratora globalnego lub Czytelnik zabezpieczeń lub administrator zabezpieczeń do dostępu do pakietów zawartości. |
+| Dzierżawy nie jest dzierżawą usługi Premium lub nie ma co najmniej jeden użytkownik mający licencję Premium pliku. | [Bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md).|
  
+### <a name="data-import-is-too-slow"></a>Importowanie danych jest zbyt wolno 
+ 
+**Jak ten błąd jest udostępniane**: W usłudze Power BI po połączeniu z pakietem zawartości, proces importowania danych rozpoczyna się przygotować pulpitu nawigacyjnego do działania usługi Azure AD dzienniki. Zostanie wyświetlony komunikat: **Importowanie danych...**  bez żadnych dalszych postępów.  
+
+| Przyczyna | Jak naprawić |
+| ---   | ---        |
+| W zależności od rozmiaru dzierżawy usługi ten krok może potrwać od kilku minut do 30 minut. | Jeśli komunikat nie zmienia się na wyświetlanie pulpitu nawigacyjnego w ciągu godziny, [bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md).|
+  
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Zainstaluj pakiet zawartości usługi Power BI](quickstart-install-power-bi-content-pack.md).
-* [Rozwiązywanie problemów z błędami pakietu zawartości](troubleshoot-content-pack.md).
 * [Co to są raporty w usłudze Azure AD? ](overview-reports.md).

@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/14/2018
 ms.custom: seodec18
-ms.openlocfilehash: db853be456dbf893163f53bbc797cf12172d38b7
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261098"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353230"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -264,15 +264,15 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
 1. Instalowanie i dołączanie pakietu zestawu SDK usługi Azure Machine Learning do klastra.  
 
-    * [Utworzyć bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library) przy użyciu jednego z tych ustawień (Wybierz tylko jedną z tych opcji):
+    * [Utworzyć bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library) przy użyciu jednego z tych ustawień (_wybierz tylko jeden z tych opcji_):
     
-        * Aby zainstalować zestaw SDK usługi Azure Machine Learning bez automatycznego usługi machine learning możliwości:
+        * Aby zainstalować zestaw SDK usługi Azure Machine Learning _bez_ zautomatyzowane machine learning możliwości:
             | Ustawienie | Wartość |
             |----|---|
             |Element źródłowy | Przekaż Python Egg lub PyPI
             |Nazwa PyPi | azureml-sdk[databricks]
     
-        * Aby zainstalować zestaw SDK usługi Azure Machine Learning przy użyciu uczenia maszynowego automatyczne:
+        * Aby zainstalować zestaw SDK usługi Azure Machine Learning _z_ automatyczne usługi machine learning:
             | Ustawienie | Wartość |
             |----|---|
             |Element źródłowy | Przekaż Python Egg lub PyPI
@@ -286,9 +286,11 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
     Jeśli masz starszą wersję zestawu SDK, usuń zaznaczenie opcji z zainstalowanych libs klastra i Przenieś do Kosza. Instalowanie nowej wersji zestawu SDK i uruchom ponownie klaster. Jeśli występuje problem, po to, odłącz i ponownie podłącz klastra.
 
-    Gdy wszystko będzie gotowe, biblioteka jest dołączony, jak pokazano na poniższej ilustracji. Należy pamiętać o tych [typowych problemów w usłudze Databricks](resource-known-issues.md#databricks).
+    Gdy wszystko będzie gotowe, biblioteka jest dołączony, jak pokazano na poniższych ilustracjach. Należy pamiętać o tych [typowych problemów w usłudze Databricks](resource-known-issues.md#databricks).
 
-   ![Zestaw SDK w usłudze Databricks ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
+    * Po zainstalowaniu zestawu SDK usługi Azure Machine Learning _bez_ automatyczne usługi machine learning ![SDK bez automatycznego uczenia maszynowego zainstalowana w usłudze Databricks ](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+
+    * Po zainstalowaniu zestawu SDK usługi Azure Machine Learning _z_ automatyczne usługi machine learning ![zestawu SDK za pomocą zautomatyzowanego uczenia maszynowego zainstalowana w usłudze Databricks ](./media/how-to-configure-environment/automlonadb.jpg)
 
    Jeśli ta czynność zakończy się niepowodzeniem, należy ponownie uruchomić klastra, wykonując następujące czynności:
 

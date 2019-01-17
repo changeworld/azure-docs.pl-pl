@@ -1,33 +1,34 @@
 ---
 title: Zainstaluj klienta programu Chef w witrynie Azure portal
 description: Dowiedz się, jak wdrożyć i skonfigurować klienta programu Chef w witrynie Azure portal
-keywords: Azure, programu chef, metodyki devops, klienta, instalacja, portalu
+keywords: azure, chef, devops, client, install, portal
 ms.service: virtual-machines-linux
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: e5de21e8e493871150d302f1d2c0e31d067affde
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051332"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358154"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Zainstaluj klienta programu Chef w witrynie Azure portal
-Podczas tworzenia lub modyfikowania maszyny wirtualnej systemu Linux lub Windows w witrynie Azure portal, można dodać rozszerzenia programu Chef do maszyny wirtualnej. W tym artykule przedstawiono ten proces, korzystając z nowej maszyny wirtualnej systemu Linux.
+Można dodać rozszerzenia klienta Chef bezpośrednio do komputera z systemem Linux lub Windows w witrynie Azure portal. W tym artykule przedstawiono proces, korzystając z nowej maszyny wirtualnej systemu Linux.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 - **Subskrypcja platformy Azure**: Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Program chef**: Jeśli nie masz aktywnego konta programu Chef, należy zasubskrybować [bezpłatną wersję próbną hostowany program Chef](https://manage.chef.io/signup). Aby skorzystać z instrukcji w tym artykule, potrzebne są następujące wartości z Twojego konta programu Chef: 
-    - klucz organization_validation
-    - RB
-    - run_list
+- **Program chef**: Jeśli nie masz aktywnego konta programu Chef, należy zasubskrybować [bezpłatną wersję próbną hostowany program Chef](https://manage.chef.io/signup). Aby skorzystać z instrukcji w tym artykule, będą potrzebne następujące wartości z Twojego konta programu Chef:
+  - klucz organization_validation
+  - rb
+  - run_list
 
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Zainstaluj rozszerzenie programu Chef na nowej maszynie wirtualnej systemu Linux
-W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z systemem Linux. W trakcie również zobacz temat dotyczący instalowania rozszerzenia programu Chef na nowej maszynie wirtualnej.
+W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z systemem Linux. W trakcie również pokazano, jak można zainstalować rozszerzenia programu Chef na nowej maszynie wirtualnej.
 
 1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
 
@@ -53,7 +54,7 @@ W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z syst
 
     - **Nazwa** — wprowadź nazwę dla nowej maszyny wirtualnej.
     - **Typ dysku maszyny Wirtualnej** -określ **SSD** lub **HDD** dla typu dysku magazynu. Aby uzyskać więcej informacji na temat typów dysków maszyny wirtualnej na platformie Azure, zobacz artykuł [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](/azure/virtual-machines/windows/premium-storage).
-    - **Nazwa użytkownika** — wprowadź nazwę użytkownika, otrzymują uprawnień administratora na maszynie wirtualnej.
+    - **Nazwa użytkownika** — wprowadź nazwę użytkownika, któremu przyznano uprawnienia administratora na maszynie wirtualnej.
     - **Typ uwierzytelniania** — wybierz tę opcję **hasło**. Możesz również wybrać **klucz publiczny SSH**i podaj wartość klucza publicznego SSH. Dla celów tej wersji demonstracyjnej (i na zrzutach ekranu) **hasło** jest zaznaczone.
     - **Hasło** i **Potwierdź hasło** -wprowadź hasło dla użytkownika.
     - **Zaloguj się przy użyciu usługi Azure Active Directory** — wybierz tę opcję **wyłączone**.
@@ -81,13 +82,13 @@ W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z syst
 
 1. Na **zainstalować rozszerzenie** karcie, określ następujące wartości, a następnie wybierz **OK**.
 
-    - **Adres URL serwera programu chef** — wprowadź adres URL serwera programu Chef, który zawiera nazwę organizacji, na przykład *https://api.chef.io/organization/hessco*.
+    - **Adres URL serwera programu chef** — wprowadź adres URL serwera programu Chef, który zawiera nazwę organizacji, na przykład *https://api.chef.io/organization/mycompany*.
     - **Nazwa węzła chef** — wprowadź nazwę węzła programu Chef. Może to być dowolna wartość.
     - **Lista uruchamiania** — wprowadź listę Chef uruchamiania, który jest dodawany do maszyny. To może być puste.
     - **Nazwa klienta weryfikacji** — Podaj nazwę programu Chef weryfikacji klienta. na przykład *weryfikacji tarcher*.
-    - **Klucz sprawdzania poprawności** — wybierz plik zawierający klucz sprawdzania poprawności, używane podczas uruchamiania maszyny. 
+    - **Klucz sprawdzania poprawności** — wybierz plik zawierający klucz sprawdzania poprawności, używane podczas uruchamiania maszyny.
     - **Plik konfiguracji klienta** — wybierz plik konfiguracji dla klienta programu chef. To może być puste.
-    - **Wersja klienta programu chef** -wprowadź informacje o wersji klienta programu chef do zainstalowania. To może być puste. Pustej wartości powoduje Najnowsza zainstalowana wersja. 
+    - **Wersja klienta programu chef** -wprowadź informacje o wersji klienta programu chef do zainstalowania. To może być puste. Wartość pusta instaluje najnowszą wersję.
     - **Tryb weryfikacji SSL** — wybierz opcję **Brak** lub **równorzędnej**. *Brak* został wybrany udział w pokazie.
     - **Środowisko chef** -wprowadź środowiska Chef powinna należeć tego węzła. To może być puste.
     - **Zaszyfrowany klucz tajny Databag** — wybierz plik zawierający klucz tajny dla Databag szyfrowane tego komputera powinni mieć dostęp do. To może być puste.
@@ -106,4 +107,5 @@ Po zakończeniu procesu tworzenia i wdrażania maszyny wirtualnej z rozszerzenie
 ![Instalowanie serwera programu Chef na maszynie wirtualnej systemu Linux](./media/chef-extension-portal/resource-created.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Utwórz maszynę wirtualną Windows na platformie Azure przy użyciu programu Chef](/azure/virtual-machines/windows/chef-automation)
+
+- [Utwórz maszynę wirtualną Windows na platformie Azure przy użyciu programu Chef](/azure/virtual-machines/windows/chef-automation)

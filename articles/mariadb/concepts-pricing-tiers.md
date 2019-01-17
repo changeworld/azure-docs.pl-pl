@@ -6,16 +6,16 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b85737adb8f1c9481fb4b7b2005d2856d2bce9f5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: bb6e27f92f60712cce71ba6fca53b40af00ee714
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544587"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354454"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database dla serwera MariaDB warstw cenowych
 
-W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Database dla serwera MariaDB: Podstawowa, ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera MariaDB. Serwer może zawierać jeden lub wiele baz danych.
+W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Database dla serwera MariaDB: Podstawowa, Ogólnego przeznaczenia i Zoptymalizowane pod kątem pamięci. Warstwy cenowe są zróżnicowane według ilości zasobów obliczeniowych w rdzeni wirtualnych, które mogą być udostępniane, ilość pamięci na rdzeń wirtualny i technologia magazynu używany do przechowywania danych. Wszystkie zasoby są aprowizowane na poziomie serwera MariaDB. Serwer może zawierać jeden lub wiele baz danych.
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
@@ -23,7 +23,7 @@ W jednym z trzech różnych warstw cenowych, można utworzyć usługi Azure Data
 | Rdzenie wirtualne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
 | Ilość pamięci na rdzeń wirtualny | 2 GB | 5 GB | 10 GB |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
-| Typ magazynu | Usługa Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Okres przechowywania kopii zapasowej bazy danych | 7 – 35 dni | 7 – 35 dni | 7 – 35 dni |
 
 Aby wybrać warstwę cenową, skorzystaj z poniższej tabeli jako punktu wyjścia.
@@ -46,15 +46,14 @@ Magazyn, który możesz aprowizować to pojemność magazynu jest dostępne dla 
 
 |    | **Podstawowa** | **Ogólnego przeznaczenia** | **Zoptymalizowane pod kątem pamięci** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ magazynu | Usługa Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
+| Typ magazynu | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | Rozmiar magazynu | 5 GB do 1 TB | 5 GB do 4 TB | 5 GB do 4 TB |
 | Rozmiar przyrost magazynu | 1 GB | 1 GB | 1 GB |
 | Operacje wejścia/wyjścia | Zmienna |3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>6000 maks. IOPS |
 
 Można dodać dodatkowej pojemności, podczas i po utworzeniu serwera. Warstwa podstawowa nie zapewnia gwarancję operacji We/Wy. Ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych operacje We/Wy skalowanie o rozmiarze aprowizowanego magazynu współczynnik 3:1.
 
-Można monitorować swoje użycie operacji We/Wy w witrynie Azure portal lub za pomocą poleceń interfejsu wiersza polecenia platformy Azure. Istotne metryki do monitorowania są limit przestrzeni dyskowej, procent użycia magazynu, magazynu i procent we/wy.
-<!--[storage limit, storage percentage, storage used, and IO percent](concepts-monitoring.md)-->
+Można monitorować swoje użycie operacji We/Wy w witrynie Azure portal lub za pomocą poleceń interfejsu wiersza polecenia platformy Azure. Istotne metryki do monitorowania są [limit przestrzeni dyskowej, procent użycia magazynu, magazynu i procent We/Wy](concepts-monitoring.md).
 
 ### <a name="reaching-the-storage-limit"></a>Przekroczony limit magazynu
 
@@ -64,7 +63,7 @@ Podczas gdy usługa próbuje przełączyć serwer w tryb tylko do odczytu, wszys
 
 Zalecane jest skonfigurowanie alertu, aby otrzymywać powiadomienia, gdy magazyn serwera zbliża się do progu, dzięki czemu można uniknąć, jakim jest w stanie tylko do odczytu. 
 
-<!--For more information, see the documentation on [how to set up an alert](howto-alert-on-metric.md).-->
+Aby uzyskać więcej informacji, zobacz dokumentację na [sposobu ustawiania alertu](howto-alert-metric.md).
 
 ## <a name="backup"></a>Backup
 

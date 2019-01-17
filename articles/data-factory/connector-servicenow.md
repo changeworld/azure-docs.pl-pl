@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e91bcdf3980b0f03967c09b0b7a75aa3d3a520a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 234b78a97c2663121d0d585154695887a58b9522
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014628"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351747"
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Kopiowanie danych z usługi ServiceNow przy użyciu usługi Azure Data Factory
 
@@ -115,7 +115,7 @@ Aby skopiować dane z usługi ServiceNow, należy ustawić typ źródła w dzia�
 Należy pamiętać, że podczas określania schematu i kolumn dla usługi ServiceNow w zapytaniu i **dotyczą [porady dotyczące wydajności](#performance-tips) na domniemanie wydajności kopiowania**.
 
 - **Schemat:** Określ schemat, jak `Actual` lub `Display` kwerendę usługi ServiceNow, które można przyjrzeć się go jako parametr `sysparm_display_value` PRAWDA lub FAŁSZ, gdy wywołanie [interfejsów API restful usługi ServiceNow](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Kolumna:** nazwa kolumny do rzeczywistej wartości w obszarze `Actual` schemat jest `[columne name]_value`, natomiast w przypadku wartości wyświetlanej w obszarze `Display` schemat jest `[columne name]_display_value`. Uwaga nazwa kolumny musi mapowania do schematu, używany w zapytaniu.
+- **Kolumna:** nazwa kolumny do rzeczywistej wartości w obszarze `Actual` schemat jest `[column name]_value`, natomiast w przypadku wartości wyświetlanej w obszarze `Display` schemat jest `[column name]_display_value`. Uwaga nazwa kolumny musi mapowania do schematu, używany w zapytaniu.
 
 **Przykładowe zapytanie:**
 `SELECT col_value FROM Actual.alm_asset` OR 

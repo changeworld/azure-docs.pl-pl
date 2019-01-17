@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: abb77f59e49a98c1195dcd2e7b622b2b8e3fd7b8
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087288"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351853"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Wdrażanie klastra usługi Service Fabric w usłudze Azure Stack
 
@@ -118,7 +118,7 @@ Użyj następującego skryptu, aby utworzyć magazyn kluczy i dodać *certyfikat
    ``` 
 
 
-Aby uzyskać więcej informacji, zobacz [Zarządzanie magazynu kluczy w usłudze Azure Stack przy użyciu programu PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-kv-manage-powershell).
+Aby uzyskać więcej informacji, zobacz [Zarządzanie magazynu kluczy w usłudze Azure Stack przy użyciu programu PowerShell](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-key-vault-manage-powershell).
 
 ## <a name="deploy-the-marketplace-item"></a>Wdrażanie elementu portalu Marketplace
 
@@ -138,7 +138,7 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie magazynu kluczy w usłudze
 
    Aby uzyskać *odcisk palca certyfikatu klienta administrator*, wprowadź odcisk palca *certyfikat klienta administracyjnego*. (Zobacz [wymagania wstępne](#prerequisites).)
    
-   - Źródło usługi Key Vault: Określ cały *identyfikator magazynu kluczy* ciąg z wyniki skryptu. 
+   - Źródłowy magazyn kluczy:  Określ całą *identyfikator magazynu kluczy* ciąg z wyniki skryptu. 
    - Adres URL certyfikatu klastra: Określ cały adres URL z *identyfikator wpisu tajnego* z wyników skryptu. 
    - Odcisk palca certyfikatu klastra: Określ *odcisk palca certyfikatu klastra* z wyników skryptu.
    - Klient administracyjny odcisków palca certyfikatu: Określ *odcisk palca certyfikatu klienta administrator* utworzone w wymaganiach wstępnych. 
@@ -155,7 +155,7 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie magazynu kluczy w usłudze
 Za dostęp do klastra usługi Service Fabric przy użyciu narzędzia Service Fabric Explorer lub Service Fabric programu PowerShell.
 
 
-### <a name="use-service-fabric-explorer"></a>Użyj narzędzia Service Fabric Explorer
+### <a name="use-service-fabric-explorer"></a>Use Service Fabric Explorer
 1.  Sprawdź, czy przeglądarka sieci Web ma dostęp do Twój certyfikat klienta administracyjnego i może wykonać uwierzytelnienie do klastra usługi Service Fabric.  
 
     a. Otwórz program Internet Explorer i przejdź do **Opcje internetowe** > **zawartości** > **certyfikaty**.

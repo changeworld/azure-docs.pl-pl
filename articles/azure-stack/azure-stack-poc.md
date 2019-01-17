@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 89552bc568ce38c6153683e9c3b0f3f26f569083
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 530bb7b164ec7d7b31e6d4a58bca97aa17dc62fa
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959547"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54357882"
 ---
 # <a name="what-is-azure-stack"></a>Co to jest usługa Azure Stack?
 
@@ -29,8 +29,6 @@ Microsoft Azure Stack to hybrydowa platforma w chmurze, która pozwala dostarcza
 
 Usługa Azure Stack jest oferowana w dwóch opcji wdrażania do własnych potrzeb.
 
-## <a name="azure-stack-integrated-systems"></a>Zintegrowane systemy usługi Azure Stack
-Azure Stack zintegrowanych systemów są oferowane przez powiązanie firmy Microsoft i [dostawców sprzętu będących partnerami](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), tworzenia rozwiązania, które oferuje realizowanych chmury innowacji i obliczanie uproszczenia zarządzania. Ponieważ Azure Stack jest oferowany jako zintegrowane sprzętu i oprogramowania systemu, masz elastyczność i kontroli, którą chcesz dodać, wraz z możliwością innowacji z chmury. Systemy usługi Azure Stack, zintegrowane w zakresie rozmiaru, od 4 do 16 węzłów i wspólnie są obsługiwane przez partnerów sprzętowych i firmy Microsoft.  Azure Stack zintegrowanych systemów umożliwia tworzenie nowych scenariuszy i wdrażanie nowych rozwiązań dla obciążeń produkcyjnych.
 
 ## <a name="azure-stack-development-kit"></a>Zestaw Azure Stack Development Kit
 
@@ -45,8 +43,11 @@ ASDK ma następujące ograniczenia:
 * Składniki usługi Azure Stack są wdrażane na jednym komputerze-hoście, dlatego są ograniczone zasoby fizyczne dostępne dla zasobów dzierżawy. Ta konfiguracja nie jest przeznaczona do oceny skalę i wydajność.
 * Scenariusze sieci są ograniczone ze względu na jednym hoście i wymagania dotyczące wdrażania kart interfejsu Sieciowego.
 
+## <a name="azure-stack-integrated-systems"></a>Zintegrowane systemy usługi Azure Stack
+Azure Stack zintegrowanych systemów są oferowane przez powiązanie firmy Microsoft i [dostawców sprzętu będących partnerami](https://azure.microsoft.com/overview/azure-stack/integrated-systems/), tworzenia rozwiązania, które oferuje realizowanych chmury innowacji i obliczanie uproszczenia zarządzania. Ponieważ Azure Stack jest oferowany jako zintegrowane sprzętu i oprogramowania systemu, masz elastyczność i kontroli, którą chcesz dodać, wraz z możliwością innowacji z chmury. Systemy usługi Azure Stack, zintegrowane w zakresie rozmiaru, od 4 do 16 węzłów i wspólnie są obsługiwane przez partnerów sprzętowych i firmy Microsoft.  Azure Stack zintegrowanych systemów umożliwia tworzenie nowych scenariuszy i wdrażanie nowych rozwiązań dla obciążeń produkcyjnych.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Kluczowe funkcje i pojęcia](azure-stack-key-features.md)
 
-[Azure Stack: Rozszerzenie Azure (pdf)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)
+[Azure Stack: Rozszerzenie platformy Azure (pdf)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)

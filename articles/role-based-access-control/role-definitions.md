@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 1c8af3e0d3d5d29531a2ba81abc745fcdca5fb08
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231907"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354320"
 ---
 # <a name="understand-role-definitions"></a>Omówienie definicji ról
 
@@ -167,13 +167,17 @@ Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie pop
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 lub nowszej |
 | [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) | 2.0.30 lub nowszej |
-| [Platforma Azure dla platformy .NET](/dotnet/azure/) | 2.8.0-Preview lub nowszej |
+| [Azure for .NET](/dotnet/azure/) | 2.8.0-Preview lub nowszej |
 | [Zestaw Azure SDK dla języka Go](/go/azure/azure-sdk-go-install) | 15.0.0 lub nowszy |
 | [Platforma Azure dla języka Java](/java/azure/) | 1.9.0 lub nowszy |
 | [Platforma Azure dla języka Python](/python/azure) | 0.40.0 lub nowszy |
 | [Zestaw Azure SDK dla środowiska Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 lub nowszy |
 
-Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzanie nimi zawartość, kolejek i obiektów Blob kontenerów za pomocą usługi Azure AD w wersji zapoznawczej środowiska. Aby wyświetlanie i zarządzanie nimi zawartość kontenerów kolejki lub obiektu Blob kliknij link "Eksploruj dane za pomocą usługi Azure AD (wersja zapoznawcza)" na koncie magazynu — omówienie.
+Wyświetlanie i używanie operacji na danych w interfejsie API REST, należy ustawić **parametru api-version** parametru następującą wersję lub nowszej wersji:
+
+- 2018-01-01-preview
+
+Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzanie nimi zawartość, kolejek i obiektów Blob kontenerów za pomocą usługi Azure AD w wersji zapoznawczej środowiska. Aby wyświetlić i zarządzania zawartością kolejki lub obiektu Blob kliknij kontener **Eksplorowanie danych za pomocą usługi Azure AD w wersji zapoznawczej** na koncie magazynu — omówienie.
 
 ![Zapoznaj się z kolejek i obiektów Blob kontenerów za pomocą usługi Azure AD (wersja zapoznawcza)](./media/role-definitions/rbac-dataactions-browsing.png)
 
@@ -216,7 +220,7 @@ Witryna Azure portal umożliwia także użytkownikom przeglądanie i zarządzani
 > Jeśli użytkownik ma przypisaną rolę, który wyklucza operacja na danych w `NotDataActions`i ma przypisany druga rola, która udziela dostępu do tej samej operacji danych, użytkownik może wykonać tej operacji danych. `NotDataActions` nie jest odmowy reguły — jest po prostu wygodny sposób utworzyć zestaw danych dozwolonych operacji podczas określonymi operacjami, które powinny zostać wykluczone.
 >
 
-## <a name="assignablescopes"></a>assignableScopes
+## <a name="assignablescopes"></a>AssignableScopes
 
 `AssignableScopes` Właściwość określa zakresy (subskrypcji, grupy zasobów lub zasobów), że rola jest dostępne do przypisania. Możesz udostępnić rolę do przypisania tylko do subskrypcji lub grupy zasobów, które wymagają, a nie użytkownika zaśmiecania środowisko dla pozostałych grup zasobów lub subskrypcji. Należy użyć co najmniej jednej subskrypcji, grupy zasobów lub identyfikator zasobu.
 

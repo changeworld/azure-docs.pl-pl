@@ -7,20 +7,19 @@ author: Juliako
 writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240226"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359991"
 ---
 # <a name="streaming-endpoints-overview"></a>Omówienie punktów końcowych przesyłania strumieniowego 
 
@@ -28,20 +27,26 @@ ms.locfileid: "50240226"
 
 W programie Microsoft Azure Media Services (AMS), **punkt końcowy przesyłania strumieniowego** reprezentuje usługę przesyłania strumieniowego, która umożliwia dostarczanie zawartości bezpośrednio do aplikacji odtwarzacza klienta lub aby Content Delivery Network (CDN) w celu dalszego rozpowszechniania. Media Services udostępnia również bezproblemową integrację usługi Azure CDN. Strumień wychodzący, z usługi StreamingEndpoint może być strumień na żywo, wideo na żądanie lub pobierania progresywnego elementów zawartości w ramach konta usługi Media Services. Każde konto usługi Azure Media Services obejmuje domyślne StreamingEndpoint. Dodatkowe punkty mogą być tworzone w ramach konta. Istnieją dwie wersje punkty, 1.0 i 2.0. Począwszy od stycznia 2017 10, wszystkie nowo utworzone konta usługi AMS zostaną uwzględnione w wersji 2.0 **domyślne** StreamingEndpoint. Dodatkowe punkty końcowe przesyłania strumieniowego, które dodajesz do tego konta będą również w wersji 2.0. Ta zmiana nie ma wpływu na istniejące konta; istniejące punkty będą w wersji 1.0 i mogą być uaktualniane do wersji 2.0. Dzięki tej zmianie będą zmiany zachowania, rozliczeń i funkcji (Aby uzyskać więcej informacji, zobacz **przesyłania strumieniowego, typy i wersje** sekcji opisane poniżej).
 
-Ponadto, począwszy od wersji 2.15 (wydany w styczniu 2017 roku), usługi Azure Media Services dodano następujące właściwości do jednostki punkt końcowy przesyłania strumieniowego: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Aby uzyskać szczegółowe omówienie tych właściwości, zobacz [to](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
+Usługa Azure Media Services dodane następujące właściwości do jednostki punkt końcowy przesyłania strumieniowego: **CdnProvider**, **CdnProfile**, **FreeTrialEndTime**, **StreamingEndpointVersion**. Aby uzyskać szczegółowe omówienie tych właściwości, zobacz [to](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint). 
 
 Po utworzeniu konta usługi Azure Media Services domyślny standardowy punkt końcowy przesyłania strumieniowego jest tworzony w **zatrzymane** stanu. Nie można usunąć domyślnego punktu końcowego przesyłania strumieniowego. W zależności od dostępności usługi Azure CDN w regionie docelowym, domyślnie nowo utworzony domyślny punkt końcowy przesyłania strumieniowego obejmowały "StandardVerizon" sieć CDN integracji dostawcy. 
-
->[!NOTE]
->Integracja z usługą Azure CDN można wyłączyć, przed rozpoczęciem punkt końcowy przesyłania strumieniowego.
+                
+> [!NOTE]
+> Integracja z usługą Azure CDN można wyłączyć, przed rozpoczęciem punkt końcowy przesyłania strumieniowego. `hostname` i adres URL przesyłania strumieniowego pozostaje taki sam, czy włączyć sieć CDN.
 
 Ten temat zawiera omówienie główne funkcje, które są dostarczane przez punkty końcowe przesyłania strumieniowego.
+
+## <a name="naming-conventions"></a>Konwencje nazewnictwa
+
+Dla domyślnego punktu końcowego: `{AccountName}.streaming.mediaservices.windows.net`
+
+Aby uzyskać wszystkie dodatkowe punkty końcowe: `{EndpointName}-{AccountName}.streaming.mediaservices.windows.net`
 
 ## <a name="streaming-types-and-versions"></a>Przesyłanie strumieniowe, typy i wersje
 
 ### <a name="standardpremium-types-version-20"></a>Typy standardowa/Premium (wersja 2.0)
 
-Począwszy od stycznia 2017 wersję usługi Media Services, istnieją dwa typy przesyłania strumieniowego: **standardowa** i **Premium**. Te typy są częścią wersji punktu końcowego przesyłania strumieniowego "2.0".
+Począwszy od stycznia 2017 wersję usługi Media Services, istnieją dwa typy przesyłania strumieniowego: **Standardowa** i **Premium**. Te typy są częścią wersji punktu końcowego przesyłania strumieniowego "2.0".
 
 Typ|Opis
 ---|---
@@ -92,11 +97,11 @@ Zalecane użycie |Zalecane w przypadku większość przesyłania strumieniowego 
 
 ## <a name="migration-between-types"></a>Migracja między typami
 
-Z | Do | Akcja
+Od | Do | Akcja
 ---|---|---
 Wdrożenie klasyczne|Standardowa (Standard)|Należy na uczestnictwo
 Wdrożenie klasyczne|Premium| Skala (dodatkowe jednostki przesyłania strumieniowego)
-Standardowa/Premium|Wdrożenie klasyczne|Nie są dostępne (Jeśli punkt końcowy przesyłania strumieniowego w wersji 1.0. Istnieje możliwość zmiany do klasycznego modelu z ustawieniem scaleunits "0")
+Standard/Premium|Wdrożenie klasyczne|Nie są dostępne (Jeśli punkt końcowy przesyłania strumieniowego w wersji 1.0. Istnieje możliwość zmiany do klasycznego modelu z ustawieniem scaleunits "0")
 Standardowa (lub bez sieci CDN)|Premium z tej samej konfiguracji|Dozwolone w **pracę** stanu. (za pośrednictwem witryny Azure portal)
 Premium (lub bez sieci CDN)|Standardowa przy użyciu tej samej konfiguracji|Dozwolone w **pracę** stanu (za pośrednictwem witryny Azure portal)
 Standardowa (lub bez sieci CDN)|Premium z różnych konfiguracji|Dozwolone w **zatrzymana** stanu (za pośrednictwem witryny Azure portal). Nie są dozwolone w stanie uruchomienia.

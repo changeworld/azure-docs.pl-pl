@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339403"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358987"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -49,13 +49,19 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
    Tak. Platforma Azure utrzymuje tylko jeden obraz na głównej wersji i wydania. Na przykład po udostępnieniu nowego dodatku service pack programu SQL Server, platforma Azure dodaje nowy obraz w galerii dla tego dodatku service pack. Obraz programu SQL Server dla poprzedniego dodatku service pack jest usuwane natychmiast w witrynie Azure portal. Jednak jest wciąż dostępna na potrzeby aprowizacji za pomocą programu PowerShell dla następnych trzech miesięcy. Po upływie trzech miesięcy na poprzedniej ilustracji pakiet usługi nie jest już dostępna. Te zasady usuwania czy mają zastosowanie również w wersji programu SQL Server staje się nieobsługiwany po osiągnięciu końca swojego cyklu życia.
 
+
+1. **Czy jest możliwe do wdrożenia obrazu starsze programu SQL Server, który nie jest widoczny w witrynie Azure Portal?**
+
+   Tak, przy użyciu programu PowerShell. Aby uzyskać więcej informacji o wdrażaniu maszyny wirtualne SQL Server przy użyciu programu PowerShell, zobacz [jak inicjować obsługę maszyn wirtualnych programu SQL Server przy użyciu programu Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
+
 1. **Czy mogę utworzyć obraz wirtualnego dysku twardego z maszyny Wirtualnej programu SQL Server?**
 
    Tak, ale jest kilka istotnych kwestii. Jeśli wdrożono ten wirtualny dysk twardy do nowej maszyny Wirtualnej na platformie Azure, możesz zrobić ge nie w sekcji Konfiguracja programu SQL Server w portalu. Następnie można zarządzać opcje konfiguracji programu SQL Server za pomocą programu PowerShell. Ponadto możesz opłata zgodnie ze stawką maszyn wirtualnych SQL, obraz został pierwotnie oparty na. Ta zasada obowiązuje, nawet w przypadku usunięcia programu SQL Server z dysku VHD, przed wdrożeniem. 
 
 1. **Czy jest możliwe do skonfigurowania konfiguracje nie są wyświetlane w galerii maszyn wirtualnych (na przykład Windows 2008 R2 i SQL Server 2012)?**
 
-   Nie. Dla obrazów galerii maszyn wirtualnych, które obejmują program SQL Server należy wybrać jeden z podanych obrazów.
+   Nie. Dla obrazów galerii maszyn wirtualnych, które obejmują program SQL Server, należy wybrać jedną z podanych obrazy w witrynie Azure portal lub za pośrednictwem [PowerShell](virtual-machines-windows-ps-sql-create.md). 
+
 
 ## <a name="creation"></a>Tworzenie
 
@@ -102,11 +108,11 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
  
    Tak. Wszyscy klienci będą mogli zarejestrować się przy użyciu nowego dostawcę zasobów maszyny Wirtualnej SQL. Jednak tylko klienci z korzyści programu Software Assurance mogą aktywować [korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/hybrid-benefit/) (lub BYOL) na maszynę Wirtualną programu SQL Server. 
 
-1. **Co się dzieje z _\*zasobu Microsoft.SqlVirtualMachine_\*, jeśli zasób maszyny Wirtualnej jest przeniesiony lub usunięty?** 
+1. **Co się dzieje z _* zasobu Microsoft.SqlVirtualMachine_*, jeśli zasób maszyny Wirtualnej jest przeniesiony lub usunięty?** 
 
    Gdy zasobów Microsoft.Compute/VirtualMachine jest porzucone lub przeniesiona, a następnie skojarzonego zasobu Microsoft.SqlVirtualMachine powiadomić o asynchronicznym replikowaniu operacji.
 
-1. **Co się dzieje z maszyny Wirtualnej, jeśli _\*Microsoft.SqlVirtualMachine_\* zasobów jest porzucany?**
+1. **Co się dzieje z maszyny Wirtualnej, jeśli _* Microsoft.SqlVirtualMachine_* zasobów jest porzucany?**
 
    Zasób Microsoft.Compute/VirtualMachine nie ulega zmianie po upuszczeniu zasobów Microsoft.SqlVirtualMachine. Jednak zmiany licencjonowania domyślnie powrócą do oryginalnego źródła obrazu. 
 
@@ -161,7 +167,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 ## <a name="resources"></a>Zasoby
 
-**Maszyny wirtualne Windows**:
+**Maszyny wirtualne z systemem Windows**:
 
 * [Omówienie programu SQL Server na maszynie Wirtualnej Windows](virtual-machines-windows-sql-server-iaas-overview.md).
 * [Aprowizowanie Windows serwer SQL maszyny Wirtualnej](virtual-machines-windows-portal-sql-server-provision.md)
@@ -170,7 +176,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 * [Najlepsze rozwiązania w zakresie wydajności dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-performance.md)
 * [Wzorce aplikacji i strategie programowania dla programu SQL Server na maszynach wirtualnych platformy Azure](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
-**Maszyny wirtualne systemu Linux**:
+**Maszyny wirtualne z systemem Linux**:
 
 * [Omówienie programu SQL Server na maszynie Wirtualnej systemu Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
 * [Aprowizowanie maszyny Wirtualnej systemu Linux z programu SQL Server](../../linux/sql/provision-sql-server-linux-virtual-machine.md)

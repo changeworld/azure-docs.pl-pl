@@ -8,12 +8,12 @@ ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 86c8e8c10811b1478ae2c853f1efef5b6b5caa83
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 782f68c52285e787b9dfc6d21352ab2d53876085
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406332"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353145"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>What's new in Azure Data Catalog
 Aktualizacje **usługi Azure Data Catalog** są regularnie wydawane. Nie każda wersja zawiera nowe funkcje widocznych dla użytkownika, niektórych wersjach koncentrują się na możliwości usługi zaplecza. Ta strona prezentuje nowe możliwości widocznych dla użytkownika dodane do usługi Azure Data Catalog.
@@ -45,7 +45,7 @@ Począwszy od sierpnia 2017 r. następujące funkcje zostały dodane do usługi 
 
 ## <a name="whats-new-for-july-2017"></a>What's new for lipca 2017 r. 
 Począwszy od lipca 2017 r. następujące funkcje zostały dodane do usługi Azure Data Catalog:
-*   Pomoc techniczna dla bardziej precyzyjną kontrolę nad tym operacji na metadanych najszerszym:
+*   Pomoc techniczna dla bardziej precyzyjną kontrolę nad metadanych dozwolone operacje, w tym:
     - Administratorzy wykazu, można ograniczyć użytkownikowi możliwość współtworzenia tagów i powiązanych metadanych do wykazu, włączenie dostępu tylko do odczytu do katalogu.
     - Administratorzy katalogu mogą ograniczyć użytkownikom rejestrować nowe źródła w katalogu.
     - Administratorzy wykazu można ograniczyć użytkownikowi możliwość przejęcie na własność metadane zasobów danych w wykazie.
@@ -138,7 +138,7 @@ Począwszy od maja 2016 r. następujące funkcje zostały dodane do usługi Azur
 * Słownik biznesowy, który umożliwia administratorom wykazu Definiowanie terminów biznesowych i hierarchie do utworzenia wspólnego słownictwa biznesowego. Użytkownicy, można oznaczyć zarejestrowanych zasobów danych za pomocą terminy słownika aby ułatwić odnajdywanie i zrozumienie zawartości katalogu. Aby uzyskać więcej informacji, zobacz [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md) (Jak skonfigurować słownik biznesowy na potrzeby znakowania zarządzanego).  
 * Ulepszenia słownik biznesowy wykazu danych, który pozwala użytkownikom na aktualizowanie wielu terminy słownika w ramach jednej operacji. Użytkownicy mogą wybrać wiele wersji warunków do edycji następujące pola:
   * Termin nadrzędny: Użytkownik może wybrać nowy termin nadrzędny, a wszystkie wybrane warunki są zaktualizowane pod kątem dzieci termin nadrzędny wybrany. Jeśli wybrane warunki wszystkie mają ten sam element nadrzędny, a następnie elementem nadrzędnym jest wyświetlana w polu tekstowym, w przeciwnym razie termin nadrzędny, pole jest ustawione na puste.   
-  * Znaczniki i zainteresowanych stron: użytkowników można dodawać i usuwać tagi i uczestnikom projektu dla wielu terminy słownika przy użyciu tego samego środowiska jako znakowanie wielu zasobów danych.
+  * Znaczniki i uczestnikom projektu: Użytkowników można dodawać i usuwać tagi i uczestnikom projektu dla wielu terminy słownika przy użyciu tego samego środowiska jako znakowanie wielu zasobów danych.
 
 > [!NOTE]
 > Słownik biznesowy jest dostępna tylko w Standard Edition usługi Azure Data Catalog. Bezpłatna wersja nie zapewnia możliwości znakowanie zarządzanych lub słownika biznesowego.
@@ -153,7 +153,7 @@ Od lutego 2016 r. następujące funkcje zostały dodane do usługi Azure Data Ca
 
 * Wybór źródła danych zaprojektowaną na nowo witrynę środowisko w narzędzia rejestracji źródła danych usługi Azure Data Catalog. Narzędzia rejestracji źródła danych został zaktualizowany tak, aby ułatwić znalezienie i wybierz ze źródeł danych obsługiwanych przez usługę Azure Data Catalog.
 * Obsługa 10 dodatkowych języków w portalu usługi Azure Data Catalog i narzędzia rejestracji źródła danych. Oprócz języka angielskiego środowisko usługi Azure Data Catalog jest teraz dostępna w niemiecki, hiszpański, francuski, włoski, japoński, koreański, portugalski (Brazylia), rosyjski, chiński (uproszczony) i chińskim tradycyjnym. Środowisko użytkownika usługi Azure Data Catalog jest zlokalizowana w oparciu o preferencje językowe, ustawić w Windows lub w przeglądarce sieci web.
-* Obsługa replikacji geograficznej usługi Azure Data Catalog danych biznesowych ciągłość działalności biznesowej i odzyskiwanie po awarii. Cała zawartość usługi Azure Data Catalog, w tym adnotacji dodawanych i metadanych danych źródłowych, teraz są replikowane między dwoma regionami platformy Azure bez dodatkowych kosztów klientom. Regiony platformy Azure wstępnie są skojarzone, co najmniej 500 mil od siebie i postępuj zgodnie z mapowania, zgodnie z opisem w [firm ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure](../best-practices-availability-paired-regions.md).
+* Obsługa replikacji geograficznej usługi Azure Data Catalog danych biznesowych ciągłość działalności biznesowej i odzyskiwanie po awarii. Cała zawartość usługi Azure Data Catalog, w tym adnotacji dodawanych i metadanych danych źródłowych, teraz są replikowane między dwoma regionami platformy Azure bez dodatkowych kosztów klientom. Regiony platformy Azure wstępnie są skojarzone, co najmniej 500 mil od siebie i postępuj zgodnie z mapowania, zgodnie z opisem w [firm ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md).
 * Obsługa zmiany subskrypcji platformy Azure używane przez usługę Azure Data Catalog. Administratorzy usługi Azure Data Catalog umożliwia strony ustawień w portalu usługi Azure Data Catalog wybierz inną subskrypcję platformy Azure na potrzeby rozliczeń.
 
 ## <a name="whats-new-for-january-2016"></a>What's new for stycznia 2016 r.
@@ -165,7 +165,7 @@ Począwszy od stycznia 2016 r. następujące funkcje zostały dodane do usługi 
   * System plików — plik
   * SharePoint — lista
   * FTP - plików i katalogów
-  * SalesForce.com — obiekt
+  * Salesforce.com - Object
   * Bazy danych DB2 — tabeli, widoku i bazy danych
   * PostgreSQL — tabeli, widoku i bazy danych
 * Obsługa "Otwórz w SQL Server Data Tools" dla źródła danych programu SQL Server (w tym usługi Azure SQL DB i Azure SQL Data Warehouse).  
@@ -263,6 +263,6 @@ Począwszy od sierpnia 2015 r. następujące funkcje zostały dodane do usługi 
 * Obsługa, podając informacje o żądaniu dostępu do źródeł danych zarejestrowanych. Do dowolnego zarejestrowanego zasobu danych użytkownicy mogą teraz podać instrukcje dotyczące żądania dostępu, w tym przesyłanie pocztą e-mail łączy lub adresy URL, łatwo zintegrować ją z istniejącymi narzędziami i procesami.
 * Etykietki narzędzi dla tagów i ekspertów, aby ułatwić odnajdywanie, co użytkownicy zostały podane jakie metadanych dla zarejestrowanych zasobów danych.
 * Dodaliśmy menu i nowy przycisk "User" do naszych górnym pasku nawigacyjnym. To menu umożliwia użytkownik widzi konto używane do logowania się do usługi Azure Data Catalog, a aby się wylogować, jeśli pożądane. To menu zawiera również nazwę katalogu, który jest przydatna dla deweloperów korzystających z interfejsu API REST usługi Azure Data Catalog.
-* Tylko wersja Standard: Podczas dodawania właścicieli do zasobów danych, usługi Azure Data Catalog obsługuje teraz zarówno konta użytkowników i grup zabezpieczeń jako właścicieli. Aby dodać grupę zabezpieczeń jako właściciela dla wybranych zasobów danych, można wprowadzić nazwę wyświetlaną grupy lub adres e-mail UPN grupy, jeśli taki istnieje.
+* Tylko wersja Standard: Podczas dodawania właścicieli do zasobów danych, usługi Azure Data Catalog obsługuje teraz zarówno kont użytkowników i grup zabezpieczeń jako właścicieli. Aby dodać grupę zabezpieczeń jako właściciela dla wybranych zasobów danych, można wprowadzić nazwę wyświetlaną grupy lub adres e-mail UPN grupy, jeśli taki istnieje.
 * Pomoc techniczna dla źródeł danych usługi Azure Blob Storage. Użytkownicy mogą teraz rejestrowanie i odnajdywanie obiektów blob usługi Azure Storage i katalogów.
 

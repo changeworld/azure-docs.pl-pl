@@ -6,14 +6,14 @@ author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 95aff0bb37a91c1e2ac117f2f3b90c726e9f88d8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792893"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353859"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Szybki start: Konfigurowanie klastrów w HDInsight
 
@@ -25,6 +25,10 @@ Klaster Hadoop składa się z kilku maszyn wirtualnych (węzłów), które są u
 >Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. Dowiedz się, jak [usunięcia klastra.](../../hdinsight/hdinsight-delete-cluster.md)
 
 Konto magazynu z możliwościami Data Lake Storage Gen2 służy jako warstwa danych, w tym przewodniku Szybki Start. Ze swoją usługą hierarchicznej przestrzeni nazw i [sterownika Hadoop](data-lake-storage-abfs-driver.md), Data Lake Storage Gen2 jest zoptymalizowany do przetwarzania rozproszonego i analizy. Dane przechowywane na koncie magazynu ma włączone Gen2 Data Lake magazynu — będzie nadal występować, nawet w przypadku, po usunięciu klastra usługi HDInsight.
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+- Konieczne będzie tworzenie zarządzanych tożsamości przypisanych przez użytkownika, a następnie przypisz **rola Współautor magazynu obiektów Blob** do odpowiedniej tożsamości. Zobacz [tworzenia, listy, usuwania lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
 ## <a name="cluster-setup-methods"></a>Metody instalacji klastra
 
@@ -104,8 +108,7 @@ Podczas konfigurowania dla domyślnego punktu końcowego magazynu należy okreś
 
 ![Ustawienia magazynu klastra: Punkty końcowe usługi storage zgodnego systemem plików HDFS](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
-> [!IMPORTANT]
-> Pamiętaj, aby **wyłączyć dostęp Data Lake Store**. To ustawienie odnosi się do starych *Data Lake Store* funkcjonalność i ma być wyłączona, aby *usługi Data Lake Storage* funkcje, aby działać poprawnie.
+W **użytkownik przypisany tożsamość zarządzaną**, upewnij się wybrać zarządzana przez użytkownika przypisanego przez użytkownika zarządzaną tożsamością utworzonego jako warunek wstępny części tego artykułu.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -219,7 +222,7 @@ Czasami którą chcesz skonfigurować następujące pliki konfiguracji w trakcie
 * hdfs-site.xml
 * hive-env.xml
 * hive-site.xml
-* mapred lokacji
+* mapred-site
 * oozie-site.xml
 * oozie-env.xml
 * storm-site.xml

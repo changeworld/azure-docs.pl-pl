@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 765596500e3ac294dc79f0785b12b03370fa652a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044522"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354488"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Powiadamianie pacjentów zmiany opieki zdrowotnej rekordu HL7 FHIR przy użyciu aplikacji logiki i Azure Cosmos DB
 
@@ -87,7 +87,7 @@ Używamy [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/
 - DatabaseId
 - CollectionId
 - Nazwa typu zasobu usługi HL7 FHIR
-- Atrybut typu wartość logiczna: Zacznij od początku
+- Boolean: Zacznij od początku
 - Int: Liczba zwróconych dokumentów
 
 **Dane wyjściowe**
@@ -130,11 +130,11 @@ Używamy [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/
             /// <param name="maximumItemCount">-1 returns all (default)</param>
             /// <returns></returns>
             [Metadata("Get New or Modified FHIR Documents",
-                "Query for new or modifed FHIR Documents By Resource Type " +
+                "Query for new or modified FHIR Documents By Resource Type " +
                 "from Last Run Date or Beginning of Collection creation"
             )]
             [SwaggerResponse(HttpStatusCode.OK, type: typeof(Task<dynamic>))]
-            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modifed Documents found")]
+            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modified Documents found")]
             [SwaggerOperation("GetNewOrModifiedFHIRDocuments")]
             public async Task<dynamic> GetNewOrModifiedFhirDocuments(
                 [Metadata("Database Id", "Database Id")] string databaseId,
@@ -217,7 +217,7 @@ Na poniższej ilustracji przedstawiono wszystkich usług platformy Azure dla teg
 
 ## <a name="summary"></a>Podsumowanie
 
-- Wiesz, że usługi Azure Cosmos DB ma natywnej Obsługa powiadomienia o nowych lub zmodyfikowane dokumenty oraz jak łatwo jest użycie. 
+- Wiesz, że usługi Azure Cosmos DB zapewnia natywną obsługę powiadomień o nowych lub zmodyfikowanych dokumentów i jak łatwo jest użycie. 
 - Dzięki wykorzystaniu Logic Apps, możesz utworzyć przepływy pracy bez pisania żadnego kodu.
 - Obsługa dystrybucji dokumentów HL7 FHIR przy użyciu kolejek usługi Azure Service Bus.
 

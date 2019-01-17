@@ -5,6 +5,7 @@ description: Omówienie funkcji usługi Azure Standard Load Balancer
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 ms.custom: seodec18
 ms.service: load-balancer
 ms.devlang: na
@@ -13,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 15a67bb5d42028f945cc44a75a7210f132a434c3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2eb2fbb1d184bf58923748278d4989a271adf434
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245168"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352584"
 ---
-# <a name="azure-standard-balancer-overview"></a>Omówienie usługi Azure Balancer w warstwie standardowa
+# <a name="azure-standard-load-balancer-overview"></a>Omówienie usługi Azure Load Balancer w warstwie standardowa
 
 Usługa Azure Load Balancer umożliwia skalowanie aplikacji i zapewniać wysoką dostępność usług. Moduł równoważenia obciążenia może służyć do scenariuszy dla ruchu przychodzącego, a także ruchu wychodzącego i zapewnia małe opóźnienia i wysoką przepływność i skaluje nawet miliony przepływów dla wszystkich aplikacji TCP i UDP. 
 
 Ten artykuł koncentruje się na standardowych modułu równoważenia obciążenia.  Aby uzyskać bardziej ogólne omówienie modułu równoważenia obciążenia Azure, przejrzyj [Omówienie usługi Load Balancer](load-balancer-overview.md) także.
 
-## <a name="what-is-standard-load-balancer"></a>Co to jest Balancer w warstwie standardowa?
+## <a name="what-is-standard-load-balancer"></a>Co to jest usługa Load Balancer w warstwie Standardowa?
 
 Load Balancer w warstwie standardowa to nowy produkt modułu równoważenia obciążenia dla wszystkich protokołów TCP i UDP aplikacji za pomocą funkcji rozwinięte i bardziej szczegółową ustawić przez podstawowy moduł równoważenia obciążenia.  Dostępnych jest wiele wspólnego, należy zapoznać się z różnicami, zgodnie z opisem w tym artykule.
 

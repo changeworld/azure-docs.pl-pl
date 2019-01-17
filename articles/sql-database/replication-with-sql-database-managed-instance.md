@@ -1,59 +1,33 @@
 ---
-title: Wystąpienie zarządzane w replikacji za pomocą usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o za pomocą replikacji programu SQL Server za pomocą wystąpienia zarządzanego Azure SQL Database
+title: Konfigurowanie replikacji w wystąpieniu zarządzanym usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Informacje na temat konfigurowania replikacji transakcyjnej w wystąpieniu zarządzanym usługi Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: howto
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/11/2019
-ms.openlocfilehash: e658eba29368530c4c221496de98823c002985fe
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/16/2019
+ms.openlocfilehash: 568b239cf41c802cc5d25b638f6d1501f58eccdf
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329468"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360092"
 ---
-# <a name="replication-with-sql-database-managed-instance"></a>Wystąpienie zarządzane w replikacji z bazy danych SQL
+# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Konfigurowanie replikacji w wystąpieniu zarządzanym usługi Azure SQL Database
 
-Replikacja jest dostępna w publicznej wersji zapoznawczej na [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md). Wystąpienie zarządzane umożliwia hostowanie bazy danych wydawcy dystrybutora i subskrybenta.
-
-## <a name="common-configurations"></a>Typowe konfiguracje
-
-Ogólnie rzecz biorąc wydawcą i dystrybutorem muszą być w chmurze lub lokalnie. Obsługiwane są następujące konfiguracje:
-
-- **Wydawcy o dystrybutor lokalny dla wystąpienia zarządzanego**
-
-   ![Replication-with-azure-sql-db-single-managed-instance-publisher-distributor](./media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
-
-   Bazy danych wydawcą i dystrybutorem są konfigurowane w pojedynczym wystąpieniu zarządzanym.
-
-- **Wydawcy o dystrybutorze zdalnym na wystąpienie zarządzane**
-
-   ![Replication-with-azure-sql-db-separate-managed-instances-publisher-distributor](./media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
-
-   Wydawcą i dystrybutorem są konfigurowane na dwa wystąpienia zarządzanego. W tej konfiguracji:
-
-  - Oba wystąpienia zarządzanego znajdują się w tej samej sieci wirtualnej.
-
-  - Oba wystąpienia zarządzanego znajdują się w tej samej lokalizacji.
-
-- **Wydawcą i dystrybutorem lokalnie przy użyciu subskrybenta na wystąpienie zarządzane**
-
-   ![Replication-from-on-premises-to-azure-sql-db-subscriber](./media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
-
-   W tej konfiguracji usługi Azure SQL database jest subskrybentem. Ta konfiguracja obsługuje migracji ze środowiska lokalnego na platformę Azure. W roli subskrybenta bazy danych SQL nie wymaga wystąpienia zarządzanego, jednak wystąpienie zarządzane bazy danych SQL można użyć jako krok w procesie migracji ze środowiska lokalnego do platformy Azure. Aby uzyskać więcej informacji na temat subskrybentów usługi Azure SQL Database, zobacz [replikacji bazy danych SQL](replication-to-sql-database.md).
+Replikacja transakcyjna umożliwia replikowanie danych z baz danych programu SQL Server lub wystąpienia zarządzanego Azure SQL Database do wystąpienia zarządzanego lub wypychania zmian w bazach danych w wystąpieniu zarządzanym innych programu SQL Server, pojedynczej bazy danych Azure lub innych Wystąpienie zarządzane. Replikacja jest w publicznej wersji zapoznawczej na [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md). Wystąpienie zarządzane umożliwia hostowanie bazy danych wydawcy dystrybutora i subskrybenta. Zobacz [konfiguracji replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md#common-configurations) dla dostępnymi konfiguracjami.
 
 ## <a name="requirements"></a>Wymagania
 
 Wymaga wydawcą i dystrybutorem w usłudze Azure SQL Database:
 
-- Wystąpienie zarządzane bazy danych Azure SQL.
+- Usługa Azure wystąpienia zarządzanego SQL Database, która nie znajduje się w konfiguracji Geo-DR.
 
    >[!NOTE]
    >Azure baz danych SQL, które nie zostały skonfigurowane za pomocą wystąpienia zarządzanego można tylko subskrybentów.
@@ -74,7 +48,13 @@ Obsługuje:
 
 - Subskrybenci mogą być w środowisku lokalnym, pojedynczych baz danych w usłudze Azure SQL Database lub bazy danych w puli w elastycznych pulach usługi Azure SQL Database.
 
-- Jednokierunkowa lub replikację dwukierunkową
+- Jednokierunkowa lub replikację dwukierunkową.
+
+Następujące funkcje nie są obsługiwane:
+
+- Aktualizowalne subskrypcje.
+
+- Replikacja aktywnej replikacji geograficznej.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Skonfiguruj publikowanie i dystrybucję przykład
 
@@ -188,15 +168,7 @@ Obsługuje:
                 @job_password = N'<PASSWORD>'
    GO
    ```
-
-## <a name="limitations"></a>Ograniczenia
-
-Następujące funkcje nie są obsługiwane:
-
-- Aktualizowalne subskrypcje
-
-- Replikacji dla aktywnej replikacji geograficznej
-
+   
 ## <a name="see-also"></a>Zobacz też
 
 - [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md)

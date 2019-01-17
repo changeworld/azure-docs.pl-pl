@@ -6,36 +6,37 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: CLI
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 01/15/2019
 ms.author: mabrigg
-ms.openlocfilehash: ba8bed71d24c1b4ed71611b5cd2dfeb7800408b8
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1da23337b6a23f713eaadefbc4cee4aca07f56de
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304027"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351552"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Certyfikat główny urzędu certyfikacji można udostępnić użytkownikom usługi Azure Stack pozwala używać wiersza polecenia platformy Azure na swoich komputerach deweloperskich. Użytkownicy muszą certyfikatów do zarządzania zasobami za pomocą interfejsu wiersza polecenia.
+Certyfikat główny urzędu certyfikacji można udostępnić użytkownikom usługi Azure Stack pozwala używać wiersza polecenia platformy Azure na swoich komputerach deweloperskich. Użytkownicy potrzebują certyfikatu do zarządzania zasobami za pomocą interfejsu wiersza polecenia.
 
-* **Certyfikat główny urzędu certyfikacji usługi Azure Stack** jest wymagany, jeśli użytkownicy korzystają z interfejsu wiersza polecenia na stacji roboczej poza Azure Stack Development Kit.  
+ - **Certyfikat główny urzędu certyfikacji usługi Azure Stack** jest wymagany, jeśli użytkownicy korzystają z interfejsu wiersza polecenia na stacji roboczej poza Azure Stack Development Kit.  
 
-* **Punkt końcowy aliasy maszyny wirtualnej** zawiera alias, takich jak "UbuntuLTS" lub "Win2012Datacenter", który odwołuje się do wydawcy obrazu, oferty, jednostki SKU i wersji jako pojedynczy parametr podczas wdrażania maszyn wirtualnych.  
+ - **Punkt końcowy aliasy maszyny wirtualnej** zawiera alias, takich jak "UbuntuLTS" lub "Win2012Datacenter", który odwołuje się do wydawcy obrazu, oferty, jednostki SKU i wersji jako pojedynczy parametr podczas wdrażania maszyn wirtualnych.  
 
 W następujących sekcjach opisano sposób uzyskiwania tych wartości.
 
 ## <a name="export-the-azure-stack-ca-root-certificate"></a>Wyeksportuj certyfikat głównego urzędu certyfikacji usługi Azure Stack
 
-Certyfikat główny urzędu certyfikacji usługi Azure Stack można znaleźć w zestawie deweloperskim i na maszynie wirtualnej dzierżawy, który jest uruchomiony w środowisku deweloperskim zestaw. Aby wyeksportować certyfikat główny usługi Azure Stack w formacie PEM, zaloguj się do zestawu SDK usługi lub maszyny wirtualnej dzierżawcy, a następnie uruchom następujący skrypt:
+Jeśli używasz zintegrowanego systemu, nie trzeba wyeksportować certyfikat główny urzędu certyfikacji. Należy wyeksportować certyfikat główny urzędu certyfikacji w usłudze Azure Stack Development Kit (ASDK).
+
+Aby wyeksportować certyfikat główny ASDK w formacie PEM, zaloguj się i uruchom następujący skrypt:
 
 ```powershell
 $label = "<Your Azure Stack CA root certificate name>"
@@ -56,15 +57,15 @@ certutil -encode root.cer root.pem
 
 ## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Konfigurowanie punktu końcowego aliasy maszyny wirtualnej
 
-Operatorzy usługi Azure Stack, należy skonfigurować publicznie dostępnym punkcie końcowym hostujący plik alias maszyny wirtualnej. Plik alias maszyny wirtualnej znajduje się plik w formacie JSON, który zawiera nazwę pospolitą obrazu. Następnie określono tej nazwy, podczas wdrażania maszyny Wirtualnej jako parametr wiersza polecenia platformy Azure.  
+Operatorzy usługi Azure Stack, należy skonfigurować publicznie dostępnym punkcie końcowym hostujący plik alias maszyny wirtualnej. Plik alias maszyny wirtualnej znajduje się plik w formacie JSON, który zawiera nazwę pospolitą obrazu. Nazwa będzie używana, gdy wdrożysz maszynę Wirtualną jako parametr wiersza polecenia platformy Azure.  
 
-Przed dodaniem wpis do pliku aliasu, upewnij się, że możesz [pobieranie obrazów w portalu Azure Marketplace](azure-stack-download-azure-marketplace-item.md), lub [opublikowane swój własny obraz niestandardowy](azure-stack-add-vm-image.md). Jeśli publikujesz niestandardowego obrazu, zanotuj informacje o wydawcy, oferty, jednostki SKU i wersji, które zostały określone podczas publikowania. Jeśli jest to obraz z witryny marketplace, można wyświetlić informacje przy użyciu ```Get-AzureVMImage``` polecenia cmdlet.  
+Przed dodaniem wpis do pliku aliasu, upewnij się, że możesz [pobieranie obrazów w portalu Azure Marketplace](azure-stack-download-azure-marketplace-item.md) lub [opublikowane swój własny obraz niestandardowy](azure-stack-add-vm-image.md). Jeśli publikujesz niestandardowego obrazu, zanotuj informacje o wydawcy, oferty, jednostki SKU i wersji, które zostały określone podczas publikowania. Jeśli jest to obraz z witryny marketplace, można wyświetlić informacje przy użyciu ```Get-AzureVMImage``` polecenia cmdlet.  
 
 A [przykładowy plik alias](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) za pomocą wielu typowych obrazu aliasów jest dostępna. Używając, jako punktu wyjścia. Hostowanie tego pliku w miejscu, gdzie klienci interfejsu wiersza polecenia można uzyskiwać dostęp go niego. Jednym ze sposobów jest do hostowania plików na koncie usługi blob storage, a następnie Udostępnij adres URL z użytkownikami:
 
 1. Pobierz [przykładowy plik](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z usługi GitHub.
-2. Utwórz nowe konto magazynu w usłudze Azure Stack. Gdy zostanie to zrobione, należy utworzyć nowy kontener obiektów blob. Ustawienie zasad dostępu do "publicznej".  
-3. Przekaż plik JSON do nowego kontenera. Gdy zostanie to zrobione, możesz wyświetlić adres URL obiektu blob przy wybieraniu nazwy obiektu blob, a następnie wybierając adres URL z właściwości obiektu blob.
+2. Utwórz konto magazynu w usłudze Azure Stack. Gdy zostanie to zrobione, Utwórz kontener obiektów blob. Ustawienie zasad dostępu do "publicznej".  
+3. Przekaż plik JSON do nowego kontenera. Gdy zostanie to zrobione, możesz wyświetlić adres URL obiektu blob. Wybierz nazwę obiektu blob, a następnie wybierając adres URL, z właściwości obiektu blob.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

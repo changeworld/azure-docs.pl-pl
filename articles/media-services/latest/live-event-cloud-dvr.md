@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8df43a9b2c518e77d14dd5cb392b042b0b4846e2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407970"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352363"
 ---
 # <a name="using-a-cloud-dvr"></a>Korzystanie z funkcji DVR w chmurze
 
@@ -35,7 +35,10 @@ Każdy **LiveOutput** jest skojarzony z **zasobów**, która jest używana do re
 A **element LiveEvent** obsługuje maksymalnie trzy jednocześnie uruchomione **LiveOutput**s, aby można było utworzyć maksymalnie 3 nagrania/archiwami z jednym strumień na żywo. Umożliwia to w razie potrzeby publikowanie i archiwizację różnych części wydarzenia. Załóżmy, że należy emisji 24 x 7 liniowej Kanał informacyjny na żywo, a następnie utwórz "nagrań" różnych programach przez cały dzień, aby zaoferować klientom jako zawartość na żądanie do wyświetlania zapoznać się ze zmianami. W tym scenariuszu należy najpierw utworzyć głównej LiveOutput, okno archiwum krótki równej 1 godz lub mniej — jest to podstawowy transmisji strumieniowej na żywo, czy dostroić przeglądającym. Należy utworzyć **StreamingLocator** tego **LiveOutput** i opublikujesz je do aplikacji lub witryny sieci web jako źródło danych "Live". Gdy **element LiveEvent** jest uruchomiona, można programowo utworzyć drugi współbieżnych **LiveOutput** na początku programu (lub podać niektóre uchwytów należy wcześnie w ciągu 5 minut można przycięcia później). To drugie **LiveOutput** 5 minut po zakończeniu program może zostać usunięty. Ten drugi **zasobów**, można utworzyć nową **StreamingLocator** Aby opublikować ten program jako elementu zawartości na żądanie w katalogu aplikacji. Ten proces można powtarzać wielokrotnie inne ograniczenia dotyczące programów lub najważniejsze funkcje, które chcesz udostępnić jako filmów wideo na żądanie, wszystko to "Live" źródła danych od pierwszego **LiveOutput** emisji liniowej kanału informacyjnego w dalszym ciągu. 
 
 > [!NOTE]
-> **LiveOutput**s start przy tworzeniu i Zatrzymaj po usunięciu. Po usunięciu **LiveOutput**, nie powoduje usunięcia podstawowych **zasobów** i zawartości w elemencie zawartości.  
+> **LiveOutput**s start przy tworzeniu i Zatrzymaj po usunięciu. Po usunięciu **LiveOutput**, nie powoduje usunięcia podstawowych **zasobów** i zawartości w elemencie zawartości. 
+>
+> Po opublikowaniu **lokalizatora przesyłania strumieniowego**s dla zasobu dla **LiveOutput**, zdarzenie (maksymalna długość okna DVR) będą nadal widoczne do czasu zakończenia **lokalizatora przesyłania strumieniowego**  lub do podczas usuwania Lokalizator osiągnięta jako pierwsza.   
+  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

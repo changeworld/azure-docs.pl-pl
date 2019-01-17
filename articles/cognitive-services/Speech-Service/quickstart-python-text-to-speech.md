@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6bc8966113fd1d5ac855ed8c12aa5ad4b387b211
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 2828330a0b00bb0695dcf91a84d0099d30c43183
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247251"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360126"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Szybki start: Konwertowanie tekstu na mowę, przy użyciu języka Python
 
@@ -162,9 +162,10 @@ Upewnij się, że wszystkie poufne informacje, takie jak klucze subskrypcji, zos
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+> [Poznaj przykłady dla języka Python w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
 ## <a name="see-also"></a>Zobacz także
 
+* [Dokumentacja interfejsu API zamiany tekstu na mowę](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
 * [Tworzenie niestandardowych voice czcionek](how-to-customize-voice-font.md)
 * [Próbki głosu rekord do utworzenia niestandardowych voice](record-custom-voice-samples.md)

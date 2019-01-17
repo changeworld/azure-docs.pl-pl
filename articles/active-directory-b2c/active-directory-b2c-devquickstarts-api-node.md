@@ -10,15 +10,14 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 47b501fef8d6e0e3fecf944e3b67d563b8cce5eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5c89673f6154c77a40fb71ae483151998596e7fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117915"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354420"
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Usługa Azure AD B2C: Zabezpieczanie interfejsu API sieci web przy użyciu środowiska Node.js
-<!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
+# <a name="secure-a-web-api-by-using-nodejs-in-azure-active-directory-b2c"></a>Zabezpieczanie interfejsu API sieci web przy użyciu środowiska Node.js w usłudze Azure Active Directory B2C
 
 Usługa Azure Active Directory (Azure AD) B2C umożliwia zabezpieczanie interfejsu API sieci Web za pomocą tokenów dostępu protokołu OAuth 2.0. Tokeny te służą aplikacjom klienckim używającym usługi Azure AD B2C do uwierzytelniania w obrębie interfejsu API. W tym artykule pokazano, jak utworzyć interfejs API „lista zadań do wykonania”, umożliwiający użytkownikom dodawanie zadań i tworzenie listy zadań. Interfejs API sieci Web jest zabezpieczony za pomocą usługi Azure AD B2C i zezwala na zarządzanie listami zadań do wykonania tylko uwierzytelnionym użytkownikom.
 
@@ -36,7 +35,7 @@ Aby pracować z tą próbką, należy:
 3. Skonfigurować aplikację klienta do wywołania interfejsu API sieci Web listy zadań do wykonania.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Tworzenie katalogu usługi Azure AD B2C
-Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę.  Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i innych elementów.  Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](active-directory-b2c-get-started.md), zanim przejdziesz dalej.
+Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę.  Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i innych elementów.  Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](tutorial-create-tenant.md), zanim przejdziesz dalej.
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 Następnie należy utworzyć aplikację w katalogu B2C, która dostarcza do usługi Azure AD pewne informacje, które są potrzebne w celu bezpiecznego komunikowania się z aplikacją. W takim przypadku zarówno aplikacja klienta, jak i interfejs API sieci Web, są reprezentowane przez jeden **Identyfikator aplikacji**, ponieważ stanowią jedną aplikację logiczną. Aby utworzyć aplikację, postępuj zgodnie z [tymi instrukcjami](active-directory-b2c-app-registration.md). Należy pamiętać o wykonaniu następujących czynności:
@@ -47,17 +46,13 @@ Następnie należy utworzyć aplikację w katalogu B2C, która dostarcza do usł
 * Skopiuj **Identyfikator aplikacji** przypisany do aplikacji. Te dane będą potrzebne później.
 
 ## <a name="create-your-policies"></a>Tworzenie zasad
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera dwa elementy dotyczące tożsamości: rejestracja i logowanie. Dla każdego typu należy utworzyć jeden zbiór zasad zgodnie z opisem w [artykule o zasadach](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow).  Podczas tworzenia trzech zbiorów zasad należy koniecznie:
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowane przy użyciu [zasad](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera dwa elementy dotyczące tożsamości: Zarejestruj się i zaloguj się. Musisz utworzyć jeden zbiór każdego typu zasad.  Po utworzeniu zasad należy koniecznie:
 
 * Wybrać wartość **Nazwa wyświetlana** i inne atrybuty rejestracji w ramach zasad rejestracji.
 * Wybrać oświadczenia aplikacji **Nazwa wyświetlana** oraz **Identyfikator obiektu** we wszystkich zasadach.  Można również wybrać inne oświadczenia.
 * Skopiować wartość **Nazwa** poszczególnych zasad po ich utworzeniu. Powinny zawierać prefiks `b2c_1_`.  Te nazwy zasad będą potrzebne później.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
-
-Po utworzeniu trzech zbiorów zasad można rozpocząć tworzenie aplikacji.
-
-Aby dowiedzieć się, jak działają zasady w usłudze Azure AD B2C, należy najpierw zapoznać się z [samouczkiem ułatwiającym rozpoczęcie pracy z aplikacją internetową platformy .NET](active-directory-b2c-devquickstarts-web-dotnet.md).
+Po utworzeniu zasad będzie można rozpocząć tworzenie aplikacji.
 
 ## <a name="download-the-code"></a>Pobieranie kodu
 Kod używany w tym samouczku [jest przechowywany w serwisie GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS). Aby samodzielnie tworzyć przykładowy kod w trakcie pracy, możesz [pobrać plik ZIP ze szkieletem projektu](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip). Można również sklonować szkielet:

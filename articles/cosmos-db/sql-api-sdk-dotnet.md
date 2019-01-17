@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 470813b1a51db183476dd046dc102eb89d73debd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051955"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354583"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB zestawu .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ ms.locfileid: "54051955"
 
 * Diagnostykę transportu bezpośrednio/TCP należy dodać TransportException, typ wyjątku wewnętrznego zestawu SDK. Jeśli jest obecny w komunikaty o wyjątkach, ten typ Wyświetla dodatkowe informacje dotyczące rozwiązywania problemów z łącznością klienta.
 
-* Dodano nowy konstruktor przeciążenia przyjmująca klasa HttpMessageHandler, stos programu obsługi HTTP, używany do wysyłania żądań HttpClient (np. HttpClientHandler).
+* Dodano nowe przeciążenia konstruktora przyjmująca klasa HttpMessageHandler, stos programu obsługi HTTP, używany do wysyłania żądań HttpClient (np. HttpClientHandler).
 
 * Naprawiono błąd, w której nagłówek o wartości null zostały nie jest obsługiwany poprawnie.
 
@@ -265,7 +265,7 @@ ms.locfileid: "54051955"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * Dodano obsługę multiregionalne konta baz danych.
 * Dodano obsługę ponowienie dotyczące żądania ograniczone.  Użytkownik może dostosować liczbę ponownych prób oraz maksymalny czas, przez skonfigurowanie właściwości ConnectionPolicy.RetryOptions.
-* Dodano nowy interfejs IDocumentClient, który definiuje podpisy wszystkich DocumenClient właściwości i metod.  W ramach tej zmiany należy również zmienić metody rozszerzenia, które utworzyć IQueryable i IOrderedQueryable do metod na samej klasy DocumentClient.
+* Dodano nowy interfejs IDocumentClient, który definiuje podpisy wszystkich DocumentClient właściwości i metod.  W ramach tej zmiany należy również zmienić metody rozszerzenia, które utworzyć IQueryable i IOrderedQueryable do metod na samej klasy DocumentClient.
 * Opcja konfiguracji dodano można ustawić ServicePoint.ConnectionLimit dla danego punktu końcowego usługi Azure Cosmos DB identyfikatora Uri.  Aby zmienić wartość domyślna jest równa 50, należy użyć ConnectionPolicy.MaxConnectionLimit.
 * Przestarzałe IPartitionResolver i jego wykonania.  Obsługa IPartitionResolver jest obecnie przestarzała. Zaleca się używania podzielona na partycje kolekcji dla nowszej magazynu i przepływności.
 
@@ -282,7 +282,7 @@ ms.locfileid: "54051955"
 * Zaimplementowane [podzielona na partycje kolekcje](partition-data.md) i [poziomów wydajności zdefiniowanych przez użytkownika](performance-levels.md). 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Naprawiono]**  Zgłasza punktu końcowego zapytań usługi Azure Cosmos DB: "System.Net.Http.HttpRequestException: Wystąpił błąd podczas kopiowania zawartości do strumienia ".
+* **[Naprawiono]**  Zgłasza punktu końcowego zapytań usługi Azure Cosmos DB: 'System.Net.Http.HttpRequestException: Wystąpił błąd podczas kopiowania zawartości do strumienia ".
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * LINQ rozszerzonej obsługi, w tym nowe operatory dla wyrażeń stronicowania, warunkowe i zakresu porównania.

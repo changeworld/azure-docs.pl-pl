@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 148a83cb57675e2e8bda8147041987180df998f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037399"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358732"
 ---
 # <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Dostęp do zasobów usługi Azure Cosmos DB z sieciami wirtualnymi
 
 Można skonfigurować konto usługi Azure Cosmos, aby zezwolić na dostęp tylko z określonej podsieci sieci wirtualnej (VNET). Po włączeniu [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) dostęp do usługi Azure Cosmos DB w podsieci sieci wirtualnej, ruch z tej podsieci są wysyłane do usługi Azure Cosmos DB przy użyciu tożsamości, podsieci i sieci wirtualnej. Po włączeniu punktu końcowego usługi Azure Cosmos DB można ograniczyć dostęp do podsieci, dodając ją do swojego konta usługi Azure Cosmos.
 
-Domyślnie konta usługi Azure Cosmos jest dostępny z dowolnego źródła, jeśli żądania dołączono prawidłowy token autoryzacji. Podczas dodawania co najmniej jednej podsieci w ramach sieci wirtualnych tylko żądania pochodzące z tych podsieci otrzyma prawidłowej odpowiedzi. Żądania pochodzące z dowolnego innego źródła otrzyma odpowiedź 404 (nie znaleziono). 
+Domyślnie konta usługi Azure Cosmos jest dostępny z dowolnego źródła, jeśli żądania dołączono prawidłowy token autoryzacji. Podczas dodawania co najmniej jednej podsieci w ramach sieci wirtualnych tylko żądania pochodzące z tych podsieci otrzyma prawidłowej odpowiedzi. Żądania pochodzące z dowolnego innego źródła otrzyma odpowiedź 403 (zabronione). 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -34,7 +34,7 @@ Istnieją dwa kroki wymagane do ograniczania dostępu do konta usługi Azure Cos
 
 ### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Listy ACL sieci wirtualnej i zapory adresów IP odrzucają żądania lub połączenia? 
 
-Gdy zapory adresów IP lub sieci wirtualnej dostęp do reguły są dodawane, tylko żądania z dozwolonych źródeł get prawidłowe odpowiedzi. Inne żądania są odrzucane 404 (nie znaleziono). Jest ważne odróżnienia zapory konto usługi Cosmos Azure zapory na poziomie połączenia. Źródło wciąż mogą się łączyć z usługą i połączenia się nie są odrzucane.
+Gdy zapory adresów IP lub sieci wirtualnej dostęp do reguły są dodawane, tylko żądania z dozwolonych źródeł get prawidłowe odpowiedzi. Inne żądania są odrzucane 403 (zabronione). Jest ważne odróżnienia zapory konto usługi Cosmos Azure zapory na poziomie połączenia. Źródło wciąż mogą się łączyć z usługą i połączenia się nie są odrzucane.
 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Moje żądania pracę blokowany włączenie punkt końcowy usługi Azure Cosmos DB w podsieci. Co się stało?
 

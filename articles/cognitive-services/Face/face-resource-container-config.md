@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 18c9eace306522f9ac9f04e19b9571db67561ae0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725063"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359446"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 
@@ -116,7 +116,7 @@ Kontener twarzy przechowuje, obiektów blob, pamięci podręcznej, metadane i da
   Kontener twarzy korzysta z usługi Azure Storage i Azure Cosmos DB, aby rozdystrybuować te cztery rodzaje danych z magazynu trwałego. Dane obiektów blob i kolejek jest obsługiwane przez usługę Azure Storage. Metadane i pamięci podręcznej danych jest obsługiwane przez usługę Azure Cosmos DB. Jeśli kontener twarzy jest zatrzymana lub usunięta, wszystkie dane w magazynie dla tego kontenera pozostaje przechowywanych w usłudze Azure Storage i Azure Cosmos DB.  
   Zasoby używane przez scenariusza magazynu platformy Azure mają następujące wymagania dodatkowe
   * Zasób usługi Azure Storage, należy użyć StorageV2 rodzaj konta
-  * Zasób usługi Azure Cosmos DB musi używać usługi Azure Cosmos DB dla interfejsu API usługi MongoDB
+  * Zasób usługi Azure Cosmos DB, należy użyć interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 Scenariusze usługi storage i skojarzone ustawienia są zarządzane przez `Storage` obiekt w obszarze `CloudAI` sekcji konfiguracji. Następujące ustawienia konfiguracji są dostępne w `Storage` obiektu:
 

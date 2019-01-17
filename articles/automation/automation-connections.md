@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/15/2019
+ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0bdf2d4e9c5ee659666eeb1a6e92c34c181ba805
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331796"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358834"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Elementy zawartości połączenia w usłudze Azure Automation
 
@@ -24,6 +24,16 @@ Podczas tworzenia połączenia należy określić *typu połączenia*. Typ poł�
 
 >[!NOTE]
 >Bezpiecznych zasobów w usłudze Azure Automation obejmują poświadczeń, certyfikatów, połączeń i szyfrowane zmienne. Te zasoby są zaszyfrowane i przechowywane w usłudze Azure Automation za pomocą Unikatowy klucz, który jest generowany dla każdego konta usługi automation. Ten klucz jest przechowywany w systemie zarządzane usługi Key Vault. Przed zapisaniem zabezpieczonym zasobem, klucz jest ładowane z usługi Key Vault i następnie używany do szyfrowania elementu zawartości. Ten proces jest zarządzane przez usługę Azure Automation.
+
+## <a name="connection-types"></a>Typy połączeń
+
+Istnieją trzy typy wbudowane połączeń dostępnych w usłudze Azure Automation:
+
+* **Azure** — to połączenie może służyć do zarządzania zasobami klasycznymi.
+* **AzureClassicCertificate** — to połączenie jest używane przez **AzureClassicRunAs** konta.
+* **AzureServicePrincipal** — to połączenie jest używane przez **AzureRunAs** konta.
+
+W większości przypadków nie trzeba utworzyć zasobu połączenia, ponieważ jest on tworzony podczas tworzenia [konto Uruchom jako](manage-runas-account.md).
 
 ## <a name="windows-powershell-cmdlets"></a>Polecenia cmdlet programu Windows PowerShell
 

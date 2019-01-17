@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: 99f19f6595f2e3105c4b30a7c2e7ef1e296fad6e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: a55652c8d19866b717cbafec4629030a7708bb50
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724870"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359497"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Łączenie usługi Cosmos DB przy użyciu usługi Azure Search przy użyciu indeksatorów
 
@@ -38,7 +38,7 @@ W poniższym klipie wideo Azure Menedżer programu usługi Cosmos DB Andrew Liu 
 <a name="supportedAPIs"></a>
 ## <a name="supported-api-types"></a>Obsługiwane typy interfejsów API
 
-Mimo że usługi Azure Cosmos DB obsługuje wiele modeli danych i interfejsów API, obsługa produkcji indeksator usługi Azure Search rozciąga się do interfejsu API SQL. Obsługa usługi Azure Cosmos DB dla interfejsu API usługi MongoDB jest obecnie w publicznej wersji zapoznawczej.  
+Mimo że usługi Azure Cosmos DB obsługuje wiele modeli danych i interfejsów API, obsługa produkcji indeksator usługi Azure Search rozciąga się do interfejsu API SQL. Obsługa interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB jest obecnie w publicznej wersji zapoznawczej.  
 
 Nadchodzi obsługę dodatkowe interfejsy API. Aby pomóc nam określić priorytety te, które umożliwiają najpierw, można rzutować swój głos w witrynie User Voice:
 

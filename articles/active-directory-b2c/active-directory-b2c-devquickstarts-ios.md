@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e6e0904efdb86376688710a94920cdb44c2804ec
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842276"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353128"
 ---
-# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Usługa Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu iOS
+# <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Zaloguj się przy użyciu aplikacji systemu iOS
 
 Platforma Microsoft Identity korzysta z otwartych standardów, takich jak OAuth2 i OpenID Connect. Za pomocą otwartego protokołu oferuje większy wybór dla deweloperów, podczas wybierania biblioteki można zintegrować z naszymi usługami. Podoba Ci się, aby pomóc deweloperom w pisaniu aplikacji łączących się z platformą Microsoft Identity przygotowaliśmy ten przewodnik i inne. Większość bibliotek implementujących [specyfikację RFC6749 OAuth2](https://tools.ietf.org/html/rfc6749) są w stanie połączyć się z platformą Microsoft Identity.
 
@@ -29,7 +29,7 @@ Platforma Microsoft Identity korzysta z otwartych standardów, takich jak OAuth2
 Jeśli jesteś nowym użytkownikiem OAuth2 lub OpenID Connect, znaczną część tej przykładowej konfiguracji może niezrozumiała dla Ciebie. Zalecamy zapoznanie się z [krótkim omówieniem protokołu w tej dokumentacji](active-directory-b2c-reference-protocols.md).
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Tworzenie katalogu usługi Azure AD B2C
-Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę. Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i elementów. Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](active-directory-b2c-get-started.md), zanim przejdziesz dalej.
+Przed rozpoczęciem korzystania z usługi Azure AD B2C należy utworzyć katalog lub dzierżawę. Katalog jest kontenerem dla wszystkich użytkowników, aplikacji, grup i elementów. Jeśli jeszcze go nie masz, [utwórz katalog usługi B2C](tutorial-create-tenant.md), zanim przejdziesz dalej.
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 Następnie musisz utworzyć aplikację w katalogu usługi B2C. Rejestracja aplikacji zapewnia usługi Azure AD informacje wymagane do bezpiecznego komunikowania się z aplikacją. Aby utworzyć aplikację mobilną, postępuj zgodnie z [w instrukcjach](active-directory-b2c-app-registration.md). Należy pamiętać o wykonaniu następujących czynności:
@@ -39,13 +39,11 @@ Następnie musisz utworzyć aplikację w katalogu usługi B2C. Rejestracja aplik
 * Konfigurowanie **identyfikator URI przekierowania** ze schematem niestandardowym (na przykład com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Ten identyfikator URI będzie potrzebna później.
 
 ## <a name="create-your-user-flows"></a>Tworzyć przepływy użytkownika
-W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Utworzenie tego przepływu użytkownika, zgodnie z opisem w [artykule informacyjnym na temat przepływu użytkownika](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Po utworzeniu przepływu użytkownika, należy koniecznie:
+W usłudze Azure AD B2C każde działanie użytkownika jest definiowany przez [przepływ użytkownika](active-directory-b2c-reference-policies.md). Ta aplikacja zawiera jedno rozwiązanie tożsamości: połączonego logowania i rejestracji. Po utworzeniu przepływu użytkownika, należy koniecznie:
 
 * W obszarze **atrybuty tworzenia konta**, wybierz atrybut **nazwę wyświetlaną**.  Możesz wybrać, jak również inne atrybuty.
 * W obszarze **oświadczeń aplikacji**, wybierz oświadczenia **nazwę wyświetlaną** i **identyfikator obiektu użytkownika**. Możesz wybrać inne oświadczenia, jak również.
 * Kopiuj **nazwa** każdego przepływu użytkownika po jego utworzeniu. Nazwa przepływu użytkownika jest poprzedzony znakiem `b2c_1_` po zapisaniu przepływu użytkownika.  Przepływ użytkownika będą potrzebne później.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
 Po utworzeniu przepływów użytkownika możesz przystąpić do kompilowania aplikacji.
 

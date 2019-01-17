@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: aaae119ec72a713adc2faa311dbcb6bd204035fd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a6e25bdbcec2a99e323ac7f426307dd49e50d76c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835101"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352431"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -78,7 +78,7 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Domyślną podróż użytkownika dla aplikacji jednostki Uzależnionej. |
 | UserJourneyBehaviors | 0:1 | Zakres zachowania podróży użytkownika. |
-| Profilu technicznego | 1:1 | Profil techniczny, który jest obsługiwany przez aplikację jednostki Uzależnionej. Profil techniczny zawiera kontrakt aplikacji jednostki Uzależnionej, skontaktuj się z usługi Azure AD B2C. |
+| TechnicalProfile | 1:1 | Profil techniczny, który jest obsługiwany przez aplikację jednostki Uzależnionej. Profil techniczny zawiera kontrakt aplikacji jednostki Uzależnionej, skontaktuj się z usługi Azure AD B2C. |
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
@@ -113,7 +113,7 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Zakres pojedynczego logowania jednokrotnego (SSO) zachowanie sesji podróży użytkownika. |
-| Wartość SessionExpiryType |0:1 | Zachowanie sesji uwierzytelniania. Możliwe wartości: `Rolling` lub `Absolute`. `Rolling` Wartość (ustawienie domyślne) wskazuje, czy użytkownik pozostaje zalogowany, tak długo, jak użytkownik jest stale aktywny w aplikacji. `Absolute` Wartość wskazuje, czy użytkownik jest zmuszony do ponownego uwierzytelnienia po upływie czasu określonego przez sesję aplikacji okresu istnienia. |
+| SessionExpiryType |0:1 | Zachowanie sesji uwierzytelniania. Możliwe wartości: `Rolling` lub `Absolute`. `Rolling` Wartość (ustawienie domyślne) wskazuje, czy użytkownik pozostaje zalogowany, tak długo, jak użytkownik jest stale aktywny w aplikacji. `Absolute` Wartość wskazuje, czy użytkownik jest zmuszony do ponownego uwierzytelnienia po upływie czasu określonego przez sesję aplikacji okresu istnienia. |
 | SessionExpiryInSeconds | 0:1 | Okres istnienia pliku cookie z sesji usługi Azure AD B2C, określony jako liczba całkowita jest przechowywane w przeglądarce użytkownika po pomyślnym uwierzytelnieniu. |
 | JourneyInsights | 0:1 | Klucz Instrumentacji usługi Azure Application Insights, która ma być używany. |
 | ContentDefinitionParameters | 0:1 | Lista par kluczy i wartości do dołączenia do ładowania definicji zawartości identyfikatora URI. |
@@ -159,11 +159,11 @@ Poniższy przykład przekazuje parametr o nazwie `campaignId` o wartości `hawai
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa parę klucz-wartość. |
+| Nazwa | Yes | Nazwa parę klucz-wartość. |
 
 Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych](active-directory-b2c-ui-customization-custom-dynamic.md)
 
-## <a name="technicalprofile"></a>Profilu technicznego
+## <a name="technicalprofile"></a>TechnicalProfile
 
 **Profilu technicznego** element zawiera następujący atrybut:
 
@@ -186,7 +186,7 @@ Aby uzyskać więcej informacji, zobacz [skonfigurować interfejs użytkownika z
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standardowy protokół OpenID Connect 1.0, zgodnie z specyfikacją foundation OpenID. `SAML2` Reprezentuje standardowy protokół SAML 2.0, zgodnie z specyfikacją języka OASIS. Nie należy używać tokenu SAML w środowisku produkcyjnym. |
+| Nazwa | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OpenIdConnect` lub `SAML2`. `OpenIdConnect` Wartość reprezentuje standardowy protokół OpenID Connect 1.0, zgodnie z specyfikacją foundation OpenID. `SAML2` Reprezentuje standardowy protokół SAML 2.0, zgodnie z specyfikacją języka OASIS. Nie należy używać tokenu SAML w środowisku produkcyjnym. |
 
 ## <a name="outputclaims"></a>OutputClaims
 

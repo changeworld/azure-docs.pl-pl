@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 25131fdbc7a3633bf4ba9af05fdff9163f41f26b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e143c0c8ef09af49aed656d479bcad4dd35e2211
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265111"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351802"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
  
@@ -44,12 +44,8 @@ Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają w
 ## <a name="databricks"></a>Databricks
 
 Problemy z usługi Databricks i Azure Machine Learning.
-
-1. Zalecenie klastra usługi Databricks:
-   
-   Tworzenie klastra usługi Azure Databricks jako v4.x za pomocą języka Python 3. Firma Microsoft zaleca klastra wysokiej współbieżności.
  
-2. Po zainstalowaniu dodatkowych pakietów, błąd w usłudze Databricks instalacji zestawu SDK AML.
+1. Po zainstalowaniu dodatkowych pakietów, błąd w usłudze Databricks instalacji zestawu SDK AML.
 
    Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety zamrożenia wersji lib. Ten problem jest powiązane z usługi Databricks i nie dotyczą zestawu SDK usługi Azure ML — może ona twarzy zbyt z innymi bibliotekami. Przykład:
    ```python
@@ -57,9 +53,10 @@ Problemy z usługi Databricks i Azure Machine Learning.
    ```
    Alternatywnie można użyć skryptów init, jeśli możesz zachować problemów z instalacją przy użyciu bibliotek języka Python. To podejście nie jest oficjalnie obsługiwanych podejście. Możesz zapoznać się z [tego dokumentu](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-3. Korzystając z automatycznych uczenia maszynowego w usłudze Databricks, jeśli zostanie wyświetlony `Import error: numpy.core.multiarray failed to import`
+2. Korzystając z automatycznych uczenia maszynowego w usłudze Databricks, jeśli chcesz anulować przebieg i uruchom nowy eksperyment Uruchom, uruchom ponownie usługi Azure Databricks w klastrze.
 
-   Obejście: importowanie biblioteki Python `numpy==1.14.5` do usługi Databricks za pomocą klastra Utwórz bibliotekę, aby [zainstalować i dołączyć](https://docs.databricks.com/user-guide/libraries.html#create-a-library).
+3. W ustawieniach ml automatyczna, gdy masz > 10 iteracji Ustaw show_output jako FAŁSZ podczas przesyłania przebieg.
+
 
 ## <a name="azure-portal"></a>Azure Portal
 Jeśli przejdziesz bezpośrednio, aby wyświetlić obszar roboczy z Udostępnij link z zestawu SDK lub w portalu, nie można wyświetlić strony z normalnej Przegląd informacji o subskrypcji w rozszerzeniu. Ponadto nie można przełączyć się do innego obszaru roboczego. Jeśli potrzebujesz wyświetlić inny obszar roboczy, obejście polega na przejść bezpośrednio do [witryny Azure portal](https://portal.azure.com) i wyszukaj nazwę obszaru roboczego.

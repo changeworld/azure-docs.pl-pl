@@ -1,5 +1,5 @@
 ---
-title: Skojarzenie zasobu usług Cognitive Services za pomocą zestawu umiejętności — usługa Azure Search
+title: Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności — usługa Azure Search
 description: Instrukcje dotyczące dołączania subskrypcji w jednym usług Cognitive Services do cognitive wzbogacony potok w usłudze Azure Search.
 manager: cgronlun
 author: LuisCabrer
@@ -7,36 +7,36 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/07/2018
+ms.date: 01/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 315e050f9ff8768cfeb8ff5417834e8e163ce334
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231431"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351462"
 ---
-# <a name="associate-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Skojarzenie zasobu usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
+# <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
 Algorytmy sztucznej Inteligencji zapewniają [potoków wyszukiwania kognitywnego](cognitive-search-concept-intro.md) do przetwarzania danych bez struktury są oparte na [ **zasobów usług Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zasoby, takie jak [ **komputerowej** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) umożliwiają analizowanie obrazów i optyczne rozpoznawanie znaków (OCR) do wyodrębniania tekstu i struktury poza pliki obrazów podczas [ **tekstu Analiza** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) umożliwia przetwarzanie, takich jak jednostki rozpoznawanie i klucz frazy, kilka języka naturalnego.
 
-Bezpłatnie wzbogacanie ograniczonej liczby dokumentów lub dołączyć płatnych zasobu usług Cognitive Services dla obciążeń typu większych i częściej. W tym artykule dowiesz się, jak skojarzyć zasobu usług Cognitive Services za pomocą usługi cognitive zestawu umiejętności w celu wzbogacenia danych podczas indeksowania.
+Bezpłatnie wzbogacanie ograniczonej liczby dokumentów lub dołączyć płatnych zasobu usług Cognitive Services dla obciążeń typu większych i częściej. W tym artykule, Dowiedz się, jak skojarzyć zasobu usług Cognitive Services za pomocą usługi cognitive zestawu umiejętności, aby wzbogacić dane podczas [indeksowanie usługi Azure Search](search-what-is-an-index.md).
 
 Jeśli Potok składa się wyłącznie z [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), nie trzeba dołączać zasobu usług Cognitive Services.
 
 > [!NOTE]
 > Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
 >
-> Wykonanie [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) podlega opłacie [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/), w taki sam szybkości tak, jakby były wykonywane zadania, niezależnie od usługi Azure Search. Cennik wyodrębniania obrazu jest rozliczana według ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Wykonanie [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) podlega opłacie [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services), w taki sam szybkości tak, jakby zadanie było wykonywane bezpośrednio. Obraz wyodrębniania jest płatne zdarzenie usługi Azure Search, obecnie oferowana w cenie wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400) lub [sposób działania rozliczeń](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="use-free-resources"></a>Bezpłatne zasoby
 
-Możesz użyć opcji przetwarzania ograniczone, bezpłatne, która uprawnia do 20 wzbogacenia dokumentu codziennie, wystarczająca dla ukończeniu ćwiczenia samouczek i przewodnik Szybki Start usługa cognitive search. 
+Opcja przetwarzania ograniczone, bezpłatna umożliwia wykonać ćwiczenia wyszukiwania kognitywnego samouczek i przewodnik Szybki Start. 
 
 > [!Important]
-> Od 1 lutego 2019 **bezpłatna (ograniczony wzbogacenia)** jest ograniczona do 20 dokumentów na dzień. 
+> Począwszy od 1 lutego 2019 **bezpłatna (ograniczony wzbogacenia)** będzie ograniczona do 20 dokumentów na dzień. 
 
 1. Otwórz **importowania danych** kreatora.
 

@@ -1,6 +1,6 @@
 ---
-title: Blok ustawień usługi Azure Application Insights Profiler | Dokumentacja firmy Microsoft
-description: Zobacz stan profiler i uruchom profilowanie sesji
+title: Używanie okienka ustawień usługi Azure Application Insights Profiler | Dokumentacja firmy Microsoft
+description: Zobacz stan Profiler i uruchom profilowanie sesji
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -12,109 +12,117 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b656fb521ad72256e91de63e96aa261f1e94bd13
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 16e855d8c9c5863339ec09b48d41d6f011b3e836
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083111"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358681"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurowanie narzędzia Application Insights Profiler
 
-## <a name="profiler-settings-page"></a>Strona Ustawienia Profiler
+## <a name="profiler-settings-pane"></a>Okienko ustawień Profiler
 
-Na stronie ustawień profilera można otworzyć ze strony wydajność szczegółowych informacji w aplikacji, naciskając klawisz **Profiler** przycisku.
+Aby otworzyć okienko ustawienia usługi Azure Application Insights Profiler, przejdź do okienka Application Insights wydajności, a następnie wybierz **Profiler** przycisku.
 
-![Konfigurowanie wpis w okienku profilera][configure-profiler-entry]
+![Konfigurowanie okienka Profiler][configure-profiler-entry]
 
-Strona Konfigurowanie Application Insights Profiler zawiera cztery funkcje: 
-1. **Profil teraz** — kliknięcie tego przycisku spowoduje, że sesje profilowania można uruchomić dla wszystkich aplikacji, które są połączone z tym wystąpieniem usługi Application Insights
-1. **Połączone aplikacje** — lista aplikacji, wysyłając profiler do tego zasobu usługi Application Insights
-1. **Sesje w toku** — po naciśnięciu klawisza **profilu teraz**, w tym miejscu będzie wyświetlany stan sesji)
-1. **Ostatnie sesje profilowania** — zawiera informacje o ostatnich sesji profilowania.
+**Skonfigurować Application Insights Profiler** okienko zawiera cztery funkcje: 
+* **Profil teraz**: Rozpoczyna się profilowanie sesji dla wszystkich aplikacji, które są połączone z tym wystąpieniem usługi Application Insights.
+* **Połączone aplikacje**: Wyświetla listę aplikacji, które wysyłają profilowania danych do tego zasobu usługi Application Insights.
+* **Sesje w toku**: Wyświetla stan sesji po wybraniu **profilu teraz**. 
+* **Ostatnie sesje profilowania**: Wyświetla informacje dotyczące ostatnich sesji profilowania.
 
 ![Profiler na żądanie][profiler-on-demand]
 
-## <a name="app-service-environments-ase"></a>Środowiska App Service Environment (ASE)
-W zależności od sposobu skonfigurowania środowiska ASE może być blokowany wywołanie, aby sprawdzić stan agenta. Ta strona Załóżmy, że agent nie jest uruchomiona, gdy w rzeczywistości jest. Zadania webjob można sprawdzić mieć pewność, że w swojej aplikacji. Ale jeśli wszystkie ustawienia aplikacji są prawidłowo zainstalowano rozszerzenie witryny usługi App Insights w swojej aplikacji, program profilujący zostanie uruchomiona i najnowsze sesje profilowania na liście powinien zostać wyświetlony, jeśli istnieje odpowiedni ruch do aplikacji.
+## <a name="app-service-environment"></a>Środowisko usługi App Service
+W zależności od sposobu skonfigurowania środowiska Azure App Service Environment wywołanie, aby sprawdzić stan agenta może zostać zablokowany. Okienka może wyświetlić komunikat, który nie jest uruchomiony agent, nawet wtedy, gdy jest uruchomiona. Aby upewnić się, że jest, sprawdź zadanie webjob w swojej aplikacji. Jeśli wszystkie wartości ustawienia aplikacji są poprawne, a rozszerzenie witryny usługi Application Insights jest zainstalowany w swojej aplikacji, Profiler jest uruchomiona. Jeśli aplikacja odbiera ruch wystarczająco dużo, najnowsze sesje profilowania powinien zostać wyświetlony na liście.
 
 ## <a id="profileondemand"></a> Ręcznie wyzwalać Profiler
 
-Profiler może być uruchamiane ręcznie, za pomocą kliknięcia jednego przycisku. Załóżmy, że uruchomieniu testu wydajności sieci web. Konieczne będzie śladów, które pomagają zrozumieć, jak działa aplikacja sieci web pod obciążeniem. Masz kontrolę nad kiedy są przechwytywane dane śledzenia ma podstawowe znaczenie, ponieważ wiadomo, gdy zostanie uruchomiony test obciążeniowy, ale interwał próbkowania losowe może jej przeoczyć.
-Poniższe kroki pokazują, jak działa w tym scenariuszu:
+Profiler można uruchomić ręcznie za pomocą jednego kliknięcia. Załóżmy, że uruchomieniu testu wydajności sieci web. Potrzebna będzie śladów, które pomagają zrozumieć, jak działa aplikacja sieci web pod obciążeniem. Masz kontrolę nad kiedy są przechwytywane dane śledzenia jest niezwykle istotne, ponieważ wiadomo, kiedy zostanie uruchomiony test obciążeniowy. Ale interwał próbkowania losowe może jej przeoczyć.
 
-### <a name="optional-step-1-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>(Opcjonalnie) Krok 1: Generowanie ruch do aplikacji sieci web przez uruchomienie testu wydajności sieci web
+W kolejnych sekcjach przedstawiono, jak działa w tym scenariuszu:
+
+### <a name="step-1-optional-generate-traffic-to-your-web-app-by-starting-a-web-performance-test"></a>Krok 1: (Opcjonalnie) Generowanie ruch do aplikacji sieci web przez uruchomienie testu wydajności sieci web
 
 Jeśli Twoja aplikacja sieci web ma już ruchu przychodzącego lub po prostu chcesz ręcznie wygenerować ruchu, Pomiń tę sekcję i przejdź do kroku 2.
 
-Przejdź do portalu usługi Application Insights **Konfiguruj > testowania Wydajnościowego**. Kliknij nowy przycisk, aby rozpocząć nowy test wydajności.
+1. W portalu usługi Application Insights wybierz **Konfiguruj** > **testowania Wydajnościowego**. 
 
-![Utwórz nowy test wydajności][create-performance-test]
+1. Aby uruchomić nowy test wydajności, zaznacz **New** przycisku.
 
-W **nowego testu wydajności** okienko, skonfiguruj docelowy adres URL testu. Zaakceptuj wszystkie ustawienia domyślne i uruchom test obciążenia.
+   ![Utwórz nowy test wydajności][create-performance-test]
 
-![Konfigurowanie testu obciążeniowego][configure-performance-test]
+1. W **nowego testu wydajności** okienko, skonfiguruj docelowy adres URL testu. Zaakceptuj wszystkie ustawienia domyślne, a następnie wybierz pozycję **Uruchom test** uruchomienia testu obciążenia.
 
-Zobaczysz, że nowy test znajduje się w kolejce najpierw następuje stan "w toku".
+    ![Konfigurowanie testu obciążeniowego][configure-performance-test]
 
-![test obciążeniowy jest przesłane i umieszczonych w kolejce][load-test-queued]
+    Nowy test znajduje się w kolejce najpierw następuje stan *w toku*.
 
-![test obciążenia jest uruchomiony w toku][load-test-in-progress]
+    ![test obciążeniowy jest przesłane i umieszczonych w kolejce][load-test-queued]
 
-### <a name="step-2-start-profiler-on-demand"></a>Krok 2: Uruchom program profilujący na żądanie
+    ![test obciążenia jest uruchomiony w toku][load-test-in-progress]
 
-Gdy uruchomiony jest test obciążeniowy, firma Microsoft można uruchomić program profilujący do przechwytywania śladów, w usłudze web app, gdy odbiera obciążenia.
-Przejdź do okienka Profiler skonfigurować:
+### <a name="step-2-start-a-profiler-on-demand-session"></a>Krok 2: Rozpocznij sesję na żądanie Profiler
+
+1. Gdy uruchomiony jest test obciążeniowy, należy uruchomić Profiler do przechwytywania śladów, w usłudze web app, gdy odbiera obciążenia.
+
+1. Przejdź do **skonfigurować Profiler** okienka.
 
 
 ### <a name="step-3-view-traces"></a>Krok 3: Wyświetlanie śladów
 
-Po zakończeniu program profilujący, wykonaj instrukcje dotyczące powiadomień, aby przejść do strony i widoku ślady wydajności.
+Po zakończeniu Profiler wykonaj instrukcje dotyczące powiadomień, aby przejść do okienka i widoku ślady wydajności.
 
-## <a name="troubleshooting-on-demand-profiler"></a>Rozwiązywanie problemów z profilera na żądanie
+## <a name="troubleshoot-the-profiler-on-demand-session"></a>Rozwiązywanie problemów z sesji na żądanie Profiler
 
-Czasami może zostać wyświetlony komunikat o błędzie limitu czasu Profiler po sesji na żądanie:
+Po sesji na żądanie można otrzymać komunikat o błędzie Profiler limit czasu:
 
 ![Błąd upływu limitu czasu Profiler][profiler-timeout]
 
-Istnieją dwie możliwe przyczyny Dlaczego zostanie wyświetlony ten błąd:
+Ten błąd może występować dla jednej z następujących powodów:
 
-1. Sesji profilera na żądanie zakończyło się pomyślnie, ale usługi Application Insights trwała dłużej przetwarzania zebranych danych. Jeśli dane nie zostało zakończone, przetwarzanych w ciągu 15 minut, w portalu zostanie wyświetlony komunikat limitu czasu. Jednak po krótkiej chwili Profiler ślady pojawią się. W takim przypadku po prostu zignorować komunikat o błędzie. Aktywnie pracujemy nad poprawką.
+* Na żądanie sesji Profiler zakończyło się pomyślnie, ale usługi Application Insights trwała dłużej, niż oczekiwano przetwarzania zebranych danych.  
 
-1. Aplikacja sieci web ma starszą wersję agenta Profiler, który nie ma funkcji na żądanie. Jeśli profil usługi Application Insights został włączony wcześniej, jest szansa, że musisz zaktualizować swoje agenta Profiler, aby rozpocząć korzystanie z funkcji na żądanie.
+  Jeśli dane nie są przetwarzane w ciągu 15 minut, portalu jest wyświetlany komunikat o limicie czasu. Po krótkiej chwili jednak Profiler ślady pojawią się. Jeśli zostanie wyświetlony komunikat o błędzie, należy go zignorować teraz. Aktywnie pracujemy nad poprawką.
+
+* Aplikacja sieci web ma starszą wersję agenta Profiler, który nie ma funkcji na żądanie.  
+
+  Application Insights Profiler został włączony wcześniej, może być konieczne aktualizowanie Twojego agenta Profiler, aby rozpocząć korzystanie z funkcji na żądanie.
   
-Wykonaj następujące kroki, aby zaznaczyć i zainstalować najnowszą Profiler:
+Przejdź do usług aplikacji **ustawienia aplikacji** okienku i wyszukaj następujące ustawienia:
+* **APPINSIGHTS_INSTRUMENTATIONKEY**: Zamień na klucz Instrumentacji właściwe dla usługi Application Insights.
+* **APPINSIGHTS_PORTALINFO**: ASP.NET
+* **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
-1. Przejdź do ustawień aplikacji usługi App i sprawdzić, jeśli są ustawione następujące ustawienia:
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**: Zamień na klucz Instrumentacji właściwe dla usługi Application Insights.
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0, jeśli te ustawienia nie są ustawione, przejdź do okienka włączenie usługi Application Insights, aby zainstalować najnowsze rozszerzenie witryny.
+Jeśli powyższe wartości nie są ustawione, należy zainstalować najnowsze rozszerzenia lokacji, wykonując następujące czynności:
 
-1. Przejdź do okienka usługi Application Insights w portalu usługi App Services.
+1. Przejdź do **usługi Application Insights** okienku w portalu usługi App Services.
 
-    ![Włącz usługę Application Insights w portalu usługi App Services][enable-app-insights]
+    ![Włącz usługę Application Insights z poziomu portalu usług aplikacji][enable-app-insights]
 
-1. Jeśli zostanie wyświetlony przycisk "Aktualizuj" na następującej stronie, kliknij go, aby zaktualizować rozszerzenie witryny usługi Application Insights, który zainstaluje najnowszą wersję agenta Profiler.
+1. Jeśli **usługi Application Insights** okienko wyświetla **aktualizacji** przycisku, wybierz ją, aby zaktualizować rozszerzenie witryny usługi Application Insights, który zainstaluje najnowszą wersję agenta Profiler.
 
     ![Aktualizuj rozszerzenie witryny][update-site-extension]
 
-1. Następnie kliknij przycisk **zmienić** zapewnić Profiler jest włączona i wybierz **OK** Aby zapisać zmiany.
+1. Aby upewnić się, że Profiler jest włączone, wybierz pozycję **zmiany**, a następnie wybierz pozycję **OK** Aby zapisać zmiany.
 
     ![Zmiany i Zapisz usługi app insights][change-and-save-appinsights]
 
-1. Wróć do **ustawienia aplikacji** kartę dla usługi App Service można dokładnie sprawdzić następujące elementy ustawienia aplikacji są ustawione:
+1. Wróć do **ustawienia aplikacji** okienko usługi aplikacji upewnić się, że są ustawione następujące wartości:
     * **APPINSIGHTS_INSTRUMENTATIONKEY**: Zamień na klucz Instrumentacji właściwe dla usługi application insights.
-    * **APPINSIGHTS_PORTALINFO**: ASP.NET
+    * **APPINSIGHTS_PORTALINFO**: ASP.NET 
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
-    ![Ustawienia aplikacji dla programu profilującego][app-settings-for-profiler]
+    ![Ustawienia aplikacji dla Profiler][app-settings-for-profiler]
 
-1. Opcjonalnie sprawdź wersję rozszerzenia i upewnienie się, że żadna aktualizacja jest dostępna.
+1. Opcjonalnie można zaznaczyć **rozszerzenia**, a następnie sprawdź wersję rozszerzenia i określić, czy dostępna jest aktualizacja.
 
     ![Sprawdzanie aktualizacji rozszerzenia][check-for-extension-update]
 
-## <a name="next-steps"></a>Następne kroki
-[Włącz Profiler i wyświetlanie śladów](profiler-overview.md ?toc=/azure/azure-monitor/toc.json)
+## <a name="next-steps"></a>Kolejne kroki
+[Włącz Profiler i przeglądać ślady](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png
 [configure-profiler-entry]: ./media/profiler-settings/configure-profiler-entry.png

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 4/12/2018
+ms.date: 1/16/2019
 ms.author: dukek
 ms.component: logs
-ms.openlocfilehash: 64b92a758d3d5f713b58a5e310a897ac1f11024d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d5e57442a163c8a93adc39517285bd88affab2fe
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714835"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353060"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
 **Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./tutorial-dashboards.md) znajduje się na końcu tego artykułu.
@@ -275,7 +275,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, kt
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
 | properties |Zestaw `<Key, Value>` pary (Słownik), opisujący szczegóły zdarzenia.|
 | Properties.Title | Przyjazny dla użytkownika ciąg opisujący stan kondycji zasobu. |
-| Properties.details | Ciąg przyjazny dla użytkownika, który opisuje dalsze szczegółowe informacje o zdarzeniu. |
+| properties.details | Ciąg przyjazny dla użytkownika, który opisuje dalsze szczegółowe informacje o zdarzeniu. |
 | properties.currentHealthStatus | Bieżący stan kondycji zasobu. Jeden z następujących wartości: "Dostępne", "Niedostępne", "Negatywny wpływ na dostępność" i "Nieznany". |
 | properties.previousHealthStatus | Poprzedni stan kondycji zasobu. Jeden z następujących wartości: "Dostępne", "Niedostępne", "Negatywny wpływ na dostępność" i "Nieznany". |
 | Properties.Type | Opis typu zdarzenia kondycji zasobów. |
@@ -387,11 +387,11 @@ Pole właściwości będzie zawierać różne wartości w zależności od źród
 | --- | --- |
 | properties.RuleUri | Identyfikator zasobu sam regułę alertu metryki. |
 | properties.RuleName | Nazwa reguły alertów metryk. |
-| właściwości. RuleDescription | Opis regułę alertu metryki (zgodnie z definicją w regule alertu). |
-| właściwości. Próg | Wartość progowa, używana podczas obliczania metryki reguły alertu. |
+| properties.RuleDescription | Opis regułę alertu metryki (zgodnie z definicją w regule alertu). |
+| properties.Threshold | Wartość progowa, używana podczas obliczania metryki reguły alertu. |
 | properties.WindowSizeInMinutes | Rozmiar okna używana podczas obliczania metryki reguły alertu. |
 | properties.Aggregation | Typ agregacji, zdefiniowane w regule alertu metryki. |
-| właściwości. Operator | Operator warunkowy używana podczas obliczania metryki reguły alertu. |
+| properties.Operator | Operator warunkowy używana podczas obliczania metryki reguły alertu. |
 | properties.MetricName | Nazwa metryki metryki używana podczas obliczania metryki reguły alertu. |
 | properties.MetricUnit | Metryki jednostkę Metryka używana podczas obliczania metryki reguły alertu. |
 
@@ -473,7 +473,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia związane z działaniem aparat s
 | properties |Zestaw `<Key, Value>` pary (Słownik), opisujący szczegóły zdarzenia. |
 | właściwości. Opis elementu | Szczegółowy opis czynności była wykonywane przez aparat skalowania automatycznego. |
 | properties.ResourceName | Identyfikator zasobu, zasób objęty wpływem (zasobu, na którym została wykonana akcji skalowania) |
-| właściwości. OldInstancesCount | Liczba wystąpień, zanim akcji skalowania automatycznego weszło w życie. |
+| properties.OldInstancesCount | Liczba wystąpień, zanim akcji skalowania automatycznego weszło w życie. |
 | properties.NewInstancesCount | Liczba wystąpień po wykonaniu akcji skalowania automatycznego weszło w życie. |
 | properties.LastScaleActionTime | Sygnatura czasowa wystąpienia akcji skalowania automatycznego. |
 | status |Ciąg opisujący stan operacji. Niektóre typowe wartości to: Pracę w toku, zakończyło się pomyślnie, nie powiodło się, aktywne, rozwiązane. |
@@ -552,7 +552,7 @@ Ta kategoria zawiera rekord wszystkie alerty wygenerowane przez usługę Azure S
 | correlationId | Identyfikator GUID w formacie ciągu. |
 | description |Tekst statyczny opis zdarzenia zabezpieczeń. |
 | eventDataId |Unikatowy identyfikator zdarzenia zabezpieczeń. |
-| EventName |Przyjazna nazwa zdarzenia zabezpieczeń. |
+| eventName |Przyjazna nazwa zdarzenia zabezpieczeń. |
 | id |Unikatowy identyfikator zdarzenia zabezpieczeń. |
 | poziom |Poziom zdarzenia. Jeden z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie" lub "Informacyjny" |
 | resourceGroupName |Nazwa grupy zasobów dla zasobu. |
@@ -562,7 +562,7 @@ Ta kategoria zawiera rekord wszystkie alerty wygenerowane przez usługę Azure S
 | operationId |Identyfikator GUID współużytkowane przez zdarzenia, które odpowiadają jednej operacji. |
 | operationName |Nazwa operacji. |
 | properties |Zestaw `<Key, Value>` pary (Słownik), opisujący szczegóły zdarzenia. Te właściwości różnią się w zależności od rodzaju alertu zabezpieczeń. Zobacz [na tej stronie](../../security-center/security-center-alerts-type.md) opis typów alertów, które pochodzą z usługi Security Center. |
-| właściwości. Ważność |Poziom ważności. Możliwe wartości to "High", "Średnie" lub "Niska". |
+| properties.Severity |Poziom ważności. Możliwe wartości to "High", "Średnie" lub "Niska". |
 | status |Ciąg opisujący stan operacji. Niektóre typowe wartości to: Pracę w toku, zakończyło się pomyślnie, nie powiodło się, aktywne, rozwiązane. |
 | subStatus | Zazwyczaj wartość null dla zdarzeń dotyczących zabezpieczeń. |
 | eventTimestamp |Sygnatura czasowa podczas generowania zdarzenia według usługi platformy Azure, przetwarzanie żądania odpowiadające zdarzenie. |
@@ -649,6 +649,123 @@ Ta kategoria zawiera rekord nowych zaleceń, które są generowane dla usług. P
 | properties.recommendationImpact| Wpływ rekomendacji. Możliwe wartości to "Wysoka", "Średnie", "Niska" |
 | properties.recommendationRisk| Ryzyko zalecenia. Możliwe wartości to "Error", "Ostrzeżenie", "None" |
 
+## <a name="policy"></a>Zasady
+
+Ta kategoria zawiera rekordy wszystkich efekt działania operacji wykonywanych przez [usługi Azure Policy](../../governance/policy/overview.md). Przykłady typów zdarzeń, które powinny zostać wyświetlone tej kategorii _inspekcji_ i _Odmów_. Każdej akcji podjętej przez zasady są modelowane jako operacja dotycząca zasobu.
+
+### <a name="sample-policy-event"></a>Przykładowe zasady zdarzeń
+
+```json
+{
+    "authorization": {
+        "action": "Microsoft.Resources/checkPolicyCompliance/read",
+        "scope": "/subscriptions/<subscriptionID>"
+    },
+    "caller": "33a68b9d-63ce-484c-a97e-94aef4c89648",
+    "channels": "Operation",
+    "claims": {
+        "aud": "https://management.azure.com/",
+        "iss": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "iat": "1234567890",
+        "nbf": "1234567890",
+        "exp": "1234567890",
+        "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
+        "appid": "1d78a85d-813d-46f0-b496-dd72f50a3ec0",
+        "appidacr": "2",
+        "http://schemas.microsoft.com/identity/claims/identityprovider": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "f409edeb-4d29-44b5-9763-ee9348ad91bb",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "b-24Jf94A3FH2sHWVIFqO3-RSJEiv24Jnif3gj7s",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "1114444b-7467-4144-a616-e3a5d63e147b",
+        "uti": "IdP3SUJGtkGlt7dDQVRPAA",
+        "ver": "1.0"
+    },
+    "correlationId": "b5768deb-836b-41cc-803e-3f4de2f9e40b",
+    "description": "",
+    "eventDataId": "d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d",
+    "eventName": {
+        "value": "EndRequest",
+        "localizedValue": "End request"
+    },
+    "category": {
+        "value": "Policy",
+        "localizedValue": "Policy"
+    },
+    "eventTimestamp": "2019-01-15T13:19:56.1227642Z",
+    "id": "/subscriptions/<subscriptionID>/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/contososqlpolicy/events/13bbf75f-36d5-4e66-b693-725267ff21ce/ticks/636831551961227642",
+    "level": "Warning",
+    "operationId": "04e575f8-48d0-4c43-a8b3-78c4eb01d287",
+    "operationName": {
+        "value": "Microsoft.Authorization/policies/audit/action",
+        "localizedValue": "Microsoft.Authorization/policies/audit/action"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Sql",
+        "localizedValue": "Microsoft SQL"
+    },
+    "resourceType": {
+        "value": "Microsoft.Resources/checkPolicyCompliance",
+        "localizedValue": "Microsoft.Resources/checkPolicyCompliance"
+    },
+    "resourceId": "/subscriptions/<subscriptionID>/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/contososqlpolicy",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2019-01-15T13:20:17.1077672Z",
+    "subscriptionId": "<subscriptionID>",
+    "properties": {
+        "isComplianceCheck": "True",
+        "resourceLocation": "westus2",
+        "ancestors": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+        "policies": "[{\"policyDefinitionId\":\"/subscriptions/<subscriptionID>/providers/Microsoft.
+            Authorization/policyDefinitions/5775cdd5-d3d3-47bf-bc55-bb8b61746506/\",\"policyDefiniti
+            onName\":\"5775cdd5-d3d3-47bf-bc55-bb8b61746506\",\"policyDefinitionEffect\":\"Deny\",\"
+            policyAssignmentId\":\"/subscriptions/<subscriptionID>/providers/Microsoft.Authorization
+            /policyAssignments/991a69402a6c484cb0f9b673/\",\"policyAssignmentName\":\"991a69402a6c48
+            4cb0f9b673\",\"policyAssignmentScope\":\"/subscriptions/<subscriptionID>\",\"policyAssig
+            nmentParameters\":{}}]"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="policy-event-property-descriptions"></a>Opisy właściwości zdarzenia zasad
+
+| Nazwa elementu | Opis |
+| --- | --- |
+| Autoryzacja | Tablica RBAC właściwości zdarzenia. Dla nowych zasobów jest to akcja i zakres żądania, która wyzwoliła oceny. Dla istniejących zasobów akcja jest "Microsoft.Resources/checkPolicyCompliance/read". |
+| element wywołujący | Dla nowych zasobów, tożsamość, która zainicjowała wdrożenia. Dla istniejących zasobów, identyfikator GUID RP szczegółowych informacji programu Microsoft Azure zasad. |
+| kanały | Zdarzenia dotyczące zasad można użyć tylko kanału "Działania". |
+| oświadczenia | Token JWT używane przez usługi Active Directory do uwierzytelniania użytkownika lub aplikacji do wykonania tej operacji w usłudze Resource Manager. |
+| correlationId | Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia, które mają identyfikator korelacji należą do tej samej akcji uber. |
+| description | To pole jest puste w przypadku zdarzenia dotyczące zasad. |
+| eventDataId | Unikatowy identyfikator zdarzenia. |
+| eventName | "BeginRequest" lub "EndRequest". "BeginRequest" jest używana opóźnionego oceny auditIfNotExists i deployIfNotExists i po rozpoczęciu wdrażania szablonu w efekt deployIfNotExists. Wszystkie inne operacje dotyczące zwrotu "EndRequest". |
+| category | Deklaruje zdarzenia dziennika aktywności jako należący do "Policy". |
+| eventTimestamp | Sygnatura czasowa podczas generowania zdarzenia według usługi platformy Azure, przetwarzanie żądania odpowiadające zdarzenie. |
+| id | Unikatowy identyfikator zdarzenia dla określonego zasobu. |
+| poziom | Poziom zdarzenia. Inspekcja korzysta z "Ostrzeżenie" i Odmów używa "Error". Błąd auditIfNotExists lub deployIfNotExists może generować "Ostrzeżenie" lub "Error", w zależności od ważności. Inne zdarzenia zasad, użyj "Informacyjne". |
+| operationId | Identyfikator GUID współużytkowane przez zdarzenia, które odpowiadają jednej operacji. |
+| operationName | Nazwa operacji i bezpośrednio skorelowany efektu zasad. |
+| resourceGroupName | Nazwa grupy zasobów ocenianą zasobów. |
+| resourceProviderName | Nazwa dostawcy zasobów ocenianą zasobów. |
+| Typ zasobu | Dla nowych zasobów jest typu obliczania. Dla istniejących zasobów zwraca "Microsoft.Resources/checkPolicyCompliance". |
+| resourceId | Identyfikator zasobu ocenianą zasobów. |
+| status | Ciąg opisujący stan wyniku oceny zasad. Większość oceny zasad zwrócić "Powodzenie", ale efektu odrzucenia zwraca "Niepowodzenie". Błędy w auditIfNotExists lub deployIfNotExists również zwracać "Niepowodzenie". |
+| subStatus | To pole jest puste w przypadku zdarzenia dotyczące zasad. |
+| submissionTimestamp | Sygnatura czasowa, gdy zdarzenie stały się dostępne dla zapytań. |
+| subscriptionId | Identyfikator subskrypcji platformy Azure. |
+| properties.isComplianceCheck | Zwraca wartość "False", podczas wdrażania nowego zasobu lub aktualizacji istniejącego zasobu właściwości Menedżera zasobów. Wszystkie inne [wyzwalaczy oceny](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) spowodować "True". |
+| properties.resourceLocation | Region platformy Azure zasobu oceniane. |
+| Properties.ancestors | Przecinkami lista grup zarządzania nadrzędnego uporządkowane od bezpośrednią lokacją nadrzędną do położony nadrzędnych. |
+| properties.policies | Zawiera szczegółowe informacje o definicji zasad, przypisanie, wpływ i parametry, które ta ocena zasad jest wynikiem. |
+| relatedEvents | To pole jest puste w przypadku zdarzenia dotyczące zasad. |
+
 ## <a name="mapping-to-diagnostic-logs-schema"></a>Mapowanie schematu dzienników diagnostycznych
 
 Podczas przesyłania strumieniowego dziennika aktywności platformy Azure na koncie magazynu lub przestrzeni nazw usługi Event Hubs, danych następuje [Azure diagnostyczne dzienniki schematu](./tutorial-dashboards.md). Poniżej przedstawiono Mapowanie właściwości w schemacie powyżej schematu dzienników diagnostycznych:
@@ -670,7 +787,7 @@ Podczas przesyłania strumieniowego dziennika aktywności platformy Azure na kon
 | location | ND | Lokalizacja przetwarzania zdarzenia. *Nie jest to lokalizacja zasobu, ale raczej, gdy zdarzenie zostało przetworzone. Tej właściwości zostanie usunięta w przyszłej aktualizacji.* |
 | Właściwości | properties.eventProperties |  |
 | properties.eventCategory | category | Jeśli nie ma properties.eventCategory, kategoria jest "Administracyjne" |
-| properties.eventName | EventName |  |
+| properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
 | properties.eventProperties | properties |  |
 

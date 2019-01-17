@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 01/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 66f33dd0edc44a490c3ccaf989d6d9308e615bb0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 06a3ac4520a40369c095e57f8e92978fdb280b51
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246113"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359594"
 ---
 # <a name="what-is-password-writeback"></a>Co to jest funkcja zapisywania zwrotnego haseł?
 
@@ -42,7 +42,7 @@ Oferuje funkcję zapisywania zwrotnego haseł:
 * **Nie wymaga żadnych reguł zapory dla ruchu przychodzącego**: Zapisywanie zwrotne haseł używa usługi Azure Service Bus relay jako podstawowy kanał komunikacyjny. Cała komunikacja jest wychodzących za pośrednictwem portu 443.
 
 > [!Note]
-> Nie można użyć kont użytkowników, które istnieją w ramach grup ochrony w usłudze Active Directory w środowisku lokalnym za pomocą funkcji zapisywania zwrotnego haseł. Aby uzyskać więcej informacji na temat grup ochrony, zobacz [chronione kont i grup w usłudze Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+> Nie można użyć kont użytkowników, które istnieją w ramach grup ochrony w usłudze Active Directory w środowisku lokalnym za pomocą funkcji zapisywania zwrotnego haseł. Konto administratora, które istnieją w ramach chronione grup w lokalnej usługi AD mogą być używane z zapisywaniem zwrotnym haseł. Aby uzyskać więcej informacji na temat grup ochrony, zobacz [chronione kont i grup w usłudze Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
 >
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Wymagania licencyjne dla funkcji zapisywania zwrotnego haseł
@@ -57,8 +57,8 @@ Aby użyć funkcji zapisywania zwrotnego haseł, musi mieć jeden z następując
 * Pakiet Enterprise Mobility + Security E5 lub A5
 * Rozwiązania Microsoft 365 E3 lub A3
 * Rozwiązania Microsoft 365 E5 lub A5
-* Rozwiązania Microsoft 365 F1
-* Rozwiązania Microsoft 365 Business
+* Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
 > Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują "Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym"* i wymagają jednego z poprzednich planów dla tej funkcji do pracy.

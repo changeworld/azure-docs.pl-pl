@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/05/2018
+ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 11bcfa1b4719d6def5bfc4a6a189bd2b58896b5b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729343"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54334378"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Przewodniki Szybki start i samouczki
 
@@ -48,5 +48,6 @@ Aby dowiedzieć się, jak opracowywać szablony usługi Resource Manager, użyj 
     |[Wdrażanie rozszerzenia SQL](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|Wykonaj zadania po wdrożeniu przy użyciu rozszerzeń. W tym samouczku wdrożysz rozszerzenia skryptów klienta w celu zainstalowania serwera sieci web na maszynie wirtualnej. |
     |[Zabezpieczanie artefaktów](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|Zabezpiecz artefaktów potrzebnych do ukończenia wdrożenia. W tym samouczku dowiesz się, jak zabezpieczyć artefaktu używanego w tym samouczku rozszerzenia wdrożenia programu SQL. |
     |[Korzystanie z praktyk bezpiecznego wdrażania](../articles/azure-resource-manager/deployment-manager-tutorial.md)|Używanie usługi Azure Deployment Manager. |
+    |[Samouczek: Rozwiązywanie problemów z wdrożeniami szablonu usługi Resource Manager](../articles/azure-resource-manager/resource-manager-tutorial-troubleshoot.md)|Rozwiązywanie problemów dotyczących wdrożenia szablonu.|
 
 Te samouczki można indywidualnie lub jako serię się główne pojęcia programowania szablonu usługi Resource Manager.

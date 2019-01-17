@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 2c4c2982febf1d81aaaa81bb9c894785b860503b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200090"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353966"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -54,7 +54,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 Zalecana akcja:<br>
 Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, a następnie spróbuj ponownie wykonać operację w celu wyzwolenia oczyszczania.
 > [!NOTE]
-    > Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów. Format nazwy grupy zasobów, utworzone przez usługę kopia zapasowa jest: AzureBackupRG_`<Geo>`_`<number>` np: AzureBackupRG_northeurope_1
+    > Usługa Backup tworzy oddzielnej grupie zasobów niż grupa zasobów maszyny wirtualnej, aby zapisać kolekcję punktów przywracania. Nie można zablokować grupy zasobów przeznaczone do użycia przez usługę Backup doradza się klientów. Format nazwy grupy zasobów, utworzone przez usługę kopia zapasowa jest: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
 
 **Krok 1. [Usuń blokadę z grupy zasobów punkt przywracania](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2. [Wyczyścić kolekcję punktów przywracania](#clean_up_restore_point_collection)**<br>
@@ -122,33 +122,8 @@ Na wymagania wdrożenia maszyny Wirtualnej nie ma dostępu do Internetu. Lub mo�
 
 Aby funkcjonowało poprawnie, zapasowy numer wewnętrzny wymaga połączenia z platformy Azure z publicznymi adresami IP. Rozszerzenie wysyła polecenia do punktu końcowego usługi Azure storage (adres URL HTTPs) do zarządzania migawki maszyny Wirtualnej. Jeśli rozszerzenie nie ma dostępu do publicznej sieci internet, niepowodzenie tworzenia kopii zapasowej po pewnym czasie.
 
-Istnieje możliwość wdrożyć serwer proxy, aby przekierować ruch maszyny Wirtualnej.
-##### <a name="create-a-path-for-https-traffic"></a>Tworzenie ścieżki dla ruchu HTTPs
-
-1. Jeśli masz ograniczeń sieci w miejscu (na przykład, sieciowej grupy zabezpieczeń), należy wdrożyć serwer proxy HTTPs do kierowania ruchu.
-2. Aby umożliwić dostęp do Internetu z serwera proxy protokołu HTTPs, należy dodać reguły do sieciowej grupy zabezpieczeń, jeśli nie masz.
-
-Aby dowiedzieć się, jak skonfigurować serwer proxy HTTPs dla kopii zapasowych maszyn wirtualnych, zobacz [przygotowania środowiska do tworzenia kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-
-W kopii zapasowej maszyny Wirtualnej lub serwera proxy, przez który ruch jest kierowany wymaga dostępu do usługi Azure publicznych adresów IP
-
 ####  <a name="solution"></a>Rozwiązanie
-Aby rozwiązać ten problem, wypróbuj jedną z następujących metod:
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>Zezwalaj na dostęp do usługi Azure storage, która odnosi się do regionu
-
-Możesz użyć [tagów usług](../virtual-network/security-overview.md#service-tags) zezwala na połączenia do magazynu w określonym regionie. Upewnij się, że reguła, która umożliwia uzyskanie dostępu do konta magazynu ma wyższy priorytet niż zasady które blokuje dostęp do Internetu.
-
-![Sieciowa grupa zabezpieczeń z tagami magazynu dla regionu](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-Aby dowiedzieć się, procedury krok po kroku, aby skonfigurować tagi usługi, obejrzyj [ten film wideo](https://youtu.be/1EjLQtbKm1M).
-
-> [!WARNING]
-> Tagi usługi Storage są w wersji zapoznawczej. Są one dostępne tylko w określonych regionach. Aby uzyskać listę regionów, zobacz [tagów dla magazynu usług](../virtual-network/security-overview.md#service-tags).
-
-Jeśli używasz usługi Azure Managed Disks, może być konieczne otwarcie dodatkowych portów (na porcie 8443) na zaporach.
-
-Ponadto jeśli podsieć nie ma trasy dla ruchu wychodzącego z Internetem, należy dodać punktu końcowego usługi za pomocą tagu usługi "Microsoft.Storage" do podsieci.
+Aby rozwiązać problem z siecią, zobacz [ustanowienia połączenia z siecią](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent jest zainstalowany na maszynie wirtualnej, ale go nie odpowiada (dla maszyn wirtualnych Windows)
 

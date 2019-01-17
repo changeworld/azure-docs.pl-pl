@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2c0c8b49d3f7122b71a08bc57ac615ba9e0c0108
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f8ae6d9138a7413b0cca4cca7bcc47c13212674
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239444"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358055"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure #
 
@@ -33,6 +33,8 @@ Na diagramie przedstawiono części pełną grupy dostępności SQL Server na ma
 ![Grupy dostępności](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
 Główną różnicą grupy dostępności na maszynach wirtualnych platformy jest, że maszyn wirtualnych platformy Azure wymaga [moduł równoważenia obciążenia](../../../load-balancer/load-balancer-overview.md). Moduł równoważenia obciążenia zawiera adresy IP dla odbiornika grupy dostępności. Każda grupa wymaga odbiornik, jeśli masz więcej niż jednej grupy dostępności. Jeden moduł równoważenia obciążenia może obsługiwać wiele odbiorników.
+
+Ponadto w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, zalecamy jedną kartą Sieciową na serwer (węzeł klastra) i pojedynczej podsieci. Sieci platformy Azure ma fizyczny nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci niepotrzebne w klastrze gościa maszyny Wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie węzły tylko są dostępne w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny Wirtualnej IaaS platformy Azure. 
 
 Gdy wszystko jest gotowe do tworzenia grupy dostępności programu SQL Server na maszynach wirtualnych platformy Azure, odnoszą się do tych samouczków.
 

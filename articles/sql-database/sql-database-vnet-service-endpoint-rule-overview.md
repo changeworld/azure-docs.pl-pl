@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 12/20/2018
-ms.openlocfilehash: 33e0b66541e5ead5f3c05d2310ecc07e8a62324c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 1/16/2019
+ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728129"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359854"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure SQL
 
@@ -118,8 +118,9 @@ Usługi Azure SQL Database funkcja reguł sieci wirtualnej ma następujące ogra
 
 - Reguły sieci wirtualnej mają zastosowanie tylko do sieci wirtualnej usługi Azure Resource Manager. i nie [klasycznego modelu wdrażania] [ arm-deployment-model-568f] sieci.
 
-- NA włączenie punktów końcowych usługi sieci wirtualnej do usługi Azure SQL Database umożliwia również punktami końcowymi usługi baza danych MySQL i PostgreSQL Azure. Jednak za pomocą włączone punkty końcowe prób nawiązania połączenia z punktów końcowych do wystąpień bazy danych MySQL lub PostgreSQL zakończy się niepowodzeniem.
-  - Główną przyczynę wysokiej skuteczności to, że baza danych MySQL i PostgreSQL obecnie obsługuje ACLing.
+- NA włączenie punktów końcowych usługi sieci wirtualnej do usługi Azure SQL Database umożliwia również punktami końcowymi usługi baza danych MySQL i PostgreSQL Azure. Jednak za pomocą włączone punkty końcowe prób nawiązania połączenia z punktów końcowych do bazy danych MySQL lub PostgreSQL wystąpień może zakończyć się niepowodzeniem.
+  - Główną przyczynę wysokiej skuteczności to, czy baza danych MySQL i PostgreSQL prawdopodobnie nie masz skonfigurowane reguły sieci wirtualnej. Należy skonfigurować reguły sieci wirtualnej dla usługi Azure Database for MySQL i PostgreSQL i połączenia zakończy się powodzeniem.
+
 - Na zaporze zakresów adresów IP są stosowane do następujących elementów sieci, ale nie obsługują reguł sieci wirtualnej:
   - [Wirtualnej sieci prywatnej (VPN) lokacja-lokacja (S2S)][vpn-gateway-indexmd-608y]
   - W środowisku lokalnym za pośrednictwem [usługi ExpressRoute][expressroute-indexmd-744v]
@@ -146,7 +147,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 Wielu użytkowników ma zostać usunięty **Zezwalaj na usługi platformy Azure na dostęp do serwera** ze swoich serwerów SQL platformy Azure i zastąp go reguła zapory sieci wirtualnej.
 Jednak usunięcie to ma wpływ na następujące funkcje:
 
-### <a name="import-export-service"></a>Usługa eksportu importu
+### <a name="import-export-service"></a>Import Export Service
 
 Usługa Azure SQL Database Import eksportu działa na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie znajdują się w sieci wirtualnej i dlatego Uzyskaj adres IP platformy Azure podczas nawiązywania połączenia z bazą danych. Na temat usuwania **Zezwalaj na usługi platformy Azure na dostęp do serwera** te maszyny wirtualne nie będą mogli korzystać z bazy danych.
 Można obejść ten problem. Uruchom importowanie pliku BACPAC lub wyeksportuj go bezpośrednio w kodzie za pomocą interfejsu API DACFx. Upewnij się, że został wdrożony na maszynie wirtualnej, który znajduje się w podsieci sieci wirtualnej dla którego ustawiono regułę zapory.
@@ -322,7 +323,7 @@ Musi już mieć podsieci, który jest oznaczony za pomocą określonego punktu k
 > - **Gotowe:** Wskazuje, powiodła się operacja, która zostanie zainicjowane.
 > - **Nie powiodło się:** Wskazuje, że zainicjowano operację zakończyła się niepowodzeniem.
 > - **Usunięte:** Tylko ma zastosowanie do operacji usuwania i wskazuje, czy reguła została usunięta i nie ma już zastosowania.
-> - **W toku:** Wskazuje, że operacja jest w toku. Stary reguła ma zastosowanie, gdy operacja jest w tym stanie.
+> - **InProgress:** Wskazuje, że operacja jest w toku. Stary reguła ma zastosowanie, gdy operacja jest w tym stanie.
 
 <a name="anchor-how-to-links-60h" />
 

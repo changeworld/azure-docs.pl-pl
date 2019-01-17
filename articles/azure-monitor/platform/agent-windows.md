@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 1d4760eb6490ce458e699ad9bc59a57cb473ef6d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8ccd2bfe78ca7b0fabac2b8c9bfd6ba002782a41
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104126"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352822"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Łączenie komputerów Windows do usługi Log Analytics na platformie Azure
 
@@ -57,9 +57,9 @@ Aby skonfigurować używanie [protokołu TLS 1.2](https://docs.microsoft.com/win
 
 Konfigurowanie programu .NET Framework 4.6 lub później do obsługi bezpiecznego szyfrowania, ponieważ domyślnie go jest wyłączona. [Silnej kryptografii](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) bezpieczniejsze protokołów sieciowych, takich jak protokół TLS 1.2 i blokuje protokołów, które nie są bezpieczne. 
 
-1. Znajdź następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\Software\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Znajdź następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\.NETFramework\v4.0.30319**.  
 2. Utwórz wartość DWORD **SchUseStrongCrypto** tego podklucza o wartości **1**.  
-3. Znajdź następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
+3. Znajdź następujący podklucz rejestru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\.NETFramework\v4.0.30319**.  
 4. Utwórz wartość DWORD **SchUseStrongCrypto** tego podklucza o wartości **1**. 
 5. Ponowne uruchomienie systemu, aby ustawienia zaczęły obowiązywać. 
 
@@ -100,7 +100,7 @@ W poniższej tabeli wymieniono określone parametry usługi Log Analytics, obsł
 |OPINSIGHTS_PROXY_USERNAME               | Nazwa użytkownika używana do uzyskania dostępu uwierzytelnionego serwera proxy |
 |OPINSIGHTS_PROXY_PASSWORD               | Hasło dostępu uwierzytelnionego serwera proxy |
 
-1. Aby wyodrębnić pliki instalacyjne agenta z wiersza polecenia z podwyższonym poziomem uprawnień uruchom `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit dla ścieżki wyodrębnić pliki do.  Alternatywnie, można określić ścieżkę przez przekazanie argumentów `MMASetup-<platform>.exe /c /t:<Path>`.  
+1. Aby wyodrębnić pliki instalacyjne agenta z wiersza polecenia z podwyższonym poziomem uprawnień uruchom `MMASetup-<platform>.exe /c` i zostanie wyświetlony monit dla ścieżki wyodrębnić pliki do.  Alternatywnie, można określić ścieżkę przez przekazanie argumentów `MMASetup-<platform>.exe /c /t:<Full Path>`.  
 2. Aby dyskretnie zainstalować agenta i skonfigurowanie jej do raportu do obszaru roboczego w komercyjnej chmury Azure z folderu zostały wyodrębnione pliki instalacyjne na typ: 
    
      ```dos

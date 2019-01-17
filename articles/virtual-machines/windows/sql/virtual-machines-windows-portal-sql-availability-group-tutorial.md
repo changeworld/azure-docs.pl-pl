@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 1605fdc5e49d2b8e95a2876dea8dff378ee33e2e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232281"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359718"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
@@ -51,6 +51,9 @@ Poniższa tabela zawiera listę wymagań wstępnych, które należy wykonać prz
 
 
 Przed rozpoczęciem tego samouczka musisz [spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności w usłudze Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md). Jeśli te wymagania wstępne są już wypełnione, możesz przejść do tematu [tworzenia klastrów](#CreateCluster).
+
+  >[!NOTE]
+  > Wiele z tych kroków w ramach tego samouczka można zautomatyzować przy użyciu szablonu szybkiego startu platformy Azure. Aby uzyskać więcej informacji, zobacz [tworzenia usługi WSFC, odbiornik i konfigurowanie wewnętrznego modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na maszynę Wirtualną programu SQL Server przy użyciu szablonów szybkiego startu platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -419,7 +422,7 @@ Aby skonfigurować moduł równoważenia obciążenia, musisz utworzyć pulę za
    | **Protokół** | Wybierz protokół TCP |TCP |
    | **Port** | Na użytek port odbiornika grupy dostępności | 1433 |
    | **Port zaplecza** | To pole nie jest używane, gdy pływającego adresu IP ma wartość bezpośrednie serwera return | 1433 |
-   | **Sondy** |Nazwa określona dla sondy | SQLAlwaysOnEndPointProbe |
+   | **Probe** |Nazwa określona dla sondy | SQLAlwaysOnEndPointProbe |
    | **Trwałość sesji** | Lista rozwijana | **Brak** |
    | **Limit czasu bezczynności** | Nie zamykaj połączenie TCP minut | 4 |
    | **Pływający adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |
@@ -459,7 +462,7 @@ Adres IP usługi WSFC musi znajdować się na moduł równoważenia obciążenia
    | **Protokół** | Wybierz protokół TCP |TCP |
    | **Port** | Użyj portu dla adresu IP klastra. Jest dostępny port, który nie jest używany przez port sondy odbiornika. | 58888 |
    | **Port zaplecza** | To pole nie jest używane, gdy pływającego adresu IP ma wartość bezpośrednie serwera return | 58888 |
-   | **Sondy** |Nazwa określona dla sondy | WSFCEndPointProbe |
+   | **Probe** |Nazwa określona dla sondy | WSFCEndPointProbe |
    | **Trwałość sesji** | Lista rozwijana | **Brak** |
    | **Limit czasu bezczynności** | Nie zamykaj połączenie TCP minut | 4 |
    | **Pływający adres IP (bezpośredni zwrot serwera)** | |Enabled (Włączony) |

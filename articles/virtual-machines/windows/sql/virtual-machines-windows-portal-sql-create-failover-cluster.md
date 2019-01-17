@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 382027782044a5a1011976560b7460047544f521
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237968"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359939"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -71,10 +71,12 @@ Istnieje kilka rzeczy, które należy znać i kilka rzeczy, które należy w mie
 ### <a name="what-to-know"></a>Co należy wiedzieć
 Musisz mieć operacyjnej znajomości następujące technologie:
 
-- [Technologie klastrowania Windows](https://technet.microsoft.com/library/hh831579.aspx)
-- [Wystąpienia klastra trybu Failover programu SQL Server](https://msdn.microsoft.com/library/ms189134.aspx).
+- [Technologie klastrowania Windows](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
+- [Wystąpienia klastra trybu Failover programu SQL Server](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Ponadto powinna mieć ogólna wiedza o następujące technologie:
+Jedną istotną różnicą jest, że w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, firma Microsoft zaleca jednej karty Sieciowej na serwerze (węzeł klastra) oraz jednej podsieci. Sieci platformy Azure ma fizyczny nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci niepotrzebne w klastrze gościa maszyny Wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie węzły tylko są dostępne w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny Wirtualnej IaaS platformy Azure. 
+
+Ponadto powinien mieć ogólna wiedza o następujące technologie:
 
 - [Hiperkonwergentne rozwiązanie z zastosowaniem bezpośrednich miejsc do magazynowania w systemie Windows Server 2016](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
 - [Grupy zasobów platformy Azure](../../../azure-resource-manager/resource-group-portal.md)
@@ -112,7 +114,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
    - Kliknij pozycję **Utwórz**.
    - Na **Tworzenie zestawu dostępności** bloku, ustaw następujące wartości:
       - **Nazwa**: Nazwa zestawu dostępności.
-      - **Subskrypcja**: Twoja subskrypcja platformy Azure.
+      - **Subskrypcja**: Swoją subskrypcję platformy Azure.
       - **Grupa zasobów**: Jeśli chcesz użyć istniejącej grupy, kliknij przycisk **Użyj istniejącej** i wybierz grupę z listy rozwijanej. W przeciwnym razie wybierz **Utwórz nowy** i wpisz nazwę grupy.
       - **Lokalizacja**: Ustaw lokalizację, w którym planujesz utworzenie maszyn wirtualnych.
       - **Domeny błędów**: Użyj wartości domyślnej (3).
@@ -139,7 +141,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
 
    Wybierz właściwy obraz zgodnie z jak chcesz zapłacić za licencję programu SQL Server:
 
-   - **Płatność za użycie licencji**: obejmuje koszt na sekundę tych obrazów, licencjonowania programu SQL Server:
+   - **Płatność za użycie licencji**: Koszt na sekundę tych obrazów zawiera licencję programu SQL Server:
       - **SQL Server 2016 Enterprise dla systemu Windows Server Datacenter 2016**
       - **Program SQL Server 2016 Standard w systemie Windows Server Datacenter 2016**
       - **SQL Server 2016 Developer w systemie Windows Server Datacenter 2016**
@@ -196,7 +198,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
 
 Po utworzeniu i skonfigurowaniu maszyn wirtualnych można skonfigurować klaster trybu failover.
 
-## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>Krok 2: Konfigurowanie klastra pracy awaryjnej Windows za pomocą S2D
+## <a name="step-2-configure-the-windows-failover-cluster-with-s2d"></a>Krok 2: Konfigurowanie klastra pracy awaryjnej Windows przy użyciu S2D
 
 Następnym krokiem jest, aby skonfigurować klaster trybu failover przy użyciu S2D. W tym kroku będzie wykonywać następujące podrzędne:
 
@@ -345,7 +347,7 @@ Po skonfigurowaniu klastra trybu failover i wszystkie składniki klastra, w tym 
    >[!NOTE]
    >Jeśli używasz obrazu galerii witryny Azure Marketplace z programem SQL Server, narzędzia programu SQL Server zostały zawarte w obrazie. Jeśli nie używasz tego obrazu, narzędzia programu SQL Server należy zainstalować oddzielnie. Zobacz [pobieranie programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-## <a name="step-5-create-azure-load-balancer"></a>Krok 5: Tworzenie modułu równoważenia obciążenia platformy Azure
+## <a name="step-5-create-azure-load-balancer"></a>Krok 5. Tworzenie modułu równoważenia obciążenia na platformie Azure
 
 Na maszynach wirtualnych Azure klastry używają modułu równoważenia obciążenia do przechowywania adresu IP, który musi być w jednym węźle klastra naraz. W przypadku tego rozwiązania modułu równoważenia obciążenia zawiera adres IP dla infrastruktury klasyfikacji plików z serwera SQL.
 
@@ -363,13 +365,13 @@ Aby utworzyć moduł równoważenia obciążenia:
 
 1. Konfigurowanie równoważenia obciążenia za pomocą:
 
-   - **Nazwa**: nazwa, która określa moduł równoważenia obciążenia.
-   - **Typ**: moduł równoważenia obciążenia może być publicznym lub prywatnym. Moduł równoważenia obciążenia prywatny możliwy z w ramach tej samej sieci Wirtualnej. Najbardziej Azure aplikacje mogą używać modułu równoważenia obciążenia prywatny. Jeśli aplikacja wymaga dostępu do programu SQL Server bezpośrednio przez Internet, należy użyć publicznego modułu równoważenia obciążenia.
-   - **Sieć wirtualna**: tej samej sieci maszyn wirtualnych.
-   - **Podsieci**: tej samej podsieci maszyn wirtualnych.
-   - **Prywatny adres IP**: ten sam adres IP, która została przypisana do zasobu sieciowego klastra programu SQL Server infrastruktury klasyfikacji plików.
-   - **Subskrypcja**: Twoja subskrypcja platformy Azure.
-   - **Grupa zasobów**: Użyj tej samej grupy zasobów jako maszyn wirtualnych.
+   - **Nazwa**: Nazwa, która identyfikuje modułu równoważenia obciążenia.
+   - **Typ**: Moduł równoważenia obciążenia może być publicznym lub prywatnym. Moduł równoważenia obciążenia prywatny możliwy z w ramach tej samej sieci Wirtualnej. Najbardziej Azure aplikacje mogą używać modułu równoważenia obciążenia prywatny. Jeśli aplikacja wymaga dostępu do programu SQL Server bezpośrednio przez Internet, należy użyć publicznego modułu równoważenia obciążenia.
+   - **Virtual Network**: Tej samej sieci maszyn wirtualnych.
+   - **Podsieć**: Tej samej podsieci maszyn wirtualnych.
+   - **Prywatny adres IP**: Ten sam adres IP przypisany do zasobu sieciowego klastra programu SQL Server infrastruktury klasyfikacji plików.
+   - **Subskrypcja**: Swoją subskrypcję platformy Azure.
+   - **Grupa zasobów**: Użyj tej samej grupie zasobów jako maszyn wirtualnych.
    - **Lokalizacja**: Użyj tej samej lokalizacji platformy Azure jako maszyn wirtualnych.
    Zobacz poniższy obraz:
 
@@ -397,7 +399,7 @@ Aby utworzyć moduł równoważenia obciążenia:
 
    - **Nazwa**: Nazwa sondy kondycji.
    - **Protokół**: TCP.
-   - **Port**: Ustaw na dostępny port TCP. Ten port wymaga portu zapory open. Użyj [tego samego portu](#ports) ustawione dla sondy kondycji na zaporze.
+   - **Port**: Ustaw dostępny port TCP. Ten port wymaga portu zapory open. Użyj [tego samego portu](#ports) ustawione dla sondy kondycji na zaporze.
    - **Interwał**: 5 sekund.
    - **Próg złej kondycji**: 2 kolejnych niepowodzeń.
 
@@ -411,19 +413,19 @@ Aby utworzyć moduł równoważenia obciążenia:
 
 1. Ustawianie parametrów reguły równoważenia obciążenia:
 
-   - **Nazwa**: nazwę reguły równoważenia obciążenia.
-   - **Adres IP frontonu**: Użyj adresu IP dla zasobu sieciowego klastra programu SQL Server infrastruktury klasyfikacji plików.
-   - **Port**: ustawione dla portu TCP programu SQL Server z osobna. Wystąpienia domyślnego portu to 1433.
+   - **Nazwa**: Nazwa reguły równoważenia obciążenia.
+   - **Adres IP frontonu**: Użyj adresu IP dla sieci zasobu klastra programu SQL Server infrastruktury klasyfikacji plików.
+   - **Port**: Ustaw dla portu TCP programu SQL Server z osobna. Wystąpienia domyślnego portu to 1433.
    - **Port zaplecza**: Ta wartość używa tego samego portu **portu** wartość po włączeniu **pływającego adresu IP (bezpośredni zwrot serwera)**.
    - **Pula zaplecza**: Użyj nazwy puli zaplecza, które zostały wcześniej skonfigurowane.
-   - **Sonda kondycji**: Używaj sondy kondycji, które zostały wcześniej skonfigurowane.
+   - **Sonda kondycji**: Za pomocą sondy kondycji, które zostały wcześniej skonfigurowane.
    - **Trwałość sesji**: Brak.
    - **Limit czasu (w minutach) bezczynności**: 4.
-   - **Pływający adres IP (bezpośredni zwrot serwera)**: włączone
+   - **Pływający adres IP (bezpośredni zwrot serwera)**: Enabled (Włączony)
 
 1. Kliknij przycisk **OK**.
 
-## <a name="step-6-configure-cluster-for-probe"></a>Krok 6: Skonfigurować klaster sondy
+## <a name="step-6-configure-cluster-for-probe"></a>Krok 6: Konfigurowanie klastra na potrzeby sondowania
 
 Ustaw parametr port sondy klastra w programie PowerShell.
 
@@ -442,13 +444,13 @@ Aby ustawić parametr port sondy klastra, zaktualizuj zmienne w poniższy skrypt
 
 W poprzednim skrypcie Ustaw wartości dla danego środowiska. Poniższa lista zawiera opis wartości:
 
-   - `<Cluster Network Name>`: Nazwa klastra trybu Failover serwera Windows, dla sieci. W **Menedżera klastra trybu Failover** > **sieci**, kliknij prawym przyciskiem myszy w sieci i kliknij przycisk **właściwości**. Prawidłowa wartość musi być w obszarze **nazwa** na **ogólne** kartę. 
+   - `<Cluster Network Name>`: Nazwa klastra pracy awaryjnej systemu Windows Server w sieci. W **Menedżera klastra trybu Failover** > **sieci**, kliknij prawym przyciskiem myszy w sieci i kliknij przycisk **właściwości**. Prawidłowa wartość musi być w obszarze **nazwa** na **ogólne** kartę. 
 
    - `<SQL Server FCI IP Address Resource Name>`: Nazwa zasobu adresu IP infrastruktury klasyfikacji plików serwera SQL. W **Menedżera klastra trybu Failover** > **role**, w ramach roli programu SQL Server infrastruktury klasyfikacji plików w obszarze **nazwy serwera**, kliknij prawym przyciskiem myszy zasób adresu IP i kliknij przycisk **Właściwości**. Prawidłowa wartość musi być w obszarze **nazwa** na **ogólne** kartę. 
 
-   - `<ILBIP>`Adres IP wewnętrznego modułu równoważenia obciążenia. Ten adres jest skonfigurowany w witrynie Azure portal jako frontonu adres wewnętrznego modułu równoważenia obciążenia. Jest to również adres IP infrastruktury klasyfikacji plików serwera SQL. Znaleźć go w **Menedżera klastra trybu Failover** na tej samej stronie właściwości, gdzie się `<SQL Server FCI IP Address Resource Name>`.  
+   - `<ILBIP>`: Adres IP wewnętrznego modułu równoważenia obciążenia. Ten adres jest skonfigurowany w witrynie Azure portal jako frontonu adres wewnętrznego modułu równoważenia obciążenia. Jest to również adres IP infrastruktury klasyfikacji plików serwera SQL. Znaleźć go w **Menedżera klastra trybu Failover** na tej samej stronie właściwości, gdzie się `<SQL Server FCI IP Address Resource Name>`.  
 
-   - `<nnnnn>`: To port sondy, które zostały skonfigurowane w sondy kondycji modułu równoważenia obciążenia. Dowolny nieużywany port TCP jest prawidłowy. 
+   - `<nnnnn>`: Jest to port sondy, skonfigurowanego w sondy kondycji modułu równoważenia obciążenia. Dowolny nieużywany port TCP jest prawidłowy. 
 
 >[!IMPORTANT]
 >Maska podsieci dla parametru klastra musi być adresem emisji TCP IP: `255.255.255.255`.

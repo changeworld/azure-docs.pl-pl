@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: tamram
-ms.openlocfilehash: 7f97b72dc7b3456488d97009bde590b0e29918e6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631440"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352142"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2
 
@@ -21,7 +21,8 @@ Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi A
 Uaktualnienie do konta magazynu ogólnego przeznaczenia v2 z Twojej ogólnego przeznaczenia w wersji 1 lub kont usługi Blob storage jest proste. Można uaktualnić za pomocą witryny Azure portal, programu PowerShell lub wiersza polecenia platformy Azure. 
 
 > [!NOTE]
-> Zmiana warstwy magazynowania może spowodować naliczenie dodatkowych opłat. Aby uzyskać więcej informacji, zapoznaj się z sekcją [Cennik i rozliczenia](#pricing-and-billing).
+> Uaktualnianie konta magazynu do konta ogólnego przeznaczenia w wersji 2 jest bezpłatny.
+> Zmiana warstwy dostępu do magazynu może spowodować zmiany na rachunku. Aby uzyskać więcej informacji, zapoznaj się z sekcją [Cennik i rozliczenia](#pricing-and-billing).
 
 ## <a name="upgrade-using-the-azure-portal"></a>Uaktualnianie za pomocą witryny Azure portal
 
@@ -62,8 +63,8 @@ Warstwy dostępu umożliwiają wybranie najbardziej ekonomiczny magazyn na podst
 
 Domyślnie nowe konto magazynu jest tworzony w ramach warstwy dostępu gorąca, a konto magazynu ogólnego przeznaczenia w wersji 1 jest uaktualniany do warstwy dostępu gorąca. Jeśli analizujesz które warstwy dostępu na potrzeby usługi danych po uaktualnieniu, należy wziąć pod uwagę danego scenariusza. Istnieją dwa scenariusze typowy użytkownik migracji do konta ogólnego przeznaczenia v2:
 
-* Masz już istniejące konto magazynu ogólnego przeznaczenia w wersji 1 i chcesz ocenić jego konto magazynu ogólnego przeznaczenia w wersji 2 w ramach dobraną warstwą magazynowania danych obiektów blob.
-* Zamierzasz użyć konta magazynu ogólnego przeznaczenia w wersji 2 lub już mieć jedną i chcesz ocenić, czy warstwy magazynowania gorąca lub chłodna należy używać do danych obiektów blob.
+* Masz już istniejące konto magazynu ogólnego przeznaczenia w wersji 1 i chcesz ocenić uaktualnienie na konto magazynu ogólnego przeznaczenia v2 z warstwą dostępu do przechowywania danych obiektów blob.
+* Zamierzasz użyć konta magazynu ogólnego przeznaczenia w wersji 2 lub już mieć jedną i chcesz ocenić, czy należy używać gorąca lub chłodna Warstwa dostępu do magazynu danych obiektów blob.
 
 W obu przypadkach priorytetem jest oszacować koszt przechowywania, uzyskiwanie dostępu i wykonywanie operacji na danych przechowywanych na koncie magazynu ogólnego przeznaczenia w wersji 2 i porównać z obecnie ponoszonymi kosztami.
 
@@ -71,9 +72,9 @@ W obu przypadkach priorytetem jest oszacować koszt przechowywania, uzyskiwanie 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob opartego na warstwie każdego obiektu blob. W przypadku korzystania z konta magazynu mają zastosowanie następujące zagadnienia dotyczące rozliczeń:
 
-* **Koszty magazynowania**: Oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy magazynowania. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
+* **Koszty magazynowania**: Oprócz ilości przechowywanych danych koszt przechowywania danych różni się w zależności od warstwy dostępu do magazynu. Koszt za gigabajt zmniejsza się w miarę, jak warstwa staje się chłodniejsza.
 
-* **Koszty dostępu do danych**: Dostęp do danych opłat wzrostu, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie magazynowania Chłodna i Archiwum naliczana jest opłata za dostęp do danych za każdy gigabajt dla operacji odczytu.
+* **Koszty dostępu do danych**: Dostęp do danych opłat wzrostu, jak warstwa staje się chłodniejsza. W przypadku danych w warstwie chłodna i archiwum dostępu do magazynu jest naliczana opłata dostępu do danych za każdy gigabajt dla operacji odczytu.
 
 * **Koszty transakcji**: Brak opłat każdej transakcji dla wszystkich warstw, która zwiększa się, jak warstwa staje się chłodniejsza.
 
@@ -81,7 +82,7 @@ Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów blob o
 
 * **Koszty transferu danych wychodzących**: Wychodzące transfery danych (dane przesyłane poza region platformy Azure) Naliczanie opłat za zużycie przepustowości za każdy gigabajt, co jest spójne z kontami magazynu ogólnego przeznaczenia.
 
-* **Zmiana warstwy magazynowania**: Zmiana warstwy magazynowania konta z chłodna na gorąca spowoduje naliczenie opłaty równej odczytanie wszystkich danych na koncie magazynu. Natomiast zmiana warstwy magazynowania konta z Gorąca na Chłodna spowoduje naliczenie opłaty równej opłacie za zapisanie wszystkich danych w warstwie Chłodna (tylko konta GPv2).
+* **Zmiana warstwy dostępu do magazynu**: Zmiana warstwy dostępu konta magazynu z chłodnej na gorącą spowoduje naliczenie opłaty równej odczytanie wszystkich danych na koncie magazynu. Jednak zmiana warstwy dostępu konta z gorąca na chłodna spowoduje naliczenie opłaty równej zapisanie wszystkich danych w warstwie chłodna (tylko konta GPv2).
 
 > [!NOTE]
 > Więcej informacji dotyczących modelu cenowego dla kont magazynu można znaleźć na stronie [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Więcej informacji dotyczących opłat za transfer danych wychodzących można znaleźć na stronie [Szczegóły cennika transferów danych](https://azure.microsoft.com/pricing/details/data-transfers/).
@@ -156,7 +157,7 @@ Aby oszacować koszty dostępu do danych dla kont usługi Blob Storage, konieczn
 Koszt transferu danych replikacji geograficznej dla kont usługi Blob Storage można obliczyć, korzystając z kalkulacji ilości danych zapisanych w przypadku używania konta magazynu GRS lub RA-GRS.
 
 > [!NOTE]
-> Aby dowiedzieć się więcej na temat obliczania kosztów używania gorącej lub chłodnej warstwy magazynowania, zobacz *„What are Hot and Cool access tiers and how should I determine which one to use?” („Co to są warstwy dostępu Gorąca i Chłodna i jak określić, której użyć?”)* w FAQ (Często zadawanych pytaniach). na stronie z [cennikiem usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+> Aby uzyskać bardziej szczegółowy przykład temat obliczania kosztów używania magazynowania gorąca czy chłodna Warstwa dostępu, zapoznaj się z często Zadawanych pytań *"co to są warstwy dostępu gorąca i chłodna i jak określić, które?"* na stronie z [cennikiem usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

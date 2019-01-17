@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/26/2018
+ms.date: 01/15/2019
 ms.author: juliako
-ms.openlocfilehash: 3a2b3752926a3a4391ae9479ba636694533c97a8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788212"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354182"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -29,6 +29,22 @@ Usługa Azure Media Services umożliwia dostarczanie wydarzeń na żywo dla klie
 - Składniki w usłudze Media Services pozwalają pozyskiwać, w wersji zapoznawczej, pakiet, rejestrowanie, szyfrowania i emisję wydarzenia na żywo dla klientów lub do sieci CDN w celu dalszej dystrybucji.
 
 W tym artykule szczegółowo omówiono, uzyskać wskazówki i zawiera diagramy główne składniki zaangażowane w transmisji strumieniowej na żywo za pomocą usługi Media Services.
+
+## <a name="live-streaming-workflow"></a>Przepływ pracy transmisji strumieniowej na żywo
+
+Poniżej przedstawiono kroki, aby uzyskać przepływ pracy transmisji strumieniowej na żywo:
+
+1. Tworzenie **wydarzenie na żywo**.
+2. Utwórz nową **zasobów** obiektu.
+3. Tworzenie **na żywo dane wyjściowe** i użyj nazwy zasobu, który został utworzony.
+4. Tworzenie **przesyłania strumieniowego zasad** i **klucz zawartości** Jeśli zamierzasz szyfrowanie zawartości przy użyciu DRM.
+5. Jeśli nie przy użyciu technologii DRM, Utwórz **lokalizatora przesyłania strumieniowego** dzięki wbudowanej **przesyłania strumieniowego zasad** typów.
+6. Wyświetlanie listy ścieżek na **przesyłania strumieniowego zasad** odzyskać adresy URL, aby użyć (są to deterministyczne).
+7. Pobieranie nazwy hosta dla **punkt końcowy przesyłania strumieniowego** chcesz przesyłać strumieniowo z (Upewnij się, że punkt końcowy przesyłania strumieniowego jest uruchomiony). 
+8. Adres URL w kroku 6 należy połączyć z nazwą hosta w kroku 7, aby uzyskać pełny adres URL.
+9. Jeśli chcesz zatrzymać, dzięki czemu Twoje **wydarzenie na żywo** widoczne, należy zatrzymać przesyłanie strumieniowe zdarzeń, usuwając **lokalizatora przesyłania strumieniowego**.
+
+Aby uzyskać więcej informacji, zobacz [transmisji strumieniowej na żywo w ramach samouczka](stream-live-tutorial-with-api.md) opartego na [na żywo platformy .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) próbki.
 
 ## <a name="overview-of-main-components"></a>Omówienie głównych składników
 
@@ -89,9 +105,10 @@ Następujący artykuł zawiera tabelę, która zawiera porównanie funkcji dwa t
 
 A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) umożliwia sterowanie właściwości wychodzącej transmisji strumieniowej na żywo, takie jak ilość strumienia jest rejestrowane (na przykład pojemność funkcji DVR w chmurze) i czy osoby oglądające można uruchomić, oglądając transmisji strumieniowej na żywo. Relacja między **element LiveEvent** i jego **LiveOutput**s relacji jest podobny do tradycyjnych telewizyjnych emisji, zgodnie z którą kanału (**element LiveEvent**) reprezentuje stały strumień i nagranie wideo (**LiveOutput**) obejmuje zasięgiem segmencie określony czas (na przykład wieczorami wiadomości od 18:30:00 do 19:00:00). Można rejestrować za pomocą cyfrowego rejestratora wideo (DVR) telewizyjnych — funkcji równoważnej w LiveEvents odbywa się za pomocą właściwości ArchiveWindowLength. Nadszedł czas przedział czasu ISO 8601 (na przykład PTHH:MM:SS) Określa pojemność DVR, która może być równa z co najmniej 3 minuty maksymalnie 25 godzin.
 
-
 > [!NOTE]
-> **LiveOutput**s start przy tworzeniu i Zatrzymaj po usunięciu. Po usunięciu **LiveOutput**, nie powoduje usunięcia podstawowych **zasobów** i zawartości w elemencie zawartości.  
+> **LiveOutput**s start przy tworzeniu i Zatrzymaj po usunięciu. Po usunięciu **LiveOutput**, nie powoduje usunięcia podstawowych **zasobów** i zawartości w elemencie zawartości. 
+>
+> Po opublikowaniu **lokalizatora przesyłania strumieniowego**s dla zasobu dla **LiveOutput**, zdarzenie (maksymalna długość okna DVR) będą nadal widoczne do czasu zakończenia **lokalizatora przesyłania strumieniowego**  lub do podczas usuwania Lokalizator osiągnięta jako pierwsza.   
 
 Aby uzyskać więcej informacji, zobacz [używanie funkcji DVR w chmurze](live-event-cloud-dvr.md).
 
@@ -110,21 +127,6 @@ Aby uzyskać szczegółowe informacje, zobacz [stanów i rozliczenia](live-event
 ## <a name="latency"></a>Opóźnienie
 
 Aby uzyskać szczegółowe informacje na temat LiveEvents opóźnienia, zobacz [opóźnienie](live-event-latency.md).
-
-## <a name="live-streaming-workflow"></a>Przepływ pracy transmisji strumieniowej na żywo
-
-Poniżej przedstawiono kroki, aby uzyskać przepływ pracy transmisji strumieniowej na żywo:
-
-1. Utwórz element LiveEvent.
-2. Utwórz nowy obiekt zasobów.
-3. Utwórz LiveOutput i użyj nazwy zasobu, który został utworzony.
-4. Utwórz zasady przesyłania strumieniowego i klucza zawartości, aby przeprowadzić szyfrowanie zawartości przy użyciu DRM.
-5. W przeciwnym razie przy użyciu technologii DRM, utworzyć Lokalizator przesyłania strumieniowego za pomocą wbudowanych typów zasad przesyłania strumieniowego.
-6. Lista ścieżek zasady przesyłania strumieniowego, aby wrócić adresy URL, aby użyć (są to deterministyczne).
-7. Pobieranie nazwy hosta punktu końcowego przesyłania strumieniowego chcesz przesyłać strumieniowo z. 
-8. Adres URL w kroku 6 należy połączyć z nazwą hosta w kroku 7, aby uzyskać pełny adres URL.
-
-Aby uzyskać więcej informacji, zobacz [transmisji strumieniowej na żywo w ramach samouczka](stream-live-tutorial-with-api.md) opartego na [na żywo platformy .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) próbki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

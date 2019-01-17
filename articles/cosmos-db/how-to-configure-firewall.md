@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 7d451f7eae16426c85ed5540b35993cd9b218b83
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d209e1f6924e5c7d6bba7512606504b7165f0ed3
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033166"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359429"
 ---
 # <a name="configure-an-ip-firewall-for-your-azure-cosmos-db-account"></a>Konfigurowanie zapory adresów IP dla swojego konta usługi Azure Cosmos DB
 
@@ -145,10 +145,10 @@ Sposoby rozwiązywania problemów przy użyciu zasad kontroli dostępu IP, korzy
 Po włączeniu zasady kontroli dostępu IP dla swojego konta usługi Azure Cosmos DB możesz zablokować wszystkie żądania do Twojego konta z maszyn spoza listy dozwolonych zakresów adresów IP. Aby włączyć portal operacje płaszczyzny danych, takie jak przeglądanie kontenerów i wykonywanie zapytań względem dokumentów, musisz jawnie zezwolić na dostęp do portalu Azure za pomocą **zapory** okienku w portalu.
 
 ### <a name="sdks"></a>Zestawy SDK 
-Jeśli uzyskujesz dostęp do zasobów usługi Azure Cosmos DB przy użyciu zestawów SDK z komputerów, które nie są na liście dozwolonych ogólnego **404 Nie znaleziono** odpowiedzi jest zwracany za pomocą dodatkowych szczegółów. Sprawdź listy dozwolonych adresów IP dla swojego konta, a następnie upewnij się, że konfiguracja prawidłowe zasady jest stosowana do swojego konta usługi Azure Cosmos DB. 
+Jeśli uzyskujesz dostęp do zasobów usługi Azure Cosmos DB przy użyciu zestawów SDK z komputerów, które nie są na liście dozwolonych ogólnego **403 Zabroniony** odpowiedzi jest zwracany za pomocą dodatkowych szczegółów. Sprawdź listy dozwolonych adresów IP dla swojego konta, a następnie upewnij się, że konfiguracja prawidłowe zasady jest stosowana do swojego konta usługi Azure Cosmos DB. 
 
 ### <a name="source-ips-in-blocked-requests"></a>Źródłowe adresy IP w zablokowane żądania
-Włącz rejestrowanie diagnostyczne na Twoim koncie usługi Azure Cosmos DB. Te dzienniki przedstawiają każdego żądania i odpowiedzi. Komunikaty dotyczące zapory wewnętrznie są rejestrowane przy użyciu 403 kod powrotny. Filtrując te komunikaty, możesz zobaczyć źródłowe adresy IP dla zablokowane żądania. Zobacz [rejestrowania diagnostycznego usługi Azure Cosmos DB](logging.md).
+Włącz rejestrowanie diagnostyczne na Twoim koncie usługi Azure Cosmos DB. Te dzienniki przedstawiają każdego żądania i odpowiedzi. Komunikaty dotyczące zapory są rejestrowane przy użyciu 403 kod powrotny. Filtrując te komunikaty, możesz zobaczyć źródłowe adresy IP dla zablokowane żądania. Zobacz [rejestrowania diagnostycznego usługi Azure Cosmos DB](logging.md).
 
 ### <a name="requests-from-a-subnet-with-a-service-endpoint-for-azure-cosmos-db-enabled"></a>Włączone żądań z podsieci z punktem końcowym usługi dla usługi Azure Cosmos DB
 Żądań z podsieci w sieci wirtualnej, która zawiera punkt końcowy usługi dla usługi Azure Cosmos DB włączone wysyła wirtualnego tożsamość sieci i podsieci, do kont usługi Azure Cosmos DB. Te żądania nie ma publiczny adres IP źródła, więc filtry IP Odrzuć je. Aby zezwolić na dostęp z określonych podsieci w sieciach wirtualnych, dodać listy kontroli dostępu, zgodnie z opisem w [sposób konfigurowania sieci wirtualnej i podsieci na podstawie dostępu dla konta usługi Azure Cosmos DB](how-to-configure-vnet-service-endpoint.md). Może upłynąć do 15 minut dla reguł zapory do zastosowania.

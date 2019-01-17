@@ -10,12 +10,12 @@ ms.service: azure-functions; cosmos-db
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 19a6ebaeb0c643c82277656ebade576c79ed0211
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 112442c280ee4b1b263a30c8976ea6d51f04e036
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001961"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359735"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB powiązania usługi Azure Functions 1.x
 
@@ -33,7 +33,7 @@ W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](../cosmos-
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API, należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API, w tym [usługi Azure Cosmos DB dla interfejsu API usługi MongoDB](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [interfejsu API rozwiązania Cassandra](../cosmos-db/cassandra-introduction.md), [interfejs API języka Gremlin](../cosmos-db/graph-introduction.md), i [interfejs API tabel](../cosmos-db/table-introduction.md).
+> Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API, należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API, w tym [interfejsu API usługi Azure Cosmos DB, bazy danych mongodb](../cosmos-db/mongodb-introduction.md)] (.. /cosmos-DB/mongodb-Introduction.MD) [interfejsu API rozwiązania Cassandra](../cosmos-db/cassandra-introduction.md), [interfejs API języka Gremlin](../cosmos-db/graph-introduction.md), i [interfejs API tabel](../cosmos-db/table-introduction.md).
 
 ## <a name="packages---functions-1x"></a>Pakiety — funkcje 1.x
 

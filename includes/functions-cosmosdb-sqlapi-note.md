@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 08/22/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: bb915c18965a55c2b1fc7fe3cf1fa923d7f43fd6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: c54aa861a47b11756f05e003e9b944df6c5b0e28
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052523"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54360177"
 ---
-Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. W przypadku wszystkich innych interfejsów API usługi Azure Cosmos DB dostęp do bazy danych należy uzyskiwać z poziomu funkcji przy użyciu statycznego klienta interfejsu API, w tym [interfejsu API MongoDB](../articles/cosmos-db/mongodb-introduction.md), [interfejsu API Cassandra](../articles/cosmos-db/cassandra-introduction.md), [interfejsu API Gremlin](../articles/cosmos-db/graph-introduction.md) oraz [interfejsu API tabel](../articles/cosmos-db/table-introduction.md).
+Użycie powiązań usługi Azure Cosmos DB jest obsługiwane tylko w przypadku interfejsu API SQL. Dla wszystkich innych usługi Azure Cosmos DB interfejsów API, należy dostęp do bazy danych ze swojej funkcji przy użyciu statycznych klienta dla interfejsu API, w tym [interfejsu API usługi Azure Cosmos DB, bazy danych mongodb](../articles/cosmos-db/mongodb-introduction.md), [interfejsu API rozwiązania Cassandra](../articles/cosmos-db/cassandra-introduction.md), [ Interfejs API języka gremlin](../articles/cosmos-db/graph-introduction.md), i [interfejs API tabel](../articles/cosmos-db/table-introduction.md).

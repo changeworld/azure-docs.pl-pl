@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7308b122d878c225aa98a19a303bc9520f3201ef
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bcbb249c6cb3c886b94f8ad68dd668cb8858ac77
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088239"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354593"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -65,7 +65,7 @@ Przykład:
 
 bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule wymagane username = "$ Password="Endpoint=sb://dummynamespace.servicebus.windows.net/ ConnectionString"; SharedAccessKeyName = DummyAccessKeyName; SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
 
-Uwaga: Jeśli sasl.jaas.config nie jest obsługiwaną konfiguracją w preferowanej struktury, Znajdź konfiguracje, które są używane do ustaw SASL nazwy użytkownika i hasło i je wykorzystać w zamian. Ustaw nazwę użytkownika $ConnectionString i hasło, aby parametry połączenia usługi Event Hubs.
+Uwaga: Jeśli sasl.jaas.config nie jest obsługiwaną konfiguracją w preferowanej struktury, można znaleźć konfiguracji, które są używane do ustawiania SASL nazwy użytkownika i hasło i zamiast tego użyj tych. Ustaw nazwę użytkownika $ConnectionString i hasło, aby parametry połączenia usługi Event Hubs.
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Jaki jest rozmiar komunikatu lub zdarzenia dla komputerów z obsługą platformy Kafka z usługi Event Hubs?
 Maksymalny rozmiar komunikatu dozwolony dla komputerów z obsługą platformy Kafka z usługi Event Hubs to 1MB.
@@ -181,6 +181,9 @@ Przechwytywanie korzysta z konta magazynu, który podajesz podczas włączone w 
 Aby uzyskać listę wszystkich przydziałów usługi Event Hubs, zobacz [przydziały](event-hubs-quotas.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Dlaczego nie mogę utworzyć przestrzeń nazw po usunięciu jej z inną subskrypcję? 
+Jeśli usuniesz przestrzeni nazw z subskrypcji, poczekaj przez 4 godziny przed odtworzenia go o tej samej nazwie w innej subskrypcji. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Co to są wyjątki generowane przez centra zdarzeń i ich sugerowane akcje?
 

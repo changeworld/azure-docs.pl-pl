@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: e733b82e1b5870d98de5d65771bd621d9bffdf44
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024896"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354267"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Pobieranie metadanych działania w usłudze Azure Data Factory
 Działanie GetMetadata może być używane do pobierania **metadanych** dowolnych danych w usłudze Azure Data Factory. To działanie może być używane w następujących scenariuszach:
@@ -33,7 +33,7 @@ Następujące funkcje są dostępne w przepływie sterowania:
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i generuje informacje o metadanych dostępne jako dane wyjściowe działania. Obecnie są obsługiwane następujące łączniki przy użyciu odpowiedniego pobieranie metadane i rozmiar maksymalny metadanych obsługiwanych jest maksymalnie **1MB**.
+Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i generuje informacje o metadanych dostępne jako dane wyjściowe działania. Obecnie są obsługiwane następujące łączniki za pomocą odpowiedniego Pobieranie metadanych i rozmiar maksymalny metadanych obsługiwanych jest maksymalnie **1MB**.
 
 >[!NOTE]
 >Po uruchomieniu działaniu GetMetadata na własne środowisko IR najnowsze możliwości jest obsługiwana w wersji 3.6 lub nowszym. 
@@ -42,10 +42,10 @@ Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i 
 
 **Magazyn plików:**
 
-| Łącznik/metadanych | Nazwa elementu<br>(plik/folder) | ItemType<br>(plik/folder) | rozmiar<br>(plik) | utworzone<br>(plik/folder) | Ostatnia modyfikacja<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(plik) | Struktura<br/>(plik) | columnCount<br>(plik) | Istnieje<br>(plik/folder) |
+| Łącznik/metadanych | itemName<br>(plik/folder) | itemType<br>(plik/folder) | rozmiar<br>(file) | utworzone<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(file) | Struktura<br/>(file) | columnCount<br>(file) | Istnieje<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
-| Obiekt bob Azure | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Obiekt bob Azure | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | System plików | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -70,11 +70,11 @@ Na liście pól działanie GetMetadata do pobrania można określić następują
 
 | Typ metadanych | Opis |
 |:--- |:--- |
-| Nazwa elementu | Nazwa pliku lub folderu. |
-| ItemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
+| itemName | Nazwa pliku lub folderu. |
+| itemType | Typ pliku lub folderu. Wartość wyjściowa to `File` lub `Folder`. |
 | rozmiar | Rozmiar pliku w bajtach. Dotyczy tylko plików. |
 | utworzone | Data i godzina utworzonego pliku lub folderu. |
-| Ostatnia modyfikacja | Data ostatniej modyfikacji daty i godziny pliku lub folderu. |
+| lastModified | Data ostatniej modyfikacji daty i godziny pliku lub folderu. |
 | childItems | Lista podfoldery i pliki znajdujące się w danym folderze. Dotyczy tylko do folderu. Wartość wyjściowa jest listę nazw i typ każdego elementu podrzędnego. |
 | contentMD5 | Algorytm MD5 pliku. Dotyczy tylko plików. |
 | Struktura | Struktura danych wewnątrz pliku lub tabeli w relacyjnej bazie danych. Wartość wyjściowa jest lista nazwa kolumny i typ kolumny. |

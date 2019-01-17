@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434736"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359361"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
@@ -177,6 +177,11 @@ Kliknij dwukrotnie wyjątek wyświetlane na czerwono, aby wyświetlić komunikat
 |`0x8024402C`     | Jeśli używasz serwera programu WSUS, upewnij się, wartości rejestru `WUServer` i `WUStatusServer` w kluczu rejestru `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` prawidłowy serwer WSUS.        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Upewnij się, że usługa Windows Update (wuauserv) jest uruchomiony, a nie jest wyłączona.        |
 |Inne wyjątek ogólny     | Przeprowadź wyszukiwanie internet w poszukiwaniu możliwych rozwiązań i pracować z lokalnej pomocy technicznej IT.         |
+
+Dodatkowo można pobierać i uruchamiać [Windows Update do rozwiązywania problemów z](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) do sprawdzenia, jeśli występują problemy z usługą Windows Update na maszynie.
+
+> [!NOTE]
+> [Windows Update do rozwiązywania problemów z](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) stany, jest on przeznaczony dla klientów Windows, ale także działa w systemie Windows Server.
 
 ## <a name="linux"></a>Linux
 

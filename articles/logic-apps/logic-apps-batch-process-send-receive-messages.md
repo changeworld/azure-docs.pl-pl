@@ -8,13 +8,13 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
-ms.date: 08/19/2018
-ms.openlocfilehash: f60cb79324cad194877402203dbd1706727468d0
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/16/2019
+ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330725"
+ms.locfileid: "54352516"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Wysyłanie, odbieranie i wsadowe przetwarzanie komunikatów w usłudze Azure Logic Apps
 
@@ -60,10 +60,17 @@ Przed może wysyłać komunikaty do usługi batch, tej partii najpierw musi istn
    |----------|-------------|
    | **Tryb partii** | - **Wbudowane**: Definiowanie kryteriów wersji wewnątrz wyzwalacza partii <br>- **Konto integracji**: Definiowanie wielu wersji konfiguracji kryteria za pośrednictwem [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Z kontem integracji możesz zachować te konfiguracje, wszystko w jednym miejscu, a nie w oddzielnych logic apps. | 
    | **Nazwa partii** | Nazwa usługi batch, jest "TestBatch" w tym przykładzie, która ma zastosowanie tylko do **wbudowane** tryb usługi batch |  
-   | **Kryteria zwalniania** | Ma zastosowanie tylko do **wbudowane** usługi batch w trybie i wybiera odpowiednie kryteria, aby spełnić przed przetworzeniem każdej partii: <p>- **Na podstawie liczby komunikatów**: Liczba wiadomości do zbierania w usłudze batch, na przykład 10 wiadomości <br>- **Rozmiar na podstawie**: Maksymalny rozmiar partii w bajtach, na przykład 10 MB <br>- **Na podstawie harmonogramu**: Interwał i częstotliwość między wersjami usługi batch, na przykład 10 minut. Minimalny cykl jest 60 sekund lub 1 minutę. Ułamkowe wartości minutowe skutecznie zaokrąglić do 1 minuty. Aby określić datę i godzinę, wybierz **Pokaż opcje zaawansowane**. <br>- **Zaznacz wszystko**: Użyj określone kryteria. | 
+   | **Kryteria zwalniania** | Ma zastosowanie tylko do **wbudowane** usługi batch w trybie i wybiera odpowiednie kryteria, aby spełnić przed przetworzeniem każdej partii: <p>- **Na podstawie liczby komunikatów**: Zwolnij wsadowego na podstawie liczby komunikaty zebrane przez partię zakończoną. <br>- **Rozmiar na podstawie**: Zwolnij oparte na całkowity rozmiar w bajtach dla wszystkie komunikaty zebrane przez tej partii usługi batch. <br>- **Harmonogram**: Wersja opierają na harmonogramie cyklu, który określa interwał i częstotliwość usługi batch. Zaawansowane opcje można również wybierz strefę czasową i podaj datę i godzinę. <br>- **Zaznacz wszystko**: Użyj określone kryteria. | 
+   | **Liczba komunikatów** | Liczba wiadomości do zbierania w usłudze batch, na przykład 10 wiadomości. Batch limit wynosi 8000 komunikatów. | 
+   | **Batch Size** | Całkowity rozmiar w bajtach, aby zebrać w usłudze batch, na przykład 10 MB. Limit rozmiaru partii wynosi 80 MB. | 
+   | **Harmonogram** | Interwał i częstotliwość między wersjami usługi batch, na przykład 10 minut. Minimalny cykl jest 60 sekund lub 1 minutę. Skutecznie ułamkach minut jest zaokrąglana do 1 minuty. Aby określić strefę czasową lub Data i godzina rozpoczęcia, wybierz **Pokaż opcje zaawansowane**. | 
    ||| 
 
-   W tym przykładzie przedstawiono wszystkie kryteria, ale na potrzeby własnych testów, wybierz tylko jedno kryterium:
+   > [!NOTE]
+   > 
+   > Jeśli zmienisz kryteriach zwalniania, gdy wyzwalacz ma nadal wsadowej ale niewysłanych wiadomości, wyzwalacz będzie używać kryteria zaktualizowanej wersji obsługi niewysłanych wiadomości. 
+
+   W tym przykładzie przedstawiono wszystkie kryteria, ale na potrzeby własnych testów, spróbuj tylko jedno kryterium:
 
    ![Podaj szczegóły wyzwalacza partii](./media/logic-apps-batch-process-send-receive-messages/batch-receiver-criteria.png)
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261149"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352023"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Aplikacje SaaS oferują Podręcznik publikowania
 
@@ -140,7 +140,7 @@ Microsoft obsługuje transakcji handlowych. Firma Microsoft rozlicza klientów w
 | Wymaganie | Szczegóły |  
 |:--- |:--- |  
 |Rozliczeń oraz metod pomiarów | Twoja oferta jest rozliczana miesięczne stałej stawki. Na podstawie użycia cenach i możliwościach "wartość true w górę" na podstawie użycia nie są obsługiwane w tej chwili. |  
-|Unieważnieniu | Twoja oferta jest cancelable przez klienta w dowolnym momencie. |  
+|Anulowanie subskrypcji | Twoja oferta jest cancelable przez klienta w dowolnym momencie. |  
 |Strona docelowa transakcji | Możesz hostować Azure markami transakcji strony docelowej, gdzie użytkownicy mogą tworzyć i zarządzać ich konta usługi SaaS. |   
 | Subskrypcja interfejsu API | Należy udostępnić to usługa, która mogą wchodzić w interakcje z subskrypcją SaaS, tworzenie, aktualizowanie i usuwanie planu usługi oraz konta użytkownika. Krytyczne zmiany interfejsu API muszą być obsługiwane w ciągu 24 godzin. Okresowo będą wydawane niekrytyczne zmiany interfejsu API. |  
 

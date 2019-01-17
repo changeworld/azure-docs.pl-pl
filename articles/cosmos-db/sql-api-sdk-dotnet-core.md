@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 5eb04f30fd6766b8df65998b8a4d53797b8341ba
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 95ebdd74fa8be433c7a31f79ad36d4645bc57318
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053555"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354522"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB platformy .NET Core SDK interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Azure Cosmos DB platformy .NET Core SDK ma równoważności funkcji z najnowszej
 
 * Diagnostykę transportu bezpośrednio/TCP należy dodać TransportException, typ wyjątku wewnętrznego zestawu SDK. Jeśli jest obecny w komunikaty o wyjątkach, ten typ Wyświetla dodatkowe informacje dotyczące rozwiązywania problemów z łącznością klienta.
 
-* Dodano nowy konstruktor przeciążenia przyjmująca klasa HttpMessageHandler, stos programu obsługi HTTP, używany do wysyłania żądań HttpClient (np. HttpClientHandler).
+* Dodano nowe przeciążenia konstruktora przyjmująca klasa HttpMessageHandler, stos programu obsługi HTTP, używany do wysyłania żądań HttpClient (np. HttpClientHandler).
 
 * Naprawiono błąd, w której nagłówek o wartości null zostały nie jest obsługiwany poprawnie.
 
@@ -121,7 +121,7 @@ Azure Cosmos DB platformy .NET Core SDK ma równoważności funkcji z najnowszej
 ### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
 
 * Naprawiono wyjątek KeyNotFoundException dla wielu partycji zamówienia przez zapytania w przypadkach brzegowych.
-* Naprawiono usterkę, w którym atrybut JsonPropery w klauzuli select zapytań LINQ, został nie już brane pod uwagę.
+* Naprawiono usterkę, w którym atrybut JsonProperty w klauzuli select zapytań LINQ, został nie już brane pod uwagę.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 

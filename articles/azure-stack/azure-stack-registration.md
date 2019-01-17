@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 15c86d1d5af3ba4d373f8dfb199d9ea56edb60b4
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7413ebac82adce9f034d5ceec16ec76b9ad53f82
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002488"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359548"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -33,7 +33,7 @@ Informacje przedstawione w tym artykule opisano rejestrowanie systemów usługi 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Będą potrzebne następujące elementy w miejscu, przed zarejestrowaniem:
+Przed zarejestrowaniem są potrzebne następujące elementy w miejscu:
 
  - Weryfikowanie poświadczeń
  - Ustawianie trybu języka programu PowerShell
@@ -52,9 +52,9 @@ Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz 
 
 - Nazwa użytkownika i hasło dla konta które jest właścicielem subskrypcji.
 
-- Konto użytkownika musi mieć dostęp do subskrypcji platformy Azure i masz uprawnienia do tworzenia aplikacji z obsługą tożsamości i nazwy główne usług w katalogu skojarzonego z posiadaną subskrypcją.
+- Konto użytkownika musi mieć dostęp do subskrypcji platformy Azure i masz uprawnienia do tworzenia aplikacji z obsługą tożsamości i nazwy główne usług w katalogu skojarzonego z posiadaną subskrypcją. Firma Microsoft zaleca rejestrowania usługi Azure Stack z platformą Azure za pomocą najniższych administracji przez [utworzenie konta usługi dla rejestracji](azure-stack-registration-role.md) zamiast przy użyciu poświadczeń administratora globalnego.
 
-- Dostawca zasobów usługi Azure Stack zarejestrowany (patrz sekcja rejestrowanie dostawcy zasobów platformy Azure Stack poniżej, aby uzyskać szczegółowe informacje).
+- Dostawca zasobów usługi Azure Stack zarejestrowany (zobacz w poniższej sekcji rejestrowanie dostawcy zasobów platformy Azure Stack, aby uzyskać szczegółowe informacje).
 
 Po zarejestrowaniu uprawnienia administratora globalnego usługi Azure Active Directory nie jest wymagana. Jednak niektóre operacje mogą wymagać poświadczenia administratora globalnego. Na przykład skryptu Instalatora dostawcy zasobów lub nową funkcję wymagające uprawnienia przyznawane. Możesz tymczasowo przywrócić uprawnienia administratora globalnego dla konta lub użyj konta oddzielne administratora globalnego, który jest właścicielem *domyślne subskrypcję dostawcy*.
 
@@ -68,11 +68,11 @@ Aby pomyślnie zarejestrować usługi Azure Stack, tryb języka programu PowerSh
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-Upewnij się, zwraca dane wyjściowe **FullLanguageMode**. Jeśli inny tryb języka jest zwracany, rejestracji będzie należy uruchomić na innym komputerze lub będą musieli można ustawić tryb języka **FullLanguageMode** przed kontynuowaniem.
+Upewnij się, zwraca dane wyjściowe **FullLanguageMode**. Jeśli inny tryb języka jest zwracany, rejestracji musi zostać uruchomione na innym komputerze lub tryb języka musi być równa **FullLanguageMode** przed kontynuowaniem.
 
 ### <a name="install-powershell-for-azure-stack"></a>Instalowanie programu PowerShell dla usługi Azure Stack
 
-Należy użyć najnowszą wersję programu PowerShell dla usługi Azure Stack można zarejestrować za pomocą platformy Azure.
+Najnowszą wersję programu PowerShell dla usługi Azure Stack umożliwia rejestrowania na platformie Azure.
 
 Jeśli nie jest to najnowsza wersja nie jest jeszcze zainstalowany, zobacz [zainstalować program PowerShell dla usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
 
@@ -101,7 +101,7 @@ Podczas rejestrowania usługi Azure Stack na platformie Azure musisz podać nazw
 > [!NOTE]
 > Azure rejestracje stosu przy użyciu model rozliczeń oparty na pojemności, należy zmienić unikatową nazwę, rejestrując ponownie po wygaśnięciu tych subskrypcji rocznej, chyba że użytkownik [Usuń wygasłe rejestracji](azure-stack-registration.md#change-the-subscription-you-use) i ponownie zarejestrowanie w usłudze Azure.
 
-Aby określić identyfikator chmury dla danego wdrożenia usługi Azure Stack, Otwórz program PowerShell jako administrator na komputerze, nie mogą uzyskiwać dostęp do uprzywilejowanych punktu końcowego, uruchom następujące polecenia i Zarejestruj **CloudID** wartość: 
+Aby określić identyfikator chmury dla danego wdrożenia usługi Azure Stack, Otwórz program PowerShell jako administrator na komputerze, który może uzyskiwać dostęp uprzywilejowany punktu końcowego, uruchom następujące polecenia i zapisać **CloudID** wartość: 
 
 ```powershell
 Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
@@ -147,7 +147,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Następnie w tej samej sesji programu PowerShell, upewnij się, że użytkownik jest zalogowany do poprawnego kontekstu programu PowerShell platformy Azure. To jest konto platformy Azure, którego użyto do zarejestrowania dostawcy zasobów usługi Azure Stack powyżej. Program PowerShell w celu uruchomienia:
+6. Następnie w tej samej sesji programu PowerShell, upewnij się, że użytkownik jest zalogowany do poprawnego kontekstu programu PowerShell platformy Azure. To jest konto platformy Azure, który został użyty do wcześniej Zarejestruj dostawcę zasobów usługi Azure Stack. Program PowerShell w celu uruchomienia:
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -170,7 +170,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
    ```
    Aby uzyskać więcej informacji na temat polecenia cmdlet Set-AzsRegistration, zobacz [dokumentacja rejestracji](#registration-reference).
 
-  Proces potrwa od 10 do 15 minut. Po zakończeniu wykonywania polecenia zostanie wyświetlony komunikat **"środowiska jest teraz zarejestrowany i aktywować przy użyciu podanych parametrów."**
+  Ten proces może potrwać od 10 do 15 minut. Po zakończeniu wykonywania polecenia zostanie wyświetlony komunikat **"środowiska jest teraz zarejestrowany i aktywować przy użyciu podanych parametrów."**
 
 ## <a name="register-connected-with-capacity-billing"></a>Zarejestruj się związanych z rozliczeniami pojemności
 
@@ -306,9 +306,21 @@ Możesz użyć **zarządzanie regionami** Kafelek, aby sprawdzić, czy rejestrac
 
 2. Na pulpicie nawigacyjnym wybierz **zarządzanie regionami**.
 
+3. Wybierz **właściwości**. Ten blok, stan i szczegółowe cechy danego środowiska. Możliwe stany **zarejestrowanej** lub **niezarejestrowany**.
+
     [ ![Kafelek Zarządzanie region](media/azure-stack-registration/admin1sm.png "Kafelek Zarządzanie regionu") ](media/azure-stack-registration/admin1.png#lightbox)
 
-3. Wybierz **właściwości**. Ten blok, stan i szczegółowe cechy danego środowiska. Możliwe stany **zarejestrowanej** lub **niezarejestrowany**. Jeśli nie zarejestrowano, pokazuje również identyfikator subskrypcji platformy Azure umożliwia rejestrowanie usługi Azure Stack, wraz z rejestracji grupy zasobów i nazwę.
+    Jeśli nie zarejestrowano, właściwości obejmują:
+    
+    - **Identyfikator subskrypcji rejestracji**: Identyfikator subskrypcji platformy Azure, rejestrowane i powiązanych z usługi Azure Stack
+    - **Grupa zasobów rejestracji**: Grupa zasobów platformy Azure w ramach subskrypcji skojarzonych zawierającą odpowiednie zasoby usługi Azure Stack.
+
+4. Użyj witryny Azure portal, aby wyświetlić rejestracje aplikacji usługi Azure Stack. Zaloguj się do witryny Azure portal przy użyciu konta skojarzonego z subskrypcją używane do rejestrowania usługi Azure Stack. Przełącz się do dzierżawy skojarzonej z usługą Azure Stack.
+5. Przejdź do **usługi Azure Active Directory > Rejestracje aplikacji > Wyświetl wszystkie aplikacje**.
+
+    ![Rejestracje aplikacji](media/azure-stack-registration/app-registrations.png)
+
+    Rejestracje aplikacji w usłudze Azure Stack mają prefiks **usługi Azure Stack**.
 
 Alternatywnie można sprawdzić, czy rejestracja powiodła się przy użyciu funkcji zarządzania w portalu Marketplace. Jeśli zobaczysz listę elementów portalu marketplace w bloku zarządzania portalu Marketplace, proces rejestracji zakończyło się pomyślnie. Jednak w środowiskach rozłączonych nie będzie można zobaczyć elementy portalu marketplace w portalu Marketplace zarządzania. Jednak można użyć narzędzia w trybie offline, aby zweryfikować rejestrację.
 
@@ -353,7 +365,7 @@ Musisz zaktualizować lub odnowić rejestrację w następujących okolicznościa
 
 #### <a name="remove-the-activation-resource-from-azure-stack"></a>Usuń zasób aktywacji z usługi Azure Stack
 
-Najpierw należy usunąć zasób aktywacji z usługi Azure Stack, a następnie zasobu rejestracji na platformie Azure.  
+Należy najpierw usunąć zasób aktywacji z usługi Azure Stack, a następnie zasobu rejestracji na platformie Azure.  
 
 Aby usunąć zasób aktywacji w usłudze Azure Stack, uruchom następujące polecenia cmdlet programu PowerShell w środowisku usługi Azure Stack:  
 
@@ -383,7 +395,7 @@ Teraz mogła całkowicie wyrejestrować w scenariuszu rozłączonych i należy p
 
 ### <a name="disable-or-enable-usage-reporting"></a>Wyłącz lub Włącz raportowanie użycia
 
-W środowiskach usługi Azure Stack, które korzystają z modelu rozliczeń pojemności Wyłącz funkcję raportowania z użycia **UsageReportingEnabled** za pomocą parametru **AzsRegistration zestaw** lub  **Get-AzsRegistrationToken** polecenia cmdlet. Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia.
+W środowiskach usługi Azure Stack, które korzystają z modelu rozliczeń pojemności Wyłącz funkcję raportowania z użycia **UsageReportingEnabled** za pomocą parametru **AzsRegistration zestaw** lub  **Get-AzsRegistrationToken** polecenia cmdlet. Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia trzeba wyłączyć raportowanie użycia.
 
 #### <a name="with-a-connected-azure-stack"></a>Za pomocą połączonej usługi Azure Stack
 
@@ -417,7 +429,7 @@ Przenoszenie zasobów rejestracji między grupami zasobów w ramach tej samej su
 
 ## <a name="registration-reference"></a>Dokumentacja rejestracji
 
-### <a name="set-azsregistration"></a>Zestaw AzsRegistration
+### <a name="set-azsregistration"></a>Set-AzsRegistration
 
 Zestaw AzsRegistration służy do rejestrowania usługi Azure Stack na platformie Azure i włączyć lub wyłączyć oferty elementów w portalu marketplace i raportowanie użycia.
 
@@ -441,13 +453,13 @@ Aby uruchomić polecenia cmdlet, potrzebne są:
 | ResourceGroupLocation | Ciąg |  |
 | BillingModel | Ciąg | Model rozliczeń, który korzysta z subskrypcji. Dozwolone wartości tego parametru to: Pojemność, PayAsYouUse i rozwoju. |
 | MarketplaceSyndicationEnabled | PRAWDA/FAŁSZ | Określa, czy funkcja zarządzania portalu marketplace jest dostępna w portalu. Ustaw wartość true, jeśli rejestrowanie przy użyciu łączności z Internetem. Ustawienie wartości false, jeśli rejestrowanie w środowiskach rozłączonych. Dla odłączonych rejestracji [narzędzie w trybie offline syndykacji](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) może służyć do pobierania elementów portalu marketplace. |
-| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: Wartość true, False. |
+| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia trzeba wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: True, False. |
 | AgreementNumber | Ciąg |  |
-| registrationName | Ciąg | Ustawić unikatową nazwę dla rejestracji, jeśli skrypt rejestracji są uruchomione na więcej niż jedno wystąpienie usługi Azure Stack przy użyciu tego samego Azure identyfikator subskrypcji. Parametr ma wartość domyślną **AzureStackRegistration**. Jednak jeśli używasz tej samej nazwie w więcej niż jedno wystąpienie usługi Azure Stack, skrypt zakończy się niepowodzeniem. |
+| RegistrationName | Ciąg | Ustawić unikatową nazwę dla rejestracji, jeśli skrypt rejestracji są uruchomione na więcej niż jedno wystąpienie usługi Azure Stack przy użyciu tego samego Azure identyfikator subskrypcji. Parametr ma wartość domyślną **AzureStackRegistration**. Jednak jeśli używasz tej samej nazwie w więcej niż jedno wystąpienie usługi Azure Stack, skrypt zakończy się niepowodzeniem. |
 
 ### <a name="get-azsregistrationtoken"></a>Get-AzsRegistrationToken
 
-Get-AzsRegistrationToken spowoduje wygenerowanie tokenu rejestracji z poziomu parametrów wejściowych.
+Get-AzsRegistrationToken generuje token rejestracji z poziomu parametrów wejściowych.
 
 ```PowerShell  
     Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String>
@@ -463,7 +475,7 @@ Get-AzsRegistrationToken spowoduje wygenerowanie tokenu rejestracji z poziomu pa
 | ResourceGroupLocation | Ciąg |  |
 | BillingModel | Ciąg | Model rozliczeń, który korzysta z subskrypcji. Dozwolone wartości tego parametru to: Pojemność, PayAsYouUse i rozwoju. |
 | MarketplaceSyndicationEnabled | PRAWDA/FAŁSZ |  |
-| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia należy wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: Wartość true, False. |
+| UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia trzeba wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: True, False. |
 | AgreementNumber | Ciąg |  |
 
 

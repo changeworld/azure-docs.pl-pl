@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: f6a6a1deb55bf16c65982c0d58cd6d92559596af
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a57161fd379269f69ce4e83730a29588d9028b7a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728280"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351615"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalowanie i uaktualnianie usługi Azure Backup Server
 > [!div class="op_single_selector"]
@@ -30,10 +30,10 @@ W tym artykule opisano sposób przygotowania środowiska do tworzenia kopii zapa
 >
 >
 
-Umożliwia również ochronę infrastruktury jako obciążeń usługi (IaaS), takie jak maszyny wirtualne na platformie Azure.
+Serwera usługi Mab wdrożone w Maszynie wirtualnej platformy Azure można tworzyć kopie zapasowe maszyn wirtualnych na platformie Azure, ale powinny one znajdować się w tej samej domenie, aby umożliwić operację tworzenia kopii zapasowej. Proces tworzenia kopii maszyn wirtualnych platformy Azure pozostaje taki sam jak tworzenie kopii zapasowych maszyn wirtualnych w warstwie Premium, jednak wdrażania serwera usługi Mab na platformie Azure ma pewne ograniczenia. Aby uzyskać więcej informacji na temat ograniczeń zobacz [Program DPM jako maszynę wirtualną platformy Azure](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
-> Platforma Azure oferuje dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [usługi Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł zawiera informacje i procedury w celu przywrócenia maszyn wirtualnych wdrożonych przy użyciu modelu usługi Resource Manager.
+> Platforma Azure oferuje dwa modele wdrażania związane z tworzeniem i pracą z zasobami: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł zawiera informacje i procedury w celu przywrócenia maszyn wirtualnych wdrożonych przy użyciu modelu usługi Resource Manager.
 >
 >
 
@@ -43,7 +43,7 @@ Usługa Azure Backup Server dziedziczy, większość funkcji tworzenia kopii zap
 Pierwszy krok w kierunku usługi Azure Backup Server i przeprowadzanie jest skonfigurowania serwera z systemem Windows. Serwer może być na platformie Azure lub lokalnie.
 
 ### <a name="using-a-server-in-azure"></a>Za pomocą serwera na platformie Azure
-Podczas wybierania serwera do uruchamiania usługi Azure Backup Server, zaleca się, że rozpoczynać image z galerie systemu Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter lub Windows Server 2019 Datacenter. Artykuł [Utwórz pierwszą maszynę wirtualną Windows w witrynie Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), zawiera samouczek dla klientów zaczynających się od zalecanych maszyny wirtualnej na platformie Azure, nawet jeśli nie znasz platformy Azure przed. Zalecane minimalne wymagania dotyczące serwera maszyny wirtualnej (VM) powinny być: Standard A2 z dwóch rdzeni oraz 3,5 GB pamięci RAM.
+Podczas wybierania serwera do uruchamiania usługi Azure Backup Server, zaleca się, że rozpoczynać image z galerie systemu Windows Server 2012 R2 Datacenter, Windows Server 2016 Datacenter lub Windows Server 2019 Datacenter. Artykuł [Utwórz pierwszą maszynę wirtualną Windows w witrynie Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), zawiera samouczek dla klientów zaczynających się od zalecanych maszyny wirtualnej na platformie Azure, nawet jeśli nie znasz platformy Azure przed. Zalecane minimalne wymagania dotyczące serwera maszyny wirtualnej (VM) powinny być następujące: A2 warstwie podstawowa przy użyciu dwóch rdzeni oraz 3,5 GB pamięci RAM.
 
 Ochrona obciążenia za pomocą usługi Azure Backup Server ma wiele niuanse. Artykuł [Instalowanie programu DPM jako maszynę wirtualną platformy Azure](https://technet.microsoft.com/library/jj852163.aspx), wyjaśniających te różnice. Przed wdrożeniem na maszynie, przeczytaj ten artykuł całkowicie.
 
@@ -52,7 +52,7 @@ Jeśli chcesz uruchomić serwer bazowy na platformie Azure, można uruchomić se
 
 | System operacyjny | Platforma | SKU |
 |:--- | --- |:--- |
-| System Windows Server 2019 r |64-bitowa |Wersje Standard i Datacenter, Essentials (serwera usługi Mab w wersji 3 i nowszych) |
+| Windows Server 2019 |64-bitowa |Wersje Standard i Datacenter, Essentials (serwera usługi Mab w wersji 3 i nowszych) |
 | Windows Server 2016 i najnowsze dodatki Service Pack |64-bitowa |Wersje Standard i Datacenter, Essentials (serwera usługi Mab w wersji 2 i nowsze) |
 | Windows Server 2012 R2 i najnowsze dodatki Service Pack |64-bitowa |Standard, Datacenter, Foundation |
 | Windows Server 2012 i najnowsze dodatki Service Pack |64-bitowa |Datacenter, Foundation, Standard |
@@ -112,7 +112,7 @@ Aby edytować ustawienia replikacji magazynu:
 
     W **wprowadzenie do kopii zapasowej** otwartym bloku **celów kopii zapasowej** zostanie wybrany automatycznie.
 
-    ![Kopia zapasowa cele — domyślna otwieranych](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+    ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
 5. W **cel kopii zapasowej** bloku z **gdzie jest uruchomione Twoje obciążenie** menu, wybierz opcję **On-premises**.
 
@@ -263,7 +263,7 @@ Poniżej przedstawiono kroki, jeśli musisz przenieść serwera usługi Mab na n
 9. Z bazy danych SQL należy przywrócić bazy danych DPMDB
 10. Z poziomu wiersza polecenia administratora na nowy serwer dysk cd, kopia zapasowa Microsoft Azure Zainstaluj lokalizacji i otworzyć folder bin
 
-Przykład ścieżki: C:\windows\system32 > cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
+Przykład ścieżki: C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
 na platformie Azure należy utworzyć kopię zapasową wykonaj polecenie DPMSYNC-SYNC
 
 10) Uruchom polecenie DPMSYNC-SYNC Uwaga Po dodaniu nowych dysków do puli magazynów programu DPM, zamiast przenoszenia stare, uruchom polecenie DPMSYNC - Reallocatereplica

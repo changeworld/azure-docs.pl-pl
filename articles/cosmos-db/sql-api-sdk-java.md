@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: e62276debf121cc39fc5642ed8e5a9faf6b876ed
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cf011558ab984ecaf8181a4dc4ffcb80851f24fb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039643"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352958"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -137,7 +137,7 @@ Zestaw SDK języka Java dla interfejsu API SQL obsługuje operacje synchroniczne
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
 * Usunięto usterkę z zarządzaniem połączeniami, aby zapobiec przeciekom połączenia w trybie bezpośredniego połączenia.
-* Usunięto usterkę zapytania dotyczącego POCZĄTKOWYCH, w którym może zgłaszać wyjątek NullReferenece.
+* Usunięto usterkę zapytania dotyczącego POCZĄTKOWYCH, w którym może zgłaszać wyjątek NullReference.
 * Zwiększono wydajność dzięki zmniejszeniu liczby wywołań sieci dla wewnętrznych pamięci podręcznych.
 * Dodano został zwrócony kod stanu ActivityID i żądań z identyfikatora URI w DocumentClientException w celu ułatwienia rozwiązywania problemów.
 

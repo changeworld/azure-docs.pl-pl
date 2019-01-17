@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1d977631b9975f717d60afff6f1b303fdd4039ff
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6ad8eea21c10726b2c3eaf1e10bfd5efba4d1e48
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328821"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358698"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurowanie integracji usługi Azure Key Vault dla programu SQL Server na maszynach wirtualnych platformy Azure (Resource Manager)
 
@@ -37,6 +37,10 @@ Jeśli używasz programu SQL Server na maszynach w środowisku lokalnym, istniej
 Po włączeniu tej funkcji, automatycznie jest instalowana łącznik programu SQL Server, konfiguruje dostawcę EKM dostępu do usługi Azure Key Vault i tworzy poświadczeń, aby zezwolić na dostęp do magazynu. Jeśli cookie kroki opisane w dokumentacji wymienione wcześniej w środowisku lokalnym, zostanie wyświetlony, że ta funkcja automatyzuje kroki 2 i 3. Jedyną czynnością, którą należy nadal wykonać ręcznie, jest tworzenie magazynu kluczy i kluczy. W efekcie wszystkie ustawienia maszyny Wirtualnej SQL jest zautomatyzowane. Po ukończeniu tej konfiguracji tej funkcji możesz wykonać instrukcje języka T-SQL, aby rozpocząć szyfrowanie z bazy danych lub tworzenie kopii zapasowych, tak jak zwykle.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
+
+  >[!NOTE]
+  > Skorzystaj z dostawcy EKM wersji 1.0.4.0 jest zainstalowany na maszynę Wirtualną programu SQL Server za pośrednictwem [rozszerzenie SQL IaaS](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension). Uaktualnianie rozszerzenie SQL IaaS nie zaktualizuje wersja dostawcy. Proszę uwzględnieniu ręcznego uaktualniania wersji dostawcy EKM. Jeśli to konieczne, (na przykład podczas migracji do wystąpienia zarządzanego SQL).
+
 
 ## <a name="enabling-and-configuring-akv-integration"></a>Umożliwia włączenie i skonfigurowanie Integracja
 Można włączyć integracja podczas inicjowania obsługi lub skonfigurować go do istniejących maszyn wirtualnych.

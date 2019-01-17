@@ -1,11 +1,11 @@
 ---
-title: Środki zaradcze — narzędzie Microsoft Threat modelowania - Azure | Dokumentacja firmy Microsoft
-description: Środki zaradcze strony Microsoft Threat modelowania narzędzia wyróżnianie możliwych rozwiązań najbardziej narażonych generowane zagrożeń.
+title: Środki zaradcze — narzędzie do modelowania zagrożeń firmy Microsoft — Azure | Dokumentacja firmy Microsoft
+description: Środki zaradcze stronę Microsoft Threat narzędzie do modelowania wyróżnianie możliwe rozwiązania najbardziej narażonych generowane zagrożenia.
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 07ef1fd3d81d795c9164741d22b5a689f86bd720
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23867983"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359140"
 ---
-# <a name="microsoft-threat-modeling-tool-mitigations"></a>Środki zaradcze narzędzie modelowania zagrożeń firmy Microsoft
+# <a name="microsoft-threat-modeling-tool-mitigations"></a>Środki zaradcze narzędzie do modelowania zagrożeń firmy Microsoft
 
-Narzędzie modelowania zagrożeń jest kluczowym elementem Microsoft Security Development Lifecycle (SDL). Umożliwia on architektom identyfikowanie i usuwanie potencjalnych problemów z zabezpieczeniami wcześnie, gdy są one względnie proste i ekonomiczne, aby rozwiązać oprogramowanie. W związku z tym znacznie zmniejsza całkowity koszt programowanie. Ponadto firma Microsoft zaprojektowane narzędzie z ekspertami z systemem innym niż zabezpieczeń pamiętać, ułatwiając modelowanie zagrożeń dla wszystkich deweloperów zapewniając wyraźnych wskazówek dotyczących tworzenia i analizowanie modeli zagrożeń.
+Narzędzie do modelowania zagrożeń jest kluczowym elementem z cykl projektowania zabezpieczeń (SDL) firmy Microsoft. Umożliwia ona architektów oprogramowania identyfikować i minimalizować potencjalne problemy wcześnie, gdy są one stosunkowo proste i ekonomiczne, aby rozwiązać. W rezultacie znacznie zmniejsza całkowity koszt rozwoju. Ponadto firma Microsoft narzędzie zaprojektowana pod kątem ekspertów niezwiązanych z zabezpieczeniami na uwadze, ułatwiając modelowanie zagrożeń dla wszystkich deweloperów, zapewniając przejrzyste wskazówki na temat tworzenia i analizowanie modele zagrożeń.
 
-Odwiedź stronę  **[narzędzie modelowania zagrożeń](./azure-security-threat-modeling-tool.md)**  aby zacząć już dzisiaj!
+Odwiedź stronę **[narzędzie do modelowania zagrożeń](./azure-security-threat-modeling-tool.md)** aby zacząć już dziś!
 
 ## <a name="mitigation-categories"></a>Środki zaradcze kategorii
 
-Środki zaradcze narzędzie modelowania zagrożeń są podzielone według ramki zabezpieczeń aplikacji sieci Web, która składa się z następujących czynności:
+Środki zaradcze narzędzie do modelowania zagrożeń są podzielone według ramki zabezpieczeń aplikacji sieci Web, która składa się z następujących czynności:
 
 | Kategoria | Opis |
 | -------- | ----------- |
-| **[Inspekcja i rejestrowanie](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | Czy kto, co i kiedy? Inspekcja i rejestrowanie się jak aplikacja rekordy zdarzeń związanych z zabezpieczeniami |
-| **[Uwierzytelnianie](./azure-security-threat-modeling-tool-authentication.md)** | Kim jesteś? Uwierzytelnianie jest procesem, w którym jednostki potwierdza tożsamość inną jednostkę, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło |
-| **[Autoryzacji](./azure-security-threat-modeling-tool-authorization.md)** | Co należy zrobić? Autoryzacja jest jak aplikacja udostępnia kontroli dostępu do zasobów i operacje |
-| **[Zabezpieczenia komunikacji](./azure-security-threat-modeling-tool-communication-security.md)** | Kto należy mówimy do Zabezpieczenia komunikacji gwarantuje, że cała komunikacja wykonywane jest należycie zabezpieczone |
-| **[Zarządzanie konfiguracją](./azure-security-threat-modeling-tool-configuration-management.md)** | Kto czy aplikacja działa jako? Które bazy danych łączy go z? Jak jest zarządzany aplikacji? Jak są zabezpieczone tych ustawień? Zarządzanie konfiguracją odwołuje się do jak aplikacja obsługuje te problemy z działaniem |
-| **[Kryptografia](./azure-security-threat-modeling-tool-cryptography.md)** | Jak są przechowywanie kluczy tajnych (poufność)? Jak czy sprawdzające manipulacji danymi lub biblioteki (integralność)? Jak należy podaje ziarna dla losowych wartości, które muszą być silną kryptograficznie? Kryptografia odwołuje się do jak aplikacja wymusza poufność i integralność |
-| **[Zarządzanie wyjątkami](./azure-security-threat-modeling-tool-exception-management.md)** | Po wywołaniu metody w aplikacji nie powiedzie się, czego aplikacji? Ile ujawnieniem? Czy można zwrócić informacje o błędzie przyjazną dla użytkowników końcowych Czy przekazać wyjątek cenne informacje do wywołującego? Aplikacja powiedzie bezpiecznie zamknąć? |
-| **[Sprawdzania poprawności danych wejściowych](./azure-security-threat-modeling-tool-input-validation.md)** | Jak sprawdzić, czy dane wejściowe, którą otrzymuje aplikacji jest prawidłowy i bezpieczny? Sprawdzania poprawności danych wejściowych odnosi się do sposobu aplikacji filtry, scrubs lub odrzucenia danych wejściowych przed dodatkowego przetwarzania. Należy wziąć pod uwagę ograniczający dane wejściowe za pośrednictwem punktów wejścia i kodowanie danych wyjściowych przez punkty wyjścia. Czy można ufać danych ze źródeł, takich jak bazy danych i udziałów plików |
-| **[Dane poufne](./azure-security-threat-modeling-tool-sensitive-data.md)** | Jak aplikacja obsługuje poufnych danych? Poufnych danych odwołuje się do jak aplikacja obsługuje dowolne dane, które muszą być chronione w pamięci, za pośrednictwem sieci, lub w magazynach trwałych |
-| **[Zarządzanie sesjami](./azure-security-threat-modeling-tool-session-management.md)** | Jak aplikacji obsługi i chronić sesje użytkowników? Sesja odwołuje się do powiązanych interakcji między użytkownikiem i aplikacji sieci Web |
+| **[Inspekcja i rejestrowanie](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | Kto zrobił, co i kiedy? Inspekcja i rejestrowanie się jak rekordy zdarzeń dotyczących zabezpieczeń w aplikacji |
+| **[Uwierzytelnianie](./azure-security-threat-modeling-tool-authentication.md)** | Kim jesteś? Uwierzytelnianie jest procesem, w którym jednostki potwierdza tożsamość innej jednostki, zwykle za pomocą poświadczeń, takie jak nazwa użytkownika i hasło |
+| **[Autoryzacja](./azure-security-threat-modeling-tool-authorization.md)** | Co należy zrobić? Autoryzacja to, jak aplikacja udostępnia mechanizmy kontroli dostępu do zasobów i operacji |
+| **[Bezpieczeństwo komunikacji](./azure-security-threat-modeling-tool-communication-security.md)** | Kto należy się porozumiewają? Bezpieczeństwo komunikacji gwarantuje, że cała komunikacja, wykonywane są tak bezpieczne, jak to możliwe |
+| **[Zarządzanie konfiguracją](./azure-security-threat-modeling-tool-configuration-management.md)** | Kto czy aplikacja działa jako? Które bazy danych ona nawiązać połączenie? Jak jest podawana aplikacji Jak są zabezpieczone te ustawienia? Zarządzanie konfiguracją odwołuje się do jak aplikacja obsługuje te problemy operacyjne |
+| **[Kryptografia](./azure-security-threat-modeling-tool-cryptography.md)** | Jak są przechowywanie wpisów tajnych (poufność)? Jak się masz sprawdzające odporne Twoje dane lub bibliotek (integralność)? Jak można podajesz wartości początkowe wartości losowych, które muszą być silną kryptograficznie? Kryptografia odwołuje się do jak aplikacja wymusza poufności i integralności |
+| **[Zarządzanie wyjątkami](./azure-security-threat-modeling-tool-exception-management.md)** | Podczas wywołania metody w aplikacji nie powiedzie się, czego aplikacji? Ile ujawnisz? Zwraca informacje o błędzie przyjazną dla użytkowników końcowych? Czy przekazać wyjątek cenne informacje obiektu wywołującego? Aplikacja elegancko nie powieść się? |
+| **[Walidacja danych wejściowych](./azure-security-threat-modeling-tool-input-validation.md)** | Skąd wiadomo, że dane wejściowe, które odbiera aplikacja jest prawidłowy i bezpieczny? Walidacja danych wejściowych odnosi się do jak aplikacja filtry, scrubs lub odrzuci dane wejściowe przed dodatkowego przetwarzania. Należy wziąć pod uwagę, ograniczając danych wejściowych za pośrednictwem punktów wejścia i kodowanie danych wyjściowych za pomocą punktów zakończenia. Czy można ufać dane ze źródeł, takich jak bazy danych i udziałów plików? |
+| **[Dane poufne](./azure-security-threat-modeling-tool-sensitive-data.md)** | Jak aplikacja obsługuje poufnych danych? Dotyczy jak aplikacja obsługuje dowolne dane, które muszą być chronione w pamięci, za pośrednictwem sieci, lub w trwałych magazynach danych poufnych |
+| **[Zarządzanie sesjami](./azure-security-threat-modeling-tool-session-management.md)** | Jak czy aplikacji obsługi i chronić sesje użytkowników? Sesja odwołuje się do powiązanych interakcji między użytkownikiem a aplikacją sieci Web |
 
-Dzięki temu można zidentyfikować:
+Pomaga to identyfikować:
 
-* Gdzie składają się z najbardziej typowych błędów
-* Gdzie znajdują się najbardziej przydatnych wyników ulepszenia
+* Gdzie są wykonywane najczęstsze pomyłki
+* Gdzie są najbardziej wiarygodne ulepszenia
 
-W związku z tym używać tych kategorii w celu fokus oraz ustalić ich priorytety służbowy zabezpieczeń, tak, że jeśli wiadomo, że występują najczęstszych problemów z zabezpieczeniami w wejściowych kategorii sprawdzania poprawności, uwierzytelniania i autoryzacji, możesz uruchomić istnieje. Aby uzyskać więcej informacji można znaleźć  **[to łącze patentowe](https://www.google.com/patents/US7818788)**
+W rezultacie korzystanie z tych kategorii, aby skoncentrować się i priorytety pracy zabezpieczeń, tak, że jeśli wiesz, że najbardziej rozpowszechnionych problemy z zabezpieczeniami występują w danych wejściowych kategorie sprawdzania poprawności, uwierzytelniania i autoryzacji, możesz rozpocząć istnieje. Aby uzyskać więcej informacji, odwiedź stronę  **[ten link patentu](https://www.google.com/patents/US7818788)**
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Odwiedź stronę  **[zagrożenia narzędzia do modelowania zagrożeń](./azure-security-threat-modeling-tool-threats.md)**  Aby dowiedzieć się więcej o kategoriach zagrożeń używa narzędzia do generowania projektowania możliwe zagrożenia.
+Odwiedź stronę **[zagrożenia narzędzie do modelowania zagrożeń](./azure-security-threat-modeling-tool-threats.md)** Aby dowiedzieć się więcej o kategoriach zagrożeń używa narzędzie do generowania projektu możliwe zagrożenia.

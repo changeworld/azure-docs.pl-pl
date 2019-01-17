@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880152"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352929"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -94,7 +94,7 @@ Funkcja Przekierowywanie adresu URL jest śledzona w zaległości w usłudze Azu
 
 Tak. Usługa DNS platformy Azure obsługuje ASCII rozszerzonego zestawu dla zestawów rekordów TXT kodowania. Ale musisz użyć najnowszej wersji interfejsów API REST platformy Azure, SDK, programu PowerShell i interfejsu wiersza polecenia. Wersje starsze niż 1 października 2017 r. lub zestawu SDK 2.1 nie obsługują rozszerzonego zestawu ASCII. 
 
-Na przykład użytkownik może podać ciąg jako wartość dla rekordu TXT, który ma rozszerzone \128 znaków ASCII. Przykładem jest "abcd\128efgh." Usługa Azure DNS korzysta z tego znaku, który jest 128, wartość bajtu w wewnętrznej reprezentacji. W czasie rozpoznawania nazw DNS ta wartość bajtu jest zwracany w odpowiedzi. Należy również zauważyć, "abc" i "\097\098\099" czy zamienne chodzi rozwiązania jest. 
+Na przykład Podaj ciąg jako wartość dla rekordu TXT, który ma rozszerzone \128 znaków ASCII. Przykładem jest "abcd\128efgh." Usługa Azure DNS korzysta z tego znaku, który jest 128, wartość bajtu w wewnętrznej reprezentacji. W czasie rozpoznawania nazw DNS ta wartość bajtu jest zwracany w odpowiedzi. Należy również zauważyć, "abc" i "\097\098\099" czy zamienne chodzi rozwiązania jest. 
 
 Wykonamy [ze standardem RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) strefa reguły ucieczki wzorca format pliku dla rekordów TXT. Na przykład `\` teraz faktycznie wszystko, czego zgodnie z RFC specjalne. Jeśli określisz `A\B` jako wartość rekordu TXT, jest reprezentowane i rozpoznane jako `AB`. Jeśli na pewno rekord TXT, aby `A\B` w rozdzielczości, musisz wyjść `\` ponownie. Na przykład określić `A\\B`.
 
@@ -139,7 +139,7 @@ Alias rekordy są kwalifikacji na prawidłowy zestaw rekordów DNS. Nie istnieje
 
 Tak. Usługa DNS platformy Azure obsługuje cohosting domeny z innymi usługami DNS.
 
-Aby skonfigurować cohosting, należy zmodyfikować rekordy NS dla domeny wskazywał serwery nazw obu dostawców. Nazwa serwera (NS) rekordy kontroli, których dostawców otrzymywać zapytania DNS dla domeny. Możesz zmodyfikować te rekordy NS w usłudze Azure DNS, u innego dostawcy i w strefie nadrzędnej. Strefy nadrzędnej jest zazwyczaj skonfigurowany, za pomocą rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [Delegowanie domeny DNS](dns-domain-delegation.md).
+Aby skonfigurować cohosting, należy zmodyfikować rekordy NS dla domeny wskazywał serwery nazw obu dostawców. The name server (NS) records control which providers receive DNS queries for the domain. Możesz zmodyfikować te rekordy NS w usłudze Azure DNS, u innego dostawcy i w strefie nadrzędnej. Strefy nadrzędnej jest zazwyczaj skonfigurowany, za pomocą rejestratora nazw domen. Aby uzyskać więcej informacji na temat delegowania usługi DNS, zobacz [Delegowanie domeny DNS](dns-domain-delegation.md).
 
 Upewnij się również, czy rekordy DNS dla domeny są zsynchronizowane między obu dostawców usługi DNS. Usługa Azure DNS nie obsługuje obecnie transferu strefy DNS. Rekordy DNS muszą być synchronizowane za pomocą [portalu zarządzania usługi Azure DNS](dns-operations-recordsets-portal.md), [interfejsu API REST](https://docs.microsoft.com/powershell/module/azurerm.dns), [SDK](dns-sdk.md), [poleceń cmdlet programu PowerShell](dns-operations-recordsets.md), lub [Narzędzie interfejsu wiersza polecenia](dns-operations-recordsets-cli.md).
 
@@ -195,7 +195,7 @@ Aby skonfigurować międzynarodowych nazw domen w usłudze Azure DNS, należy pr
 
 Obsługa domen prywatnych jest zaimplementowana za pomocą funkcji stref prywatnych. Ta funkcja jest obecnie dostępna w publicznej wersji zapoznawczej. Strefami prywatnymi odbywa się przy użyciu tych samych narzędzi jako strefy DNS platformy Azure dostępnego z Internetu. Są one możliwej do rozpoznania tylko z w ramach określonej sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [Przegląd](private-dns-overview.md).
 
-W tej chwili stref prywatnych nie są obsługiwane w witrynie Azure portal. 
+Obecnie stref prywatnych nie są obsługiwane w witrynie Azure portal.
 
 Aby uzyskać informacje na temat innych wewnętrznych DNS na platformie Azure, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -217,7 +217,7 @@ Tak. Klientów można skojarzyć maksymalnie 10 sieciami wirtualnymi rozpoznawan
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Sieć wirtualną należącą do innej subskrypcji dodaniem jako sieć wirtualną rozpoznawania do prywatnej strefy?
 
-Tak. Użytkownik musi mieć uprawnienia do operacji zapisu w sieci wirtualnych i prywatnej strefy DNS. Do wielu ról RBAC można udzielić uprawnienia do zapisu. Na przykład rola klasycznego RBAC Współautor sieci ma uprawnienia do zapisu w sieciach wirtualnych. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
+Tak. Musi mieć uprawnienia do operacji zapisu w sieci wirtualnych i prywatnej strefy DNS. Do wielu ról RBAC można udzielić uprawnienia do zapisu. Na przykład rola klasycznego RBAC Współautor sieci ma uprawnienia do zapisu w sieciach wirtualnych. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Rekordy DNS maszyny wirtualnej automatycznie zarejestrowane w prywatnej strefy automatycznie usunie usunięcie maszyn wirtualnych przez klienta?
 
@@ -257,7 +257,7 @@ Tak. W publicznej wersji zapoznawczej istnieją następujące ograniczenia.
 * Jeżeli określono sieć wirtualną rejestracji, rekordy DNS dla maszyn wirtualnych z tej sieci wirtualnej, które są zarejestrowane do prywatnej strefy nie można wyświetlić lub pobrać z programu PowerShell, interfejsu wiersza polecenia lub interfejsów API. Rekordy maszyny Wirtualnej są zarejestrowane i rozwiązać pomyślnie.
 * Odwrotnego DNS działa tylko w przypadku prywatnej przestrzeni adresów IP w sieci wirtualnej rejestracji.
 * Odwrotnym systemem DNS, aby uzyskać prywatny adres IP, który nie jest zarejestrowany w prywatnej strefy zwraca "internal.cloudapp.net" jako sufiks DNS. Ten sufiks nelze rozpoznat. Przykładem jest prywatny adres IP dla maszyny wirtualnej w sieci wirtualnej, która zostanie połączona jako sieć wirtualną rozpoznawania na strefę prywatną.
-* Sieć wirtualna nie może mieć żadnych maszyn wirtualnych przy użyciu z kartą Sieciową dołączoną, gdy łączy się on po raz pierwszy prywatnej strefy jako sieć wirtualną rejestracji lub rozpoznawania. Innymi słowy sieć wirtualna musi być pusta. Następnie sieci wirtualnej może być pusty dla przyszłych połączeń jako sieć wirtualną rejestracji lub rozpoznawania do innych stref prywatnych. 
+* Sieć wirtualna musi być pusty, gdy łączy się on po raz pierwszy prywatnej strefy jako sieć wirtualną rejestracji lub rozpoznawania. Następnie sieci wirtualnej może być pusty dla przyszłych połączeń jako sieć wirtualną rejestracji lub rozpoznawania do innych stref prywatnych.
 * Warunkowego przesyłania dalej nie jest obsługiwane, na przykład, aby włączyć rozpoznawanie między sieciami Azure i lokalnie. Dowiedz się, jak klienci mogą weź pod uwagę, w tym scenariuszu za pośrednictwem innych mechanizmów. Zobacz [rozpoznawanie nazw dla maszyn wirtualnych i wystąpień roli](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Czy istnieją wszystkie przydziały i limity strefy lub rekordów w przypadku stref prywatnych?
