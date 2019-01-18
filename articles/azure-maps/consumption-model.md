@@ -18,8 +18,8 @@ ms.locfileid: "34600633"
 # <a name="consumption-model"></a>Model użycia
 
 Online Routing zawiera zestaw parametrów szczegółowy opis modelu zużycie specyficzne dla pojazdów.
-W zależności od wartości **vehicleEngineType**, obsługiwane są dwa modele zużycie główna: _spalania_ i _Electric_. Określanie parametrów, które należą do różnych modeli w jednym żądaniu występuje błąd.
-Użycie modelu nie można używać z **travelMode** wartości _rowerów_ i _pieszego_.
+W zależności od wartości **vehicleEngineType**, obsługiwane są dwa modele zużycie główna: _Combustion_ i _Electric_. Określanie parametrów, które należą do różnych modeli w jednym żądaniu występuje błąd.
+Użycie modelu nie można używać z **travelMode** wartości _bicycle_ i _pedestrian_.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Ograniczenia parametru dla modelu zużycie
 
@@ -38,7 +38,7 @@ W obu modelach przez jawne określenie niektórych parametrów wymaga określeni
 
 ## <a name="combustion-consumption-model"></a>Model zużycie spalania
 
-Model zużycie spalania jest używany podczas **vehicleEngineType** ustawiono _spalania_.
+Model zużycie spalania jest używany podczas **vehicleEngineType** ustawiono _combustion_.
 Lista parametrów, które należą do tego modelu są poniżej. Zapoznaj się z sekcją parametrów, aby uzyskać szczegółowy opis.
 
 * constantSpeedConsumptionInLitersPerHundredkm
