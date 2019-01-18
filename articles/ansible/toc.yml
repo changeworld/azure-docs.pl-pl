@@ -16,33 +16,45 @@ items:
   - name: Zarządzanie maszyną wirtualną z systemem Linux
     href: /azure/virtual-machines/linux/ansible-manage-linux-vm
     maintainContext: true
+  - name: Uruchamianie elementu playbook w usłudze Cloud Shell
+    href: ./ansible-run-playbook-in-cloudshell.md
   expanded: true
 - name: Samouczki
   items:
-  - name: Uruchamianie elementu playbook w usłudze Cloud Shell
-    href: ./ansible-run-playbook-in-cloudshell.md
-    maintainContext: true
-  - name: Zarządzanie spisami dynamicznymi
-    href: ./ansible-manage-azure-dynamic-inventories.md
-    maintainContext: true
-  - name: Tworzenie i konfigurowanie zestawu skalowania maszyn wirtualnych
-    href: ./ansible-create-configure-vmss.md
-  - name: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych
-    href: ./ansible-deploy-app-vmss.md
-  - name: Autoskalowanie zestawu skalowania maszyn wirtualnych
-    href: ./ansible-auto-scale-vmss.md
-  - name: Tworzenie i konfigurowanie klastrów usługi AKS
-    href: ./ansible-create-configure-aks.md
-  - name: Tworzenie i konfigurowanie usługi Azure Application Gateway
-    href: ./ansible-create-configure-application-gateway.md
-  - name: Tworzenie i konfigurowanie usługi Azure DB dla MySQL
-    href: ./ansible-create-configure-mysql.md
-  - name: Tworzenie i konfigurowanie usługi Azure Web Apps
-    href: ./ansible-create-configure-azure-web-apps.md
-  - name: Skalowanie usługi Azure Web Apps
-    href: ./ansible-scale-azure-web-apps.md
-  - name: Tworzenie i konfigurowanie tabel tras
-    href: ./ansible-create-configure-route-table.md
+  - name: AKS
+    items:
+    - name: Tworzenie i konfigurowanie klastrów usługi AKS
+      href: ./ansible-create-configure-aks.md
+  - name: App Service
+    items:
+    - name: Tworzenie i konfigurowanie usługi Azure Web Apps
+      href: ./ansible-create-configure-azure-web-apps.md
+    - name: Skalowanie usługi Azure Web Apps
+      href: ./ansible-scale-azure-web-apps.md
+  - name: Application Gateway
+    items:
+    - name: Tworzenie i konfigurowanie usługi Azure Application Gateway
+      href: ./ansible-create-configure-application-gateway.md
+  - name: Bazy danych
+    items:
+    - name: Tworzenie i konfigurowanie usługi Azure DB dla MySQL
+      href: ./ansible-create-configure-mysql.md
+  - name: Spis dynamiczny
+    items:
+    - name: Zarządzanie spisami dynamicznymi
+      href: ./ansible-manage-azure-dynamic-inventories.md
+  - name: Sieć wirtualna
+    items:
+    - name: Tworzenie i konfigurowanie tabel tras
+      href: ./ansible-create-configure-route-table.md
+  - name: Zestaw skalowania maszyn wirtualnych
+    items:
+    - name: Tworzenie i konfigurowanie zestawu skalowania maszyn wirtualnych
+      href: ./ansible-create-configure-vmss.md
+    - name: Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych
+      href: ./ansible-deploy-app-vmss.md
+    - name: Autoskalowanie zestawu skalowania maszyn wirtualnych
+      href: ./ansible-auto-scale-vmss.md
 - name: Dokumentacja
   items:
   - name: Role elementu playbook
@@ -67,9 +79,9 @@ items:
   items:
   - name: Rozszerzenie programu Visual Studio Code dla rozwiązania Ansible
     href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: a54936953aa812cbe943394b9d083d8957f770ae
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 914987ee58a2ba09295d425c2107ba7eb192c131
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789844"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359242"
