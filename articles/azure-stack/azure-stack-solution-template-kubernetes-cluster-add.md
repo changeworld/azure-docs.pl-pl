@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e11db0cacb14ab94c40ebbf6cac356a08cc016f1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352686"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388471"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Dodaj rozwiązanie Kubernetes w portalu Marketplace usługi Azure Stack
 
@@ -60,11 +60,11 @@ Tworzenie planu, oferty i subskrypcji dla elementu portalu Marketplace platformy
 
     e. Wybierz **oferują**. Wybierz nazwę oferty, który został utworzony. Zanotuj identyfikator subskrypcji.
 
-## <a name="create-a-service-principle-and-credentials-in-ad-fs"></a>Tworzenie jednostki usługi i poświadczeń w usługach AD FS
+## <a name="create-a-service-principal-and-credentials-in-ad-fs"></a>Tworzenie nazwy głównej usługi i poświadczeń w usługach AD FS
 
-Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarządzania tożsamościami, należy utworzyć jednostki usługi dla użytkowników, wdrażaniu klastra Kubernetes.
+Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarządzania tożsamościami, należy utworzyć jednostkę dla użytkowników, wdrażaniu klastra Kubernetes usługi.
 
-1. Utwórz i wyeksportuj certyfikat ma być używany do utworzenia jednostki usługi. Poniższy fragment kodu, poniżej przedstawiono sposób tworzenia certyfikatu z podpisem własnym. 
+1. Utwórz i wyeksportuj certyfikat służący do tworzenia nazwy głównej usługi. Poniższy fragment kodu, poniżej przedstawiono sposób tworzenia certyfikatu z podpisem własnym. 
 
     - Potrzebujesz następujących rodzajów informacji:
 
@@ -104,20 +104,20 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. Tworzenie jednostki usługi przy użyciu certyfikatu.
+2. Tworzenie usługi podmiotu zabezpieczeń, za pomocą certyfikatu.
 
     - Potrzebujesz następujących rodzajów informacji:
 
        | Wartość | Opis                     |
        | ---   | ---                             |
        | ERCS IP | W ASDK uprzywilejowanych punkt końcowy jest zwykle `AzS-ERCS01`. |
-       | Nazwa aplikacji | Prosta nazwa jednostki usługi aplikacji. |
+       | Nazwa aplikacji | Prosta nazwa dla nazwy głównej usługi aplikacji. |
        | Lokalizacja magazynu certyfikatów | Ścieżka na komputerze, na którym są przechowywane certyfikatu. Na przykład: `Cert:\LocalMachine\My\<someuid>` |
 
     - Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza. Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
 
         ```PowerShell  
-        #Create service principle using the certificate
+        #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
         #certificate store location. Eg. Cert:\LocalMachine\My
@@ -132,7 +132,7 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
         # Creating a PSSession to the ERCS PrivilegedEndpoint
         $session = New-PSSession -ComputerName $privilegedendpoint -ConfigurationName PrivilegedEndpoint -Credential $creds
 
-        # Get Service Principle Information
+        # Get Service principal Information
         $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name "$using:applicationName" -ClientCertificates $using:cert}
 
         # Get Stamp information
@@ -167,7 +167,7 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
         $ServicePrincipal
         ```
 
-    - Szczegóły zasady usługi wyglądać jak poniższy fragment kodu
+    - Szczegóły jednostki usługi wyglądać jak poniższy fragment kodu
 
         ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356

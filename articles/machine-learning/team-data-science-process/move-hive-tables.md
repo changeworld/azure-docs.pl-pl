@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134951"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390936"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Tworzenie tabel programu Hive i ładowanie danych z usługi Azure Blob Storage
 
@@ -137,11 +137,11 @@ Oto zapytanie Hive, które tworzy tabelę programu Hive.
 
 Poniżej przedstawiono opisy pól, które należy podłączyć i inne konfiguracje:
 
-* **<database name>**: Nazwa bazy danych, który chcesz utworzyć. Jeśli chcesz użyć domyślnej bazy danych, zapytanie *Utwórz bazę danych...*  można pominąć.
-* **<table name>**: Nazwa tabeli, która ma zostać utworzona w ramach określonej bazy danych. Jeśli chcesz użyć domyślnej bazy danych, tabeli może być bezpośrednio odwołuje się *<table name>* bez <database name>.
-* **<field separator>**: separator ograniczającego pola w pliku danych do przesłania do tabeli programu Hive.
-* **<line separator>**: separator ograniczającego wierszy w pliku danych.
-* **<storage location>**: lokalizacji magazynu platformy Azure, aby zapisać dane z tabel programu Hive. Jeśli nie określisz *lokalizacji <storage location>* , bazy danych i tabel są przechowywane w *hive/warehouse/* katalogu w domyślnym kontenerze klastra Hive domyślnie. Jeśli chcesz określić lokalizację magazynu, lokalizację magazynu musi mieścić się w domyślny kontener dla bazy danych i tabel. Ta lokalizacja musi być określony jako lokalizacji względnej wobec domyślny kontener klastra w formacie *"wasb: / / / < katalog 1 > /"* lub *"wasb: / / / < katalog 1 > / < katalog 2 > /"* itp. Po wykonaniu zapytania względne katalogi są tworzone w domyślnym kontenerze.
+* **\<Nazwa bazy danych\>**: Nazwa bazy danych, który chcesz utworzyć. Jeśli chcesz użyć domyślnej bazy danych, zapytanie *Utwórz bazę danych...*  można pominąć.
+* **\<Nazwa tabeli\>**: Nazwa tabeli, która ma zostać utworzona w ramach określonej bazy danych. Jeśli chcesz użyć domyślnej bazy danych, tabeli może być bezpośrednio odwołuje się *\<nazwy tabeli\>* bez \<Nazwa bazy danych\>.
+* **\<separator pola\>**: separator ograniczającego pola w pliku danych do przesłania do tabeli programu Hive.
+* **\<separator wiersza\>**: separator ograniczającego wierszy w pliku danych.
+* **\<Lokalizacja magazynu\>**: lokalizacji magazynu platformy Azure, aby zapisać dane z tabel programu Hive. Jeśli nie określisz *lokalizacji \<lokalizacji magazynu\>*, bazy danych i tabel są przechowywane w *hive/warehouse/* katalogu w domyślnym kontenerze klaster programu Hive za Domyślnie. Jeśli chcesz określić lokalizację magazynu, lokalizację magazynu musi mieścić się w domyślny kontener dla bazy danych i tabel. Ta lokalizacja musi być określony jako lokalizacji względnej wobec domyślny kontener klastra w formacie *"wasb: / / / < katalog 1 > /"* lub *"wasb: / / / < katalog 1 > / < katalog 2 > /"* itp. Po wykonaniu zapytania względne katalogi są tworzone w domyślnym kontenerze.
 * **TBLPROPERTIES("SKIP.Header.line.Count"="1")**: Jeśli plik danych ma wiersz nagłówka, należy dodać tę właściwość **na końcu** z *Utwórz tabelę* zapytania. W przeciwnym razie wiersz nagłówka jest ładowany jako rekord w tabeli. Jeśli plik danych nie ma wiersz nagłówka, można pominąć tę konfigurację w zapytaniu.
 
 ## <a name="load-data"></a>Ładowanie danych do tabel programu Hive
@@ -149,7 +149,7 @@ Oto zapytanie Hive, który ładuje dane do tabeli programu Hive.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **<path to blob data>**: Jeśli plik obiektu blob do przekazania do tabeli programu Hive znajduje się w domyślnym kontenerze klastra usługi HDInsight Hadoop *<path to blob data>* powinien być w formacie *"wasb: / / /<directory in this container> / <blob file name>'*. Można także pliku obiektu blob w kontenerze dodatkowe klastra usługi HDInsight Hadoop. W tym przypadku *<path to blob data>* powinien być w formacie *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
+* **\<Ścieżka do danych obiektów blob\>**: Jeśli plik obiektu blob do przekazania do tabeli programu Hive znajduje się w domyślnym kontenerze klastra usługi HDInsight Hadoop *\<ścieżka do danych obiektów blob\>* powinien być w formacie *"wasb: / / /<directory in this container> /<blob file name>'*. Można także pliku obiektu blob w kontenerze dodatkowe klastra usługi HDInsight Hadoop. W tym przypadku *\<ścieżka do danych obiektów blob\>* powinien być w formacie *"wasb: / /<container name><storage account name>.blob.core.windows.net/<blob file name>"*.
 
   > [!NOTE]
   > Dane obiektu blob do przekazania do tabeli programu Hive, musi mieć domyślne lub dodatkowego kontenera konta magazynu dla klastra usługi Hadoop. W przeciwnym razie *ładowanie danych* zapytanie nie powiedzie się skarżących się, że nie można uzyskać dostęp do danych.
@@ -216,7 +216,7 @@ Wybierz dane z tabeli zewnętrznej w kroku 1, a następnie wstawianie do tabeli 
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> Jeśli tabela TEXTFILE  *<database name>.<external textfile table name>* ma partycje, w KROKU 3 `SELECT * FROM <database name>.<external textfile table name>` polecenie wybiera zmiennej partycji jako pole zwróconego zestawu danych. Wstawianie do  *<database name>.<ORC table name>* kończy się niepowodzeniem, ponieważ  *<database name>.<ORC table name>* nie ma zmienną partycji jako pole w schematu tabeli. W takim przypadku musisz wybrać pola, które ma zostać wstawiony do  *<database name>.<ORC table name>* w następujący sposób:
+> Jeśli tabela TEXTFILE *\<Nazwa bazy danych\>.\< Nazwa tabeli zewnętrznej textfile\>* ma partycje, w KROKU 3 `SELECT * FROM <database name>.<external textfile table name>` polecenie wybiera zmiennej partycji jako pole zwróconego zestawu danych. Wstawianie do *\<Nazwa bazy danych\>.\< Nazwa tabeli ORC\>* zakończy się niepowodzeniem, ponieważ *\<Nazwa bazy danych\>.\< Nazwa tabeli ORC\>* nie ma zmienną partycji jako pole w schematu tabeli. W takim przypadku musisz wybrać pola, które ma zostać wstawiony do *\<Nazwa bazy danych\>.\< Nazwa tabeli ORC\>* w następujący sposób:
 >
 >
 
@@ -225,7 +225,7 @@ Wybierz dane z tabeli zewnętrznej w kroku 1, a następnie wstawianie do tabeli 
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-Można bezpiecznie usunąć *<external textfile table name>* po użyciu następującego zapytania po wszystkich danych został wstawiony do *<database name>.<ORC table name>*:
+Można bezpiecznie usunąć *\<nazwy tabeli zewnętrznej textfile\>* po użyciu następującego zapytania po wszystkich danych został wstawiony do  *\<Nazwa bazy danych\>.\< Nazwa tabeli ORC\>*:
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

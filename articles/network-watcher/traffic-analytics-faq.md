@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582500"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383004"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -35,7 +35,6 @@ Analiza ruchu wymaga następujących wymagań wstępnych:
 
 Twoje konto musi spełniać jeden z następujących czynności, aby włączyć analizę ruchu:
 
-- Twoje konto musi mieć przypisaną do jednej z następujących ról na poziomie subskrypcji: administrator konta, administrator usługi lub administratorów współpracujących.
 - Twoje konto musi mieć jeden z następujących ról kontroli dostępu opartej na rolach w zakresie subskrypcji: właściciel, współautor, Czytelnik lub Współautor sieci.
 - Jeśli Twoje konto nie jest przypisany do jednej z wyżej wymienionych ról, musi ona zostać przypisana do rolę niestandardową, która jest przypisana do następujących czynności, na poziomie subskrypcji.
             
@@ -61,7 +60,7 @@ Aby sprawdzić role przypisane do użytkownika w ramach subskrypcji:
 Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administratorem odpowiednią subskrypcję, aby uzyskać dostęp do poleceń. Aby uzyskać więcej informacji, zobacz [zarządzanie kontrolą dostępu opartej na rolach przy użyciu programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
-## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Platformie Azure, które regiony są analizy ruchu dostępne?
+## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>W jakich regionach platformy Azure jest dostępne rozwiązanie analiza ruchu?
 
 Korzystanie z analizy ruchu dla sieciowych grup zabezpieczeń w jednym z następujących obsługiwanych regionów:
 - Kanada Środkowa
@@ -133,7 +132,7 @@ Dostawcy Microsoft.Insights musi być zarejestrowany dla rejestrowania, aby zape
 
 Pulpit nawigacyjny może potrwać do 30 minut po raz pierwszy. Rozwiązanie musi najpierw agregacji wystarczającej ilości danych dla niego do uzyskania istotnych informacji. Następnie generuje raporty. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co zrobić, jeśli pojawia się ten komunikat: "nie znaleziono żadnych danych w tym obszarze roboczym dla wybranego okresu. Spróbuj zmienić przedział czasu, lub wybierz inny obszar roboczy. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Co zrobić, jeśli pojawia się ten komunikat: "Nie znaleziono żadnych danych w tym obszarze roboczym dla wybranego okresu. Spróbuj zmienić przedział czasu, lub wybierz inny obszar roboczy. "?
 
 Wypróbuj następujące opcje:
 - Zmień przedział czasu na górnym pasku.
@@ -142,7 +141,7 @@ Wypróbuj następujące opcje:
     
 Jeśli problemy będą się powtarzać, budzić w [User voice forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
-## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co zrobić, jeśli pojawia się ten komunikat: "Analiza sieciowej grupie zabezpieczeń dzienniki przepływu po raz pierwszy. Ten proces może potrwać 20 – 30 minut. Sprawdź ponownie po pewnym czasie. (2) Jeśli Twój obszar roboczy jest w obszarze bezpłatna jednostka SKU powyższy krok nie zadziała, Sprawdź tutaj użycie obszaru roboczego, można zweryfikować za pośrednictwem przydziału, wypadku zapoznaj się z często zadawane pytania dotyczące uzyskania dodatkowych informacji. "?
+## <a name="what-if-i-get-this-message-analyzing-your-nsg-flow-logs-for-the-first-time-this-process-may-take-20-30-minutes-to-complete-check-back-after-some-time-2-if-the-above-step-doesnt-work-and-your-workspace-is-under-the-free-sku-then-check-your-workspace-usage-here-to-validate-over-quota-else-refer-to-faqs-for-further-information"></a>Co zrobić, jeśli pojawia się ten komunikat: "Analizuje dzienniki przepływu sieciowej grupy zabezpieczeń po raz pierwszy. Ten proces może potrwać 20 – 30 minut. Sprawdź ponownie po pewnym czasie. (2) Jeśli Twój obszar roboczy jest w obszarze bezpłatna jednostka SKU powyższy krok nie zadziała, Sprawdź tutaj użycie obszaru roboczego, można zweryfikować za pośrednictwem przydziału, wypadku zapoznaj się z często zadawane pytania dotyczące uzyskania dodatkowych informacji. "?
 
 Może zostać wyświetlony ten komunikat, ponieważ:
 - Analiza ruchu niedawno został włączony i może nie jeszcze mają zagregowane wystarczającej ilości danych dla niego do uzyskania istotnych informacji.
@@ -150,7 +149,7 @@ Może zostać wyświetlony ten komunikat, ponieważ:
     
 Jeśli problemy będą się powtarzać, budzić w [User voice forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co zrobić, jeśli pojawia się ten komunikat: "wygląda na to mamy dane zasobów (topologia) i żadnych informacji przepływów. W międzyczasie, kliknij tutaj, aby wyświetlić dane zasobów i odnoszą się do — często zadawane pytania, aby uzyskać więcej informacji. "?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Co zrobić, jeśli pojawia się ten komunikat: "Wygląda na to mamy dane zasobów (topologia) i żadnych informacji przepływów. W międzyczasie, kliknij tutaj, aby wyświetlić dane zasobów i odnoszą się do — często zadawane pytania, aby uzyskać więcej informacji. "?
 
 Informacje o zasobach są widoczne na pulpicie nawigacyjnym; jednak nie statystyki związane z przepływem są obecne. Dane mogą być obecne ze względu na Brak przepływów komunikacji między zasobami. Poczekaj, aż 60 minut, a następnie ponownie sprawdzić stan. Jeśli problem będzie się powtarzać, a masz pewności, czy istnieją przepływów komunikacji między zasobami, budzić w [User voice forum](https://feedback.azure.com/forums/217313-networking?category_id=195844).
 
@@ -227,14 +226,14 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Analiza ruchu jest mierzone. Zliczanie opiera się na przetwarzanie danych dziennika przepływu przez usługę i przechowywania, wynikowy rozszerzone dzienników w obszarze roboczym usługi Log Analytics. 
 
-Na przykład zgodnie [planu cenowego](https://azure.microsoft.com/pricing/details/network-watcher/), biorąc pod uwagę w regionie zachodnio-środkowe stany USA, jeśli dzienników przepływów danych przechowywanych na koncie magazynu, przetwarzane przez analizę ruchu wynosi 10 GB i rozszerzone dzienników pozyskanych w obszarze roboczym usługi Log Analytics jest 1 GB, a następnie odpowiednie opłaty są naliczane: 10 x 2.3$ + 1 x 2.76$ = 25.76$
+Na przykład zgodnie [planu cenowego](https://azure.microsoft.com/pricing/details/network-watcher/), biorąc pod uwagę w regionie zachodnio-środkowe stany USA, jeśli dzienników przepływów danych przechowywanych na koncie magazynu, przetwarzane przez analizę ruchu wynosi 10 GB i rozszerzone dzienników pozyskanych w obszarze roboczym usługi Log Analytics jest 1 GB, a następnie odpowiednie opłaty są: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak można przejść za pomocą klawiatury w widoku mapy geograficznej?
 
 Strona mapy geograficznej zawiera dwa główne obszary:
     
-- **Transparent**: Baner w górnej części mapy geograficznej zawiera przyciski, aby wybrać filtry dystrybucji ruchu (na przykład wdrożenie, ruch z krajów i złośliwym kodem). Po wybraniu przycisku, odpowiedni filtr jest stosowany na mapie. Na przykład jeśli wybierzesz przycisk aktywne, mapy wyróżnia active centrów danych w danym wdrożeniu.
-- **Mapa**: poniżej transparent, sekcji map pokazuje Dystrybucja ruchu między centrami danych platformy Azure i krajów.
+- **Transparent**: Baner w górnej części mapy geograficznej zawiera przyciski, aby wybrać filtry dystrybucji ruchu (na przykład wdrożenia, ruch z krajów i złośliwym kodem). Po wybraniu przycisku, odpowiedni filtr jest stosowany na mapie. Na przykład jeśli wybierzesz przycisk aktywne, mapy wyróżnia active centrów danych w danym wdrożeniu.
+- **Mapa**: Pod nagłówkiem sekcji map pokazuje Dystrybucja ruchu między centrami danych platformy Azure i krajów.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigowanie przy użyciu klawiatury na banerze
     
@@ -264,7 +263,7 @@ Strona mapy geograficznej zawiera dwa główne obszary:
 Na stronie topologia sieci wirtualnych zawiera dwa główne obszary:
     
 - **Transparent**: Baner u góry topologii sieci wirtualnych zawiera przyciski, aby wybrać filtry dystrybucji ruchu (na przykład połączonych sieci wirtualnych, odłączonych sieciach wirtualnych i publicznych adresów IP). Po wybraniu przycisku, odpowiedni filtr jest stosowany na topologii. Na przykład jeśli wybierzesz przycisk aktywne, topologia wyróżnia active sieci wirtualnych w danym wdrożeniu.
-- **Topologia**: poniżej transparent, sekcji topologia przedstawia rozkład ruchu między sieciami wirtualnymi.
+- **Topologia**: Poniżej baneru sekcji topologia przedstawia Dystrybucja ruchu między sieciami wirtualnymi.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigowanie przy użyciu klawiatury na banerze
     
@@ -286,7 +285,7 @@ Na stronie topologia sieci wirtualnych zawiera dwa główne obszary:
 Na stronie topologia podsieci wirtualnych zawiera dwa główne obszary:
     
 - **Transparent**: Baner u góry topologii podsieci wirtualnych zawiera przyciski, aby wybrać filtry dystrybucji ruchu (na przykład aktywny, średnia i brama podsieci). Po wybraniu przycisku, odpowiedni filtr jest stosowany na topologii. Na przykład jeśli wybierzesz przycisk aktywne, topologia wyróżnia aktywnych podsieci wirtualnych w danym wdrożeniu.
-- **Topologia**: poniżej transparent, w sekcji topologia przedstawia Dystrybucja ruchu w ramach podsieci wirtualnych.
+- **Topologia**: Poniżej baneru sekcji topologia przedstawia Dystrybucja ruchu w ramach podsieci wirtualnych.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Nawigowanie przy użyciu klawiatury na banerze
     

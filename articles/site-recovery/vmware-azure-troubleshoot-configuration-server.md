@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 597b8f59ef6991f7868d3de481e98ed9a459077b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a720b264c4283498604d1446283c5a2242fdb8b3
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050799"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381792"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z konfiguracją serwera
 
@@ -58,9 +58,20 @@ Po zainstalowaniu agenta mobilności na maszynie źródłowej rejestruje się z 
 
 Ten błąd występuje, gdy usługa nie może odczytać danych z połączenia transportowego podczas instalowania agenta mobilności i rejestrowanie serwera konfiguracji. Aby rozwiązać ten problem, upewnij się, że protokół TLS 1.0 jest włączona na maszynie źródłowej.
 
+## <a name="vcenter-discovery-failures"></a>błędy wykrywania vCenter
+
+Aby można było rozwiązać błędy wykrywania vCenter, upewnij się, że ten serwer vCenter jest dodawany do ustawień serwera proxy listy obejścia. Aby wykonać to działanie
+
+- Pobierz narzędzie PsExec z [tutaj](https://aka.ms/PsExec) dostępu do zawartości użytkownika systemu.
+- Otwórz program Internet Explorer w systemie użytkownika zawartości, uruchamiając następujące wiersza polecenia programu psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- Dodaj ustawienia serwera proxy w programie Internet Explorer, a następnie uruchom ponownie usługę tmanssvc.
+- Aby skonfigurować ustawienia serwera proxy DRA, uruchom cd dostawcy C:\Program Files\Microsoft Azure Site Recovery
+- Następnie wykonaj DRCONFIGURATOR. Plik EXE / configure /AddBypassUrls [Dodaj adres IP/nazwę FQDN programu vCenter Server oferowane w trakcie **poświadczenia serwera vCenter Server/vSphere ESXi Konfiguruj** kroku [wdrażanie serwera konfiguracji](vmware-azure-deploy-configuration-server.md#configure-settings)]
+
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Zmienianie adresu IP serwera konfiguracji
 
 Zdecydowanie zaleca się, że nie zmieniaj adresu IP serwera konfiguracji. Upewnij się, że wszystkie adresy IP, które są przypisane do serwera konfiguracji statycznych adresów IP. Nie używaj adresów IP protokołu DHCP.
+>>>>>>> c842cff5a0480caa5183dbb7afe5016a7061c7b9
 
 ## <a name="acs50008-saml-token-is-invalid"></a>ACS50008: SAML token jest nieprawidłowy
 
@@ -98,7 +109,7 @@ Uruchom następujące polecenie na maszynie źródłowej:
 
 Ustawienie | Szczegóły
 --- | ---
-Sposób użycia | /usr/local/ASR/Vx/bin dysku CD<br /><br /> UnifiedAgentConfigurator.sh -i < adres IP serwera konfiguracji\> - P < ścieżka do pliku hasła\>
+Sposób użycia | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i < adres IP serwera konfiguracji\> - P < ścieżka do pliku hasła\>
 -i | Obowiązkowy parametr. Określa adres IP serwera konfiguracji. Użyj dowolny prawidłowy adres IP.
 -P |  Obowiązkowy. Pełna ścieżka pliku, w którym zapisywane są hasła. Użyj dowolnej prawidłowy folder.
 

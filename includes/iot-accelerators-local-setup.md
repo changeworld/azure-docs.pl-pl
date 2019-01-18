@@ -5,21 +5,21 @@ services: iot-accelerators
 author: avneet723
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 10/29/2018
+ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
-ms.openlocfilehash: 900d75f826830ea7336044a892506d3bec546e30
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d4da1597ebed6c27cf6c12bab4a4e59be742c577
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283934"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383102"
 ---
 ## <a name="download-the-source-code"></a>Pobierz kod źródłowy
 
-Zdalne monitorowanie repozytoriów kodu źródłowego obejmują pliki konfiguracji platformy Docker, należy uruchomić mikrousługi obrazów platformy Docker.
+Zdalne monitorowanie repozytoriów kodu źródłowego zawierają kod źródłowy i pliki konfiguracji platformy Docker, należy uruchomić mikrousługi obrazów platformy Docker.
 
-Aby sklonować i utworzyć lokalną wersję repozytorium, użyj środowiska wiersza polecenia można przejść do odpowiedniego folderu na komputerze lokalnym. Następnie uruchom jedno z następujących zestawów poleceń, aby sklonować albo repozytorium .NET lub Java:
+Aby sklonować i utworzyć lokalną wersję repozytorium, użyj środowiska wiersza polecenia można przejść do odpowiedniego folderu na komputerze lokalnym. Następnie uruchom jedno z następujących zestawów poleceń, aby sklonować albo repozytorium .NET:
 
 Aby pobrać najnowszą wersję implementacji mikrousługi platformy .NET, uruchom polecenie:
 
@@ -32,7 +32,7 @@ cd azure-iot-pcs-remote-monitoring-dotnet
 git submodule foreach git pull origin master
 ```
 
-Aby pobrać najnowszą wersję implementacji mikrousług Java, uruchom polecenie:
+W tym artykule przyjęto założenie, że używasz mikrousługi .NET. Dostępne są również implementacji języka Java. Aby pobrać najnowszą wersję implementacji mikrousług Java, uruchom polecenie:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
@@ -70,11 +70,13 @@ Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj nastę
 
     Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure, który korzysta z akceleratora rozwiązań. Można usunąć tej grupy zasobów, gdy nie są już potrzebne odpowiednich zasobów.
 
-    Skrypt ten dodaje również zestaw zmiennych środowiskowych z prefiksem **komputerów** na komputer lokalny. Uruchamianie kontenerów platformy Docker lokalnie będzie odczytać wartości konfiguracji z tych zmiennych środowiskowych.
+    Skrypt ten dodaje również zestaw zmiennych środowiskowych z prefiksem **komputerów** na komputer lokalny. Po uruchomieniu kontenerów platformy Docker lub projekty mikrousługi lokalnie odczytywane wartości konfiguracji z tych zmiennych środowiskowych.
 
-> [!TIP]
-> Po ukończeniu działania skryptu, wyświetla listę zmiennych środowiskowych. Po zapisaniu tych wartości, aby **usług\\skrypty\\lokalnego\\ENV** pliku umożliwia ich wdrożenia akcelerator rozwiązań w przyszłości. Należy pamiętać, że wszelkie zmienne środowiskowe, ustaw na komputerze lokalnym zastąpić wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **docker-compose**.
+    > [!TIP]
+    > Po ukończeniu działania skryptu, zapisuje również zmiennych środowiskowych w pliku o nazwie  **\<folderu macierzystego\>\\.pcs\\\<Nazwa rozwiązania\>ENV** . Można je dla wdrożenia akcelerator rozwiązań w przyszłości. Należy pamiętać, że wszelkie zmienne środowiskowe, ustaw na komputerze lokalnym zastąpić wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **docker-compose**.
+
+1. Zamknij ze środowiska wiersza polecenia.
 
 ### <a name="use-existing-azure-resources"></a>Użyj istniejących zasobów platformy Azure
 
-Jeśli już utworzono wymaganych zasobów platformy Azure, utwórz odpowiednie zmienne środowiskowe na komputerze lokalnym. Zapisano te wartości w **usług\\skrypty\\lokalnego\\ENV** pliku w ramach ostatniego wdrożenia. Należy pamiętać, że zmienne środowiskowe ustawione na komputerze lokalnym, Zastąp wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **narzędzia docker compose**.
+Jeśli już utworzono wymaganych zasobów platformy Azure, utwórz odpowiednie zmienne środowiskowe na komputerze lokalnym. Mogą być zapisane w  **\<folderu macierzystego\>\\.pcs\\\<Nazwa rozwiązania\>ENV** pliku z wdrożenia. Należy pamiętać, że zmienne środowiskowe ustawione na komputerze lokalnym, Zastąp wartości w **usług\\skrypty\\lokalnego\\ENV** plików po uruchomieniu **narzędzia docker compose**.

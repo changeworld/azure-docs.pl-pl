@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3e968c71b87f7227dc4bd2e3f4ee486719b65e40
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240141"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388149"
 ---
 # <a name="deliver-content-to-customers"></a>Dostarczanie zawartości do klientów
 Podczas przesyłania strumieniowego lub wideo na żądanie zawartość dostarczać klientom, celem jest dostarczanie wideo wysokiej jakości do różnych urządzeń warunki panujące w sieci.
@@ -61,7 +61,7 @@ Aby podać użytkownikowi adres URL, który może służyć do przesyłania stru
 * Lokalizatory OnDemandOrigin. Te są używane do przesyłania strumieniowego multimediów (na przykład MPEG-DASH, HLS lub Smooth Streaming) lub pobrać progresywnie pliki.
 * Lokalizatory adresu URL (SAS) sygnatury dostępu współdzielonego. Są one używane do pobierania plików multimedialnych na komputerze lokalnym.
 
-*Zasady dostępu* służy do definiowania uprawnienia (na przykład odczytu, zapisu i listy) i czasu trwania, dla którego klient ma dostęp do określonego zasobu. Należy pamiętać, że uprawnienia listy (AccessPermissions.List) nie powinien być używany w tworzeniu Lokalizator OrDemandOrigin.
+*Zasady dostępu* służy do definiowania uprawnienia (na przykład odczytu, zapisu i listy) i czasu trwania, dla którego klient ma dostęp do określonego zasobu. Należy pamiętać, że uprawnienia listy (AccessPermissions.List) nie powinien być używany w tworzeniu Lokalizator OnDemandOrigin.
 
 Lokalizatory mają datę wygaśnięcia. Witryna Azure portal ustawia datę wygaśnięcia w przyszłości 100 lat dla lokalizatorów.
 
@@ -77,7 +77,7 @@ Lokalizatory nie są przeznaczone do zarządzania kontroli dostępu poszczególn
 Podczas tworzenia lokalizatora może być 30-sekundowe opóźnienie z powodu wymaganego do magazynowania i procesy propagacji w usłudze Azure Storage.
 
 ## <a name="adaptive-streaming"></a>Adaptacyjną przesyłania strumieniowego
-Technologie adaptacyjną szybkością transmisji bitów umożliwia aplikacji odtwarzacza wideo określić warunki w sieci, a następnie wybierz z kilku różnych. Podczas komunikacji sieciowej spadku, klient może wybrać niższe szybkości transmisji bitów, więc odtwarzania można kontynuować niższa jakość wideo. Jak poprawić wydajność się warunków sieciowych, klient może przełączyć do wyższej szybkości transmisji bitów przy użyciu poprawy jakości wideo. Usługa Azure Media Services obsługuje następujące technologie adaptacyjną szybkością transmisji bitów: HTTP Live Streaming (HLS), Smooth Streaming i MPEG-DASH.
+Technologie adaptacyjną szybkością transmisji bitów umożliwia aplikacji odtwarzacza wideo określić warunki w sieci, a następnie wybierz z kilku różnych. Podczas komunikacji sieciowej spadku, klient może wybrać niższe szybkości transmisji bitów, więc odtwarzania można kontynuować niższa jakość wideo. Jak poprawić wydajność się warunków sieciowych, klient może przełączyć do wyższej szybkości transmisji bitów przy użyciu poprawy jakości wideo. Usługa Azure Media Services obsługuje następujące technologie adaptacyjną szybkością transmisji bitów: HTTP na żywo, przesyłania strumieniowego (HLS), Smooth Streaming i MPEG-DASH.
 
 Aby zapewnić użytkownikom adresów URL przesyłania strumieniowego, trzeba najpierw utworzyć Lokalizator OnDemandOrigin. Tworzenie lokalizatora daje Ci ścieżki podstawowej z zawartością, który ma być przesyłana strumieniowo element zawartości. Jednak aby można było przesyłać strumieniowo zawartość, musisz zmodyfikować tę ścieżkę do dalszych. Do konstruowania pełny adres URL do pliku manifestu przesyłania strumieniowego, należy połączyć wartość ścieżki lokalizatora i manifest (filename.ism) Nazwa pliku. Następnie dołącz **/Manifest** i odpowiedni format (jeśli jest to konieczne), do ścieżki lokalizatora.
 

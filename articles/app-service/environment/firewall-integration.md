@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 52051ea221a3d49d86cc6b95e020e1075ce8cba2
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275554"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389236"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Blokowanie środowiska usługi App Service
 
@@ -33,34 +33,60 @@ Rozwiązania do zabezpieczania wychodzące adresy zaletą korzystania z urządze
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurowanie zapory platformy Azure za pomocą środowiska ASE 
 
-Dostępne są następujące kroki, aby zablokować ruch wychodzący ze środowiska ASE przy użyciu zapory platformy Azure:
+Dostępne są następujące kroki, aby zablokować ruch wychodzący ze środowiska ASE istniejących za pomocą zapory platformy Azure:
 
-1. Tworzenie zapory platformy Azure w sieci wirtualnej, gdzie środowisko ASE są lub będą. [Usługa Azure zawiera zapory](https://docs.microsoft.com/azure/firewall/)
-2. W interfejsie użytkownika zapory platformy Azure wybierz Tag FQDN środowiska usługi aplikacji
-3. Utwórz tabelę tras z adresami zarządzania z [adresy zarządzania środowiska App Service Environment]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) z następnym przeskokiem do Internetu. Wpisy tabeli trasy są wymagane, aby uniknąć problemów z routingiem asymetrycznym.
-4. Dodawanie tras do zależności adresów IP wymienionych poniżej, w zależności adresu IP z następnym przeskokiem do Internetu.
-5. Dodaj trasę do tabeli tras dla 0.0.0.0/0 za pomocą następnego przeskoku jest zapory platformy Azure.
-6. Tworzenie punktów końcowych usługi dla podsieci środowiska ASE, Azure SQL i Azure Storage.
-7. Przypisz tabeli tras, który został utworzony do podsieci środowiska ASE.
+1. Włącz punkty końcowe usługi SQL, magazynu i Centrum zdarzeń w podsieci środowiska ASE. Aby to zrobić, przejdź do portalu usługi sieciowe > podsieci i wybierz pozycję elementu Microsoft.EventHub Microsoft.SQL i Microsoft.Storage z listy rozwijanej punktów końcowych usługi. W przypadku usługi włączonych punktów końcowych do bazy danych SQL Azure wszelkie zależności usługi Azure SQL, które aplikacje mają musi być skonfigurowany z również punktami końcowymi usługi. 
+
+   ![Wybierz punkty końcowe usługi][2]
+  
+1. Utwórz podsieć o nazwie AzureFirewallSubnet w sieci wirtualnej, w której istnieje środowisko ASE. Postępuj zgodnie z instrukcjami [dokumentacji zapory usługi Azure](https://docs.microsoft.com/azure/firewall/) do utworzenia zapory platformy Azure.
+1. Z poziomu interfejsu użytkownika zapory platformy Azure > zasady > kolekcji reguł aplikacji, wybierz kolekcję reguł aplikacji Dodaj. Podaj nazwę, priorytetu i ustaw Zezwalaj. W sekcji tagi pełni kwalifikowaną nazwę domeny, podaj nazwę, ustaw źródłowe adresy * i wybierz Tag FQDN środowiska usługi aplikacji i aktualizacji Windows. 
+   
+   ![Dodawanie reguły aplikacji][1]
+   
+1. Z poziomu interfejsu użytkownika zapory platformy Azure > zasady > sieci kolekcji reguł, wybierz kolekcję, Dodaj sieciowe reguły. Podaj nazwę, priorytet i ustaw Zezwalaj. W sekcji reguły, podaj nazwę, wybierz **wszelkie**Ustaw * do źródłowych i docelowych adresów i Ustaw porty 123. Ta reguła umożliwia systemowi Przeprowadź synchronizację zegara przy użyciu NTP. Utwórz inną regułę ten sam sposób, na port 12000 ułatwia klasyfikowanie problemów systemu.
+
+   ![Dodaj regułę sieciowej NTP][3]
+
+1. Utwórz tabelę tras z adresami zarządzania z [adresy zarządzania środowiska App Service Environment]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) z następnym przeskokiem do Internetu. Wpisy tabeli trasy są wymagane, aby uniknąć problemów z routingiem asymetrycznym. Dodawanie tras do zależności adresów IP wymienionych poniżej, w zależności adresu IP z następnym przeskokiem do Internetu. Dodaj trasę urządzenie wirtualne do tabeli tras dla 0.0.0.0/0 za pomocą następnego przeskoku jest prywatny adres IP swojej zapory usługi Azure. 
+
+   ![Tworzenie tabeli tras][4]
+   
+1. Przypisz tabeli tras, który został utworzony do podsieci środowiska ASE.
+
+#### <a name="deploying-your-ase-behind-a-firewall"></a>Wdrażania środowiska ASE za zaporą
+
+Kroki wdrażania środowiska ASE zaporą są takie same jak konfigurowanie istniejące środowisko ASE przy użyciu zapory usługi Azure, chyba że użytkownik będzie konieczne tworzenie podsieci środowiska ASE, a następnie wykonaj poprzednie kroki. Aby utworzyć środowisko ASE w wcześniej istniejącej podsieci, należy użyć szablonu usługi Resource Manager, zgodnie z opisem w dokumencie na [tworzenia środowiska ASE przy użyciu szablonu usługi Resource Manager](https://docs.microsoft.com/azure/app-service/environment/create-from-template).
 
 ## <a name="application-traffic"></a>Ruch aplikacji 
 
 Powyższych czynności umożliwi środowisku ASE działają bez problemów. Nadal należy skonfigurować rzeczy, które należy uwzględnić wymagania w zakresie aplikacji. Istnieją dwa problemy w przypadku aplikacji w środowisku ASE, który jest skonfigurowany z zapory usługi Azure.  
 
-- Zależności aplikacji, nazwy FQDN, należy dodać do zapory usługi Azure lub tabeli tras
-- Trasy musi zostać utworzony dla adresów, które ruchu będą pochodzić z, aby uniknąć problemów z routingu asymetrycznego
+- Zależności aplikacji, należy dodać do zapory usługi Azure lub tabeli tras. 
+- Trasy musi zostać utworzony dla ruchu aplikacji uniknąć problemów z routingu asymetrycznego
 
 Twoje aplikacje są zależne, muszą zostać dodane do zapory usługi Azure. Tworzenie reguł aplikacji, które zezwalają na ruch HTTP/HTTPS i reguł sieciowych dla wszystkich innych. 
 
 Jeśli znasz zakresu adresów, który ruch związany z żądaniami aplikacji będą pochodzić z, można dodać, że do tabeli tras przypisany do podsieci środowiska ASE. W przypadku dużych lub nieokreślony zakres adresów można użyć urządzenia sieciowego, takich jak Application Gateway zapewniają jednego adresu do dodania do tabeli tras. Aby uzyskać więcej informacji na temat konfigurowania bramy aplikacji przy użyciu środowiska ASE wewnętrznego modułu równoważenia obciążenia, przeczytaj [integrowanie środowiska ASE wewnętrznego modułu równoważenia obciążenia przy użyciu bramy aplikacji](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway)
 
+![Środowisko ASE przy użyciu przepływu połączenia zapory usługi Azure][5]
 
+To zastosowanie usługi Application Gateway jest tylko jeden przykład sposobu konfiguracji systemu. W przypadku użycia tej ścieżki, czy musisz dodać trasę do tabeli tras podsieci środowiska ASE, więc ruchu odpowiedzi wysyłane do usługi Application Gateway będzie tam przejść bezpośrednio. 
+
+## <a name="logging"></a>Rejestrowanie 
+
+Zaporę platformy Azure umożliwia wysyłanie dzienników do usługi Azure Storage, Centrum zdarzeń lub usługi Log Analytics. Aby zintegrować aplikację przy użyciu dowolnej obsługiwanej lokalizacji docelowej, przejdź do portalu Azure zapory > dzienniki diagnostyczne i włączyć dzienniki Aby uzyskać żądany lokalizacji docelowej. Możesz zintegrować z usługą Log Analytics można zobaczyć rejestrowania wszelki ruch wysyłany do zapory usługi Azure. Aby wyświetlić ruchu, który jest pozbawiona, Otwórz portal usługi Log Analytics > Dzienniki i wprowadzić kwerendę, np. 
+
+    AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
+ 
+Integrowanie zapory platformy Azure z usługą Log Analytics jest bardzo przydatne w przypadku najpierw pobierania aplikacji działać po użytkownik nie rozpoznają wszystkie zależności aplikacji. Dowiedz się więcej o usłudze Log Analytics z [danych analizy usługi Log Analytics w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+ 
 ## <a name="dependencies"></a>Zależności
 
-Azure App Service ma szeregu elementów zewnętrznych. One może być kategorycznie podzielone na kilka głównych obszarów:
+Następujące informacje są tylko wymagane, jeśli chcesz skonfigurować urządzenie zapory niż Zapora usługi Azure. 
 
-- Punkt końcowy usługi, który stanie usługi należy skonfigurować punkty końcowe usługi z Jeśli chcesz zablokować wychodzącego ruchu sieciowego.
-- Punktami końcowymi adresów IP nie zostały opisane z nazwą domeny. Może to być problem dla urządzeń zapory, które oczekują cały ruch HTTPS do korzystania z nazw domen. Punktami końcowymi adresów IP, należy dodać do tabeli tras, który jest ustawiony na podsieci środowiska ASE.
+- Punkty końcowe usługi należy skonfigurować usługi zdolne do punktu końcowego usługi.
+- Spełniono adresu IP dla ruchu innego niż do protokołu HTTP/S
 - Punktów końcowych HTTP/HTTPS nazwy FQDN można umieścić w urządzenia zapory.
 - Symbol wieloznaczny HTTP/HTTPS punkty końcowe są zależności, które mogą się różnić, za pomocą środowiska ASE na podstawie liczby kwalifikatorów. 
 - Zależności systemu Linux są tylko problemem, Jeżeli wdrażasz aplikacje systemu Linux w środowisku ASE. Gdy nie wdrażasz aplikacje systemu Linux w środowisku ASE, te adresy nie muszą zostać dodane do zapory. 
@@ -72,21 +98,16 @@ Azure App Service ma szeregu elementów zewnętrznych. One może być kategorycz
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Usługa Azure KeyVault |
+| Centrum zdarzeń Azure |
 
+#### <a name="ip-address-dependencies"></a>Adres IP zależności
 
-#### <a name="ip-address-dependencies"></a>Zależności adresu IP 
+| Endpoint | Szczegóły |
+|----------| ----- |
+| \*:123 | Sprawdzanie zegara NTP. Ruch jest sprawdzany w wielu punktach końcowych na port 123 |
+| \*:12000 | Ten port jest używany dla niektórych monitorowanie systemu. Jeśli zablokowany, a następnie niektóre problemy, będzie trudniejsze do klasyfikacji, ale środowisko ASE będzie w dalszym ciągu działać |
 
-| Endpoint |
-|----------|
-| 40.77.24.27:443 |
-| 13.82.184.151:443 |
-| 13.68.109.212:443 |
-| 13.90.249.229:443 |
-| 13.91.102.27:443 |
-| 104.45.230.69:443 |
-| 168.62.226.198:12000 |
-
+Za pomocą zapory platformy Azure automatycznie zapewnia wszystko, co poniżej skonfigurowany przy użyciu tagów w pełni kwalifikowaną nazwę domeny. 
 
 #### <a name="fqdn-httphttps-dependencies"></a>Zależności w pełni kwalifikowaną nazwę domeny HTTP/HTTPS 
 
@@ -94,10 +115,10 @@ Azure App Service ma szeregu elementów zewnętrznych. One może być kategorycz
 |----------|
 |graph.windows.net:443 |
 |login.live.com:443 |
-|Login.Windows.com:443 |
-|Login.Windows.NET:443 |
+|login.windows.com:443 |
+|login.windows.net:443 |
 |login.microsoftonline.com:443 |
-|Client.wns.Windows.com:443 |
+|client.wns.windows.com:443 |
 |definitionupdates.microsoft.com:443 |
 |go.microsoft.com:80 |
 |go.microsoft.com:443 |
@@ -105,71 +126,79 @@ Azure App Service ma szeregu elementów zewnętrznych. One może być kategorycz
 |www.microsoft.com:443 |
 |wdcpalt.microsoft.com:443 |
 |wdcp.microsoft.com:443 |
-|OCSP.msocsp.com:443 |
+|ocsp.msocsp.com:443 |
 |mscrl.microsoft.com:443 |
 |mscrl.microsoft.com:80 |
-|CRL.microsoft.com:443 |
+|crl.microsoft.com:443 |
 |crl.microsoft.com:80 |
-|www.Thawte.com:443 |
+|www.thawte.com:443 |
 |crl3.digicert.com:80 |
-|OCSP.digicert.com:80 |
-|csc3 — 2009-2.crl.verisign.com:80 |
-|CRL.VeriSign.com:80 |
-|OCSP.VeriSign.com:80 |
-|azperfcounters1.blob.Core.Windows .net: 443 |
-|azurewatsonanalysis prod.core.windows.net:443 |
-|Global.Metrics.nsatc.NET:80   |
-|AZ prod.metrics.nsatc.net:443 |
-|antares.Metrics.nsatc.NET:443 |
-|azglobal black.azglobal.metrics.nsatc.net:443 |
-|azglobal red.azglobal.metrics.nsatc.net:443 |
-|dostawcy antares black.antares.metrics.nsatc.net:443 |
-|dostawcy antares red.antares.metrics.nsatc.net:443 |
-|maupdateaccount.blob.Core.Windows.NET:443 |
-|clientconfig.Passport.NET:443 |
-|Packages.microsoft.com:443 |
+|ocsp.digicert.com:80 |
+|csc3-2009-2.crl.verisign.com:80 |
+|crl.verisign.com:80 |
+|ocsp.verisign.com:80 |
+|cacerts.digicert.com:80 |
+|azperfcounters1.blob.core.windows.net:443 |
+|azurewatsonanalysis-prod.core.windows.net:443 |
+|global.metrics.nsatc.net:80   |
+|az-prod.metrics.nsatc.net:443 |
+|antares.metrics.nsatc.net:443 |
+|azglobal-black.azglobal.metrics.nsatc.net:443 |
+|azglobal-red.azglobal.metrics.nsatc.net:443 |
+|antares-black.antares.metrics.nsatc.net:443 |
+|antares-red.antares.metrics.nsatc.net:443 |
+|maupdateaccount.blob.core.windows.net:443 |
+|clientconfig.passport.net:443 |
+|packages.microsoft.com:443 |
 |schemas.microsoft.com:80 |
 |schemas.microsoft.com:443 |
-|Management.Core.Windows.NET:443 |
-|Management.Core.Windows.NET:80 |
+|management.core.windows.net:443 |
+|management.core.windows.net:80 |
+|management.azure.com:443 |
 |www.msftconnecttest.com:80 |
-|shavamanifestcdnprod1.azureedge .net: 443 |
-|Sprawdzanie poprawności v2.sls.microsoft.com:443 |
-|flighting.CP.WD.microsoft.com:443 |
-|DMD.metaservices.microsoft.com:80 |
-|Admin.Core.Windows.NET:443 |
-|azureprofileruploads.blob.Core.Windows.NET:443 |
-|azureprofileruploads2.blob.Core.Windows .net: 443 |
-|azureprofileruploads3.blob.Core.Windows .net: 443 |
-|azureprofileruploads4.blob.Core.Windows .net: 443 |
-|azureprofileruploads5.blob.Core.Windows .net: 443 |
+|shavamanifestcdnprod1.azureedge.net:443 |
+|validation-v2.sls.microsoft.com:443 |
+|flighting.cp.wd.microsoft.com:443 |
+|dmd.metaservices.microsoft.com:80 |
+|admin.core.windows.net:443 |
+|azureprofileruploads.blob.core.windows.net:443 |
+|azureprofileruploads2.blob.core.windows.net:443 |
+|azureprofileruploads3.blob.core.windows.net:443 |
+|azureprofileruploads4.blob.core.windows.net:443 |
+|azureprofileruploads5.blob.core.windows.net:443 |
 
 #### <a name="wildcard-httphttps-dependencies"></a>Symbol wieloznaczny HTTP/HTTPS zależności 
 
 | Endpoint |
 |----------|
-|gr-Prod -\*. cloudapp.net:443 |
-| \*. management.azure.com:443 |
-| \*. update.microsoft.com:443 |
-| \*. windowsupdate.microsoft.com:443 |
-|grmdsprod\*mini\*. servicebus.windows.net:443 |
-|grmdsprod\*dodaje się olej\*. servicebus.windows.net:443 |
-|grsecprod\*mini\*. servicebus.windows.net:443 |
-|grsecprod\*dodaje się olej\*. servicebus.windows.net:443 |
-|graudprod\*mini\*. servicebus.windows.net:443 |
-|graudprod\*dodaje się olej\*. servicebus.windows.net:443 |
+|gr-Prod-\*.cloudapp.net:443 |
+| \*.management.azure.com:443 |
+| \*.update.microsoft.com:443 |
+| \*.windowsupdate.microsoft.com:443 |
+|grmdsprod\*mini\*.servicebus.windows.net:443 |
+|grmdsprod\*lini\*.servicebus.windows.net:443 |
+|grsecprod\*mini\*.servicebus.windows.net:443 |
+|grsecprod\*lini\*.servicebus.windows.net:443 |
+|graudprod\*mini\*.servicebus.windows.net:443 |
+|graudprod\*lini\*.servicebus.windows.net:443 |
 
 #### <a name="linux-dependencies"></a>Zależności systemu Linux 
 
 | Endpoint |
 |----------|
-|wawsinfraprodbay063.blob.Core.Windows .net: 443 |
-|1.docker.io:443 rejestru |
-|auth.docker.IO:443 |
-|Production.cloudflare.docker.com:443 |
-|Download.docker.com:443 |
-|US.Archive.ubuntu.com:80 |
-|Download.mono project.com:80 |
-|Packages.treasuredata.com:80|
-|Security.ubuntu.com:80 |
+|wawsinfraprodbay063.blob.core.windows.net:443 |
+|registry-1.docker.io:443 |
+|auth.docker.io:443 |
+|production.cloudflare.docker.com:443 |
+|download.docker.com:443 |
+|us.archive.ubuntu.com:80 |
+|download.mono-project.com:80 |
+|packages.treasuredata.com:80|
+|security.ubuntu.com:80 |
 
+<!--Image references-->
+[1]: ./media/firewall-integration/firewall-apprule.png
+[2]: ./media/firewall-integration/firewall-serviceendpoints.png
+[3]: ./media/firewall-integration/firewall-ntprule.png
+[4]: ./media/firewall-integration/firewall-routetable.png
+[5]: ./media/firewall-integration/firewall-topology.png

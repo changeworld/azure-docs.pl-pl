@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: a5619db18ef326b160bf9f4a1fbacbd6b3e9f012
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 4e3a79c28fc0e67fbf22e4d0fde3de9528d3edf4
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319464"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382636"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -230,7 +230,7 @@ Po zastosowaniu nowych zasad, harmonogram i okres przechowywania nowych zasad je
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Czy dane wysyłane do platformy Azure są szyfrowane?
 
-Tak. Dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane są przesyłane za pośrednictwem bezpiecznego linku HTTPS.
+Tak. Dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane są przesyłane za pośrednictwem bezpiecznego linku HTTPS. Dane są przesyłane w chmurze chronionej przez łącza HTTPS tylko między magazynu i przywracania usługi. Protokół iSCSI zabezpiecza dane przesyłane między maszyny odzyskiwania usługi i użytkownika. Bezpiecznego tunelowania jest używany do ochrony kanału iSCSI.
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Czy dane kopii zapasowej na platformie Azure są również szyfrowane?
 

@@ -11,15 +11,15 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 0c819e4efb158baa2150b00368c618c5467a01e0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/17/2019
+ms.openlocfilehash: 60c7483e698a07fcf86438798f6bb5013a7417ce
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966785"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391136"
 ---
-# <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Usługa Azure SQL Transparent Data Encryption: Bring Your Own Key pomocy technicznej
+# <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Usługi Azure SQL przezroczyste szyfrowanie danych: Bring Your Own Key pomocy technicznej
 
 Bring Your Own Key (BYOK), obsługa [przezroczystego szyfrowania danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) umożliwia zaszyfrowanie klucza szyfrowania bazy danych (DEK) przy użyciu klucza asymetrycznego, nazywane ochrony TDE.  Funkcja ochrony TDE znajduje się pod kontrolą w [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Usługa Azure Key Vault to pierwsze Usługa zarządzania kluczami, za pomocą którego TDE została zintegrowana obsługa dla funkcji BYOK. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych zostaje zaszyfrowany i odszyfrować za pomocą funkcji ochrony TDE. Funkcja ochrony TDE jest przechowywany w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy. Odwołania dostępu do magazynu kluczy z serwera bazy danych nie można odszyfrować i odczytu do pamięci. Usługi Azure SQL Database funkcji ochrony TDE jest ustawiona na poziomie serwera logicznego i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem. Dla wystąpienia zarządzanego Azure SQL, funkcji ochrony TDE jest ustawiona na poziomie wystąpienia i jest dziedziczona przez wszystkie *zaszyfrowanych* baz danych w tym wystąpieniu. Termin *serwera* odnosi się zarówno do serwera i wystąpienia, w tym dokumencie, o ile nie wskazano inaczej.
 
@@ -52,7 +52,7 @@ Gdy TDE najpierw jest skonfigurowany do używania funkcji ochrony TDE z usługi 
 - Upewnij się, będzie znajdować się w tej samej dzierżawie usługi Azure Key Vault i Azure SQL Database/wystąpienia zarządzanego.  Klucza magazynu i serwera interakcje międzydzierżawowa **nie są obsługiwane**.
 - Zdecyduj, subskrypcje, które mają służyć do wymaganych zasobów — Przenoszenie serwera między subskrypcjami później wymaga nowe ustawienia funkcji TDE z BYOKs. Dowiedz się więcej o [przenoszenia zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - Podczas konfigurowania funkcji TDE z funkcją BYOK, należy wziąć pod uwagę obciążenia umieszczone w magazynie kluczy przez powtarzanych opakowywanie/odpakowywania operacje. Na przykład ponieważ wszystkie bazy danych skojarzone z serwerem logicznym używa tych samych funkcji ochrony TDE, pracy w trybie failover tego serwera spowoduje wyzwolenie wiele kluczowych operacji dotyczących magazynu, ponieważ istnieją to bazy danych na serwerze. Oparte na naszych doświadczeniach i udokumentowane [klucza magazynu limity](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits), firma Microsoft zaleca kojarzenie co najwyżej 500 Standard / ogólnego przeznaczenia lub 200 Premium / krytyczne dla działania firmy baz danych przy użyciu jednej usługi Azure Key Vault w ramach jednej subskrypcji do zapewnienia dostępność charakteryzujące się stałym wysokim podczas uzyskiwania dostępu do funkcji ochrony TDE w magazynie.
-- Zalecane: Przechowywać kopię ochrony TDE w środowisku lokalnym.  Wymaga urządzenia HSM, aby utworzyć lokalnie funkcja ochrony TDE i systemem depozytu klucza do przechowywania kopii lokalnej ochrony TDE.  Dowiedz się, [jak przenieść klucz z lokalnego modułu HSM do usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
+- Zalecane: Zachowaj kopię ochrony TDE w środowisku lokalnym.  Wymaga urządzenia HSM, aby utworzyć lokalnie funkcja ochrony TDE i systemem depozytu klucza do przechowywania kopii lokalnej ochrony TDE.  Dowiedz się, [jak przenieść klucz z lokalnego modułu HSM do usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Wskazówki dotyczące konfigurowania usługi Azure Key Vault
 
@@ -71,7 +71,7 @@ Gdy TDE najpierw jest skonfigurowany do używania funkcji ochrony TDE z usługi 
  > [!NOTE]
  > Jeśli szyfrowane TDE baz danych SQL utrata dostępu do magazynu kluczy, ponieważ nie można ich obejścia zapory, baz danych są porzucane w ciągu 24 godzin.
 
-- Włączanie inspekcji i raporty dotyczące wszystkich kluczy szyfrowania: Key Vault zapewnia dzienników, które są łatwe do dodania do innych informacjami i zdarzeniami (SIEM) narzędzia do zarządzania zabezpieczeniami. Operations Management Suite (OMS) [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) jest przykładem usługi, która jest już zintegrowana.
+- Włączanie inspekcji i raporty dotyczące wszystkich kluczy szyfrowania: Usługa Key Vault oferuje dzienników, które są łatwe do dodania do innych informacji o zabezpieczeniach i narzędzia do zarządzania (SIEM) zdarzenia. Operations Management Suite (OMS) [usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) jest przykładem usługi, która jest już zintegrowana.
 - W celu zapewnienia wysokiej dostępności szyfrowanymi bazami danych, należy skonfigurować każdy serwer logiczny za pomocą dwóch usługi Azure Key Vault, które znajdują się w różnych regionach.
 
 ### <a name="guidelines-for-configuring-the-tde-protector-asymmetric-key"></a>Wskazówki dotyczące konfigurowania ochrony TDE (klucz asymetryczny)
@@ -116,11 +116,11 @@ Poniższa sekcja zaczną się za pośrednictwem kroków instalacji i konfiguracj
 
 ### <a name="azure-key-vault-configuration-steps"></a>Kroki konfiguracji usługi Azure Key Vault
 
-- Zainstaluj [programu PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0)
+- Zainstaluj [programu PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azurermps-5.6.0)
 - Tworzenie dwóch usługi Azure Key Vault w dwóch różnych regionach za pomocą [programu PowerShell, aby włączyć właściwość "opcji soft-delete"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) w magazynach kluczy (Ta opcja nie jest dostępna z portalu AKV jeszcze — ale wymagane przez program SQL).
 - Obie usługi Azure Key Vault musi znajdować się w dwóch regionach, dostępne w tej samej lokalizacji geograficznej platformy Azure, aby kopia zapasowa i przywracanie kluczy do pracy.  Jeśli potrzebujesz dwóch magazynów kluczy muszą znajdować się w różnych obszarów geograficznych, aby spełniać wymagania SQL Geo-DR, postępuj zgodnie z [procesu BYOK](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) umożliwiająca klucze do zaimportowania z lokalnego modułu HSM.
 - Utwórz nowy klucz w pierwszej usłudze key vault:  
-  - Klucz RSA/RSA-HSA 2048
+  - RSA/RSA-HSA 2048 key
   - Nie daty wygaśnięcia
   - Klucz jest włączone i ma uprawnienia do wykonania get, opakuj klucz i odpakuj kluczowych operacji
 - Tworzenie kopii zapasowej klucz podstawowy i przywróć klucz do drugiego magazynu kluczy.  Zobacz [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) i [Restore-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0).
@@ -169,7 +169,7 @@ Po bazy danych jest szyfrowana za pomocą funkcji TDE przy użyciu klucza z usł
 
 Aby przywrócić z kopii zapasowej zaszyfrowany przy użyciu funkcji ochrony TDE z usługi Key Vault, upewnij się, że materiału klucza jest nadal w oryginalnym magazynie pod oryginalną nazwę klucza. Po zmianie ochrony TDE dla bazy danych, a stare kopie zapasowe bazy danych **nie** zaktualizowane pod kątem korzystania z najnowszych funkcji ochrony TDE. Dlatego zaleca się zachować wszystkie starsze wersje ochrony TDE w usłudze Key Vault, dzięki czemu można przywrócić kopii zapasowych bazy danych.
 
-Jeśli klucz, który może okazać się niezbędne do przywrócenia kopii zapasowej nie jest już w jego oryginalnym magazynie kluczy, zwracany jest następujący komunikat o błędzie: "serwer docelowy `<Servername>` nie ma dostępu do wszystkich identyfikatorów URI AKV utworzone między < sygnatura czasowa #1 > i < sygnatura czasowa #2 >. Ponów próbę operacji po przywróceniu wszystkie identyfikatory URI AKV".
+Jeśli klucz, który może okazać się niezbędne do przywrócenia kopii zapasowej nie jest już w jego oryginalnym magazynie kluczy, zwracany jest następujący komunikat o błędzie: "Serwer docelowy `<Servername>` nie ma dostępu do wszystkich AKV identyfikatorów URI utworzone między < sygnatura czasowa #1 > i < sygnatura czasowa #2 >. Ponów próbę operacji po przywróceniu wszystkie identyfikatory URI AKV".
 
 Aby rozwiązać ten problem, uruchom [Get AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) polecenia cmdlet, aby zwrócić listę kluczy z usługi Key Vault, które zostały dodane do serwera (chyba że zostały usunięte przez użytkownika). Aby upewnić się, że wszystkie kopie zapasowe, które mogą zostać przywrócone, upewnij się, że serwer docelowy dla kopii zapasowej ma dostęp do wszystkich tych kluczy.
 
@@ -181,4 +181,4 @@ Get-AzureRmSqlServerKeyVaultKey `
 
 Aby dowiedzieć się więcej na temat odzyskiwania kopii zapasowej dla bazy danych SQL, zobacz [odzyskać bazę danych Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups). Aby dowiedzieć się więcej na temat odzyskiwania kopii zapasowej dla usługi SQL Data Warehouse, zobacz [odzyskiwania usługi Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-overview).
 
-Dodatkowego rozważenia kopię zapasową plików dziennika: kopii zapasowej dziennika pliki pozostają zaszyfrowane przy użyciu oryginalnego modułu szyfrującego TDE, nawet jeśli została obracać ochrony TDE i baza danych jest teraz przy użyciu nowej ochrony TDE.  W czasie przywracania oba klucze będą potrzebne do przywrócenia bazy danych.  Jeśli plik dziennika jest za pomocą ochrony TDE, przechowywane w usłudze Azure Key Vault, ten klucz będzie potrzebna w czasie przywracania, nawet, jeśli baza danych została zmieniona w tym samym czasie używać TDE zarządzane przez usługę.
+Dodatkowego rozważenia kopię zapasową plików dziennika: Kopię zapasową dziennika, które pliki pozostają zaszyfrowane przy użyciu oryginalnego modułu szyfrującego TDE, nawet jeśli została obracać ochrony TDE i baza danych jest teraz przy użyciu nowej ochrony TDE.  W czasie przywracania oba klucze będą potrzebne do przywrócenia bazy danych.  Jeśli plik dziennika jest za pomocą ochrony TDE, przechowywane w usłudze Azure Key Vault, ten klucz będzie potrzebna w czasie przywracania, nawet, jeśli baza danych została zmieniona w tym samym czasie używać TDE zarządzane przez usługę.

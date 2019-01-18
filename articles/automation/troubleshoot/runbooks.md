@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy związane z elementami run
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/17/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 3968b05f119227552f88a50e96d3acbce6a19143
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 231dd3789a20b649efd99a6b88f6e429e2626bd3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199123"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391328"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -128,6 +128,46 @@ Jeśli masz usługę uwierzytelnianie wieloskładnikowe na koncie platformy Azur
 Aby używać certyfikatu za pomocą poleceń cmdlet modelu klasycznym wdrożeniu platformy Azure, zapoznaj się [tworzenie i dodawanie certyfikatu do zarządzania usługami platformy Azure.](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Aby użyć jednostki usługi przy użyciu poleceń cmdlet usługi Azure Resource Manager, zapoznaj się [Tworzenie nazwy głównej, przy użyciu witryny Azure portal usługi](../../active-directory/develop/howto-create-service-principal-portal.md) i [uwierzytelniania jednostki usługi przy użyciu usługi Azure Resource Manager.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Typowe błędy podczas pracy z elementami runbook
+
+###<a name="child-runbook-object"></a>Podrzędny element runbook zwraca błąd, jeśli strumień wyjściowy zawiera obiekty, a nie proste typy danych
+
+#### <a name="issue"></a>Problem
+
+Zostanie wyświetlony następujący błąd podczas wywoływania childrunbook z `-Wait` przełącznika strumień wyjściowy zawiera i obiektu:
+
+```
+Object reference not set to an instance of an object
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Jest to znany problem gdzie [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) nie obsługuje strumień wyjściowy poprawnie, jeśli zawiera on obiektów.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Aby rozwiązać problem zalecane jest, zamiast tego zaimplementować logikę sondowania i użyj [Get AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) polecenie cmdlet do pobierania danych wyjściowych. Przykład logika jest zdefiniowany w poniższym przykładzie.
+
+```powershell
+$automationAccountName = "ContosoAutomationAccount"
+$runbookName = "ChildRunbookExample"
+$resourceGroupName = "ContosoRG"
+
+function IsJobTerminalState([string] $status) {
+    return $status -eq "Completed" -or $status -eq "Failed" -or $status -eq "Stopped" -or $status -eq "Suspended"
+}
+
+$job = Start-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName -Name $runbookName -ResourceGroupName $resourceGroupName
+$pollingSeconds = 5
+$maxTimeout = 10800
+$waitTime = 0
+while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout) {
+   Start-Sleep -Seconds $pollingSeconds
+   $waitTime += $pollingSeconds
+   $job = $job | Get-AzureRmAutomationJob
+}
+
+$jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRecord | Select-Object -ExpandProperty Value
+```
 
 ### <a name="task-was-cancelled"></a>Scenariusz: Element runbook nie powiodło się z powodu błędu: Zadanie zostało anulowane
 

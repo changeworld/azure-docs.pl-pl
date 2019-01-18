@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 1738f02d28a4eb9ff5cbb51c73bc50ddf3c9a68b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231342"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391279"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z usługi Azure Logic Apps
 
@@ -23,9 +23,9 @@ Ten artykuł pokazuje, jak można pobrać w lokalnych zasobach SAP z wewnątrz a
 
 Łącznik SAP ECC używa <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .net Biblioteka łącznika (NCo)</a> i udostępnia te operacje lub akcje:
 
-- **Wyślij do SAP**: wysyłanie IDoc lub wywołania funkcji BAPI za pośrednictwem tRFC systemów SAP.
-- **Otrzymywać od firmy SAP**: odbieranie IDoc lub BAPI wywołaniach funkcji za pośrednictwem tRFC z systemów SAP.
-- **Generowanie schematów**: generowanie schematów dla artefaktów SAP IDoc ani BAPI RFC.
+- **Wyślij do SAP**: Wyślij IDoc lub wywoływać funkcje BAPI za pośrednictwem tRFC z systemów SAP.
+- **Otrzymywać od firmy SAP**: Odbieranie IDoc lub BAPI wywołania funkcji za pośrednictwem tRFC z systemów SAP.
+- **Generowanie schematów**: Generowanie schematów dla artefaktów SAP IDoc ani BAPI RFC.
 
 Łącznik SAP integruje się z lokalnymi systemami SAP za pośrednictwem [lokalnej bramy danych](https://www.microsoft.com/download/details.aspx?id=53127). W scenariuszach wysyłania, na przykład podczas wysyłania wiadomości z aplikacji logiki do systemu SAP brama danych działa jako klient specyfikacji RFC i przekazuje żądania otrzymane od logiki aplikacji SAP.
 Podobnie w scenariuszach Receive brama danych działa jako serwer RFC, która odbiera żądania od firmy SAP i przekazuje do aplikacji logiki. 
@@ -38,7 +38,7 @@ Aby skorzystać z tego artykułu, potrzebne są następujące elementy:
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure <a href="https://azure.microsoft.com/free/" target="_blank">Załóż bezpłatne konto platformy Azure</a>.
 
-* Aplikacja logiki, z którym chcesz uzyskać dostęp do systemu SAP i wyzwalacza uruchamiającego przepływ pracy aplikacji logiki. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: tworzenie pierwszej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikacja logiki, z którym chcesz uzyskać dostęp do systemu SAP i wyzwalacza uruchamiającego przepływ pracy aplikacji logiki. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * Twoje <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">serwera aplikacji SAP</a> lub <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP Message Server</a>
 
@@ -71,7 +71,7 @@ W tym przykładzie utworzysz aplikację logiki z punktem końcowym usługi na pl
 
 1. W [witryny Azure portal](https://portal.azure.com), tworzenie pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. 
 
-2. W polu wyszukiwania wpisz "żądanie http" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **żądania — zostanie odebrane żądanie po HTTP**
+2. W polu wyszukiwania wpisz "żądanie http" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **Żądania — po odebraniu żądania HTTP**
 
    ![Dodawanie wyzwalacza żądania HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -92,7 +92,7 @@ W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-a
 
    ![Dodawanie akcji](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. W polu wyszukiwania wprowadź "sap" jako filtr. Z listy akcji wybierz następującą akcję: **wysyła komunikat do SAP**
+2. W polu wyszukiwania wprowadź "sap" jako filtr. Z listy akcji wybierz następującą akcję: **Wyślij wiadomość do SAP**
   
    ![Wybieranie akcji Wyślij SAP](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
@@ -159,7 +159,7 @@ Teraz Dodaj akcję odpowiedzi do przepływu pracy aplikacji logiki i zawierają 
 
 1. W Projektancie aplikacji logiki w obszarze akcji SAP wybierz **nowy krok** > **Dodaj akcję**.
 
-2. W polu wyszukiwania wprowadź "response" jako filtr. Z listy akcji wybierz następującą akcję: **żądanie - odpowiedź**
+2. W polu wyszukiwania wprowadź "response" jako filtr. Z listy akcji wybierz następującą akcję: **Żądanie - odpowiedź**
 
 3. Kliknij wewnątrz **treści** pola tak, aby wyświetlić listę zawartości dynamicznej. Z tej listy w obszarze **wysyłać SAP**, wybierz opcję **treści** pola. 
 
@@ -201,7 +201,7 @@ W tym przykładzie użyto aplikację logiki, która wyzwala podczas odbierania k
 
 1. W witrynie Azure portal utworzyć pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. 
 
-2. W polu wyszukiwania wprowadź "sap" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **gdy wiadomość zostaje odebrana od firmy SAP**
+2. W polu wyszukiwania wprowadź "sap" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **Gdy wiadomość zostaje odebrana od firmy SAP**
 
    ![Dodawanie wyzwalacza SAP](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
 
@@ -269,7 +269,7 @@ W tym przykładzie użyto aplikacji logiki, który można wywoływać za pomocą
 
 1. W witrynie Azure portal utworzyć pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. 
 
-2. W polu wyszukiwania wpisz "żądanie http" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **żądania — zostanie odebrane żądanie po HTTP**
+2. W polu wyszukiwania wpisz "żądanie http" jako filtr. Z listy wyzwalaczy wybierz następujący wyzwalacz: **Żądania — po odebraniu żądania HTTP**
 
    ![Dodawanie wyzwalacza żądania HTTP](./media/logic-apps-using-sap-connector/add-trigger.png)
 
@@ -286,7 +286,7 @@ Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
    ![Dodawanie akcji](./media/logic-apps-using-sap-connector/add-action.png) 
 
-2. W polu wyszukiwania wprowadź "sap" jako filtr. Z listy akcji wybierz następującą akcję: **generowanie schematów**
+2. W polu wyszukiwania wprowadź "sap" jako filtr. Z listy akcji wybierz następującą akcję: **Generowanie schematów**
   
    ![Wybieranie akcji Wyślij SAP](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
@@ -343,7 +343,7 @@ Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 Opcjonalnie można pobrać lub zapisać wygenerowanego schematów w repozytoriów — takiej jak obiektów blob, magazynu lub konta integracji. Konta integracji zapewnia pierwszorzędne środowisko z innymi akcjami XML, w tym przykładzie pokazano, jak przekazywanie schematów do konta integracji dla tej samej aplikacji logiki za pomocą łącznika usługi Azure Resource Manager.
 
-1. W Projektancie aplikacji logiki, w obszarze wyzwalacza wybierz **nowy krok** > **Dodaj akcję**. W polu wyszukiwania wprowadź "Menedżera zasobów" jako filtr. Wybierz tę akcję: **tworzenia lub aktualizacji zasobu**
+1. W Projektancie aplikacji logiki, w obszarze wyzwalacza wybierz **nowy krok** > **Dodaj akcję**. W polu wyszukiwania wprowadź "Menedżera zasobów" jako filtr. Wybierz tę akcję: **Utwórz lub zaktualizuj zasób**
 
    ![Wybierz akcję usługi Azure Resource Manager](media/logic-apps-using-sap-connector/select-arm-action.png) 
 
@@ -379,7 +379,7 @@ Opcjonalnie można pobrać lub zapisać wygenerowanego schematów w repozytorió
 
 W tym miejscu są obecnie znane problemy i ograniczenia dotyczące łącznika SAP:
 
-* Hierarchyinfoguid nie jest wyzwalaczem SAP obsługuje odbieranie dokumentów Idoc usługi batch z systemu SAP. Ta akcja może spowodować błąd połączenia RFC między systemem SAP i bramy danych.
+* Wyzwalacz SAP nie obsługuje odbieranie dokumentów Idoc usługi batch z systemu SAP. Ta akcja może spowodować błąd połączenia RFC między systemem SAP i bramy danych.
 
 * Wyzwalacz SAP nie obsługuje klastry bramy danych. W niektórych przypadkach trybu failover węzła bramy danych, który komunikuje się z systemu SAP mogą się różnić od aktywnego węzła, spowodować nieoczekiwane zachowanie. W przypadku scenariuszy wysyłania klastrów bramy danych są obsługiwane.
 

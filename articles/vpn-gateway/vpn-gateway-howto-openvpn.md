@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 1dad960b0877cddf3be9afc01e3e687ebe4702c0
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 07dae60d1d4ab43194f88f44bde498d9fa19ce81
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54357831"
+ms.locfileid: "54388097"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>Konfigurowanie OpenVPN Azure point-to-site VPN Gateway (wersja zapoznawcza)
 
@@ -47,7 +47,10 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 
 ## <a name="vnet"></a>1. Tworzenie sieci VPN punkt lokacja
 
-Jeśli nie masz już działający środowiska point-to-site, postępuj zgodnie z instrukcjami Aby utworzyć jeden. Zobacz [tworzenie sieci VPN punkt lokacja](vpn-gateway-howto-point-to-site-resource-manager-portal.md) do tworzenia i konfigurowania bramy sieci VPN typu punkt lokacja przy użyciu uwierzytelniania certyfikatu platformy Azure natywnych. Należy pamiętać, że podstawowa jednostka SKU nie jest obsługiwana dla protokołu IKEv2 punkt lokacja.
+Jeśli nie masz już działający środowiska point-to-site, postępuj zgodnie z instrukcjami Aby utworzyć jeden. Zobacz [tworzenie sieci VPN punkt lokacja](vpn-gateway-howto-point-to-site-resource-manager-portal.md) do tworzenia i konfigurowania bramy sieci VPN typu punkt lokacja przy użyciu uwierzytelniania certyfikatu platformy Azure natywnych. 
+
+> [!IMPORTANT]
+> Podstawowa jednostka SKU nie jest obsługiwana dla OpenVPN.
 
 ## <a name="cmdlets"></a>2. Instalowanie poleceń cmdlet programu PowerShell
 

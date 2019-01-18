@@ -1,29 +1,21 @@
 ---
-title: Hostowanie wielu witryn w usłudze Azure Application Gateway | Microsoft Docs
-description: Ta strona zawiera omówienie obsługi wielu witryn w usłudze Application Gateway.
-documentationcenter: na
+title: Hostowanie wielu witryn w usłudze Azure Application Gateway
+description: Ten artykuł zawiera omówienie obsługi wielu witryn w usłudze Azure Application Gateway.
 services: application-gateway
-author: amsriva
-manager: rossort
-editor: ''
-ms.assetid: 49993fd2-87e5-4a66-b386-8d22056a616d
+author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2017
+ms.date: 1/17/2019
 ms.author: amsriva
-ms.openlocfilehash: df98559a9476190d683812bf9f63d8ad9c4d3f0e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 5c3fd92b3aa21b749a0c8ff435a1e5c12da4f57d
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160515"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381982"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Hostowanie wielu witryn usługi Application Gateway
 
-Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej aplikacji sieci Web na tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia skonfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 20 witryn sieci Web do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domen contoso.com i fabrikam.com z dwóch pul serwerów zaplecza o nazwach ContosoServerPool i FabrikamServerPool.
+Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej aplikacji internetowej na tym samym wystąpieniu bramy aplikacji. Ta funkcja umożliwia konfigurowanie bardziej wydajnej topologii dla wdrożeń przez dodanie maksymalnie 100 witryn sieci Web do jednej bramy aplikacji. Każdą witrynę sieci Web można skierować do jej puli zaplecza. W poniższym przykładzie usługa Application Gateway obsługuje ruch dla domen contoso.com i fabrikam.com z dwóch pul serwerów zaplecza o nazwach ContosoServerPool i FabrikamServerPool.
 
 ![imageURLroute](./media/multiple-site-overview/multisite.png)
 
@@ -32,15 +24,15 @@ Hostowanie wielu witryn pozwala na skonfigurowanie więcej niż jednej aplikacji
 
 Żądania dotyczące adresu http://contoso.com są kierowane do puli ContosoServerPool, a żądania dotyczące adresu http://fabrikam.com — do puli FabrikamServerPool.
 
-Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane na tym samym wdrożeniu usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny http://blog.contoso.com i http://app.contoso.com hostowane w jednym wdrożeniu bramy Application Gateway.
+Podobnie dwie domeny podrzędne tej samej domeny nadrzędnej mogą być hostowane na tym samym wdrożeniu usługi Application Gateway. Przykłady użycia domen podrzędnych mogą obejmować domeny podrzędne http://blog.contoso.com i http://app.contoso.com hostowane w ramach jednego wdrożenia usługi Application Gateway.
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>Nagłówki hosta i oznaczanie nazwy serwera (SNI, Server Name Indication)
 
 Istnieją trzy popularne mechanizmy włączania hostingu wielu witryn w tej samej infrastrukturze.
 
-1. Hostowanie wielu aplikacji sieci Web — każda z nich na unikatowym adresie IP.
-2. Użycie nazwy hosta do hostowania wielu aplikacji sieci Web na tym samym adresie IP.
-3. Użycie różnych portów do hostowania wielu aplikacji sieci Web na tym samym adresie IP.
+1. Hostowanie wielu aplikacji internetowych — każda z nich na unikatowym adresie IP.
+2. Użycie nazwy hosta do hostowania wielu aplikacji internetowych na tym samym adresie IP.
+3. Użycie różnych portów do hostowania wielu aplikacji internetowych na tym samym adresie IP.
 
 Obecnie usługa Application Gateway pobiera jeden publiczny adres IP, na którym nasłuchuje ruchu. Z tego względu obsługiwanie wielu aplikacji z oddzielnym adresem IP dla każdej z nich nie jest obecnie obsługiwane. Usługa Application Gateway obsługuje hostowanie wielu aplikacji, z których każda nasłuchuje na innym porcie, ale ten scenariusz wymaga, aby aplikacje akceptowały ruch na portach niestandardowych, co często nie jest pożądaną konfiguracją. Usługa Application Gateway bazuje na nagłówkach hosta HTTP 1.1 w celu hostowania więcej niż jednej witryny sieci Web na tym samym publicznym adresie IP i porcie. Witryny hostowane w usłudze Application Gateway mogą także obsługiwać odciążanie protokołu SSL za pomocą rozszerzenia TLS oznaczania nazwy serwera. Ten scenariusz oznacza, że przeglądarka i farma sieci Web zaplecza klienta muszą obsługiwać protokół HTTP/1.1 i rozszerzenie TLS zgodnie ze standardem RFC 6066.
 
@@ -127,7 +119,7 @@ Reguła routingu nie wymaga żadnej zmiany. Nadal należy wybierać podstawową 
 ]
 ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-Po zapoznaniu się z informacjami o hostowaniu wielu witryn przejdź do [tworzenia bramy aplikacji przy użyciu hostowania wielu witryn](tutorial-multiple-sites-powershell.md), aby utworzyć bramę aplikacji z możliwością obsługi więcej niż jednej aplikacji sieci Web.
+Po zapoznaniu się z informacjami o hostowaniu wielu witryn przejdź do [tworzenia bramy aplikacji przy użyciu hostowania wielu witryn](tutorial-multiple-sites-powershell.md), aby utworzyć bramę aplikacji z możliwością obsługi więcej niż jednej aplikacji internetowej.
 

@@ -7,14 +7,14 @@ manager: cgronlund
 ms.service: cognitive-services
 ms.component: ''
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/17/2018
 ms.author: nitinme
-ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 4a398342382d21d9261c8f693b78f184876bfed3
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025399"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381933"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co to są usługi Azure Cognitive Services?
 
@@ -38,7 +38,7 @@ Usługi Azure Cognitive Services są interfejsy API, zestawów SDK i usług dost
 |[Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "usługa rozpoznawania mowy") (wersja zapoznawcza)|Usługa rozpoznawania mowy dodaje funkcje przeznaczone dla komputerów z obsługą mowy do aplikacji.|
 |[Usługa Custom Speech](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "Custom Speech Service") (wersja zapoznawcza)|Usługa Custom Speech Service umożliwia tworzenie niestandardowych modeli języków i modeli akustycznych dostosowanych do aplikacji i użytkowników.|
 |[Interfejs API mowy usługi Bing](https://docs.microsoft.com/azure/cognitive-services/speech/home "API rozpoznawania mowy Bing")|Interfejs API rozpoznawania mowy Bing zapewnia łatwy sposób tworzenia funkcji rozpoznawania mowy w aplikacjach.|
-|[Mowy usługi Translator](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "mowy usługi Translator")|Mowy usługi Translator to Usługa tłumaczenia maszynowego.|
+|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech")|Mowy usługi Translator to Usługa tłumaczenia maszynowego.|
 |[Interfejs API rozpoznawania osoby mówiącej](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "interfejs API rozpoznawania osoby mówiącej") (wersja zapoznawcza)|Interfejs API rozpoznawania osoby mówiącej udostępnia algorytmy Identyfikacja osoby mówiącej i weryfikacji.|
 
 ## <a name="language-apis"></a>Interfejsy API języka
@@ -49,7 +49,7 @@ Usługi Azure Cognitive Services są interfejsy API, zestawów SDK i usług dost
 |[Language Understanding, LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Usługa rozpoznawania języka (LUIS) umożliwia aplikacji w taki sposób zrozumieć, czego chce dana osoba własnymi słowami.|
 |[Analiza lingwistyczna](https://docs.microsoft.com/azure/cognitive-services/linguisticanalysisapi/home "analizy językowej") (wersja zapoznawcza)|Analiza lingwistyczna udostępnia języka naturalnego narzędzia przetwarzania, które zidentyfikowanie struktury tekstu.|
 |[Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "analizy tekstu")|Analiza tekstu zawiera nieprzetworzony tekst do analizy tonacji, wyodrębnianie kluczowych fraz oraz wykrywanie języka przetwarzanie języka naturalnego.|
-|[Tekst usługi Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "tekstu usługi Translator")|Tekst usługi Translator zapewnia tłumaczenia tekstu opartych na maszynach w czasie zbliżonym do rzeczywistego.||
+|[Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator Text")|Tekst usługi Translator zapewnia tłumaczenia tekstu opartych na maszynach w czasie zbliżonym do rzeczywistego.||
 |[Internetowy Model języka](https://docs.microsoft.com/azure/cognitive-services/web-language-model/home "internetowy Model języka") (wersja zapoznawcza)|Przetwarzanie języka naturalnego w do przewidywania sekwencjonowania program word, zakończenia i wyrazów, ciągów nie może zawierać spacji.|
 
 ## <a name="search-apis"></a>interfejsy API wyszukiwania
@@ -89,6 +89,14 @@ Wszystkie interfejsy API mają bezpłatny plan wersji próbnej.  Jak płatne ofe
 Interfejsy API w usługach Cognitive Services są hostowane na rozrastającą się sieć centrów danych zarządzanych przez firmę Microsoft. Możesz znaleźć dostępności regionalnej dla każdego interfejsu API w [listy regionu świadczenia usługi Azure](https://azure.microsoft.com/regions).
 
 Szukasz region nie obsługujemy jeszcze? Daj nam znać, wypełniając zgłoszenie dotyczące funkcji w naszej [UserVoice forum](https://cognitive.uservoice.com/).
+
+## <a name="supported-cultural-languages"></a>Obsługiwane języki kultury
+
+ Usługi cognitive Services obsługuje szeroką gamę języków kultury na poziomie usługi. Możesz znaleźć dostępne wersje językowe dla każdego interfejsu API w [Lista języków obsługiwanych](language-support.md).
+
+ ## <a name="container-support"></a>Obsługa kontenerów
+
+ Usługi cognitive Services zapewnia kontenery do wdrożenia w chmurze platformy Azure lub lokalnie. Dowiedz się więcej o [kontenerów usług Cognitive](cognitive-services-container-support.md).
 
 ## <a name="support"></a>Pomoc techniczna
 

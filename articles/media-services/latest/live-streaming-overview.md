@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: juliako
-ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 6f7c6c2265fe13eb50aa900e9a51e11edfd90201
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354182"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382081"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -50,7 +50,8 @@ Aby uzyskać więcej informacji, zobacz [transmisji strumieniowej na żywo w ram
 
 Aby dostarczać strumienie na żądanie lub na żywo za pomocą usługi Media Services, musisz mieć co najmniej jedną [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Po utworzeniu konta usługi Media Services **domyślne** StreamingEndpoint zostanie dodany do Twojego konta w **zatrzymane** stanu. Należy uruchomić StreamingEndpoint, z którego chcesz strumieniowo przesyłać zawartość do swojej przeglądarki. Można użyć domyślnie **StreamingEndpoint**, lub utworzyć inny dostosowane **StreamingEndpoint** z wymaganą konfiguracją i ustawień sieci CDN. Użytkownik może zdecydować umożliwić wielu punkty, z których każdy z nich przeznaczone dla różnych sieci CDN i podając unikatową nazwę hosta w dostarczaniu zawartości. 
 
-W usłudze Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Podczas tworzenia element LiveEvent wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protokołu (pofragmentowany plik MP4). Funkcji Smooth Streaming protokołu pozyskiwania, są obsługiwane schematy adresów URL `http://` lub `https://`. Przypadku protokołu pozyskiwania RTMP, są obsługiwane schematy adresów URL `rtmp://` lub `rtmps://`. Aby uzyskać więcej informacji, zobacz [zalecane strumieniowo koderów na żywo](recommended-on-premises-live-encoders.md).
+W usłudze Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Podczas tworzenia element LiveEvent wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protokołu (pofragmentowany plik MP4). Funkcji Smooth Streaming protokołu pozyskiwania, są obsługiwane schematy adresów URL `http://` lub `https://`. Przypadku protokołu pozyskiwania RTMP, są obsługiwane schematy adresów URL `rtmp://` lub `rtmps://`. Aby uzyskać więcej informacji, zobacz [zalecane strumieniowo koderów na żywo](recommended-on-premises-live-encoders.md).<br/>
+Podczas tworzenia **element LiveEvent**, można określić dozwolone adresy IP w jednym z następujących formatów: Adres IpV4 z 4 cyfry, zakres adresów CIDR.
 
 Gdy **element LiveEvent** rozpoczyna odbieranie wkład źródła danych, można użyć punktu końcowego (wersja zapoznawcza) (w wersji zapoznawczej adres URL do wyświetlania podglądu i weryfikowania otrzymują przed opublikowaniem dalsze transmisji strumieniowej na żywo. Po sprawdzeniu, że Podgląd strumienia jest dobra, aby udostępnić transmisji strumieniowej na żywo do dostarczania za pomocą co najmniej jeden (wstępnie utworzone), można użyć element LiveEvent **punkty**. Aby to osiągnąć, należy utworzyć nową [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na **element LiveEvent**. 
 

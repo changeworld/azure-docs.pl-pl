@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/11/2019
-ms.openlocfilehash: 43ee1cb33d5d747671cde7463c8f2fcb6e020662
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.date: 01/17/2019
+ms.openlocfilehash: 8d108df187e7d1fe549f284cffe3c5cbe4d56f7c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246521"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389934"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Dokumentacja interfejsu API zarządzanego w wystąpieniach zarządzanych bazy danych SQL Azure
 
@@ -29,21 +29,21 @@ Aby uzyskać szybki start omawiający Tworzenie wystąpienia zarządzanego bazy 
 
 ## <a name="powershell-create-and-manage-a-managed-instance"></a>Program PowerShell: Tworzenie i zarządzanie nimi wystąpienia zarządzanego
 
-Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!TIP]
 > W przypadku skryptów przykład programu PowerShell, zobacz [skryptu szybki start: Tworzenie wystąpienia zarządzanego Azure SQL przy użyciu programu PowerShell biblioteki](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-|[Nowe AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Tworzy wystąpienie zarządzane usługi Azure SQL Database |
+|[New-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Tworzy wystąpienie zarządzane usługi Azure SQL Database |
 |[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL|
-|[Zestaw AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Ustawia właściwości dla wystąpienia zarządzanego bazy danych SQL Azure|
-|[Usuń AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Usuwa wystąpienie zarządzane bazy danych Azure SQL|
-|[Nowe AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Tworzy bazę danych Azure SQL Database Managed Instance|
+|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Ustawia właściwości dla wystąpienia zarządzanego bazy danych SQL Azure|
+|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Usuwa wystąpienie zarządzane bazy danych Azure SQL|
+|[New-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Tworzy bazę danych Azure SQL Database Managed Instance|
 |[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Zwraca informacje na temat wystąpienia zarządzanego Azure SQL database|
-|[Usuń AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Usuwa bazę danych Azure SQL Managed Instance bazy danych|
-|[Przywracanie AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Przywraca bazę danych Azure SQL Managed Instance bazy danych|
+|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Usuwa bazę danych Azure SQL Managed Instance bazy danych|
+|[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Przywraca bazę danych Azure SQL Managed Instance bazy danych|
 
 ## <a name="azure-cli-manage-logical-servers-and-databases"></a>Interfejs wiersza polecenia platformy Azure: Zarządzanie serwerów logicznych i baz danych
 
@@ -64,7 +64,7 @@ Tworzenie i zarządzanie nimi, Azure SQL server, baz danych i zapory za pomocą 
 |[AZ sql fragment przywracania](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|Przywracanie zarządzanej bazy danych|
 |[AZ sql fragment delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|Usuwa zarządzanej bazy danych|
 
-## <a name="transact-sql-manage-logical-servers-and-databases"></a>Języka Transact-SQL: Zarządzanie serwerów logicznych i baz danych
+## <a name="transact-sql-manage-logical-servers-and-databases"></a>Transact-SQL: Zarządzanie serwerów logicznych i baz danych
 
 Tworzenie i zarządzanie nimi bazy danych Azure SQL Database Managed Instance, po utworzeniu wystąpienia zarządzanego, użyj następujących poleceń języka T-SQL. Można wydać tych poleceń w witrynie Azure portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [usługi Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is). [Visual Studio Code](https://code.visualstudio.com/docs), lub innego programu, który mogą połączyć się z serwerem usługi Azure SQL Database i przekazać polecenia języka Transact-SQL.
 

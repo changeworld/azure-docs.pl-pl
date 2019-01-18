@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: twhitney
-ms.openlocfilehash: c4add1034e4b149cbe9d3c76c03987d45ca587c4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d66e27d860d18a37ffd9c6355b8d769116f26d73
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993795"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391253"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Wyświetl dzienniki dla kontenera usługi Service Fabric
 Usługa Azure Service Fabric jest koordynatora kontenerów i obsługuje zarówno [kontenerów systemu Linux i Windows](service-fabric-containers-overview.md).  W tym artykule opisano sposób wyświetlania dzienników kontenera uruchomioną usługę kontenera lub martwy kontenera, aby zdiagnozować i rozwiązać problemy.
@@ -44,6 +44,8 @@ Aby ułatwić diagnozowanie błędów uruchamiania kontenerów, usługa Service 
 
 Ustawienie **ContainersRetentionCount** określa liczbę kontenerów do przechowywania w przypadku wystąpienia w nich błędu. Jeśli zostanie określona wartość ujemna, będą przechowywane wszystkie kontenery z błędami. Gdy **ContainersRetentionCount** atrybut nie zostanie określony, będą przechowywane nie kontenery. Atrybut **ContainersRetentionCount** obsługuje też parametry aplikacji, dzięki czemu użytkownicy mogą określać różne wartości dla klastrów testowych i produkcyjnych. W przypadku używania tej funkcji można zastosować ograniczenia rozmieszczania, tak aby obiektem docelowym usługi kontenera był określony węzeł, co zapobiega przenoszeniu usługi kontenera do innych węzłów. Wszelkie kontenery przechowywane przy użyciu tej funkcji należy usunąć ręcznie.
 
+Ustawienie **RunInteractive** odnosi się do platformy Docker `--interactive` i `tty` [flagi](https://docs.docker.com/engine/reference/commandline/run/#options). Gdy to ustawienie ma wartość true w pliku manifestu, te flagi są używane do uruchamiania kontenera.  
+
 ### <a name="rest"></a>REST
 Użyj [Pobierz dzienniki wdrożone na węzeł kontenera](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode) operację, aby pobrać dzienniki dla kontenera, które uległy awarii. Określ nazwę węzła, że kontener został uruchomiony na, nazwa aplikacji, nazwy manifestu usługi i nazwy pakietu kodu.  Określ `&Previous=true`. Odpowiedź będzie zawierać dzienniki kontenerów martwy kontenera wystąpienie pakietu kodu.
 
@@ -63,7 +65,7 @@ Treść odpowiedzi 200:
 {   "Content": "Exception encountered: System.Net.Http.HttpRequestException: Response status code does not indicate success: 500 (Internal Server Error).\r\n\tat System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()\r\n" } 
 ```
 
-### <a name="service-fabric-sfctl"></a>Usługa Service Fabric (SFCTL)
+### <a name="service-fabric-sfctl"></a>Service Fabric (SFCTL)
 Użyj [sfctl get-container dzienniki usługi](service-fabric-sfctl-service.md) polecenie, aby pobrać dzienniki dla kontenera które uległy awarii.  Określ nazwę węzła, że kontener został uruchomiony na, nazwa aplikacji, nazwy manifestu usługi i nazwy pakietu kodu. Określ `--previous` flagi.  Odpowiedź będzie zawierać dzienniki kontenerów martwy kontenera wystąpienie pakietu kodu.
 
 ```

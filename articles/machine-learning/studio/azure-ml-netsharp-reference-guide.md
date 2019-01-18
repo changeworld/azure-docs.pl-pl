@@ -1,17 +1,17 @@
 ---
-Tytuł: Net# Neural Networks titleSuffix: Opis usługi Azure Machine Learning Studio: Składnia dla Net # neuronowych sieci specyfikacji języka, wraz z przykładami sposobu tworzenia modelu niestandardowych sieci neuronowych Net # użyciem usługi Azure Machine Learning Studio.
+Tytuł: Tworzenie niestandardowych sieci neuronowych z Net # titleSuffix: Opis usługi Azure Machine Learning Studio: Przewodnik po składni języka specyfikacji sieci neuronowych Net #. Dowiedz się, jak tworzyć modele sieci neuronowych niestandardowej w usłudze Azure Machine Learning Studio.
 usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: odwołanie
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/01/2018
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 
-NET # to opracowany przez firmę Microsoft, który jest używany do definiowana architektur sieci neuronowych język. Za pomocą Net # w celu zdefiniowania struktury sieci neuronowych umożliwia do definiowania złożonych struktur, takich jak głębokich sieciach neuronowych lub splotowi dowolnego wymiarów, które są znane usprawniających nauki o danych, takich jak obraz, audio lub wideo.
+NET # to opracowany przez firmę Microsoft, który jest używany do definiowana architektur złożonych sieci neuronowych, takich jak głębokich sieciach neuronowych lub splotowi wymiary dowolnego języka. Złożone struktury umożliwia poprawę nauki o danych, takich jak obraz, wideo lub audio.
 
 Można użyć specyfikacji Net # architektury w tych kontekstach:
 
 + Wszystkie moduły sieć neuronowa firmy Microsoft Azure Machine Learning Studio: [Sieć Neuronowa wieloklasowej](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [sieci neuronowych Two-Class](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network), i [regresji sieci neuronowych](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funkcje sieci neuronowych w MicrosoftML: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) i [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)dla języka R i [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) dla języka Python.
++ Funkcje sieci neuronowych w Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) i [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)dla języka R i [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) dla języka Python.
 
 
 W tym artykule opisano podstawowe pojęcia i potrzebne do tworzenia niestandardowych sieci neuronowych, przy użyciu Net # składni: 
@@ -26,17 +26,17 @@ W tym artykule opisano podstawowe pojęcia i potrzebne do tworzenia niestandardo
 
 Struktura sieci neuronowych składa się z węzłów, które są organizowane w warstwy i ważona połączenia (lub krawędzi) między węzłami. Połączenia są kierunkowe, a każde połączenie ma węzeł źródłowy oraz węzeł docelowy.  
 
-Każda warstwa trainable (ukryty lub warstwę danych wyjściowych) ma jeden lub kilka **pakiety połączenia**. Pakiet połączenia składa się z warstwy źródłowej i określenie połączenia z tym warstwy źródłowej. Wszystkich połączeń z danym pakietem udostępnianie tej samej warstwy źródłowej i tej samej warstwy docelowej. W Net # pakietu połączenia jest traktowane jako należące do warstwy docelowej przez pakiet.
+Każda warstwa trainable (ukryty lub warstwę danych wyjściowych) ma jeden lub kilka **pakiety połączenia**. Pakiet połączenia składa się z warstwy źródłowej i określenie połączenia z tym warstwy źródłowej. Wszystkich połączeń z danym pakietem Udostępnij źródłowe i docelowe warstwy. W Net # pakietu połączenia jest traktowane jako należące do warstwy docelowej przez pakiet.
 
-NET # obsługuje różne rodzaje połączenia pakietów, które pozwala dostosować sposób dane wejściowe są mapowane na ukrytych warstw i mapowane na dane wyjściowe.
+NET # obsługuje różne rodzaje połączenia pakietów, które można dostosować sposób dane wejściowe są mapowane na ukrytych warstw i mapowane na dane wyjściowe.
 
 Domyślne lub standardowy pakiet jest **pełny pakiet**, w którym każdego węzła w warstwie źródłowej jest podłączony do każdego węzła w warstwie docelowej.
 
 Ponadto Net # obsługuje cztery rodzaje pakietów zaawansowane połączenie:
 
-+ **Filtrowane pakiety**. Użytkownik może zdefiniować predykat przy użyciu lokalizacji warstwy węzeł źródłowy i węzeł warstwy docelowej. Węzły są połączone w każdym przypadku, gdy predykatu ma wartość True.
++ **Filtrowane pakiety**. Predykat można zdefiniować przy użyciu lokalizacji warstwy węzeł źródłowy i węzeł warstwy docelowej. Węzły są połączone w każdym przypadku, gdy predykatu ma wartość True.
 
-+ **Pakiety splotowe**. Użytkownik może zdefiniować małych kluby węzłów z warstwy źródłowej. Każdy węzeł w warstwie docelowej jest połączony co otoczenia węzłów z warstwy źródłowej.
++ **Pakiety splotowe**. Można zdefiniować małych kluby węzłów z warstwy źródłowej. Każdy węzeł w warstwie docelowej jest połączony co otoczenia węzłów z warstwy źródłowej.
 
 + **Buforowanie pakietów** i **pakiety normalizacji odpowiedzi**. Te przypominają splotowe pakietów w tym, że użytkownik definiuje małych kluby węzłów z warstwy źródłowej. Różnica polega na tym, że wagi krawędzie w te pakiety nie są trainable. Zamiast tego wstępnie zdefiniowana funkcja jest stosowane do wartości węzeł źródła, aby określić wartość węzła docelowego.
 

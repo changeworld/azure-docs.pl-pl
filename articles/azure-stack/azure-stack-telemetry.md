@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 190a80d5807dcc8ad9666d3ba450691bc6453b41
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 471232fee5245426afce89993d9faebccc6a8ea8
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265621"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389393"
 ---
 # <a name="azure-stack-telemetry"></a>Usługa Azure Stack telemetrii
 
@@ -40,7 +40,7 @@ Usługa Azure Stack telemetrii opiera się na składnik połączone środowisko 
 
 ## <a name="privacy-considerations"></a>Kwestie dotyczące ochrony prywatności
 
-Usługa ETW kieruje dane telemetryczne do magazynu w chmurze chronionej. Zasadę najmniejszych uprawnień zawiera informacje na temat dostępu do danych telemetrycznych. Potrzeby biznesowe tylko personel firmy Microsoft mających dostęp do danych telemetrycznych. Firma Microsoft nie udostępnia danych osobowych klienta osobom trzecim, z wyjątkiem uznania przez klienta lub ograniczone do celów opisanych w [zasady zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/PrivacyStatement). Raportów biznesowych, które są współużytkowane z producentów OEM i partnerów obejmować dane zagregowane, anonimowe. Udostępniania decyzje dotyczące danych są wykonywane przez wewnętrzny zespół firmy Microsoft, w tym zainteresowane strony zarządzania ochrony prywatności, informacje prawne i danych.
+Usługa ETW kieruje dane telemetryczne do magazynu w chmurze chronionej. Podmiot zabezpieczeń najniższych uprawnień zawiera informacje na temat dostępu do danych telemetrycznych. Potrzeby biznesowe tylko personel firmy Microsoft mających dostęp do danych telemetrycznych. Firma Microsoft nie udostępnia danych osobowych klienta osobom trzecim, z wyjątkiem uznania przez klienta lub ograniczone do celów opisanych w [zasady zachowania poufności informacji firmy Microsoft](https://privacy.microsoft.com/PrivacyStatement). Raportów biznesowych, które są współużytkowane z producentów OEM i partnerów obejmować dane zagregowane, anonimowe. Udostępniania decyzje dotyczące danych są wykonywane przez wewnętrzny zespół firmy Microsoft, w tym zainteresowane strony zarządzania ochrony prywatności, informacje prawne i danych.
 
 Firma Microsoft uważa, w i praktyki minimalizacji informacji. Dokładamy wszelkich starań zebrać informacje, które są potrzebne i przechowywać je tylko tak długo, co jest niezbędne do świadczenia usług lub do analizy. Wiele informacji dotyczących sposobu funkcjonowania systemu Azure Stack i usług platformy Azure zostaną usunięte w ciągu sześciu miesięcy. Podsumowanie lub zagregowane dane będą przechowywane przez dłuższy czas.
 

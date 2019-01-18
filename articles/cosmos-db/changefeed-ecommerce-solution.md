@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3f42e149b88c2405a37366c3c7b886c7a8613e00
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037110"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382550"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Użyj usługi Azure Cosmos DB Zmień źródło danych do analizy danych w czasie rzeczywistym wizualizować
 
@@ -41,7 +41,7 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
    }
    ```
 
-2. **Usługa cosmos DB:** Wygenerowane dane jest sklepów w kolekcji usługi Azure Cosmos DB.  
+2. **Cosmos DB:** Wygenerowane dane jest sklepów w kolekcji usługi Azure Cosmos DB.  
 
 3. **Zmień źródło danych:** Kanał informacyjny zmian w oczekiwaniu na zmiany w kolekcji usługi Azure Cosmos DB. Każdorazowo nowy dokument zostanie dodany do kolekcji (to znaczy po wystąpieniu zdarzenia, od takich użytkowników, wyświetlanie elementu Dodawanie elementu do koszyka ich lub zakupu element), zmiana źródła danych będą wyzwalać [funkcji platformy Azure](../azure-functions/functions-overview.md).  
 
@@ -51,7 +51,7 @@ Poniższy diagram przedstawia przepływ danych i składniki zaangażowane w rozw
 
 6. **Usługa Azure Stream Analytics:** Usługa Azure Stream Analytics definiuje zapytania, aby przetwarzać zdarzenia i przeprowadzać analizy danych w czasie rzeczywistym. Te dane są następnie wysyłane do [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop).  
 
-7. **Usługa Power BI:** Usługa Power BI umożliwia wizualizowanie danych wysłanych przez usługę Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmienić metryki w czasie rzeczywistym.  
+7. **Power BI:** Usługa Power BI umożliwia wizualizowanie danych wysłanych przez usługę Azure Stream Analytics. Możesz utworzyć pulpit nawigacyjny, aby zobaczyć, jak zmienić metryki w czasie rzeczywistym.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

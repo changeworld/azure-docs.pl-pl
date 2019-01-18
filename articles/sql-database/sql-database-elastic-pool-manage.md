@@ -11,19 +11,19 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 366bdf73c6b62ffa98ce44076374df8be8b3de3c
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/17/2019
+ms.openlocfilehash: 93b7fb0cd303f34d4afadf461f8886aaac52e4c3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865883"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388575"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Tworzenie i zarządzanie elastycznymi pulami w usłudze Azure SQL Database
 
 Z puli elastycznej należy określić ilość zasobów, które elastycznej puli wymaga, aby obsłużyć obciążenie z jej baz danych, a ilość zasobów dla każdej puli bazy danych.
 
-## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Witryna Azure portal: Zarządzanie elastycznych pul i baz danych w puli
+## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure Portal: Zarządzanie elastycznych pul i baz danych w puli
 
 Wszystkie ustawienia puli można znaleźć w jednym miejscu: **skonfigurować pulę** bloku. Aby uzyskać w tym miejscu, Znajdź puli elastycznej w portalu i kliknij przycisk **skonfigurować pulę** w górnej części bloku lub zasobu menu po lewej stronie.
 
@@ -39,7 +39,7 @@ W tym miejscu można wprowadzić dowolną kombinację następujących zmian, a n
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>Program PowerShell: Zarządzanie elastycznych pul i baz danych w puli
 
-Aby utworzyć i zarządzać nimi, SQL Database elastycznych pul i baz danych w puli za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Aby utworzyć i zarządzać serwerami logicznymi dla puli elastycznej, zobacz [Utwórz i zarządzane serwery logiczne](sql-database-logical-servers.md). Aby utworzyć i zarządzać regułami zapory, zobacz [tworzenie i zarządzanie regułami zapory za pomocą programu PowerShell](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
+Aby utworzyć i zarządzać nimi, SQL Database elastycznych pul i baz danych w puli za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Aby utworzyć i zarządzać serwerami logicznymi dla puli elastycznej, zobacz [Utwórz i zarządzane serwery logiczne](sql-database-logical-servers.md). Aby utworzyć i zarządzać regułami zapory, zobacz [tworzenie i zarządzanie regułami zapory za pomocą programu PowerShell](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell).
 
 > [!TIP]
 > W przypadku skryptów przykład programu PowerShell, zobacz [Tworzenie pul elastycznych i przenoszenie baz danych między pulami i puli, za pomocą programu PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) i [Użyj programu PowerShell, monitorowanie i skalowanie elastycznej puli SQL w usłudze Azure SQL Database](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -72,12 +72,12 @@ Aby utworzyć i zarządzać elastycznymi pulami SQL Database za pomocą [wiersza
 | --- | --- |
 |[Utwórz az sql elastic-pool](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Tworzy pulę elastyczną.|
 |[AZ sql elastic-pool list](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Zwraca listę pule elastyczne na serwerze.|
-|[AZ sql elastic-pool list-baz danych](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Zwraca listę baz danych w puli elastycznej.|
+|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Zwraca listę baz danych w puli elastycznej.|
 |[AZ sql elastic-pool list wersje](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-editions)|Zawiera również ustawień jednostek DTU dostępnej puli, limity przestrzeni dyskowej i ustawienia poszczególnych baz danych. W celu zmniejszenia poziomu szczegółowości, limity dodatkowego miejsca do magazynowania i na bazę danych ustawienia są domyślnie ukryte.|
 |[AZ sql elastic-pool update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Aktualizuje puli elastycznej.|
 |[AZ sql elastic-pool delete](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|Usuwa puli elastycznej.|
 
-## <a name="transact-sql-manage-pooled-databases"></a>Języka Transact-SQL: Zarządzanie bazy danych w puli
+## <a name="transact-sql-manage-pooled-databases"></a>Transact-SQL: Zarządzanie bazami danych w puli
 
 Tworzenie i przenoszenie baz danych w ramach istniejących pul elastycznych, lub do zwracania informacji dotyczących puli elastycznej bazy danych SQL za pomocą instrukcji języka Transact-SQL, użyj następujących poleceń języka T-SQL. Tych poleceń przy użyciu portalu Azure można wydać [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [programu Visual Studio Code](https://code.visualstudio.com/docs), lub innego programu, który może połączyć się z serwerem usługi Azure SQL Database i przekazać języka Transact-SQL polecenia. Aby utworzyć i zarządzać regułami zapory za pomocą języka T-SQL, zobacz [zarządzanie regułami zapory za pomocą języka Transact-SQL](sql-database-firewall-configure.md#manage-firewall-rules-using-transact-sql).
 
@@ -87,13 +87,13 @@ Tworzenie i przenoszenie baz danych w ramach istniejących pul elastycznych, lub
 
 | Polecenie | Opis |
 | --- | --- |
-|[Tworzenie bazy danych (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Tworzy nową bazę danych w istniejącej puli lub jako pojedynczej bazy danych. Musisz mieć połączenie z główną bazą danych, aby utworzyć nową bazę danych.|
+|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Tworzy nową bazę danych w istniejącej puli lub jako pojedynczej bazy danych. Musisz mieć połączenie z główną bazą danych, aby utworzyć nową bazę danych.|
 | [Instrukcja ALTER DATABASE (baza danych SQL platformy Azure)](/sql/t-sql/statements/alter-database-azure-sql-database) |Przenoszenie bazy danych do, poza nie lub między elastycznymi pulami.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Usuwa bazę danych.|
 |[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Zwraca statystyki użycia zasobów dla wszystkich pul elastycznych baz danych na serwerze logicznym. Dla każdej puli elastycznych baz danych ma jeden wiersz dla każdej sekundzie 15 raportowania okna (cztery wiersze na minutę). W tym procesora CPU, we/wy, Log, wykorzystanie magazynu i wykorzystanie równoczesnych żądań/sesji przez wszystkie bazy danych w puli.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Zwraca edition (warstwy usług), celem usługi (warstwa cenowa) i nazwę puli elastycznej dla bazy danych Azure SQL lub usługi Azure SQL Data Warehouse. Jeśli zalogowany z główną bazą danych na serwerze usługi Azure SQL Database, zwraca informacje dla wszystkich baz danych. Azure SQL Data Warehouse musisz mieć połączenie z główną bazą danych.|
 
-## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>Interfejs API REST: Zarządzanie elastycznych pul i baz danych w puli
+## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie elastycznych pul i baz danych w puli
 
 Aby utworzyć i zarządzać nimi, SQL Database elastycznych pul i baz danych w puli, należy użyć tych żądań interfejsu API REST.
 

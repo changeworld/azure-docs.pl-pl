@@ -1,5 +1,5 @@
 ---
-title: Jak wykonać transmisję strumieniową na żywo za pomocą koderów lokalnych przy użyciu platformy .NET | Dokumentacja firmy Microsoft
+title: Do prowadzenia transmisji strumieniowych na żywo za pomocą koderów lokalnych przy użyciu platformy .NET | Dokumentacja firmy Microsoft
 description: W tym temacie pokazano, jak kodowanie na żywo za pomocą koderów lokalnych przy użyciu platformy .NET.
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 32d456aee83c6f7c6d5d242a1ce039e7e370c0fd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 493383583513f94689b30b5eca615005137da4a9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788655"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382700"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Jak wykonać transmisję strumieniową na żywo za pomocą koderów lokalnych przy użyciu platformy .NET
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Do prowadzenia transmisji strumieniowych na żywo za pomocą koderów lokalnych przy użyciu platformy .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -29,17 +29,17 @@ ms.locfileid: "33788655"
 > 
 > 
 
-Ten samouczek przedstawia kroki tworzenia przy użyciu zestawu SDK .NET usługi Azure Media Services **kanału** skonfigurowanego do dostarczania w formie przekazywania. 
+Ten samouczek przeprowadzi Cię przez kroki przy użyciu usługi Azure Media Services .NET SDK do tworzenia **kanału** skonfigurowanego dla konfigurowanego do dostarczania. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania czynności przedstawionych w tym samouczku są niezbędne następujące elementy:
 
 * Konto platformy Azure.
 * Konto usługi Media Services.    Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
-* Konfigurowanie środowiska deweloperów. Aby uzyskać więcej informacji, zobacz [konfigurowania środowiska](media-services-set-up-computer.md).
+* Konfigurowanie środowiska deweloperskiego. Aby uzyskać więcej informacji, zobacz [służą do konfigurowania środowiska](media-services-set-up-computer.md).
 * Kamera internetowa. Na przykład [koder Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).
 
-Zaleca się następujące artykuły:
+Zaleca, aby zapoznać się z następującymi artykułami:
 
 * [Obsługa protokołu RTMP i kodery na żywo w usłudze Azure Media Services](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Transmisja strumieniowa na żywo za pomocą koderów lokalnych tworzących strumienie o różnej szybkości transmisji bitów](media-services-live-streaming-with-onprem-encoders.md)
@@ -49,17 +49,17 @@ Zaleca się następujące artykuły:
 Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu informacji dotyczących połączenia, zgodnie z opisem w sekcji [Projektowanie usługi Media Services na platformie .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="example"></a>Przykład
-W poniższym przykładzie pokazano, jak wykonać następujące zadania:
+Poniższy przykład kodu pokazuje, jak wykonać następujące zadania:
 
 * Łączenie się z usługą Media Services
 * Tworzenie kanału
-* Aktualizacja kanału
-* Pobrać wejściowy punkt końcowy kanału. Wejściowy punkt końcowy należy przekazać do kodera na żywo w sieci lokalnej. Kodera na żywo konwertuje sygnały z kamery do strumieni, które są wysyłane do tego kanału danych wejściowych (pozyskiwania) punktu końcowego.
+* Kanał aktualizacji
+* Pobierz wejściowego punktu końcowego kanału. Wejściowy punkt końcowy należy przekazać do kodera na żywo w środowisku lokalnym. Koder na żywo konwertuje sygnały z aparatu fotograficznego do strumieni, które są wysyłane do tego kanału danych wejściowych (odbieranie) punktu końcowego.
 * Pobieranie punktu końcowego podglądu kanału
 * Tworzenie i uruchamianie programu
-* Utwórz Lokalizator musiał uzyskać dostęp do programu
+* Tworzenie lokalizatora potrzebnych do dostępu do programu
 * Tworzenie i uruchamianie StreamingEndpoint
-* Aktualizowanie punktu końcowego przesyłania strumieniowego
+* Aktualizacja punktu końcowego przesyłania strumieniowego
 * Zamknij zasobów
 
 >[!IMPORTANT]
@@ -68,7 +68,7 @@ W poniższym przykładzie pokazano, jak wykonać następujące zadania:
 >[!NOTE]
 >Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
 
-Aby uzyskać informacje na temat konfigurowania kodera na żywo, zobacz [Obsługa protokołu RTMP usługi multimediów Azure i kodery na żywo](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
+Aby uzyskać informacje na temat konfigurowania koder na żywo, zobacz [pomocy technicznej systemu Azure Media Services protokołu RTMP i kodery na żywo](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
 ```csharp
 using System;
@@ -149,6 +149,7 @@ namespace AMSLiveTest
 
         private static ChannelInput CreateChannelInput()
         {
+        // When creating a Channel, you can specify allowed IP addresses in one of the following formats: IpV4 address with 4 numbers, CIDR address range.
             return new ChannelInput
             {
                 StreamingProtocol = StreamingProtocol.RTMP,
@@ -171,6 +172,7 @@ namespace AMSLiveTest
 
         private static ChannelPreview CreateChannelPreview()
         {
+         // When creating a Channel, you can specify allowed IP addresses in one of the following formats: IpV4 address with 4 numbers, CIDR address range.
             return new ChannelPreview
             {
                 AccessControl = new ChannelAccessControl
@@ -391,7 +393,7 @@ namespace AMSLiveTest
 ```
 
 ## <a name="next-step"></a>Następny krok
-Przejrzyj ścieżki szkoleniowe dotyczące usługi Media Services
+Przegląd usługi Media Services ścieżki szkoleniowe
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

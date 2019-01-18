@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f558c6fcfa864b142209712a536adf1be97122cf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720596"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389262"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorowanie i Diagnostyka Azure Service Fabric
 
@@ -41,9 +41,12 @@ Mamy także zapoznać się z samouczkiem jak [Ustaw tę wartość dla aplikacji 
 Użytkownik znajduje się w kontroli, jakie telemetrii pochodzi z aplikacji, ponieważ użytkownik pisze kod automatycznie, ale co o diagnostyce platformy usługi Service Fabric? Jednym z celów usługi Service Fabric jest zapewnienie aplikacji odpornych na awarie sprzętowe. W tym celu odbywa się za pośrednictwem usługi systemowe platformy możliwość wykrywania problemów z infrastrukturą i szybko obciążeń w tryb failover do innych węzłów w klastrze. Ale co zrobić, jeśli w tym konkretnym przypadku samych usług systemu występują problemy? Lub jeśli podczas próby wdrażania lub przenoszenia obciążeń, naruszenia reguły umieszczania usług? Usługa Service Fabric udostępnia diagnostykę dla tych i innych do upewnij się, że wyświetlana jest także informacja o działaniu odbywa się w klastrze. Niektóre przykładowe scenariusze dotyczące monitorowania klastra obejmują:
 
 Usługa Service Fabric udostępnia rozbudowany zestaw zdarzeń poza pole. Te [zdarzenia usługi Service Fabric](service-fabric-diagnostics-events.md) jest możliwy za pośrednictwem bazy danych EventStore lub operational channel (kanał zdarzeń udostępnianych przez platformę). 
-* Bazy danych EventStore — bazy danych EventStore jest funkcji oferowanych przez platformę, która dostarcza zdarzenia platformy usługi Service Fabric jest dostępna w narzędziu Service Fabric Explorer i za pośrednictwem interfejsu API REST. Można wyświetlić widoku migawki, co się dzieje w klastrze dla każdej jednostki np. węzeł, usługi, aplikacji i zapytań w zależności od czasu wystąpienia zdarzenia. Możesz również Dowiedz się więcej o bazie danych EventStore na [omówienie bazy danych EventStore](service-fabric-diagnostics-eventstore.md).    
 
 * Zdarzenia usługi Service Fabric kanały — Windows na zdarzenia usługi Service Fabric są dostępne od pojedynczego dostawcy funkcji ETW z zestawem odpowiednie `logLevelKeywordFilters` używane do pobierania kanał operacyjnej, danych i komunikatów — jest to sposób, w którym firma Microsoft oddzielenia wychodzące Usługa sieci szkieletowej zdarzeń ma zostać wykonane filtrowanie na zgodnie z potrzebami. W systemie Linux zdarzenia usługi Service Fabric pochodzić LTTng i są umieszczane w jednej tabeli magazynu, od których one mogą być filtrowane zgodnie z potrzebami. Te kanały zawierają wyselekcjonowanych, ze strukturą zdarzenia, które umożliwia lepsze zrozumienie stanu klastra. Diagnostyka są domyślnie włączone w czasie tworzenia klastra, które tworzą tabeli usługi Azure Storage, do którego wysyłane są zdarzenia z te kanały służących do wykonywania zapytań w przyszłości. 
+
+* Bazy danych EventStore — bazy danych EventStore jest funkcji oferowanych przez platformę, która dostarcza zdarzenia platformy usługi Service Fabric jest dostępna w narzędziu Service Fabric Explorer i za pośrednictwem interfejsu API REST. Można wyświetlić widoku migawki, co się dzieje w klastrze dla każdej jednostki np. węzeł, usługi, aplikacji i zapytań w zależności od czasu wystąpienia zdarzenia. Możesz również Dowiedz się więcej o bazie danych EventStore na [omówienie bazy danych EventStore](service-fabric-diagnostics-eventstore.md).    
+
+![Bazy danych EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
 Diagnostyka podane są w formie kompleksowy zestaw zdarzeń, gotowych. Te [zdarzenia usługi Service Fabric](service-fabric-diagnostics-events.md) ilustrują akcje wykonywane przez platformę, na różnych jednostkach, takich jak węzły, aplikacji, usług, partycji itp. W ostatnim przypadku powyżej były węzeł, aby przejść w dół, platformy czy emitować `NodeDown` zdarzeń i można wysyłać powiadomienia bezpośrednio przez narzędzie monitorowania wybranego. Inne typowe przykłady `ApplicationUpgradeRollbackStarted` lub `PartitionReconfigured` podczas przejścia w tryb failover. **Te same zdarzenia są dostępne w klastrach systemów Windows i Linux.**
 

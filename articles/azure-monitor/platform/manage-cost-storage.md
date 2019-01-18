@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 3dd0605d02732f1a98f6b6516d9f04daf354a489
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332323"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382073"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -168,7 +168,7 @@ Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (n
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typres danych dane są kosztowne do wykonania. 
+Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. 
 
 Może to rozszerzona, aby zwrócić liczbę komputerów, na godzinę, które wysyłają rozliczane typów danych:
 

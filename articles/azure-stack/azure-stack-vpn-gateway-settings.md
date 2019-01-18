@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 05f198aa869bbff121d438688aaee89a292516c1
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d5538ce94428f189fc83cfa1107c52b9d57a3d13
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807977"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381557"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Ustawienia konfiguracji bramy sieci VPN dla usługi Azure Stack
 
@@ -51,9 +51,9 @@ Usługa Azure Stack oferuje bramy sieci VPN jednostkach SKU wymienionych w poni�
 
 |   | Przepływność bramy sieci VPN |Tunele IPsec maksymalna bramy sieci VPN |
 |-------|-------|-------|
-|**Podstawowa jednostka SKU**  | 100 Mb/s  | 10    |
-|**Standardowa jednostka SKU**           | 100 Mb/s  | 10    |
-|**Jednostka SKU wysokiej wydajności** | 200 Mb/s    | 5 |
+|**Podstawowa jednostka SKU**  | 100 Mb/s  | 20    |
+|**Standardowa jednostka SKU**           | 100 Mb/s  | 20    |
+|**Jednostka SKU wysokiej wydajności** | 200 Mb/s    | 10    |
 
 ### <a name="resizing-gateway-skus"></a>Zmiana rozmiaru jednostki SKU bramy
 
@@ -100,7 +100,7 @@ Podczas tworzenia bramy sieci wirtualnej dla konfiguracji bramy sieci VPN, nale�
 >
 > Ponadto usługa Azure Stack nie obsługuje przy użyciu selektorów ruchu na podstawie zasad dla bram na podstawie tras w tej chwili konfiguracje niestandardowe zasady protokołu IPSec/IKE nie są obsługiwane.
 
-* **Oparte na zasadach**: Sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, które są skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną i sieci wirtualnej usługi Azure Stack. Zasady lub selektor ruchu jest zwykle Lista dostępu w konfiguracji urządzenia sieci VPN.
+* **PolicyBased**: Sieci VPN oparte na zasadach szyfrują i kierowania pakietów przez tunel protokołu IPsec na podstawie zasad protokołu IPsec, które są skonfigurowane przy użyciu kombinacji prefiksów adresów między siecią lokalną i sieci wirtualnej usługi Azure Stack. Zasady lub selektor ruchu jest zwykle Lista dostępu w konfiguracji urządzenia sieci VPN.
 
   >[!NOTE]
   >**Oparte na zasadach** jest obsługiwana na platformie Azure, ale nie w usłudze Azure Stack.
@@ -119,11 +119,11 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 
 Poniższa tabela zawiera listę wymagań dotyczących bram sieci VPN.
 
-| |Brama sieci VPN typu PolicyBased Basic | Brama sieci VPN typu RouteBased Basic | Brama sieci VPN typu RouteBased Standard | Bramy sieci VPN usługi RouteBased o wysokiej wydajności|
+| |PolicyBased Basic VPN Gateway | RouteBased Basic VPN Gateway | RouteBased Standard VPN Gateway | Bramy sieci VPN usługi RouteBased o wysokiej wydajności|
 |--|--|--|--|--|
 | **Łączność lokacja-lokacja (S2S połączenia)** | Nieobsługiwane | Konfiguracja sieci VPN typu RouteBased | Konfiguracja sieci VPN typu RouteBased | Konfiguracja sieci VPN typu RouteBased |
 | **Metoda uwierzytelniania**  | Nieobsługiwane | Klucz wstępny dla połączeń S2S  | Klucz wstępny dla połączeń S2S  | Klucz wstępny dla połączeń S2S  |   
-| **Maksymalna liczba połączeń S2S**  | Nieobsługiwane | 10 | 10| 5|
+| **Maksymalna liczba połączeń S2S**  | Nieobsługiwane | 20 | 20| 10|
 |**Aktywna Obsługa routingu (BGP)** | Nieobsługiwane | Nieobsługiwane | Obsługiwane | Obsługiwane |
 
 ### <a name="gateway-subnet"></a>Podsieć bramy

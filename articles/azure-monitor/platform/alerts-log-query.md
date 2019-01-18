@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
 ms.component: alerts
-ms.openlocfilehash: 9cd745cedd6d870262e412709e4e104c1406558e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c1bcbf1245ef3256ceb1db098d6bcb014c7cd155
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54234084"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382019"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Jeśli kwerendy alertów dzienników w usłudze Azure Monitor
 [Reguły na podstawie dzienników usługi Azure Monitor alertów](alerts-unified-log.md) uruchamiane w regularnych odstępach czasu, dlatego należy upewnić się, że są one zapisywane zminimalizować koszty i opóźnienia. Ten artykuł zawiera zalecenia dotyczące pisania wydajne zapytania dotyczące alertów dzienników i procesu konwersji istniejących zapytań. 
@@ -27,7 +27,7 @@ Na przykład poniższe zapytanie jest ograniczone do _SecurityEvent_ tabeli i wy
 SecurityEvent | where EventID == 4624 
 ```
 
-Zapytania, które zaczyna się `search` lub `union` umożliwiają wyszukiwanie w wielu wielu kolumn w tabeli lub nawet utworzyć wiele tabel. W poniższych przykładach pokazano kilka metod uzyskania termin wyszukiwania _pamięci_:
+Zapytania, które zaczyna się `search` lub `union` umożliwiają wyszukiwanie w wielu kolumnach tabeli lub nawet utworzyć wiele tabel. W poniższych przykładach pokazano kilka metod uzyskania termin wyszukiwania _pamięci_:
 
 ```Kusto
 search "Memory"

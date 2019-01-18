@@ -8,26 +8,26 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 570aa0c9946910f70fe80ed2f7ebc064431d9643
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9bdd61501838bb063005e29f4e108baea066a1e3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314639"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388558"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Klucz frazy umiejętności cognitive
 
-**Klucz frazy** umiejętności ocenia tekstu bez struktury, a następnie dla każdego rekordu zwraca listę fraz kluczowych.
+**Klucz frazy** umiejętności ocenia tekstu bez struktury, a następnie dla każdego rekordu zwraca listę fraz kluczowych. Modele dostarczone przez uczenia maszynowego korzysta z tej umiejętności [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w usługach Cognitive Services.
 
 Ta możliwość jest przydatna, jeśli chcesz szybko identyfikować jego główne punkty najważniejsze w rekordzie. Na przykład dany tekst wejściowy "żywności został wyborna i wystąpiły personelu wspaniała", usługa zwraca "jedzenie" i "personel wspaniała".
 
 > [!NOTE]
-> Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Pozwoli to nam będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również Zaczniemy naliczać opłaty do wyodrębnienia obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+> Od 21 grudnia 2018 r. można [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
 >
-> Wykonanie wbudowanego umiejętności będzie powodować obciążenie opłatami istniejące [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu będzie powodować obciążenie opłatami ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się, [więcej](cognitive-search-attach-cognitive-services.md).
+> Wykonanie wbudowanego umiejętności jest opłata za usług Cognitive Services, naliczane istniejące [cena Przejdź płatności — jako — możesz](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu jest opłata za usługę Azure Search, obecnie naliczane ceny za wersję zapoznawczą zgodnie z opisem na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 

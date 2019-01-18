@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: b66373b6847b96a4fcbc1a0c9da42d285d089a9d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a23d8c1e72ec453724514e4d1638c5a223d1644
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727889"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389223"
 ---
 # <a name="eventstore-service-overview"></a>Omówienie usługi bazy danych EventStore
 
@@ -34,6 +34,7 @@ Wprowadzona w wersji 6.2, usługa bazy danych EventStore jest opcji monitorowani
 * Upewnij się, że akcje zarządzania, które są tworzone w klastrze są przetwarzane prawidłowo
 * Pobierz "migawkę" jak usługi Service Fabric prowadzi interakcję z określonego obiektu
 
+![Bazy danych EventStore](media/service-fabric-diagnostics-eventstore/eventstore.png)
 
 Aby wyświetlić pełną listę zdarzeń, które są dostępne w bazie danych EventStore, zobacz [zdarzenia usługi Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -53,7 +54,7 @@ Usługa bazy danych EventStore można wykonywać zapytania, zdarzenia, które s�
 * Replik partycji: zdarzenia ze wszystkich replik / wystąpień określonej partycji identyfikowane przez `partitionId`
 * Repliki partycji: zdarzenia z określonym repliki / identyfikowane przez wystąpienie `replicaId` i `partitionId`
 
-Aby dowiedzieć się więcej o interfejsie API, zapoznaj się z [dokumentacja bazy danych EventStore interfejsu API] ((https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Aby dowiedzieć się więcej o interfejsie API, sprawdź [dokumentacja interfejsu API bazy danych EventStore](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
 Usługa bazy danych EventStore ma również możliwość korelowanie zdarzeń w klastrze. Patrząc na zdarzenia, które zostały napisane w tym samym czasie z różnymi jednostkami, które mogą mieć wpływ na siebie, usługa bazy danych EventStore jest można połączyć te zdarzenia, aby ułatwić zidentyfikowanie przyczyny działań w klastrze. Na przykład, jeśli jedna z aplikacji stają się zła, bez konieczności wprowadzania zmian wywołane, bazy danych EventStore również przyjrzeć się inne zdarzenia udostępnianych przez platformę i będą można skorelować za pomocą `Error` lub `Warning` zdarzeń. To ułatwia szybsze wykrywanie awarii i głównych przyczyn analizy.
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: db6db54d362e7ef6373271e238fdb1cf543a142e
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 23e1de98fff891d199d1f33fcb714b2b284e8edb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413493"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382923"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -29,9 +29,9 @@ Elementy Webhook są jednym z wielu sposobów, aby odbierać zdarzenia z usługi
 
 Podobnie jak wielu innych usług, które obsługują elementy webhook usługi Event Grid wymaga udowodnić własność punktu końcowego usługi elementu Webhook, zanim zacznie dostarczanie zdarzeń do określonego punktu końcowego. To wymaganie zapobiega przepełnieniu punktu końcowego usługi za pomocą zdarzeń przez złośliwego użytkownika. Gdy używasz dowolnego z trzech usług platformy Azure wymienionych poniżej infrastruktury platformy Azure automatycznie obsługuje tej weryfikacji:
 
-* Usługi Azure Logic Apps
-* Usługa Azure Automation
-* Usługa Azure Functions dla wyzwalacza usługi Event Grid.
+* Usługa Azure Logic Apps z [łącznika siatki zdarzeń](https://docs.microsoft.com/en-us/connectors/azureeventgrid/)
+* Usługa Azure Automation za pośrednictwem [elementu webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
+* Usługi Azure Functions przy użyciu [wyzwalacza usługi Event Grid](../azure-functions/functions-bindings-event-grid.md)
 
 Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na podstawie funkcji platformy Azure, swój kod punktu końcowego musi wziąć udział w uzgadniania weryfikacji za pomocą usługi Event Grid. Usługa Event Grid obsługuje sprawdzanie poprawności subskrypcji na dwa sposoby.
 

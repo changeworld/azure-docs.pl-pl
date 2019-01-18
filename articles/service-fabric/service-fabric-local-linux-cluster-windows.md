@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi Azure Service Fabric Linux klastra w systemie Windows | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania klastry z systemem Linux sieci szkieletowej usług uruchomionych na maszynach rozwoju systemu Windows. Jest to szczególnie przydatne dla wielu aplikacji na wiele platform.
+title: Konfigurowanie klastra usługi Azure Service Fabric dla systemu Linux w Windows | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania klastrów usługi Service Fabric systemu Linux uruchamianych na maszynach rozwoju Windows. Jest to szczególnie przydatne w przypadku programowanie wieloplatformowych.
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
@@ -14,38 +14,33 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: ad0d383888c173ece5a7fbd3b0de690ed13074f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 26acb3a2a0cefdca74d2c761ccddf89e18aa909a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206297"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388490"
 ---
-# <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Konfigurowanie klastra sieci szkieletowej usług systemu Linux na komputerze dewelopera systemu Windows
+# <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Konfigurowanie klastra systemu Linux usługi Service Fabric na komputerze Windows dla deweloperów
 
-W tym dokumencie opisano, jak skonfigurować lokalne sieci szkieletowej usług systemu Linux, na komputerach rozwoju systemu Windows. Konfigurowanie lokalnego klastra Linux przydaje się szybko przetestować aplikacje przeznaczone dla klastrów systemu Linux, ale są tworzone na komputerze z systemem Windows.
+W tym dokumencie opisano sposób konfigurowania lokalnego usługi Service Fabric systemu Linux na komputerach deweloperskich Windows. Konfigurowanie lokalnego klastra systemu Linux dzięki takiemu grupowaniu można szybko przetestować aplikacje przeznaczone dla klastrów systemu Linux, ale są tworzone na komputerze Windows.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Opartych na systemie Linux klastrów sieci szkieletowej usług nie należy uruchamiać natywnie w systemie Windows. Uruchomienie lokalnego klastra usługi sieć szkieletowa podano wstępnie skonfigurowane obrazu kontenera Docker. Przed rozpoczęciem potrzebne są następujące elementy:
+Opartą na systemie Linux klastrów usługi Service Fabric nie działa natywnie w Windows. Aby uruchomić lokalny klaster usługi Service Fabric, znajduje się wstępnie skonfigurowany obraz kontenera Docker. Przed rozpoczęciem potrzebne są następujące elementy:
 
 * Co najmniej 4 GB pamięci RAM
 * Najnowsza wersja platformy [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
 
 >[!TIP]
-> * Możesz wykonać czynności wymienionych w oficjalnego Docker [dokumentacji](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) do zainstalowania platformy Docker na systemu Windows. 
+> * Możesz wykonać kroki opisane w oficjalnej [dokumentacji](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) zainstalować platformę Docker na użytkownika Windows. 
 > * Po zakończeniu instalacji upewnij się, że została ona przeprowadzona pomyślnie, wykonując kroki opisane [tutaj](https://docs.docker.com/docker-for-windows/#check-versions-of-docker-engine-compose-and-machine).
 
 
 ## <a name="create-a-local-container-and-setup-service-fabric"></a>Tworzenie kontenera lokalnego i konfigurowanie usługi Service Fabric
-Konfigurowanie lokalnego kontenera Docker i klaster sieci szkieletowej usług na nim uruchomione, wykonaj następujące czynności w programie PowerShell:
+Aby skonfigurować lokalny kontener platformy Docker i uruchomić na nim klaster usługi Service fabric, wykonaj następujące kroki w programie PowerShell:
 
-1. Ściągnij obraz z repozytorium platformy Docker:
 
-    ```powershell
-    docker pull microsoft/service-fabric-onebox
-    ```
-
-2. Zaktualizuj konfigurację demona platformy Docker na swoim hoście za pomocą następujących ustawień i ponownie uruchom demona platformy Docker: 
+1. Zaktualizuj konfigurację demona platformy Docker na swoim hoście za pomocą następujących ustawień i ponownie uruchom demona platformy Docker: 
 
     ```json
     {
@@ -53,38 +48,81 @@ Konfigurowanie lokalnego kontenera Docker i klaster sieci szkieletowej usług na
       "fixed-cidr-v6": "2001:db8:1::/64"
     }
     ```
-    Jest to zaleca sposób aktualizowania - przejdź do ikony Docker > Ustawienia > demon > Zaawansowane i zaktualizować go brak. Następnie uruchom ponownie demona Docker, aby zmiany zaczęły obowiązywać. 
+    Jest to zalecany sposób aktualizowania — wybierz pozycję ikona Docker > Ustawienia > demon > Zaawansowane i zaktualizować je ma. Następnie należy ponownie uruchomić demona platformy Docker, aby zmiany zaczęły obowiązywać. 
 
-3. Uruchom jednopunktowe wystąpienie kontenera Docker usługi Service Fabric przy użyciu obrazu:
+2. W nowym katalogu utwórz plik o nazwie `Dockerfile` w celu skompilowania obrazu usługi Service Fabric:
 
-    ```powershell
-    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
+    ```dockerfile
+    FROM microsoft/service-fabric-onebox
+    WORKDIR /home/ClusterDeployer
+    RUN ./setup.sh
+    #Generate the local
+    RUN locale-gen en_US.UTF-8
+    #Set environment variables
+    ENV LANG=en_US.UTF-8
+    ENV LANGUAGE=en_US:en
+    ENV LC_ALL=en_US.UTF-8
+    EXPOSE 19080 19000 80 443
+    #Start SSH before running the cluster
+    CMD /etc/init.d/ssh start && ./run.sh
     ```
+
+    >[!NOTE]
+    >Możesz dostosować ten plik, aby dodać dodatkowe programy lub zależności do kontenera.
+    >Na przykład dodanie elementu `RUN apt-get install nodejs -y` umożliwi obsługę aplikacji `nodejs` jako plików wykonywalnych gościa.
+    
     >[!TIP]
-    > * Określenie nazwy wystąpienia kontenera pomoże usprawnić jego obsługę. 
-    > * Jeśli Twoja aplikacja nasłuchuje na określonych portach, należy to określić za pomocą dodatkowych tagów -p. Na przykład jeśli aplikacja nasłuchuje na porcie 8080, uruchom docker Uruchom 8080:8080 -p 19080:19080 - itd -p — nazwę sfonebox microsoft/service — sieci szkieletowej — onebox
+    > Domyślnie zostanie ściągnięty obraz z najnowszą wersją usługi Service Fabric. Poszczególne wersje są dostępne na stronie [usługi Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/)
 
-4. Zaloguj się do kontenera Docker w trybie interaktywnym ssh:
+3. Aby skompilować obraz do wielokrotnego użytku na podstawie pliku `Dockerfile`, otwórz terminal i element `cd` w lokalizacji bezpośrednio przechowującej plik `Dockerfile`, a następnie uruchom kod:
 
-    ```powershell
-    docker exec -it sfonebox bash
+    ```powershell 
+    docker build -t mysfcluster .
+    ```
+    
+    >[!NOTE]
+    >Ta operacja może zająć pewien czas, ale trzeba ją wykonać tylko raz.
+
+4. Teraz możesz szybko w razie potrzeby uruchomić kopię lokalną usługi Service Fabric, uruchamiając kod:
+
+    ```powershell 
+    docker run --name sftestcluster -d -v //var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
     ```
 
-5. Uruchom skrypt instalacji, który pobierze wymagane zależności, a następnie uruchom klaster w kontenerze.
+    >[!TIP]
+    >Określ nazwę wystąpienia kontenera, aby usprawnić jego obsługę. 
+    >
+    >Jeśli Twoja aplikacja nasłuchuje na określonych portach, należy je określić za pomocą dodatkowych tagów `-p`. Jeśli na przykład aplikacja nasłuchuje na porcie 8080, dodaj następujący tag `-p`:
+    >
+    >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
+    >
 
-    ```bash
-    ./setup.sh     # Fetches and installs the dependencies required for Service Fabric to run
-    ./run.sh       # Starts the local cluster
+5. Klaster zostanie uruchomiony po krótkim czasie. Możesz wyświetlić dzienniki przy użyciu poniższego polecenia lub przejść do pulpitu nawigacyjnego, aby wyświetlić kondycję klastrów [http://localhost:19080](http://localhost:19080):
+
+    ```powershell 
+    docker logs sftestcluster
     ```
 
-6. Po pomyślnym ukończeniu kroku 5, można przejść do ``http://localhost:19080`` z systemu Windows i będą mogli wyświetlić Eksploratora usługi sieć szkieletowa usług. W tym momencie można połączyć z tym klastrem przy użyciu dowolnego narzędzia z komputera developer i wdrażanie aplikacji dla sieci szkieletowej usług w systemie Linux klastrów. 
+6. Po pomyślnym ukończeniu kroku 5 możesz przejść do ``http://localhost:19080`` z usługi Windows i będą mogli zobaczyć narzędzia Service Fabric explorer. W tym momencie możesz nawiązać połączenie z tego klastra przy użyciu dowolnych narzędzi z komputera dewelopera Windows i wdrażanie aplikacji, przeznaczone dla klastrów systemu Linux usługi Service Fabric. 
 
     > [!NOTE]
     > Wtyczka Eclipse obecnie nie jest obsługiwana w systemie Windows. 
 
+7. Gdy wszystko będzie gotowe, zatrzymać i oczyścić kontener za pomocą następującego polecenia:
+
+    ```powershell 
+    docker rm -f sftestcluster
+    ```
+
+### <a name="known-limitations"></a>Znane ograniczenia 
+ 
+ Poniżej przedstawiono znane ograniczenia dotyczące klastrów lokalnych działających w kontenerze na komputerach Mac: 
+ 
+ * Usługa DNS nie działa i nie jest obsługiwana: [problem #132](https://github.com/Microsoft/service-fabric/issues/132)
+
 ## <a name="next-steps"></a>Kolejne kroki
-* Rozpoczynanie pracy z [programu Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
-* Zapoznaj się z innymi [przykłady Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* Rozpoczynanie pracy z usługą [środowiska Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
+* Zapoznaj się z innymi [przykładów w języku Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 
 <!-- Image references -->

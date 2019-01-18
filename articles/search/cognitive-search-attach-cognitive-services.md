@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5bffeacaa07f90a11c374061eb6c0d36fc8f86a9
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 776363278352ca3de365760d334e99ab43b14bb5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351462"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389564"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
@@ -23,7 +23,7 @@ Algorytmy sztucznej Inteligencji zapewniają [potoków wyszukiwania kognitywnego
 
 Bezpłatnie wzbogacanie ograniczonej liczby dokumentów lub dołączyć płatnych zasobu usług Cognitive Services dla obciążeń typu większych i częściej. W tym artykule, Dowiedz się, jak skojarzyć zasobu usług Cognitive Services za pomocą usługi cognitive zestawu umiejętności, aby wzbogacić dane podczas [indeksowanie usługi Azure Search](search-what-is-an-index.md).
 
-Jeśli Potok składa się wyłącznie z [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), nie trzeba dołączać zasobu usług Cognitive Services.
+Potok składa się z umiejętności niezwiązanych ze sobą na interfejsy API usług Cognitive Services, nadal należy dołączać zasobu usług Cognitive Services, ale nie będzie opłata tych umiejętności. Niepowiązane umiejętności obejmują: [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), [funkcja scalająca tekst](cognitive-search-skill-textmerger.md), [rozdzielacz tekstu](cognitive-search-skill-textsplit.md), i [shaper](cognitive-search-skill-shaper.md).
 
 > [!NOTE]
 > Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
@@ -52,7 +52,9 @@ Przejdź do kolejnego etapu **Dodaj wzbogacenia**. Aby uzyskać opis umiejętno�
 
 ## <a name="use-billable-resources"></a>Korzystać z płatnych zasobów
 
-W przypadku obciążeń numerowanie dokumentów ponad 20 dni należy płatnych zasobu usług Cognitive Services.
+W przypadku obciążeń numerowanie wzbogacenia ponad 20 dni należy dołączyć płatnych zasobu usług Cognitive Services. 
+
+Opłaty są naliczane tylko za umiejętności, które wywołują interfejsy API usług Cognitive Services. Oparte na interfejsie API bez umiejętności, takich jak [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), [funkcja scalająca tekst](cognitive-search-skill-textmerger.md), [rozdzielacz tekstu](cognitive-search-skill-textsplit.md), i [shaper](cognitive-search-skill-shaper.md) umiejętności nie są rozliczane.
 
 1. W **importowania danych** kreatora w **dołączyć usług Cognitive Services**, wybierz istniejący zasób, lub kliknij przycisk **Tworzenie nowego zasobu usług Cognitive Services**.
 

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: acedfab277199c2ada6af17584bab3f222fe1a13
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843210"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390023"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -35,7 +35,7 @@ Ta sekcja zawiera podsumowanie podstawowych różnic w składni języka T-SQL i 
 
 [Wysoka dostępność](sql-database-high-availability.md) jest wbudowana w wystąpieniu zarządzanym i nie mogą być kontrolowane przez użytkowników. Poniższe instrukcje nie są obsługiwane:
 
-- [TWORZENIE PUNKTU KOŃCOWEGO... ABY UZYSKAĆ DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
+- [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
 - [UTWÓRZ GRUPĘ DOSTĘPNOŚCI](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
 - [POLECENIA ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
 - [GRUPA DOSTĘPNOŚCI LISTY](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
@@ -124,7 +124,7 @@ Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i f
 
 ### <a name="compatibility-levels"></a>Poziomy zgodności
 
-- Poziomy zgodności obsługiwane są: 100, 110, 120, 130, 140  
+- Poziomy zgodności obsługiwane są następujące: 100, 110, 120, 130, 140  
 - Poziomy zgodności poniżej 100 nie są obsługiwane.
 - Domyślny poziom zgodności dla nowych baz danych jest 140. W przypadku przywróconych baz danych poziom zgodności pozostanie niezmieniona Jeśli był 100 lub nowszym.
 
@@ -235,7 +235,7 @@ Nieudokumentowany instrukcji DBCC, które są włączone w programie SQL Server 
 Niektóre cele Windows specyficznych dla systemu XEvents nie są obsługiwane:
 
 - `etw_classic_sync target` nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej etw_classic_sync](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
-- `event_file target`nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej event_file](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#eventfile-target).
+- `event_file target`nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej event_file](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Zewnętrzne biblioteki
 
@@ -465,7 +465,7 @@ Dzienniki błędów, które są dostępne w przypadku wystąpienia zarządzanego
 
 Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i wiele z nich nie są istotne. W przyszłości będzie można zmniejszyć ilość informacji w dziennikach błędów.
 
-**Obejście**: niestandardowe procedury do odczytywania dzienników błędów, które filtru w poziomie niektóre-odpowiednie wpisy. Aby uzyskać więcej informacji, zobacz [DB wystąpienia zarządzanego Azure SQL — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+**Obejście**: Do odczytywania dzienników błędów, które filtru w poziomie niektóre wpisy nie są istotne, należy użyć niestandardowej procedury. Aby uzyskać więcej informacji, zobacz [DB wystąpienia zarządzanego Azure SQL — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Zakres transakcji na dwie bazy danych w ramach tego samego wystąpienia nie jest obsługiwana.
 
@@ -502,7 +502,7 @@ Mimo że ten kod działa z danymi w ramach tego samego wystąpienia wymagane us�
 
 Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączonych serwerów/rozproszonych zapytań, które odwołują się do pewnego czasu bieżącego wystąpienia nie można rozpoznać adresu IP lokalnego wystąpienia. Ten błąd jest przejściowy problem.
 
-**Obejście**: Użyj połączenia kontekstu w module środowiska CLR, jeśli to możliwe.
+**Obejście**: Jeśli to możliwe używać kontekstu połączeń w module środowiska CLR.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

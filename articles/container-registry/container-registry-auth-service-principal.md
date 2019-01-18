@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3aa986efd4986eb1d96c0f013d997486e6e8ae2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754207"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390923"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Uwierzytelnianie systemu Azure Container Registry za pomocą jednostki usługi
 
 Jednostki usługi Azure Active Directory (Azure AD) umożliwia udostępnianie obrazu kontenera `docker push` i `pull` dostępu do rejestru kontenerów. Za pomocą nazwy głównej usługi, można zapewnić dostęp do "bezobsługowe" usług i aplikacji.
 
-## <a name="what-is-a-service-principal"></a>Co to jest jednostki usługi?
+## <a name="what-is-a-service-principal"></a>Co to jest jednostka usługi?
 
 Usługa Azure AD *jednostki usług* zapewniają dostęp do zasobów platformy Azure w ramach Twojej subskrypcji. Można traktować usługę podmiotu zabezpieczeń jako tożsamość użytkownika dla usługi "Usługa" w przypadku dowolnej aplikacji, usługi lub platformy, która wymaga dostępu do zasobów. Nazwy głównej usługi można skonfigurować przy użyciu praw dostępu ograniczone tylko do tych zasobów, które określisz. Następnie należy skonfigurować poświadczenia nazwy głównej usługi umożliwia dostęp do tych zasobów, Twoja aplikacja lub usługa.
 
@@ -47,9 +47,7 @@ Poprzedni przykładowe skrypty można znaleźć wiersza polecenia platformy Azur
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po utworzeniu jednostki usługi, że został udzielony dostęp do usługi container registry, można użyć jego poświadczeń w aplikacji i usług do interakcji z rejestru.
-
-Podczas konfigurowania poszczególnych aplikacji, aby użyć poświadczenia nazwy głównej usługi znajduje się poza zakres tego artykułu, instrukcje można znaleźć niektórych określonych usług i platform, w tym miejscu:
+Po utworzeniu jednostki usługi, że został udzielony dostęp do usługi container registry, można użyć jego poświadczeń w aplikacji i usług do interakcji z bezobsługowego rejestru. Za pomocą poświadczeń jednostki usługi z dowolnej usługi platformy Azure, która może uwierzytelniać za pomocą usługi Azure container registry. Przykłady:
 
 * [Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
 * [Uwierzytelnianie za pomocą usługi Azure Container Registry w usłudze Azure Container Instances (ACI)](container-registry-auth-aci.md)

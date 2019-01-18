@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: 39a6ead041b1783a3effcb9659c59ea788cd2bf6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 4f2343e1c6b95c495f03cd94ee58164c546f4b76
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139507"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382194"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Użyj frazy Wyświetla sygnału boost listy programu word
 
@@ -27,6 +27,8 @@ A [listy fraz](luis-concept-feature.md) znajduje się grupa wartości (słów i 
 Lista fraz dodaje do słownictwa używanego w domenie aplikacji jako drugi sygnał do usługi LUIS o tych słów.
 
 ## <a name="add-phrase-list"></a>Dodawanie listy fraz
+
+Usługa LUIS zezwala na maksymalnie 10 Wyświetla frazy na aplikację. 
 
 1. Otwórz aplikację, klikając jego nazwę **Moje aplikacje** strony, a następnie kliknij przycisk **kompilacji**, następnie kliknij przycisk **frazę list** w panelu po lewej stronie Twojej aplikacji. 
 

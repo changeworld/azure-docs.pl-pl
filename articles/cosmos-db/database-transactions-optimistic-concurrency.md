@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cbd09f141128f9103af88b695baf717eaa3c99d5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038840"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389101"
 ---
 # <a name="database-transactions-and-optimistic-concurrency-control"></a>Transakcje bazy danych i mechanizmu kontroli optymistycznej współbieżności
 
@@ -49,7 +49,7 @@ Możliwość wykonywania języka JavaScript bezpośrednio wewnątrz aparatu bazy
 
 ## <a name="optimistic-concurrency-control"></a>Mechanizmu kontroli optymistycznej współbieżności 
 
-Mechanizmu kontroli optymistycznej współbieżności pozwala uniknąć utraty aktualizacji i usuwa. Konflikt równoczesnych operacji są poddawane regularne pesymistycznego blokowania pracujących na partycji logicznej, która jest właścicielem elementu aparatu bazy danych. W przypadku dwóch jednoczesnych operacji podjęto próbę zaktualizowania najnowszą wersję elementu w obrębie partycji logicznej, jeden z nich zostanie zarejestrowane, i drugi zakończy się niepowodzeniem. Jednak jeśli jednego lub dwóch operacji podjęto próbę zaktualizowania jednocześnie tego samego elementu miał poprzednio odczytać starszą wartość elementu, baza danych nie może ustalić, jeśli wcześniej odczytu wartość przez jeden lub oba operacjami wywołującymi konflikt była rzeczywiście najnowszą wartość elementu. Na szczęście tej sytuacji może zostać wykryte za pomocą optymistycznej kontroli współbieżności (OCC) przed umożliwieniem dwie operacje wprowadź granic transakcji w aparacie bazy danych. OCC chroni dane przed przypadkowemu zastąpieniu zmiany wprowadzone przez innych użytkowników. On również uniemożliwia innym użytkownikom przypadkowemu zastąpieniu własnych zmian.
+Mechanizmu kontroli optymistycznej współbieżności pozwala uniknąć utraty aktualizacji i usuwa. Konflikt równoczesnych operacji są poddawane regularne pesymistycznego blokowania pracujących na partycji logicznej, która jest właścicielem elementu aparatu bazy danych. Gdy dwie operacje współbieżne próbują zaktualizować najnowszą wersję elementu w obrębie partycji logicznej, jeden z nich zostanie zarejestrowane, a druga zakończy się niepowodzeniem. Jednak jeśli jednego lub dwóch operacji podjęto próbę zaktualizowania jednocześnie tego samego elementu miał poprzednio odczytać starszą wartość elementu, baza danych nie może ustalić, jeśli wcześniej odczytu wartość przez jeden lub oba operacjami wywołującymi konflikt była rzeczywiście najnowszą wartość elementu. Na szczęście tej sytuacji może zostać wykryte za pomocą optymistycznej kontroli współbieżności (OCC) przed umożliwieniem dwie operacje wprowadź granic transakcji w aparacie bazy danych. OCC chroni dane przed przypadkowemu zastąpieniu zmiany wprowadzone przez innych użytkowników. On również uniemożliwia innym użytkownikom przypadkowemu zastąpieniu własnych zmian.
 
 Równoczesne aktualizacje elementu są poddawane OCC przez warstwę protokołu komunikacji usługi Azure Cosmos DB. Bazy danych usługi Azure Cosmos gwarantuje, że element, który jest aktualizacja (lub usuwanie) w wersji po stronie klienta jest taka sama jak wersja elementu w kontenerze usługi Azure Cosmos. Gwarantuje to, że zapisu są chronione przed zastąpieniem przypadkowo za operacje zapisu, inne osoby i na odwrót. W środowisku wielu użytkowników kontroli optymistycznej współbieżności chroni przypadkowemu usunięciu lub aktualizowanie niewłaściwej wersji elementu. Jako takie elementy są chronione przed nikczemnych "utraconej aktualizacji" lub "utracone delete" problemów.
 

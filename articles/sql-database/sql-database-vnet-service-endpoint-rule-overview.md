@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 1/16/2019
-ms.openlocfilehash: 2c022bd002700426eea2c6b38a667cd5a1381c02
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.date: 01/17/2019
+ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359854"
+ms.locfileid: "54390391"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure SQL
 
@@ -173,7 +173,7 @@ Usługa Azure Storage została zaimplementowana w tej samej funkcji, która pozw
 Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQL Data Warehouse przy użyciu kont usługi Azure Storage. Jeśli konto usługi Azure Storage, które są ładowane dane z ogranicza dostęp tylko do zestawu z podsieci sieci wirtualnej, spowoduje przerwanie połączenia z poziomu programu PolyBase do konta. Włączania zarówno PolyBase importowanie i eksportowanie scenariuszy za pomocą usługi Azure SQL Data Warehouse nawiązywania połączenia z usługi Azure Storage, która jest zabezpieczony z siecią wirtualną, wykonaj wymienione poniżej kroki:
 
 #### <a name="prerequisites"></a>Wymagania wstępne
-1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, należy najpierw uaktualnić do ogólnego przeznaczenia w wersji 2 za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Konieczne jest posiadanie **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** włączone w ramach konta usługi Azure Storage **zapory i sieci wirtualne** menu Ustawienia. Zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Aby uzyskać więcej informacji.
  

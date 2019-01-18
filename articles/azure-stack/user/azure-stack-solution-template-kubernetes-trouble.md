@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: dc6994cd682997dd00e76b57b4996ebad1f73fbb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 844feb7999f88f63c9406c9f430d1d076cd032df
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352398"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390689"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack
 
@@ -47,7 +47,7 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
     Wprowadź wartości potrzebne do skonfigurowania klastra Kubernetes, w tym:
     -  **Nazwa użytkownika**: Nazwa użytkownika dla maszyn wirtualnych systemu Linux, które są częścią klastra Kubernetes i Menedżer DVM.
     -  **Klucz publiczny SSH**: Klucz, który jest używany do autoryzacji wszystkich maszyn z systemem Linux, które zostały utworzone w ramach klastra Kubernetes i Menedżer DVM.
-    -  **Usługa Zasady**: Identyfikator, który jest używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji, podczas tworzenia jednostki usługi. 
+    -  **Nazwa główna usługi**: Identyfikator, który jest używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji, podczas tworzenia jednostki usługi. 
     -  **Klucz tajny klienta**: One klucza utworzonego podczas tworzenia jednostki usługi.
 
 2. Tworzenie wdrożenia maszyny Wirtualnej i rozszerzenia niestandardowego skryptu.

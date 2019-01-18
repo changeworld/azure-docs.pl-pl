@@ -8,24 +8,22 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b29d32d39b4efb7e242a3ae3213512798622d1e9
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2ef5d285c19900fd2896279edde8841581d7e947
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314520"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388162"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Umiejętności cognitive scalania tekstu
 
 **Scalania tekstu** umiejętności konsoliduje tekst z kolekcji pól do pojedynczego pola. 
 
 > [!NOTE]
-> Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Pozwoli to nam będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również Zaczniemy naliczać opłaty do wyodrębnienia obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
->
-> Wykonanie wbudowanego umiejętności będzie powodować obciążenie opłatami istniejące [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu będzie powodować obciążenie opłatami ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się, [więcej](cognitive-search-attach-cognitive-services.md).
+> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie nie trzeba ponosić opłat skojarzonych z tym umiejętności. Jednak należy [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) mimo to do przesłonięcia opcję bezpłatny zasób, która ogranicza do niewielkiej liczby wzbogacenia dzienny.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

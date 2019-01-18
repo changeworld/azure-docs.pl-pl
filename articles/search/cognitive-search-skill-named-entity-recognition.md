@@ -8,26 +8,27 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: e63354152f8821c5ce975563639c8b87fb332bd4
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 55244544ff50dbaf6c22fe0f4d55257eb887eaba
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313993"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389645"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Nazwane umiejętności cognitive rozpoznawanie jednostek
 
 **Rozpoznawania jednostki o nazwie** umiejętności wyodrębnia nazwane jednostek z pliku tekstowego. Dostępne jednostki i obejmuje dodatkowe typy `person`, `location` i `organization`.
 
+> [!IMPORTANT]
+> Przestarzałe umiejętności rozpoznawanie podmiotów, zastępuje [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md). Obsługuje zatrzymuje 15 lutego 2019 r. Postępuj zgodnie z zaleceniami w [przestarzałe umiejętności poznawcze wyszukiwania](cognitive-search-skill-deprecated.md) migrację do obsługiwanych umiejętności.
+
 > [!NOTE]
-> <ul>
-> <li>
-> Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Pozwoli to nam będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również Zaczniemy naliczać opłaty do wyodrębnienia obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.>
-> Wykonanie wbudowanego umiejętności będzie powodować obciążenie opłatami istniejące [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu będzie powodować obciążenie opłatami ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się, [więcej](cognitive-search-attach-cognitive-services.md).</li>
-> <li> Umiejętności rozpoznawanie podmiotów jest traktowane jako "przestarzałe" i nie będzie oficjalnie obsługiwana od 15 lutego 2019 r. Postępuj zgodnie z zaleceniami podanymi w <a href="cognitive-search-skill-deprecated.md">przestarzałe umiejętności poznawcze wyszukiwania</a> strony, aby dokonać migracji do obsługiwanych umiejętności</li>
+> Od 21 grudnia 2018 r. można [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
+>
+> Wykonanie wbudowanego umiejętności jest opłata za usług Cognitive Services, naliczane istniejące [cena Przejdź płatności — jako — możesz](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu jest opłata za usługę Azure Search, obecnie naliczane ceny za wersję zapoznawczą zgodnie z opisem na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
@@ -57,7 +58,7 @@ Parametrów jest rozróżniana wielkość liter.
 | Nazwa wyjściowego     | Opis                   |
 |---------------|-------------------------------|
 | osoby      | Tablica ciągów, gdzie każdy ciąg reprezentuje imię osoby. |
-| lokalizacje  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
+| locations  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
 | organizations  | Tablica ciągów, w której każdy ciąg reprezentuje organizacji. |
 | jednostki | Tablica typów złożonych. Każdy typ złożony zawiera następujące pola: <ul><li>Kategoria (`"person"`, `"organization"`, lub `"location"`)</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (wartość z zakresu od 0 do 1, który reprezentuje tego zaufania, wartość rzeczywista jednostki)</li></ul> |
 

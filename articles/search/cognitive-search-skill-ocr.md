@@ -9,33 +9,35 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b07c71a9365fca3a2e5d7c837acf689af980afdd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 88f7135cea00b3e8c6cf30a1abd2b94297681c4c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075825"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391131"
 ---
 # <a name="ocr-cognitive-skill"></a>Optyczne rozpoznawanie znaków umiejętności cognitive
 
+Optyczne rozpoznawanie znaków (OCR) umiejętności rozpoznaje drukowanych oraz pisma odręcznego tekstu w plikach obrazu. Modele dostarczone przez uczenia maszynowego korzysta z tej umiejętności [komputerowej](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) w usługach Cognitive Services. **Optyczne rozpoznawanie znaków** umiejętności mapuje następujące funkcje:
+
++ Gdy textExtractionAlgorithm jest ustawiona na "ręczne", ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) jest używana funkcja.
++ Gdy textExtractionAlgorithm jest ustawiona na "drukowanych", ["Optyczne rozpoznawanie znaków"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkcji jest używany w językach innych niż angielski. Dla języka angielskiego nowe ["Rozpoznaje Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) jest używana funkcja dla drukowanego tekstu.
+
 **Optyczne rozpoznawanie znaków** umiejętności umożliwia wyodrębnianie tekstu z plików obrazu. Obsługiwane formaty plików obejmują:
 
-+ . JPEG
-+ . JPG
-+ . PNG
-+ . BMP
-+ . OBRAZ GIF
++ .JPEG
++ .JPG
++ .PNG
++ .BMP
++ .GIF
 
 > [!NOTE]
-> Od 21 grudnia 2018 roku będziesz mieć możliwość skojarzenia swojego zasobu w usługach Cognitive Services z zestawem umiejętności usługi Azure Search. Rozpoczniemy wówczas naliczanie opłat za wykonywanie zestawu umiejętności. Od tego dnia zaczniemy też naliczać opłaty za wyodrębnianie obrazów w ramach etapu analizowania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+> Od 21 grudnia 2018 r. można [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
 >
-> Opłaty za wykonywanie wbudowanych umiejętności będą naliczane na podstawie istniejącej [ceny przy płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/details/cognitive-services/) za usługi Cognitive Services. Opłaty za wyodrębnianie obrazów będą naliczane zgodnie z cenami w wersji zapoznawczej. Opisano to [na stronie z cennikiem usługi Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
->
->  Umiejętności optyczne rozpoznawanie znaków mapuje następujące funkcje usług cognitive services: Gdy textExtractionAlgorithm jest ustawiona na "ręczne", ["RecognizeText"](../cognitive-services/computer-vision/quickstarts-sdk/csharp-hand-text-sdk.md) jest używana funkcja.
->  Gdy textExtractionAlgorithm jest ustawiona na "drukowanych", ["Optyczne rozpoznawanie znaków"](../cognitive-services/computer-vision/concept-extracting-text-ocr.md) funkcji jest używany w językach innych niż angielski. Dla języka angielskiego nowe ["Rozpoznaje Text"](../cognitive-services/computer-vision/concept-recognizing-text.md) jest używana funkcja dla drukowanego tekstu.
+> Wykonanie wbudowanego umiejętności jest opłata za usług Cognitive Services, naliczane istniejące [cena Przejdź płatności — jako — możesz](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu jest opłata za usługę Azure Search, obecnie naliczane ceny za wersję zapoznawczą zgodnie z opisem na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). 
 
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
@@ -58,7 +60,7 @@ Parametrów jest rozróżniana wielkość liter.
 | Nazwa wyjściowego     | Opis                   |
 |---------------|-------------------------------|
 | tekst          | Zwykły tekst wyodrębnione z obrazu.   |
-| layoutText    | Typ złożony, który opisuje wyodrębnionego tekstu, a także lokalizacji, w którym tekst został znaleziony.|
+| layoutText    | Typ złożony, który opisuje wyodrębnionego tekstu oraz lokalizacji, w którym tekst został znaleziony.|
 
 
 ## <a name="sample-definition"></a>Przykładowa definicja
@@ -136,7 +138,7 @@ Parametrów jest rozróżniana wielkość liter.
 
 Typowy przypadek użycia dla funkcja scalająca tekst jest możliwość scalania tekstowa reprezentacja obrazów (tekst z umiejętności optyczne rozpoznawanie znaków lub podpis obrazu) do pola zawartości dokumentu. 
 
-Tworzy następujące zestawu umiejętności przykład *merged_text* pole będzie zawierać zawartości tekstowej w dokumencie, a także tekst OCRed ze wszystkich obrazów osadzonych w tym dokumencie. 
+Tworzy następujące zestawu umiejętności przykład *merged_text* pola. To pole zawiera zawartości tekstowej w dokumencie i tekst OCRed ze wszystkich obrazów osadzonych w tym dokumencie. 
 
 #### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json

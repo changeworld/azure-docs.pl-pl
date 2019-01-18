@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d339908b9347843da891dd1c7fa038c45cee1dcb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338587"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382825"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -99,9 +99,6 @@ Twoje konto musi należeć do jednej z następujących Azure [wbudowane role](..
 |                   | Współautor            |
 |                   | Czytelnik                 |
 |                   | Współautor sieci    |
-|Wdrożenie klasyczne            | Administrator konta  |
-|                   | Administrator usługi  |
-|                   | Współadministrator       |
 
 Jeśli Twoje konto nie jest przypisana do jednego z wbudowanych ról, musi ona zostać przypisana do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przypisany następujące działania, na poziomie subskrypcji:
 
@@ -317,7 +314,7 @@ Dystrybucja ruchu dla bramy Application gateway i modułu równoważenia obcią�
  - Wiedząc, podsieć, która jest konwersację, do którego usługa Application gateway lub moduł równoważenia obciążenia. Jeśli zauważysz nieoczekiwany konwersacji, możesz poprawić konfigurację.
  - Jeśli nieautoryzowany sieci są konwersację z bramy aplikacji lub usługi równoważenia obciążenia, jesteś w stanie go poprawić, konfigurując reguły sieciowej grupy zabezpieczeń, aby zablokować sieci nieautoryzowany. 
 
-    ![Subnet-Topology-showcasing-Traffic-Distribution-to-a-Application-Gateway-Subnet-with-regards-to-Flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Wyświetlanie portów i maszyny wirtualne odbierające ruch z Internetu
 

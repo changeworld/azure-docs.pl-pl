@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 292a9ecd012be030df8cf792f9991591d43c8db9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065498"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54383063"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: Ocena obciążeń lokalnych pod kątem migracji do platformy Azure
 
@@ -47,7 +47,7 @@ Aby rozpocząć pracę i lepiej zrozumieć technologiami, Contoso ocenia dwa swo
 
 Nazwa aplikacji | Platforma | Warstwy aplikacji | Szczegóły
 --- | --- | --- | ---
-Rozwiązania SmartHotel360<br/><br/> (służy do zarządzania wymaganiami podróż firmy Contoso) | Działa na Windows przy użyciu bazy danych programu SQL Server | Dwuwarstwowej aplikacji. Witryny sieci Web frontonu platformy ASP.NET działa na jednej maszynie Wirtualnej (**WEBVM**) i programu SQL Server jest uruchamiany na inną maszynę Wirtualną (**SQLVM**). | Maszyny wirtualne są VMware, uruchomiona na hoście ESXi zarządzanego przez program vCenter Server.<br/><br/> Możesz pobrać przykładową aplikację z [GitHub](https://github.com/Microsoft/SmartHotel360).
+SmartHotel360<br/><br/> (służy do zarządzania wymaganiami podróż firmy Contoso) | Działa na Windows przy użyciu bazy danych programu SQL Server | Dwuwarstwowej aplikacji. Witryny sieci Web frontonu platformy ASP.NET działa na jednej maszynie Wirtualnej (**WEBVM**) i programu SQL Server jest uruchamiany na inną maszynę Wirtualną (**SQLVM**). | Maszyny wirtualne są VMware, uruchomiona na hoście ESXi zarządzanego przez program vCenter Server.<br/><br/> Możesz pobrać przykładową aplikację z [GitHub](https://github.com/Microsoft/SmartHotel360).
 osTicket<br/><br/> (Aplikacji działu usług firmy Contoso) | Uruchamiany w systemie Linux/Apache, za pomocą języka PHP MySQL (LAMP) | Dwuwarstwowej aplikacji. Fronton witryny sieci Web PHP działa na jednej maszynie Wirtualnej (**OSTICKETWEB**) i bazy danych MySQL jest uruchamiany na inną maszynę Wirtualną (**OSTICKETMYSQL**). | Aplikacja jest używana przez klienta usługi aplikacji do śledzenia problemów dla pracowników wewnętrznych i zewnętrznych klientów.<br/><br/> Możesz pobrać próbkę z [GitHub](https://github.com/osTicket/osTicket).
 
 ## <a name="current-architecture"></a>Bieżącej architektury

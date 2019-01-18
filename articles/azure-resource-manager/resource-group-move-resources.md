@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 32298b78f3b98afb6754e07ad63467f4f995d84f
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158860"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382902"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
-W tym artykule pokazano, jak przenieść zasoby platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Instrukcję przenoszenia zasobów, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
+W tym artykule pokazano, jak przenieść zasoby platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Instrukcję przenoszenia zasobów, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. Aby wykonać kroki samouczka, zobacz [samouczka: Przenoszenie zasobów platformy Azure do innej grupy zasobów lub subskrypcji](./resource-manager-tutorial-move-resources.md).
 
 Grupy źródłowej i docelowej grupy są zablokowane podczas operacji przenoszenia. Operacje zapisu i usuwania na grupach zasobów są blokowane do momentu zakończenia przenoszenia. Ta blokada oznacza, że nie można dodawać, aktualizować ani usuwać zasobów w tych grupach zasobów, ale nie oznacza to, że zasoby są zamrożone. Jeśli na przykład przeniesiesz program SQL Server i jego bazę danych do nowej grupy zasobów, nie dojdzie do przestoju aplikacji korzystającej z tej bazy danych. Nadal będzie możliwe odczytywanie i zapisywanie danych w bazie danych.
 
