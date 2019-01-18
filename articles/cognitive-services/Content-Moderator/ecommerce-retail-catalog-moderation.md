@@ -97,7 +97,7 @@ Po wyszkoleniu klasyfikatora należy uzyskać klucz predykcyjny i adres URL punk
 
 ## <a name="create-reviews-for-review-tool"></a>Tworzenie przeglądów dla narzędzia do przeprowadzania przeglądu
 
-W poprzednich sekcjach omówiono metody używane do skanowania obrazów przychodzących pod kątem treści dla osób dorosłych i treści erotycznych (Content Moderator), osobistości (przetwarzanie obrazów) i innych obiektów (Custom Vision). Teraz zwróć uwagę na metodę **CreateReview**, która przekazuje obrazy wraz ze wszystkimi zastosowanymi tagami (wprowadzonymi jako _metadane_) do narzędzia do przeprowadzania przeglądu usługi Content Moderator, aby udostępnić je do przeglądu przez człowieka. 
+W poprzednich sekcjach omówiono metody używane do skanowania obrazów przychodzących pod kątem treści dla osób dorosłych i treści erotycznych (Content Moderator), osobistości (przetwarzanie obrazów) i innych obiektów (Custom Vision). Teraz zwróć uwagę na metodę **CreateReview**, która przekazuje obrazy wraz ze wszystkimi zastosowanymi tagami (wprowadzonymi jako _Metadata_) do narzędzia do przeprowadzania przeglądu usługi Content Moderator, aby udostępnić je do przeglądu przez człowieka. 
 
 [!code-csharp[define CreateReview method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=173-196)]
 
