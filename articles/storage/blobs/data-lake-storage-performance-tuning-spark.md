@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: b7a43135ef0aa0ecfe80000d2d0d73c57e138102
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8be8fa68b48257a8d94d3ba6364d47c522bbf3de
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975025"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402000"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Wskazówki dotyczące platformy Spark w HDInsight i Azure Data Lake Storage Gen2 dostrajania wydajności
 
@@ -43,7 +43,7 @@ Uruchamiając zadania Spark, poniżej przedstawiono najważniejsze ustawienia, k
 
 **Rdzenie wykonawca** to ustawia liczbę wykorzystane w ramach przetwarzania, który określa liczby wątków równoległych, które mogą być uruchamiane na wykonawca rdzeni.  Na przykład jeśli program wykonujący rdzeni = 2, następnie każdy program wykonujący uruchomić 2 zadań równoległych w wykonawcę.  Rdzenie wykonawca potrzebne będzie zależny od zadania.  Zadań samochodów We/Wy nie wymagają dużej ilości pamięci dla zadań, dzięki czemu każdy wykonawca może obsługiwać więcej zadań równoległych.
 
-Domyślnie dwa rdzenie wirtualne YARN są definiowane na każdy rdzeń fizyczny uruchamianego na HDInsight Spark.  Liczba ta oferuje dobry kompromis między concurrecy i ilości z wielu wątków do przełączania kontekstu.  
+Domyślnie dwa rdzenie wirtualne YARN są definiowane na każdy rdzeń fizyczny uruchamianego na HDInsight Spark.  Liczba ta oferuje dobry kompromis między współbieżność i ilości z wielu wątków do przełączania kontekstu.  
 
 ## <a name="guidance"></a>Wskazówki
 
@@ -51,20 +51,20 @@ Podczas uruchamiania aparatu Spark obciążeń wynikających z analizy do pracy 
 
 Istnieje kilka sposobów ogólne w celu zwiększenia współbieżności zadań intensywnie korzystających z operacji We/Wy.
 
-**Krok 1: Określanie, jak wiele aplikacji jest uruchomionych w klastrze** — należy wiedzieć, jak wiele aplikacji jest uruchomionych w klastrze, w tym bieżący.  Wartości domyślne dla każdej platformy Spark, ustawienia obowiązuje założenie, które są 4 aplikacji uruchomionych jednocześnie.  W związku z tym będzie mieć tylko 25% klastra, które są dostępne dla każdej aplikacji.  Aby uzyskać lepszą wydajność, można zastąpić ustawienia domyślne, zmieniając liczbie funkcji wykonawczych.  
+**Krok 1. Określić, jak wiele aplikacji jest uruchomionych w klastrze** — należy wiedzieć, jak wiele aplikacji jest uruchomionych w klastrze, w tym bieżący.  Wartości domyślne dla każdej platformy Spark, ustawienia obowiązuje założenie, które są 4 aplikacji uruchomionych jednocześnie.  W związku z tym będzie mieć tylko 25% klastra, które są dostępne dla każdej aplikacji.  Aby uzyskać lepszą wydajność, można zastąpić ustawienia domyślne, zmieniając liczbie funkcji wykonawczych.  
 
-**Krok 2: Ustaw pamięci wykonawca** — pierwszą rzeczą, aby ustawić jest pamięci wykonawcy.  Pamięć będzie zależny od zadania, które zamierzasz uruchomić.  Możesz zwiększyć współbieżności, przydzielając mniejszą ilość pamięci na wykonawcy.  Jeśli widzisz poza wyjątki pamięci podczas uruchamiania zadania, należy zwiększyć wartość tego parametru.  Jeden alternatywa to uzyskanie większej ilości pamięci za pomocą klastra, który ma większej ilości pamięci lub zwiększenie rozmiaru klastra.  Większa ilość pamięci umożliwi więcej executors ma być używany, co oznacza, że uzyskać większą współbieżność.
+**Krok 2. Ustaw program wykonujący pamięci** — pierwszą rzeczą, aby ustawić jest pamięci wykonawcy.  Pamięć będzie zależny od zadania, które zamierzasz uruchomić.  Możesz zwiększyć współbieżności, przydzielając mniejszą ilość pamięci na wykonawcy.  Jeśli widzisz poza wyjątki pamięci podczas uruchamiania zadania, należy zwiększyć wartość tego parametru.  Jeden alternatywa to uzyskanie większej ilości pamięci za pomocą klastra, który ma większej ilości pamięci lub zwiększenie rozmiaru klastra.  Większa ilość pamięci umożliwi więcej executors ma być używany, co oznacza, że uzyskać większą współbieżność.
 
-**Krok 3: Ustaw rdzenia wirtualnego wykonawca** — dla obciążeń wejścia/wyjścia o znacznym wykorzystaniu, które nie mają złożonych operacji, warto rozpocząć z dużą liczbą rdzeni wykonawcy, aby zwiększyć liczbę zadań równoległych na wykonawcy.  Ustawienie 4 rdzenie wykonawca stanowi dobry początek.   
+**Krok 3. Ustaw program wykonujący rdzeni** — dla obciążeń wejścia/wyjścia o znacznym wykorzystaniu, które nie mają złożonych operacji, warto rozpocząć z dużą liczbą rdzeni wykonawcy, aby zwiększyć liczbę zadań równoległych na wykonawcy.  Ustawienie 4 rdzenie wykonawca stanowi dobry początek.   
 
     executor-cores = 4
 Zwiększenie liczby rdzeni wykonawca zapewni więcej równoległości, dzięki czemu możesz eksperymentować z różnych rdzeni wykonawcy.  Dla zadań, które mają bardziej złożonych operacji należy zmniejszyć liczbę rdzeni na wykonawcy.  Jeśli wykonawca rdzeni jest większa niż 4, następnie wyrzucania elementów bezużytecznych może być obsługiwane mało wydajnie i obniżyć wydajność.
 
-**Krok 4. Określanie ilości pamięci usługi YARN w klastrze** — te informacje są dostępne w Ambari.  Przejdź do usługi YARN i wyświetlić kartę konfiguracje.  W tym oknie wyświetlane jest pamięci usługi YARN.  
+**Krok 4. Określić ilość pamięci usługi YARN w klastrze** — te informacje są dostępne w Ambari.  Przejdź do usługi YARN i wyświetlić kartę konfiguracje.  W tym oknie wyświetlane jest pamięci usługi YARN.  
 Należy pamiętać podczas pracy w tym oknie można również wyświetlić domyślny rozmiar kontenera YARN.  Rozmiar kontenera YARN jest taka sama jak ilość pamięci na parametr funkcji wykonawczej.
 
     Total YARN memory = nodes * YARN memory per node
-**Krok 5. obliczanie liczba programów przetwarzających**
+**Krok 5. Oblicz liczba programów przetwarzających**
 
 **Oblicz ograniczenia pamięci** — parametr liczba programów przetwarzających jest ograniczony przez pamięci lub procesora CPU.  Ograniczenie pamięci jest określany przez ilość dostępnej pamięci usługi YARN dla aplikacji.  Należy wykonać całkowity rozmiar pamięci usługi YARN i przez program wykonujący pamięci.  Ograniczenie musi być cofnąć skalowanych liczby aplikacji, więc możemy dzielnikiem liczby aplikacji.
 
@@ -82,19 +82,19 @@ Ustawienie większej liczby liczba programów przetwarzających nie zawsze popra
 
 Załóżmy, że masz już klaster składa się z 8 węzłów D4v2 uruchomionym 2 w tym co ma do uruchamiania aplikacji.  
 
-**Krok 1: Określanie, jak wiele aplikacji jest uruchomionych w klastrze** — wiesz, że masz 2 aplikacji w klastrze, w tym alert zamierzasz uruchomić.  
+**Krok 1. Określić, jak wiele aplikacji jest uruchomionych w klastrze** — wiesz, że masz 2 aplikacji w klastrze, w tym alert zamierzasz uruchomić.  
 
-**Krok 2: Ustaw pamięci wykonawca** — w tym przykładzie określamy, czy 6 GB pamięci funkcji wykonawczej są wystarczające dla zadania intensywnie korzystających z operacji We/Wy.  
+**Krok 2. Ustaw program wykonujący pamięci** — w tym przykładzie określamy, czy 6 GB pamięci funkcji wykonawczej są wystarczające dla zadania intensywnie korzystających z operacji We/Wy.  
 
     executor-memory = 6GB
-**Krok 3: Ustaw rdzenia wirtualnego wykonawca** — ponieważ jest to zadanie intensywnie korzystających z operacji We/Wy, możemy ustawić liczbę rdzeni dla każdego wykonawcy do 4.  Ustawianie rdzeni wykonawca większych niż 4 może spowodować problemy z kolekcji wyrzucania elementów.  
+**Krok 3. Ustaw program wykonujący rdzeni** — ponieważ jest to zadanie intensywnie korzystających z operacji We/Wy, możemy ustawić liczbę rdzeni dla każdego wykonawcy do 4.  Ustawianie rdzeni wykonawca większych niż 4 może spowodować problemy z kolekcji wyrzucania elementów.  
 
     executor-cores = 4
-**Krok 4. Określanie ilości pamięci usługi YARN w klastrze** — firma Microsoft, przejdź do narzędzia Ambari, aby dowiedzieć się, że każdy D4v2 ma 25 GB pamięci usługi YARN.  Ponieważ 8 węzłów, dostępnej pamięci usługi YARN jest mnożony przez 8.
+**Krok 4. Określić ilość pamięci usługi YARN w klastrze** — firma Microsoft, przejdź do narzędzia Ambari, aby dowiedzieć się, że każdy D4v2 ma 25 GB pamięci usługi YARN.  Ponieważ 8 węzłów, dostępnej pamięci usługi YARN jest mnożony przez 8.
 
     Total YARN memory = nodes * YARN memory* per node
     Total YARN memory = 8 nodes * 25GB = 200GB
-**Krok 5. obliczanie liczba programów przetwarzających** — parametr liczba programów przetwarzających jest określana przez wykonanie co najmniej ograniczenia pamięci i ograniczenie użycia Procesora podzielona przez liczba aplikacji uruchomionych na platformie Spark.    
+**Krok 5. Oblicz liczba programów przetwarzających** — parametr liczba programów przetwarzających jest określana przez wykonanie co najmniej ograniczenia pamięci i ograniczenie użycia Procesora podzielona przez liczba aplikacji uruchomionych na platformie Spark.    
 
 **Oblicz ograniczenia pamięci** — ograniczenie pamięci jest obliczany jako podzielona przez ilość pamięci na wykonawca całkowitej ilości pamięci usługi YARN.
 

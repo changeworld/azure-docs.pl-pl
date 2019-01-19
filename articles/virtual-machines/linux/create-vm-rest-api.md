@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 22a800e65c0f64dfa897433d1ea983006ed62250
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433484"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412193"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Utwórz maszynę wirtualną systemu Linux, która korzysta z uwierzytelniania SSH przy użyciu interfejsu API REST
 
@@ -35,7 +35,7 @@ W tym artykule pokazano, jak używać interfejsu API REST do tworzenia maszyny W
 Aby utworzyć i przesłać żądanie, potrzebne są:
 
 * `{subscription-id}` Dla Twojej subskrypcji
-  * Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)
+  * Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
 * Element `{resourceGroupName}` został utworzony wcześniej
 * A [interfejs sieci wirtualnej](../../virtual-network/virtual-network-network-interface.md) w tej samej grupie zasobów
 * Pary kluczy SSH (możesz [wygenerować nowy](mac-create-ssh-keys.md) Jeśli go masz)
@@ -67,10 +67,10 @@ Następujące typowe definicje są używane do tworzenia treści żądania:
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | ciąg                                                                              | Lokalizacja zasobu. |
 | name                       |          | ciąg                                                                              | Nazwa maszyny wirtualnej. |
-| properties.hardwareProfile |          | [— Obiekt HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Określa ustawienia sprzętu dla maszyny wirtualnej. |
+| properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Określa ustawienia sprzętu dla maszyny wirtualnej. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Określa ustawienia przechowywania dla dysków maszyny wirtualnej. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Określa ustawienia systemu operacyjnego dla maszyny wirtualnej. |
-| properties.networkProfile  |          | [Elementy NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Określa interfejsy sieciowe maszyny wirtualnej. |
+| properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Określa interfejsy sieciowe maszyny wirtualnej. |
 
 Treść żądania przykład znajduje się poniżej. Upewnij się, należy określić nazwę maszyny Wirtualnej w `{computerName}` i `{name}` parametrów, nazwa interfejsu sieciowego utworzonego w ramach `networkInterfaces`, swoją nazwę użytkownika w `adminUsername` i `path`i *publicznego*część swojej para kluczy SSH (na przykład znajduje się w `~/.ssh/id_rsa.pub`) w `keyData`. Inne parametry, możesz chcieć zmodyfikować to `location` i `vmSize`.  
 

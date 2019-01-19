@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 2ef5d285c19900fd2896279edde8841581d7e947
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: f5e29f29a02509775347b491b8a11816cbbacd05
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388162"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413784"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Umiejętności cognitive scalania tekstu
 
 **Scalania tekstu** umiejętności konsoliduje tekst z kolekcji pól do pojedynczego pola. 
 
 > [!NOTE]
-> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie nie trzeba ponosić opłat skojarzonych z tym umiejętności. Jednak należy [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) mimo to do przesłonięcia opcję bezpłatny zasób, która ogranicza do niewielkiej liczby wzbogacenia dzienny.
+> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie są naliczane dotyczące korzystania z niego. Powinna nadal [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md), jednak aby zastąpić **bezpłatna** resource — Opcja ograniczająca na niewielką liczbę dziennych wzbogacenia dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

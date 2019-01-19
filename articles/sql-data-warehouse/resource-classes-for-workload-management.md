@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 8d0138d20e1a30ab3efc509eb71f17a6b1e4e8e5
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9ed3ab89387afc78bd631416a683e11f4dc7054a
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287476"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402255"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Zarządzanie obciążeniami przy użyciu klas zasobów w usłudze Azure SQL Data Warehouse
 Wskazówki dotyczące używania klas zasobów do zarządzania pamięci i współbieżności dla zapytań w usłudze Azure SQL Data Warehouse.  
@@ -90,7 +90,7 @@ Na **Gen2 tylko**, klasy zasobów dynamicznych są naprawdę dynamiczne adresowa
 ### <a name="default-resource-class"></a>Domyślna klasa zasobów
 Domyślnie każdy użytkownik jest członkiem klasy zasób dynamiczny **smallrc**. 
 
-Klasa zasobu administratora usługi jest stała i nie można jej zmienić.  Administrator usługi to użytkownik utworzony podczas procesu inicjowania obsługi administracyjnej.
+Klasa zasobu administratora usługi jest ustalony na smallrc i nie można jej zmienić.  Administrator usługi to użytkownik utworzony podczas procesu inicjowania obsługi administracyjnej.  Administrator usługi, w tym kontekście jest nazwą logowania, określony dla "logowania administratora serwera" podczas tworzenia nowego wystąpienia SQL Data Warehouse przy użyciu nowego serwera.
 
 > [!NOTE]
 > Użytkownicy lub grupy zdefiniowane jako administratora usługi Active Directory są również administratorów usługi.
@@ -111,7 +111,7 @@ Te operacje są regulowane przez klasy zasobów:
 * ALTER TABLE REBUILD
 * TWORZENIE INDEKSU
 * UTWÓRZ KLASTROWANY INDEKS MAGAZYNU KOLUMN
-* UTWÓRZ TABLE AS SELECT (CTAS)
+* CREATE TABLE AS SELECT (CTAS)
 * Ładowanie danych
 * Operacje przenoszenia danych prowadzonych przez Data Movement Service (DMS)
 

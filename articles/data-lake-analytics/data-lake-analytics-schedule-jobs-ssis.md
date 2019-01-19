@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1a0be03c278a152ea56fe0dac5277c39a0878057
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579237"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412514"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planowanie zadań U-SQL przy użyciu programu SQL Server Integration Services (SSIS)
 
@@ -40,13 +40,13 @@ Skrypt U-SQL można uzyskać z różnych miejsc, za pomocą wbudowanych funkcji 
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>Scenariusz 1 — Użyj wbudowanego skryptu wywołania w funkcji tvf i przechowywanych procs
 
-W usługi Azure Data Lake Analytics Edytor zadań, skonfiguruj **SourceType** jako **DiretInput**i umieszcza instrukcje języka U-SQL do **USQLStatemnt**.
+W usługi Azure Data Lake Analytics Edytor zadań, skonfiguruj **SourceType** jako **DirectInput**i umieszcza instrukcje języka U-SQL do **USQLStatemnt**.
 
-Łatwe maintainence i zarządzania kodem, tylko umieścić krótki skrypt U-SQL jako wbudowane skrypty na przykład, można wywołać istniejących funkcji zwracającej tabelę i procedur przechowywanych w bazach danych U-SQL. 
+Łatwą konserwację i zarządzania kodem, tylko umieścić krótki skrypt U-SQL jako wbudowane skrypty na przykład, można wywołać istniejących funkcji zwracającej tabelę i procedur przechowywanych w bazach danych U-SQL. 
 
 ![Edytuj skrypt wbudowany języka U-SQL w ramach zadania SSIS](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-Powiązanym artykule: [sposób przekazywania parametrów do procedur składowanych](#scenario-6-pass-parameters-to-u-sql-script)
+Powiązanym artykule: [Sposób przekazywania parametrów do procedur składowanych](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>Scenariusz 2 — użyj U-SQL plików w usłudze Azure Data Lake Store
 
@@ -64,7 +64,7 @@ W widoku Projekt pakietu SSIS, Dodaj **zadania systemowego Azure Data Lake Store
 
 1. Ustaw **operacji** do **CopyFromADLS**.
 2. Konfigurowanie **AzureDataLakeConnection**, Dowiedz się więcej o [usługi Azure Data Lake Store połączenia Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
-3. Ustaw **AzureDataLakeDirectory**. Wskaż folder przechowywania skryptów U-SQL. Użyj ścieżki względnej względną wobec folderu głównego konta usługi Azure Data Lake Store.
+3. Set **AzureDataLakeDirectory**. Wskaż folder przechowywania skryptów U-SQL. Użyj ścieżki względnej względną wobec folderu głównego konta usługi Azure Data Lake Store.
 4. Ustaw **docelowy** do folderu, który buforuje pobierane skrypty U-SQL. Ścieżka tego folderu będą obowiązywać w kontenerze pętli Foreach do przesłania zadania U-SQL. 
 
 ![Skonfiguruj zadania w systemie plików usługi Azure Data Lake Store](./media/data-lake-analytics-schedule-jobs-ssis/configure-azure-data-lake-store-file-system-task.png)
@@ -119,7 +119,7 @@ W widoku Projekt pakietu SSIS, Dodaj **zadania systemowego Azure Data Lake Store
 
 Można użyć plików U-SQL w usłudze Azure Blob Storage za pomocą **zadania pobierania obiektów Blob Azure** w pakiety Azure Feature Pack. Takie podejście umożliwia korzystanie ze skryptów w chmurze.
 
-Kroki są podobne do [Scnario 2: pliki użycia języka U-SQL w usłudze Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Zmień zadanie System plików usługi Azure Data Lake Store na zadanie pobierania obiektów Blob platformy Azure. [Więcej informacji na temat zadań pobierania obiektów Blob Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Kroki są podobne do [Scenariusz 2: Użyj plików U-SQL w usłudze Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Zmień zadanie System plików usługi Azure Data Lake Store na zadanie pobierania obiektów Blob platformy Azure. [Więcej informacji na temat zadań pobierania obiektów Blob Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Przepływ sterowania jest jak poniżej.
 

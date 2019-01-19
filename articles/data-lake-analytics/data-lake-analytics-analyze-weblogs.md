@@ -9,12 +9,12 @@ ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 4f9a30bf25cea1e80f53596be9eea6ae57a79889
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 83742a4f82fb4d67fd258ff0d242847eab634c78
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246467"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402289"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analizowanie dzienników witryn sieci Web przy użyciu usługi Azure Data Lake Analytics
 Dowiedz się, jak i analizowanie dzienników witryn sieci Web przy użyciu usługi Data Lake Analytics, zwłaszcza na sprawdzanie, które przywołujących napotkał błędy podczas próby do odwiedzenia witryny sieci Web.
@@ -165,7 +165,7 @@ Dodatkowe operatory zdefiniowane przez użytkownika można dodać do aplikacji. 
 
 1. W **Eksploratorze serwera** rozwiń węzeł **Azure**, rozwiń węzeł **Data Lake Analytics**, rozwiń konto usługi Data Lake Analytics, rozwiń węzeł **Konta magazynu**, kliknij prawym przyciskiem myszy domyślne konto usługi Data Lake Storage, a następnie kliknij przycisk **Explorer**.
 2. Kliknij dwukrotnie **przykłady** do Otwórz folder, a następnie kliknij dwukrotnie **dane wyjściowe**.
-3. Kliknij dwukrotnie **UnsuccessfulResponsees.log**.
+3. Kliknij dwukrotnie **UnsuccessfulResponses.log**.
 4. Możesz także dwukrotnie kliknąć plik wyjściowy w widoku wykresu zadania, aby przejść bezpośrednio do wyjścia.
 
 ## <a name="see-also"></a>Zobacz także

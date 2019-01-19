@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 281c426170985d43401a13988218126ea3951634
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17a2d1ac747b46ed9a55ceffeea3ba9f4b2f0bc7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405618"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412052"
 ---
 # <a name="custom-roles-in-azure"></a>Role niestandardowe na platformie Azure
 
@@ -84,7 +84,7 @@ Podczas tworzenia roli niestandardowej pojawia się w witrynie Azure portal za p
 
     Po utworzeniu roli użytkownika niestandardowego, należy go przetestować, aby sprawdzić, czy działa zgodnie z oczekiwaniami. Jeśli musisz wprowadzić korekty później, należy zaktualizować roli niestandardowej.
 
-Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestandardowej, zobacz [samouczek: utworzyć rolę niestandardową przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md) lub [samouczek: utworzyć rolę niestandardową przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md).
+Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestandardowej, zobacz [samouczka: Utworzyć rolę niestandardową przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md) lub [samouczka: Utworzyć rolę niestandardową przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Właściwości roli niestandardowej
 
@@ -116,3 +116,4 @@ Podobnie jak w przypadku wbudowanych ról `AssignableScopes` właściwość okre
 - [Tworzenie ról niestandardowych przy użyciu programu Azure PowerShell](custom-roles-powershell.md)
 - [Tworzenie ról niestandardowych przy użyciu wiersza polecenia platformy Azure](custom-roles-cli.md)
 - [Zrozumienie definicje ról](role-definitions.md)
+- [Rozwiązywanie problemów z RBAC na platformie Azure](troubleshooting.md)

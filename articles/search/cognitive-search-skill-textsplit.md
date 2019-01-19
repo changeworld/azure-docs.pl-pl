@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 05134ff59f87aaac71588057f1ac50015a769672
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d5a8fa61307c278a77b33868a711970850a06f3e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389833"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410051"
 ---
 #   <a name="text-split-cognitive-skill"></a>Tekst, Podziel umiejętności cognitive
 
 **Dzielenie tekstu** umiejętności dzieli tekst na fragmenty tekstu. Można określić, czy użytkownik chce podzielić go na zdania lub do stron o określonej długości. To umiejętności jest szczególnie przydatne w przypadku tekstu wymagania dotyczące długości w innych umiejętności podrzędne. 
 
 > [!NOTE]
-> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie nie trzeba ponosić opłat skojarzonych z tym umiejętności. Jednak należy [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) mimo to do przesłonięcia opcję bezpłatny zasób, która ogranicza do niewielkiej liczby wzbogacenia dzienny.
+> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie są naliczane dotyczące korzystania z niego. Powinna nadal [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md), jednak aby zastąpić **bezpłatna** resource — Opcja ograniczająca na niewielką liczbę dziennych wzbogacenia dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 

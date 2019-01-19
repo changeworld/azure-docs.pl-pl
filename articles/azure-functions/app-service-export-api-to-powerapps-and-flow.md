@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 53aa40c047b2b5201cd74c0409d56e97d2880eb0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9f4bbf91b09abeb917fd9f49482881e33bf788ec
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602855"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413938"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Eksportowanie interfejsu API hostowanych na platformie Azure do usług PowerApps i Microsoft Flow
 
@@ -156,7 +156,7 @@ Korzystając z usługi Azure AD, potrzebujesz dwóch rejestracje aplikacji usłu
 
 - Aby skonfigurować rejestrację dla interfejsu API, należy użyć [uwierzytelniania/autoryzacji dla aplikacji usługi](../app-service/configure-authentication-provider-aad.md) funkcji.
 
-- Aby skonfigurować rejestrację dla łącznika, wykonaj kroki opisane w [dodawania aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). Rejestracja musi mieć delegowany dostęp do interfejsu API i adresu URL odpowiedzi `https://msmanaged-na.consent.azure-apim.net/redirect`. 
+- Aby skonfigurować rejestrację dla łącznika, wykonaj kroki opisane w [dodawania aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Rejestracja musi mieć delegowany dostęp do interfejsu API i adresu URL odpowiedzi `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 
 Aby uzyskać więcej informacji, zobacz przykłady rejestracji usługi Azure AD [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) i [Microsoft Flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/). Te przykłady użycia usługi Azure Resource Manager jako interfejs API; Postępuj zgodnie z instrukcjami, należy go zastąpić interfejsu API.
 

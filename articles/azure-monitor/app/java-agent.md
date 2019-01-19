@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: dbca662f38f13833a4b9e642a4d8f690017d999a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b7710b081668bf07d40718baf1d84314246861f5
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262136"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412407"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitoruj zależności, wyjątki przechwycony i czasy wykonania metody w aplikacji sieci web w języku Java
 
@@ -96,6 +96,23 @@ Domyślnie `reportExecutionTime` ma wartość true i `reportCaughtExceptions` ma
 
 > [!NOTE]
 > W tym samym folderze należy Agent.xml sztucznej Inteligencji i plik jar agenta. Są one często wprowadzane razem w `/resources` folderu projektu. 
+
+### <a name="spring-rest-template"></a>Spring Rest szablonu
+
+Aby pomyślnie Instrumentacji wywołania HTTP dokonywane przy użyciu szablonu Rest firmy Spring usługi Application Insights Użyj klienta HTTP Apache jest wymagana. Domyślnie szablon Rest Spring firmy nie jest skonfigurowany do korzystania z klienta HTTP Apache. Określając [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html) w Konstruktorze szablonu Rest Spring użyje Apache HTTP.
+
+Oto przykład, jak to zrobić przy użyciu fasoli Spring. Jest to bardzo prosty przykład, który używa ustawień domyślnych klasę fabryki.
+
+```java
+@bean
+public ClientHttpRequestFactory httpRequestFactory() {
+return new HttpComponentsClientHttpRequestFactory()
+}
+@Bean(name = 'myRestTemplate')
+public RestTemplate dcrAccessRestTemplate() {
+    return new RestTemplate(httpRequestFactory())
+}
+```
 
 #### <a name="enable-w3c-distributed-tracing"></a>Włącz śledzenie rozproszonych W3C
 

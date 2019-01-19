@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 87c605feeab742ae589cf8d5d9a98c8e53ccf662
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090435"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410459"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanej (wersja zapoznawcza)
 
@@ -21,9 +21,9 @@ Usługa Azure Stream Analytics obsługuje uwierzytelnianie tożsamości zarządz
 
 Odwiedź stronę [osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) wpis w blogu, zarejestruj się w tej wersji zapoznawczej i Dowiedz się więcej o nowych funkcjach.
 
-W tym artykule przedstawiono Włączanie zarządzanych tożsamości dla zadania usługi Azure Stream Analytics, która wysyła do usługi Azure Data Lake Storage Gen1 na dwa sposoby: za pośrednictwem witryny Azure portal oraz wdrażanie szablonu usługi Azure Resource Manager.
+W tym artykule przedstawiono dwa sposoby, aby włączyć tożsamość zarządzaną przez zadanie usługi Azure Stream Analytics, która danych wyjściowych do usługi Azure Data Lake magazynu Gen1 za pośrednictwem witryny Azure portal, wdrażanie szablonu usługi Azure Resource Manager i Azure Stream Analytics tools for Visual Studio.
 
-## <a name="enable-managed-identity-with-azure-portal"></a>Włącz tożsamości zarządzanej przy użyciu witryny Azure portal
+## <a name="azure-portal"></a>Azure Portal
 
 1. Zacznij od utworzenia nowego zadania usługi Stream Analytics lub przez otwarcie istniejącego zadania w witrynie Azure portal. Na pasku menu, znajdujący się po lewej stronie ekranu, wybierz **tożsamości zarządzanej (wersja zapoznawcza)** znajdujący się w folderze **Konfiguruj**.
 
@@ -64,6 +64,28 @@ W tym artykule przedstawiono Włączanie zarządzanych tożsamości dla zadania 
    ![Stream Analytics, dostęp do listy w portalu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Aby dowiedzieć się więcej na temat uprawnień systemu plików Data Lake Storage Gen1, zobacz [kontroli dostępu w usłudze Azure Data Lake magazynu Gen1](../data-lake-store/data-lake-store-access-control.md).
+
+## <a name="stream-analytics-tools-for-visual-studio"></a>Narzędzia Stream Analytics tools for Visual Studio
+
+1. W JobConfig.json, ustaw **przypisane użycia systemu tożsamości** do **True**.
+
+   ![Konfiguracji zadania usługi Stream Analytics zarządzanych tożsamości](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
+
+2. W oknie właściwości danych wyjściowych ujścia danych wyjściowych Gen1 Azure Data Lake Store kliknij przycisk listy rozwijanej i wybierz tryb uwierzytelniania **tożsamości zarządzanej (wersja zapoznawcza)**.
+
+   ![Azure Data Lake Store, dane wyjściowe zarządzanych tożsamości](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
+
+3. Wypełnij pozostałe właściwości, a następnie kliknij przycisk **Zapisz**.
+
+4. Kliknij przycisk **przesyłania na platformie Azure** w edytorze zapytań.
+
+   Po przesłaniu zadania narzędzia wykonać dwie czynności:
+
+   * Automatycznie tworzy usługę podmiotu zabezpieczeń dla tożsamości zadania usługi Stream Analytics w usłudze Azure Active Directory. Cykl życia tożsamości nowo utworzony będą zarządzane przez platformę Azure. Po usunięciu zadania usługi Stream Analytics skojarzone tożsamości (nazwy głównej usługi) jest automatycznie usuwany przez platformę Azure.
+
+   * Automatycznie ustaw **zapisu** i **Execute** uprawnień dla ADLS Gen1 prefiksu ścieżki używanej w ramach zadania i przypisać ją do tego folderu i wszystkich obiektów podrzędnych.
+
+5. Można wygenerować szablonów usługi Resource Manager za pomocą następujących przy użyciu właściwości [Stream Analytics w ciągłej integracji. Pakiet CD Nuget](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) wersji 1.5.0 lub nowszej na maszynie kompilacji (poza programem Visual Studio). Postępuj zgodnie z usługi Resource Manager do wdrażania szablonu kroki opisane w następnej sekcji, aby pobrać usługę podmiotu zabezpieczeń i udzielać dostępu do jednostki za pomocą programu PowerShell usługi.
 
 ## <a name="resource-manager-template-deployment"></a>Wdrażanie szablonu usługi Resource Manager
 
@@ -153,3 +175,5 @@ W tym artykule przedstawiono Włączanie zarządzanych tożsamości dla zadania 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Tworzenie wyjściowego Data lake Store za pomocą usługi stream analytics](../data-lake-store/data-lake-store-stream-analytics.md)
+* [Testowanie zapytań usługi Stream Analytics lokalnie z programem Visual Studio](stream-analytics-vs-tools-local-run.md)
+* [Testowanie danych na żywo lokalnie przy użyciu usługi Azure Stream Analytics tools for Visual Studio](stream-analytics-live-data-local-testing.md) 

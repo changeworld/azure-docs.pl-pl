@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 47b58e74f57640098751b38c1a4fb504838c9ced
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54242364"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404671"
 ---
 Można korzystać z zalet wiele okazji do monitorowania maszyn wirtualnych, zbierając, wyświetlanie i analizowanie danych diagnostycznych i dane dziennika. W prostych [monitorowania](../articles/azure-monitor/overview.md) ekran Przegląd maszyny wirtualnej, można użyć dla maszyny Wirtualnej w witrynie Azure portal. Możesz użyć [rozszerzenia](../articles/virtual-machines/windows/extensions-features.md) Aby skonfigurować diagnostykę na maszynach wirtualnych, aby zbierać dodatkowe dane metryk. Umożliwia również bardziej zaawansowane opcje monitorowania, takich jak [usługi Application Insights](../articles/azure-monitor/app/app-insights-overview.md) i [usługi Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -60,13 +60,11 @@ Oto niektóre rzeczy, które można zrobić z dziennikami diagnostycznymi:
 
 - [Zapisz je na konto magazynu](../articles/azure-monitor/platform/archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić czas przechowywania (w dniach), za pomocą ustawień diagnostycznych zasobu.
 - [Stream je do usługi Event Hubs](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
-- Analizuj je za pomocą [usługi OMS Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
+- Analizuj je za pomocą [usługi Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md).
 
 ## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie
 
-- [Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/) zapewnia możliwości korygowania monitorowania, alertów i alert w chmurze i zasobów lokalnych. Można zainstalować rozszerzenia na [maszyny Wirtualnej systemu Linux](../articles/virtual-machines/linux/extensions-oms.md) lub [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) instaluje agenta pakietu OMS i rejestruje maszynę Wirtualną do istniejącego obszaru roboczego pakietu OMS.
-
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) to usługa w pakiecie OMS, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł.
+- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) to usługa, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. Można zainstalować rozszerzenia na [maszyny Wirtualnej systemu Linux](../articles/virtual-machines/linux/extensions-oms.md) lub [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) instaluje agenta usługi Log Analytics i rejestruje maszynę Wirtualną do istniejącego obszaru roboczego usługi Log Analytics.
 
     Dla maszyn wirtualnych systemu Linux i Windows zbieranie dzienników i metryk zalecaną metodą jest po zainstalowaniu agenta usługi Log Analytics. Najprostszym sposobem zainstalowania agenta usługi Log Analytics na maszynie Wirtualnej jest użycie [rozszerzenia Log Analytics VM Extension](../articles/log-analytics/log-analytics-azure-vm-extension.md). Użycie tego rozszerzenia upraszcza proces instalacji i automatycznie konfiguruje agenta do przesyłania danych do określonego obszaru roboczego usługi Log Analytics. Agent jest również automatycznie uaktualniany, co zapewnia, że posiadane funkcje i poprawki są zawsze najnowsze.
 

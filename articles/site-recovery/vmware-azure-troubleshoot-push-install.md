@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 12/12/2018
-ms.openlocfilehash: fef0cfd05fe0d44966cbb9f15ba1148f8473207d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/18/2019
+ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789911"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411751"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
@@ -141,6 +141,14 @@ Aby wyświetlić listę systemów operacyjnych i wersji jądra obsługiwanych pr
 ## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Partycje rozruchowe i systemowe woluminy nie są tego samego dysku (identyfikator błędu: 95309)
 
 Przed 9.20 partycje wersji, rozruchowy i systemowy / woluminy na dyskach inną was nieobsługiwaną konfigurację. Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ta konfiguracja jest obsługiwana. Obsługa jest możliwa, należy używać najnowszej wersji.
+
+## <a name="boot-disk-not-found-errorid-95310"></a>Brak dysku rozruchowego (identyfikator błędu: 95310)
+
+Nie można chronić maszyny wirtualnej bez dysku rozruchowego. To, aby zapewnić sprawne odzyskiwanie maszyny wirtualnej podczas operacji trybu failover. Brak dysku rozruchowego powoduje niepowodzenie Przeprowadź rozruch komputera, po włączeniu trybu failover. Upewnij się, że maszyna wirtualna zawiera dysk rozruchowy, a następnie spróbuj ponownie wykonać operację. Należy również zauważyć, że wiele dysków rozruchowych na tym samym komputerze nie jest obsługiwany.
+
+## <a name="multiple-boot-disks-found-errorid-95311"></a>Znaleziono wiele dysków rozruchowych (identyfikator błędu: 95311)
+
+Nie jest maszyną wirtualną z wieloma dyskami rozruchowymi [obsługiwana konfiguracja](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Partycja systemowa na wielu dyskach (identyfikator błędu: 95313)
 

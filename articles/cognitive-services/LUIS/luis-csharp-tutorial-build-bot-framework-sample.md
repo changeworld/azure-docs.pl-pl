@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: c3e142c65cdfe00fb26694063f7733d62882cc0c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5be96fc93a5a6636ccac6faf456458b3bcb8423a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267372"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413723"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot usługi LUIS w C# przy użyciu platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x
 
@@ -153,7 +153,7 @@ W witrynie Azure portal kliknij pozycję **testowania w czatów internetowych** 
 > Mogą przechowywać aplikacją usługi LUIS bez żadnych modyfikacji kodu Twój bot. Zobacz [Dodawanie wypowiedzi przykład](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) i [nauczenia i przetestowania aplikacją usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Pobierz bot do debugowania
-Jeśli Twój bot nie działa, pobrać projektu na komputerze lokalnym i kontynuować [debugowania](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot). 
+Jeśli Twój bot nie działa, pobrać projektu na komputerze lokalnym i kontynuować [debugowania](https://docs.microsoft.com/bot-framework/bot-service-debug-bot). 
 
 ## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat struktury Bot Framework
 Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/) i [3.x](https://github.com/Microsoft/BotBuilder) i [4.x](https://github.com/Microsoft/botbuilder-dotnet) zestawów SDK.
@@ -162,7 +162,7 @@ Dowiedz się więcej o [platformy Bot Framework](https://dev.botframework.com/) 
 
 Dodawanie intencji LUIS i Bot okien obsługi **pomocy**, **anulować**, i **pozdrowienia** intencji. Pamiętaj, aby uczyć, publikowanie i [kompilacji](#build-the-bot) bot aplikacji sieci web. Bot i LUIS powinny mieć ten sam intencji.
 
-Zobacz więcej [przykłady](https://github.com/Microsoft/AI) z botami konwersacji. 
+Zobacz więcej [przykładów](https://github.com/Microsoft/AI) z botami konwersacyjnymi. 
 
 > [!div class="nextstepaction"]
 > [Dodawanie intencji](./luis-how-to-add-intents.md)

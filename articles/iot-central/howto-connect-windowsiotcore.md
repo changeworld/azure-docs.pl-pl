@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 7d593a992d0ff189d23185b3422dee86a55308d1
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309454"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412572"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie Windows IoT Core z aplikacją usługi Azure IoT Central
 
@@ -57,7 +57,7 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **Windows I
 
 ### <a name="what-youll-need"></a>Czego potrzebujesz
 
-Aby skonfigurować urządzenie fizyczne systemu Windows 10 IoT Core, musisz najpierw mieć na urządzenie z systemem Windows 10 IoT Core. Dowiedz się, jak skonfigurować urządzenie Windows 10 IoT Core [tutaj](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
+Aby skonfigurować rzeczywistego urządzenia systemu Windows 10 IoT Core, musisz najpierw mieć na urządzenie z systemem Windows 10 IoT Core. Dowiedz się, jak skonfigurować urządzenie Windows 10 IoT Core [tutaj](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup).
 
 Należy również aplikację kliencką, która może komunikować się z usługi Azure IoT Central. Możesz utworzyć własną aplikację niestandardową przy użyciu zestawu SDK platformy Azure i wdrożyć ją na urządzenie przy użyciu programu Visual Studio, można również pobrać [wstępnie utworzonych przykładowych](https://developer.microsoft.com/windows/iot/samples) po prostu Wdróż i uruchom go na urządzeniu. 
 
@@ -105,8 +105,8 @@ Aplikacja utworzone na podstawie **Devkits przykładowe** szablon aplikacji zawi
 | Nazwa pola     | Jednostki  | Minimalne | Maksimum | Miejsca dziesiętne |
 | -------------- | ------ | ------- | ------- | -------------- |
 | humidity       | %      | 0       | 100     | 0              |
-| Temp           | C     | -40     | 120     | 0              |
-| pressure       | hPa pakietu    | 260     | 1260    | 0              |
+| Temp           | °C     | -40     | 120     | 0              |
+| pressure       | hPa    | 260     | 1260    | 0              |
 
 ### <a name="settings"></a>Ustawienia
 

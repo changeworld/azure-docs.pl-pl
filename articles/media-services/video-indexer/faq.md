@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: juliako
-ms.openlocfilehash: ff3aa86fee7fc30cfc18edc3b413a4378df69662
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307004"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402051"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -28,18 +28,17 @@ Usługa Video Indexer jest usługą sztucznej inteligencji, która jest części
 
 ### <a name="what-can-i-do-with-video-indexer"></a>Co można zrobić za pomocą indeksatora wideo?
 
-Indeksator wideo można wykonywać następujące operacje na plikach nośnika:
+Operacje, które indeksator wideo można wykonywać na pliki multimedialne, należą:
 
-* Wykrywanie i wyodrębnianie mowy oraz zidentyfikować głośników.
-* Identyfikowanie i Wyodrębnij wyświetlanymi na ekranie tekst w filmie wideo.
-* Identyfikowanie i oznaczanie obiektów w pliku wideo.
-* Zidentyfikuj marki, takich jak Microsoft ze ścieżki audio i na ekranie tekst w filmie wideo.
+* Identyfikowanie, wyodrębniając mowę i zidentyfikować głośników.
+* Identyfikowanie i wyodrębniania wyświetlanymi na ekranie tekst w filmie wideo.
+* Wykrywanie obiektów w pliku wideo.
+* Identyfikowanie marek (na przykład: Microsoft) od ścieżki audio i na ekranie tekst w filmie wideo.
 * Wykrywanie i rozpoznawanie twarzy z bazy danych osobistości i zdefiniowanych przez użytkownika bazy danych twarzy.
-* Wyodrębnianie słów kluczowych z zawartości audio i wideo na podstawie tekstu mówionego i visual.
-* Wyodrębnij tematach opisano, ale nie musi jawnie wymienione w zawartości audio i wideo na podstawie tekstu mówionego i visual.
-* Utwórz napisów lub transkrypcji na podstawie ścieżki audio.
+* Wyodrębnianie tematy omówione, ale nie koniecznie są wymienione w zawartości audio i wideo.
+* Tworzenie napisów lub transkrypcji ze ścieżki audio.
 
-Aby uzyskać więcej informacji, zobacz [Omówienie](video-indexer-overview.md).
+Więcej informacji i większą liczbą funkcji indeksatora wideo, zobacz [Przegląd](video-indexer-overview.md).
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Jak zacząć korzystać z indeksatora wideo?
 

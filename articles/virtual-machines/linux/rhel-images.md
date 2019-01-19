@@ -11,19 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2018
+ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: dbef04710e1a91cfda8b039605b517de9524ee19
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229578"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402153"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Obrazy systemu Red Hat Enterprise Linux na platformie Azure
 W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące nazewnictwa i przechowywania.
 
 Można znaleźć informacji na temat zasad wsparcia firmy Red Hat dla wszystkich wersji systemu RHEL na [Red Hat Enterprise Linux cyklu](https://access.redhat.com/support/policy/updates/errata) strony.
+
+>[!Important]
+> Obrazy systemu RHEL, obecnie dostępna w witrynie Azure marketplace obsługuje Bring-Your-właścicielem-subskrypcji (BYOS) lub płatność za rzeczywiste użycie (PAYG) Modele licencjonowania. [Korzyści z używania hybrydowej platformy Azure](../windows/hybrid-use-benefit-licensing.md) i dynamicznego przełączania się między BYOS i PAYG nie jest obsługiwana. Przełączanie trybu licencjonowania wymaga ponownego wdrożenia maszyny Wirtualnej z odpowiadających im obrazów.
+
+>[!Note]
+> Na dowolnym problemem dotyczącym programu obrazów systemu RHEL w galerii witryny Azure marketplace Zgłoś bilet pomocy technicznej firmy Microsoft.
 
 ## <a name="images-available-in-the-ui"></a>Obrazów dostępnych w interfejsie użytkownika
 Podczas wyszukiwania "Red Hat" w witrynie Marketplace lub tworzenie zasobu w witrynie Azure portal interfejsu użytkownika, zobaczysz podzbioru dostępnych obrazów systemu RHEL i powiązanych produktów firmy Red Hat. Można zawsze uzyskać pełen zestaw dostępnych obrazów maszyn wirtualnych przy użyciu interfejsu wiersza polecenia/programu PowerShell/interfejsu API usługi Azure.
@@ -81,12 +87,12 @@ RHEL | NIEPRZETWORZONE 7 | NIEPRZETWORZONE | Agent systemu Linux | Rodzina RHEL 
 | | 7.3 | NIEPRZETWORZONE | Agent systemu Linux | Takie same jak powyżej dla RHEL 7.3
 | | 7.4 | NIEPRZETWORZONE | Agent systemu Linux | Takie same jak powyżej dla systemu RHEL w wersji 7.4
 | | 7.5 | NIEPRZETWORZONE | Agent systemu Linux | Takie same jak powyżej dla RHEL w wersji 7.5
-RHEL SAP | 7.4 | LVM | Agent systemu Linux | 7.4 systemu RHEL for SAP HANA i aplikacje biznesowe
+RHEL-SAP | 7.4 | LVM | Agent systemu Linux | 7.4 systemu RHEL for SAP HANA i aplikacje biznesowe
 | | 7.5 | LVM | Agent systemu Linux | RHEL w wersji 7.5 dla oprogramowania SAP HANA i aplikacje biznesowe
-RHEL — SAP-HANA | 6.7 | NIEPRZETWORZONE | Agent systemu Linux | RHEL 6.7 platformy SAP Hana
+RHEL-SAP-HANA | 6.7 | NIEPRZETWORZONE | Agent systemu Linux | RHEL 6.7 platformy SAP Hana
 | | 7.2 | LVM | Agent systemu Linux | 7.2 RHEL for SAP HANA
 | | 7.3 | LVM | Agent systemu Linux | 7.3 RHEL for SAP HANA
-RHEL, SAP, APLIKACJE | 6.8 | NIEPRZETWORZONE | Agent systemu Linux | 6.8 systemu RHEL for SAP Business Applications
+RHEL-SAP-APPS | 6.8 | NIEPRZETWORZONE | Agent systemu Linux | 6.8 systemu RHEL for SAP Business Applications
 | | 7.3 | LVM | Agent systemu Linux | 7.3 systemu RHEL for SAP Business Applications
 
 ### <a name="old-naming-convention"></a>Stara Konwencja nazewnictwa

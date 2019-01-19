@@ -1,30 +1,30 @@
 ---
-title: 'Tworzenie i instalowanie plików konfiguracji klienta sieci VPN P2S do uwierzytelniania certyfikatu platformy Azure: Azure | Dokumentacja firmy Microsoft'
+title: 'Tworzenie i instalowanie plików konfiguracji klienta sieci VPN P2S do uwierzytelniania certyfikatu platformy Azure: Azure | Microsoft Docs'
 description: Tworzenie i instalowanie Windows, Linux, systemu Linux (strongSwan) i Mac OS X w sieci VPN z plików konfiguracji klienta do uwierzytelniania certyfikatów P2S.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11d23102ca807ab1ddf41f1d0e72aed8a8513ac8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 0f834c88a22aca52a861309681ea0da204b2a552
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636649"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412069"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN dla konfiguracji uwierzytelniania P2S natywnych certyfikatu platformy Azure
 
-Pliki konfiguracji klienta sieci VPN są zawarte w pliku zip. Pliki konfiguracji zawierają ustawienia wymagane dla natywnych klientów Windows, sieci VPN IKEv2 Mac lub Linux można łączyć z siecią wirtualną za pośrednictwem połączenia punkt-lokacja, które używają uwierzytelniania certyfikatu platformy Azure natywnych. Aby uzyskać więcej informacji na temat połączeń punkt-lokacja, zobacz [About Point-to-Site VPN](point-to-site-about.md) (Informacje o sieci VPN typu punkt-lokacja).
+Pliki konfiguracji klienta sieci VPN są zawarte w pliku zip. Pliki konfiguracji zawierają ustawienia wymagane dla natywnych klientów Windows, sieci VPN IKEv2 Mac lub Linux można łączyć z siecią wirtualną za pośrednictwem połączenia punkt-lokacja, które używają uwierzytelniania certyfikatu platformy Azure natywnych.
+
+Pliki konfiguracji klienta są specyficzne dla konfiguracji sieci VPN dla sieci wirtualnej. W przypadku zmiany wprowadzone w konfiguracji sieci VPN typu punkt-lokacja po wygenerowaniu plików konfiguracji klienta sieci VPN, takie jak typ protokołu sieci VPN lub typ uwierzytelniania, pamiętaj wygenerować nowe pliki konfiguracji klienta sieci VPN dla urządzeń użytkownika. 
+
+* Aby uzyskać więcej informacji na temat połączeń punkt-lokacja, zobacz [About Point-to-Site VPN](point-to-site-about.md) (Informacje o sieci VPN typu punkt-lokacja).
+* OpenVPN instrukcje można znaleźć [skonfigurować OpenVPN dla P2S](vpn-gateway-howto-openvpn.md) i [klientom Konfigurowanie OpenVPN](vpn-gateway-howto-openvpn-clients.md).
 
 >[!IMPORTANT]
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
->
-
->[!NOTE]
->Pliki konfiguracji klienta są specyficzne dla konfiguracji sieci VPN dla sieci wirtualnej. W przypadku zmiany wprowadzone w konfiguracji sieci VPN typu punkt-lokacja po wygenerowaniu plików konfiguracji klienta sieci VPN, takie jak typ protokołu sieci VPN lub typ uwierzytelniania, pamiętaj wygenerować nowe pliki konfiguracji klienta sieci VPN dla urządzeń użytkownika.
->
 >
 
 ## <a name="generate"></a>Generowanie plików konfiguracji klienta sieci VPN

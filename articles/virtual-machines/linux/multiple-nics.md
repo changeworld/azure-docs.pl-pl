@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: zarhoads
-ms.openlocfilehash: 024cf099dd65db036ae0b68d7094a60427ffa69c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f16dbd743f7e5bb659d05325f85255223feb677d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119888"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411520"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu
 
@@ -67,7 +67,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>Utworzenie i skonfigurowanie wielu kart sieciowych
-Utwórz dwie karty sieciowe z [tworzenie az sieciowego](/cli/azure/network/nic#az_network_nic_create). Poniższy przykład tworzy dwie karty sieciowe o nazwie *myNic1* i *myNic2*, podłączone grupy zabezpieczeń sieci z jedną kartą Sieciową, nawiązywania połączenia z każdej podsieci:
+Utwórz dwie karty sieciowe z [tworzenie az sieciowego](/cli/azure/network/nic). Poniższy przykład tworzy dwie karty sieciowe o nazwie *myNic1* i *myNic2*, podłączone grupy zabezpieczeń sieci z jedną kartą Sieciową, nawiązywania połączenia z każdej podsieci:
 
 ```azurecli
 az network nic create \
@@ -105,7 +105,7 @@ Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane 
 ## <a name="add-a-nic-to-a-vm"></a>Dodaj kartę Sieciową do maszyny Wirtualnej
 W poprzednich krokach utworzono maszynę Wirtualną z wieloma kartami sieciowymi. Karty sieciowe można również dodać do istniejącej maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej. Jeśli to konieczne, możesz [zmienić rozmiar maszyny Wirtualnej](change-vm-size.md).
 
-Utwórz inną kartą Sieciową z [tworzenie az sieciowego](/cli/azure/network/nic#az_network_nic_create). Poniższy przykład tworzy kartę Sieciową o nazwie *myNic3* podłączony do wewnętrznej podsieci i sieciowej grupy zabezpieczeń utworzone w poprzednich krokach:
+Utwórz inną kartą Sieciową z [tworzenie az sieciowego](/cli/azure/network/nic). Poniższy przykład tworzy kartę Sieciową o nazwie *myNic3* podłączony do wewnętrznej podsieci i sieciowej grupy zabezpieczeń utworzone w poprzednich krokach:
 
 ```azurecli
 az network nic create \

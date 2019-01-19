@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: f0ae48cadf2e90dc685a24aff54d89f86a11c287
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cb5ad6f351cdeadb999b1a62c225f23937c5b92e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494297"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413825"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementowanie bramy Golden Oracle na maszynie Wirtualnej systemu Linux platformy Azure 
 
@@ -43,9 +43,9 @@ Poniżej przedstawiono podsumowanie konfiguracji środowiska:
 > | **Wersja bazy danych Oracle** |Oracle 12c w wersji 2 – (12.1.0.2) |Oracle 12c w wersji 2 – (12.1.0.2)|
 > | **Nazwa maszyny** |myVM1 |myVM2 |
 > | **System operacyjny** |Oracle Linux 6.x |Oracle Linux 6.x |
-> | **Identyfikator SID programu Oracle** |CDB1 |CDB1 |
+> | **Oracle SID** |CDB1 |CDB1 |
 > | **Schemat replikacji** |TEST|TEST |
-> | **Brama Golden właściciela/replikacja** |C ##GGADMIN |REPUSER |
+> | **Brama Golden właściciela/replikacja** |C##GGADMIN |REPUSER |
 > | **Proces Golden bramy** |EXTORA |REPORA|
 
 
@@ -59,7 +59,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Grupę zasobów platformy Azure to logiczny kontener przeznaczony do określonych zasobów platformy Azure są wdrażane i z którego mogą być zarządzane. 
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupę zasobów platformy Azure to logiczny kontener przeznaczony do określonych zasobów platformy Azure są wdrażane i z którego mogą być zarządzane. 
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`.
 

@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 50e70ab9be87c15816dc6471a2a29afd0f17d907
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c1a1da9fd0fff09bab027c4b4cc4e3085c5439f2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301249"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411120"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (dwu) i moc obliczeniową jednostek magazynu danych (cDWUs)
 Zalecenia dotyczące wybierania idealne liczbę jednostek magazynu danych (jednostki dwu, cDWUs), aby zoptymalizować cenę i wydajność i jak zmienić liczbę jednostek. 
@@ -90,6 +90,8 @@ Usługa SQL Data Warehouse to system skalowalnego w poziomie, który można udos
 ## <a name="permissions"></a>Uprawnienia
 
 Zmiana jednostki magazynu danych wymaga uprawnienia opisane w [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql). 
+
+Wbudowane role zasobów platformy Azure, np. Współautor bazy danych SQL i współautor serwera SQL Server można zmienić ustawień jednostek DWU. 
 
 ## <a name="view-current-dwu-settings"></a>Wyświetlanie bieżących ustawień jednostek DWU
 

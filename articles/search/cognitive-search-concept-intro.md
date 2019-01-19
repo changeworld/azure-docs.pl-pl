@@ -7,42 +7,42 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 01/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2bb32ccaeb5960fa69dcdc356523abc199fd5f4f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d30a6446f40105985388d3c2ee077b36af32f208
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633797"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412210"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
-Usługa cognitive search tworzy informacje można wyszukiwać zawartość niemożliwych, dołączając algorytmów sztucznej Inteligencji do potoku indeksowania. Opiera się integracji sztucznej Inteligencji *umiejętności poznawcze*, wzbogaca źródła dokumentów w drodze do indeksu wyszukiwania. 
+Usługa cognitive search jest funkcją sztucznej Inteligencji w usłudze Azure Search, używany do wyodrębniania tekstu z obrazów, obiekty BLOB i innych źródeł danych bez struktury — wzbogaca zawartość, aby wprowadzić więcej można wyszukiwać w indeksie usługi Azure Search. Wyodrębnianie i wzbogacania są implementowane za pośrednictwem *umiejętności poznawcze* dołączone do potoku indeksowania. Wzbogacenia sztucznej Inteligencji są obsługiwane w następujący sposób: 
 
-**Przetwarzanie języka naturalnego** obejmują umiejętności [rozpoznawanie jednostek](cognitive-search-skill-named-entity-recognition.md), wykrywanie języka [kluczowe frazy](cognitive-search-skill-keyphrases.md), manipulacja tekstem i wykrywania tonacji. Za pomocą tych umiejętności staje się strukturę tekstu bez struktury, mapowane na wyszukiwanie i filtrowanie pól w indeksie.
++ **Przetwarzanie języka naturalnego** obejmują umiejętności [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md), [wykrywanie języka](cognitive-search-skill-language-detection.md), [kluczowe frazy](cognitive-search-skill-keyphrases.md), manipulacja tekstem i [wykrywania tonacji](cognitive-search-skill-sentiment.md). Za pomocą tych umiejętności tekstu bez struktury, można założyć nowe formy, zamapowany jako wyszukiwanie i filtrowanie pól w indeksie.
 
-**Przetwarzanie obrazów** obejmuje [optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md) i identyfikacji [funkcje visual](cognitive-search-skill-image-analysis.md), takich jak wykrywanie twarzy obrazu interpretacji, obrazów, rozpoznawania (sławne osoby i charakterystycznych elementów krajobrazu) lub atrybuty, takie jak kolory lub orientację obrazu. Można utworzyć tekstowej reprezentacji zawartości obrazu, którą można przeszukiwać za pomocą wszystkich możliwości zapytań usługi Azure Search.
++ **Przetwarzanie obrazów** obejmują umiejętności [optyczne rozpoznawanie znaków (OCR)](cognitive-search-skill-ocr.md) i identyfikacji [funkcje programu visual](cognitive-search-skill-image-analysis.md), takich jak wykrywanie twarzy, interpretacji obrazów (rozpoznawanie obrazów sławne osoby i charakterystycznych elementów krajobrazu) lub atrybutów, takich jak orientacja kolorów lub obrazu. Można utworzyć tekstowej reprezentacji zawartości obrazu, którą można przeszukiwać za pomocą wszystkich możliwości zapytań usługi Azure Search.
 
 ![Usługa cognitive search diagram potoku](./media/cognitive-search-intro/cogsearch-architecture.png "Przegląd potoku wyszukiwania kognitywnego")
 
-Umiejętności poznawcze w usłudze Azure Search są oparte na tych samych algorytmów sztucznej Inteligencji używane w interfejsy API usług Cognitive Services: [O nazwie interfejs API rozpoznawania jednostek](cognitive-search-skill-named-entity-recognition.md), [interfejsu API usługi Key frazy wyodrębniania](cognitive-search-skill-keyphrases.md), i [interfejsu API Rozpoznawania](cognitive-search-skill-ocr.md) są tylko kilka. 
+Umiejętności poznawcze w usłudze Azure Search są oparte na modele uczenia maszynowego w interfejsy API usług Cognitive Services: [Przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) i [Analiza tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). 
 
 Język naturalny i przetwarzanie obrazu jest stosowana w fazie wprowadzania danych z wynikami staje się częścią kompozycji dokument w indeksie wyszukiwania w usłudze Azure Search. Dane są źródło jako zestawu danych platformy Azure, a następnie przekazywane za pośrednictwem potoku indeksowania, przy użyciu zależności [wbudowanych umiejętności](cognitive-search-predefined-skills.md) potrzebujesz. Architektura jest rozszerzalny, więc jeśli wbudowane umiejętności nie są wystarczające, można tworzyć i dołączać [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md) niestandardowych integracji. Przykłady mogą być przeznaczone dla określonej domeny, takich jak finanse, publikacji naukowych lub medycyna klasyfikatora modułu lub dokumentu jednostkę niestandardową.
 
 > [!NOTE]
-> Od 21 grudnia 2018 roku będziesz mieć możliwość skojarzenia swojego zasobu w usługach Cognitive Services z zestawem umiejętności usługi Azure Search. Rozpoczniemy wówczas naliczanie opłat za wykonywanie zestawu umiejętności. Od tego dnia zaczniemy też naliczać opłaty za wyodrębnianie obrazów w ramach etapu analizowania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+> Od 21 grudnia 2018 r. można [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
 >
-> Opłaty za wykonywanie wbudowanych umiejętności będą naliczane na podstawie istniejącej [ceny przy płatności zgodnie z rzeczywistym użyciem](https://azure.microsoft.com/pricing/details/cognitive-services/) za usługi Cognitive Services. Opłaty za wyodrębnianie obrazów będą naliczane zgodnie z cenami w wersji zapoznawczej. Opisano to [na stronie z cennikiem usługi Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się [więcej](cognitive-search-attach-cognitive-services.md).
+> Wykonanie wbudowanego umiejętności jest opłata za usług Cognitive Services, naliczane istniejące [cena Przejdź płatności — jako — możesz](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu jest opłata za usługę Azure Search, obecnie naliczane ceny za wersję zapoznawczą zgodnie z opisem na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400).
 
 ## <a name="components-of-cognitive-search"></a>Składniki wyszukiwania kognitywnego
 
-Usługa cognitive search jest w wersji zapoznawczej z [usługi Azure Search](search-what-is-azure-search.md)dostępny dla wszystkich warstw w południowo-środkowe stany USA i Europa Zachodnia. 
+Usługa cognitive search jest w wersji zapoznawczej z [usługi Azure Search](search-what-is-azure-search.md), obsługiwane na forach [tych regionów](#where-do-i-start). 
 
 Potok usługa cognitive search jest oparty na [usługi Azure Search *indeksatory* ](search-indexer-overview.md) , przeszukiwać źródeł danych i zapewniają przetwarzania indeksu end-to-end. Umiejętności są teraz dołączone do indeksatorów, przechwytuje i wzbogacania dokumentów na podstawie zestawu umiejętności, należy zdefiniować. Po indeksowane, możesz uzyskać dostęp zawartości za pośrednictwem żądania wyszukiwania przez wszystkie [zapytania typy obsługiwanych przez usługę Azure Search](search-query-overview.md).  Jeśli jesteś nowym użytkownikiem indeksatorów, ta sekcja przeprowadzi Cię przez kroki.
 
-### <a name="source-data-and-document-cracking-phase"></a>Źródło danych i faza łamania dokumentów
+### <a name="step-1-connection-and-document-cracking-phase"></a>Krok 1: Połączenie i faza łamania dokumentów
 
 Na początku tego potoku, masz tekstu bez struktury lub zawartości bez tekstu (na przykład obraz i pliki JPEG skanowanego dokumentu). Dane muszą istnieć w to usługa magazynu danych na platformie Azure, która może zostać oceniony przez indeksator. Indeksatory można "złamanie" dokumentów źródłowych do wyodrębniania tekstu z danymi źródłowymi.
 
@@ -50,7 +50,7 @@ Na początku tego potoku, masz tekstu bez struktury lub zawartości bez tekstu (
 
  Obsługiwane źródła obejmują usługi Azure blob storage, usługa Azure table storage, Azure SQL Database i Azure Cosmos DB. Można wyodrębnić zawartość tekstu z następujących typów plików: Pliki PDF, Word, PowerPoint, pliki CSV. Aby uzyskać pełną listę, zobacz [obsługiwane formaty](search-howto-indexing-azure-blob-storage.md#supported-document-formats).
 
-### <a name="cognitive-skills-and-enrichment-phase"></a>Umiejętności poznawcze i wzbogacania fazy
+### <a name="step-2-cognitive-skills-and-enrichment-phase"></a>Krok 2: Umiejętności poznawcze i wzbogacania fazy
 
 Wzbogacanie odbywa się za pośrednictwem *umiejętności poznawcze* wykonywania niepodzielnych operacji. Na przykład po utworzeniu treści tekstu z plików PDF, możesz zastosować, wykrywanie języka rozpoznawania jednostek i wyodrębnianie kluczowych fraz w celu utworzenia nowych pól w indeksie, które nie są dostępne natywnie w źródle. Cała nosi nazwę kolekcji umiejętności używane w potoku *zestawu umiejętności*.  
 
@@ -60,7 +60,7 @@ Zestawu umiejętności jest oparty na [wstępnie zdefiniowane umiejętności poz
 
 Wewnętrznie potok generuje kolekcję wzbogaconego dokumentów. Można zdecydować, które części dokumentów wzbogaconego powinno zostać zamapowane można indeksować pola w indeksie wyszukiwania. Na przykład jeśli zastosowano wyodrębnianie kluczowych fraz i umiejętności rozpoznawania jednostek, następnie te nowe pola stanie się częścią dokumentu wzbogaconego i mogą być mapowane do pól w indeksie. Zobacz [adnotacje](cognitive-search-concept-annotations-syntax.md) dowiedzieć się więcej o formacji wejścia/wyjścia.
 
-### <a name="search-index-and-query-based-access"></a>Indeks wyszukiwania i dostępu na podstawie zapytania
+### <a name="step-3-search-index-and-query-based-access"></a>Krok 3: Indeks wyszukiwania i dostępu na podstawie zapytania
 
 Po zakończeniu przetwarzania będziesz mieć korpus wyszukiwania, składający się z wzbogaconego dokumentów, w pełni tekst wyszukiwania w usłudze Azure Search. [Wykonywanie zapytania dotyczącego indeksu](search-query-overview.md) jest jak deweloperów i użytkowników dostępu do zawartości wzbogaconego generowane przez potok. 
 
@@ -76,7 +76,7 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 
 | Pojęcie | Opis| Linki |
 |---------|------------|-------|
-| Zestawu umiejętności | Najwyższego poziomu o nazwie zasobu zawierającego zbiór umiejętności. Zestawu umiejętności jest wzbogacony potok. Jest wywoływana podczas indeksowania w indeksatorze. | [Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md) |
+| Skillset | Najwyższego poziomu o nazwie zasobu zawierającego zbiór umiejętności. Zestawu umiejętności jest wzbogacony potok. Jest wywoływana podczas indeksowania w indeksatorze. | [Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md) |
 | Umiejętności cognitive | Niepodzielne przekształcenie w wzbogacony potok. Często jest składnikiem, który wyodrębnia lub wnioskuje struktury i w związku z tym rozszerzają zrozumienie danych wejściowych. Prawie zawsze dane wyjściowe są oparte na tekście, a przetwarzanie jest przetwarzanie języka naturalnego i przetwarzanie obrazu, który wyodrębnia lub generuje tekstu z obrazów w danych wejściowych. Dane wyjściowe z umiejętności mogą być zamapowane do pola w indeksie lub używane jako dane wejściowe wzbogacania podrzędnego. Wstępnie zdefiniowane i udostępniane przez firmę Microsoft lub niestandardowe umiejętności: utworzonych i wdrożonych przez użytkownika. | [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) |
 | Wyodrębnianie danych | Obejmuje szerokiej gamy przetwarzanie, jednak odnoszących się do wyszukiwania kognitywnego umiejętności rozpoznawanie podmiotów jest najczęściej używana do wyodrębniania danych (jednostki) ze źródła, która nie zapewnia natywnej tych informacji. | [Umiejętności rozpoznawania nazwanych jednostek](cognitive-search-skill-named-entity-recognition.md)| 
 | Przetwarzanie obrazów | Wnioskuje tekstu z obrazu, takich jak możliwości rozpoznawania charakterystycznych elementów krajobrazu lub umożliwia wyodrębnianie tekstu z obrazu. Typowe przykłady obejmują optyczne rozpoznawanie znaków do podnoszenia znaków z pliku skanowanego dokumentu (JPEG), lub rozpoznawanie Nazwa ulicy na zdjęciu zawierających znak ulicy. | [Obraz umiejętności analizy](cognitive-search-skill-image-analysis.md) lub [umiejętności optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md)
@@ -88,10 +88,11 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 | Źródło danych  | Obiekt, który używane w indeksatorze, aby nawiązać połączenie z zewnętrznym źródłem danych z obsługiwanych typów na platformie Azure. | Zobacz [indeksatorów](search-indexer-overview.md) |
 | Indeks | Korpus utrwalonych wyszukiwania w usłudze Azure Search, utworzony na podstawie schematu indeksu, który definiuje pola struktury i użycia. | [Indeksy w usłudze Azure Search](search-what-is-an-index.md) | 
 
+<a name="where-do-i-start"></a>
 
 ## <a name="where-do-i-start"></a>Od czego zacząć?
 
-**Krok 1. Tworzenie usługi wyszukiwania w obszarze dostarczanie interfejsów API** 
+**Krok 1. [Utwórz zasób usługi Azure Search](search-create-service-portal.md) w regionie, zapewniając interfejsów API** 
 
 + Środkowo-zachodnie stany USA
 + Środkowo-południowe stany USA

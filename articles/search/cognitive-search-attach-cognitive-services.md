@@ -7,28 +7,28 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 01/18/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 776363278352ca3de365760d334e99ab43b14bb5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389564"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413247"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Dołącz zasób usług Cognitive Services za pomocą zestawu umiejętności w usłudze Azure Search 
 
-Algorytmy sztucznej Inteligencji zapewniają [potoków wyszukiwania kognitywnego](cognitive-search-concept-intro.md) do przetwarzania danych bez struktury są oparte na [ **zasobów usług Cognitive Services**](https://azure.microsoft.com/services/cognitive-services/). Zasoby, takie jak [ **komputerowej** ](https://azure.microsoft.com/services/cognitive-services/computer-vision/) umożliwiają analizowanie obrazów i optyczne rozpoznawanie znaków (OCR) do wyodrębniania tekstu i struktury poza pliki obrazów podczas [ **tekstu Analiza** ](https://azure.microsoft.com/services/cognitive-services/text-analytics/) umożliwia przetwarzanie, takich jak jednostki rozpoznawanie i klucz frazy, kilka języka naturalnego.
+Dysk algorytmów sztucznej Inteligencji [potoków wyszukiwania kognitywnego](cognitive-search-concept-intro.md) użyte do przetwarzania danych bez struktury w usłudze Azure Search indeksowanie operacji. Algorytmy te są oparte na [zasobów usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/), w tym [komputerowej](https://azure.microsoft.com/services/cognitive-services/computer-vision/) analizy obrazów i optyczne rozpoznawanie znaków (OCR) i [analizy tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/)rozpoznawanie jednostek, wyodrębnianie kluczowych fraz i innych wzbogacenia.
 
 Bezpłatnie wzbogacanie ograniczonej liczby dokumentów lub dołączyć płatnych zasobu usług Cognitive Services dla obciążeń typu większych i częściej. W tym artykule, Dowiedz się, jak skojarzyć zasobu usług Cognitive Services za pomocą usługi cognitive zestawu umiejętności, aby wzbogacić dane podczas [indeksowanie usługi Azure Search](search-what-is-an-index.md).
 
-Potok składa się z umiejętności niezwiązanych ze sobą na interfejsy API usług Cognitive Services, nadal należy dołączać zasobu usług Cognitive Services, ale nie będzie opłata tych umiejętności. Niepowiązane umiejętności obejmują: [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), [funkcja scalająca tekst](cognitive-search-skill-textmerger.md), [rozdzielacz tekstu](cognitive-search-skill-textsplit.md), i [shaper](cognitive-search-skill-shaper.md).
+Jeśli Potok składa się z umiejętności niezwiązanych ze sobą na interfejsy API usług Cognitive Services, możesz nadal dołączyć zasobu usług Cognitive Services. Sposób zastąpienia tak **bezpłatna** zasób, który ogranicza na małą ilość wzbogacenia dziennie. Nie ma opłat za umiejętności, które nie są powiązane z interfejsów API usług Cognitive Services. Tych umiejętności, obejmują: [umiejętności niestandardowe](cognitive-search-create-custom-skill-example.md), [funkcja scalająca tekst](cognitive-search-skill-textmerger.md), [rozdzielacz tekstu](cognitive-search-skill-textsplit.md), i [shaper](cognitive-search-skill-shaper.md).
 
 > [!NOTE]
 > Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
 >
-> Wykonanie [wbudowanych umiejętności poznawcze](cognitive-search-predefined-skills.md) podlega opłacie [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services), w taki sam szybkości tak, jakby zadanie było wykonywane bezpośrednio. Obraz wyodrębniania jest płatne zdarzenie usługi Azure Search, obecnie oferowana w cenie wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400) lub [sposób działania rozliczeń](search-sku-tier.md#how-billing-works).
+> [Wbudowane umiejętności cognitive](cognitive-search-predefined-skills.md) wykonywania podlega opłacie [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services), w taki sam szybkości tak, jakby zadanie było wykonywane bezpośrednio. Obraz wyodrębniania jest opłata za usługę Azure Search, obecnie oferowana w cenie wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400) lub [sposób działania rozliczeń](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="use-free-resources"></a>Bezpłatne zasoby

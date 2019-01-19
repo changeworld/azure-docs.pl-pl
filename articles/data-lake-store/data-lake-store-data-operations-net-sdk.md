@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163241"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402306"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Operacje systemu plików w usłudze Azure Data Lake magazynu Gen1 przy użyciu zestawu .NET SDK
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "53163241"
 >
 >
 
-W tym artykule dowiesz się, jak wykonywać operacje systemu plików na Data Lake Storage Gen1 przy użyciu zestawu .NET SDK. Operacje systemu plików obejmują tworzenie folderów na koncie usługi Data Lake Storage Gen1, przekazywanie plików, pobieranie plików itp.
+W tym artykule dowiesz się, jak wykonywać operacje systemu plików w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK. Operacje systemu plików obejmują tworzenie folderów na koncie usługi Data Lake Storage Gen1, przekazywanie plików, pobieranie plików itp.
 
 Aby uzyskać instrukcje na temat sposobu wykonywania operacji zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK, zobacz [operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-get-started-net-sdk.md).
 
