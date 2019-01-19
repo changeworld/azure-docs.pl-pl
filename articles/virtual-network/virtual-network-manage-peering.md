@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 39cb9f606e6829fe8265a40216de5312c3e7e60b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4278ec65dd21e998fa2f498435d7df143ea07d0a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075196"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412890"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
@@ -71,7 +71,7 @@ Instrukcje krok po kroku dotyczące implementowania komunikację równorzędną 
 ### <a name="commands"></a>Polecenia
 
 - **Interfejs wiersza polecenia Azure**: [tworzenie az sieci wirtualne sieci równorzędne](/cli/azure/network/vnet/peering#create)
-- **Program PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
+- **PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Wyświetl lub zmień ustawienia komunikacji równorzędnej
 
@@ -87,8 +87,8 @@ Przed zmianą, komunikację równorzędną, zapoznaj się z [wymagania i ogranic
 
 **Polecenia**
 
-- **Wiersza polecenia platformy Azure**: [az listę komunikacji równorzędnej sieci wirtualnej sieci](/cli/azure/network/vnet/peering#az_network_vnet_peering_list) do listy połączeń komunikacji równorzędnej sieci wirtualnej, [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) wyświetlanie ustawień dla określonych komunikacji równorzędnej i [az sieci Aktualizacja komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) zmiany ustawień komunikacji równorzędnej. |
-- **Program PowerShell**: [Polecenie GET-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) można pobrać ustawień komunikacji równorzędnej widoku i [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Aby zmienić ustawienia.
+- **Wiersza polecenia platformy Azure**: [az listę komunikacji równorzędnej sieci wirtualnej sieci](/cli/azure/network/vnet/peering) do listy połączeń komunikacji równorzędnej sieci wirtualnej, [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) wyświetlanie ustawień dla określonych komunikacji równorzędnej i [az sieci Aktualizacja komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) zmiany ustawień komunikacji równorzędnej. |
+- **PowerShell**: [Polecenie GET-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) można pobrać ustawień komunikacji równorzędnej widoku i [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Aby zmienić ustawienia.
 
 ## <a name="delete-a-peering"></a>Usuwanie komunikacji równorzędnej
 
@@ -108,7 +108,7 @@ Jeśli chcesz, aby sieci wirtualne do komunikowania się czasami, ale nie zawsze
 **Polecenia**
 
 - **Interfejs wiersza polecenia Azure**: [usuwanie komunikacji równorzędnej sieci wirtualnej sieci az](/cli/azure/network/vnet/peering#az_network_vnet_peering_delete)
-- **Program PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
+- **PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
 
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/03/2018
 ms.author: cynthn
-ms.openlocfilehash: f84626c5a487d52f53a2c8bf492a124c87599ed0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e283f21b65706860e198e2deca933f1986073cab
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932398"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413230"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych z systemem Linux na platformie Azure za pomocą usługi Packer
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje dystrybucji systemu Linux i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace udostępnia wiele obrazów pierwszy i innych firm dla dystrybucje najbardziej typowe i środowiska aplikacji, lub możesz utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
@@ -201,7 +201,7 @@ Trwa kilka minut, zanim Packer tworzenie maszyny Wirtualnej, uruchom provisioner
 
 
 ## <a name="create-vm-from-azure-image"></a>Tworzenie maszyny Wirtualnej na podstawie obrazów systemu Azure
-Teraz można utworzyć Maszynę wirtualną z obrazu za pomocą [tworzenie az vm](/cli/azure/vm#az_vm_create). Określ obraz, który został utworzony z `--image` parametru. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z *myPackerImage* i generowanie kluczy SSH, jeśli jeszcze nie istnieje:
+Teraz można utworzyć Maszynę wirtualną z obrazu za pomocą [tworzenie az vm](/cli/azure/vm). Określ obraz, który został utworzony z `--image` parametru. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z *myPackerImage* i generowanie kluczy SSH, jeśli jeszcze nie istnieje:
 
 ```azurecli
 az vm create \

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.author: sogup
-ms.openlocfilehash: ee61381eabed9dd7ead7deb23bc6f27c94031d3b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382319"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401932"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Przenoszenie magazynu usługi Recovery Services między subskrypcjami platformy Azure i grup zasobów (ograniczonej publicznej wersji zapoznawczej)
 
@@ -42,9 +42,9 @@ Magazyny usługi Recovery Services skonfigurowane do korzystania z **usługi Azu
 >
 >
 
-## <a name="register-the-subscription-to-move-your-recovery-services-vault"></a>Zarejestruj subskrypcję, aby przenieść magazynu usługi Recovery Services
+## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>Zarejestruj subskrypcję źródła można przenieść magazynu usługi Recovery Services
 
-Aby zarejestrować subskrypcję, której chcesz **przenieść** magazynu usługi Recovery Services, uruchom następujące polecenia cmdlet z poziomu terminalu programu PowerShell:
+Można zarejestrować subskrypcji źródłowej do **przenieść** magazynu usługi Recovery Services, uruchom następujące polecenia cmdlet z poziomu terminalu programu PowerShell:
 
 1. Zaloguj się do swojego konta platformy Azure
 

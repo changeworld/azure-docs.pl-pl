@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: a43988f8d4d6ae318f409cf1e79d8ad2ff8c8af1
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 82e574663cec1bc3f97cbdb967f701faa57d7820
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247830"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413111"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 
@@ -43,7 +43,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
         - 255.255.255.255/32 (emisji)
         - 127.0.0.0/8 (Loopback)
         - 169.254.0.0/16 (Link-local)
-        - 168.63.129.16/32 (wewnętrznego serwera DNS)
+        - 168.63.129.16/32 (Internal DNS)
 
       Chociaż można zdefiniować tylko jeden adres, zakres, po utworzeniu sieci wirtualnej, możesz dodać więcej zakresów adresów do przestrzeni adresowej, po utworzeniu sieci wirtualnej. Aby dowiedzieć się, jak dodać zakres adresów do istniejącej sieci wirtualnej, zobacz [Dodawanie lub usuwanie zakresu adresów](#add-or-remove-an-address-range).
 
@@ -111,7 +111,7 @@ Nie można dodać poniższe zakresy adresów:
 - 255.255.255.255/32 (emisji)
 - 127.0.0.0/8 (Loopback)
 - 169.254.0.0/16 (Link-local)
-- 168.63.129.16/32 (wewnętrznego serwera DNS)
+- 168.63.129.16/32 (Internal DNS)
 
 Aby dodać lub usunąć zakres adresów:
 
@@ -125,7 +125,7 @@ Aby dodać lub usunąć zakres adresów:
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az sieci vnet update](/cli/azure/network/vnet#az_network_vnet_update)
+- Interfejs wiersza polecenia platformy Azure: [az sieci vnet update](/cli/azure/network/vnet)
 - Program PowerShell: [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
 
 ## <a name="change-dns-servers"></a>Zmień serwerów DNS
@@ -147,7 +147,7 @@ Wszystkie maszyny wirtualne, które są podłączone do sieci wirtualnej, zareje
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az sieci vnet update](/cli/azure/network/vnet#az_network_vnet_update)
+- Interfejs wiersza polecenia platformy Azure: [az sieci vnet update](/cli/azure/network/vnet)
 - Program PowerShell: [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
 
 ## <a name="delete-a-virtual-network"></a>Usuwanie sieci wirtualnej

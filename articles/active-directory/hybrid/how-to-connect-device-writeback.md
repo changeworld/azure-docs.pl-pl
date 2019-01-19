@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń | Dokumentacja firmy Microsoft'
 description: Ten dokument zawiera szczegółowe informacje dotyczące włączania zapisywania zwrotnego urządzeń za pomocą usługi Azure AD Connect
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361073"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412822"
 ---
-# <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń
+# <a name="azure-ad-connect-enabling-device-writeback"></a>Program Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń
 > [!NOTE]
 > Subskrypcja usługi Azure AD Premium jest wymagana na potrzeby zapisywania zwrotnego urządzeń.
 > 
@@ -41,7 +41,7 @@ Dzięki temu zwiększa bezpieczeństwo i poziom gwarancji, że udzielono dostęp
 ## <a name="part-1-install-azure-ad-connect"></a>Część 1: Instalowanie programu Azure AD Connect
 Zainstaluj program Azure AD Connect przy użyciu niestandardowych lub ustawienia ekspresowe. Firma Microsoft zaleca rozpocząć od wszystkich użytkowników i grup pomyślnie zsynchronizowano zanim włączysz zapisywanie zwrotne urządzeń.
 
-## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>Część 2: Zapisywanie zwrotne urządzeń Włącz w usłudze Azure AD Connect
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>Część 2: Włączanie zapisywania zwrotnego urządzeń w usłudze Azure AD Connect
 1. Uruchom ponownie Kreatora instalacji. Wybierz **Konfiguruj opcje urządzenia** z zadania dodatkowe strony, a następnie kliknij przycisk **dalej**. 
 
     ![Konfiguruj opcje urządzenia](./media/how-to-connect-device-writeback/deviceoptions.png)
@@ -57,10 +57,10 @@ Zainstaluj program Azure AD Connect przy użyciu niestandardowych lub ustawienia
 
 4. **Kontener urządzeń** strona zapewnia opcję przygotowywania usługi active directory przy użyciu jednej z dostępnych opcji:
 
-    a. **Podaj poświadczenia administratora przedsiębiorstwa**: Jeśli nie są podane poświadczenia administratora przedsiębiorstwa dla lasu, w którym urządzenia muszą być zapisywane z powrotem, program Azure AD Connect będzie przygotowanie lasu automatycznie podczas konfigurowania Zapisywanie zwrotne urządzeń.
+    a. **Podaj poświadczenia administratora przedsiębiorstwa**: Jeśli nie są podane poświadczenia administratora przedsiębiorstwa dla lasu, w którym urządzenia muszą być zapisywane z powrotem, program Azure AD Connect spowoduje automatyczne przygotowanie lasu podczas konfigurowania zapisywania zwrotnego urządzeń.
 
-    b. **Pobierz skrypt programu PowerShell**: program Azure AD Connect automatycznie generuje skrypt programu PowerShell, którego można przygotować usługi active directory do zapisywania zwrotnego urządzeń. W przypadku, gdy nie można podać poświadczenia administratora przedsiębiorstwa w programie Azure AD Connect, zaleca się pobrać skrypt programu PowerShell. Podaj pobranego skryptu programu PowerShell **CreateDeviceContainer.psq** do administratora przedsiębiorstwa w lesie, w którym urządzenia będzie można zapisać zwrotnie w.
-    ![Przygotowanie lasu active katalogów](./media/how-to-connect-device-writeback/devicecontainercreds.png)
+    b. **Pobierz skrypt programu PowerShell**: Program Azure AD Connect automatycznie generuje skrypt programu PowerShell, którego można przygotować usługi active directory do zapisywania zwrotnego urządzeń. W przypadku, gdy nie można podać poświadczenia administratora przedsiębiorstwa w programie Azure AD Connect, zaleca się pobrać skrypt programu PowerShell. Podaj pobranego skryptu programu PowerShell **CreateDeviceContainer.psq** do administratora przedsiębiorstwa w lesie, w którym urządzenia będzie można zapisać zwrotnie w.
+    ![Przygotowanie lasu usługi active directory](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Następujące operacje są wykonywane w przypadku przygotowywania lasu usługi active directory:
     * Jeśli ich jeszcze nie istnieje, tworzy i konfiguruje nowe kontenery i obiekty CN = Configuration rejestracji urządzeń, CN = Services, CN = Configuration, [nazwa wyróżniająca lasu].
@@ -111,7 +111,7 @@ Weryfikowanie konfiguracji w usłudze Active Directory:
 
 * Upewnij się, atrybut msDS-DeviceLocation jest obecny i ma wartość na obiekt usługi rejestracji urządzeń. Wyszukiwanie tej lokalizacji i upewnij się, że nie jest obecny przy użyciu objectType msDS-DeviceContainer.
 
-![Rozwiązywanie problemów msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
+![Troubleshoot, msDS-DeviceLocation](./media/how-to-connect-device-writeback/troubleshoot3.png)
 
 ![Rozwiązywanie problemów, klasa obiektu RegisteredDevices](./media/how-to-connect-device-writeback/troubleshoot4.png)
 

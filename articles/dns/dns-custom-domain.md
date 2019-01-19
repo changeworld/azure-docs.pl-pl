@@ -1,23 +1,18 @@
 ---
-title: Integracja usługi Azure DNS z zasobami platformy Azure | Dokumentacja firmy Microsoft
+title: Integracja usługi Azure DNS z zasobami platformy Azure
 description: Dowiedz się, jak używać usługi Azure DNS, wzdłuż, aby zapewnić DNS dla zasobów platformy Azure.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 1/19/2018
+ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: 8e8a09ede66213247b306c77938dbff30651fee5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b513e898e25397f54b8f7f7590a4466523a705ff
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727152"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401422"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Podaj ustawienia domeny niestandardowej dla usługi platformy Azure przy użyciu usługi Azure DNS
 
@@ -33,7 +28,7 @@ Możesz skonfigurować znaczących lub domeny niestandardowej dla [aplikacji fun
 
 Aby skonfigurować domeny niestandardowej na potrzeby aplikacji funkcji platformy Azure, rekord CNAME powstaje oraz konfigurację w samej aplikacji funkcji.
  
-Przejdź do **innych** > **aplikacji funkcji** i wybierz aplikację funkcji. Kliknij przycisk **funkcje platformy** i w obszarze **sieć** kliknij **domen niestandardowych**.
+Przejdź do **aplikacji funkcji** i wybierz aplikację funkcji. Kliknij przycisk **funkcje platformy** i w obszarze **sieć** kliknij **domen niestandardowych**.
 
 ![Blok aplikacji — funkcja](./media/dns-custom-domain/functionapp.png)
 
@@ -47,13 +42,13 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |---------|---------|---------|
 |Name (Nazwa)     | myfunctionapp        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
 |Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
-|CZAS WYGAŚNIĘCIA     | 1        | 1 jest używana przez 1 godzinę        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | adatumfunction.azurewebsites.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS adatumfunction.azurewebsites.net domyślne do aplikacji funkcji.        |
 
-Przejdź z powrotem do aplikacji funkcji, kliknij przycisk **funkcje platformy**, a następnie w obszarze **sieć** kliknij **domen niestandardowych**, a następnie w obszarze **nazwy hostów**kliknij **+ Dodaj nazwę hosta**.
+Przejdź z powrotem do aplikacji funkcji, kliknij przycisk **funkcje platformy**, a następnie w obszarze **sieć** kliknij **domen niestandardowych**, a następnie w obszarze **niestandardowe nazwy hostów** kliknij **+ Dodaj nazwę hosta**.
 
-Na **Dodaj nazwę hosta** bloku wprowadzić rekord CNAME w **hostname** polu tekstowym i kliknij przycisk **weryfikacji**. Jeśli rekord był w stanie znaleźć **Dodaj nazwę hosta** pojawi się przycisk. Kliknij przycisk **Dodaj nazwę hosta** Aby dodać alias.
+Na **Dodaj nazwę hosta** bloku wprowadzić rekord CNAME w **hostname** polu tekstowym i kliknij przycisk **weryfikacji**. Jeśli zostanie znaleziony rekord, **Dodaj nazwę hosta** pojawi się przycisk. Kliknij przycisk **Dodaj nazwę hosta** Aby dodać alias.
 
 ![host name blok dodawania aplikacji funkcji](./media/dns-custom-domain/functionaddhostname.png)
 
@@ -72,7 +67,7 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |---------|---------|---------|
 |Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
 |Typ     | A        | Tylko zasób jest adres IP, należy użyć rekordu A.        |
-|CZAS WYGAŚNIĘCIA     | 1        | 1 jest używana przez 1 godzinę        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Adres IP     | <your ip address>       | Publiczny adres IP.|
 
@@ -86,7 +81,7 @@ Po utworzeniu rekordu A uruchom `nslookup` do sprawdzania poprawności rozwiązu
 
 Poniżej przedstawiono krok po poprzez skonfigurowanie domeny niestandardowej do aplikacji sieci web usługi app service.
 
-Przejdź do **sieci Web i aplikacje mobilne** > **usługi App Service** i wybierz zasób są Konfigurowanie niestandardowej nazwy domeny i kliknij przycisk **domen niestandardowych**.
+Przejdź do **usługi App Service** i wybierz zasób są Konfigurowanie niestandardowej nazwy domeny i kliknij przycisk **domen niestandardowych**.
 
 Należy pamiętać, bieżący adres url na **domen niestandardowych** bloku, ten adres jest używany jako alias dla rekordu DNS utworzonego.
 
@@ -99,7 +94,7 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |---------|---------|---------|
 |Name (Nazwa)     | mywebserver        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
 |Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu. Jeśli zasób jest używany adres IP, będzie używany rekord.        |
-|CZAS WYGAŚNIĘCIA     | 1        | 1 jest używana przez 1 godzinę        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | webserver.azurewebsites.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS webserver.azurewebsites.net domyślne do aplikacji sieci web.        |
 
@@ -133,7 +128,7 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |---------|---------|---------|
 |Name (Nazwa)     | asverify.mystorageaccount        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
 |Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
-|CZAS WYGAŚNIĘCIA     | 1        | 1 jest używana przez 1 godzinę        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS asverify.adatumfunctiona9ed.blob.core.windows.net domyślne konto magazynu.        |
 
@@ -149,7 +144,7 @@ Aby dowiedzieć się więcej o mapowanie domeny niestandardowej do punktu końco
 
 Poniżej przedstawiono krok po poprzez Konfigurowanie rekordu CNAME dla punktu końcowego usługi CDN przy użyciu metody cdnverify. Ta metoda zapewnia, że nie ma żadnych przestojów.
 
-Przejdź do **sieć** > **profilów CDN**, wybierz swój profil usługi CDN, a kliknij **punktów końcowych** w obszarze **ogólne**.
+Przejdź do **sieć** > **profilów CDN**, wybierz swój profil usługi CDN.
 
 Wybierz punkt końcowy pracujesz z i kliknij przycisk **+ domena niestandardowa**. Uwaga **nazwę hosta punktu końcowego** ta wartość jest rekord, który wskazuje rekordu CNAME.
 
@@ -161,7 +156,7 @@ Przejdź do strefy DNS, a następnie kliknij przycisk **+ zestaw rekordów**. Wy
 |---------|---------|---------|
 |Name (Nazwa)     | cdnverify.mycdnendpoint        | Ta wartość wraz z etykieta nazwy domeny jest nazwą FQDN dla nazwy domeny niestandardowej.        |
 |Typ     | CNAME        | Użyj rekord CNAME w systemie jest za pomocą aliasu.        |
-|CZAS WYGAŚNIĘCIA     | 1        | 1 jest używana przez 1 godzinę        |
+|TTL     | 1        | 1 jest używana przez 1 godzinę        |
 |Jednostka czasu wygaśnięcia     | Godziny        | Godziny są używane jako pomiaru czasu         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | Nazwa DNS powoduje utworzenie aliasu, w tym przykładzie jest to nazwa DNS cdnverify.adatumcdnendpoint.azureedge.net domyślne konto magazynu.        |
 

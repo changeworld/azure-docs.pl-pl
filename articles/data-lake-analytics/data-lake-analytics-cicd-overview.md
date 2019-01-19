@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 76bfcd5e1b7e0215cfea7fbbfe1c51726d305fbc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 68691430621c0055b3465b9428a8206c6a544a97
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969843"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412533"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak skonfigurować potok CI/CD dla usługi Azure Data Lake Analytics  
 
@@ -42,7 +42,7 @@ Przed skonfigurowaniem zadania kompilacji dla projektu U-SQL, upewnij się, że 
 Jeśli nie, dostępne są dwie opcje, aby migrować projekt:
 
 - Opcja 1: Zmień stary element import na poprzednim.
-- Opcja 2: Otwórz stary projekt w usłudze Azure Data Lake Tools for Visual Studio. Użyj wersji nowszej niż 2.3.3000.0. Stary szablon projektu zostanie automatycznie uaktualniony do najnowszej wersji. Nowe projekty utworzone za pomocą wersji nowszej niż 2.3.3000.0 nowy szablon.
+- Opcja 2: Otwórz starego projektu w usłudze Azure Data Lake Tools dla programu Visual Studio. Użyj wersji nowszej niż 2.3.3000.0. Stary szablon projektu zostanie automatycznie uaktualniony do najnowszej wersji. Nowe projekty utworzone za pomocą wersji nowszej niż 2.3.3000.0 nowy szablon.
 
 ### <a name="get-nuget"></a>Pobierz NuGet
 
@@ -246,7 +246,7 @@ Użyj [zadań programu Azure PowerShell](https://docs.microsoft.com/azure/devops
 param(
     [Parameter(Mandatory=$true)][string]$ADLSName, # ADLS account name to upload U-SQL scripts
     [Parameter(Mandatory=$true)][string]$ArtifactsRoot, # Root folder of U-SQL project build output
-    [Parameter(Mandatory=$false)][string]$DesitinationFolder = "USQLScriptSource" # Desitination folder in ADLS
+    [Parameter(Mandatory=$false)][string]$DestinationFolder = "USQLScriptSource" # Destination folder in ADLS
 )
 
 Function UploadResources()
@@ -261,7 +261,7 @@ Function UploadResources()
     foreach($file in $files)
     {
         Write-Host "Uploading file: $($file.Name)"
-        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DesitinationFolder $file)" -Force
+        Import-AzureRmDataLakeStoreItem -AccountName $ADLSName -Path $file.FullName -Destination "/$(Join-Path $DestinationFolder $file)" -Force
     }
 }
 
@@ -454,31 +454,31 @@ Wykonaj poniższe kroki, aby skonfigurować zadania wdrożenia bazy danych w pot
 
 | Parametr | Opis | Wartość domyślna | Wymagane |
 |---------|-----------|-------------|--------|
-|Pakiet|Ścieżka pakietu wdrożeniowego bazy danych U-SQL do wdrożenia.|Wartość null|true|
+|Pakiet|Ścieżka pakietu wdrożeniowego bazy danych U-SQL do wdrożenia.|wartość null|true|
 |Database (Baza danych)|Nazwa bazy danych, które mają być wdrożone lub utworzony.|master|false|
-|Plik dziennika|Ścieżka pliku do rejestrowania. Domyślnie standard out (Konsola).|Wartość null|false|
-|LogLevel|Poziom dziennika: pełne, normalny, Warning lub Error.|LogLevel.Normal|false|
+|LogFile|Ścieżka pliku do rejestrowania. Domyślnie standard out (Konsola).|wartość null|false|
+|LogLevel|Poziom dziennika: Pełne, normalny, Warning lub Error.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Parametr dla wdrożenia lokalnego
 
 |Parametr|Opis|Wartość domyślna|Wymagane|
 |---------|-----------|-------------|--------|
-|DataRoot|Ścieżka folderu głównego danych lokalnych.|Wartość null|true|
+|DataRoot|Ścieżka folderu głównego danych lokalnych.|wartość null|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parametry w celu wdrożenia usługi Azure Data Lake Analytics
 
 |Parametr|Opis|Wartość domyślna|Wymagane|
 |---------|-----------|-------------|--------|
-|Konto|Określa, która konta Azure Data Lake Analytics, aby wdrożyć według nazwy konta.|Wartość null|true|
-|ResourceGroup|Nazwa grupy zasobów platformy Azure dla konta usługi Azure Data Lake Analytics.|Wartość null|true|
-|SubscriptionId|Identyfikator subskrypcji platformy Azure dla konta usługi Azure Data Lake Analytics.|Wartość null|true|
-|Dzierżawa|Nazwa dzierżawy jest nazwą domeny usługi Azure Active Directory (Azure AD). Znaleźć go na stronie zarządzania subskrypcją w witrynie Azure portal.|Wartość null|true|
-|AzureSDKPath|Ścieżki wyszukiwania zestawów zależnych w zestawie SDK platformy Azure.|Wartość null|true|
+|Konto|Określa, która konta Azure Data Lake Analytics, aby wdrożyć według nazwy konta.|wartość null|true|
+|ResourceGroup|Nazwa grupy zasobów platformy Azure dla konta usługi Azure Data Lake Analytics.|wartość null|true|
+|SubscriptionId|Identyfikator subskrypcji platformy Azure dla konta usługi Azure Data Lake Analytics.|wartość null|true|
+|Dzierżawa|Nazwa dzierżawy jest nazwą domeny usługi Azure Active Directory (Azure AD). Znaleźć go na stronie zarządzania subskrypcją w witrynie Azure portal.|wartość null|true|
+|AzureSDKPath|Ścieżki wyszukiwania zestawów zależnych w zestawie SDK platformy Azure.|wartość null|true|
 |Interaktywne|Czy należy użyć trybu interakcyjnego uwierzytelniania.|false|false|
-|ClientId|Identyfikator aplikacji usługi Azure AD jest wymagana dla nieinterakcyjnych authentication.|Wartość null|Wymagane dla nieinterakcyjnych authentication.|
-|Secrete|Secrete lub hasła dla nieinterakcyjnych authentication. Należy używać tylko w środowisku zaufaną i bezpieczną.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj SecreteFile.|
-|SecreteFile|Plik jest zapisywany secrete lub hasła dla nieinterakcyjnych authentication. Upewnij się, że nadal można odczytać tylko przez bieżącego użytkownika.|Wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj Secrete.|
-|CertFile|Plik jest zapisywany certyfikaty X.509 związane z uwierzytelnianiem nieinterakcyjnym. Wartość domyślna to korzystanie z klienta secrete uwierzytelniania.|Wartość null|false|
+|ClientId|Identyfikator aplikacji usługi Azure AD jest wymagana dla nieinterakcyjnych authentication.|wartość null|Wymagane dla nieinterakcyjnych authentication.|
+|Secrete|Secrete lub hasła dla nieinterakcyjnych authentication. Należy używać tylko w środowisku zaufaną i bezpieczną.|wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj SecreteFile.|
+|SecreteFile|Plik jest zapisywany secrete lub hasła dla nieinterakcyjnych authentication. Upewnij się, że nadal można odczytać tylko przez bieżącego użytkownika.|wartość null|Wymagane dla nieinterakcyjnych authentication; w przeciwnym razie użyj Secrete.|
+|CertFile|Plik jest zapisywany certyfikaty X.509 związane z uwierzytelnianiem nieinterakcyjnym. Wartość domyślna to korzystanie z klienta secrete uwierzytelniania.|wartość null|false|
 | JobPrefix | Prefiks do wdrożenia bazy danych zadania U-SQL DDL. | Deploy_ + DateTime.Now | false |
 
 ## <a name="next-steps"></a>Kolejne kroki

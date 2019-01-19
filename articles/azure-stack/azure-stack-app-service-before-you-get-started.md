@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: add4a7f1ce8133b5c3891f731fc98ee7fdb26ebd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 31fe0ede202b72a3e71c8028543ef0677a44a335
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275673"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413026"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -71,7 +71,7 @@ Po uruchomieniu następującego polecenia programu PowerShell, należy przewidzi
     Get-AzureStackRootCert.ps1
 ```
 
-#### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 Parametry skryptu
+#### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 script parameters
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
@@ -96,7 +96,7 @@ Aby utworzyć certyfikaty, wykonaj następujące kroki:
 3. Uruchom *AppServiceCerts.ps1 Utwórz* skryptów z folderu, w którym została rozpakowana skrypty pomocnika. Ten skrypt tworzy cztery certyfikaty, w tym samym folderze co skrypt, który potrzebuje tworzenia certyfikatów usługi App Service.
 4. Wprowadź hasło, aby zabezpieczyć pliki PFX, a następnie zanotuj go. Musisz wprowadzić go w usłudze App Service na temat Instalatora usługi Azure Stack.
 
-#### <a name="create-appservicecertsps1-script-parameters"></a>Utwórz AppServiceCerts.ps1 Parametry skryptu
+#### <a name="create-appservicecertsps1-script-parameters"></a>Create-AppServiceCerts.ps1 script parameters
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
@@ -166,13 +166,13 @@ Najlepszym rozwiązaniem, pracując ze wszystkimi niezbędne [certyfikatów infr
 
 Usługa Azure App Service w usłudze Azure Stack umożliwia wdrażanie dostawcy zasobów do istniejącej sieci wirtualnej lub umożliwia tworzenie sieci wirtualnej jako część wdrożenia. Korzystanie z istniejącej sieci wirtualnej umożliwia użycie wewnętrznych adresów IP, aby nawiązać połączenie serwera plików i programu SQL server wymagane przez usługę Azure App Service w usłudze Azure Stack. Sieć wirtualna musi być skonfigurowany z następujących podsieci i zakres adresów, przed zainstalowaniem usługi Azure App Service w usłudze Azure Stack:
 
-Sieć wirtualna - /16
+Virtual Network - /16
 
 Podsieci
 
-- ControllersSubnet prefiksie/24
+- ControllersSubnet /24
 - ManagementServersSubnet /24
-- FrontEndsSubnet prefiksie/24
+- FrontEndsSubnet /24
 - PublishersSubnet /24
 - WorkersSubnet /21
 
@@ -279,7 +279,7 @@ icacls %WEBSITES_FOLDER% /grant %DOMAIN%\FileShareUsers:(CI)(S,X,RA)
 icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
-#### <a name="workgroup"></a>Grupa robocza
+#### <a name="workgroup"></a>Workgroup
 
 ```DOS
 set WEBSITES_FOLDER=C:\WebSites
@@ -327,7 +327,7 @@ Administratorzy, należy skonfigurować logowanie Jednokrotne:
 Wykonaj następujące kroki:
 
 1. Otwórz wystąpienie programu PowerShell jako azurestack\AzureStackAdmin.
-2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started).
 3. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 4. Uruchom **AADIdentityApp.ps1 Utwórz** skryptu. Po wyświetleniu monitu wprowadź identyfikator dzierżawy usługi Azure AD, który używany w przypadku wdrożenia usługi Azure Stack. Na przykład, wprowadź **myazurestack.onmicrosoft.com**.
 5. W **poświadczeń** okna, podaj konto administratora usługi Azure AD i hasło. Kliknij przycisk **OK**.
@@ -353,7 +353,7 @@ Wykonaj następujące kroki:
 | AzureStackAdminCredential | Wymagane | Null | Poświadczenia administratora usługi Azure AD. |
 | CertificateFilePath | Wymagane | Null | **Pełna ścieżka** do wcześniej wygenerowany plik certyfikatu aplikacji tożsamości. |
 | CertificatePassword | Wymagane | Null | Hasło, która pomaga chronić klucz prywatny certyfikatu. |
-| Środowisko | Optional (Opcjonalność) | AzureCloud | Nazwa obsługiwane środowiska chmury, w której element docelowy usługi Azure Active Directory Graph jest dostępny.  Dozwolone wartości: "AzureCloud", "AzureChinaCloud", "AzureUSGovernment" i "AzureGermanCloud".|
+| Środowisko | Optional | AzureCloud | Nazwa obsługiwane środowiska chmury, w której element docelowy usługi Azure Active Directory Graph jest dostępny.  Dozwolone wartości: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Tworzenie aplikacji usług federacyjnych Active Directory
 
@@ -371,7 +371,7 @@ Administratorzy, należy skonfigurować logowanie Jednokrotne:
 Wykonaj następujące kroki:
 
 1. Otwórz wystąpienie programu PowerShell jako azurestack\AzureStackAdmin.
-2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+2. Przejdź do lokalizacji, skryptów, które pobrane i wyodrębnione w [kroku wymagań wstępnych](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started).
 3. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 4. Uruchom **ADFSIdentityApp.ps1 Utwórz** skryptu.
 5. W **poświadczeń** okna, podaj konto administratora chmury usług AD FS i hasło. Kliknij przycisk **OK**.

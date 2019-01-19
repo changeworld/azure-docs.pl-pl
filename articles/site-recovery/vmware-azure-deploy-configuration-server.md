@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 41511b27a84731df203d37d70d20df40f85af4fb
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794358"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410765"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -67,13 +67,16 @@ Licencja dostarczane z szablonem OVA jest pozwolenia oceny prawidłowe przez 180
 3. W **wybierz źródło**, wprowadź lokalizację pobranego szablonu OVF.
 4. W **Przejrzyj szczegóły**, wybierz opcję **dalej**.
 5. W **wybierz nazwę i folder** i **wybierz konfigurację**, zaakceptuj ustawienia domyślne.
-6. Na stronie **Wybierz magazyn** dla najlepszej wydajności wybierz pozycję **Thick Provision Eager Zeroed** w sekcji **Wybierz format dysku wirtualnego**.
+6. Na stronie **Wybierz magazyn** dla najlepszej wydajności wybierz pozycję **Thick Provision Eager Zeroed** w sekcji **Wybierz format dysku wirtualnego**. Użycie opcji inicjowania obsługi alokowania elastycznego, mogą mieć wpływ na wydajność serwera konfiguracji.
 7. Na pozostałych stronach kreatora zaakceptuj ustawienia domyślne.
 8. Na stronie **Gotowe do ukończenia**:
 
     * Aby skonfigurować maszynę wirtualną przy użyciu ustawień domyślnych, wybierz pozycje **Włącz po wdrożeniu** > **Zakończ**.
 
     * Aby dodać więcej kart sieciowych, wyczyść **Włącz po wdrożeniu**, a następnie wybierz pozycję **Zakończ**. Domyślnie szablon serwera konfiguracji jest wdrażany z jedną kartą sieciową. Kolejne karty sieciowe można dodać po wdrożeniu.
+
+> [!IMPORTANT]
+> Nie należy zmieniać konfiguracje zasobów (ograniczenia pamięci/rdzeni/procesora CPU), modyfikowania/usuwania zainstalowane usługi lub plików na serwerze konfiguracji po wdrożeniu. Wpłynie to na rejestracji serwera konfiguracji z usługami platformy Azure i wydajności serwera konfiguracji.
 
 ## <a name="add-an-additional-adapter"></a>Dodawanie karty sieciowej
 
@@ -119,7 +122,7 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
-Aby uaktualnić serwer konfiguracji do najnowszej wersji, postępuj zgodnie z tymi [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+Aby uaktualnić serwer konfiguracji do najnowszej wersji, postępuj zgodnie z tymi [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać szczegółowe instrukcje na temat uaktualniania wszystkie składniki usługi Site Recovery, kliknij przycisk [tutaj](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
 
 ## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
 
@@ -141,20 +144,26 @@ Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adr
     Zapoznaj się [architektura Azure replikacji VMware –](vmware-azure-architecture.md) Aby dowiedzieć się więcej na temat serwera konfiguracji i jego funkcje.
 5. Gdzie można znaleźć najnowszą wersję serwera konfiguracji?
 
-    Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pośrednictwem portalu, zobacz [uaktualnić serwer konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Można również bezpośrednio pobrać go z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+    Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pośrednictwem portalu, zobacz [uaktualnić serwer konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Można również bezpośrednio pobrać go z [Microsoft Download Center](https://aka.ms/asrconfigurationserver). Aby uzyskać szczegółowe instrukcje na temat uaktualniania wszystkie składniki usługi Site Recovery można znaleźć [tutaj](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
 6. Gdzie można pobrać hasła dla serwera konfiguracji?
 
     Zapoznaj się [w tym artykule](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) można pobrać hasło.
-7. Gdzie można pobrać klucze rejestracyjne magazynu?
+7. Czy można zmienić hasło?
+
+    **Nie**, jesteś **zdecydowanie zaleca się nie zmieniać hasło** serwera konfiguracji. Zmiana hasła przerywa replikację chronionych maszyn i prowadzi do krytycznego stanu kondycji.
+8. Gdzie można pobrać klucze rejestracyjne magazynu?
 
     W **magazyn usług Recovery Services**, **zarządzanie** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**. Na serwerach, wybierz **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
-8. Można sklonować istniejący serwer konfiguracji i używać go do organizowania replikacji?
+9. Można sklonować istniejący serwer konfiguracji i używać go do organizowania replikacji?
 
     **Nie**, użycie sklonowany składnik serwera konfiguracji nie jest obsługiwane.
 
-9. Czy mogę zmienić adres IP serwera konfiguracji
+10. Czy mogę zmienić adres IP serwera konfiguracji
 
     **Nie**, zdecydowanie zaleca się nie zmieniać adresu IP serwera konfiguracji. Upewnij się, wszystkie adresy IP przypisane do serwera konfiguracji STATYCZNYCH adresów IP i nie adresy IP protokołu DHCP.
+11. Można skonfigurować serwer konfiguracji na platformie Azure?
+
+    Zalecane jest, aby skonfigurować serwer konfiguracji w środowisku lokalnym za pomocą bezpośredniego wiersza linii wzroku z Vcenter i zminimalizować opóźnienia transferu danych. Można wykonać zaplanowane kopie zapasowe serwera konfiguracji na potrzeby [potrzeby powrotu po awarii](vmware-azure-manage-configuration-server.md#failback-requirements).
 
 ## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
 

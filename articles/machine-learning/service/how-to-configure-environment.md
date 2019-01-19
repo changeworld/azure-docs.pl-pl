@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 91323ac904ee7a806283673a1f98c46c1c211f7f
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353230"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413128"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -68,13 +68,15 @@ Aby rozpocząć tworzenie aplikacji za pomocą notesów usługi Azure, zobacz [w
 
 Maszyny DSVM jest dostosowany obraz maszyny wirtualnej (VM). Jest przeznaczony do pracy nauki o danych, która jest wstępnie skonfigurowana za pomocą:
 
-  - Pakietów, takich jak TensorFlow, PyTorch, Scikit-learn, XGBoost i Azure Machine Learning zestawu SDK.
-  - Narzędzia do analizy danych popularnych takich jak Spark, jak i testowania odzyskiwania po awarii.
-  - Narzędzia platformy Azure, takich jak wiersza polecenia platformy Azure, narzędzia AzCopy i Eksploratora usługi Storage.
-  - Zintegrowanych środowisk projektowych (IDE) Visual Studio Code, platformy PyCharm i programu RStudio.
-  - Serwer notesu programu Jupyter. 
+  - Pakietów, takich jak TensorFlow, PyTorch, Scikit-learn, XGBoost i Azure Machine Learning zestawu SDK
+  - Narzędzi nauki o danych popularne, takich jak Spark, jak i testowania odzyskiwania po awarii
+  - Narzędzia platformy Azure, takich jak wiersza polecenia platformy Azure, narzędzia AzCopy i Eksploratora usługi Storage
+  - Zintegrowanych środowisk projektowych (IDE), takie jak Visual Studio Code i platformy PyCharm
+  - Serwer notesu programu Jupyter
 
-Zestaw SDK usługi Azure Machine Learning działa w wersji Ubuntu albo Windows maszyny DSVM. Aby używać maszyny DSVM jako środowiska deweloperskiego, wykonaj następujące czynności:
+Zestaw SDK usługi Azure Machine Learning działa w wersji Ubuntu albo Windows maszyny DSVM. Ale jeśli planujesz używać maszyny DSVM jako obiekt docelowy obliczeń jest obsługiwana tylko w systemie Ubuntu.
+
+Aby używać maszyny DSVM jako środowiska deweloperskiego, wykonaj następujące czynności:
 
 1. Tworzenie maszyny wirtualnej DSVM w jednym z następujących środowiskach:
 

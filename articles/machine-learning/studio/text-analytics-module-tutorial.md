@@ -1,9 +1,10 @@
 ---
-Tytuł: Utwórz titleSuffix modele analizy tekstu: Opis usługi Azure Machine Learning Studio: Jak tworzenie modeli analizy tekstu w usłudze Azure Machine Learning Studio przy użyciu modułów przetwarzania wstępnego, N-gramy tekstu lub funkcji wyznaczania wartości skrótu usług: uczenia maszynowego ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Utwórz titleSuffix modelu analizy opinii: Opis usługi Azure Machine Learning Studio: Jak tworzenie modeli analizy tekstu w usłudze Azure Machine Learning Studio przy użyciu modułów przetwarzania wstępnego, N-gramy tekstu lub funkcji wyznaczania wartości skrótu usług: uczenia maszynowego ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2018
 ---
-# <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Tworzenie modeli analizy tekstu w usłudze Azure Machine Learning Studio
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Tworzenie modelu analizy tonacji w usłudze Azure Machine Learning Studio
+
 Można użyć usługi Azure Machine Learning, aby tworzyć i uruchamiać modele analizy tekstu. Te modele mogą pomóc rozwiązać, na przykład dokument klasyfikację lub tonacji problemy związane z analizą.
 
 W eksperyment analizy tekstu jak zwykle:

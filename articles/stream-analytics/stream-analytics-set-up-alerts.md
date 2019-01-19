@@ -7,44 +7,69 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 727747d84d0db32c73fc1a200bcea7e5c149d24b
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554915"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412395"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics
-Alerty można skonfigurować, aby wyzwolić alert, gdy Metryka osiągnie warunek, który określisz. Na przykład skonfigurować alert dla warunku, jak pokazano poniżej:
 
-`If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
+Należy monitorować zadania usługi Azure Stream Analytics do upewnij się, że zadanie działa nieprzerwanie, bez problemów. W tym artykule opisano sposób konfigurowania alertów dla typowych scenariuszy, które powinny być monitorowane. 
 
-Zasady można skonfigurować pod kątem dotyczące metryk za pośrednictwem portalu lub mogą zostać skonfigurowane [programowo](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) danych dzienników operacji.
+Zasady można skonfigurować pod kątem dotyczące metryk za pośrednictwem portalu i może być konfigurowana [programowo](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) danych dzienników operacji.
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a>Konfigurowanie alertów w witrynie Azure portal
-1. W witrynie Azure portal Otwórz zadanie usługi Stream Analytics ma zostać utworzony alert w przypadku. 
 
-2. W **zadania** bloku kliknij **monitorowanie** sekcji.  
+Poniższy przykład pokazuje, jak skonfigurować alerty, gdy zadanie przechodzi do stanu nie powiodło się. Ten alert jest zalecana dla wszystkich zadań.
 
-3. W **metryki** bloku kliknij **Dodaj alert dotyczący** polecenia.
+1. W witrynie Azure portal Otwórz zadanie usługi Stream Analytics ma zostać utworzony alert w przypadku.
 
-      ![Ustawienia alertów usługi Stream Analytics portalu Azure](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+2. Na **zadania** stronie, przejść do **monitorowanie** sekcji.  
 
-4. Wprowadź nazwę i opis.
+3. Wybierz **metryki**, a następnie kliknij przycisk **Nowa reguła alertu**.
 
-5. Selektorów należy używać do definiowania warunków, w ramach której zostanie wysłany alert.
+   ![Ustawienia alertów usługi Stream Analytics portalu Azure](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-6. Podaj informacje o gdzie alertu.
+4. Nazwa zadania usługi Stream Analytics powinny automatycznie wyświetlane w obszarze **zasobów**. Kliknij przycisk **Dodaj warunek**i wybierz **operacje administracyjne wszystkich** w obszarze **konfigurowanie logiki sygnału**.
 
-      ![Konfigurowanie alertu dla zadania usługi Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
+   ![Wybierz nazwę sygnał alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
+
+5. W obszarze **konfigurowanie logiki sygnału**, zmień **poziom zdarzenia** do **wszystkich** i zmień **stan** do **nie powiodło się** . Pozostaw **zdarzenie zainicjowane przez** blank, a następnie kliknij przycisk **gotowe**.
+
+   ![Konfigurowanie logiki sygnału dla alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
+
+6. Wybierz istniejącą grupę akcji lub Utwórz nową grupę. W tym przykładzie Nowa grupa akcji o nazwie **TIDashboardGroupActions** został utworzony za pomocą **wiadomości E-mail** akcję, która wysyła wiadomość e-mail do użytkowników za pomocą **właściciela** zasobów platformy Azure Rola menedżera.
+
+   ![Konfigurowanie alertu dla zadania usługi Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
+
+7. **Zasobów**, **WARUNEK**, i **grup akcji** ma wpis.
+
+   ![Utwórz regułę alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+
+   Dodaj **Nazwa reguły alertu**, **opis**i **grupy zasobów** do **szczegóły ALERTU** i kliknij przycisk **Utwórz alert Reguła** do utworzenia reguły dla zadania usługi Stream Analytics.
+
+   ![Utwórz regułę alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+
+## <a name="scenarios-to-monitor"></a>Scenariusze monitorowania
+
+Następujące alerty są zalecane do monitorowania wydajności zadania usługi Stream Analytics. Te metryki powinna być oceniana na minutę w ostatnim okresie 5 minut. Jeśli zadanie odczuwa problemy z wydajnością, można użyć przetwarzania równoległego zapytań, aby stał się bardziej odpowiednim i spróbuj zwiększyć liczbę jednostek przesyłania strumieniowego.
+
+|Metryka|Warunek|Agregacja czasu|Próg|Akcje naprawcze|
+|-|-|-|-|-|
+|% Wykorzystania SU|Większe niż|Maksimum|80|Istnieje wiele czynników, które zwiększają SU % wykorzystania. Można skalowanie za pomocą przetwarzania równoległego zapytań lub zwiększyć liczbę jednostek przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [Korzystanie z przetwarzania równoległego zapytań w usłudze Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Błędy czasu wykonywania|Większe niż|Łącznie|0|Sprawdź działanie lub dzienniki diagnostyczne i wprowadzenie odpowiednich zmian w danych wejściowych, zapytania ani danych wyjściowych.|
+|Opóźnienie znaku wodnego|Większe niż|Maksimum|Gdy średnia wartość ta metryka w ciągu ostatnich 15 minut jest większa niż tolerancja spóźnionego przybycia (w sekundach). W przypadku braku modyfikacji tolerancja spóźnionego przybycia wartość domyślna jest równa 5 sekund.|Spróbuj zwiększyć liczbę SUs lub zrównoleglić zapytanie. Aby uzyskać więcej informacji na temat usług SUs, zobacz [opis i dostosowywanie jednostek przesyłania strumieniowego](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job). Aby uzyskać więcej informacji na temat zrównoleglić zapytanie, zobacz [wykorzystywanie przetwarzania równoległego zapytań w usłudze Azure Stream Analytics](stream-analytics-parallelization.md).|
+|Błędy deserializacji danych wejściowych|Większe niż|Łącznie|0|Sprawdź działanie lub dzienniki diagnostyczne i wprowadzić odpowiednie zmiany w danych wejściowych. Aby uzyskać więcej informacji na temat dzienników diagnostycznych, zobacz [Rozwiązywanie problemów z usługą Azure Stream Analytics przy użyciu dzienników diagnostycznych](stream-analytics-job-diagnostic-logs.md)|
+
+## <a name="get-help"></a>Uzyskiwanie pomocy
 
 Aby uzyskać więcej informacji na temat konfigurowania alertów w witrynie Azure portal, zobacz [otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
-
-## <a name="get-help"></a>Uzyskiwanie pomocy
-Aby uzyskać dalszą pomoc, skorzystaj z naszego [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Wprowadzenie do usługi Azure Stream Analytics](stream-analytics-introduction.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 08420be7171df78babf62b262fef84fd29fb34ab
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 37ecb314c5f09a51d9ce9d28534a4664b75069af
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495067"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412754"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementowanie środowiska Oracle Data Guard na maszynie wirtualnej z systemem Linux platformy Azure 
 
@@ -48,9 +48,9 @@ az login
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create) polecenia. Grupę zasobów platformy Azure to logiczny kontener, w których Azure zasoby są wdrażane i zarządzane. 
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupę zasobów platformy Azure to logiczny kontener, w których Azure zasoby są wdrażane i zarządzane. 
 
-Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w `westus` lokalizacji:
+Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -502,7 +502,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Skonfiguruj brokera ochrony danych na myVM1 (podstawowy)
 
-Uruchom Menedżera ochrony danych, a następnie zaloguj się przy użyciu SYS i hasła. (Nie należy używać uwierzytelniania systemu operacyjnego). Wykonaj następujące czynności:
+Uruchom Menedżera ochrony danych, a następnie zaloguj się przy użyciu SYS i hasła. (Nie należy używać uwierzytelniania systemu operacyjnego). Wykonaj poniższe kroki:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -573,7 +573,7 @@ cdb1_stby=
   )
 ```
 
-Uruchom program SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 $ sqlplus sys/OraPasswd1@cdb1
@@ -617,7 +617,7 @@ DGMGRL>
 
 Teraz można podłączyć do bazy danych w stanie wstrzymania.
 
-Uruchom program SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 
@@ -659,7 +659,7 @@ Switchover succeeded, new primary is "cdb1"
 
 Jeszcze raz teraz można połączyć się z podstawowej bazy danych.
 
-Uruchom program SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 
