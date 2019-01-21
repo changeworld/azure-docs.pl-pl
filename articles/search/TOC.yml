@@ -247,7 +247,7 @@ items:
       href: cognitive-search-skill-keyphrases.md
     - name: Wykrywanie języka
       href: cognitive-search-skill-language-detection.md
-    - name: Rozpoznawanie jednostek znaku
+    - name: Rozpoznawanie jednostek nazwanych
       href: cognitive-search-skill-named-entity-recognition.md
     - name: Rozpoznawanie jednostek
       href: cognitive-search-skill-entity-recognition.md
