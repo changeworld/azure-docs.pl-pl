@@ -3,25 +3,25 @@ title: Runbook Output and Messages w usłudze Azure Automation
 description: Opisuje sposób tworzenia i pobrać dane wyjściowe i błędów komunikaty z elementów runbook w usłudze Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc1ef2a3ab09ec5b86d1dc0b4c139afd43ba356d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969128"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431218"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
 Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych. Te dane wyjściowe mogą być komunikat o błędzie do użytkownika lub obiekt złożony czy zamierzasz korzystać z innego elementu runbook. Program Windows PowerShell udostępnia [wiele strumieni](/powershell/module/microsoft.powershell.core/about/about_redirection) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation działa z każdym z tych strumieni inaczej. Należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.
 
 Poniższa tabela zawiera krótki opis każdego strumienia i ich zachowania w witrynie Azure portal w przypadku opublikowanych elementów runbook i kiedy [testowania elementu runbook](automation-testing-runbook.md). W kolejnych sekcjach znajdują się dalsze szczegółowe informacje na temat każdego strumienia.
 
-| Stream | Opis | Opublikowano | Testowanie |
+| Stream | Opis | Opublikowane | Test |
 |:--- |:--- |:--- |:--- |
 | Dane wyjściowe |Obiekty, które mają być używane przez inne elementy runbook. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
 | Ostrzeżenie |Komunikat ostrzegawczy przeznaczony dla użytkownika. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
@@ -204,7 +204,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 ``` 
 
 ### <a name="graphical-authoring"></a>Tworzenie graficzne
-Graficzne elementy runbook bardzo rejestrowania jest dostępna w formie śledzenie na poziomie działania. Istnieją dwa poziomy śledzenia: podstawowe i szczegółowe. W śledzenia, można zobaczyć godzina rozpoczęcia i zakończenia każdego działania w elemencie runbook, a także informacji związanych z dowolnego powtórzeń działania. Przykładami są: liczba prób i godzina rozpoczęcia działania. W szczegółowe śledzenie otrzymasz podstawowe śledzenie plus dane wejściowe i dane wyjściowe dla każdego działania. Obecnie rekordów śledzenia są zapisywane z użyciem strumień pełny, więc należy włączyć pełne rejestrowanie, po włączeniu śledzenia. Dla graficznych elementów runbook z włączonym śledzeniem nie ma potrzeby kątem rejestrowania rekordów postępu. Podstawowe śledzenie służy do tego samego celu i jest bardziej szczegółowy.
+Graficzne elementy runbook bardzo rejestrowania jest dostępna w formie śledzenie na poziomie działania. Istnieją dwa poziomy śledzenia: Podstawowe i szczegółowe. W śledzenia, można zobaczyć godzina rozpoczęcia i zakończenia każdego działania w elemencie runbook, a także informacji związanych z dowolnego powtórzeń działania. Przykładami są: liczba prób i godzina rozpoczęcia działania. W szczegółowe śledzenie otrzymasz podstawowe śledzenie plus dane wejściowe i dane wyjściowe dla każdego działania. Obecnie rekordów śledzenia są zapisywane z użyciem strumień pełny, więc należy włączyć pełne rejestrowanie, po włączeniu śledzenia. Dla graficznych elementów runbook z włączonym śledzeniem nie ma potrzeby kątem rejestrowania rekordów postępu. Podstawowe śledzenie służy do tego samego celu i jest bardziej szczegółowy.
 
 ![Zadanie tworzenia graficznego strumieni widoku](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
@@ -234,4 +234,5 @@ Aby uzyskać więcej informacji na temat konfigurowania integracji z usługą Lo
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej o wykonywaniu elementów Runbook, sposobie monitorowania zadań elementów Runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu Runbook)
 * Aby zrozumieć sposób projektowania i używania podrzędnych elementów runbook, zobacz [podrzędnych elementów runbook w usłudze Azure Automation](automation-child-runbooks.md)
+
 

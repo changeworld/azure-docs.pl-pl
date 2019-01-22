@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 287c5a75d1c15a9ebc7a23d263ce7ff5516bcfab
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d4264a114afc04f162ae7c711b78fce506aa39d1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981868"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432338"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Grupy dynamiczne i współpracy B2B usługi Azure Active Directory
 
@@ -42,7 +42,7 @@ Taka grupa jak może wyglądać:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Właściwości użytkowników współpracy B2B](user-properties.md)
+- [B2B collaboration user properties (Właściwości użytkowników współpracy B2B)](user-properties.md)
 - [Dodawanie użytkownika współpracy B2B do roli](add-guest-to-role.md)
 - [Dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md)
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1b380bc20c9f80710ca62672b99649ce3498a8e8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dd12acb1212e52eb413dfbf35945cd17902d8db7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223766"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433887"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Zbieranie danych użytkownika w usłudze Azure Multi-Factor Authentication
 
@@ -29,7 +29,7 @@ Serwer MFA, rozszerzenia serwera NPS i systemu Windows Server 2016 usługi Azure
 
 Próby uwierzytelnienia (używane do raportowania i rozwiązywania problemów):
 
-- Sygnatura czasowa
+- Znacznik czasu
 - Nazwa użytkownika
 - Imię
 - Nazwisko
@@ -70,7 +70,7 @@ Próby uwierzytelnienia (używane do raportowania i rozwiązywania problemów):
 Aktywacje (próby aktywacji konta w aplikacji mobilnej Microsoft Authenticator):
 - Nazwa użytkownika
 - Nazwa konta
-- Sygnatura czasowa
+- Znacznik czasu
 - Pobierz wynik kod aktywacji
 - Aktywuj sukces
 - Błąd aktywacji

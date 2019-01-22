@@ -3,18 +3,18 @@ title: Rozwiązania Update Management na platformie Azure
 description: Ten artykuł ma na celu pomóc Ci zrozumieć, jak używać rozwiązania Azure Update Management do zarządzania aktualizacjami komputerów Windows i Linux.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8df48511f2bfd2500dbc0a1dfaa95e488fad63b
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8635d943120f0e79b8efcfe1f9be0b74d8bb4fac
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215001"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433904"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -326,10 +326,10 @@ Następujące adresy są wymagane dla rozwiązania Update Management. Na te adre
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.Azure automation.us|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
 
 Aby uzyskać więcej informacji na temat porty wymagane przez hybrydowy proces roboczy elementu Runbook, zobacz [porty roli hybrydowego procesu roboczego](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
@@ -615,3 +615,4 @@ Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wi
 * [Tworzenie alertów](automation-tutorial-update-management.md#configure-alerts) aktualizacji stanu wdrożenia.
 
 * Aby dowiedzieć się, jak korzystać z rozwiązania Update Management za pośrednictwem interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurations)
+

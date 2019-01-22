@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 10/23/2018
-ms.openlocfilehash: 8785ef50cd7bd27e866b1fa546317021eed5da01
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 301b0179c8222bfdff3b07f7962a74a4cc83b8f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599114"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432289"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 
@@ -92,10 +92,8 @@ Aby odzyskać jednej puli, zarządzanego wystąpienia bazy danych lub do punktu 
 
 ## <a name="deleted-database-restore"></a>Przywracanie usuniętej bazy danych
 
-Można przywrócić usuniętą bazę danych do czasu usunięcia dla usuniętej bazy danych na tym samym serwerze logicznym przy użyciu portalu Azure [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), lub [REST (createMode = przywracanie)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Można przywrócić usuniętą bazę danych do wcześniejszego punktu w czasie przechowywania, używając [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
+Można przywrócić usuniętą bazę danych do czasu usunięcia dla usuniętej bazy danych na tym samym serwerze logicznym przy użyciu portalu Azure [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), lub [REST (createMode = przywracanie)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Możesz [Przywracanie usuniętej bazy danych w wystąpieniu zarządzanym przy użyciu programu PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance). Można przywrócić usuniętą bazę danych do wcześniejszego punktu w czasie przechowywania, używając [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
-> [!Note]
-> Przywracanie usuniętej bazy danych nie jest dostępny w wystąpieniu zarządzanym.
 > [!TIP]
 > Aby uzyskać przykładowy skrypt programu PowerShell przedstawiająca sposób przywrócić usuniętą bazę danych, zobacz [przywrócić bazę danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 > [!IMPORTANT]
@@ -107,7 +105,7 @@ Aby odzyskać usuniętą bazę danych przy użyciu witryny Azure portal podczas 
 
 ![usunięte database-restore-1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
-![Usunięto database przywracania-2](./media/sql-database-recovery-using-backups/deleted-database-restore-2.png)
+![deleted-database-restore-2](./media/sql-database-recovery-using-backups/deleted-database-restore-2.png)
 
 > [!IMPORTANT]
 > Aby programowo przywrócić usuniętą bazę danych, zobacz [programowe wykonywanie odzyskiwania za pomocą automatycznych kopii zapasowych](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups)

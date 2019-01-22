@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 32298b78f3b98afb6754e07ad63467f4f995d84f
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 4e53351d4581791df77dbb64d9eb0f25815204f5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382902"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426730"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -98,7 +98,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Pulpity nawigacyjne portalu
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
-* Magazyn usługi Recovery Services — muszą być zarejestrowane w [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+* Usługi Recovery Services vault — zarejestrować subskrypcję w celu [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
@@ -305,7 +305,7 @@ Operacja może trwać kilka minut.
 
 ### <a name="recovery-services-limitations"></a>Ograniczenia usług odzyskiwania
 
-Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+ Aby przenieść magazyn usługi Recovery Services, należy zarejestrować subskrypcję w celu [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 
 Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS.
 

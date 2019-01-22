@@ -3,18 +3,18 @@ title: Konfiguracja stanu usługi Azure Automation ciągłe wdrażanie za pomoc�
 description: Ciągłe wdrażanie metodyki DevOps przy użyciu usługi Azure Automation State Configuration, DSC i Chocolatey Menedżera pakietów.  Przykład z pełnym szablonem usługi Resource Manager w formacie JSON i źródła programu PowerShell.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 53ecff7df849d19ff7fe1d4c1c8dbd472326b06e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284799"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424459"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Przykład użycia: Ciągłe wdrażanie na maszynach wirtualnych za pomocą automatyzacji konfiguracji stanu i narzędzia Chocolatey
 
@@ -58,7 +58,7 @@ W rzeczywistości jest on przechowywany dwa razy: jeden raz w postaci zwykłego 
 
 Prawdopodobnie już wykonujesz bitu u góry lub część. Tworzenie nuspec, kompilowanie i przechowywanie ich w serwer NuGet jest to mała. I już zarządzania maszynami wirtualnymi. Przejściem do następnego kroku w celu ciągłego wdrażania wymaga Konfigurowanie serwera ściągania (po), zarejestrowani węzły (po) oraz tworzenia i przechowywania konfiguracji istnieje w (wstępnie). Następnie pakiety są uaktualnione i wdrażane w repozytorium Odśwież konfiguracji i konfiguracja węzła na serwerze ściągania (powtórzeń, zgodnie z potrzebami).
 
-Jeśli one nie uruchamia się za pomocą szablonu usługi Resource Manager, który również jest OK. Brak ułatwiający rejestrowanie maszyn wirtualnych z serwera ściągania oraz wszystkie pozostałe polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji znajduje się w artykule: [dołączanie maszyn w celu zarządzania usługi Azure Automation stan konfiguracji](automation-dsc-onboarding.md).
+Jeśli one nie uruchamia się za pomocą szablonu usługi Resource Manager, który również jest OK. Brak ułatwiający rejestrowanie maszyn wirtualnych z serwera ściągania oraz wszystkie pozostałe polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji znajduje się w artykule: [Dołączanie maszyn w celu zarządzania usługi Azure Automation stan konfiguracji](automation-dsc-onboarding.md).
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Krok 1: Konfigurowanie pull server i konta usługi automation
 
@@ -69,14 +69,14 @@ New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-
 New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT
 ```
 
-Możesz umieścić swoje konto usługi automation do dowolnego spośród następujących regionów (zwane również lokalizacja): wschodnie stany USA 2, południowo-środkowe stany USA, administracja USA — Wirginia, Europa Zachodnia, Azja południowo-wschodnia, Japonia Wschodnia, Indie środkowe i Australia Południowo-Wschodnia, Kanada Środkowa, Europa Północna.
+Konto usługi automation można umieścić w dowolny spośród następujących regionów (zwane również lokalizacja): Wschodnie stany USA 2, południowo-środkowe stany USA, administracja USA — Wirginia, Europa Zachodnia, Azja południowo-wschodnia, Japonia Wschodnia, Indie środkowe i Australia Południowo-Wschodnia, Kanada Środkowa, Europa Północna.
 
-## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>Krok 2: Maszyny Wirtualnej rozszerzenie ulepszeń w szablonie usługi Resource Manager
+## <a name="step-2-vm-extension-tweaks-to-the-resource-manager-template"></a>Krok 2: Ulepszeń rozszerzenia maszyny Wirtualnej w szablonie usługi Resource Manager
 
 Szczegóły rejestracji maszyny Wirtualnej (przy użyciu rozszerzenia maszyny Wirtualnej DSC programu PowerShell) podany w tej [szablon szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/dsc-extension-azure-automation-pullserver).
 W tym kroku rejestruje swojej nowej maszyny Wirtualnej z serwera ściągania na liście stanie konfiguracji węzłów. Część tej rejestracji jest określenie konfiguracji węzła, który ma zostać zastosowany do węzła. Ta konfiguracja węzeł nie ma jeszcze istnieje na serwerze ściągania, więc jest OK, który jest krok 4, gdzie odbywa się po raz pierwszy. Ale w tym miejscu w kroku 2 należy decyduje nazwę węzła i nazwa konfiguracji. W tym przykładzie użycie węzeł, który jest "isvbox", a konfiguracja jest "ISVBoxConfig". Nazwa konfiguracji węzła (w celu określenia w DeploymentTemplate.json) więc "ISVBoxConfig.isvbox".
 
-## <a name="step-3-adding-required-dsc-resources-to-the-pull-server"></a>Krok 3: Dodanie wymaganych zasobów DSC na serwerze ściągania
+## <a name="step-3-adding-required-dsc-resources-to-the-pull-server"></a>Krok 3: Dodawanie wymaganych zasobów DSC na serwerze ściągania
 
 Galeria programu PowerShell ma instrumentacji do zainstalowania zasobów DSC na koncie usługi Azure Automation.
 Przejdź do zasobu i kliknij przycisk "Wdrażanie do usługi Azure Automation".
@@ -86,7 +86,7 @@ Przejdź do zasobu i kliknij przycisk "Wdrażanie do usługi Azure Automation".
 Inna technika ostatnio dodane do witryny Azure Portal umożliwia ściągać nowych modułów lub zaktualizować istniejące moduły. Klikaj elementy zasobów konta usługi Automation, Kafelek zasobów, a na końcu kafelka modułów. Ikona Przeglądaj galerię pozwala zapoznać się z listą modułów w galerii, przechodzenie do szczegółów i ostatecznie importowanie do konta usługi Automation. Jest to doskonały sposób moduły na bieżąco od czasu do czasu. Ponadto funkcji importowania sprawdza zależności za pomocą innych modułów, aby upewnić się, że nic nie jest niezsynchronizowana.
 
 Lub brak podejście ręcznego. Struktura folderów modułu integracji programu PowerShell na komputerze Windows jest nieco inne niż strukturę folderów, oczekiwany przez usługę Azure Automation.
-Ta migracja wymaga nieco Dostosowywanie ze strony użytkownika. Ale nie jest trudne i wykonywane tylko raz dla każdego zasobu (chyba że chcesz uaktualnić go w przyszłości.) Aby uzyskać więcej informacji na temat tworzenia modułów integracji programu PowerShell, znajduje się w artykule: [tworzenia moduły integracji usługi Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
+Ta migracja wymaga nieco Dostosowywanie ze strony użytkownika. Ale nie jest trudne i wykonywane tylko raz dla każdego zasobu (chyba że chcesz uaktualnić go w przyszłości.) Więcej informacji na temat tworzenia modułów integracji programu PowerShell znajduje się w artykule: [Tworzenie modułów integracji dla usługi Azure Automation](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)
 
 - Zainstaluj moduł, który należy się na stacji roboczej w następujący sposób:
   - Zainstaluj [Windows Management Framework w wersji 5](https://aka.ms/wmf5latest) (nie wymagane dla systemu Windows 10)
@@ -176,7 +176,7 @@ Get-AzureRmAutomationDscCompilationJob `
 
 Wynik tych kroków, w nowej konfiguracji węzła o nazwie "ISVBoxConfig.isvbox" na serwerze ściągania. Nazwa konfiguracji węzła została stworzona jako "configurationName.nodeName".
 
-## <a name="step-5-creating-and-maintaining-package-metadata"></a>Krok 5: Utworzenie i utrzymywanie metadane pakietu
+## <a name="step-5-creating-and-maintaining-package-metadata"></a>Krok 5. Utworzenie i utrzymywanie metadane pakietu
 
 Dla każdego pakietu, który można umieścić w repozytorium pakietu należy nuspec, który ją opisuje.
 Ten nuspec musi zostanie skompilowany i przechowywane na serwerze NuGet. Ten proces jest opisany [tutaj](https://docs.nuget.org/create/creating-and-publishing-a-package). Jako serwer NuGet, można użyć portalu MyGet.org. One sprzedaży tej usługi, ale mają starter jednostki SKU, która jest bezpłatna. W witrynie NuGet.org znajdziesz instrukcje dotyczące instalowania serwer NuGet własne swoje prywatne pakiety.

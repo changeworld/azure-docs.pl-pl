@@ -7,12 +7,12 @@ ms.service: databox
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: alkohli
-ms.openlocfilehash: b4966d03e44591f01bee945c743ea83f57e6da93
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d1367504182eb8d8335796dc37800c30e0a563b8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54392273"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438596"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Przypadki użycia dla bramy pola danych platformy Azure
 
@@ -41,7 +41,7 @@ Jako urządzenie wypełni się dane, uruchamia, ograniczania szybkości transfer
 
 Jeśli chcesz przechowywać dane na potrzeby długoterminowego w chmurze za pomocą bramy pola danych. Możesz użyć **archiwum** warstw magazynowania do długoterminowego przechowywania danych.
 
-Warstwę archiwum jest zoptymalizowany do przechowywania rzadko używanych danych, przez co najmniej 180 dni. **Archiwum** warstwa oferuje najniższe koszty magazynowania, ale ma najwyższe koszty dostępu. Aby uzyskać więcej informacji, przejdź do [warstwę dostępu archiwum](/azure/storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
+Warstwę archiwum jest zoptymalizowany do przechowywania rzadko używanych danych, przez co najmniej 180 dni. **Archiwum** warstwa oferuje najniższe koszty magazynowania, ale ma najwyższe koszty dostępu. Aby uzyskać więcej informacji, przejdź do [warstwę dostępu archiwum](/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier).
 
 ### <a name="move-data-to-archive-tier"></a>Przenoszenie danych do warstwy archiwum
 
@@ -49,14 +49,14 @@ Przed rozpoczęciem upewnij się, że uruchomione urządzenie bramy pola danych.
 
 - Korzystanie z urządzenia bramy pola danych do przekazania danych na platformę Azure za pośrednictwem zwykłych transferu, zgodnie z opisem w [transferu danych za pośrednictwem bramy pola danych](data-box-gateway-deploy-add-shares.md).
 - Po przekazaniu danych należy przenieść ją do warstwy archiwum. Możesz ustawić warstwę obiektu blob na dwa sposoby: Skrypt programu Azure PowerShell lub zasady zarządzania cyklem życia magazynu platformy Azure.  
-    - Jeśli przy użyciu programu Azure PowerShell, postępuj zgodnie z tymi [kroki](/azure/databox/data-box-how-to-set-data-tier.md#use-azure-powershell-to-set-the-blob-tier) przenoszenia danych do warstwy archiwum.
+    - Jeśli przy użyciu programu Azure PowerShell, postępuj zgodnie z tymi [kroki](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) przenoszenia danych do warstwy archiwum.
     - Jeśli za pomocą zarządzania cyklem życia platformy Azure, wykonaj następujące kroki, aby przenieść dane do warstwy archiwum.
-        - [Zarejestruj](/azure/storage/common/storage-lifecycle-management-concepts.md#register-for-preview) skorzystania z wersji zapoznawczej usługę zarządzania cyklem życia obiektów Blob pod kątem używania archiwum warstwy.
-        - Użyj następujących zasad do [pozyskiwania danych archiwum na](/azure/storage/blobs/storage-lifecycle-management-concepts.md#archive-data-at-ingest.md).
+        - [Zarejestruj](/azure/storage/common/storage-lifecycle-management-concepts#register-for-preview) skorzystania z wersji zapoznawczej usługę zarządzania cyklem życia obiektów Blob pod kątem używania archiwum warstwy.
+        - Użyj następujących zasad do [pozyskiwania danych archiwum na](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
 - Po obiekty BLOB są oznaczone jako archiwum, ich można już nie można modyfikować przez bramę, chyba że są one przenoszone do warstwy gorąca lub zimnych. Jeśli plik znajduje się w magazynie lokalnym, wszelkie zmiany wprowadzone do lokalnej kopii (w tym usuwa) nie są przekazywane do warstwy archiwum.
 - Do odczytywania danych w magazynie archiwalnym, należy wypełnienia przez zmianę warstwy obiektu blob na gorącą lub chłodną. [Odświeżanie udziału](data-box-gateway-manage-shares.md#refresh-shares) w bramie nie przywrócenia z magazynu trwałego obiektu blob.
 
-Aby uzyskać więcej informacji, Dowiedz się więcej na temat [zarządzania usługi Azure Blob cykl życia magazynu](/azure/storage/common/storage-lifecycle-management-concepts.md).
+Aby uzyskać więcej informacji, Dowiedz się więcej na temat [zarządzania usługi Azure Blob cykl życia magazynu](/azure/storage/common/storage-lifecycle-management-concepts).
 
 ## <a name="initial-bulk-transfer-followed-by-incremental-transfer"></a>Transfer początkowy zbiorcze następuje transferu przyrostowego
 
@@ -66,10 +66,10 @@ Urządzenie Data Box i bramy pola danych ze sobą należy używać do przekazywa
 
 Wykonaj następujące kroki, aby skopiować dane do urządzenia Data Box i przekazać go do usługi Azure Storage.
 
-1. [Zamówienie usługi Data Box](/azure/databox/data-box-deploy-ordered.md).
-2. [Konfigurowanie usługi Data Box](/azure/databox/data-box-deploy-set-up.md).
-3. [Kopiowanie danych do urządzenia Data Box za pomocą protokołu SMB](/azure/databox/data-box-deploy-copy-data.md).
-4. [Sprawdź przekazywania danych na platformie Azure, zwracają urządzenia Data Box](/azure/databox/data-box-deploy-picked-up.md).
+1. [Zamówienie usługi Data Box](/azure/databox/data-box-deploy-ordered).
+2. [Konfigurowanie usługi Data Box](/azure/databox/data-box-deploy-set-up).
+3. [Kopiowanie danych do urządzenia Data Box za pomocą protokołu SMB](/azure/databox/data-box-deploy-copy-data).
+4. [Sprawdź przekazywania danych na platformie Azure, zwracają urządzenia Data Box](/azure/databox/data-box-deploy-picked-up).
 5. Po zakończeniu przekazywania danych na platformie Azure wszystkie dane należy w kontenerach usługi Azure storage. Na koncie magazynu urządzenia Data Box przejdź do kontenera obiektów Blob (i plik), aby upewnić się, że wszystkie dane są kopiowane. Zanotuj nazwę kontenera, ponieważ ta nazwa będzie używana później. Na przykład w poniższym zrzucie ekranu `databox` kontenera będzie używany do transferu przyrostowego.
 
     ![Kontener z danymi na urządzenie Data Box](media/data-box-gateway-use-cases/data-container1.png)

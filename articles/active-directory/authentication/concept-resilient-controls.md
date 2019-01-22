@@ -3,19 +3,19 @@ title: Tworzenie strategii zarządzania kontroli dostępu odporne na błędy prz
 description: Niniejszy dokument zawiera wskazówki dotyczące strategii wiadomość organizacji powinna przyjąć zapewnienie odporności, aby zmniejszyć ryzyko blokady podczas przerw w działaniu nieprzewidziane
 services: active-directory
 author: martincoetzer
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 34d60d82ff70ecf683b955b8b796b5d3269df53c
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 73bd86591f2d8604e0eb9553f99c311b6d421603
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401915"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424043"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -144,28 +144,28 @@ Poniższy przykład: **Przykład A — zasady awaryjny urzędu certyfikacji do p
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Dowolne
   * Grant Control: Wymagają przyłączonych do domeny
-  * Stan: Wyłączone
+  * Stan: Disabled (Wyłączony)
 * Zasady 2: Blok platform innych niż Windows
   * Nazwa: EM002 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [2/4] - Exchange SharePoint — Blokuj dostęp z wyjątkiem Windows
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Platforma obejmują wszystkie platformy urządzeń, Wyklucz Windows
   * Grant Control: Blokuj
-  * Stan: Wyłączone
+  * Stan: Disabled (Wyłączony)
 * Zasady 3: Blok z sieciami CorpNetwork
   * Nazwa: EM003 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [3/4] - Exchange SharePoint — Zablokuj dostęp poza siecią firmową
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Lokalizacje obejmują dowolnej lokalizacji, Wyklucz CorpNetwork
   * Grant Control: Blokuj
-  * Stan: Wyłączone
+  * Stan: Disabled (Wyłączony)
 * Zasady 4: Jawnie zablokować EAS
   * Nazwa: EM004 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [4/4] - Exchange - Block EAS dla wszystkich użytkowników
   * Użytkownicy i grupy: Zawierała wszystkich użytkowników
   * Aplikacje w chmurze: Obejmują Exchange Online
   * Warunki: Aplikacje klienckie: Program Exchange Active Sync
   * Grant Control: Blokuj
-  * Stan: Wyłączone
+  * Stan: Disabled (Wyłączony)
 
 Kolejność aktywacji:
 
@@ -186,14 +186,14 @@ W następnym przykładzie **przykład B — zasady dostępu Warunkowego awaryjny
   * Aplikacje w chmurze: Salesforce.
   * Warunki: Brak
   * Grant Control: Blokuj
-  * Stan: Wyłączone
+  * Stan: Disabled (Wyłączony)
 * Zasady 2: Blokuj zespół ds. sprzedaży z dowolnej platformy inne niż mobile (w celu zmniejszenia obszaru powierzchni ataku)
   * Nazwa: EM002 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu zgodności urządzenia [2/2] - Salesforce — Blokuj wszystkie platformy z wyjątkiem systemów iOS i Android
   * Użytkownicy i grupy: Obejmują SalesforceContingency. Wyklucz SalesAdmins
-  * Aplikacje w chmurze: Usługi SalesForce
+  * Aplikacje w chmurze: SalesForce
   * Warunki: Platforma obejmują wszystkie platformy urządzeń, Wyklucz systemów iOS i Android
   * Grant Control: Blokuj
-  * Stan: Wyłączone
+  * Stan: Disabled (Wyłączony)
 
 Kolejność aktywacji:
 

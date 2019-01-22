@@ -3,22 +3,22 @@ title: Harmonogramów w usłudze Azure Automation
 description: Harmonogramy automatyzacji służą do zaplanowania elementy runbook w usłudze Azure Automation do automatycznego uruchamiania. W tym artykule opisano, jak tworzyć i zarządzać nimi z harmonogramem na platformie, dzięki czemu może automatycznie uruchomić element runbook o określonej godzinie lub zgodnie z cyklicznym harmonogramem.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d8492d2a8982c9c85bfc91867f7eb6c2da04e58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c1c36736e9d023ab1bd2ed607638b600bc468f2c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294768"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437220"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planowanie elementu Runbook w usłudze Azure Automation
 
-Aby zaplanować uruchamianie elementu runbook w usłudze Azure Automation można uruchomić w określonym czasie, należy go powiązać co najmniej jeden harmonogram. Harmonogram można skonfigurować do uruchamiania jednokrotnie lub na pojawiał co godzinę lub codziennie harmonogramu dla elementów runbook w witrynie Azure portal. Można także zaplanować je dla co tydzień, co miesiąc, określone dni tygodnia lub dni miesiąca lub określonego dnia miesiąca. Element runbook może być połączony z wieloma harmonogramami, a harmonogram może mieć wiele elementów runbook połączone z tym rekordem.
+Aby zaplanować uruchamianie elementu runbook w usłudze Azure Automation można uruchomić w określonym czasie, należy go powiązać co najmniej jeden harmonogram. Harmonogram można skonfigurować do uruchamiania jednokrotnie lub na pojawiał co godzinę lub codziennie harmonogramu dla elementów runbook w witrynie Azure portal. Można także zaplanować je dla co tydzień, co miesiąc, określone dni tygodnia lub dni miesiąca lub określonego dnia miesiąca. Element Runbook może zostać powiązany z wieloma harmonogramami, a harmonogram może zostać powiązany z wieloma elementami Runbook.
 
 > [!NOTE]
 > Harmonogramy aktualnie nie obsługuje konfiguracji usługi Azure Automation DSC.
@@ -71,7 +71,7 @@ $scheduleName -StartTime "7/01/2016 15:30:00" -MonthInterval 1 `
 
 ## <a name="linking-a-schedule-to-a-runbook"></a>Powiązanie harmonogramu z elementem runbook
 
-Element runbook może być połączony z wieloma harmonogramami, a harmonogram może mieć wiele elementów runbook połączone z tym rekordem. Jeśli element runbook ma parametry, można podać wartości dla nich. Należy podać wartości parametrów obowiązkowych i opcjonalnych parametrów może podać wartości. Te wartości są używane w każdym razem, gdy element runbook jest uruchamiany przez tego harmonogramu. Należy dołączyć ten sam element runbook do innego i określić różne wartości parametrów.
+Element Runbook może zostać powiązany z wieloma harmonogramami, a harmonogram może zostać powiązany z wieloma elementami Runbook. Jeśli element runbook ma parametry, można podać wartości dla nich. Należy podać wartości parametrów obowiązkowych i opcjonalnych parametrów może podać wartości. Te wartości są używane w każdym razem, gdy element runbook jest uruchamiany przez tego harmonogramu. Należy dołączyć ten sam element runbook do innego i określić różne wartości parametrów.
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>W celu powiązania harmonogramu z elementem runbook za pomocą witryny Azure portal
 
@@ -129,3 +129,4 @@ Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby rozpocząć pracę z elementami runbook w usłudze Azure Automation, zobacz [uruchamianie elementu Runbook w usłudze Azure Automation](automation-starting-a-runbook.md)
+

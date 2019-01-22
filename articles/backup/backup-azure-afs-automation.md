@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: bbeccd03fffb699c95d52d50ec5c45e38b43ef51
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051224"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430402"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>Użyj programu PowerShell do tworzenia kopii i przywracanie udziałów plików platformy Azure
 
@@ -34,7 +34,7 @@ Aby wyświetlić **AzureRm.RecoveryServices.Backup** Dokumentacja poleceń cmdle
 ## <a name="setup-and-registration"></a>Konfiguracja i rejestracja
 
 > [!NOTE]
-> Jak wspomniano w [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0), obsługa nowych funkcji w usłudze AzureRM modułu nazwą kończącą się listopada 2018 r. Pomoc techniczna jest świadczona w celu wykonania kopii zapasowej udziałów plików platformy Azure za pomocą nowego modułu Az PowerShell, która jest teraz ogólnie dostępna.
+> Jak wspomniano w [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0), obsługa nowych funkcji w usłudze AzureRM modułu nazwą kończącą się listopada 2018 r. Pomoc techniczna jest świadczona w celu wykonania kopii zapasowej udziałów plików platformy Azure za pomocą nowego modułu Az PowerShell, która jest teraz ogólnie dostępna.
 
 Wykonaj następujące kroki, aby rozpocząć.
 
@@ -288,7 +288,7 @@ Określenie alternatywnej lokalizacji, podając następujące informacje:
 * **TargetStorageAccountName**: Konto magazynu, do którego zostanie przywrócona zawartość kopii zapasowej. Docelowe konto magazynu musi być w tej samej lokalizacji co magazyn.
 * **TargetFileShareName**: Konto zostanie przywrócona zawartość kopii zapasowej udziałów plików w ramach magazynu docelowego.
 * **TargetFolder**: Folderu w udziale plików, do którego dane są przywracane. Jeśli zawartość kopii zapasowej można przywrócić do folderu głównego, należy podać wartości folder docelowy jako pusty ciąg.
-* **Wykonanie polecenia ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconych danych. Akceptuje **zastąpić** lub **Pomiń**.
+* **ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconych danych. Akceptuje **zastąpić** lub **Pomiń**.
 
 Podaj te parametry do polecenia restore, aby przywrócić udziału plików kopii zapasowej do lokalizacji alternatywnej.
 
@@ -313,7 +313,7 @@ Aby przywrócić poszczególnych plików, a nie cały udział plików, identyfik
 * **TargetFolder**: Folderu w udziale plików, do którego dane są przywracane. Jeśli zawartość kopii zapasowej można przywrócić do folderu głównego, należy podać wartości folder docelowy jako pusty ciąg.
 * **SourceFilePath**: Ścieżka bezwzględna plików, można przywrócić w udziale plików, w postaci ciągu. Ta ścieżka jest tej samej ścieżki, które są używane w **Get AzStorageFile** polecenia cmdlet programu PowerShell.
 * **SourceFileType**: Czy katalog lub plik jest zaznaczony. Akceptuje **katalogu** lub **pliku**.
-* **Wykonanie polecenia ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconych danych. Akceptuje **zastąpić** lub **Pomiń**.
+* **ResolveConflict**: Instrukcja, jeśli występuje konflikt z przywróconych danych. Akceptuje **zastąpić** lub **Pomiń**.
 
 Dodatkowe parametry są powiązane tylko pojedynczy plik, który ma zostać przywrócone.
 

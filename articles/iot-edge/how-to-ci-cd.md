@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aef88a4fbc7d71ee1438333afd9773d1aba3ed9c
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 519b9e73e63285f167fca76061f84752ff676916
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359157"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431507"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Ciągła integracja i ciągłe wdrażanie w usłudze Azure IoT Edge
 
@@ -81,7 +81,7 @@ W tej sekcji opisano tworzenie potoku kompilacji, który jest skonfigurowany do 
     
     ![Konfigurowanie zadania obrazów moduł kompilacji](./media/how-to-ci-cd/build-and-push.png)
 
-1. W drugim **usługi Azure IoT Edge** zadań, zaktualizuj **nazwę wyświetlaną** do **usługi Azure IoT Edge — obrazy modułu wypychania**, a następnie w **akcji** listy rozwijanej Wybierz pozycję **wypychanie obrazów modułu**. Wybierz typ rejestru kontenerów, upewnij się, skonfiguruj i wybierz ten sam rejestru w swojej code(module.json). W **. plik template.json** sterowania, wybierz opcję **deployment.template.json** pliku, który opisuje rozwiązanie IoT Edge. Następnie wybierz **domyślna Platforma**, upewnij się, wybierz tę samą platformę dla modułów skompilowanych obrazów. To zadanie będzie umożliwiać wypychanie powiadomień wszystkie obrazy modułu do rejestru kontenerów, które wybrano. A także dodać poświadczenia rejestru kontenerów w **deployment.json** pliku, ścieżka pliku można znaleźć w danych wyjściowych zmiennych. Ustaw alias na `edge` dla tej zmiennej. Jeśli masz wiele rejestry kontenerów do hostowania obrazów modułu, musisz zduplikowane to zadanie, wybierz inny rejestr kontenerów, a następnie użyj **obejścia moduły** w ustawieniach zaawansowanych, aby pominąć obrazów, które nie są w tym określonego rejestru.
+1. W drugim **usługi Azure IoT Edge** zadań, zaktualizuj **nazwę wyświetlaną** do **usługi Azure IoT Edge — obrazy modułu wypychania**, a następnie w **akcji** listy rozwijanej Wybierz pozycję **wypychanie obrazów modułu**. Wybierz typ rejestru kontenerów, upewnij się, skonfiguruj i wybierz ten sam rejestru w swojej code(module.json). W **. plik template.json** sterowania, wybierz opcję **deployment.template.json** pliku, który opisuje rozwiązanie IoT Edge. Następnie wybierz **domyślna Platforma**, upewnij się, wybierz tę samą platformę dla modułów skompilowanych obrazów. To zadanie będzie umożliwiać wypychanie powiadomień wszystkie obrazy modułu do rejestru kontenerów, które wybrano. A także dodać poświadczenia rejestru kontenerów w **deployment.json** pliku. Jeśli masz wiele rejestry kontenerów do hostowania obrazów modułu, musisz zduplikowane to zadanie, wybierz inny rejestr kontenerów, a następnie użyj **obejścia moduły** w ustawieniach zaawansowanych, aby pominąć obrazów, które nie są w tym określonego rejestru.
 
     ![Skonfigurowanie zadania obrazów modułu wypychania](./media/how-to-ci-cd/push.png)
 

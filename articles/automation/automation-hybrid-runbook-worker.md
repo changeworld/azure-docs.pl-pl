@@ -3,18 +3,18 @@ title: Usługa Azure Automation hybrydowego procesu roboczego Runbook
 description: Ten artykuł zawiera informacje na temat instalowania i przy użyciu hybrydowego procesu roboczego Runbook, jest to funkcja usługi Azure Automation, którego używasz do uruchamiania elementów runbook na maszynach w lokalnym centrum danych lub dostawca usług w chmurze.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d42a9458afa6244e0b6d8e7deb420a8ac49a130f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3525a3ad3d0e539e0bab5ee0ed9ba0adca1a68c6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634170"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428634"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -101,7 +101,7 @@ Jeśli używasz serwera proxy do komunikacji między agentem i usługę Log Anal
 
 Następujących portów i adresów URL są wymagane dla roli hybrydowego procesu roboczego Runbook do komunikowania się z usługą Automation:
 
-* Port: Tylko 443 protokołu TCP jest wymagana dla ruchu wychodzącego dostępu do Internetu.
+* Port: Tylko TCP 443 jest wymagany dla wychodzącego dostępu do Internetu.
 * Globalny adres URL: *.azure-automation.net
 * Globalny adres URL Administracja USA — Wirginia: *.azure-automation.us
 * Usługa agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
@@ -122,7 +122,7 @@ Jeśli masz konto usługi Automation, która jest zdefiniowana dla konkretnego r
 | Indie Środkowe |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japonia Wschodnia |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australia Południowo-Wschodnia |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>UKS-agentservice-prod-1.azure-automation.net |
+| Południowe Zjednoczone Królestwo | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | Administracja USA — Wirginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Aby uzyskać listę adresów IP regionu zamiast nazwy regionów, Pobierz [adres IP centrum danych Azure](https://www.microsoft.com/download/details.aspx?id=41653) plik XML z Microsoft Download Center.
@@ -140,9 +140,9 @@ Standardowe adresy i porty wymagane przez hybrydowy proces roboczy elementu Runb
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
@@ -151,3 +151,4 @@ Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczy
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
+

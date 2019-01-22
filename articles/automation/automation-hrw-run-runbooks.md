@@ -3,18 +3,18 @@ title: Uruchamianie elementów runbook w usłudze Azure Automation hybrydowego R
 description: Ten artykuł zawiera informacje dotyczące uruchamiania elementów runbook na maszynach w lokalnym centrum danych lub dostawca chmury z roli hybrydowego procesu roboczego Runbook.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 89f8b4a842c9a632c661d9770d17c1ec01d4211e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0d622f6f03f9d132f3c57910d8a60c5731ad7c94
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582256"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425786"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -63,7 +63,7 @@ Domyślnie hybrydowego procesu roboczego Runbook korzysta z systemu lokalnego dl
 
 Nazwa użytkownika dla poświadczenia musi być w jednym z następujących formatów:
 
-* domena\nazwa_użytkownika
+* domain\username
 * username@domain
 * Nazwa użytkownika (dla kont lokalnych dla komputera lokalnego)
 
@@ -255,3 +255,4 @@ Jeśli Twoje elementy runbook nie są pomyślne zakończenie działania, zapozna
 
 * Aby dowiedzieć się więcej na temat różnych metod, które mogą służyć do uruchamiania elementu runbook, zobacz [uruchamianie elementu Runbook w usłudze Azure Automation](automation-starting-a-runbook.md).
 * Aby poznać różne sposoby pracy z elementami runbook programu PowerShell w usłudze Azure Automation za pomocą Edytor tekstów, zobacz [edytowanie elementu Runbook w usłudze Azure Automation](automation-edit-textual-runbook.md)
+

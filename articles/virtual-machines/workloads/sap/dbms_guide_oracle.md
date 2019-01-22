@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8686130e3b10ece605a6e648badf9aa1dae5e071
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 65c685936fabab65698a077f22c2dfde17469055
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435688"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436420"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Oracle wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 
@@ -235,7 +235,7 @@ ms.locfileid: "53435688"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -365,7 +365,7 @@ Minimalna konfiguracja:
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA & mirrlogB | Premium | Brak | Nie jest wymagany |
 | \oracle\<SID > \origlogaB & mirrlogA | Premium | Brak | Nie jest wymagany |
-| \oracle\<SID > \sapdata1...n | Premium | Tylko do odczytu | Mogą być używane. |
+| \oracle\<SID>\sapdata1...n | Premium | Tylko do odczytu | Mogą być używane. |
 | \oracle\<SID > \oraarch | Standardowa (Standard) | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | | Nie jest wymagany |
 
@@ -379,8 +379,8 @@ Konfiguracja wydajności:
 | \oracle\<SID > \origlogaB | Premium | Brak | Mogą być używane. |
 | \oracle\<SID > \mirrlogAB | Premium | Brak | Mogą być używane. |
 | \oracle\<SID > \mirrlogBA | Premium | Brak | Mogą być używane. |
-| \oracle\<SID > \sapdata1...n | Premium | Tylko do odczytu | Zalecane  |
-| \oracle\SID\sapdata(n+1) * | Premium | Brak | Mogą być używane. |
+| \oracle\<SID>\sapdata1...n | Premium | Tylko do odczytu | Zalecane  |
+| \oracle\SID\sapdata(n+1)* | Premium | Brak | Mogą być używane. |
 | \oracle\<SID > \oraarch* | Premium | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | Nie jest wymagany |
 
@@ -452,7 +452,7 @@ Minimalna konfiguracja:
 | --- | ---| --- | --- |
 | /Oracle/<SID>/origlogaA & mirrlogB | Premium | Brak | Nie jest wymagany |
 | /Oracle/<SID>/origlogaB & mirrlogA | Premium | Brak | Nie jest wymagany |
-| /Oracle/<SID>/sapdata1...n | Premium | Tylko do odczytu | Mogą być używane. |
+| /oracle/<SID>/sapdata1...n | Premium | Tylko do odczytu | Mogą być używane. |
 | /Oracle/<SID>/oraarch | Standardowa (Standard) | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | | Nie jest wymagany |
 
@@ -467,8 +467,8 @@ Konfiguracja wydajności:
 | /Oracle/<SID>/origlogaB | Premium | Brak | Mogą być używane. |
 | /Oracle/<SID>/mirrlogAB | Premium | Brak | Mogą być używane. |
 | /Oracle/<SID>/mirrlogBA | Premium | Brak | Mogą być używane. |
-| /Oracle/<SID>/sapdata1...n | Premium | Tylko do odczytu | Zalecane  |
-| /Oracle/SID/sapdata(n+1)* | Premium | Brak | Mogą być używane. |
+| /oracle/<SID>/sapdata1...n | Premium | Tylko do odczytu | Zalecane  |
+| /oracle/SID/sapdata(n+1)* | Premium | Brak | Mogą być używane. |
 | /Oracle/<SID>/oraarch* | Premium | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | Nie jest wymagany |
 

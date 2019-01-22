@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a662a61d737dbb620d07fa6d114649e70c082796
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b69cc0bcff8f791e0740b30f5521a2a7b36af3b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329773"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437661"
 ---
 # <a name="migrate-a-classic-vm-to-use-a-managed-disk"></a>Migrowanie klasycznej maszyny Wirtualnej pod kątem używania dysku zarządzanego 
 
@@ -93,7 +93,7 @@ Przygotowanie aplikacji dla przestojów. Aby przeprowadzić migrację czystego, 
 
 Przygotowanie aplikacji dla przestojów. Aby przeprowadzić migrację czystego, masz Zatrzymaj przetwarzanie wszystkich w obecnym systemie. Następnie możesz pobrać go do spójnego stanu, które można migrować do nowej platformy. Czas trwania przestoju zależy od ilości danych na dyskach, aby przeprowadzić migrację.
 
-Ta część wymaga programu Azure PowerShell module w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Należy również uruchomić polecenie `Connect-AzureRmAccount` w celu nawiązania połączenia z platformą Azure.
+Ta część wymaga programu Azure PowerShell module w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Należy również uruchomić polecenie `Connect-AzureRmAccount` w celu nawiązania połączenia z platformą Azure.
 
 
 Utwórz zmienne typowych parametrów.

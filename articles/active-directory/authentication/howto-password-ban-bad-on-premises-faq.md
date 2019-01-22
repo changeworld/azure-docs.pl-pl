@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: d3d42a3c81153d54690f0825368eaa950dbac18e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9046090a45d52a283d28d1c4cc79b44503cb5a9d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314783"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427597"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Wersja zapoznawcza: Usługi Azure AD hasło ochrony lokalnych — często zadawane pytania
+# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Wersja zapoznawcza: Azure AD hasło ochrony lokalnych — często zadawane pytania
 
 |     |
 | --- |
@@ -26,23 +26,23 @@ ms.locfileid: "52314783"
 
 ## <a name="general-questions"></a>Pytania ogólne
 
-**P: kiedy ochrona za pomocą hasła usługi Azure AD będzie korzystał z ogólna dostępność (GA)?**
+**Pyt.: Gdy ochrona za pomocą hasła usługi Azure AD będzie korzystał z ogólna dostępność (GA)?**
 
 Nie ogłosiliśmy jeszcze datę wersji ogólnie dostępnej.
 
-**Pytanie: czy w środowisku lokalnym, obsługiwane w chmurach bez publicznego ochrona za pomocą hasła usługi Azure AD?**
+**Pyt.: Działa lokalnie obsługiwana w chmurach bez publicznego ochrona za pomocą hasła usługi Azure AD?**
 
 Nie — ochrona za pomocą hasła usługi Azure AD w środowisku lokalnym jest obsługiwana tylko w chmurze publicznej.
 
-**P: jak zastosować korzyści ochrony haseł usługi Azure AD do podzbioru użytkowników w środowisku lokalnym?**
+**Pyt.: Jak zastosować korzyści ochrony haseł usługi Azure AD do podzbioru użytkowników w środowisku lokalnym?**
 
 Nieobsługiwane. Po wdrożeniu i włączone, ochrona za pomocą hasła usługi Azure AD nie rozróżniania — wszyscy użytkownicy otrzymują korzyści równy zabezpieczeń.
 
-**P: czy obsługiwane instalowanie ochrona za pomocą hasła usługi Azure AD równolegle z innymi produktami na podstawie filtru hasła?**
+**Pyt.: Instalacja ochrona za pomocą hasła usługi Azure AD równolegle z innymi produktami na podstawie filtru haseł jest obsługiwana?**
 
 Tak. Obsługa wielu biblioteki DLL filtru haseł zarejestrowanych jest funkcją Windows podstawowych i nie odnoszą się do ochrony hasłem w usłudze Azure AD. Wszystkie biblioteki DLL filtru haseł zarejestrowanych musi wyrazić zgodę, zanim zostanie zaakceptowane hasła.
 
-**P: Dlaczego DFSR jest wymagany do replikacji folderu sysvol**
+**Pyt.: Dlaczego DFSR jest wymagany do replikacji folderu sysvol**
 
 Usługa replikacji plików (technologia poprzedzająca DFSR) ma wiele znanych problemów i jest całkowicie obsługiwana w nowszych wersjach systemu Windows Server Active Directory. Zero testowania ochrona za pomocą hasła usługi Azure AD zostanie wykonane w przypadku skonfigurowana usługi FRS domen.
 
@@ -52,11 +52,11 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 [Punkt końcowy jest Nigh w przypadku usługi FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
-**P: Dlaczego Zainstaluj lub Uaktualnij oprogramowanie agenta kontrolera domeny wymagany jest ponowny rozruch**
+**Pyt.: Dlaczego jest wymagane ponowne uruchomienie Zainstaluj lub Uaktualnij oprogramowanie agenta kontrolera domeny?**
 
 To wymaganie jest spowodowany przez podstawowe zachowanie Windows.
 
-**P: czy istnieje jakikolwiek sposób, aby skonfigurować agenta kontrolera domeny, aby użyć konkretnego serwera proxy?**
+**Pyt.: Czy istnieje sposób można skonfigurować agenta kontrolera domeny, aby użyć konkretnego serwera proxy?**
 
 Nie.
 

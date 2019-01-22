@@ -3,7 +3,7 @@ title: Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Ce
 description: Ten dokument ułatwia korzystanie z funkcji adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center w celu tworzenia listy dozwolonych aplikacji uruchamianych na maszynach wirtualnych platformy Azure.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: 9268b8dd-a327-4e36-918e-0c0b711e99d2
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2018
-ms.author: rkarlin
-ms.openlocfilehash: e4538127b39e01f2e30f8b219c2ccee56cb4d2bc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 01/21/2019
+ms.author: monhaber
+ms.openlocfilehash: b7a27dea9f521f14bfb4278eada636cb7e30c581
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262901"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427138"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Funkcje adaptacyjnego sterowania aplikacjami w usłudze Azure Security Center
 Z tego przewodnika dowiesz się, jak skonfigurować funkcje sterowania aplikacjami w usłudze Azure Security Center.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Co to są funkcje adaptacyjnego sterowania aplikacjami w usłudze Security Center?
-Funkcje adaptacyjnego sterowania aplikacjami to rozwiązanie umieszczania na białej liście automatyczne aplikacji inteligentnych end-to-end w usłudze Azure Security Center. Pomaga kontrolować, które aplikacje mogą być uruchamiane na maszynach wirtualnych na platformie Azure, co pozwala między innymi wzmocnić ochronę tych maszyn wirtualnych przed złośliwym oprogramowaniem. Usługa Security Center korzysta z uczenia maszynowego w celu analizuje aplikacje uruchomione na maszynach wirtualnych i ułatwia zastosowanie listy reguł elementów dozwolonych określonej za pomocą tej analizy. Ta funkcja znacząco upraszcza proces konfigurowania i konserwowania zasady listy dozwolonych aplikacji, dzięki któremu można:
+Funkcji adaptacyjnego sterowania aplikacjami to rozwiązanie umieszczania na białej liście automatyczne aplikacji inteligentnych end-to-end w usłudze Azure Security Center. Pomaga kontrolować, które aplikacje mogą być uruchamiane na maszynach wirtualnych na platformie Azure, co pozwala między innymi, wzmocnić ochronę tych maszyn wirtualnych przed złośliwym oprogramowaniem. Usługa Security Center korzysta z uczenia maszynowego w celu analizuje aplikacje uruchomione na maszynach wirtualnych i ułatwia zastosowanie listy reguł elementów dozwolonych określonej za pomocą tej analizy. Ta funkcja znacząco upraszcza proces konfigurowania i konserwowania zasady listy dozwolonych aplikacji, dzięki któremu można:
 
 - Blokowanie lub ostrzeganie w przypadku prób uruchomienia złośliwych aplikacji, w tym te, które w przeciwnym razie może zostać niezauważone przez rozwiązania chroniące przed złośliwym kodem.
 - Zachowanie zgodności z zasadami zabezpieczeń organizacji, które nakazują korzystanie wyłącznie z licencjonowanego oprogramowania.
@@ -73,7 +73,7 @@ Sekcja **Grupy maszyn wirtualnych** zawiera trzy karty:
 
   ![Reguły sterowania aplikacjami](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
 
-3. W **wybierz maszyny wirtualne**zapoznaj się z listą zalecanych maszyn wirtualnych i usuń zaznaczenie pola wyboru dowolne czy chcesz zastosować zasady whitelising aplikacji. Następnie zostaną wyświetlone dwie listy:
+3. W **wybierz maszyny wirtualne**zapoznaj się z listą zalecanych maszyn wirtualnych i usuń zaznaczenie pola wyboru dowolne czy chcesz zastosować zasady listy dozwolonych aplikacji. Następnie zostaną wyświetlone dwie listy:
 
   - **Zalecane aplikacje**: listę aplikacji, które są często na maszynach wirtualnych w ramach tej grupy, a następnie zaleca się, aby mogła działać.
   - **Więcej aplikacji**: Lista aplikacji, które są rzadko na maszynach wirtualnych w ramach tej grupy lub które są znane jako wykorzystania (zobacz informacje poniżej) i zalecane do przeglądu.
@@ -87,7 +87,6 @@ Sekcja **Grupy maszyn wirtualnych** zawiera trzy karty:
 
 5. Po wybraniu opcji wybierz przycisk **Utwórz**. <br>
 Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworzy odpowiednie zasady na podstawie rozwiązania umieszczania na białej liście wbudowanej aplikacji dostępnego na serwerach Windows (funkcji AppLocker).
-
 
 > [!NOTE]
 > - Usługa Security Center używa danych z co najmniej dwóch tygodni w celu utworzenia planu bazowego i przygotowania unikatowych zaleceń dla grup maszyn wirtualnych. Nowi klienci usługi Security Center w warstwie Standardowa powinni spodziewać się, że najpierw ich grupy maszyn wirtualnych pojawią się na karcie *Brak zaleceń*.
@@ -122,7 +121,7 @@ Po wybraniu przycisku Utwórz usługę Azure Security Center automatycznie tworz
    > - Jak wcześniej wspomniano, domyślnie nowe zasady sterowania aplikacjami są zawsze skonfigurowane w trybie *inspekcji*. 
    >
 
-4. W obszarze **rozszerzenia zasad**, możesz dodać dowolną ścieżkę aplikacji, który chcesz zezwolić. Po dodaniu tych ścieżek, usługa Security Center zaktualizuje zasady umieszczania na białej liście aplikacji na maszynach wirtualnych w ramach wybranej grupy maszyn wirtualnych i tworzy odpowiednie zasady dla tych aplikacji, oprócz reguł, które znajdują się już w miejscu.
+4. W obszarze **rozszerzenia zasad**, Dodaj dowolną ścieżkę aplikacji, który chcesz zezwolić. Po dodaniu tych ścieżek, usługa Security Center zaktualizuje zasady umieszczania na białej liście aplikacji na maszynach wirtualnych w ramach wybranej grupy maszyn wirtualnych i tworzy odpowiednie zasady dla tych aplikacji, oprócz reguł, które znajdują się już w miejscu.
 
 5. Przejrzyj bieżące naruszenia na liście **ostatnie alerty** sekcji. Kliknij pozycję w każdym wierszu, aby przejść do **alerty** strony w usłudze Azure Security Center, a następnie Wyświetl wszystkie alerty, które zostały wykryte przez usługę Azure Security Center na skojarzonych maszynach wirtualnych.
   - **Alerty**: naruszenie, które zostały zarejestrowane.

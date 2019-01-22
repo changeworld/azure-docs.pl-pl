@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 1a5a5dc04f9ac663fe2e29fd81df5201435c1bc1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167532"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430166"
 ---
-# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication
+# <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdróż usługę Azure Multi-Factor Authentication bazującą na chmurze
 
 Wprowadzenie do usługi Azure Multi-Factor Authentication (Azure MFA) jest dość proste.
 
@@ -80,8 +80,8 @@ Przed włączeniem usługi Azure Multi-Factor Authentication, organizacji, nale�
    * OPCJONALNIE: Na **wykluczyć** karty, wybierz aplikacje w chmurze, które Twoja organizacja nie wymaga uwierzytelniania Wieloskładnikowego dla.
    * Kliknij przycisk **Gotowe**.
 1. W obszarze **warunki** sekcji:
-   * OPCJONALNIE: Po włączeniu usługi Azure Identity Protection, istnieje możliwość oceny ryzyka logowania jako część zasad.
-   * OPCJONALNIE: Jeśli masz skonfigurowane zaufanych lokalizacji lub lokalizacje z nazwą, można określić zostać dołączone lub wykluczone z tych lokalizacji z zasad.
+   * OPCJONALNIE: Po włączeniu usługi Azure Identity Protection można oceny ryzyka logowania jako część zasad.
+   * OPCJONALNIE: Jeśli skonfigurowano zaufanych lokalizacji lub lokalizacje z nazwą, można określić zostać dołączone lub wykluczone z tych lokalizacji z zasad.
 1. W obszarze **Grant**, upewnij się, że **udzielić dostępu** przycisk radiowy zostanie wybrany.
     * Pole wyboru dla **Wymagaj uwierzytelniania wieloskładnikowego**.
     * Kliknij pozycję **Wybierz**.

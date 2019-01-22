@@ -7,14 +7,14 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dff24fb28a4129aa7f29d5f9ed1db10d533d005e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578856"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437497"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Zrozumienie wyniki sprawdzania agenta systemu Linux w zarządzania aktualizacjami
 
@@ -177,3 +177,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby rozwiązać problemy dodatkowe problemy za pomocą hybrydowych procesów roboczych Runbook, zobacz [Rozwiązywanie problemów — hybrydowych procesów roboczych Runbook](hybrid-runbook-worker.md)
+

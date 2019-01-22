@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c8e5f34bb6b38a3f187d86a1ebc0c7019c7f1046
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 6020aa0a770075526d8d07c94b847b5933a26c2a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437022"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428124"
 ---
 # <a name="create-custom-roles-using-azure-powershell"></a>Tworzenie ról niestandardowych przy użyciu programu Azure PowerShell
 
@@ -30,7 +30,7 @@ Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb
 Aby utworzyć niestandardowe role, potrzebne są:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
-- Program [Azure PowerShell](/powershell/azure/install-azurerm-ps) zainstalowany lokalnie
+- Program [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) zainstalowany lokalnie
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Tworzenie roli niestandardowej przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Samouczek: Utworzyć rolę niestandardową przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md)
 - [Role niestandardowe na platformie Azure](custom-roles.md)
 - [Operacje dostawcy zasobów w usłudze Azure Resource Manager](resource-provider-operations.md)

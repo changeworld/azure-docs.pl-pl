@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b772aa314316906a4079e3d6b8b4e0aeb0f54fba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4339782304f1bc175f1066954f1050bc00f25005
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022992"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434244"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska Azure-SSIS Integration Runtime w usłudze Azure Data Factory
 W tym artykule przedstawiono kroki do aprowizacji środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF). Następnie można wdrażać i uruchamiać pakiety usług SQL Server Integration Services (SSIS) na tym środowisku integration runtime w systemie Azure można użyć programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS). 
@@ -50,7 +50,7 @@ Podczas aprowizowania środowiska IR Azure-SSIS instalowane są również pakiet
     - Bazy danych SSISDB są hostowane na serwerze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej lub w wystąpieniu zarządzanym, która znajduje się wewnątrz sieci wirtualnej. 
     - Aby nawiązać połączenie z danymi lokalnymi magazynami z pakietów usług SSIS działającymi na usługi platformy Azure-SSIS IR. 
 
-- Zainstalowanie programu **Azure PowerShell**. Postępuj zgodnie z instrukcjami [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/install-azurerm-ps), aby uruchomić skrypt programu PowerShell do aprowizacji środowiska Azure-SSIS IR. 
+- Zainstalowanie programu **Azure PowerShell**. Postępuj zgodnie z instrukcjami [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps), aby uruchomić skrypt programu PowerShell do aprowizacji środowiska Azure-SSIS IR. 
 
 ### <a name="region-support"></a>Obsługa regionu
 Aby uzyskać listę regionów świadczenia usługi Azure, w których ADF i Azure-SSIS IR są obecnie dostępne, zobacz [ADF + SSIS IR Dostępność wg regionu](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all). 
@@ -127,9 +127,9 @@ W tej sekcji użyjesz witryny Azure portal, w szczególności ADF użytkownika I
 
     e. W polu **Liczba węzłów** wybierz liczbę węzłów w klastrze środowiska Integration Runtime. Wyświetlane są tylko obsługiwane liczby węzłów. Wybierz duży klaster z wieloma węzłami (skalowania w poziomie), jeśli chcesz uruchamiać wiele pakietów równolegle. 
 
-    f. Aby uzyskać **wersji/licencji**, wybierz wydanie/licencję programu SQL Server dla Twojego środowiska integration runtime: Standard lub Enterprise. Wybierz wartość Enterprise, jeśli chcesz używać funkcji zaawansowanych lub Premium w swoim środowisku Integration Runtime. 
+    f. W polu **Wydanie/licencja** wybierz wydanie lub licencję programu SQL Server na potrzeby środowiska Integration Runtime: Standard lub Enterprise. Wybierz wartość Enterprise, jeśli chcesz używać funkcji zaawansowanych lub Premium w swoim środowisku Integration Runtime. 
 
-    g. Aby uzyskać **zaoszczędzić**, wybierz opcję korzyść użycia hybrydowego platformy Azure (AHB) dla Twojego środowiska integration runtime: Tak lub nie. Wybierz opcję Tak, jeśli chcesz użyć własnej licencji programu SQL Server z pakietem Software Assurance, aby móc ograniczyć koszty dzięki użyciu hybrydowemu. 
+    g. W obszarze **Oszczędność pieniędzy** wybierz opcję Korzyść użycia hybrydowego platformy Azure (AHB) dla używanego środowiska Integration Runtime: Tak lub Nie. Wybierz opcję Tak, jeśli chcesz użyć własnej licencji programu SQL Server z pakietem Software Assurance, aby móc ograniczyć koszty dzięki użyciu hybrydowemu. 
 
     h. Kliknij przycisk **Dalej**. 
 
@@ -143,13 +143,13 @@ W tej sekcji użyjesz witryny Azure portal, w szczególności ADF użytkownika I
 
     d. W polu **Punkt końcowy serwera bazy danych wykazu** wybierz punkt końcowy serwera bazy danych hostującego bazę danych SSISDB. W zależności od wybranego serwera bazy danych baza danych SSISDB może zostać utworzona w Twoim imieniu jako pojedyncza baza danych, jako część elastycznej puli lub w ramach wystąpienia zarządzanego i może być dostępna w sieci publicznej lub przez dołączenie do sieci wirtualnej. 
 
-    d. Na **uwierzytelnianie w usłudze AAD użycia...**  pole wyboru, wybierz metodę uwierzytelniania dla serwera bazy danych do hostowania bazy SSISDB: Bazy danych SQL lub Azure Active Directory (AAD) za pomocą tożsamości zarządzanej dla usługi Azure Data Factory. Jeśli możesz sprawdzić, należy dodać tożsamości zarządzanej dla usługi ADF do grupy usługi AAD ma uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+    d. Pole wyboru **Użyj uwierzytelniania usługi AAD...** służy do wyboru metody uwierzytelniania na potrzeby serwera bazy danych hostującego bazę danych SSISDB: Bazy danych SQL lub Azure Active Directory (AAD) za pomocą tożsamości zarządzanej dla usługi Azure Data Factory. Jeśli możesz sprawdzić, należy dodać tożsamości zarządzanej dla usługi ADF do grupy usługi AAD ma uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
     e. W polu **Nazwa administratora** wprowadź nazwę użytkownika uwierzytelnienia SQL dla serwera bazy danych hostującego bazę danych SSISDB. 
 
     f. W polu **Hasło administratora** wprowadź hasło uwierzytelnienia SQL dla serwera bazy danych hostującego bazę danych SSISDB. 
 
-    g. Aby uzyskać **warstwy usługi bazy danych wykazu**, wybierz warstwę usługi dla serwera bazy danych do hostowania bazy SSISDB: Warstwa podstawowa/standardowa/Premium lub nazwę puli elastycznej. 
+    g. W polu **Warstwa serwera bazy danych katalogu** wybierz warstwę usługi dla serwera bazy hostującego bazę danych SSISDB: warstwa Podstawowa/Standardowa/Premium lub nazwa puli elastycznej. 
 
     h. Kliknij pozycję **Testuj połączenie**. Jeśli test zakończył się pomyślnie, kliknij przycisk **Dalej**. 
 

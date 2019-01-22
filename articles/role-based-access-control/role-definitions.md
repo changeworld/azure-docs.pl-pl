@@ -15,12 +15,12 @@ ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 065695f9ce0f0d8dfbb9a43877131c8ab7fada5e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ea022ce9b02fd54be7959f5e9521ca5dc34e4e7b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354320"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426425"
 ---
 # <a name="understand-role-definitions"></a>Omówienie definicji ról
 
@@ -165,7 +165,7 @@ Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie pop
 
 | Narzędzie  | Wersja  |
 |---------|---------|
-| [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 lub nowszej |
+| [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) | 5.6.0 lub nowszej |
 | [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) | 2.0.30 lub nowszej |
 | [Azure for .NET](/dotnet/azure/) | 2.8.0-Preview lub nowszej |
 | [Zestaw Azure SDK dla języka Go](/go/azure/azure-sdk-go-install) | 15.0.0 lub nowszy |

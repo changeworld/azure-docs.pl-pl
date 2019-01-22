@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: magoedte
-ms.openlocfilehash: cfbe1ce39d7f68dd6ea2510b5c6cbddf4eb71710
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 0610116967a483c811746327c35632951741b201
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332000"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439174"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Wdrażanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych. Monitoruje kondycję systemu operacyjnego usługi Azure virtual machines (VMs) i zestawy skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku. Monitorowanie obejmuje odnajdywania oraz mapowania zależności aplikacji, które mogą być hostowane na nich. 
@@ -407,7 +407,7 @@ Na podstawie wyników zasad dołączone do tej inicjatywy, maszyny wirtualne są
 ### <a name="enable-with-powershell"></a>Włącz przy użyciu programu PowerShell
 Aby włączyć usługi Azure Monitor dla maszyn wirtualnych, wiele maszyn wirtualnych i zestawów skalowania maszyn wirtualnych, możesz użyć skryptu programu PowerShell [VMInsights.ps1 instalacji](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), która jest dostępna w galerii programu PowerShell platformy Azure. Ten skrypt wykonuje iterację przez każdy wirtualny maszyny i maszyn wirtualnych zestawu skalowania w ramach subskrypcji, w grupie zasobów o określonym zakresie, który jest określony przez *ResourceGroup*, lub do jednej maszyny Wirtualnej lub maszyny wirtualnej zestawu skalowania, który jest określony przez *Nazwa*. Dla każdej maszyny Wirtualnej lub maszyny wirtualnej zestawu skalowania skrypt sprawdza, czy rozszerzenie maszyny Wirtualnej jest już zainstalowany. Jeśli nie zainstalowano rozszerzenia maszyny Wirtualnej, skrypt próbuje zainstalować go ponownie. Jeśli zainstalowano rozszerzenia maszyny Wirtualnej, skrypt instaluje rozszerzenia maszyny Wirtualnej agenta usługi Log Analytics i zależności.
 
-Ten skrypt wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Ten skrypt wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 Aby uzyskać listę szczegółów argumentu oraz przykład użycia skryptu, uruchom `Get-Help`.
 

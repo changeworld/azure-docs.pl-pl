@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 6bd71b7cecfb8a5decd3049152a2293dc7867bde
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382731"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427937"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -142,6 +142,9 @@ Aktualizacje automatyczne Windows może prowadzić do utraty dostępności, poni
 Aplikacja, która skrypty instalacyjne, które można pobrać z [łącze archiwum](https://go.microsoft.com/fwlink/?linkid=869566).
 
 Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
+
+> [!IMPORTANT]
+> V1.3.0 (Najnowsza wersja) Patch Orchestration Application występuje znany problem, w systemie Windows Server 2012. Jeśli korzystasz z systemu Windows Server 2012, Pobierz v1.2.2 aplikacji [tutaj](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip). Łącze SFPkg [tutaj](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg).
 
 ## <a name="configure-the-app"></a>Konfigurowanie aplikacji
 

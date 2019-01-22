@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: d339908b9347843da891dd1c7fa038c45cee1dcb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382825"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429093"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -173,7 +173,7 @@ Wybierz następujące opcje, jak pokazano na ilustracji:
 
 Powtórz poprzednie kroki dla innych NSG, dla których chcesz włączyć analizy ruchu. Dane z dzienników przepływu są wysyłane do obszaru roboczego, dlatego upewnij się, że lokalnymi przepisami i regulacjami w Twoim kraju na przechowywanie danych w regionie, w którym istnieje obszar roboczy.
 
-Można również skonfigurować za pomocą analizy ruchu [AzureRmNetworkWatcherConfigFlowLog zestaw](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) polecenia cmdlet programu PowerShell w usłudze AzureRm PowerShell w wersji modułu 6.2.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` można odnaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Można również skonfigurować za pomocą analizy ruchu [AzureRmNetworkWatcherConfigFlowLog zestaw](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) polecenia cmdlet programu PowerShell w usłudze AzureRm PowerShell w wersji modułu 6.2.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` można odnaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="view-traffic-analytics"></a>Wyświetl analizę ruchu
 

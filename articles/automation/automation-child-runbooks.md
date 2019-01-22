@@ -3,18 +3,18 @@ title: Podrzędne elementy runbook w usłudze Azure Automation
 description: W tym artykule opisano różne metody udostępniania informacji między tymi składnikami i uruchamianie elementu runbook w usłudze Azure Automation z innego elementu runbook.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc9e9cbf3e385a43eee8ce63d2f2fa6b863e95cc
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 37cf44e2c9d28b1aac8f2ab80ba29d126fb8651f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391349"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422972"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podrzędne elementy runbook w usłudze Azure Automation
 
@@ -122,3 +122,4 @@ Poniższa tabela zawiera podsumowanie różnic między obiema metodami wywoływa
 
 * [Uruchamianie elementu runbook w usłudze Azure Automation](automation-starting-a-runbook.md)
 * [Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation](automation-runbook-output-and-messages.md)
+

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5f71e104e97ab886483d50760f0a42936a16717
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 26159c4b563d5f60c40cce9b0b805abe0a7195fd
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157313"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436641"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache i serwer zawartości wdrożenia na maszynach wirtualnych platformy Azure
 
@@ -235,7 +235,7 @@ ms.locfileid: "54157313"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -424,7 +424,7 @@ Serwer zawartości SAP jest składnikiem oddzielny, oparte na serwerze, do przec
 SAP obecnie obsługuje:
 
 * **Serwer zawartości SAP** wersją **6.50 (lub nowszy)**
-* **SAP MaxDB wersji 7,9**
+* **SAP MaxDB version 7.9**
 * **Microsoft IIS (Internet Information Server) w wersji 8.0 (i nowsze)**
 
 Zaleca się używać najnowszej wersji zawartości serwera SAP i najnowsza wersja **Microsoft IIS**. 
@@ -445,13 +445,13 @@ Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w bazie da
 
 Jeśli konfigurujesz serwer zawartości SAP do przechowywania plików w systemie plików, zaleca się użyć dedykowanego dysku logicznego. Przy użyciu funkcji miejsca do magazynowania systemu Windows umożliwia również zwiększyć rozmiar dysku logicznego i przepływności operacji We/Wy, zgodnie z opisem w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md). 
 
-#### <a name="sap-content-server-location"></a>Lokalizacja zawartości serwera SAP
+#### <a name="sap-content-server-location"></a>SAP Content Server Location
 Serwer zawartości SAP musi zostać wdrożony w tym samym regionie platformy Azure i siecią Wirtualną platformy Azure, w którym jest wdrażany SAP system. Mogą zdecydować, czy chcesz wdrożyć składniki serwera zawartości SAP na dedykowanej maszynie Wirtualnej platformy Azure lub w tej samej maszyny Wirtualnej, którym jest uruchomiony SAP system. 
 
 ![Maszyna wirtualna platformy Azure w wersji dedykowanej dla serwera zawartości SAP](./media/dbms_maxdb_deployment_guide/800-azure-vm-sap-content-server.png)
 
 
-#### <a name="sap-cache-server-location"></a>Lokalizacja serwera pamięci podręcznej SAP
+#### <a name="sap-cache-server-location"></a>SAP Cache Server Location
 Serwer pamięci podręcznej SAP jest dodatkowych składników na serwerze, aby zapewnić dostęp do dokumentów (buforowanej), lokalnie. Serwer SAP w pamięci podręcznej buforuje dokumentów serwera zawartości SAP. To, aby zoptymalizować ruch sieciowy, jeśli dokumenty mają być pobierane więcej niż jeden raz z różnych lokalizacji. Ogólną zasadą jest, że serwer SAP w pamięci podręcznej musi być fizycznie blisko klienta, który uzyskuje dostęp do serwera SAP w pamięci podręcznej. 
 
 Poniżej dostępne są dwie opcje:

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 0d45d460b56f956a97779b46a72d0e4cd97a6b41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 81f775d8deccb9fb8b23e811a6ca89886576f55f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849704"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431643"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware
 
@@ -65,7 +65,7 @@ Jeśli zdarzyło Ci się przeoczyć dodawania poświadczeń podczas wdrażania p
 
 1. Po [logowania](#access-configuration-server), wybierz opcję **Zarządzanie poświadczeniami maszyny wirtualnej**.
 2. Kliknij pozycję **Dodawanie poświadczeń maszyny wirtualnej**.
-    ![Dodaj mobilności — poświadczenia](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Wprowadź nowe poświadczenia, a następnie kliknij pozycję **Dodaj**.
 
 Można również dodać poświadczeń za pośrednictwem CSPSConfigtool.exe.
@@ -174,7 +174,7 @@ Uaktualnij serwer w następujący sposób:
 
 Możesz opcjonalnie usunąć serwer konfiguracji za pomocą programu PowerShell.
 
-1. [Zainstaluj](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modułu Azure PowerShell.
+1. [Zainstaluj](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) modułu Azure PowerShell.
 2. Zaloguj się do konta platformy Azure za pomocą tego polecenia:
 
     `Connect-AzureRmAccount`

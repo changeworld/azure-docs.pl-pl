@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 12/5/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 278c31f3f1880a3df561038d2710a2b5cc3d68e6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996620"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437845"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Właściwości użytkownika współpracy B2B usługi Azure Active Directory
 
@@ -61,7 +61,7 @@ Dla użytkowników-gości w stan 3 i 4 stanu **źródła** właściwość jest u
 Ta właściwość określa relację użytkownika do dzierżawy hosta. Ta właściwość może mieć dwie wartości:
 - Element członkowski: Ta wartość wskazuje pracownika organizacji hosta i użytkownik w organizacji, Lista płac. Na przykład ten użytkownik oczekuje, że mają dostęp do witryn tylko wewnętrzne. Ten użytkownik nie jest uważany za współpracownika zewnętrznego.
 
-- Gość: Ta wartość wskazuje użytkownika, który nie jest traktowane jako wewnętrzne firmy, takich jak współpracownika zewnętrznego, partnera lub klienta. Taki użytkownik nie powinien otrzymywać wewnętrznym dokumencie przedstawia Dyrektor Generalny firmy lub korzyści firmy, na przykład.
+- Guest: Ta wartość wskazuje użytkownika, który nie jest traktowane jako wewnętrzne firmy, takich jak współpracownika zewnętrznego, partnera lub klienta. Taki użytkownik nie powinien otrzymywać wewnętrznym dokumencie przedstawia Dyrektor Generalny firmy lub korzyści firmy, na przykład.
 
   > [!NOTE]
   > UserType nie ma związku jak użytkownik się zaloguje, rola katalogu użytkowników i tak dalej. Właściwość ta po prostu wskazuje relację użytkownika z organizacji hosta i umożliwia organizacji wymusić zasady, które są zależne od tej właściwości.
@@ -73,11 +73,11 @@ Ta właściwość wskazuje, jak użytkownik się zaloguje.
 
 - Zewnętrzne usługi Active Directory: Ten użytkownik jest umieszczone w organizację zewnętrzną i uwierzytelnia się za pomocą konta usługi Azure AD, który należy do innej organizacji. Ten typ logowania odnosi się do stanu 1.
 
-- Konto Microsoft: ten użytkownik jest umieszczone na koncie Microsoft i uwierzytelnia się za pomocą konta Microsoft. Ten typ logowania odnosi się do stanu 2.
+- Konto Microsoft: Ten użytkownik jest umieszczone na koncie Microsoft i uwierzytelnia się za pomocą konta Microsoft. Ten typ logowania odnosi się do stanu 2.
 
 - Windows Server Active Directory: Ten użytkownik jest zalogowany z Active Directory w środowisku lokalnym, należącym do tej organizacji. Ten typ logowania odnosi się do stanu 3.
 
-- Usługa Azure Active Directory: Ten użytkownik jest uwierzytelniany przy użyciu konta usługi Azure AD, który należy do tej organizacji. Ten typ logowania odnosi się do stanu 4.
+- Azure Active Directory: Ten użytkownik jest uwierzytelniany przy użyciu konta usługi Azure AD, który należy do tej organizacji. Ten typ logowania odnosi się do stanu 4.
   > [!NOTE]
   > Źródło i UserType jest niezależne właściwości. Wartość źródła nie oznacza dla UserType określoną wartość.
 

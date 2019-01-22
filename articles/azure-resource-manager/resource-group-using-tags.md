@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: d9afc62b4ab5d5d83394dcaaacf85a7642a2ba22
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 27ba79e9168e098717e91e5a7179b5bc419ef86c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260601"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438411"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
@@ -31,7 +31,7 @@ Aby zastosować znaczniki do zasobów, użytkownik musi mieć dostęp do zapisu 
 
 ## <a name="powershell"></a>PowerShell
 
-Przykłady w tym artykule wymagają programu Azure PowerShell w wersji 6.0 lub nowszej. Jeśli nie masz wersji 6.0 lub nowszej, [zaktualizuj swoją wersję](/powershell/azure/install-azurerm-ps).
+Przykłady w tym artykule wymagają programu Azure PowerShell w wersji 6.0 lub nowszej. Jeśli nie masz wersji 6.0 lub nowszej, [zaktualizuj swoją wersję](/powershell/azure/azurerm/install-azurerm-ps).
 
 Aby wyświetlić istniejące tagi dla *grupy zasobów*, użyj:
 

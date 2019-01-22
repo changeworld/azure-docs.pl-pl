@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 47d41884a50450399df6273502096e0e630dbcf3
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8938f4bcf012eadb8d4b0ced92b9996bc58236a5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981766"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432051"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Dostęp warunkowy dla użytkowników współpracy B2B
 
@@ -74,7 +74,7 @@ W bieżącej wersji usługi MFA jest zawsze w do przyczyn przewidywalność dzie
 
 Firma Contoso ma włączone zasady MFA na serwerze App1, ale nie App2, następnie jeśli spojrzymy na oświadczenia usługi MFA firmy Contoso w tokenie, firma Microsoft może zostać wyświetlony następujący problem:
 
-* Dzień 1: Użytkownik ma usługi MFA w firmie Contoso i uzyskuje dostęp do komputera App1, a następnie nie dodatkowego uwierzytelniania Wieloskładnikowego monit jest wyświetlany w firmie Fabrikam.
+* Dzień 1: Użytkownik usługi MFA w firmie Contoso i uzyskuje dostęp do komputera App1, a następnie nie dodatkowego uwierzytelniania Wieloskładnikowego monit jest wyświetlany w firmie Fabrikam.
 
 * Dzień 2: Użytkownik uzyskał dostęp do aplikacji 2 w firmie Contoso, więc teraz podczas uzyskiwania dostępu do firmy Fabrikam, muszą zarejestrować usługi MFA.
 
@@ -105,5 +105,5 @@ Obecnie zasady na podstawie ryzyka logowania nie można zastosować do użytkown
 Na współpracy B2B usługi Azure AD, zobacz następujące artykuły:
 
 * [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-* [Licencjonowanie współpracy platformy Azure w usłudze AD B2B](licensing-guidance.md)
-* [Często zadawane pytania (FAQ) współpracy w usłudze Azure Active Directory B2B](faq.md)
+* [Licencjonowanie funkcji współpracy B2B w usłudze Azure AD](licensing-guidance.md)
+* [Współpraca B2B w usłudze Active Directory Azure — często zadawane pytania](faq.md)

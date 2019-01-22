@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: anantr
-ms.component: alerts
-ms.openlocfilehash: f45774d8afc8760d0a02cb0c863c9ef100ef1365
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.subservice: alerts
+ms.openlocfilehash: 48fb9d8eaf2003834a420b48d649c830c608fd6e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381866"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421219"
 ---
 # <a name="manage-alerts-from-scom-zabbix-and-nagios-in-azure-monitor"></a>Zarządzanie alertami programu SCOM, Zabbix i Nagios w usłudze Azure Monitor
 
@@ -32,3 +32,4 @@ Po skonfigurowaniu importowania do usługi Log Analytics, możesz rozpocząć wy
 >  1. Wszystkie wystąpienia alertu wyzwolone będą dostępne, zarówno w usłudze Azure Monitor i Azure Log Analytics. Obecnie nie ma możliwości do pozyskiwania tylko do określonych wyzwolone alerty lub wybrać między nimi.
 >  1. Wszystkie alerty z programu SCOM i Zabbix Nagios ma typ sygnału "Nieznane", ponieważ nie jest typem podstawowym danych telemetrycznych.
 >  1. Nagios alerty są stanowe — na przykład [monitorować stan](https://aka.ms/azure-alerts-overview) alertu nie zmieni się z "Fired" do stanu "rozwiązany". Zamiast tego "Fired" i "Rozwiązane" są wyświetlane jako oddzielne wystąpienia alertu. 
+

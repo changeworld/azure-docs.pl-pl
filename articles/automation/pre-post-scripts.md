@@ -3,18 +3,18 @@ title: Konfigurowanie skryptów przed i po wdrożeniu rozwiązania Update Manage
 description: W tym artykule opisano sposób konfigurowania i zarządzania przed i po skryptów dla wdrożenia aktualizacji
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edbb953111fb4589539369bd9b2519b48b9b70eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121315"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428243"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Zarządzanie skryptami przed i po (wersja zapoznawcza)
 
@@ -58,8 +58,8 @@ Po skonfigurowaniu takich jak skrypty przed i po, które można przekazać param
 
 |Właściwość  |Opis  |
 |---------|---------|
-|. SoftwareUpdateConfigurationName     | Nazwa konfiguracji aktualizacji oprogramowania        |
-|. SoftwareUpdateConfigurationRunId     | Unikatowy identyfikator uruchomienia.        |
+|SoftwareUpdateConfigurationName     | Nazwa konfiguracji aktualizacji oprogramowania        |
+|SoftwareUpdateConfigurationRunId     | Unikatowy identyfikator uruchomienia.        |
 |SoftwareUpdateConfigurationSettings     | Zbiór właściwości związane z konfiguracji aktualizacji oprogramowania         |
 |SoftwareUpdateConfigurationSettings.operatingSystem     | Systemy operacyjne przeznaczone dla wdrożenia aktualizacji         |
 |SoftwareUpdateConfigurationSettings.duration     | Maksymalny czas trwania wdrożenia aktualizacji Uruchom jako `PT[n]H[n]M[n]S` zgodnie z ISO8601, nazywany również "okno konserwacji"          |
@@ -224,3 +224,4 @@ Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wi
 
 > [!div class="nextstepaction"]
 > [Zarządzanie aktualizacjami i poprawkami dla maszyn wirtualnych Windows Azure](automation-tutorial-update-management.md)
+

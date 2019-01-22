@@ -3,28 +3,28 @@ title: Przekazywanie danych zadania usługi Azure Automation do usługi Log Anal
 description: W tym artykule przedstawiono sposób przesyłania stanu zadania i elementów runbook strumieni zadań usługi Azure Log Analytics, aby dostarczyć dodatkowy wgląd i zarządzania.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8a1f7e367b3f8f06e33bbcd11f8090c9578c1d30
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269570"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432969"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Przekazuj strumienie zadania i stan zadania z usługi Automation do usługi Log Analytics
 
 Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania do obszaru roboczego usługi Log Analytics. Ten proces nie wiąże się z obszaru roboczego połączeń i jest całkowicie niezależny. Dzienniki zadań i strumieni zadań są widoczne w witrynie Azure portal lub za pomocą programu PowerShell, dla poszczególnych zadań i to umożliwia wykonywanie prostych dochodzenia. Teraz z usługą Log Analytics można:
 
-* Uzyskaj wgląd w zadań usługi Automation.
+* Uzyskiwanie szczegółowych informacji na temat zadań usługi Automation.
 * Wyzwalacz poczty e-mail lub alertu oparte na stan zadania elementu runbook (na przykład nie powiodło się lub zawieszone).
-* Napisz zaawansowanych zapytań między strumienie zadania.
-* Korelowanie zadania w kont usługi Automation.
-* Wizualizowanie historii zadania, wraz z upływem czasu.
+* Pisanie zaawansowanych zapytań obejmujących wiele strumieni zadań.
+* Korelowanie zadań z wielu kont usługi Automation.
+* Wizualizowanie historii zadań w czasie.
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Wymagania wstępne i zagadnienia dotyczące wdrażania
 
@@ -91,7 +91,7 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w usłudze Log An
 | Caller_s |Użytkownik, który zainicjował operację. Możliwe wartości to adres e-mail lub system w przypadku zaplanowanych zadań. |
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | JobId_g |Identyfikator GUID, który jest identyfikatorem zadania elementu Runbook. |
-| Typ resultType |Stan zadania elementu Runbook. Możliwe wartości:<br>-Nowych<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>-Ukończone |
+| ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>-Nowych<br>— Uruchomione<br>— Zatrzymane<br>— Wstrzymane<br>— Nie powiodło się<br>-Ukończone |
 | Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobLogs. |
 | OperationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie. |
 | Zasób | Nazwa konta usługi Automation |
@@ -114,7 +114,7 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w usłudze Log An
 | StreamType_s |Typ strumienia zadania. Możliwe wartości:<br>— Postęp<br>— Dane wyjściowe<br>— Ostrzeżenie<br>— Błąd<br>— Debugowanie<br>— Pełne |
 | Tenant_g | Identyfikator GUID, który identyfikuje dzierżawy dla obiektu wywołującego. |
 | JobId_g |Identyfikator GUID, który jest identyfikatorem zadania elementu Runbook. |
-| Typ resultType |Stan zadania elementu Runbook. Możliwe wartości:<br>— W toku |
+| ResultType |Stan zadania elementu Runbook. Możliwe wartości:<br>— W toku |
 | Kategoria | Klasyfikacja typu danych. W przypadku usługi Automation wartością jest JobStreams. |
 | OperationName | Określa typ operacji wykonywanej na platformie Azure. W przypadku usługi Automation wartością jest zadanie. |
 | Zasób | Nazwa konta usługi Automation |
@@ -183,3 +183,4 @@ Usługa log Analytics zapewnia większą widoczność operacyjną do automatyzac
 * Aby dowiedzieć się, jak utworzyć i pobierać dane wyjściowe i komunikaty o błędach z elementów runbook, zobacz [elementu Runbook dane wyjściowe i komunikaty](automation-runbook-output-and-messages.md).
 * Aby dowiedzieć się więcej o wykonywaniu elementów runbook, sposobie monitorowania zadań elementów runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu runbook).
 * Aby dowiedzieć się więcej na temat usługi Log Analytics i źródłach zbierania danych, zobacz [Azure zbieranie danych magazynu w usłudze Log Analytics — omówienie](../azure-monitor/platform/collect-azure-metrics-logs.md).
+

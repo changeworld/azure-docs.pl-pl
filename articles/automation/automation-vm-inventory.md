@@ -3,19 +3,19 @@ title: Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbieran
 description: Zarządzanie maszyną wirtualną z wykorzystaniem zbierania spisu
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: spis, automatyzacja, zmiana, śledzenie
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 761bb1a6974afd5e7b851efb0c60101ab7d8958b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 9fabaa2be850e5b15f10fc78adb14dfd5c112906
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403614"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426050"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu
 
@@ -126,3 +126,4 @@ Aby usunąć maszynę wirtualną z zarządzania spisem:
 
 * Aby dowiedzieć się więcej o zarządzaniu zmianami w plikach i ustawieniach rejestru na maszynach wirtualnych, zobacz [Track software changes in your environment with the Change Tracking solution](../log-analytics/log-analytics-change-tracking.md) (Śledzenie zmian oprogramowania w środowisku za pomocą rozwiązania do śledzenia zmian).
 * Aby dowiedzieć się więcej o zarządzaniu Windows i aktualizacjami pakietów na maszynach wirtualnych, zobacz [rozwiązanie do zarządzania aktualizacjami w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).
+

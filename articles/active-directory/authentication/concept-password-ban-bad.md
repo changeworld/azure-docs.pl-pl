@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 7cb1acace3dd8605d7506013a6f1c0273dafa32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739828"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421440"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
@@ -30,7 +30,7 @@ Liderów branży zorientować się, nie należy używać tego samego hasła w wi
 
 Firma Microsoft nieustannie pracuje, by pozostawać o krok przed przestępcami. W związku z tym zespół usługi Azure AD Identity Protection nieustannie szukać haseł często używane i których bezpieczeństwo zostało naruszone. Następnie blokują tych haseł, które zostaną uznane za zbyt często używany w co nosi nazwę listy globalne zakazanych haseł. Cyberprzestępcy również stosują podobne strategie w ich ataków, w związku z tym Microsoft nie publikuje zawartość tej listy publicznie. Te narażone hasła są blokowane, zanim staną się prawdziwym zagrożeniem dla klientów firmy Microsoft. Aby uzyskać więcej informacji na temat bieżącego działaniach związanych z zabezpieczeniami, zobacz [Microsoft Security Intelligence Report](https://www.microsoft.com/security/intelligence-report).
 
-## <a name="preview-custom-banned-password-list"></a>Wersja zapoznawcza: Niestandardowe zakazane liście haseł
+## <a name="preview-custom-banned-password-list"></a>Wersja zapoznawcza: Lista zakazanych haseł niestandardowych
 
 Niektóre organizacje mogą chcieć wykonać zabezpieczeń jeden krok dalej przez dodanie dostosowań na górze listy globalne zakazanych haseł co Microsoft wywołuje listy niestandardowej zakazanych haseł. Klientów korporacyjnych, takich jak Contoso następnie można zdecydować się na zablokowanie warianty ich nazwy na marki, warunki specyficzny dla firmy lub innych elementów.
 
@@ -46,7 +46,7 @@ Ochrona konta tylko w chmurze jest pomocne, ale w wielu organizacjach Obsługa s
 
 Listy zakazanych haseł dopasowuje haseł na liście przez przekonwertowanie ciągu na małe litery i porównywanie do znanego zakazanych haseł w odległości edycji 1 za pomocą dopasowywania rozmytego.
 
-Przykład: Hasło word jest zablokowana dla organizacji
+Przykład: Hasło programu word jest zablokowana dla organizacji
    - Użytkownik próbuje ustawić hasła "P@ssword" który jest konwertowany na "password", a ponieważ wariant hasło będzie zablokowany.
    - Administrator próbuje ustawić użytkownicy hasło "/ Password123!" które konwertowane na "/ password123!" a ponieważ wariant hasła jest zablokowany.
 

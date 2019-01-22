@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: b09bb65cdb571c9df95d1922f4132abe5b77907c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0179f87787c91a90edb54a1956a6f10d1dffc4b1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963951"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434193"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 
@@ -37,16 +37,21 @@ W publicznej wersji zapoznawczej administrator musi najpierw dodać zasad za pom
 
 ### <a name="steps-to-enable"></a>Kroki, aby włączyć
 
-Upewnij się, że masz najnowszą wersję publicznej wersji zapoznawczej usługi Azure Active Directory w wersji 2 modułu programu PowerShell. Możesz też chcieć odinstalowanie i ponowne zainstalowanie, aby to sprawdzić, wykonując następujące polecenia:
+1. Upewnij się, że masz najnowszą wersję publicznej wersji zapoznawczej usługi Azure Active Directory w wersji 2 modułu programu PowerShell. Możesz też chcieć odinstalowanie i ponowne zainstalowanie, aby to sprawdzić, wykonując następujące polecenia:
+    ```powershell
+    Uninstall-Module -Name AzureADPreview
+    Install-Module -Name AzureADPreview
+    ```
 
-1. `Uninstall-Module -Name AzureADPreview`
-2. `Install-Module -Name AzureADPreview`
+2. Uwierzytelnianie w dzierżawie usługi Azure AD, aby użyć modułu programu PowerShell usługi Azure AD w wersji 2. Konto używane musi być Administrator zabezpieczeń lub Administrator globalny.
+    ```powershell
+    Connect-AzureAD
+    ```
 
-Aby umożliwić telefonu bez hasło logowania (wersja zapoznawcza) przy użyciu następujących poleceń programu PowerShell:
-
-1. `Connect-AzureAD`
-   1. W oknie dialogowym uwierzytelniania Zaloguj się przy użyciu konta w dzierżawie. Konto musi być Administrator zabezpieczeń lub Administrator globalny.
-1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+3. Utwórz zasady uwierzytelniania logowania:
+    ```powershell
+    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
+    ```
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak Moi użytkownicy końcowi włączyć logowanie za pomocą telefonu?
 

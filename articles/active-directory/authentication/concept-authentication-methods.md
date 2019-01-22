@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 90eb9177ec679fdf8007b734848a5bc3c72e5974
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249697"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430334"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -29,7 +29,7 @@ Firma Microsoft zdecydowanie zaleca się Administratorzy umożliwianie użytkown
 | --- | --- |
 | Hasło | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | Pytania zabezpieczające | Tylko samoobsługowego resetowania HASEŁ |
-| Email address (Adres e-mail) | Tylko samoobsługowego resetowania HASEŁ |
+| Adres e-mail | Tylko samoobsługowego resetowania HASEŁ |
 | Aplikacja Microsoft Authenticator | Uwierzytelnianie wieloskładnikowe i publicznej wersji zapoznawczej na potrzeby samoobsługowego resetowania HASŁA |
 | Token sprzętowy OATH | Publicznej wersji zapoznawczej dla uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
 | SMS | Uwierzytelniania Wieloskładnikowego i samoobsługowego resetowania HASEŁ |
@@ -60,30 +60,30 @@ Jeśli używasz pytań zabezpieczających, firma Microsoft zaleca używanie ich 
 ### <a name="predefined-questions"></a>Wstępnie zdefiniowane pytania
 
 * W jakim mieście poznałeś/poznałaś swoją pierwszą współmałżonkę lub partnerkę albo swojego pierwszego współmałżonka lub partnera?
-* W jakim mieście spotkali się Twoi rodzice?
-* Jakie jest najbliższe miasto, w którym mieszka Twoje rodzeństwo?
+* W jakim mieście poznali się Twoi rodzice?
+* W jaki mieście mieszka Twoje najbliższe rodzeństwo?
 * W jakim mieście urodził się Twój ojciec?
 * W jakim mieście podjąłeś/podjęłaś swoją pierwszą pracę?
 * W jakim mieście urodziła się Twoja matka?
-* W jakim mieście byłaś/eś w dniu Nowego Roku 2000?
+* W jakim mieście byłeś/byłaś w Nowy Rok w 2000 r.?
 * Jak miał na nazwisko Twój ulubiony nauczyciel w szkole średniej?
 * Na jaką uczelnię próbowałeś/próbowałaś się dostać, ale się nie udało?
 * Gdzie odbyło się Twoje pierwsze wesele?
-* Jak ma na drugie imię Twój ojciec?
-* Jaka jest Twoja ulubiona potrawa?
+* Jakie jest drugie imię Twojego ojca?
+* Jakie jest Twoje ulubione danie?
 * Jak ma na imię i nazwisko Twoja babcia od strony matki?
 * Jakie jest drugie imię Twojej matki?
 * Co to jest urodzin miesiąca i roku Twojego najstarszego rodzeństwa? (na przykład listopad 1985)
-* Jak ma na drugie imię Twój najstarszy brat/siostra?
-* Jak miał na imię i nazwisko Twój dziadek od strony ojca?
+* Jakie jest drugie imię Twojego najstarszego rodzeństwa?
+* Jak ma na imię i nazwisko Twój dziadek od strony ojca?
 * Jakie jest drugie imię Twojego najmłodszego rodzeństwa?
-* Jak nazywała się Twoja szkoła podstawowa?
-* Jak miał na imię i nazwisko Twój najlepszy przyjaciel w dzieciństwie?
-* Jak miała na imię i nazwisko Twoja pierwsza poważna sympatia?
+* Do jakiej szkoły uczęszczałeś/uczęszczałaś w szóstej klasie?
+* Jak miał na imię i nazwisko Twój najlepszy przyjaciel lub przyjaciółka w dzieciństwie?
+* Jakie było imię i nazwisko Twojego pierwszego partnera lub Twojej pierwszej partnerki?
 * Jak miał na nazwisko Twój ulubiony nauczyciel w szkole podstawowej?
-* Jaka była marka i model Twojego pierwszego samochodu lub motocykla?
+* Jakie były marka i model Twojego pierwszego samochodu lub motocykla?
 * Jak się nazywała Twoja pierwsza szkoła?
-* Jak nazywał się szpital Twoich narodzin?
+* Jak się nazywał szpital, w którym się urodziłeś/urodziłaś?
 * Przy jakiej ulicy znajdował się Twój pierwszy dom z dzieciństwa?
 * Jak się nazywał Twój bohater z dzieciństwa?
 * Jak się nazywała Twoja ulubiona maskotka?
@@ -112,7 +112,7 @@ Maksymalna długość zapytania niestandardowe zabezpieczeń to 200 znaków.
 * Dowolny zestaw znaków może służyć do definiowania pytań i odpowiedzi, w tym znaki Unicode.
 * Liczba pytań zdefiniowanych przez musi być większa lub równa liczbie pytań, które były potrzebne do zarejestrowania.
 
-## <a name="email-address"></a>Email address (Adres e-mail)
+## <a name="email-address"></a>Adres e-mail
 
 Adres e-mail jest dostępna **tylko w haseł usługi Azure AD z samoobsługowego resetowania**.
 
@@ -193,7 +193,7 @@ Wiadomość SMS są wysyłane pod numerem telefonu komórkowego z kodem weryfika
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebranie połączenia i naciśnięcie przycisku # na klawiaturze telefonu w celu uwierzytelnienia
 
-## <a name="office-phone"></a>Telefon biurowy
+## <a name="office-phone"></a>Telefon służbowy
 
 Automatyczne połączenie głosowe wykonano pod numer telefonu, których udzielasz. Odebrać połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia.
 

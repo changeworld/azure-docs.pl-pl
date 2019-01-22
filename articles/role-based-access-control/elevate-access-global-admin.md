@@ -1,6 +1,6 @@
 ---
-title: Podniesienie poziomu dostępu administratora globalnego usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Opisuje sposób podniesienie poziomu dostępu administratora globalnego usługi Azure Active Directory przy użyciu witryny Azure portal lub interfejsu API REST.
+title: Podniesienie poziomu dostępu, aby zarządzać wszystkimi subskrypcjami platformy Azure i grup zarządzania | Dokumentacja firmy Microsoft
+description: Opisuje sposób podniesienie poziomu dostępu administratora globalnego zarządzać wszystkimi subskrypcji i grup zarządzania w usłudze Azure Active Directory przy użyciu witryny Azure portal lub interfejsu API REST.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,32 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 01/15/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321669"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437474"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Podniesienie poziomu dostępu administratora globalnego usługi Azure Active Directory
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Podniesienie poziomu dostępu, aby zarządzać wszystkimi subskrypcjami platformy Azure i grup zarządzania
 
-Jeśli jesteś [administratora globalnego](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) w usłudze Azure Active Directory (Azure AD), może być konieczny do następujących czynności:
-
-- Odzyskać dostęp do subskrypcji platformy Azure, gdy użytkownik utracił dostęp
-- Udziel innego użytkownika lub sobie dostęp do subskrypcji platformy Azure
-- Zobacz wszystkie subskrypcje systemu Azure w organizacji
-- Zezwól aplikacji automatyzacji (na przykład aplikacja fakturowania lub inspekcji) na dostęp do wszystkich subskrypcji platformy Azure
-
-W tym artykule opisano różne sposoby, możesz podnieść poziom konta dostępu do usługi w usłudze Azure AD.
+Jako Administrator globalny usługi Azure Active Directory (Azure AD) możesz utracić dostęp do wszystkich subskrypcji i grup zarządzania w Twoim katalogu. W tym artykule opisano sposób, że możesz podnieść poziom konta dostępu do wszystkich subskrypcji i grup zarządzania.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="overview"></a>Przegląd
+## <a name="why-would-you-need-to-elevate-your-access"></a>Dlaczego potrzebować podniesienie poziomu dostępu?
 
-Usługa Azure AD i zasobów platformy Azure są zabezpieczone niezależnie od siebie nawzajem. Oznacza to przypisania roli usługi Azure AD nie może udzielać dostępu do zasobów platformy Azure i przypisań ról platformy Azure nie może udzielać dostępu do usługi Azure AD. Jednak jeśli jesteś administratorem globalnym w usłudze Azure AD można przypisać sobie dostęp do wszystkich subskrypcji platformy Azure i grup zarządzania w Twoim katalogu. Użyj tej funkcji, jeśli nie masz dostępu do zasobów subskrypcji platformy Azure, takich jak maszyny wirtualne lub kont magazynu, i chcesz używać z uprawnieniami administratora globalnego w celu uzyskania dostępu do tych zasobów.
+Jeśli jesteś administratorem globalnym, może być konieczny wykonać następujące czynności:
+
+- Odzyskać dostęp do platformy Azure subskrypcję lub grupę zarządzania, gdy użytkownik utracił dostęp
+- Udziel innego użytkownika lub sobie dostęp do platformy Azure subskrypcję lub grupę zarządzania
+- Zobacz wszystkie subskrypcje platformy Azure lub grup zarządzania w organizacji
+- Zezwalaj aplikacji automatyzacji (na przykład fakturowania lub inspekcji aplikacji), dostęp do wszystkich subskrypcji platformy Azure lub grupy zarządzania
+
+## <a name="how-does-elevate-access-work"></a>Jak podnieść dostęp?
+
+Usługa Azure AD i zasobów platformy Azure są zabezpieczone niezależnie od siebie nawzajem. Oznacza to przypisania roli usługi Azure AD nie może udzielać dostępu do zasobów platformy Azure i przypisań ról platformy Azure nie może udzielać dostępu do usługi Azure AD. Jednak jeśli [administratora globalnego](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) w usłudze Azure AD można przypisać sobie dostęp do wszystkich subskrypcji platformy Azure i grup zarządzania w Twoim katalogu. Użyj tej funkcji, jeśli nie masz dostępu do zasobów subskrypcji platformy Azure, takich jak maszyny wirtualne lub kont magazynu, i chcesz używać z uprawnieniami administratora globalnego w celu uzyskania dostępu do tych zasobów.
 
 Po użytkownik podniesienie poziomu dostępu, użytkownik zostanie przypisany [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) roli na platformie Azure na zakres głównego (`/`). Dzięki temu można wyświetlić wszystkie zasoby i przypisać dostęp w dowolnej subskrypcji lub grupy zarządzania w katalogu. Można usunąć przypisania roli Administrator dostępu użytkowników przy użyciu programu PowerShell.
 
@@ -55,19 +57,29 @@ Wykonaj następujące kroki w celu podniesienie poziomu dostępu administratora 
 
    ![Właściwości usługi AD platformy Azure — zrzut ekranu](./media/elevate-access-global-admin/aad-properties.png)
 
-1. W obszarze **Access management dla zasobów platformy Azure**, ustaw przełącznik na **tak**.
+1. W obszarze **Access management dla zasobów platformy Azure**, ustaw przełącznik w pozycji **tak**.
 
    ![Zarządzanie dostępem do zasobów platformy Azure — zrzut ekranu](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Po ustawieniu przełącznika na **tak**, masz przypisaną rolę administratora dostępu użytkowników w usłudze Azure RBAC w zakresie głównym (/). Przyznaje uprawnienia do przypisywania ról we wszystkich subskrypcjach platformy Azure i skojarzone z tego katalogu usługi Azure AD grupy zarządzania. Ta opcja jest dostępna tylko dla użytkowników, którzy mają przypisaną rolę administratora globalnego w usłudze Azure AD.
+   Gdy ustaw przełącznik w pozycji **tak**, masz przypisaną rolę administratora dostępu użytkowników w usłudze Azure RBAC w zakresie głównym (/). Przyznaje uprawnienia do przypisywania ról we wszystkich subskrypcjach platformy Azure i skojarzone z tego katalogu usługi Azure AD grupy zarządzania. Ten przełącznik jest dostępna tylko dla użytkowników, którzy mają przypisaną rolę administratora globalnego w usłudze Azure AD.
 
-   Po ustawieniu przełącznika na **nie**, rolę Administrator dostępu użytkowników w RBAC platformy Azure zostanie usunięty z konta użytkownika. Nie można przypisać ról we wszystkich subskrypcjach platformy Azure i grup zarządzania, które są skojarzone z tego katalogu usługi Azure AD. Można wyświetlać i zarządzać tylko subskrypcji platformy Azure i grup zarządzania, do których użytkownik ma dostęp.
+   Gdy ustaw przełącznik w pozycji **nie**, rolę Administrator dostępu użytkowników w RBAC platformy Azure zostanie usunięty z konta użytkownika. Nie można przypisać ról we wszystkich subskrypcjach platformy Azure i grup zarządzania, które są skojarzone z tego katalogu usługi Azure AD. Można wyświetlać i zarządzać tylko subskrypcji platformy Azure i grup zarządzania, do których użytkownik ma dostęp.
 
 1. Kliknij przycisk **Zapisz** można zapisać ustawień użytkownika.
 
-   To ustawienie nie jest właściwością globalną i ma zastosowanie tylko do aktualnie zalogowanego użytkownika.
+   To ustawienie nie jest właściwością globalną i ma zastosowanie tylko do aktualnie zalogowanego użytkownika. Nie można podniesienie poziomu dostępu dla wszystkich elementów członkowskich w roli administratora globalnego.
 
-1. Wykonaj zadania, które należy wprowadzić w podwyższonego poziomu dostępu. Gdy wszystko będzie gotowe, ustaw przełącznik na **nie**.
+1. Wyloguj się i zalogują się ponownie odświeżyć dostępu.
+
+    Teraz mają dostęp do wszystkich subskrypcji i grup zarządzania w Twoim katalogu. Można zauważyć, że przypisano Ci rolę administratora dostępu użytkowników na zakres głównego.
+
+   ![Subskrypcja przypisań ról z zakresu głównego — zrzut ekranu](./media/elevate-access-global-admin/iam-root.png)
+
+1. Wprowadź zmiany, które należy wprowadzić w podwyższonego poziomu dostępu.
+
+    Aby uzyskać informacje dotyczące przypisywania ról, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](role-assignments-portal.md). Jeśli używasz usługi Azure AD Privileged Identity Management (PIM), zobacz [odnajdywanie zasobów platformy Azure do zarządzania w usłudze PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) lub [Azure przypisać role zasobów w usłudze PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+
+1. Gdy wszystko będzie gotowe, ustaw **Access management dla zasobów platformy Azure** powrócić do **nie**. Ponieważ jest to ustawienie dla poszczególnych użytkowników, możesz muszą być podpisane jako tego samego użytkownika, która była stosowana do podniesienia uprawnień dostępu.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -89,16 +101,22 @@ RoleDefinitionName : User Access Administrator
 RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9
 ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
+CanDelegate        : False
 ```
 
 ### <a name="remove-a-role-assignment-at-the-root-scope-"></a>Usuń przypisanie roli w zakresie głównym (/)
 
-Aby usunąć przypisania roli Administrator dostępu użytkowników dla użytkownika w zakresie głównym (`/`), użyj [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) polecenia.
+Aby usunąć przypisania roli Administrator dostępu użytkowników dla użytkownika w zakresie głównym (`/`), wykonaj następujące kroki.
 
-```azurepowershell
-Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
-  -RoleDefinitionName "User Access Administrator" -Scope "/"
-```
+1. Zaloguj się jako użytkownik, który można usunąć podwyższonego poziomu dostępu. Może to być ten sam użytkownik, który został użyty do podniesienia poziomu dostępu lub innego administratora globalnego z dostępem z podwyższonym poziomem uprawnień w zakresie głównym.
+
+
+1. Użyj [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) polecenie, aby usunąć przypisania roli Administrator dostępu użytkowników.
+
+    ```azurepowershell
+    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+      -RoleDefinitionName "User Access Administrator" -Scope "/"
+    ```
 
 ## <a name="rest-api"></a>Interfejs API REST
 

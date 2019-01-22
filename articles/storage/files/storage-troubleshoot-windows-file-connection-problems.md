@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c99ee1f520496148e22e540fa1f41f9bd74ae6a5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023105"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436216"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -61,7 +61,7 @@ Błąd 53 lub błąd 67 może wystąpić, jeśli port 445 komunikacja wychodząc
 
 Aby sprawdzić, czy zapory lub usługodawcy internetowego blokuje portu 445, użyj [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) narzędzia lub `Test-NetConnection` polecenia cmdlet. 
 
-Aby użyć `Test-NetConnection` polecenia cmdlet, AzureRM PowerShell w module muszą być zainstalowane, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps) Aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resoure-group-name>` nazwami odpowiednimi dla konta magazynu.
+Aby użyć `Test-NetConnection` polecenia cmdlet, AzureRM PowerShell w module muszą być zainstalowane, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) Aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resoure-group-name>` nazwami odpowiednimi dla konta magazynu.
 
    
     $resourceGroupName = "<your-resource-group-name>"

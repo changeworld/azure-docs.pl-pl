@@ -3,17 +3,17 @@ title: Tworzenie zadania obserwatora w ramach konta usługi Azure Automation
 description: Dowiedz się, jak utworzyć zadanie obserwatora w ramach konta usługi Azure Automation, aby zobaczyć, czy nowe pliki utworzone w folderze.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 4068ce42babb786ca33e1b0d41fdfefc7d3f78be
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7870aca696ec61e707c5c774fd43e6d64c0cab82
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282776"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436760"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Tworzenie zadania do śledzenia zmian w plikach na komputerze lokalnym obserwatora usługi Azure Automation
 
@@ -90,7 +90,7 @@ Zadanie obserwatora zawiera dwie części. Obserwator i akcji. Obserwator jest u
 1. Wprowadź następujące wartości parametrów:
 
    ***EVENTDATA** — pozostaw to pole puste. Dane są przekazywane w z elementu runbook obserwatora.  
-   ***Parametry uruchomieniowe** ** — pozostaw Azure zgodnie z tego elementu runbook jest uruchamiany w usłudze Automation.
+   ***Parametry uruchomieniowe** — pozostaw Azure zgodnie z tego elementu runbook jest uruchamiany w usłudze Automation.
 
 1. Kliknij przycisk **OK**, a następnie wybierz pozycję Tak, aby wrócić do strony obserwatora.
 1. Kliknij przycisk **OK** do tworzenia zadania obserwatora.
@@ -153,3 +153,4 @@ Kliknij ten link, aby dowiedzieć się więcej na temat tworzenia własnego elem
 
 > [!div class="nextstepaction"]
 > [Mój pierwszy element runbook programu PowerShell](automation-first-runbook-textual-powershell.md).
+

@@ -3,18 +3,18 @@ title: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych platformy Azure
 description: W tym artykule opisano sposób zarządzania aktualizacjami dla maszyn wirtualnych platformy Azure.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214032"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427427"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -198,3 +198,4 @@ Aby wyświetlić szczegółowe informacje o błędach związanych z wdrożeniem,
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się więcej na temat zarządzania aktualizacjami, w tym dzienniki, dane wyjściowe i błędów, zobacz [rozwiązanie do zarządzania aktualizacjami w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).
+

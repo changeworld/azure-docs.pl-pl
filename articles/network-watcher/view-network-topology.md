@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992206"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428173"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Wyświetlanie topologii sieci wirtualnej platformy Azure
 
@@ -46,7 +46,7 @@ Możesz użyć [witryny Azure portal](#azure-portal), [wiersza polecenia platfor
 
 6. Wybierz **pobieranie topologii** pobranie obrazu jako plik można edytować, w formacie svg.
 
-Wyświetlane na diagramie zasoby są podzbiorem składniki sieciowe w sieci wirtualnej. Na przykład gdy sieciowa grupa zabezpieczeń jest wyświetlany, zasady zabezpieczeń w nim nie są wyświetlane na diagramie. Chociaż nie są rozróżniane na diagramie, wiersze reprezentują jedną dwie relacje: *zawierania* lub *skojarzone*. Aby wyświetlić pełną listę zasobów w sieci wirtualnej i typ relacji między zasobami, generowanie topologia z [PowerShell](#powershell) lub [wiersza polecenia platformy Azure](#azure-cli).
+Wyświetlane na diagramie zasoby są podzbiorem składniki sieciowe w sieci wirtualnej. Na przykład gdy sieciowa grupa zabezpieczeń jest wyświetlany, zasady zabezpieczeń w nim nie są wyświetlane na diagramie. Chociaż nie są rozróżniane na diagramie, wiersze reprezentują jedną dwie relacje: *Zawieranie* lub *skojarzone*. Aby wyświetlić pełną listę zasobów w sieci wirtualnej i typ relacji między zasobami, generowanie topologia z [PowerShell](#powershell) lub [wiersza polecenia platformy Azure](#azure-cli).
 
 ## <a name = "azure-cli"></a>Wyświetlanie topologii — interfejs wiersza polecenia platformy Azure
 
@@ -85,7 +85,7 @@ Konto, którego używasz, musi mieć niezbędne [uprawnienia](required-rbac-perm
 
 Polecenia można uruchomić w opisanych poniżej:
 - W usłudze Azure Cloud Shell, wybierając **wypróbuj** u góry prawo do dowolnego polecenia. Azure Cloud Shell to bezpłatna interaktywna powłoka, zawierającej popularnych narzędzi platformy Azure wstępnie zainstalowane i skonfigurowane do korzystania z Twoim kontem.
-- Korzystając z polecenia programu PowerShell na komputerze. Po uruchomieniu programu PowerShell z komputera, kroki opisane w tym artykule wymaga wersji 5.7.0 lub nowszej moduł AzureRm. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Korzystając z polecenia programu PowerShell na komputerze. Po uruchomieniu programu PowerShell z komputera, kroki opisane w tym artykule wymaga wersji 5.7.0 lub nowszej moduł AzureRm. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 Konto, którego używasz, musi mieć niezbędne [uprawnienia](required-rbac-permissions.md).
 
@@ -139,10 +139,10 @@ Wszystkie zasoby zwracane w topologii mieć jedną z następujących typów rela
 Wszystkie zasoby zwracane w topologii mają następujące właściwości:
 
 - **Nazwa**: Nazwa zasobu
-- **Identyfikator**: identyfikator URI zasobu.
-- **Lokalizacja**: region platformy Azure, czy zasób istnieje w.
+- **Identyfikator**: Identyfikator URI zasobu.
+- **Lokalizacja**: Region platformy Azure, czy zasób istnieje w.
 - **Skojarzenia**: Lista skojarzenia przywoływanego obiektu. Każdego skojarzenia ma następujące właściwości:
-    - **Obiekt AssociationType**: odwołuje się do relacji między obiekt podrzędny i nadrzędny obiekt. Prawidłowe wartości to *zawiera* lub *skojarzone*.
+    - **AssociationType**: Odwołuje się do relacji między obiekt podrzędny i nadrzędny obiekt. Prawidłowe wartości to *zawiera* lub *skojarzone*.
     - **Nazwa**: Nazwa zasobu, do którego istnieje odwołanie.
     - **ResourceId**: — identyfikator URI zasobu, do których odwołuje się do skojarzenia.
 

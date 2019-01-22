@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: afb28488fc47f018b6d192eb1b65a54499ac8ff9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 868af1903623f612a7a987c1247bd138bcf26002
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666367"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430538"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpieczanie zasobów w chmurze przy użyciu usługi Azure Multi-Factor Authentication i usług AD FS
 
@@ -63,7 +63,7 @@ W pierwszej kolejności należy skonfigurować oświadczenia usług AD FS. Utwó
    ![Chmura](./media/howto-mfa-adfs/trustedip2.png)
 5. W Kreatorze dodawania reguły przekształcania oświadczeń wybierz z listy rozwijanej pozycję **Przekazywanie lub filtrowanie oświadczenia przychodzącego**, a następnie kliknij przycisk **Dalej**.
    ![Chmura](./media/howto-mfa-adfs/trustedip3.png)
-6. W polu Nazwa reguły oświadczenia wpisz nazwę reguły, np. WewnSiećFirm.
+6. W polu Nazwa reguły oświadczenia wpisz nazwę reguły, Na przykład: InsideCorpNet.
 7. Dla pola Typ oświadczenia przychodzącego wybierz z listy rozwijanej pozycję **Wewnątrz sieci firmowej**.
    ![Chmura](./media/howto-mfa-adfs/trustedip4.png)
 8. Kliknij przycisk **Zakończ**.

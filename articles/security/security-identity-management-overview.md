@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
-ms.openlocfilehash: 84ab35c269af66f58f3886a5dd0606ce69a11be9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d1933e58cae522b03ced29183440e226d47dfdf9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255885"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435060"
 ---
 # <a name="azure-identity-management-security-overview"></a>Omówienie zabezpieczeń zarządzania tożsamościami platformy Azure
 
@@ -44,7 +44,7 @@ Artykuł koncentruje się na następujących funkcji zarządzania usługi Azure 
 * Monitorowanie zabezpieczeń i alerty oraz raporty oparte na uczeniu maszynowym
 * Zarządzanie tożsamościami i dostępem klientów
 * Rejestracja urządzenia
-* Usługa Privileged identity management
+* Privileged Identity Management
 * Ochrona tożsamości
 * Tożsamość hybrydowa zarządzania/Azure AD connect
 * Przeglądy dostępu w usłudze Azure AD
@@ -93,7 +93,7 @@ RBAC to system autoryzacja oparta na usłudze Resource Manager, która umożliwi
 Więcej informacji:
 
 * [Czym jest kontrola dostępu oparta na rolach (RBAC)?](../role-based-access-control/overview.md)
-* [Wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md)
+* [Wbudowane role dla zasobów platformy Azure](../role-based-access-control/built-in-roles.md)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Monitorowanie zabezpieczeń i alerty oraz raporty oparte na uczeniu maszynowym
 
@@ -101,11 +101,11 @@ Monitorowanie zabezpieczeń i alerty oraz oparte na nauce maszynowej raporty mas
 
 W witrynie Azure portal raporty można podzielić na następujące kategorie:
 
-* **Raporty anomalii**: zawiera zdarzenia logowania, które znaleźliśmy jako nietypowe. Naszym celem jest na należy pamiętać o takiej działalności i umożliwiają określenie, czy zdarzenie jest podejrzane.
-* **Zintegrowane raporty aplikacji**: dają wgląd w sposób są używane w aplikacjach w chmurze w Twojej organizacji. Usługa Azure AD oferuje integrację z tysięcy aplikacji w chmurze.
-* **Raporty o błędach**: informują o błędach, które mogą wystąpić podczas aprowizowania kont do aplikacji zewnętrznych.
-* **Raporty dotyczące poszczególnych użytkowników**: wyświetlanie danych aktywności logowania urządzeń dla określonego użytkownika.
-* **Dzienniki aktywności**: zawiera rekord wszystkich zdarzeń inspekcji w ciągu ostatnich 24 godzin, ostatnich 7 dni, lub ostatnich 30 dni i działania zmiany w grupie i działanie resetowania i rejestracji hasła.
+* **Raporty anomalii**: Zawiera zdarzenia logowania, które znaleźliśmy jako nietypowe. Naszym celem jest na należy pamiętać o takiej działalności i umożliwiają określenie, czy zdarzenie jest podejrzane.
+* **Zintegrowane raporty aplikacji**: Zapewniają wgląd w sposób używania aplikacji w chmurze w Twojej organizacji. Usługa Azure AD oferuje integrację z tysięcy aplikacji w chmurze.
+* **Raporty o błędach**: Wskazują błędy, które mogą wystąpić podczas aprowizowania kont do aplikacji zewnętrznych.
+* **Raporty dotyczące poszczególnych użytkowników**: Wyświetl dane aktywności logowania urządzeń dla określonego użytkownika.
+* **Dzienniki aktywności**: Zawiera rekord wszystkich zdarzeń inspekcji w ciągu ostatnich 24 godzin, ostatnich 7 dni, lub ostatnich 30 dni i działania zmiany w grupie i działanie resetowania i rejestracji hasła.
 
 Więcej informacji:
 
@@ -124,8 +124,8 @@ Gdy używasz usługi Azure AD B2C, użytkownicy mogą rejestrować dla aplikacji
 Więcej informacji:
 
 * [Co to jest usługa Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C w wersji zapoznawczej: Zaloguj się i logowanie użytkowników w aplikacjach](../active-directory-b2c/active-directory-b2c-overview.md)
-* [Usługa Azure Active Directory B2C w wersji zapoznawczej: Typy aplikacji](../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C w wersji zapoznawczej: Zarejestruj się i logowanie użytkowników w aplikacjach](../active-directory-b2c/active-directory-b2c-overview.md)
+* [Azure Active Directory B2C Preview: Typy aplikacji](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>Rejestracja urządzenia
 
@@ -139,7 +139,7 @@ Więcej informacji:
 * [Automatycznej rejestracji urządzeń w usłudze Azure AD w przypadku urządzeń przyłączonych do domeny Windows](../active-directory/active-directory-conditional-access-automatic-device-registration.md)
 * [Konfigurowanie automatycznej rejestracji Windows przyłączone do domeny urządzenia z usługą Azure AD](../active-directory/active-directory-conditional-access-automatic-device-registration-setup.md)
 
-## <a name="privileged-identity-management"></a>Usługa Privileged identity management
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 
 Za pomocą usługi Azure AD Privileged Identity Management można zarządzanie, sterowanie i monitorowanie tożsamości uprzywilejowanych i dostęp do zasobów w usłudze Azure AD, a także innych usług Microsoft online services, takich jak usługi Office 365 i Microsoft Intune.
 
@@ -154,9 +154,8 @@ Za pomocą usługi Azure AD Privileged Identity Management możesz wykonywać na
 
 Więcej informacji:
 
-* [Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)
-* [Role w usłudze Azure AD Privileged Identity Management](../active-directory/privileged-identity-management/pim-roles.md)
-* [Usługa Azure AD Privileged Identity Management: Jak dodać lub usunąć rolę użytkownika](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [Co to jest Azure AD Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)
+* [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Ochrona tożsamości
 
@@ -165,7 +164,7 @@ Usługa Azure AD Identity Protection to usługa zabezpieczeń, która zapewnia s
 Więcej informacji:
 
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Witrynie Channel 9: Usługi Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Witryna Channel 9: Usługa Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="hybrid-identity-managementazure-ad-connect"></a>Tożsamość hybrydowa zarządzania/Azure AD connect
 

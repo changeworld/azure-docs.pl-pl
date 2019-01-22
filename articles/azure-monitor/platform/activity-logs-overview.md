@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 7f454cb0979fb2379490d4b275b14afee8706f0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715379"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439072"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -185,3 +185,4 @@ az monitor log-profiles delete --name <profile name>
 ## <a name="next-steps"></a>Następne kroki
 * [Dowiedz się więcej o dzienniku aktywności (dawniej Audit Logs)](../../azure-resource-manager/resource-group-audit.md)
 * [Stream dziennika aktywności platformy Azure do usługi Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+

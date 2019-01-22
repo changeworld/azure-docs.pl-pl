@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: 655fa6b4bf0f04f2d88e9a3f11cb9d3917ea3dd3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9a6aac3691e519e0b5b8e017f36a5c6a2ce14dff
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345195"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438698"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Azure Active Directory na podstawie certyfikatu uwierzytelniania w systemie iOS
 
@@ -34,16 +34,16 @@ Ta funkcja jest dostępna w wersji zapoznawczej w planach usług Office 365 dla 
 
 | Aplikacje | Pomoc techniczna |
 | --- | --- |
-| Usługa Azure Information Protection app |![Zaznaczenie][1] |
-| Portal firmy usługi Intune |![Zaznaczenie][1] |
-| Microsoft Teams |![Zaznaczenie][1] |
-| OneNote |![Zaznaczenie][1] |
-| OneDrive |![Zaznaczenie][1] |
-| Outlook |![Zaznaczenie][1] |
-| Power BI |![Zaznaczenie][1] |
-| Skype dla firm |![Zaznaczenie][1] |
-| Word / Excel / PowerPoint |![Zaznaczenie][1] |
-| Yammer |![Zaznaczenie][1] |
+| Usługa Azure Information Protection app |![Zaznacz][1] |
+| Portal firmy usługi Intune |![Zaznacz][1] |
+| Microsoft Teams |![Zaznacz][1] |
+| OneNote |![Zaznacz][1] |
+| OneDrive |![Zaznacz][1] |
+| Outlook |![Zaznacz][1] |
+| Power BI |![Zaznacz][1] |
+| Skype dla firm |![Zaznacz][1] |
+| Word / Excel / PowerPoint |![Zaznacz][1] |
+| Yammer |![Zaznacz][1] |
 
 ## <a name="requirements"></a>Wymagania
 

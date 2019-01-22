@@ -3,18 +3,18 @@ title: Wyświetl zmiany zawartości plików za pomocą usługi Azure Automation
 description: Aby wyświetlić zawartość pliku, które uległy zmianie, należy użyć funkcji zmiana zawartości pliku śledzenia zmian.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0582505d66bbef3064359fa4047676c4ba60b4e9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872264"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438005"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Wyświetl zawartość pliku, który jest śledzone za pomocą śledzenia zmian
 
@@ -76,3 +76,4 @@ Odwiedź samouczka na śledzenie zmian, aby dowiedzieć się więcej o korzystan
 > [Rozwiązywanie problemów dotyczących zmian w Twoim środowisku](automation-tutorial-troubleshoot-changes.md)
 
 * Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md) Aby wyświetlić szczegółowe dane rozwiązania change tracking.
+

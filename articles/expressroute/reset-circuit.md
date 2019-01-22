@@ -1,5 +1,5 @@
 ---
-title: 'Resetowanie obwodu nie powiodło się — ExpressRoute: programu PowerShell: Azure | Dokumentacja firmy Microsoft'
+title: 'Resetowanie obwodu nie powiodło się — ExpressRoute: Program PowerShell: Azure | Microsoft Docs'
 description: Ten artykuł pomoże Ci zresetować obwodu usługi ExpressRoute, która jest w stanie niepowodzenia.
 services: expressroute
 author: anzaman
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: anzaman
 ms.custom: seodec18
-ms.openlocfilehash: 7b88ba6e00cbec05263fe5bc8e795cda95beee04
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e94ba2f7f6981355f4736683b891fbdced001d03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093679"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425343"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Resetowanie obwodu usługi ExpressRoute nie powiodło się
 
@@ -21,7 +21,7 @@ Podczas operacji na obwód usługi ExpressRoute nie zostanie ukończone pomyśln
 
 ## <a name="reset-a-circuit"></a>Resetowanie obwodu
 
-1. Zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+1. Zainstaluj najnowszą wersję poleceń cmdlet programu PowerShell usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 2. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 

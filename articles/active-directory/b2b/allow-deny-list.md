@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 563b2d6393533a86305213b6cdec6ca901e53257
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d0458fa9c40c5a6681a3f691cbb3d6a02f01ce66
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985383"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429074"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Akceptowanie lub blokowanie zaproszeń dla użytkowników B2B z określonych organizacji
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zezwalaj na zaproszenia lub blokowanie ich dla użytkowników B2B z określonym organizacjom
 
 Umożliwia listy dozwolonych lub listę odrzuconych dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom. Na przykład jeśli chcesz zablokować domeny adresów e-mail osobiste, możesz skonfigurować liście odrzuconych, który zawiera domeny, takich jak Gmail.com i Outlook.com. Lub, jeśli firma ma współpracuje z innych firm, takich jak Contoso.com i Fabrikam.com, Litware.com i chcesz ograniczyć zaproszenia do tylko tych organizacji, możesz dodać Contoso.com i Fabrikam.com, Litware.com do Twojej listy dozwolonych.
   

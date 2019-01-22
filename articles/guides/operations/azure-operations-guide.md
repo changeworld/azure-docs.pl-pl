@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 508614d2126d95323ce3550954b4b8a7d4d9d7d8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014739"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438815"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -55,7 +55,7 @@ Aby uzyskać więcej informacji na temat dostępnych regionów platformy Azure, 
 ### <a name="cloud-computing-model"></a>Model przetwarzania w chmurze
 
 Platforma Azure używa chmurowego przetwarzania danych modelu na podstawie kategorii usługi udostępniane klientom. Trzy kategorie usług obejmują infrastruktury jako usługi (IaaS), platforma jako usługa (PaaS) i oprogramowanie jako usługa (SaaS). Dostawców udostępnić część lub całość odpowiedzialność składniki stosu obliczeń w każdej z tych kategorii. Przyjrzyjmy się każdej z kategorii dla chmury obliczeniowej.
-![Chmury obliczeniowej porównania stosu](./media/cloud-computing-comparison.png)
+![Cloud Computing Stack Comparison](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastruktura jako usługa
 
@@ -119,7 +119,7 @@ Usługi dotyczące tworzenia i obsługi aplikacji:
 
 - Usługa Azure HDInsight do przetwarzania danych big data
 
-- Usługa Azure Scheduler
+- Azure Scheduler
 
 - Azure Media Services
 
@@ -169,7 +169,7 @@ Oprócz tworzenia, zarządzania i usuwanie zasobów za pomocą witryny Azure por
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Program Azure PowerShell to zestaw modułów, które dostarczają poleceń cmdlet do zarządzania platformy Azure. Można użyć polecenia cmdlet do tworzenia, zarządzania i usuwania usług platformy Azure. Polecenia cmdlet może pomóc osiągnąć spójną, powtarzalną i zdalne wdrożenia. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Program Azure PowerShell to zestaw modułów, które dostarczają poleceń cmdlet do zarządzania platformy Azure. Można użyć polecenia cmdlet do tworzenia, zarządzania i usuwania usług platformy Azure. Polecenia cmdlet może pomóc osiągnąć spójną, powtarzalną i zdalne wdrożenia. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 #### <a name="azure-command-line-interface"></a>interfejsu wiersza polecenia platformy Azure
 
@@ -191,17 +191,17 @@ Subskrypcji to logiczna grupa usług platformy Azure, która jest połączona z 
 
 Przed rozpoczęciem pracy z usługami platformy Azure, potrzebna jest subskrypcja. Dostępnych jest kilka typów subskrypcji.
 
-**Bezpłatne konta**: link, aby zarejestrować się dla bezpłatnego konta znajduje się na [witryny sieci Web Azure](https://azure.microsoft.com/). Dzięki temu środki w ciągu 30 dni, aby wypróbować dowolną kombinację zasobów platformy Azure. Twoje konto jest zawieszone w przypadku przekroczenia kwoty kredytu. Po zakończeniu okresu próbnego usługi jest zamknięta i nie będą już działać. Można uaktualnić do subskrypcji zgodnie z rzeczywistym użyciem w dowolnym momencie.
+**Bezpłatne konta**: Link do rejestracji dla bezpłatnego konta znajduje się na [witryny sieci Web Azure](https://azure.microsoft.com/). Dzięki temu środki w ciągu 30 dni, aby wypróbować dowolną kombinację zasobów platformy Azure. Twoje konto jest zawieszone w przypadku przekroczenia kwoty kredytu. Po zakończeniu okresu próbnego usługi jest zamknięta i nie będą już działać. Można uaktualnić do subskrypcji zgodnie z rzeczywistym użyciem w dowolnym momencie.
 
-**Subskrypcje MSDN**: Jeśli masz subskrypcję MSDN, możesz uzyskać określoną ilością w platformy Azure w wysokości co miesiąc. Na przykład w przypadku programu Microsoft Visual Studio Enterprise z subskrypcją MSDN otrzymujesz \$150 miesięcznych środków platformy Azure.
+**Subskrypcje MSDN**: Jeśli masz subskrypcję MSDN, możesz uzyskać określoną ilością w zawierających środki platformy Azure każdego miesiąca. Na przykład w przypadku programu Microsoft Visual Studio Enterprise z subskrypcją MSDN otrzymujesz \$150 miesięcznych środków platformy Azure.
 
 W przypadku przekroczenia kwoty kredytu usługi są wyłączone do momentu rozpoczęcia następnego miesiąca. Możesz wyłączyć limit wydatków i dodać kartę kredytową, który ma być używany dla dodatkowych kosztów. Niektóre z tych kosztów są objęte rabatem dla kont w witrynie MSDN. Na przykład możesz wina systemu Linux dla maszyn wirtualnych z systemem Windows Server i nie ma dodatkowych opłat do serwerów firmy Microsoft, takich jak Microsoft SQL Server. To sprawia, że konta MSDN idealne rozwiązanie w przypadku opracowywania i testowania scenariuszy.
 
-**Konta programu BizSpark**: w programie BizSpark firmy Microsoft oferuje wiele korzyści dla startupów. Jedną z tych korzyści jest dostęp do oprogramowania firmy Microsoft dla środowiska deweloperskie i testowe do pięciu kont MSDN. Możesz uzyskać 150 USD środki platformy Azure w każdym z tych pięciu kont MSDN i płacić według obniżonych stawek za kilka usług platformy Azure, takie jak maszyny wirtualne.
+**Konta programu BizSpark**: W programie BizSpark firmy Microsoft oferuje wiele korzyści dla startupów. Jedną z tych korzyści jest dostęp do oprogramowania firmy Microsoft dla środowiska deweloperskie i testowe do pięciu kont MSDN. Możesz uzyskać 150 USD środki platformy Azure w każdym z tych pięciu kont MSDN i płacić według obniżonych stawek za kilka usług platformy Azure, takie jak maszyny wirtualne.
 
 **Płatność za rzeczywiste użycie**: Z tą subskrypcją płacisz za to, czego używasz, dołączając na koncie karty kredytowej lub debetowej. Jeśli organizacja może również zostać zatwierdzony dla fakturowania.
 
-**Umowy Enterprise Agreement**: Z umową enterprise agreement zdecydujesz się przy użyciu wielu usług platformy Azure w przyszłym roku, i płacisz takimi problemami znacznie mniej wcześniej. Zobowiązanie, wprowadzone jest wykorzystywane przez cały rok. W przypadku przekroczenia kwoty zobowiązania mogą płacić za nadwyżkowe użycie w poprzednim. W zależności od kwoty zobowiązania Uzyskaj rabat na usługi platformy Azure.
+**Umowy Enterprise Agreement**: Z umową enterprise agreement zdecydujesz się przy użyciu wielu usług platformy Azure w przyszłym roku, a opłaty są naliczane takimi problemami znacznie mniej wcześniej. Zobowiązanie, wprowadzone jest wykorzystywane przez cały rok. W przypadku przekroczenia kwoty zobowiązania mogą płacić za nadwyżkowe użycie w poprzednim. W zależności od kwoty zobowiązania Uzyskaj rabat na usługi platformy Azure.
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Przyznawaj dostęp administracyjny do subskrypcji platformy Azure
 
@@ -273,21 +273,21 @@ Szablony usługi Resource Manager deklaratywne Definiowanie zasobów i konfigura
 
 Szablon usługi Resource Manager obejmuje cztery sekcje:
 
-- **Parametry**: są to dane wejściowe do wdrożenia. Można podać wartości parametrów przez człowieka lub zautomatyzowane procesy. Nazwa użytkownika administratora i hasło dla maszyny Wirtualnej z systemem Windows musi być parametrem przykładu. Wartości parametrów są używane w całym wdrażaniu, gdy są one określone.
+- **Parametry**: Są to dane wejściowe do wdrożenia. Można podać wartości parametrów przez człowieka lub zautomatyzowane procesy. Nazwa użytkownika administratora i hasło dla maszyny Wirtualnej z systemem Windows musi być parametrem przykładu. Wartości parametrów są używane w całym wdrażaniu, gdy są one określone.
 
-- **Zmienne**: te są używane do przechowywania wartości, które są używane w całym wdrożeniu. W przeciwieństwie do parametrów wartość zmiennej nie została podana w czasie wdrażania. Zamiast tego jest twardych kodowane czy generowana dynamicznie.
+- **Zmienne**: Są one używane do przechowywania wartości, które są używane w całym wdrożeniu. W przeciwieństwie do parametrów wartość zmiennej nie została podana w czasie wdrażania. Zamiast tego jest twardych kodowane czy generowana dynamicznie.
 
-- **Zasoby**: Ta sekcja szablonu definiuje zasoby do wdrożenia, takie jak maszyny wirtualne, konta magazynu i sieci wirtualnych.
+- **Zasoby**: Ta sekcja szablon definiuje zasoby do wdrożenia, takie jak maszyny wirtualne, konta magazynu i sieci wirtualnych.
 
-- **Dane wyjściowe**: po zakończeniu wdrażania usługi Resource Manager może zwrócić dane, takie jak parametry połączenia generowanych dynamicznie.
+- **Dane wyjściowe**: Po zakończeniu wdrażania usługi Resource Manager może zwrócić dane, takie jak parametry połączenia generowanych dynamicznie.
 
 Są dostępne następujące mechanizmy automatyzacji wdrażania:
 
-- **Funkcje**: kilka funkcji można użyć w szablonach usługi Resource Manager. Obejmują one operacje, takie jak Konwersja ciągu na małe litery, wdrażanie wielu wystąpień klasy zasobem zdefiniowanych i dynamicznie zwracanie docelowej grupy zasobów. Funkcje Menedżera zasobów pomagające w tworzeniu wdrożeń dynamicznych.
+- **Funkcje**: Kilka funkcji można użyć w szablonach usługi Resource Manager. Obejmują one operacje, takie jak Konwersja ciągu na małe litery, wdrażanie wielu wystąpień klasy zasobem zdefiniowanych i dynamicznie zwracanie docelowej grupy zasobów. Funkcje Menedżera zasobów pomagające w tworzeniu wdrożeń dynamicznych.
 
-- **Zależności zasobu**: gdy wdrażasz wiele zasobów, niektóre zasoby mają zależności na innych użytkowników. W celu ułatwienia wdrażania, można użyć deklaracji zależności, tak aby wdrażane zasoby zależne przed innymi.
+- **Zależności zasobu**: Podczas wdrażania wielu zasobów, niektóre zasoby mają zależności na innych użytkowników. W celu ułatwienia wdrażania, można użyć deklaracji zależności, tak aby wdrażane zasoby zależne przed innymi.
 
-- **Łączenie szablonu**: Z w ramach jednego szablonu usługi Resource Manager można połączyć z innego szablonu. Dzięki temu dekompozycji wdrożenia do zestawu szablonów specjalistyczne, określonego celu.
+- **Łączenie szablonu**: Z w ramach jednego szablonu usługi Resource Manager można połączyć inny szablon. Dzięki temu dekompozycji wdrożenia do zestawu szablonów specjalistyczne, określonego celu.
 
 Możesz tworzyć szablony usługi Resource Manager w dowolnym edytorze tekstów. Zestaw Azure SDK dla programu Visual Studio zawiera jednak narzędzia pomocne. Za pomocą programu Visual Studio, możesz dodać zasoby do szablonu, za pomocą kreatora, a następnie wdrażanie i debugowanie szablon bezpośrednio z poziomu programu Visual Studio. Aby uzyskać więcej informacji, zobacz [tworzenia usługi Azure Resource Manager](../../resource-group-authoring-templates.md).
 
@@ -301,17 +301,17 @@ Aby udzielić dostępu, możesz przypisać rolę użytkownikowi lub grupie użyt
 
 Poniżej przedstawiono przykład kilka [wbudowanych ról na platformie Azure](../../role-based-access-control/built-in-roles.md):
 
-- **Właściciel**: użytkownik z tą rolą mogą zarządzać wszystkim łącznie z dostępem.
+- **Właściciel**: Użytkownik z tą rolą mogą zarządzać wszystkim łącznie z dostępem.
 
-- **Czytnik**: użytkownik z tą rolą mogą odczytywać zasoby wszystkich typów (z wyjątkiem wpisy tajne), ale nie może wprowadzać zmian.
+- **Czytnik**: Użytkownik z tą rolą mogą odczytywać zasoby wszystkich typów (z wyjątkiem wpisy tajne), ale nie może wprowadzać zmian.
 
-- **Współautor maszyny wirtualnej**: użytkownik z tą rolą mogą zarządzać maszynami wirtualnymi, ale nie może zarządzać sieci wirtualnej, do której są one połączone lub konta magazynu, w którym znajduje się plik wirtualnego dysku twardego.
+- **Współautor maszyny wirtualnej**: Użytkownik z tą rolą mogą zarządzać maszynami wirtualnymi, ale nie może zarządzać sieci wirtualnej, do której są one połączone lub konta magazynu, w którym znajduje się plik wirtualnego dysku twardego.
 
-- **Współautor bazy danych SQL**: użytkownik z tą rolą można zarządzać bazami danych SQL, ale nie ich zasadami związanymi z zabezpieczeniami.
+- **Współautor bazy danych SQL**: Użytkownik z tą rolą mogą zarządzać bazami danych SQL, ale nie ich zasadami związanymi z zabezpieczeniami.
 
-- **Menedżer zabezpieczeń SQL**: użytkownik z tą rolą mogą zarządzać zasadami związanych z zabezpieczeniami, serwerów SQL i baz danych.
+- **Menedżer zabezpieczeń SQL**: Użytkownik z tą rolą mogą zarządzać zasad związanych z zabezpieczeniami serwerów SQL i baz danych.
 
-- **Współautor konta magazynu**: użytkownik z tą rolą mogą zarządzać kontami magazynu, ale nie może zarządzać dostępem do konta magazynu.
+- **Współautor konta magazynu**: Użytkownik z tą rolą mogą zarządzać kontami magazynu, ale nie może zarządzać dostępem do konta magazynu.
 
 Aby uzyskać więcej informacji, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -359,7 +359,7 @@ Na koniec podobnie jak w przypadku zarządzania dowolnego systemu komputera, nal
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Usługa Azure Storage jest zarządzany przez firmę Microsoft usługa, który udostępnia trwały, skalowalny i nadmiarowy magazyn. Konto magazynu platformy Azure jako zasób można dodać do dowolnej grupy zasobów przy użyciu dowolnej metody wdrażania zasobów. System Azure zawiera cztery typy magazynów: obiektów Blob storage, File Storage, Table storage i Queue storage. Podczas wdrażania konta magazynu, dwa typy kont są dostępne, ogólnego przeznaczenia i magazynie obiektów blob. Konto magazynu ogólnego przeznaczenia zapewnia dostęp do wszystkich czterech typów magazynów. Konta usługi blob storage są podobne do kont ogólnego przeznaczenia, ale zawiera specjalistyczne obiektów blob, które obejmują warstwy gorące i zimne dostępu. Aby uzyskać więcej informacji na temat usługi blob storage, zobacz [usługi Azure Blob storage](../../storage/blobs/storage-blob-storage-tiers.md).
+Usługa Azure Storage jest zarządzany przez firmę Microsoft usługa, który udostępnia trwały, skalowalny i nadmiarowy magazyn. Konto magazynu platformy Azure jako zasób można dodać do dowolnej grupy zasobów przy użyciu dowolnej metody wdrażania zasobów. System Azure zawiera cztery typy magazynów: Magazyn obiektów blob, File Storage, Table storage i Queue storage. Podczas wdrażania konta magazynu, dwa typy kont są dostępne, ogólnego przeznaczenia i magazynie obiektów blob. Konto magazynu ogólnego przeznaczenia zapewnia dostęp do wszystkich czterech typów magazynów. Konta usługi blob storage są podobne do kont ogólnego przeznaczenia, ale zawiera specjalistyczne obiektów blob, które obejmują warstwy gorące i zimne dostępu. Aby uzyskać więcej informacji na temat usługi blob storage, zobacz [usługi Azure Blob storage](../../storage/blobs/storage-blob-storage-tiers.md).
 
 Można skonfigurować różne poziomy nadmiarowości konta magazynu platformy Azure:
 
@@ -481,7 +481,7 @@ Istnieje kilka opcji wdrożenia sieci wirtualnej.
 
 - Szablony usługi Azure Resource Manager
 
->**Kiedy należy używać**: w dowolnym momencie pracujesz z maszynami wirtualnymi na platformie Azure, pracy z sieciami wirtualnymi. Dzięki temu dzielenia maszyn wirtualnych w podsieci publicznych i prywatnych podobne lokalnych centrów danych.
+>**Kiedy należy używać**: W dowolnym momencie pracujesz z maszynami wirtualnymi na platformie Azure, będzie działać z sieciami wirtualnymi. Dzięki temu dzielenia maszyn wirtualnych w podsieci publicznych i prywatnych podobne lokalnych centrów danych.
 
 >**Rozpoczynanie pracy**: Wdrażanie sieci wirtualnej platformy Azure przy użyciu witryny Azure portal wymaga aktywnej subskrypcji platformy Azure i dostęp do przeglądarki sieci web. Można wdrożyć nową sieć wirtualną do nowej lub istniejącej grupy zasobów. Podczas tworzenia nowej maszyny wirtualnej z poziomu portalu, możesz wybrać istniejącą sieć wirtualną lub utworzyć nową. Rozpocznij pracę i [Utwórz sieć wirtualną przy użyciu witryny Azure portal](../../virtual-network/quick-create-portal.md).
 

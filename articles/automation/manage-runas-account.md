@@ -3,18 +3,18 @@ title: Zarządzanie kontami Uruchom jako usługi Azure Automation
 description: W tym artykule opisano sposób zarządzania konta Uruchom jako przy użyciu programu PowerShell lub w portalu.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 34c8a7d547acf023af442599708f9c183e5b9ae9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726172"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431201"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
@@ -44,8 +44,8 @@ Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć określone upraw
 |---|---------|---------|
 |Tworzenie aplikacji usługi Azure AD|[New-AzureRmADApplication](/powershell/module/azurerm.resources/new-azurermadapplication)     | Rola dla deweloperów aplikacji        |
 |Dodawanie poświadczeń do aplikacji.|[New-AzureRmADAppCredential](/powershell/module/AzureRM.Resources/New-AzureRmADAppCredential)     | Administrator aplikacji lub administrator GLOBALNY         |
-|Utwórz i Pobierz jednostkę usługi Azure AD|[Nowe AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Administrator aplikacji lub administrator GLOBALNY        |
-|Przypisz lub uzyskać rolę RBAC dla określonego podmiotu zabezpieczeń|[Nowy AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Administrator dostępu użytkownika lub właściciela        |
+|Utwórz i Pobierz jednostkę usługi Azure AD|[New-AzureRMADServicePrincipal](/powershell/module/AzureRM.Resources/New-AzureRmADServicePrincipal)</br>[Get-AzureRmADServicePrincipal](/powershell/module/AzureRM.Resources/Get-AzureRmADServicePrincipal)     | Administrator aplikacji lub administrator GLOBALNY        |
+|Przypisz lub uzyskać rolę RBAC dla określonego podmiotu zabezpieczeń|[New-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/New-AzureRmRoleAssignment)</br>[Get-AzureRMRoleAssignment](/powershell/module/AzureRM.Resources/Get-AzureRmRoleAssignment)      | Administrator dostępu użytkownika lub właściciela        |
 |Tworzenie lub usuwanie certyfikatu usługi Automation|[New-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/New-AzureRmAutomationCertificate)</br>[Remove-AzureRmAutomationCertificate](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationCertificate)     | Współautor dla grupy zasobów         |
 |Tworzenie lub usuwanie połączenia usługi Automation|[New-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/New-AzureRmAutomationConnection)</br>[Remove-AzureRmAutomationConnection](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationConnection)|Współautor dla grupy zasobów |
 
@@ -389,3 +389,4 @@ Te problemy związane z kontem Uruchom jako można szybko rozwiązać, usuwając
 
 * Aby uzyskać więcej informacji na temat nazw głównych usług, zobacz [obiekty aplikacji i jednostki usługi](../active-directory/develop/app-objects-and-service-principals.md).
 * Aby uzyskać więcej informacji na temat certyfikatów i usług platformy Azure, zobacz [Omówienie certyfikatów usług Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+

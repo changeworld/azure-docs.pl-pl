@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9542fe14cc262731ca0f2ade65e6e4dfafbc34d7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138827"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427512"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Interfejsu API v1 na v2 Przewodnik migracji dla aplikacji usługi LUIS
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) interfejsy API są przestarzałe. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 
@@ -112,7 +112,7 @@ Klucz punktu końcowego subskrypcji interfejsy API są przestarzałe zwracanie 4
 |1|/Luis/V1.0/prog/Subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [klucze punktu końcowego](luis-how-to-azure-subscription.md) są generowane w witrynie Azure portal. Przypisany klawisz aplikacją usługi LUIS w **[Publikuj](luis-how-to-manage-keys.md)** strony. Nie trzeba znać rzeczywistej wartości klucza. Usługa LUIS używa nazwy subskrypcji, aby przypisania. 
+Azure [klucze punktu końcowego](luis-how-to-azure-subscription.md) są generowane w witrynie Azure portal. Przypisany klawisz aplikacją usługi LUIS w **[Publikuj](luis-how-to-azure-subscription.md)** strony. Nie trzeba znać rzeczywistej wartości klucza. Usługa LUIS używa nazwy subskrypcji, aby przypisania. 
 
 ## <a name="new-versioning-route"></a>Nową trasę przechowywania wersji
 V2 model jest teraz zawarty w [wersji](luis-how-to-manage-versions.md). Nazwa wersji jest 10 znaków w trasie. Domyślna wersja to "0.1".

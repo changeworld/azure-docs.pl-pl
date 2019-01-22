@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b3977e045751165947243c67291e81b998b5fcb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e70a17271dee9f78f13c06ca2fd24dc39b20c6a4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606118"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425207"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej przy użyciu programu PowerShell
 
@@ -39,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten artykuł wymaga modułu Azure PowerShell w wersji 5.4.1 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten artykuł wymaga modułu Azure PowerShell w wersji 5.4.1 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
@@ -203,7 +203,7 @@ $storageContext = New-AzureStorageContext $storageAcctName $storageAcctKey
 
 Tworzenie udziału plików za pomocą [New-AzureStorageShare](/powershell/module/azure.storage/new-azurestorageshare):
 
-$share = New-AzureStorageShare my-file-share - kontekstu $storageContext
+$share = New-AzureStorageShare my-file-share -Context $storageContext
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>Odmowa dostępu do całej sieci do konta magazynu
 
@@ -361,7 +361,7 @@ Get-AzureStorageFile `
   -Context $storageContext
 ```
 
-Odmowa dostępu oraz otrzymasz *polecenia Get-AzureStorageFile: serwer zdalny zwrócił błąd: (403) zabroniony. Kod stanu HTTP: 403 — komunikat o błędzie HTTP: to żądanie nie ma autoryzacji do wykonania tej operacji* błąd, ponieważ komputer nie znajduje się w *prywatnej* podsieci *MyVirtualNetwork* sieć wirtualna.
+Odmowa dostępu oraz otrzymasz *polecenia Get-AzureStorageFile: Serwer zdalny zwrócił błąd: (403) Zabronione. Kod stanu HTTP: 403 — komunikat o błędzie HTTP: To żądanie nie ma autoryzacji do wykonania tej operacji* błąd, ponieważ komputer nie znajduje się w *prywatnej* podsieci *MyVirtualNetwork* sieci wirtualnej.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

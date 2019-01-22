@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: 4b6eb0aa7011226fda667370f3e854081b795ae6
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d336d659a15f5b4cb1cbc917a8ae10ab8224d029
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744874"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426322"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Działa w ekosystemie usługi Apache Hadoop w HDInsight z komputera z systemem Windows
 
@@ -30,7 +30,7 @@ Przykłady zadań, które można wykonać przy użyciu programu PowerShell:
 * [Uruchamianie zapytania usługi Apache Hive przy użyciu programu PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
 * [Zarządzanie klastrami przy użyciu programu PowerShell](hdinsight-administer-use-powershell.md).
 
-Wykonaj kroki, aby [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) można pobrać najnowszą wersję. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet usługi Azure Resource Manager, zobacz artykuł [migracja do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
+Wykonaj kroki, aby [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) można pobrać najnowszą wersję. Jeśli masz skrypty wymagające modyfikacji w celu użycia nowych poleceń cmdlet usługi Azure Resource Manager, zobacz artykuł [migracja do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md).
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>Narzędzia, które można uruchomić w przeglądarce
 Poniższe narzędzia mają interfejs użytkownika, który działa w przeglądarce sieci web:
@@ -40,7 +40,7 @@ Poniższe narzędzia mają interfejs użytkownika, który działa w przeglądarc
     * [Apache Hive widoku Apache Ambari](hadoop/apache-hadoop-use-hive-ambari-view.md)
     * [Apache Tez widoku w Apache Ambari](hdinsight-debug-ambari-tez-view.md)
 
-## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Usługa Data Lake (Hadoop) Tools for Visual Studio
+## <a name="data-lake-hadoop-tools-for-visual-studio"></a>Data Lake (Hadoop) Tools for Visual Studio
 Narzędzia Data Lake Tools for Visual Studio umożliwia wdrażanie topologii Storm i zarządzanie. Narzędzia Data Lake Tools instaluje zestaw SDK platformy SCP.NET, co pozwala na opracowywanie topologii Storm języka C# za pomocą programu Visual Studio.
 
 Przed przejściem do poniższych przykładach [zainstalować i spróbować narzędzi Data Lake Tools for Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md). 

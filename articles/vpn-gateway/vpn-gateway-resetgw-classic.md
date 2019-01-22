@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.openlocfilehash: d23ed383bee3346cfbb20c6935dd3630e137c179
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 72e990516ce6ae3276c6db6f12d1a5dda4d0386f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573909"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432510"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
@@ -46,7 +46,7 @@ Przed zresetowaniem bramy, sprawdź następujące elementy:
 * Klucz wstępny musi być taki sam w przypadku bramy sieci VPN Azure oraz bramy lokalnej sieci VPN.
 * W przypadku zastosowania konkretnej konfiguracji uwzględniającej protokół IPsec/IKE, takiej jak szyfrowanie, algorytmy wyznaczania wartości skrótu i doskonałe utajnienie przekazywania (Perfect Forward Secrecy, PFS), należy się upewnić, że zarówno brama sieci VPN Azure, jak i brama lokalnej sieci VPN mają takie same konfiguracje.
 
-## <a name="portal"></a>Witryna Azure portal
+## <a name="portal"></a>Azure Portal
 
 Można zresetować bramy sieci VPN usługi Resource Manager przy użyciu witryny Azure portal. Jeśli chcesz zresetować bram klasyczny, zobacz [PowerShell](#resetclassic) kroki.
 
@@ -62,7 +62,7 @@ Można zresetować bramy sieci VPN usługi Resource Manager przy użyciu witryny
 
 ### <a name="resource-manager-deployment-model"></a>Model wdrażania usługi Resource Manager
 
-Polecenie cmdlet służące do resetowania bramy to **polecenie Reset-AzureRmVirtualNetworkGateway**. Przed przystąpieniem do wykonywania resetu, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell usługi Resource Manager](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0). Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet1GW w grupie zasobów TestRG1:
+Polecenie cmdlet służące do resetowania bramy to **polecenie Reset-AzureRmVirtualNetworkGateway**. Przed przystąpieniem do wykonywania resetu, upewnij się, że masz najnowszą wersję [poleceń cmdlet programu PowerShell usługi Resource Manager](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.0.0). Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet1GW w grupie zasobów TestRG1:
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
@@ -92,7 +92,7 @@ RequestId      : 9ca273de2c4d01e986480ce1ffa4d6d9
 StatusCode     : OK
 ```
 
-## <a name="cli"></a>Wiersza polecenia platformy Azure
+## <a name="cli"></a>Interfejs wiersza polecenia platformy Azure
 
 Aby zresetować bramę, użyj [resetowania bramy sieci wirtualnej az sieci](https://docs.microsoft.com/cli/azure/network/vnet-gateway#az_network_vnet_gateway_reset) polecenia. Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet5GW w grupie zasobów TestRG5:
 

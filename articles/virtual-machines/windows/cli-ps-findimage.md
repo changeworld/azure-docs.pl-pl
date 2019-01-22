@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: danlep
-ms.openlocfilehash: 5934e955d2a18d111c625670bced134df37ef045
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ff4ccdf28be9d28798fff0e9f66bbb2c860166b7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409598"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424544"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Znajdowanie obrazów maszyn wirtualnych Windows w witrynie Azure Marketplace przy użyciu programu Azure PowerShell
 
@@ -28,7 +28,7 @@ W tym artykule opisano, jak znajdowanie obrazów maszyn wirtualnych w witrynie A
 
 Można również przeglądać dostępne obrazy i ofert przy użyciu [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) storefront, [witryny Azure portal](https://portal.azure.com), lub [wiersza polecenia platformy Azure](../linux/cli-ps-findimage.md). 
 
-Upewnij się, że zostały zainstalowane i skonfigurowane najnowsze [modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Upewnij się, że zostały zainstalowane i skonfigurowane najnowsze [modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -40,11 +40,11 @@ Upewnij się, że zostały zainstalowane i skonfigurowane najnowsze [modułu Azu
 | MicrosoftWindowsServer |WindowsServer |2016 centrum danych za pomocą kontenerów |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2008 R2 SP1 |
+| MicrosoftWindowsServer |WindowsServer |2008-R2-SP1 |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2016 |
-| MicrosoftSQLServer |SQL2017 WS2016 |Enterprise |
-| MicrosoftRServer |Program RServer WS2016 |Enterprise |
+| MicrosoftSQLServer |SQL2017-WS2016 |Enterprise |
+| MicrosoftRServer |RServer-WS2016 |Enterprise |
 
 ## <a name="navigate-the-images"></a>Nawigować po obrazach
 
@@ -164,7 +164,7 @@ Get-AzureRMVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku
 
 Teraz można połączyć wybranego wydawcy, oferty, jednostki SKU i wersji, które znajdują się w URN (wartości rozdzielone:). Przekaż ten URN z `--image` parametru podczas tworzenia maszyny Wirtualnej z [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) polecenia cmdlet. Można opcjonalnie zastąpić numer wersji w URN "najnowszej"wersji, aby uzyskać najnowszą wersję obrazu.
 
-Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Manager, a następnie parametry obrazu będzie ustawić indywidualnie w `imageReference` właściwości. Zobacz [odwołanie do szablonu](/azure/templates/microsoft.compute/virtualmachines).
+Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Manager, a następnie parametry obrazu będzie ustawić indywidualnie w `imageReference` właściwości. Zobacz [dokumentację szablonu](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 

@@ -3,18 +3,18 @@ title: Parametry wejściowe elementu Runbook
 description: Parametry wejściowe elementu Runbook zwiększyć elastyczność elementów runbook, umożliwiając przekazywanie danych do elementu runbook, gdy jest ona uruchamiana. W tym artykule opisano różne scenariusze, w której parametry wejściowe są używane w elementach runbook.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 650effed388dde4419e2ff6aede2f0468551a959
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d22a2de29e170979d9ab5d61c7f21a47d6aee99c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276690"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433445"
 ---
 # <a name="runbook-input-parameters"></a>Parametry wejściowe elementu Runbook
 
@@ -151,7 +151,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć atrybuty, które został
 
 #### <a name="start-a-published-runbook-by-using-powershell-cmdlets-and-assign-parameters"></a>Uruchom opublikowanego elementu runbook za pomocą poleceń cmdlet programu PowerShell i parametry
 
-* **Polecenia cmdlet usługi Azure Resource Manager:** można uruchomić elementu runbook usługi Automation, który został utworzony w grupie zasobów przy użyciu [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook).
+* **Poleceń cmdlet usługi Azure Resource Manager:** Można uruchomić elementu runbook usługi Automation, który został utworzony w grupie zasobów przy użyciu [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook).
   
   **Przykład:**
   
@@ -160,7 +160,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć atrybuty, które został
   
   Start-AzureRmAutomationRunbook -AutomationAccountName “TestAutomation” -Name “Get-AzureVMGraphical” –ResourceGroupName $resourceGroupName -Parameters $params
   ```
-* **Polecenia cmdlet modelu klasycznym wdrożeniu platformy Azure:** można uruchomić elementu runbook usługi automation, który został utworzony w domyślnej grupie zasobów przy użyciu [Start AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
+* **Polecenia cmdlet modelu klasycznym wdrożeniu platformy Azure:** Można uruchomić elementu runbook usługi automation, który został utworzony w domyślnej grupie zasobów przy użyciu [Start AzureAutomationRunbook](https://docs.microsoft.com/powershell/module/servicemanagement/azure/start-azureautomationrunbook).
   
   **Przykład:**
   
@@ -177,7 +177,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć atrybuty, które został
 
 #### <a name="start-a-runbook-by-using-an-sdk-and-assign-parameters"></a>Uruchamianie elementu runbook za pomocą zestawu SDK i przypisać parametry
 
-* **Usługa Azure Resource Manager metoda:** może uruchomić element runbook za pomocą zestawu SDK języka programowania. Poniżej przedstawiono fragment kodu języka C# do uruchamiania elementu runbook na Twoim koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
+* **Usługa Azure Resource Manager metody:** Aby uruchomić element runbook, należy za pomocą zestawu SDK języka programowania. Poniżej przedstawiono fragment kodu języka C# do uruchamiania elementu runbook na Twoim koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).  
   
   ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -196,7 +196,7 @@ W etykiecie poniżej pola wejściowego można zobaczyć atrybuty, które został
       return response.Job;
       }
   ```
-* **Metoda modelu klasycznym wdrożeniu platformy Azure:** może uruchomić element runbook za pomocą zestawu SDK języka programowania. Poniżej przedstawiono fragment kodu języka C# do uruchamiania elementu runbook na Twoim koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
+* **Metoda modelu klasycznym wdrożeniu platformy Azure:** Aby uruchomić element runbook, należy za pomocą zestawu SDK języka programowania. Poniżej przedstawiono fragment kodu języka C# do uruchamiania elementu runbook na Twoim koncie usługi Automation. Możesz wyświetlić cały kod w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs).
   
   ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -235,15 +235,15 @@ Można tworzyć zadania elementu runbook i wprowadzenie interfejsu API REST usł
 
 W identyfikatorze URI żądania Zastąp następujące parametry:
 
-* **Identyfikator subskrypcji:** Twojego identyfikatora subskrypcji platformy Azure.  
-* **— Nazwa usługi w chmurze —:** nazwę chmury usługi, do którego powinny być przesyłane żądania.  
-* **Nazwa konta usługi Automation:** nazwę konta usługi automation, która znajduje się w obrębie określona usługa w chmurze.  
-* **Identyfikator zadania:** identyfikator GUID dla zadania. Identyfikatory GUID w programie PowerShell można utworzyć za pomocą **[GUID]::NewGuid(). ToString()** polecenia.
+* **Identyfikator subskrypcji:** Identyfikator subskrypcji platformy Azure.  
+* **cloud-service-name:** Nazwa, do którego mają być wysyłane żądania usługi w chmurze.  
+* **Nazwa konta usługi Automation —:** Nazwa konta usługi automation, która znajduje się w obrębie określona usługa w chmurze.  
+* **job-id:** Identyfikator GUID dla zadania. Identyfikatory GUID w programie PowerShell można utworzyć za pomocą **[GUID]::NewGuid(). ToString()** polecenia.
 
 Aby można było przekazać parametry dla zadania elementu runbook, należy użyć treści żądania. Trwa dwie poniższe właściwości podane w formacie JSON:
 
-* **Nazwa elementu Runbook:** wymagane. Nazwa elementu runbook, zadania rozpocząć.  
-* **Parametry elementu Runbook:** atrybut opcjonalny. Słownik listę parametrów (nazwa, wartość) sformatuj, gdzie nazwa powinna być typu String i wartość może być dowolną prawidłową wartość JSON.
+* **Nazwa elementu Runbook:** Wymagany. Nazwa elementu runbook, zadania rozpocząć.  
+* **Parametry elementu Runbook:** Opcjonalny. Słownik listę parametrów (nazwa, wartość) sformatuj, gdzie nazwa powinna być typu String i wartość może być dowolną prawidłową wartość JSON.
 
 Jeśli chcesz zacząć **Get AzureVMTextual** elementu runbook, który został wcześniej utworzony za pomocą **VMName** i **resourceGroupName** jako parametry, użyj następującego formatu JSON dla Treść żądania.
 
@@ -285,4 +285,5 @@ Podczas wykonywania elementu runbook za pomocą elementu webhook, wstępnie zdef
 * Aby uzyskać szczegółowe informacje dotyczące różnych sposobów uruchamiania elementu runbook, zobacz [uruchamianie elementu runbook](automation-starting-a-runbook.md).
 * Aby edytować element runbook tekstową, zapoznaj się [edytowanie tekstowych elementów runbook](automation-edit-textual-runbook.md).
 * Edytuj graficzny element runbook, znaleźć [tworzenia elementów graficznych w usłudze Azure Automation](automation-graphical-authoring-intro.md).
+
 

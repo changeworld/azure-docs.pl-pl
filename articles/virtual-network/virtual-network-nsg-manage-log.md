@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 63dd7b0aad3ce42eff3c135bd2fdccc8fcb4ed61
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3d2f07a2a5f660a6f22256fa528c2a308fde81ad
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014084"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435366"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Rejestrowanie diagnostyczne dla grupy zabezpieczeń sieci
 
@@ -49,12 +49,12 @@ Możesz użyć [witryny Azure Portal](#azure-portal), [PowerShell](#powershell),
     | ---------                                                                                   |---------                                                       |
     | Name (Nazwa)                                                                                        | Nazwa wybranej.  Na przykład: *myNsgDiagnostics*      |
     | **Zarchiwizuj na koncie magazynu**, **Stream do usługi event hub**, i **wysyłanie do usługi Log Analytics** | Możesz wybrać dowolną liczbę miejsc docelowych, zgodnie z wybraniu. Aby dowiedzieć się więcej na temat, zobacz [dziennika miejsc docelowych](#log-destinations).                                                                                                                                           |
-    | DZIENNIK                                                                                         | Wybierz jednego lub obu tych kategorii dziennika. Aby dowiedzieć się więcej na temat dane rejestrowane dla każdej kategorii, zobacz [dziennika kategorie](#log-categories).                                                                                                                                             |
+    | LOG                                                                                         | Wybierz jednego lub obu tych kategorii dziennika. Aby dowiedzieć się więcej na temat dane rejestrowane dla każdej kategorii, zobacz [dziennika kategorie](#log-categories).                                                                                                                                             |
 6. Wyświetlanie i analizowanie dzienników. Aby uzyskać więcej informacji, zobacz [wyświetlanie i analizowanie dzienników](#view-and-analyze-logs).
 
 ### <a name="powershell"></a>PowerShell
 
-Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.1.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się do platformy Azure za pomocą konta mającego [niezbędne uprawnienia](virtual-network-network-interface.md#permissions)].
+Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.1.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się do platformy Azure za pomocą konta mającego [niezbędne uprawnienia](virtual-network-network-interface.md#permissions)].
 
 Aby włączyć rejestrowanie diagnostyczne, musisz mieć identyfikator istniejącej sieciowej grupie zabezpieczeń. Jeśli nie masz istniejącej sieciowej grupie zabezpieczeń, możesz utworzyć jedno z [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup).
 

@@ -10,19 +10,20 @@ ms.component: manage
 ms.date: 11/11/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: a4737f4308f49547178bb216b90589c596f604c9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7a02a7fb8043c63ce47f7f0c7dccf025ab5ab402
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118442"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421457"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
 
-Usługa Azure SQL Data Warehouse jest oparta na chmurze Enterprise danych magazynu (EDW), który wykorzystuje wysoce równoległe przetwarzanie (MPP) do szybkiego uruchamiania złożonych zapytań obejmujących petabajty danych. Użyj usługi SQL Data Warehouse jako głównego składnika rozwiązania danych big data. Zaimportuj dane big data do usługi SQL Data Warehouse za pomocą prostych zapytań PolyBase T-SQL, a następnie użyj zaawansowanych funkcji architektury MPP do uruchomienia analityki wysokiej wydajności. Podczas integracji i analizy hurtownia danych stanie się pojedynczym źródłem danych, na którym Twoja firma może polegać przy szukaniu szczegółowych informacji.
+Usługa Azure SQL Data Warehouse (SQL data Warehouse) jest oparta na chmurze Enterprise magazynu danych, który wykorzystuje wysoce równoległe przetwarzanie (MPP) do szybkiego uruchamiania złożonych zapytań obejmujących petabajty danych. Użyj usługi SQL Data Warehouse jako głównego składnika rozwiązania danych big data. Zaimportuj dane big data do usługi SQL Data Warehouse za pomocą prostych zapytań PolyBase T-SQL, a następnie użyj zaawansowanych funkcji architektury MPP do uruchomienia analityki wysokiej wydajności. Podczas integracji i analizy hurtownia danych stanie się pojedynczym źródłem danych, na którym Twoja firma może polegać przy szukaniu szczegółowych informacji.
 
 Kliknij poniższe łącza, aby dowiedzieć się więcej na temat nowych funkcji i ulepszeń, które można oczekiwać, że w najnowszej wersji usługi Azure SQL Data Warehouse. Można oczekiwać, że do odbierania aktualizacji tej usługi podczas harmonogramu konserwacji zidentyfikowane.
 
+- [SQL DW Version 10.0.10106.0](./release-notes-10-0-10106-0.md)
 - [Grudnia 2018 r.](./release-notes-december-2018.md)
 - [Października 2018 r.](./release-notes-october-2018.md)
 - [Września 2018 r.](./release-notes-september-2018.md)
@@ -39,9 +40,9 @@ Aby upewnić się, która wersja została jako zostały zastosowane do magazynu 
 SELECT @@VERSION AS 'SQL Data Warehouse';
 ```
 
-Przykładowe dane wyjściowe: ![Wersja SQL Data Warehouse](./media/release-notes/sql_data_warehouse_version.png)
+Przykładowe dane wyjściowe: ![Wersja SQL Data Warehouse](./media/release-notes/dw-version.png)
 
-Użyj daty identyfikowane, aby upewnić się, która wersja została zastosowana do usługi Azure SQL Data Warehouse. 
+Użyj wersji identyfikowane, aby upewnić się, która wersja została zastosowana do usługi Azure SQL Data Warehouse. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

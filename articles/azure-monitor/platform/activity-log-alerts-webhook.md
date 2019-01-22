@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.component: alerts
-ms.openlocfilehash: 0f72097ad9e8b8675d78654c07a62fb6baf90f4a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 79d10a02b02ecb69f656e5b3d7b0c9ae986504d1
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582307"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438970"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Elementy Webhook dla alertów dziennika aktywności platformy Azure
 Jako część definicji grupy akcji można skonfigurować elementu webhook punktów końcowych, aby otrzymywać powiadomienia o alertach dziennika aktywności. Przy użyciu elementów webhook można kierować te powiadomienia do innych systemów w zakresie przetwarzania końcowego lub niestandardowej akcji. Ten artykuł pokazuje, jak wygląda ładunek HTTP POST do elementu webhook.
@@ -186,7 +186,7 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 | correlationId |Zazwyczaj identyfikator GUID w formacie ciągu. Zdarzenia przy użyciu correlationId należą do tego samego działania większych i zazwyczaj udostępnianie correlationId. |
 | eventDescription |Statyczny tekst opisu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia. |
-| Źródła zdarzeń |Nazwa usługi platformy Azure lub infrastruktury, który wygenerował zdarzenie. |
+| eventSource |Nazwa usługi platformy Azure lub infrastruktury, który wygenerował zdarzenie. |
 | httpRequest |Żądanie zawiera zazwyczaj clientRequestId clientIpAddress i metodę HTTP (na przykład umieścić). |
 | poziom |Jeden z następujących wartości: Krytyczny, błąd, ostrzeżenie i informacyjne. |
 | operationId |Zazwyczaj identyfikator GUID współużytkowane przez zdarzenia odpowiadający jednej operacji. |
@@ -201,3 +201,4 @@ Określonego schematu szczegółowe informacje na temat wszystkich innych alert�
 * [Wysyłać wiadomość SMS za pośrednictwem usługi Twilio, z poziomu alertu platformy Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.
 * [Korzystanie z aplikacji logiki, aby wysłać wiadomość Slack z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.
 * [Użyj aplikacji logiki, aby wysłać komunikat do kolejki platformy Azure z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Ten przykład dotyczy alertów dotyczących metryk, ale może być zmodyfikowana, aby pracować alertu dziennika aktywności.
+

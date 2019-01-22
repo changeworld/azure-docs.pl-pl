@@ -3,18 +3,18 @@ title: Zasoby poświadczeń w usłudze Azure Automation
 description: Zasoby poświadczeń w usłudze Azure Automation zawierają poświadczenia zabezpieczeń, które może służyć do uwierzytelniania w zasobach uzyskiwał dostęp do elementu runbook lub konfiguracji DSC. W tym artykule opisano sposób tworzenia zasobów poświadczeń i używać ich w elementu runbook lub konfiguracji DSC.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 07452a97ba16d7745d48e210dd90ce077be64683
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233443"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439191"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Zasoby poświadczeń w usłudze Azure Automation
 
@@ -142,4 +142,5 @@ print cred["password"]
 * Aby rozpocząć pracę z graficznymi elementami Runbook, zobacz artykuł [My first graphical runbook](automation-first-runbook-graphical.md) (Mój pierwszy graficzny element Runbook).
 * Aby rozpocząć pracę z elementami Runbook przepływu pracy programu PowerShell, zobacz artykuł [My first PowerShell workflow runbook](automation-first-runbook-textual.md) (Mój pierwszy element Runbook przepływu pracy programu PowerShell). 
 * Aby rozpocząć pracę z elementami runbook programu Python2, zobacz [Mój pierwszy element runbook programu Python2](automation-first-runbook-textual-python2.md) 
+
 

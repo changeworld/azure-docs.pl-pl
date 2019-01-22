@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 47c9c66f9dd837da3343f1cfd602a5b51aefc76d
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 80b594eb8d926465f37771e2e6911f9ab3e63f1f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389340"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423820"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
@@ -727,7 +727,7 @@ Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportow
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Przykładowy skrypt, aby zatrzymać i ponownie uruchomić wyzwalaczy i wyczyścić
 
-Poniżej przedstawiono przykładowy skrypt, aby zatrzymać wyzwalaczy przed przystąpieniem do wdrożenia i później ponownego uruchomienia wyzwalaczy. Skrypt zawiera również kod, aby usunąć zasoby, które zostały usunięte. Aby zainstalować najnowszą wersję programu Azure PowerShell, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0).
+Poniżej przedstawiono przykładowy skrypt, aby zatrzymać wyzwalaczy przed przystąpieniem do wdrożenia i później ponownego uruchomienia wyzwalaczy. Skrypt zawiera również kod, aby usunąć zasoby, które zostały usunięte. Aby zainstalować najnowszą wersję programu Azure PowerShell, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.9.0).
 
 ```powershell
 param

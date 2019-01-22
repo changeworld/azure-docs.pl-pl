@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 51470e9f8e0bffe18d1dc4007433246d084a5cb2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846670"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424158"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -39,7 +39,7 @@ Podczas replikowania maszyn wirtualnych programu VMware:
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-1. Kliknij kolejno pozycje **Krok 2. Replikowanie aplikacji** > **Źródło**. Po włączeniu replikacji po raz pierwszy kliknij pozycję **+ Replikuj** w magazynie, aby włączyć replikację dla dodatkowych maszyn.
+1. Kliknij przycisk **krok 2: Replikowanie aplikacji** > **źródła**. Po włączeniu replikacji po raz pierwszy kliknij pozycję **+ Replikuj** w magazynie, aby włączyć replikację dla dodatkowych maszyn.
 2. W **źródła** strony > **źródła**, wybierz serwer konfiguracji.
 3. W **typ maszyny**, wybierz opcję **maszyn wirtualnych** lub **maszyn fizycznych**.
 4. W obszarze **vCenter/vSphere Hypervisor** wybierz serwer vCenter zarządzający hostem vSphere lub wybierz tego hosta. To ustawienie nie jest istotne, Jeśli replikujesz maszyny fizyczne.
@@ -59,7 +59,7 @@ Podczas replikowania maszyn wirtualnych programu VMware:
 8. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne Azure, gdy zostaną uruchomione po przejściu do trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn. Jeśli nie masz sieci, należy [utworzyć](#set-up-an-azure-network). Aby utworzyć sieć przy użyciu usługi Resource Manager, kliknij przycisk **Utwórz nową**. Wybierz podsieć, jeśli ma to zastosowanie, a następnie kliknij przycisk **OK**.
 
     ![Włącz ustawienie obiektu docelowego replikacji](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**.
+9. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**. Jeśli nie jesteś w stanie widoku/wybrać dowolną określoną maszynę wirtualną, kliknij przycisk [tutaj](https://aka.ms/doc-plugin-VM-not-showing) Aby rozwiązać ten problem.
 
     ![Włączanie replikacji wybierz maszyn wirtualnych](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. W **właściwości** > **skonfigurować właściwości**, wybierz konto używane przez serwer przetwarzania, aby automatycznie zainstalować usługi mobilności na maszynie.  

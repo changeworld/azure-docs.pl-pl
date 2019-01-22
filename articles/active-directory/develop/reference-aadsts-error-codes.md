@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 11/30/2018
+ms.date: 01/11/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 97f884a45a0a07e2b4c48f39483c70248e7a492e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 1e3dc984de15fa2c94fc5150020f1af1579e2c5c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620399"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434108"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -254,6 +254,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS221000 | Nie skonfigurowano DeviceOnlyTokensNotSupportedByResource - zasobu mogą zaakceptować tokeny tylko do urządzeń. |
 | AADSTS240001 | BulkAADJTokenUnauthorized — użytkownik nie ma uprawnień do zarejestrowania urządzenia w usłudze Azure AD. |
 | AADSTS240002 | RequiredClaimIsMissing - id_token nie może pełnić `urn:ietf:params:oauth:grant-type:jwt-bearer` udzielić.|
+| AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest — aplikacja nie został znaleziony w katalogu/dzierżawców. Może to nastąpić, jeśli nie została zainstalowana przez administratora dzierżawy lub wyraża zgodę na żaden użytkownik w dzierżawie usługi aplikacji. Możesz może być nieprawidłowo skonfigurowana wartość identyfikatora dla aplikacji, lub wysłać żądanie uwierzytelnienia do nieprawidłowej dzierżawy. |
 | AADSTS700020 | InteractionRequired — udzielanie dostępu wymaga interakcji. |
 | AADSTS700022 | InvalidMultipleResourcesScope — podana wartość zakresu parametr wejściowy jest nieprawidłowy, ponieważ zawiera on więcej niż jeden zasób. |
 | AADSTS700023 | InvalidResourcelessScope — podana jest wartość dla zakresu parametr wejściowy jest nieprawidłowy podczas żądania tokenu dostępu. |

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: e7d76138f9d3701fa7e3177227fbeb4386434126
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 7ddd5c0195bdd59deac453fe324b6d8c6898ec2e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983805"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434210"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>Dodawanie użytkowników-gości współpracy B2B bez zaproszenia
 
@@ -36,6 +36,6 @@ Jeśli zaproszenie użytkownika do katalogu użytkownik-Gość musi uzyskać dos
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 - [Realizacja zaproszenia współpracy B2B](redemption-experience.md)
-- [Delegowanie zaproszeń do współpracy B2B usługi Azure Active Directory](delegate-invitations.md)
+- [Delegate invitations for Azure Active Directory B2B collaboration (Delegowanie zaproszeń na potrzeby współpracy B2B w usłudze Azure Active Directory)](delegate-invitations.md)
 - [Jak pracownicy przetwarzający informacje mogą dodać użytkowników we współpracy B2B?](add-users-information-worker.md)
 

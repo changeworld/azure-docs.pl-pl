@@ -3,18 +3,18 @@ title: Hybrydowy proces roboczy elementu runbook usługi Azure Automation (Linux
 description: Ten artykuł zawiera informacje na temat instalowania usługi Azure Automation hybrydowego procesu roboczego Runbook, aby można było uruchomić elementy runbook na komputerach opartych na systemie Linux w środowisku chmury lub lokalnym centrum danych.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f32574dc0a3fd61c21e8c9a7c1ec93c7d366d384
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: e0aaddb841687718295e09e64b23d9cefa9246fd
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408850"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436114"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie procesu roboczego elementu Runbook dla hybrydowych w systemie Linux
 
@@ -49,10 +49,10 @@ Dostępne są następujące minimalne wymagania dotyczące procesu roboczego ele
 | **Wymagany pakiet** | **Opis** | **Minimalna wersja**|
 |--------------------- | --------------------- | -------------------|
 |Glibc |Biblioteka C GNU| 2.5-12 |
-|biblioteki openssl| Biblioteki OpenSSL | 1.0 (protokół TLS 1.1 i TLS 1.2 są obsługiwane|
+|Openssl| Biblioteki OpenSSL | 1.0 (protokół TLS 1.1 i TLS 1.2 są obsługiwane|
 |Curl | Klient sieci web programu cURL | 7.15.5|
 |Ctypes języka Python | |
-|USŁUGI PAM | Podłączane moduły uwierzytelniania|
+|PAM | Podłączane moduły uwierzytelniania|
 | **Opcjonalny pakiet** | **Opis** | **Minimalna wersja**|
 | Program PowerShell Core | Aby uruchomić elementy runbook programu PowerShell, zobacz PowerShell musi zostać zainstalowany, [Instalowanie programu PowerShell Core w systemie Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) dowiesz się, jak go zainstalować.  | 6.0.0 |
 
@@ -119,3 +119,4 @@ Aby dowiedzieć się, jak rozwiązywać problemy z hybrydowych procesów roboczy
 
 * Aby dowiedzieć się, jak skonfigurować elementy runbook do automatyzacji procesów w lokalnym centrum danych lub w innym środowisku chmury, zobacz [uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md).
 * Aby uzyskać instrukcje dotyczące sposobu usuwania hybrydowych procesów roboczych Runbook, zobacz [Usuń usługi Azure Automation hybrydowych procesów roboczych Runbook](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
+

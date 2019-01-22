@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: f0b13480c06e154b85300f4a8a2f8a84db04c31b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5424448207bca3e6db253245ce7197feae5fba21
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582381"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424986"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -102,10 +102,10 @@ W zależności od których możesz użyć rozwiązania sieci VPN różnią się 
 Ten krok może już być ukończone w dzierżawie, ale warto dokładnie sprawdzić, czy program Azure AD Connect został zsynchronizowany później baz danych.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
-2. Wybierz **usługi Azure Active Directory** > **programu Azure AD Connect**
+2. Select **Azure Active Directory** > **Azure AD Connect**
 3. Sprawdź, czy stan usługi synchronizacji **włączone** i które ostatniej synchronizacji było krócej niż godzinę temu.
 
-Jeśli potrzebujesz Konferencję nowe działanie synchronizacji, nam instrukcje w [synchronizacji programu Azure AD Connect: harmonogram](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
+Jeśli potrzebujesz Konferencję nowe działanie synchronizacji, nam instrukcje w [synchronizacji programu Azure AD Connect: Harmonogram](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>Określanie użytkowników można użyć metod uwierzytelniania
 

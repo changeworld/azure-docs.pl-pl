@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 9dc57876467deb24a763a3c3772209e3e2e0ca0d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 967bd0d980bf0f9c184287c10fd531758c992247
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360041"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437862"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure
 
@@ -85,7 +85,7 @@ Aby uogólnić maszynę Wirtualną Windows, wykonaj następujące kroki:
 Tworzenie obrazu bezpośrednio z poziomu maszyny Wirtualnej sprawdza, czy obraz, który zawiera wszystkie dyski skojarzone z maszyną Wirtualną, w tym dysk systemu operacyjnego i dysków z danymi. Ten przykład przedstawia sposób tworzenia obrazu zarządzanego z maszyny Wirtualnej używa dysków zarządzanych.
 
 
-Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu programu AzureRM.Compute PowerShell, który musi być w wersji 5.7.0 lub nowszej. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable AzureRM.Compute` w programie PowerShell. Jeśli musisz uaktualnić, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzureRmAccount` do utworzenia połączenia z platformą Azure.
+Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu programu AzureRM.Compute PowerShell, który musi być w wersji 5.7.0 lub nowszej. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable AzureRM.Compute` w programie PowerShell. Jeśli musisz uaktualnić, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzureRmAccount` do utworzenia połączenia z platformą Azure.
 
 
 > [!NOTE]

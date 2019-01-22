@@ -3,18 +3,18 @@ title: Elementy zawartości połączenia w usłudze Azure Automation
 description: Elementy zawartości połączenia w usłudze Azure Automation zawiera informacje wymagane do połączenia z zewnętrzną usługą lub aplikacją z elementu runbook lub konfiguracji DSC. W tym artykule opisano szczegóły połączenia i sposób pracy z nimi w tworzeniu tekstową i graficznego.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9687276323598d8600aa6930df8ef18bcc171cc1
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358834"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439021"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Elementy zawartości połączenia w usłudze Azure Automation
 
@@ -164,3 +164,4 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - Przegląd [łącza w tworzenie graficzne](automation-graphical-authoring-intro.md#links-and-workflow) zrozumienie, jak kierować do sterowania przepływem logiki w elementach runbook.  
 
 - Aby dowiedzieć się więcej na temat używania usługi Azure Automation modułów programu PowerShell i najlepsze rozwiązania do tworzenia własnych modułów programu PowerShell, aby działać jako moduły integracji w usłudze Azure Automation, zobacz [moduły integracji](automation-integration-modules.md).  
+

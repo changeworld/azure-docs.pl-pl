@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: bwren
-ms.openlocfilehash: f7eca75c6c445f801ad5c4dbc080d2ece9dc23f9
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 25d6b582ed4d4e24df3841f4191471296e25abd8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54392231"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436336"
 ---
 # <a name="writing-efficient-log-queries-in-azure-monitor"></a>Pisanie zapytań wydajne dzienników w usłudze Azure Monitor
 Ten artykuł zawiera zalecenia dotyczące pisania zapytań wydajne dziennika w usłudze Azure Monitor. Korzystając z następujących strategii, można zagwarantować, że Twoje zapytania będą uruchamiane szybko i przy minimalnym dla.
@@ -41,7 +41,7 @@ search in (exceptions) "The server was not found"
 search in (exceptions, customEvents) "timeout"
 ```
 
-Użyj [Unii](/kusto/query/unionoperator) kwerendy kilka tabel, podobnie do poniższego:
+Użyj [Unii](/azure/kusto/query/unionoperator) kwerendy kilka tabel, podobnie do poniższego:
 
 ``` Kusto
 union requests, traces | ...

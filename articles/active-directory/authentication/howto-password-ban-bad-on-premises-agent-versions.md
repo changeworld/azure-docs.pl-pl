@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 89d64a28d2fe43464995e434c9f3807047b29492
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 1d27aa46148e0169909a7aaf05baaac18b050a34
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913640"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423667"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>(Wersja zapoznawcza): Historia wersji agenta ochrony haseł usługi Azure AD
+# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Wersja zapoznawcza:  Azure historię wersji agenta ochrony AD haseł
 
 |     |
 | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "50913640"
 
 ## <a name="12250"></a>1.2.25.0
 
-Data wydania: 11/01/2018 r.
+Data wydania: 11/01/2018
 
 Poprawki:
 
@@ -36,14 +36,14 @@ Poprawki:
 * Mniejszy przyrost wydajności i niezawodności poprawek
 * Ulepszone rejestrowanie
 
-Zmiany:
+Changes:
 
 * Minimalny wymagany poziom systemu operacyjnego dla usługi serwera Proxy jest teraz systemu Windows Server 2012 R2. Minimalny wymagany poziom systemu operacyjnego dla usługi agenta DC pozostaje w systemie Windows Server 2012.
 * Algorytm sprawdzania poprawności hasła używa tabeli normalizacji rozwiniętej znaków. Może to spowodować, że hasła są odrzucane, które zostały zaakceptowane w poprzednich wersjach.
 
 ## <a name="12100"></a>1.2.10.0
 
-Data wydania: 8/17/2018 r.
+Data wydania: 8/17/2018
 
 Poprawki:
 
@@ -67,7 +67,7 @@ Poprawki:
 
 ## <a name="11103"></a>1.1.10.3
 
-Data wydania: 6/15/2018 r.
+Data wydania: 6/15/2018
 
 Początkowa publicznej wersji zapoznawczej
 

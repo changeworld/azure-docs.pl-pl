@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9c728ba4c77cd22782adc9916da62cc309a8150b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622324"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431660"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Jak pomyślnie wdrożyć funkcję samoobsługowego resetowania haseł
 
@@ -24,7 +24,7 @@ Aby zapewnić bezproblemowe wdrożenie funkcji samoobsługowego resetowania hase
 > [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
 
 1. Ukończ pilotażowe wdrożenie się z małego podzbioru organizacji.
-   * Informacje na temat sposobu projekt pilotażowy można znaleźć w [samouczek: pełne pilotażu resetowania haseł usługi Azure AD wdrażanie](tutorial-sspr-pilot.md).
+   * Informacje na temat sposobu projekt pilotażowy można znaleźć w [samouczka: Kompletny projekt pilotażowy resetowania haseł usługi Azure AD wdrażanie](tutorial-sspr-pilot.md).
 1. Wiedzę techniczną.
    * Jak będą one ułatwić użytkownikom?
    * Czy wymusi użytkownikom korzystać z funkcji samoobsługowego resetowania HASEŁ i nie zezwalaj, aby ułatwić użytkownikom?
@@ -41,12 +41,12 @@ Aby zapewnić bezproblemowe wdrożenie funkcji samoobsługowego resetowania hase
 
 Wielu klientów uważa, że najłatwiejszym sposobem zachęcenia użytkowników do korzystania z samoobsługowego resetowania haseł jest kampania e-mail z prostymi do zastosowania instrukcjami. [Utworzono proste wiadomości e-mail i inne dodatkowe materiały, które możesz można użyć jako szablonów w swoim wdrożeniu](https://www.microsoft.com/download/details.aspx?id=56768):
 
-* **Dostępne wkrótce**: szablon wiadomości e-mail do zastosowania w tygodniach lub dniach poprzedzających wdrażanie w celu powiadomienia użytkowników o tym, że mają coś zrobić.
-* **Już dostępne**: szablon wiadomości e-mail do zastosowania w dniu uruchomienia programu, aby zachęcić użytkowników do rejestracji i potwierdzenia swoich danych uwierzytelniania. Jeśli użytkownicy zarejestrują się od razu, będą mogli skorzystać z samoobsługowego resetowania haseł, gdy będą tego potrzebować.
-* **Przypomnienie o rejestracji**: szablon wiadomości e-mail do zastosowania w ciągu kilku dni lub tygodni po wdrożeniu w celu przypomnienia użytkownikom, aby zarejestrowali się i potwierdzili swoje dane uwierzytelniania.
-* **Plakaty samoobsługowego resetowania HASEŁ**: plakaty można dostosować i wyświetlać wokół organizacji w dniach i tygodnie, co prowadzi do i od Twojego procesu.
-* **Samoobsługowe Resetowanie HASEŁ w identyfikatorach**: Tabela kart, które można umieścić w tym pomieszczeniu obiad salach konferencyjnych lub działami zachęcić użytkowników do ukończenia rejestracji.
-* **Samoobsługowe Resetowanie HASEŁ nalepki**: nalepkę szablony można dostosować i Drukuj, aby umieścić laptopów, monitorów, klawiatur lub telefony komórkowe, do zapamiętania sposobu dostępu z funkcji samoobsługowego resetowania HASEŁ.
+* **Wkrótce**: Szablon wiadomości e-mail używanego w tygodniach lub dniach poprzedzających, aby powiadomić użytkowników, które są im potrzebne coś zrobić.
+* **Dostępne teraz**: Szablon wiadomości e-mail, że używasz dnia program Uruchom, aby zachęcić użytkowników do rejestracji i potwierdzenia swoich danych uwierzytelniania. Jeśli użytkownicy zarejestrują się od razu, będą mogli skorzystać z samoobsługowego resetowania haseł, gdy będą tego potrzebować.
+* **Przypomnienie o rejestracji**: Szablon wiadomości e-mail przez kilka dni lub tygodni po wdrożeniu w celu przypomnienia użytkownikom, aby zarejestrować się i potwierdzili swoje dane uwierzytelniania.
+* **Plakaty samoobsługowego resetowania HASEŁ**: Plakaty można dostosować i wyświetlać wokół organizacji w dniach i tygodnie, co prowadzi do i od Twojego procesu.
+* **Samoobsługowe Resetowanie HASEŁ w identyfikatorach**: Karty tabeli można umieścić w tym pomieszczeniu obiad salach konferencyjnych lub działami zachęcić użytkowników, aby zakończyć rejestrację.
+* **Samoobsługowe Resetowanie HASEŁ nalepki**: Nalepki szablony można dostosować i Drukuj, aby umieścić laptopów, monitorów, klawiatur lub telefony komórkowe, do zapamiętania sposobu dostępu z funkcji samoobsługowego resetowania HASEŁ.
 
 ![Przykłady E-mail samoobsługowego resetowania HASEŁ][Email]
 
