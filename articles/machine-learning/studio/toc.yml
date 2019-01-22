@@ -212,23 +212,21 @@ items:
     href: /azure/templates/microsoft.machinelearning/allversions
 - name: Zasoby
   items:
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-machine-learning
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Przewodnik dewelopera języka R
     href: ../r-developers-guide.md
   - name: Niestandardowe sieci neuronowe w języku Net#
     href: azure-ml-netsharp-reference-guide.md
+  - name: Uzyskiwanie pomocy technicznej
+    href: support-aml-studio.md
   - name: Porównanie naszych produktów do uczenia maszynowego
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: a79ff2e7b2fba67e5c341468b462eacd07e2693c
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 585310705bebbceb0aa4576977ef096704d87483
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401949"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424789"
