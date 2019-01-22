@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/28/2018
+ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078498"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321742"
 ---
-# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
+# <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Samouczek: Tworzenie i wdrażanie aplikacji przy użyciu usługi frontonu platformy ASP.NET Core z internetowym interfejsem API oraz stanowej usługi zaplecza
 
 Niniejszy samouczek jest pierwszą częścią serii.  Zostanie tutaj przedstawiony sposób tworzenia aplikacji usługi Azure Service Fabric za pomocą frontonu internetowego interfejsu API platformy ASP.NET Core i stanowej usługi zaplecza umożliwiającej przechowywanie danych. Po zakończeniu będziesz mieć aplikację do głosowania z usługą internetową frontonu ASP.NET Core, która zapisuje wyniki głosowania w stanowej usłudze zaplecza w klastrze. Jeśli nie chcesz ręcznie tworzyć aplikacji do głosowania, możesz [pobrać kod źródłowy](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) gotowej aplikacji i przejść od razu do sekcji [Szczegółowe omówienie przykładowej aplikacji do głosowania](#walkthrough_anchor).  Jeśli wolisz, możesz też obejrzeć [przewodnik wideo](https://channel9.msdn.com/Events/Connect/2017/E100) dla tego samouczka.
 
@@ -46,7 +46,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem tego samouczka:
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Zainstaluj program Visual Studio 2017](https://www.visualstudio.com/) w wersji 15.5 lub nowszej z obciążeniami **Programowanie na platformie Azure** i **Tworzenie aplikacji na platformie ASP.NET i tworzenie aplikacji internetowych**.
 * [Zainstaluj zestaw SDK usługi Service Fabric.](service-fabric-get-started.md)
 
@@ -326,8 +326,6 @@ W Eksploratorze rozwiązań otwórz plik *VotingWeb/PackageRoot/ServiceManifest.
 
 Zaktualizuj również właściwość Adres URL aplikacji w projekcie Voting, aby w przeglądarce internetowej został otwarty właściwy port podczas debugowania aplikacji.  W Eksploratorze rozwiązań wybierz projekt **Voting** i zaktualizuj właściwość **Adres URL aplikacji** na wartość **8080**.
 
-![Adres URL aplikacji](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
-
 ### <a name="deploy-and-run-the-voting-application-locally"></a>Wdrażanie i uruchamianie aplikacji Voting lokalnie
 Teraz możesz przystąpić do uruchomienia aplikacji Voting na potrzeby debugowania. W programie Visual Studio naciśnij klawisz **F5**, aby wdrożyć aplikację do lokalnego klastra usługi Service Fabric w trybie debugowania. Aplikacja zakończy działanie niepowodzeniem, jeśli program Visual Studio nie został wcześniej otwarty za pomocą konta z uprawnieniami **administratora**.
 
@@ -454,12 +452,7 @@ W następnym kroku połączysz te dwie usługi i sprawisz, że aplikacja interne
 
 Usługa Service Fabric zapewnia pełną elastyczność w sposobie komunikowania się z niezawodnymi usługami. W obrębie pojedynczej aplikacji mogą istnieć usługi, które są dostępne za pośrednictwem protokołu TCP. Inne usługi mogą być dostępne za pośrednictwem interfejsu API REST protokołu HTTP, a jeszcze inne za pośrednictwem gniazd internetowych. Aby zapoznać się z opisem dostępnych opcji i zastosowanych technologii, zobacz [Communicating with services](service-fabric-connect-and-communicate-with-services.md) (Komunikacja z usługami).
 
-W tym samouczku użyj [internetowego interfejsu API platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) oraz [zwrotnego serwera proxy platformy Service Fabric](service-fabric-reverseproxy.md), aby internetowa usługa frontonu VotingWeb mogła komunikować się z usługą zaplecza VotingData. Zwrotny serwer proxy został skonfigurowany tak, aby domyślnie używać portu 19081, i powinien działać w tym samouczku. Port jest ustawiany w szablonie ARM używanym do konfigurowania klastra. Aby znaleźć używany port, poszukaj w szablonie klastra w zasobie **Microsoft.ServiceFabric/clusters** lub w elemencie HttpApplicationGatewayEndpoint w manifeście klastra.
-
-> [!NOTE]
-> Zwrotny serwer proxy jest obsługiwany tylko w przypadku klastrów z systemem Windows 8 lub nowszym albo Windows Server 2012 lub nowszym.
-
-<u>Zasób Microsoft.ServiceFabric/clusters reverseProxyEndpointPort</u>
+W tym samouczku użyj [internetowego interfejsu API platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) oraz [zwrotnego serwera proxy platformy Service Fabric](service-fabric-reverseproxy.md), aby internetowa usługa frontonu VotingWeb mogła komunikować się z usługą zaplecza VotingData. Zwrotny serwer proxy został skonfigurowany tak, aby domyślnie używać portu 19081, i powinien działać w tym samouczku. Port zwrotnego serwera proxy jest skonfigurowany w szablonie usługi Azure Resource Manager użytym do skonfigurowania klastra. Aby sprawdzić, który port jest używany, należy poszukać go w szablonie klastra w zasobie **Microsoft.ServiceFabric/clusters**: 
 
 ```json
 "nodeTypes": [
@@ -472,13 +465,10 @@ W tym samouczku użyj [internetowego interfejsu API platformy ASP.NET Core](serv
           }
         ],
 ```
-Aby wyświetlić element HttpApplicationGatewayEndpoint w manifeście klastra lokalnej usługi Service Fabric:
-1. Otwórz okno przeglądarki i przejdź pod adres http://localhost:19080.
-2. Kliknij przycisk **Manifest**.
+Aby odnaleźć port zwrotnego serwera proxy użyty w lokalnym klastrze programowania, wyświetl element **HttpApplicationGatewayEndpoint** w manifeście klastra lokalnej usługi Service Fabric:
+1. Otwórz przeglądarkę i przejdź do strony http://localhost:19080, aby otworzyć narzędzie Service Fabric Explorer.
+2. Wybierz kolejno pozycje **Klaster > Manifest**.
 3. Zanotuj port elementu HttpApplicationGatewayEndpoint. Domyślnie port to 19081. Jeśli port jest inny niż 19081, musisz zmienić go w metodzie GetProxyAddress następującego kodu VotesController.cs.
-
-
-
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 
@@ -622,9 +612,9 @@ Podczas debugowania aplikacji w programie Visual Studio używany jest lokalny kl
 
 Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 
-1. Otwórz plik **VotingWeb\VotesController.cs** i ustaw punkt przerwania w metodzie **Put** tego internetowego interfejsu API (wiersz 63).
+1. Otwórz plik **VotingWeb\VotesController.cs** i ustaw punkt przerwania w metodzie **Put** tego internetowego interfejsu API (wiersz 72).
 
-2. Otwórz plik **VotingData\VoteDataController.cs** i ustaw punkt przerwania w metodzie **Put** tego internetowego interfejsu API (wiersz 53).
+2. Otwórz plik **VotingData\VoteDataController.cs** i ustaw punkt przerwania w metodzie **Put** tego internetowego interfejsu API (wiersz 54).
 
 3. Naciśnij klawisz **F5**, aby uruchomić aplikację w trybie debugowania.
 

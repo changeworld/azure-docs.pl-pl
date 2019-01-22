@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4ee1c9edf8cb10cae1a8a6e1c15f9bcf6e9a8ff8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034322"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359463"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Tworzenie pierwszej funkcji trwałej w języku Java Script
 
@@ -94,7 +94,7 @@ Dodaliśmy orkiestrator w celu koordynowania funkcji działania. Dodajmy teraz f
 
 ## <a name="create-an-activity-function"></a>Tworzenie funkcji działania
 
-1. Powtórz kroki z poprzednich sekcji, aby utworzyć trzecią funkcję przy użyciu szablonu wyzwalacza HTTP. Ale tym razem nadaj funkcji nazwę `SayHello`.
+1. Powtórz kroki z poprzednich sekcji, aby utworzyć trzecią funkcję przy użyciu szablonu wyzwalacza HTTP. Ale tym razem nadaj funkcji nazwę `E1_SayHello`.
 
 2. Otwórz plik index.js dla nowej funkcji i zastąp zawartość następującym kodem:
 
@@ -121,9 +121,11 @@ Podstawowe narzędzia usługi Azure Functions umożliwiają uruchamianie projekt
 
     ![Lokalne dane wyjściowe platformy Azure](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-4. Wklej adres URL żądania HTTP na pasku adresu przeglądarki i sprawdź stan aranżacji.
+4. Zastąp element `{functionName}` pytaniem `OrchestratorFunction`.
 
-5. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F1.
+5. Za pomocą narzędzia takiego jak [Postman](https://www.getpostman.com/) lub [cURL](https://curl.haxx.se/) wyślij żądanie HTTP POST do punktu końcowego adresu URL.
+
+6. Aby zatrzymać debugowanie, naciśnij klawisze Shift+F1 w programie VS Code.
 
 Gdy będziesz mieć pewność, że funkcja działa poprawnie na komputerze lokalnym, możesz opublikować projekt na platformie Azure.
 

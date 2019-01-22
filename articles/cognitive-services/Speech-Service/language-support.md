@@ -161,7 +161,7 @@ vi-VN | Wietnamski|Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę 
 zh-CN | Chiński (kontynent)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, HuihuiRUS)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, Yaoyao, Apollo)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-CN, Kangkang, Apollo)"
-zh-HK | Chiński (Hongkong)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK Tracy, Apollo)"
+zh-HK | Chiński (SRA Hongkong)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK Tracy, Apollo)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK TracyRUS)"
 | || Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-HK Danny, Apollo)"
 zh-TW | Chiński (Tajwan)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-TW, Yating, Apollo)"

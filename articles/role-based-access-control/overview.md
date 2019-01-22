@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c614ae9d157c6e4121701cb22213706020ee20a7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867902"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303327"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co to jest kontrola dostępu oparta na rolach?
 
@@ -78,7 +78,7 @@ Na platformie Azure wprowadzono operacje na danych (obecnie dostępne w wersji z
 
 ### <a name="scope"></a>Zakres
 
-*Zakres* określa granice, w ramach których jest przydzielany dostęp. Podczas przypisywania roli możesz dodatkowo ograniczyć dozwolone czynności, określając zakres. Jest to przydatne na przykład wówczas, gdy chcesz przypisać użytkownikowi rolę [współautora witryny internetowej](built-in-roles.md#website-contributor), ale tylko w jednej grupie zasobów.
+*Zakres* to zestaw zasobów, w ramach którego jest przydzielany dostęp. Podczas przypisywania roli możesz dodatkowo ograniczyć dozwolone czynności, określając zakres. Jest to przydatne na przykład wówczas, gdy chcesz przypisać użytkownikowi rolę [współautora witryny internetowej](built-in-roles.md#website-contributor), ale tylko w jednej grupie zasobów.
 
 Na platformie Azure można określić zakres na różnych poziomach: [grupy zarządzania](../azure-resource-manager/management-groups-overview.md), subskrypcji, grupy zasobów lub zasobu. Zakresy mają strukturę relacji element nadrzędny-element podrzędny.
 
@@ -99,6 +99,12 @@ Na poniższym diagramie przedstawiono przykład przypisania roli. W tym przykła
 ![Przypisanie roli w celu kontroli dostępu](./media/overview/rbac-overview.png)
 
 Przypisania ról można tworzyć, korzystając z witryny Azure Portal, interfejsu wiersza polecenia platformy Azure, programu Azure PowerShell, zestawów Azure SDK lub interfejsów API REST. W ramach jednej subskrypcji można utworzyć maksymalnie 2000 przypisań ról. Aby móc tworzyć i usuwać przypisania ról, potrzebne są uprawnienia `Microsoft.Authorization/roleAssignments/*`. Te uprawnienia można przyznać za pomocą ról [Właściciel](built-in-roles.md#owner) i [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
+
+## <a name="multiple-role-assignments"></a>Przypisania wielu ról
+
+Co więc się dzieje w przypadku wielu nakładających się przypisań ról? RBAC jest modelem addytywnym, dzięki czemu Twoje czynne uprawnienia są dodatkiem do przypisań ról. Rozważmy poniższy przykład, w którym użytkownikowi przypisano rolę Współautor w zakresie subskrypcji i rolę Czytelnik w grupie zasobów. Dodanie uprawnień Współautor i Czytelnik daje faktycznie rolę Współautor dla grupy zasobów. Dlatego w tym przypadku przypisanie roli Czytelnik nie ma żadnego znaczenia.
+
+![Przypisania wielu ról](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Przypisania odmowy
 
@@ -126,7 +132,7 @@ Poniżej przedstawiono główne kroki wykorzystywane przez kontrolę dostępu op
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Szybki start: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i witryny Azure Portal](quickstart-assign-role-user-portal.md)
+- [Szybki start: udzielanie dostępu użytkownikowi za pomocą kontroli RBAC i witryny Azure Portal](quickstart-assign-role-user-portal.md)
 - [Manage access using RBAC and the Azure portal (Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal)](role-assignments-portal.md)
 - [Understand the different roles in Azure (Omówienie ról na platformie Azure)](rbac-and-directory-admin-roles.md)
-- [Enterprise Cloud Adoption: Resource access management in Azure (Wdrożenie rozwiązania Enterprise Cloud: zarządzanie dostępem do zasobów na platformie Azure)](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)
+- [Wdrożenie rozwiązania Enterprise Cloud: zarządzanie dostępem do zasobów na platformie Azure](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

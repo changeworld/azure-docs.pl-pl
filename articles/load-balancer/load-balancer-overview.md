@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 7b0a837bf23145c5ac5e5775d4324582fa3a6b20
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e66acd6a94b891ac3f727fddb7a88a9c56f465d3
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120839"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246572"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co to jest usługa Azure Load Balancer?
 
@@ -153,7 +153,13 @@ Wewnętrzny moduł równoważenia obciążenia pozwala na następujące typy ró
 *Rysunek: równoważenie obciążenia aplikacji wielowarstwowych za pomocą publicznego i wewnętrznego modułu równoważenia obciążenia*
 
 ## <a name="pricing"></a>Cennik
-Opłaty za użycie modułu równoważenia obciążenia w warstwie Standardowa są naliczane na podstawie liczby skonfigurowanych reguł równoważenia obciążenia i ilości przetworzonych danych przychodzących i wychodzących. Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warstwie Standardowa, przejdź na stronę [cennika modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/).
+
+Usługa Load Balancer w warstwie Standardowa jest płatna.
+
+- Liczba skonfigurowanych reguł równoważenia obciążenia i reguł dla ruchu wychodzącego (reguły NAT dla ruchu przychodzącego nie są wliczane do łącznej liczby reguł).
+- Ilość przetworzonych danych dla ruchu przychodzącego i wychodzącego niezależnie od reguły. 
+
+Aby uzyskać informacje na temat cen modułu równoważenia obciążenia w warstwie Standardowa, przejdź na stronę [cennika modułu równoważenia obciążenia](https://azure.microsoft.com/pricing/details/load-balancer/).
 
 Za użycie modułu równoważenia obciążenia w warstwie Podstawowa nie są naliczane opłaty.
 

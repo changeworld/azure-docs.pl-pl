@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8b9097a62ca4bfa67fb5eb35e06f7834df6691e7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 07239e3411bc8df06cdff731343649867b59a3c9
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622809"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54213098"
 ---
-# <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Samouczek: Jak pobrać skrypt w celu uzyskania dostępu do dzienników logowania i jak go używać
+# <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Samouczek: jak pobrać skrypt w celu uzyskania dostępu do dzienników logowania i jak go używać
 
 Jeśli chcesz pracować z danymi dotyczącymi działań związanych z logowaniem poza witryną Azure Portal, możesz je pobrać. Opcja **Pobierz** w witrynie Azure Portal umożliwia utworzenie pliku CSV zawierającego 5000 najnowszych rekordów. Jeśli potrzebujesz większej elastyczności, na przykład chcesz pobrać więcej niż 5000 rekordów jednocześnie lub pobierać dzienniki w zaplanowanych odstępach czasu, możesz użyć przycisku **Skrypt**, aby wygenerować skrypt programu PowerShell do pobierania danych.
 
@@ -33,7 +33,7 @@ W tym samouczku pokazano, jak wygenerować skrypt w celu pobierania wszystkich d
 
 Potrzebne elementy:
 
-* Dzierżawa usługi Azure Active Directory z licencją premium (P1/P2). 
+* Dzierżawa usługi Azure Active Directory z licencją premium (P1/P2). Pamiętaj, że jeśli przed uaktualnieniem nie istniały żadne dane działań, po przejściu na licencję premium może minąć kilka dni, zanim te dane pojawią się w raportach. 
 * Użytkownik mający rolę **administratora globalnego**, **administratora zabezpieczeń**, **czytelnika zabezpieczeń** lub **czytelnika raportów** dla dzierżawy. Ponadto każdy użytkownik może uzyskiwać dostęp do informacji o swoim logowaniu. 
 * Jeśli chcesz uruchomić pobrany skrypt na maszynie z systemem Windows 10, [skonfiguruj moduł AzureRM i ustaw zasady wykonywania](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
 

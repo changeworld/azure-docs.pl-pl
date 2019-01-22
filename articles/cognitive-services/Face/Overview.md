@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1916aa94dcf7528ce898ef37eac29c1017f03f15
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633465"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54231890"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co to jest interfejs API rozpoznawania twarzy na platformie Azure?
 
@@ -72,8 +72,12 @@ Po zainstalowaniu standardowego kontenera platformy Docker blisko danych można 
 
 Następujące przykładowe aplikacje pokazują kilka sposobów używania interfejsu API rozpoznawania twarzy.
 
-- [Microsoft Face API: Windows Client Library & Sample](https://github.com/Microsoft/Cognitive-Face-Windows) — przykładowa aplikacja WPF przedstawiająca kilka scenariuszy wykrywania, analizy i identyfikacji twarzy.
+- [Interfejs API rozpoznawania twarzy firmy Microsoft: biblioteka klienta systemu Windows i przykład](https://github.com/Microsoft/Cognitive-Face-Windows) — przykładowa aplikacja WPF przedstawiająca kilka scenariuszy wykrywania, analizy i identyfikacji twarzy.
 - [Aplikacja platformy UWP FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes) — aplikacja platformy uniwersalnej systemu Windows (UWP), która używa funkcji identyfikacji twarzy wraz z funkcją rozpoznawania mowy, Cortaną, funkcją pisma odręcznego i kamerą w scenariuszu udostępniania notatek w rodzinie.
+
+## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
+
+Podobnie jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi rozpoznawania twarzy powinni wiedzieć o zasadach firmy Microsoft dotyczących danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/en-us/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Następne kroki
 

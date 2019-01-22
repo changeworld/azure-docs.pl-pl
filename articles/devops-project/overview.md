@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: 9efb3c9bae790efed3d09274b1a77d7b8161d479
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9e425662a698f077c3a1b9b3ff1270384fd61374
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165244"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261251"
 ---
 # <a name="overview-of-azure-devops-projects"></a>Omówienie usługi Azure DevOps Projects
 
@@ -29,7 +29,7 @@ ms.locfileid: "52165244"
 
 ## <a name="why-should-i-use-devops-projects"></a>Dlaczego warto używać usługi DevOps Projects?
 
-  Usługa DevOps Projects automatyzuje konfigurację całego potoku ciągłej integracji i ciągłego dostarczania na platformie Azure.  Możesz rozpocząć z istniejącym kodem lub użyć jednej z dostarczonych aplikacji przykładowych. Następnie możesz szybko wdrożyć tę aplikację w różnych usługach platformy Azure, takich jak Virtual Machines, App Service, Azure Kubernetes Servies (AKS), Azure SQL Database i Azure Service Fabric.  
+  Usługa DevOps Projects automatyzuje konfigurację całego potoku ciągłej integracji i ciągłego dostarczania na platformie Azure.  Możesz rozpocząć z istniejącym kodem lub użyć jednej z dostarczonych aplikacji przykładowych. Następnie możesz szybko wdrożyć tę aplikację w różnych usługach platformy Azure, takich jak Virtual Machines, App Service, Azure Kubernetes Services (AKS), Azure SQL Database i Azure Service Fabric.  
 
   Usługa DevOps Projects wykonuje całą pracę w ramach początkowej konfiguracji potoku DevOps, w tym wszystkie akcje związane z konfigurowaniem początkowego repozytorium Git, konfigurowaniem potoku ciągłej integracji/ciągłego wdrażania, tworzeniem zasobu usługi Application Insights na potrzeby monitorowania oraz udostępnianiem pojedynczego widoku całego rozwiązania wraz z tworzeniem pulpitu nawigacyjnego usługi DevOps Projects w witrynie Azure Portal.
 

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: a8a7514624387d0fc00d32e4d47042e4a3b130f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 41f8a403694eec897ba4a6eb147ab71757d5caa5
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444423"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263939"
 ---
-# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Przykładowy skrypt interfejsu wiersza polecenia platformy Azure: równoważenie obciążenia wielu witryn internetowych
+# <a name="azure-cli-script-example-load-balance-multiple-websites"></a>Przykład skryptu interfejsu wiersza polecenia platformy Azure: Równoważenie obciążenia wielu witryn internetowych
 
 Ten przykładowy skrypt wiersza polecenia platformy Azure tworzy sieć wirtualną z 2 maszynami wirtualnymi, które są elementami członkowskimi zestawu dostępności. Moduł równoważenia obciążenia kieruje ruch dla 2 osobnych adresów IP do 2 maszyn wirtualnych. Po uruchomieniu skryptu możesz wdrożyć oprogramowanie serwera internetowego na maszynach wirtualnych i hostować wiele witryn internetowych, z których każda będzie miała własny adres IP.
 

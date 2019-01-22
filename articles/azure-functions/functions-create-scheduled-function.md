@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 4809c09b5aa7b8212981cc13589602a365a23a37
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: d82e80530d375a9d0f0a6d3f491d3070942ca02f
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113618"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331915"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Tworzenie funkcji wyzwalanej czasomierzem na platformie Azure
 
@@ -43,15 +43,15 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
 ## <a name="create-a-timer-triggered-function"></a>Tworzenie funkcji wyzwalanej czasomierzem
 
-1. Rozwiń aplikację funkcji i kliknij przycisk **+** obok pozycji **Funkcje**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **Funkcja niestandardowa**. Spowoduje to wyświetlenie pełnego zestawu szablonów funkcji.
+1. Rozwiń aplikację funkcji i kliknij przycisk **+** obok pozycji **Funkcje**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz pozycję **W portalu**, a następnie opcję **Kontynuuj**. W przeciwnym razie przejdź do kroku trzeciego.
 
-    ![Strona szybkiego rozpoczynania pracy z usługą Functions w witrynie Azure Portal](./media/functions-create-scheduled-function/add-first-function.png)
+   ![Strona szybkiego rozpoczynania pracy z usługą Functions w witrynie Azure Portal](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
-2. W polu wyszukiwania wpisz `timer`, a następnie wybierz żądany język dla szablonu wyzwalacza czasomierza. 
+2. Wybierz pozycję **Więcej szablonów**, a następnie pozycję **Zakończ i wyświetl szablony**.
 
-    ![Wybierz szablon funkcji wyzwalanej czasomierzem.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![Wybieranie pozycji Więcej szablonów w przewodniku Szybki start usługi Functions](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. Skonfiguruj nowy wyzwalacz, wprowadzając ustawienia określone w tabeli znajdującej się poniżej obrazu.
+3. W polu wyszukiwania wpisz ciąg `timer` i skonfiguruj nowy wyzwalacz, wprowadzając ustawienia określone w tabeli znajdującej się poniżej obrazu.
 
     ![Utwórz funkcję wyzwalaną czasomierzem w witrynie Azure Portal.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
@@ -60,13 +60,13 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
     | **Nazwa** | Domyślne | Określa nazwę funkcji wyzwalanej czasomierzem. |
     | **Harmonogram** | 0 \*/1 \* \* \* \* | Składające się z 6 pól [wyrażenie CRON](functions-bindings-timer.md#cron-expressions) planujące uruchamianie funkcji co minutę. |
 
-2. Kliknij pozycję **Utwórz**. Zostanie utworzona funkcja w wybranym języku uruchamiana co minutę.
+4. Kliknij pozycję **Utwórz**. Zostanie utworzona funkcja w wybranym języku uruchamiana co minutę.
 
-3. Zweryfikuj uruchomienie, wyświetlając informacje o śledzeniu zapisane w dziennikach.
+5. Zweryfikuj uruchomienie, wyświetlając informacje o śledzeniu zapisane w dziennikach.
 
     ![Podgląd dziennika usługi Functions w witrynie Azure Portal.](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-Teraz możesz zmienić harmonogram funkcji tak, aby była uruchamiana co godzinę, a nie co minutę. 
+Teraz możesz zmienić harmonogram funkcji tak, aby była uruchamiana co godzinę, a nie co minutę.
 
 ## <a name="update-the-timer-schedule"></a>Aktualizowanie harmonogramu czasomierza
 

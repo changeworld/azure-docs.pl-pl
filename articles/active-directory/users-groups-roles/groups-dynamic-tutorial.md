@@ -1,5 +1,5 @@
 ---
-title: Samouczek dotyczący dynamicznego członkostwa w grupie — automatyczne dodawanie i usuwanie użytkowników w usłudze Azure Active Directory
+title: Dynamiczne członkostwo w grupie i usuwanie użytkowników — samouczek — Azure Active Directory
 description: W tym samouczku użyjesz grup z regułami członkostwa użytkownika, aby automatycznie dodawać lub usuwać użytkowników
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 08/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 2119bb60cbdc36f62623ce0db52885e17f3d3006
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 6efb649142f43a98ea08c99ae853de0fc0c8ea3c
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40209175"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321267"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Samouczek: automatyczne dodawanie lub usuwanie członków grupy
 

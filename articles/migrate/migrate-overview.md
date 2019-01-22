@@ -4,15 +4,15 @@ description: Ten artykuł zawiera omówienie usługi Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c511ef8fc4ae580f869ef90da3e2c8764a146881
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 737dc40bafa519d59bcbc0ff6510a89cb3a840fa
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969135"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263207"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -29,7 +29,7 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
 
 ## <a name="current-limitations"></a>Bieżące ograniczenia
 
-- Gotowość do migracji na maszyny wirtualne platformy Azure można ocenić tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0 lub 6.5).
+- Gotowość do migracji na maszyny wirtualne platformy Azure można ocenić tylko dla lokalnych maszyn wirtualnych VMware. Maszyny wirtualne VMware muszą być zarządzane przez program vCenter Server (w wersji 5.5, 6.0, 6.5 lub 6.7).
 - Jeśli chcesz ocenić maszyny wirtualne funkcji Hyper-V i serwery fizyczne, użyj narzędzia [Planista wdrażania usługi Azure Site Recovery](https://aka.ms/asr-dp-hyperv-doc) w przypadku maszyn funkcji Hyper-V, a w przypadku maszyn fizycznych skorzystaj z [narzędzi partnerów](https://azure.microsoft.com/migration/partners/).
 - Można odnajdywać maksymalnie 1500 maszyn wirtualnych w jednym odnajdywaniu i maksymalnie 1500 maszyn wirtualnych w jednym projekcie. Można oceniać maksymalnie 1500 maszyn wirtualnych w ramach pojedynczej oceny.
 - Jeśli chcesz odnaleźć większe środowisko możesz podzielić operację odnajdywania i utworzyć wielu projektów. [Dowiedz się więcej](how-to-scale-assessment.md). Usługa Azure Migrate obsługuje maksymalnie 20 projektów na subskrypcję.
@@ -38,6 +38,7 @@ Usługa Azure Migrate ułatwia wykonywanie następujących działań:
     **Lokalizacja geograficzna** | **Lokalizacja usługi Storage**
     --- | ---
     Azure Government | Administracja USA — Wirginia
+    Azja | Azja Południowo-Wschodnia
     Europa | Europa Północna lub Europa Zachodnia
     Stany Zjednoczone | Wschodnie stany USA lub Zachodnio-środkowe stany USA
 

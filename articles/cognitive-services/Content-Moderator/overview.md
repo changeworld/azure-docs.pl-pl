@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: overview
-ms.date: 10/22/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 076948e7434802af7f0ad47f279335009817d40e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: f7fef00cfff9295036d7545470f86e27314e6451
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209595"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258702"
 ---
 # <a name="what-is-azure-content-moderator"></a>Czym jest usługa Azure Content Moderator?
 
@@ -58,6 +58,9 @@ Usługa Content Moderator obejmuje również internetowe [narzędzie do przeglą
 
 Interfejsów API przeglądu możesz użyć do skonfigurowania zespołowych przeglądów tekstu, obrazów i zawartości wideo zgodnie z określonymi przez Ciebie filtrami. Następnie moderatorzy-ludzie mogą podejmować ostateczne decyzje dotyczące moderowania. Dane wejściowe wprowadzane przez ludzi nie uczą usługi, ale połączona praca usługi i zespołów ds. przeglądu przez ludzi pozwala deweloperom uzyskać równowagę między wydajnością i dokładnością.
 
+## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
+Jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi Content Moderator powinni znać zasady firmy Microsoft dotyczące danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
+
 ## <a name="next-steps"></a>Następne kroki
 
-Skorzystaj z [przewodnika Szybki start](quick-start.md), aby rozpocząć pracę z usługą Content Moderator.
+Zacznij korzystać z usługi Content Moderator, postępując zgodnie z instrukcjami w przewodniku [Wypróbowywanie usługi Content Moderator w Internecie](quick-start.md).

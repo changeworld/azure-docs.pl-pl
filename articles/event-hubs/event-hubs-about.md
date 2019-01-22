@@ -10,18 +10,17 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cffa9f566c6b2f4feb0fd7426eeea54a4644fda8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 43f8af4f2afc0f7210e49dc5b483a8d2757e6aba
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140153"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215358"
 ---
-# <a name="azure-event-hubs---a-big-data-streaming-platform-and-event-ingestion-service"></a>Usługa Azure Event Hubs — platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń
+# <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Usługa Azure Event Hubs — platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń
+Usługa Azure Event Hubs to platforma przesyłania strumieniowego danych big data i usługa pozyskiwania zdarzeń. Może odbierać i przetwarzać miliony zdarzeń na sekundę. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania.
 
-Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. 
-
-Typowe scenariusze użycia usługi Event Hubs są następujące:
+Następujące scenariusze to niektóre z możliwych zastosowań usługi Event Hubs:
 
 - Wykrywanie anomalii (oszustwa/wartości odstające)
 - Rejestrowanie aplikacji
@@ -42,13 +41,13 @@ W poniższych sekcjach opisano najważniejsze funkcje usługi Azure Event Hubs:
 
 ## <a name="fully-managed-paas"></a>W pełni zarządzana usługa PaaS 
 
-Event Hubs to usługa zarządzana, wymagająca niewielkich nakładów na konfigurację i zarządzanie, dzięki czemu możesz skoncentrować się na swoich rozwiązaniach biznesowych. [Usługa Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) zapewnia środowisko platformy Kafka jako usługę bez konieczności konfigurowania i uruchamiania klastrów ani zarządzania nimi.
+Event Hubs to w pełni zarządzana usługa PaaS (Platform-as-a-Service), która wymaga niewielkich nakładów na konfigurację i zarządzanie, dzięki czemu możesz skoncentrować się na swoich rozwiązaniach biznesowych. [Usługa Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) zapewnia środowisko platformy Kafka jako usługę bez konieczności konfigurowania i uruchamiania klastrów ani zarządzania nimi.
 
 ## <a name="support-for-real-time-and-batch-processing"></a>Obsługa przetwarzania wsadowego w czasie rzeczywistym
 
-Możesz pozyskiwać, buforować, przechowywać i przetwarzać strumień danych w czasie rzeczywistym, aby uzyskiwać praktyczne informacje. W usłudze Event Hubs jest używany [partycjonowany model odbiorców](event-hubs-features.md#partitions), umożliwiający wielu aplikacjom jednoczesne przetwarzanie strumienia danych, podczas gdy Ty kontrolujesz prędkość przetwarzania.
+Możesz pozyskiwać, buforować, przechowywać i przetwarzać strumień danych w czasie rzeczywistym, aby uzyskiwać praktyczne informacje. W usłudze Event Hubs jest używany [partycjonowany model odbiorców](event-hubs-features.md#partitions), umożliwiający wielu aplikacjom jednoczesne przetwarzanie strumienia danych, podczas gdy Ty kontrolujesz szybkość przetwarzania.
 
-Funkcja [Capture](event-hubs-capture-overview.md) umożliwia przechwytywanie danych niemal w czasie rzeczywistym do usługi [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)  na potrzeby przechowywania długoterminowego lub przetwarzania mikropartii. Jest to możliwe w ramach tego samego strumienia, który jest używany do analizy w czasie rzeczywistym. Funkcję Capture można szybko skonfigurować, używanie jej nie wiąże się z żadnymi kosztami administracyjnymi, a ponadto jest ona automatycznie skalowana za pomocą  [jednostek przepływności](event-hubs-features.md#throughput-units) usługi Event Hubs. Funkcja Capture w usłudze Event Hubs pozwala Ci skoncentrować się na przetwarzaniu, anie przechwytywaniu danych.
+Funkcja [Capture](event-hubs-capture-overview.md) umożliwia przechwytywanie danych niemal w czasie rzeczywistym do usługi [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) lub [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)  na potrzeby przechowywania długoterminowego lub przetwarzania mikropartii. Jest to możliwe w ramach tego samego strumienia, który jest używany do analizy w czasie rzeczywistym. Przechwytywanie danych zdarzeń można szybko skonfigurować. Używanie go nie wiąże się z żadnymi kosztami administracyjnymi, a ponadto jest ono automatycznie skalowane za pomocą  [jednostek przepływności](event-hubs-features.md#throughput-units) usługi Event Hubs. Usługa Event Hubs pozwala Ci skoncentrować się na przetwarzaniu, a nie przechwytywaniu danych.
 
 Usługę Azure Event Hubs można również zintegrować z usługą [Azure Functions](/azure/azure-functions/) w celu uzyskania architektury bezserwerowej.
 
@@ -58,19 +57,18 @@ Korzystając z usługi Event Hubs, możesz zacząć od strumieni danych liczonyc
 
 ## <a name="rich-ecosystem"></a>Zaawansowany ekosystem
 
-Usługa [Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umożliwia klientom i aplikacjom platformy [Apache Kafka (w wersji 1.0 lub nowszej)](https://kafka.apache.org/) komunikowanie się z usługą Event Hubs bez konieczności zarządzania klastrami.
+Usługa [Event Hubs dla ekosystemów platformy Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md) umożliwia klientom i aplikacjom platformy [Apache Kafka (w wersji 1.0 lub nowszej)](https://kafka.apache.org/) komunikowanie się z usługą Event Hubs. Nie trzeba przy tym instalować i konfigurować własnych klastrów platformy Kafka ani zarządzać nimi.
  
-Rozbudowany ekosystem dostępny za pomocą różnych [języków (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) umożliwia łatwe rozpoczęcie przetwarzania strumieni danych w usłudze Event Hubs. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu. Ten ekosystem umożliwia również bezproblemową integrację z usługami platformy Azure, takimi jak Stream Analytics i Azure Functions, umożliwiając tworzenie architektur bezserwerowych.
+Rozbudowany ekosystem dostępny za pomocą różnych [języków (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) umożliwia łatwe rozpoczęcie przetwarzania strumieni danych w usłudze Event Hubs. Wszystkie obsługiwane języki klienta zapewniają integrację niskiego poziomu. Ten ekosystem umożliwia również bezproblemową integrację z usługami platformy Azure, takimi jak Azure Stream Analytics i Azure Functions, umożliwiając w ten sposób tworzenie architektur bezserwerowych.
 
 ## <a name="key-architecture-components"></a>Główne składniki architektury
-
-Usługa Event Hubs umożliwia obsługę strumienia komunikatów, ale jej właściwości różnią się od tradycyjnych metod przesyłania komunikatów w przedsiębiorstwie. Możliwości usługi Event Hubs są zbudowane wokół scenariuszy wysokiej przepływności i przetwarzania zdarzeń. Usługa Event Hubs zawiera następujące [kluczowe składniki](event-hubs-features.md):
+Usługa Event Hubs zawiera następujące [kluczowe składniki](event-hubs-features.md):
 
 - **Producenci zdarzeń**: wszelkie jednostki, które wysyłają dane do centrum zdarzeń. Wydawcy zdarzeń mogą publikować zdarzenia przy użyciu protokołu HTTPS, protokołu AMQP 1.0 lub platformy Apache Kafka (w wersji 1.0 lub nowszej).
 - **Partycje**: każdy użytkownik odczytuje tylko określony podzestaw, czyli partycję, strumienia komunikatów.
-- **Grupy odbiorców**: widok (stan, pozycja lub przesunięcie) całego centrum zdarzeń. Dzięki grupom odbiorców wiele aplikacji odbiorczych może mieć osobny widok strumienia zdarzeń i niezależnie odczytywać strumień we własnym tempie i przy użyciu własnego przesunięcia.
+- **Grupy odbiorców**: widok (stan, pozycja lub przesunięcie) całego centrum zdarzeń. Dzięki grupom konsumentów każda z aplikacji korzystających z danych może mieć osobny widok strumienia zdarzeń. Odczytują one strumienie niezależnie, we własnym tempie i z własnym przesunięciem.
 - **Jednostki przepływności**: kupione wcześniej jednostki pojemności, które określają przepływność usługi Event Hubs.
-- **Odbiorcy zdarzeń**: wszelkie jednostki, które odczytują dane zdarzenia z centrum zdarzeń. Wszyscy odbiorcy usługi Event Hubs nawiązują połączenie za pomocą sesji protokołu AMQP 1.0, w ramach której zdarzenia są dostarczane, gdy tylko staną się dostępne. Wszyscy użytkownicy platformy Kafka nawiązują połączenia za pośrednictwem protokołu Kafka w wersji 1.0 lub nowszej.
+- **Odbiorcy zdarzeń**: wszelkie jednostki, które odczytują dane zdarzenia z centrum zdarzeń. Wszyscy odbiorcy usługi Event Hubs łączą się za pomocą sesji protokołu AMQP 1.0. Usługa Event Hubs dostarcza zdarzenia za pośrednictwem sesji w miarę ich udostępniania. Wszyscy użytkownicy platformy Kafka nawiązują połączenia za pośrednictwem protokołu Kafka w wersji 1.0 lub nowszej.
 
 Na poniższym rysunku przedstawiono architekturę przetwarzania strumienia usługi Event Hubs:
 

@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5165dd16b77a242ca83d3e5864b6e60f3e12a567
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: dfb6ccac01933ea114694de361c2f1d4d5a649b0
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002641"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230530"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
-Usługa Azure Search jest zasobem autonomicznym umożliwiającym dodawanie środowiska wyszukiwania do niestandardowych aplikacji. Można ją łatwo zintegrować z wieloma innymi usługami platformy Azure lub korzystać z niej w aplikacjach hostowanych na serwerach sieciowych lub w oprogramowaniu uruchomionym na innych platformach w chmurze. 
+Usługa Azure Search jest zasobem autonomicznym służącym do dołączania funkcji wyszukiwania do aplikacji niestandardowych. Można ją łatwo zintegrować z wieloma innymi usługami platformy Azure lub korzystać z niej z aplikacjami na serwerach sieciowych lub oprogramowaniem działającym na innych platformach w chmurze. 
 
 Ten artykuł zawiera informacje dotyczące tworzenia zasobu usługi Azure Search w [portalu Azure](https://portal.azure.com/). 
 

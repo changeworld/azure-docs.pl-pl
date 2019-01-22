@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/14/2019
 ms.author: mstewart
 ms.custom: seodec18
-ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6f94ec1a64108cde6ff69a572559960a988a1b7c
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087868"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261285"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Szybki start: Szyfrowanie maszyny wirtualnej IaaS z systemem Windows za pomocą programu Azure PowerShell
 
@@ -30,9 +30,9 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Windows PowerShell ISE
-- Zainstalowanie [najnowszej wersji programu Azure PowerShell](/powershell/azure/install-azurerm-ps) lub zaktualizowanie go do najnowszej wersji
+- Zainstalowanie [najnowszej wersji modułu PowerShell usługi AzureRM](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0) lub zaktualizowanie go do najnowszej wersji
     - Moduł AzureRM musi być w wersji 6.0.0 lub nowszej. `Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path`
-- Kopia [skryptu wymagań wstępnych usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)
+- Kopia [skryptu wymagań wstępnych usługi Azure Disk Encryption](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)
     - Jeśli masz już ten skrypt, pobierz nową kopię, ponieważ została ona ostatnio zmieniona. 
     - Użyj klawiszy **CTRL-A**, aby zaznaczyć cały tekst, a następnie użyj klawiszy **CTRL-C**, aby skopiować cały tekst do Notatnika.
     - Zapisz plik jako **ADEPrereqScript.ps1**.

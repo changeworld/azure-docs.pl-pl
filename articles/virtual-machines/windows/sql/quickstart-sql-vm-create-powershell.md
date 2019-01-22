@@ -3,7 +3,7 @@ title: Tworzenie maszyny wirtualnej systemu Windows z programem SQL Server przy 
 description: W tym samouczku pokazano sposób tworzenia maszyny wirtualnej z programem SQL Server 2017 i systemem Windows przy użyciu usługi Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 02/15/2018
-ms.author: jroth
-ms.openlocfilehash: bebb153d5ff840a0eed7d6afffccd03a5236592d
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 12/21/2018
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: aa4ea4e724ec383fc9f22bd56572d2fd0e844abc
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42022944"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332442"
 ---
-# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Szybki start: tworzenie maszyny wirtualnej z programem SQL Server i systemem Windows przy użyciu usługi Azure PowerShell
+# <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Szybki start: Tworzenie maszyny wirtualnej z programem SQL Server 2017 i systemem Windows przy użyciu usługi Azure PowerShell
 
 Ten przewodnik Szybki start przeprowadza użytkownika przez proces tworzenia maszyny wirtualnej z programem SQL Server przy użyciu usługi Azure PowerShell.
 
@@ -47,7 +48,7 @@ Dla tego przewodnika Szybki start jest wymagany moduł Azure PowerShell w wersji
    Connect-AzureRmAccount
    ```
 
-1. Powinien zostać wyświetlony ekran logowania z monitem o podanie poświadczeń. Użyj tego samego adresu e-mail i hasła, którego używasz do logowania w witrynie Azure Portal.
+1. Powinien zostać wyświetlony ekran z monitem o podanie poświadczeń. Użyj tego samego adresu e-mail i hasła, którego używasz do logowania w witrynie Azure Portal.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -122,11 +123,11 @@ Dla tego przewodnika Szybki start jest wymagany moduł Azure PowerShell w wersji
 
 ## <a name="create-the-sql-vm"></a>Tworzenie maszyny wirtualnej z programem SQL
 
-1. Wprowadź swoje poświadczenia, aby zalogować się do maszyny wirtualnej. Nazwa użytkownika to „azureadmin”. Upewnij się, że hasło zostało zmienione przed uruchomieniem polecenia.
+1. Wprowadź swoje poświadczenia, aby zalogować się do maszyny wirtualnej. Nazwa użytkownika to „azureadmin”. Przed uruchomieniem polecenia pamiętaj o zmianie hasła (\<password>).
 
    ``` PowerShell
    # Define a credential object
-   $SecurePassword = ConvertTo-SecureString 'Change.This!000' `
+   $SecurePassword = ConvertTo-SecureString '<password>' `
       -AsPlainText -Force
    $Cred = New-Object System.Management.Automation.PSCredential ("azureadmin", $securePassword)
    ```
@@ -136,7 +137,7 @@ Dla tego przewodnika Szybki start jest wymagany moduł Azure PowerShell w wersji
    ```PowerShell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
-   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13 | `
+   $VMConfig = New-AzureRmVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
       Set-AzureRmVMOperatingSystem -Windows -ComputerName $VMName -Credential $Cred -ProvisionVMAgent -EnableAutoUpdate | `
       Set-AzureRmVMSourceImage -PublisherName "MicrosoftSQLServer" -Offer "SQL2017-WS2016" -Skus "SQLDEV" -Version "latest" | `
       Add-AzureRmVMNetworkInterface -Id $Interface.Id
@@ -150,7 +151,7 @@ Dla tego przewodnika Szybki start jest wymagany moduł Azure PowerShell w wersji
 
 ## <a name="install-the-sql-iaas-agent"></a>Instalacja agenta SQL IaaS
 
-Aby uzyskać integrację portalu z funkcjami maszyny wirtualnej programu SQL, musisz zainstalować [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md). Aby zainstalować agenta na nowej maszynie wirtualnej, uruchom następujące polecenie po jego utworzeniu.
+Aby uzyskać integrację portalu z funkcjami maszyny wirtualnej programu SQL, musisz zainstalować [rozszerzenie agenta IaaS programu SQL Server](virtual-machines-windows-sql-server-agent-extension.md). Aby zainstalować agenta na nowej maszynie wirtualnej, uruchom następujące polecenie po utworzeniu maszyny wirtualnej.
 
    ```PowerShell
    Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
@@ -164,19 +165,19 @@ Aby uzyskać integrację portalu z funkcjami maszyny wirtualnej programu SQL, mu
    Get-AzureRmPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
-1. Następnie użyj zwróconego adresu IP i przekaż go jako parametr wiersza polecenia do **mstsc**, aby rozpocząć sesję pulpitu zdalnego w nowej maszynie wirtualnej.
+1. Przekaż zwrócony adres IP jako parametr wiersza polecenia do elementu **mstsc**, aby rozpocząć sesję pulpitu zdalnego w nowej maszynie wirtualnej.
 
    ```
    mstsc /v:<publicIpAddress>
    ```
 
-1. Po wyświetleniu monitu o poświadczenia wybierz opcję podania poświadczeń dla innego konta. Wprowadź nazwę użytkownika poprzedzoną ukośnikiem odwrotnym (np. `\azureadmin`) oraz hasło ustawione wcześniej w tym poradniku Szybki start.
+1. Po wyświetleniu monitu o poświadczenia wybierz opcję podania poświadczeń dla innego konta. Wprowadź nazwę użytkownika poprzedzoną ukośnikiem odwrotnym (na przykład `\azureadmin`) oraz hasło ustawione wcześniej w tym poradniku Szybki start.
 
 ## <a name="connect-to-sql-server"></a>Ustanawianie połączenia z programem SQL Server
 
 1. Po zalogowaniu w sesji pulpitu zdalnego uruchom program **SQL Server Management Studio 2017** z menu start.
 
-1. W oknie dialogowym **Połącz z serwerem** zachowaj ustawienia domyślne. Nazwa serwera to nazwa maszyny wirtualnej. Uwierzytelnianie jest ustawione na opcję **Uwierzytelnianie systemu Windows**. Kliknij przycisk **Połącz**.
+1. W oknie dialogowym **Połącz z serwerem** zachowaj ustawienia domyślne. Nazwa serwera to nazwa maszyny wirtualnej. Uwierzytelnianie jest ustawione na opcję **Uwierzytelnianie systemu Windows**. Wybierz przycisk **Połącz**.
 
 Masz teraz lokalne połączenie z programem SQL Server. Jeśli chcesz nawiązać połączenie zdalne, musisz [skonfigurować łączność](virtual-machines-windows-sql-connect.md) z poziomu portalu lub ręcznie.
 

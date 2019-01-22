@@ -10,33 +10,37 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 15940d952dad62b3f71bfef6aa1cd8598d044605
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f989a006251313a8439432861477dc133374af35
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104730"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304674"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal
 
-Dowiedz się, jak utworzyć swój pierwszy szablon usługi Azure Resource Manager, generując go przy użyciu witryny Azure Portal, oraz poznaj proces edytowania i wdrażania tego szablonu z poziomu witryny Azure Portal. Szablony usługi Resource Manager są plikami JSON definiującymi zasoby, które należy wdrożyć dla danego rozwiązania. Instrukcje w tym samouczku umożliwiają utworzenie konta usługi Azure Storage. Ten sam proces można zastosować do tworzenia innych zasobów platformy Azure.
+Dowiedz się, jak wygenerować szablon usługi Resource Manager przy użyciu witryny Azure Portal, oraz poznaj proces edytowania i wdrażania tego szablonu z poziomu portalu. Szablony usługi Resource Manager są plikami JSON definiującymi zasoby, które należy wdrożyć dla danego rozwiązania. Aby zrozumieć pojęcia związane z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Usługa Azure Resource Manager — omówienie](resource-group-overview.md).
+
+Po ukończeniu tego samouczka zostanie wdrożone konto usługi Azure Storage. Ten sam proces umożliwia wdrażanie innych zasobów platformy Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="generate-a-template-using-the-portal"></a>Generowanie szablonu przy użyciu witryny Azure Portal
 
-W tej sekcji utworzysz konto magazynu przy użyciu witryny Azure Portal. Przed wdrożeniem konta magazynu możesz eksplorować szablon wygenerowany w witrynie Azure Portal na podstawie konfiguracji. Szablon możesz zapisać i użyć go ponownie w przyszłości.
+Tworzenie szablonu usługi Resource Manager od podstaw nie jest łatwym zadaniem, zwłaszcza gdy dopiero zaczynasz korzystać z wdrażania na platformie Azure i nie znasz dobrze formatu JSON. W witrynie Azure Portal możesz skonfigurować zasób, na przykład konto usługi Azure Storage. Przed przystąpieniem do wdrażania zasobu możesz wyeksportować konfigurację do szablonu usługi Resource Manager. Szablon możesz zapisać i użyć go ponownie w przyszłości.
+
+Wielu doświadczonych twórców szablonów używa tej metody do generowania szablonów roboczych, gdy próbują wdrażać zasoby platformy Azure, których nie znają.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz pozycję **Utwórz zasób** > **Storage** > **Konto usługi Storage — Blob, File, Table, Queue**.
 
     ![Tworzenie konta usługi Azure Storage za pomocą witryny Azure Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
-3. Wprowadź następujące informacje. 
+3. Wprowadź następujące informacje:
 
-    - **Grupa zasobów**: utwórz nową grupę zasobów platformy Azure o wybranej nazwie. Na zrzucie ekranu nazwa grupy zasobów to *mystorage1016rg*.
+    - **Grupa zasobów**: Wybierz pozycję **Utwórz nową** i podaj wybraną nazwę grupy zasobów. Na zrzucie ekranu nazwa grupy zasobów to *mystorage1016rg*. Grupa zasobów jest kontenerem zasobów platformy Azure. Grupa zasobów ułatwia zarządzanie zasobami platformy Azure.
     - **Nazwa**: nadaj unikatową nazwę kontu magazynu. Na zrzucie ekranu nazwa to *mystorage1016*.
 
     Dla pozostałych właściwości możesz użyć wartości domyślnych.
@@ -46,14 +50,14 @@ W tej sekcji utworzysz konto magazynu przy użyciu witryny Azure Portal. Przed w
     > [!NOTE]
     > W niektórych z wyeksportowanych szablonów należy wprowadzić pewne zmiany przed ich wdrożeniem.
 
-4. Wybierz pozycję **Przeglądanie + tworzenie** w dolnej części ekranu. 
+4. Wybierz pozycję **Przeglądanie + tworzenie** w dolnej części ekranu.
 5. Wybierz pozycję **Pobierz szablon do automatyzacji** w dolnej części ekranu. W portalu zostanie wyświetlony wygenerowany szablon:
 
     ![Generowanie szablonu z poziomu witryny Azure Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    W okienku głównym wyświetlany jest szablon. Jest to plik JSON z czterema elementami najwyższego poziomu – `schema`, `contentVersion`, `parameters` i `resources`. Aby uzyskać więcej informacji, zobacz [Understand the structure and syntax of Azure Resource Manager templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](./resource-group-authoring-templates.md).
+    W okienku głównym wyświetlany jest szablon. Jest to plik JSON z czterema elementami najwyższego poziomu — `schema`, `contentVersion`, `parameters`, `variables`, `resources` i `output`. Aby uzyskać więcej informacji, zobacz [Understand the structure and syntax of Azure Resource Manager templates (Omówienie struktury i składni szablonów usługi Azure Resource Manager)](./resource-group-authoring-templates.md).
 
-    Istnieje sześć zdefiniowanych parametrów. Jeden z nich jest nazywany **storageAccountName**. Druga wyróżniona część pokazuje, jak tego parametru należy użyć w szablonie. W następnej sekcji będziesz edytować szablon w celu użycia wygenerowanej nazwy konta magazynu.
+    Istnieje sześć zdefiniowanych parametrów. Jeden z nich jest nazywany **storageAccountName**. Druga wyróżniona część na poprzednim zrzucie ekranu pokazuje, jak odwoływać się do tego parametru w szablonie. W następnej sekcji będziesz edytować szablon w celu użycia wygenerowanej nazwy konta magazynu.
 
     W szablonie zdefiniowany jest jeden zasób platformy Azure. Typ to [Microsoft.Storage/storageAccounts]. Poznaj sposób definiowania zasobu i strukturę definicji.
 6. Wybierz przycisk **Download** (Pobierz). Zapisz plik **template.json** z pobranego pakietu na swoim komputerze. W następnej sekcji użyjesz narzędzia do wdrażania szablonu do edycji szablonu.
@@ -61,13 +65,13 @@ W tej sekcji utworzysz konto magazynu przy użyciu witryny Azure Portal. Przed w
 
     ![Generowanie szablonu z poziomu witryny Azure Portal](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    Za pomocą pliku szablonu i pliku parametrów możesz utworzyć konto usługi Azure Storage.
+    Za pomocą pliku szablonu i pliku parametrów możesz utworzyć zasób — w tym samouczku jest to konto magazynu platformy Azure.
 
 ## <a name="edit-and-deploy-the-template"></a>Edytowanie i wdrażanie szablonu
 
-Witryna Azure Portal może służyć do wykonywania niektórych podstawowych czynności edycji szablonu. W tym przewodniku Szybki start użyjesz narzędzia portalu o nazwie *Wdrożenie szablonu*. Aby edytować bardziej złożony szablon, rozważ użycie programu [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), który zapewnia bardziej zaawansowane funkcje edycji.
+Witryna Azure Portal może służyć do wykonywania niektórych podstawowych czynności edycji szablonu. W tym przewodniku Szybki start użyjesz narzędzia portalu o nazwie *Wdrożenie szablonu*. Narzędzie *Wdrożenie szablonu* jest używane w tym samouczku, aby umożliwić ukończenie całego samouczka przy użyciu jednego interfejsu — witryny Azure Portal. Aby edytować bardziej złożony szablon, rozważ użycie programu [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), który zapewnia bardziej zaawansowane funkcje edycji.
 
-Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie zakończy się niepowodzeniem, jeśli zostanie wprowadzona już istniejąca nazwa konta magazynu. Aby uniknąć tego problemu, można użyć wywołania funkcji szablonu `uniquestring()` w celu wygenerowania unikatowej nazwy konta magazynu.
+Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie może zakończyć się niepowodzeniem, jeśli zostanie wprowadzona już istniejąca nazwa konta magazynu. W celu uniknięcia tego problemu zmodyfikuj szablon, aby użyć wywołania funkcji szablonu `uniquestring()` do wygenerowania unikatowej nazwy konta magazynu.
 
 1. W witrynie Azure Portal wybierz polecenie **Utwórz zasób**.
 2. W obszarze **Przeszukaj witrynę Marketplace** wpisz **wdrożenie szablonu**, a następnie naciśnij klawisz **ENTER**.
@@ -84,7 +88,7 @@ Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie 
     ```
     ![Szablony usługi Azure Resource Manager](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    W tym miejscu są używane dwie funkcje: `concat()` i `uniqueString()`.
+    W tym miejscu są używane dwie funkcje szablonów: `concat()` i `uniqueString()`.
 
 8. Usuń parametr **storageAccountName** wyróżniony na poprzednim zrzucie ekranu.
 9. Zaktualizuj element name zasobu **Microsoft.Storage/storageAccounts**, aby użyta została nowo zdefiniowana zmienna zamiast parametru:
@@ -142,9 +146,9 @@ Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie 
 7. Wybierz pozycję **Zapisz**.
 8. Wprowadź następujące wartości:
 
-    - **Grupa zasobów**: nadaj grupie zasobów unikatową nazwę.
-    - **Lokalizacja**: wybierz lokalizację grupy zasobów.
-    - **Lokalizacja**: wybierz lokalizację konta magazynu.  Możesz użyć tej samej lokalizacji co w przypadku grupy zasobów.
+    - **Grupa zasobów**: wybierz pozycję **Utwórz nową** i nadaj grupie zasobów unikatową nazwę.
+    - **Lokalizacja**: wybierz lokalizację grupy zasobów. Na przykład **Środkowe stany USA**. 
+    - **Lokalizacja**: wybierz lokalizację konta magazynu. Na przykład **Środkowe stany USA**.
     - **Typ konta**: wprowadź wartość **Standard_LRS** na potrzeby tego przewodnika Szybki start.
     - **Rodzaj**: wprowadź wartość **StorageV2** na potrzeby tego przewodnika Szybki start.
     - **Warstwa dostępu**: wprowadź wartość **Gorąca** na potrzeby tego przewodnika Szybki start.
@@ -156,7 +160,7 @@ Platforma Azure wymaga, aby każda usługa miała unikatową nazwę. Wdrożenie 
     ![Wdrażanie szablonów usługi Azure Resource Manager](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-deploy.png)
 
 10. Wybierz pozycję **Kup**.
-11. Wybierz ikonę dzwonka (powiadomienia) w górnej części ekranu, aby wyświetlić stan wdrożenia. Poczekaj na zakończenie wdrożenia.
+11. Wybierz ikonę dzwonka (powiadomienia) w górnej części ekranu, aby wyświetlić stan wdrożenia. Powinien zostać wyświetlony komunikat **Wdrożenie jest w toku**. Poczekaj na zakończenie wdrożenia.
 
     ![Powiadomienie dotyczące wdrażania szablonów usługi Azure Resource Manager](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
 

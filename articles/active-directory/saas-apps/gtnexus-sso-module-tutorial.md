@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Flex Global View | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Flex Global View.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją GTNexus SSO System | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją GTNexus SSO System.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/02/2019
+ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: ae466dc4bce6ab7068622272651c22d70fc84fff
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 646c9b1c3a1f10cae678e6788379eb6bbd144e78
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54067501"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263496"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-flex-global-view"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Flex Global View
+# <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją GTNexus SSO System
 
-Z tego samouczka dowiesz się, jak zintegrować aplikację Flex Global View z usługą Azure Active Directory (Azure AD).
-Integracja aplikacji Flex Global View z usługą Azure AD oferuje następujące korzyści:
+Z tego samouczka dowiesz się, jak zintegrować aplikację GTNexus SSO System z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji GTNexus SSO System z usługą Azure AD oferuje następujące korzyści:
 
-* Z poziomu usługi Azure AD możesz kontrolować, kto ma dostęp do aplikacji Flex Global View.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Flex Global View (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji GTNexus SSO System.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji GTNexus SSO System (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -35,22 +35,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z aplikacją Flex Global View, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją GTNexus SSO System potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja aplikacji Flex Global View z obsługą logowania jednokrotnego
+* Subskrypcja z obsługą aplikacji GTNexus SSO System
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Aplikacja Flex Global View obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
+* Aplikacja GTNexus SSO System obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-## <a name="adding-flex-global-view-from-the-gallery"></a>Dodawanie aplikacji Flex Global View z galerii
+## <a name="adding-gtnexus-sso-system-from-the-gallery"></a>Dodawanie aplikacji GTNexus SSO System z galerii
 
-Aby skonfigurować integrację aplikacji Flex Global View z usługą Azure AD, należy dodać z galerii usługę Flex Global View do listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację aplikacji GTNexus SSO System z usługą Azure AD, należy dodać aplikację GTNexus SSO System z galerii do listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację Flex Global View z galerii, wykonaj następujące kroki:**
+**Aby dodać aplikację GTNexus SSO System z galerii, wykonaj następujące kroki:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -64,31 +64,31 @@ Aby skonfigurować integrację aplikacji Flex Global View z usługą Azure AD, n
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Flex Global View**, wybierz pozycję **Flex Global View** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **GTNexus SSO System**, wybierz pozycję **GTNexus SSO System** z panelu wyników, a następnie kliknij przycisk **Dodaj** w celu dodania aplikacji.
 
-     ![Aplikacja Flex Global View na liście wyników](common/search-new-app.png)
+     ![Aplikacja GTNexus SSO System na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Flex Global View w oparciu o użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Flex Global View.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją GTNexus SSO System, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji GTNexus SSO System.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Flex Global View, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją GTNexus SSO System, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji Flex Global View](#configure-flex-global-view-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji GTNexus SSO System](#configure-gtnexus-sso-system-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego aplikacji Flex Global View](#create-flex-global-view-test-user)** — aby mieć w aplikacji Flex Global View odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji GTNexus SSO System](#create-gtnexus-sso-system-test-user)** — aby mieć w aplikacji GTNexus SSO System odpowiednik użytkownika Britta Simon, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Flex Global View, wykonaj następujące kroki:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji GTNexus SSO System, wykonaj następujące kroki:
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Flex Global View** wybierz pozycję **Logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **GTNexus SSO System** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
@@ -110,7 +110,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Flex Globa
 
     ![image](common/browse-upload-metadata.png)
 
-    d. Po pomyślnym przekazaniu pliku metadanych wartości **Identyfikator** i **Adres URL odpowiedzi** zostaną automatycznie wypełnione w polu tekstowym sekcji Flex Global View:
+    d. Po pomyślnym przekazaniu pliku metadanych wartości **Identyfikator** i **Adres URL odpowiedzi** zostaną automatycznie wypełnione w polu tekstowym sekcji GTNexus SSO System:
 
     ![image](common/idp-intiated.png)
 
@@ -121,9 +121,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Flex Globa
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-### <a name="configure-flex-global-view-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Flex Global View
+### <a name="configure-gtnexus-sso-system-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji GTNexus SSO System
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Flex Global View**, musisz wysłać **plik XML z metadanymi federacji** do [zespołu pomocy technicznej aplikacji Flex Global View](mailto:support@gtnexus.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **GTNexus SSO System**, musisz wysłać **plik XML z metadanymi federacji** do [zespołu pomocy technicznej aplikacji GTNexus SSO System](mailto:support@gtnexus.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -152,15 +152,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Flex Global View.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do programu GTNexus SSO System.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Flex Global View**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **GTNexus SSO System**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz pozycję **Flex Global View**.
+2. Z listy aplikacji wybierz pozycję **GTNexus SSO System**.
 
-    ![Link do aplikacji Flex Global View na liście Aplikacje](common/all-applications.png)
+    ![Link aplikacji GTNexus SSO System na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -176,15 +176,15 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-flex-global-view-test-user"></a>Tworzenie użytkownika testowego aplikacji Flex Global View
+### <a name="create-gtnexus-sso-system-test-user"></a>Tworzenie użytkownika testowego aplikacji GTNexus SSO System
 
-W tej sekcji w aplikacji Flex Global View utworzysz użytkownika o nazwie Britta Simon. We współpracy z  [zespołem pomocy technicznej aplikacji Flex Global View](mailto:support@gtnexus.com)  dodaj użytkowników na platformie Flex Global View. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika Britta Simon w aplikacji GTNexus SSO System. W sprawie dodania użytkowników na platformie GTNexus SSO System trzeba zwrócić się do  [zespołu pomocy technicznej aplikacji GTNexus SSO System](mailto:support@gtnexus.com) . Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Flex Global View w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Flex Global View, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka GTNexus SSO System w panelu dostępu powinno nastąpić automatyczne zalogowanie do usługi GTNexus SSO System, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

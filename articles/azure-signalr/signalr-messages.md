@@ -6,16 +6,16 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 5a0430e9ad124319147342c49fc51e11472ac8ff
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: c2348df7a1a55584807a03216e294486ddadfc52
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812829"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352601"
 ---
 # <a name="message-and-connection-in-azure-signalr-service"></a>Komunikat i połączenie w usłudze Azure SignalR Service
 
-Usługa Azure SignalR Service ma model rozliczania oparty o liczbę połączeń i liczbę komunikatów. Poniżej wyjaśniono, w jaki sposób komunikaty i połączenia są zdefiniowane i zliczane w celach rozliczeniowych.
+Usługa Azure SignalR Service ma model rozliczania oparty o liczbę połączeń i liczbę komunikatów. Poniżej wyjaśniono, w jaki sposób komunikaty i połączenia są definiowane i zliczane w celach rozliczeniowych.
 
 ## <a name="message-formats-supported"></a>Obsługiwane formaty komunikatów
 
@@ -35,20 +35,27 @@ Zliczamy tylko komunikaty wychodzące z usługi SignalR, ignorując komunikaty p
 
 Komunikat o rozmiarze przekraczającym 2 KB jest liczony jako większa liczba komunikatów, z których każdy ma rozmiar 2 KB. Wykres liczby komunikatów w witrynie Azure Portal jest aktualizowany co 100 komunikatów dla każdego centrum.
 
-Na przykład użytkownik ma 3 klientów i 1 serwer aplikacji. Jeden klient wysyła jeden komunikat o rozmiarze 4 KB, a serwer rozgłasza go do wszystkich klientów. Liczba komunikatów będzie wynosić 8: 1 komunikat z usługi do serwera aplikacji, 3 komunikaty z usługi do klientów, przy czym każdy komunikat jest liczony jako 2 komunikaty o rozmiarze 2 KB.
+Masz na przykład trzech klientów i jeden serwer aplikacji. Jeden klient wysyła jeden komunikat o rozmiarze 4 KB, a serwer rozgłasza go do wszystkich klientów. Liczba komunikatów wynosi 8: jeden komunikat z usługi do serwera aplikacji i trzy komunikaty z usługi do klientów, przy czym każdy komunikat jest liczony jako dwa komunikaty o rozmiarze 2 KB.
 
 Liczba komunikatów wyświetlana w witrynie Azure Portal ma jednak wartość 0 aż do chwili, gdy przekroczy ona wartość 100.
 
 ## <a name="how-to-count-connections"></a>Jak należy liczyć połączenia?
 
-Wyróżniamy połączenia z serwerem i połączenia klienckie. Domyślnie każdy serwer aplikacji ma 5 połączeń dla każdego centrum przy użyciu usługi SignalR Service, a każdy klient ma 1 połączenie klienckie przy użyciu usługi SignalR Service.
+Wyróżniamy połączenia z serwerem i połączenia klienckie. Domyślnie każdy serwer aplikacji ma pięć połączeń dla każdego centrum w usłudze SignalR Service, a każdy klient ma jedno połączenie klienckie w usłudze SignalR Service.
 
 Liczba połączeń wyświetlana w witrynie Azure Portal obejmuje zarówno połączenia z serwerem, jak i połączenia klienckie.
 
-Na przykład użytkownik ma dwa serwery aplikacji i definiuje w kodzie 5 centrów. Liczba połączeń z serwerem wyświetlana w witrynie Azure Portal to 2 serwery aplikacji * 5 centrów * 5 połączeń/centrum = 50 połączeń z serwerem.
+Na przykład masz dwa serwery aplikacji i definiujesz w kodzie pięć centrów. Liczba połączeń serwera wynosi 50: 2 serwery aplikacji * 5 centrów * 5 połączeń/centrum.
+
+Biblioteka SignalR platformy ASP.NET inaczej oblicza liczbę połączeń serwera. Oprócz centrów zdefiniowanych przez klienta ma ona jedno domyślne centrum. Każdy serwer aplikacji potrzebuje domyślnie jeszcze 5 połączeń serwera. Ta liczba połączeń dla centrum domyślnego jest spójna z innymi centrami.
+
+## <a name="how-to-count-inbound-traffic--outbound-traffic"></a>Jak obliczyć ruch przychodzący/wychodzący
+
+Ruch przychodzący/wychodzący jest obliczany z perspektywy usługi SignalR Service. Ruch jest obliczany w bajtach. Tak jak w przypadku liczby komunikatów ruch również ma swoją częstotliwość próbkowania. Wykres ruchu przychodzącego/wychodzącego w witrynie Azure Portal jest uaktualniany co 100 KB na centrum.
 
 ## <a name="related-resources"></a>Powiązane zasoby
 
+- [Aggregation type in Azure Monitor](/azure/azure-monitor/platform/metrics-supported#microsoftsignalrservicesignalr ) (Typ agregacji w usłudze Azure Monitor)
 - [Konfiguracja biblioteki SignalR platformy ASP.NET Core](/aspnet/core/signalr/configuration)
 - [JSON](https://www.json.org/)
 - [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)

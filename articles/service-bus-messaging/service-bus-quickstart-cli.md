@@ -1,22 +1,22 @@
 ---
-title: Szybki start — używanie interfejsu wiersza polecenia Azure i środowiska Java do wysyłania i odbierania komunikatów z usługi Azure Service Bus | Microsoft Docs
-description: W tym przewodniku Szybki start dowiesz się, jak wysyłać i odbierać komunikaty usługi Azure Service Bus przy użyciu interfejsu wiersza polecenia platformy Azure oraz przykładowej aplikacji Java
+title: Szybki start — używanie interfejsu wiersza polecenia do tworzenia kolejki usługi Service Bus | Microsoft Docs
+description: W tym przewodniku Szybki start dowiesz się, jak utworzyć kolejkę usługi Service Bus przy użyciu interfejsu wiersza polecenia platformy Azure. Następnie użyjesz przykładowej aplikacji Java, aby wysyłać komunikaty do kolejki i odbierać komunikaty z kolejki.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 522447b73454016bff5188d07b27702fa21cb748
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 781bca5c3083df9db326e4dc71438c71a7c02bc3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998680"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258328"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Szybki start: Wysyłanie i odbieranie komunikatów przy użyciu interfejsu wiersza polecenia Azure i środowiska Java
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Szybki start: używanie interfejsu wiersza polecenia do tworzenia kolejki usługi Service Bus
 
 Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz niezawodność. Typowy scenariusz usługi Service Bus obejmuje zwykle rozdzielanie od siebie co najmniej dwóch aplikacji, usług lub procesów (aplikacje nie muszą być w tym samym czasie w trybie online), przesyłanie zmian stanu lub danych oraz wysyłanie komunikatów między aplikacjami. 
 
@@ -34,7 +34,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem możesz utworzy
 
 Kliknij przycisk Cloud Shell w prawym górnym rogu menu w witrynie Azure Portal i z listy rozwijanej **Wybierz środowisko** wybierz opcję **Bash**. 
 
-## <a name="use-cli-to-create-resources"></a>Używanie interfejsu wiersza polecenia do utworzenia zasobów
+## <a name="use-the-azure-cli-to-create-resources"></a>Używanie interfejsu wiersza polecenia platformy Azure do utworzenia zasobów
 
 W usłudze Cloud Shell w wierszu polecenia programu Bash wydaj następujące polecenia w celu zainicjowania zasobów usługi Service Bus. Pamiętaj, aby zastąpić wszystkie elementy zastępcze odpowiednimi wartościami:
 
@@ -266,7 +266,7 @@ void registerReceiver(QueueClient queueClient) throws Exception {
 W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu w celu wysyłania i odbierania komunikatów, kontynuuj pracę z następującym samouczkiem dotyczącym usługi Service Bus:
 
 > [!div class="nextstepaction"]
-> [Aktualizuj magazyn przy użyciu interfejsu wiersza polecenia i środowiska Java](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [Aktualizowanie spisu przy użyciu wiersza polecenia platformy Azure i języka Java](./service-bus-tutorial-topics-subscriptions-cli.md)
 
 [bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

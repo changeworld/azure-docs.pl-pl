@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: overview
-ms.date: 10/26/2018
+ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 5e8e675b32bfd4c741b82b1ab341a80adbb0529d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: d9b5473e87d83912dd2f33c00e983e346226e4aa
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741644"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54242951"
 ---
 # <a name="what-is-azure-custom-vision"></a>Co to jest usługa Azure Custom Vision?
 
@@ -27,7 +27,7 @@ Usługa Custom Vision klasyfikuje obrazy przy użyciu algorytmu uczenia maszynow
 
 ### <a name="classification-and-object-detection"></a>Klasyfikacja i wykrywanie obiektów
 
-Funkcje usługi Custom Vision można podzielić na dwie kategorie. **Klasyfikacja obrazów** przypisuje dystrybucję klasyfikacji do każdego obrazu. **Wykrywanie obiektów** jest podobne, ale również zwraca współrzędne na obrazie, na którym znaleziono zastosowane tagi.
+Funkcje usługi Custom Vision można podzielić na dwie kategorie. **Klasyfikacja obrazów** przypisuje dystrybucję klasyfikacji do każdego obrazu. Obsługiwane są modele klasyfikacji wieloklasowej (jeden tag na obraz) i wieloetykietowej (dowolna liczba tagów na obraz). **Wykrywanie obiektów** jest podobne do klasyfikacji wieloetykietowej, ale zwraca również współrzędne na obrazie, w których można znaleźć zastosowane etykiety.
 
 ### <a name="optimization"></a>Optymalizacja
 
@@ -39,6 +39,10 @@ Ponadto możesz wybrać spośród kilku różnych typów algorytmu usługi Custo
 Usługa Custom Vision jest dostępna jako zestaw natywnych zestawów SDK oraz za pośrednictwem interfejsu opartego na Internecie na [stronie głównej usługi Custom Vision](https://customvision.ai/). Możesz tworzyć, testować i uczyć model za pośrednictwem jednego z tych dwóch interfejsów lub obu jednocześnie.
 
 ![Strona główna usługi Custom Vision w oknie przeglądarki Chrome](media/browser-home.png)
+
+## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
+
+Jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający z usługi Custom Vision powinni znać zasady firmy Microsoft dotyczące danych klientów. Zobacz [stronę usług Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) w Centrum zaufania firmy Microsoft, aby dowiedzieć się więcej.
 
 ## <a name="next-steps"></a>Następne kroki
 

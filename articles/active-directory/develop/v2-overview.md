@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 88904b27e114c27dc7b1051c755d3c831c90554f
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286694"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232473"
 ---
 # <a name="about-v20"></a>Informacje o wersji 2.0
 
@@ -30,13 +30,13 @@ Punkt końcowy i platforma w wersji 2.0 znajdują się w wersji zapoznawczej i s
 > [!NOTE]
 > Niektóre funkcje biblioteki MSAL dla systemów Android i iOS oraz platformy .NET nadal są na etapie tworzenia. Można używać ich do tworzenia aplikacji i przesyłać nam opinie na ich temat.
 
-Środowisko deweloperskie witryny Azure Portal zostało znacznie rozbudowane. Obecnie obejmuje wszystkie Twoje aplikacje utworzone za pomocą biblioteki ADAL lub MSAL i jest bardziej użyteczne.
+Środowisko [Rejestracje aplikacji (wersja zapoznawcza)](quickstart-register-app.md) w witrynie Azure Portal zostało znacznie rozbudowane. Obecnie obejmuje wszystkie Twoje aplikacje utworzone za pomocą biblioteki ADAL lub MSAL i jest bardziej użyteczne.
 
 W przeszłości deweloperzy aplikacji, którzy chcieli obsługiwać zarówno osobiste konta Microsoft, jak i konta służbowe z poziomu usługi Azure Active Directory (Azure AD), musieli zintegrować je z dwoma oddzielnymi systemami. Punkt końcowy i platforma w wersji 2.0 zawierają wersję interfejsu API uwierzytelniania, która upraszcza ten proces. Umożliwia on logowanie się z obu typów kont dzięki pojedynczej integracji. Aplikacje, które używają punktu końcowego w wersji 2.0, mogą również korzystać z interfejsów API REST z [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/graph), używając obu typów kont.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Z poniższej listy wybierz swoją ulubioną platformę, aby utworzyć aplikację przy użyciu bibliotek i platform open source firmy Microsoft. Możesz również używać protokołów OAuth 2.0 i OpenID Connect, aby wysyłać i odbierać komunikaty protokołów bezpośrednio, bez użycia biblioteki uwierzytelniania.
+Z poniższej listy wybierz swoją ulubioną platformę, aby utworzyć aplikację przy użyciu bibliotek i platform open source firmy Microsoft:
 
 [!INCLUDE [v2.0 endpoint platforms](../../../includes/active-directory-v2-quickstart-table.md)]
 
@@ -46,14 +46,12 @@ Dowiedz się, co możesz zrobić z punktem końcowym usługi Azure AD w wersji 2
 
 * Odkryj [typy aplikacji, które możesz utworzyć przy użyciu punktu końcowego usługi Azure AD w wersji 2.0](v2-app-types.md).
 * Poznaj [ograniczenia](active-directory-v2-limitations.md) dotyczące punktu końcowego usługi Azure AD w wersji 2.0.
-* Obejrzyj ten film wideo z omówieniem punktu końcowego usługi Azure AD w wersji 2.0:
-
->[!VIDEO https://channel9.msdn.com/Events/Build/2017/P4031/player]
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 Uzyskaj szczegółowe informacje na temat wersji 2.0:
 
+* [Informacje o platformie tożsamości firmy Microsoft](about-microsoft-identity-platform.md)
 * [Dokumentacja protokołów w wersji 2.0](active-directory-v2-protocols.md)
 * [Dokumentacja tokenów dostępu](access-tokens.md)
 * [Dokumentacja tokenów identyfikatorów](id-tokens.md)

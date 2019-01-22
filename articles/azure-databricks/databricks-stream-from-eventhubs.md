@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 6e75e549486fb260f3ccbdead7fe1dea02593f3c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 16095dabb0e5e3e303e82126c7f57cb4ff3fe8dd
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707150"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54200927"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Samouczek: Przesyłanie strumieniowe danych do usługi Azure Databricks przy użyciu usługi Event Hubs
 
@@ -384,4 +384,4 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 Przejdź do kolejnego samouczka, aby dowiedzieć się więcej o przeprowadzaniu analizy tonacji na strumieniu danych za pomocą usługi Azure Databricks oraz [interfejsu API usług Microsoft Cognitive Services](../cognitive-services/text-analytics/overview.md).
 
 > [!div class="nextstepaction"]
->[Analiza tonacji na strumieniu danych wykonywana przy użyciu usługi Azure Databricks](databricks-sentiment-analysis-cognitive-services.md)
+>[Analiza tonacji na strumieniu danych przy użyciu usługi Azure Databricks](databricks-sentiment-analysis-cognitive-services.md)

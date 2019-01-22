@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 12/04/2018
+ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 2640316ce8915018df30fc94df0e1fbb207e894b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713611"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246215"
 ---
 # <a name="overview-of-azure-notebooks"></a>Omówienie usługi Azure Notebooks
 
@@ -57,7 +57,7 @@ Krótko mówiąc, usługa Azure Notebooks pomaga wydajniej wykonywać swoją pra
 
 Azure Notebooks to bezpłatna usługa, jednak każdy projekt jest ograniczony do 4 GB pamięci i 1 GB miejsca na dane, aby zapobiegać nadużywaniu zasobów. Uprawnieni użytkownicy, którzy przekroczą te limity, muszą przejść weryfikację Captcha umożliwiającą kontynuowanie pracy z notesami.
 
-Aby pozbyć się wszystkich limitów, skojarz swoje konto z subskrypcją platformy Azure, co pozwoli Ci korzystać z wystąpień obliczeniowych w warstwie Premium.
+Aby zwolnić wszystkie limity, zaloguj się do usługi Azure Notebooks przy użyciu konta korzystającego z usługi Azure Active Directory (na przykład konta firmowego). Jeśli to konto jest skojarzone z subskrypcją platformy Azure, możesz użyć warstw wystąpień obliczeniowych usługi Azure Data Science Virtual Machine.
 
 ## <a name="available-kernels-and-environments"></a>Dostępne jądra i środowiska
 
