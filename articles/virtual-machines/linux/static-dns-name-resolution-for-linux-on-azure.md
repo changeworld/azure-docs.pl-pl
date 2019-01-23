@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: 621cc79c23fa21401f9ec11ee15b84ae3b9b1288
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 862d239227c277a92cbf80e54b010a4b184da016
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411111"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466095"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Tworzenie karty interfejsu sieci wirtualnej i używanie wewnętrznego serwera DNS dla rozpoznawania nazw maszyn wirtualnych na platformie Azure
 
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>Wdrażanie maszyny Wirtualnej i połączenia wirtualnej karty sieciowej
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). `--nics` Flagi nawiązanie połączenia z wirtualnej karty sieciowej maszyny Wirtualnej podczas wdrażania na platformie Azure. Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). `--nics` Flagi nawiązanie połączenia z wirtualnej karty sieciowej maszyny Wirtualnej podczas wdrażania na platformie Azure. Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
 
 ```azurecli
 az vm create \
@@ -149,7 +149,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Wdróż maszynę Wirtualną do infrastruktury sieci wirtualnej
 W efekcie powstał sieci wirtualnej i podsieci i sieciowej grupy zabezpieczeń działają jako zapora chronić nasze podsieci, blokuje cały ruch przychodzący z wyjątkiem port 22 dla protokołu SSH i wirtualną kartę sieciową. Teraz można wdrożyć Maszynę wirtualną wewnątrz tego istniejącej infrastrukturze sieci.
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
 
 ```azurecli
 az vm create \

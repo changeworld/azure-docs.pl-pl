@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 01/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 253cfd7ddeb04a12a3609ab5e14a37365015a568
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c16a0eeb674e712ec1c3678a2e0002a8ddcfc329
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790881"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464718"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 
@@ -67,7 +67,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | automationaccounts | Yes | Yes |
-| automationaccounts/konfiguracji | Yes | Yes |
+| automationaccounts/configurations | Yes | Yes |
 | automationaccounts/elementów runbook | Yes | Yes |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
@@ -136,7 +136,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | networksecuritygroups | Nie | Nie |
-| zastrzeżonych adresów IP | Nie | Nie |
+| reservedips | Nie | Nie |
 | virtualnetworks | Nie | Nie |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
@@ -295,7 +295,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | laboratoria/maszyn wirtualnych | Yes | Nie |
 | Harmonogramy | Nie | Nie |
 
-## <a name="microsoftdns"></a>Microsoft.DNS
+## <a name="microsoftdns"></a>microsoft.dns
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | dnszones | Nie | Nie |
@@ -327,7 +327,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | Klastry | Yes | Yes |
-| Przestrzenie nazw | Yes | Yes |
+| przestrzenie nazw | Yes | Yes |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -349,7 +349,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | ------------- | -------------- | ------------ |
 | zadania | Yes | Yes |
 
-## <a name="microsoftinsights"></a>Microsoft.insights
+## <a name="microsoftinsights"></a>microsoft.insights
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | actiongroups | Yes | Yes |
@@ -360,7 +360,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | metricalerts | Nie | Nie |
 | scheduledqueryrules | Yes | Yes |
 | testy internetowe | Yes | Yes |
-| Skoroszyty | Yes | Yes |
+| skoroszyty | Yes | Yes |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -371,6 +371,11 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | Magazyny | Yes | Yes |
+
+## <a name="microsoftkusto"></a>Microsoft.Kusto
+| Typ zasobu | Grupa zasobów | Subskrypcja |
+| ------------- | -------------- | ------------ |
+| Klastry | Yes | Yes |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -456,7 +461,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | applicationgateways | Nie | Nie |
-| applicationsecuritygroup | Yes | Yes |
+| applicationsecuritygroups | Yes | Yes |
 | azurefirewalls | Nie | Nie |
 | połączenia | Yes | Yes |
 | ddosprotectionplans | Nie | Nie |
@@ -468,7 +473,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | frontdoors | Yes | Yes |
 | frontdoorwebapplicationfirewallpolicies | Yes | Yes |
 | interfaceendpoints | Nie | Nie |
-| modułami modułami | Yes | Yes |
+| loadbalancers | Yes | Yes |
 | localnetworkgateways | Yes | Yes |
 | networkintentpolicies | Yes | Yes |
 | interfejsy | Yes | Yes |
@@ -485,7 +490,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | serviceendpointpolicies | Yes | Yes |
 | trafficmanagerprofiles | Yes | Yes |
 | virtualhubs | Yes | Yes |
-| elementów virtualnetworkgateway | Yes | Yes |
+| virtualnetworkgateways | Yes | Yes |
 | virtualnetworks | Yes | Yes |
 | virtualnetworktaps | Nie | Nie |
 | virtualwans | Yes | Yes |
@@ -496,7 +501,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
-| Przestrzenie nazw | Yes | Yes |
+| przestrzenie nazw | Yes | Yes |
 | przestrzenie nazw/notificationhubs | Yes | Yes |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -534,7 +539,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
-| Przestrzenie nazw | Yes | Yes |
+| przestrzenie nazw | Yes | Yes |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -555,7 +560,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
-| Przestrzenie nazw | Yes | Yes |
+| przestrzenie nazw | Yes | Yes |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -594,7 +599,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | managedinstances/baz danych | Yes | Yes |
 | serwerów | Yes | Yes |
 | serwery/baz danych | Yes | Yes |
-| serwery/elasticpools | Yes | Yes |
+| servers/elasticpools | Yes | Yes |
 | virtualclusters | Yes | Yes |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -624,7 +629,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | środowiska/eventsources | Yes | Yes |
 | środowiska/referencedatasets | Yes | Yes |
 
-## <a name="microsoftvisualstudio"></a>Microsoft.VisualStudio
+## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | account | Yes | Yes |
@@ -642,7 +647,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | hostingenvironments | Nie | Nie |
 | farm serwerów | Yes | Yes |
 | Lokacje | Yes | Yes |
-| Lokacje/premieraddons | Yes | Yes |
+| sites/premieraddons | Yes | Yes |
 | Lokacje/miejsca | Yes | Yes |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
@@ -655,10 +660,10 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 
 Usługi innych firm nie obsługują obecnie operacji przenoszenia. Te dostawcy zasobów to:
 
-* 84codes. Usługa CloudAMQP
+* 84codes.CloudAMQP
 * AppDynamics.APM
 * Aspera.Transfers
-* Auth0.cloud
+* Auth0.Cloud
 * Citrix.Cloud
 * Citrix.Services
 * CloudSimple.PrivateCloudIaaS

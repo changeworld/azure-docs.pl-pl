@@ -2,22 +2,22 @@
 title: Schemat zdarzeń w usłudze Azure Event Grid Container Registry
 description: Opisuje właściwości, które są dostarczane dla zdarzeń odmowa kontenera za pomocą usługi Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/13/2018
-ms.author: tomfitz
-ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 01/13/2019
+ms.author: spelluru
+ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054365"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462848"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Schemat zdarzeń Azure Event Grid dla rejestru kontenerów
 
-Ten artykuł zawiera właściwości i schematu zdarzeń rejestru kontenerów. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schematu zdarzeń rejestru kontenerów. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
 ## <a name="available-event-types"></a>Zdarzenie dostępne typy
 
@@ -100,8 +100,8 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
@@ -114,19 +114,19 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | id | ciąg | Identyfikator zdarzenia. |
 | sygnatura czasowa | ciąg | Czas, w którym wystąpiło zdarzenie. |
-| akcja | ciąg | Akcja, która obejmuje podanego zdarzenia. |
+| action | ciąg | Akcja, która obejmuje podanego zdarzenia. |
 | cel | obiekt | Obiekt docelowy zdarzenia. |
-| wyślij żądanie | obiekt | Żądanie, który wygenerował zdarzenie. |
+| żądanie | obiekt | Żądanie, który wygenerował zdarzenie. |
 
 Obiekt docelowy ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Typ nośnika | ciąg | Typ MIME przywoływanego obiektu. |
+| mediaType | ciąg | Typ MIME przywoływanego obiektu. |
 | rozmiar | liczba całkowita | Liczba bajtów treści. Taka sama jak długość pola. |
 | Podsumowanie | ciąg | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
 | Długość | liczba całkowita | Liczba bajtów treści. Taka sama jak rozmiar pola. |
-| Repozytorium | ciąg | Nazwa repozytorium. |
+| repozytorium | ciąg | Nazwa repozytorium. |
 | tag | ciąg | Nazwa tagu. |
 
 Obiekt żądania ma następujące właściwości:
@@ -137,7 +137,7 @@ Obiekt żądania ma następujące właściwości:
 | addr | ciąg | Adresu IP lub nazwę hosta i prawdopodobnie portu połączenia klienta, który zainicjował zdarzenie. Ta wartość jest RemoteAddr z żądania standardowego protokołu http. |
 | host | ciąg | Dostępne z zewnątrz nazwę hosta wystąpienia rejestru, określony przez nagłówka hosta http na żądań przychodzących. |
 | method | ciąg | Metoda żądania, który wygenerował zdarzenie. |
-| USERAGENT | ciąg | Nagłówek agenta użytkownika żądania. |
+| useragent | ciąg | Nagłówek agenta użytkownika żądania. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

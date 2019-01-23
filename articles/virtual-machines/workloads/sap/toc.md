@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: a9e46bdb97899957f09a847f0fef03a6fec5dc6a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452908"
+---
 # Omówienie
 ## [Wprowadzenie](get-started.md)
 ## [Certyfikaty](sap-certifications.md)
@@ -68,7 +76,6 @@
 ### [Dostępność rozwiązania SAP HANA na platformie Azure w wielu regionach świadczenia usługi Azure](sap-hana-availability-across-regions.md)
 ## [SAP Business One na maszynach wirtualnych platformy Azure](business-one-azure.md)
 ## [Rozwiązanie SAP IDES na platformie Windows/SQL Server SAP CAL — podręcznik wdrażania](cal-ides-erp6-erp7-sp3-sql.md)
-## [Oprogramowanie SAP NetWeaver na maszynach wirtualnych platformy Azure z systemem Linux](suse-quickstart.md)
 ## [Łącznik SAP LaMa dla platformy Azure](lama-installation.md)
 ## Wysoka dostępność w systemach Windows i Linux
 ### [Omówienie](sap-high-availability-guide-start.md)

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: acedfab277199c2ada6af17584bab3f222fe1a13
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390023"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463749"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -503,6 +503,12 @@ Mimo że ten kod działa z danymi w ramach tego samego wystąpienia wymagane us�
 Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączonych serwerów/rozproszonych zapytań, które odwołują się do pewnego czasu bieżącego wystąpienia nie można rozpoznać adresu IP lokalnego wystąpienia. Ten błąd jest przejściowy problem.
 
 **Obejście**: Jeśli to możliwe używać kontekstu połączeń w module środowiska CLR.
+
+### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>TDE szyfrowane baz danych nie obsługuje kopii zapasowych zainicjowanej przez użytkownika
+
+Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która jest szyfrowany za pomocą przezroczystego szyfrowania danych (TDE). Funkcja TDE wymusza za pomocą wewnętrznej funkcji TDE kluczy szyfrowania kopii zapasowych i nie można wyeksportować klucza, dlatego nie można przywrócić kopię zapasową.
+
+**Obejście**: Użyj automatycznych kopii zapasowych i przywracania w momencie lub wyłącz szyfrowanie dla bazy danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

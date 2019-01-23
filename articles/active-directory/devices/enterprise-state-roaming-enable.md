@@ -5,7 +5,7 @@ services: active-directory
 keywords: roaming, chmura systemu windows, jak włączyć roaming stanu dla przedsiębiorstw stanu dla przedsiębiorstw
 documentationcenter: ''
 author: tanning
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.component: devices
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 9dc223015f85d83278d48494bf05693c7932bdde
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 3e6b2d09c2b3c204fc62428ab53a4d4e33d57eac
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097938"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448384"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 Roaming stanu dla przedsiębiorstw jest dostępny dla każdej organizacji za pomocą usługi Azure AD Premium lub pakietu Enterprise Mobility + Security (EMS) licencji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcję usługi Azure AD, zobacz [strona produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -41,7 +41,7 @@ Po włączeniu roamingu stanu przedsiębiorstwa organizacji jest automatycznie p
 Dla urządzeń systemu Windows 10 do korzystania z usługi Roaming stanu dla przedsiębiorstw urządzenie musi uwierzytelniać przy użyciu tożsamości usługi Azure AD. W przypadku urządzeń, które są przyłączone do usługi Azure AD podstawowego znak w tożsamość użytkownika jest swojej tożsamości usługi Azure AD, więc żadna dodatkowa konfiguracja jest wymagana. W przypadku urządzeń korzystających z usługi Active Directory w środowisku lokalnym, administrator IT musi [urządzenia przyłączone do hybrydowej Konfigurowanie usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
 
 ## <a name="data-storage"></a>Magazyn danych
-Roaming stanu dla przedsiębiorstw danych znajduje się w jednej lub kilku [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) , najlepiej wyrównać kraju/regionu ma wartość w wystąpieniu usługi Azure Active Directory. Roaming stanu dla przedsiębiorstw danych jest podzielona na partycje oparte na trzech głównych regionów geograficznych: Ameryka Północna, EMEA i Azja i PACYFIK. Roaming stanu dla przedsiębiorstw danych dla dzierżawy znajduje się lokalnie przy użyciu region geograficzny, a nie są replikowane między regionami.  Na przykład:
+Roaming stanu dla przedsiębiorstw danych znajduje się w jednej lub kilku [regionów świadczenia usługi Azure](https://azure.microsoft.com/regions/) , najlepiej wyrównać kraju/regionu ma wartość w wystąpieniu usługi Azure Active Directory. Roaming stanu dla przedsiębiorstw danych jest podzielona na partycje oparte na trzech głównych regionów geograficznych: Ameryka Północna, EMEA i Azja i PACYFIK Roaming stanu dla przedsiębiorstw danych dla dzierżawy znajduje się lokalnie przy użyciu region geograficzny, a nie są replikowane między regionami.  Na przykład:
 
 Wartość kraj/region | ma ich dane są obsługiwane w
 ---------------------|-------------------------
@@ -75,8 +75,8 @@ Zsynchronizowane z chmurą Microsoft za pomocą Roaming stanu dla przedsiębiors
 ### <a name="explicit-deletion"></a>Jawne usuwanie
 Jawne usuwanie jest, gdy administrator platformy Azure spowoduje usunięcie użytkownika lub w katalogu lub w przeciwnym razie żądania je jawnie danych ma zostać usunięty.
 
-* **Usuwanie użytkownika**: po użytkownik zostanie usunięty w usłudze Azure AD, konto użytkownika, roaming danych jest usuwana po upływie 90, 180 dni. 
-* **Usuwanie katalogu**: usunięcie cały katalog w usłudze Azure AD jest natychmiastowego działania. Wszystkie dane ustawienia związane z nią za pomocą których usługa zostanie wyłączona po upływie 90, 180 dni. 
+* **Usuwanie użytkownika**: Po użytkownik zostanie usunięty w usłudze Azure AD, konto użytkownika, roaming danych jest usuwana po 90, 180 dni. 
+* **Usuwanie katalogu**: Usuwanie cały katalog w usłudze Azure AD jest natychmiastowego działania. Wszystkie dane ustawienia związane z nią za pomocą których usługa zostanie wyłączona po upływie 90, 180 dni. 
 * **Na żądanie usunięcia**: Jeśli administrator usługi Azure AD chce ręcznie usunąć dane lub ustawienia danych określonego użytkownika, administrator może bilet [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/). 
 
 ### <a name="stale-data-deletion"></a>Usunięcie nieaktualnych danych

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/12/2018
-ms.openlocfilehash: d6d5a8500435a540f091a082e7dc0e0d6d455716
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 1/22/2019
+ms.openlocfilehash: 6c6fec968efdd85eaf6249459f8e1a0384f2ea11
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540847"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462185"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Rozszerzenia PostgreSQL w usłudze Azure Database for PostgreSQL
 PostgreSQL zapewnia możliwość rozszerzania funkcji bazy danych za pomocą rozszerzeń. Rozszerzenia umożliwiają grupowanie wielu powiązanych obiektów SQL razem w jednym pakiecie, który można załadować lub usunięte z bazy danych za pomocą jednego polecenia. Po ładowany w bazie danych rozszerzenia może działać tak jak wbudowane funkcje. Aby uzyskać więcej informacji na temat rozszerzenia PostgreSQL, zobacz [pakowania powiązanych obiektów w rozszerzeniu](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
@@ -45,7 +45,7 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 | [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | Udostępnia kilka funkcji do określenia podobieństwa i odległości między ciągami. |
 | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | Udostępnia funkcje i operatory do manipulowania bezpłatne null tablice liczb całkowitych. |
 | [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | Udostępnia funkcje kryptograficzne. |
-| [PG\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Zarządza partycjonowane tabele, czasu lub identyfikatora. |
+| [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Zarządza partycjonowane tabele, czasu lub identyfikatora. |
 | [PG\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Udostępnia funkcje i operatory określania podobieństwa alfanumeryczne, w oparciu o dopasowanie trigram. |
 | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | Oferuje funkcje, które manipulują całe tabele, w tym krzyżowym. |
 | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generuje powszechnie unikatowe identyfikatory (UUID). |
@@ -84,9 +84,9 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 | [PG\_stat\_instrukcji](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Umożliwia śledzenie statystyk wykonywania instrukcji SQL wszystkie wykonane przez serwer. (Zobacz poniżej uwagi na to rozszerzenie). |
 | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | Umożliwia wyświetlanie informacje dotyczące blokowania na poziomie wiersza. |
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | Zapewnia to do wyświetlania statystyki na poziomie spójnej kolekcji. |
-| [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Otoka obcych danych umożliwiają dostęp do danych przechowywanych w zewnętrznych serwerów PostgreSQL. |
+| [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Otoka obcych danych umożliwiają dostęp do danych przechowywanych w zewnętrznych serwerów PostgreSQL. (Zobacz poniżej uwagi na to rozszerzenie).|
 | [hypopg](https://hypopg.readthedocs.io/en/latest/) | Umożliwia tworzenie indeksów hipotetycznych, które nie koszt procesora CPU lub dysk. |
-| [dblink](https://www.postgresql.org/docs/current/dblink.html) | Moduł, który obsługuje połączenia do innych baz danych PostgreSQL z w ramach sesji bazy danych. |
+| [dblink](https://www.postgresql.org/docs/current/dblink.html) | Moduł, który obsługuje połączenia do innych baz danych PostgreSQL z w ramach sesji bazy danych. (Zobacz poniżej uwagi na to rozszerzenie). |
 
 
 ### <a name="postgis-extensions"></a>Rozszerzenia PostGIS
@@ -104,6 +104,9 @@ W poniższej tabeli wymieniono standardowego rozszerzenia PostgreSQL, które są
 Ustawienie `pg_stat_statements.track`, która kontroluje, jakie instrukcje są uwzględniane przez rozszerzenie, wartość domyślna to `top`, co oznacza wszystkie instrukcje wydane bezpośrednio przez klientów są śledzone. Są dwa inne poziomy śledzenia `none` i `all`. To ustawienie jest konfigurowane jako parametr serwera za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
 Istnieje zależność między informacje o wykonaniu zapytania zawiera pg_stat_statements i wpływ na wydajność serwera jako rejestruje każdej instrukcji SQL. Jeśli nie używasz aktywnie rozszerzenia pg_stat_statements, firma Microsoft zaleca ustawienie `pg_stat_statements.track` do `none`. Należy pamiętać, że niektóre innych firm, monitorowania usług mogą polegać na pg_stat_statements dostarczać szczegółowe informacje o wydajności zapytań, więc upewnij się, czy to w przypadku.
+
+### <a name="using-dblink-and-postgresfdw"></a>Przy użyciu dblink i postgres_fdw
+dblink i postgres_fdw umożliwiają połączenie się z jednego serwera PostgreSQL do innego lub do innej bazy danych na tym samym serwerze. Serwer odbierający musi zezwalać na połączenia z serwerem wysyłania za pośrednictwem swojej zapory. Korzystając z tych rozszerzeń do połączenia między — Azure Database for postgresql — serwery, można to zrobić przez ustawienie "Zezwalaj na dostęp do usług platformy Azure" na wartość ON. Jest to również potrzebne, jeśli chcesz użyć rozszerzeń w pętli do tego samego serwera. Ustawienie "Zezwalaj na dostęp do usług platformy Azure", można znaleźć w witrynie Azure portal strona serwera Postgres, w obszarze zabezpieczeń połączenia. Włączenie opcji "Zezwalaj na dostęp do usług platformy Azure" na umieszczenie wszystkich adresów IP usługi Azure.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

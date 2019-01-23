@@ -4,7 +4,7 @@ description: Jak używać zasad grupy do wdrożenia dodatku programu Internet Ex
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7ccaf272a79268ecd781821593a6041d5653a39b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715044"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471892"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Rozwiązywanie problemów z rozszerzenia Panelu dostępu do programu Internet Explorer
 Ten artykuł pomoże Ci rozwiązać następujące problemy:
@@ -28,7 +28,7 @@ Ten artykuł pomoże Ci rozwiązać następujące problemy:
 * Nie możesz uzyskiwać dostęp do aplikacji za pośrednictwem portalu Moje aplikacje przy użyciu programu Internet Explorer.
 * Pojawi się komunikat "Zainstaluj oprogramowanie", nawet jeśli po zainstalowaniu oprogramowania.
 
-Jeśli jesteś administratorem, zobacz też: [sposób wdrażania rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy](deploy-access-panel-browser-extension.md)
+Jeśli jesteś administratorem, zobacz też: [Jak wdrożyć rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy](deploy-access-panel-browser-extension.md)
 
 ## <a name="run-the-diagnostic-tool"></a>Uruchom narzędzia diagnostyczne
 Pobierając i uruchamiając narzędzie diagnostyczne panelu dostępu, można zdiagnozować problemy z instalacją przy użyciu rozszerzenia Panelu dostępu do:

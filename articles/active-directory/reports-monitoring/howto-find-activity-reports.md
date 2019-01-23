@@ -13,12 +13,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fab94088d1d54012a955b0663b078d03b13d6299
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 623bf009a8d638073ea85e772f737e2ce220a4f8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624916"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477978"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdowanie raportów aktywności w witrynie Azure portal
 
@@ -40,7 +40,7 @@ Raport dotyczący dzienników inspekcji konsoliduje następujące raporty:
 * Działania związane z resetowaniem haseł
 * Aktywność rejestracji resetowania haseł
 * Aktywności grup samoobsługi
-* Zmiany nazwy grupy usługi Office 365
+* Office365 Group Name Changes
 * Działanie z aprowizacją kont
 * Stan przerzucania hasła
 * Błędy aprowizacji kont
@@ -59,7 +59,7 @@ Kategorie działań:
 - Aprowizacja kont
 
 
-## <a name="sign-ins-report"></a>Raport logowań 
+## <a name="sign-ins-report"></a>Raport dotyczący logowań 
 
 **Logowania** widok zawiera wszystkie logowania użytkownika, jak również **użycia aplikacji** raportu. Również wyświetlane informacje o użyciu aplikacji w **Zarządzaj** części **aplikacje dla przedsiębiorstw** Przegląd.
 
@@ -112,6 +112,89 @@ Raporty o zdarzeniach zagrożenia wykryte w **zabezpieczeń** części **usługi
 - [Ryzykowne logowania](concept-risky-sign-ins.md)
 
     ![Raporty dotyczące zabezpieczeń](./media/howto-find-activity-reports/04.png "raporty dotyczące zabezpieczeń")
+
+## <a name="troubleshoot-issues-with-activity-reports"></a>Rozwiązywanie problemów z raportów aktywności
+
+### <a name="missing-data-in-the-downloaded-activity-logs"></a>Brak danych w dziennikach aktywności pobrany
+
+#### <a name="symptoms"></a>Objawy 
+
+Pobrano dzienniki aktywności (inspekcji lub logowania), ale nie widać wszystkich rekordów dla wybranego czasu. Dlaczego? 
+
+ ![Raportowanie](./media/troubleshoot-missing-data-download/01.png)
+ 
+#### <a name="cause"></a>Przyczyna
+
+Podczas pobierania dzienników aktywności w witrynie Azure portal ograniczamy skalowanie do 5000 rekordów posortowanych według najnowsze na początku. 
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Można wykorzystać [interfejsy API raportowania usługi Azure AD](concept-reporting-api.md), aby pobrać do miliona rekordów z dowolnego okresu. Naszym Zalecanym podejściem jest [za pomocą skryptu zgodnie z harmonogramem](tutorial-signin-logs-download-script.md) , wywołuje interfejsy API raportowania w celu pobrania rekordów w sposób przyrostowy okresie (na przykład codziennie lub co tydzień). 
+
+### <a name="missing-audit-data-for-recent-actions-in-the-azure-portal"></a>Brak danych inspekcji dla ostatnich działań w witrynie Azure portal
+
+#### <a name="symptoms"></a>Objawy
+
+W witrynie Azure Portal wykonano pewne akcje, które powinny zostać odzwierciedlone w dziennikach inspekcji w bloku `Activity logs > Audit Logs`, ale nie można ich znaleźć.
+
+ ![Raportowanie](./media/troubleshoot-missing-audit-data/01.png)
+ 
+#### <a name="cause"></a>Przyczyna
+
+Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej tabeli wyliczono wartości opóźnień dla dzienników aktywności. 
+
+| Raport | &nbsp; | Opóźnienie (P95) | Opóźnienie (P99) |
+|--------|--------|---------------|---------------|
+| Inspekcja katalogu | &nbsp; | 2 min | 5 min |
+| Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
+
+### <a name="missing-logs-for-recent-user-sign-ins-in-the-azure-ad-sign-ins-activity-log"></a>Zaloguj się Brak dzienników dla ostatnich operacji logowania użytkownika w ramach działania logowania usługi Azure AD
+
+#### <a name="symptoms"></a>Objawy
+
+Po ostatnim zalogowaniu się do witryny Azure Portal oczekiwano wyświetlenia dzienników logowania dla akcji w bloku `Activity logs > Sign-ins`, ale nie można ich znaleźć.
+
+ ![Raportowanie](./media/troubleshoot-missing-audit-data/02.png)
+ 
+#### <a name="cause"></a>Przyczyna
+
+Akcje nie pojawiają się natychmiast w dziennikach aktywności. W poniższej tabeli wyliczono wartości opóźnień dla dzienników aktywności. 
+
+| Raport | &nbsp; | Opóźnienie (P95) | Opóźnienie (P99) |
+|--------|--------|---------------|---------------|
+| Inspekcja katalogu | &nbsp; | 2 min | 5 min |
+| Aktywność związana z logowaniem | &nbsp; | 2 min | 5 min | 
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Poczekaj od 15 minut do dwóch godzin, a następnie sprawdź, czy akcje pojawią się w dzienniku. Jeśli dzienniki nie są widoczne nawet po dwóch godzinach, [utwórz bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), abyśmy mogli przeanalizować tę sytuację.
+
+### <a name="i-cant-view-more-than-30-days-of-report-data-in-the-azure-portal"></a>Nie mogę wyświetlić danych raportu obejmujących więcej niż 30 dni w witrynie Azure Portal
+
+#### <a name="symptoms"></a>Objawy
+
+Nie mogę wyświetlić danych logowania i inspekcji obejmujących więcej niż 30 dni w witrynie Azure Portal. Dlaczego? 
+
+ ![Raportowanie](./media/troubleshoot-missing-audit-data/03.png)
+
+#### <a name="cause"></a>Przyczyna
+
+W zależności od licencji w obszarze akcji usługi Azure Active Directory raporty aktywności są przechowywane przez następujący okres:
+
+| Raport           | &nbsp; |  Usługa Azure AD — warstwa Bezpłatna | Usługa Azure AD — warstwa Premium P1 | Usługa Azure AD — warstwa Premium P2 |
+| ---              | ----   |  ---           | ---                 | ---                 |
+| Inspekcja katalogu  | &nbsp; |   7 dni     | 30 dni             | 30 dni             |
+| Aktywność związana z logowaniem | &nbsp; | Niedostępne. Możesz uzyskać dostęp do własnych logowań przez 7 dni z poziomu bloku profilu użytkownika | 30 dni | 30 dni             |
+
+Aby uzyskać więcej informacji, zobacz [Azure Active Directory report retention policies (Zasady przechowywania raportów w usłudze Azure Active Directory)](reference-reports-data-retention.md).  
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Dostępne są dwie opcje przechowywania danych przez czas dłuższy niż 30 dni. Możesz użyć [interfejsów API raportowania usługi Azure AD](concept-reporting-api.md) do programowego pobierania danych i przechowywania ich w bazie danych. Alternatywnie możesz zintegrować dzienniki inspekcji w systemie SIEM innej firmy, takim jak Splunk lub SumoLogic.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

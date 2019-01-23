@@ -4,7 +4,7 @@ description: Sposób publikowania lokalnych aplikacji programu ASP.NET, które a
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: b8c69ebec2258581954e26dc6181d5f4b57f461c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6313bc8f3245966d22e904f96a90674b27d396f7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137705"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472938"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Praca z aplikacji obsługujących oświadczenia na serwerze Proxy aplikacji
 [Aplikacje obsługujące oświadczenia](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) wykonania przekierowania do Usługa tokenu zabezpieczającego (STS). Usługa STS żąda poświadczeń użytkownika w zamian za token, a następnie przekierowuje użytkownika do aplikacji. Istnieje kilka sposobów, aby włączyć serwer Proxy aplikacji do pracy z tymi przekierowania. Aby skonfigurować wdrożenie aplikacji z obsługą oświadczeń, należy użyć w tym artykule. 
@@ -37,11 +37,11 @@ Upewnij się, że usługą STS, która przekierowuje obsługującej oświadczeni
 
 Usługi AD FS można skonfigurować dla aplikacji obsługujących oświadczenia w jeden z dwóch sposobów. Pierwsza to za pomocą domen niestandardowych. Drugim jest przy użyciu protokołu WS-Federation. 
 
-### <a name="option-1-custom-domains"></a>Opcja 1: Domen niestandardowych
+### <a name="option-1-custom-domains"></a>Opcja 1: Niestandardowe domeny
 
 Jeśli wszystkie wewnętrzne adresy URL dla aplikacji są w pełni kwalifikowanej nazwy domeny (FQDN), a następnie można skonfigurować [domen niestandardowych](application-proxy-configure-custom-domain.md) dla aplikacji. Użyj domen niestandardowych, aby utworzyć zewnętrzne adresy URL, które są takie same jak wewnętrzne adresy URL. W przypadku usługi zewnętrzne adresy URL zgodne z wewnętrznych adresów URL, przekierowań STS działać, czy użytkownicy znajdują się w środowisku lokalnym lub zdalnym. 
 
-### <a name="option-2-ws-federation"></a>Opcja 2: Protokołu WS-Federation
+### <a name="option-2-ws-federation"></a>Opcja 2: WS-Federation
 
 1. Otwórz przystawkę Zarządzanie usług AD FS.
 2. Przejdź do **zaufania jednostek uzależnionych**, kliknij prawym przyciskiem myszy w aplikacji, w przypadku publikowania za pomocą serwera Proxy aplikacji, a wybierz **właściwości**.  

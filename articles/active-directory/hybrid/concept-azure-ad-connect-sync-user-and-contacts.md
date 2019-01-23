@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: opis użytkowników, grup i kontakty | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect: Opis użytkowników, grup i kontakty | Dokumentacja firmy Microsoft'
 description: Wyjaśnia użytkownikom, grupom i kontakty w usłudze Azure AD Connect sync.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 8d204647-213a-4519-bd62-49563c421602
 ms.service: active-directory
 ms.workload: identity
@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 46d0ce28d6381662847917ce83c77780f1bd9e4c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c59065b21935336a77e3fb88c30f12cded341808
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315238"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473932"
 ---
-# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizacja programu Azure AD Connect: opis użytkowników, grup i kontaktów
+# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizacja programu Azure AD Connect: Opis użytkowników, grup i kontaktów
 Istnieje kilka przyczyn, dlaczego może mieć wiele lasów usługi Active Directory i istnieje kilka topologii rozmieszczania. Typowe modeli obejmują wdrożenia zasobów konta usługi i lasów sync'ed GAL po połączeniu & pozyskiwania. Ale nawet w przypadku modeli czystego, modele hybrydowe są również wspólne. Domyślna konfiguracja przedstawiona w synchronizacji programu Azure AD Connect nie przyjmuje żadnych określonego modelu, ale w zależności od tego, jak dopasowanie użytkownika został wybrany w podręczniku instalacji, można zaobserwować inne zachowania.
 
 W tym temacie opiszemy jak domyślna konfiguracja zachowuje się w niektórych topologii. Opiszemy konfiguracji i narzędzia Synchronization Rules Editor może służyć do wzięcia pod konfiguracji.
@@ -73,6 +73,6 @@ Zakłada się, że jeśli zostanie znaleziony wyłączonego konta użytkownika, 
 Gdy obiekt została wyeksportowana do usługi Azure AD, a następnie nie mogą już zmienić sourceAnchor. Jeśli obiekt został wyeksportowany atrybut metaverse **cloudSourceAnchor** została ustawiona za pomocą **sourceAnchor** wartość zaakceptowane przez usługę Azure AD. Jeśli **sourceAnchor** został zmieniony, a nie odpowiada **cloudSourceAnchor**, reguła **Out do usługi AAD — Dołącz do użytkownika** zgłosi błąd **ma atrybut sourceAnchor zmienione**. W tym przypadku konfiguracji lub danych muszą zostać poprawione więc ten sam sourceAnchor jest obecne w magazynie metaverse programu ponownie, zanim obiekt można ponownie zsynchronizować.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-* [Azure AD Connect Sync: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 

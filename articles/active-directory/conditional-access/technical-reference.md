@@ -4,7 +4,7 @@ description: Zapoznaj się z omówieniem obsługiwanych ustawień w zasadach dos
 services: active-directory.
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
 ms.component: conditional-access
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 46dfb96df7b16fe03bd5c2c69fd9e2e33b04bbd2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 0971b5abee872d9a7010f0ce931f09c47808eb80
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408582"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452143"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -125,17 +125,17 @@ To ustawienie działa ze wszystkimi przeglądarkami. Jednak do zasad urządzenia
 
 | System operacyjny                     | Przeglądarki                            | Pomoc techniczna     |
 | :--                    | :--                                 | :-:         |
-| Windows 10             | Internet Explorer i Microsoft Edge, Chrome     | ![Zaznacz][1] |
+| Windows 10             | Internet Explorer, Microsoft Edge, Chrome     | ![Zaznacz][1] |
 | Windows 8 / 8.1        | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | Windows 7              | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | iOS                    | Safari, usługa Intune Managed Browser      | ![Zaznacz][1] |
 | Android                | Chrome, usługa Intune Managed Browser      | ![Zaznacz][1] |
-| Windows Phone          | Program Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
-| Windows Server 2016    | Program Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
+| Windows Phone          | Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
+| Windows Server 2016    | Internet Explorer, Microsoft Edge             | ![Zaznacz][1] |
 | Windows Server 2016    | Chrome                              | Wkrótce |
 | Windows Server 2012 R2 | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
 | Windows Server 2008 R2 | Program Internet Explorer, Chrome           | ![Zaznacz][1] |
-| macOS                  | Chrome i Safari                      | ![Zaznacz][1] |
+| macOS                  | Chrome, Safari                      | ![Zaznacz][1] |
 
 
 
@@ -182,11 +182,11 @@ To ustawienie ma wpływ na dostęp podjętych następujące aplikacje mobilne i 
 |Aplikacja poczty/kalendarz/osób, Outlook 2016 Outlook 2013 |Office 365 Exchange Online|Windows 10|
 |Zasady uwierzytelniania Wieloskładnikowego i lokalizacji dla aplikacji. Urządzenia, na podstawie zasad nie są obsługiwane. |Wszystkie usługi Moje aplikacje usługi app service|Android i iOS|
 |Usługi Microsoft Teams — w ten sposób kontroluje wszystkie usługi, które obsługują Microsoft Teams i wszystkie jej aplikacje klient — Windows Desktop z systemem iOS, Android, WP i klienta sieci web|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android i macOS |
-|Klient synchronizacji OneDrive aplikacje pakietu Office 2013, pakiet Office 2016 (zobacz [uwagi](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Usługi Office 365 SharePoint Online|Windows 8.1, Windows 7|
-|Aplikacje pakietu Office 2016, aplikacje uniwersalne pakietu Office, pakietu Office 2013, klient synchronizacji OneDrive (zobacz [uwagi](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), w przyszłości planujemy obsługę grup usługi Office, w przyszłości planujemy obsługę aplikacji programu SharePoint|Usługi Office 365 SharePoint Online|Windows 10|
-|Pakiety Office 2016 dla systemu macOS (Word, Excel, PowerPoint, OneNote tylko). W przyszłości planujemy usługi OneDrive dla firm pomocy technicznej|Usługi Office 365 SharePoint Online|Mac OS X|
-|Aplikacje mobilne pakietu Office|Usługi Office 365 SharePoint Online|Android, iOS|
-|Aplikacja usługi Yammer pakietu Office|Usługi Office 365 w usłudze Yammer|Windows 10, iOS, Android|
+|Klient synchronizacji OneDrive aplikacje pakietu Office 2013, pakiet Office 2016 (zobacz [uwagi](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Office 365 SharePoint Online|Windows 8.1, Windows 7|
+|Aplikacje pakietu Office 2016, aplikacje uniwersalne pakietu Office, pakietu Office 2013, klient synchronizacji OneDrive (zobacz [uwagi](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), w przyszłości planujemy obsługę grup usługi Office, w przyszłości planujemy obsługę aplikacji programu SharePoint|Office 365 SharePoint Online|Windows 10|
+|Pakiety Office 2016 dla systemu macOS (Word, Excel, PowerPoint, OneNote tylko). W przyszłości planujemy usługi OneDrive dla firm pomocy technicznej|Office 365 SharePoint Online|Mac OS X|
+|Aplikacje mobilne pakietu Office|Office 365 SharePoint Online|Android, iOS|
+|Aplikacja usługi Yammer pakietu Office|Office 365 Yammer|Windows 10, iOS, Android|
 |Outlook 2016 (pakiet Office dla systemu macOS)|Office 365 Exchange Online|Mac OS X|
 |Outlook 2016, Outlook 2013, Skype dla firm|Office 365 Exchange Online|Windows 8.1, Windows 7|
 |Aplikacja mobilna Outlook|Office 365 Exchange Online|Android, iOS|
@@ -212,7 +212,7 @@ W zasadach dostępu warunkowego można wymagać, że dostęp jest próba aplikac
 To ustawienie dotyczy następujących aplikacji klienta:
 
 
-- Usługi Microsoft Intune Managed Browser
+- Microsoft Intune Managed Browser
 - Microsoft PowerBI
 - Microsoft Invoicing
 - Microsoft Launcher
@@ -221,7 +221,7 @@ To ustawienie dotyczy następujących aplikacji klienta:
 - Microsoft Kaizala 
 - Microsoft OneDrive
 - Microsoft OneNote
-- Program Microsoft Outlook
+- Microsoft Outlook
 - Microsoft Planner
 - Microsoft PowerPoint
 - Microsoft SharePoint

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: 2376ade49b990ff22683a14ecd4ae6b4dda356c3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.component: disks
+ms.openlocfilehash: 3627891df429745c66bb85aed5182ff934268027
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434547"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475428"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurowanie macierzy RAID oprogramowania w systemie Linux
 To typowy scenariusz używać macierzy RAID oprogramowania w maszynach wirtualnych systemu Linux na platformie Azure można prezentować wiele dołączonych dysków z danymi w postaci na jednym urządzeniu RAID. Zazwyczaj ten może służyć do zwiększenia wydajności i umożliwienia ulepszoną przepływność w porównaniu z użyciem jednego dysku.
@@ -40,7 +41,7 @@ sudo apt-get install mdadm
 sudo yum install mdadm
 ```
 
-* **SLES i dystrybucją systemu openSUSE**
+* **SLES i openSUSE**
 ```bash  
 zypper install mdadm
 ```

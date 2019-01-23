@@ -1,6 +1,6 @@
 ---
-title: Znajdowanie i usuwanie odłączyć dysku systemu Azure zarządzane i niezarządzane | Dokumentacja firmy Microsoft
-description: Jak znaleźć i usunąć odłączyć dysku systemu Azure zarządzane i niezarządzane (pliki VHD/stronicowych obiektów blob) przy użyciu programu Azure PowerShell.
+title: Znajdowanie i usuwanie niedołączonych Azure dyski zarządzane i niezarządzane | Dokumentacja firmy Microsoft
+description: Jak Znajdowanie i usuwanie niedołączonych dyskami platformy Azure zarządzanych i niezarządzanych (pliki VHD/stronicowych obiektów blob) przy użyciu programu Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: ramankumarlive
@@ -15,25 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.openlocfilehash: 17262978c9600b75a1ddf945cf170fea6ac4f8ce
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.component: disks
+ms.openlocfilehash: 11ffba34fff10d488cb3c9d81b7853f99b2ed138
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756936"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475156"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Znajdowanie i usuwanie odłączyć dysku systemu Azure zarządzane i niezarządzane
-Po usunięciu maszyny wirtualnej (VM) na platformie Azure, domyślnie nie są usuwane wszystkie dyski, które są dołączone do maszyny Wirtualnej. Ta funkcja pomaga zapobiec utracie danych z powodu usunięcia przypadkowe maszyn wirtualnych. Po usunięciu maszyny Wirtualnej będzie kontynuował opłacać odłączyć dysków. W tym artykule przedstawiono, jak znaleźć i Usuń wszystkie dyski odłączyć i zredukowanie niepotrzebnych kosztów. 
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Znajdowanie i usuwanie niedołączonych Azure dyski zarządzane i niezarządzane
+Jeśli usuniesz maszynę wirtualną (VM) na platformie Azure, domyślnie wszystkie dyski, które są dołączone do maszyny Wirtualnej nie są usuwane. Ta funkcja pomaga zapobiegać utracie danych z powodu niezamierzonego usunięcia maszyn wirtualnych. Po usunięciu maszyny Wirtualnej, będziesz płacić za niedołączone dyski. W tym artykule pokazano, jak znaleźć i usunąć wszelkie niedołączone dyski i zredukowanie niepotrzebnych kosztów. 
 
 
-## <a name="managed-disks-find-and-delete-unattached-disks"></a>Dyski zarządzane: znajdowanie i usuwanie odłączyć dysków 
+## <a name="managed-disks-find-and-delete-unattached-disks"></a>Dyski zarządzane: Znajdowanie i usuwanie niedołączonych dysków 
 
-Poniższy skrypt szuka niedołączonej [dyskach zarządzanych](managed-disks-overview.md) , sprawdzając wartość **zarządzane** właściwości. Jeśli dysków zarządzanych jest podłączony do maszyny Wirtualnej, **zarządzane** właściwość zawiera identyfikator zasobu maszyny wirtualnej. W przypadku dysków zarządzanych odłączyć, **zarządzane** właściwość ma wartość null. Skrypt sprawdza, czy wszystkie dyski zarządzanych w subskrypcji platformy Azure. Jeśli skrypt lokalizuje dysków zarządzanych z **zarządzane** właściwością o wartości null, skrypt określa, czy dysk jest odłączyć.
+Poniższy skrypt szuka niedołączone [usługi managed disks](managed-disks-overview.md) , sprawdzając wartość **ManagedBy** właściwości. Jeśli dysk zarządzany jest dołączony do maszyny Wirtualnej, **ManagedBy** właściwość zawiera identyfikator zasobu maszyny wirtualnej. Po odłączeniu, dysk zarządzany **ManagedBy** właściwość ma wartość null. Skrypt sprawdza, czy wszystkie dyski zarządzane w subskrypcji platformy Azure. Gdy skrypt lokalizuje dysk zarządzany przy użyciu **ManagedBy** właściwość ustawioną na wartość null, skrypt określa, czy dysk jest odłączone.
 
 >[!IMPORTANT]
->Najpierw należy uruchomić skrypt przez ustawienie **deleteUnattachedDisks** zmiennej na wartość 0. Ta akcja pozwala znaleźć i wyświetlić niedołączonej zarządzanych dysków.
+>Najpierw należy uruchomić skrypt, ustawiając **deleteUnattachedDisks** zmiennej na wartość 0. Ta akcja umożliwia znajdowanie i wyświetlanie wszystkich niedołączone dyski zarządzane.
 >
->Po przejrzeniu odłączyć dysków, uruchom ponownie skrypt i ustaw **deleteUnattachedDisks** zmienną do 1. Ta akcja służy do usuwania wszystkich odłączyć dysków zarządzanych.
+>Po przejrzeniu niedołączone dyski, następnie ponownie uruchom skrypt i ustaw **deleteUnattachedDisks** zmiennej do 1. Ta akcja służy do usuwania wszystkich niedołączone dyski zarządzane.
 >
 
 ```azurepowershell-interactive
@@ -69,14 +70,14 @@ foreach ($md in $managedDisks) {
  } 
 ```
 
-## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Niezarządzane dysków: znajdowanie i usuwanie odłączyć dysków 
+## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Dyski niezarządzane: Znajdowanie i usuwanie niedołączonych dysków 
 
-Niezarządzane dyski znajdują się pliki VHD, które są przechowywane jako [stronicowe](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) w [kontami magazynu Azure](../../storage/common/storage-create-storage-account.md). Poniższy skrypt szuka odłączyć dysków niezarządzane (stronicowych obiektów blob), sprawdzając wartość **LeaseStatus** właściwości. Gdy niezarządzany dysku jest dołączony do maszyny Wirtualnej, **LeaseStatus** właściwość jest ustawiona na **zablokowany**. W przypadku niezarządzanych dysku odłączyć, **LeaseStatus** właściwość jest ustawiona na **odblokowany**. Skrypt sprawdza, czy wszystkie dyski niezarządzanego na wszystkich kontach magazynu Azure w subskrypcji platformy Azure. Gdy skrypt lokalizuje niezarządzane dysk z **LeaseStatus** ustawioną właściwość **odblokowany**, skrypt określa, czy dysk jest odłączyć.
+Dyski niezarządzane to pliki VHD, które są przechowywane jako [stronicowe obiekty BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) w [konta usługi Azure storage](../../storage/common/storage-create-storage-account.md). Poniższy skrypt szuka niedołączone dyski niezarządzane (stronicowych obiektów blob), sprawdzając wartość **LeaseStatus** właściwości. Jeśli dysk niezarządzany jest dołączony do maszyny Wirtualnej, **LeaseStatus** właściwość jest ustawiona na **zablokowany**. Po odłączeniu, dysk niezarządzany **LeaseStatus** właściwość jest ustawiona na **odblokowany**. Skrypt sprawdza, czy dysków niezarządzanych w ramach kont magazynu platformy Azure z subskrypcją platformy Azure. Gdy skrypt lokalizuje dysk niezarządzany o **LeaseStatus** właściwością **odblokowany**, skrypt określa, czy dysk jest odłączone.
 
 >[!IMPORTANT]
->Najpierw należy uruchomić skrypt przez ustawienie **deleteUnattachedVHDs** zmiennej na wartość 0. Ta akcja pozwala znaleźć i wyświetlić wszystkich niedołączonej niezarządzane dysków VHD.
+>Najpierw należy uruchomić skrypt, ustawiając **deleteUnattachedVHDs** zmiennej na wartość 0. Ta akcja umożliwia znajdowanie i wyświetlanie wszystkich niedołączone niezarządzanych dysków VHD.
 >
->Po przejrzeniu odłączyć dysków, uruchom ponownie skrypt i ustaw **deleteUnattachedVHDs** zmienną do 1. Ta akcja służy do usuwania wszystkich niedołączonej niezarządzane dysków VHD.
+>Po przejrzeniu niedołączone dyski, następnie ponownie uruchom skrypt i ustaw **deleteUnattachedVHDs** zmiennej do 1. Ta akcja służy do usuwania wszystkich niedołączone niezarządzanych dysków VHD.
 >
 
 ```azurepowershell-interactive
@@ -130,7 +131,7 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji, zobacz [usunięcie konta magazynu](../../storage/common/storage-create-storage-account.md) i [zidentyfikować oddzielone dysków przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
+Aby uzyskać więcej informacji, zobacz [Usuń konto magazynu](../../storage/common/storage-create-storage-account.md) i [zidentyfikować oddzielone dysków przy użyciu programu PowerShell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
 
 
 

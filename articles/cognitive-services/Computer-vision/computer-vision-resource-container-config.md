@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 48d3bc7ecdd66565372be8347897202cae3ec158
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 97de65acf724d12afd131ede25713e8f29d30bad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579791"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477638"
 ---
 # <a name="configure-recognize-text-containers"></a>Skonfiguruj rozpoznawanie tekstu kontenerów
 
@@ -32,6 +32,7 @@ Ustawienia konfiguracji w kontenerach przetwarzania obrazów są hierarchiczne, 
 * [Rozliczenia](#billing-configuration-setting)
 * [Umowa licencyjna](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [Ustawienia poświadczeń serwera proxy HTTP](#http-proxy-credentials-settings)
 * [Rejestrowanie](#logging-configuration-settings)
 * [Instaluje](#mounts-configuration-settings)
 
@@ -116,6 +117,11 @@ W poniższej tabeli opisano ustawienia konfiguracji objęte `Fluentd` sekcji.
 | `TlsConnectionEstablishmentTimeoutMs` | Liczba całkowita | Limit czasu w milisekundach, można ustanowić połączenia SSL/TLS z serwerem Fluentd. Wartość domyślna to 10000 MS (10 sekund).<br/> Jeśli `UseTLS` jest ustawiona na wartość FAŁSZ, ta wartość jest ignorowana. |
 | `UseTLS` | Wartość logiczna | Wskazuje, czy do komunikacji z serwerem Fluentd kontenera należy używać protokołów SSL/TLS. Wartość domyślna to false. |
 
+
+## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy HTTP
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Ustawienia konfiguracji rejestrowania
 
 `Logging` Ustawienia konfiguracji zarządzania obsługę rejestrowania platformy ASP.NET Core kontenera. Można użyć tych samych ustawień konfiguracji i wartości dla kontenera, można dla aplikacji ASP.NET Core. Następujących dostawców rejestrowania są obsługiwane przez przetwarzania obrazów kontenerów:
@@ -164,3 +170,7 @@ Na przykład następujące polecenie definiuje instalowania powiązania platform
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0 ApiKey=0123456789 Logging:Disk:Format=json
   ```
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Użycie [kontenerów usługi Cognitive Services](../cognitive-services-container-support.md)

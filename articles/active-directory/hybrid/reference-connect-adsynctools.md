@@ -2,23 +2,23 @@
 title: 'Program Azure AD Connect: Dokumentacja programu PowerShell ADSyncTools | Dokumentacja firmy Microsoft'
 description: Ten dokument zawiera informacje dotyczące modułu programu ADSyncTools.psm1 PowerShell.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 54d23bca29c38f258334d7b641b8c1f480da55e1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3b98686730a0fbd65cd5fd64fe91d8c6fa06286e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054967"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478216"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncTools
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncTools.psm1, dostępnej w programie Azure AD Connect.
 
-## <a name="clear-adsynctoolsconsistencyguid"></a>Wyczyść ADSyncToolsConsistencyGuid
+## <a name="clear-adsynctoolsconsistencyguid"></a>Clear-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Wyczyść mS-Ds-ConsistencyGuid użytkownika usługi AD
@@ -88,7 +88,7 @@ PS C:\> {{ Add example code here }}
 
 {{Przykład tutaj Dodaj opis}}
 
-## <a name="connect-adsyncdatabase"></a>Połącz AdSyncDatabase
+## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
 ### <a name="synopsis"></a>STRESZCZENIE
 {{Wypełnij streszczenie}}
@@ -114,7 +114,7 @@ PS C:\> {{ Add example code here }}
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-database"></a>-Bazy danych
+#### <a name="-database"></a>-Database
 {{Wprowadź opis bazy danych}}
 
 ```yaml
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="export-adsynctoolsconsistencyguidmigration"></a>ADSyncToolsConsistencyGuidMigration eksportu
+## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Eksportuj raport ConsistencyGuid
@@ -311,7 +311,7 @@ PS C:\> {{ Add example code here }}
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-hostname"></a>— Nazwa hosta
+#### <a name="-hostname"></a>-hostName
 {{Wprowadź nazwę hosta opis}}
 
 ```yaml
@@ -537,7 +537,7 @@ Funkcja zapytania usługi AAD Connect historii uruchamiania i eksportuje wszystk
 
 $sourcePath = Read-Host - monitu o "Wprowadź ścieżkę do pliku dziennika usługi z nazwą pliku" #"\<Source_Path\>" $outputPath = Read-Host-monitu "Wprowadź swoje poza ścieżka pliku o nazwie pliku" #"\<Out_Path\>"
  
- Get-ADSyncToolsUsersSourceAnchorChanged - sourcePath $sourcePath - outputPath $outputPath
+ Get-ADSyncToolsUsersSourceAnchorChanged -sourcePath $sourcePath -outputPath $outputPath
 
 #### <a name="example-2"></a>PRZYKŁAD 2
 ```
@@ -580,7 +580,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="import-adsynctoolsimmutableidmigration"></a>Importuj ADSyncToolsImmutableIdMigration
+## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>STRESZCZENIE
 ImmutableID importowania z usługi AAD
@@ -644,7 +644,7 @@ To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVar
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 
-## <a name="invoke-adsyncdatabasequery"></a>Wywoływanie AdSyncDatabaseQuery
+## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
 
 ### <a name="synopsis"></a>STRESZCZENIE
 {{Wypełnij streszczenie}}
@@ -684,8 +684,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-sqlconnection"></a>SqlConnection —
-{{Wprowadź opis SqlConnection}}
+#### <a name="-sqlconnection"></a>-SqlConnection
+{{Fill SqlConnection Description}}
 
 ```yaml
 Type: SqlConnection
@@ -703,7 +703,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="remove-adsynctoolsexpiredcertificates"></a>Usuń ADSyncToolsExpiredCertificates
+## <a name="remove-adsynctoolsexpiredcertificates"></a>Remove-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Skrypt, aby usunąć wygasłe certyfikaty z atrybutu UserCertificate
@@ -739,7 +739,7 @@ Remove ADSyncToolsExpiredCertificates-{TargetOU "OU = Computers, OU = Corp, DC =
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-targetou"></a>-{TargetOU
+#### <a name="-targetou"></a>-TargetOU
 Docelowej jednostki Organizacyjnej do wyszukiwania dla obiektów usługi AD
 
 ```yaml
@@ -788,7 +788,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Napraw ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Krótki opis
@@ -814,7 +814,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="resolve-adsynchostaddress"></a>Rozwiąż ADSyncHostAddress
+## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
 
 ### <a name="synopsis"></a>STRESZCZENIE
 {{Wypełnij streszczenie}}
@@ -839,7 +839,7 @@ PS C:\> {{ Add example code here }}
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-hostname"></a>— Nazwa hosta
+#### <a name="-hostname"></a>-hostName
 {{Wprowadź nazwę hosta opis}}
 
 ```yaml
@@ -854,7 +854,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="restore-adsynctoolsexpiredcertificates"></a>Przywracanie ADSyncToolsExpiredCertificates
+## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>STRESZCZENIE
 (ABY WYKONAĆ) Przywraca atrybutu AD UserCertificate z pliku talonu
@@ -880,7 +880,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="set-adsynctoolsconsistencyguid"></a>Zestaw ADSyncToolsConsistencyGuid
+## <a name="set-adsynctoolsconsistencyguid"></a>Set-ADSyncToolsConsistencyGuid
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Nastavit mS-Ds-ConsistencyGuid użytkownika usługi AD
@@ -942,7 +942,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="test-adsyncnetworkport"></a>ADSyncNetworkPort testu
+## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
 ### <a name="synopsis"></a>STRESZCZENIE
 {{Wypełnij streszczenie}}
@@ -967,7 +967,7 @@ PS C:\> {{ Add example code here }}
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-hostname"></a>— Nazwa hosta
+#### <a name="-hostname"></a>-hostName
 {{Wprowadź nazwę hosta opis}}
 
 ```yaml
@@ -997,7 +997,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="trace-adsynctoolsadimport"></a>ADSyncToolsADImport śledzenia
+## <a name="trace-adsynctoolsadimport"></a>Trace-ADSyncToolsADImport
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Tworzy plik śledzenia z i kroku importu usługi AD
@@ -1056,7 +1056,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-rootdn"></a>parametr-RootDn jest
+#### <a name="-rootdn"></a>-rootDN
 Docelowy kontroler domeny
 
 ```yaml
@@ -1072,7 +1072,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-filter"></a>-filtru
-Nazwa Wyróżniająca domenie głównej lasu
+Forest Root DN
 
 ```yaml
 Type: String
@@ -1121,7 +1121,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="trace-adsynctoolsldapquery"></a>ADSyncToolsLdapQuery śledzenia
+## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Krótki opis
@@ -1214,7 +1214,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="update-adsynctoolsconsistencyguidmigration"></a>Aktualizacja ADSyncToolsConsistencyGuidMigration
+## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Aktualizuje użytkowników przy użyciu nowego ConsistencyGuid (ImmutableId)

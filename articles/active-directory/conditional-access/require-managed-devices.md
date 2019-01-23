@@ -4,7 +4,7 @@ description: Informacje o sposobie konfigurowania zasad dostępu warunkowego opa
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b59e4898f85de7ad93d9172cdb3c551a17799194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 2df2d716516cb8e451c054fce3e184e1b4bf3f9b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630487"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447602"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj zarządzanego urządzenia do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Jak: Wymagaj urządzenia zarządzanego do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
 W świecie urządzeń przenośnych i chmurze — Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do aplikacji i usług z dowolnego miejsca. Autoryzowani użytkownicy będą mogli swoje aplikacje w chmurze z szerokiej gamy urządzeń w tym komórkowego, a także urządzeniami osobistymi. Jednak w wielu środowiskach ma co najmniej kilka aplikacji, które powinny zostać oceniony jedynie przez urządzenia, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. Urządzenia te są nazywane także zarządzanych urządzeń. 
 
@@ -34,9 +34,9 @@ W tym artykule opisano sposób konfigurowania zasad dostępu warunkowego, które
 
 Wymaganie zarządzanych urządzeń do chmury aplikacji dostęp do powiązania **dostępu warunkowego usługi Azure AD** i **zarządzania urządzeniami usługi Azure AD** ze sobą. Jeśli nie jesteś zaznajomiony z jednego z tych obszarów jeszcze, najpierw należy przeczytać następujące tematy:
 
-- **[Dostęp warunkowy w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md) ** — ten artykuł zawiera omówienie pojęć dotyczących dostępu warunkowego i powiązane terminologii.
+- **[Dostęp warunkowy w usłudze Azure Active Directory](../active-directory-conditional-access-azure-portal.md)**  — ten artykuł zawiera omówienie pojęć dotyczących dostępu warunkowego i powiązane terminologii.
 
-- **[Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../devices/overview.md) ** — ten artykuł zawiera omówienie różnych opcji, musisz zakupić urządzenia pod kontrolą organizacji. 
+- **[Wprowadzenie do zarządzania urządzeniami w usłudze Azure Active Directory](../devices/overview.md)**  — ten artykuł zawiera omówienie różnych opcji, musisz zakupić urządzenia pod kontrolą organizacji. 
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -60,11 +60,11 @@ W prostych słowach zarządzanych urządzeń są urządzenia, które są objęte
 
 Aby uzyskać urządzeń zarejestrowanych w usłudze Azure AD, masz trzy opcje:
 
-- **[Urządzeń zarejestrowanych w usłudze Azure AD](../devices/overview.md#azure-ad-registered-devices) ** — osobiste urządzenie zarejestrowane w usłudze Azure AD
+- **[Urządzeń zarejestrowanych w usłudze Azure AD](../devices/overview.md#azure-ad-registered-devices)**  — osobiste urządzenie zarejestrowane w usłudze Azure AD
 
-- **[Urządzenia przyłączone do usługi Azure AD](../devices/overview.md#azure-ad-joined-devices) ** — Aby uzyskać organizacji urządzenia systemu Windows 10, który nie jest dołączony do sieci lokalnej usługi AD zarejestrowane w usłudze Azure AD. 
+- **[Urządzenia przyłączone do usługi Azure AD](../devices/overview.md#azure-ad-joined-devices)**  — Aby uzyskać organizacji urządzenia systemu Windows 10, który nie jest dołączony do sieci lokalnej usługi AD zarejestrowane w usłudze Azure AD. 
 
-- **[Urządzenia przyłączone do hybrydowej usługi Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices) ** — Pobierz system Windows 10 lub obsługiwanego urządzenia niskiego poziomu, której jest dołączony do sieci lokalnej usługi AD zarejestrowane w usłudze Azure AD.
+- **[Urządzenia przyłączone do hybrydowej usługi Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)**  — Pobierz system Windows 10 lub obsługiwanego urządzenia niskiego poziomu, której jest dołączony do sieci lokalnej usługi AD zarejestrowane w usłudze Azure AD.
 
 Aby stać się urządzenia zarządzanego, zarejestrowanego urządzenia musi być albo **urządzenia połączonego z hybrydowej usługi Azure AD** lub **urządzenia, która została oznaczona jako zgodna**.  
 

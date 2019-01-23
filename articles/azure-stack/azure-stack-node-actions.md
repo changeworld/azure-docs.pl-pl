@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 170cf458496d91a28260296e2aba803d76fbc06b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 90910580fd7fc766376569de3ce43fc5ce297e8b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388829"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469206"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Liczba akcji skalowania jednostki węzła w usłudze Azure Stack
 
@@ -148,9 +148,25 @@ Po uruchomieniu akcji naprawy, należy określić adres IP kontrolera BMC.
 
 Uruchom akcję naprawy, otwórz wiersz PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie cmdlet:
 
-  ````PowerShell
+  ```PowerShell
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
-  ````
+  ```
+
+## <a name="shutdown"></a>Shutdown
+
+**Zamknięcia** fist akcji przenosi wszystkie aktywne obciążenia do pozostałych węzłów w tej samej jednostce skalowania. Następnie bezpiecznie zamknięcie węzła jednostki skalowania.
+
+Po uruchomieniu węzła, który został zamknięty, musisz uruchomić [wznowić](#resume) akcji. Wcześniej obciążeń, które były uruchomione w węźle nie powrót po awarii.
+
+Jeśli operacja zamknięcia nie powiedzie się, spróbuj [opróżnić](#drain) operacji następuje operacja zamknięcia.
+
+Aby uruchomić akcję zamknięcia, otwórz wiersz PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie cmdlet:
+
+  ```PowerShell
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -Shutdown
+  ```
+
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

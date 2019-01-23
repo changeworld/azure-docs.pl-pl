@@ -4,7 +4,7 @@ description: Jak używać ograniczenia dotyczące dzierżawy do zarządzania uż
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: yossib
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 6989fe88fa17bcd99c99ee3e82d82fb403d1aae4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 97cabf7821f223b900f86115c3bd85b12de450d4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096710"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478148"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Ograniczenia dzierżawy do zarządzania dostępem do aplikacji SaaS działających w chmurze
 
@@ -70,7 +70,7 @@ Aby włączyć ograniczenia dotyczące dzierżawy za pośrednictwem infrastruktu
 
 #### <a name="configuration"></a>Konfigurowanie
 
-Dla każdego żądania przychodzącego login.microsoftonline.com login.microsoft.com i login.windows.net Wstaw dwa nagłówki HTTP: *ograniczanie dostępu do dzierżawy* i *ograniczanie dostępu do kontekstu*.
+Dla każdego żądania przychodzącego login.microsoftonline.com login.microsoft.com i login.windows.net Wstaw dwa nagłówki HTTP: *Ogranicz dostęp do dzierżaw* i *Ogranicz dostęp kontekst-*.
 
 Nagłówki powinien zawierać następujące elementy: 
 - Dla *ograniczanie dostępu do dzierżawy*, wartość \<dozwolone listy dzierżawy\>, który znajduje się lista rozdzielonych przecinkami dzierżaw, aby zezwolić użytkownikom na dostęp do. Dowolnej domeny, która jest zarejestrowana w dzierżawie może służyć do identyfikowania dzierżawy na tej liście. Na przykład aby zezwolić na dostęp do dzierżawy firmy Contoso i Fabrikam, pary nazwa/wartość wygląda następująco:  `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 

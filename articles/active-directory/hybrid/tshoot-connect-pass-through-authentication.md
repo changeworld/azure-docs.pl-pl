@@ -1,11 +1,11 @@
 ---
-title: 'Azure AD Connect: Rozwiązywanie problemów z uwierzytelniania przekazywanego | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Rozwiązywanie problemów z uwierzytelniania przekazywanego | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano, jak rozwiązywać problemy z uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD).
 services: active-directory
 keywords: Rozwiązywanie problemów z usługi Azure AD Connect uwierzytelniania przekazywanego, należy zainstalować usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: db3dfc10d6936b063a225e48fd043b6208f10475
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686198"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472776"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Rozwiązywanie problemów z usługi Azure Active Directory uwierzytelnianie przekazywane
 
@@ -66,7 +66,7 @@ Przejdź do **usługi Azure Active Directory** -> **logowania** na [Centrum admi
 | 80002 | Upłynął limit czasu żądania weryfikacji hasła agenta uwierzytelniania. | Sprawdź, czy dostępny z poziomu agenta uwierzytelniania usługi Active Directory.
 | 80003 | Agent uwierzytelniania odebrał nieprawidłową odpowiedź. | Jeśli problem się stale powtarza dla wielu użytkowników, sprawdź konfigurację usługi Active Directory.
 | 80004 | W żądaniu logowania użyto nieprawidłowej głównej nazwy użytkownika (UPN). | Poproś użytkownika o zalogowanie się prawidłową nazwę użytkownika.
-| 80005 | Agent uwierzytelniania: wystąpił błąd. | Błąd przejściowy. Spróbuj ponownie później.
+| 80005 | Agent uwierzytelniania: Wystąpił błąd. | Błąd przejściowy. Spróbuj ponownie później.
 | 80007 | Agent uwierzytelniania nie może nawiązać połączenia z usługą Active Directory. | Sprawdź, czy dostępny z poziomu agenta uwierzytelniania usługi Active Directory.
 | 80010 | Agent uwierzytelniania nie może odszyfrować hasła. | Jeśli problem się stale powtarza, należy zainstalować i zarejestrować nowego agenta uwierzytelniania. I odinstalowywania bieżącej. 
 | 80011 | Agent uwierzytelniania nie może pobrać klucza odszyfrowującego. | Jeśli problem się stale powtarza, należy zainstalować i zarejestrować nowego agenta uwierzytelniania. I odinstalowywania bieżącej.
@@ -95,7 +95,7 @@ Upewnij się, że używasz konta administratora globalnego tylko w chmurze Azure
 
 ### <a name="warning-message-when-uninstalling-azure-ad-connect"></a>Ostrzeżenie podczas odinstalowywania program Azure AD Connect
 
-Jeśli masz uwierzytelniania przekazywanego włączona w dzierżawie usługi, można spróbować odinstalować program Azure AD Connect zawiera następujący komunikat ostrzegawczy: "użytkownicy nie będą mogli zalogować się do usługi Azure AD, chyba że masz inne agentów uwierzytelniania przekazywanego zainstalowanych na inne serwery."
+Jeśli uwierzytelnianie przekazywane jest włączone w dzierżawie usługi i spróbuj odinstalować program Azure AD Connect, przedstawia on następujący komunikat ostrzegawczy: "Użytkownicy nie będą mogli zalogować się do usługi Azure AD, chyba że masz inne uwierzytelniania przekazywanego zainstalowanych agentów na innych serwerach."
 
 Upewnij się, że ustawienia są [o wysokiej dostępności](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) przed odinstalowaniem usługi Azure AD Connect, aby uniknąć dzielenia logowania użytkownika.
 

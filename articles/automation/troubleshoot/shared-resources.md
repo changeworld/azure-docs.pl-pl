@@ -8,12 +8,12 @@ ms.date: 12/3/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ce78c86cdae9a06100fd17d00e0229805e42983b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848463"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475445"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Rozwiązywanie problemów z udostępnionymi zasobami
 
@@ -21,7 +21,7 @@ W tym artykule omówiono rozwiązania, aby rozwiązać problemy, które może dz
 
 ## <a name="modules"></a>Moduły
 
-### <a name="module-stuck-importing"></a>Scenariusz: Moduł utkwiła importowania
+### <a name="module-stuck-importing"></a>Scenariusz: Moduł jest zablokowany, importowanie
 
 #### <a name="issue"></a>Problem
 
@@ -39,9 +39,68 @@ Aby rozwiązać ten problem, należy usunąć moduł, który jest zablokowany w 
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
+### <a name="module-fails-to-import"></a>Scenariusz: Moduł nie powiedzie się zaimportować lub poleceń cmdlet, nie można wykonać po zaimportowaniu
+
+#### <a name="issue"></a>Problem
+
+Nie powiedzie się zaimportować moduł, lub pomyślnie importowany, ale są wyodrębniane nie poleceń cmdlet.
+
+#### <a name="cause"></a>Przyczyna
+
+Niektóre typowe przyczyny, które moduł nie może pomyślnie zaimportować do usługi Azure Automation są:
+
+* Struktura nie jest zgodna strukturę, która automatyzacji musi się on w.
+* Moduł jest zależny od innego modułu, który nie został wdrożony na Twoim koncie usługi Automation.
+* Moduł brakuje jego zależności w folderze.
+* `New-AzureRmAutomationModule` Polecenia cmdlet jest używane do przekazywania modułu, a nie jeszcze podanej ścieżki przechowywania pełnej lub nie został załadowany moduł przy użyciu publicznie dostępnego adresu URL.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Dowolne z poniższych rozwiązań rozwiązać ten problem:
+
+* Upewnij się, że moduł następuje w następującym formacie: ModuleName.Zip **->** ModuleName lub numer wersji **->** (ModuleName.psm1, ModuleName.psd1)
+* Otwórz plik psd1 i sprawdzić, czy moduł wszelkie zależności. Jeśli tak jest, należy przekazać te moduły, do konta usługi Automation.
+* Upewnij się, że wszystkie odwołania dll debuggle znajdują się w folderze modułu.
+
+### <a name="all-modules-suspended"></a>Scenariusz: Aktualizacja AzureModule.ps1 zawiesza się podczas aktualizacji modułów
+
+#### <a name="issue"></a>Problem
+
+Korzystając z [AzureModule.ps1 aktualizacji](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) elementu runbook, aby zaktualizować moduły platformy Azure aktualizowanie modułu proces aktualizacji zostanie zawieszone.
+
+#### <a name="cause"></a>Przyczyna
+
+Ustawienie domyślne, aby określić, jak wiele modułów zaktualizowani jednocześnie wynosi 10, korzystając z `Update-AzureModule.ps1` skryptu. Proces aktualizacji jest podatny na błędy, gdy za dużo modułów są aktualizowane w tym samym czasie.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Nie jest powszechne, że wszystkie moduły AzureRM są wymagane w ramach tego samego konta usługi Automation. Zaleca się importowanie tylko moduły AzureRM, które są potrzebne.
+
+> [!NOTE]
+> Należy unikać importowania **AzureRM** modułu. Importowanie **AzureRM** modułów powoduje, że wszystkie **AzureRM.\***  modułów do zaimportowania, to nie jest zalecane.
+
+Jeśli proces aktualizacji wstrzymuje, musisz dodać `SimultaneousModuleImportJobCount` parametr `Update-AzureModules.ps1` skryptów i zapewnia mniejszą wartość niż domyślna, która wynosi 10. Zalecane jest, jeśli możesz wdrożyć tę logikę, aby uruchomić o wartości 3 lub 5. `SimultaneousModuleImportJobCount` jest parametrem `Update-AutomationAzureModulesForAccount` runbook system, który służy do aktualizowania modułów platformy Azure. Ta zmiana sprawia, że proces wykonywania dłużej, ale ma szanse na ukończenie. Poniższy przykład przedstawia, parametr i gdzie umieścić go w elemencie runbook:
+
+ ```powershell
+         $Body = @"
+            {
+               "properties":{
+               "runbook":{
+                   "name":"Update-AutomationAzureModulesForAccount"
+               },
+               "parameters":{
+                    ...
+                    "SimultaneousModuleImportJobCount":"3",
+                    ... 
+               }
+              }
+           }
+"@
+```
+
 ## <a name="run-as-accounts"></a>Konta Uruchom jako
 
-### <a name="unable-create-update"></a>Scenariusz: Nie możesz utworzyć lub zaktualizować konto Uruchom jako
+### <a name="unable-create-update"></a>Scenariusz: Nie można utworzyć lub zaktualizować konto Uruchom jako możesz
 
 #### <a name="issue"></a>Problem
 
@@ -59,7 +118,7 @@ Nie masz uprawnień, które należy utworzyć lub zaktualizować konto Uruchom j
 
 Aby utworzyć lub zaktualizować konto Uruchom jako, musi mieć odpowiednie uprawnienia do różnych zasobów, które są używane przez konto Uruchom jako. Aby dowiedzieć się o uprawnienia potrzebne do tworzenia lub aktualizowania konta Uruchom jako, zobacz [Uruchom jako uprawnień konta](../manage-runas-account.md#permissions).
 
-Jeśli problem będzie się z powodu blokady, sprawdź, czy blokada jest ok, aby usunąć i przejdź do zasobu, który jest zablokowany, kliknij prawym przyciskiem myszy blokady i wybierz **Usuń** usunięcia blokady.
+Jeśli problem będzie się ze względu na blokadę, sprawdź, czy blokada jest ok, aby go usunąć. Następnie przejdź do zasobu, który jest zablokowany, kliknij prawym przyciskiem myszy blokady i wybierz **Usuń** usunięcia blokady.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

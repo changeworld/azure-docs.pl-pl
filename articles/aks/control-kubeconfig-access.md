@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: ae45a268536f6a8fcb4ab27336a1281837cf5dc7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 40588ec29eb6f7c33ba5e1d6071caf5c8ed43424
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045850"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450179"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Użyj kontroli dostępu opartej na rolach na platformie Azure, aby definiują dostęp użytkownika do pliku konfiguracji platformy Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
-Możesz wchodzić w interakcje z klastrami usługi Kubernetes przy użyciu `kubectl` narzędzia. Wiersza polecenia platformy Azure zapewnia prosty sposób uzyskania dostępu do poświadczeń i informacji o konfiguracji, aby nawiązać połączenie usługi AKS klastrów przy użyciu `kubectl`. Do limitu, który można uzyskać tę konfigurację rozwiązania Kubernetes (*plik kubeconfig*) informacji oraz uprawnienia, następnie mają, można użyć kontroli dostępu opartej na rolach na platformie Azure (RBAC).
+Możesz wchodzić w interakcje z klastrami usługi Kubernetes przy użyciu `kubectl` narzędzia. Wiersza polecenia platformy Azure zapewnia prosty sposób uzyskania dostępu do poświadczeń i informacji o konfiguracji, aby nawiązać połączenie usługi AKS klastrów przy użyciu `kubectl`. Do limitu, który można uzyskać tę konfigurację rozwiązania Kubernetes (*plik kubeconfig*) informacji i aby ograniczyć następnie mają uprawnienia, można użyć kontroli dostępu opartej na rolach na platformie Azure (RBAC).
 
 W tym artykule pokazano, jak przypisać role RBAC, ten limit, który można pobrać informacji o konfiguracji dla klastra usługi AKS.
 
@@ -128,7 +128,7 @@ az role assignment delete --assignee $ACCOUNT_ID --scope $AKS_CLUSTER
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Większe bezpieczeństwo i dostęp do klastrów usługi AKS [integrowanie uwierzytelniania usługi Azure Active Directory][aad-integration].
+Aby zwiększyć bezpieczeństwo dostępu do klastrów usługi AKS [integrowanie uwierzytelniania usługi Azure Active Directory][aad-integration].
 
 <!-- LINKS - external -->
 [kubectl-config-use-context]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config

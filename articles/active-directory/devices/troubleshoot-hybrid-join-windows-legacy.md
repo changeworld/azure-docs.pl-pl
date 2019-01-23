@@ -4,7 +4,7 @@ description: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directo
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 546f9054978f0b9fbe6bb9063905c982de627442
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800863"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445290"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
@@ -37,7 +37,7 @@ Dla systemu Windows 10 lub Windows Server 2016, zobacz [urządzenia systemu Wind
 
 W tym artykule założono, że masz [urządzenia przyłączone do hybrydowej skonfigurowanego w usłudze Azure Active Directory](hybrid-azuread-join-plan.md) na potrzeby następujących scenariuszy:
 
-- Dostęp warunkowy oparty na urządzeniu
+- Dostęp warunkowy oparty na urządzeniach
 
 
 Ten artykuł zawiera w rozwiązywaniu problemów wskazówki dotyczące sposobu rozwiązania potencjalnych problemów.  
@@ -73,7 +73,7 @@ To polecenie wyświetla okno dialogowe, które zawiera szczegóły dotyczące st
 ![Przyłączanie do obszaru roboczego dla Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Ocena hybrydowego stan dołączania usługi Azure AD 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Oceń hybrydowego stan dołączania usługi Azure AD 
 
 Jeśli urządzenie nie było hybrydowe przyłączone do usługi Azure AD, można spróbować wykonać dołączenie do hybrydowej usługi Azure AD, klikając przycisk "Dołącz". Jeśli próba czy dołączenie do hybrydowej usługi Azure AD nie powiedzie się, będą wyświetlane szczegóły dotyczące błędu.
 
@@ -116,7 +116,7 @@ Jeśli urządzenie nie było hybrydowe przyłączone do usługi Azure AD, można
 
     ![Przyłączanie do obszaru roboczego dla Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Możesz również znaleźć informacje o stanie w dzienniku zdarzeń w obszarze: **aplikacji i usług Log\Microsoft — dołączanie**
+Można również znaleźć informacje o stanie w dzienniku zdarzeń: **Aplikacje i usługi Log\Microsoft — dołączanie**
   
 **Najczęstszymi przyczynami sprzężenia nie powiodło się hybrydowej usługi Azure AD są:** 
 

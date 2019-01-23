@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure AD Connect uwierzytelniania przekazywanego, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 45f99ac99c54caab17ba7b74dc09a46c335c8fe4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185073"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476346"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Usługa Azure uwierzytelnianie przekazujących w usłudze Active Directory security szczegółowe dane
 
@@ -50,10 +50,10 @@ Poniżej przedstawiono kluczowych aspektów zabezpieczeń tej funkcji:
 
 Ogólne szczegółowe informacje o operacyjne, usługa Azure AD i bezpieczeństwo danych, zobacz [Centrum zaufania](https://azure.microsoft.com/support/trust-center/). Użyj uwierzytelniania przekazującego, podczas logowania użytkownika obejmuje następujące składniki:
 - **Tokenu Zabezpieczającego usług Azure AD**: Bezstanowa Usługa tokenu zabezpieczającego (STS) przetwarza żądań logowania, która wystawia tokeny zabezpieczające do przeglądarki, klientów lub usług, zgodnie z potrzebami użytkowników.
-- **Usługi Azure Service Bus**: Zapewnia, że komunikacji w chmurze z obsługą wiadomości przedsiębiorstwa i komunikację przekaźniki pomoże Ci połączyć rozwiązania lokalne z chmurą.
+- **Azure Service Bus**: Zapewnia, że komunikacji w chmurze z obsługą wiadomości przedsiębiorstwa i komunikację przekaźniki pomoże Ci połączyć rozwiązania lokalne z chmurą.
 - **Azure AD Connect Agent uwierzytelniania**: Składnik w środowisku lokalnym, który odbiera i odpowiada na żądania weryfikacji hasła.
-- **Usługa Azure SQL Database**: Przechowuje informacje dotyczące agentów uwierzytelniania Twojej dzierżawy, w tym do kluczy szyfrowania i metadanych.
-- **Usługi Active Directory**: Lokalne usługi Active Directory, w którym są przechowywane kont użytkowników i haseł.
+- **Azure SQL Database**: Przechowuje informacje dotyczące agentów uwierzytelniania Twojej dzierżawy, w tym do kluczy szyfrowania i metadanych.
+- **Active Directory**: Lokalne usługi Active Directory, w którym są przechowywane kont użytkowników i haseł.
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Instalowaniem i rejestrowaniem agentów uwierzytelniania
 

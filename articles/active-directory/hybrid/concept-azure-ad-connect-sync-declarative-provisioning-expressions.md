@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Deklaratywne wyrażeń związanych z Aprowizacją | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Deklaratywne, inicjowanie obsługi administracyjnej wyrażeń | Dokumentacja firmy Microsoft'
 description: W tym artykule wyjaśniono deklaratywne wyrażenia inicjowania obsługi administracyjnej.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e3ea53c8-3801-4acf-a297-0fb9bb1bf11d
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 26c835e6c2f658f7ad852fdd02dc8974db33e47b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 488309d9d78834896a939c66ccdc7515310103de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312067"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460503"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizacja programu Azure AD Connect: opis wyrażenia inicjowania obsługi administracyjnej deklaratywne
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizacja programu Azure AD Connect: Opis wyrażeń związanych z aprowizacją deklaratywną
 Synchronizacja programu Azure AD Connect opiera się na aprowizacja deklaratywna po raz pierwszy wprowadzone w programie Forefront Identity Manager 2010. Dzięki temu można zaimplementować logikę biznesową pełną tożsamość integracji bez konieczności pisania kodu skompilowanego.
 
 Integralną część aprowizacja deklaratywna to język wyrażeń w przepływach atrybutu. Język używany jest podzbiorem programu Microsoft® Visual Basic® Applications (VBA). Ten język jest używany w programie Microsoft Office, a użytkownicy mający doświadczenie VBScript również rozpozna go. Deklaratywne język wyrażeń aprowizacji wyłącznie przy użyciu funkcji i nie jest język structured. Brak metody i instrukcji. Funkcje zamiast tego są zagnieżdżone w celu przepływu programu express.
@@ -35,10 +35,10 @@ Atrybuty są silnie typizowane. Funkcja akceptuje tylko atrybuty poprawnego typu
 * Funkcje mają nazwę, oraz argumenty w nawiasach: FunctionName (argumentu 1, argument N).
 * Atrybuty są identyfikowane przez nawiasy kwadratowe: [attributeName]
 * Parametry są identyfikowane za pomocą procentu: ParameterName %
-* Stałe typu String są ujęte w cudzysłowy: na przykład "Contoso" (Uwaga: należy użyć cudzysłowów prostych "" i nie inteligentne cudzysłowy "")
+* Stałe typu String są ujęte w cudzysłowy: Na przykład "Contoso" (Uwaga: należy użyć cudzysłowów prostych "" i nie inteligentne cudzysłowy "")
 * Wartości numeryczne są wyrażone bez znaków cudzysłowu i powinny być dziesiętną. Wartości szesnastkowe mają prefiks & H. Na przykład 98052 & HFF
-* Wartości logiczne są wyrażone za pomocą stałych: True i False.
-* Literały i stałe wbudowane są wyrażone za pomocą tylko ich nazwy: NULL, CRLF, IgnoreThisFlow
+* Wartości logiczne są wyrażone za pomocą stałych: True, False.
+* Stałe wbudowanych i wszystkie literały są wyrażone za pomocą tylko nazwy: NULL, CRLF, IgnoreThisFlow
 
 ### <a name="functions"></a>Funkcje
 Aprowizacja deklaratywna używa wiele funkcji, aby umożliwić możliwość przekształcania wartości atrybutów. Te funkcje mogą być zagnieżdżane, wynikiem funkcji jest przekazywana do innej funkcji.
@@ -93,10 +93,10 @@ Na przykład:
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 
 **Tematy odwołań**
 
-* [Synchronizacja programu Azure AD Connect: informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
+* [Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
 

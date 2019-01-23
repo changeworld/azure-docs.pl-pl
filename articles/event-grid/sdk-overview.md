@@ -1,27 +1,27 @@
 ---
-title: Zestawy SDK siatki zdarzeń platformy Azure
-description: W tym artykule opisano zestawy SDK dla usługi Azure Event siatki. Te zestawy SDK zapewniają zarządzania, publikowanie i zużycia.
+title: Usługi Azure Event Grid w zestawy SDK
+description: W tym artykule opisano te zestawy SDK dla usługi Azure Event Grid. Te zestawy SDK zapewniają zarządzania, publikowanie i zużycia.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 06/29/2018
-ms.author: tomfitz
-ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 53a1f50647e05b71afe6accb85f8a90cd8b7e253
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130839"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470409"
 ---
-# <a name="event-grid-sdks-for-management-and-publishing"></a>Zestawy SDK siatki zdarzeń zarządzania i publikowanie
+# <a name="event-grid-sdks-for-management-and-publishing"></a>Do zarządzania i publikowania, zestawy SDK siatki zdarzeń
 
-Zdarzenie siatki udostępnia zestawów SDK, które umożliwiają programowego zarządzania zasobami i publikowania zdarzeń.
+Usługi Event Grid udostępnia zestawy SDK, które umożliwiają programowe zarządzanie zasobami i Publikuj zdarzenia.
 
-## <a name="management-sdks"></a>Zestawy SDK zarządzania
+## <a name="management-sdks"></a>Zarządzanie zestawami SDK
 
-Zarządzanie zestawów SDK Włącz tworzenie, aktualizowanie i usuwanie zdarzeń siatki tematów i subskrypcji. Obecnie dostępne są następujące zestawy SDK:
+Zarządzanie zestawami SDK umożliwia tworzenie, aktualizowanie i usuwanie subskrypcji i tematy usługi event grid. Obecnie dostępne są następujące zestawy SDK:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
@@ -30,9 +30,9 @@ Zarządzanie zestawów SDK Włącz tworzenie, aktualizowanie i usuwanie zdarzeń
 * [Python](https://pypi.python.org/pypi/azure-mgmt-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_mgmt_event_grid)
 
-## <a name="data-plane-sdks"></a>Zestawy SDK płaszczyzna danych
+## <a name="data-plane-sdks"></a>Zestawy SDK płaszczyzny danych
 
-Płaszczyzna danych zestawów SDK umożliwiają post zdarzenia do tematów przez obsługę uwierzytelniania, tworzące zdarzenia i asynchronicznego ogłaszania określony punkt końcowy. Umożliwiają one również korzystać pierwsze zdarzenia strony. Obecnie dostępne są następujące zestawy SDK:
+Płaszczyzna danych SDK umożliwia wpis zdarzenia do tematów, zwracając szczególną uwagę uwierzytelniania, stanowiące zdarzenia i asynchronicznie wysłanie postu do określonego punktu końcowego. Umożliwiają one również korzystanie ze zdarzeń usługi pierwszej strony. Obecnie dostępne są następujące zestawy SDK:
 
 * [.NET](https://www.nuget.org/packages/Microsoft.Azure.EventGrid)
 * [Go](https://github.com/Azure/azure-sdk-for-go)
@@ -43,7 +43,7 @@ Płaszczyzna danych zestawów SDK umożliwiają post zdarzenia do tematów przez
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Na przykład aplikacje, zobacz [przykłady kodu siatki zdarzeń](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
-* Aby obejrzeć wprowadzenie do siatki zdarzeń, zobacz [co to jest zdarzenie siatki?](overview.md)
-* Zdarzenie siatki poleceń w wiersza polecenia platformy Azure, zobacz [interfejsu wiersza polecenia Azure](/cli/azure/eventgrid).
-* Dla polecenia siatki zdarzeń w programie PowerShell, zobacz [PowerShell](/powershell/module/azurerm.eventgrid).
+* Na przykład, zobacz [przykładów kodu usługi Event Grid](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
+* Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
+* Usługa Event Grid poleceń w interfejsie wiersza polecenia platformy Azure można znaleźć [wiersza polecenia platformy Azure](/cli/azure/eventgrid).
+* Usługa Event Grid poleceń w programie PowerShell można znaleźć [PowerShell](/powershell/module/azurerm.eventgrid).

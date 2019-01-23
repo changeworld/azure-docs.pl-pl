@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: af7e280c7dcd82c18e91ded759756c3826342cd3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: autoscale
+ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585317"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474833"
 ---
 # <a name="understand-autoscale-settings"></a>Omówienie ustawień automatycznego skalowania
 Ustawienia automatycznego skalowania pomóc, upewnij się, że masz odpowiednią ilość zasobów do obsługi zmian obciążenia aplikacji. Można skonfigurować ustawienia automatycznego skalowania wyzwolenie oparciu metryki, które wskazują obciążenia lub wydajności lub wyzwalane w zaplanowanym czasie. Ten artykuł przedstawia szczegółowy widok anatomia ustawienia automatycznego skalowania. Artykuł zaczyna się od schematu i właściwości ustawienia, a następnie przeprowadzi typy innego profilu, które można skonfigurować. Na koniec, w tym artykule omówiono sposób funkcja automatycznego skalowania na platformie Azure ocenia profilu, który można wykonać w dowolnym momencie.
@@ -104,7 +104,7 @@ Aby zilustrować schematu ustawienie skalowania automatycznego, służy następu
 | zasada | metricTrigger | Definiuje metryki warunku reguły. |
 | metricTrigger | MetricName | Nazwa metryki. |
 | metricTrigger |  metricResourceUri | Identyfikator zasobu dla zasobu, który emituje metryki. W większości przypadków jest taka sama jak zasób jest skalowany. W niektórych przypadkach może być inny. Na przykład można skalować zestaw skalowania maszyn wirtualnych na podstawie liczby komunikatów w kolejce magazynu. |
-| metricTrigger | ziarna czasu | Czas trwania próbkowania metryk. Na przykład **TimeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy użyciu metody agregacji określonej w elemencie statystyk. |
+| metricTrigger | timeGrain | Czas trwania próbkowania metryk. Na przykład **TimeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy użyciu metody agregacji określonej w elemencie statystyk. |
 | metricTrigger | Statystyka | Metoda agregacji w okresie ziarna czasu. Na przykład **Statystyka = "Average"** i **timeGrain = "PT1M"** oznacza, że metryki powinna zostać zagregowana co 1 minutę przy średniej. Ta właściwość decyduje o tym, jak są próbkowane tak metrykę. |
 | metricTrigger | timeWindow | Ilość czasu, aby wyszukać metryki. Na przykład **timeWindow = "PT10M"** oznacza, że za każdym razem, gdy działa automatyczne skalowanie, wysyła zapytanie metryki dla ostatnich 10 minut. Przedział czasu umożliwia metryki będą normalizowane i zapobiega reagowaniu na przejściowe skoki. |
 | metricTrigger | timeAggregation | Metoda agregacji używana do agregowania próbkowanych metryk. Na przykład **TimeAggregation = "Average"** powinien zagregowanie próbkowanych metryk przy średniej. W przypadku poprzedniego pobierania dziesięć próbek 1 minutę, a średni je. |
@@ -310,3 +310,4 @@ Więcej informacji na temat automatycznego skalowania, odwołując się do nast�
 * [Najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](../../azure-monitor/platform/autoscale-best-practices.md)
 * [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
+

@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Uaktualnianie z poprzedniej wersji | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Uaktualnianie z poprzedniej wersji | Dokumentacja firmy Microsoft'
 description: W tym artykule wyjaśniono różne metody, aby uaktualnić do najnowszej wersji usługi Azure Active Directory Connect, w tym uaktualnienia w miejscu i migracja typu swing.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 17333f6a5e78fb6da607e93cf696bfc766daf3ae
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4ca1fc4677f0d9a5391973a965faae4e283c4710
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314790"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462542"
 ---
-# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji
+# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji
 W tym temacie opisano różne metody, których można użyć, aby zaktualizować swoją instalację usługi Azure Active Directory (Azure AD) Connect do najnowszej wersji. Firma Microsoft zaleca zachowywanie samodzielnie bieżącego z wersjami programu Azure AD Connect. Użyto również w krokach w [migracja typu Swing](#swing-migration) sekcji po wprowadzeniu znaczące zmiany konfiguracji.
 
 Do uaktualnienia narzędzia DirSync, zobacz temat [uaktualnienie z narzędzia Azure AD sync (DirSync)](how-to-dirsync-upgrade-get-started.md) zamiast tego.

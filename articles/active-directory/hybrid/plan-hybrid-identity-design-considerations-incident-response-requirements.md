@@ -4,7 +4,7 @@ description: Określić możliwości monitorowania i raportowania dla rozwiązan
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a3d2a459-599b-4b67-8e51-7369ee25082d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: baa1d1fec6438b937ba783adcc86c4f74fa1a6db
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5a5b166e9b90ede5f5c51b2c288ce1d2d6290ba6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312060"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464837"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących reagowania na zdarzenia, dla Twojego rozwiązania z tożsamością hybrydową
 Dużych i średnich organizacji najprawdopodobniej będą mieć [reagowania na zdarzenia zabezpieczeń](https://technet.microsoft.com/library/cc700825.aspx) mające na celu pomóc IT podjąć odpowiednie działania na poziomie wystąpienia zdarzenia. Systemu zarządzania tożsamościami jest ważnym elementem procesu reagowania na zdarzenia, ponieważ może służyć do pomocy w identyfikacji, kto wykonał określonej akcji w odniesieniu do obiektu docelowego. Rozwiązania z tożsamością hybrydową musi mieć możliwość zapewnienia możliwości monitorowania i raportowania, które mogą zostać wykorzystane przez IT, aby wykonać działania, aby identyfikować i minimalizować potencjalne zagrożenie. W ramach planu reagowania na zdarzenia typowe mają następujące fazy w ramach planu:
@@ -51,7 +51,7 @@ Systemu zarządzania tożsamościami powinien pomóc administratorom IT do ident
 * Czy firma potrzebuje inspekcji dostępu i akcji użytkownika?
 * Czy firma musi wiedzieć, kiedy użytkownik resetowania jego hasła?
 
-## <a name="policy-enforcement"></a>Wymuszanie zasad zostaje wyłączone
+## <a name="policy-enforcement"></a>Wymuszanie zasad
 Podczas kontroli uszkodzenia i fazy zmniejszenie ryzyka ważne jest szybkie zmniejszenie rzeczywistych i potencjalnych skutków ataku. Tę akcję, która spowoduje przejście na tym etapie można zdecydować o WERSJA_POMOCNICZA i główne jeden. Dokładna będzie zależeć od Twojej organizacji i rodzaj ataku, który napotkasz. Wstępną ocenę zawarte na tym, że konto zostało naruszone, należy wymusić zasady, aby zablokować tego konta. To tylko jeden przykład, w którym będą wykorzystywane systemu zarządzania tożsamościami. Użyj pytania poniżej, aby ułatwić projektowanie rozwiązania z tożsamością hybrydową, biorąc pod uwagę sposób zostaną wymuszone zasady do reagowania na zdarzenie bieżące:
 
 * Czy firma dysponuje zasady w miejscu aby uniemożliwić użytkownikom z dostępu do sieci w razie potrzeby?

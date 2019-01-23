@@ -4,7 +4,7 @@ description: Ten temat zawiera instrukcje korygowania błędów LargeObject spow
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 0882976df898d36f1d5a5ff06e0de5c747613719
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ffc8832fa2da9d4bfad23752a5bc767ace2b573e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312081"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478624"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: błędów obsługi LargeObject spowodowanych przez atrybut userCertificate
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: Obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
 
 Azure AD wymusza maksymalny limit wynoszący **15** certyfikatu wartości na **userCertificate** atrybutu. Jeśli program Azure AD Connect umożliwia wyeksportowanie obiektu z więcej niż 15 wartości do usługi Azure AD, usługa Azure AD zwraca **LargeObject** błąd z komunikatem:
 
@@ -41,7 +41,7 @@ Aby uzyskać listę obiektów w dzierżawie, z błędami LargeObject, użyj jedn
 ## <a name="mitigation-options"></a>Opcje ograniczania ryzyka
 Do momentu rozwiązania błąd LargeObject inne zmiany atrybutów ten sam obiekt nie można wyeksportować do usługi Azure AD. Aby naprawić błąd, należy wziąć pod uwagę następujące opcje:
 
- * Uaktualnij program Azure AD Connect do tworzenia w 1.1.524.0 lub po. W programie Azure AD Connect kompilacji 1.1.524.0, out-of-box synchronizacji, które zasady zostały zaktualizowanie, aby nie Eksportuj atrybutów userCertificate i userSMIMECertificate, jeśli więcej niż 15 wartości atrybutów. Aby uzyskać szczegółowe informacje o tym, jak uaktualnić program Azure AD Connect, można znaleźć w artykule [program Azure AD Connect: uaktualnianie z poprzedniej wersji do najnowszej wersji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Uaktualnij program Azure AD Connect do tworzenia w 1.1.524.0 lub po. W programie Azure AD Connect kompilacji 1.1.524.0, out-of-box synchronizacji, które zasady zostały zaktualizowanie, aby nie Eksportuj atrybutów userCertificate i userSMIMECertificate, jeśli więcej niż 15 wartości atrybutów. Aby uzyskać szczegółowe informacje o tym, jak uaktualnić program Azure AD Connect, można znaleźć w artykule [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
  * Implementowanie **reguły synchronizacji ruchu wychodzącego** w programie Azure AD Connect, które eksportuje **wartość null, wartość zamiast wartości faktycznych dla obiektów z więcej niż 15 wartości certyfikatu**. Ta opcja jest odpowiednia, jeśli nie potrzebujesz dowolna z wartości certyfikatów, które mają zostać wyeksportowane do usługi Azure AD dla obiektów z więcej niż 15 wartości. Aby uzyskać szczegółowe informacje na temat sposobu wykonania tej reguły synchronizacji, można znaleźć w następnej sekcji [Implementowanie reguły synchronizacji, aby ograniczyć eksportu atrybutu userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 
@@ -121,7 +121,7 @@ Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu*
     | Połączonego systemu | *Wybierz łącznik usługi Azure AD* |
     | Połączony System typu obiektu | **Użytkownik** | |
     | Typ obiektu Metaverse | **Osoby** | |
-    | Typ linku | **Join** | |
+    | Typ linku | **Dołącz** | |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | Wybrana liczba nie mogą być używane przez istniejące reguły synchronizacji i ma niższą wartość (i w związku z tym, wyższy priorytet) niż istniejące reguły synchronizacji. |
 
 3. Przejdź do **filtru Scoping** kartę i wdrożenie tego samego filtru określania zakresu używa istniejącej reguły synchronizacji.
@@ -130,7 +130,7 @@ Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu*
 
     | Atrybut | Wartość |
     | --- | --- |
-    | Typ przepływu |**Wyrażenie** |
+    | Typ przepływu |**Expression** |
     | Atrybut docelowy |**userCertificate** |
     | Atrybut źródłowy |*Użyj następującego wyrażenia*: `IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     

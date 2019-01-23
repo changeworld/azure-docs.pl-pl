@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: 41511b27a84731df203d37d70d20df40f85af4fb
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 01/22/2018
+ms.author: ramamill
+ms.openlocfilehash: 712f8fb2cb951460ad2be36b2899f52d4966fc82
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410765"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468407"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -144,7 +144,7 @@ Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adr
     Zapoznaj się [architektura Azure replikacji VMware –](vmware-azure-architecture.md) Aby dowiedzieć się więcej na temat serwera konfiguracji i jego funkcje.
 5. Gdzie można znaleźć najnowszą wersję serwera konfiguracji?
 
-    Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pośrednictwem portalu, zobacz [uaktualnić serwer konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Można również bezpośrednio pobrać go z [Microsoft Download Center](https://aka.ms/asrconfigurationserver). Aby uzyskać szczegółowe instrukcje na temat uaktualniania wszystkie składniki usługi Site Recovery można znaleźć [tutaj](https://docs.microsoft.com/en-us/azure/site-recovery/service%20updates-how-to).
+    Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pośrednictwem portalu, zobacz [uaktualnić serwer konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać szczegółowe instrukcje na temat uaktualniania wszystkie składniki usługi Site Recovery można znaleźć [tutaj](https://aka.ms/asr_how_to_upgrade).
 6. Gdzie można pobrać hasła dla serwera konfiguracji?
 
     Zapoznaj się [w tym artykule](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) można pobrać hasło.
@@ -164,6 +164,8 @@ Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adr
 11. Można skonfigurować serwer konfiguracji na platformie Azure?
 
     Zalecane jest, aby skonfigurować serwer konfiguracji w środowisku lokalnym za pomocą bezpośredniego wiersza linii wzroku z Vcenter i zminimalizować opóźnienia transferu danych. Można wykonać zaplanowane kopie zapasowe serwera konfiguracji na potrzeby [potrzeby powrotu po awarii](vmware-azure-manage-configuration-server.md#failback-requirements).
+
+Inne często zadawane pytania na serwerze konfiguracji, można znaleźć w naszej [dokumentacji na typowe pytania dotyczące konfiguracji serwera](vmware-azure-common-questions.md#configuration-server) .
 
 ## <a name="troubleshoot-deployment-issues"></a>Rozwiązywanie problemów dotyczących wdrożenia
 

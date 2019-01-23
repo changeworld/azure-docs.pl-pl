@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 280c646a3265ff7ab9a3d32412a2be2e3989e22e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bb17916fb4d9b9b3ae1481ead7508214f5956c70
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297473"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464276"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Uzyskaj szczegółowe informacje o obrazach za pomocą interfejsu API wyszukiwania obrazów Bing
 
@@ -217,9 +217,9 @@ Poniżej przedstawiono odpowiedź na poprzednie żądanie. Ponieważ obraz, któ
 Wartości prostokąta są względne wobec szerokość i wysokość oryginalnego obrazu i należą do zakresu od 0,0 do 1,0. Na przykład, jeśli obraz jest 300 x 200 i od góry regionu, lewym rogu jest w momencie (10, 20) i prawym rogu w dolnej części jest w momencie (290, 150), a następnie znormalizowane prostokąt jest:  
 
 -   Po lewej stronie: 10 / 300 = 0.03333...  
--   Pierwszych: 20 / 200 = 0,1  
+-   Do góry:  20 / 200 = 0.1  
 -   Po prawej stronie: 290 / 300 = 0.9667...  
--   Dół: 150 / 200 = wartość 0,75  
+-   Dół: 150 / 200 = 0.75  
 
 Możesz użyć regionie, w którym Wyszukiwarka Bing zwróci w szczegółowych informacji w kolejnych wywołaniach. Na przykład, aby pobrać podobnych obrazach rozpoznawanym jednostki. Aby uzyskać więcej informacji, zobacz [przycinanie obrazów za pomocą modułów rozpoznawania jednostek i podobnych](#croppingimages). Poniżej przedstawiono mapowanie między polami region i parametry zapytania zostanie wykorzystany do kadrować obrazy.  
 
@@ -408,7 +408,7 @@ Poniżej przedstawiono odpowiedź na poprzednie żądanie. Odpowiedź zawiera ob
 }
 ```
 
-Aby uzyskać listę temu handlowcy mogą tworzyć, które oferują produkt w trybie online (zobacz [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer-offercount) pola), ponownie wywołania interfejsu API i ustawić `modules` do ShoppingSources. Następnie ustaw `insightsToken` parametr zapytania z tokenem znajdującej się obrazie podsumowania produktu.  
+Aby uzyskać listę temu handlowcy mogą tworzyć, które oferują produkt w trybie online (zobacz [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) pola), ponownie wywołania interfejsu API i ustawić `modules` do ShoppingSources. Następnie ustaw `insightsToken` parametr zapytania z tokenem znajdującej się obrazie podsumowania produktu.  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    

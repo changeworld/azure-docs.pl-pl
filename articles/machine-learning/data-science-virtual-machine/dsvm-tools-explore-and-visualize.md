@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: c83c9929019e6e236ead783c0c617e51523a5a8a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: dfe6184779d3c26273e8e7cabef4890360cf7e76
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567387"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446264"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Eksploracja i wizualizacja narzędzia danych na maszynie wirtualnej do nauki o danych
 
@@ -32,7 +32,7 @@ Krok klucza do nauki o danych jest zrozumieć dane. Wizualizacja i narzędzi eks
 | Co to jest?   | Aparat kwerend SQL typu open source, danych Big Data    |
 | Wersje maszyny DSVM obsługiwane      | Windows, Linux  |
 | Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?      |  Zainstalowane w `/dsvm/tools/drill*` osadzone tylko w trybie   |
-| Typowe zastosowania      |  Eksplorowanie danych w miejscu bez konieczności ETL. Zapytanie danych różnych formatów i źródeł includign CSV, JSON, tabelach relacyjnych, Hadoop     |
+| Typowe zastosowania      |  Eksplorowanie danych w miejscu bez konieczności ETL. Zapytania różnych źródeł danych i formatach, łącznie z pliku CSV, JSON, tabelach relacyjnych, Hadoop     |
 | Jak używać / ją uruchomić?      | Skrót na pulpicie  <br/> [Wprowadzenie do testowania odzyskiwania po awarii w ciągu 10 minut](https://drill.apache.org/docs/drill-in-10-minutes/)  |
 | Pokrewne narzędzia na maszyny DSVM      |   Rattle, Weka, SQL Server Management Studio      |
 
@@ -44,7 +44,7 @@ Krok klucza do nauki o danych jest zrozumieć dane. Wizualizacja i narzędzi eks
 | Typowe zastosowania      | Narzędzia ML ogólne     |
 | Jak używać / ją uruchomić?      | W Windows wyszukaj Weka w Start Menu. W systemie Linux, zaloguj się przy użyciu X2Go, a następnie przejdź do aplikacji -> programowania -> Weka. |
 | Zawiera linki do przykładów      | [Przykłady weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| Pokrewne narzędzia na maszyny DSVM      |Xgboost LightGBM, Rattle,   |
+| Pokrewne narzędzia na maszyny DSVM      |LightGBM, Rattle, Xgboost   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |

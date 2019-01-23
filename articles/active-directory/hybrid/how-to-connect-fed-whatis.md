@@ -4,7 +4,7 @@ description: Ta strona jest centralnym miejscem służącym całej dokumentacji 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: f9107cf5-0131-499a-9edf-616bf3afef4d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 214dd95bb277053794656e1ba3dd148c085688ce
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 3462c61bbd7c9972248eb1126763782f5fbc7e84
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900448"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472300"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Program Azure AD Connect a federacja
 Platformy Azure umożliwia usługi Active Directory (Azure AD) Connect skonfigurowania federacji z usługą Active Directory Federation Services (AD FS) lokalną i usługą Azure AD. Za pomocą logowania federacyjnego można umożliwić użytkownikom Zaloguj się do usług platformy Azure na podstawie usługi AD za pomocą swoich haseł lokalnych — oraz znajduje się w sieci firmowej, bez konieczności ponownego wprowadzania haseł. Przy użyciu opcji federacji z usługami AD FS, można wdrożyć nowej instalacji usług AD FS, lub można określić istniejącą instalację w farmie programu Windows Server 2012 R2.
@@ -50,7 +50,7 @@ Ten temat jest miejsce, w którym informacji na temat funkcji związanych z fede
 | [Modyfikowanie reguł oświadczeń usług AD FS](how-to-connect-fed-management.md#modclaims) |Modyfikowanie lub dodawanie reguł oświadczeń w usługach AD FS, które odpowiadają na konfigurację synchronizacji programu Azure AD Connect. |
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Federowanie dwie usługi Azure AD z jednym usług AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md)
 * [Wdrożenie usług AD FS na platformie Azure](how-to-connect-fed-azure-adfs.md)
 * [Wysoka dostępność geograficznie rozproszonych AD FS wdrożenie na platformie Azure przy użyciu usługi Azure Traffic Manager](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)

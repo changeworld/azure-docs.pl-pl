@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 63eb894c64919826922fa60f4e12894542a97c69
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994169"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447364"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Jak za pomocą usługi Twilio dla połączeń głosowych i SMS funkcji w języku Python
 Ten przewodnik pokazuje sposób wykonywania typowych zadań programistycznych w usłudze interfejsu API usługi Twilio, na platformie Azure. Omówione scenariusze obejmują tworzenie połączenia telefonicznego i wysyłanie wiadomości wiadomości usługi (SMS). Aby uzyskać więcej informacji na temat usługi Twilio i używania połączeń głosowych i wiadomości SMS w swoich aplikacjach, zobacz [następne kroki](#NextSteps) sekcji.
@@ -47,16 +47,16 @@ Interfejs API korzysta z usługi Twilio zleceń; na przykład **&lt;Say&gt;** Tw
 Oto lista poleceń usługi Twilio. Dowiedz się więcej o innych poleceń i możliwości za pośrednictwem [dokumentacji usługi Twilio Markup Language][twiml].
 
 * **&lt;Wybierania&gt;**: Obiekt wywołujący nawiązanie połączenia innego numeru telefonu.
-* **&lt;Zbierz&gt;**: Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
+* **&lt;Gather&gt;**: Gromadzi informacje o cyfry wprowadzone na klawiaturze telefonu.
 * **&lt;Rozłączanie&gt;**: Kończy wywołanie.
-* **&lt;Wstrzymaj&gt;**: Dyskretnie czeka określoną liczbę sekund.
-* **&lt;Odtwórz&gt;**: Odtwarza plik audio.
-* **&lt;Kolejka&gt;**: Dodaj do kolejki obiekty wywołujące.
+* **&lt;Pause&gt;**: Dyskretnie czeka określoną liczbę sekund.
+* **&lt;Play&gt;**: Odtwarza plik audio.
+* **&lt;Queue&gt;**: Dodaj do kolejki obiekty wywołujące.
 * **&lt;Rekord&gt;**: Rejestruje głosu obiektu wywołującego i zwraca adres URL pliku, który zawiera nagrywania.
-* **&lt;Przekieruj&gt;**: Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
-* **&lt;Odrzuć&gt;**: Odrzuca połączenie na numer Twilio bez możesz rozliczeń.
+* **&lt;Redirect&gt;**: Transfer kontroli połączenia lub wiadomości SMS do TwiML na inny adres URL.
+* **&lt;Reject&gt;**: Odrzuca połączenie na numer Twilio bez możesz rozliczeń.
 * **&lt;Powiedz&gt;**: Konwertuje tekst na mowę, który składa się na wywołanie.
-* **&lt;SMS&gt;**: Wysyła wiadomość SMS.
+* **&lt;Sms&gt;**: Wysyła wiadomość SMS.
 
 ### <a id="TwiML"></a>TwiML
 TwiML to zbiór opartych na języku XML instrukcje zleceń Twilio, które informują Twilio sposób przetwarzania wywołania lub wysyłać wiadomości SMS.
@@ -89,7 +89,7 @@ Najpierw [konfiguracji nowej maszyny Wirtualnej systemu Linux platformy Azure] [
 
 ### <a name="set-the-dns-name-label"></a>Ustaw etykietę nazwy DNS
   1. Przejdź do strony [publiczne adresy IP] [azure_ips].
-  2. Wybierz publiczny adres IP tego correspends na maszynie wirtualnej.
+  2. Wybierz publiczny adres IP odpowiadający na maszynie wirtualnej.
   3. Ustaw **etykiety nazwy DNS** w **konfiguracji** sekcji. W tym przykładzie ekran będzie wyglądać następująco *your etykietę domeny*. centralus.cloudapp.azure.com
 
 Gdy jesteś w stanie nawiązać połączenie za pośrednictwem protokołu SSH z maszyną wirtualną można zainstalować wybranego środowiska sieci Web (dwie najbardziej popularną w języku Python jest [Flask](http://flask.pocoo.org/) i [Django](https://www.djangoproject.com)). Można zainstalować jedną z nich po prostu, uruchamiając `pip install` polecenia.
@@ -230,7 +230,7 @@ Oprócz przykładów, w tym miejscu Twilio oferuje oparte na sieci web interfejs
 ## <a id="NextSteps"></a>Następne kroki
 Teraz, kiedy znasz już podstawy usługi Twilio, skorzystaj z poniższych linków, aby dowiedzieć się więcej:
 
-* [Wytyczne dotyczące zabezpieczeń usługi Twilio][twilio_security_guidelines]
+* [Twilio Security Guidelines][twilio_security_guidelines]
 * [Przewodniki Porada usługi Twilio i przykładowy kod][twilio_howtos]
 * [Samouczki szybkiego startu usługi Twilio][twilio_quickstarts]
 * [Twilio w witrynie GitHub][twilio_on_github]

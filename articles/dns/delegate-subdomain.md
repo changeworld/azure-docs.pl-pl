@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/18/2019
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: 3a7ec043f1990dd7f380177fd612c8cd88786b07
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440227"
+ms.locfileid: "54452721"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Delegowanie poddomeny usługi Azure DNS
 
@@ -47,7 +47,7 @@ Następnie skopiuj cztery serwery nazw dla swojej domeny podrzędnej.
 
 Następnie utwórz rekord serwera (nazw NS) nazwa **inżynierów** strefy.
 
-1. Przejdź do pliku strefy dla domeny nadrzędnej.
+1. Przejdź do strefy dla domeny nadrzędnej.
 2. Wybierz pozycję **+ Zestaw rekordów**.
 3. Na **Dodawanie zestawu rekordów** okienko, typ **inżynierów** w **nazwa** pola tekstowego.
 4. Aby uzyskać **typu**, wybierz opcję **NS**.

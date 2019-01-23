@@ -4,7 +4,7 @@ description: Wyjaśnia, jakie dzierżawę usługi Azure AD i sposobu zarządzani
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: infrastructure-services
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: f9cd761080bc5098d0500841e7327ac8ce9f9a2d
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7b16e3ff5be21c52f354f0dcbb5dd91b4509e65e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957942"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461199"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie logowania usługi Azure Active Directory w zachowaniu aplikacji za pomocą zasad odnajdowania obszaru macierzystego
 
@@ -63,9 +63,9 @@ Składnia wskazówkę dotyczącą domeny różni się zależnie od używanego pr
 
 **WS-Federation**: whr=contoso.com w ciągu zapytania.
 
-**SAML**: albo żądanie uwierzytelniania SAML, które zawiera wskazówkę dotyczącą domeny lub whr=contoso.com ciągu zapytania.
+**SAML**:  Albo żądanie języka SAML uwierzytelniania zawierający wskazówkę dotyczącą domeny lub whr=contoso.com ciągu zapytania.
 
-**Otwórz ID Connect**: domain_hint=contoso.com ciągu zapytania. 
+**Open ID Connect**: Domain_hint=contoso.com ciągu zapytania. 
 
 Jeśli wskazówkę dotyczącą domeny znajduje się w żądaniu uwierzytelnienia od aplikacji oraz dzierżawy jest Sfederowane przy użyciu tej domeny usługi Azure AD próbuje przekierować Zaloguj się do dostawcy tożsamości, który jest skonfigurowany dla tej domeny. 
 
@@ -168,7 +168,7 @@ Poniższe przykłady służy do tworzenia, aktualizacji, łączenie i usuwania z
 
 Jeśli nic nie zostanie zwrócone, oznacza to, że masz żadnych zasad utworzonych w dzierżawie.
 
-### <a name="example-set-hrd-policy-for-an-application"></a>Przykład: Set zasad HRD dla aplikacji 
+### <a name="example-set-hrd-policy-for-an-application"></a>Przykład: Ustawianie zasad HRD dla aplikacji 
 
 W tym przykładzie utworzysz zasadę, gdy jest przypisany do aplikacji albo: 
 - Auto przyspiesza użytkowników na ekranie logowania usług AD FS podczas ich są logowania do aplikacji po jednej domeny w dzierżawie. 
@@ -209,7 +209,7 @@ Potrzebujesz **ObjectID** jednostki usług, do których chcesz przypisać zasady
 
 Mogą korzystać z portalu lub możesz zbadać [programu Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Można także przejść do [Eksploratora programu Graph](https://developer.microsoft.com/graph/graph-explorer) i zaloguj się do swojego konta usługi Azure AD, aby wyświetlić nazwy główne usług wszystkich w organizacji. Ponieważ używasz programu PowerShell służy polecenie cmdlet polecenia get-AzureADServicePrincipal Aby wyświetlić listę nazw głównych usług i ich identyfikatorów.
 
-#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>Krok 3: Przypisaniu zasad do jednostki usługi  
+#### <a name="step-3-assign-the-policy-to-your-service-principal"></a>Krok 3: Przypisz zasady do jednostki usługi  
 Po utworzeniu **ObjectID** jednostki usługi aplikacji, dla której chcesz skonfigurować automatycznego przyspieszenia, uruchom następujące polecenie. To polecenie powoduje skojarzenie zasad HRD, który został utworzony w kroku 1 przy użyciu jednostki usługi, która zlokalizowanego w kroku 2.
 
 ``` powershell
@@ -226,10 +226,10 @@ Aby sprawdzić, które aplikacje mają skonfigurowanych zasad HRD, użyj **Get A
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
-#### <a name="step-5-youre-done"></a>Krok 5: Gotowe!
+#### <a name="step-5-youre-done"></a>Krok 5. Gotowe!
 Wypróbuj aplikację, aby sprawdzić, czy nowe zasady działają.
 
-### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Przykład: Lista aplikacji, dla których HRD skonfigurowano zasady
+### <a name="example-list-the-applications-for-which-hrd-policy-is-configured"></a>Przykład: Wyświetlanie listy aplikacji, dla których HRD skonfigurowano zasady
 
 #### <a name="step-1-list-all-policies-that-were-created-in-your-organization"></a>Krok 1: Lista wszystkich zasad, które zostały utworzone w Twojej organizacji 
 
@@ -239,7 +239,7 @@ Get-AzureADPolicy
 
 Uwaga **ObjectID** , którą chcesz listy przypisań dla zasad.
 
-#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 2: Wyświetlić listę jednostek usług, do których przypisano zasad  
+#### <a name="step-2-list-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 2: Lista jednostki usługi, do których przypisano zasad  
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
@@ -255,7 +255,7 @@ Użyj poprzedniego przykładu, aby uzyskać **ObjectID** zasad i który nazwy g�
 Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
-#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 3: Sprawdź usuwania, wyświetlając nazwy główne usług, do których przypisano zasady 
+#### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Krok 3: Sprawdź usuwania, wyświetlając listę jednostek usług, do których przypisano zasad 
 
 ``` powershell
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>

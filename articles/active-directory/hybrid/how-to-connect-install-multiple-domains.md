@@ -4,7 +4,7 @@ description: W tym dokumencie opisano instalowanie i konfigurowanie wiele domen 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 5595fb2f-2131-4304-8a31-c52559128ea4
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b5abe252ab9b3389680508537ea1d6f3823f910
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: abc01239a2bf61c39f99fe880bf17d7958a1597c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311864"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477936"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Obsługa wielu domen do federowania w usłudze Azure AD
 Poniższa dokumentacja zawiera wskazówki dotyczące sposobu używania wiele domen najwyższego poziomu i poddomeny, gdy federowania w usłudze Office 365 lub domeny usługi Azure AD.
@@ -47,7 +47,7 @@ Gdy użytkownik spróbuje przekonwertować bmfabrikam.com domenę do sfederowani
 
 ![Błąd Federacji](./media/how-to-connect-install-multiple-domains/error.png)
 
-### <a name="supportmultipledomain-parameter"></a>Parametr SupportMultipleDomain
+### <a name="supportmultipledomain-parameter"></a>SupportMultipleDomain Parameter
 Aby obejść to ograniczenie, należy dodać inny IssuerUri, co można zrobić za pomocą `-SupportMultipleDomain` parametru.  Ten parametr jest używany przy użyciu następujących poleceń cmdlet:
 
 * `New-MsolFederatedDomain`
@@ -168,7 +168,7 @@ Wykonaj następujące kroki, aby dodać niestandardowe oświadczenia do obsługi
 ## <a name="next-steps"></a>Kolejne kroki
 Po zainstalowaniu programu Azure AD Connect możesz [zweryfikować instalację i przypisać licencje](how-to-connect-post-installation.md).
 
-Dowiedz się więcej na temat funkcji włączonych w ramach instalacji: [Automatyczne uaktualnianie](how-to-connect-install-automatic-upgrade.md), [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) oraz [Azure AD Connect Health](how-to-connect-health-sync.md).
+Dowiedz się więcej o tych funkcjach, które zostały włączone w ramach instalacji: [Automatyczne uaktualnianie](how-to-connect-install-automatic-upgrade.md), [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md), i [programu Azure AD Connect Health](how-to-connect-health-sync.md).
 
 Dowiedz się więcej na te popularne tematy: [harmonogram i sposób włączania synchronizacji](how-to-connect-sync-feature-scheduler.md).
 

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 1a0be03c278a152ea56fe0dac5277c39a0878057
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412514"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448724"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planowanie zadań U-SQL przy użyciu programu SQL Server Integration Services (SSIS)
 
@@ -40,7 +40,7 @@ Skrypt U-SQL można uzyskać z różnych miejsc, za pomocą wbudowanych funkcji 
 
 ## <a name="scenario-1-use-inline-script-call-tvfs-and-stored-procs"></a>Scenariusz 1 — Użyj wbudowanego skryptu wywołania w funkcji tvf i przechowywanych procs
 
-W usługi Azure Data Lake Analytics Edytor zadań, skonfiguruj **SourceType** jako **DirectInput**i umieszcza instrukcje języka U-SQL do **USQLStatemnt**.
+W usługi Azure Data Lake Analytics Edytor zadań, skonfiguruj **SourceType** jako **DirectInput**i umieszcza instrukcje języka U-SQL do **USQLStatement**.
 
 Łatwą konserwację i zarządzania kodem, tylko umieścić krótki skrypt U-SQL jako wbudowane skrypty na przykład, można wywołać istniejących funkcji zwracającej tabelę i procedur przechowywanych w bazach danych U-SQL. 
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4aa7e8b45f3791212280226b396ed9eb0f86538c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 422c0477accab65b53071d22d067d96547bfeb8a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135478"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450576"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Zaawansowane eksplorowanie i modelowanie danych za pomocą platformy Spark
 
@@ -47,16 +47,16 @@ Modelowanie za pomocą stałych Nietrwałych i Hiperparametrycznego przykłady p
 > 
 > 
 
-## <a name="setup-spark-clusters-and-notebooks"></a>Instalacji: Klastry Spark i notesy
+## <a name="setup-spark-clusters-and-notebooks"></a>Konfiguracja: Klastry Spark i notesy
 Kroki instalacji i kodu w tym przewodniku dla podano przy użyciu HDInsight Spark 1.6. Ale notesów programu Jupyter znajdują się w przypadku klastrów HDInsight Spark 1.6 i platformy Spark w wersji 2.0. Opis notesów i łącza do nich znajdują się w [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) dla repozytorium GitHub zawierające je. Ponadto kod w tym miejscu w notesach połączonej jest ogólny i powinna działać w dowolnym klastrze Spark. Jeśli nie używasz platformy HDInsight Spark, konfiguracja klastra i czynności administracyjne mogą nieznacznie różnić się od przedstawionego w tym miejscu. Dla wygody Oto łącza do notesów programu Jupyter, platformy Spark 1.6 i można uruchomić jądra pyspark serwera notesu Jupyter w wersji 2.0:
 
 ### <a name="spark-16-notebooks"></a>Notesy platformy Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): zawiera tematy w notesie #1 i opracowywania modelu strojenia hiperparametrycznego i krzyżowego sprawdzania poprawności.
+[pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Zawiera tematy w notesie #1 i opracowywania modelu strojenia hiperparametrycznego i krzyżowego sprawdzania poprawności.
 
 ### <a name="spark-20-notebooks"></a>Notesy platformy Spark w wersji 2.0
 
-[Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania i ocenianie w klastrach platformy Spark w wersji 2.0.
+[Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ten plik zawiera informacje dotyczące sposobu wykonywania eksploracji danych, modelowania i ocenianie w klastrach platformy Spark w wersji 2.0.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -403,7 +403,7 @@ Poniżej przedstawiono kod, aby zaindeksować i kodowanie tekstu funkcji Klasyfi
         labPt = LabeledPoint(line.tipped, features)
         return  labPt
 
-    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC RERESSION MODELS
+    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC REGRESSION MODELS
     def parseRowOneHotBinary(line):
         features = np.concatenate((np.array([line.pickup_hour, line.weekday, line.passenger_count,
                                             line.trip_time_in_secs, line.trip_distance, line.fare_amount]), 
@@ -998,9 +998,9 @@ Modele te zostały opisane we wstępie. Każdy model tworzenia sekcji kodu zosta
 2. **Model oceny** na testowego zestawu danych za pomocą metryk
 3. **Zapisywanie modelu** w obiekcie blob do przyszłego użytku   
 
-> AZURE Uwaga: Krzyżowego sprawdzania poprawności nie jest używana z modelami trzy regresji, w tej sekcji, ponieważ zostało to pokazane szczegółowo dla modele regresji logistycznej. Przykład przedstawiający sposób użycia stałych Nietrwałych elastycznej NET regresji liniowej znajduje się w dodatku w tym temacie.
+> UWAGA PLATFORMY AZURE: Krzyżowa Weryfikacja nie jest używana z modelami trzy regresji, w tej sekcji, ponieważ zostało to pokazane szczegółowo dla modele regresji logistycznej. Przykład przedstawiający sposób użycia stałych Nietrwałych elastycznej NET regresji liniowej znajduje się w dodatku w tym temacie.
 > 
-> AZURE Uwaga: W naszych doświadczeń wynika, mogą występować problemy ze zbieżności LinearRegressionWithSGD modeli i parametry muszą być zmienione/zoptymalizowaną dokładnie w celu uzyskania prawidłowego modelu. Skalowanie zmiennych znacznie ułatwić realizację zbieżności. Zamiast LinearRegressionWithSGD można także elastycznej netto regresji, przedstawiony w dodatku do tego tematu.
+> UWAGA PLATFORMY AZURE: W naszych doświadczeń wynika mogą występować problemy ze zbieżności LinearRegressionWithSGD modeli i parametry muszą być zmienione/zoptymalizowaną dokładnie w celu uzyskania prawidłowego modelu. Skalowanie zmiennych znacznie ułatwić realizację zbieżności. Zamiast LinearRegressionWithSGD można także elastycznej netto regresji, przedstawiony w dodatku do tego tematu.
 > 
 > 
 
@@ -1198,7 +1198,7 @@ Poniżej przedstawiono kod, do wykreślenia danych za pomocą serwera programu J
 
 ![Vs przewidzieć — Porada kwoty rzeczywiste](./media/spark-advanced-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>Dodatek: Regresji dodatkowe zadania przy użyciu parametrów symulacji krzyżowego sprawdzania poprawności
+## <a name="appendix-additional-regression-tasks-using-cross-validation-with-parameter-sweeps"></a>Dodatek: Zadania dodatkowe regresji przy użyciu parametrów symulacji krzyżowego sprawdzania poprawności
 Ten dodatek zawiera kod, przedstawiający, jak to zrobić przy użyciu elastycznych net regresji liniowej stałych Nietrwałych i jak to zrobić CV za pomocą czyszczenia parametrów przy użyciu niestandardowego kodu dla lasu losowe regresji.
 
 ### <a name="cross-validation-using-elastic-net-for-linear-regression"></a>Krzyżowe sprawdzanie poprawności przy użyciu elastycznej netto dla regresji liniowej
@@ -1438,5 +1438,5 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>Co dalej?
 Teraz, modele regresji i klasyfikacji została utworzona przy użyciu MlLib platformy Spark, jesteś gotowy dowiedzieć się, jak ocena i ocenić te modele.
 
-**Model użycia:** jak ocena i oceniać modele klasyfikacji i regresji, utworzone w tym temacie można znaleźć [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
+**Użycie modelu:** Aby dowiedzieć się, jak ocena i oceniać modele klasyfikacji i regresji, utworzone w tym temacie, zobacz [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
 

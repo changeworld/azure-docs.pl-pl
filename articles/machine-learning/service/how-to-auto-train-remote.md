@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18b2b3df2748392b12b60517604478b120871754
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8ea8f225941a8b859a5cc8d9c7accbc631a75842
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256064"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447534"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
@@ -89,7 +89,7 @@ Uruchom poniższy kod, aby utworzyć obliczeniowego elementu docelowego na podst
 from azureml.core.compute import ComputeTarget, RemoteCompute 
 
 attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_adress_or_fqdn>',
+                                                   address='<ip_address_or_fqdn>',
                                                    ssh_port=22,
                                                    private_key_file='./.ssh/id_rsa')
 compute_target = ComputeTarget.attach(workspace=ws,
@@ -255,7 +255,7 @@ Pobieranie danych wyjaśnienie modelu pozwala wyświetlić szczegółowe informa
 * overall_summary: Wartości ważności funkcja poziomu modelu posortowane w kolejności malejącej
 * Overall: W nazwach funkcji sortowane w takiej samej kolejności jak overall_summary
 * per_class_summary: Klasa wartości ważności funkcja poziomu posortowane w kolejności malejącej. Dostępne tylko w przypadku klasyfikacji
-* per_class: Sortowane w takiej samej kolejności jak per_class_summary nazwy funkcji. Dostępne tylko w przypadku klasyfikacji
+* per_class_imp: Sortowane w takiej samej kolejności jak per_class_summary nazwy funkcji. Dostępne tylko w przypadku klasyfikacji
 
 Użyj poniższego kodu, które można wybierać najlepsze potoku swoje iteracje. `get_output` Metoda zwraca najlepszy przebieg i dopasowanego modelu dla ostatniego dopasowania wywołania.
 

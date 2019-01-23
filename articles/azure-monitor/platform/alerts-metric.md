@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: b8252e6575ec7acb46fb69563720cc38796964ce
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d871cecda8e7957e3d0d3c37078b8a1fa2ab5214
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425072"
+ms.locfileid: "54451259"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dotyczących metryk
 
@@ -31,23 +31,23 @@ Poniższa procedura opisuje sposób tworzenia regułę alertu metryki w witrynie
     > [!TIP]
     > Większość bloków zasobów również ma **alerty** w ich menu zasobów w ramach **monitorowanie**, alerty można utworzyć, także z niego.
 
-3. Kliknij przycisk **Wybieranie lokalizacji docelowej**, w okienku kontekstowym, który ładuje, zaznacz zasób docelowy, który chcesz zmodyfikować. Użyj **subskrypcji** i **typ zasobu** list rozwijanych można znaleźć zasobu, który chcesz monitorować. Umożliwia także na pasku wyszukiwania można znaleźć zasobu.
+3. Kliknij przycisk **Wybieranie lokalizacji docelowej**, w okienku kontekstowym, który ładuje, zaznacz zasób docelowy, który ma zostać wyświetlony alert. Użyj **subskrypcji** i **typ zasobu** list rozwijanych można znaleźć zasobu, który chcesz monitorować. Umożliwia także na pasku wyszukiwania można znaleźć zasobu.
 
-4. Jeśli wybrany zasób ma metryk, można tworzyć alerty **dostępne sygnały** na dole po prawej stronie będzie zawierać metryki. Można wyświetlić pełną listę typów zasobów, obsługiwane w przypadku alertów dotyczących metryk w tym [artykułu](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)
+4. Jeśli wybrany zasób ma metryk, można tworzyć alerty **dostępne sygnały** na dole po prawej stronie będzie zawierać metryki. Można wyświetlić pełną listę typów zasobów, obsługiwane w przypadku alertów dotyczących metryk w tym [artykułu](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-5. Po wybraniu zasobu docelowego kliknij **Dodaj kryteria**
+5. Po wybraniu zasobu docelowego kliknij **Dodaj warunek**.
 
 6. Zostanie wyświetlona lista sygnałów obsługiwana dla zasobu, wybierz metrykę, aby utworzyć alert na.
 
-7. Zostanie wyświetlony wykres metryki przez ostatnie 6 godzin. Zdefiniuj **okres**, **częstotliwość**, **Operator** i **próg**, umożliwi to określenie logiki, która będzie regułę alertu metryki należy ocenić.
+7. Opcjonalnie można dostosować metryki, dostosowując **okres** i **agregacji**. Jeśli Metryka posiada wymiarów, zostaną wyświetlone **wymiary** przedstawionej tabeli. Wybierz co najmniej jednej wartości na wymiar. Zostanie uruchomiony alert dotyczący metryki oceny warunku dla wszystkich kombinacjach wartości wybrane. [Dowiedz się więcej o tym, jak działa alertów dotyczących metryk wielowymiarowych](alerts-metric-overview.md). Możesz również **wybierz \***  na dowolnym z wymiarów. **Wybierz \***  będzie dynamicznie skalowania wyboru, aby wszystkie bieżące i przyszłe wartości wymiaru.
 
-8. Za pomocą wykresu metryki należy określić, co może być uzasadnione wartość progową.
+8. Zostanie wyświetlony wykres metryki przez ostatnie 6 godzin. Zdefiniuj parametry alertu; **Typ warunku**, **częstotliwość**, **Operator** i **próg** lub **czułości**, spowoduje Określ logiki, które będą oceniać regułę alertu metryki. [Dowiedz się więcej o opcjach Typ i ważność warunek dynamicznymi progami](alerts-dynamic-thresholds.md).
 
-9. Opcjonalnie, jeśli Metryka posiada wymiarów, zostaną wyświetlone wymiary przedstawionej tabeli. Wybierz co najmniej jednej wartości na wymiar. Zostanie uruchomiony alert dotyczący metryki oceny warunku dla wszystkich kombinacjach wartości wybrane. [Dowiedz się więcej o tym, jak działa alertów dotyczących metryk wielowymiarowych](alerts-metric-overview.md). Możesz również **wybierz \***  na dowolnym z wymiarów. **Wybierz \***  będzie dynamicznie skalowania wyboru, aby wszystkie bieżące i przyszłe wartości wymiaru.
+9. Jeśli używasz statycznych próg wykresu metryki może pomóc określić, co może być uzasadnione wartość progową. Jeśli używasz dynamicznymi progami wykresu metryki będą wyświetlane progi obliczony na podstawie ostatnich danych.
 
 10. Kliknij przycisk **Gotowe**
 
-11. Opcjonalnie Dodaj kryteria inny, jeśli chcesz monitorować złożone reguły alertu
+11. Opcjonalnie Dodaj kryteria inny, jeśli chcesz monitorować złożone reguły alertu. Obecnie użytkownicy mogą mieć reguły alertów z kryteriami dynamicznymi progami jako jedno kryterium.
 
 12. Wypełnij **szczegóły alertu** takich jak **Nazwa reguły alertu**, **opis** i **ważność**
 
@@ -73,7 +73,7 @@ Można wyświetlać i zarządzać reguł alertów dotyczących metryk za pomocą
 
 4. Kliknij nazwę regułę alertu metryki, które chcesz edytować
 
-5. Edytuj regułę, kliknij przycisk na **kryteria alertu** chcesz edytować. Możesz zmienić metrykę, próg oraz inne pola, zgodnie z potrzebami
+5. Edytuj regułę, kliknij przycisk na **kryteria alertu** chcesz edytować. Możesz zmienić metrykę, warunkiem progu oraz inne pola, zgodnie z potrzebami
 
     > [!NOTE]
     > Nie można edytować **zasób docelowy** i **Nazwa reguły alertu** po utworzeniu alertu metryki.
@@ -92,10 +92,10 @@ Przedstawione w poprzednich sekcjach opisano, jak tworzyć, wyświetlać i zarz�
     az monitor metrics alert --help
     ```
 
-3. Można utworzyć prostą regułę alertu metryki monitorującego, jeśli średnia procentowe użycie procesora CPU na maszynie Wirtualnej jest większa niż 70
+3. Można utworzyć prostą regułę alertu metryki monitorującego, jeśli średnia procentowe użycie procesora CPU na maszynie Wirtualnej jest większa niż 90
 
     ```azurecli
-    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90"
+    az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
     ```
 
 4. W grupie zasobów przy użyciu następującego polecenia można wyświetlić wszystkie alerty metryki
@@ -130,5 +130,6 @@ Przedstawione w poprzednich sekcjach opisano, jak tworzyć, wyświetlać i zarz�
 
 - [Tworzenie alertów metryk, przy użyciu szablonów usługi Azure Resource Manager](../../azure-monitor/platform/alerts-enable-template.md).
 - [Zrozumienie, jak metryki, alerty pracy](alerts-metric-overview.md).
+- [Zrozumienie, jak metryki alerty z dynamicznymi progami warunek pracy](alerts-dynamic-thresholds.md).
 - [Zrozumienie schematu punktu zaczepienia sieci web dla alertów dotyczących metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md#payload-schema)
 

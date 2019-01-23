@@ -3,7 +3,7 @@ title: Single - aplikacje spoza galerii logowania jednokrotnego usługi Azure Ac
 description: Konfigurowanie logowania jednokrotnego (SSO) do aplikacji spoza galerii w usłudze Azure Active Directory (Azure AD)
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: article
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 01/08/2019
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
-ms.openlocfilehash: bb2fcbad3d415a8ac7a8e0c3237fcb97042defd7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c1472a78b0d1fbc287b151d9760fa549ad9b087e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121349"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474085"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Konfigurowanie logowania jednokrotnego do aplikacji spoza galerii w usłudze Azure Active Directory
 

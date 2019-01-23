@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 7e70fe52646c2f61e97b4eee2badd7884d95d5f5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260468"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449558"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
@@ -101,8 +101,8 @@ Poniższy zrzut ekranu przedstawia przykład. Na zrzucie ekranu:
 ### <a name="how-far-back-can-i-recover"></a>Jak daleko można odzyskać?
 Najstarszy punkt odzyskiwania, którego można użyć to 72 godziny.
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-pruned"></a>Co się stanie, jeśli zasady replikacji, 24 godzin i problem uniemożliwia Site Recovery z generowania punktów odzyskiwania dla ponad 24 godzin? Będą usuwane Moje poprzednie punkty odzyskiwania?
-Nie, Usługa Site Recovery zostanie zachowana, wszystkie poprzednie punkty odzyskiwania w tym przypadku. 
+### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Co się stanie, jeśli zasady replikacji, 24 godzin i problem uniemożliwia Site Recovery z generowania punktów odzyskiwania dla ponad 24 godzin? Moje poprzednie punkty odzyskiwania zostaną utracone?
+Nie, Usługa Site Recovery zostanie zachowana, wszystkie poprzednie punkty odzyskiwania. W zależności od czasu przechowywania punktów odzyskiwania, 24 godzin w tym przypadku Usługa Site Recovery zastępuje najstarszy punkt tylko wtedy, gdy generowanie nowych punktów. W tym przypadku, ponieważ nie będzie żadnych nowy punkt odzyskiwania, które są generowane ze względu na problem, stare punkty pozostaje niezmieniony po osiągniemy okna przechowywania.
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Po włączeniu replikacji na maszynie Wirtualnej, jak zmienić zasady replikacji? 
 Przejdź do **magazyn usługi Site Recovery** > **infrastruktura usługi Site Recovery** > **zasady replikacji**. Wybierz zasady, które chcesz edytować, a następnie zapisz zmiany. Wszelkie zmiany będą dotyczyć wszystkich istniejących replikacje zbyt. 

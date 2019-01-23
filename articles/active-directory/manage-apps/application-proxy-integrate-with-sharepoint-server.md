@@ -4,7 +4,7 @@ description: Zawiera podstawowe informacje dotyczące sposobu integrowania progr
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 12/10/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 9b8ae85d1a5410677dd9299ebb947c2189a6b663
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: a240e629c5c8f6e43a4c3c52668fcb2b811989b2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166187"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468393"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Zdalny dostęp do programu SharePoint przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -38,7 +38,7 @@ W tym artykule założono, że masz już program SharePoint 2013 lub nowszym w d
 
 * Firma Microsoft wymaga protokołu SSL w adresie URL publikacji. Aby upewnić się, czy łącza są wysyłane mapowane poprawnie na wewnętrzny adres URL również wymagany jest protokół SSL.
 
-## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>Krok 1. Konfigurowanie protokołu Kerberos ograniczone delegowanie (KCD)
+## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>Krok 1: Konfigurowanie protokołu Kerberos ograniczone delegowanie (KCD)
 
 Aplikacje lokalne, które korzystają z uwierzytelniania Windows można osiągnąć logowania jednokrotnego (SSO) przy użyciu protokołu uwierzytelniania Kerberos i funkcję ograniczonego delegowania protokołu Kerberos (KCD). Ograniczonego delegowania protokołu Kerberos, po skonfigurowaniu umożliwia łącznik serwera Proxy aplikacji w celu uzyskania tokenu Windows użytkownika, nawet wtedy, gdy użytkownik nie zarejestrował się usłudze Windows bezpośrednio. Aby dowiedzieć się więcej na temat ograniczonego delegowania protokołu Kerberos, zobacz [omówienie delegowania ograniczonego protokołu Kerberos](https://technet.microsoft.com/library/jj553400.aspx).
 
@@ -109,7 +109,7 @@ Aby skonfigurować ograniczonego delegowania protokołu Kerberos, wykonaj nastę
   
   ![Ustawienia delegowania](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
-## <a name="step-2-configure-azure-ad-proxy"></a>Krok 2. Konfigurowanie serwera Proxy usługi Azure AD
+## <a name="step-2-configure-azure-ad-proxy"></a>Krok 2: Konfigurowanie serwera Proxy usługi Azure AD
 
 Teraz, gdy skonfigurowano ograniczonego delegowania protokołu Kerberos, możesz przystąpić do konfigurowania serwera Proxy aplikacji usługi Azure AD.
 
@@ -134,7 +134,7 @@ Teraz, gdy skonfigurowano ograniczonego delegowania protokołu Kerberos, możesz
 
 3. Aby zakończyć konfigurowanie aplikacji, przejdź do **użytkowników i grup** sekcji, a następnie przypisać użytkownikom na dostęp do tej aplikacji. 
 
-## <a name="step-3-configure-sharepoint-to-use-kerberos-and-azure-ad-proxy-urls"></a>Krok 3. Konfigurowanie programu SharePoint do używania protokołu Kerberos i adresów URL serwera Proxy usługi Azure AD
+## <a name="step-3-configure-sharepoint-to-use-kerberos-and-azure-ad-proxy-urls"></a>Krok 3: Konfigurowanie programu SharePoint do używania protokołu Kerberos i adresów URL serwera Proxy usługi Azure AD
 
 Następnym krokiem jest rozszerzenie aplikacji sieci web programu SharePoint do nowej strefy, skonfigurowane przy użyciu protokołu Kerberos i mapowania dostępu alternatywnego odpowiednie, aby zezwolić programowi SharePoint do obsługi przychodzących żądań wysyłanych do wewnętrznego adresu URL i odpowiedzi wraz z łączami stworzona z myślą o zewnętrznego adresu URL.
 

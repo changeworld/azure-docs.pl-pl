@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 73bd86591f2d8604e0eb9553f99c311b6d421603
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9e13b8872fab89bef6ec952fe2ee0b901a25092e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424043"
+ms.locfileid: "54452551"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -199,7 +199,7 @@ Kolejność aktywacji:
 
 1. Wyklucz SalesAdmins i SalesforceContingency z istniejącej zasady zgodności urządzeń usługi Salesforce. Sprawdź, czy użytkownik w grupie SalesforceContingency mógł korzystać z usługi Salesforce.
 2. Włącz zasady 1: Sprawdź, czy użytkownicy spoza SalesContingency nie może uzyskiwać dostęp do usługi Salesforce. Sprawdź użytkowników w SalesAdmins i SalesforceContingency mogą uzyskiwać dostęp do usługi Salesforce.
-3. Włącz zasady 2: Upewnij się, użytkownicy w grupie SalesContigency nie może uzyskiwać dostęp do usługi Salesforce z ich komputerów przenośnych Windows lub Mac, ale uzyskiwać dostęp z urządzeń przenośnych. Sprawdź, czy SalesAdmin mogą nadal uzyskiwać dostęp do usługi Salesforce z dowolnego urządzenia.
+3. Włącz zasady 2: Upewnij się, użytkownicy w grupie SalesContingency nie może uzyskiwać dostęp do usługi Salesforce z ich komputerów przenośnych Windows lub Mac, ale uzyskiwać dostęp z urządzeń przenośnych. Sprawdź, czy SalesAdmin mogą nadal uzyskiwać dostęp do usługi Salesforce z dowolnego urządzenia.
 4. Wyłącz istniejącą zasadę zgodności urządzeń dla usług Salesforce.
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Wdrażanie synchronizacji skrótów haseł, nawet jeśli są Sfederowane lub przy użyciu uwierzytelniania przekazywanego

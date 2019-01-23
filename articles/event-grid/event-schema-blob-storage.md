@@ -2,21 +2,21 @@
 title: Schemat zdarzenia magazynu obiektów blob Azure Event Grid
 description: Opisuje właściwości, które są dostarczane dla zdarzeń usługi blob storage za pomocą usługi Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: 11524f8868a0102e30b06f3385a26b1bd06aae6e
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: 401eb660d7e5ddc68bc7422ef9f2e600295d2aea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054401"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469743"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schemat zdarzeń Azure Event Grid dla magazynu obiektów Blob
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń usługi blob storage. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schematu dla zdarzeń usługi blob storage. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
 Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródło zdarzenia magazynu](event-sources.md#storage).
 
@@ -83,7 +83,7 @@ Schemat zdarzenia usunięto obiekt blob jest podobne:
   "metadataVersion": "1"
 }]
 ```
- 
+ 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
 Zdarzenie zawiera następujące dane najwyższego poziomu:
@@ -91,8 +91,8 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
@@ -106,8 +106,8 @@ Obiekt danych ma następujące właściwości:
 | api | ciąg | Operacja, która wyzwoliła zdarzenie. |
 | clientRequestId | ciąg | Generowane przez klientów, nieprzezroczysta wartość Limit znaków 1 KB. Po włączeniu usługa storage analytics, rejestrowanie, zostało zapisane w dziennikach analizy. |
 | requestId | ciąg | Unikatowy identyfikator dla żądania. Używać go do rozwiązywania problemów z żądania. |
-| Element eTag | ciąg | Wartość, która służy do wykonywania operacji warunkowo. |
-| Typ zawartości | ciąg | Typ zawartości, określony dla obiektu blob. |
+| eTag | ciąg | Wartość, która służy do wykonywania operacji warunkowo. |
+| contentType | ciąg | Typ zawartości, określony dla obiektu blob. |
 | właściwości contentLength | liczba całkowita | Rozmiar obiektu blob w bajtach. |
 | blobType | ciąg | Typ obiektu blob. Prawidłowe wartości to "BlockBlob" lub "PageBlob". |
 | url | ciąg | Ścieżka do obiektu blob. |

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4b4c2e35059fa3521a74e1cb0c218c100b12a4ec
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: cb0c72c8a14dd71bbbe9d6cd46224542f7bf3e5b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436726"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470583"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -44,7 +44,7 @@ Ten temat zawiera omówienie raportów logowania.
 * Ponadto każdy użytkownik (niebędący administratorem) będą mogli ich własnych logowań 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
-* Dzierżawca musi mieć licencję usługi Azure AD Premium skojarzonych z nim, aby wyświetlić raport wszystko zależy od aktywności logowania. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Należy pamiętać, że jeśli nie masz żadnych danych działań przed uaktualnieniem, potrwa kilka dni, dane wyświetlane w raportach, po uaktualnieniu do licencji premium.
+* Dzierżawca musi mieć licencję usługi Azure AD Premium skojarzonych z nim, aby wyświetlić raport wszystko zależy od aktywności logowania. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Pamiętaj, że jeśli przed uaktualnieniem nie istniały żadne dane działań, po przejściu na licencję premium może minąć kilka dni, zanim te dane pojawią się w raportach.
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań
 
@@ -203,7 +203,10 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Date
 - Wymagane uwierzytelnianie wieloskładnikowe
 - Stan logowania
- 
+
+> [!NOTE]
+> Adresy IP są przydzielane w taki sposób, że nie ma ostateczne połączenia między adresem IP i gdzie fizycznie znajduje się komputer przy użyciu tego adresu. Mapowanie adresów IP jest skomplikowane faktem, że dostawcy mobilnych i sieci VPN wystawiać adresów IP z centralnej pul, które są często bardzo dalekie od wartości, w którym będzie faktycznie używana na urządzeniu klienckim. Obecnie w raportach usługi Azure AD, konwertowania adresu IP do lokalizacji fizycznej jest najlepszy nakład pracy na podstawie danych śledzenia, dane rejestru, odwrotnej wyszukiwań i inne informacje.
+
 Na stronie **Użytkownicy** znajduje się pełny przegląd wszystkich logowań użytkowników dostępny po kliknięciu pozycji **Logowania** w sekcji **Działanie**.
 
 ![Działania związane z logowaniem](./media/concept-sign-ins/08.png "Działania związane z logowaniem")

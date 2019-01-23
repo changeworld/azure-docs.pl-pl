@@ -245,7 +245,7 @@ Aby uzyskać więcej informacji na temat warstwy buforowania zobacz następując
 
 ## <a name="response-normalization-bundles"></a>Pakiety normalizacji odpowiedzi
 
-**Normalizacja odpowiedzi** jest systemem normalizacji lokalnej, która została wprowadzona przez Geoffrey Hinton i inni w dokumencie [Classiﬁcation sieci ImageNet przy użyciu Splotowych sieci neuronowych głębokiego](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
+**Normalizacja odpowiedzi** jest systemem normalizacji lokalnej, która została wprowadzona przez Geoffrey Hinton i inni w dokumencie [Klasyfikacja sieci ImageNet przy użyciu Splotowych sieci neuronowych głębokiego](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf). 
 
 Odpowiedź normalizacji jest używana do pomocy Generalizacja w sieci neuronowych. Gdy jeden neuronu jest uruchamiana na poziomie aktywacji bardzo duże, warstwy normalizacji lokalnego odpowiedzi pomija poziom aktywacji otaczające grupy neuronów. Jest to wykonywane przy użyciu trzech parametrów (`α`, `β`, i `k`) i splotowe struktury (lub kształtu otoczenia). Każdy neuronu warstwy docelowej **y** odpowiada neuronu **x** z warstwy źródłowej. Poziom aktywacji **y** znajduje się za pomocą następującego wzoru gdzie `f` jest poziom aktywacji neuronu, i `Nx` jądro (lub zestaw, który zawiera grupy neuronów w otoczeniu z **x**), zgodnie z następującą strukturę splotowe:  
 

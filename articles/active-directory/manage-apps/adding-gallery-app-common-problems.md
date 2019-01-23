@@ -4,7 +4,7 @@ description: Zrozumienie typowych twarzy osób problemy podczas dodawania aplika
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: b44b72c4414314e4329a7de91f4d1a61914afc6f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 29538d4cab4df328ba9cbff2f30c35626b3360dd
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477604"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem podczas dodawania aplikacji galerii usługi Azure AD
 
@@ -70,7 +70,7 @@ Bardzo ważne jest, że udostępniasz **poniższymi szczegółami** z inżyniere
 
 Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomień.
 
-### <a name="essential-notification-items"></a>Elementy podstawowe powiadomienie
+### <a name="essential-notification-items"></a>Essential Notification Items
 
 -   **Tytuł** — opisowy tytuł powiadomienia
 
@@ -127,7 +127,7 @@ Zobacz następujące opisy, aby uzyskać więcej informacji na temat powiadomie�
     -   Przykład — **wewnętrznego adresu url "https://bing.com/" jest nieprawidłowa, ponieważ jest już używana**
 
 -   **Błąd kopiowania** — kliknij przycisk **ikonę kopiowania** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie z grupą pomocy technicznej lub produktów w polu tekstowym 
--   engineer
+-   inżynier ds
 
     -   Przykład ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 

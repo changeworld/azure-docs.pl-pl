@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 064c1b8100e165627d5227b9f24b87aefae2e769
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790762"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471654"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Usługa Azure wersji schematu konfiguracji rozszerzenia diagnostyki i Historia
 Indeksy tej strony wersje Schemat rozszerzenia diagnostyki Azure dostarczana jako część programu Microsoft Azure SDK.  
@@ -210,3 +210,4 @@ Jeśli aktualizujesz projekt z Azure SDK 2.4 do zestawu SDK Azure 2.5 lub nowsze
 * **Diagnostyka dla aplikacji usługi w chmurze można skonfigurować tylko na poziomie roli, nie na poziomie wystąpienia.**
 * **Za każdym razem, gdy aplikacja jest wdrażana, zostaje aktualizowana Konfiguracja diagnostyki** — może to spowodować problemy z parzystością, jeśli zmiana konfiguracji diagnostyki za pomocą Eksploratora serwera, a następnie ponownie wdrożyć aplikację.
 * **W Azure SDK 2.5 lub nowszej, zrzuty awaryjne są konfigurowane w pliku konfiguracji diagnostyki, nie w kodzie** — Jeśli masz zrzuty awaryjne skonfigurowane w kodzie, musisz ręcznie przenieść konfigurację z kodu do pliku konfiguracji, ponieważ zrzuty awaryjne nie są przekazywane podczas migracji 2.6 zestawu SDK platformy Azure.
+

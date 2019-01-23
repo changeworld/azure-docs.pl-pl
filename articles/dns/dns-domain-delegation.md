@@ -1,24 +1,17 @@
 ---
-title: Omówienie delegowania DNS na platformie Azure | Microsoft Docs
+title: Omówienie delegowania w usłudze Azure DNS
 description: Dowiedz się, jak zmienić delegowanie domeny i korzystać z serwerów nazw usługi Azure DNS do zapewniania hostingu domeny.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: a00cc00dee3a505f88abef3ecf99f49aa027c30b
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
-ms.translationtype: HT
+ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170508"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461036"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegowanie stref DNS za pomocą usługi Azure DNS
 
@@ -58,17 +51,20 @@ Na poniższej ilustracji przedstawiono przykładowe zapytanie DNS. Contoso.net i
 ![Dns-nameserver](./media/dns-domain-delegation/image1.png)
 
 1. Klient żąda adresu `www.partners.contoso.net` z lokalnego serwera DNS.
-1. Lokalny serwer DNS nie ma tego rekordu, dlatego wysyła żądanie do swojego głównego serwera nazw.
-1. Główny serwer nazw nie ma tego rekordu, ale dysponuje informacjami o adresie serwera nazw `.net`, udostępnia więc ten adres serwerowi DNS.
-1. Serwer DNS wysyła żądanie do serwera nazw `.net`. Na tym serwerze nie ma właściwego rekordu, ale jest informacja o adresie serwera nazw contoso.net. W tym przypadku jest to strefa DNS hostowana w usłudze Azure DNS.
-1. Strefa `contoso.net` nie ma szukanego rekordu, ale dysponuje informacjami o serwerze nazw dla adresu `partners.contoso.net` i w odpowiedzi przekazuje te informacje. W tym przypadku jest to strefa DNS hostowana w usłudze Azure DNS.
-1. Serwer DNS żąda adresu IP `partners.contoso.net` ze strefy `partners.contoso.net`. Zawiera ona rekord A i w odpowiedzi zwraca adres IP.
-1. Serwer DNS udostępnia adres IP klientowi.
-1. Klient łączy się z witryną sieci Web `www.partners.contoso.net`.
+2. Lokalny serwer DNS nie ma tego rekordu, dlatego wysyła żądanie do swojego głównego serwera nazw.
+3. Główny serwer nazw nie ma tego rekordu, ale dysponuje informacjami o adresie serwera nazw `.net`, udostępnia więc ten adres serwerowi DNS.
+4. Lokalny serwer DNS wysyła żądanie do `.net` serwera nazw.
+5. `.net` Serwer nazw nie ma tego rekordu, ale także znać adres `contoso.net` serwera nazw. W tym przypadku odpowiada o adresie serwera nazw dla strefy DNS hostowane w usłudze Azure DNS.
+6. Lokalny serwer DNS wysyła żądanie do serwera nazw dla `contoso.net` strefie hostowanej w usłudze Azure DNS.
+7. Strefa `contoso.net` nie ma tego rekordu, ale bez informacji o serwerze nazw dla `partners.contoso.net` i odpowiada za pomocą adresu. W tym przypadku jest to strefa DNS hostowana w usłudze Azure DNS.
+8. Lokalny serwer DNS wysyła żądanie do serwera nazw dla `partners.contoso.net` strefy.
+9. `partners.contoso.net` Strefy ma rekord A i odpowiada za pomocą adresu IP.
+10. Lokalny serwer DNS udostępnia adres IP klienta
+11. Klient łączy się z witryną sieci Web `www.partners.contoso.net`.
 
 Każde delegowanie faktycznie zawiera dwie kopie rekordów NS — jedną w strefie nadrzędnej wskazującej strefę podrzędną i drugą w samej strefie podrzędnej. Strefa „contoso.net” zawiera rekordy NS dla strefy „contoso.net” (oprócz rekordów NS w strefie „net”). Są to tak zwane autorytatywne rekordy NS i znajdują się na wierzchołku strefy podrzędnej.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się, jak [delegować domenę do usługi Azure DNS](dns-delegate-domain-azure-dns.md).
 

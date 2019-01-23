@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c2bca45a7927689992cf44fb70199e246641760
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635531"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445426"
 ---
 # <a name="understand-the-device-model-schema"></a>Zrozumienie schematu modelu urządzenia
 
@@ -22,7 +22,7 @@ Symulowane urządzenia w rozwiązaniu do zdalnego monitorowania służy do testo
 W tym artykule opisano schematu modelu urządzenia, która określa zachowanie symulowanego urządzenia. Model urządzenia jest przechowywany w pliku JSON.
 
 > [!NOTE]
-> Tego schematu modelu urządzenia jest tylko w przypadku symulowanych urządzeń hostowanej w usłudze symulacji urządzenia. Jeśli chcesz utworzyć urządzenie fizyczne, zobacz [Podłączanie urządzenia do akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices.md).
+> Tego schematu modelu urządzenia jest tylko w przypadku symulowanych urządzeń hostowanej w usłudze symulacji urządzenia. Jeśli chcesz utworzyć rzeczywistego urządzenia, zobacz [Podłączanie urządzenia do akceleratora rozwiązania monitorowania zdalnego](iot-accelerators-connecting-devices.md).
 
 Następujące artykuły odnoszą się do bieżącego artykułu:
 

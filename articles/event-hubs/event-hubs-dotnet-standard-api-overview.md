@@ -9,19 +9,19 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/13/2018
 ms.author: shvija
-ms.openlocfilehash: 9b952bd96828c4f2c140cb2d75cecb9379895a63
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: f8cd167d8de738674939180e0d81fc9282434155
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746647"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450459"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Przegląd standardowy interfejs API .NET centrów zdarzeń
 
 Ten artykuł zawiera podsumowanie niektórych klucza usługi Azure Event Hubs [interfejsów API klienta .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/). Obecnie istnieją dwie biblioteki klienta .NET Standard dla usługi Event Hubs:
 
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): oferuje wszystkie operacje podstawowe środowiska uruchomieniowego.
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): dodaje dodatkowe funkcjonalności, która umożliwia rejestrowanie informacji o przetworzonych zdarzeń i jest najprostszym sposobem odczytu z Centrum zdarzeń.
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): Zawiera wszystkie operacje podstawowe środowiska uruchomieniowego.
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): Dodaje dodatkowe funkcjonalności, która umożliwia rejestrowanie informacji o przetworzonych zdarzeń i jest najprostszym sposobem odczytu z Centrum zdarzeń.
 
 ## <a name="event-hubs-client"></a>Event Hubs klienta
 

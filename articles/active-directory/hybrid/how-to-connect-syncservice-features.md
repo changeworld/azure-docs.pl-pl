@@ -4,7 +4,7 @@ description: Zawiera opis funkcji po stronie usługi, usługa synchronizacji Azu
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 213aab20-0a61-434a-9545-c4637628da81
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8d351e41eac3c820b9295b3b5cf314428bebc746
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5a251c3e867035ecc00d449c4fbc1cf980a4f1f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242997"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461216"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkcji usługi synchronizacji programu Azure AD Connect
 Funkcja synchronizacji programu Azure AD Connect ma dwa składniki:
@@ -33,7 +33,7 @@ W tym temacie opisano sposób, w jaki następujące funkcje **Usługa synchroniz
 Te ustawienia są konfigurowane przez [Azure Active Directory Module for Windows PowerShell](https://aka.ms/aadposh). Pobierz i zainstaluj je oddzielnie z usługi Azure AD Connect. Polecenia cmdlet opisane w niniejszym dokumencie zostały wprowadzone w [wydanej w marcu 2016 (kompilacja 9031.1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Jeśli nie masz polecenia cmdlet opisane w tym temacie lub generuje ten sam wynik, upewnij się, że uruchomieniu najnowszej wersji.
 
 Aby wyświetlić konfigurację w katalogu usługi Azure AD, uruchom `Get-MsolDirSyncFeatures`.  
-![Get-MsolDirSyncFeatures wynik](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
+![Get-MsolDirSyncFeatures result](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
 
 Wiele z tych ustawień można zmienić tylko przy użyciu usługi Azure AD Connect.
 
@@ -56,17 +56,17 @@ Następujące ustawienia są konfigurowane przy użyciu usługi Azure AD Connect
 | DirSyncFeature | Komentarz |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń](how-to-connect-device-writeback.md) |
-| DirectoryExtensions |[Synchronizacja programu Azure AD Connect: rozszerzenia katalogów](how-to-connect-sync-feature-directory-extensions.md) |
+| DirectoryExtensions |[Synchronizacja programu Azure AD Connect: Rozszerzenia katalogów](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Zezwala na atrybut kwarantannie, gdy jest duplikatem innego obiektu, a nie awarii całego obiektu podczas eksportowania. |
 | Synchronizacja skrótów haseł |[Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](how-to-connect-password-hash-synchronization.md) |
 |Uwierzytelnianie przekazywane|[Logowanie użytkownika przy użyciu uwierzytelniania przekazywanego usługi Azure Active Directory](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[(Wersja zapoznawcza): Zapisywanie zwrotne grup](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |[Wersja zapoznawcza: Zapisywanie zwrotne grup](how-to-connect-preview.md#group-writeback) |
 | UserWriteback |Nie są obecnie obsługiwane. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Odporność na duplikowanie atrybutów
 Zamiast przechodzenia do aprowizowania obiekty z zduplikowane UPN / proxyAddresses lub zduplikowanym atrybutem jest "objęte kwarantanną" i przypisano wartości tymczasowej. Po usunięciu konflikt tymczasowe nazwy UPN jest zmieniany na poprawną wartość automatycznie. Aby uzyskać więcej informacji, zobacz [tożsamości synchronizacji i odporności zduplikowanego atrybutu](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="userprincipalname-soft-match"></a>Dopasowanie słabe UserPrincipalName
+## <a name="userprincipalname-soft-match"></a>UserPrincipalName soft match
 Po włączeniu tej funkcji miękkiego jest włączona dla nazwy UPN w uzupełnieniu do [podstawowego adresu SMTP użytkownika](https://support.microsoft.com/kb/2641663), który jest zawsze włączona. Opcji soft-match jest używany do dopasowywania istniejących użytkowników w chmurze w usłudze Azure AD przy użyciu lokalnych użytkowników.
 
 Jeśli potrzebujesz dopasowanie środowiska lokalnego konta usługi AD z istniejących kont utworzonych w chmurze i nie używasz usługi Exchange Online, a następnie ta funkcja jest przydatna. W tym scenariuszu ogólnie nie masz powód, aby ustawić atrybut SMTP w chmurze.

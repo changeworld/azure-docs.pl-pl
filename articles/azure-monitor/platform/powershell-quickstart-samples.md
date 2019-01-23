@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.author: robb
-ms.component: ''
-ms.openlocfilehash: 72c50871f0d339d5d8f173a50e03aefc72fdcb36
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: d3bd4d80f167a496c9b980891f31d30bc86a0cb2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585333"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473763"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Przykłady — szybki start usługi Azure Monitor programu PowerShell
 Ten artykuł przedstawia przykładowe polecenia programu PowerShell, aby ułatwić dostęp do funkcji usługi Azure Monitor.
@@ -145,9 +145,9 @@ W poniższej tabeli opisano parametry i wartości używane do tworzenia alertu z
 | Name (Nazwa) |simpletestdiskwrite |
 | Lokalizacja tę regułę alertu |Wschodnie stany USA |
 | ResourceGroup |montest |
-| Element TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | MetricName alertu, który jest tworzony |\PhysicalDisk (%) (_łącznie) \Disk zapisu na sekundę. Zobacz `Get-MetricDefinitions` polecenia cmdlet, o tym, jak pobrać dokładnej nazwy metryki |
-| Operator |GreaterThan |
+| operator |GreaterThan |
 | Wartość progowa (liczba/s w tym metryki) |1 |
 | Rozmiar_okna (w formacie: mm: ss) |00:05:00 |
 | agregatora (Statystyka metryki, która używa w tym przypadku średnia liczba) |Średnia |
@@ -387,3 +387,4 @@ Należy zauważyć, że właściwość WorkspaceId przyjmuje *identyfikator zaso
 ```
 
 Te polecenia mogą być połączone do wysyłania danych do wielu miejsc docelowych.
+

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 7e5f72ca637cb657369a3b384aee666e0935b9d0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fa25c144737c4d070b2dbd08700c68e617950e0d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263550"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452262"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -26,7 +26,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 --- | ---
 **Azure Portal** | Obsługiwane
 **Program PowerShell** | [Replikacji Azure – Azure przy użyciu programu PowerShell](azure-to-azure-powershell.md)
-**Interfejs API REST** | Nie jest obecnie obsługiwany
+**Interfejs API REST** | Obsługiwane
 **Interfejs wiersza polecenia** | Nie jest obecnie obsługiwany
 
 

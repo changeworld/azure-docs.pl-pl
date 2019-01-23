@@ -10,16 +10,16 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: a86db516e76a91d6e4bec378c47baf6eec13d032
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 73aa9756d7a3af4c6f7185533458e0e322b72666
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959056"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452381"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Wysyłanie i przy użyciu lokalnych firm interfejsu API wyszukiwania Bing, zapytań i odpowiedzi
 
-Wyniki lokalnego można uzyskać z lokalnych firm interfejsu API wyszukiwania Bing, wysyłając zapytanie wyszukiwania do punktu końcowego i tym `Ocp-Apim-Subscription-Key` nagłówka, który jest wymagany. Wraz z dostępnego [nagłówki](local-search-reference.md#headers) i [parametry](local-search-reference.md#query-parameters), wyszukiwania, które można dostosować, określając [granicach geograficznych](specify-geographic-search.md) dla obszarów, które mają być wyszukiwane i [kategorie](local-search-query-response.md) miejsc zwracane.
+Wyniki lokalnego można uzyskać z lokalnych firm interfejsu API wyszukiwania Bing, wysyłając zapytanie wyszukiwania do punktu końcowego i tym `Ocp-Apim-Subscription-Key` nagłówka, który jest wymagany. Wraz z dostępnych [nagłówki](local-search-reference.md#headers) i [parametry](local-search-reference.md#query-parameters), wyszukiwania, które można dostosować, określając [granicach geograficznych](specify-geographic-search.md) dla obszarów, które mają być wyszukiwane i [kategorie](local-search-query-response.md) miejsc zwracane.
 
 ## <a name="creating-a-request"></a>Tworzenie żądania
 
@@ -54,8 +54,8 @@ Odpowiedzi JSON z lokalnych firm interfejsu API wyszukiwania Bing zawiera `Searc
 
 Zwrócone przez interfejs API wyniki JSON zawierają następujące atrybuty:
 
-* _typ
-* Adres
+* _type
+* address
 * entityPresentationInfo
 * Geograficzna
 * id

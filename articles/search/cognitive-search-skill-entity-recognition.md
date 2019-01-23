@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a2bf61c167211e1ff62abe1453ac62227a137d53
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7a7fe9603716575c241ca78ebdc9b674888ca835
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411377"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452211"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Umiejętności cognitive rozpoznawania jednostek
 
@@ -43,7 +43,7 @@ Parametrów jest rozróżniana wielkość liter i są wszystkie opcjonalne.
 | categories    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
 |defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `de, en, es, fr, it`|
 |minimumPrecision | Nieużywane. Zarezerwowane do użytku w przyszłości. |
-|includeTypelessEntites | Gdy ustawiona wartość true, jeśli tekst zawiera jednostkę dobrze znana, ale nie można podzielić na jeden z obsługiwanych kategorii, będzie zwracany jako część `"entities"` złożonych danych wyjściowych. Wartość domyślna to `false` |
+|includeTypelessEntities | Gdy ustawiona wartość true, jeśli tekst zawiera jednostkę dobrze znana, ale nie można podzielić na jeden z obsługiwanych kategorii, będzie zwracany jako część `"entities"` złożonych danych wyjściowych. Wartość domyślna to `false` |
 
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności

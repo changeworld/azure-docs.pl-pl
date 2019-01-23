@@ -4,7 +4,7 @@ description: W tym temacie opisano funkcję zapobiegania przypadkowemu usuwaniu 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6a535d776da216029b905fb604ed378449a81082
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 25bc3d0c0517278f20cba4fd4beb2fc4d82b66f1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314629"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464157"
 ---
-# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Synchronizacja programu Azure AD Connect: zapobieganie przypadkowemu usuwaniu
+# <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Synchronizacja programu Azure AD Connect: Zapobieganie przypadkowemu usuwaniu
 W tym temacie opisano funkcję zapobiegania przypadkowemu usuwaniu (zapobieganie przypadkowym) w programie Azure AD Connect.
 
 Podczas instalowania usługi Azure AD Connect, zapobieganie przypadkowemu usuwaniu domyślnie włączony i skonfigurowany do nie zezwalaj na eksport o usuwaniu więcej niż 500. Ta funkcja została zaprojektowana po to, aby zapewnić ochronę przed przypadkowymi zmianami konfiguracji, a także zmianami w katalogu lokalnym, które miałyby wpływ na wielu użytkowników i inne obiekty.
@@ -53,7 +53,7 @@ Jeśli to nieoczekiwane, zbadaj i podejmuj akcje naprawcze. Aby wyświetlić obi
 2. Przejdź do **łączników**.
 3. Wybierz łącznik usługi z typem **usługi Azure Active Directory**.
 4. W obszarze **akcje** po prawej stronie, wybierz **wyszukiwania obszaru łącznika**.
-5. W okienku wyskakującym w obszarze **zakres**, wybierz opcję **rozłączone, ponieważ** i wybierz godzinę w przeszłości. Kliknij przycisk **wyszukiwania**. Ta strona udostępnia widok wszystkich obiektów, które ma zostać usunięta. Przez kliknięcie każdego elementu, można uzyskać dodatkowe informacje o obiekcie. Możesz również kliknąć **ustawienie kolumny** można dodać dodatkowe atrybuty, które mają być wyświetlane w siatce.
+5. W okienku wyskakującym w obszarze **zakres**, wybierz opcję **rozłączone, ponieważ** i wybierz godzinę w przeszłości. Kliknij polecenie **Wyszukaj**. Ta strona udostępnia widok wszystkich obiektów, które ma zostać usunięta. Przez kliknięcie każdego elementu, można uzyskać dodatkowe informacje o obiekcie. Możesz również kliknąć **ustawienie kolumny** można dodać dodatkowe atrybuty, które mają być wyświetlane w siatce.
 
 ![Wyszukiwania obszaru łącznika](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
@@ -68,5 +68,5 @@ Usuwa wszystkie są potrzebne, następnie należy wykonać następujące czynno�
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b9174d98dd6d4dfb5353d6976d074bb4c91373dc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 16455719f05688793e2aee6f10fa00a707d553c0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678325"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469543"
 ---
 # <a name="interact-with-the-map---mouse-events"></a>Interakcja z mapą — zdarzenia myszy
 
-W tym artykule dowiesz się, jak używać [map — klasa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [zdarzenia](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) właściwości w celu wyróżnienia zdarzeń na mapie i na różnych warstw mapy. On również pokazano, jak wyróżnienia zdarzeń podczas interakcji z znaczników HTML za pomocą właściwości zdarzeń klasy mapy.
+W tym artykule dowiesz się, jak używać [map — klasa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [zdarzenia](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) właściwości w celu wyróżnienia zdarzeń na mapie i na różnych warstw mapy. On również pokazano, jak wyróżnienia zdarzeń podczas interakcji z znaczników HTML za pomocą właściwości zdarzeń klasy mapy.
 
 ## <a name="interact-with-the-map"></a>Interakcja z mapą
 

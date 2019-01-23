@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 333eebfa1bae919c43164572c63f2de4f7251fe0
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: a19b06e1297b86610ecee01a4e84150813cdb208
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261621"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452411"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Publikowanie szablonu rozwiązania w portalu Azure Marketplace
 
@@ -84,7 +84,7 @@ Jednostka SKU pojawia się w ramach oferty nadrzędne w witrynie Azure Marketpla
     - Portal Marketplace
     - Pomoc techniczna
 
-Każdy widok zawiera zestaw pól, które należy wypełnić. Wymagane pola są oznaczone czerwoną gwiazdki (\*)
+Każdy widok zawiera zestaw pól, które należy wypełnić. Wymagane pola są oznaczone czerwoną gwiazdką (\*)
 
 ## <a name="to-configure-offer-settings"></a>Aby skonfigurować ustawienia oferty
 
@@ -139,7 +139,7 @@ Podaj następujące ustawienia jednostki SKU.
 - **Tytuł** -tytułu dla jednostki SKU. Ten tytuł jest wyświetlany w galerii dla tego elementu.
 - **Podsumowanie** — krótkie podsumowanie jednostki SKU. (Maksymalna długość wynosi 100 znaków).
 - **Opis** — szczegółowy opis jednostki SKU.
-- **Typ jednostki SKU** — na liście rozwijanej następującymi wartościami: "Zarządzana aplikacja (wersja zapoznawcza)" i "Szablon rozwiązania". W tym scenariuszu wybierz **szablon rozwiązania**.
+- **Typ jednostki SKU** — na liście rozwijanej następującymi wartościami: "Zarządzanych aplikacji (wersja zapoznawcza)" i "Szablon rozwiązania". W tym scenariuszu wybierz **szablon rozwiązania**.
 - **Dostępność w chmurze** — Lokalizacja jednostki SKU. Wartość domyślna to **publicznej Azure**.
 
 ### <a name="package-details"></a>Szczegóły pakietu

@@ -1,37 +1,37 @@
 ---
-title: Zdarzenie ogłaszania do tematu Azure siatki zdarzeń niestandardowych
-description: Opisuje sposób przesłać zdarzenia do niestandardowego tematu Azure zdarzeń siatki
+title: Publikuj zdarzenia do tematu niestandardowego usługi Azure Event Grid
+description: Opisuje, jak można opublikować zdarzenia do tematu niestandardowego usługi Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: e4256de1d9112d785b6d1cd52067fc99144a0a04
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: b219e9475151ecd14d8b45db9501a06cde05875b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34303338"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470600"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>POST do tematu niestandardowych dla usługi Azure Event siatki
+# <a name="post-to-custom-topic-for-azure-event-grid"></a>Wpis do tematu niestandardowego usługi Azure Event Grid
 
-W tym artykule opisano, jak można wysłać zdarzenia do niestandardowego tematu. Przedstawia on format danych post i zdarzeń. [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) ma zastosowanie tylko do wpisów, które pasuje do oczekiwanego formatu.
+W tym artykule opisano, jak można opublikować zdarzenia do tematu niestandardowego. Przedstawia on format danych post i zdarzeń. [Umowa dotycząca poziomu usług (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) dotyczy tylko wpisy, które pasuje do oczekiwanego formatu.
 
 ## <a name="endpoint"></a>Endpoint
 
-Podczas wysyłania HTTP POST do niestandardowego tematu, użyj formatu identyfikatora URI: `https://<topic-endpoint>?api-version=2018-01-01`.
+Podczas wysyłania HTTP POST do tematu niestandardowego, użyj formatu identyfikatora URI: `https://<topic-endpoint>?api-version=2018-01-01`.
 
-Na przykład jest prawidłowy identyfikator URI: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Na przykład jest prawidłowym identyfikatorem URI: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
 
-Aby uzyskać punkt końcowy dla niestandardowego tematu z wiersza polecenia platformy Azure, należy użyć:
+Aby uzyskać punkt końcowy dla tematu niestandardowego przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli-interactive
 az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "endpoint"
 ```
 
-Aby uzyskać punkt końcowy dla niestandardowego tematu przy użyciu programu Azure PowerShell, należy użyć:
+Aby uzyskać punkt końcowy dla tematu niestandardowego przy użyciu programu Azure PowerShell, należy użyć:
 
 ```powershell
 (Get-AzureRmEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
@@ -39,17 +39,17 @@ Aby uzyskać punkt końcowy dla niestandardowego tematu przy użyciu programu Az
 
 ## <a name="header"></a>Nagłówek
 
-W żądaniu, zawierają wartość nagłówka o nazwie `aeg-sas-key` zawierający klucz uwierzytelniania.
+W żądaniu, zawierają wartość nagłówka o nazwie `aeg-sas-key` zawierający klucz na potrzeby uwierzytelniania.
 
-Na przykład jest wartością prawidłowego nagłówka `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Na przykład, jest wartością prawidłowego nagłówka `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
 
-Aby uzyskać klucz dla niestandardowego tematu z wiersza polecenia platformy Azure, należy użyć:
+Aby uzyskać klucz dla tematu niestandardowego przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
 ```azurecli
 az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --query "key1"
 ```
 
-Aby uzyskać klucz dla niestandardowego tematu przy użyciu programu PowerShell, należy użyć:
+Aby uzyskać klucz dla tematu niestandardowego przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
 (Get-AzureRmEventGridTopicKey -ResourceGroupName <topic-resource-group> -Name <topic-name>).Key1
@@ -57,7 +57,7 @@ Aby uzyskać klucz dla niestandardowego tematu przy użyciu programu PowerShell,
 
 ## <a name="event-data"></a>Dane zdarzenia
 
-Niestandardowe tematy najwyższego poziomu dane zawierają tych samych polach jako standardowych zdarzeń zdefiniowanych zasobów. Jedna z tych właściwości jest właściwością danych zawierającego właściwości, które są unikatowe dla niestandardowego tematu. Jako wydawca zdarzeń można określić właściwości dla obiektu danych. Użyj następującego schematu:
+Niestandardowe tematy najwyższego poziomu dane zawierają te same pola jako standardowych zdarzeń zdefiniowanych przez zasób. Jedną z tych właściwości jest właściwością danych, która zawiera właściwości, które są unikatowe dla tematu niestandardowego. Jako wydawca zdarzeń należy określić właściwości dla tego obiektu danych. Użyj następującego schematu:
 
 ```json
 [
@@ -74,9 +74,9 @@ Niestandardowe tematy najwyższego poziomu dane zawierają tych samych polach ja
 ]
 ```
 
-Aby uzyskać opis tych właściwości, zobacz [schematu zdarzeń siatki zdarzeń Azure](event-schema.md). Zaksięgowania zdarzenia do zdarzenia tematu siatki, Tablica może mieć całkowity rozmiar maksymalnie 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB.
+Aby uzyskać opis tych właściwości, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md). Ogłaszając zdarzenia do tematu usługi event grid tablicy może mieć całkowity rozmiar do 1 MB. Każde zdarzenie w tablicy jest ograniczony do 64 KB.
 
-Na przykład schemat danych ważne jest:
+Na przykład jest schematu danych ważnego zdarzenia:
 
 ```json
 [{
@@ -94,17 +94,17 @@ Na przykład schemat danych ważne jest:
 
 ## <a name="response"></a>Odpowiedź
 
-Po publikowanie do punktu końcowego tematu, otrzymasz odpowiedź. Odpowiedź jest standardowy kod odpowiedzi HTTP. Niektóre typowe odpowiedzi są:
+Po publikowanie do endpoint tematu, otrzymasz odpowiedź. Odpowiedź jest standardowy kod odpowiedzi HTTP. Niektóre typowe odpowiedzi są:
 
 |Wynik  |Odpowiedź  |
 |---------|---------|
 |Powodzenie  | 200 OK  |
 |Dane zdarzenia mają niepoprawny format | 400 Niewłaściwe żądanie |
-|Nieprawidłowy klucz dostępu. | 401 nieautoryzowane |
+|Nieprawidłowy klucz dostępu. | 401 Brak autoryzacji |
 |Nieprawidłowy punkt końcowy | 404 — Nie odnaleziono |
-|Tablica lub zdarzeń przekracza limity rozmiaru | Ładunek 413 za duży |
+|Tablica lub zdarzeń przekracza limit rozmiaru | Ładunek 413 zbyt duży |
 
-Błędy treść komunikatu ma następujący format:
+Błędy treść wiadomości ma następujący format:
 
 ```json
 {
@@ -121,6 +121,6 @@ Błędy treść komunikatu ma następujący format:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Informacje o monitorowaniu dostaw zdarzeń, zobacz [dostarczanie komunikatów Monitora zdarzeń siatki](monitor-event-delivery.md).
-* Aby uzyskać więcej informacji na temat klucza uwierzytelniania, zobacz [siatki zdarzeń zabezpieczeń i uwierzytelniania](security-authentication.md).
-* Aby uzyskać więcej informacji o tworzeniu subskrypcji platformy Azure zdarzeń siatki, zobacz [schematu subskrypcji zdarzeń siatki](subscription-creation-schema.md).
+* Informacje o monitorowaniu dostarczenie zdarzeń, zobacz [dostarczanie komunikatów Monitor Event Grid](monitor-event-delivery.md).
+* Aby uzyskać więcej informacji na temat klucza uwierzytelniania, zobacz [usługi Event Grid zabezpieczeń i uwierzytelniania](security-authentication.md).
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).

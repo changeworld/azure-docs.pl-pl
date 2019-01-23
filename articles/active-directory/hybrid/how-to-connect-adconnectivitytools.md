@@ -1,21 +1,21 @@
 ---
-title: 'Azure AD Connect: Co to jest moduł programu PowerShell ADConnectivityTool | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Co to jest moduł programu PowerShell ADConnectivityTool | Dokumentacja firmy Microsoft'
 description: Ten dokument stanowi wprowadzenie nowego modułu programu ADConnectivity PowerShell
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e6f85d327fff1ee32dca6dfb2231b28e6dc96c61
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 537fc7a6e0a68281ae190db5ec7fef65e413bcbe
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965639"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475887"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>Co to jest moduł programu PowerShell ADConnectivityTool?
 
@@ -73,7 +73,7 @@ Jeśli użytkownik uruchamia tej funkcji po problem został rozwiązany (lub nie
 
 
 ## <a name="next-steps"></a>Następne kroki
-- [Azure AD Connect: Accounts and permissions](reference-connect-accounts-permissions.md) (Azure AD Connect: konta i uprawnienia)
+- [Azure AD Connect: Konta i uprawnienia](reference-connect-accounts-permissions.md)
 - [Instalacja ekspresowa](how-to-connect-install-express.md)
 - [Instalacja niestandardowa](how-to-connect-install-custom.md)
 - [Odwołanie ADConnectivityTools](reference-connect-adconnectivitytools.md)

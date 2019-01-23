@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Konta i uprawnienia | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Konta i uprawnienia | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano konta używane i utworzone i wymagane są uprawnienia.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308787"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478607"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konta i uprawnienia
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Program Azure AD Connect: Konta i uprawnienia
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Konta używane dla usługi Azure AD Connect
 
@@ -39,9 +39,9 @@ Program Azure AD Connect używa kont 3, aby można było zsynchronizować inform
 
 Oprócz tych trzech kont używanych do uruchamiania usługi Azure AD Connect należy również następujące dodatkowe konta do zainstalowania Azure AD Connect.  Są to:
 
-- **Konto administratora lokalnego**: administrator, który jest instalowany program Azure AD Connect i kto ma uprawnienia administratora lokalnego na komputerze.
+- **Konto administratora lokalnego**: Administrator, który jest instalowany program Azure AD Connect i kto ma uprawnienia administratora lokalnego na komputerze.
 
-- **Konto administratora przedsiębiorstwa usług AD**: Opcjonalnie użyty do utworzenia "łącznik usługi AD DS konto" powyżej.
+- **Konto administratora przedsiębiorstwa usług AD**: Opcjonalnie umożliwia tworzenie "łącznik usługi AD DS konto" powyżej.
 
 - **Konta usługi Azure AD administratora globalnego**: używane do utworzenia konta łącznika usługi Azure AD i skonfigurować usługę Azure AD.
 
@@ -120,7 +120,7 @@ Oto Podsumowanie strony Kreatora instalacji niestandardowej poświadczenia groma
 >[!IMPORTANT]
 >Moduł programu PowerShell o nazwie ADSyncConfig.psm1 wprowadzono w systemie kompilacji **1.1.880.0** (wydanej w sierpniu 2018 r.), zawiera kolekcję poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory do usługi Azure AD DS Konta łącznika.
 >
->Aby uzyskać więcej informacji, zobacz [program Azure AD Connect: Konfigurowanie usługi AD DS łącznika kontu uprawnienia](how-to-connect-configure-ad-ds-connector-account.md)
+>Aby uzyskać więcej informacji, zobacz [program Azure AD Connect: Konfigurowanie uprawnień konta DS łącznika AD](how-to-connect-configure-ad-ds-connector-account.md)
 
 Konta określane na **Podłączanie katalogów** strony musi być obecny w usłudze Active Directory przed instalacją.  Usługa Azure AD Connect w wersji w 1.1.524.0, a później ma opcję, aby umożliwić Kreator Azure AD Connect, Utwórz **konta usługi AD DS łącznika** używane do łączenia z usługą Active Directory.  
 

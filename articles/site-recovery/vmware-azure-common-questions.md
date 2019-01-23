@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 12/31/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 90f3a4571e485e52a47eda34eacf6367aef35933
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320994"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478108"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -43,7 +43,23 @@ Wymagane jest konto magazynu LRS lub GRS. Zalecamy użycie konta GRS, dzięki cz
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Czy Moje konto platformy Azure potrzebuje uprawnień do tworzenia maszyn wirtualnych?
 Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz, potrzebujesz uprawnień, aby utworzyć Maszynę wirtualną platformy Azure w grupie zasobów i sieci wirtualnej można określić podczas konfigurowania Site Recovery i uprawnienia do zapisu do wybranego konta magazynu. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
+## <a name="azure-site-recovery-components-upgrade"></a>Uaktualnij składniki usługi Azure Site Recovery
 
+### <a name="my-mobility-agentconfiguration-serverprocess-server-version-is-very-old-and-my-upgrade-has-failed-how-should-i-upgrade-to-latest-version"></a>Moje mobilności/konfiguracja agenta serwera/wersja serwera przetwarzania jest bardzo starych i Moje uaktualnienie nie powiodło się. Jak należy uaktualnić do najnowszej wersji?
+
+Usługa Azure Site Recovery następuje N-4 model pomocy technicznej. Odnoszą się do naszych [obsługuje instrukcji](https://aka.ms/asr_support_statement) Aby poznać szczegółowe informacje na temat uaktualniania z bardzo starsze wersje.
+
+### <a name="where-can-i-find-the-release-notesupdate-rollups-of-azure-site-recovery"></a>Gdzie można znaleźć pakiety zbiorcze aktualizacji/na informacje o wersji usługi Azure Site Recovery?
+
+Zapoznaj się [dokumentu](https://aka.ms/asr_update_rollups) informacji o wersji. Linkach instalacyjnych odpowiednich składników można znaleźć w każdym zbiorczy aktualizacji.
+
+### <a name="how-should-i-upgrade-site-recovery-components-for-on-premises-vmware-or-physical-site-to-azure"></a>Jak uaktualnić składniki usługi Site Recovery dla lokalnych zasobów programu VMware lub fizyczne witryny na platformie Azure?
+
+Zobacz nasze wskazówki podane [tutaj](https://aka.ms/asr_vmware_upgrades) uaktualniania składników usługi.
+
+## <a name="is-reboot-of-source-machine-mandatory-for-each-upgrade"></a>Ponowne uruchomienie maszyny źródłowej jest obowiązkowy w przypadku każdego uaktualnienia?
+
+Chociaż jest to zalecane, nie jest to konieczne w przypadku każdego uaktualnienia. Zapoznaj się [tutaj](https://aka.ms/asr_vmware_upgrades) przypadku wyczyść wytycznych.
 
 ## <a name="on-premises"></a>Lokalnie
 
@@ -142,7 +158,7 @@ Nie. Aby to zrobić, należy skonfigurować serwer konfiguracji w każdym region
 Ile jest to możliwe maszyna wirtualna Azure, które działają na serwerze konfiguracji musi komunikować się z lokalną infrastrukturą programu VMware i maszyn wirtualnych. To jest dodawanie opóźnienia i mieć wpływ na trwającą replikację.
 
 ### <a name="how-do-i-update-the-configuration-server"></a>Jak zaktualizować serwer konfiguracji?
-[Dowiedz się więcej o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aktualizację serwera konfiguracji. Można znaleźć informacje o najnowszych aktualizacji w [aktualizacje platformy Azure, strona](https://azure.microsoft.com/updates/?product=site-recovery). Można również bezpośrednio pobrać najnowszą wersję serwera konfiguracji z [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+[Dowiedz się więcej o](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aktualizację serwera konfiguracji. Można znaleźć informacje o najnowszych aktualizacji w [aktualizacje platformy Azure, strona](https://azure.microsoft.com/updates/?product=site-recovery). Można również bezpośrednio pobrać najnowszą wersję serwera konfiguracji z [Microsoft Download Center](https://aka.ms/asrconfigurationserver). Jeśli używana wersja jest starsza niż 4 w wersjach od bieżącej wersji, zajrzyj do naszej [obsługuje instrukcji](https://aka.ms/asr_support_statement) wskazówki dotyczące uaktualnienia.
 
 ### <a name="should-i-backup-the-deployed-configuration-server"></a>Należy utworzyć kopię zapasową serwera wdrożonej konfiguracji?
 Zaleca się wykonywanie regularnych zaplanowanych kopii zapasowych serwera konfiguracji. Pomyślne powrotu po awarii powrót po awarii maszyny wirtualnej musi istnieć w bazie danych serwera konfiguracji, a serwer konfiguracji musi być uruchomiona w stanie połączonym. Dowiedz się więcej na temat typowych zadań zarządzania serwerem konfiguracji [tutaj](vmware-azure-manage-configuration-server.md).

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: f073637810e9ed1acdf37b0e541ca3f1d518de2a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8491acfd28524ee3bbbd06c788afb668c40c98b9
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345254"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450586"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Wdrażanie nowego urządzenia symulowanego
 
@@ -147,4 +147,4 @@ Jeśli akcelerator rozwiązań nie są już potrzebne, usuń go z [Aprowizowane 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W przewodniku pokazano, jak wdrażać modele niestandardowe do akceleratora rozwiązania monitorowania zdalnego. Sugerowane następnym krokiem jest, aby dowiedzieć się, jak [Podłączanie urządzenia fizycznego do rozwiązania do zdalnego monitorowania](iot-accelerators-connecting-devices-node.md).
+W przewodniku pokazano, jak wdrażać modele niestandardowe do akceleratora rozwiązania monitorowania zdalnego. Sugerowane następnym krokiem jest, aby dowiedzieć się, jak [połączyć prawdziwe urządzenie do rozwiązania do zdalnego monitorowania](iot-accelerators-connecting-devices-node.md).

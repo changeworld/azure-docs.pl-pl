@@ -12,18 +12,18 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: eda71351b0375789d41808f9351cf000945b5f4c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606813"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449405"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
 Ten artykuł zawiera wiele przykładowymi scenariuszami, aby rozpocząć pracę z usługą zadań elastycznych, przy użyciu języka T-SQL.
 
-W przykładach użyto [procedur składowanych](#job-stored-procedures) i [widoków](#job-views) dostępne w [ *bazy danych zadania*](elastic-jobs-overview.md#job-database).
+W przykładach użyto [procedur składowanych](#job-stored-procedures) i [widoków](#job-views) dostępne w [ *bazy danych zadania*](sql-database-job-automation-overview.md#job-database).
 
 Języka Transact-SQL (T-SQL) jest używany do tworzenia, konfigurowania, wykonywania i zarządzać zadaniami. Tworzenie agenta elastycznych zadań nie jest obsługiwane w języku T-SQL, dlatego najpierw należy utworzyć *agenta elastycznych zadań* korzystanie z portalu lub [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent).
 
@@ -53,7 +53,7 @@ GO
 ## <a name="create-a-target-group-servers"></a>Tworzenie grupy docelowej (serwery)
 
 Poniższy przykład przedstawia sposób wykonania zadania dla wszystkich baz danych na serwerze.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 
 ```sql
@@ -78,7 +78,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ## <a name="exclude-a-single-database"></a>Wyklucz pojedynczej bazy danych
 
 Poniższy przykład przedstawia sposób wykonania zadania dla wszystkich baz danych na serwerze, z wyjątkiem bazy danych o nazwie *MappingDB*.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -121,7 +121,7 @@ SELECT * FROM [jobs].target_group_members WHERE target_group_name = N'ServerGrou
 ## <a name="create-a-target-group-pools"></a>Tworzenie grupy docelowej (pule)
 
 Poniższy przykład pokazuje, jak pod kątem wszystkich baz danych w co najmniej jednej puli elastycznej.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -146,7 +146,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 ## <a name="deploy-new-schema-to-many-databases"></a>Wdrażanie nowego schematu na wiele baz danych
 
 Poniższy przykład pokazuje, jak wdrożyć nowy schemat do wszystkich baz danych.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 
 ```sql
@@ -195,7 +195,7 @@ Domyślnie będzie wyglądać agenta zadań, aby utworzyć tabelę do przechowyw
 2. Dodatkowa kolumna internal_execution_id z typu danych uniqueidentifier.
 3. Indeksu nieklastrowanego na indeks o nazwie "IX_<TableName>_Internal_Execution_ID" w kolumnie internal_execution_id.
 
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenia:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenia:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -266,7 +266,7 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
 ## <a name="view-job-definitions"></a>Wyświetl definicje zadań
 
 Poniższy przykład pokazuje sposób wyświetlania bieżącego definicje zadań.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -287,7 +287,7 @@ select * from jobs.jobsteps
 ## <a name="begin-ad-hoc-execution-of-a-job"></a>Rozpoczęcie wykonywania zapytań ad-hoc zadania
 
 Poniższy przykład pokazuje, jak natychmiast uruchomić zadanie.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -310,7 +310,7 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 ## <a name="schedule-execution-of-a-job"></a>Harmonogram wykonywania zadania
 
 Poniższy przykład pokazuje, jak można zaplanować zadania do wykonania w przyszłości.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -325,7 +325,7 @@ EXEC jobs.sp_update_job
 ## <a name="monitor-job-execution-status"></a>Monitoruj stan wykonania zadania
 
 Poniższy przykład pokazuje, jak wyświetlić szczegóły stanu wykonywania dla wszystkich zadań.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -354,7 +354,7 @@ ORDER BY start_time DESC
 ## <a name="cancel-a-job"></a>Anulowanie zadania
 
 Poniższy przykład pokazuje, jak można anulować zadania.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -373,7 +373,7 @@ EXEC jobs.sp_stop_job '01234567-89ab-cdef-0123-456789abcdef'
 ## <a name="delete-old-job-history"></a>Usuń stare historię zadania
 
 Poniższy przykład pokazuje, jak usunąć historii zadań przed określonej daty.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -387,7 +387,7 @@ EXEC jobs.sp_purge_jobhistory @job_name='ResultPoolsJob', @oldest_date='2016-07-
 ## <a name="delete-a-job-and-all-its-job-history"></a>Usunięcie zadania i jego Historia zadania
 
 Poniższy przykład pokazuje, jak można usunąć zadania i wszystkie powiązane historii zadań.  
-Połączyć się z [ *bazy danych zadania* ](elastic-jobs-overview.md#job-database) i uruchom następujące polecenie:
+Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -402,7 +402,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 ## <a name="job-stored-procedures"></a>Zadanie procedur składowanych
 
-Poniższe procedury składowanej znajdują się w [bazy danych zadania](elastic-jobs-overview.md#job-database).
+Poniższe procedury składowanej znajdują się w [bazy danych zadania](sql-database-job-automation-overview.md#job-database).
 
 
 
@@ -1190,7 +1190,7 @@ GO
 
 ## <a name="job-views"></a>Widoki zadania
 
-Następujące widoki są dostępne w [bazy danych zadania](elastic-jobs-overview.md#job-database).
+Następujące widoki są dostępne w [bazy danych zadania](sql-database-job-automation-overview.md#job-database).
 
 
 |Widok  |Opis  |
@@ -1215,7 +1215,7 @@ Pokazano zadań historii wykonywania.
 |---------|---------|---------|
 |**job_execution_id**   |uniqueidentifier|  Unikatowy identyfikator wystąpienia wykonywania zadania.
 |**Parametr job_name**   |nvarchar(128)  |Nazwa zadania.
-|**wartość job_id** |uniqueidentifier|  Unikatowy identyfikator zadania.
+|**job_id** |uniqueidentifier|  Unikatowy identyfikator zadania.
 |**job_version**    |int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).
 |**step_id**    |int|   Identyfikator unikatowy (dla tego zadania) dla etapu. Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**is_active**| Bitowe |Wskazuje, czy informacje są aktywne lub nieaktywne. wartość 1 oznacza aktywne zadania, a wartość 0 wskazuje nieaktywne.
@@ -1229,7 +1229,7 @@ Pokazano zadań historii wykonywania.
 |**target_type**|   nvarchar(128)   |Typ docelowej bazy danych lub kolekcji baz danych, uwzględniający wszystkie bazy danych w serwera i wszystkich baz danych w puli elastycznej bazy danych. Prawidłowe wartości dla target_type — to 'SqlServer', "SqlElasticPool" lub "Baza danych SQL". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**target_id**  |uniqueidentifier|  Unikatowy identyfikator elementu członkowskiego grupy docelowej.  Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**target_group_name**  |nvarchar(128)  |Nazwa grupy docelowej. Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
-|**nazwa_serwera_docelowego**|    nvarchar(256)|  Nazwa serwera logicznego znajdujących się w grupie docelowej. Tylko należy określić, czy target_type — "SqlServer". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
+|**target_server_name**|    nvarchar(256)|  Nazwa serwera logicznego znajdujących się w grupie docelowej. Tylko należy określić, czy target_type — "SqlServer". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**target_database_name**   |nvarchar(128)| Nazwa bazy danych znajdujących się w grupie docelowej. Określona, tylko wtedy, gdy target_type — jest "Baza danych SQL". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 
 
@@ -1242,9 +1242,9 @@ Pokazuje wszystkie zadania.
 |Nazwa kolumny|   Typ danych|  Opis|
 |------|------|-------|
 |**Parametr job_name**|  nvarchar(128)   |Nazwa zadania.|
-|**wartość job_id**|    uniqueidentifier    |Unikatowy identyfikator zadania.|
+|**job_id**|    uniqueidentifier    |Unikatowy identyfikator zadania.|
 |**job_version**    |int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
-|**Opis elementu**    |nvarchar(512)| Opis zadania. bit włączone wskazuje, czy zadanie jest włączone. wartość 1 oznacza włączone zadania, a wartość 0 wskazuje wyłączone zadania.|
+|**description**    |nvarchar(512)| Opis zadania. bit włączone wskazuje, czy zadanie jest włączone. wartość 1 oznacza włączone zadania, a wartość 0 wskazuje wyłączone zadania.|
 |**schedule_interval_type** |nvarchar(50)   |Wartość wskazująca, kiedy zadanie jest wykonywana: "Raz", "Min", "Godziny", "dni", "Tygodni", "Miesiące"
 |**schedule_interval_count**|   int|    Liczba okresów schedule_interval_type się komunikować między każdego wykonania zadania.|
 |**schedule_start_time**    |datetime2(7)|  Data i godzina, których ostatni Rozpoczęto wykonywanie zadania.|
@@ -1260,7 +1260,7 @@ Przedstawia wszystkie wersje zadania.
 |Nazwa kolumny|   Typ danych|  Opis|
 |------|------|-------|
 |**Parametr job_name**|  nvarchar(128)   |Nazwa zadania.|
-|**wartość job_id**|    uniqueidentifier    |Unikatowy identyfikator zadania.|
+|**job_id**|    uniqueidentifier    |Unikatowy identyfikator zadania.|
 |**job_version**    |int    |Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
 
 
@@ -1273,7 +1273,7 @@ Przedstawia wszystkie kroki opisane w bieżącej wersji każdego zadania.
 |Nazwa kolumny    |Typ danych| Opis|
 |------|------|-------|
 |**Parametr job_name**   |nvarchar(128)| Nazwa zadania.|
-|**wartość job_id** |uniqueidentifier   |Unikatowy identyfikator zadania.|
+|**job_id** |uniqueidentifier   |Unikatowy identyfikator zadania.|
 |**job_version**|   int|    Wersja zadania (zaktualizowane automatycznie każdorazowo, gdy zadanie zostanie zmodyfikowane).|
 |**step_id**    |int    |Identyfikator unikatowy (dla tego zadania) dla etapu.|
 |**step_name**  |nvarchar(128)  |(Dla tego zadania) unikatowa wartość kroku.|
@@ -1318,13 +1318,13 @@ Wyświetla listę wszystkich grup docelowych.
 
 ### <a name="targetgroupsmembers-view"></a>Widok target_groups_members
 
-[zadania]. [target_groups_members]
+[jobs].[target_groups_members]
 
 Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.
 
 |Nazwa kolumny|Typ danych| Opis|
 |-----|-----|-----|
-|**target_group_name**  |nvarchar (128|Nazwa grupy docelowej kolekcji baz danych. |
+|**target_group_name**  |nvarchar(128|Nazwa grupy docelowej kolekcji baz danych. |
 |**target_group_id**    |uniqueidentifier   |Unikatowy identyfikator grupy docelowej.|
 |**membership_type**    |int|   Określa członka grupy docelowej jest włączone czy wyłączone w docelowej grupie. Prawidłowe wartości dla target_group_name to "Include" lub "Exclude".|
 |**target_type**    |nvarchar(128)| Typ docelowej bazy danych lub kolekcji baz danych, uwzględniający wszystkie bazy danych w serwera i wszystkich baz danych w puli elastycznej bazy danych. Prawidłowe wartości dla target_type — są 'SqlServer', "SqlElasticPool", "Baza danych SQL" lub "SqlShardMap".|

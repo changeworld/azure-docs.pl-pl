@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8549a35eed0c1f61c087b9056e4564577170f5f6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9c6e88eb2e3f3e1b6e6ce2b7f8984799397af582
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141819"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451617"
 ---
-# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalowalna analiza danych w usłudze Azure Data Lake: Instruktaż end-to-end
+# <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Analiza danych skalowalna usługa Azure Data Lake: Przewodnik end-to-end
 Ten poradnik pokazuje jak eksploracji danych i zadań klasyfikacji binarnej na przykład wyzwolenie taksówek NYC oraz taryfy zestawu danych w celu przewidywania, czy porady płatnego przez opłatę za pomocą usługi Azure Data Lake. Przeprowadza użytkownika przez kroki [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end-to-end, od pozyskiwanie danych do szkolenia modelu, a następnie do wdrożenia usługi sieci web, która umożliwia publikowanie modelu.
 
 ### <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
@@ -146,7 +146,7 @@ Do wykonania U-SQL, Otwórz program Visual Studio, kliknij przycisk **Plik--> Ne
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>Pozyskiwanie danych: Odczytywać dane z publicznego obiektu blob
+### <a name="ingest"></a>Pozyskiwanie danych: Odczyt danych z publicznego obiektu blob
 Lokalizacja danych w usłudze Azure blob jest określany jako **wasb://container_name@blob_storage_account_name.blob.core.windows.net/blob_name** i wyodrębnić za pomocą **Extractors.Csv()**. Zastąp własną nazwę kontenera i nazwy konta magazynu w następujących skryptów dla container_name@blob_storage_account_name adres wasb. Ponieważ nazwy plików znajdują się w tym samym formacie, jest możliwe użycie **podróży\_data_ {\*\}CSV** odczytać we wszystkich plikach 12 podróży. 
 
     ///Read in Trip data
@@ -374,7 +374,7 @@ Tabele podróży i klasie mogą być dołączane za Medalionu hack_license i pic
 
 Dla każdego poziomu liczby pasażerów obliczyć liczbę rekordów, porada średnia kwota, wariancji Porada kwota, procent Przechylony podróży.
 
-    // contigency table
+    // contingency table
     @trip_summary8 =
         SELECT passenger_count,
                COUNT(*) AS cnt,
@@ -452,7 +452,7 @@ Dwie opcje są dostępne dla Ciebie ściągać dane do usługi Azure Machine Lea
 * W pierwszej opcji Użyj próbki danych, który został zapisany do obiektu Blob platformy Azure (w **próbkowanie danych** kroku powyżej) i korzystanie z języka Python do tworzenia i wdrażania modeli na podstawie usługi Azure Machine Learning. 
 * W drugiej opcji możesz wysłać zapytanie dotyczące danych w usłudze Azure Data Lake bezpośrednio przy użyciu zapytań programu Hive. Ta opcja wymaga, Utwórz nowy klaster HDInsight, lub użyj istniejącego klastra HDInsight, gdzie tabele programu Hive wskazują na dane taksówek NY w usłudze Azure Data Lake Storage.  W poniższych sekcjach omówiono obu tych opcji. 
 
-## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>Opcja 1: Za pomocą języka Python do tworzenia i wdrażania modelu uczenia maszynowego.
+## <a name="option-1-use-python-to-build-and-deploy-machine-learning-models"></a>Opcja 1: Tworzenie i wdrażanie modeli uczenia maszynowego przy użyciu języka Python
 Do tworzenia i wdrażania modeli uczenia maszynowego przy użyciu języka Python, tworzenie notesu Jupyter na komputerze lokalnym lub w usłudze Azure Machine Learning Studio. Notes Jupyter dostępnym na [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) zawiera pełny kod Eksplorowanie, wizualizowanie danych, technicznego opracowywania funkcji, modelowania i wdrożenia. W tym artykule znajdują się po prostu modelowania i wdrożenia. 
 
 ### <a name="import-python-libraries"></a>Importowanie biblioteki języka Python

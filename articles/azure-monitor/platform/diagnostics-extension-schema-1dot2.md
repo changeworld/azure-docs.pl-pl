@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 69caec10c1be067cf9e8fc7ad83c8daeaced2bda
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 6a0061c03a10f5a5bd518c9ea01d8edd542e4e39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106698"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470566"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schemat konfiguracji usługi platformy Azure Diagnostyka 1.2
 > [!NOTE]
@@ -130,7 +130,7 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
-|**Źródła danych**|Lista katalogów, do monitorowania.|  
+|**DataSources**|Lista katalogów, do monitorowania.|  
 |**FailedRequestLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników dotyczących żądań zakończonych niepowodzeniem do witryny usług IIS lub aplikacji. Należy również włączyć śledzenie opcji w obszarze **systemu. Serwer sieci Web** w **Web.config**.|  
 |**IISLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników usług IIS:<br /><br /> **containerName** — nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania dzienników usług IIS.|  
 
@@ -200,3 +200,4 @@ Definiuje ustawienia konfiguracji z dane telemetryczne, które mają być zbiera
 |Nazwa elementu|Opis|  
 |------------------|-----------------|  
 |**DataSource**|Aby zebrać dzienniki zdarzeń Windows. Wymagany atrybut:<br /><br /> **Nazwa** — zapytanie XPath opisujące zdarzeń systemu windows, które mają być zbierane. Na przykład:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Aby zebrać wszystkie zdarzenia, należy określić "*".|
+

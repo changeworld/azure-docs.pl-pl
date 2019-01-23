@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: eabbe8d771520d5b1d5360a3d86b96d27ea08277
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359446"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476924"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 
@@ -33,6 +33,7 @@ Ustawienia konfiguracji w kontenerze twarzy są hierarchiczne, a wszystkie konte
 * [CloudAI](#cloudai-configuration-settings)
 * [Umowa licencyjna](#eula-configuration-setting)
 * [Fluentd](#fluentd-configuration-settings)
+* [Ustawienia poświadczeń serwera proxy HTTP](#http-proxy-credentials-settings)
 * [Rejestrowanie](#logging-configuration-settings)
 * [Instaluje](#mounts-configuration-settings)
 
@@ -162,6 +163,11 @@ W poniższej tabeli opisano ustawienia konfiguracji objęte `Fluentd` sekcji.
 | `TlsConnectionEstablishmentTimeoutMs` | Liczba całkowita | Limit czasu w milisekundach, można ustanowić połączenia SSL/TLS z serwerem Fluentd. Wartość domyślna to 10000 MS (10 sekund).<br/> Jeśli `UseTLS` jest ustawiona na wartość FAŁSZ, ta wartość jest ignorowana. |
 | `UseTLS` | Wartość logiczna | Wskazuje, czy do komunikacji z serwerem Fluentd kontenera należy używać protokołów SSL/TLS. Wartość domyślna to false. |
 
+
+## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy HTTP
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+
 ## <a name="logging-configuration-settings"></a>Ustawienia konfiguracji rejestrowania
 
 `Logging` Ustawienia konfiguracji zarządzania obsługę rejestrowania platformy ASP.NET Core kontenera. Można użyć tych samych ustawień konfiguracji i wartości dla kontenera, można dla aplikacji ASP.NET Core. Następujących dostawców rejestrowania są obsługiwane przez kontener twarzy:
@@ -212,3 +218,7 @@ Na przykład następujące polecenie definiuje instalowania powiązania platform
   ```
 
 Kontener twarzy nie korzysta z danych wejściowych lub danych wyjściowych instaluje do przechowywania danych szkoleniowych lub bazy danych. Zamiast tego kontenera twarzy zawiera scenariusze usługi storage zarządzania danych szkoleniowych i bazy danych. Aby uzyskać więcej informacji o używaniu scenariusze usługi storage, zobacz [ustawień scenariusza magazynu](#storage-scenario-settings).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Użycie [kontenerów usługi Cognitive Services](../cognitive-services-container-support.md)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bc044c8b59c939163336ecab01546fc26a7a2643
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6e5bcd6d9923b4051d44d51ff1a2534bc5e02f41
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810625"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445664"
 ---
 <a name="publish-an-azure-managed-application-to-azure-marketplace"></a>Publikowanie aplikacji zarządzanych platformy Azure w witrynie Azure Marketplace 
 ========================================================
@@ -88,7 +88,7 @@ Jednostka SKU pojawia się w ramach oferty nadrzędne w witrynie Azure Marketpla
 
 3.  Nowa oferta \"edytora\" widok jest teraz otwarte i możesz rozpocząć tworzenie.
 
-4.  \"Formularzy\" które muszą być wypełnione są widoczne po lewej stronie w obrębie \"edytora\" widoku. Każdy \"formularza\" zawiera zestaw pól, które mają zostać wypełnione. Wymagane pola są oznaczone czerwoną gwiazdki (\*).
+4.  \"Formularzy\" które muszą być wypełnione są widoczne po lewej stronie w obrębie \"edytora\" widoku. Każdy \"formularza\" zawiera zestaw pól, które mają zostać wypełnione. Wymagane pola są oznaczone czerwoną gwiazdką (\*).
 
     > Istnieją 4 główne formularze do tworzenia zarządzanej aplikacji
 
@@ -206,7 +206,7 @@ Poniżej przedstawiono niektóre z miejsc, w których dane podane w tym formular
 
 ![publishvm15](./media/cloud-partner-portal-publish-managed-app/publishvm15.png)
 
-##### <a name="portal-at-azurecom"></a>Portal w witrynie azure.com
+##### <a name="portal-at-azurecom"></a>Portal at azure.com
 
 ![publishvm12](./media/cloud-partner-portal-publish-managed-app/publishvm12.png)
 

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: f484eaf127c1dda0e3389e237ace75f51401a806
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/22/2019
+ms.openlocfilehash: b0b4a89aaf9b00b30e6b4759c8aa168f06d0d008
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959881"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462474"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
@@ -61,6 +61,9 @@ Nie ma potrzeby odszyfrowania bazy danych dla operacji na platformie Azure. Usta
 - Tworzenie kopii bazy danych
 - Przywracanie pliku kopii zapasowej do wystąpienia zarządzanego Azure SQL
 
+> [!IMPORTANT]
+> Ręczne COPY-ONLY kopii zapasowej bazy danych zaszyfrowanych przez zarządzane przez usługę TDE nie jest dozwolona w wystąpienia zarządzanego SQL Azure, ponieważ certyfikat używany do szyfrowania jest niedostępny. Funkcja punktu w czasie przywracania umożliwia przeniesienie tego typu bazy danych do innego wystąpienia zarządzanego.
+
 Podczas eksportowania bazy danych chronione przez szyfrowanie danych wyeksportowaną zawartość bazy danych nie jest zaszyfrowany. Ten wyeksportowany zawartość jest przechowywana w niezaszyfrowanego plików BACPAC. Pamiętaj odpowiednio chronić pliki BACPAC i włączanie technologii transparent data encryption, po zakończeniu importowania Nowa baza danych.
 
 Na przykład plik BACPAC jest wyeksportowany z wystąpienia programu SQL Server w środowisku lokalnym, zaimportowana zawartość nowej bazy danych nie są automatycznie szyfrowane. Podobnie pliku BACPAC są eksportowane do wystąpienia programu SQL Server w środowisku lokalnym, Nowa baza danych także nie są automatycznie szyfrowane.
@@ -89,14 +92,14 @@ Użyj następujących poleceń cmdlet dla usługi Azure SQL Database i Data Ware
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-| [Zestaw AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasetransparentdataencryption) |Włącza lub wyłącza przezroczyste szyfrowanie danych dla bazy danych|
+| [Set-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasetransparentdataencryption) |Włącza lub wyłącza przezroczyste szyfrowanie danych dla bazy danych|
 | [Get-AzureRmSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) |Pobiera stan szyfrowania danych dla bazy danych |
 | [Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryptionactivity) |Sprawdza, czy postęp szyfrowania bazy danych |
-| [Dodaj AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |Dodaje klucz usługi Key Vault do wystąpienia programu SQL Server |
+| [Add-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) |Dodaje klucz usługi Key Vault do wystąpienia programu SQL Server |
 | [Get-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserverkeyvaultkey) |Pobiera klucze usługi Key Vault dla serwera usługi Azure SQL database  |
-| [Polecenie set-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |Ustawia funkcja ochrony szyfrowania danych dla wystąpienia programu SQL Server |
+| [Set-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) |Ustawia funkcja ochrony szyfrowania danych dla wystąpienia programu SQL Server |
 | [Get-AzureRmSqlServerTransparentDataEncryptionProtector](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) |Pobiera funkcja ochrony szyfrowania danych |
-| [Usuń AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey) |Usuwa klucz usługi Key Vault z wystąpienia programu SQL Server |
+| [Remove-AzureRmSqlServerKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlserverkeyvaultkey) |Usuwa klucz usługi Key Vault z wystąpienia programu SQL Server |
 |  | |
 
 > [!IMPORTANT]

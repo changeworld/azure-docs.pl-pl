@@ -4,7 +4,7 @@ description: Jak rozwiązywać problemy z typowych problemów dotyczących stero
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 3874e6ff6586726577a2c89e3cf45bbd3343b821
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fd5d833656d4ba395857c84ee8386bc7fb6d704e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040690"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465407"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Brak użytkowników są aprowizowane do aplikacji galerii usługi Azure AD
 Po automatycznej aprowizacji została skonfigurowana dla aplikacji (w tym sprawdzanie zgodności aplikacji udostępnionych poświadczeń do usługi Azure AD connect do aplikacji), następnie użytkowników i/lub grup są aprowizowane w aplikacji. Inicjowanie obsługi administracyjnej zależy od następujących czynników:
@@ -56,8 +56,8 @@ Użytkownik jest wyświetlany jako "pominięto" w dziennikach inspekcji, jest wa
 - **Skonfigurowano filtru określania zakresu** **, jest filtrowanie użytkownika na podstawie wartości atrybutu**. Aby uzyskać więcej informacji na temat określania zakresu filtrów, zobacz [filtrami zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 - **Użytkownik "nie jest skutecznie uprawnione".** Jeśli widzisz ten komunikat o błędzie określone, jest to, ponieważ wystąpił problem z rekordem przypisania użytkownika, które są przechowywane w usłudze Azure AD. Aby rozwiązać ten problem, Cofnij przypisanie użytkownika (lub grupy) z poziomu aplikacji, a następnie ponownie przypisać ją ponownie. Aby uzyskać więcej informacji na temat przypisania, zobacz [przyznać użytkownikowi lub grupie dostęp](assign-user-or-group-access-portal.md).
 - **Wymagany atrybut jest brak lub nie jest wypełnione dla użytkownika.** Ważne jest, aby uwzględnić podczas konfigurowania aprowizacji jest Przejrzyj i skonfiguruj mapowania atrybutów i przepływów pracy, które określają, które użytkownik (lub grupy) właściwości przepływu z usługi Azure AD do aplikacji. Ta konfiguracja zawiera ustawienie "pasującego właściwość", która jest używany do jednoznacznego identyfikowania i dopasować użytkowników/grup między dwoma systemami. Aby uzyskać więcej informacji na temat tego procesu ważne, zobacz [Dostosowywanie aprowizacji atrybutu mapowania użytkownika dla aplikacji SaaS w usłudze Azure Active Directory](customize-application-attributes.md).
-- **Mapowania dla grupy atrybutów:** aprowizacji nazwę grupy i opis grupy, oprócz członków, jeśli jest obsługiwany dla niektórych aplikacji. Można włączyć lub wyłączyć tę funkcję, włączając lub wyłączając **mapowanie** dla obiektów grupy wyświetlane w **aprowizacji** kartę. Jeśli Inicjowanie obsługi administracyjnej grupy jest włączona, należy przejrzeć mapowania atrybutów, aby upewnić się, że odpowiednie pole jest on używany do dopasowywania "ID". Pasujące identyfikator może być wyświetlana nazwy albo aliasu e-mail. Grupy i jej elementów członkowskich nie są udostępnione, jeśli właściwość dopasowania jest pusty lub nie jest wypełnione dla grupy w usłudze Azure AD.
+- **Mapowania atrybutów dla grup:** Inicjowanie obsługi nazwy grupy i szczegóły grupy, oprócz członków, jeśli jest obsługiwany dla niektórych aplikacji. Można włączyć lub wyłączyć tę funkcję, włączając lub wyłączając **mapowanie** dla obiektów grupy wyświetlane w **aprowizacji** kartę. Jeśli Inicjowanie obsługi administracyjnej grupy jest włączona, należy przejrzeć mapowania atrybutów, aby upewnić się, że odpowiednie pole jest on używany do dopasowywania "ID". Pasujące identyfikator może być wyświetlana nazwy albo aliasu e-mail. Grupy i jej elementów członkowskich nie są udostępnione, jeśli właściwość dopasowania jest pusty lub nie jest wypełnione dla grupy w usłudze Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Synchronizacja programu Azure AD Connect: opis Aprowizacja Deklaratywna](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)
+[Synchronizacja programu Azure AD Connect: Opis Aprowizacja Deklaratywna](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

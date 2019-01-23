@@ -4,7 +4,7 @@ description: Wybierz, które rozwiązanie serwera proxy jest przydatna, jeśli w
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,16 +15,16 @@ ms.date: 07/27/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c4ecb812156eae7402065cff4dc4bae3aef1554b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1517fedd4b4f8d46b0c7367fa4c1319325818b08
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365179"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461353"
 ---
 # <a name="compare-remote-access-solutions"></a>Porównanie rozwiązań dostępu zdalnego
 
-Usługa Azure Active Directory serwera Proxy aplikacji jest jednym z dwóch rozwiązań dostępu zdalnego, które firma Microsoft oferuje. Druga to Proxy aplikacji sieci Web, — lokalną wersją. Te dwa rozwiązania zastąpienia starszych produktów, które oferowane przez firmy Microsoft: Microsoft Forefront Threat Management bramy (TMG) i ujednolicone dostępu do bramy (UAG). Użyj w tym artykule, aby zrozumieć, jak te cztery rozwiązania wypadają w porównaniu do siebie nawzajem. Dla osób, które nadal przy użyciu przestarzałe rozwiązania serwera TMG lub UAG należy użyć w tym artykule do zaplanowania migracji do jednego serwera Proxy aplikacji. 
+Usługa Azure Active Directory serwera Proxy aplikacji jest jednym z dwóch rozwiązań dostępu zdalnego, które firma Microsoft oferuje. Druga to Proxy aplikacji sieci Web, — lokalną wersją. Te dwa rozwiązania Zastąp starszych produktów, które oferowane przez firmy Microsoft: Microsoft Forefront Threat Management Gateway (TMG) i jednolity dostęp do bramy (UAG). Użyj w tym artykule, aby zrozumieć, jak te cztery rozwiązania wypadają w porównaniu do siebie nawzajem. Dla osób, które nadal przy użyciu przestarzałe rozwiązania serwera TMG lub UAG należy użyć w tym artykule do zaplanowania migracji do jednego serwera Proxy aplikacji. 
 
 
 ## <a name="feature-comparison"></a>Porównanie funkcji

@@ -4,7 +4,7 @@ description: Wyświetla listę atrybutów, które są synchronizowane z usługą
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 08633b52e6b7cfef28635925ad9fcf34e065e9bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 30ed7ff2026c64c7e40d43597a2747f1144ae125
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251802"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468627"
 ---
-# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: atrybuty synchronizowane z usługą Azure Active Directory
+# <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: Atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez program Azure AD Connect sync.  
 Atrybuty są pogrupowane według pokrewne usługi Azure AD aplikacji.
 
@@ -46,7 +46,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | atrybuty objectSID |X |tych właściwości. Usługi AD identyfikator użytkownika, używany w celu zachowania synchronizacji między platformą Azure AD i AD. |
 | pwdLastSet |X |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
 | sourceAnchor |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| Element usageLocation |X |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="exchange-online"></a>Exchange Online
@@ -61,7 +61,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | co |X |X | | |
 | Firmy |X |X | | |
 | countryCode |X |X | | |
-| Dział |X |X | | |
+| department |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -164,10 +164,10 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto usługa |X |X | | |
+| thumbnailphoto |X |X | | |
 | tytuł |X |X | | |
 | unauthOrig |X |X |X | |
-| Element usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userCertificate |X |X | | |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 | userSMIMECertificates |X |X | | |
@@ -183,7 +183,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | co |X |X | | |
 | Firmy |X |X | | |
 | countryCode |X |X | | |
-| Dział |X |X | | |
+| department |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | dLMemRejectPerms |X |X |X | |
@@ -247,11 +247,11 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto usługa |X |X | | |
+| thumbnailphoto |X |X | | |
 | tytuł |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
-| Element usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 | wWWHomePage |X |X | | |
 
@@ -263,7 +263,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | cn |X | |X | |
 | co |X |X | | |
 | Firmy |X |X | | |
-| Dział |X |X | | |
+| department |X |X | | |
 | description |X |X |X | |
 | displayName |X |X |X | |
 | facsimiletelephonenumber |X |X |X | |
@@ -298,9 +298,9 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | St |X |X | | |
 | Adres |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto usługa |X |X | | |
+| thumbnailphoto |X |X | | |
 | tytuł |X |X | | |
-| Element usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 | wWWHomePage |X |X | | |
 
@@ -317,7 +317,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. |
 | securityEnabled | | |X |Pochodną groupType. |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| Element usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Ta nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="intune"></a>Usługa Intune
@@ -336,7 +336,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
 | securityEnabled | | |X |Pochodną groupType |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| Element usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="dynamics-crm"></a>Dynamics CRM
@@ -369,7 +369,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | Adres |X |X | | |
 | telephoneNumber |X |X | | |
 | tytuł |X |X | | |
-| Element usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="3rd-party-applications"></a>3 aplikacje innych firm
@@ -395,7 +395,7 @@ Ta grupa jest zestaw atrybutów, których można użyć, jeśli katalog usługi 
 | pwdLastSet |X | | |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
 | numery seryjne |X |X | | |
 | sourceAnchor |X |X |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
-| Element usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
+| usageLocation |X | | |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X | | |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |
 
 ## <a name="windows-10"></a>Windows 10
@@ -431,8 +431,8 @@ Te atrybuty będą zwrotnie zapisywane z usługi Azure AD w usłudze Active Dire
 | msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |X | | |Filtrowanie: Zapisuje z powrotem filtrowanie lokalnych i danych online nadawcy bezpieczne i zablokowane od klientów. |
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Filtrowanie: Zapisuje z powrotem filtrowanie lokalnych i danych online nadawcy bezpieczne i zablokowane od klientów. |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Filtrowanie: Zapisuje z powrotem filtrowanie lokalnych i danych online nadawcy bezpieczne i zablokowane od klientów. |
-| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Włącz Unified Messaging (UM) — Poczta głosowa Online: używany przez program Microsoft Lync Server integracji w celu wskazania Lync Server w środowisku lokalnym czy użytkownik ma poczta głosowa w usługach online. |
-| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Wstrzymanie postępowań prawnych: Usługi w chmurze pozwala określić, którzy użytkownicy znajdują się pod przechowywania postępowań prawnych. |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Włącz Unified Messaging (UM) — Poczta głosowa Online: Używane przez program Microsoft Lync Server integracji w celu wskazania Lync Server w środowisku lokalnym czy użytkownik ma poczta głosowa w usługach online. |
+| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Wstrzymanie postępowań prawnych: Włącza usługi cloud services do ustalania użytkowników w ramach postępowań prawnych przechowywania. |
 | proxyAddresses| proxyAddresses |X |X |X |Tylko x500 adresu z usługi Exchange Online zostanie wstawiona. |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |Umożliwia pocztową usługi Exchange Online, należy przyznać prawa SendOnBehalfTo użytkownikom ze skrzynki pocztowej programu Exchange w środowisku lokalnym. Wymaga usługi Azure AD Connect kompilacji 1.1.552.0 lub po. |
 
@@ -458,14 +458,14 @@ Obiekty urządzeń są tworzone w usłudze Active Directory. Te obiekty mogą by
 | dn |X | |
 | msDS-CloudAnchor |X | |
 | msDS-DeviceID |X | |
-| atrybut msDS-DeviceObjectVersion |X | |
+| msDS-DeviceObjectVersion |X | |
 | msDS-DeviceOSType |X | |
-| atrybut msDS-DeviceOSVersion |X | |
-| atrybut msDS-DevicePhysicalIDs |X | |
+| msDS-DeviceOSVersion |X | |
+| msDS-DevicePhysicalIDs |X | |
 | msDS-KeyCredentialLink |X |Tylko w przypadku systemu Windows Server 2016 AD schematu |
 | msDS-IsCompliant |X | |
 | msDS-IsEnabled |X | |
-| ismanaged — msDS |X | |
+| msDS-IsManaged |X | |
 | msDS-RegisteredOwner |X | |
 
 ## <a name="notes"></a>Uwagi

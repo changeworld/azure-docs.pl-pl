@@ -3,19 +3,19 @@ title: Użyj Centrum zdarzeń z aplikacji platformy Apache Kafka — usługa Azu
 description: Ten artykuł zawiera informacje na temat obsługi platformy Apache Kafka w usłudze Azure Event Hubs.
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: shvija
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 1c484b6418fd5a453713bc464fff690ef444f109
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 8bf381e7c66e06bbaa140ed865f0f7c9b4f001af
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091190"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452347"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Za pomocą usługi Azure Event Hubs z poziomu aplikacji platformy Apache Kafka
 Usługa Event Hubs zapewnia punktu końcowego platformy Kafka, który może być używany przez istniejącą platformy Kafka na podstawie aplikacji zamiast uruchamiania klastra Kafka. Usługa Event Hubs obsługuje [protokołu platformy Apache Kafka w wersji 1.0 lub nowszy](https://kafka.apache.org/documentation/)i współpracuje z istniejącymi aplikacjami platformy Kafka, w tym narzędzia MirrorMaker.  
@@ -31,7 +31,7 @@ Koncepcyjnie Kafka i usługi Event Hubs są niemal identyczne: są obydwa dzienn
 | Koncepcja platformy Kafka | Koncepcja centrów zdarzeń|
 | --- | --- |
 | Klaster | Przestrzeń nazw |
-| Temat | Event Hubs |
+| Temat | Centrum zdarzeń |
 | Partycja | Partycja|
 | Grupa konsumentów | Grupa konsumentów |
 | Przesunięcie | Przesunięcie|
@@ -76,6 +76,4 @@ W tym artykule podano zapoznać się z wprowadzeniem do usługi Event Hubs dla p
 - [Łączenie biblioteki Akka Streams z centrum zdarzeń z obsługą platformy Kafka](event-hubs-kafka-akka-streams-tutorial.md)
 - [Eksplorowanie przykładów w witrynie GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
 
- 
- 
 

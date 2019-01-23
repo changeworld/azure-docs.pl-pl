@@ -4,7 +4,7 @@ description: Zidentyfikuj, jakie wymagania są wymagane do zsynchronizowania wsz
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 0a7d0b69df4610f85791da82b9d2e15a363a844c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ad14e443f7176a0acb2da3529348fba452f76dee
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313908"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477961"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Określić wymagania dotyczące synchronizacji katalogu
 Synchronizacja jest udostępnianie użytkownikom tożsamość w chmurze, na podstawie ich tożsamości w środowisku lokalnym. Czy używają zsynchronizowane konta do uwierzytelniania lub uwierzytelnianie federacyjne, użytkownicy nadal będą musieli miał tożsamość w chmurze.  Tej tożsamości, musisz być utrzymywane i okresowo aktualizowana.  Aktualizacje mogą mieć wiele form, od zmian tytuł do zmiany hasła.  

@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Zadania konfiguracji hybrydowej usługi Azure AD join wpis | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Zadania konfiguracji po przyłączanie do hybrydowej usługi Azure AD | Dokumentacja firmy Microsoft'
 description: Szczegóły tego dokumentu, wpis zadania konfiguracji potrzebne do ukończenia dołączenie do hybrydowej usługi Azure AD
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 31bf3c7ba2365f3fdfd6f2da1dbd1942ada1327e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999234"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475462"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Zadania pokonfiguracyjne dotyczące dołączania do hybrydowej usługi Azure AD
 
@@ -30,12 +30,12 @@ Po uruchomieniu usługi Azure AD Connect, aby skonfigurować organizacji do hybr
 Zarejestruj wszystkie przyłączone do domeny urządzenia z systemem Windows 10 i Windows Server 2016 automatycznie z usługą Azure AD po zakończeniu wszystkich kroków konfiguracji. Jeśli wolisz kontrolowane wprowadzanie zamiast rejestracji automatycznej można użyć zasad grupy można selektywnie włączać lub wyłączać automatycznego wdrożenia.  Te zasady grupy należy ustawić przed uruchomieniem innych konfiguracji kroków: Azure AD
 * Utwórz obiekt zasad grupy w usłudze Active Directory.
 * Nazwij ją (dołączenie do ex hybrydowej usługi Azure AD).
-* Edytuj & Przejdź do: Konfiguracja komputera > zasady > Szablony administracyjne > składniki Windows > Rejestracja urządzeń w usłudze.
+* Edytuj & Przejdź do:  Konfiguracja komputera > zasady > Szablony administracyjne > składniki Windows > Rejestracja urządzeń w usłudze.
 
 >[!NOTE]
 >Dla 2012R2 ustawienia zasad są w **Konfiguracja komputera > zasady > Szablony administracyjne > składniki Windows > Dołączanie > automatycznie sprzężenia klienta komputerów w miejscu pracy**
 
-* To ustawienie: rejestrowanie komputerów przyłączonych do domeny jako urządzenia.
+* To ustawienie:  Komputery przyłączone do domeny należy zarejestrować jako urządzenia.
 * Zastosowanie, a następnie kliknij przycisk OK.
 * Połącz obiekt zasad grupy do lokalizacji wybranej (jednostki organizacyjnej, zabezpieczeń grupy, lub do domeny na wszystkich urządzeniach).
 
@@ -69,7 +69,7 @@ Jeśli Twoja organizacja korzysta z synchronizacji skrótów haseł lub uwierzyt
 Aby zarejestrować urządzenia niskiego poziomu Windows, należy się upewnić, że zasady usługi Azure AD umożliwia użytkownikom rejestrowanie urządzeń. 
 
 * Zaloguj się do swojego konta w witrynie Azure portal.
-* Przejdź do: Usługa Azure Active Directory > urządzeń > Ustawienia urządzenia
+* Przejdź do strony:  Usługa Azure Active Directory > urządzeń > Ustawienia urządzenia
 * Ustaw "Użytkownicy mogą rejestrować swoje urządzenia z usługą Azure AD" do wszystkich.
 * Klikanie pozycji Zapisz.
 
@@ -87,8 +87,8 @@ Ten Instalator jest utworzenie zaplanowanego zadania w systemie urządzenia, kt�
 
 * Utwórz obiekt zasad grupy w usłudze Active Directory — Jeśli nie został jeszcze utworzony.
 * Nazwij ją (dołączenie do ex hybrydowej usługi Azure AD).
-* Edytuj & Przejdź do: Konfiguracja komputera > zasady > Szablony administracyjne > składniki Windows > Rejestracja urządzeń
-* Włącz: Rejestrowanie komputerów przyłączonych do domeny jako urządzenia
+* Edytuj & Przejdź do:  Konfiguracja komputera > zasady > Szablony administracyjne > składniki Windows > Rejestracja urządzeń
+* Włącz:  Rejestrowanie komputerów przyłączonych do domeny jako urządzenia
 * Zastosowanie, a następnie kliknij przycisk OK.
 * Połącz obiekt zasad grupy do lokalizacji wybranej (jednostki organizacyjnej, zabezpieczeń grupy, lub do domeny na wszystkich urządzeniach).
 

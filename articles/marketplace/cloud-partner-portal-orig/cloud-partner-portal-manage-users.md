@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d24cf56a898a4f4f8317246cbc2317e926256a77
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 56c646c2ab1f733c37a20cf6e6a5945b223beec4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810501"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447279"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>Zarządzanie użytkownikami w portalu cloud partner
 ======================================
@@ -36,20 +36,20 @@ Aby **dodawać użytkowników i przypisywać role** do opublikowania oferty, wyk
 <a name="step-2-click-add-user"></a>Krok 2. Kliknij przycisk Dodaj użytkownika.
 -----------------------
 
-![Wybierz Adducer](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
+![Wybieranie pozycji Dodaj użytkownika](./media/cloud-partner-portal-how-to-manage-users/adduser.png)
 
 <a name="step-3-type-email-address-and-select-a-role-assignment"></a>Krok 3. Wpisz adres e-mail, a następnie wybierz przypisanie roli.
 --------------------------------------------------------
 
 Można dodać nowego użytkownika jako "właściciel" lub "Współautor".
 
-**Adres e-mail**: Dodaj adresy e-mail współpracowników, którzy będzie pracował nad publikowanie oferty. Identyfikatory organizacji i kont Microsoft (Outlook, Hotmail i na żywo) są obsługiwane.
+**adres e-mail**: Dodaj adresy e-mail współpracowników, którzy będzie pracował nad publikowanie oferty. Identyfikatory organizacji i kont Microsoft (Outlook, Hotmail i na żywo) są obsługiwane.
 
 o Dodaj "Grupa/zespołu wiadomość e-mail alias/grupy zabezpieczeń" w przypadku, gdy poszczególne pracy w przypadku oferty opuścił organizację.
 
 o upewnij się, że wiadomości e-mail podanego w portalu Cloud Partner identyfikatory są monitorowane pod kątem jakiejkolwiek korespondencji od firmy Microsoft.
 
-**Rola**: znajduje się w tabeli poniżej, aby zidentyfikować użytkownika odpowiedni typ roli.
+**Rola**: Można znaleźć w poniższej tabeli, aby zidentyfikować użytkownika odpowiedni typ roli.
 
 ![Przypisz rolę](./media/cloud-partner-portal-how-to-manage-users/assignrole.png)
 ![poziom ról](./media/cloud-partner-portal-how-to-manage-users/roleaccesslevel.png)
@@ -59,7 +59,8 @@ Obecnie tylko właściciele będą mogli kartach wypłaty platformy Azure i klie
 <a name="step-4-select-the-publisher-name-you-want-to-add-to-the-new-user-then-click-add-to-complete-user-addition"></a>Krok 4. Wybierz nazwę wydawcy, które chcesz dodać do nowego użytkownika, a następnie kliknij przycisk Dodaj, aby zakończyć operację dodawania użytkownika.
 ----------------------------------------------------------------------------------------------------------------------------
 
-> `NOTE: The ‘publisher names’ for which your email is added as an owner or contributor will show up in the drop-down list of Publisher for selection.`
+> [!NOTE]
+> "Nazwy wydawców dla których swój adres e-mail jest dodawany jako właściciela lub współautora pojawi się na liście rozwijanej wydawcy dla zaznaczenia."
 
 ![Przypisz rolę — wybierz wydawcy](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

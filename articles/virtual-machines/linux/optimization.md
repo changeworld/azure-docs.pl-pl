@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: disks
+ms.openlocfilehash: 6cccf31842825c3e4d50aa67165d19f8ac471695
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977574"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478165"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenia maszyny wirtualnej systemu Linux (VM) to łatwo zrobić z wiersza polecenia lub w portalu. Ten samouczek pokazuje, jak upewnić się, po skonfigurowaniu go w celu zoptymalizowania wydajności na platformie Microsoft Azure. Ten temat używa maszyny Wirtualnej z systemem Ubuntu Server, ale można również utworzyć maszynę wirtualną systemu Linux przy użyciu [własnych obrazów jako szablony](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -29,11 +30,11 @@ Tworzenia maszyny wirtualnej systemu Linux (VM) to łatwo zrobić z wiersza pole
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym temacie założono, masz już działającą subskrypcji platformy Azure ([bezpłatnej wersji próbnej rejestracji](https://azure.microsoft.com/pricing/free-trial/)) i już przeprowadzono aprowizację maszyny Wirtualnej w ramach subskrypcji platformy Azure. Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do subskrypcji platformy Azure za pomocą [az login](/cli/azure/reference-index#az_login) przed [Utwórz Maszynę wirtualną](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="azure-os-disk"></a>Dysk systemu operacyjnego platformy Azure
+## <a name="azure-os-disk"></a>Azure OS Disk
 Po utworzeniu maszyny Wirtualnej z systemem Linux na platformie Azure ma dwa dyski skojarzone z nią. **/ dev/sda** jest dysk systemu operacyjnego, **/dev/sdb** jest dysku tymczasowego.  Nie używaj głównego dysku systemu operacyjnego (**/dev/sda**) dla wszystkich elementów, z wyjątkiem systemu operacyjnego jest zoptymalizowana pod kątem szybkiego czasu rozruchu maszyny Wirtualnej i nie zapewnia dobrą wydajność dla obciążeń. Aby dołączyć co najmniej jeden dysk do maszyny Wirtualnej, aby pobrać trwałe i zoptymalizowane pod kątem magazynowania danych. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Dodawanie dysków dla rozmiaru i wydajności obiektów docelowych
-Zależności od rozmiaru maszyny Wirtualnej, można dołączyć do 16 dodatkowe dyski na serii A, 32 dyski na serii D i komputera 64 dyski na serii G - każdy maksymalnie 1 TB. Możesz dodać dodatkowe dyski, zgodnie z potrzebami na obszarze i wymagania dotyczące operacji We/Wy. Każdy dysk ma element docelowy wydajności z 500 operacji We/Wy dla magazynu w warstwie standardowa i do 5000 operacji We/Wy na dysku dla usługi Premium Storage.  Aby uzyskać więcej informacji na temat dysków usługi Premium Storage, zobacz [usługi Premium Storage: magazyn o wysokiej wydajności dla maszyn wirtualnych platformy Azure](../windows/premium-storage.md)
+Zależności od rozmiaru maszyny Wirtualnej, można dołączyć do 16 dodatkowe dyski na serii A, 32 dyski na serii D i komputera 64 dyski na serii G - każdy maksymalnie 1 TB. Możesz dodać dodatkowe dyski, zgodnie z potrzebami na obszarze i wymagania dotyczące operacji We/Wy. Każdy dysk ma element docelowy wydajności z 500 operacji We/Wy dla magazynu w warstwie standardowa i do 5000 operacji We/Wy na dysku dla usługi Premium Storage.  Aby uzyskać więcej informacji na temat dysków usługi Premium Storage, zobacz [usługi Premium Storage: Magazyn o wysokiej wydajności dla maszyn wirtualnych platformy Azure](../windows/premium-storage.md)
 
 Aby osiągnąć najwyższą operacje We/Wy na dysków usługi Premium Storage, gdzie ich ustawienia pamięci podręcznej zostały ustawione na **tylko do odczytu** lub **Brak**, należy wyłączyć **bariery** podczas instalowania system plików w systemie Linux. Nie ma potrzeby bariery, ponieważ operacje zapisu do dysków usługi Premium Storage kopie są trwałe dla tych ustawień pamięci podręcznej.
 
@@ -132,7 +133,7 @@ Pamiętaj, że za pomocą wszystkich dyskusji optymalizacji, potrzebnych do prze
 
 Przydatne linki do dodatkowych zasobów: 
 
-* [Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](premium-storage.md)
+* [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads (Usługa Storage w wersji Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure)](premium-storage.md)
 * [Przewodnik użytkownika agenta platformy Azure](../extensions/agent-linux.md)
 * [Optymalizacja wydajności programu MySQL na maszynach wirtualnych z systemem Linux platformy Azure](classic/optimize-mysql.md)
 * [Konfigurowanie programowej macierzy RAID w systemie Linux](configure-raid.md)

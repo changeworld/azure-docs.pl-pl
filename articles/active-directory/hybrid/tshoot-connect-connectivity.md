@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Rozwiązywanie problemów z łącznością | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Rozwiązywanie problemów z łącznością | Dokumentacja firmy Microsoft'
 description: Wyjaśnia, jak rozwiązywać problemy z łącznością w programie Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 3aa41bb5-6fcb-49da-9747-e7a3bd780e64
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5d5eee525c6f071840d186cb6bd54faf9bf2787b
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 85c60cf25cd00826df6b48ed6714a646fa44a962
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310671"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474884"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Rozwiązywanie problemów z łącznością z programem Azure AD Connect
 W tym artykule wyjaśniono, jak działa łączność między program Azure AD Connect a usługą Azure AD i jak rozwiązać problemy z łącznością. Te problemy z największym prawdopodobieństwem mogą być widoczne w środowisku przy użyciu serwera proxy.
@@ -46,7 +46,7 @@ Tych adresów URL Poniższa tabela dotyczy absolutne minimum systemu od zera, ab
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Używane do pobierania listy CRL. |
 | \*.verisign.com |HTTP/80 |Używane do pobierania listy CRL. |
-| \*. entrust.net |HTTP/80 |Używane do pobierania listy CRL dla usługi MFA. |
+| \*.entrust.net |HTTP/80 |Używane do pobierania listy CRL dla usługi MFA. |
 | \*.windows.net |HTTPS/443 |Używane do logowania do usługi Azure AD. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Używany do uwierzytelniania Wieloskładnikowego. |
 | \*.microsoftonline.com |HTTPS/443 |Umożliwia konfigurowanie katalogu usługi Azure AD i importowanie/eksportowanie danych. |

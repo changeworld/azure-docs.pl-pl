@@ -4,7 +4,7 @@ description: Włącz serwer Proxy aplikacji w witrynie Azure portal i zainstaluj
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: d382a71de34e6c1527d810b0576e518b9101cf7d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6d370f9fb7fc67c9df5e08a06de38db8e97c6fb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132758"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471909"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Serwer Proxy aplikacji i usługa Qlik Sense 
 Usługa Azure Active Directory serwera Proxy aplikacji i usługa Qlik Sense wspólnie opracowały razem upewnij się, że możesz łatwo udostępnić dostępu zdalnego we wdrożeniu usługa Qlik Sense za pomocą serwera Proxy aplikacji.  
@@ -42,7 +42,7 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 4. Wybierz **aplikacje lokalne**. 
 5.       Wypełnij wymagane pola informacji o nowej aplikacji. Użyj poniższych wskazówek, aby ustawienia: 
     - **Wewnętrzny adres URL**: Ta aplikacja powinna mieć wewnętrzny adres URL, który jest adresem URL QlikSense, sam. Na przykład **https&#58;//demo.qlikemm.com:4244** 
-    - **Metoda wstępnego uwierzytelnienia**: Azure Active Directory (zalecane, ale nie wymagane) 
+    - **Metoda wstępnego uwierzytelnienia**: Usługa Azure Active Directory (zalecane, ale nie wymagane) 
 1.       Wybierz **Dodaj** w dolnej części bloku. Aplikacja zostanie dodany, a zostanie otwarte menu skrócone. 
 2.       Wybierz z menu skrócone **przypisać użytkownika do testowania**, i Dodaj co najmniej jednego użytkownika do aplikacji. Upewnij się, że to konto testu ma dostęp do aplikacji w środowisku lokalnym. 
 3.       Wybierz **przypisać** można zapisać przypisania użytkownika testowego. 
@@ -51,15 +51,15 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 ### <a name="application-2"></a>Aplikacja #2: 
 Te same czynności jak w przypadku aplikacji nr 1, z następującymi wyjątkami: 
 
-**Krok #5**: wewnętrzny adres URL powinien być teraz do adresu URL QlikSense port uwierzytelniania używany przez aplikację. Wartość domyślna to **4244** dla protokołu HTTPS i 4248 dla protokołu HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br>**Krok #10:** nie skonfigurować logowanie Jednokrotne i pozostawić **logowanie jednokrotne wyłączone** 
-
+**Krok #5**: Wewnętrzny adres URL powinien być teraz do adresu URL QlikSense port uwierzytelniania używany przez aplikację. Wartość domyślna to **4244** dla protokołu HTTPS i 4248 dla protokołu HTTP. Ex: **https&#58;//demo.qlik.com:4244**</br></br> 
+**Krok #10** Nie skonfigurować logowanie Jednokrotne i pozostawić **logowanie jednokrotne wyłączone**
  
  
 ## <a name="testing"></a>Testowanie 
 Twoja aplikacja jest teraz gotowe do testu. Dostęp do zewnętrznego adresu URL używany do publikowania QlikSense w aplikacji nr 1, a następnie zaloguj się jako użytkownik przypisany do obydwu aplikacji.  
 
 ## <a name="additional-references"></a>Dodatkowa dokumentacja
-Więcej informacji na temat publikowania usługa Qlik Sense przy użyciu serwera Proxy aplikacji można znaleźć w artykule społeczności Qlik: [usługi Azure AD przy użyciu zintegrowanego uwierzytelniania Windows przy użyciu ograniczonego delegowania protokołu Kerberos za pomocą usługa Qlik Sense](https://community.qlik.com/docs/DOC-20183).
+Więcej informacji na temat publikowania usługa Qlik Sense przy użyciu serwera Proxy aplikacji można znaleźć w artykule społeczności Qlik: [Usługa Azure AD przy użyciu zintegrowanego uwierzytelniania Windows przy użyciu ograniczonego delegowania protokołu Kerberos za pomocą usługa Qlik Sense](https://community.qlik.com/docs/DOC-20183).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

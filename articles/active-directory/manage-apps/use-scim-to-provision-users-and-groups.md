@@ -4,7 +4,7 @@ description: Usługa Azure Active Directory automatycznie aprowizować użytkown
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 04287d286aed872a2b951c47e0f67a93bd19c7b3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 13491b10096e651b40a83e072057250e856d4ef1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583480"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469538"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -467,7 +467,7 @@ Poniższa ilustracja przedstawia komunikatów usługi Azure Active Directory i w
    * Parametry. AlternateFilters.ElementAt(0). AttributePath: "externalId"
    * Parametry. AlternateFilters.ElementAt(0). OperatorPorównania: ComparisonOperator.Equals
    * Parametry. AlternateFilter.ElementAt(0). ComparisonValue: "jyoung"
-   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin. Identyfikator żądania"] 
+   * correlationIdentifier: System.Net.Http.HttpRequestMessage.GetOwinEnvironment["owin.RequestId"] 
 
 2. Jeśli odpowiedzi na zapytanie do usługi sieci web dla użytkownika z externalId wartość atrybutu, który pasuje do wartości atrybut mailNickname użytkownika nie zwróci żadnych użytkowników, następnie usługi Azure Active Directory żądań, usługę aprowizacji użytkownika odpowiadającego w usłudze Azure Active Directory.  Poniżej przedstawiono przykład takiego żądania: 
 
@@ -570,13 +570,13 @@ Poniższa ilustracja przedstawia komunikatów usługi Azure Active Directory i w
    Jeśli usługa została skompilowana przy użyciu bibliotek Common Language Infrastructure obsługiwane przez firmę Microsoft do implementowania usługi Standard SCIM, żądanie jest tłumaczony na wywołanie do metody zapytania dostawcy usług. Wartość właściwości obiektu, podana jako wartość argumentu parametry są następujące: 
   
    * Parametry. AlternateFilters.Count: 2
-   * Parametry. AlternateFilters.ElementAt(x). AttributePath: „Identyfikator”
-   * Parametry. AlternateFilters.ElementAt(x). OperatorPorównania: ComparisonOperator.Equals
+   * parameters.AlternateFilters.ElementAt(x).AttributePath: „Identyfikator”
+   * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
    * Parametry. AlternateFilter.ElementAt(x). ComparisonValue:  "54D382A4-2050-4C03-94D1-E769F1D15682"
    * parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
    * Parametry. AlternateFilters.ElementAt(y). OperatorPorównania: ComparisonOperator.Equals
    * Parametry. AlternateFilter.ElementAt(y). ComparisonValue:  "2819c223-7f76-453a-919d-413861904646"
-   * Parametry. RequestedAttributePaths.ElementAt(0): „Identyfikator”
+   * parameters.RequestedAttributePaths.ElementAt(0): „Identyfikator”
    * Parametry. SchemaIdentifier: "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
    W tym miejscu wartość indeksu x może mieć wartość 0 i wartość y indeks może być 1, lub wartość x może mieć wartość 1 i wartość y, może być 0, w zależności od kolejności wyrażeń parametr zapytania filtru.   
@@ -695,7 +695,7 @@ Poniższa ilustracja przedstawia komunikatów usługi Azure Active Directory i w
    * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Path.AttributePath: "manager"
    * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.Count: 1
    * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Odwołanie: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
-   * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Wartość: 2819c223-7f76-453A-919d-413861904646
+   * (PatchRequest jako PatchRequest2). Operations.ElementAt(0). Value.ElementAt(0). Wartość: 2819c223-7f76-453a-919d-413861904646
 
 6. Aby anulować aprowizację użytkowników z magazynu tożsamości przez usługi Standard SCIM, usługi Azure AD wysyła żądanie takich jak: 
 

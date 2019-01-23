@@ -2,17 +2,17 @@
 title: Pojęcia dotyczące usługi Azure Event Grid
 description: Opis usługi Azure Event Grid i pojęć z nią związanych. Definiuje kilka najważniejszych składników usługi Event Grid.
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: tomfitz
-ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.author: spelluru
+ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747562"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474357"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Pojęcia dotyczące usługi Azure Event Grid
 
@@ -62,7 +62,7 @@ Aby dowiedzieć się, jak pobieranie bieżącego zdarzenia subskrypcji siatki, z
 
 [Rozszerzenia usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla wiersza polecenia platformy Azure pozwala na ustawienie wygaśnięcia daty podczas tworzenia subskrypcji zdarzeń. Jeśli korzystasz z interfejsu API REST, należy użyć `api-version=2018-09-15-preview`
 
-Subskrypcja zdarzeń jest automatycznie wygaszane po tej dacie. Ustawienia okresu ważności subskrypcji zdarzeń, które są wymagane tylko przez ograniczony czas, a nie chcesz martwić się o czyszczenia tych subskrypcjach. Na przykład podczas tworzenia subskrypcji zdarzeń, aby przetestować scenariusz, możesz chcieć ustawienia okresu ważności. 
+Subskrypcja zdarzeń automatycznie wygaśnie po tej dacie. Ustawienia okresu ważności subskrypcji zdarzeń, które są wymagane tylko przez ograniczony czas, a nie chcesz martwić się o czyszczenia tych subskrypcjach. Na przykład podczas tworzenia subskrypcji zdarzeń, aby przetestować scenariusz, możesz chcieć ustawienia okresu ważności. 
 
 Na przykład ustawienia wygaśnięcia, zobacz [subskrypcji z zaawansowanych filtrów](how-to-filter-events.md#subscribe-with-advanced-filters).
 

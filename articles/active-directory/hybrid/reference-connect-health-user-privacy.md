@@ -4,7 +4,7 @@ description: W tym dokumencie opisano rozwiązania prywatność użytkownika za 
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: 7d3f625524161703b7be822c1db0fd5b21030dca
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bda199e5affb2ffad7285eb6e55ed18b46f92801
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312277"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477944"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Prywatność użytkownika i program Azure AD Connect Health 
 

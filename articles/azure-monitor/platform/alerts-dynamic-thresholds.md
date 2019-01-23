@@ -8,96 +8,75 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: df75ff9a359620781743732f4f12a6d3e7ec51c6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 4024ecddde4b0d020e2c657214a4a258ea0b2ea5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331678"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449014"
 ---
-# <a name="alerts-with-dynamic-thresholds-in-azure-monitor-limited-private-preview"></a>Alerty z dynamicznymi progami w usłudze Azure Monitor (ograniczony prywatna wersja zapoznawcza)
+# <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Alerty metryk z dynamicznymi progami w usłudze Azure Monitor (publiczna wersja zapoznawcza)
 
-Alerty z dynamicznymi progami stanowią rozszerzenie alerty metryki platformy Azure w usłudze Azure Monitor, który korzystać z zaawansowanych możliwości Machine Learning (ML), aby dowiedzieć się więcej metryki historycznych zachowanie, aby automatycznie obliczyć linii bazowych i używać ich jako progi alertów.
+Alert dotyczący metryki z dynamicznymi progami wykrywania korzysta z zaawansowanych (ML), aby dowiedzieć się zachowanie historyczne metryk, zidentyfikować wzorce i anomalie, które wskazują na problemy możliwe usługi uczenia maszynowego. Zapewnia obsługę zarówno prostego interfejsu użytkownika, jak i operacji na dużą skalę, pozwalając użytkownikom na konfigurowanie reguł alertów za pośrednictwem interfejsu API usługi Azure Resource Manager, w pełni zautomatyzowany sposób.
 
-Korzyści z używania dynamicznymi progami są:
+Po utworzeniu reguły alertu jego uruchomienie nastąpi tylko, gdy monitorowane metryki nie działa zgodnie z oczekiwaniami, na podstawie jego progów dostosowanych do potrzeb.
 
-- Zapisz trudności związanych ze skomplikowanymi skojarzone z ustawienia wstępnie zdefiniowanych granic sztywne, ponieważ monitor uczy się wydajność historycznych metryki i automatycznie stosuje algorytmów uczenia Maszynowego, aby określić progi alertów.
-- Identyfikują one sezonowych zachowanie i alertu tylko o odchyleniach od oczekiwanego zachowania sezonowym. Alerty metryk z dynamicznymi progami nie spowodują uruchomienia, jeśli usługa jest regularnie bezczynności w weekendy, a następnie gwałtowne wzrosty w każdy poniedziałek. Obecnie obsługiwane: sezonowości co godzinę, codziennie i co tydzień.
-- Ciągle uczy się metryki wydajności i jest adaptacyjne metryki zmian.
+Chętnie poznamy Twoją opinię i zapewnić jej mieszczących się na azurealertsfeedback@microsoft.com.
 
-Alerty oparte na wartościach progowych dynamicznych dostępnych na potrzeby wszystkich monitora platformy Azure na podstawie metryki wymienione w tym źródła [artykułu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#what-resources-can-i-create-near-real-time-metric-alerts-for).
+## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Kiedy i dlaczego jest przy użyciu typu warunek dynamiczny, zaleca się?
 
-## <a name="sign-up-to-access-the-preview"></a>Utwórz konto, aby uzyskać dostęp (wersja zapoznawcza)
+1. **Skalowalna alerty** — dynamicznymi progami reguł alertów można tworzyć dostosowane progi setek serii metryki naraz. Zapewnianie jeszcze tak samo łatwe definiowania reguły alertu na jedną metrykę. Przy użyciu interfejsu użytkownika lub wyników interfejsu API usługi Azure Resource Manager w mniejszej liczby reguł alertów do zarządzania. Skalowalne podejście jest szczególnie przydatne podczas rozwiązywania problemów związanych z wymiarami metryki lub mające zastosowanie do wielu zasobów, takich jak wszystkie zasoby w subskrypcji. Co przekłada się na znaczną ilość czasu, zapisywania na zarządzanie i tworzenia reguł alertów. [Dowiedz się więcej o sposobie konfigurowania alertów metryk z dynamicznymi progami przy użyciu szablonów](alerts-metric-create-templates.md).
 
-Do wykonania tych funkcji pokrętła [Zamów wersję zapoznawczą](https://aka.ms/DynamicThresholdMetricAlerts). Zawsze, chętnie poznamy Twoją opinię, zachować, dostępne w [azurealertsfeedback@microsoft.com](mailto:azurealertsfeedback@microsoft.com)
+1. **Blokada Smart rozpoznawanie wzorców metryki** — przy użyciu unikatowej technologii uczenia Maszynowego, jesteśmy w stanie automatyczne wykrywanie wzorców metryki i reagowanie na zmiany metryk wraz z upływem czasu, co często może obejmować sezonowości (co godzinę / codziennie / co tydzień). Dostosowanie metryk zachowanie przestrzeni czasu i alertów w oparciu o odchyleniach od sposobu ich zwalnia obciążenia wiedzy "prawo" próg wszystkie metryki. Algorytm uczenia Maszynowego, używane w dynamicznymi progami podsłuchem hałas (precyzja niski) lub progów całej (wycofaniu niski), które nie ma oczekiwanego wzorca.
 
-## <a name="how-to-configure-alerts-with-dynamic-thresholds"></a>Jak skonfigurować alerty z dynamicznymi progami
+1. **Intuicyjne konfiguracji** — dynamicznymi progami umożliwia konfigurowanie alertów dotyczących metryk za pomocą szczegółowo pojęcia, pozwalające uniknąć konieczności mieć domeny obszerną wiedzę na temat metrykę.
 
-Alerty z dynamicznymi progami można skonfigurować za pomocą alertów w usłudze Azure Monitor
+## <a name="how-to-configure-alerts-rules-with-dynamic-thresholds"></a>Jak skonfigurować reguły alerty z dynamicznymi progami?
 
-![Alerty (wersja zapoznawcza)](media/alerts-dynamic-thresholds/0001.png)
+Alerty z dynamicznymi progami można skonfigurować za pomocą alertów metryk w usłudze Azure Monitor. [Dowiedz się więcej o sposobie konfigurowania alertów metryk](alerts-metric.md).
 
-## <a name="creating-an-alert-rule-with-dynamic-thresholds"></a>Tworzenie reguły alertu z dynamicznymi progami
+## <a name="how-are-the-thresholds-calculated"></a>Jak są obliczane progi
 
-1. W okienku alertów w obszarze monitorowanie wybierz **nową regułę alertu** przycisk, aby utworzyć nowego alertu na platformie Azure.
+Próg dynamiczny ciągle uczy się dane metryk serii próbuje modelu za pomocą zestawu algorytmów i metod. i próbuje go za pomocą zestawu algorytmów i metod modelu. Wykrywa wzorce w danych, takich jak sezonowość (co godzinę / codziennie / co tydzień) i będzie mogło obsłużyć generujące dużo alertów metryk (np. maszyn procesora CPU lub pamięci) oraz metryki o niskim rozproszenia (np. wskaźnik dostępności i błędów).
 
-   ![Nowa reguła alertu](media/alerts-dynamic-thresholds/002.png)
+Progi są zaznaczone w taki sposób, że odchylenie od tych progów wskazuje anomalii zachowania metryki.
 
-2. Pokazano sekcji Tworzenie reguły z trzech części, składający się z: _Zdefiniuj warunek alertu_, _Zdefiniuj szczegóły alertu_, i _zdefiniuj grupę akcji_. Najpierw zaczynają się od _Zdefiniuj warunek alertu_ sekcji użyto **Select Target** link, aby określić docelową, wybierając zasobu. Po wybraniu odpowiedni zasób, kliknij przycisk Gotowe.
+## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Co to jest ustawienie "Ważność" oznacza dynamicznymi progami?
 
-   ![Wybieranie obiektu docelowego](media/alerts-dynamic-thresholds/0003.png)
+Czułość próg alertu jest koncepcja wysokiego poziomu, który kontroluje ilość odchylenie od zachowania metryki wymaganym do wyzwolenia alertu.
+Ta opcja nie wymaga domeny wiedzę na temat metryk, takich jak statyczny próg. Dostępne opcje:
 
-3. Dalej używać **Dodaj kryteria** przycisk, aby wyświetlić listę sygnałów dostępnymi dla zasobu, a z listy sygnału wybierz odpowiednią **metryki** opcji. (Na przykład procentowe użycie procesora CPU.)
+- Wysoki — progów będzie obraz blisko wzorzec serii metryki. Reguła alertu zostanie wyzwolone na najmniejszą odchylenie, co większej liczby alertów.
+- Średni — mniej progi ścisłej i zrównoważonego alerty mniej niż Wysoka czułość (ustawienie domyślne).
+- Niska — progów będzie luźne za pomocą więcej odległości od wzorca serii metryki. Reguła alertu wyzwoli się tylko na duże odchylenia, co mniej alertów.
 
-   ![Dodaj kryteria](media/alerts-dynamic-thresholds/004.png)
+## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>Jakie są opcje ustawienia 'Operator' w dynamicznymi progami?
 
-4. Na ekranie Konfigurowanie logiki sygnału w sekcji Alert logic masz opcję przełączania warunku dla typu dynamicznego, które automatycznie wygeneruje dynamiczne progi (czerwone linie) obok metryki (niebieska linia).
+Dynamicznymi progami, który może utworzyć regułę alertów dostosować progi na podstawie zachowania metryki wielkich i dolne granice przy użyciu tego samego reguły alertu.
+Można wybrać alertu dla jednej z trzech następujących warunków:
 
-   ![Dynamiczny](media/alerts-dynamic-thresholds/005.png)
+- Większy niż próg górny lub mniejsza niż niższa wartość progową (ustawienie domyślne)
+- Większa niż górny próg
+- Mniejsza niż niższa wartość progową.
 
-5. Wartości progowe na wykresie są obliczane na podstawie na ostatnich siedmiu dni dla danych historycznych, po utworzeniu alertu dynamicznymi progami uzyska dostęp do dodatkowych danych historycznych, który jest dostępny i stale dowiesz się, na podstawie nowych danych bardziej precyzyjne progów.
+## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Zaawansowane ustawienia w oznaczają dynamicznymi progami co zrobić?
 
-6. Ustawienia dodatkową logikę alertów:
-   - Warunek — możesz wybrać alertu dla jednej z trzech następujących warunków:
-       - Większy niż próg górny lub mniejsza niż niższa wartość progową (ustawienie domyślne)
-       - Większa niż górny próg
-       - Mniejsza niż niższa wartość progową.
-   - Agregacja czasu: Średni (domyślnie), sum, min, max.
-   - Czułość alertów:
-       - Wysoki — więcej alertów, ponieważ alert zostanie wyzwolony na najmniejszą odchylenia.
-       - MED — mniej wrażliwych niż wysoki, alerty mniej niż Wysoka czułość (ustawienie domyślne)
-       - Niska — próg wskazującą najmniejszą ważność.
+**Niepowodzenie okresy** -dynamicznymi progami umożliwia również skonfigurowanie "Liczba naruszeń wyzwalających alert", minimalna liczba odchyleń wymagane w niektórych przedziale czasu dla systemu, aby zgłosić alert (domyślny przedział czasu to cztery odchylenia 20 minut). Użytkownik może skonfigurować w przypadku braku kropki i wybierz, co chcesz otrzymywać alerty o, zmieniając okresy niepowodzeniem i przedziału czasu. Ta możliwość powoduje zmniejszenie liczby niepotrzebnych alertów generowanych przez przejściowe skoki. Na przykład:
 
-    ![Ustawienia logika alertu](media/alerts-dynamic-thresholds/00007.png)
+Aby wyzwolić alert, gdy problem polega na ciągłym na 20 minut, 4 razy pod rząd w danym grupowaniu okresu, wynoszącą 5 minut, użyj następujących ustawień:
 
-7. Obliczane na podstawie:
-    -  Jakie czas trwania alertu należy szukać określony warunek, wybierając z **okres**.
+![Kończy się niepowodzeniem ustawienia okresy ciągłe problemu na 20 minut, 4 razy pod rząd w danym grupowaniu okresu, 5 minut](media/alerts-dynamic-thresholds/0008.png)
 
-    ![Oceniono na podstawie](media/alerts-dynamic-thresholds/007.png)
+Aby wyzwolić alert podczas naruszenie z dynamicznymi progami w ciągu 20 minut z ostatnich 30 minut od okresu 5 minut, użyj następujących ustawień:
 
-   > [!NOTE]
-   > Obsługiwane wartości okresu: 5 minut, 10 minut, 30 minut do 1 godziny.
+![Niepowodzenie okresy ustawienia problemu przez 20 minut z ostatnich 30 minut przy użyciu grupowania okresu 5 minut](media/alerts-dynamic-thresholds/0009.png)
 
-   Do ograniczenia liczby niepotrzebnych alertów generowanych przez przejściowe skoki, zaleca się za pomocą ustawień "Liczba naruszeń wyzwalających alert". Ta funkcja umożliwia alert zostanie wygenerowany tylko wtedy, gdy próg został naruszony, zwiększyłaby X razy pod rząd lub razy Y z ostatnich okresów Z. Na przykład:
+**Ignoruj dane przed** — użytkownicy mogą również opcjonalnie określić datę rozpoczęcia, z której system powinien się zacząć obliczanie wartości progowe z. Typowym przypadkiem użycia może wystąpić, gdy zasób został uruchomiony w trybie tworzenia testowania i teraz jest promowany do obsługi obciążeń produkcyjnych i w związku z tym zachowaniem dowolnej metryce podczas fazy testowania powinien zostać pominięty.
 
-    Aby wyzwolić alert, gdy problem jest ciągły przez 15 minut, 3 razy pod rząd w danym okresie 5 minut, użyj następujących ustawień:
+## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Powolne działanie zmieni się w wyzwalaczu metryki alert?
 
-   ![Oceniono na podstawie](media/alerts-dynamic-thresholds/0008.png)
+Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie znaczące odchylenia, a nie wolno zmieniających się problemy.
 
-    Aby wyzwolić alert podczas naruszenie od progu dynamicznego w ciągu 15 minut z ostatnich 30 minut od okresu 5 minut, użyj następujących ustawień:
+## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Jak dużo danych jest używane do przeglądania i następnie obliczyć progi?
 
-   ![Oceniono na podstawie](media/alerts-dynamic-thresholds/0009.png)
-
-8. Obecnie użytkownicy mogą mieć alerty z kryteriami progu dynamicznego jako pojedyncze kryterium.
-
-   ![Utwórz regułę](media/alerts-dynamic-thresholds/010.png)
-
-## <a name="q--a"></a>Pytania i odpowiedzi
-
-- PYT.: Jeśli Metryka powoli zmienia się wraz z upływem czasu, to wyzwoli alert z dynamicznymi progami?
-
-- Odp.: Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie znaczące odchylenia, a nie wolno zmieniających się problemy.
-
-- PYT.: Można skonfigurować dynamicznymi progami przy użyciu interfejsu API?
-
-- Odp.: Pracujemy nad na nim.
+Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie w ciągu ostatnich 10 dni dla danych historycznych, po utworzeniu reguły alertu dynamicznymi progami spowoduje nabyć dodatkowe dane historyczne, która jest dostępna i zostanie stale Dowiedz się, na podstawie nowych danych umożliwiają bardziej precyzyjne progów.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: a26deba97d1ed61f2a6f3b54dafe9f651167ab5b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424374"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474523"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -38,7 +38,7 @@ Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być
 
 ## <a name="create-a-network-interface"></a>Utwórz interfejs sieciowy
 
-Podczas tworzenia maszyny wirtualnej przy użyciu witryny Azure portal, w portalu jest tworzony interfejs sieciowy przy użyciu ustawień domyślnych dla Ciebie. Jeśli wolisz określić wszystkie ustawienia interfejsu sieciowego, można utworzyć interfejsu sieciowego z użyciem ustawień niestandardowych i dołączyć interfejsu sieciowego do maszyny wirtualnej, podczas tworzenia maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Można również utworzyć interfejsu sieciowego i dodać go do istniejącej maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Aby dowiedzieć się, jak utworzyć maszynę wirtualną przy użyciu istniejącego interfejsu sieciowego lub dodać do lub usuwanie interfejsów sieciowych z istniejących maszyn wirtualnych, zobacz [Dodawanie lub usuwanie interfejsów sieciowych](virtual-network-network-interface-vm.md). Przed utworzeniem interfejsu sieciowego, konieczne jest posiadanie istniejące [sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network) w tej samej lokalizacji i subskrypcji można utworzyć interfejsu sieciowego w.
+Podczas tworzenia maszyny wirtualnej przy użyciu witryny Azure portal, w portalu jest tworzony interfejs sieciowy przy użyciu ustawień domyślnych dla Ciebie. Jeśli wolisz określić wszystkie ustawienia interfejsu sieciowego, można utworzyć interfejsu sieciowego z użyciem ustawień niestandardowych i dołączyć interfejsu sieciowego do maszyny wirtualnej, podczas tworzenia maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Można również utworzyć interfejsu sieciowego i dodać go do istniejącej maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Aby dowiedzieć się, jak utworzyć maszynę wirtualną przy użyciu istniejącego interfejsu sieciowego lub dodać do lub usuwanie interfejsów sieciowych z istniejących maszyn wirtualnych, zobacz [Dodawanie lub usuwanie interfejsów sieciowych](virtual-network-network-interface-vm.md). Przed utworzeniem interfejsu sieciowego, konieczne jest posiadanie istniejące [sieci wirtualnej](manage-virtual-network.md) w tej samej lokalizacji i subskrypcji można utworzyć interfejsu sieciowego w.
 
 1. W polu zawierającym tekst *Wyszukaj zasoby* w górnej części witryny Azure portal, wpisz polecenie *interfejsy sieciowe*. Gdy **interfejsy sieciowe** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz **+ Dodaj** w obszarze **interfejsy sieciowe**.
@@ -69,7 +69,7 @@ Portal nie udostępnia opcję, aby przypisać interfejs sieciowy do grup zabezpi
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Wyświetl ustawienia interfejsu sieciowego
 
@@ -158,7 +158,7 @@ Można zmienić podsieci, ale nie sieci wirtualnej, przypisana do karty sieciowe
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Dodawanie do lub usuwanie z grup zabezpieczeń aplikacji
 
-Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji przy użyciu portalu, jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby dodać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji, czy interfejs sieciowy jest podłączony do maszyny wirtualnej, czy nie. Dowiedz się więcej o [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups) oraz sposób [Tworzenie grupy zabezpieczeń aplikacji](manage-network-security-group.md#create-an-application-security-group).
+Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji przy użyciu portalu, jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby dodać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji, czy interfejs sieciowy jest podłączony do maszyny wirtualnej, czy nie. Dowiedz się więcej o [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups) oraz sposób [Tworzenie grupy zabezpieczeń aplikacji](manage-network-security-group.md).
 
 1. W *Szukaj zasobów, usług i dokumentów* w górnej części portalu, zacznij pisać nazwę maszyny wirtualnej, która ma interfejs sieciowy, który chcesz dodać do lub usuwanie z grupy zabezpieczeń aplikacji. Gdy nazwa maszyny Wirtualnej pojawi się w wynikach wyszukiwania, wybierz ją.
 2. W obszarze **USTAWIENIA** wybierz pozycję **Sieć**.  Wybierz **. Konfigurowanie grup zabezpieczeń aplikacji**, wybierz grup zabezpieczeń aplikacji, które chcesz dodać interfejsu sieciowego lub usuń zaznaczenie grupy zabezpieczeń aplikacji, które chcesz usunąć interfejs sieciowy, a następnie wybierz **Zapisz**. Tylko te interfejsy sieciowe, które istnieją w tej samej sieci wirtualnej można dodać do tej samej grupy zabezpieczeń aplikacji. Grupy zabezpieczeń aplikacji muszą istnieć w tej samej lokalizacji co interfejs sieciowy.

@@ -4,7 +4,7 @@ description: Przeznaczony dla specjalistów IT i w tym artykule zawarto wskazów
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: barbkess
 ms.custom: seohack1
-ms.openlocfilehash: 844f569b7c425f6a67acabe491508aa8d5fb00f5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: d717b9a89b2c22712821d96014e2f60ee4c0e4d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634134"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463647"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>Twórz line-of-business apps usługi Azure Active Directory
 Ten przewodnik zawiera omówienie tworzenia aplikacji usługi line-of-business (LoB) dla usługi Azure Active Directory (AD). Określonej grupy odbiorców jest administratorów globalnych usługi Active Directory/Office 365.
@@ -41,8 +41,8 @@ Rejestrowanie aplikacji zezwala każdemu użytkownikowi, wykonaj następujące c
   * Usługa Azure Active Directory co serwer autoryzacji oAuth (Zabezpieczanie interfejsu API udostępnianych przez aplikację)
 * Zgodnie z oczekiwaniami, włączając, Zadeklaruj wymagane uprawnienia niezbędne do zastosowania do funkcji:
 
-     - Uprawnienia aplikacji (tylko administratorzy globalni). Na przykład: członkostwo w roli w innej usłudze Azure AD aplikacji lub członkostwa względem zasobu, grupy zasobów platformy Azure, lub subskrypcji
-     - Delegowane uprawnienia (każdego użytkownika). Na przykład: usługi Azure AD, logowanie i Odczyt profilu
+     - Uprawnienia aplikacji (tylko administratorzy globalni). Na przykład: Członkostwo w roli w innej usłudze Azure AD aplikacji lub członkostwa względem zasobu, grupy zasobów platformy Azure, lub subskrypcji
+     - Delegowane uprawnienia (każdego użytkownika). Na przykład: Profil usługi Azure AD, logowania i odczytu
 
 > [!NOTE]
 > Domyślnie każdy członek może zarejestrować aplikację. Aby dowiedzieć się, jak ograniczyć uprawnienia do rejestrowania aplikacji określonych członków, zobacz [jak aplikacje są dodawane do usługi Azure AD](../develop/active-directory-how-applications-are-added.md#who-has-permission-to-add-applications-to-my-azure-ad-instance).

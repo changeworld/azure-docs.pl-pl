@@ -4,7 +4,7 @@ description: Omówienie łączników kartę w Menedżerze usługi synchronizacji
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 60f1d979-8e6d-4460-aaab-747fffedfc1e
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 592fcd80b80ecbd101dd559aa8baf78a60aaa517
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5c3931fd75ea8e0780b8a7b4f613c865267074c1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312627"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466823"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Za pomocą łączników za pomocą usługi Azure AD Connect synchronizacji Menedżera usług
 

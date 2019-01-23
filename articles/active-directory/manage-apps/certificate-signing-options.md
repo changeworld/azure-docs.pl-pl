@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać zaawansowanych certyfikatów podpisywani
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: e7488abb3e82f90f63fa338b84a6516202e504ec
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 368fbf52642b1353b221ce6ebe6f6c40a517c3e6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714534"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473422"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje w tokenie SAML dla aplikacji z galerii usługi Azure Active Directory podpisywania certyfikatu
 Już dzisiaj usługi Azure Active Directory (Azure AD) obsługuje tysiące wstępnie zintegrowanych aplikacji w galerii aplikacji usługi Azure Active Directory. Liczba ta obejmuje więcej niż 500 aplikacje, które obsługuje logowanie jednokrotne przy użyciu protokołu SAML 2.0. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). Następnie aplikacja sprawdza poprawność i używa tokenu logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML są podpisane za pomocą unikatowy certyfikat, który jest generowany w usłudze Azure AD i określonych standardowych algorytmów.
@@ -51,7 +51,7 @@ Usługa Azure AD obsługuje trzy opcje certyfikatów do podpisywania:
 
 Usługa Azure AD obsługuje dwa algorytmy podpisywania do podpisywania SAML odpowiedzi:
 
-* **ALGORYTM SHA-256**. Usługa Azure AD używa to domyślny algorytm używany do podpisywania odpowiedzi protokołu SAML. Algorytm najnowsze i jest traktowany jako więcej bezpieczne niż SHA-1. Większość aplikacji obsługuje algorytm SHA-256. Jeśli aplikacja obsługuje tylko algorytm SHA-1 jako algorytm podpisywania, możesz go zmienić. W przeciwnym razie firma Microsoft zaleca używanie algorytmu SHA-256 do podpisywania odpowiedzi protokołu SAML.
+* **SHA-256**. Usługa Azure AD używa to domyślny algorytm używany do podpisywania odpowiedzi protokołu SAML. Algorytm najnowsze i jest traktowany jako więcej bezpieczne niż SHA-1. Większość aplikacji obsługuje algorytm SHA-256. Jeśli aplikacja obsługuje tylko algorytm SHA-1 jako algorytm podpisywania, możesz go zmienić. W przeciwnym razie firma Microsoft zaleca używanie algorytmu SHA-256 do podpisywania odpowiedzi protokołu SAML.
 
     ![Certyfikatu SHA-256, algorytm podpisywania](./media/certificate-signing-options/saml-signing-algo-sha256.png)
 

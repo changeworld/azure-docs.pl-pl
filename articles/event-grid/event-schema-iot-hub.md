@@ -8,14 +8,14 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: df1c0f8256b49e23b720df47c513fba8c62677b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143577"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475207"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schemat zdarzeń Azure Event Grid dla Centrum IoT Hub
 
@@ -115,8 +115,8 @@ Wszystkie zdarzenia zawierają te same dane najwyższego poziomu:
 | -------- | ---- | ----------- |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | dane | obiekt | Dane zdarzeń usługi IoT Hub.  |
 | dataVersion | ciąg | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
@@ -142,20 +142,20 @@ Zawartość obiektu danych są różne dla każdego wydawcy zdarzeń. Aby uzyska
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | twin | obiekt | Informacje na temat bliźniaczej reprezentacji urządzenia, czyli represenation chmury metadanych urządzenia w aplikacji. | 
-| Identyfikator urządzenia | ciąg | Unikatowy identyfikator bliźniaczej reprezentacji urządzenia. | 
-| Element etag | ciąg | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
+| deviceID | ciąg | Unikatowy identyfikator bliźniaczej reprezentacji urządzenia. | 
+| etag | ciąg | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
 | deviceEtag| ciąg | Moduł weryfikacji dla zapewnienia spójności aktualizacji do rejestru urządzeń. Każdy deviceEtag może być unikatowy dla rejestru urządzeń. |
 | status | ciąg | Bliźniacza reprezentacja urządzenia jest włączone czy wyłączone. | 
 | statusUpdateTime | ciąg | Zaktualizuj ISO8601 sygnatura czasowa ostatniego stanu bliźniaczej reprezentacji urządzenia. |
-| Element connectionState | ciąg | Czy urządzenie jest połączone lub odłączone. | 
+| connectionState | ciąg | Czy urządzenie jest połączone lub odłączone. | 
 | lastActivityTime | ciąg | ISO8601 sygnaturę czasową ostatniej aktywności. | 
 | cloudToDeviceMessageCount | liczba całkowita | Liczba komunikatów urządzeń, wysyłane do tego urządzenia w chmurze. | 
 | Element authenticationType | ciąg | Typ uwierzytelniania używany dla tego urządzenia: albo `SAS`, `SelfSigned`, lub `CertificateAuthority`. |
 | x509Thumbprint | ciąg | Odcisk palca jest unikatową wartość dla x509 certyfikatu, często używane, można znaleźć określonego certyfikatu w magazynie certyfikatów. Odcisk palca jest generowana dynamicznie przy użyciu algorytmu SHA1, a nie istnieje fizycznie w certyfikacie. | 
 | primaryThumbprint | ciąg | Podstawowy odcisk palca dla x509 certyfikatu. |
 | secondaryThumbprint | ciąg | Pomocniczy odcisk palca dla x509 certyfikatu. | 
-| wersja | liczba całkowita | Liczba całkowita, która jest zwiększany o jeden każdy Godzina aktualizacji bliźniaczej reprezentacji. |
-| żądany | obiekt | Część właściwości, które mogą być zapisywane tylko przez serwer zaplecza aplikacji i odczytywane przez urządzenie. | 
+| version | liczba całkowita | Liczba całkowita, która jest zwiększany o jeden każdy Godzina aktualizacji bliźniaczej reprezentacji. |
+| desired | obiekt | Część właściwości, które mogą być zapisywane tylko przez serwer zaplecza aplikacji i odczytywane przez urządzenie. | 
 | zgłoszone | obiekt | Część właściwości, które mogą być zapisywane tylko przez urządzenia i odczytywane przez serwer zaplecza aplikacji. |
 | lastUpdated | ciąg | Zaktualizuj ISO8601 sygnatura czasowa ostatniej właściwości bliźniaczej reprezentacji urządzenia. | 
 

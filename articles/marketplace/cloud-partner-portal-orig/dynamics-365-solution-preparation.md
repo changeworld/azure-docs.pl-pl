@@ -1,6 +1,6 @@
 ---
 title: Przygotowywanie rozwiązania Dynamics 365 | Dokumentacja firmy Microsoft
-description: Framewrok dla packaing, instalowania i unstalling składników
+description: Umożliwiająca pakowanie, instalowanie i odinstalowywanie składników
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c1e9c831681867e6a6238159599af39cbab10b7e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2ea62a826b9f99e264cb1b2242f8d8108453d8e7
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810871"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448775"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Przygotowywanie rozwiązania Dynamics 365
 
@@ -29,7 +29,7 @@ Jeśli masz istniejące Dynamics 365 (xRM) niezależnych dostawców oprogramowan
 
 ![CRMScreenShot1](media/CRMScreenShot1.png)
 
-_**Uwaga:** w poniższym przykładzie pakietu przyjęto założenie, że nazwa rozwiązania jest "SampleSolution.zip"_
+_**Uwaga:** W poniższym przykładzie pakietu firma Microsoft jest założenie, że nazwa rozwiązania jest "SampleSolution.zip"_
 
 Jeśli masz nowe niezależnych dostawców oprogramowania, można uzyskać szczegółowe informacje na temat tworzenia rozwiązania, w tym miejscu: [https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
 

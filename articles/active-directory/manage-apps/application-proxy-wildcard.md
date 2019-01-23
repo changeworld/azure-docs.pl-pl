@@ -4,7 +4,7 @@ description: Dowiedz się, jak korzystać z symbolami wieloznacznymi aplikacji n
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 8c876f220cde99bbeb3b5d9f8f8878acb5584802
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d0b989ac7095f070c65f5f11cd8d67e3e41c9d45
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140051"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478369"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikacje z symbolami wieloznacznymi serwera proxy aplikacji usługi Azure Active Directory 
 
@@ -176,7 +176,7 @@ Konfiguracja implementuje następującą strukturę:
 
 
 
-## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scenariusz 2: Symbol wieloznaczny ogólne aplikacji, z wyjątkiem
+## <a name="scenario-2-general-wildcard-application-with-exception"></a>Scenariusz 2: Zastosowań symboli wieloznacznych ogólne, z wyjątkiem
 
 W tym scenariuszu należy ponadto trzy aplikacje ogólne innej aplikacji, `finance.adventure-works.com`, która powinna być dostępna tylko przez zespół Finanse. Za pomocą bieżącej struktury aplikacji Twoja aplikacja finansowa będzie dostępny za pośrednictwem aplikacji symboli wieloznacznych i wszyscy pracownicy. Aby to zmienić, wykluczasz aplikacji z Twojego symboli wieloznacznych, konfigurując Finanse jako oddzielną aplikację przy użyciu bardziej restrykcyjne uprawnienia.
 

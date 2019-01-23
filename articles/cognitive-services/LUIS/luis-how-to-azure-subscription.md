@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7127dad813dc4c026f8feb2840f3a3903e7a3e2c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7662d58c1686dfa4e545246eb897af134a67144c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423089"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473388"
 ---
-# <a name="using-subscription-keys-with-your-luis-app"></a>Przy użyciu kluczy subskrypcji z aplikacją usługi LUIS
+# <a name="using-subscription-keys-with-your-luis-app"></a>Używanie kluczy subskrypcji z aplikacją usługi LUIS
 
 Jest konieczne tworzenie kluczy subskrypcji do użycia zapytania bezpłatne pierwszego 1000 punkt końcowy. Gdy używane są te zapytania punktu końcowego, tworzenie zasobu platformy Azure w [witryny Azure portal](http://portal.azure.com), następnie przypisz tego zasobu z aplikacją usługi LUIS w [portal usługi LUIS](https://www.luis.ai).
 

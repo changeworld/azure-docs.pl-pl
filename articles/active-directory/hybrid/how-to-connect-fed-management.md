@@ -5,7 +5,7 @@ keywords: Usługi AD FS, ADFS, usług AD FS zarządzania, program AAD Connect, P
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: a9a7848069300d5f52d16585a55313643e02bc72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 02256c3e45d198fe35c0b3686bf4c1bc6f64c51a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244461"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463902"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Zarządzanie i dostosowywanie Active Directory Federation Services przy użyciu usługi Azure AD Connect
 W tym artykule opisano, jak zarządzanie i dostosowywanie Active Directory Federation Services (AD FS) przy użyciu usługi Azure Active Directory (Azure AD) Connect. Zawiera on również innych typowych zadań usług AD FS, które może być konieczne na pełną konfigurację farmy usług AD FS.
@@ -76,7 +76,7 @@ Zaleca się, że główna użytkownika w środowisku lokalnym i w chmurze głów
 ![Alternatywny identyfikator atrybutu zaznaczenia](./media/how-to-connect-fed-management/attributeselection.png)
 
 Konfigurowanie alternatywnego Identyfikatora logowania dla usług AD FS obejmuje dwa podstawowe kroki:
-1. **Konfigurowanie odpowiedniego zestawu wystawiania oświadczeń**: reguły wystawiania oświadczeń w uzależnionej usługi Azure AD zaufania są modyfikowane w celu użycia wybranego atrybutu UserPrincipalName jako alternatywne identyfikator użytkownika.
+1. **Konfigurowanie odpowiedniego zestawu wystawiania oświadczeń**: Reguły wystawiania oświadczeń w usłudze Azure AD zaufania jednostki uzależnionej są modyfikowane w celu użycia wybranego atrybutu UserPrincipalName jako alternatywne identyfikator użytkownika.
 2. **Włącz alternatywnego Identyfikatora logowania w konfiguracji usług AD FS**: Konfiguracja usług AD FS zostaną zmienione, tak aby usługi AD FS można wyszukać użytkowników w lasach odpowiednie, przy użyciu alternatywnego identyfikatora. Ta konfiguracja jest obsługiwana dla usług AD FS w systemie Windows Server 2012 R2 (z KB2919355) lub nowszym. Jeśli serwery usług AD FS 2012 R2, program Azure AD Connect sprawdza obecność wymagane KB. Jeśli nie zostanie wykryty KB, ostrzeżenie zostanie wyświetlony po zakończeniu konfiguracji, jak pokazano poniżej:
 
     ![Ostrzeżenie dotyczące brakuje KB na 2012 R2](./media/how-to-connect-fed-management/kbwarning.png)
@@ -227,14 +227,14 @@ Ponadto za pomocą **Dodaj** i nie **problem**, unikać dodawania wychodzących 
 
 Ta zasada definiuje flagę tymczasowy o nazwie **idflag** który jest skonfigurowany do **useguid** w przypadku nie **ms-ds-consistencyguid** wypełnione dla użytkownika. Logiki tego jest fakt, że usług AD FS nie zezwala na pusty oświadczeń. Tak, po dodaniu oświadczeń http://contoso.com/ws/2016/02/identity/claims/objectguid i http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid w zasadzie 1 na końcu **msdsconsistencyguid** oświadczenia tylko wtedy, jeśli wartość jest wypełniana dla użytkownika. Jeśli go nie jest wypełnione, usług AD FS widzi będzie zawierać wartości pustej i umieszcza go bezpośrednio. Wszystkie obiekty będą mieć **objectGuid**, więc to roszczenie zawsze będą dostępne po wykonaniu reguła 1.
 
-**Reguła 3: Wystawiania ms-ds-consistencyguid jako niemodyfikowalny identyfikator, jeśli jest obecny**
+**Reguła 3: Wystawiać ms-ds-consistencyguid jako niemodyfikowalny identyfikator, jeśli jest obecny**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
     => issue(Type = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", Value = c.Value);
 
 Jest to bezwarunkowy **istnieje** Sprawdź. Jeśli istnieje wartość oświadczenia, następnie wydać, jako identyfikator niezmienne. W poprzednim przykładzie użyto **nameidentifier** oświadczenia. Należy zmienić typ oświadczenia właściwe dla niemodyfikowalny identyfikator w danym środowisku.
 
-**Reguła 4: Wystawiania objectGuid jako niemodyfikowalny identyfikator, jeśli nie ma ms-ds-consistencyGuid**
+**Reguła 4: Wystawiać objectGuid jako niemodyfikowalny identyfikator, jeśli nie ma ms-ds-consistencyGuid**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]

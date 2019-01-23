@@ -4,7 +4,7 @@ description: W tym temacie omówiono rozwiązywanie problemów na serwerze Proxy
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 2904de3243e37d7ee575a504934d5975789c00ef
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b440965fa3acb6c08c4827dce941247b8921b98b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135070"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473473"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpią błędy podczas uzyskiwania dostępu do opublikowanej aplikacji lub publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji programu Microsoft Azure AD działa prawidłowo:
@@ -49,12 +49,12 @@ Po znalezieniu błąd łącznika z dziennika zdarzeń, użyj tej tabeli typowych
 
 | Błąd | Zalecane czynności |
 | ----- | ----------------- |
-| Rejestracja łącznika nie powiodła się: Upewnij się, włączony serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. : "Co najmniej jeden błąd." | Jeśli okno Rejestracja została zamknięta bez rejestrowania się w usłudze Azure AD, uruchom ponownie Kreatora łącznika i rejestrowanie łącznika. <br><br> Jeśli okno Rejestracja zostanie otwarty i natychmiast zamykane bez dzięki czemu możesz się zalogować, prawdopodobnie otrzymasz tego błędu. Ten błąd występuje, gdy występuje błąd sieci w Twoim systemie. Upewnij się, że jest możliwość nawiązywania połączeń z przeglądarki do publicznej witryny sieci Web i że porty są otwarte, jak to określono w [wymagania wstępne dotyczące serwera Proxy aplikacji](application-proxy-add-on-premises-application.md). |
+| Rejestracja łącznika nie powiodło się: Upewnij się, że włączono serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. Błąd: "Wystąpił co najmniej jednego błędu." | Jeśli okno Rejestracja została zamknięta bez rejestrowania się w usłudze Azure AD, uruchom ponownie Kreatora łącznika i rejestrowanie łącznika. <br><br> Jeśli okno Rejestracja zostanie otwarty i natychmiast zamykane bez dzięki czemu możesz się zalogować, prawdopodobnie otrzymasz tego błędu. Ten błąd występuje, gdy występuje błąd sieci w Twoim systemie. Upewnij się, że jest możliwość nawiązywania połączeń z przeglądarki do publicznej witryny sieci Web i że porty są otwarte, jak to określono w [wymagania wstępne dotyczące serwera Proxy aplikacji](application-proxy-add-on-premises-application.md). |
 | Wyczyść błędu są prezentowane w oknie rejestracji. Nie można kontynuować | Jeśli zostanie wyświetlony ten błąd, a następnie okno zostanie zamknięte, wprowadzono nieprawidłową nazwą użytkownika lub hasło. Spróbuj ponownie. |
-| Rejestracja łącznika nie powiodła się: Upewnij się, włączony serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. Błąd: "AADSTS50059: żadnych informacji do identyfikowania dzierżawy odnaleziony ani w żądaniu lub implikowana przez żaden podane poświadczenia i wyszukiwanie według usługi URI jednostki nie powiodła się. | Próbujesz zalogować się przy użyciu Account firmy Microsoft i nie domeny należącego do organizacji w katalogu, który próbujesz uzyskać dostęp. Upewnij się, że administrator jest częścią tej samej nazwy domeny jako domena dzierżawy, na przykład, jeśli domena usługi Azure AD to contoso.com, administratorem powinien być admin@contoso.com. |
+| Rejestracja łącznika nie powiodło się: Upewnij się, że włączono serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. Błąd: 'AADSTS50059: Żadne informacje identyfikujące dzierżawy odnaleziony ani w żądaniu lub implikowana przez żaden podane poświadczenia i wyszukiwanie według usługi URI jednostki nie powiodła się. | Próbujesz zalogować się przy użyciu Account firmy Microsoft i nie domeny należącego do organizacji w katalogu, który próbujesz uzyskać dostęp. Upewnij się, że administrator jest częścią tej samej nazwy domeny jako domena dzierżawy, na przykład, jeśli domena usługi Azure AD to contoso.com, administratorem powinien być admin@contoso.com. |
 | Nie można pobrać bieżące zasady wykonywania w uruchomionych skryptów PowerShell. | Jeśli instalacja łącznika nie powiedzie się, sprawdź, upewnij się, że zasady wykonywania programu PowerShell nie jest wyłączone. <br><br>1. Otwórz Edytor zasad grupy.<br>2. Przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >   **Program Windows PowerShell** i kliknij dwukrotnie **Włącz wykonywanie skryptu**.<br>3. Zasady wykonywania może być ustawiony na **nieskonfigurowane** lub **włączone**. Jeśli ustawiono **włączone**, upewnij się, że w obszarze Opcje, zasady wykonywania jest ustawiony na **Zezwalaj na lokalne i zdalne podpisanych skryptów** lub **zezwolić na uruchamianie wszystkich skryptów**. |
 | Łącznik nie może pobrać konfigurację. | Certyfikat klienta łącznika, który jest używany do uwierzytelniania, wygasł. Może to również nastąpić, jeśli masz zainstalowanego używasz serwera proxy łącznika. W takim przypadku łącznik nie może uzyskać dostęp do Internetu i nie będzie w stanie zapewnić aplikacje do użytkowników zdalnych. Odnowić relacji zaufania ręcznie przy użyciu `Register-AppProxyConnector` polecenia cmdlet programu Windows PowerShell. Jeśli Twój łącznik znajduje się za serwerem proxy, należy udzielić dostępu do Internetu dla konta łącznika "usługi sieciowej" i "system lokalny". Można to osiągnąć przez nadawania im praw do serwera Proxy lub zmieniając ustawienie w celu obejścia serwera proxy. |
-| Rejestracja łącznika nie powiodła się: Upewnij się, że jesteś administratorem globalnym usługi Active Directory, aby zarejestrować łącznik. Błąd: "rejestracji żądanie zostało odrzucone." | Alias, którego próbujesz się zalogować przy użyciu nie jest administratorem tej domeny. Łącznik jest zawsze instalowany w katalogu, który jest właścicielem domeny użytkownika. Upewnij się, że konto administratora, które próbujesz zarejestrować się za pomocą ma uprawnienia globalne w dzierżawie usługi Azure AD. |
+| Rejestracja łącznika nie powiodło się: Upewnij się, że jesteś administratorem globalnym usługi Active Directory, aby zarejestrować łącznik. Błąd: "Żądanie rejestracji zostało odrzucone." | Alias, którego próbujesz się zalogować przy użyciu nie jest administratorem tej domeny. Łącznik jest zawsze instalowany w katalogu, który jest właścicielem domeny użytkownika. Upewnij się, że konto administratora, które próbujesz zarejestrować się za pomocą ma uprawnienia globalne w dzierżawie usługi Azure AD. |
 
 ## <a name="kerberos-errors"></a>Błędy protokołu Kerberos
 

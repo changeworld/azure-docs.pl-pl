@@ -3,7 +3,7 @@ title: Czynniki wpływające na wydajność programu Azure AD Connect
 description: W tym dokumencie wyjaśniono, jak różne czynniki mają wpływ na program Azure AD Connect, inicjowanie obsługi administracyjnej aparatu. Poniższe zagadnienia pomogą organizacji, aby zaplanować wdrożenie ich program Azure AD Connect, aby upewnić się, że spełnia on wymagania dotyczące ich synchronizacji.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: cdca1b31f9b6cf10113dc0dba70b8f8991bafa2b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 801082164a0110178034c5fbe050ebe8e02b2772
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474136"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Czynniki wpływające na wydajność programu Azure AD Connect
 
@@ -41,7 +41,7 @@ Na poniższym diagramie przedstawiono architekturę wysokiego poziomu inicjowani
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-Aparat inicjowania obsługi administracyjnej łączy dla każdego lasu usługi Active Directory i usługą Azure AD. Proces odczytu informacji z każdego katalogu jest nazywany importu. Eksportowanie odnosi się do aktualizacji katalogi z aparatu obsługi administracyjnej. Synchronizacja ocenia reguły przepływ obiekty w aparacie inicjowania obsługi administracyjnej. Aby uzyskać bardziej zgłębić temat mogą odwoływać się do [synchronizacji programu Azure AD Connect: opis architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture).
+Aparat inicjowania obsługi administracyjnej łączy dla każdego lasu usługi Active Directory i usługą Azure AD. Proces odczytu informacji z każdego katalogu jest nazywany importu. Eksportowanie odnosi się do aktualizacji katalogi z aparatu obsługi administracyjnej. Synchronizacja ocenia reguły przepływ obiekty w aparacie inicjowania obsługi administracyjnej. Aby uzyskać bardziej zgłębić temat mogą odwoływać się do [synchronizacji programu Azure AD Connect: Omówienie architektury](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture).
 
 Program Azure AD Connect używa następujących obszarów tymczasowych, reguł i procesów do Zezwalaj na synchronizację z usługą Active Directory do usługi Azure AD:
 

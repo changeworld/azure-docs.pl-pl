@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae039573cf202059114f23cca86207c117a35ead
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 9daf0f0d1c7ca94308bfb0d894366b457a045770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970405"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470651"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Wizualizuj dane monitorowania zdalnego, za pomocą usługi Power BI
 
@@ -42,7 +42,7 @@ Ten samouczek przeprowadzi Cię jak monit o podłączenie dane rozwiązanie moni
 
 5. W panelu po lewej stronie kliknij sekcję "Klucze" i zwróć uwagę na następujące wartości do użycia w usłudze Power BI:
 
-    - Identyfikator URI
+    - URI
     - Klucz podstawowy
 
     ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
@@ -59,7 +59,7 @@ Ten samouczek przeprowadzi Cię jak monit o podłączenie dane rozwiązanie moni
   
 3. Wprowadź informacje, które zostały zarejestrowane powyżej:
 
-    * Identyfikator URI
+    * URI
     * Klucz podstawowy
 
 4. Zaznacz wszystkie tabele do zaimportowania do usługi Power BI. Ta akcja spowoduje uruchomienie ładowania danych. Już rozwiązania zostały uruchomione, tym dłużej może potrwać danych do załadowania (do kilku godzin). 
@@ -84,11 +84,11 @@ Ten samouczek przeprowadzi Cię jak monit o podłączenie dane rozwiązanie moni
 
 ## <a name="creating-a-dashboard"></a>Tworzenie pulpitu nawigacyjnego
 
-Po nawiązaniu połączenia strumienia można przystąpić do tworzenia pulpitów nawigacyjnych spersonalizowane! Pulpit nawigacyjny poniżej znajduje się przykład pobierania, które dane telemetryczne są immmited przez naszych symulowanych urządzeń i wyświetlanie różnych obracając wokół niego, takich jak: 
+Po nawiązaniu połączenia strumienia można przystąpić do tworzenia pulpitów nawigacyjnych spersonalizowane! Pulpit nawigacyjny poniżej znajduje się przykład podjęcia telemetrii jest emitowane przez naszych symulowanych urządzeń i przedstawiający różne tabele przestawne, wokół niego, takie jak: 
 
 * Lokalizacja urządzenia na mapie (po prawej)
 * Urządzenia z ich stanu i ważności. (lewo u góry)
-* Urządzenia z zasadami w miejscu, a jeśli żadne alarmy przechodzi wyłączanie dla nich (lewy dolny róg)
+* Urządzenia z zasadami w miejscu, a jeśli ma żadnych alertów przechodzi wyłączanie dla nich (lewy dolny róg)
 
 ![Wizualizacje usługi Power BI](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 

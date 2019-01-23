@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: opis konfiguracji domyślnej | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect: Opis konfiguracji domyślnej | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano domyślna konfiguracja przedstawiona w synchronizacji programu Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bd708d279649138fcb17362491da4eb7539c478b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6de48b0f4c7c69ab0c6acb4099234b853d2c1523
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313957"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478573"
 ---
-# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: opis konfiguracji domyślnej
+# <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Opis konfiguracji domyślnej
 W tym artykule wyjaśniono reguły konfiguracji out-of-box. Dokumentują reguł i wpływie na te reguły konfiguracji. On również przeprowadzi Cię przez domyślną konfigurację synchronizacji programu Azure AD Connect. Celem jest, że czytnik rozumie, jak działa model konfiguracji o nazwie aprowizacja deklaratywna w przykładzie rzeczywistych. W tym artykule założono, że masz już zainstalowany i Konfigurowanie synchronizacji usługi Azure AD Connect przy użyciu Kreatora instalacji.
 
 Aby poznać szczegóły model konfiguracji, przeczytaj [Aprowizacja Deklaratywna opis](concept-azure-ad-connect-sync-declarative-provisioning.md).
@@ -134,7 +134,7 @@ SRE jest narzędziem resource kit, który jest zainstalowany za pomocą synchron
 
 ![Reguły synchronizacji ruchu przychodzącego](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
-W tym okienku zobaczysz wszystkie reguły synchronizacji utworzone dla danej konfiguracji. Każdy wiersz w tabeli jest jedna reguła synchronizacji. Po lewej stronie w obszarze typy reguł są wyświetlane dwa różne typy: ruchu przychodzącego i wychodzącego. Przychodzące i wychodzące są z widoku obiektu metaverse. Przede wszystkim ma skoncentrować się na reguły dla ruchu przychodzącego w tym omówieniu. Właściwą listę reguł synchronizacji jest zależna od schematu wykryte w AD. Na powyższym rysunku las kont (fabrikamonline.com) nie ma żadnych usług, takich jak Exchange i usługi Lync, a żadne reguły synchronizacji zostały utworzone dla tych usług. Jednak w lesie zasobów (res.fabrikamonline.com) można znaleźć reguły synchronizacji dla tych usług. Zawartość reguły różni się zależnie od wersji wykryte. Na przykład w przypadku wdrożenia przy użyciu programu Exchange 2013 istnieją więcej przepływów atrybutów skonfigurowanych niż w 2007-Exchange 2010.
+W tym okienku zobaczysz wszystkie reguły synchronizacji utworzone dla danej konfiguracji. Każdy wiersz w tabeli jest jedna reguła synchronizacji. Po lewej stronie w obszarze typów reguł zostaną wyświetlone dwa różne typy: Dla ruchu przychodzącego i wychodzącego. Przychodzące i wychodzące są z widoku obiektu metaverse. Przede wszystkim ma skoncentrować się na reguły dla ruchu przychodzącego w tym omówieniu. Właściwą listę reguł synchronizacji jest zależna od schematu wykryte w AD. Na powyższym rysunku las kont (fabrikamonline.com) nie ma żadnych usług, takich jak Exchange i usługi Lync, a żadne reguły synchronizacji zostały utworzone dla tych usług. Jednak w lesie zasobów (res.fabrikamonline.com) można znaleźć reguły synchronizacji dla tych usług. Zawartość reguły różni się zależnie od wersji wykryte. Na przykład w przypadku wdrożenia przy użyciu programu Exchange 2013 istnieją więcej przepływów atrybutów skonfigurowanych niż w 2007-Exchange 2010.
 
 ### <a name="synchronization-rule"></a>Reguła synchronizacji
 Reguła synchronizacji jest obiekt konfiguracji z zestawem atrybutów przepływu, gdy zostanie spełniony jakiś warunek. Również służy do opisywania, jak obiektu w przestrzeni łącznika jest powiązany z obiektem w magazynie metaverse, znane jako **sprzężenia** lub **dopasowania**. Reguły synchronizacji mają pierwszeństwo przed wskazujące, jak powiązane są ze sobą. Reguła synchronizacji z niższą wartość liczbową ma wyższy priorytet i wystąpi konflikt przepływu atrybutu wyższy priorytet wins rozwiązywania konfliktów.
@@ -145,7 +145,7 @@ Ponieważ ta reguła jest regułą out-of-box, zostanie wyświetlone ostrzeżeni
 
 ![Synchronizacja ostrzeżenia reguły](./media/concept-azure-ad-connect-sync-default-configuration/warningeditrule.png)
 
-Reguła synchronizacji ma cztery sekcje konfiguracji: opis, określania zakresu filtru, reguły dołączania i przekształcenia.
+Reguła synchronizacji ma cztery sekcje konfiguracji: Opis filtru Scoping, reguły dołączania i przekształcenia.
 
 #### <a name="description"></a>Opis
 Pierwsza sekcja zawiera podstawowe informacje, takie jak nazwa i opis.
@@ -187,7 +187,7 @@ W sekcji transformacji zdefiniowano wszystkie przepływy atrybutów, które maj�
 
 Aby przełączyć tę konfigurację w kontekście we wdrożeniu lasu zasobów dla konta, oczekuje się znaleźć włączone konto w lesie konta i wyłączonych kont w lesie zasobów przy użyciu ustawień programu Exchange i usługi Lync. Reguła synchronizacji przeglądasz zawiera atrybuty wymagane do logowania i przepływu te atrybuty z lasu w przypadku, gdy jest włączone konto. Te przepływy atrybutów zostały zbudowane w ramach jednej reguły synchronizacji.
 
-Przekształcenie mogą mieć różne typy: stała, bezpośrednie i wyrażenie.
+Przekształcenie mogą mieć różne typy: Stała, bezpośrednie i wyrażenia.
 
 * Przepływ są przekazywane zawsze wartości zapisane na stałe. W przypadku powyższego zawsze ustawia wartości **True** atrybut metaverse o nazwie **accountEnabled**.
 * Bezpośrednie przepływu zawsze przepływy wartość atrybutu w źródle w atrybucie docelowym jako-to.
@@ -216,7 +216,7 @@ Teraz sprawdzono, niektóre poszczególne reguły synchronizacji, ale zasady wsp
 
 Pierwszeństwo reguły synchronizacji jest ustawiona w grupach przez Kreatora instalacji. Wszystkie reguły w grupie mają taką samą nazwę, ale są one połączone z różnymi katalogami połączonych. Kreator instalacji umożliwia reguły **w z usługi AD — użytkownik przyłączyć** najwyższy priorytet i go wykonuje iterację przez wszystkie połączone katalogów usługi AD. Następnie kontynuuje z grupami następnym reguły w kolejności wstępnie zdefiniowane. Wewnątrz grupy zasady są dodawane w kolejności, w której zostały dodane łączniki, w kreatorze. Jeśli inny łącznik został dodany za pomocą kreatora, reguły synchronizacji zostaną ponownie uporządkowane i nowy łącznik reguły są wstawiane ostatnia w każdej grupie.
 
-### <a name="putting-it-all-together"></a>Łączenie wszystkiego razem
+### <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
 Teraz wiemy wystarczająco o reguły synchronizacji, aby móc zrozumieć, jak działa Konfiguracja przy użyciu innej reguły synchronizacji. Przyjrzyj się użytkownika i atrybutów, które są przyczyniły się do środowiska metaverse, zasady są stosowane w następującej kolejności:
 
 | Name (Nazwa) | Komentarz |
@@ -236,6 +236,6 @@ Teraz wiemy wystarczająco o reguły synchronizacji, aby móc zrozumieć, jak dz
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 

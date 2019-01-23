@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 2b6cb711bf0cd2f0ec7f5633bbb36ebaeb203690
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6e21b1d8905dc0f0eda5b6282e345ef52006a75a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605538"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468033"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do zdalnego monitorowania
 
@@ -47,11 +47,11 @@ Powstała architektury chmury, ponieważ firma Microsoft wydała pierwszą akcel
 
 Rozwiązanie obejmuje następujące składniki w części łączności urządzeń logiczną architekturę:
 
-### <a name="physical-devices"></a>Urządzenia fizyczne
+### <a name="real-devices"></a>Rzeczywistych urządzeń
 
-Fizyczne urządzenia można podłączyć do rozwiązania. Możesz zaimplementować zachowanie symulowanego urządzenia za pomocą zestawów SDK urządzeń Azure IoT.
+Łączenie z rzeczywistych urządzeń, do rozwiązania. Możesz zaimplementować zachowanie symulowanego urządzenia za pomocą zestawów SDK urządzeń Azure IoT.
 
-Można udostępnić fizyczne urządzenia z poziomu pulpitu nawigacyjnego w portalu rozwiązania.
+Możesz aprowizować rzeczywistych urządzeń z poziomu pulpitu nawigacyjnego w portalu rozwiązania.
 
 ### <a name="device-simulation-microservice"></a>Mikrousługi symulacji urządzenia
 
@@ -66,7 +66,7 @@ Możesz aprowizować symulowane urządzenia z poziomu pulpitu nawigacyjnego w po
 
 ### <a name="iot-hub"></a>Usługa IoT Hub
 
-[Usługi IoT hub](../iot-hub/index.yml) pozyskuje dane telemetryczne wysyłane z fizycznych i symulowanych urządzeń do chmury. Usługa IoT hub udostępnia dane telemetryczne do usług zaplecza rozwiązania IoT dla przetwarzania.
+[Usługi IoT hub](../iot-hub/index.yml) pozyskuje dane telemetryczne wysyłane z rzeczywistych i symulowanych urządzeń do chmury. Usługa IoT hub udostępnia dane telemetryczne do usług zaplecza rozwiązania IoT dla przetwarzania.
 
 Usługa IoT Hub w rozwiązaniu wykonuje ponadto następujące czynności:
 
@@ -106,7 +106,7 @@ Usługa zapewnia punkt końcowy usługi RESTful dla operacji CRUD na parach kluc
 
 ### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Użyj wdrożenia akcelerator rozwiązań [usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) do przechowywania reguł, alarmy, ustawienia konfiguracji i wszystkie inne zimnego magazynu.
+Użyj wdrożenia akcelerator rozwiązań [usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) do przechowywania zasad, alertów, ustawienia konfiguracji i wszystkie inne zimnego magazynu.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Mikrousługi Menedżera usługi Azure Stream Analytics
 

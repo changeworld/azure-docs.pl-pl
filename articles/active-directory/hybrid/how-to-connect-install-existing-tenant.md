@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Jeśli masz już usługę Azure AD | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Jeśli masz już usługę Azure AD | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano sposób użycia Connect, jeśli masz istniejącą dzierżawę usługi Azure AD.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6425c2cd77cc32e296c75504d3fd01a5b5e583e9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f0c16a86d4e3dbe582f1471d2b94e1ec85b70b5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311885"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475923"
 ---
-# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Jeśli masz dzierżawę celowe
+# <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Program Azure AD Connect: Jeśli masz dzierżawę celowe
 Większość tematów w zakresie używania usługi Azure AD Connect przyjęto założenie, rozpoczynać się nowej usługi Azure AD dzierżawy i się, że żadni użytkownicy ani innych obiektów. Ale jeśli rozpoczęto za pomocą dzierżawy usługi Azure AD wypełnić go użytkowników i innych obiektów, a teraz chcesz użyć Connect, a następnie w tym temacie jest dla Ciebie.
 
 ## <a name="the-basics"></a>Podstawy
@@ -52,7 +52,7 @@ Jeśli spełnione obiektów przy użyciu opcji soft-match, a następnie **source
 >[!IMPORTANT]
 > Firma Microsoft zaleca się przed synchronizowanie lokalnych kont za pomocą istniejących kont administracyjnych w usłudze Azure Active Directory.
 
-### <a name="hard-match-vs-soft-match"></a>Twarde dopasowanie miękkiego programu vs
+### <a name="hard-match-vs-soft-match"></a>Hard-match vs Soft-match
 Do nowej instalacji programu Connect nie ma praktyczne różnic między soft - i twardych dopasowania. Różnica polega na w sytuacji odzyskiwania po awarii. W przypadku utraty serwera z usługą Azure AD Connect, można ponownie zainstalować nowe wystąpienie bez utraty danych. Obiekt o sourceAnchor są wysyłane do programu Connect podczas początkowej instalacji. Dopasowanie można następnie oceniany przez klienta (Azure AD Connect), który jest znacznie szybsze niż ten sam w usłudze Azure AD. Twarde dopasowanie jest oceniany zarówno przy użyciu Connect, jak i przez usługę Azure AD. Dopasowanie słabe jest oceniane tylko przez usługę Azure AD.
 
 ### <a name="other-objects-than-users"></a>Innych obiektów niż użytkownicy

@@ -4,7 +4,7 @@ description: W tym artykule omówiono błędy, które mogą wystąpić w trakcie
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 70413d3467b2f9d5591e6138ed1a7347db58264b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 362671e255f8dc36f9474fd2d4e3117e4cc0c1e4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356995"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477723"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Nieoczekiwany błąd podczas wyrażania zgody dla aplikacji
 
@@ -36,17 +36,17 @@ Określone warunki muszą być spełnione, użytkownik może wyrazić zgodę na 
 Ten błąd występuje, gdy użytkownik, który nie jest administratorem firmy podejmują próbę użycia aplikacji, która żąda uprawnienia, których może udzielić tylko administrator. Ten błąd można rozwiązać, administrator udzielanie dostępu do aplikacji w imieniu swojej organizacji.
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Zasady uniemożliwiają, udzielanie uprawnień błąd
-* **AADSTS90093:** administrator &lt;tenantDisplayName&gt; ustawił zasadę, która uniemożliwia udzielanie &lt;Nazwa aplikacji&gt; uprawnień żąda. Skontaktuj się z administratorem &lt;tenantDisplayName&gt;, kto może nadać uprawnienia do tej aplikacji w Twoim imieniu.
+* **AADSTS90093:** Administrator &lt;tenantDisplayName&gt; ustawił zasadę, która uniemożliwia udzielanie &lt;Nazwa aplikacji&gt; uprawnień żąda. Skontaktuj się z administratorem &lt;tenantDisplayName&gt;, kto może nadać uprawnienia do tej aplikacji w Twoim imieniu.
 
 Ten błąd występuje, gdy administrator firmy wyłącza możliwości użytkownikom na wyrażanie zgody dla aplikacji, a następnie próbuje użyć aplikacji, która wymaga zgody użytkownika bez uprawnień administratora. Ten błąd można rozwiązać, administrator udzielanie dostępu do aplikacji w imieniu swojej organizacji.
 
 ## <a name="intermittent-problem-error"></a>Błąd sporadyczny problem
-* **AADSTS90090:** wygląda proces logowania napotkał sporadyczny problem rejestrowanie uprawnienia próbujesz udzielić &lt;clientAppDisplayName&gt;. Spróbuj ponownie później.
+* **AADSTS90090:** Wygląda na proces logowania napotkał sporadyczny problem rejestrowanie uprawnienia próbujesz udzielić &lt;clientAppDisplayName&gt;. Spróbuj ponownie później.
 
 Ten błąd wskazuje, że wystąpił problem po stronie usługi sporadyczne. Można go rozwiązać, próbując do wyrażenia zgody na aplikację ponownie.
 
 ## <a name="resource-not-available-error"></a>Zasób błąd nie jest dostępna
-* **AADSTS65005:** aplikacji &lt;clientAppDisplayName&gt; żądane uprawnienia dostępu do zasobu &lt;resourceAppDisplayName&gt; które nie są dostępne. 
+* **AADSTS65005:** Aplikacja &lt;clientAppDisplayName&gt; żądane uprawnienia dostępu do zasobu &lt;resourceAppDisplayName&gt; które nie są dostępne. 
 
 Skontaktuj się z deweloperem aplikacji.
 
@@ -56,7 +56,7 @@ Skontaktuj się z deweloperem aplikacji.
 Upewnij się, że ten zasób jest dostępny, lub skontaktuj się z administratorem &lt;tenantDisplayName&gt;.
 
 ## <a name="permissions-mismatch-error"></a>Błąd niezgodności uprawnień
-* **AADSTS65005:** aplikacji wymagane zgody na dostęp do zasobów &lt;resourceAppDisplayName&gt;. To żądanie nie powiodło się, ponieważ nie jest zgodny, jak aplikacja została wstępnie skonfigurowane podczas rejestracji aplikacji. Skontaktuj się z aplikacji vendor.* *
+* **AADSTS65005:** Aplikacja wymagane zgody na dostęp do zasobów &lt;resourceAppDisplayName&gt;. To żądanie nie powiodło się, ponieważ nie jest zgodny, jak aplikacja została wstępnie skonfigurowane podczas rejestracji aplikacji. Skontaktuj się z aplikacji vendor.* *
 
 Te błędy, które wszystkie występują, gdy aplikacji użytkownik próbuje się do wyrażenia zgody na żąda uprawnienia dostępu do aplikacji zasobu, którego nie można znaleźć w katalogu organizacji (dzierżawa). Taka sytuacja może wystąpić z kilku powodów:
 

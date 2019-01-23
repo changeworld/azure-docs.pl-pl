@@ -4,7 +4,7 @@ description: W tym artykule omówiono dla użytkowników usługi Office 365 Rozw
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 543b7dc1-ccc9-407f-85a1-a9944c0ba1be
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 311c16ba0c6b3378fd743b77e263a5d91f8b6a37
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512efb45ee5c56cd0a10286d4156ae2d81f2f99
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237099"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464956"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Odnawianie certyfikatów Federacji dla usługi Office 365 i Azure Active Directory
 ## <a name="overview"></a>Przegląd
@@ -153,7 +153,7 @@ Z drugiej strony Jeśli **AutoCertificateRollover** jest ustawiona na **True**, 
 
 Teraz powinny zostać wyświetlone dwa certyfikaty, z których jedna ma **NotAfter** daty w przybliżeniu jednego roku i dla których **IsPrimary** wartość **False**.
 
-### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Krok 2. aktualizowanie nowego tokenu podpisywania certyfikatów dla zaufania usługi Office 365
+### <a name="step-2-update-the-new-token-signing-certificates-for-the-office-365-trust"></a>Krok 2: Aktualizowanie nowego tokenu podpisywania certyfikatów dla zaufania usługi Office 365
 Zaktualizuj usługi Office 365 przy użyciu nowego tokenu podpisywania certyfikatów do użytku z relacji zaufania w następujący sposób.
 
 1. Otwórz moduł usługi Active Directory platformy Microsoft Azure dla środowiska Windows PowerShell.

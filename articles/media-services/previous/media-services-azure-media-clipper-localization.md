@@ -1,30 +1,30 @@
 ---
-title: Konfigurowanie usługi Azure Media funkcji tworzenia wycinków lokalizacja | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat języków obsługiwanych funkcji tworzenia wycinków Azure Media i lokalizacja pomocy technicznej
+title: Konfigurowanie usługi Azure Media Clipper lokalizacji | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat usługi Azure Media Clipper obsługiwane języki i obsługi lokalizacji
 services: media-services
-keywords: klip subclip; kodowanie; nośnika
+keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: dd0fc87741befd92cc41d0129fafcbc64db7ec9e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 227a312839950652924e75f0bafb474ce7bac588
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788144"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448673"
 ---
 # <a name="configure-localization"></a>Konfigurowanie lokalizacji
-Azure Media funkcji tworzenia wycinków są dostępne w językach 18. Aby ustawić język elementu widget, należy zdefiniować `language` parametr podczas inicjowania. Podaj ciąg kodu żądany język z poniższej listy:
-- Chiński (uproszczony): zh-hans
+Usługa Azure Media Clipper jest dostępna w językach w 18. Aby ustawić język widżet, należy zdefiniować `language` parametr podczas inicjowania. Przekaż w ciągu kodu żądany język z następującej listy:
+- Chiński (uproszczony): nazwy zh-hans
 - Chiński (tradycyjny): zh-hant
 - Czeski: cs
 - Holenderski, Flemish: nl
-- Język angielski: en
+- Angielski: pl
 - Francuski: fr
-- Niemiecki: de
+- Niemiecki: Niemcy
 - Węgierski: hu
 - Włoski: go
 - Japoński: Japonia
@@ -37,7 +37,7 @@ Azure Media funkcji tworzenia wycinków są dostępne w językach 18. Aby ustawi
 - Szwedzki: sv
 - Turecki: tr
 
-Określanie niestandardowych słownika lub rozszerzyć domyślnego słownika, należy zdefiniować `languages` lub `extraLanguages` parametru odpowiednio. Przekazywanie słownika przy użyciu następującego formatu JSON:
+Określanie niestandardowego słownika lub rozszerzyć pewne domyślnego słownika, należy zdefiniować `languages` lub `extraLanguages` parametru, odpowiednio. Przekaż słownika niestandardowego przy użyciu następującego formatu JSON:
 
 ```javascript
 {
@@ -49,7 +49,7 @@ Określanie niestandardowych słownika lub rozszerzyć domyślnego słownika, na
 }
 ```
 
-Na przykład następujący przykładowy definiuje zlokalizowanych ciągów angielskiej wersji językowej:
+Na przykład poniższy przykład definiuje zlokalizowane ciągi w języku angielskim:
 
 ```javascript
 {
@@ -104,7 +104,7 @@ Na przykład następujący przykładowy definiuje zlokalizowanych ciągów angie
         'AdvancedSettings.allAudioTracks': 'All audio tracks selected',
         'AdvancedSettings.someAudioTracks': '{0} audio tracks selected',
         'AdvancedSettings.includeAllAudioTracks': 'Include all audio tracks',
-        'AssetsPanel.loadingError': 'Failed to retreive assets from server.',
+        'AssetsPanel.loadingError': 'Failed to retrieve assets from server.',
         'AssetsPanel.retry': 'Retry?',
         'CommandBar.prevFrameTitle': 'Move one frame backwards',
         'CommandBar.prevKeyFrameTitle': 'Move one GOP backwards',
@@ -139,7 +139,7 @@ Na przykład następujący przykładowy definiuje zlokalizowanych ciągów angie
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz następne kroki konfigurowania funkcji tworzenia wycinków Azure nośnika:
-- [Ładowanie zasobów do funkcji tworzenia wycinków multimediów Azure](media-services-azure-media-clipper-load-assets.md)
+Zobacz następne kroki konfigurowania usługi Azure Media Clipper:
+- [Trwa ładowanie zasobów do usługi Azure Media Clipper](media-services-azure-media-clipper-load-assets.md)
 - [Konfigurowanie niestandardowych skrótów klawiaturowych](media-services-azure-media-clipper-keyboard-shortcuts.md)
-- [Przesyłanie zadań wycinka z funkcji tworzenia wycinków](media-services-azure-media-clipper-submit-job.md)
+- [Przesyłanie zadań przycinania z Clipper](media-services-azure-media-clipper-submit-job.md)

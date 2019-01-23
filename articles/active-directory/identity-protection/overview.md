@@ -5,7 +5,7 @@ services: active-directory
 keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 75d8503e6179b8ef3578a4a8c62ef1b288657a7b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 73b76561829e6d50918881427894ea310920fce6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576820"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465208"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co to jest Azure Active Directory Identity Protection?
 
-Usługa Azure Active Directory Identity Protection to funkcja wersji Azure AD Premium P2, która pozwala na:
+Usługa Azure Active Directory Identity Protection to funkcja usługi Azure AD Premium P2, oferująca poniższe możliwości:
 
 - Wykrywanie potencjalnych luk w zabezpieczeniach wpływających na tożsamości w organizacji
 
 - Skonfigurowanie automatycznych odpowiedzi na wykryte podejrzane działania, that are related to tożsamości w organizacji  
 
-- Badanie podejrzanych zdarzeń i podejmij odpowiednią akcję, aby je rozwiązać   
+- Badanie podejrzanych zdarzeń i podejmowanie odpowiednich działań w celu rozwiązania problemów   
 
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
@@ -110,7 +110,7 @@ Ci się podróż przez ochronę tożsamości zwykle zaczyna się od pulpitu nawi
 
 ![Korygowanie](./media/overview/1000.png "korygowania")
 
-Pulpit nawigacyjny zapewnia dostęp do:
+Pulpit nawigacyjny zapewnia dostęp do następujących elementów:
 
 * Raporty takie jak **użytkownicy oflagowani w związku z ryzykiem**, **zdarzeń o podwyższonym ryzyku** i **luk w zabezpieczeniach**
 * Ustawienia, takie jak konfiguracja usługi **zasad zabezpieczeń**, **powiadomienia** i **rejestracji uwierzytelniania wieloskładnikowego**
@@ -134,7 +134,7 @@ Aby zaimplementować automatycznych odpowiedzi, Azure Active Directory Identity 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Witrynie Channel 9: Usługi Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Witryna Channel 9: Usługa Azure AD i wyświetlanie tożsamości: Identity Protection w wersji zapoznawczej](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 - [Włączanie usługi Azure Active Directory Identity Protection](enable.md)
 

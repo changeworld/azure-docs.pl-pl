@@ -1,11 +1,11 @@
 ---
-title: 'Azure AD Connect: Uwierzytelnianie przekazywane | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Uwierzytelnianie przekazywane | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD) i jak pozwala logowania usługi Azure AD, sprawdzając poprawność haseł użytkowników w usłudze Active Directory w środowisku lokalnym.
 services: active-directory
 keywords: Co to jest usługa Azure AD Connect uwierzytelniania przekazywanego, instalowanie usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 899aeeb994ca5c9bf30dfca876dff61c1ccf3ea7
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 4705690c2cf0c6e2ba3867d74d40e0678784d967
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637583"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478046"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Logowanie użytkownika przy użyciu uwierzytelniania przekazywanego usługi Azure Active Directory
 

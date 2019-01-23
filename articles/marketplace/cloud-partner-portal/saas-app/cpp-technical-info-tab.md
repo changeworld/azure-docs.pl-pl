@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: da67213b708b3ff26fe1ddd926c5cb0bba33458d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788556"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451225"
 ---
 # <a name="saas-application-technical-info-tab"></a>Karta informacje techniczne aplikacji SaaS
 
@@ -54,7 +54,7 @@ W poniższej tabeli opisano wymagane pola, na którym można nabywać oprogramow
 |     Instrukcje z wprowadzeniem              |   Wskazówki, aby udostępnić ze swoimi klientami, aby pomóc im nawiązywanie aplikację SaaS. Podstawowe tagów HTML są dozwolone, na przykład: &lt;p&gt;, &lt;h1&gt;, &lt;li&gt;itp.                |
 |    Adres URL strony  |   Adres URL witryny, która będzie kierowanie klientów jako proponowany po uzyskaniu z witryny Azure portal, aby. Ten adres URL będzie również punkt końcowy, który będzie otrzymywać połączenia interfejsy API w celu ułatwienia handlowych firmy Microsoft.                |
 |  Połączenie elementu Webhook    |  Dla wszystkich zdarzeń asynchronicznych, które firma Microsoft musi wysłać użytkownikom w imieniu klienta (przykład: Subskrypcja platformy Azure stała się nieprawidłowa), wymagamy Opisz element webhook połączenia. Jeśli nie masz jeszcze system elementu webhook w miejscu, najprostsza konfiguracja jest aplikacja logiki punktu końcowego HTTP, który będzie nasłuchiwać zdarzeń ogłaszany do niego i odpowiednio je obsłużyć. Aby uzyskać więcej informacji, zobacz <a href="https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint">wywołania wyzwalacza lub zagnieżdżanie przepływy pracy za pomocą punktów końcowych HTTP w usłudze logic apps</a>                |
-|  Dzierżawy usługi Azure AD identyfikator i identyfikator aplikacji      |   W witrynie Azure portal, wymagamy, aby utworzyć aplikacji usługi Active Directory, dzięki czemu możemy zweryfikować połączenie między dwoma naszych usług znajduje się za uwierzytelnianiu komunikacji. Dla tych pól, Utwórz aplikację usługi AD i wkleić w odpowiednich identyfikatora dzierżawy oraz identyfikatora aplikacji jest wymagane. Należy pamiętać, że identyfikator aplikacji jest skojarzona z yoaur publisherID. W związku z tym upewnij się, że ten sam identyfikator aplikacji, tak jak wszystkie oferty.             |
+|  Dzierżawy usługi Azure AD identyfikator i identyfikator aplikacji      |   W witrynie Azure portal, wymagamy, aby utworzyć aplikacji usługi Active Directory, dzięki czemu możemy zweryfikować połączenie między dwoma naszych usług znajduje się za uwierzytelnianiu komunikacji. Dla tych pól, Utwórz aplikację usługi AD i wkleić w odpowiednich identyfikatora dzierżawy oraz identyfikatora aplikacji jest wymagane. Należy pamiętać, że identyfikator aplikacji jest skojarzona z Twojej publisherID. W związku z tym upewnij się, że ten sam identyfikator aplikacji, tak jak wszystkie oferty.             |
 
 
 Na koniec po wybraniu **sprzedaży firmy Microsoft**, istnieje inna karta nowa oferta o nazwie **plany**. 

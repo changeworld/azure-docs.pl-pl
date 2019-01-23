@@ -4,7 +4,7 @@ description: Ten artykuł zawiera listę wszystkich wersji programu Azure AD Con
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 780a4c5cd590b4fa1b4dd5b29fab738cb9a8bb6a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e5d98b1d10051fee6ee5299fcdd8376434109603
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608447"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469767"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -41,7 +41,7 @@ Pobierz | [Pobieranie programu Azure AD Connect](https://go.microsoft.com/fwlink
 
 ### <a name="release-status"></a>Stan zlecenia
 
-12/18/2018 r.: Ogólnie dostępnych do pobrania
+12/18/2018: Ogólnie dostępnych do pobrania
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
@@ -51,7 +51,7 @@ Ta kompilacja aktualizacji niestandardowych łączników (na przykład ogólnego
 ## <a name="12690"></a>1.2.69.0
 
 ### <a name="release-status"></a>Stan zlecenia
-12/11/2018 r.: Ogólnie dostępnych do pobrania
+12/11/2018: Ogólnie dostępnych do pobrania
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 Ta kompilacja poprawka umożliwia użytkownikowi wybranie domeny docelowej, w określonym lesie, dla kontenera RegisteredDevices podczas włączania zapisywania zwrotnego urządzeń.  W poprzednich wersjach, które zawierają nowe funkcje opcji urządzenia (1.1.819.0 — 1.2.68.0), lokalizację kontenera RegisteredDevices była ograniczona do katalogu głównego lasu i nie zezwolono na domeny podrzędne.  To ograniczenie tylko dyskowe widoczne sam w nowych wdrożeniach — nie miała wpływu uaktualnienia w miejscu.  
@@ -64,7 +64,7 @@ Jeśli każda kompilacja zawierająca zaktualizowanej funkcji Opcje urządzenia 
 
 ### <a name="release-status"></a>Stan zlecenia 
 
-11/30/2018 r.:  Ogólnie dostępnych do pobrania
+11/30/2018:  Ogólnie dostępnych do pobrania
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
@@ -76,7 +76,7 @@ Ta kompilacja poprawka rozwiązuje konflikt, gdzie może wystąpić błąd uwier
 
 ### <a name="release-status"></a>Stan zlecenia 
 
-11/19/2018 r.:  Ogólnie dostępnych do pobrania
+11/19/2018:  Ogólnie dostępnych do pobrania
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
 
@@ -126,7 +126,7 @@ Usługa Azure AD Connect uaktualnianie kończy się niepowodzeniem, jeśli zawsz
 
 ### <a name="release-status"></a>Stan zlecenia
 
-8 21 2018: Zwolnione w celu pobrania i automatyczne uaktualnianie. 
+8/21/2018: Zwolnione w celu pobrania i automatyczne uaktualnianie. 
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 
@@ -165,7 +165,7 @@ Usługa Azure AD Connect uaktualnianie kończy się niepowodzeniem, jeśli zawsz
 
 ### <a name="release-status"></a>Stan zlecenia
 
-5/14/2018 r.: Zwolnione w celu automatycznego uaktualniania i pobierania.
+5/14/2018: Zwolnione w celu automatycznego uaktualniania i pobierania.
 
 ### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 
@@ -212,7 +212,7 @@ Nowe funkcje i ulepszenia
 - Kreator programu Azure AD Connect: Rozwiązać problem, rozpoznawanie niestandardowe konto usługi synchronizacji, które ma uprawnienia odczytu AD, nie
 - Kreator programu Azure AD Connect: Poprawa rejestrowanie domenę i jednostkę Organizacyjną, opcje filtrowania
 - Kreator programu Azure AD Connect: Usługi AD FS Dodaj domyślny oświadczeń relację zaufania federacji, utworzone w scenariuszu dla usługi MFA
-- Kreator programu Azure AD Connect: Proxy aplikacji sieci Web podczas wdrażania usług AD FS: Dodawanie serwera nie powiodło się do użycia nowego certyfikatu
+- Kreator programu Azure AD Connect: AD FS Deploy WAP: Dodawanie serwera nie powiodło się do użycia nowego certyfikatu
 - Kreator programu Azure AD Connect: Wyjątek DSSO podczas onPremCredentials nie są inicjowane dla domeny 
 - Preferencyjne przepływu atrybut distinguishedName AD z obiektu aktywnego użytkownika.
 - Naprawiono usterkę kosmetycznych zostały pierwszeństwo pierwszą regułę synchronizacji OOB została ustawiona na 99 zamiast 100
@@ -229,7 +229,7 @@ Stan 4/12/2018 r.: Zwolnione w celu pobrania tylko
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 Rozwiązany problem zostały odnajdywanie automatyczne wystąpienia platformy Azure dla dzierżaw (Chiny) od czasu do czasu został kończy się niepowodzeniem.  
 
-### <a name="ad-fs-management"></a>Zarządzanie usługami AD FS
+### <a name="ad-fs-management"></a>AD FS Management
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 
 Wystąpił problem w konfiguracji Logika ponawiania, które mogłyby spowodować ArgumentException z informacją "element o takim samym kluczem już został dodany."  To spowoduje, że wszystkie operacje ponownych prób nie powiedzie się.
@@ -336,12 +336,12 @@ Blokowanie dostępu do konta usługi AD DS, implementując następujące zmiany 
 Typ     | Name (Nazwa)                          | Dostęp               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
 Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Administratorzy przedsiębiorstwa             | Pełna kontrola         | Ten obiekt  |
+Zezwalaj    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy domeny                 | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Administratorzy                | Pełna kontrola         | Ten obiekt  |
-Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Wyświetl zawartość        | Ten obiekt  |
-Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Odczyt wszystkich właściwości  | Ten obiekt  |
-Zezwalaj    | Kontrolery domeny przedsiębiorstwa | Uprawnienia do odczytu     | Ten obiekt  |
+Zezwalaj    | Enterprise Domain Controllers | Wyświetl zawartość        | Ten obiekt  |
+Zezwalaj    | Enterprise Domain Controllers | Odczyt wszystkich właściwości  | Ten obiekt  |
+Zezwalaj    | Enterprise Domain Controllers | Uprawnienia do odczytu     | Ten obiekt  |
 Zezwalaj    | Uwierzytelnieni użytkownicy           | Wyświetl zawartość        | Ten obiekt  |
 Zezwalaj    | Uwierzytelnieni użytkownicy           | Odczyt wszystkich właściwości  | Ten obiekt  |
 Zezwalaj    | Uwierzytelnieni użytkownicy           | Uprawnienia do odczytu     | Ten obiekt  |
@@ -445,7 +445,7 @@ Stan: Październik 2017 19
 
 * Wcześniej, jeśli próbowano włączyć synchronizację skrótów haseł usługi Azure AD Connect nie sprawdza, czy konta łącznika AD ma uprawnienia wymagane do synchronizacji skrótów haseł z lokalnej usługi AD. Teraz Kreator Azure AD Connect Sprawdź i ostrzega o tym, jeśli konta łącznika AD nie ma wystarczających uprawnień.
 
-### <a name="ad-fs-management"></a>Zarządzanie usługami AD FS
+### <a name="ad-fs-management"></a>AD FS Management
 #### <a name="fixed-issue"></a>Rozwiązano problem
 * Rozwiązano problem związany z zastosowaniem [ms-DS-ConsistencyGuid jako zakotwiczenie źródła](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) funkcji. Ten problem dotyczy klientów, którzy skonfigurowali *Federacja z usługami AD FS* jako metodę logowania użytkownika. Podczas wykonywania *Konfiguruj zakotwiczenie źródła* zadań w kreatorze, Azure AD Connect zmienia się na użyciu * ms-DS-ConsistencyGuid jako atrybut źródłowy dla immutableId. W ramach tej zmiany program Azure AD Connect próbuje zaktualizować reguł oświadczeń dla ImmutableId w usługach AD FS. Jednak w tym kroku nie powiodło się, ponieważ program Azure AD Connect nie ma poświadczeń administratora wymagane do skonfigurowania usług AD FS. Dzięki tej poprawce program Azure AD Connect teraz wyświetli monit o wprowadzenie poświadczeń administratora dla usług AD FS podczas wykonywania *Konfiguruj zakotwiczenie źródła* zadania.
 
@@ -487,7 +487,7 @@ Stan: We wrześniu 2017 r. 05
 #### <a name="new-features-and-improvements"></a>Nowe funkcje i ulepszenia
 * Dodano obsługę dla chmury platformy Microsoft Azure dla instytucji rządowych i Microsoft Cloud w Niemczech.
 
-### <a name="ad-fs-management"></a>Zarządzanie usługami AD FS
+### <a name="ad-fs-management"></a>AD FS Management
 #### <a name="fixed-issues"></a>Rozwiązane problemy
 * Polecenie cmdlet ADSyncNGCKeysWriteBack inicjowania w module powershell przygotowania usługi AD został niepoprawnie zastosowania list ACL do kontenera rejestracji urządzeń i w związku z tym może tylko dziedziczyć istniejące uprawnienia.  Zaktualizowano, aby konto usługi synchronizacji ma odpowiednie uprawnienia.
 
@@ -616,7 +616,7 @@ Jest to problem, który pojawia się, że **Synchronizuj wszystkie domeny i jedn
 
 * Rozwiązano problem, związane z [ms-DS-ConsistencyGuid jako zakotwiczenie źródła](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) funkcji, w którym program Azure AD Connect jest nie funkcja zapisywania zwrotnego w środowisku lokalnym atrybutu ms-DS-ConsistencyGuid usługi AD. Ten problem występuje w przypadku wielu lokalnych lasów usługi AD dodane do programu Azure AD Connect i *tożsamości użytkowników istnieją w wielu opcji katalogi* jest zaznaczone. W przypadku takiej konfiguracji reguły synchronizacji wynikowy nie wypełnić atrybut sourceAnchorBinary w magazynie Metaverse. Atrybut sourceAnchorBinary służy jako atrybut źródłowy dla atrybutu ms-DS-ConsistencyGuid. W wyniku zapisywania zwrotnego do atrybutu ms-DSConsistencyGuid nie występuje. Aby rozwiązać ten problem, następujące reguły synchronizacji zostały zaktualizowanie, aby upewnić się, że atrybut sourceAnchorBinary w magazynie Metaverse zawsze jest wypełniana:
   * W z usługi AD - InetOrgPerson AccountEnabled.xml
-  * W z usługi AD - wstawić InetOrgPerson
+  * In from AD - InetOrgPerson Common.xml
   * W z usługi AD - AccountEnabled.xml użytkownika
   * W z usługi AD - wstawić użytkownika
   * W z usługi AD — użytkownik przyłączyć SOAInAAD.xml
@@ -673,7 +673,7 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|certthumbprint, aby|CertExtensionOids|
+    |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Wybierz pozycję|
@@ -691,7 +691,7 @@ CBool(
   * Następujące atrybuty zostały dodane do schematu łącznik usługi Azure AD:
     * Grupa: OnPremisesSamAccountName
     * Grupa: NetBiosName
-    * Grupa: NazwaDomenyDNS
+    * Grupa: DnsDomainName
     * Użytkownik: OnPremisesDistinguishedName
 
 * Skrypt polecenia cmdlet ADSyncDomainJoinedComputerSync dodano nowy parametr opcjonalny o nazwie AzureEnvironment. Parametr służy do określania, który region odpowiedniego dzierżawy usługi Azure Active Directory znajduje się w. Prawidłowe wartości to:

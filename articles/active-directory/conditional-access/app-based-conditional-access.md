@@ -5,7 +5,7 @@ services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 68c2178440264aa6a6efce074b299f4e3deaa10f
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 20beff7accbc987842141fa7ece9c17f11b0032e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415393"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448812"
 ---
-# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj zatwierdzonych aplikacji klienckich, aby uzyskać dostęp do aplikacji w chmurze przy użyciu dostępu warunkowego 
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Jak: Wymagaj zatwierdzonych aplikacji klienckich w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego 
 
 Pracownicy używają urządzeń przenośnych zarówno osobistych i służbowych. Upewnij się, że Twoi pracownicy mogą być produktywność, ma zapobiegać utracie danych. Przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD) można ograniczyć dostęp do aplikacji w chmurze do zatwierdzonych aplikacji klienckich, które może chronić dane firmowe.  
 
@@ -108,13 +108,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**.
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**.
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/07.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**:
+4. **Warunki:** Jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**:
 
     a. Jako **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
@@ -137,14 +137,14 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**.
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**.
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/07.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)**. 
+4. **Warunki:** Jako **warunki**, należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)**. 
 
     a. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
@@ -188,14 +188,14 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online** i **Office 365 SharePoint Online**. 
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online** i **Office 365 SharePoint Online**. 
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/02.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**:
+4. **Warunki:** Jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**:
 
     a. Jako **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
@@ -220,13 +220,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**. Online 
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**. Online 
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/07.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie**:
+4. **Warunki:** Jako **warunki**, należy skonfigurować **aplikacje klienckie**:
 
     a. Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
@@ -273,13 +273,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online** i **Office 365 SharePoint Online**. 
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online** i **Office 365 SharePoint Online**. 
 
      ![Dostęp warunkowy](./media/app-based-conditional-access/02.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**. 
+4. **Warunki:** Jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**. 
  
     a. Jako **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
@@ -309,13 +309,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**. 
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**. 
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/07.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie**. 
+4. **Warunki:** Jako **warunki**, należy skonfigurować **aplikacje klienckie**. 
 
     Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 
@@ -369,13 +369,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online** i **Office 365 SharePoint Online**. 
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online** i **Office 365 SharePoint Online**. 
 
      ![Dostęp warunkowy](./media/app-based-conditional-access/02.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**. 
+4. **Warunki:** Jako **warunki**, należy skonfigurować **platform urządzeń** i **aplikacje klienckie**. 
  
     a. Jako **platform urządzeń**, wybierz opcję **Android** i **iOS**.
 
@@ -405,13 +405,13 @@ Zasady dostępu warunkowego w tym kroku należy skonfigurować następujące sk�
 
 1. **Nazwa** zasad dostępu warunkowego.
 
-2. **Użytkownicy i grupy**: wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
+2. **Użytkownicy i grupy**: Wszystkie zasady dostępu warunkowego musi mieć co najmniej jednego użytkownika lub wybranej grupy.
 
-3. **Aplikacje w chmurze:** jako aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**. 
+3. **Aplikacje w chmurze:** Jak aplikacje w chmurze, musisz wybrać **Office 365 Exchange Online**. 
 
     ![Dostęp warunkowy](./media/app-based-conditional-access/07.png)
 
-4. **Warunki:** jako **warunki**, należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)**. 
+4. **Warunki:** Jako **warunki**, należy skonfigurować **aplikacje klienckie (wersja zapoznawcza)**. 
 
     Jako **aplikacje klienckie (wersja zapoznawcza)**, wybierz opcję **aplikacje mobilne i klienci stacjonarni** i **klienci programu Exchange ActiveSync**.
 

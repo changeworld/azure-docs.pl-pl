@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Opis, Aprowizacja Deklaratywna | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Opis Aprowizacja Deklaratywna | Dokumentacja firmy Microsoft'
 description: W tym artykule wyjaśniono, deklaratywny model konfiguracji inicjowania obsługi administracyjnej w programie Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: cfbb870d-be7d-47b3-ba01-9e78121f0067
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9242ffc0c87ee9f314745463b8287ad7531a982d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 45b145d9a8922bc3da50cef7d9fa7aacf260417d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315035"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471782"
 ---
-# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizacja programu Azure AD Connect: opis Aprowizacja Deklaratywna
+# <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizacja programu Azure AD Connect: Omówienie aprowizacji deklaratywnej
 W tym temacie opisano model konfiguracji w programie Azure AD Connect. Model jest wywoływana, Aprowizacja Deklaratywna i umożliwia zapewnienie zmiany z łatwością konfiguracji. Wiele rzeczy, które opisano w tym temacie są zaawansowane i nie jest wymagana dla większości scenariuszy.
 
 ## <a name="overview"></a>Przegląd
@@ -91,7 +91,7 @@ Obiektu metaverse pozostaje tak długo, jak istnieje jedna reguła synchronizacj
 Po usunięciu obiektu metaverse wszystkie obiekty skojarzone z regułą synchronizacji ruchu wychodzącego jest oznaczony do **aprowizowanie** są oznaczone do usunięcia.
 
 ## <a name="transformations"></a>Przekształcenia
-Przekształcenia są używane do definiowania, przepływ atrybutów ze źródła do docelowego. Przepływy mogą mieć jedną z następujących **przepływu typy**: bezpośrednie, stałej lub wyrażenia. Bezpośrednie przepływu, przepływy wartość atrybutu jako — jest nie dodatkowych przekształceń. Stała wartość Ustawia określoną wartość. Wyrażenie używa deklaratywnych języka wyrażeń inicjowania obsługi administracyjnej programu express, jak powinny być transformacji. Szczegółowe informacje dotyczące języka wyrażeń można znaleźć w [zrozumienie deklaratywne inicjowania obsługi administracyjnej język wyrażeń](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) tematu.
+Przekształcenia są używane do definiowania, przepływ atrybutów ze źródła do docelowego. Przepływy mogą mieć jedną z następujących **przepływu typy**: Bezpośrednie, stałej lub wyrażenia. Bezpośrednie przepływu, przepływy wartość atrybutu jako — jest nie dodatkowych przekształceń. Stała wartość Ustawia określoną wartość. Wyrażenie używa deklaratywnych języka wyrażeń inicjowania obsługi administracyjnej programu express, jak powinny być transformacji. Szczegółowe informacje dotyczące języka wyrażeń można znaleźć w [zrozumienie deklaratywne inicjowania obsługi administracyjnej język wyrażeń](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) tematu.
 
 ![Aprowizacja lub łączony albo oczekuje](./media/concept-azure-ad-connect-sync-declarative-provisioning/transformations1.png)  
 
@@ -158,9 +158,9 @@ W tym scenariuszu należy zmienić zakres reguły synchronizacji, więc obiekty 
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 
 **Tematy odwołań**
 
-* [Synchronizacja programu Azure AD Connect: informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
+* [Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)

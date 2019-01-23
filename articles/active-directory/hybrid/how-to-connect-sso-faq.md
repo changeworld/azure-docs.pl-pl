@@ -5,7 +5,7 @@ services: active-directory
 keywords: Co to jest program Azure AD Connect, instalowanie usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0672fc06130ce58ae3155672c66ac06ae96bc7b9
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 64c56113c3bd7c07629e0177242837c1cafab02a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190639"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472912"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Często zadawane pytania
 
@@ -107,7 +107,7 @@ Wykonaj następujące czynności na serwerze lokalnym, w którym uruchomiony jes
 
 ### <a name="step-1-disable-the-feature-on-your-tenant"></a>Krok 1. Wyłącz funkcję w dzierżawie
 
-#### <a name="option-a-disable-using-azure-ad-connect"></a>Opcja A: Wyłączyć za pomocą usługi Azure AD Connect
+#### <a name="option-a-disable-using-azure-ad-connect"></a>Option A: Wyłączyć za pomocą usługi Azure AD Connect
 
 1. Uruchom program Azure AD Connect, wybierz polecenie **strony logowania użytkownika Zmień** i kliknij przycisk **dalej**.
 2. Usuń zaznaczenie pola wyboru **Włącz logowanie jednokrotne** opcji. Kontynuuj pracę z kreatorem.

@@ -5,7 +5,7 @@ services: active-directory
 keywords: Usługa Azure active directory identity protection rozwiązania cloud discovery, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7e706b1dd9c7dd79285666885cb6ada89d8126b2
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580498"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54460528"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Podręcznik usługi Azure Active Directory Identity Protection
 
@@ -115,7 +115,7 @@ Ta sekcja zawiera kroki do badania ryzyka związanego z użytkownikiem i ryzyko 
 
 ### <a name="user-risk-security-policy"></a>Zasady zabezpieczeń ryzyka użytkownika
 
-Aby uzyskać więcej informacji, zobacz [sposobu konfigurowania zasad ryzyka użytkownika](howto-user-risk-policy.md).
+Aby uzyskać więcej informacji, zobacz temat [How To: Configure the user risk policy](howto-user-risk-policy.md) (Jak skonfigurować zasady dotyczące ryzyka związanego z użytkownikiem).
 
 ![Ryzyko związane z użytkownikiem](./media/playbook/02.png "elementu Playbook")
 
@@ -140,7 +140,7 @@ Aby uzyskać więcej informacji, zobacz [sposobu konfigurowania zasad ryzyka uż
 
 ### <a name="sign-in-risk-security-policy"></a>Zasady zabezpieczeń ryzyka logowania
 
-Aby uzyskać więcej informacji, zobacz [sposobu konfigurowania zasad ryzyka logowania](howto-sign-in-risk-policy.md).
+Aby uzyskać więcej informacji, zobacz temat [How To: Configure the sign-in risk policy](howto-sign-in-risk-policy.md) (Jak skonfigurować zasady dotyczące ryzyka związanego z logowaniem).
 
 ![Ryzyko logowania](./media/playbook/01.png "elementu Playbook")
 
@@ -173,5 +173,5 @@ Aby uzyskać więcej informacji, zobacz [sposobu konfigurowania zasad ryzyka log
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Usługa Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Ochrona tożsamości w usłudze Azure Active Directory](../active-directory-identityprotection.md)
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: eb046ceebf9c6233fa5178d18603add2f0c26a29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: dec58b2bb82eeab8b95c59e2775d21d58e18cac4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608021"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450425"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migracja Contoso: Refaktoryzacja lokalnych aplikacji z bazą danych Azure SQL i aplikacji sieci Web platformy Azure
 
@@ -59,7 +59,7 @@ Zespół chmury firmy Contoso ma przypięte dół cele tej migracji. Te cele zos
 **Aplikacja** | Aplikacji na platformie Azure będą obowiązywać tak ważne, ponieważ jest już dziś.<br/><br/> Powinien on te same możliwości wydajności, jak obecnie w środowisku programu VMWare<br/><br/> Zespół nie chcesz inwestować w aplikacji. Na razie Administratorzy zostanie przesunięty aplikacji bezpieczne w chmurze.<br/><br/> Zespół chce polegająca na wyłączeniu obsługi systemu Windows Server 2008 R2, na którym aktualnie jest uruchomiona aplikacja.<br/><br/> Zespół chce również na nowoczesnej platformie PaaS bazy danych, minimalizuje potrzebę zarządzania odbiegać od programu SQL Server 2008 R2.<br/><br/> Firma Contoso ma wykorzystywać swoich inwestycji w Licencjonowanie programu SQL Server i pakietem Software Assurance, jeśli jest to możliwe.<br/><br/> Ponadto firma Contoso chce ograniczyć pojedynczym punktem awarii w warstwie sieci web.
 **Ograniczenia** | Aplikacja składa się z aplikacji platformy ASP.NET i usługi WCF uruchomionych na tej samej maszyny Wirtualnej. Firma chce podzielić to na dwie aplikacje internetowe przy użyciu usługi Azure App Service. 
 **Azure** | Firma Contoso chce, aby przenieść aplikację na platformę Azure, ale nie ma zostać uruchomiony na maszynach wirtualnych. Firma Contoso chce korzystać z usług PaaS platformy Azure w przypadku usługi sieci web i danych. 
-**Metodyka DevOps** | Firma Contoso chce przenieść do modelu metodyki DevOps, używając DevOps platformy Azure dla swoich kompilacji i wydawania potoków.
+**DevOps** | Firma Contoso chce przenieść do modelu metodyki DevOps, używając DevOps platformy Azure dla swoich kompilacji i wydawania potoków.
 
 ## <a name="solution-design"></a>Projekt rozwiązania
 
@@ -185,39 +185,39 @@ Administratorzy firmy Contoso, zostaną zmigrowane bazy rozwiązanie SmartHotel3
 1. W narzędziu DMA, tworzą nowy projekt (**SmartHotelDB**) i wybierz **migracji** 
 2. Wybierają typ serwera źródłowego jako **programu SQL Server**, jak i obiektem docelowym jako **usługi Azure SQL Database**. 
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-1.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-1.png)
 
 3. Informacje dotyczące migracji, co zwiększa **SQLVM** co serwer źródłowy i **SmartHotel.Registration** bazy danych. 
 
-     ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-2.png)
+     ![DMA](media/contoso-migration-refactor-web-app-sql/dma-2.png)
 
 4. Otrzyma błąd, który wydaje się być skojarzony z uwierzytelnianiem. Jednak po przeanalizowaniu, problem polega na kropki (.) w nazwie bazy danych. Jako obejście decyzję o udostępnianie nowej bazy danych SQL przy użyciu nazwy **rejestracji SmartHotel**, aby rozwiązać ten problem. Po uruchomieniu narzędzia DMA ponownie, są one możliwość wyboru **SmartHotel rejestracji**i kontynuować pracę w kreatorze.
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-3.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-3.png)
 
 5. W **zaznacz obiekty**, wybierz tabele bazy danych i wygenerować skryptu SQL.
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-4.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-4.png)
 
 6. Po utworzeniu usługi DMS skryptu, klikając **Wdróż schemat**.
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-5.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-5.png)
 
 7. Program DMA potwierdza, że wdrożenie zakończyło się pomyślnie.
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-6.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-6.png)
 
 8. Po rozpoczęciu migracji.
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-7.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-7.png)
 
 9. Po zakończeniu migracji, Contoso Administratorzy mogą sprawdzić, czy bazy danych jest uruchomiony w wystąpieniu programu Azure SQL.
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-8.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-8.png)
 
 10. Usunięcie dodatkowych bazy danych SQL **SmartHotel.Registration** w witrynie Azure portal.
 
-    ![PROGRAM DMA](media/contoso-migration-refactor-web-app-sql/dma-9.png)
+    ![DMA](media/contoso-migration-refactor-web-app-sql/dma-9.png)
 
 
 ## <a name="step-3-provision-web-apps"></a>Krok 3: Aprowizowanie aplikacji sieci Web
@@ -347,7 +347,7 @@ Administratorzy firmy Contoso teraz skonfigurować DevOps platformy Azure, aby w
 
     ![Wdrażanie usługi app service](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
-18. W **zaznacz plik lub folder**, mogą zlokalizować **SmartHotel.Registration.Wcf.zip** pliku, który został tworzenie podczas kompilacji i clilck **Zapisz**.-sql
+18. W **zaznacz plik lub folder**, mogą zlokalizować **SmartHotel.Registration.Wcf.zip** pliku, który został tworzenie podczas kompilacji i clilck **Zapisz**.
 
     ![Zapisz WCF](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 

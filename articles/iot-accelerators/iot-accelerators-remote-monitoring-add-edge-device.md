@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 67bfde828287d9892ad404f3d950dbe373503a56
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5172ba9881f80e202bdc69689e67befb79101dc0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828484"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450664"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Dodaj urządzenia usługi IoT Edge na akceleratorze rozwiązanie monitorowania zdalnego
 
@@ -24,9 +24,9 @@ Aby dodać [usługi IoT Edge](../iot-edge/about-iot-edge.md) urządzenia, aby Tw
 
 ## <a name="add-the-iot-edge-device"></a>Dodaj urządzenie usługi IoT Edge
 
-Aby dodać urządzenia usługi IoT Edge do akceleratora rozwiązania monitorowania zdalnego, przejdź do **urządzeń** strony w internetowym interfejsie użytkownika, a następnie kliknij przycisk **+ nowe urządzenie**.
+Aby dodać urządzenie usługi IoT Edge do akceleratora rozwiązań do zdalnego monitorowania, przejdź do strony **Urządzenia** w internetowym interfejsie użytkownika i kliknij pozycję **+ Nowe urządzenie**.
 
-W **nowe urządzenie** panelu, wybierz polecenie **urządzenie usługi IoT Edge**. Można pozostawić wartości domyślne dla innych ustawień. Następnie kliknij pozycję **Zastosuj**:
+W **nowe urządzenie** panelu, wybierz polecenie **urządzenie usługi IoT Edge**. Dla innych właściwości możesz pozostawić ustawienia domyślne. Następnie kliknij pozycję **Zastosuj**:
 
 ![Dodaj urządzenie usługi IoT Edge](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
@@ -42,7 +42,7 @@ Po zarejestrowaniu urządzenia bezpośrednio za pomocą usługi IoT hub w akcele
 
 ## <a name="install-the-iot-edge-runtime"></a>Zainstalować środowisko uruchomieniowe usługi IoT Edge
 
-Przed wdrożeniem modułów na urządzenia brzegowe, należy zainstalować środowisko uruchomieniowe usługi IoT Edge na urządzeniu fizycznym. Następujące przewodniki z instrukcjami pokazują, jak zainstalować środowisko uruchomieniowe na wspólnej platformach urządzeń:
+Przed wdrożeniem modułów na urządzenia brzegowe, należy zainstalować środowisko uruchomieniowe usługi IoT Edge na rzeczywistych urządzeniach. Następujące przewodniki z instrukcjami pokazują, jak zainstalować środowisko uruchomieniowe na wspólnej platformach urządzeń:
 
 - [Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)](../iot-edge/how-to-install-iot-edge-linux.md)
 - [Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (ARM32v7/armhf)](../iot-edge/how-to-install-iot-edge-linux-arm.md)

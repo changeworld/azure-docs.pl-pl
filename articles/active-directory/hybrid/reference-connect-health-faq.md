@@ -4,7 +4,7 @@ description: Często zadawane pytania dotyczące usługi Azure AD Connect Health
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 101eeb89a44fbc28c831fefcdc6490495e0be7e8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497731"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470328"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących usługi Azure Active Directory (Azure AD) Connect Health. Wśród często zadawanych pytań obejmują pytania dotyczące sposobu korzystania z usługi, który zawiera model rozliczeń możliwości, ograniczeń i pomocy technicznej.
 
 ## <a name="general-questions"></a>Pytania ogólne
-**P: czy mogę zarządzać wieloma katalogami usługi Azure AD. Jak przełączać się ten, który ma usługi Azure Active Directory Premium systemu Azure?**
+**Pyt.: Czy mogę zarządzać wieloma katalogami usługi Azure AD. Jak przełączać się ten, który ma usługi Azure Active Directory Premium systemu Azure?**
 
 Aby przełączyć się między różnymi dzierżaw usługi Azure AD wybierz aktualnie zalogowanego **nazwy użytkownika** w prawym górnym rogu, a następnie wybierz odpowiednie konto. Jeśli konto nie ma na liście, wybierz **Wyloguj**, a następnie użyj poświadczenia administratora globalnego katalogu, który ma usługi Azure Active Directory Premium włączone do logowania.
 
-**P: do jakich wersji ról tożsamości są obsługiwane przez program Azure AD Connect Health?**
+**Pyt.: Jakie wersje ról tożsamości są obsługiwane przez program Azure AD Connect Health?**
 
 Poniższa tabela zawiera listę ról i obsługiwane wersje systemu operacyjnego.
 
@@ -37,11 +37,11 @@ Poniższa tabela zawiera listę ról i obsługiwane wersje systemu operacyjnego.
 |--|--|
 |Usługi federacyjne Active Directory (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | Wersja 1.0.9125 lub nowszej|
-|Usługi Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
+|Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 Należy pamiętać, że funkcje udostępniane przez usługę może różnić się zależnie od roli oraz system operacyjny. Innymi słowy wszystkie funkcje nie mogą być dostępne dla wszystkich wersji systemu operacyjnego. Zobacz opisy funkcji, aby uzyskać szczegółowe informacje.
 
-**P: jak dużo licencji należy monitorować mojej infrastruktury?**
+**Pyt.: Liczba licencji należy monitorować mojej infrastruktury?**
 
 * Pierwszy Agent programu Connect Health wymaga co najmniej jedną licencję Azure AD Premium.
 * Każdy kolejny zarejestrowanych agent wymaga 25 dodatkowych licencji usługi Azure AD Premium.
@@ -60,7 +60,7 @@ Przykład:
 | 4 | 76 | Serwer 1, AD FS, 1, AD FS z serwera proxy i 2 kontrolerów domeny |
 | 5 | 101 | 1 serwer usługi azure AD Connect, serwer 1, AD FS, 1, AD FS z serwera proxy i 2 kontrolerów domeny |
 
-**Pytanie: czy obsługa usługi Azure AD Connect Health Azure Germany Cloud?**
+**Pyt.: Usługa Azure AD Connect Health obsługuje Azure Germany Cloud?**
 
 Program Azure AD Connect Health nie jest obsługiwana w chmurze (Niemcy) z wyjątkiem [funkcja raport błędów synchronizacji](how-to-connect-health-sync.md#object-level-synchronization-error-report). 
 
@@ -75,14 +75,14 @@ W celu zapewnienia łączności agenta programu Connect Health do celów synchro
 
 ## <a name="installation-questions"></a>Pytania dotyczące instalacji
 
-**Pyt.: co to jest wpływu na instalacji agenta programu Azure AD Connect Health na poszczególnych serwerach?**
+**Pyt.: Jaki jest wpływ instalowania agenta programu Azure AD Connect Health na poszczególnych serwerach?**
 
 Wpływ instalowania agenta: Microsoft Azure AD Connect Health, usług AD FS, serwery proxy aplikacji sieci web, serwery usługi Azure AD Connect (synchronizacja) kontrolerów domeny jest minimalny względem procesora CPU, użycie pamięci, przepustowości sieci i magazynu.
 
 Następujące numery są przybliżeniem:
 
 * Użycie procesora CPU: wzrost o 5 około 1%.
-* Zużycie pamięci: 10% całkowitej pamięci systemu.
+* Zużycie pamięci: Maksymalnie 10% całkowitej pamięci systemu.
 
 > [!NOTE]
 > Jeśli agent nie może komunikować się z platformą Azure, agent przechowuje dane lokalnie zdefiniowany maksymalny limit. Agent zastępuje "buforowane" dane na zasadzie "najdawniej obsługiwane".
@@ -92,13 +92,13 @@ Następujące numery są przybliżeniem:
 * Magazyn lokalny buforu dla agentów Azure AD Connect Health: ~ 20 MB.
 * W przypadku serwerów usług AD FS zaleca się obsługi administracyjnej miejsca na dysku na 1024 MB (1 GB) dla kanału danych inspekcji usług AD FS dla agentów Azure AD Connect Health do przetworzenia wszystkich danych inspekcji, zanim zostanie zastąpiony.
 
-**Pytanie: czy masz ponowne uruchomienie serwerów. podczas instalowania agentów programu Azure AD Connect Health?**
+**Pyt.: Będzie konieczne ponowne uruchomienie serwerów. podczas instalowania agentów programu Azure AD Connect Health?**
 
 Nie. Instalacja agentów będą nie wymagać ponownego uruchomienia serwera. Jednak niektóre kroki wymagań wstępnych instalacji może wymagać ponownego uruchomienia serwera.
 
 Instalacja platformy .NET Framework 4.5, na przykład w systemie Windows Server 2008 R2, wymaga ponownego uruchomienia serwera.
 
-**P: działa program Azure AD Connect Health przez serwer proxy HTTP przekazywania?**
+**Pyt.: Usługa Azure AD Connect Health? przy użyciu przekazywanego serwer proxy HTTP**
 
 Tak. Dla trwających operacji można skonfigurować agenta programu Health na potrzeby przekazywania ruchu wychodzącego żądań HTTP serwera proxy HTTP.
 Przeczytaj więcej na temat [konfigurowania serwera HTTP Proxy dla agentów kondycji](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
@@ -109,15 +109,15 @@ Jeśli musisz skonfigurować serwer proxy podczas rejestracji agenta, konieczne 
 2. Wybierz **Użyj serwera Proxy dla sieci LAN**.
 3. Wybierz **zaawansowane** w przypadku portów inny serwer proxy dla protokołu HTTP i HTTPS/Secure.
 
-**Pytanie: czy uwierzytelnianie podstawowe pomocy technicznej usługi Azure AD Connect Health, łącząc się z serwerów proxy HTTP?**
+**Pyt.: Program Azure AD Connect Health obsługuje uwierzytelnianie podstawowe podczas nawiązywania połączenia z serwerami proxy HTTP?**
 
 Nie. Mechanizm do określenia nazwy dowolnego użytkownika i hasła dla uwierzytelniania podstawowego nie jest obecnie obsługiwane.
 
-**P: jakie porty zapory należy otworzyć do agenta programu Azure AD Connect Health do pracy?**
+**Pyt.: Jakie porty zapory należy otworzyć do agenta programu Azure AD Connect Health do pracy?**
 
 Zobacz [sekcji wymagania dotyczące](how-to-connect-health-agent-install.md#requirements) listę portów zapory i inne wymagania dotyczące łączności.
 
-**P: Dlaczego są wyświetlane dwa serwery z taką samą nazwą w portalu usługi Azure AD Connect Health?**
+**Pyt.: Dlaczego są wyświetlane dwa serwery z taką samą nazwą w portalu usługi Azure AD Connect Health?**
 
 Po usunięciu agenta z serwera serwer nie zostanie automatycznie usunięta z portalu usługi Azure AD Connect Health. Ręcznie usuń agenta z serwera lub usunąć samego serwera, należy ręcznie usunąć wpis server z portalu usługi Azure AD Connect Health.
 
@@ -127,7 +127,7 @@ W takim przypadku ręcznie usuń wpis, który należy do starszej serwera. Dane 
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Agent kondycji świeżości rejestracji i danych
 
-**Pytanie: jakie są typowe przyczyny niepowodzenia rejestracji agenta programu Health i jak rozwiązywać problemy?**
+**Pyt.: Jakie są typowe przyczyny niepowodzenia rejestracji agenta programu Health i jak rozwiązywać problemy?**
 
 Agent kondycji może zakończyć się niepowodzeniem do rejestrowania z powodu następujących przyczyn:
 
@@ -135,26 +135,26 @@ Agent kondycji może zakończyć się niepowodzeniem do rejestrowania z powodu n
 * Komunikacja wychodząca jest poddawana inspekcji połączenia SSL przez warstwę sieciową. Powoduje to, że certyfikat, który agent używa mają zostać zastąpione przez serwer/jednostka inspekcji i niepowodzenie kroki, aby ukończyć rejestrację agenta.
 * Użytkownik nie ma dostępu do przeprowadzenia rejestracji agenta. Domyślnie administratorzy globalni mają dostęp. Możesz użyć [kontroli dostępu opartej na rolach](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) można delegować dostępu do innych użytkowników.
 
-**P: jestem wprowadzenie alerty, "dane usługi kondycji nie jest aktualny." Jak rozwiązać ten problem?**
+**Pyt.: Czy mogę jestem wprowadzenie alerty, "dane usługi kondycji nie jest aktualny." Jak rozwiązać ten problem?**
 
 Program Azure AD Connect Health generuje alert, gdy nie otrzyma wszystkich punktów danych z serwera w ostatnich dwóch godzin. [Dowiedz się więcej](how-to-connect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Pytania dotyczące operacji
-**P: czy muszę włączyć funkcję inspekcji na serwerach proxy aplikacji sieci web?**
+**Pyt.: Czy muszę włączyć funkcję inspekcji na serwerach proxy aplikacji sieci web?**
 
 Nie, inspekcji nie muszą być włączone na serwerach proxy aplikacji sieci web.
 
-**P: jak rozwiązać Azure alerty AD Connect Health?**
+**Pyt.: Jak rozwiązać Azure alerty AD Connect Health?**
 
 Alerty programu Azure AD Connect Health można rozwiązać, pod warunkiem powodzenia. Agentów Azure AD Connect Health wykrywanie i okresowo zgłoszenia warunków powodzenia do usługi. Kilka alertów pomijanie jest oparte na czasie. Oznacza to jeśli ten sam błąd nie zostanie wykryty w ciągu 72 godzin z generowania alertów, alert zostanie rozwiązany automatycznie.
 
-**P: jestem wprowadzenie alertów, czy "testowe żądanie uwierzytelniania (transakcja syntetyczna) nie można uzyskać tokenu". Jak rozwiązać ten problem?**
+**Pyt.: Czy mogę jestem wprowadzenie alertów, czy "testowe żądanie uwierzytelniania (transakcja syntetyczna) nie można uzyskać tokenu". Jak rozwiązać ten problem?**
 
 Azure AD Connect Health dla usług AD FS generuje ten alert, gdy Agent kondycji zainstalowany na serwerze usług AD FS nie powiedzie się do uzyskania tokenu jako część transakcji syntetycznych inicjowane przez agenta programu Health. Agent kondycji używa kontekstu systemu lokalnego i próbuje uzyskać token dla własnym jednostki zależnej. Jest to test wychwytywania, aby upewnić się, że usług AD FS znajduje się w stanie wydawania tokenów.
 
 W większości przypadków ten test zakończy się, ponieważ Agent kondycji nie jest w stanie rozpoznać nazwę farmy usług AD FS. Może to nastąpić, jeśli serwery usług AD FS znajdują się za usługą równoważenia obciążenia sieci, a żądanie pobiera inicjowany z węzła, który jest modułem równoważenia obciążenia (w przeciwieństwie do regularnych klienta, który znajduje się przed modułu równoważenia obciążenia). Może to być naprawiony przez zaktualizowanie pliku "hosts" znajdujący się w folderze "C:\Windows\System32\drivers\etc" uwzględnić adres IP serwera usług AD FS lub adresem IP sprzężenia zwrotnego (127.0.0.1) dla nazwy farmy usług AD FS (np. sts.contoso.com). Dodawanie pliku hosta będzie zwarcie wywołania sieci, dzięki czemu agenta programu Health można pobrać tokenu.
 
-**P: czy mogę stało się wiadomość e-mail z informacją, że moich maszynach są nie zastosowano poprawkę luki ostatnich ataków ransomeware. Dlaczego otrzymuję tę wiadomość e-mail?**
+**Pyt.: Wysłano do mnie wiadomość e-mail z informacją, że moich maszynach są nie zastosowano poprawkę luki ostatnich ataków ransomeware. Dlaczego otrzymuję tę wiadomość e-mail?**
 
 Usługi Azure AD Connect Health skanowania wszystkich maszyn, które monitoruje ona zapewnienie wymagane poprawki zostały zainstalowane. Wiadomość e-mail została wysłana do administratorów dzierżawy, jeśli co najmniej jedna maszyna nie miał krytycznych poprawek. Poniższa logika był używany, aby określić to.
 1. Znajdź wszystkie poprawki, które są zainstalowane na komputerze.
@@ -184,11 +184,11 @@ CheckForMS17-010
 
 ```
 
-**P: Dlaczego polecenia cmdlet programu PowerShell <i>Get MsolDirSyncProvisioningError</i> Pokaż mniej błędów synchronizacji w wynikach?**
+**Pyt.: Dlaczego polecenie cmdlet programu PowerShell <i>Get MsolDirSyncProvisioningError</i> Pokaż mniej błędów synchronizacji w wynikach?**
 
 <i>Get-MsolDirSyncProvisioningError</i> zwróci tylko narzędzia DirSync, inicjowania obsługi błędów. Oprócz, w portalu programu Connect Health pokazuje również inne synchronizacji typy błędów, takie jak błędy eksportu. Jest to zgodne z wynikiem różnicowej program Azure AD Connect. Przeczytaj więcej na temat [błędy Azure AD Connect Sync](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors).
 
-**P: Dlaczego są moje usług AD FS inspekcji nie są generowane?**
+**Pyt.: Dlaczego są moje usług AD FS inspekcji nie są generowane?**
 
 Użyj polecenia cmdlet programu PowerShell <i>Get-AdfsProperties - AuditLevel</i> upewnij się, dzienniki inspekcji nie znajduje się w stanie wyłączony. Przeczytaj więcej na temat [dzienniki inspekcji usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Zwróć uwagę, jeśli są to zaawansowane ustawienia inspekcji, przekazywane do serwera usług AD FS, zmiany przy użyciu auditpol.exe zostaną zastąpione (zdarzenie w przypadku aplikacji generowany jest nieskonfigurowany). W tym przypadku Ustaw zasady zabezpieczeń lokalnych, aby rejestrować błędy generowane aplikację i Powodzenie. 
 

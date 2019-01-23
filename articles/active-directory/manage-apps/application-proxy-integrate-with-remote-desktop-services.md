@@ -4,7 +4,7 @@ description: Zawiera podstawowe informacje dotyczące łączników serwera Proxy
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 72b3a009ec3ed85bb1bacc089a0fa12f1aa9ecce
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135495"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474578"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie usług pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 
@@ -67,7 +67,7 @@ Po skonfigurowaniu usług pulpitu zdalnego i aplikacji serwera Proxy Azure AD dl
    - Wewnętrzny adres URL: `https://\<rdhost\>.com/`, gdzie `\<rdhost\>` jest typowy katalog główny, które współdzielą sieci Web usług pulpitu zdalnego i bramy usług pulpitu zdalnego.
    - Zewnętrzny adres URL: To pole jest wypełniane automatycznie na podstawie nazwy aplikacji, ale można go zmodyfikować. Użytkownicy zaczną się do tego adresu URL, przy uzyskiwaniu dostępu RDS.
    - Metoda uwierzytelniania wstępnego: Usługa Azure Active Directory
-   - Tłumaczenie nagłówki URL: nie
+   - Tłumaczenie nagłówki URL: Nie
 2. Przypisywanie użytkowników do opublikowanej aplikacji usług pulpitu zdalnego. Upewnij się, że dostęp do usług pulpitu zdalnego, wszystkie one mają zbyt.
 3. Pozostaw pojedynczej metody logowania jednokrotnego dla aplikacji jako **usługi Azure AD logowanie jednokrotne wyłączone**. Użytkownicy są proszeni o uwierzytelniania do usługi Azure AD i w sieci Web usług pulpitu zdalnego, ale występuje logowanie jednokrotne do bramy usług pulpitu zdalnego.
 4. Przejdź do **usługi Azure Active Directory** > **rejestracje aplikacji** > *aplikacji* > **ustawienia**.

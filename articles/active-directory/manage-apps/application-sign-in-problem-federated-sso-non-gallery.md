@@ -4,7 +4,7 @@ description: Wskazówki dotyczące określonych problemów, które mogą występ
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 17114818105935d8d6a7ac647f1d98c097e78efd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8f545aad7256764780a68f4b43ee30bf68749187
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356935"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469716"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji spoza galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
 
@@ -34,7 +34,7 @@ Aby rozwiązać problem, należy sprawdzić konfigurację aplikacji w usłudze A
 
 ## <a name="application-not-found-in-directory"></a>Nie można odnaleźć w katalogu aplikacji
 
-*Błąd AADSTS70001: Aplikacja o identyfikatorze "https://contoso.com" nie został znaleziony w katalogu*.
+*Błąd AADSTS70001: Aplikacja z identyfikatorem "https://contoso.com" nie został znaleziony w katalogu*.
 
 **Możliwa przyczyna**
 
@@ -66,7 +66,7 @@ Po zaktualizowaniu wartość identyfikatora w usłudze Azure AD i jest on zgodny
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres, który jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji. 
 
-*Błąd AADSTS50011: Adres, który ma https://contoso.com"jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji* 
+*Błąd AADSTS50011: Jako adres zwrotny https://contoso.com"jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji* 
 
 **Możliwa przyczyna** 
 
@@ -100,7 +100,7 @@ Po zaktualizowaniu wartość adresu URL odpowiedzi w usłudze Azure AD i jest on
 
 ## <a name="user-not-assigned-a-role"></a>Nie przypisaną rolę użytkownika
 
-*AADSTS50105 błędu: Zalogowany użytkownik "brian@contoso.com" nie jest przypisany do roli dla aplikacji*
+*Błąd AADSTS50105: Zalogowany użytkownik "brian@contoso.com" nie jest przypisany do roli dla aplikacji*
 
 **Możliwa przyczyna**
 
@@ -134,7 +134,7 @@ Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wyko
 
 11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adres e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
+12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adresu e-mail** pole wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
 
 13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
@@ -170,7 +170,7 @@ Należy sprawdzić poprawność ich obsługa wdrożenia usługi Azure AD SAML lo
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>Żaden z zasobów na liście requiredResourceAccess
 
-*AADSTS65005 błąd: Aplikacja kliencka zażądała dostępu do zasobu "00000002-0000-0000-c000-000000000000'. To żądanie nie powiodło się, ponieważ klient nie określił ten zasób na liście requiredResourceAccess*.
+*Błąd AADSTS65005: Aplikacja kliencka zażądała dostępu do zasobu "00000002-0000-0000-c000-000000000000'. To żądanie nie powiodło się, ponieważ klient nie określił ten zasób na liście requiredResourceAccess*.
 
 **Możliwa przyczyna**
 
@@ -202,7 +202,7 @@ Po ponownej konfiguracji aplikacji, można zalogować się do aplikacji.
 
 ## <a name="certificate-or-key-not-configured"></a>Certyfikatu lub klucza nieskonfigurowane
 
-Błąd AADSTS50003: Nie klucza podpisywania skonfigurowane.
+Błąd AADSTS50003: Nie skonfigurowano klucza podpisywania.
 
 **Możliwa przyczyna**
 

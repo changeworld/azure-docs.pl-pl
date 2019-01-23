@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: bfe2b0c70c8b912f6489ed461f5bcf6f233ed60d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4bf11c0a084cb0241125a1ed546f48c1c5455de3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810365"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449456"
 ---
 <a name="update-an-existing-offer-for-azure-marketplace"></a>Aktualizowanie istniejącej oferty w portalu Azure Marketplace
 ==============================================
@@ -87,7 +87,7 @@ Aby udostępnić nowej jednostki SKU istniejącej oferty, wykonaj poniższe krok
 
 1.  Zaloguj się do [portalu dla partnerów w chmurze](https://cloudpartner.azure.com/).
 2.  W obszarze **wszystkich ofert** odnaleźć oferty, czy chcesz zaktualizować.
-3.  W obszarze **jednostki SKU** formularz, clik na **Dodawanie nowej jednostki SKU** i podaj **identyfikator jednostki SKU** w oknie podręcznym.
+3.  W obszarze **jednostki SKU** formularza, kliknij pozycję **Dodawanie nowej jednostki SKU** i podaj **identyfikator jednostki SKU** w oknie podręcznym.
 4.  Wykonaj pozostałe kroki szczegółowo opisane w [publikować maszynę wirtualną w portalu Azure Marketplace](./cloud-partner-portal-publish-virtual-machine.md).
 5.  Kliknij pozycję **Publikuj** Konferencję przepływu pracy publikowania ma nowe jednostki SKU emisji na żywo.
 
@@ -133,19 +133,19 @@ Będziesz mieć do momentu 1 listopada 2018 można ustawić nowej ceny dla regio
 | **Algieria**              | DZ        | USD                         |
 | **Argentyna**            | AR        | USD                         |
 | **Bahrajn**              | BH        | USD                         |
-| **Białoruś**              | PRZEZ        | USD                         |
-| **Brazylia**               | BRAZYLIA        | BRL                         |
+| **Białoruś**              | BY        | USD                         |
+| **Brazylia**               | BR        | BRL                         |
 | **Bułgaria**             | BG        | EUR                         |
 | **Chile**                | CL        | USD                         |
 | **Kolumbia**             | CO        | USD                         |
 | **Kostaryka**           | CR        | USD                         |
-| **Chorwacja**              | Kadry        | EUR                         |
-| **Czechy**       | CZECHY        | EUR                         |
-| **Egipt**                | NA PRZYKŁAD        | USD                         |
+| **Chorwacja**              | HR        | EUR                         |
+| **Czechy**       | CZ        | EUR                         |
+| **Egipt**                | EG        | USD                         |
 | **Gwatemala**            | GT        | USD                         |
 | **SRA Hongkong**            | HK        | USD                         |
 | **Węgry**              | HU        | EUR                         |
-| **Islandia**              | JEST        | EUR                         |
+| **Islandia**              | IS        | EUR                         |
 | **Indonezja**            | ID        | USD                         |
 | **Izrael**               | IL        | USD                         |
 | **Jordania**               | JO        | USD                         |
@@ -154,28 +154,28 @@ Będziesz mieć do momentu 1 listopada 2018 można ustawić nowej ceny dla regio
 | **Kuwejt**               | KW        | USD                         |
 | **Liechtenstein**        | LI        | EUR                         |
 | **Macedonia (była Jugosłowiańska Republika)**     | MK        | USD                         |
-| **Malezja**             | MOJE        | USD                         |
+| **Malezja**             | MY        | USD                         |
 | **Meksyk**               | MX        | USD                         |
-| **Czarnogóra**           | MNIE        | USD                         |
-| **Maroko**              | MA        | USD                         |
+| **Czarnogóra**           | ME        | USD                         |
+| **Morocco**              | MA        | USD                         |
 | **Nigeria**              | NG        | USD                         |
 | **Oman**                 | OM        | USD                         |
-| **Pakistan**             | KLUCZ PODSTAWOWY        | USD                         |
+| **Pakistan**             | PK        | USD                         |
 | **Paragwaj**             | PY        | USD                         |
 | **Peru**                 | PE        | USD                         |
 | **Filipiny**          | PH        | USD                         |
 | **Polska\***             | PL        | EUR                         |
-| **Katar**                | ODPOWIEDZI NA PYTANIA        | USD                         |
+| **Katar**                | QA        | USD                         |
 | **Rumunia**              | RO        | EUR                         |
-| **Arabia Saudyjska**         | AMERYKA POŁUDNIOWA        | USD                         |
+| **Arabia Saudyjska**         | SA        | USD                         |
 | **Serbia**               | RS        | USD                         |
-| **Singapur**            | GRUPY ZABEZPIECZEŃ        | USD                         |
+| **Singapur**            | SG        | USD                         |
 | **Republika Południowej Afryki**         | ZA        | USD                         |
 | **Tajlandia**             | TH        | USD                         |
 | **Trynidad i Tobago**  | TT        | USD                         |
 | **Tunezja**              | TN        | USD                         |
 | **Turcja**               | TR        | USD                         |
-| **Ukraina**              | AGENT UŻYTKOWNIKA        | USD                         |
+| **Ukraina**              | UA        | USD                         |
 | **Zjednoczone Emiraty Arabskie** | AE        | USD                         |
 | **Urugwaj**              | UY        | USD                         |
 |  |  |  |

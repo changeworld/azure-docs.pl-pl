@@ -4,7 +4,7 @@ description: Usługa Azure Active Directory Zarządzanie urządzeniami — częs
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8d1e44eae7e87a450ac5f36e621d559fca92ca74
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9869f1e32cf20e658fb193c01da225249a5b1a29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016158"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451667"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
-**PYT.: Czy ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w witrynie Azure portal? Lub dlaczego jest właściciel urządzenia oznaczony jako n/d dla urządzeń z hybrydowego przyłączony Azure AD? ** 
+**Pyt.: Czy ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w witrynie Azure portal? Lub dlaczego jest właściciel urządzenia oznaczony jako n/d dla urządzeń z hybrydowego przyłączony Azure AD? ** 
  **Odp.:** Urządzenia z systemem Windows 10, które są hybrydowe przyłączone do usługi Azure AD nie są wyświetlane w obszarze urządzeń użytkowników.
 Należy użyć widoku wszystkich urządzeń w witrynie Azure portal. Możesz również użyć programu PowerShell [Get MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
 
@@ -36,7 +36,7 @@ Następujące urządzenia zostaną wyświetlone w obszarze urządzenia użytkown
 
 --- 
 
-**PYT.: Jak sprawdzić stanu rejestracji urządzenia klienta jest?**
+**Pyt.: Jak sprawdzić stanu rejestracji urządzenia klienta jest?**
 
 **ODP.:** Możesz użyć witryny Azure portal, przejdź do wszystkich urządzeń i wyszukaj urządzenia przy użyciu identyfikatora urządzenia. Sprawdź wartości w kolumnie Typ sprzężenia. Czasami urządzenie może zostały resetowania lub odtworzony z obrazu. Dlatego bardzo ważne jest również za sprawdzanie stanu rejestracji urządzenia na urządzeniu:
 
@@ -45,13 +45,13 @@ Następujące urządzenia zostaną wyświetlone w obszarze urządzenia użytkown
 
 ---
 
-**PYT.: Zobacz rekordem urządzenia w obszarze informacje o użytkowniku w witrynie Azure portal i można wyświetlić stan, jak zarejestrować się na urządzeniu. Jestem I poprawnie skonfigurowane do korzystania z dostępu warunkowego?**
+**Pyt.: Zobacz rekordem urządzenia w obszarze informacje o użytkowniku w witrynie Azure portal i można wyświetlić stan, jak zarejestrować się na urządzeniu. Jestem I poprawnie skonfigurowane do korzystania z dostępu warunkowego?**
 
 **ODP.:** Stan dołączania urządzenia, dostarczanej przez deviceID, musi zgodne z tym w usłudze Azure AD i spełniać wszystkie kryteria oceny dostępu warunkowego. Aby uzyskać więcej informacji, zobacz [wymagają zarządzanych urządzeń, aby uzyskać dostęp do aplikacji w chmurze przy użyciu dostępu warunkowego](../conditional-access/require-managed-devices.md).
 
 ---
 
-**PYT.: Usunięto w witrynie Azure portal lub za pomocą programu Windows PowerShell, ale stan lokalnego na urządzeniu jest wyświetlany komunikat jest nadal zarejestrowany?**
+**Pyt.: Usunięto w witrynie Azure portal lub za pomocą programu Windows PowerShell, ale stan lokalnego na urządzeniu jest wyświetlany komunikat jest nadal zarejestrowany?**
 
 **ODP.:** Jest to celowe. Urządzenie nie będzie dostępu do zasobów w chmurze. 
 
@@ -73,7 +73,7 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 ---
 
-**PYT.: Dlaczego są wyświetlane urządzenia zduplikowanych wpisów w witrynie Azure portal?**
+**Pyt.: Dlaczego są wyświetlane urządzenia zduplikowanych wpisów w witrynie Azure portal?**
 
 **ODP.:**
 
@@ -87,7 +87,7 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 ---
 
-**PYT.: Dlaczego może użytkownik nadal dostęp do zasobów z urządzenia, wyłączenia w witrynie Azure portal?**
+**Pyt.: Dlaczego może użytkownik nadal dostęp do zasobów z urządzenia, wyłączenia w witrynie Azure portal?**
 
 **ODP.:** Może potrwać do godziny odwołania mają być stosowane.
 
@@ -98,7 +98,7 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 ## <a name="azure-ad-join-faq"></a>Funkcja Azure AD Join — często zadawane pytania
 
-**PYT.: Jak I odłączenia urządzenia z systemem Azure AD dołączono lokalnie na urządzeniu?**
+**Pyt.: Jak I odłączenia urządzenia z systemem Azure AD dołączono lokalnie na urządzeniu?**
 
 **ODP.:** 
 - Do hybrydowej usługi Azure AD urządzeń w miejscu pracy upewnij się wyłączyć rejestracji automatycznej, tak aby zaplanowane zadanie nie ponownie zarejestrować urządzenie. Następnie otwórz wiersz polecenia jako administrator i wpisz `dsregcmd.exe /debug /leave`. To polecenie można również uruchomić jako skrypt na wielu urządzeniach odłączyć zbiorczo.
@@ -107,44 +107,44 @@ Dla wersji systemu operacyjnego Windows niższego poziomu, które znajdują się
 
 ---
 
-**PYT.: Moi użytkownicy zalogować się do urządzeń przyłączonych do usługi Azure AD, które zostały usunięte lub wyłączone w usłudze Azure AD? ** 
+**Pyt.: Moi użytkownicy zalogować się do urządzeń przyłączonych do usługi Azure AD, które zostały usunięte lub wyłączone w usłudze Azure AD? ** 
  **Odp.:** Tak. Windows ma pamięci podręcznej funkcji logowania, aby umożliwić, wcześniej zalogowani użytkownicy szybki dostęp pulpitu, nawet bez połączenia z siecią. Gdy urządzenie jest usunięte lub wyłączone w usłudze Azure AD, nie jest znany dla urządzeń Windows. Dlatego wcześniej zarejestrowany użytkownicy nadal mogą uzyskać dostęp do pulpitu z pamięci podręcznej logowania. Jednak ponieważ urządzenie jest usuwane lub wyłączona, użytkownicy nie mogą korzystać wszystkie zasoby chronione przez dostęp warunkowy oparty na urządzeniu. 
 
 Użytkownicy, którzy jeszcze nie już zalogowany nie może uzyskać dostęp do urządzenia, się bez logowania pamięci podręcznej włączone dla nich. 
 
 ---
 
-**PYT.: Można wyłączonych lub usuniętych użytkowników logowania się na urządzeniach przyłączonych do usługi Azure AD ** 
+**Pyt.: Można wyłączonych lub usuniętych użytkowników logowania się na urządzeniach przyłączonych do usługi Azure AD ** 
  **Odp.:** Tak, ale tylko przez ograniczony czas. Gdy użytkownik jest usunięte lub wyłączone w usłudze Azure AD, nie od razu wiadomo na urządzeniu Windows. Dlatego wcześniej zarejestrowany użytkownicy mogą uzyskiwać dostęp do pulpitu z pamięci podręcznej logowania. Gdy urządzenie jest świadome danych stanu użytkownika (zwykle w mniej niż 4 godziny), Windows blokuje tych użytkownikom uzyskiwanie dostępu do pulpitu. Użytkownik jest usunięte lub wyłączone w usłudze Azure AD, wszystkie tokeny zostanie odwołana, dlatego nie mają dostępu do żadnych zasobów. 
 
 Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zarejestrowane w nie może uzyskać dostępu urządzenia, się bez logowania pamięci podręcznej włączone dla nich. 
 
 ---
 
-**PYT.: Moje użytkownicy nie może wyszukać drukarki z usługi Azure AD urządzeń w miejscu pracy. Jak włączyć drukowanie z usługi Azure AD urządzeń w miejscu pracy?**
+**Pyt.: Moje użytkownicy nie może wyszukać drukarki z usługi Azure AD urządzeń w miejscu pracy. Jak włączyć drukowanie z usługi Azure AD urządzeń w miejscu pracy?**
 
 **ODP.:** Do wdrażania drukarek dla usługi Azure AD urządzeń w miejscu pracy, zobacz [drukowania chmury hybrydowej](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Należy na lokalnym serwerze systemu Windows do wdrożenia drukowania chmury hybrydowej. Oparte na chmurze usługi drukowania nie jest obecnie dostępna. 
 
 ---
 
-**PYT.: Jak połączyć do zdalnej usługi Azure AD dołączonym do urządzenia? ** 
+**Pyt.: Jak połączyć do zdalnej usługi Azure AD dołączonym do urządzenia? ** 
  **Odp.:** Zapoznaj się z artykułem https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc Aby uzyskać szczegółowe informacje.
 
 ---
 
-**PYT.: Dlaczego moja użytkownicy widzą "Nie można dostać się tam z tego miejsca"?**
+**Pyt.: Dlaczego moja użytkownicy widzą "Nie można dostać się tam z tego miejsca"?**
 
 **ODP.:** Jeśli skonfigurowano niektóre zasady dostępu warunkowego będą musieli stan określonego urządzenia, a urządzenie nie spełnia kryteria, użytkownicy są zablokowane i ten komunikat jest wyświetlany. Oceń zasady dostępu warunkowego i upewnij się, że urządzenie jest w stanie spełnić kryteria, aby uniknąć tego komunikatu.
 
 ---
 
-**PYT.: Dlaczego niektóre z moich użytkowników czy nie MFA monity w usłudze Azure AD uzyskasz przyłączonych do urządzeń?**
+**Pyt.: Dlaczego niektóre z moich użytkowników czy nie MFA monity w usłudze Azure AD uzyskasz przyłączonych do urządzeń?**
 
 **ODP.:** Jeśli użytkownik łączy lub rejestruje urządzenie w usłudze Azure AD przy użyciu uwierzytelniania wieloskładnikowego, samo urządzenie staną się zaufanych czynnika dla określonego użytkownika. Następnie zawsze wtedy, gdy ten sam użytkownik loguje się do urządzenia i uzyskuje dostęp do aplikacji, usługi Azure AD uwzględnia urządzenia jako drugiego składnika i umożliwia użytkownikowi uzyskiwanie dostępu do swoich aplikacji bez dodatkowych monitów uwierzytelniania Wieloskładnikowego. To zachowanie nie ma zastosowania do żadnego innego użytkownika, logując się do tego urządzenia, dzięki czemu wszystkim innym użytkownikom uzyskiwanie dostępu do tego urządzenia nadal jest proszony o żądania uwierzytelniania MFA przed uzyskaniem dostępu do aplikacji, które wymagają usługi MFA.
 
 ---
 
-**PYT.: Dlaczego otrzymuję komunikat "Nazwa użytkownika lub hasło jest niepoprawne" dla urządzenia, które mogę po prostu przyłączył się do usługi Azure AD?**
+**Pyt.: Dlaczego otrzymuję komunikat "Nazwa użytkownika lub hasło jest niepoprawne" dla urządzenia, które mogę po prostu przyłączył się do usługi Azure AD?**
 
 **ODP.:** W tym scenariuszu typowe przyczyny są następujące:
 
@@ -158,13 +158,13 @@ Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zare
 
 ---
 
-**PYT.: Dlaczego widzę "Niestety... Wystąpił błąd!" okno dialogowe, gdy próbuję, czy usługa Azure AD join komputera?**
+**Pyt.: Dlaczego widzę "Niestety... Wystąpił błąd!" okno dialogowe, gdy próbuję, czy usługa Azure AD join komputera?**
 
 **ODP.:** Jest to wynik konfigurowania rejestracji w usłudze Azure Active Directory przy użyciu usługi Intune. Upewnij się, że użytkownik próby wykonania sprzężenia Azure AD ma poprawne przypisano licencji usługi Intune. Aby uzyskać więcej informacji, zobacz [skonfigurować zarządzanie urządzeniami Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
 
 ---
 
-**PYT.: Dlaczego próba usługi Azure AD join awarii komputera mimo że nie mogę uzyskać informacje o błędzie?**
+**Pyt.: Dlaczego próba usługi Azure AD join awarii komputera mimo że nie mogę uzyskać informacje o błędzie?**
 
 **ODP.:** Prawdopodobną przyczyną jest to, że użytkownik jest zalogowany do urządzenia przy użyciu konta wbudowanego konta administratora lokalnego. Przed użyciem usługi Azure Active Directory Join, aby ukończyć instalację, należy utworzyć innego konta lokalnego. 
 
@@ -172,7 +172,7 @@ Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zare
 
 ## <a name="hybrid-azure-ad-join-faq"></a>Często zadawane pytania hybrydowe przyłączanie do usługi Azure AD
 
-**PYT.: Gdzie mogę znaleźć, rozwiązywanie problemów z informacji dotyczących diagnozowania niepowodzeń przyłączanie do hybrydowej usługi Azure AD?**
+**Pyt.: Gdzie mogę znaleźć, rozwiązywanie problemów z informacji dotyczących diagnozowania niepowodzeń przyłączanie do hybrydowej usługi Azure AD?**
 
 **ODP.:** Aby uzyskać informacje dotyczące rozwiązywania problemów, zobacz:
 
@@ -180,7 +180,7 @@ Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zare
 
 - [Rozwiązywanie problemów z autorejestracją domeny komputery przyłączone do usługi Azure AD dla klientów niskiego poziomu Windows](troubleshoot-hybrid-join-windows-legacy.md)
  
-**PYT.: Dlaczego są wyświetlane zduplikowane usługi Azure AD zarejestrowanej rekord dla mojego systemu Windows 10 hybrydowej usługi Azure AD urządzenia połączonego z listy urządzeń usługi Azure AD?**
+**Pyt.: Dlaczego są wyświetlane zduplikowane usługi Azure AD zarejestrowanej rekord dla mojego systemu Windows 10 hybrydowej usługi Azure AD urządzenia połączonego z listy urządzeń usługi Azure AD?**
 
 **ODP.:** Gdy użytkownicy dodać swoje konto do aplikacji na urządzeniu przyłączonym do domeny, można wyświetlony monit o "Dodaj konta do Windows?". Klikając pozycję "Yes" w wierszu polecenia doprowadziłoby do urządzenia do zarejestrowania w usłudze Azure AD i typ zaufania oznaczony jako zarejestrowane z usługi Azure AD. Po włączeniu dołączenie do hybrydowej usługi Azure AD w organizacji, urządzenia otrzymają również hybrydowe przyłączone do usługi Azure AD. W rezultacie będzie, dwa stany urządzeń, które pojawią się na tym samym urządzeniu. Jednakże dołączenie do hybrydowej usługi Azure AD ma pierwszeństwo przed stan usługi Azure AD zarejestrowany. Dlatego urządzenia będą uznawane za dołączenie do usługi Azure AD hybrydowej uwierzytelniania i oceny dostępu warunkowego. Tak można bezpiecznie usunąć rekord urządzenia zarejestrowane z usługi Azure AD z portalu usługi Azure AD. Przejrzyj [w tej sekcji](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know) hybrydowy usługi Azure AD join artykuł, aby dowiedzieć się, jak można uniknąć lub czyszczenia to podwójną stanu na komputerze z systemem Windows 10. 
 
@@ -188,11 +188,11 @@ Usunięto lub wyłączonych użytkowników, którzy nie zostały wcześniej zare
 
 ## <a name="azure-ad-register-faq"></a>Rejestrowanie usługi Azure AD — często zadawane pytania
 
-**PYT.: Czy mogę zarejestrować urządzenia BYOD systemu Android lub iOS**
+**Pyt.: Czy mogę zarejestrować urządzenia BYOD systemu Android lub iOS**
 
 **ODP.:** Tak, ale tylko przy użyciu usługi rejestracji urządzeń na platformie Azure oraz dla klientów hybrydowych. Nie jest obsługiwana przy użyciu usługi rejestracji urządzeń lokalnych w usługach AD FS.
 
-**PYT.: Jak mogę zarejestrować urządzenia z systemem macOS**
+**Pyt.: Jak mogę zarejestrować urządzenia z systemem macOS**
 
 **ODP.:** Aby zarejestrować urządzenia z systemem macOS:
 

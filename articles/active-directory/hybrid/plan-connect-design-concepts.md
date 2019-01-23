@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Projektowanie pojęcia | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Projektowanie pojęcia | Dokumentacja firmy Microsoft'
 description: Ten temat wyszczególnia niektórych obszarach projektowania wdrożenia
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4114a6c0-f96a-493c-be74-1153666ce6c9
 ms.service: active-directory
@@ -16,14 +16,14 @@ ms.workload: Identity
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bf5384333504df023e98650934c77192f23f9f71
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3d6141ac1fabe1a0391e6ad23276e5bc5ea1afb6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945998"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471790"
 ---
-# <a name="azure-ad-connect-design-concepts"></a>Usługi Azure AD Connect: Zagadnienia dotyczące projektowania
+# <a name="azure-ad-connect-design-concepts"></a>Program Azure AD Connect: Zagadnienia dotyczące projektowania
 Ten dokument ma na celu opisania obszary, które należy uważać za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest uzyskać szczegółowe informacje dotyczące określonych obszarów i te pojęcia krótko opisano w innych dokumentów.
 
 ## <a name="sourceanchor"></a>sourceAnchor
@@ -44,7 +44,7 @@ Wartość atrybutu musi postępuj zgodnie z następującymi zasadami:
 
 * Mniej niż 60 znaków
   * Znaki, które nie były a – z, A-Z lub 0-9 kodowania i wliczane do 3 znaków
-* Zawiera znaki specjalne: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ (< >) '; : , [ ] " \@ _
+* Zawiera znaki specjalne: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " \@ _
 * Musi być unikatowa w skali globalnej
 * Musi być ciąg, liczba całkowita lub dane binarne
 * Nie powinna być oparta na nazwę użytkownika, ponieważ mogą one zmienić

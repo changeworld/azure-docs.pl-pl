@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050595"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464225"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Zdalne monitorowanie wyborów związanych z architekturą
 
@@ -45,7 +45,7 @@ W tej sekcji przedstawiono Wybór technologii wprowadzonych w rozwiązaniu do zd
 
 ![Core Diagram](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png)
 
-### <a name="cloud-gateway"></a>Brama chmury
+### <a name="cloud-gateway"></a>Cloud Gateway
 
 Usługa Azure IoT Hub jest używany jako brama chmury rozwiązanie monitorowania zdalnego. [Usługa IoT Hub](https://azure.microsoft.com/services/iot-hub/) oferuje bezpiecznej, dwukierunkowej komunikacji z urządzeniami.
 
@@ -61,7 +61,7 @@ Do przetwarzania strumieniowego rozwiązania do zdalnego monitorowania korzysta 
 
 ### <a name="storage"></a>Magazyn
 
-W przypadku usługi storage akceleratora rozwiązania monitorowania zdalnego używa usługi Azure Time Series Insights i Azure Cosmos DB. Usługa Azure Time Series Insights są przechowywane komunikaty przechodzącego przez usługę IoT Hub z połączonych urządzeń. Akcelerator rozwiązań używa usługi Azure Cosmos DB na potrzeby wszystkie magazyny takie jak zimnego magazynu, definicje zasad, alarmy i ustawień konfiguracji.
+W przypadku usługi storage akceleratora rozwiązania monitorowania zdalnego używa usługi Azure Time Series Insights i Azure Cosmos DB. Usługa Azure Time Series Insights są przechowywane komunikaty przechodzącego przez usługę IoT Hub z połączonych urządzeń. Akcelerator rozwiązań używa usługi Azure Cosmos DB na potrzeby wszystkie magazyny takie jak zimnego magazynu, definicje zasad, alertów i ustawień konfiguracji.
 
 Usługa Azure Cosmos DB to rozwiązanie zalecane magazynu ciepłego ogólnego przeznaczenia dla aplikacji IoT. Jednak rozwiązań, takich jak Azure Time Series Insights i Azure Data Lake są odpowiednie dla wielu przypadków użycia. Za pomocą usługi Azure Time Series Insights możesz uzyskać lepszy wgląd w dane szeregów czasowych, czujników, wykrywając trendów i anomalii. Ta funkcja umożliwia przeprowadzanie analiz głównych przyczyn i unikanie kosztownych przestojów.
 
@@ -70,7 +70,7 @@ Usługa Azure Cosmos DB to rozwiązanie zalecane magazynu ciepłego ogólnego pr
 
 ### <a name="business-integration"></a>Integracja biznesowa
 
-Integracja biznesowa w rozwiązaniu do zdalnego monitorowania jest ograniczona do generowania alarmów, które są umieszczane w magazynie bez wyłączania zasilania. Połącz rozwiązania z usługą Azure Logic Apps, aby zaimplementować bardziej scenariusze integracji.
+Integracja biznesowa w rozwiązaniu do zdalnego monitorowania jest ograniczona do generowania alertów, które są umieszczane w magazynie bez wyłączania zasilania. Połącz rozwiązania z usługą Azure Logic Apps, aby zaimplementować bardziej scenariusze integracji.
 
 ### <a name="user-interface"></a>Interfejs użytkownika
 

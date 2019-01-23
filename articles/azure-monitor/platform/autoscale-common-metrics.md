@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: d12edc2023deb69118d7c02e053cd2525f6ae684
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.openlocfilehash: 736ff5565bb279d26e686421cc13f54a73b1c7e9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437728"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461097"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Usługa Azure Monitor autoscaling często używane metryki
 Usługa Azure Monitor autoscaling umożliwia skalowanie liczby wystąpień uruchomionych w górę lub w dół, na podstawie danych telemetrycznych (metryki). W tym dokumencie opisano typowe metryki, które prawdopodobnie chcą używać. W witrynie Azure portal można wybrać metryki zasobu, aby przeskalować. Jednak możesz również dowolnej metryce z skalowanie przez inny zasób.
@@ -69,14 +69,14 @@ Można utworzyć alertu dla następujących metryk:
 | Transfery \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
 | Odczyty \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
 | Zapisy \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
-| \Disk \PhysicalDisk (%) (_łącznie) bajty/s |Bajty na sekundę |
+| \PhysicalDisk(_Total)\Disk Bytes/sec |Bajty na sekundę |
 | \Disk \PhysicalDisk (%) (_łącznie) Odczytane bajty/s |Bajty na sekundę |
 | Bajty zapisu \Disk \PhysicalDisk (%) (_łącznie) / s |Bajty na sekundę |
-| \Avg \PhysicalDisk (%) (_łącznie). Długość kolejki dysku |Licznik |
-| \Avg \PhysicalDisk (%) (_łącznie). Długość kolejki odczytu dysku |Licznik |
-| \Avg \PhysicalDisk (%) (_łącznie). Długość kolejki zapisu dysku |Licznik |
+| \PhysicalDisk(_Total)\Avg. Długość kolejki dysku |Licznik |
+| \PhysicalDisk(_Total)\Avg. Długość kolejki odczytu dysku |Licznik |
+| \PhysicalDisk(_Total)\Avg. Długość kolejki zapisu dysku |Licznik |
 | \LogicalDisk(_Total)\% wolnego miejsca |Procent |
-| Megabajtów \Free \LogicalDisk (%) (_łącznie) |Licznik |
+| \LogicalDisk(_Total)\Free Megabytes |Licznik |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Metryki systemu operacyjnego gościa, maszyny wirtualne systemu Linux
 Po utworzeniu maszyny Wirtualnej na platformie Azure diagnostics jest domyślnie włączona, przy użyciu rozszerzenia diagnostyki.
@@ -149,7 +149,7 @@ Można alert po wystąpieniu lub przez te metryki.
 | DiskQueueLength |Licznik |
 | HttpQueueLength |Licznik |
 | BytesReceived |Bajty |
-| Żądania |Bajty |
+| BytesSent |Bajty |
 
 ## <a name="commonly-used-storage-metrics"></a>Często używane metryki magazynu
 Możesz skalować, długość kolejki magazynu, który jest liczba komunikatów w kolejce magazynu. Długość kolejki magazynu to specjalne metryki i próg jest liczba komunikatów na wystąpienie. Na przykład jeśli istnieją dwa wystąpienia i próg jest ustawiony na 100, skalowanie występuje, gdy łączna liczba komunikatów w kolejce wynosi 200. Który może być 100 wiadomości dla każdego wystąpienia, 120 i 80 lub wszelkie inne kombinacje dodającego maksymalnie 200 lub więcej.
@@ -184,6 +184,7 @@ Dla zestawów skalowania maszyn wirtualnych, możesz zaktualizować ustawienie a
 ```
 
 > [!NOTE]
-> Dla usługi Service Bus nie istnieje pojęcie grup zasobów, ale usługi Azure Resource Manager tworzy domyślną grupę zasobów, na region. Grupa zasobów ma zazwyczaj format "Default - ServiceBus-[region]". Na przykład "Domyślne-ServiceBus-EastUS", "Domyślna-ServiceBus-WestUS", "Domyślne-ServiceBus-AustraliaEast" itp.
+> Dla usługi Service Bus nie istnieje pojęcie grup zasobów, ale usługi Azure Resource Manager tworzy domyślną grupę zasobów, na region. Grupa zasobów ma zazwyczaj format "Default - ServiceBus-[region]". For example, 'Default-ServiceBus-EastUS', 'Default-ServiceBus-WestUS', 'Default-ServiceBus-AustraliaEast' etc.
 >
 >
+
