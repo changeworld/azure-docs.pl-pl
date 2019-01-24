@@ -28,7 +28,7 @@ Zobacz [Skorowidz języka Kusto](https://docs.microsoft.com/azure/kusto/query/) 
 ## <a name="events"></a>Zdarzenia
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Wyszukać zdarzenia na poziomie aplikacji określana jako "Kryptograficznych"
-W tym przykładzie wyszukuje **zdarzenia** tabeli rekordy, w którym **EventLog** jest _aplikacji_ i **RenderedDescription** zawiera _kryptograficznych_. Zawiera rekordy z ostatnich 24 godzin.
+W tym przykładzie tabela **Zdarzenia** jest przeszukiwana pod kątem rekordów, które w parametrze **EventLog** mają wartość _Application_ oraz zawierają ciąg _cryptographic_ w parametrze **RenderedDescription**. Wyświetlane są rekordy z ostatnich 24 godzin.
 
 ```Kusto
 Event
@@ -208,7 +208,7 @@ Perf
 ## <a name="protection-status"></a>Stan ochrony
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Komputery z niezgłaszających ochrony czas trwania stanu
-W tym przykładzie wyświetla listę komputerów, których stan ochrony _Niezgłaszających_ i czas trwania znajdowały się w tym stanie.
+W tym przykładzie wyświetlana jest lista komputerów, których stan ochrony to _Not Reporting_, oraz informacja o tym, przez jaki czas komputery znajdowały się w tym stanie.
 
 ```Kusto
 ProtectionStatus
@@ -249,7 +249,7 @@ SecurityEvent
 ```
 
 ### <a name="count-security-events-related-to-permissions"></a>Liczba zdarzeń zabezpieczeń powiązanych z uprawnieniami
-Ten przykład pokazuje liczbę **securityEvent** rekordy, w którym **działania** kolumna zawiera całe wyrażenie _uprawnienia_. Kwerenda dotyczy rekordy utworzone w ciągu ostatnich 30 minut.
+Ten przykład pokazuje liczbę rekordów **securityEvent**, w których kolumna **Działania** zawiera całe wyrażenie _Permissions_. Kwerenda dotyczy rekordów utworzonych w ciągu ostatnich 30 minut.
 
 ```Kusto
 SecurityEvent
