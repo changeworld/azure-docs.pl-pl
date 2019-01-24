@@ -4,7 +4,7 @@ description: Dowiedz się, jak pobrać skrypt programu PowerShell umożliwiając
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4afe0c73-aee8-47f1-a6cb-2d71fd6719d1
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 07239e3411bc8df06cdff731343649867b59a3c9
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ad34a5c3d72ec1f7fce0b56a85fd7c9cba007366
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213098"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824579"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Samouczek: jak pobrać skrypt w celu uzyskania dostępu do dzienników logowania i jak go używać
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 128e389a8d6928f9f133fe9d649d0fc7e982e4df
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 57d52412648cbe8a0791aa306075018a2092bf51
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402364"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827333"
 ---
 # <a name="about-azure-vm-backup"></a>Dotyczące funkcji Kopia zapasowa maszyny Wirtualnej platformy Azure
 
@@ -40,7 +40,7 @@ Oto, jak usługi Azure Backup wykonuje kopię zapasową maszyn wirtualnych platf
 
 Usługa Azure Backup nie szyfruje danych jako część procesu tworzenia kopii zapasowej. Usługa Azure Backup obsługuje kopii zapasowych maszyn wirtualnych platformy Azure, które są szyfrowane za pomocą usługi Azure Disk Encryption.
 
-- Kopii zapasowych maszyn wirtualnych szyfrowane za pomocą funkcji Bitlocker szyfrowania Key(BEK) tylko, a klucz szyfrowania bloków oraz klucz szyfrowania Key(KEK) jest obsługiwany, zarządzane i niezarządzane maszyn wirtualnych platformy Azure.
+- Kopii zapasowych maszyn wirtualnych szyfrowane za pomocą funkcji BitLocker szyfrowania Key(BEK) tylko, a klucz szyfrowania bloków oraz klucz szyfrowania Key(KEK) jest obsługiwany, zarządzane i niezarządzane maszyn wirtualnych platformy Azure.
 - BEK(secrets) i KEK(keys) kopii zapasowej są szyfrowane, dzięki czemu mogą odczytywać i używane tylko wtedy, gdy przywrócone do magazynu kluczy przez autoryzowanych użytkowników.
 - Ponieważ klucz szyfrowania bloków jest również kopię zapasową, w scenariuszach, gdzie klucz szyfrowania bloków zostało utracone lub autoryzowanych użytkowników można przywrócić klucz szyfrowania bloków do magazynu kluczy i odzyskać zaszyfrowanych maszyn wirtualnych. Kluczy i wpisów tajnych zaszyfrowanych maszyn wirtualnych kopię zapasową w postaci zaszyfrowanej, dzięki czemu może odczytywać nieautoryzowanym użytkownikom ani platformy Azure, lub użyj kopii zapasowej kluczy i wpisów tajnych. Tylko użytkownicy z odpowiedni poziom uprawnień można i przywracanie kopii zapasowej zaszyfrowanych maszyn wirtualnych, a także kluczy i wpisów tajnych.
 

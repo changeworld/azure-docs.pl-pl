@@ -1,55 +1,50 @@
-items:
 - name: Dokumentacja usługi Azure Resource Graph
   href: index.yml
 - name: Omówienie
   items:
-  - name: Omówienie usługi Azure Resource Graph
-    displayName: resource manager, query language, rbac, permissions
-    href: overview.md
+    - name: Omówienie usługi Azure Resource Graph
+      displayName: 'resource manager, query language, rbac, permissions'
+      href: overview.md
 - name: Przewodniki Szybki start
-  items:
-  - name: Uruchamianie pierwszego zapytania — interfejs wiersza polecenia platformy Azure
-    displayName: extension, docker
-    href: first-query-azurecli.md
-  - name: Uruchamianie pierwszego zapytania — program PowerShell
-    displayName: module, docker, Az.ResourceGraph
-    href: first-query-powershell.md
   expanded: true
+  items:
+    - name: Uruchamianie pierwszego zapytania — interfejs wiersza polecenia platformy Azure
+      displayName: 'extension, docker'
+      href: first-query-azurecli.md
+    - name: Uruchamianie pierwszego zapytania — program PowerShell
+      displayName: 'module, docker, Az.ResourceGraph'
+      href: first-query-powershell.md
 - name: Przykłady
-  items:
-  - name: Zapytania dla początkujących
-    displayName: query language, data explorer, count, list, show
-    href: ./samples/starter.md
-  - name: Zapytania zaawansowane
-    displayName: query language, data explorer, list, regex
-    href: ./samples/advanced.md
   expanded: true
+  items:
+    - name: Zapytania dla początkujących
+      displayName: 'query language, data explorer, count, list, show'
+      href: ./samples/starter.md
+    - name: Zapytania zaawansowane
+      displayName: 'query language, data explorer, list, regex'
+      href: ./samples/advanced.md
 - name: Pojęcia
-  items:
-  - name: Opis języka zapytań
-    displayName: query language, data explorer, tabular, operators, functions
-    href: ./concepts/query-language.md
-  - name: Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
-    displayName: vms, public ip
-    href: ./concepts/explore-resources.md
   expanded: true
+  items:
+    - name: Opis języka zapytań
+      displayName: 'query language, data explorer, tabular, operators, functions'
+      href: ./concepts/query-language.md
+    - name: Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
+      displayName: 'vms, public ip'
+      href: ./concepts/explore-resources.md
 - name: Dokumentacja
   items:
-  - name: Interfejs API REST
-    href: /rest/api/azureresourcegraph/resources/resources
+    - name: Azure PowerShell
+      href: /powershell/module/az.resourcegraph/
+    - name: Interfejs API REST
+      href: /rest/api/azureresourcegraph/resources/resources
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: UserVoice
-    href: https://feedback.azure.com/forums/915958-azure-governance
-  - name: Kanał dotyczący nadzoru w usłudze YouTube
-    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: d49d7dbd8dc91099f794635ae08cb24bab385d27
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320008"
+    - name: Harmonogram działania dla platformy Azure
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Kalkulator cen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: UserVoice
+      href: 'https://feedback.azure.com/forums/915958-azure-governance'
+    - name: Kanał dotyczący nadzoru w usłudze YouTube
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

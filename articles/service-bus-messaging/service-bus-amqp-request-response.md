@@ -3,23 +3,23 @@ title: Protokołu AMQP 1.0 w operacjach na podstawie odpowiedzi żądań usługi
 description: Lista operacji/odpowiedzi na podstawie żądań usługi Microsoft Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 6ba3d8e4273d0f2ce2626d8876c386a3714d5355
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 113ed80910e396361396a9c1298fc04a55ac4800
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159098"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852480"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Protokołu AMQP 1.0 w usłudze Microsoft Azure Service Bus: operacje na podstawie odpowiedzi żądań
 
@@ -226,10 +226,10 @@ Mapa reprezentujący wiadomość musi zawierać następujące wpisy:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator komunikatu|ciąg|Yes|`amqpMessage.Properties.MessageId` jako ciąg|  
-|Identyfikator sesji|ciąg|Nie|`amqpMessage.Properties.GroupId as string`|  
-|Klucz partycji|ciąg|Nie|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|za pomocą — klucza partycji|ciąg|Nie|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|message-id|ciąg|Yes|`amqpMessage.Properties.MessageId` jako ciąg|  
+|session-id|ciąg|Nie|`amqpMessage.Properties.GroupId as string`|  
+|partition-key|ciąg|Nie|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-partition-key|ciąg|Nie|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|Tablica bajtów|Yes|Komunikat o komunikacji sieciowej zakodowane w formacie protokołu AMQP 1.0.|  
   
 #### <a name="response"></a>Odpowiedź  
@@ -300,7 +300,7 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator sesji|ciąg|Yes|Identyfikator sesji.|  
+|session-id|ciąg|Yes|Identyfikator sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -336,7 +336,7 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
 |---------|----------------|--------------|--------------------|  
 |from-sequence-number|długi|Yes|Numer sekwencji, który ma wyznaczać początek podglądu.|  
 |message-count|int|Yes|Maksymalna liczba wiadomości do wglądu.|  
-|Identyfikator sesji|ciąg|Yes|Identyfikator sesji.|  
+|session-id|ciąg|Yes|Identyfikator sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -376,7 +376,7 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator sesji|ciąg|Yes|Identyfikator sesji.|  
+|session-id|ciąg|Yes|Identyfikator sesji.|  
 |Stan sesji|Tablica bajtów|Yes|Nieprzezroczysty dane binarne.|  
   
 #### <a name="response"></a>Odpowiedź  
@@ -405,7 +405,7 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator sesji|ciąg|Yes|Identyfikator sesji.|  
+|session-id|ciąg|Yes|Identyfikator sesji.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -457,7 +457,7 @@ Treści komunikatu odpowiedzi muszą składać się z **wartość amqp** sekcji 
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
 |pomiń|int|Yes|Liczba pominiętych sesji, jeśli kod stanu 200.|  
-|identyfikatory sesji|Tablica ciągów|Yes|Tablica identyfikatorów, jeśli kod stanu 200.|  
+|sessions-ids|Tablica ciągów|Yes|Tablica identyfikatorów, jeśli kod stanu 200.|  
   
 ## <a name="rule-operations"></a>Reguły operacji  
   
@@ -477,33 +477,33 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
 |Nazwa reguły|ciąg|Yes|Nazwa reguły, nie wliczając nazw subskrypcji i tematów.|  
-|Opis reguły|map|Yes|Opis reguły określone w następnej sekcji.|  
+|rule-description|map|Yes|Opis reguły określone w następnej sekcji.|  
   
 **Opis reguły** Mapa musi zawierać następujące wpisy, których **filtrem sql** i **filtr korelacji** wzajemnie się wykluczają:  
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
 |sql-filter|map|Yes|`sql-filter`, jak określono w następnej sekcji.|  
-|Filtr korelacji|map|Yes|`correlation-filter`, jak określono w następnej sekcji.|  
+|correlation-filter|map|Yes|`correlation-filter`, jak określono w następnej sekcji.|  
 |sql-rule-action|map|Yes|`sql-rule-action`, jak określono w następnej sekcji.|  
   
 Mapa filtrem sql muszą znajdować się następujące wpisy:  
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Wyrażenie|ciąg|Yes|Wyrażenie filtru SQL.|  
+|expression|ciąg|Yes|Wyrażenie filtru SQL.|  
   
 **Filtr korelacji** Mapa musi zawierać co najmniej jeden z następujących pozycji:  
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Identyfikator korelacji|ciąg|Nie||  
-|Identyfikator komunikatu|ciąg|Nie||  
+|correlation-id|ciąg|Nie||  
+|message-id|ciąg|Nie||  
 |na|ciąg|Nie||  
 |Odpowiedz do|ciąg|Nie||  
 |label|ciąg|Nie||  
-|Identyfikator sesji|ciąg|Nie||  
-|Odpowiedz do sesji identyfikator|ciąg|Nie||  
+|session-id|ciąg|Nie||  
+|reply-to-session-id|ciąg|Nie||  
 |Typ zawartości|ciąg|Nie||  
 |properties|map|Nie|Mapuje do usługi Service Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
   
@@ -511,7 +511,7 @@ Mapa filtrem sql muszą znajdować się następujące wpisy:
   
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Wyrażenie|ciąg|Yes|Wyrażenie akcji SQL.|  
+|expression|ciąg|Yes|Wyrażenie akcji SQL.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -579,7 +579,7 @@ Każdy wpis mapy w tablicy zawiera następujące właściwości:
 
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
-|Opis reguły|Tablica obiektów opisem|Yes|`com.microsoft:rule-description:list` z obsługą protokołu AMQP opisem kodu 0x0000013700000004| 
+|rule-description|Tablica obiektów opisem|Yes|`com.microsoft:rule-description:list` z obsługą protokołu AMQP opisem kodu 0x0000013700000004| 
 
 `com.microsoft.rule-description:list` jest tablicą obiektów opisem. Tablica obejmuje następujące funkcje:
 
@@ -647,7 +647,7 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
 |Klucz|Typ wartości|Wymagane|Wartość zawartości|  
 |---------|----------------|--------------|--------------------|  
 |numery sekwencyjne|Tablica long|Yes|Numery sekwencyjne.|  
-|odbiornik rozliczania trybu|ubyte|Yes|**Odbiornik rozliczania** trybu, jak to określono w AMQP core 1.0.|  
+|receiver-settle-mode|ubyte|Yes|**Odbiornik rozliczania** trybu, jak to określono w AMQP core 1.0.|  
   
 #### <a name="response"></a>Odpowiedź  
 
@@ -690,8 +690,8 @@ Treść żądania musi składać się z **wartość amqp** sekcji zawierającej 
 |---------|----------------|--------------|--------------------|  
 |Stan dyspozycji|ciąg|Yes|completed<br /><br /> porzucone<br /><br /> Zawieszone|  
 |tokeny blokady|Tablica identyfikator uuid|Yes|Tokeny blokady wiadomości do dyspozycji stanu aktualizacji.|  
-|Przyczyna utraconych wiadomości|ciąg|Nie|Może być ustawiona, jeśli ustawiono stan dyspozycji **zawieszone**.|  
-|Opis utraconych wiadomości|ciąg|Nie|Może być ustawiona, jeśli ustawiono stan dyspozycji **zawieszone**.|  
+|deadletter-reason|ciąg|Nie|Może być ustawiona, jeśli ustawiono stan dyspozycji **zawieszone**.|  
+|deadletter-description|ciąg|Nie|Może być ustawiona, jeśli ustawiono stan dyspozycji **zawieszone**.|  
 |właściwości modyfikować|map|Nie|Lista usługi Service Bus obsługiwanych przez brokera właściwości wiadomości, aby zmodyfikować.|  
   
 #### <a name="response"></a>Odpowiedź  

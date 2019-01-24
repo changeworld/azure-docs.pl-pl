@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a58644deb8d1325fd466d2a4d3a1fc927c83b685
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: bc9907930283e07ef8df826d2e7653b96f116518
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720258"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852052"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -49,7 +49,7 @@ Podczas tworzenia infrastruktury aplikacji na platformie Azure należy zawsze wz
 * powiązane zasoby niezbędne do działania maszyny wirtualnej.
 
 ### <a name="naming"></a>Nazewnictwo
-Maszyna wirtualna ma przypisaną do niej [nazwę](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), a także nazwę komputera skonfigurowaną jako element systemu operacyjnego. Nazwa maszyny wirtualnej może zawierać maksymalnie 15 znaków.
+Maszyna wirtualna ma przypisaną do niej [nazwę](/azure/architecture/best-practices/naming-conventions), a także nazwę komputera skonfigurowaną jako element systemu operacyjnego. Nazwa maszyny wirtualnej może zawierać maksymalnie 15 znaków.
 
 Jeśli dysk systemu operacyjnego zostanie utworzony na platformie Azure, nazwa komputera jest taka sama jak nazwa maszyny wirtualnej. Nazwy mogą się różnić w przypadku [przesłania i użycia własnego obrazu](upload-generalized-managed.md), który zawiera skonfigurowany wcześniej system operacyjny, oraz wykorzystania go do utworzenia maszyny wirtualnej. Jeśli zostanie przesłany własny plik obrazu, zalecamy ustawienie takiej samej nazwy dla komputera w systemie operacyjnym i dla maszyny wirtualnej.
 
@@ -63,7 +63,7 @@ W poniższej tabeli przedstawiono wybrane metody uzyskania dostępu do listy dos
 | Azure Portal |Wybór lokalizacji z listy podczas tworzenia maszyny wirtualnej. |
 | Azure PowerShell |Użycie polecenia [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
 | Interfejs API REST |Użycie operacji [wyświetlania listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations). |
-| Interfejs wiersza polecenia platformy Azure |Użyj operacji [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_list_locations). |
+| Interfejs wiersza polecenia platformy Azure |Użyj operacji [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="vm-size"></a>Rozmiar maszyny wirtualnej
 [Rozmiar](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) maszyny wirtualnej zależy od obciążenia, które ma zostać uruchomione. Wybrany rozmiar ma więc wpływ na takie czynniki jak moc procesora, pamięć i przestrzeń dyskowa. W ramach platformy Azure dostępna jest szeroka gama rozmiarów umożliwiających wykorzystanie produktu do wielu różnych zastosowań.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: 7b742840f461744e0be8c7a4ab4d9b392238de4e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 9558a924ee151f47033178b0762a39e2d1e1f538
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232689"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828319"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Jak tworzyć umożliwiającej płynne przesyłanie strumieniowe aplikacji Windows Store
 
@@ -84,7 +84,7 @@ Aby uzyskać więcej informacji na temat tworzenia aplikacji Windows Store, zoba
 
 | Name (Nazwa) | Wartość |
 | --- | --- |
-| Grupa odwołań |Windows/rozszerzenia |
+| Grupa odwołań |Windows/Extensions |
 | Informacje ogólne |Wybierz pozycję Microsoft Smooth Streaming Client SDK dla systemu Windows 8 i pakiet programu Microsoft Visual C++ Runtime |
 
 1. Kliknij przycisk **OK**. 
@@ -142,7 +142,7 @@ Po dodaniu odwołania, należy wybrać platforma docelowa (x64 lub x86), dodawan
    Formant MediaElement umożliwia odtwarzanie multimediów. Kontrolka suwaka, o nazwie sliderProgress będzie służyć w następnej lekcji do kontrolowania postępu nośnika.
 3. Naciśnij klawisz **CTRL + S** można zapisać pliku.
 
-Formant MediaElement nie obsługuje funkcji Smooth Streaming zawartości out-of-box. Aby włączyć obsługę funkcji Smooth Streaming, należy zarejestrować program obsługi strumienia bajtów Smooth Streaming przez rozszerzenie nazwy pliku i typu MIME.  Aby się zarejestrować, używana jest metoda MediaExtensionManager.RegisterByteStremHandler Windows.Media przestrzeni nazw.
+Formant MediaElement nie obsługuje funkcji Smooth Streaming zawartości out-of-box. Aby włączyć obsługę funkcji Smooth Streaming, należy zarejestrować program obsługi strumienia bajtów Smooth Streaming przez rozszerzenie nazwy pliku i typu MIME.  Aby się zarejestrować, używana jest metoda MediaExtensionManager.RegisterByteStreamHandler Windows.Media przestrzeni nazw.
 
 W tym pliku XAML niektóre procedury obsługi zdarzeń są skojarzone z kontrolki.  Należy zdefiniować te programy obsługi zdarzeń.
 
@@ -821,7 +821,7 @@ Lekcja 3 została ukończona.  W tej lekcji należy dodać funkcjonalność do w
 Smooth Streaming prezentacji może zawierać wiele plików wideo zakodowane za pomocą różne poziomy jakości (szybkości transmisji bitów) i rozwiązania. W tej lekcji umożliwi użytkownikom na wybór ścieżek. W tej lekcji obejmuje następujące procedury:
 
 1. Zmodyfikuj plik XAML
-2. Zmodyfikuj plik behand kodu
+2. Modyfikowanie pliku CodeBehind
 3. Kompilowanie i testowanie aplikacji
 
 **Aby zmodyfikować plik XAML**

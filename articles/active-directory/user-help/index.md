@@ -1,22 +1,17 @@
 ---
 layout: LandingPage
-title: Pomoc dla użytkowników dotycząca uwierzytelniania, aplikacji i zarządzania urządzeniami — Azure Active Directory | Microsoft Docs
-description: Pomoc dla użytkowników jest przeznaczona dla osób, które potrzebują asysty przy konfigurowaniu i używaniu informacji zabezpieczających, weryfikacji dwuetapowej, resetowaniu haseł, zarządzaniu urządzeniami oraz korzystaniu z aplikacji Microsoft Authenticator i portalu Moje aplikacje.
+title: 'Pomoc dla użytkowników dotycząca uwierzytelniania, aplikacji i zarządzania urządzeniami — Azure Active Directory | Microsoft Docs'
+description: 'Pomoc dla użytkowników jest przeznaczona dla osób, które potrzebują asysty przy konfigurowaniu i używaniu informacji zabezpieczających, weryfikacji dwuetapowej, resetowaniu haseł, zarządzaniu urządzeniami oraz korzystaniu z aplikacji Microsoft Authenticator i portalu Moje aplikacje.'
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41926956"
 ---
+
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Pomoc dla użytkowników dotycząca uwierzytelniania, aplikacji i zarządzania urządzeniami
 
 Przygotowaliśmy tę zawartość, aby ułatwić konfigurowanie i używanie informacji zabezpieczających oraz weryfikacji dwuetapowej, pokazać, jak można zresetować własne hasło, jak skonfigurować i dołączyć własne urządzenia usługi Azure Active Directory oraz skonfigurować aplikację Microsoft Authenticator i portal Moje aplikacje i korzystać z nich.
