@@ -1,10 +1,10 @@
 ---
-title: 'Usługi Azure Active Directory Domain Services: Wprowadzenie | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Wprowadzenie | Dokumentacja firmy Microsoft'
 description: Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: 70dee552ec575f4969593eac4e91fdbb18b426f1
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d73d9d269ce4c78c87e718aed752206f88276770
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156191"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857042"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 
@@ -44,14 +44,14 @@ Następne zadanie konfiguracji jest tworzenie sieci wirtualnej platformy Azure i
   > **Twoja domena zarządzana nie można przenieść do innej sieci wirtualnej, po włączeniu usług domenowych Azure AD.** Wybrać właściwą sieć włączyć domenę zarządzaną. Po utworzeniu domeny zarządzanej, nie można jej przenieść do innej sieci wirtualnej bez usuwania domeny zarządzanej. Zaleca się, przeglądając [sieć zagadnienia dotyczące usługi Azure Active Directory Domain Services](active-directory-ds-networking.md) przed kontynuowaniem.  
   >
 
-4. **Tworzenie sieci wirtualnej:** kliknij **Utwórz nową** do tworzenia nowej sieci wirtualnej. Użyj dedykowanej podsieci dla usługi Azure AD Domain Services. Na przykład utwórz podsieć o nazwie "DomainServices", co ułatwia dla innych administratorów zrozumieć, co to jest wdrażana w obrębie podsieci. Kliknij przycisk **OK** po zakończeniu.
+4. **Tworzenie sieci wirtualnej:** Kliknij przycisk **Utwórz nową** do tworzenia nowej sieci wirtualnej. Użyj dedykowanej podsieci dla usługi Azure AD Domain Services. Na przykład utwórz podsieć o nazwie "DomainServices", co ułatwia dla innych administratorów zrozumieć, co to jest wdrażana w obrębie podsieci. Kliknij przycisk **OK** po zakończeniu.
 
     ![Wybierz sieć wirtualną](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
   > [!WARNING]
   > Pamiętaj wybrać przestrzeń adresów, który znajduje się w prywatnej przestrzeni adresów IP. Adresy IP, które nie są jego własnością, które znajdują się w przestrzeni adresów publicznych powodują błędy w usługach domenowych Azure AD.
 
-5. **Istniejąca sieć wirtualna:** Jeśli planujesz wybrać istniejącą sieć wirtualną, [utworzyć dedykowaną podsieć przy użyciu rozszerzenia sieci wirtualnych](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet), a następnie wybierz odpowiednią podsieć. Kliknij przycisk **sieci wirtualnej** wybrać istniejącą sieć wirtualną. Kliknij przycisk **podsieci** pobrania dedykowaną podsieć w istniejącej sieci wirtualnej, w którym należy włączyć domenę zarządzaną. Kliknij przycisk **OK** po zakończeniu.
+5. **Istniejącej sieci wirtualnej:** Jeśli planujesz wybrać istniejącą sieć wirtualną [utworzyć dedykowaną podsieć przy użyciu rozszerzenia sieci wirtualnych](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet), a następnie wybierz odpowiednią podsieć. Kliknij przycisk **sieci wirtualnej** wybrać istniejącą sieć wirtualną. Kliknij przycisk **podsieci** pobrania dedykowaną podsieć w istniejącej sieci wirtualnej, w którym należy włączyć domenę zarządzaną. Kliknij przycisk **OK** po zakończeniu.
 
     ![Wybierz podsieci w sieci wirtualnej](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 

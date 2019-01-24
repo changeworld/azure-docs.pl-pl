@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844655"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824630"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Ramka zabezpieczeń: Kryptografia | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -27,9 +27,9 @@ ms.locfileid: "52844655"
 | **Aplikacja sieci Web** | <ul><li>[Użyj tylko zatwierdzonych symetrycznego blok, szyfrowania i długości kluczy](#cipher-length)</li><li>[Użyj zatwierdzone tryby szyfrowania bloku i wektory inicjacji dla mechanizmów szyfrowania symetrycznego](#vector-ciphers)</li><li>[Użyj zatwierdzone asymetrycznych algorytmów, długości kluczy i dopełnienie](#padding)</li><li>[Użyj zatwierdzone generatorów liczb losowych](#numgen)</li><li>[Nie należy używać szyfrowania symetrycznego strumienia](#stream-ciphers)</li><li>[Użyj zatwierdzone algorytmy wyznaczania wartości skrótu MAC/HMAC/opartych na kluczach](#mac-hash)</li><li>[Użyj tylko zatwierdzonych funkcji mieszania](#hash-functions)</li></ul> |
 | **Baza danych** | <ul><li>[Użyj algorytmów silnego szyfrowania do szyfrowania danych w bazie danych](#strong-db)</li><li>[Powinien być zaszyfrowany i podpisany cyfrowo pakietów usług SSIS](#ssis-signed)</li><li>[Dodaj podpis cyfrowy do obiektów zabezpieczanych krytyczne bazy danych](#securables-db)</li><li>[Użyj programu SQL server EKM do ochrony kluczy szyfrowania](#ekm-keys)</li><li>[Funkcja AlwaysEncrypted klucze szyfrowania, nie powinien uzyskać dostęp do aparatu bazy danych](#keys-engine)</li></ul> |
 | **Urządzenia IoT** | <ul><li>[Bezpiecznie Store klucze szyfrowania na urządzeniu IoT](#keys-iot)</li></ul> | 
-| **Brama chmury IoT** | <ul><li>[Wygeneruje losowy klucz symetryczny wystarczającej długości do uwierzytelniania w usłudze IoT Hub](#random-hub)</li></ul> | 
-| **Klienta mobilnego programu Dynamics CRM** | <ul><li>[Upewnij się, że zasady zarządzania urządzeniami jest w miejscu, wymagane jest użycie numeru PIN, która zezwala na zdalne czyszczenie danych](#pin-remote)</li></ul> | 
-| **Klient programu Outlook usługi Dynamics CRM** | <ul><li>[Upewnij się, że zasady zarządzania urządzeniami znajduje się w miejscu, które wymaga kodu PIN/hasło/automatyczne blokowanie i szyfruje wszystkie dane (np. funkcją Bitlocker)](#bitlocker)</li></ul> | 
+| **IoT Cloud Gateway** | <ul><li>[Wygeneruje losowy klucz symetryczny wystarczającej długości do uwierzytelniania w usłudze IoT Hub](#random-hub)</li></ul> | 
+| **Dynamics CRM Mobile Client** | <ul><li>[Upewnij się, że zasady zarządzania urządzeniami jest w miejscu, wymagane jest użycie numeru PIN, która zezwala na zdalne czyszczenie danych](#pin-remote)</li></ul> | 
+| **Klient programu Outlook usługi Dynamics CRM** | <ul><li>[Upewnij się, że zasady zarządzania urządzeniami znajduje się w miejscu, które wymaga kodu PIN/hasło/automatyczne blokowanie i szyfruje wszystkie dane (np. funkcją BitLocker)](#bitlocker)</li></ul> | 
 | **Tożsamość serwera** | <ul><li>[Upewnij się, że klucze podpisywania są przenoszone podczas korzystania z tożsamości serwera](#rolled-server)</li><li>[Upewnij się, że identyfikator klienta silną kryptograficznie, klucz tajny klienta używany na serwerze tożsamości](#client-server)</li></ul> | 
 
 ## <a id="cipher-length"></a>Użyj tylko zatwierdzonych symetrycznego blok, szyfrowania i długości kluczy
@@ -140,7 +140,7 @@ ms.locfileid: "52844655"
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | [Dodaj podpis (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **Kroki** | W przypadkach, w której integralność krytyczne zabezpieczanego bazy danych ma do weryfikacji należy używać podpisów cyfrowych. Zabezpieczanych obiektów bazy danych, takich jak procedury składowanej, funkcji, zestawu lub wyzwalacza mogą być podpisane cyfrowo. Poniżej znajduje się przykład, gdy może to być przydatne: Poinformuj nas, że ISV (niezależny dostawca oprogramowania) udostępnia obsługę oprogramowania dostarczone do jednego ze swoich klientów. Przed świadczenie pomocy technicznej, niezależny dostawca oprogramowania, będzie chciała upewnij się, bazę danych zabezpieczanego w oprogramowaniu nie został zmodyfikowany przez pomyłkę lub przez złośliwe próby. Jeśli zabezpieczanego są podpisane cyfrowo, niezależny dostawca oprogramowania można sprawdzić podpis cyfrowy i sprawdzić jego integralność.| 
+| **Kroki** | W przypadkach, w której integralność krytyczne zabezpieczanego bazy danych ma do weryfikacji należy używać podpisów cyfrowych. Zabezpieczanych obiektów bazy danych, takich jak procedury składowanej, funkcji, zestawu lub wyzwalacza mogą być podpisane cyfrowo. Poniżej przedstawiono przykład, gdy może to być przydatne: Poinformuj nas, że ISV (niezależny dostawca oprogramowania) ma pod warunkiem, wsparcie dla oprogramowania dostarczone do jednego ze swoich klientów. Przed świadczenie pomocy technicznej, niezależny dostawca oprogramowania, będzie chciała upewnij się, bazę danych zabezpieczanego w oprogramowaniu nie został zmodyfikowany przez pomyłkę lub przez złośliwe próby. Jeśli zabezpieczanego są podpisane cyfrowo, niezależny dostawca oprogramowania można sprawdzić podpis cyfrowy i sprawdzić jego integralność.| 
 
 ## <a id="ekm-keys"></a>Użyj programu SQL server EKM do ochrony kluczy szyfrowania
 
@@ -159,7 +159,7 @@ ms.locfileid: "52844655"
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
-| **Odpowiednich technologii** | Azure SQL, lokalnego |
+| **Odpowiednich technologii** | SQL Azure, OnPrem |
 | **Atrybuty**              | MsSQL2016 wersja — wersja V12, SQL |
 | **Odwołania**              | [Zawsze szyfrowane (aparat bazy danych)](https://msdn.microsoft.com/library/mt163865) |
 | **Kroki** | Always Encrypted to funkcja zaprojektowanych w celu ochrony poufnych danych, takich jak numery kart kredytowych czy narodowe numery identyfikacyjne (np. USA numery ubezpieczenia społecznego), przechowywane w bazach danych Azure SQL Database lub SQL Server. Funkcja Always Encrypted umożliwia klientom szyfrowanie cennych danych wewnątrz aplikacji klienckich i nigdy nie ujawniania kluczy szyfrowania z aparatem bazy danych (bazy danych SQL Database lub SQL Server). W wyniku Always Encrypted umożliwia rozdzielenie tych, którzy są właścicielami danych (i mogą je wyświetlać) oraz tych, którzy zarządzania danymi (ale nie powinny mieć dostępu) |
@@ -191,7 +191,7 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Brama chmury IoT | 
+| **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | Wybór bramy — usługi Azure IoT Hub |
@@ -202,14 +202,14 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Klienta mobilnego programu Dynamics CRM | 
+| **Składnik**               | Dynamics CRM Mobile Client | 
 | **Faza SDL**               | Wdrożenie |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
 | **Kroki** | Upewnij się, że zasady zarządzania urządzeniami jest w miejscu, wymagane jest użycie numeru PIN, która zezwala na zdalne czyszczenie danych |
 
-## <a id="bitlocker"></a>Upewnij się, że zasady zarządzania urządzeniami znajduje się w miejscu, które wymaga kodu PIN/hasło/automatyczne blokowanie i szyfruje wszystkie dane (np. funkcją Bitlocker)
+## <a id="bitlocker"></a>Upewnij się, że zasady zarządzania urządzeniami znajduje się w miejscu, które wymaga kodu PIN/hasło/automatyczne blokowanie i szyfruje wszystkie dane (np. funkcją BitLocker)
 
 | Stanowisko                   | Szczegóły      |
 | ----------------------- | ------------ |
@@ -218,7 +218,7 @@ Jak widać, klucz podstawowy urządzenie nie jest obecny w kodzie. Zamiast tego 
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |
 | **Odwołania**              | ND  |
-| **Kroki** | Upewnij się, że zasady zarządzania urządzeniami znajduje się w miejscu, które wymaga kodu PIN/hasło/automatyczne blokowanie i szyfruje wszystkie dane (np. funkcją Bitlocker) |
+| **Kroki** | Upewnij się, że zasady zarządzania urządzeniami znajduje się w miejscu, które wymaga kodu PIN/hasło/automatyczne blokowanie i szyfruje wszystkie dane (np. funkcją BitLocker) |
 
 ## <a id="rolled-server"></a>Upewnij się, że klucze podpisywania są przenoszone podczas korzystania z tożsamości serwera
 

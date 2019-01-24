@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/11/2019
+ms.date: 01/23/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 1e3dc984de15fa2c94fc5150020f1af1579e2c5c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e550eeba9b154e271cdad9df5cdfe9a308efbbe9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434108"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820312"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -79,7 +79,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS50058 | UserInformationNotProvided — oznacza to, że nie jest zalogowany użytkownik. Jest to typowy błąd, który oczekuje się, gdy użytkownik nie została uwierzytelniona i nie jest jeszcze zalogowany.</br>Jeśli ten błąd, zaleca się w kontekście logowania jednokrotnego, gdzie użytkownik wcześniej logował się, oznacza to, że sesji logowania jednokrotnego było nie znaleziono lub nieprawidłowy.</br>Tego błędu mogą być zwrócone do aplikacji, jeśli jest to szybkie = nie jest określona. |
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided — informacje identyfikacyjne dzierżawy nie została znaleziona w jednym żądaniu lub też dorozumianych przez dowolnego podanych poświadczeń. Użytkownik może skontaktować się z administratorem dzierżawy, aby pomóc rozwiązać ten problem. |
 | AADSTS50061 | SignoutInvalidRequest - wyrejestrowywania żądanie jest nieprawidłowe. |
-| AADSTS50064 | CredentialAuthenticationError — sprawdzanie poprawności poświadczeń nie powiodło się. |
+| AADSTS50064 | CredentialAuthenticationError — sprawdzanie poprawności poświadczeń na nazwy użytkownika i hasła nie powiodło się. |
 | AADSTS50068 | SignoutInitiatorNotParticipant - wylogowanie nie powiodło się. Aplikacja, która zainicjowała Wyloguj się nie jest uczestnikiem w bieżącej sesji. |
 | AADSTS50070 | SignoutUnknownSessionIdentifier - wylogowanie nie powiodło się. Żądanie wylogowanie określony identyfikator nazwy, który nie pasował istniejące sesje. |
 | AADSTS50071 | SignoutMessageExpired - żądaniu wylogowania utracił ważność. |

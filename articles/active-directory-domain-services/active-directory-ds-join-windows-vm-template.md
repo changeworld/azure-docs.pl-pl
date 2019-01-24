@@ -4,7 +4,7 @@ description: Dołączanie maszyny wirtualnej systemu Windows Server do domeny za
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: a083bd2fe730f9723330abf9bce03d760b7442d8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 32b670a4b51c2dc60fe89bc2b9ad0ef18b0ac263
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157262"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856642"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Dołączanie maszyny wirtualnej systemu Windows Server do domeny zarządzanej przy użyciu szablonu usługi Resource Manager
 W tym artykule pokazano, jak dołączyć maszynę wirtualną systemu Windows Server do domeny zarządzanej usług domenowych Azure AD przy użyciu szablonów usługi Resource Manager.
@@ -38,12 +38,12 @@ Aby wykonać zadania opisane w tym artykule, potrzebne są:
 
 ## <a name="install-and-configure-required-tools"></a>Zainstaluj i skonfiguruj wymagane narzędzia
 Do wykonania kroków opisanych w tym dokumencie, można użyć jednej z następujących opcji:
-* **Program Azure PowerShell**: [Instalowanie i konfigurowanie](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Interfejs wiersza polecenia Azure**: [Instalowanie i konfigurowanie](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure PowerShell**: [Instalowanie i konfigurowanie](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
+* **Interfejs wiersza polecenia platformy Azure**: [Instalowanie i konfigurowanie](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
-## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Opcja 1: Aprowizowanie nowej maszyny Wirtualnej systemu Windows Server i przyłącz ją do domeny zarządzanej
-**Nazwa szablonu szybkiego startu**: [201-vm-przyłączania do domeny](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
+## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>Opcja 1: Aprowizowanie nowej maszyny Wirtualnej systemu Windows Server, a następnie przyłączyć ją do domeny zarządzanej
+**Nazwa szablonu szybkiego startu**: [201-vm-domain-join](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)
 
 Aby wdrożyć maszynę wirtualną z systemem Windows Server, a następnie przyłączyć ją do domeny zarządzanej, wykonaj następujące czynności:
 1. Przejdź do [szablonu szybkiego startu](https://azure.microsoft.com/resources/templates/201-vm-domain-join/).

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 94476486ed87662f3d6b989b8d5360dd792f8824
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: caa877a265fb8665e062cc0069247bca0994c4bf
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041184"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857101"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Osadzanie raportu w kolekcji obszarów roboczych usługi Power BI
 
@@ -84,7 +84,7 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 
 Użyj kolekcji obszarów roboczych usługi Power BI zasilania osadzonych tokenów, które HMAC zalogowano tokenów sieci Web JSON. Tokeny są podpisane za pomocą klucza dostępu z kolekcji obszarów roboczych usługi Power BI. Osadzonych tokenów, domyślnie, są używane w celu zapewnienia dostępu tylko do odczytu do raportów w celu osadzenia w aplikacji. Osadzanie tokeny wystawione dla konkretnego raportu i powinny być skojarzone z adresem URL osadzania.
 
-Tokeny dostępu należy utworzyć na serwerze, klucze dostępu są używane do logowania/szyfrowanie tokenów. Aby uzyskać informacje na temat tworzenia tokenu dostępu, zobacz [uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI](app-token-flow.md). Możesz również przejrzeć [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metody. Oto przykład to będzie wyglądać podobnie jak przy użyciu zestawu SDK .NET dla usługi Power BI.
+Tokeny dostępu należy utworzyć na serwerze, klucze dostępu są używane do logowania/szyfrowanie tokenów. Aby uzyskać informacje na temat tworzenia tokenu dostępu, zobacz [uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI](app-token-flow.md). Możesz również przejrzeć [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody. Oto przykład to będzie wyglądać podobnie jak przy użyciu zestawu SDK .NET dla usługi Power BI.
 
 Użyjesz tego Identyfikatora raportu, który pobranym wcześniej. Po utworzeniu tokenu osadzania następnie użyje klucza dostępu do generowania tokenu, który można użyć z punktu widzenia javascript. *Klasy PowerBIToken* wymaga zainstalowania [usługi Power BI Core NuGut pakietu](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
@@ -147,7 +147,7 @@ Raport zostanie automatycznie osadzony na podstawie rozmiaru jego kontenera. Aby
 
 [Rozpoczęcie pracy z przykładem](get-started-sample.md)  
 [Authenticating and authorizing with Power BI Workspace Collections (Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI)](app-token-flow.md)  
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Przykład osadzania skryptu JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Usługa Power BI JavaScript pakietu](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 [Pakiet NuGet interfejsu API usługi BI zasilania](https://www.nuget.org/profiles/powerbi)

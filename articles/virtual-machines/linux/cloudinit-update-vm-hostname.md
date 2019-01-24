@@ -14,18 +14,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: e985111a28805f861242240a5c2e3d7b6664be4e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 140c542b71ff87f6b7a846888da06e58fa03ce10
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996115"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855333"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Użyj pakietu cloud-init, aby ustawić nazwę hosta dla maszyny Wirtualnej z systemem Linux na platformie Azure
 W tym artykule dowiesz się, jak używać [pakietu cloud-init](https://cloudinit.readthedocs.io) skonfigurować określonej nazwy hosta na maszynie wirtualnej lub maszyny wirtualnej (VM) zestawów skalowania (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure. Aby uzyskać więcej informacji o tym, jak pakietu cloud-init działa natywnie na platformie Azure i obsługiwane dystrybucje systemu Linux, zobacz [Omówienie pakietu cloud-init](using-cloud-init.md)
 
 ## <a name="set-the-hostname-with-cloud-init"></a>Ustaw nazwę hosta, za pomocą pakietu cloud-init
-Domyślnie, nazwa hosta jest taka sama jak nazwa maszyny Wirtualnej podczas tworzenia nowej maszyny wirtualnej na platformie Azure.  Aby uruchomić skrypt pakietu cloud-init można zmienić tej domyślnej nazwy hosta, podczas tworzenia maszyny Wirtualnej na platformie Azure przy użyciu [tworzenie az vm](/cli/azure/vm#az_vm_create), określ plik cloud-init za pomocą `--custom-data` przełącznika.  
+Domyślnie, nazwa hosta jest taka sama jak nazwa maszyny Wirtualnej podczas tworzenia nowej maszyny wirtualnej na platformie Azure.  Aby uruchomić skrypt pakietu cloud-init można zmienić tej domyślnej nazwy hosta, podczas tworzenia maszyny Wirtualnej na platformie Azure przy użyciu [tworzenie az vm](/cli/azure/vm), określ plik cloud-init za pomocą `--custom-data` przełącznika.  
 
 Aby zobaczyć proces uaktualniania w akcji, Utwórz plik w bieżącej powłoce o nazwie *cloud_init_hostname.txt* i Wklej poniższą konfigurację. W tym przykładzie należy utworzyć plik w usłudze Cloud Shell nie na komputerze lokalnym. Możesz użyć dowolnego edytora. Wprowadź `sensible-editor cloud_init_hostname.txt`, aby utworzyć plik i wyświetlić listę dostępnych edytorów. Wybierz #1, aby użyć **nano** edytora. Upewnij się, że poprawnie skopiować pliku całego pakietu cloud-init szczególnie pierwszy wiersz.  
 
@@ -40,7 +40,7 @@ Przed wdrożeniem tego obrazu, należy utworzyć grupę zasobów za pomocą [Two
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz Utwórz maszynę Wirtualną z [tworzenie az vm](/cli/azure/vm#az_vm_create) i określ plik cloud-init za pomocą `--custom-data cloud_init_hostname.txt` w następujący sposób:
+Teraz Utwórz maszynę Wirtualną z [tworzenie az vm](/cli/azure/vm) i określ plik cloud-init za pomocą `--custom-data cloud_init_hostname.txt` w następujący sposób:
 
 ```azurecli-interactive 
 az vm create \

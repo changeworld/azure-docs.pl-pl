@@ -3,7 +3,7 @@ title: Zarejestruj dla samoobsługowego resetowania haseł — Azure Active Dire
 description: Zarejestruj dane uwierzytelniania dla hasła usługi Azure AD z samoobsługowego resetowania
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
-ms.openlocfilehash: f8b4fb8861760d2b5b10f61b3ab6a8c718f849b6
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2a9e65e36e31f4b2b382fac2bd9898580be18900
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47107014"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821672"
 ---
 # <a name="register-for-self-service-password-reset"></a>Rejestrowanie na potrzeby samoobsługowego resetowania hasła
 
@@ -31,10 +31,10 @@ Jako użytkownik końcowy może zresetować hasło lub odblokować konto samodzi
 1. Otwórz przeglądarkę sieci web na urządzeniu i przejdź do [strony rejestracji resetowania hasła](https://aka.ms/ssprsetup).
 2. Wprowadź swoją nazwę użytkownika i hasło podane przez administratora.
 3. W zależności od tego, jak dział informatyczny skonfigurował rzeczy co najmniej jeden z następujących opcji są dostępne do konfigurowania i weryfikowania. Jeśli administrator ma Twojej zgody, aby używać Twoich informacji, można wypełnić niektóre informacje dla Ciebie.
-    * **Telefon biurowy**: tylko administrator może ustawić tę opcję.
+    * **Telefon biurowy**: Tylko administrator może ustawić tę opcję.
     * **Numer telefonu uwierzytelniania**: Ustaw tę opcję na numer innego telefonu, którego można uzyskać dostęp do. Przykładem jest telefonu komórkowego, który umożliwia odbieranie wiadomości SMS lub połączenie.
-    * **Adres E-mail uwierzytelniania**: Ustaw tę opcję na alternatywny adres e-mail, możesz uzyskać dostęp bez użycia hasła, aby zresetować.
-    * **Pytania zabezpieczające**: administrator zatwierdził tej listy pytań dotyczących musisz odpowiedzieć. Nie można użyć tego samego zapytania lub odpowiedzi na więcej niż jeden raz.
+    * **Adres E-mail uwierzytelniania**: Ustaw tę opcję na alternatywny adres e-mail, możesz uzyskać dostęp bez użycia hasła, które chcesz zresetować.
+    * **Pytania zabezpieczające**: Administrator zatwierdził tej listy pytań dotyczących musisz odpowiedzieć. Nie można użyć tego samego zapytania lub odpowiedzi na więcej niż jeden raz.
 4. Podaj i sprawdź informacje, których wymaga administratora. Jeśli więcej niż jedną z opcji jest dostępna, zalecamy zarejestrowanie wielu metod. Zapewnia to elastyczność przy jednej z metod jest niedostępna. Na przykład sytuacja podczas podróży i nie możesz się dostęp do telefonu biurowego.
 
     ![Rejestrowanie metod uwierzytelniania i wybierz przycisk Zakończ][Register]

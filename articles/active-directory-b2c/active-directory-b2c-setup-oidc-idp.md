@@ -3,19 +3,19 @@ title: Konfigurowanie rejestracji i logowania za pomocą protokołu OpenID Conne
 description: Konfigurowanie rejestracji i logowania za pomocą protokołu OpenID Connect, za pomocą usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e6fc9ded2b3509f9505d88f0ae7ccc790e47b0f2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9f6b65a4253b9cc7c04f397dde7ecab9a64d5ae0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842768"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845983"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą protokołu OpenID Connect, za pomocą usługi Azure Active Directory B2C
 
@@ -54,15 +54,15 @@ Typ odpowiedzi opisano, jakie informacje są wysyłane w początkowe wywołanie 
 Tryb odpowiedzi definiuje metodę, które mają być używane do wysyłania danych z niestandardowego dostawcy tożsamości do usługi Azure AD B2C. Można użyć następujących trybów odpowiedzi:
 
 - `form_post`: Ten tryb odpowiedzi zaleca się najlepiej. Odpowiedzi są przesyłane za pośrednictwem protokołu HTTP `POST` metoda, za pomocą kodu lub token jest zakodowany w treści, używając `application/x-www-form-urlencoded` formatu.
-- `query`: Ten kod lub token jest zwracany jako parametr zapytania.
+- `query`: Kod lub token jest zwracany jako parametr zapytania.
 
 Wskazówka dotycząca domeny, można przejść bezpośrednio do strony dostawcy określonej tożsamości, zamiast użytkownika wykonującego wyboru między listy dostawców tożsamości dostępnych logowania. Aby zezwolić na tego rodzaju zachowanie, wprowadź wskazówkę dotyczącą domeny. Aby przejść do niestandardowego dostawcy tożsamości, Dołącz parametr `domain_hint=<domain hint value>` na końcu żądania podczas wywoływania usługi Azure AD B2C do logowania.
 
 Po tożsamość niestandardowa dostawcy wysyła identyfikator tokenu do usługi Azure AD B2C, musi mieć możliwość zmapowania oświadczeń otrzymany token oświadczenia, które usługi Azure AD B2C, rozpoznaje i wykorzystuje usługę Azure AD B2C. Dla każdego z następujące mapowania zapoznaj się z dokumentacją dostawcy tożsamości niestandardowe, aby zrozumieć oświadczenia, które są zwracane w tokenach dostawcy tożsamości:
 
-- `User ID`: Wprowadź oświadczenia, który zawiera unikatowy identyfikator dla zalogowanego użytkownika.
-- `Display Name`: Wprowadź oświadczenia, który zawiera nazwę wyświetlaną lub pełną nazwę użytkownika.
-- `Given Name`: Wprowadź oświadczenia, który zawiera imię użytkownika.
-- `Surname`: Wprowadź oświadczenia, który zawiera nazwisko użytkownika.
-- `Email`: Wprowadź oświadczenia, który zawiera adres e-mail użytkownika.
+- `User ID`: Wprowadź oświadczenie, które zawiera unikatowy identyfikator dla zalogowanego użytkownika.
+- `Display Name`: Wprowadź oświadczenie, które zawiera nazwę wyświetlaną lub pełną nazwę użytkownika.
+- `Given Name`: Wprowadź oświadczenie, które zawiera imię użytkownika.
+- `Surname`: Wprowadź oświadczenie, który zawiera nazwisko użytkownika.
+- `Email`: Wprowadź oświadczenie, które zawiera adres e-mail użytkownika.
 

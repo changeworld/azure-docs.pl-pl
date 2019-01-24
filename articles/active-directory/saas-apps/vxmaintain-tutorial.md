@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z vxMaintain | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą vxMaintain | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i vxMaintain.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 590c7961444a36c8958fd82aaf67b05ee2213e74
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433998"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819904"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Samouczek: Integracja usługi Azure Active Directory z vxMaintain
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą vxMaintain
 
 W tym samouczku dowiesz się, jak zintegrować vxMaintain w usłudze Azure Active Directory (Azure AD).
 
@@ -37,15 +37,15 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 
 Aby skonfigurować integrację usługi Azure AD za pomocą vxMaintain, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - VxMaintain subskrypcji logowanie Jednokrotne włączone
 
 > [!NOTE]
 > Podczas testowania kroki opisane w tym samouczku, zaleca się, że należy używać w środowisku produkcyjnym.
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -63,7 +63,7 @@ Aby dodać vxMaintain z galerii, wykonaj następujące czynności:
 
 1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** przycisku. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 1. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -81,7 +81,7 @@ Aby dodać vxMaintain z galerii, wykonaj następujące czynności:
 
     ![Łącze vxMaintain](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 W tej sekcji możesz skonfigurować i przetestować logowania jednokrotnego usługi Azure AD przy użyciu vxMaintain, w oparciu o użytkownika testu o nazwie "Britta Simon."
 
 Aby logowanie Jednokrotne do pracy usługi Azure AD musi znać vxMaintain odpowiednikiem użytkownika usługi Azure AD. Oznacza to należy ustanowić relację łącza między użytkownikiem usługi Azure AD i odpowiedniego użytkownika vxMaintain.
@@ -111,7 +111,7 @@ W tej sekcji można zarówno Włączanie logowania jednokrotnego usługi Azure A
     b. W **adres URL odpowiedzi** wpisz adres URL, który ma następującą składnię: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Powyższe wartości nie są prawdziwe. Można aktualizować rzeczywisty identyfikator i adres URL odpowiedzi. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact).
+    > Podane wyżej wartości nie są rzeczywiste. Można aktualizować rzeczywisty identyfikator i adres URL odpowiedzi. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact).
  
 1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **XML metadanych**, a następnie zapisz plik metadanych do komputera.
 
@@ -149,7 +149,7 @@ W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure port
 
 1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
  
-    ![Okno dialogowe użytkownika](./media/vxmaintain-tutorial/create_aaduser_04.png) 
+    ![Okno dialogowe Użytkownik](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
@@ -161,7 +161,7 @@ W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure port
  
 ### <a name="create-a-vxmaintain-test-user"></a>Tworzenie użytkownika testowego vxMaintain
 
-W tej sekcji utworzysz należeć użytkownik testowy Britta Simon vxMaintain. Aby dodać użytkowników, na platformie vxMaintain, współpracować z [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact). Przed użyciem logowania jednokrotnego, Utwórz i Aktywuj użytkowników.
+W tej sekcji utworzysz należeć użytkownik testowy Britta Simon vxMaintain. Aby dodać użytkowników, na platformie vxMaintain, współpracować z [zespołem pomocy technicznej vxMaintain](https://www.hubspot.com/company/contact). Przed użyciem logowania jednokrotnego, Utwórz i Aktywuj użytkowników.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -179,11 +179,11 @@ W tej sekcji można włączyć użytkownika testowego Britta Simon do udzielania
 
 1. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Link "Użytkownicy i grupy"][202] 
+    ![Link „Użytkownicy i grupy”][202] 
 
 1. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
-    ![Link "Użytkownicy i grupy"][203]
+    ![Link „Użytkownicy i grupy”][203]
 
 1. W **użytkowników i grup** okno dialogowe, **użytkowników** listy wybierz **Britta Simon**, a następnie wybierz pozycję **wybierz** przycisku.
 

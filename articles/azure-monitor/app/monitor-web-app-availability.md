@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ca266df563cb7e50463548dd0e786cec8e886ec4
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359701"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857152"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -186,7 +186,7 @@ Kliknij czerwoną kropkę.
 W wyniku testu dostępności zobaczysz szczegółów transakcji dotyczące wszystkich składników. W tym miejscu możesz wykonywać następujące czynności:
 
 * Zbadać odpowiedź odebraną z serwera.
-* Diagnozowanie błędów przy użyciu danych telemetrycznych po stronie serwera skorelowany zebranych podczas przetwarzania testu dostępności nie powiodło się.
+* Diagnozowanie błędów przy użyciu skorelowanej telemetrii po stronie serwera, zebranych podczas przetwarzania testu dostępności nie powiodło się.
 * Zaloguj się problem lub element roboczy w repozytorium Git lub tablice platformy Azure w celu prześledzenia problemu. Błąd będzie zawierać link do tego zdarzenia.
 * Otworzyć wynik testu sieci Web w programie Visual Studio.
 
@@ -194,7 +194,7 @@ Dowiedz się więcej o diagnostyce transakcji typu end to end środowisko [tutaj
 
 Kliknij wiersz wyjątek, aby wyświetlić szczegóły dotyczące wyjątków po stronie serwera, który spowodował niepowodzenie testu dostępności syntetycznych. Możesz też pobrać [migawkę debugowania](../../azure-monitor/app/snapshot-debugger.md) dla bogatszych diagnostyki z poziomu kodu.
 
-![Diagnostyczne po stronie serwera](./media/monitor-web-app-availability/open-instance-4.png)
+![Diagnostyka po stronie serwera](./media/monitor-web-app-availability/open-instance-4.png)
 
 ## <a name="alerts"></a> Alerty dostępności
 Może mieć następujące typy reguł alertów na danych dotyczących dostępności za pomocą środowiska klasycznych alertów:
@@ -203,7 +203,7 @@ Może mieć następujące typy reguł alertów na danych dotyczących dostępno�
 3. Test Średni czas trwania zwiększa powyżej wartości progowej
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Alert po wystąpieniu X z Y lokalizacji, raportowanie błędów
-X z Y lokalizacji, reguła alertu jest domyślnie włączone w [nowe alerty ujednolicone środowisko](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), podczas tworzenia nowego testu dostępności. Użytkownik może zrezygnować przez wybranie opcji "klasyczny" lub wyłączenie reguły alertu.
+X z Y lokalizacji, reguła alertu jest domyślnie włączone w [nowe alerty ujednolicone środowisko](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), podczas tworzenia nowego testu dostępności. Możesz zrezygnować z przez wybranie opcji "klasyczny" lub wyłączenie reguły alertu.
 
 ![Utwórz środowisko](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
@@ -297,9 +297,9 @@ Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzeni
 
     * Test ma "Analizy zależne requests" włączone? Który skutkuje rygorystyczne kontrole zasoby, takie jak skrypty, obrazy itd. Tego rodzaju błędów może nie być widoczne w przeglądarce. Sprawdź wszystkie obrazy, skrypty, arkusze stylów i inne pliki ładowane przez stronę. Jeśli pobranie dowolnego z nich nie powiedzie się, test zostanie zgłoszony jako nieudany — nawet wtedy, gdy główna strona HTML ładuje się poprawnie. Aby test ignorował takie błędy zasobów, wystarczy usunąć zaznaczenie pola „Analizuj zależne żądania” w konfiguracji testu. 
 
-    * Aby zmniejszyć ryzyko wystąpienia szumu powodowanego przez drobne przejściowe problemy z siecią itp., zaznacz pole „Włącz ponawianie próby w przypadku niepowodzenia testów” w konfiguracji. Możesz także przeprowadzać testy z większej liczby lokalizacji i odpowiednio dostosować próg reguły alertu, aby zapobiec wywoływaniu niepotrzebnych alertów przez problemy występujące w jednej lokalizacji.
+    * Aby zmniejszyć ryzyko wystąpienia szumu powodowanego przez drobne przejściowe problemy z siecią itp., zaznacz pole „Włącz ponawianie próby w przypadku niepowodzenia testów” w konfiguracji. Można również testy z większej liczby lokalizacji i odpowiednio Zarządzanie próg reguły alertu, aby uniknąć niepotrzebnych alertów przez problemy specyficzne dla lokalizacji.
 
-    * Kliknij dowolny czerwonych kropek doświadczeniu dostępności lub jakiekolwiek niepowodzenie dostępności Eksploratora wyszukiwania, aby wyświetlić szczegóły Dlaczego mamy zgłosił błąd. Wynik testu, wraz z skorelowanej telemetrii po stronie serwera (jeśli jest włączona) powinno pomóc zrozumieć, dlaczego test nie powiódł się. Typowe przyczyny problemy przejściowe problemy z połączeniem sieciowym lub. 
+    * Kliknij dowolny czerwonych kropek doświadczeniu dostępności lub jakiekolwiek niepowodzenie dostępności Eksploratora wyszukiwania, aby wyświetlić szczegóły Dlaczego mamy zgłosił błąd. Wynik testu, wraz z skorelowana telemetria po stronie serwera (jeśli jest włączona) powinno pomóc zrozumieć, dlaczego test nie powiódł się. Typowe przyczyny problemy przejściowe problemy z połączeniem sieciowym lub. 
 
     * Czy limit czasu testu? Firma Microsoft przerwać testów po 2 minuty. Jeśli Twoje polecenie ping lub test wieloetapowy trwa dłużej niż 2 minuty, firma Microsoft będzie zgłaszać jako błąd. Rozważ podzielenie testu na wiele migawek, które można wykonać w krótszych czasów trwania.
 
@@ -356,6 +356,22 @@ Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzeni
 * *Jak uruchomić test z wykorzystaniem certyfikatów klienta?*
 
     Niestety nie jest to obsługiwane.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
+
+W tej sekcji dotyczą alertów klasycznych i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych](../platform/alerts-classic.overview.md)i nowego środowiska alertów odnoszą się do [artykuł z omówieniem alerty](../platform/alerts-overview.md). Do kontrolowania alert powiadomienia w nowych alertów środowiska użyj [grup akcji](../platform/action-groups.md).
+
+* Firma Microsoft zaleca użycie określonych adresatów klasycznego powiadomień o alertach.
+
+* Dla alertów dotyczących błędów z X z Y lokalizacji **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników przy użyciu ról Administrator/współadministrator.  Zasadniczo _wszystkich_ Administratorzy _subskrypcji_ będą otrzymywać powiadomienia.
+
+* Dla alertów dotyczących dostępności metryki (lub dowolnego metryk usługi Application Insights istotnego dla badania) **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników przy użyciu właściciela, współautora lub czytelnika ról w ramach subskrypcji. W efekcie _wszystkich_ użytkowników z dostępem do subskrypcji zasobu usługi Application Insights znajdują się w zakresie i będą otrzymywać powiadomienia. 
+
+> [!NOTE]
+> Jeśli obecnie używasz **zbiorcze/grupę** pole wyboru opcji i go wyłączyć, nie można przywrócić zmianę.
+
+Jeśli chcesz powiadomić użytkowników na podstawie ich ról, należy użyć nowe alerty środowisko/niemal w czasie rzeczywistym. Za pomocą [grup akcji](../platform/action-groups.md), można skonfigurować powiadomienia e-mail do użytkowników z dowolną rolę właściciel/Współautor/reader (nie łączyć ze sobą jako pojedyncza opcja).
+
 
 
 ## <a name="next"></a>Następne kroki

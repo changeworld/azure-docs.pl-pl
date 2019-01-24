@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8b11b5e3e420577590e95c6839673f54c52d078b
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 209f87a77ff6e18fa08943385d9cf61bbf915089
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116180"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi LinkedIn podnieść poziom
 
@@ -31,7 +31,7 @@ Integrowanie podniesienie poziomu usługi LinkedIn z usługą Azure AD zapewnia 
 - Użytkowników, aby automatycznie uzyskać zalogowanych do wyniesienia rozgrywek LinkedIn (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,10 +43,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą usługi LinkedIn podn
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
@@ -107,7 +107,7 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
 1. W oknie przeglądarki internetowej innej logowanie jednokrotne do dzierżawy usługi LinkedIn podnieść poziom konta administratora.
 
-1. W **Centrum kont**, kliknij przycisk **ustawienia globalne** w obszarze **ustawienia**. Zaznacz również **podniesienie uprawnień — podniesienie poziomu testu AAD** z listy rozwijanej.
+1. W **Centrum kont** kliknij przycisk **Ustawienia globalne** w obszarze **Ustawienia**. Zaznacz również **podniesienie uprawnień — podniesienie poziomu testu AAD** z listy rozwijanej.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
@@ -129,7 +129,7 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_linkedin_signon_02.png) 
 
-1. Podniesienie poziomu LinkedIn aplikacji oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** a w przypadku podniesienia poziomu LinkedIn to mają być mapowane z adresem e-mail użytkownika. W przypadku którego można użyć **user.mail** atrybutu z listy lub użyj wartości odpowiedni atrybut, na podstawie konfiguracji organizacji.
+1. Podniesienie poziomu LinkedIn aplikacji oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego działania. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** a w przypadku podniesienia poziomu LinkedIn to mają być mapowane z adresem e-mail użytkownika. W tym celu możesz użyć atrybutu **user.mail** z listy lub odpowiedniej wartości atrybutu zgodnie z konfiguracją w organizacji.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/updateusermail.png)
 
@@ -137,7 +137,7 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |
-    | Dział| User.Department |
+    | department| user.department |
 
       ![Tworzenie użytkownika testowego usługi Azure AD](./media/linkedinelevate-tutorial/userattribute.png)
 
@@ -157,11 +157,11 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_general_400.png)
 
-1. Przejdź do **ustawienia administratora usługi LinkedIn** sekcji. Przekaż plik XML, który tylko pobrane z witryny Azure portal, klikając opcję XML Przekaż plik.
+1. Przejdź do sekcji **LinkedIn Admin Settings** (Ustawienia administratora LinkedIn). Przekaż plik XML, który tylko pobrane z witryny Azure portal, klikając opcję XML Przekaż plik.
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
-1. Kliknij przycisk **na** do włączenia funkcji logowania jednokrotnego. Usługa rejestracji Jednokrotnej stan zmieni się z **niepołączony** do **połączono**
+1. Kliknij przycisk **On** (Włącz), aby włączyć funkcję logowania jednokrotnego. Usługa rejestracji Jednokrotnej stan zmieni się z **niepołączony** do **połączono**
 
     ![Konfigurowanie logowania jednokrotnego](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
@@ -238,12 +238,12 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka podniesienie poziomu usługi LinkedIn w panelu dostępu, należy pobrać na stronie logowania platformy Azure i na po pomyślnym zalogowaniu, należy uzyskać w aplikacji podniesienie poziomu usługi LinkedIn.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Samouczek: Konfigurowanie podniesienia poziomu usługi LinkedIn dla użytkownika automatyczne Inicjowanie obsługi administracyjnej w usłudze Azure Active Directory](linkedinelevate-provisioning-tutorial.md)
+* [Samouczek: Konfigurowanie podniesienia poziomu usługi LinkedIn na potrzeby automatycznej aprowizacji użytkowników z usługą Azure Active Directory](linkedinelevate-provisioning-tutorial.md)
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie Aprowizowania użytkowników](linkedinelevate-provisioning-tutorial.md)
+* [Konfigurowanie aprowizacji użytkowników](linkedinelevate-provisioning-tutorial.md)
 
 <!--Image references-->
 

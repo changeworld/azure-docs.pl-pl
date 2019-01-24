@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 83711115-1c4f-4dd7-907b-3da24b37c89e
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 5858ab1846ccdc2e2b78f2be4173ea3cc17a3605
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 5610316fdadb9a169c90e7e7761d9ddd2a74dcbe
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116576"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą rozwiązania Zscaler prywatny dostęp (ZPA)
 
@@ -31,7 +31,7 @@ Integracja rozwiązania Zscaler prywatny dostęp (ZPA) z usługą Azure AD zapew
 - Użytkowników, aby automatycznie uzyskać zalogowanych do rozwiązania Zscaler prywatny dostęp (ZPA) (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,10 +45,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą rozwiązania Zscaler 
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -122,7 +122,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu
     b. W **identyfikator** pole tekstowe, wpisz: `https://samlsp.private.zscaler.com/auth/metadata`
 
     > [!NOTE] 
-    > Należy pamiętać, że nie są rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych na adres URL logowania i identyfikator. W tym miejscu zalecamy przy użyciu unikatowej wartości adresu URL w identyfikatorze. Skontaktuj się z pomocą [zespołem pomocy technicznej rozwiązania Zscaler prywatny dostęp (ZPA)](https://help.zscaler.com/zpa-submit-ticket) do uzyskania tych wartości.
+    > Należy pamiętać, że nie są to rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych na adres URL logowania i identyfikator. W tym miejscu zalecamy przy użyciu unikatowej wartości adresu URL w identyfikatorze. Skontaktuj się z pomocą [zespołem pomocy technicznej rozwiązania Zscaler prywatny dostęp (ZPA)](https://help.zscaler.com/zpa-submit-ticket) do uzyskania tych wartości.
 
 1. Na **certyfikat podpisywania SAML** kliknij **Utwórz nowy certyfikat**.
 
@@ -148,19 +148,19 @@ W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu
 
 1. Przejdź do **administratora** a następnie kliknij przycisk **konfigurację dostawcy tożsamości**.
 
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_04.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_04.png)
 
 1. W **konfigurację dostawcy tożsamości** kliknij **Dodawanie nowej konfiguracji dostawcy tożsamości**.
 
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_05.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_05.png)
 
 1. W **nowej konfiguracji dostawcy tożsamości** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/zscalerprivateaccess-tutorial/tutorial_zscalerprivateaccess_06.png)
 
     a. Kliknij przycisk **wybierz plik** i przekazywanie pliku pobranego metadanych.
 
-    b. Kliknij przycisk **Zapisz** przycisku.
+    b. Kliknij przycisk **Save** (Zapisz).
     
 
 
@@ -241,7 +241,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 Po kliknięciu kafelka rozwiązania Zscaler prywatny dostęp (ZPA) w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji rozwiązania Zscaler prywatny dostęp (ZPA).
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

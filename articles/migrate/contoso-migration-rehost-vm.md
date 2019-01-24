@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6bdb319eb89c3dad8b3602b0ec4561b962fcc868
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 36a84618a998dd2e06f5563fb8706a1dc8400e59
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608702"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823355"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migracja Contoso: ponowne hostowanie aplikacji lokalnej na maszynach wirtualnych platformy Azure
 
@@ -66,7 +66,7 @@ Zespół chmury firmy Contoso ma przypięte dół cele tej migracji. Te cele są
 
 ## <a name="solution-design"></a>Projekt rozwiązania
 
-Przypinanie podział w dół cele i wymagania, projekty Contoso Przejrzyj rozwiązanie wdrożenia i identyfikuje proces migracji, w tym usług platformy Azure, używających Contoso do migracji.
+Po przypięciu dół celami i wymaganiami, Contoso projektuje i przejrzyj rozwiązanie wdrożenia i identyfikuje proces migracji, w tym usług platformy Azure, używających Contoso do migracji.
 
 ### <a name="current-app"></a>Bieżącej aplikacji
 
@@ -292,7 +292,7 @@ Administratorzy firmy Contoso wykonaj następujące kroki w następujący sposó
 8. Logowania z maszyną ponownie, a następnie automatycznie uruchomiony Kreator zarządzania serwerem konfiguracji.
 9. W Kreatorze one wybierz kartę Sieciową, aby odbierać ruch związany z replikacją. Nie można zmienić to ustawienie, po skonfigurowaniu go.
 10. Wybierają subskrypcji, grupy zasobów i Magazyn, w którym można zarejestrować serwer konfiguracji.
-        ![Vault](./media/contoso-migration-rehost-vm/cswiz1.png)
+        ![vault](./media/contoso-migration-rehost-vm/cswiz1.png)
 
 10. One Pobierz i zainstaluj serwer MySQL i interfejs PowerCLI programu VMWare.
 11. Po zakończeniu walidacji określają nazwy FQDN lub adres IP vCenter server lub hoście vSphere. Pozostaw domyślny port i określ przyjazną nazwę serwera na platformie Azure.

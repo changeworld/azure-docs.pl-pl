@@ -3,21 +3,21 @@ title: Często zadawane pytania dotyczące usługi Azure Active Directory B2C | 
 description: Często zadawane pytania (FAQ) dotyczących usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6957a18440dfc225c63a1b1843e2b47af8b841bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8e5e688fe741fdc4a83ae1a3cf13a6c722064407
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842955"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856302"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Usługa Azure AD B2C: Często zadawane pytania (FAQ) 
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Często zadawane pytania 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Dlaczego nie mogę uzyskać dostępu do rozszerzenia usługi Azure AD B2C w witrynie Azure portal?
@@ -46,7 +46,7 @@ Wprowadzenie do zasad niestandardowych, sprawdzając naszych [pakiet startowy ni
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Można skonfigurować zakresy, aby zebrać więcej informacji na temat użytkowników z różnych dostawców tożsamości społecznościowych?
 Nie. Zakresy domyślne używane do naszego zestawu obsługiwanych dostawców tożsamości dla sieci społecznościowej są następujące:
 
-* Facebook: wiadomości e-mail
+* Facebook: email
 * Google +: wiadomości e-mail
 * Konto Microsoft: profil poczty e-mail protokołu openid
 * Amazon: profil
@@ -61,8 +61,8 @@ Przed otwarciem usługi Azure AD B2C w witrynie Azure portal w menu po lewej str
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>W jaki sposób dostosować weryfikacji wiadomości e-mail (zawartość i "od:" pole) wysyłane przez usługę Azure AD B2C?
 Możesz użyć [funkcji znakowania firmowego](../active-directory/fundamentals/customize-branding.md) Dostosowywanie zawartości wiadomości e-mail z weryfikacji. W szczególności można dostosować te dwa elementy wiadomości e-mail:
 
-* **Baner Logo**: wyświetlany w prawym dolnym rogu.
-* **Kolor tła**: wyświetlaną u góry.
+* **Baner Logo**: Wyświetlany w prawym dolnym rogu.
+* **Kolor tła**: Wyświetlane u góry.
 
     ![Zrzut ekranu przedstawiający dostosowany weryfikacyjnej wiadomości e-mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 

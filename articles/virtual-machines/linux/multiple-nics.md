@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: zarhoads
-ms.openlocfilehash: f16dbd743f7e5bb659d05325f85255223feb677d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 300391d9a5079eefc90ba06ba819fc6d8a91ca05
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411520"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851695"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu
 
@@ -132,7 +132,7 @@ az vm nic add \
     --nics myNic3
 ```
 
-Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm#az_vm_start):
+Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
@@ -156,7 +156,7 @@ az vm nic remove \
     --nics myNic3
 ```
 
-Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm#az_vm_start):
+Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm):
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM

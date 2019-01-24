@@ -3,19 +3,19 @@ title: Definiowanie profilu technicznego wystawcy tokenów JWT, w przypadku zasa
 description: Definiowanie profilu technicznego wystawcy tokenów JWT, w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 25352d12e578c289ccb4ab8aab60dc55a444762e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ae9f55943d4b178096230269215ac771ee1d20a1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413506"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856118"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego wystawcy tokenów JWT, w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ W poniższym przykładzie pokazano profilu technicznego dla `JwtIssuer`:
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Yes | Oświadczenie, które mają być używane jako tożsamość użytkownika oświadczenia w kodach autoryzacji OAuth2 i tokenów odświeżania. Domyślnie, należy ustawić go `objectId`, chyba że określisz inną SubjectNamingInfo typ oświadczenia. | 
 | SendTokenResponseBodyWithJsonNumbers | Nie | Zawsze ustawiony na wartość `true`. Dla formatu starszej wersji, gdy wartości numeryczne są podane jako ciągi, a nie liczby JSON, ustaw `false`. Ten atrybut jest wymagany dla klientów, które miały zależności na wcześniejszych implementacji, które zwracane takie właściwości, jak ciągi. | 
-| token_lifetime_secs | Nie | Okresy istnienia tokenu dostępu. Czas życia tokenu elementu nośnego protokołu OAuth 2.0 używanego do uzyskania dostępu do chronionego zasobu. Wartość domyślna to 3600 sekund (1 godzina). Minimum (włącznie) to 300 sekund (5 minut). Maksymalna (włącznie) jest 86 400 sekund (24 godziny). | 
+| token_lifetime_secs | Nie | Okresy istnienia tokenu dostępu. Okres istnienia tokenu elementu nośnego protokołu OAuth 2.0 używanego do uzyskania dostępu do chronionego zasobu. Wartość domyślna to 3600 sekund (1 godzina). Minimum (włącznie) to 300 sekund (5 minut). Maksymalna (włącznie) jest 86 400 sekund (24 godziny). | 
 | id_token_lifetime_secs | Nie | Okresy istnienia tokenu Identyfikatora. Wartość domyślna to 3600 sekund (1 godzina). Minimum (włącznie) to 300 sekund (5 minut). Maksymalna (włącznie) to sekund 86,400 (24 godziny). | 
 | refresh_token_lifetime_secs | Nie | Odśwież okresów istnienia tokenu. Maksymalny okres, przed którym token odświeżania można uzyskać nowy token dostępu, jeśli aplikacja została udzielona zakresu offline_access. Wartość domyślna to 120,9600 sekund (14 dni). Minimum (włącznie) jest 86 400 sekund (24 godziny). Maksymalna (włącznie) to 7,776,000 sekund (90 dni). | 
 | rolling_refresh_token_lifetime_secs | Nie | Odśwież okres istnienia okna przewijania tokenu. Po upłynięciu tego okresu użytkownik jest zmuszony do ponownego uwierzytelnienia, niezależnie od ostatniego okresu ważności tokenu odświeżania uzyskanego przez aplikację. Jeśli nie chcesz wymusić okres istnienia okna przewijania, ustaw wartość allow_infinite_rolling_refresh_token do `true`. Wartość domyślna to 7,776,000 sekund (90 dni). Minimum (włącznie) jest 86 400 sekund (24 godziny). Maksymalna (włącznie) to 31,536,000 sekund (365 dni). | 

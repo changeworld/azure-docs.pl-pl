@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 110ba7f13b2a0d44277c881d67f0c794c8658cd1
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: dcee7df0b5da53bd7014a26f1f09695fe874833d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244588"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849664"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Samouczek: tworzenie i uruchamianie notesu Jupyter przy użyciu języka Python
 
@@ -128,7 +128,7 @@ Dzięki zestawowi środowiska projektu i pliku danych, które jest gotowy można
 1. Ponieważ masz *requirements.txt* plików w ustawieniach środowiska zostanie wyświetlony komunikat "Oczekiwanie na zakończenie kontener przygotowywany." Możesz wybrać **OK** Zamknij komunikat i kontynuować pracę w notesie; nie można uruchomić komórki kodu, jednak, dopóki środowisko jest w pełni skonfigurowany.
 1. Notes zostanie otwarty w interfejsie Jupyter, z jednym pustej komórce kodu jako domyślny.
 
-    [![](media/tutorial/tutorial-new-notebook.png "Widok początkowy nowy notes w notesach platformy Azure")](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Widok początkowy nowy notes w notesach platformy Azure](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Przewodnik po interfejsie notesu
 
@@ -144,7 +144,7 @@ Menu (C) A za pomocą polecenia do pracy z notesem.
 (F) wskazuje, czy jest zaufany Notes (wartość domyślna to **zaufany**).
 (G) jądra używane do uruchamiania notesu wraz z wskaźnik aktywności.
 
-[![](media/tutorial/tutorial-notebook-ui.png "Główne obszary interfejsu użytkownika interfejsu programu Jupyter")](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Główne obszary interfejsu użytkownika interfejsu programu Jupyter](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter zapewnia wbudowane Przewodnik po przykładzie podstawowe elementy interfejsu użytkownika. Uruchom samouczek, wybierając **pomocy** > **samouczek interfejsu użytkownika** polecenia i klikając okna podręczne.
 

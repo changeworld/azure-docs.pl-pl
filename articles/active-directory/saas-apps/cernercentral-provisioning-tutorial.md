@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: bc215061d5f2f139c5912f29f709346cb681ee86
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: eb34a6e7ded4c31c623031104aabbee16b5c4f1c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346635"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819479"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie centralnego Cerner dla automatycznej aprowizacji użytkowników
 
@@ -69,7 +69,7 @@ Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz pop
 
 1.  Pierwszym krokiem jest zapewnienie osobom Zarządzanie Cerner i integracji z usługą Azure AD ma konto CernerCare, który jest wymagany do dostęp do dokumentacji, które są niezbędne do zakończenia z instrukcjami. Jeśli to konieczne, umożliwia tworzenie kont CernerCare w każdym środowisku zastosowanie poniższych adresów URL.
 
-   * Piaskownica:  https://sandboxcernercare.com/accounts/create
+   * Sandbox:  https://sandboxcernercare.com/accounts/create
 
    * Produkcyjne:  https://cernercare.com/accounts/create  
 
@@ -77,7 +77,7 @@ Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz pop
 
    * Instrukcje:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
-   * Piaskownica: https://sandboxcernercentral.com/system-accounts/
+   * Sandbox: https://sandboxcernercentral.com/system-accounts/
 
    * Produkcyjne:  https://cernercentral.com/system-accounts/
 
@@ -85,7 +85,7 @@ Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz pop
 
    * Instrukcje:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
-   * Piaskownica: https://sandboxcernercentral.com/system-accounts/
+   * Sandbox: https://sandboxcernercentral.com/system-accounts/
 
    * Produkcyjne:  https://cernercentral.com/system-accounts/
 
@@ -105,7 +105,7 @@ Aby zapewnić aprowizację kont użytkowników do centralnego Cerner, musisz pop
 
    * W **adres URL dzierżawy** wprowadź adres URL w formacie poniżej, zastępując "User-spisu-obszaru-ID" o identyfikatorze obszaru uzyskaną w kroku #4.
 
-> Piaskownica: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
 > Produkcyjne: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
@@ -127,7 +127,7 @@ Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy pr
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Środkowa Cerner: Publikowania danych tożsamości za pomocą usługi Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Samouczek: Konfigurowanie centralnego Cerner logowanie jednokrotne z usługą Azure Active Directory](cernercentral-tutorial.md)

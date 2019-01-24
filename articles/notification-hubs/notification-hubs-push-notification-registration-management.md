@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/04/2019
-ms.openlocfilehash: da1cad5c949579e0c66d9cc49f99b7cee9d53f35
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/23/2019
+ms.openlocfilehash: 1ace7ecd42ac36be1c38e52dcef6663439b7db4c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452245"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817837"
 ---
 # <a name="registration-management"></a>Zarządzanie rejestracją
 
@@ -34,6 +34,9 @@ Rejestracja urządzenia w Centrum powiadomień odbywa się przy użyciu **rejest
 ### <a name="registrations"></a>Rejestracje
 
 Rejestracji kojarzy uchwyt usług powiadomień platformy (PNS, Domain Name System) dla urządzenia przy użyciu tagów i ewentualnie szablonu. Identyfikator ChannelURI, token urządzenia lub identyfikator rejestracji usługi GCM, może być dojściem systemu powiadomień platformy. Znaczniki są używane do kierowania powiadomień do odpowiednich zestawów uchwyty urządzenia. Aby uzyskać więcej informacji, zobacz [routingu i wyrażenia tagu](notification-hubs-tags-segment-push-message.md). Szablony są używane do implementowania przekształcenia na rejestracji. Aby uzyskać więcej informacji, zobacz [Szablony](notification-hubs-templates-cross-platform-push-messages.md).
+
+> [!NOTE]
+> Usługa Azure Notification Hubs obsługuje maksymalnie 60 tagów na rejestracji.
 
 ### <a name="installations"></a>Instalacje
 

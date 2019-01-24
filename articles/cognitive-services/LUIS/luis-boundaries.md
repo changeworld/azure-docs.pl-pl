@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b71b62d50f209c033597799dd26f579fcb200cc9
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7f8f4848b7181ad3df7ad4fa009ff284de381b75
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413371"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820414"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice dla modelu usługi LUIS i klucze
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -24,30 +24,27 @@ Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-bound
 
 ## <a name="model-boundaries"></a>Granice modelu
 
+
 |Obszar|Limit|
 |--|:--|--|
 | [Nazwa aplikacji][luis-get-started-create-app] | * Znak Domyślna maksymalna |
 | [Testowanie usługi Batch][batch-testing]| 10 zestawów danych, 1000 wypowiedzi dla zestawu danych|
-| **[Złożone](./luis-concept-entity-types.md)|100 z maksymalnie 10 elementów podrzędnych |
 | Lista jawnego | 50 na aplikację|
-| **[Hierarchiczna](./luis-concept-entity-types.md) |100 z maksymalnie 10 elementów podrzędnych |
 | [Intencji][intents]|500 na aplikację<br>[Na podstawie wysyłania](https://aka.ms/dispatch-tool) aplikacja ma odpowiedni źródeł 500 wysyłania|
 | [Lista jednostek](./luis-concept-entity-types.md) | Element nadrzędny: 50, podrzędne: 20 000 elementów. Nazwa kanoniczna jest * domyślna maksymalna liczba znaków. Synonim wartości ma żadnych ograniczeń długości. |
+| [Maszyny do opanowania jednostek](./luis-concept-entity-types.md):<br> Złożone,<br>  Hierarchiczna<br> Proste|100 <br>Łączna liczba jednostek przedstawiono maszyny (prosty, hierarchicznych i złożone jednostek) nie może przekraczać 100. Złożone i hierarchiczne jednostki nie może mieć więcej niż 10 dzieci.  |
 | [Wzorce](luis-concept-patterns.md)|500 wzorce dla aplikacji.<br>Maksymalna długość wzorca to 400 znaków.<br>3 jednostki Pattern.any na wzorzec<br>Maksymalnie 2 zagnieżdżonych opcjonalnych teksty we wzorcu|
 | [Pattern.any](./luis-concept-entity-types.md)|100 na aplikację, 3 jednostki pattern.any na wzorzec |
 | [Lista fraz][phrase-list]|10 frazę list, 5000 elementów na liście|
 | [Wstępnie utworzonych jednostek](./luis-prebuilt-entities.md) | bez ograniczeń|
 | [Wyrażenie regularne jednostek](./luis-concept-entity-types.md)|20 jednostek<br>Maksymalna liczba znaków to 500. na jednostkę definicję wzorca wyrażenia regularnego|
 | [Role](luis-concept-roles.md)|300 role na aplikację. 10 ról na jednostkę|
-| **[Proste](./luis-concept-entity-types.md)| 100 jednostek|
 | [Wypowiedź][utterances] | 500 znaków|
 | [Wypowiedzi][utterances] | 15 000 na aplikacji|
 | [Wersje](luis-concept-version.md)| bez ograniczeń |
 | [Nazwa wersji][luis-how-to-manage-versions] | 10 znaków dotyczy alfanumeryczne oraz kropki (.) |
 
 * Znak Domyślna maksymalna to 50 znaków. 
-
-** Łącznej liczby jednostek prosty, hierarchicznych i złożone nie może przekraczać 100. Łączna liczba hierarchiczne jednostek, złożonego jednostek, jednostki proste i hierarchiczne elementy podrzędne jednostki nie może przekraczać 330. 
 
 ## <a name="intent-and-entity-naming"></a>Przeznaczenie i nazewnictwa jednostki
 Nie należy używać następujących znaków w nazwach intencji i jednostki:

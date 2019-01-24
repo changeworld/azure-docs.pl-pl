@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 27686cf036f69a9a4597c499e9b8b7d66d77e1e9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019677"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854381"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Wykonywać zaawansowane przekształceń JSON i łącznika Liquid szablonów w usłudze Azure Logic Apps
 
@@ -30,6 +30,8 @@ Tak zanim będzie można wykonywać przekształcenia Liquid w aplikacji logiki, 
 * Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 * Podstawowy [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
+
+* Podstawową wiedzę na temat o [język Liquid szablonu.](https://shopify.github.io/liquid/)
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Tworzenie płynnych szablon lub mapy dla konta integracji
 
@@ -68,7 +70,7 @@ Jeśli chcesz używać żadnych filtrów w szablonie Liquid, upewnij się, że f
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Nazwa** | JsonToJsonTemplate | Nazwa mapy, czyli "JsonToJsonTemplate" w tym przykładzie | 
-   | **Typ mapowania** | **cieczy** | Typ mapy. Dla formatu JSON do formatu JSON transformacji, musisz wybrać **liquid**. | 
+   | **Typ mapowania** | **liquid** | Typ mapy. Dla formatu JSON do formatu JSON transformacji, musisz wybrać **liquid**. | 
    | **Mapy** | "SimpleJsonToJsonTemplate.liquid" | Istniejącego Liquid szablon lub mapy pliku na potrzeby przekształcania, czyli "SimpleJsonToJsonTemplate.liquid" w tym przykładzie. Aby znaleźć ten plik, można użyć selektora plików. |
    ||| 
 

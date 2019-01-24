@@ -3,19 +3,19 @@ title: Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych w usł
 description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować RESTful profilu technicznego.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 930cdddd8a9e039fa9c29a348a0a66eb25d254fe
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d9dfef68e35cc07d395bb247af3476e8b73da642
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381465"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843892"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj RESTful profilu technicznego w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -86,8 +86,8 @@ Profil techniczny zwraca również wartość oświadczenia, które nie są zwrac
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | ServiceUrl | Yes | Adres URL punktu końcowego interfejsu API REST. | 
-| Element authenticationType | Yes | Typ uwierzytelniania jest wykonywane przez dostawcę oświadczeń typu RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST jest anonimowy. `Basic` Wartość wskazuje, że interfejs API REST jest zabezpieczony za pomocą podstawowego uwierzytelniania protokołu HTTP. Weryfikowane tylko użytkowników, w tym usługi Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. `ClientCertificate` (Zalecane) wartość wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C może uzyskać dostęp do usługi. | 
-| Elementu SendClaimsIn | Nie | Określa, jak oświadczeń wejściowych są wysyłane do dostawcy oświadczeń typu RESTful. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń przychodzących, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń przychodzących, który będzie wysyłany w ciągu zapytania żądania. | 
+| AuthenticationType | Yes | Typ uwierzytelniania jest wykonywane przez dostawcę oświadczeń typu RESTful. Możliwe wartości: `None`, `Basic`, lub `ClientCertificate`. `None` Wartość wskazuje, że interfejs API REST jest anonimowy. `Basic` Wartość wskazuje, że interfejs API REST jest zabezpieczony za pomocą podstawowego uwierzytelniania protokołu HTTP. Weryfikowane tylko użytkowników, w tym usługi Azure AD B2C, mogą uzyskiwać dostęp do interfejsu API. `ClientCertificate` (Zalecane) wartość wskazuje, że interfejs API REST ogranicza dostęp przy użyciu uwierzytelniania certyfikatu klienta. Tylko w przypadku usług, które mają odpowiednie certyfikaty, takich jak usługi Azure AD B2C może uzyskać dostęp do usługi. | 
+| SendClaimsIn | Nie | Określa, jak oświadczeń wejściowych są wysyłane do dostawcy oświadczeń typu RESTful. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń przychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń przychodzących, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń przychodzących, który będzie wysyłany w ciągu zapytania żądania. | 
 | ClaimsFormat | Nie | Określa format dla oświadczeń danych wyjściowych. Możliwe wartości: `Body` (ustawienie domyślne), `Form`, `Header`, lub `QueryString`. `Body` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w treści żądania w formacie JSON. `Form` Wartość oświadczeń wychodzących, który będzie wysyłany w treści żądania w handlowe "i" "&" rozdzielonych format wartości klucza. `Header` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w nagłówku żądania. `QueryString` Wartość oświadczeń danych wyjściowych, który będzie wysyłany w ciągu zapytania żądania. | 
 | Element DebugMode | Nie | Uruchamia profil techniczny w trybie debugowania. W trybie debugowania interfejs API REST może zwrócić więcej informacji. Zobacz sekcję zwracanie komunikatu błędu. | 
 
@@ -159,9 +159,9 @@ Interfejs API REST może być konieczne zwrócić komunikat o błędzie, takie j
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| wersja | Yes | 1.0.0 | 
+| version | Yes | 1.0.0 | 
 | status | Yes | 409 | 
-| Kod | Nie | Kod błędu z dostawcy typu RESTful punktu końcowego, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
+| kod | Nie | Kod błędu z dostawcy typu RESTful punktu końcowego, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
 | requestId | Nie | Identyfikator żądania od dostawcy punktem końcowym RESTful, które jest wyświetlane, gdy `DebugMode` jest włączona. | 
 | userMessage | Yes | Komunikat o błędzie, który jest wyświetlany użytkownikowi. | 
 | developerMessage | Nie | Szczegółowy opis problemu i jak rozwiązać problem, który jest wyświetlany, gdy `DebugMode` jest włączona. | 
@@ -171,13 +171,13 @@ Interfejs API REST, która zwraca sformatowany komunikat o błędzie w formacie 
 
 ```JSON
 {
-  "version": "1.0.0",
-  "status": 409,
-  "code": "API12345",
-  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "version": "1.0.0",
+  "status": 409,
+  "code": "API12345",
+  "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
+  "userMessage": "Message for the user", 
+  "developerMessage": "Verbose description of problem and how to fix it.", 
+  "moreInfo": "https://restapi/error/API12345/moreinfo" 
 }
 ```
 

@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Zawieszone domeny | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Zawieszone domeny | Dokumentacja firmy Microsoft'
 description: Domena zarządzana zawieszenie i usunięcie
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 161a9f1ac517d372884e7606dbd2ef30c910bf6b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1f548fefe1d28e3ca70de12911cb492d78c78629
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968104"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854840"
 ---
 # <a name="suspended-domains"></a>Wstrzymane domen
 Jeśli Azure Active Directory Domain Services (Azure AD DS) jest w stanie zrealizować domeny zarządzanej przez długi czas, umieszcza je w domenie zarządzanej przechodzą w stan wstrzymania. W tym artykule opisano, dlaczego domeny zarządzane są wstrzymywane i jak skorygować wstrzymania domeny.
@@ -67,7 +67,7 @@ W niektórych przypadkach (na przykład w przypadku konfiguracji sieci nieprawid
 Domeny zarządzanej jest umieszczany w **zawieszone** stanu z następujących powodów:
 
 * Jeden lub więcej alertów krytycznych jeszcze nie został rozwiązany w ciągu 15 dni. Alerty krytyczne może być spowodowane błędną konfiguracją które blokuje dostęp do zasobów, które są wymagane przez usługi Azure AD DS.
-    * Na przykład alert [AADDS104: błąd sieci](active-directory-ds-troubleshoot-nsg.md) występuje więcej niż 15 dni nierozpoznane w domenie zarządzanej.
+    * Na przykład alert [AADDS104: Błąd sieci](active-directory-ds-troubleshoot-nsg.md) występuje więcej niż 15 dni nierozpoznane w domenie zarządzanej.
 * Brak problemu z rozliczeniem z subskrypcją platformy Azure lub subskrypcji platformy Azure wygasła.
 
 Domeny zarządzane są wstrzymywane podczas firmy Microsoft nie będzie mógł zarządzać, monitorować, patch lub kopię zapasową domeny na bieżąco.

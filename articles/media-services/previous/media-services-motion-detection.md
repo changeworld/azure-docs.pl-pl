@@ -1,6 +1,6 @@
 ---
-title: Wykrywanie ruchów z analizy multimediów Azure | Dokumentacja firmy Microsoft
-description: Procesor multimediów czujnik ruchu Azure Media (MP) umożliwia wydajne zidentyfikować sekcje zawierają informacje przydatne w wideo w innym przypadku długich i procesu.
+title: Wykrywanie ruchów za pomocą usługi Azure Media Analytics | Dokumentacja firmy Microsoft
+description: Wykrywanie ruchu multimediów Azure procesor multimediów (MP) umożliwia wydajne identyfikują sekcje zainteresowania w wideo w przeciwnym razie długich i procesu.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,41 +13,41 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 8488b968fe2ab823479d70a98ba86be97b28f67d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12af87ab0a8b15528acbd9ce8a1bc92f478aba28
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788802"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820975"
 ---
-# <a name="detect-motions-with-azure-media-analytics"></a>Wykrywanie ruchów z analizy multimediów Azure
+# <a name="detect-motions-with-azure-media-analytics"></a>Wykrywanie ruchów za pomocą usługi Azure Media Analytics
 ## <a name="overview"></a>Przegląd
-**Czujnik ruchu Azure Media** procesor multimediów (MP) umożliwia wydajne zidentyfikować sekcje zawierają informacje przydatne w wideo w innym przypadku długich i procesu. Wykrywanie ruchu można w statycznej kamery sekcje wideo, gdzie występuje ruchu. Generuje plik JSON zawierający metadane z sygnatury czasowe i ograniczający regionu, w którym wystąpiło zdarzenie.
+**Wykrywanie ruchu multimediów Azure** procesor multimediów (MP) pozwala na efektywne identyfikują sekcje zainteresowania w wideo w przeciwnym razie długich i procesu. Wykrywanie ruchu można na statyczne aparatu nagrań z monitorowania identyfikują sekcje wideo, w której występuje ruchu. Generuje plik JSON zawierający metadane za pomocą sygnatur czasowych i otaczający region, w której wystąpiło zdarzenie.
 
-Docelowe do źródła wideo zabezpieczeń, ta technologia jest w stanie kategoryzację ruchu na odpowiednie zdarzenia i fałszywych alarmów, takie jak cieni i zmian oświetlenia. Umożliwia generowanie alertów zabezpieczeń z aparatu fotograficznego źródła danych bez otrzymywania wiadomości-śmieci nieskończone zdarzenia nie ma znaczenia, będąc wyodrębnić chwil płynących z wideo długi nadzoru.
+Skierowany strumieniowych źródeł wideo zabezpieczeń, ta technologia jest w stanie kategoryzowanie ruchu do odpowiednie zdarzenia i fałszywych alarmów, takie jak cieni i zmian oświetlenia. Umożliwia generowanie alertów zabezpieczeń z kanałami informacyjnymi aparatu bez otrzymywania wiadomości-śmieci nieskończone zdarzeń nie ma znaczenia, będąc wyodrębnić chwil zainteresowania z nadzoru długich wideo.
 
-**Czujnik ruchu Azure Media** pakiet administracyjny jest obecnie w przeglądzie.
+**Wykrywanie ruchu multimediów Azure** pakiet administracyjny jest obecnie w wersji zapoznawczej.
 
-Ten artykuł zawiera szczegółowe informacje o **czujnik ruchu Azure Media** i pokazuje, jak z niego korzystać z zestawu SDK usługi Media Services dla platformy .NET
+Ten artykuł zawiera szczegółowe informacje o **wykrywanie ruchu multimediów Azure** i pokazuje, jak z niej korzystać z zestawu SDK usługi Media Services dla platformy .NET
 
 ## <a name="motion-detector-input-files"></a>Pliki wejściowe wykrywanie ruchu
 Pliki wideo. Obecnie obsługiwane są następujące formaty: MP4, MOV i WMV.
 
-## <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienia domyślne)
-Podczas tworzenia zadania z **czujnik ruchu Azure Media**, należy określić ustawienia domyślne konfiguracji. 
+## <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
+Podczas tworzenia zadania za pomocą **wykrywanie ruchu multimediów Azure**, należy określić ustawienie wstępne konfiguracji. 
 
 ### <a name="parameters"></a>Parametry
-Można użyć poniższych parametrów:
+Można użyć następujących parametrów:
 
 | Name (Nazwa) | Opcje | Opis | Domyślne |
 | --- | --- | --- | --- |
-| sensitivityLevel |Ciąg: "Niski", "medium',"Wysoki" |Ustawia poziom czułości na ruchy, które są zgłaszane. Dostosuj, aby dostosować liczbę fałszywych alarmów. |"Średni" |
-| frameSamplingValue |Dodatnia liczba całkowita |Określa częstotliwość, w której działa algorytmu. Każda ramka jest równa 1, 2 oznacza, że co drugi ramki i tak dalej. |1 |
-| detectLightChange |Wartość logiczna: "prawda", "fałsz" |Określa, czy zmiany światła są podane w wynikach |"Fałsz" |
-| mergeTimeThreshold |Czas xs: Hh: mm:<br/>Przykład: 00:00:03 |Określa przedział czasu między zdarzeniami ruchu, gdzie są 2 zdarzenia można łączyć i zgłaszane jako 1. |00:00:00 |
-| detectionZones |Tablica wykrywania stref:<br/>-Wykrywania strefy jest tablicą 3 lub więcej punktów<br/>— Punkt jest x i y Współrzędna z zakresu od 0 do 1. |Zawiera opis listy wykrywania wielobocznych stref ma być używany.<br/>Wyniki są zgłaszane z strefy jako Identyfikatora, z których pierwszy z nich jest 'id': 0 |Jednej strefie, która obejmuje całą ramkę. |
+| sensitivityLevel |Ciąg: "niska", "średnie", "wysoka" |Ustawia poziom poufności w ruchy, które są zgłaszane. Dostosuj, aby dostosować liczbę wyników fałszywie dodatnich. |"średnia" |
+| frameSamplingValue |dodatnia liczba całkowita |Określa częstotliwość, na którym działa algorytmu. 1 jest równe w każdej klatce, 2 oznacza, że co drugi ramki i tak dalej. |1 |
+| detectLightChange |Wartość logiczna: "prawda", "false" |Określa, czy zmiany światła są zgłaszane w wynikach |'False' |
+| mergeTimeThreshold |Czas xs: : Mm: ss<br/>Przykład: 00:00:03 |Określa przedział czasu między zdarzeniami ruchu, gdzie znajdują się 2 zdarzenia można łączyć i raportowane jako 1. |00:00:00 |
+| detectionZones |Tablica stref wykrywania:<br/>-Wykrywanie strefa jest tablica 3 lub więcej punktów<br/>— Punkt jest x i y Współrzędna z zakresu od 0 do 1. |W tym artykule opisano listę stref wielokątne wykrywania do użycia.<br/>Wyniki są zgłaszane wraz z stref jako identyfikator z pierwszy z nich jest 'id': 0 |Jedną strefę, która obejmuje całą ramkę. |
 
-### <a name="json-example"></a>Przykład JSON
+### <a name="json-example"></a>Przykład kodu JSON
 
 ```json
     {
@@ -80,37 +80,37 @@ Można użyć poniższych parametrów:
 ```
 
 ## <a name="motion-detector-output-files"></a>Pliki wyjściowe wykrywanie ruchu
-Zadanie wykrywania ruchu zwraca plik JSON trwałego dane wyjściowe opisuje alerty ruchu i ich w kategorie wideo. Plik zawiera informacje o czas i czas trwania ruchu wykryto wideo.
+Zadanie wykrywania ruchu zwraca plik w formacie JSON w trwałego danych wyjściowych, który opisuje alerty ruchu oraz ich kategorii, w ramach filmu wideo. Plik zawiera informacje o czas i czas trwania ruchu wykryte w trakcie filmu wideo.
 
-Interfejs API wykrywanie ruchu zawiera wskaźniki po obiektów w ruchu w stałej tło w formie wideo (na przykład nadzoru, wideo). Czujnik ruchu jest uczony zmniejszenie fałszywe alarmy, takie jak oświetlenia i zmiany w tle. Bieżące ograniczenia algorytmy obejmują nocy wizji wideo, półprzezroczyste obiektów i małych obiektów.
+Interfejs API wykrywanie ruchu zawiera wskaźniki po obiektów w ruchu w tle środka wideo (na przykład, nadzór, wideo). Wykrywanie ruchu jest uczony w celu wyeliminowania fałszywych alarmów, takie jak oświetlenia i zmiany w tle. Bieżące ograniczenia algorytmów obejmują nocy przetwarzania wideo, obiekty półprzezroczyste i małych obiektów.
 
-### <a id="output_elements"></a>Elementy pliku wyjściowego w formacie JSON
+### <a id="output_elements"></a>Elementy danych wyjściowych pliku JSON
 > [!NOTE]
-> W najnowszej wersji formatu danych wyjściowych JSON została zmieniona, może reprezentować istotne zmiany w przypadku niektórych klientów.
+> W najnowszej wersji formatu danych wyjściowych JSON został zmieniony i może stanowić istotną zmianę dla niektórych klientów.
 > 
 > 
 
-W poniższej tabeli opisano elementy pliku wyjściowego w formacie JSON.
+W poniższej tabeli opisano elementy danych wyjściowych pliku JSON.
 
 | Element | Opis |
 | --- | --- |
 | Wersja |Odnosi się do wersji interfejsu API wideo. Bieżąca wersja to 2. |
-| skali czasu |"Impulsów" na sekundę wideo. |
-| Przesunięcie |Przesunięcie czasu dla sygnatury czasowe w parametrem "ticks". W wersji 1.0 interfejsów API, wideo ta będzie zawsze równa 0. W przyszłości scenariusze, które firma Microsoft obsługuje, ta wartość może zmienić. |
-| szybkość klatek |Klatek na sekundę wideo. |
+| Skala czasu |"Impulsów" na sekundę filmu wideo. |
+| Przesunięcie |Przesunięcie czasu dla sygnatury czasowe w "taktów." W wersji 1.0 interfejsów API Video ta będzie zawsze równa 0. W przyszłości scenariusze, które firma Microsoft obsługuje, ta wartość może ulec zmianie. |
+| Framerate |Liczba klatek na sekundę w wideo. |
 | Szerokość, wysokość |Odnosi się do szerokości i wysokości wideo w pikselach. |
-| Uruchamianie |Sygnatura czasowa rozpoczęcia w parametrem "ticks". |
-| Czas trwania |Długość zdarzenia w parametrem "ticks". |
-| Interwał |Interwał każdego wpisu w zdarzeniu w parametrem "ticks". |
-| Zdarzenia |Każdy fragment zdarzenia zawiera ruchu w tym czas trwania. |
-| Typ |W bieżącej wersji jest to zawsze "2" dla ogólnego ruchu. Dzięki temu etykiety wideo API elastyczność kategoryzację ruchu w przyszłych wersjach. |
-| RegionID |Zgodnie z powyższymi wskazówkami, ta będzie zawsze równa 0 w tej wersji. Etykieta daje API wideo elastyczność można znaleźć ruchu w różnych regionach w przyszłych wersjach. |
-| Regiony |Odnosi się do obszaru w wideo, gdzie interesujących ruchu. <br/><br/>-"id" reprezentuje obszar region — w tej wersji jest tylko jeden, identyfikator: 0. <br/>-"type" reprezentuje kształt obszaru interesujących dla ruchu. "Prostokąt" i "wielokąta" są obecnie obsługiwane.<br/> Jeśli określono "prostokąt" region ma wymiarów w X, Y, szerokość i wysokość. Współrzędne X i Y reprezentują górna lewa współrzędnych XY regionu w znormalizowane skali od 0,0 do 1,0. Szerokość i wysokość reprezentuje rozmiar regionu w znormalizowane skali od 0,0 do 1,0. W bieżącej wersji X, Y, szerokość i wysokość jest zawsze ustalone na 0, 0 i 1, 1. <br/>Jeśli określono "wielokąta" region ma wymiarów w punktach. <br/> |
-| fragmenty |Metadane fragmentaryczne jest się w różnych segmentach fragmenty. Każdy fragmentu zawiera rozpoczęcia, czas trwania, liczba interwałów i zdarzenia. Fragment ze zdarzeniami nie oznacza, że ruch nie został wykryty podczas tej godziny rozpoczęcia i czas trwania. |
-| Nawiasy kwadratowe] |Każdy nawiasu reprezentuje jeden interwał w zdarzeniu. Puste nawiasy dla tego przedziału oznacza, że ruch nie została wykryta. |
-| Lokalizacje |Ten nowy wpis w polu zdarzenia wymieniono lokalizacji, w którym wystąpił ruchu. Jest to bardziej szczegółowy niż stref wykrywania. |
+| Uruchamianie |Sygnatura czasowa rozpoczęcia w "taktach". |
+| Czas trwania |Długość zdarzenia w "znaczników". |
+| Interval |Interwał każdego wpisu w zdarzeniu w "taktach". |
+| Zdarzenia |Każdy fragment zdarzeń zawiera ruchu wykryte w tym czas trwania. |
+| Typ |W bieżącej wersji jest to zawsze "2" dla ogólnego ruchu. Dzięki temu etykiety interfejsów API Video elastyczność do kategoryzowania ruchu w przyszłych wersji. |
+| RegionID |Jak wyjaśniono powyżej, ta będzie zawsze równa 0 w tej wersji. Ta etykieta dostarcza interfejs API wideo elastyczność, aby znaleźć ruchu w różnych regionach w przyszłych wersjach. |
+| Regiony |Odnosi się do obszaru w wideo, gdzie interesujące Cię ruchu. <br/><br/>-"id" reprezentuje obszar region — w tej wersji jest tylko jedna, identyfikator: 0. <br/>-"type" reprezentuje kształt obszaru interesujące Cię do ruchu. Obecnie są obsługiwane "prostokąt" i "polygon".<br/> Jeśli określono "prostokąt" region ma wymiarów w X, Y, szerokość i wysokość. Współrzędne X i Y reprezentują współrzędnych XY po lewej stronie górnego regionu na znormalizowaną skali od 0.0 do 1.0. Szerokość i wysokość reprezentuje rozmiar obszaru na znormalizowaną skali od 0.0 do 1.0. W bieżącej wersji X, Y, szerokość i wysokość są zawsze ustalone na poziomie 0, 0 i 1, 1. <br/>Jeśli określono "polygon" region ma wymiarów w punktach. <br/> |
+| Fragments |Metadane jest podzielony się w różnych segmentach fragmentów. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia. Fragment ze zdarzeniami nie oznacza, że ruchu nie został wykryty podczas tej godziny rozpoczęcia i czas trwania. |
+| Nawiasy kwadratowe] |Każdy nawiasu reprezentuje jeden interwał w zdarzeniu. Puste nawiasy kwadratowe dla tego interwału oznacza, że ruch nie zostało wykryte. |
+| locations |Ten nowy wpis w obszarze zdarzenia zawiera listę lokalizacji, w którym wystąpił ruchu. Jest to bardziej szczegółowe niż stref wykrywania. |
 
-W poniższym przykładzie JSON przedstawiono dane wyjściowe:
+Poniższy przykład kodu JSON przedstawiono dane wyjściowe:
 
 ```json
     {
@@ -157,16 +157,16 @@ W poniższym przykładzie JSON przedstawiono dane wyjściowe:
 ```
 
 ## <a name="limitations"></a>Ograniczenia
-* Obsługiwane formaty wideo wejściowych obejmują MP4, MOV i WMV.
-* Wykrywanie ruchu jest zoptymalizowana pod kątem wideo nieruchomy tła. Algorytm koncentruje się na zmniejszenie fałszywe alarmy, takie jak zmiany oświetlenia i cieni.
-* Niektóre ruchu mogą nie być wykrywane z powodu problemów technicznych; na przykład nocy wizji wideo, półprzezroczyste obiektów i małych obiektów.
+* Wideo obsługiwanych formatów danych wejściowych obejmują MP4, MOV i WMV.
+* Wykrywanie ruchu jest zoptymalizowany pod kątem filmów wideo w tle stacjonarnych. Algorytm koncentruje się na skróceniu fałszywych alarmów, takie jak zmiany oświetlenia i cieni.
+* Niektóre ruchu mogą nie zostać wykryte, ze względu na problemy techniczne; na przykład nocne przetwarzania wideo, obiekty półprzezroczyste i małych obiektów.
 
-## <a name="net-sample-code"></a>.NET przykładowy kod
+## <a name="net-sample-code"></a>Przykładowy kod .NET
 
-Następujących programów przedstawiono sposób:
+Poniższy program pokazuje jak:
 
-1. Utworzenie elementu zawartości i przesyłanie pliku multimediów do elementu zawartości.
-2. Utwórz zadanie z zadania wykrywania ruchu na obrazie wideo w zależności od pliku konfiguracji, który zawiera następujące ustawienie json: 
+1. Utworzenie elementu zawartości i przekaż plik multimedialny do niego.
+2. Tworzenie zadania za pomocą zadania wykrywania ruchu na obrazie wideo w zależności od pliku konfiguracji, który zawiera następujące ustawienie wstępne json: 
    
     ```json
             {
@@ -280,7 +280,7 @@ namespace VideoMotionDetection
             task.InputAssets.Add(asset);
 
             // Add an output asset to contain the results of the job.
-            task.OutputAssets.AddNew("My Video Motion Detectoion Output Asset", AssetCreationOptions.None);
+            task.OutputAssets.AddNew("My Video Motion Detection Output Asset", AssetCreationOptions.None);
 
             // Use the following event handler to check job progress.  
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
@@ -382,9 +382,9 @@ namespace VideoMotionDetection
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki
-[Blog Azure Media Services ruchu detektora](https://azure.microsoft.com/blog/motion-detector-update/)
+[Blog dotyczący platformy Azure wykrywanie ruchu usługi Media Services](https://azure.microsoft.com/blog/motion-detector-update/)
 
-[Przegląd analiz usługi Azure Media Services](media-services-analytics-overview.md)
+[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[W trakcie analizy multimediów Azure](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

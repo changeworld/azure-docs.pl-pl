@@ -3,19 +3,19 @@ title: Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad 
 description: Konfigurowanie usług AD FS 2016 przy użyciu protokołu SAML i zasad niestandardowych w usłudze Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7f74da682c72f9effb4dbac49b316ff17f03b534
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 6a371bbe34368e5373589575f367d4b352320ecd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275891"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856455"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -169,11 +169,11 @@ Otwórz przeglądarkę i przejdź do adresu URL. Upewnij się, wpisz poprawny ad
 
     | LDAP attrubute | Typ oświadczenia wychodzącego |
     | -------------- | ------------------- |
-    | Nazwy podmiotu zabezpieczeń użytkownika | userPricipalName |
+    | User-Principal-Name | userPricipalName |
     | Nazwisko | family_name |
-    | Podana nazwa | given_name |
-    | E-mail adresem | e-mail |
-    | Nazwa wyświetlana | name |
+    | Given-Name | given_name |
+    | E-Mail-Address | email |
+    | Display-Name | name |
     
 12.  Oparte na typu certyfikatu, konieczne może być ustawiona algorytmu wyznaczania wartości skrótu. Na jednostki uzależnionej strony zaufania (B2C pokaz) oknie właściwości wybierz **zaawansowane** kartę i zmień **skrótu Secure hash algorithm** do `SHA-256`i kliknij przycisk **Ok**.  
 13. W Menedżerze serwera wybierz **narzędzia**, a następnie wybierz pozycję **zarządzania usług AD FS**.

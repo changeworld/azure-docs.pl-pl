@@ -4,7 +4,7 @@ description: Powiąż z domeny zarządzanej usług domenowych Azure AD przy uży
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: e421d3219f50c0dbb635dfe5b9cb3e9a24d4fa61
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b1266a464e315dfb5b381cc1925591c80aed7f74
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158538"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856863"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Powiąż z domeny zarządzanej usług domenowych Azure AD przy użyciu bezpiecznego protokołu LDAP (LDAPS)
 
@@ -28,7 +28,7 @@ ms.locfileid: "50158538"
 Pełne [zadanie 4 — Konfigurowanie serwera DNS, dostęp do domeny zarządzanej z Internetu](active-directory-ds-ldaps-configure-dns.md).
 
 
-## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Zadanie 5: Wiązanie z domeny zarządzanej za pośrednictwem protokołu LDAP, przy użyciu LDP.exe
+## <a name="task-5-bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Zadanie 5. Powiąż z domeny zarządzanej za pośrednictwem protokołu LDAP, przy użyciu LDP.exe
 Można użyć narzędzia LDP.exe znajduje się w pakiecie narzędzia administracji zdalnej serwera w celu powiązania i wyszukiwanie LDAP.
 
 Najpierw należy otworzyć przystawkę LDP i nawiązać połączenie z domeną zarządzaną. Kliknij przycisk **połączenia** i kliknij przycisk **Connect...**  w menu. Określ nazwę domeny DNS z domeny zarządzanej. Określ port używany dla połączenia. W przypadku połączeń LDAP Użyj portu 389. W przypadku połączeń protokołu LDAPS korzystać z portu 636. Kliknij przycisk **OK** przycisk, aby nawiązać połączenie z domeną zarządzaną.
@@ -46,7 +46,7 @@ Wybierz **widoku**, a następnie wybierz pozycję **drzewa** w menu. Bazowa nazw
 Więcej informacji — [podstawy kwerendy LDAP](https://technet.microsoft.com/library/aa996205.aspx)
 
 
-## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Zadanie 6: Blokowanie dostęp do Twojej domeny zarządzanej za pośrednictwem Internetu secure LDAP
+## <a name="task-6-lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet"></a>Zadanie 6. Zablokować dostęp do Twojej domeny zarządzanej secure LDAP przez internet
 > [!NOTE]
 > Jeśli nie włączono dostępu protokołu LDAPS do domeny zarządzanej za pośrednictwem Internetu, należy pominąć to zadanie konfiguracji.
 >

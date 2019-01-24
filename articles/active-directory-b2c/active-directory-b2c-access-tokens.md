@@ -3,21 +3,21 @@ title: Żądania tokenów dostępu w usłudze Azure Active Directory B2C | Dokum
 description: Ten artykuł będzie pokazują, jak skonfigurować aplikację klienta i uzyskiwanie tokenu dostępu.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2043e0fc9fa63903073311856e7e8d31fb34c506
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f3db56c7ce61960fca0e5347b2385bcc65a88354
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015353"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845150"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Usługi Azure AD B2C: Tokeny dostępu żądania
+# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Żądanie tokenów dostępu
 
 Token dostępu (oznaczonego jako **dostępu\_tokenu** w odpowiedzi z usługi Azure AD B2C) jest formą token zabezpieczający, który klient może używać dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md), takich jak interfejs API sieci web. Tokeny dostępu są reprezentowane jako [tokenów Jwt](active-directory-b2c-reference-tokens.md) i zawierają informacje o serwerze zamierzony zasobów i udzielone uprawnienia do serwera. Podczas wywoływania serwera zasobów, token dostępu musi być obecne w żądaniu HTTP.
 
@@ -105,8 +105,8 @@ Dla zasobu niż co otrzymuje umożliwiające aplikacji klienta, może zażądać
 
 Standardowa OpenID Connect określono kilka wartości specjalne "scope". Następujące zakresy specjalne reprezentują uprawnienie "dostęp profil użytkownika" do:
 
-* **openid**: żąda tokenu Identyfikacyjnego
-* **w trybie offline\_dostępu**: żąda tokenu odświeżania (przy użyciu [przepływu kodu autoryzacji](active-directory-b2c-reference-oauth-code.md)).
+* **openid**: Żąda tokenu Identyfikacyjnego
+* **w trybie offline\_dostępu**: Żąda tokenu odświeżania (przy użyciu [przepływu kodu autoryzacji](active-directory-b2c-reference-oauth-code.md)).
 
 Jeśli `response_type` parametru w `/authorize` żądanie zawiera `token`, `scope` parametr musi zawierać co najmniej jeden zasób zakres (inne niż `openid` i `offline_access`), zostaną przyznane. W przeciwnym razie `/authorize` żądanie zostanie zakończona z błędem.
 

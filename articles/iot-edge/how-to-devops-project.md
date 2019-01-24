@@ -4,17 +4,17 @@ description: Usługa Azure DevOps Projects ułatwia rozpoczęcie pracy na platfo
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ebb7e515f9d9205f364d50b3d686c68a2988f86a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 114b6b0cc0fd4e8e51a9dbf2cdc8d9e2a2261754
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074218"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823491"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Tworzenie potoku CI/CD dla usługi IoT Edge przy użyciu usługi Azure DevOps Projects (wersja zapoznawcza)
 
@@ -28,111 +28,110 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 1. Zaloguj się do [Portalu Microsoft Azure](https://portal.azure.com).
 
-1. W lewym okienku wybierz ikonę **Utwórz zasób** na pasku nawigacyjnym po lewej stronie, a następnie wyszukaj hasło **DevOps Projects**.  
+1. W okienku po lewej stronie wybierz pozycję **Utwórz zasób**, a następnie wyszukaj pozycję **DevOps Projects**.  
 
 1.  Wybierz pozycję **Utwórz**.
 
-## <a name="select-a-sample-application-and-azure-service"></a>Wybieranie przykładowej aplikacji i usługi platformy Azure
+## <a name="create-a-new-application-pipeline"></a>Utwórz nowy potok aplikacji 
 
-1. Moduły usługi Azure IoT Edge mogą być napisane w [ C# ](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) i [Java](tutorial-java-module.md). Ustaw swój preferowany język, aby rozpocząć nową aplikację. Odpowiednio, możesz wybrać **.NET**, **Node.js**, **Python**, **C**, lub **Java**, a następnie kliknij przycisk **Dalej**.
+1. Moduły usługi Azure IoT Edge mogą być napisane w [ C# ](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) i [Java](tutorial-java-module.md). Ustaw swój preferowany język, aby rozpocząć nową aplikację: **.NET**, **Node.js**, **Python**, **C**, lub **językaJava**. Kliknij przycisk **Dalej**, aby kontynuować.
 
-    ![Wybierz język, aby utworzyć nową aplikację](./media/how-to-devops-project/select-language.png)
+   ![Wybierz język, aby utworzyć nową aplikację](./media/how-to-devops-project/select-language.png)
 
-2. Wybierz **proste IoT (wersja zapoznawcza)**, a następnie kliknij przycisk **dalej**.
+2. Wybierz **proste IoT (wersja zapoznawcza)** jako framwork aplikacji, a następnie wybierz **dalej**.
 
-    ![Wybierz strukturę proste IoT](media/how-to-devops-project/select-iot.png)
+   ![Wybierz strukturę proste IoT](media/how-to-devops-project/select-iot.png)
 
-3. Wybierz **usługi IoT Edge**, a następnie kliknij przycisk **dalej**.
+3. Wybierz **usługi IoT Edge** jako usługa platformy Azure, która wdraża aplikację, a następnie wybierz **dalej**.
 
-    ![Wybierz usługę IoT Edge](media/how-to-devops-project/select-iot-edge.png)
+   ![Wybierz usługę IoT Edge](media/how-to-devops-project/select-iot-edge.png)
 
-## <a name="configure-azure-devops-and-an-azure-subscription"></a>Konfigurowanie usługi Azure DevOps i subskrypcji platformy Azure
+4. Utwórz bezpłatnie nową organizację usługi Azure DevOps lub wybierz istniejącą organizację.
 
-1. Utwórz bezpłatnie nową organizację usługi Azure DevOps lub wybierz istniejącą organizację.
+   1. Podaj nazwę dla projektu. 
 
-    a. Wybierz nazwę projektu. 
+   2. Wybierz organizację DevOps platformy Azure. Jeśli nie masz istniejącej organizacji, wybierz opcję **dodatkowe ustawienia** Aby utworzyć nową. 
 
-    b. Wybierz lokalizację i subskrypcję platformy Azure, wybierz nazwę aplikacji, a następnie wybierz przycisk **Gotowe**.  
+   3. Wybierz swoją subskrypcję platformy Azure.
 
-    ![Nazwa i tworzenie aplikacji](media/how-to-devops-project/select-devops.png)
+   4. Użyj nazwy Centrum IoT Hub, generowane przez nazwę projektu, lub Podaj własny.
 
-1. Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Przykładowej aplikacji usługi IoT Edge jest skonfigurowana w repozytorium w Twojej organizacji DevOps platformy Azure, kompilacja jest wykonywana, a aplikacja jest wdrażana na urządzeniu usługi IoT Edge. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
+   5. Wybierz **dodatkowe ustawienia** do konfigurowania zasobów platformy Azure, które projekty DevOps tworzy w Twoim imieniu.
 
-    ![Wyświetl aplikację w portalu metodyki DevOps](./media/how-to-devops-project/devops-portal.png)
+   6. Wybierz **gotowe** można ukończyć tworzenia projektu. 
+
+   ![Nazwa i tworzenie aplikacji](media/how-to-devops-project/select-devops.png)
+
+Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Wybierz nazwę projektu, aby wyświetlić postęp. Może być konieczne odświeżenie strony. Przykładowej aplikacji usługi IoT Edge jest skonfigurowana w repozytorium w Twojej organizacji DevOps platformy Azure, kompilacja jest wykonywana, a aplikacja jest wdrażana na urządzeniu usługi IoT Edge. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
+
+   ![Wyświetl aplikację w portalu metodyki DevOps](./media/how-to-devops-project/devops-portal.png)
 
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Zatwierdzanie zmian kodu i wykonywanie ciągłej integracji/ciągłego wdrażania
 
-Usługa DevOps Projects utworzyła repozytorium Git w usłudze Azure Repos lub GitHub. Aby wyświetlić repozytorium i wprowadź zmiany w kodzie aplikacji, wykonaj następujące czynności:
+Usługa DevOps Projects utworzyć repozytorium Git dla projektu w repozytoriach usługi Azure. W tej sekcji możesz wyświetlić repozytorium i wprowadzać zmiany kodu w aplikacji.
 
-1. Z lewej strony pulpitu nawigacyjnego usługi DevOps Projects wybierz link dla gałęzi **master**.  
-Ten link otwiera widok nowo utworzonego repozytorium Git.
+1. Aby przejść do repozytorium dla projektu, wybierz **repozytoriów** w menu pulpitu nawigacyjnego projektu.  
 
-1. Aby wyświetlić adres URL klonowania repozytorium, wybierz pozycję **Klonuj** w prawym górnym rogu przeglądarki. Można sklonować repozytorium Git w programie VS Code lub innych preferowanych narzędzi. W następnych kilku krokach wprowadzić przy użyciu przeglądarki sieci web i zatwierdzania kodu zmienia się bezpośrednio do głównej gałęzi.
+   ![Widok repozytorium wygenerowane w w repozytoriach platformy Azure](./media/how-to-devops-project/view-repositories.png)
 
-    ![Klonowanie repozytorium git](media/how-to-devops-project/clone.png)
+2. W poniższych krokach objaśniono za pomocą przeglądarki sieci web, aby wprowadzić zmiany kodu. Zamiast tego sklonować repozytorium lokalnie, należy zaznaczyć **klonowania** od góry prawej krawędzi okna. Użyj podanego adresu URL, aby sklonować repozytorium Git w programie Visual Studio Code lub narzędzi do tworzenia. 
 
-1. Po lewej stronie przeglądarkę, przejdź do **modules/FilterModule/module.json** pliku.
+3. Repozytorium zawiera już kodu dla modułu o nazwie **SampleModule** opierając się na wybranej w ramach procesu tworzenia aplikacji. Otwórz **modules/SampleModule/module.json** pliku.
 
-1. Wybierz **Edytuj**, a następnie wprowadzić zmiany do `"version"` w obszarze `"tag"`. Na przykład, aby zaktualizować `"version": "${BUILD_BUILDID}"` używać [DevOps platformy Azure, tworzyć zmienne](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) jako część tag obrazu modułu usługi Azure IoT Edge.
+   ![Module.json Otwórz plik w repozytoriach usługi Azure](./media/how-to-devops-project/open-module-json.png)
 
-    ![Edytuj wersję, aby zaakceptować zmienne kompilacji](media/how-to-devops-project/update-module-json.png)
+4. Wybierz **Edytuj**, a następnie wprowadzić zmiany do `"version"` w obszarze `"tag"`. Na przykład, aby zaktualizować `"version": "${BUILD_BUILDID}"` używać [DevOps platformy Azure, tworzyć zmienne](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) jako część tag obrazu modułu usługi Azure IoT Edge.
 
-1. Wybierz pozycję **Zatwierdź**, a następnie zapisz zmiany.
+   ![Edytuj wersję, aby zaakceptować zmienne kompilacji](media/how-to-devops-project/update-module-json.png)
 
-1. W przeglądarce przejdź do pulpitu nawigacyjnego projektu usługi Azure DevOps.  W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany są automatycznie kompilowane i wdrażane za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania.
+5. Wybierz pozycję **Zatwierdź**, a następnie zapisz zmiany.
+
+6. W przeglądarce wróć do pulpitu nawigacyjnego projekty DevOps w witrynie Azure portal. W tym momencie powinna być widoczna trwająca kompilacja. Wprowadzone zmiany są automatycznie kompilowane i wdrażane za pośrednictwem potoku ciągłej integracji/ciągłego wdrażania.
 
     ![Wyświetl stan w toku](media/how-to-devops-project/ci-cd-in-progress.png)
 
 ## <a name="examine-the-cicd-pipeline"></a>Badanie potoku ciągłej integracji/ciągłego wdrażania
 
-W poprzednim kroku usługi Azure DevOps Projects automatycznie konfigurowane pełny potok ciągłej integracji/ciągłego Dostarczania dla aplikacji usługi IoT Edge. Możesz przeglądać i dostosowywać potok według potrzeb. Wykonaj poniższe kroki, aby zapoznać się z potokami kompilacji i wydania usługi Azure DevOps.
+W poprzednich sekcjach usługi Azure DevOps Projects automatycznie konfigurowane pełny potok ciągłej integracji/ciągłego Dostarczania dla aplikacji usługi IoT Edge. Następnie możesz przetestować, tworzenie potoku za zatwierdzanie zmian do jednego z plików. Teraz eksplorować i dostosowywać potok zgodnie z potrzebami. Wykonaj poniższe kroki, aby zapoznać się z potokami kompilacji i wydania usługi Azure DevOps.
 
-1. U góry pulpitu nawigacyjnego usługi DevOps Projects wybierz pozycję **Potoki kompilacji**.  
-Ten link otwiera kartę przeglądarki i potok kompilacji usługi Azure DevOps dla nowego projektu.
+1. Zaznacz, aby wyświetlić potoki kompilacji w projekt DevOps **tworzenie potoków** w menu pulpitu nawigacyjnego projektu. Ten link otwiera kartę przeglądarki i potok kompilacji usługi Azure DevOps dla nowego projektu.
 
-1. Wybierz pozycję **Edit** (Edytuj).
+   ![Wyświetl tworzenie potoków w potokach platformy Azure](./media/how-to-devops-project/view-build-pipelines.png)
+
+2. Wybierz pozycję **Edit** (Edytuj).
 
     ![Edytuj potoku kompilacji](media/how-to-devops-project/click-edit-button.png)
 
-1. W tym okienku możesz zapoznać się z różnymi zadaniami w potoku kompilacji. Kompilacja wykonuje różne zadania, takie jak pobieranie źródeł z repozytorium Git, tworzenia obrazów modułu usługi IoT Edge, wypychanie moduły usługi IoT Edge i publikowania używane dane wyjściowe, które są używane w przypadku wdrożeń. Aby dowiedzieć się więcej na temat zadań usługi Azure IoT Edge dla ciągłej integracji, możesz odwiedzić stronę [konfigurowania Azure potoków ciągłej integracji](https://docs.microsoft.com/azure/iot-edge/how-to-ci-cd#configure-azure-pipelines-for-continuous-integration).
+3. W wyświetlonym panelu można sprawdzić zadania, które występują, gdy uruchomień potoków kompilacji. Potok kompilacji wykonuje różne zadania, takie jak pobieranie źródła z repozytorium Git, tworzenia obrazów modułu usługi IoT Edge, wypychanie moduły usługi IoT Edge do rejestru kontenerów i publikowanie danych wyjściowych, które są używane w przypadku wdrożeń. Aby dowiedzieć się więcej na temat zadań usługi Azure IoT Edge w DevOps platformy Azure, zobacz [konfigurowania Azure potoków ciągłej integracji](how-to-ci-cd.md#configure-continuous-integration).
 
-    ![Wyświetl zadania ciągłej integracji](media/how-to-devops-project/ci.png)
+4. Wybierz **potoku** nagłówka w górnej części procesu kompilacji, można otworzyć szczegóły potoku. Zmień nazwę potoku kompilacji na bardziej opisową.
 
-1. W górnej części potoku kompilacji wybierz jego nazwę.
+   ![Edytuj szczegóły potoku](./media/how-to-devops-project/edit-build-pipeline.png)
 
-1. Zmień nazwę potoku kompilacji na bardziej opisową, wybierz pozycję **Zapisz i dodaj do kolejki**, a następnie wybierz pozycję **Zapisz**.
+5. Wybierz **Zapisz k & olejką**, a następnie wybierz pozycję **Zapisz**.
 
-1. W obszarze nazwy potoku kompilacji wybierz pozycję **Historia**.   
-W okienku **Historia** zostanie wyświetlony dziennik inspekcji zmian ostatnio wprowadzonych w kompilacji.  Usługa Azure Pipelines śledzi wszelkie zmiany wprowadzone do potoku kompilacji i pozwala na porównanie wersji.
+6. Wybierz z menu dla potoku kompilacji **wyzwalaczy** w menu. Usługa DevOps Projects automatycznie utworzyła wyzwalacz ciągłej integracji — każde zatwierdzenie w repozytorium uruchamia nową kompilację.  Opcjonalnie możesz zdecydować się dołączyć gałęzie do procesu ciągłej integracji lub je wykluczyć.
 
-1. Wybierz pozycję **Wyzwalacze**. Usługa DevOps Projects automatycznie utworzyła wyzwalacz ciągłej integracji — każde zatwierdzenie w repozytorium uruchamia nową kompilację.  Opcjonalnie możesz zdecydować się dołączyć gałęzie do procesu ciągłej integracji lub je wykluczyć.
+7. Wybierz pozycję **Przechowywanie**. W zależności od scenariusza możesz określić zasady przechowywania lub usuwania pewnej liczby kompilacji.
 
-1. Wybierz pozycję **Przechowywanie**. W zależności od scenariusza możesz określić zasady przechowywania lub usuwania pewnej liczby kompilacji.
+8. Wybierz **historii**. Na panelu Historia zawiera dziennik inspekcji ostatnich zmian do kompilacji. Usługa Azure Pipelines śledzi wszelkie zmiany wprowadzone do potoku kompilacji i pozwala na porównanie wersji.
 
-1. Wybierz **wersji** w obszarze **potoki**. Projekty DevOps tworzy potok wersji w celu zarządzania wdrożeniami do usługi Azure IoT Edge.
+9. Po zakończeniu eksplorowania potoku kompilacji, przejdź do odpowiedniej potoku tworzenia wersji. Wybierz **wersji** w obszarze **potoki**, a następnie wybierz **Edytuj** Aby wyświetlić szczegóły potoku.
 
     ![Wyświetl potoku tworzenia wersji](media/how-to-devops-project/release-pipeline.png)
 
-1. Wybierz pozycję **Edit** (Edytuj). Potok wydania zawiera potok, który definiuje proces tworzenia wydania.  
+10. W obszarze **Artefakty** wybierz polecenie **Porzuć**. Źródło, które obserwuje ten artefakt znajduje się dane wyjściowe potoku kompilacji, które badania w poprzednich krokach. 
 
-1. W obszarze **Artefakty** wybierz polecenie **Porzuć**. Potok kompilacji przedstawiony w poprzednich krokach generuje dane wyjściowe używane na potrzeby artefaktu. 
+11. Obok pozycji **porzucić** ikony, wybierz opcję **wyzwalacz ciągłego wdrażania** wygląda błyskawicy. Ten potok wersji włączył wyzwalacza, który uruchamia wdrożenie, za każdym razem, gdy jest dostępny nowy artefakt kompilacji. Opcjonalnie możesz wyłączyć wyzwalacz. Wtedy wdrożenia będą wymagać ręcznego wykonania.  
 
-1. Obok ikony **Porzuć** wybierz pozycję **Wyzwalacz ciągłego wdrażania**.  
-Ten potok wydania ma włączony wyzwalacz ciągłego wdrażania, który przeprowadza wdrożenie za każdym razem, gdy jest dostępny nowy artefakt kompilacji. Opcjonalnie możesz wyłączyć wyzwalacz. Wtedy wdrożenia będą wymagać ręcznego wykonania.  
+12. Wybierz z menu dla potok wydania **zadania** wybierz **dev** etap z listy rozwijanej. Usługa DevOps Projects tworzone etapu wydania tworzy Centrum IoT, utworzenie urządzenia usługi IoT Edge w tym Centrum, wdraża moduł próbki z potoku kompilacji, która aprowizuje maszyny wirtualnej, aby był uruchamiany jako urządzenia usługi IoT Edge. Aby dowiedzieć się więcej na temat zadań usługi Azure IoT Edge na dysk CD, zobacz [konfigurowania Azure potoków ciągłego wdrażania](how-to-ci-cd.md#configure-continuous-deployment).
 
-1. Po lewej stronie wybierz pozycję **Zadania**. Zadania to działania wykonywane w procesie wdrażania. W tym przykładzie zadanie zostało utworzone, aby wdrożyć swoje obrazy modułu usługi Azure IoT Edge. Aby dowiedzieć się więcej na temat zadań usługi Azure IoT Edge na dysk CD, możesz odwiedzić stronę [konfigurowania Azure potoków ciągłego wdrażania](https://docs.microsoft.com/azure/iot-edge/how-to-ci-cd#configure-azure-pipelines-for-continuous-deployment).
+   ![Wyświetl zadania ciągłego wdrażania](media/how-to-devops-project/dev-release.png)
 
-    ![Wyświetl zadania ciągłego wdrażania](media/how-to-devops-project/dev-release.png)
+13. Po prawej stronie wybierz pozycję **Wyświetl wydania**. Ten widok przedstawia historię wersji.
 
-1. Po prawej stronie wybierz pozycję **Wyświetl wydania**. Ten widok przedstawia historię wersji.
-
-1. Wybierz symbol wielokropka (...) obok jednego z wydań i wybierz pozycję **Otwórz**.  
-Dostępnych jest kilka menu, z którymi możesz się zapoznać, na przykład podsumowanie wydań, skojarzone elementy robocze i testy.
-
-1. Wybierz pozycję **Zatwierdzenia**. Ten widok przedstawia zatwierdzenia kodu skojarzone z konkretnym wdrożeniem. 
-
-1. Wybierz pozycję **Dzienniki**. Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Mogą być wyświetlane zarówno podczas wdrożeń, jak i po nich.
+14. Wybierz nazwę wersji, aby wyświetlić więcej informacji na jego temat.
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów

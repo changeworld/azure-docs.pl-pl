@@ -4,7 +4,7 @@ description: Dowiedz się, jak zainstalować i używać widoki usługi Log Analy
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
 ms.service: active-directory
@@ -16,19 +16,19 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7f3db8b16e275ff130cc3d8cb162780d595a7f32
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fbe5515f05c66fb0763943c20ed8aaa4374e3d87
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624645"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825208"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalowanie i używanie widoki usługi Log Analytics dla usługi Azure Active Directory
 
 Widoki usługi Azure Active Directory Log Analytics ułatwia analizowanie i Dzienniki aktywności wyszukiwania usługi Azure AD w dzierżawie usługi Azure AD. Usługi Azure AD activity dzienniki obejmują:
 
-* Dzienniki inspekcji: [raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań, która jest wykonywana w dzierżawie.
-* Dzienniki logowania: za pomocą [raport aktywności logowania](concept-sign-ins.md), można określić, kto wykonał zadania, które są zgłaszane w dziennikach inspekcji.
+* Dzienniki inspekcji: [Raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań, która jest wykonywana w dzierżawie.
+* Dzienniki logowania: Za pomocą [raport aktywności logowania](concept-sign-ins.md), można określić, kto wykonał zadania, które są zgłaszane w dziennikach inspekcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -50,8 +50,8 @@ Aby użyć widoki usługi Log Analytics, potrzebne są:
 
 2. Gdy jesteś w obszarze roboczym, wybierz **podsumowanie obszaru roboczego**. Powinny zostać wyświetlone następujące trzy widoki:
 
-    * **Usługa Azure AD inicjowania obsługi zdarzeń na koncie**: ten widok przedstawia raportów związanych z inspekcji działania obsługi, takie jak liczba nowych użytkowników zainicjowano obsługę administracyjną i problemy z aprowizowaniem, liczbę użytkowników, aktualizowane i zaktualizuj błędów oraz liczby użytkowników błędy rozliczeniu i odpowiednie.    
-    * **Zdarzenia logowania**: ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
+    * **Konto usługi Azure AD inicjowania obsługi zdarzeń**: W tym widoku wyświetlane raporty związane z inspekcji działania obsługi, takie jak liczba nowych użytkowników zainicjowano obsługę administracyjną i problemy z aprowizowaniem, liczbę użytkowników, aktualizowane i zaktualizuj błędów oraz liczbę cofanie aprowizacji użytkowników i odpowiednie błędów.    
+    * **Zdarzenia logowania**: Ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
 
 3. Wybierz jedną z tych widoków, aby przejść do poszczególnych raportów. Można również ustawić alerty na każdym z parametrów raportu. Na przykład możemy ustawić alert w przypadku za każdym razem, gdy występuje błąd logowania. Aby to zrobić, najpierw wybierz **zdarzenia logowania** widoku, wybierz opcję **błędy logowania wraz z upływem czasu** raportu, a następnie wybierz pozycję **Analytics** otwierających strony szczegółów rzeczywiste zapytanie za raportu. 
 

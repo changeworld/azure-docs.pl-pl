@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: cd3aa913bd17498ddc58994196bc8faa96c4de51
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: fba4020c5e947c135d9e17cfb1d0b2a79ad8a502
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306458"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819343"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Poziom zabezpieczeń infrastruktury w usłudze Azure Stack
 
@@ -41,7 +41,7 @@ Ponieważ infrastruktura działa dobrze zdefiniowane sprzęt i oprogramowanie, u
 Ponieważ usługi Azure Stack jest dostarczana jako system zintegrowany, poziom zabezpieczeń infrastruktury Azure Stack jest zdefiniowana przez firmę Microsoft. Podobnie jak na platformie Azure, dzierżawców są odpowiedzialne za definiowanie stan zabezpieczeń obciążeń dzierżawcy. Ten dokument zawiera wiedzy fundamentalnych na poziom zabezpieczeń infrastruktury Azure Stack.
 
 ## <a name="data-at-rest-encryption"></a>Dane szyfrowanie rest
-Wszystkie usługi Azure Stack infrastruktury i dzierżawcy dane są szyfrowane w stanie spoczynku przy użyciu funkcji Bitlocker. To szyfrowanie zapewnia ochronę względem fizycznej utraty lub kradzieży składników magazynu usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [danych rest szyfrowanie w usłudze Azure Stack](azure-stack-security-bitlocker.md).
+Wszystkie usługi Azure Stack infrastruktury i dzierżawcy dane są szyfrowane w stanie spoczynku przy użyciu funkcji BitLocker. To szyfrowanie zapewnia ochronę względem fizycznej utraty lub kradzieży składników magazynu usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [danych rest szyfrowanie w usłudze Azure Stack](azure-stack-security-bitlocker.md).
 
 ## <a name="data-in-transit-encryption"></a>Dane przesyłane szyfrowania
 Składniki infrastruktury usługi Azure Stack komunikacji za pomocą kanałów zaszyfrowany przy użyciu protokołu TLS 1.2. Certyfikaty szyfrowania własnym są zarządzane przez infrastrukturę. 

@@ -3,19 +3,19 @@ title: Informacje o profilach techniczne w zasadach niestandardowych usługi Azu
 description: Dowiedz się więcej na temat profili sposobu techniczne są używane w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0f36cd798faac275e0f6dcb8a81bd37e14ab6d8d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 177e44a53f9976879e15e24313c1d8479cb5a6a7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275823"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853225"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach techniczne w zasadach niestandardowych usługi Azure Active Directory B2C
 

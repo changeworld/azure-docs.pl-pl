@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 17c25181709e6c75de2d23fb02fd55c0e6e41ae3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945081"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818035"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Uwierzytelnianie usługi Azure AD umożliwia dostęp do interfejsu API usługi Azure Media za pomocą architektury REST
 
@@ -50,7 +50,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 - Przegląd [uzyskiwania dostępu do usługi Azure Media Services interfejsu API za pomocą omówienie uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md) artykułu.
 - Zainstaluj [Postman](https://www.getpostman.com/) klienta REST do wykonywania interfejsów API REST, przedstawione w tym artykule. 
 
-    W tym samouczku jesteśmy uring **Postman** , ale odpowiednia może być dowolne narzędzie REST. Można również użyć: programu **Visual Studio Code** z wtyczką REST lub programu **Telerik Fiddler**. 
+    W tym samouczku używamy **Postman** , ale odpowiednia może być dowolne narzędzie REST. Inne możliwości: Program **Visual Studio Code** z wtyczką REST lub program **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Uzyskaj informacje o uwierzytelnianiu w witrynie Azure portal
 
@@ -79,7 +79,7 @@ Aby uzyskać informacje, wykonaj następujące kroki:
 5. Wybierz istniejącą **aplikacji usługi Azure AD** lub Utwórz nową (pokazana poniżej).
 
     > [!NOTE]
-    > Dla żądania REST multimediów Azure została wykonana pomyślnie, musi mieć użytkownika wywołującego **Współautor** lub **właściciela** konto usługi Media Services próby uzyskania dostępu do roli. Jeśli pojawi się wyjątek, który jest wyświetlany komunikat "serwer zdalny zwrócił błąd: (401) nieautoryzowane" zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+    > Dla żądania REST multimediów Azure została wykonana pomyślnie, musi mieć użytkownika wywołującego **Współautor** lub **właściciela** konto usługi Media Services próby uzyskania dostępu do roli. Jeśli pojawi się wyjątek, który jest wyświetlany komunikat "serwer zdalny zwrócił błąd: (401) nieautoryzowane,"zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
     Jeśli musisz utworzyć nową aplikację usługi AD, wykonaj następujące czynności:
     
@@ -118,7 +118,7 @@ Można dodać wartości dla parametrów połączenia usługi AD do pliku web.con
 
 ## <a name="get-the-access-token-using-postman"></a>Uzyskiwanie tokenu dostępu przy użyciu narzędzia Postman
 
-W tej sekcji pokazano, jak używać **Postman** do wykonania interfejsu API REST, która zwraca tokenu elementu nośnego JWT (token dostępu). Do wywołania dowolnego interfejsu API REST usługi Media, musisz dodać nagłówek "Autoryzacja" do wywołań i Dodaj wartość "Bearer *your_access_token*" do każdego wywołania (jak pokazano w następnej sekcji tego samouczka). 
+W tej sekcji pokazano, jak używać **Postman** do wykonania interfejsu API REST, która zwraca tokenu elementu nośnego JWT (token dostępu). Do wywołania dowolnego interfejsu API REST usługi Media, musisz dodać nagłówek "Autoryzacja" do wywołań i Dodaj wartość "Bearer *your_access_token*" do każdego wywołania (jak pokazano w następnej sekcji tego samouczka). 
 
 1. Otwórz **Postman**.
 2. Wybierz pozycję **POST**.
@@ -188,5 +188,5 @@ Zwrócona odpowiedź zawiera zasoby, które są w ramach Twojego konta.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Wypróbuj ten kod przykładowy w [uwierzytelnianie usługi Azure AD, aby uzyskać dostępu do usług Azure Media Services: zarówno za pomocą interfejsu API REST](https://github.com/willzhan/WAMSRESTSoln)
+* Wypróbuj ten kod przykładowy w [uwierzytelnianie usługi Azure AD, aby uzyskać dostępu do usług Azure Media Services: Zarówno za pomocą interfejsu API REST](https://github.com/willzhan/WAMSRESTSoln)
 * [Przekazywanie plików za pomocą platformy .NET](media-services-dotnet-upload-files.md)

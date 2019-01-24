@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 983c2e6d03735ba26f7660fc07dcf1a05ef88189
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 291bcec5a2a3d1ed2d49816b0ed7317bcfb07995
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960400"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851866"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Zmień dysk systemu operacyjnego używany przez Maszynę wirtualną platformy Azure przy użyciu interfejsu wiersza polecenia
 
@@ -34,7 +34,7 @@ Upewnij się, że typ rozmiaru i magazynu maszyny Wirtualnej są zgodne z dysku,
 Ten artykuł wymaga interfejsu wiersza polecenia Azure w wersji 2.0.25 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 
-Użyj [listy dysków az](/cli/azure/disk#list) w celu uzyskania listy dysków w grupie zasobów.
+Użyj [listy dysków az](/cli/azure/disk) w celu uzyskania listy dysków w grupie zasobów.
 
 ```azurecli-interactive
 az disk list \

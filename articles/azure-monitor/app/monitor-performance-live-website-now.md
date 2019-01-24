@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: f84be4dffb601d3748d951da15050e381e1cecc1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2c8c8233e8d471b0f1934df9ff7e0f2b4b3e3860
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464854"
+ms.locfileid: "54819139"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentacja aplikacji sieci web w czasie wykonywania za pomocą Monitora stanu usługi Application Insights
 
@@ -36,6 +36,7 @@ Dostępne są dwie trasy zastosowania usługi Application Insights do aplikacji 
 
 * **Czas kompilacji:** [Dodaj zestaw Application Insights SDK] [ greenbrown] do kodu aplikacji sieci web.
 * **Czas wykonywania:** Instrumentacja aplikacji sieci web na serwerze, zgodnie z opisem poniżej, bez ponownego kompilowania lub wdrażania kodu.
+
 > [!NOTE]
 > Jeśli używasz Instrumentacja w czasie kompilacji, należy uruchomić razem, gdy Instrumentacji nie będzie działać nawet wtedy, gdy jest włączona.
 

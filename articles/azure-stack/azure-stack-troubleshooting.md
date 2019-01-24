@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/23/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: b6ec3283121a3403afb80ccad81f313decf16c88
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a74fb749e130b565c44c637bfc16ff09e3314a05
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957644"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857169"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Rozwiązywanie problemów z usługi Microsoft Azure Stack
 
@@ -32,11 +32,31 @@ Ten dokument zawiera wspólne informacje dotyczące rozwiązywania problemów dl
 Zalecenia dotyczące rozwiązywania problemów, które są opisane w tej sekcji są uzyskiwane z wielu źródeł i może lub nie może rozpoznać określonego problemu. Przykłady kodu są dostarczane w postaci jest i nie można zagwarantować oczekiwanych wyników. W tej sekcji podlega częste zmiany i aktualizacje zaimplementowanego ulepszenia produktu.
 
 ## <a name="deployment"></a>Wdrożenie
-### <a name="deployment-failure"></a>Wdrożenie zakończyło się niepowodzeniem
+### <a name="general-deployment-failure"></a>Ogólne wdrożenie zakończyło się niepowodzeniem
 Jeśli nastąpi awaria podczas instalacji należy ponownie uruchomić wdrożenie z krok zakończony niepowodzeniem przy użyciu opcję ponownego uruchamiania skryptu wdrożenia.  
 
 ### <a name="at-the-end-of-asdk-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Po zakończeniu wdrożenia ASDK sesji programu PowerShell jest wciąż otwarty, a nie wyświetla żadnych danych wyjściowych.
 To zachowanie jest prawdopodobnie tylko wynik domyślne zachowanie okno poleceń programu PowerShell, jeśli został wybrany. Deployment kit rozwoju zakończyła się pomyślnie, ale skrypt został wstrzymany, wybierając okno. Możesz sprawdzić, czy instalacja została ukończona, wyszukując słowo "Wybierz" pasek tytułu okna wiersza polecenia.  Naciśnij klawisz ESC, aby usunąć jej zaznaczenie, a powinien być wyświetlany komunikat o zakończeniu po nim.
+
+### <a name="deployment-fails-due-to-lack-of-external-access"></a>Wdrożenie, kończy się niepowodzeniem ze względu na Brak dostępu zewnętrznego
+Jeśli wdrożenie zakończy się niepowodzeniem na etapach, których dostęp zewnętrzny jest wymagany, zostanie zwrócony wyjątek, jak w poniższym przykładzie:
+
+```
+An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
+```
+Jeśli ten błąd występuje, sprawdź, czy zostały spełnione wszystkie wymagania sieciowe minimalnej, przeglądając [dokumentacji ruchu sieciowego wdrażania](deployment-networking.md). Narzędzia Kontroler sieci jest również dostępna dla partnerów w ramach zestawu narzędzi partnera.
+
+Niepowodzenia wdrażania, z wyjątkiem powyżej są zwykle z powodu problemów dotyczących nawiązywania połączenia z zasobami w Internecie
+
+Aby sprawdzić, czy jest to problem, należy wykonać następujące czynności:
+
+1. Otwórz program Powershell
+2. Enter-PSSession WAS01 lub dowolne maszyny wirtualne, ERCs
+3. Uruchom polecenia cmdlet: Test-NetConnection login.windows.net -port 443
+
+Jeśli to polecenie nie powiedzie się, sprawdź przełącznik TOR i innym urządzeniom sieciowym są skonfigurowane do [zezwolić na ruch sieciowy](azure-stack-network.md).
 
 ## <a name="virtual-machines"></a>Maszyny wirtualne
 ### <a name="default-image-and-gallery-item"></a>Element domyślny obraz i galerii
