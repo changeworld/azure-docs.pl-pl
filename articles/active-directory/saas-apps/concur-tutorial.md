@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1eee0a5d-24fa-4986-9aef-3c543cfe3296
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 928205627ee971958fd2d98ad2c3cb91d9b491cc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 930ecc6374d2be05867b28af624280f4617d6482
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808506"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Concur
 
@@ -105,9 +105,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Concur, wy
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Concur](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<customer-domain>.concursolutions.com`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<customer-domain>.concursolutions.com`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta Concur](https://www.concur.co.in/contact). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.

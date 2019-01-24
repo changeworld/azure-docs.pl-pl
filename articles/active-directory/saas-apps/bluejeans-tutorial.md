@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: e92aadd2550e19b97eb94d42a11b76fa0f0cc748
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 12585974cf8e6fcaeee18293038f81989e55dfd6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974543"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824427"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem BlueJeans
 
@@ -147,7 +147,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu BlueJea
 
     a. Kliknij pozycję **Choose File** (Wybierz plik), aby przekazać certyfikat zakodowany w formacie base-64, pobrany wcześniej z witryny Azure Portal.
 
-    b. W polu tekstowym **Login URL** (Adres URL logowania) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+    b. W polu tekstowym **Adres URL logowania** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
     d. W polu tekstowym **Password Change URL** (Adres URL zmiany hasła) wklej wartość **adresu URL zmiany hasła** skopiowaną z witryny Azure Portal.
 

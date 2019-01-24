@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/24/2018
 ms.author: deborahc
-ms.openlocfilehash: 37be4a8e57df83a74ee5c650f8d323a6d5007ccd
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a3b07aaabbc484dc46dd331b698b6b7694a3221d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040791"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475224"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Przykłady dla platformy Node.js w usłudze Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -50,20 +50,20 @@ Plik [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/Datab
 
 | Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
-| [Tworzenie bazy danych, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L35-L37) |[Databases.createIfNotExists](https://docs.microsoft.com/javascript/api/%40azure/cosmos/databases?view=azure-node-latest#createifnotexists) |
+| [Tworzenie bazy danych, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L35-L37) |[Databases.createIfNotExists](https://docs.microsoft.com/javascript/api/%40azure/cosmos/databases?view=azure-node-latest) |
 | [Wyświetlanie listy baz danych na koncie](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L40-L42) |[Databases.readAll](https://docs.microsoft.com/javascript/api/%40azure/cosmos/databases?view=azure-node-latest#readall) |
 | [Odczytywanie bazy danych na podstawie identyfikatora](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L40-L42) |[Database.read](https://docs.microsoft.com/javascript/api/%40azure/cosmos/database?view=azure-node-latest#read) |
-| [Usuwanie bazy danych](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L57-L60) |[Database.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/database?view=azure-node-latest#delete) |
+| [Usuwanie bazy danych](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L57-L60) |[Database.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/database?view=azure-node-latest) |
 
 ## <a name="container-examples"></a>Przykłady dotyczące kontenerów
 Plik [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement/app.js) w projekcie [ContainerManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) pokazuje sposób wykonywania poniższych zadań.
 
 | Zadanie | Dokumentacja interfejsu API |
 | --- | --- |
-| [Tworzenie kontenera, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L36-L37) |[Containers.createIfNotExists](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest#createifnotexists) |
+| [Tworzenie kontenera, jeśli nie istnieje](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L36-L37) |[Containers.createIfNotExists](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest) |
 | [Wyświetlanie listy kontenerów dla konta](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L36-L37) |[Containers.readAll](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest#readall) |
 | [Odczytywania kolekcji na podstawie identyfikatora](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L47-L51) |[Container.read](https://docs.microsoft.com/javascript/api/%40azure/cosmos/container?view=azure-node-latest#read) |
-| [Usuwanie kontenera](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L54-L55) |[Container.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/container?view=azure-node-latest#delete) |
+| [Usuwanie kontenera](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L54-L55) |[Container.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/container?view=azure-node-latest) |
 
 ## <a name="item-examples"></a>Przykłady dotyczące elementów
 Plik [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement/app.js) w projekcie [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) pokazuje sposób wykonywania poniższych zadań.
@@ -77,7 +77,7 @@ Plik [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemM
 | [Wykonywanie zapytań dotyczących dokumentów](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L97-L118) |[Items.query](https://docs.microsoft.com/javascript/api/%40azure/cosmos/items?view=azure-node-latest#query) |
 | [Zastępowanie elementu](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L131-L136) |[Item.replace](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest#replace) |
 | [Zastępowanie elementu z warunkowym sprawdzaniem elementu ETag](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L139-L160) |[Item.replace](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest#replace)<br/>[RequestOptions.accessCondition](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#accesscondition) |
-| [Usuwanie elementu](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L162-L164) |[Item.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest#delete) |
+| [Usuwanie elementu](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L162-L164) |[Item.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest) |
 
 ## <a name="indexing-examples"></a>Przykłady dotyczące indeksowania
 Plik [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement/app.js) w projekcie [IndexManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/IndexManagement) pokazuje sposób wykonywania poniższych zadań.

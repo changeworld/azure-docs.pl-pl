@@ -3,7 +3,7 @@ title: Wprowadzenie do weryfikacji dwuetapowej — Azure Active Directory | Micr
 description: To jest strona usługi Azure Multi-Factor Authentication, która umożliwia użytkom końcowym rozpoczęcie pracy z usługą Azure Multi-Factor Authentication.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
 ms.workload: identity
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 06/15/2017
 ms.author: lizross
 ms.reviewer: richagi
-ms.openlocfilehash: 297184a2623a6a7cfa3894a51f5de0e3bd3db622
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2c7b985126d5c96223012eaf26eb327742ae0e8d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232780"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825259"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Co usługa Azure Multi-Factor Authentication oznacza dla mnie?
 Dotarła do Ciebie wiadomość e-mail z działu IT lub przełożonego z informacją, że dla Twojego konta wprowadzono dodatkową weryfikację zabezpieczeń.  Co to oznacza?

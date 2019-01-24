@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: bb3f10c44ddf8ded35f4d80b599cda7d44226652
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6cc689471247af3782e7e733be463cfc3e21afe5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654661"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478437"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>Tworzenie maszyny wirtualnej z usługami IIS przy użyciu konfiguracji DSC
 
@@ -52,7 +52,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
 | [az vm extension set](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Dodaje do maszyny wirtualnej rozszerzenie niestandardowego skryptu, które wywołuje skrypt instalacji usług IIS. |
-| [az vm open-port](https://docs.microsoft.com/cli/azure/vm#az_vm_open_port) | Tworzy regułę sieciowej grupy zabezpieczeń, aby zezwalać na ruch przychodzący. W tym przykładzie port 80 jest otwarty dla ruchu HTTP. |
+| [az vm open-port](https://docs.microsoft.com/cli/azure/vm) | Tworzy regułę sieciowej grupy zabezpieczeń, aby zezwalać na ruch przychodzący. W tym przykładzie port 80 jest otwarty dla ruchu HTTP. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki

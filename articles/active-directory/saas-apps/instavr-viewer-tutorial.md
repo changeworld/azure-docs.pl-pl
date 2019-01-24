@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 13ffa29f-d0a5-4b21-b296-cfd76f380940
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/7/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c63e7d03c0fc17e9892617aaeca94803c671acea
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b0548ec2bb580c2898f610f00fd5ba911b314114
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195052"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją InstaVR Viewer
 
@@ -79,8 +79,8 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z apli
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji InstaVR Viewer](#configure-instavr-viewer-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Tworzenie użytkownika testowego aplikacji InstaVR Viewer](#create-instavr-viewer-test-user)** — aby mieć w aplikacji InstaVR Viewer odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji InstaVR Viewer](#create-instavr-viewer-test-user)** — aby mieć w aplikacji InstaVR Viewer odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -105,13 +105,13 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji InstaVR Vi
 
     ![Domena i adresy URL aplikacji InstaVR Viewer — informacje o logowaniu jednokrotnym](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`.
-    
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://console.instavr.co/auth/saml/login/<WEBPackagedURL>`
+
     > [!NOTE]
     > Nie ma ustalonego wzorca adresu URL logowania. Jest on generowany, gdy klient InstaVR Viewer tworzy pakiety internetowe. Wzorzec jest unikatowy dla każdego klienta i pakietu. W celu uzyskania dokładnego adresu URL logowania musisz zalogować się do wystąpienia aplikacji InstaVR Viewer i utworzyć pakiety internetowe.
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`. 
-    
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://console.instavr.co/auth/saml/sp/<WEBPackagedURL>`
+
     > [!NOTE]
     > Wartość identyfikatora nie jest prawdziwa. Zaktualizuj tę wartość przy użyciu rzeczywistej wartości identyfikatora opisanej w dalszej części tego samouczka.
 

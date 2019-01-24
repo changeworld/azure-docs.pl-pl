@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d72e4da0-0123-409b-96c2-e613f3f83fb1
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/14/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 293c08a81ba675d42cd0e9f715e988b2186deb3d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 07385089e64977243929de15ab53f84520029495
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794077"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54806892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Innoverse
 
@@ -79,8 +79,8 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD przy u
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Innoverse](#configure-innoverse-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Tworzenie użytkownika testowego aplikacji Innoverse](#create-innoverse-test-user)** — aby w aplikacji Innoverse utworzyć odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Innoverse](#create-innoverse-test-user)** — aby w aplikacji Innoverse utworzyć odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -105,7 +105,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
 
     ![Domena i adresy URL aplikacji Innoverse — informacje dotyczące logowania jednokrotnego](common/idp_intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<domainname>.innover.se`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<domainname>.innover.se`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<domainname>.innover.se/auth/saml2/login`
 
@@ -114,7 +114,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD przy użyciu aplikacji
     ![Domena i adresy URL aplikacji Innoverse — informacje dotyczące logowania jednokrotnego](common/metadata_upload_additional_signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<domainname>.innover.se/auth/saml2/login`
-    
+
     > [!NOTE]
     > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta Innoverse](mailto:support@readify.net) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 

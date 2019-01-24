@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 9fe9952c3885e0e6145141bac7db13694dcdbd11
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 36f1b39ca4cef33a8cfcdb295b5c4d59e1128a0c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259669"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426849"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Szybki start: używanie programu Azure PowerShell do tworzenia kolejki usługi Service Bus
 Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz całkowitą niezawodność. Typowy scenariusz usługi Service Bus zwykle wiąże się z rozdzieleniem co najmniej dwóch aplikacji, usług lub procesów oraz przesłaniem zmian stanu lub danych. Takie scenariusze mogą obejmować planowanie wielu zadań wsadowych w innej aplikacji lub innych usługach bądź wyzwalanie realizacji zamówienia. Na przykład firma handlowa może wysłać dane z punktu sprzedaży na zaplecze biura lub do regionalnego centrum dystrybucji w celu uzupełnienia zapasów oraz aktualizacji spisu inwentarza. W tym scenariuszu aplikacja kliencka wysyła komunikaty do kolejki usługi Service Bus i je z niej odbiera.
@@ -263,4 +263,4 @@ W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby w
 > [Update inventory using Azure PowerShell (Aktualizowanie magazynu przy użyciu programu Azure PowerShell)](./service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azure/install-azurerm-ps
+[Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azure/azurerm/install-azurerm-ps

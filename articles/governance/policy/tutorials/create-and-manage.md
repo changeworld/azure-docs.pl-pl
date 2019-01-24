@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7cfcb71567931b1581618cf8f2239fb004befff8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ecebeef509f1f23e34ade6a79b8ffe39d4cbb0a5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087035"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845626"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności
 
@@ -160,12 +160,12 @@ Dołącz treść żądania podobną do poniższego przykładu:
 
 Przed przejściem do przykładu programu PowerShell upewnij się, że zainstalowano najnowszą wersję programu Azure PowerShell. Parametry zasad zostały dodane w wersji 3.6.0. Jeśli masz starszą wersję, przykłady zwrócą błąd wskazujący, że nie można odnaleźć parametru.
 
-Definicję zasad można utworzyć przy użyciu polecenia cmdlet `New-AzureRmPolicyDefinition`.
+Definicję zasad można utworzyć przy użyciu polecenia cmdlet `New-AzPolicyDefinition`.
 
 Aby utworzyć definicję zasad na podstawie pliku, przekaż ścieżkę do tego pliku. W przypadku pliku zewnętrznego skorzystaj z następującego przykładu:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -DisplayName 'Deny cool access tiering for storage' `
     -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
@@ -174,7 +174,7 @@ $definition = New-AzureRmPolicyDefinition `
 W przypadku pliku lokalnego skorzystaj z następującego przykładu:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -Description 'Deny cool access tiering for storage' `
     -Policy 'c:\policies\coolAccessTier.json'
@@ -183,7 +183,7 @@ $definition = New-AzureRmPolicyDefinition `
 Aby utworzyć definicję zasad z wbudowaną regułą, skorzystaj z następującego przykładu:
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
+$definition = New-AzPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
     "if": {
         "allOf": [{
                 "field": "type",
@@ -238,7 +238,7 @@ $parameters = '{
     }
 }'
 
-$definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
+$definition = New-AzPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
 ```
 
 ### <a name="view-policy-definitions-with-powershell"></a>Wyświetlanie definicji zasad przy użyciu programu PowerShell
@@ -246,7 +246,7 @@ $definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 
 Aby wyświetlić wszystkie definicje zasad w ramach subskrypcji, użyj następującego polecenia:
 
 ```azurepowershell-interactive
-Get-AzureRmPolicyDefinition
+Get-AzPolicyDefinition
 ```
 
 Zwraca ono wszystkie dostępne definicje zasad, w tym wbudowane zasady. Poszczególne zasady są zwracane w następującym formacie:

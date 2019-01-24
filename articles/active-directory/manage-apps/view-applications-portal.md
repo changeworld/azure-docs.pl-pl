@@ -4,7 +4,7 @@ description: Wyświetlanie aplikacji w dzierżawie usługi Azure Active Director
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 07/25/2018
 ms.author: barbkess
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: bedd83426ecb24681fcfa292a049b8d4a3271d6a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: ce998cd23ac3606ca9269e1e3316e6679fe0a7af
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39266492"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462865"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Wyświetlanie aplikacji dzierżawy usługi Azure Active Directory
 

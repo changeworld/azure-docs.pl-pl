@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/20/2018
 ms.author: jeedes
-ms.openlocfilehash: a05a246a3bdf0594484cbbf89998e337d2be5a12
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: cb639f04cec28596c528691066e60b087ca7b09a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974968"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Dropbox dla Firm
 
@@ -106,7 +106,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Dropbox dl
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Dropbox dla Firm](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.dropbox.com/sso/<id>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://www.dropbox.com/sso/<id>`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz wartość: `Dropbox`
 

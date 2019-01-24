@@ -2,18 +2,18 @@
 title: Tworzenie połączenia punkt-lokacja z platformą Azure w usłudze Azure Virtual WAN | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak utworzyć połączenie punkt-lokacja VPN z platformą Azure w usłudze Azure Virtual WAN.
 services: virtual-wan
-author: cherylmc
+author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 01/07/2019
-ms.author: cherylmc
+ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 05f4b0b7accc3b13984864e82589c6fa639ce88d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 87b8543d8cb658b46ab5e589a310a17a69508a47
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321657"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411394"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Samouczek: tworzenie połączenia punkt-lokacja przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 

@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1ad1cf90-52bc-4b71-ab2b-9a5a1280fb2d
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: f238a97b7b6e8e9bcbbdc1be60789982face1ac7
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3140b3851d1429c6d6a99f9c109725b5f09338c0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063900"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Confluence SAML SSO by Microsoft
 
@@ -270,7 +270,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie do lokalnego serwera Co
 
     a. W polu tekstowym **Username** (Nazwa użytkownika) wpisz adres e-mail użytkownika, np. Britta Simon.
 
-    b. W polu tekstowym **Imię i nazwisko** wpisz imię i nazwisko użytkownika, na przykład Britta Simon.
+    b. W polu tekstowym **Full Name** (Imię i nazwisko) wpisz imię i nazwisko użytkownika, np. Britta Simon.
 
     d. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, np. Brittasimon@contoso.com.
 

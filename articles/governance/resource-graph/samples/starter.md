@@ -4,17 +4,17 @@ description: Użyj usługi Azure Resource Graph do uruchamiania niektórych pods
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/22/2018
+ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: a1e54c4f78f502c6ae354ecdf4dd3c4b48a3457b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 85d54503e980d8c51128c8b5235197759a536003
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310185"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852358"
 ---
 # <a name="starter-resource-graph-queries"></a>Zapytania usługi Resource Graph dla początkujących
 
@@ -36,6 +36,8 @@ Omówimy następujące podstawowe zapytania:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+
 ## <a name="language-support"></a>Obsługa języków
 
 Interfejs wiersza polecenia platformy Azure (za pośrednictwem rozszerzenia) i program Azure PowerShell (za pośrednictwem modułu) obsługują usługę Azure Resource Graph. Przed uruchomieniem dowolnego z poniższych zapytań sprawdź, czy Twoje środowisko jest gotowe. Zobacz [Interfejs wiersza polecenia platformy Azure](../first-query-azurecli.md#add-the-resource-graph-extension) i [Program Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module), gdzie znajdziesz kroki instalacji i weryfikacji wybranego środowiska powłoki.
@@ -53,7 +55,7 @@ az graph query -q "summarize count()"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "summarize count()"
+Search-AzGraph -Query "summarize count()"
 ```
 
 ## <a name="list-resources"></a>Lista zasobów posortowana według nazwy
@@ -70,7 +72,7 @@ az graph query -q "project name, type, location | order by name asc"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "project name, type, location | order by name asc"
+Search-AzGraph -Query "project name, type, location | order by name asc"
 ```
 
 ## <a name="show-vms"></a>Pokaż wszystkie maszyny wirtualne uporządkowane według nazwy w kolejności malejącej
@@ -88,7 +90,7 @@ az graph query -q "project name, location, type| where type =~ 'Microsoft.Comput
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
+Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
 ## <a name="show-sorted"></a>Pokaż pierwsze pięć maszyn wirtualnych według nazwy i ich typu systemu operacyjnego
@@ -106,7 +108,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
 ## <a name="count-os"></a>Liczba maszyn wirtualnych według typu systemu operacyjnego
@@ -124,7 +126,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by tostring(properties.storageProfile.osDisk.osType)"
 ```
 
 Innym sposobem zapisania tego samego zapytania jest rozszerzenie (`extend`) właściwości i nadanie jej nazwy tymczasowej do użycia w ramach zapytania, w tym przypadku **os**. Właściwość **os** jest następnie używana przez funkcje `summarize` i `count()`, jak w poprzednim przykładzie.
@@ -140,7 +142,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | extend os
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | extend os = properties.storageProfile.osDisk.osType | summarize count() by tostring(os)"
 ```
 
 > [!NOTE]
@@ -159,7 +161,7 @@ az graph query -q "where type contains 'storage' | distinct type"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type contains 'storage' | distinct type"
+Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ```
 
 ## <a name="list-publicip"></a>Lista wszystkich publicznych adresów IP
@@ -178,7 +180,7 @@ az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddr
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | project properties.ipAddress | limit 100"
 ```
 
 ## <a name="count-resources-by-ip"></a>Liczba zasobów ze skonfigurowanymi adresami IP według subskrypcji
@@ -195,7 +197,7 @@ az graph query -q "where type contains 'publicIPAddresses' and properties.ipAddr
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
+Search-AzGraph -Query "where type contains 'publicIPAddresses' and properties.ipAddress != '' | summarize count () by subscriptionId"
 ```
 
 ## <a name="list-tag"></a>Lista zasobów z konkretną wartością tagu
@@ -212,7 +214,7 @@ az graph query -q "where tags.environment=~'internal' | project name"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name"
+Search-AzGraph -Query "where tags.environment=~'internal' | project name"
 ```
 
 Aby uzyskać także nazwy i wartości tagów w zasobie, dodaj właściwość **tagi** do słowa kluczowego `project`.
@@ -227,7 +229,7 @@ az graph query -q "where tags.environment=~'internal' | project name, tags"
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where tags.environment=~'internal' | project name, tags"
+Search-AzGraph -Query "where tags.environment=~'internal' | project name, tags"
 ```
 
 ## <a name="list-specific-tag"></a>Lista wszystkich kont magazynu z konkretną wartością tagu
@@ -244,7 +246,7 @@ az graph query -q "where type =~ 'Microsoft.Storage/storageAccounts' | where tag
 ```
 
 ```azurepowershell-interactive
-Search-AzureRmGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
+Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where tags['tag with a space']=='Custom value'"
 ```
 
 > [!NOTE]

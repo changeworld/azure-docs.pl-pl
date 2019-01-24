@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a023d9f600f63d1ead4cf7c7e2a3cceec794d28b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f4456ed81fba4648f5bc3efaa415b1e44e5e415
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972601"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852120"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 
@@ -171,7 +171,7 @@ az keyvault certificate create \
 
 
 ### <a name="prepare-certificate-for-use-with-vm"></a>Przygotowywanie certyfikatu do użycia z maszyną wirtualną
-Aby użyć certyfikatu podczas tworzenia maszyny wirtualnej, uzyskaj identyfikator certyfikatu za pomocą polecenia [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions). Maszyna wirtualna wymaga wstrzyknięcia certyfikatu w określonym formacie podczas rozruchu, więc należy skonwertować certyfikat przy użyciu polecenia [az vm secret format](/cli/azure/vm#az-vm-secret-format). W poniższym przykładzie przypisano dane wyjściowe tych poleceń do zmiennych w celu łatwiejszego użycia w następnych krokach:
+Aby użyć certyfikatu podczas tworzenia maszyny wirtualnej, uzyskaj identyfikator certyfikatu za pomocą polecenia [az keyvault secret list-versions](/cli/azure/keyvault/secret#az-keyvault-secret-list-versions). Maszyna wirtualna wymaga wstrzyknięcia certyfikatu w określonym formacie podczas rozruchu, więc należy skonwertować certyfikat przy użyciu polecenia [az vm secret format](/cli/azure/vm). W poniższym przykładzie przypisano dane wyjściowe tych poleceń do zmiennych w celu łatwiejszego użycia w następnych krokach:
 
 ```azurecli-interactive
 secret=$(az keyvault secret list-versions \

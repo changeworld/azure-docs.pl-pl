@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 6c9bef108c2f272c678879124ae2cd4f9ae093ba
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076231"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852545"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Użyj obrazu z witryny Azure Marketplace do utworzenia maszyny wirtualnej programu Terraform z systemem Linux przy użyciu tożsamości zarządzanych dla zasobów platformy Azure
 
@@ -85,7 +85,7 @@ Uprawnienia współautora ułatwiają tożsamości usługi zarządzanej na maszy
 
 `. ~/tfEnv.sh`
 
-Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) do uwierzytelnienia na platformie Azure i przypisania uprawnień współautora tożsamości zarządzanej maszyny wirtualnej dla całej subskrypcji. 
+Poprzedni skrypt używa mechanizmu [interaktywnego logowania programu AZ CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) do uwierzytelnienia na platformie Azure i przypisania uprawnień współautora tożsamości zarządzanej maszyny wirtualnej dla całej subskrypcji. 
 
  Maszyna wirtualna ma zaplecze stanu zdalnego programu Terraform. Aby włączyć je we wdrożeniu programu Terraform, skopiuj plik remoteState.tf z katalogu tfTemplate do katalogu głównego skryptów programu Terraform.  
 
