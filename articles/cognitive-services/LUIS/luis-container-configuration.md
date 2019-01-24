@@ -32,12 +32,12 @@ Ten kontener ma następujące ustawienia konfiguracji:
 |--|--|--|
 |Yes|[ApiKey](#apikey-setting)|Używane do śledzenia informacji dotyczących rozliczeń.|
 |Nie|[ApplicationInsights](#applicationinsights-setting)|Umożliwia dodanie [usługi Azure Application Insights](https://docs.microsoft.com/azure/application-insights) obsługi telemetrii do kontenera.|
-|Yes|[Rozliczenia](#billing-setting)|Określa punkt końcowy identyfikator URI zasobu usługi na platformie Azure.|
-|Yes|[Umowa licencyjna](#eula-setting)| Wskazuje, zaakceptowane licencji dla kontenera.|
+|Yes|[Billing](#billing-setting)|Określa punkt końcowy identyfikator URI zasobu usługi na platformie Azure.|
+|Yes|[Eula](#eula-setting)| Wskazuje, zaakceptowane licencji dla kontenera.|
 |Nie|[Fluentd](#fluentd-settings)|Zapisać dziennik i, opcjonalnie, metryki danych na serwerze Fluentd.|
 |Nie|[Serwer Proxy http](#http-proxy-credentials-settings)|Skonfiguruj serwer proxy HTTP dla żądania wychodzącego.|
-|Nie|[Rejestrowanie](#logging-settings)|Udostępnia platformy ASP.NET Core rejestrowania pomocy technicznej dla usługi kontenera. |
-|Yes|[Instaluje](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i kontener wróć do komputera-hosta.|
+|Nie|[Logging](#logging-settings)|Udostępnia platformy ASP.NET Core rejestrowania pomocy technicznej dla usługi kontenera. |
+|Yes|[Mounts](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i kontener wróć do komputera-hosta.|
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-setting), [ `Billing` ](#billing-setting), I [ `Eula` ](#eula-setting) ustawienia są używane razem. Ponadto należy podać prawidłowe wartości dla wszystkich trzech ich; w przeciwnym razie Nie można uruchomić kontener. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera za pomocą tych ustawień konfiguracji, zobacz [rozliczeń](luis-container-howto.md#billing).
