@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviwer: japere,asteen
-ms.openlocfilehash: 09a65536aadd716f283a8249cb8085cbdfcc6627
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 34a4da2c14b84b9e539fc2d3e755a523cf3574c9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474119"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847241"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Problem z logowaniem do panelu dostępu do witryny sieci Web
 
@@ -159,7 +159,7 @@ Aby zresetować hasło użytkownika, wykonaj następujące kroki:
 
 Aby włączyć samoobsługowe Resetowanie hasła, wykonaj następujące kroki wdrożenia:
 
--   [Umożliwianie użytkownikom resetowania swoich haseł w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
+-   [Umożliwianie użytkownikom resetowania swoich haseł w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
 -   [Umożliwianie użytkownikom Resetowanie lub zmienianie swoich haseł lokalnych w Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
 

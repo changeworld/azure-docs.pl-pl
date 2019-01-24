@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure Media Services — Smooth Streaming zmiany protokołu (MS-SSTR) dla — HEVC | Dokumentacja firmy Microsoft
-description: Tej specyfikacji opisuje protokół i format podzielonej zawartości na podstawie MP4 transmisja strumieniowa na żywo za pomocą — HEVC w usłudze Azure Media Services. Jest to zmiana documentaiton protokołu Smooth Streaming (MS-SSTR) do uwzględnienia obsługi — HEVC pozyskiwania i przesyłania strumieniowego. Zmiany wymagane w celu dostarczenia — HEVC są określone w tym artykule, z wyjątkiem były "(bez zmian)" oznacza tekst jest kopiowany tylko wyjaśnienia.
+description: Tej specyfikacji opisuje protokół i format podzielonej zawartości na podstawie MP4 transmisja strumieniowa na żywo za pomocą — HEVC w usłudze Azure Media Services. Jest to zmiana do dokumentacji protokołu Smooth Streaming (MS-SSTR) do uwzględnienia obsługi — HEVC pozyskiwania i przesyłania strumieniowego. Zmiany wymagane w celu dostarczenia — HEVC są określone w tym artykule, z wyjątkiem były "(bez zmian)" oznacza tekst jest kopiowany tylko wyjaśnienia.
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: johndeu;
-ms.openlocfilehash: 038eee18adf94f34a2e10d9ff7be76409c8c4322
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c87795c1203a8639ba224a646f8f0c5f5515b840
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317427"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812764"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Bezproblemowe przesyłania strumieniowego zmiany protokołu (MS-SSTR) dla — HEVC
 
@@ -52,7 +52,7 @@ W tym dokumencie dotyczą następujące warunki:
 
 >   **Manifest:** Metadane dotyczące **prezentacji** umożliwiająca klienta wysyłać żądania **media**. **nośnik:** Skompresowanych danych audio, wideo i tekstu używany przez klienta, aby odtworzyć **prezentacji**. **format multimediów:** Dobrze zdefiniowany format służący do reprezentowania audio lub wideo jako skompresowany **przykładowe**.
 
->   **prezentacja:** Zbiór wszystkich **strumieni** i pokrewne metadane potrzebne do odtwarzania filmu jednego. **Żądanie:** Wiadomości HTTP wysłanych z klienta do serwera, zgodnie z definicją w [[specyfikacją RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372) **Odpowiedź:** Wiadomości HTTP wysyłane z serwera do klienta, zgodnie z definicją w [[specyfikacją RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372)
+>   **prezentacja:** Zbiór wszystkich **strumieni** i pokrewne metadane potrzebne do odtwarzania filmu jednego. **request:** Wiadomości HTTP wysłanych z klienta do serwera, zgodnie z definicją w [[specyfikacją RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372) **response:** Wiadomości HTTP wysyłane z serwera do klienta, zgodnie z definicją w [[specyfikacją RFC2616].](https://go.microsoft.com/fwlink/?LinkId=90372)
 
 >   **Przykład:** Najmniejsza podstawową jednostką (na przykład ramki) w którym **media** są przechowywane i przetwarzane.
 
@@ -88,7 +88,7 @@ W tym dokumencie dotyczą następujące warunki:
 
 >   [RFC3548] Wyd Josefsson, S., "Base16 Base32 i kodowania danych Base64", RFC 3548, lipca 2003 [http://www.ietf.org/rfc/rfc3548.txt   ](https://go.microsoft.com/fwlink/?LinkId=90432)
 
->   [RFC5234] Crocker D., wyd i Overell, P., "rozszerzony BNF dla specyfikacji składni: ABNF", standardowe 68 RFC 5234, 2008 stycznia   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Crocker D., wyd i Overell, P., "rozszerzony BNF dla specyfikacji składni: ABNF", STD 68, RFC 5234, January 2008,   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 — omówienie 
@@ -201,7 +201,7 @@ ProtectionElement jest obecna, gdy Common Encryption (CENC) zostały doliczone d
 
 >   **TfhdBox** i powiązanych pól hermetyzacji wartości domyślne na przykład metadanych w fragmentu. Składnia **TfhdBox** pole jest ścisłym podzbiorem składni pola nagłówka fragmentu śledzenie zdefiniowane w [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 8.8.7 sekcji.
 
->   **BaseDataOffset (8 bajtów):** Przesunięcie w bajtach od początku **MdatBox** pole do pola przykładowe **MdatBox** pola. Celu sygnalizowania, że to ograniczenie, można ustawić flagi domyślne base to moof (0x020000).
+>   **BaseDataOffset (8 bytes):** Przesunięcie w bajtach od początku **MdatBox** pole do pola przykładowe **MdatBox** pola. Celu sygnalizowania, że to ograniczenie, można ustawić flagi domyślne base to moof (0x020000).
 
 #### <a name="2247-trunbox"></a>2.2.4.7 TrunBox 
 
@@ -289,7 +289,7 @@ ProtectionElement jest obecna, gdy Common Encryption (CENC) zostały doliczone d
     MajorVersion = 2
     MinorVersion = 2
 
->   LookaheadCount = 0 (Uwaga: Pola przestarzałe)
+>   LookaheadCount = 0 (Note: Pola przestarzałe)
 
 >   Prezentacje należy również ustawić:
 

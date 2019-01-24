@@ -3,9 +3,9 @@ title: Wyjątki obsługi komunikatów usługi Azure Service Bus | Dokumentacja f
 description: Lista wyjątki obsługi komunikatów usługi Service Bus i sugerowane rozwiązania.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 3d8526fe-6e47-4119-9f3e-c56d916a98f9
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: d96982f4dff523e1a262ee4f9d8bdc2dfc8480e1
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.author: aschhab
+ms.openlocfilehash: e0d319526bf9e604a98a1c926f7b6fc4f2834466
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037604"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851151"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Wyjątki obsługi komunikatów w usłudze Service Bus
 W tym artykule wymieniono niektóre wyjątki generowane przez Microsoft Azure Service Bus messaging API. Ta dokumentacja mogą ulec zmianie, więc sprawdzaj aktualizacje.
@@ -59,7 +59,7 @@ W poniższej tabeli wymieniono komunikatów typów wyjątków i powoduje, że or
 | [NoMatchingSubscriptionException](/dotnet/api/microsoft.servicebus.messaging.nomatchingsubscriptionexception) |Usługi Service Bus zwraca ten wyjątek, jeśli wyślesz wiadomość do tematu, który włączył wstępnie filtrowania i żaden z filtrów nie odpowiada. |Upewnij się, że co najmniej jeden filtr dopasowuje wartość. |Nie jest pomocne w ponownych prób. |
 | [MessageSizeExceededException](/dotnet/api/microsoft.servicebus.messaging.messagesizeexceededexception) |Ładunek komunikatu przekracza limit 256 KB. Limit 256 KB jest rozmiaru łączna liczba wiadomości, który może zawierać właściwości systemu i wszystkimi narzutami .NET. |Zmniejsz rozmiar ładunku komunikatu, a następnie spróbuj ponownie wykonać operację. |Nie jest pomocne w ponownych prób. |
 | [TransactionException —](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx) |Otoczenia transakcji (*Transaction.Current*) jest nieprawidłowy. Może zostać ukończone lub zostało przerwane. Wyjątek wewnętrzny może dostarczyć dodatkowych informacji. | |Nie jest pomocne w ponownych prób. |
-| [Transactionindoubtexception —](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Próba wykonania operacji w transakcji, która jest w stanie wątpliwości, lub zostanie podjęta próba można zatwierdzić transakcji i transakcji staje się w stanie wątpliwości. |Aplikacja musi obsługiwać ten wyjątek (jako szczególny przypadek), jako transakcja może zostały już zatwierdzone. |- |
+| [TransactionInDoubtException](https://msdn.microsoft.com/library/system.transactions.transactionindoubtexception.aspx) |Próba wykonania operacji w transakcji, która jest w stanie wątpliwości, lub zostanie podjęta próba można zatwierdzić transakcji i transakcji staje się w stanie wątpliwości. |Aplikacja musi obsługiwać ten wyjątek (jako szczególny przypadek), jako transakcja może zostały już zatwierdzone. |- |
 
 ## <a name="quotaexceededexception"></a>QuotaExceededException
 [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) wskazuje, że przekroczony został limit przydziału dla określonej jednostki.

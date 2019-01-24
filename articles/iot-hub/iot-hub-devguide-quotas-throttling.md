@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 23dbc8d935e46fc4fb12257f360371d4cc61235a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395160"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827384"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
@@ -21,7 +21,7 @@ ms.locfileid: "49395160"
 
 Każda subskrypcja platformy Azure może mieć maksymalnie 50 centra IoT i co najwyżej 1 bezpłatny koncentratora.
 
-Każde Centrum IoT hub jest aprowizowany z określoną liczbą jednostek w określonej warstwy. Określ maksymalny dzienny limit przydziału komunikatów, których można wysłać, warstwy i liczby jednostek. Rozmiar komunikatu, używane do obliczania jest dziennego limitu przydziału o rozmiarze 0,5 KB w Centrum w warstwie bezpłatna i 4 KB w przypadku wszystkich innych warstw. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+Każde centrum IoT jest aprowizowane za pomocą określonej liczby jednostek w określonej warstwie. Określ maksymalny dzienny limit przydziału komunikatów, których można wysłać, warstwy i liczby jednostek. Rozmiar komunikatu, używane do obliczania jest dziennego limitu przydziału o rozmiarze 0,5 KB w Centrum w warstwie bezpłatna i 4 KB w przypadku wszystkich innych warstw. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 Warstwa określa również limity ograniczania, które usługi IoT Hub wymusza na wszystkie operacje.
 
@@ -37,7 +37,7 @@ W poniższej tabeli przedstawiono ograniczenia wymuszone. Wartości odnoszą si�
 | -------- | ------- | ------- | ------- |
 | Operacje rejestru tożsamości (Tworzenie, pobieranie, listy, aktualizowanie i usuwanie) | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
 | Nowe połączenia urządzenia (ten limit dotyczy szybkość, z którym _nowych połączeń_ są ustanowione nie całkowita liczba połączeń) | Wyższe 100/sek lub 12/sek/jednostkę <br/> Na przykład dwóch jednostek S1 są 2\*12 = 24 nowych połączeń na sekundę, ale ma co najmniej 100 nowych połączeń na sekundę w jednostkach usługi. Z dziewięciu jednostek S1, masz 108 nowych połączeń na sekundę (9\*12) w jednostkach usługi. | nowe 120 połączeń/sek/jednostkę | nowe 6000 połączeń/sek/jednostkę |
-| Liczba elementów wysłanych z urządzenia do chmury | Wyższe 100/sek lub 12/sek/jednostkę <br/> Na przykład dwóch jednostek S1 są 2\*12 = 24/s, ale co najmniej 100 na sekundę w jednostkach usługi. Z dziewięciu jednostek S1, masz 108 na sekundę (9\*12) w jednostkach usługi. | 120/sek/jednostkę | 6000/sek/jednostkę |
+| Liczba elementów wysłanych z urządzenia do chmury | Wyższe 100/sek lub 12/sek/jednostkę <br/> Na przykład dwóch jednostek S1 są 2\*12 = 24/s, ale co najmniej 100 na sekundę w jednostkach usługi. Z dziewięciu jednostek S1, masz 108 na sekundę (9\*12) w jednostkach usługi. | 120/sek/jednostkę | 6000/sec/unit |
 | Chmura urządzenie wysyła<sup>1</sup> | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
 | Chmura urządzenie odbiera<sup>1</sup> <br/> (tylko gdy urządzenie korzysta z protokołu HTTPS)| 16.67/sec/Unit (1000/min/jednostkę) | 16.67/sec/Unit (1000/min/jednostkę) | 833.33/sec/Unit (50000/min/jednostkę) |
 | Przekazywanie pliku | Plik 1.67 przekazywania powiadomień/sek/jednostkę (100/min/jednostkę) | Plik 1.67 przekazywania powiadomień/sek/jednostkę (100/min/jednostkę) | Plik 83.33 przekazywania powiadomień/sek/jednostkę (5000/min/jednostkę) |
@@ -47,9 +47,12 @@ W poniższej tabeli przedstawiono ograniczenia wymuszone. Wartości odnoszą si�
 | Operacje zadania<sup>1,3</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 1.67/sec/Unit (100/min/jednostkę) | 1.67/sec/Unit (100/min/jednostkę) | 83.33/sec/Unit (5000/min/jednostkę) |
 | Operacje dotyczące urządzenia zadania<sup>1</sup> <br/> (aktualizacji bliźniaczej reprezentacji, wywoływanie metody bezpośredniej) | 10/sek | Wyższe 10/sek lub 1/sek/jednostkę | 50/sek/jednostkę |
 | Konfiguracje i wdrożenia krawędzi<sup>1</sup> <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) | 0.33/sec/Unit (20/min/jednostkę) |
+| Szybkość inicjowania strumienia urządzenia<sup>4</sup> | 5 nowych strumieni na sekundę | 5 nowych strumieni na sekundę | 5 nowych strumieni na sekundę |
+| Maksymalna liczba równocześnie połączonych urządzeń, strumieni<sup>4</sup> | 50 | 50 | 50 |
+| Transfer danych strumienia maksymalna urządzenia<sup>4</sup> (agregacji woluminu na dzień) | 300 MB | 300 MB | 300 MB |
 
 
-<sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md). <br/><sup>2</sup>ograniczenie rozmiaru miernika wynosząca 8 KB. <br/><sup>3</sup>w danym momencie może mieć tylko jedno zadanie importu/eksportu aktywnych urządzeń.
+<sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md). <br/><sup>2</sup>ograniczenie rozmiaru miernika wynosząca 8 KB. <br/><sup>3</sup>w danym momencie może mieć tylko jedno zadanie importu/eksportu aktywnych urządzeń. <br/><sup>4</sup>strumieni urządzenia usługi IoT Hub są dostępne tylko dla S1, S2, S3 i F1 SKU.
 
 *Połączenia urządzenia* ograniczania decyduje szybkość, w którym można nawiązać nowego połączenia urządzenia z usługą IoT hub. *Połączenia urządzenia* ograniczania nie kontroluje maksymalna liczba równocześnie połączonych urządzeń. *Połączenia urządzenia* współczynnik przepustowości jest zależna od liczby jednostek, które są udostępniane dla Centrum IoT hub.
 
@@ -69,7 +72,7 @@ Usługa IoT Hub wymusza inne limity operacyjne:
 | Operacja | Limit |
 | --------- | ----- |
 | Przekazywanie pliku identyfikatory URI | 10000 identyfikatorami URI SAS może istnieć dla konta magazynu w tym samym czasie. <br/> Jednocześnie może istnieć 10 identyfikatorów URI sygnatury dostępu współdzielonego. |
-| Zadania<sup>1</sup> | Historia zadania są przechowywane w górę do 30 dni <br/> Maksymalna liczba równoczesnych zadań to 1 (bezpłatna) i wersji S1, 5 (warstwa S2), 10 (warstwa S3). |
+| Jobs<sup>1</sup> | Historia zadania są przechowywane w górę do 30 dni <br/> Maksymalna liczba równoczesnych zadań to 1 (bezpłatna) i wersji S1, 5 (warstwa S2), 10 (warstwa S3). |
 | Dodatkowe punkty końcowe | Płatna jednostka SKU hubs może mieć 10 dodatkowych punktów końcowych. Bezpłatna jednostka SKU koncentratory może mieć jeden dodatkowy punkt końcowy. |
 | Reguł rozsyłania komunikatów | Płatna jednostka SKU hubs może mieć 100 reguł routingu. Bezpłatna jednostka SKU koncentratory mogą mieć pięć reguł routingu. |
 | Komunikaty z urządzenia do chmury | Rozmiar maksymalny komunikatu 256 KB |

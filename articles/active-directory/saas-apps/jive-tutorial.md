@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9fc5659a-c116-4a1b-a601-333325a26b46
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: cebcfb4614d1f685697bed6914f80237e175fb7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fa802e137f9fb76c531814f6128cabfc11a44f0f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436560"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi Jive
 
@@ -37,16 +37,16 @@ Jeśli chcesz dowiedzieć się więcej informacji na temat integracji aplikacji 
 
 Aby skonfigurować integrację usługi Azure AD za pomocą usługi Jive, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Jive logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
@@ -60,7 +60,7 @@ Aby skonfigurować integrację usługi Jive w usłudze Azure AD, należy dodać 
 
 **Aby dodać Jive z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -68,7 +68,7 @@ Aby skonfigurować integrację usługi Jive w usłudze Azure AD, należy dodać 
 
     ![Aplikacje][2]
 
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -113,18 +113,18 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/jive-tutorial/tutorial_jive_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<instance name>.jivecustom.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<instance name>.jivecustom.com`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<instance name>.jiveon.com`
+    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<instance name>.jiveon.com`
 
     > [!NOTE]
-    > Te wartości nie są rzeczywiste. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Jive](https://www.jivesoftware.com/services-support/) do uzyskania tych wartości.
+    > Te wartości nie są rzeczywiste. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Jive](https://www.jivesoftware.com/services-support/) do uzyskania tych wartości.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/jive-tutorial/tutorial_jive_certificate.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/jive-tutorial/tutorial_general_400.png)
 
@@ -132,13 +132,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W menu u góry kliknij pozycję "**Saml**."
 
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. Wybierz **włączone** w obszarze **ogólne** b kartę. Kliknij przycisk "**zapisać wszystkie ustawienia języka saml**" przycisk.
 
 1. Przejdź do "**metadanych tożsamości**" kartę.
 
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/jive-tutorial/tutorial_jive_003.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. Skopiuj zawartość pliku XML metadanych pobrany, a następnie wklej go do **metadanych dostawcy tożsamości (IDP)** pola tekstowego.
 
@@ -146,7 +146,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Przejdź do "**mapowanie atrybutu użytkownika**" kartę.
 
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/jive-tutorial/tutorial_jive_004.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. W **E-mail** pola tekstowego, skopiuj i Wklej nazwę **poczty** wartość.
 
@@ -155,7 +155,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     c. W **nazwisko** pola tekstowego, skopiuj i Wklej nazwę **nazwisko** wartość.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -187,7 +187,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="creating-a-jive-test-user"></a>Tworzenie użytkownika testowego usługi Jive
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Jive. Jive obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](jive-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Jive. Jive obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów dotyczących konfigurowania automatycznej aprowizacji użytkowników można znaleźć [tutaj](jive-provisioning-tutorial.md).
 
 Jeśli musisz ręcznie utworzyć użytkownika, pracować z [zespołem pomocy technicznej klienta Jive](https://www.jivesoftware.com/services-support/) Aby dodać użytkowników do Jive platformy.
 
@@ -227,11 +227,11 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Jive w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Jive.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie Aprowizowania użytkowników](jive-provisioning-tutorial.md)
+* [Konfigurowanie aprowizacji użytkowników](jive-provisioning-tutorial.md)
 
 <!--Image references-->
 

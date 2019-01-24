@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9fed56746f5b26269f6a70aeedd06ba9b19548f
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 2ff08b0f155be54ee57d2d9999c47aa56a366d09
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018829"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852205"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Jak znaleźć obrazy maszyny Wirtualnej systemu Linux w witrynie Azure Marketplace przy użyciu wiersza polecenia platformy Azure
 W tym temacie opisano sposób używania interfejsu wiersza polecenia platformy Azure do obrazów maszyn wirtualnych można znaleźć w witrynie Azure Marketplace. Te informacje służą do określania obrazu z witryny Marketplace, gdy programowo utworzyć Maszynę wirtualną przy użyciu interfejsu wiersza polecenia, szablonów usługi Resource Manager lub innych narzędzi.
@@ -128,7 +128,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ```
 
 ## <a name="navigate-the-images"></a>Nawigować po obrazach 
-Innym sposobem, aby znaleźć obraz w lokalizacji jest uruchomienie [obrazu maszyny wirtualnej az list wydawców](/cli/azure/vm/image#az_vm_image_list_publishers), [obrazu maszyny wirtualnej az list-offers](/cli/azure/vm/image#az_vm_image_list_offers), i [az vm list-jednostki SKU obrazów](/cli/azure/vm/image#az_vm_image_list_skus) poleceń w sekwencji. Za pomocą poniższych poleceń należy określić następujące wartości:
+Innym sposobem, aby znaleźć obraz w lokalizacji jest uruchomienie [obrazu maszyny wirtualnej az list wydawców](/cli/azure/vm/image#az_vm_image_list_publishers), [obrazu maszyny wirtualnej az list-offers](/cli/azure/vm/image), i [az vm list-jednostki SKU obrazów](/cli/azure/vm/image#az_vm_image_list_skus) poleceń w sekwencji. Za pomocą poniższych poleceń należy określić następujące wartości:
 
 1. Wyświetl listę wydawców obrazów.
 2. Dla danego wydawcy wyświetl listę ofert.
@@ -249,7 +249,7 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 
 Teraz można dokładnie obrazu, którego chcesz użyć, biorąc pod uwagę na wartość URN. Przekazuje tę wartość za pomocą `--image` parametru podczas tworzenia maszyny Wirtualnej z [tworzenie az vm](/cli/azure/vm#az_vm_create) polecenia. Należy pamiętać, że można opcjonalnie zastąpić numer wersji w URN "najnowszej"wersji. Ta wersja jest zawsze najnowszą wersję obrazu. 
 
-Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Manager, parametry obrazu należy ustawić indywidualnie w `imageReference` właściwości. Zobacz [odwołanie do szablonu](/azure/templates/microsoft.compute/virtualmachines).
+Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Manager, parametry obrazu należy ustawić indywidualnie w `imageReference` właściwości. Zobacz [dokumentację szablonu](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 

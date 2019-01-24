@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 3b49d568b1ca19a99359314bb181712f56ca5615
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ecde1c19a56a7f99284fe738a19eac07322c2dae
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201061"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826177"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -139,7 +139,7 @@ Oto oczekiwane wartości:
 | {Sygnatura} |Ciąg sygnatury HMAC SHA256 w postaci: `{URL-encoded-resourceURI} + "\n" + expiry`. **Ważne**: Klucz jest zdekodować z formatu base64 i użyć go jako klucza do wykonywania obliczeń HMAC SHA256. |
 | {resourceURI} |Prefiks identyfikatora URI (według segmentu) punktów końcowych, które mogą być udostępniane z tym tokenem, rozpoczynając od nazwy hosta usługi IoT hub (nie protocol). Na przykład: `myHub.azure-devices.net/devices/device1` |
 | {expiry} |Ciągi UTF8 liczba sekund od epoki 00:00:00 czasu UTC na 1 stycznia 1970. |
-| {Adres URL — zakodowane resourceURI} |Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami |
+| {URL-encoded-resourceURI} |Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami |
 | {policyName} |Nazwa zasad dostępu współdzielonego, do którego odwołuje się ten token. Nieobecny, jeśli token odnosi się do rejestru urządzeń poświadczenia. |
 
 **Uwaga dotycząca prefiks**: Prefiks identyfikatora URI jest obliczany według segmentu i nie według znaków. Na przykład `/a/b` był prefiksem dla `/a/b/c` , ale nie dla `/a/bc`.
@@ -160,7 +160,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
     hmac.update(toSign);
     var base64UriEncoded = encodeURIComponent(hmac.digest('base64'));
 
-    // Construct autorization string
+    // Construct authorization string
     var token = "SharedAccessSignature sr=" + resourceUri + "&sig="
     + base64UriEncoded + "&se=" + expires;
     if (policyName) token += "&skn="+policyName;

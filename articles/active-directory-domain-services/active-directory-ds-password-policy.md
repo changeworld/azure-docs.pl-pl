@@ -1,10 +1,10 @@
 ---
-title: 'Usługi Azure Active Directory Domain Services: Zasady haseł | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Zasady haseł | Dokumentacja firmy Microsoft'
 description: Omówienie zasad haseł w domenach zarządzanych
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: dcc1de5fa0ac1f394d0fe12fd24a1d6e745df83e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 0bb3ccb3841b60f6c94ac1d6126bd2b0d44af092
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284612"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852698"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont, w domenach zarządzanych
 W tym artykule opisano domyślne zasady haseł w domenie zarządzanej. Obejmuje ona również, jak można skonfigurować te zasady.
@@ -113,7 +113,7 @@ Aby utworzyć niestandardowe szczegółowych zasad HASEŁ w domenie zarządzanej
   ![Zastosowane zasady FGPP](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
-> **Aby zastosować zasady niestandardowe haseł dla kont użytkowników w jednostce Organizacyjnej, niestandardowe:** zasady szczegółowe hasło w dobrym stanie, mogą być stosowane tylko do grup. Aby skonfigurować zasady niestandardowe hasło tylko dla użytkowników z niestandardowej jednostki Organizacyjnej, utworzyć grupę, która zawiera użytkowników w tej jednostce Organizacyjnej.
+> **Aby zastosować zasady niestandardowe haseł dla kont użytkowników w jednostce Organizacyjnej, niestandardowe:** Zasady szczegółowe hasło w dobrym stanie można stosować tylko do grup. Aby skonfigurować zasady niestandardowe hasło tylko dla użytkowników z niestandardowej jednostki Organizacyjnej, utworzyć grupę, która zawiera użytkowników w tej jednostce Organizacyjnej.
 >
 >
 

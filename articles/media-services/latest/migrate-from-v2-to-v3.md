@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 8a680f1c745bed7745691ad337ed887cc4fc05c5
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 017de43074d4b68c69526ddcc96f98ae826dcd65
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716620"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808735"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -43,15 +43,16 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 
 ### <a name="new-features"></a>Nowe funkcje
 
-* Przetwarzanie zadania oparte na plikach można użyć adresu URL HTTP (S) jako dane wejściowe.
-    Nie musisz mieć zawartości już przechowywane na platformie Azure i nie potrzebujesz do tworzenia zasobów.
+* Przetwarzanie zadania oparte na plikach można użyć adresu URL HTTP (S) jako dane wejściowe.<br/>Nie musisz mieć zawartości już przechowywane na platformie Azure i nie potrzebujesz do tworzenia zasobów.
 * Pojęcia związane z [przekształca](transforms-jobs-concept.md) dla przetwarzanie zadań opartych na plikach. Przekształcenie może służyć do tworzenia konfiguracji wielokrotnego użytku, do tworzenia szablonów usługi Azure Resource Manager i izolowania przetwarzania ustawień między wieloma klientami lub dzierżawcy.
 * Element zawartości może mieć [wielu StreamingLocators](streaming-locators-concept.md) każdego z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
 * [Content protection](content-key-policy-concept.md) obsługuje wiele kluczowych funkcji.
 * Można przesyłać strumieniowo wydarzenia na żywo, które są do 24 godzin długo po za pomocą usługi Media Services w celu przetranskodowania jej wkład pojedyncza szybkość transmisji bitów źródła danych do strumienia wyjściowego, który ma wielokrotnych.
-* Nowe Niskie opóźnienie obsługę przesyłania strumieniowego na żywo na LiveEvents.
+* Nowe Niskie opóźnienie obsługę przesyłania strumieniowego na żywo na LiveEvents. Aby uzyskać więcej informacji, zobacz [opóźnienie](live-event-latency.md).
 * Element LiveEvent (wersja zapoznawcza) obsługuje funkcję dynamicznego tworzenia pakietów i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
 * LiveOutput jest łatwiejszy w obsłudze niż jednostka Program w interfejsach API w wersji 2. 
+* Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
+* Pozyskuj RTMPS bezpieczne.<br/>Gdy utworzysz element LiveEvent, otrzymasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
 * Masz kontroli dostępu opartej na rolach (RBAC) za pośrednictwem jednostek. 
 
 ## <a name="changes-from-v2"></a>Zmiany w wersji 2
@@ -92,7 +93,7 @@ Interfejs API w wersji 3 ma następujące luki funkcji w odniesieniu do interfej
 
 W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych scenariuszy.
 
-|Scenariusz|INTERFEJSY API WERSJI 2|W WERSJI 3 INTERFEJSU API|
+|Scenariusz|V2 API|V3 API|
 |---|---|---|
 |Utworzenie elementu zawartości i przekaż plik |[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Przesyłanie zadania|[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Pokazuje, jak utworzyć przekształcenie, a następnie przesyłać zadania.|

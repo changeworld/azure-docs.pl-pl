@@ -3,19 +3,19 @@ title: Niestandardowe zasady usługi Azure Active Directory B2C | Dokumentacja f
 description: Tworzenie aplikacji dla użytkowników za pomocą usługi Azure Active Directory B2C przy użyciu zasad niestandardowych.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 5/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 26469d735d7165e8b21665df6c169bc4668d8a5a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 25ee27b5abc086d123034b28c57c313713dbbe06
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440522"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843467"
 ---
 # <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Zarejestruj się i logowanie użytkowników w aplikacjach za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 

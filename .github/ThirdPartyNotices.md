@@ -1,0 +1,18 @@
+---
+ms.openlocfilehash: 493ba7cb198d7eb33b96156b96389a036db6476b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54489240"
+---
+## <a name="legal-notices"></a>Uwagi prawne
+Firma Microsoft i Wszyscy współautorzy udzielają Ci licencji na dokumentację firmy Microsoft i innej zawartości w tym repozytorium, w obszarze [Creative Commons: uznanie autorstwa 4.0 International Public License](https://creativecommons.org/licenses/by/4.0/legalcode), zobacz [licencji](LICENSE) pliku i udzielają Ci licencji na wszelki kod w repozytorium, w obszarze [licencją MIT](https://opensource.org/licenses/MIT), zobacz [LICENSE-CODE](LICENSE-CODE) pliku.
+
+Microsoft, Windows, Microsoft Azure i/lub innych produktów i usług, do którego odwołuje się z dokumentacją, może być znakami towarowymi lub zastrzeżonymi znakami towarowymi firmy Microsoft w Stanach Zjednoczonych i/lub innych krajach.
+Licencje dla tego projektu nie powodują udzielenia praw do korzystania z nazwy, logo ani znaków towarowych wszelkie firmy Microsoft.
+Wytyczne ogólne znaków towarowych firmy Microsoft znajduje się w temacie http://go.microsoft.com/fwlink/?LinkID=254653.
+
+Informacje o ochronie prywatności znajduje się w temacie https://privacy.microsoft.com/en-us/
+
+Firma Microsoft i wszelkie sobie współautorzy wszystkie pozostałe prawa, w ramach odpowiednich praw autorskich, patentów lub znaków towarowych, przez domniemanie, estoppelu lub w inny sposób.

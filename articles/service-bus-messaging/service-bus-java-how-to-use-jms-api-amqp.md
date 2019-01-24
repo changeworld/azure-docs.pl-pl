@@ -3,9 +3,9 @@ title: Jak używać protokołu AMQP 1.0 przy użyciu interfejsu API Java usługi
 description: Jak używać usługi wiadomości Java (JMS) za pomocą usługi Azure Service Bus i zaawansowane komunikat Queuing Protocol (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
-ms.author: spelluru
-ms.openlocfilehash: fbd74b227afd2191616100d74c7864eacf015add
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: aschhab
+ms.openlocfilehash: f0c3aac95b1d19dc3f217cc146532254d8740ca0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308074"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853293"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak używać języka Java wiadomości usługi (JMS) interfejsu API za pomocą usługi Service Bus i protokołu AMQP 1.0
 Zaawansowane komunikat (QUEUING Protocol) 1.0 to wydajny, niezawodny i protokół sieciowy niskiego poziomu obsługi komunikatów protokołu używanego do tworzenia niezawodnych, międzyplatformowych aplikacji do obsługi wiadomości.
@@ -41,14 +41,14 @@ Aby uzyskać informacje o tym, gdzie można pobrać najnowszej wersji biblioteki
 
 Należy dodać następujące cztery pliki JAR z archiwum Apache Qpid JMS protokołu AMQP 1.0 w dystrybucji do klasy Java podczas kompilowania i uruchamiania aplikacji JMS z usługą Service Bus:
 
-* geronimo jms\_1.1\_1.0.jar Specyfikacja
-* qpid-jms - client-[wersja] JAR
+* geronimo-jms\_1.1\_spec-1.0.jar
+* qpid-jms-client-[version].jar
 
 > ! [UWAGA] JMS JAR nazwy i wersji mógł ulec zmianie. Aby uzyskać więcej informacji, zobacz [JMS Qpid - protokołu AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
 ## <a name="coding-java-applications"></a>Kodowanie aplikacji w języku Java
 ### <a name="java-naming-and-directory-interface-jndi"></a>Nazewnictwa języka Java i interfejsu katalogu (JNDI)
-JMS używa nazewnictwa języka Java i interfejsu katalogu (JNDI) w celu utworzenia rozdzielenie nazwy logicznej lub fizycznej. Dwa typy obiektów JMS są rozpoznawane za pomocą JNDI: ConnectionFactory i docelowym. JNDI korzysta z modelu dostawcy, do którego można dodać inny katalog usług do obsługi określonych obowiązków rozpoznawania nazw. Formatowanie opartych na plikach JNDI dostawcy jest skonfigurowany, używając właściwości pliku następujące Apache Qpid JMS protokołu AMQP 1.0 biblioteki, który jest dostarczany z prostych właściwości:
+JMS używa nazewnictwa języka Java i interfejsu katalogu (JNDI) w celu utworzenia rozdzielenie nazwy logicznej lub fizycznej. Dwa typy obiektów JMS są rozwiązywane za pomocą JNDI: ConnectionFactory i docelowym. JNDI korzysta z modelu dostawcy, do którego można dodać inny katalog usług do obsługi określonych obowiązków rozpoznawania nazw. Formatowanie opartych na plikach JNDI dostawcy jest skonfigurowany, używając właściwości pliku następujące Apache Qpid JMS protokołu AMQP 1.0 biblioteki, który jest dostarczany z prostych właściwości:
 
 ```
 # servicebus.properties - sample JNDI configuration

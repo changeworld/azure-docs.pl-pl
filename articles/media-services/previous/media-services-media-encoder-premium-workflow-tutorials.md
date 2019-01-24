@@ -1,5 +1,5 @@
 ---
-title: Samouczki Avanced Media Encoder Premium Workflow
+title: Samouczki zaawansowane Media Encoder Premium Workflow
 description: Ten dokument zawiera wskazówki, które pokazują, jak wykonywać zaawansowane zadania w usłudze Media Encoder Premium Workflow, a także sposób tworzenia złożonych przepływów pracy za pomocą projektanta przepływów pracy.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257388"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811975"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Samouczki zaawansowane Media Encoder Premium Workflow
 ## <a name="overview"></a>Przegląd
@@ -293,7 +293,7 @@ Utwórz trzecią produkt wyjściowy pliku składnika, dane wyjściowe strumienia
 *Muxer audio, tworzenie produkt wyjściowy pliku*
 
 ### <a id="MXF_to_MP4_with_dyn_packaging_ism_file"></a>Dodawanie. Plik SMIL ISM
-Do dynamicznego tworzenia pakietów do pracy w połączeniu z zarówno w formacie MP4 plików (i tylko dane audio w formacie MP4) w zasobie naszej usługi Media Services, należy również plik manifestu (nazywany również plikiem "SMIL": synchronizowane Multimedia integracji języka). Ten plik wskazuje usługi Azure Media Services pliki MP4, jakie są dostępne dla funkcji dynamicznego tworzenia pakietów, które z tych, które należy wziąć pod uwagę audio przesyłania strumieniowego. Typowy plik manifestu zestawu w formacie MP4 przy użyciu jednego strumienia audio wygląda następująco:
+Do dynamicznego tworzenia pakietów do pracy w połączeniu z plików MP4 (i tylko dane audio w formacie MP4) w zasobie naszej usługi Media Services, należy również plik manifestu (nazywany również plikiem "SMIL": Zsynchronizowany język integrację multimediów). Ten plik wskazuje usługi Azure Media Services pliki MP4, jakie są dostępne dla funkcji dynamicznego tworzenia pakietów, które z tych, które należy wziąć pod uwagę audio przesyłania strumieniowego. Typowy plik manifestu zestawu w formacie MP4 przy użyciu jednego strumienia audio wygląda następująco:
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
@@ -693,7 +693,7 @@ Zanim firma ponownego zapisywania cliplist xml, który jest generowany podczas u
 Najpierw musimy możliwość określenia, w tym momencie, aż do punktu, który chcemy Przytnij wideo. Aby uprościć ten użytkownikowi technical mniej przepływu pracy, należy opublikować dwie właściwości do katalogu głównego wykresu. Aby to zrobić, kliknij prawym przyciskiem myszy powierzchnię projektanta i wybierz pozycję "Dodaj właściwość":
 
 * Pierwsza właściwość: "ClippingTimeStart" o typie: "CZASOWY"
-* Druga właściwość: "ClippingTimeEnd" o typie: "CZASOWY"
+* Drugą właściwością: "ClippingTimeEnd" o typie: "CZASOWY"
 
 ![Dodaj okno dialogowe właściwości dla czas rozpoczęcia wycinka](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 

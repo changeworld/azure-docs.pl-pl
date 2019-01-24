@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2018
+ms.date: 01/22/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2a5383952f64edb08717b1a100c74352c9b4246f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 848d6ffbccc809df1ab5c012c38174e13eacc391
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187981"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828266"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -39,9 +39,9 @@ Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", nale
 
 1. Kod platformy Azure Media Services
   
-  * Szablony licencji PlayReady, Widevine i FairPlay. Szablony pozwolą Ci skonfigurować prawa i uprawnienia dla wszystkich używanych protokołów DRM
-  * Uwierzytelnianie dostarczania licencji, określając logika sprawdzania autoryzacji na podstawie oświadczeń w token JWT
-  * Klucze zawartości, protokołów przesyłania strumieniowego i odpowiednie protokołów DRM zastosowany, definiowanie szyfrowania DRM
+  * Skonfiguruj szablony licencji PlayReady, Widevine i FairPlay. Szablony pozwalają skonfigurować prawa i uprawnienia dla wszystkich używanych protokołów DRM.
+  * Zdefiniuj autoryzacji dostarczania licencji, określając logika sprawdzania autoryzacji na podstawie oświadczeń w token JWT.
+  * Konfigurowanie szyfrowania DRM, określając kluczy zawartości i protokołów, które powinny być używane przesyłania strumieniowego.
 
   > [!NOTE]
   > Każdy element zawartości można szyfrować przy użyciu wielu typów szyfrowania (AES-128, PlayReady, Widevine, FairPlay). Zobacz [Streaming protocols and encryption types (Protokoły i typy szyfrowania przesyłania strumieniowego)](#streaming-protocols-and-encryption-types), aby sprawdzić, które rozwiązania warto łączyć.

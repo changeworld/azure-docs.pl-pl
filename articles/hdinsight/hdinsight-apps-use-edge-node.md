@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: da6435c6e3ea5fe88b605bd65c5d0e10f1772450
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fca14eb5a51799e6d3c0e4f96cb956e4e6886cdb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717470"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844827"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Używanie pustych węzłów brzegowych w klastrach usługi Apache Hadoop w HDInsight
 
@@ -65,8 +65,8 @@ Po utworzeniu węzeł krawędzi, możesz nawiązać połączenie z węzłem kraw
 >
 > Jeśli używasz technologii Apache można znaleźć pomoc za pośrednictwem Apache witryny projektu na [ https://apache.org ](https://apache.org), takich jak [Apache Hadoop](https://hadoop.apache.org/) lokacji.
 
-> [!NOTE]  
-> Podobnie jak inne węzły klastra węzłów brzegowych są także poprawki zarządzane.  Aby uzyskać więcej informacji, zobacz [stosowania poprawek systemu operacyjnego dla HDInsight](./hdinsight-os-patching.md).
+> [!IMPORTANT]
+> Obrazy Ubuntu stają się dostępne dla nowego Tworzenie klastra HDInsight w ciągu 3 miesięcy opublikować. Począwszy od stycznia 2019 r, są uruchomione klastrów (łącznie z węzłów krawędzi) **nie** poprawiono automatycznie. Klienci, należy użyć akcji skryptu lub innych mechanizmów zastosowania poprawki względem działającego klastra.  Aby uzyskać więcej informacji, zobacz [stosowania poprawek systemu operacyjnego dla HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Dodaj węzeł krawędzi do istniejącego klastra
 W tej sekcji używasz szablonu usługi Resource Manager można dodać węzła brzegowego do istniejącego klastra HDInsight.  Szablon usługi Resource Manager można znaleźć w [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Szablon usługi Resource Manager wymaga akcji skryptu, znajdujący się w https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh. Skrypt nie wykonuje żadnych akcji.  Jest aby zademonstrować wywoływania akcji skryptu za pomocą szablonu usługi Resource Manager.

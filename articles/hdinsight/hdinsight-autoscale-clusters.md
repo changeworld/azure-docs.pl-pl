@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9a2fd8441de099a5423e9681a9dfe3ee12f08cec
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54479498"
+ms.locfileid: "54811166"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatyczne skalowanie klastrów Azure HDInsight
 
@@ -27,9 +27,9 @@ Klaster usługi Azure HDInsight automatycznie skaluje liczbę węzłów procesu 
 > [!Note]
 > Automatyczne skalowanie jest obecnie obsługiwana tylko w przypadku usługi Azure HDInsight Hive, MapReduce i platformy Spark klastrów w wersji 3.6.
 
-Postępuj zgodnie z instrukcjami w [ ](hdinsight-hadoop-create-linux-clusters-portal.md) i po przejściu do kroku 5, **rozmiar klastra**, wybierz opcję **węzła procesu roboczego automatyczne skalowanie (wersja zapoznawcza)** jak pokazano poniżej. 
+Postępuj zgodnie z instrukcjami w [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) i po przejściu do kroku 5, **rozmiar klastra**, wybierz opcję **węzła procesu roboczego automatyczne skalowanie (wersja zapoznawcza)** jak pokazano poniżej. 
 
-    ![Enable worker node autoscale option](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+![Włącz opcję automatycznego skalowania węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
 
 Wybranie tej opcji, należy określić:
 

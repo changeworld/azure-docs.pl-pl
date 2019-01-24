@@ -11,28 +11,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: d948be88fd75202dea010520d3531f151d6934b0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104088"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847547"
 ---
 # <a name="manage-and-configure-projects"></a>Konfigurowanie projektów i zarządzanie nimi
 
 Projekt w notesach Azure jest zasadniczo konfiguracji podstawowej maszyny wirtualnej systemu Linux, w którym uruchamiany notesów programu Jupyter, wraz z opisowymi metadanymi i folderu plików. Pulpit nawigacyjny projektu w notesach Azure umożliwia zarządzanie plikami, a w przeciwnym razie Konfigurowanie właściwości projektu:
 
-- Metadane projektu zawiera nazwę, opis, identyfikator, który jest używany podczas udostępniania projektu i czy projekt jest publicznych lub prywatnych.
-- Zarządzasz notesu projektu, dane i innych plików, tak jak w dowolnym systemie plików.
-- Należy skonfigurować środowisko projektu za pomocą uruchamiania skryptów lub bezpośrednio w terminalu.
-- Za pomocą terminalu masz dostęp do dzienników.
+- Warstwy obliczeniowej w którym uruchamiany jest projekt, który może być w warstwie bezpłatna lub maszynie wirtualnej platformy Azure.
+- Metadane projektu obejmuje nazwę, opis i identyfikator, który jest używany podczas udostępniania projektu i czy projekt jest publicznych lub prywatnych.
+- Notes projektu, danych i innych plików, które zarządzają podobnie jak inne systemy plików.
+- Projekt środowisko, w którym można zarządzać za pomocą uruchamiania skryptów lub bezpośrednio w terminalu.
+- Dzienniki, które dostępu za pomocą terminalu.
 
 > [!Note]
-> Nie można zarządzać projektu, których nie jesteś właścicielem, chyba że właściciel projektu wprowadził współpracownika. W przeciwnym razie funkcje zarządzania i konfiguracji, opisane w tym miejscu nie są dostępne dla Ciebie.
+> Funkcje zarządzania i konfiguracji, opisane w tym miejscu są dostępne tylko dla właściciela projektu, który początkowo utworzony projekt. Można jednak klonowanie projektu do własnego konta, w którym to przypadku stać się właścicielem i skonfigurować projekt zgodnie z potrzebami.
 
 Notesy platformy Azure rozpoczyna się maszyny wirtualnej stanowiącej podstawę przy każdym uruchomieniu notesu lub inny plik. Serwer zapisuje pliki i automatycznie zamyka się po 60 minutach braku aktywności. Serwer można również zatrzymać w dowolnym momencie za pomocą **zamknięcia** polecenia (skrót klawiaturowy: h).
+
+## <a name="compute-tier"></a>Warstwa wystąpień obliczeniowych
+
+**Uruchom** listy rozwijanej na pulpicie nawigacyjnym projekt jest wybierania warstwa wystąpień obliczeniowych, w którym uruchamiany jest projekt. Domyślnie projekty są uruchamiane **bezpłatne obliczenia** warstwę, która jest ograniczony do 4 GB pamięci i 1 GB danych, aby zapobiec nadużyciu:
+
+![Obliczenia z listy rozwijanej warstwy na pulpicie nawigacyjnym projekt](media/project-compute-tier-list.png)
+
+Ograniczenia te można pominąć przy użyciu innej maszyny wirtualnej, które zostały aprowizowane w subskrypcji platformy Azure. Należy również Instalacja oprogramowania Jupyter na tej maszynie wirtualnej. Obrazy maszyn wirtualnych do nauki o danych są dobrych wyborów, ponieważ zawierają one Jupyter domyślnie.
+
+Można nawiązać dowolnej odpowiednio skonfigurowanych maszyn wirtualnych platformy Azure za pomocą **bezpośrednie obliczenia** opcji na liście rozwijanej. Wybranie tej opcji wyświetli monit o podanie nazwy (w celu wyświetlenia na liście), adres IP maszyny Wirtualnej i portu (zazwyczaj 8000, domyślny port, na którym nasłuchuje JupyterHub) i poświadczenia maszyny Wirtualnej:
+
+![Wiersz do zbierania informacji z opcji usługi obliczenia bezpośrednie serwera](media/project-compute-tier-direct.png)
+
+Jeśli następujące warunki są spełnione, listy rozwijanej również pokazuje [maszyny wirtualnej do nauki o danych (DSVM)](/azure/machine-learning/data-science-virtual-machine) wystąpień. (Jeśli którykolwiek z tych warunków nie są spełnione, można nadal połączyć się DSVM przy użyciu opcji obliczeniowych bezpośrednie i wprowadzając wartości uzyskane z portalu Azure.)
+
+- Po zarejestrowaniu się w notesach Azure przy użyciu konta, który używa usługi Azure Active Directory (AAD), takie jak konto firmy.
+- Twoje konto jest połączone z subskrypcją platformy Azure.
+- Masz co najmniej jednej maszyny wirtualnej w tej subskrypcji z co najmniej dostęp czytnika, używanego przez maszynę wirtualną do nauki o danych do obrazu systemu Linux (Ubuntu).
+
+![Wystąpienia maszyny wirtualnej do nauki o danych na liście rozwijanej na pulpicie nawigacyjnym projekt](media/project-compute-tier-dsvm.png)
+
+Po wybraniu wystąpienia maszyny wirtualnej DSVM, notesy platformy Azure może monit o poświadczenia określonej maszyny używane podczas tworzenia maszyny Wirtualnej.
+
+Aby utworzyć nowe wystąpienie maszyny wirtualnej DSVM, postępuj zgodnie z instrukcjami [tworzenia maszyny Wirtualnej do nauki o danych Ubuntu](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Możesz *musi* użyj **maszyna wirtualna do nauki o danych dla systemu Linux (Ubuntu)** obrazu, ponieważ notesy platformy Azure nie wyświetla maszyny, które używają Windows lub CentOS obrazy.
 
 ## <a name="edit-project-metadata"></a>Edytowanie metadanych projektu
 
@@ -66,7 +91,7 @@ Pulpit nawigacyjny projektu pokazuje zawartość systemu folderu projektu. Róż
 
 ### <a name="upload-files"></a>Przekazywanie plików
 
-**Przekazywanie** polecenia oferuje dwie opcje importowania danych z innych miejsc: **z adresu URL** i **z komputera**. Aby uzyskać więcej informacji, zobacz [Praca z plikami danych w projektach notesu Azure](work-with-project-data-files.md).
+**Przekazywanie** polecenia oferuje dwie opcje importowania danych z innych lokalizacji: **Z adresu URL** i **z komputera**. Aby uzyskać więcej informacji, zobacz [Praca z plikami danych w projektach notesu Azure](work-with-project-data-files.md).
 
 ### <a name="select-file-specific-commands"></a>Wybierz polecenia specyficzne dla pliku
 
@@ -127,11 +152,11 @@ Aby dodać krok, najpierw wybierz **+ Dodaj**, następnie wybierz typ kroku w **
 
 Informacje, które następnie projektu zależy od typu operacji, które wybrałeś:
 
-- **Plik Requirements.txt**: na drugiej liście rozwijanej wybierz *requirements.txt* pliku, który znajduje się już w projekcie. Następnie wybierz wersję języka Python z trzeciej listy rozwijanej, która pojawia się. Za pomocą *requirements.txt* plików i przebiegi notesów usługi Azure `pip install -r` z *requirements.txt* pliku podczas uruchamiania serwer notesu. Nie trzeba jawnie instalować pakiety z w obrębie samego notesu.
+- **Plik Requirements.txt**: Na drugiej liście rozwijanej wybierz *requirements.txt* pliku, który znajduje się już w projekcie. Następnie wybierz wersję języka Python z trzeciej listy rozwijanej, która pojawia się. Za pomocą *requirements.txt* plików i przebiegi notesów usługi Azure `pip install -r` z *requirements.txt* pliku podczas uruchamiania serwer notesu. Nie trzeba jawnie instalować pakiety z w obrębie samego notesu.
 
-- **Skrypt powłoki**: na drugiej liście rozwijanej wybierz skrypt powłoki bash w projekcie (zazwyczaj plik z *SH* rozszerzenia) zawierający wszystkie polecenia, które chcesz uruchomić, aby zainicjować środowisko.
+- **Skrypt powłoki**: Na drugiej liście rozwijanej wybierz skrypt powłoki bash w projekcie (zazwyczaj plik z *SH* rozszerzenia) zawierający wszystkie polecenia, które chcesz uruchomić, aby zainicjować środowisko.
 
-- **Environment.yml**: na drugiej liście rozwijanej wybierz *environments.yml* plików dla projektów języka Python przy użyciu środowiska conda.
+- **Environment.yml**: Na drugiej liście rozwijanej wybierz *environments.yml* plików dla projektów języka Python przy użyciu środowiska conda.
 
 Po zakończeniu dodawania kroków, wybierz **Zapisz**.
 
@@ -186,5 +211,5 @@ Umożliwia także polecenia w komórce kodu w notesie Python:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Porady: Praca z plikami danych projektu](work-with-project-data-files.md)
+- [Instrukcje: Praca z plikami danych projektu](work-with-project-data-files.md)
 - [Dostęp do danych w chmurze w notesie](access-data-resources-jupyter-notebooks.md)

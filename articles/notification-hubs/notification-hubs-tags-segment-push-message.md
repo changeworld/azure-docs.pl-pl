@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 01/23/2019
 ms.author: jowargo
-ms.openlocfilehash: f52900d06049623a0a81e509abdc5e9ef76f95e5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31a22aabc7b0f1d51a673ef8642037103badcc02
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451480"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828166"
 ---
 # <a name="routing-and-tag-expressions"></a>Wyrażenia routingu i znaczników
 
@@ -29,8 +29,7 @@ Wyrażenia tagu umożliwiają konkretnych zestawów docelowych urządzeń lub do
 
 ## <a name="targeting-specific-registrations"></a>Przeznaczone dla określonych rejestracji
 
-Jedynym sposobem na docelowym określonym powiadomień jest rejestracji, aby skojarzyć tagi z nich, następnie wskazać tych znaczników. Zgodnie z opisem w [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md), aby otrzymywać powiadomienia, aplikacja musi zarejestrować urządzenie, obsługa w Centrum powiadomień wypychanych. Po utworzeniu rejestracji w Centrum powiadomień aplikacji wewnętrznej bazy danych umożliwia wysyłanie powiadomień wypychanych do niego.
-Zaplecza aplikacji można wybrać rejestracje docelowo z określonych powiadomień w następujący sposób:
+Jedynym sposobem na docelowym określonym powiadomień jest rejestracji, aby skojarzyć tagi z nich, następnie wskazać tych znaczników. Zgodnie z opisem w [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md), aby otrzymywać powiadomienia, aplikacja musi zarejestrować urządzenie, obsługa w Centrum powiadomień wypychanych. Po utworzeniu rejestracji w Centrum powiadomień aplikacji wewnętrznej bazy danych umożliwia wysyłanie powiadomień wypychanych do niego. Zaplecza aplikacji można wybrać rejestracje docelowo z określonych powiadomień w następujący sposób:
 
 1. **Emisja**: powiadomienie wszystkich rejestracji w Centrum powiadomień.
 2. **Tag**: wszystkie rejestracje zawierające określony tag otrzymać powiadomienia.
@@ -71,6 +70,9 @@ Na tym rysunku Alicja jest zainteresowane w aktualizacjach dla Beatles, a zainte
 Chociaż możesz zakodować wiele uwagi w znacznikach (na przykład "band_Beatles" lub "follows_Charlie"), tagi to zwykłe ciągi i nie właściwości z wartościami. Rejestracja jest takie samo tylko w obecności lub braku określony tag.
 
 Aby uzyskać pełne instrukcje krok po kroku samouczek dotyczący sposobu użycia znaczników do wysyłania do grup zainteresowań, zobacz [istotne wiadomości](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).
+
+> [!NOTE]
+> Usługa Azure Notification Hubs obsługuje maksymalnie 60 tagów na rejestracji.
 
 ## <a name="using-tags-to-target-users"></a>Przy użyciu tagów użytkowników docelowych
 

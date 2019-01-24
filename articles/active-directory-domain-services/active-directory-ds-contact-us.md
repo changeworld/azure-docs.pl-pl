@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Skontaktuj się z nami | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Skontaktuj się z nami | Dokumentacja firmy Microsoft'
 description: Skontaktuj się z zespołem produktu usługi Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 662362c3-1a5e-4e94-ae09-8e4254443697
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: ergreenl
-ms.openlocfilehash: cedf09cd9dae23b3ea00d08b4a19ceb496e4958d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: feb3f17268443feddcbecd751c9da4bf16051ee5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155970"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849162"
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Usług domenowych Azure AD — skontaktuj się z nami
 ## <a name="contact-the-product-team"></a>Skontaktuj się z zespołem produktu
 Jeśli masz problemy z Twoją domeną zarządzaną, sprawdź, jeżeli kroki opisane w [przewodnik rozwiązywania problemów](active-directory-ds-troubleshooting.md) rozwiązać ten problem. Jeśli nadal występują problemy, możesz skontaktować się z nami.
 
-Użytkownik może wiadomość e-mail na adres: [informacji zwrotnych usług domenowych Azure AD](mailto:aaddsfb@microsoft.com).
+Może być Wyślij wiadomość e-mail: [Usług domenowych Azure AD opinii](mailto:aaddsfb@microsoft.com).
 
 Upewnij się, że zawierają następujące informacje, dzięki czemu możemy zbadać problem.
 

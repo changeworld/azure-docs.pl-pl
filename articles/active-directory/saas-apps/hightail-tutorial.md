@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Hightail | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Hightail | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Hightail.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
 ms.service: active-directory
 ms.workload: identity
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 1151044d5c1002c808ae1214086aff5fad84a55e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 59342aa95e50b29e58035892967be6d0407aae91
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431338"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812968"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Samouczek: Integracja usługi Azure Active Directory z Hightail
+# <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Hightail
 
 W tym samouczku dowiesz się, jak zintegrować Hightail w usłudze Azure Active Directory (Azure AD).
 
@@ -36,16 +36,16 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Hightail, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Hightail logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -58,7 +58,7 @@ Aby skonfigurować integrację Hightail w usłudze Azure AD, należy dodać High
 
 **Aby dodać Hightail z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -66,7 +66,7 @@ Aby skonfigurować integrację Hightail w usłudze Azure AD, należy dodać High
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -126,7 +126,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/hightail-tutorial/tutorial_hightail_certificate.png) 
 
-1. Hightail aplikacja oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **"Atrybutu"** kartę w aplikacji. Poniższy zrzut ekranu przedstawia przykład tego. 
+1. Hightail aplikacja oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **"Atrybutu"** kartę w aplikacji. Poniższy zrzut ekranu przedstawia przykład tego działania. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/hightail-tutorial/tutorial_hightail_attribute.png) 
 
@@ -134,10 +134,10 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |
-    | Imię | user.givenname |
-    | Nazwisko | user.surname |
-    | Email | User.mail |    
-    | Tożsamości użytkownika | User.mail |
+    | FirstName | user.givenname |
+    | LastName | user.surname |
+    | Email | user.mail |    
+    | UserIdentity | user.mail |
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -145,15 +145,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/hightail-tutorial/tutorial_officespace_05.png)
 
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
     c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
 
-    d. Pozostaw **Namespace** puste.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
     e. Kliknij przycisk **OK**.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/hightail-tutorial/tutorial_general_400.png)
 
@@ -187,7 +187,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     d. Kliknij przycisk **zapisywania konfiguracji**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -221,7 +221,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Hightail. 
 
-Brak elementu akcji dla Ciebie w tej sekcji. Hightail obsługuje aprowizację użytkowników just-in-time na podstawie niestandardowych oświadczeń. Po skonfigurowaniu oświadczenia niestandardowe, jak pokazano w sekcji **[usługi Azure AD Konfigurowanie logowania jednokrotnego](#configuring-azure-ad-single-sign-on)** powyżej, użytkownik jest automatycznie tworzony w aplikacji nie istnieje. 
+W tej sekcji nie musisz niczego robić. Hightail obsługuje aprowizację użytkowników just-in-time na podstawie niestandardowych oświadczeń. Po skonfigurowaniu oświadczenia niestandardowe, jak pokazano w sekcji **[usługi Azure AD Konfigurowanie logowania jednokrotnego](#configuring-azure-ad-single-sign-on)** powyżej, użytkownik jest automatycznie tworzony w aplikacji nie istnieje. 
 
 >[!NOTE]
 >Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej Hightail](mailto:support@hightail.com). 
@@ -263,7 +263,7 @@ Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego l
 Po kliknięciu kafelka Hightail w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Hightail.
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/7/2018
 ms.author: trinadhk
-ms.openlocfilehash: e658124dc6db2761fb475597a32e663949edfccf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1714a29e4b27f6363d748ceb180f56ba98c713bb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470753"
+ms.locfileid: "54809534"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Rozwiązywanie problemów z kopiami zapasowymi maszyn wirtualnych platformy Azure
 Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Backup, podając informacje przedstawione w poniższej tabeli:
@@ -57,6 +57,7 @@ Można rozwiązać, usuwać błędy napotkane podczas używania usługi Azure Ba
 | Nie można anulować zadania kopii zapasowej: <br>Poczekaj na zakończenie zadania. |Brak |
 
 ## <a name="restore"></a>Przywracanie
+
 | Szczegóły błędu | Obejście |
 | --- | --- |
 | Przywracanie nie powiodło się z powodu błędu wewnętrznego chmury. |<ol><li>Usługą w chmurze, do którego próbujesz przywrócić skonfigurowano ustawienia DNS. Możesz sprawdzić: <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>Jeśli **adres** jest skonfigurowany, a następnie ustawienia DNS są skonfigurowane.<br> <li>Skonfigurowano usługę chmurową, do którego próbujesz przywrócić **zastrzeżonego adresu IP**, i istniejących maszyn wirtualnych w usłudze w chmurze znajdują się w stanie zatrzymania. Możesz sprawdzić, czy usługa w chmurze zarezerwował adresu IP za pomocą następujących poleceń cmdlet programu PowerShell: **$deployment = Get-AzureDeployment - ServiceName "servicename"-miejsca $ "Produkcja" w programie dep. Nazwa zastrzeżonego adresu IP**. <br><li>Próbujesz przywrócić maszynę wirtualną za pomocą następujących specjalnymi konfiguracjami sieci w tej samej usłudze w chmurze: <ul><li>Maszyny wirtualne w ramach konfiguracji usługi równoważenia obciążenia, wewnętrznych i zewnętrznych.<li>Maszyny wirtualne za pomocą wielu zastrzeżonych adresów IP. <li>Maszyny wirtualne z wieloma kartami sieciowymi. </ul><li>Wybierz nową usługę w chmurze w interfejsie użytkownika lub zobacz [przywrócić zagadnienia](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations) dla maszyn wirtualnych ze specjalnymi konfiguracjami sieci.</ol> |
@@ -100,7 +101,7 @@ Zazwyczaj Agent maszyny Wirtualnej jest już obecny w maszynach wirtualnych, kt�
 * Aby zaktualizować agenta maszyny Wirtualnej systemu Linux, postępuj zgodnie z instrukcjami w artykule [aktualizowania agenta maszyny Wirtualnej systemu Linux](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
     > [!NOTE]
-    > Aby zaktualizować agenta należy zawsze używać repozytorium dystrybucji. 
+    > Aby zaktualizować agenta należy zawsze używać repozytorium dystrybucji.
 
     Nie można pobrać kod agenta z witryny GitHub. Najnowszą wersję agenta nie jest dostępna dla Twojej dystrybucji, należy skontaktować się z pomocy technicznej dystrybucji, aby uzyskać instrukcje uzyskać najnowszą wersję agenta. Możesz również sprawdzić najnowsze [agenta systemu Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) informacje w repozytorium GitHub.
 

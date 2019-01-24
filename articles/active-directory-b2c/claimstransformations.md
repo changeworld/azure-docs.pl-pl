@@ -3,19 +3,19 @@ title: ClaimsTransformations — usługa Azure Active Directory B2C | Dokumentac
 description: Definicja elementu ClaimsTransformations w tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b569fe6a354bed315fd2136cafdade667b6f3a8b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 152149f94bba9077909d5b5c6bf92f3706b31b8c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432814"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848448"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -159,12 +159,12 @@ Na przykład mogą być przechowywane ostatnią wersję warunków użytkowania u
 
 Aby zapoznać się z przykładami przekształcenia oświadczeń zobacz następujące strony odwołania:
 
-- [Boolean](boolean-transformations.md)
+- [Wartość logiczna](boolean-transformations.md)
 - [Data](date-transformations.md)
 - [Integer](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Ogólne](general-transformations.md)
 - [Konta społecznościowego](social-transformations.md)
 - [Ciąg](string-transformations.md)
-- [właściwości stringCollection](stringcollection-transformations.md)
+- [StringCollection](stringcollection-transformations.md)
 

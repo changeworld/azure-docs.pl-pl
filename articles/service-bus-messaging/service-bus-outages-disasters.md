@@ -2,18 +2,19 @@
 title: Izolacji wyłączeń i awarii aplikacji usługi Azure Service Bus | Dokumentacja firmy Microsoft
 description: Techniki, aby chronić aplikacje przed potencjalnych awarii usługi Service Bus.
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: 85481deceeadaf4154659d35fccf777f489bd782
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: e9fb1795ecb26fc87fd8f3ff000d125d71e9d594
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393711"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846714"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Najlepsze rozwiązania dotyczące izolacji aplikacji w ramach usługi Service Bus wyłączeń i awarii
 
@@ -69,7 +70,7 @@ Ogólnie rzecz biorąc pasywnym replikacja jest bardziej ekonomiczne niż aktywn
 
 Korzystając z pasywnego replikacji, w następujących scenariuszach komunikaty są zapominane lub odebrane dwa razy:
 
-* **Opóźnienie wiadomości lub utratą**: założono, że nadawca pomyślnie wysłane m1 komunikat do kolejki głównej i następnie kolejki staje się niedostępny przed odbiornika odbiera m1. Nadawca wysyła m2 wyświetlony komunikat do kolejki dodatkowej. Jeśli podstawowy kolejka jest tymczasowo niedostępny, odbiornik odbiera m1 po kolejce znowu dostępne. W razie awarii odbiornika nigdy nie może zostać wyświetlony m1.
+* **Opóźnienie wiadomości lub utratą**: Załóżmy, że nadawca pomyślnie wysłane m1 komunikat do kolejki głównej, a kolejki staje się niedostępny przed odbiornika odbiera m1. Nadawca wysyła m2 wyświetlony komunikat do kolejki dodatkowej. Jeśli podstawowy kolejka jest tymczasowo niedostępny, odbiornik odbiera m1 po kolejce znowu dostępne. W razie awarii odbiornika nigdy nie może zostać wyświetlony m1.
 * **Duplikuj odbioru**: Załóżmy, że nadawca wysyła komunikat m do kolejki głównej. Usługa Service Bus pomyślnie przetwarza m, ale nie może wysłać odpowiedź. Po upłynie limit czasu operacji wysyłania, nadawca wysyła identyczną kopię m do kolejki dodatkowej. Jeśli odbiorca jest możliwość odbierania pierwszego kopiowania m, zanim kolejki głównej staje się niedostępny, odbiornik odbiera obu kopiach m, w tym samym czasie. Jeśli odbiornik nie jest możliwość odbierania pierwszego kopiowania m, zanim kolejki głównej staje się niedostępny, odbiornik początkowo odbiera drugą kopię m, ale odbiera drugą kopię m po udostępnieniu kolejki głównej.
 
 [Replikację geograficzną za pomocą usługi Service Bus obsługiwanych przez brokera komunikatów] [ Geo-replication with Service Bus Brokered Messages] w przykładzie pokazano pasywnym replikacji jednostki obsługi komunikatów.

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e2d65c107d57d50bc15d5a1cd1698491bb607e25
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b0a047c4bf2c0c95896699e50e943277a138ecca
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262237"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809035"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo za pomocą koderów lokalnych tworzących strumienie o różnej szybkości transmisji bitów
 
@@ -39,8 +39,8 @@ W usłudze Azure Media Services *kanału* reprezentuje potok przetwarzania zawar
 
 Począwszy od Media Services w wersji 2.10 wersji, podczas tworzenia kanału, można określić sposób kanał w taki sposób, aby otrzymywać strumień wejściowy. Można również określić, czy kanał do przeprowadzania kodowania na żywo strumienia. Dostępne są dwie opcje:
 
-* **Przekazuj**: określić tę wartość, jeśli zamierzasz używać na lokalny koder na żywo, która ma strumień o różnych szybkościach transmisji bitów (strumień przekazujące) jako dane wyjściowe. W tym przypadku przychodzącego strumienia przechodzi przez w danych wyjściowych bez żadnych kodowania. Jest to zachowanie kanału przed wydaniem 2.10. Ten artykuł zawiera szczegółowe informacje o Praca z kanałami tego typu.
-* **Live Encoding**: Wybierz tę wartość, jeśli planujesz używać usługi Media Services do zakodowania pojedynczej szybkości transmisji strumieniowej na żywo na strumień o wielokrotnej szybkości transmisji bitów. Pozostawienie kanału kodowania na żywo w **systemem** stan spowoduje naliczenie opłat rozliczeniowych. Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu wydarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe. Usługi Media Services dostarcza strumień do klientów, którzy wysyłają żądanie.
+* **Przekazuj**: Należy określić tę wartość, jeśli zamierzasz używać na lokalny koder na żywo, która ma strumień o różnych szybkościach transmisji bitów (strumień przekazujące) jako dane wyjściowe. W tym przypadku przychodzącego strumienia przechodzi przez w danych wyjściowych bez żadnych kodowania. Jest to zachowanie kanału przed wydaniem 2.10. Ten artykuł zawiera szczegółowe informacje o Praca z kanałami tego typu.
+* **Kodowanie na żywo**: Wybierz tę wartość, jeśli planujesz używać usługi Media Services do zakodowania pojedynczej szybkości transmisji strumieniowej na żywo na strumień o wielokrotnej szybkości transmisji bitów. Pozostawienie kanału kodowania na żywo w **systemem** stan spowoduje naliczenie opłat rozliczeniowych. Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu wydarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe. Usługi Media Services dostarcza strumień do klientów, którzy wysyłają żądanie.
 
 > [!NOTE]
 > W tym artykule omówiono atrybuty kanały, które nie są włączone do przeprowadzania kodowania na żywo. Aby uzyskać informacje dotyczące pracy z kanałami obsługującymi kodowanie na żywo, zobacz [transmisja strumieniowa na żywo ze strumieniami o różnych szybkościach transmisji bitów przy użyciu usługi Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
@@ -88,7 +88,7 @@ W następujących krokach opisano zadania związane z tworzeniem typowych aplika
 #### <a id="ingest_protocols"></a>Pozyskiwanie protokołu przesyłania strumieniowego
 Usługa Media Services obsługuje, umożliwiając pozyskiwanie kanały na żywo przy użyciu plików MP4 z wieloma szybkościami transmisji bitów podzielonej zawartości i RTMP o różnej szybkości transmisji bitów jako protokołów przesyłania strumieniowego. Podczas pozyskiwania RTMP protokół przesyłania strumieniowego jest wybrany, pozyskiwania dwa punkty końcowe (wejścia) są tworzone dla kanału:
 
-* **Podstawowy adres URL**: Określa w pełni kwalifikowany adres URL z podstawowego protokołu RTMP kanału pozyskiwania punktu końcowego.
+* **Podstawowy adres URL**: Określa, w pełni kwalifikowany adres URL z podstawowego protokołu RTMP kanału pozyskiwania punktu końcowego.
 * **Adres URL dodatkowej** (opcjonalnie): Określa w pełni kwalifikowany adres URL z kanału dodatkowej RTMP pozyskiwania punktu końcowego.
 
 Użyj dodatkowej adresu URL, jeśli chcesz zwiększyć niezawodność i odporności na uszkodzenia usługi pozyskiwania strumienia (a także kodera trybu failover i odporności na uszkodzenia), szczególnie w przypadku następujących scenariuszy:
@@ -115,7 +115,7 @@ Po utworzeniu kanału możesz uzyskać adresy URL pozyskiwania. Możesz uzyskać
 Istnieje możliwość wprowadzania podzielonej zawartości w formacie MP4 (Smooth Streaming) transmisji strumieniowej na żywo za pośrednictwem połączenia SSL. Pozyskanie za pośrednictwem protokołu SSL, upewnij się zaktualizować adres URL pozyskiwania protokołu HTTPS. Nie można obecnie pozyskiwania RTMP, za pośrednictwem protokołu SSL.
 
 #### <a id="keyframe_interval"></a>Interwał klatki kluczowej
-Podczas korzystania z lokalny koder na żywo do generowania strumień o wielokrotnej szybkości transmisji bitów, interwał ramki kluczowej określa czas trwania grupy obrazów (GOP) używane przez tego kodera. Po kanał odbiera strumień przychodzących z tym, można dostarczać transmisji strumieniowej na żywo aplikacjom klienckim odtwarzania w dowolnym z następujących formatów: Smooth Streaming, Dynamic Adaptive Streaming za pośrednictwem protokołu HTTP (DASH) i HTTP Live Streaming (HLS). Podczas prowadzenia transmisji strumieniowych na żywo, HLS, jest zawsze dostarczana dynamicznie. Domyślnie usługa Media Services automatycznie oblicza współczynnik pakowania segmentu HLS (fragmenty według segmentu) na podstawie interwału ramki kluczowej odebrane z kodera na żywo.
+Podczas korzystania z lokalny koder na żywo do generowania strumień o wielokrotnej szybkości transmisji bitów, interwał ramki kluczowej określa czas trwania grupy obrazów (GOP) używane przez tego kodera. Po kanał odbiera strumień przychodzących z tym, można dostarczać transmisji strumieniowej na żywo aplikacjom klienckim odtwarzania w dowolnym z następujących formatów: Smooth Streaming, Dynamic Adaptive Streaming za pośrednictwem protokołu HTTP (DASH) i HTTP Live przesyłania strumieniowego (HLS). Podczas prowadzenia transmisji strumieniowych na żywo, HLS, jest zawsze dostarczana dynamicznie. Domyślnie usługa Media Services automatycznie oblicza współczynnik pakowania segmentu HLS (fragmenty według segmentu) na podstawie interwału ramki kluczowej odebrane z kodera na żywo.
 
 W poniższej tabeli przedstawiono, jak jest obliczana segmentu czas trwania:
 
@@ -127,7 +127,7 @@ W poniższej tabeli przedstawiono, jak jest obliczana segmentu czas trwania:
 
 Konfigurowanie danych wyjściowych tego kanału i ustawienie FragmentsPerSegment ChannelOutputHls, można zmienić współczynnik fragmentów na segment.
 
-Można również zmienić wartość interwału klatki kluczowej, ustawiając właściwość KeyFrameInterval na ChanneInput. Jeśli została jawnie ustawiona KeyFrameInterval HLS segmentu współczynnik pakowania, obliczonego FragmentsPerSegment za pomocą reguł opisanych powyżej.  
+Można również zmienić wartość interwału klatki kluczowej, ustawiając właściwość KeyFrameInterval na ChannelInput. Jeśli została jawnie ustawiona KeyFrameInterval HLS segmentu współczynnik pakowania, obliczonego FragmentsPerSegment za pomocą reguł opisanych powyżej.  
 
 Jeśli jawnie ustawiono KeyFrameInterval i FragmentsPerSegment, Media Services używa wartości, które można ustawić.
 
@@ -176,11 +176,11 @@ Nawet po zatrzymaniu i usunięciu programu, użytkownicy mogą strumieniowo zarc
 ## <a id="states"></a>Stany kanału i rozliczeń
 Możliwe wartości dla bieżącego stanu kanału:
 
-* **Zatrzymano**: to jest wstępny stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
-* **Uruchamianie**: kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do **zatrzymane** stanu.
-* **Uruchamianie**: kanał może przetwarzać transmisje strumieniowe na żywo.
-* **Zatrzymywanie**: kanał jest zatrzymywany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
-* **Usuwanie**: kanał jest usuwany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Zatrzymano**: To jest wstępny stan kanału po jego utworzeniu. W tym stanie właściwości kanału mogą być aktualizowane, ale transmisja strumieniowa jest niedozwolona.
+* **Uruchamianie**: Kanał jest uruchamiany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa. Jeśli wystąpi błąd, kanał wróci do **zatrzymane** stanu.
+* **Uruchamianie**: Kanał może przetwarzać transmisje strumieniowe na żywo.
+* **Zatrzymywanie**: Kanał jest zatrzymywany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
+* **Usuwanie**: Kanał jest usuwany. W tym stanie nie są dozwolone ani aktualizacje, ani transmisja strumieniowa.
 
 W tabeli poniżej pokazano, jak stany kanału przekładają się na naliczanie opłat.
 

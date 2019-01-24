@@ -1,10 +1,10 @@
 ---
-title: 'Usługi Azure Active Directory Domain Services: Przewodnik rozwiązywania problemów | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Przewodnik rozwiązywania problemów | Dokumentacja firmy Microsoft'
 description: Przewodnik rozwiązywania problemów usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: e2b7eb4f5be5e73e70f883f9510e7fc6a13d6bea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8b752585fc72b7f4be8e7b9320290f8ad56f53c2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156090"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844657"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services — przewodnik rozwiązywania problemów
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, które można napotkać podczas konfigurowania lub administrowania usługi domenowe Azure Active Directory (AD).
@@ -128,7 +128,7 @@ Aby rozwiązać ten problem, należy włączyć tę aplikację, a następnie spr
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Użytkownicy nie mogą zalogować się do domeny zarządzanej usług Azure AD Domain Services
 Jeśli co najmniej jeden użytkownik w dzierżawie usługi Azure AD są w stanie zalogować się do nowo utworzonego domeny zarządzanej, wykonaj następujące kroki:
 
-* **Zaloguj się przy użyciu nazwy w formacie UPN:** próbuje zalogować się przy użyciu nazwy w formacie UPN (na przykład "joeuser@contoso.com") zamiast w formacie SAMAccountName ("CONTOSO\joeuser"). SAMAccountName mogą być generowane automatycznie dla użytkowników, których prefiks nazwy UPN jest zbyt długi lub jest taki sam jak inny użytkownik w domenie zarządzanej. Format nazwy UPN są musi być unikatowy w ramach dzierżawy usługi Azure AD.
+* **Zaloguj się przy użyciu nazwy w formacie UPN:** Spróbuj zalogować się, korzystając z nazwy w formacie UPN (na przykład „joeuser@contoso.com”) zamiast w formacie SAMAccountName („CONTOSO\joeuser”). SAMAccountName mogą być generowane automatycznie dla użytkowników, których prefiks nazwy UPN jest zbyt długi lub jest taki sam jak inny użytkownik w domenie zarządzanej. Format nazwy UPN są musi być unikatowy w ramach dzierżawy usługi Azure AD.
 
 > [!NOTE]
 > Firma Microsoft zaleca w formacie UPN zalogować się do domeny zarządzanej usług domenowych Azure AD.
@@ -136,8 +136,8 @@ Jeśli co najmniej jeden użytkownik w dzierżawie usługi Azure AD są w stanie
 >
 
 * Upewnij się, że masz [włączoną synchronizację haseł](active-directory-ds-getting-started-password-sync.md) zgodnie z procedurą opisaną w przewodniku Wprowadzenie.
-* **Konta zewnętrzne:** upewnij się, że konto użytkownika nie jest kontem zewnętrznym w dzierżawie usługi Azure AD. Zewnętrzne konta przykłady kont Microsoft (na przykład "joe@live.com") lub kont użytkowników z zewnętrznej katalog usługi Azure AD. Ponieważ usługi domenowe Azure AD nie ma poświadczeń dla takich kont użytkownika, tych użytkowników nie Zaloguj się do domeny zarządzanej.
-* **Zsynchronizowane konta:** Jeśli konta użytkownika są synchronizowane z katalogu lokalnego, upewnij się, że:
+* **Zewnętrzne konta:** Upewnij się, że konto użytkownika, którego dotyczy problem, nie jest kontem zewnętrznym w dzierżawie usługi Azure AD. Zewnętrzne konta przykłady kont Microsoft (na przykład "joe@live.com") lub kont użytkowników z zewnętrznej katalog usługi Azure AD. Ponieważ usługi domenowe Azure AD nie ma poświadczeń dla takich kont użytkownika, tych użytkowników nie Zaloguj się do domeny zarządzanej.
+* **Zsynchronizowane konta:** Konta użytkownika są synchronizowane z katalogu lokalnego, sprawdź, czy:
 
   * Wdrożeniu lub zaktualizowane w celu [najnowsze zalecana wersja programu Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594).
   * Skonfigurowano usługi Azure AD Connect, aby [przeprowadzić pełną synchronizację](active-directory-ds-getting-started-password-sync.md).
@@ -146,7 +146,7 @@ Jeśli co najmniej jeden użytkownik w dzierżawie usługi Azure AD są w stanie
 
     1. polecenie net stop 'Microsoft Azure AD Sync'
     2. polecenie net start 'Microsoft Azure AD Sync'
-* **Tylko w chmurze kont**: konto użytkownika w przypadku kont użytkowników tylko w chmurze, upewnij się, że użytkownik zmienił swojego hasła, po włączeniu usług domenowych Azure AD. Ten krok powoduje wygenerowanie skrótów poświadczeń wymaganych przez usługi Azure AD Domain Services.
+* **Tylko w chmurze kont**: Konto użytkownika w przypadku kont użytkowników tylko w chmurze, upewnij się, że użytkownik zmienił swojego hasła, po włączeniu usług domenowych Azure AD. Ten krok powoduje wygenerowanie skrótów poświadczeń wymaganych przez usługi Azure AD Domain Services.
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>Istnieje jeden lub więcej alertów w domenie zarządzanej
 

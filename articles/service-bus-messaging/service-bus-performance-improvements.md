@@ -3,18 +3,19 @@ title: Najlepsze rozwiązania dotyczące zwiększania wydajności przy użyciu u
 description: W tym artykule opisano, jak używać usługi Service Bus do optymalizacji wydajności podczas wymiany komunikatów obsługiwanych przez brokera.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: cfce11546249310ce00e5f19ba81520cc9dd78cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392639"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848584"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania zwiększające wydajność przy użyciu komunikatów usługi Service Bus
 
@@ -28,7 +29,7 @@ Poniższe sekcje wprowadzić kilka koncepcji, które korzysta z usługi Service 
 
 Usługa Service Bus umożliwia klientom wysyłanie i odbieranie wiadomości przy użyciu jednej z trzech protokołów:
 
-1. Zaawansowane usługi kolejkowania Protocol (AMQP)
+1. Advanced Message Queuing Protocol (AMQP)
 2. Protokół (SBMP) komunikatów usługi Service Bus
 3. HTTP
 
@@ -36,7 +37,7 @@ Protokół AMQP i SBMP są bardziej wydajne, ponieważ obsługa połączenia us�
 
 ## <a name="reusing-factories-and-clients"></a>Ponowne użycie fabryk i klientów
 
-Klient usługi Service Bus obiekty, takie jak [QueueClient] [ QueueClient] lub [MessageSender][MessageSender], są tworzone za pomocą [ MessagingFactory] [ MessagingFactory] obiektu, który udostępnia również zarządzania wewnętrznych połączeń. Zaleca się, że nie zamkniesz fabryki obsługi komunikatów lub kolejki, tematu i subskrypcji klientów po wysłać wiadomość, a następnie ponownie utwórz je, podczas przesyłania komunikatu dalej. Zamykanie fabryki obsługi komunikatów usuwa połączenia z usługą Service Bus, a nowe połączenie zostanie nawiązane, podczas ponownego tworzenia fabryki. Nawiązując połączenie jest kosztowną operacją, który można uniknąć przez ponowne użycie tego samego fabryki i obiekty klienta dla wielu operacji. Możesz bezpiecznie użyć [QueueClient] [ QueueClient] obiekt do wysyłania wiadomości z jednoczesnych operacji asynchronicznych i wielu wątków. 
+Klient usługi Service Bus obiekty, takie jak [QueueClient] [ QueueClient] lub [MessageSender][MessageSender], są tworzone za pomocą [ MessagingFactory] [ MessagingFactory] obiektu, który udostępnia również zarządzania wewnętrznych połączeń. Zaleca się, że nie zamkniesz fabryki obsługi komunikatów lub kolejki, tematu i subskrypcji klientów po wysłać wiadomość, a następnie ponownie utwórz je, podczas przesyłania komunikatu dalej. Zamykanie fabryki obsługi komunikatów usuwa połączenia z usługą Service Bus, a nowe połączenie zostanie nawiązane, podczas ponownego tworzenia fabryki. Nawiązując połączenie jest kosztowną operacją, który można uniknąć przez ponowne użycie tego samego fabryki i obiekty klienta dla wielu operacji. Bezpiecznie służy tych obiektów klienta współbieżnych operacji asynchronicznych i z wielu wątków. 
 
 ## <a name="concurrent-operations"></a>Równoczesne wykonywanie operacji
 
@@ -71,7 +72,7 @@ Klient planuje jednoczesnych operacji za wykonywanie operacji asynchronicznych. 
 
 ## <a name="receive-mode"></a>Tryb odbierania
 
-Podczas tworzenia kolejki lub subskrypcji klienta, można określić tryb receive: *Odbierz* lub *odbieranie i usuwanie*. Domyślny tryb odbierania jest [PeekLock][PeekLock]. Podczas pracy w tym trybie, klient wysyła żądanie, aby komunikat o błędzie z usługi Service Bus. Po otrzymaniu komunikatu klient wysyła żądanie można zakończyć wiadomości.
+Podczas tworzenia kolejki lub subskrypcji klienta, należy określić tryb odbierania: *Odbierz* lub *odbieranie i usuwanie*. Domyślny tryb odbierania jest [PeekLock][PeekLock]. Podczas pracy w tym trybie, klient wysyła żądanie, aby komunikat o błędzie z usługi Service Bus. Po otrzymaniu komunikatu klient wysyła żądanie można zakończyć wiadomości.
 
 Po ustawieniu trybu odbioru na [ReceiveAndDelete][ReceiveAndDelete], oba kroki są połączone w jedno żądanie. Te kroki zmniejszyć ogólną liczbę operacji i może zwiększyć ogólną przepływność komunikatów. Jest to bardziej wydajne ryzyko utraty wiadomości.
 
@@ -127,38 +128,9 @@ Time to live (TTL) właściwość wiadomości jest sprawdzana przez serwer w mom
 
 Trwa pobieranie z wyprzedzeniem nie wpływa na liczbę płatnych operacji obsługi komunikatów i jest dostępna tylko dla protokołu klienta usługi Service Bus. Protokół HTTP nie obsługuje pobieranie z wyprzedzeniem. Trwa pobieranie z wyprzedzeniem jest dostępna dla operacji odbioru synchroniczne i asynchroniczne.
 
-## <a name="express-queues-and-topics"></a>Express, kolejek i tematów
-
-Jednostki ekspresowe włączyć scenariusze krótszym czasom oczekiwania i wysokiej przepływności i są obsługiwane tylko w warstwie standardowej obsługi komunikatów. Jednostek utworzonych w [przestrzeni nazw Premium](service-bus-premium-messaging.md) nie obsługują opcji express. Przy użyciu jednostek ekspresowych Jeśli komunikat jest wysyłany do kolejki lub tematu, wiadomości nie są natychmiast przechowywane w magazynie obsługi komunikatów. Zamiast tego należy ją w pamięci podręcznej. Komunikat pozostaje w kolejce przez więcej niż kilku sekund, są automatycznie zapisywane do magazynu, w związku z tym chroni przed utratą z powodu awarii stanu stabilnego. Zapisywanie komunikatu w pamięci podręcznej zwiększa przepływność i zmniejsza opóźnienia, ponieważ nie ma dostępu do stabilnego działania magazynu w momencie wysłania wiadomości. Komunikaty, które są używane w ciągu kilku sekund nie są zapisywane w magazynie komunikatów. Poniższy przykład tworzy temat usługi express.
-
-```csharp
-TopicDescription td = new TopicDescription(TopicName);
-td.EnableExpress = true;
-namespaceManager.CreateTopic(td);
-```
-
-Jeśli komunikat zawierający krytyczne informacje, które nie mogą być tracone zostanie wysłany do jednostki ekspresowe, nadawca może wymusić usługi Service Bus, można od razu utrwalić komunikat do czasu trwania stanu stabilnego magazynu, ustawiając [ForcePersistence] [ ForcePersistence] właściwości **true**.
-
-> [!NOTE]
-> Jednostki ekspresowe nie obsługuje transakcji.
-
-## <a name="partitioned-queues-or-topics"></a>Partycjonowanych kolejek lub tematów
-
-Wewnętrznie Usługa Service Bus używa tego samego węzła i komunikatów magazynu do przetwarzania i przechowywania wszystkie komunikaty dla jednostki obsługi komunikatów (kolejki lub tematu). A [podzieleniu kolejki lub tematu](service-bus-partitioning.md), z drugiej strony, będzie rozmieszczona na wielu węzłach i magazynów komunikatów. Partycjonowane kolejki i tematy nie tylko uzyskanie wyższą przepływność niż regularne kolejek i tematów, charakteryzują najwyższej dostępności. Aby utworzyć jednostki podzielonej na partycje, ustaw [EnablePartitioning] [ EnablePartitioning] właściwości **true**, jak pokazano w poniższym przykładzie. Aby uzyskać więcej informacji na temat partycjonowane jednostki zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
-
-> [!NOTE]
-> Partycjonowane jednostki nie są obsługiwane w [jednostki SKU Premium](service-bus-premium-messaging.md). 
-
-```csharp
-// Create partitioned queue.
-QueueDescription qd = new QueueDescription(QueueName);
-qd.EnablePartitioning = true;
-namespaceManager.CreateQueue(qd);
-```
-
 ## <a name="multiple-queues"></a>Wielu kolejek
 
-Jeśli nie jest możliwe użycie podzieleniu kolejki lub tematu lub oczekiwanego obciążenia nie mogą być obsługiwane przez pojedynczy podzieleniu kolejki lub tematu, należy użyć wielu jednostek obsługi komunikatów. Korzystając z wielu jednostek, Utwórz dedykowane klienta dla każdej jednostki, zamiast korzystać z tego samego klienta dla wszystkich jednostek.
+Jeśli oczekiwane obciążenia nie mogą być obsługiwane przez pojedynczy podzieleniu kolejki lub tematu, należy użyć wielu jednostek obsługi komunikatów. Korzystając z wielu jednostek, Utwórz dedykowane klienta dla każdej jednostki, zamiast korzystać z tego samego klienta dla wszystkich jednostek.
 
 ## <a name="development-and-testing-features"></a>Programowanie i testowanie funkcji
 
@@ -200,7 +172,7 @@ Cel: Zminimalizować opóźnienie end-to-end kolejki lub tematu. Liczba nadawcó
 
 ### <a name="queue-with-a-large-number-of-senders"></a>Kolejki z dużą liczbą nadawców
 
-Cel: Zmaksymalizować przepływność kolejki lub tematu z dużą liczbą nadawcy. Każdy Nadawca wysyła komunikaty z średni współczynnik. Numer odbiorcy jest mały.
+Cel: Maksymalizuj przepływność kolejki lub tematu z dużą liczbą nadawcy. Każdy Nadawca wysyła komunikaty z średni współczynnik. Numer odbiorcy jest mały.
 
 Service Bus umożliwia maksymalnie 1000 równoczesnych połączeń jednostki obsługi komunikatów (lub 5000 za pomocą protokołu AMQP). Ten limit jest wymuszane na poziomie przestrzeni nazw i kolejek/tematów/subskrypcji są ograniczone przez limit jednoczesnych połączeń dla jednej przestrzeni nazw. W przypadku kolejek liczba ta jest udostępniana między nadawcami a odbiornikami. Jeśli wszystkie połączenia 1000 są wymagane do nadawców, Zamień kolejki tematu i jednej subskrypcji. Temat akceptuje do 1000 równoczesnych połączeń od nadawcy, podczas gdy subskrypcja akceptuje dodatkowe 1000 równoczesnych połączeń od odbiorcy. Jeśli więcej niż 1000 równoczesnych nadawcy są wymagane, nadawców powinien wysyłać wiadomości protokołu usługi Service Bus za pośrednictwem protokołu HTTP.
 
@@ -229,7 +201,7 @@ Aby zmaksymalizować przepływność, wykonaj następujące czynności:
 
 ### <a name="topic-with-a-small-number-of-subscriptions"></a>Temat z małą liczbą subskrypcji
 
-Cel: Zmaksymalizować przepływność tematu z niewielką liczbę subskrypcji. Wiadomość zostaje odebrana się przez wiele subskrypcji, co oznacza, że szybkość odbierania połączone za pośrednictwem wszystkich subskrypcji jest większa niż szybkość wysyłania. Numer nadawcy jest mały. Numer odbiorcy na subskrypcję jest mały.
+Cel: Maksymalizuj przepływność tematu z niewielką liczbę subskrypcji. Wiadomość zostaje odebrana się przez wiele subskrypcji, co oznacza, że szybkość odbierania połączone za pośrednictwem wszystkich subskrypcji jest większa niż szybkość wysyłania. Numer nadawcy jest mały. Numer odbiorcy na subskrypcję jest mały.
 
 Aby zmaksymalizować przepływność, wykonaj następujące czynności:
 
@@ -243,7 +215,7 @@ Aby zmaksymalizować przepływność, wykonaj następujące czynności:
 
 ### <a name="topic-with-a-large-number-of-subscriptions"></a>Temat z dużej liczby subskrypcji
 
-Cel: Zmaksymalizować przepływność tematu z dużą liczbę subskrypcji. Komunikat jest odbierany przez wiele subskrypcji, co oznacza, że szybkość odbierania połączone za pośrednictwem wszystkich subskrypcji jest znacznie większa niż szybkość wysyłania. Numer nadawcy jest mały. Numer odbiorcy na subskrypcję jest mały.
+Cel: Maksymalizuj przepływność tematu z dużą liczbę subskrypcji. Komunikat jest odbierany przez wiele subskrypcji, co oznacza, że szybkość odbierania połączone za pośrednictwem wszystkich subskrypcji jest znacznie większa niż szybkość wysyłania. Numer nadawcy jest mały. Numer odbiorcy na subskrypcję jest mały.
 
 Tematy z dużą liczbą subskrypcje zazwyczaj ujawnić niski ogólną przepływność, ile wszystkie komunikaty są kierowane do wszystkich subskrypcji. Przyczyną jest fakt, że każdy komunikat jest odbierany wiele razy, a wszystkie komunikaty, które są zawarte w temacie i wszystkie jego subskrypcje są przechowywane w tym samym magazynie to niska przepływność. Zakłada się, czy liczba nadawców i liczbę odbiorców na subskrypcję jest mały. Usługa Service Bus obsługuje maksymalnie 2000 subskrypcji w temacie.
 

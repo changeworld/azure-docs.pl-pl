@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8543f00ccaecd8fd3f46132b05c2af925e6de10a
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3646c6167f901fe43080d39df42fdb127b1c7fc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352363"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828149"
 ---
 # <a name="using-a-cloud-dvr"></a>Korzystanie z funkcji DVR w chmurze
 
@@ -37,8 +37,7 @@ A **element LiveEvent** obsługuje maksymalnie trzy jednocześnie uruchomione **
 > [!NOTE]
 > **LiveOutput**s start przy tworzeniu i Zatrzymaj po usunięciu. Po usunięciu **LiveOutput**, nie powoduje usunięcia podstawowych **zasobów** i zawartości w elemencie zawartości. 
 >
-> Po opublikowaniu **lokalizatora przesyłania strumieniowego**s dla zasobu dla **LiveOutput**, zdarzenie (maksymalna długość okna DVR) będą nadal widoczne do czasu zakończenia **lokalizatora przesyłania strumieniowego**  lub do podczas usuwania Lokalizator osiągnięta jako pierwsza.   
-  
+> Po opublikowaniu **LiveOutput** zasobów przy użyciu **StreamingLocator**, **element LiveEvent** (maksymalna długość okna DVR) nadal będzie widoczny do momentu **StreamingLocator**jego wygaśnięcia lub usunięcia, zależnie co nastąpi wcześniej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

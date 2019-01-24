@@ -3,19 +3,19 @@ title: Ciąg przykłady przekształcania oświadczeń tożsamości środowisko F
 description: Ciąg oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f2823ec32b6658aa22c38294c09c9738c9121c39
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1a382b845b621e47d30869a1081549b7f30348aa
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121587"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850743"
 ---
 # <a name="string-claims-transformations"></a>Ciąg oświadczeń przekształcenia
 
@@ -31,11 +31,11 @@ Porównaj dwa oświadczenia i zgłosić wyjątek, jeśli nie są równe, zgodnie
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputClaim1 | ciąg | Typ pierwszego oświadczenia, który ma być porównane. |
 | Oświadczenie InputClaim | inputClaim2 | ciąg | Drugi typ oświadczenia, który ma być porównane. |
-| InputParameter | stringComparison | ciąg | porównania ciągów, jedna z wartości: Liczba porządkowa OrdinalIgnoreCase. |
+| InputParameter | stringComparison | ciąg | porównania ciągów, jedna z wartości: Ordinal, OrdinalIgnoreCase. |
 
 **AssertStringClaimsAreEqual** przekształcania oświadczeń jest zawsze wykonywana z [profilu technicznego weryfikacji](validation-technical-profile.md) który jest wywoływany [własnym potwierdzone profilu technicznego](self-asserted-technical-profile.md). **UserMessageIfClaimsTransformationStringsAreNotEqual** samodzielnie profilu technicznego kontroluje komunikat o błędzie, które są prezentowane użytkownikowi.
 
-![Wykonanie AssertStringClaimsAreEqual](./media/string-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual execution](./media/string-transformations/assert-execution.png)
 
 Można użyć oświadczeń to przekształcenie, aby upewnić się, dwa ClaimTypes mają taką samą wartość. W przeciwnym razie generowany jest komunikat o błędzie. Poniższy przykład sprawdza, czy **strongAuthenticationEmailAddress** oświadczenia jest równa **e-mail** typu oświadczenia. W przeciwnym razie generowany jest komunikat o błędzie. 
 
@@ -156,8 +156,8 @@ Ustal, czy jedno oświadczenie ciągu jest równy innemu. Wynik jest nowy logicz
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputClaim1 | ciąg | Najpierw oświadczenia typu, który ma być porównane. |
 | Oświadczenie InputClaim | inputClaim2 | ciąg | Po drugie oświadczenia typu, który ma być porównane. |
-| InputParameter | Operator | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
-| InputParameter | IgnoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
+| InputParameter | operator | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
+| InputParameter | ignoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
 | oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
 
 Użycie oświadczeń to przekształcenie, aby sprawdzić, czy roszczenie jest taki sam, do innego roszczenia. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **e-mail** oświadczeń jest równa **Verified.Email** oświadczenia.
@@ -196,9 +196,9 @@ Określa, czy wartość oświadczenia jest równa wartości parametru wejściowe
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputClaim1 | ciąg | Typ oświadczenia, który ma być porównane. |
-| InputParameter | Operator | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
-| InputParameter | Element compareTo | ciąg | porównania ciągów, jedna z wartości: Liczba porządkowa OrdinalIgnoreCase. |
-| InputParameter | IgnoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
+| InputParameter | operator | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
+| InputParameter | Element compareTo | ciąg | porównania ciągów, jedna z wartości: Ordinal, OrdinalIgnoreCase. |
+| InputParameter | ignoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
 | oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
 
 Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczenie jest równa określonej wartości. Na przykład, następujące oświadczeń kontroli przekształcenia, jeśli wartość **termsOfUseConsentVersion** oświadczeń jest równa `v1`.
@@ -259,7 +259,7 @@ Poniższy przykład generuje unikatowy identyfikator globalny. Oświadczeń to, 
 - Parametry wejściowe:
     - **randomGeneratorType**: Identyfikator GUID
 - Oświadczeń danych wyjściowych: 
-    - **oświadczenie outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
+    - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 Poniższy przykład generuje losową wartość całkowitą od 0 do 1000. Wartość jest formatowane OTP_ {losową wartość}.
 
@@ -280,7 +280,7 @@ Poniższy przykład generuje losową wartość całkowitą od 0 do 1000. Wartoś
 ### <a name="example"></a>Przykład
 
 - Parametry wejściowe:
-    - **randomGeneratorType**: LICZBA CAŁKOWITA
+    - **randomGeneratorType**: INTEGER
     - **maximumNumber**: 1000
     - **stringFormat**: OTP_{0}
     - **Base64**: false
@@ -317,7 +317,7 @@ Korzystanie z oświadczeń to przekształcenie do formatu dowolny ciąg znaków 
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **oświadczenie inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
+    - **inputClaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
 - Parametry wejściowe:
     - **stringFormat**: cpim_{0}@{RelyingPartyTenantId}
 - Oświadczeń danych wyjściowych:
@@ -354,12 +354,12 @@ Korzystanie z oświadczeń to przekształcenie do formatu dowolny ciąg, z dwoma
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **inputClaim1**: Jan
+    - **inputClaim1**: Joe
     - **inputClaim2**: Fernando
 - Parametry wejściowe:
     - **stringFormat**: {0} {1}
 - Oświadczeń danych wyjściowych:
-    - **oświadczenie outputClaim**: Fernando Jan
+    - **oświadczenie outputClaim**: Joe Fernando
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -440,11 +440,11 @@ Poniższy przykład pobiera nazwę domeny w jednej z kolekcji inputParameters. P
     - **inputParameterId**: test.com
 - Parametry wejściowe:
     - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com —**: 0213308f-17cb-4398-b97e-01da7bd4804e
-    - **Test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **microsoft.com**: 0213308f-17cb-4398-b97e-01da7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: false
 - Oświadczeń danych wyjściowych:
-    - **oświadczenie outputClaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **outputClaim**:  c7026f88-4299-4cdb-965d-3f166464b8a9
 
 ## <a name="nullclaim"></a>NullClaim
 
@@ -475,7 +475,7 @@ Pobiera część domeny adresu e-mail.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | EmailAddress | ciąg | Typ oświadczenia, który zawiera adres e-mail. |
+| Oświadczenie InputClaim | emailAddress | ciąg | Typ oświadczenia, który zawiera adres e-mail. |
 | oświadczenie outputClaim | domena | ciąg | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane — domeny. |
 
 Użyj oświadczeń to przekształcenie, które można przeanalizować nazwy domeny po symbolu użytkownika @. Może to być przydatne podczas usuwania identyfikowalne dane osobowe (PII) z danych inspekcji. Następujące przekształcania oświadczeń pokazuje, jak można przeanalizować nazwy domeny z **e-mail** oświadczenia.

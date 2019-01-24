@@ -4,7 +4,7 @@ description: Ta artice zapewnia szczegółowe omówienie zdarzeń o podwyższony
 services: active-directory
 keywords: Usługa Azure active directory identity protection, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4bca7ed2f10ce6b0231a260a9cf5b7468476343f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 7c352b92edede8bb986a00d5db846bda7b299df2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652153"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808089"
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory
 
@@ -44,6 +44,9 @@ Obecnie usługa Azure Active Directory wykrywa sześć typów zdarzeń o podwyż
 - [Logowania z nieznanych lokalizacji](#sign-in-from-unfamiliar-locations) 
 
 ![Zdarzenie o podwyższonym ryzyku](./media/concept-risk-events/91.png)
+
+> [!IMPORTANT]
+> Czasami może się okazać zdarzenie o podwyższonym ryzyku, bez odpowiadającego mu wpisu logowania w [raporcie logowań](concept-sign-ins.md). Jest to spowodowane Identity Protection ocenia ryzyko dla obu **interaktywne** i **nieinterakcyjnych** logowania, w raporcie logowań pokazuje tylko interakcyjne sesje logowania.
 
 Szczegółowe informacje, uzyskasz na zdarzenie wykryte zagrożenie jest powiązany ze swoją subskrypcją usługi Azure AD. 
 

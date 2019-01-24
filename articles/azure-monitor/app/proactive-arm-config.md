@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: b1f4d278079b81b4a224dc4712426d1f078de110
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020408"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853599"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie regułami wykrywania inteligentnego usługi Application Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -154,6 +154,17 @@ Poniżej znajduje się tabela nazwy reguł wykrywania inteligentnego, w jakiej w
 | Potencjalny przeciek pamięci wykryto (wersja zapoznawcza) | extension_memoryleakextension |
 | Potencjalny problem z zabezpieczeniami wykryto (wersja zapoznawcza) | extension_securityextensionspackage |
 | Problem z wykorzystania zasobów wykryto (wersja zapoznawcza) | extension_resourceutilizationextensionspackage |
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
+
+W tej sekcji dotyczy alertów klasycznych inteligentne wykrywanie i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych] (.. /platform/Alerts-Classic.overview.MD oraz nowe środowisko alertów odnoszą się do [artykuł z omówieniem alerty](../platform/alerts-overview.md). Obecnie wykrywanie inteligentne powiadamia tylko pomocy technicznej, które środowisko alertów klasycznych. Jedynym wyjątkiem jest [usługi Wykrywanie inteligentne alertów na platformie Azure w chmurze](./proactive-cloud-services.md). Do kontrolowania alert powiadomienia dla alertów wykrywania inteligentnego w chmurze Azure services użyj [grup akcji](../platform/action-groups.md).
+
+* Firma Microsoft zaleca użycie określonych adresatów powiadomień o alertach inteligentne wykrywanie klasycznego.
+
+* Alerty wykrywania inteligentnego **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników z rolami właściciela, współautora lub czytelnika w ramach subskrypcji. W efekcie _wszystkich_ użytkowników z dostępem do subskrypcji zasobu usługi Application Insights znajdują się w zakresie i będą otrzymywać powiadomienia. 
+
+> [!NOTE]
+> Jeśli obecnie używasz **zbiorcze/grupę** pole wyboru opcji i go wyłączyć, nie można przywrócić zmianę.
 
 ## <a name="next-steps"></a>Następne kroki
 

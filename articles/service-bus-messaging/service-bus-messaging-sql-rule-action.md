@@ -3,9 +3,9 @@ title: Dokumentacja składni elementu SQLRuleAction na platformie Azure | Dokume
 description: Szczegółowe informacje na temat elementu SQLRuleAction gramatyki.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: cd5bc1fb959872cfb98236feb5c32517ac7472ac
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: aschhab
+ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394186"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847734"
 ---
 # <a name="sqlruleaction-syntax"></a>Składnia elementu SQLRuleAction
 
@@ -123,7 +123,7 @@ Próba dostępu do właściwości systemu nie istnieje, występuje błąd, podcz
   
  `<pattern>` musi być wyrażeniem, które jest oceniane jako ciąg. Jest używana jako wzorzec dla LIKE operator.      Może zawierać następujące znaki symboli wieloznacznych:  
   
--   `%`: Dowolny ciąg zawierający zero lub więcej znaków.  
+-   `%`:  Dowolny ciąg zawierający zero lub więcej znaków.  
   
 -   `_`: Dowolny pojedynczy znak.  
   
@@ -223,4 +223,4 @@ Stałe typu String są ujęte w znaki pojedynczego cudzysłowu i zawierać żadn
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Klasa elementu SQLRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
-- [Klasa SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLFilter class](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)

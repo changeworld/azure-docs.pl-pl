@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 467af0f04708c9c6758531fb1cd71d79e9ddd6d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 44f61d7b90018b76b1903a04d219dcf0226f95e0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302973"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852324"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
@@ -39,7 +39,7 @@ Poszczególne kroki można wykonać niezależnie lub jako część polecenia poj
 
 Rejestracja modelu pozwala do przechowywania wersji modeli w chmurze platformy Azure, w obszarze roboczym. Rejestru model ułatwia organizowanie i śledzenie wytrenowane modele.
  
-Zarejestrowane modele są identyfikowane przez nazwę i wersję. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Możesz także podać dodatkowe metadane tagów podczas rejestracji, który może służyć podczas wyszukiwania dla modeli. Usługa Azure Machine Learning obsługuje modele przechowywane przy użyciu dowolnego modelu, który może zostać załadowany przy użyciu języka Python 3. 
+Zarejestrowane modele są identyfikowane przez nazwę i wersję. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Możesz także podać dodatkowe metadane tagów podczas rejestracji, który może służyć podczas wyszukiwania dla modeli. Usługa Azure Machine Learning obsługuje każdy model, który może zostać załadowany przy użyciu języka Python 3. 
 
 Nie można usunąć modeli, które są używane przez obraz.
 
@@ -63,13 +63,13 @@ Obraz, który może również obejmować składniki zestawu SDK do rejestrowania
 Usługa Azure Machine Learning obsługuje najbardziej popularnych struktur, ale ogólnie rzecz biorąc dowolnej platformy, które mogą być zainstalowane narzędzie pip może pracować.
 
 Podczas tworzenia obszaru roboczego, więc były inne kilka innych zasobów platformy Azure używane przez tego obszaru roboczego.
-Wszystkie obiekty, które są używane do tworzenia obrazu są przechowywane na koncie magazynu platformy Azure, w obszarze roboczym. Obraz, który jest tworzony i zapisywany w usłudze Azure Container Registry. Podczas tworzenia obrazu, które są także przechowywane przez rejestr obrazów i może być odpytywana można znaleźć obrazu, możesz podać dodatkowe metadane tagów.
+Wszystkie obiekty, które są używane do tworzenia obrazu są przechowywane na koncie magazynu platformy Azure, w obszarze roboczym. Możesz podać dodatkowe metadane tagów podczas tworzenia obrazu. Tagi metadanych są także przechowywane przez rejestr obrazów i mogą być wyszukiwane można znaleźć obrazu.
 
 Aby uzyskać więcej informacji, zobacz Konfigurowanie i rejestrowanie części obrazu [wdrażanie modeli](how-to-deploy-and-where.md#configureimage).
 
 ## <a name="step-3-deploy-image"></a>Krok 3: Wdrażanie obrazu
 
-W chmurze lub na urządzeniach brzegowych, mogą wdrażać obrazy zarejestrowane. Proces wdrażania tworzy wszystkie zasoby niezbędne do monitorowania, równoważenie obciążenia i automatycznego skalowania modelu. Dostęp do wdrożonych usług mogą być chronione przy użyciu uwierzytelniania opartego na certyfikatach, zapewniając zasoby zabezpieczeń podczas wdrażania. Możesz również uaktualnić istniejące wdrożenie, aby użyć nowszej obrazu.
+W chmurze lub na urządzeniach brzegowych, mogą wdrażać obrazy zarejestrowane. Proces wdrażania tworzy wszystkie zasoby niezbędne do monitorowania, równoważenie obciążenia i automatyczne skalowanie modelu. Dostęp do wdrożonych usług mogą być chronione przy użyciu uwierzytelniania opartego na certyfikatach, zapewniając zasoby zabezpieczeń podczas wdrażania. Możesz również uaktualnić istniejące wdrożenie, aby użyć nowszej obrazu.
 
 Wdrożeń usług internetowych są również można wyszukiwać. Na przykład możesz wyszukać wszystkie wdrożenia określonego modelu lub obrazu.
 

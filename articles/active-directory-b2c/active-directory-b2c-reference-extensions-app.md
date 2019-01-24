@@ -3,21 +3,21 @@ title: Aplikacja rozszerzeń w usłudze Azure Active Directory B2C | Dokumentacj
 description: Przywracanie b2c-extensions-app.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 9/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ad3d459b1211d2777f57169f3ee896d2ab5618bc
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: afb8e6fcc7c16594c1377e6b848e0f09a18298b1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442828"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54842635"
 ---
-# <a name="azure-ad-b2c-extensions-app"></a>Usługi Azure AD B2C: Aplikacja rozszerzeń
+# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Aplikacja rozszerzeń
 
 Po utworzeniu katalogu usługi Azure AD B2C aplikacja o nazwie `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` automatycznie jest tworzony w nowym katalogu. Tej aplikacji, nazywane **b2c-extensions-app**, jest widoczna w *rejestracje aplikacji*. Używane przez usługę Azure AD B2C do przechowywania informacji o użytkownikach i atrybuty niestandardowe. Usunięcie aplikacji usługi Azure AD B2C nie będzie działać prawidłowo, i będzie mieć wpływ na środowisko produkcyjne.
 
@@ -36,7 +36,7 @@ Aby sprawdzić, czy występuje b2c-extensions-app:
 
 Jeśli przypadkowo usunięty b2c-extensions-app, dostępna 30 dni, aby ją odzyskać. Można przywrócić aplikację za pomocą interfejsu API programu Graph:
 
-1. Przejdź do [ https://graphexplorer.azurewebsites.net/ ](https://graphexplorer.azurewebsites.net/).
+1. Przejdź do [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
 1. Zaloguj się do witryny jako administratora globalnego dla katalogu usługi Azure AD B2C, który chcesz przywrócić usunięte aplikacji dla. Ten administrator globalny musi mieć adres e-mail, który jest podobny do następującego: `username@{yourTenant}.onmicrosoft.com`.
 1. Wystawiać GET protokołu HTTP względem adresu URL `https://graph.windows.net/myorganization/deletedApplications` z wersją api-version = 1.6. Ta operacja spowoduje wyświetlenie listy wszystkich aplikacji, które zostały usunięte w ciągu ostatnich 30 dni.
 1. Znajdź aplikację na liście, których nazwa rozpoczyna się od "b2c-rozszerzenia app" i skopiuj jej `objectid` wartości właściwości.

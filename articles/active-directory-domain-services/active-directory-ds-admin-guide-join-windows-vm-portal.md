@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Dołącz maszynę Wirtualną z systemem Windows Server do domeny zarządzanej | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Dołącz maszynę Wirtualną z systemem Windows Server do domeny zarządzanej | Dokumentacja firmy Microsoft'
 description: Dołączanie maszyny wirtualnej systemu Windows Server do usługi Azure AD DS
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fc55fcef9977abcd8c40752d459088c1132cf2c1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957678"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850369"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 W tym artykule pokazano, jak wdrożyć maszynę wirtualną systemu Windows Server przy użyciu witryny Azure portal. Go następnie pokazano, jak dołączyć maszyny wirtualnej do domeny zarządzanej usługi Azure Active Directory Domain Services (Azure AD DS).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="step-1-create-a-windows-server-virtual-machine"></a>Krok 1: Utwórz maszynę wirtualną systemu Windows Server
+## <a name="step-1-create-a-windows-server-virtual-machine"></a>Krok 1: Tworzenie maszyny wirtualnej z systemem Windows Server
 Aby utworzyć maszynę wirtualną Windows, który jest dołączony do sieci wirtualnej, w której włączono usługi Azure AD DS, wykonaj następujące czynności:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
@@ -107,9 +107,9 @@ Można dołączyć maszyny wirtualnej systemu Windows Server do usługi Azure AD
 
 7. Należy określić poświadczenia w jednym z następujących sposobów:
 
-   * **Format nazwy UPN**: (zalecane) określ sufiks głównej nazwy użytkownika (UPN) dla konta użytkownika, zgodnie z konfiguracją w usłudze Azure AD. W tym przykładzie sufiks nazwy UPN użytkownika *bob* jest *bob@domainservicespreview.onmicrosoft.com*.
+   * **Format nazwy UPN**: (Zalecane) Określ sufiks głównej nazwy (UPN) użytkownika dla konta użytkownika, zgodnie z konfiguracją w usłudze Azure AD. W tym przykładzie sufiks nazwy UPN użytkownika *bob* jest *bob@domainservicespreview.onmicrosoft.com*.
 
-   * **Formacie SAMAccountName**: można określić nazwę konta w formacie SAMAccountName. W tym przykładzie użytkownik *bob* będzie konieczne wprowadzenie *CONTOSO100\bob*.
+   * **Formacie SAMAccountName**: Można określić nazwę konta w formacie SAMAccountName. W tym przykładzie użytkownik *bob* będzie konieczne wprowadzenie *CONTOSO100\bob*.
 
      > [!TIP]
      > **Zalecamy używanie w formacie UPN, aby określić poświadczenia.**

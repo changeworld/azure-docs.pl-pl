@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 1/23/2019
 ms.author: cwatson
-ms.openlocfilehash: 94d574d16b1b9951ab91a09023f9193723f850a7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4490db0c479abdda19957be98335edeefc08bb59
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583368"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808752"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie Administratorzy subskrypcji platformy Azure
 
@@ -67,14 +67,14 @@ Jako współadministratora można dodać tylko użytkownika z rolą [Właścicie
 
 ### <a name="adding-a-guest-user-as-a-co-administrator"></a>Dodawanie użytkownika-gościa jako współadministratora
 
-Użytkownicy-goście, które zostały przypisane do roli współadministratora napotkać pewne różnice w porównaniu do użytkowników z roli współadministratora. Rozważmy następujący scenariusz:
+[Użytkownicy-goście](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) przypisane administratora współpracującego roli napotkać pewne różnice w porównaniu do użytkowników z roli współadministratora. Rozważmy następujący scenariusz:
 
 - Użytkownik A, przy użyciu usługi Azure AD pracy lub nauki jest administrator usługi dla subskrypcji platformy Azure.
 - Użytkownik B ma konto Microsoft.
 - Użytkownik A przypisuje rolę administratora współpracującego użytkownikowi B.
 - Użytkownik B prawie wszystko, co zrobić, ale nie może rejestrować aplikacje lub wyszukać użytkowników w katalogu usługi Azure AD.
 
-Można oczekiwać, że użytkownik B może zarządzać wszystkim. Przyczyna różnica ta jest, że konto Microsoft jest dodawane do subskrypcji, co użytkownik-Gość zamiast użytkownika elementu członkowskiego. Użytkownicy-goście mają różne domyślne uprawnienia w usłudze Azure AD w porównaniu do użytkowników. Na przykład użytkowników może odczytywać innych użytkowników w usłudze Azure AD i nie użytkowników-gości. Użytkowników można zarejestrować nowych jednostek usługi w usłudze Azure AD i nie użytkowników-gości. Jeśli użytkownik-Gość musi mieć możliwość wykonywania tych zadań, możliwe rozwiązanie jest przypisanie konkretne role administratora usługi Azure AD użytkownik Gość musi. Na przykład w poprzednim scenariuszu, należy przypisać [odczytywanie katalogów](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) roli do odczytywania innych użytkowników i przypisać [Deweloper aplikacji](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) roli, aby można było utworzyć jednostki usługi. Aby uzyskać więcej informacji dotyczących elementu członkowskiego i użytkowników-gości i ich uprawnienia, zobacz [jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+Można oczekiwać, że użytkownik B może zarządzać wszystkim. Przyczyna różnica ta jest, że konto Microsoft jest dodawane do subskrypcji, co użytkownik-Gość zamiast użytkownika elementu członkowskiego. Użytkownicy-goście mają różne domyślne uprawnienia w usłudze Azure AD w porównaniu do użytkowników. Na przykład użytkowników może odczytywać innych użytkowników w usłudze Azure AD i nie użytkowników-gości. Użytkowników można zarejestrować nowych jednostek usługi w usłudze Azure AD i nie użytkowników-gości. Jeśli użytkownik-Gość musi mieć możliwość wykonywania tych zadań, możliwe rozwiązanie jest przypisanie konkretne role administratora usługi Azure AD użytkownik Gość musi. Na przykład w poprzednim scenariuszu, należy przypisać [odczytywanie katalogów](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) roli do odczytywania innych użytkowników i przypisać [Deweloper aplikacji](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) roli, aby można było utworzyć jednostki usługi. Aby uzyskać więcej informacji dotyczących elementu członkowskiego i użytkowników-gości i ich uprawnienia, zobacz [jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). 
 
 Należy pamiętać, że [wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md) różnią się od [role administratora usługi Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md). Wbudowane role nie udzielić dostępu do usługi Azure AD. Aby uzyskać więcej informacji, zobacz [zrozumieć różne role](../role-based-access-control/rbac-and-directory-admin-roles.md).
 

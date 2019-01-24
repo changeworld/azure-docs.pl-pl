@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: d871cecda8e7957e3d0d3c37078b8a1fa2ab5214
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 117b65265c853194e93a97fe5e2b2dcc6e9f5bc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451259"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807392"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dotyczących metryk
 
-Alerty metryk w usłudze Azure Monitor zapewnia sposób otrzymywania powiadomień, gdy jeden metryki przekroczą próg. Alerty metryki pracy na szeroką gamę metryk wielowymiarowych platformy, metryki niestandardowe, standard usługi Application Insights i metryki niestandardowe. W tym artykule opisujemy sposób tworzyć, wyświetlać i zarządzać reguł alertów dotyczących metryk za pośrednictwem witryny Azure portal i interfejs wiersza polecenia platformy Azure. Można również utworzyć reguł alertów dotyczących metryk za pomocą szablonów usługi Azure Resource Manager, które jest opisane w [oddzielny artykuł](../../azure-monitor/platform/alerts-enable-template.md).
+Alerty metryk w usłudze Azure Monitor zapewnia sposób otrzymywania powiadomień, gdy jeden metryki przekroczą próg. Alerty metryki pracy na szeroką gamę metryk wielowymiarowych platformy, metryki niestandardowe, standard usługi Application Insights i metryki niestandardowe. W tym artykule opisujemy sposób tworzyć, wyświetlać i zarządzać reguł alertów dotyczących metryk za pośrednictwem witryny Azure portal i interfejs wiersza polecenia platformy Azure. Można również utworzyć reguł alertów dotyczących metryk za pomocą szablonów usługi Azure Resource Manager, które jest opisane w [oddzielny artykuł](alerts-metric-create-templates.md).
 
 Dowiedz się więcej o jak metryki alerty działają z [Przegląd alertów metryk](alerts-metric-overview.md).
 

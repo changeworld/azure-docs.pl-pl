@@ -5,15 +5,15 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 0e204e945960ddaf452db1907568e4102631c28f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2b6d982f514f347dc2a59f9ca8f3c33b8c24849b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467591"
+ms.locfileid: "54827452"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
@@ -112,7 +112,7 @@ Możesz zostaną pobrane do okienka tworzenia reguły alertu z bazowego wymiaram
 
 ![Utwórz regułę alertu](./media/metrics-charts/016.png)
 
-Wyewidencjonuj to [artykułu](alerts-metric.md) Aby dowiedzieć się więcej o konfigurowaniu alertów dotyczących metryk.
+Zapoznaj się z tą [artykułu](alerts-metric.md) Aby dowiedzieć się więcej o konfigurowaniu alertów dotyczących metryk.
 
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Granice blokady osi y wykresu
 
@@ -138,6 +138,16 @@ Aby przypiąć wykres skonfigurowanego do pulpitu nawigacyjnego:
 Po skonfigurowaniu wykresu, wybierz polecenie **akcje wykresu** menu w prawym rogu wykresu top, a następnie kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
 
 ![metryki obrazu](./media/metrics-charts/00013.png)
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+*Nie widzę żadnych danych na wykresie.*
+
+* Filtry mają zastosowanie do wszystkich schematów w okienku. Upewnij się, że podczas, gdy są najbardziej istotne na jeden wykres, nie został ustawiony filtr, który nie obejmuje wszystkich danych na innym.
+
+* Jeśli chcesz ustawić różne filtry na różnych wykresów, należy je utworzyć w różnych bloków, zapisać je jako osobne Ulubione. Jeśli chcesz, możesz przypiąć je do pulpitu nawigacyjnego tak, aby można je wyświetlić obok siebie.
+
+* Jeśli wykres pozwala na segmentację według właściwości, która nie jest zdefiniowana w metryki, będą nic na wykresie. Spróbuj wyczyścić segmentacji (dzielenie), lub wybierz inną właściwość.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

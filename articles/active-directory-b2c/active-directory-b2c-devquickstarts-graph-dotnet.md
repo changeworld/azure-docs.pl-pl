@@ -3,21 +3,21 @@ title: Użyj interfejsu API programu Graph w usłudze Azure Active Directory B2C
 description: Jak wywołać interfejs API programu Graph dla dzierżawy B2C przy użyciu tożsamości aplikacji do automatyzacji procesu.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 28a865ac5a24905a14b8936e4fbb1de576f2ac76
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277552"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846544"
 ---
-# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Usługa Azure AD B2C: Użyj usługi Azure AD interfejsu API programu Graph
+# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Korzystanie z interfejsu API Graph usługi Azure AD
 
 >[!NOTE]
 > Należy użyć [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) Zarządzanie użytkownikami w katalogu usługi Azure AD B2C. To różni się od interfejsu API programu Microsoft Graph. Więcej informacji można znaleźć [tutaj](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).

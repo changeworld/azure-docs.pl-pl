@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 31bd3d54b085922de0ec822731eae79fe9a9943b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e2a856dbc3bdf72ad03601618a9d48bb54665f7b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262101"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812067"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Używanie wielu plików wejściowych i właściwości składnika z użyciem kodera w warstwie Premium
 ## <a name="overview"></a>Przegląd
@@ -351,7 +351,7 @@ Jeśli chcesz zmodyfikować położenie logo film wideo (na przykład warto umie
 *Pozycja nakładki*
 
 Kodowanie strumienia wideo H.264, należy dodać składniki kodera AVC koder wideo i AAC do powierzchni projektanta. Połącz z numerów PIN.
-Ustaw kodera adaptacyjnych kontrolek aplikacji i wybierz ustawienie konwersji formatu Audio/wstępne: (L, R) w wersji 2.0.
+Konfigurowanie kodera adaptacyjnych kontrolek aplikacji, a następnie wybierz ustawienie konwersji formatu Audio/wstępne: W WERSJI 2.0 (L, R).
 
 ![Kodery audio i wideo](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture15_encoders.png)
 
@@ -430,7 +430,7 @@ Możesz pobrać przykładowy przepływ pracy z [GitHub](https://github.com/Azure
 
 ## <a name="example-2--multiple-audio-language-encoding"></a>Przykład 2: Wiele audio kodowanie
 
-Przykład wielu języków audio workfkow kodowania jest dostępna w [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
+Przykład wielu języków audio, przepływ pracy kodowania jest dostępna w [GitHub](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows/MultilanguageAudioEncoding).
 
 Ten folder zawiera przykładowy przepływ pracy, który może służyć do kodowania pliku MXF do zasobu pliki multi MP4 z wieloma ścieżki audio.
 

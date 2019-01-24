@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: d2912c687d4968a239d5af747df4115ffd71bbeb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2df899e6cb0078cdf949c3f8257719b00554e85b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345764"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815724"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie ThousandEyes dla automatycznej aprowizacji użytkowników
 
@@ -74,7 +74,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
     ![Inicjowanie obsługi administracyjnej ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes1.png)
 
-5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **klucz tajny tokenu** generowane przez konto usługi ThousandEyes (tokenu można znaleźć w ramach konta usługi ThousandEyes: **zabezpieczenia & Uwierzytelnianie**). 
+5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **tokenu elementu nośnego OAuth** generowane przez konto usługi ThousandEyes (można znaleźć i lub Wygeneruj token na koncie ThousandEyes  **Profil** sekcji).
 
     ![Inicjowanie obsługi administracyjnej ThousandEyes](./media/thousandeyes-provisioning-tutorial/ThousandEyes2.png)
 
@@ -97,7 +97,7 @@ Ta operacja uruchamia wstępnej synchronizacji użytkowników i/lub grupy przypi
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

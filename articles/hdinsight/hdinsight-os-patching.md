@@ -8,15 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 30ad0c5ee069df4cd58cb76b779f611d0272d571
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0f8d6290e779872d73b0cf7a9d0d820d2ea5e007
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741593"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848159"
 ---
 # <a name="os-patching-for-hdinsight"></a>Stosowanie poprawek dla HDInsight systemu operacyjnego 
-Jako zarządzana usługa Apache Hadoop HDInsight zajmuje się stosowanie poprawek systemu operacyjnego podstawowych maszyn wirtualnych, które korzystają z klastrów HDInsight. Począwszy od 1 sierpnia 2016 r. dokonaliśmy zmiany zasad stosowania poprawek systemu operacyjnego gościa w przypadku klastrów HDInsight opartych na systemie Linux (w wersji 3.4 lub nowszą). Celem nowych zasad jest znacznie zmniejszyć liczbę ponownego uruchomienia ze względu na stosowanie poprawek. Nowe zasady będą w dalszym poprawki maszyn wirtualnych (VM) w klastrach systemu Linux w każdy poniedziałek lub czwartek, począwszy od 12: 00 UTC w sposób rozłożone między węzłami w dowolnym danym klastrze. Jednak wszelkie danej maszyny Wirtualnej będzie tylko ponowny rozruch co najwyżej raz na 30 dni z powodu stosowania poprawek systemu operacyjnego gościa. Ponadto to pierwszy ponowny rozruch dla nowo utworzonego klastra nie nastąpi szybciej niż 30 dni od daty utworzenia klastra. Poprawki będą obowiązywać po wykonywany jest ponowny rozruch maszyn wirtualnych.
+
+> [!IMPORTANT]
+> Obrazy Ubuntu stają się dostępne dla nowego Tworzenie klastra HDInsight w ciągu 3 miesięcy opublikować. Począwszy od stycznia 2019 r, są uruchomione klastrów **nie** poprawiono automatycznie. Klienci, należy użyć akcji skryptu lub innych mechanizmów zastosowania poprawki względem działającego klastra.
 
 ## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Jak skonfigurować harmonogram dla klastrów HDInsight opartych na systemie Linux stosowania poprawek systemu operacyjnego
 Maszyny wirtualne w klastrze usługi HDInsight, należy wykonać ponowny rozruch od czasu do czasu, dzięki czemu można zainstalować poprawki zabezpieczeń ważne. Począwszy od 1 sierpnia 2016 r. nowe klastry HDInsight opartych na systemie Linux (w wersji 3.4 lub nowszego) wykonywany jest ponowny rozruch przy użyciu następującego harmonogramu:

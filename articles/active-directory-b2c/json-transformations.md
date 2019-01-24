@@ -3,19 +3,19 @@ title: JSON przykłady przekształcania oświadczeń tożsamości środowisko Fr
 description: JSON oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d712286cb4ea5e67474ec11d56d99eaf2cabec3e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e7096773f2aaa39abd965b4697f45a3b3f80f136
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433076"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850845"
 ---
 # <a name="json-claims-transformations"></a>JSON oświadczeń przekształcenia
 
@@ -52,7 +52,7 @@ W poniższym przykładzie wyodrębnione przekształcania oświadczeń `emailAddr
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Ktoś"}
+    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Someone"}
 - Parametr wejściowy:
     - **claimToExtract**: emailAddress
 - Oświadczeń danych wyjściowych: 
@@ -121,7 +121,7 @@ Pobiera określony element liczbowych (long) z danymi w formacie JSON.
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputJson | ciąg | ClaimTypes, używane przez Przekształcanie oświadczeń można pobrać oświadczenia. |
 | InputParameter | claimToExtract | ciąg | Nazwa elementu JSON do wyodrębnienia. |
-| oświadczenie outputClaim | extractedClaim | dł. | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation, wartość elementu określona w _claimToExtract_ parametrów wejściowych. |
+| oświadczenie outputClaim | extractedClaim | długi | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation, wartość elementu określona w _claimToExtract_ parametrów wejściowych. |
 
 W poniższym przykładzie wyodrębnia przekształcania oświadczeń `id` element z danych JSON.
 
@@ -150,7 +150,7 @@ W poniższym przykładzie wyodrębnia przekształcania oświadczeń `id` element
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Inna", "id": 6353399}
+    - **inputJson**: {"emailAddress": "someone@example.com", "displayName": "Ktoś", "id": 6353399}
 - Parametry wejściowe
     - **claimToExtract**: identyfikator
 - Oświadczeń danych wyjściowych: 
@@ -181,7 +181,7 @@ W poniższym przykładzie przekształcania oświadczeń wybiera pierwszy element
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **inputJsonClaim**: ["someone@example.com", "Ktoś", 6353399]
+    - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
 - Oświadczeń danych wyjściowych: 
     - **extractedClaim**: someone@example.com
 

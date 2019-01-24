@@ -3,19 +3,19 @@ title: Przykłady interfejsu API z raportowania użycia i definicji w usłudze A
 description: Przewodnik i przykłady dotyczące konfigurowania raportów, w dzierżawie usługi Azure AD B2C, użytkowników, uwierzytelnienia i uwierzytelnienia Multi-Factor Authentication.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: cce6d71864d1c3e957937e374e90ee95a99e9f3c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445538"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844361"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Uzyskiwanie dostępu do raportów użycia w usłudze Azure AD B2C za pośrednictwem interfejsu API raportowania
 
@@ -97,16 +97,16 @@ if ($oauth.access_token -ne $null) {
 
 
 ## <a name="usage-report-definitions"></a>Definicje raportów użycia
-* **tenantUserCount**: liczba użytkowników w dzierżawie, typ dostawcy tożsamości, dziennie w ciągu ostatnich 30 dni. (Opcjonalnie `TimeStamp` filtru zawiera liczby użytkowników z określonej daty do daty bieżącej). Raport zawiera:
-  * **TotalUserCount**: liczba wszystkich obiektów użytkownika.
-  * **OtherUserCount**: liczba użytkowników usługi Azure Active Directory (nie użytkowników usługi Azure AD B2C).
-  * **LocalUserCount**: liczba kont użytkowników usługi Azure AD B2C utworzone przy użyciu poświadczeń lokalnych do dzierżawy usługi Azure AD B2C.
+* **tenantUserCount**: Liczba użytkowników w dzierżawie, typ dostawcy tożsamości, dziennie w ciągu ostatnich 30 dni. (Opcjonalnie `TimeStamp` filtru zawiera liczby użytkowników z określonej daty do daty bieżącej). Raport zawiera:
+  * **TotalUserCount**: Liczba wszystkich obiektów użytkownika.
+  * **OtherUserCount**: Liczba użytkowników usługi Azure Active Directory (nie użytkowników usługi Azure AD B2C).
+  * **LocalUserCount**: Liczba kont użytkowników usługi Azure AD B2C utworzone przy użyciu poświadczeń lokalnych do dzierżawy usługi Azure AD B2C.
 
-* **AlternateIdUserCount**: liczba użytkowników usługi Azure AD B2C zarejestrowanych za pomocą dostawców tożsamości zewnętrznych (na przykład, Facebook, konta Microsoft lub innej dzierżawy usługi Azure Active Directory, zwaną także `OrgId`).
+* **AlternateIdUserCount**: Liczba użytkowników usługi Azure AD B2C zarejestrowanych za pomocą dostawców tożsamości zewnętrznych (na przykład, Facebook, konta Microsoft lub innej dzierżawy usługi Azure Active Directory, zwaną także `OrgId`).
 
-* **b2cAuthenticationCountSummary**: Podsumowanie dziennej liczby płatnych uwierzytelnień ostatnich 30 dni, dzień, a typ przepływu uwierzytelniania.
+* **b2cAuthenticationCountSummary**: Podsumowanie dzienne liczbę płatnych uwierzytelnień ostatnich 30 dni, dzień, a typ przepływu uwierzytelniania.
 
-* **b2cAuthenticationCount**: liczbę uwierzytelnień w przedziale czasu. Wartość domyślna to 30 ostatnich dni.  (Opcjonalne: początek i koniec `TimeStamp` parametry definiują określonym przedziale czasu.) Dane wyjściowe obejmują `StartTimeStamp` (najwcześniejsza data działania dla tej dzierżawy) i `EndTimeStamp` (najnowsza aktualizacja).
+* **b2cAuthenticationCount**: Liczba uwierzytelnień w przedziale czasu. Wartość domyślna to 30 ostatnich dni.  (Opcjonalne: Początek i koniec `TimeStamp` parametry definiują określonym przedziale czasu.) Dane wyjściowe obejmują `StartTimeStamp` (najwcześniejsza data działania dla tej dzierżawy) i `EndTimeStamp` (najnowsza aktualizacja).
 
 * **b2cMfaRequestCountSummary**: Podsumowanie dziennej liczby uwierzytelnienia Multi-Factor Authentication, według dnia i typów (SMS lub głosowych).
 

@@ -3,19 +3,19 @@ title: Około oświadczenia rozpoznawania nazw w zasadach niestandardowych usłu
 description: Dowiedz się więcej o rozwiązujący oświadczeń używanych w przypadku zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/08/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dccb597cda1f5aba30d18b0f71371caa6ceee9b4
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6b7f3dc79e3b4c06b2b974e0cdca0bf20221c3ad
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852388"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845019"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Temat rozwiązujący oświadczenia w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -47,16 +47,16 @@ W poniższych sekcjach wymieniono dostępne oświadczenia rozpoznawania nazw.
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {Kultury: NazwaJęzyka} | Dwuliterowa kod ISO dla języka. | pl |
+| {Culture:LanguageName} | Dwuliterowa kod ISO dla języka. | pl |
 | {Kultury: LCID}   | Identyfikator LCID kod języka. | 21 |
 | {Kultury: RegionName} | Dwuliterowa kod ISO dla regionu. | USA |
-| {Kultury: RFC5646} | Kod języka RFC5646. | pl-PL |
+| {Culture:RFC5646} | Kod języka RFC5646. | en-US |
 
 ### <a name="policy"></a>Zasady
 
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
-| {Zasad: PolicyId} | Nazwa jednostki uzależnionej zasad. | B2C_1A_signup_signin |
+| {Policy:PolicyId} | Nazwa jednostki uzależnionej zasad. | B2C_1A_signup_signin |
 | {Zasad: RelyingPartyTenantId} | Identyfikator dzierżawy jednostki uzależnionej zasad firmy. | Twój tenant.onmicrosoft.com |
 | {Zasad: TenantObjectId} | Identyfikator obiektu dzierżawy jednostki uzależnionej zasad firmy. | 00000000-0000-0000-0000-000000000000 |
 | {Zasad: TrustFrameworkTenantId} | Identyfikator dzierżawy w ramach relacji zaufania. | Twój tenant.onmicrosoft.com |
@@ -67,7 +67,7 @@ W poniższych sekcjach wymieniono dostępne oświadczenia rozpoznawania nazw.
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` Parametr ciągu zapytania. | ND |
 | {OIDC:ClientId} |`client_id` Parametr ciągu zapytania. | 00000000-0000-0000-0000-000000000000 |
-| {OIDC:DomainHint} |`domain_hint` Parametr ciągu zapytania. | Facebook.com |
+| {OIDC:DomainHint} |`domain_hint` Parametr ciągu zapytania. | facebook.com |
 | {OIDC:LoginHint} |  `login_hint` Parametr ciągu zapytania. | someone@contoso.com |
 | {OIDC:MaxAge} | `max_age`. | ND |
 | {OIDC:Nonce} |`Nonce` Parametr ciągu zapytania. | defaultNonce |
@@ -80,8 +80,8 @@ W poniższych sekcjach wymieniono dostępne oświadczenia rozpoznawania nazw.
 | Claim | Opis | Przykład |
 | ----- | ----------- | --------|
 | {Kontekstu: BuildNumber} | Wersja platformy środowiska tożsamości (numer kompilacji).  | 1.0.507.0 |
-| {Kontekstu: CorrelationId} | Identyfikator korelacji.  | 00000000-0000-0000-0000-000000000000 |
-| {Kontekstu: DateTimeInUtc} |Data Godzina w formacie UTC.  | 10 10 2018 12:00:00 PM |
+| {Context:CorrelationId} | Identyfikator korelacji.  | 00000000-0000-0000-0000-000000000000 |
+| {Context:DateTimeInUtc} |Data Godzina w formacie UTC.  | 10 10 2018 12:00:00 PM |
 | {Kontekstu: DeploymentMode} |Tryb wdrożenia zasad.  | Produkcja |
 | {Kontekstu: IPAddress} | Adres IP użytkownika. | 11.111.111.11 |
 

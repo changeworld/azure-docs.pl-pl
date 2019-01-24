@@ -3,19 +3,19 @@ title: Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory 
 description: Jak rozpocząć pracę z niestandardowych zasad usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4ff8b607f9fded02a519b5f2a3abdfeedf93d88
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 235b72393801717bb5d7258d6492dc4c943fe232
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181786"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852307"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Jeśli nie masz jeszcze, musisz [tworzenie dzierżawy usługi Azure AD B2C](tuto
 
 ## <a name="add-signing-and-encryption-keys"></a>Dodaj klucze podpisywania i szyfrowania
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy. 
 
     ![Przełączanie się do swojej dzierżawy usługi Azure AD B2C](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
@@ -68,7 +68,7 @@ Jeśli masz już [klucz tajny aplikacji Facebook](active-directory-b2c-setup-fb-
 
 ## <a name="register-applications"></a>Rejestrowanie aplikacji
 
-Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiają rejestrowanie i logowanie użytkowników: IdentityExperienceFramework (aplikacji sieci web) i ProxyIdentityExperienceFramework (aplikacja natywna) przy użyciu delegowanych uprawnień z aplikacji IdentityExperienceFramework. Konta lokalne istnieje tylko w Twojej dzierżawie. Użytkownicy Zarejestruj się przy użyciu kombinacji adresu lub nieprawidłowego hasła unikatowego adresu e-mail, aby dostęp do aplikacji zarejestrowana dzierżawa.
+Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiają rejestrowanie i logowanie użytkowników: IdentityExperienceFramework (aplikacji sieci web), a ProxyIdentityExperienceFramework (aplikacja natywna) przy użyciu delegowanych uprawnień z aplikacji IdentityExperienceFramework. Konta lokalne istnieje tylko w Twojej dzierżawie. Użytkownicy Zarejestruj się przy użyciu kombinacji adresu lub nieprawidłowego hasła unikatowego adresu e-mail, aby dostęp do aplikacji zarejestrowana dzierżawa.
 
 ### <a name="register-the-identityexperienceframework-application"></a>Rejestrowanie aplikacji IdentityExperienceFramework
 

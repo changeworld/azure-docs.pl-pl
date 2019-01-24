@@ -4,7 +4,7 @@ description: Gdy firma umożliwia skonfigurowanie usługi Azure Multi-Factor Aut
 services: active-directory
 keywords: jak używać platformy azure, active directory w chmurze, samouczek dotyczący usługi active directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 9f602b08e94071a335d0c88377912ea9b53f37b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a5cb5a879687bdbea043d582526f4dd357a2a620
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244444"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809925"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej
 Weryfikacja dwuetapowa była kroku dodatkowe zabezpieczenia, która pomaga chronić Twoje konto, co utrudnia innym osobom włamanie się. Jeśli czytasz ten artykuł, prawdopodobnie masz wiadomość e-mail od firmowego lub szkolnego administratora o usłudze uwierzytelnianie wieloskładnikowe. Lub może być zalogowania się i stało się komunikat z prośbą do skonfigurowania dodatkowej weryfikacji zabezpieczeń. Jeśli tak jest rzeczywiście, **nie możesz zalogować przed ukończeniem procesu automatycznej rejestracji**.

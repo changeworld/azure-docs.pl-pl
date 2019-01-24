@@ -1,10 +1,10 @@
 ---
-title: 'Usługi Azure AD Domain Services: Wytyczne dotyczące sieci | Dokumentacja firmy Microsoft'
+title: 'Azure AD Domain Services: Wytyczne dotyczące sieci | Dokumentacja firmy Microsoft'
 description: Informacje dotyczące sieci usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: c13a4606219ebdb1d23a83a0bd3bdf14f1a3882e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c37dfecf7204f3f8d050c0f36d4c32ea02477f75
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970913"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851874"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Informacje dotyczące sieci usługi Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak wybrać siecią wirtualną platformy Azure
 Poniższe wskazówki ułatwiają wybierz sieć wirtualną do korzystania z usług domenowych Azure AD.
 
 ### <a name="type-of-azure-virtual-network"></a>Typ sieci wirtualnej platformy Azure
-* **Sieci wirtualne usługi Resource Manager**: w sieciach wirtualnych utworzonych za pomocą usługi Azure Resource Manager można włączyć usługi domenowe Azure AD.
+* **Sieci wirtualne usługi Resource Manager**: Azure AD Domain Services, można włączyć w sieciach wirtualnych utworzonych za pomocą usługi Azure Resource Manager.
 * Nie można włączyć usługi domenowe Azure AD w klasycznej sieci wirtualnej platformy Azure.
 * Łączenie z innymi sieciami wirtualnymi, siecią wirtualną, w której włączono usługi domenowe Azure AD. Aby uzyskać więcej informacji, zobacz [połączenia sieciowego](active-directory-ds-networking.md#network-connectivity) sekcji.
 
@@ -37,8 +37,8 @@ Poniższe wskazówki ułatwiają wybierz sieć wirtualną do korzystania z usłu
 * Ze strony zawierającej [usługi platformy Azure uporządkowane według regionów](https://azure.microsoft.com/regions/#services/) dowiesz się, w których regionach platformy Azure jest dostępna usługa Azure AD Domain Services.
 
 ### <a name="requirements-for-the-virtual-network"></a>Wymagania dotyczące sieci wirtualnej
-* **Bliskość obciążeń platformy Azure**: Wybierz sieć wirtualną, która obecnie hostuje/będzie hostować maszyny wirtualne, które muszą mieć dostęp do usług domenowych Azure AD. Obciążenia w przypadku wdrożenia w innej sieci wirtualnej niż domeny zarządzanej, możesz też połączyć sieci wirtualne.
-* **Serwery DNS niestandardowe/bring your own**: Upewnij się, że żadnych niestandardowych serwerów DNS, które są skonfigurowane dla sieci wirtualnej. Przykład niestandardowego serwera DNS jest wystąpieniem DNS systemu Windows Server uruchomiony na maszynie Wirtualnej serwera Windows wdrożonej w sieci wirtualnej. Azure AD Domain Services nie obsługują dowolne niestandardowe serwery DNS, które są wdrażane w ramach sieci wirtualnej.
+* **Bliskość obciążeń platformy Azure**: Wybierz sieć wirtualną, która obecnie hostuje/będzie hostować maszyny wirtualne wymagające dostępu do Usług domenowych Azure AD. Obciążenia w przypadku wdrożenia w innej sieci wirtualnej niż domeny zarządzanej, możesz też połączyć sieci wirtualne.
+* **Serwery DNS niestandardowe/bring your own**: Upewnij się, że istnieją żadnych niestandardowych serwerów DNS, które są skonfigurowane dla sieci wirtualnej. Przykład niestandardowego serwera DNS jest wystąpieniem DNS systemu Windows Server uruchomiony na maszynie Wirtualnej serwera Windows wdrożonej w sieci wirtualnej. Azure AD Domain Services nie obsługują dowolne niestandardowe serwery DNS, które są wdrażane w ramach sieci wirtualnej.
 * **Istniejące domeny, z tą samą nazwą domeny**: Upewnij się, że nie masz istniejącej domeny z tą samą nazwą domeny, dostępne w tej sieci wirtualnej. Na przykład załóżmy, że masz domenę o nazwie „contoso.com” już dostępną w wybranej sieci wirtualnej. Później spróbuj włączyć domeny zarządzanej usług domenowych Azure AD, z tą samą nazwą domeny (czyli "contoso.com") w tej sieci wirtualnej. Wystąpi błąd podczas próby włączenia usług domenowych Azure AD. Ten błąd jest spowodowany konfliktów nazw dla nazwy domeny w tej sieci wirtualnej. W takiej sytuacji musisz użyć innej nazwy podczas konfigurowania domeny zarządzanej Usług domenowych Azure AD. Możesz również anulować aprowizację istniejącej domeny i kontynuować włączanie Usług domenowych Azure AD.
 
 > [!WARNING]
@@ -79,13 +79,13 @@ Następujące porty są wymagane dla usług domenowych Azure AD do usługi i obs
 **Portu 5986 (komunikacja zdalna programu PowerShell)**
 * Służy do wykonywania zadań administracyjnych w domenie zarządzanej przy użyciu komunikacji zdalnej programu PowerShell.
 * Jest to konieczne, aby zezwolić na dostęp za pośrednictwem tego portu w sieciowej grupie zabezpieczeń. Bez dostępu do tego portu Twoja domena zarządzana nie może być zaktualizowane, skonfigurowany, kopii zapasowej lub monitorowane.
-* Dla nowej domeny lub domen z siecią wirtualną usługi Azure Resource Manager, możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu źródłowych adresów IP: 52.180.179.108 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212 104.45.138.161, 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141 , 52.138.70.93 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
-* Dla domen z klasyczną siecią wirtualną, możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu źródłowych adresów IP: 52.180.183.8 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209
+* Dla nowej domeny lub domen z siecią wirtualną usługi Azure Resource Manager możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu źródłowych adresów IP: 52.180.179.108, 52.180.177.87, 13.75.105.168, 52.175.18.134, 52.138.68.41, 52.138.65.157, 104.41.159.212, 104.45.138.161, 52.169.125.119, 52.169.218.0, 52.187.19.1, 52.187.120.237, 13.78.172.246, 52.161.110.169, 52.174.189.149, 40.68.160.142, 40.83.144.56, 13.64.151.161, 52.180.183.67, 52.180.181.39, 52.175.28.111, 52.175.16.141, 52.138.70.93, 52.138.64.115, 40.80.146.22, 40.121.211.60, 52.138.143.173, 52.169.87.10, 13.76.171.84, 52.187.169.156, 13.78.174.255, 13.78.191.178, 40.68.163.143, 23.100.14.28, 13.64.188.43, 23.99.93.197
+* Dla domen z klasyczną siecią wirtualną możesz ograniczyć dostęp dla ruchu przychodzącego do tego portu źródłowych adresów IP: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209
 * Kontrolery domeny dla domeny zarządzanej nie Nasłuchuj zwykle na tym porcie. Usługa otwiera ten port na kontrolerach domeny zarządzanej, tylko wtedy, gdy operacja zarządzaniem lub konserwacją, należy wykonać dla domeny zarządzanej. Jak najszybciej po zakończeniu tej operacji usługa zamknięcie tego portu, na kontrolerach domeny zarządzanej.
 
 **Port 3389 (pulpitu zdalnego)**
 * Służy do połączenia pulpitu zdalnego z kontrolerami domeny dla domeny zarządzanej.
-* Możesz ograniczyć dostęp dla ruchu przychodzącego do źródłowych adresów IP: 207.68.190.32/27 13.106.78.32/27, 13.106.174.32/27, 13.106.4.96/27
+* Możesz ograniczyć dostęp dla ruchu przychodzącego, aby źródłowe adresy IP: 207.68.190.32/27, 13.106.78.32/27, 13.106.174.32/27, 13.106.4.96/27
 * Również portu pozostaje w dużej mierze wyłączony na Twojej domeny zarządzanej. Mechanizm ten nie jest używany w sposób ciągły, ponieważ zarządzanie i monitorowanie zadania są wykonywane przy użyciu komunikacji zdalnej programu PowerShell. Ten port jest używany tylko w rzadkich, firma Microsoft musi łączyć się zdalnie z domeny zarządzanej dla zaawansowanego rozwiązywania problemów. Numer portu jest zamknięty, zaraz po zakończeniu operacji rozwiązywania problemów.
 
 **Portu 636 (protokołu Secure LDAP)**
@@ -124,13 +124,13 @@ Domeny zarządzanej usług domenowych Azure AD można włączyć tylko w ramach 
 ![Menedżer zasobów do łączności z klasyczną siecią wirtualną](./media/active-directory-domain-services-design-guide/classic-arm-vnet-connectivity.png)
 
 ### <a name="network-connection-options"></a>Opcje połączeń sieciowych
-* **Połączenia sieć wirtualna-sieć wirtualna, używając wirtualnej sieci równorzędnej**: komunikacji równorzędnej sieci wirtualnej to mechanizm, który łączy dwie sieci wirtualne w tym samym regionie za pośrednictwem sieci szkieletowej platformy Azure. Po połączeniu za pomocą komunikacji równorzędnej dwie sieci wirtualne są traktowane jako jedna do wszystkich celów związanych z łącznością. Są one nadal zarządzane jako oddzielne zasoby, ale maszyny wirtualne w tych sieciach wirtualnych mogą komunikować się bezpośrednio przy użyciu prywatnych adresów IP.
+* **Połączenia sieć wirtualna-sieć wirtualna, używając wirtualnej sieci równorzędnej**: Komunikacja równorzędna sieci wirtualnej to mechanizm, który łączy dwie sieci wirtualne w tym samym regionie za pośrednictwem sieci szkieletowej platformy Azure. Po połączeniu za pomocą komunikacji równorzędnej dwie sieci wirtualne są traktowane jako jedna do wszystkich celów związanych z łącznością. Są one nadal zarządzane jako oddzielne zasoby, ale maszyny wirtualne w tych sieciach wirtualnych mogą komunikować się bezpośrednio przy użyciu prywatnych adresów IP.
 
     ![Połączenie sieci wirtualnej za pomocą komunikacji równorzędnej](./media/active-directory-domain-services-design-guide/vnet-peering.png)
 
     [Więcej informacji — wirtualne sieci równorzędne](../virtual-network/virtual-network-peering-overview.md)
 
-* **Połączenia sieć wirtualna-sieć wirtualna za pomocą połączeń sieci VPN typu lokacja lokacja**: łączenie sieci wirtualnej z inną siecią wirtualną (VNet-VNet) jest podobny do procesu łączenia sieci wirtualnej z lokacją lokalną. Oba typy połączeń wykorzystują bramę sieci VPN, aby zapewnić bezpieczny tunel z użyciem protokołu IPsec/IKE.
+* **Połączenia sieć wirtualna-sieć wirtualna za pomocą połączeń sieci VPN typu lokacja lokacja**: Łączenie sieci wirtualnej z inną siecią wirtualną (VNet między sieciami wirtualnymi) jest podobne do procesu łączenia sieci wirtualnej z lokacją lokalną. Oba typy połączeń wykorzystują bramę sieci VPN, aby zapewnić bezpieczny tunel z użyciem protokołu IPsec/IKE.
 
     ![Połączenie sieci wirtualnej przy użyciu bramy sieci VPN](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 

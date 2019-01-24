@@ -4,7 +4,7 @@ description: Opisz logowania usługi Azure AD w schemacie dziennika do użycia w
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c44501a483b9a988c3ef048d12455eb3e5ae337
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2957cd12fb6ef37b3e120b90b1500c6a43bb3e04
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546403"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813427"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienniki logowania w usłudze Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 
@@ -155,11 +155,11 @@ W tym artykule opisano schemat rejestrowania w dzienniku usługi Azure Active Di
 | Time | Data i godzina w formacie UTC. |
 | ResourceId | Ta wartość jest niezamapowany. Ponadto można bezpiecznie zignorować to pole.  |
 | OperationName | Do logowania, ta wartość jest zawsze *logowań*. |
-| operationVersion | Wersja interfejsu API REST, które są wymagane przez klienta. |
+| OperationVersion | Wersja interfejsu API REST, które są wymagane przez klienta. |
 | Kategoria | Do logowania, ta wartość jest zawsze *SignIn*. | 
 | TenantId | Identyfikator GUID, który jest skojarzony z dziennikami dzierżawy. |
-| Typ resultType | Wynik operacji logowania może być *Powodzenie* lub *błąd*. | 
-| resultSignature | Zawiera kod błędu dla operacji logowania. |
+| ResultType | Wynik operacji logowania może być *Powodzenie* lub *błąd*. | 
+| ResultSignature | Zawiera kod błędu dla operacji logowania. |
 | ResultDescription | Zawiera opis błędu dla operacji logowania. |
 | durationMs |  Ta wartość jest niezamapowany. Ponadto można bezpiecznie zignorować to pole.|
 | CallerIpAddress | Adres IP klienta, który zgłosił żądanie. | 

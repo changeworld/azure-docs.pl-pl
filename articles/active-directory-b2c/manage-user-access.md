@@ -3,19 +3,19 @@ title: Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B
 description: Dowiedz się, jak identyfikować osoby nieletnie, zbieraj daty urodzenia i kraju danych i uzyskać Akceptacja warunków użytkowania w aplikacji za pomocą usługi Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 982587fa7da41ea1de5fd11bb054f87039596da1
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055537"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852035"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Zarządzanie dostępem użytkowników w usłudze Azure Active Directory B2C
 
@@ -34,11 +34,11 @@ Aplikacje i organizacje mogą zdecydować o Blokuj nieletnim za pomocą aplikacj
 
 Jeśli użytkownik jest identyfikowany jako pomocnicza, przepływ użytkownika można ustawić w usłudze Azure AD B2C do jednej z trzech opcji:
 
-- **Wyślij podpisane id_token tokenów JWT do aplikacji**: użytkownik jest zarejestrowany w katalogu, a token jest zwracana do aplikacji. Następnie aplikacja przechodzi przez stosowanie reguł biznesowych. Na przykład aplikacja może kontynuować proces uzyskuje zgodę rodzica. Aby użyć tej metody, wybierz opcję do odbierania **grupy wiekowej** i **consentProvidedForMinor** oświadczeń z aplikacji.
+- **Wyślij podpisane id_token tokenów JWT do aplikacji**: Użytkownik jest zarejestrowany w katalogu, a token jest zwracana do aplikacji. Następnie aplikacja przechodzi przez stosowanie reguł biznesowych. Na przykład aplikacja może kontynuować proces uzyskuje zgodę rodzica. Aby użyć tej metody, wybierz opcję do odbierania **grupy wiekowej** i **consentProvidedForMinor** oświadczeń z aplikacji.
 
-- **Wyślij token JSON bez znaku do aplikacji**: usługi Azure AD B2C powiadamia aplikację, że użytkownik jest pomocnicze i zawiera informacje o stanie użytkownika uzyskuje zgodę rodzica. Następnie aplikacja przechodzi przez stosowanie reguł biznesowych. JSON token nie zostanie zakończone po pomyślnym uwierzytelnieniu w aplikacji. Aplikacja musi przetworzyć nieuwierzytelniony użytkownik zgodnie z oświadczenia zawarte w tokenie JSON, które mogą obejmować **nazwa**, **e-mail**, **grupy wiekowej**i **consentProvidedForMinor**.
+- **Wyślij token JSON bez znaku do aplikacji**: Usługa Azure AD B2C powiadamia aplikację, że użytkownik jest pomocnicze i zawiera informacje o stanie użytkownika uzyskuje zgodę rodzica. Następnie aplikacja przechodzi przez stosowanie reguł biznesowych. JSON token nie zostanie zakończone po pomyślnym uwierzytelnieniu w aplikacji. Aplikacja musi przetworzyć nieuwierzytelniony użytkownik zgodnie z oświadczenia zawarte w tokenie JSON, które mogą obejmować **nazwa**, **e-mail**, **grupy wiekowej**i **consentProvidedForMinor**.
 
-- **Zablokuj użytkownikowi**: Jeśli użytkownik jest pomocnicze, a nie dostarczono zgody rodziców, usługi Azure AD B2C można są powiadamiani że użytkownik jest zablokowany. Wystawiony token nie, wówczas dostęp będzie zablokowany i konto użytkownika nie jest tworzone podczas podróży rejestracji. Aby zaimplementować to powiadomienie, należy podać odpowiednie strony zawartości HTML/CSS do informowania użytkowników i istnieje odpowiednie opcje. Żadne dalsze działania jest wymagane przez aplikację do nowej rejestracji.
+- **Zablokuj użytkownikowi**: Jeśli użytkownik jest pomocnicze, a nie dostarczono zgody rodziców, usługi Azure AD B2C może powiadomić użytkownika dany użytkownik jest zablokowany. Wystawiony token nie, wówczas dostęp będzie zablokowany i konto użytkownika nie jest tworzone podczas podróży rejestracji. Aby zaimplementować to powiadomienie, należy podać odpowiednie strony zawartości HTML/CSS do informowania użytkowników i istnieje odpowiednie opcje. Żadne dalsze działania jest wymagane przez aplikację do nowej rejestracji.
 
 ## <a name="get-parental-consent"></a>Pobierz zgody rodziców
 

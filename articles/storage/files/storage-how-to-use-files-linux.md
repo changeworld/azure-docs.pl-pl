@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 4b844fe50623782f23c1819c14eb7626eb9506cf
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: df701c6b3131686d5b3b4c093b23de2f6d22bdbc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614953"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827469"
 ---
 # <a name="use-azure-files-with-linux"></a>Używanie usługi Azure Files z systemem Linux
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klienta jądra SMB](https://wiki.samba.org/index.php/LinuxCIFS). W tym artykule przedstawiono dwa sposoby instalowania udziału plików platformy Azure: na żądanie przy użyciu `mount` polecenia oraz na rozruch, tworząc wpis w `/etc/fstab`.
@@ -24,7 +24,7 @@ ms.locfileid: "51614953"
 ## <a name="prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Wymagania wstępne dotyczące instalowania udziału plików platformy Azure z systemem Linux i pakiet cifs utils
 <a id="smb-client-reqs"></a>
 * **Wybierz dystrybucję systemu Linux do swoich potrzeb instalowania.**  
-      Usługa pliki systemu Azure mogą być instalowane za pośrednictwem protokołu SMB 2.1, jak i protokołu SMB 3.0. W przypadku połączeń pochodzących od klientów w środowisku lokalnym lub w innych regionach platformy Azure usługi Azure Files odrzuci SMB 2.1 (lub SMB 3.0 bez szyfrowania). Jeśli *Wymagany bezpieczny transfer* jest włączona dla konta magazynu usługi Azure Files będzie pozwalać wyłącznie na połączenia przy użyciu protokołu SMB 3.0 za pomocą szyfrowania.
+      Usługa pliki systemu Azure mogą być instalowane za pośrednictwem protokołu SMB 2.1, jak i protokołu SMB 3.0. W przypadku połączeń pochodzących od klientów w środowisku lokalnym lub w innych regionach platformy Azure należy użyć protokołu SMB 3.0; Usługa Azure Files odrzuci SMB 2.1 (lub SMB 3.0 bez szyfrowania). Jeśli uzyskujesz dostęp do udziału plików platformy Azure na maszynie wirtualnej w tym samym regionie platformy Azure, użytkownik może uzyskiwać dostęp do Twojego udziału plików przy użyciu protokołu SMB 2.1, jeśli i tylko wtedy, gdy, *Wymagany bezpieczny transfer* jest wyłączona w przypadku konto magazynu hostujące udział plików platformy Azure. Zawsze zalecamy Wymaganie bezpiecznego transferu i używania tylko protokołu SMB 3.0 za pomocą szyfrowania.
     
     Obsługa szyfrowania protokołu SMB 3.0 została wprowadzona w systemie Linux wersja jądra 4.11 i został backported do starszych wersji jądra dla popularnych dystrybucji systemu Linux. W chwili opublikowania tego dokumentu poniższe dystrybucje z poziomu galerii Azure obsługuje opcję instalowania określonego w nagłówki tabeli. 
 
@@ -32,12 +32,12 @@ ms.locfileid: "51614953"
     
     |   | SMB 2.1 <br>(Instaluje na maszynach wirtualnych w tym samym regionie platformy Azure) | SMB 3.0 <br>(Instaluje z lokalnie i między regionami) |
     | --- | :---: | :---: |
-    | Ubuntu Server | 14.04 + | 16.04 + |
-    | RHEL | 7 + | 7.5+ |
-    | CentOS | 7 + |  7.5+ |
+    | Ubuntu Server | 14.04+ | 16.04+ |
+    | RHEL | 7+ | 7.5+ |
+    | CentOS | 7+ |  7.5+ |
     | Debian | 8+ |   |
-    | openSUSE | 13.2 + | 42.3 + |
-    | SUSE Linux Enterprise Server | 12 | 12 Z DODATKIEM SP3 + |
+    | openSUSE | 13.2+ | 42.3+ |
+    | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
     
     Jeśli danej dystrybucji systemu Linux nie ma na liście, można sprawdzić wersji jądra systemu Linux za pomocą następującego polecenia:    
 
@@ -73,14 +73,14 @@ ms.locfileid: "51614953"
 
 * **Nazwa konta magazynu**: Aby zainstalować udział plików platformy Azure, potrzebna jest nazwa konta magazynu.
 
-* **Klucz konta magazynu**: Aby zainstalować udział plików platformy Azure, potrzebujesz klucza magazynu podstawowego (lub dodatkowego). Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
+* **Klucz konta magazynu**: Aby zainstalować udział plików platformy Azure, potrzebny jest klucz magazynu podstawowego (lub dodatkowego). Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
 
-* **Upewnij się, jest otwarty port 445**: protokół SMB komunikuje się za pośrednictwem portu TCP 445 — Sprawdź, aby zobaczyć, czy Zapora nie blokuje TCP porty 445 z komputera klienckiego.
+* **Otwarty port 445**: Protokół SMB komunikuje się za pośrednictwem portu TCP 445. Upewnij się, że Twoja zapora nie blokuje portów TCP 445 z komputera klienckiego.
 
 ## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Instalowanie plików platformy Azure udział na żądanie przy użyciu `mount`
 1. **[Zainstaluj pakiet cifs utils dla dystrybucji systemu Linux](#install-cifs-utils)**.
 
-2. **Utwórz folder na potrzeby punktu instalacji**: folder punktu instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typową Konwencją do utworzenia w obszarze `/mnt` folderu. Na przykład:
+2. **Utwórz folder na potrzeby punktu instalacji**: Folder dla punktu instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typową Konwencją do utworzenia w obszarze `/mnt` folderu. Na przykład:
 
     ```bash
     mkdir /mnt/MyAzureFileShare
@@ -98,7 +98,7 @@ ms.locfileid: "51614953"
 ## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Utwórz punkt instalacji trwałego udziału plików platformy Azure za pomocą `/etc/fstab`
 1. **[Zainstaluj pakiet cifs utils dla dystrybucji systemu Linux](#install-cifs-utils)**.
 
-2. **Utwórz folder na potrzeby punktu instalacji**: folder punktu instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typową Konwencją do utworzenia w obszarze `/mnt` folderu. Wszędzie tam, gdzie tworzysz, należy zwrócić uwagę na bezwzględną ścieżkę folderu. Na przykład następujące polecenie tworzy nowy folder na ścieżce `/mnt` (ścieżka jest ścieżką bezwzględną).
+2. **Utwórz folder na potrzeby punktu instalacji**: Folder dla punktu instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typową Konwencją do utworzenia w obszarze `/mnt` folderu. Wszędzie tam, gdzie tworzysz, należy zwrócić uwagę na bezwzględną ścieżkę folderu. Na przykład następujące polecenie tworzy nowy folder na ścieżce `/mnt` (ścieżka jest ścieżką bezwzględną).
 
     ```bash
     sudo mkdir /mnt/MyAzureFileShare

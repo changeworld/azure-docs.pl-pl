@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 01/21/2019
 ms.author: hux
 ms.component: blobs
-ms.openlocfilehash: 53c719fbeb31d605bd9dff170a798b262d44698a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f3a67c2eddba2b7bd734237466243da8f43a862a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634273"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848652"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Store strategicznych danych biznesowych w usłudze Azure Blob storage
 
@@ -197,7 +197,7 @@ Tak. Podczas tworzenia zasady przechowywania na podstawie czasu jest *odblokowan
 
 **Czy ta funkcja jest dostępna w chmurach krajowych i rządowych?**
 
-Niezmienne storage jest obecnie dostępna tylko w regionach świadczenia publicznej usługi Azure. Jeśli interesuje Cię określonej chmury krajowe, Wyślij wiadomość e-mail azurestoragefeedback@microsoft.com.
+Niezmienne storage jest dostępna w regionach świadczenia publicznej platformy Azure (Chiny) i dla instytucji rządowych. Jeśli w Twoim regionie nie ma dostępnego magazynu niezmienne, Wyślij wiadomość e-mail azurestoragefeedback@microsoft.com.
 
 ## <a name="sample-powershell-code"></a>Przykładowy kod programu PowerShell
 

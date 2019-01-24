@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3afe60e7a00cb4fc4aca5046da8e26aaf3c77a29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198817"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815238"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -63,7 +63,7 @@ Usługa Azure Disk Encryption jest obsługiwana na poniższe dystrybucje serwera
 | SLES | 12 SP1 | Dysk z danymi |
 | SLES | Priorytet: 12-SP1 | Dysk z danymi |
 | SLES | HPC 12 | Dysk z danymi |
-| SLES | Priorytet: 11 Z DODATKIEM SP4 | Dysk z danymi |
+| SLES | Priorytet: 11-SP4 | Dysk z danymi |
 | SLES | 11 SP4 | Dysk z danymi |
 
 
@@ -137,7 +137,7 @@ Jeśli ten przepływ pracy nie jest możliwe, opierając się na [szyfrowanie us
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Metodę szyfrowania używa usługi Azure Disk Encryption?
 
-W Windows, ADE korzysta z metody szyfrowania AES256 funkcji Bitlocker (AES256WithDiffuser w wersjach starszych niż Windows Server 2012). W systemie Linux ADE używa domyślnego dmcrypt xts-aes-plain64 za pomocą klucza głównego woluminu 256-bitowego.
+W Windows, ADE korzysta z metody szyfrowania AES256 funkcji BitLocker (AES256WithDiffuser w wersjach starszych niż Windows Server 2012). W systemie Linux ADE używa domyślnego dmcrypt xts-aes-plain64 za pomocą klucza głównego woluminu 256-bitowego.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Czy w przypadku użycia EncryptFormatAll i określić wszystkie typy woluminu, jej spowoduje usunięcie danych na dyskach danych, które już zaszyfrowane?
 Nie, dane nie będą usuwane z dysków danych, które już są szyfrowane przy użyciu usługi Azure Disk Encryption. Podobnie jak EncryptFormatAll nie został ponownie zaszyfrować dysk systemu operacyjnego, go nie będzie ponownie zaszyfrować dysk już zaszyfrowanych danych. Aby uzyskać więcej informacji, zobacz [kryteria EncryptFormatAll](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        

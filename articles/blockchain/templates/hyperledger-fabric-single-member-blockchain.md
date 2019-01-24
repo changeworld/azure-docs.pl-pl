@@ -1,5 +1,5 @@
 ---
-title: Konsorcjum sieci Hyperledger Fabric
+title: Jeden element członkowski Hyperledger Fabric konsorcjum
 description: Szablon rozwiązania Hyperledger Fabric konsorcjum umożliwia wdrażanie i konfigurowanie sieci jeden element członkowski
 services: azure-blockchain
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: c08557156848d4e7fcf0b1adbe6c8faa4ee00c82
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a6aa6d925d47ad9d24de68342f4a6e76a1d9d81f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231376"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828234"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric jeden element członkowski sieci
 
@@ -36,9 +36,9 @@ Ten szablon umożliwia wdrożenie w topologii w celu testowania i symulacjach dl
 
 Sieć składa się z trzech typów węzłów:
 
-1. **Węzeł składowej**: węzła z systemem usługi członkostwo w sieci szkieletowej, która rejestruje i zarządza członków sieci. Ten węzeł może być klastrowane w celu zapewnienia skalowalności i wysokiej dostępności. Jednak w tym środowisku laboratoryjnym węzła jeden element członkowski będzie używany.
-2. **Węzły osoby zamawiającej**: węzeł z uruchomioną usługą komunikacji Implementowanie gwarancji dostarczania, takich jak łączna liczba kolejność emisji lub atomic transakcji.
-3. **Komunikacja równorzędna węzłów**: węzeł zatwierdzeń transakcji, która przechowuje stan i kopię rejestru rozproszonego.
+1. **Węzeł składowej**: Węzła z systemem usługi członkostwo w sieci szkieletowej, która rejestruje i zarządza członków sieci. Ten węzeł może być klastrowane w celu zapewnienia skalowalności i wysokiej dostępności. Jednak w tym środowisku laboratoryjnym węzła jeden element członkowski będzie używany.
+2. **Węzły osoby zamawiającej**: Węzeł, implementowanie gwarancji dostarczania, takich jak łączna liczba kolejności odpowiedniej do emisji lub transakcje niepodzielne usługą komunikacji.
+3. **Komunikacja równorzędna węzłów**: Węzeł, zatwierdzeń transakcji, która przechowuje stan i kopię rejestru rozproszonego.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -47,7 +47,7 @@ Aby rozpocząć, potrzebujesz subskrypcji platformy Azure, który może obsługi
 Domyślnie większość typów subskrypcji obsługuje topologii, małe wdrożenie bez konieczności zwiększyć limit przydziału. Najmniejsza możliwe wdrożenie dla jednego elementu członkowskiego będą potrzebne:
 
 - 5 maszyn wirtualnych (5 rdzeni)
-- 1 sieć wirtualną
+- 1 VNet
 - Moduł równoważenia obciążenia 1
 - 1 publiczny adres IP
 
@@ -59,7 +59,7 @@ Po utworzeniu subskrypcji, przejdź do [witryny Azure portal](https://portal.azu
 
 Aby rozpocząć, wybierz opcję **łańcucha bloków elementu członkowskiego pojedynczego Hyperledger Fabric** i kliknij przycisk **Utwórz** otworzyć **podstawy** bloku, w kreatorze.
 
-Wdrożenie szablonu przeprowadzi Konfigurowanie sieci z wieloma węzłami. Przepływ wdrożenia jest podzielony na trzy etapy: podstawy, konfiguracja sieci i konfiguracji sieci szkieletowej.
+Wdrożenie szablonu przeprowadzi Konfigurowanie sieci z wieloma węzłami. Przepływ wdrożenia jest podzielony na trzy kroki: Podstawowe informacje o konfiguracji sieci i konfiguracji sieci szkieletowej.
 
 ### <a name="basics"></a>Podstawy
 
@@ -102,7 +102,7 @@ Na koniec w obszarze **ustawień sieci szkieletowej**, określ ustawienia konfig
 
 Nazwa parametru| Opis| Dozwolone wartości|Wartość domyślna
 ---|---|---|---
-**Nazwa użytkownika bootstrap**| Początkowy uprawnień użytkownika, który ma zostać zarejestrowany z usługami elementu członkowskiego w wdrożone sieci.|więcej niż 9 znaków|Administrator
+**Nazwa użytkownika bootstrap**| Początkowy uprawnień użytkownika, który ma zostać zarejestrowany z usługami elementu członkowskiego w wdrożone sieci.|więcej niż 9 znaków|admin
 **Hasło użytkownika ładowania początkowego dla urzędu certyfikacji w sieci szkieletowej**|Hasło administratora, używany do zabezpieczania konta urzędu certyfikacji w sieci szkieletowej zaimportować do węzła członkostwa.<br /><br />Hasło musi zawierać jedną wielką literę, jedną małą literę i jedną cyfrę.|co najmniej 12 znaków.|Nie dotyczy
 
 ### <a name="deploy"></a>Wdrażanie
@@ -137,7 +137,7 @@ Ekran szczegółów Pokaż podsumowanie wdrożenia następują trzy parametry pr
 - _PREFIKS_ , nazywane również _prefiks wdrożenia_ , unikatowo identyfikuje zasobów oraz informacje o wdrożeniu. Będzie używany, korzystając z narzędzi wiersza polecenia.
 - _SSH do pierwszej VM_ zapewnia możesz wstępnie zmontowanych polecenie ssh przy użyciu odpowiednie parametry wymagane do połączenia z pierwszej maszyny Wirtualnej w sieci. Dla Hyperledger Fabric będzie ona węzeł urzędu certyfikacji sieci szkieletowej.
 
-Możesz zdalnie nawiązać maszyn wirtualnych, dla każdego węzła za pośrednictwem protokołu SSH kluczem administrator podanej nazwy użytkownika i hasła/SSH. Ponieważ maszyn wirtualnych węzła nie mają własnych publicznych adresów IP, należy przejść przez moduł równoważenia obciążenia i określ numer portu. Polecenie SSH, aby otworzyć pierwszy węzeł transakcji jest trzeci wynik szablonu ** SSH do pierwszej VM (Aby uzyskać przykładowe wdrożenie: `sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`). Aby przejść do transakcji dodatkowe węzły, należy zwiększyć numer portu za pomocą jednej (na przykład, pierwszy węzeł transakcji jest port 3000, drugi na 3001, trzeci na 3002, itp.).
+Możesz zdalnie nawiązać maszyn wirtualnych, dla każdego węzła za pośrednictwem protokołu SSH kluczem administrator podanej nazwy użytkownika i hasła/SSH. Ponieważ maszyn wirtualnych węzła nie mają własnych publicznych adresów IP, należy przejść przez moduł równoważenia obciążenia i określ numer portu. Polecenie SSH, aby otworzyć pierwszy węzeł transakcji jest trzeci wynik szablonu *SSH do pierwszej VM* (Aby uzyskać przykładowe wdrożenie: `sh -p 3000 azureuser@hlf2racpt.northeurope.cloudapp.azure.com`). Aby przejść do transakcji dodatkowe węzły, należy zwiększyć numer portu za pomocą jednej (na przykład, pierwszy węzeł transakcji jest port 3000, drugi na 3001, trzeci na 3002, itp.).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

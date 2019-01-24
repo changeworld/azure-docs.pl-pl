@@ -3,29 +3,29 @@ title: Kolejki magazynu platformy Azure i kolejek usługi Service Bus porównani
 description: Analizuje różnice i podobieństwa dwóch typów kolejek oferowanych na platformie Azure.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261064"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852800"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejek usługi Service Bus — porównanie
-W tym artykule przeanalizowano różnice i podobieństwa dwóch typów kolejek oferowanych przez Microsoft Azure już dzisiaj: kolejki magazynu i kolejek usługi Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
+W tym artykule przeanalizowano różnice i podobieństwa dwóch typów kolejek oferowanych przez Microsoft Azure już dzisiaj: Kolejki magazynu i kolejek usługi Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
 
 ## <a name="introduction"></a>Wprowadzenie
-Platforma Azure obsługuje dwa rodzaje mechanizmów kolejki: **kolejek magazynu** i **kolejek usługi Service Bus**.
+Platforma Azure obsługuje dwa rodzaje mechanizmów kolejki: **Kolejki magazynu** i **kolejek usługi Service Bus**.
 
 **Kolejki magazynu**, które są częścią [usługi Azure storage](https://azure.microsoft.com/services/storage/) infrastruktury, funkcja prosty interfejs oparty na protokole REST GET/PUT/PODEJRZENIE, zapewniając niezawodnej, stałej obsługi komunikatów w ramach i między usługami.
 
@@ -68,7 +68,7 @@ W tej sekcji przedstawiono porównanie, niektóre z podstawowych funkcji usługi
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Kolejność gwarancji |**Nie** <br/><br>Aby uzyskać więcej informacji zobacz pierwszą uwagi w części "Informacje dodatkowe".</br> |**Tak - pierwszej wejściu — pierwszy na wyjściu (FIFO)**<br/><br>(przy użyciu komunikatów sesji) |
-| Gwarancja dostarczenia |**Co najmniej jednokrotne** |**Co najmniej jednokrotne**<br/><br/>**Większość jednocześnie** |
+| Gwarancja dostarczenia |**At-Least-Once** |**At-Least-Once**<br/><br/>**Większość jednocześnie** |
 | Niepodzielna operacja pomocy technicznej |**Nie** |**Tak**<br/><br/> |
 | Odbieranie zachowanie |**Nieblokujące**<br/><br/>(kończy natychmiast, jeśli zostanie znaleziony żaden nowy komunikat) |**Blokowanie z lub bez limitu czasu**<br/><br/>(oferuje długim sondowaniem lub ["Comet techniki"](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Nieblokujące**<br/><br/>(przy użyciu platformy .NET API tylko zarządzany) |
 | Interfejsu API wypychania stylu |**Nie** |**Tak**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) i **OnMessage** sesje interfejsu API platformy .NET. |
@@ -131,7 +131,7 @@ W tej sekcji porównuje kolejki magazynu i kolejek usługi Service Bus z punktu 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Maksymalny rozmiar kolejki |**500 TB**<br/><br/>(maksymalnie [pojedynczy pojemności konta magazynu](../storage/common/storage-introduction.md#queue-storage)) |**1 GB do 80 GB**<br/><br/>(zdefiniowane podczas tworzenia kolejki i [włączenie partycjonowania](service-bus-partitioning.md) – zobacz sekcję "Informacje dodatkowe") |
-| Maksymalny rozmiar komunikatu |**64 KB**<br/><br/>(48 KB w przypadku korzystania z **Base64** kodowania)<br/><br/>Platforma Azure obsługuje duże komunikaty, łącząc kolejki i obiekty BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(łącznie z nagłówka i treści, nagłówek maksymalny rozmiar: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
+| Maksymalny rozmiar wiadomości |**64 KB**<br/><br/>(48 KB w przypadku korzystania z **Base64** kodowania)<br/><br/>Platforma Azure obsługuje duże komunikaty, łącząc kolejki i obiekty BLOB — w tym momencie można umieścić w kolejce do 200 GB dla pojedynczego elementu. |**256 KB** lub **1 MB**<br/><br/>(w tym nagłówka i treści, rozmiar maksymalny nagłówka: 64 KB).<br/><br/>Zależy od [warstwy usług](service-bus-premium-messaging.md). |
 | Maksymalny czas wygaśnięcia wiadomości. |**Nieskończona** (począwszy od wersji interfejsu api 2017-07-27) |**TimeSpan.Max** |
 | Maksymalna liczba kolejek |**Unlimited (nieograniczony)** |**10,000**<br/><br/>(na przestrzeń nazw usług) |
 | Maksymalna liczba współbieżnych klientów |**Unlimited (nieograniczony)** |**Unlimited (nieograniczony)**<br/><br/>(100 limit współbieżnych połączeń dotyczą tylko komunikacji oparte na protokole TCP) |

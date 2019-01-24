@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Dołącz Maszynę wirtualną Ubuntu, do domeny zarządzanej | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Dołącz Maszynę wirtualną Ubuntu do domeny zarządzanej | Dokumentacja firmy Microsoft'
 description: Przyłączanie maszyny wirtualnej z systemem Ubuntu Linux do usługi Azure AD Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 709c227c955aba6b31ce415767470fa18ff3684f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 35b37a5c50346dc116b2f36394feecb82a0d88fd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155273"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845765"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Dołączanie maszyny wirtualnej systemu Ubuntu na platformie Azure do domeny zarządzanej
 W tym artykule pokazano, jak dołączyć maszynę wirtualną Ubuntu Linux do domeny zarządzanej usług domenowych Azure AD.
@@ -70,7 +70,7 @@ W tym miejscu "contoso100.com" jest nazwa domeny DNS z domeny zarządzanej. "con
 
 
 ## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Instalowanie wymaganych pakietów na maszynie wirtualnej systemu Linux
-Następnie zainstaluj pakiety wymagane do przyłączania do domeny na maszynie wirtualnej. Wykonaj następujące czynności:
+Następnie zainstaluj pakiety wymagane do przyłączania do domeny na maszynie wirtualnej. Wykonaj poniższe czynności:
 
 1.  W terminalu SSH wpisz następujące polecenie, aby pobrać listę pakietów z repozytoriów. To polecenie aktualizuje listę pakietów, aby uzyskać informacje na temat najnowszej wersji pakietów i ich zależności.
 

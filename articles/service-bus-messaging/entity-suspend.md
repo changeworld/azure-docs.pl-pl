@@ -3,22 +3,22 @@ title: Usługa Azure Service Bus zawiesić jednostek obsługi komunikatów | Dok
 description: Wstrzymywanie i ponowne aktywowanie jednostek komunikatów usługi Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: b7ea8c14bfc3f2ba3720ad919d6c36ec50c3823e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 8feee92e9105259bddf45114ac48a54347266cd7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854483"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846003"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Wstrzymywanie i ponowne aktywowanie jednostek obsługi komunikatów (Wyłącz)
 
@@ -38,10 +38,10 @@ Portal umożliwia jedynie kolejki jest całkowicie wyłączany. Można również
 
 Dostępne są następujące stany, które można ustawić dla kolejki:
 
--   **Aktywne**: kolejka jest aktywny.
--   **Wyłączone**: kolejka jest wstrzymana.
--   **SendDisabled**: kolejki częściowo jest wstrzymana, za pomocą receive są dozwolone.
--   **ReceiveDisabled**: kolejki częściowo jest wstrzymana, za pomocą wysyłania są dozwolone.
+-   **Aktywne**: Kolejka jest aktywny.
+-   **Wyłączone**: Kolejka jest zawieszone.
+-   **SendDisabled**: Kolejka jest częściowo zawieszone z receive są dozwolone.
+-   **ReceiveDisabled**: Kolejka jest częściowo zawieszone z Wyślij są dozwolone.
 
 W przypadku subskrypcji i tematów, tylko **Active** i **wyłączone** można ustawić.
 

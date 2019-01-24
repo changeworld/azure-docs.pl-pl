@@ -3,19 +3,19 @@ title: Konfigurowanie rejestracji i logowania za pomocą konta WeChat przy użyc
 description: Klientom Zarejestruj się i zaloguj się przy użyciu kont WeChat w aplikacjach przy użyciu usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 953868f90c4f761b1d02c314e0e1a4e04b8404d9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c1fe3f38f9304ab5fae83ecfe0ae5849fab7de39
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842615"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843975"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta WeChat przy użyciu usługi Azure Active Directory B2C
 

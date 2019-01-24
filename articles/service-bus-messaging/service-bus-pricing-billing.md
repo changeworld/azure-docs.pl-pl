@@ -3,9 +3,9 @@ title: Usługa Service Bus, cennik i rozliczenia | Dokumentacja firmy Microsoft
 description: Przegląd cennika struktury usługi Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
-ms.author: spelluru
-ms.openlocfilehash: db5f4bc7cc62c61f13258b919226efbf63165371
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 5b9aae979a25a1f175b3d5a5e24960d6f392b9b4
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406843"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852936"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Usługa Service Bus, cen i rozliczeń
 
@@ -32,8 +32,8 @@ Usługa Azure Service Bus jest oferowana w standardzie i [Premium](service-bus-p
 
 Usługa Service Bus używa następujących liczników 2 w przypadku kolejek i tematów/subskrypcji:
 
-1. **Operacje obsługi komunikatów**: definiowane jako wywołania interfejsu API względem punktów końcowych usługi kolejki lub tematu/subskrypcji. Ten licznik zastępuje wiadomości wysyłane lub odbierane jako podstawowa jednostka płatne użycie w przypadku kolejek i tematów/subskrypcji.
-2. **Połączenia obsługiwane przez brokera**: zdefiniowany jako Szczytowa liczba połączeń trwałych Otwórz kolejek, tematów lub subskrypcji w okresie danym jednogodzinnym pobierania próbek. Ten licznik ma zastosowanie tylko w warstwie standardowa, w którym można otworzyć dodatkowe połączenia (wcześniej, połączenia zostały ograniczone do 100 na kolejki/tematu/subskrypcji) połączenia nominalna za opłatą.
+1. **Operacje obsługi komunikatów**: Definiowane jako wywołania interfejsu API względem punktów końcowych usługi kolejki lub tematu/subskrypcji. Ten licznik zastępuje wiadomości wysyłane lub odbierane jako podstawowa jednostka płatne użycie w przypadku kolejek i tematów/subskrypcji.
+2. **Połączenia obsługiwane przez brokera**: Określone szczytowa liczba połączeń trwałych Otwórz kolejek, tematów lub subskrypcji w okresie danym jednogodzinnym pobierania próbek. Ten licznik ma zastosowanie tylko w warstwie standardowa, w którym można otworzyć dodatkowe połączenia (wcześniej, połączenia zostały ograniczone do 100 na kolejki/tematu/subskrypcji) połączenia nominalna za opłatą.
 
 **Standardowa** warstwy wprowadza stopniowanych ceny dla operacji wykonywanych przy użyciu kolejek i tematów/subskrypcji, co opartego na ilości rabat wynoszący maksymalnie 80% na najwyższych poziomach użycia. Dostępna jest również w warstwie standardowa podstawowa opłata za 10 USD miesięcznie, co umożliwia wykonywanie maksymalnie 12,5 mln operacji miesięcznie bez ponoszenia dodatkowych kosztów.
 

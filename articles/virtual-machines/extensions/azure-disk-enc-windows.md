@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 11ec26729b2239279dddc8cd62f6b658a4f7ed20
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 355fa90113e931fa3e21df1ccca5736622475bb3
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413794"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810384"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Usługa Azure Disk Encryption for Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
 ## <a name="overview"></a>Przegląd
 
-Usługa Azure Disk Encryption korzysta z funkcji Bitlocker, aby zapewnić pełne szyfrowanie dysków na maszynach wirtualnych z systemem Windows Azure.  To rozwiązanie jest zintegrowana z usługą Azure Key Vault do zarządzania wpisami tajnymi w ramach subskrypcji usługi key vault i kluczami szyfrowania dysków. 
+Usługa Azure Disk Encryption korzysta z funkcji BitLocker, aby zapewnić pełne szyfrowanie dysków na maszynach wirtualnych z systemem Windows Azure.  To rozwiązanie jest zintegrowana z usługą Azure Key Vault do zarządzania wpisami tajnymi w ramach subskrypcji usługi key vault i kluczami szyfrowania dysków. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -73,12 +73,12 @@ Usługa Azure Disk Encryption wymaga łączności z Internetem, aby uzyskać dos
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | data |
+| apiVersion | 2015-06-15 | date |
 | Wydawcy | Microsoft.Azure.Security | ciąg |
 | type | AzureDiskEncryptionForWindows| ciąg |
-| typeHandlerVersion | 1.0, 2.2 (ZESTAWU SKALOWANIA MASZYN WIRTUALNYCH) | Int |
+| typeHandlerVersion | 1.0, 2.2 (ZESTAWU SKALOWANIA MASZYN WIRTUALNYCH) | int |
 | (opcjonalnie) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Identyfikator GUID | 
-| (opcjonalnie) AADClientSecret | hasło | ciąg |
+| (optional) AADClientSecret | hasło | ciąg |
 | (opcjonalnie) AADClientCertificate | Odcisk palca | ciąg |
 | EncryptionOperation | EnableEncryption | ciąg | 
 | KeyEncryptionAlgorithm | RSA OAEP | ciąg |

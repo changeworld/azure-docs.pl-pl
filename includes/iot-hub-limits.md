@@ -4,12 +4,12 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 1807dc67d09b521e66314fb98535fb2c1225d34f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: e1618ded270cddca13145195522d7b42a00d6585
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964582"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841440"
 ---
 W poniższej tabeli przedstawiono limity skojarzone z różnymi warstwami usług (S1, S2, S3, F1). Aby uzyskać informacje o koszcie każdej *jednostki* w każdej z warstw, zobacz [Cennik usługi IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -48,6 +48,8 @@ W poniższej tabeli przedstawiono limity dotyczące zasobów usługi IoT Hub:
 | Maksymalna liczba równoczesnych zadań | 10 (warstwa S3), 5 (warstwa S2), 1 (warstwa S1) |
 | Maksymalna liczba dodatkowych punktów końcowych | 10 (warstwy S1, S2 i S3) |
 | Maksymalna liczba reguł rozsyłania komunikatów | 100 (warstwy S1, S2 i S3) |
+| Maksymalna liczba równocześnie połączonych urządzeń, strumieni | 50 (dla S1, S2, S3 i tylko F1) |
+| Transfer danych strumienia maksymalna urządzenia | 300 MB dziennie (S1, S2, S3 i tylko F1) |
 
 
 > [!NOTE]
@@ -72,3 +74,4 @@ Usługa IoT Hub ogranicza żądania po przekroczeniu następujących limitów pr
 | Liczba aktualizacji bliźniaczej reprezentacji urządzenia | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |
 | Operacje zadań <br/> (tworzenie, aktualizowanie, wyświetlanie, usuwanie) | 83.33/sec/Unit (5000/min/jednostkę) (warstwa S3), 1.67/sec/unit (100/min/jednostkę) (dla S2), 1.67/sec/unit (100/min/jednostkę) (dla S1) |
 | Przepływność operacji zadań poszczególnych urządzeń | 50/sek/jednostkę (warstwa S3), maksymalnie 10/sek lub 1/sek/jednostkę (warstwa S2), 10/sek (warstwa S1) |
+| Szybkość inicjowania strumienia urządzenia | 5 nowych strumieni/sek (S1, S2, S3 i tylko F1) |

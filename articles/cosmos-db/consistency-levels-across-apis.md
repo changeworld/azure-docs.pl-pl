@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: a506c696cdb9ca6c6221b54c63d2446b7cb86a69
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430570"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807001"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 
@@ -26,196 +26,46 @@ W poniższych sekcjach przedstawiono mapowanie między spójności danych wymaga
 
 W poniższej tabeli przedstawiono mapowania spójności bazy danych Apache Cassandra oraz poziomów spójności w usłudze Azure Cosmos DB. Dla każdej bazy danych Cassandra odczytu i zapisu poziomów spójności, odpowiedni poziom spójności bazy danych Cosmos zapewnia silniejsza, czyli bardziej rygorystyczne gwarancji.
 
+W poniższej tabeli przedstawiono **zapisu mapowania spójności** między usługi Azure Cosmos DB i bazy danych Cassandra:
 
-<table>
-<tr> 
-  <th rowspan="2">Poziom spójności bazy danych Cassandra</th> 
-  <th rowspan="2">Poziom spójności usługi cosmos DB</th> 
-  <th colspan="3">Mapowanie spójności zapisu</th> 
-  <th colspan="3">Mapowanie spójności odczytu</th> 
-</tr> 
+| Cassandra | Azure Cosmos DB | Gwarancja |
+| - | - | - |
+|WSZYSTKIE|Silna  | Operacje atomowe |
+| EACH_QUORUM   | Silna    | Operacje atomowe | 
+| KWORUM SZEREGOWEJ |  Silna |    Operacje atomowe |
+| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks |Globalne spójny prefiks |
+| EACH_QUORUM   | Silna    | Operacje atomowe |
+| KWORUM SZEREGOWEJ |  Silna |    Operacje atomowe |
+| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks | Globalne spójny prefiks |
+| KWORUM SZEREGOWEJ | Silna   | Operacje atomowe |
+| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks | Globalne spójny prefiks |
+| LOCAL_QUORUM, LOCAL_SERIAL, DWÓCH, TRZECH    | Powiązana nieaktualność | <ul><li>Powiązana nieaktualność.</li><li>Co najwyżej K wersji lub czasu (t) za zaporą.</li><li>Odczytaj najnowsze zatwierdzone wartość w regionie.</li></ul> |
+| JEDEN, LOCAL_ONE, WSZYSTKIE   | Spójny prefiks | Spójny prefiks regionu |
 
+W poniższej tabeli przedstawiono **mapowania spójności odczytu** między usługi Azure Cosmos DB i bazy danych Cassandra:
 
- 
- <tr> 
-  <th>Cassandra</th> 
-  <th>Cosmos DB</th> 
-  <th>Gwarancja</th> 
-  <th>Z bazy danych Cassandra</th> 
-  <th>To Cosmos DB</th> 
-  <th>Gwarancja</th> 
- </tr> 
- 
-  <tr> 
-  <td rowspan="6">WSZYSTKIE</td> 
-  <td rowspan="6">Silna</td> 
-  <td>WSZYSTKIE</td> 
-  <td>Silna</td> 
-  <td>Operacje atomowe</td> 
-  <td>WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, 3, DWÓCH, JEDEN, LOCAL_ONE</td> 
-  <td>Silna</td> 
-  <td>Operacje atomowe</td> 
- </tr> 
- 
- <tr> 
-  <td rowspan="2">EACH_QUORUM</td> 
-  <td rowspan="2">Silna</td> 
-  <td rowspan="2">Operacje atomowe</td> 
-  <td>WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA</td> 
-  <td>Silna</td> 
-  <td >Operacje atomowe</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, PO JEDNYM</td>
-  <td>Spójny prefiks</td>
-   <td>Globalne spójny prefiks</td>
- </tr>
- 
+| Cassandra | Azure Cosmos DB | Gwarancja |
+| - | - | - |
+| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, 3, DWÓCH, JEDEN, LOCAL_ONE | Silna  | Operacje atomowe|
+| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA   |Silna |   Operacje atomowe |
+|LOCAL_ONE, PO JEDNYM | Spójny prefiks | Globalne spójny prefiks |
+| WSZYSTKIM KWORUM, SERYJNY   | Silna    | Operacje atomowe |
+| LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH |  Spójny prefiks   | Globalne spójny prefiks |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM |    Spójny prefiks   | Globalne spójny prefiks |
+| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA   |Silna |   Operacje atomowe |
+| LOCAL_ONE, PO JEDNYM    | Spójny prefiks | Globalne spójny prefiks|
+| WSZYSTKIE KWORUM, SERIAL silne atomowych
+LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH  |Spójny prefiks  | Globalne spójny prefiks |
+|WSZYSTKIE    |Silna |Operacje atomowe |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  |Spójny prefiks  |Globalne spójny prefiks|
+|WSZYSTKIE KWORUM, SERIAL silne atomowych
+LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH  |Spójny prefiks  |Globalne spójny prefiks |
+|WSZYSTKIE    |Silna | Operacje atomowe |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  | Spójny prefiks | Globalne spójny prefiks |
+| KWORUM, LOCAL_QUORUM, LOCAL_SERIAL, DWA, TRZY |  Powiązana nieaktualność   | <ul><li>Powiązana nieaktualność.</li><li>Co najwyżej K wersji lub czasu (t) za zaporą. </li><li>Odczytaj najnowsze zatwierdzone wartość w regionie.</li></ul>
+| LOCAL_ONE, PO JEDNYM |Spójny prefiks | Spójny prefiks regionu |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  | Spójny prefiks | Spójny prefiks regionu |
 
- <tr> 
-  <td rowspan="2">KWORUM SZEREGOWEJ</td> 
-  <td rowspan="2">Silna</td> 
-  <td rowspan="2">Operacje atomowe</td> 
-  <td>WSZYSTKIM KWORUM, SERYJNY</td> 
-  <td>Silna</td> 
-  <td >Operacje atomowe</td> 
- </tr> 
-
- <tr>
-   <td>LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH</td>
-   <td>Spójny prefiks</td>
-   <td>Globalne spójny prefiks</td>
- </tr>
- 
- 
- <tr> 
- <td>LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, <b>ANY</b></td> 
-  <td>Spójny prefiks</td> 
-  <td>Globalne spójny prefiks</td> 
-  <td>LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM</td> 
-  <td>Spójny prefiks</td> 
-  <td>Globalne spójny prefiks</td>
- </tr> 
- 
- 
-  <tr> 
-  <td rowspan="6">EACH_QUORUM</td> 
-  <td rowspan="6">Silna</td> 
-  <td rowspan="2">EACH_QUORUM</td> 
-  <td rowspan="2">Silna</td> 
-  <td rowspan="2">Operacje atomowe</td> 
-  <td>WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA</td> 
-  <td>Silna</td> 
-  <td>Operacje atomowe</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, PO JEDNYM</td>
-  <td>Spójny prefiks</td>
-   <td>Globalne spójny prefiks</td>
- </tr>
- 
- 
- 
- <tr> 
-  <td rowspan="2">KWORUM SZEREGOWEJ</td> 
-  <td rowspan="2">Silna</td> 
-  <td rowspan="2">Operacje atomowe</td> 
-  <td>WSZYSTKIM KWORUM, SERYJNY</td> 
-  <td>Silna</td> 
-  <td>Operacje atomowe</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH</td>
-  <td>Spójny prefiks</td>
-   <td>Globalne spójny prefiks</td>
- </tr>
- 
- 
-  <tr> 
-  <td rowspan="2">LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE</td> 
-  <td rowspan="2">Spójny prefiks</td> 
-  <td rowspan="2">Globalne spójny prefiks</td> 
-  <td>WSZYSTKIE</td> 
-  <td>Silna</td> 
-  <td>Operacje atomowe</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM</td>
-  <td>Spójny prefiks</td>
-   <td>Globalne spójny prefiks</td>
- </tr>
-
-
-  <tr> 
-  <td rowspan="4">KWORUM</td> 
-  <td rowspan="4">Silna</td> 
-  <td rowspan="2">KWORUM SZEREGOWEJ</td> 
-  <td rowspan="2">Silna</td> 
-  <td rowspan="2">Operacje atomowe</td> 
-  <td>WSZYSTKIM KWORUM, SERYJNY</td> 
-  <td>Silna</td> 
-  <td>Operacje atomowe</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH</td>
-  <td>Spójny prefiks</td>
-   <td>Globalne spójny prefiks</td>
- </tr>
- 
- 
- <tr> 
-  <td rowspan="2">LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE</td> 
-  <td rowspan="2">Spójny prefiks </td> 
-  <td rowspan="2">Globalne spójny prefiks </td> 
-  <td>WSZYSTKIE</td> 
-  <td>Silna</td> 
-  <td>Operacje atomowe</td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM</td>
-  <td>Spójny prefiks</td>
-   <td>Globalne spójny prefiks</td>
- </tr>
- 
- <tr> 
-  <td rowspan="4">LOCAL_QUORUM, THREE, TWO</td> 
-  <td rowspan="4">Powiązana nieaktualność</td> 
-  <td rowspan="2">LOCAL_QUORUM, LOCAL_SERIAL, DWÓCH, TRZECH</td> 
-  <td rowspan="2">Powiązana nieaktualność</td> 
-  <td rowspan="2">Powiązana nieaktualność.<br/>
-Co najwyżej K wersji lub czasu (t) za zaporą.<br/>
-Odczytaj najnowsze zatwierdzone wartość w regionie. 
-</td> 
-  
-  <td>KWORUM, LOCAL_QUORUM, LOCAL_SERIAL, DWA, TRZY</td> 
-  <td>Powiązana nieaktualność</td> 
-  <td>Powiązana nieaktualność.<br/>
-Co najwyżej K wersji lub czasu (t) za zaporą. <br/>
-Odczytaj najnowsze zatwierdzone wartość w regionie. </td> 
- </tr> 
- 
- <tr>
- <td>LOCAL_ONE, PO JEDNYM</td>
-  <td>Spójny prefiks</td>
-   <td>Spójny prefiks regionu</td>
- </tr>
- 
- 
- <tr> 
-  <td>JEDEN, LOCAL_ONE, WSZYSTKIE</td> 
-  <td>Spójny prefiks </td> 
-  <td >Spójny prefiks regionu </td> 
-  <td>LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM</td> 
-  <td>Spójny prefiks</td> 
-  <td>Spójny prefiks regionu</td> 
- </tr> 
-</table>
 
 ## <a id="mongo-mapping"></a>Mapowanie między poziomami spójności bazy danych MongoDB 3.4 i Azure Cosmos DB
 

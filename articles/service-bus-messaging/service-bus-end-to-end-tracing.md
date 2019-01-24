@@ -3,22 +3,22 @@ title: Śledzenia end-to-end w usłudze Azure Service Bus i Diagnostyka | Dokume
 description: Omówienie diagnostyki klient usługi Service Bus i śledzenia end-to-end
 services: service-bus-messaging
 documentationcenter: ''
-author: lmolkova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: lmolkova
-ms.openlocfilehash: 12f9f55544f46bc9c88cab7234f78ad7ee7de2d2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790898"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852987"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Rozproszonego śledzenia i korelacji, za pomocą komunikatów usługi Service Bus
 
@@ -32,7 +32,7 @@ Protokół opiera się na [protokołu HTTP korelacji](https://github.com/dotnet/
 
 | Nazwa właściwości        | Opis                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Identyfikator diagnostyki       | Unikatowy identyfikator wywołania zewnętrznego od producenta do kolejki. Zapoznaj się [w protokole HTTP Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) uzasadnienie, uwagi i format |
+|  Diagnostic-Id       | Unikatowy identyfikator wywołania zewnętrznego od producenta do kolejki. Zapoznaj się [w protokole HTTP Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) uzasadnienie, uwagi i format |
 |  Kontekst korelacji | Kontekst operacji, który jest propagowany dla wszystkich usług zaangażowanych w operację przetwarzania. Aby uzyskać więcej informacji, zobacz [kontekstowe korelacji w protokole HTTP](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
 
 ## <a name="service-bus-net-client-auto-tracing"></a>Klient modelu .NET magistrali usługi automatycznego śledzenia

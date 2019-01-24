@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: c779344f4cb0544009952423b6771b75482c3061
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353966"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816759"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -113,6 +113,26 @@ Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest wi
 **Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa <br>
 
 Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w przypadku magazynów, które zostaną uaktualnione do [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
+
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej.
+
+**Kod błędu:**: UserErrorBackupOperationInProgress <br>
+**Komunikat o błędzie**: Nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej<br>
+
+Ostatnie zadanie tworzenia kopii zapasowej nie powiodło się, ponieważ ma istniejące zadanie tworzenia kopii zapasowej w toku. Nie można uruchomić nowe zadanie tworzenia kopii zapasowej, aż do zakończenia bieżącego zadania. Upewnij się, że przed wyzwoleniem lub planowania innej operacji tworzenia kopii zapasowej zostanie przeprowadzona operacji tworzenia kopii zapasowej w toku. Aby sprawdzić stan zadania tworzenia kopii zapasowych, wykonaj następujące czynności:
+
+1. Zaloguj się do witryny Azure portal, kliknij przycisk **wszystkich usług**. Typ usługi Recovery Services, a następnie kliknij przycisk **Magazyny usługi Recovery Services**. Zostanie wyświetlona lista magazynów usługi Recovery Services.
+2. Z listy magazynów usługi recovery services wybierz magazyn, w którym skonfigurowano kopii zapasowej.
+3. W menu pulpitu nawigacyjnego magazynu kliknij **zadania tworzenia kopii zapasowej** Wyświetla wszystkie zadania tworzenia kopii zapasowej.
+
+    * Jeśli zadanie tworzenia kopii zapasowej jest w toku, zaczekaj na jej ukończyć lub anulować zadanie tworzenia kopii zapasowej.
+        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0).
+    * Jeśli konfiguracja została zmieniona kopii zapasowej w innym magazynie, następnie upewnij się, Brak zadań tworzenia kopii zapasowych działające w starym magazynie. Jeśli istnieje następnie anulować zadanie tworzenia kopii zapasowej.
+        * Aby anulować zadanie tworzenia kopii zapasowej kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **anulować** lub użyj [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0)
+4. Ponów próbę wykonania operacji tworzenia kopii zapasowej.
+
+Jeśli zaplanowanych operacji tworzenia kopii zapasowej trwa dłużej powodującą konflikt z następnym konfiguracji kopii zapasowej następnie przejrzyj [najlepszych rozwiązań](backup-azure-vms-introduction.md#best-practices), [wydajności tworzenia kopii zapasowych](backup-azure-vms-introduction.md#backup-performance) i [przywrócić brany pod uwagę ](backup-azure-vms-introduction.md#restore-considerations).
+
 
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania

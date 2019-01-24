@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/25/2018
+ms.date: 01/21/2019
 ms.author: juliako
-ms.openlocfilehash: 2c07cfcba473e2e27f14ff0118e6ca8a8f484df1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: d5ec82decbb441c27fd0c5e8f1132caa126edbc1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791829"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807749"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -22,6 +22,8 @@ W tym artykule wyjaśniono, jak osadzać widżety usługi Video Indexer w aplika
 
 > [!NOTE]
 > Począwszy od 1 lutego 2018 r., wersja 1 **Cognitive Insights** widżet staną się przestarzałe. Domyślnie wersja adres URL osadzania `version=2`.
+
+Począwszy od wersji 2, podstawowy adres URL elementu widget zawiera accout regionu. Na przykład generuje konto w regionie zachodnie stany USA: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Typy widżetów
 
@@ -69,7 +71,7 @@ Tylko w przypadku **publicznych** plików wideo można uzyskać kody osadzania z
 
 Jeśli chcesz osadzić **prywatny** plik wideo, musisz przekazać token dostępu w atrybucie **src** elementu **iframe**:
 
-     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>
+`https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
 Skorzystaj z interfejsu API [**pobierania widżetu szczegółowych informacji**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?), aby pobrać zawartość elementu widżetu Cognitive Insights, lub z funkcji [**pobierania tokenu dostępu wideo**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) i dodaj ten token jako parametr zapytania do adresu URL, jak pokazano powyżej. Określ ten adres URL jako wartość **src** elementu **iframe**.
 
@@ -94,13 +96,13 @@ Jeśli zdecydujesz się na wdrożenie własnego kodu odtwarzacza i realizację i
 
 W tej sekcji pokazano, jak zrealizować interakcję między dwoma widżetami usługi Video Indexer: gdy użytkownik kliknie kontrolkę szczegółowych informacji w aplikacji, odtwarzacz przeskoczy do odpowiedniego punktu w nagraniu wideo.
 
-    <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> 
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
 
 1. Skopiuj kod osadzania widżetu **Player**.
 2. Skopiuj kod osadzania widżetu **Cognitive Insights**.
 3. Dodaj [**plik mediatora**](https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js) do obsługi komunikacji między dwoma widżetami:
 
-    <script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 Teraz gdy użytkownik kliknie kontrolkę szczegółowych informacji w aplikacji, odtwarzacz przeskoczy do odpowiedniego punktu w nagraniu wideo.
 
@@ -110,11 +112,7 @@ Aby uzyskać więcej informacji, zobacz [ten pokaz](https://codepen.io/videoinde
 
 W tej sekcji pokazano, jak zrealizować interakcję między widżetem **Cognitive Insights** i wystąpieniem usługi Azure Media Player za pomocą [wtyczki AMP](https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js).
  
-1. Dodaj wtyczkę usługi Video Indexer dla odtwarzacza AMP.
-
-        <script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>
-
-
+1. Dodaj wtyczkę usługi Video Indexer dla odtwarzacza AMP.<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
 2. Utwórz wystąpienie usługi Azure Media Player za pomocą wtyczki usługi Video Indexer.
 
         // Init Source
@@ -209,7 +207,6 @@ W przypadku używania własnego odtwarzacza trzeba samodzielnie zadbać o manipu
         
         </script>
 
-
 Aby uzyskać więcej informacji, zobacz [ten pokaz](https://codepen.io/videoindexer/pen/YEyPLd).
 
 ## <a name="adding-subtitles"></a>Dodawanie napisów
@@ -219,30 +216,41 @@ Jeśli osadzasz szczegółowe informacje usługi Video Indexer z własnym odtwar
 ## <a name="customizing-embeddable-widgets"></a>Dostosowywanie osadzalnych widżetów
 
 ### <a name="cognitive-insights-widget"></a>Widżet Cognitive Insights
-Możesz wybrać typy szczegółowych informacji do pobrania, określając je jako wartość następującego parametru adresu URL dodanego do pobranego kodu osadzania (z interfejsu API lub aplikacji internetowej):
 
-**&widgets=** \<lista potrzebnych widżetów>
+Możesz wybrać typy wglądu w szczegółowe dane mają, określając je jako wartość do następującego parametru URL dodawane do kodu osadzania otrzymasz (z interfejsu API lub aplikacji sieci web): `&widgets=<list of wanted widgets>`.
 
 Możliwe wartości: people, keywords, sentiments, transcript, search.
 
-Na przykład jeśli chcesz osadzić widżet zawierający tylko szczegółowe informacje dotyczące osób i wyszukiwania, adres URL osadzania elementu iframe będzie wyglądać tak: https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search
+Na przykład jeśli chcesz osadzić elementu widget zawierający tylko insights osób i Wyszukiwanie elementu iframe adres URL osadzania będzie wyglądać następująco:
 
-Dostosować można również tytuł okna elementu iframe przez podanie przy adresie URL elementu iframe atrybutu **&title=**<YourTitle>. (Spowoduje to dostosowanie wartości \<title> elementu html).
-Na przykład jeśli chcesz nadać oknu elementu iframe tytuł „Moje_informacje”, adres URL będzie wyglądać tak: https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=Moje_informacje. Ta opcja ma zastosowanie tylko w przypadkach, gdy trzeba otworzyć szczegółowe informacje w nowym oknie.
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+
+Można również dostosować tytuł okna elementu iframe, zapewniając `&title=<YourTitle>` do adresu URL elementu iframe. (Spowoduje to dostosowanie wartości \<title> elementu html).
+    
+Na przykład jeśli chcesz nadać okna w elemencie iframe tytuł "MyInsights", adres URL będzie wyglądać następująco:
+
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
+
+Ta opcja ma zastosowanie tylko w przypadkach, gdy trzeba otworzyć szczegółowe informacje w nowym oknie.
 
 ### <a name="player-widget"></a>Widżet Player
+
 W przypadku osadzania widżetu Player usługi Video Indexer można wybrać rozmiar odtwarzacza, określając rozmiar elementu iframe.
 
 Na przykład:
 
-    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />
+`<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
 Domyślnie widżet Player usługi Video Indexer będzie mieć automatycznie generowane napisy oparte na transkrypcji nagrania wideo wyodrębnionego z pliku wideo w języku źródłowym, który został wybrany podczas przekazywania pliku wideo.
 
-Jeśli chcesz osadzić odtwarzacz z zastosowaniem innego języka, możesz dodać do adresu URL osadzanego odtwarzacza parametr **&captions=< Język | ”all” | “false” >** lub użyć opcji „all” jako wartości, aby zapewnić napisy we wszystkich dostępnych językach.
-Jeśli napisy mają być wyświetlane domyślnie, możesz przekazać parametr **&showCaptions=true**
+Jeśli chcesz osadzanie za pomocą innego języka, można dodać `&captions=< Language | ”all” | “false” >` adres URL odtwarzacza osadzania lub put "all" jako wartość, jeśli chcesz mieć wszystkie dostępne języki podpisów.
+Chcąc podpisów, które mają być wyświetlane domyślnie można przekazać `&showCaptions=true`.
 
-Adres URL osadzania będzie wyglądać tak: https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian. Jeśli chcesz wyłączyć napisy, jako wartość parametru „captions” możesz przekazać wartość „false”.
+Adres URL osadzania następnie będzie wyglądać następująco: 
+
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
+
+Jeśli chcesz wyłączyć napisy, jako wartość parametru „captions” możesz przekazać wartość „false”.
 
 Automatyczne odtwarzanie — domyślnie odtwarzacz rozpocznie odtwarzanie pliku wideo. Możesz to zmienić, przekazując w powyższym adresie URL osadzania parametr &autoplay=false.
 

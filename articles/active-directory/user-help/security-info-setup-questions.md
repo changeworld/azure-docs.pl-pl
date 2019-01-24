@@ -3,7 +3,7 @@ title: Skonfiguruj informacje zabezpieczające na użycie tych pytań zabezpiecz
 description: Skonfiguruj swoje informacje zabezpieczające, aby zweryfikować swoją tożsamość za pomocą pytań zabezpieczających wstępnie zdefiniowane.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: b4913d55ee3d254f197512d9251ae750d8896f53
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 0ee486c41193608887763b611ed2a879cb5e0ef4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160442"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814787"
 ---
 # <a name="set-up-security-info-to-use-pre-defined-security-questions-preview"></a>Skonfiguruj informacje zabezpieczające na użycie tych pytań zabezpieczających wstępnie zdefiniowane (wersja zapoznawcza)
 

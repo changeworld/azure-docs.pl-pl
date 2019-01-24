@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 3564288c55716a9c64ae2460048cb255a60dcc02
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469580"
+ms.locfileid: "54826619"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migracja Contoso: Ponowne hostowanie aplikacji w środowisku lokalnym na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database
 
@@ -432,7 +432,7 @@ Aby skonfigurować źródła administratorów Contoso środowiska, wykonaj nast�
 
 Teraz Administratorzy Contoso Konfigurowanie środowiska docelowego replikacji:
 
-1. W **przygotowanie infrastruktury** > **docelowej**, ich selecs ustawienia wartości docelowej.
+1. W **przygotowanie infrastruktury** > **docelowej**, wybierają ustawienia wartości docelowej.
 2. Usługa Site Recovery sprawdza, czy istnieje konto magazynu i sieci w określonej lokalizacji docelowej.
 
 ### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
@@ -473,7 +473,7 @@ Teraz Administratorzy Contoso rozpocząć replikowanie WebVM.
 
     ![Włączanie replikacji — wybierz maszynę Wirtualną](./media/contoso-migration-rehost-vm-sql-managed-instance/enable-replication3.png)
 
-5. Sprawdź, czy właściwe zasady replikacji jest zaznaczone, a następnie Włącz replikację dla **WEBVM**. One tracs postępu replikacji w **zadań**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
+5. Sprawdź, czy właściwe zasady replikacji jest zaznaczone, a następnie Włącz replikację dla **WEBVM**. Śledzą postęp replikacji w **zadań**. Po uruchomieniu zadania **Sfinalizuj ochronę** maszyna jest gotowa do przejścia w tryb failover.
 6. W **Essentials** w witrynie Azure portal można wyświetlić stan maszyn wirtualnych, które jest replikowana do platformy Azure:
 
     ![Widok infrastruktury](./media/contoso-migration-rehost-vm-sql-managed-instance/essentials.png)
@@ -519,7 +519,7 @@ Administratorzy firmy Contoso musisz utworzyć projekt usługi Database Migratio
         ![Usługę migracji bazy danych — Konfigurowanie ustawień migracji](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-migration-settings.png)
 
 5. Zapisz ustawienia migracji i następnie uruchom migracji.
-6. W **Przegląd**, ich monitos stan migracji.
+6. W **Przegląd**, mogą monitorować stan migracji.
 
     ![Usługi Database Migration Service — monitorowanie](./media/contoso-migration-rehost-vm-sql-managed-instance/dms-monitor1.png)
 

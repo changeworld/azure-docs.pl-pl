@@ -3,19 +3,19 @@ title: Niestandardowe zasady usługi Azure Active Directory B2C | Dokumentacja f
 description: Dowiedz się więcej o zasadach niestandardowych usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ca9408c8c7103e99556cf4853c214f59ec6372b9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725067"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853004"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Zasady niestandardowe w usłudze Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Zasady niestandardowe są pliki konfiguracji definiujące zachowanie Twojej dzie
 | Dostosowywanie atrybutu | Standardowe i niestandardowe atrybuty. | Ten sam |
 | Token i sesji zarządzania | Token niestandardowy i wiele opcji sesji. | Ten sam |
 | Dostawcy tożsamości | Wstępnie zdefiniowane dostawcy uwierzytelniania lokalnego lub społecznościowych. | Oparte na standardach OIDC, uwierzytelnianiem OAUTH i SAML. |
-| Tożsamość zadania | Zarejestruj się lub zaloguj się przy użyciu lokalnego lub wiele kont społecznościowych.<br><br>Samoobsługowe resetowanie haseł.<br><br>Edytuj profil.<br><br>Uwierzytelnianie wieloskładnikowe.<br><br>Dostosowywanie tokenów i sesji.<br><br>Przepływy tokenu dostępu. | Wykonaj te same zadania, co przepływy użytkownika przy użyciu niestandardowych dostawców tożsamości, lub użyj zakresy niestandardowe.<br><br>Ustanowienie konta użytkownika w innym systemie, w chwili rejestracji.<br><br>Wysłać powitalną wiadomość e-mail przy użyciu własnego dostawcę usługi poczty e-mail.<br><br>Użyj magazynu użytkowników spoza usługi Azure AD B2C.<br><br>Sprawdź podane informacje o systemie zaufanego za pomocą interfejsu API przez użytkownika. |
+| Tożsamość zadania | Zarejestruj się lub zaloguj się przy użyciu lokalnego lub wiele kont społecznościowych.<br><br>Samoobsługowe resetowanie haseł.<br><br>Edytuj profil.<br><br>Multi-Factor Authentication.<br><br>Dostosowywanie tokenów i sesji.<br><br>Przepływy tokenu dostępu. | Wykonaj te same zadania, co przepływy użytkownika przy użyciu niestandardowych dostawców tożsamości, lub użyj zakresy niestandardowe.<br><br>Ustanowienie konta użytkownika w innym systemie, w chwili rejestracji.<br><br>Wysłać powitalną wiadomość e-mail przy użyciu własnego dostawcę usługi poczty e-mail.<br><br>Użyj magazynu użytkowników spoza usługi Azure AD B2C.<br><br>Sprawdź podane informacje o systemie zaufanego za pomocą interfejsu API przez użytkownika. |
 
 ## <a name="policy-files"></a>Pliki zasad
 

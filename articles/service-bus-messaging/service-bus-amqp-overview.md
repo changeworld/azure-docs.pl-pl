@@ -3,28 +3,28 @@ title: Omówienie protokołu AMQP 1.0 w usłudze Azure Service Bus | Dokumentacj
 description: Dowiedz się więcej o korzystaniu z zaawansowanych wiadomości Queuing Protocol (AMQP) 1.0 na platformie Azure.
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 0e8d19cc-de36-478e-84ae-e089bbc2d515
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: b43cdfa0b5f9e5bf6a94f4f59034e07f59ddb163
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 70a0463094f98612169e78e4bcdd4eac9c8ebf24
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393336"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844708"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Obsługa protokołu AMQP 1.0 w usłudze Service Bus
 Usługa Azure Service Bus w chmurze i lokalnych [Usługa Service Bus dla systemu Windows Server (Usługa Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) obsługuje zaawansowane komunikat Kolejkowanie Protocol (AMQP) 1.0. Protokół AMQP umożliwia tworzenie dla różnych platform aplikacji hybrydowej za pomocą otwartego protokołu. Można skonstruować aplikacji przy użyciu składników, które są tworzone przy użyciu różnych języków i platform i działających w różnych systemach operacyjnych. Wszystkie te składniki można połączyć z usługą Service Bus oraz zapewniające bezproblemową wymiany wiadomości ze strukturą biznesowych, wydajne i w pełnej rozdzielczości.
 
-## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Wprowadzenie: Co to jest protokołu AMQP 1.0 i dlaczego jest ważna?
+## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Wprowadzenie: Co to jest protokołu AMQP 1.0, i dlaczego jest ważna?
 Tradycyjnie oprogramowanie pośredniczące ukierunkowane produktów używanych protokołów własnościowych do komunikacji między aplikacjami klienta i brokerów. Oznacza to, po wybraniu brokera obsługi komunikatów dla określonego dostawcy należy użyć tego dostawcy bibliotek do łączenia się z tym brokera aplikacjom klienckim. Spowoduje to pewien stopień zależności od tego dostawcy, ponieważ przenoszenie aplikacji do innego produktu wymaga zmian w kodzie w połączonych aplikacjach. 
 
 Ponadto łączenie brokery pochodzących od różnych dostawców jest trudne. Zwykle wymaga to poziom aplikacji mostkowanie przenoszenie wiadomości z jednego systemu do drugiego i tłumaczenie ich formaty własności wiadomości. To jest typowym wymogiem; na przykład, gdy możesz musi Podaj nowy, ujednolicony interfejs do starszych systemów różnych lub integrowanie systemów IT po połączeniu.
@@ -36,10 +36,10 @@ Programowanie z zaawansowanymi komunikat Queuing Protocol (AMQP) 1.0 leżała ty
 ## <a name="amqp-10-technical-features"></a>Funkcje techniczne protokołu AMQP 1.0
 Protokołu AMQP 1.0 to wydajny, niezawodny i protokół sieciowy niskiego poziomu obsługi komunikatów, która umożliwia tworzenie niezawodnych i platform, aplikacji do obsługi komunikatów. Protokół ma prosty cel: do definiowania sposobu działania bezpieczne, niezawodne i efektywne przesyłanie wiadomości między dwiema stronami. Komunikaty, samodzielnie są zakodowane przy użyciu reprezentacji danych, umożliwiająca heterogenicznych nadawców i odbiorców, do wymiany wiadomości ze strukturą biznesowych w pełnej rozdzielczości. Poniżej przedstawiono podsumowanie najważniejszych funkcji:
 
-* **Wydajne**: protokół AMQP 1.0 stanowi nawiązaniem połączenia protokołu używającego kodowanie binarne instrukcje protokołu i firm wiadomości przesyłanych przez go. Zawiera zaawansowane sterowanie przepływem schematów to maksymalne zwiększenie wykorzystania sieci oraz połączonych składników. Inaczej mówiąc, protokół zaprojektowano tak, aby zachować równowagę pomiędzy wydajność, elastyczność i współdziałania.
-* **Niezawodne**: protokołu AMQP 1.0 umożliwia wymianę z szerokim zakresem gwarancje niezawodności, fire i zapomnij niezawodne, dokładnie wiadomości — raz potwierdzenia dostarczenia.
-* **Elastyczne**: protokołu AMQP 1.0 jest protokołem elastycznym, który może służyć do obsługi różnych topologii. Ten sam protokół może służyć do komunikacji klienta do klienta, broker do brokera i klienta do brokera.
-* **Niezależnie od modelu brokera**: Specyfikacja protokołu AMQP 1.0 nie oznacza, że wszelkie wymagania na podstawie modelu obsługi komunikatów, używany przez brokera. Oznacza to, że możliwe jest łatwe dodawanie obsługę protokołu AMQP 1.0 do istniejących brokery.
+* **Wydajne**: Protokół AMQP 1.0 stanowi protokołem połączeniowy używa kodowania pliku binarnego instrukcje protokołu i firm wiadomości przesyłanych przez go. Zawiera zaawansowane sterowanie przepływem schematów to maksymalne zwiększenie wykorzystania sieci oraz połączonych składników. Inaczej mówiąc, protokół zaprojektowano tak, aby zachować równowagę pomiędzy wydajność, elastyczność i współdziałania.
+* **Niezawodne**: Protokół AMQP 1.0 umożliwia komunikatów wymienianych z szerokim zakresem gwarancje niezawodności, fire i zapomnij niezawodne, dokładnie — raz potwierdzenia dostarczenia.
+* **Elastyczne**: Protokołu AMQP 1.0 jest protokołem elastycznym, który może służyć do obsługi różnych topologii. Ten sam protokół może służyć do komunikacji klienta do klienta, broker do brokera i klienta do brokera.
+* **Niezależnie od modelu brokera**: Specyfikacja protokołu AMQP 1.0 nie powoduje żadnych wymagań dotyczących modelu obsługi komunikatów, używany przez brokera. Oznacza to, że możliwe jest łatwe dodawanie obsługę protokołu AMQP 1.0 do istniejących brokery.
 
 ## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>Protokół AMQP 1.0 stanowi standardowy (z wielkiej litery ")
 Protokół AMQP 1.0 stanowi międzynarodowego standardu, zatwierdzone przez ISO i IEC jako 19464:2014 ISO/IEC.
@@ -48,8 +48,8 @@ Protokołu AMQP 1.0 został rozwijany od 2008 przez grupę core ponad 20 firmy z
 
 W październiku 2011 roku tworzonym przeniesieni do Komitet techniczny w firmie dla zawodowego of Structured Information Standards (OASIS) i standardowa OASIS protokołu AMQP 1.0 został wydany w października 2012. Następujące przedsiębiorstwa w nich nie uczestniczył Komitetu Technicznego podczas tworzenia standardowych:
 
-* **Dostawców technologii**: Axway oprogramowania, Huawei technologii, IIT oprogramowania, INETCO systemów, Kaazing, Microsoft, Mitre Corporation, Primeton technologii, postęp oprogramowania, Red Hat, SITA, oprogramowanie AG, systemy Solace, VMware, WSO2, Zenika.
-* **Przedsiębiorstwa użytkownika**: Bank Ameryka Suisse środków, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
+* **Dostawców technologii**: Oprogramowanie Axway, Huawei technologii, IIT oprogramowania, INETCO systemów, Kaazing, Microsoft, Mitre Corporation, Primeton technologii, postęp oprogramowania, Red Hat, SITA, oprogramowanie AG, Solace systemów, VMware, WSO2 Zenika.
+* **Przedsiębiorstwa użytkownika**: Bank of America, Credit Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
 
 Często wspominane korzyści wynikające z otwartych standardów, należą:
 
@@ -67,7 +67,7 @@ Na poniższym rysunku przedstawiono przykład wdrożenia, w którym klienci Java
 
 ![][0]
 
-**Rysunek 1: Przykładowy wdrożenia scenariusz przedstawiający dla wielu platform komunikatów za pomocą usługi Service Bus i protokołu AMQP 1.0**
+**Rysunek 1: Przykładowy scenariusz wdrażania przedstawiający dla wielu platform komunikatów za pomocą usługi Service Bus i protokołu AMQP 1.0**
 
 W tej chwili znane podanych niżej bibliotek klienta do pracy z usługą Service Bus:
 
@@ -77,9 +77,9 @@ W tej chwili znane podanych niżej bibliotek klienta do pracy z usługą Service
 | C |Apache Qpid protonów C |
 | PHP |Apache Qpid protonów — PHP |
 | Python |Apache Qpid protonów — Python |
-| C# |Protokół AMQP .net Lite |
+| C# |AMQP .Net Lite |
 
-**Rysunek 2: Spis biblioteki klienta protokołu AMQP 1.0**
+**Rysunek 2: Tabela bibliotek klienta protokołu AMQP 1.0**
 
 ## <a name="summary"></a>Podsumowanie
 * Protokół AMQP 1.0 stanowi otwarte, niezawodnej obsługi komunikatów protokołu używanego do tworzenia dla różnych platform aplikacji hybrydowych. Protokół AMQP 1.0 stanowi standardem języka OASIS.
