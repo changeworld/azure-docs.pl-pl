@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: 271390757b7e79eb29c5a3c14ca9ee1b38b53e29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6963a7d8541897940316d0fdfbea06f265884249
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918684"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478318"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Tworzenie maszyny wirtualnej przy użyciu wirtualnego dysku twardego
 
@@ -56,12 +56,12 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az storage account list](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_list) | Wyświetla listę kont magazynu |
 | [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_check_name) | Sprawdza, czy nazwa konta magazynu jest prawidłowa i czy już nie istnieje |
-| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys#az_storage_account_keys_list) | Wyświetla listę kluczy kont magazynu |
+| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | Wyświetla listę kluczy kont magazynu |
 | [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_exists) | Sprawdza, czy obiekt blob istnieje |
 | [az storage container create](https://docs.microsoft.com/cli/azure/storage/container#az_storage_container_create) | Tworzy kontener na koncie magazynu. |
 | [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob#az_storage_blob_upload) | Tworzy obiekt blob w kontenerze, przekazując dysk VHD. |
 | [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Używane z opcją `--query` w celu sprawdzenia, czy nazwa maszyny wirtualnej jest już w użyciu. | 
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Tworzy maszyny wirtualne. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Tworzy maszyny wirtualne. |
 | [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list-ip-addresses) | Pobiera adres IP utworzonej maszyny wirtualnej. |
 
 ## <a name="next-steps"></a>Następne kroki

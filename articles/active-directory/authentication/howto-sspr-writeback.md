@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: f64331c2b75df84f44486f192e17a744b43fcf9b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 5ec079e0dfecbd6c4752bab2b8eb821fb01fdabd
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244906"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432357"
 ---
 # <a name="how-to-configure-password-writeback"></a>Porady: Konfigurowanie zapisywania zwrotnego haseł
 
@@ -51,8 +51,8 @@ Aby użyć funkcji zapisywania zwrotnego haseł, musi mieć jeden z następując
 * Pakiet Enterprise Mobility + Security E5 lub A5
 * Rozwiązania Microsoft 365 E3 lub A3
 * Rozwiązania Microsoft 365 E5 lub A5
-* Rozwiązania Microsoft 365 F1
-* Rozwiązania Microsoft 365 Business
+* Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
 > Licencjonowanie plany usługi Office 365 autonomiczny *nie obsługują "Samoobsługi hasło Resetowanie/zmiana/odblokowywanie przy użyciu funkcji zapisywania zwrotnego w środowisku lokalnym"* i wymagają jednego z poprzednich planów dla tej funkcji do pracy.

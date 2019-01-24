@@ -6,12 +6,12 @@ author: iainfoulds
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d12e0f53796713df83b1cbb9e55695598c29077
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0aff1040a9c7532ff5efe724382a074120801eb3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607391"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856489"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
 
@@ -243,6 +243,9 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 
 Zasobnik jest przypisany wewnętrznego adresu IP z podsieci sieci wirtualnej platformy Azure, delegowane do użytku z wirtualnych węzłów.
 
+> [!NOTE]
+> Jeśli używasz obrazów przechowywanych w usłudze Azure Container Registry, [Konfigurowanie i używanie wpisie tajnym rozwiązania Kubernetes][acr-aks-secrets]. To aktualne ograniczenie wirtualnym węzłami (wersja zapoznawcza) to, że nie używasz zintegrowane uwierzytelnianie jednostki usługi Azure AD. Jeśli nie używasz klucza tajnego, zasobników zaplanowane na wirtualnych węzłów nie można uruchomić i zgłoś błąd `HTTP response status code 400 error code "InaccessibleImage"`.
+
 ## <a name="test-the-virtual-node-pod"></a>Testowanie pod węzłem wirtualnym
 
 Aby przetestować uruchomiony na wirtualny węzeł zasobnik, przejdź do aplikacji demonstracyjnej z klienta sieci web. Zasobnik jest przypisany wewnętrznego adresu IP, możesz szybko przetestować tego połączenia z poziomu innego zasobnik w klastrze AKS. Utwórz zasobnik testu i do niej dołączyć sesję terminalu:
@@ -341,3 +344,4 @@ Wirtualne węzły są często jeden składnik skalowania rozwiązania w usłudze
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret

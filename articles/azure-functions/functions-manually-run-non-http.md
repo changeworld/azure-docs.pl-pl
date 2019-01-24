@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 00a72c8c7fb42c763a8b0bad1fa3914ac27c496f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6c77e58e626ba370a6278a0f01b09578930cba09
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406934"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247116"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Ręczne uruchamianie funkcji niewyzwalanej przez protokół HTTP
 
@@ -51,19 +51,20 @@ Po skopiowaniu klucza głównego kliknij nazwę funkcji, aby wrócić do okna pl
 
 Otwórz narzędzie Postman i wykonaj następujące kroki:
 
-1. Wprowadź **lokalizację żądania w polu tekstowym adresu URL**. 
-2. **Kliknij** kartę **Nagłówki**.
-3. Wprowadź **x-functions-key** jako pierwszy **klucz** i wklej klucz główny (ze schowka) w polu **wartości**.
-4. Wprowadź **Content-Type** jako drugi **klucz** i wprowadź **application/json** jako **wartość**.
+1. Wprowadź **lokalizację żądania w polu tekstowym adresu URL**.
+2. Upewnij się, że jako metodę HTTP ustawiono wartość **POST**.
+3. **Kliknij** kartę **Nagłówki**.
+4. Wprowadź **x-functions-key** jako pierwszy **klucz** i wklej klucz główny (ze schowka) w polu **wartości**.
+5. Wprowadź **Content-Type** jako drugi **klucz** i wprowadź **application/json** jako **wartość**.
 
     ![Ustawienia nagłówków narzędzia Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
 
-5. **Kliknij** kartę **Treść**.
-6. Wprowadź **{ "input": "test" }** jako treść żądania.
+6. **Kliknij** kartę **Treść**.
+7. Wprowadź **{ "input": "test" }** jako treść żądania.
 
     ![Ustawienia treści narzędzia Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
 
-7. Kliknij pozycję **Wyślij**.
+8. Kliknij pozycję **Wyślij**.
 
     ![Wysyłanie żądania za pomocą narzędzia Postman](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
 

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efb8887085ad1f6f47667b1305191e514de74330
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966507"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468186"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Przekazywanie i tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
 
@@ -35,13 +35,13 @@ Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione `myResourceGroup`, `mystorageaccount`, i `mydisks`.
 
-Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w `WestUs` lokalizacji:
+Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `WestUs`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Utwórz konto magazynu do przechowywania wirtualnych dysków z [Tworzenie konta magazynu az](/cli/azure/storage/account#az_storage_account_create). Poniższy przykład tworzy konto magazynu o nazwie `mystorageaccount`:
+Utwórz konto magazynu do przechowywania wirtualnych dysków z [Tworzenie konta magazynu az](/cli/azure/storage/account). Poniższy przykład tworzy konto magazynu o nazwie `mystorageaccount`:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -69,7 +69,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Określ identyfikator URI na dysku (`--image`) za pomocą [tworzenie az vm](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` przy użyciu wirtualnego dysku został wcześniej przekazany:
+Określ identyfikator URI na dysku (`--image`) za pomocą [tworzenie az vm](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` przy użyciu wirtualnego dysku został wcześniej przekazany:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -107,7 +107,7 @@ W poniższych przykładach należy zastąpić własnymi wartościami przykładow
 Platforma Azure obsługuje różne dystrybucje systemu Linux (zobacz [dystrybucje zatwierdzone dla](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Następujące artykuły przeprowadzą Cię przez proces przygotować różne dystrybucje systemu Linux, które są obsługiwane na platformie Azure:
 
 * **[Dystrybucje systemu centOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[Debian systemu Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -124,7 +124,7 @@ Zobacz też **[uwagi dotyczące instalacji systemu Linux](create-upload-generic.
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 Grupy zasobów łączą ze sobą logicznie wszystkich zasobów platformy Azure do obsługi maszyn wirtualnych, takie jak sieci wirtualne i magazyn. Aby uzyskać więcej informacji o grupach zasobów, zobacz [grupy zasobów — omówienie](../../azure-resource-manager/resource-group-overview.md). Przed przekazaniem niestandardowego dysku i Tworzenie maszyn wirtualnych, należy najpierw utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create).
 
-Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w `westus` lokalizacji:
+Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -132,7 +132,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Tworzenie konta magazynu dla niestandardowego dysku i maszyn wirtualnych przy użyciu [Tworzenie konta magazynu az](/cli/azure/storage/account#az_storage_account_create). Wszystkie maszyny wirtualne z dyskami niezarządzanymi, tworzonych za pomocą niestandardowego dysku konieczności znajdować się w tym samym koncie magazynu jako dysku. 
+Tworzenie konta magazynu dla niestandardowego dysku i maszyn wirtualnych przy użyciu [Tworzenie konta magazynu az](/cli/azure/storage/account). Wszystkie maszyny wirtualne z dyskami niezarządzanymi, tworzonych za pomocą niestandardowego dysku konieczności znajdować się w tym samym koncie magazynu jako dysku. 
 
 Poniższy przykład tworzy konto magazynu o nazwie `mystorageaccount` w utworzoną wcześniej grupę zasobów:
 
@@ -186,9 +186,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
-Aby utworzyć Maszynę wirtualną z dyskami niezarządzanymi, określ identyfikator URI na dysku (`--image`) za pomocą [tworzenie az vm](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` przy użyciu wirtualnego dysku został wcześniej przekazany:
+Aby utworzyć Maszynę wirtualną z dyskami niezarządzanymi, określ identyfikator URI na dysku (`--image`) za pomocą [tworzenie az vm](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` przy użyciu wirtualnego dysku został wcześniej przekazany:
 
-Należy określić `--image` parametrem [tworzenie az vm](/cli/azure/vm#az_vm_create) by wskazywał dysku niestandardowych. Upewnij się, że `--storage-account` pasuje do konta magazynu, w którym przechowywany jest niestandardowy dysku. Nie trzeba używać tego samego kontenera jako niestandardowego dysku do przechowywania maszyn wirtualnych. Upewnij się utworzyć wszystkie dodatkowe kontenery w taki sam sposób jak w poprzednich krokach przed przekazaniem dysku niestandardowych.
+Należy określić `--image` parametrem [tworzenie az vm](/cli/azure/vm) by wskazywał dysku niestandardowych. Upewnij się, że `--storage-account` pasuje do konta magazynu, w którym przechowywany jest niestandardowy dysku. Nie trzeba używać tego samego kontenera jako niestandardowego dysku do przechowywania maszyn wirtualnych. Upewnij się utworzyć wszystkie dodatkowe kontenery w taki sam sposób jak w poprzednich krokach przed przekazaniem dysku niestandardowych.
 
 Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` z niestandardowego dysku:
 

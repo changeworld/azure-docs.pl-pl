@@ -2,7 +2,7 @@
 title: Integracja aplikacji lokalnych z usługą Cloud App Security — usługa Azure Active Directory | Dokumentacja firmy Microsoft
 description: W usłudze Azure Active Directory do pracy z zabezpieczeń aplikacji Microsoft Cloud (MCAS), należy skonfigurować aplikację w środowisku lokalnym. Użyj MCAS kontroli dostępu warunkowego aplikacji, aby monitorować i sesje kontroli w czasie rzeczywistym na podstawie zasad dostępu warunkowego. Te zasady można stosować do aplikacji lokalnych, które używają serwera Proxy aplikacji w usłudze Azure Active Directory (Azure AD).
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 3be75f2fe004939eff6bf6cc960759db69bfb93a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: e5e83d928893c2937df8be55d72bb22869891492
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215103"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472487"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Konfigurowanie, monitorowanie dostępu do aplikacji w czasie rzeczywistym za pomocą Microsoft Cloud App Security i Azure Active Directory
 Skonfiguruj aplikację w środowisku lokalnym w usłudze Azure Active Directory (Azure AD) do korzystania z programu Microsoft Cloud App Security (MCAS) monitorowania w czasie rzeczywistym. MCAS używa kontroli dostępu warunkowego aplikacji do monitorowania i sesje kontroli w czasie rzeczywistym na podstawie zasad dostępu warunkowego. Te zasady można stosować do aplikacji lokalnych, które używają serwera Proxy aplikacji w usłudze Azure Active Directory (Azure AD).
@@ -48,7 +48,7 @@ Skonfiguruj serwer Proxy aplikacji:
 
 Dodawanie aplikacji lokalnych do usługi Azure AD. Aby uzyskać szybki Start, zobacz [Dodawanie aplikacji lokalnych do usługi Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Podczas dodawania aplikacji, należy ustawić następujące dwa ustawienia **Dodaj aplikację w środowisku lokalnym** bloku:
 
-- **Wstępne uwierzytelnianie**: Wprowadź **usługi Azure Active Directory**.
+- **Wstępne uwierzytelnianie**: Enter **Azure Active Directory**.
 - **Przekształć adresy URL w treści aplikacji**: Wybierz **tak**.
 
 Te dwa ustawienia są wymagane dla aplikacji do pracy z MCAS.
@@ -64,7 +64,7 @@ Aby skonfigurować aplikację przy użyciu kontroli dostępu warunkowego w aplik
 
 ## <a name="test-conditional-access-app-control"></a>Kontrola testu dostępu warunkowego aplikacji
 
-Aby przetestować wdrażanie aplikacji usługi Azure AD przy użyciu kontroli dostępu warunkowego w aplikacji, postępuj zgodnie z instrukcjami [. testowanie wdrożenia dla aplikacji usługi Azure AD](/cloud-app-security/proxy-deployment-aad#test-the-deployment).
+Aby przetestować wdrażanie aplikacji usługi Azure AD przy użyciu kontroli dostępu warunkowego w aplikacji, postępuj zgodnie z instrukcjami [. testowanie wdrożenia dla aplikacji usługi Azure AD](/cloud-app-security/proxy-deployment-aad).
 
 
 

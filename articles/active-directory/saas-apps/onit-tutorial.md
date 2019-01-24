@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Onit | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Onit | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Onit.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: bc479a28-8fcd-493f-ac53-681975a5149c
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
-ms.openlocfilehash: a93acc79fc447018b5cf63b2e2456bc394c1f78e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80ae8d6a1e27d13bc6750779f2e38649c49e2498
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814753"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-onit"></a>Samouczek: Integracja usługi Azure Active Directory z Onit
+# <a name="tutorial-azure-active-directory-integration-with-onit"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Onit
 
 W tym samouczku dowiesz się, jak zintegrować Onit w usłudze Azure Active Directory (Azure AD).
 
@@ -30,7 +30,7 @@ Integrowanie Onit z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Onit.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Onit (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -38,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Onit, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Onit logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -61,7 +61,7 @@ Aby skonfigurować integrację Onit w usłudze Azure AD, należy dodać Onit z g
 
 **Aby dodać Onit z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -69,15 +69,15 @@ Aby skonfigurować integrację Onit w usłudze Azure AD, należy dodać Onit z g
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **Onit**, wybierz opcję **Onit** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Onit na liście wyników](./media/onit-tutorial/tutorial_onit_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Onit w oparciu o użytkownika testu o nazwie "Britta Simon."
 
@@ -87,13 +87,13 @@ W Onit, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD 
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Onit, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego Onit](#create-an-onit-test-user)**  — aby odpowiednikiem Britta Simon w Onit połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Onit.
 
@@ -101,7 +101,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Onit** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -111,18 +111,18 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Onit domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/onit-tutorial/tutorial_onit_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<sub-domain>.onit.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<sub-domain>.onit.com`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<sub-domain>.onit.com`
+    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<sub-domain>.onit.com`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Onit](https://www.onit.com/support) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Onit](https://www.onit.com/support) do uzyskania tych wartości. 
  
 1. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartość certyfikatu.
 
-    ![Link pobierania certyfikatu](./media/onit-tutorial/tutorial_onit_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/onit-tutorial/tutorial_onit_certificate.png) 
 
-1. Aplikacja onit oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **"Atrribute"** kartę w aplikacji. Poniższy zrzut ekranu przedstawia przykład tego. 
+1. Aplikacja onit oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **"Atrribute"** kartę w aplikacji. Poniższy zrzut ekranu przedstawia przykład tego działania. 
 
     ![Konfigurowanie logowania jednokrotnego](./media/onit-tutorial/tutorial_onit_attribute.png) 
 
@@ -130,7 +130,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ------------------- | -------------------- |
-    | e-mail | User.mail |
+    | email | user.mail |
     
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -138,17 +138,17 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/onit-tutorial/tutorial_attribute_05.png)
 
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
     c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
 
-    d. Pozostaw **Namespace** puste.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
     
     e. Kliknij przycisk **OK**.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/onit-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/onit-tutorial/tutorial_general_400.png)
 
 1. Na **konfiguracji Onit** , kliknij przycisk **skonfigurować Onit** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
@@ -158,10 +158,10 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W menu u góry kliknij **administracji**.
    
-   ![Administracja](./media/onit-tutorial/IC791174.png "administracji")
+   ![Administracja](./media/onit-tutorial/IC791174.png "Administracja")
 1. Kliknij przycisk **Corporation edycji**.
    
-   ![Edytuj Corporation](./media/onit-tutorial/IC791175.png "Corporation edycji")
+   ![Edit Corporation](./media/onit-tutorial/IC791175.png "Edit Corporation")
    
 1. Kliknij przycisk **zabezpieczeń** kartę.
     
@@ -169,7 +169,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Na **zabezpieczeń** karcie, wykonaj następujące czynności:
 
-    ![Logowanie jednokrotne](./media/onit-tutorial/IC791177.png "logowanie jednokrotne")
+    ![Logowanie jednokrotne](./media/onit-tutorial/IC791177.png "Logowanie jednokrotne")
 
     a. Jako **strategii uwierzytelniania**, wybierz opcję **logowanie jednokrotne i hasło**.
     
@@ -180,7 +180,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     d. W **odcisk palca certyfikatu dostawcy tożsamości (SHA1)** pola tekstowego, Wklej **odcisk palca** wartość certyfikatu, który skopiowano z witryny Azure portal.
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
@@ -224,12 +224,12 @@ W przypadku Onit Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 **Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
 1. Zaloguj się na swoje **Onit** witryny firmy jako administrator.
-1. Kliknij przycisk **Dodaj użytkownika**.
+1. Kliknij pozycję **Add User** (Dodaj użytkownika).
    
-   ![Administracja](./media/onit-tutorial/IC791180.png "administracji")
+   ![Administracja](./media/onit-tutorial/IC791180.png "Administracja")
 1. Na **Dodaj użytkownika** okna dialogowego strony, wykonaj następujące czynności:
    
-   ![Dodaj użytkownika](./media/onit-tutorial/IC791181.png "Dodaj użytkownika")
+   ![Dodawanie użytkownika](./media/onit-tutorial/IC791181.png "Dodawanie użytkownika")
    
   1. Typ **nazwa** i **adres E-mail** prawidłowe platformy Azure konto usługi AD do aprowizowania w powiązanych pól tekstowych.
   1. Kliknij pozycję **Utwórz**.    

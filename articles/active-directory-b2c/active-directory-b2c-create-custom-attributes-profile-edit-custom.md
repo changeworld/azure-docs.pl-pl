@@ -3,21 +3,21 @@ title: Dodawanie własnego atrybutów do zasad niestandardowych w usłudze Azure
 description: Przewodnik dotyczący przy użyciu właściwości rozszerzenia oraz atrybuty niestandardowe i uwzględniając je w interfejsie użytkownika.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5513e0ff434862ea7eee42cb94ff2a0f67f6d390
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7ebce84e6d8d3e7b1b8d3852951127ce954f9019
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338748"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854058"
 ---
-# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Usługa Azure Active Directory B2C: Użyj atrybutów niestandardowych w niestandardowym profilu edytowanie zasad
+# <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Użyj niestandardowych atrybutów w niestandardowym profilu edytowanie zasad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +25,7 @@ W tym artykule utworzysz niestandardowego atrybutu w katalogu usługi Azure Acti
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Postępuj zgodnie z instrukcjami w artykule [usługi Azure Active Directory B2C: wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md).
+Postępuj zgodnie z instrukcjami w artykule [usługi Azure Active Directory B2C: Wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md).
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-ad-b2c-by-using-custom-policies"></a>Wykorzystaj niestandardowe atrybuty do zbierania informacji o klientach w usłudze Azure AD B2C przy użyciu zasad niestandardowych
 Katalog usługi Azure AD B2C jest powiązana z wbudowanego zestawu atrybutów. Należą do nich **imię**, **nazwisko**, **Miasto**, **kod pocztowy**, i **userPrincipalName**. Często zachodzi potrzeba tworzenia własnych atrybutów, takich jak te przykłady:
@@ -53,14 +53,14 @@ Instrukcje znajdują się w **następne kroki** sekcję w tym artykule.
 2. Wybierz **usługi Azure Active Directory** w menu nawigacji po lewej stronie. Może być konieczne ją znaleźć, wybierając **więcej usług**.
 3. Wybierz pozycję **Rejestracje aplikacji**. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
 4. Podaj następujące wpisy:
-    * Nazwa aplikacji sieci web: **aplikacji sieci Web-GraphAPI-DirectoryExtensions**.
-    * Typ aplikacji: **aplikacji/interfejs API sieci Web**.
+    * Nazwa aplikacji sieci web: **WebApp-GraphAPI-DirectoryExtensions**.
+    * Typ aplikacji: **Aplikacja/interfejs API sieci Web**.
     * Adres URL logowania: **https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions**.
 5. Wybierz pozycję **Utwórz**.
 6. Wybierz aplikację sieci web nowo utworzony.
 7. Wybierz **ustawienia** > **wymagane uprawnienia**.
 8. Wybierz interfejs API **Windows Azure Active Directory**.
-9. Wprowadź znacznik wyboru w uprawnieniach aplikacji: **odczytu i zapisu danych katalogu**. Następnie wybierz pozycję **Zapisz**.
+9. Wprowadź znacznik wyboru w uprawnieniach aplikacji: **Odczytuj i zapisuj dane katalogu**. Następnie wybierz pozycję **Zapisz**.
 10. Wybierz **udzielić uprawnień** i upewnij się, **tak**.
 11. Skopiuj następujące identyfikatory do Schowka, a następnie zapisz je:
     * **Identyfikator aplikacji**. Przykład: `103ee0e6-f92d-4183-b576-8c3739027780`.
@@ -70,7 +70,7 @@ Instrukcje znajdują się w **następne kroki** sekcję w tym artykule.
 
 ## <a name="modify-your-custom-policy-to-add-the-applicationobjectid"></a>Modyfikowanie zasad niestandardowych, aby dodać **ApplicationObjectId**
 
-Po wykonaniu kroków w [usługi Azure Active Directory B2C: wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md), pobranych i zmodyfikowanych [przykładowe pliki](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) o nazwie **TrustFrameworkBase.xml**, **TrustFrameworkExtensions.xml**, **SignUpOrSignin.xml**, **ProfileEdit.xml**, i **PasswordReset.xml**. W tym kroku możesz wprowadzić więcej modyfikacje tych plików.
+Po wykonaniu kroków w [usługi Azure Active Directory B2C: Wprowadzenie do zasad niestandardowych](active-directory-b2c-get-started-custom.md), pobranych i zmodyfikowanych [przykładowe pliki](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) o nazwie **TrustFrameworkBase.xml**, **TrustFrameworkExtensions.xml**, **SignUpOrSignin.xml**, **ProfileEdit.xml**, i **PasswordReset.xml**. W tym kroku możesz wprowadzić więcej modyfikacje tych plików.
 
 * Otwórz **TrustFrameworkBase.xml** pliku i Dodaj `Metadata` jak pokazano w poniższym przykładzie. Wstaw identyfikator obiektu, zarejestrowane dla `ApplicationObjectId` wartość i identyfikator aplikacji, która rejestrowane dla `ClientId` wartość: 
 

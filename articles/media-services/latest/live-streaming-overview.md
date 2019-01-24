@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 91e24fb274c1f9895046e8e2e7d760d02d196ccd
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3be7ad84cf0d45276c136465d7247ec43621aceb
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354182"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810962"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Przesyłanie strumieniowe przy użyciu usługi Azure Media Services v3 na żywo
 
@@ -34,23 +34,32 @@ W tym artykule szczegółowo omówiono, uzyskać wskazówki i zawiera diagramy g
 
 Poniżej przedstawiono kroki, aby uzyskać przepływ pracy transmisji strumieniowej na żywo:
 
-1. Tworzenie **wydarzenie na żywo**.
-2. Utwórz nową **zasobów** obiektu.
-3. Tworzenie **na żywo dane wyjściowe** i użyj nazwy zasobu, który został utworzony.
-4. Tworzenie **przesyłania strumieniowego zasad** i **klucz zawartości** Jeśli zamierzasz szyfrowanie zawartości przy użyciu DRM.
-5. Jeśli nie przy użyciu technologii DRM, Utwórz **lokalizatora przesyłania strumieniowego** dzięki wbudowanej **przesyłania strumieniowego zasad** typów.
-6. Wyświetlanie listy ścieżek na **przesyłania strumieniowego zasad** odzyskać adresy URL, aby użyć (są to deterministyczne).
-7. Pobieranie nazwy hosta dla **punkt końcowy przesyłania strumieniowego** chcesz przesyłać strumieniowo z (Upewnij się, że punkt końcowy przesyłania strumieniowego jest uruchomiony). 
-8. Adres URL w kroku 6 należy połączyć z nazwą hosta w kroku 7, aby uzyskać pełny adres URL.
-9. Jeśli chcesz zatrzymać, dzięki czemu Twoje **wydarzenie na żywo** widoczne, należy zatrzymać przesyłanie strumieniowe zdarzeń, usuwając **lokalizatora przesyłania strumieniowego**.
+1. Upewnij się, że **StreamingEndpoint** jest uruchomiona. 
+2. Tworzenie **element LiveEvent**. 
+  
+    Podczas tworzenia zdarzenia, można określić automatyczne uruchamianie go. Alternatywnie możesz rozpocząć zdarzenie, gdy jesteś gotowy rozpocząć przesyłanie strumieniowe.<br/> Gdy autostart jest ustawiona na wartość true, wydarzenie na żywo zostanie uruchomiony prawo po utworzeniu. Oznacza to, rozliczeń rozpoczyna się, jak działa wydarzenie na żywo. Należy jawnie wywołać Stop zasobu element LiveEvent, aby zatrzymać dalsze rozliczeń. Aby uzyskać więcej informacji, zobacz [element LiveEvent stanów i rozliczeń](live-event-states-billing.md).
+3. Uzyskaj adresy URL pozyskiwania i skonfigurować koder lokalnych wysyłać wkład źródła danych przy użyciu adresu URL.<br/>Zobacz [zalecane kodery na żywo](recommended-on-premises-live-encoders.md).
+4. Adres URL (wersja zapoznawcza) i weryfikować, czy rzeczywiście są odbierane dane wejściowe z kodera.
+5. Utwórz nową **zasobów** obiektu.
+6. Tworzenie **LiveOutput** i użyj nazwy zasobu, który został utworzony.
 
-Aby uzyskać więcej informacji, zobacz [transmisji strumieniowej na żywo w ramach samouczka](stream-live-tutorial-with-api.md) opartego na [na żywo platformy .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) próbki.
+     **LiveOutput** spowoduje zarchiwizowanie strumienia do **zasobów**.
+7. Tworzenie **StreamingLocator** dzięki wbudowanej **StreamingPolicy** typów.
+
+    Jeśli zamierzasz szyfrowanie zawartości, zapoznaj się z [Omówienie ochrony zawartości](content-protection-overview.md).
+8. Wyświetlanie listy ścieżek na **lokalizatora przesyłania strumieniowego** odzyskać adresy URL, aby użyć (są to deterministyczne).
+9. Pobieranie nazwy hosta dla **punkt końcowy przesyłania strumieniowego** chcesz przesyłać strumieniowo z.
+10. Adres URL w kroku 8 należy połączyć z nazwą hosta w kroku 9, aby uzyskać pełny adres URL.
+11. Jeśli chcesz zatrzymać, dzięki czemu Twoje **element LiveEvent** widoczne, należy zatrzymać przesyłanie strumieniowe zdarzeń i Usuń **StreamingLocator**.
+
+Aby uzyskać więcej informacji, zobacz [transmisji strumieniowej na żywo w ramach samouczka](stream-live-tutorial-with-api.md).
 
 ## <a name="overview-of-main-components"></a>Omówienie głównych składników
 
 Aby dostarczać strumienie na żądanie lub na żywo za pomocą usługi Media Services, musisz mieć co najmniej jedną [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Po utworzeniu konta usługi Media Services **domyślne** StreamingEndpoint zostanie dodany do Twojego konta w **zatrzymane** stanu. Należy uruchomić StreamingEndpoint, z którego chcesz strumieniowo przesyłać zawartość do swojej przeglądarki. Można użyć domyślnie **StreamingEndpoint**, lub utworzyć inny dostosowane **StreamingEndpoint** z wymaganą konfiguracją i ustawień sieci CDN. Użytkownik może zdecydować umożliwić wielu punkty, z których każdy z nich przeznaczone dla różnych sieci CDN i podając unikatową nazwę hosta w dostarczaniu zawartości. 
 
-W usłudze Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Podczas tworzenia element LiveEvent wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protokołu (pofragmentowany plik MP4). Funkcji Smooth Streaming protokołu pozyskiwania, są obsługiwane schematy adresów URL `http://` lub `https://`. Przypadku protokołu pozyskiwania RTMP, są obsługiwane schematy adresów URL `rtmp://` lub `rtmps://`. Aby uzyskać więcej informacji, zobacz [zalecane strumieniowo koderów na żywo](recommended-on-premises-live-encoders.md).
+W usłudze Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) jest odpowiedzialny za przyjęciem i przetwarzania na żywo strumieniowych źródeł wideo. Podczas tworzenia element LiveEvent wejściowy punkt końcowy jest tworzony, której można wysyłać sygnał na żywo z kodera zdalnego. Zdalny koder na żywo wysyła wkładu, kanał informacyjny do wejściowy punkt końcowy przy użyciu [RTMP](https://www.adobe.com/devnet/rtmp.html) lub [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protokołu (pofragmentowany plik MP4). Funkcji Smooth Streaming protokołu pozyskiwania, są obsługiwane schematy adresów URL `http://` lub `https://`. Przypadku protokołu pozyskiwania RTMP, są obsługiwane schematy adresów URL `rtmp://` lub `rtmps://`. Aby uzyskać więcej informacji, zobacz [zalecane strumieniowo koderów na żywo](recommended-on-premises-live-encoders.md).<br/>
+Podczas tworzenia **element LiveEvent**, można określić dozwolone adresy IP w jednym z następujących formatów: Adres IpV4 z 4 cyfry, zakres adresów CIDR.
 
 Gdy **element LiveEvent** rozpoczyna odbieranie wkład źródła danych, można użyć punktu końcowego (wersja zapoznawcza) (w wersji zapoznawczej adres URL do wyświetlania podglądu i weryfikowania otrzymują przed opublikowaniem dalsze transmisji strumieniowej na żywo. Po sprawdzeniu, że Podgląd strumienia jest dobra, aby udostępnić transmisji strumieniowej na żywo do dostarczania za pomocą co najmniej jeden (wstępnie utworzone), można użyć element LiveEvent **punkty**. Aby to osiągnąć, należy utworzyć nową [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na **element LiveEvent**. 
 
@@ -62,14 +71,7 @@ Usługa Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrow
 
 Jeśli to konieczne, można także zastosować filtrowanie dynamiczne, dzięki której może służyć do kontrolowania liczby ścieżek, formatów, szybkości transmisji i prezentacji okna czasowe, które są wysłane do odtwarzaczy. Aby uzyskać więcej informacji, zobacz [filtrów i manifestów dynamicznych](filters-dynamic-manifest-overview.md).
 
-### <a name="new-capabilities-for-live-streaming-in-v3"></a>Nowe możliwości transmisji strumieniowej na żywo w wersji 3
-
-Za pomocą v3 interfejsów API usługi Media Services, możesz skorzystać z następujące nowe funkcje:
-
-- Nowy tryb małymi opóźnieniami. Aby uzyskać więcej informacji, zobacz [opóźnienie](live-event-latency.md).
-- Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
-- Pozyskuj RTMPS bezpieczne.<br/>Gdy utworzysz element LiveEvent, otrzymasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
-- Można przesyłać strumieniowo wydarzenia na żywo, które są do 24 godzin długo po za pomocą usługi Media Services w celu przetranskodowania jej wkład pojedyncza szybkość transmisji bitów źródła danych do strumienia wyjściowego, który ma wielokrotnych. 
+Aby uzyskać informacje dotyczące nowych możliwości dla transmisji strumieniowej na żywo w wersji 3, zobacz [wskazówek dotyczących migracji do przenoszenia z usługi Media Services v2 do v3](migrate-from-v2-to-v3.md).
 
 ## <a name="liveevent-types"></a>Element LiveEvent typów
 
@@ -108,7 +110,7 @@ A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) umożliwia
 > [!NOTE]
 > **LiveOutput**s start przy tworzeniu i Zatrzymaj po usunięciu. Po usunięciu **LiveOutput**, nie powoduje usunięcia podstawowych **zasobów** i zawartości w elemencie zawartości. 
 >
-> Po opublikowaniu **lokalizatora przesyłania strumieniowego**s dla zasobu dla **LiveOutput**, zdarzenie (maksymalna długość okna DVR) będą nadal widoczne do czasu zakończenia **lokalizatora przesyłania strumieniowego**  lub do podczas usuwania Lokalizator osiągnięta jako pierwsza.   
+> Po opublikowaniu **LiveOutput** zasobów przy użyciu **StreamingLocator**, **element LiveEvent** (maksymalna długość okna DVR) nadal będzie widoczny do momentu **StreamingLocator**jego wygaśnięcia lub usunięcia, zależnie co nastąpi wcześniej.
 
 Aby uzyskać więcej informacji, zobacz [używanie funkcji DVR w chmurze](live-event-cloud-dvr.md).
 

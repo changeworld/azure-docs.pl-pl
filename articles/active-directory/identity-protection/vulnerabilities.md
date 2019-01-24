@@ -5,7 +5,7 @@ services: active-directory
 keywords: Usługa Azure active directory identity protection rozwiązania cloud discovery, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
 ms.component: conditional-access
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 680e52fefd8256b3ac270e8d721f27645ced49eb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 12440a8da63f19961322f06fd2459a28119e9d59
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004264"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463205"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Luki w zabezpieczeniach wykryte przez usługi Azure Active Directory Identity Protection
 Luki w zabezpieczeniach występują luki w środowisku, które może być wykorzystane przez osobę atakującą. Firma Microsoft zaleca tych luk w celu zwiększenia poziomu bezpieczeństwa organizacji i uniemożliwić osobom atakującym ich wykorzystania.
@@ -40,7 +40,7 @@ Usługa Azure Multi-Factor authentication udostępnia drugą warstwę zabezpiecz
 
 Firma Microsoft zaleca, wymagają usługi Azure Multi-Factor Authentication do logowania użytkownika. Uwierzytelnianie wieloskładnikowe odgrywa kluczową rolę w zasadach dostępu warunkowego na podstawie ryzyka dostępne za pośrednictwem Identity Protection.
 
-Aby uzyskać więcej informacji, zobacz [co to jest uwierzytelnianie wieloskładnikowe systemu Azure?](../authentication/multi-factor-authentication.md)
+Aby uzyskać więcej informacji, zobacz [What is Azure Multi-Factor Authentication? (Co to jest usługa Azure Multi-Factor Authentication?)](../authentication/multi-factor-authentication.md)
 
 ## <a name="unmanaged-cloud-apps"></a>Niezarządzane aplikacje w chmurze
 Tę lukę w zabezpieczeniach pomaga zidentyfikować niezarządzane aplikacje w chmurze w Twojej organizacji.
@@ -58,9 +58,9 @@ Aby użytkownicy mogli wykonywać operacje uprzywilejowane, organizacje muszą u
 
 Zaleca się, że Twoja organizacja używa usługi Azure AD Privileged Identity Management do zarządzanie, sterowanie i monitorowanie uprzywilejowanych tożsamości oraz ich dostępu do zasobów w usłudze Azure AD, a także innych usług online firmy Microsoft, takich jak usługi Office 365 lub Microsoft Intune.
 
-Aby uzyskać więcej informacji, zobacz [usługi Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md). 
+Aby uzyskać więcej informacji, zobacz [Usługa Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md). 
 
 ## <a name="see-also"></a>Zobacz także
 
-[Usługa Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+[Ochrona tożsamości w usłudze Azure Active Directory](../active-directory-identityprotection.md)
 

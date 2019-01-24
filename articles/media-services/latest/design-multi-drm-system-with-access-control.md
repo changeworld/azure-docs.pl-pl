@@ -1,5 +1,5 @@
 ---
-title: Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu — usługi Azure Media Services | Dokumentacja firmy Microsoft
+title: Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu — usługa Azure Media Services | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat licencjonowania programu Microsoft Smooth Streaming klienta przenoszenie SDK.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3e9909de5ec05710214279357134112804ab4ceb
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 40e7f257df41fa4836b9df692be48a4b6c57fc80
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191245"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813002"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Projekt systemu multi-DRM ochrony zawartości przy użyciu kontroli dostępu 
 
@@ -145,7 +145,7 @@ W poniższej tabeli przedstawiono mapowania.
 | **Zarządzanie kluczami** |Nie wymagane przez implementację referencyjną |
 | **Zarządzanie zawartością** |Aplikacja konsolowa C# |
 
-Innymi słowy tożsamości i usługi STS są dostarczane przez usługę Azure AD. [Interfejsu API usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/) jest używany dla gracza. Usługi Azure Media Services i usługi Azure Media Player Obsługa CENC DASH, technologii FairPlay za pośrednictwem HLS, PlayReady za pośrednictwem funkcji smooth streaming i szyfrowania AES-128 dla DASH, HLS i smooth.
+Innymi słowy tożsamości i usługi STS są dostarczane przez usługę Azure AD. [Interfejsu API usługi Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/) jest używany dla gracza. Usługi Azure Media Services i usługi Azure Media Player obsługuje CENC za pośrednictwem DASH, technologii FairPlay za pośrednictwem HLS, PlayReady za pośrednictwem funkcji smooth streaming i szyfrowanie AES-128 dla DASH, HLS i smooth.
 
 Na poniższym diagramie przedstawiono ogólną strukturę i przepływ za pomocą poprzedniej mapowania technologii:
 

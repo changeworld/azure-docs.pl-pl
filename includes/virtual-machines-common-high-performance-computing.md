@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 2a2d5f9c85a881dad8f53f81a39c84d4a34b632e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360194"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54440477"
 ---
 Organizacje mają potrzebami obliczeniowymi na dużą skalę. Tych obciążeń funkcji dużych obliczeń obejmują projektowaniem inżynierskim i analizy, obliczeniami w zakresie ryzyka finansowego, renderowaniem obrazu, złożonym modelowaniem, Symulacje Monte Carlo i inne. 
 
@@ -95,7 +95,7 @@ Instrukcje:
 
 * [Instalowanie i konfigurowanie CycleCloud przy użyciu szablonu usługi Resource Manager](https://docs.microsoft.com/azure/cyclecloud/quickstart-install-cyclecloud)
 
-* [Konfiguruj CycleCloud ręcznie](https://docs.microsoft.com/azure/cyclecloud/quickstart-installation)
+* [Konfiguruj CycleCloud ręcznie](https://docs.microsoft.com/azure/cyclecloud/installation)
 
 ## <a name="azure-batch"></a>Azure Batch
 

@@ -3,7 +3,7 @@ title: Przenieś aplikacje z usług AD FS do usługi Azure AD. | Microsoft Docs
 description: Ten artykuł ma ułatwić organizacjom zrozumienie sposobu przenoszenia aplikacji do usługi Azure AD, ze szczególnym uwzględnieniem federacyjnych aplikacji SaaS.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: cf8ce4d39d0097c1ec1866a0aad071a2b5d8908f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141938"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474272"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Przenieś aplikacje z usług AD FS do usługi Azure AD 
 
@@ -92,8 +92,8 @@ Następujące tabele mapują kluczowe koncepcje współdzielone przez usługi AD
 
 ### <a name="representing-the-app-in-azure-ad-or-ad-fs"></a>Reprezentowanie aplikacji w usługach Azure AD lub AD FS
 Migracja rozpoczyna się od oceny konfiguracji aplikacji w środowisku lokalnym i sposobu mapowania tej konfiguracji do usługi Azure AD. Poniższa tabela przedstawia mapowanie elementów konfiguracji jednostek uzależnionych usług AD FS na odpowiednie elementy w usłudze Azure AD.  
-- Termin dotyczący usług AD FS: jednostka uzależniona lub zaufanie jednostki uzależnionej.
-- Termin dotyczący usługi Azure AD: aplikacja dla przedsiębiorstw lub rejestracja aplikacji (w zależności od typu aplikacji).
+- Termin dotyczący usług AD FS: Jednostki zależnej lub zaufanie jednostki uzależnionej.
+- Termin dotyczący usług AD platformy Azure: Enterprise aplikacji lub rejestracja aplikacji (w zależności od typu aplikacji).
 
 |Element konfiguracji aplikacji|Opis|Lokalizacja w konfiguracji usług AD FS|Odpowiednia lokalizacja w konfiguracji usługi Azure AD|Element tokenu języka SAML|
 |-----|-----|-----|-----|-----|
@@ -124,7 +124,7 @@ Poniższa tabela opisuje kluczowe elementy konfiguracji dostawcy tożsamości s�
 |Dostawca tożsamości </br>wylogowanie </br>Adres URL|Adres URL wylogowania dostawcy tożsamości z perspektywy aplikacji (do którego użytkownik jest przekierowywany w celu wylogowania z aplikacji).|W usługach AD FS adres URL wylogowania jest taki sam jak adres URL logowania lub jest to ten sam adres URL z dołączonym ciągiem „wa=wsignout1.0”. Na przykład: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Odpowiadająca wartość w usłudze Azure AD zależy od tego, czy aplikacja obsługuje wylogowywanie w protokole SAML 2.0.</br></br>Jeśli aplikacja obsługuje wylogowywanie w protokole SAML, wartość jest zgodna z wzorcem, w którym wartość {identyfikator-dzierżawy} jest zastępowana identyfikatorem dzierżawy. Znaleźć go można w witrynie Azure Portal w obszarze **Azure Active Directory** > **Właściwości** w polu **Identyfikator katalogu**: https&#58;//login.microsoftonline.com/{identyfikator-dzierżawy}/saml2</br></br>Jeśli aplikacja nie obsługuje wylogowywania w protokole SAML: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
 |Token </br>podpisywanie </br>certyfikat|Certyfikat, którego klucz prywatny jest używany przez dostawcę tożsamości do podpisywania wystawionych tokenów. Weryfikuje, że token pochodzi od tego samego dostawcy tożsamości, z którym aplikacja ma skonfigurowaną relację zaufania.|Certyfikat podpisywania tokenu usług AD FS znajduje się w funkcji zarządzania usługami AD FS w obszarze **Certyfikaty**.|W usłudze Azure AD certyfikat podpisywania tokenu można znaleźć we właściwościach **Logowanie jednokrotne** aplikacji w witrynie Azure Portal w obszarze **Certyfikat podpisywania SAML**. W tym miejscu możesz pobrać certyfikat, aby następnie przekazać go do aplikacji.</br></br> Jeśli aplikacja ma więcej niż jeden certyfikat, wszystkie certyfikaty można znaleźć w pliku XML metadanych federacji.|
 |Identyfikator/</br>„wystawca”|Identyfikator dostawcy tożsamości z perspektywy aplikacji (czasami nazywany „identyfikatorem wystawcy”).</br></br>W tokenie języka SAML wartość jest wyświetlana jako element **Issuer**.|Identyfikator w usługach AD FS to zazwyczaj identyfikator usługi federacyjnej w funkcji zarządzania usługami AD FS w obszarze **Usługa** > **Edytuj właściwości usługi federacyjnej**. Na przykład: http&#58;//fs.contoso.com/adfs/services/trust|Odpowiadająca wartość w usłudze Azure AD jest zgodna z wzorcem, w którym wartość {identyfikator-dzierżawy} jest zastępowana identyfikatorem dzierżawy. Znaleźć go można w witrynie Azure Portal w obszarze **Azure Active Directory** > **Właściwości** w polu **Identyfikator katalogu**: https&#58;//sts.windows.net/{identyfikator-dzierżawy}/|
-|Dostawca tożsamości </br>federacja </br>metadane|Lokalizacja publicznie dostępnych metadanych federacji dostawcy tożsamości. (Niektóre aplikacje używają metadanych federacji jako alternatywy sytuacji, w której administrator indywidualnie konfiguruje adresy URL, identyfikator i certyfikat podpisywania tokenu).|Adres URL metadanych federacji usług AD FS można znaleźć w funkcji zarządzania usługami AD FS w obszarze **Usługa** > **Punkty końcowe** > **Metadane** > **Typ: Metadane federacji**. Na przykład: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Odpowiadająca wartość w usłudze Azure AD jest zgodna z wzorcem https&#58;//login.microsoftonline.com/{NazwaDomenyDzierżawy}/FederationMetadata/2007-06/FederationMetadata.xml. Wartość {NazwaDomenyDzierżawy} jest zastępowana nazwą dzierżawy w formacie „contoso.onmicrosoft.com”. </br></br>Aby uzyskać więcej informacji, zobacz [Metadane federacji](../develop/azure-ad-federation-metadata.md).
+|Dostawca tożsamości </br>federacja </br>metadane|Lokalizacja publicznie dostępnych metadanych federacji dostawcy tożsamości. (Niektóre aplikacje używają metadanych federacji jako alternatywy sytuacji, w której administrator indywidualnie konfiguruje adresy URL, identyfikator i certyfikat podpisywania tokenu).|Znajdź adres URL do metadanych Federacji usługi AD FS w zarządzania usługami AD FS w obszarze **usługi** > **punktów końcowych** > **metadanych**  >   **Typ: Metadane Federacji**. Na przykład: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Odpowiadająca wartość w usłudze Azure AD jest zgodna z wzorcem https&#58;//login.microsoftonline.com/{NazwaDomenyDzierżawy}/FederationMetadata/2007-06/FederationMetadata.xml. Wartość {NazwaDomenyDzierżawy} jest zastępowana nazwą dzierżawy w formacie „contoso.onmicrosoft.com”. </br></br>Aby uzyskać więcej informacji, zobacz [Metadane federacji](../develop/azure-ad-federation-metadata.md).
 
 ## <a name="moving-saas-apps"></a>Przenoszenie aplikacji SaaS
 Przenoszenie aplikacji SaaS z usług AD FS lub innego dostawcy tożsamości do usługi Azure AD jest obecnie procesem wykonywanym ręcznie. Aby uzyskać wskazówki specyficzne dla aplikacji, zobacz [listę samouczków dotyczących integrowania aplikacji SaaS znajdujących się w witrynie Marketplace](../saas-apps/tutorial-list.md).
@@ -210,19 +210,19 @@ Aby zweryfikować dostęp: aplikacja SaaS powinna być widoczna w [panelu dostę
 ### <a name="configure-the-saas-app"></a>Konfigurowanie aplikacji SaaS
 Proces migracji jednorazowej z federacji lokalnej do usługi Azure AD zależy od tego, czy aplikacja SaaS, z którą pracujesz, obsługuje wielu dostawców tożsamości. Poniżej przedstawiono niektóre często zadawane pytania dotyczące obsługi wielu dostawców tożsamości:
 
-   **Pyt.: Co to znaczy, że aplikacja obsługuje wielu dostawców tożsamości?**
+   **Pyt.: Co to oznacza dla aplikacji do obsługi wielu dostawców tożsamości?**
     
-   Odp.: Aplikacje SaaS, które obsługują wielu dostawców tożsamości, umożliwiają wprowadzanie wszystkich informacji o nowym dostawcy tożsamości (w naszym przypadku o usłudze Azure AD) przed zatwierdzeniem zmian środowiska logowania. Po zakończeniu konfigurowania można przełączyć konfigurację uwierzytelniania aplikacji tak, aby wskazywała usługę Azure AD.
+   Odp.: Aplikacje SaaS, które obsługują wielu dostawców tożsamości, umożliwiają wprowadzanie wszystkich informacji o nowym dostawcy tożsamości (w naszym przypadku o usłudze Azure AD) przed zatwierdzeniem zmian środowiska logowania jednokrotnego. Po zakończeniu konfigurowania można przełączyć konfigurację uwierzytelniania aplikacji tak, aby wskazywała usługę Azure AD.
 
-   **Pyt.: Dlaczego ważne jest, czy aplikacja obsługuje wielu dostawców tożsamości?**
+   **Pyt.: Dlaczego ważne jest, jeśli aplikacja obsługuje wielu dostawców tożsamości?**
 
-   Odp.: Jeśli opcja wielu dostawców tożsamości nie jest obsługiwana, administrator musi zarezerwować krótki przedział czasu jako okres niedostępności usługi lub niedostępności z powodu konserwacji. W tym okresie usługa Azure AD zostanie skonfigurowana jako nowy dostawca tożsamości aplikacji. Należy powiadomić użytkowników, że podczas tej niedostępności nie będą mogli logować się do swoich kont.
+   Odp.: Jeśli nie obsługują wielu dostawców tożsamości, administrator musi zarezerwować krótki przedział czasu jako usługę lub obsługi awarii, w którym usługi Azure AD skonfigurowana jako nowy dostawca tożsamości aplikacji. Należy powiadomić użytkowników, że podczas tej niedostępności nie będą mogli logować się do swoich kont.
 
    Jeśli aplikacja obsługuje wielu dostawców tożsamości, konfigurację dodatkowego dostawcy tożsamości można przeprowadzić z wyprzedzeniem. Administrator może wtedy zmienić dostawcę tożsamości podczas jednorazowej migracji platformy Azure.
 
    Jeśli aplikacja obsługuje wielu dostawców tożsamości i wybierzesz wielu dostawców tożsamości do jednoczesnej obsługi uwierzytelniania podczas logowania, użytkownik może wskazać dostawcę tożsamości na potrzeby uwierzytelnienia na swojej stronie logowania.
 
-#### <a name="example-support-for-multiple-idps"></a>Przykład: obsługa wielu dostawców tożsamości
+#### <a name="example-support-for-multiple-idps"></a>Przykład: Obsługa wielu dostawców tożsamości
 Na przykład w aplikacji Salesforce konfigurację dostawcy tożsamości można znaleźć w obszarze **Settings (Ustawienia)** > **Company Settings (Ustawienia firmowe)** > **My Domain (Moja domena)** > **Authentication Configuration (Konfiguracja uwierzytelniania)**.
 
 ![Sekcja „Authentication Configuration” (Konfiguracja uwierzytelniania) w aplikacji Salesforce](media/migrate-adfs-apps-to-azure/migrate9.png)
@@ -231,7 +231,7 @@ Ze względu na konfigurację utworzoną wcześniej w obszarze **Identity (Tożsa
 
 ![Wybieranie usługi Azure AD jako usługi uwierzytelniania](media/migrate-adfs-apps-to-azure/migrate10.png)
 
-### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Opcjonalnie: konfigurowanie aprowizowania użytkowników w usłudze Azure AD
+### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Opcjonalnie: Konfigurowanie aprowizowania użytkowników w usłudze Azure AD
 Jeśli chcesz, aby usługa Azure AD bezpośrednio obsługiwała aprowizowanie użytkowników dla danej aplikacji SaaS, zobacz [Automatyzowanie aprowizacji i anulowania aprowizacji użytkowników w aplikacjach SaaS przy użyciu usługi Azure Active Directory](user-provisioning.md).
 
 ## <a name="next-steps"></a>Kolejne kroki

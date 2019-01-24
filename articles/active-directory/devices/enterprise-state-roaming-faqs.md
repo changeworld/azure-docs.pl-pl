@@ -5,7 +5,7 @@ services: active-directory
 keywords: Enterprise stan ustawień mobilnego dostępu systemu windows w chmurze, często zadawane pytania dotyczące roaming stanu dla przedsiębiorstw
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.component: devices
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 9f3d171a8f0e353d5860f410a8c32149f8872338
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a7e5060862a07951072e8bb970831044f81892fd
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189392"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448980"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming ustawień i danych — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na kilka pytań, na które Administratorzy IT mogą się pojawić w ustawień i synchronizacji danych w aplikacji.

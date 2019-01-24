@@ -3,22 +3,22 @@ title: Usługa Azure transferu wiadomości usługi Service Bus, blokady i uzgadn
 description: Omówienie operacji rozliczenia i transfery komunikatów usługi Service Bus
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: spelluru
-ms.openlocfilehash: a1835e26f67427f84abd8a3cf24ad196fec8e99d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: aschhab
+ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854426"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846451"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Transferowanie, blokady i uzgadnianie komunikatów
 
@@ -96,7 +96,7 @@ Za pomocą niskiego poziomu klienta protokołu AMQP usługi Service Bus akceptuj
 
 ## <a name="settling-receive-operations"></a>Operacje rozliczania odbioru
 
-Dla operacji odbioru, klienci interfejsu API usługi Service Bus włączyć dwa różne tryby jawne: *odbieranie i usuwanie* i *Odbierz*.
+Dla operacji odbioru, klienci interfejsu API usługi Service Bus włączyć dwa różne tryby jawne: *Odbieranie i usuwanie* i *Odbierz*.
 
 [Odbieranie i usuwanie](/dotnet/api/microsoft.servicebus.messaging.receivemode) tryb informuje brokera wziąć pod uwagę wszystkie komunikaty, które wysyła do klienta odbieranie jako rozliczona kiedy wysyłane. Oznacza to, że wiadomość jest uważana za używane tak szybko, jak broker ma umieścić go na podczas transmisji. Jeśli transfer komunikatów nie powiedzie się, komunikat zostanie utracony.
 

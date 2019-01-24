@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9ff75cbd0a4915cdf7045be9a45d11075dda15bd
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045300"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402323"
 ---
 # <a name="u-sql-programmability-guide"></a>Podręcznik programowania U-SQL
 
@@ -135,7 +135,7 @@ Każdy przekazany zestawu biblioteki DLL i pliku zasobów, takich jak różne ś
 
 Na koniec należy pamiętać, że każda baza danych U-SQL może zawierać tylko jedną wersję dowolnego danego zestawu. Na przykład jeśli potrzebujesz, zarówno w wersji 7 i 8 wersję biblioteki NewtonSoft Json.Net, należy zarejestrować je w dwóch różnych bazach danych. Ponadto każdy skrypt może odwoływać się tylko do jednej wersji danego zestawu biblioteki DLL. W związku z tym U-SQL używa semantyki C# zestawu zarządzania i przechowywania wersji.
 
-## <a name="use-user-defined-functions-udf"></a>Używanie funkcji zdefiniowanej przez użytkownika: funkcji zdefiniowanej przez użytkownika
+## <a name="use-user-defined-functions-udf"></a>Użyj funkcji zdefiniowanych przez użytkownika: UDF
 Funkcje zdefiniowane przez użytkownika języka U-SQL lub funkcji definiowanych przez użytkownika, programowania procedur, które akceptują parametry, wykonania akcji (na przykład skomplikowanego obliczenia) i zwracają wynik tego działania jako wartość. Wartość zwracana funkcji zdefiniowanej przez użytkownika może być tylko jednego skalarną. UDF języka U-SQL może zostać wywołany w podstawowej skrypt U-SQL, takich jak dowolnego innego języka C# funkcji skalarnej.
 
 Firma Microsoft zaleca inicjowania funkcje zdefiniowane przez użytkownika języka U-SQL jako **publicznych** i **statyczne**.
@@ -426,7 +426,7 @@ Plik wyjściowy jest następująca:
 
 W przykładzie pokazano bardziej skomplikowanych scenariuszy przypadków użycia, w której używamy zmienną globalną wewnątrz sekcji związanym z kodem, które są stosowane do całej pamięci zestawu wierszy.
 
-## <a name="use-user-defined-types-udt"></a>Używanie typów zdefiniowanych przez użytkownika: UDT
+## <a name="use-user-defined-types-udt"></a>Użyj typów zdefiniowanych przez użytkownika: UDT
 Typy zdefiniowane przez użytkownika lub UDT, jest inna funkcja programowania U-SQL. UDT U-SQL zachowuje się jak zwykły typ C# zdefiniowanych przez użytkownika. C# to silnie typizowany język, który umożliwia korzystanie z wbudowanych i niestandardowych typów zdefiniowanych przez użytkownika.
 
 U-SQL nie można niejawnie serializować lub deserializować dowolnych typów zdefiniowanych przez użytkownika, gdy UDT zostaną przekazane między wierzchołków zestawów wierszy. Oznacza to, że użytkownik będzie musiał podać jawne elementu formatującego za pomocą interfejs IFormatter. To zapewnia serializacja U-SQL i deserializować metod dla typu.
@@ -504,7 +504,7 @@ Konstruktor klasy:
 
 * SqlUserDefinedTypeAttribute (elementu formatującego typu)
 
-* Element formatujący typu: wymaganego parametru, aby zdefiniować element formatujący UDT — w szczególności typ `IFormatter` interfejsu muszą być przekazywane w tym miejscu.
+* Element formatujący typu: Wymagany parametr do zdefiniowania elementu formatującego UDT — w szczególności typ `IFormatter` interfejsu muszą być przekazywane w tym miejscu.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -529,13 +529,13 @@ public class MyTypeFormatter : IFormatter<MyType>
 
 \<typeparam name = "T" > główny typ wykresu obiektu do serializacji i deserializacji.
 
-* **Deserializacji**: deserializuje dane na podany strumień i reconstitutes grafu obiektów.
+* **Deserializacji**: Deserializuje dane na podany strumień i reconstitutes grafu obiektów.
 
 * **Serializowanie**: Serializuje obiekt lub grafu obiektów z danym elementem głównym do podanego strumienia.
 
-`MyType` wystąpienia: wystąpienie typu.  
-`IColumnWriter` Moduł zapisujący / `IColumnReader` czytnik: zasadniczy strumień kolumny.  
-`ISerializationContext` kontekst: wyliczenia, który definiuje zestaw flag, który określa kontekst źródle lub miejscu docelowym dla strumienia podczas serializacji.
+`MyType` Wystąpienie: Wystąpienie tego typu.  
+`IColumnWriter` Moduł zapisujący / `IColumnReader` czytnik: Zasadniczy strumień kolumny.  
+`ISerializationContext` Kontekst: Wyliczenie, który definiuje zestaw flag, który określa kontekst źródle lub miejscu docelowym dla strumienia podczas serializacji.
 
 * **Pośredni**: Określa, czy kontekst źródle lub miejscu docelowym nie jest magazynu trwałego.
 
@@ -946,7 +946,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
 * T1: Pierwszy parametr do
-* T2: Pierwszy parametr gromadzenie
+* T2: Pierwszy parametr do
 * TResult: Zwracany typ zakończenia
 
 Na przykład:
@@ -1025,7 +1025,7 @@ OUTPUT @rs1 TO @output_file USING Outputters.Text();
 
 W tym scenariuszu przypadek użycia możemy łączenie klasy identyfikatorów GUID dla konkretnych użytkowników.
 
-## <a name="use-user-defined-objects-udo"></a>Za pomocą obiektów zdefiniowanych przez użytkownika: operatory zdefiniowane przez użytkownika
+## <a name="use-user-defined-objects-udo"></a>Za pomocą obiektów zdefiniowanych przez użytkownika: UDO
 U-SQL umożliwia zdefiniowanie programowania niestandardowe obiekty, które są nazywane obiekty zdefiniowane przez użytkownika lub operatora zdefiniowanego przez użytkownika.
 
 Oto lista operatory zdefiniowane przez użytkownika w języku U-SQL:
@@ -1055,10 +1055,10 @@ Oto lista operatory zdefiniowane przez użytkownika w języku U-SQL:
 
 Operatory zdefiniowane przez użytkownika jest zwykle nazywany jawnie w skrypcie U-SQL w ramach następujących instrukcji języka U-SQL:
 
-* WYODRĘBNIJ
+* EXTRACT
 * DANE WYJŚCIOWE
 * PROCES
-* ŁĄCZENIE
+* COMBINE
 * ZMNIEJSZ
 
 > [!NOTE]  
@@ -1067,11 +1067,11 @@ Operatory zdefiniowane przez użytkownika jest zwykle nazywany jawnie w skrypcie
 ## <a name="use-user-defined-extractors"></a>Użyj zdefiniowanych przez użytkownika ekstraktory
 U-SQL umożliwia importowanie danych zewnętrznych przy użyciu instrukcji WYODRĘBNIANIA. Instrukcja WYODRĘBNIANIA można użyć wbudowanych ekstraktory operatory zdefiniowane przez użytkownika:  
 
-* *Extractors.Text()*: umożliwia wyodrębnianie z rozdzielanych plików tekstowych różnych kodowań.
+* *Extractors.Text()*: Udostępnia wyodrębniania z rozdzielanych plików tekstowych różne kodowania.
 
-* *Extractors.Csv()*: zapewnia wyodrębniania z wartości rozdzielanych przecinkami (CSV) plików różnych kodowań.
+* *Extractors.Csv()*: Zapewnia wyodrębniania z wartości rozdzielanych przecinkami (CSV) plików różnych kodowań.
 
-* *Extractors.Tsv()*: udostępnia plików (TSV) z różnych kodowań wyodrębniania wartości rozdzielane znakami tabulacji.
+* *Extractors.Tsv()*: Udostępnia wyodrębniania wartości rozdzielane znakami tabulacji pliki (TSV) z różnych kodowań.
 
 Może być przydatne do tworzenia niestandardowy moduł wyodrębniający. Może to być przydatne podczas importowania danych, jeśli chcemy wykonać jedną z następujących zadań:
 
@@ -1097,7 +1097,7 @@ public class SampleExtractor : IExtractor
 
 SqlUserDefinedExtractor jest opcjonalny atrybut LUCZ definicji. Go używać do definiowania AtomicFileProcessing właściwości dla obiektu LUCZ.
 
-* wartość logiczna AtomicFileProcessing   
+* bool     AtomicFileProcessing   
 
 * **wartość true,** = wskazuje, że ta ekstraktor wymaga atomic plików wejściowych (JSON, XML,...)
 * **FALSE** = wskazuje, że ta ekstraktor poradzenie sobie z plików dzielenie / rozproszonej (CSV, SEQ...)
@@ -1219,9 +1219,9 @@ OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ## <a name="use-user-defined-outputters"></a>Użyj outputters zdefiniowanych przez użytkownika
 Outputter zdefiniowanych przez użytkownika jest innego języka U-SQL operatory zdefiniowane przez użytkownika, który umożliwia rozszerzanie wbudowanych funkcji języka U-SQL. Podobnie jak wyodrębnianie, istnieje kilka wbudowanych outputters.
 
-* *Outputters.Text()*: zapisuje dane do rozdzielanych plików tekstowych różnych kodowań.
-* *Outputters.Csv()*: zapisuje dane do plików różnych kodowań rozdzielanymi przecinkami (CSV).
-* *Outputters.Tsv()*: zapisuje dane do plików różnych kodowań wartości rozdzielane tabulatorami (TSV).
+* *Outputters.Text()*: Zapisuje dane do rozdzielanych plików tekstowych różnych kodowań.
+* *Outputters.Csv()*: Zapisuje dane do plików różnych kodowań rozdzielanymi przecinkami (CSV).
+* *Outputters.Tsv()*: Zapisuje dane do plików różnych kodowań wartości rozdzielane tabulatorami (TSV).
 
 Outputter niestandardowych umożliwia zapisywanie danych w niestandardowym formacie zdefiniowane. Może to być przydatne w przypadku następujących zadań:
 
@@ -1275,7 +1275,7 @@ public class MyOutputter : IOutputter
 
 SqlUserDefinedOutputter jest opcjonalny atrybut definicji outputter zdefiniowanych przez użytkownika. Służy do definiowania właściwości AtomicFileProcessing.
 
-* wartość logiczna AtomicFileProcessing   
+* bool     AtomicFileProcessing   
 
 * **wartość true,** = wskazuje, że ta outputter wymaga pliki wyjściowe niepodzielne (JSON, XML,...)
 * **FALSE** = wskazuje, że to outputter poradzenie sobie z plikami dzielenie / rozproszonej (CSV, SEQ...)
@@ -1300,7 +1300,7 @@ string val = row.Get<string>(col.Name)
 
 Takie podejście umożliwia tworzenie elastycznych outputter dla dowolnego schematu metadanych.
 
-Dane wyjściowe są zapisywane do pliku za pomocą `System.IO.StreamWriter`. Parametr strumienia jest ustawiony na `output.BaseStrea` jako część `IUnstructuredWriter output`.
+Dane wyjściowe są zapisywane do pliku za pomocą `System.IO.StreamWriter`. Parametr strumienia jest ustawiony na `output.BaseStream` jako część `IUnstructuredWriter output`.
 
 Należy pamiętać, że ważne jest, aby opróżniania buforu danych do pliku po każdej iteracji wiersza. Ponadto `StreamWriter` atrybutem możliwe do rozporządzania włączone (ustawienie domyślne) i za pomocą, można użyć obiektu **przy użyciu** — słowo kluczowe:
 
@@ -1775,7 +1775,7 @@ W tym scenariuszami przypadków użycia applier zdefiniowanych przez użytkownik
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
-303 Y0AB2CD34XY458890   Shevrolet,Cruise,2010,4Dr,32455
+303 Y0AB2CD34XY458890   Chevrolet,Cruise,2010,4Dr,32455
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 

@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1e679a1d26ce219f7c0248e27d7f9cfffc5fdb4e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445025"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813852"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Role administratorów przez zadanie tożsamości w usłudze Azure Active Directory
 
@@ -117,7 +117,7 @@ Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 Wyłączanie urządzenia | Administrator urządzenia w chmurze | 
 Włączanie urządzenia | Administrator urządzenia w chmurze | 
 Odczyt konfiguracji podstawowej | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Klucze funkcji Bitlocker odczytu | Odczytywanie zabezpieczeń | Hasło administratora, administrator zabezpieczeń
+Klucze funkcji BitLocker odczytu | Odczytywanie zabezpieczeń | Hasło administratora, administrator zabezpieczeń
 
 ## <a name="enterprise-applications"></a>Aplikacje dla przedsiębiorstw
 
@@ -242,7 +242,7 @@ Konfigurowanie właściwości resetowania hasła | Administrator globalny |
 Konfigurowanie rejestracji | Administrator globalny | 
 Przeczytaj całą konfigurację | Administrator użytkownika administratora zabezpieczeń | 
 
-## <a name="privileged-identity-management"></a>Usługa Privileged identity management
+## <a name="privileged-identity-management"></a>Privileged Identity Management
 
 Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
 ---- | --------------------- | ----------------
@@ -317,7 +317,7 @@ Dodawanie użytkownika do roli w katalogu | Administrator roli uprzywilejowanej 
 Dodaj użytkownika do grupy | Administrator kont użytkowników | 
 Przypisywanie licencji | Administrator licencji | Administrator kont użytkowników
 Tworzenie użytkownika-gościa | Osoba zapraszająca gości | Administrator kont użytkowników
-Utwórz użytkownika | Administrator kont użytkowników | 
+Tworzenie użytkownika | Administrator kont użytkowników | 
 Usuwanie użytkowników | Administrator kont użytkowników | 
 Unieważnienie tokenów odświeżania z administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator kont użytkowników | 
 Unieważnienie tokenów odświeżania dla użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator kont użytkowników

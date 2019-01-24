@@ -4,7 +4,7 @@ description: Zawiera podstawowe informacje dotyczące łączników serwera Proxy
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 6476793bc0c7398bb407a8ad2b245f48613717b7
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230067"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461556"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Przekieruj zapisane na stałe linki do aplikacji opublikowanych przy użyciu serwera Proxy aplikacji usługi Azure AD
 
@@ -31,7 +31,7 @@ Najlepszym sposobem, aby upewnić się, że linki działać tak samo i spoza sie
 
 W przypadku domen niestandardowych nie można używać w Twojej dzierżawie, istnieje kilka innych opcji dodaniem tej funkcji. Wszystkie są również zgodne z domenami niestandardowymi i ze sobą nawzajem tak domen niestandardowych i innych rozwiązań, w razie potrzeby można skonfigurować. 
 
-**Opcja 1: Użycie programu Managed Browser** — to rozwiązanie dotyczy tylko jeśli planowane jest zalecane, lub wymagasz, użytkownicy mieli dostęp do aplikacji za pomocą usługi Intune Managed Browser. Będzie ona obsługiwać wszystkie opublikowane adresy URL. 
+**Opcja 1: Użyj programu Managed Browser** — to rozwiązanie dotyczy tylko jeśli planowane jest zalecane, lub wymagasz, użytkownicy mieli dostęp do aplikacji za pomocą usługi Intune Managed Browser. Będzie ona obsługiwać wszystkie opublikowane adresy URL. 
 
 **Opcja 2: Za pomocą rozszerzenia MyApps** — to rozwiązanie wymaga od użytkowników można zainstalować rozszerzenia przeglądarki po stronie klienta, ale będą obsługiwać wszystkie opublikowane adresy URL, który działa w najbardziej popularnych przeglądarek. 
 
@@ -60,7 +60,7 @@ Aby użyć tej funkcji, użytkownik musi pobrać rozszerzenie i zalogować się.
 
  
 
-### <a name="option-3-link-translation-setting"></a>Opcja 3: Link translację 
+### <a name="option-3-link-translation-setting"></a>Opcja 3: Ustawienie tłumaczenia łącze 
 
 Podczas tłumaczenia łącze jest włączone, usługa serwera Proxy aplikacji wyszukuje przy użyciu języków HTML i CSS opublikowanych łączy wewnętrznych i tłumaczy je tak, aby użytkownicy pobierają nieprzerwaną środowisko. 
 
@@ -85,7 +85,7 @@ Istnieją dwie typowe rodzaje łączy wewnętrznych w aplikacjach środowiska lo
 
 Tłumaczenie łącze jest włączone dla każdej aplikacji tak, aby mieć kontrolę nad środowiskiem użytkownika na poziomie poszczególnych aplikacji. Włącz tłumaczenia link dla aplikacji, jeśli chcesz, aby linki *z* tej aplikacji, które ma zostać poddany translacji, nie łączy *do* tej aplikacji. 
 
-Na przykład załóżmy, że masz trzy aplikacje opublikowane za pośrednictwem serwera Proxy aplikacji, że wszystkie łączą się wzajemnie: korzyści, kosztów i podróży. Brak aplikacji czwarty opinię, która nie jest opublikowana przy użyciu serwera Proxy aplikacji.
+Na przykład załóżmy, że masz trzy aplikacje opublikowane za pośrednictwem serwera Proxy aplikacji, że wszystkie łączą się wzajemnie: Korzyści, kosztów i podróży. Brak aplikacji czwarty opinię, która nie jest opublikowana przy użyciu serwera Proxy aplikacji.
 
 Po włączeniu tłumaczenia link aplikacji korzyści, łącza do kosztów i podróże są przekierowywane do zewnętrznych adresów URL dla tych aplikacji, ale nie zostanie przekierowana łącze do informacji zwrotnych, ponieważ nie istnieje żadne zewnętrznego adresu URL. Linki z wydatków i podróży do korzyści nie działa, ponieważ łącze tłumaczenia nie został włączony dla tych dwóch aplikacji.
 

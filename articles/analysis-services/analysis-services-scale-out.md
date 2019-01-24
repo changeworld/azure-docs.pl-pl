@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190845"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411683"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
@@ -107,7 +107,7 @@ SSMS, SSDT i parametry połączenia w programie PowerShell, użyj aplikacji funk
 
 **Problem:** Użytkownicy otrzymują błąd **nie można odnaleźć serwera "\<nazwa serwera >" wystąpienie w trybie połączenia "ReadOnly".**
 
-**Rozwiązanie:** Podczas wybierania **oddziel serwer przetwarzania od puli zapytań** opcji połączeń klienta za pomocą domyślne parametry połączenia (bez: rw) są przekierowywane do repliki puli zapytania. Jeśli replik w puli zapytania nie zostały jeszcze w trybie online ponieważ synchronizacji nie został jeszcze zostały zakończone, połączeń przekierowanego klienckich może zakończyć się niepowodzeniem. Aby zapobiec połączenia zakończone niepowodzeniem, należy zrezygnować z oddziel serwer przetwarzania od puli zapytań, dopiero po zakończeniu operacji skalowania w poziomie i synchronizacji. Metryki pamięci i QPU służy do monitorowania stanu synchronizacji.
+**Rozwiązanie:** Podczas wybierania **oddziel serwer przetwarzania od puli zapytań** opcji połączeń klienta za pomocą domyślne parametry połączenia (bez: rw) są przekierowywane do repliki puli zapytania. Jeśli replik w puli zapytania nie zostały jeszcze w trybie online ponieważ synchronizacji nie został jeszcze zostały zakończone, połączeń przekierowanego klienckich może zakończyć się niepowodzeniem. Aby zapobiec połączenia zakończone niepowodzeniem, musi istnieć co najmniej dwa serwery w puli zapytania podczas przeprowadzania synchronizacji. Każdy serwer jest synchronizowany indywidualnie, podczas gdy inne pozostać w trybie online. Jeśli zdecydujesz się w puli zapytań podczas przetwarzania nie istnieje serwer przetwarzania, można usunąć go z puli do przetwarzania, a następnie dodaj go do puli po przetwarzanie zostało ukończone, ale przed synchronizacją. Metryki użycia pamięci i QPU, aby monitorować stan synchronizacji.
 
 ## <a name="related-information"></a>Informacje pokrewne
 

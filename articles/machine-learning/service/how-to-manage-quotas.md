@@ -11,12 +11,12 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1ef0fc9037548a58d9b0a4f46c212a43796d529b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6a08a5a79a8a072bd4621a7e200e84c2c71c9cd4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231601"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475071"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Zarządzanie i zażądać przydziały dla zasobów platformy Azure
 
@@ -46,7 +46,7 @@ Należy podkreślić, że rdzenie maszyny wirtualnej mają regionalny limit cał
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-Listę bardziej szczegółowe i aktualne limity przydziału można znaleźć w artykule przydziału platformy Azure na poziomie [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits#subscription-limits-1).
+Listę bardziej szczegółowe i aktualne limity przydziału można znaleźć w artykule przydziału platformy Azure na poziomie [tutaj](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
 ### <a name="azure-machine-learning-compute"></a>Usługi Azure Machine Learning obliczeń
 Azure obliczeniowego usługi Machine Learning ma domyślny limit przydziału liczby zasobów obliczeniowych unikatowy dozwolone na region w ramach subskrypcji i liczby rdzeni. Ten limit przydziału jest wykonywane niezależnie od powyższych przydział rdzeni maszyny Wirtualnej i limity podstawowych nie są obecnie współdzielone między typami dwóch zasobów.

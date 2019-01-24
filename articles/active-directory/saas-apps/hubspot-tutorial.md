@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z HubSpot | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą HubSpot | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i HubSpot.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 76a19668453b35b39359bef442f7f34a06623cbe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 2806288378e5fa080164155b97a47a7046ecbba1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431607"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54814906"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Samouczek: Integracja usługi Azure Active Directory z HubSpot
+# <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HubSpot
 
 W tym samouczku dowiesz się, jak zintegrować HubSpot w usłudze Azure Active Directory (Azure AD).
 
@@ -43,10 +43,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą HubSpot, potrzebne s�
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -69,7 +69,7 @@ Aby skonfigurować integrację HubSpot w usłudze Azure AD, należy dodać HubSp
 
     ![Aplikacje][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -122,9 +122,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL, za pomocą następującego wzorca: `https://api.hubspot.com/login-api/v1/saml/acs?portalId=<CUSTOMER ID>`
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi, które zostało wyjaśnione w dalszej części tego samouczka. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HubSpot](https://help.hubspot.com/) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adres URL odpowiedzi, które zostało wyjaśnione w dalszej części tego samouczka. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HubSpot](https://help.hubspot.com/) do uzyskania tych wartości.
 
-    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+    c. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     ![HubSpot domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/hubspot-tutorial/tutorial_hubspot_url1.png)
 
@@ -164,15 +164,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d. W **pojedynczy znak na adres URL dostawcy tożsamości** pola tekstowego, Wklej **adres URL logowania** wartości, które zostały skopiowane z witryny Azure portal.
 
-    e. Otwórz swoje pobrany **Certificate(Base64)** pliku w Notatniku. Skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikat X.509** pole.
+    e. Otwórz swoje pobrany **Certificate(Base64)** pliku w Notatniku. Skopiuj zawartość go do Schowka, a następnie wklej go do **certyfikat X.509** pole.
 
     f. Kliknij pozycję **Zweryfikuj**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -184,9 +184,9 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/hubspot-tutorial/create_aaduser_02.png)
 
-    a. W **nazwa** pola wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -198,7 +198,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do HubSpot, musi być obsługiwana w HubSpot.
 W przypadku HubSpot Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do Twojej **HubSpot** witryny firmy jako administrator.
 
@@ -210,7 +210,7 @@ W przypadku HubSpot Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
     ![Konfigurowanie logowania jednokrotnego](./media/hubspot-tutorial/user1.png)
 
-4. Kliknij przycisk **Utwórz użytkownika**.
+4. Kliknij pozycję **Create user** (Utwórz użytkownika).
 
     ![Konfigurowanie logowania jednokrotnego](./media/hubspot-tutorial/user2.png)
 
@@ -258,9 +258,9 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka HubSpot w panelu dostępu, powinna pojawić się automatycznie strony logowania, HubSpot aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

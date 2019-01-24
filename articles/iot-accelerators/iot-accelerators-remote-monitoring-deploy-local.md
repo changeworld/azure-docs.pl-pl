@@ -6,14 +6,14 @@ manager: hegate
 ms.author: avneet723
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/25/2018
+ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a30311f8b171d80e036b4e554b2f1026b43c8a67
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: e4a48312dc516010b7a7fe1471ba7e555a2f92f2
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604775"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382253"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie — Visual Studio
 
@@ -48,16 +48,9 @@ Aby wykonać wdrożenie lokalne, potrzebne są następujące narzędzia, które 
 
 W tej sekcji uruchamiasz mikrousług monitorowania zdalnego. Działania interfejsu użytkownika sieci web, usługi symulacji urządzenia na platformie Docker i mikrousług w programie Visual Studio.
 
-### <a name="run-the-web-ui"></a>Uruchom interfejs użytkownika sieci web
-
-W tym kroku należy uruchomić interfejs użytkownika sieci web. Przejdź do **interfejsem sieci Web** folderu w lokalnym kopię repozytorium i uruchom następujące polecenia:
-
-```cmd
-npm install
-npm start
-```
-
 ### <a name="run-the-device-simulation-service"></a>Uruchom usługę symulacji urządzenia
+
+Otwórz nowe okno wiersza polecenia, należy upewnić się, że masz dostęp do zmiennych środowiskowych, ustawiane przez **start.cmd** skryptu w poprzedniej sekcji.
 
 Uruchom następujące polecenie, aby uruchomić kontener platformy Docker dla usługi symulacji urządzenia. Usługa symuluje urządzeń dla rozwiązania do monitorowania zdalnego.
 
@@ -69,7 +62,7 @@ Uruchom następujące polecenie, aby uruchomić kontener platformy Docker dla us
 
 Poniższe kroki pokazują, jak uruchomić mikrousług zdalnego monitorowania w programie Visual Studio 2017:
 
-1. Uruchom program Visual Studio 2017
+1. Launch Visual Studio 2017
 1. Otwórz **monitoring.sln zdalnego** rozwiązania **usług** folderu w lokalnej kopii repozytorium.
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy rozwiązanie, a następnie kliknij **właściwości**.
 1. Wybierz **typowe właściwości > Projekt startowy**.
@@ -91,14 +84,25 @@ Wykonaj następujące kroki, aby uruchomić zadanie usługi Stream Analytics:
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 1. Przejdź do **grupy zasobów** tworzony dla rozwiązania. Nazwa grupy zasobów jest nazwa została wybrana opcja rozwiązania jest wyświetlany po uruchomieniu **start.cmd** skryptu **.
-1. Kliknij pozycję **zadania usługi Stream Analytics** na liście zasobów.
+1. Kliknij przycisk **zadania usługi Stream Analytics** na liście zasobów.
 1. W zadaniu Stream Analytics **Przegląd** kliknij **Start** przycisku. Następnie kliknij przycisk **Start** można teraz uruchomić zadania.
+
+### <a name="run-the-web-ui"></a>Uruchom interfejs użytkownika sieci web
+
+W tym kroku należy uruchomić interfejs użytkownika sieci web. Otwórz nowe okno wiersza polecenia, należy upewnić się, że masz dostęp do zmiennych środowiskowych, ustawiane przez **start.cmd** skryptu. Przejdź do **interfejsem sieci Web** folderu w lokalnym kopię repozytorium i uruchom następujące polecenia:
+
+```cmd
+npm install
+npm start
+```
+
+Po zakończeniu początkowego przeglądarki zostanie wyświetlona strona **http://localhost:3000/dashboard**. Oczekiwane są błędy na tej stronie. Aby wyświetlić aplikację bez błędów, wykonaj poniższe czynności.
 
 ### <a name="configure-and-run-nginx"></a>Konfigurowanie i uruchamianie serwera NGINX
 
 Konfigurowanie zwrotnego serwera proxy do łączenia aplikacji sieci web i mikrousług uruchomiona na komputerze lokalnym:
 
-* Kopiuj **nginx.conf** plik wchodzącej w skład **webui\scripts\localhost** folder **nginx\conf** katalog_instalacji.
+* Kopiuj **nginx.conf** plik wchodzącej w skład **webui\scripts\localhost** folder w lokalnej kopii repozytorium na potrzeby **nginx\conf** katalog_instalacji.
 * Uruchom **nginx**.
 
 Aby uzyskać więcej informacji o uruchamianiu **nginx**, zobacz [nginx dla Windows](https://nginx.org/en/docs/windows.html).

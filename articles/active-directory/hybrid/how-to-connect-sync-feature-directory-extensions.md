@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: rozszerzenia katalogów | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect: Rozszerzenia katalogów | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano funkcję rozszerzenia katalogu w programie Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b6c5f55a575605eef3a280de4f973d9b2d0a4ace
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e96a7d88a2e30bbedd6c57f9a72dd92f63586dd1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288309"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476907"
 ---
-# <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizacja programu Azure AD Connect: rozszerzenia katalogów
+# <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizacja programu Azure AD Connect: Rozszerzenia katalogów
 Umożliwia rozszerzeń katalogów rozszerzania schematu w usłudze Azure Active Directory (Azure AD) przy użyciu atrybutów z usługi Active Directory w środowisku lokalnym. Ta funkcja umożliwia tworzenie aplikacji biznesowych za korzystanie z atrybutów, które nadal zarządzać w środowisku lokalnym. Te atrybuty mogą być używane za pośrednictwem [rozszerzenia katalogów interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) lub [programu Microsoft Graph](https://developer.microsoft.com/graph/). Zobaczysz dostępne atrybuty za pomocą [programu Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) i [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)odpowiednio.
 
 Obecnie nie obciążenie usługi Office 365 korzysta z tych atrybutów.
@@ -38,7 +38,7 @@ Instalacja pokazuje następujące atrybuty, które są kandydatami prawidłowy:
 
 * Typy obiektów użytkowników i grup
 * Atrybuty jednowartościowe: String, Boolean, Integer, dane binarne
-* Atrybuty wielowartościowe: String, dane binarne
+* Atrybuty wielowartościowe: Ciąg binarny
 
 
 >[!NOTE]
@@ -63,7 +63,7 @@ Lub można zbadać atrybutów za pośrednictwem interfejsu API Microsoft Graph, 
 >[!NOTE]
 > Musisz poprosić o atrybutów, które mają zostać zwrócone. Jawnie wybrać atrybuty następująco: https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division. 
 >
-> Aby uzyskać więcej informacji, zobacz [programu Microsoft Graph: Użyj parametrów zapytania](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
+> Aby uzyskać więcej informacji, zobacz [programu Microsoft Graph: Korzystanie z parametrów zapytania](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o [synchronizacji programu Azure AD Connect](how-to-connect-sync-whatis.md) konfiguracji.

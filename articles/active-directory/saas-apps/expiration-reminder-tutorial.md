@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3df3d73e-80a4-4b35-bd3d-90bc4f6f6afd
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 04874eff4375ac57a8c8e15a11399ca650bd5c15
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: aa5c8a69422c74efad74926cfaec544d5ee2f126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53020778"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expiration-reminder"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Expiration Reminder
 
@@ -78,8 +78,8 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z apli
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Expiration Reminder](#configure-expiration-reminder-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Tworzenie użytkownika testowego aplikacji Expiration Reminder](#create-expiration-reminder-test-user)** — aby Britta Simon miała swojego odpowiednika w aplikacji Expiration Reminder połączonego z reprezentacją użytkownika w usłudze Azure AD.
-5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Expiration Reminder](#create-expiration-reminder-test-user)** — aby Britta Simon miała swojego odpowiednika w aplikacji Expiration Reminder połączonego z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -104,7 +104,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Expiratio
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego w aplikacji Expiration Reminder](common/sp-signonurl.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.expirationreminder.net/account/sso`.
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.expirationreminder.net/account/sso`
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (nieprzetworzony)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 

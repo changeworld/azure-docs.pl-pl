@@ -3,7 +3,7 @@ title: Pamięć podręczna systemu Azure dla usługi Redis — często zadawane 
 description: Dowiedz się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
-ms.author: wesmc
-ms.openlocfilehash: 5d70e4beb97a23212bc85d529382d8e89f09336d
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.author: yegu
+ms.openlocfilehash: 3a0fb06acd9fc798f1528a1487ae0682135187ca
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199922"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402401"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis — często zadawane pytania
 Dowiedz się, jak się odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dla usługi Azure Cache dla pamięci podręcznej Redis.
@@ -141,7 +141,7 @@ Z tej tabeli firma Microsoft narysować następujących wniosków:
 | C2 |2,5 GB |2 |500 / 62.5 |41,000 |37,000 |
 | C3 |6 GB |4 |1000 / 125 |100 000 |90,000 |
 | C4 |13 GB |2 |500 / 62.5 |60,000 |55,000 |
-| C5 |26 GB |4 |1,000 / 125 |102 000 |93,000 |
+| C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
 | **Rozmiar pamięci podręcznej — wersja Premium** | |**Liczba rdzeni procesora CPU na fragment** | **Megabity na sekundę (Mb/s) / MB / s (MB/s)** |**Żądania na drugim (jednostek Uzależnionych) bez protokołu SSL, na fragment** |**Żądania na drugim SSL (jednostek Uzależnionych), na fragment** |
 | P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
@@ -210,7 +210,7 @@ Zazwyczaj domyślne wartości klienta są wystarczające. Można dostosować opc
       * Niniejsze wskazówki może prowadzić do więcej usprawnione czas oczekiwania na `ConnectionMultiplexer`.
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Jakie usługi Azure Cache dla klientów usługi Redis można używać?
-Jedną z najważniejszych funkcji usługi Redis zakłada, że wielu klientów, obsługa wielu języków programowania różne. Aby uzyskać bieżącą listę klientów, zobacz [klienci Redis](https://redis.io/clients). Samouczki, które obejmują kilka różnych językach i klientów, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i kliknij żądany język z przełącznika język, w górnej części tego artykułu.
+Jedną z najważniejszych funkcji usługi Redis zakłada, że wielu klientów, obsługa wielu języków programowania różne. Aby uzyskać bieżącą listę klientów, zobacz [klienci Redis](https://redis.io/clients). Samouczki, które obejmują kilka różnych językach i klientów, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i jej element równorzędny artykułów w tabeli treści.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
@@ -259,7 +259,7 @@ Można użyć dowolnego polecenia wymienione pod [polecenia Redis](https://redis
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Dlaczego nie ma MSDN odwołanie do biblioteki klas np. niektóre z innymi usługami platformy Azure w pamięci podręcznej Redis Azure?
 Usługa Microsoft Azure Cache pamięci podręcznej Redis jest oparta na popularnej open source pamięć podręczna systemu Azure dla usługi Redis i może zostać oceniony przez cały szereg [klienci Redis](https://redis.io/clients) dla wielu języków programowania. Każdy klient ma własny interfejs API, który sprawia, że wywołania do pamięci podręcznej Azure wystąpienie pamięci podręcznej Redis za pomocą [polecenia Redis](https://redis.io/commands).
 
-Ponieważ różni się każdego klienta, istnieje nie jeden scentralizowane odwołań do klas w witrynie MSDN, a każdy klient zachowuje własną dokumentację referencyjną. Oprócz dokumentacją referencyjną istnieje kilka samouczków, w którym pokazano, jak rozpocząć pracę z usługą Azure Cache dla pamięci podręcznej Redis przy użyciu różnych języków i pamięci podręcznej klientów. Aby uzyskać dostęp do tych samouczków, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i kliknij żądany język z przełącznika język, w górnej części tego artykułu.
+Ponieważ różni się każdego klienta, istnieje nie jeden scentralizowane odwołań do klas w witrynie MSDN, a każdy klient zachowuje własną dokumentację referencyjną. Oprócz dokumentacją referencyjną istnieje kilka samouczków, w którym pokazano, jak rozpocząć pracę z usługą Azure Cache dla pamięci podręcznej Redis przy użyciu różnych języków i pamięci podręcznej klientów. Aby uzyskać dostęp do tych samouczków, zobacz [jak używać usługi Azure Cache dla pamięci podręcznej Redis](cache-dotnet-how-to-use-azure-redis-cache.md) i jej element równorzędny artykułów w tabeli treści.
 
 ### <a name="can-i-use-azure-cache-for-redis-as-a-php-session-cache"></a>Czy można używać usługi Azure Cache dla usługi Redis jako pamięci podręcznej sesji PHP?
 Tak, aby użyć pamięć podręczna systemu Azure dla usługi Redis jako pamięci podręcznej sesji języka PHP, określ parametry połączenia do wystąpienia pamięci podręcznej Redis w pamięci podręcznej Azure `session.save_path`.
@@ -392,7 +392,7 @@ Jak można skonfigurować tego ustawienia:
   > Wartość określona w tym elemencie konfiguracji jest *za rdzeń* ustawienie. Na przykład, jeśli korzystasz z 4-rdzeniową maszyną i chcesz z ustawieniem minIOThreads to 200 w czasie wykonywania, można użyć `<processModel minIoThreads="50"/>`.
   >
 
-* Poza programem ASP.NET a plik global.asax witryn sieci Web platformy Azure, użyj [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) INTERFEJS API.
+* Poza programem ASP.NET a plik global.asax witryn sieci Web platformy Azure, użyj [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
 
   > [!NOTE]
   > Wartość określoną przez ten interfejs API jest ustawienie globalne wpływu na cały element AppDomain. Jeśli masz 4-rdzeniową maszyną i chcesz ustawić minWorkerThreads i minIOThreads 50 dla każdego procesora CPU w czasie wykonywania, należy użyć ThreadPool.SetMinThreads (200, 200).

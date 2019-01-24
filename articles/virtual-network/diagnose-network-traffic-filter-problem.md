@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984232"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424646"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnozowanie problemu z filtrowaniem ruchu maszyny wirtualnej sieci
 
@@ -44,8 +44,8 @@ Poniższe kroki przyjęto założenie, że masz istniejącej maszyny Wirtualnej,
 
    Dla karty sieciowej o nazwie dostępne są następujące reguły zostanie wyświetlony na liście na poprzedniej ilustracji **myVMVMNic**. Zobaczysz, że istnieją **reguły portów wejściowych** dla interfejsu sieciowego z dwóch różnych sieciowych grup zabezpieczeń:
    
-   - **mySubnetNSG**: skojarzoną z podsiecią, należącym do interfejsu sieciowego.
-   - **myVMNSG**: skojarzone z interfejsem sieciowym na maszynie Wirtualnej o nazwie **myVMVMNic**.
+   - **mySubnetNSG**: Skojarzoną z podsiecią, należącym do interfejsu sieciowego.
+   - **myVMNSG**: Skojarzone z interfejsem sieciowym na maszynie Wirtualnej o nazwie **myVMVMNic**.
 
    Reguły o nazwie **DenyAllInBound** to, co uniemożliwia komunikacji przychodzącej z maszyną wirtualną za pośrednictwem portu 80, przez Internet, zgodnie z opisem w [scenariusza](#scenario). Wyświetla reguły *0.0.0.0/0* dla **źródła**, w tym Internetu. Żadna inna reguła z wyższym priorytetem (niższym numerem) zezwala na użycie portu 80 dla ruchu przychodzącego. Aby zezwolić na porcie 80 dla ruchu przychodzącego do maszyny Wirtualnej z Internetu, zobacz [rozwiązać problem](#resolve-a-problem). Aby dowiedzieć się więcej na temat reguł zabezpieczeń i jak Azure zastosuje je, zobacz [sieciowe grupy zabezpieczeń](security-overview.md).
 
@@ -73,11 +73,11 @@ Poniższe kroki przyjęto założenie, że masz istniejącej maszyny Wirtualnej,
 
 Chociaż obowiązujących reguł zabezpieczeń były wyświetlane za pomocą maszyny Wirtualnej, można również wyświetlić obowiązujących reguł zabezpieczeń przez osobę:
 - **Interfejs sieciowy**: Dowiedz się, jak [wyświetlania interfejsu sieciowego](virtual-network-network-interface.md#view-network-interface-settings).
-- **Sieciowa grupa zabezpieczeń**: Dowiedz się, jak [wyświetlić sieciowej grupy zabezpieczeń](manage-network-security-group.md#view-details-of-a-network-security-group).
+- **NSG**: Dowiedz się, jak [wyświetlić sieciowej grupy zabezpieczeń](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnozowanie przy użyciu programu PowerShell
 
-Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się przy użyciu konta które ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions)].
+Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się przy użyciu konta które ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions)].
 
 Pobierz efektywne reguły zabezpieczeń dla interfejsu sieciowego z [polecenie Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup). Poniższy przykład pobiera obowiązujących reguł zabezpieczeń dla interfejsu sieciowego o nazwie *myVMVMNic*, która jest w grupie zasobów o nazwie *myResourceGroup*:
 
@@ -154,9 +154,9 @@ W danych wyjściowych poprzedniej, nazwa interfejsu sieciowego jest *interfejsu 
 
 Niezależnie od tego, czy używane [PowerShell](#diagnose-using-powershell), lub [wiersza polecenia platformy Azure](#diagnose-using-azure-cli) Aby zdiagnozować problem, otrzymasz dane wyjściowe, który zawiera następujące informacje:
 
-- **Grupy NetworkSecurityGroup**: identyfikator grupy zabezpieczeń sieci.
-- **Skojarzenie**: czy sieciowa grupa zabezpieczeń jest skojarzona z *interfejsu sieciowego* lub *podsieci*. Jeśli sieciowa grupa zabezpieczeń jest skojarzona z obu, dane wyjściowe zostaną zwrócone z **NetworkSecurityGroup**, **skojarzenia**, i **EffectiveSecurityRules**, dla każdej sieciowej grupy zabezpieczeń. Jeśli sieciowa grupa zabezpieczeń jest skojarzony lub odłączyć od razu, przed uruchomieniem polecenia, aby wyświetlić obowiązujących reguł zabezpieczeń, może być konieczne odczekaj kilka sekund zmiany w celu uwzględnienia w danych wyjściowych polecenia.
-- **EffectiveSecurityRules**: wyjaśnienie każda właściwość została szczegółowo opisana w [Utwórz regułę zabezpieczeń](manage-network-security-group.md#create-a-security-rule). Nazwy poprzedzone znakiem reguły *defaultSecurityRules /* są domyślne reguły zabezpieczeń, które istnieją w każdej sieciowej grupy zabezpieczeń. Nazwy poprzedzone znakiem reguły *securityRules /* to reguły, które zostały utworzone. Reguły określające [tag usługi](security-overview.md#service-tags), takich jak **Internet**, **VirtualNetwork**, i **AzureLoadBalancer** dla  **destinationAddressPrefix** lub **element sourceAddressPrefix** właściwości również mają wartości **expandedDestinationAddressPrefix** właściwości. **ExpandedDestinationAddressPrefix** właściwość zawiera listę wszystkich prefiksów adresów, reprezentowane przez tag usługi.
+- **NetworkSecurityGroup**: Identyfikator sieciowej grupy zabezpieczeń.
+- **Skojarzenie**: Czy sieciowa grupa zabezpieczeń jest skojarzona z *interfejsu sieciowego* lub *podsieci*. Jeśli sieciowa grupa zabezpieczeń jest skojarzona z obu, dane wyjściowe zostaną zwrócone z **NetworkSecurityGroup**, **skojarzenia**, i **EffectiveSecurityRules**, dla każdej sieciowej grupy zabezpieczeń. Jeśli sieciowa grupa zabezpieczeń jest skojarzony lub odłączyć od razu, przed uruchomieniem polecenia, aby wyświetlić obowiązujących reguł zabezpieczeń, może być konieczne odczekaj kilka sekund zmiany w celu uwzględnienia w danych wyjściowych polecenia.
+- **EffectiveSecurityRules**: Wyjaśnienie każda właściwość została szczegółowo opisana w [Utwórz regułę zabezpieczeń](manage-network-security-group.md#create-a-security-rule). Nazwy poprzedzone znakiem reguły *defaultSecurityRules /* są domyślne reguły zabezpieczeń, które istnieją w każdej sieciowej grupy zabezpieczeń. Nazwy poprzedzone znakiem reguły *securityRules /* to reguły, które zostały utworzone. Reguły określające [tag usługi](security-overview.md#service-tags), takich jak **Internet**, **VirtualNetwork**, i **AzureLoadBalancer** dla  **destinationAddressPrefix** lub **element sourceAddressPrefix** właściwości również mają wartości **expandedDestinationAddressPrefix** właściwości. **ExpandedDestinationAddressPrefix** właściwość zawiera listę wszystkich prefiksów adresów, reprezentowane przez tag usługi.
 
 Jeśli widzisz zduplikowane reguły w wymienionych w danych wyjściowych, jest to, ponieważ sieciowa grupa zabezpieczeń jest skojarzona z interfejsu sieciowego i podsieci. Zarówno sieciowe grupy zabezpieczeń mają te same reguły domyślnej i może mieć dodatkowe reguły zduplikowany, jeśli utworzono własne reguły, które są takie same w obu sieciowych grup zabezpieczeń.
 
@@ -175,7 +175,7 @@ Czy korzystasz z platformy Azure [portal](#diagnose-using-azure-portal), [PowerS
 | Protocol (Protokół)                | TCP                                                                                |
 | Akcja                  | Zezwalaj                                                                              |
 | Priorytet                | 100                                                                                |
-| Name (Nazwa)                    | Zezwalaj na HTTP — wszystkie                                                                     |
+| Name (Nazwa)                    | Allow-HTTP-All                                                                     |
 
 Po utworzeniu reguły, port 80 jest dozwolony dla ruchu przychodzącego z Internetu, ponieważ priorytet reguły jest wyższy niż domyślna reguła zabezpieczeń o nazwie *DenyAllInBound*, który nie zezwala na ruch. Dowiedz się, jak [Utwórz regułę zabezpieczeń](manage-network-security-group.md#create-a-security-rule). Jeśli różne sieciowe grupy zabezpieczeń są skojarzone z interfejsu sieciowego i podsieci, należy utworzyć tę samą regułę w obu sieciowych grup zabezpieczeń.
 

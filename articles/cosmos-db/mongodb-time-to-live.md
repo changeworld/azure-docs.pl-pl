@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 1bfe79c502361e6cf9616c3ba61e781fb7ce92ac
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 390cd17d667785c7bf9531d86dab00bc922a2df5
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032860"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54351730"
 ---
 # <a name="expire-data-with-azure-cosmos-dbs-api-for-mongodb"></a>Wygasanie danych za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
@@ -55,7 +55,7 @@ Wartość czasu wygaśnięcia musi być typu int32. Ewentualnie może być warto
 
 Wartość czasu wygaśnięcia dokumentu jest opcjonalna. Do kolekcji można wstawiać dokumenty bez wartości czasu wygaśnięcia.  W takim przypadku stosowana jest wartość czasu wygaśnięcia kolekcji. 
 
-Poniższe dokumenty mają prawidłowe wartości czasu wygaśnięcia. Po wstawieniu dokumentów ich wartości czasu wygaśnięcia zastępują wartości czasu wygaśnięcia kolekcji. Dokumenty zostaną więc usunięte po 20 sekundach.  
+Poniższe dokumenty mają prawidłowe wartości czasu wygaśnięcia. Po wstawieniu dokumentów ich wartości czasu wygaśnięcia zastępują wartości czasu wygaśnięcia kolekcji. Dokumenty zostaną więc usunięte po 20 sekundach.   
 
 ```JavaScript 
 globaldb:PRIMARY> db.coll.insert({id:1, location: "Paris", ttl: 20.0}) 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: cffc3ac8808992f7884839329e5bf152d318820c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: alerts
+ms.openlocfilehash: 56d76cd43b63a389569ae39c1e987a5fccbb9793
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789368"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429450"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Rozwiązywanie problemów z alertami dzienników w usłudze Azure Monitor  
 
@@ -33,7 +33,7 @@ Poniżej przedstawiono niektóre typowe przyczyny, dlaczego skonfigurowanego [re
 
 ### <a name="data-ingestion-time-for-logs"></a>Czas wprowadzania danych dla dzienników
 
-Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../platform/data-ingestion-time.md).
+Alert dziennika okresowo działa na podstawie zapytania [usługi Log Analytics](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/analytics.md). Ponieważ usługi Log Analytics przetwarza wielu terabajtów danych od tysięcy klientów z różnych źródeł na całym świecie, usługa jest podatny na różnych opóźnienie czasowe. Aby uzyskać więcej informacji, zobacz [Czas pozyskiwania danych w usłudze Log Analytics](../platform/data-ingestion-time.md).
 
 Aby zminimalizować opóźnienie pozyskiwania danych, system czeka i ponawia zapytanie alertu wiele razy, jeśli stwierdzi, że potrzebne dane nie są jeszcze pozyskiwane. System ma wykładniczo zwiększa czasu oczekiwania. Dziennik alertów wyzwalaczy tylko po danych jest dostępna, więc ich opóźnienie może być spowodowany pozyskiwanie danych wolnego dziennika. 
 
@@ -84,7 +84,7 @@ Szczegółowe dalej są niektóre typowe przyczyny, dlaczego skonfigurowanego [r
 
 ### <a name="alert-triggered-by-partial-data"></a>Alert wyzwolony przez częściowe dane
 
-Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [czas wprowadzania danych w usłudze Log Analytics](../platform/data-ingestion-time.md).
+Włączanie usługi Log Analytics i usługi Application Insights Analytics jest zależna od opóźnienia pozyskiwania i przetwarzania; z powodu, w momencie uruchamiania zapytanie alertu dzienników podana — mogą wystąpić przypadek żadne dane, które są dostępne lub tylko niektórych danych, które są dostępne. Aby uzyskać więcej informacji, zobacz [Czas pozyskiwania danych w usłudze Log Analytics](../platform/data-ingestion-time.md).
 
 W zależności od sposobu skonfigurowania reguły alertu może być źle wielopaliwowego w przypadku nie lub częściowe dane w dziennikach w czasie wykonywania alertu. W takich przypadkach zaleca się zmiany zapytanie alertu ani konfiguracji. 
 

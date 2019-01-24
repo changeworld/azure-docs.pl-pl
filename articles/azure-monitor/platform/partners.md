@@ -7,25 +7,25 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 6ed8bae2e1571722f7a9a0030a48e64c4f7fbc60
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: ''
+ms.openlocfilehash: 90ad5306c1594381409ed2bcbe767e2ffd055531
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106668"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473966"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integracje partnerów w usłudze Azure Monitor
 | Partnerzy |  |  |
 | --- | --- | --- |
-| [**AlertLogic**<br/>![partnera Logo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![partnera Logo][appdynamics-logo]][appdynamics-anchor] | [**ArcSight**][arcsight-anchor] |
+| [**AlertLogic**<br/>![Partner Logo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![partnera Logo][appdynamics-logo]][appdynamics-anchor] | [**ArcSight**][arcsight-anchor] |
 | [**Atlassian**<br/>![partnera Logo][atlassian-logo]][atlassian-anchor] | [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![partnera Logo][circonus-logo]][circonus-anchor] |
-| [**CloudHealth**<br/>![partnera Logo][cloudhealth-logo]][cloudhealth-anchor] | [**CloudMonix** <br/> ![partnera Logo][cloudmonix-logo]][cloudmonix-anchor] | [**Pomocą usługi Datadog**<br/>![partnera Logo][datadog-logo]][datadog-anchor] |
+| [**CloudHealth**<br/>![Partner Logo][cloudhealth-logo]][cloudhealth-anchor] | [**CloudMonix** <br/> ![partnera Logo][cloudmonix-logo]][cloudmonix-anchor] | [**Pomocą usługi Datadog**<br/>![partnera Logo][datadog-logo]][datadog-anchor] |
 | [**Dynatrace** <br/> ![partnera Logo][dynatrace-logo]][dynatrace-anchor] | [**Elastyczne**<br/>![partnera Logo][elastic-logo]][elastic-anchor] | [**Grafana**<br/>![partnera Logo][grafana-logo]][grafana-anchor] |
-| [**Influxdata**<br/>![partnera Logo][influxdata-logo]][influxdata-anchor] | [**Logic Monitor**<br/>![partnera Logo][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![partnera Logo][moogsoft-logo]][moogsoft-anchor] |
-| [**NewRelic**<br/>![partnera Logo][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![partnera Logo][opsgenie-logo]][opsgenie-anchor] | [**Usługi PagerDuty**<br/>![partnera Logo][pagerduty-logo]][pagerduty-anchor] |
-| [**QRadar**<br/>![partnera Logo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![partnera Logo][sciencelogic-logo]][sciencelogic-anchor] | [**SignalFx**<br/>![partnera Logo][signalfx-logo]<br/>][signalfx-anchor] |
-| [**SIGNL4**<br/>![partnera Logo][signl4-logo]][signl4-anchor] | [**Solarwinds?**][solarwinds-anchor] | [**Splunk** <br/> ![partnera Logo][splunk-logo]][splunk-anchor] |
+| [**Influxdata**<br/>![partnera Logo][influxdata-logo]][influxdata-anchor] | [**Logic Monitor**<br/>![partnera Logo][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![Partner Logo][moogsoft-logo]][moogsoft-anchor] |
+| [**NewRelic**<br/>![partnera Logo][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![Partner Logo][opsgenie-logo]][opsgenie-anchor] | [**PagerDuty**<br/>![Partner Logo][pagerduty-logo]][pagerduty-anchor] |
+| [**QRadar**<br/>![Partner Logo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![Partner Logo][sciencelogic-logo]][sciencelogic-anchor] | [**SignalFx**<br/>![Partner Logo][signalfx-logo]<br/>][signalfx-anchor] |
+| [**SIGNL4**<br/>![partnera Logo][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [**Splunk** <br/> ![partnera Logo][splunk-logo]][splunk-anchor] |
 | [**Logika sumo**<br/>![partnera Logo][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![partnera Logo][turbonomic-logo]][turbonomic-anchor] |
 
 ## <a name="alertlogic-log-manager"></a>Menedżer dzienników AlertLogic
@@ -138,12 +138,12 @@ SignalFx jest liderem w aktualne operacyjne dane analityczne dla opartych na dan
 
 [Przejdź do dokumentacji.][signalfx-doc]
 
-## <a name="signl4"></a>APLIKACJI SIGNL4
+## <a name="signl4"></a>SIGNL4
 Wywołuje SIGNL4 — alertów aplikacji mobilnej dla zespołów operacyjnych — jest to najszybszy sposób trasy krytyczne alerty z usługi Azure Monitor do odpowiednich osób we właściwym czasie — w dowolnym miejscu, wypychania, tekstu i głosu. SIGNL4 zarządza dyżurów obowiązków i przesunięcia zespołu, ścieżki dostarczania i własności alerty i przekazuje problem w razie potrzeby. Podano pełną przezroczystość całemu zespołowi. Za pomocą bardzo łatwe REST-webhook o SIGNL4 dowolnej usługi platformy Azure może być połączona z Brak nakładu pracy. Za pomocą aplikacji SIGNL4 zostanie wyświetlony maksymalnie 10 x szybciej uzyskać odpowiedź, za pośrednictwem powiadomienia e-mail i ręczne alerty.
 
 [Przejdź do dokumentacji.][signl4-doc]
 
-## <a name="solarwinds"></a>Solarwinds?
+## <a name="solarwinds"></a>SolarWinds
 
 [Dowiedz się więcej.][solarwinds-doc]
 
@@ -192,7 +192,7 @@ Usługa Turbonomic automatyzuje obciążenia dla chmur hybrydowych, jednocześni
 [sciencelogic-anchor]: #sciencelogic "ScienceLogic"
 [signalfx-anchor]: #signalfx "SignalFx"
 [signl4-anchor]: #signl4 "APLIKACJI SIGNL4"
-[solarwinds-anchor]: #solarwinds "Solarwinds?"
+[solarwinds-anchor]: #solarwinds "SolarWinds"
 [splunk-anchor]: #azure-monitor-add-on-for-splunk "Splunk"
 [sumologic-anchor]: #sumo-logic "Logika sumo"
 [turbonomic-anchor]: #turbonomic "Turbonomic"
@@ -249,3 +249,4 @@ Usługa Turbonomic automatyzuje obciążenia dla chmur hybrydowych, jednocześni
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Dokumentacja Splunk."
 [sumologic-doc]: https://www.sumologic.com/azure "Dokumentacja SumoLogic."
 [turbonomic-doc]: https://turbonomic.com/solutions/technologies/azure-cloud/ "Turbonomic wprowadzenie."
+

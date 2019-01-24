@@ -1,6 +1,6 @@
 ---
-title: Typowe wyjątki klienta fabricclient z rolą zgłaszane | Dokumentacja firmy Microsoft
-description: W tym artykule opisano typowe wyjątków i błędów, które może zostać wygenerowany przez interfejsy API klienta fabricclient z rolą podczas wykonywania aplikacji i operacji zarządzania klastrem.
+title: Typowe wyjątki FabricClient zgłaszane | Dokumentacja firmy Microsoft
+description: W tym artykule opisano typowe wyjątki i błędy, które mogą być generowane przez interfejsy API FabricClient podczas wykonywania aplikacji i operacji zarządzania klastrem.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/20/2018
 ms.author: ryanwi
-ms.openlocfilehash: e854ed42b6af8bc090950e8399e3229e202a2ed0
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 9e29f05c71f9dfe0bcd79135deb30d713fb3abb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293416"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477103"
 ---
-# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Typowe wyjątków i błędów podczas pracy z interfejsami API klienta fabricclient z rolą
-[Klienta fabricclient z rolą](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) interfejsów API umożliwiają administratorom klastra i aplikacji do wykonywania zadań administracyjnych w aplikacji, usługi lub klastra sieci szkieletowej usług. Na przykład wdrożenia aplikacji, uaktualniania i usuwania, sprawdzanie kondycji klastra lub testowania usługi. Deweloperzy aplikacji i Administratorzy klastra mogą używać interfejsów API klienta fabricclient z rolą do opracowywania narzędzia do zarządzania, klastra sieci szkieletowej usług i aplikacji.
+# <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Typowe wyjątki i błędy podczas pracy z interfejsami API FabricClient
+[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) interfejsy API umożliwiają administratorom klastrami i aplikacjami do wykonywania zadań administracyjnych w aplikacji, usług lub klastra usługi Service Fabric. Na przykład wdrożenie aplikacji, uaktualniania i usuwania, sprawdzanie kondycji klastra lub testowania usługi. Deweloperzy aplikacji i administratorów klastrów umożliwia interfejsy API FabricClient Tworzenie narzędzi do zarządzania klastrem usługi Service Fabric i aplikacji.
 
-Istnieje wiele różnych typów działań, które mogą być wykonywane przy użyciu klienta fabricclient z rolą.  Każda metoda może zgłaszają wyjątki, błędy ze względu na nieprawidłowe dane wejściowe, błędy podczas wykonywania lub infrastruktury przejściowych problemów.  Zobacz dokumentacji interfejsu API, aby znaleźć wyjątki, które są generowane przez określonej metody. Istnieją pewne wyjątki, jednak może zostać wygenerowany przez wiele różnych [klienta fabricclient z rolą](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) interfejsów API. W poniższej tabeli wymieniono wyjątki, które są wspólne dla interfejsów API klienta fabricclient z rolą.
+Istnieje wiele różnych rodzajów działań, które mogą być wykonywane przy użyciu FabricClient.  Każda metoda może generować wyjątki, błędy, ze względu na nieprawidłowe dane wejściowe, błędów środowiska uruchomieniowego lub problem z infrastrukturą przejściowego.  Zobacz dokumentację referencyjną interfejsu API, aby znaleźć wyjątki, które są generowane przez określonej metody. Istnieją różne niektóre wyjątki, jednak mogą być generowane przez wiele [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) interfejsów API. W poniższej tabeli wymieniono wyjątki, które są wspólne dla interfejsów API FabricClient.
 
-| Wyjątek | Generowane, gdy |
+| Wyjątek | Generowany, gdy |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |[Klienta fabricclient z rolą](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) obiekt jest w stanie zamkniętym. Usuwa [klienta fabricclient z rolą](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) obiekt jest używany i utworzenia wystąpienia nowy [klienta fabricclient z rolą](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) obiektu. |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |Upłynął limit czasu operacji. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) jest zwracany, gdy operacja przyjmuje więcej niż parametru MaxOperationTimeout, aby zakończyć. |
-| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |Nie można sprawdzić dostępu dla tej operacji. Zwracany jest błąd E_ACCESSDENIED. |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Podczas wykonywania operacji wystąpił błąd w czasie wykonywania. Wszystkie metody klienta fabricclient z rolą potencjalnie może zgłosić [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException), [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) właściwość wskazuje dokładną przyczynę wyjątku. Kody błędów są zdefiniowane w [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) wyliczenia. |
-| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |Operacja nie powiodła się ze względu na stan błędu przejściowego określonego rodzaju. Na przykład operacji może nie powieść, ponieważ kworum replik jest tymczasowo niedostępna. Wyjątki przejściowej odpowiadają nieudane operacje, które można ponowić. |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) obiekt jest w stanie zamkniętym. Usuwanie [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) używania i tworzenia wystąpienia nowego obiektów [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) obiektu. |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |Upłynął limit czasu operacji. [OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) jest zwracany, jeśli operacja przyjmuje więcej niż MaxOperationTimeout, aby zakończyć. |
+| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |Sprawdzanie dostępu dla tej operacji nie powiodło się. E_ACCESSDENIED jest zwracana. |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |Wystąpił błąd w czasie wykonywania podczas wykonywania operacji. Dowolnej z metod FabricClient potencjalnie może zgłosić [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException), [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) właściwość wskazuje dokładną przyczynę wyjątku. Kody błędów są zdefiniowane w [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) wyliczenia. |
+| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |Operacja nie powiodła się ze względu na stan błędu przejściowego pewnego rodzaju. Na przykład operacja może zakończyć się niepowodzeniem, ponieważ tymczasowo kworum replik nie jest dostępny. Przejściowych wyjątków odpowiadają zakończone niepowodzeniem operacje, które mogą być ponawiane. |
 
-Niektóre typowe [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) błędów, które mogą być zwracane w [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException):
+Niektóre typowe [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) błędy, które mogą być zwracane w [FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException):
 
 | Błąd | Warunek |
 | --- |:--- |
@@ -43,9 +43,9 @@ Niektóre typowe [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.
 | InvalidX509FindType |X509FindType jest nieprawidłowy. |
 | InvalidX509StoreLocation |X509 lokalizacja magazynu jest nieprawidłowa. |
 | InvalidX509StoreName |X509 nazwa magazynu jest nieprawidłowy. |
-| InvalidX509Thumbprint |X509 ciąg odcisk palca certyfikatu jest nieprawidłowy. |
-| InvalidProtectionLevel |Poziom ochrony jest nieprawidłowa. |
+| InvalidX509Thumbprint |X509 ciąg odcisku palca certyfikatu jest nieprawidłowy. |
+| InvalidProtectionLevel |Poziom ochrony jest nieprawidłowy. |
 | InvalidX509Store |X509 nie można otworzyć magazynu certyfikatów. |
 | InvalidSubjectName |Nazwa podmiotu jest nieprawidłowa. |
-| InvalidAllowedCommonNameList |Format wspólnej nazwy ciąg z listą jest nieprawidłowy. Powinno być rozdzielaną przecinkami listą. |
+| InvalidAllowedCommonNameList |Format common ciąg z listą nazw jest nieprawidłowy. Powinno być rozdzielaną przecinkami listę. |
 

@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą wrażenie Stany Zjednoczone (inne niż UltiPro) | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory z wrażenie Stany Zjednoczone (inne niż UltiPro) | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i wrażenie Stany Zjednoczone (inne niż UltiPro).
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: b4a8f026-cb5f-41eb-9680-68eddc33565e
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8c29d054f2e4e9ff4b57785a57e5c6ea512623a6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4d01495e48d440c09ad62cd69dbf9b11b7a4cc2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840668"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812407"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą wrażenie Stany Zjednoczone (inne niż UltiPro)
+# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Samouczek: Integracja usługi Azure Active Directory z wrażenie Stany Zjednoczone (inne niż UltiPro)
 
 W tym samouczku dowiesz się, jak zintegrować wrażenie Stany Zjednoczone (inne niż UltiPro) z usługą Azure Active Directory (Azure AD).
 
@@ -30,7 +30,7 @@ Integrowanie wrażenie Stany Zjednoczone (inne niż UltiPro) z usługą Azure AD
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Stanów Zjednoczonych wrażenie (inne niż UltiPro).
 - Aby umożliwić użytkownikom automatycznie pobrać zalogowanych do Stanów Zjednoczonych wrażenie (Non-UltiPro) (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -44,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą wrażenie Stany Zjedn
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -68,15 +68,15 @@ Aby skonfigurować integrację ze Stanów Zjednoczonych wrażenie (inne niż Ult
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **wrażenie Stany Zjednoczone (inne niż UltiPro)**, wybierz opcję **wrażenie Stany Zjednoczone (inne niż UltiPro)** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikacja.
 
     ![Stany Zjednoczone wrażenie (inne niż UltiPro) na liście wyników](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą wrażenie Stanów Zjednoczonych (inne niż UltiPro) w oparciu o nazwie "Britta Simon" użytkownika testowego.
 
@@ -86,13 +86,13 @@ W wrażenie Stanów Zjednoczonych (inne niż UltiPro), przypisz wartość **nazw
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą wrażenie Stany Zjednoczone (inne niż UltiPro), należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego wrażenie Stany Zjednoczone (inne niż UltiPro)](#create-a-perception-united-states-non-ultipro-test-user)**  — aby odpowiednikiem Britta Simon w wrażenie Stanów Zjednoczonych (inne niż UltiPro) połączoną usługę Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji wrażenie Stany Zjednoczone (inne niż UltiPro).
 
@@ -100,7 +100,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **wrażenie Stany Zjednoczone (inne niż UltiPro)** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -112,10 +112,10 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **identyfikator** pole tekstowe, wpisz adres URL: `https://perception.kanjoya.com/sp`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://perception.kanjoya.com/sso?idp=<entity_id>`
 
     > [!NOTE] 
-    > Wartość nie jest prawdziwe. Wartość zostanie zaktualizowana o rzeczywistego adresu URL odpowiedzi, które wyjaśniono w dalszej części tego samouczka.
+    > Ta wartość nie jest prawdziwa. Ta wartość zostanie zaktualizowana przy użyciu rzeczywistego adresu URL odpowiedzi, co objaśniono w dalszej części tego samouczka.
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -123,7 +123,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/perceptionunitedstates-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/perceptionunitedstates-tutorial/tutorial_general_400.png)
 
 1. Na **konfiguracji wrażenie Stany Zjednoczone (inne niż UltiPro)** , kliknij przycisk **skonfigurować wrażenie Stany Zjednoczone (inne niż UltiPro)** otworzyć **Konfigurowanie logowania jednokrotnego** okna . Kopiuj **identyfikator jednostki SAML** z **krótki przewodnik po sekcji.**
 
@@ -169,11 +169,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     e. Kliknij pozycję **Przekaż ponownie** do przekazania **XML metadanych** pliku.
 
-    f. Kliknij przycisk **aktualizacji**.
+    f. Kliknij przycisk **Update** (Aktualizuj).
 
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

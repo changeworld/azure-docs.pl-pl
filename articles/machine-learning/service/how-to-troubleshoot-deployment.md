@@ -1,5 +1,6 @@
 ---
-title: Wdrożenia przewodnik rozwiązywania problemów dla usługi Azure Machine Learning
+title: Przewodnik rozwiązywania problemów z wdrażaniem
+titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak obejść, rozwiązania i rozwiązywanie typowych problemów wdrażania platformy Docker za pomocą usługi AKS i ACI przy użyciu usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.author: haining
 author: hning86
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: ed6fed58aac236f143345a9504ece21aceae09d2
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 71b4cf5d44ec6cb3fb8b70975193320a4eabfc3f
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865373"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401320"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Rozwiązywanie problemów z wdrożeniami usługi AKS i ACI usługi Azure Machine Learning
 
@@ -91,10 +93,10 @@ Jeśli system jest w stanie utworzyć obraz platformy Docker `image.wait_for_cre
 print(image.image_build_log_uri)
 
 # if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images()['myimg'].image_build_log_uri)
+print(ws.images['myimg'].image_build_log_uri)
 
 # list logs for all images in the workspace
-for name, img in ws.images().items():
+for name, img in ws.images.items():
     print (img.name, img.version, img.image_build_log_uri)
 ```
 Identyfikator uri dziennika obrazu jest adres URL sygnatury dostępu Współdzielonego do pliku dziennika przechowywanych w usłudze Azure blob storage. Po prostu skopiuj i wklej identyfikator uri do okna przeglądarki i możesz pobrać i przejrzeć plik dziennika.
@@ -113,7 +115,7 @@ Można wydrukować szczegółowe komunikaty dziennika aparat platformy Docker z 
 print(service.get_logs())
 
 # if you only know the name of the service (note there might be multiple services with the same name but different version number)
-print(ws.webservices()['mysvc'].get_logs())
+print(ws.webservices['mysvc'].get_logs())
 ```
 
 ### <a name="debug-the-docker-image-locally"></a>Debuguj lokalnie za pomocą obrazu platformy Docker
@@ -216,16 +218,12 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
-**Uwaga**: zwracanie komunikaty o błędach z `run(input_data)` wywołanie powinno się odbywać tylko do celów debugowania. Może nie być dobry pomysł, aby to zrobić w środowisku produkcyjnym ze względów bezpieczeństwa.
+**Uwaga**: Zwracanie komunikaty o błędach z `run(input_data)` wywołanie powinno się odbywać tylko do celów debugowania. Może nie być dobry pomysł, aby to zrobić w środowisku produkcyjnym ze względów bezpieczeństwa.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Dowiedz się więcej o wdrażaniu: 
-* [Jak wdrożyć w usłudze ACI](how-to-deploy-to-aci.md)
+* [Jak wdrażać i którym](how-to-deploy-and-where.md)
 
-* [Sposób wdrażania usługi AKS](how-to-deploy-to-aks.md)
-
-* [Samouczek, część 1: uczenie modelu](tutorial-train-models-with-aml.md)
-
-* [Samouczek, część 2: Wdrażanie modelu](tutorial-deploy-models-with-aml.md)
+* [Samouczek: Uczenie i wdrażanie modeli](tutorial-train-models-with-aml.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 1/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 072702b323a41e4c4c51edc7054ad41591dde4d7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6d202ab9e2f6a8e96eb494d3d93caf66624f8364
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303535"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465203"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Wyświetlanie zużycia publicznego adresu IP w usłudze Azure Stack
 
@@ -36,6 +36,7 @@ Kafelek ma na celu udzielić operatorom usługi Azure Stack zorientować się, l
 **Publiczne adresy IP** elementu menu, w obszarze **zasobów dzierżawy** wyświetla tylko publicznych adresów IP, które zostały *jawnie utworzony przez dzierżawców*. Element menu można znaleźć na **dostawców zasobów**, **sieci** okienka. Liczba **używane** publiczne adresy IP na **publiczny adres IP pul użycia** kafelka zawsze różni się od (większe niż) liczba na **publiczne adresy IP** kafelka w obszarze  **Zasoby dzierżawcy**.
 
 ## <a name="view-the-public-ip-address-usage-information"></a>Wyświetl publiczne informacje o użyciu adresu IP
+
 Aby wyświetlić sumę publiczne adresy IP, które zostały wykorzystane w regionie:
 
 1. W portalu administratora usługi Azure Stack, wybierz **wszystkich usług**. Następnie w obszarze **administracji** wybierz kategorię **sieci**.
@@ -46,6 +47,7 @@ Aby wyświetlić sumę publiczne adresy IP, które zostały wykorzystane w regio
 **Używane** numer reprezentuje liczbę przydzielanych publicznych adresów IP z publicznych pule adresów IP. **Bezpłatna** numer reprezentuje numer publiczny adres IP adresów z publicznym adresem IP adresów pule, które nie zostały przypisane i są nadal dostępne. **Wykorzystania** numer reprezentuje liczbę używane lub przypisane adresy jako procent całkowitej liczby publicznych adresów IP w publicznych pul adresów IP w tej lokalizacji.
 
 ## <a name="view-the-public-ip-addresses-that-were-created-by-tenant-subscriptions"></a>Wyświetl publiczne adresy IP, które zostały utworzone przez subskrypcji dzierżawcy
+
 Wybierz **publiczne adresy IP** w obszarze **zasobów dzierżawy**. Przejrzyj listę publicznych adresów IP, w sposób jawny nie utworzył według subskrypcji dzierżawcy w określonym regionie.
 
 ![Publiczne adresy IP dzierżawy](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
@@ -55,6 +57,7 @@ Może się okazać, że niektóre publiczne adresy IP, które są dynamicznie pr
 Kontroler sieci nie ma przypisanego adresu do zasobu, dopóki powiąże interfejs, karta interfejsu sieciowego (NIC), moduł równoważenia obciążenia lub bramy sieci wirtualnej. Gdy wiąże publiczny adres IP do interfejsu, Kontroler sieci przydziela adresu IP. Adres będzie widoczny w **adres** pola.
 
 ## <a name="view-the-public-ip-address-information-summary-table"></a>Widok publiczny tabelę adresów IP informacje podsumowania
+
 W różnych przypadkach publiczne adresy IP są przypisywane, które określają, czy adres pojawia się w jednej liście lub w innym.
 
 | **Publiczne przypadek przypisanie adresu IP** | **Zostanie wyświetlone podsumowanie użycia** | **Pojawia się w dzierżawie listy publicznych adresów IP** |
@@ -66,4 +69,5 @@ W różnych przypadkach publiczne adresy IP są przypisywane, które określają
 | Publiczny adres IP niejawnie tworzone dla wystąpień maszyn wirtualnych IaaS i używane dla NAT dla ruchu wychodzącego w sieci wirtualnej. Są one tworzone w tle zawsze wtedy, gdy dzierżawy tworzy wystąpienie maszyny Wirtualnej, tak aby maszyny wirtualne można wysyłać informacje do Internetu. |Yes |Nie |
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Zarządzanie kontami magazynu w usłudze Azure Stack](azure-stack-manage-storage-accounts.md)

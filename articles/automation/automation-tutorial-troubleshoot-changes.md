@@ -3,7 +3,7 @@ title: Rozwiązywanie problemów ze zmianą w maszynie wirtualnej platformy Azur
 description: Użyj śledzenia zmian, aby rozwiązać problemy ze zmianami w maszynie wirtualnej platformy Azure.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: zmiana, śledzenie, automatyzacja
 author: jennyhunter-msft
 ms.author: jehunte
@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1df3fcad8a30b0d79f40aecc353684b7356fe061
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fa1e3ffd92b3c375837c7b9a4a0e7fd1a80893a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190020"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433683"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Rozwiązywanie problemów ze zmianami we własnym środowisku
 
@@ -228,3 +228,4 @@ Przejdź do omówienia rozwiązania śledzenia zmian i spisu, aby uzyskać więc
 
 > [!div class="nextstepaction"]
 > [Change management and Inventory solution](automation-change-tracking.md) (Rozwiązanie zarządzania zmianami i spisem)
+

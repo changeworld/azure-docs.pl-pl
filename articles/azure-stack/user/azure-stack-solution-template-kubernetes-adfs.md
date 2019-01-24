@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: a161d2223dacb618f1e2eeb6443fffae18cc7259
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 3ae0a67a8aa2d403a72b0e20471c2044dbf557bf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355607"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389065"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack przy użyciu usługi Active Directory Federation Services
 
@@ -48,7 +48,7 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 
 Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jednostki usługi, korzystając z usług AD FS jako rozwiązania tożsamości. Nazwa główna usługi daje aplikacji dostęp do zasobów usługi Azure Stack.
 
-1. Administrator usługi Azure Stack umożliwia certyfikatu i informacje dla jednostki usługi. Te informacje powinny wyglądać:
+1. Administrator usługi Azure Stack umożliwia certyfikatu i informacje dotyczące nazwy głównej usługi. Te informacje powinny wyglądać:
 
     ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -59,7 +59,7 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
-2. Przypisz rolę współautora Twojej nowej jednostki usługi, do Twojej subskrypcji. Aby uzyskać instrukcje, zobacz [przypisania roli](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal#assign-role-to-service-principal).
+2. Przypisz nową nazwę główną usługi rolę współautora do subskrypcji. Aby uzyskać instrukcje, zobacz [przypisania roli](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal#assign-role-to-service-principal).
 
 3. Tworzenie magazynu kluczy do przechowywania certyfikatu do wdrożenia.
 

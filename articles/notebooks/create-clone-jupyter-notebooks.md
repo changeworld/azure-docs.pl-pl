@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164419"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844062"
 ---
 # <a name="create-and-clone-projects"></a>Tworzenie i klonowanie projektów
 
@@ -30,7 +30,7 @@ Projekt udostępnia również metadane i pozostałe ustawienia konfiguracyjne, k
 
 Twoje **Moje projekty** pulpit nawigacyjny na `https://notebooks.azure.com/<userID>/projects` pozwala wyświetlać, zarządzanie, i tworzyć projekty:
 
-[![](media/my-projects-dashboard.png "Mój pulpit nawigacyjny projekty, w notesach platformy Azure")](media/my-projects-dashboard.png#lightbox)
+[![Mój pulpit nawigacyjny projekty, w notesach platformy Azure](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Co można zrobić na pulpicie nawigacyjnym, zależy od tego, czy po zarejestrowaniu się przy użyciu konta, który jest właścicielem identyfikator użytkownika:
 
@@ -105,9 +105,9 @@ Klonowanie projektu:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Explore sample notebooks (Eksplorowanie przykładowych notesów)](azure-notebooks-samples.md)
-- [Jak: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
-- [Jak: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
-- [Jak: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
-- [Jak: Praca z plikami danych](work-with-project-data-files.md)
-- [Jak: Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
-- [Jak: Użyj usługi Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Instrukcje: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
+- [Instrukcje: Instalowanie pakietów z w ramach notesu](install-packages-jupyter-notebook.md)
+- [Instrukcje: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+- [Instrukcje: Praca z plikami danych](work-with-project-data-files.md)
+- [Instrukcje: Uzyskaj dostęp do zasobów danych](access-data-resources-jupyter-notebooks.md)
+- [Instrukcje: Użyj usługi Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)

@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 92e16104edb46298d6e503b7546449ed71041047
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 236b7543772f9e6df9c7ba7f1a9365153593a929
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005754"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473184"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Usługa Azure SQL Data Warehouse — równoległego (MPP) architekturę przetwarzania
 Dowiedz się, jak Azure SQL Data Warehouse łączy masowego przetwarzania równoległego (MPP) z usługą Azure storage w celu osiągnięcia wysokiej wydajności i skalowalności. 
@@ -51,7 +51,7 @@ Węzeł kontrolny jest mózg w magazynie danych. Jest to fronton współdziałaj
 
 Węzły obliczeniowe zapewniają moc obliczeniową. Mapa dystrybucji do węzłów obliczeniowych do przetworzenia. Zgodnie z którym płacisz za więcej zasobów obliczeniowych, usługa SQL Data Warehouse ponownie mapuje dystrybucji do dostępnych węzłów obliczeniowych. Liczba obliczeniowe węzłów z zakresu od 1 do 60 i zależy od poziomu usługi dla magazynu danych.
 
-Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. Identyfikator węzła obliczeń możesz zobaczyć, wyszukując w kolumnie $node_id widoki systemowe, których nazwy zaczynają się od sys.pdw_nodes. Aby uzyskać listę tych widoków systemowych, zobacz [widoki systemowe MPP](sql-data-warehouse-reference-tsql-statements.md).
+Każdy węzeł obliczeniowy ma identyfikator węzła, który jest widoczny w widokach systemu. Identyfikator węzła obliczeń możesz zobaczyć, wyszukując w kolumnie $node_id widoki systemowe, których nazwy zaczynają się od sys.pdw_nodes. Aby uzyskać listę tych widoków systemowych, zobacz [widoki systemowe MPP](http://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Usługi przenoszenia danych
 Data Movement Service (DMS) to technologia transport danych, która służy do koordynowania przenoszenia danych między węzłami obliczeniowymi. Niektóre zapytania wymaga przenoszenia danych, aby upewnić się, zwracają dokładne wartości zapytania równolegle. Podczas przenoszenia danych jest wymagana, usługa DMS gwarantuje, że odpowiednie dane są pobierane do odpowiedniej lokalizacji. 

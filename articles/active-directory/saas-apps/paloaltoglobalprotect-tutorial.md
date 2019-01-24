@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 03bef6f2-3ea2-4eaa-a828-79c5f1346ce5
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 16bcd61d226fe97e9f3e4eb5c40f2fdf6c304a12
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: fb153317d90cf94781c5bb64dc8d5ce65021adcf
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808285"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822879"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Palo Alto Networks - GlobalProtect
 
@@ -105,9 +105,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Palo Alto
 
     ![Informacje dotyczące domeny i adresów URL logowania jednokrotnego w aplikacji Palo Alto Networks - GlobalProtect](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<Customer Firewall URL>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<Customer Firewall URL>`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, korzystając z następującego wzorca: `https://<Customer Firewall URL>/SAML20/SP`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<Customer Firewall URL>/SAML20/SP`
 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj je, używając rzeczywistego adresu URL logowania i identyfikatora. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej aplikacji Palo Alto Networks - GlobalProtect](https://support.paloaltonetworks.com/support). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.

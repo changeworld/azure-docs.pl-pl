@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Konfigurowanie pole dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Konfigurowanie pola dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i pola.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1c959595-6e57-4954-9c0d-67ba03ee212b
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 3dac1d18a021c8d6c1b6e3db370c60b9aa782f1c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 58ab80b9cdf6fbcfa8aebeeac837687ded41ae39
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625355"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821841"
 ---
-# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie pole dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie pola dla automatycznej aprowizacji użytkowników
 
 Celem tego samouczka jest ukazują kroki, które należy wykonać w polu i usługi Azure AD, aby automatycznie aprowizować i anulować obsługę kont użytkowników z usługi Azure AD do usługi Box.
 
@@ -30,7 +30,7 @@ Celem tego samouczka jest ukazują kroki, które należy wykonać w polu i usłu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z polem, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą Box, potrzebne są następujące elementy:
 
 - Dzierżawa usługi Azure AD
 - Plan firma pole lub lepszy
@@ -38,10 +38,10 @@ Aby skonfigurować integrację usługi Azure AD z polem, potrzebne są następuj
 > [!NOTE]
 > Podczas testowania kroki opisane w tym samouczku, firma Microsoft zaleca wykonanie *nie* za pomocą środowiska produkcyjnego.
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska usługi Azure AD w wersji próbnej, możesz skorzystać z [miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="assigning-users-to-box"></a>Przypisywanie użytkowników do usługi Box 
 
@@ -129,7 +129,7 @@ W Twojej dzierżawie pole zsynchronizowani użytkownicy są wyświetlane w obsza
 ![Stan integracji](./media/box-userprovisioning-tutorial/IC769556.png "stan integracji")
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -11,20 +11,44 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d1a0e46fe348bbc60a4d02a4727a9bb27cb26742
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223300"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411241"
 ---
 # <a name="troubleshoot-rbac-in-azure"></a>Rozwiązywanie problemów z RBAC na platformie Azure
 
 W tym artykule odpowiedzi na często zadawane pytania dotyczące kontroli dostępu opartej na rolach (RBAC), dzięki czemu będzie wiadomo, czego można oczekiwać, gdy przy użyciu ról w witrynie Azure portal i możesz rozwiązać problemy z dostępem do.
+
+## <a name="problems-with-rbac-role-assignments"></a>Problemy z przypisaniami ról kontroli dostępu opartej na rolach
+
+- Jeśli nie można dodać przypisania roli, ponieważ jesteś **Dodaj przypisanie roli** opcja jest wyłączona, lub ponieważ otrzymasz błąd uprawnień, sprawdź, czy używasz roli, która ma `Microsoft.Authorization/roleAssignments/*` uprawnień w zakresie, który próbujesz Przypisz rolę. Jeśli nie masz tego uprawnienia, skontaktuj się z administratorem subskrypcji.
+- Jeśli wystąpi błąd uprawnień podczas próby utworzenia zasobu, sprawdź, czy używasz roli, który ma uprawnienia do tworzenia zasobów w wybranym zakresie. Na przykład konieczne może być współautorem. Jeśli nie masz uprawnień, skontaktuj się z administratorem subskrypcji.
+- Jeśli wystąpi błąd uprawnień podczas próby utworzenia lub zaktualizowania bilet pomocy technicznej, sprawdź, czy używasz roli, która ma `Microsoft.Support/*` uprawnienia, takie jak [Współautor żądania obsługi](built-in-roles.md#support-request-contributor).
+- Jeśli podczas próby przypisania roli jest zwracany błąd informujący, że przekroczono liczbę przypisań ról, spróbuj zmniejszyć liczbę przypisań ról, przypisując zamiast tego role do grup. Platforma Azure obsługuje maksymalnie **2000** przypisania roli na subskrypcję.
+
+## <a name="problems-with-custom-roles"></a>Problemy z rolami niestandardowymi
+
+- Jeśli nie można zaktualizować istniejącej roli niestandardowej Sprawdź, czy masz `Microsoft.Authorization/roleDefinition/write` uprawnień.
+- Jeśli nie można zaktualizować istniejącej roli niestandardowej Sprawdź, czy co najmniej jeden zakres możliwy do przypisania zostały usunięte w dzierżawie. `AssignableScopes` Właściwość dla formantów roli niestandardowej [kto może tworzyć, usunąć, zaktualizować lub wyświetlić rolę niestandardową](custom-roles.md#who-can-create-delete-update-or-view-a-custom-role).
+- Jeśli wystąpi błąd, który przekroczył limit definicji ról, podczas próby utworzenia nowej roli, Usuń role niestandardowe, które nie są używane. Możesz również spróbować skonsolidować ani nie używaj ponownie wszystkie istniejące role niestandardowe. Platforma Azure obsługuje maksymalnie **2000** ról niestandardowych w dzierżawie.
+- Jeśli nie można usunąć rolę niestandardową, sprawdź, czy co najmniej jedno przypisanie roli nadal używają niestandardowej roli.
+
+## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Odzyskiwanie kontroli dostępu opartej na rolach po przeniesieniu subskrypcji między dzierżawami
+
+- Jeśli potrzebujesz kroków dotyczących przenoszenia subskrypcji do innej dzierżawy, zobacz [Przenoszenie własności subskrypcji platformy Azure na inne konto](../billing/billing-subscription-transfer.md).
+- W przypadku przeniesienia subskrypcji do innej dzierżawy, wszystkie przypisania roli zostaną trwale usunięte z dzierżawy źródła i nie są migrowane do dzierżawy docelowej. Należy ponownie utworzyć przypisania roli w dzierżawie docelowej.
+- Jeśli jesteś administratora globalnego i utracić dostęp do subskrypcji, użyj **Access management dla zasobów platformy Azure** przełącznik, aby tymczasowo [podniesienie poziomu dostępu](elevate-access-global-admin.md) Aby odzyskać dostęp do Subskrypcja.
+
+## <a name="rbac-changes-are-not-being-detected"></a>RBAC zmiany nie są wykrywane
+
+Usługa Azure Resource Manager czasami przechowuje w pamięci podręcznej konfiguracji i danych w celu zwiększenia wydajności. Podczas tworzenia lub usuwania przypisania roli, może potrwać do 30 minut, aby zmiany zaczęły obowiązywać. Jeśli używasz witryny Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure, możesz wymusić odświeżenie zmiany przypisania roli, wylogowywania i logowania. Jeśli w przypadku wprowadzania zmian przypisania roli przy użyciu wywołań interfejsu API REST, możesz wymusić odświeżenie, odświeżając tokenu dostępu.
 
 ## <a name="web-app-features-that-require-write-access"></a>Funkcje aplikacji sieci Web, które wymagają dostępu do zapisu
 
@@ -93,10 +117,6 @@ Niektóre funkcje [usługi Azure Functions](../azure-functions/functions-overvie
 ![Brak dostępu aplikacje funkcji](./media/troubleshooting/functionapps-noaccess.png)
 
 Czytelnik mogą kliknąć **funkcje platformy** kartę, a następnie kliknij przycisk **wszystkie ustawienia** Aby wyświetlić niektóre ustawienia związane z aplikacją funkcji (podobne do aplikacji sieci web), ale nie mogą modyfikować dowolne z tych ustawień.
-
-## <a name="rbac-changes-are-not-being-detected"></a>RBAC zmiany nie są wykrywane
-
-Usługa Azure Resource Manager czasami przechowuje w pamięci podręcznej konfiguracji i danych w celu zwiększenia wydajności. Podczas tworzenia lub usuwania przypisania roli, może potrwać do 30 minut, aby zmiany zaczęły obowiązywać. Jeśli używasz witryny Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure, możesz wymusić odświeżenie zmiany przypisania roli, wylogowywania i logowania. Jeśli w przypadku wprowadzania zmian przypisania roli przy użyciu wywołań interfejsu API REST, możesz wymusić odświeżenie, odświeżając tokenu dostępu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Manage access using RBAC and the Azure portal (Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal)](role-assignments-portal.md)

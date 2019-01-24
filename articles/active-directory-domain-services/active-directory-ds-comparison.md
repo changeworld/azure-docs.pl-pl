@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure AD Domain Services: Porównanie usługi Azure AD Domain Services do kontrolerów domeny możesz | Dokumentacja firmy Microsoft'
+title: 'Azure AD Domain Services: Porównanie usług domenowych Azure AD do kontrolerów domeny możesz | Dokumentacja firmy Microsoft'
 description: Porównanie usługi Azure Active Directory Domain Services do kontrolerów domeny możesz
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
-ms.openlocfilehash: f7455076d59e447ade9c15203593d260cf676894
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 45c1629aba2124230aa55f67583ff08584ab3c93
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155801"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847632"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Jak zdecydować, jeśli usługi Azure AD Domain Services jest odpowiednia dla danego przypadku użycia
 Za pomocą usług domenowych Azure AD można wdrożyć obciążenia w usługach infrastruktury platformy Azure, bez konieczności martwienia się o konserwacja infrastruktury tożsamości na platformie Azure. To zarządzana usługa różni się od typowego wdrożenia usługi Active Directory systemu Windows Server, które wdrażania i administrowania na własną rękę. Usługa jest łatwa do wdrożenia i zapewnia monitorowanie kondycji zautomatyzowane i korygowania. Firma Microsoft stale ewoluuje usługę, aby dodać obsługę typowych scenariuszy wdrażania.
@@ -34,7 +34,7 @@ Zdecyduj, czy do korzystania z usług domenowych Azure AD, firma Microsoft zalec
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Porównanie usług domenowych Azure AD do domeny możesz AD na platformie Azure
 Poniższa tabela ułatwia wybór między za pomocą usług domenowych Azure AD i zarządzania nimi własnej infrastruktury usługi AD na platformie Azure.
 
-| **Funkcja** | **Usług domenowych Azure AD** | **"Zrób to sam" AD maszynach wirtualnych platformy Azure** |
+| **Funkcja** | **Azure AD Domain Services** | **"Zrób to sam" AD maszynach wirtualnych platformy Azure** |
 | --- |:---:|:---:|
 | [**Usługa zarządzana**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Zabezpieczanie wdrożeń**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Administrator musi bezpiecznego wdrażania. |
@@ -106,9 +106,9 @@ Usługa Azure AD Domain Services domeny zarządzane są dostępne w jednej sieci
 ## <a name="do-it-yourself-diy-ad-deployment-options"></a>"Zrób to sam" Opcje wdrażania usługi AD (DIY)
 Przypadki użycia wdrożenia może być konieczne niektóre funkcje oferowane przez instalację systemu Windows Server AD. W takich przypadkach należy wziąć pod uwagę jedną z poniższych opcji, zrób to sam (DIY):
 
-* **Domena chmury autonomicznych:** możesz skonfigurować autonomiczny "domena chmury" przy użyciu maszyn wirtualnych platformy Azure, które zostały skonfigurowane jako kontrolery domeny. Ta infrastruktura nie integrują się z lokalnym środowisku usługi AD. Ta opcja wymaga innego zestawu "poświadczenia chmury" do logowania/administrowania maszynami wirtualnymi w chmurze.
-* **Wdrażanie lasu zasobów:** możesz skonfigurować domenę w topologii lasu zasobów przy użyciu maszyn wirtualnych skonfigurowane jako kontrolery domeny. Następnie należy skonfigurować relację zaufania z usługi AD z lokalnej usługi AD środowiska. Możesz przyłączania do domeny komputery (maszyny wirtualne platformy Azure) dla tego lasu zasobów w chmurze. Uwierzytelnianie użytkownika odbywa się za pośrednictwem jednego połączenia sieci VPN/ExpressRoute do katalogu lokalnego.
-* **Rozszerzanie domenę lokalną na platformę Azure:** można połączyć z siecią wirtualną platformy Azure z siecią lokalną za pomocą połączenia sieci VPN/ExpressRoute. Taka konfiguracja zapewnia maszyn wirtualnych platformy Azure zostanie przyłączony do lokalnej usługi AD. Innym sposobem jest podwyższenie poziomu kontrolerów domeny repliki domeny lokalnych na platformie Azure jako Maszynę wirtualną. Możesz następnie skonfigurować go do replikacji za pośrednictwem połączenia sieci VPN/ExpressRoute do katalogu lokalnego. Ten tryb wdrożenia skutecznie rozszerza domenę lokalną na platformę Azure.
+* **Domena chmury autonomicznych:** Można skonfigurować autonomiczny "domena chmury" przy użyciu maszyn wirtualnych platformy Azure, które zostały skonfigurowane jako kontrolery domeny. Ta infrastruktura nie integrują się z lokalnym środowisku usługi AD. Ta opcja wymaga innego zestawu "poświadczenia chmury" do logowania/administrowania maszynami wirtualnymi w chmurze.
+* **Wdrażanie lasu zasobów:** Możesz skonfigurować domenę w topologii lasu zasobów przy użyciu maszyn wirtualnych skonfigurowane jako kontrolery domeny. Następnie należy skonfigurować relację zaufania z usługi AD z lokalnej usługi AD środowiska. Możesz przyłączania do domeny komputery (maszyny wirtualne platformy Azure) dla tego lasu zasobów w chmurze. Uwierzytelnianie użytkownika odbywa się za pośrednictwem jednego połączenia sieci VPN/ExpressRoute do katalogu lokalnego.
+* **Rozszerzanie domenę lokalną na platformę Azure:** Usługa Azure virtual network możesz połączyć z siecią lokalną za pomocą połączenia sieci VPN/ExpressRoute. Taka konfiguracja zapewnia maszyn wirtualnych platformy Azure zostanie przyłączony do lokalnej usługi AD. Innym sposobem jest podwyższenie poziomu kontrolerów domeny repliki domeny lokalnych na platformie Azure jako Maszynę wirtualną. Możesz następnie skonfigurować go do replikacji za pośrednictwem połączenia sieci VPN/ExpressRoute do katalogu lokalnego. Ten tryb wdrożenia skutecznie rozszerza domenę lokalną na platformę Azure.
 
 > [!NOTE]
 > Należy określić, czy opcja możesz lepiej jest odpowiedni dla przypadki użycia wdrożenia. Należy wziąć pod uwagę [udostępniania opinii](active-directory-ds-contact-us.md) która pomoże nam zrozumieć, jakie funkcje może pomóc w przyszłości wybrano usług domenowych Azure AD. Ta opinia pomoże nam rozwijać usługę, aby lepiej dopasować się do swoich potrzeb wdrożenia i przypadki użycia.

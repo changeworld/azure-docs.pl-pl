@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 26ddc1df8353a8a8b0e0c54a0c906c8d8b6b45b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fecf17d95231cc37a141cfb72397f44ce2e980b5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495337"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435604"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konwertuj maszynę wirtualną Windows z dysków niezarządzanych do usługi managed disks
 
 Jeśli masz istniejące Windows maszyny wirtualne (VM), które korzystają z dysków niezarządzanych, można przekonwertować maszyny wirtualne do używania dysków zarządzanych za pomocą [usługi Azure Managed Disks](managed-disks-overview.md) usługi. Ten proces konwertuje dysk systemu operacyjnego i wszelkich dołączonych dysków danych.
 
-W tym artykule przedstawiono sposób konwertowania maszyn wirtualnych przy użyciu programu Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić go, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+W tym artykule przedstawiono sposób konwertowania maszyn wirtualnych przy użyciu programu Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić go, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

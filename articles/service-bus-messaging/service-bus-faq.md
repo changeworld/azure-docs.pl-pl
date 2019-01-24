@@ -2,18 +2,19 @@
 title: Usługa Azure Service Bus — często zadawane pytania (FAQ) | Dokumentacja firmy Microsoft
 description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Service Bus.
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 11/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 8beb372c3fae567b23e51d2776dd9a79d837c657
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 0b419343829e7e7bbbd31260b9cd0c8d93cd255d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313840"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847819"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 

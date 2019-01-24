@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: zestaw SDK Content Moderator dla metody pomocnika platformy .NET'
+title: 'Szybki start: Tworzenie klienta moderacji dla platformy .NET — Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Sposób zwracania klienta usług Content Moderator przy użyciu zestawu SDK Azure Content Moderator dla platformy .NET
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0c167de3af8aea6820962e7cc8d0c21f5ba61807
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: aa3c2d5c408969aa3127562607ca8d4e89f44f2e
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223274"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54262272"
 ---
 # <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>Szybki start: kod pomocnika zwracający klienta usług Content Moderator
 
@@ -32,7 +32,7 @@ W tym artykule założono, że znasz już program Visual Studio i język C#.
 ## <a name="sign-up-for-content-moderator-services"></a>Zarejestruj się w usługach Content Moderator
 
 Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji.
-Zapoznaj się z przewodnikiem [Szybki start](quick-start.md), aby dowiedzieć się, jak można uzyskać klucz.
+Zapoznaj się z przewodnikiem Szybki start [Wypróbowywanie usług Content Moderator w Internecie](quick-start.md), aby dowiedzieć się, jak można uzyskać klucz.
 
 ## <a name="create-your-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
@@ -50,7 +50,7 @@ Zainstaluj następujące pakiety NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usług Content Moderator
+### <a name="create-the-content-moderator-client"></a>Tworzenie klienta usługi Content Moderator
 
 Zastąp zawartość pliku ModeratorHelper.cs następującym kodem:
 

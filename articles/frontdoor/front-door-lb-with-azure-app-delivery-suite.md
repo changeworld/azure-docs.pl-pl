@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5403b5506a3758ede5ad06640335b873b6b9aa96
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026011"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820833"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Równoważenie obciążenia za pomocą pakietu dostarczania aplikacji platformy Azure
 
 ## <a name="introduction"></a>Wprowadzenie
-System Microsoft Azure oferuje wiele globalnym i regionalnym usług zarządzania, sposób dystrybucji ruchu sieciowego i ze zrównoważonym obciążeniem: usługi Traffic Manager, usługa drzwiami frontowymi, usługa Application Gateway i modułu równoważenia obciążenia.  Wraz z wielu regionów platformy Azure i strefowych architektury, jednocześnie korzystać z tych usług umożliwiają tworzenie niezawodnych, skalowalnych aplikacji o wysokiej wydajności.
+System Microsoft Azure oferuje wiele globalnym i regionalnym usług zarządzania, sposób dystrybucji ruchu sieciowego i równoważenia obciążenia: Usługi Traffic Manager, Service drzwiami frontowymi, usługa Application Gateway i modułu równoważenia obciążenia.  Wraz z wielu regionów platformy Azure i strefowych architektury, jednocześnie korzystać z tych usług umożliwiają tworzenie niezawodnych, skalowalnych aplikacji o wysokiej wydajności.
 
-![Pakiet dostarczania aplikacji ][1]
+![Application Delivery Suite ][1]
  
 Te usługi są podzielone na dwie kategorie:
 1. **Usług równoważenia obciążenia globalne** takich jak usługa Traffic Manager i drzwiami frontowymi dystrybuują ruch od użytkowników końcowych w różnych regionalnych zaplecza, chmury lub nawet usług lokalnych hybrydowych. Równoważenia obciążenia globalne kieruje ruch do najbliższego wewnętrzną bazą danych usługi i reaguje na zmiany w niezawodności usług lub wydajności, aby zachować zawsze włączone, maksymalna wydajność dla użytkowników. 
@@ -51,16 +51,16 @@ Moduł równoważenia obciążenia jest integralną częścią stosu Azure SDN �
 
 ## <a name="choosing-a-global-load-balancer"></a>Wybranie usługi równoważenia obciążenia globalne
 Podczas wybierania globalne modułem równoważenia obciążenia między Traffic Manager i Azure drzwiami frontowymi globalnego routingu, należy rozważyć, co to jest podobne i czym się różni od dwóch usług.   Obie te usługi zapewniają
-- **Nadmiarowość geograficzna Multi:** Jeśli jeden region ulegnie awarii, ruch bezproblemowo kieruje do najbliższego regionu bez żadnej interwencji od właściciela aplikacji.
-- **Routing najbliższego regionu:** ruch odbywa się automatycznie do najbliższego regionu
+- **Nadmiarowość wielu regionów geograficznych:** Jeśli jeden region ulegnie awarii, ruch bezproblemowo kierowane do najbliższego regionu bez żadnej interwencji od właściciela aplikacji.
+- **Najbliższy region routingu:** Ruch odbywa się automatycznie do najbliższego regionu
 
 </br>W poniższej tabeli opisano różnice między usługi Traffic Manager i Azure drzwiami frontowymi Service:</br>
 
 | Traffic Manager | Azure Front Door Service |
 | --------------- | ------------------------ |
-|**Każdy protokół:** ponieważ usługi Traffic Manager działa na poziomie warstwy DNS, może kierować dowolnego typu ruchu sieciowego; HTTP TCP, UDP, itp. | **Przyspieszenie protokołu HTTP:** ruch z drzwiami frontowymi jest serwerem proxy w sieci krawędź Microsoft.  W związku z tym żądania HTTP (S), zobacz opóźnienia i przepływności ulepszenia zmniejszenie opóźnienia i negocjacji w protokole SSL i używania gorącej połączeń z AFD do aplikacji.|
-|**W środowisku lokalnym routingu:** routingu na poziomie warstwy DNS, ruch jest przesyłany zawsze punkt punkt.  Routing w biurze oddziału firmy do środowiska lokalnego centrum danych może zająć bezpośrednią ścieżkę; nawet w przypadku Twojej własnej sieci przy użyciu usługi Traffic Manager. | **Niezależną skalowalność:** ponieważ drzwiami frontowymi współpracuje z żądania HTTP, żądania do różnych ścieżek URL można kierować do różnych wewnętrznych baz danych / usługi regionalne pul (mikrousług) na podstawie kondycji poszczególnych aplikacji mikrousług i reguł.|
-|**Format rozliczeń:** skaluje się z użytkownikami oraz usług z większą liczbą użytkowników, płaskowyżach, aby zmniejszyć koszt w większym użyciem rozliczanie oparte na systemie DNS. |**Wbudowane zabezpieczenia:** drzwiami frontowymi włącza reguły, takie jak ograniczanie szybkości i umieszczanie listy ACL adresów IP pozwala chronić zaplecza, zanim ruch trafia aplikacji. 
+|**Każdy protokół:** Ponieważ usługa Traffic Manager działa na poziomie warstwy DNS, może kierować dowolnego typu ruchu sieciowego; HTTP TCP, UDP, itp. | **Przyspieszenie protokołu HTTP:** Za pomocą drzwiami frontowymi jest serwerem proxy w sieci krawędź Microsoft.  W związku z tym żądania HTTP (S), zobacz opóźnienia i przepływności ulepszenia zmniejszenie opóźnienia i negocjacji w protokole SSL i używania gorącej połączeń z AFD do aplikacji.|
+|**W środowisku lokalnym routingu:** Za pomocą routingu na poziomie warstwy DNS, ruch jest przesyłany zawsze punkt punkt.  Routing w biurze oddziału firmy do środowiska lokalnego centrum danych może zająć bezpośrednią ścieżkę; nawet w przypadku Twojej własnej sieci przy użyciu usługi Traffic Manager. | **Niezależną skalowalność:** Ponieważ drzwiami frontowymi współpracuje z żądania HTTP, żądania do różnych ścieżek URL może być przekierowane do różnych wewnętrznych baz danych / regionalnej usługi pul (mikrousług) na podstawie kondycji poszczególnych aplikacji mikrousług i reguł.|
+|**Format rozliczeń:** Rozliczanie oparte na systemie DNS umożliwia skalowanie z użytkownikami i usług z większej liczby użytkowników, płaskowyżach w celu zmniejszenia kosztów na stronie większego użycia. |**Wbudowane zabezpieczenia:** Drzwiami frontowymi włącza reguły, takie jak ograniczanie szybkości i umieszczanie listy ACL adresów IP pozwala chronić zaplecza, zanim ruch trafia aplikacji. 
 
 </br>Ze względu na wydajność, sprawność działania i korzyści w zakresie zabezpieczeń do obciążeń HTTP przy wejściu zalecamy klientom drzwiami frontowymi potrzeby ich obciążeń HTTP.    Usługa Traffic Manager i drzwiami frontowymi można równolegle do obsługi całego ruchu dla aplikacji. 
 

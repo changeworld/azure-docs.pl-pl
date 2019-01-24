@@ -6,14 +6,14 @@ author: dsk-2015
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/26/2018
+ms.date: 12/27/2018
 ms.author: dkshir
-ms.openlocfilehash: 077dee19bbe32379bc88919117b3c61177828094
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 465dd2a69ad42b8b6a88268eb35a1aa7d8d922c5
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556105"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54229400"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>Samouczek: aprowizowanie budynku i monitorowanie warunków pracy za pomocą usługi Azure Digital Twins
 
@@ -30,6 +30,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 W tym samouczku przyjęto założenie, że [ukończono konfigurację usługi Azure Digital Twins](tutorial-facilities-setup.md). Przed kontynuowaniem upewnij się, że masz:
+
 - [Konto platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Uruchomione wystąpienie usługi Digital Twins. 
 - Pobrane i wyodrębnione [przykłady usługi Digital Twins w języku C#](https://github.com/Azure-Samples/digital-twins-samples-csharp) na maszynie roboczej. 
@@ -37,6 +38,7 @@ W tym samouczku przyjęto założenie, że [ukończono konfigurację usługi Azu
 - Program [Visual Studio Code](https://code.visualstudio.com/) umożliwiający eksplorowanie przykładowego kodu. 
 
 ## <a name="define-conditions-to-monitor"></a>Definiowanie warunków, które mają być monitorowane
+
 Możesz zdefiniować zestaw określonych warunków nazywanych elementami *matcher*, które mają być monitorowane w urządzeniu lub w danych z czujników. Następnie można zdefiniować *funkcje zdefiniowane przez użytkownika*. Funkcje zdefiniowane przez użytkownika umożliwiają wykonywanie niestandardowej logiki na danych pochodzących z przestrzeni i urządzeń, gdy wystąpią warunki określone w elementach matcher. Aby uzyskać więcej informacji, przeczytaj [Przetwarzanie danych i funkcje zdefiniowane przez użytkownika](concepts-user-defined-functions.md). 
 
 W przykładowym projekcie **occupancy-quickstart** otwórz plik **src\actions\provisionSample.yaml** w programie Visual Studio Code. Zwróć uwagę na sekcję, która zaczyna się od typu **matchers**. Każdy wpis w ramach tego typu tworzy element matcher z określonym parametrem **Name** (nazwa). Element matcher będzie monitorował czujnik typu **dataTypeValue**. Zwróć uwagę, że jest on związany z przestrzenią o nazwie *Focus Room A1*, w której znajduje się węzeł **devices** zawierający kilka czujników. Aby aprowizować element matcher, który będzie śledzić jeden z tych czujników, należy upewnić się, że jego typ **dataTypeValue** jest zgodny z typem **dataType** czujnika. 
@@ -48,14 +50,15 @@ Dodaj następujący element matcher poniżej istniejących elementów matcher. U
         dataTypeValue: Temperature
 ```
 
-Ten element matcher będzie śledził czujnik SAMPLE_SENSOR_TEMPERATURE, dodany w [pierwszym samouczku](tutorial-facilities-setup.md). Te wiersze znajdują się również w pliku *provisionSample.yaml* jako komentarze. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza. 
+Ten element matcher będzie śledził czujnik SAMPLE_SENSOR_TEMPERATURE, dodany w [pierwszym samouczku](tutorial-facilities-setup.md). Te wiersze znajdują się również w pliku *provisionSample.yaml* jako komentarze. Możesz przenieść je poza komentarze, usuwając znak `#` na początku wiersza.
 
-<a id="udf" />
+<a id="udf"></a>
 
 ## <a name="create-a-user-defined-function"></a>Tworzenie funkcji zdefiniowanej przez użytkownika
+
 Funkcje zdefiniowane przez użytkownika umożliwiają dostosowanie sposobu przetwarzania danych z czujników. Są one niestandardowym kodem JavaScript, który można uruchamiać w ramach wystąpienia usługi Azure Digital Twins, gdy wystąpią warunki określone w elementach matcher. Możesz utworzyć elementy matcher i funkcje zdefiniowane przez użytkownika dla każdego czujnika, którego chcesz monitorować. Aby uzyskać więcej informacji, przeczytaj [Przetwarzanie danych i funkcje zdefiniowane przez użytkownika](concepts-user-defined-functions.md). 
 
-W przykładowym pliku provisionSample.yaml znajdź sekcję zaczynającą się od typu **userdefinedfunctions**. Ta sekcja służy do aprowizowania funkcji zdefiniowanej przez użytkownika o określonej wartości parametru **Name**. Funkcja ta działa na listę elementów matcher wymienionych w sekcji **matcherNames**. Zauważ, że możesz podać własny plik JavaScript dla funkcji UDF jako **skrypt**. 
+W przykładowym pliku provisionSample.yaml znajdź sekcję zaczynającą się od typu **userdefinedfunctions**. Ta sekcja służy do aprowizowania funkcji zdefiniowanej przez użytkownika o określonej wartości parametru **Name**. Funkcja ta działa na listę elementów matcher wymienionych w sekcji **matcherNames**. Zauważ, że możesz podać własny plik JavaScript dla funkcji UDF jako **skrypt**.
 
 Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do przypisania roli administratora przestrzeni do funkcji zdefiniowanej przez użytkownika. Ta rola umożliwia funkcji dostęp do zdarzeń przychodzących z dowolnej z aprowizowanych przestrzeni. 
 
@@ -188,7 +191,7 @@ Zwróć również uwagę na sekcję o nazwie **roleassignments**. Służy ona do
 > [!TIP]
 > Jeśli podczas aprowizowania zostanie wyświetlony komunikat podobny do następującego „Operacja We/Wy została przerwana z powodu zakończenia wątku lub żądania aplikacji”, spróbuj ponownie uruchomić polecenie. Może się to zdarzyć, jeśli klient HTTP przekroczy limit czasu ze względu na problem z siecią.
 
-<a id="simulate" />
+<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>Symulowanie danych z czujników
 
@@ -202,13 +205,13 @@ W tej sekcji będziesz korzystać z projektu o nazwie *device-connectivity* w ra
     dotnet restore
     ```
 
-1. Otwórz plik **appSettings.json** w edytorze i zmodyfikuj następujące wartości:
+1. Otwórz plik [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) w edytorze i zmodyfikuj następujące wartości:
 
    a. **DeviceConnectionString**: przypisz wartość `ConnectionString` w oknie danych wyjściowych z poprzedniej sekcji. Skopiuj cały ciąg między cudzysłowami, aby symulator mógł poprawnie nawiązać połączenie z centrum IoT Hub.
 
    b. **HardwareId** w tablicy **Sensors**: ponieważ symulujesz zdarzenia z czujników zaaprowizowanych w wystąpieniu usługi Azure Digital Twins, identyfikator sprzętu i nazwy czujników w tym pliku powinny być zgodne z węzłem `sensors` zaaprowizowanego pliku provisionSample.yaml.
 
-      Dodaj nowy wpis dla czujnika temperatury. Węzeł **Sensors** w pliku appSettings.json powinien wyglądać następująco:
+      Dodaj nowy wpis dla czujnika temperatury. Węzeł **Sensors** w pliku appsettings.json powinien wyglądać następująco:
 
       ```JSON
       "Sensors": [{
@@ -233,6 +236,7 @@ W tej sekcji będziesz korzystać z projektu o nazwie *device-connectivity* w ra
    > Ponieważ przykładowa symulacja nie komunikuje się bezpośrednio z wystąpieniem usługi Digital Twins, uwierzytelnianie nie jest konieczne.
 
 ## <a name="get-results-of-the-user-defined-function"></a>Pobieranie wyników funkcji zdefiniowanej przez użytkownika
+
 Funkcja zdefiniowana przez użytkownika jest uruchamiana za każdym razem, gdy wystąpienie odbiera dane z urządzeń i czujników. W tej sekcji jest wykonywane zapytanie względem wystąpienia usługi Azure Digital Twins w celu uzyskania wyników funkcji zdefiniowanej przez użytkownika. Zobaczysz niemal w czasie rzeczywistym, czy pomieszczenie jest dostępne, powietrze czyste, a temperatura odpowiednia. 
 
 1. Otwórz okno polecenia, którego użyto do aprowizacji przykładu, lub nowe okno polecenia i ponownie przejdź do folderu **occupancy-quickstart\src** w przykładzie.

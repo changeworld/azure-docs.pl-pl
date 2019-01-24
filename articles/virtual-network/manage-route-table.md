@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 45c7a07231cbdcdc64ec348ed425a62b63bd822a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3381bf32bfd3df538641b11b35a64b53fda6744f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016566"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466877"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
 
@@ -29,14 +29,14 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
 
 Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania, które są wymienione w [uprawnień ](#permissions).
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
-Istnieje limit liczby tabel tras, które można utworzyć lokalizacji platformy Azure i subskrypcji. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Istnieje limit liczby tabel tras, które można utworzyć dla lokalizacji i subskrypcji platformy Azure. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 1. W lewym górnym rogu portalu, wybierz **+ Utwórz zasób**.
 2. Wybierz **sieć**, a następnie wybierz **tabeli tras**.
@@ -80,11 +80,11 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wy
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci route-table update](/cli/azure/network/route-table/route#az_network_route_table_update)
-- Program PowerShell: [Zestaw AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
+- Program PowerShell: [Set-AzureRmRouteTable](/powershell/module/azurerm.network/set-azurermroutetable)
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
-Podsieć może mieć zero lub jedną tabelę tras, powiązany. Tabela tras może być skojarzona z zera lub wiele podsieci. Ponieważ tabele tras nie są skojarzone z sieciami wirtualnymi, należy skojarzyć tabelę tras w każdej podsieci, które mają tabeli tras skojarzonej z. Cały ruch, pozostawiając podsieci jest kierowany oparte na trasach, został utworzony w tabelach tras, [domyślne trasy](virtual-networks-udr-overview.md#default), i propagowane trasy z siecią lokalną, jeśli sieć wirtualna jest połączona z (Brama sieci wirtualnej platformy Azure Usługa ExpressRoute lub sieci VPN, jeśli przy użyciu protokołu BGP z bramą sieci VPN). Można skojarzyć tylko tabelę tras do podsieci w sieciach wirtualnych, które istnieją w tej samej lokalizacji platformy Azure i subskrypcji co tabeli tras.
+Podsieć może mieć skojarzoną jedną tabelę tras lub żadną. Tabela tras może być skojarzona z wieloma podsieciami lub żadną. Ponieważ tabele tras nie są skojarzone z sieciami wirtualnymi, musisz skojarzyć tabelę tras z każdą podsiecią, która ma mieć skojarzoną tabelę tras. Cały ruch opuszczający podsieć jest kierowany w oparciu o trasy utworzone w tabelach tras, [trasy domyślne](virtual-networks-udr-overview.md#default) i trasy propagowane z sieci lokalnej, jeśli sieć wirtualna jest połączona z bramą sieci wirtualnej platformy Azure (usługa ExpressRoute albo sieć VPN, jeśli używany jest protokół BGP z bramą sieci VPN). Tabelę tras można skojarzyć tylko z podsieciami w sieciach wirtualnych, które istnieją w tej samej lokalizacji i subskrypcji platformy Azure co tabela tras.
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz sieć wirtualną na liście, który zawiera podsieć, którą chcesz skojarzyć tabelę tras w celu.
@@ -96,10 +96,10 @@ Jeśli Twoja sieć wirtualna jest podłączona do bramy sieci VPN platformy Azur
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Interfejs wiersza polecenia platformy Azure: [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet?view=azure-cli-latest)
 - Program PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig)
 
-## <a name="dissociate-a-route-table-from-a-subnet"></a>Usuń skojarzenie tabelę tras z podsiecią
+## <a name="dissociate-a-route-table-from-a-subnet"></a>Usuwanie skojarzenia tabeli tras z podsiecią
 
 Jeśli usuniesz skojarzenie elementu tabelę tras z podsieci, platforma Azure kieruje ruch na podstawie jego [domyślne trasy](virtual-networks-udr-overview.md#default).
 
@@ -111,12 +111,12 @@ Jeśli usuniesz skojarzenie elementu tabelę tras z podsieci, platforma Azure ki
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az_network_vnet_subnet_update)
+- Interfejs wiersza polecenia platformy Azure: [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet?view=azure-cli-latest)
 - Program PowerShell: [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig) 
 
 ## <a name="delete-a-route-table"></a>Usuwanie tabeli tras
 
-Jeśli tabela tras jest skojarzona na wszelkie podsieci, nie można usunąć. [Usuń skojarzenie](#dissociate-a-route-table-from-a-subnet) tabelę tras z wszystkich podsieci przed próbą usunięcia go.
+Jeśli tabela tras jest skojarzona z podsieciami, nie można jej usunąć. [Usuń skojarzenie](#dissociate-a-route-table-from-a-subnet) tabeli tras z wszystkimi podsieciami, zanim spróbujesz ją usunąć.
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz **...**  po prawej stronie tabeli tras do usunięcia.
@@ -125,7 +125,7 @@ Jeśli tabela tras jest skojarzona na wszelkie podsieci, nie można usunąć. [U
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [usunąć tabeli tras az sieci](/cli/azure/network/route-table/route#az_network_route_table_delete)
-- Program PowerShell: [Usuń AzureRmRouteTable](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
+- Program PowerShell: [Remove-AzureRmRouteTable](https://docs.microsoft.com/powershell/module/azurerm.network/remove-azurermroutetable?view=azurermps-6.8.1) 
 
 ## <a name="create-a-route"></a>Tworzenie trasy
 
@@ -136,7 +136,7 @@ Istnieje limit liczby trasy na tabelę tras można utworzyć dla lokalizacji pla
 3. Wybierz **trasy**w obszarze **ustawienia**.
 4. Wybierz pozycję **+ Dodaj**.
 5. Wprowadź unikatową **nazwa** trasy w tabeli tras.
-6. Wprowadź **prefiksu adresu**, w notacji CIDR, który chcesz kierowanie ruchu do. Nie można zduplikować prefiks w więcej niż jedna trasa w tabeli tras, chociaż prefiks mogą być zawarte w prefiksem innego. Na przykład jeśli 10.0.0.0/16 jest zdefiniowany jako prefiks w trasie jeden, nadal można zdefiniować innej trasy z prefiksem adresu 10.0.0.0/24. Platforma Azure wybiera trasę ruchu w oparciu o dopasowanie najdłuższego prefiksu. Aby dowiedzieć się, jak platforma Azure wybiera trasy, zobacz [Omówienie routingu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+6. Wprowadź **prefiksu adresu**, w notacji CIDR, który chcesz kierowanie ruchu do. Prefiksu nie można zduplikować w więcej niż jednej trasie w tabeli tras, chociaż sam prefiks może być zawarty w innym prefiksie. Na przykład jeśli 10.0.0.0/16 jest zdefiniowany jako prefiks w trasie jeden, nadal można zdefiniować innej trasy z prefiksem adresu 10.0.0.0/24. Platforma Azure wybiera trasę ruchu w oparciu o dopasowanie najdłuższego prefiksu. Aby dowiedzieć się, jak platforma Azure wybiera trasy, zobacz [Omówienie routingu](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 7. Wybierz **typu następnego przeskoku**. Aby uzyskać szczegółowy opis wszystkich typów następnego przeskoku, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
 8. Wprowadź adres IP dla **następnego przeskoku**. Adres można wprowadzić tylko w przypadku wybrania *urządzenie wirtualne* dla **typu następnego przeskoku**.
 9. Kliknij przycisk **OK**.
@@ -144,7 +144,7 @@ Istnieje limit liczby trasy na tabelę tras można utworzyć dla lokalizacji pla
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [tworzenie az sieci route-table route](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
-- Program PowerShell: [Nowe AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
+- Program PowerShell: [New-AzureRmRouteConfig](/powershell/module/azurerm.network/new-azurermrouteconfig)
 
 ## <a name="view-routes"></a>Wyświetl trasy
 
@@ -156,7 +156,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [listę trasy w tabeli tras sieci az](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_list)
+- Interfejs wiersza polecenia platformy Azure: [listę trasy w tabeli tras sieci az](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - Program PowerShell: [Get-AzureRmRouteConfig](/powershell/module/azurerm.network/get-azurermrouteconfig)
 
 ## <a name="view-details-of-a-route"></a>Wyświetlanie szczegółów trasy
@@ -181,8 +181,8 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 
 **Polecenia**
 
-- Interfejs wiersza polecenia platformy Azure: [az sieci route-table route aktualizacji](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_update)
-- Program PowerShell: [Zestaw AzureRmRouteConfig](/powershell/module/azurerm.network/set-azurermrouteconfig)
+- Interfejs wiersza polecenia platformy Azure: [az sieci route-table route aktualizacji](/cli/azure/network/route-table/route?view=azure-cli-latest)
+- Program PowerShell: [Set-AzureRmRouteConfig](/powershell/module/azurerm.network/set-azurermrouteconfig)
 
 ## <a name="delete-a-route"></a>Usuwanie trasy
 
@@ -195,7 +195,7 @@ Tabela tras zawiera zero lub wiele tras. Aby dowiedzieć się więcej o informac
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci tabeli tras route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
-- Program PowerShell: [Usuń AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
+- Program PowerShell: [Remove-AzureRmRouteConfig](/powershell/module/azurerm.network/remove-azurermrouteconfig)
 
 ## <a name="view-effective-routes"></a>Wyświetlanie obowiązujących tras
 

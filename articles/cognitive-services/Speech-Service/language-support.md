@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 27b952fb1a901ff716f25cc7d512f860f639fb02
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 688194c8d5ec0c2594d8c7178d8cae3925b8e482
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632622"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413378"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -63,6 +63,9 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
 Zamiany tekstu na mowę interfejsu API REST obsługuje tych głosów, z których każdy obsługuje określonego języka i dialektu, identyfikowane za pomocą ustawień regionalnych.
+
+> [!IMPORTANT]
+> Ceny różnią się dla standardowych, niestandardowych i neuronowych głosów. Odwiedź stronę [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) strony, aby uzyskać dodatkowe informacje.
 
 ### <a name="neural-voices-preview"></a>Głosy neuronowych (wersja zapoznawcza)
 
@@ -158,7 +161,7 @@ vi-VN | Wietnamski|Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę 
 zh-CN | Chiński (kontynent)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, HuihuiRUS)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, Yaoyao, Apollo)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-CN, Kangkang, Apollo)"
-zh-HK | Chiński (Hongkong)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK Tracy, Apollo)"
+zh-HK | Chiński (SRA Hongkong)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK Tracy, Apollo)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (zh-HK TracyRUS)"
 | || Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-HK Danny, Apollo)"
 zh-TW | Chiński (Tajwan)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-TW, Yating, Apollo)"

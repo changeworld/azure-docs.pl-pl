@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 18f2ebc97a182f03483c4a4119f88774b4b0b9fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320662"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431881"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurowanie ustawień usługi Azure Multi-Factor Authentication
 
@@ -31,7 +31,7 @@ Niektóre z tych ustawień dotyczą serwera usługi MFA i/lub usługi Azure MFA.
 
 | Cecha | Opis |
 | ------- | ----------- |
-| Blokada konta | Tymczasowo blokady konta w usłudze uwierzytelniania wieloskładnikowego w przypadku zbyt wielu odmowa prób uwierzytelnienia w wierszu. Ta funkcja dotyczy tylko użytkowników wprowadzających numer PIN w celu uwierzytelnienia. (Serwer MFA) |
+| Blokada konta | Tymczasowo blokady konta w usłudze uwierzytelniania wieloskładnikowego w przypadku zbyt wielu odmowa prób uwierzytelnienia w wierszu. Ta funkcja dotyczy tylko użytkowników wprowadzających numer PIN w celu uwierzytelnienia. (MFA Server) |
 | [Blokowanie/odblokowywanie użytkowników](#block-and-unblock-users) | Umożliwia zablokowanie określonych użytkowników na serwerze usługi MFA (lokalny) z możliwość odbierania żądań usługi Multi-Factor Authentication. Wszelkie próby uwierzytelnienia dla zablokowanych użytkowników są automatycznie odrzucane. Użytkownicy zostaną zablokowane przez 90 dni od momentu zablokowania. |
 | [Alert oszustwa](#fraud-alert) | Skonfiguruj ustawienia związane z użytkownikom możliwość i zgłosić fałszywe weryfikacji żądań z serwera MFA. |
 | Powiadomienia | Włącz powiadomienia o zdarzeniach z serwera MFA. |
@@ -39,7 +39,7 @@ Niektóre z tych ustawień dotyczą serwera usługi MFA i/lub usługi Azure MFA.
 | [Ustawienia połączenia telefonicznego](#phone-call-settings) | Skonfiguruj ustawienia związane z połączeń telefonicznych i powitania dla środowiskach chmurowych i lokalnych. |
 | Dostawcy | Spowoduje to wyświetlenie wszystkich istniejących dostawców uwierzytelniania, mogą być powiązane z Twoim kontem. Nie można utworzyć nowych dostawców uwierzytelniania począwszy od 1 września 2018 r. |
 
-## <a name="manage-mfa-server"></a>Zarządzanie serwerem MFA
+## <a name="manage-mfa-server"></a>Zarządzanie serwerem usługi MFA
 
 Ustawienia w tej sekcji dotyczą tylko serwera usługi MFA.
 

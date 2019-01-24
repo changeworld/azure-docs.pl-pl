@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z QPrism | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą QPrism | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i QPrism.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: ddf22491d7531daecf4448e62e8594c3326d7b77
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8278b26f023ada109a8e6fa3965476e3dc4526c7
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420278"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828064"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Samouczek: Integracja usługi Azure Active Directory z QPrism
+# <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą QPrism
 
 W tym samouczku dowiesz się, jak zintegrować QPrism w usłudze Azure Active Directory (Azure AD).
 
@@ -38,13 +38,13 @@ Aby uzyskać więcej szczegółów na temat integracji aplikacji SaaS z usługą
 
 Aby skonfigurować integrację usługi Azure AD za pomocą QPrism, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - QPrism logowanie jednokrotne włączone subskrypcji
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska usługi Azure AD w wersji próbnej, możesz skorzystać z [miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -57,23 +57,23 @@ Aby skonfigurować integrację QPrism w usłudze Azure AD, należy dodać QPrism
 
 **Aby dodać QPrism z galerii:**
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. W [witrynie Azure Portal](https://portal.azure.com) w okienku po lewej stronie wybierz pozycję **Azure Active Directory**. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 1. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![Blok Aplikacje dla przedsiębiorstw][2]
     
 1. Aby dodać nową aplikację, w górnej części okna dialogowego, wybierz **nową aplikację**.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **QPrism**i wybierz **QPrism** z panelu wyników. Następnie kliknij przycisk **Dodaj** umożliwiające dodanie aplikacji.
 
     ![QPrism na liście wyników](./media/qprism-tutorial/tutorial_qprism_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą QPrism, w oparciu o użytkownika testu o nazwie "Britta Simon."
 
@@ -89,13 +89,13 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 1. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 1. [Testowanie logowania jednokrotnego](#test-single-sign-on) Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji QPrism.
 
 1. W witrynie Azure portal na **QPrism** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -110,17 +110,17 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** pole tekstowe, wpisz adres URL, który używa następującego wzorca: `https://<customer domain>.qmyzone.com/metadata.php`
          
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości z identyfikatorem rzeczywiste i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta QPrism](mailto:qsupport-ce@quatrro.com) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości z identyfikatorem rzeczywiste i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta QPrism](mailto:qsupport-ce@quatrro.com) do uzyskania tych wartości. 
 
-1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
+1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
-     ![Link pobierania certyfikatu](./media/qprism-tutorial/tutorial_qprism_certificate.png)
+     ![Link do pobierania certyfikatu](./media/qprism-tutorial/tutorial_qprism_certificate.png)
 
 1. Wybierz pozycję **Zapisz**.
 
     ![Konfigurowanie logowania jednokrotnego przycisk zapisywania](./media/qprism-tutorial/tutorial_general_400.png)
     
-1. Aby skonfigurować logowanie jednokrotne na **QPrism** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej QPrism](mailto:qsupport-ce@quatrro.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **QPrism** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej QPrism](mailto:qsupport-ce@quatrro.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -132,11 +132,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory](./media/qprism-tutorial/create_aaduser_01.png)
+    ![Przycisk Azure Active Directory](./media/qprism-tutorial/create_aaduser_01.png)
 
 1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/qprism-tutorial/create_aaduser_02.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](./media/qprism-tutorial/create_aaduser_02.png)
 
 1. Aby otworzyć **użytkownika** okno dialogowe, w górnej części **wszyscy użytkownicy** okno dialogowe, wybierz opcję **Dodaj**.
 
@@ -144,7 +144,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
-    ![Okno dialogowe użytkownika](./media/qprism-tutorial/create_aaduser_04.png)
+    ![Okno dialogowe Użytkownik](./media/qprism-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
@@ -156,7 +156,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-qprism-test-user"></a>Tworzenie użytkownika testowego QPrism
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w QPrism. Praca z [zespołem pomocy technicznej QPrism](mailto:qsupport-ce@quatrro.com) do dodawania użytkowników na platformie QPrism. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w QPrism. Praca z [zespołem pomocy technicznej QPrism](mailto:qsupport-ce@quatrro.com) do dodawania użytkowników na platformie QPrism. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -174,9 +174,9 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
     ![Link QPrism na liście aplikacji](./media/qprism-tutorial/tutorial_qprism_app.png)  
 
-1. W menu po lewej stronie wybierz **użytkowników i grup**.
+1. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Link „Użytkownicy i grupy”][202]
 
 1. Wybierz pozycję **Dodaj**. Następnie w obszarze **Dodaj przydziału**, wybierz opcję **użytkowników i grup**.
 
@@ -195,7 +195,7 @@ W tej sekcji testowania konfiguracji usługi Azure AD pojedynczego logowania jed
 W panelu dostępu po wybraniu kafelka QPrism użytkownik powinien uzyskać automatycznie zalogować się do aplikacji QPrism.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

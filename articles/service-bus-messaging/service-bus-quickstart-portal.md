@@ -1,6 +1,6 @@
 ---
-title: Szybki start — używanie witryny Azure Portal do wysyłania i odbierania komunikatów z usługi Azure Service Bus | Microsoft Docs
-description: Z tego przewodnika Szybki start dowiesz się, jak wysyłać i odbierać komunikaty usługi Service Bus przy użyciu witryny Azure Portal
+title: Szybki start — używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus | Microsoft Docs
+description: W tym samouczku szybkiego startu dowiesz się, jak utworzyć kolejkę usługi Service Bus przy użyciu witryny Azure Portal. Następnie użyjesz przykładowej aplikacji klienckiej, aby wysyłać komunikaty do kolejki i odbierać komunikaty z kolejki.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: bfe6c48b2e83c1ebbbad446f79cebd1f513db57e
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 69c9a6d2d059ffbac5fe3e0ddb103eaec51123c3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002675"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264024"
 ---
-# <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Szybki start: Wysyłanie i odbieranie komunikatów przy użyciu witryny Azure Portal i platformy .NET
-
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Szybki start: używanie witryny Azure Portal do tworzenia kolejki usługi Service Bus
 Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz całkowitą niezawodność. Typowy scenariusz usługi Service Bus zwykle wiąże się z rozdzieleniem co najmniej dwóch aplikacji, usług lub procesów oraz przesłaniem zmian stanu lub danych. Takie scenariusze mogą obejmować planowanie wielu zadań wsadowych w innej aplikacji lub innych usługach bądź wyzwalanie realizacji zamówienia. Na przykład firma handlowa może wysłać dane z punktu sprzedaży na zaplecze biura lub do regionalnego centrum dystrybucji w celu uzupełnienia zapasów oraz aktualizacji spisu inwentarza. W tym scenariuszu aplikacja kliencka wysyła komunikaty do kolejki usługi Service Bus i je z niej odbiera.  
 
 ![kolejka](./media/service-bus-quickstart-portal/quick-start-queue.png)

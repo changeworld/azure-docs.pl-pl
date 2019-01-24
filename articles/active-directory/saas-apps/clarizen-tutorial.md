@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Clarizen | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Clarizen | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Clarizen.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8c66d8eec6d3967026c17db9ce8d616b97d25931
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158675"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807732"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Samouczek: Integracja usługi Azure Active Directory z Clarizen
+# <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Clarizen
 
 W tym samouczku nauczysz się integracji Azure Active Directory (Azure AD) przy użyciu Clarizen. Ta integracja zapewnia następujące korzyści:
 
@@ -42,7 +42,7 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Clarizen, potrzebne s
 - Subskrypcji usługi Azure AD
 - Subskrypcja Clarizen, w którym włączono obsługę logowania jednokrotnego
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
 - Testowanie usługi Azure AD logowania jednokrotnego w środowisku testowym. Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowiska testowego usługi Azure AD, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
@@ -70,7 +70,7 @@ Aby skonfigurować integrację Clarizen w usłudze Azure AD, należy dodać Clar
 
     ![Wybieranie Clarizen w okienku wyników](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 W poniższych sekcjach Skonfiguruj i testowanie usługi Azure AD logowanie jednokrotne za pomocą Clarizen na podstawie użytkownika testu Britta Simon.
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Clarizen do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Clarizen musi można ustanowić. Ustanowienia tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w Clarizen.
@@ -83,7 +83,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Clarizen.
 
 1. W witrynie Azure portal na **Clarizen** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
@@ -98,7 +98,7 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i k
 
     ![Pola Adres URL identyfikatora i odpowiedzi](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
-    a. W **identyfikator** wpisz wartość, jak: **Clarizen**
+    a. W **identyfikator** wpisz wartość jako: **Clarizen**
 
     b. W **adres URL odpowiedzi** wpisz adres URL przy użyciu następującego wzorca: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
 
@@ -190,13 +190,13 @@ W witrynie Azure portal Utwórz użytkownika testowego o nazwie Britta Simon.
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Clarizen.
 
-**Jeśli potrzebujesz ręcznie utworzyć użytkownika, wykonaj poniższe czynności:**
+**Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące czynności:**
 
 Aby umożliwić użytkownikom usługi Azure AD do logowania się Clarizen w, uaktywniać ich konta. W przypadku Clarizen Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
 1. Zaloguj się do witryny firmy Clarizen jako administrator.
 
-2. Kliknij przycisk **osób**.
+2. Kliknij kartę **People** (Osoby).
 
     ![Klikając pozycję "Osoby"](./media/clarizen-tutorial/create_aaduser_001.png "osoby")
 
@@ -213,7 +213,7 @@ Aby umożliwić użytkownikom usługi Azure AD do logowania się Clarizen w, uak
     b. Kliknij przycisk **zaprosić**.
 
     > [!NOTE]
-    > Właściciel konta usługi Azure Active Directory będzie otrzymywać wiadomości e-mail i kliknij link, aby potwierdzić swoje konto, zanim stanie się aktywny.
+    > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem, którego użyje w celu potwierdzenia konta, zanim stanie się ono aktywne.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 Włącz Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udostępnienie jej Clarizen.
@@ -247,7 +247,7 @@ Testowanie konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego pr
 
 Po kliknięciu kafelka Clarizen w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze aplikacji Clarizen.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -3,9 +3,9 @@ title: Funkcja Azure access control Service Bus za pomocą sygnatur dostępu wsp
 description: Omówienie kontroli dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego Przegląd, szczegółowe informacje o autoryzacji sygnatury dostępu Współdzielonego z usługą Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: daefb07761217ff4bb0800dfd9f1f05b6e22c1e1
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.author: aschhab
+ms.openlocfilehash: 3e2fa51bcf6040eb94a9d270a7f5f375f726e62a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284918"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846340"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Kontrola dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego
 
@@ -96,13 +96,13 @@ Token sygnatury dostępu Współdzielonego jest prawidłowa dla wszystkich zasob
 
 Zalecane jest, okresowo generować ponownie klucze używane w [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) obiektu. Gniazda klucza podstawowego i pomocniczego istnieje, dzięki czemu można stopniowo wymiany kluczy. Jeśli Twoja aplikacja ogólnie używa klucza podstawowego, skopiuj klucz podstawowy do pomocniczego klucza gniazda, a dopiero wtedy ponownie wygenerować klucz podstawowy. Następnie można skonfigurować nową wartość klucza podstawowego w aplikacji klienta, które mają stały dostęp przy użyciu starego klucza podstawowego w gnieździe dodatkowej. Gdy wszyscy klienci zostaną zaktualizowane, można ponownie wygenerować klucza pomocniczego, aby na koniec wycofać stary klucz podstawowy.
 
-Jeśli jest Ci znana lub podejrzeń, że klucz zostanie naruszony, i że masz odwołać kluczy, można ponownie wygenerować zarówno [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) i [klucz pomocniczy](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), zastępując je za pomocą nowych kluczy. Ta procedura powoduje unieważnienie wszystkie tokeny podpisane przy użyciu starych kluczy.
+Jeśli jest Ci znana lub podejrzeń, że klucz zostanie naruszony, i że masz odwołać kluczy, można ponownie wygenerować zarówno [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) i [klucz pomocniczy](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), zastępując je za pomocą nowych kluczy. Ta procedura powoduje unieważnienie wszystkie tokeny podpisane przy użyciu starych kluczy.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Udostępnione uwierzytelniania sygnatury dostępu za pomocą usługi Service Bus
 
 Konfiguracja reguł autoryzacji, generowanie tokenów sygnatur dostępu Współdzielonego i uwierzytelnianiem klienta są następujące scenariusze, w opisany następująco.
 
-Aby uzyskać pełne pracy przykładowej aplikacji usługi Service Bus, który ilustruje konfiguracji i używa autoryzacji sygnatury dostępu Współdzielonego, zobacz [uwierzytelniania sygnatura dostępu współdzielonego z usługą Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Powiązane próbki, który ilustruje sposób używania reguł autoryzacji sygnatury dostępu Współdzielonego skonfigurowanej w przestrzeni nazw lub tematy, aby zabezpieczyć subskrypcje usługi Service Bus jest dostępna tutaj: [uwierzytelniania przy użyciu sygnatury dostępu współdzielonego (SAS) za pomocą subskrypcji magistrali usług](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Aby uzyskać pełne pracy przykładowej aplikacji usługi Service Bus, który ilustruje konfiguracji i używa autoryzacji sygnatury dostępu Współdzielonego, zobacz [uwierzytelniania sygnatura dostępu współdzielonego z usługą Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Powiązane próbki, który ilustruje sposób używania reguł autoryzacji sygnatury dostępu Współdzielonego skonfigurowanej w przestrzeni nazw lub tematy, aby zabezpieczyć subskrypcje usługi Service Bus jest dostępna tutaj: [Korzystanie z uwierzytelniania sygnatury dostępu współdzielonego (SAS) z subskrypcji magistrali usług](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Reguły autoryzacji dostępu do udostępnionych dostępu w jednostce
 
@@ -257,7 +257,7 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane dla różnych operacji
 | --- | --- | --- |
 | **Namespace** | | |
 | Skonfiguruj reguły autoryzacji w przestrzeni nazw |Zarządzanie |Dowolny adres przestrzeni nazw |
-| **Rejestr usług** | | |
+| **Service Registry** | | |
 | Wyliczać zasady prywatne |Zarządzanie |Dowolny adres przestrzeni nazw |
 | Rozpocząć nasłuchiwania w przestrzeni nazw |Nasłuchuj |Dowolny adres przestrzeni nazw |
 | Wysyłanie komunikatów do odbiornika w przestrzeni nazw |Wysyłanie |Dowolny adres przestrzeni nazw |

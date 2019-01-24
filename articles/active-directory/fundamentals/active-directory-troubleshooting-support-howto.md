@@ -4,7 +4,7 @@ description: Dowiedzieć się, jak uzyskać pomoc, a następnie otwórz bilet po
 services: active-directory
 documentationcenter: na
 author: eross-msft
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -14,12 +14,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: ddf4763b8f5abb81c7d884d9d978c85843410ccb
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: feecc0b5b8c6bd7cb39a9aa8f40e84b07b242f39
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064950"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447773"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Znajdowanie pomocy i otworzyć bilet pomocy technicznej usługi Azure Active Directory
 Firma Microsoft zapewnia globalne technicznych, przedsprzedaży, rozliczeń i pomoc techniczna dla subskrypcji usługi Azure Active Directory (Azure AD). Obsługa jest dostępna online i telefonicznie w przypadku Microsoft Azure płatnych subskrypcji i wersji próbnej. Telefoniczna pomoc techniczna i online pomocy technicznej dotyczącej rozliczeń są dostępne w dodatkowych językach. 

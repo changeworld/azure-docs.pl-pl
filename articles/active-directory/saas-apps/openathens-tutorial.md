@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dd4adfc7-e238-41d5-8b25-1811f08078b6
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: b5765485ba9f45f95db7235a87bdba5b0dc5f9bd
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 9fe00ad1b567fff28301c981413d281869d2aec1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062183"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808402"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z usługą OpenAthens
 

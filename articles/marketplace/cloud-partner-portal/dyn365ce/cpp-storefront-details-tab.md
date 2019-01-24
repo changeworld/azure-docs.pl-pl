@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 62220104329e36fbb2e6f7d3b5b48bcaeaba3660
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082947"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445066"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 dla karty Szczegóły Storefront zaangażowania klienta
 
@@ -76,7 +76,7 @@ Gdy w poniższej tabeli opisano pola na tej karcie:
 |      Pole            |    Opis                 |
 |  ---------------      |  ---------------               |
 | Logo oferty (w formacie png, 48 x 48) | Przekaż obraz, który będzie wyświetlany na stronie wyszukiwania w swojej aplikacji. Format PNG i rozmiar musi być 48 x 48 pikseli. |
-| Logo oferty (w formacie png, 216 x 216) | Przekaż obraz, który będzie disaply na stronie szczegółów aplikacji. Format PNG i rozmiar musi być 216 x 216 pikseli. |
+| Logo oferty (w formacie png, 216 x 216) | Przekaż obraz, który będzie wyświetlany na stronie szczegółów aplikacji. Format PNG i rozmiar musi być 216 x 216 pikseli. |
 | Filmy wideo                | Przekaż promocyjne lub instruktażowy filmów wideo, aplikacji, używając maksymalnie cztery.  Dla każdego pliku wideo Wypełnij wideo nazwisko, adres URL (w usłudze YouTube lub Vimeo tylko) i skojarzone miniaturę w formacie PNG, a o rozmiarze 1280 x 720 pikseli.  | 
 | Dokumenty             | Przekaż dokumenty promocyjne lub instruktażowy produktu w formacie PDF, używając maksymalnie trzy.  Dla każdego dokumentu podaj nazwę dokumentu.  |
 | Zrzuty ekranu           | Przekaż maksymalnie pięciu obrazów w aplikacji interfejsu użytkownika w formacie PNG, a o rozmiarze 1280 x 720 pikseli.  Te zrzuty ekranu pojawi się na stronie szczegółów AppSource dla aplikacji. |

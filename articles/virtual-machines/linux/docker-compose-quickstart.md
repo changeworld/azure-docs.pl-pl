@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: zarhoads
-ms.openlocfilehash: c0dddb5ff96c0dea3c2c33cbd67fce247e3161a5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 5cf9047a2115e2d486a433542928afbe295b5962
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467141"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844623"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Wprowadzenie do platformy Docker i Compose, aby zdefiniować i uruchomić aplikację obsługującą wiele kontenerów na platformie Azure
 Za pomocą [Compose](http://github.com/docker/compose), użyj prostego pliku tekstowego do definiowania aplikacja składająca się z wielu kontenerów platformy Docker. Następnie uruchom aplikację w pojedynczym poleceniu, tak, wszystko, co do wdrożenia środowiska zdefiniowane. Na przykład w tym artykule pokazano, jak szybko skonfigurować bloga WordPress z zapleczem bazy danych MariaDB SQL na maszynie Wirtualnej systemu Ubuntu. Redaguj umożliwia również konfigurowanie bardziej złożonych aplikacji.
@@ -33,7 +33,7 @@ Korzystając z rozszerzenia maszyny Wirtualnej Docker, maszyna wirtualna jest au
 
 
 ### <a name="create-docker-host-with-azure-cli"></a>Tworzenie hosta platformy Docker przy użyciu wiersza polecenia platformy Azure
-Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index#az_login).
+Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index).
 
 Najpierw utwórz grupę zasobów w środowisku platformy Docker przy użyciu [Tworzenie grupy az](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 

@@ -3,18 +3,18 @@ title: Kierować aktualizacje przy użyciu kolekcji programu SCCM w usłudze Azu
 description: Ten artykuł ma na celu ułatwienie konfigurowania programu System Center Configuration Manager za pomocą tego rozwiązania do zarządzania aktualizacjami komputerów zarządzanych przez program SCCM.
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f3ab50c4fdc080b157212bcc662a2acf6629483d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c3b595e9c4d4b98814d1b68adede97204bf3eb96
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097968"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422732"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integracja programu System Center Configuration Manager przy użyciu rozwiązania Update Management
 
@@ -51,3 +51,4 @@ Do zarządzania aktualizacjami maszyn wirtualnych z systemem Windows Server, kt�
 Po wprowadzeniu tej zmiany konfiguracji, możesz utworzyć nowe wdrożenie wykonując kroki opisane w [tworzenie wdrożenia aktualizacji](automation-tutorial-update-management.md#schedule-an-update-deployment) i wybierz **zaimportowane grupy** na **typu** listy rozwijanej można wybrać odpowiednią kolekcję programu Configuration Manager.
 
 ## <a name="next-steps"></a>Kolejne kroki
+

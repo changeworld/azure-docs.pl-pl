@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 243aecbe3627a6cc72de1bc98c301e8fa632ec36
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 31008c61856801785f1277c7baee955ee3f5be60
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076343"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424731"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrażanie maszyn wirtualnych platformy Azure środowiska ASE systemu SAP DBMS w przypadku obciążeń SAP
 
@@ -235,7 +235,7 @@ ms.locfileid: "39076343"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -380,7 +380,7 @@ Jako z lokalnymi systemami kilka czynności, aby włączyć wszystkie funkcje op
 
 i łącza wygenerowane w transakcji, które DBACockpit wygląda podobnie do:
 
-> https://`<fullyqualifiedhostname`>: 44300/sap/bc/webdynpro/sap/dba_cockpit
+> https://`<fullyqualifiedhostname`>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http://`<fullyqualifiedhostname`>:8000/sap/bc/webdynpro/sap/dba_cockpit
 > 
@@ -535,7 +535,7 @@ Jako z lokalnymi systemami kilka czynności, aby włączyć wszystkie funkcje op
 
 i łącza generowane w transakcji DBACockpit będą wyglądać mniej więcej tak:
 
-> https://`<fullyqualifiedhostname`>: 44300/sap/bc/webdynpro/sap/dba_cockpit
+> https://`<fullyqualifiedhostname`>:44300/sap/bc/webdynpro/sap/dba_cockpit
 > 
 > http://`<fullyqualifiedhostname`>:8000/sap/bc/webdynpro/sap/dba_cockpit
 > 

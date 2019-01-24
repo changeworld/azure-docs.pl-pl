@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b33a646c52ca5ce85e0525b04e9be5009cc6f90d
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064699"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352940"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z centrum zdarzeń do usługi Azure Data Explorer
 
@@ -189,7 +189,7 @@ Kiedy aplikacja generuje dane, możesz teraz zobaczyć przepływ tych danych z c
     ![Zestaw wyników komunikatów](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > W systemie ADX istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są skonfigurowane na wartość 5 minut, więc mogą wystąpić opóźnienia.
+    > W systemie Azure Data Explorer istnieją zasady agregacji (dzielenie na partie) dotyczące pozyskiwania danych opracowane w celu optymalizacji procesu pozyskiwania. Zasady są skonfigurowane na wartość 5 minut, więc mogą wystąpić opóźnienia.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

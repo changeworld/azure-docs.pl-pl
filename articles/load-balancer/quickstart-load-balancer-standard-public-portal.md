@@ -1,10 +1,11 @@
 ---
-title: 'Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa — Azure Portal | Microsoft Docs'
+title: 'Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa — Azure Portal'
+titlesuffix: Azure Load Balancer
 description: Ten przewodnik Szybki start pokazuje, jak utworzyć moduł równoważenia obciążenia w warstwie Standardowa przy użyciu witryny Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
@@ -17,14 +18,14 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: df79581f4ad6af3dc420e7c7895acf46b5e3d997
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615232"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232672"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa przy użyciu witryny Azure Portal w celu równoważenia obciążenia maszyn wirtualnych
 
 Równoważenie obciążenia zapewnia większą dostępność i możliwości skalowania dzięki rozdzielaniu żądań przychodzących między wiele maszyn wirtualnych. Za pomocą witryny Azure Portal można utworzyć moduł równoważenia obciążenia na potrzeby równoważenia obciążenia maszyn wirtualnych. W tym przewodniku Szybki start pokazano, jak zrównoważyć obciążenie maszyn wirtualnych przy użyciu usługi Load Balancer w warstwie Standardowa.
 

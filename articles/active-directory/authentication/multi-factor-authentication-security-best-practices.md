@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 8b6ed6a7e71da2f302df4b41656c8a63e93be2b0
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 35e39ca4aa00838d7437ec675294b6c3cc62be6f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159077"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426229"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Wskazówki dotyczące zabezpieczeń dla przy użyciu usługi Azure Multi-Factor Authentication przy użyciu konta usługi Azure AD
 
@@ -29,7 +29,7 @@ Istnieją dwa sposoby [włączyć uwierzytelnianie wieloskładnikowe Azure dla w
 * Tworzenie dostawcy usługi Multi-Factor Authentication i płatność na użytkownika lub wg uwierzytelnienia
 
 ### <a name="licenses"></a>Licencje
-![PAKIET EMS](./media/multi-factor-authentication-security-best-practices/ems.png)
+![EMS](./media/multi-factor-authentication-security-best-practices/ems.png)
 
 Jeśli masz usługi Azure AD Premium lub pakietu Enterprise Mobility + Security licencji, masz już usługę Azure MFA. Twoja organizacja nie musi nic więcej, aby rozszerzyć możliwości weryfikacji dwuetapowej dla wszystkich użytkowników. Musisz przypisać licencję do użytkownika, a następnie włączyć uwierzytelnianie wieloskładnikowe.
 

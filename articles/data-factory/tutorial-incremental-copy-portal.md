@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: yexu
-ms.openlocfilehash: ad490630d3ce5d625bce05c75c20fa71a7aa2d29
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b9e9c0b141987f8af563944c8eee216b8218846c
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014544"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352890"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem, który ładuje dane różnicowe z tabeli w bazie danych Azure SQL Database do magazynu Azure Blob Storage. 
@@ -135,7 +135,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Uruchom następujące polecenie, aby utworzyć procedurę składowaną w bazie danych SQL:
 
 ```sql
-CREATE PROCEDURE sp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
+CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
 AS
 
 BEGIN
@@ -302,7 +302,7 @@ W tym samouczku utworzysz potok z dwoma działaniami Lookup, jednym działaniem 
     ![Działanie Stored Procedure (Procedura składowana) — konto SQL](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Przejdź do karty **Procedura składowana** i wykonaj następujące czynności: 
 
-    1. W polu **Nazwa procedury składowanej** wybierz wartość **sp_write_watermark**. 
+    1. W polu **Nazwa procedury składowanej** wybierz wartość **usp_write_watermark**. 
     2. Aby określić wartości parametrów procedury składowanej, kliknij pozycję **Importuj parametr**, a następnie wprowadź następujące wartości parametrów: 
 
         | Name (Nazwa) | Typ | Wartość | 

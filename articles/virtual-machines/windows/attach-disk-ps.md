@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: cynthn
-ms.openlocfilehash: cd11bb8ae8f22705feb7eebeafde385fcf11fdcd
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.component: disks
+ms.openlocfilehash: b293a60240622b5c8e417bf61de83ae8817e203f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637089"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477128"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Dołączanie dysku danych do maszyny Wirtualnej z systemem Windows przy użyciu programu PowerShell
 
@@ -28,11 +29,11 @@ W tym artykule pokazano, jak dołączyć istniejących i nowych dysków na maszy
 
 Po pierwsze Przejrzyj poniższe wskazówki:
 * Liczba dysków z danymi można dołączać jest kontrolowana przez rozmiar maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Używanie usługi Premium storage, należy włączyć usługę Premium Storage typu maszyny Wirtualnej serii DS lub maszyny wirtualnej serii GS. Aby uzyskać więcej informacji, zobacz [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Używanie usługi Premium storage, należy włączyć usługę Premium Storage typu maszyny Wirtualnej serii DS lub maszyny wirtualnej serii GS. Aby uzyskać więcej informacji, zobacz [usługi Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Magazyn Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Aby zainstalować i korzystać z programu PowerShell lokalnie, ten samouczek wymaga programu Azure PowerShell module w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, należy także uruchomić `Connect-AzureRmAccount` do utworzenia połączenia z platformą Azure.
+Aby zainstalować i korzystać z programu PowerShell lokalnie, ten samouczek wymaga programu Azure PowerShell module w wersji 6.0.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, należy także uruchomić `Connect-AzureRmAccount` do utworzenia połączenia z platformą Azure.
 
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Dodawanie pustego dysku danych do maszyny wirtualnej

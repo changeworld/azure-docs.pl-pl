@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/14/2018
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: abbbec05dfb6d81a65941619a36b7f3afcdc1fba
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 511fb425c6b31d204c88094ec5b1a49316495a0a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435569"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431524"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -45,11 +45,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten samouczek wymaga, aby program PowerShell działał lokalnie. Moduł Azure PowerShell musi być zainstalowany w wersji 6.12.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+Ten samouczek wymaga, aby program PowerShell działał lokalnie. Moduł Azure PowerShell musi być zainstalowany w wersji 6.12.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Po zweryfikowaniu wersji programu PowerShell uruchom polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podstawowe wymagania:
 
-- Trasa zdefiniowana przez użytkownika w podsieci szprychy, która wskazuje adres IP usługi Azure Firewall jako bramę domyślną. Propagacja trasy protokołu BGP musi być **wyłączona** w przypadku tej tabeli tras.
+- Trasa zdefiniowana przez użytkownika w podsieci będącej szprychą, która wskazuje adres IP usługi Azure Firewall jako bramę domyślną. Propagacja trasy protokołu BGP musi być **wyłączona** w przypadku tej tabeli tras.
 - Trasa zdefiniowana przez użytkownika w podsieci bramy koncentratora musi wskazywać adres IP zapory jako następny przeskok do sieci będącej szprychą.
 - W podsieci usługi Azure Firewall nie jest wymagana trasa zdefiniowana przez użytkownika, ponieważ uzyskuje ona informacje o trasach na podstawie protokołu BGP.
 - Ustaw wartość **AllowGatewayTransit** na potrzeby komunikacji równorzędnej między sieciami VNet-Hub i VNet-Spoke oraz **UseRemoteGateways** na potrzeby komunikacji równorzędnej VNet-Spoke i VNet-Hub.
@@ -60,7 +60,7 @@ Zapoznaj się z sekcją [Tworzenie tras](#create-routes) w tym samouczku, aby po
 >Usługa Azure Firewall musi mieć bezpośrednie połączenie z Internetem. Jeśli włączono wymuszone tunelowanie do środowiska lokalnego za pośrednictwem usługi ExpressRoute lub usługi Application Gateway, musisz skonfigurować trasę zdefiniowaną przez użytkownika 0.0.0.0/0 z wartością **NextHopType** ustawioną jako **Internet**, a następnie przypisać ją do podsieci **AzureFirewallSubnet**.
 
 >[!NOTE]
->Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy UDE wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.
+>Ruch między wirtualnymi sieciami równorzędnymi połączonymi bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje usługę Azure Firewall jako bramę domyślną. Aby w tym scenariuszu wysyłać ruch między podsieciami do zapory, trasa zdefiniowana przez użytkownika musi jawnie zawierać prefiks podsieci docelowej w obu podsieciach.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 

@@ -2,21 +2,21 @@
 title: Azure schematu zdarzeń centra zdarzeń usługi Event Grid
 description: Opisuje właściwości, które są dostarczane dla centrów zdarzeń za pomocą usługi Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
-ms.author: tomfitz
-ms.openlocfilehash: e301f3895126ed52b8d4c1f046f69dfcedb3563c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 01/17/2019
+ms.author: spelluru
+ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055209"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475411"
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Schemat zdarzeń Azure Event Grid dla usługi event hubs
 
-Ten artykuł zawiera właściwości i schematu dla centrów zdarzeń. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schematu dla centrów zdarzeń. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
 Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń usługi Event Hubs](event-sources.md#event-hubs).
 
@@ -60,8 +60,8 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia Centrum zdarzeń. |
@@ -73,7 +73,7 @@ Obiekt danych ma następujące właściwości:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | fileUrl | ciąg | Ścieżka do pliku przechwytywania. |
-| Typ pliku | ciąg | Typ pliku pliku przechwytywania. |
+| fileType | ciąg | Typ pliku pliku przechwytywania. |
 | Identyfikator partycji | ciąg | Identyfikator fragmentu. |
 | sizeInBytes | liczba całkowita | Rozmiar pliku. |
 | eventCount | liczba całkowita | Liczba zdarzeń w pliku. |

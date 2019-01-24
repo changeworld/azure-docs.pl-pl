@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Włączanie ograniczonego delegowania protokołu kerberos | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Włączyć ograniczone delegowanie protokołu kerberos | Dokumentacja firmy Microsoft'
 description: Włączyć ograniczone delegowanie protokołu kerberos w domenach zarządzanych usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: da7909853d47f680726464d6d646ca87028fd311
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fe0b5224bc266b7990e2f7b6a4b3fa6a1b19190d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158786"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854823"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Konfigurowanie ograniczonego delegowania protokołu Kerberos (KCD) w domenie zarządzanej
 Wiele aplikacji wymaga dostępu do zasobów w kontekście użytkownika. Usługa Active Directory obsługuje do tego mechanizm nazywany delegowania protokołu Kerberos, który umożliwia ten przypadek użycia. Ponadto można ograniczyć delegowanie, tak, aby tylko określone zasoby mogą być dostępne w kontekście użytkownika. Usługa Azure AD Domain Services domeny zarządzane są różni się od tradycyjnych domen usługi Active Directory, ponieważ one bardziej bezpiecznie zablokowane.

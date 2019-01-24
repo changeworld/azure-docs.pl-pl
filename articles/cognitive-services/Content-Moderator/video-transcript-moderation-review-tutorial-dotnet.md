@@ -1,27 +1,27 @@
 ---
 title: 'Samouczek: moderowanie wideo i transkrypcji na platformie .NET — Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Jak używać usługi Content Moderator do moderowania wideo i transkrypcji na platformie .NET.
+description: W tym samouczku wyjaśniono, jak utworzyć pełne rozwiązanie z zakresu moderowania wideo i transkrypcji przez moderowanie wspomagane maszynowo oraz utworzenie przeglądu wymagającego udziału człowieka (human-in-the-loop).
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: tutorial
-ms.date: 1/27/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 45f1b4d16bd982e17b67d6fb337e0d917f635851
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118578"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332697"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Samouczek: moderowanie wideo i transkrypcji
 
 Interfejsy API wideo usługi Content Moderator umożliwiają moderowanie wideo i tworzenie przeglądów wideo za pomocą narzędzia do przeglądu przez ludzi. 
 
-W tym szczegółowym samouczku wyjaśniono, jak utworzyć pełne rozwiązanie z zakresu moderowania wideo i transkrypcji przez moderowanie wspomagane maszynowo oraz utworzenie przeglądu wymagającego udziału człowieka (human-in-the-loop).
+W tym samouczku wyjaśniono, jak utworzyć pełne rozwiązanie z zakresu moderowania wideo i transkrypcji przez moderowanie wspomagane maszynowo oraz utworzenie przeglądu wymagającego udziału człowieka (human-in-the-loop).
 
 Pobierz [aplikację konsolową C#](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) na potrzeby tego samouczka. Aplikacja konsolowa używa zestawu SDK oraz powiązanych pakietów do wykonywania następujących zadań:
 
@@ -241,7 +241,7 @@ Ten kod wykonuje następujące kroki:
 
 - Sprawdza, czy konfiguracja w pliku `App.config` zawiera wszystkie niezbędne dane.
 - Sprawdza, czy są dane binarne `ffmpeg`.
-- Tworzy nazwę pliku danych wyjściowych przez dołączenie `_c.mp4` do nazwy podstawowej pliku (np. `Example.mp4` -> `E>xample_c.mp4`).
+- Tworzy nazwę pliku danych wyjściowych przez dołączenie `_c.mp4` do nazwy podstawowej pliku (np. `Example.mp4` -> `Example_c.mp4`).
 - Tworzy ciąg wiersza polecenia w celu wykonania konwersji.
 - Uruchamia proces `ffmpeg` przy użyciu wiersza polecenia.
 - Czeka, aż wideo zostanie przetworzone.

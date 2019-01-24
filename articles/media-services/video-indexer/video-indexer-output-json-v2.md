@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: juliako
-ms.openlocfilehash: 666be9c2ebba9dc9607e4188b2390fff49fd59b9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: e83b634c11d0349f4917c063cde54e03fa1cac40
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554660"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810707"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
 
@@ -166,7 +166,7 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |audioEffects|[AudioEffects](#audioEffects) wymiaru.|
 |opinie|[Tonacji](#sentiments) wymiaru.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) wymiaru.|
-|textualConentModeration|[TextualConentModeration](#textualconentmoderation) wymiaru.|
+|textualContentModeration|[TextualContentModeration](#textualcontentmoderation) wymiaru.|
 |emocji| [Emocji](#emotions) wymiaru.|
 |Tematy|[Tematy](#topics) wymiaru.|
 
@@ -187,7 +187,7 @@ Przykład:
   "audioEffects": ...,
   "sentiments": ...,
   "visualContentModeration": ...,
-  "textualConentModeration": ...
+  "textualContentModeration": ...
 }
 ```
 
@@ -334,9 +334,9 @@ Przykład:
 |name|Nazwa powierzchnię. Może być "nieznany #, 0, osobistości zidentyfikowanych lub osoby uczonego klienta.|
 |zaufania|Zaufanie identyfikacji twarzy.|
 |description|Opis osobistości. |
-|thumbnalId|Identyfikator miniatury napotykane przez.|
+|thumbnailId|Identyfikator miniatury napotykane przez.|
 |knownPersonId|Jeśli jest znane osoby wewnętrzny identyfikator.|
-|Identyfikator odwołania|Jeśli jest Bing rozpoznawanie osobistości, jego identyfikator Bing.|
+|referenceId|Jeśli jest Bing rozpoznawanie osobistości, jego identyfikator Bing.|
 |Element referenceType|Obecnie tylko Bing.|
 |tytuł|Jeśli jest rozpoznawanie osobistości, jego tytuł (na przykład "Prezes firmy Microsoft").|
 |imageUrl|Jeśli jest rozpoznawanie osobistości, jej adres url obrazu.|
@@ -377,7 +377,7 @@ Przykład:
 |---|---|
 |id|Identyfikator etykiety.|
 |name|Nazwa etykiety (na przykład "Computer", "TV").|
-|language|Etykieta nazwy język (w przypadku przetłumaczona). NARZĘDZIE BCP 47|
+|language|Etykieta nazwy język (w przypadku przetłumaczona). BCP-47|
 |wystąpienia|Lista zakresów czasu, w których pojawiły się tej etykiety (etykieta może wystąpić wiele razy). Każde wystąpienie ma pole zaufania. |
 
 
@@ -435,7 +435,7 @@ Przykład:
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Zrzut identyfikatora.|
-|klatki kluczowe|Lista klatek kluczowych w obrębie zrzut (każda ma identyfikator i listę zakresów czasu wystąpienia). Klatki kluczowe wystąpienia ma pola thumbnailId ze miniaturę ramki kluczowej identyfikatora.|
+|keyFrames|Lista klatek kluczowych w obrębie zrzut (każda ma identyfikator i listę zakresów czasu wystąpienia). Klatki kluczowe wystąpienia ma pola thumbnailId ze miniaturę ramki kluczowej identyfikatora.|
 |wystąpienia|Lista zakresy czasu to zrzut (zrzuty mają tylko 1 wystąpienie).|
 
 ```json
@@ -495,7 +495,7 @@ Firmy i produkt nazw marek wykryte w zamiana mowy na tekst transkrypcji i/lub op
 |---|---|
 |id|Identyfikator marki|
 |name|Nazwa marki.|
-|Identyfikator odwołania | Sufiks adresu url wikipedia marki. Na przykład "Target_Corporation" jest to sufiks [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
+|referenceId | Sufiks adresu url wikipedia marki. Na przykład "Target_Corporation" jest to sufiks [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Dostępne w Wikipedii adresu url, jeśli istnieje. Na przykład [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Opis marek.|
 |tags|Listę wstępnie zdefiniowanych tagi, które zostały skojarzone z tym marki.|
@@ -662,7 +662,7 @@ Filmy wideo, które znajdują się na zawierać treści dla dorosłych lub eroty
 ] 
 ```
 
-#### <a name="textualconentmoderation"></a>textualConentModeration 
+#### <a name="textualcontentmoderation"></a>textualContentModeration 
 
 |Name (Nazwa)|Opis|
 |---|---|
@@ -767,8 +767,8 @@ Usługa Video Indexer sprawia, że wnioskowania główne tematy z transkrypcji. 
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Identyfikator tematu.|
-|name|Nazwa tematu, na przykład: "Stacjonarnym".|
-|Identyfikator odwołania|Linki do stron nadrzędnych odzwierciedlający hierarchii tematów. Na przykład: "Kondycji i dobro / medycyna i opiece zdrowotnej / stacjonarnym".|
+|name|Nazwa tematu, na przykład: "Pharmaceuticals".|
+|referenceId|Linki do stron nadrzędnych odzwierciedlający hierarchii tematów. Na przykład: "Kondycji i dobro / medycyna i opiece zdrowotnej / stacjonarnym".|
 |zaufania|Współczynnik ufności z zakresu [0,1]. Nowszy jest większa pewność.|
 |language|Język używany w tym temacie.|
 |iptcName|Nośnik IPTC kodu nazwy, w przypadku wykrycia.|

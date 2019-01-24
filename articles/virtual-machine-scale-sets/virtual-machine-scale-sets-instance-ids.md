@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: f15b2154c1bac4d699af91980a4bc2a7192bb0c9
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 5d92aa78b132b661af3cdc53b47c0340a0758dd8
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740879"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855316"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Świadomość, że maszyn wirtualnych w zestawie identyfikatorów wystąpień dla skalowania maszyn wirtualnych platformy Azure
 W tym artykule opisano identyfikatory wystąpień zestawów skalowania i różne sposoby ich powierzchni.
@@ -41,7 +41,7 @@ Interfejs API REST: `GET https://management.azure.com/subscriptions/{subscriptio
 
 Program PowerShell: `Get-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Aby uzyskać więcej informacji, zobacz [dokumentacji programu Powershell](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm))
 
-Interfejs wiersza polecenia: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instances)).
+Interfejs wiersza polecenia: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
 Można również użyć [resources.azure.com](https://resources.azure.com) lub [zestawami SDK Azure](https://azure.microsoft.com/downloads/) do listy maszyn wirtualnych w zestawie skalowania.
 

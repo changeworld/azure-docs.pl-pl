@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Optimizely | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Optimizely | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Optimizely.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28ef03e1-9aad-4301-af97-d94e853edc74
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: be56218e174e5d8b0e6bde394f2dfd40fc91e87d
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 72e0f19a665b1e8cc91939ae24cc71341b5f1674
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060801"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819020"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Samouczek: Integracja usługi Azure Active Directory z Optimizely
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Optimizely
 
 W tym samouczku dowiesz się, jak zintegrować Optimizely w usłudze Azure Active Directory (Azure AD).
 
@@ -43,10 +43,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Optimizely, potrzebne
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -70,7 +70,7 @@ Aby skonfigurować integrację Optimizely w usłudze Azure AD, należy dodać Op
 
     ![Aplikacje][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -116,14 +116,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/optimizely-tutorial/tutorial_optimizely_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://app.optimizely.net/<instance name>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://app.optimizely.net/<instance name>`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:  `urn:auth0:optimizely:contoso`
 
     > [!NOTE]
     > Te wartości nie są rzeczywiste. Wartość zostanie zaktualizowana o rzeczywisty adres URL logowania i identyfikator, który zostało wyjaśnione w dalszej części tego samouczka.
 
-4. Aplikacja Optimizely oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+4. Aplikacja Optimizely oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego działania.
     
     ![Konfigurowanie logowania jednokrotnego](./media/optimizely-tutorial/tutorial_optimizely_attribute.png)
     
@@ -131,7 +131,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     | Nazwa atrybutu | Wartość atrybutu |
     | ---------------| --------------- |
-    | e-mail | User.mail |
+    | email | user.mail |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -149,7 +149,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/optimizely-tutorial/tutorial_optimizely_certificate.png)
 
-7. Kliknij przycisk **Zapisz** przycisku.
+7. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/optimizely-tutorial/tutorial_general_400.png)
 
@@ -179,7 +179,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -261,7 +261,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Optimizely w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Optimizely.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 8a4016a227f4f464d839c01cea38965aa06932c8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9c707b6465761d2ebc7ddb3296d0ccd3fb9394fd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963717"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851015"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą wewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az-net). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane przez pulę zaplecza serwerów przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet). Następnie można dodać podsieci o nazwie *myBackendSubnet* są one wymagane przez pulę zaplecza serwerów przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -103,7 +103,7 @@ Tworzenie bramy aplikacji może potrwać kilka minut. Po utworzeniu bramy aplika
 
 Odbiornik jest wymagany, aby brama aplikacji mogła właściwie kierować ruch do puli zaplecza. W tym samouczku utworzysz dwa odbiorniki dla swoich dwóch domen. W tym przykładzie odbiorniki są tworzone dla domen z *www.contoso.com* i *www.contoso.org*.
 
-Dodaj odbiorniki zaplecza, które są wymagane do kierowania ruchu, używając polecenia [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create).
+Dodaj odbiorniki zaplecza, które są wymagane do kierowania ruchu, używając polecenia [az network application-gateway http-listener create](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -124,7 +124,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
 
-Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z *www.consoto.org* do odbiornika dla *www.contoso.com* w bramy aplikacji przy użyciu [az network application-gateway Tworzenie konfiguracji przekierowania](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create).
+Dodaj konfigurację przekierowania, który wysyła ruch sieciowy z *www.consoto.org* do odbiornika dla *www.contoso.com* w bramy aplikacji przy użyciu [az network application-gateway Tworzenie konfiguracji przekierowania](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -139,7 +139,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-routing-rules"></a>Dodawanie reguł routingu
 
-Reguły są przetwarzane w kolejności, w którym są tworzone, a ruch jest kierowany za pomocą pierwszej reguły, który jest zgodny z adresem URL wysłanych do usługi application gateway. Podstawową regułę domyślną, który został utworzony, nie jest wymagana w tym samouczku. W tym przykładzie utworzysz dwa nowe reguły o nazwie *contosoComRule* i *contosoOrgRule* i usunąć domyślnej reguły, który został utworzony.  Możesz dodać reguły za pomocą [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
+Reguły są przetwarzane w kolejności, w którym są tworzone, a ruch jest kierowany za pomocą pierwszej reguły, który jest zgodny z adresem URL wysłanych do usługi application gateway. Podstawową regułę domyślną, który został utworzony, nie jest wymagana w tym samouczku. W tym przykładzie utworzysz dwa nowe reguły o nazwie *contosoComRule* i *contosoOrgRule* i usunąć domyślnej reguły, który został utworzony.  Możesz dodać reguły za pomocą [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -197,7 +197,7 @@ az vmss extension set \
 
 ## <a name="create-cname-record-in-your-domain"></a>Tworzenie rekordu CNAME w domenie
 
-Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i użyć go w celu utworzenia rekordu CNAME w domenie. Aby uzyskać adres DNS bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show). Skopiuj wartość *fqdn* ustawienia DNSSettings i użyj jej jako wartości tworzonego rekordu CNAME. Korzystanie z rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
+Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i użyć go w celu utworzenia rekordu CNAME w domenie. Aby uzyskać adres DNS bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip). Skopiuj wartość *fqdn* ustawienia DNSSettings i użyj jej jako wartości tworzonego rekordu CNAME. Korzystanie z rekordów A nie jest zalecane, ponieważ adres VIP może ulec zmianie po ponownym uruchomieniu bramy aplikacji.
 
 ```azurecli-interactive
 az network public-ip show \

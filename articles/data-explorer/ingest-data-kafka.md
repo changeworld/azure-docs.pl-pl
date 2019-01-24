@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/19/2018
-ms.openlocfilehash: 21eb28611c1e40695356d502c262c23013591986
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b53c26f265cc5d944c8e15ae5bf436e8f71dcc2f
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117371"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352737"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Szybki start: pozyskiwanie danych z platformy Kafka do usługi Azure Data Explorer
  
-Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer umożliwia pozyskiwanie (ładowanie) danych z platformy Kafka. Kafka to rozproszona platforma przesyłania strumieniowego umożliwiająca tworzenie potoków danych przesyłania strumieniowego w czasie rzeczywistym, które niezawodnie przenoszą dane między systemami lub aplikacjami. 
+Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na potrzeby danych dziennika i telemetrycznych. Usługa Azure Data Explorer umożliwia pozyskiwanie (ładowanie) danych z platformy Kafka. Kafka to rozproszona platforma przesyłania strumieniowego umożliwiająca tworzenie potoków danych przesyłania strumieniowego w czasie rzeczywistym, które niezawodnie przenoszą dane między systemami lub aplikacjami.
  
 ## <a name="prerequisites"></a>Wymagania wstępne
  
@@ -30,9 +30,11 @@ Azure Data Explorer to szybka i wysoce skalowalna usługa eksploracji danych na 
 * [Program Visual Studio 2017 w wersji 15.3.2 lub nowszej](https://www.visualstudio.com/vs/) do uruchomienia przykładowej aplikacji
  
 ## <a name="kafka-connector-setup"></a>Konfigurowanie łącznika platformy Kafka
+
 Kafka Connect to narzędzie służące do skalowalnego i niezawodnego przesyłania strumieniowego danych między platformą Apache Kafka i innymi systemami. Upraszcza ono szybkie definiowanie łączników, dzięki którym można przenosić duże kolekcje danych na platformę Kafka i z niej. Ujście platformy Kafka dla usługi ADX służy jako łącznik z platformy Kafka.
  
-### <a name="bundle"></a>Pakiet 
+### <a name="bundle"></a>Pakiet
+
 Platforma Kafka może załadować plik `.jar` jako wtyczkę, która będzie działać jako łącznik niestandardowy. Aby utworzyć taki plik `.jar`, sklonujemy kod lokalnie i skompilujemy go przy użyciu narzędzia Maven. 
 
 #### <a name="clone"></a>Klonowanie
@@ -41,7 +43,7 @@ Platforma Kafka może załadować plik `.jar` jako wtyczkę, która będzie dzia
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
 cd ./kafka-sink-azure-kusto/kafka/
 ```
- 
+
 #### <a name="build"></a>Kompilacja
 
 Skompiluj kod lokalnie za pomocą narzędzia Maven, aby utworzyć plik `.jar` wraz z zależnościami.
@@ -55,10 +57,10 @@ W katalogu głównym *kafka-sink-azure-kusto* uruchom następujące polecenie:
 ```bash
 mvn clean compile assembly:single
 ```
- 
+
 ### <a name="deploy"></a>Wdrażanie 
- 
-Załaduj wtyczkę do platformy Kafka. Przykład wdrożenia za pomocą platformy Docker można znaleźć w artykule [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
+
+Załaduj wtyczkę do platformy Kafka. Przykład wdrożenia za pomocą platformy Docker można znaleźć pod adresem [kafka-sink-azure-kusto](https://github.com/Azure/kafka-sink-azure-kusto#deploy)
  
 
 Szczegółową dokumentację łączników platformy Kafka oraz informacje na temat sposobu ich wdrażania można znaleźć na stronie [Kafka Connect](https://kafka.apache.org/documentation/#connect) 
@@ -112,13 +114,16 @@ Utwórz w usłudze ADX tabelę, do której platforma Kafka będzie mogła wysył
 Teraz, gdy klaster platformy Kafka jest połączony z usługą ADX, wygeneruj dane za pomocą pobranej [aplikacji przykładowej](https://github.com/Azure-Samples/event-hubs-dotnet-ingest).
 
 ### <a name="clone"></a>Klonowanie
+
 Sklonuj aplikację przykładową lokalnie:
 
 ```cmd
 git clone git://github.com:Azure/azure-kusto-samples-dotnet.git
 cd ./azure-kusto-samples-dotnet/kafka/
 ```
+
 ### <a name="run-the-app"></a>Uruchamianie aplikacji
+
 1. Otwórz przykładowe rozwiązanie aplikacji w programie Visual Studio.
 
 1. W pliku `Program.cs` zaktualizuj stałą `connectionString` tak, aby zawierała parametry połączenia platformy Kafka.
@@ -127,11 +132,11 @@ cd ./azure-kusto-samples-dotnet/kafka/
     const string connectionString = @"<YourConnectionString>";
     ```
 
-1. Skompiluj i uruchom aplikację. Aplikacja wysyła komunikaty do klastra platformy Kafka i co dziesięć sekund wyświetla swój stan.
+1. Skompiluj i uruchom aplikację. Aplikacja wysyła komunikaty do klastra platformy Kafka i co 10 sekund wyświetla swój stan.
 
 1. Gdy aplikacja wyśle kilka komunikatów, przejdź do następnego kroku.
  
-## <a name="query-and-review-the-data"></a>Zapytania o dane oraz przegląd danych 
+## <a name="query-and-review-the-data"></a>Zapytania o dane oraz przegląd danych
 
 1. Aby upewnić się, że podczas pozyskiwania nie wystąpiły żadne błędy:
 

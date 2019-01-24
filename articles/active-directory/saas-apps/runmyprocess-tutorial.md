@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z RunMyProcess | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą RunMyProcess | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i RunMyProcess.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d31f7395-048b-4a61-9505-5acf9fc68d9b
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 8cfdbac75036e59cf4acebe07c76ff758b74cdd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7e7148b178b2fbbb2d2009889b1a80b56f3a1152
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439331"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807902"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>Samouczek: Integracja usługi Azure Active Directory z RunMyProcess
+# <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RunMyProcess
 
 W tym samouczku dowiesz się, jak zintegrować RunMyProcess w usłudze Azure Active Directory (Azure AD).
 
@@ -37,15 +37,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą RunMyProcess, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - RunMyProcess logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięcznej wersji próbnej tutaj:[oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -59,7 +59,7 @@ Aby skonfigurować integrację RunMyProcess w usłudze Azure AD, należy dodać 
 
 **Aby dodać RunMyProcess z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację RunMyProcess w usłudze Azure AD, należy dodać 
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -112,16 +112,16 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_runmyprocess_url.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://live.runmyprocess.com/live/<tenant id>`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://live.runmyprocess.com/live/<tenant id>`
 
     > [!NOTE] 
-    > Wartość nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta RunMyProcess](mailto:support@runmyprocess.com) można uzyskać wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta RunMyProcess](mailto:support@runmyprocess.com) można uzyskać wartość. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_runmyprocess_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/runmyprocess-tutorial/tutorial_general_400.png)
 
@@ -133,11 +133,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W okienku nawigacji po lewej stronie kliknij **konta** i wybierz **konfiguracji**.
    
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/runmyprocess-tutorial/tutorial_runmyprocess_001.png)
 
 1. Przejdź do **metodę uwierzytelniania** sekcji, a następnie wykonaj następujące czynności:
    
-    ![Konfigurowanie logowania jednokrotnego w aplikacji po stronie](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
+    ![Konfigurowanie logowania jednokrotnego po stronie aplikacji](./media/runmyprocess-tutorial/tutorial_runmyprocess_002.png)
 
     a. Jako **metoda**, wybierz opcję **logowanie Jednokrotne z Samlv2**. 
 
@@ -152,11 +152,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     f. Kliknij przycisk **Zapisz** ikony.
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -190,13 +190,13 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do RunMyProcess, musi być obsługiwana w RunMyProcess. W przypadku RunMyProcess Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do witryny firmy RunMyProcess jako administrator.
 
 1. Kliknij przycisk **konta** i wybierz **użytkowników** w panelu nawigacyjnym po lewej stronie, następnie kliknij przycisk **nowego użytkownika**.
    
-    ![Nowy użytkownik](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "nowego użytkownika")
+    ![Nowy użytkownik](./media/runmyprocess-tutorial/tutorial_runmyprocess_003.png "Nowy użytkownik")
 
 1. W **ustawienia użytkownika** sekcji, wykonaj następujące czynności:
    
@@ -250,7 +250,7 @@ Celem tej sekcji jest test konfiguracji logowania jednokrotnego usługi Azure AD
 
 Po kliknięciu kafelka RunMyProcess w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji RunMyProcess.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

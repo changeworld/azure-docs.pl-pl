@@ -3,24 +3,24 @@ title: Wprowadzenie do usługi Azure Automation stanu konfiguracji
 description: Objaśnienie i przykłady typowych zadań w usługi Azure Automation stanu Configuration (DSC)
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634364"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432449"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Wprowadzenie do usługi Azure Automation stanu konfiguracji
 
 W tym artykule opisano sposób wykonywania typowych zadań przy użyciu usługi Azure Automation stan konfiguracji, takie jak tworzenie, importowanie i kompilowanie konfiguracji i dołączania maszyn do zarządzania i wyświetlania raportów. To omówienie konfigurację stan usługi Azure Automation, zobacz [Przegląd konfiguracji stan automatyzacji Azure](automation-dsc-overview.md). Aby uzyskać dokumentację Desired State Configuration (DSC), zobacz [Windows PowerShell Desired State Configuration Overview](/powershell/dsc/overview).
 
-Ten artykuł zawiera przewodnik krok po kroku, aby za pomocą usługi Azure Automation stan konfiguracji. Jeśli chcesz, aby środowisko próbki, które jest już skonfigurowany bez wykonanie kroków opisanych w tym artykule, można użyć następującego szablonu usługi Resource Manager: [szablonu usługi Azure Automation zarządzane węzła](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Ten szablon ustawia ukończone środowiska usługi Azure Automation stan konfiguracji, w tym maszynie Wirtualnej platformy Azure, który jest zarządzany przez usługi Azure Automation stan konfiguracji.
+Ten artykuł zawiera przewodnik krok po kroku, aby za pomocą usługi Azure Automation stan konfiguracji. Jeśli chcesz, aby środowisko próbki, które jest już skonfigurowany bez wykonanie kroków opisanych w tym artykule, można użyć następującego szablonu usługi Resource Manager: [Szablon usługi Azure Automation węźle zarządzanym](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Ten szablon ustawia ukończone środowiska usługi Azure Automation stan konfiguracji, w tym maszynie Wirtualnej platformy Azure, który jest zarządzany przez usługi Azure Automation stan konfiguracji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

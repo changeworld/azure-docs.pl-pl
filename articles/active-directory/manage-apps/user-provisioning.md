@@ -4,7 +4,7 @@ description: Wprowadzenie, jak używać usługi Azure AD, aby automatycznie apro
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: edd8e08ee20e7e6331701b55b3d58ebad3848408
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311457"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478488"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 
@@ -57,13 +57,13 @@ Niektóre typowe zresztą za używanie tej funkcji to:
 **Inicjowania obsługi usługi programu Azure AD** aprowizuje użytkowników do aplikacji SaaS i innych systemów, łącząc się z punktów końcowych interfejsu API zarządzania użytkownika dostarczonego przez producenta każdej aplikacji. Te punkty końcowe interfejsu API zarządzania użytkownika umożliwia usłudze Azure AD, można programowo tworzyć, aktualizować i usuwać użytkowników. Wybrane aplikacje, które usługi aprowizacji można również tworzyć aktualizować i usuwać dodatkowe obiektów związanych z tożsamościami, takich jak grupy i role. 
 
 ![Inicjowanie obsługi administracyjnej](./media/user-provisioning/provisioning0.PNG)
-*rysunek 1: usługi aprowizacji usługi Azure AD*
+*rysunek 1: Usługa inicjowania obsługi administracyjnej Azure AD*
 
-![Udostępnianie wychodzące](./media/user-provisioning/provisioning1.PNG)
-*rysunek 2: "Wychodzące" aprowizacja przepływu z usługi Azure AD do popularnych aplikacji SaaS użytkowników*
+![Wychodzące aprowizacji](./media/user-provisioning/provisioning1.PNG)
+*rysunek 2: Użytkownik "Wychodzące" aprowizacja przepływu z usługi Azure AD do popularnych aplikacji SaaS*
 
 ![Dla ruchu przychodzącego aprowizacji](./media/user-provisioning/provisioning2.PNG)
-*rysunek 3: użytkownik "Ruchu przychodzącego" aprowizacja przepływu pracy z popularnymi aplikacjami ludzi Capital Management (HCM) do usługi Azure Active Directory i usługi Active Directory systemu Windows Server*
+*rysunek 3: "Dla ruchu przychodzącego" przepływu pracy aprowizacji użytkownika, z popularnymi aplikacjami ludzi Capital Management (HCM) do usługi Azure Active Directory i usługi Active Directory systemu Windows Server*
 
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Jakie aplikacje i systemy można używać z połączeniami usługi Azure AD automatyczna aprowizacja użytkowników?
@@ -103,7 +103,7 @@ Na ekranie zarządzania aplikacji aprowizacji jest skonfigurowana w **aprowizacj
 
 * **Poświadczenia administratora** musi być podana w usłudze Azure AD inicjowania obsługi usługi, która pozwoli na łączenie do zarządzania użytkownikami udostępniany przez aplikację interfejsu API. Ta sekcja umożliwia również włączyć powiadomienia e-mail, jeśli poświadczenia się nie powieść lub zadanie inicjowania obsługi administracyjnej przechodzi w stan [kwarantanny](#quarantine).
 
-* **Mapowania atrybutów** można skonfigurować, określających, które pola w systemie źródłowym (przykład: usługi Azure AD) będą mieć ich zawartość synchronizowane z pola, które w systemie docelowym (przykład: ServiceNow). Jeśli aplikacja docelowa obsługuje tę funkcję, w tej sekcji pozwala opcjonalnie skonfigurować aprowizacji grup, oprócz kont użytkowników. "Dopasowania właściwości" pozwalają wybrać pola, które są używane do dopasowania kont między systemami. "[Wyrażeń](functions-for-customizing-application-data.md)" pozwalają na modyfikowanie i Przekształć wartościami pobranymi z systemu źródłowego, przed ich zapisaniu w systemie docelowym. Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów](customize-application-attributes.md).
+* **Mapowania atrybutów** można skonfigurować, określających, które pola w systemie źródłowym (przykład: Usługa Azure AD) będzie mieć ich zawartość synchronizowane z pola, które w systemie docelowym (przykład: ServiceNow). Jeśli aplikacja docelowa obsługuje tę funkcję, w tej sekcji pozwala opcjonalnie skonfigurować aprowizacji grup, oprócz kont użytkowników. "Dopasowania właściwości" pozwalają wybrać pola, które są używane do dopasowania kont między systemami. "[Wyrażeń](functions-for-customizing-application-data.md)" pozwalają na modyfikowanie i Przekształć wartościami pobranymi z systemu źródłowego, przed ich zapisaniu w systemie docelowym. Aby uzyskać więcej informacji, zobacz [Dostosowywanie mapowań atrybutów](customize-application-attributes.md).
 
 ![Ustawienia](./media/user-provisioning/provisioning_settings1.PNG)
 
@@ -197,13 +197,13 @@ Poniższa tabela podsumowuje godziny synchronizacji dla typowych scenariuszy ini
 
 | Konfiguracja zakresu | Użytkownicy, grupy i elementy członkowskie w zakresie | Czas synchronizacji początkowej | Czas synchronizacji przyrostowej |
 | -------- | -------- | -------- | -------- |
-| Synchronizuj przypisanych użytkowników i tylko grupy |  < 1000 |  < 30 minut | < 30 minut |
+| Synchronizuj przypisanych użytkowników i tylko grupy |  < 1,000 |  < 30 minut | < 30 minut |
 | Synchronizuj przypisanych użytkowników i tylko grupy |  1000–10 000 | 142 - minut 708 | < 30 minut |
-| Synchronizuj przypisanych użytkowników i tylko grupy |   10 000 - 100 000 | 1,170 - 2,340 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  < 1000 | < 30 minut  | < 30 minut |
+| Synchronizuj przypisanych użytkowników i tylko grupy |   10,000 - 100,000 | 1,170 - 2,340 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  < 1,000 | < 30 minut  | < 30 minut |
 | Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  1000–10 000 | < 30 – 120 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  10 000 - 100 000  | 713 - 1,425 minut | < 30 minut |
-| Synchronizuj wszystkich użytkowników w usłudze Azure AD|  < 1000  | < 30 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników i grup w usłudze Azure AD |  10,000 - 100,000  | 713 - 1,425 minut | < 30 minut |
+| Synchronizuj wszystkich użytkowników w usłudze Azure AD|  < 1,000  | < 30 minut | < 30 minut |
 | Synchronizuj wszystkich użytkowników w usłudze Azure AD | 1000–10 000  | 43 - 86 minut | < 30 minut |
 
 

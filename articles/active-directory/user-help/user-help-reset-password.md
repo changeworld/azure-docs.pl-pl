@@ -3,7 +3,7 @@ title: Resetowanie hasła przy użyciu informacji zabezpieczających — usługi
 description: Jak zresetować własne hasło, jeśli nie pamiętasz, przy użyciu weryfikacji dwuetapowej i zapoznać zabezpieczeń.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
@@ -11,16 +11,16 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: a95d5adb4ee0eb8aa71f7759e3f2b5520bda5ff4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6bf8c548d81b3cade487f3188cdafae82b5776d9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348392"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815943"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetowanie hasła służbowego
 
-Jeśli nie pamiętasz hasła, nigdy nie otrzymała go od pomocy technicznej Twojej firmy lub zostało zablokowane ze swojego konta, informacjom zabezpieczającym i urządzenia przenośnego można użyć do zresetowania hasła.
+Jeśli nie pamiętasz hasła, dział pomocy technicznej firmy nie przekazała Ci go lub Twoje konto zostało zablokowane, możesz zresetować hasło przy użyciu informacji zabezpieczających i urządzenia przenośnego.
 
 >[!NOTE]
 >Jeśli znasz swoje hasło i po prostu chcesz je zmienić, możesz przejść do [zmianę hasła](#how-to-change-your-password) kroki opisane w tym artykule.<br><br>
@@ -159,7 +159,7 @@ Poniżej przedstawiono niektóre typowe przypadki błędów i sposoby ich rozwi�
 |Podczas próby zmiany hasła, pojawia się błąd. |Hasło zawiera słowo, frazę lub wzorzec, który sprawia, że hasło jest łatwe do odgadnięcia.| Spróbuj ponownie, używając silniejszego hasła.|
 |Po wprowadzeniu czy mój identyfikator użytkownika, można przejść do strony, która mówi "Skontaktuj się z administratorem."|Microsoft ustaliła, że hasło konta użytkownika jest zarządzana przez administratora w środowisku lokalnym. W rezultacie nie można zresetować hasło przy użyciu linku "Nie może uzyskać dostępu do konta". |Aby uzyskać dodatkową pomoc, skontaktuj się z administratorem.|
 |Po wprowadzeniu czy mój identyfikator użytkownika, pojawia się komunikat o błędzie informujący, "Twoje konto nie jest włączone do resetowania hasła".|Administrator nie skonfigurował Twoje konto, dzięki czemu można zresetować własnego hasła.|Administrator nie zostało włączone resetowanie haseł dla organizacji z linku "Nie może uzyskać dostępu do konta" lub nie można używać funkcji licencjonowane.<br><br> Aby zresetować hasło, należy wybrać "Skontaktuj się z administratorem łącze" Wyślij wiadomość e-mail do administratora firmy i informacją o tym, aby zresetować hasło.|
-|Po wprowadzeniu czy mój identyfikator użytkownika, pojawia się komunikat o błędzie informujący, "Nie możemy zweryfikować Twoje konto".|Proces logowania nie może zweryfikować informacje o swoim koncie.|Istnieją dwa powody, że ten komunikat może być wyświetlany.<br><br>1. Administrator włączone resetowanie haseł dla organizacji, ale nie została zarejestrowana do korzystania z usługi. Rejestracji resetowania haseł, zobacz jeden z następujących artykułów, na podstawie swojej metody weryfikacji: [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator (wersja zapoznawcza)](security-info-setup-auth-app.md), [ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego(wersjazapoznawcza)](security-info-setup-phone-number.md), [Ustawiane informacje zabezpieczające, aby używać wiadomości SMS (wersja zapoznawcza)](security-info-setup-text-msg.md), [ustawić informacje zabezpieczające, aby użyć adresu e-mail (wersja zapoznawcza)](security-info-setup-email.md), lub [ustawić informacje zabezpieczające, aby użycie tych pytań zabezpieczających (wersja zapoznawcza) ](security-info-setup-questions.md).<br><br>2. Administrator nie zostało włączone resetowanie haseł dla Twojej organizacji. W takiej sytuacji należy wybrać "Skontaktuj się z administratorem łącze" Aby wysłać wiadomość e-mail do administratora, pytaniem zresetować hasło.|
+|Po wprowadzeniu czy mój identyfikator użytkownika, pojawia się komunikat o błędzie informujący, "Nie możemy zweryfikować Twoje konto".|Proces logowania nie może zweryfikować informacje o swoim koncie.|Istnieją dwa powody, że ten komunikat może być wyświetlany.<br><br>1. Administrator włączone resetowanie haseł dla organizacji, ale nie została zarejestrowana do korzystania z usługi. Aby zarejestrować się do resetowania hasła, zobacz jedną z następujących artykułów na podstawie swojej metody weryfikacji: [Ustawić informacje zabezpieczające, aby użyć aplikacji authenticator (wersja zapoznawcza)](security-info-setup-auth-app.md), [ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego (wersja zapoznawcza)](security-info-setup-phone-number.md), [ustawiane informacje zabezpieczające, aby używać wiadomości SMS (wersja zapoznawcza)](security-info-setup-text-msg.md), [ Ustawić informacje zabezpieczające, aby użyć adresu e-mail (wersja zapoznawcza)](security-info-setup-email.md), lub [ustawić informacje zabezpieczające, aby użycie tych pytań zabezpieczających (wersja zapoznawcza)](security-info-setup-questions.md).<br><br>2. Administrator nie zostało włączone resetowanie haseł dla Twojej organizacji. W takiej sytuacji należy wybrać "Skontaktuj się z administratorem łącze" Aby wysłać wiadomość e-mail do administratora, pytaniem zresetować hasło.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

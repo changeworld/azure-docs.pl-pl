@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 1332a06cf955be3fe2a77194f455c9315993998c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dc44394bda1208eb2dab0a02dd73152e51788d4c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159914"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424905"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 
@@ -207,7 +207,7 @@ ms.locfileid: "54159914"
 [planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (Pojęcia dotyczące tylko na chmurze wdrożenia wystąpieniami platformy SAP)
 [planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure rozwiązanie do monitorowania dla rozwiązania SAP)
 [planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Usługi Azure Premium Storage)
-[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Dyski zarządzane)
+[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Managed Disks)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -234,7 +234,7 @@ ms.locfileid: "54159914"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (Sieć Microsoft Azure)
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (Miejsca do magazynowania: Usługa Microsoft Azure Storage i dysków z danymi)
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
@@ -492,7 +492,7 @@ W witrynie Azure portal wprowadź następujące parametry szablonu:
     Dla większych systemów zdecydowanie zalecamy użycie magazynu Azure Premium Storage. Aby uzyskać więcej informacji na temat typów magazynu zawierają następujące zasoby:
       * [Korzystanie z usługi Azure Premium Storage SSD dla systemu SAP DBMS wystąpienia][2367194]
       * [Struktury magazynu maszyny wirtualnej w przypadku wdrożeń RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [Usługa Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej platformy Azure][storage-premium-storage-preview-portal]
+      * [Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej platformy Azure][storage-premium-storage-preview-portal]
       * [Wprowadzenie do usługi Microsoft Azure Storage][storage-introduction]
   * **Nazwa użytkownika administratora** i **hasło administratora**: Nazwa użytkownika i hasło.
     Nowy użytkownik jest tworzony w przypadku logowania się do maszyny wirtualnej.
@@ -628,7 +628,7 @@ W witrynie Azure portal wprowadź następujące parametry szablonu:
     Dla większych systemów zdecydowanie zalecamy użycie magazynu Azure Premium Storage. Aby uzyskać więcej informacji na temat typów magazynu zobacz następujące zasoby:
       * [Korzystanie z usługi Azure Premium Storage SSD dla systemu SAP DBMS wystąpienia][2367194]
       * [Struktury magazynu maszyny wirtualnej w przypadku wdrożeń RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [Usługa Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure][storage-premium-storage-preview-portal]
+      * [Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure][storage-premium-storage-preview-portal]
       * [Wprowadzenie do usługi Microsoft Azure Storage][storage-introduction]
   * **Obraz użytkownika identyfikatora URI dysku VHD** (tylko szablony obrazu dysku niezarządzanego): Identyfikator URI prywatnej systemu operacyjnego obrazu wirtualnego dysku twardego, na przykład https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
   * **Konto magazynu obrazu użytkownika** (tylko szablony obrazu dysku niezarządzanego): Nazwa konta magazynu, w którym przechowywany jest prywatny obrazu systemu operacyjnego, na przykład &lt;accountname > w https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
@@ -720,7 +720,7 @@ W witrynie Azure portal wprowadź następujące parametry szablonu:
     Dla większych systemów zdecydowanie zalecamy użycie magazynu Azure Premium Storage. Aby uzyskać więcej informacji na temat typów magazynu zobacz następujące zasoby:
       * [Korzystanie z usługi Azure Premium Storage SSD dla systemu SAP DBMS wystąpienia][2367194]
       * [Struktury magazynu maszyny wirtualnej w przypadku wdrożeń RDBMS](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
-      * [Usługa Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej platformy Azure][storage-premium-storage-preview-portal]
+      * [Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej platformy Azure][storage-premium-storage-preview-portal]
       * [Wprowadzenie do usługi Microsoft Azure Storage][storage-introduction]
   * **Identyfikator URI wirtualnego dysku twardego dysku systemu operacyjnego** (tylko szablony dysku niezarządzanego): Identyfikator URI prywatnej dysku systemu operacyjnego, na przykład https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
   * **Identyfikator dysku zarządzanego dysku systemu operacyjnego** (tylko szablony dysków zarządzanych): Identyfikator dysku zarządzanego systemu operacyjnego z dysku /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN

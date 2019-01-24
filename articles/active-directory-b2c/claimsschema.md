@@ -3,19 +3,19 @@ title: ClaimsSchema — usługa Azure Active Directory B2C | Dokumentacja firmy 
 description: Określ element ClaimsSchema zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2d11283ccf58fdc356742d6f4042afd15bf6faab
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: a49553941b83e323f23f20b794a464f47ef31981
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568646"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849094"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -71,7 +71,7 @@ PredicateValidationReference| 0:1 | Odwołanie do **PredicateValidationsInput** 
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa Nieprawidłowa protokołu obsługiwanego przez usługę Azure AD B2C. Możliwe wartości to: OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
+| Nazwa | Yes | Nazwa Nieprawidłowa protokołu obsługiwanego przez usługę Azure AD B2C. Możliwe wartości:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
 | PartnerClaimType | Yes | Nazwa typu oświadczenia, która ma być używany. |
 
 W poniższym przykładzie, gdy struktura środowiska tożsamości korzysta z dostawcy tożsamości SAML2 lub aplikacji jednostki uzależnionej **nazwisko** oświadczeń jest mapowany na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, za pomocą OpenIdConnect i protokołu OAuth2 jest oświadczenie mapowany do `family_name`.
@@ -107,7 +107,7 @@ W wyniku token JWT wystawione przez usługę Azure AD B2C, emituje `family_name`
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Typ | Yes | Typ oświadczenia maski. Możliwe wartości: `Simple` lub `Regex`. `Simple` Wartość wskazuje, że maska prosty tekst jest stosowane wiodących części oświadczenia ciągu. `Regex` Wartość wskazuje, że wyrażenie regularne jest stosowany do oświadczenia ciągu jako całości.  Jeśli `Regex` jest określona, opcjonalny atrybut musi także być zdefiniowany za pomocą wyrażeń regularnych do użycia. |
-| wyrażenie regularne | Nie | Jeśli **typu** ustawiono `Regex`, określ wyrażenie regularne do użycia.
+| Regex | Nie | Jeśli **typu** ustawiono `Regex`, określ wyrażenie regularne do użycia.
 
 Poniższy przykład umożliwia skonfigurowanie **PhoneNumber** oświadczenia `Simple` maski:
 
@@ -163,7 +163,7 @@ Struktura środowiska tożsamości powoduje wyświetlenie tylko pierwszą liter�
 | --------- | -------- | ----------- |
 | Tekst | Yes | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
 |Wartość | Yes | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
-| SelectByDefault | Nie | Wskazuje, czy należy wybrać tę opcję, domyślnie w interfejsie użytkownika. Możliwe wartości: True lub False. |
+| SelectByDefault | Nie | Wskazuje, czy należy wybrać tę opcję, domyślnie w interfejsie użytkownika. Możliwe wartości: Wartość TRUE lub False. |
 
 Poniższy przykład umożliwia skonfigurowanie **Miasto** lista rozwijana lista oświadczeń z wartością domyślną wartość `New York`:
 
@@ -190,8 +190,8 @@ Lista rozwijana lista miasta z wartością domyślną, ustaw Nowy Jork:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Wyrażenia regularnego | Yes | Wyrażenie regularne oświadczeń tego typu muszą być zgodne, aby był prawidłowy. |
-| Tekst pomocy | Nie | Wzorzec lub wyrażenie regularne dla tego oświadczenia. |
+| RegularExpression | Yes | Wyrażenie regularne oświadczeń tego typu muszą być zgodne, aby był prawidłowy. |
+| HelpText | Nie | Wzorzec lub wyrażenie regularne dla tego oświadczenia. |
 
 Poniższy przykład umożliwia skonfigurowanie **e-mail** oświadczenia za pomocą wyrażeń regularnych wejściowy weryfikacji i tekst pomocy:
 

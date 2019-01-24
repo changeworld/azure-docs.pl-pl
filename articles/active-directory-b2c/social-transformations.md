@@ -3,19 +3,19 @@ title: Konta społecznościowego przykłady przekształcania oświadczeń tożsa
 description: Konta społecznościowego oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d9b592e7f61b87860e4f6fa2aa4d46e253b6257e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d9ef8f9c68a09e998c393584ceb6e3be53f91a9c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381548"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848805"
 ---
 # <a name="social-accounts-claims-transformations"></a>Przekształcenia oświadczeń kont społecznościowych
 
@@ -43,7 +43,7 @@ Tworzy reprezentację JSON właściwość alternativeSecurityId użytkownika, kt
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | key | ciąg | Typ oświadczenia, który określa identyfikator unikatowy użytkownika używanej przez dostawcę tożsamości dla sieci społecznościowej. |
-| Oświadczenie InputClaim | Dostawca tożsamości | ciąg | Typ oświadczenia, który określa nazwę dostawcy tożsamości konta w sieci społecznościowej, takich jak facebook.com. |
+| Oświadczenie InputClaim | identityProvider | ciąg | Typ oświadczenia, który określa nazwę dostawcy tożsamości konta w sieci społecznościowej, takich jak facebook.com. |
 | oświadczenie outputClaim | alternativeSecurityId | ciąg | Typ oświadczenia, które są generowane po wywołaniu ClaimsTransformation. Zawiera informacje o tożsamości użytkownika konta w sieci społecznościowej. **Wystawcy** jest wartością `identityProvider` oświadczenia. **IssuerUserId** jest wartością `key` oświadczenia w formacie base64. |
 
 Korzystanie z oświadczeń to przekształcenie, aby wygenerować `alternativeSecurityId` typu oświadczenia. Jest używany przez wszystkie tożsamości dla sieci społecznościowej dostawcy profile techniczne, takie jak `Facebook-OAUTH`. Następujące przekształcania oświadczeń odbiera identyfikator użytkownika konta w sieci społecznościowej i nazwę dostawcy tożsamości. Dane wyjściowe tego profilu technicznego jest format ciągu JSON, który może służyć w usłudze Azure AD directory services.  
@@ -64,9 +64,9 @@ Korzystanie z oświadczeń to przekształcenie, aby wygenerować `alternativeSec
 
 - Oświadczeń wejściowych:
     - **klucz**: 12334
-    - **Dostawca identityProvider**: Facebook.com
+    - **identityProvider**: Facebook.com
 - Oświadczeń danych wyjściowych:
-    - **alternativeSecurityId**: {"Wystawca": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
+    - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
 ## <a name="additemtoalternativesecurityidcollection"></a>AddItemToAlternativeSecurityIdCollection
 
@@ -100,10 +100,10 @@ Poniższy przykład łączy nowej tożsamości społecznościowych, przy użyciu
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **element**: {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU ="}
+    - **element**: {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU=" }
     - **Kolekcja**: [{"Wystawca": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]
 - Oświadczeń danych wyjściowych:
-    - **Kolekcja**: [{"Wystawca": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU ="}]
+    - **Kolekcja**: [{"Wystawca": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 
 ## <a name="getidentityprovidersfromalternativesecurityidcollectiontransformation"></a>GetIdentityProvidersFromAlternativeSecurityIdCollectionTransformation
 
@@ -128,7 +128,7 @@ Następujące przekształcania oświadczeń odczytuje użytkownika **alternative
 ```
 
 - Oświadczeń wejściowych:
-    - **alternativeSecurityIdCollection**: [{"Wystawca": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU ="}]
+    - **alternativeSecurityIdCollection**: [{"Wystawca": "google.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 - Oświadczeń danych wyjściowych:
     - **identityProvidersCollection**: ["facebook.com", "google.com"]
 
@@ -138,7 +138,7 @@ Usuwa **AlternativeSecurityId** z **alternativeSecurityIdCollection** oświadcze
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Dostawca tożsamości | ciąg | Typ oświadczenia, który zawiera nazwę dostawcy tożsamości, aby były usuwane z kolekcji. |
+| Oświadczenie InputClaim | identityProvider | ciąg | Typ oświadczenia, który zawiera nazwę dostawcy tożsamości, aby były usuwane z kolekcji. |
 | Oświadczenie InputClaim | kolekcja | alternativeSecurityIdCollection | ClaimTypes, używanych przez przekształcania oświadczeń. Przekształcanie oświadczeń usuwa dostawca tożsamości z kolekcji. |
 | oświadczenie outputClaim | kolekcja | alternativeSecurityIdCollection | ClaimTypes, które są generowane po wywołaniu tego ClaimsTransformation. Nowa kolekcja, po dostawca tożsamości został usunięty z kolekcji. |
 
@@ -165,6 +165,6 @@ Poniższy przykład rozłączysz jednej tożsamości społecznościowych, przy u
 
 - Oświadczeń wejściowych:
     - **Dostawca identityProvider**: facebook.com
-    - **Kolekcja**: [{"Wystawca": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU ="}]
+    - **Kolekcja**: [{"Wystawca": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}, {"Wystawca": "facebook.com", "issuerUserId": "MTIzNDU=" } ]
 - Oświadczeń danych wyjściowych:
     - **Kolekcja**: [{"Wystawca": "live.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}]

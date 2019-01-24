@@ -3,19 +3,19 @@ title: Lokalizacja — usługa Azure Active Directory B2C | Dokumentacja firmy M
 description: Określ element Localization zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e9442302b8d15a3a6a4c9fe148b48845b3535204
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a0abf2fd3502238af0e0f02cb8f9917cfb90b586
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381506"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854981"
 ---
 # <a name="localization"></a>Lokalizacja
 
@@ -148,7 +148,7 @@ Poniższy przykład pokazuje użycie **LocalizedCollections** elementu. Zawiera 
 | --------- | -------- | ----------- |
 | ElementType | Yes | Odwołanie do elementu typu oświadczenia lub element interfejsu użytkownika w ramach zasad. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, lub. `ClaimType` Wartość jest używana do lokalizowania jeden z atrybutów oświadczenia, jak to określono w identyfikator ciągu. `UxElement` Wartość jest używana do lokalizowania jeden z elementów interfejsu użytkownika, jak to określono w identyfikator ciągu. `ErrorMessage` Wartość jest używana do lokalizowania komunikat o błędzie systemu, jak to określono w identyfikator ciągu. `Predicate` Wartość jest używana do lokalizowania jednego z [predykatu](predicates.md) komunikaty o błędach, jak to określono w identyfikator ciągu. `InputValidation` Wartość jest używana do lokalizowania jednego z [PredicateValidation](predicates.md) grupie komunikaty o błędach, jak to określono w identyfikator ciągu. |
 | ElementId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, `Predicate`, lub `InputValidation`, ten element zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema. | 
-| Identyfikator ciągu | Yes | Jeśli **ElementType** ustawiono `ClaimType`, ten element zawiera odwołanie do atrybutu typu oświadczenia. Możliwe wartości: `DisplayName`, `AdminHelpText`, lub `PatternHelpText`. `DisplayName` Wartość jest używana do ustawiania oświadczenia nazwy wyświetlanej. `AdminHelpText` Wartość jest używana do ustawiania Nazwa tekstu pomocy oświadczenia użytkownika. `PatternHelpText` Wartość jest używana do ustawiania tekst pomocy wzorzec oświadczenia. Jeśli **ElementType** ustawiono `UxElement`, ten element zawiera odwołanie do atrybutu elementu interfejsu użytkownika. Jeśli **ElementType** ustawiono `ErrorMessage`, ten element Określa identyfikator komunikatu o błędzie. Zobacz [ciągu lokalizacji identyfikatorów](localization-string-ids.md) szczegółowy wykaz `UxElement` identyfikatorów.|
+| StringId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, ten element zawiera odwołanie do atrybutu typu oświadczenia. Możliwe wartości: `DisplayName`, `AdminHelpText`, lub `PatternHelpText`. `DisplayName` Wartość jest używana do ustawiania oświadczenia nazwy wyświetlanej. `AdminHelpText` Wartość jest używana do ustawiania Nazwa tekstu pomocy oświadczenia użytkownika. `PatternHelpText` Wartość jest używana do ustawiania tekst pomocy wzorzec oświadczenia. Jeśli **ElementType** ustawiono `UxElement`, ten element zawiera odwołanie do atrybutu elementu interfejsu użytkownika. Jeśli **ElementType** ustawiono `ErrorMessage`, ten element Określa identyfikator komunikatu o błędzie. Zobacz [ciągu lokalizacji identyfikatorów](localization-string-ids.md) szczegółowy wykaz `UxElement` identyfikatorów.|
 
 
 Poniższy przykład pokazuje zlokalizowane stronę rejestracji. Pierwsze trzy **LocalizedString** atrybut roszczenia ustawić wartości. Trzeci zmienia wartość przycisk Kontynuuj. Ostatnie zmiany komunikat o błędzie.
@@ -218,7 +218,7 @@ Dodaj **LocalizedResources** elementy wewnątrz **lokalizacji** elementu po zamk
 - Zarejestruj się, Francja `<LocalizedResources Id="api.localaccountsignup.fr">`
 - Uwierzytelnianie wieloskładnikowe, angielski `<LocalizedResources Id="api.phonefactor.en">`
 - Uwierzytelnianie wieloskładnikowe, hiszpański `<LocalizedResources Id="api.phonefactor.es">`
-- Uwierzytelnianie wieloskładnikowe, Francja `<LocalizedResources Id="api.phonefactor.fr">`
+- MFA, France `<LocalizedResources Id="api.phonefactor.fr">`
 
 Każdy **LocalizedResources** element zawiera wszystkie wymagane **LocalizedStrings** elementy z wieloma **LocalizedString** elementy i  **LocalizedCollections** elementy z wieloma **LocalizedCollection** elementów.  Poniższy przykład dodaje lokalizacji angielskiej stronę rejestracji: 
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788399"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382747"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Tworzenie kopii zapasowych systemu Windows Server lub Client na platformie Azure przy użyciu modelu wdrażania używającego usługi Resource Manager
 W tym artykule opisano sposób tworzenia kopii zapasowej systemu Windows Server (lub klienta Windows) plików i folderów na platformie Azure przy użyciu usługi Azure Backup przy użyciu modelu wdrażania usługi Resource Manager.
@@ -48,9 +48,9 @@ Magazyn usługi Recovery Services jest jednostką, która przechowuje wszystkie 
 
 6. W sekcji **Grupa zasobów**:
 
-    * wybierz pozycję **Utwórz nową**, jeśli chcesz utworzyć nową grupę zasobów.
+    * Kliknij przycisk **wybierz istniejący...**  menu rozwijane, aby wyświetlić listę dostępnych grup zasobów.
     Lub
-    * wybierz pozycję **Użyj istniejącej** i kliknij menu rozwijane, aby wyświetlić listę dostępnych grup zasobów.
+    * wybierz pozycję **Utwórz nową**, jeśli chcesz utworzyć nową grupę zasobów.
 
   Pełne informacje na temat grup zasobów można znaleźć w temacie [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
@@ -70,21 +70,21 @@ Podczas tworzenia magazynu usługi Recovery Services określany jest sposób rep
 
 1. W bloku **Magazyny usług Recovery Services** kliknij nowy magazyn.
 
-    ![Wybieranie nowego magazynu z listy magazynów usług Recovery Services](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+    ![Wybieranie nowego magazynu z listy magazynów usług Recovery Services](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    Wybranie magazynu spowoduje zwężenie bloku **Magazyn usług Recovery Services** oraz otwarcie bloków Ustawienia (*o nazwie magazynu wskazanego w górnej części*) i szczegółów magazynu.
+    Po zaznaczeniu magazyn usługi Recovery Services magazynu zwężenie bloku i **Przegląd** bloku (*mającego nazwę magazynu u góry*) magazynu szczegóły blok otwarty.
 
-    ![Wyświetlanie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+    ![Wyświetlanie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 
-2. W bloku ustawień nowego magazynu użyj pionowego suwaka, aby przewinąć w dół do sekcji Zarządzanie, a następnie kliknij pozycję **Infrastruktura zapasowa**.
+2. W nowym magazynie w obszarze **ustawienia** przejdź do sekcji **właściwości**.
 
-  Zostanie otwarty blok Infrastruktura zapasowa.
+  **Właściwości** zostanie otwarty blok.
 
-3. W bloku Infrastruktura zapasowa kliknij pozycję **Konfiguracja kopii zapasowej** w celu otwarcia bloku **Konfiguracja kopii zapasowej**.
+3. W **właściwości** bloku kliknij **aktualizacji** w obszarze **konfiguracji kopii zapasowej** bloku. **Konfiguracji kopii zapasowej** zostanie otwarty blok.
 
-  ![Ustawianie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+  ![Ustawianie konfiguracji przechowywania dla nowego magazynu](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-4. Wybierz odpowiednią opcję replikacji dla magazynu.
+4. Wybierz odpowiednią opcję replikacji swojego magazynu, a następnie kliknij przycisk **Zapisz**.
 
   ![Opcje konfiguracji usługi Storage](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
@@ -183,7 +183,7 @@ Zasady kopii zapasowych jest harmonogram punktów odzyskiwania są pobierane i c
 
 ### <a name="to-create-a-backup-schedule"></a>Aby utworzyć harmonogram tworzenia kopii zapasowych
 
-Ustaw harmonogram tworzenia kopii zapasowych na komputerze, który chcesz utworzyć kopię zapasową. Należy pamiętać, że czasu przeznaczonego na kopie zapasowe mogą się różnić od czas na komputerze lokalnym, ponieważ usługa Azure Backup nie przyjmuje czasu letniego (DST) do konta. 
+Ustaw harmonogram tworzenia kopii zapasowych na komputerze, który chcesz utworzyć kopię zapasową. Należy pamiętać, że czasu przeznaczonego na kopie zapasowe mogą się różnić od czas na komputerze lokalnym, ponieważ usługa Azure Backup nie przyjmuje czasu letniego (DST) do konta.
 1. Otwórz agenta usługi Microsoft Azure Backup. Aby go znaleźć, wyszukaj na maszynie łańcuch **Microsoft Azure Backup**.
 
     ![Uruchamianie agenta usługi Azure Backup](./media/backup-configure-vault/snap-in-search.png)

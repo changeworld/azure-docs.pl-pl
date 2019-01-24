@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 664e31590f578b65da09f1e0fe8f57d579ed3cfc
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354556"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471824"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
 W usłudze Azure Search [utworzony zasób](search-create-service-portal.md) cen warstwy lub jednostki SKU, który został rozwiązany przez okres istnienia usługi. Warstwy obejmują **bezpłatna**, **podstawowe**, lub **standardowa**, gdzie **standardowa** jest dostępna w kilku konfiguracji i pojemności. Większość klientów zaczyna od **bezpłatna** warstwy do oceny, a następnie stopniowo rozwiązanie do **standardowa** wdrożeń deweloperskim i produkcyjnym. Możesz wykonać wszystkie przewodników Szybki Start i samouczków w **bezpłatna** warstwy, w tym przypadku usługa cognitive search dużej ilości zasobów. 
 
-Warstwy określić wydajność, nie funkcji i są zróżnicowane według:
+Warstwy odzwierciedlają właściwości sprzętu obsługującego usługi (zamiast funkcji) i są zróżnicowane według:
 
 + Liczba indeksów, które można utworzyć
 + Rozmiar i prędkość partycje (magazynu fizycznego)
@@ -63,7 +63,7 @@ Większość klientów Przenieś tylko część całkowitą pojemność w trybie
 
 ### <a name="billing-for-image-extraction-in-cognitive-search"></a>Okres rozliczeniowy wyodrębniania obrazu w usłudze wyszukiwania poznawczego
 
-Jeśli jest wyodrębniana obrazy z plików w usługa cognitive search indeksowanie potoku, opłaty są naliczane dla tej operacji, na rachunku Azure Search. Parametr, który wyzwala wyodrębniania obrazu jest **imageAction** w [konfiguracji indeksatora](https://docs.microsoft.com/erest/api/searchservice/create-indexer#indexer-parameters). Jeśli **imageAction** jest ustawiona na wartość none (wartość domyślna), nie będą naliczane opłaty, do wyodrębnienia obrazu.
+Jeśli jest wyodrębniana obrazy z plików w usługa cognitive search indeksowanie potoku, opłaty są naliczane dla tej operacji, na rachunku Azure Search. Parametr, który wyzwala wyodrębniania obrazu jest **imageAction** w [konfiguracji indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters). Jeśli **imageAction** jest ustawiona na wartość none (wartość domyślna), nie będą naliczane opłaty, do wyodrębnienia obrazu.
 
 Ceny mogą ulec zmianie, ale zawsze jest udokumentowany na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/) strony usługi Azure Search. 
 

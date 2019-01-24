@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 2f34b6c71c448f7273ba7477f18f5abb8f89cdec
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706861"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391200"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Tworzenie i zarządzanie nimi w usłudze Azure Lab Services szablonu klasy
 Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie możesz opublikować szablonu, aby udostępnić użytkownikom laboratorium wystąpień szablonu maszyny Wirtualnej. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
@@ -85,14 +85,14 @@ Najpierw należy skonfigurować i publikowanie szablonu podczas tworzenia labora
     
     ![Pulpit nawigacyjny laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
 
-## <a name="set-up-a-template-after-creating-a-lab"></a>Konfigurowanie szablonu, po utworzeniu laboratorium 
-Możesz też skonfigurować szablon, po utworzeniu laboratorium.   
-
+ 
 ## <a name="set-or-update-template-title-and-description"></a>Ustawianie lub zaktualizować szablon tytuł i opis
 Wykonaj następujące kroki, aby ustawić tytuł i opis po raz pierwszy i zaktualizować je później. 
 
 1. W **szablonu** sekcji, przesuń wskaźnik myszy **nazwa** szablonu lub **opis** szablonu, a następnie wybierz ją. 
 2. Wprowadź **nową nazwę** lub **nowy opis** dla szablonu, a następnie naciśnij klawisz **ENTER**.
+
+    ![Templae nazwę i opis](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="set-up-or-update-a-template-vm"></a>Konfigurowanie lub zaktualizować szablon maszyny Wirtualnej
  Nawiąż połączenie z maszyną wirtualną szablonu i zainstaluj na niej wszelkie wymagane oprogramowanie przed udostępnieniem jej swoim uczniom. Wykonaj następujące kroki, aby skonfigurować szablon maszyny Wirtualnej po raz pierwszy lub zaktualizować maszyny Wirtualnej. 
@@ -100,30 +100,28 @@ Wykonaj następujące kroki, aby ustawić tytuł i opis po raz pierwszy i zaktua
 1. Zaczekaj, aż maszyna wirtualna szablonu będzie gotowa. Gdy będzie gotowa, przycisk **Uruchom** powinien być włączony. Aby uruchomić maszynę wirtualną, wybierz przycisk **Uruchom**.
 
     ![Uruchamianie maszyny wirtualnej szablonu](../media/tutorial-setup-classroom-lab/start-template-vm.png)
-1. Aby nawiązać połączenie z maszyną wirtualną, wybierz pozycję **Połącz** i postępuj zgodnie z instrukcjami. 
+1. Przejrzyj ostrzeżenie o, a następnie wybierz pozycję **Start**. 
 
-    ![Łączenie z maszyną wirtualną szablonu](../media/tutorial-setup-classroom-lab/connect-template-vm.png)
+    ![Uruchom szablon — ostrzeżenie](../media/how-to-create-manage-template/start-template-warning.png)
+1. Po jej ponownym uruchomieniu, aby nawiązać połączenie z maszyną Wirtualną, wybrać **Connect**i postępuj zgodnie z instrukcjami. 
 1. Zainstaluj wszelkie oprogramowanie wymagane, aby uczniowie mogli ukończyć laboratorium (na przykład program Visual Studio, Eksplorator usługi Azure Storage itp.). 
 2. Zakończ połączenie (zamknij sesję pulpitu zdalnego) z maszyną wirtualną szablonu. 
 3. **Zatrzymaj** maszynę wirtualną szablonu, wybierając pozycję **Zatrzymaj**. 
 
-    ![Zatrzymywanie maszyny wirtualnej szablonu](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
-
-
-## <a name="publish-the-template-vm"></a>Publikowanie maszyny wirtualnej szablonu
+## <a name="publish-the-template-vm"></a>Publikowanie maszyny wirtualnej szablonu  
 Jeśli nie Publikuj szablonu podczas tworzenia laboratorium, możesz opublikować go później. Przed opublikowaniem, możesz nawiązać połączenie z szablonu maszyny Wirtualnej i zaktualizować go przy użyciu dowolnego oprogramowania. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon. 
 
 1. Wybierz pozycję **Publikuj** w sekcji **Szablon**. 
 
     ![Publikowanie maszyny wirtualnej szablonu](../media/tutorial-setup-classroom-lab/public-access.png)
-1. Na **opublikować szablon** okno komunikatu, zapoznaj się z komunikatem i wybierz **Publikuj**. Ten proces może zająć trochę czasu w zależności od liczby tworzonych maszyn wirtualnych. Jest ona taka sama, jak dozwolona liczba użytkowników w laboratorium.
+1. Na **opublikować szablon** okno komunikatu, zapoznaj się z komunikatem i wybierz **Publikuj**. Ten proces może zająć trochę czasu w zależności od tego, ile maszyn wirtualnych są tworzone.
     
     > [!IMPORTANT]
     > Po opublikowaniu szablonu nie można cofnąć publikowania. Mimo że można ponownie opublikowanie szablonu. 
-4. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. 
+4. Poczekaj, aż stan szablonu, aby zmienić **opublikowano**. 
 
-    ![Maszyny wirtualne](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Poczekaj, aż maszyny wirtualne zostaną utworzone. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Można uruchomić je na tej stronie lub pozwolić swoim uczniom, uruchom maszyny wirtualne. 
+    ![Stan publikowania](../media/how-to-create-manage-template/publish-status.png)
+1. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Poczekaj, aż maszyny wirtualne zostaną utworzone. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Można uruchomić je na tej stronie lub pozwolić swoim uczniom, uruchom maszyny wirtualne. 
 
     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -147,7 +145,7 @@ Po opublikowaniu szablonu możesz wciąż się łączyć z szablonu maszyny Wirt
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły:
 
-- [Jako administrator tworzenie i zarządzanie kontami laboratorium](how-to-manage-lab-accounts.md)
-- [Jako właściciel laboratorium tworzenie i zarządzanie laboratoriami](how-to-manage-classroom-labs.md)
-- [Jako właściciel laboratorium Konfigurowanie i kontrolowanie użycia laboratorium](how-to-configure-student-usage.md)
+- [As an admin, create and manage lab accounts (Tworzenie kont laboratoriów i zarządzanie nimi jako administrator)](how-to-manage-lab-accounts.md)
+- [As a lab owner, create and manage labs (Tworzenie laboratoriów i zarządzanie nimi jako właściciel laboratorium)](how-to-manage-classroom-labs.md)
+- [As a lab owner, configure and control usage of a lab (Konfigurowanie i kontrolowanie użycia laboratorium jako właściciel laboratorium)](how-to-configure-student-usage.md)
 - [Jako użytkownik laboratorium dostęp do laboratoriów na potrzeby zajęć](how-to-use-classroom-lab.md)

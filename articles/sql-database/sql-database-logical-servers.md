@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: fb9332832f46dc5c39bf932ce91cd3d3f3d7354f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/17/2019
+ms.openlocfilehash: 8e03aed38f75459d781d90960efc612ab962fa1d
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269621"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390838"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Serwerami logicznymi usługi Azure SQL Database i zarządzanie nimi
 
@@ -82,7 +82,7 @@ Aby zarządzać istniejącej bazy danych, przejdź do **baz danych SQL** strony,
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Zarządzanie serwerami Azure SQL, bazy danych i zapory przy użyciu programu PowerShell
 
-Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Tworzenie i zarządzanie elastycznymi pulami, zobacz [pul elastycznych](sql-database-elastic-pool.md).
+Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomocą programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Tworzenie i zarządzanie elastycznymi pulami, zobacz [pul elastycznych](sql-database-elastic-pool.md).
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
@@ -113,8 +113,8 @@ Tworzenie i zarządzanie nimi, Azure SQL server, baz danych i zapory za pomocą 
 | --- | --- |
 |[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Tworzy bazę danych|
 |[AZ sql db list](/cli/azure/sql/db#az-sql-db-list)|Wyświetla listę wszystkich baz danych i magazyny danych na serwerze lub wszystkich baz danych w puli elastycznej|
-|[AZ sql db list wersje](/cli/azure/sql/db#az-sql-db-list-editions)|Cele i limity przestrzeni dyskowej, usługi dostępne listy|
-|[polecenia az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Zwraca bazy danych użycia|
+|[az sql db list-editions](/cli/azure/sql/db#az-sql-db-list-editions)|Cele i limity przestrzeni dyskowej, usługi dostępne listy|
+|[az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Zwraca bazy danych użycia|
 |[AZ sql db show](/cli/azure/sql/db#az-sql-db-show)|Pobiera bazy danych ani na magazyn danych|
 |[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Aktualizuje bazę danych|
 |[AZ sql db delete](/cli/azure/sql/db#az-sql-db-delete)|Usuwa bazę danych|
@@ -145,7 +145,7 @@ Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapory z
 
 | Polecenie | Opis |
 | --- | --- |
-|[Tworzenie bazy danych (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Tworzy nową bazę danych. Musisz mieć połączenie z główną bazą danych, aby utworzyć nową bazę danych.|
+|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Tworzy nową bazę danych. Musisz mieć połączenie z główną bazą danych, aby utworzyć nową bazę danych.|
 | [Instrukcja ALTER DATABASE (baza danych SQL platformy Azure)](/sql/t-sql/statements/alter-database-azure-sql-database) |Modyfikuje usługi Azure SQL database. |
 |[Instrukcja ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Modyfikuje usługi Azure SQL Data Warehouse.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Usuwa bazę danych.|
@@ -154,7 +154,7 @@ Tworzenie i zarządzanie nimi w usłudze Azure SQL server, baz danych i zapory z
 |[sys.resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Zwraca dane dotyczące użycia i magazynu procesora CPU dla usługi Azure SQL Database. Dane są zbierane i agregowane w 5 minutowych interwałach.|
 |[sys.database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Zawiera dane statystyczne dla zdarzenia połączenia bazy danych SQL Database zawierające przegląd bazy danych połączenia sukcesy i niepowodzenia. |
 |[sys.event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Zwraca pomyślnego połączenia z bazą danych Azure SQL Database, błędy połączeń i zakleszczenia. Śledzenie lub Rozwiązywanie problemów z usługą SQL Database aktywności bazy danych, można użyć tych informacji.|
-|[procedurę składowaną sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje ustawienia zapory na poziomie serwera dla serwera bazy danych SQL. Tę procedurę składowaną, jest dostępna tylko w bazie danych master do głównego identyfikatora logowania poziomu serwera. Regułę zapory na poziomie serwera można tworzyć tylko za pomocą języka Transact-SQL, po utworzeniu pierwszej reguły zapory na poziomie serwera przez użytkownika z uprawnienia na poziomie platformy Azure|
+|[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje ustawienia zapory na poziomie serwera dla serwera bazy danych SQL. Tę procedurę składowaną, jest dostępna tylko w bazie danych master do głównego identyfikatora logowania poziomu serwera. Regułę zapory na poziomie serwera można tworzyć tylko za pomocą języka Transact-SQL, po utworzeniu pierwszej reguły zapory na poziomie serwera przez użytkownika z uprawnienia na poziomie platformy Azure|
 |[sys.firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Zwraca informacje dotyczące ustawień zapory na poziomie serwera, skojarzonych z usługi Microsoft Azure SQL Database.|
 |[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Usuwa ustawienia zapory na poziomie serwera z serwerem usługi SQL Database. Tę procedurę składowaną, jest dostępna tylko w bazie danych master do głównego identyfikatora logowania poziomu serwera.|
 |[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Tworzy lub aktualizuje reguły zapory na poziomie bazy danych dla usługi Azure SQL Database lub SQL Data Warehouse. Można skonfigurować reguły zapory bazy danych dla bazy danych master i bazach danych użytkowników w bazie danych SQL. Reguły zapory bazy danych są przydatne, gdy za pomocą zawartych użytkowników bazy danych. |

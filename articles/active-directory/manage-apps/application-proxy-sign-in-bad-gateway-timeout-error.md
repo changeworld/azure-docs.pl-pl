@@ -4,7 +4,7 @@ description: Jak rozwiązać typowe problemy dotyczące dostępu do aplikacji se
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 768a9d930314882f88eab630365475d69aa5f83b
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 454749ee65bd6fa43480e61030aa2a9d66b71127
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213726"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476584"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>"Nie może uzyskiwać dostęp do tej aplikacji firmowej" błąd, podczas korzystania z aplikacji serwera Proxy aplikacji
 
@@ -31,7 +31,7 @@ Gdy zostanie wyświetlony ten błąd, należy znaleźć kod stanu na stronę bł
 
 -   **Limit czasu bramy**: Usługa serwera Proxy aplikacji nie ma dostępu do łącznika. Ten błąd zazwyczaj wskazuje na problem z przypisaniem łącznika, łącznik, lub sieci reguł wokół łącznika.
 
--   **Zła brama**: Łącznik nie może uzyskać dostępu do aplikacji zaplecza. Ten błąd może wskazywać na błędną konfiguracją aplikacji.
+-   **Bad Gateway**: Łącznik nie może uzyskać dostępu do aplikacji zaplecza. Ten błąd może wskazywać na błędną konfiguracją aplikacji.
 
 -   **Dostęp zabroniony**: Użytkownik nie ma uprawnień dostępu do aplikacji. Ten błąd może wystąpić, gdy użytkownik nie jest przypisany do aplikacji w usłudze Azure Active Directory lub jeśli do wewnętrznej bazy danych użytkownika nie ma uprawnień dostępu do aplikacji.
 

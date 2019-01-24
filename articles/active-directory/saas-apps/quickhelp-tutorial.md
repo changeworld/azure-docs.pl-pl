@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z QuickHelp | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą QuickHelp | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i QuickHelp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 655c9ad3-2076-4e2c-8e47-9ed3bf04be56
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: c99be60301085dddfd5c658ee1eed81b88238e54
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: cbc25218079f8e8529777dd8e169a2e689eabc6b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421596"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54824222"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Samouczek: Integracja usługi Azure Active Directory z QuickHelp
+# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą QuickHelp
 
 W tym samouczku dowiesz się, jak zintegrować QuickHelp w usłudze Azure Active Directory (Azure AD).
 
@@ -37,16 +37,16 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą QuickHelp, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - QuickHelp logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -59,7 +59,7 @@ Aby skonfigurować integrację QuickHelp w usłudze Azure AD, należy dodać Qui
 
 **Aby dodać QuickHelp z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację QuickHelp w usłudze Azure AD, należy dodać Qui
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -112,24 +112,24 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/quickhelp-tutorial/tutorial_quickhelp_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://quickhelp.com/<ROUTEURL>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://quickhelp.com/<ROUTEURL>`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL: `https://auth.quickhelp.com`
 
     > [!NOTE] 
-    > Wartość adres URL logowania nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z administratorem QuickHelp Twojej organizacji lub mózgów Menedżera Powodzenie klienta, aby uzyskać wartość.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z administratorem QuickHelp Twojej organizacji lub mózgów Menedżera Powodzenie klienta, aby uzyskać wartość.
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/quickhelp-tutorial/tutorial_quickhelp_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/quickhelp-tutorial/tutorial_general_400.png) 
 
 1. Zaloguj się do witryny firmy QuickHelp jako administrator.
 
-1. W menu u góry kliknij **administratora**.
+1. W menu u góry kliknij pozycję **Admin** (Administrator).
    
     ![Konfigurowanie logowania jednokrotnego][21]
 
@@ -147,7 +147,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     b. Aby przekazać plik pobrany metadanych platformy Azure, kliknij przycisk **Przeglądaj**, przejdź do pliku, następnie kliknij przycisk Zakończ **Przekazywanie metadanych**.
    
-    c. W **E-mail** polu tekstowym wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    c. W polu tekstowym **Email** (Adres e-mail) wpisz `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
    
     d. W **imię** polu tekstowym `type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`.
    
@@ -156,7 +156,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     f. W **pasek akcji**, kliknij przycisk **Zapisz**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -193,7 +193,7 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, co to jest
 
 QuickHelp obsługę just-in-time. Oznacza to, jeśli to konieczne, konto użytkownika zostanie automatycznie utworzone w QuickHelp i konto jest połączony z kontem usługi Azure AD.
 
-Brak elementu akcji dla Ciebie w tej sekcji.
+W tej sekcji nie musisz niczego robić.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -232,7 +232,7 @@ Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego l
 Po kliknięciu kafelka QuickHelp w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji QuickHelp.
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

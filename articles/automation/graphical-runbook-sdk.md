@@ -3,18 +3,18 @@ title: Przegląd elementu runbook usługi Azure Automation Grpahical zestawu SDK
 description: W tym artykule opisano sposób korzystania z usługi Azure Automation graficznego elementu Runbook zestawu SDK
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 702af8311887afc94e7127704d3377e944503324
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: bc9f1feff6d8d45e52c8621d1ec4b36e0a4a4a76
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239926"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434261"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Użyj usługi Azure Automation graficznego elementu runbook zestawu SDK
 
@@ -103,7 +103,7 @@ Działania są implementowane przez następujące klasy w `Orchestrator.GraphRun
 |WorkflowScriptActivity     | Wykonuje blok kodu programu PowerShell lub przepływie pracy programu PowerShell (w zależności od typu elementu runbook) w kontekście elementu runbook. Jest to zaawansowane narzędzie, ale nie nadużywać: interfejs użytkownika wyświetli ten blok skryptu jako tekst. Aparat wykonywania traktują bloku podana jako czarne pole i spowoduje, że próby analizowania jego zawartości, z wyjątkiem sprawdzanie podstawowej składni. Jeśli potrzebujesz wywołać jednego polecenia programu PowerShell, należy najpierw CommandActivity.        |
 
 > [!NOTE]
-> Pochodzi własnych działań od podanej klasy: Usługa Azure Automation nie będzie można używać elementów runbook przy użyciu typów niestandardowych działań.
+> Pochodzi od klasy podana własnych działań: Usługa Azure Automation nie będzie elementów runbook za pomocą typów działań niestandardowych.
 
 Parametry CommandActivity i InvokeRunbookActivity musi zostać podana jako wartość deskryptorów wartości nie bezpośrednio. Wartość deskryptorów Określ, jak powinny być tworzone wartości rzeczywistych parametrów. Obecnie dostępne są następujące deskryptory wartość:
 
@@ -119,7 +119,7 @@ Parametry CommandActivity i InvokeRunbookActivity musi zostać podana jako warto
 |PowerShellExpressionValueDescriptor     | Określa dowolnych wyrażenie programu PowerShell, które zostanie obliczone tuż przed wywołaniem działania.  <br/>Jest to zaawansowane narzędzie, ale nie nadużywać: interfejs użytkownika wyświetli tego wyrażenia jako tekst. Aparat wykonywania traktują bloku podana jako czarne pole i spowoduje, że próby analizowania jego zawartości, z wyjątkiem sprawdzanie podstawowej składni. Jeśli to możliwe, należy najpierw dokładniejszą wartość deskryptorów.      |
 
 > [!NOTE]
-> Nie dziedziczyć deskryptory własne wartości podanej klasy: usługi Azure Automation nie będzie można używać elementów runbook przy użyciu niestandardowej wartości deskryptora typu.
+> Pochodzi od klasy podana deskryptory własne wartości: Usługa Azure Automation nie będzie elementów runbook za pomocą niestandardowej wartości deskryptora typu.
 
 Utwórz wystąpienie działania łącza i dodać je do elementu runbook:
 
@@ -146,3 +146,4 @@ Format serializacji mogą ulec zmianie w przyszłych wersjach `Orchestrator.Grap
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat graficznych elementów Runbook w usłudze Azure Automation, zobacz [wprowadzenie do tworzenia elementów graficznych](automation-graphical-authoring-intro.md)
+

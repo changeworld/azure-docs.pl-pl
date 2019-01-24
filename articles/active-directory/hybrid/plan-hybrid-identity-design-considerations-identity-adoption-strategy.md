@@ -4,7 +4,7 @@ description: Kontrola dostępu warunkowego usługi Azure Active Directory sprawd
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: b92fa5a9-c04c-4692-b495-ff64d023792c
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 50f2d3f3ad934668c4a243b387b56db48c3e7d35
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999098"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471807"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definiowanie strategii wdrażania tożsamości hybrydowej
 To zadanie służy do definiowania strategii wdrażania tożsamości hybrydowej dla Twojego rozwiązania tożsamości hybrydowej w celu spełnienia wymagań biznesowych, które zostały omówione w:

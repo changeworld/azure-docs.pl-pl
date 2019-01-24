@@ -11,12 +11,12 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4d201669bf627cf9b591958f3372760c0c990db9
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: a5a5b306341780ead737def90306fe6cb6a47db1
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53808098"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401981"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -28,7 +28,7 @@ Przepływ pracy jest ogólnie przebiega w następującej kolejności:
 
 1. Tworzenie usługi machine learning szkolenia skryptów w **Python**.
 1. Tworzenie i konfigurowanie **obliczeniowego elementu docelowego**.
-1. **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkolenia, obliczeniowego elementu docelowego przechowuje wykonywania rekordów **datastore**. Brak rekordów są zapisywane w **eksperymentować**.
+1. **Przesyłanie skryptów usługi** docelową obliczeń skonfigurowany do uruchamiania w środowisku. Podczas szkolenia, skrypty można odczytać lub zapisać do **datastore**. I rekordy wykonywania są zapisywane jako **uruchamia** w **obszaru roboczego** i zgrupowane w obszarze **eksperymentów**.
 1. **Zapytanie eksperymentu** dla zarejestrowanych metryk z bieżącej i wcześniejszych przebiegów. Jeśli metryki nie wskazują żądanego wyniku, pętli, wróć do kroku 1 i powtarzanie czynności w skryptach.
 1. Po znalezieniu zadowalające Uruchom rejestrowanie utrwalonej modelu w **rejestru modelu**.
 1. Twórz skrypt oceniania.
@@ -56,7 +56,7 @@ Możesz utworzyć wiele obszarów roboczych, a każdy obszar roboczy może być 
 Gdy tworzysz nowy obszar roboczy, automatycznie tworzy kilka zasobów platformy Azure, które są używane przez obszar roboczy:
 
 * [Usługa Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Rejestry kontenerów platformy docker, używane podczas uczenia i wdrażania modelu.
-* [Konto usługi Azure storage](https://azure.microsoft.com/services/storage/): Jest używana jako magazyn danych domyślny dla obszaru roboczego.
+* [Konto usługi Azure Storage](https://azure.microsoft.com/services/storage/): Jest używana jako magazyn danych domyślny dla obszaru roboczego.
 * [Usługi Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Monitorowanie informacji o modelach magazynów.
 * [Usługa Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Magazyny kluczy tajnych, które są używane przez obliczeniowych elementów docelowych i inne poufne informacje, które jest potrzebne przez obszar roboczy.
 

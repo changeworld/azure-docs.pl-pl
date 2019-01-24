@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/02/2018
+ms.date: 01/23/2019
 ms.author: cwatson
-ms.openlocfilehash: b9b1496c71e61fce815d225310c8beb57e8f9b19
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: e1d9c348f83600b48f4b202c8660d9387dfc5484
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584574"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856379"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Opis zawartości rachunku za korzystanie z platformy Microsoft Azure
 Aby poznać rachunku dotyczącym platformy Azure, porównaj fakturze za pomocą szczegółowych codzienne pliku użycia i raportów rozwiązania cost management w witrynie Azure portal.
 
 Ten artykuł nie dotyczy klientów platformy Azure z umową Enterprise Agreement (EA klienci). Jeśli jesteś klientem z umową EA, zobacz [opis zawartości rachunku dla klientów platformy Azure z umową Enterprise Agreement](billing-understand-your-bill-ea.md).  
+
+Aby uzyskać informacje dotyczące rozliczeń w programie Azure Cloud Solution Provider (CSP platformy Azure), w tym rozliczeń cyklu, ceny i użycia, zobacz [Przegląd rozliczeń Azure CSP](/azure/cloud-solution-provider/billing/azure-csp-billing-overview/).
 
 ## <a name="charges"></a>Przejrzyj opłat
 
@@ -33,7 +35,7 @@ Ten artykuł nie dotyczy klientów platformy Azure z umową Enterprise Agreement
 
 Twoja faktura, który chcesz uzyskać więcej informacji o jest opłaty, można porównać użycia i kosztów, przy użyciu pliku użycia lub za pomocą witryny Azure portal.
 
-### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Opcja 1: Porównania kosztów i użycia za pomocą pliku użycia
+### <a name="option-1-compare-usage-and-costs-with-usage-file"></a>Opcja 1: Porównaj użycie i koszty za pomocą pliku użycia
 
 Szczegóły użycia pliku CSV zawiera opłat, okres rozliczeniowy i dziennego użycia. Aby uzyskać plik, zobacz [pobrać faktury i dane dziennego użycia rozliczeniową za platformę Azure](billing-download-azure-invoice-daily-usage-date.md).
 
@@ -69,7 +71,7 @@ Aby dowiedzieć się więcej, zobacz:
 - [Omówienie usługi Azure faktury](billing-understand-your-invoice.md)
 - [Zrozumienie ze szczegółowym zestawieniem użycia platformy Azure](billing-understand-your-invoice.md)
 
-### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>Opcja 2: Porównanie użycia i kosztów za pomocą witryny Azure portal
+### <a name="option-2-compare-the-usage-and-costs-with-the-azure-portal"></a>Opcja 2: Porównaj użycie i koszty za pomocą witryny Azure portal
 
 Witryna Azure portal może również pomóc, możesz sprawdzić opłat. Aby uzyskać szybki przegląd invoiced użycia i opłat, wyświetlać wykresy zarządzania kosztami.
 

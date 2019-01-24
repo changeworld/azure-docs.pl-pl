@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 1/14/2019
+ms.date: 1/18/2019
 ms.author: mabrigg
-ms.openlocfilehash: 66a6fa88956db40ced9ee3fd13a0f74585c528fc
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: c3b1c0e6ed0850e6346d385dc3e86afdcb78fe39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303211"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478539"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Konta magazynu w usłudze Azure Stack
 Konta magazynu zawierają usługi Blob i Table oraz unikatową przestrzeń nazw dla obiektów danych magazynu. Domyślnie dane na Twoim koncie są dostępne tylko dla Ciebie, tj. właściciela konta magazynu.

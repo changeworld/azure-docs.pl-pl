@@ -25,7 +25,7 @@ Oto niektóre zadania, które można wykonać za pomocą tego modułu programu P
 * Uruchamianie eksperymentu ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment))
 * Tworzenie usługi sieci Web na podstawie eksperymentu predykcyjnego ([New-AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice))
 * Utworzenie punktu końcowego usługi sieci web opublikowane ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
-* Wywoływanie punktu końcowego usługi sieci Web RRS i/lub BES ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) i [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
+* Wywołania RRS i/lub BES końcowy usługi sieci web ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) i [Invoke AmlWebServiceBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
 
 Poniżej przedstawiono prosty przykład użycia programu PowerShell do uruchamiania istniejącego eksperymentu:
 

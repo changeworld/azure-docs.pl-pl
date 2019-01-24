@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
-ms.component: alerts
-ms.openlocfilehash: 2df24cfe217a9955a3abb08d042836821b083946
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580641"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465670"
 ---
 # <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Masz klasycznego alertu metryki powiadomić systemu poza platformą Azure za pomocą elementu webhook
 Elementy webhook umożliwia kierowanie powiadomień o alertach platformy Azure z innymi systemami przetwarzania końcowego lub niestandardowych akcji. Element webhook dla alertu dotyczącego służy do kierowania go do usługi, które wysyłanie wiadomości SMS, aby rejestrować błędy, aby powiadomić zespół za pośrednictwem czatu lub usług obsługi wiadomości lub różne inne akcje. 
@@ -85,7 +85,7 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 | Próg |Dla alertów dotyczących metryk | |Wartość progowa, w którym aktywowano alert. |
 | windowSize |Dla alertów dotyczących metryk | |Czas, który jest używany do monitorowania działania alertu, w oparciu o wartość progową. Wartość musi być od 5 minut do 1 dnia. Wartość musi być w formacie czasu trwania ISO 8601. |
 | timeAggregation |Dla alertów dotyczących metryk |Średnia, ostatnie, maksimum, Minimum, None, łączna liczba |Jak można łączyć dane, które są zbierane wraz z upływem czasu. Wartość domyślna to średnia. Zobacz [dozwolone wartości](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| Operator |Dla alertów dotyczących metryk | |Operator, który służy do porównywania bieżących danych metryki z wartością progową zestawu. |
+| operator |Dla alertów dotyczących metryk | |Operator, który służy do porównywania bieżących danych metryki z wartością progową zestawu. |
 | subscriptionId |Tak | |Identyfikator subskrypcji platformy Azure. |
 | resourceGroupName |Tak | |Nazwa grupy zasobów dla odpowiedniego zasobu. |
 | resourceName |Tak | |Nazwa zasobu zasobu. |
@@ -106,3 +106,4 @@ Operację POST zawiera następujące ładunek w formacie JSON i schematu dla wsz
 * Dowiedz się, jak [wysyłać wiadomości SMS za pośrednictwem usługi Twilio, z poziomu alertu usługi Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Dowiedz się, jak [wysyłać wiadomość Slack z poziomu alertu platformy Azure przy użyciu aplikacji logiki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Dowiedz się, jak [użyj aplikacji logiki, aby wysłać komunikat do kolejki platformy Azure z poziomu alertu usługi Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
+

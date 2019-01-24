@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 381c9a2af0f1743509db4495603c0e26da5c1736
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023757"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474523"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -31,14 +31,14 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell module w wersji 5.4.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell module w wersji 5.4.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
 
 Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania, które są wymienione w [uprawnień ](#permissions).
 
 ## <a name="create-a-network-interface"></a>Utwórz interfejs sieciowy
 
-Podczas tworzenia maszyny wirtualnej przy użyciu witryny Azure portal, w portalu jest tworzony interfejs sieciowy przy użyciu ustawień domyślnych dla Ciebie. Jeśli wolisz określić wszystkie ustawienia interfejsu sieciowego, można utworzyć interfejsu sieciowego z użyciem ustawień niestandardowych i dołączyć interfejsu sieciowego do maszyny wirtualnej, podczas tworzenia maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Można również utworzyć interfejsu sieciowego i dodać go do istniejącej maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Aby dowiedzieć się, jak utworzyć maszynę wirtualną przy użyciu istniejącego interfejsu sieciowego lub dodać do lub usuwanie interfejsów sieciowych z istniejących maszyn wirtualnych, zobacz [Dodawanie lub usuwanie interfejsów sieciowych](virtual-network-network-interface-vm.md). Przed utworzeniem interfejsu sieciowego, konieczne jest posiadanie istniejące [sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network) w tej samej lokalizacji i subskrypcji można utworzyć interfejsu sieciowego w.
+Podczas tworzenia maszyny wirtualnej przy użyciu witryny Azure portal, w portalu jest tworzony interfejs sieciowy przy użyciu ustawień domyślnych dla Ciebie. Jeśli wolisz określić wszystkie ustawienia interfejsu sieciowego, można utworzyć interfejsu sieciowego z użyciem ustawień niestandardowych i dołączyć interfejsu sieciowego do maszyny wirtualnej, podczas tworzenia maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Można również utworzyć interfejsu sieciowego i dodać go do istniejącej maszyny wirtualnej (przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure). Aby dowiedzieć się, jak utworzyć maszynę wirtualną przy użyciu istniejącego interfejsu sieciowego lub dodać do lub usuwanie interfejsów sieciowych z istniejących maszyn wirtualnych, zobacz [Dodawanie lub usuwanie interfejsów sieciowych](virtual-network-network-interface-vm.md). Przed utworzeniem interfejsu sieciowego, konieczne jest posiadanie istniejące [sieci wirtualnej](manage-virtual-network.md) w tej samej lokalizacji i subskrypcji można utworzyć interfejsu sieciowego w.
 
 1. W polu zawierającym tekst *Wyszukaj zasoby* w górnej części witryny Azure portal, wpisz polecenie *interfejsy sieciowe*. Gdy **interfejsy sieciowe** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz **+ Dodaj** w obszarze **interfejsy sieciowe**.
@@ -69,7 +69,7 @@ Portal nie udostępnia opcję, aby przypisać interfejs sieciowy do grup zabezpi
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Wyświetl ustawienia interfejsu sieciowego
 
@@ -105,14 +105,14 @@ Serwer DNS jest przypisany przez serwer DHCP platformy Azure z interfejsem sieci
 3. Wybierz **serwerów DNS** w obszarze **ustawienia**.
 4. Wybierz opcję:
     - **Dziedzicz z sieci wirtualnej**: Wybierz tę opcję, aby dziedziczyć ustawienia serwera DNS, które są zdefiniowane dla sieci wirtualnej, przypisanej do interfejsu sieciowego. Na poziomie sieci wirtualnej niestandardowego serwera DNS lub serwer DNS platformy Azure jest zdefiniowana. Serwer DNS platformy Azure może rozpoznać nazwy hostów dla zasobów przydzielonych do tej samej sieci wirtualnej. Nazwy FQDN musi być używana do rozpoznawania dla zasobów przydzielonych do różnych sieci wirtualnych.
-    - **Niestandardowe**: Można skonfigurować własnego serwera DNS do rozpoznawania nazw między wieloma sieciami wirtualnymi. Wprowadź adres IP serwera, który ma być używany jako serwer DNS. Adres serwera DNS, które określisz są przypisane tylko do tego interfejsu sieciowego i zastępuje wszelkie ustawienia DNS dla sieci wirtualnej, przypisanej do interfejsu sieciowego.
+    - **Niestandardowy**: Można skonfigurować własnego serwera DNS do rozpoznawania nazw między wieloma sieciami wirtualnymi. Wprowadź adres IP serwera, który ma być używany jako serwer DNS. Adres serwera DNS, które określisz są przypisane tylko do tego interfejsu sieciowego i zastępuje wszelkie ustawienia DNS dla sieci wirtualnej, przypisanej do interfejsu sieciowego.
 5. Wybierz pozycję **Zapisz**.
 
 **Polecenia**
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic#az_network_nic_update)|
+|Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Włączać lub wyłączać przesyłanie dalej IP
@@ -133,7 +133,7 @@ Ustawienie musi być włączona dla każdego interfejsu sieciowego, który jest 
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic#az_network_nic_update)|
+|Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Zmień przypisanie podsieci
@@ -158,7 +158,7 @@ Można zmienić podsieci, ale nie sieci wirtualnej, przypisana do karty sieciowe
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Dodawanie do lub usuwanie z grup zabezpieczeń aplikacji
 
-Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji przy użyciu portalu, jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby dodać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji, czy interfejs sieciowy jest podłączony do maszyny wirtualnej, czy nie. Dowiedz się więcej o [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups) oraz sposób [Tworzenie grupy zabezpieczeń aplikacji](manage-network-security-group.md#create-an-application-security-group).
+Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji przy użyciu portalu, jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby dodać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji, czy interfejs sieciowy jest podłączony do maszyny wirtualnej, czy nie. Dowiedz się więcej o [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups) oraz sposób [Tworzenie grupy zabezpieczeń aplikacji](manage-network-security-group.md).
 
 1. W *Szukaj zasobów, usług i dokumentów* w górnej części portalu, zacznij pisać nazwę maszyny wirtualnej, która ma interfejs sieciowy, który chcesz dodać do lub usuwanie z grupy zabezpieczeń aplikacji. Gdy nazwa maszyny Wirtualnej pojawi się w wynikach wyszukiwania, wybierz ją.
 2. W obszarze **USTAWIENIA** wybierz pozycję **Sieć**.  Wybierz **. Konfigurowanie grup zabezpieczeń aplikacji**, wybierz grup zabezpieczeń aplikacji, które chcesz dodać interfejsu sieciowego lub usuń zaznaczenie grupy zabezpieczeń aplikacji, które chcesz usunąć interfejs sieciowy, a następnie wybierz **Zapisz**. Tylko te interfejsy sieciowe, które istnieją w tej samej sieci wirtualnej można dodać do tej samej grupy zabezpieczeń aplikacji. Grupy zabezpieczeń aplikacji muszą istnieć w tej samej lokalizacji co interfejs sieciowy.
@@ -167,7 +167,7 @@ Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej gru
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic#az_network_nic_update)|
+|Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>Skojarzyć lub usunąć skojarzenie sieciowej grupy zabezpieczeń
@@ -199,7 +199,7 @@ Podczas usuwania interfejsu sieciowego, wszystkie adresy MAC lub adres IP przypi
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[Usuń kartę sieciową sieci az](/cli/azure/network/nic#az_network_nic_delete)|
+|Interfejs wiersza polecenia|[Usuń kartę sieciową sieci az](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
@@ -221,7 +221,7 @@ Przepływ IP Sprawdź, czy funkcja usługi Azure Network Watcher ułatwiają tak
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az network nic list — zacznie obowiązywać od — sieciowej grupy zabezpieczeń](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
-- Program PowerShell: [Polecenie GET-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
+- Program PowerShell: [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
 
 ### <a name="view-effective-routes"></a>Wyświetlanie obowiązujących tras
 

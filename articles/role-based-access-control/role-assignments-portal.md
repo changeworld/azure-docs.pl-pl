@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f5d48a074f8069e243af5644f86ad3c3d8f559b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634867"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412312"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal
 
@@ -33,7 +33,7 @@ ms.locfileid: "52634867"
 
 1. Kliknij konkretny rodzaj zasobu, który chcesz wyświetlić lub zarządzania nimi.
 
-1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
     Poniżej przedstawiono przykład bloku sterowania (IAM) dostępu do subskrypcji.
 
@@ -65,21 +65,21 @@ Wykonaj następujące kroki, aby wyświetlić dostęp dla pojedynczego użytkown
 
 1. Otwórz **kontrola dostępu (IAM)** w zakresie, takich jak grupy zarządzania, subskrypcji, grupy zasobów lub zasobu, które chcesz wyświetlić dostępu.
 
-1. Kliknij przycisk **Sprawdź dostęp** kartę.
+1. Kliknij kartę **Sprawdź dostęp**.
 
-    ![Kontrola dostępu — karcie dostęp do wyboru](./media/role-assignments-portal/access-control-check-access.png)
+    ![Kontrola dostępu — karta Sprawdź dostęp](./media/role-assignments-portal/access-control-check-access.png)
 
-1. W **znaleźć** listy, wybierz typ podmiotu zabezpieczeń, które chcesz sprawdzić dostęp.
+1. Na liście **Znajdź** wybierz typ podmiotu zabezpieczeń, dla którego chcesz sprawdzić dostęp.
 
-1. W polu wyszukiwania wprowadź ciąg do wyszukania katalog dla nazw wyświetlanych, adresów e-mail i identyfikatory obiektów.
+1. W polu wyszukiwania wprowadź ciąg, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail lub identyfikatory obiektów.
 
-    ![Sprawdź dostęp do listy wyboru](./media/role-assignments-portal/check-access-select.png)
+    ![Sprawdzanie dostępu — lista wyboru](./media/role-assignments-portal/check-access-select.png)
 
-1. Kliknij przycisk podmiotu zabezpieczeń, aby otworzyć **przypisania** okienka.
+1. Kliknij podmiot zabezpieczeń, aby otworzyć okienko **przypisania**.
 
-    ![okienka przypisania](./media/role-assignments-portal/check-access-assignments.png)
+    ![Okienko przypisania](./media/role-assignments-portal/check-access-assignments.png)
 
-    W tym okienku widać role przypisane do wybranych podmiot zabezpieczeń oraz zakres. W przypadku dowolnego Odmów przypisania w tym zakresie lub dziedziczone do tego zakresu, zostaną one wyświetlone.
+    W tym okienku są wyświetlane role przypisane do wybranego podmiotu zabezpieczeń i zakresu. Jeśli istnieją przypisania odmowy występujące w tym zakresie lub dziedziczone przez ten zakres, zostaną wyświetlone.
 
 ### <a name="view-all-role-assignments-at-a-scope"></a>Wyświetlanie wszystkich przypisań ról w zakresie
 
@@ -91,7 +91,7 @@ Wykonaj następujące kroki, aby wyświetlić dostęp dla pojedynczego użytkown
 
    Na karcie przypisania roli można zobaczyć, kto ma dostęp w tym zakresie. Należy zauważyć, że niektóre role należą do zakresu **tego zasobu**, a inne są **dziedziczone** z innego zakresu. Dostęp jest przypisywany specjalnie do tego zasobu albo dziedziczony z przypisania do zakresu nadrzędnego.
 
-## <a name="add-a-role-assignment"></a>Dodaj przypisanie roli
+## <a name="add-a-role-assignment"></a>Dodawanie przypisania roli
 
 W funkcji RBAC Aby udzielić dostępu, możesz przypisać rolę do użytkownika, grupy, jednostkę usługi lub tożsamość zarządzaną. Wykonaj następujące kroki, aby udzielić dostępu w różnych zakresach.
 
@@ -103,9 +103,9 @@ W funkcji RBAC Aby udzielić dostępu, możesz przypisać rolę do użytkownika,
 
 1. Kliknij przycisk **Dodaj przypisanie roli** aby otworzyć okienko Dodaj przypisanie roli.
 
-   Jeśli nie masz uprawnienia do przypisywania ról opcję Dodaj przypisanie roli zostanie wyłączona.
+   Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
 
-   ![Dodaj okienko przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
+   ![Okienko Dodawanie przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
 
 1. Z listy rozwijanej **Rola** wybierz rolę, taką jak **Współautor·maszyny·wirtualnej**.
 
@@ -119,19 +119,19 @@ W funkcji RBAC Aby udzielić dostępu, możesz przypisać rolę do użytkownika,
 
 Aby użytkownik jest administratorem subskrypcji platformy Azure, należy przypisać je [właściciela](built-in-roles.md#owner) rolę w zakresie subskrypcji. Rola właściciela zapewnia pełny dostęp użytkownika do wszystkich zasobów w ramach subskrypcji, łącznie z prawej strony można delegować dostępu do innych osób. Te kroki są takie same jak inne przypisania roli.
 
-1. W witrynie Azure portal kliknij pozycję **wszystkich usług** i następnie **subskrypcje**.
+1. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**, a następnie wybierz pozycję **Subskrypcje**.
 
 1. Kliknij subskrypcję, w którym chcesz udzielić dostępu.
 
-1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
 1. Kliknij przycisk **przypisań ról** kartę, aby wyświetlić wszystkie przypisania roli dla tej subskrypcji.
 
 1. Kliknij przycisk **Dodaj przypisanie roli** aby otworzyć okienko Dodaj przypisanie roli.
 
-   Jeśli nie masz uprawnienia do przypisywania ról opcję Dodaj przypisanie roli zostanie wyłączona.
+   Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
 
-   ![Dodaj okienko przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
+   ![Okienko Dodawanie przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
 
 1. W **roli** listy rozwijanej wybierz **właściciela** roli.
 
@@ -166,6 +166,6 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Samouczek: Udzielanie dostępu dla użytkownika przy użyciu RBAC i witryny Azure portal](quickstart-assign-role-user-portal.md)
-* [Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md)
-* [Role wbudowane](built-in-roles.md)
+* [Samouczek: Udzielanie dostępu dla użytkownika za pomocą funkcji RBAC i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+* [Rozwiązywanie problemów z RBAC na platformie Azure](troubleshooting.md)
 * [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md)

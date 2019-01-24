@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: abcf3100dc5252db9e3a5e7b446417333a9b37ca
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321895"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381949"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Właściwości standardowe w rekordach usługi Log Analytics
 Dane w [usługi Log Analytics](../log-query/log-query-overview.md) jest przechowywany jako zestaw rekordów, każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
@@ -92,7 +92,7 @@ AzureActivity
 Aby uzyskać listę komputerów, które wysyłają typy danych rozliczane, użyj następującego zapytania:
 
 > [!NOTE]
-> Korzystanie z zapytań za pomocą `union withsource = tt *` oszczędnie skanowania różnych typów danych dane są drogie do wykonania. 
+> Korzystanie z zapytań za pomocą `union withsource = tt *` oszczędnie skanowania różnych typów danych są drogie do wykonania. 
 
 ```Kusto
 union withsource = tt * 

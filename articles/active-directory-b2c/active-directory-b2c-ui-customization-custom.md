@@ -3,19 +3,19 @@ title: Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestan
 description: Dowiedz się więcej o dostosowywaniu interfejsu użytkownika za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1c2f7b46daf7b96d3a6f47dac647d5ed90461e8e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 738e4a4f94d86fc3a1acbb2e43c5b1974d6abac2
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156259"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849273"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika aplikacji za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -104,7 +104,7 @@ Konfigurowanie magazynu obiektów Blob na potrzeby udostępniania zasobów międ
 6. Aby uzyskać **maksymalny wiek**, wprowadź 200.
 7. Kliknij pozycję **Zapisz**.
 
-## <a name="test-cors"></a>Testowanie mechanizmu CORS
+## <a name="test-cors"></a>Test CORS
 
 Sprawdź, czy wszystko jest gotowe, wykonując następujące czynności:
 
@@ -180,11 +180,11 @@ W [zmodyfikować sekcję swoje niestandardowe zasady rejestracji lub logowania](
 | Identyfikator definicji zawartości | Opis | 
 |-----------------------|-------------|
 | *api.error* | **Strona błędu**. Ta strona jest wyświetlana, gdy występuje wyjątek lub komunikat o błędzie. |
-| *API.idpselections* | **Strona wyboru dostawcy tożsamości**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać z podczas logowania. Opcje te są dostawców tożsamości w organizacji, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
-| *API.idpselections.Signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybierać podczas rejestracji. Opcje te są dostawców tożsamości w organizacji, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
+| *api.idpselections* | **Strona wyboru dostawcy tożsamości**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać z podczas logowania. Opcje te są dostawców tożsamości w organizacji, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
+| *api.idpselections.signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybierać podczas rejestracji. Opcje te są dostawców tożsamości w organizacji, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
 | *api.localaccountpasswordreset* | **Strona obsługi zapomnianego hasła**. Ta strona zawiera formularz, który użytkownik musi wykonać, aby zainicjować resetowania hasła.  |
 | *api.localaccountsignin* | **Strona logowania dla kont lokalnych**. Ta strona zawiera formularz logowania logujesz się przy użyciu konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać pola wprowadzania tekstu, a pole wprowadzania hasła. |
-| *API.localaccountsignup* | **Strona rejestracji dla kont lokalnych**. Ta strona zawiera formularz zapisów za utworzenie konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takie jak pola wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, wybieranych list rozwijanych i pól wyboru wielokrotnego wyboru. |
+| *api.localaccountsignup* | **Strona rejestracji dla kont lokalnych**. Ta strona zawiera formularz zapisów za utworzenie konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać różne kontrolki wejściowe, takie jak pola wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, wybieranych list rozwijanych i pól wyboru wielokrotnego wyboru. |
 | *api.phonefactor* | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie użytkownicy mogą sprawdzić swoje numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania. |
 | *api.selfasserted* | **Strona rejestracji dla kont społecznościowych**. Ta strona zawiera formularz rejestracji, które użytkownicy muszą wykonać po utworzeniu konta przy użyciu istniejącego konta z dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +. Ta strona jest podobny do poprzedniego konta społecznościowego zapisywania strony, z wyjątkiem pól wprowadzania hasła. |
 | *api.selfasserted.profileupdate* | **Strona aktualizacji profilu**. Ta strona zawiera formularza, którego użytkownicy mogą zaktualizować swój profil. Ta strona jest podobna do strony rejestracji konta w sieci społecznościowej, z wyjątkiem pól wprowadzania hasła. |

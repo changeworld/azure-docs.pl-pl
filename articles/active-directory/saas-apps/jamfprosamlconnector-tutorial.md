@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e30ede3e69711fefcf5026202ed7b004d00cb02e
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 6cbdc767062ea81fc03b930c48309863dd5d3860
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810818"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Samouczek: Samouczek: integracja usługi Azure Active Directory z oprogramowaniem Jamf Pro
 
@@ -104,7 +104,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Jamf 
 
     ![Informacje o domenie i adresach URL aplikacji Jamf Pro dla logowania jednokrotnego](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/metadata`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.jamfcloud.com/saml/SSO`
 
@@ -155,7 +155,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w oprogramowaniu Jamf 
 
     e. Wklej wartość `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` w polu tekstowym **GROUP ATTRIBUTE NAME** (NAZWA ATRYBUTU GRUPY).
 
-7. Na tej samej stronie przewiń ekran w dół do pola **IDENTITY PROVIDER** (DOSTAWCA TOŻSAMOŚCI) w sekcji **Single Sign-On** (Logowanie jednokrotne), a następnie wykonaj następujące kroki:
+7. Na tej samej stronie przewiń ekran do pola **IDENTITY PROVIDER** (DOSTAWCA TOŻSAMOŚCI) w sekcji **Single Sign-On** (Logowanie jednokrotne), a następnie wykonaj następujące kroki:
 
     ![Konfiguracja oprogramowania Jamf Pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 

@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 06f05da839ebca2ae53e255acce7f07d1989673c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6da222086f29c4b492652d924b4d98e9780eaa53
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539775"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434601"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Tworzenie Centrum IoT przy użyciu dostawcy zasobów interfejsu API REST (.NET)
 
@@ -23,7 +23,7 @@ ms.locfileid: "38539775"
 Możesz użyć [interfejs API REST dostawcy zasobów usługi IoT Hub] [ lnk-rest-api] do tworzenia i zarządzania usługi Azure IoT hubs programowo. W tym samouczku dowiesz się, jak tworzenie Centrum IoT z poziomu programu C# za pomocą interfejsu API REST dostawcy zasobów usługi IoT Hub.
 
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [Usługa Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -188,7 +188,7 @@ Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 

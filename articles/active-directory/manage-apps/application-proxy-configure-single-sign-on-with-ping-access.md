@@ -4,7 +4,7 @@ description: Publikowanie aplikacji z usługą PingAccess i serwera Proxy aplika
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: c5a69e0c15d6d75bb4f182c1d8f62863aae7c760
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 52111d54031b2d458b0bfc727dcb310fbbcbd9ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140850"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468617"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Na podstawie nagłówka uwierzytelniania dla logowania jednokrotnego przy użyciu serwera Proxy aplikacji i PingAccess
 
@@ -73,13 +73,13 @@ Wykonaj następujące kroki, aby opublikować aplikację. Bardziej szczegółowy
 3. Wybierz **Dodaj** w górnej części bloku.
 4. Wybierz **aplikacje lokalne**.
 5. Wypełnij wymagane pola informacji o nowej aplikacji. Użyj poniższych wskazówek, aby ustawienia:
-   - **Wewnętrzny adres URL**: zwykle Podaj adres URL, który umożliwia przejście do strony logowania aplikacji podczas korzystania z sieci firmowej. W tym scenariuszu łącznika musi traktować PingAccess proxy jako pierwsza strona aplikacji. Użyj tego formatu: `https://<host name of your PA server>:<port>`. Numer portu to 3000 domyślnie, ale można go skonfigurować w PingAccess.
+   - **Wewnętrzny adres URL**: Zwykle należy podać adres URL, który umożliwia przejście do strony logowania aplikacji podczas korzystania z sieci firmowej. W tym scenariuszu łącznika musi traktować PingAccess proxy jako pierwsza strona aplikacji. Użyj tego formatu: `https://<host name of your PA server>:<port>`. Numer portu to 3000 domyślnie, ale można go skonfigurować w PingAccess.
 
     > [!WARNING]
     > Dla tego typu logowania jednokrotnego wewnętrzny adres URL musi używać protokołu https i nie może korzystać z protokołu http.
 
-   - **Metoda wstępnego uwierzytelnienia**: Azure Active Directory
-   - **Przetłumacz URL w nagłówkach**: Brak
+   - **Metoda wstępnego uwierzytelnienia**: Usługa Azure Active Directory
+   - **Przetłumacz URL w nagłówkach**: Nie
 
    >[!NOTE]
    >Jeśli jest to swoją pierwszą aplikację, należy użyć portu 3000 do uruchamiania i wróć, aby zaktualizować to ustawienie, jeśli zmienisz konfigurację PingAccess. Jeśli jest to drugi lub nowszych aplikacji, będzie to muszą być zgodne odbiornika skonfigurowaniu PingAccess. Dowiedz się więcej o [słuchaczy w PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).

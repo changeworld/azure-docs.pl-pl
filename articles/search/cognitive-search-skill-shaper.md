@@ -8,32 +8,35 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 627c53f7339dbc35d822a0bf6038ca0f1ea5e653
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313840"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410119"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper umiejętności cognitive
 
 **Shaper** umiejętności tworzy typu złożonego do obsługi złożonych pola (nazywane także wieloczęściowy pola). Pole Typ złożony ma wiele części, ale jest traktowany jako pojedynczy element w indeksie usługi Azure Search. Skonsolidowane pola przydatne w scenariuszach wyszukiwania przykładami łączenie imię i nazwisko w jedno pole, miasta i stanu do pojedynczego pola lub nazwa i Data urodzenia na pojedyncze pole, aby ustanowić unikatową tożsamość.
 
-Umiejętności Shaper umożliwia zasadniczo tworzenia struktury definiuje nazwy elementów członkowskich tej struktury i przypisania wartości do każdego elementu członkowskiego.
+**Shaper** umiejętności umożliwia zasadniczo tworzenia struktury definiuje nazwy elementów członkowskich tej struktury i przypisania wartości do każdego elementu członkowskiego.
 
-Domyślnie ta technika obsługuje obiekty, które są szczegółowe o jeden poziom. W przypadku bardziej złożonych obiektów można połączyć kilka kroków Shaper.
+Domyślnie ta technika obsługuje obiekty, które są szczegółowe o jeden poziom. W przypadku bardziej złożonych obiektów można połączyć w łańcuch kilka **Shaper** kroki.
 
-W odpowiedzi Nazwa wyjściowego jest zawsze "output". Wewnętrznie potoku można mapować innej nazwy, takie jak "analyzedText" w poniższych przykładach "wyjściowe", ale Shaper umiejętności, sama zwraca "output" w odpowiedzi. Może to być ważne debugowania wzbogaconego dokumentów i zwróć uwagę, niezgodność nazw lub jeśli Tworzenie niestandardowych umiejętności i struktury odpowiedzi samodzielnie.
+W odpowiedzi Nazwa wyjściowego jest zawsze "output". Wewnętrznie potoku można mapować innej nazwy, takie jak "analyzedText" w przykładach poniżej, aby "wyjściowe", ale **Shaper** umiejętności, sama zwraca "Wyjście" w odpowiedzi. Może to być ważne debugowania wzbogaconego dokumentów i zwróć uwagę, niezgodność nazw lub jeśli Tworzenie niestandardowych umiejętności i struktury odpowiedzi samodzielnie.
+
+> [!NOTE]
+> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie są naliczane dotyczące korzystania z niego. Powinna nadal [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md), jednak aby zastąpić **bezpłatna** resource — Opcja ograniczająca na niewielką liczbę dziennych wzbogacenia dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="sample-1-complex-types"></a>Przykład 1: typy złożone
 
-Rozważmy scenariusz, w którym chcesz utworzyć strukturę o nazwie *analyzedText* zawierający dwa elementy członkowskie: *tekstu* i *tonacji*odpowiednio. W usłudze Azure Search jest wywoływana wieloczęściowy polu możliwym do przeszukania *typu złożonego*, i nie jest jeszcze obsługiwany poza pakietem. W tej wersji zapoznawczej umiejętności Shaper może służyć do generowania pola typu złożonego w indeksie. 
+Rozważmy scenariusz, w którym chcesz utworzyć strukturę o nazwie *analyzedText* zawierający dwa elementy członkowskie: *tekstu* i *tonacji*odpowiednio. W usłudze Azure Search jest wywoływana wieloczęściowy polu możliwym do przeszukania *typu złożonego*, i nie jest jeszcze obsługiwany poza pakietem. W tej wersji zapoznawczej **Shaper** umiejętności może służyć do generowania pola typu złożonego w indeksie. 
 
 W poniższym przykładzie przedstawiono elementu członkowskiego nazw jako dane wejściowe. Struktura danych wyjściowych (złożonych pola w usłudze Azure Search) jest określona za pomocą *targetName*. 
 
@@ -62,7 +65,7 @@ W poniższym przykładzie przedstawiono elementu członkowskiego nazw jako dane 
 ```
 
 ### <a name="sample-input"></a>Przykładowe dane wejściowe
-Dokument JSON, zapewniając użyteczne dane wejściowe dla tego umiejętności Shaper może być:
+Dokument JSON, zapewniając użyteczne dane wejściowe dla tego **Shaper** umiejętności mogą być:
 
 ```json
 {
@@ -80,7 +83,7 @@ Dokument JSON, zapewniając użyteczne dane wejściowe dla tego umiejętności S
 
 
 ### <a name="sample-output"></a>Przykładowe dane wyjściowe
-Umiejętności Shaper generuje nowy element o nazwie *analyzedText* z elementami połączone *tekstu* i *tonacji*. 
+**Shaper** umiejętności generuje nowy element o nazwie *analyzedText* z elementami połączone *tekstu* i *tonacji*. 
 
 ```json
 {

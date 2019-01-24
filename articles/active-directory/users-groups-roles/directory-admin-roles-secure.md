@@ -13,16 +13,16 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c2ee0834b0c6872d96bebe71231f1a9424ff261a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387084"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438154"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 
-Bezpieczeństwo większości lub wszystkich zasobów biznesowych w nowoczesnej organizacji, zależy od integralności uprzywilejowanych kont służących do administrowania i zarządzania systemami IT. Uczestników złośliwych działań, w tym osoby przeprowadzające ataki cybernetyczne często docelowych kont administratorów i inne elementy uprzywilejowanego dostępu, aby szybko uzyskać dostęp do poufnych danych i systemy przy użyciu przed atakami kradzieży poświadczeń. Chmury usługi, zapobiegania i odpowiedzi są wspólnego obowiązków dostawcy usług w chmurze i klienta. Aby uzyskać więcej informacji o najnowszych zagrożeniach do punktów końcowych i w chmurze, zobacz [Microsoft Security Intelligence Report](https://www.microsoft.com/security/sir/default.aspx). Ten artykuł może pomóc Ci opracować plan kierunku zamykanie przerw między bieżącym planów i wytyczne opisane w tym miejscu.
+Bezpieczeństwo większości lub wszystkich zasobów biznesowych w nowoczesnej organizacji, zależy od integralności uprzywilejowanych kont służących do administrowania i zarządzania systemami IT. Uczestników złośliwych działań, w tym osoby przeprowadzające ataki cybernetyczne często docelowych kont administratorów i inne elementy uprzywilejowanego dostępu, aby szybko uzyskać dostęp do poufnych danych i systemy przy użyciu przed atakami kradzieży poświadczeń. Chmury usługi, zapobiegania i odpowiedzi są wspólnego obowiązków dostawcy usług w chmurze i klienta. Aby uzyskać więcej informacji o najnowszych zagrożeniach do punktów końcowych i w chmurze, zobacz [Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report). Ten artykuł może pomóc Ci opracować plan kierunku zamykanie przerw między bieżącym planów i wytyczne opisane w tym miejscu.
 
 > [!NOTE] 
 > Firma Microsoft dba do zapewnienia najwyższych poziomów zaufania, przejrzystości, zgodność ze standardami i zgodności z przepisami. Dowiedz się więcej o jak zespół reagowania na zdarzenia globalne Microsoft zmniejsza skutki ataków na usługi w chmurze i jak bezpieczeństwo jest wbudowane w produktów firmy Microsoft i usługi w chmurze w [Microsoft Trust Center — bezpieczeństwo](https://www.microsoft.com/trustcenter/security)i elementy docelowe zgodności firmy Microsoft w [Microsoft Trust Center - zgodności](https://www.microsoft.com/trustcenter/compliance).

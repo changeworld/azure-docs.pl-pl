@@ -4,7 +4,7 @@ description: Jak rozwiązywać typowe problemy zmierzyła się z zespołem podcz
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: fe96ecc0ba6904819f0262a2f470e37203a7952e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 4d8e5cb577eb7b3eecc800e7a74b1ddcbbc2c76c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357108"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813376"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Problem podczas zapisywania poświadczeń administratora podczas konfigurowania aprowizacji użytkowników z aplikacją Galeria usługi Azure Active Directory 
 
@@ -30,7 +30,7 @@ Korzystając z witryny Azure portal skonfigurować [automatyczna aprowizacja uż
 
 Jeśli opartej na SAML logowania jednokrotnego również jest skonfigurowane dla tej samej aplikacji, najbardziej prawdopodobną przyczyną tego błędu jest limit magazynu wewnętrznego, każdej aplikacji przez usługę Azure AD dla certyfikatów i poświadczenia został przekroczony.
 
-Obecnie usługa Azure AD ma pojemność pamięci masowej jeden KB dla wszystkich certyfikatów, tajne tokenów, poświadczenia i elementami konfiguracji danych skojarzonych z pojedynczego wystąpienia aplikacji (znany także jako jednostki rekord usługi w usłudze Azure AD).
+Obecnie usługa Azure AD ma pojemność pamięci masowej 1024 bajty dla wszystkich certyfikatów, tajne tokenów, poświadczenia i elementami konfiguracji danych skojarzonych z pojedynczego wystąpienia aplikacji (znany także jako jednostki rekord usługi w usłudze Azure AD).
 
 Opartej na SAML logowania jednokrotnego jest skonfigurowany, certyfikat używany do podpisywania tokenów SAML są przechowywane w tym miejscu i często zużywa ponad 50% procent miejsca.
 

@@ -3,7 +3,7 @@ title: Przypisywanie lub usuwanie licencji — usługi Azure Active Directory | 
 description: Instrukcje dotyczące sposobu przypisywania i usuwania licencji usługi Azure Active Directory użytkowników lub grup.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
 ms.component: fundamentals
@@ -13,12 +13,12 @@ ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 0d3f417b5a169b3d8d91d85b5f47496064c8f5f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b7abcb4820dde221f17efa1fcded05df41fa7bed
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063356"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449490"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory
 Wiele usług Azure Active Directory (Azure AD) wymagają aktywacji produktu usługi Azure AD i wszystkich użytkowników lub grup (i skojarzone elementy członkowskie) licencji dla tego produktu. Tylko użytkownicy z liczby aktywnych licencji będą mogli uzyskać dostęp do licencjonowanych usługi Azure AD.

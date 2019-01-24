@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 565c35b296e2734df264942b9eab0a067626c368
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77709ab9ffd86e599046ddf332213582505f625d
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427186"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433241"
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Tworzenie usługi Multi-Factor Authentication w aplikacjach niestandardowych (SDK)
 

@@ -8,19 +8,19 @@ manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
-ms.service: virtual-machines-linux
+ms.service: azure-monitor
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 198d6e596faf47528c508a9323ab22de563dfc62
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404906"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819037"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Wdrażanie dodatek usługi Azure Log Analytics Nozzle dla monitorowania systemu Cloud Foundry
 
@@ -63,7 +63,7 @@ Obszar roboczy usługi Log Analytics można utworzyć ręcznie lub za pomocą sz
 1. W witrynie Azure portal Wyszukaj listę usług w witrynie Azure Marketplace, a następnie wybierz usługi Log Analytics.
 2. Wybierz **Utwórz**, a następnie wybierz opcje dla następujących elementów:
 
-   * **Zaloguj się obszar roboczy usługi Analytics**: wpisz nazwę obszaru roboczego.
+   * **Zaloguj się obszar roboczy usługi Analytics**: Wpisz nazwę obszaru roboczego.
    * **Subskrypcja**: Jeśli masz wiele subskrypcji, wybierz jedną, która jest taka sama jak CF wdrożenia.
    * **Grupa zasobów**: Utwórz nową grupę zasobów lub użyj jednego z wdrożeniem usługi CF.
    * **Lokalizacja**: Wprowadź lokalizację.
@@ -84,7 +84,7 @@ Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Log Anal
     * **OMS_Workspace_Name**: Wprowadź nazwę obszaru roboczego, jeśli obszar roboczy nie istnieje, ten szablon utworzy nową.
     * **OMS_Workspace_Region**: Wybierz lokalizację dla obszaru roboczego.
     * **OMS_Workspace_Pricing_Tier**: Wybierz obszar roboczy usługi Log Analytics jednostki SKU. Zobacz [wskazówki dotyczące cen](https://azure.microsoft.com/pricing/details/log-analytics/) dla odwołania.
-    * **Postanowienia prawne**: warunków prawnych kliknij przycisk, następnie kliknij przycisk "Utwórz", aby zaakceptować określenie prawne.
+    * **Postanowienia prawne**: Postanowienia prawne, a następnie kliknij przycisk "Utwórz", aby zaakceptować określenie prawne.
 - Po wszystkie parametry są określone, kliknij przycisk "Utwórz", aby wdrożyć szablon. Po zakończeniu wdrożenia stan będzie wyświetlany na karcie powiadomienia.
 
 
@@ -198,12 +198,12 @@ Możesz [Tworzenie alertów](https://docs.microsoft.com/azure/log-analytics/log-
 | Zapytanie wyszukiwania                                                                  | Generuj alert w oparciu o | Opis                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Liczba wyników < 1   | **BBS. Aplikacje Domain.cf** wskazuje, czy domena aplikacji usługi cf jest aktualny. Oznacza to, że żądania aplikacji usługi CF z kontrolera chmury są synchronizowane bbs. LRPsDesired (AIs żądanego Diego) do wykonania. Nie odebrano żadnych danych oznacza, że domena aplikacji usługi cf nie jest aktualny w określonym przedziale czasu. |
-| Typ = CF_ValueMetric_CL Origin_s = przedstawiciela Name_s = UnhealthyCell Value_d > 1            | Liczba wyników > 0   | W przypadku komórek Diego 0 oznacza, że działa prawidłowo, a 1 oznacza złej kondycji. Ustaw alert w przypadku wykrycia wielu komórek Diego nieprawidłowości w określonym przedziale czasu. |
+| Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Liczba wyników > 0   | W przypadku komórek Diego 0 oznacza, że działa prawidłowo, a 1 oznacza złej kondycji. Ustaw alert w przypadku wykrycia wielu komórek Diego nieprawidłowości w określonym przedziale czasu. |
 | Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Liczba wyników > 0 | 1 oznacza, że system jest w dobrej kondycji, a wartość 0 oznacza, że system nie jest w dobrej kondycji. |
-| Typ = CF_ValueMetric_CL Origin_s = route_emitter Name_s ConsulDownMode Value_d = > 0 | Liczba wyników > 0   | Konsul emituje jej stan kondycji okresowo. 0 oznacza, że system jest w dobrej kondycji i 1 oznacza, że nadajnika trasy wykryje, że Konsul nie działa. |
+| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Liczba wyników > 0   | Konsul emituje jej stan kondycji okresowo. 0 oznacza, że system jest w dobrej kondycji i 1 oznacza, że nadajnika trasy wykryje, że Konsul nie działa. |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Liczba wyników > 0 | Różnicowe liczba wiadomości, które celowo przez Doppler'a porzucony w efekcie zastosowania ciśnienia. |
-| Typ = CF_LogMessage_CL SourceType_s = LGR MessageType_s = ERR                      | Liczba wyników > 0   | Emituje Loggregator **LGR** do wskazania problemów z procesem rejestrowania. Przykładem takiego problemu jest, gdy dane wyjściowe komunikatu dziennika jest zbyt wysoka. |
-| Typ = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Liczba wyników > 0   | Gdy dodatek Nozzle otrzymuje alert konsumenta wolne od loggregator, wysyła **slowConsumerAlert** ValueMetric do usługi Log Analytics. |
+| Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Liczba wyników > 0   | Emituje Loggregator **LGR** do wskazania problemów z procesem rejestrowania. Przykładem takiego problemu jest, gdy dane wyjściowe komunikatu dziennika jest zbyt wysoka. |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Liczba wyników > 0   | Gdy dodatek Nozzle otrzymuje alert konsumenta wolne od loggregator, wysyła **slowConsumerAlert** ValueMetric do usługi Log Analytics. |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Liczba wyników > 0   | Jeśli liczba zmian zdarzenia utracone osiąga próg, oznacza to, że dodatek Nozzle może być problem z uruchomieniem. |
 
 ## <a name="scale"></a>Skalowanie

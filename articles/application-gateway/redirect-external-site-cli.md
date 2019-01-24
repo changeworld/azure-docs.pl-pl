@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
 ms.author: victorh
-ms.openlocfilehash: 4483d71ba745cc5cbb49d22420d83c3b2ceae0ad
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bdbaa9154f12c8b66a4c1d801671e7b21756e0f7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157024"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412737"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą zewnętrznego przekierowania przy użyciu wiersza polecenia platformy Azure
 
@@ -65,7 +65,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway#create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Application gateway jest przypisany do *myAGSubnet* i *myPublicIPAddress* utworzonego wcześniej. 
+Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway#create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -106,7 +106,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Dodaj odbiornik i regułę routingu
 
-Odbiornik jest wymagany do włączenia application gateway odpowiednio kierować ruchem. Utwórz odbiornik za pomocą [tworzenie az sieci application-gateway http-listener](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) przy użyciu portu frontonu utworzonych za pomocą [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create). Wymagana jest reguła dla odbiornika wiedzieć, dokąd wysyłać ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
+Odbiornik jest wymagany do włączenia application gateway odpowiednio kierować ruchem. Utwórz odbiornik za pomocą [tworzenie az sieci application-gateway http-listener](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) przy użyciu portu frontonu utworzonych za pomocą [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway). Wymagana jest reguła dla odbiornika wiedzieć, dokąd wysyłać ruch przychodzący. Utwórz podstawową regułę o nazwie *redirectRule* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

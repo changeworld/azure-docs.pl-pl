@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8acbb33b396aa617936eb0333bd68fea60532425
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c452341567055e0272c8e6a90c43d6b886d6a928
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404660"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425598"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Tworzenie maszyny Wirtualnej na podstawie obrazu zarządzanego
 
@@ -43,7 +43,7 @@ Przed utworzeniem nowej maszyny Wirtualnej, konieczne będzie [tworzenie zarząd
 
 Można użyć programu PowerShell, aby utworzyć Maszynę wirtualną z obrazu za pomocą uproszczony zestaw parametrów dla [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) polecenia cmdlet. Obraz musi znajdować się w tej samej grupie zasobów, w których zostaną utworzone maszyny Wirtualnej.
 
-W tym przykładzie wymaga AzureRM modułu wersji 5.6.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+W tym przykładzie wymaga AzureRM modułu wersji 5.6.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 Uproszczony zestaw parametrów dla [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm) tylko wymaga podania nazwy grupy zasobów i nazwy obrazu utworzyć maszynę Wirtualną z obrazu. New-AzureRmVm użyje wartości **— nazwa** jako nazwy wszystkich zasobów, które automatycznie tworzy parametr. W tym przykładzie firma Microsoft zapewnia bardziej szczegółowe nazwy poszczególnych zasobów, ale pozwól polecenia cmdlet, utwórz je automatycznie. Możesz również tworzyć zasoby wcześniej, takich jak sieci wirtualnej i przekazać nazwę zasobu do polecenia cmdlet. New-AzureRmVm będzie korzystać z istniejących zasobów, jeśli można je znaleźć według nazwy.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 099bdc25c27e264c3c7732243068307856840409
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028361"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437796"
 ---
-# <a name="test-your-app-in-azure"></a>Przetestuj swoją aplikację na platformie Azure 
+# <a name="test-your-app-in-azure"></a>Testowanie aplikacji na platformie Azure 
 Ten artykuł zawiera instrukcje testowania aplikacji na platformie Azure za pomocą usługi DevTest Labs. Najpierw należy skonfigurować udział plików w ramach laboratorium i zainstalować go jako dysk na lokalnej maszynie do programowania i maszyny Wirtualnej w laboratorium. Następnie przy użyciu programu Visual Studio 2017, aby wdrożyć aplikację do udziału plików tak, aby aplikację można uruchomić na maszynie Wirtualnej w środowisku laboratoryjnym.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
@@ -56,7 +56,7 @@ Ten artykuł zawiera instrukcje testowania aplikacji na platformie Azure za pomo
 
     ![Wybierz maszynę Wirtualną laboratorium](media/test-app-in-azure/select-lab-vm.png)
 2. Wybierz **Connect** na pasku narzędzi, aby nawiązać połączenie z maszyną Wirtualną. 
-3. [Zainstaluj program Azure PowerShell](https://azure.microsoft.com/downloads/) przy użyciu **Windows zainstaluj** łącze w **narzędzia wiersza polecenia** sekcji. Aby uzyskać inny sposób instalowania programu Azure PowerShell, zobacz [w tym artykule](/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1).
+3. [Zainstaluj program Azure PowerShell](https://azure.microsoft.com/downloads/) przy użyciu **Windows zainstaluj** łącze w **narzędzia wiersza polecenia** sekcji. Aby uzyskać inny sposób instalowania programu Azure PowerShell, zobacz [w tym artykule](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
 4. Postępuj zgodnie z instrukcjami wyświetlanymi w [instalowanie udziału plików](#mount-the-file-share) sekcji. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Publikowanie aplikacji w programie Visual Studio

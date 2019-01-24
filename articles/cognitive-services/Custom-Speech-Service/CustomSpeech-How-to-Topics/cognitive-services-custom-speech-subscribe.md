@@ -25,7 +25,7 @@ Aby rozpocząć pracę, przy użyciu usługi Azure Custom Speech Service, należ
 ## <a name="get-a-subscription-key"></a>Pobierz klucz subskrypcji
 1. Klucz subskrypcji można uzyskać w witrynie Azure portal w jeden z dwóch sposobów:
 
-    * Przejdź do [witryny Azure portal](https://ms.portal.azure.com), i Dodaj nowy interfejs API usług Cognitive, wyszukując _usług Cognitive Services_ , a następnie wybierając **interfejsy API usług Cognitive Services**.
+    * Przejdź do witryny [Azure Portal](https://ms.portal.azure.com) i dodaj nowy interfejs API usług Cognitive Services, wyszukując _Cognitive Services_ , a następnie wybierając pozycję **Interfejsy API usług Cognitive Services**.
 
       ![Wyszukiwanie poznawcze](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription.png)
 

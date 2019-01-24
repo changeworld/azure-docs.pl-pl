@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 9714cb8ce1c3380ac74150148c8d84bd410e3fc4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: d9abfe90296b27918594c41a207befe2b59027b9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715223"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461608"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwizowanie dziennika aktywności platformy Azure
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell lub Wieloplatformowego interfejsu wiersza polecenia do archiwizacji swoje [ **dziennika aktywności platformy Azure** ](../../azure-monitor/platform/activity-logs-overview.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz przechowywać więcej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzenia przez 90 dni lub mniej nie trzeba skonfigurować archiwizowanie na koncie magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
@@ -184,4 +184,5 @@ W pliku PT1H.json każde zdarzenie jest przechowywane w tablicy "rekordy", zgodn
 * [Pobierz obiekty BLOB na potrzeby analizy](../../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Stream dziennika aktywności do usługi Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
 * [Dowiedz się więcej o dzienniku aktywności](../../azure-monitor/platform/activity-logs-overview.md)
+
 

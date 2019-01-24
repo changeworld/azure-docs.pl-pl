@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 85f02acf05e89db3e22dd24ecd0e100a9ec4af6f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c35e4253858d6820d86d7d3e0763a3dcc577d09d
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311732"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54387937"
 ---
-#    <a name="deprecated-cognitive-search-skills"></a>Umiejętności przestarzałe wyszukiwania kognitywnego
+# <a name="deprecated-cognitive-search-skills"></a>Umiejętności przestarzałe wyszukiwania kognitywnego
 
 W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przestarzałe. Użyj następującymi wskazówkami dla zawartości:
 
@@ -39,7 +39,7 @@ W tym dokumencie opisano umiejętności poznawcze, które są uznawane za przest
 
 ### <a name="recommendations"></a>Zalecenia 
 
-Użyj [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) zamiast tego. Zapewnia większość funkcjonalności NamedEntityRecognitionSkill wyższej jakości. Zawiera również bogatsze informacje w jej pola złożone dane wyjściowe.
+Use [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) instead. Zapewnia większość funkcjonalności NamedEntityRecognitionSkill wyższej jakości. Zawiera również bogatsze informacje w jej pola złożone dane wyjściowe.
 
 Aby przeprowadzić migrację do [umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md), trzeba będzie wykonać co najmniej jedną z następujących zmian do definicji umiejętności. Można zaktualizować przy użyciu definicji umiejętności [aktualizacji interfejsu API zestawu umiejętności](https://docs.microsoft.com/rest/api/searchservice/update-skillset).
 

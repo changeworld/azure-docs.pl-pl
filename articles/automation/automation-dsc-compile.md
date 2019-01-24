@@ -3,18 +3,18 @@ title: Kompilowanie konfiguracji w konfiguracji stan automatyzacji platformy Azu
 description: W tym artykule opisano sposób kompilowania konfiguracji usługi Azure Automation Desired State Configuration (DSC).
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca3c29101e17a7970ba782b5c49267bf9f18482e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257160"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423412"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC usługi Azure Automation stanu konfiguracji
 
@@ -27,7 +27,7 @@ Można kompilować konfiguracje Desired State Configuration (DSC) na dwa sposoby
 - Łatwo śledzić stan zadania
 - Dostęp uwierzytelniony za pomocą logowania platformy Azure
 
-**Program Windows PowerShell**
+**Windows PowerShell**
 
 - Wywoływanie z wiersza polecenia za pomocą poleceń cmdlet programu Windows PowerShell
 - Mogą być zawarte w zautomatyzowane rozwiązanie z wieloma krokami
@@ -130,7 +130,7 @@ Aby uzyskać informacje o przekazywaniu PSCredentials jako parametry, zobacz [za
 
 ## <a name="composite-resources"></a>Zasoby złożone
 
-**Zasoby złożone** umożliwiają używanie konfiguracji DSC jako zagnieżdżonych zasobów w ramach konfiguracji. Dzięki temu można zastosować konfiguracji z wieloma do pojedynczego zasobu. Zobacz [zasoby złożone: przy użyciu konfiguracji DSC jako zasób](/powershell/dsc/authoringresourcecomposite) Aby dowiedzieć się więcej na temat **zasoby złożone**.
+**Zasoby złożone** umożliwiają używanie konfiguracji DSC jako zagnieżdżonych zasobów w ramach konfiguracji. Dzięki temu można zastosować konfiguracji z wieloma do pojedynczego zasobu. Zobacz [zasoby złożone: Przy użyciu konfiguracji DSC jako zasób](/powershell/dsc/authoringresourcecomposite) Aby dowiedzieć się więcej na temat **zasoby złożone**.
 
 > [!NOTE]
 > Aby **zasoby złożone** skompilować poprawnie, najpierw upewnij się, że wszystkie zasoby DSC, które złożonego opiera się na pierwszej instalacji w repozytorium modułów konta automatyzacji platformy Azure lub nie importuje prawidłowo.
@@ -283,7 +283,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> Po zakończeniu kompilacji może zostać wyświetlony błąd wskazujący: **modułu "Microsoft.PowerShell.Management" nie został zaimportowany, ponieważ przystawka "Microsoft.PowerShell.Management" została już zaimportowana.** Można bezpiecznie zignorować to ostrzeżenie.
+> Po zakończeniu kompilacji może zostać wyświetlony błąd wskazujący: **Nie można zaimportować modułu "Microsoft.PowerShell.Management", ponieważ przystawka "Microsoft.PowerShell.Management" została już zaimportowana.** Można bezpiecznie zignorować to ostrzeżenie.
 
 ## <a name="importing-node-configurations"></a>Importowanie konfiguracji węzła
 

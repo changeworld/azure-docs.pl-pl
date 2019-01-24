@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 7c7881f08828572c01a5e0decb270c653416ef9b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: de11ebdc38ae5085fef274181084310ccc02a329
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024267"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54304010"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Szybki start: Wdrażanie klastra usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -31,7 +31,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi. Podczas tworzenia grupy zasobów użytkownik jest proszony o określenie lokalizacji. Jest to lokalizacja, w której działają zasoby na platformie Azure. Utwórz grupę zasobów przy użyciu polecenia [az group create][az-group-create].
+Grupa zasobów platformy Azure to logiczna grupa przeznaczona do wdrażania zasobów platformy Azure i zarządzania nimi. Podczas tworzenia grupy zasobów użytkownik jest proszony o określenie lokalizacji. Ta lokalizacja to miejsce przechowywania metadanych grupy zasobów, a także miejsce uruchamiania zasobów na platformie Azure, jeśli podczas tworzenia zasobu nie został określony inny region. Utwórz grupę zasobów przy użyciu polecenia [az group create][az-group-create].
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myAKSCluster* w lokalizacji *eastus*.
 
@@ -268,7 +268,7 @@ W tym przewodniku Szybki start utworzono wdrożenie platformy Kubernetes za pomo
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki start wdrożono klaster Kubernetes oraz wdrożono w nim aplikację obsługującą wiele kontenerów.
+W tym przewodniku Szybki start wdrożono klaster Kubernetes oraz wdrożono w nim aplikację obsługującą wiele kontenerów.  [Uzyskaj dostęp do internetowego pulpitu nawigacyjnego rozwiązania Kubernetes][kubernetes-dashboard] dla właśnie utworzonego klastra.
 
 Aby dowiedzieć się więcej o usłudze AKS i poznać dokładnie proces od kompletnego kodu do wdrożenia, przejdź do samouczka dotyczącego klastra Kubernetes.
 
@@ -297,3 +297,4 @@ Aby dowiedzieć się więcej o usłudze AKS i poznać dokładnie proces od kompl
 [azure-portal]: https://portal.azure.com
 [kubernetes-deployment]: concepts-clusters-workloads.md#deployments-and-yaml-manifests
 [kubernetes-service]: concepts-network.md#services
+[kubernetes-dashboard]: kubernetes-dashboard.md

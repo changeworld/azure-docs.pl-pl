@@ -4,7 +4,7 @@ description: Dowiedz się, jak sprawdzić stan inicjowania obsługi zadań konta
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: af5d7174a2726a6ff8a62477149606ec5d43e94e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: def3c6aea7b915e8665367d4da27c1314374000c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357209"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463070"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raportowanie aprowizacja kont użytkowników
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raporty dotyczące aprowizacja kont użytkowników
 
 
 Usługa Azure Active Directory obejmuje [konta użytkownika usługi aprowizacji](user-provisioning.md) który ułatwia automatyzację inicjowania obsługi anulowania obsługi administracyjnej kont użytkowników w aplikacji SaaS i innych systemów, na potrzeby cyklu życia tożsamości end-to-end Zarządzanie. Usługa Azure AD obsługuje wstępnie zintegrowanych użytkownika aprowizacji łączniki dla wszystkich aplikacji i systemów, w sekcji "Proponowany" [galerii aplikacji usługi Azure AD](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
@@ -40,9 +40,9 @@ Inicjowania obsługi administracyjnej łączniki są, konfigurowanie i skonfigur
 
 W tym artykule używane następujące terminy, określonych poniżej:
 
-* **Źródłowy System** — repozytorium użytkowników, którzy inicjowania obsługi administracyjnej usługi AD Azure synchronizuje z. Usługa Azure Active Directory jest system źródłowy dla większości wstępnie zintegrowane aprowizacji łączników, jednak istnieją pewne wyjątki (przykład: Workday synchronizacji ruchu przychodzącego).
+* **Źródłowy System** — repozytorium użytkowników, którzy inicjowania obsługi administracyjnej usługi AD Azure synchronizuje z. Usługa Azure Active Directory jest system źródłowy dla większości wstępnie zintegrowanych łączników inicjowania obsługi administracyjnej, jednak istnieją pewne wyjątki (przykład: WORKDAY synchronizacji ruchu przychodzącego).
 
-* **Docelowy System** — repozytorium użytkowników, którzy synchronizuje usługi aprowizacji usługi Azure AD. Zazwyczaj jest to aplikacja SaaS (przykłady: Salesforce, ServiceNow, Google Apps, usługa Dropbox dla firm), ale w niektórych przypadkach może być systemu lokalnego, takich jak usługi Active Directory (przykład: synchronizacji ruchu przychodzącego produktu Workday do usługi Active Directory).
+* **Docelowy System** — repozytorium użytkowników, którzy synchronizuje usługi aprowizacji usługi Azure AD. Zazwyczaj jest to aplikacja SaaS (przykłady: SalesForce, ServiceNow, Google Apps, usługa Dropbox dla firm), ale w niektórych przypadkach może być systemu lokalnego, takich jak usługi Active Directory (przykład: WORKDAY synchronizacji ruchu przychodzącego do usługi Active Directory).
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>Wprowadzenie udostępniania raportów z portalu zarządzania systemu Azure
@@ -68,7 +68,7 @@ Raport z podsumowaniem inicjowania obsługi administracyjnej jest widoczna w **a
 
 Raport z podsumowaniem inicjowania obsługi administracyjnej powinna być pierwsze spojrzenie Administratorzy miejsca, aby sprawdzić kondycję operacyjną zadanie inicjowania obsługi administracyjnej.
 
- ![Raport z podsumowaniem](./media/check-status-user-account-provisioning/summary_report.PNG)
+ ![Raport z podsumowaniem](./media/check-status-user-account-provisioning/summary_report.PNG)
 
 ## <a name="provisioning-audit-logs"></a>Dzienniki inspekcji inicjowania obsługi administracyjnej
 Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dziennikach inspekcji usługi Azure AD, które mogą być wyświetlane w **dzienniki inspekcji** karcie **Inicjowanie obsługi administracyjnej konta** kategorii. Typy zdarzeń zarejestrowanych działań:
@@ -83,11 +83,11 @@ Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dz
 
 Po wyświetleniu inicjowania obsługi zdarzeń dla poszczególnych użytkowników, zdarzenia są zwykle zachodzą w następującej kolejności:
 
-1. Importuj zdarzenia: użytkownika są pobierane z systemu źródłowego.
+1. Importuj zdarzenia: Użytkownik jest pobierana z systemu źródłowego.
 
-2. Importuj zdarzenia: system docelowy jest wysyłane do sprawdzania istnienia pobrane użytkownika.
+2. Importuj zdarzenia: System docelowy zostaje przesłane zapytanie pod kątem istnienia pobrane użytkownika.
 
-3. Zdarzenia reguły synchronizacji: dane użytkownika z systemów źródłowych i docelowych są obliczane względem skonfigurowanych reguł Mapowanie atrybutów i filtrów określania zakresu, aby określić, jaką akcję, należy wykonać.
+3. Zdarzenia reguły synchronizacji: Dane użytkownika z systemów źródłowych i docelowych są sprawdzane pod kątem skonfigurowanych reguł Mapowanie atrybutów i filtrów określania zakresu, aby określić, jaką akcję, należy wykonać.
 
 4. Eksportuj zdarzenia: Jeśli określone zdarzenia reguły synchronizacji, czy akcja powinna być wykonana (Add, Update, Delete), a następnie wyniki akcji są rejestrowane w zdarzeniu eksportu.
 

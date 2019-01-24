@@ -11,72 +11,66 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 30c033b487fe58d017080b02c257502f82338164
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710044"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54388304"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia
-W tym artykule opisano jak skonfigurować liczbę użytkowników na potrzeby laboratorium, Uzyskaj je zarejestrowane w usłudze laboratorium, kontrolować liczbę godzin, które mogą używać maszyny Wirtualnej i nie tylko. 
+W tym artykule opisano, jak dodać użytkowników do laboratorium, Uzyskaj je zarejestrowane w usłudze laboratorium, kontrolować liczbę godzin, które mogą używać maszyny Wirtualnej i nie tylko. 
 
 
-## <a name="specify-the-number-of-users-allowed-into-the-lab"></a>Określ liczbę użytkowników uprawnionych do laboratorium
+## <a name="add-users-to-the-lab"></a>Dodawanie użytkowników do laboratorium
+Jeśli masz **ograniczać** włączone, dodawanie użytkowników (adresy e-mail) do listy.
 
-1. Wybierz pozycję **Zasady użytkowania**. 
-2. W ustawieniach **Zasady użytkowania** wprowadź **liczbę użytkowników**, którzy mogą korzystać z laboratorium.
-3. Wybierz pozycję **Zapisz**. 
+1. W menu po lewej stronie wybierz pozycję **Użytkownicy**.
+2. Na pasku narzędzi wybierz pozycję **Dodaj użytkowników**. 
+3. Na stronie **Dodawanie użytkowników** wpisz adresy e-mail użytkowników w osobnych wierszach lub w jednym wierszu, rozdzielając je średnikami. 
 
-    ![Zasady użytkowania](../media/how-to-manage-classroom-labs/usage-policy-settings.png)
+    ![Dodawanie adresów e-mail użytkowników](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Wybierz pozycję **Zapisz**. Na liście zostaną wyświetlone adresy e-mail użytkowników oraz ich stan rejestracji. 
+
+    ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="send-registration-link-to-students"></a>Wysyłanie linków rejestracyjnych do uczniów
+Poniższa procedura zawiera kroki, aby wysłać link rejestracji dla użytkowników. Jeśli **ograniczać** jest włączona w środowisku laboratoryjnym, tylko użytkownicy na liście Użytkownicy mogą używać łącze do zarejestrowania do laboratorium. 
 
 1. Przełącz się do **użytkowników** widoku, wybierając **użytkowników** w menu po lewej stronie. 
-2. Wybierz **pobrania rejestracji linku** kafelka.
+2. Wybierz kafelek **Pobierz link rejestracji**.
 
     ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
 1. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Kopiuj**. Link zostanie skopiowany do Schowka. Wklej go w edytorze wiadomości e-mail i wyślij wiadomość e-mail do ucznia. 
 
     ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Zamknij**. 
-4. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie. Jeśli masz **ograniczenia opcji** ustawienie włączone i ma listę użytkowników, na liście, wykonaj następujące czynności:
+4. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie. Jeśli ustawienie **Ogranicz dostęp** jest włączone i masz listę użytkowników, wykonaj następujące czynności:
     1. Wybierz **adres e-mail** użytkownika na liście. 
-    2. Wyświetlone okno z domyślnego programu poczty e-mail przy użyciu **na** adres wypełnione. 
-    3. Wklej **adres URL rejestracji** wcześniej zostały skopiowane. 
-    4. Wyślij **e-mail**. 
+    2. Zostanie wyświetlone okno domyślnego programu poczty e-mail z wypełnionym polem adresu **DO**. 
+    3. Wklej skopiowany wcześniej **adres URL rejestracji**. 
+    4. Wyślij wiadomość **e-mail**. 
 
 ## <a name="view-users-registered-with-the-lab"></a>Wyświetlenie użytkowników zarejestrowanych w laboratorium
 
 Wybierz **użytkowników** w menu po lewej stronie, aby zapoznać się z listą użytkowników zarejestrowane w usłudze laboratorium. 
 
-![Lista użytkowników zarejestrowane w usłudze laboratorium](../media/how-to-configure-student-usage/users-list.png)
+![Lista użytkowników zarejestrowane w usłudze laboratorium](../media/how-to-configure-student-usage/users-list-new.png)
 
 ## <a name="set-quotas-per-user"></a>Ustawianie przydziałów dla poszczególnych użytkowników
+Można ustawić limity przydziału dla poszczególnych użytkowników wykonując następujące kroki: 
 
-1. Wybierz **użytkowników** w menu po lewej stronie.
+1. W menu po lewej stronie wybierz pozycję **Użytkownicy**.
 2. Wybierz **limitu przydziału dla poszczególnych użytkowników: bez ograniczeń** na pasku narzędzi. 
 3. Na **limitu przydziału dla poszczególnych użytkowników** wybierz opcję **ograniczyć liczbę godzin, które użytkownik może używać maszyny Wirtualnej**. 
 4. Dla **ile godzin czy chcesz dać każdemu użytkownikowi**, wprowadź liczbę godzin, a wybierz **Zapisz**. 
 
     ![Liczba godzin na użytkownika](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Na pasku narzędzi, zobacz teraz liczbę godzin: **limitu przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;**. 
+5. Teraz wyświetlić liczbę godzin na pasku narzędzi: **Limit przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;**. 
 
     ![Limit przydziału dla poszczególnych użytkowników](../media/how-to-configure-student-usage/quota-per-user.png)
-
-## <a name="add-users-to-the-lab"></a>Dodawanie użytkowników do laboratorium
-Jeśli masz **ograniczać** włączone, dodawanie użytkowników (adresy e-mail) do listy.
-
-1. Wybierz **użytkowników** w menu po lewej stronie.
-2. Wybierz **dodawania użytkowników** na pasku narzędzi. 
-3. Na **dodawania użytkowników** wpisz adresy e-mail użytkowników w osobnych wierszach lub w jednym wierszu rozdzielone średnikami. 
-
-    ![Dodaj adresy e-mail użytkowników](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Wybierz pozycję **Zapisz**. Zostanie wyświetlony adresy e-mail użytkowników i ich Stany (zarejestrowane lub nie) na liście. 
-
-    ![Lista użytkowników](../media/how-to-configure-student-usage/users-list-new.png)
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Aby dodać użytkowników, przekazywanie pliku CSV
 Możesz również dodać użytkowników, przekazując plik CSV z adresów e-mail użytkowników.
@@ -97,11 +91,21 @@ Możesz wykonać następujące zadania na ucznia maszyny Wirtualnej:
 - Usuń maszynę Wirtualną. 
 - Wyświetl liczbę godzin, aby użytkownicy używali maszyny wirtualnej. 
 
+## <a name="update-number-of-virtual-machines-in-lab"></a>Aktualizowanie liczby maszyn wirtualnych w laboratorium
+Aby zaktualizować liczbę maszyn wirtualnych w środowisku laboratoryjnym, wykonaj następujące kroki **maszyn wirtualnych** strony:
+
+1. Wybierz **maszyn wirtualnych** w menu po lewej stronie. 
+2. Wybierz **pojemności laboratorium: &lt;numer&gt; następującą liczbę maszyn:** na pasku narzędzi. 
+3. Wprowadź **numer** maszyn wirtualnych.
+4. Wybierz pozycję **Zapisz**.
+
+    ![Maszyny wirtualne w laboratorium](../media/how-to-configure-student-usage/number-virtual-machines.png)
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły:
 
-- [Jako administrator tworzenie i zarządzanie kontami laboratorium](how-to-manage-lab-accounts.md)
-- [Jako właściciel laboratorium tworzenie i zarządzanie laboratoriami](how-to-manage-classroom-labs.md)
-- [Jako właściciel laboratorium Konfigurowanie i publikowanie szablonów](how-to-create-manage-template.md)
+- [As an admin, create and manage lab accounts (Tworzenie kont laboratoriów i zarządzanie nimi jako administrator)](how-to-manage-lab-accounts.md)
+- [As a lab owner, create and manage labs (Tworzenie laboratoriów i zarządzanie nimi jako właściciel laboratorium)](how-to-manage-classroom-labs.md)
+- [As a lab owner, set up and publish templates (Konfigurowanie i tworzenie szablonów jako właściciel laboratorium)](how-to-create-manage-template.md)
 - [Jako użytkownik laboratorium dostęp do laboratoriów na potrzeby zajęć](how-to-use-classroom-lab.md)

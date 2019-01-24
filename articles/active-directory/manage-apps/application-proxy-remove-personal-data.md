@@ -3,7 +3,7 @@ title: Usuwanie danych osobowych — serwer Proxy usługi Azure Active Directory
 description: Usuń dane osobowe z zainstalowanych na urządzeniach dla serwera Proxy usługi Azure Active Directory Application łączników.
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: bccda196be82808e7dc369de3f517490f410e26e
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: cbbe1fb4f145da0b5f5a360d33933655855fb042
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366046"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468254"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Usuwanie danych osobowych dla serwera Proxy usługi Azure Active Directory aplikacji  
 

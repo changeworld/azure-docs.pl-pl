@@ -3,18 +3,18 @@ title: Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozw
 description: To rozwiązanie do zarządzania maszyną Wirtualną uruchamia i zatrzymuje maszyny wirtualne usługi Azure Resource Manager zgodnie z harmonogramem i aktywnie monitoruje od usługi Log Analytics.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f5c86a90325c9a6dcd521a97cb899b88b55198d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194270"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846187"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -59,7 +59,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
    ![Strona Dodaj rozwiązanie zarządzania maszyny Wirtualnej](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
 4. Na **Dodaj rozwiązanie** wybierz opcję **obszaru roboczego**. Wybierz obszar roboczy usługi Log Analytics, która jest połączona z tą samą subskrypcją platformy Azure, w której znajduje się konto usługi Automation. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszar roboczy usługi Log Analytics** strony, wykonaj następujące czynności:
-   - Określ nazwę dla nowego **obszar roboczy usługi Log Analytics**.
+   - Określ nazwę dla nowego **obszar roboczy usługi Log Analytics**, takie jak "ContosoLAWorkspace".
    - Wybierz **subskrypcji** się połączyć, wybierając z listy rozwijanej, jeśli nie jest domyślnie wybrana.
    - Aby uzyskać **grupy zasobów**, można utworzyć nową grupę zasobów lub wybrać istniejącą grupę.
    - Wybierz **lokalizację**. Obecnie jedynymi dostępnymi lokalizacjami są **Australia południowo-wschodnia**, **Kanada Środkowa**, **Indie środkowe**, **wschodnie stany USA**, **Japonia, część wschodnia**, **Azja południowo-wschodnia**, **Południowe Zjednoczone Królestwo**, i **Europa Zachodnia**.
@@ -226,8 +226,8 @@ Nie należy włączać wszystkie harmonogramy, ponieważ może to powodować nak
 |Schedule_AutoStop_CreateAlert_Parent | Co 8 godzin | Uruchamia element runbook AutoStop_CreateAlert_Parent co 8 godzin, które z kolei powoduje zatrzymanie maszyny Wirtualnej na podstawie wartości w External_Start_ResourceGroupNames, External_Stop_ResourceGroupNames i External_ExcludeVMNames w usłudze Azure Automation zmiennych. Alternatywnie można określić rozdzielana przecinkami lista maszyn wirtualnych przy użyciu parametru VMList.|
 |Scheduled_StopVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _zatrzymać_ codziennie o określonej godzinie. Automatycznie zatrzymuje wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez zmienne zasobów. Włącz harmonogram powiązanej **StartVM zaplanowane**.|
 |Scheduled_StartVM | Zdefiniowane przez codziennie użytkownika | Uruchamia element runbook Scheduled_Parent z parametrem _Start_ codziennie o określonej godzinie. Automatycznie uruchamia wszystkie maszyny wirtualne, które spełniają reguły zdefiniowane przez odpowiednich zmiennych. Włącz harmonogram powiązanej **StopVM zaplanowane**.|
-|Sekwencjonowania StopVM | 1:00:00 (czas UTC), każdy piątek | Uruchamia element runbook Sequenced_Parent z parametrem _zatrzymać_ każdy piątek o określonej godzinie. Sekwencyjnie (rosnąco) zatrzymania wszystkich maszyn wirtualnych przy użyciu tagu elementu **SequenceStop** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StartVM**.|
-|StartVM sekwencjonowania | 1:00 PM (UTC), każdy poniedziałek | Uruchamia element runbook Sequenced_Parent z parametrem _Start_ w każdy poniedziałek o określonej godzinie. Sekwencyjnie (malejąco) zaczyna się od wszystkich maszyn wirtualnych tag **SequenceStart** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StopVM**.|
+|Sequenced-StopVM | 1:00:00 (czas UTC), każdy piątek | Uruchamia element runbook Sequenced_Parent z parametrem _zatrzymać_ każdy piątek o określonej godzinie. Sekwencyjnie (rosnąco) zatrzymania wszystkich maszyn wirtualnych przy użyciu tagu elementu **SequenceStop** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StartVM**.|
+|Sequenced-StartVM | 1:00 PM (UTC), każdy poniedziałek | Uruchamia element runbook Sequenced_Parent z parametrem _Start_ w każdy poniedziałek o określonej godzinie. Sekwencyjnie (malejąco) zaczyna się od wszystkich maszyn wirtualnych tag **SequenceStart** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StopVM**.|
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
 
@@ -281,8 +281,8 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów dzi
 
 |Zapytanie | Opis|
 |----------|----------|
-|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | "" Wyszukaj kategorię == "JobLogs" | gdzie (RunbookName_s == "ScheduledStartStop_Parent") | gdzie (typ ResultType == "Ukończone")  | Podsumowanie |Elementy AggregatedValue = count() by ResultType, bin (TimeGenerated, 1 godz.) | Sortuj według malejącej TimeGenerated'' '|
-|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | "" Wyszukaj kategorię == "JobLogs" | gdzie (RunbookName_s == "SequencedStartStop_Parent") | gdzie (typ ResultType == "Ukończone") | Podsumowanie |Elementy AggregatedValue = count() by ResultType, bin (TimeGenerated, 1 godz.) | Sortuj według malejącej TimeGenerated'' '|
+|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | gdzie (RunbookName_s == "ScheduledStartStop_Parent") | gdzie (typ ResultType == "Ukończone")  | Podsumowanie |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | gdzie (RunbookName_s == "SequencedStartStop_Parent") | gdzie (typ ResultType == "Ukończone") | Podsumowanie |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>Wyświetlanie rozwiązania
 

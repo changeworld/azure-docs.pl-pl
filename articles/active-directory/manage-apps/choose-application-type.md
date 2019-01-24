@@ -4,7 +4,7 @@ description: Omówienie obsługiwanych typów aplikacji, które można zintegrow
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: 99405f9ae3e86324aba7a6fdc583225c1f71f83a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ab68c8f73d4b53f441b8f46f466371cd1d03ad41
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845114"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846816"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Wybieranie typu aplikacji, podczas dodawania aplikacji w usłudze Azure Active Directory
 Zapoznaj się z czterech typów aplikacji, które można dodać do usługi Azure Active Directory (Azure AD). Podczas dodawania aplikacji w usłudze Azure Active Directory, zostanie wyświetlony monit wybrać jeden typ cztery aplikacji. 
@@ -68,11 +68,11 @@ Obsługiwane są następujące **logowanie jednokrotne** tryby aplikacji usługi
 
 -   **Azure AD logowanie jednokrotne wyłączone** — Wybieranie usługi Azure AD logowanie jednokrotne wyłączone **tryb rejestracji jednokrotnej** Jeśli nie są jeszcze gotowe, aby połączyć tę aplikację za pomocą logowania jednokrotnego z usługą Azure AD lub ją po prostu testowania
 
--   **Połączone logowanie jednokrotne** — wybierz [połączone logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **tryb rejestracji jednokrotnej** Jeśli masz aplikację, która jest już połączony z istniejącym pojedynczego logowania jednokrotnego rozwiązaniu lub jeśli chcesz, aby Publikowanie proste łącze dla użytkowników w ich [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) lub [uruchamiania aplikacji usługi Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+-   **Połączone logowanie jednokrotne** — wybierz [połączone logowanie jednokrotne](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **tryb rejestracji jednokrotnej** Jeśli masz aplikację, która jest już połączony z istniejącym pojedynczego logowania jednokrotnego rozwiązaniu lub jeśli chcesz, aby Publikowanie proste łącze dla użytkowników w ich [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) lub [uruchamiania aplikacji usługi Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
--   **Logowanie na podstawie hasła** — wybierz [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **tryb rejestracji jednokrotnej** Jeśli aplikacja renderuje pola HTML nazwę użytkownika i hasło, a chcesz przechowywać danej nazwy użytkownika i bezpieczne hasło i odtworzone później w aplikacji
+-   **Logowanie na podstawie hasła** — wybierz [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) **tryb rejestracji jednokrotnej** Jeśli aplikacja renderuje pola HTML nazwę użytkownika i hasło, a chcesz przechowywać danej nazwy użytkownika i bezpieczne hasło i odtworzone później w aplikacji
 
--   **Logowanie na podstawie protokołu SAML** — wybierz [opartej na SAML logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) logowania jednokrotnego w trybie, jeśli aplikacja obsługuje protokoły SAML lub OpenID Connect lub jeśli chcesz mieć możliwość zmapowania użytkowników do ról aplikacji, na podstawie reguł należy zdefiniować w swoje oświadczenia języka SAML *
+-   **Logowanie na podstawie protokołu SAML** — wybierz [opartej na SAML logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) logowania jednokrotnego w trybie, jeśli aplikacja obsługuje protokoły SAML lub OpenID Connect lub jeśli chcesz mieć możliwość zmapowania użytkowników do ról aplikacji, na podstawie reguł należy zdefiniować w swoje oświadczenia języka SAML *
 
    >[!NOTE]
    >Ta opcja nie jest dostępna, gdy serwer proxy aplikacji jest skonfigurowana dla aplikacji.

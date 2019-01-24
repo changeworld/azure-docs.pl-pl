@@ -3,23 +3,23 @@ title: Asynchroniczna Obsługa komunikatów usługi Service Bus | Dokumentacja f
 description: Opis asynchronicznej obsługi komunikatów usługi Azure Service Bus.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f1435549-e1f2-40cb-a280-64ea07b39fc7
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: 9bacce96e65a7aef611bec3ddae8b1872d5f9fae
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 0ecc277e1b9bd94558c54b1c808fdc24f47c402e
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391467"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845082"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Wzorce asynchronicznej obsługi komunikatów i wysoka dostępność
 
@@ -75,9 +75,9 @@ W obu przypadkach awarii fizycznych lub włókna przyczyny problemu. Aby obejś�
 ## <a name="paired-namespaces"></a>Sparowane przestrzenie nazw
 [Sparowane przestrzenie nazw] [ paired namespaces] funkcja obsługuje scenariusze, w którym jednostki usługi Service Bus lub wdrażanie w ramach centrum danych staną się niedostępne. Gdy to zdarzenie występuje rzadko, systemami rozproszonymi nadal musi być przygotowana do obsługi najgorszego przypadku. Zwykle to zdarzenie występuje, ponieważ pewien element, od których zależy usługa Service Bus występuje problem z krótkoterminowej. W celu zapewnienia dostępności aplikacji podczas przestoju, użytkownicy usługi Service Bus umożliwia dwa oddzielne przestrzenie nazw, najlepiej w odrębnych danych centra, hostowanie ich jednostek obsługi komunikatów. Dalszej części tej sekcji korzysta z następującą terminologią:
 
-* Podstawowa przestrzeń nazw: przestrzeni nazw za pomocą którego aplikacja wchodzi w interakcję do wysyłania i operacji odbioru.
-* Pomocnicza przestrzeń nazw: przestrzeń nazw, który działa jako kopii zapasowej podstawowej przestrzeni nazw. Aplikacja logiki nie wchodzi w interakcję z tą przestrzenią nazw.
-* Interwał trybu failover: ilość czasu, aby zaakceptować normalne błędy, zanim aplikacja zostanie przełączona z podstawowej przestrzeni nazw do pomocniczej przestrzeni nazw.
+* Podstawowa przestrzeń nazw: Przestrzeń nazw za pomocą którego aplikacja wchodzi w interakcję do wysyłania i operacji odbioru.
+* Pomocnicza przestrzeń nazw: Przestrzeń nazw, który działa jako kopii zapasowej podstawowej przestrzeni nazw. Aplikacja logiki nie wchodzi w interakcję z tą przestrzenią nazw.
+* Interwał trybu failover: Ilość czasu, aby zaakceptować normalne błędy, zanim aplikacja zostanie przełączona z podstawowej przestrzeni nazw do pomocniczej przestrzeni nazw.
 
 Sparowane przestrzenie nazw obsługują *Wyślij dostępności*. Wyślij dostępności pozwala zachować możliwość wysyłania wiadomości. Aby użyć dostępności wysyłania, aplikacji musi spełniać następujące wymagania:
 
@@ -109,11 +109,11 @@ public SendAvailabilityPairedNamespaceOptions(
 
 Parametry te mają następujące znaczenie:
 
-* *secondaryNamespaceManager*: zainicjowana klasa [NamespaceManager] [ NamespaceManager] wystąpienia dla pomocniczej przestrzeni nazw, [PairNamespaceAsync] [ PairNamespaceAsync] metody można użyć do skonfigurowania pomocniczej przestrzeni nazw. Menedżer przestrzeni nazw jest używana, aby uzyskać listę kolejek w przestrzeni nazw i upewnij się, czy istnieją wymagane zaległości kolejki. Jeśli te kolejki nie istnieją, są one tworzone. [NamespaceManager] [ NamespaceManager] wymaga możliwości Utwórz token za pomocą **Zarządzaj** oświadczenia.
+* *secondaryNamespaceManager*: Zainicjowana klasa [NamespaceManager] [ NamespaceManager] wystąpienia dla pomocniczej przestrzeni nazw, [PairNamespaceAsync] [ PairNamespaceAsync] metody można ustawić za pomocą się pomocniczej przestrzeni nazw. Menedżer przestrzeni nazw jest używana, aby uzyskać listę kolejek w przestrzeni nazw i upewnij się, czy istnieją wymagane zaległości kolejki. Jeśli te kolejki nie istnieją, są one tworzone. [NamespaceManager] [ NamespaceManager] wymaga możliwości Utwórz token za pomocą **Zarządzaj** oświadczenia.
 * *messagingFactory*: [MessagingFactory] [ MessagingFactory] wystąpienia dla pomocniczej przestrzeni nazw. [MessagingFactory] [ MessagingFactory] obiekt jest używany do wysyłania i, jeśli [EnableSyphon] [ EnableSyphon] właściwość jest ustawiona na **true**, odbiera komunikaty z kolejki zaległości.
 * *backlogQueueCount*: Liczba kolejek zaległości do utworzenia. Ta wartość musi wynosić co najmniej 1. Podczas wysyłania komunikatów do listy prac, jeden z tych kolejkach jest wybierany losowo. Jeśli wartość jest ustawiona na 1, następnie tylko jedna kolejka może być nigdy nie użył. Gdy tak się stanie, a kolejki jednej zaległości generuje błędy, klient nie jest w stanie wypróbować inną zaległości kolejki i może zakończyć się niepowodzeniem do wysłania wiadomości. Firma Microsoft zaleca ustawienie tej wartości na niektórych większych wartości i domyślne wartości do 10. Można to zmienić, aby wyższą lub niższą wartością w zależności od ilości danych, Twoja aplikacja przesyła dziennie. Każdej zaległości kolejki może zawierać maksymalnie 5 GB wiadomości.
-* *failoverInterval*: ilość czasu, w którym będzie akceptować błędów w podstawowej przestrzeni nazw przed przełączeniem wszelkie pojedynczej jednostki za pośrednictwem do pomocniczej przestrzeni nazw. Przejścia w tryb failover odbywa się na zasadzie jednostki przez jednostki. Jednostki w jednej przestrzeni nazw często znajdują się w różnych węzłach w ramach usługi Service Bus. Błąd w jednej jednostce nie oznacza niepowodzenie w innym. Ta wartość zostanie ustawiona na [System.TimeSpan.Zero] [ System.TimeSpan.Zero] do trybu failover do regionu pomocniczego, natychmiast po usługi po pierwsze, nieprzejściowy błąd. Błędy wyzwalające czasomierza trybu failover są [MessagingException] [ MessagingException] w którym [IsTransient] [ IsTransient] właściwość ma wartość false lub [ System.TimeoutException][System.TimeoutException]. Innych wyjątków takich jak [unauthorizedaccessexception —] [ UnauthorizedAccessException] nie powodują przejścia w tryb failover, ponieważ wskazują, że klient jest nieprawidłowo skonfigurowany. A [ServerBusyException] [ ServerBusyException] jest nie Przyczyna trybu failover ponieważ prawidłowy wzorzec polega na poczekaj 10 sekund, Wyślij wiadomość ponownie.
-* *enableSyphon*: wskazuje, że określonego parowanie powinien również syphon wiadomości z pomocniczą przestrzeń nazw do podstawowej przestrzeni nazw. Ogólnie rzecz biorąc, ustaw tę wartość aplikacji, które wysyłają komunikaty **false**; aplikacje, które odbierają komunikaty należy ustawić tę wartość na **true**. Przyczyna to zakłada, że często mniejszej liczby odbiorców wiadomości od nadawcy wiadomości. W zależności od liczby odbiorców można obsługiwać obowiązków syphon wystąpienie pojedynczej aplikacji. Za pomocą wielu odbiorców ma wpływ rozliczeń dla każdej kolejki zaległości.
+* *failoverInterval*: Ilość czasu, w którym będzie akceptować błędów w podstawowej przestrzeni nazw przed przełączeniem wszelkie pojedynczej jednostki za pośrednictwem do pomocniczej przestrzeni nazw. Przejścia w tryb failover odbywa się na zasadzie jednostki przez jednostki. Jednostki w jednej przestrzeni nazw często znajdują się w różnych węzłach w ramach usługi Service Bus. Błąd w jednej jednostce nie oznacza niepowodzenie w innym. Ta wartość zostanie ustawiona na [System.TimeSpan.Zero] [ System.TimeSpan.Zero] do trybu failover do regionu pomocniczego, natychmiast po usługi po pierwsze, nieprzejściowy błąd. Błędy wyzwalające czasomierza trybu failover są [MessagingException] [ MessagingException] w którym [IsTransient] [ IsTransient] właściwość ma wartość false lub [ System.TimeoutException][System.TimeoutException]. Innych wyjątków takich jak [unauthorizedaccessexception —] [ UnauthorizedAccessException] nie powodują przejścia w tryb failover, ponieważ wskazują, że klient jest nieprawidłowo skonfigurowany. A [ServerBusyException] [ ServerBusyException] jest nie Przyczyna trybu failover ponieważ prawidłowy wzorzec polega na poczekaj 10 sekund, Wyślij wiadomość ponownie.
+* *enableSyphon*: Wskazuje, że określonego parowanie powinien również syphon wiadomości z pomocniczą przestrzeń nazw do podstawowej przestrzeni nazw. Ogólnie rzecz biorąc, ustaw tę wartość aplikacji, które wysyłają komunikaty **false**; aplikacje, które odbierają komunikaty należy ustawić tę wartość na **true**. Przyczyna to zakłada, że często mniejszej liczby odbiorców wiadomości od nadawcy wiadomości. W zależności od liczby odbiorców można obsługiwać obowiązków syphon wystąpienie pojedynczej aplikacji. Za pomocą wielu odbiorców ma wpływ rozliczeń dla każdej kolejki zaległości.
 
 Aby użyć kodu, należy utworzyć podstawowy [MessagingFactory] [ MessagingFactory] wystąpienia pomocniczy [MessagingFactory] [ MessagingFactory] wystąpienia pomocniczy [ NamespaceManager] [ NamespaceManager] wystąpienia, a [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] wystąpienia. Wywołanie może być tak proste, jak poniżej:
 

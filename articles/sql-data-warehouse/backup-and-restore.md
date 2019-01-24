@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e060075fbcf6a5083e51b753e119cb5471129a79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308479"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465177"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj danych magazynu migawek do odzyskiwania lub skopiuj magazynu danych do poprzedniego punktu przywracania w regionie podstawowym. Użyj danych, Magazyn geograficznie nadmiarowych kopii zapasowych do przywrócenia w innym regionie geograficznym. 
@@ -86,7 +86,7 @@ Każda migawka tworzy punkt przywracania, który reprezentuje czas uruchomienia 
 
 Możesz zachować magazynu przywróconych danych i bieżący lub usuń jedno z nich. Jeśli chcesz zamienić bieżącego magazynu danych w magazynie przywróconych danych, można zmienić za pomocą [ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) z opcją zmodyfikować nazwę. 
 
-Aby przywrócić magazyn danych, zobacz [Przywracanie magazynu danych przy użyciu witryny Azure portal](sql-data-warehouse-restore-database-portal.md), [Przywracanie magazynu danych przy użyciu programu PowerShell](sql-data-warehouse-restore-database-powershell.md), lub [Przywracanie magazynu danych przy użyciu języka T-SQL](sql-data-warehouse-restore-database-rest-api.md) .
+Aby przywrócić magazyn danych, zobacz [Przywracanie magazynu danych przy użyciu witryny Azure portal](sql-data-warehouse-restore-database-portal.md), [Przywracanie magazynu danych przy użyciu programu PowerShell](sql-data-warehouse-restore-database-powershell.md), lub [Przywracanie magazynu danych przy użyciu interfejsów API REST](sql-data-warehouse-restore-database-rest-api.md).
 
 Aby przywrócić magazyn danych usuniętych lub wstrzymana, możesz [Utwórz bilet pomocy technicznej](sql-data-warehouse-get-started-create-support-ticket.md). 
 

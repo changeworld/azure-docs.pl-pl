@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Jak usunąć LocalDB problem wywołany limitem 10 GB | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Jak odzyskać z lokalnej bazy danych problem wywołany limitem 10 GB | Dokumentacja firmy Microsoft'
 description: W tym temacie opisano sposób odzyskiwania usługi Azure AD Connect synchronizacji po napotkaniu LocalDB 10GB ograniczyć wydania.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 41d081af-ed89-4e17-be34-14f7e80ae358
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 410559ab03f0e0be71f2eba27ed71c9f7cf05862
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 445137d268650f71bdc4d64342bc23d2b6da6daa
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238543"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474673"
 ---
-# <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Jak usunąć limit 10 GB dla lokalnej bazy danych
+# <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Program Azure AD Connect: Jak usunąć limit 10 GB dla lokalnej bazy danych
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowanego z programem Azure AD Connect lub użyć własnego pełnego programu SQL. Program SQL Server Express narzuca limit rozmiaru w wysokości 10 GB. Jeśli jest używany program LocalDB i limit zostanie osiągnięty, usługa synchronizacji programu Azure AD Connect nie będzie mogła uruchomić się ani prawidłowo wykonywać synchronizacji. Ten artykuł zawiera kroki odzyskiwania.
 
 ## <a name="symptoms"></a>Objawy
@@ -100,7 +100,7 @@ Ten krok jest zmniejszenie prawdopodobieństwa przekroczone problem limitu 10 GB
 ## <a name="long-term-solution--migrate-to-full-sql"></a>Rozwiązaniem długoterminowym — migracja do pełnego rozwiązania SQL
 Ogólnie rzecz biorąc problem polega na wskazywać, że rozmiar bazy danych 10 GB nie jest już wystarczająca dla usługi Azure AD Connect, aby zsynchronizować z lokalnej usługi Active Directory do usługi Azure AD. Zaleca się przejście na pełną wersję programu SQL server. Nie można bezpośrednio zastąpić programu LocalDB istniejącego wdrożenia programu Azure AD Connect za pomocą pełnej wersji programu SQL. Zamiast tego należy wdrożyć nowy serwer programu Azure AD Connect z pełną wersją programu SQL. Zalecana jest migracja typu swing, gdzie nowy serwer programu Azure AD Connect (z bazą danych w programie SQL) jest wdrażany jako serwer przejściowy obok istniejącego serwera programu Azure AD Connect (z programem LocalDB). 
 * Instrukcje dotyczące konfigurowania zdalnego programu SQL pod kątem programu Azure AD Connect znajdują się w artykule [Niestandardowa instalacja programu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom).
-* Instrukcje dotyczące migracji typu swing w ramach uaktualniania programu Azure AD Connect znajdują się w artykule [Azure AD Connect: Upgrade from a previous version to the latest](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration) (Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej).
+* Aby uzyskać instrukcje dotyczące migracji swing dla uaktualnienie usługi Azure AD Connect, można znaleźć w artykule [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

@@ -3,19 +3,20 @@ title: Reguły zapory na magistrali usług platformy Azure | Dokumentacja firmy 
 description: Jak używać reguł zapory zezwala na połączenia z określonych adresów IP usługi Azure Service Bus.
 services: service-bus
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: clemensv
-ms.openlocfilehash: b08540787fc61b9bb38ed921bd42e0f3065cf8f4
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: a8d29e7cae20c37adfeccaef01e1625b6ab3e0d0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653836"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852684"
 ---
 # <a name="use-firewall-rules"></a>Użyj reguł zapory
 
@@ -48,7 +49,7 @@ Reguły filtrowania adresów IP są stosowane w kolejności i pierwszej reguły,
 > - Azure Monitor
 > - Usługa Azure Stream Analytics
 > - Integracja z usługą Azure Event Grid
-> - Usługa Azure IoT Hub tras
+> - Azure IoT Hub Routes
 > - Usługa Azure IoT Device Explorer
 > - Azure Data Explorer
 >

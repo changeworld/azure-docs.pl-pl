@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: cea882bd1ba2ba12d34690fb47ec1afd6edf5c4c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 423de49faa20289a7c5663ae621f890b63a5752c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982174"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428515"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Opuścić organizację jako użytkownika-gościa
 
 Użytkownik-Gość usługi Azure Active Directory (Azure AD) B2B można zdecyduję się opuścić organizacji w dowolnym momencie, jeśli nie są już potrzebne, korzystanie z aplikacji z tej organizacji lub zachowanie skojarzenia. Użytkownik może pozostać organizacji samodzielnie, bez konieczności kontaktowania się z administratorem.
 
-## <a name="leave-an-organization"></a>Opuść organizację
+## <a name="leave-an-organization"></a>Opuszczanie organizacji
 
 Aby opuścić organizację jako zalogowany użytkownik [panelu dostępu](https://myapps.microsoft.com), wykonaj następujące czynności:
 
@@ -44,7 +44,7 @@ Gdy użytkownik opuszcza organizację, usunięcia konta użytkownika "soft" w ka
 Jeśli to konieczne, administrator dzierżawy trwale usunąć to konto w dowolnym momencie w trakcie 30-dniowego okresu. W tym celu:
 
 1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **usługi Azure Active Directory**.
-2. W obszarze **Zarządzaj**, wybierz opcję **użytkowników**.
+2. W obszarze **Zarządzaj** wybierz pozycję **Użytkownicy**.
 3. Wybierz **usuniętych użytkowników**.
 4. Zaznacz pole wyboru obok usuniętego użytkownika, a następnie wybierz **trwałe usunięcie**.
 

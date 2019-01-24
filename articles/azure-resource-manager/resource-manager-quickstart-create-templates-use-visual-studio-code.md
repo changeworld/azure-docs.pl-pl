@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 6a52355360ef2c892cb45af77366e09864cd7837
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: f4657209dfda2b515e29b4d462368ae6b5c1eae7
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611798"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302497"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
 
@@ -55,7 +55,7 @@ Szablon używany w tym przewodniku Szybki start ma nazwę [Create a standard sto
 
 ## <a name="edit-the-template"></a>Edytowanie szablonu
 
-Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Code, dodaj jeszcze jeden element do sekcji `outputs`.
+Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Code, dodaj jeszcze jeden element do sekcji `outputs` zawierający identyfikator URI magazynu.
 
 1. Dodaj jeszcze jedno wyjście do wyeksportowanego szablonu:
 
@@ -89,12 +89,12 @@ Aby dowiedzieć się, jak edytować szablon za pomocą programu Visual Studio Co
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start użyjesz usługi Azure Cloud Shell. Usługa Cloud Shell obsługuje zarówno interfejs wiersza polecenia platformy Azure, jak i program Azure PowerShell.
+Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start użyjesz usługi Azure Cloud Shell. Cloud Shell to aplikacja internetowa, która nie wymaga żadnej konfiguracji. Obsługuje ona zarówno interfejs wiersza polecenia platformy Azure, jak i program Azure PowerShell.
 
 1. Logowanie do [usługi Azure Cloud Shell](https://shell.azure.com)
 
     ![Interfejs wiersza polecenia usługi Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-2. W lewym górnym rogu okna usługi Cloud Shell jest wyświetlana opcja **PowerShell** lub **Bash**. Aby korzystać z interfejsu wiersza polecenia, musisz otworzyć sesję powłoki Bash. Aby uruchomić program PowerShell, musisz otworzyć sesję programu PowerShell. Wybierz strzałkę w dół, aby przełączać się między programami Bash i PowerShell. Zobacz poprzedni zrzut ekranu. Po przełączeniu wymagane jest ponowne uruchomienie powłoki.
+2. W lewym górnym rogu wybierz preferowane środowisko: **PowerShell** lub **Bash**. Aby korzystać z interfejsu wiersza polecenia, musisz otworzyć sesję powłoki Bash. Aby uruchomić program Azure PowerShell, musisz otworzyć sesję programu PowerShell. Wybierz strzałkę w dół, aby przełączać się między programami Bash i PowerShell. Zobacz poprzedni zrzut ekranu. Po przełączeniu wymagane jest ponowne uruchomienie powłoki.
 3. Wybierz pozycję **Przekaż/pobierz pliki**, a następnie wybierz pozycję **Przekaż**.
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
@@ -107,9 +107,9 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
     
     ---
 
-    Zanim będzie możliwe wdrożenie pliku szablonu z poziomu powłoki, musisz go przekazać.
-5. Wybierz plik, który został zapisany w poprzedniej sekcji. Nazwa domyślna to **azuredeploy.json**.
-6. W usłudze Cloud shell uruchom polecenie **ls**, aby zweryfikować, czy plik został pomyślnie przekazany. Można również użyć polecenia **cat**, aby zweryfikować zawartość szablonu. Poniższa ilustracja przedstawia uruchamianie polecenia z poziomu powłoki Bash.  Tych samych poleceń używa się w sesji programu PowerShell.
+    Wybierz plik, który został zapisany w poprzedniej sekcji. Nazwa domyślna to **azuredeploy.json**. Plik szablonu musi być dostępny z poziomu powłoki.
+
+    Opcjonalnie możesz skorzystać z poleceń **ls** i **cat**, aby sprawdzić, czy plik został przekazany pomyślnie. 
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
 
@@ -120,7 +120,7 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
     ![Wyświetlanie listy plików w usłudze Cloud Shell w witrynie Azure Portal](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
     
     ---
-7. W usłudze Cloud Shell uruchom poniższe polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
+4. W usłudze Cloud Shell uruchom poniższe polecenia. Wybierz kartę, aby wyświetlić kod programu PowerShell lub kod interfejsu wiersza polecenia.
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
     ```azurecli
@@ -163,7 +163,7 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
 
     Nazwa konta magazynu i adres URL magazynu w sekcji danych wyjściowych zostały wyróżnione na zrzucie ekranu. W następnym kroku będzie potrzebna nazwa konta magazynu.
 
-7. Uruchom następujące polecenie interfejsu wiersza polecenia lub programu PowerShell, aby wyświetlić nowo utworzone konto magazynu:
+5. Uruchom następujące polecenie interfejsu wiersza polecenia lub programu PowerShell, aby wyświetlić nowo utworzone konto magazynu:
 
     # <a name="clitabcli"></a>[Interfejs wiersza polecenia](#tab/CLI)
     ```azurecli
@@ -183,6 +183,8 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
     ```
     
     ---
+
+Aby dowiedzieć się więcej o korzystaniu z kont usługi Azure Storage, zobacz [Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

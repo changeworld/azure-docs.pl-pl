@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 7225bc8121ddab8809ebb1c409a3af59dbcc42f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: ''
+ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118391"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468237"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -52,7 +52,7 @@ Można również znaleźć [Azure Event Hubs — często zadawane pytania](../..
 
 Dane monitorowania dzierżawy platformy Azure jest obecnie dostępny tylko dla usługi Azure Active Directory. Możesz użyć danych z [raportowania usługi Azure Active Directory](../../active-directory/reports-monitoring/overview-reports.md), który zawiera historię logowania działań i inspekcji dziennik zmian wprowadzonych w określonej dzierżawie.
 
-### <a name="azure-active-directory-data"></a>Dane usługi Active Directory systemu Azure
+### <a name="azure-active-directory-data"></a>Azure Active Directory data
 
 Aby wysyłać dane z dziennika usługi Azure Active Directory do przestrzeni nazw usługi Event Hubs, należy skonfigurować ustawienie diagnostyczne dzierżawy w dzierżawie usługi AAD. [Postępuj zgodnie z tego przewodnika](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) skonfigurować ustawienie diagnostyczne dzierżawy.
 
@@ -120,4 +120,5 @@ Routing danych monitorowania do Centrum zdarzeń za pomocą usługi Azure Monito
 * [Archiwizowanie dziennika aktywności na koncie magazynu](../../azure-monitor/platform/archive-activity-log.md)
 * [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md)
 * [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

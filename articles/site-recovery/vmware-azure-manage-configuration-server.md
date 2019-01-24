@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 0d45d460b56f956a97779b46a72d0e4cd97a6b41
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: db5482fe17b9181097e13d446937bc489c3db8fe
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849704"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462831"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii maszyn wirtualnych programu VMware
 
@@ -65,7 +65,7 @@ Jeśli zdarzyło Ci się przeoczyć dodawania poświadczeń podczas wdrażania p
 
 1. Po [logowania](#access-configuration-server), wybierz opcję **Zarządzanie poświadczeniami maszyny wirtualnej**.
 2. Kliknij pozycję **Dodawanie poświadczeń maszyny wirtualnej**.
-    ![Dodaj mobilności — poświadczenia](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. Wprowadź nowe poświadczenia, a następnie kliknij pozycję **Dodaj**.
 
 Można również dodać poświadczeń za pośrednictwem CSPSConfigtool.exe.
@@ -137,10 +137,12 @@ Możesz uruchamiać pakiety zbiorcze aktualizacji, aby zaktualizować serwer kon
 - Jeśli zostanie uruchomione, zbierając 9,7, 9,8, 9.9 lub 9.10, można uaktualnić bezpośrednio do 9.11.
 - Jeśli chcesz uaktualnić do 9.11 uruchom 9.6 lub starszym, należy najpierw uaktualnić do wersji zbierając 9,7. przed 9.11.
 
-Łącza do pakiety zbiorcze aktualizacji dla uaktualnienie dla wszystkich wersji serwera konfiguracji są dostępne w [aktualizacje platformy Azure, strona](https://azure.microsoft.com/updates/?product=site-recovery).
+Aby uzyskać szczegółowe wskazówki na temat składników usługi Azure Site Recovery można znaleźć instrukcji obsługi [tutaj](https://aka.ms/asr_support_statement).
+Dostępne są linki do pakiety zbiorcze aktualizacji dla uaktualnienie dla wszystkich wersji serwera konfiguracji [tutaj](https://aka.ms/asr_update_rollups).
 
 > [!IMPORTANT]
-> Przy każdej nowej wersji "n" z usługi Azure Site Recovery składnik, który jest zwalniana, wszystkie wersje poniżej n-4 "jest uważany za świadczenie pomocy technicznej. Zawsze zaleca się uaktualnienie do najnowszej wersji dostępne.
+> Przy każdej nowej wersji "n" z usługi Azure Site Recovery składnik, który jest zwalniana, wszystkie wersje poniżej n-4 "jest uważany za świadczenie pomocy technicznej. Zawsze zaleca się uaktualnienie do najnowszej wersji dostępne.</br>
+> Aby uzyskać szczegółowe wskazówki na temat składników usługi Azure Site Recovery można znaleźć instrukcji obsługi [tutaj](https://aka.ms/asr_support_statement).
 
 Uaktualnij serwer w następujący sposób:
 
@@ -158,6 +160,7 @@ Uaktualnij serwer w następujący sposób:
     ![Aktualizacja](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. Kliknij przycisk **Zakończ** zamknąć Instalatora.
+8. Aby Uaktualnianie pozostałych składników usługi Site Recovery, zobacz nasze [wskazówki dotyczące uaktualniania](https://aka.ms/asr_vmware_upgrades).
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>Usunąć lub wyrejestrować serwer konfiguracji
 
@@ -174,7 +177,7 @@ Uaktualnij serwer w następujący sposób:
 
 Możesz opcjonalnie usunąć serwer konfiguracji za pomocą programu PowerShell.
 
-1. [Zainstaluj](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modułu Azure PowerShell.
+1. [Zainstaluj](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) modułu Azure PowerShell.
 2. Zaloguj się do konta platformy Azure za pomocą tego polecenia:
 
     `Connect-AzureRmAccount`

@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Administrowanie domeną zarządzaną | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Administrowanie domeną zarządzaną | Dokumentacja firmy Microsoft'
 description: Administrowanie domen zarządzanych w usłudze Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: dab1547ca17acaeda3cb168d78b342661ebe4615
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 81e7eb6a95dea5bf68af62e4eeae20f958ec4790
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230482"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844810"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Administrowanie domeną zarządzaną usług domenowych Azure Active Directory
 W tym artykule pokazano, jak administrowanie domeną zarządzaną usług domenowych Azure Active Directory (AD).

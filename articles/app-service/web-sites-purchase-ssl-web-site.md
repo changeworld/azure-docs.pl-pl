@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714304"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820788"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -50,7 +50,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 | Ustawienie | Opis |
 |-|-|
 | Name (Nazwa) | Przyjazna nazwa dla certyfikatu usługi App Service. |
-| Sama nazwa hosta w domenie | Ten krok jest jednym z najbardziej krytycznych części procesu zakupu. Użyj nazwy domeny katalogu głównego, mapująca do swojej aplikacji. Czy _nie_ dołączana nazwy domeny w usłudze `www`. |
+| Sama nazwa hosta w domenie | Jeśli określisz domeny katalogu głównego, należy uzyskać certyfikat, który zabezpiecza *zarówno* domeny katalogu głównego i `www` poddomeny. Aby bezpiecznego dowolna poddomena tylko określić w pełni kwalifikowaną nazwę domeny podrzędnej, w tym miejscu (na przykład `mysubdomain.contoso.com`). |
 | Subskrypcja | Centrum danych, w którym hostowana jest aplikacja internetowa. |
 | Grupa zasobów | Grupa zasobów, który zawiera certyfikat. Można użyć nowej grupy zasobów lub wybrać tej samej grupie zasobów jako aplikacji usługi app Service, na przykład. |
 | Jednostka SKU certyfikatu | Określa typ certyfikatu w celu utworzenia, czy to standardowy certyfikat lub [certyfikat uniwersalny](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -115,7 +115,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować powiązania w **powiązania S
 |-|-|
 | Nazwa hosta | Nazwa domeny, które można dodać wiązania SSL dla. |
 | Odcisk palca certyfikatu prywatnego | Certyfikat, aby powiązać. |
-| Typ SSL | <ul><li>**Połączenia SNI SSL** -powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).</li><li>**Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Po skonfigurować powiązania, postępuj zgodnie z instrukcjami w [ponowne mapowanie rekordu dla protokołu IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
+| Typ SSL | <ul><li>**Połączenia SNI SSL** -powiązania SSL oparte na SNI wiele, mogą zostać dodane. Ta opcja umożliwia zabezpieczenie wielu domen na tym samym adresie IP za pomocą wielu certyfikatów protokołu SSL. Większość nowoczesnych przeglądarek (w tym programy Internet Explorer, Chrome, Firefox i Opera) obsługuje funkcję SNI. Bardziej szczegółowe informacje dotyczące obsługi przeglądarek możesz znaleźć w artykule [Server Name Indication (Oznaczanie nazwy serwera)](https://wikipedia.org/wiki/Server_Name_Indication).</li><li>**Połączenie IP SSL** — można dodać tylko jedno powiązanie SSL oparte na protokole IP. Ta opcja umożliwia zabezpieczenie dedykowanego publicznego adresu IP za pomocą tylko jednego certyfikatu protokołu SSL. Po skonfigurowaniu powiązania, wykonaj kroki opisane w [ponowne mapowanie rekordu dla protokołu IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>Sprawdź dostęp do protokołu HTTPS
 
@@ -125,7 +125,7 @@ Odwiedź witrynę aplikacji przy użyciu `HTTPS://<domain_name>` zamiast `HTTP:/
 
 Jeśli kiedykolwiek zajdzie potrzeba Wymiana klucza certyfikatu, należy wybrać certyfikat w [certyfikaty usługi App Service](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) stronie, a następnie wybierz **wymiany klucza i synchronizacja** w lewym obszarze nawigacji.
 
-Kliknij przycisk **wymiana** przycisk, aby zainicjować proces. Ten proces może potrwać 1 do 10 minut.
+Kliknij przycisk **wymiana** przycisk, aby rozpocząć proces. Ten proces może potrwać 1 do 10 minut.
 
 ![Wstaw obraz wymiany protokołu SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
@@ -157,6 +157,6 @@ Aby zamiast tego ręcznie odnowić certyfikat, kliknij przycisk **odnowienie rę
 ## <a name="more-resources"></a>Więcej zasobów
 
 * [Wymuszanie protokołu HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [Wymuszanie protokołu TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
+* [Enforce TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Używanie certyfikatu protokołu SSL w kodzie aplikacji w usłudze Azure App Service](app-service-web-ssl-cert-load.md)
 * [FAQ: Certyfikaty usługi App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

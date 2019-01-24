@@ -2,10 +2,10 @@
 title: Azure AD Connect — aktualizacja certyfikatu SSL dla farmy usług AD FS | Dokumentacja firmy Microsoft
 description: W tym dokumencie szczegółowe kroki, aby zaktualizować certyfikat SSL farmy usług AD FS przy użyciu usługi Azure AD Connect.
 services: active-directory
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
-ms.service: active-directory
+ms.service: active-directory  
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.component: hybrid
 author: billmath
 ms.custom: seohack1
 ms.author: billmath
-ms.openlocfilehash: 8320eae9e1c12123a4379887124dee810998c4e3
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cd9d20065c0be580c415100fae470b362b19a3de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314503"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474612"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualizacja certyfikatu SSL dla farmy usługi Active Directory Federation Services (AD FS)
 
@@ -37,12 +37,12 @@ Możesz wykonać całą operację aktualizacji certyfikatu SSL dla farmy usług 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* **Farma usług AD FS**: Upewnij się, że farmie usług AD FS jest oparte na systemie Windows Server 2012 R2 lub nowszym.
-* **Program Azure AD Connect**: Upewnij się, że wersja programu Azure AD Connect 1.1.553.0 lub nowszej. Użyjesz zadanie **aktualizacji usługi AD FS certyfikat**.
+* **Farma usług AD FS**: Upewnij się, że kolektyw serwerów usług AD FS systemu Windows Server 2012 R2 lub nowszym.
+* **Azure AD Connect**: Upewnij się, że wersja programu Azure AD Connect 1.1.553.0 lub nowszej. Użyjesz zadanie **aktualizacji usługi AD FS certyfikat**.
 
 ![Aktualizacja zadania protokołu SSL](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
-## <a name="step-1-provide-ad-fs-farm-information"></a>Krok 1. podawanie informacji o farmie usług AD FS
+## <a name="step-1-provide-ad-fs-farm-information"></a>Krok 1: Podaj informacje farmy usług AD FS
 
 Program Azure AD Connect podejmuje próbę uzyskania informacji o farmie usług AD FS automatycznie przez:
 1. Wykonywanie zapytania informacji o farmie z usług AD FS (Windows Server 2016 lub nowszego).

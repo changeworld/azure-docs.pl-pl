@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ed1fedab45ce59af2c67ed8a2ef60714d26d5801
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091030"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402340"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Omówienie usługi Event Hubs w wersji dedykowanej
 
@@ -32,7 +32,7 @@ W poniższej tabeli porównano warstwy dostępna usługa Event Hubs. Oferta Even
 | --- |:---:|:---:|:---:|
 | Zdarzenia związane z transferem danych przychodzących | Płatność za milion zdarzeń | Dołączono |
 | Jednostka przepływności (1 MB/s danych przychodzących, 2 MB/s danych wychodzących) | Płatność za godzinę | Dołączono |
-| Rozmiar komunikatu | 256 KB | 1 MB |
+| Rozmiar komunikatu | 1 MB | 1 MB |
 | Zasady dotyczące wydawców | Yes | Yes |   
 | Grupy odbiorców | 20 | 20 |
 | Powtarzanie komunikatu | Yes | Yes |
@@ -47,11 +47,10 @@ W poniższej tabeli porównano warstwy dostępna usługa Event Hubs. Oferta Even
 Korzystając z Event hubs w warstwie dedykowana, dostępne są następujące korzyści:
 
 * Obsługa za pomocą nie szumu z innych dzierżaw pojedynczej dzierżawy.
-* Zwiększa rozmiar komunikatu do 1 MB w porównaniu do 256 KB w przypadku warstwy Standard.
 * Każdym razem, gdy powtarzalną wydajność.
 * Gwarantowana przygotowanie wydajności niezbędnej do własnych potrzeb dużego ruchu.
 * Obejmuje [przechwytywania](event-hubs-capture-overview.md) funkcji usługi Event hubs, aby zapewnić integrację z usługą micro batch- i długoterminowego przechowywania.
-* Zero konserwacji: usługa zarządza równoważeniem obciążenia, systemu operacyjnego aktualizacje, poprawki zabezpieczeń i partycjonowanie.
+* Eliminujące potrzebę konserwacji: Usługa zarządza równoważeniem obciążenia, systemu operacyjnego aktualizacje, poprawki zabezpieczeń i partycjonowanie.
 * Stałe, co godzinę ceny.
 * Komunikat o przechowywania, do 7 dni bez dodatkowych opłat.
 

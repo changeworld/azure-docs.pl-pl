@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4fc17daf640e95ab028150cec029471a0c7bc565
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6ec59108652fa928dbbc2a3cbb04c51ae0440dde
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062999"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54402404"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Jako globalnie rozproszonej bazy danych Cosmos DB zapewnia kompleksowe umowy SLA
 
 |Typ operacji  | Pojedynczy region |Multiregionalne (zapisuje pojedynczy region)|Multiregionalne (zapisuje wielu regionów) |
 |---------|---------|---------|-------|
-|Zapisuje    | dostępność przez 99,99    |dostępność przez 99,99   |99,999|
-|Czyta     | dostępność przez 99,99    |99,999  |99,999|
+|Zapisuje    | 99.99    |99.99   |99.999|
+|Czyta     | 99.99    |99.999  |99.999|
 
 > [!NOTE]
 > W praktyce dostępność rzeczywiste zapisu powiązana nieaktualność, sesja, spójny prefiks i spójność ostateczna modeli jest znacznie wyższa niż opublikowanych umowy SLA. Rzeczywiste dostępność do odczytu dla wszystkich poziomów spójności jest znacznie wyższa niż opublikowanych umowy SLA.
@@ -48,7 +48,7 @@ Regionalnej awarii nie są niczym niezwykłym, a usługi Azure Cosmos DB zapewni
 
 - Skonfigurowano regiony odczytu dla wielu kont w wielu regionach będzie o wysokiej dostępności dla odczytów i zapisów. Wywoływania regionalnego trybu failover są natychmiastowe i nie wymaga dokonywania żadnych zmian w aplikacji.
 
-- Multiregionalne konta z regionem zapisu jednego: Podczas awarii region zapisu tych kont będzie pozostawać stale dostępnymi dla odczytów. Jednak opłata za zapisywanie należy "włączyć automatyczny tryb failover" na Twoim koncie Cosmos, do których to dotyczy regionu do innego regionu skojarzonego z trybu failover. Przełączenie w tryb failover miało miejsce w kolejności priorytet regionu, który został określony. Po pewnym czasie po objęte wpływem region jest wróci do trybu online, nie zostały zreplikowane dane w regionie zapisu dotyczy problem, w czasie awarii jest udostępniany za pośrednictwem konflikty źródła danych. Aplikacje mogą odczytywać konflikty źródła danych, rozwiąż konflikty, w oparciu o logikę specyficzną dla aplikacji i zapisywać zaktualizowane dane z powrotem do kontenera Cosmos zgodnie z potrzebami. Po odzyskaniu region zapisu wcześniej objęte wpływem staje się automatycznie dostępne jako region odczytu. Można wywołać ręcznej pracy awaryjnej i skonfigurować objęte wpływem region jako regionu zapisu. Ręczna praca awaryjna można zrobić za pomocą [wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#manual-failover).  
+- Multiregionalne konta z regionem zapisu jednego: Podczas awarii region zapisu tych kont będzie pozostawać stale dostępnymi dla odczytów. Jednak opłata za zapisywanie należy "włączyć automatyczny tryb failover" na Twoim koncie Cosmos, do których to dotyczy regionu do innego regionu skojarzonego z trybu failover. Przełączenie w tryb failover miało miejsce w kolejności priorytet regionu, który został określony. Po pewnym czasie po objęte wpływem region jest wróci do trybu online, nie zostały zreplikowane dane w regionie zapisu dotyczy problem, w czasie awarii jest udostępniany za pośrednictwem konflikty źródła danych. Aplikacje mogą odczytywać konflikty źródła danych, rozwiąż konflikty, w oparciu o logikę specyficzną dla aplikacji i zapisywać zaktualizowane dane z powrotem do kontenera Cosmos zgodnie z potrzebami. Po odzyskaniu region zapisu wcześniej objęte wpływem staje się automatycznie dostępne jako region odczytu. Można wywołać ręcznej pracy awaryjnej i skonfigurować objęte wpływem region jako regionu zapisu. Ręczna praca awaryjna można zrobić za pomocą [wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#manual-failover). Brak **bez utraty danych lub dostępności** przed, podczas lub po ręcznej pracy awaryjnej. Aplikacja jest nadal o wysokiej dostępności. 
 
 - Multiregionalne konta z regionem zapisu jednego: Podczas awarii regionem odczytu te konta będzie pozostawać stale dostępnymi dla operacji odczytu i zapisu. Objęte wpływem region jest automatycznie rozłączany z regionu zapisu i zostanie oznaczona w trybie offline. Zestawy SDK Cosmos DB będzie przekierowywać odczytu wywołania do następnego dostępnego regionu na liście preferowany region. Jeśli żaden z regionów na liście preferowany region jest dostępny, wywołania automatycznie wrócić do bieżącego regionu zapisu. Żadne zmiany nie są wymagane w kodzie aplikacji do obsługi awarii w regionie odczytu. Po pewnym czasie gdy objęte wpływem region jest wróci do trybu online, wcześniej objęte wpływem odczytu z regionu zostanie automatycznie zsynchronizowana z bieżącego regionu zapisu i będzie można ponownie obsługiwać żądań odczytu. Dalsze operacje odczytu są przekierowywane do regionu odzyskane bez wprowadzania jakichkolwiek zmian w kodzie aplikacji. Podczas pracy awaryjnej i ponowne przyłączanie regionu zakończyły się niepowodzeniem gwarancji spójności odczytu nadal uznawane przez usługi Cosmos DB.
 

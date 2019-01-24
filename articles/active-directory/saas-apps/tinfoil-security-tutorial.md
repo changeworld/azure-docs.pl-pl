@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: da02da92-e3b0-4c09-ad6c-180882b0f9f8
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 4f25768cc7e4f5865c6cfa96ebfe3b0df97deeb6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5dbf831677157f660f2c0a8dd2acefe1f6a218a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421376"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809483"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu usługi TINFOIL SECURITY
 
@@ -38,29 +38,29 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD przy użyciu usługi TINFOIL SECURITY, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Usługi TINFOIL SECURITY logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodaj usługi TINFOIL SECURITY z galerii
-1. Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+1. Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 ## <a name="add-tinfoil-security-from-the-gallery"></a>Dodaj usługi TINFOIL SECURITY z galerii
 Aby skonfigurować integrację usługi TINFOIL SECURITY w usłudze Azure AD, należy dodać usługi TINFOIL SECURITY z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać usługi TINFOIL SECURITY z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -68,7 +68,7 @@ Aby skonfigurować integrację usługi TINFOIL SECURITY w usłudze Azure AD, nal
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -76,7 +76,7 @@ Aby skonfigurować integrację usługi TINFOIL SECURITY w usłudze Azure AD, nal
 
     ![Usługi TINFOIL SECURITY z galerii](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługi TINFOIL SECURITY, w oparciu o użytkownika testu o nazwie "Britta Simon".
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w usługi TINFOIL SECURITY dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w usługi TINFOIL SECURITY musi zostać ustanowione.
@@ -85,13 +85,13 @@ Usługi TINFOIL SECURITY przypisywanie wartości **nazwa_użytkownika** w usłud
 
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu usługi TINFOIL SECURITY, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego usługi TINFOIL SECURITY](#create-a-tinfoil-security-test-user)**  — aby odpowiednikiem Britta Simon w usługi TINFOIL SECURITY, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji usługi TINFOIL SECURITY.
 
@@ -116,11 +116,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Aby dodać mapowania wymaganego atrybutu, wykonaj następujące czynności:
     
-    ![Atrybuty](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "atrybutów")
+    ![Karta Atrybuty](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "Karta Atrybuty")
     
     | Nazwa atrybutu    |   Wartość atrybutu |
     | ------------------- | -------------------- |
-    | AccountID | UXXXXXXXXXXXXX |
+    | accountid | UXXXXXXXXXXXXX |
     
     a. Kliknij przycisk **Dodaj atrybut użytkownika**.
     
@@ -134,9 +134,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     d. Kliknij przycisk **OK**.    
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
-    ![Przycisk Zapisz](./media/tinfoil-security-tutorial/tutorial_general_400.png)
+    ![Przycisk Save (Zapisz)](./media/tinfoil-security-tutorial/tutorial_general_400.png)
 
 1. Na **TINFOIL SECURITY Configuration** , kliknij przycisk **skonfigurować usługi TINFOIL SECURITY** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
@@ -146,15 +146,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Na pasku narzędzi u góry kliknij **Moje konto**.
    
-    ![Pulpit nawigacyjny](./media/tinfoil-security-tutorial/ic798971.png "pulpitu nawigacyjnego")
+    ![Pulpit nawigacyjny](./media/tinfoil-security-tutorial/ic798971.png "Pulpit nawigacyjny")
 
-1. Kliknij przycisk **zabezpieczeń**.
+1. Kliknij pozycję **Zabezpieczenia**.
    
-    ![Zabezpieczenia](./media/tinfoil-security-tutorial/ic798972.png "zabezpieczeń")
+    ![Zabezpieczenia](./media/tinfoil-security-tutorial/ic798972.png "Zabezpieczenia")
 
 1. Na **logowania jednokrotnego** konfiguracji strony, wykonaj następujące czynności:
    
-    ![Logowanie jednokrotne](./media/tinfoil-security-tutorial/ic798973.png "logowanie jednokrotne")
+    ![Logowanie jednokrotne](./media/tinfoil-security-tutorial/ic798973.png "Logowanie jednokrotne")
    
     a. Wybierz **Włącz SAML**.
    
@@ -169,11 +169,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     f. Kliknij pozycję **Zapisz**.
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -252,9 +252,9 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka usługi TINFOIL SECURITY w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji usługi TINFOIL SECURITY. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Po kliknięciu kafelka usługi TINFOIL SECURITY w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji usługi TINFOIL SECURITY. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

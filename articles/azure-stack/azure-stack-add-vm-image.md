@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: e5a4236b-1b32-4ee6-9aaa-fcde297a020f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/14/2019
+ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 3bd86fe8708d2cbb8cbddac4ca35d5afdc68d2e3
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: bac0b2933d4b6d4a88ebbb0402bba0ffd508b395
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306084"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474374"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
@@ -42,21 +41,21 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
     > [!IMPORTANT]  
     >  Usługa Azure Stack nie obsługuje dysków dynamicznych wirtualnych dysków twardych. Zmiana rozmiaru dysku dynamicznego, który jest dołączony do maszyny Wirtualnej spowoduje, że maszyna wirtualna w stanie niepowodzenia. Aby rozwiązać ten problem, należy usunąć maszynę Wirtualną bez usuwania dysku maszyny Wirtualnej, obiektu blob dysku VHD na koncie magazynu. Konwertowania wirtualnego dysku twardego z dysk dynamiczny na dysk stały i ponownie utworzyć maszynę wirtualną.
 
-   * Jest bardziej wydajne do przekazania obrazu do magazynu obiektów blob usługi Azure Stack, niż na platformie Azure blob storage ponieważ zajmuje mniej czasu, aby wypchnąć obraz do repozytorium obrazów usługi Azure Stack.
+   - Jest bardziej wydajne do przekazania obrazu do magazynu obiektów blob usługi Azure Stack, niż na platformie Azure blob storage ponieważ zajmuje mniej czasu, aby wypchnąć obraz do repozytorium obrazów usługi Azure Stack.
 
-   * Podczas przekazywania [obrazu maszyny Wirtualnej Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), upewnij się zastąpić **logowania do platformy Azure** krok z [konfigurowania środowiska PowerShell operatora infrastruktury Azure Stack](azure-stack-powershell-configure-admin.md) kroku.  
+   - Podczas przekazywania [obrazu maszyny Wirtualnej Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), upewnij się zastąpić **logowania do platformy Azure** krok z [konfigurowania środowiska PowerShell operatora infrastruktury Azure Stack](azure-stack-powershell-configure-admin.md) kroku.  
 
-   * Zanotuj identyfikator URI, gdzie możesz przekazać obraz magazynu obiektów blob. Identyfikator URI magazynu obiektów blob ma następujący format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
+   - Zanotuj identyfikator URI, gdzie możesz przekazać obraz magazynu obiektów blob. Identyfikator URI magazynu obiektów blob ma następujący format: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
 
-   * Aby udostępnić obiekt blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie został przekazany obraz maszyny Wirtualnej wirtualnego dysku twardego. Wybierz **Blob**, a następnie wybierz pozycję **zasad dostępu**. Opcjonalnie możesz wygenerować sygnaturę dostępu współdzielonego dla kontenera i dołączyć go jako część identyfikatora URI obiektu blob. Ten krok zapewnia, że obiekt blob jest dostępna do użytku z Dodawanie tego elementu jako obraz. Jeśli obiekt blob nie jest dostępne anonimowo, obraz maszyny Wirtualnej zostanie utworzony się w stanie niepowodzenia.
+   - Aby udostępnić obiekt blob anonimowo, przejdź do kontenera obiektów blob konta magazynu gdzie został przekazany obraz maszyny Wirtualnej wirtualnego dysku twardego. Wybierz **Blob**, a następnie wybierz pozycję **zasady dostępu**. Opcjonalnie możesz wygenerować sygnaturę dostępu współdzielonego dla kontenera i dołączyć go jako część identyfikatora URI obiektu blob. Ten krok zapewnia, że obiekt blob jest dostępna do użytku z Dodawanie tego elementu jako obraz. Jeśli obiekt blob nie jest dostępne anonimowo, obraz maszyny Wirtualnej zostanie utworzony się w stanie niepowodzenia.
 
-   ![Przejdź do obiektów blob konta magazynu](./media/azure-stack-add-vm-image/image1.png)
+    ![Przejdź do obiektów blob konta magazynu](./media/azure-stack-add-vm-image/image1.png)
 
-   ![Określ dostęp do obiektów blob na publiczną](./media/azure-stack-add-vm-image/image2.png)
+    ![Określ dostęp do obiektów blob na publiczną](./media/azure-stack-add-vm-image/image2.png)
 
-2. Zaloguj się do usługi Azure Stack jako operator. Wybierz z menu **wszystkich usług**. Następnie w obszarze **administracji** wybierz kategorię **obliczenia** > **obrazów maszyn wirtualnych** > **Dodaj**.
+2. Zaloguj się do usługi Azure Stack jako operator. Wybierz z menu **wszystkich usług** > **obrazów** w obszarze **obliczenia** > **Dodaj**.
 
-3. W obszarze **Dodawanie obrazu maszyny Wirtualnej**, wprowadź wydawcy, oferty, jednostki SKU i wersji obrazu maszyny wirtualnej. Te segmenty nazwy odnoszą się do obrazu maszyny Wirtualnej w szablonach usługi Resource Manager. Upewnij się, że wybrano **osType** wartość poprawnie. Aby uzyskać **identyfikator URI obiektu Blob dysku systemu operacyjnego**, wprowadź identyfikator URI obiektu Blob, których obraz został przekazany. Następnie wybierz **Utwórz** umożliwiającą utworzenie obrazu maszyny Wirtualnej.
+3. W obszarze **Tworzenie obrazu**, wprowadź nazwy, subskrypcji, grupy zasobów, lokalizację, dysk systemu operacyjnego, typ systemu operacyjnego, identyfikator URI obiektu blob magazynu, typ konta i obsługi pamięci podręcznej. Następnie wybierz **Utwórz** umożliwiającą utworzenie obrazu maszyny Wirtualnej.
 
    ![Początkowy do tworzenia obrazu](./media/azure-stack-add-vm-image/image4.png)
 
@@ -154,7 +153,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 3. Zaloguj się do usługi Azure Stack jako operator. Aby uzyskać instrukcje, zobacz [Zaloguj się do usługi Azure Stack jako operator](azure-stack-powershell-configure-admin.md).
 
-4. Utwórz konto magazynu w globalnym platformy Azure lub usługi Azure Stack, do przechowywania Twojego niestandardowego obrazu maszyny Wirtualnej. Aby uzyskać instrukcje zobacz [Szybki Start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+4. Utwórz konto magazynu w globalnym platformy Azure lub usługi Azure Stack, do przechowywania Twojego niestandardowego obrazu maszyny Wirtualnej. Aby uzyskać instrukcje zobacz [Szybki Start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą witryny Azure Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
 
 5. Przygotowywanie obrazu systemu operacyjnego Windows lub Linux w formacie VHD (nie VHDX), przekazania obrazu do swojego konta magazynu i Pobierz identyfikator URI, do której można pobrać obrazu maszyny Wirtualnej programu PowerShell.  
 

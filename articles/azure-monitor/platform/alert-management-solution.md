@@ -13,16 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 1dee53f633d8b5edf893e2f6c83430d7c1a69022
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 06532369efb802606eb13a4b38a8579a3528f999
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341596"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382954"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Rozwiązanie usługi alert Management w usłudze Azure Log Analytics
 
 ![Ikona zarządzania alertu](media/alert-management-solution/icon.png)
+
+> [!NOTE]
+>  Usługa Azure Monitor teraz obsługuje ulepszonych funkcji [Zarządzanie alertami na dużą skalę](https://aka.ms/azure-alerts-overview), włącznie z wygenerowanymi przez [monitorowania narzędzi, takich jak SCOM, Zabbix lub Nagios](https://aka.ms/managing-alerts-other-monitoring-services).
+>  
+
 
 Rozwiązanie zarządzania alertami pomaga analizować wszystkie alerty w repozytorium usługi Log Analytics.  Te alerty mogą pochodzić z różnych źródeł, w tym tych źródeł [utworzone przez usługę Log Analytics](../../azure-monitor/platform/alerts-overview.md) lub [zaimportowane z Nagios i Zabbix](../../azure-monitor/learn/quick-collect-linux-computer.md). Rozwiązanie również importuje alerty z dowolnego [podłączone grupy zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: rangv
-ms.openlocfilehash: a533bd6ee447479f08add23833bf5acdde5c4d40
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a55e77853a1c9466892f686f34d17a5e84b11ba7
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155103"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411289"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Wizualizowanie danych z czujników w czasie rzeczywistym z usługi Azure IoT Hub przy użyciu usługi Power BI
 
@@ -57,13 +57,13 @@ Zacznijmy od utworzenia zadania usługi Stream Analytics. Po utworzeniu zadania,
 
 2. Wprowadź poniższe informacje dotyczące zadania.
 
-   **Nazwa zadania**: nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
+   **Nazwa zadania**: Nazwa zadania. Nazwa musi być unikatowa w skali globalnej.
 
    **Grupa zasobów**: Użyj tej samej grupie zasobów, która korzysta z usługi IoT hub.
 
    **Lokalizacja**: Użyj tej samej lokalizacji co grupa zasobów.
 
-   **Przypnij do pulpitu nawigacyjnego**: zaznacz tę opcję, aby mieć łatwy dostęp do centrum IoT Hub z pulpitu nawigacyjnego.
+   **Przypnij do pulpitu nawigacyjnego**: Sprawdź tę opcję, aby łatwo uzyskiwać dostęp do usługi IoT hub z pulpitu nawigacyjnego.
 
    ![Tworzenie zadania usługi Stream Analytics na platformie Azure](./media/iot-hub-live-data-visualization-in-power-bi/2_create-stream-analytics-job-azure.png)
 
@@ -75,13 +75,15 @@ Zacznijmy od utworzenia zadania usługi Stream Analytics. Po utworzeniu zadania,
 
 2. W obszarze **Topologia zadania** kliknij pozycję **Dane wejściowe**.
 
-3. W **dane wejściowe** okienku kliknij **Dodaj**, a następnie wprowadź następujące informacje:
+3. W **dane wejściowe** okienku kliknij **Dodaj wejście strumienia**, a następnie wprowadź następujące informacje:
 
-   **Alias wejściowy**: unikatowego aliasu dla danych wejściowych.
+   **Alias danych wejściowych**: Unikatowego aliasu dla danych wejściowych i wybierz **ustawienia Centrum IoT Hub zapewniają ręcznie** poniżej.
 
    **Źródło**: Wybierz **usługi IoT hub**.
+   
+   **Punkt końcowy**: Kliknij przycisk **komunikatów**.
 
-   **Grupy konsumentów**: wybierz właśnie utworzoną grupę odbiorców.
+   **Grupy użytkowników**: Wybierz grupy odbiorców, który został utworzony.
 
 4. Kliknij pozycję **Utwórz**.
 
@@ -91,23 +93,19 @@ Zacznijmy od utworzenia zadania usługi Stream Analytics. Po utworzeniu zadania,
 
 1. W obszarze **Topologia zadania** kliknij pozycję **Dane wyjściowe**.
 
-2. W **dane wyjściowe** okienku kliknij **Dodaj**, a następnie wprowadź następujące informacje:
+2. W **dane wyjściowe** okienku kliknij **Dodaj** i **usługi Power BI**, a następnie wprowadź następujące informacje:
 
-   **Alias wyjściowy**: unikatowy alias danych wyjściowych.
+   **Alias danych wyjściowych**: Unikatowy alias danych wyjściowych.
 
-   **Obiekt sink**: Wybierz **usługa Power BI**.
-
-3. Kliknij przycisk **Autoryzuj**, a następnie zaloguj się do konta usługi Power BI.
-
-4. Po autoryzacji, wprowadź następujące informacje:
-
-   **Obszar roboczy grupy**: Wybierz swój obszar roboczy grupy docelowej.
+   **Obszar roboczy grupy**: Wybierz docelowy obszar roboczy grupy.
 
    **Nazwa zestawu danych**: Wprowadź nazwę zestawu danych.
 
    **Nazwa tabeli**: Wprowadź nazwę tabeli.
 
-5. Kliknij pozycję **Utwórz**.
+3. Kliknij przycisk **Autoryzuj**, a następnie zaloguj się do konta usługi Power BI.
+
+4. Kliknij pozycję **Utwórz**.
 
    ![Dodaj dane wyjściowe do zadania usługi Stream Analytics na platformie Azure](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 
@@ -135,13 +133,13 @@ W zadaniu usługi Stream Analytics kliknij kolejno pozycje **Uruchom** > **Teraz
 
 2. Zaloguj się do swojego konta usługi [Power BI](https://powerbi.microsoft.com/en-us/).
 
-3. Przejdź do obszaru roboczego grupy, który został ustawiony podczas tworzenia danych wyjściowych dla zadania usługi Stream Analytics.
+3. Kliknij obszar roboczy, możesz użyć **Mój obszar roboczy**.
 
-4. Kliknij przycisk **zestawów danych przesyłania strumieniowego**.
+4. Kliknij pozycję **Zestawy danych**.
 
-   Powinien pojawić się wymieniony na liście zestaw danych, który został wybrany podczas tworzenia danych wyjściowych zadania usługi Stream Analytics.
+   Powinien zostać wyświetlony zestaw danych, które zostały określone podczas tworzenia danych wyjściowych dla zadania usługi Stream Analytics.
 
-5. W obszarze **AKCJE** kliknij pierwszą ikonę, aby utworzyć raport.
+5. Utworzony zestaw danych, kliknij **Dodaj raport** (pierwsza ikona z prawej strony nazwy zestawu danych).
 
    ![Tworzenie raportu w usłudze Microsoft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/7_create-power-bi-report-microsoft.png)
 
@@ -165,9 +163,11 @@ W zadaniu usługi Stream Analytics kliknij kolejno pozycje **Uruchom** > **Teraz
 
 8. Kliknij przycisk **Zapisz**, aby zapisać raport.
 
-9. Kliknij przycisk **pliku** > **Publikuj w sieci web**.
+9. Kliknij przycisk **raporty** w okienku po lewej stronie, a następnie kliknij raport został właśnie utworzony.
 
-10. Kliknij przycisk **Utwórz kod osadzania**, a następnie kliknij przycisk **Publikuj**.
+10. Kliknij przycisk **pliku** > **Publikuj w sieci web**.
+
+11. Kliknij przycisk **Utwórz kod osadzania**, a następnie kliknij przycisk **Publikuj**.
 
 Otrzymasz link do raportu, możesz udostępnić innym osobom na dostęp do raportów i wstawki kodu programu do integracji raportu w blogu lub witrynie sieci Web.
 

@@ -3,7 +3,7 @@ title: Rozwiązywanie problemów z weryfikacji dwuetapowej — usługi Azure Act
 description: Instrukcje dla użytkowników o tym, co należy zrobić, jeśli działają wystąpił problem z usługą Azure Multi-Factor Authentication i weryfikacji dwuetapowej.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.workload: identity
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: fd722da236f3e1fff18e2561756635cd95f098e0
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6cf794d36db865f553c0a4db16506305dab2f4fc
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346527"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810180"
 ---
 # <a name="get-help-with-two-step-verification"></a>Uzyskaj pomoc dotyczącą weryfikacji dwuetapowej
 
-Weryfikacja dwuetapowa była to funkcja zabezpieczeń, które Twoja organizacja używa w celu ochrony Twojego konta. Weryfikacja dwuetapowa jest bezpieczniejszy niż tylko hasła, ponieważ opiera się na dwóch metod uwierzytelniania: coś, co wiesz i coś, co masz Tobie. Coś, co wiesz jest hasło, jest coś, co masz Tobie telefonu lub urządzenia. Przy użyciu weryfikacji dwuetapowej może pomóc zatrzymać hakerzy Logowanie jako użytkownik, nawet jeśli uzyskują swoje hasło.
+Weryfikacja dwuetapowa była to funkcja zabezpieczeń, które Twoja organizacja używa w celu ochrony Twojego konta. Weryfikacja dwuetapowa jest bezpieczniejsza niż użycie tylko hasła, ponieważ opiera się na dwóch metodach uwierzytelniania: czymś, co znasz, i czymś, co masz. Coś, co wiesz jest hasło, jest coś, co masz Tobie telefonu lub urządzenia. Przy użyciu weryfikacji dwuetapowej może pomóc zatrzymać hakerzy Logowanie jako użytkownik, nawet jeśli uzyskują swoje hasło.
 
 Firma Microsoft oferuje weryfikacji dwuetapowej, ale jest Twojej organizacji, która decyduje, czy używana jest funkcja. Nie można wycofać się, jeśli Twoja organizacja potrzebuje, tak samo, jak nie możesz zrezygnować z przy użyciu hasła, aby chronić swoje konto.
 

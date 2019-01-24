@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: f08bf6a65a93c31d76c5b336cc6ef433153d71c4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 30c5a3cf623a16395ad8c09c813d631c10e2dedf
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423121"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433485"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
@@ -264,7 +264,7 @@ W tej sekcji, potwierdzasz, że klient sieci VPN jest uwierzytelnione i autoryzo
 
 2. W **ustawienia Windows** wybierz **sieć i Internet**.
 
-3. Wybierz **VPN**.
+3. wybierz pozycję **VPN**.
 
 4. Wybierz **dodać połączenie VPN**.
 

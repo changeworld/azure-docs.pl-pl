@@ -2,21 +2,21 @@
 title: Schemat zdarzeń subskrypcji w usłudze Azure Event Grid
 description: Opisuje właściwości, które są dostarczane dla subskrypcji zdarzeń za pomocą usługi Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 10/12/2018
-ms.author: tomfitz
-ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 01/12/2019
+ms.author: spelluru
+ms.openlocfilehash: 04bb19c074edff08677d759fb386608f6905e979
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310240"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473439"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Schemat zdarzeń Azure Event Grid dla subskrypcji
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń dotyczących subskrypcji platformy Azure. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schematu dla zdarzeń dotyczących subskrypcji platformy Azure. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
 Subskrypcje platformy Azure i grup zasobów emitują te same typy zdarzeń. Typy zdarzeń, które odnoszą się do zmian zasobów lub akcji. Główną różnicą jest, że grupy zasobów emitować zdarzenia dla zasobów w grupie zasobów i subskrypcji platformy Azure emitować zdarzenia dla zasobów w subskrypcji.
 
@@ -237,8 +237,8 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzeń dla subskrypcji. |
@@ -258,7 +258,7 @@ Obiekt danych ma następujące właściwości:
 | operationName | ciąg | Operacja, która została wykonana. |
 | status | ciąg | Stan operacji. |
 | subscriptionId | ciąg | Identyfikator subskrypcji zasobu. |
-| Identyfikator dzierżawy | ciąg | Identyfikator dzierżawy zasobu. |
+| tenantId | ciąg | Identyfikator dzierżawy zasobu. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

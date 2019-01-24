@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 2b1aca07fe60a328dac9d3724454a21835026a53
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 2f9728fc3304534619fbd3a8b44abf6bab78887a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063849"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436046"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Tworzenie Centrum IoT przy użyciu szablonu usługi Azure Resource Manager (.NET)
 
@@ -23,7 +23,7 @@ ms.locfileid: "54063849"
 Usługi Azure Resource Manager służy do tworzenia i zarządzania usługi Azure IoT hubs programowo. W tym samouczku dowiesz się, jak utworzyć Centrum IoT hub z programu C# za pomocą szablonu usługi Azure Resource Manager.
 
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami:  [Usługa Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi:  [Usługa Azure Resource Manager i Model Klasyczny](../azure-resource-manager/resource-manager-deployment-model.md).  W tym artykule opisano, przy użyciu modelu wdrażania usługi Azure Resource Manager.
 
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
@@ -218,7 +218,7 @@ Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md

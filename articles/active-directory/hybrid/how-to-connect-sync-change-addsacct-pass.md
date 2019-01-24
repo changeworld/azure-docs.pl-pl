@@ -1,11 +1,11 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: Zmienianie hasła konta usług AD DS | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect:  Zmienianie hasła konta usług AD DS | Dokumentacja firmy Microsoft'
 description: W tym dokumencie tematu opisano, jak zaktualizować program Azure AD Connect po zmianie hasła konta usług AD DS.
 services: active-directory
 keywords: Usługi AD DS konta, konto usługi Active Directory, hasło
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 051ff6aa4e650f884a4712376b5dc420cc86fc3a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1b487651e938beadcada78eaf51b3f50beb7acf1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311675"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470549"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Zmienianie hasła konta usług AD DS
 Konto usług AD DS odnosi się do konta użytkownika, używany przez program Azure AD Connect do komunikowania się z usługą Active Directory w środowisku lokalnym. Jeśli zmienisz hasło do konta usług AD DS, należy zaktualizować usługi Azure AD Connect synchronizacji przy użyciu nowego hasła. W przeciwnym razie synchronizacji może już nie są poprawnie synchronizowane z usługą Active Directory w środowisku lokalnym i można napotkać następujące błędy:
@@ -54,6 +54,6 @@ Aby zaktualizować usługę synchronizacji przy użyciu nowego hasła:
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

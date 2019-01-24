@@ -3,19 +3,19 @@ title: Omówienie usługi Azure Automation
 description: Dowiedz się, jak używać usługi Azure Automation do automatyzacji cyklu życia infrastruktury i aplikacji.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: eamonoreilly
 ms.author: eamono
 keywords: azure automation, DSC, powershell, konfiguracja żądanego stanu, zarządzanie aktualizacjami, śledzenie zmian, spis, elementy runbook, python, graficzne
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: f91464ebdd29c082fd721e9e4b2e029de991cc1e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958707"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434057"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Wprowadzenie do usługi Azure Automation
 
@@ -87,3 +87,4 @@ Możesz przejrzeć ceny usługi Azure Automation na stronie [cennika](https://az
 
 > [!div class="nextstepaction"]
 > [Create an automation account](automation-quickstart-create-account.md) (Tworzenie konta automatyzacji)
+

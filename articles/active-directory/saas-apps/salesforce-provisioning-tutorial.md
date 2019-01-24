@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Konfigurowanie usług Salesforce do automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i usługą Salesforce.
+title: 'Samouczek: Konfigurowanie usługi Salesforce dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i usługą Salesforce.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 49384b8b-3836-4eb1-b438-1c46bb9baf6f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: e2a5020bec94614971b6e9e7f4dcf94a0df96108
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a16deb73c9dbd32795e82ca1a9c531c75c7db15a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888408"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818799"
 ---
-# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usług Salesforce do automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi Salesforce dla automatycznej aprowizacji użytkowników
 
 Celem tego samouczka jest pokazanie kroków wymaganych do wykonania w usłudze Salesforce a usługą Azure AD, aby automatycznie aprowizować i anulować obsługę użytkowników kont z usługi Azure AD do usługi Salesforce.
 
@@ -115,7 +115,7 @@ Spowoduje to uruchomienie synchronizacji wstępnej użytkowników i/lub grupy pr
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

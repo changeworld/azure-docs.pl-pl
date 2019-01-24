@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 02780a9e9702a41f677595d74b9861ea6a51b572
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 887c1d554cd5bd2b935178a77a2de19e687ca3f2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260439"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450408"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Samouczek: Łączenie, konfigurowanie, Aktywuj bramy pola danych platformy Azure (wersja zapoznawcza) 
 
@@ -86,7 +86,7 @@ Jesteś teraz w **pulpit nawigacyjny** urządzenia.
     - Możesz skonfigurować interfejsu sieciowego w przypadku protokołu IPv4.
 
     >[!NOTE] 
-    > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu sieciowego z statycznego protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich adpaters w **właściwości urządzenia** w witrynie Azure portal dla usługi.
+    > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu sieciowego z statycznego protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich kart w **właściwości urządzenia** w witrynie Azure portal dla usługi.
 
 4. (Opcjonalnie) skonfiguruj serwer proxy sieci web. Mimo że konfiguracja serwera proxy sieci web jest opcjonalny, należy pamiętać, że jeśli używasz serwera proxy sieci web, można skonfigurować tylko go tutaj.
    

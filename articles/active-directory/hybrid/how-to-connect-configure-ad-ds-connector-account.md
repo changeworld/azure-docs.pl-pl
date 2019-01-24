@@ -3,19 +3,19 @@ title: 'Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD D
 description: Ten dokument zawiera szczegółowe informacje dotyczące konfigurowania konta łącznik usługi AD DS za pomocą nowego modułu ADSyncConfig PowerShell
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/14/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c7b1d74c7750a281f8c961789d39a7ae323f304e
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: a23561e082736b7dfae6205e75fd1e9ccfab5f6c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304044"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463393"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 

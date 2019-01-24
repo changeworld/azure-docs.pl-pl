@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: c655f117009c0c7c682ad92a951edc7e12255bc2
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: autoscale
+ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326228"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463324"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach w usłudze Azure Monitor
 Ten artykuł pokazuje, jak skonfigurować wyzwalaczy, aby było wywołanie konkretne adresy URL lub wysyłać wiadomości e-mail oparte na akcje skalowania automatycznego na platformie Azure.  
@@ -120,3 +120,4 @@ Po wygenerowaniu powiadomienia skalowania automatycznego, następujące metadane
 | oldCapacity |Yes |Bieżąca (stare) liczba wystąpień podczas automatycznego skalowania trwało akcji skalowania |
 | newCapacity |Yes |Skalowanie automatyczne skalowanie zasobów do nowej liczba wystąpień |
 | Właściwości |Nie |Opcjonalny. Zestaw < klucz, wartość > pary (na przykład, Dictionary < String, String >). Pole właściwości jest opcjonalne. W przypadku niestandardowego interfejsu użytkownika lub przepływu pracy aplikacji logiki można wprowadzić klucze i wartości, które można przekazać za pomocą ładunku. Alternatywny sposób, aby przekazywać niestandardowe właściwości wychodzące wywołanie elementu webhook jest użycie elementu webhook identyfikator URI sam (jako parametry zapytania) |
+

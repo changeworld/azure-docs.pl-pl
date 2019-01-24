@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2ab696436a8cf139eff92edc3b8ff2c27b40a7aa
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 15354cd7472e7cffb7a40ca431bc23eb65b9a9a9
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018388"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845898"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -212,16 +212,13 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
       ```
     * Usługi AD FS środowisk
 
-        * Zaloguj się jako użytkownik w przeglądarce sieci web:  
-              ```azurecli  
-              az login
-              ```
         * Zaloguj się jako użytkownik w przeglądarce sieci web przy użyciu kodu urządzenia:  
-              ```azurecli  
-              az login --use-device-code
-              ```
-        > [!Note]  
-        >Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
+           ```azurecli  
+           az login --use-device-code
+           ```
+
+           > [!NOTE]  
+           >Uruchamiając polecenie udostępnia adres URL i kodu, które muszą użyć do uwierzytelniania.
 
         * Zaloguj się jako nazwy głównej usługi:
         

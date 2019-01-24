@@ -4,7 +4,7 @@ description: Włącz samoobsługowego dostępu do aplikacji umożliwia użytkown
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 1876ff0cea2e46f8159b9ffb24de72a6272b3a79
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cf908c3c148a2649c22392e64c17c7a80d338e4f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077086"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476669"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Jak skonfigurować przypisanie aplikacji samoobsługowej
 
@@ -70,18 +70,18 @@ Aby włączyć samoobsługowego dostępu do aplikacji do aplikacji, wykonaj nast
     > [!NOTE]
     > Grupy zsynchronizowane ze środowiska lokalnego nie są obsługiwane do użytku z grupy, do którego należy dodać użytkowników, którzy żądają dostępu do tej aplikacji.
   
-10. **Opcjonalnie:** Jeśli użytkownik chce wymagane zatwierdzenie firmy, zanim użytkownicy mogą dostęp, należy ustawić **wymagają zatwierdzenia, zanim zostanie przyznany dostęp do tej aplikacji?** Przełącz, aby **tak**.
+10. **Opcjonalnie:** Jeśli chcesz wymagane zatwierdzenie firmy, zanim użytkownicy mogą dostęp, należy ustawić **wymagają zatwierdzenia, zanim zostanie przyznany dostęp do tej aplikacji?** Przełącz, aby **tak**.
 
-11. **Opcjonalnie: dla aplikacji za pomocą logowania jednokrotnego hasła na tylko** Jeśli chcesz zezwolić na te osoby zatwierdzające w firmie określić hasła, które są wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustawić **zezwalać osobom zatwierdzającym Ustawianie użytkownika hasła dla tej aplikacji?**  Przełącz, aby **tak**.
+11. **Opcjonalnie: Dla aplikacji za pomocą logowania jednokrotnego hasła na tylko** Jeśli chcesz zezwolić na te osoby zatwierdzające w firmie określić hasła, które są wysyłane do tej aplikacji dla zatwierdzonych użytkowników, ustawić **zezwalać osobom zatwierdzającym Ustawianie haseł użytkownika dla tego Aplikacja?**  Przełącz, aby **tak**.
 
-12. **Opcjonalnie:** do określenia osoby zatwierdzające w firmie, którzy mogą zatwierdzać dostęp do tej aplikacji, kliknij selektor obok etykiety **kto może zatwierdzać dostęp do tej aplikacji?** wybrać maksymalnie 10 osoby osoby zatwierdzające w firmie.
+12. **Opcjonalnie:** Aby określić osoby zatwierdzające w firmie, którzy mogą zatwierdzać dostęp do tej aplikacji, kliknij selektor obok etykiety **kto może zatwierdzać dostęp do tej aplikacji?** wybrać maksymalnie 10 osoby zatwierdzające w firmie indywidualnych.
 
      > [!NOTE]
      > Grupy nie są obsługiwane.
      >
      >
 
-13. **Opcjonalnie:** **dla aplikacji, które ujawniają role**, jeśli chcesz przypisać samoobsługi dla zatwierdzonych użytkowników do roli, kliknij selektor **do jakiej roli powinni być przypisani użytkownicy w tej aplikacji?** Aby wybrać rolę, do której można przypisać tych użytkowników.
+13. **Opcjonalnie:** **W przypadku aplikacji, które ujawniają role**, jeśli chcesz przypisać samoobsługi dla zatwierdzonych użytkowników do roli, kliknij selektor **do jakiej roli powinni być przypisani użytkownicy w tej aplikacji?** do wybierz rolę, do którego należy je przypisywać tych użytkowników.
 
 14. Kliknij przycisk **Zapisz** znajdujący się u góry bloku, aby zakończyć.
 

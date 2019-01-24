@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 6e829d617aa978f94b99cc9d018b5ca863eaaef0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945573"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807324"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Użyj uwierzytelniania usługi Azure AD dostęp do interfejsu API usługi multimediów Azure przy użyciu platformy .NET
 
@@ -54,7 +54,7 @@ Istnieje również możliwość zastąpienia domyślnej implementacji **AzureAdT
 >[!NOTE] 
 >Aby użyć uwierzytelniania usługi Azure AD przy użyciu zestawu SDK .NET usługi Media Services, musisz mieć najnowsze [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) pakietu. Ponadto Dodaj odwołanie do **Microsoft.IdentityModel.Clients.ActiveDirectory** zestawu. Jeśli używasz istniejącej aplikacji obejmują **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** zestawu. 
 
-1. Utwórz nową aplikację konsoli C# w programie Visual Studio.
+1. Utwórz nową aplikację konsoli języka C# w programie Visual Studio.
 2. Użyj [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) pakiet NuGet w celu zainstalowania **usługi Azure Media Services .NET SDK**. 
 
     Aby dodać odwołania za pomocą pakietu NuGet, wykonaj następujące czynności: w **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy nazwę projektu, a następnie wybierz **Zarządzaj pakietami NuGet**. Następnie wyszukaj **windowsazure.mediaservices** i wybierz **zainstalować**.
@@ -80,7 +80,7 @@ Aby połączyć interfejs API usługi multimediów Azure przy użyciu opcji Uwie
 
 Wartości tych parametrów można znaleźć w **AzureEnvironments.AzureCloudEnvironment**. **AzureEnvironments.AzureCloudEnvironment** stała jest pomocnika w zestawie SDK platformy .NET, aby uzyskać ustawienia zmiennej publicznej centrum danych platformy Azure w odpowiednim środowisku. 
 
-Zawiera on ustawienia środowiska wstępnie zdefiniowane do uzyskiwania dostępu do usługi Media Services w publicznej wyłącznie w centrach danych. W przypadku regionów chmury suwerennych lub dla instytucji rządowych, można użyć **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvrionment**, lub **AzureGermanCloudEnvironment** odpowiednio.
+Zawiera on ustawienia środowiska wstępnie zdefiniowane do uzyskiwania dostępu do usługi Media Services w publicznej wyłącznie w centrach danych. W przypadku regionów chmury suwerennych lub dla instytucji rządowych, można użyć **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**, lub **AzureGermanCloudEnvironment** odpowiednio.
 
 Poniższy przykład kodu tworzy token:
     
@@ -122,7 +122,7 @@ Poniższy przykład pokazuje, jak utworzyć tokenu usługi Azure AD i kontekstu:
     }
 
 >[!NOTE]
->Jeśli pojawi się wyjątek, który jest wyświetlany komunikat "serwer zdalny zwrócił błąd: (401) nieautoryzowane" zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control) części uzyskiwania dostępu do nośnika usług interfejsu API usługi Azure, omówienie uwierzytelniania usługi Azure AD.
+>Jeśli pojawi się wyjątek, który jest wyświetlany komunikat "serwer zdalny zwrócił błąd: (401) nieautoryzowane,"zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control) części uzyskiwania dostępu do nośnika usług interfejsu API usługi Azure, omówienie uwierzytelniania usługi Azure AD.
 
 ## <a name="use-service-principal-authentication"></a>Użyj uwierzytelniania jednostki usługi
     

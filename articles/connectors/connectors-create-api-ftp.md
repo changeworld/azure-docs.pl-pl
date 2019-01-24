@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: a14f045193c01b8c26019314ddde4c2116d8bad6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d57a80ec2a1ebfca173d7eaa165de4d344af2ccf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232821"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391109"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Tworzenie, monitorowanie i zarządzanie plikami FTP za pomocą usługi Azure Logic Apps
 
@@ -26,7 +26,7 @@ Korzystając z usługi Azure Logic Apps i łącznik FTP można utworzyć automat
 * Pobierz zawartość pliku i metadanych.
 * Wyodrębnij archiwum do folderów.
 
-Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępnić dane wyjściowe innych działań. Akcje w aplikacjach logic apps umożliwia wykonywanie zadań z plikami na serwerze FTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji FTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera FTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępnić dane wyjściowe innych działań. Uruchom akcje w aplikacjach logiki służy do zarządzania plikami na serwerze FTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji FTP. Na przykład jeśli regularnie plików z serwera FTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
 > Łącznik FTP obsługuje tylko pliki, które są 50 MB lub mniej, chyba że używasz [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). 
@@ -39,7 +39,7 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępni
 
 * FTP hosta adres i konta poświadczeń serwera
 
-  Łącznik FTP wymaga, że serwer FTP jest dostępny z Internetu i skonfiguruj działanie w *pasywnym* trybu. Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i uzyskać dostęp do konta użytkownika FTP.
+  Łącznik FTP wymaga, że serwer FTP jest dostępny z Internetu i skonfiguruj działanie w *pasywnym* trybu. Poświadczenia umożliwiają aplikację logiki, Utwórz połączenie i uzyskać dostęp do konta użytkownika FTP.
 
 * Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -68,23 +68,26 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępni
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>Wyzwalacz FTP: po dodaniu lub zmodyfikowaniu pliku
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>Wyzwalacz FTP: Po dodaniu lub zmodyfikowaniu pliku
 
 Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki po wykryciu wyzwalacz, gdy plik zostanie dodane lub zmienione na serwerze FTP. Na przykład można dodać warunek, który sprawdza, czy zawartość pliku i decyduje o tym, czy można pobrać tej zawartości na podstawie tego, czy tę zawartość spełnia określony warunek. Na koniec możesz dodać akcję, która pobiera zawartość pliku i umieścić tę zawartość w folderze na serwerze SFTP. 
 
-**Przykład Enterprise**: tego wyzwalacza można używać do monitorowania folderu FTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji FTP takich jak **Pobierz zawartość pliku**, dzięki czemu można uzyskać zawartość kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
+**Przykład Enterprise**: Tego wyzwalacza można używać do monitorowania folderu FTP dla nowych plików, które opisują zamówienia. Można następnie użyć akcji FTP takich jak **Pobierz zawartość pliku**, dzięki czemu można uzyskać zawartość kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
 
 Aplikacja logiki prawidłowe i funkcjonalności wymaga wyzwalacza i co najmniej jedną akcję. Dlatego upewnij się, że akcja zostanie dodana po dodaniu wyzwalacza.
 
-Oto przykład pokazujący tego wyzwalacza: **po dodaniu lub zmodyfikowaniu pliku**
+Oto przykład pokazujący tego wyzwalacza: **Po dodaniu lub zmodyfikowaniu pliku**
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
 
-1. Puste logic apps w polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **gdy zachowanej jest dodawany lub modyfikowany — FTP**
+1. Puste logic apps w polu wyszukiwania wprowadź "ftp" jako filtr. W obszarze listy wyzwalaczy wybierz następujący wyzwalacz: **Gdy zachowanej jest dodawany lub modyfikowany — FTP**
 
    ![Znajdź i wybierz wyzwalacz FTP](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
 
 1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**.
+
+   Domyślnie ten łącznik do transferu plików w formacie tekstowym. 
+   Do transferu plików w pliku binarnym formatowania, na przykład, gdzie i kiedy jest używane kodowanie, wybierz **Transport binarny**.
 
    ![Utwórz połączenie z serwerem FTP](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
 
@@ -98,7 +101,7 @@ Oto przykład pokazujący tego wyzwalacza: **po dodaniu lub zmodyfikowaniu pliku
 
 Teraz, że Twoja aplikacja logiki ma wyzwalacz, należy dodać akcje, które chcesz uruchomić, gdy Twoja aplikacja logiki znajdzie nowe lub zmodyfikowane pliku. Na przykład możesz dodać akcję FTP, która pobiera zawartość nowe lub zaktualizowane.
 
-### <a name="ftp-action-get-content"></a>Akcja FTP: pobieranie zawartości
+### <a name="ftp-action-get-content"></a>Akcja FTP: Pobieranie zawartości
 
 Ta akcja pobiera zawartość z pliku na serwerze FTP, gdy ten plik jest dodane lub zaktualizowane. Na przykład można dodać wyzwalacza z poprzedniego przykładu i akcji, która pobiera zawartość pliku, po dodaniu lub edytować tego pliku. 
 

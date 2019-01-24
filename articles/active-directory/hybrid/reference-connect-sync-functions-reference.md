@@ -4,7 +4,7 @@ description: Odwołanie deklaratywne wyrażenia inicjowania obsługi administrac
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4f525ca0-be0e-4a2e-8da1-09b6b567ed5f
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: db427d0c171e164cb03d7280103fa85e5add4dd1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cad9cec83ac5cc75ba5b4e5fc395e7f68f7d2770
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157483"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54471187"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach
 W programie Azure AD Connect funkcje są używane do manipulowania wartością atrybutu podczas synchronizacji.  
@@ -57,7 +57,7 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może działać wyłącznie w
 | [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
 | [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[certthumbprint, aby](#certthumbprint) | |
+| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
 [ CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Konwersja** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
@@ -66,7 +66,7 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może działać wyłącznie w
 | **Data / Godzina** | | | | |
 | [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[formatDateTime](#formatdatetime) |[teraz](#now) | |
 | [NumFromDate](#numfromdate) | | | | |
-| **Katalog** | | | | |
+| **Directory** | | | | |
 | [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
 | **Ocena** | | | | |
 | [IsBitSet](#isbitset) |[IsDate](#isdate) |[IsEmpty](#isempty) |[IsGuid](#isguid) | |
@@ -76,14 +76,14 @@ Funkcje z typami **mvbin**, **mvstr**, i **mvref** może działać wyłącznie w
 | [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
 | **Wielokrotne** | | | | |
 | [zawiera](#contains) |[Liczba](#count) |[Element](#item) |[ItemOrNull](#itemornull) | |
-| [Dołącz](#join) |[Removeduplicates —](#removeduplicates) |[Podziel](#split) | | |
+| [Dołącz](#join) |[RemoveDuplicates](#removeduplicates) |[Podziel](#split) | | |
 | **Przepływ programu** | | | | |
 | [Error](#error) |[IIF](#iif) |[Wybierz](#select) |[Przełącznik](#switch) | |
 | [Where](#where) |[With](#with) | | | |
 | **Tekst** | | | | |
-| [IDENTYFIKATOR GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [po lewej stronie](#left) |[Len](#len) |[Przytp](#ltrim) |[Mid](#mid) | |
-| [padLeft](#padleft) |[Padright —](#padright) |[PCase](#pcase) |[Zastąp](#replace) | |
+| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
+| [po lewej stronie](#left) |[Len](#len) |[LTrim](#ltrim) |[Mid](#mid) | |
+| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Zastąp](#replace) | |
 | [ReplaceChars](#replacechars) |[po prawej stronie](#right) |[Przytk](#rtrim) |[TRIM](#trim) | |
 | [UCase](#ucase) |[Word](#word) | | | |
 
@@ -333,7 +333,7 @@ Zwraca identyfikator Oid nazwy podmiotu z certyfikatu.
 *   certificateRawData: Reprezentacja tablicy bajtów certyfikatu X.509. Tablica bajtów może być zakodowany plik binarny (DER) lub dane X.509 szyfrowany algorytmem Base64.
 
 - - -
-### <a name="certthumbprint"></a>certthumbprint, aby
+### <a name="certthumbprint"></a>CertThumbprint
 **Opis:**  
 Zwraca odcisk palca certyfikatu.
 
@@ -394,7 +394,7 @@ Funkcja ConvertFromBase64 konwertuje wartość określonego zakodowane w formaci
 `str ConvertFromBase64(str source, enum Encoding)`
 
 * Źródło: Ciąg zakodowany w formacie Base64  
-* Kodowanie: Unicode i ASCII, UTF8
+* Kodowanie: Unicode, ASCII, UTF8
 
 **Przykład**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
@@ -485,7 +485,7 @@ Konwertuje funkcję CStr typie danych ciągu.
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* Wartość: Może to być wartość liczbową, atrybut odwołania lub atrybut typu wartość logiczna.
+* value: Może to być wartość liczbową, atrybut odwołania lub atrybut typu wartość logiczna.
 
 **Przykład:**  
 `CStr([dn])`  
@@ -499,7 +499,7 @@ Zwraca wartość typu Date zawierającą datę, do której dodano określony prz
 **Składnia:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* Interwał: Wyrażenie ciągu, który jest interwałem czasu, które chcesz dodać. Ciąg musi mieć jedną z następujących wartości:
+* interval: Wyrażenie ciągu, który jest interwałem czasu, które chcesz dodać. Ciąg musi mieć jedną z następujących wartości:
   * rrrr roku
   * q kwartał
   * mln miesiąc
@@ -510,7 +510,7 @@ Zwraca wartość typu Date zawierającą datę, do której dodano określony prz
   * h Godzina
   * n minut
   * s drugiego
-* Wartość: Liczba jednostek, które chcesz dodać. Może być dodatnia (Aby uzyskać daty w przyszłości) lub ujemna (Aby uzyskać daty w przeszłości).
+* value: Liczba jednostek, które chcesz dodać. Może być dodatnia (Aby uzyskać daty w przyszłości) lub ujemna (Aby uzyskać daty w przeszłości).
 * Data: Daty/godziny reprezentująca datę, do którego zostanie dodany interwału.
 
 **Przykład:**  
@@ -627,8 +627,8 @@ IIF — funkcja zwraca jeden zestaw możliwych wartości na podstawie określone
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
 * warunek: dowolna wartość lub wyrażenie, które może przyjąć wartość true lub false.
-* Wartość_dla_prawdy: Jeśli warunek jest spełniony, zwrócona wartość.
-* Wartość_dla_fałszu: Jeśli wyrażenie zwróci wartość false, zwracana wartość.
+* valueIfTrue: Jeśli warunek jest spełniony, zwrócona wartość.
+* valueIfFalse: Jeśli wyrażenie zwróci wartość false, zwracana wartość.
 
 **Przykład:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
@@ -772,7 +772,7 @@ Odwrotność ta funkcja nosi nazwę IsPresent.
 Zwraca wartość PRAWDA, jeśli ten atrybut nie istnieje lub jest pustym ciągiem w CS lub MV.
 
 - - -
-### <a name="isnumeric"></a>Funkcja IsNumeric
+### <a name="isnumeric"></a>IsNumeric
 **Opis:**  
 Funkcja IsNumeric zwraca wartość logiczną wskazującą, czy wyrażenie może przyjąć jako liczba typu.
 
@@ -911,7 +911,7 @@ Funkcja Len zwraca liczbę znaków w ciągu.
 Zwraca 8
 
 - - -
-### <a name="ltrim"></a>Przytp
+### <a name="ltrim"></a>LTrim
 **Opis:**  
 Funkcja LTrim usuwa wiodące spacje z ciągu.
 
@@ -1222,8 +1222,8 @@ Funkcja przełącznik jest używana do zwracać pojedynczą wartość, w oparciu
 **Składnia:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* wyrażenie: Wyrażenie typu Variant, które ma zostać oceniona.
-* Wartość: Wartość do zwrócenia, jeśli odpowiednie wyrażenie ma wartość True.
+* expr: Wyrażenie typu Variant, które ma zostać oceniona.
+* value: Wartość do zwrócenia, jeśli odpowiednie wyrażenie ma wartość True.
 
 **Uwagi:**  
 Na liście argumentów funkcji przełącznika składa się z par wartości i wyrażeń. Wyrażenia są przetwarzane od lewej do prawej, a wartość skojarzoną z pierwsze wyrażenie, aby zwrócić wartość True jest zwracana. Jeśli elementy nie są prawidłowo sparowane, wystąpi błąd czasu wykonywania.

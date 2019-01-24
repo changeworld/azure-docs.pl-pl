@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 8a8883989a731265fb358c119d44fa4243b54a5e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103948"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473813"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów z usługi Diagnostyka Azure
 W tym artykule opisano informacje dotyczące rozwiązywania problemów, która jest odpowiednia do korzystania z usługi Azure Diagnostics. Aby uzyskać więcej informacji na temat usługi Diagnostyka Azure, zobacz [Omówienie usługi Azure Diagnostics](diagnostics-extension-overview.md).
@@ -205,7 +205,7 @@ Ten kod generuje cztery tabele:
 | --- | --- |
 | Dostawca = "prov1" &lt;zdarzenie o identyfikatorze = "1" /&gt; |WADEvent+MD5(“prov1”)+”1” |
 | Dostawca = "prov1" &lt;zdarzenie o identyfikatorze = "2" eventDestination = "dest1" /&gt; |WADdest1 |
-| Dostawca = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
+| Dostawca = "prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
 | Dostawca = "prov2" &lt;DefaultEvents eventDestination = "dest2" /&gt; |WADdest2 |
 
 ## <a name="references"></a>Dokumentacja
@@ -293,3 +293,4 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 - Czy dane w magazynie ma nazwy liczników w języku angielskim. Jeśli nazwy liczników nie są w języku angielskim, portalu wykresu metryki nie będą mogli je rozpoznać. **Środki zaradcze**: Zmień język komputera do języka angielskiego, dla konta system. Aby to zrobić, wybierz **Panelu sterowania** > **Region** > **administracyjne** > **ustawień kopii**. Następnie usuń zaznaczenie opcji **Witamy ekranu i system kont** tak, aby języka niestandardowego nie ma zastosowania do konta system.
 
 - Jeśli używane są symbole wieloznaczne (\*) w swojej nazwy licznika wydajności portalu nie będzie możliwość skorelowania skonfigurowany i zebranych liczników, liczniki wydajności wysyłanymi do ujścia usługi Azure Storage. **Środki zaradcze**: Aby upewnić się, można używać symboli wieloznacznych oraz korzystać z portalu, rozwiń węzeł (\*), liczniki wydajności do kierowania [ujścia "Usługi Azure Monitor"](diagnostics-extension-schema.md#diagnostics-extension-111).
+

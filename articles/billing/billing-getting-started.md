@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5aca80a4ebeadc9e54cf99fb4a220c6ee7c37cae
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582433"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857016"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -64,6 +64,24 @@ Aby zobaczyć, jeśli możesz już stało się limit wydatków o wartości, prze
 
 Kliknij transparent i postępuj zgodnie z monitami, aby usunąć limit wydatków. Jeśli informacje o karcie kredytowej nie została wprowadzona podczas tworzenia konta, należy wprowadzić, aby usunąć limit wydatków. Aby uzyskać więcej informacji, zobacz [limit wydatków platformy Azure — jak działa i jak włączyć lub usunąć go](https://azure.microsoft.com/pricing/spending-limits/).
 
+Możesz użyć [Cloudyn](https://www.cloudyn.com/) usługi w celu tworzenia alertów, które automatycznie powiadamiają uczestników projektu o anomaliach wydatków i przekraczania ryzyka. Możesz utworzyć alerty korzystanie z raportów, obsługujących alerty oparte na budżecie i progach kosztów. Aby uzyskać więcej informacji na temat korzystania z platformy Cloudyn, zobacz [samouczka: Przeglądanie użycia i kosztów](../cost-management/tutorial-review-usage.md).
+
+W tym przykładzie użyto **rzeczywisty koszt względem czasu** raport, aby wysłać powiadomienie, gdy wydatki na Maszynie wirtualnej platformy Azure zbliżą się do poziomu budżetu całkowitego. W tym scenariuszu ma łączny budżet 20 000 i chcesz otrzymywać powiadomienia, gdy koszty zbliża się połowę budżetu, $ 9 000 i dodatkowego alertu, gdy koszty dotrzeć do 10 000 USD.
+
+1. W menu w górnej części portalu Cloudyn wybierz **koszty** > **analiza kosztów** > **rzeczywisty koszt względem czasu**. 
+2. Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**. 
+3. W prawym górnym rogu raportu, wybierz **akcje** , a następnie wybierz **zaplanować raport**.
+4. Aby wysłać do siebie wiadomość e-mail raport w zaplanowanych odstępach czasu, wybierz **Planowanie** karcie **zapisać lub zaplanować tę** okno raportu. Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie tagi, grupowania i filtrowania użycia znajdują się w raporcie pocztą e-mail. 
+5. Wybierz **próg** , a następnie wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). 
+   1. W **czerwonego alertu** próg wprowadź 10000. 
+   2. W **żółty alert** próg wprowadź 9000. 
+   3. W **liczbę kolejnych alertów** wprowadź liczbę kolejnych alertów do odbierania. Po otrzymaniu łączną liczbę alertów, które można określić dodatkowe alerty nie są wysyłane. 
+6. Wybierz pozycję **Zapisz**.
+
+    ![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/billing-getting-started/schedule-alert01.png)
+
+Można również wybrać **metrykę Cost Percentage vs. Budżet** próg metryki, aby utworzyć alerty. Dzięki temu można określić progi jako wartości procentowe budżet zamiast wartości waluty.
+
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Sposoby monitorowania koszty, korzystając z usług platformy Azure
 
 ### <a name="tags"></a> Dodawanie tagów do zasobów do grupowania danych dotyczących rozliczeń
@@ -90,7 +108,7 @@ Po uzyskaniu swoich usług, regularnie sprawdzać, ile są one wyceny użytkowni
 
     ![Zrzut ekranu przedstawiający widok analizy kosztów w witrynie Azure portal](./media/billing-getting-started/cost-analysis.PNG)
 
-4. Można filtrować według różnych właściwości, takie jak [tagi](#tags), grupy zasobów i przedziału czasu. Kliknij przycisk **Zastosuj** aby upewnić się, filtry i **Pobierz** Jeśli chcesz wyeksportować w widoku do pliku wartości Comma-Separated (CSV).
+4. Można filtrować według różnych właściwości, takie jak [tagi](#tags), typ zasobu, grupy zasobów i przedziału czasu. Kliknij przycisk **Zastosuj** aby upewnić się, filtry i **Pobierz** Jeśli chcesz wyeksportować w widoku do pliku wartości Comma-Separated (CSV).
 
 5. Ponadto można kliknąć zasób, aby zobaczyć swój dzienny poświęcić historii i ile zasobów kosztuje każdego dnia.
 

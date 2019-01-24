@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: c4347254df59c62085b2bfb195496bf479cf7b35
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 105a836f609859825c273ed9fba9dd46237bcaa9
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344590"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447942"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Tryby wdrażania usługi Azure Resource Manager
 
@@ -26,7 +26,7 @@ Podczas wdrażania zasobów, należy określić, że wdrożenie jest aktualizacj
 
 Podczas wdrażania zasobów:
 
-* W trybie, Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie.
+* W trybie, Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Te zasoby, które są nadal zaznaczone, ale nie są wdrażane z powodu warunku oszacowywane, aby mieć wartość false, nie są usuwane, ale.
 * W trybie przyrostowym, Menedżer zasobów **pozostawia niezmienione** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie.
 
 Dla obu trybów usługi Resource Manager spróbuje utworzyć wszystkie zasoby, które określono w szablonie. Jeśli zasób już istnieje w grupie zasobów, a jego ustawienia są bez zmian, wykonanie tej operacji skutkuje bez zmian. Po zmianie wartości właściwości zasobu, zasób jest aktualizowana o te nowe wartości. Jeśli próbujesz zaktualizować lokalizację i typ istniejącego zasobu, wdrożenie zakończy się niepowodzeniem z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z lokalizacją lub typu, należy.

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: 5591c36a13291432f2d790b4c83e98270b4bc035
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284871"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827588"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Dostosuj model marek przy użyciu interfejsu API indeksatora wideo
 
@@ -215,7 +215,7 @@ Odpowiedź zawiera zaktualizowane informacje na marki, który użytkownik zaktua
   "referenceUrl": null,
   "id": 97974,
   "name": "Example",
-  "accountId": "SampeAccountId",
+  "accountId": "SampleAccountId",
   "lastModifierUserName": "SampleUserName",
   "Created": "2018-04-25T14:59:52.7433333",
   "lastModified": "2018-04-25T15:37:50.67",

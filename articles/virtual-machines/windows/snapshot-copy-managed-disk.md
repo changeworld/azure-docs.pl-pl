@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0f223660f8dc99b590f8aa80a03d60fcbf3aa5d3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.component: disks
+ms.openlocfilehash: 9bc230846714264d514b7e15962a2c99c838c7de
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232583"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465109"
 ---
 # <a name="create-a-snapshot"></a>Utwórz migawkę
 
@@ -43,7 +44,7 @@ Jeśli zamierzasz utworzyć nową maszynę Wirtualną przy użyciu migawki, zale
 
 Poniższe kroki pokazują jak skopiuj dysk VHD, utworzyć konfigurację migawki i migawki dysku przy użyciu [New AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) polecenia cmdlet. 
 
-Przed rozpoczęciem upewnij się, masz najnowszą wersję modułu programu AzureRM.Compute PowerShell, który musi być w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli korzystasz z programu PowerShell lokalnie, uruchom [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) do utworzenia połączenia z platformą Azure.
+Przed rozpoczęciem upewnij się, masz najnowszą wersję modułu programu AzureRM.Compute PowerShell, który musi być w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli korzystasz z programu PowerShell lokalnie, uruchom [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) do utworzenia połączenia z platformą Azure.
 
 1. Ustaw niektóre parametry: 
 

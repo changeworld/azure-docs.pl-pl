@@ -4,7 +4,7 @@ description: Rozwiązywanie problemów z hybrydowej usługi Azure Active Directo
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
 ms.component: devices
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1d96c1e8adee55127a50b2d7c374418c22bfec4c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f9a32058bb9d9cb2f1fa2d04c8002f06fa80edeb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050569"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446106"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-windows-10-and-windows-server-2016-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia z systemem Windows 10 i Windows Server 2016 przyłączone do 
 
@@ -33,11 +33,11 @@ Dla innych klientów Windows zobacz [niższego poziomu urządzenia przyłączone
 
 W tym artykule założono, że masz [urządzenia przyłączone do hybrydowej skonfigurowanego w usłudze Azure Active Directory](hybrid-azuread-join-plan.md) na potrzeby następujących scenariuszy:
 
-- Dostęp warunkowy oparty na urządzeniu
+- Dostęp warunkowy oparty na urządzeniach
 
 - [Mobilny dostęp firmowy do ustawień](../active-directory-windows-enterprise-state-roaming-overview.md)
 
-- [Funkcja Windows Hello dla firm](../active-directory-azureadjoin-passport-deployment.md)
+- [Windows Hello dla firm](../active-directory-azureadjoin-passport-deployment.md)
 
 
 Ten dokument zawiera wskazówki dotyczące rozwiązywania problemów dotyczące rozwiązywania potencjalnych problemów. 
@@ -45,7 +45,7 @@ Ten dokument zawiera wskazówki dotyczące rozwiązywania problemów dotyczące 
 
 Dla systemu Windows 10 i Windows Server 2016, hybrydowe przyłączanie do usługi Azure Active Directory obsługuje systemu Windows 10 listopada 2015 r. Zaktualizuj i nowsze wersje. Zalecamy używanie Rocznicowej aktualizacji.
 
-## <a name="step-1-retrieve-the-join-status"></a>Krok 1: Pobieranie stan dołączania 
+## <a name="step-1-retrieve-the-join-status"></a>Krok 1: Pobierz stan dołączania 
 
 **Aby pobrać stan dołączania:**
 
@@ -56,28 +56,28 @@ Dla systemu Windows 10 i Windows Server 2016, hybrydowe przyłączanie do usług
 
 
     +----------------------------------------------------------------------+
-    | Stan urządzenia |  +----------------------------------------------------------------------+
+    | Device State                                                         |  +----------------------------------------------------------------------+
     
         AzureAdJoined: YES
-     EnterpriseJoined: Nie DeviceId: 5820fbe9-60c8-43b0-bb11-44aee233e4e7 odcisk palca: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: TpmProtected dostawca usług kryptograficznych platformy firmy Microsoft: tak KeySignTest:: należy uruchomić z podwyższonym poziomem uprawnień do testowania.
-                  Dostawcy tożsamości: login.windows.net identyfikator dzierżawy: 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName: Contoso AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl: https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl: https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl: https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl : eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ == JoinSrvVersion: 1.0 JoinSrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId: urn: ms-drs:enterpriseregistration.windows.net KeySrvVersion: KeySrvUrl 1.0: https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId: urn: ms-drs:enterpriseregistration.windows.net DomainJoined: tak nazwa_domeny: CONTOSO
+     EnterpriseJoined: NIE DeviceId: Odcisk palca 5820fbe9-60c8-43B0-bb11-44aee233e4e7: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: TpmProtected dostawca usług kryptograficznych platformy firmy Microsoft: KeySignTest tak:: NALEŻY uruchomić z podwyższonym poziomem uprawnień do testowania.
+                  Idp: login.windows.net TenantId: 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName: Contoso AuthCodeUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl: https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl: https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl: https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl: https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl: eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ== JoinSrvVersion: 1.0 JoinSrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId: urn:ms-drs:enterpriseregistration.windows.net KeySrvVersion: 1.0 KeySrvUrl: https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId: urn:ms-drs:enterpriseregistration.windows.net DomainJoined: TAK nazwa_domeny: CONTOSO
     
     +----------------------------------------------------------------------+
-    | Stan użytkownika |  +----------------------------------------------------------------------+
+    | User State                                                           |  +----------------------------------------------------------------------+
     
                  NgcSet: YES
                NgcKeyId: {C7A9AEDC-780E-4FDA-B200-1AE15561A46B}
         WorkplaceJoined: NO
           WamDefaultSet: YES
-    WamDefaultAuthority: organizacje WamDefaultId: https://login.microsoft.com WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} AzureAdPrt (AzureAd): tak
+    WamDefaultAuthority: organizations         WamDefaultId: https://login.microsoft.com       WamDefaultGUID: {B16898C6-A148-4967-9171-64D755DA8520} AzureAdPrt (AzureAd): TAK
 
 
 
-## <a name="step-2-evaluate-the-join-status"></a>Krok 2. Ocena stan dołączania 
+## <a name="step-2-evaluate-the-join-status"></a>Krok 2: Oceń stan dołączania 
 
 Przejrzyj poniższe pola i upewnij się, że mają one oczekiwane wartości:
 
-### <a name="azureadjoined--yes"></a>AzureAdJoined: tak  
+### <a name="azureadjoined--yes"></a>AzureAdJoined : TAK  
 
 To pole wskazuje, czy urządzenie jest połączone z usługą Azure AD. Jeśli wartość jest **nie**, dołączania do usługi Azure AD nie została jeszcze ukończona. 
 
@@ -93,7 +93,7 @@ To pole wskazuje, czy urządzenie jest połączone z usługą Azure AD. Jeśli w
 
 - Jeśli komputer ma modułu TPM, może być w nieprawidłowym stanie.
 
-- Może być błędnej konfiguracji w usługach zanotowanej w dokumencie wcześniej, trzeba będzie ponownie zweryfikować prawo. Typowe przykłady to:
+- Może być błędnej konfiguracji w usługach zanotowanej w dokumencie wcześniej, trzeba będzie ponownie zweryfikować prawo. Typowe przykłady:
 
     - Serwerze federacyjnym nie ma włączonych punktów końcowych usługi WS-Trust
 
@@ -103,19 +103,19 @@ To pole wskazuje, czy urządzenie jest połączone z usługą Azure AD. Jeśli w
 
 ---
 
-### <a name="domainjoined--yes"></a>DomainJoined: tak  
+### <a name="domainjoined--yes"></a>DomainJoined : TAK  
 
 To pole wskazuje, czy urządzenie jest przyłączone do usługi Active Directory w środowisku lokalnym, czy nie. Jeśli wartość jest **nie**, urządzenie nie może wykonać dołączenie do hybrydowej usługi Azure AD.  
 
 ---
 
-### <a name="workplacejoined--no"></a>WorkplaceJoined: Brak  
+### <a name="workplacejoined--no"></a>WorkplaceJoined: NO  
 
 To pole wskazuje, czy urządzenie jest zarejestrowane w usłudze Azure AD jako urządzenie osobiste (oznaczone jako *dołączone do miejsca pracy*). Ta wartość powinna być **nie** na komputerze przyłączonym do domeny, który jest przyłączone do hybrydowej usługi Azure AD. Jeśli wartość jest **tak**, dodano konto służbowe lub szkolne przed ukończeniem dołączenie do hybrydowej usługi Azure AD. W tym przypadku to konto jest ignorowana, gdy używana wersja Rocznicowej aktualizacji systemu Windows 10 (1607).
 
 ---
 
-### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: Tak i AzureADPrt: tak
+### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet : TAK i AzureADPrt: TAK
   
 Te pola wskazuje, czy użytkownik został pomyślnie uwierzytelniony do usługi Azure AD podczas logowania się do urządzenia. Jeśli wartości są **nie**, może to być termin:
 

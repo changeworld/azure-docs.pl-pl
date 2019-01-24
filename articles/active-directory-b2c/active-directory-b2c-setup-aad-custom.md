@@ -3,19 +3,19 @@ title: Konfigurowanie logowania przy użyciu konta usługi Azure Active Director
 description: Skonfiguruj Zaloguj się przy użyciu konta usługi Azure Active Directory w usłudze Azure Active Directory B2C za pomocą zasad niestandardowych.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2a4519484c3319ca73bef2862db4d279ba117c4f
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 917d4a85ffe642146325bc9bf62068320ad5e79a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636734"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845491"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Ustawienia logowania przy użyciu konta usługi Azure Active Directory za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/14/2018
 ms.author: rogarana
 ms.component: cosmosdb-table
-ms.openlocfilehash: 9aa3431e91196d7c33582d17494ddf0c32fba704
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af76f67ba97b820d8571fd4f6bd3409396fb27ce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634477"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433190"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Wykonywanie operacji magazynu tabel Azure przy użyciu programu Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -32,7 +32,7 @@ W tym artykule omówiono typowe operacje magazynu tabel Azure. Omawiane kwestie:
 
 W tym artykule pokazano, jak utworzyć nowe konto usługi Azure Storage w nowej grupie zasobów, dzięki czemu można łatwo go usuniesz po zakończeniu. Jeśli zostanie wykorzystany raczej istniejące konto magazynu, możesz zrobić to w zamian.
 
-Przykłady wymaga modułu Azure PowerShell `AzureRM` wersję 4.4.0 lub nowszej. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable AzureRM` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Przykłady wymaga modułu Azure PowerShell `AzureRM` wersję 4.4.0 lub nowszej. W oknie programu PowerShell, uruchom `Get-Module -ListAvailable AzureRM` Aby znaleźć wersję. Jeśli nic nie jest wyświetlane, lub należy go uaktualnić, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 

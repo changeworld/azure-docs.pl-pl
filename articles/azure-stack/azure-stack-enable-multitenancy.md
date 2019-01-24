@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/6/2018
 ms.author: patricka
 ms.reviewer: bryanr
-ms.openlocfilehash: 28bd314e2dd179d83d2880e3acbf39805b54d333
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2861b0d1b7ac24a8e881ff052b865ca0384a55d6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263970"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464812"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Wielodostępność w usłudze Azure Stack
 
@@ -158,3 +158,5 @@ Jeśli nie chcesz już wielu dzierżaw w usłudze Azure Stack, można wyłączy�
 
 - [Zarządzanie delegowanych dostawców](azure-stack-delegated-provider.md)
 - [Kluczowe pojęcia usługi Azure Stack](azure-stack-key-features.md)
+- [Zarządzanie użyciem i rozliczeniami usługi Azure Stack jako dostawca usług w chmurze](azure-stack-add-manage-billing-as-a-csp.md)
+- [Dodawanie dzierżawy na potrzeby użycia i rozliczeń w usłudze Azure Stack](azure-stack-csp-howto-register-tenants.md)

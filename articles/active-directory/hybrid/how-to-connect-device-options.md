@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Opcje urządzenia | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Opcje urządzenia | Dokumentacja firmy Microsoft'
 description: W tym dokumencie szczegółowych informacji dostępnych w programie Azure AD Connect opcje urządzenia
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: billmath
 ms.assetid: c0ff679c-7ed5-4d6e-ac6c-b2b6392e7892
 ms.service: active-directory
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c21b4b8996d7dae62c2aa1937c2876a66f6f82bd
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 95c631c38b975c71d5e026d33391792ee811bbc6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320564"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54477077"
 ---
-# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: Opcje urządzenia
+# <a name="azure-ad-connect-device-options"></a>Program Azure AD Connect: Opcje urządzenia
 
 Poniższa dokumentacja zawiera informacje o różnych opcjach urządzeń dostępnych w programie Azure AD Connect. Program Azure AD Connect można użyć, aby skonfigurować następujące dwie operacje: 
 * **Dołączenie do hybrydowej usługi Azure AD**: Jeśli w lokalnym środowisku zużycie AD a zalet usługi Azure AD, można zaimplementować urządzeń przyłączonych do usługi Azure AD hybrydowych. Te urządzenia są połączone, zarówno w usłudze Active Directory w środowisku lokalnym i usługi Azure Active Directory.
-* **Zapisywanie zwrotne urządzeń**: zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego opartego na urządzeniach z usługami AD FS (2012 R2 lub nowszy) chronione urządzeń
+* **Zapisywanie zwrotne urządzeń**: Zapisywanie zwrotne urządzeń służy do włączania dostępu warunkowego opartego na urządzeniach z usługami AD FS (2012 R2 lub nowszy) chronione urządzeń
 
 ## <a name="configure-device-options-in-azure-ad-connect"></a>Konfiguruj opcje urządzenia w usłudze Azure AD Connect
 

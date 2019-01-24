@@ -5,7 +5,7 @@ keywords: federate, ADFS, AD FS, multiple tenants, single AD FS, one ADFS, multi
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 951b47c7193b2b405def9831e94c5e29faff3119
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 282e970ed3a9c2067a8e43d8ae7234fcd6cb37a9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791120"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476703"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Federowanie wielu wystąpień usługi Azure AD przy użyciu jednego wystąpienia usługi AD FS
 
@@ -53,7 +53,7 @@ Nawiąż połączenie z usługą Azure Active Directory zawierającą domenę co
  
 Wystawca w ustawieniu federacji domeny zostanie zmieniony na „http\://contoso.com/adfs/services/trust”, a dla relacji zaufania jednostki zależnej usługi Azure AD zostanie dodana reguła dotycząca oświadczeń wydawania, aby wystawić prawidłową wartość issuerId na podstawie sufiksu UPN.
  
-## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Krok 3. Sfederuj domenę fabrikam.com z usługą AD FS
+## <a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Krok 3: Sfederuj domenę fabrikam.com z usługą AD FS
  
 W sesji programu PowerShell usługi Azure AD wykonaj następujące czynności: Nawiązywanie połączenia z usługą Azure Active Directory, która zawiera domenę fabrikam.com
 

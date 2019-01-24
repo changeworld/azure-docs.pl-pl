@@ -3,22 +3,22 @@ title: Migrowanie użytkowników wraz z tożsamościami społecznościowymi w us
 description: Omówiono w nim podstawowe pojęcia dotyczące migracji użytkowników wraz z tożsamościami społecznościowymi do usługi Azure AD B2C przy użyciu interfejsu API programu Graph.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9378face28b4d053dcd5f01b8f87126457cf339
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ca73b8bfaca481d3e0404d068a74e1a6b0e4dcb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445147"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846561"
 ---
-# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Usługa Azure Active Directory B2C: Migrowanie użytkowników wraz z tożsamościami społecznościowymi
-Planując migrację dostawcy tożsamości do usługi Azure AD B2C, konieczne może być migrowanie użytkowników wraz z tożsamościami społecznościowymi. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont tożsamości społecznościowych, takich jak: kont usługi Facebook, LinkedIn i firmy Microsoft oraz Google do usługi Azure AD B2C. Ten artykuł dotyczy również do tożsamości federacyjnej, jednak te migracje są mniej typowe.
+# <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrowanie użytkowników z tożsamościami społecznościowymi
+Planując migrację dostawcy tożsamości do usługi Azure AD B2C, konieczne może być migrowanie użytkowników wraz z tożsamościami społecznościowymi. W tym artykule wyjaśniono, jak przeprowadzić migrację istniejących kont tożsamości społecznościowych, takich jak: Kont usługi Facebook, LinkedIn i firmy Microsoft oraz Google do usługi Azure AD B2C. Ten artykuł dotyczy również do tożsamości federacyjnej, jednak te migracje są mniej typowe.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Ten artykuł jest kontynuacją artykuł dotyczący migracji użytkowników i koncentruje się na migracji tożsamości dla sieci społecznościowej. Przed rozpoczęciem przeczytaj [migracji użytkowników](active-directory-b2c-user-migration.md).
@@ -63,7 +63,7 @@ Na poniższej liście przedstawiono właściwości, które są wymagane w przypa
 * **userIdentities** — co najmniej jeden rekord tożsamości użytkownika, które określają ubezpieczenia konta, typ i identyfikator unikatowy użytkownika z dostawcy tożsamości społecznościowych.
 * [opcjonalnie] **otherMails** — w przypadku konta w sieci społecznościowej tylko adresy e-mail użytkowników 
 
-Aby uzyskać więcej informacji, zobacz: [odwołanie do interfejsu API programu Graph](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+Aby uzyskać więcej informacji, zobacz: [Dokumentacja interfejsu API programu Graph](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>Migrowanie konta (tylko) w sieci społecznościowej
 Można utworzyć tylko konta społecznościowego bez poświadczeń konta lokalnego. Wysłanie żądania POST protokołu HTTPS do interfejsu API programu Graph. Treść żądania zawiera właściwości użytkownika konta społecznościowego do utworzenia. Jako minimum należy określić wymagane właściwości. 

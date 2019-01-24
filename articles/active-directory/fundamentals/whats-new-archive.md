@@ -3,7 +3,7 @@ title: Archiwum nowości? — Usługa azure Active Directory | Dokumentacja firm
 description: Co to jest nowe informacje o wersji w ramach przeglądu sekcji tego zestawu zawartości zawiera 6 miesięcy działania. Po upływie 6 miesięcy elementy są usuwane z głównego artykułu i umieścić w tym artykule archiwum.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bc9892882cfd4c3f68118648baaaf278133bb2a8
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7dc067cd84ef43850034dec2f58da7e7dfa64cc4
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191925"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449609"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiwum nowości? w usłudze Azure Active Directory
 
@@ -881,7 +881,7 @@ Od 8 stycznia 2018 r. administracji usługi Azure AD został wycofany doświadcz
  
 Od 8 stycznia 2018 r. został wycofany z portalu sieci web PhoneFactor. Ten portal został użyty do administrowania serwerem MFA, ale te funkcje zostały przeniesione do witryny Azure portal pod adresem portal.azure.com. 
 
-Konfiguracja uwierzytelniania Wieloskładnikowego znajduje się w: **Usługa Azure Active Directory \> serwera MFA**
+Konfiguracja uwierzytelniania Wieloskładnikowego znajduje się w: **Azure Active Directory \> MFA Server**
  
 ---
  

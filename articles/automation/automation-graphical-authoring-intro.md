@@ -3,18 +3,18 @@ title: Graficzny, tworzenia w usłudze Azure Automation
 description: Tworzenie graficzne pozwala na tworzenie elementów runbook usługi Azure Automation bez Praca z kodem. Ten artykuł zawiera wprowadzenie do tworzenia elementów graficznych oraz wszystkie szczegóły potrzebne do rozpoczęcia tworzenia graficznego elementu runbook.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cd2cec56a15660a03ac111b1b8962d531479ad
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233681"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427240"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Graficzny, tworzenia w usłudze Azure Automation
 
@@ -111,7 +111,7 @@ Po określeniu wartości dla parametru, wybierasz źródła danych, aby określi
 
 | Źródło danych | Opis |
 |:--- |:--- |
-| Stała wartość |Wpisz wartość dla parametru. To jest dostępna tylko dla następujących typów danych: Int32, Int64, String, Boolean, DateTime, przełącznika. |
+| Wartość stałej |Wpisz wartość dla parametru. To jest dostępna tylko dla następujących typów danych: Int32, Int64, String, Boolean, DateTime, przełącz się. |
 | Wyjście działania |Dane wyjściowe z działania, które poprzedza bieżącego działania w przepływie pracy. Wszystkie prawidłowe działania są wymienione. Wybierz tylko działania Użyj jego danych wyjściowych dla wartości parametru. Jeśli obiekt z wieloma właściwościami wyjściem działania, można wpisać nazwę właściwości po wybraniu działania. |
 | Dane wejściowe elementu Runbook |Wybierz parametr wejściowy elementu runbook jako dane wejściowe dla parametru działania. |
 | Zasób zmiennej |Zmienna usługi Automation wybierz jako dane wejściowe. |
@@ -272,7 +272,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 Możesz ustawić [punktów kontrolnych](automation-powershell-workflow.md#checkpoints) w elemencie runbook graficzny przepływ pracy programu PowerShell, wybierając *element runbook punktu kontrolnego* dla każdego działania. Powoduje to, że punkt kontrolny można ustawić, po uruchomieniu działania.
 
-![Punkt kontrolny](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 Punkty kontrolne są tylko włączone w elementach runbook graficzny przepływ pracy programu PowerShell, nie jest dostępna w graficznych elementach runbook. Jeśli element runbook używa poleceń cmdlet platformy Azure, należy wykonać żadnych działań utworzono punkt kontrolny przy użyciu Connect-AzureRmAccount w przypadku, gdy element runbook jest wstrzymana, a także ponowne uruchomienie z tego punktu kontrolnego w ramach innego procesu roboczego.
 

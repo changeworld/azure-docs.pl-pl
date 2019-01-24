@@ -1,6 +1,7 @@
 ---
-title: Usługa Azure Machine Learning Studio — omówienie | Microsoft Docs
-description: Omówienie usługi Azure ML Studio, narzędzia obsługiwanego metodą „przeciągnij i upuść” przeznaczonego do szybkiego budowania modeli z gotowej do użycia biblioteki algorytmów i modułów.
+title: Co to jest
+titleSuffix: Azure Machine Learning Studio
+description: Azure Machine Learning Studio to narzędzie obsługiwane metodą „przeciągnij i upuść” przeznaczone do szybkiego budowania modeli z gotowej do użycia biblioteki algorytmów i modułów.
 keywords: azure machine learning, azure ml, ml studio
 services: machine-learning
 documentationcenter: ''
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: b1c0d3da6dba4bf56baaf583d89c58fdc13ef83f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 04c9803909fb5dfd1072840a0c1d7e33814ad1a3
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250522"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264364"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Co to jest usługa Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio to narzędzie do współpracy, obsługiwane metodą „przeciągnij i upuść”, które służy do budowania, testowania i wdrażania rozwiązań z zakresu analizy predykcyjnej na podstawie posiadanych danych. Usługa Machine Learning Studio publikuje modele jako usługi sieci Web, które mogą być łatwo używane w niestandardowych aplikacjach albo narzędziach do analiz biznesowych, takich jak program Excel.

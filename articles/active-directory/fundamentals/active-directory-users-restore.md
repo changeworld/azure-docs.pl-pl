@@ -3,7 +3,7 @@ title: Przywrócić lub usunąć trwale ostatnio usuniętego użytkownika — us
 description: Jak wyświetlić użytkowników z możliwością przywrócenia, przywracanie usuniętego użytkownika lub trwale usunąć użytkownika z usługą Azure Active Directory.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 12/17/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 066c9189e0c3cea409a99217e0ab4b46002df1f9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 995a6a9da637c23663c51fe2f4b175741f5849b6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556785"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450326"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Przywrócić lub usunąć ostatnio usuniętego użytkownika przy użyciu usługi Azure Active Directory
 Po usunięciu użytkownika konto pozostaje w stanie wstrzymania przez 30 dni. Podczas tego 30-dniowe okno konto użytkownika można przywrócić, wraz z jego właściwości. Po pomyślnej tego 30-dniowe okno, użytkownik jest automatycznie i stałe, usuwane.
@@ -59,9 +59,6 @@ Gdy konto użytkownika jest wstrzymane, wszystkich informacji katalogowych powi�
 2. Wybierz **użytkownika przywracania**.
 
     ![Użytkownicy — stronie usuniętych użytkowników z podświetloną opcją użytkownika przywracania](media/active-directory-users-restore/users-deleted-users-restore-user.png)
-
->[!NOTE]
->Poprzednio po użytkownik został usunięty z zakresu synchronizacji w środowisku lokalnym i usunięte w chmurze, stan DirSyncEnabled konta błędnie została ustawiona na "False". Jeśli później, ten użytkownik został przywrócony ręcznie z Kosza usługi Azure AD, a potem nieprawidłowym stanie "chmura tylko do" konta. Teraz zostało to poprawione i wartość stanu DirSyncEnabled jest zawsze mieć "wartość True" po użytkownik zostanie usunięty z zakresu synchronizacji, następnie wszystkie usunięte nietrwale i ręcznie odtworzonych z Kosza usługi Azure AD.
 
 ## <a name="permanently-delete-a-user"></a>Trwałe usuwanie użytkownika
 Możesz trwale usunąć użytkownika z katalogu, bez konieczności oczekiwania przez 30 dni dla automatycznego usuwania. Trwale usunięto użytkownika nie można przywrócić przez Ciebie innego administratora ani znakiem obsługi klienta firmy Microsoft.

@@ -3,9 +3,9 @@ title: Jak używać tematów usługi Azure Service Bus przy użyciu języka Java
 description: Użyj subskrypcji i tematów usługi Service Bus na platformie Azure.
 services: service-bus-messaging
 documentationcenter: java
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 63d6c8bd-8a22-4292-befc-545ffb52e8eb
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
-ms.author: spelluru
-ms.openlocfilehash: 501d15ebbb373c100dd735e97bebf2f085a9579e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.author: aschhab
+ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241323"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849961"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus przy użyciu języka Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-W tym przewodniku Szybki Start możesz wykonać następujące czynności: 
+W tym przewodniku Szybki start wykonasz następujące kroki: 
 
 - Tworzenie tematu przy użyciu witryny Azure portal
 - Utwórz trzy subskrypcje tematu przy użyciu witryny Azure portal
@@ -95,9 +95,9 @@ Upewnij się, że zainstalowano [zestawu Azure SDK dla języka Java] [ Azure SDK
 
 Należy również dodać następujące plikach JAR do ścieżka kompilacji języka Java:
 
-- gson 2.6.2.jar
-- 1.4.jar-Commons — interfejs wiersza polecenia
-- protonowego j-0.21.0.jar
+- gson-2.6.2.jar
+- commons-cli-1.4.jar
+- proton-j-0.21.0.jar
 
 Dodaj klasę za pomocą **Main** metody, a następnie dodaj następujący kod `import` instrukcji w górnej części pliku Java:
 

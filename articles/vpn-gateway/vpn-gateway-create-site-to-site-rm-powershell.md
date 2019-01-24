@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci lokalnej sieci z siecią wirtualną platformy Azure: sieci VPN typu lokacja-lokacja: PowerShell | Microsoft Docs'
+title: 'Łączenie sieci lokalnej z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Ta procedura jest pomocna podczas tworzenia połączenia usługi VPN Gateway typu lokacja-lokacja obejmującego wiele lokalizacji za pomocą programu PowerShell.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4df7353016f33e4525c27536ba862f0412ebf82f
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 1501ebe2df1ff6fa3505bf637896f6f3e7c827aa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953573"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427733"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Tworzenie sieci wirtualnej za pomocą połączenia sieci VPN typu lokacja-lokacja przy użyciu programu PowerShell
 
@@ -44,7 +44,7 @@ Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryt
 
 Jeśli zdecydujesz się na zainstalowanie i korzystanie z programu PowerShell lokalnie, konieczne jest zainstalowanie najnowszej wersji poleceń cmdlet programu PowerShell usługi Azure Resource Manager. Polecenia cmdlet programu PowerShell są często aktualizowane. Ich zaktualizowanie jest zazwyczaj konieczne w celu uzyskania najnowszych wersji funkcji. Jeśli nie zaktualizujesz poleceń cmdlet programu PowerShell, mogą wystąpić błędy określonych wartości. 
 
-Aby określić używaną wersję, uruchom polecenie „Get-Module -ListAvailable AzureRM”. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu programu Azure PowerShell](/powershell/azure/install-azurerm-ps). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+Aby określić używaną wersję, uruchom polecenie „Get-Module -ListAvailable AzureRM”. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 Jeśli używasz programu PowerShell lokalnie, należy również uruchomić polecenie „Connect-AzureRmAccount”, aby utworzyć połączenie z platformą Azure.
 
 
@@ -57,19 +57,19 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 
 VnetName                = VNet1
 ResourceGroup           = TestRG1
-Location                = East US 
-AddressSpace            = 10.1.0.0/16 
-SubnetName              = Frontend 
-Subnet                  = 10.1.0.0/24 
+Location                = East US 
+AddressSpace            = 10.1.0.0/16 
+SubnetName              = Frontend 
+Subnet                  = 10.1.0.0/24 
 GatewaySubnet           = 10.1.255.0/27
 LocalNetworkGatewayName = Site1
-LNG Public IP           = <On-premises VPN device IP address> 
+LNG Public IP           = <On-premises VPN device IP address> 
 Local Address Prefixes  = 10.101.0.0/24, 10.101.1.0/24
 Gateway Name            = VNet1GW
 PublicIP                = VNet1GWPIP
-Gateway IP Config       = gwipconfig1 
-VPNType                 = RouteBased 
-GatewayType             = Vpn 
+Gateway IP Config       = gwipconfig1 
+VPNType                 = RouteBased 
+GatewayType             = Vpn 
 ConnectionName          = VNet1toSite1
 
 ```

@@ -1,24 +1,24 @@
 ---
-title: 'Programu Azure AD Connect: Dokumentacja programu PowerShell ADConnectivityTools | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Dokumentacja programu PowerShell ADConnectivityTools | Dokumentacja firmy Microsoft'
 description: Ten dokument zawiera informacje dotyczące modułu programu ADConnectivityTools.psm1 PowerShell.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d63c35d82a98d816c18dd299a8e0e81baa5bc8d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e398814e9ce8b98d8b1079d6f6c429e829c99d21
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425228"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462101"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Programu Azure AD Connect: Dokumentacja programu PowerShell ADConnectivityTools
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADConnectivityTools
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADConnectivityTools.psm1, dostępnej w programie Azure AD Connect.
 
-## <a name="confirm-dnsconnectivity"></a>Upewnij się, DnsConnectivity
+## <a name="confirm-dnsconnectivity"></a>Confirm-DnsConnectivity
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Wykrywa lokalne problemy z usługą Dns.
@@ -47,7 +47,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Określa nazwę lasu na potrzeby testowania wstępnego.
 
 ```yaml
@@ -120,7 +120,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Określa nazwę lasu na potrzeby testowania wstępnego.
 
 ```yaml
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-functionallevel"></a>Upewnij się, FunctionalLevel
+## <a name="confirm-functionallevel"></a>Confirm-FunctionalLevel
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Sprawdza poziom funkcjonalności lasu usługi AD.
@@ -179,7 +179,7 @@ Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCre
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Wybierz las.
 Wartość domyślna to lasu aktualnie zalogowanego użytkownika.
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-networkconnectivity"></a>Upewnij się, NetworkConnectivity
+## <a name="confirm-networkconnectivity"></a>Confirm-NetworkConnectivity
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Wykrywa problemy z łącznością w sieci lokalnej.
@@ -338,7 +338,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Określa nazwę lasu na potrzeby testowania wstępnego.
 
 ```yaml
@@ -372,7 +372,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validdomains"></a>Upewnij się, ValidDomains
+## <a name="confirm-validdomains"></a>Confirm-ValidDomains
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Sprawdź, czy domen w uzyskanej FQDN lasu są dostępne
@@ -412,7 +412,7 @@ Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCreden
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Wybierz las.
 
 ```yaml
@@ -461,7 +461,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="confirm-validenterpriseadmincredentials"></a>Upewnij się, ValidEnterpriseAdminCredentials
+## <a name="confirm-validenterpriseadmincredentials"></a>Confirm-ValidEnterpriseAdminCredentials
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Sprawdza, czy użytkownik ma poświadczenia administratora przedsiębiorstwa.
@@ -619,7 +619,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCreden
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Wybierz las. Wartość domyślna to domena aktualnie zalogowanego użytkownika.
 
 ```yaml
@@ -677,7 +677,7 @@ Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAcco
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Wybierz las.
 
 ```yaml
@@ -693,7 +693,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
-W przypadku instalacji niestandardowe: Flaga to znaczy $True Jeśli użytkownik wybrał "Utwórz nowe konto usługi AD" w oknie konto lasu usługi AD kreatora AADConnect firmy.
+W przypadku instalacji niestandardowe: Flaga, która jest $True, jeśli użytkownik wybrał "Utwórz nowe konto usługi AD" w oknie konto lasu usługi AD kreatora AADConnect firmy.
 $False Jeśli użytkownik wybrał "Użyj istniejącego konta usługi AD".
 W przypadku instalacji ekspresowej: Wartość tej zmiennej musi być $True dla instalacji ekspresowej.
 
@@ -758,7 +758,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TES
 
 ### <a name="parameters"></a>PARAMETRY
 
-#### <a name="-forest"></a>-Lasu
+#### <a name="-forest"></a>-Forest
 Określa nazwę lasu na potrzeby testowania wstępnego.
 
 ```yaml
@@ -789,7 +789,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-logfilelocation"></a>-Parametrów LogFileLocation
+#### <a name="-logfilelocation"></a>-LogFileLocation
 Określa lokalizację pliku dziennika, który będzie zawierać danymi wyjściowymi tej funkcji.
 
 ```yaml

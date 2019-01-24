@@ -5,21 +5,21 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/27/2018
+ms.date: 01/22/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: fcd5137792e573c3077a4b9d5e815b9bf20774f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: daf524e6802fbb0548ff2d30d32dc6fbd4bc68cb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155074"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476397"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Przygotowanie do hosta rozszerzenia dla usługi Azure Stack
 
-Host rozszerzenia zabezpiecza usługi Azure Stack, zmniejszając liczbę wymaganych portów TCP/IP. W tym artykule patrzy na hosta rozszerzenia, który jest włączany automatycznie za pomocą pakietu aktualizacji usługi Azure Stack po aktualizacji 1808 przygotowywanie usługi Azure Stack.
+Host rozszerzenia zabezpiecza usługi Azure Stack, zmniejszając liczbę wymaganych portów TCP/IP. W tym artykule patrzy na hosta rozszerzenia, który jest włączany automatycznie za pomocą pakietu aktualizacji usługi Azure Stack po aktualizacji 1808 przygotowywanie usługi Azure Stack. Ten artykuł dotyczy usługi Azure Stack aktualizacje 1808 1809 i 1811.
 
 ## <a name="certificate-requirements"></a>Wymagania dotyczące certyfikatów
 
@@ -29,8 +29,8 @@ W tabeli przedstawiono nowe przestrzenie nazw i skojarzone certyfikatów:
 
 | Folder wdrożenia | Temat wymaganego certyfikatu i alternatywnej nazwy podmiotu (SAN) | Zakres (na region) | Przestrzeń nazw poddomeny |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
-| Host rozszerzenia administratora | *.adminhosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia administratora | adminhosting. \<region >. \<fqdn > |
-| Host rozszerzenia publiczne | * .hosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia publiczne | hosting. \<region >. \<fqdn > |
+| Host rozszerzenia administratora | *.adminhosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia administratora | adminhosting.\<region>.\<fqdn> |
+| Host rozszerzenia publiczne | * .hosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia publiczne | hosting.\<region>.\<fqdn> |
 
 Wymagania dotyczące certyfikatów szczegółowe znajdują się w [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych w usłudze Azure Stack](azure-stack-pki-certs.md) artykułu.
 
@@ -129,8 +129,8 @@ Publikowanie punktów końcowych usługi Azure Stack zostały skonfigurowane rek
 
 | Adres IP | Nazwa hosta | Typ |
 |----|------------------------------|------|
-| \<IP &GT; | *. Adminhosting. \<Region >. \<FQDN > | A |
-| \<IP &GT; | *. Hosting. \<Region >. \<FQDN > | A |
+| \<IP> | *. Adminhosting. \<Region >. \<FQDN > | A |
+| \<IP> | *.Hosting.\<Region>.\<FQDN> | A |
 
 Przydzielone adresy IP mogą być pobierane przy użyciu punktu końcowego uprzywilejowane, uruchamiając polecenie cmdlet **Get AzureStackStampInformation**.
 
@@ -201,8 +201,8 @@ Następujące porty istniejącego punktu końcowego musi być zamknięty istniej
 
 | Punkt końcowy (VIP) | Protokół | Porty |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Portal (administrator) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13020<br>13021<br>13026<br>30015 |
-| Portal (użytkownik) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003 |
+| Portal (administrator) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
+| Portal (użytkownik) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |
 | Usługa Azure Resource Manager (administrator) | HTTPS | 30024 |
 | Usługa Azure Resource Manager (użytkownik) | HTTPS | 30024 |
 

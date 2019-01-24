@@ -10,14 +10,14 @@ ms.component: manage
 ms.date: 12/12/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 21baa89293c74ec49720bffc2506e20789fe9e55
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: b897b50edf4d5a7eeabacc6da1505e165f2bb21a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411047"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431745"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Grudnia 2018 r.
+# <a name="whats-new-in-azure-sql-data-warehouse-december-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Grudzień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w grudnia 2018 r.
 
 ## <a name="virtual-network-service-endpoints-generally-available"></a>Sieć wirtualna punktów końcowych usługi ogólnie dostępne
@@ -53,6 +53,9 @@ Aby uzyskać więcej informacji na temat Store zapytania w usłudze Azure SQL Da
 Gen2 magazynu danych w usłudze Azure SQL obsługuje teraz dolnej warstwy wystąpień obliczeniowych. Klienci będą mogli doświadczyć wiodącej wydajności, elastyczności i funkcji zabezpieczeń, począwszy od 100 cDWU usługi Azure SQL Data Warehouse ([jednostek magazynu danych](https://docs.microsoft.com/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu)) i skalowanie do ponad 30 000 cDWU w ciągu kilku minut. Od połowy grudnia 2018 r. klienci mogą korzystać z Gen2 wydajność i elastyczność dzięki małe obliczeń warstw w [regionów](https://docs.microsoft.com/azure/sql-data-warehouse/gen2-lower-tier-regions), za pomocą pozostałych regionach, dostępne podczas 2019 r.
 
 Upuszczając punkt wejścia dla magazynowania danych następnej generacji, Microsoft otwiera drzwi oparte na wartości klientom, którzy chcesz ocenić wszystkie zalety hurtowni danych bezpieczne i o wysokiej wydajności, bez zgadywania, które środowisko w wersji próbnej jest najlepsze dla nich. Klienci może rozpocząć możliwie jak 100 cDWU w dół od bieżącego punktu wejścia 500 cDWU. Gen2 magazynu danych SQL w dalszym ciągu obsługują wstrzymywanie i wznawianie operacji i zbliża się poza po prostu elastyczność obliczeń. Gen2 obsługuje również magazynu kolumn nieograniczoną pojemność magazynu oraz 2,5 raza więcej pamięci na zapytanie, nawet 128 zapytań jednoczesnych i [buforowanie adaptacyjne](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/) funkcji. Te funkcje średnio Przenieś pięciokrotnie wyższą wydajność w porównaniu do tej samej jednostki magazynu danych na Gen1 w tej samej cenie. Geograficznie nadmiarowe kopie zapasowe są standardem Gen2 z ochroną danych gwarantowana wbudowane. Gen2 magazynu danych w usłudze Azure SQL jest gotowa do skalowania podczas pracy.
+
+## <a name="columnstore-background-merge"></a>Scalanie tła magazynu kolumn
+Domyślnie, Azure SQL Data Warehouse (Azure SQL DW) przechowuje dane w formacie kolumnowym micro-partycji o nazwie [rowgroups](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression). Czasami z powodu pamięci ogranicza pod indeksem czas ładowania kompilacji lub danych, może być skompresowany rowgroups z mniej niż optymalny rozmiar miliona wierszy. Rowgroups również może ulec fragmentacji z powodu usunięcia. Małe lub pofragmentowany rowgroups doprowadzić do wyższych zużycie pamięci, a także wykonywanie zapytania nieefektywne. W tej wersji usługi Azure SQL data Warehouse zadanie konserwacji magazynu kolumn w tle scala małych skompresowanych rowgroups do tworzenia większych rowgroups lepsze wykorzystanie pamięci i przyspieszyć wykonywanie zapytania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse]. Jeśli jesteś nowym użytkownikiem platformy Azure, może się okazać [słownik platformy Azure] [ Azure glossary] przydatne, kiedy zdobędziesz doświadczenie nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  

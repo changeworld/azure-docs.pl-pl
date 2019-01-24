@@ -5,7 +5,7 @@ services: active-directory
 keywords: Usługa Azure active directory identity protection odnajdywania aplikacji w chmurze, zarządzanie aplikacji, zabezpieczenia, ryzyka, poziom ryzyka, luk w zabezpieczeniach, zasady zabezpieczeń
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 11b6766533da65f55430d55bd8aa0b7067783e0c
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b1077eefbe57b6440caa0171fb7429485eeeb78e
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267474"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469189"
 ---
-# <a name="how-to-close-active-risk-events"></a>Porady: Zamykanie zdarzeń o podwyższonym ryzyku w aktywnej
+# <a name="how-to-close-active-risk-events"></a>Jak: Zamykanie aktywnych zdarzeń o podwyższonym ryzyku
 
 Za pomocą [zdarzeń o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md), Azure Active Directory wykrywa wskaźniki dla kont użytkowników mogą mieć złamane zabezpieczenia. Jako administrator chcesz pobrać wszystkie zdarzenia o podwyższonym ryzyku zamknięte, tak aby narażeni użytkownicy nie są już na ryzyko.
 
@@ -47,7 +47,7 @@ Aby zamknąć zdarzeń o podwyższonym ryzyku w aktywnej, dostępne są następu
 
 ## <a name="require-password-reset-with-a-user-risk-policy"></a>Wymagaj hasła, resetowanie zasad ryzyka dla użytkownika
 
-Konfigurując [zasad dostępu warunkowego ryzyka użytkownika](howto-user-risk-policy.md), mogą wymagać zmiany hasła, automatycznie wykryje poziom ryzyka określonego użytkownika. 
+Konfigurując [zasady dostępu warunkowego ryzyka związanego z użytkownikiem](howto-user-risk-policy.md), możesz wymagać zmiany hasła, jeśli zostanie automatycznie wykryty określony poziom ryzyka związanego z użytkownikiem. 
 
 ![Resetowanie hasła](./media/howto-close-active-risk-events/13.png)
 

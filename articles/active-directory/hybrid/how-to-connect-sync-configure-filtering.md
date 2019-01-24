@@ -4,7 +4,7 @@ description: Opisano sposób konfigurowania, filtrowanie w usłudze Azure AD Con
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 880facf6-1192-40e9-8181-544c0759d506
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9ec136b418e78f82486d9d38f361e411c3d00c31
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 886ac908d2e294f4627f95b35d93ea49a9e1607a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312284"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472334"
 ---
-# <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania
+# <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: Konfigurowanie filtrowania
 Za pomocą filtrowania, możesz kontrolować obiekty, które są wyświetlane w usłudze Azure Active Directory (Azure AD) z katalogu lokalnego. Domyślna konfiguracja pobiera wszystkie obiekty we wszystkich domenach w lesie skonfigurowanym. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkowników przy użyciu obciążeń usługi Office 365, takich jak Exchange Online i Skype dla firm, korzystają z pełną globalnej listy adresowej, dzięki czemu mogą wysyłać wiadomości e-mail i wywołać wszystkich użytkowników. W przypadku domyślnej konfiguracji zostałyby taki sam sposób, że współpracujemy z implementacją lokalnego programu Exchange lub Lync.
 
 W niektórych przypadkach jednak masz wymagane pewnych zmian w konfiguracji domyślnej. Oto kilka przykładów:
@@ -69,7 +69,7 @@ Aby wyłączyć zaplanowane zadanie, które wyzwala cykl synchronizacji co trzy 
 
 1. Rozpocznij **harmonogram zadań** z **Start** menu.
 2. Bezpośrednio pod **Biblioteka Harmonogramu zadań**, znaleźć zadania o nazwie **usługi Azure AD Sync Scheduler**, kliknij prawym przyciskiem myszy, a następnie wybierz **wyłączyć**.  
-   ![Harmonogram zadań](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
+   ![Task Scheduler](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
 3. Teraz możesz wprowadzić zmiany w konfiguracji i uruchomienia aparatu synchronizacji ręcznie z **Menedżera usługi synchronizacji** konsoli.
 
 Po ukończeniu wszystkich zmian filtrowania, nie zapomnij możesz wrócić i **Włącz** zadanie ponownie.
@@ -77,10 +77,10 @@ Po ukończeniu wszystkich zmian filtrowania, nie zapomnij możesz wrócić i **W
 ## <a name="filtering-options"></a>Opcje filtrowania
 Do narzędzia do synchronizacji katalogów, należy zastosować następujące typy konfiguracji filtrowania:
 
-* [**Oparte na grupach**](#group-based-filtering): filtrowanie na podstawie jednej grupy można skonfigurować tylko na początkowej instalacji za pomocą Kreatora instalacji.
-* [**Oparte na domenie**](#domain-based-filtering): za pomocą tej opcji, można wybrać, które domeny synchronizacji z usługą Azure AD. Można również dodawać i usuwać domeny z Konfiguracja aparatu synchronizacji, po wprowadzeniu zmian w infrastrukturze lokalnej po zainstalowaniu synchronizacji programu Azure AD Connect.
-* [**Jednostka organizacyjna (OU) — na podstawie**](#organizational-unitbased-filtering): za pomocą tej opcji, możesz też wybrać opcję jednostek organizacyjnych zsynchronizować z usługą Azure AD. Ta opcja dotyczy wszystkich typów obiektów w wybranych jednostek organizacyjnych.
-* [**Oparte na atrybutach**](#attribute-based-filtering): za pomocą tej opcji, można filtrować obiektów na podstawie wartości atrybutu dla obiektów. Może również mieć różnych filtrów dla różnych typów obiektów.
+* [**Oparte na grupach**](#group-based-filtering): Filtrowanie na podstawie jednej grupy można skonfigurować tylko na początkowej instalacji za pomocą Kreatora instalacji.
+* [**Oparte na domenie**](#domain-based-filtering): Za pomocą tej opcji, możesz wybrać, które domeny synchronizacji z usługą Azure AD. Można również dodawać i usuwać domeny z Konfiguracja aparatu synchronizacji, po wprowadzeniu zmian w infrastrukturze lokalnej po zainstalowaniu synchronizacji programu Azure AD Connect.
+* [**Jednostka organizacyjna (OU) — na podstawie**](#organizational-unitbased-filtering): Za pomocą tej opcji, możesz też wybrać opcję jednostek organizacyjnych zsynchronizować z usługą Azure AD. Ta opcja dotyczy wszystkich typów obiektów w wybranych jednostek organizacyjnych.
+* [**Oparte na atrybutach**](#attribute-based-filtering): Za pomocą tej opcji, możesz filtrować obiektów na podstawie wartości atrybutu dla obiektów. Może również mieć różnych filtrów dla różnych typów obiektów.
 
 Wiele opcji filtrowania można użyć w tym samym czasie. Można na przykład użyć filtrowania na podstawie jednostki Organizacyjnej obejmujący tylko obiekty w jednej jednostce Organizacyjnej. W tym samym czasie można użyć filtrowania na podstawie atrybutu Aby odfiltrować obiekty dalej. W przypadku użycia wielu metod filtrowania, filtry użyć logiczne "i" między filtrami.
 
@@ -185,6 +185,9 @@ W przypadku tej konfiguracji nowej jednostki Organizacyjnej, który został utwo
 
 ## <a name="attribute-based-filtering"></a>Filtrowanie na podstawie atrybutu
 Upewnij się, że listopada 2015 roku ([1.0.9125](reference-connect-version-history.md#1091250)) lub nowszej kompilacji dla tych kroków do pracy.
+
+> [!IMPORTANT]
+>Firma Microsoft zaleca, aby nie modyfikować domyślnych reguł utworzonych przez **program Azure AD Connect**. Jeśli chcesz zmodyfikować regułę, sklonować ten projekt i Wyłącz istniejącą regułę. Wprowadź zmiany w sklonowanym reguły. Należy pamiętać, że w ten sposób (wyłączanie oryginalnej reguły) będą pominięcia wszelkie poprawki lub funkcje włączone za pomocą tej reguły.
 
 Filtrowanie na podstawie atrybutu jest najbardziej elastyczny sposób Filtruj obiekty. Można użyć możliwości [aprowizacja deklaratywna](concept-azure-ad-connect-sync-declarative-provisioning.md) do kontrolowania niemal każdy aspekt gdy obiekt jest zsynchronizowany z usługą Azure AD.
 

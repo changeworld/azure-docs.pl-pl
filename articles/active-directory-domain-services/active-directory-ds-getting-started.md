@@ -1,10 +1,10 @@
 ---
-title: 'Usługi Azure Active Directory Domain Services: Wprowadzenie | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Wprowadzenie | Dokumentacja firmy Microsoft'
 description: Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: ergreenl
-ms.openlocfilehash: a795691959c744f5358966d62449882e514eb8eb
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 07dbc96e94c736b4e4c80dd212f0674bfeffce45
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155086"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850420"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Włączanie usługi Azure Active Directory Domain Services w witrynie Azure portal
 W tym artykule przedstawiono sposób włączania Azure Active Directory Domain Services (Azure AD DS) w witrynie Azure portal.
@@ -61,11 +61,11 @@ W **podstawy** strona kreatora określ nazwę domeny DNS dla domeny zarządzanej
 
    > [!NOTE]
    > **Wskazówki dotyczące wybierania nazwy domeny DNS**
-   > * **Nazwy domen wbudowana:** Domyślnie Kreator określa nazwy domen wbudowana/domyślnego katalogu (przy użyciu **. onmicrosoft.com** sufiks) dla Ciebie. Jeśli wybierzesz umożliwić dostęp do domeny zarządzanej secure LDAP przez internet, należy się spodziewać problemy, tworzenie publiczny Rekord DNS i uzyskiwanie bezpiecznego certyfikatu LDAP z publicznego urzędu certyfikacji dla tej nazwy domeny. Firma Microsoft posiada *. onmicrosoft.com* domeny i urzędy certyfikacji nie będzie wystawiać certyfikatów zagwarantowanie dla tej domeny.
-   * **Niestandardowa nazwa domeny:** można także wpisać niestandardową nazwę domeny. W tym przykładzie niestandardową nazwą domeny jest *contoso100.com*.
-   * **Sufiksy domeny bez obsługi routingu:** ogólnie zaleca się unikanie sufiks nazwy domeny bez obsługi routingu. Na przykład zaleca się unikanie tworzenia domeny przy użyciu nazwy domeny DNS "contoso.local". Sufiks DNS ".local" nie podlega routingowi i mogą powodować problemy rozpoznawania nazw DNS.
-   * **Ograniczenia prefiks domeny:** prefiks określony dla nazwy domeny (na przykład *contoso100* w *contoso100.com* nazwy domeny) musi zawierać więcej niż 15 znaków. Nie można utworzyć domeny zarządzanej, z prefiksem dłuższa niż 15 znaków.
-   * **Wystąpił konflikt między nazwą sieci:** upewnij się, że nazwa domeny DNS została wybrana dla domeny zarządzanej nie istnieje w sieci wirtualnej. W szczególności sprawdź, czy:
+   > * **Nazwa domeny wbudowane:** Domyślnie Kreator określa nazwy domen wbudowana/domyślnego katalogu (przy użyciu **. onmicrosoft.com** sufiks) dla Ciebie. Jeśli wybierzesz umożliwić dostęp do domeny zarządzanej secure LDAP przez internet, należy się spodziewać problemy, tworzenie publiczny Rekord DNS i uzyskiwanie bezpiecznego certyfikatu LDAP z publicznego urzędu certyfikacji dla tej nazwy domeny. Firma Microsoft posiada *. onmicrosoft.com* domeny i urzędy certyfikacji nie będzie wystawiać certyfikatów zagwarantowanie dla tej domeny.
+   * **Niestandardowe nazwy domen:** Można także wpisać niestandardową nazwę domeny. W tym przykładzie niestandardową nazwą domeny jest *contoso100.com*.
+   * **Sufiksy domeny bez obsługi routingu:** Ogólnie zaleca się unikanie sufiks nazwy domeny bez obsługi routingu. Na przykład zaleca się unikanie tworzenia domeny przy użyciu nazwy domeny DNS "contoso.local". Sufiks DNS ".local" nie podlega routingowi i mogą powodować problemy rozpoznawania nazw DNS.
+   * **Ograniczenia prefiks domeny:** Prefiks określony dla nazwy domeny (przykładowo contoso100 w nazwie domeny *contoso100.com*) nie może zawierać więcej niż 15 znaków. Nie można utworzyć domeny zarządzanej, z prefiksem dłuższa niż 15 znaków.
+   * **Wystąpił konflikt między nazwą sieci:** Upewnij się, że nazwa domeny DNS wybrana dla domeny zarządzanej nie istnieje już w sieci wirtualnej. W szczególności sprawdź, czy:
        * Masz już domeny usługi Active Directory, z tą samą nazwą domeny DNS w sieci wirtualnej.
        * Sieć wirtualna, której zamierzasz włączyć domena zarządzana ma połączenie sieci VPN z siecią lokalną. W tym scenariuszu upewnij się, że nie masz domenę z tą samą nazwą domeny DNS w sieci lokalnej.
        * masz istniejącą usługę w chmurze z tą nazwą w sieci wirtualnej.

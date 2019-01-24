@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: e5f1f2fe3745ae2817b73b2500ee90a59fc283e1
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1de0f9b77bd1248d77f182a2e32e490c2814f42b
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607085"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382782"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Włączanie automatycznego dostrajania monitorowania zapytań i zwiększyć wydajność obciążeń
 
@@ -87,6 +87,10 @@ Aby skonfigurować indywidualne opcje dostrajania automatycznego za pomocą jęz
    ```
    
 Ustawienie dla poszczególnych opcję dostrajania, zastąpić ustawienie wszystkie dziedziczone bazy danych i włącz opcję dostrajania. Ustawienie go na wartość OFF, będą również zastąpienia ustawienia dowolnej dziedziczone bazy danych i wyłącz opcję dostrajania. Opcję dostrajania automatycznego, dla którego domyślne ustawienie jest określone, będzie dziedziczyć konfiguracji automatycznego dostrajania ustawienie poziomie bazy danych.  
+
+> [!IMPORTANT]
+> W przypadku programu [aktywnej replikacji geograficznej](sql-database-auto-failover-group.md), musi być skonfigurowany w podstawowej bazie danych tylko dostrajania automatycznego. Stosowana automatycznie dostrajania akcje, takie są indeksu przykład tworzenia lub usuwania będą automatycznie replikowane do regionu pomocniczego tylko do odczytu. Próba włączenia dostrajania automatycznego za pomocą języka T-SQL na serwerze pomocniczym tylko do odczytu spowoduje awarię jako posiadające innej konfiguracji dostrajania na serwerze pomocniczym tylko do odczytu nie jest obsługiwany.
+>
 
 Znajdź więcej naszych dotyczący języka T-SQL umożliwiające konfigurowanie dostrajania automatycznego, zobacz [opcje ALTER DATABASE SET (Transact-SQL) dla serwera logicznego SQL Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 

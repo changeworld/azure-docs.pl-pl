@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: be9de3c10fdfd040b249dd8da568259c599d7215
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c4f78d8bb43b26814dc3a4b94109dfd8719cb48f
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050391"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54258836"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Tworzenie i konfigurowanie klastrów usługi Azure Kubernetes Service na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible służy do zarządzania usługą Azure Kubernetes Service (AKS). W tym artykule pokazano, jak za pomocą rozwiązania Ansible tworzyć i konfigurować klastry usługi Azure Kubernetes Service.
@@ -28,7 +28,10 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 > Rozwiązanie Ansible 2.6 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka. 
 
 ## <a name="create-a-managed-aks-cluster"></a>Tworzenie zarządzanego klastra usługi AKS
-Następujący przykładowy podręcznik rozwiązania Ansible tworzy grupę zasobów i znajdujący się w niej klaster usługi AKS:
+Kod w tej sekcji przedstawia przykładowy podręcznik rozwiązania Ansible, który tworzy grupę zasobów i znajdujący się w niej klaster usługi AKS.
+
+> [!Tip]
+> Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu). 
 
   ```yaml
   - name: Create Azure Kubernetes Service
@@ -99,7 +102,8 @@ Dane wyjściowe z polecenia **ansible-playbook* przypominają poniższe dane wsk
 
 Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Jeśli chcesz zmniejszyć lub zwiększyć liczbę obciążeń kontenerów w klastrze, możesz łatwo dostosować liczbę węzłów. Przykładowy podręcznik w tej sekcji zwiększa liczbę węzłów z dwóch do trzech. Modyfikowanie liczby węzłów odbywa się przez zmianę wartości **count** w bloku **agent_pool_profiles**. 
 
-Wprowadź własne wartości `ssh_key`, `client_id` i `client_secret` w bloku **service_principal**:
+> [!Tip]
+> Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu). 
 
 ```yaml
 - name: Scale AKS cluster

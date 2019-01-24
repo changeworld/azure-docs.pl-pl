@@ -3,7 +3,7 @@ title: Dostęp zdalny do lokalnych aplikacji — serwer Proxy usługi Azure Acti
 description: Serwer Proxy aplikacji usługi Azure Active Directory zapewnia bezpieczny dostęp zdalny do aplikacji sieci web w środowisku lokalnym. Po logowanie jednokrotne do usługi Azure AD użytkownicy mogą korzystać zarówno z chmury i lokalnych aplikacji za pomocą zewnętrznego adresu URL lub portalu wewnętrznych aplikacji. Na przykład serwera Proxy aplikacji, może zapewnić dostępu zdalnego i logowania jednokrotnego do usług pulpitu zdalnego, programu SharePoint, Teams, Tableau, Qlik i aplikacje biznesowe (LOB).
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 94330c9d53b69d86ff05fe2f0164cb7559e9d389
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 48f06d0f8b36c129ab7fa99a037cf2ccdb5b7004
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159132"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473354"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Dostęp zdalny do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji usługi Azure Active Directory 
 
@@ -62,7 +62,7 @@ Poniższy diagram pokazuje jak usługa Azure AD i serwer Proxy aplikacji współ
 | Azure AD | Usługa Azure AD przeprowadza uwierzytelnianie przy użyciu katalogu dzierżawy, przechowywane w chmurze. |
 | Usługa serwera Proxy aplikacji | Ta usługa serwera Proxy aplikacji działa w chmurze w ramach usługi Azure AD. Przekazaniem tokenu logowania użytkownika do łącznika serwera Proxy aplikacji. Serwer Proxy aplikacji przekazuje wszelkie dostępne nagłówki dla żądania i ustawia nagłówki zgodnie z jego protokół adresu IP klienta. Jeśli przychodzące żądanie do serwera proxy już nagłówka, adres IP klienta zostanie dodany na końcu listy rozdzielanej przecinkami, który jest wartość nagłówka.|
 | Łącznik serwera Proxy aplikacji | Łącznik jest uproszczone agenta, który działa w systemie Windows Server w Twojej sieci. Łącznik zarządza komunikacją między usługą serwera Proxy aplikacji w chmurze i aplikacji w środowisku lokalnym. Łącznik używa tylko połączeń wychodzących, dzięki czemu nie trzeba otwierać żadnych portów przychodzących ani umieszczać niczego w strefie DMZ. Łączniki są bezstanowe i pobierania informacji z chmury, zgodnie z potrzebami. Aby uzyskać więcej informacji na temat łączników, takich jak jak one Równoważenie obciążenia i uwierzytelniania, zobacz [łączników serwera Proxy aplikacji usługi AD Azure zrozumienie](application-proxy-connectors.md).|
-| Usługi Active Directory (AD) | Usługi Active Directory działa lokalnie do uwierzytelniania dla kont domeny. Podczas logowania jednokrotnego jest skonfigurowany, łącznik komunikuje się z usługą AD, aby wykonać wszelkie wymagane dodatkowe uwierzytelnianie.
+| Active Directory (AD) | Usługi Active Directory działa lokalnie do uwierzytelniania dla kont domeny. Podczas logowania jednokrotnego jest skonfigurowany, łącznik komunikuje się z usługą AD, aby wykonać wszelkie wymagane dodatkowe uwierzytelnianie.
 | Aplikacja lokalna | Ponadto użytkownik jest w stanie uzyskać dostęp do aplikacji w środowisku lokalnym. 
 
 ## <a name="next-steps"></a>Kolejne kroki

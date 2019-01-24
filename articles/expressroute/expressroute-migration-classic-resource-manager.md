@@ -1,19 +1,19 @@
 ---
-title: 'Migrowanie sieci wirtualnych z wersji klasycznej do usługi Resource Manager — usługi ExpressRoute: Azure: PowerShell | Dokumentacja firmy Microsoft'
+title: 'Migracja sieci wirtualnej z klasycznej do usługi Resource Manager — usługi ExpressRoute: Azure: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Ta strona opisano, jak przeprowadzić migrację do usługi Resource Manager po przeniesieniu obwodu usługi ExpressRoute skojarzonych sieci wirtualnych.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/17/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: c9f013a6af0b6d232eff32a9827006ce3247db3c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7b95c8b230714e1ba9306620e58628104cd676c9
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136416"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401645"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrowanie usługi ExpressRoute skojarzonych sieci wirtualnych z wersji klasycznej do usługi Resource Manager
 
@@ -29,7 +29,7 @@ W tym artykule wyjaśniono, jak przeprowadzić migrację usługi ExpressRoute sk
 
     * [Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Rozbudowana technicznie migracja z obsługą platformy od modelu klasycznego do modelu opartego na usłudze Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-    * [Często zadawane pytania: Obsługiwanej przez platformę migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+    * [Często zadawane pytania: Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
     * [Przegląd najbardziej typowych błędów migracji i środki zaradcze](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Obsługiwane i nieobsługiwane scenariusze
@@ -38,6 +38,7 @@ W tym artykule wyjaśniono, jak przeprowadzić migrację usługi ExpressRoute sk
 * Sieci wirtualne, bramy i skojarzonych z nimi wdrożeń w ramach sieci wirtualnej, które są dołączone do obwodu usługi ExpressRoute z tą samą subskrypcją mogą zostać zmigrowane do środowiska usługi Resource Manager, bez żadnych przestojów. Możesz wykonać kroki opisane w dalszej części przeprowadzić migrację zasobów, takich jak sieci wirtualne, bramy i maszyny wirtualne wdrożone w ramach sieci wirtualnej. Należy się upewnić, że sieci wirtualne są skonfigurowane prawidłowo przed migracją. 
 * Sieci wirtualne, bramy i skojarzonych z nimi wdrożeń w ramach sieci wirtualnej, które nie znajdują się w innej subskrypcji niż obwód usługi ExpressRoute wymaga pewien Przestój, aby ukończyć migrację. Ostatnia sekcja dokumentu w tym artykule opisano kroki, aby wykonać migrację zasobów.
 * Nie można przeprowadzić migracji sieci wirtualnej przy użyciu zarówno bramę usługi ExpressRoute, jak i bramy sieci VPN.
+* Migracja między subskrypcjami obwodu usługi ExpressRoute nie jest obsługiwana. Aby uzyskać więcej informacji, zobacz [usług, których nie można przenieść](../azure-resource-manager/resource-group-move-resources.md#services-that-cannot-be-moved).
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Przenoszenie obwodu usługi ExpressRoute z wersji klasycznej do usługi Resource Manager
 Należy przenieść obwód usługi ExpressRoute z klasycznego środowiska usługi Resource Manager przed podjęciem próby migracji zasobów, które są dołączone do obwodu usługi ExpressRoute. Aby wykonać to zadanie, zobacz następujące artykuły:
@@ -81,5 +82,5 @@ W tej sekcji opisano kroki, aby wykonać migrację sieci wirtualnej, bramy i sko
 ## <a name="next-steps"></a>Kolejne kroki
 * [Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Rozbudowana technicznie migracja z obsługą platformy od modelu klasycznego do modelu opartego na usłudze Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
-* [Często zadawane pytania: Obsługiwanej przez platformę migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
+* [Często zadawane pytania: Obsługiwane platformy migracji zasobów rozwiązania IaaS z wersji klasycznej do usługi Azure Resource Manager](../virtual-machines/virtual-machines-windows-migration-classic-resource-manager.md)
 * [Przegląd najbardziej typowych błędów migracji i środki zaradcze](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

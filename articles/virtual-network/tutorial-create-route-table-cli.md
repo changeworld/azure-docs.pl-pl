@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 9b7e66e6789c1f24bbd784c9c3533ee2e2d678dc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89ac87436fb6807177acf3882dd6e923b1722bd5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981427"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849213"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem wiersza polecenia platformy Azure
 
@@ -78,7 +78,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
-Zanim skojarzysz tabelę tras z podsiecią, należy utworzyć sieć wirtualną i podsieć. Utwórz sieć wirtualną z jedną podsiecią z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create).
+Zanim skojarzysz tabelę tras z podsiecią, musisz utworzyć sieć wirtualną i podsieć. Utwórz sieć wirtualną z jedną podsiecią z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -89,7 +89,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-Utworzyć dwa dodatkowe podsieci przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create).
+Utworzyć dwa dodatkowe podsieci przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet).
 
 ```azurecli-interactive
 # Create a private subnet.

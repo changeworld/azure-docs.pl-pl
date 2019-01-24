@@ -2,17 +2,17 @@
 title: Usługa Azure Event Grid dostarczanie i ponawianie prób
 description: W tym artykule opisano, jak usługi Azure Event Grid dostarcza zdarzenia i sposób obsługi niedostarczone wiadomości.
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: 4d53c33daefaadb4c58ce500a5d564af7988b606
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.date: 01/01/2019
+ms.author: spelluru
+ms.openlocfilehash: b69215a76b332db9b994827705d6bbc3b48af5c8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077092"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465517"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Dostarczanie komunikatów siatki zdarzeń, a następnie spróbuj ponownie
 

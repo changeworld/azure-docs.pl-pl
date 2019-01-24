@@ -5,7 +5,7 @@ services: active-directory
 keywords: Enterprise stan ustawień mobilnego dostępu systemu windows w chmurze, często zadawane pytania dotyczące roaming stanu dla przedsiębiorstw
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: devices
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
@@ -18,12 +18,12 @@ ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 3825d527e520fae87d0dd2712df767090adad4e5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 417b909e4a5272b993a4696c1ef8d6718e055738
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248425"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452942"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów z ustawieniami Roaming stanu dla przedsiębiorstw w usłudze Azure Active Directory
 
@@ -42,7 +42,7 @@ Przed rozpoczęciem rozwiązywania problemów, sprawdź, czy użytkowników i ur
 ## <a name="information-to-include-when-you-need-help"></a>Informacje do uwzględnienia, gdy będziesz potrzebować pomocy
 Nie można rozwiązać problem z poniższych wskazówek, można skontaktować się z inżynierami pomocy technicznej. Gdy możesz skontaktować się z nimi, należy podać następujące informacje:
 
-* **Ogólny opis błędu**: są widoczne dla użytkownika komunikaty o błędach? Jeśli nie wystąpił żaden komunikat o błędzie, opisz nieoczekiwanego zachowania, które możesz zauważyć, że szczegółowo. Jakie funkcje są włączone do celów synchronizacji, a co to jest użytkownika oczekiwano synchronizacji? Jest wiele funkcji nie synchronizuje, czy jest izolowane do jednego?
+* **Ogólny opis błędu**: Czy są widoczne dla użytkownika komunikaty o błędach? Jeśli nie wystąpił żaden komunikat o błędzie, opisz nieoczekiwanego zachowania, które możesz zauważyć, że szczegółowo. Jakie funkcje są włączone do celów synchronizacji, a co to jest użytkownika oczekiwano synchronizacji? Jest wiele funkcji nie synchronizuje, czy jest izolowane do jednego?
 * **Użytkownicy, których to dotyczy** — są zsynchronizowane roboczego/niepowodzenia dla jednego użytkownika lub wielu użytkowników? Ile urządzeń biorących udział na użytkownika? Są je nie synchronizuje wszystkie lub niektóre z nich synchronizowania, a niektóre nie synchronizuje?
 * **Informacje o użytkowniku** — jakie tożsamość jest użytkownika za pomocą do logowania się na urządzeniu? Jak użytkownik loguje się do urządzenia? Są one częścią wybranej grupy zabezpieczeń mogą przeprowadzać synchronizacje? 
 * **Informacje o urządzeniu** — czy to urządzenie Azure przyłączone do usługi AD lub przyłączone do domeny? Jakie kompilacji włączeniu urządzenia? Jakie są najnowsze aktualizacje?
@@ -74,15 +74,15 @@ Roaming stanu dla przedsiębiorstw wymaga urządzenia do zarejestrowania w usłu
 **Potencjalny problem**: **WamDefaultSet** i **AzureAdJoined** zarówno "NO" w wartości pola, urządzenie zostało zarejestrowane w usłudze Azure AD i przyłączone do domeny i nie synchronizuje urządzenia. Jeśli jest on wyświetlany, urządzenie może być konieczne poczekanie, aż zasady, które mają być stosowane lub uwierzytelniania dla tego urządzenia nie powiodła się podczas nawiązywania połączenia z usługą Azure AD. Użytkownik może być konieczne Poczekaj kilka godzin, zasad, które mają być stosowane. Pozostałe kroki rozwiązywania problemów może obejmować ponawianie próby rejestracji automatycznej przy wylogowaniu i z powrotem w lub uruchamianie zadań w harmonogramie zadań. W niektórych przypadkach uruchamianie "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
 
 
-**Potencjalny problem**: pole **SettingsUrl** jest pusta i nie synchronizuje urządzenia. Użytkownik może ostatnio zalogowali się do urządzenia przed Roaming stanu dla przedsiębiorstw została włączona w portalu Azure Active Directory. Uruchom ponownie urządzenie i mieć dane logowania użytkownika. Opcjonalnie, w portalu, spróbuj o administratora IT, przejdź do **usługi Azure Active Directory** > **urządzeń** > **Roaming stanu dla przedsiębiorstw** Wyłącz i ponownie włącz **użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach**. Po włączeniu ponownie, uruchom ponownie urządzenie i mieć dane logowania użytkownika. Jeśli to nie rozwiąże problemu, **SettingsUrl** może być pusty w przypadku certyfikatu zły urządzenia. W przypadku uruchamiania "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
+**Potencjalny problem**: Pole **SettingsUrl** jest pusta i nie synchronizuje urządzenia. Użytkownik może ostatnio zalogowali się do urządzenia przed Roaming stanu dla przedsiębiorstw została włączona w portalu Azure Active Directory. Uruchom ponownie urządzenie i mieć dane logowania użytkownika. Opcjonalnie, w portalu, spróbuj o administratora IT, przejdź do **usługi Azure Active Directory** > **urządzeń** > **Roaming stanu dla przedsiębiorstw** Wyłącz i ponownie włącz **użytkownicy mogą synchronizować ustawień i danych aplikacji na urządzeniach**. Po włączeniu ponownie, uruchom ponownie urządzenie i mieć dane logowania użytkownika. Jeśli to nie rozwiąże problemu, **SettingsUrl** może być pusty w przypadku certyfikatu zły urządzenia. W przypadku uruchamiania "*dsregcmd.exe /leave*" w okno Wiersz polecenia z podwyższonym poziomem uprawnień, ponowne uruchamianie i podjęcie ponownej próby rejestracji może pomocy dotyczącej tego problemu.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Roaming stanu dla przedsiębiorstw i uwierzytelniania wieloskładnikowego 
 
 W pewnych okolicznościach Roaming stanu dla przedsiębiorstw może zakończyć się niepowodzeniem na synchronizowanie danych, jeśli skonfigurowano uwierzytelnianie wieloskładnikowe systemu Azure. Więcej informacji na temat tych objawów, zobacz dokument pomocy technicznej [KB3193683](https://support.microsoft.com/kb/3193683). 
 
-**Potencjalny problem**: Jeśli urządzenie jest skonfigurowany do wymagania uwierzytelniania wieloskładnikowego w portalu usługi Azure Active Directory, użytkownik może zakończyć się niepowodzeniem do synchronizacji ustawień podczas logowania się do urządzenia z systemem Windows 10 przy użyciu hasła. Ten typ konfiguracji usługi Multi-Factor Authentication ma na celu ochronę konta administratora platformy Azure. Administratorzy nadal można zsynchronizować, logując się do urządzeń z systemem Windows 10 za pomocą ich Microsoft Passport pracy numeru PIN lub wykonując uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
+**Potencjalny problem**: Jeśli urządzenie jest skonfigurowany do wymagania uwierzytelniania wieloskładnikowego w portalu usługi Azure Active Directory, może zakończyć się niepowodzeniem, synchronizowanie ustawień podczas logowania się do urządzenia z systemem Windows 10 przy użyciu hasła. Ten typ konfiguracji usługi Multi-Factor Authentication ma na celu ochronę konta administratora platformy Azure. Administratorzy nadal można zsynchronizować, logując się do urządzeń z systemem Windows 10 za pomocą ich Microsoft Passport pracy numeru PIN lub wykonując uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
 
-**Potencjalny problem**: synchronizacja może zakończyć się niepowodzeniem, jeśli administrator konfiguruje zasady dostępu warunkowego uwierzytelniania Multi-Factor Authentication usług federacyjnych Active Directory i wygaśnięcia ważności tokenu dostępu na urządzeniu. Upewnij się, zaloguj się, a następnie się wylogować, przy użyciu Microsoft Passport pracy numeru PIN lub wykonać uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
+**Potencjalny problem**: Synchronizacja może zakończyć się niepowodzeniem, jeśli administrator konfiguruje zasady dostępu warunkowego uwierzytelniania Multi-Factor Authentication usług federacyjnych Active Directory i wygaśnięcia ważności tokenu dostępu na urządzeniu. Upewnij się, zaloguj się, a następnie się wylogować, przy użyciu Microsoft Passport pracy numeru PIN lub wykonać uwierzytelnianie wieloskładnikowe podczas uzyskiwania dostępu do innych usług platformy Azure, takich jak Office 365.
 
 ### <a name="event-viewer"></a>Podgląd zdarzeń
 
@@ -166,7 +166,7 @@ W kroku oczyszczania oczyszczania następujące pliki:
 
 ---
 
-### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Identyfikator zdarzenia 6065:80070533, których ten użytkownik nie może się zalogować, ponieważ to konto jest obecnie wyłączona.  
+### <a name="event-id-6065-80070533-this-user-cant-sign-in-because-this-account-is-currently-disabled"></a>Identyfikator zdarzenia 6065: 80070533 ten użytkownik nie może się zalogować, ponieważ to konto jest obecnie wyłączona.  
 
 W Podglądzie zdarzeń Dzienniki SettingSync/Debug ten błąd może być widoczny, jeśli wygasły poświadczenia użytkownika. Ponadto mogą wystąpić, gdy dzierżawy nie miał automatycznie AzureRMS aprowizowane. 
 
@@ -175,9 +175,9 @@ W pierwszym przypadku należy mieć użytkownika, zaktualizuj swoje poświadczen
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Identyfikator zdarzenia 1098: Błąd: nie można wykonać operacji brokera tokenu 0xCAA5001C  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>Identyfikator zdarzenia 1098: Błąd: Operacja brokera tokenu 0xCAA5001C nie powiodła się  
 
-W Podglądzie zdarzeń w obszarze dzienniki usługi AAD/Operational tego błędu mogą być widoczne z 1104 zdarzeń: AP chmury AAD wtyczki wywołanie Get token zwróciło błąd: 0xC000005F. Ten problem występuje, gdy nie ma uprawnień lub własności atrybutów.  
+W Podglądzie zdarzeń w obszarze dzienniki usługi AAD/Operational tego błędu mogą być widoczne z 1104 zdarzeń: AP chmury AAD wtyczki wywołanie Get token zwrócony kod błędu: 0xC000005F. Ten problem występuje, gdy nie ma uprawnień lub własności atrybutów.  
 
 **Zalecana akcja**  
 Wykonaj kroki wymienione [KB3196528](https://support.microsoft.com/kb/3196528).  

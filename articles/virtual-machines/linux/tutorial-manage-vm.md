@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5605ac9f3ac4f9a1c85cfedf257cb721205564db
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613430"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466860"
 ---
-# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Samouczek: tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Samouczek: Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
 Maszyny wirtualne platformy Azure oferują w pełni konfigurowalne i elastyczne środowiska obliczeniowe. W tym samouczku opisano podstawowe elementy wdrożenia maszyny wirtualnej platformy Azure, takie jak wybieranie rozmiaru i obrazu maszyny wirtualnej oraz wdrażanie maszyny wirtualnej. Omawiane kwestie:
 
@@ -211,7 +211,7 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>Zmienianie rozmiaru maszyny wirtualnej
 
-Po wdrożeniu maszyny wirtualnej można zmienić jej rozmiar w celu zwiększenia lub zmniejszenia alokacji zasobów. Bieżący rozmiar maszyny wirtualnej można wyświetlić za pomocą polecenia [az vm show](/cli/azure/vm#az_vm_show):
+Po wdrożeniu maszyny wirtualnej można zmienić jej rozmiar w celu zwiększenia lub zmniejszenia alokacji zasobów. Bieżący rozmiar maszyny wirtualnej można wyświetlić za pomocą polecenia [az vm show](/cli/azure/vm):
 
 ```azurecli-interactive
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
@@ -228,7 +228,7 @@ Jeśli żądany rozmiar maszyny wirtualnej jest dostępny, można go zmienić dl
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-Jeśli żądany rozmiar jest niedostępny w bieżącym klastrze, przed rozpoczęciem operacji zmiany rozmiaru należy cofnąć przydział maszyny wirtualnej. Za pomocą polecenia [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) zatrzymaj maszynę wirtualną i cofnij jej przydział. Pamiętaj, że kiedy maszyna wirtualna zostanie ponownie włączona, wszelkie dane na dysku tymczasowym mogą zostać usunięte. Publiczny adres IP również się zmieni, chyba że używany jest statyczny adres IP. 
+Jeśli żądany rozmiar jest niedostępny w bieżącym klastrze, przed rozpoczęciem operacji zmiany rozmiaru należy cofnąć przydział maszyny wirtualnej. Za pomocą polecenia [az vm deallocate]( /cli/azure/vm) zatrzymaj maszynę wirtualną i cofnij jej przydział. Pamiętaj, że kiedy maszyna wirtualna zostanie ponownie włączona, wszelkie dane na dysku tymczasowym mogą zostać usunięte. Publiczny adres IP również się zmieni, chyba że używany jest statyczny adres IP. 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM

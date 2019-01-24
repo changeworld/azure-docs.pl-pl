@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 09464342bd39e57f6e637ce90adc7190d08340a9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 57d52412648cbe8a0791aa306075018a2092bf51
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265417"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827333"
 ---
 # <a name="about-azure-vm-backup"></a>Dotyczące funkcji Kopia zapasowa maszyny Wirtualnej platformy Azure
 
@@ -40,7 +40,7 @@ Oto, jak usługi Azure Backup wykonuje kopię zapasową maszyn wirtualnych platf
 
 Usługa Azure Backup nie szyfruje danych jako część procesu tworzenia kopii zapasowej. Usługa Azure Backup obsługuje kopii zapasowych maszyn wirtualnych platformy Azure, które są szyfrowane za pomocą usługi Azure Disk Encryption.
 
-- Kopii zapasowych maszyn wirtualnych szyfrowane za pomocą funkcji Bitlocker szyfrowania Key(BEK) tylko, a klucz szyfrowania bloków oraz klucz szyfrowania Key(KEK) jest obsługiwany, zarządzane i niezarządzane maszyn wirtualnych platformy Azure.
+- Kopii zapasowych maszyn wirtualnych szyfrowane za pomocą funkcji BitLocker szyfrowania Key(BEK) tylko, a klucz szyfrowania bloków oraz klucz szyfrowania Key(KEK) jest obsługiwany, zarządzane i niezarządzane maszyn wirtualnych platformy Azure.
 - BEK(secrets) i KEK(keys) kopii zapasowej są szyfrowane, dzięki czemu mogą odczytywać i używane tylko wtedy, gdy przywrócone do magazynu kluczy przez autoryzowanych użytkowników.
 - Ponieważ klucz szyfrowania bloków jest również kopię zapasową, w scenariuszach, gdzie klucz szyfrowania bloków zostało utracone lub autoryzowanych użytkowników można przywrócić klucz szyfrowania bloków do magazynu kluczy i odzyskać zaszyfrowanych maszyn wirtualnych. Kluczy i wpisów tajnych zaszyfrowanych maszyn wirtualnych kopię zapasową w postaci zaszyfrowanej, dzięki czemu może odczytywać nieautoryzowanym użytkownikom ani platformy Azure, lub użyj kopii zapasowej kluczy i wpisów tajnych. Tylko użytkownicy z odpowiedni poziom uprawnień można i przywracanie kopii zapasowej zaszyfrowanych maszyn wirtualnych, a także kluczy i wpisów tajnych.
 
@@ -69,11 +69,11 @@ Do wykonania migawek w uruchomionej aplikacji, Azure kopie zapasowe migawek spó
 
 W poniższej tabeli opisano różne typy spójności.
 
-**migawki** | **Na podstawie usługi VSS** | **Szczegóły** | **Odzyskiwanie**
+**migawki** | **Szczegóły** | **Odzyskiwanie** | **Zagadnienia**
 --- | --- | --- | ---
-**Spójna na poziomie aplikacji** | Tak (tylko Windows) | Wykonywanie kopii zapasowych spójnych aplikacji przechwytywania pamięci zawartości i oczekujących operacji We/Wy. Migawki spójne z aplikacji, użyj składnika zapisywania usługi VSS (lub pre lub używanego po nim skryptu dla systemu Linux), który zapewnienia spójności danych aplikacji, zanim wystąpi kopii zapasowej. | Podczas przywracania z migawki spójności aplikacji, maszyna wirtualna jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje mają swój początek w spójnym stanie.
-**Spójne na poziomie systemu plików** | Tak (tylko Windows) |  Kopie zapasowe spójne z pliku zapewnić spójne tworzenie kopii zapasowych plików na dysku, robienie wszystkie pliki w tym samym czasie.<br/><br/> Punkty odzyskiwania usługi Azure Backup są spójne dla pliku:<br/><br/> -Linux maszyn wirtualnych, kopie zapasowe, które nie mają wstępnie lub używanego po nim skrypty lub które mają skryptu, który uległ awarii.<br/><br/> — Kopie zapasowe maszyn wirtualnych Windows gdzie Usługa VSS nie powiodła się. | W przypadku odzyskiwania przy użyciu migawek spójna na poziomie plików, maszyna wirtualna jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje muszą implementować ich własny mechanizm "poprawki", aby upewnić się, że przywróconych danych są spójne.
-**Spójne na poziomie awarii** | Nie | Spójność awarii często zdarza się, wyłączaniu Maszynie wirtualnej platformy Azure w czasie wykonywania kopii zapasowej.  Tylko dane, które już istnieje na dysku w czasie wykonywania kopii zapasowej jest przechwytywane i kopii zapasowej.<br/><br/> Punktu odzyskiwania spójnego na poziomie awarii nie gwarantuje spójności danych dotyczące systemu operacyjnego lub aplikacji. | Istnieją żadnej gwarancji, ale zazwyczaj rozruchów maszyn wirtualnych i zgodny z dyskiem zaznacz, aby naprawić błędy uszkodzenia. Wszystkie dane w pamięci lub zapisu, które nie zostały przeniesione do dysku zostaną utracone. Aplikacje implementować własne Weryfikacja danych. Na przykład dla aplikacji bazy danych, jeśli dziennik transakcji zawiera wpisy, które nie znajdują się w bazie danych, oprogramowanie bazy danych przedstawia dopóki dane są spójne.
+**Spójna na poziomie aplikacji** | Wykonywanie kopii zapasowych spójnych aplikacji przechwytywania pamięci zawartości i oczekujących operacji We/Wy. Migawki spójne z aplikacji, użyj składnika zapisywania usługi VSS (lub pre lub używanego po nim skryptu dla systemu Linux), który zapewnienia spójności danych aplikacji, zanim wystąpi kopii zapasowej. | Podczas przywracania z migawki spójności aplikacji, maszyna wirtualna jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje mają swój początek w spójnym stanie. | W systemie Windows: Wszystkie składniki zapisywania usługi VSS powiodło się.<br/><br/> W systemie Linux: Wstępnie lub używanego po nim skrypty są konfigurowane i zakończyło się pomyślnie
+**Spójne na poziomie systemu plików** | Kopie zapasowe spójne z pliku zapewnić spójne tworzenie kopii zapasowych plików na dysku, robienie wszystkie pliki w tym samym czasie.<br/><br/> | W przypadku odzyskiwania przy użyciu migawek spójna na poziomie plików, maszyna wirtualna jest uruchamiany. Brak nie utraty lub uszkodzenia danych. Aplikacje muszą implementować ich własny mechanizm "poprawki", aby upewnić się, że przywróconych danych są spójne. | W systemie Windows: Niektóre składniki zapisywania usługi VSS nie powiodła się <br/><br/> W systemie Linux: Domyślne (Jeśli wstępnie lub używanego po nim skrypty nie są skonfigurowane lub nie powiodło się)
+**Spójne na poziomie awarii** | Spójność awarii często zdarza się, wyłączaniu Maszynie wirtualnej platformy Azure w czasie wykonywania kopii zapasowej.  Tylko dane, które już istnieje na dysku w czasie wykonywania kopii zapasowej jest przechwytywane i kopii zapasowej.<br/><br/> Punktu odzyskiwania spójnego na poziomie awarii nie gwarantuje spójności danych dotyczące systemu operacyjnego lub aplikacji. | Istnieją żadnej gwarancji, ale zazwyczaj rozruchów maszyn wirtualnych i zgodny z dyskiem zaznacz, aby naprawić błędy uszkodzenia. Wszystkie dane w pamięci lub zapisu, które nie zostały przeniesione do dysku zostaną utracone. Aplikacje implementować własne Weryfikacja danych. Na przykład dla aplikacji bazy danych, jeśli dziennik transakcji zawiera wpisy, które nie znajdują się w bazie danych, oprogramowanie bazy danych przedstawia dopóki dane są spójne. | Maszyna wirtualna jest w stanie zamknięcie
 
 
 ## <a name="service-and-subscription-limits"></a>Limity usług i subskrypcji

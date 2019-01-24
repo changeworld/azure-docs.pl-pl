@@ -3,19 +3,19 @@ title: Śledź zmiany za pomocą usługi Azure Automation
 description: Rozwiązanie Change Tracking pomaga w identyfikacji oprogramowania i zmianami w usłudze Windows, które nastąpiły w Twoim środowisku.
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d08471a3e0faa99cb245709cf72f9af097bc495
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: d29a2020d7e7a16e0bac0802a887a28e12630f03
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213216"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433020"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -202,9 +202,9 @@ Monitorowanie zmian w kluczach rejestru ma na celu wykrywanie punkty rozszerzeń
 > |---------|
 > |**HKEY\_LOCAL\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory wspólnej autostart wpisy, które podłączyć bezpośrednio do Eksploratora Windows i zazwyczaj wykonywania w procesie z Explorer.exe.    |
-> |**HKEY\_lokalnego\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory skryptów, które są uruchamiane przy uruchamianiu.     |
-> |**HKEY\_lokalnego\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory skryptów uruchamiania podczas zamykania systemu.     |
 > |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run**     |
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje klucze, które zostały załadowane przed zalogowaniem się użytkownika do swojego konta Windows. Klucz jest używany dla 32-bitowe programów na komputerach 64-bitowych.    |
@@ -218,17 +218,17 @@ Monitorowanie zmian w kluczach rejestru ma na celu wykrywanie punkty rozszerzeń
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory dla ikony nakładki obsługi rejestracji.|
 |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory dla ikony nakładki obsługi rejestracji dla 32-bitowe programów na komputerach 64-bitowych.|
-> |**HKEY\_lokalnego\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser obiekty pomocnicze**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory dla nowej wtyczki obiektu pomocnika przeglądarki programu Internet Explorer. Używane do dostępu do modelu DOM (Document Object) bieżącej strony i sterowanie nawigacją.|
-> |**HKEY\_lokalnego\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser obiekty pomocnicze**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory dla nowej wtyczki obiektu pomocnika przeglądarki programu Internet Explorer. Używane do dostępu do modelu DOM (Document Object) bieżącej strony i sterowanie nawigacją dla 32-bitowe programów na komputerach 64-bitowych.|
-> |**HKEY\_lokalnego\_MACHINE\Software\Microsoft\Internet Explorer\Extensions**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory dla nowych rozszerzeń programu Internet Explorer, takie jak niestandardowe narzędzie menu i przycisków paska narzędzi niestandardowych.|
-> |**HKEY\_lokalnego\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory dla nowych rozszerzeń programu Internet Explorer, takie jak niestandardowe narzędzie menu i przycisków na pasku narzędzi niestandardowych dla 32-bitowe programów na komputerach 64-bitowych.|
-> |**HKEY\_lokalnego\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje 32-bitowe sterowniki skojarzone z wavemapper wave1 i wave2, msacm.imaadpcm, .msadpcm, .msgsm610 i vidc. Podobnie jak w sekcji [drivers] w systemie. Pliku INI.|
-> |**HKEY\_lokalnego\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
+> |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitory 32-bitowe sterowniki skojarzone z wavemapper wave1 i wave2, msacm.imaadpcm, .msadpcm, .msgsm610 i vidc dla 32-bitowe programów na komputerach 64-bitowych. Podobnie jak w sekcji [drivers] w systemie. Pliku INI.|
 > |**HKEY\_lokalnego\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Monitoruje listę znanych lub często używane system biblioteki dll; Ten system uniemożliwia osób wykorzystanie uprawnienia katalogu aplikacji słabe przez usunięcie koń trojański wersji systemowej biblioteki dll.|
@@ -241,10 +241,10 @@ Następujące adresy są wymagane dla śledzenia zmian. Komunikacja z tych adres
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.Azure automation.us|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Korzystanie ze śledzenia zmian
 
@@ -279,3 +279,4 @@ Odwiedź samouczka na śledzenie zmian, aby dowiedzieć się więcej o korzystan
 > [Rozwiązywanie problemów dotyczących zmian w Twoim środowisku](automation-tutorial-troubleshoot-changes.md)
 
 * Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md) Aby wyświetlić szczegółowe dane rozwiązania change tracking.
+

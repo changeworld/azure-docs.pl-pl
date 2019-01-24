@@ -1,19 +1,19 @@
 ---
 title: Kopiowanie danych na urządzenie Microsoft Azure Data Box przy użyciu systemu plików NFS | Microsoft Docs
-description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box
+description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box za pośrednictwem systemu plików NFS
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/20/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 7ba6bc2cf3cf5286719bc6da519aabb364302af3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 1cd88e24b945bc6ce627b25b0645bf961039037b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550361"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359820"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk przy użyciu systemu plików NFS 
 
@@ -44,12 +44,13 @@ W zależności od wybranego konta magazynu dla urządzenia Data Box są tworzone
 
 W obszarze udziałów blokowych obiektów blob i stronicowych obiektów blob jednostki pierwszego poziomu są kontenerami, a jednostki drugiego poziomu są obiektami blob. W obszarze udziałów dla usługi Azure Files jednostki pierwszego poziomu są udziałami, a jednostki drugiego poziomu są plikami.
 
-Rozważmy następujący przykład. 
-
-- Konto magazynu: *Mystoracct*
-- Udział dla blokowych obiektów blob: *Mystoracct_BlockBlob/my-container/blob*
-- Udział dla stronicowych obiektów blob: *Mystoracct_PageBlob/my-container/blob*
-- Udział pliku: *Mystoracct_AzFile/my-share*
+W poniższej tabeli przedstawiono ścieżkę UNC do udziałów na urządzeniu Data Box i adres URL ścieżki w usłudze Azure Storage, pod który przekazywane są dane. Ostateczny adres URL w usłudze Azure Storage można uzyskać ze ścieżki udziału UNC.
+ 
+|                   |                                                            |
+|-------------------|--------------------------------------------------------------------------------|
+| Blokowe obiekty blob platformy Azure | <li>Ścieżka UNC do udziałów: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
+| Stronicowe obiekty blob platformy Azure  | <li>Ścieżka UNC do udziałów: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
+| Azure Files       |<li>Ścieżka UNC do udziałów: `//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Adres URL w usłudze Azure Storage: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
 
 Jeśli używasz komputera-hosta z systemem Linux, wykonaj następujące czynności, aby skonfigurować urządzenie Data Box na potrzeby zezwalania na dostęp do klientów sieciowego systemu plików.
 
@@ -71,6 +72,8 @@ Jeśli używasz komputera-hosta z systemem Linux, wykonaj następujące czynnoś
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
+    **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *$root* na koncie magazynu.
+
 ## <a name="copy-data-to-data-box"></a>Kopiowanie danych na urządzenie Data Box
 
 Po nawiązaniu połączenia z udziałami urządzenia Data Box następnym krokiem jest skopiowanie danych. Przed rozpoczęciem kopiowania danych należy uwzględnić następujące kwestie:
@@ -79,6 +82,7 @@ Po nawiązaniu połączenia z udziałami urządzenia Data Box następnym krokiem
 -  Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box limits](data-box-limits.md) (Ograniczenia usług Azure Storage i urządzenia Data Box). 
 - Jeśli dane przekazywane przy użyciu urządzenia Data Box będą jednocześnie przekazywane przez inne aplikacje, poza urządzeniem Data Box, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 - Nie zaleca się jednoczesnego używania protokołu SMB i sieciowego systemu plików ani kopiowania tych samych danych do tego samego końcowego miejsca docelowego na platformie Azure. W takich przypadkach nie można określić ostatecznego wyniku.
+- **Zawsze należy utworzyć w udziale folder na pliki, które chcesz skopiować, a następnie skopiować pliki do tego folderu**. Folder utworzony w ramach udziałów blokowych obiektów blob i stronicowych obiektów blob reprezentuje kontener, do którego dane są przekazywane w postaci obiektów blob. Plików nie można kopiować bezpośrednio do folderu *$root* na koncie magazynu.
 
 Jeśli korzystasz z komputera-hosta z systemem Linux, użyj narzędzia do kopiowania podobnego do narzędzia Robocopy. W systemie Linux są dostępne na przykład narzędzia [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) lub [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -117,6 +121,10 @@ W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego nal
      gdzie j określa liczbę przetwarzań równoległych, X = liczba równoległych kopii
 
      Na początku zaleca się użycie 16 równoległych kopii i zwiększanie liczby wątków w zależności od dostępności zasobów.
+
+- W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
+    
+   ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
 

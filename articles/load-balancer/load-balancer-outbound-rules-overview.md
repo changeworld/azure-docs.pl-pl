@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 3848e2caefbc8fdfb30f36272f1b13e120312a7c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185022"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439106"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -208,6 +208,7 @@ Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, 
 - Zakres konfigurowalnych limitu czasu bezczynności ruchu wychodzącego jest 4-66 minut (240 do 4000 w sekundach).
 - Moduł równoważenia obciążenia nie obsługuje protokołu ICMP dla wychodzących reguł NAT.
 - Portal nie można skonfigurować lub wyświetlać reguły dla ruchu wychodzącego.  Zamiast tego użyj szablonów, interfejs API REST, Az interfejsu wiersza polecenia w wersji 2.0 lub programu PowerShell.
+- Reguły ruchu wychodzącego jest stosowane tylko do podstawowej karty Sieciowej i podstawowa konfiguracja adresu IP.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,22 +1,22 @@
 ---
 title: Definiowanie nowego typu urządzenia w usłudze Azure IoT Central | Microsoft Docs
 description: Ten samouczek przedstawia, jak konstruktor może zdefiniować nowy typ urządzenia w aplikacji usługi Azure IoT Central. Dla typu można zdefiniować telemetrię, stan, właściwości i ustawienia.
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963603"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54199973"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
 Ten samouczek przedstawia, jak konstruktor może użyć szablonu urządzenia do zdefiniowania nowego typu urządzenia w aplikacji usługi Microsoft Azure IoT Central. Szablon urządzenia definiuje telemetrię, stan, właściwości i ustawienia dla danego typu urządzenia.
 

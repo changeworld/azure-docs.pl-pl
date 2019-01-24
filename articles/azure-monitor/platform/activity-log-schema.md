@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
-ms.component: logs
-ms.openlocfilehash: d5e57442a163c8a93adc39517285bd88affab2fe
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.subservice: logs
+ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353060"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438239"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
 **Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./tutorial-dashboards.md) znajduje się na końcu tego artykułu.
@@ -795,3 +795,4 @@ Podczas przesyłania strumieniowego dziennika aktywności platformy Azure na kon
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dowiedz się więcej o dzienniku aktywności (dawniej Audit Logs)](../../azure-monitor/platform/activity-logs-overview.md)
 * [Stream dziennika aktywności platformy Azure do usługi Event Hubs](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+

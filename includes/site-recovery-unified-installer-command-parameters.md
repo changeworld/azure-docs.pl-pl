@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: 4b0c8ad227b9aa8a0692ff453c3751aaa38a4849
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9d9790c9b3dbe3b130be999dd76092ae64f7b52c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166477"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841443"
 ---
 |Nazwa parametru| Typ | Opis| Możliwe wartości|
 |-|-|-|-|
@@ -17,7 +17,7 @@ ms.locfileid: "50166477"
 |/InstallLocation|Obowiązkowy|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
 |/MySQLCredsFilePath|Obowiązkowy|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
 |/VaultCredsFilePath|Obowiązkowy|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
-|/EnvType|Obowiązkowy|Typ środowiska, które ma być chronione |VMware<br>NonVMware|
+|/EnvType|Obowiązkowy|Typ środowiska, które mają być chronione |VMware<br>NonVMware|
 |/PSIP|Obowiązkowy|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
 |/CSIP|Obowiązkowy|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
 |/PassphraseFilePath|Obowiązkowy|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|

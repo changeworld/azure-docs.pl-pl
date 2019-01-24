@@ -4,18 +4,18 @@ description: Samouczek, który przeprowadzi Cię przez procesy tworzenia, testow
 keywords: przepływ pracy programu powershell, przykłady przepływu pracy programu powershell, program powershell przepływu pracy
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90d2dcb81a6b54d1a8437f0d3ae01aa96cdac3db
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 137518aadaf2f1cd38dd18184992c8723a7da5c0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165403"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435232"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mój pierwszy element Runbook przepływu pracy programu PowerShell
 
@@ -117,7 +117,7 @@ Nowo utworzony element runbook nadal działa w trybie roboczym. należy ją opub
 1. Zamknij okienko strumieni i okienko zadania, aby wrócić do okienka MyFirstRunbook.
 1. Kliknij pozycję **Zadania**, aby otworzyć okienko zadań dla tego elementu Runbook. Zawiera ono listę wszystkich zadań utworzonych przez dany element Runbook. Powinien być widoczny tylko jedno zadanie, ponieważ możesz uruchomiono zadanie tylko raz.
 
-   ![Zadania](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+   ![Stanowiska](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
 1. Możesz kliknąć to zadanie, aby otworzyć okienko zadania wyświetlone wcześniej po uruchomieniu elementu runbook. Dzięki temu możesz cofnąć się w czasie i wyświetlić szczegóły dowolnego zadania, które zostało utworzone dla określonego elementu Runbook.
 
@@ -205,3 +205,4 @@ Element runbook aktualnie umożliwia uruchomienie maszyny wirtualnej tego zostan
 * Aby rozpocząć pracę z elementami Runbook programu PowerShell, zobacz artykuł [My first PowerShell runbook](automation-first-runbook-textual-powershell.md) (Mój pierwszy element Runbook programu PowerShell).
 * Aby dowiedzieć się więcej na temat typów elementów Runbook, ich zalet i ograniczeń, zobacz artykuł [Azure Automation runbook types](automation-runbook-types.md) (Typy elementów Runbook usługi Azure Automation).
 * Aby uzyskać więcej informacji o funkcji obsługi skryptów programu PowerShell, zobacz artykuł [Native PowerShell script support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/) (Obsługa natywnych skryptów programu PowerShell w usłudze Azure Automation).
+

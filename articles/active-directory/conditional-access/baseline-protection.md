@@ -5,7 +5,7 @@ services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 585a4968672c8bcab0efb988d556e447983dfc5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 67f3299bcf5b852e05308a8e71004fcd613e83cf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158707"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446275"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -56,7 +56,7 @@ Ta zasada linii bazowej zapewnia opcji, aby wykluczyć użytkowników. Możesz c
 
 ## <a name="enable-a-baseline-policy"></a>Włącz zasady linii bazowej 
 
-Mimo że zasady linii bazowej w wersji zapoznawczej, są domyślnie nie jest aktywowany. Musisz ręcznie włączyć zasadę, aby ją uaktywnić. Jeśli zasady plan bazowy jest jawnie włączyć na etapie wersji zapoznawczej, ich pozostaną aktywne po tej funkcji staje się ogólnie dostępna. Zmiana zachowania planowane jest powód, dlaczego, oprócz Włączanie i wyłączanie, masz trzecią opcję, aby ustawić stan zasady: **automatycznie Włącz zasady w przyszłości**. Po zaznaczeniu tej opcji, możesz pozostawić zasady wyłączona w trakcie okresu zapoznawczego, ale zlecić firmie Microsoft, włącz je automatycznie, gdy ta funkcja staje się ogólnie dostępna. Jeśli nie zostanie jawnie włączone zasady linii bazowej teraz, a nie zaznaczaj **automatycznie Włącz zasady w przyszłości** opcji zasady pozostanie wyłączona podczas tej funkcji staje się ogólnie dostępna.
+Mimo że zasady linii bazowej w wersji zapoznawczej, są domyślnie nie jest aktywowany. Musisz ręcznie włączyć zasadę, aby ją uaktywnić. Jeśli zasady plan bazowy jest jawnie włączyć na etapie wersji zapoznawczej, ich pozostaną aktywne po tej funkcji staje się ogólnie dostępna. Zmiana zachowania planowane jest powód, dlaczego, oprócz Włączanie i wyłączanie, możesz masz trzecią opcję można ustawić stanu zasad: **Automatycznie Włącz zasady w przyszłości**. Po zaznaczeniu tej opcji, możesz pozostawić zasady wyłączona w trakcie okresu zapoznawczego, ale zlecić firmie Microsoft, włącz je automatycznie, gdy ta funkcja staje się ogólnie dostępna. Jeśli nie zostanie jawnie włączone zasady linii bazowej teraz, a nie zaznaczaj **automatycznie Włącz zasady w przyszłości** opcji zasady pozostanie wyłączona podczas tej funkcji staje się ogólnie dostępna.
 
 
 **Aby włączyć zasadę punktu odniesienia:**  

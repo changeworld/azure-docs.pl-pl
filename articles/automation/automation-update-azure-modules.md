@@ -3,18 +3,18 @@ title: Aktualizowanie modułów platformy Azure w usłudze Azure Automation
 description: W tym artykule opisano, jak można teraz zaktualizować wspólnego moduły programu Azure PowerShell zapewniany domyślnie w usłudze Azure Automation.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a60dd9af60328759e332514c8af061e50382798
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c0636a3e1fa50f90c68393aea910f36d38d8eaf5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634868"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54437271"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
 
@@ -72,4 +72,5 @@ Jeśli chcesz użyć określonej wersji modułu Azure PowerShell zamiast najnows
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej na temat moduły integracji oraz sposób tworzenia niestandardowych modułów do dalszej integracji usługi Automation z innych systemów, usług lub rozwiązania, zobacz [moduły integracji](automation-integration-modules.md).
+
 

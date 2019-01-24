@@ -1,7 +1,7 @@
 ---
-title: Uruchamianie eksperymentów oraz wnioskowania wewnątrz sieci wirtualnej
+title: Uruchamianie eksperymentów i wnioskowania w sieci wirtualnej
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak bezpiecznie uruchamiać eksperymenty uczenia maszynowego i wnioskowania wewnątrz usługi Azure Virtual Network. Ten artykuł nauczy Cię sposobu tworzenia obliczeniowych elementów docelowych, używane do uczenia modeli i wykonywania wnioskowania wewnątrz usługi Azure Virtual Network. Obejmuje ona również wymagania dotyczące zabezpieczonej sieci wirtualnych, takich jak wymaga portów przychodzących i wychodzących.
+description: Uruchamiaj eksperymenty uczenia maszynowego i wnioskowania zabezpieczanie wewnątrz usługi Azure Virtual Network. Dowiedz się, jak utworzyć obliczeniowych elementów docelowych do trenowania modelu oraz sposób wnioskowanie w ramach usługi Azure Virtual Network. Obejmuje ona również wymagania dotyczące zabezpieczonej sieci wirtualnych, takich jak wymaga portów przychodzących i wychodzących.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 1890f830f9b2a4b108328de056636335fd3746e3
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 21c4a9042a64a58f67f1f94c300b6438895eea5d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248900"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856285"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Bezpiecznego uruchamiania eksperymentów oraz wnioskowania wewnątrz usługi Azure Virtual Network
 

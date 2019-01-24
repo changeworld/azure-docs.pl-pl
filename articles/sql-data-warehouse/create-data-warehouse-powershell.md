@@ -1,5 +1,5 @@
 ---
-title: 'Szybki Start: Tworzenie usługi Azure SQL Data Warehouse — Azure Powershell | Dokumentacja firmy Microsoft'
+title: 'Szybki start: Tworzenie usługi Azure SQL Data Warehouse — Azure Powershell | Dokumentacja firmy Microsoft'
 description: Szybko utworzyć serwer logiczny SQL Database, regułę zapory na poziomie serwera i magazyn danych przy użyciu programu Azure PowerShell.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,20 +10,20 @@ ms.component: manage
 ms.date: 11/15/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 60bd7cc2084ce64477cf89a5fd28d9a505fbfbfb
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 22ccc11d1eb74fd868fd740f02311baeb5ac5987
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852643"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433615"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki Start: Tworzenie i wysyłanie zapytań usługi Azure SQL data warehouse przy użyciu programu Azure PowerShell
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki start: Tworzenie i wysyłanie zapytań usługi Azure SQL data warehouse przy użyciu programu Azure PowerShell
 
 Szybkie tworzenie usługi Azure SQL data warehouse przy użyciu programu Azure PowerShell.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.1.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, z jakiej wersji korzystasz obecnie. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.1.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, z jakiej wersji korzystasz obecnie. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
 
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Aby zobaczyć, której subskrypcji używasz, uruchom [Get-AzureRmSubscription](/
 Get-AzureRmSubscription
 ```
 
-Jeśli musisz użyć innej subskrypcji niż domyślna, uruchom [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
+Jeśli musisz użyć subskrypcji innej niż domyślna, uruchom polecenie [Set-AzureRmContext](/powershell/module/azurerm.profile/set-azurermcontext).
 
 ```powershell
 Set-AzureRmContext -SubscriptionName "MySubscription"
@@ -122,16 +122,16 @@ New-AzureRmSqlDatabase `
 
 Wymagane parametry:
 
-* **RequestedServiceObjectiveName**: ilość [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) one żądania. Wydłużenie tę kwotę zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności](memory-and-concurrency-limits.md).
-* **DatabaseName**: nazwę magazynu danych SQL, który tworzysz.
+* **RequestedServiceObjectiveName**: Ilość [jednostkami magazynu danych](what-is-a-data-warehouse-unit-dwu-cdwu.md) one żądania. Wydłużenie tę kwotę zwiększa koszt obliczeń. Aby uzyskać listę obsługiwanych wartości, zobacz [limity pamięci i współbieżności](memory-and-concurrency-limits.md).
+* **DatabaseName**: Nazwa magazynu danych SQL, który tworzysz.
 * **ServerName**: Nazwa serwera, którego używasz do tworzenia.
-* **ResourceGroupName**: Grupa zasobów jest używany. Aby znaleźć grupy zasobów dostępne w ramach subskrypcji, użyj polecenia cmdlet Get-AzureResource.
-* **Edition**: musi mieć wartość „DataWarehouse”, aby utworzyć magazyn SQL Data Warehouse.
+* **ResourceGroupName**: Grupy zasobów, której używasz. Aby znaleźć grupy zasobów dostępne w ramach subskrypcji, użyj polecenia cmdlet Get-AzureResource.
+* **Wersja**: Musi mieć wartość "DataWarehouse" Aby utworzyć magazyn danych SQL.
 
 Opcjonalne parametry:
 
-- **CollationName**: sortowanie domyślne, gdy sortowanie nie jest określone, to COLLATE SQL_Latin1_General_CP1_CI_AS. Nie można zmienić sortowania bazy danych.
-- **MaxSizeBytes**: domyślny maksymalny rozmiar bazy danych to 10 GB.
+- **CollationName**: Sortowanie domyślne, jeśli nie zostanie określony, to SQL_Latin1_General_CP1_CI_AS. Nie można zmienić sortowania bazy danych.
+- **MaxSizeBytes**: Domyślny maksymalny rozmiar bazy danych wynosi 10 GB.
 
 Aby uzyskać więcej informacji na temat opcji parametrów, zobacz [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase).
 

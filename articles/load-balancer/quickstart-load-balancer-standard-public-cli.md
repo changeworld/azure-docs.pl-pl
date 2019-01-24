@@ -4,7 +4,7 @@ description: W tym samouczku przedstawiono sposób tworzenia publicznego modułu
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e4429c5ec808b561360f5088236b16a9fa6a276a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3c13388ea7a4e3a3016f7560a523c93c1fcb6c0c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955133"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468322"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Szybki start: tworzenie usługi Load Balancer w warstwie Standardowa w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Szybki start: Tworzenie usługi Load Balancer w warstwie Standardowa w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
 W tym przewodniku Szybki start przedstawiono sposób tworzenia usługi Load Balancer w warstwie Standardowa. W celu przetestowania modułu równoważenia obciążenia wdrożysz dwie maszyny wirtualne z systemem Ubuntu Server i zrównoważysz obciążenie aplikacji internetowej między dwiema maszynami wirtualnymi.
 
@@ -34,7 +34,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group#create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
+Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi.
 
 W poniższym przykładzie zostanie utworzona grupa zasobów o nazwie *myResourceGroupSLB* w lokalizacji *eastus*:
 
@@ -46,7 +46,7 @@ W poniższym przykładzie zostanie utworzona grupa zasobów o nazwie *myResource
 
 ## <a name="create-a-public-standard-ip-address"></a>Tworzenie publicznego adresu IP w warstwie Standardowa
 
-Aby uzyskać dostęp do aplikacji internetowej za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczne adresy IP w warstwie Standardowa. Użyj polecenia [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create), aby utworzyć publiczny adres IP w warstwie Standardowa o nazwie *myPublicIP* w grupie zasobów *myResourceGroupSLB*.
+Aby uzyskać dostęp do aplikacji internetowej za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Usługa Load Balancer w warstwie Standardowa obsługuje tylko publiczne adresy IP w warstwie Standardowa. Użyj polecenia [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip), aby utworzyć publiczny adres IP w warstwie Standardowa o nazwie *myPublicIP* w grupie zasobów *myResourceGroupSLB*.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
@@ -62,7 +62,7 @@ W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania następ
 
 ### <a name="create-the-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
 
-Za pomocą polecenia [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) utwórz publiczną usługę Azure Load Balancer o nazwie **myLoadBalancer**, zawierającą pulę frontonu o nazwie **myFrontEnd** i pulę zaplecza o nazwie **myBackEndPool**, która jest skojarzona z publicznym adresem IP **myPublicIP** utworzonym w poprzednim kroku.
+Za pomocą polecenia [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) utwórz publiczną usługę Azure Load Balancer o nazwie **myLoadBalancer**, zawierającą pulę frontonu o nazwie **myFrontEnd** i pulę zaplecza o nazwie **myBackEndPool**, która jest skojarzona z publicznym adresem IP **myPublicIP** utworzonym w poprzednim kroku.
 
 ```azurecli-interactive
   az network lb create \
@@ -76,7 +76,7 @@ Za pomocą polecenia [az network lb create](https://docs.microsoft.com/cli/azure
 
 ### <a name="create-the-health-probe"></a>Tworzenie sondy kondycji
 
-Sonda kondycji sprawdza wszystkie wystąpienia maszyny wirtualnej, aby upewnić się, że mogą wysyłać ruch sieciowy. Wystąpienie maszyny wirtualnej, w przypadku którego sprawdzanie kondycji za pomocą sondy nie powiodło się, jest usuwane z modułu równoważenia obciążenia do momentu ponownego przejścia do trybu online i pomyślnego sprawdzenia kondycji. Utwórz sondę kondycji za pomocą polecenia [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) w celu monitorowania kondycji maszyn wirtualnych. 
+Sonda kondycji sprawdza wszystkie wystąpienia maszyny wirtualnej, aby upewnić się, że mogą wysyłać ruch sieciowy. Wystąpienie maszyny wirtualnej, w przypadku którego sprawdzanie kondycji za pomocą sondy nie powiodło się, jest usuwane z modułu równoważenia obciążenia do momentu ponownego przejścia do trybu online i pomyślnego sprawdzenia kondycji. Utwórz sondę kondycji za pomocą polecenia [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) w celu monitorowania kondycji maszyn wirtualnych. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -89,7 +89,7 @@ Sonda kondycji sprawdza wszystkie wystąpienia maszyny wirtualnej, aby upewnić 
 
 ### <a name="create-the-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
 
-Reguła modułu równoważenia obciążenia definiuje konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Utwórz regułę modułu równoważenia obciążenia *myLoadBalancerRuleWeb* za pomocą polecenia [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#create) w celu nasłuchiwania na porcie 80 w puli frontonu *myFrontEnd* i wysyłania ruchu sieciowego o zrównoważonym obciążeniu do puli adresów zaplecza *myBackEndPool*, również przy użyciu portu 80. 
+Reguła modułu równoważenia obciążenia definiuje konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Utwórz regułę modułu równoważenia obciążenia *myLoadBalancerRuleWeb* za pomocą polecenia [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) w celu nasłuchiwania na porcie 80 w puli frontonu *myFrontEnd* i wysyłania ruchu sieciowego o zrównoważonym obciążeniu do puli adresów zaplecza *myBackEndPool*, również przy użyciu portu 80. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -110,7 +110,7 @@ Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu r�
 
 ### <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Utwórz sieć wirtualną o nazwie *myVnet* z podsiecią o nazwie *mySubnet* w grupie zasobów *myResourceGroup* przy użyciu polecenia [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create).
+Utwórz sieć wirtualną o nazwie *myVnet* z podsiecią o nazwie *mySubnet* w grupie zasobów *myResourceGroup* przy użyciu polecenia [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \

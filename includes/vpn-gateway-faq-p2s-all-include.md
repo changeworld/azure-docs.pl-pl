@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/21/2018
+ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 55c9d9942272821de5724568ff58fe27c1641eb2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9fd64e4a9eb100b00dc4597042321b21466f2c7d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54012129"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54414471"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -70,7 +70,7 @@ Nie. Możesz używać wyłącznie natywnego klienta sieci VPN w systemie Windows
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Czy platforma Azure obsługuje sieć VPN z protokołem IKEv2 w systemie Windows?
 
-Protokół IKEv2 jest obsługiwany w systemach Windows 10 i Server 2016. Jednak aby można było używać protokołu IKEv2, należy zainstalować aktualizacje i lokalnie ustawić wartość klucza rejestru. Wersje systemu operacyjnego starsze niż Windows 10 nie są obsługiwane i mogą używać tylko protokołu SSTP.
+Protokół IKEv2 jest obsługiwany w systemach Windows 10 i Server 2016. Jednak aby można było używać protokołu IKEv2, należy zainstalować aktualizacje i lokalnie ustawić wartość klucza rejestru. Wersje systemu operacyjnego przed systemu Windows 10 nie są obsługiwane i można używać tylko protokołu SSTP lub OpenVPN.
 
 Aby przygotowywać system Windows 10 lub Server 2016 pod kątem protokołu IKEv2:
 

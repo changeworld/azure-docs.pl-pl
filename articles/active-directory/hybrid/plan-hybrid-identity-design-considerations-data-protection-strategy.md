@@ -4,7 +4,7 @@ description: Można zdefiniować strategię ochrony danych dla Twojego rozwiąza
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: e76fd1f4-340a-492a-84d9-e05f3b7cc396
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 20782679a4e73c029d6c83fd3bc57914b4d28691
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bef5671637b26f4fd0d0c27211edca946c395cdf
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865050"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468560"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategię ochrony danych do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w:
@@ -118,32 +118,32 @@ Po użytkownik jest uwierzytelniany przy użyciu usługi Azure AD, jest ważne d
 
 Każdy interakcja w diagramie pokazano na rysunku x reprezentuje jeden scenariusz kontroli dostępu, który może być objętych przez usługę Azure AD. Poniżej są opis poszczególnych scenariuszy:
 
-  1. Dostęp warunkowy do aplikacji, które są hostowane lokalnie: można używać zarejestrowanych urządzeń z zasadami dostępu dla aplikacji, które są skonfigurowane do korzystania z usług AD FS w systemie Windows Server 2012 R2.
+  1. Dostęp warunkowy do aplikacji, które są hostowane lokalnie: Zarejestrowane urządzenia można używać z zasadami dostępu dla aplikacji, które są skonfigurowane do korzystania z usług AD FS w systemie Windows Server 2012 R2.
 
-  2. Kontrola dostępu do portalu Azure: platforma Azure umożliwia również kontrolować dostęp do portalu przy użyciu kontroli dostępu opartej na rolach (RBAC)). Ta metoda umożliwia firmie ograniczyć liczbę operacji, które osoba można wykonać w witrynie Azure portal. Za pomocą funkcji RBAC do kontrolowania dostępu do portalu, Administratorzy IT mogą delegować dostęp przy użyciu następujących metod zarządzania dostępu:
+  2. Kontrola dostępu do witryny Azure portal:  Platforma Azure umożliwia również kontrolować dostęp do portalu przy użyciu kontroli dostępu opartej na rolach (RBAC)). Ta metoda umożliwia firmie ograniczyć liczbę operacji, które osoba można wykonać w witrynie Azure portal. Za pomocą funkcji RBAC do kontrolowania dostępu do portalu, Administratorzy IT mogą delegować dostęp przy użyciu następujących metod zarządzania dostępu:
 
-   - Przypisanie roli oparte na grupach: dostęp można przypisać do grup usługi Azure AD, które mogą być synchronizowane z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, których organizacja wprowadziła narzędzia i procesy do zarządzania grupami. Można również użyć funkcji zarządzania delegowanej grupy usługi Azure AD Premium.
-   - Użyj wbudowanych ról na platformie Azure: można użyć trzech ról — właściciela, współautora i czytelnika, upewnij się, że użytkownicy i grupy mają uprawnienia do wykonania zadania, których potrzebują do wykonania swoich zadań.
-   -  Szczegółowe dostęp do zasobów: można przypisać role do użytkowników i grup dla określonej subskrypcji, grupy zasobów lub poszczególnych zasobów platformy Azure, takich jak witryny sieci Web lub bazy danych. W ten sposób możesz upewnij się, że użytkownicy mają dostęp do wszystkich zasobów, które są im potrzebne i Brak dostępu do zasobów, które ich nie trzeba zarządzać.
+   - Przypisanie roli oparte na grupach: Dostęp można przypisać do grup usługi Azure AD, które mogą być synchronizowane z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, których organizacja wprowadziła narzędzia i procesy do zarządzania grupami. Można również użyć funkcji zarządzania delegowanej grupy usługi Azure AD Premium.
+   - Użyj wbudowanych ról na platformie Azure: Można użyć trzech ról — właściciela, współautora i czytelnika, upewnij się, że użytkownicy i grupy mają uprawnienia do wykonania zadania, których potrzebują do wykonania swoich zadań.
+   -  Szczegółowe dostęp do zasobów: Role można przypisać do użytkowników i grup dla określonej subskrypcji, grupy zasobów lub poszczególnych zasobów platformy Azure, takich jak witryny sieci Web lub bazy danych. W ten sposób możesz upewnij się, że użytkownicy mają dostęp do wszystkich zasobów, które są im potrzebne i Brak dostępu do zasobów, które ich nie trzeba zarządzać.
 
    > [!NOTE]
    > Jeśli tworzysz aplikacje, aby dostosować kontroli dostępu dla nich istnieje również możliwość role aplikacji w usłudze Azure AD na potrzeby autoryzacji. Przejrzyj ten [przykład aplikacji sieci Web-RoleClaims-DotNet](https://github.com/AzureADSamples/WebApp-RoleClaims-DotNet) na temat tworzenia aplikacji, aby używać tej funkcji.
 
 
-  3. Dostęp warunkowy dla aplikacji usługi Office 365 z usługą Microsoft Intune: Administratorzy IT mogą aprowizować zasady dostępu warunkowego urządzeń, aby zabezpieczyć zasoby firmowe, w tym samym czasie, dzięki czemu pracownicy przetwarzający informacje na zgodnych urządzeniach dostęp do usług. 
+  3. Dostęp warunkowy dla aplikacji usługi Office 365 z usługą Microsoft Intune:  Administratorzy IT mogą aprowizować zasady dostępu warunkowego urządzeń, aby zabezpieczyć zasoby firmowe, w tym samym czasie, dzięki czemu pracownicy przetwarzający informacje na zgodnych urządzeniach dostęp do usług. 
   
-  4. Dostęp warunkowy dla aplikacji Saas: [tej funkcji](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umożliwia skonfigurowanie reguł dostępu dla aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników, nie w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można zastosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymagania dotyczące uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji sieci.
+  4. Dostęp warunkowy dla aplikacji Saas: [Ta funkcja](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umożliwia skonfigurowanie reguł dostępu dla aplikacji usługi Multi-Factor authentication i możliwość blokowania dostępu dla użytkowników, nie w zaufanej sieci. Reguły uwierzytelniania wieloskładnikowego można zastosować do wszystkich użytkowników, które są przypisane do aplikacji lub tylko dla użytkowników z określonych grup zabezpieczeń. Użytkownicy mogą być wyłączone z wymagania dotyczące uwierzytelniania wieloskładnikowego, jeśli uzyskują dostęp do aplikacji z adresu IP, który w wewnątrz organizacji sieci.
 
 Ponieważ opcje kontroli dostępu korzysta wielowarstwowego podejścia, porównania między te opcje nie są stosowane dla tego zadania. Upewnij się, że są wykorzystaniu wszystkie opcje dostępne dla każdego scenariusza, który wymaga do kontrolowania dostępu do zasobów.
 
 ## <a name="define-incident-response-options"></a>Zdefiniuj opcje odpowiedzi na zdarzenia
 Usługa Azure AD może pomóc zespołowi IT tożsamości potencjalne zagrożenia bezpieczeństwa w środowisku przez monitorowanie aktywności użytkownika. IT może używać dostępu usługi Azure AD i raporty użycia, aby uzyskać wgląd w integralność i bezpieczeństwo katalogu organizacji. Dzięki tym informacjom administrator IT może lepiej zidentyfikować potencjalne zagrożenia bezpieczeństwa może być tak, aby ich odpowiednio zaplanować ograniczyć te zagrożenia.  [Subskrypcję usługi Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) ma zestaw raportów dotyczących zabezpieczeń, które można włączyć IT, aby uzyskać te informacje. [Raporty usługi Azure AD](../reports-monitoring/overview-reports.md) są podzielone na następujące kategorie:
 
-* **Raporty anomalii**: zawiera zdarzenia logowania, które zostały odnalezione jako nietypowe. Celem jest każą pamiętać o tych działań i pozwalają umożliwiają określenie, czy zdarzenie jest podejrzane.
-* **Raport aplikacji zintegrowanych**: dają wgląd w sposób używania aplikacji w chmurze w Twojej organizacji. Usługa Azure Active Directory oferuje integrację z tysięcy aplikacji w chmurze.
-* **Raporty o błędach**: informują o błędach, które mogą wystąpić podczas aprowizowania kont do aplikacji zewnętrznych.
-* **Raporty dotyczące poszczególnych użytkowników**: wyświetlić urządzenia/logowanie w dane aktywności dla określonego użytkownika.
-* **Dzienniki aktywności**: zawiera rekord wszystkich zdarzeń inspekcji w ciągu ostatnich 24 godzinach, ostatnich 7 dni, lub ostatnich 30 dni, a także działania zmiany w grupie i działanie resetowania i rejestracji hasła.
+* **Raporty anomalii**: Zawiera zdarzenia logowania, które zostały odnalezione jako nietypowe. Celem jest każą pamiętać o tych działań i pozwalają umożliwiają określenie, czy zdarzenie jest podejrzane.
+* **Raport aplikacji zintegrowanych**: Zapewnia wgląd w sposób są używane w aplikacjach w chmurze w Twojej organizacji. Usługa Azure Active Directory oferuje integrację z tysięcy aplikacji w chmurze.
+* **Raporty o błędach**: Wskazują błędy, które mogą wystąpić podczas aprowizowania kont do aplikacji zewnętrznych.
+* **Raporty dotyczące poszczególnych użytkowników**: Wyświetl urządzenia/logowanie w dane aktywności dla określonego użytkownika.
+* **Dzienniki aktywności**: Zawiera rekord wszystkich zdarzeń inspekcji w ciągu ostatnich 24 godzinach, ostatnich 7 dni, lub ostatnich 30 dni, a także działania zmiany w grupie i działanie resetowania i rejestracji hasła.
 
 > [!TIP]
 > Inny raport, który może również pomóc zespół reagowania na zdarzenia, pracujący nad przypadkiem jest [użytkownik z ujawnionymi poświadczeniami](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) raportu. Ten raport prezentuje dopasowań między listą ujawnione poświadczenia i dzierżawy.

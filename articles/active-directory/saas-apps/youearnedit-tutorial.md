@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 3011d44d-dfcf-4061-888f-cff90fbc8150
 ms.service: Azure-Active-Directory
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/6/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: fd65d6a5d210b4b0549236ec39844e36480b10c9
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5b3746a1e29f436c277fd238e13fd46010941824
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790262"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją YouEarnedIt
 
@@ -78,8 +78,8 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z apli
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji YouEarnedIt](#configure-youearnedit-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-4. **[Tworzenie użytkownika testowego aplikacji YouEarnedIt](#create-youearnedit-test-user)** — aby mieć w aplikacji YouEarnedIt odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
-5. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji YouEarnedIt](#create-youearnedit-test-user)** — aby mieć w aplikacji YouEarnedIt odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -104,22 +104,24 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji YouEarnedI
 
     ![Informacje o domenie aplikacji YouEarnedIt i logowaniu jednokrotnym](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następujących wzorców: 
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następujących wzorców:
+
     | Środowisko  | Wzorce  |
     |:--- |:--- |
     | Produkcja | `https://<company name>.youearnedit.com/users/sign_in` |
     | Piaskownica  |`https://<company name>.sandbox.youearnedit.com/users/sign_in` |
 
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następujących wzorców:
+
     | Środowisko  | Wzorce  |
     |:--- |:--- |
     | Produkcja | `<company name>.youearnedit.com` |
     | Piaskownica  |`<company name>.sandbox.youearnedit.com` |
 
-    > [!NOTE] 
+    > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z przypisanym menedżerem ds. sukcesu klientów aplikacji YouEarnedIt w celu uzyskania tych wartości.
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
@@ -192,11 +194,10 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 W tej sekcji utworzysz użytkownika Britta Simon w aplikacji YouEarnedIt. We współpracy z przypisanym menedżerem ds. sukcesu klientów aplikacji YouEarnedIt dodaj użytkowników na platformie YouEarnedIt.
 
->[!NOTE]
->Aplikacja YouEarnedIt oczekuje, że dostawca tożsamości dostarczy w atrybucie NameID wartość EmailAddress lub UserName. Uwierzytelnianie nie powiedzie się, jeśli odpowiednia wartość UserName lub EmailAddress nie zostanie znaleziona w bazie danych lub nie wystąpi jej dokładna zgodność. Będzie to wymagało zaimportowania kont do systemu YouEarnedIt przed zintegrowaniem logowania jednokrotnego (zwykle za pośrednictwem interfejsu API lub importu danych w formacie CSV).
+> [!NOTE]
+> Aplikacja YouEarnedIt oczekuje, że dostawca tożsamości dostarczy w atrybucie NameID wartość EmailAddress lub UserName. Uwierzytelnianie nie powiedzie się, jeśli odpowiednia wartość UserName lub EmailAddress nie zostanie znaleziona w bazie danych lub nie wystąpi jej dokładna zgodność. Będzie to wymagało zaimportowania kont do systemu YouEarnedIt przed zintegrowaniem logowania jednokrotnego (zwykle za pośrednictwem interfejsu API lub importu danych w formacie CSV).
 
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
@@ -209,4 +210,3 @@ Po kliknięciu kafelka YouEarnedIt w panelu dostępu powinno nastąpić automaty
 - [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

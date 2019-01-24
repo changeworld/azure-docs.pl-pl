@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/11/2017
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: eb5f508916ef0944a61d556725ae1ba04123584b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 71e8e363a02e08a099d9051c7f851e11bbd9b80b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53258308"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467285"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Co to jest interfejs API wyszukiwania obrazów Bing?
 
@@ -32,7 +32,7 @@ Chociaż wyszukiwanie obrazów Bing przede wszystkim znajduje i zwraca odpowiedn
 
 | Cecha                                                                                                                                                                                 | Opis                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Sugerowanie terminów wyszukiwania w czasie rzeczywistym](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries#using-and-suggesting-search-terms) | Ulepsz działanie aplikacji przy użyciu [interfejsu API automatycznego sugerowania Bing](../bing-autosuggest/get-suggested-search-terms.md), aby wyświetlać sugerowane terminy wyszukiwania w miarę ich wpisywania. |
+| [Sugerowanie terminów wyszukiwania w czasie rzeczywistym](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) | Ulepsz działanie aplikacji przy użyciu [interfejsu API automatycznego sugerowania Bing](../bing-autosuggest/get-suggested-search-terms.md), aby wyświetlać sugerowane terminy wyszukiwania w miarę ich wpisywania. |
 | [Filtrowanie i ograniczanie wyników obrazu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#filtering-images)                       | Filtruj obrazy, które zwraca usługa Bing, edytując parametry zapytania.                                                                                                       |
 | [Przycinanie, zmienianie rozmiaru i wyświetlania miniatur](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/resize-and-crop-thumbnails)                                                | Edytuj i wyświetlaj podgląd miniatur obrazów zwróconych przez wyszukiwanie obrazów Bing.                                                                                      |
 | [Przestawianie i rozwijanie zapytań wyszukiwania użytkowników](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries#pivoting-the-query)               | Zwiększ możliwości wyszukiwania, dołączając i wyświetlając sugerowane przez usługę Bing terminy wyszukiwania do zapytania.                                                                    |

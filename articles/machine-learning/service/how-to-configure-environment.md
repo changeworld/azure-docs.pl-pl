@@ -10,14 +10,14 @@ ms.component: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ef62157644e55ed291562f581389228b5776f51
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f53b3cec843ca8016c61a360025b5e731b96f55
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353230"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815875"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -55,7 +55,7 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 
 - W Windows należy wiersz polecenia lub wiersz Anaconda (zainstalowanych w ramach pakietu Anaconda i Miniconda).
 
-## <a id="anotebooks"></a>Notesy platformy Azure
+## <a id="aznotebooks"></a>Notesy platformy Azure
 
 [Notesy platformy Azure](https://notebooks.azure.com) (wersja zapoznawcza) to opracowywanie interakcyjne środowisko w chmurze platformy Azure. Jest najprostszym sposobem rozpoczęcia pracy za pomocą usługi Azure Machine Learning.
 
@@ -64,17 +64,21 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 
 Aby rozpocząć tworzenie aplikacji za pomocą notesów usługi Azure, zobacz [wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md).
 
+Domyślnie notesów usługi Azure korzysta z warstwy bezpłatna usługa, która jest ograniczony do 4GB pamięci i 1GB danych. Można jednak usunąć te limity, dołączając wystąpienia maszyny wirtualnej do nauki o danych do projektu notesy platformy Azure. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
 Maszyny DSVM jest dostosowany obraz maszyny wirtualnej (VM). Jest przeznaczony do pracy nauki o danych, która jest wstępnie skonfigurowana za pomocą:
 
-  - Pakietów, takich jak TensorFlow, PyTorch, Scikit-learn, XGBoost i Azure Machine Learning zestawu SDK.
-  - Narzędzia do analizy danych popularnych takich jak Spark, jak i testowania odzyskiwania po awarii.
-  - Narzędzia platformy Azure, takich jak wiersza polecenia platformy Azure, narzędzia AzCopy i Eksploratora usługi Storage.
-  - Zintegrowanych środowisk projektowych (IDE) Visual Studio Code, platformy PyCharm i programu RStudio.
-  - Serwer notesu programu Jupyter. 
+  - Pakietów, takich jak TensorFlow, PyTorch, Scikit-learn, XGBoost i Azure Machine Learning zestawu SDK
+  - Narzędzi nauki o danych popularne, takich jak Spark, jak i testowania odzyskiwania po awarii
+  - Narzędzia platformy Azure, takich jak wiersza polecenia platformy Azure, narzędzia AzCopy i Eksploratora usługi Storage
+  - Zintegrowanych środowisk projektowych (IDE), takie jak Visual Studio Code i platformy PyCharm
+  - Serwer notesu programu Jupyter
 
-Zestaw SDK usługi Azure Machine Learning działa w wersji Ubuntu albo Windows maszyny DSVM. Aby używać maszyny DSVM jako środowiska deweloperskiego, wykonaj następujące czynności:
+Zestaw SDK usługi Azure Machine Learning działa w wersji Ubuntu albo Windows maszyny DSVM. Ale jeśli planujesz używać maszyny DSVM jako obiekt docelowy obliczeń jest obsługiwana tylko w systemie Ubuntu.
+
+Aby używać maszyny DSVM jako środowiska deweloperskiego, wykonaj następujące czynności:
 
 1. Tworzenie maszyny wirtualnej DSVM w jednym z następujących środowiskach:
 

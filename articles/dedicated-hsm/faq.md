@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: concepts
 ms.date: 12/11/2018
 ms.author: barclayn
-ms.openlocfilehash: 44507e919b7ed827eb3c08101a04849faf92293c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ec814bf641dea6f47b907e9f9e2646dfcf84ade1
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310293"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451752"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 
@@ -56,7 +56,7 @@ W tej chwili sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykow
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>PYT.: Sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej obsługującym Moje sprzętowych modułów zabezpieczeń dla mnie?
 
-Firma Microsoft tylko oferuje HSM sieci firmy Gemalto SafeNet Luna, za pośrednictwem usługi przez sprzętowy moduł zabezpieczeń w wersji dedykowanej i nie może obsługiwać żadnych klienta urządzenia.
+Firma Microsoft tylko oferuje HSM sieci firmy Gemalto SafeNet Luna, za pośrednictwem usługi przez sprzętowy moduł zabezpieczeń w wersji dedykowanej i nie może obsługiwać żadnych urządzeń dostarczone do klienta.
 
 ### <a name="q-does-azure-dedicated-hsm-support-pinetf-features-or-meet-pci-hsm-v1-or-v2-certification-requirements"></a>PYT.: Sprzętowego modułu zabezpieczeń platformy Azure w wersji dedykowanej obsługuje funkcje kodu PIN/ETF lub spełniać wymagania certyfikacji v1 lub v2 PCI przez moduł HSM
 
@@ -233,9 +233,9 @@ Dedykowane urządzenia przepisami SafeNet sieciowych przez moduł HSM 7 usługi 
   * RC4
   * RC5
   * CAST
-  * Podsumowanie/HMAC wyznaczania wartości skrótu/komunikat: ALGORYTM SHA-1, SHA-2, SM3
+  * Podsumowanie/HMAC wyznaczania wartości skrótu/komunikat: SHA-1, SHA-2, SM3
   * Wyprowadzania klucza: Tryb SP800 108 licznika
-  * Zawijanie kluczy: SP800 38F
+  * Zawijanie kluczy: SP800-38F
   * Generowanie liczby losowej: FIPS 140-2 zatwierdzone zgodnych z BSI DRG.4 DRBG (tryb kont SP 800-90.)
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>PYT.: Jest dedykowany przez moduł HSM zweryfikowane w trybie FIPS 140-2 Level 3?
@@ -256,7 +256,7 @@ Przed zażądaniem anulowania obsługi, klient musi zeroized modułem HSM, za po
 
 Dedykowane urządzenia przepisami SafeNet sieciowych przez moduł HSM 7 sprzętowego modułu zabezpieczeń (model A790). Poniżej przedstawiono podsumowanie maksymalną wydajność niektórych operacji: 
 
-* SZYFROWANIA RSA 2048: 10 000 transakcji na sekundę
+* RSA-2048: 10 000 transakcji na sekundę
 * ECC P256: 20 000 transakcji na sekundę
 * AES-GCM: 17,000 transakcji na sekundę
 

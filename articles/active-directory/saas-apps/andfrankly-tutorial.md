@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z & frankly | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i & frankly.
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą & Szczerze | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i & Szczerze.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1d702060-1b89-4e9d-9f01-ede4f1171c73
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 388203903f33d969a7796cf466078159e9b73ad0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 73acaeff6cbffc16aac1b30b9d63974c930c1537
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218113"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818068"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Samouczek: Integracji Azure Active Directory z & frankly
+# <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą & Szczerze
 
-W tym samouczku opisano sposób integracji & frankly w usłudze Azure Active Directory (Azure AD).
+W tym samouczku dowiesz się, jak zintegrować & Szczerze za pomocą usługi Azure Active Directory (Azure AD).
 
-Integrowanie & frankly z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie & Szczerze z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do & frankly
-- Można umożliwić użytkownikom automatycznie pobrać podpisane na do & frankly (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do & Szczerze
+- Umożliwia użytkownikom automatycznie uzyskują zalogowanych do & Szczerze (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować usługi Azure AD integracji z & frankly, możesz potrzebne są następujące zasoby:
+Aby skonfigurować usługę Azure AD integracji z usługą & Szczerze możesz potrzebne są następujące:
 
-- Subskrypcję usługi Azure AD
-- A & frankly jednokrotnego włączone subskrypcji
+- Subskrypcji usługi Azure AD
+- D & Szczerze logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie & frankly z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie & Szczerze z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-frankly-from-the-gallery"></a>Dodawanie & frankly z galerii
-Aby skonfigurować integrację z & frankly do usługi Azure AD, należy dodać & frankly z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-frankly-from-the-gallery"></a>Dodawanie & Szczerze z galerii
+Aby skonfigurować integrację z & Szczerze w usłudze Azure AD, musisz dodać & Szczerze z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać & frankly z galerii, wykonaj następujące czynności:**
+**Dodaj & Szczerze z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,84 +67,84 @@ Aby skonfigurować integrację z & frankly do usługi Azure AD, należy dodać &
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **& frankly**.
+4. W polu wyszukiwania wpisz **& Szczerze**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/andfrankly-tutorial/tutorial_andfrankly_search.png)
 
-5. W panelu wyników wybierz **& frankly**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+5. W panelu wyników wybierz **& Szczerze**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/andfrankly-tutorial/tutorial_andfrankly_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z & frankly oparte na koncie użytkownika testu o nazwie "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne z & Szczerze oparte na użytkownika testu o nazwie "Britta Simon."
 
-Logowanie jednokrotne do pracy usługi Azure AD musi wiedzieć, jaki użytkownik odpowiednika w & frankly jest użytkownikiem w usłudze Azure AD. Innymi słowy łącze relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w & frankly musi się.
+Logowanie jednokrotne do pracy usługi Azure AD musi wiedzieć, jakie użytkownik odpowiednika w & Szczerze jest dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w & Szczerze musi zostać nawiązane.
 
-W & frankly, należy przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W & Szczerze, przypisz wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby konfiguracja i testowanie usługi Azure AD rejestracji jednokrotnej z & frankly, możesz należy wykonać poniższe bloki konstrukcyjne:
+Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne z & Szczerze możesz należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[Tworzenie & frankly użytkownika testowego](#creating-a-frankly-test-user)**  — aby odpowiednikiem Simona Britta w & frankly jest połączone z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie i Szczerze użytkownika testowego](#creating-a-frankly-test-user)**  — aby odpowiednikiem Britta Simon w & Szczerze oznacza to połączone usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w sieci & frankly aplikacji.
+W tej sekcji można włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w sieci & Szczerze aplikacji.
 
-**Aby skonfigurować usługi Azure AD pojedynczy logowania z & frankly, wykonaj następujące czynności:**
+**Do konfigurowania usługi Azure AD pojedynczy logowanie jednokrotne z & Szczerze, wykonaj następujące czynności:**
 
-1. W portalu Azure na **& frankly** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **& Szczerze** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/andfrankly-tutorial/tutorial_andfrankly_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/andfrankly-tutorial/tutorial_andfrankly_samlbase.png)
 
-3. Na **& frankly domeny i adres URL** sekcji, jeśli chcesz skonfigurować aplikację w **IDP** inicjowane tryb:
+3. Na **& Szczerze domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/andfrankly-tutorial/tutorial_andfrankly_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/andfrankly-tutorial/tutorial_andfrankly_url.png)
 
-    a. W **identyfikator** tekstowym, wpisz adres URL, używając następującego wzorca: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
 
-    b. W **adres URL odpowiedzi** tekstowym, wpisz adres URL, używając następującego wzorca: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**. Jeśli chcesz skonfigurować aplikację w **SP** inicjowane tryb:
+4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/andfrankly-tutorial/tutorial_andfrankly_url1.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/andfrankly-tutorial/tutorial_andfrankly_url1.png)
 
-    W **adres URL logowania** tekstowym, wpisz adres URL, używając następującego wzorca: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
     > [!NOTE] 
-    > Wartości te nie są prawdziwe. Zaktualizować te wartości przy użyciu rzeczywistego identyfikatora logowania i adres URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej andfrankly](mailto:help@andfrankly.com) uzyskać te wartości.
+    > Te wartości nie są prawdziwe. Zaktualizować te wartości przy użyciu rzeczywisty identyfikator logowania i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej andfrankly](mailto:help@andfrankly.com) do uzyskania tych wartości.
 
 5. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/andfrankly-tutorial/tutorial_andfrankly_certificate.png) 
 
-6. Kliknij przycisk **zapisać** przycisku.
+6. Kliknij przycisk **Save** (Zapisz).
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/andfrankly-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/andfrankly-tutorial/tutorial_general_400.png)
 
-7. Skonfigurować logowanie jednokrotne w **& frankly** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej andfrankly](mailto:help@andfrankly.com). 
+7. Aby skonfigurować logowanie jednokrotne na **& Szczerze** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej andfrankly](mailto:help@andfrankly.com). 
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/andfrankly-tutorial/create_aaduser_01.png) 
 
@@ -152,66 +152,66 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/andfrankly-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/andfrankly-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/andfrankly-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
-### <a name="creating-a-frankly-test-user"></a>Tworzenie & frankly użytkownika testowego
+### <a name="creating-a-frankly-test-user"></a>Tworzenie i Szczerze użytkownika testowego
 
-W tej sekcji należy utworzyć użytkownika o nazwie Simona Britta w & frankly. Praca z [zespołem pomocy technicznej andfrankly](mailto:help@andfrankly.com) do dodawania użytkowników w z & frankly platformy.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w & Szczerze. Praca z [zespołem pomocy technicznej andfrankly](mailto:help@andfrankly.com) można dodać użytkowników w & Szczerze platformy.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji musisz włączyć Simona Britta do użycia usługi Azure logowania jednokrotnego za udzielanie dostępu do & frankly.
+W tej sekcji możesz włączyć Britta Simon do udzielania dostępu do & Szczerze za pomocą platformy Azure logowania jednokrotnego.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta do & frankly, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon do & Szczerze, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **& frankly**.
+2. Na liście aplikacji wybierz **& Szczerze**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/andfrankly-tutorial/tutorial_andfrankly_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/andfrankly-tutorial/tutorial_andfrankly_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji służy do testowania konfigurację usługi Azure AD z logowania jednokrotnego za pomocą panelu dostępu.
+Celem tej sekcji jest test konfiguracji logowania jednokrotnego usługi Azure AD za pomocą panelu dostępu.
 
-Po kliknięciu przycisku & frankly kafelka w panelu dostępu, należy pobrać automatycznie podpisany w z & frankly aplikacji
+Po kliknięciu & Szczerze kafelka w panelu dostępu, należy pobrać automatycznie zalogowanych do sieci & Szczerze aplikacji
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

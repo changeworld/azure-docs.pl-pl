@@ -5,6 +5,7 @@ description: Ten samouczek przedstawia sposób tworzenia usługi Load Balancer w
 services: load-balancer
 documentationcenter: na
 author: KumudD
+manager: twooley
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.service: load-balancer
 ms.devlang: na
@@ -14,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 18b5f82a5181f0bbf7024b302b802684ef676c8f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d2e81e4f2eda730dc064699f42ba7bfb49648082
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255340"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54230836"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Samouczek: Równoważenie obciążenia maszyn wirtualnych w różnych strefach dostępności przy użyciu usługi Load Balancer w strefie Standardowa w witrynie Azure Portal
 
-Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żądań przychodzących pomiędzy wiele maszyn wirtualnych. W tym samouczku opisano kroki tworzenia publicznego modułu równoważenia obciążenia w warstwie Standardowa, który równoważy obciążenia maszyn wirtualnych w różnych strefach dostępności. Pomaga on chronić aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych. Dzięki nadmiarowości stref w co najmniej jednej strefie dostępności może wystąpić błąd, a ścieżka do danych będzie działać tak długo, jak jedna strefa w regionie pozostanie w dobrej kondycji. Omawiane kwestie:
+Równoważenie obciążenia zwiększa dostępność dzięki rozdzieleniu żądań przychodzących pomiędzy wiele maszyn wirtualnych. W tym samouczku opisano kroki tworzenia publicznej usługi Load Balancer w warstwie Standardowa, która równoważy obciążenia maszyn wirtualnych w różnych strefach dostępności. Pomaga on chronić aplikacje i dane, zmniejszając prawdopodobieństwo wystąpienia awarii lub utraty całego centrum danych. Dzięki nadmiarowości stref w co najmniej jednej strefie dostępności może wystąpić błąd, a ścieżka do danych będzie działać tak długo, jak jedna strefa w regionie pozostanie w dobrej kondycji. Omawiane kwestie:
 
 > [!div class="checklist"]
 > * Tworzenie usługi Load Balancer w warstwie Standardowa

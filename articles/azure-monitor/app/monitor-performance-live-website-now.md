@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 463b2e8c7e349fa46737a9d630bd027fb28e7780
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2c8c8233e8d471b0f1934df9ff7e0f2b4b3e3860
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199389"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819139"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Instrumentacja aplikacji sieci web w czasie wykonywania za pomocą Monitora stanu usługi Application Insights
 
@@ -32,11 +32,13 @@ Monitor stanu jest używany do instrumentacji aplikacji .NET hostowanych w usłu
 
 ![Zrzut ekranu usługi App Insights — Omówienie wykresów zawierających informacje dotyczące żądań zakończonych niepowodzeniem, czas odpowiedzi serwera i żądań serwera](./media/monitor-performance-live-website-now/overview-graphs.png)
 
-Dostępne są trzy trasy zastosowania usługi Application Insights do aplikacji internetowych platformy .NET:
+Dostępne są dwie trasy zastosowania usługi Application Insights do aplikacji sieci web platformy .NET:
 
 * **Czas kompilacji:** [Dodaj zestaw Application Insights SDK] [ greenbrown] do kodu aplikacji sieci web.
 * **Czas wykonywania:** Instrumentacja aplikacji sieci web na serwerze, zgodnie z opisem poniżej, bez ponownego kompilowania lub wdrażania kodu.
-* **Zarówno:** Skompiluj zestaw SDK do kodu aplikacji sieci web, a także Zastosuj rozszerzenia czasu wykonywania. Połącz korzyści z obu opcji.
+
+> [!NOTE]
+> Jeśli używasz Instrumentacja w czasie kompilacji, należy uruchomić razem, gdy Instrumentacji nie będzie działać nawet wtedy, gdy jest włączona.
 
 Poniżej przedstawiono podsumowanie tego, co można uzyskać, korzystając z danej trasy:
 

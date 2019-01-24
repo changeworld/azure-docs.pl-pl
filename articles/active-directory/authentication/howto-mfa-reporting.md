@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: d9fd7544c61b021bbb5db32087847cbeaddd3918
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628838"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431728"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Raporty w usłudze Azure Multi-Factor Authentication
 
@@ -23,7 +23,7 @@ Usługa Azure Multi-Factor Authentication zawiera kilka raportów, które mogą 
 
 | Raport | Lokalizacja | Opis |
 |:--- |:--- |:--- |
-| Historia zablokowanych użytkowników | Usługa Azure AD > serwer usługi MFA > Blokowanie/odblokowywanie użytkowników | Przedstawia historię żądań zablokowania lub odblokowania użytkowników. |
+| Historia zablokowanego użytkownika | Usługa Azure AD > serwer usługi MFA > Blokowanie/odblokowywanie użytkowników | Przedstawia historię żądań zablokowania lub odblokowania użytkowników. |
 | Alerty użycia i nadużyć | Usługa Azure AD > logowania | Zawiera informacje na temat użycia ogólnej, podsumowanie dotyczące użytkowników i szczegóły użytkownika; jak również historię alertów oszustwa przesłanych w zakresie dat., określony. |
 | Użycie lokalnych składników | Usługa Azure AD > serwer usługi MFA > raport aktywności | Udostępnia informacje na temat ogólne użycie usługi MFA za pośrednictwem rozszerzenia serwera NPS, usług AD FS, a serwer usługi MFA. |
 | Historia pominiętego użytkownika | Usługa Azure AD > serwer usługi MFA > jednorazowe obejście | Zawiera historię żądań ominięcia usługi Multi-Factor Authentication dla użytkownika. |
@@ -58,9 +58,9 @@ Dane te są dostępne za pośrednictwem [witryny Azure portal](https://portal.az
 
 Raporty działania logowania dla usługi MFA umożliwiają dostęp do następujących informacji:
 
-**Wymagana usługa MFA:** czy usługa MFA jest wymagana do logowania, czy też nie. Uwierzytelnianie wieloskładnikowe może być wymagane ze względu na usługę MFA na użytkownika, dostęp warunkowy lub z innych powodów. Możliwe wartości to **tak** lub **nie**.
+**Wymagana usługa MFA:** Czy usługa MFA jest wymagana dla logowania, czy nie. Uwierzytelnianie wieloskładnikowe może być wymagane ze względu na usługę MFA na użytkownika, dostęp warunkowy lub z innych powodów. Możliwe wartości to **tak** lub **nie**.
 
-**Wynik usługi MFA:** więcej informacji na temat tego, czy uwierzytelnianie MFA zostało przeprowadzone pomyślnie, czy też nie:
+**Wynik usługi MFA:** Więcej informacji na temat tego, czy spełnione lub odmowa usługi MFA:
 
 - Jeśli uwierzytelnianie MFA powiodło się, ta kolumna zawiera więcej informacji na temat sposobu przeprowadzenia uwierzytelnienia MFA.
    - Azure Multi-Factor Authentication
@@ -103,7 +103,7 @@ Raporty działania logowania dla usługi MFA umożliwiają dostęp do następuj�
       - nie znaleziono użytkownika
       - kod weryfikacyjny został już raz użyty
 
-**Metoda uwierzytelniania usługi MFA:** metoda uwierzytelniania stosowana przez użytkownika w celu zakończenia uwierzytelniania MFA. Możliwe wartości obejmują:
+**Metoda uwierzytelniania usługi MFA:** Metoda uwierzytelniania użytkownika, używany w celu zakończenia uwierzytelniania MFA. Możliwe wartości obejmują:
 
 - Wiadomość SMS
 - Powiadomienie aplikacji mobilnej
@@ -112,7 +112,7 @@ Raporty działania logowania dla usługi MFA umożliwiają dostęp do następuj�
 - Połączenie telefoniczne (numer telefonu służbowego)
 - Połączenie telefoniczne (alternatywny numer telefonu uwierzytelniania)
 
-**Szczegóły uwierzytelniania usługi MFA:** wyczyszczona wersja numeru telefonu, na przykład +X XXXXXXXX64.
+**Szczegóły uwierzytelniania usługi MFA:** Wyczyszczona wersja numeru telefonu, na przykład: + X XXXXXXXX64.
 
 **Dostęp warunkowy** znaleźć informacje na temat zasad dostępu warunkowego, które wpływ próba logowania, w tym:
 

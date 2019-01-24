@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: d80e1394d4c4159c17eabff93ff44fdefbaf21b7
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 45751af66b1b050d4d36d1b8aee52dc6a5d8cc7b
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247507"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382405"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -213,22 +213,6 @@ Brak przestojów. Wystąpienia są rozproszone między domeny błędów i domena
 ### <a name="does-application-gateway-support-connection-draining"></a>Usługa Application Gateway obsługuje opróżniania połączenia?
 
 Tak. Można skonfigurować połączenia opróżniania, aby zmienić członków w ramach puli zaplecza, bez przerw w działaniu. Dzięki temu istniejące połączenia przejść do wysłania do ich poprzedniego miejsca docelowego, dopóki nie upłynie limit czasu można skonfigurować albo to połączenie jest zamykane. Tylko opróżniania połączenia czeka, aż bieżące aktywne połączenia do ukończenia. Usługa Application Gateway nie ma informacji o stanie sesji w aplikacji.
-
-### <a name="what-are-application-gateway-sizes"></a>Co to są rozmiarów bramy aplikacji?
-
-Usługa Application Gateway jest obecnie oferowana w trzech rozmiarach: **Małe**, **średni**, i **dużych**. Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
-
-Pełna lista limitów usługi Application Gateway znajduje się na stronie [ograniczeń usługi Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
-
-W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla każdego wystąpienia bramy aplikacji z włączonym obciążeniem SSL:
-
-| Średni rozmiar odpowiedź strony zaplecza | Small | Medium | Large |
-| --- | --- | --- | --- |
-| 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
-| 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |
-
-> [!NOTE]
-> Są to przybliżone wartości przepływności bramy aplikacji. Rzeczywista przepływność zależy od różnorodnych szczegółów środowiska, takich jak średni rozmiar strony, lokalizacja wystąpień zaplecza i czas przetwarzania potrzebny do obsługi strony. Aby uzyskać dokładne wartości wydajności, należy przeprowadzić własne testy. Te wartości są podane tylko jako wskazówki na potrzeby planowania pojemności.
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Czy mogę zmienić rozmiar wystąpienia średnie dużych bez zakłóceń?
 

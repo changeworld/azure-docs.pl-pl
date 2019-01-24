@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 0a629b9b068694960178c1c5727ba2f38b0e8af7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190342"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359327"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Tworzenie serwera usługi Azure Database for MariaDB za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -57,12 +57,12 @@ ssl-enforcement | **Enabled (Włączone)** | Określa, czy dla tego serwera powi
 storage-size | **51200** | Pojemność magazynu serwera (w megabajtach). Prawidłowy rozmiar magazynu to 5120 MB (minimum) rosnący z przyrostem 1024 MB. Aby uzyskać więcej informacji na temat limitów rozmiaru magazynu, zobacz [Warstwy cenowe](./concepts-pricing-tiers.md). 
 version | **10.2** | Wersja główna aparatu MariaDB.
 admin-user | **myadmin** | Nazwa użytkownika w przypadku logowania administratora. Parametr **admin-user** nie może mieć wartości **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-admin-password | *Twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi zawierać znaki z trzech z następujących kategorii: wielkie litery alfabetu angielskiego, małe litery alfabetu angielskiego, cyfry i znaki inne niż alfanumeryczne.
+admin-password | *Twoje hasło* | Hasło użytkownika administratora. Twoje hasło musi zawierać od 8 do 128 znaków. Musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry i znaki inne niż alfanumeryczne.
 
-Wartość parametru **sku-name** jest zgodna z konwencją *warstwa cenowa*\_*generacja obliczeniowa*\_*rdzenie wirtualne*, co zostało pokazane w poniższych przykładach:
-+ `--sku-name B_Gen5_4` mapuje do warstwy cenowej Podstawowa, generacji obliczeniowej Gen 5 i 4 rdzeni wirtualnych.
-+ `--sku-name GP_Gen5_32` mapuje do warstwy cenowej Ogólnego przeznaczenia, generacji obliczeniowej Gen 5 i 32 rdzeni wirtualnych.
-+ `--sku-name MO_Gen5_2` mapuje do warstwy cenowej Zoptymalizowane pod kątem pamięci, generacji obliczeniowej Gen 5 i 2 rdzeni wirtualnych.
+Wartość parametru sku-name jest zgodna z konwencją {warstwa cenowa}\_{generacja obliczeniowa}\_{rdzenie wirtualne}, jak pokazano w przykładach poniżej:
++ `--sku-name B_Gen5_1` — warstwa podstawowa, 5. generacja, 1 rdzeń wirtualny. Ta opcja to najmniejsza dostępna jednostka SKU.
++ `--sku-name GP_Gen5_32` — warstwa ogólnego przeznaczenia, 5. generacja, 32 rdzenie wirtualne.
++ `--sku-name MO_Gen5_2` — warstwa zoptymalizowana pod kątem pamięci, 5. generacja, 2 rdzenie wirtualne.
 
 Aby uzyskać informacje o prawidłowych wartościach według regionu i dla warstw, zobacz [Warstwy cenowe](./concepts-pricing-tiers.md).
 

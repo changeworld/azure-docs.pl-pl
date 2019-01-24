@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Sprinklr | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Sprinklr | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Sprinklr.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: b33938a1-25a5-484c-8e75-7dc6de2d534d
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: b5f240091cf5ce9331ada818c218db04f508dbc8
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 062671313e42e6c936135dafb3d7d2a5c8adef82
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241807"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54816640"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Samouczek: Integracja usługi Azure Active Directory z Sprinklr
+# <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Sprinklr
 
 W tym samouczku dowiesz się, jak zintegrować Sprinklr w usłudze Azure Active Directory (Azure AD).
 
@@ -43,10 +43,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Sprinklr, potrzebne s
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -67,7 +67,7 @@ Aby skonfigurować integrację Sprinklr w usłudze Azure AD, należy dodać Spri
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -112,18 +112,18 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.sprinklr.com`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.sprinklr.com`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.sprinklr.com`
+    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.sprinklr.com`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sprinklr](https://www.sprinklr.com/contact-us/) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sprinklr](https://www.sprinklr.com/contact-us/) do uzyskania tych wartości. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/sprinklr-tutorial/tutorial_general_400.png)
 
@@ -133,7 +133,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Przejdź do **administracji \> ustawienia**.
    
-    ![Administracja](./media/sprinklr-tutorial/ic782907.png "administracji")
+    ![Administracja](./media/sprinklr-tutorial/ic782907.png "Administracja")
 
 1. Przejdź do **zarządzania partnera \> jednokrotnego** w okienku po lewej stronie.
    
@@ -147,7 +147,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     ![Pojedynczy znak Ons](./media/sprinklr-tutorial/ic782910.png "pojedynczy znak Ons")
 
-    a. W **nazwa** polu tekstowym wpisz nazwę dla danej konfiguracji (na przykład: *WAADSSOTest*).
+    a. W polu tekstowym **Name** (Nazwa) wpisz nazwę swojej konfiguracji (na przykład: *WAADSSOTest*).
 
     b. Wybierz **włączone**.
 
@@ -170,10 +170,10 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![SAML](./media/sprinklr-tutorial/ic782911.png "SAML")
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -209,15 +209,15 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 1. Przejdź do **administracji \> ustawienia**.
    
-    ![Administracja](./media/sprinklr-tutorial/ic782907.png "administracji")
+    ![Administracja](./media/sprinklr-tutorial/ic782907.png "Administracja")
 
 1. Przejdź do **klienta zarządzania \> użytkowników** z okienka po lewej stronie.
    
-    ![Ustawienia](./media/sprinklr-tutorial/ic782914.png "ustawienia")
+    ![Ustawienia](./media/sprinklr-tutorial/ic782914.png "Ustawienia")
 
-1. Kliknij przycisk **Dodaj użytkownika**.
+1. Kliknij pozycję **Add User** (Dodaj użytkownika).
    
-    ![Ustawienia](./media/sprinklr-tutorial/ic782915.png "ustawienia")
+    ![Ustawienia](./media/sprinklr-tutorial/ic782915.png "Ustawienia")
 
 1. Na **Edycja użytkownika** okno dialogowe, należy wykonać następujące czynności:
    
@@ -231,7 +231,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     d. Wybierz **typ użytkownika**.
 
-    e. Kliknij przycisk **aktualizacji**.
+    e. Kliknij przycisk **Update** (Aktualizuj).
    
      >[!IMPORTANT]
      >**Wyłączone hasło** należy wybrać, aby użytkownik mógł zalogować się za pośrednictwem dostawcy tożsamości. 
@@ -242,7 +242,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     a. Z **Global** listy wybierz **wszystkich\_uprawnienia**.  
 
-    b. Kliknij przycisk **aktualizacji**.
+    b. Kliknij przycisk **Update** (Aktualizuj).
 
 >[!NOTE]
 >Można użyć jakichkolwiek innych Sprinklr użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Sprinklr można uaktywniać ich konta usługi Azure AD. 
@@ -283,7 +283,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka Sprinklr w panelu dostępu, należy uzyskać automatycznie zalogowanych do aplikacji Sprinklr Aby dowiedzieć się więcej o panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

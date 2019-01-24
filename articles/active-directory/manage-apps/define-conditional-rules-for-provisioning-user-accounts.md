@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać filtrów określania zakresu, aby zapobi
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b62679332a45127d7c1a45593c162182886a7150
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 84c4939a93adbb8983cae87fdaa2727904010b03
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719362"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461250"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Aprowizacja aplikacji opartych na atrybutach z filtrami zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów określania zakresu do zdefiniowania reguł opartych na atrybutach, określające, którzy użytkownicy są udostępnione do aplikacji.

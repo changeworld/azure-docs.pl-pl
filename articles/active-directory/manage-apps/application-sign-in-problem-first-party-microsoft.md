@@ -4,7 +4,7 @@ description: Rozwiązywanie typowych problemów z zmierzyła się z zespołem po
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ab0face3c211a8ea1477f40167f80330f0423498
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 2a13df5fc609fe7cfddff91841e082c123d758f5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379268"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468794"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -34,11 +34,11 @@ Istnieją trzy sposoby, czy użytkownik może uzyskać dostęp do aplikacji opub
 
 -   W przypadku aplikacji, które firmy Microsoft lub innych firm 3 publikuje bezpłatnie dla wszystkich użytkowników może również uzyskać dostęp za pośrednictwem **zgody administratora**. Oznacza to, że administrator wykrył, że aplikacji mogą być używane przez wszystkich użytkowników w organizacji, tak aby zalogować się do aplikacji przy użyciu konta administratora globalnego i przyznać dostęp do wszystkich osób w organizacji.
 
-Aby rozwiązać problem, zacznij od [ogólne obszarów problemów z dostępem aplikacji do uwzględnienia](#general-problem-areas-with-application-access-to-consider) i odczytania ich [wskazówki: kroki umożliwiające rozwiązywanie problemów z dostępem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) w szczegółowe informacje.
+Aby rozwiązać problem, zacznij od [ogólne obszarów problemów z dostępem aplikacji do należy wziąć pod uwagę](#general-problem-areas-with-application-access-to-consider) i odczytania ich [wskazówki: Kroki umożliwiające rozwiązywanie problemów z dostępem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) Aby uzyskać szczegóły.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Ogólne obszarów problemów z dostępem aplikacji do uwzględnienia
 
-Lista obszarów ogólny problem, które można rozwinąć Jeśli masz pomysł gdzie zacząć, ale zaleca się, przeczytaj przewodnik, aby szybko zacząć: [Instruktaż: kroki umożliwiające rozwiązywanie problemów z dostępem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Lista obszarów ogólny problem, które można rozwinąć Jeśli masz pomysł gdzie zacząć, ale zalecamy przeczytać wskazówki, aby szybko zacząć: [Wskazówki: Kroki umożliwiające rozwiązywanie problemów z dostępem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
 
 -   [Problemy z konta użytkownika](#problems-with-the-users-account)
 

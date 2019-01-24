@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 7c5bfa96e7f9ef7812b8487c479b34d926633287
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 0e1a0919975253e24318bb8029249958cbc50d62
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105920"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473167"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji usługi Diagnostyka Azure 1.0
 > [!NOTE]
@@ -220,7 +220,7 @@ Atrybuty:
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**Nazwa**|ciąg|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
-|**RelativePath**|ciąg|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
+|**relativePath**|ciąg|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
 
 ## <a name="performancecounters-element"></a>Performancecounters — Element  
  Określa ścieżkę licznika wydajności do zbierania.
@@ -270,3 +270,4 @@ Atrybuty:
 |Atrybut|Typ|Opis|  
 |---------------|----------|-----------------|  
 |**Nazwa**|ciąg|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
+

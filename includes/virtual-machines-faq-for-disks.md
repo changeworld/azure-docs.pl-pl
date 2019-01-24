@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5835e8275bedebaca01d585a992930d6856edfd7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: edf99f57fe2166e5ea7f91817dde978015af9348
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553562"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54841441"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Często zadawane pytania dotyczące dysków maszyn wirtualnych IaaS platformy Azure i dyski zarządzane i niezarządzane — wersja premium
 
@@ -101,6 +101,10 @@ Klienci mogą migawki dysków zarządzanych i następnie utworzyć inny dysk zar
 
 Tak, dyski zarządzane i niezarządzane są obsługiwane. Zaleca się, że korzystają z dysków zarządzanych dla nowych obciążeń i migracji bieżących obciążeń do usługi managed disks.
 
+**Wspólnie znaleźć dysków niezarządzanych i zarządzanych w tej samej maszyny Wirtualnej?**
+
+Nie.
+
 **Jeśli I Utwórz dysk 128 GB, a dopiero potem zwiększyć jej rozmiar na 130 GiB, czy opłata dalej rozmiar dysku (256 GiB)?**
 
 Tak.
@@ -124,10 +128,6 @@ Nie. Nie można zaktualizować właściwości Nazwa komputera. Nowa maszyna wirt
 **Gdzie można znaleźć przykładowe szablony usługi Azure Resource Manager do tworzenia maszyn wirtualnych z dyskami zarządzanymi**
 * [Lista szablonów przy użyciu dysków Managed Disks](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
-
-**Wspólnie znaleźć dysków niezarządzanych i zarządzanych w tej samej maszyny Wirtualnej?**
-
-Nie.
 
 **Podczas tworzenia dysku z obiektu blob, jest dowolnym stale istniejącą relację, z tym źródłowego obiektu blob?**
 

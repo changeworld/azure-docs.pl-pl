@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: d3e6a17ba9d0712d921d8e0a1d0bcbcd68ce5cfb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360328"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812569"
 ---
 # <a name="azure-backup-architecture"></a>Architektura usługi Azure Backup
 
-Możesz użyć [usługi Azure Backup](backup-overview.md) wykonywanie kopii zapasowych danych w chmurze Microsoft Azure. Ten artykuł zawiera podsumowanie architektury usługi Azure Backup, składników i procesów. 
+[Usługa Azure Backup](backup-overview.md) umożliwia wykonywanie kopii zapasowych danych w chmurze platformy Microsoft Azure. Ten artykuł zawiera podsumowanie architektury usługi Azure Backup, składników i procesów. 
 
 
 ## <a name="what-does-azure-backup-do"></a>Do czego służy usługa Azure Backup?
@@ -163,7 +163,7 @@ Wykonywanie kopii zapasowych deduplikowanych dysków | | | ![Częściowo][yellow
 - Dysków maszyn wirtualnych platformy Azure do przechowywania ich systemu operacyjnego, aplikacji i danych.
 - Maszyny wirtualne platformy Azure ma co najmniej dwa dyski. Jeden dla systemu operacyjnego i tymczasowy dysk. Może to być również dyski z danymi dla danych aplikacji. Dyski są przechowywane jako pliki VHD.
 - Wirtualne dyski twarde są przechowywane jako stronicowe obiekty BLOB na kontach magazynu w warstwie standardowa lub premium na platformie Azure.
-    - Magazynu w warstwie standardowa: Niezawodne, niedrogie dyskowa dla maszyn wirtualnych uruchomionych obciążeń, które nie są wrażliwe na czas oczekiwania. Magazynu w warstwie standardowa można używać dysków SSD w warstwie standardowa lub dyski SSD w warstwie standardowa).
+    - Magazynu w warstwie standardowa: Niezawodne, niedrogie dyskowa dla maszyn wirtualnych uruchomionych obciążeń, które nie są wrażliwe na czas oczekiwania. Dyski SSD w warstwie standardowa lub dyski w warstwie standardowa dysk twardy, można użyć magazynu w warstwie standardowa.
     - Usługa Premium storage: Obsługę przez dyski o wysokiej wydajności. Korzysta z dysków SSD w warstwie premium.
 - Istnieją warstwy wydajności dla dysków:
     - Dysk w warstwie standardowa dysk twardy: Obsługiwane przez dyski twarde i użyte na potrzeby ekonomicznego magazynowania.
@@ -209,9 +209,9 @@ Po przywróceniu maszyn wirtualnych z dyskami zarządzanymi, można przywrócić
 - [Przegląd](backup-support-matrix.md) macierz obsługi, aby dowiedzieć się więcej na temat obsługiwanych funkcji i ograniczeń dotyczących scenariusze tworzenia kopii zapasowej.
 - Konfigurowanie kopii zapasowej dla jednego ze scenariuszy:
     - [Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure](backup-azure-arm-vms-prepare.md)
-    - [Wykonywanie kopii zapasowych maszyn Windows bezpośrednio](tutorial-backup-windows-server-to-azure.md), bez kopii zapasowej serwera.
-    - [Konfigurowanie serwera usługi Mab](backup-azure-microsoft-azure-backup.md) dla kopii zapasowych na platformie Azure, a następnie kopii zapasowych obciążeń do serwera usługi MAB.
-    - [Konfigurowanie programu DPM](backup-azure-dpm-introduction.md) dla kopii zapasowych do platformy Azure, a następnie kopii zapasowych obciążeń do programu DPM.
+    - [Bezpośrednie wykonywanie kopii zapasowych maszyn z systemem Windows](tutorial-backup-windows-server-to-azure.md) bez serwera kopii zapasowych.
+    - [Konfigurowanie usługi MABS](backup-azure-microsoft-azure-backup.md) na potrzeby kopii zapasowych na platformie Azure, a następnie wykonywanie kopii zapasowych obciążeń w usłudze MABS.
+    - [Konfigurowanie programu DPM](backup-azure-dpm-introduction.md) na potrzeby kopii zapasowych na platformie Azure, a następnie wykonywanie kopii zapasowych obciążeń w programie DPM.
 
 
 [green]: ./media/backup-architecture/green.png

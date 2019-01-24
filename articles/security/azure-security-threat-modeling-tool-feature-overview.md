@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 8bbc13aa77c50c6ae02ecc67869035e7ec85effa
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 601f3bf05388406c8f96a7351f7fb3aa4de2650a
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359344"
+ms.locfileid: "54389319"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Omówienie funkcji narzędzie do modelowania zagrożeń
 
@@ -207,5 +207,5 @@ Po zakończeniu zmieniających się priorytetów i aktualizowania stanu każdego
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby współtworzyć szablonu dla społeczności, przejdź do naszego [GitHub](https://github.com/Microsoft/threat-modeling-templates) strony. 
-* Aby rozpocząć pracę z narzędziem, przejdź do [Pobierz](https://aka.ms/tmtpreview) strony.
+- Wyślij swoje pytania, komentarze i zagadnień związanych z tmtextsupport@microsoft.com. **[Pobierz](https://aka.ms/threatmodelingtool)**  narzędzie do modelowania zagrożeń na rozpoczęcie pracy.
+- Aby współtworzyć szablonu dla społeczności, przejdź do naszego [GitHub](https://github.com/Microsoft/threat-modeling-templates) strony.

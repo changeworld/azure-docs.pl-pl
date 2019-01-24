@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 00c001b5c0c2c3dab86477fca798ec651f7b6c93
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5ce8217629cff702ecd3ec274d77918e54efacc6
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189970"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359123"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Samouczek: zamawianie urządzenia Azure Data Box
 
@@ -22,7 +22,7 @@ Azure Data Box to hybrydowe rozwiązanie, które umożliwia importowanie danych 
 W tym samouczku opisano sposób zamawiania usługi Azure Data Box. Ten samouczek zawiera informacje dotyczące:
 
 > [!div class="checklist"]
-> * Tworzenie konta usługi Data Box
+> * Wymagania wstępne dotyczące wdrażania usługi Data Box
 > * Zamawianie usługi Data Box
 > * Śledzenie zamówienia
 > * Anulowanie zamówienia
@@ -63,7 +63,7 @@ Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
 4. Sprawdź, czy usługa Data Box jest dostępna w Twoim regionie. Wprowadź lub wybierz poniższe informacje i kliknij pozycję **Zastosuj**. 
     |Ustawienie  |Wartość  |
     |---------|---------|
-    |Subskrypcja     | Wybierz subskrypcję EA lub CSP bądź subskrypcję z płatnością zgodnie z rzeczywistym użyciem dla usługi Data Box. <br> Subskrypcja jest połączona z kontem rozliczeniowym.       |
+    |Subskrypcja     | Wybierz subskrypcję EA, CSP lub dostęp sponsorowany Azure dla usługi Data Box. <br> Subskrypcja jest połączona z kontem rozliczeniowym.       |
     |Typ transferu     | Wybierz pozycję **Importuj na platformę Azure**.        |
     |Kraj źródłowy     |   Wybierz kraj, w którym aktualnie znajdują się dane.         |
     |Docelowy region platformy Azure     |     Wybierz region platformy Azure, do którego chcesz przenieść dane.        |
@@ -79,7 +79,7 @@ Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
     |Name (Nazwa)     |  Podaj przyjazną nazwę, aby śledzić zamówienie. <br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą.      |
     |Grupa zasobów     |   Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem.         |
     |Docelowy region platformy Azure     | Wybierz region swojego konta magazynu. <br> Aby uzyskać więcej informacji, przejdź do sekcji [Dostępność regionalna](data-box-overview.md#region-availability).        |
-    |Konta magazynu     | W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejących kont magazynu co najmniej jedno z nich. Urządzenie Data Box można połączyć z maksymalnie 10 kontami magazynu. <br> Można również utworzyć nowe **konto ogólnego przeznaczenia w wersji 1**, **konto ogólnego przeznaczenia w wersji 2** lub **konto usługi Blob Storage**.        |
+    |Konta magazynu     | W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejących kont magazynu co najmniej jedno z nich. Urządzenie Data Box można połączyć z maksymalnie 10 kontami magazynu. <br> Można również utworzyć nowe **konto ogólnego przeznaczenia w wersji 1**, **konto ogólnego przeznaczenia w wersji 2** lub **konto usługi Blob Storage**. Nie można używać kont magazynu, które mają skonfigurowane reguły. Konta magazynu muszą **zezwalać na dostęp ze wszystkich sieci** w sekcji zapór i sieci wirtualnych.|
     
 7. W obszarze **Adres wysyłkowy** podaj swoje imię i nazwisko, nazwę oraz adres pocztowy firmy i prawidłowy numer telefonu. Kliknij pozycję **Zweryfikuj adres**. Usługa zweryfikuje adres wysyłkowy pod kątem dostępności usługi. Jeśli ta usługa jest dostępna dla podanego adresu wysyłkowego, otrzymasz odpowiednie powiadomienie. Kliknij przycisk **Dalej**.
 
@@ -94,7 +94,7 @@ Wykonaj poniższe czynności w witrynie Azure Portal, aby zamówić urządzenie.
 
 ## <a name="track-the-order"></a>Śledzenie zamówienia
 
-Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal. Przejdź do zamówienia, a następnie przejdź do obszaru **Omówienie**, aby sprawdzić stan. Zamówienie wyświetlone w portalu ma stan **Zamówione**.
+Po złożeniu zamówienia możesz śledzić jego stan w witrynie Azure Portal. Przejdź do zamówienia urządzenia Data Box, a następnie przejdź do obszaru **Omówienie**, aby sprawdzić stan. Zamówienie wyświetlone w portalu ma stan **Zamówione**.
 
 Jeśli urządzenie nie jest niedostępne, otrzymasz powiadomienie. Jeśli urządzenie jest dostępne, firma Microsoft zidentyfikuje urządzenie do wysłania i przygotuje wysyłkę. Podczas przygotowywania urządzenia są wykonywane następujące akcje:
 

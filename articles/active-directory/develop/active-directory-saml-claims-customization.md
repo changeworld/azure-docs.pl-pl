@@ -17,14 +17,14 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: afcdb7c64f4431e920f1f1fbce1e1e6d3e4db79c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 11132426bb8adb6ede564e706e18f3eddd649bef
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424956"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401881"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Porady: dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
 Już dzisiaj usługi Azure Active Directory (Azure AD) obsługuje funkcję logowania jednokrotnego na z większością aplikacji przedsiębiorstwa, w tym aplikacje, zarówno wstępnie zintegrowane w galerii aplikacji Azure AD, jak również aplikacji niestandardowych. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML 2.0, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). A następnie ją sprawdza poprawność tokenu i używa go do logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML zawierają informacje o użytkowniku, znane jako "oświadczenia".
 
@@ -75,13 +75,13 @@ Można również użyć funkcji przekształcenia oświadczeń specjalne.
 | Funkcja | Opis |
 |----------|-------------|
 | **ExtractMailPrefix()** | Usuwa sufiks domeny od adresu e-mail, nazwa konta SAM lub główną nazwę użytkownika. Spowoduje to wyodrębnienie tylko pierwszą część nazwy użytkownika, są przekazywane (na przykład "joe_smith" zamiast joe_smith@contoso.com). |
-| **JOIN()** | Dołącza atrybut o zweryfikowanej domeny. Wartość identyfikatora wybranego użytkownika ma domenę, wyodrębnia nazwę użytkownika, aby dołączyć wybranego zweryfikowanej domeny. Na przykład, jeśli wybierzesz adres e-mail (joe_smith@contoso.com) jako wartość identyfikatora użytkownika i wybierz contoso.onmicrosoft.com jako zweryfikowanej domeny, spowoduje to joe_smith@contoso.onmicrosoft.com. |
+| **join()** | Dołącza atrybut o zweryfikowanej domeny. Wartość identyfikatora wybranego użytkownika ma domenę, wyodrębnia nazwę użytkownika, aby dołączyć wybranego zweryfikowanej domeny. Na przykład, jeśli wybierzesz adres e-mail (joe_smith@contoso.com) jako wartość identyfikatora użytkownika i wybierz contoso.onmicrosoft.com jako zweryfikowanej domeny, spowoduje to joe_smith@contoso.onmicrosoft.com. |
 | **ToLower()** | Konwertuje znaki wybranego atrybutu na małe litery. |
 | **ToUpper()** | Konwertuje znaki wybranego atrybutu na wielkie litery. |
 
 ## <a name="adding-claims"></a>Dodawanie oświadczeń
 
-Podczas dodawania roszczenia, można określić nazwę atrybutu, (które ściśle nie należy wykonywać wzorzec identyfikatora URI, zgodnie z specyfikacja języka SAML). Ustaw wartość na dowolny atrybut użytkownika, który jest przechowywany w katalogu.
+Podczas dodawania roszczenia, można określić nazwę atrybutu, (które ściśle nie należy wykonywać wzorzec identyfikatora URI, zgodnie z specyfikacja języka SAML). Ustaw wartość na dowolny atrybut użytkownika, który jest przechowywany w katalogu lub użyj wartości zawartość jako statyczny wpis dla wszystkich użytkowników w Twojej organizacji.
 
 ![Dodaj atrybut użytkownika][7]
 

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: ad1234b6a0296a2fa46fe56786bbca4aca9ed470
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: d0b455261649fad95a92f7ad75f7af26d633cf5a
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305965"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476890"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Zamienianie dysku fizycznego w usłudze Azure Stack
 
@@ -29,10 +29,10 @@ W tym artykule opisano ogólny proces, aby zastąpić dysk fizyczny w usłudze A
 
 Zintegrowane systemy i development kit wdrożenia, których wyłączania dysków, można użyć tej procedury.
 
-Wymiana dysku rzeczywistego, które kroki będą się różnić na podstawie z dostawcą sprzętu producenta sprzętu (OEM). W dokumentacji dostawcy pola jednostkę (FRU) replaceable unit szczegółowy opis kroków, które są specyficzne dla systemu. 
+Wymiana dysku rzeczywistego, które kroki będą się różnić na podstawie z dostawcą sprzętu producenta sprzętu (OEM). W dokumentacji dostawcy pola jednostkę (FRU) replaceable unit szczegółowy opis kroków, które są specyficzne dla systemu.
 
 ## <a name="review-disk-alert-information"></a>Przejrzyj informacje o alertach dysku
-Po awarii dysku, otrzymasz alert informujący o tym, czy łączność utracono na dysku fizycznym. 
+Po awarii dysku, otrzymasz alert informujący o tym, czy łączność utracono na dysku fizycznym.
 
  ![Utracono łączność wyświetlanie alertów fizycznego dysku](media/azure-stack-replace-disk/DiskAlert.png)
 
@@ -47,7 +47,7 @@ Wykonaj instrukcje FRU dostawcy sprzętu OEM dla rzeczywistego dysku zastępczeg
 
 Aby zapobiec dysku nieobsługiwanego w zintegrowanym systemie, system blokuje wykonywanie dysków, które nie są obsługiwane przez dostawcę. Jeśli spróbujesz użyć dysku nieobsługiwanego nowy alert informujący o tym, czy dysk ma zostały poddane kwarantannie z powodu nieobsługiwanego modelu lub oprogramowania układowego.
 
-Po zamianie dysku usługi Azure Stack umożliwia odnalezienie nowy dysk i automatycznie rozpoczyna proces naprawy dysku wirtualnego.  
+Po zamianie dysku usługi Azure Stack umożliwia odnalezienie nowy dysk i automatycznie rozpoczyna proces naprawy dysku wirtualnego.
  
  ## <a name="check-the-status-of-virtual-disk-repair"></a>Sprawdź stan naprawy dysku wirtualnego
  

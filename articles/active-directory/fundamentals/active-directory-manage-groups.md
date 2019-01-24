@@ -3,7 +3,7 @@ title: Zarządzanie dostępem do aplikacji i zasobów przy użyciu grup — usł
 description: Dowiedz się więcej o tym, jak zarządzać dostępem do aplikacji w chmurze, lokalnych aplikacji i zasobów przy użyciu grup usługi Azure Active Directory w organizacji.
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -12,12 +12,12 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 5a706a2a879ae3b4c4adb2690faa77846474ce49
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c014392f0626a29c0ecf5f0371a3fd52ea9d163
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087290"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447976"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Zarządzanie dostępem do aplikacji i zasobów przy użyciu grup usługi Azure Active Directory
 Azure Active Directory (Azure AD) pomaga w zarządzaniu aplikacji opartych na chmurze, lokalnych aplikacji i zasoby przy użyciu grup w organizacji. Twoje zasoby mogą być częścią katalogu, takie jak uprawnienia do zarządzania obiektami za pomocą ról w katalogu lub zewnętrznie w stosunku do katalogu, takie jak do oprogramowania jako usługi (SaaS), Azure services witryn programu SharePoint i zasobów lokalnych.
@@ -35,7 +35,7 @@ Istnieją cztery sposoby przypisywania zasobów prawa dostępu dla użytkownikó
 
 - **Bezpośrednie przypisania.** Właściciel zasobu przypisuje bezpośrednio do użytkownika do zasobu.
 
-- **Przypisania grupy.** Właściciel zasobu przypisuje grupę usługi Azure AD do zasobu, który automatycznie zapewnia wszystkie dostępu członkom grupy zasobów. Członkostwo w grupie jest zarządzane zarówno przez właściciela grupy i właściciela zasobu, umożliwiając właściciel, albo dodać lub usunąć członków z grupy. Aby uzyskać więcej informacji na temat dodawania lub usuwania członkostwa w grupie zobacz [porady: Dodawanie lub usuwanie grupy z innej grupy przy użyciu portalu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
+- **Przypisania grupy.** Właściciel zasobu przypisuje grupę usługi Azure AD do zasobu, który automatycznie zapewnia wszystkie dostępu członkom grupy zasobów. Członkostwo w grupie jest zarządzane zarówno przez właściciela grupy i właściciela zasobu, umożliwiając właściciel, albo dodać lub usunąć członków z grupy. Aby uzyskać więcej informacji na temat dodawania lub usuwania członkostwa w grupie zobacz [jak: Dodawanie lub usuwanie grupy z innej grupy przy użyciu portalu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
 
 - **Przypisanie oparte na regułach.** Właściciel zasobu tworzy grupę i używa regułę w celu zdefiniowania, czyli użytkownicy przypisani do określonego zasobu. Reguła opiera się na atrybuty, które są przypisane do poszczególnych użytkowników. Właściciel zasobu zarządza reguły, określania atrybutów i wartości, które są wymagane, aby zezwolić na dostęp do zasobu. Aby uzyskać więcej informacji, zobacz [utworzyć grupę dynamiczną i sprawdzić stan](../users-groups-roles/groups-create-rule.md).
 

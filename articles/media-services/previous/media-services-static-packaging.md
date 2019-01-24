@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 9af5ebe9f37127656c7f61357240d4e69a28812b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1ea4639d547616f2cfdf1d5e2b78c1388ef09dc4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243133"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826126"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Korzystanie z funkcji pakowania multimediów platformy Azure do wykonywania zadań statyczne tworzenie pakietów
 > [!NOTE]
@@ -41,7 +41,7 @@ Jednak istnieją pewne scenariusze, które wymagają statyczne tworzenie pakiet�
 
 * Sprawdzanie poprawności adaptacyjną szybkością transmisji bitów każdego pliku MP4 z zakodowanych przy użyciu koderów zewnętrzne (na przykład przy użyciu koderów innych firm).
 
-Statyczne tworzenie pakietów również służy do wykonywania następujących zadań: jednak zaleca się używanie dynamicznego szyfrowania.
+Statyczne tworzenie pakietów umożliwia również wykonywanie następujących zadań: Jednak zalecane jest korzystanie z szyfrowania dynamicznego.
 
 * Przy użyciu statycznego szyfrowania do ochrony Smooth i MPEG DASH za pomocą technologii PlayReady
 * Przy użyciu statycznego szyfrowania do ochrony HLSv3 przy użyciu algorytmu AES-128
@@ -108,7 +108,7 @@ Poniższy przykład kodu używa rozszerzenia SDK .NET usługi Azure Media Servic
             private static readonly string _multibitrateMP4s =
                 Path.Combine(_mediaFiles, @"MultibitrateMP4Files");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations";
 
             private static MediaServicesCredentials _cachedCredentials = null;
@@ -168,7 +168,7 @@ Poniższy przykład kodu używa rozszerzenia SDK .NET usługi Azure Media Servic
                 SetISMFileAsPrimary(multibitrateMP4sAsset);
 
                 // Create a new job.
-                IJob job = _context.Jobs.Create("MP4 validation and converstion to Smooth Stream job.");
+                IJob job = _context.Jobs.Create("MP4 validation and conversion to Smooth Stream job.");
 
                 // Read the task configuration data into a string. 
                 string configMp4Validation = File.ReadAllText(Path.Combine(
@@ -293,7 +293,7 @@ W przykładzie zdefiniowano metodę UpdatePlayReadyConfigurationXMLFile, która 
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
 
@@ -537,18 +537,18 @@ W przykładzie zdefiniowano metodę UpdatePlayReadyConfigurationXMLFile, która 
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
 
-                ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
+                ITask adaptiveBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "Adaptive Streaming",
                    TaskOptions.None);
 
                 // Specify the input Asset
-                adpativeBitrateTask.InputAssets.Add(asset);
+                adaptiveBitrateTask.InputAssets.Add(asset);
 
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
-                IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
+                IAsset abrAsset = adaptiveBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
                                         AssetCreationOptions.None);
 
                 return abrAsset;
@@ -740,7 +740,7 @@ W przykładzie w tej sekcji koduje pliku mezzanine (w tym przypadku MP4) w metod
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"SingleMP4\BigBuckBunny.mp4");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
             private static MediaServicesCredentials _cachedCredentials = null;
@@ -888,18 +888,18 @@ W przykładzie w tej sekcji koduje pliku mezzanine (w tym przypadku MP4) w metod
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
 
-                ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
+                ITask adaptiveBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "Adaptive Streaming",
                    TaskOptions.None);
 
                 // Specify the input Asset
-                adpativeBitrateTask.InputAssets.Add(asset);
+                adaptiveBitrateTask.InputAssets.Add(asset);
 
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
-                IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s", 
+                IAsset abrAsset = adaptiveBitrateTask.OutputAssets.AddNew("Multibitrate MP4s", 
                                         AssetCreationOptions.None);
 
                 return abrAsset;
@@ -1027,7 +1027,7 @@ Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym zn
             private static readonly string _singleMP4File =
                 Path.Combine(_mediaFiles, @"SingleMP4\BigBuckBunny.mp4");
 
-            // XML Configruation files path.
+            // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
 
@@ -1046,7 +1046,7 @@ Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym zn
                 _cachedCredentials = new MediaServicesCredentials(
                                 _mediaServicesAccountName,
                                 _mediaServicesAccountKey);
-                // Used the chached credentials to create CloudMediaContext.
+                // Used the cached credentials to create CloudMediaContext.
                 _context = new CloudMediaContext(_cachedCredentials);
 
                 // Load an MP4 file.
@@ -1263,18 +1263,18 @@ Upewnij się zaktualizować następujący kod, aby wskazać folder, w którym zn
                 IMediaProcessor encoder = _context.MediaProcessors.GetLatestMediaProcessorByName(
                     MediaProcessorNames.MediaEncoderStandard);
 
-                ITask adpativeBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
+                ITask adaptiveBitrateTask = job.Tasks.AddNew("MP4 to Adaptive Bitrate Task",
                    encoder,
                    "Adaptive Streaming",
                    TaskOptions.None);
 
                 // Specify the input Asset
-                adpativeBitrateTask.InputAssets.Add(asset);
+                adaptiveBitrateTask.InputAssets.Add(asset);
 
                 // Add an output asset to contain the results of the job. 
                 // This output is specified as AssetCreationOptions.None, which 
                 // means the output asset is in the clear (unencrypted).
-                IAsset abrAsset = adpativeBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
+                IAsset abrAsset = adaptiveBitrateTask.OutputAssets.AddNew("Multibitrate MP4s",
                                         AssetCreationOptions.None);
 
                 return abrAsset;

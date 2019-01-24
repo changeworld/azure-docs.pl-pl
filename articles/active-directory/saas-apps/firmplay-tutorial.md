@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: abc29480e5f5531857cbf973d5386727c3d7f2ac
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 929494d5d802dbc545c750386a286029c4bf962d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114532"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Samouczek: Integracja usługi Azure Active Directory z FirmPlay - propagowanie pracowników dla Rekrutacja
 
@@ -31,7 +31,7 @@ Integrowanie FirmPlay - propagowanie pracowników dla Rekrutacja z usługą Azur
 - Umożliwia użytkownikom automatyczne pobieranie zalogowanych do FirmPlay - propagowanie pracowników dla Rekrutacja (logowanie jednokrotne) przy użyciu konta usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,10 +45,10 @@ Do konfigurowania integracji z usługą Azure AD z FirmPlay - propagowanie praco
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -95,7 +95,7 @@ Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie FirmPlay - propagowanie pracowników dla użytkownika testowego Rekrutacja](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  — aby odpowiednikiem Britta Simon w FirmPlay: propagowanie pracowników dla rekrutacji oznacza to połączone z usługi Azure AD reprezentacja jej.
+1. **[Tworzenie FirmPlay - propagowanie pracowników dla użytkownika testowego Rekrutacja](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)**  — aby odpowiednikiem Britta Simon w FirmPlay: Propagowanie pracowników dla rekrutacji oznacza to połączone reprezentację usługi Azure AD, jej.
 1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
@@ -234,7 +234,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 Po kliknięciu FirmPlay - propagowanie pracowników Rekrutacja kafelka w panelu dostępu, możesz powinna uzyskać automatycznie zalogowanych do Twojej FirmPlay - propagowanie pracowników Rekrutacja aplikacji.
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

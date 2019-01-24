@@ -3,21 +3,21 @@ title: Token odwołania w usłudze Azure Active Directory B2C | Dokumentacja fir
 description: Typy tokeny wystawione w usłudze Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d1c9101f10342f98803a4ace420abbed5d49ba23
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 47cfd5820c80a0f53772f5424f674603acdaf18d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880118"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848941"
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Usługi Azure AD B2C: Odwołanie tokenu
+# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Odwołanie do tokenu
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -81,8 +81,8 @@ Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w
 | Kod skrótu |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót kod znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z kodu autoryzacji OAuth 2.0. Skrót kod może służyć do weryfikowania autentyczności kodu autoryzacji. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Skrót tokenu dostępu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Skrót tokenu dostępu znajduje się w tokenie identyfikator tylko wtedy, gdy token wystawiony wraz z tokenu dostępu OAuth 2.0. Skrót tokenu dostępu może służyć do weryfikowania autentyczności tokenu dostępu. Aby uzyskać więcej informacji na temat sposobu tę weryfikację należy przeprowadzić, zobacz [specyfikacją z OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Identyfikator jednorazowy |`nonce` |`12345` |Identyfikator jednorazowy jest strategii umożliwia ograniczenie liczby ataków powtarzania tokenu. Aplikację można określić identyfikatora jednorazowego w żądaniu autoryzacji przy użyciu `nonce` parametr zapytania. Wartości podane w żądaniu będzie obliczanie w niezmienionej postaci w `nonce` oświadczenia tylko tokenu Identyfikatora. Umożliwia to aplikacji, aby sprawdzić wartość względem wartości, które on określony w żądaniu, co umożliwi skojarzenie sesji aplikacji przy użyciu podanego tokenu Identyfikatora. Aplikację należy wykonywać tej weryfikacji w procesie weryfikacji tokenu Identyfikatora. |
-| Podmiot |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |To jest jednostka o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
-| Odwołania do klasy kontekstu uwierzytelniania |`acr` |Nie dotyczy |Nie używane obecnie, z wyjątkiem w przypadku starszych zasad. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
+| Podmiot |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |To jest jednostka o tym, które token określa informacje, takie jak użytkownik aplikacji. Ta wartość jest niezmienny i nie może być ponownie przypisywany ani ponownie. Może służyć do sprawdzania autoryzacji bezpiecznie, np. gdy token jest używany do uzyskania dostępu do zasobu. Domyślnie roszczenie podmiotu jest wypełniana identyfikator obiektu użytkownika w katalogu. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: Tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
+| Odwołania do klasy kontekstu uwierzytelniania |`acr` |Nie dotyczy |Nie używane obecnie, z wyjątkiem w przypadku starszych zasad. Aby dowiedzieć się więcej, zobacz [usługi Azure Active Directory B2C: Tokenów, sesji i konfiguracji rejestracji jednokrotnej](active-directory-b2c-token-session-sso.md). |
 | Framework zasady zaufania |`tfp` |`b2c_1_sign_in` |Jest to nazwa zasad, które zostało użyte do uzyskania tokenu Identyfikatora. |
 | Czas uwierzytelniania |`auth_time` |`1438535543` |To oświadczenie jest czasu, jaką ostatniego wprowadzić poświadczenia użytkownika, są reprezentowane w czasie uniksowym. |
 
@@ -138,10 +138,10 @@ Opis sposobu wykonywania weryfikacji podpisu znajduje się poza zakres tego doku
 ### <a name="validate-the-claims"></a>Sprawdzanie poprawności oświadczenia
 Gdy swojej aplikacji lub interfejsu API odbiera token Identyfikatora, on również wykonać kilka kontroli z roszczeń w tokenie identyfikator. Te obejmują, ale nie są ograniczone do:
 
-* **Odbiorców** oświadczenia: sprawdza, czy identyfikator tokenu jest przeznaczona do swojej aplikacji.
-* **Nie wcześniej niż** i **czas wygaśnięcia** oświadczenia: te Sprawdź, czy nie wygasł token Identyfikatora.
-* **Wystawcy** oświadczenia: sprawdza, czy token został wystawiony przez usługę Azure AD w aplikacji.
-* **Jednorazowego**: jest to strategię ograniczania ryzyka ataków powtarzania tokenu.
+* **Odbiorców** oświadczeń: Sprawdza, czy identyfikator tokenu jest przeznaczona do swojej aplikacji.
+* **Nie wcześniej niż** i **czas wygaśnięcia** oświadczeń: Sprawdź te nie wygasł token Identyfikatora.
+* **Wystawcy** oświadczeń: Sprawdza, czy token został wystawiony przez usługę Azure AD w aplikacji.
+* **Jednorazowego**: Jest to strategię ograniczania ryzyka ataków powtarzania tokenu.
 
 Aby uzyskać pełną listę aplikacji, należy wykonać sprawdzanie poprawności, zobacz [specyfikacją z OpenID Connect](https://openid.net). Szczegółowe informacje o oczekiwanej wartości te oświadczenia są uwzględnione w poprzednim [token sekcji](#types-of-tokens).  
 

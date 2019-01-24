@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: juliako
-ms.openlocfilehash: 618316b6b5979c65bc8906ea7d07c4f4fdf0930d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1477242e10918a9836ceea15d418fb462e193b1b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124614"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811744"
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Implementowanie trybu failover, przesyłanie strumieniowe przy użyciu usługi Azure Media Services
 
@@ -56,13 +56,13 @@ Mają zastosowanie następujące kwestie:
 * .NET framework 4.5 lub .NET Framework 4.
 * Visual Studio 2010 z dodatkiem SP1 lub nowszej wersji (Professional, Premium, Ultimate lub Express).
 
-## <a name="set-up-your-project"></a>Konfigurowanie projektu
+## <a name="set-up-your-project"></a>konfigurowanie projektu
 W tej sekcji utworzysz i skonfigurowanie projektu aplikacji Konsolowej C#.
 
 1. Tworzenie nowego rozwiązania zawierającego projekt aplikacji Konsolowej C# przy użyciu programu Visual Studio. Wprowadź **HandleRedundancyForOnDemandStreaming** nazwę, a następnie kliknij przycisk **OK**.
 2. Tworzenie **SupportFiles** folderu na tym samym poziomie co **HandleRedundancyForOnDemandStreaming.csproj** pliku projektu. W obszarze **SupportFiles** folderze utwórz **OutputFiles** i **MP4Files** folderów. Skopiuj plik MP4 do **MP4Files** folderu. (W tym przykładzie **BigBuckBunny.mp4** plik jest używany.) 
 3. Użyj **Nuget** można dodać odwołania do bibliotek DLL związane z usługą Media Services. W **Menu głównego w usłudze Visual Studio**, wybierz opcję **narzędzia** > **Menedżer pakietów biblioteki** > **Konsola Menedżera pakietów**. W oknie konsoli wpisz **windowsazure.mediaservices Install-Package**, i naciśnij klawisz Enter.
-4. Dodaj inne odwołania, które są wymagane dla tego projektu: System.Configuration, System.Runtime.Serialization i System.Web.
+4. Dodaj inne odwołania, które są wymagane dla tego projektu: System.Configuration System.Runtime.Serialization i System.Web.
 5. Zastąp **przy użyciu** instrukcji, które zostały dodane do **Programs.cs** pliku domyślnie z poniższych:
    
         using System;
@@ -178,7 +178,7 @@ W tej sekcji utworzysz zdolność do obsługi nadmiarowości.
                 CreateFileInfosForAssetWithRest(_contextTarget, targetAsset, MediaServicesAccountNameTarget, MediaServicesAccountKeyTarget);
         
                 // Check if the AssetFiles are now  associated with the asset.
-                Console.WriteLine("Asset files assocated with the {0} asset:", targetAsset.Name);
+                Console.WriteLine("Asset files associated with the {0} asset:", targetAsset.Name);
                 foreach (var af in targetAsset.AssetFiles)
                 {
                     Console.WriteLine(af.Name);

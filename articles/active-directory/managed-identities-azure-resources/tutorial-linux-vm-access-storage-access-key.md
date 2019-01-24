@@ -4,7 +4,7 @@ description: Samouczek przedstawiający proces użycia przypisanej przez system 
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: daveba
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: f00de9095e45901f92fcf3004a5f51cfdd709da2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: d9f13c348b79379ef291ce3754a4a4f1cfa9b9be
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724778"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429875"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux
 
@@ -61,7 +61,7 @@ Później przekażemy i pobierzemy plik do nowego konta magazynu. Ponieważ plik
 
 ## <a name="grant-your-vms-system-assigned-managed-identity-access-to-use-storage-account-access-keys"></a>Udzielanie przypisanej przez system tożsamości zarządzanej maszyny wirtualnej dostępu do używania kluczy dostępu konta magazynu
 
-Usługa Azure Storage nie zapewnia natywnej obsługi uwierzytelniania usługi Azure AD.  Możesz jednak użyć tożsamości zarządzanych dla zasobów platformy Azure, aby pobrać klucze dostępu konta magazynu z usługi Resource Manager, a następnie użyć klucza do uzyskania dostępu do magazynu.  W tym kroku udzielasz przypisanej przez system tożsamości zarządzanej maszyny wirtualnej dostępu do kluczy do konta magazynu.   
+W tym kroku udzielasz przypisanej przez system tożsamości zarządzanej maszyny wirtualnej dostępu do kluczy do konta magazynu.   
 
 1. Przejdź z powrotem do nowo utworzonego konta magazynu.
 2. Kliknij link **Kontrola dostępu (IAM)** w panelu po lewej stronie.  

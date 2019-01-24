@@ -57,34 +57,13 @@ items:
     href: r-quickstart.md
 - name: Przykłady
   items:
+  - name: Przykładowe eksperymenty
+    displayName: gallery
+    href: sample-experiments.md
   - name: Przykładowe zestawy danych
     href: use-sample-datasets.md
-  - name: Przykład zmienności klientów
-    href: azure-ml-customer-churn-scenario.md
   - name: Galeria sztucznej inteligencji platformy Azure
-    items:
-    - name: Omówienie
-      href: gallery-how-to-use-contribute-publish.md
-    - name: Przykładowe eksperymenty
-      href: sample-experiments.md
-    - name: Branże
-      href: gallery-industries.md
-    - name: Rozwiązania
-      href: gallery-solutions.md
-    - name: Eksperymenty
-      href: gallery-experiments.md
-    - name: Notesy programu Jupyter
-      href: gallery-jupyter-notebooks.md
-    - name: Konkursy
-      href: gallery-competitions.md
-    - name: Konkursy — często zadawane pytania
-      href: competition-faq.md
-    - name: Samouczki
-      href: gallery-tutorials.md
-    - name: Kolekcje
-      href: gallery-collections.md
-    - name: Moduły niestandardowe
-      href: gallery-custom-modules.md
+    href: gallery-how-to-use-contribute-publish.md
 - name: Pojęcia
   items:
   - name: Zarządzanie modelami
@@ -102,9 +81,6 @@ items:
       href: troubleshooting-creating-ml-workspace.md
     - name: Wdrażanie przy użyciu usługi ARM
       href: deploy-with-resource-manager-template.md
-    - name: Wyświetlanie i usuwanie danych konta usługi Studio
-      displayName: export
-      href: export-delete-personal-data-dsr.md
   - name: Importowanie danych treningowych
     items:
     - name: Omówienie
@@ -128,15 +104,9 @@ items:
       displayName: endpoint, endpoints
       href: create-models-and-endpoints-with-powershell.md
     - name: Wybieranie algorytmów
-      items:
-      - name: Wybieranie algorytmów
-        href: algorithm-choice.md
-      - name: Ściągawka dotycząca algorytmów
-        href: algorithm-cheat-sheet.md
-      - name: Korzystanie z regresji liniowej
-        href: linear-regression-in-azure.md
-      - name: Korzystanie z analizy tekstu
-        href: text-analytics-module-tutorial.md
+      href: algorithm-choice.md
+    - name: Ściągawka dotycząca algorytmów
+      href: algorithm-cheat-sheet.md
     - name: Ocena i interpretacja wyników
       items:
       - name: Ocena wydajności
@@ -212,7 +182,19 @@ items:
       href: consume-web-service-with-web-app-template.md
     - name: Korzystanie z puli usługi Batch
       href: dedicated-capacity-for-bes-jobs.md
-  - name: Wyświetlanie i usuwanie danych konta
+  - name: Przykłady
+    items:
+    - name: Odpływ klientów
+      href: azure-ml-customer-churn-scenario.md
+    - name: Analiza tonacji
+      href: text-analytics-module-tutorial.md
+    - name: Migrowanie analizy z programu Excel do usługi Studio
+      href: linear-regression-in-azure.md
+  - name: Wyświetlanie i usuwanie danych usługi Studio
+    displayName: export
+    href: export-delete-personal-data-dsr.md
+  - name: Wyświetlanie i usuwanie danych galerii
+    displayName: export
     href: ai-gallery-control-personal-data-dsr.md
 - name: Dokumentacja
   items:
@@ -230,21 +212,21 @@ items:
     href: /azure/templates/microsoft.machinelearning/allversions
 - name: Zasoby
   items:
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
-  - name: Język programowania sieci neuronowych Net#
-    href: azure-ml-netsharp-reference-guide.md
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-machine-learning
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Przewodnik dewelopera języka R
     href: ../r-developers-guide.md
-ms.openlocfilehash: f8fa65cfb7c61cd3d359331f1872d279ab113d19
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+  - name: Niestandardowe sieci neuronowe w języku Net#
+    href: azure-ml-netsharp-reference-guide.md
+  - name: Uzyskiwanie pomocy technicznej
+    href: support-aml-studio.md
+  - name: Porównanie naszych produktów do uczenia maszynowego
+    href: ../service/overview-more-machine-learning.md
+ms.openlocfilehash: 585310705bebbceb0aa4576977ef096704d87483
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320518"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424789"

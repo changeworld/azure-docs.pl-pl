@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: 5fb615ff042cc5cdd3b6b8e42e4d91b161ebf445
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602379"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467319"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Wprowadzenie do architektura referencyjna IoT platformy Azure
 
@@ -79,7 +79,7 @@ Jako rozwiązanie pozyskuje dane telemetryczne, ważne jest zrozumienie, jak prz
 
 Routing może wysyłać danych telemetrycznych do jednego lub więcej punktów końcowych magazynu, procesów analizy i akcje. To rozwiązanie może łączyć etapów w ramach różnych zleceniach i przetwarzać je z jednoczesnych zadań równoległych.
 
-Rozwiązania do zdalnego monitorowania korzysta [usługi Azure Stream Analytics](/azure/stream-analytics/) potrzeby przetwarzania strumienia. Aparat reguł w rozwiązaniu używa zapytania usługi Stream Analytics można wygenerować alarmy i akcje. Na przykład rozwiązanie można użyć zapytania do zidentyfikowania, gdy średnia temperatura w przedziale magazynu truck przez ponad pięć minut spadnie poniżej 36 stopni.
+Rozwiązania do zdalnego monitorowania korzysta [usługi Azure Stream Analytics](/azure/stream-analytics/) potrzeby przetwarzania strumienia. Aparat reguł w rozwiązaniu używa zapytania usługi Stream Analytics do generowania alertów i akcji. Na przykład rozwiązanie można użyć zapytania do zidentyfikowania, gdy średnia temperatura w przedziale magazynu truck przez ponad pięć minut spadnie poniżej 36 stopni.
 
 ### <a name="storage"></a>Magazyn
 

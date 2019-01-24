@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
 ms.service: Azure-Active-Directory
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 8000208dfe15744c891bbf27ad8f9e69f44ef4dc
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 4907179b9cc333103a898056ff951decf81c0f6c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807792"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Samouczek: integracja usługi Azure Active Directory z rozwiązaniem Adobe Creative Cloud
 
@@ -104,7 +104,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Adobe C
 
     ![Informacje o domenie i adresach URL logowania jednokrotnego rozwiązania Adobe Creative Cloud](common/idp-intiated.png)
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.okta.com/saml2/service-provider/<token>`
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.okta.com/saml2/service-provider/<token>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.okta.com/auth/saml20/accauthlinktest`
 

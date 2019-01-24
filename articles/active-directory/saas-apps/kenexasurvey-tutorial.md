@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z usługą Enterprise ankiety Kenexa IBM | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory IBM Kenexa ankiety Enterprise | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i IBM Kenexa ankiety Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c7aac6da-f4bf-419e-9e1a-16b460641a52
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d8027aca628185b1e3d2e80323c9f83e6832a913
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449502"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823933"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą Enterprise ankiety Kenexa IBM
+# <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory IBM Kenexa ankiety Enterprise
 
 W tym samouczku dowiesz się, jak zintegrować IBM Kenexa ankiety Enterprise z usługą Azure Active Directory (Azure AD).
 
@@ -37,15 +37,15 @@ Jeśli chcesz dowiedzieć się więcej na temat oprogramowania jako usługi (Saa
 
 Aby skonfigurować integracji z usługą Azure AD z usługą Enterprise ankiety Kenexa IBM, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Subskrypcję z obsługą IBM Kenexa ankiety przedsiębiorstwa z logowania jednokrotnego
 
 > [!NOTE]
 > Podczas testowania kroki opisane w tym samouczku, zaleca się, że należy używać w środowisku produkcyjnym.
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -61,15 +61,15 @@ Aby dodać IBM Kenexa ankiety przedsiębiorstwa z galerii, wykonaj następujące
 
 1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie kliknij **usługi Azure Active Directory** przycisku. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 1. Wybierz **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![Blok Aplikacje dla przedsiębiorstw][2]
     
 1. Aby dodać aplikację, kliknij przycisk **nową aplikację** przycisku.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **IBM Kenexa ankiety Enterprise**.
 
@@ -79,7 +79,7 @@ Aby dodać IBM Kenexa ankiety przedsiębiorstwa z galerii, wykonaj następujące
 
     ![IBM Kenexa ankiety Enterprise na liście wyników](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 W tej sekcji możesz skonfigurować i przetestować logowania jednokrotnego usługi Azure AD za pomocą ankiety Enterprise Kenexa IBM, oparte na użytkownika testu o nazwie "Britta Simon."
 
 Do logowania jednokrotnego do pracy usługi Azure AD musi zidentyfikować odpowiednikiem IBM Kenexa ankiety przedsiębiorstwa użytkownika w usłudze Azure AD. Oznacza to usługi Azure AD należy ustanowić relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w przedsiębiorstwie ankiety Kenexa IBM.
@@ -109,7 +109,7 @@ W tej sekcji służy do włączenia funkcji logowania jednokrotnego usługi Azur
     b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL z następującym wzorcem: `https://surveys.kenexa.com/<companycode>/tools/sso.asp`
 
     > [!NOTE] 
-    > Powyższe wartości nie są prawdziwe. Można aktualizować rzeczywisty identyfikator i adres URL odpowiedzi. Aby uzyskać rzeczywiste wartości, skontaktuj się z pomocą [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw).
+    > Podane wyżej wartości nie są rzeczywiste. Można aktualizować rzeczywisty identyfikator i adres URL odpowiedzi. Aby uzyskać rzeczywiste wartości, skontaktuj się z pomocą [zespołem pomocy technicznej Enterprise ankiety Kenexa IBM](https://www.ibm.com/support/home/?lnk=fcw).
 
 1. W obszarze **certyfikat podpisywania SAML**, kliknij przycisk **certyfikat (Base64)**, a następnie zapisz plik certyfikatu do komputera.
 
@@ -192,7 +192,7 @@ Aby przypisać użytkownika Britta Simon IBM Kenexa ankiety Enterprise, wykonaj 
 
 1. W okienku po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Link "Użytkownicy i grupy"][202] 
+    ![Link „Użytkownicy i grupy”][202] 
 
 1. Kliknij przycisk **Dodaj** przycisk a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
@@ -210,7 +210,7 @@ W tej sekcji możesz przetestować konfigurację logowania jednokrotnego usługi
 
 Po kliknięciu **IBM Kenexa ankiety Enterprise** kafelka w panelu dostępu, powinny być automatycznie zalogowano się do aplikacji przedsiębiorstwa ankiety Kenexa IBM.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

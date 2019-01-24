@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 622cdd36a1ecf582c4cdb883b12753ee2a75d50e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 36e87550c90c1a5d4b05aa62f2fbe79b04b25445
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856323"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382449"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące firm ciągłości działania i odzyskiwania po awarii w usłudze Azure Kubernetes Service (AKS)
 
@@ -38,7 +38,7 @@ Klaster AKS jest wdrażany w jednym regionie. Aby zabezpieczyć się przed awari
 * [Regiony sparowane platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
   * Dla tego obszaru Wybierz dwa regiony, które są skojarzone ze sobą. Te regiony koordynować aktualizacje platformy i określać priorytety w zakresie odzyskiwania w razie potrzeby.
 * Poziom dostępności usług (gorąca Hot Hot ciepło, gorące i zimne)
-  * Czy chcesz uruchomić oba regiony, w tym samym czasie, z jednym regionem *gotowe* można uruchomić obsługująca ruchu lub regionami, wymagających czasu przygotowania do obsługi ruchu.
+  * Czy chcesz uruchomić oba regiony, w tym samym czasie, z jednym regionem *gotowe* można uruchomić ruchu lub regionami, wymagającym czas na przygotowanie się do obsługi ruchu.
 
 Dostępność usługi AKS w poszczególnych regionach i sparowane regiony są wspólnego brany pod uwagę. Wdrożyć klastry usługi AKS do sparowane regiony, które są przeznaczone do zarządzania równocześnie w regionie odzyskiwania po awarii. Na przykład, jest dostępna w usłudze AKS *wschodnie stany USA* i *zachodnie stany USA*. Te regiony są również skojarzone. Tych dwóch regionach będą zalecane, tworząc strategii BC AKS odzyskiwania po awarii.
 

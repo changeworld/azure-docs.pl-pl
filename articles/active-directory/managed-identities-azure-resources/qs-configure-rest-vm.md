@@ -4,7 +4,7 @@ description: Wywołuje krok po kroku instrukcje dotyczące konfigurowania system
 services: active-directory
 documentationcenter: ''
 author: daveba
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: msi
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/25/2018
 ms.author: daveba
-ms.openlocfilehash: 6f147aa7066db19c1be451b0a5ac49bfce9f571b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 5240d46c1d754ec09f9d83a86424fdbd3cfaadb7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422937"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433309"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Konfigurowanie tożsamości zarządzanego dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu wywołań interfejsu API REST
 
@@ -188,7 +188,7 @@ Aby włączyć tożsamość zarządzana na maszynie Wirtualnej, która pierwotni
 
    Wersja interfejsu API `2018-06-01` przechowuje tożsamości zarządzanych przypisanych przez użytkownika w `userAssignedIdentities` wartości w postaci słownika, w przeciwieństwie do `identityIds` wartość w formie tablicy używane w wersji interfejsu API `2017-12-01`.
    
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **API VERSION 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"SystemAssigned, UserAssigned", "userAssignedIdentities":{"/subscriptions/<<SUBSCRIPTION ID>>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{},"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID2":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -319,11 +319,11 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
    az account get-access-token
    ``` 
 
-4. Tworzenie przypisanych przez użytkownika tożsamości zarządzanej zgodnie z instrukcjami przedstawionymi tutaj: [tworzenie zarządzanych tożsamości przypisanych przez użytkownika](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Utwórz przypisanych przez użytkownika tożsamości zarządzanej zgodnie z instrukcjami przedstawionymi tutaj: [Tworzenie zarządzanych tożsamości przypisanych przez użytkownika](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
 5. Utwórz Maszynę wirtualną przy użyciu programu CURL, aby wywołać punkt końcowy usługi Azure Resource Manager REST. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* w grupie zasobów *myResourceGroup* przy użyciu tożsamości przypisanych przez użytkownika zarządzanego `ID1`, jak wskazano w treści żądania przez wartość `"identity":{"type":"UserAssigned"}`. Zastąp `<ACCESS TOKEN>` wartością otrzymany w poprzednim kroku zleconą tokenu elementu nośnego dostępu i `<SUBSCRIPTION ID>` wartości odpowiednie dla danego środowiska.
  
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **API VERSION 2018-06-01**
 
    ```bash   
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PUT -d '{"location":"westus","name":"myVM","identity":{"type":"UserAssigned","identityIds":["/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"]},"properties":{"hardwareProfile":{"vmSize":"Standard_D2_v2"},"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"name":"myVM3osdisk","createOption":"FromImage"},"dataDisks":[{"diskSizeGB":1023,"createOption":"Empty","lun":0},{"diskSizeGB":1023,"createOption":"Empty","lun":1}]},"osProfile":{"adminUsername":"azureuser","computerName":"myVM","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaces":[{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic","properties":{"primary":true}}]}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -516,7 +516,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
    Poniższe przykłady przypisuje przypisanych przez użytkownika tożsamości zarządzanej, `ID1` do maszyny Wirtualnej o nazwie *myVM* w grupie zasobów *myResourceGroup*.  Zastąp `<ACCESS TOKEN>` wartością otrzymany w poprzednim kroku zleconą tokenu elementu nośnego dostępu i `<SUBSCRIPTION ID>` wartości odpowiednie dla danego środowiska.
 
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **API VERSION 2018-06-01**
 
    ```bash
    curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01' -X PATCH -d '{"identity":{"type":"UserAssigned", "userAssignedIdentities":{"/subscriptions/<SUBSCRIPTION ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1":{}}}}' -H "Content-Type: application/json" -H Authorization:"Bearer <ACCESS TOKEN>"
@@ -579,7 +579,7 @@ Aby przypisać tożsamości przypisanych przez użytkownika do maszyny Wirtualne
 
 5. Jeśli masz istniejącą przypisanych przez użytkownika lub przypisany systemowo tożsamość zarządzaną przypisane do maszyny Wirtualnej:
    
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **API VERSION 2018-06-01**
 
    Dodaj tożsamość zarządzanych użytkownik przypisany do `userAssignedIdentities` wartość słownika.
     
@@ -683,7 +683,7 @@ Aby usunąć tożsamości przypisanych przez użytkownika do maszyny Wirtualnej,
 
    Na przykład w przypadku zarządzanych tożsamości przypisanych przez użytkownika `ID1` i `ID2` przypisane do maszyny Wirtualnej i chcesz zachować `ID1` przypisane i zachowywanie tożsamości przypisanych przez system:
    
-   **INTERFEJS API W WERSJI 2018-06-01**
+   **API VERSION 2018-06-01**
 
    Dodaj `null` użytkownik przypisany zarządzanych tożsamości, które chcesz usunąć:
 

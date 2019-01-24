@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: juliako
-ms.openlocfilehash: 9edfa8ea0c9e469d09cef7ddbd1c7edda4484b47
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 43da365a6424fa9d489db1f5cd74ff6aeb8f0d7c
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444633"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819887"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>Przekazywanie plików na konto usługi Media Services przy użyciu platformy .NET
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ Podczas tworzenia zasobów, można określić następujące opcje szyfrowania:
   
     Jeśli element zawartości jest szyfrowany w magazynie, należy skonfigurować zasady dostarczania elementu zawartości. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostarczania elementów zawartości](media-services-dotnet-configure-asset-delivery-policy.md).
 
-Jeśli określisz dla swojego elementu zawartości być zaszyfrowany przy użyciu **CommonEncrypted** opcji lub **EnvelopeEncypted** opcji, należy skojarzyć element zawartości za pomocą **ContentKey**. Aby uzyskać więcej informacji, zobacz [sposób tworzenia ContentKey](media-services-dotnet-create-contentkey.md). 
+Jeśli określisz dla swojego elementu zawartości być zaszyfrowany przy użyciu **CommonEncrypted** opcji lub **EnvelopeEncrypted** opcji, należy skojarzyć element zawartości za pomocą **ContentKey**. Aby uzyskać więcej informacji, zobacz [sposób tworzenia ContentKey](media-services-dotnet-create-contentkey.md). 
 
-Jeśli określisz dla swojego elementu zawartości być zaszyfrowany przy użyciu **StorageEncrypted** opcję Media Services SDK dla platformy .NET tworzy **StorateEncrypted** **ContentKey** dla swojego elementu zawartości.
+Jeśli określisz dla swojego elementu zawartości być zaszyfrowany przy użyciu **StorageEncrypted** opcję Media Services SDK dla platformy .NET tworzy **StorageEncrypted** **ContentKey** dla swojego elementu zawartości.
 
 W tym artykule pokazano, jak używać zestawu SDK .NET usługi Media Services, a także Media Services .NET SDK rozszerzenia przekazywanie plików do zasobów usługi Media Services.
 

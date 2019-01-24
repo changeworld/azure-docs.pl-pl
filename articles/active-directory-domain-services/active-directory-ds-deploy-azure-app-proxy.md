@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Wdrażanie serwera Proxy aplikacji usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Wdrażanie serwera Proxy aplikacji usługi Azure Active Directory | Dokumentacja firmy Microsoft'
 description: Użyj serwera Proxy aplikacji usługi Azure AD w domenach zarządzanych usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 4621122d805f37be1578aa7b7c9ae059f3141c77
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fc428ddc5c9a99e04f932dec620d99a23f366d28
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840303"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845439"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Wdrażanie aplikacji serwera Proxy Azure AD w domenie zarządzanej usług domenowych Azure AD
 Serwer Proxy aplikacji usługi Azure Active Directory (AD) pomaga wspierać pracowników zdalnych przez publikowanie lokalnych aplikacji można uzyskać dostęp za pośrednictwem Internetu. Korzystając z usług domenowych Azure AD możesz teraz lift-and-shift starszych aplikacji lokalnych do usług infrastruktury platformy Azure. Następnie można opublikować te aplikacje przy użyciu usługi Azure AD serwera Proxy aplikacji, co zapewnia bezpieczny dostęp zdalny do użytkowników w Twojej organizacji.
 
-Jeśli jesteś nowym użytkownikiem serwera Proxy aplikacji usługi AD systemu Azure, więcej informacji na temat tej funkcji z następującym artykułem: [jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](../active-directory/manage-apps/application-proxy.md).
+Jeśli jesteś nowym użytkownikiem serwera Proxy aplikacji usługi AD systemu Azure, Dowiedz się więcej na temat tej funkcji z następującym artykułem: [Jak zapewnić bezpieczny dostęp zdalny do aplikacji lokalnych](../active-directory/manage-apps/application-proxy.md).
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -42,7 +42,7 @@ Aby wykonać zadania opisane w tym artykule, potrzebne są:
 ## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>Zadanie 1. serwer Proxy aplikacji Włączanie usługi Azure AD dla katalogu usługi Azure AD
 Wykonaj poniższe kroki, aby umożliwić aplikacji serwera Proxy Azure AD dla katalogu usługi Azure AD.
 
-1. Zaloguj się jako administrator w [witryny Azure portal](https://portal.azure.com).
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) jako administrator.
 
 2. Kliknij przycisk **usługi Azure Active Directory** Aby wyświetlić przegląd katalogu. Kliknij przycisk **aplikacje dla przedsiębiorstw**.
 
@@ -96,9 +96,9 @@ Wcześniej zainicjowano obsługę administracyjną maszyny wirtualnej systemu Wi
 ## <a name="next-steps"></a>Następne kroki
 Masz skonfigurować serwer Proxy aplikacji usługi AD systemu Azure i zintegrować je z Twoją domeną zarządzaną usług domenowych Azure AD.
 
-* **Migrowanie aplikacji na maszynach wirtualnych platformy Azure:** można lift-and-shift działanie aplikacji na serwerach lokalnych maszyn wirtualnych platformy Azure przyłączone do domeny zarządzanej. Pomoże pozbyć się koszty infrastruktury obsługi serwerów w środowisku lokalnym.
+* **Migrowanie aplikacji na maszynach wirtualnych platformy Azure:** Możesz to zrobić lift-and-shift działanie aplikacji na serwerach lokalnych maszyn wirtualnych platformy Azure przyłączone do domeny zarządzanej. Pomoże pozbyć się koszty infrastruktury obsługi serwerów w środowisku lokalnym.
 
-* **Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD:** publikowania aplikacji działających na maszynach wirtualnych platformy Azure przy użyciu serwera Proxy aplikacji usługi AD systemu Azure. Aby uzyskać więcej informacji, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
+* **Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD:** Publikowanie aplikacji uruchamianych na maszynach wirtualnych platformy Azure przy użyciu serwera Proxy aplikacji usługi AD systemu Azure. Aby uzyskać więcej informacji, zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Uwaga wdrożenia — aplikacje publikowania IWA (zintegrowane uwierzytelnianie Windows) przy użyciu serwera Proxy aplikacji usługi Azure AD

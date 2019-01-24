@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac273ac7d4c6c371670e6b8a8170274602a5318b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 310311c22be25960b15f20d573624f50b0f618b1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536546"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474816"
 ---
 # <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
 
@@ -57,7 +57,7 @@ Jeśli chcesz użyć kontenera rozpoznawania twarzy, należy utworzyć zasób tw
 
 Wykonaj poniższe kroki, aby utworzyć i pobieranie informacji z zasobu twarzy:
 
-1. Utwórz zasób usługi rozpoznawania twarzy w witrynie Azure portal.  
+1. Utwórz zasób twarzy w witrynie Azure portal.  
    Jeśli chcesz użyć kontenera rozpoznawania twarzy, należy najpierw utworzyć odpowiadający jej zasób twarzy w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal](../cognitive-services-apis-create-account.md).
 
 1. Pobieranie klucza punktu końcowego adresu URL i subskrypcji dla zasobów platformy Azure.  
@@ -178,3 +178,4 @@ W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, 
 * Przegląd [Przegląd twarzy](Overview.md) Aby dowiedzieć się więcej na temat wykrywania i identyfikacji twarzy  
 * Zapoznaj się [interfejsu API rozpoznawania twarzy](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) szczegółowe informacje na temat metod obsługiwanych przez kontener.
 * Zapoznaj się [— często zadawane pytania (FAQ)](FAQ.md) Aby rozwiązać problemy związane z funkcji rozpoznawania twarzy.
+* Użycie [kontenerów usługi Cognitive Services](../cognitive-services-container-support.md)

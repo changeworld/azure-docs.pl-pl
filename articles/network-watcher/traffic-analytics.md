@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338587"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429093"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -99,9 +99,6 @@ Twoje konto musi należeć do jednej z następujących Azure [wbudowane role](..
 |                   | Współautor            |
 |                   | Czytelnik                 |
 |                   | Współautor sieci    |
-|Wdrożenie klasyczne            | Administrator konta  |
-|                   | Administrator usługi  |
-|                   | Współadministrator       |
 
 Jeśli Twoje konto nie jest przypisana do jednego z wbudowanych ról, musi ona zostać przypisana do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przypisany następujące działania, na poziomie subskrypcji:
 
@@ -176,7 +173,7 @@ Wybierz następujące opcje, jak pokazano na ilustracji:
 
 Powtórz poprzednie kroki dla innych NSG, dla których chcesz włączyć analizy ruchu. Dane z dzienników przepływu są wysyłane do obszaru roboczego, dlatego upewnij się, że lokalnymi przepisami i regulacjami w Twoim kraju na przechowywanie danych w regionie, w którym istnieje obszar roboczy.
 
-Można również skonfigurować za pomocą analizy ruchu [AzureRmNetworkWatcherConfigFlowLog zestaw](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) polecenia cmdlet programu PowerShell w usłudze AzureRm PowerShell w wersji modułu 6.2.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` można odnaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Można również skonfigurować za pomocą analizy ruchu [AzureRmNetworkWatcherConfigFlowLog zestaw](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) polecenia cmdlet programu PowerShell w usłudze AzureRm PowerShell w wersji modułu 6.2.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` można odnaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="view-traffic-analytics"></a>Wyświetl analizę ruchu
 
@@ -317,7 +314,7 @@ Dystrybucja ruchu dla bramy Application gateway i modułu równoważenia obcią�
  - Wiedząc, podsieć, która jest konwersację, do którego usługa Application gateway lub moduł równoważenia obciążenia. Jeśli zauważysz nieoczekiwany konwersacji, możesz poprawić konfigurację.
  - Jeśli nieautoryzowany sieci są konwersację z bramy aplikacji lub usługi równoważenia obciążenia, jesteś w stanie go poprawić, konfigurując reguły sieciowej grupy zabezpieczeń, aby zablokować sieci nieautoryzowany. 
 
-    ![Subnet-Topology-showcasing-Traffic-Distribution-to-a-Application-Gateway-Subnet-with-regards-to-Flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
+    ![subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 
 ### <a name="view-ports-and-virtual-machines-receiving-traffic-from-the-internet"></a>Wyświetlanie portów i maszyny wirtualne odbierające ruch z Internetu
 

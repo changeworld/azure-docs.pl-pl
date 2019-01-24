@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z FilesAnywhere | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą FilesAnywhere | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i FilesAnywhere.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 220b5a486f5bb5d22c671ac6935e610a6eef62cf
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2dab43499d5f55474117f88cfaa1cecd1a50bf3e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115989"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822046"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Samouczek: Integracja usługi Azure Active Directory z FilesAnywhere
+# <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą FilesAnywhere
 
 W tym samouczku dowiesz się, jak zintegrować FilesAnywhere w usłudze Azure Active Directory (Azure AD).
 
@@ -31,7 +31,7 @@ Integrowanie FilesAnywhere z usługą Azure AD zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatyczne pobieranie zalogowanych do FilesAnywhere (logowanie jednokrotne) przy użyciu konta usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -45,10 +45,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą FilesAnywhere, potrze
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -117,7 +117,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu
 
     ![Konfigurowanie logowania jednokrotnego](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
     
-    a. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+    a. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<company name>.filesanywhere.com/saml20.aspx?c=215`
 > [!NOTE]
 > Należy pamiętać, że wartość **215** jest **clientid** i jest tylko przykładowe. Należy zastąpić wartości clientid rzeczywistych.
 
@@ -130,9 +130,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu
     b. W **na adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<sub domain>.filesanywhere.com/`
 
     > [!NOTE] 
-    > Należy pamiętać, że nie są rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych na adres URL logowania i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej FilesAnywhere](mailto:support@FilesAnywhere.com) do uzyskania tych wartości. 
+    > Należy pamiętać, że nie są to rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych na adres URL logowania i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej FilesAnywhere](mailto:support@FilesAnywhere.com) do uzyskania tych wartości. 
 
-1. Aplikacja oprogramowania FilesAnywhere oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+1. Aplikacja oprogramowania FilesAnywhere oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego działania.
     
     ![Konfigurowanie logowania jednokrotnego](./media/filesanywhere-tutorial/tutorial_filesanywhere_attribute.png)
     
@@ -153,13 +153,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu
 
     ![Konfigurowanie logowania jednokrotnego](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_05.png)
     
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
     
     c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
     
-    d. Kliknij przycisk **Ok**
+    d. Kliknij przycisk **OK**.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/filesanywhere-tutorial/tutorial_general_400.png)
 
@@ -210,7 +210,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania pl
 
 ### <a name="creating-a-filesanywhere-test-user"></a>Tworzenie użytkownika testowego FilesAnywhere
 
-Aplikacja obsługuje tylko w czasie Inicjowanie obsługi użytkowników oraz uwierzytelniania użytkowników w aplikacji, automatycznie tworzony. 
+Aplikacja obsługuje aprowizowanie użytkowników typu Just In Time. Po uwierzytelnieniu użytkownicy zostaną automatycznie utworzeni w aplikacji. 
 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
@@ -252,7 +252,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 Po kliknięciu kafelka FilesAnywhere w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji FilesAnywhere.
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

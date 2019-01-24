@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 69e3708ef4c31e2dd91b5f50baecc46ea129cf33
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 173963470a77932186b3c51f17ccb406b32a13f3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53346445"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452228"
 ---
-# <a name="device-simulation-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do symulacji urządzenia
+# <a name="device-simulation-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do symulacji urządzeń
 
 Rozwiązania IoT opartych na chmurze urządzenia łączą się z punktu końcowego w chmurze do wysyłania danych telemetrycznych, takich jak temperatury, lokalizacja i stan. Rozwiązanie używa tych danych telemetrycznych, dzięki któremu można wykonać akcje lub dziedziczyć po nim szczegółowych informacji.
 
@@ -28,7 +28,7 @@ Podczas opracowywania rozwiązania IoT eksperymentowania i testowanie są podsta
 
 ![Symulacja drona próbki](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Za pomocą symulacji urządzenia można zdefiniować modele urządzeń do symulacji urządzenia fizycznego. Ten model zawiera formaty wiadomości, bliźniacza reprezentacja właściwości i metody. Można także symulować urządzenie złożonych zachowań za pomocą języka JavaScript.
+Za pomocą symulacji urządzenia można zdefiniować modele urządzeń, aby symulować rzeczywiste urządzenia. Ten model zawiera formaty wiadomości, bliźniacza reprezentacja właściwości i metody. Można także symulować urządzenie złożonych zachowań za pomocą języka JavaScript.
 
 Możesz uruchomić symulacje, jednego do tysięcy urządzeń nawiązujących połączenie z dowolnej usługi IoT hub. Aby ułatwić testowanie, opcjonalnie można wdrożyć Centrum IoT, wraz z symulacji urządzenia środowisku autonomicznym.
 

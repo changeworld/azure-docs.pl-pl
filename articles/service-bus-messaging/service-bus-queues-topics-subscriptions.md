@@ -3,18 +3,19 @@ title: Omówienie obsługi komunikatów kolejek, tematów i subskrypcji usługi 
 description: Omówienie usługi Service Bus jednostki obsługi komunikatów.
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
+editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: spelluru
-ms.openlocfilehash: c4899db41f9c60bf6efb40c4d53aaa35f22ad275
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: aschhab
+ms.openlocfilehash: 7cacabf4f171189810e943043b5513e20113d962
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312888"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847035"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Kolejki, tematy i subskrypcje usługi Service Bus
 
@@ -73,7 +74,7 @@ Aby uzyskać więcej informacji na temat wartości filtru możliwe dokumentacji 
 Aby uzyskać więcej informacji i przykłady użycia komunikatów usługi Service Bus zobacz następujące tematy zaawansowane:
 
 * [Omówienie obsługi komunikatów w usłudze Service Bus](service-bus-messaging-overview.md)
-* [Szybki Start: Wysyłanie i odbieranie wiadomości przy użyciu witryny Azure portal i platformy .NET](service-bus-quickstart-portal.md)
+* [Szybki start: Wysyłanie i odbieranie wiadomości przy użyciu witryny Azure portal i platformy .NET](service-bus-quickstart-portal.md)
 * [Samouczek: Aktualizowanie spisu przy użyciu witryny Azure portal i tematów/subskrypcji](service-bus-tutorial-topics-subscriptions-portal.md)
 
 

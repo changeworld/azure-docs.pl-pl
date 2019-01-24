@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5704cc21b14d83ebc30cd29f52102c751cfb11f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248014"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463222"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Wdrażanie akceleratora rozwiązania monitorowania zdalnego przy użyciu interfejsu wiersza polecenia
 
@@ -62,7 +62,7 @@ Ta sekcja zawiera podsumowanie najważniejszych różnic między wdrożenia pods
 
 ### <a name="basic"></a>Podstawowa
 
-Podstawowe wdrożenie jest skierowana do zaprezentować rozwiązania. Aby zmniejszyć koszty, wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej. To wdrożenie nie używa architektury gotowe do produkcji.
+Wdrożenie w warstwie Podstawowa to wdrożenie ukierunkowane na prezentowanie rozwiązania. Aby zmniejszyć koszty, wszystkie mikrousługi są wdrażane na jednej maszynie wirtualnej. To wdrożenie nie używa architektury gotowe do produkcji.
 
 Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure:
 
@@ -70,7 +70,7 @@ Podstawowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azure
 |-------|--------------------------------|--------------|----------|
 | 1     | [Maszyny wirtualnej systemu Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardowa D1, wersja 2  | Mikrousługi hostingu |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 — warstwa standardowa | Zarządzanie urządzeniami i komunikacja |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standardowa (Standard)        | Przechowywanie danych konfiguracji, reguły, alarmy i innych zimnego magazynu |  
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standardowa (Standard)        | Przechowywanie danych konfiguracji, zasad, alertów i innych zimnego magazynu |  
 | 1     | [Konto usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standardowa (Standard)        | Magazyn dla maszyny Wirtualnej i przesyłania strumieniowego punkty kontrolne |
 | 1     | [Aplikacja sieci Web](https://azure.microsoft.com/services/app-service/web/)        |                 | Hosting aplikacji frontonu sieci web |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Zarządzanie tożsamościami użytkowników i zabezpieczeń |
@@ -89,7 +89,7 @@ Standardowe wdrożenie tworzy następujące usługi w subskrypcji platformy Azur
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Użyj w pełni zarządzanej usługi organizowania kontenerów Kubernetes, wartość domyślna to 3 agentów|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 — warstwa standardowa | Zarządzanie urządzeniami, poleceń i kontroli |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standardowa (Standard)        | Przechowywanie danych konfiguracji i telemetrii urządzenia, takie jak reguły, alarmy i wiadomości |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standardowa (Standard)        | Przechowywanie danych konfiguracji i danych telemetrycznych z urządzenia, takie jak reguły, alerty i komunikaty |
 | 5     | [Konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standardowa (Standard)        | 4 dla magazynu maszyn wirtualnych i 1 dla przesyłania strumieniowego punkty kontrolne |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | Standardowa S1     | Usługa Application gateway, za pośrednictwem protokołu SSL |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Zarządzanie tożsamościami użytkowników i zabezpieczeń |

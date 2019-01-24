@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 5059e4c00fc3bcbee76f8f5a3746b4d8783d901b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: c38ca56bc71215ed7fb64d346571ca517a79914f
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359276"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450204"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow formaty i kodery-dekodery
 
@@ -31,9 +31,9 @@ ms.locfileid: "54359276"
 
 Ten dokument zawiera listę plików wejściowych i wyjściowych formatów i koderów-dekoderów, które są obsługiwane w wersji zapoznawczej **Media Encoder Premium Workflow** kodera.
 
-[Media Encoder Premium Worflow dane wejściowe formaty i kodeki usługi](#input_formats)
+[Media Encoder Premium Workflow danych wejściowych, formaty i kodery-dekodery](#input_formats)
 
-[Media Encoder w warstwie danych wyjściowych Worflow formaty i kodeki Premium](#output_formats)
+[Formaty danych wyjściowych programu Media Encoder Premium przepływu pracy i kodery-dekodery](#output_formats)
 
 **Media Encoder Premium Workflow** obsługuje kodowanych opisanego w [to](#closed_captioning) sekcji. 
 

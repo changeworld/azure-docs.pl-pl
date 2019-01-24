@@ -3,19 +3,19 @@ title: Tworzenie strategii zarządzania kontroli dostępu odporne na błędy prz
 description: Niniejszy dokument zawiera wskazówki dotyczące strategii wiadomość organizacji powinna przyjąć zapewnienie odporności, aby zmniejszyć ryzyko blokady podczas przerw w działaniu nieprzewidziane
 services: active-directory
 author: martincoetzer
-manager: mtillman
+manager: daveba
 tags: azuread
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
-ms.openlocfilehash: caabc5a396c015b806778bfc5887b0708897101e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9e13b8872fab89bef6ec952fe2ee0b901a25092e
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101925"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452551"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -80,12 +80,12 @@ Ten przykładowy zestaw zasad spowoduje przyznanie wybranych użytkowników w **
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz AppAccess CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Obejmują wszystkie aplikacje
   * Warunki: (brak)
-  * Udziel kontroli: Blokuj
+  * Grant Control: Blokuj
 * Zasady 2: Udzielanie dostępu do AppUsers wymaganie uwierzytelniania Wieloskładnikowego lub zaufanego urządzenia.
   * Użytkownicy i grupy: Obejmują AppUsers. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Obejmują wszystkie aplikacje
   * Warunki: (brak)
-  * Udziel kontroli: Udzielanie dostępu, Wymagaj uwierzytelniania wieloskładnikowego, wymagać, aby było zgodne urządzenie. W przypadku wielu kontrolek: Wymagaj jednej z wybranych kontrolek.
+  * Grant Control: Udzielanie dostępu, Wymagaj uwierzytelniania wieloskładnikowego, wymagać, aby było zgodne urządzenie. W przypadku wielu kontrolek: Wymagaj jednej z wybranych kontrolek.
 
 ### <a name="contingencies-for-user-lockout"></a>Warunkowych dla blokady użytkownika
 
@@ -119,34 +119,52 @@ Zasady dostępu warunkowego awaryjny **zasady wyłączone** , pomija formantów 
 * Używaj zasad, które ograniczają dostępu w aplikacji, jeśli nie uzyskano określonego poziomu uwierzytelniania zamiast po prostu nastąpi powrót do pełnego dostępu. Na przykład:
   * Konfigurowanie zasad tworzenia kopii zapasowej, która wysyła oświadczenia sesji ograniczone do programu Exchange i SharePoint.
   * Jeśli Twoja organizacja korzysta z Microsoft Cloud App Security, należy wziąć pod uwagę nastąpi powrót do zasady, które angażuje MCAS, a następnie MCAS umożliwia dostęp tylko do odczytu, ale nie przekazuje.
+* Nadaj nazwę swoich zasad, aby upewnij się, że można łatwo je znaleźć podczas przerw w działaniu. W nazwie zasad, należy uwzględnić następujące elementy:
+  * A *numer etykiety* zasad.
+  * Tekst do wyświetlenia, ta zasada dotyczy tylko w nagłych wypadkach. Na przykład: **WŁĄCZ W AWARYJNEGO**
+  * *Przerw w działaniu* dotyczy. Na przykład: **Podczas przerw w działaniu usługi MFA**
+  * A *numer sekwencyjny* wyświetlanych kolejność, musisz aktywować zasad.
+  * *Aplikacje* dotyczy.
+  * *Formantów* będzie stosowana.
+  * *Warunki* wymaga.
+  
+Ten standard nazewnictwa dla zasad gotowości będzie następująca: 
 
-Poniższy przykład: **Przykład A — zasady awaryjny urzędu certyfikacji do przywrócenia dostępu do aplikacji o kluczowym znaczeniu współpracy**, jest typowy awaryjny firmowych. W tym scenariuszu organizacja zazwyczaj wymaga uwierzytelniania Wieloskładnikowego wszelki dostęp do usługi Exchange Online i SharePoint Online, a zakłócenie w tym przypadku jest dostawca usługi MFA dla klienta wystąpiła awaria (czy usługi Azure MFA w środowisku lokalnym dostawcą uwierzytelnianie wieloskładnikowe lub MFA innych firm). Ta zasada zmniejsza tej awarii, zezwalając na określonych użytkowników docelowych dostęp do tych aplikacji z zaufanych urządzeń Windows tylko wtedy, gdy uzyskują dostęp do aplikacji z zaufanych sieci firmowej. Również będzie możliwe wykluczyć z tych ograniczeń konta awaryjne i Administratorzy core. W tym przykładzie będzie wymagać lokalizację sieciową o nazwie **CorpNetwork** i grupy zabezpieczeń **ContingencyAccess** nazwę grupy użytkowników docelowych **CoreAdmins** z Administratorzy podstawowych i utworzyć grupę o nazwie **EmergencyAccess** za pomocą kont dostępu awaryjnego. Awaryjny wymaga cztery zasady w celu zapewnienia żądanego dostępu.
+`
+EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
+`
+
+Poniższy przykład: **Przykład A — zasady awaryjny urzędu certyfikacji do przywrócenia dostępu do aplikacji o kluczowym znaczeniu współpracy**, jest typowy awaryjny firmowych. W tym scenariuszu organizacja zazwyczaj wymaga uwierzytelniania Wieloskładnikowego wszelki dostęp do usługi Exchange Online i SharePoint Online, a zakłócenie w tym przypadku jest dostawca usługi MFA dla klienta wystąpiła awaria (czy usługi Azure MFA w środowisku lokalnym dostawcą uwierzytelnianie wieloskładnikowe lub MFA innych firm). Ta zasada zmniejsza tej awarii, zezwalając na określonych użytkowników docelowych dostęp do tych aplikacji z zaufanych urządzeń Windows tylko wtedy, gdy uzyskują dostęp do aplikacji z zaufanych sieci firmowej. Również będzie możliwe wykluczyć z tych ograniczeń konta awaryjne i Administratorzy core. Użytkowników docelowych zostaną następnie uzyskać dostęp do usługi Exchange Online i SharePoint Online, podczas gdy inni użytkownicy będą nadal ma dostęp do aplikacji z powodu awarii. W tym przykładzie będzie wymagać lokalizację sieciową o nazwie **CorpNetwork** i grupy zabezpieczeń **ContingencyAccess** nazwę grupy użytkowników docelowych **CoreAdmins** z Administratorzy podstawowych i utworzyć grupę o nazwie **EmergencyAccess** za pomocą kont dostępu awaryjnego. Awaryjny wymaga cztery zasady w celu zapewnienia żądanego dostępu. 
 
 **Przykład A - awaryjny urząd certyfikacji zasad w celu przywrócenia dostępu do aplikacji o kluczowym znaczeniu współpracy:**
 
 * Zasady 1: Wymagaj urządzenia przyłączonego do domeny dla programów Exchange i SharePoint
+  * Nazwa: EM001 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [1/4] - wymiany SharePoint — wymagają dołączenie do hybrydowej usługi Azure AD
   * Użytkownicy i grupy: Obejmują ContingencyAccess. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Dowolne
-  * Udziel kontroli: Wymagają przyłączonych do domeny
+  * Grant Control: Wymagają przyłączonych do domeny
   * Stan: Disabled (Wyłączony)
 * Zasady 2: Blok platform innych niż Windows
+  * Nazwa: EM002 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [2/4] - Exchange SharePoint — Blokuj dostęp z wyjątkiem Windows
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Platforma obejmują wszystkie platformy urządzeń, Wyklucz Windows
-  * Udziel kontroli: Blokuj
+  * Grant Control: Blokuj
   * Stan: Disabled (Wyłączony)
 * Zasady 3: Blok z sieciami CorpNetwork
+  * Nazwa: EM003 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [3/4] - Exchange SharePoint — Zablokuj dostęp poza siecią firmową
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Usługa Exchange Online i SharePoint Online
   * Warunki: Lokalizacje obejmują dowolnej lokalizacji, Wyklucz CorpNetwork
-  * Udziel kontroli: Blokuj
+  * Grant Control: Blokuj
   * Stan: Disabled (Wyłączony)
 * Zasady 4: Jawnie zablokować EAS
+  * Nazwa: EM004 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu usługi MFA [4/4] - Exchange - Block EAS dla wszystkich użytkowników
   * Użytkownicy i grupy: Zawierała wszystkich użytkowników
   * Aplikacje w chmurze: Obejmują Exchange Online
   * Warunki: Aplikacje klienckie: Program Exchange Active Sync
-  * Udziel kontroli: Blokuj
+  * Grant Control: Blokuj
   * Stan: Disabled (Wyłączony)
 
 Kolejność aktywacji:
@@ -163,23 +181,25 @@ W następnym przykładzie **przykład B — zasady dostępu Warunkowego awaryjny
 **Przykład B — zasady awaryjny urzędu certyfikacji:**
 
 * Zasady 1: Blokuj Wszyscy nie w zespole SalesContingency
+  * Nazwa: EM001 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu zgodności urządzenia [1/2] - Salesforce — blok wszystkich użytkowników z wyjątkiem SalesforceContingency
   * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz SalesAdmins i SalesforceContingency
-  * Aplikacje w chmurze: Usługi SalesForce.
+  * Aplikacje w chmurze: Salesforce.
   * Warunki: Brak
-  * Udziel kontroli: Blokuj
+  * Grant Control: Blokuj
   * Stan: Disabled (Wyłączony)
 * Zasady 2: Blokuj zespół ds. sprzedaży z dowolnej platformy inne niż mobile (w celu zmniejszenia obszaru powierzchni ataku)
+  * Nazwa: EM002 - WŁĄCZ W NAGŁYCH: Przerwy w działaniu zgodności urządzenia [2/2] - Salesforce — Blokuj wszystkie platformy z wyjątkiem systemów iOS i Android
   * Użytkownicy i grupy: Obejmują SalesforceContingency. Wyklucz SalesAdmins
   * Aplikacje w chmurze: SalesForce
   * Warunki: Platforma obejmują wszystkie platformy urządzeń, Wyklucz systemów iOS i Android
-  * Udziel kontroli: Blokuj
+  * Grant Control: Blokuj
   * Stan: Disabled (Wyłączony)
 
 Kolejność aktywacji:
 
 1. Wyklucz SalesAdmins i SalesforceContingency z istniejącej zasady zgodności urządzeń usługi Salesforce. Sprawdź, czy użytkownik w grupie SalesforceContingency mógł korzystać z usługi Salesforce.
 2. Włącz zasady 1: Sprawdź, czy użytkownicy spoza SalesContingency nie może uzyskiwać dostęp do usługi Salesforce. Sprawdź użytkowników w SalesAdmins i SalesforceContingency mogą uzyskiwać dostęp do usługi Salesforce.
-3. Włącz zasady 2: Upewnij się, użytkownicy w grupie SalesContigency nie może uzyskiwać dostęp do usługi Salesforce z ich komputerów przenośnych Windows lub Mac, ale uzyskiwać dostęp z urządzeń przenośnych. Sprawdź, czy SalesAdmin mogą nadal uzyskiwać dostęp do usługi Salesforce z dowolnego urządzenia.
+3. Włącz zasady 2: Upewnij się, użytkownicy w grupie SalesContingency nie może uzyskiwać dostęp do usługi Salesforce z ich komputerów przenośnych Windows lub Mac, ale uzyskiwać dostęp z urządzeń przenośnych. Sprawdź, czy SalesAdmin mogą nadal uzyskiwać dostęp do usługi Salesforce z dowolnego urządzenia.
 4. Wyłącz istniejącą zasadę zgodności urządzeń dla usług Salesforce.
 
 ### <a name="deploy-password-hash-sync-even-if-you-are-federated-or-use-pass-through-authentication"></a>Wdrażanie synchronizacji skrótów haseł, nawet jeśli są Sfederowane lub przy użyciu uwierzytelniania przekazywanego
@@ -215,14 +235,14 @@ W zależności od tego, które środki zaradcze lub warunkowych, są używane po
 
 ## <a name="after-a-disruption"></a>Po przerwaniu
 
-Musisz cofnąć zmiany wprowadzone w ramach aktywowano plan awaryjny po przywróceniu usługi, które spowodowały zakłócenie. 
+Cofnąć zmiany wprowadzone w ramach aktywowano plan awaryjny po przywróceniu usługi, które spowodowały zakłócenie. 
 
 1. Włącz zasady regularne
 2. Wyłącz zasady gotowości. 
 3. Trwa wycofywanie wszelkie zmiany dokonane i udokumentowane podczas przerw w działaniu.
 4. Jeśli używasz kont dostępu awaryjnego, pamiętaj, aby wygenerować ponownie poświadczenia, a następnie fizycznie Zabezpiecz nowe szczegóły poświadczeń w ramach procedur kont dostępu awaryjnego.
 5. W dalszym ciągu [klasyfikacji, wszystkie zdarzenia o podwyższonym ryzyku zgłaszane](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po przerwaniu dla podejrzanych działań.
-6. Odwołaj wszystkie tokeny odświeżania, które zostały wystawione [przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) zbiór użytkowników docelowych. Odwoływanie wszystkie tokeny odświeżania jest szczególnie ważne w przypadku uprzywilejowanych kont używane podczas przerw w działaniu i alternatywnych wymusi ich ponownego uwierzytelnienia i spełnić wymagania kontrolę nad przywróconej zasad.
+6. Odwołaj wszystkie tokeny odświeżania, które zostały wystawione [przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) zbiór użytkowników docelowych. Odwoływanie wszystkie tokeny odświeżania jest ważne w przypadku uprzywilejowanych kont używane podczas przerw w działaniu i alternatywnych wymusi ich ponownego uwierzytelnienia i spełnić wymagania kontrolę nad przywróconej zasad.
 
 ## <a name="emergency-options"></a>Opcje awaryjnego
 

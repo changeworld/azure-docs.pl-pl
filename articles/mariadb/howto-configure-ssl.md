@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4bf18a44255903df09aae3382c0eb35a2a55eea5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/22/2019
+ms.openlocfilehash: 197281a4666179037cd689e7e8d488e73039174b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541816"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810299"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Konfigurowanie łączności SSL w aplikacji w celu nawiązania bezpiecznego połączenia usługi Azure Database dla serwera MariaDB
 Azure Database dla serwera MariaDB obsługuje łączenie usługi Azure Database dla serwera MariaDB aplikacjom klienckim przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
@@ -30,6 +30,8 @@ Innym sposobem, aby powiązać certyfikat protokołu SSL jest przy użyciu inter
 ```bash
 mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+> [!NOTE]
+> Używając nowszej wersji interfejsu wiersza polecenia MySQL na Windows, może wystąpić błąd `SSL connection error: Certificate signature check failed`. Jeśli ten problem wystąpi, należy zastąpić `--ssl-ca={filepath}` parametrem `--ssl`.
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Wymuszanie połączeń SSL na platformie Azure 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
@@ -47,7 +49,7 @@ Wykonaj mysql **stan** polecenie, aby sprawdzić, czy nawiązano połączenie se
 ```sql
 status
 ```
-Upewnij się, że połączenie jest zaszyfrowany, sprawdzając się dane wyjściowe powinny być widoczne:  **PROTOKÓŁ SSL: Szyfrowania używany jest algorytm SHA AES256** 
+Upewnij się, że połączenie jest zaszyfrowany, sprawdzając się dane wyjściowe powinny być widoczne:  **SSL: Szyfrowania używany jest algorytm SHA AES256** 
 
 ## <a name="sample-code"></a>Przykładowy kod
 Aby nawiązać bezpiecznego połączenia do usługi Azure Database dla serwera MariaDB za pośrednictwem protokołu SSL z aplikacji, zapoznaj się z poniższego przykładu kodu:

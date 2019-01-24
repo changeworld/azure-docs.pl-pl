@@ -4,17 +4,17 @@ description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdra�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 11/07/2018
+ms.date: 01/15/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9e44a44b76e79375076f71cf808d6d30eebc5cdb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b66a1c2c12a97ea8754377a138b51a4ca1739c21
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311426"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54320688"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definiowanie i przypisywanie strategii platformy Azure przy użyciu interfejsu API REST
 
@@ -68,7 +68,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
-- `{YourMG}` — zastąp nazwą swojej grupy zarządzania
+- `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
 - `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
 
 1. Utwórz obiekt _strategii_ początkowej. **Treść żądania** zawiera właściwości strategii, wszystkie grupy zasobów, które mają zostać utworzone, oraz wszystkie parametry poziomu strategii. Parametry są określane podczas przypisywania i używane przez artefakty dodane w kolejnych krokach.
@@ -130,7 +130,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      }
      ```
 
-1. Dodaj przypisanie roli w subskrypcji. **Treść żądania** definiuje _rodzaj_ artefaktu, właściwości dostosowują się do identyfikatora definicji roli, a tożsamości podmiotu zabezpieczeń są przekazywane w postaci tablicy wartości. W poniższym przykładzie tożsamości podmiotu zabezpieczeń, którym przyznano określoną rolę, są konfigurowane za pomocą parametru określonego podczas przypisywania strategii.
+1. Dodaj przypisanie roli w subskrypcji. **Treść żądania** definiuje _rodzaj_ artefaktu, właściwości dostosowują się do identyfikatora definicji roli, a tożsamości podmiotu zabezpieczeń są przekazywane w postaci tablicy wartości. W poniższym przykładzie tożsamości podmiotu zabezpieczeń, którym przyznano określoną rolę, są konfigurowane za pomocą parametru określonego podczas przypisywania strategii. W tym przykładzie użyto wbudowanej roli _Współautor_ o identyfikatorze GUID `b24988ac-6180-42a0-ab88-20f7382dd24c`.
 
    - Identyfikator URI interfejsu API REST
 
@@ -150,7 +150,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      }
      ```
 
-1. Dodaj przypisanie zasad w subskrypcji. **Treść żądania** definiuje _rodzaj_ artefaktu, właściwości, które dostosowują się do definicji inicjatywy lub zasad, oraz konfiguruje przypisanie zasad tak, aby używało zdefiniowanych parametrów strategii, które zostaną skonfigurowane podczas przypisywania strategii.
+1. Dodaj przypisanie zasad w subskrypcji. **Treść żądania** definiuje _rodzaj_ artefaktu, właściwości, które dostosowują się do definicji inicjatywy lub zasad, oraz konfiguruje przypisanie zasad tak, aby używało zdefiniowanych parametrów strategii, które zostaną skonfigurowane podczas przypisywania strategii. W tym przykładzie użyto wbudowanych zasad _Zastosuj tag i jego wartość domyślną do grup zasobów_ o identyfikatorze GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - Identyfikator URI interfejsu API REST
 
@@ -178,7 +178,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      }
      ```
 
-1. Dodaj kolejne przypisanie zasad dla tagu magazynu (używając ponownie parametru _storageAccountType_) w subskrypcji. Ten dodatkowy artefakt przypisania zasad pokazuje, że parametr zdefiniowany w strategii może być używany przez więcej niż jeden artefakt. W tym przykładzie parametr **storageAccountType** służy do określania tagu w grupie zasobów. Ta wartość zawiera informacje o koncie magazynu, które zostanie tworzone w następnym kroku.
+1. Dodaj kolejne przypisanie zasad dla tagu magazynu (używając ponownie parametru _storageAccountType_) w subskrypcji. Ten dodatkowy artefakt przypisania zasad pokazuje, że parametr zdefiniowany w strategii może być używany przez więcej niż jeden artefakt. W tym przykładzie parametr **storageAccountType** służy do określania tagu w grupie zasobów. Ta wartość zawiera informacje o koncie magazynu, które zostanie tworzone w następnym kroku. W tym przykładzie użyto wbudowanych zasad _Zastosuj tag i jego wartość domyślną do grup zasobów_ o identyfikatorze GUID `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71`.
 
    - Identyfikator URI interfejsu API REST
 
@@ -292,7 +292,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
      }
      ```
 
-1. Dodaj przypisanie roli w grupie zasobów. Podobnie jak w poprzednim wpisie przypisania roli, w poniższym przykładzie użyto identyfikatora definicji dla roli **Właściciel** i podano mu inny parametr ze strategii.
+1. Dodaj przypisanie roli w grupie zasobów. Podobnie jak w poprzednim wpisie przypisania roli, w poniższym przykładzie użyto identyfikatora definicji dla roli **Właściciel** i podano mu inny parametr ze strategii. W tym przykładzie użyto wbudowanej roli _Właściciel_ o identyfikatorze GUID `8e3af657-a8ff-443c-a75c-2fe8c4bcb635`.
 
    - Identyfikator URI interfejsu API REST
 

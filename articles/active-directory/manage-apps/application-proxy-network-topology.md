@@ -4,7 +4,7 @@ description: Omówiono zagadnienia dotyczące topologii sieci, korzystając z se
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 976118514dbcb4cee9675ae357d857e7b90e8c0c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e7cfb9dffdebfc5abaaf5840a6c81af6a7e9d556
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140483"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474676"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Zagadnienia dotyczące topologii sieci przy użyciu serwera Proxy usługi Azure Active Directory Application
 
@@ -89,7 +89,7 @@ Jeśli Twój łącznik linii wzroku do kontrolera domeny, ten wzorzec jest korzy
 
 W przypadku usługi ExpressRoute skonfigurować za pomocą komunikacji równorzędnej firmy Microsoft umożliwia szybsze połączenia ExpressRoute dla ruchu między serwera Proxy aplikacji i łącznik. Łącznik jest nadal w sieci, blisko aplikacji.
 
-### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Wzorzec 3: Korzystanie z zalet usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej
+### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Wzorzec 3: Skorzystaj z zalet usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej
 
 Jeśli korzystasz z dedykowanego połączenia VPN lub usługi ExpressRoute skonfigurować za pomocą prywatnej komunikacji równorzędnej między platformą Azure i siecią firmową, masz inną opcję. W tej konfiguracji sieci wirtualnej na platformie Azure uznaje się zwykle jako rozszerzenia sieci firmowej. Można więc zainstalować łącznik w centrum danych platformy Azure i nadal spełniają wymagania małymi opóźnieniami połączeń aplikacji łącznika.
 
@@ -111,15 +111,15 @@ W tej sekcji części omówimy kilka typowych scenariuszy. Przyjęto założenie
 
 Dla tych scenariuszy możemy wywołać każde połączenie "przeskok" i liczbę je łatwiej omówienie:
 
-- **Przeskoku 1**: użytkownika dla usługi serwera Proxy aplikacji
-- **Przeskoku 2**: serwer Proxy aplikacji usługi łącznika serwera Proxy aplikacji
-- **Przeskoku 3**: łącznik serwera Proxy aplikacji do aplikacji docelowej 
+- **Przeskoku 1**: Użytkownika dla usługi serwera Proxy aplikacji
+- **Przeskoku 2**: Usługa serwera Proxy aplikacji do łącznika serwera Proxy aplikacji
+- **Przeskoku 3**: Łącznik serwera Proxy aplikacji do aplikacji docelowej 
 
 ### <a name="use-case-1"></a>Przypadek użycia 1
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych, z użytkownikami, w tym samym regionie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
+**Scenariusz:** Aplikacja jest w sieci organizacji w Stanach Zjednoczonych, z użytkownikami, w tym samym regionie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
 
-**Zalecenie:** wzorzec postępuj zgodnie z 1, opisane w poprzedniej sekcji. Ulepszone opóźnienia należy wziąć pod uwagę przy użyciu usługi ExpressRoute, jeśli to konieczne.
+**Zalecenie:** Postępuj zgodnie z wzorcem 1, opisane w poprzedniej sekcji. Ulepszone opóźnienia należy wziąć pod uwagę przy użyciu usługi ExpressRoute, jeśli to konieczne.
 
 Jest to prosty wzorzec. Optymalizuj się przeskoku 3, umieszczając łącznika obok aplikacji. Jest to również naturalny wybór, ponieważ łącznik jest zazwyczaj instalowany z linii wzroku do aplikacji i centrum danych do wykonywania operacji ograniczonego delegowania protokołu Kerberos.
 
@@ -127,9 +127,9 @@ Jest to prosty wzorzec. Optymalizuj się przeskoku 3, umieszczając łącznika o
 
 ### <a name="use-case-2"></a>Przypadek użycia 2
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych, użytkownikom rozłożyć globalnie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
+**Scenariusz:** Aplikacja jest w sieci organizacji w Stanach Zjednoczonych, użytkownikom rozłożyć globalnie. Nie usługi ExpressRoute lub sieci VPN istnieje między centrum danych platformy Azure i siecią firmową.
 
-**Zalecenie:** wzorzec postępuj zgodnie z 1, opisane w poprzedniej sekcji. 
+**Zalecenie:** Postępuj zgodnie z wzorcem 1, opisane w poprzedniej sekcji. 
 
 Ponownie wspólny wzorzec do optymalizacji przeskoku 3, umieszcza się łącznika obok aplikacji. Przeskoku 3 nie jest zazwyczaj kosztowne, a jeśli w tym samym regionie. Jednak przeskok 1 może być bardziej kosztowne w zależności od tego, gdzie użytkownik jest, ponieważ użytkownicy na całym świecie muszą uzyskiwać dostęp do wystąpienia serwera Proxy aplikacji w Stanach Zjednoczonych. Warto zauważyć, że żadne rozwiązanie do serwera proxy ma podobne charakterystyki dotyczące użytkowników, które są rozmieszczone globalnie.
 
@@ -137,9 +137,9 @@ Ponownie wspólny wzorzec do optymalizacji przeskoku 3, umieszcza się łącznik
 
 ### <a name="use-case-3"></a>Przypadek użycia 3
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych. Usługi ExpressRoute za pomocą komunikacji równorzędnej firmy Microsoft istnieje między platformą Azure i siecią firmową.
+**Scenariusz:** Aplikacja jest w sieci organizacji w Stanach Zjednoczonych. Usługi ExpressRoute za pomocą komunikacji równorzędnej firmy Microsoft istnieje między platformą Azure i siecią firmową.
 
-**Zalecenie:** postępuj zgodnie z wzorców 1 i 2, opisane w poprzedniej sekcji.
+**Zalecenie:** Postępuj zgodnie z wzorców 1 i 2, opisane w poprzedniej sekcji.
 
 Po pierwsze umieść łącznika możliwie blisko aplikacji. Następnie system automatycznie korzysta z usługi ExpressRoute dla przeskoku 2. 
 
@@ -149,9 +149,9 @@ Jeśli link usługi ExpressRoute używa komunikacji równorzędnej firmy Microso
 
 ### <a name="use-case-4"></a>Przypadek użycia 4
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Stanach Zjednoczonych. Istnieje usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej między platformą Azure i siecią firmową.
+**Scenariusz:** Aplikacja jest w sieci organizacji w Stanach Zjednoczonych. Istnieje usługi ExpressRoute za pomocą prywatnej komunikacji równorzędnej między platformą Azure i siecią firmową.
 
-**Zalecenie:** wzorzec wykonaj 3, opisane w poprzedniej sekcji.
+**Zalecenie:** Postępuj zgodnie z wzorcem 3, opisane w poprzedniej sekcji.
 
 Łącznik należy umieścić w centrum danych platformy Azure, która jest połączona z siecią firmową za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute. 
 
@@ -161,9 +161,9 @@ Jeśli link usługi ExpressRoute używa komunikacji równorzędnej firmy Microso
 
 ### <a name="use-case-5"></a>Przypadek użycia 5
 
-**Scenariusz:** aplikacji znajduje się w sieci organizacji w Unii Europejskiej, z wystąpieniem serwera Proxy aplikacji, a większość użytkowników w Stanach Zjednoczonych.
+**Scenariusz:** Aplikacja jest w sieci organizacji w Unii Europejskiej, z wystąpieniem serwera Proxy aplikacji, a większość użytkowników w Stanach Zjednoczonych.
 
-**Zalecenie:** umieść łącznika obok aplikacji. Ponieważ użytkownicy w Stanach Zjednoczonych, uzyskujesz dostęp do wystąpienia serwera Proxy aplikacji, który ma miejsce w tym samym regionie, przeskok 1 nie jest za drogi. Przeskoku 3 jest zoptymalizowany. Należy wziąć pod uwagę przy użyciu usługi ExpressRoute w celu zoptymalizowania przeskoku 2. 
+**Zalecenie:** Umieść łącznika obok aplikacji. Ponieważ użytkownicy w Stanach Zjednoczonych, uzyskujesz dostęp do wystąpienia serwera Proxy aplikacji, który ma miejsce w tym samym regionie, przeskok 1 nie jest za drogi. Przeskoku 3 jest zoptymalizowany. Należy wziąć pod uwagę przy użyciu usługi ExpressRoute w celu zoptymalizowania przeskoku 2. 
 
 ![Diagram przedstawiający użytkowników i serwera proxy w Stanach Zjednoczonych, przy użyciu łącznika i aplikacji na terenie UE](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 

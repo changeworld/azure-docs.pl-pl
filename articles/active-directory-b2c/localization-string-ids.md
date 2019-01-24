@@ -3,19 +3,19 @@ title: Lokalizacja ciągu identyfikatorów — Azure Active Directory B2C | Doku
 description: Określ identyfikatory dla definicji zawartości o identyfikatorze api.signuporsignin w zasadach niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7619ebf038e164c9e586118c70e34955ca7c4767
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 72ed1f7f6d9fe9958bbd78b001d727feb5f8861c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222676"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848414"
 ---
 # <a name="localization-string-ids"></a>Lokalizacja ciągu identyfikatorów
 
@@ -33,7 +33,7 @@ Następujące identyfikatory są używane na potrzeby definicji zawartości o id
 | **logonIdentifier_email** | Adres e-mail |
 | **requiredField_email** | Wprowadź swój adres e-mail |
 | **invalid_email** | Wprowadź prawidłowy adres e-mail |
-| **email_pattern** | ^ [a-zA-Z0-9.! #$% &'' * +/ =? ^ _'{|} ~-]+@[a-zA-Z0-9-]+ (?:\\. [ -zA-Z0 - 9-] +) * $ |
+| **email_pattern** | ^ [a-zA-Z0-9.! #$% &'' * +/ =? ^ _'{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
 | **local_intro_username** | Zaloguj się przy użyciu swojej nazwy użytkownika |
 | **logonIdentifier_username** | Nazwa użytkownika |
 | **requiredField_username** | Wprowadź swoją nazwę użytkownika |
@@ -110,7 +110,7 @@ Poniżej przedstawiono identyfikatorów definicji zawartości o identyfikatorze 
 | **ver_fail_no_retry** | Wprowadzono zbyt wiele prób niepoprawne. Spróbuj ponownie później. |
 | **Miesiąc** | Miesiąc |
 | **ver_success_msg** | Adres e-mail został zweryfikowany. Teraz można kontynuować. |
-| **Miesiące** | styczeń, luty, marzec, kwiecień, maj, czerwiec, lipiec, sierpień, wrzesień, październik, listopad, grudzień |
+| **months** | styczeń, luty, marzec, kwiecień, maj, czerwiec, lipiec, sierpień, wrzesień, październik, listopad, grudzień |
 | **ver_fail_server** | Mamy problem z weryfikacją swój adres e-mail. Wprowadź prawidłowy adres e-mail i spróbuj ponownie. |
 | **error_requiredFieldMissing** | Brak wymaganego pola. Wypełnij wszystkie wymagane pola i spróbuj ponownie. |
 | **initial_intro** | Podaj następujące szczegóły. |
@@ -182,17 +182,17 @@ Poniżej przedstawiono identyfikatorów definicji zawartości o identyfikatorze 
 | **invalid_number** | Wprowadź prawidłowy numer telefonu |
 | **intro_sms** | Mamy dla Ciebie następujący ciąg liczb w rekordzie. Wyślemy kod za pomocą wiadomości SMS do uwierzytelniania. |
 | **intro_entry_mixed** | Wprowadź poniżej numer, na który możemy wysłać wiadomość SMS z kodem lub zadzwonić, aby Cię uwierzytelnić. |
-| **number_pattern** | ^\\+ (?: [0-9] [\\x20-]?) {6,14}[0-9] $ |
+| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
 | **intro_sms_p** |Mamy dla Ciebie następujące numery w rekordzie. Wybierz liczbę, możemy wysłać kod za pomocą wiadomości SMS do uwierzytelniania. |
 | **requiredField_countryCode** | Wybierz kod kraju |
-| **requiredField_number** | Wprowadź swój numer telefonu |
+| **requiredField_number** | Wprowadź numer telefonu |
 | **country_code_input_placeholder_text** |Kraj lub region |
 | **number_label** | Numer telefonu |
 | **error_tryagain** | Numer telefonu, które podałeś jest zajęty lub niedostępny. Sprawdź numer i spróbuj ponownie. |
 | **error_incorrect_code** | Kod weryfikacyjny, który został wprowadzony jest niezgodna z posiadanymi przez nas danymi. Spróbuj ponownie lub poproś o nowy kod. |
 | **countryList** | {\"Domyślne\":\"Kraj/Region\",\"AF\":\"Afganistan\",\"AX\":\"Alandzkie Wyspy\",\"AL\":\"Albania\",\"DZ\":\"Algieria\",\"AS\":\" Samoa Amerykańskie\",\"AD\":\"Andora\",\"AO\":\"Angola\",\"sztucznej Inteligencji\": \"Anguilla\",\"AQ\":\"Antarktyda\",\"AG\":\"Antigua i Barbuda\",\"AR\":\"Argentyny\",\"AM\":\"Armenia\",\"AW\":\"Aruba \",\"AU\":\"Australii\",\"na\":\"Austria\",\" AZ\":\"Azerbejdżan\",\"BS\":\"Bahamy\",\"BH\":\" Bahrajn\",\"BD\":\"Bangladesz\",\"BB\":\"Barbados\",\" PRZEZ\":\"Białoruś\",\"BE\":\"Belgia\",\"BZ\":\" Belize\",\"BJ\":\"Benin\",\"BM\":\"Bermudy\",\"BT\":\"Bhutan\",\"BO\":\"Boliwia\",\"BQ\":\" Bonaire\",\"BA\":\"Bośnia i Hercegowina\",\"BW\":\"Botswany<span class="notransla class=""></span class="notransla> Odległe Mniejsze Wyspy\",\"VI\":\"Stanów Zjednoczonych Wyspy Dziewicze\",\"g\":\"ugandyjski\",\"UA\":\"Ukraina\",\"AE\":\" Zjednoczone Emiraty Arabskie\",\"GB\":\"Zjednoczonego Królestwa\",\"USA\":\"Stanów Zjednoczonych\",\"UY \":\"Urugwaj\",\"UZ\":\"Uzbekistan\",\"VU\":\"Vanuatu\", \"Oceny luk w zabezpieczeniach\":\"Watykan\",\"VE\":\"Wenezuela\",\"VN\":\"Wietnam \",\"WF\":\"Wallis i Futuna\",\"YE\":\"Jemen\",\"ZM\":\"Zambia\",\"ZW\":\"Zimbabwe\"} |
 | **error_448** | Podany numer telefonu jest nieosiągalny. |
-| **error_449** | Użytkownik przekroczył dozwoloną liczbę ponownych prób. |
+| **error_449** | Użytkownik przekroczył liczbę ponownych prób. |
 | **verification_code_input_placeholder_text** | Kod weryfikacyjny |
 
 Poniższy kod przedstawia użycie niektórych elementów interfejsu użytkownika na stronie rejestracji usługi MFA:

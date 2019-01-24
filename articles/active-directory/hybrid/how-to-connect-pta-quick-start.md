@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure AD Connect uwierzytelniania przekazywanego, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 831e5bff412f80f2140f6fd1b935a57bd412ccba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d4ac8d730e27eb4cfb44fda27d6380bc715d15ca
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188133"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478063"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Szybki start
 
@@ -33,7 +33,7 @@ Uwierzytelnianie przekazywane usługi Azure Active Directory (Azure AD) umożliw
 
 Wykonaj te instrukcje, aby wdrożyć uwierzytelnianie przekazywane w dzierżawie:
 
-## <a name="step-1-check-the-prerequisites"></a>Krok 1. Sprawdzanie wymagań wstępnych
+## <a name="step-1-check-the-prerequisites"></a>Krok 1: Sprawdzanie wymagań wstępnych
 
 Upewnij się, że następujące wymagania wstępne zostały spełnione.
 
@@ -58,7 +58,7 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
 4. W przypadku zapory między serwerami i usługi Azure AD, skonfiguruj następujące elementy:
    - Upewnij się, że agentów uwierzytelniania mogą przesłać *wychodzącego* żądań do usługi Azure AD za pośrednictwem następujących portów:
 
-     | Numer portu | Jak są używane |
+     | Numer portu | Zastosowanie |
      | --- | --- |
      | **80** | Pliki do pobrania list odwołania certyfikatów (CRL) podczas sprawdzania poprawności certyfikatu SSL |
      | **443** | Obsługuje cała komunikacja wychodząca z usługą |
@@ -69,7 +69,7 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
    - Agentów uwierzytelniania muszą mieć dostęp do **login.windows.net** i **login.microsoftonline.com** dla wstępnej rejestracji. Otwierania zapory dla tych adresów URL również.
    - Sprawdzanie poprawności certyfikatu, można odblokować w następujących adresów URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, i  **www.microsoft.com:80**. Ponieważ te adresy URL są używane do weryfikacji certyfikatu z innych produktów firmy Microsoft, może już być tych adresów URL odblokowane.
 
-## <a name="step-2-enable-the-feature"></a>Krok 2. Włącz tę funkcję
+## <a name="step-2-enable-the-feature"></a>Krok 2: Włącz tę funkcję
 
 Włącz uwierzytelnianie przekazywane za pośrednictwem [programu Azure AD Connect](whatis-hybrid-identity.md).
 
@@ -87,7 +87,7 @@ Jeśli zainstalowano już Azure AD Connect przy użyciu [ekspresowa instalacja](
 >[!IMPORTANT]
 >Uwierzytelnianie przekazywane jest funkcją poziomu dzierżawy. Włączanie logowania dla użytkowników w jej wpływa na _wszystkich_ domen zarządzanych w Twojej dzierżawie. Jeśli rozpoczynasz korzystanie z usługi Active Directory Federation Services (AD FS) do uwierzytelniania przekazywanego, należy poczekać co najmniej 12 godzin przed zamknięciem infrastruktury usług AD FS. Czas oczekiwania jest zapewnienie, że użytkownicy mogą zachować logowania się do programu Exchange ActiveSync podczas przejścia. Aby uzyskać więcej informacji na temat migracji z usług AD FS do uwierzytelniania przekazywanego, zapoznaj się z naszego planu wdrożenia są szczegółowo opublikowane [tutaj](https://aka.ms/adfstoptadpdownload).
 
-## <a name="step-3-test-the-feature"></a>Krok 3. Testowanie funkcji
+## <a name="step-3-test-the-feature"></a>Krok 3: Testowanie funkcji
 
 Wykonaj te instrukcje, aby sprawdzić prawidłowo włączone uwierzytelnianie przekazujących:
 

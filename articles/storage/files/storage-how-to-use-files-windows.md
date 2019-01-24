@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 5e36a41c1678ac38c7ebee5b47fd88076fa3fb70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 4f9225f319eb4a2bbcbb5a79379fc46675ff4c04
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629700"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854739"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziałów plików platformy Azure można bezproblemowo używać w systemach Windows i Windows Server. W tym artykule omówiono zagadnienia dotyczące korzystania z udziału plików platformy Azure w systemach Windows i Windows Server.
@@ -40,14 +40,12 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 > [!Note]  
 > Zawsze zalecamy pobranie najnowszej aktualizacji KB dla danej wersji systemu Windows.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Wymagania wstępne 
 * **Nazwa konta magazynu**: aby zainstalować udział plików platformy Azure, konieczne będzie podanie nazwy konta magazynu.
 
 * **Klucz konta magazynu**: aby zainstalować udział plików platformy Azure, konieczne będzie posiadanie podstawowego (lub dodatkowego) klucza magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
 
-* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. W następującym kodzie programu PowerShell przyjęto założenie, że jest zainstalowany moduł AzureRM PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resoure-group-name>` nazwami odpowiednimi dla konta magazynu.
+* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. W następującym kodzie programu PowerShell przyjęto założenie, że jest zainstalowany moduł AzureRM PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resoure-group-name>` nazwami odpowiednimi dla konta magazynu.
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"
@@ -55,12 +53,12 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
     # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
     # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
     # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
     ```
 
     Jeśli połączenie zostało pomyślnie nawiązane, powinny pojawić się następujące dane wyjściowe:

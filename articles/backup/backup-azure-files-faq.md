@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 875eb20a05a96d094a17229699bb2d87b3377a62
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793516"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359905"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Pytania dotyczące tworzenia kopii zapasowej plików w usłudze Azure Files
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące tworzenia kopii zapasowej plików usługi Azure Files. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -94,11 +94,14 @@ Tak. Jeśli podczas zatrzymywania ochrony została wybrana opcja **Zachowaj dane
 
 ## <a name="manage-backup"></a>Zarządzanie kopiami zapasowymi
 
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>Czy można konfigurować i przywracać kopie zapasowe udziałów plików platformy Azure oraz zarządzać nimi za pomocą programu PowerShell? <br/>
+Tak. Zapoznaj się ze szczegółową dokumentacją [tutaj](backup-azure-afs-automation.md)
+
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>Czy mogę uzyskać dostęp do migawek wykonywanych przez usługę Azure Backup i zainstalować je? <br/>
 Do wszystkich migawek wykonanych przez usługę Azure Backup możesz uzyskać dostęp, wyświetlając migawki w portalu, w programie PowerShell lub przy użyciu interfejsu wiersza polecenia. Aby dowiedzieć się więcej na temat udostępniania migawek udziału usługi Azure Files, zobacz [Omówienie migawek udziału dla usługi Azure Files (wersja zapoznawcza)](../storage/files/storage-snapshots-files.md).
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>Jaki jest maksymalny czas przechowywania, który mogę skonfigurować dla kopii zapasowych? <br/>
-Kopie zapasowe udziałów plików platformy Azure tworzone codziennie można przechowywać przez maksymalnie 120 dni.
+Kopia zapasowa udziałów plików platformy Azure umożliwia konfigurowanie w zasadach okresu przechowywania do 180 dni. Jednak przy użyciu [opcji „Kopia zapasowa na żądanie” w programie PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup) można przechowywać punkt odzyskiwania nawet przez 10 lat.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Co się stanie, jeśli zmienię zasady tworzenia kopii zapasowych udziału plików platformy Azure? <br/>
 Po zastosowaniu nowych zasad do udziału plików będzie obowiązywał harmonogram i okres przechowywania określony przez te nowe zasady. Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania zostaną oznaczone, aby przechowywać je zgodnie z nowymi zasadami. W przypadku skrócenia okresu przechowywania są one oznaczane do oczyszczenia w ramach następnego zadania oczyszczania i usuwane.

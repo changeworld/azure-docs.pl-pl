@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z ServiceChannel | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą ServiceChannel | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i ServiceChannel.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c3546eab-96b5-489b-a309-b895eb428053
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 22e72d454626941b932cef2750cba008da20a214
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 974149fdad8e8f5a617c428c6513f30930ff596b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114964"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815960"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Samouczek: Integracja usługi Azure Active Directory z ServiceChannel
+# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ServiceChannel
 
 W tym samouczku dowiesz się, jak zintegrować kanale usługi z usługą Azure Active Directory (Azure AD).
 
@@ -31,7 +31,7 @@ Integrowanie kanale usługi z usługą Azure AD zapewnia następujące korzyści
 - Umożliwia użytkownikom automatyczne pobieranie zalogowanych do ServiceChannel (logowanie jednokrotne) przy użyciu konta usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,10 +43,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą ServiceChannel, potrz
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -114,12 +114,12 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     a. W **identyfikator** polu tekstowym wpisz wartość jako: `http://adfs.<domain>.com/adfs/service/trust`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<customer domain>.servicechannel.com/saml/acs`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<customer domain>.servicechannel.com/saml/acs`
 
     > [!NOTE] 
-    > Należy pamiętać, że nie są rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych identyfikatorem i adres URL odpowiedzi. W tym miejscu zalecamy przy użyciu unikatowej wartości ciągu w identyfikatorze. Skontaktuj się z pomocą [zespołem pomocy technicznej ServiceChannel](https://servicechannel.zendesk.com/hc/en-us) do uzyskania tych wartości.
+    > Należy pamiętać, że nie są to rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych identyfikatorem i adres URL odpowiedzi. W tym miejscu zalecamy użycie unikatowej wartości ciągu w identyfikatorze. Skontaktuj się z pomocą [zespołem pomocy technicznej ServiceChannel](https://servicechannel.zendesk.com/hc/en-us) do uzyskania tych wartości.
 
-1. Aplikacja ServiceChannel oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego. **NameIdentifier (identyfikator użytkownika)** jest tylko wymagane oświadczenia, a wartość domyślna to **user.userprincipalname** , ale ServiceChannel oczekuje, że to mają być mapowane z **user.mail**. Jeśli planujesz włączyć aprowizację użytkownika Just In Time, następnie należy dodać następujące oświadczeń jak pokazano poniżej. **Rola** oświadczenia musi być zamapowany na **user.assignedroles** zawierającą roli użytkownika.  
+1. Aplikacja ServiceChannel oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego działania. **NameIdentifier (identyfikator użytkownika)** jest tylko wymagane oświadczenia, a wartość domyślna to **user.userprincipalname** , ale ServiceChannel oczekuje, że to mają być mapowane z **user.mail**. Jeśli planujesz włączyć aprowizację użytkownika Just In Time, następnie należy dodać następujące oświadczeń jak pokazano poniżej. **Rola** oświadczenia musi być zamapowany na **user.assignedroles** zawierającą roli użytkownika.  
 
     Można odwoływać się przewodnik ServiceChannel [tutaj](https://servicechannel.zendesk.com/hc/en-us/articles/217514326-Azure-AD-Configuration-Example) Aby uzyskać więcej wskazówek na oświadczeniach.
     
@@ -132,7 +132,7 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     | Nazwa atrybutu | Wartość atrybutu |
     | --- | --- |    
-    | Rola| User.assignedroles |
+    | Rola| user.assignedroles |
 
     a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -140,11 +140,11 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
 
     ![Konfigurowanie logowania jednokrotnego](./media/servicechannel-tutorial/tutorial_servicechannel_05.png)
     
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
     
     c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
     
-    d. Kliknij przycisk **Ok**
+    d. Kliknij przycisk **OK**.
     
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -191,7 +191,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania pl
 
 ### <a name="creating-a-servicechannel-test-user"></a>Tworzenie użytkownika testowego ServiceChannel
 
-Aplikacja obsługuje tylko w czasie Inicjowanie obsługi użytkowników oraz uwierzytelniania użytkowników w aplikacji, automatycznie tworzony. Do pełnej obsługi administracyjnej, skontaktuj się z pomocą [ServiceChannel zespołem pomocy technicznej](https://servicechannel.zendesk.com/hc/en-us)
+Aplikacja obsługuje aprowizowanie użytkowników typu Just In Time. Po uwierzytelnieniu użytkownicy zostaną automatycznie utworzeni w aplikacji. Do pełnej obsługi administracyjnej, skontaktuj się z pomocą [ServiceChannel zespołem pomocy technicznej](https://servicechannel.zendesk.com/hc/en-us)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -229,7 +229,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka ServiceChannel w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji ServiceChannel.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -15,24 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
-ms.openlocfilehash: 958f661585b38b156cf523fe00986e7594474917
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.component: disks
+ms.openlocfilehash: 4f9e3468cc8ec94eeb3ba936b828e9adfd9a3e6d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093820"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478522"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizuj typ magazynu dysków zarządzanych
 
-Usługa Azure Managed Disks oferuje trzy opcje typu magazynu: [dysku Premium SSD](../windows/premium-storage.md), [SSD w warstwie standardowa](../windows/disks-standard-ssd.md), i [standardowych dysków Twardych](../windows/standard-storage.md). Można przełączać się między typami magazynu z minimalnym czasem przestojów, w oparciu o potrzeby związane z wydajnością dysku zarządzanego. Przełączanie między typami magazynu nie jest obsługiwane dla dysku niezarządzanego; można jednak łatwo [przekonwertować dysku niezarządzanego dysku zarządzanego](convert-unmanaged-to-managed-disks.md).
+Usługa Azure Managed Disks oferuje trzy opcje typu magazynu: [Premium SSD](../windows/premium-storage.md), [SSD w warstwie standardowa](../windows/disks-standard-ssd.md), i [standardowych dysków Twardych](../windows/standard-storage.md). Można przełączać się między typami magazynu z minimalnym czasem przestojów, w oparciu o potrzeby związane z wydajnością dysku zarządzanego. Przełączanie między typami magazynu nie jest obsługiwane dla dysku niezarządzanego; można jednak łatwo [przekonwertować dysku niezarządzanego dysku zarządzanego](convert-unmanaged-to-managed-disks.md).
 
-W tym artykule przedstawiono sposób konwertowania dysku zarządzanego od planu standard do premium i odwrotnie, przy użyciu programu Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1).
+W tym artykule przedstawiono sposób konwertowania dysku zarządzanego od planu standard do premium i odwrotnie, przy użyciu programu Azure PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Ponieważ konwersja wymaga ponownego uruchomienia maszyny wirtualnej (VM), należy zaplanować migrację magazynu dysków podczas istniejącego okna obsługi. 
 * Jeśli używasz dysku niezarządzanego, najpierw [przekonwertować go na dysk zarządzany](convert-unmanaged-to-managed-disks.md) aby możliwe było przełączać typów magazynów. 
-* Przykłady w niniejszym artykule wymagają programu Azure PowerShell w module w wersji 6.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Uruchom [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) do utworzenia połączenia z platformą Azure.
+* Przykłady w niniejszym artykule wymagają programu Azure PowerShell w module w wersji 6.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Uruchom [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) do utworzenia połączenia z platformą Azure.
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>Konwertuj dyski zarządzane maszyny wirtualnej z warstwy standardowa do warstwy premium

@@ -3,23 +3,23 @@ title: Usługi Azure Service Bus przy użyciu platformy .NET i protokołu AMQP 1
 description: Za pomocą usługi Azure Service Bus z platformy .NET z obsługą protokołu AMQP
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
-ms.author: spelluru
-ms.openlocfilehash: ad789b7a65fd12abb2a6e92c7c8896677de80cec
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: f5713fe3333f291d8d28a6ef3df48572507661be
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702242"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853208"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Usługa Service Bus z platformy .NET za pomocą protokołu AMQP 1.0
 
@@ -70,17 +70,17 @@ Aby ułatwić współdziałania z klientami — .NET, należy użyć tylko te ty
 | ulong |ulong |Wartość protokołu AMQP |
 | sbyte — |bajt |Wartość protokołu AMQP |
 | Krótka |Krótka |Wartość protokołu AMQP |
-| Int |Int |Wartość protokołu AMQP |
-| dł. |dł. |Wartość protokołu AMQP |
-| liczba zmiennoprzecinkowa |liczba zmiennoprzecinkowa |Wartość protokołu AMQP |
+| int |int |Wartość protokołu AMQP |
+| długi |długi |Wartość protokołu AMQP |
+| float |float |Wartość protokołu AMQP |
 | double |double |Wartość protokołu AMQP |
-| Dziesiętna |decimal128 |Wartość protokołu AMQP |
+| decimal |decimal128 |Wartość protokołu AMQP |
 | Char |Char |Wartość protokołu AMQP |
 | DateTime |sygnatura czasowa |Wartość protokołu AMQP |
-| Identyfikator GUID |Identyfikator UUID |Wartość protokołu AMQP |
+| Identyfikator GUID |uuid |Wartość protokołu AMQP |
 | byte[] |dane binarne |Wartość protokołu AMQP |
 | ciąg |ciąg |Wartość protokołu AMQP |
-| System.Collections.IList |lista |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
+| System.Collections.IList |list |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
 | System.Array |tablica |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. |
 | System.Collections.IDictionary |map |Wartość AMQP: elementy zawarte w kolekcji można tylko te, które są zdefiniowane w tej tabeli. Uwaga: obsługiwane są tylko kluczy ciągu. |
 | Identyfikator URI |Opisano parametry (patrz poniższa tabela) |Wartość protokołu AMQP |
@@ -107,8 +107,8 @@ Istnieją pewne niewielkie różnice w zachowaniu API .NET usługi Service Bus, 
 
 [Interfejsów API platformy .NET](/dotnet/api/) ujawnić kilka ustawień w celu sterowania zachowaniem protokołu AMQP:
 
-* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: określa początkowe środki zastosowane do łącza. Wartość domyślna to 0.
-* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: formanty maksymalny rozmiar ramki protokołu AMQP oferowane w trakcie negocjowania połączenia Otwórz czasu. Wartość domyślna to 65 536 bajtów.
+* **[MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver.prefetchcount?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount)**: Określa początkowe środki zastosowane do łącza. Wartość domyślna to 0.
+* **[MessagingFactorySettings.AmqpTransportSettings.MaxFrameSize](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.maxframesize?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_MaxFrameSize)**: Formanty maksymalny rozmiar ramki protokołu AMQP oferowane w trakcie negocjowania połączenia Otwórz czasu. Wartość domyślna to 65 536 bajtów.
 * **[MessagingFactorySettings.AmqpTransportSettings.BatchFlushInterval](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.batchflushinterval?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_BatchFlushInterval)**: Jeśli transfery batchable, ta wartość określa maksymalne opóźnienie wysyłania przepisy. Dziedziczone przez nadawcy/odbiorcy, domyślnie. Poszczególne nadawcy/odbiorcy mogą zastąpić domyślne, czyli 20 MS.
 * **[MessagingFactorySettings.AmqpTransportSettings.UseSslStreamSecurity](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.usesslstreamsecurity?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_Amqp_AmqpTransportSettings_UseSslStreamSecurity)**: Określa, czy nawiązywane są połączenia AMQP, przez połączenie SSL. Wartość domyślna to **true**.
 

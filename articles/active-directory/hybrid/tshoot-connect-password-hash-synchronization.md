@@ -4,7 +4,7 @@ description: Ten artykuł zawiera informacje dotyczące rozwiązywania problemó
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 036933c6b6e86856871c5f59f08fea20a0343ad7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 23787c777f20025d9310fac2efe0f429d66c4586
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314846"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470447"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją skrótów haseł z usługą Azure AD Connect sync
 Ten temat zawiera procedurę rozwiązywania problemów z synchronizacją skrótów haseł. Nie można zsynchronizować hasła, zgodnie z oczekiwaniami, może być dla podzbioru użytkowników lub dla wszystkich użytkowników.
@@ -233,7 +233,7 @@ Wykonaj następujące kroki, aby ustalić, dlaczego Brak synchronizowanych hase�
 3. Ta funkcja nie jest włączona w usłudze Azure AD lub stan kanału synchronizacji nie jest włączona, należy uruchomić Kreatora instalacji programu Connect. Wybierz **Dostosowywanie opcji synchronizacji**i usuń zaznaczenie pozycji synchronizacji haseł. Ta zmiana powoduje tymczasowe wyłączenie tej funkcji. Następnie uruchom ponownie kreatora i ponownie włączyć synchronizację haseł. Uruchom skrypt ponownie, aby sprawdzić, czy konfiguracja jest prawidłowa.
 
 4. Poszukaj w dzienniku błędów. Zwróć uwagę na następujące zdarzenia, które wskazują problem:
-    * Źródło: "Synchronizacji katalogów" ID: 0, 611, 652, 655, jeśli widzisz te zdarzenia, masz problem z połączeniem. Komunikat dziennika zdarzeń zawiera informacje lasu, gdzie występuje problem. Aby uzyskać więcej informacji, zobacz [problem z połączeniem](#connectivity problem).
+    * Źródło: Identyfikator "Synchronizacji katalogów": 0, 611, 652, 655, jeśli widzisz te zdarzenia, masz problem z połączeniem. Komunikat dziennika zdarzeń zawiera informacje lasu, gdzie występuje problem. Aby uzyskać więcej informacji, zobacz [problem z połączeniem](#connectivity problem).
 
 5. Jeśli widzisz Brak pulsu lub nic pracy, uruchom [wyzwolić pełną synchronizację haseł wszystkich](#trigger-a-full-sync-of-all-passwords). Uruchom skrypt tylko raz.
 
@@ -417,5 +417,5 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Implementowanie synchronizacji skrótów haseł z usługą Azure AD Connect sync](how-to-connect-password-hash-synchronization.md)
-* [Azure AD Connect Sync: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Dostosowywanie opcji synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

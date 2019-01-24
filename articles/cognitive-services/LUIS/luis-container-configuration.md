@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 31d6725b6e02bbc583ad80f235360574941a97d3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975513"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468339"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurowanie Language Understanding kontenerów platformy docker 
 
@@ -35,6 +35,7 @@ Ten kontener ma następujące ustawienia konfiguracji:
 |Yes|[Rozliczenia](#billing-setting)|Określa punkt końcowy identyfikator URI zasobu usługi na platformie Azure.|
 |Yes|[Umowa licencyjna](#eula-setting)| Wskazuje, zaakceptowane licencji dla kontenera.|
 |Nie|[Fluentd](#fluentd-settings)|Zapisać dziennik i, opcjonalnie, metryki danych na serwerze Fluentd.|
+|Nie|[Serwer Proxy http](#http-proxy-credentials-settings)|Skonfiguruj serwer proxy HTTP dla żądania wychodzącego.|
 |Nie|[Rejestrowanie](#logging-settings)|Udostępnia platformy ASP.NET Core rejestrowania pomocy technicznej dla usługi kontenera. |
 |Yes|[Instaluje](#mount-settings)|Odczytywanie i zapisywanie danych z komputera hosta do kontenera i kontener wróć do komputera-hosta.|
 
@@ -77,6 +78,10 @@ To ustawienie można znaleźć w następujących miejscach:
 
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>Ustawienia poświadczeń serwera proxy HTTP
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Ustawienia rejestrowania
  
@@ -189,3 +194,4 @@ ApiKey={APPLICATION_ID} \
 
 * Przegląd [sposobu instalowania i uruchamiania kontenerów](luis-container-howto.md)
 * Zapoznaj się [— często zadawane pytania (FAQ)](luis-resources-faq.md) Aby rozwiązać problemy związane z działaniem usługi LUIS.
+* Użycie [kontenerów usługi Cognitive Services](../cognitive-services-container-support.md)

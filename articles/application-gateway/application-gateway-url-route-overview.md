@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 95d443eeebf2fe5a8fad185210f88576a5f21f6a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188763"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435299"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing oparty na ścieżkach URL — omówienie
 
@@ -23,7 +23,7 @@ W poniższym przykładzie Usługa Application Gateway obsługuje ruch dla domeny
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Żądania dotyczące adresu http://contoso.com/video/* są kierowane do puli VideoServerPool, a żądania dotyczące adresu http://contoso.com/images/* — do puli ImageServerPool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
+Żądania http\://contoso.com/video/* są kierowane do puli VideoServerPool, a http\://contoso.com/images/* są kierowane do puli ImageServerPool. Pula DefaultServerPool jest wybierana, jeśli żaden z wzorców ścieżki nie pasuje.
 
 > [!IMPORTANT]
 > Reguły są przetwarzane w kolejności, w jakiej znajdują się na liście w portalu. Zdecydowanie zaleca się skonfigurowanie odbiorników obejmujących wiele lokacji przed skonfigurowaniem podstawowego odbiornika.  Zapewnia to skierowanie ruchu do odpowiedniego zaplecza. Jeśli podstawowy odbiornik znajduje się na początku listy i jest zgodny z żądaniem przychodzącym, jest ono przetwarzane przez ten odbiornik.
@@ -67,7 +67,7 @@ PathPattern znajduje się lista wzorców ścieżki do dopasowania. Każdy wzorze
 
 Obsługiwane wzorce zależą od tego, czy wdrażanie bramy Application Gateway v1 lub v2:
 
-#### <a name="v1"></a>w wersji 1
+#### <a name="v1"></a>v1
 
 Reguły ścieżki jest rozróżniana wielkość liter.
 

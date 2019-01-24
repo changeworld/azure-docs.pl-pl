@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 32b1788d73e1c323d93b40b778bc64a1ba45c4ad
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855837"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390662"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry w usłudze Azure Container Instances
 
@@ -24,7 +24,7 @@ W tym artykule dowiesz się utworzyć i skonfigurować jednostkę usługi Azure 
 
 Należy użyć jednostki usługi do uwierzytelniania z poziomu usługi ACI w **bezobsługowego scenariuszy**, na przykład w aplikacji lub usług, które tworzyć wystąpienia kontenera w trybie nienadzorowanym automatycznych lub w inny sposób.
 
-Na przykład, jeśli masz zautomatyzowanego skryptu jest uruchamiane co noc, która tworzy [wystąpienia kontenera opartego na zadaniach](../container-instances/container-instances-restart-policy.md) do przetwarzania niektórych danych, jej użyć jednostki usługi przy użyciu tylko ściąganych uprawnień (czytnikowi) do uwierzytelniania w rejestrze. Można następnie Obróć poświadczenia nazwy głównej usługi lub odwołać dostępu całkowicie bez wywierania wpływu na inne usługi i aplikacje.
+Na przykład, jeśli masz zautomatyzowanego skryptu jest uruchamiane co noc, która tworzy [wystąpienia kontenera opartego na zadaniach](../container-instances/container-instances-restart-policy.md) do przetwarzania niektórych danych, jej użyć jednostki usługi przy użyciu tylko ściąganych uprawnień do uwierzytelniania w rejestrze. Można następnie Obróć poświadczenia nazwy głównej usługi lub odwołać dostępu całkowicie bez wywierania wpływu na inne usługi i aplikacje.
 
 Nazwy główne usług powinny być używane podczas rejestru [administrator](container-registry-authentication.md#admin-account) jest wyłączona.
 

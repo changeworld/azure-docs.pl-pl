@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: diberry
-ms.openlocfilehash: 241227270aeede93b74d3d94c782dfe7eaf1fbf2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: af0629b8301fe6202c6a4325083cc69140bc7c2e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121706"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438205"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Publikowanie aplikacji aktywnych, uczonego w punkcie końcowym przejściowych lub produkcyjnych
 
@@ -62,6 +62,6 @@ Aby uzyskać więcej informacji na temat odpowiedzi JSON punktu końcowego za po
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Zobacz [zarządzanie kluczami](./luis-how-to-manage-keys.md) dodać klucze do subskrypcji platformy Azure klucz do usługi LUIS sposób ustawiania sprawdzania pisowni Bing klucza i Dołącz wszystkie intencje w wynikach.
+* Zobacz [zarządzanie kluczami](./luis-how-to-azure-subscription.md) dodać klucze do subskrypcji platformy Azure klucz do usługi LUIS sposób ustawiania sprawdzania pisowni Bing klucza i Dołącz wszystkie intencje w wynikach.
 * Zobacz [szkolenie i testowanie aplikacji](luis-interactive-test.md) instrukcje na temat testowania Twojej opublikowanej aplikacji w konsoli testów.
 

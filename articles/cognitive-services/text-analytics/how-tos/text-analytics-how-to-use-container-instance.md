@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 513067f09d8cac64ca747ff217c84667c5469d82
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 19ac1819c3b098597819ec75adcedeca929e802d
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54248237"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464548"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Wdrażanie kontenera wykrywanie języka w usłudze Azure Kubernetes Service
 
@@ -38,7 +38,7 @@ Ta procedura wymaga kilku narzędzi, które musi być zainstalowany i uruchamian
 
 Ta procedura ładuje i uruchamia kontener usług Cognitive przykład wykrywanie języka. Przykład ma dwa kontenery: jeden dla aplikacji klienckiej i jeden dla kontenera usług Cognitive Services. Należy do obu tych obrazów do własnych usługi Azure Container Registry. Gdy są one na własnego rejestru, należy utworzyć usługi Azure Kubernetes Service dostęp do tych obrazów i uruchamiaj kontenery. Gdy są uruchomione kontenery, należy użyć **kubectl** interfejsu wiersza polecenia, aby obejrzeć wydajności kontenerów. Dostęp do aplikacji klienckiej, za pomocą żądania HTTP i wyświetlić wyniki. 
 
-
+![Ogólne informacje o tym, uruchamianie przykładowych kontenerów](../media/how-tos/container-instance-sample/containers.png)
 
 ## <a name="the-sample-containers"></a>Przykładowych kontenerów
 
@@ -407,8 +407,8 @@ az group delete --name cogserv-container-rg
 
 ## <a name="next-steps"></a>Kolejne kroki 
 
-> [!div class="nextstepaction"]
-> [Użyj analizy tekstu, usługa połączona](../vs-text-connected-service.md)
+* Użycie [kontenerów usługi Cognitive Services](../../cognitive-services-container-support.md)
+* Użyj analizy tekstu usługa połączona] (.. / vs-text połączone service.md)
 
 
 <!--

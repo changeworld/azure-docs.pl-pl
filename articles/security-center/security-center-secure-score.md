@@ -3,7 +3,7 @@ title: Zabezpieczanie oceny w usłudze Azure Security Center | Dokumentacja firm
 description: " Ustaw priorytet swoje zalecenia dotyczące zabezpieczeń przy użyciu bezpiecznego oceny w usłudze Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 4bc426e291a47ae42e7628ad911e2960e654819f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.author: monhaber
+ms.openlocfilehash: 4c7f272cbf98fefbf70e917634fb623c9e1b6a3b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261302"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425897"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Poprawa bezpiecznego ocenę w usłudze Azure Security Center
 
@@ -45,7 +45,7 @@ Aby wyświetlić ocenę ogólną bezpiecznego:
 2. U góry możesz zobaczyć bezpiecznego ocena najważniejsze funkcje:
    - **Secure ogólną ocenę** reprezentuje wynik na zasady dla wybranej subskrypcji
    - **Zabezpieczanie wynik według kategorii** dowiesz się, które zasoby wymagają uwagi najbardziej
-   - **Najlepszych zaleceń zabezpieczenia przez ocenę wpływu** zawiera listę zaleceń, które poprawią bezpiecznego ocenę, najlepiej, jeśli je skorygować.
+   - **Najlepszych zaleceń zabezpieczenia przez ocenę wpływu** zawiera listę zaleceń, które poprawią bezpiecznego ocenę, najlepiej, jeśli zostaną zaimplementowane.
  
    ![Zabezpieczanie wynik](./media/security-center-secure-score/secure-score-dashboard.png)
 

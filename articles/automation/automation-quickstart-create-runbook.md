@@ -7,14 +7,14 @@ ms.author: csand
 ms.date: 12/14/2017
 ms.topic: quickstart
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 4aafff81957943fc19f0f6d2fce8a41f7be58d16
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: d1563e819666a428258c34d55be8f9b6980a151a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34056265"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436029"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Tworzenie elementu runbook usługi Azure Automation
 
@@ -36,7 +36,7 @@ Najpierw utwórz element runbook. Przykładowy element runbook tworzony w tym pr
 
 1. Kliknij przycisk **Dodaj element runbook** znajdujący się w górnej części listy. Na stronie **Dodawanie elementu runbook** wybierz pozycję **Szybkie tworzenie**.
 
-1. W polu **Nazwa** elementu runbook wpisz „Hello World”, a w obszarze **Typ elementu runbook** wybierz pozycję **PowerShell**. Kliknij przycisk **Utwórz**.
+1. W polu **Nazwa** elementu runbook wpisz „Hello World”, a w obszarze **Typ elementu runbook** wybierz pozycję **PowerShell**. Kliknij pozycję **Utwórz**.
 
    ![Wprowadzanie na stronie informacji dotyczących elementu runbook usługi Automation](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
@@ -102,3 +102,4 @@ W tym przewodniku Szybki start utworzono, edytowano, przetestowano i opublikowan
 
 > [!div class="nextstepaction"]
 > [Instrukcje dotyczące usługi Automation — typy elementów runbook](./automation-runbook-types.md)
+

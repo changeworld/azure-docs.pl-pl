@@ -5,7 +5,7 @@ keywords: Usługi AD FS, ADFS, zarządzanie usług AD FS, AAD Connect, Połącz,
 services: active-directory
 documentationcenter: ''
 ms.reviewer: anandyadavmsft
-manager: mtillman
+manager: daveba
 ms.component: hybrid
 ms.assetid: 2593b6c6-dc3f-46ef-8e02-a8e2dc4e9fb9
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: bfdc58b8af9fc5c7c5e56e78b17d97aa60681239
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432058"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462372"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Zarządzania relacjami zaufania usług AD FS z usługą Azure AD za pomocą usługi Azure AD Connect
 
@@ -45,7 +45,7 @@ Program Azure AD Connect zarządza **tylko** ustawienia związane z zaufania us�
 | Identyfikator relacji zaufania usługi Azure AD | Program Azure AD Connect, ustawia wartość prawidłowy identyfikator zaufania usługi Azure AD. Usługi AD FS jednoznacznie identyfikuje zaufania usługi Azure AD za pomocą wartości identyfikatora. |
 | Punkty końcowe usługi AD systemu Azure | Program Azure AD Connect zapewnia, że zawsze są punkty końcowe skonfigurowane dla zaufania usługi Azure AD zgodnie z najnowszych zalecane wartości, odporność i wydajność. |
 | Reguły przekształcania wystawiania | Istnieją liczby reguł oświadczeń, które są potrzebne w celu uzyskania optymalnej wydajności funkcji usługi Azure AD w środowisku federacyjnym. Program Azure AD Connect zapewnia się, że zawsze Konfiguracja zaufania usługi Azure AD przy użyciu odpowiedniego zestawu reguł zalecanych oświadczeń. |
-| Alternatywny identyfikator | Jeśli synchronizacja jest skonfigurowany do używania alternatywny identyfikator, program Azure AD Connect umożliwia skonfigurowanie usług AD FS do uwierzytelniania przy użyciu alternatywnego identyfikatora. |
+| Alternate-id | Jeśli synchronizacja jest skonfigurowany do używania alternatywny identyfikator, program Azure AD Connect umożliwia skonfigurowanie usług AD FS do uwierzytelniania przy użyciu alternatywnego identyfikatora. |
 | Metadane automatycznej aktualizacji | Zaufania z usługą Azure AD jest skonfigurowana dla aktualizacji automatycznych metadanych. Usługi AD FS okresowo sprawdza dostępność metadanych relacji zaufania usługi Azure AD i wciąż aktualne w przypadku, gdy zmienia się po stronie usługi Azure AD. |
 | Uwierzytelnianie zintegrowane Windows (IWA) | Podczas operacji tworzenia sprzężenia hybrydowej usługi Azure AD IWA jest włączone dla rejestracji urządzeń, które ułatwiają dołączanie do hybrydowej usługi Azure AD dla urządzeń z niskiego poziomu |
 
@@ -58,7 +58,7 @@ Usługa Azure AD connect nie aktualizuje wszystkie ustawienia dla zaufania usłu
 | Pierwsza instalacja — dostęp próbny (express) | Brak |
 | Najpierw przejść instalacji (nowej farmy usług AD FS) | Utworzono nową farmę usług AD FS i relację zaufania z usługą Azure AD jest tworzona od podstaw. |
 | Najpierw przejść instalacji (istniejącej farmy usług AD FS, istniejącą relację zaufania usługi Azure AD) | Identyfikator relacji zaufania usługi Azure AD, reguły przekształcania wystawiania, punktów końcowych usługi Azure AD, alternatywny identyfikator (w razie potrzeby), aktualizacji automatycznych metadanych |
-| Zresetuj relację zaufania usługi Azure AD | Token podpisywania certyfikatu podpisywania algorytmu, identyfikator relacji zaufania usługi Azure AD, przekształcania wystawiania tokenu reguł, punktów końcowych usługi Azure AD, alternatywny identyfikator (w razie potrzeby), aktualizacji automatycznych metadanych |
+| Resetuj relację zaufania usługi Azure AD | Token podpisywania certyfikatu podpisywania algorytmu, identyfikator relacji zaufania usługi Azure AD, przekształcania wystawiania tokenu reguł, punktów końcowych usługi Azure AD, alternatywny identyfikator (w razie potrzeby), aktualizacji automatycznych metadanych |
 | Dodawanie serwera federacyjnego | Brak |
 | Dodaj serwer proxy aplikacji sieci Web | Brak |
 | Opcje urządzenia | Reguły przekształcania wystawiania, IWA rejestracji urządzeń |

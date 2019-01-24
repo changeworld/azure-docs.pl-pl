@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d90a4272f843cc9f2b66aa202ddefe54e7b1a361
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2a282b76805ab91215d6b34ea30a7008d8c8244b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632165"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467982"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów w usłudze Azure Blob Storage z usługą Azure Search
 W tym artykule pokazano, jak używać usługi Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumentów programu Microsoft Office i kilka innych typowych formatów) przechowywanych w usłudze Azure Blob storage. Po pierwsze wyjaśnia podstawowe informacje dotyczące instalowania i konfigurowania indeksatora obiektów blob. Następnie oferuje bardziej zaawansowanej eksploracji zachowań, scenariuszy może wystąpić.
@@ -34,7 +34,6 @@ Możesz skonfigurować indeksator usługi Azure Blob Storage za pomocą:
 
 > [!NOTE]
 > Niektóre funkcje (na przykład mapowania pola) nie są jeszcze dostępne w portalu i muszą być używane programowo.
->
 >
 
 Tutaj pokażemy przepływu przy użyciu interfejsu API REST.
@@ -248,8 +247,8 @@ Parametry konfiguracji opisanych powyżej mają zastosowanie do wszystkich obiek
 
 | Nazwa właściwości | Wartość właściwości | Wyjaśnienie |
 | --- | --- | --- |
-| AzureSearch_Skip |wartość "prawda" |Powoduje, że indeksatora obiektów blob, aby całkowicie pominąć obiektu blob. Wyodrębnianie metadanych ani zawartość nie zostanie podjęta. Jest to przydatne, gdy określonego obiektu blob nie powiedzie się wielokrotnie i przerwanie procesu indeksowania. |
-| AzureSearch_SkipContent |wartość "prawda" |Jest to równoważne z `"dataToExtract" : "allMetadata"` ustawienia opisane [powyżej](#PartsOfBlobToIndex) ograniczone do określonego obiektu blob. |
+| AzureSearch_Skip |"true" |Powoduje, że indeksatora obiektów blob, aby całkowicie pominąć obiektu blob. Wyodrębnianie metadanych ani zawartość nie zostanie podjęta. Jest to przydatne, gdy określonego obiektu blob nie powiedzie się wielokrotnie i przerwanie procesu indeksowania. |
+| AzureSearch_SkipContent |"true" |Jest to równoważne z `"dataToExtract" : "allMetadata"` ustawienia opisane [powyżej](#PartsOfBlobToIndex) ograniczone do określonego obiektu blob. |
 
 <a name="DealingWithErrors"></a>
 ## <a name="dealing-with-errors"></a>Obsługa błędów

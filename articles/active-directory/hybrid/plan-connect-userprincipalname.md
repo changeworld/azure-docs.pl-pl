@@ -8,13 +8,13 @@ ms.date: 06/26/2018
 ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
-manager: mtillman
-ms.openlocfilehash: 59df0dc61be1f670f21b94fe24e56a2f040f950e
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+manager: daveba
+ms.openlocfilehash: da2ae0262ef8380f31f37bfbbe5ddca45c72ebd1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426812"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468101"
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Wypełnianie wartości UserPrincipalName w usłudze Azure AD
 
@@ -84,7 +84,7 @@ Aktualizacje do obiektu użytkownika są synchronizowane z dzierżawą usługi A
 ## <a name="upn-scenarios"></a>Scenariusze nazwy UPN
 Poniżej przedstawiono przykładowe scenariusze dotyczące sposobu nazwa UPN jest obliczany na podstawie danego scenariusza.
 
-### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>Scenariusz 1: Nie zweryfikowany sufiks nazwy UPN — początkowej synchronizacji
+### <a name="scenario-1-non-verified-upn-suffix--initial-synchronization"></a>Scenariusz 1: Zweryfikowano inne niż sufiks nazwy UPN — początkowej synchronizacji
 
 ![Scenario1](./media/plan-connect-userprincipalname/example1.png)
 
@@ -100,16 +100,16 @@ Synchronizowane obiektu użytkownika do dzierżawy usługi Azure AD po raz pierw
 - Atrybut UserPrincipalName usługi Azure AD na MOERA.
 
 Obiekt użytkownika dzierżawy usługi AD platformy Azure:
-- MailNickName: us1           
+- MailNickName      : us1           
 - UserPrincipalName: us1@contoso.onmicrosoft.com
 
 
-### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>Scenariusz 2:-Zweryfikować sufiks nazwy UPN — zestawu w środowisku lokalnym atrybut mailNickName
+### <a name="scenario-2-non-verified-upn-suffix--set-on-premises-mailnickname-attribute"></a>Scenariusz 2: Zweryfikowano bez sufiksu UPN — zestawu w środowisku lokalnym atrybut mailNickName
 
 ![Scenario2](./media/plan-connect-userprincipalname/example2.png)
 
 Obiekt użytkownika w środowisku lokalnym:
-- mailNickName: us4
+- mailNickName      : us4
 - proxyAddresses: {SMTP:us1@contoso.com}
 - wiadomości e-mail: us2@contoso.com
 - UserPrincipalName: us3@contoso.com
@@ -119,15 +119,15 @@ Synchronizowanie aktualizacji na atrybut mailNickName środowiska lokalnego do d
 - Ponieważ nie ma aktualizacji atrybut userPrincipalName w środowisku lokalnym, nie została zmieniona z atrybutem UserPrincipalName usługi Azure AD.
 
 Obiekt użytkownika dzierżawy usługi AD platformy Azure:
-- mailNickName: us4
+- MailNickName      : us4
 - UserPrincipalName: us1@contoso.onmicrosoft.com
 
-### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>Scenariusz 3:-Zweryfikować sufiks nazwy UPN — aktualizacja lokalnych atrybut userPrincipalName
+### <a name="scenario-3-non-verified-upn-suffix--update-on-premises-userprincipalname-attribute"></a>Scenariusz 3: Zweryfikowano bez sufiksu UPN — aktualizacja lokalnych atrybut userPrincipalName
 
 ![Scenario3](./media/plan-connect-userprincipalname/example3.png)
 
 Obiekt użytkownika w środowisku lokalnym:
-- mailNickName: us4
+- mailNickName      : us4
 - proxyAddresses: {SMTP:us1@contoso.com}
 - wiadomości e-mail: us2@contoso.com
 - UserPrincipalName: us5@contoso.com
@@ -138,15 +138,15 @@ Synchronizowanie aktualizacji na atrybut userPrincipalName środowiska lokalnego
 - Atrybut UserPrincipalName usługi Azure AD na MOERA.
 
 Obiekt użytkownika dzierżawy usługi AD platformy Azure:
-- mailNickName: us4
+- MailNickName      : us4
 - UserPrincipalName: us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Scenariusz 4:-Zweryfikować sufiks nazwy UPN — podstawowego adresu SMTP użytkownika aktualizacji i rozwiązań lokalnych do obsługi poczty atrybutu
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>Scenariusz 4: Zweryfikowane inne niż sufiks nazwy UPN — aktualizacja podstawowego adresu SMTP użytkownika, jak i lokalnych poczty atrybutu
 
 ![Scenario4](./media/plan-connect-userprincipalname/example4.png)
 
 Obiekt użytkownika w środowisku lokalnym:
-- mailNickName: us4
+- mailNickName      : us4
 - proxyAddresses: {SMTP:us6@contoso.com}
 - wiadomości e-mail: us7@contoso.com
 - UserPrincipalName: us5@contoso.com
@@ -155,15 +155,15 @@ Synchronizowanie aktualizacji na atrybut poczty w środowisku lokalnym i podstaw
 - Po początkowej synchronizacji obiektu użytkownika aktualizacji do lokalnej poczty atrybutu i podstawowy adres SMTP nie wpłynie na AD MailNickName platformy Azure lub atrybutu UserPrincipalName.
 
 Obiekt użytkownika dzierżawy usługi AD platformy Azure:
-- mailNickName: us4
+- MailNickName      : us4
 - UserPrincipalName: us4@contoso.onmicrosoft.com
 
-### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>Scenariusz 5: Sufiks nazwy UPN zweryfikowanych — aktualizacja lokalnych sufiks domeny atrybutu userPrincipalName
+### <a name="scenario-5-verified-upn-suffix--update-on-premises-userprincipalname-attribute-suffix"></a>Scenariusz 5: Zweryfikowano sufiks nazwy UPN — aktualizacja lokalnych sufiks domeny atrybutu userPrincipalName
 
 ![Scenario5](./media/plan-connect-userprincipalname/example5.png)
 
 Obiekt użytkownika w środowisku lokalnym:
-- mailNickName: us4
+- mailNickName      : us4
 - proxyAddresses: {SMTP:us6@contoso.com}
 - wiadomości e-mail: us7@contoso.com
 - UserPrincipalName: us5@verified.contoso.com
@@ -173,7 +173,7 @@ Synchronizowanie aktualizacji na atrybut userPrincipalName środowiska lokalnego
 - Atrybut UserPrincipalName usługi Azure AD na lokalnego atrybut userPrincipalName jako sufiks głównej nazwy użytkownika została zweryfikowana za pomocą dzierżawy usługi Azure AD.
 
 Obiekt użytkownika dzierżawy usługi AD platformy Azure:
-- mailNickName: us4     
+- MailNickName      : us4     
 - UserPrincipalName: us5@verified.contoso.com
 
 ## <a name="next-steps"></a>Następne kroki

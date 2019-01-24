@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 62474aba9eb429755ff5e7c78725ee3ce2d90117
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: ''
+ms.openlocfilehash: 4c8d14e01805ea66ff3a954c153d858bf4ecaba6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728214"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467506"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Używanie danych monitorowania na platformie Azure
 
@@ -37,15 +37,16 @@ Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłud
 | Raporty usługi Active Directory | Zdarzenia | Usługa Azure Active Directory | <ul><li>**INTERFEJS API REST:** [Usługa Azure Active Directory interfejsu API programu graph](../../active-directory/reports-monitoring/concept-reporting-api.md)</li></ul> |
 | Stan zasobu usługi Security Center | Stan | [Wszystkie obsługiwane zasobów](https://msdn.microsoft.com/library/mt704041.aspx#Anchor_1) | <ul><li>**INTERFEJS API REST:** [Stany zabezpieczeń](https://msdn.microsoft.com/library/mt704041.aspx)</li></ul> |
 | Kondycja zasobów | Stan | Obsługiwane usługi | <ul><li>**INTERFEJS API REST:** [Kondycja zasobu interfejsu API REST](https://azure.microsoft.com/blog/reduce-troubleshooting-time-with-azure-resource-health/)</li></ul> |
-| Alerty metryk usługi Azure Monitor | Powiadomienia | [Zobacz tutaj](metrics-supported.md) | <ul><li>**Element Webhook:** [Alerty metryk platformy Azure](alerts-webhooks.md)</li></ul> |
-| Alerty dziennika aktywności monitora platformy Azure | Powiadomienia | Wszystkich usług platformy Azure | <ul><li>**Element Webhook:** Alerty dziennika aktywności platformy Azure</li></ul> |
-| Powiadomienia skalowania automatycznego | Powiadomienia | [Zobacz tutaj](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Element Webhook:** [Schematu ładunek elementu webhook powiadomienia skalowania automatycznego](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Zapytanie wyszukiwania, alerty dzienników | Powiadomienia | Log Analytics | <ul><li>**Element Webhook:** [Akcja elementu Webhook dla reguł alertów dzienników](alerts-log-webhook.md)</li></ul> |
-| Application Insights alertów dotyczących metryk | Powiadomienia | Application Insights | <ul><li>**Element Webhook:** [Alerty szczegółowe informacje o aplikacji](../../azure-monitor/app/alerts.md)</li></ul> |
-| Testy sieci web programu Application Insights | Powiadomienia | Application Insights | <ul><li>**Element Webhook:** [Alerty szczegółowe informacje o aplikacji](../../azure-monitor/app/alerts.md)</li></ul> |
+| Alerty metryk usługi Azure Monitor | Powiadomienia | [Zobacz tutaj](metrics-supported.md) | <ul><li>**Webhook:** [Alerty metryk platformy Azure](alerts-webhooks.md)</li></ul> |
+| Alerty dziennika aktywności monitora platformy Azure | Powiadomienia | Wszystkich usług platformy Azure | <ul><li>**Webhook:** Alerty dziennika aktywności platformy Azure</li></ul> |
+| Powiadomienia skalowania automatycznego | Powiadomienia | [Zobacz tutaj](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Schematu ładunek elementu webhook powiadomienia skalowania automatycznego](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
+| Zapytanie wyszukiwania, alerty dzienników | Powiadomienia | Log Analytics | <ul><li>**Webhook:** [Akcja elementu Webhook dla reguł alertów dzienników](alerts-log-webhook.md)</li></ul> |
+| Application Insights alertów dotyczących metryk | Powiadomienia | Application Insights | <ul><li>**Webhook:** [Alerty szczegółowe informacje o aplikacji](../../azure-monitor/app/alerts.md)</li></ul> |
+| Testy sieci web programu Application Insights | Powiadomienia | Application Insights | <ul><li>**Webhook:** [Alerty szczegółowe informacje o aplikacji](../../azure-monitor/app/alerts.md)</li></ul> |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [metryk usługi Azure Monitor](data-collection.md)
 - Dowiedz się więcej o [dziennika aktywności platformy Azure](activity-logs-overview.md)
 - Dowiedz się więcej o [dzienniki diagnostyczne platformy Azure](diagnostic-logs-overview.md)
+

@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Rozpoczęcie zadań moderowania przy użyciu platformy .NET — Content Moderator'
+title: 'Szybki start: rozpoczęcie zadań moderowania przy użyciu platformy .NET — Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Jak inicjować zadania moderowania za pomocą zestawu Azure Content Moderator SDK for .NET.
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f55906aa9de6faa5979ecedbc3ef288f164fd6c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227440"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261949"
 ---
-# <a name="quickstart-start-moderation-jobs-using-net"></a>Szybki start: Rozpoczęcie zadań moderowania przy użyciu platformy .NET
+# <a name="quickstart-start-moderation-jobs-using-net"></a>Szybki start: rozpoczęcie zadań moderowania przy użyciu platformy .NET
 
-Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
+Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
  
 - Uruchamianie zadania moderowania w celu skanowania i tworzenia przeglądów dla użytkowników pełniących rolę moderatorów
 - Pobieranie stanu przeglądu oczekującego
@@ -30,8 +30,7 @@ W tym artykule założono, że znasz już program Visual Studio i język C#.
 
 ## <a name="sign-up-for-content-moderator"></a>Rejestracja w usłudze Content Moderator
 
-Aby używać usług Content Moderator przy użyciu interfejsu API REST lub zestawu SDK, potrzebny jest klucz subskrypcji.
-Zapoznaj się z [przewodnikiem Szybki start](quick-start.md) i dowiedz się, jak można uzyskać klucz.
+Zanim użyjesz usług Content Moderator za pomocą interfejsu API REST lub zestawu SDK, potrzebujesz klucza subskrypcji. Aby subskrybować pakiet Content Moderator i uzyskać klucz, postępuj zgodnie z instrukcjami z tematu [Create a Cognitive Services account (Tworzenie konta usług Cognitive Services)](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zarejestruj konto narzędzia do przeprowadzania przeglądów, jeśli nie zostało to zrobione w poprzednim kroku
 

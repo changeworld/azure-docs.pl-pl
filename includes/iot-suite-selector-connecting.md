@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e241317231f3c607c373cb8a54e4b5bf6601b8e7
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620765"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54457063"
 ---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -21,7 +21,7 @@ ms.locfileid: "52620765"
 > * [C na urządzeniu Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (ogólny)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Node.js na urządzeniu Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [Zestawu deweloperskiego IoT Mxchip](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
 
 W ramach tego samouczka, możesz wdrożyć **Chłodnica** urządzenia, które wysyła następujące dane telemetryczne do monitorowania zdalnego [akcelerator rozwiązań](../articles/iot-accelerators/about-iot-accelerators.md):
 
@@ -41,7 +41,7 @@ Do wykonania kroków tego samouczka jest potrzebne aktywne konto platformy Azure
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Przed przystąpieniem do napisania jakiegokolwiek kodu dla Twojego urządzenia, wdrożyć Twój akcelerator rozwiązań monitorowania zdalnego i dodać nowe urządzenie fizyczne do rozwiązania.
+Przed przystąpieniem do napisania jakiegokolwiek kodu dla Twojego urządzenia, wdrożyć Twój akcelerator rozwiązań monitorowania zdalnego i dodać nowe rzeczywistego urządzenia z rozwiązaniem.
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Wdrażanie Twój akcelerator rozwiązań zdalnego monitorowania
 
@@ -62,7 +62,7 @@ Aby dodać urządzenie do rozwiązania monitorowania zdalnego, wykonaj następuj
 
 1. Wybierz **+ nowe urządzenie**, a następnie wybierz **fizycznych** jako **typu urządzenia**:
 
-    ![Dodaj urządzenie fizyczne](media/iot-suite-selector-connecting/devicesprovision.png)
+    ![Dodawanie rzeczywistego urządzenia](media/iot-suite-selector-connecting/devicesprovision.png)
 
 1. Wprowadź **Chłodnica fizycznych** jako identyfikator urządzenia. Wybierz **klucz symetryczny** i **automatycznie Generuj klucze** opcje:
 
@@ -72,7 +72,7 @@ Aby dodać urządzenie do rozwiązania monitorowania zdalnego, wykonaj następuj
 
     ![Pobieranie poświadczeń](media/iot-suite-selector-connecting/credentials.png)
 
-Już teraz dodane urządzenia fizycznego do akceleratora rozwiązania monitorowania zdalnego i oznaczane w jego parametry połączenia urządzenia. W poniższych sekcjach można zaimplementować aplikację kliencką, która używa parametrów połączenia urządzenia do łączenia z rozwiązania.
+Teraz dodaniu rzeczywistego urządzenia do akceleratora rozwiązania monitorowania zdalnego i zauważyć jego parametry połączenia urządzenia. W poniższych sekcjach można zaimplementować aplikację kliencką, która używa parametrów połączenia urządzenia do łączenia z rozwiązania.
 
 Aplikacja kliencka implementuje wbudowane **Chłodnica** model urządzenia. Model urządzenia akceleratora rozwiązań określa następujące informacje o urządzeniu:
 

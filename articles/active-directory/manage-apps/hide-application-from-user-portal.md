@@ -3,7 +3,7 @@ title: Ukrywanie aplikacji w środowisku użytkownika usługi Azure Active Direc
 description: Jak ukrywać aplikacji za pomocą środowiska użytkownika w panelach dostępu usługi Azure Active Directory lub przyciski Uruchom usługi Office 365.
 services: active-directory
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: kasimpso
-ms.openlocfilehash: f1203b4381055deca79a70e8d295e072feaf492a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: d5443f5b33f85d7a4b1e69cecc6bcdf68859abf4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613586"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474910"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Ukryj aplikacje od użytkowników końcowych w usłudze Azure Active Directory
 

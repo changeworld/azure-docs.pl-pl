@@ -3,19 +3,19 @@ title: Zabezpieczanie usługi RESTful za pomocą podstawowego uwierzytelniania p
 description: Zabezpiecz swoje niestandardowe wymianą oświadczenia interfejsu API REST usługi Azure AD B2C przy użyciu uwierzytelniania podstawowego HTTP.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: dcabcbbce78b83c0d4328e0f5b1088c172bcfedb
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409307"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850688"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpieczanie usługi RESTful za pomocą podstawowego uwierzytelniania protokołu HTTP
 
@@ -32,7 +32,7 @@ Wykonaj kroki [integracja interfejsu API REST oświadczeń wymianą swoją podr�
 
 ## <a name="step-1-add-authentication-support"></a>Krok 1: Dodaj obsługę uwierzytelniania
 
-### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Krok 1.1: Dodaj ustawienia aplikacji do pliku web.config projektu
+### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Krok 1.1: Dodawanie ustawień aplikacji do pliku web.config projektu
 1. Otwórz projekt programu Visual Studio, która została utworzona wcześniej. 
 
 2. Dodaj poniższe ustawienia aplikacji do pliku web.config w obszarze `appSettings` elementu:
@@ -54,7 +54,7 @@ Wykonaj kroki [integracja interfejsu API REST oświadczeń wymianą swoją podr�
     [System.Convert]::ToBase64String($bytes)
     ```
 
-### <a name="step-12-install-owin-libraries"></a>Krok 1.2. Instalacja biblioteki OWIN
+### <a name="step-12-install-owin-libraries"></a>Krok 1.2: Instalowanie bibliotek OWIN
 Aby rozpocząć, Dodaj pakiety NuGet oprogramowanie pośredniczące OWIN do projektu przy użyciu konsoli Menedżera pakietów Visual Studio:
 
 ```
@@ -63,7 +63,7 @@ PM> Install-Package Owin
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
-### <a name="step-13-add-an-authentication-middleware-class"></a>Krok 1.3: Dodaj klasę oprogramowania pośredniczącego uwierzytelniania
+### <a name="step-13-add-an-authentication-middleware-class"></a>Krok 1.3. Dodaj klasę oprogramowania pośredniczącego uwierzytelniania
 Dodaj `ClientAuthMiddleware.cs` klasy w obszarze *App_Start* folderu. W tym celu:
 
 1. Kliknij prawym przyciskiem myszy *App_Start* folderu, wybierz **Dodaj**, a następnie wybierz pozycję **klasy**.
@@ -211,7 +211,7 @@ Dodaj klasę początkową OWIN o nazwie `Startup.cs` do interfejsu API. W tym ce
     }
     ```
 
-### <a name="step-15-protect-the-identity-api-class"></a>Krok 1.5: Ochrona klasy tożsamość interfejsu API
+### <a name="step-15-protect-the-identity-api-class"></a>Krok 1.5. Ochrona klasy tożsamość interfejsu API
 Otwórz Controllers\IdentityController.cs i Dodaj `[Authorize]` tag do klasy kontrolera. Ten tag ogranicza dostęp do kontrolera dla użytkowników, którzy spełniają wymagania autoryzacji.
 
 ![Dodaj tag autoryzacji do kontrolera](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
@@ -222,7 +222,7 @@ Aby opublikować projekt, w Eksploratorze rozwiązań, kliknij prawym przyciskie
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Krok 3: Dodawanie usług RESTful identyfikator i aplikacji klucz tajny aplikacji do usługi Azure AD B2C
 Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa użytkownika) i klucz tajny, poświadczenia muszą być przechowywane w dzierżawie usługi Azure AD B2C. Niestandardowe zasady dostarcza poświadczenia, gdy wywołuje usługi RESTful. 
 
-### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1. Dodawanie usług RESTful identyfikator klienta
+### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1 Dodaj identyfikator klienta usługi RESTful
 1. W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C** > **struktura środowiska tożsamości**.
 
 
@@ -243,7 +243,7 @@ Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa uż
 
 9. Upewnij się, że utworzono `B2C_1A_B2cRestClientId` klucza.
 
-### <a name="step-32-add-a-restful-services-client-secret"></a>Krok 3.2: Dodaj klucz tajny klienta usług RESTful
+### <a name="step-32-add-a-restful-services-client-secret"></a>Krok 3.2 Dodaj klucz tajny klienta usług RESTful
 1. W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C** > **struktura środowiska tożsamości**.
 
 2. Wybierz **klucze zasad** Aby wyświetlić klucze, które są dostępne w Twojej dzierżawie.
@@ -263,7 +263,7 @@ Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa uż
 
 9. Upewnij się, że utworzono `B2C_1A_B2cRestClientSecret` klucza.
 
-## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>Krok 4: Zmień profil techniczny, aby obsługiwać uwierzytelnianie podstawowe w zasadach rozszerzenia
+## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>Krok 4: Zmiany profilu technicznego, aby obsługiwać uwierzytelnianie podstawowe w zasadach rozszerzenia
 1. W katalogu roboczym otwórz plik zasad rozszerzenia (TrustFrameworkExtensions.xml).
 
 2. Wyszukaj `<TechnicalProfile>` węzeł, który zawiera `Id="REST-API-SignUp"`.
@@ -287,7 +287,7 @@ Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa uż
     
     ![Dodaj uwierzytelnianie podstawowe elementy XML](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Przekaż zasady dla Twojej dzierżawy
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5. Przekazywanie zasad dla Twojej dzierżawy
 
 1. W [witryny Azure portal](https://portal.azure.com), przełącz się do [kontekstu dzierżawy usługi Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md), a następnie otwórz **usługi Azure AD B2C**.
 

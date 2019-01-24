@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 638ca5d1b1b68896ff5dcad70fedf27261ae96cb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452058"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413842"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Zarządzanie użytkowników administracyjnych, SSH i sprawdzanie lub napraw dyski maszyn wirtualnych systemu Linux przy użyciu rozszerzenia VMAccess przy użyciu wiersza polecenia platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -39,7 +39,7 @@ Rozszerzenie dostępu do maszyny Wirtualnej mogą być uruchamiane względem tyc
 | Dystrybucja | Wersja |
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS i 12.04 LTS |
-| Debian | Debian 7,9 +, 8.2 + |
+| Debian | Debian 7.9+, 8.2+ |
 | Red Hat | RHEL 6.7+, 7.1+ |
 | Oracle Linux | 6.4+, 7.0+ |
 | SUSE | 11 i 12 |
@@ -53,7 +53,7 @@ Istnieją dwa sposoby użyć rozszerzenia VMAccess na maszynach wirtualnych syst
 * Za pomocą wiersza polecenia platformy Azure i wymaganych parametrów.
 * [Użyj nieprzetworzone pliki w formacie JSON, które przetwarzają rozszerzenie VMAccess](#use-json-files-and-the-vmaccess-extension) i następnie działać na nich.
 
-W poniższych przykładach używane [użytkownika maszyny wirtualnej az](/cli/azure/vm/user) poleceń. Aby wykonać te kroki, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+W poniższych przykładach używane [użytkownika maszyny wirtualnej az](/cli/azure/vm/user) poleceń. Aby wykonać te kroki, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index).
 
 ## <a name="update-ssh-key"></a>Zaktualizuj klucz SSH
 Poniższy przykład aktualizuje klucz SSH dla użytkownika `azureuser` na maszynie Wirtualnej o nazwie `myVM`:
@@ -66,7 +66,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **Uwaga:** `az vm user update` polecenie dołącza nowy tekst klucza publicznego do `~/.ssh/authorized_keys` pliku dla administratora na maszynie Wirtualnej. To nie Zamień lub usuń jakiekolwiek klucze SSH. Nie spowoduje to usunięcie poprzednich kluczy zestawu w czasie wdrażania lub kolejnych aktualizacji za pośrednictwem rozszerzenia VMAccess.
+> **UWAGA:** `az vm user update` Polecenie dołącza nowy tekst klucza publicznego do `~/.ssh/authorized_keys` pliku dla administratora na maszynie Wirtualnej. To nie Zamień lub usuń jakiekolwiek klucze SSH. Nie spowoduje to usunięcie poprzednich kluczy zestawu w czasie wdrażania lub kolejnych aktualizacji za pośrednictwem rozszerzenia VMAccess.
 
 ## <a name="reset-password"></a>Resetowanie hasła
 Poniższy przykład powoduje zresetowanie hasła dla użytkownika `azureuser` na maszynie Wirtualnej o nazwie `myVM`:

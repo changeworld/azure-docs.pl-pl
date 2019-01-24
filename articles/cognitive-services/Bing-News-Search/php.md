@@ -8,29 +8,31 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
-ms.date: 9/21/2017
+ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f34f86fe7fba09bfbc5a05814fb4e39ee40c003b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: cd9dabfc7e462eace8fb8ae5d01359d19010c137
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252443"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261829"
 ---
 # <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu języka PHP i interfejsu API REST wyszukiwania wiadomości Bing
 
-W tym artykule pokazano, jak używać interfejsu API wyszukiwania wiadomości Bing, który jest częścią usług Microsoft Cognitive Services na platformie Azure. Chociaż ten artykuł dotyczy języka PHP, ten interfejs API jest usługą sieci Web w architekturze RESTful, zgodną z dowolnym językiem programowania, który może wykonywać żądania HTTP i analizować format JSON. 
+Ten przewodnik Szybki start umożliwia tworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
 
-Przykładowy kod jest zgodny z wersją PHP 5.6.
-
-Zapoznaj się z [dokumentacją interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference), aby uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+Chociaż ta aplikacja jest napisana w języku PHP, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsów API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny będzie klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* Język PHP 5.6 lub nowszy
 
-## <a name="bing-news-search"></a>Wyszukiwanie wiadomości Bing
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
+
+Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+
+## <a name="run-the-application"></a>Uruchamianie aplikacji
 
 [Interfejs API wyszukiwania wiadomości Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) zwraca wyniki dotyczące wiadomości z wyszukiwarki Bing.
 
@@ -198,8 +200,4 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Stronicowanie wiadomości](paging-news.md)
-> [Wyróżnianie tekstu przy użyciu znaczników dekoracji](hit-highlighting.md)
-> [Wyszukiwanie wiadomości w Internecie](search-the-web.md)  
-> [Wypróbuj!](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
-
+[Tworzenie jednostronicowej aplikacji internetowej](tutorial-bing-news-search-single-page-app.md)

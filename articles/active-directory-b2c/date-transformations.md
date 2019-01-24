@@ -3,19 +3,19 @@ title: Data przykłady przekształcania oświadczeń tożsamości środowisko Fr
 description: Data oświadczeń przykłady przekształcania tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6a49e940c988d25da1e6f6a3c6f372e15fd2136f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405824"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850063"
 ---
 # <a name="date-claims-transformations"></a>Data oświadczeń przekształcenia
 
@@ -37,7 +37,7 @@ Sprawdza, czy jeden daty i godziny oświadczenia (string — typ danych) jest no
 
 **AssertDateTimeIsGreaterThan** przekształcania oświadczeń jest zawsze wykonywana z [profilu technicznego weryfikacji](validation-technical-profile.md) który jest wywoływany [własnym potwierdzone profilu technicznego](self-asserted-technical-profile.md). **DateTimeGreaterThan** samodzielnie profilu technicznego określa profil techniczny wyświetlane dla użytkownika komunikat o błędzie.
 
-![Wykonanie AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
+![AssertStringClaimsAreEqual execution](./media/date-transformations/assert-execution.png)
 
 W poniższym przykładzie porównano `currentDateTime` oświadczenia `approvedDateTime` oświadczenia. Błąd jest generowany, jeśli `currentDateTime` jest późniejsza niż `approvedDateTime`. Transformacja traktuje wartości jako równe, jeśli są one w ciągu 5 minut (w milisekundach 30000) różnicę.
 
@@ -111,7 +111,7 @@ W poniższym przykładzie pokazano konwersji oświadczenia `dateOfBirth` (Data �
 ### <a name="example"></a>Przykład
 
 - Oświadczeń wejściowych:
-    - **oświadczenie inputClaim**: 2019-06-01
+    - **inputClaim**: 2019-06-01
 - Oświadczeń danych wyjściowych:
     - **oświadczenie outputClaim**: 1559347200 (1 czerwiec maja 2019 r 12:00:00 AM)
 
@@ -144,7 +144,7 @@ Określić, czy jeden daty/godziny jest, później, wcześniej lub równy innemu
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | firstDateTime | Data i godzina | Pierwszą datę i godzinę do porównania, czy wcześniej lub później niż drugi daty/godziny. Wartość null zgłasza wyjątek. |
 | Oświadczenie InputClaim | secondDateTime | Data i godzina | Drugi daty/godziny do porównania, czy wcześniej lub późniejsza niż data i godzina pierwszego. Wartość null, jest traktowany jako bieżący datetTime. |
-| InputParameter | Operator | ciąg | Jedną z następujących wartości: ten sam, późniejsza niż lub wcześniejsza niż. |
+| InputParameter | operator | ciąg | Jedną z następujących wartości: ten sam, późniejsza niż lub wcześniejsza niż. |
 | InputParameter | timeSpanInSeconds | int | Dodaj zakres czasu do pierwszego daty/godziny. |
 | oświadczenie outputClaim | wynik | wartość logiczna | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 9c2ebcfc376456f63896ebae8331136aff0cdb99
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119445"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448470"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Przykład 3 — Tworzenie sieci obwodowej do ochrony sieci z zapory, przez i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -110,7 +110,7 @@ Na przykład następujące polecenia służą do tworzenia tabeli tras, Dodaj tr
 
 1. Najpierw należy utworzyć podstawowej tabeli routingu. Ten fragment kodu przedstawia tworzenie tabeli podsieci wewnętrznej bazy danych. W skrypcie tworzony jest także odpowiedniej tabeli dla podsieci frontonu.
    
-     Nowe AzureRouteTable — nazwa $BERouteTableName "
+     New-AzureRouteTable -Name $BERouteTableName `
    
          -Location $DeploymentLocation `
          -Label "Route table for $BESubnet subnet"
@@ -134,7 +134,7 @@ Na przykład następujące polecenia służą do tworzenia tabeli tras, Dodaj tr
             -NextHopType VNETLocal
 5. Na koniec z tabeli routingu utworzony i wypełniony tras zdefiniowanych przez użytkownika, tabela musi teraz być powiązana z podsiecią. W skrypcie tabeli tras frontonu również jest powiązana z podsiecią Frontend. Oto skrypt powiązania dla podsieci zaplecza.
    
-     Zestaw AzureSubnetRouteTable - VirtualNetworkName $VNetName "
+     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
    
         -SubnetName $BESubnet `
         -RouteTableName $BERouteTableName
@@ -153,7 +153,7 @@ Konfigurowanie przekazywania adresów IP jest pojedyncze polecenie i może odbyw
 
 1. Wywołać wystąpienia maszyny Wirtualnej, który w tym przypadku jest urządzenie wirtualne zapory, a następnie włączyć funkcję przekazywania adresów IP (Uwaga; dowolny element w czerwonym zaczynający się od znaku dolara (np.: $VMName[0]) jest zdefiniowane przez użytkownika zmienną ze skryptu zamieszczone w tej sekcji niniejszego dokumentu. Zero w nawiasie [0] reprezentuje pierwszą maszynę Wirtualną w tablicy, której maszyny wirtualne, aby uzyskać przykładowy skrypt działać bez żadnych modyfikacji, pierwsza maszyna wirtualna (VM, 0) muszą być zapory):
    
-     Get-AzureVM — nazwa $VMName [0] - ServiceName $ServiceName [0] | `
+     Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
    
         Set-AzureIPForwarding -Enable
 
@@ -312,10 +312,10 @@ Szczegółowe informacje na temat każdej reguły wymaganiem do wykonania w tym 
      
      | Nazwa reguły | Serwer | Usługa | Listy docelowej |
      | --- | --- | --- | --- |
-     | RDP-IIS01 |IIS01 |IIS01 PROTOKOŁU RDP |10.0.1.4:3389 |
-     | RDP-DNS01 |DNS01 |DNS01 PROTOKOŁU RDP |10.0.2.4:3389 |
-     | RDP-AppVM01 |AppVM01 |AppVM01 protokołu RDP |10.0.2.5:3389 |
-     | RDP-AppVM02 |AppVM02 |AppVm02 protokołu RDP |10.0.2.6:3389 |
+     | RDP-to-IIS01 |IIS01 |IIS01 RDP |10.0.1.4:3389 |
+     | RDP-to-DNS01 |DNS01 |DNS01 RDP |10.0.2.4:3389 |
+     | RDP-to-AppVM01 |AppVM01 |AppVM01 protokołu RDP |10.0.2.5:3389 |
+     | RDP-to-AppVM02 |AppVM02 |AppVm02 RDP |10.0.2.6:3389 |
 
 > [!TIP]
 > Zawężając zakres pola źródłowego i usługi zostaną zmniejszyć obszar narażony na ataki. Najbardziej ograniczonym zakresie, które umożliwi funkcji powinna być używana.
@@ -396,8 +396,8 @@ Za pomocą aktywacji zestawu reguł zapory na przykład kompilacji środowiska z
 W tych scenariuszach następujące reguły zapory powinny być stosowane:
 
 1. Zarządzanie zaporą
-2. Połączenie przez RDP IIS01
-3. Połączenie przez RDP DNS01
+2. RDP to IIS01
+3. RDP to DNS01
 4. Połączenie przez RDP AppVM01
 5. Połączenie przez RDP AppVM02
 6. Ruchem aplikacji sieci Web
@@ -777,7 +777,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 

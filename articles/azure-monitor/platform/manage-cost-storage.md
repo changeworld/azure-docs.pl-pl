@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 262c81dbf2c094b6a823a8320a0657f2767bc20c
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.subservice: ''
+ms.openlocfilehash: 418d334133e1c223f2349ce79a51b229072c31e9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332323"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475326"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -168,7 +168,7 @@ Aby uzyskać listę komputerów, które wysyłają **rozliczane typy danych** (n
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typres danych dane są kosztowne do wykonania. 
+Te `union withsource = tt *` zapytania oszczędnie skanowania różnych typów danych są kosztowne do wykonania. 
 
 Może to rozszerzona, aby zwrócić liczbę komputerów, na godzinę, które wysyłają rozliczane typów danych:
 
@@ -335,4 +335,5 @@ Po otrzymaniu alertu wykonaj kroki przedstawione w poniższej sekcji, aby rozwi�
 * Zmień [konfigurację licznika wydajności](data-sources-performance-counters.md).
 * Aby zmodyfikować ustawienia zbierania zdarzeń, przejrzyj [konfigurację dziennika zdarzeń](data-sources-windows-events.md).
 * Aby zmodyfikować ustawienia zbierania dla dziennika systemowego, przejrzyj [konfigurację dziennika systemowego](data-sources-syslog.md).
+
 

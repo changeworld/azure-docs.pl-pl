@@ -3,19 +3,19 @@ title: Podróży użytkowników | Dokumentacja firmy Microsoft
 description: Określ element podróży użytkowników zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 231a3e87692e47ec33f8a613832acf5102257c96
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c6933a3d50807f38c0704f41dff7c9bcb3351949
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567064"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850643"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -158,7 +158,7 @@ Warunki wstępne można sprawdzić wiele warunków wstępnych. Poniższy przykł
 </OrchestrationStep>
 ```
 
-## <a name="claimsproviderselection"></a>Elemencie ClaimsProviderSelection
+## <a name="claimsproviderselection"></a>ClaimsProviderSelection
 
 Krok aranżacji typu `ClaimsProviderSelection` lub `CombinedSignInAndSignUp` mogą zawierać listy dostawców oświadczeń, które użytkownik może zarejestrować się za pomocą. Kolejność elementów wewnątrz `ClaimsProviderSelections` elementy określa kolejność dostawców tożsamości, użytkownik widzi.
 
@@ -166,7 +166,7 @@ Krok aranżacji typu `ClaimsProviderSelection` lub `CombinedSignInAndSignUp` mog
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Elemencie ClaimsProviderSelection | 0: n | Zawiera listę dostawców oświadczeń, które można wybrać.|
+| ClaimsProviderSelection | 0: n | Zawiera listę dostawców oświadczeń, które można wybrać.|
 
 **Elemencie ClaimsProviderSelection** element zawiera następujące atrybuty: 
 
@@ -218,7 +218,7 @@ W poniższym kroku aranżacji użytkownika można zalogować się przy użyciu u
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Elementu ClaimsExchange | 0: n | W zależności od profilu technicznego używany albo przekierowuje klienta zgodnie z elemencie ClaimsProviderSelection, który został wybrany lub sprawia, że oświadczenia wywołanie serwera programu exchange. | 
+| ClaimsExchange | 0: n | W zależności od profilu technicznego używany albo przekierowuje klienta zgodnie z elemencie ClaimsProviderSelection, który został wybrany lub sprawia, że oświadczenia wywołanie serwera programu exchange. | 
 
 **Elementu ClaimsExchange** element zawiera następujące atrybuty:
 

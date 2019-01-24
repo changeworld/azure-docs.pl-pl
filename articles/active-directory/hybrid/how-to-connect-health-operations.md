@@ -4,7 +4,7 @@ description: W tym artykule opisano dodatkowe operacje, które mogą być wykony
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 7e0e2e19f2f21fa3199cbc4911fed3427cbc162c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 35bbc44a8a54071530806576294163cb7ba627ea
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280523"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478301"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operacje usługi Azure Active Directory Connect Health
 W tym temacie opisano różne operacje, które można wykonać przy użyciu usługi Azure Active Directory (Azure AD) Connect Health.
@@ -64,6 +64,7 @@ Azure AD Connect Health dla usługi Active Directory Federation Services (AD FS)
 
 1. Otwórz **serwera** bloku z **listy serwerów** bloku, wybierając nazwę serwera, który ma zostać usunięty.
 2. Na **serwera** bloku na pasku akcji kliknij **Usuń**.
+![Zrzut ekranu programu Azure AD Connect Health usuwanie serwera](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. Potwierdź, wpisując nazwę serwera w okno dialogowe z potwierdzeniem.
 4. Kliknij polecenie **Usuń**.
 
@@ -86,8 +87,9 @@ Gdy usuwane wystąpienia usługi, należy pamiętać o następujących czynnośc
 * Po wykonaniu tej akcji, jeśli chcesz rozpocząć monitorowanie usługi, odinstaluj i ponownie zainstalować agenta programu Health na wszystkich serwerach. Po wykonaniu tej akcji, jeśli chcesz rozpocząć monitorowanie tego samego serwera ponownie, odinstaluj, zainstaluj ponownie i zarejestrować agenta programu Health na tym serwerze.
 
 #### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Aby usunąć wystąpienie usługi z usługi Azure AD Connect Health
-1. Otwórz **usługi** bloku z **listę usług** bloku, wybierając identyfikator usług (nazwa farmy), który chcesz usunąć.
-2. Na **serwera** bloku na pasku akcji kliknij **Usuń**.
+1. Otwórz **usługi** bloku z **listę usług** bloku, wybierając identyfikator usług (nazwa farmy), który chcesz usunąć. 
+2. Na **usługi** bloku na pasku akcji kliknij **Usuń**. 
+![Zrzut ekranu programu Azure AD Connect Health Usuń usługę](./media/how-to-connect-health-operations/DeleteServer.png)
 3. Potwierdź, wpisując nazwę usługi w polu potwierdzenia (na przykład: sts.contoso.com).
 4. Kliknij polecenie **Usuń**.
    <br><br>
@@ -110,7 +112,7 @@ Wszystkie role (na przykład Administratorzy dostępu użytkownika lub usługa D
 ### <a name="access-scope"></a>Zakres dostępu
 Usługa Azure AD Connect Health obsługuje zarządzanie dostępem na dwóch poziomach:
 
-* **Wszystkie wystąpienia usługi**: jest to zalecane ścieżka, w większości przypadków. Kontroluje dostęp do wszystkich wystąpień usługi (na przykład farmę usług AD FS) w przypadku wszystkich typów ról, które są monitorowane przez program Azure AD Connect Health.
+* **Wszystkie wystąpienia usługi**: Jest to zalecane ścieżka, w większości przypadków. Kontroluje dostęp do wszystkich wystąpień usługi (na przykład farmę usług AD FS) w przypadku wszystkich typów ról, które są monitorowane przez program Azure AD Connect Health.
 * **Wystąpienie usługi**: W niektórych przypadkach może być konieczne oddzielenie czynności związanych z dostępem opartym na typy ról lub przez wystąpienie usługi. W takim przypadku możesz zarządzać dostępem na poziomie wystąpienia usługi.  
 
 Uprawnienie jest przydzielane, jeśli użytkownik końcowy ma dostęp w katalogu lub usługa wystąpienia w poziomie.
@@ -120,7 +122,7 @@ Poniższe kroki pokazują jak zezwolić na dostęp.
 #### <a name="step-1-select-the-appropriate-access-scope"></a>Krok 1: Wybierz zakres dostępu
 Aby zezwolić na dostęp użytkowników, u *wszystkich wystąpień usługi* poziomu w ramach usługi Azure AD Connect Health, otwórz głównego bloku w usłudze Azure AD Connect Health.<br>
 
-#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Dodawanie użytkowników i grup i przypisywanie ról
+#### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Dodawanie użytkowników i grup i przypisywania ról
 1. Z **Konfiguruj** kliknij **użytkowników**.<br>
    ![Zrzut ekranu programu Azure AD Connect Health zasobów z paska bocznego](./media/how-to-connect-health-operations/startRBAC.png)
 2. Wybierz pozycję **Dodaj**.

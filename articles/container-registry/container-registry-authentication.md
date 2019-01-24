@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a68e4f70dac7aace9d49a41ecf282525ce6b1fd6
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 665ceabe062fce454db377a384b1d12ba6868c40
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752881"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851729"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Uwierzytelnianie przy użyciu prywatnego rejestru kontenerów platformy Docker
 
@@ -33,6 +33,8 @@ az acr login --name <acrName>
 ```
 
 Po zalogowaniu się przy użyciu `az acr login`, token utworzony, jeśli został wykonany korzysta z interfejsu wiersza polecenia [az login](/cli/azure/reference-index#az-login) bezproblemowe uwierzytelnianie sesji z rejestrem. Gdy logujesz się w ten sposób, poświadczenia są buforowane i kolejne `docker` polecenia nie wymagają nazwy użytkownika i hasła. Token wygasa, można odświeżyć go za pomocą `az acr login` polecenie ponownie, aby ponownie uwierzytelniać. Za pomocą `az acr login` tożsamości platformy Azure zapewnia [dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md).
+
+W niektórych scenariuszach możesz zalogować się do rejestru za pomocą indywidualne tożsamości w usłudze Azure AD. W scenariuszach między usługami lub aby sprostać wymaganiom grupy roboczej, w których nie chcesz zarządzać dostępem do poszczególnych możesz również zalogować się przy użyciu [tożsamości zarządzanej dla zasobów platformy Azure](container-registry-authentication-managed-identity.md).
 
 ## <a name="service-principal"></a>Jednostka usługi
 

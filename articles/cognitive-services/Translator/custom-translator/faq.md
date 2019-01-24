@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 38ebde9179d79c091edb269c1be4c9c956f34006
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 415866bc4ef396a1b9397c4996d65cf10d78400b
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627585"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854789"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -46,7 +46,7 @@ Wdrożonych systemów jest możliwy za pośrednictwem V3 interfejs API tekstu us
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Jak pominąć wyrównanie i zdania, jeśli moje dane są już zdania wyrównane?
 
-Niestandardowe w usłudze Translator pomija wyrównanie zdania i zdanie istotne dla plików TMX i szukać plików tekstowych za pomocą `.align` rozszerzenia. `.align` pliki udostępnić użytkownikom opcję proces wyrównania i zdania niestandardowe Translator istotne dla plików, które są dokładnie wyrównana, a potrzebują, nie dalszego przetwarzania. Firma Microsoft zaleca używanie `.align` rozszerzenia tylko dla plików, które są dokładnie wyrównana.
+Niestandardowe w usłudze Translator pomija wyrównanie zdania i zdanie istotne dla plików TMX i szukać plików tekstowych za pomocą `.align` rozszerzenia. `.align` pliki użytkownikom opcję pomijania zdania niestandardowe Translator istotne i proces wyrównywania dla plików, które są dokładnie wyrównana, a potrzebują, nie dalszego przetwarzania. Firma Microsoft zaleca używanie `.align` rozszerzenia tylko dla plików, które są dokładnie wyrównana.
 
 Liczba wyodrębnionych zdania niezgodna dwa pliki o tej samej nazwie podstawowej niestandardowe w usłudze Translator będą nadal działać aligner zdania `.align` plików.
 

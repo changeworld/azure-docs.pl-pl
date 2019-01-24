@@ -5,7 +5,7 @@ services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.component: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 12/10/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c40db6c253899d7aab21d277e93b23dd0c6feb97
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7ffb3bfb4985f56e7e2e81a2a6d08a6ff7469fdb
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314010"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445409"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>Instrukcje: Wymagać uwierzytelniania Wieloskładnikowego, aby uzyskać dostęp z niezaufanymi sieciami przy użyciu dostępu warunkowego   
 

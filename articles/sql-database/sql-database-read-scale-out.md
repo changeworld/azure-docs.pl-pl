@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 12/05/2018
-ms.openlocfilehash: e0a5d6180c7dfa94abf8dd738c8017a3b332dfd8
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/17/2019
+ms.openlocfilehash: 9d7131c6ed1808725f59e53488bedb5ef81a77c3
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598808"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389415"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
@@ -80,7 +80,7 @@ Odczyt skalowalnego w poziomie jest domyślnie włączone w [wystąpienia zarzą
 
 ### <a name="powershell-enable-and-disable-read-scale-out"></a>Program PowerShell: Włączanie i wyłączanie odczytu skalowalnego w poziomie
 
-Zarządzanie odczytu skalowalnego w poziomie w programie Azure PowerShell wymaga grudnia 2016 r. wersja programu Azure PowerShell lub nowszej. Dla najnowszej wersji programu PowerShell, zobacz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+Zarządzanie odczytu skalowalnego w poziomie w programie Azure PowerShell wymaga grudnia 2016 r. wersja programu Azure PowerShell lub nowszej. Dla najnowszej wersji programu PowerShell, zobacz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 Włączanie lub wyłączanie odczytu skalowalnego w poziomie w programie Azure PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) polecenia cmdlet i przekazując żądaną wartość — `Enabled` lub `Disabled` — dla `-ReadScale` parametru. Alternatywnie można użyć [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) polecenia cmdlet, aby utworzyć nową bazę danych z odczytu skalowalnego w poziomie włączone.
 

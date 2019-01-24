@@ -12,18 +12,18 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 69bc2bb5fa06f4edc0283961063d2302c7905b4f
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724948"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439004"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>Przypisywanie ról katalogu usługi Azure AD w usłudze PIM
 
 Za pomocą usługi Azure Active Directory (Azure AD), ułatwia administratora globalnego **stałe** przypisań ról w katalogu. Te przypisania roli mogą być tworzone za pomocą [witryny Azure portal](../users-groups-roles/directory-assign-admin-roles.md) lub za pomocą [poleceń programu PowerShell](/powershell/module/azuread#directory_roles).
 
-Usługa Azure AD Privileged Identity Management (PIM) umożliwia również Administratorzy ról uprzywilejowanych zapewnienie katalogu trwałe przypisania ról. Ponadto administratorzy ról uprzywilejowanych uczynić użytkowników **kwalifikujących się** dla ról w katalogu. Administrator uprawniony można aktywować rolę, gdy ich potrzebują, a następnie ich uprawnienia wygasają po one gotowe. Aby uzyskać informacje o rolach, którymi można zarządzać za pomocą usługi PIM, zobacz [ról katalogu usługi Azure AD, można zarządzać w usłudze PIM](pim-roles.md).
+Usługa Azure AD Privileged Identity Management (PIM) umożliwia także administratorami ról uprzywilejowanych zapewnienie katalogu trwałe przypisania ról. Ponadto administratorzy ról uprzywilejowanych uczynić użytkowników **kwalifikujących się** dla ról w katalogu. Administrator uprawniony można aktywować rolę, gdy ich potrzebują, a następnie ich uprawnienia wygasają po one gotowe.
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Ustaw użytkownika z uprawnieniami dla roli
 

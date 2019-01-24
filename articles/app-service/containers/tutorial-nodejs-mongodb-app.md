@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 44f5ea606efafbb310e4740d75cbf86b7069e7ca
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2c9385e55559e53c9118e047bdddbe178a10770
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722519"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359565"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji środowiska Node.js i usługi MongoDB w usłudze Azure App Service w systemie Linux
 
@@ -28,7 +28,7 @@ ms.locfileid: "53722519"
 > W tym artykule opisano wdrażanie aplikacji w usłudze App Service w systemie Linux. Aby wdrożyć aplikację w usłudze App Service w systemie _Windows_, zobacz [Tworzenie aplikacji Node.js i MongoDB na platformie Azure](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym samouczku opisano, jak utworzyć aplikację środowiska Node.js, połączyć ją lokalnie z bazą danych Mongo DB, a następnie wdrożyć jako usługę Azure Cosmos DB dla interfejsu API bazy danych MongoDB. Po zakończeniu aplikacja MEAN (MongoDB, Express, AngularJS i Node.js) będzie działać w usłudze App Service w systemie Linux. Dla uproszczenia przykładowa aplikacja używa [platformy internetowej MEAN.js](https://meanjs.org/).
+Usługa [App Service w systemie Linux](app-service-linux-intro.md) oferuje wysoce skalowalną i samonaprawialną usługę hostingu w Internecie przy użyciu systemu operacyjnego Linux. W tym samouczku opisano, jak utworzyć aplikację środowiska Node.js, połączyć ją lokalnie z bazą danych Mongo DB, a następnie wdrożyć w bazie danych w interfejsie API usługi Azure Cosmos DB dla bazy danych MongoDB. Po zakończeniu aplikacja MEAN (MongoDB, Express, AngularJS i Node.js) będzie działać w usłudze App Service w systemie Linux. Dla uproszczenia przykładowa aplikacja używa [platformy internetowej MEAN.js](https://meanjs.org/).
 
 ![Aplikacja MEAN.js uruchomiona w usłudze Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -121,7 +121,7 @@ Aby w dowolnym momencie zatrzymać środowisko Node.js, naciśnij w terminalu kl
 
 ## <a name="create-production-mongodb"></a>Tworzenie produkcyjnej bazy danych MongoDB
 
-W tym kroku utworzysz bazę danych Cosmos skonfigurowaną za pomocą interfejsu API bazy danych MongoDB na platformie Azure. Aplikacja wdrożona na platformie Azure używa tej bazy danych w chmurze.
+W tym kroku utworzysz konto bazy danych przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB. Aplikacja wdrożona na platformie Azure używa tej bazy danych w chmurze.
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -157,7 +157,7 @@ Po utworzeniu konta usługi Cosmos DB w interfejsie wiersza polecenia platformy 
 }
 ```
 
-## <a name="connect-app-to-production-cosmos-db-configured-with-mongodb-api"></a>Łączenie aplikacji z produkcyjną usługą Cosmos DB skonfigurowaną za pomocą interfejsu API bazy danych MongoDB
+## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>Łączenie aplikacji z usługą produkcyjną skonfigurowaną za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB
 
 W tym kroku połączysz swoją przykładową aplikację MEAN.js z nowo utworzoną bazą danych Cosmos DB przy użyciu parametrów połączenia MongoDB.
 
@@ -259,7 +259,7 @@ Domyślnie w projekcie MEAN.js plik _config/env/local-production.js_ jest przech
 
 Aby określić ustawienia aplikacji, użyj polecenia [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) w usłudze Cloud Shell.
 
-W poniższym przykładzie ustawienie aplikacji `MONGODB_URI` jest konfigurowane w aplikacji platformy Azure. Zastąp symbole zastępcze *\<app_name>*, *\<cosmosdb_name>* i *\<primary_master_key>*.
+W poniższym przykładzie pokazano konfigurowanie ustawienia aplikacji `MONGODB_URI` w aplikacji platformy Azure. Zastąp symbole zastępcze *\<app_name>*, *\<cosmosdb_name>* i *\<primary_master_key>*.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true"
@@ -317,7 +317,7 @@ http://<app_name>.azurewebsites.net
 
 Kliknij pozycję **Utwórz konto** w górnym menu i utwórz użytkownika fikcyjnego.
 
-Jeśli operacja zakończy się pomyślnie i aplikacja automatycznie się zaloguje na konto utworzonego użytkownika, to znaczy, że aplikacja MEAN.js na platformie Azure ma łączność z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB.
+Jeśli operacja zakończy się pomyślnie i aplikacja automatycznie zaloguje się na konto utworzonego użytkownika, to znaczy, że aplikacja MEAN.js na platformie Azure ma łączność z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB.
 
 ![Aplikacja MEAN.js uruchomiona w usłudze Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.component: common
-ms.openlocfilehash: 6384af5368fe722d6c9307d56d8a071ebcd17bf0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2f9c7e791bf77c2387dbe9ba58b3ef70abe8fb89
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226978"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411272"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Wyświetla listę zasobów usługi Azure Storage w języku C++
 Lista operacji są kluczem do wielu scenariuszy programowania za pomocą usługi Azure Storage. W tym artykule opisano, jak najbardziej wydajny sposób wyliczenie obiektów w usłudze Azure Storage przy użyciu listy interfejsów API dostarczonych w bibliotece klienta usługi Microsoft Azure Storage dla języka C++.
@@ -77,7 +77,7 @@ do
     }
     else
     {
-        process_diretory(it->as_directory());
+        process_directory(it->as_directory());
     }
 }
 

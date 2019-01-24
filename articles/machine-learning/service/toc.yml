@@ -61,7 +61,7 @@ items:
     href: how-to-manage-workspace.md
   - name: Konfigurowanie środowiska deweloperskiego 
     items:
-    - name: Konfigurowanie środowiska deweloperskiego
+    - name: Konfigurowanie środowisk deweloperskich
       displayName: local, remote, azure notebooks, notebook, jupyter, dsvm, Databricks, ADB
       href: how-to-configure-environment.md
     - name: Rozszerzenie programu Visual Studio Code
@@ -107,9 +107,7 @@ items:
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
   - name: Modele ONNX
-    items:
-    - name: Tworzenie i wdrażanie
-      href: how-to-build-deploy-onnx.md
+    href: how-to-build-deploy-onnx.md
   - name: Wdrażanie modeli
     items:
     - name: Gdzie i jak wdrażać modele
@@ -131,6 +129,7 @@ items:
   - name: Monitorowanie usług internetowych
     items:
     - name: Zbieranie i ocenianie danych modelu
+      displayName: track production
       href: how-to-enable-data-collection.md
     - name: Monitorowanie za pomocą usługi Application Insights
       href: how-to-enable-app-insights.md
@@ -143,7 +142,7 @@ items:
     displayName: vnet
     href: how-to-enable-virtual-network.md
   - name: Używanie interfejsu wiersza polecenia uczenia maszynowego
-    displayName: cli command line command-line az ci/cd automate automated
+    displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
   - name: Eksportowanie i usuwanie danych
     displayName: gdpr
@@ -174,11 +173,11 @@ items:
     href: resource-known-issues.md
   - name: Uzyskiwanie pomocy technicznej
     href: support-for-aml-services.md
-  - name: Porównanie produktów uczenia maszynowego w ofercie firmy Microsoft
+  - name: Porównanie naszych produktów do uczenia maszynowego
     href: overview-more-machine-learning.md
-ms.openlocfilehash: a6975a6aaefb3a750ee73b1e9738f534be24f2ba
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 81173503e3afc8a93ae897072111a42c04049d65
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319730"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390460"

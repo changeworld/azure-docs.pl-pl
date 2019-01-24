@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: dc8b8e37224201062d0cf53174f3248f04ca0cc3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: 5e3b42b1e1f72ccc4d1127f2926ee53c51d66291
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789760"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470515"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
 Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../../azure-monitor/overview.md).
@@ -85,3 +85,4 @@ Rozpocznij pracę w [monitorowania aplikacji usługi Service Fabric](../../servi
 ## <a name="general-articles"></a>Ogólne artykuły
 * Dowiedz się, jak [używanie liczników wydajności w usłudze Diagnostyka Azure](../../cloud-services/diagnostics-performance-counters.md).
 * Jeśli masz problemy z uruchomieniem diagnostyki lub wyszukiwanie danych w tabelach usługi Azure storage, zobacz [Rozwiązywanie problemów z usługi Azure Diagnostics](diagnostics-extension-troubleshooting.md)
+

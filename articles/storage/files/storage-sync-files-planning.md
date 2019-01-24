@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630329"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809195"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -157,7 +157,7 @@ Aby wyświetlić wyniki w formacie CSV:
 | \*.laccdb | Dostęp do bazy danych, blokowanie pliku|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Wewnętrzny plik synchronizacji|
 | \\Informacji o woluminie systemowym | Folder specyficzne dla woluminu |
-| $RECYCLE. POJEMNIKA| Folder |
+| $RECYCLE.BIN| Folder |
 | \\SyncShareState | Folder synchronizacji |
 
 ### <a name="failover-clustering"></a>Klaster trybu failover
@@ -205,6 +205,9 @@ Jeśli używasz rozwiązania tworzenia kopii zapasowych w środowisku lokalnym, 
 
 > [!Note]  
 > Przywracanie zera (BMR) może spowodować nieoczekiwane rezultaty i nie jest obecnie obsługiwane.
+
+> [!Note]  
+> Migawki VSS (w tym karty poprzednie wersje) nie są obecnie obsługiwane w przypadku woluminów, których obsługi warstw włączone w chmurze. Jeśli chmura warstw jest włączona, użyj migawki udziału plików platformy Azure, aby przywrócić plik z kopii zapasowej.
 
 ### <a name="encryption-solutions"></a>Rozwiązań do szyfrowania
 Obsługa rozwiązań do szyfrowania zależy od tego, jak są one wykonywane. Wiadomo, że usługa Azure File Sync pracować:

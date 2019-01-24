@@ -3,19 +3,19 @@ title: Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomo
 description: Dowiedz się więcej o zasadach niestandardowych usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1953e23c0676a0c81576a47f3f3ca36c3861935f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841629"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855061"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Dostosowywanie interfejsu użytkownika dla podróży użytkownika za pomocą zasad niestandardowych
 
@@ -111,7 +111,7 @@ Jako warunek wstępny musisz utworzyć konto magazynu. Musisz mieć subskrypcję
     c.  Nazwa kontenera magazynu obiektów blob usługi storage *containerName*, na przykład *b2c*.
     d.  Ścieżka *pakiet startowy* przykładowe pliki, na przykład *... \B2CTemplates\wingtiptoys*.
 
-Po wykonaniu powyższych kroków, HTML5 i CSS pliki *pakiet w przypadku dostosowania interfejsu użytkownika* w fikcyjnej firmie **wingtiptoys** jest teraz skierowana do swojego konta magazynu.  Aby sprawdzić, czy zawartość został przekazany poprawnie, otwierając okienko powiązane kontenera w witrynie Azure portal. Można też sprawdzić, czy zawartość został przekazany poprawnie, uzyskując dostęp do strony w przeglądarce. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory B2C: Narzędzie Pomocnik, używany do przedstawiania funkcji dostosowywania interfejsu użytkownika strony](active-directory-b2c-reference-ui-customization-helper-tool.md).
+Po wykonaniu powyższych kroków, HTML5 i CSS pliki *pakiet w przypadku dostosowania interfejsu użytkownika* w fikcyjnej firmie **wingtiptoys** jest teraz skierowana do swojego konta magazynu.  Aby sprawdzić, czy zawartość został przekazany poprawnie, otwierając okienko powiązane kontenera w witrynie Azure portal. Można też sprawdzić, czy zawartość został przekazany poprawnie, uzyskując dostęp do strony w przeglądarce. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory B2C: Narzędzie pomocnika używany do przedstawiania funkcji dostosowywania interfejsu użytkownika strony](active-directory-b2c-reference-ui-customization-helper-tool.md).
 
 ## <a name="ensure-the-storage-account-has-cors-enabled"></a>Upewnij się, że włączono mechanizm CORS konta magazynu
 
@@ -126,7 +126,7 @@ Aby sprawdzić, czy magazyn, które hostują zawartości na ma włączono mechan
 -->
 
 3. W **zdalnego adresu URL**, wprowadź pełny adres URL zawartości unified.html i kliknij przycisk **Wyślij żądanie**.
-4. Upewnij się, że dane wyjściowe w **wyniki** sekcja zawiera *stan XHR: 200*, co oznacza, że włączono mechanizm CORS.
+4. Upewnij się, że dane wyjściowe w **wyniki** sekcja zawiera *XHR stanu: 200*, co oznacza, że włączono mechanizm CORS.
 <!--
 ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
 -->
@@ -157,15 +157,15 @@ W poniższej tabeli opisano zestaw identyfikatorów definicji rozpoznał tożsam
 | Identyfikator definicji zawartości | Opis |
 |-----------------------|-------------|
 | *api.error* | **Strona błędu**. Ta strona jest wyświetlana, gdy występuje wyjątek lub komunikat o błędzie. |
-| *API.idpselections* | **Strona wyboru dostawcy tożsamości**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać z podczas logowania. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail). |
-| *API.idpselections.Signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybierać podczas rejestracji. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail). |
+| *api.idpselections* | **Strona wyboru dostawcy tożsamości**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybrać z podczas logowania. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail). |
+| *api.idpselections.signup* | **Wybór dostawcy tożsamości dla rejestracji**. Ta strona zawiera listę dostawców tożsamości, które użytkownik może wybierać podczas rejestracji. Ci dostawcy są enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych (oparte na nazwę użytkownika lub adres e-mail). |
 | *api.localaccountpasswordreset* | **Strona obsługi zapomnianego hasła**. Ta strona zawiera formularz, który użytkownik będzie musiał wypełnienia inicjować ich resetowania hasła.  |
 | *api.localaccountsignin* | **Strona logowania dla kont lokalnych**. Ta strona zawiera formularz logowania, które użytkownik będzie musiał podać podczas logowania się za pomocą konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać pola wprowadzania tekstu, a pole wprowadzania hasła. |
-| *API.localaccountsignup* | **Strona rejestracji dla kont lokalnych**. Ta strona zawiera formularz rejestracji, który użytkownik będzie musiał podać podczas tworzenia konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać innej kontrolki wejściowe, takie jak pola wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, wybieranych list rozwijanych i pól wyboru wielokrotnego wyboru. |
+| *api.localaccountsignup* | **Strona rejestracji dla kont lokalnych**. Ta strona zawiera formularz rejestracji, który użytkownik będzie musiał podać podczas tworzenia konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać innej kontrolki wejściowe, takie jak pola wprowadzania tekstu, pole wprowadzania hasła, przycisk radiowy, wybieranych list rozwijanych i pól wyboru wielokrotnego wyboru. |
 | *api.phonefactor* | **Strona uwierzytelniania wieloskładnikowego**. Na tej stronie użytkowników można sprawdzić swoje numery telefonów (przy użyciu tekstowych lub głosowych) podczas tworzenia konta lub logowania. |
 | *api.selfasserted* | **Strona rejestracji dla kont społecznościowych**. Ta strona zawiera formularz rejestracji, który użytkownik będzie musiał podać podczas logowania się przy użyciu istniejącego konta z dostawcy tożsamości społecznościowych, takich jak Facebook lub Google +. Ta strona jest podobna do poprzedniej strony rejestracji konta społecznościowego, z wyjątkiem pól wprowadzania hasła. |
 | *api.selfasserted.profileupdate* | **Strona aktualizacji profilu**. Ta strona zawiera formularz, który użytkownik może użyć, aby zaktualizować swój profil. Ta strona jest podobna do poprzedniej strony rejestracji konta społecznościowego, z wyjątkiem pól wprowadzania hasła. |
 | *api.signuporsignin* | **Ujednolicona strona rejestracji lub logowania**.  Ta strona obsługuje zarówno rejestracji i logowania użytkowników, którzy mogą korzystać z dostawców tożsamości organizacji, dostawców tożsamości społecznościowych, takich jak Facebook lub Google + lub kont lokalnych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Odwołanie: Zrozumieć, jak niestandardowe zasady działają z platformy środowiska tożsamości w B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md)
+[Odwołanie: Omówienie zasad niestandardowych działają z platformy środowiska tożsamości w B2C](active-directory-b2c-reference-custom-policies-understanding-contents.md)

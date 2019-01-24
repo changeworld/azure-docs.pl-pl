@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b1010b5376a26a4d33c026be27ce363959954ca2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078875"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854177"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Identyfikator profilu i użytkownika dla notesów usługi Azure
 
 W obszarze Zaawansowane, współpracy notesów usługi Azure profilu użytkownika przedstawia publiczny obraz do innych osób:
 
-[![](media/accounts/profile-page.png "Na stronie profilu notesy platformy Azure")](media/accounts/profile-page.png#lightbox)
+[![Na stronie profilu notesy platformy Azure](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 Identyfikator użytkownika jest częścią adresów URL umożliwia udostępnianie projektów i notesy. Poniższa lista zawiera opis różnych wzorców adresów URL:
 
-- `https://notebooks.azure.com/<user_id>`: Stronę profilu.
+- `https://notebooks.azure.com/<user_id>`: Strony swojego profilu.
 - `https://notebooks.azure.com/<user_id>/projects`: Twoich projektów. Zobacz wszystkie projekty; inni użytkownicy widzą tylko projekty publiczne.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Pliki projektu.
 - `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klony określonych projektów.
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: HTML podglądu pliku lub określonym notesu.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Podgląd HTML określonego notesu lub pliku.
 
 ## <a name="your-user-id"></a>Identyfikator użytkownika
 
@@ -63,8 +63,8 @@ Aby edytować swój profil, należy użyć **edytować informacje o profilu** po
 | Informacje o koncie | Nazwa wyświetlana, identyfikator użytkownika i konto e-mail publicznych. Na konto poczty e-mail zawiera mean skontaktowania się z innym użytkownikom i może różnić się od [konta](azure-notebooks-user-account.md) używasz do logowania się do notesów usługi Azure, sam. |
 | Informacje o profilu | Twoja lokalizacja, firmy, stanowisko, witryny sieci web i krótki opis samodzielnie. |
 | Profile społecznościowych | GItHub, Twitter i Facebook identyfikatory, jeśli chcesz udostępnić je. |
-| Ustawienia prywatności | Udostępnia dwa polecenia:<ul><li>**Eksportuj Mój profil**: powoduje utworzenie i pobranie *zip* plik zawierający wszystkie informacje, które notesy platformy Azure są zapisywane w profilu, w tym Twoje zdjęcie, informacje o profilu i dzienniki zabezpieczeń.</li><li>**Usuń Moje konto**: trwale usuwa wszystkie informacje osobiste przechowywane w notesach platformy Azure.</li></ul> |
-| Włącz funkcje lokacji | Umożliwia kontrolowanie aspektów zachowania notesy platformy Azure:<ul><li>**Ujednoliconego frontonu dla notesów**: umożliwia szybsze uruchamianie notesu i lepszego stanu trwałego.</li><li>**Domyślnie uruchamiane w JupyterLab**: domyślnie notesy platformy Azure udostępnia prosty interfejs użytkownika, który jest odpowiedni dla większości użytkowników. JupyterLab zapewnia bardziej rozbudowane, ale bardziej skomplikowanych interfejs dla doświadczonych użytkowników.</li><li>**Witryny sieci Web VNext**: włącza układ zmodernizowane sieci web, pokazana w tej dokumentacji.</li></ul> |
+| Ustawienia prywatności | Udostępnia dwa polecenia:<ul><li>**Eksportuj Mój profil**: powoduje utworzenie i pobranie *zip* plik zawierający wszystkie informacje, które notesy platformy Azure są zapisywane w profilu, w tym Twoje zdjęcie, informacje o profilu i dzienniki zabezpieczeń.</li><li>**Usunąć swoje konto**: Trwale usuwa wszystkie informacje osobiste przechowywane w notesach platformy Azure.</li></ul> |
+| Włącz funkcje lokacji | Umożliwia kontrolowanie aspektów zachowania notesy platformy Azure:<ul><li>**Ujednoliconego frontonu dla notesów**: umożliwia szybsze uruchamianie notesu i lepszego stanu trwałego.</li><li>**Domyślnie uruchamiane w JupyterLab**: Domyślnie notesy platformy Azure udostępnia prosty interfejs użytkownika, który jest odpowiedni dla większości użytkowników. JupyterLab zapewnia bardziej rozbudowane, ale bardziej skomplikowanych interfejs dla doświadczonych użytkowników.</li><li>**Witryny sieci Web VNext**: włącza układ zmodernizowane sieci web, pokazana w tej dokumentacji.</li></ul> |
 
 ## <a name="next-steps"></a>Kolejne kroki  
 

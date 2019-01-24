@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 4dde10c5cb4a764a268b8b9d3ebfaebc008e13ed
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: ce6c3364c594bc515abd9f0c02bd69bf500e4f4e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162530"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436573"
 ---
 # <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
 
@@ -20,9 +20,9 @@ Ustawianie zmiennych środowiskowych w usługi container instances umożliwia pr
 
 Na przykład jeśli uruchomisz [microsoft/aci-wordcount] [ aci-wordcount] obraz kontenera, jego zachowanie można zmienić, określając następujące zmienne środowiskowe:
 
-*NumWords*: liczba słów wysyłane do strumienia wyjściowego STDOUT.
+*NumWords*: Liczba słów wysyłane do strumienia wyjściowego STDOUT.
 
-*Element MinLength*: minimalną liczbę znaków w słowie na jej do zliczenia. Większa liczba zostanie podana ignoruje popularne wyrazy, takie jak "z" i "".
+*Element MinLength*: Minimalna liczba znaków w słowie na jej do zliczenia. Większa liczba zostanie podana ignoruje popularne wyrazy, takie jak "z" i "".
 
 Jeśli musisz przekazać wpisów tajnych jako zmienne środowiskowe usługi Azure Container Instances obsługuje [secure wartości](#secure-values) dla kontenerów systemów Windows i Linux.
 
@@ -255,6 +255,6 @@ Oparta na zadaniach scenariuszach, na przykład wsadowo duży zestaw danych za p
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/install-azurerm-ps
+[azure-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

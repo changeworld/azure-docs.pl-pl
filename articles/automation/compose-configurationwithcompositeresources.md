@@ -4,18 +4,18 @@ description: Dowiedz się, jak tworzyć konfiguracje za pomocą zasoby złożone
 keywords: PowerShell dsc, konfiguracja żądanego stanu, konfiguracji dsc programu powershell, azure, zasoby złożone
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/21/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a1297b6cd84a012ff54f7d902c92687b2e284fe2
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b82457d8a7ce70ecfde32ba625ef610a3772213c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607780"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432195"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Tworzenie konfiguracji DSC w usługi Azure Automation stanu Configuration (DSC) przy użyciu zasoby złożone
 

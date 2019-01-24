@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: b58b7c7ebc3547153f805f762c4caf3511a5a709
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717505"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429773"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream dziennika aktywności platformy Azure do usługi Event Hubs
 Można przesyłać strumieniowo [dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md) niemal w czasie rzeczywistym do aplikacji przez:
@@ -102,4 +102,5 @@ Schemat dla dziennika aktywności jest dostępny w [monitorowania aktywności su
 * [Archiwizowanie dziennika aktywności na koncie magazynu](../../azure-monitor/platform/archive-activity-log.md)
 * [Zapoznaj się z omówieniem dziennika aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md)
 * [Ustawianie alertu na podstawie zdarzenia dziennika aktywności](../../azure-monitor/platform/alerts-log-webhook.md)
+
 

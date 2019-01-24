@@ -3,19 +3,19 @@ title: Definiowanie profilu technicznego usługi Azure Active Directory w przypa
 description: W przypadku zasad niestandardowych w usłudze Azure Active Directory B2C, należy zdefiniować profil techniczny usługi Azure Active Directory.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cf7b051703e01493f365c1850ab815747321230b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: dc9cda92ef725bbfc1a12756912656f0c39474cd
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381505"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846748"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego usługi Azure Active Directory w zasadach niestandardowych usługi Azure Active Directory B2C
 

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: bc3ee549a4219441b657b89bef56d35dfac6626a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: b01afe1626fe27a20e7b7103ccb020e4414f774f
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547494"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476466"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
@@ -165,3 +165,4 @@ W pliku PT1H.json każde zdarzenie jest przechowywane w tablicy "rekordy", zgodn
 * [Stream dzienników diagnostycznych do przestrzeni nazw usługi Event Hubs](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
 * [Archiwizuj dzienniki usługi Azure Active Directory z usługą Azure Monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Więcej informacji na temat dzienników diagnostycznych](../../azure-monitor/platform/diagnostic-logs-overview.md)
+

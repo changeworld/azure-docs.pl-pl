@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: pbutlerm
-ms.openlocfilehash: deab8298d09972a4e60be5c72d6d7e43dc2683e6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329994"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828098"
 ---
 # <a name="publish-azure-application-offer"></a>Publikowanie oferty aplikacji platformy Azure
 
@@ -36,7 +36,7 @@ Poniższej tabeli wymieniono i opisano poszczególne kroki publikowania i zapewn
 |  **Krok publikowania**           | **czas**    | **Opis**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | Weryfikowanie wymagań wstępnych         | < 15 min    | Oferuje informacje i ofertę, ustawienia zostaną zweryfikowane.                        |
-| Sprawdź poprawność ustawień ich przychód | < 15 min  |      |
+| Sprawdź poprawność ustawień ich przychód | < 15 min  | Zaznaczono autorstwa użycia zasobów platformy Azure dla tej oferty.             |
 | Certyfikacja                  | < 1 dzień     | Oferty są analizowane przez zespół certyfikacji platformy Azure. Oferta jest skanowany w poszukiwaniu wirusów, złośliwego oprogramowania, bezpieczeństwo, zgodność i problemy z zabezpieczeniami. Oferta jest sprawdzenie spełnia kryteria kwalifikacyjne. Aby uzyskać więcej informacji, zobacz [wymagania wstępne](./cpp-prerequisites.md). Ile opinii jest, że problem zostanie znaleziony. |
 | Testowanie poprawności dysku          | < 2 godziny   | (Opcjonalnie) Jeśli wersji testowej jest obecny, Microsoft weryfikuje, że można go wdrożyć i replikowane.  |
 | Tworzenie pakietów i rejestracji generowania potencjalnych klientów | < 1 godz.  | Zasoby techniczne oferty są pakowane do użytku klienta i systemy potencjalnych klientów są konfigurowane i wdrażane. |

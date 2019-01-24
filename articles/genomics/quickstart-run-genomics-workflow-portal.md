@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics'
+title: 'Szybki start: uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics'
 description: Ten poradnik Szybki start opisuje sposób ładowania danych wejściowych do usługi Azure Blob Storage oraz uruchamiania przepływu pracy za pośrednictwem usługi Microsoft Genomics.
 services: genomics
 author: grhuynh
@@ -7,15 +7,15 @@ manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
-ms.date: 12/07/2017
-ms.openlocfilehash: 152aa51c6dee12216dc9e5fac70f43f638c2c8da
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/11/2019
+ms.openlocfilehash: 4c8d488021ca12a704a5c0a06bb0c491588bcaed
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242861"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54261693"
 ---
-# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: Uruchamianie przepływu za pośrednictwem usługi Microsoft Genomics
+# <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Szybki start: uruchamianie przepływu pracy za pośrednictwem usługi Microsoft Genomics
 
 Ten poradnik Szybki start opisuje sposób ładowania danych wejściowych do usługi Azure Blob Storage oraz uruchamiania przepływu pracy za pośrednictwem usługi Microsoft Genomics. Microsoft Genomics to skalowalna, bezpieczna usługa umożliwiająca dodatkową analizę zapewniającą szybkie przetwarzanie genomów, począwszy od pierwotnych operacji odczytywania i tworzenia dopasowanych operacji odczytywania i wywołań odmian. 
 
@@ -26,7 +26,7 @@ Rozpocznij pracę przy użyciu kilku kroków:
 
 Aby uzyskać więcej informacji o usłudze Microsoft Genomics, zobacz [Co to jest Microsoft Genomics?](overview-what-is-genomics.md)
 
-## <a name="set-up-create-a-microsoft-genomics-account-in-the-azure-portal"></a>Konfiguracja: tworzenie konta usługi Microsoft Genomics w witrynie Azure Portal
+## <a name="set-up-create-a-microsoft-genomics-account-in-the-azure-portal"></a>Konfiguracja: utworzenie konta usługi Microsoft Genomics w witrynie Azure Portal
 
 Aby utworzyć konto usługi Microsoft Genomics, przejdź do witryny [Azure Portal](https://portal.azure.com/#create/Microsoft.Genomics). Jeśli nie masz jeszcze subskrypcji platformy Azure, utwórz ją przed utworzeniem konta usługi Microsoft Genomics. 
 
@@ -38,9 +38,9 @@ Skonfiguruj konto usługi Genomics w sposób pokazany na wcześniejszej ilustrac
 
  |**Ustawienie**          |  **Sugerowana wartość**  | **Opis pola** |
  |:-------------       |:-------------         |:----------            |
- |Nazwa konta         | MyGenomicsAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Subskrypcja         | Nazwa subskrypcji użytkownika|Jest to jednostka rozliczeniowa usług platformy Azure — aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
  |Grupa zasobów       | MyResourceGroup       |  Grupy zasobów umożliwiają grupowanie wielu zasobów platformy Azure (konto magazynu, konto usługi Genomics itp.) w jednej grupie, co upraszcza zarządzanie. Aby uzyskać więcej informacji, zobacz [Grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
+ |Nazwa konta         | MyGenomicsAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Lokalizacja                   | Zachodnie stany USA 2                    |    Usługa jest dostępna w regionach: Zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia |
 
 
@@ -59,7 +59,7 @@ Użytkownicy muszą zainstalować język Python oraz klienta Microsoft Genomics 
 
 Klient Microsoft Genomics Python jest zgodny z językiem Python w wersji 2.7. 12 lub nowszej wersji 2.7.xx. W chwili pisania tego dokumentu najnowszą wersją jest 2.7.15. Sugerowana wersja to 2.7.14. Pliki do pobrania możesz znaleźć [tutaj](https://www.python.org/downloads/). 
 
-Uwaga: język Python 3.x nie jest zgodny z językiem Python 2.7.xx.  MSGen to aplikacja napisana w języku Python 2.7. Przy uruchamianiu aplikacji MSGen upewnij się, że w aktywnym środowisku jest używana wersja 2.7.xx języka Python. W przypadku używania aplikacji MSGen w środowisku języka Python w wersji 3.x mogą występować błędy.
+UWAGA: Język Python 3.x nie jest zgodny z językiem Python 2.7.xx.  MSGen to aplikacja napisana w języku Python 2.7. Przy uruchamianiu aplikacji MSGen upewnij się, że w aktywnym środowisku jest używana wersja 2.7.xx języka Python. W przypadku używania aplikacji MSGen w środowisku języka Python w wersji 3.x mogą występować błędy.
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>Instalacja klienta usługi Microsoft Genomics
@@ -112,28 +112,22 @@ Jeśli masz już dane na koncie magazynu platformy Azure, musisz tylko upewnić 
 
 ![Blok tworzenia magazynu](./media/quickstart-run-genomics-workflow-portal/genomics-storage-create-blade.png "Blok tworzenia magazynu")
 
-Skonfiguruj konto usługi Storage w sposób pokazany na wcześniejszej ilustracji, używając następujących informacji. Użyj większości standardowych opcji konta magazynu, określając tylko, że konto jest magazynem obiektów blob, a nie kontem ogólnego przeznaczenia. Magazyn obiektów blob może być 2–5 razy szybszy w przypadku pobierania i przekazywania. 
+Skonfiguruj konto usługi Storage w sposób pokazany na wcześniejszej ilustracji, używając następujących informacji. Użyj większości standardowych opcji konta magazynu, określając tylko, że konto jest magazynem obiektów blob, a nie kontem ogólnego przeznaczenia. Magazyn obiektów blob może być 2–5 razy szybszy w przypadku pobierania i przekazywania.  Zalecany jest domyślny model wdrażania, czyli z użyciem menedżera zasobów.  
 
 
  |**Ustawienie**          |  **Sugerowana wartość**  | **Opis pola** |
  |:-------------------------       |:-------------         |:----------            |
- |Name (Nazwa)         | MyStorageAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Model wdrażania         | Resource Manager| Wdrażanie przy użyciu usługi Resource Manager jest zalecanym modelem wdrożenia. Aby uzyskać więcej informacji, zobacz [Omówienie wdrożenia z usługą Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) |      
- |Rodzaj konta       | Blob Storage       |  Magazyn obiektów blob może być 2–5 razy szybszy od konta ogólnego przeznaczenia w przypadku pobierania i przekazywania. |
- |Wydajność                  | Standardowa (Standard)                   | Wartość domyślna to Standardowa. Aby uzyskać więcej szczegółowych informacji o kontach magazynu w warstwie Standardowa i Premium, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
- |Replikacja                  | Magazyn lokalnie nadmiarowy                  | Magazyn lokalnie nadmiarowy replikuje dane w centrum danych w regionie, w którym utworzono konto magazynu. Aby uzyskać więcej informacji, zobacz [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
- |Wymagany bezpieczny transfer                  | Disabled (Wyłączony)                 | Domyślne ustawienie to Wyłączony. Aby uzyskać więcej informacji o bezpieczeństwie transferu danych, zobacz [Żądanie bezpiecznego transferu](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)    |
- |Warstwa dostępu                  | Gorąca                   | Gorąca warstwa dostępu oznacza, że dostęp do obiektów na koncie magazynu będzie uzyskiwany częściej.    |
  |Subskrypcja         | Twoja subskrypcja platformy Azure |Aby uzyskać szczegółowe informacje o subskrypcji, zobacz [Subskrypcje](https://account.azure.com/Subscriptions) |      
  |Grupa zasobów       | MyResourceGroup       |  Możesz wybrać tę samą grupę zasobów co w przypadku konta usługi Genomics. Prawidłowe nazwy grup zasobów opisano w artykule [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
- |Lokalizacja                  | Zachodnie stany USA 2                  | Użyj tej samej lokalizacji co Twoje konto usługi Genomics, aby zredukować opłaty za ruch wychodzący i zmniejszyć opóźnienia. Usługa Genomics jest dostępna w regionach: Zachodnie stany USA 2, Europa Zachodnia i Azja Południowo-Wschodnia    |
- |Sieci wirtualne                | Disabled (Wyłączony)                   | Domyślne ustawienie to Wyłączony. Aby uzyskać więcej informacji, zobacz [Azure Virtual Networks](https://docs.microsoft.com/azure/storage/common/storage-network-security)    |
+ |Nazwa konta magazynu         | MyStorageAccount     |Wybierz unikatowy identyfikator konta. Aby uzyskać informacje o prawidłowych nazwach, zobacz [Reguły nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
+ |Lokalizacja                  | Zachodnie stany USA 2                  | Użyj tej samej lokalizacji co Twoje konto usługi Genomics, aby zredukować opłaty za ruch wychodzący i zmniejszyć opóźnienia.  | 
+ |Wydajność                  | Standardowa (Standard)                   | Wartość domyślna to Standardowa. Aby uzyskać więcej szczegółowych informacji o kontach magazynu w warstwie Standardowa i Premium, zobacz [Wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
+ |Rodzaj konta       | Blob Storage       |  Magazyn obiektów blob może być 2–5 razy szybszy od konta ogólnego przeznaczenia w przypadku pobierania i przekazywania. |
+ |Replikacja                  | Magazyn lokalnie nadmiarowy                  | Magazyn lokalnie nadmiarowy replikuje dane w centrum danych w regionie, w którym utworzono konto magazynu. Aby uzyskać więcej informacji, zobacz [Replikacja usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
+ |Warstwa dostępu                  | Gorąca                   | Gorąca warstwa dostępu oznacza, że dostęp do obiektów na koncie magazynu będzie uzyskiwany częściej.    |
 
 
-
-
-
-Następnie kliknij pozycję Utwórz, aby utworzyć konto magazynu. Tak jak w przypadku tworzenia konta usługi Genomics możesz kliknąć pozycję Powiadomienia na górnym pasku menu, aby monitorować proces wdrażania. 
+Następnie kliknij pozycję `Review + create`, aby utworzyć konto magazynu. Tak jak w przypadku tworzenia konta usługi Genomics możesz kliknąć pozycję Powiadomienia na górnym pasku menu, aby monitorować proces wdrażania. 
 
 
 ## <a name="upload-input-data-to-your-storage-account"></a>Przekazywanie danych wejściowych do konta magazynu
@@ -156,6 +150,11 @@ Otwórz plik config.txt pobrany z konta usługi Genomics. Sekcje, które należy
 
 
 ![Konfiguracja usługi Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Konfiguracja usługi Genomics")
+
+
+Jeśli chcesz uruchomić pakiet GATK4, ustaw parametr `process_name` na wartość gatk4 lub gatk4-promo. Aby uzyskać więcej informacji na temat promocji pakietu GATK4, odwiedź [tę stronę](https://aka.ms/msgatk4).
+
+Domyślnie usługa Genomics generuje pliki VCF. Jeśli wolisz otrzymywać dane wyjściowe w formacie gVCF zamiast VCF (równoważne opcji `-emitRefConfidence` w pakiecie GATK 3.x i `emit-ref-confidence` w pakiecie GATK 4.x), dodaj parametr `emit_ref_confidence` do swojego pliku `config.txt` i ustaw go na wartość `gvcf`, jak pokazano na ilustracji powyżej.  Aby wrócić do danych wyjściowych w formacie VCF, usuń ten parametr z pliku `config.txt` lub ustaw parametr `emit_ref_confidence` na wartość `none`. 
 
 ### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>Przesyłanie przepływu pracy do usługi Microsoft Genomics przy użyciu klienta usługi Microsoft Genomics
 

@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Pingboard | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Pingboard | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Pingboard.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 794e3f6fe568d76f0687caa36709185f2a538270
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 02aabb9260cb0140b61091a8002f70d464091ddd
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436104"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818119"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Samouczek: Integracja usługi Azure Active Directory z Pingboard
+# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Pingboard
 
 W tym samouczku dowiesz się, jak zintegrować Pingboard w usłudze Azure Active Directory (Azure AD).
 
@@ -38,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Pingboard, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Pingboard logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -60,7 +60,7 @@ Aby skonfigurować integrację Pingboard w usłudze Azure AD, należy dodać Pin
 
 **Aby dodać Pingboard z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -70,13 +70,13 @@ Aby skonfigurować integrację Pingboard w usłudze Azure AD, należy dodać Pin
 
 1. Kliknij przycisk **Dodaj** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **Pingboard**, wybierz opcję **Pingboard** panel wyników i kliknij **Dodaj** przycisk, aby dodać aplikację.
 
     ![Pingboard na liście wyników](./media/pingboard-tutorial/tutorial_pingboard_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Pingboard w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -86,13 +86,13 @@ Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** 
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Pingboard, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego Pingboard](#create-a-pingboard-test-user)**  — aby odpowiednikiem Britta Simon w Pingboard połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Pingboard.
 
@@ -100,7 +100,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Pingboard** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1.  Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
@@ -112,7 +112,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **identyfikator** polu tekstowym wpisz wartość jako: `http://app.pingboard.com/sp`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<entity-id>.pingboard.com/auth/saml/consume`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<entity-id>.pingboard.com/auth/saml/consume`
 
 1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
@@ -121,15 +121,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
      W **adres URL logowania** pole tekstowe, wpisz adres URL, za pomocą następującego wzorca: `https://<sub-domain>.pingboard.com/sign_in`
 
     > [!NOTE]
-    > Należy pamiętać, że te wartości są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Pingboard](https://support.pingboard.com/) do uzyskania tych wartości.
+    > Należy pamiętać, że te wartości są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Pingboard](https://support.pingboard.com/) do uzyskania tych wartości.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
     ![Kod xml metadanych Pingboard](./media/pingboard-tutorial/tutorial_pingboard_certificate.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/pingboard-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/pingboard-tutorial/tutorial_general_400.png)
 
 1. Aby skonfigurować logowanie Jednokrotne stronie Pingboard, Otwórz nowe okno przeglądarki i zaloguj się do swojego konta Pingboard. Musi być kontem administratora Pingboard, aby skonfigurować logowanie jednokrotne.
 
@@ -161,11 +161,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
-    ![Przycisk usługi Azure Active Directory](./media/pingboard-tutorial/create_aaduser_01.png) 
+    ![Przycisk Azure Active Directory](./media/pingboard-tutorial/create_aaduser_01.png) 
 
 1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/pingboard-tutorial/create_aaduser_02.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](./media/pingboard-tutorial/create_aaduser_02.png)
 
 1. W górnej części okna dialogowego kliknij **Dodaj** otworzyć **użytkownika** okna dialogowego.
 
@@ -173,7 +173,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
 
-    ![Okno dialogowe użytkownika](./media/pingboard-tutorial/create_aaduser_04.png)
+    ![Okno dialogowe Użytkownik](./media/pingboard-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
@@ -185,9 +185,9 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="create-a-pingboard-test-user"></a>Tworzenie użytkownika testowego Pingboard
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Pingboard. Pingboard obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów można znaleźć [tutaj](pingboard-provisioning-tutorial.md) dotyczące sposobu konfigurowania automatycznej aprowizacji użytkowników.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Pingboard. Pingboard obsługuje automatyczna aprowizacja użytkowników, która jest domyślnie włączona. Więcej szczegółów dotyczących konfigurowania automatycznej aprowizacji użytkowników można znaleźć [tutaj](pingboard-provisioning-tutorial.md).
 
-**Jeśli potrzebujesz ręcznie utworzyć użytkownika, należy wykonać następujące kroki:**
+**Jeśli potrzebujesz utworzyć użytkownika ręcznie, wykonaj następujące czynności:**
 
 1. Zaloguj się do witryny firmy Pingboard jako administrator.
 
@@ -249,15 +249,15 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
 
 Po kliknięciu kafelka Pingboard w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Pingboard.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurowanie Aprowizowania użytkowników](pingboard-provisioning-tutorial.md)
+* [Konfigurowanie aprowizacji użytkowników](pingboard-provisioning-tutorial.md)
 
 <!--Image references-->
 

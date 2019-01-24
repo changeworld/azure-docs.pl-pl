@@ -8,54 +8,54 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5702c6e9c9d75c6cccb82f1c57684ef7b9898c34
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 73ba80878615f04e1755a4d12014691c5ae2a077
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34666028"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54453124"
 ---
 ## <a name="view-device-telemetry"></a>Wyświetlanie danych telemetrycznych z urządzenia
 
-Można wyświetlić dane telemetryczne, wysyłane z urządzenia **urządzeń** strony w rozwiązaniu.
+Możesz wyświetlić dane telemetryczne wysyłane z urządzenia **urządzeń** strony w rozwiązaniu.
 
-1. Wybierz urządzenie, którego inicjowana na liście urządzeń na **urządzeń** strony. Panel wyświetla informacje o urządzeniu, włącznie z wykresu telemetrii urządzenia:
+1. Wybierz urządzenie, którego obsługę zainicjowano na liście urządzeń na **urządzeń** strony. Panel wyświetla informacje o urządzeniu, w tym wykres danych telemetrycznych z urządzenia:
 
-    ![Szczegóły urządzenia](media/iot-suite-visualize-connecting/devicesdetail.png)
+    ![Zobacz szczegóły urządzenia](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-1. Wybierz **wykorzystania** Aby zmienić sposób wyświetlania danych telemetrii:
+1. Wybierz **wykorzystanie** można zmienić wyświetlanie telemetrii:
 
-    ![Widok wykorzystania telemetrii](media/iot-suite-visualize-connecting/devicespressure.png)
+    ![Wyświetlanie danych telemetrycznych z wykorzystania](media/iot-suite-visualize-connecting/devicespressure.png)
 
 1. Aby wyświetlić informacje diagnostyczne o urządzeniu, przewiń w dół do **diagnostyki**:
 
-    ![Wyświetlanie urządzeń diagnostyki](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
+    ![Wyświetl diagnostykę urządzenia](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
 
-## <a name="act-on-your-device"></a>Działania na urządzeniu
+## <a name="act-on-your-device"></a>Działa na twoim urządzeniu
 
-Aby wywołać metody na urządzeniach, należy użyć **urządzeń** strony w rozwiązaniu monitorowania zdalnego. Na przykład w rozwiązaniu Monitorowanie zdalne **Chłodnica** zaimplementować urządzeń **FirmwareUpdate** metody.
+Aby wywołać metod na urządzaniach, należy użyć **urządzeń** strony w rozwiązaniu do zdalnego monitorowania. Na przykład w przypadku rozwiązania do zdalnego monitorowania **Chłodnica** Implementowanie urządzeń **FirmwareUpdate** metody.
 
 1. Wybierz **urządzeń** można przejść do **urządzeń** strony w rozwiązaniu.
 
-1. Wybierz urządzenie, którego inicjowana na liście urządzeń na **urządzeń** strony:
+1. Wybierz urządzenie, którego obsługę zainicjowano na liście urządzeń na **urządzeń** strony:
 
-    ![Wybierz urządzenia fizycznego](media/iot-suite-visualize-connecting/devicesselect.png)
+    ![Wybierz swoje rzeczywiste urządzenie](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. Aby wyświetlić listę metod można wywołać na urządzeniu, wybierz **zadania**, następnie **uruchamiania metody**. Aby zaplanować zadania do uruchomienia na wielu urządzeniach, można wybrać wiele urządzeń na liście. **Zadania** panelu przedstawiono typy metody wspólne dla wszystkich wybranych urządzeń.
+1. Aby wyświetlić listę metod, można wywołać na urządzeniu przenośnym, wybierz **zadania**, następnie **uruchamiania metody**. Aby zaplanować zadanie do uruchamiania na wielu urządzeniach, można wybrać wiele urządzeń, na liście. **Zadań** panelu zawiera typy metody wspólne dla wszystkich urządzeń, które są wybrane.
 
-1. Wybierz **FirmwareUpdate**, ustaw nazwę zadania **UpdatePhysicalChiller**. Ustaw **wersja oprogramowania układowego** do **2.0.0**ustaw **URI oprogramowania układowego** do **http://contoso.com/updates/firmware.bin**, a następnie wybierz pozycję **Zastosuj**:
+1. Wybierz **FirmwareUpdate**, ustaw nazwę zadania na **UpdatePhysicalChiller**. Ustaw **wersja oprogramowania układowego** do **2.0.0**ustaw **URI oprogramowania układowego** do **http://contoso.com/updates/firmware.bin**, a następnie wybierz **Zastosuj**:
 
     ![Planowanie aktualizacji oprogramowania układowego](media/iot-suite-visualize-connecting/deviceschedule.png)
 
-1. Wyświetla sekwencję wiadomości w konsoli wykonywania kodu urządzenia, podczas gdy symulowane urządzenie obsługuje metody.
+1. Wyświetla sekwencję wiadomości w konsoli uruchamiania kodu urządzenia, gdy symulowane urządzenie obsłuży metodę.
 
-1. Po ukończeniu aktualizacji nowej wersji oprogramowania układowego wyświetla na **urządzeń** strony:
+1. Po zakończeniu aktualizacji nowej wersji oprogramowania układowego wyświetla na **urządzeń** strony:
 
-    ![Zakończono aktualizację](media/iot-suite-visualize-connecting/complete.png)
+    ![Aktualizacja została ukończona](media/iot-suite-visualize-connecting/complete.png)
 
 > [!NOTE]
 > Aby śledzić stan zadania w rozwiązaniu, wybierz **widoku**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Artykuł [dostosować akcelerator rozwiązań monitorowania zdalnego](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) opisano niektóre sposoby dostosowania akcelerator rozwiązań.
+Artykuł [dostosować akcelerator rozwiązań zdalne monitorowanie](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) opisano niektóre sposoby, aby dostosować akcelerator rozwiązań.

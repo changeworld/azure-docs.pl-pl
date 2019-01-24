@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: acfdd9070b49805c20b8ef921b5387c151448aa1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 862d239227c277a92cbf80e54b010a4b184da016
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961505"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54466095"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>Tworzenie karty interfejsu sieci wirtualnej i używanie wewnętrznego serwera DNS dla rozpoznawania nazw maszyn wirtualnych na platformie Azure
 
@@ -34,7 +34,7 @@ Wymagania są następujące:
 ## <a name="quick-commands"></a>Szybkie polecenia
 Jeśli musisz szybko wykonywać zadania w poniższej sekcji przedstawiono polecenia potrzebne. Więcej szczegółowych informacji i kontekst dla każdego kroku można znaleźć w pozostałej części dokumentu, [uruchamianie tutaj](#detailed-walkthrough). Aby wykonać te kroki, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
-Wymagania Wstępne: Grupa zasobów, sieci wirtualnej i podsieci i sieciowej grupy zabezpieczeń przy użyciu protokołu SSH dla ruchu przychodzącego.
+Wymagania wstępne: Grupa zasobów, sieci wirtualnej i podsieci i sieciowej grupy zabezpieczeń przy użyciu protokołu SSH dla ruchu przychodzącego.
 
 ### <a name="create-a-virtual-network-interface-card-with-a-static-internal-dns-name"></a>Utwórz wirtualną kartę sieciową z statyczne wewnętrzne nazwy DNS
 Tworzenie wirtualnej karty sieciowej z [tworzenie az sieciowego](/cli/azure/network/nic#az_network_nic_create). `--internal-dns-name` Flaga interfejsu wiersza polecenia jest ustawienie etykiety DNS, który zawiera nazwę DNS statycznych dla wirtualnej karty sieciowej (vNic). Poniższy przykład tworzy wirtualną kartę sieciową o nazwie `myNic`, łączy się z `myVnet` sieci wirtualnej i tworzy wewnętrzny rekord nazwy DNS o nazwie `jenkins`:
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>Wdrażanie maszyny Wirtualnej i połączenia wirtualnej karty sieciowej
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). `--nics` Flagi nawiązanie połączenia z wirtualnej karty sieciowej maszyny Wirtualnej podczas wdrażania na platformie Azure. Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). `--nics` Flagi nawiązanie połączenia z wirtualnej karty sieciowej maszyny Wirtualnej podczas wdrażania na platformie Azure. Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
 
 ```azurecli
 az vm create \
@@ -70,7 +70,7 @@ Wewnętrzne nazwy DNS są tylko do rozpoznania wewnątrz sieci wirtualnej platfo
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają `myResourceGroup`, `myNic`, i `myVM`.
 
 ## <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
-Najpierw utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create). Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w `westus` lokalizacji:
+Najpierw utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -80,7 +80,7 @@ az group create --name myResourceGroup --location westus
 
 Następnym krokiem jest do tworzenia sieci wirtualnej do maszyn wirtualnych do uruchomienia. Sieć wirtualna zawiera jedną podsieć w ramach tego przewodnika. Aby uzyskać więcej informacji na temat sieci wirtualnych platformy Azure, zobacz [tworzenie sieci wirtualnej](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). 
 
-Utwórz sieć wirtualną przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` i podsieć o nazwie `mySubnet`:
+Utwórz sieć wirtualną przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet). Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` i podsieć o nazwie `mySubnet`:
 
 ```azurecli
 az network vnet create \
@@ -103,7 +103,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>Dodaj regułę ruchu przychodzącego, aby zezwolić na SSH
-Dodaj regułę ruchu przychodzącego dla sieciowej grupy zabezpieczeń z [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Poniższy przykład tworzy regułę o nazwie `myRuleAllowSSH`:
+Dodaj regułę ruchu przychodzącego dla sieciowej grupy zabezpieczeń z [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule). Poniższy przykład tworzy regułę o nazwie `myRuleAllowSSH`:
 
 ```azurecli
 az network nsg rule create \
@@ -149,7 +149,7 @@ az network nic create \
 ## <a name="deploy-the-vm-into-the-virtual-network-infrastructure"></a>Wdróż maszynę Wirtualną do infrastruktury sieci wirtualnej
 W efekcie powstał sieci wirtualnej i podsieci i sieciowej grupy zabezpieczeń działają jako zapora chronić nasze podsieci, blokuje cały ruch przychodzący z wyjątkiem port 22 dla protokołu SSH i wirtualną kartę sieciową. Teraz można wdrożyć Maszynę wirtualną wewnątrz tego istniejącej infrastrukturze sieci.
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM` za pomocą usługi Azure Managed Disks i dołącza wirtualnej karty sieciowej o nazwie `myNic` z poprzedniego kroku:
 
 ```azurecli
 az vm create \

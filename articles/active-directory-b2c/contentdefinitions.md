@@ -3,19 +3,19 @@ title: ContentDefinitions — usługa Azure Active Directory B2C | Dokumentacja 
 description: Określ element ContentDefinitions zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f51b058b14525cc5a4af312696330a3a39ea44e1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 1fa5688b5895ed7418161234f6af06fecace631c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381601"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54849383"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -69,13 +69,13 @@ Metadane **LocalAccountSignUpWithLogonEmail** własnym potwierdzone profil techn
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Parametr LoadUri | 1:1 | Ciąg, który zawiera adres URL strony HTML5 do definicji zawartości. |
+| LoadUri | 1:1 | Ciąg, który zawiera adres URL strony HTML5 do definicji zawartości. |
 | RecoveryUri | 0:1 | Ciąg, który zawiera adres URL strony HTML do wyświetlania wystąpił błąd związany z definicji zawartości. | 
-| Identyfikator URI | 1:1 | Ciąg, który zawiera względny adres URL pliku HTML, który zapewnia środowisko użytkownika, aby wywołać ten krok. |  
+| DataUri | 1:1 | Ciąg, który zawiera względny adres URL pliku HTML, który zapewnia środowisko użytkownika, aby wywołać ten krok. |  
 | Metadane | 1:1 | Kolekcja par klucz wartość zawiera metadane wykorzystywane przez definicję zawartości. | 
 | LocalizedResourcesReferences | 0:1 | Kolekcja odwołań do zlokalizowanych zasobów. Użyj tego elementu, aby dostosować lokalizację atrybutu interfejsu i oświadczenia użytkownika. |
 
-### <a name="datauri"></a>Identyfikator URI
+### <a name="datauri"></a>DataUri
 
 **Identyfikator URI** element jest używany do określania identyfikator strony. Usługa Azure AD B2C używa identyfikatora strony do ładowania i Inicjowanie elementów interfejsu użytkownika i języka JavaScript po stronie klienta. Format wartości jest `urn:com:microsoft:aad:b2c:elements:page-name:version`.  W poniższej tabeli przedstawiono identyfikatorów stron, których można użyć.
 
@@ -144,11 +144,11 @@ Atrybut ID **ContentDefinition** element określa typ strony, które odnoszą si
 | ID | Szablon domyślny | Opis | 
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Strona błędu** — wyświetla błąd strony, gdy wyjątek lub wystąpi błąd. |
-| **API.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Strona wyboru dostawcy tożsamości** — Wyświetla listę dostawców tożsamości, które użytkownicy mogą wybierać podczas logowania. Opcje są zazwyczaj enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
-| **API.idpselections.Signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Wybór dostawcy tożsamości dla rejestracji** — Wyświetla listę dostawców tożsamości, które użytkownicy mogą wybierać podczas rejestracji. Opcje są zazwyczaj enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
+| **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Strona wyboru dostawcy tożsamości** — Wyświetla listę dostawców tożsamości, które użytkownicy mogą wybierać podczas logowania. Opcje są zazwyczaj enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
+| **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Wybór dostawcy tożsamości dla rejestracji** — Wyświetla listę dostawców tożsamości, które użytkownicy mogą wybierać podczas rejestracji. Opcje są zazwyczaj enterprise dostawców tożsamości, dostawców tożsamości społecznościowych, takich jak Facebook i Google + lub kont lokalnych. |
 | **api.localaccountpasswordreset** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona obsługi zapomnianego hasła** -Wyświetla formularz, który użytkownicy muszą wykonać, aby zainicjować resetowania hasła. |
 | **api.localaccountsignin** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona logowania dla kont lokalnych** — przedstawia formularz logujesz się przy użyciu konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz może zawierać pola wprowadzania tekstu, a pole wprowadzania hasła. |
-| **API.localaccountsignup** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona rejestracji dla kont lokalnych** -Wyświetla formularz za utworzenie konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz mogą zawierać różne kontrolki wejściowe, takie jak: tekst wejściowy pola, pole wprowadzania hasła, przycisk radiowy, pola listy rozwijanej wybierz jedną, a następnie zaznacz pola wyboru. |
+| **api.localaccountsignup** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona rejestracji dla kont lokalnych** -Wyświetla formularz za utworzenie konta lokalnego, który jest oparty na adres e-mail lub nazwę użytkownika. Formularz mogą zawierać różne kontrolki wejściowe, takie jak: tekst wejściowy pola, pole wprowadzania hasła, przycisk radiowy, pola listy rozwijanej wybierz jedną, a następnie zaznacz pola wyboru. |
 | **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Strona uwierzytelniania wieloskładnikowego** — sprawdza, numerów telefonów, przy użyciu tekstowych lub głosowych, podczas tworzenia konta lub logowania. |
 | **api.selfasserted** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Strona rejestracji dla kont społecznościowych** -Wyświetla formularz, który użytkownicy muszą wykonać po utworzeniu konta przy użyciu istniejącego konta z dostawcy tożsamości społecznościowych. Ta strona jest podobny do poprzedniego nowego konta społecznościowego stronę z wyjątkiem pól wprowadzania hasła. |
 | **api.selfasserted.profileupdate** | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Strona aktualizacji profilu** -Wyświetla formularz, który użytkownicy mogą uzyskać dostęp, aby zaktualizować swój profil. Ta strona jest podobne do nowego konta społecznościowego stronę z wyjątkiem pól wprowadzania hasła. |

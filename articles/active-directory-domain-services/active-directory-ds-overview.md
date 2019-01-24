@@ -4,7 +4,7 @@ description: Omówienie usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 0d47178f-773e-45f9-9ff4-9e8cffa4ffa2
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: ergreenl
-ms.openlocfilehash: ed89954836fe262ba60f7401bd7b040e87b60101
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ef8395f7fab2b2673c4eadd1eb6db6405432b75a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215188"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856119"
 ---
-# <a name="azure-active-directory-ad-domain-services"></a>Usługi domenowe Azure Active Directory (AD)
+# <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services
 ## <a name="overview"></a>Przegląd
 Usługi infrastruktury platformy Azure umożliwiają wdrażanie szerokiego zakresu rozwiązań obliczeniowych zwinne. Usługa Azure Virtual Machines można wykonywać niemal natychmiastowe wdrażanie, i płacisz tylko za wykorzystane minuty. Przy użyciu obsługi Windows, Linux, SQL Server, Oracle, IBM, SAP i BizTalk, możesz wdrożyć dowolne obciążenie, w dowolnym języku i w prawie każdym systemie operacyjnym. Korzyści te umożliwiają migrować starsze aplikacje wdrożone w środowisku lokalnym na platformie Azure, aby zaoszczędzić na wydatki operacyjne.
 

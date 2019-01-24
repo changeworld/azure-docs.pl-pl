@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Sansan | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Sansan | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Sansan.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e14f923b1e25f5fbc522cd39763ac53ddf37617
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6bd84e42bf46885a9dced363724538cbd4d2066a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872258"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815008"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sansan"></a>Samouczek: Integracja usługi Azure Active Directory z Sansan
+# <a name="tutorial-azure-active-directory-integration-with-sansan"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Sansan
 
 W tym samouczku dowiesz się, jak zintegrować Sansan w usłudze Azure Active Directory (Azure AD).
 
@@ -43,10 +43,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Sansan, potrzebne są
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -67,7 +67,7 @@ Aby skonfigurować integrację Sansan w usłudze Azure AD, należy dodać Sansan
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -112,7 +112,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/sansan-tutorial/tutorial_sansan_url.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następujących wzorców: 
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następujących wzorców: 
     
     | Środowisko | Adres URL |
     |:--- |:--- |
@@ -121,13 +121,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | Ustawienia w przeglądarce dla urządzeń przenośnych |`https://ap.sansan.com/s/saml2/<company name>/acs` |  
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sansan](https://www.sansan.com/form/contact) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sansan](https://www.sansan.com/form/contact) do uzyskania tych wartości. 
      
 4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/sansan-tutorial/tutorial_sansan_certificate.png) 
 
-5. Kliknij przycisk **Zapisz** przycisku.
+5. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/sansan-tutorial/tutorial_general_400.png)
 
@@ -195,14 +195,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/sansan-tutorial/tutorial_sansan_configure.png) 
 
-10. Aby skonfigurować logowanie jednokrotne na **Sansan** stronie, musisz wysłać pobrany **certyfikatu**, **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [zespołem pomocy technicznej Sansan](https://www.sansan.com/form/contact). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+10. Aby skonfigurować logowanie jednokrotne na **Sansan** stronie, musisz wysłać pobrany **certyfikatu**, **adres URL wylogowania**, **identyfikator jednostki SAML**, i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [zespołem pomocy technicznej Sansan](https://www.sansan.com/form/contact). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 >[!NOTE]
 >Ustawienia przeglądarki komputera również działać dla aplikacji mobilnych i przeglądarce dla urządzeń przenośnych oraz komputer w sieci web. 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -274,9 +274,9 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Sansan w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Sansan.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -4,7 +4,7 @@ description: Zawiera listę komunikatów o błędach pakietu zawartości działa
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ffce7eb1-99da-4ea7-9c4d-2322b755c8ce
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 65747da92a3cad770cd9d474d27645782f7306b9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 461c61fdd38fe8801a71c1ac34cd3e7114838207
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998728"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54825361"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Rozwiązywanie problemów z działanie usługi Azure Active Directory rejestruje błędy pakietu zawartości 
 
@@ -38,9 +38,9 @@ Podczas pracy z pakietu zawartości usługi Power BI dla usługi Azure Active Di
 
 Ten artykuł zawiera informacje na temat możliwych przyczyn i jak naprawić te błędy.
  
-## <a name="refresh-failed"></a>Odświeżanie nie powiodło się 
+## <a name="refresh-failed"></a>Niepowodzenie odświeżania 
  
-**Jak ten błąd jest udostępniane**: wiadomości E-mail z usługi Power BI lub stan niepowodzenia w historii odświeżania. 
+**Jak ten błąd jest udostępniane**: Wyślij wiadomość e-mail z usługi Power BI lub stan niepowodzenia w historii odświeżania. 
 
 
 | Przyczyna | Jak naprawić |
@@ -51,7 +51,7 @@ Ten artykuł zawiera informacje na temat możliwych przyczyn i jak naprawić te 
  
 ## <a name="failed-to-update-data-source-credentials"></a>Nie można zaktualizować poświadczeń źródła danych 
  
-**Jak ten błąd jest udostępniane**: W usłudze Power BI, gdy połączysz się działanie usługi Azure AD dzienniki pakietu zawartości. 
+**Jak ten błąd jest udostępniane**: W usłudze Power BI, po nawiązaniu połączenia z pakietem zawartości dzienników aktywności usługi Azure AD. 
 
 | Przyczyna | Jak naprawić |
 | ---   | ---        |
@@ -62,7 +62,7 @@ Ten artykuł zawiera informacje na temat możliwych przyczyn i jak naprawić te 
 
 ## <a name="data-import-is-too-slow"></a>Importowanie danych jest zbyt wolno 
  
-**Jak ten błąd jest udostępniane**: W usłudze Power BI po połączeniu z pakietem zawartości, proces importowania danych rozpoczyna się przygotować pulpitu nawigacyjnego do działania usługi Azure AD dzienniki. Zostanie wyświetlony komunikat: **importowanie danych...**  bez żadnych dalszych postępów.  
+**Jak ten błąd jest udostępniane**: W usłudze Power BI po połączeniu z pakietem zawartości, proces importowania danych rozpoczyna się przygotować pulpitu nawigacyjnego do działania usługi Azure AD dzienniki. Zostanie wyświetlony komunikat: **Importowanie danych...**  bez żadnych dalszych postępów.  
 
 | Przyczyna | Jak naprawić |
 | ---   | ---        |

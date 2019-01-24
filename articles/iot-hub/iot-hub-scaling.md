@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 8ff99b8c5cf839afb8c8e73c18c2c413998ba64a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 30b83613637d97bfe265c4f5a9c911d14da50c4f
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261722"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810911"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wybrać właściwą warstwę usługi IoT Hub dla Twojego rozwiązania
 
@@ -43,6 +43,7 @@ Tylko jeden typ [wersji](https://azure.microsoft.com/pricing/details/iot-hub/) w
 | [Monitorowanie i Diagnostyka](iot-hub-monitor-resource-health.md) | Yes | Yes |
 | [Komunikaty z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) |   | Yes |
 | [Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md), [bliźniaczych reprezentacjach modułów](iot-hub-devguide-module-twins.md), i [zarządzania urządzeniami](iot-hub-device-management-overview.md) |   | Yes |
+| [Strumienie urządzenia (wersja zapoznawcza)](iot-hub-device-streams-overview.md) |   | Yes |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Yes |
 
 Centrum IoT oferuje bezpłatną warstwę, która jest przeznaczona do testowania i oceny. Zawiera wszystkie funkcje warstwy standardowa, ale ograniczone limity obsługi komunikatów. Nie można uaktualnić z warstwy bezpłatna, podstawowa lub standardowa. 
@@ -76,7 +77,7 @@ Różnica w obsługiwanych możliwości między warstwami podstawowa i standardo
 | [Zebranie statystyk, usługi](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Yes | Yes |
 | [Utwórz lub zaktualizuj urządzenie](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Yes | Yes |
 | Umieść moduł | Yes | Yes |
-| [Zapytanie usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Yes | Yes |
+| [Query IoT Hub](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Yes | Yes |
 | Moduły zapytania | Yes | Yes |
 | [Tworzenie przekazywania plików identyfikatora URI połączenia SAS](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Yes | Yes |
 | [Otrzymywanie powiadomień urządzenie powiązane](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Yes | Yes |

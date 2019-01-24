@@ -4,17 +4,17 @@ description: W tym artykule opisano proces programowego tworzenia i zarządzanie
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3c8fd185feff9a580e2d23926dcf60cb33121122
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: adeb963333ffc2b587d7468eb357fab8dc4d6bbe
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312480"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54847054"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
 
@@ -22,18 +22,20 @@ W tym artykule opisano za pośrednictwem programowe tworzenie zasad i zarządzan
 
 Aby uzyskać informacje o zgodności, zobacz [pobierania danych zgodności](getting-compliance-data.md).
 
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że są spełnione następujące wymagania wstępne:
 
 1. Jeśli ta czynność nie została jeszcze wykonana, zainstaluj klienta [ARMClient](https://github.com/projectkudu/ARMClient). Jest to narzędzie, które wysyła żądania HTTP do interfejsów API opartych na usłudze Azure Resource Manager.
 
-1. Zaktualizuj moduł AzureRM PowerShell do najnowszej wersji. Aby uzyskać więcej informacji na temat najnowszej wersji, zobacz [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
+1. Aktualizowanie modułu Azure PowerShell do najnowszej wersji. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps) Aby uzyskać szczegółowe informacje. Aby uzyskać więcej informacji na temat najnowszej wersji, zobacz [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 
 1. Zarejestruj dostawcę zasobów usługi Policy Insights przy użyciu programu Azure PowerShell w celu zweryfikowania, że Twoja subskrypcja współpracuje z dostawcą zasobów. Aby zarejestrować dostawcę zasobów, musi mieć uprawnienia do uruchamiania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
 
    ```azurepowershell-interactive
-   Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
+   Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
    Aby uzyskać więcej informacji na temat rejestrowania i przeglądania dostawców zasobów, zobacz [dostawcy zasobów i ich typy](../../../azure-resource-manager/resource-manager-supported-services.md).
@@ -72,13 +74,13 @@ Pierwszym krokiem procesu lepszą widoczność zasobów jest tworzenie i przypis
 1. Uruchom następujące polecenie, aby utworzyć definicję zasad przy użyciu pliku AuditStorageAccounts.json.
 
    ```azurepowershell-interactive
-   New-AzureRmPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
+   New-AzPolicyDefinition -Name 'AuditStorageAccounts' -DisplayName 'Audit Storage Accounts Open to Public Networks' -Policy 'AuditStorageAccounts.json'
    ```
 
    Polecenie tworzy definicję zasad o nazwie _inspekcji magazynu kont otwarte do sieci publicznych_.
-   Aby uzyskać więcej informacji na temat innych parametrów, których można wyświetlić [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+   Aby uzyskać więcej informacji na temat innych parametrów, których można wyświetlić [New AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
-   Gdy zostanie wywołana bez parametrów lokalizacji `New-AzureRmPolicyDefinition` wartość domyślna to zapisanie definicji zasad w wybranej subskrypcji kontekstu sesji. Aby zapisać definicję do innej lokalizacji, należy użyć następujących parametrów:
+   Gdy zostanie wywołana bez parametrów lokalizacji `New-AzPolicyDefinition` wartość domyślna to zapisanie definicji zasad w wybranej subskrypcji kontekstu sesji. Aby zapisać definicję do innej lokalizacji, należy użyć następujących parametrów:
 
    - **SubscriptionId** — Zapisz się do innej subskrypcji. Wymaga _GUID_ wartość.
    - **ManagementGroupName** — zapisywanie do grupy zarządzania. Wymaga _ciąg_ wartość.
@@ -86,21 +88,21 @@ Pierwszym krokiem procesu lepszą widoczność zasobów jest tworzenie i przypis
 1. Po utworzeniu definicji zasad, można utworzyć przypisanie zasad, uruchamiając następujące polecenia:
 
    ```azurepowershell-interactive
-   $rg = Get-AzureRmResourceGroup -Name 'ContosoRG'
-   $Policy = Get-AzureRmPolicyDefinition -Name 'AuditStorageAccounts'
-   New-AzureRmPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
+   $rg = Get-AzResourceGroup -Name 'ContosoRG'
+   $Policy = Get-AzPolicyDefinition -Name 'AuditStorageAccounts'
+   New-AzPolicyAssignment -Name 'AuditStorageAccounts' -PolicyDefinition $Policy -Scope $rg.ResourceId
    ```
 
    Zastąp _ContosoRG_ nazwą grupy zasobów przeznaczone.
 
-   **Zakres** parametru `New-AzureRmPolicyAssignment` działa także w przypadku subskrypcji i grup zarządzania. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzureRmResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób.
+   **Zakres** parametru `New-AzPolicyAssignment` działa także w przypadku subskrypcji i grup zarządzania. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób.
    Zastąp `{rgName}`, `{subId}`, i `{mgName}` z zasobem usługi grupy odpowiednio na nazwę, identyfikator subskrypcji i nazwa grupy zarządzania.
 
    - Grupa zasobów- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Subskrypcja — `/subscriptions/{subId}/`
    - Grupa zarządzania- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Aby uzyskać więcej informacji o zarządzaniu zasadami zasobów za pomocą modułu Azure PowerShell Resource Manager, zobacz [azurerm.resources wprowadzono](/powershell/module/azurerm.resources/#policies).
+Aby uzyskać więcej informacji o zarządzaniu zasadami zasobów za pomocą modułu Azure PowerShell Resource Manager, zobacz [Az.Resources](/powershell/module/az.resources/#policies).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Tworzenie i przypisywanie definicji zasad za pomocą ARMClient
 
@@ -230,7 +232,7 @@ Aby uzyskać więcej informacji na temat sposobu zarządzania zasad zasobów prz
 Sprawdź następujące artykuły, aby uzyskać więcej informacji na temat polecenia i zapytania w tym artykule.
 
 - [Zasoby interfejsu API REST platformy Azure](/rest/api/resources/)
-- [Moduły programu PowerShell usługi Azure RM](/powershell/module/azurerm.resources/#policies)
+- [Azure PowerShell Modules](/powershell/module/az.resources/#policies)
 - [Polecenia zasad wiersza polecenia platformy Azure](/cli/azure/policy?view=azure-cli-latest)
 - [Dostawcę zasobów szczegółowych informacji o zasadach dokumentacja interfejsu API REST](/rest/api/policy-insights)
 - [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md)

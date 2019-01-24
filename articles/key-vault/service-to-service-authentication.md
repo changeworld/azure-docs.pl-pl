@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: e3239d57b34af396ee4b23f3b9b01b367eb3daa6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 216a2e31074f7afe944611de12fe2d45d9d236cf
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050119"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413757"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Usługa Usługa uwierzytelniania usługi Azure Key Vault przy użyciu platformy .NET
 
@@ -55,7 +55,7 @@ Dla aplikacji .NET jest najprostszym sposobem, aby pracować z tożsamości zarz
 
 `AzureServiceTokenProvider` Klasa przechowuje w pamięci podręcznej tokenu w pamięci i przywraca je z usługi Azure AD tylko przed jego wygaśnięciem. W związku z tym, nie musisz już do sprawdzenia wygaśnięcia przed wywołaniem `GetAccessTokenAsync` metody. Po prostu Wywołaj metodę, gdy użytkownik chce użyć tokenu. 
 
-`GetAccessTokenAsync` Metoda wymaga identyfikatora zasobu. Aby dowiedzieć się więcej, zobacz [którymi usługami platformy Azure obsługują zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity).
+`GetAccessTokenAsync` Metoda wymaga identyfikatora zasobu. Aby dowiedzieć się więcej, zobacz [którymi usługami platformy Azure obsługują zarządzanych tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/msi-overview).
 
 
 <a name="samples"></a>

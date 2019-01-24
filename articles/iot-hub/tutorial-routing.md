@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6f1cd08e3c786a1d163a22b5da5150fde5f45b95
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 22678a44cda38b52982e977281d3310efde15831
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135342"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54247285"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Samouczek: Konfigurowanie routingu wiadomości przy użyciu usługi IoT Hub
 
@@ -486,9 +486,9 @@ Aby wyświetlić dane w wizualizacji usługi Power BI, najpierw skonfiguruj zada
 
 1. W obszarze **Topologia zadania** kliknij pozycję **Zapytanie**.
 
-2. Zastąp element `[YourInputAlias]` aliasem danych wejściowych zadania. W tym samouczku jest używany alias **contosoinputs**.
+2. Zastąp element `[YourInputAlias]` aliasem wejściowym zadania. W tym samouczku jest używany alias **contosoinputs**.
 
-3. Zastąp element `[YourOutputAlias]` aliasem danych wyjściowych zadania. W tym samouczku jest używany alias **contosooutputs**.
+3. Zastąp element `[YourOutputAlias]` aliasem wyjściowym zadania. W tym samouczku jest używany alias **contosooutputs**.
 
    ![Zrzut ekranu przedstawiający sposób konfigurowania zapytania zadania usługi Stream Analytics.](./media/tutorial-routing/stream-analytics-job-query.png)
 
@@ -629,4 +629,4 @@ W tym samouczku przedstawiono sposób użycia routingu komunikatów do rozsyłan
 Przejdź do następnego samouczka, aby dowiedzieć się, jak zarządzać stanem urządzenia IoT. 
 
 > [!div class="nextstepaction"]
-[Konfigurowanie urządzeń z poziomu usługi zaplecza](tutorial-device-twins.md)
+[Konfigurowanie i używanie metryk i diagnostyki w usłudze IoT Hub](tutorial-use-metrics-and-diags.md)

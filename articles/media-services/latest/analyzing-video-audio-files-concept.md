@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 95d3f0aac4acdfbd70dcadd8db5c13456e83a7e7
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344316"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828183"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików audio i wideo
 
@@ -148,9 +148,9 @@ Przykład:
 |name|Nazwa czcionki. Może to być "Nieznany #0", osobistości zidentyfikowanych lub osoby uczonego klienta.|
 |zaufania|Zaufanie identyfikacji twarzy.|
 |description|Opis osobistości. |
-|thumbnalId|Identyfikator miniatury napotykane przez.|
+|thumbnailId|Identyfikator miniatury napotykane przez.|
 |knownPersonId|Jeśli jest znane osoby wewnętrzny identyfikator.|
-|Identyfikator odwołania|Jeśli jest Bing rozpoznawanie osobistości, jego identyfikator Bing.|
+|referenceId|Jeśli jest Bing rozpoznawanie osobistości, jego identyfikator Bing.|
 |Element referenceType|Obecnie tylko Bing.|
 |tytuł|Jeśli jest rozpoznawanie osobistości, jego tytuł (na przykład "Prezes firmy Microsoft").|
 |imageUrl|Jeśli jest rozpoznawanie osobistości, jej adres url obrazu.|
@@ -190,7 +190,7 @@ Przykład:
 |Name (Nazwa)|Opis|
 |---|---|
 |id|Zrzut identyfikatora.|
-|klatki kluczowe|Lista klatek kluczowych w obrębie zrzut (każda ma identyfikator i listę zakresów czasu wystąpienia). Klatki kluczowe wystąpienia ma pola thumbnailId ze miniaturę ramki kluczowej identyfikatora.|
+|keyFrames|Lista klatek kluczowych w obrębie zrzut (każda ma identyfikator i listę zakresów czasu wystąpienia). Klatki kluczowe wystąpienia ma pola thumbnailId ze miniaturę ramki kluczowej identyfikatora.|
 |wystąpienia|Lista zakresy czasu to zrzut (zrzuty mają tylko 1 wystąpienie).|
 
 ```json
@@ -296,7 +296,7 @@ Opinie są agregowane według ich pola sentimentType (neutralna/plus/minus). Na 
 |---|---|
 |id|Identyfikator etykiety.|
 |name|Nazwa etykiety (na przykład "Computer", "TV").|
-|language|Etykieta nazwy język (w przypadku przetłumaczona). NARZĘDZIE BCP 47|
+|language|Etykieta nazwy język (w przypadku przetłumaczona). BCP-47|
 |wystąpienia|Lista zakresów czasu, w których pojawiły się tej etykiety (etykieta może wystąpić wiele razy). Każde wystąpienie ma pole zaufania. |
 
 

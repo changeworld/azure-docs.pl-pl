@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ae498cc6aea573e1c610cb50d96552f30be4d75e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 32b457858598ed3dec4a1398cb45310dba877bf3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140884"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447908"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Eksplorowanie i modelowanie danych za pomocą platformy Spark
 
@@ -47,14 +47,14 @@ Kroki instalacji i kodu w tym przewodniku dla podano przy użyciu HDInsight Spar
 
 ### <a name="spark-16-notebooks"></a>Notesy platformy Spark 1.6
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): zawiera informacje na temat wykonywania eksploracji danych, modelowania i ocenianie z kilku różnych algorytmów.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): Zawiera informacje dotyczące sposobu wykonywania eksploracji danych, modelowania i ocenianie z kilku różnych algorytmów.
 
 ### <a name="spark-20-notebooks"></a>Notesy platformy Spark w wersji 2.0
 Zadania regresji i klasyfikacji, które są implementowane przy użyciu klastra Spark 2.0 znajdują się w oddzielnych notesów i notesu klasyfikacji korzysta z innego zestawu danych:
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania, i ocenianie w Spark 2.0 klastrów, przy użyciu podróży taksówek NYC i Taryfy opisane na zestawie danych [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zobacz uwagi na końcu tej listy pozwalające porównać te notesy. 
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówek NYC podróży i klasie zestawu danych, opisano [tutaj ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu dobrze znanych wyjścia linie lotnicze w na czas zestaw danych z 2011 i 2012. Zintegrowaliśmy linii lotniczych zestawu danych z danymi pogody Kuwejcie (np. prędkość wiatru, temperatury, wysokość itp.) przed modelowaniu, dzięki czemu te funkcje pogody mogły zostać uwzględnione w modelu.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania, oraz do oceniania platformy Spark w wersji 2.0 klastrów za pomocą taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zobacz uwagi na końcu tej listy pozwalające porównać te notesy. 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ten plik pokazuje, jak przeprowadzić danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu dobrze znanych linie lotnicze w czasie wyjścia zestawu danych z 2011 i 2012. Zintegrowaliśmy linii lotniczych zestawu danych z danymi pogody Kuwejcie (np. prędkość wiatru, temperatury, wysokość itp.) przed modelowaniu, dzięki czemu te funkcje pogody mogły zostać uwzględnione w modelu.
 
 <!-- -->
 
@@ -72,7 +72,7 @@ Zadania regresji i klasyfikacji, które są implementowane przy użyciu klastra 
 <!-- -->
 
 > [!NOTE]
-Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście pokazano wiele aspektów eksplorację danych, wizualizacji i uczenia Maszynowego modelu szkolenia w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być dobry punkt początkowy dla szybkie analizowanie kodu zostały zamieszczone dla platformy Spark w wersji 2.0. 
+Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście przedstawiono wiele aspektów eksplorację, wizualizację i szkolenie modelu uczenia Maszynowego w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być dobry punkt początkowy dla szybkie analizowanie kodu zostały zamieszczone dla platformy Spark w wersji 2.0. 
 
 <!-- -->
 
@@ -433,7 +433,7 @@ Poniżej przedstawiono kod, aby zaindeksować i kodowanie tekstu funkcji Klasyfi
         labPt = LabeledPoint(line.tipped, features)
         return  labPt
 
-    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC RERESSION MODELS
+    # ONE-HOT ENCODING OF CATEGORICAL TEXT FEATURES FOR INPUT INTO LOGISTIC REGRESSION MODELS
     def parseRowOneHotBinary(line):
         features = np.concatenate((np.array([line.pickup_hour, line.weekday, line.passenger_count,
                                             line.trip_time_in_secs, line.trip_distance, line.fare_amount]), 
@@ -1099,7 +1099,7 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>Co dalej?
 Teraz, modele regresji i klasyfikacji została utworzona przy użyciu MlLib platformy Spark, jesteś gotowy dowiedzieć się, jak ocena i ocenić te modele. Zaawansowane Eksplorowanie danych i modelowania notesu omawia bardziej krzyżowa Weryfikacja, parametrów sprawdzaniu, w tym i ocenę modelu. 
 
-**Model użycia:** jak ocena i oceniać modele klasyfikacji i regresji, utworzone w tym temacie można znaleźć [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
+**Użycie modelu:** Aby dowiedzieć się, jak ocena i oceniać modele klasyfikacji i regresji, utworzone w tym temacie, zobacz [wynik i ocena modeli uczenia maszynowego utworzonych na platformie Spark](spark-model-consumption.md).
 
-**Krzyżowa Weryfikacja i zaczynają hiperparametrycznego**: zobacz [zaawansowane Eksplorowanie i modelowanie za pomocą platformy Spark danych](spark-advanced-data-exploration-modeling.md) w sposób modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów
+**Krzyżowa Weryfikacja i zaczynają hiperparametrycznego**: Zobacz [zaawansowane Eksplorowanie i modelowanie za pomocą platformy Spark danych](spark-advanced-data-exploration-modeling.md) w sposób modeli może być uczony przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów
 

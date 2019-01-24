@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 08420be7171df78babf62b262fef84fd29fb34ab
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: f341c7e4a56aacb35ee16cbae00115196325b46a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495067"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855826"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Implementowanie środowiska Oracle Data Guard na maszynie wirtualnej z systemem Linux platformy Azure 
 
@@ -40,7 +40,7 @@ Obraz witryny Marketplace, który umożliwia tworzenie maszyn wirtualnych jest O
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
 
-Zaloguj się do subskrypcji platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login) polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami.
+Zaloguj się do subskrypcji platformy Azure przy użyciu [az login](/cli/azure/reference-index) polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami.
 
 ```azurecli
 az login
@@ -48,9 +48,9 @@ az login
 
 ### <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create) polecenia. Grupę zasobów platformy Azure to logiczny kontener, w których Azure zasoby są wdrażane i zarządzane. 
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupę zasobów platformy Azure to logiczny kontener, w których Azure zasoby są wdrażane i zarządzane. 
 
-Poniższy przykład tworzy grupę zasobów o nazwie `myResourceGroup` w `westus` lokalizacji:
+Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -70,7 +70,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Tworzenie maszyny Wirtualnej przy użyciu [tworzenie az vm](/cli/azure/vm#az_vm_create) polecenia. 
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). 
 
 Poniższy przykład tworzy dwie maszyny wirtualne o nazwach `myVM1` i `myVM2`. Tworzy również klucze SSH, jeśli ich jeszcze nie istnieją w domyślnej lokalizacji kluczy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.
 
@@ -502,7 +502,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>Skonfiguruj brokera ochrony danych na myVM1 (podstawowy)
 
-Uruchom Menedżera ochrony danych, a następnie zaloguj się przy użyciu SYS i hasła. (Nie należy używać uwierzytelniania systemu operacyjnego). Wykonaj następujące czynności:
+Uruchom Menedżera ochrony danych, a następnie zaloguj się przy użyciu SYS i hasła. (Nie należy używać uwierzytelniania systemu operacyjnego). Wykonaj poniższe kroki:
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1
@@ -573,7 +573,7 @@ cdb1_stby=
   )
 ```
 
-Uruchom program SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 $ sqlplus sys/OraPasswd1@cdb1
@@ -617,7 +617,7 @@ DGMGRL>
 
 Teraz można podłączyć do bazy danych w stanie wstrzymania.
 
-Uruchom program SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 
@@ -659,7 +659,7 @@ Switchover succeeded, new primary is "cdb1"
 
 Jeszcze raz teraz można połączyć się z podstawowej bazy danych.
 
-Uruchom program SQL * Plus:
+Start SQL*Plus:
 
 ```bash
 

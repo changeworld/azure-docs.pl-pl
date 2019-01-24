@@ -4,7 +4,7 @@ description: Wybieranie między Azure AD Join a usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: ergreenl
-ms.openlocfilehash: 275f537511f721ea3f01c22a962462bab458129c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8db95f0bcc715967bf942827c140312572b03095
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156583"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853973"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Wybieranie między przyłączanie do usługi Azure Active Directory i Azure Active Directory Domain Services
 W tym artykule opisano różnice między dołączania usługi Azure Active Directory (AD) i Azure AD Domain Services i pomoże wybrać, w oparciu o przypadki użycia.
@@ -54,7 +54,7 @@ Na komputerze przyłączonym do domeny uwierzytelnianie użytkowników odbywa si
 
 
 ## <a name="summary---key-differences"></a>Podsumowanie — podstawowe różnice
-| **Aspekt** | **Azure AD Join** | **Usług domenowych Azure AD** |
+| **Aspekt** | **Azure AD Join** | **Azure AD Domain Services** |
 |:---| --- | --- |
 | Kontrolowane przez urządzenie | Azure AD | Usługa Azure AD Domain Services domeny zarządzanej |
 | Reprezentacja w katalogu | Obiekty urządzeń w katalogu usługi Azure AD. | Obiekty komputerów w domenie zarządzanej usługi Katalogowej usługi AAD. |

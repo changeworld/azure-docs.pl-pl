@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: ade5fa78191fe670bd898e8edcbb1fab3b9b2379
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a0a06ff79d1a48e8fbbc13a8e2410817c020d9a9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274001"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430853"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Tworzenie bramy sieci wirtualnej strefowo nadmiarowy w strefy dostępności platformy Azure
 
@@ -33,7 +33,7 @@ Jeśli używasz programu PowerShell lokalnie na komputerze, a nie przy użyciu u
 Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
 ```
 
-Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
@@ -128,13 +128,13 @@ $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $
 
 Tworzenie bramy sieci wirtualnej.
 
-### <a name="for-expressroute"></a>Dla usługi ExpressRoute
+### <a name="for-expressroute"></a>For ExpressRoute
 
 ```azurepowershell-interactive
 New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
 ```
 
-### <a name="for-vpn-gateway"></a>Dla bramy sieci VPN
+### <a name="for-vpn-gateway"></a>For VPN Gateway
 
 ```azurepowershell-interactive
 New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased

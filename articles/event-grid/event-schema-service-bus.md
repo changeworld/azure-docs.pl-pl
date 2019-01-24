@@ -6,18 +6,18 @@ author: banisadr
 manager: darosa
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 01/17/2019
 ms.author: babanisa
-ms.openlocfilehash: afb85f20c49821ca98e078791730a3376198e9e5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f44d2c1c5be6ac895b6f5ea9feca29c0f8ed09f3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055427"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467744"
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Schemat zdarzeń Azure Event Grid dla usługi Service Bus
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń usługi Service Bus. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schematu dla zdarzeń usługi Service Bus. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
 
 Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń usługi Service Bus](event-sources.md#service-bus).
 
@@ -83,8 +83,8 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | temat | ciąg | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| Temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
+| temat | ciąg | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia magazynu obiektów blob. |
@@ -97,7 +97,7 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | namespaceName | ciąg | Przestrzeń nazw usługi Service Bus zasób istnieje w. |
 | requestUri | ciąg | Identyfikator URI do określonej kolejki lub subskrypcji wysyłających zdarzenia. |
-| Typ entityType | ciąg | Typ jednostki usługi Service Bus wysyłających zdarzenia (kolejki lub subskrypcji). |
+| entityType | ciąg | Typ jednostki usługi Service Bus wysyłających zdarzenia (kolejki lub subskrypcji). |
 | queueName | ciąg | Kolejka z aktywne komunikaty, jeśli subskrypcja do kolejki. Wartość null, jeśli za pomocą tematów / subskrypcji. |
 | topicName | ciąg | Temat subskrypcji usługi Service Bus przy użyciu aktywne komunikaty należą do. Wartość null, jeśli za pomocą kolejki. |
 | subscriptionName | ciąg | Subskrypcja usługi Service Bus przy użyciu aktywne wiadomości. Wartość null, jeśli za pomocą kolejki. |

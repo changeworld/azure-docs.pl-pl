@@ -4,7 +4,7 @@ description: Dowiedz się, jak analizować Dzienniki aktywności usługi Azure A
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2f0f5341ba6818f375d463638979c68689519227
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 759a0da93544e2a17b71d762924981f05c3ea322
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624203"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810786"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Analizowanie usługi Azure AD dzienników aktywności z usługą Log Analytics (wersja zapoznawcza)
 
-Po zakończeniu [integracji usługi Azure AD dzienników aktywności z usługą Log Analytics](howto-integrate-activity-logs-with-log-analytics.md), można użyć możliwości usługi Log Analytics, aby uzyskać wgląd w swoje środowiska. Można także zainstalować [widoki usługi Log Analytics dla usługi Azure AD działania dzienniki](howto-install-use-log-analytics-views.md) uzyskać dostęp do gotowych raportów dotyczących inspekcji i zdarzeń logowania w danym środowisku.
+Po zakończeniu [integracji usługi Azure AD dzienników aktywności z usługą Log Analytics](howto-integrate-activity-logs-with-log-analytics.md), możliwości usługi Log Analytics można użyć, aby uzyskać wgląd w danym środowisku. Można także zainstalować [widoki usługi Log Analytics dla usługi Azure AD działania dzienniki](howto-install-use-log-analytics-views.md) uzyskać dostęp do gotowych raportów dotyczących inspekcji i zdarzeń logowania w danym środowisku.
 
 W tym artykule dowiesz się, jak analizować Azure Dzienniki aktywności usługi AD w obszarze roboczym usługi Log Analytics. 
 
@@ -93,9 +93,9 @@ Można również ustawić alerty na zapytanie. Na przykład aby skonfigurować a
 
 Możesz również pobrać wstępnie skompilowanych widoki usługi Log Analytics dla działania usługi Azure AD dzienniki. Widoki przedstawiają kilka raportów, które dotyczą typowych scenariuszy obejmujących inspekcji i zdarzeń logowania. Użytkownik może również powiadamiać na wszystkich danych zawartych w raportach, korzystając z procedury opisanej w poprzedniej sekcji.
 
-* **Usługa Azure AD inicjowania obsługi zdarzeń na koncie**: ten widok przedstawia raportów związanych z inspekcji działania obsługi, takie jak liczba nowych użytkowników zainicjowano obsługę administracyjną i problemy z aprowizowaniem, liczbę użytkowników, aktualizowane i zaktualizuj błędów oraz liczby użytkowników błędy rozliczeniu i odpowiednie.    
-* **Zdarzenia logowania**: ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
-* **Użytkownicy wykonywania wyrazić zgodę**: ten widok przedstawia raportów związanych z zgody użytkownika, takie jak zgody przyznaje przez użytkownika, logowania przez użytkowników, którzy uzyska zatwierdzenie, a także logowania przez aplikację dla wszystkich aplikacji opartych na zgody. 
+* **Konto usługi Azure AD inicjowania obsługi zdarzeń**: W tym widoku wyświetlane raporty związane z inspekcji działania obsługi, takie jak liczba nowych użytkowników zainicjowano obsługę administracyjną i problemy z aprowizowaniem, liczbę użytkowników, aktualizowane i zaktualizuj błędów oraz liczbę cofanie aprowizacji użytkowników i odpowiednie błędów.    
+* **Zdarzenia logowania**: Ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
+* **Użytkownicy wyrażania zgody**: Ten widok przedstawia raportów związanych z zgody użytkownika, takie jak zgody przyznaje przez użytkownika, logowania przez użytkowników, którzy uzyska zatwierdzenie, a także logowania przez aplikację dla wszystkich aplikacji opartych na zgody. 
 
 Dowiedz się, jak [zainstalować widoki usługi Log Analytics dla dzienników aktywności usługi Azure AD i używać ich](howto-install-use-log-analytics-views.md). 
 

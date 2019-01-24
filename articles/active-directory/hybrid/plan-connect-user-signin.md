@@ -1,10 +1,10 @@
 ---
-title: 'Usługi Azure AD Connect: Logowanie użytkownika | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Logowanie użytkownika | Dokumentacja firmy Microsoft'
 description: Usługa Azure AD Connect logowania użytkownika dla ustawień niestandardowych.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 547b118e-7282-4c7f-be87-c035561001df
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 38086d0e975956aefe4fcde4eda67d939d58f617
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 57f1879e79dfdfe8eff421deb466b3098f5a5c60
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365846"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463460"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Usługa Azure AD Connect użytkownika opcje logowania
 Usługa Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logować się do zasobów lokalnych i chmurze przy użyciu tego samego hasła. W tym artykule opisano kluczowe pojęcia związane z każdego modelu tożsamości ułatwić wybór tożsamości, którego chcesz użyć do logowania do usługi Azure AD.
@@ -30,7 +30,7 @@ Jeśli już znasz modelu tożsamości usługi Azure AD i chcesz dowiedzieć się
 * [Synchronizacja skrótów haseł](#password-hash-synchronization) z [bezproblemowego logowania jednokrotnego (SSO)](how-to-connect-sso.md)
 * [Uwierzytelnianie przekazywane](how-to-connect-pta.md) z [bezproblemowego logowania jednokrotnego (SSO)](how-to-connect-sso.md)
 * [Federacyjne logowanie Jednokrotne (przy użyciu usługi Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
-* [Federacja z serwerem PingFederate](#federation-with-pingfederate)
+* [Konfigurowanie federacji z serwerem PingFederate](#federation-with-pingfederate)
 
 > [!NOTE] 
 > Należy pamiętać, że, konfigurowanie Federacji dla usługi Azure AD, ustanowienia relacji zaufania między dzierżawą usługi Azure AD i domen federacyjnych. Z tej domeny federacyjnej relacji zaufania, użytkownicy mają dostęp do zasobów w chmurze usługi Azure AD w ramach dzierżawy.  
@@ -125,7 +125,7 @@ Strony logowania usługi Azure AD wymieniono sufiksy nazw UPN, które są zdefin
 
 | Stan | Opis | Wymagana akcja |
 |:--- |:--- |:--- |
-| Zweryfikowano |Program Azure AD Connect znalezione dopasowania zweryfikowane domeny w usłudze Azure AD. Wszyscy użytkownicy w tej domenie może Zaloguj się przy użyciu ich poświadczeń lokalnych. |Jest wymagana żadna akcja. |
+| Zweryfikowano |Program Azure AD Connect znalezione dopasowania zweryfikowane domeny w usłudze Azure AD. Wszyscy użytkownicy w tej domenie może Zaloguj się przy użyciu ich poświadczeń lokalnych. |Żadna akcja nie jest wymagana. |
 | Nie zweryfikowano |Program Azure AD Connect można odnaleźć pasującego domeny niestandardowej w usłudze Azure AD, ale nie jest on weryfikowany. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na wartość domyślna. dodany sufiks onmicrosoft.com po synchronizacji, jeśli domena nie jest zweryfikowana. | [Weryfikowanie domeny niestandardowej w usłudze Azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nie dodano |Program Azure AD Connect nie znalazł domeny niestandardowej, która odpowiadał sufiks głównej nazwy użytkownika. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na wartość domyślna. Jeśli domena nie jest dodana i zweryfikowane w usłudze Azure dodany sufiks onmicrosoft.com. | [Dodanie i zweryfikowanie domeny niestandardowej, która odpowiada sufiks głównej nazwy użytkownika.](../fundamentals/add-custom-domain.md) |
 

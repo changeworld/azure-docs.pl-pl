@@ -3,18 +3,18 @@ title: Uruchamianie elementu runbook usługi Azure Automation za pomocą element
 description: Element webhook, który umożliwia klientom uruchamianie elementu runbook w usłudze Azure Automation z wywołania HTTP.  W tym artykule opisano sposób tworzenia elementu webhook oraz wywołać jedną do uruchamiania elementu runbook.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 10/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 381f8c5fb59379c0494dabcd22f4675be9535837
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 19a771d75cd1f2a2a18a3a4c42fcc34e55afb111
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016695"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438851"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Uruchamianie elementu runbook usługi Azure Automation za pomocą elementu webhook
 
@@ -226,3 +226,4 @@ Na poniższej ilustracji przedstawiono żądania wysyłane z programu Windows Po
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się, jak usługa Azure Automation umożliwia podejmowanie akcji na alerty platformy Azure, zobacz [umożliwia alertu można wyzwolić elementu runbook usługi Azure Automation](automation-create-alert-triggered-runbook.md).
+

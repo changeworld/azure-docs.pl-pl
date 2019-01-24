@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 05609f016988720360c51fe529de2f389206406f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d9e0848b7e4598d03e5d8d8b15ff4cde3316884d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978696"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54850879"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu wiersza polecenia platformy Azure
 
@@ -64,7 +64,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az-net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az-net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>Dodaj HTTP port
 
-Możesz użyć [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway/frontend-port#az-network_application_gateway_frontend_port_create) Aby dodać HTTP port do usługi application gateway.
+Możesz użyć [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway/frontend-port) Aby dodać HTTP port do usługi application gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
 
-Dodaj HTTP do HTTPS konfiguracji przekierowania do bramy aplikacji przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config#az-network_application_gateway_redirect_config_create).
+Dodaj HTTP do HTTPS konfiguracji przekierowania do bramy aplikacji przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -161,7 +161,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Dodaj regułę routingu
 
-Dodaj regułę routingu o nazwie *reguły rule2* z konfiguracją przekierowania do bramy aplikacji przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway/rule#az-network_application_gateway_rule_create).
+Dodaj regułę routingu o nazwie *reguły rule2* z konfiguracją przekierowania do bramy aplikacji przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway/rule).
 
 ```azurecli-interactive
 az network application-gateway rule create \

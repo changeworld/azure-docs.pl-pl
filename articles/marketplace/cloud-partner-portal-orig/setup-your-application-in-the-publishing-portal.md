@@ -1,6 +1,6 @@
 ---
 title: Instalowanie aplikacji w portalu wydawców | Dokumentacja firmy Microsoft
-description: Instrukcje w sposób konfigurowania usługi kompilowane w portalu wydawców w chmurze.
+description: Instrukcje w sposób konfigurowania aplikacji w portalu wydawców w chmurze.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: pbutlerm
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9386f0e0bf552789b027df96e9e54ebcf31d7d34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810313"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448487"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Instalowanie aplikacji w portalu wydawców
 
@@ -82,9 +82,9 @@ Większość wydawców spowoduje, że te pola z wartościami domyślnymi, użytk
 
 Oto wyjaśnienia dla tych pól:
 
-* Nazwa pliku pakietu: Nazwa pliku utworzonego w kroku powyżej, podczas tworzenia pliku zip, który jest CRM pakietu usługi AppSource. W powyższym przykładzie jest "Microsoft\_SamplePackage.zip".
-* Adres URL lokalizacji pakietu: jest to adres URL konta usługi Azure Storage, która zawiera nazwę pliku pakietu, które są wymienione powyżej. Jest to adres URL utworzony w kroku 9 sekcji powyżej.
-* Czy istnieje więcej niż jeden pakiet crm w pliku pakietu: Wybierz tak **tylko** jeśli są obsługiwanie wielu wersji programu crm przy użyciu różnych pakietach. Dla większości partnerów są to "No". Jeśli wybierzesz tak, musisz utworzyć pakiety usługi AppSource dla każdej wersji rozwiązania. _Uwaga: Nie jest to pytanie Jeśli masz wiele **zip** plików. Jeśli masz wiele plików solution.zip, ale tylko jedna wersja, należy nadal wybrać "Nie." Narzędzia pakietu zostanie wyświetlone są ze sobą automatycznie._
+* Nazwa pliku pakietu: Nazwa pliku utworzonego w kroku powyżej podczas tworzenia pliku zip, który jest CRM pakietu usługi AppSource. W powyższym przykładzie jest "Microsoft\_SamplePackage.zip".
+* Adres URL lokalizacji pakietu: Jest to adres URL konta usługi Azure Storage, która zawiera nazwę pliku pakietu, które są wymienione powyżej. Jest to adres URL utworzony w kroku 9 sekcji powyżej.
+* Plik pakietu jest więcej niż jeden pakiet crm: Wybierz pozycję Tak, **tylko** jeśli są obsługiwanie wielu wersji programu crm przy użyciu różnych pakietach. Dla większości partnerów są to "No". Jeśli wybierzesz tak, musisz utworzyć pakiety usługi AppSource dla każdej wersji rozwiązania. _Uwaga: NIE jest to pytanie Jeśli masz wiele **zip** plików. Jeśli masz wiele plików solution.zip, ale tylko jedna wersja, należy nadal wybrać "Nie." Narzędzia pakietu zostanie wyświetlone są ze sobą automatycznie._
 
 ### <a name="crm-package-availability"></a>Dostępność pakietu CRM
 
@@ -184,7 +184,7 @@ Wprowadź adres URL pomocy technicznej dla aplikacji.
 
 ### <a name="lead-destination"></a>Prowadzić docelowego
 
-Wybierz system CRM, gdzie można prowadzić będą przechowywane. W tym miejscu wybierz opcję "Tabela platformy Azure", jeśli masz jedną z następujących systemów CRM: Salesforce, Marketo, Microsoft Dynamics CRM. System CRM, tutaj jest, gdzie będzie zapisywać szczegóły użytkownicy końcowi, którzy spróbują aplikacji w usłudze AppSource (potencjalnych klientów). W zależności od systemu CRM, którą wybierzesz kliknij odpowiedni adres URL poniżej informacje na temat sposobu ukończenia kolejny zbiór pól
+Wybierz system CRM, gdzie można prowadzić będą przechowywane. Należy wybrać to "Usługi Azure Table", jeśli masz jedną z następujących systemów CRM: Salesforce, Marketo, Microsoft Dynamics CRM. System CRM, tutaj jest, gdzie będzie zapisywać szczegóły użytkownicy końcowi, którzy spróbują aplikacji w usłudze AppSource (potencjalnych klientów). W zależności od systemu CRM, którą wybierzesz kliknij odpowiedni adres URL poniżej informacje na temat sposobu ukończenia kolejny zbiór pól
 
 * [Tabela platformy Azure](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)

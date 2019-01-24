@@ -3,19 +3,19 @@ title: Odwołanie — struktury zaufania w usłudze Azure Active Directory B2C |
 description: Temat o zasadach niestandardowych usługi Azure Active Directory B2C i platformy środowiska tożsamości.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 00d2f37068c5bedb17ba9a4064d1f5058f5ab72c
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 694d463c158f8c8beb0396edf22ac749c03e9e97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185783"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845694"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definiowanie relacji zaufania struktur za pomocą platformy środowiska tożsamości usługi Azure AD B2C
 
@@ -52,10 +52,10 @@ TFs są linchpins modelu Framework zaufania Otwórz tożsamości programu Exchan
 - **Opis informacji cyfrowych tożsamość o ma oferowana/jest wymagana przez uczestników**.
 
 - **Techniczne zasad do produkcji i użycie informacji o tożsamości cyfrowej, a zatem pomiaru Dowaniu i LOP. Te zasady napisane zazwyczaj obejmują następujące kategorie zasad:**
-    - Tożsamość sprawdzania zasad, na przykład: *jak zdecydowanie jest sprawdzane informacje o tożsamości danej osoby?*
-    - Zasady zabezpieczeń, na przykład: *jak silnie są integralność informacji oraz poufności chronionych?*
-    - Zasady zachowania poufności informacji, na przykład: *jaki formant użytkownika ma za pośrednictwem osobowe (PII)*?
-    - Zasady przeżywalność, na przykład: *Jeśli dostawca zaprzestaje operacje, jakie ciągłości działania i ochrony danych osobowych funkcji?*
+    - Tożsamość sprawdzania zasad, na przykład: *Jak zdecydowanie jest sprawdzane informacje o tożsamości danej osoby?*
+    - Zasady zabezpieczeń, na przykład: *Jak zdecydowanie są informacje o integralności i poufności chronione?*
+    - Zasady ochrony prywatności, na przykład: *Jaki formant użytkownika ma za pośrednictwem osobowe (PII)*?
+    - Przeżywalność zasady, na przykład: *Jeśli dostawca zaprzestaje operacje, jakie ciągłości działania i ochrony danych osobowych funkcji?*
 
 - **Profile techniczne dla celów produkcyjnych i użycie informacji o tożsamości cyfrowej. Tego typu profile uwzględniają:**
     - Interfejsy zakresu, dla których informacji o tożsamości cyfrowej znajduje się w temacie Dowaniu określony.

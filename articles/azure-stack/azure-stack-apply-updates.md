@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
-ms.openlocfilehash: 2a835e7cd9d4c45c1c39c3c135705cb4dff0e6fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 190d81fc7811e4afdb32555407716f60f5b9a2d1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842190"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476142"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Stosowanie aktualizacji w usłudze Azure Stack
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 Możesz użyć **aktualizacji** kafelka w portalu administracyjnym, aby zastosować pakietów aktualizacji firmy Microsoft lub producentem OEM dla usługi Azure Stack. Należy Pobierz pakiet aktualizacji, importowania plików pakietu do usługi Azure Stack, a następnie zainstaluj pakiet aktualizacji.
 
@@ -50,13 +50,11 @@ Poniższa procedura pokazuje, jak zaimportować, a następnie zainstaluj pakiety
 
 2. W polu filtru wpisz **aktualizacji**i wybierz **updateadminaccount** konta magazynu.
 
-    ![Pokazuje, jak wyszukiwać updateadminaccount](media/azure-stack-apply-updates/ApplyUpdates2.png)
-
 3. W magazynie ekranu szczegóły konta, w obszarze **usług**, wybierz opcję **obiektów blob**.
  
     ![Pokazuje, jak uzyskać dostęp do obiektów blob dla konta magazynu](media/azure-stack-apply-updates/ApplyUpdates3.png) 
- 
-4. W obszarze **usługi Blob service**, wybierz opcję **+ kontener** do utworzenia kontenera. Wprowadź nazwę (na przykład *1709 aktualizacji*), a następnie wybierz pozycję **OK**.
+
+4. W obszarze **usługi Blob service**, wybierz opcję **+ kontener** do utworzenia kontenera. Wprowadź nazwę (na przykład *1811 aktualizacji*), a następnie wybierz pozycję **OK**.
  
      ![Pokazuje, jak dodać kontener na koncie magazynu](media/azure-stack-apply-updates/ApplyUpdates4.png)
 
@@ -66,12 +64,12 @@ Poniższa procedura pokazuje, jak zaimportować, a następnie zainstaluj pakiety
 
 6. W obszarze **przekazywanie obiektu blob**, kliknij ikonę folderu, wskaż lokalizację pakietu aktualizacji plik .exe, a następnie kliknij przycisk **Otwórz** w oknie Eksploratora plików.
   
-7. W obszarze **przekazywanie obiektu blob**, kliknij przycisk **przekazywanie**. 
+7. W obszarze **przekazywanie obiektu blob**, kliknij przycisk **przekazywanie**.
   
     ![Wskazuje, gdzie w celu przekazania wszystkich plików pakietu](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Powtórz kroki 6 i 7 dla *Nazwa_pakietu*bin i pliki Metadata.xml. Nie należy importować plik uzupełniające plik Notice.txt, jeśli uwzględniony.
-9. Gdy skończysz, możesz przejrzeć powiadomienia (ikonę dzwonka w prawym górnym rogu portalu). Powiadomienia powinny wskazywać, że przekazywanie ukończone. 
+8. Powtórz kroki 6 i 7 dla *Nazwa_pakietu*bin i pliki Metadata.xml. Nie należy importować plik uzupełniające plik Notice.txt, jeśli uwzględniony.
+9. Gdy skończysz, możesz przejrzeć powiadomienia (ikonę dzwonka w prawym górnym rogu portalu). Powiadomienia powinny wskazywać, że przekazywanie ukończone.
 10. Przejdź z powrotem do Aktualizuj Kafelek na pulpicie nawigacyjnym. Kafelek powinno wskazywać, że dostępna jest aktualizacja. Kliknij Kafelek, aby przejrzeć pakiet aktualizacji nowo dodane.
 11. Aby zainstalować aktualizację, wybierz pakiet, który jest oznaczony jako **gotowe** a albo kliknij prawym przyciskiem myszy pakiet i wybierz **teraz zaktualizować**, lub kliknij przycisk **teraz zaktualizować** akcji w prawym górnym .
 12. Po kliknięciu instalowania pakietu aktualizacji, można wyświetlić stan w **szczegóły przebiegu aktualizacji** obszaru. W tym miejscu możesz również kliknąć **Pobierz pełne dzienniki** do pobierania plików dziennika.

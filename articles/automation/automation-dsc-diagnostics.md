@@ -3,18 +3,18 @@ title: Przekazuj konfiguracji stanu automatyzacji Azure raportowania danych do u
 description: W tym artykule pokazano sposób wysyłania Desired State Configuration (DSC) dane raportowania z usługi Azure Automation stanu konfiguracji do usługi Log Analytics, aby dostarczyć dodatkowy wgląd i zarządzania.
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 88805f26869ad75830cef1aa074cd90cb947e76f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2450ffcbd9fa7bebd5a1b862aa9c35baa5dbdc95
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681742"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425185"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Przekazuj konfiguracji stanu automatyzacji Azure raportowania danych do usługi Log Analytics
 
@@ -123,11 +123,11 @@ Diagnostyka usługi Azure Automation tworzy dwie kategorie rekordów w usłudze 
 | --- | --- |
 | TimeGenerated |Data i godzina, gdy uruchomiono sprawdzania zgodności. |
 | OperationName |DscNodeStatusData |
-| Typ resultType |Czy ten węzeł jest zgodne. |
+| ResultType |Czy ten węzeł jest zgodne. |
 | NodeName_s |Nazwa węzła zarządzanego. |
 | NodeComplianceStatus_s |Czy ten węzeł jest zgodne. |
 | DscReportStatus |Czy sprawdzanie zgodności został uruchomiony pomyślnie. |
-| ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__,__"ApplyandMonitior"__, i __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: ma zastosowanie do konfiguracji DSC, a nie robi nic więcej, chyba że nowa konfiguracja zostanie przypisany do węzła docelowego lub gdy nowa konfiguracja zostanie ściągnięty z serwera. Po początkowej stosowania nowej konfiguracji DSC nie sprawdza odejście od stanu wcześniej skonfigurowany. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyOnly__ staje się skuteczny. </li><li> __ApplyAndMonitor__: jest to wartość domyślna. LCM stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyAndMonitor__ staje się skuteczny.</li><li>__ApplyAndAutoCorrect__: DSC stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach, a następnie przywrócenie bieżącej konfiguracji.</li></ul> |
+| ConfigurationMode | Jak konfiguracja jest stosowana do węzła. Możliwe wartości to __"ApplyOnly"__,__"ApplyandMonitior"__, i __"ApplyandAutoCorrect"__. <ul><li>__ApplyOnly__: Ma zastosowanie do konfiguracji DSC, a nie robi nic więcej, chyba że nowa konfiguracja zostanie przypisany do węzła docelowego lub gdy nowa konfiguracja zostanie ściągnięty z serwera. Po początkowej stosowania nowej konfiguracji DSC nie sprawdza odejście od stanu wcześniej skonfigurowany. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyOnly__ staje się skuteczny. </li><li> __ApplyAndMonitor__: Jest to wartość domyślna. LCM stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach. DSC, podejmuje próbę zastosowania konfiguracji, dopóki nie zostanie pomyślnie przed __ApplyAndMonitor__ staje się skuteczny.</li><li>__ApplyAndAutoCorrect__: DSC stosuje wszystkie nowe konfiguracje. Po początkowym aplikacji nowej konfiguracji Jeśli węzeł docelowy drifts z żądanego stanu DSC raporty niezgodności w dziennikach, a następnie przywrócenie bieżącej konfiguracji.</li></ul> |
 | HostName_s | Nazwa węzła zarządzanego. |
 | adres IP | Adres IPv4 zarządzany węzeł. |
 | Kategoria | DscNodeStatus |
@@ -154,7 +154,7 @@ Diagnostyka usługi Azure Automation tworzy dwie kategorie rekordów w usłudze 
 | --- | --- |
 | TimeGenerated |Data i godzina, gdy uruchomiono sprawdzania zgodności. |
 | OperationName |DscResourceStatusData|
-| Typ resultType |Czy zasób jest zgodne. |
+| ResultType |Czy zasób jest zgodne. |
 | NodeName_s |Nazwa węzła zarządzanego. |
 | Kategoria | DscNodeStatus |
 | Zasób | Nazwa konta usługi Azure Automation. |

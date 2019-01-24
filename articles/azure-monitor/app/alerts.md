@@ -11,14 +11,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: fe63813220d526536a31efb48b6ec29b6ae383e8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 233ce5623195a9a661f67b5c3ded40e68c8eb33a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121145"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843518"
 ---
 # <a name="set-alerts-in-application-insights"></a>Ustawianie alertów w usłudze Application Insights
 [Usługa Azure Application Insights] [ start] może generować alerty na zmiany w metrykach wydajności lub użycia aplikacji sieci web. 
@@ -89,7 +89,20 @@ Popularne alerty zawierają:
 * **Czas odpowiedzi serwera** po stronie serwera aplikacji sieci web. A także Konfigurowanie alertów, Zwracaj uwagę na tę metrykę, aby zobaczyć, jeśli zależy to nieproporcjonalnie z kursów żądania wysokiej: odmiany może wskazywać, że Twoja aplikacja działa brakuje zasobów. 
 * **Wyjątki serwera** — aby je zobaczy, należy wykonać niektóre [dodatkowe ustawienia](../../azure-monitor/app/asp-net-exceptions.md).
 
-Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](../../azure-monitor/app/proactive-failure-diagnostics.md) automatycznie monitorować współczynnik, w którym aplikacja ma odpowiadać na żądania z kodami błędów. 
+Nie należy zapominać, że [aktywna współczynnik Diagnostyka błędów](../../azure-monitor/app/proactive-failure-diagnostics.md) automatycznie monitorować współczynnik, w którym aplikacja ma odpowiadać na żądania z kodami błędów.
+
+## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
+
+W tej sekcji dotyczą alertów klasycznych i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych](../platform/alerts-classic.overview.md) i nowego środowiska alertów odnoszą się do [artykuł z omówieniem alerty](../platform/alerts-overview.md). Do kontrolowania alert powiadomienia w nowych alertów środowiska użyj [grup akcji](../platform/action-groups.md).
+
+* Firma Microsoft zaleca użycie określonych adresatów klasycznego powiadomień o alertach.
+
+* Dla alertów dotyczących metryk usługi Application Insights, wszelkie (w tym metryki dostępności) **zbiorcze/grupę** pole wyboru opcji, jeśli włączona, wysyła do użytkowników z rolami właściciela, współautora lub czytelnika w ramach subskrypcji. W efekcie _wszystkich_ użytkowników z dostępem do subskrypcji zasobu usługi Application Insights znajdują się w zakresie i będą otrzymywać powiadomienia. 
+
+> [!NOTE]
+> Jeśli obecnie używasz **zbiorcze/grupę** pole wyboru opcji i go wyłączyć, nie można przywrócić zmianę.
+
+Jeśli chcesz powiadomić użytkowników na podstawie ich ról, należy użyć nowe alerty środowisko/niemal w czasie rzeczywistym. Za pomocą [grup akcji](../platform/action-groups.md), można skonfigurować powiadomienia e-mail do użytkowników z dowolną rolę właściciel/Współautor/reader (nie łączyć ze sobą jako pojedyncza opcja).
 
 ## <a name="automation"></a>Automatyzacja
 * [Automatyzowanie konfigurowania alertów za pomocą programu PowerShell](../../azure-monitor/app/powershell-alerts.md)

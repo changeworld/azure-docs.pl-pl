@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387433"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413553"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Znajdowanie adresu przy użyciu usługi Azure Maps usługi wyszukiwania
 
@@ -54,7 +54,7 @@ Domyślnie większość zapytań wyszukiwania `maxFuzzyLevel=1` wydajność i ob
     | Klucz | Wartość |
     |------------------|-------------------------|
     | wersja interfejsu API | 1.0 |
-    | klucz subskrypcji | \<Klucz usługi Azure Maps\> |
+    | subscription-key | \<Klucz usługi Azure Maps\> |
     | query | pizza |
 
 4. Kliknij przycisk **wysyłania** i przejrzeć treść odpowiedzi.
@@ -104,7 +104,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
     | Klucz | Wartość |
     |------------------|-------------------------|
     | wersja interfejsu API | 1.0 |
-    | klucz subskrypcji | \<Klucz usługi Azure Maps\> |
+    | subscription-key | \<Klucz usługi Azure Maps\> |
     | query | 400 Broad St, Seattle, WA 98109 |
   
 4. Kliknij przycisk **wysyłania** i przejrzeć treść odpowiedzi.
@@ -145,7 +145,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
     | Klucz | Wartość |
     |------------------|-------------------------|
     | wersja interfejsu API | 1.0 |
-    | klucz subskrypcji | \<Klucz usługi Azure Maps\> |
+    | subscription-key | \<Klucz usługi Azure Maps\> |
     | query | 47.591180,-122.332700 |
   
 4. Kliknij przycisk **wysyłania** i przejrzeć treść odpowiedzi.
@@ -158,7 +158,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
     |-----|------------|
     | numer | true |
 
-    Jeśli [numer](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr zapytania są wysyłane z tym żądaniem, odpowiedź może zawierać boku ulicy (lewo/w prawo), a także przesunięcie pozycji dla tego numeru.
+    Jeśli [numer](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr zapytania są wysyłane z tym żądaniem, odpowiedź może zawierać boku ulicy (lewo/w prawo), a także przesunięcie pozycji dla tego numeru.
   
 6. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
 
@@ -166,7 +166,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
     |-----|------------|
     | returnSpeedLimit | true |
   
-    Gdy [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametru zapytania jest ustawiona, zwraca odpowiedź przesłanych limitu szybkości.
+    Gdy [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametru zapytania jest ustawiona, zwraca odpowiedź przesłanych limitu szybkości.
 
 7. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
 
@@ -174,7 +174,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
     |-----|------------|
     | returnRoadUse | true |
 
-    Gdy [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametru zapytania jest ustawiona, odpowiedzi zwraca tablicę Użyj drogi, do odwrotnego geocodes na poziomie ulicy.
+    Gdy [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametru zapytania jest ustawiona, odpowiedzi zwraca tablicę Użyj drogi, do odwrotnego geocodes na poziomie ulicy.
 
 8. Dodaj następujący klucz / wartość pary do **Params** sekcji, a następnie kliknij przycisk **wysyłania**:
 
@@ -182,7 +182,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
     |-----|------------|
     | roadUse | true |
 
-    Zapytanie wsteczne geokodowania można ograniczyć do określonego typu drogowym za pomocą funkcji [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) parametr zapytania.
+    Zapytanie wsteczne geokodowania można ograniczyć do określonego typu drogowym za pomocą funkcji [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) parametr zapytania.
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>Wyszukaj między ulica, przy użyciu odwrotnego wyszukiwania ulicy wielu adresów
 
@@ -203,7 +203,7 @@ Można przekazać adres pełną lub częściową adres wyszukiwania interfejsu A
     | Klucz | Wartość |
     |------------------|-------------------------|
     | wersja interfejsu API | 1.0 |
-    | klucz subskrypcji | \<Klucz usługi Azure Maps\> |
+    | subscription-key | \<Klucz usługi Azure Maps\> |
     | query | 47.591180,-122.332700 |
   
 4. Kliknij przycisk **wysyłania** i przejrzeć treść odpowiedzi.

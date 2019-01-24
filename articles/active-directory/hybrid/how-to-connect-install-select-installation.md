@@ -1,10 +1,10 @@
 ---
-title: 'Azure AD Connect: Wybierz typ instalacji | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Wybierz typ instalacji | Dokumentacja firmy Microsoft'
 description: W tym temacie przedstawiono kroki Wybieranie typu instalacji do użycia programu Azure AD Connect
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e4185b6b30bdd01492d9aae7ac38e18aaba7eef5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6082d583432e246ba3d45f3e97f4b104710e8727
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312046"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473694"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Wybieranie typu instalacji do użycia programu Azure AD Connect
-Program Azure AD Connect ma dwa typy instalacji nowej instalacji: Express i dostosowane. Ten temat ułatwia podjęcie decyzji, którą opcję do użycia podczas instalacji.
+Program Azure AD Connect udostępnia dwa typy instalacji nowej instalacji: Express i dostosowane. Ten temat ułatwia podjęcie decyzji, którą opcję do użycia podczas instalacji.
 
 ## <a name="express"></a>Express
 Express jest najbardziej typowych opcji i jest używany przez około 90% wszystkich nowych urządzeń. Została zaprojektowana w celu zapewnienia odpowiedniej konfiguracji najbardziej typowych scenariuszy.
@@ -43,7 +43,7 @@ Zapewnia następujące korzyści:
 
 Opcje, których można nadal używać Express:
 
-- Jeśli nie chcesz synchronizować wszystkich jednostek organizacyjnych, można nadal używać Express i na ostatniej stronie, usuń zaznaczenie **proces synchronizacji rozpocznie się...**\*. A następnie ponownie uruchom Kreatora instalacji, a następnie Zmień jednostki organizacyjne w [opcje konfiguracji](how-to-connect-installation-wizard.md#customize-synchronization-options) i Włącz synchronizację według harmonogramu.
+- Jeśli nie chcesz synchronizować wszystkich jednostek organizacyjnych, można nadal używać Express i na ostatniej stronie, usuń zaznaczenie ** proces synchronizacji rozpocznie się... ***. A następnie ponownie uruchom Kreatora instalacji, a następnie Zmień jednostki organizacyjne w [opcje konfiguracji](how-to-connect-installation-wizard.md#customize-synchronization-options) i Włącz synchronizację według harmonogramu.
 - Chcesz włączyć jedną z funkcji w usłudze Azure AD Premium, takich jak funkcja zapisywania zwrotnego haseł. Najpierw wykonaj express można pobrać ukończeniem instalacji początkowej. A następnie ponownie uruchom Kreatora instalacji, a następnie zmień [opcje konfiguracji](how-to-connect-installation-wizard.md#customize-synchronization-options).
 
 ## <a name="custom"></a>Niestandardowy

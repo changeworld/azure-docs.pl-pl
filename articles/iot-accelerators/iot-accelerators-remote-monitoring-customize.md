@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 53361ed460917fff42008283429967eff2e80ab2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 0609a653327640c542457822e41143b9b39dd6d4
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345100"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462203"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Dostosowywanie akceleratora rozwiązań zdalnego monitorowania
 
@@ -77,7 +77,7 @@ Poniższe kroki przedstawiają procedurę konfigurowania lokalnego środowiska d
 
 ## <a name="customize-the-layout"></a>Dostosowywanie układu
 
-Każda strona w rozwiązaniu do zdalnego monitorowania składa się z zestawem formantów, nazywane *panele* w kodzie źródłowym. **Pulpit nawigacyjny** strony składa się z pięciu panele: Przegląd, mapy, alarmy, Telemetrii i analizy. Można znaleźć kod źródłowy, który definiuje każdej strony i jego paneli w [komputerów z systemem remote-monitoring-interfejsem sieci Web](https://github.com/Azure/pcs-remote-monitoring-webui) repozytorium GitHub. Na przykład, kod, który definiuje **pulpit nawigacyjny** strony, jej układ i panele na tej stronie znajduje się w [src/składniki/stron/pulpit nawigacyjny](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) folderu.
+Każda strona w rozwiązaniu do zdalnego monitorowania składa się z zestawem formantów, nazywane *panele* w kodzie źródłowym. **Pulpit nawigacyjny** strony składa się z pięciu panele: Omówienie, mapy, alerty, Telemetrii i analizy. Można znaleźć kod źródłowy, który definiuje każdej strony i jego paneli w [komputerów z systemem remote-monitoring-interfejsem sieci Web](https://github.com/Azure/pcs-remote-monitoring-webui) repozytorium GitHub. Na przykład, kod, który definiuje **pulpit nawigacyjny** strony, jej układ i panele na tej stronie znajduje się w [src/składniki/stron/pulpit nawigacyjny](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard) folderu.
 
 Ponieważ zespoły zarządzać swoimi układ i zmiany rozmiaru, można łatwo modyfikować układ strony. Wprowadź następujące zmiany do **PageContent** element `src/components/pages/dashboard/dashboard.js` pliku:
 
@@ -335,7 +335,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
 
 ## <a name="add-a-new-kpi"></a>Dodaj nowy wskaźnik KPI
 
-**Pulpit nawigacyjny** strony wyświetli wskaźniki KPI w **Analytics** panelu. Te kluczowe wskaźniki wydajności są obliczane w `src/components/pages/dashboard/dashboard.js` pliku. Kluczowe wskaźniki wydajności są renderowane przy `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` pliku. W poniższych krokach opisano sposób obliczania i renderować nową wartość wskaźnika KPI na **pulpit nawigacyjny** strony. Przykład pokazany jest dodawanie nowych wartość procentową zmiany w alarmy ostrzeżenia kluczowy wskaźnik wydajności:
+**Pulpit nawigacyjny** strony wyświetli wskaźniki KPI w **Analytics** panelu. Te kluczowe wskaźniki wydajności są obliczane w `src/components/pages/dashboard/dashboard.js` pliku. Kluczowe wskaźniki wydajności są renderowane przy `src/components/pages/dashboard/panels/analytics/analyticsPanel.js` pliku. W poniższych krokach opisano sposób obliczania i renderować nową wartość wskaźnika KPI na **pulpit nawigacyjny** strony. Przykład pokazany jest dodawanie nowych wartość procentową zmiany w alerty ostrzegawcze kluczowy wskaźnik wydajności:
 
 1. Otwórz plik `src/components/pages/dashboard/dashboard.js`. Modyfikowanie **stan początkowy** obiektu, aby uwzględnić **warningAlertsChange** właściwości w następujący sposób:
 
@@ -365,7 +365,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
       openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
       totalWarningCount: (acc.totalWarningCount || 0) + (isWarning ? 1 : 0),
       totalCriticalCount: (acc.totalCriticalCount || 0) + (isCritical ? 1 : 0),
-      alarmsPerDeviceId: updatedAlarmsPerDeviceId
+      alertsPerDeviceId: updatedAlertsPerDeviceId
     };
     ```
 

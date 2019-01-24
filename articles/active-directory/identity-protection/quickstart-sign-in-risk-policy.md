@@ -5,7 +5,7 @@ services: active-directory
 keywords: ochronę tożsamości i dostępu warunkowego do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.component: identity-protection
@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 09528aab5f694aa017f9f16e2675d3c36c1bead3
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7cf427ed7be91db2b243c28bb66513b25045ffc0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822148"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54468492"
 ---
-# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki Start: Blokuje dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection  
+# <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection  
 
 Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników z logowaniem. Usługa Azure Active Directory (Azure AD) Identity Protection analizuje każdy logowania i oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie poziom ryzyka logowania. Ustawiając warunek ryzyka logowania, można skonfigurować zasady dostępu warunkowego ryzyka logowania reagują na wystąpienie określonego ryzyka logowania poziomów. 
 

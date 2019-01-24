@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: cda439973c584a57cadc30de7fb931732682de00
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 73d14ebf8ed365659ec547469cd903d5db22c561
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092461"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428617"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania pakietu SSIS wykonania w usłudze Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure Data Factory za pomocą działania wykonywanie pakietu SSIS. 
@@ -28,7 +28,7 @@ W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure 
 **Usługa Azure SQL Database**. Instrukcje przedstawione w tym artykule używa usługi Azure SQL database, który hostuje katalog usług SSIS. Można również użyć bazy danych wystąpienia zarządzanego Azure SQL.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Tworzenie środowiska Azure SSIS Integration Runtime
-Tworzenie środowiska Azure-SSIS integration runtime, jeśli nie masz, wykonując instrukcje krok po kroku instrukcji w [samouczek: pakiety usług SSIS wdrażanie](tutorial-create-azure-ssis-runtime-portal.md).
+Tworzenie środowiska Azure-SSIS integration runtime, jeśli nie masz, wykonując instrukcje krok po kroku instrukcji w [samouczka: Wdrażanie pakietów usług SSIS](tutorial-create-azure-ssis-runtime-portal.md).
 
 ## <a name="run-a-package-in-the-azure-portal"></a>Uruchom pakiet w witrynie Azure portal
 W tej sekcji użyjesz interfejs użytkownika usługi Data Factory do tworzenia potoku usługi Data Factory z działaniem wykonywanie pakietu SSIS uruchomionym pakietu SSIS.
@@ -58,7 +58,7 @@ Pierwszym krokiem jest, aby utworzyć fabrykę danych za pomocą witryny Azure p
 4. Wybierz opcję **V2** w obszarze **Wersja**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko lokalizacje obsługiwane przez usługę Data Factory. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych lokalizacjach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij przycisk **Utwórz**.
+7. Kliknij pozycję **Utwórz**.
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)
@@ -137,7 +137,7 @@ Można również utworzyć zaplanowane wyzwalanie dla potoku, tak aby potok jest
 ## <a name="run-a-package-with-powershell"></a>Uruchom pakiet przy użyciu programu PowerShell
 W tej sekcji użyjesz programu Azure PowerShell do utworzenia potoku usługi Data Factory z działaniem wykonywanie pakietu SSIS uruchomionym pakietu SSIS. 
 
-Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
 
 ### <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 Możesz używaj tego samego fabryki danych, który ma Azure-SSIS IR lub Utwórz fabrykę danych. Poniższa procedura zawiera kroki, aby utworzyć fabrykę danych. Utworzysz potok z działaniem wykonywanie pakietu SSIS w tej fabryce danych. Działanie wykonanie pakietu SSIS uruchamia pakietu SSIS. 
@@ -180,7 +180,7 @@ Pamiętaj o następujących kwestiach:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli **współautora** lub **właściciela** albo **administratorem** subskrypcji platformy Azure.
-* Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+* Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Tworzenie potoku z działaniem wykonywanie pakietu SSIS 
 W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie zostanie uruchomione pakietu SSIS. 

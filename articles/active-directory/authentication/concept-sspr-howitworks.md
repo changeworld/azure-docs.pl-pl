@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be7aa43ec6001be78fb405290914f19174559530
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426208"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435723"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -64,7 +64,7 @@ Jeśli samoobsługowego resetowania HASŁA jest włączona, należy wybrać co n
 * Kod aplikacji mobilnej (wersja zapoznawcza)
 * Email
 * Telefon komórkowy
-* Telefon biurowy
+* Telefon służbowy
 * Pytania zabezpieczające
 
 Użytkownicy mogą zresetować swoje hasło tylko, jeśli mają one dane już obecne we metod uwierzytelniania, która została włączona przez administratora.
@@ -156,7 +156,7 @@ Przykład: Istnieją cztery Administratorzy w środowisku. Administrator, A Rese
 
 Jeśli zainstalować, skonfigurować i włączyć program Azure AD Connect, masz następujące dodatkowe opcje integracji środowiska lokalnego. Jeśli te opcje są wygaszone, następnie zapisywania zwrotnego nie został poprawnie skonfigurowany. Aby uzyskać więcej informacji, zobacz [Konfigurowanie funkcji zapisywania zwrotnego haseł](howto-sspr-writeback.md).
 
-![Zapisywanie zwrotne][Writeback]
+![Writeback][Writeback]
 
 Ta strona zawiera szybkie stan lokalnego klienta zapisywania zwrotnego, wyświetlony zostanie jeden z następujących komunikatów na podstawie bieżącej konfiguracji:
 
@@ -186,8 +186,8 @@ Ten formant wskazuje, czy użytkownicy odwiedzający portal resetowania haseł n
 Resetowanie hasła i zmiany są w pełni obsługiwane na wszystkich konfiguracji z business-to-business (B2B). Resetowanie hasła użytkownika B2B jest obsługiwane w następujących trzech przypadkach:
 
    * **Użytkownicy z organizacji partnerskiej z istniejącej dzierżawy usługi Azure AD**: Jeśli organizacja nawiązaliśmy partnerstwo z firmą korzysta z istniejącej dzierżawy usługi Azure AD, firma Microsoft *przestrzegać, niezależnie od zasady resetowania hasła są włączone dla tej dzierżawy*. Do resetowania hasła, aby pracować organizacji partnerskiej po prostu musi upewnij się, że włączono usługi Azure AD SSPR. Nie ma dodatkowych opłat dla klientów usługi Office 365 i można ją włączyć, wykonując kroki opisane w naszym [wprowadzenie do zarządzania hasłami](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) przewodnik.
-   * **Użytkownicy, którzy utworzą konto za pomocą** samoobsługowej: w przypadku organizacji możesz nawiązaliśmy partnerstwo z firmą używanych [samoobsługowej](../users-groups-roles/directory-self-service-signup.md) są wyposażone w dzierżawie, umożliwialiśmy je zresetować hasło za pomocą adresu e-mail one zarejestrowane.
-   * **Użytkowników B2B**: żadnych nowych użytkowników B2B utworzone za pomocą nowego [możliwości usługi Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) będą również mogli resetować swoje hasła przy użyciu adresu e-mail zarejestrowani w procesie zaproszenia.
+   * **Użytkownicy, którzy utworzą konto za pomocą** samoobsługowego tworzenia nowego konta: Jeśli w organizacji możesz nawiązaliśmy partnerstwo z firmą używane [samoobsługowej](../users-groups-roles/directory-self-service-signup.md) są wyposażone w dzierżawie, umożliwialiśmy je zresetować hasło za pomocą adresu e-mail one zarejestrowane.
+   * **Użytkowników B2B**: Żadnych nowych użytkowników B2B utworzone za pomocą nowego [możliwości usługi Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) będą również mogli resetować swoje hasła przy użyciu adresu e-mail zarejestrowani w procesie zaproszenia.
 
 Do przetestowania tego scenariusza, przejdź do https://passwordreset.microsoftonline.com przy użyciu jednego z tych użytkowników z firm partnerskich. Jeśli mają alternatywny adres e-mail lub adres e-mail uwierzytelniania zdefiniowane resetowania haseł działa zgodnie z oczekiwaniami.
 

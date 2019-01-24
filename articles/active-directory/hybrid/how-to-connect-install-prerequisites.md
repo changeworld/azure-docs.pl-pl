@@ -4,7 +4,7 @@ description: W tym temacie opisano wymagania wstępne i wymagania sprzętowe pro
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a36868e5bab64883036e0f93352bea5341ff7fe7
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: eb5ad49a26631ca363737406f54b4c794e01ebda
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384065"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54472844"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Wymagania wstępne dotyczące usługi Azure AD Connect
 W tym temacie opisano wymagania wstępne i wymagania sprzętowe programu Azure AD Connect.
@@ -79,7 +79,7 @@ Zanim zainstalujesz program Azure AD Connect, istnieje kilka kwestii, które są
   * Jeśli używasz Microsoft Cloud w Niemczech, czy w chmurze platformy Microsoft Azure Government, zobacz [Usługa synchronizacji Azure AD Connect wystąpień zagadnienia](reference-connect-instances.md) dla adresu URL.
 * Program Azure AD Connect (wersja 1.1.614.0 oraz po) domyślnie używa protokołu TLS 1.2 w celu szyfrowania komunikacji między aparatem synchronizacji i Azure AD. Jeśli protokół TLS 1.2, nie jest dostępna w podstawowym systemie operacyjnym, program Azure AD Connect przyrostowo powraca do starsze protokoły (TLS 1.1 i TLS 1.0).
 * Przed wersją 1.1.614.0 program Azure AD Connect domyślnie używa protokołu TLS 1.0 do szyfrowania komunikacji między aparatem synchronizacji i usługi Azure AD. Aby zmienić protokołu TLS 1.2, wykonaj kroki opisane w [włączenia protokołu TLS 1.2, programu Azure AD Connect](#enable-tls-12-for-azure-ad-connect).
-* Jeśli używasz serwera proxy ruchu wychodzącego do łączenia z Internetem, następujące ustawienie w **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** konieczne jest dodanie pliku dla Kreatora instalacji i Azure AD Synchronizacja aby można było nawiązać połączenie z Internetem a usługą Azure AD Connect. Ten tekst wpisany w dolnej części pliku. W tym kodzie &lt;PROXYADRESS&gt; reprezentuje nazwę hosta lub adres IP rzeczywistego serwera proxy.
+* Jeśli używasz serwera proxy ruchu wychodzącego do łączenia z Internetem, następujące ustawienie w **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** konieczne jest dodanie pliku dla Kreatora instalacji i Azure AD Synchronizacja aby można było nawiązać połączenie z Internetem a usługą Azure AD Connect. Ten tekst wpisany w dolnej części pliku. W tym kodzie &lt;PROXYADDRESS&gt; reprezentuje nazwę hosta lub adres IP rzeczywistego serwera proxy.
 
 ```
     <system.net>
@@ -119,8 +119,8 @@ Aby uzyskać więcej informacji, jeśli masz problemy z łącznością, zobacz [
 ### <a name="powershell-and-net-framework"></a>Program PowerShell i .net Framework
 Program Azure AD Connect, zależy od Microsoft PowerShell i .NET Framework 4.5.1. Należy tej wersji lub nowszej na serwerze jest zainstalowany. W zależności od wersji systemu Windows Server wykonaj następujące czynności:
 
-* Windows Server 2012 R2
-  * Microsoft PowerShell jest instalowany domyślnie. Jest wymagana żadna akcja.
+* Windows Server 2012R2
+  * Microsoft PowerShell jest instalowany domyślnie. Nie jest wymagana żadna akcja.
   * .NET framework 4.5.1 i nowszych są oferowane za pośrednictwem usługi Windows Update. Upewnij się, że zainstalowano najnowsze aktualizacje do systemu Windows Server w Panelu sterowania.
 * Systemy Windows Server 2008 R2 i Windows Server 2012
   * Najnowszą wersję programu Microsoft PowerShell jest dostępna w **Windows Management Framework 4.0**, która jest dostępna na [Microsoft Download Center](https://www.microsoft.com/downloads).
@@ -185,7 +185,7 @@ Oto lista składników usługi Azure AD Connect jest instalowana na serwerze, na
 * Program Microsoft SQL Server 2012 Command Line Utilities
 * Microsoft SQL Server 2012 Express LocalDB
 * Microsoft SQL Server 2012 Native Client
-* Microsoft Visual C++ 2013 ponownej dystrybucji pakietu
+* Microsoft Visual C++ 2013 Redistribution Package
 
 ## <a name="hardware-requirements-for-azure-ad-connect"></a>Wymagania sprzętowe programu Azure AD Connect
 W poniższej tabeli przedstawiono minimalne wymagania dotyczące komputera do synchronizacji Azure AD Connect.

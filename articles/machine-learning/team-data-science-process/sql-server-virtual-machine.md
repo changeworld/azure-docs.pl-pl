@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d14f03be3f6d62c201218f5073ba9af61765f55c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6b2890e90fd0a4d66ff8f62c6645584509eb0b29
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136447"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446905"
 ---
 # <a name="heading"></a>Przetwarzanie danych w maszyną wirtualną programu SQL Server na platformie Azure
 W tym dokumencie opisano, jak eksplorować dane i generować funkcji dla danych przechowywanych na maszynę Wirtualną programu SQL Server na platformie Azure. Można to zrobić za dane inteligencji przy użyciu języka SQL lub przy użyciu języka programowania, takich jak Python.
@@ -132,7 +132,7 @@ Następujący format parametrów połączenia może służyć do łączenia z ba
 [Biblioteki Pandas](http://pandas.pydata.org/) w języku Python zawiera bogaty zestaw struktur danych i narzędzia do analizy danych do manipulowania danymi programowania Python. Poniższy kod odczytuje wyniki zwracane z bazy danych programu SQL Server do ramki danych Pandas:
 
     # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <cloumnname2>... from <tablename>''', conn)
+    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
 Teraz możesz pracować z biblioteki Pandas ramki danych zgodnie z opisem w artykule [danych obiektów Blob platformy Azure proces w danym środowisku do nauki o danych](data-blob.md).
 

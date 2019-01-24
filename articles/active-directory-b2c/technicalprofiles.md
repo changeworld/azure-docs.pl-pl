@@ -3,19 +3,19 @@ title: Profili Technicalprofile | Dokumentacja firmy Microsoft
 description: Określ element profili Technicalprofile zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 45ea2a28b4b2fb3d55d7ae949152e6f51b5d3162
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c17159e1fa901e8219d1727769d234719c4321c6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566537"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856557"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -108,7 +108,7 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Name (Nazwa) | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, lub `None`. |
+| Nazwa | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, lub `None`. |
 | Program obsługi | Nie | Jeśli nazwa protokołu jest równa `Proprietary`, określ w pełni kwalifikowana nazwa zestawu, który jest używany przez usługę Azure AD B2C do określenia programu obsługi protokołu. |
 
 ### <a name="metadata"></a>Metadane
@@ -142,7 +142,7 @@ A **metadanych** element zawiera następujące elementy:
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator | Nie | Unikatowy identyfikator określonej pary kluczy przywoływany z innych elementów w pliku zasad. |
-| Identyfikatorze StorageReferenceId | Yes | Identyfikator kontenera klucza magazynu przywoływany z innych elementów w pliku zasad. |
+| StorageReferenceId | Yes | Identyfikator kontenera klucza magazynu przywoływany z innych elementów w pliku zasad. |
 
 ### <a name="inputclaimstransformations"></a>InputClaimsTransformations
 

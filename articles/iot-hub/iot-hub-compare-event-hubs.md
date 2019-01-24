@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 830052341c4f0e3488c8e63da59cbef1f72e158a
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 20bb0cb6982bcbea6b18989099322cfd3389b0b0
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42060681"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54819649"
 ---
-# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Łączenie urządzeń IoT z platformą Azure: Usługa IoT Hub i Event Hubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Łączenie urządzeń IoT na platformie Azure: Usługa IoT Hub i Event Hubs
 
 System Azure oferuje usługi specjalnie opracowanych dla różnego typu łączności i komunikacji w celu łatwiejszego nawiązania połączenia danych do możliwości chmury. Usługa Azure IoT Hub i Azure Event Hubs są usługi w chmurze, które mogą pozyskiwać dużych ilości danych i przetwarzania lub przechowywania tych danych, aby uzyskać wgląd w prowadzoną działalność. Te dwie usługi są podobne, że obsługują one zarówno pozyskiwania danych z małymi opóźnieniami i dużą niezawodność, ale są one przeznaczone do różnych celów. Usługi IoT Hub została opracowana specjalnie, aby spełnić unikatowe wymagania łączenie urządzeń IoT na dużą skalę, do chmury platformy Azure, natomiast usługa Event Hubs została zaprojektowana do obsługi dużych ilości danych przesyłania strumieniowego. Dlatego firma Microsoft zaleca, aby połączyć urządzenia IoT na platformie Azure przy użyciu usługi Azure IoT Hub
 
@@ -30,13 +30,14 @@ Poniższa tabela zawiera szczegółowe informacje o jak dwie warstwy usługi IoT
 | Możliwości IoT | W warstwie standardowa usługi IoT Hub | Warstwa podstawowa usługi IoT Hub | Event Hubs |
 | --- | --- | --- | --- |
 | Komunikaty z urządzenia do chmury | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |
-| Protokoły: HTTPS, AMQP, AMQP, przez protokół webSockets | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |
+| Protokoły: Protokół HTTPS, AMQP, AMQP, przez protokół webSockets | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |
 | Protokoły: MQTT, MQTT przez protokół webSockets | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
 | Tożsamość na urządzenie | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
 | Przekazywanie plików z urządzeń | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
 | Usługa Device Provisioning | ![Zaznacz][checkmark] | ![Zaznacz][checkmark] |  |
 | Obsługa komunikatów między chmurą a urządzeniem | ![Zaznacz][checkmark] |  |  |
 | Bliźniacza reprezentacja urządzenia i zarządzania urządzeniami | ![Zaznacz][checkmark] |  |  |
+| Strumienie urządzenia (wersja zapoznawcza) | ![Zaznacz][checkmark] |  |  |
 | IoT Edge | ![Zaznacz][checkmark] |  |  |
 
 Nawet jeśli tylko przypadek użycia jest pozyskiwanie danych urządzenia do chmury, zdecydowanie zaleca się za pomocą usługi IoT Hub, ponieważ umożliwia to usługa, która jest przeznaczona dla łączności między urządzeniami IoT. 

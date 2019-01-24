@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: 5262c99fae965201d4f9519495163d0e16836a7a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726546"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827418"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Pytania dotyczące agenta usługi Azure Backup
 W tym artykule znajdują się odpowiedzi na często zadawane pytania pomagające w szybkim poznaniu składników agenta usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -29,12 +29,12 @@ Tak, poświadczenia magazynu wygasają po upływie 48 godzin. Jeśli plik wygaś
 ### <a name="what-types-of-drives-can-i-back-up-files-and-folders-from-br"></a>Z jakich typów dysków można tworzyć kopie zapasowe plików i folderów? <br/>
 Nie można utworzyć kopii zapasowych następujących dysków/woluminów:
 
-* Nośniki wymienne: wszystkie źródła elementów kopii zapasowych muszą być stałe.
-* Woluminy tylko do odczytu: wolumin musi mieć możliwość zapisu ze względu na działanie usługi kopiowania woluminów w tle (VSS, volume shadow copy).
-* Woluminy offline: wolumin musi być w trybie online, aby mogła działać usługa VSS.
-* Udział sieciowy: wolumin musi być lokalny dla serwera, aby możliwe było wykonanie kopii zapasowej za pomocą usługi kopii zapasowej online.
-* Woluminy chronione przez funkcję BitLocker: wolumin musi zostać odblokowany przed próbą wykonania kopii zapasowej.
-* Identyfikacja systemu plików: jedyny obsługiwany system plików to system NTFS.
+* Nośniki wymienne: Wszystkie źródła elementów kopii zapasowych należy zgłaszać jako stały.
+* Woluminy tylko do odczytu: Wolumin musi być zapisywalny dla usługi kopiowania woluminów w tle (VSS) do funkcji.
+* Woluminy offline: Wolumin musi być w trybie online dla usługi VSS funkcji.
+* Udział sieciowy: Wolumin musi być lokalny dla serwera do wykonania kopii zapasowej przy użyciu kopii zapasowej online.
+* Woluminy chronione przez funkcję BitLocker: Wolumin musi być odblokowany przed próbą kopii zapasowej.
+* Identyfikacja systemu plików: Jedyny obsługiwany system plików to system NTFS.
 
 ### <a name="what-file-and-folder-types-can-i-back-up-from-my-serverbr"></a>Jakie typy plików i folderów z serwera można umieszczać w kopiach zapasowych?<br/>
 Obsługiwane są następujące typy:
@@ -43,11 +43,11 @@ Obsługiwane są następujące typy:
 * Skompresowane
 * Rozrzedzone
 * Skompresowane i rozrzedzone
-* Twarde linki: nieobsługiwane, pomijane
-* Punkt ponownej analizy: nieobsługiwane, pomijane
-* Zaszyfrowane i rozrzedzone: nieobsługiwane, pomijane
-* Skompresowany strumień: nieobsługiwane, pomijane
-* Rozrzedzony strumień: nieobsługiwane, pomijane
+* Twarde linki: Nieobsługiwane, pomijane
+* Punkt ponownej analizy: Nieobsługiwane, pomijane
+* Zaszyfrowane i rozrzedzone: Nieobsługiwane, pomijane
+* Skompresowany Stream: Nieobsługiwane, pomijane
+* Rozrzedzony Stream: Nieobsługiwane, pomijane
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>Czy można zainstalować agenta usługi Azure Backup na maszynie wirtualnej, której kopia zapasowa została już utworzona przez usługę Azure Backup przy użyciu rozszerzenia maszyny wirtualnej? <br/>
 Naturalnie. Usługa Azure Backup udostępnia funkcję tworzenia kopii zapasowych na poziomie maszyny wirtualnej dla maszyn wirtualnych platformy Azure przy użyciu rozszerzenia maszyny wirtualnej. Aby chronić pliki i foldery znajdujące się w systemie operacyjnym Windows gościa, zainstaluj w tym systemie agenta usługi Azure Backup.
@@ -94,8 +94,8 @@ Po pomyślnym zakończeniu tworzenia kopii zapasowej w nowej lokalizacji pamięc
 ### <a name="where-can-i-put-the-cache-folder-for-the-azure-backup-agent-to-work-as-expectedbr"></a>Gdzie można umieścić folder pamięci podręcznej, aby agent usługi Azure Backup działał zgodnie z oczekiwaniami?<br/>
 Nie zaleca się używać następujących lokalizacji dla folderu pamięci podręcznej:
 
-* Udział sieciowy lub nośniki wymienne: folder pamięci podręcznej musi być lokalny dla serwera, który wymaga wykonywania kopii zapasowych przy użyciu usługi kopii zapasowej online. Lokalizacje sieciowe lub nośników wymiennych, takich jak dyski USB nie są obsługiwane.
-* Woluminy offline: Folder pamięci podręcznej muszą być online dla oczekiwanej kopii zapasowej przy użyciu agenta usługi Azure Backup
+* Udział sieciowy lub nośnikach wymiennych: Folder pamięci podręcznej musi być lokalny dla serwera, który wymaga wykonywania kopii zapasowych przy użyciu kopii zapasowej online. Lokalizacje sieciowe lub nośników wymiennych, takich jak dyski USB nie są obsługiwane.
+* Woluminy offline: Folder pamięci podręcznej musi być w trybie online dla oczekiwanej kopii zapasowej przy użyciu agenta usługi Azure Backup
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-are-not-supportedbr"></a>Czy jakiekolwiek atrybuty folderu pamięci podręcznej nie są obsługiwane?<br/>
 Następujące atrybuty folderu pamięci podręcznej ani ich kombinacje nie są obsługiwane:

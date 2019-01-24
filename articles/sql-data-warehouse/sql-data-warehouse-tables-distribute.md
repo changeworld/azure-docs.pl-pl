@@ -10,17 +10,17 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 36db91cd7c4dad3c28c0c110ee837ca6d1284959
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3b272dd1c5b12c9f171c7e8c7c346f4d6cd4b777
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575390"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413876"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Wskazówki dotyczące projektowania rozproszone tabele w usłudze Azure SQL Data Warehouse
 Zalecenia dotyczące projektowania rozproszonych wyznaczania wartości skrótu i działanie okrężne rozproszone tabele w usłudze Azure SQL Data Warehouse.
 
-W tym artykule przyjęto założenie, że czytelnik zna dystrybucję danych i pojęcia przenoszenia danych w usłudze SQL Data Warehouse.  Aby uzyskać więcej informacji, zobacz [usługi Azure SQL Data Warehouse — architektura masowego równoległego przetwarzania (MPP)](massively-parallel-processing-mpp-architecture.md). 
+W tym artykule przyjęto założenie, że czytelnik zna dystrybucję danych i pojęcia przenoszenia danych w usłudze SQL Data Warehouse.  Aby uzyskać więcej informacji, zobacz [usługi Azure SQL Data Warehouse — architektura masowego równoległego przetwarzania (MPP)](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Co to jest dystrybuowanej tabeli?
 Rozproszona tabela jest wyświetlany jako pojedynczej tabeli, ale wiersze są przechowywane przez 60 dystrybucji. Wiersze są dystrybuowane za pomocą skrótu lub algorytm działanie okrężne.  
@@ -29,11 +29,11 @@ Rozproszona tabela jest wyświetlany jako pojedynczej tabeli, ale wiersze są pr
 
 Inną opcja magazynowania w tabeli jest replikowanie małej tabeli we wszystkich węzłach obliczeniowych. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące zreplikowane tabele projektowania](design-guidance-for-replicated-tables.md). Aby szybko wybrać spośród trzech opcji, zobacz tabele rozproszone w [Omówienie tabel](sql-data-warehouse-tables-overview.md). 
 
-W ramach projektowaniu tabel Dowiedz się, jak to możliwe, o danych i jak jest wykonywane zapytanie danych.  Na przykład należy wziąć pod uwagę następujące pytania:
+W ramach projektowaniu tabel Dowiedz się, jak to możliwe, o danych i jak jest wykonywane zapytanie danych.  Na przykład należy wziąć pod uwagę następujące pytania:
 
-- Jak duże jest tabela?   
-- Częstotliwość odświeżania tabeli?   
-- Czy mam tabelami faktów i wymiarów w magazynie danych?   
+- Jak duże jest tabela?   
+- Częstotliwość odświeżania tabeli?   
+- Czy mam tabelami faktów i wymiarów w magazynie danych?   
 
 
 ### <a name="hash-distributed"></a>Skrót rozproszonych
@@ -147,7 +147,7 @@ where two_part_name in
     from dbo.vTableSizes
     where row_count > 0
     group by two_part_name
-    having min(row_count * 1.000)/max(row_count * 1.000) > .10
+    having (max(row_count * 1.000) - min(row_count * 1.000))/max(row_count * 1.000) >= .10
     )
 order by two_part_name, row_count
 ;

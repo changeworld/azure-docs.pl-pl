@@ -3,21 +3,21 @@ title: Złożoność hasła w usłudze Azure Active Directory B2C | Dokumentacja
 description: Jak skonfigurować wymagania dotyczące złożoności haseł dostarczonych przez klientów w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 88609f4daac176f082e7f4962d557267946ab98c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e728fb037895908882bbe6dc7e8414457ccf273f
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724438"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54845558"
 ---
-# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Usługa Azure AD B2C: Konfigurowanie wymagań dotyczących złożoności haseł
+# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurowanie wymagań dotyczących złożoności haseł
 
 > [!NOTE]
 > **Ta funkcja jest dostępna w publicznej wersji zapoznawczej.**
@@ -70,9 +70,9 @@ Umożliwia kontrolowanie wymagania dotyczące długości hasła.
 
 Pozwala na kontrolowanie typów znaków użyte w haśle.
 
-* **2 z 4: małej litery, wielkie litery znaków, liczba (0 – 9), Symbol** zapewnia hasło zawiera co najmniej dwa typy znaków. Na przykład liczbę i małą literę.
-* **3 z 4: małej litery, wielkie litery znaków, liczba (0 – 9), Symbol** zapewnia hasło zawiera co najmniej dwa typy znaków. Na przykład numer małą literę i Wielkiej litery.
-* **4 z 4: małej litery, wielkie litery znaków, liczba (0 – 9), Symbol** zapewnia hasło zawiera wszystkie dla typów znakowych.
+* **2 z 4: Małej litery, wielkie litery znaków, liczba (0 – 9), Symbol** zapewnia hasło zawiera co najmniej dwa typy znaków. Na przykład liczbę i małą literę.
+* **3 z 4: Małej litery, wielkie litery znaków, liczba (0 – 9), Symbol** zapewnia hasło zawiera co najmniej dwa typy znaków. Na przykład numer małą literę i Wielkiej litery.
+* **4 z 4: Małej litery, wielkie litery znaków, liczba (0 – 9), Symbol** zapewnia hasło zawiera wszystkie dla typów znakowych.
 
     > [!NOTE]
     > Wymaganie **4 z 4** może spowodować Rozczarowanie przez użytkownika końcowego. Niektóre badania wykazały, to wymaganie nie poprawi entropii hasła. Zobacz [wytyczne dotyczące haseł NIST](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)

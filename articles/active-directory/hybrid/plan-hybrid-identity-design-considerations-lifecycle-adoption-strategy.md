@@ -4,7 +4,7 @@ description: Pozwala zdefiniować zadania zarządzania tożsamości hybrydowej z
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 420b6046-bd9b-4fce-83b0-72625878ae71
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5590f1fc3716582da090b8429f8bcf4fc7911dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6512cb71cc8ca973a778b7e172afcd9e056421ed
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251767"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478386"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Określić strategia wdrożenia cyklu życia tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategii zarządzania tożsamości do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w [określić zadania związane z zarządzaniem tożsamości hybrydowej](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -43,9 +43,9 @@ Konta w zaawansowanych przedsiębiorstw IT mają setki parametry, które definiu
 Oparta na rolach dostęp kontrolować (RBAC) używa ról i inicjowania obsługi zasad w celu oceny, testowania i wymuszać swoje procesy biznesowe i reguł, do przyznawania dostępu użytkownikom. Kluczowe Administratorzy tworzą zasady inicjowania obsługi i przypisywania użytkowników do ról i definiują zestawy uprawnień do zasobów dla tych ról. RBAC rozszerza rozwiązanie do zarządzania tożsamościami oparty na oprogramowaniu procesy są używane i obniżyć ręczne interakcji z użytkownikiem w procesie inicjowania obsługi administracyjnej.
 Usługa Azure AD RBAC umożliwia firmie ograniczyć liczbę operacji, które osoba można zrobić, gdy ma on dostęp do witryny Azure portal. Przy użyciu RBAC do kontrolowania dostępu do portalu, Administratorzy IT urzędu certyfikacji Delegowanie dostępu za pomocą następujących metod zarządzania dostępu:
 
-* **Przypisanie roli oparte na grupach**: dostęp można przypisać do grup usługi Azure AD, które mogą być synchronizowane z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, których organizacja wprowadziła narzędzia i procesy do zarządzania grupami. Można również użyć funkcji zarządzania delegowanej grupy usługi Azure AD Premium.
-* **Wykorzystaj wbudowane role na platformie Azure**: można użyć trzech ról — właściciela, współautora i czytelnika, upewnij się, że użytkownicy i grupy mają uprawnienia do wykonania zadania, których potrzebują do wykonania swoich zadań.
-* **Szczegółowe dostęp do zasobów**: należy przypisać role do użytkowników i grup dla określonej subskrypcji, grupy zasobów lub poszczególnych zasobów platformy Azure, takich jak witryny sieci Web lub bazy danych. W ten sposób możesz upewnij się, że użytkownicy mają dostęp do wszystkich zasobów, które są im potrzebne i Brak dostępu do zasobów, które ich nie trzeba zarządzać.
+* **Przypisanie roli oparte na grupach**: Dostęp można przypisać do grup usługi Azure AD, które mogą być synchronizowane z lokalnej usługi Active Directory. Dzięki temu można wykorzystać istniejące inwestycje, których organizacja wprowadziła narzędzia i procesy do zarządzania grupami. Można również użyć funkcji zarządzania delegowanej grupy usługi Azure AD Premium.
+* **Wykorzystaj wbudowane role na platformie Azure**: Można użyć trzech ról — właściciela, współautora i czytelnika, upewnij się, że użytkownicy i grupy mają uprawnienia do wykonania zadania, których potrzebują do wykonania swoich zadań.
+* **Szczegółowe dostęp do zasobów**: Role można przypisać do użytkowników i grup dla określonej subskrypcji, grupy zasobów lub poszczególnych zasobów platformy Azure, takich jak witryny sieci Web lub bazy danych. W ten sposób możesz upewnij się, że użytkownicy mają dostęp do wszystkich zasobów, które są im potrzebne i Brak dostępu do zasobów, które ich nie trzeba zarządzać.
 
 ## <a name="provisioning-and-other-customization-options"></a>Inicjowanie obsługi administracyjnej i innych opcji dostosowywania
 Twój zespół może być plany biznesowe i wymagania ile zdecydować dostosować rozwiązanie tożsamości. Na przykład duże przedsiębiorstwo może wymagać planu stopniowe wdrożenie dla przepływów pracy i niestandardowych kart, które opiera się na osi czasu, stopniowo aprowizacji aplikacji, które są powszechnie używane w różnych lokalizacjach geograficznych. Inny plan dostosowania może zawierać dwóch lub więcej aplikacji do udostępnienia w całej organizacji, po pomyślnym przeprowadzeniu testów. Można dostosować interakcji aplikacji użytkownika i procedury dotyczące inicjowania obsługi administracyjnej zasobów może ulec zmianie, aby pomieścić automatyczne Inicjowanie obsługi.
@@ -93,7 +93,7 @@ Przejrzyj poniższą tabelę, aby porównać opcji synchronizacji:
 
 | Opcja zarządzania synchronizacji | Zalety | Wady |
 | --- | --- | --- |
-| Na podstawie synchronizacji (przy użyciu narzędzia DirSync lub AADConnect) |Użytkownicy i grupy synchronizowane z lokalną i chmurą <br>  **Kontrola zasad**: zasady konta można ustawić za pomocą usługi Active Directory, która umożliwia administratorowi Zarządzanie zasadami haseł, stacji roboczej, ograniczenia, formanty blokady i bardziej, bez konieczności wykonywania dodatkowych zadań w programie Chmura.  <br>  **Kontrola dostępu**: można ograniczyć dostęp do usługi w chmurze, tak, aby usług jest możliwy za pośrednictwem środowiska firmy za pośrednictwem serwerach w trybie online i / lub. <br>  Ograniczona obsługa wywołania: Jeśli użytkownicy mają mniejszą liczbę haseł do zapamiętania, są one mniej prawdopodobne zapomnieć je. <br>  Bezpieczeństwa: Tożsamości użytkowników i informacji są chronione, ponieważ wszystkie serwery i usług używanych w rejestracji jednokrotnej, są zarządzane i kontrolowany w środowisku lokalnym. <br>  Obsługa silnego uwierzytelniania: za pomocą silnego uwierzytelniania (nazywane również uwierzytelnianie dwuskładnikowe) z usługą w chmurze. Jednak jeśli używasz silne uwierzytelnianie, należy użyć logowania jednokrotnego. | |
+| Na podstawie synchronizacji (przy użyciu narzędzia DirSync lub AADConnect) |Użytkownicy i grupy synchronizowane z lokalną i chmurą <br>  **Kontrola zasad**: Zasady kont, można ustawić za pomocą usługi Active Directory, która umożliwia administratorowi Zarządzanie zasady dotyczące haseł, stacji roboczej, ograniczenia, formanty blokady i uzyskać więcej informacji, bez konieczności wykonywania dodatkowych zadań w chmurze.  <br>  **Kontrola dostępu**: Można ograniczyć dostęp do usługi w chmurze, tak, aby usług jest możliwy za pośrednictwem środowiska firmy za pośrednictwem serwerach w trybie online lub obu. <br>  Ograniczona obsługa wywołania: Jeśli użytkownicy mają mniejszą liczbę haseł do zapamiętania, są one mniej prawdopodobne zapomnieć je. <br>  Zabezpieczenia: Tożsamości użytkowników i informacji są chronione, ponieważ wszystkie serwery i usług używanych w rejestracji jednokrotnej, są zarządzane i kontrolowany w środowisku lokalnym. <br>  Obsługa silnego uwierzytelniania: Za pomocą silnego uwierzytelniania (nazywane również uwierzytelnianie dwuskładnikowe) z usługą w chmurze. Jednak jeśli używasz silne uwierzytelnianie, należy użyć logowania jednokrotnego. | |
 | Na podstawie federacyjnych (za pośrednictwem usług AD FS) |Włączone przez usługę tokenu zabezpieczającego (STS). Po skonfigurowaniu usługi tokenu Zabezpieczającego w celu zapewnienia dostępu rejestracji jednokrotnej z usługą w chmurze firmy Microsoft, zostanie utworzona relację zaufania federacji między lokalnej usługi STS i domeny federacyjnej, wskazana w dzierżawie usługi Azure AD. <br> Umożliwia użytkownikom końcowym użyć tego samego zestawu poświadczeń, aby uzyskać dostęp do wielu zasobów <br>Użytkownicy końcowi nie jest konieczne Obsługa wielu zestawów poświadczeń. Jeszcze, użytkownicy muszą podawać swoich poświadczeń do każdego z nich uczestniczących w programie zasobów., scenariusze B2B i B2C obsługiwane. |Wymaga sprawdzenia personelu dotyczące wdrażania i konserwacji lokalnego dedykowanych serwerów usług AD FS. Brak ograniczeń dotyczących używania silnego uwierzytelniania, jeśli planujesz użyć usług AD FS do usługi STS. Aby uzyskać więcej informacji, zobacz [Konfigurowanie usług AD FS 2.0 zaawansowane opcje](https://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]

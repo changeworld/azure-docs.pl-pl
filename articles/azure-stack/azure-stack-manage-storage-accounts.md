@@ -11,36 +11,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8eed0b4f2d14d22bdd9eddac9dbb4c0e02404975
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 149da2c186ae1e0c3fa5af14a630a0edef7deb25
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302718"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470277"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu w usłudze Azure Stack
+
 Dowiedz się, jak zarządzać kontami magazynu w usłudze Azure Stack, aby znaleźć, odzyskiwania i odzyskać pojemność magazynu na podstawie potrzeb biznesowych.
 
-## <a name="find"></a>Znajdź konto magazynu
+## <a name="find-a-storage-account"></a>Znajdź konto magazynu
 Lista kont magazynu w regionie mogą być wyświetlane w usłudze Azure Stack przez:
 
 1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-2. Wybierz **wszystkich usług** > **zarządzanie regionami** w obszarze **administracji**.
+2. Wybierz **wszystkich usług** > **kont magazynu**.
 
-3. Wybierz **magazynu** z **dostawców zasobów** listy.
-   
-   ![Dostawca zasobów magazynu](media/azure-stack-manage-storage-accounts/image1.png)
-
-5. Wybierz **kont magazynu** w **magazynu**.
-   
-   ![](media/azure-stack-manage-storage-accounts/image2.png)
-   
-   Blok Wyświetla listę kont magazynu, w tym regionie.
-   
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
 Domyślnie są wyświetlane pierwsze 10 kont. Istnieje możliwość pobrania więcej, klikając **Załaduj więcej** link w dolnej części listy.

@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Shmoop dla szkół | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Shmoop dla szkół | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między Shmoop dla szkół i usługi Azure Active Directory.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: b5826fd3067ac337808b9e27040dee808cd6a01c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5c1dbf6429387c02f226e4005164e8824abdc102
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045961"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818952"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Samouczek: Integracja usługi Azure Active Directory z Shmoop dla szkół
+# <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Shmoop dla szkół
 
 W tym samouczku dowiesz się, jak zintegrować Shmoop dla szkoły z usługą Azure Active Directory (Azure AD).
 
@@ -38,7 +38,7 @@ Aby uzyskać więcej informacji na temat integracji aplikacji SaaS z usługą Az
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Shmoop dla szkół, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Shmoop dla szkół logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -62,21 +62,21 @@ Aby skonfigurować integrację Shmoop dla szkół w usłudze Azure AD, należy d
 
 1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![Blok Aplikacje dla przedsiębiorstw][2]
     
 3. Aby dodać nową aplikację, wybierz **nową aplikację** przycisk u góry okno dialogowe.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Shmoop dla szkół**. Wybierz **Shmoop dla szkół** z wyników, następnie wybierz pozycję **Dodaj** przycisk, aby dodać aplikację.
 
     ![Shmoop dla szkół, na liście wyników](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Shmoop dla szkół oparte na użytkownika testu o nazwie "Britta Simon."
 
@@ -90,7 +90,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 4. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 5. [Testowanie logowania jednokrotnego](#test-single-sign-on) można sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Shmoop dla szkół.
 
@@ -98,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Shmoop dla szkół** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. W **logowanie jednokrotne** w menu rozwijanym w oknie dialogowym **tryb rejestracji jednokrotnej**, wybierz opcję **opartej na SAML logowania jednokrotnego**.
  
@@ -113,20 +113,20 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator** wpisz adres URL z następującym wzorcem: `https://schools.shmoop.com/<uniqueid>`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej Shmoop dla szkół klienta](mailto:support@shmoop.com) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej Shmoop dla szkół klienta](mailto:support@shmoop.com) do uzyskania tych wartości. 
  
 4. Aplikacja Shmoop dla szkół oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu pokazuje, jak skonfigurować potwierdzenia:
 
     ![Konfigurowanie logowania jednokrotnego](./media/shmoopforschools-tutorial/tutorial_attribute.png)
 
     > [!NOTE]
-    > Shmoop dla szkoły obsługuje dwie role dla użytkowników: **nauczyciel** i **uczniów**. Skonfiguruj te role w usłudze Azure AD, aby użytkownicy mogą przypisać odpowiednie role. Aby dowiedzieć się, jak skonfigurować role w usłudze Azure AD, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
+    > Shmoop dla szkoły obsługuje dwie role użytkowników: **Nauczyciel** i **uczniów**. Skonfiguruj te role w usłudze Azure AD, aby użytkownicy mogą przypisać odpowiednie role. Aby dowiedzieć się, jak skonfigurować role w usłudze Azure AD, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
     
-5. W **atrybutów użytkownika** sekcji **logowanie jednokrotne** okna dialogowego Skonfiguruj atrybut tokenu SAML, jak pokazano na poprzedniej ilustracji.  Następnie wykonaj następujące czynności:
+5. W **atrybutów użytkownika** sekcji **logowanie jednokrotne** okna dialogowego Skonfiguruj atrybut tokenu SAML, jak pokazano na poprzedniej ilustracji.  Następnie wykonaj następujące kroki:
 
     | Nazwa atrybutu | Wartość atrybutu |
     | -------------- | --------------- |
-    | rola           | User.assignedroles |
+    | rola           | user.assignedroles |
 
     a. Aby otworzyć **Dodawanie atrybutu** okno dialogowe, wybierz opcję **Dodaj atrybut**.
     
@@ -140,15 +140,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d. Pozostaw **Namespace** puste pole.
     
-    e. Wybierz **Ok**.
+    e. Wybierz przycisk **OK**.
 
 6. Wybierz ikonę **Zapisz**.
 
     ![Konfigurowanie logowania jednokrotnego](./media/shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
+7. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
-    ![Link pobierania certyfikatu](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
+    ![Link do pobierania certyfikatu](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
 8. Aby skonfigurować logowanie jednokrotne na **Shmoop dla szkół** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołu pomocy technicznej Shmoop dla szkół](mailto:support@shmoop.com).
 
@@ -162,11 +162,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego o nazwie Britta Simon w w
 
 1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory** przycisku.
 
-    ![Przycisk usługi Azure Active Directory](./media/shmoopforschools-tutorial/create_aaduser_01.png)
+    ![Przycisk Azure Active Directory](./media/shmoopforschools-tutorial/create_aaduser_01.png)
 
 2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**. Następnie wybierz pozycję **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/shmoopforschools-tutorial/create_aaduser_02.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](./media/shmoopforschools-tutorial/create_aaduser_02.png)
 
 3. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
@@ -174,7 +174,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego o nazwie Britta Simon w w
 
 4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
-    ![Okno dialogowe użytkownika](./media/shmoopforschools-tutorial/create_aaduser_04.png)
+    ![Okno dialogowe Użytkownik](./media/shmoopforschools-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
@@ -186,7 +186,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego o nazwie Britta Simon w w
  
 ### <a name="create-a-shmoop-for-schools-test-user"></a>Tworzenie użytkownika testowego Shmoop dla szkół
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon Shmoop dla szkół. Shmoop dla szkół obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Jeśli nowy użytkownik jeszcze nie istnieje, zostanie utworzony podczas próby dostępu Shmoop dla szkół.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon Shmoop dla szkół. Shmoop dla szkół obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli nowy użytkownik jeszcze nie istnieje, zostanie utworzony podczas próby dostępu Shmoop dla szkół.
 
 >[!NOTE]
 >Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołu pomocy technicznej Shmoop dla szkół](mailto:support@shmoop.com).
@@ -207,11 +207,11 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Link Shmoop dla szkół na liście aplikacji](./media/shmoopforschools-tutorial/tutorial_shmoopforschools_app.png)  
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Link „Użytkownicy i grupy”][202]
 
-4. Wybierz **Dodaj** przycisku. Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
+4. Wybierz przycisk **Add** (Dodaj). Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
 
     ![Okienko Dodawanie przypisania][203]
 
@@ -229,10 +229,10 @@ Po wybraniu **Shmoop dla szkół** kafelka w panelu dostępu, należy uzyskać a
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

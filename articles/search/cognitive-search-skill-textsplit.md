@@ -8,19 +8,22 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 376a5a2214c5f1d77439923d6a11aaad5e011e73
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d5a8fa61307c278a77b33868a711970850a06f3e
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313857"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410051"
 ---
 #   <a name="text-split-cognitive-skill"></a>Tekst, Podziel umiejętności cognitive
 
 **Dzielenie tekstu** umiejętności dzieli tekst na fragmenty tekstu. Można określić, czy użytkownik chce podzielić go na zdania lub do stron o określonej długości. To umiejętności jest szczególnie przydatne w przypadku tekstu wymagania dotyczące długości w innych umiejętności podrzędne. 
+
+> [!NOTE]
+> Umiejętności, to nie jest powiązany z interfejsu API usług Cognitive Services i nie są naliczane dotyczące korzystania z niego. Powinna nadal [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md), jednak aby zastąpić **bezpłatna** resource — Opcja ograniczająca na niewielką liczbę dziennych wzbogacenia dziennie.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -32,7 +35,7 @@ Parametrów jest rozróżniana wielkość liter.
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
 | textSplitMode      | "Pojęcie strony" lub "zdania" | 
-| maximumPageLength | Jeśli textSplitMode "strony" odnosi się to do długość maksymalna strony, gdyż jest mierzone przez `String.Length`. Wartość minimalna wynosi 100.  Jeśli textSplitMode jest ustawiona na "strony", algorytm podejmie próbę podzielić tekst fragmentów, do których należą do co najwyżej "maximumPageLenth" rozmiar. W tym przypadku algorytm będzie wykonywać doskonale na Podziel zdania na granicy zdania, dlatego rozmiar fragmentu może być nieco mniej niż "maximumPageLength". | 
+| maximumPageLength | Jeśli textSplitMode "strony" odnosi się to do długość maksymalna strony, gdyż jest mierzone przez `String.Length`. Wartość minimalna wynosi 100.  Jeśli textSplitMode jest ustawiona na "strony", algorytm podejmie próbę podzielić tekst fragmentów, do których należą do co najwyżej "maximumPageLength" rozmiar. W tym przypadku algorytm będzie wykonywać doskonale na Podziel zdania na granicy zdania, dlatego rozmiar fragmentu może być nieco mniej niż "maximumPageLength". | 
 | defaultLanguageCode   | (opcjonalnie) Jedną z następujących kodach języków: `da, de, en, es, fi, fr, it, ko, pt`. Wartością domyślną jest angielski (en). Kwestie do rozważenia:<ul><li>W przypadku przekazania format languagecode countrycode jest używana tylko część languagecode format.</li><li>Jeśli język nie jest na poprzedniej liście, umiejętności podziału dzieli tekst na granicach znaków.</li><li>Dostarczanie kodu języka jest przydatna, aby uniknąć Wycinanie wyrazu w połowie języków innych niż spacja, takich jak języka chińskiego, japońskiego i koreańskiego.</li></ul>  |
 
 

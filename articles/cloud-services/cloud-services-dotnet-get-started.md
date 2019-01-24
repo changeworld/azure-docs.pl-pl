@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 59354b7f4a1a82d1fa2fd105bd743ecb73526434
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 966536b7129a91f4c6fd8dd7bf0270be660bdf81
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716110"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54332068"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Wprowadzenie do usług Azure Cloud Services i programu ASP.NET
 
@@ -380,7 +380,7 @@ W tej sekcji będziesz konfigurować parametry połączenia usługi Azure Storag
 3. W projekcie ContosoAdsCloudService kliknij prawym przyciskiem myszy pozycję ContosoAdsWeb w obszarze **Role**, a następnie kliknij polecenie **Właściwości**.
 
     ![Właściwości roli](./media/cloud-services-dotnet-get-started/roleproperties.png)
-4. W oknie właściwości **ContosAdsWeb — [Rola]** kliknij kartę **Ustawienia**, a następnie kliknij pozycję **Dodaj ustawienie**.
+4. W oknie właściwości **ContosoAdsWeb — [Rola]** kliknij kartę **Ustawienia**, a następnie kliknij pozycję **Dodaj ustawienie**.
 
     Pozostaw pozycję **Konfiguracja usługi** ustawioną na wartość **Wszystkie konfiguracje**.
 5. Dodaj ustawienie o nazwie *StorageConnectionString*. Ustaw pozycję **Typ** na *ConnectionString*, a pozycję **Wartość** na *UseDevelopmentStorage = true*.

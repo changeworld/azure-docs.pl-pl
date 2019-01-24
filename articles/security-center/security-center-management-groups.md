@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 98ff96b70951cb289fe6a83ad59eb83a6522e42c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720819"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433373"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj wgląd w całej dzierżawie usługi Azure Security Center
 Ten artykuł pomaga Ci rozpocząć pracę, wykonując kilka akcji, które zmaksymalizować korzyści, jakie oferuje usługa Azure Security Center. Wykonanie tych akcji umożliwia wgląd na wszystkich subskrypcji platformy Azure, które są połączone z dzierżawą usługi Azure Active Directory i skutecznie zarządzać poziom bezpieczeństwa w organizacji na dużą skalę, stosując zasady zabezpieczeń w wielu Subskrypcje w sposób aggregative.
@@ -108,7 +108,7 @@ Wgląd do wszystkich subskrypcji, Administratorzy dzierżawy należy przypisać 
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>Przypisz role RBAC do użytkowników przy użyciu programu PowerShell: 
-1. Zainstaluj program [Azure PowerShell](/powershell/azure/install-azurerm-ps).
+1. Zainstaluj program [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 2. Uruchom następujące polecenia: 
 
     ```azurepowershell

@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 2a54752f933b91265d0aa8add61ca0707615931b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a5c25cd5836c3bde630684eff24da7dc8b62fc6
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526331"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54855809"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostyka i odzyskiwanie po błędach zadań usługi Azure Import/Export
-Dla każdego dysku, przetwarzania usługa Azure Import/Export tworzy dziennik błędów w skojarzonego konta magazynu. Można również włączyć pełne rejestrowanie, ustawiając `LogLevel` właściwości `Verbose` podczas wywoływania [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs#Jobs_Update) operacji.
+Dla każdego dysku, przetwarzania usługa Azure Import/Export tworzy dziennik błędów w skojarzonego konta magazynu. Można również włączyć pełne rejestrowanie, ustawiając `LogLevel` właściwości `Verbose` podczas wywoływania [umieścić zadania](/rest/api/storageimportexport/jobs) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs) operacji.
 
  Domyślnie dzienniki są zapisywane w kontenerze o nazwie `waimportexport`. Można określić inną nazwę, ustawiając `DiagnosticsPath` właściwości podczas wywoływania `Put Job` lub `Update Job Properties` operacji. Dzienniki są przechowywane jako obiekty BLOB typu block, następująca Konwencja nazewnictwa: `waies/jobname_driveid_timestamp_logtype.xml`.
 
- Można pobrać identyfikatora URI dzienniki zadania, wywołując [pobrania zadania](/rest/api/storageimportexport/jobs#Jobs_Get) operacji. Identyfikator URI, dla pełnego dziennika jest zwracany w `VerboseLogUri` właściwości dla każdego dysku, gdy identyfikator URI dla dziennika błędów jest zwracany w `ErrorLogUri` właściwości.
+ Można pobrać identyfikatora URI dzienniki zadania, wywołując [pobrania zadania](/rest/api/storageimportexport/jobs) operacji. Identyfikator URI, dla pełnego dziennika jest zwracany w `VerboseLogUri` właściwości dla każdego dysku, gdy identyfikator URI dla dziennika błędów jest zwracany w `ErrorLogUri` właściwości.
 
 Dane rejestrowania można użyć, aby zidentyfikować następujące problemy.
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure AD Connect uwierzytelniania przekazywanego, instalacji usługi Active Directory, wymaganych składników dla usługi Azure AD, logowania jednokrotnego, logowanie jednokrotne
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fdb316f5f5c1f67dbb92fe8847c0ffacce46ae07
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cb36b9514d98fe32f20e740fbb578ac7daada79c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789096"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478403"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Często zadawane pytania
 
@@ -156,7 +156,7 @@ Po odinstalowaniu agenta uwierzytelniania przekazywanego z serwera powoduje serw
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Masz starszą dzierżawy, który został pierwotnie instalację za pomocą usług AD FS.  Firma Microsoft niedawno zmigrowana do PTA, ale teraz nie widać zmian nazwy UPN synchronizacji z usługą Azure AD.  Dlaczego są nasze UPN zmiany nie są synchronizowane?
 
-ODP.: W następujących okolicznościach zmiany nazwy UPN w środowisku lokalnym mogą nie synchronizuje się w przypadku:
+Odp.: W następujących okolicznościach zmiany nazwy UPN w środowisku lokalnym mogą nie synchronizuje się w przypadku:
 
 - Dzierżawy usługi Azure AD została utworzona przed 15 w czerwcu 2015 roku
 - Początkowo zostały możesz Sfederowane za pomocą dzierżawy usługi Azure AD za pomocą usług AD FS do uwierzytelniania

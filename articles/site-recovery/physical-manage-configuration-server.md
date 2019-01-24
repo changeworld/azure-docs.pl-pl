@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 62a9fd6eee15618e7153fd84030840b429e214ed
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ee5cc1f185640c9ea22ceb80b1fabb20df245fe2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833520"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823084"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Zarządzanie serwerem konfiguracji na potrzeby odzyskiwania po awarii serwerów fizycznych
 
@@ -37,7 +37,7 @@ W tabeli przedstawiono wymagania wstępne dotyczące wdrażania w środowisku lo
 | IIS | -Brak wcześniej istniejącej domyślnej witryny sieci Web <br> -Włącz [uwierzytelnianie anonimowe](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Włącz [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ustawienie  <br> -Brak istniejące witryny sieci Web/aplikacja nasłuchuje na porcie 443<br>|
 | Typ karty NIC | Innego VMXNET3 (jeśli jest wdrażane jako maszyny Wirtualnej VMware) |
 | Typ adresu IP | Statyczny |
-| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (niewymagane w przypadku serwerów przetwarzania skalowalnego w poziomie) <br> - time.nist.gov <br> - time.windows.com |
+| Dostęp do Internetu | Serwer musi mieć dostęp do tych adresów URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (niewymagane w przypadku serwerów przetwarzania skalowalnego w poziomie) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (organizowanie kanału sterowania)<br>9443 (transport danych)|
 
 ## <a name="download-the-latest-installation-file"></a>Pobierz najnowszy plik instalacyjny
@@ -112,7 +112,7 @@ Uruchom plik instalacyjny w następujący sposób:
 |/InstallLocation|Wymagane|Folder, w którym są instalowane składniki| Dowolny folder na komputerze|
 |/MySQLCredsFilePath|Wymagane|Ścieżka pliku, w której są przechowywane poświadczenia serwera MySQL|Plik powinien mieć format określony poniżej|
 |/VaultCredsFilePath|Wymagane|Ścieżka pliku poświadczeń magazynu|Prawidłowa ścieżka pliku|
-|/EnvType|Wymagane|Typ środowiska, które ma być chronione |VMware<br>NonVMware|
+|/EnvType|Wymagane|Typ środowiska, które mają być chronione |VMware<br>NonVMware|
 |/PSIP|Wymagane|Adres IP karty sieciowej do użytku podczas przesyłania danych replikacji| Dowolny prawidłowy adres IP|
 |/CSIP|Wymagane|Adres IP karty sieciowej, na której nasłuchuje serwer konfiguracji| Dowolny prawidłowy adres IP|
 |/PassphraseFilePath|Wymagane|Pełna ścieżka do lokalizacji pliku hasła|Prawidłowa ścieżka pliku|
@@ -264,7 +264,7 @@ Uaktualnij serwer w następujący sposób:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Usunąć lub wyrejestrować serwer konfiguracji (PowerShell)
 
-1. [Zainstaluj](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modułu Azure PowerShell
+1. [Zainstaluj](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0) modułu Azure PowerShell
 2. Logowanie do konta platformy Azure za pomocą polecenia
     
     `Connect-AzureRmAccount`

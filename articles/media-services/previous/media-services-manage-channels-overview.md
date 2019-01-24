@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako
-ms.openlocfilehash: 9e8dc926fd796e82ea531aba6cb3a682649dff41
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3814041359884fc2862b0e90a58aabd1ad26c4cb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057028"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382139"
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Omówienie transmisji strumieniowej na żywo za pomocą usługi Azure Media Services
 
@@ -27,6 +27,7 @@ ms.locfileid: "42057028"
 > Od 12 maja 2018 r. Usługa kanały na żywo będzie już obsługę strumienia transportu RTP/MPEG-2 protokołu pozyskiwania. Przeprowadź migrację z protokołu RTP/MPEG-2 do protokołu RTMP lub plików MP4 (Smooth Streaming) protokołów pozyskiwania.
 
 ## <a name="overview"></a>Przegląd
+
 Gdy dostarczanie wydarzeń transmisji strumieniowej na żywo w usłudze Azure Media Services to zwykle wymagane są następujące składniki:
 
 * Kamera, która umożliwia emisję wydarzenia.
@@ -43,19 +44,19 @@ Gdy dostarczanie wydarzeń transmisji strumieniowej na żywo w usłudze Azure Me
 
 Usługa **Microsoft Azure Media Services** (AMS) zapewnia możliwość pozyskiwania, kodowania, podglądu, przechowywania i dostarczania transmisji strumieniowej zawartości na żywo.
 
-Podczas dostarczania zawartości do klientów głównym celem jest przekazywanie zawartości wideo wysokiej jakości do różnych urządzeń bez względu na warunki panujące w sieci. Aby to osiągnąć, należy użyć koderów na żywo w celu kodowania strumienia do strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów).  W celu obsługi przesyłania strumieniowego na różnych urządzeniach należy korzystać z funkcji [dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md) usługi Media Services, aby ponownie dynamicznie utworzyć pakiety na potrzeby transmisji strumieniowej do różnych protokołów. Usługa Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów: HTTP Live Streaming (HLS), Smooth Streaming i MPEG DASH.
+Podczas dostarczania zawartości do klientów głównym celem jest przekazywanie zawartości wideo wysokiej jakości do różnych urządzeń bez względu na warunki panujące w sieci. Aby to osiągnąć, należy użyć koderów na żywo w celu kodowania strumienia do strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów).  W celu obsługi przesyłania strumieniowego na różnych urządzeniach należy korzystać z funkcji [dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md) usługi Media Services, aby ponownie dynamicznie utworzyć pakiety na potrzeby transmisji strumieniowej do różnych protokołów. Usługa Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: HTTP na żywo przesyłania strumieniowego (HLS), Smooth Streaming i MPEG DASH.
 
 W usłudze Azure Media Services **kanały**, **programy**, i **punkty końcowe przesyłania strumieniowego** obsługują wszystkie funkcje transmisji strumieniowej na żywo, w tym pozyskiwanie, formatowanie, cyfrowy rejestrator wideo (DVR), zabezpieczenia, skalowalność i nadmiarowość.
 
 **Kanał** reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Kanał może odbierać przychodzące strumienie na żywo w następujący sposób:
 
-* Lokalny koder na żywo wysyła plik **RTMP** o różnych szybkościach transmisji bitów lub plik **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który jest skonfigurowany do obsługi dostarczania zawartości w formie **przekazywania**. Dostarczanie w formie **przekazywania** występuje wtedy, gdy pozyskiwane strumienie są przekazywane przez **kanał** bez dalszego przetwarzania. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo dane wyjściowe RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek i Transkodery tricaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła plik **RTMP** o różnych szybkościach transmisji bitów lub plik **Smooth Streaming** (pofragmentowany plik MP4) do kanału, który jest skonfigurowany do obsługi dostarczania zawartości w formie **przekazywania**. Dostarczanie w formie **przekazywania** występuje wtedy, gdy pozyskiwane strumienie są przekazywane przez **kanał** bez dalszego przetwarzania. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo danych wyjściowych RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek i Transkodery tricaster.  Koder na żywo może także wysłać strumień o pojedynczej szybkości transmisji bitów do kanału, który nie obsługuje kodowania na żywo, nie jest to jednak zalecane. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
   > [!NOTE]
   > Metoda przekazywania to najbardziej ekonomiczne rozwiązanie transmisji strumieniowej na żywo w przypadku organizowania wielu wydarzeń w długim okresie oraz poczynionych inwestycji w kodery lokalne. Zobacz szczegółowe informacje o [cenach](https://azure.microsoft.com/pricing/details/media-services/).
   > 
   > 
-* Lokalny koder na żywo wysyła strumień o pojedynczej szybkości bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Następujące kodery na żywo z danymi wyjściowymi RTMP wiadomo, pracować z kanałami tego typu: Telestream Wirecast, FMLE. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła strumień o pojedynczej szybkości bitów do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo z usługą Media Services w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany MP4). Następujące kodery na żywo z danymi wyjściowymi RTMP znane pracować z kanałami tego typu: Telestream Wirecast FMLE. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
 Począwszy od Media Services w wersji 2.10 wersji, podczas tworzenia kanału, można określić w jaki sposób chcesz kanału w taki sposób otrzymywać strumień wejściowy i określa, czy chcesz dla kanału do przeprowadzania kodowania na żywo strumienia. Dostępne są dwie opcje:
 
@@ -63,6 +64,7 @@ Począwszy od Media Services w wersji 2.10 wersji, podczas tworzenia kanału, mo
 * **Standardowa** — wybierz tę wartość, jeśli planujesz używać usługi Media Services do zakodowania transmisji strumieniowej na żywo o pojedynczej szybkości transmisji bitów do strumienia o wielokrotnej szybkości transmisji bitów. Ta metoda jest bardziej ekonomiczny w przypadku skalowania w górę szybko rzadkie zdarzeń. Należy pamiętać, że istnieje rozliczeń wpływ kodowanie na żywo i należy pamiętać, że pozostawienie kodowania kanału na żywo w stanie "Uruchomiona" spowoduje naliczenie opłat rozliczeń.  Zaleca się natychmiast zatrzymać kanałów uruchomione po zakończeniu zdarzenia przesyłania strumieniowego na żywo, aby uniknąć dodatkowych stawki godzinowe.
 
 ## <a name="comparison-of-channel-types"></a>Porównanie typów kanałów
+
 Poniższa tabela zawiera przewodnik do porównywania dwóch typów kanałów obsługiwane w usłudze Media Services
 
 | Cecha | Kanału przekazującego | Wzorzec kanał |
@@ -80,6 +82,7 @@ Poniższa tabela zawiera przewodnik do porównywania dwóch typów kanałów obs
 | Auto bliskie kanały, gdy dane wejściowe źródła danych zostaną utracone |Nie |Po upływie 12 godzin, jeśli nie jest uruchomiony żaden Program |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych (przekazujących)
+
 Na poniższym diagramie przedstawiono główne elementy platformy AMS, które są zaangażowane w przepływ pracy **przekazywania**.
 
 ![Przepływ pracy na żywo](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
@@ -87,6 +90,7 @@ Na poniższym diagramie przedstawiono główne elementy platformy AMS, które s�
 Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami odbierającymi strumień na żywo o różnych szybkościach transmisji bitów z koderów lokalnych](media-services-live-streaming-with-onprem-encoders.md).
 
 ## <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Praca z kanałami obsługującymi kodowanie na żywo za pomocą usługi Azure Media Services
+
 Na poniższym diagramie przedstawiono główne elementy platformy AMS biorące udział w przepływie pracy transmisji strumieniowej na żywo, gdy kanał obsługuje kodowanie na żywo za pomocą usługi Media Services.
 
 ![Przepływ pracy na żywo](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
@@ -94,12 +98,16 @@ Na poniższym diagramie przedstawiono główne elementy platformy AMS biorące u
 Aby uzyskać więcej informacji, zobacz temat [Praca z kanałami obsługującymi funkcję Live Encoding w usłudze Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>Opis kanału i jego składników powiązane
+
 ### <a name="channel"></a>Kanał
+
 W usłudze Media Services [kanału](https://docs.microsoft.com/rest/api/media/operations/channel)s są zobowiązani do przetwarzania zawartości transmisji strumieniowej na żywo. Kanał oferuje wejściowy punkt końcowy (adres URL pozyskiwania) następnie podaj transkoder na żywo. Kanał odbiera strumieni danych wejściowych z transkoder na żywo i udostępnia go do przesyłania strumieniowego za pośrednictwem co najmniej jeden punkty. Kanały zapewniają również punkt końcowy (wersja zapoznawcza) (adres URL w wersji zapoznawczej), która umożliwia podgląd i weryfikować strumień przed dalszym przetwarzaniem i dostarczaniem.
 
 Po utworzeniu kanału można uzyskać adresu URL pozyskiwania i adres URL w wersji zapoznawczej. Aby uzyskać te adresy URL, kanał nie ma być w stanie uruchomionym. Gdy wszystko jest gotowe rozpocząć wypychanie danych z transkoder na żywo do kanału, kanał musi zostać uruchomiona. Po uruchomieniu na żywo transkoder dane wprowadzane można wyświetlać podgląd strumienia.
 
 Każde konto usługi Media Services może zawierać wielu kanałów, wiele programów i wielu punkty. W zależności od potrzeb przepustowości i bezpieczeństwa usługi StreamingEndpoint mogą być przeznaczone do obsługi co najmniej jednego kanału. Wszelkie StreamingEndpoint ściągnąć z dowolnym kanału.
+
+Podczas tworzenia kanału, można określić dozwolone adresy IP w jednym z następujących formatów: Adres IpV4 z 4 cyfry, zakres adresów CIDR.
 
 ### <a name="program"></a>Program
 A [Program](https://docs.microsoft.com/rest/api/media/operations/program) pozwala na kontrolowanie publikowania i przechowywania segmentów strumienia na żywo. Kanały zarządzają programami. Relacja kanału i programu jest bardzo podobna do relacji w tradycyjnych multimediach, gdzie kanał ma stały strumień zawartości, a program obejmuje niektóre zdarzenia czasowe na tym kanale.

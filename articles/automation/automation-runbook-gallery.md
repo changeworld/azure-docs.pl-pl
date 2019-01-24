@@ -3,18 +3,18 @@ title: Galeria elementów Runbook i modułów usługi Azure Automation
 description: Elementy Runbook i modułów firmy Microsoft i społeczności są dostępne do zainstalowania i używania w danym środowisku usługi Azure Automation.  W tym artykule opisano, jak można pobrać tych zasobów i przyczynić się do galerii elementów runbook.
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b87d04466a2c94ed233edf4069ec1a30b10d03a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7330d826cb196a664f06198a0e83f73bd7763ef9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634324"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428111"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów usługi Azure Automation
 Zamiast tworzenia własnych elementów runbook i modułów w usłudze Azure Automation, możesz uzyskać dostęp do różnych scenariuszy, które zostały już utworzone przez firmę Microsoft i społeczność.  Możesz użyć tych scenariuszy, bez żadnych modyfikacji lub można ich używać jako punkt początkowy i edytować je do swoich specyficznych wymagań.
@@ -108,4 +108,5 @@ Można wysyłać żądania do [User Voice](https://feedback.azure.com/forums/246
 ## <a name="next-steps"></a>Następne kroki
 * Aby rozpocząć pracę z elementami runbook, zobacz [Tworzenie lub importowanie elementu runbook w usłudze Azure Automation](automation-creating-importing-runbook.md)
 * Aby zrozumieć różnice między programu PowerShell i przepływie pracy programu PowerShell przy użyciu elementów runbook, zobacz [przepływu pracy programu PowerShell nauki](automation-powershell-workflow.md)
+
 

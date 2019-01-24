@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie globalny zasięg — usługi ExpressRoute: Azure | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie globalny zasięg — usługi ExpressRoute: Azure | Microsoft Docs'
 description: Ten artykuł pomoże Ci połączyć obwodów usługi ExpressRoute razem w celu zapewnienia prywatnych sieci między sieci lokalnych i włączanie zasięgu globalnym.
 services: expressroute
 author: mialdrid
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: 3df107f8854469b50c5e8483515388b5c93fb244
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ab1098ca65ad92cffdbe1dfb24fd43fcc8f10eae
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53383276"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431682"
 ---
 # <a name="configure-expressroute-global-reach-preview"></a>Konfigurowanie usługi ExpressRoute zasięgu globalnym (wersja zapoznawcza)
 Ten artykuł ułatwia konfigurowanie usługi ExpressRoute zasięgu globalnym przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [zasięgu globalnym ExpressRouteRoute](expressroute-global-reach.md).
@@ -26,7 +26,7 @@ Ten artykuł ułatwia konfigurowanie usługi ExpressRoute zasięgu globalnym prz
 
 Przed rozpoczęciem konfiguracji upewnij się, że:
 
-* Czy po zainstalowaniu najnowszej wersji programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+* Czy po zainstalowaniu najnowszej wersji programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 * Zrozumienie aprowizacji obwodu usługi ExpressRoute [przepływy pracy](expressroute-workflows.md).
 * Czy obwodów usługi ExpressRoute znajdują się w stanie elastycznie.
 * Czy prywatnej komunikacji równorzędnej Azure jest konfigurowany na obwodów usługi ExpressRoute.  

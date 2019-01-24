@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 2d5c658dabd03eb706c24fbe5e8adb0c46fc65cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0c681e7406f5c0c6e205f9dc54ee5eea63b40252
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267321"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54853242"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -191,6 +191,8 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 ## <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
 
+- Po uruchomieniu **Get AzureStackLog** polecenia cmdlet programu PowerShell po uruchomieniu **AzureStack testu** w tej samej sesji uprzywilejowanych punktu końcowego (program ten) **Get AzureStackLog** zakończy się niepowodzeniem. Aby obejść ten problem, Zamknij sesję program ten, w którym jest wykonywane **AzureStack testu**, a następnie otwórz nową sesję, aby uruchomić **Get AzureStackLog**.
+
 - Podczas instalacji 1811 aktualizacji, upewnij się, że wszystkie wystąpienia elementu z portalu administratora są zamknięte w tym czasie. Portal użytkowników może pozostawać otwarte, ale z portalu administratora musi zostać zamknięty.
 
 - Podczas uruchamiania [AzureStack testu](azure-stack-diagnostic-test.md), jeśli **AzsInfraRoleSummary** lub **AzsPortalApiSummary** test zakończy się niepowodzeniem, zostanie wyświetlony monit o uruchomienie  **Test AzureStack** z `-Repair` flagi.  Po uruchomieniu tego polecenia, jego wykonanie nie powiodło się następujący komunikat o błędzie:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`  Ten problem zostanie rozwiązany w przyszłej wersji.
@@ -312,7 +314,7 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
    - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wdrażanie maszyny Wirtualnej z usługą Managed Disks może zakończyć się niepowodzeniem z komunikatem o błąd wewnętrzny. Aby naprawić błąd, wykonaj następujące kroki dla każdej subskrypcji:
       1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Wybierz **dostawców zasobów**, a następnie wybierz **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
-      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
+      2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **AzureStack DiskRP klienta** roli znajduje się na liście.
    - Po skonfigurowaniu środowiska z wieloma dzierżawami wdrażania maszyn wirtualnych w ramach subskrypcji, skojarzony z katalogiem gościa może zakończyć się komunikat o błędzie wewnętrznym. Aby naprawić błąd, wykonaj następujące kroki w [w tym artykule](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) Aby zmienić konfigurację wszystkich katalogów gościa.
 
 - Maszyny Wirtualnej systemu Ubuntu 18.04 utworzone za pomocą autoryzacji SSH włączone uniemożliwi używanie kluczy SSH do logowania. Jako obejście użycie dostępu do maszyny Wirtualnej dla rozszerzenia systemu Linux w celu wdrożenia kluczy SSH po zainicjowaniu obsługi administracyjnej lub korzystanie z uwierzytelniania opartego na hasłach.

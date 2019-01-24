@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: d9f3ba642a5d00594aa6bdef597d5db43c2fc121
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 008fba2fd6052ac9043de6ec217cb71d17f3ecce
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188984"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427104"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>Wersja zapoznawcza: Usługa Azure AD monitorowania ochrony haseł, raportowanie i rozwiązywania problemów
 
@@ -38,9 +38,9 @@ Zdarzenia są rejestrowane przez różne składniki agenta kontrolera domeny prz
 
 |Składnik |Zakres identyfikatorów zdarzeń|
 | --- | --- |
-|Biblioteki dll filtru haseł agenta kontrolera domeny| 10000 19999|
-|Proces hostingu usługi agenta kontrolera domeny| 20000 29999|
-|Logikę walidacji zasad usługi agenta kontrolera domeny| 30000 39999|
+|Biblioteki dll filtru haseł agenta kontrolera domeny| 10000-19999|
+|Proces hostingu usługi agenta kontrolera domeny| 20000-29999|
+|Logikę walidacji zasad usługi agenta kontrolera domeny| 30000-39999|
 
 Dla operacji sprawdzania poprawności hasła pomyślne jest zazwyczaj jedno zdarzenie zarejestrowane z dll filtru haseł agenta kontrolera domeny. Na potrzeby przechodzenia operacji sprawdzania poprawności hasła, są zwykle dwa zdarzenia zarejestrowane: jeden z usługi agenta kontrolera domeny i jeden z dll filtru haseł agenta kontrolera domeny.
 
@@ -153,7 +153,7 @@ Rejestrowanie śledzenia jest domyślnie wyłączona.
 
 Można skonfigurować usługę agenta kontrolera domeny do zapisu do dziennika tekstowego, ustawiając następującą wartość rejestru:
 
-HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters! EnableTextLogging = 1 (wartość REG_DWORD)
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionDCAgent\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 
 Rejestrowania w pliku tekstowym jest domyślnie wyłączona. Ponowne uruchomienie usługi agenta kontrolera domeny jest wymagana dla zmiany tej wartości, aby zastosować zmiany. Po włączeniu kontroler domeny usługi agenta są zapisywane w pliku dziennika, znajdujący się w folderze:
 
@@ -188,7 +188,7 @@ Rejestrowanie śledzenia jest domyślnie wyłączona.
 
 Usługa serwera Proxy można skonfigurować do zapisu do dziennika tekstowego, ustawiając następującą wartość rejestru:
 
-HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters! EnableTextLogging = 1 (wartość REG_DWORD)
+HKLM\System\CurrentControlSet\Services\AzureADPasswordProtectionProxy\Parameters!EnableTextLogging = 1 (REG_DWORD value)
 
 Rejestrowania w pliku tekstowym jest domyślnie wyłączona. Ponowne uruchomienie usługi serwera Proxy jest wymagany dla zmiany tej wartości, aby zastosować zmiany. Po włączeniu serwera Proxy usługi są zapisywane w pliku dziennika, znajdujący się w folderze:
 

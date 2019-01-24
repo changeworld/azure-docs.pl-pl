@@ -4,7 +4,7 @@ description: Jak używać zasad grupy do wdrożenia dodatku programu Internet Ex
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.component: app-mgmt
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be3950d199b4362caa5fcd3f66b948802cfa1c49
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3a48b2ce4689490b3a38917edfb776a6ea28c478
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877480"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463443"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Jak wdrożyć rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy
 W tym samouczku pokazano, jak za pomocą zasad grupy do zdalnej instalacji rozszerzenia Panelu dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logować się do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach logowania jednokrotnego](what-is-single-sign-on.md#password-based-sso).
@@ -33,7 +33,7 @@ Rozszerzenie panelu dostępu jest również dostępna dla [Chrome](https://go.mi
 * Po skonfigurowaniu [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx), i komputerów użytkowników mają być przyłączone do domeny.
 * Musi mieć uprawnienia "Edytuj ustawienia" do edycji obiektu zasad grupy (GPO). Domyślnie członkowie następujące grupy zabezpieczeń mają to uprawnienie: Administratorzy domeny, Administratorzy przedsiębiorstwa i Twórcy-właściciele zasad grupy. [Dowiedz się więcej.](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
-## <a name="step-1-create-the-distribution-point"></a>Krok 1: Tworzenie punktu dystrybucji
+## <a name="step-1-create-the-distribution-point"></a>Krok 1: Utwórz punkt dystrybucji
 Po pierwsze należy umieścić pakiet Instalatora w lokalizacji sieciowej, która może zostać oceniony przez maszyn, które chcesz zdalnie zainstalować rozszerzenie na. W tym celu wykonaj następujące kroki:
 
 1. Zaloguj się serwerze jako administrator
@@ -50,7 +50,7 @@ Po pierwsze należy umieścić pakiet Instalatora w lokalizacji sieciowej, któr
     ![Skopiuj plik MSI do udziału.](./media/deploy-access-panel-browser-extension/copy-package.png)
 7. Sprawdź, czy komputery klienckie uzyskiwać dostęp do pakietu Instalatora z tego udziału. 
 
-## <a name="step-2-create-the-group-policy-object"></a>Krok 2: Tworzenie obiektu zasad grupy
+## <a name="step-2-create-the-group-policy-object"></a>Krok 2: Utwórz obiekt zasad grupy
 1. Zaloguj się do serwera, który obsługuje instalację usługi Active Directory Domain Services (AD DS).
 2. W Menedżerze serwera, przejdź do **narzędzia** > **Zarządzanie zasadami grupy**.
    
@@ -71,7 +71,7 @@ Po pierwsze należy umieścić pakiet Instalatora w lokalizacji sieciowej, któr
    
     ![Edytuj nowy obiekt zasad grupy](./media/deploy-access-panel-browser-extension/edit-gpo.png)
 
-## <a name="step-3-assign-the-installation-package"></a>Krok 3: Przypisanie pakiet instalacyjny
+## <a name="step-3-assign-the-installation-package"></a>Krok 3: Przypisz pakiet instalacyjny
 1. Określić, czy chcesz wdrożyć rozszerzenie na podstawie **konfiguracji komputera** lub **Konfiguracja użytkownika**. Korzystając z [konfiguracji komputera](https://technet.microsoft.com/library/cc736413%28v=ws.10%29.aspx), rozszerzenie jest zainstalowane na komputerze, niezależnie od tego, w których użytkownicy logują się go. Za pomocą [Konfiguracja użytkownika](https://technet.microsoft.com/library/cc781953%28v=ws.10%29.aspx), użytkownicy mają rozszerzenie zainstalowanych dla nich niezależnie od tego, które komputery są zalogowani.
 2. W okienku po lewej stronie **Edytor zarządzania zasadami grupy** okna, przejdź do jednej z następujących ścieżek folderów, w zależności od używanego typu konfiguracji została wybrana opcja:
    
@@ -94,10 +94,10 @@ Po pierwsze należy umieścić pakiet Instalatora w lokalizacji sieciowej, któr
 
 Rozszerzenie jest teraz wdrożyć do wybranej jednostki Organizacyjnej. [Dowiedz się więcej na temat instalacji oprogramowania zasad grupy.](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
-## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Krok 4: Automatyczne Włącz rozszerzenie programu Internet Explorer
+## <a name="step-4-auto-enable-the-extension-for-internet-explorer"></a>Krok 4: Włącz automatyczne rozszerzenie programu Internet Explorer
 Oprócz uruchomiony Instalator, każdy rozszerzenie programu Internet Explorer musi być jawnie włączone zanim będzie można jej używać. Wykonaj poniższe kroki, aby włączyć rozszerzenie panelu dostępu, za pomocą zasad grupy:
 
-1. W **Edytor zarządzania zasadami grupy** okna, przejdź do jednej z następujących ścieżek, w zależności od używanego typu konfiguracji wybranej w ramach [krok 3: przypisywanie pakiet instalacyjny](#step-3-assign-the-installation-package):
+1. W **Edytor zarządzania zasadami grupy** okna, przejdź do jednej z następujących ścieżek, w zależności od używanego typu konfiguracji wybranej w ramach [krok 3: Przypisz pakiet instalacyjny](#step-3-assign-the-installation-package):
    
    * `Computer Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`
    * `User Configuration/Policies/Administrative Templates/Windows Components/Internet Explorer/Security Features/Add-on Management`

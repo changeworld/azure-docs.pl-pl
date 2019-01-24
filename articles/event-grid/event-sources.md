@@ -2,17 +2,17 @@
 title: Źródła zdarzeń usługi Azure Event Grid
 description: W tym artykule opisano źródła obsługiwanych zdarzeń usługi Azure Event Grid
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 01/19/2019
+ms.author: spelluru
+ms.openlocfilehash: 44bd92568db3a762453e1d76a620e6c792cd8913
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498304"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54476040"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w usłudze Azure Event Grid
 
@@ -128,7 +128,7 @@ Subskrybowanie zdarzeń usługi Blob Storage do odpowiadanie na zdarzenia utworz
 | [Szybki Start: tworzenie i kierowanie zdarzeń usługi Blob storage za pomocą witryny Azure portal](blob-event-quickstart-portal.md) | Pokazuje, jak korzystać z portalu do wysyłania zdarzeń usługi blob storage do elementu WebHook. |
 | [Interfejs wiersza polecenia platformy Azure: subskrybowanie zdarzeń dla konta usługi Blob storage](./scripts/event-grid-cli-blob.md) | Przykładowy skrypt, która ją subskrybuje zdarzenia dla konta usługi Blob storage. Wysyła zdarzenie do elementu WebHook. |
 | [Program PowerShell: subskrybowanie zdarzeń dla konta usługi Blob storage](./scripts/event-grid-powershell-blob.md) | Przykładowy skrypt, która ją subskrybuje zdarzenia dla konta usługi Blob storage. Wysyła zdarzenie do elementu WebHook. |
-| [Szablon usługi Resource Manager: Tworzenie usługi Blob storage i subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Wdraża konto magazynu obiektów Blob platformy Azure i subskrybuje zdarzenia dla tego konta magazynu. Wysyła zdarzenia do elementu WebHook. |
+| [Szablon usługi Resource Manager: Tworzenie magazynu obiektów Blob i subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Wdraża konto magazynu obiektów Blob platformy Azure i subskrybuje zdarzenia dla tego konta magazynu. Wysyła zdarzenia do elementu WebHook. |
 | [Omówienie: reagowanie na zdarzenia usługi Blob storage](../storage/blobs/storage-blob-event-overview.md) | Omówienie integracji usługi Blob storage z usługą Event Grid. |
 | [Schemat zdarzeń](event-schema-blob-storage.md) | Pokazuje pola w zdarzeniach usługi Blob Storage. |
 

@@ -3,19 +3,19 @@ title: Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
 description: Jak przekazać parametry do elementu runbook jako obiekt JSON
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: Program PowerShell, elementów runbook, json, usługa azure automation
-ms.openlocfilehash: 5e1ab8d6bd2de24251851cfc60d270a2fef4090d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 65f3bfcebdde50352d5e9e2748036d4522b2a991
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918822"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424904"
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
 
@@ -32,7 +32,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze, możesz to zrobić [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub [Załóż bezpłatne konto](https://azure.microsoft.com/free/).
 * [Konto usługi Automation](automation-sec-configure-azure-runas-account.md) do przechowywania elementu Runbook i uwierzytelniania w zasobach platformy Azure.  To konto musi mieć uprawnienia do uruchamiania i zatrzymywania maszyny wirtualnej.
 * Maszyna wirtualna platformy Azure. Będziemy uruchamiać i zatrzymywać tę maszynę, dlatego należy użyć maszyny innej niż produkcyjna.
-* Program Azure Powershell zainstalowane na komputerze lokalnym. Zobacz [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0) uzyskać informacji na temat sposobu uzyskania programu Azure PowerShell.
+* Program Azure Powershell zainstalowane na komputerze lokalnym. Zobacz [Instalowanie i konfigurowanie programu Azure Powershell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.1.0) uzyskać informacji na temat sposobu uzyskania programu Azure PowerShell.
 
 ## <a name="create-the-json-file"></a>Utwórz plik JSON
 
@@ -90,7 +90,7 @@ Uruchom następujące polecenia środowiska PowerShell:
 
 1. Pobierz zawartość pliku JSON, a następnie przekonwertować na ciąg:
     ```powershell
-    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
+    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
     ```
     `JsonPath` jest to ścieżka, w której zapisano plik JSON.
 1. Konwertuj zawartość ciągu `$json` na obiekt programu PowerShell:
@@ -118,5 +118,6 @@ Element runbook używa wartości z pliku JSON, aby uruchomić Maszynę wirtualn�
 
 * Aby dowiedzieć się więcej o edytowaniu elementów runbook programu PowerShell i przepływie pracy programu PowerShell w programie Edytor tekstów, zobacz [edytowanie tekstowych elementów runbook w usłudze Azure Automation](automation-edit-textual-runbook.md) 
 * Aby dowiedzieć się więcej o tworzeniu i importowanie elementów runbook, zobacz [Tworzenie lub importowanie elementu runbook w usłudze Azure Automation](automation-creating-importing-runbook.md)
+
 
 

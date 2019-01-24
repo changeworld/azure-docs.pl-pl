@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: d57f34da261d51707caf499bfdf1fffa344b72a9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 0b15861f663c98d3b873f95a0ea6c485ada91fb6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385519"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421610"
 ---
 # <a name="check-resource-usage-against-limits"></a>Sprawdź użycie zasobów limitów
 
@@ -34,7 +34,7 @@ W tym artykule dowiesz się, jak wyświetlić liczbę każdego typu zasobu sieci
 4. Wybierz nazwę subskrypcji, którą chcesz wyświetlić informacje o sposobie użycia.
 5. W obszarze **ustawienia**, wybierz opcję **użycia i przydziałów**.
 6. Możesz wybrać następujące opcje:
-    - **Typy zasobów**: Możesz wybrać wszystkie typy zasobów, lub zaznacz konkretne typy zasobów, którą chcesz wyświetlić.
+    - **Typy zasobów**: Wybierz wszystkie typy zasobów lub wybierz konkretne typy zasobów, które chcesz wyświetlić.
     - **Dostawców**: Możesz wybrać wszystkich dostawców zasobów lub wybierz **obliczenia**, **sieci**, lub **magazynu**.
     - **Lokalizacje**: Możesz wybrać wszystkich lokalizacji platformy Azure lub wybrać określone lokalizacje.
     - Możesz wybrać, aby wyświetlić wszystkie zasoby lub zasoby, których jest wdrażany co najmniej jeden.
@@ -47,7 +47,7 @@ W tym artykule dowiesz się, jak wyświetlić liczbę każdego typu zasobu sieci
 
 ## <a name="powershell"></a>PowerShell
 
-Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli korzystasz z programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się do platformy Azure.
+Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli korzystasz z programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się do platformy Azure.
 
 Wyświetl użycie ograniczeń za pomocą [Get-AzureRmNetworkUsage](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0). Poniższy przykład pobiera użycia zasobów, w którym co najmniej jeden zasób jest wdrażany w lokalizacji wschodnie stany USA:
 

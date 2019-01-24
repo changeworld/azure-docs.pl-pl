@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 12/12/2018
-ms.openlocfilehash: f6191ba2f6ca86e07842030c0fca0a65b8c9d09a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.date: 01/22/2019
+ms.openlocfilehash: 420d3c256f9bf2d0884e98312a5a66aea08b13bc
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584500"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450885"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -39,7 +39,8 @@ Wystąpienie usługi Azure SQL Database Managed można wdrożyć na dwa sprzętu
 | Sprzęt | Intel E5-2673 v3 procesorów 2,4 GHz (Haswell), dołączony dysk SSD — rdzeń wirtualny = 1 PP (fizycznych rdzeni) | Intel E5-2673 v4 (broadwell z zegarem) 2.3 GHz procesorów, szybkie eNVM dyski SSD, — rdzeń wirtualny = LP 1 (hyper wątek) |
 | Wystąpienia obliczeniowe | 8, 16, 24 rdzenie wirtualne | 8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych |
 | Memory (Pamięć) | 7 GB na rdzeń wirtualny | 5.1 GB na rdzeń wirtualny |
-| Maksymalny rozmiar magazynu (krytyczne dla działania firmy) | 1 TB | 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
+| Maksymalny rozmiar magazynu (ogólnego przeznaczenia) |  8 TB | 1 TB |
+| Maksymalny rozmiar magazynu (krytyczne dla działania firmy) | 8 TB | 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
 
 ### <a name="service-tier-characteristics"></a>Właściwości warstwy usług
 
@@ -47,14 +48,13 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 
 | **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania** |
 | --- | --- | --- |
-| Liczba rdzeni wirtualnych\* | 4. generacji: 8, 16, 24<br/>5. generacji: 8, 16, 24, 32, 40, 64, 80 | 4. generacji: 8, 16, 24, 32 <br/> 5. generacji: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Pamięć) | 4. generacji: 56GB – 156GB<br/>5. generacji: 44GB – 440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | 4. generacji: 56GB – 156GB <br/> 5. generacji: 41GB – 408GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
+| Liczba rdzeni wirtualnych\* | Gen4: 8, 16, 24<br/>5. generacji: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> 5. generacji: 8, 16, 24, 32, 40, 64, 80 |
+| Memory (Pamięć) | Gen4: 56GB – 156GB<br/>5. generacji: 44GB-440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | Gen4: 56GB – 156GB <br/> 5. generacji: 41GB-408GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu | 8 TB | 4. generacji: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
-| Danych/dziennika operacji We/Wy (w przybliżeniu) | 500-7500 na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11-110 tys. obr (1375 na rdzeń wirtualny) |
-| Wystąpienie dziennika przepływności | 22MB/s na wystąpienie | 3MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48MB/s |
+| Danych/dziennika operacji We/Wy (w przybliżeniu) | 500-7500 na plik<br/>\*[Zależy od rozmiaru plików] (https://docs.microsoft.com/azure/virtual-machines ce przepływności dziennika | 22MB/s na wystąpienie | 3MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48MB/s |
 | Przepływność danych (w przybliżeniu) | 100-250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48MB/s na rdzeniach wirtualnych |
 | We/Wy, czas oczekiwania (w przybliżeniu) | 5 – 10 ms | 1 – 2 ms |
 | Maksymalny rozmiar bazy danych tempDB | 192 1920 GB (24 GB na rdzeń wirtualny) | Bez ograniczeń — ograniczone przez maksymalny rozmiar wystąpienia: magazynu |
@@ -91,11 +91,11 @@ W poniższej tabeli przedstawiono domyślne limity regionalne dla obsługiwanych
 
 |Typ subskrypcji| Maksymalna liczba podsieci wystąpienia zarządzanego | Maksymalna liczba wystąpień |Maksymalna liczba GP zarządzane wystąpienia *|Maksymalna liczba BC zarządzane wystąpienia *|
 | :---| :--- | :--- |:--- |:--- |
-|Płatność zgodnie z rzeczywistym użyciem|1 *|4 *|4 *|1 *|
-|CSP |1 *|4 *|4 *|1 *|
-|Płatność za rzeczywiste użycie, tworzenie i testowanie|1 *|4 *|4 *|1 *|
-|Tworzenie i testowanie (przedsiębiorstwo)|1 *|4 *|4 *|1 *|
-|EA|3 **|12 **|12 **|3 **|
+|Płatność zgodnie z rzeczywistym użyciem|1*|4*|4*|1*|
+|CSP |1*|4*|4*|1*|
+|Płatność za rzeczywiste użycie, tworzenie i testowanie|1*|4*|4*|1*|
+|Tworzenie i testowanie (przedsiębiorstwo)|1*|4*|4*|1*|
+|EA|3**|12**|12**|3**|
 
 \* 1 BC lub 4 wystąpień zasad grupy w jednej podsieci, można wdrożyć albo tak, aby łączna liczba jednostek"wystąpienie" w podsieci nigdy nie przekracza 4.
 
@@ -118,11 +118,11 @@ Poniższe przykłady obejmują przypadków wdrożenie z podsieciami niepuste i m
 |Liczba podsieci|Podsieć 1|Podsieć 2|Podsieć 3|
 |:---|:---|:---|:---|
 |1|1 BC i maksymalnie 8 zasad grupy<br>2 BC i maksymalnie 4 zasad grupy|ND| ND|
-|2|BC 0, GP maksymalnie 4|BC 1, GP maksymalnie 4<br>BC 2, 0 GP|ND|
-|2|BC 1, 0 ZASAD GRUPY|BC 0, GP maksymalnie 8<br>BC 1, GP maksymalnie 4|ND|
-|2|BC 2, 0 GP|BC 0, GP maksymalnie 4|ND|
-|3|BC 1, 0 ZASAD GRUPY|BC 1, 0 ZASAD GRUPY|BC 0, GP maksymalnie 4|
-|3|BC 1, 0 ZASAD GRUPY|BC 0, GP maksymalnie 4|BC 0, GP maksymalnie 4|
+|2|BC 0, GP maksymalnie 4|BC 1, GP maksymalnie 4<br>2 BC, 0 GP|ND|
+|2|1 BC, 0 GP|BC 0, GP maksymalnie 8<br>BC 1, GP maksymalnie 4|ND|
+|2|2 BC, 0 GP|BC 0, GP maksymalnie 4|ND|
+|3|1 BC, 0 GP|1 BC, 0 GP|BC 0, GP maksymalnie 4|
+|3|1 BC, 0 GP|BC 0, GP maksymalnie 4|BC 0, GP maksymalnie 4|
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Uzyskanie większego limitu przydziału dla wystąpienia zarządzanego usługi SQL
 

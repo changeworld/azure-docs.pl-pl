@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 6bb7db5d57508d448f88a30623b7f30e88a0a821
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d66f36e737e100a0d8e60b85b51f6dcf632e6d3e
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736755"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54404667"
 ---
 | Zasób | Bezpłatna | Udostępniona | Podstawowa | Standardowa (Standard) | Premium (wersja 2) | Izolowane </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Aplikacje internetowe, mobilne i interfejsu API](https://azure.microsoft.com/services/app-service/) na [planu usługi App Service](../articles/app-service/overview-hosting-plans.md)<sup>1</sup> |10 |100 |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup> |Nieograniczona liczba<sup>2</sup>|
-| [Plan usługi App Service](../articles/app-service/overview-hosting-plans.md) |1 na region |10 dla grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów|
+| [Plan usługi App Service](../articles/app-service/overview-hosting-plans.md) |10 na region |10 dla grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów |100 dla każdej grupy zasobów|
 | Typ wystąpienia obliczeniowe |Udostępniona |Udostępniona |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup> |W wersji dedykowanej<sup>3</sup></p> |W wersji dedykowanej<sup>3</sup>|
 | [Skalowalny w poziomie](../articles/app-service/web-sites-scale.md) (maksymalna liczba wystąpień) |1 udostępnionego |1 udostępnionego |3 w wersji dedykowanej<sup>3</sup> |10 w wersji dedykowanej<sup>3</sup> |20 w wersji dedykowanej<sup>3</sup>|w wersji dedykowanej 100<sup>4</sup>|
-| Magazyn<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| Storage<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | Czas Procesora (5 min)<sup>6</sup> |3 minuty |3 minuty |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a>|
 | Czas Procesora (dzień)<sup>6</sup> |60 minut |240 minut |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |Nieograniczone, płacić zgodnie ze standardowymi [stawki](https://azure.microsoft.com/pricing/details/app-service/)</a> |
 | Pamięć (1 godzina) |1024 MB na plan usługi App Service |1024 MB dla aplikacji |ND |ND |ND |ND |

@@ -3,19 +3,19 @@ title: Rozwiązywanie problemów dotyczących zasad niestandardowych w usłudze 
 description: Poznaj sposoby rozwiązywania błędy podczas pracy z zasad niestandardowych w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: be3a3a50d3ace369964814bc7fcc0fa0d353a332
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842598"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54842906"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Rozwiązywanie problemów z niestandardowych zasad usługi Azure AD B2C i platformy środowiska tożsamości
 
@@ -29,7 +29,7 @@ Jeśli używasz usługi Azure Active Directory B2C (Azure AD B2C) zasady niestan
 Najbardziej typowych błędów w konfigurowaniu zasad niestandardowych jest nieprawidłowo w formacie XML. Niemal istotne jest dobrym edytora XML. Dobre edytora XML Wyświetla XML w sposób macierzysty, color-codes zawartości, powoduje wstępne wypełnienie typowe terminy, przechowuje elementy XML indeksowane i można sprawdzić poprawność ze schematem. Poniżej przedstawiono dwa naszych ulubionych edytory XML:
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Notatnik ++](https://notepad-plus-plus.org/)
+* [Notepad++](https://notepad-plus-plus.org/)
 
 Sprawdzanie poprawności schematu XML identyfikuje błędy przed przekazaniem pliku XML. W folderze głównym pakietu startowego pobrać definicji schematu XML TrustFrameworkPolicy_0.3.0.0.xsd. Aby uzyskać więcej informacji, w dokumentacji edytora XML, poszukaj *narzędzia XML* i *sprawdzanie poprawności kodu XML*.
 
@@ -57,8 +57,8 @@ Fragment kodu błędu: `Reason: User is currently logged as a user of 'yourtenan
 
 * Użyj `Run Now` i `https://jwt.io` do testowania zasad niezależnie od usługi sieci web lub aplikacji mobilnej. Ta witryna sieci Web działa jak aplikacji jednostki uzależnionej. Wyświetla zawartość z sieci Web tokenu JSON (JWT) generowany przez zasady usługi Azure AD B2C. Aby utworzyć aplikacji testowej w struktura środowiska tożsamości, użyj następujących wartości:
     * Nazwa: TestApp
-    * Sieci Web aplikacji/internetowy interfejs API: nie
-    * Natywny klient: Brak
+    * W sieci Web/sieci Web aplikacji interfejsu API: Nie
+    * Natywny klient: Nie
 
 * Aby śledzić wymiana wiadomości między przeglądarką klienta i usługi Azure AD B2C, należy użyć [Fiddler](https://www.telerik.com/fiddler). Może pomóc Ci wskazanie gdzie swoją podróż po użytkownik nie działa prawidłowo w etapów aranżacji.
 

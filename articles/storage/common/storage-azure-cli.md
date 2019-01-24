@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 977d40ba6fdb00f47f4ff32e60642ee3ab102da2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984392"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413638"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -31,7 +31,7 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia dotyczące usłu
 
 ### <a name="accounts"></a>Konta
 * **Konto platformy Azure**: Jeśli nie masz jeszcze subskrypcji platformy Azure, [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](storage-quickstart-create-account.md) w temacie [Informacje o kontach magazynu Azure](storage-create-storage-account.md).
+* **Konto magazynu**: Zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md) w [kontach magazynu Azure o](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 
@@ -183,10 +183,10 @@ az storage account create \
     --sku <account_sku>
 ```
 
-* `--location` [Wymagana]: lokalizacja. Na przykład "West US".
+* `--location` [Wymagana]: Lokalizacja. Na przykład "West US".
 * `--name` [Wymagana]: Nazwa konta magazynu. Nazwa musi mieć długość 3 do 24 znaków i zawierać tylko małe znaki alfanumeryczne.
 * `--resource-group` [Wymagana]: Nazwa grupy zasobów.
-* `--sku` [Wymagana]: jednostki SKU konta magazynu. Dozwolone wartości:
+* `--sku` [Wymagana]: Jednostki SKU konta magazynu. Dozwolone wartości:
   * `Premium_LRS`
   * `Standard_GRS`
   * `Standard_LRS`
@@ -197,7 +197,7 @@ az storage account create \
 
 Może mieć wielu kont magazynu w ramach subskrypcji platformy Azure. Aby wybrać jeden z nich do użycia dla wszystkich poleceń kolejnych magazynu, można ustawić zmienne środowiskowe:
 
-Najpierw wyświetl klucze konta magazynu przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys#list):
+Najpierw wyświetl klucze konta magazynu przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys):
 
 ```azurecli-interactive
 az storage account keys list \
@@ -242,8 +242,8 @@ az storage container create --name <container_name>
 
 Można ustawić jeden z trzech poziomów dostępu do odczytu dla nowego kontenera, określając opcjonalnego `--public-access` argumentu:
 
-* `off` (ustawienie domyślne): dane w kontenerze są prywatne dla właściciela konta.
-* `blob`: Publicznego dostępu do odczytu obiektów blob.
+* `off` (ustawienie domyślne): Dane w kontenerze są prywatne dla właściciela konta.
+* `blob`: Publiczny dostęp do odczytu dla obiektów blob.
 * `container`: Publicznego dostępu do odczytu i listy dla całego kontenera.
 
 Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).

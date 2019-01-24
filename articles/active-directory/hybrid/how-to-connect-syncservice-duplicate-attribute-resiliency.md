@@ -4,7 +4,7 @@ description: Nowe zachowanie sposób obsługi obiektów przy użyciu nazwy UPN l
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 537a92b7-7a84-4c89-88b0-9bce0eacd931
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: f3460520b8914a25807c77f631aa4c64f3b2efb0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406198"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464871"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
 Odporność na zduplikowane atrybuty to funkcja usługi Azure Active Directory, która zostanie całkowicie wyeliminować zajmowania się przyczyną **UserPrincipalName** i **ProxyAddress** powoduje konflikt podczas uruchamiania jednego z firmy Microsoft narzędzia do synchronizacji.
@@ -133,7 +133,7 @@ Oto jak wygląda powiadomienie e-mail dla konfliktu ProxyAddress przykład:
 ## <a name="resolving-conflicts"></a>Rozwiązywanie konfliktów
 Rozwiązywanie problemów z taktyka strategii i rozpoznawanie błędów powinny różnić się od sposób błędy zduplikowanych atrybutów są obsługiwane w przeszłości. Jedyna różnica polega na tym, że zadanie czasomierza wrzucając za pomocą dzierżawy po stronie usługi do automatycznego dodawania atrybutów w danym do odpowiedniego obiektu po rozwiązaniu konfliktu.
 
-Następujący artykuł zawiera opis różnych strategii ułatwiającego Rozwiązywanie problemów: [zduplikowany lub nieprawidłowe atrybuty zapobieganie synchronizacji katalogów w usłudze Office 365](https://support.microsoft.com/kb/2647098).
+Następujący artykuł zawiera opis różnych strategii rozwiązywania problemów i rozwiązania. [Zduplikowana lub nieprawidłowa atrybuty zapobieganie synchronizacji katalogów w usłudze Office 365](https://support.microsoft.com/kb/2647098).
 
 ## <a name="known-issues"></a>Znane problemy
 Żadna z tych znanych problemów powoduje spadek utratę lub usługi danych. Niektóre z nich są estetycznych, inne powodować standard "*wstępne odporności*" błędy zduplikowanych atrybutów zostanie wygenerowany zamiast poddawania atrybut konflikt, a druga powoduje, że pewne błędy wymagać dodatkowych ręcznego konfigurowania.

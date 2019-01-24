@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2035d342a89ace6d286fc205c346591b29646c5d
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270148"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427406"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktywne monitorowanie sieci za pomocą alertów i usługi Azure Functions na użytek przechwycenie pakietu
 
@@ -35,7 +35,7 @@ Dzięki użyciu usługi Network Watcher, alerty i functions z poziomu systemu Az
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Najnowszą wersję [programu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+* Najnowszą wersję [programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 * Istniejącego wystąpienia usługi Network Watcher. Jeśli nie masz jeszcze jeden, [Utwórz wystąpienie usługi Network Watcher](network-watcher-create.md).
 * W tym samym regionie, co Usługa Network Watcher z istniejącej maszyny wirtualnej [rozszerzenia Windows](../virtual-machines/windows/extensions-nwa.md) lub [rozszerzenia maszyny wirtualnej systemu Linux](../virtual-machines/linux/extensions-nwa.md).
 
@@ -349,7 +349,7 @@ Przejdź do istniejącej maszyny wirtualnej, a następnie dodaj regułę alertu.
   |**Warunek**|Większe niż| Warunek, który chcesz użyć podczas obliczania metryki.|
   |**Próg**|100| Wartość metryki, które wyzwala alert. Ta wartość powinna być równa prawidłową wartość dla danego środowiska.|
   |**Okres**|W ciągu ostatnich pięciu minut| Określa okres, w którym należy szukać próg dla metryki.|
-  |**Element Webhook**|[adres URL elementu webhook z funkcji aplikacji]| Adres URL elementu webhook z poziomu aplikacji funkcji, który został utworzony w poprzednich krokach.|
+  |**Webhook**|[adres URL elementu webhook z funkcji aplikacji]| Adres URL elementu webhook z poziomu aplikacji funkcji, który został utworzony w poprzednich krokach.|
 
 > [!NOTE]
 > Metryka segmentów TCP nie jest włączona domyślnie. Dowiedz się więcej o sposobie włączania dodatkowe metryki, odwiedzając [Włączanie monitorowania i diagnostyki](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).

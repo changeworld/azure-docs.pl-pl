@@ -1,13 +1,10 @@
 ---
-title: Przykład programu PowerShell — równoważenie obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności — Azure | Microsoft Docs
+title: Przykład programu PowerShell — równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności — Azure
+titlesuffix: Azure Load Balancer
 description: Ten przykładowy skrypt programu PowerShell przedstawia sposób równoważenia obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności
 services: load-balancer
 documentationcenter: load-balancer
 author: KumudD
-manager: jeconnoc
-editor: tysonn
-tags: ''
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: sample
@@ -15,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: 31fd1e7d10692a1fbb552a483ae00e0088785a67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0440c7e2d2e79e2b954f975167389cf7698a6370
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181256"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54201027"
 ---
-# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Przykładowy skrypt programu PowerShell: równoważenie obciążenia ruchu do maszyn wirtualnych na potrzeby wysokiej dostępności
+# <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Przykładowy skrypt programu Azure PowerShell: Równoważenie obciążenia ruchem maszyn wirtualnych w celu uzyskania wysokiej dostępności
 
 Ten przykładowy skrypt programu PowerShell umożliwia utworzenie wszystkich elementów potrzebnych do uruchomienia kilku maszyn wirtualnych z systemem Windows skonfigurowanych w ramach konfiguracji o wysokiej dostępności i zrównoważonym obciążeniu. Po uruchomieniu skryptu będziesz mieć trzy maszyny wirtualne dołączone do zestawu dostępności platformy Azure i dostępne za pośrednictwem usługi Azure Load Balancer.
 

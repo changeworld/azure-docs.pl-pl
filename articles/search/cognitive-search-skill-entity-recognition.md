@@ -8,24 +8,24 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9745934891cd7ba99fa821377318e38134b7d2a5
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 7a7fe9603716575c241ca78ebdc9b674888ca835
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311868"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452211"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Umiejętności cognitive rozpoznawania jednostek
 
-**Rozpoznawanie jednostek** umiejętności wyodrębnia jednostek o różnych typach z pliku tekstowego. 
+**Rozpoznawanie jednostek** umiejętności wyodrębnia jednostek o różnych typach z pliku tekstowego. Modele dostarczone przez uczenia maszynowego korzysta z tej umiejętności [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) w usługach Cognitive Services.
 
 > [!NOTE]
-> Od 21 grudnia 2018 r. można skojarzyć zasobu usług Cognitive Services za pomocą usługi Azure Search zestawu umiejętności. Pozwoli to nam będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również Zaczniemy naliczać opłaty do wyodrębnienia obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów nadal będzie oferowane bez dodatkowych opłat.
+> Od 21 grudnia 2018 r. można [dołączenia zasobu usług Cognitive Services](cognitive-search-attach-cognitive-services.md) za pomocą usługi Azure Search zestawu umiejętności. Dzięki temu będą naliczane opłaty za wykonywanie zestawu umiejętności. W tym dniu również naliczamy opłaty za wyodrębniania obrazu jako część etap łamania dokumentów. Wyodrębnianie tekstu z dokumentów w dalszym ciągu oferowana bez ponoszenia dodatkowych kosztów.
 >
-> Wykonanie wbudowanego umiejętności będzie powodować obciążenie opłatami istniejące [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services/) . Cennik wyodrębniania obrazu będzie powodować obciążenie opłatami ceny za wersję zapoznawczą i został opisany na [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400). Dowiedz się, [więcej](cognitive-search-attach-cognitive-services.md).
+> [Wbudowane umiejętności cognitive](cognitive-search-predefined-skills.md) wykonywania podlega opłacie [usług Cognitive Services, płatności — jako — można przejść cena](https://azure.microsoft.com/pricing/details/cognitive-services), w taki sam szybkości tak, jakby zadanie było wykonywane bezpośrednio. Obraz wyodrębniania jest opłata za usługę Azure Search, obecnie oferowana w cenie wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [usługi Azure Search stronę z cennikiem](https://go.microsoft.com/fwlink/?linkid=2042400) lub [sposób działania rozliczeń](search-sku-tier.md#how-billing-works).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -43,7 +43,7 @@ Parametrów jest rozróżniana wielkość liter i są wszystkie opcjonalne.
 | categories    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
 |defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `de, en, es, fr, it`|
 |minimumPrecision | Nieużywane. Zarezerwowane do użytku w przyszłości. |
-|includeTypelessEntites | Gdy ustawiona wartość true, jeśli tekst zawiera jednostkę dobrze znana, ale nie można podzielić na jeden z obsługiwanych kategorii, zostaną zwrócone jako część obiektu `"entities"` złożonych danych wyjściowych. Wartość domyślna to `false` |
+|includeTypelessEntities | Gdy ustawiona wartość true, jeśli tekst zawiera jednostkę dobrze znana, ale nie można podzielić na jeden z obsługiwanych kategorii, będzie zwracany jako część `"entities"` złożonych danych wyjściowych. Wartość domyślna to `false` |
 
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
@@ -61,13 +61,13 @@ Tylko _en_, _es_ obsługuje Ekstrakcja `"Quantity"`, `"Datetime"`, `"URL"`, `"Em
 | Nazwa wyjściowego     | Opis                   |
 |---------------|-------------------------------|
 | osoby      | Tablica ciągów, gdzie każdy ciąg reprezentuje imię osoby. |
-| lokalizacje  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
+| locations  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
 | organizations  | Tablica ciągów, w której każdy ciąg reprezentuje organizacji. |
 | ilości  | Tablica ciągów, w której każdy ciąg reprezentuje ilość. |
 | Data/Godzina  | Tablica ciągów, gdzie każdy ciąg reprezentuje wartość typu DateTime (wyświetlaną w tekście) wartość. |
 | adresy URL | Tablica ciągów, w którym każdy ciąg reprezentuje adres URL |
 | wiadomości e-mail | Tablica ciągów, w której każdy ciąg reprezentuje wiadomość e-mail |
-| namedEntities | Tablica typów złożonych, które zawierają następujące pola: <ul><li>category</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (nieużywane teraz. Zostanie ustawiona na wartość -1)</li></ul> |
+| namedEntities | Tablica typów złożonych zawiera następujące pola: <ul><li>category</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (nieużywane teraz. Zostanie ustawiona na wartość -1)</li></ul> |
 | jednostki | Tablica typów złożonych zawiera rozbudowane informacje dotyczące jednostek wyodrębnione z pliku tekstowego przy użyciu następujących pól <ul><li> Nazwa (nazwa rzeczywistego jednostki. Ta pozycja reprezentuje formularz "znormalizowanych")</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (link do strony Wikipedii dla jednostki)</li><li>bingId</li><li>Typ (kategoria jednostki rozpoznawane)</li><li>Podtyp (dostępne tylko dla niektórych kategorii, daje to bardziej szczegółowego widoku typ jednostki)</li><li> Dopasowuje (złożoną kolekcję zawierającą)<ul><li>tekst (nieprzetworzony tekst dla jednostki)</li><li>Przesunięcie (lokalizację, w którym został znaleziony)</li><li>długość (długość tekstu nieprzetworzona jednostki)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Przykładowa definicja

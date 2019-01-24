@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/06/2018
+ms.date: 01/14/2019
 ms.author: dineshm
-ms.openlocfilehash: b0382d31f9d16228ca3447ace9c7d4f171b206f6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e72a4f71a42a892d14fad076b124426f0c32ac7d
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548990"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321810"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Samouczek: uzyskiwanie dostępu do danych usługi Data Lake Storage Gen2 w wersji zapoznawczej za pomocą usługi Azure Databricks i platformy Spark
 
@@ -36,12 +36,31 @@ W tym samouczku przedstawiono sposób używania danych dotyczących lotów udost
 2. Wybierz pozycję **Download** (Pobierz) i zapisz wyniki na swojej maszynie.
 3. Zanotuj nazwę i ścieżkę pobranego pliku. Te informacje będą potrzebne później.
 
-Do pracy z tym samouczkiem potrzebujesz konta magazynu z funkcjami analizy. Aby utworzyć to konto, zalecamy ukończenie [przewodnika szybki start](data-lake-storage-quickstart-create-account.md) dotyczącego tego tematu. Po utworzeniu konta magazynu przejdź do niego i pobierz ustawienia konfiguracji.
+Do pracy z tym samouczkiem potrzebujesz konta magazynu z funkcjami analizy. Aby utworzyć to konto, zalecamy ukończenie [przewodnika szybki start](data-lake-storage-quickstart-create-account.md) dotyczącego tego tematu. 
 
-1. W obszarze **Ustawienia** wybierz pozycję **Klucze dostępu**.
-2. Wybierz przycisk **Kopiuj** obok pozycji **klucz1**, aby skopiować wartość klucza.
+## <a name="set-aside-storage-account-configuration"></a>Zapisywanie konfiguracji konta magazynu na później
 
-Nazwa konta i klucz są wymagane do wykonania kolejnych kroków w tym samouczku. Otwórz edytor tekstu i zapisz nazwę konta oraz klucz do późniejszego użycia.
+Potrzebna będzie nazwa konta magazynu i identyfikator URI punktu końcowego systemu plików.
+
+Aby uzyskać nazwę konta magazynu w witrynie Azure Portal, wybierz pozycję **Wszystkie usługi** i filtruj listę według terminu *Magazyn*. Następnie wybierz pozycję **Konta magazynu** i znajdź swoje konto magazynu.
+
+Aby uzyskać identyfikator URI punktu końcowego systemu plików, wybierz pozycję **Właściwości**, a w okienku właściwości znajdź wartość pola **Podstawowy punkt końcowy systemu plików usługi ADLS**.
+
+Wklej obie te wartości do pliku tekstowego. Wkrótce będą potrzebne.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+
+Utwórz jednostkę usługi, wykonując czynności opisane w temacie: [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Istnieje kilka określonych czynności, o których należy pamiętać podczas wykonywania instrukcji przedstawionych w tym artykule.
+
+:heavy_check_mark: Wykonując kroki opisane w sekcji [Tworzenie aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) tego artykułu, należy ustawić pole **Adres URL logowania** w oknie dialogowym **Tworzenie** na uzyskany uprzednio identyfikator URI punktu końcowego.
+
+:heavy_check_mark: Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano aplikację do **roli Współautor usługi Blob Storage**.
+
+:heavy_check_mark: Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
 
 ## <a name="create-a-databricks-cluster"></a>Tworzenie klastra usługi Databricks
 
@@ -63,22 +82,24 @@ Następnym krokiem jest utworzenie klastra usługi Databricks jako obszaru roboc
 14. Wprowadź wybraną nazwę w polu **Nazwa**, a następnie wybierz język **Python**.
 15. Możesz pozostawić wartości domyślne we wszystkich pozostałych polach.
 16. Wybierz pozycję **Utwórz**.
-17. Wklej następujący kod do komórki **Cmd 1**. W przykładowym kodzie zastąp symbole zastępcze widoczne w nawiasach własnymi wartościami:
+17. Skopiuj i wklej następujący blok kodu do pierwszej komórki, ale jeszcze nie uruchamiaj kodu.
 
-    ```scala
-    %python%
+    ```Python
     configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-        
+           "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
+           "fs.azure.account.oauth2.client.id": "<application-id>",
+           "fs.azure.account.oauth2.client.secret": "<authentication-id>",
+           "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token",
+           "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
+
     dbutils.fs.mount(
-        source = "abfss://dbricks@<account-name>.dfs.core.windows.net/folder1",
-        mount_point = "/mnt/flightdata",
-        extra_configs = configs)
+    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    mount_point = "/mnt/flightdata",
+    extra_configs = configs)
     ```
-18. Naciśnij klawisze **SHIFT + ENTER**, aby uruchomić komórkę kodu.
+18. W tym bloku kodu zastąp symbole zastępcze `storage-account-name`, `application-id`, `authentication-id` i `tenant-id` wartościami uzyskanymi podczas wykonywaniu kroków opisanych w sekcjach [Zapisywanie konfiguracji konta magazynu na później](#config) i [Tworzenie jednostki usługi](#service-principal) tego artykułu. Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
+
+19. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
 ## <a name="ingest-data"></a>Pozyskiwanie danych
 

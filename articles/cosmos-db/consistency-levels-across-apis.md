@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 76ebbc8cc8dbea4b7f8f8226cf1d8570a421e8cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034339"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54807001"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 
@@ -24,15 +24,48 @@ W poniższych sekcjach przedstawiono mapowanie między spójności danych wymaga
 
 ## <a id="cassandra-mapping"></a>Mapowanie między poziomami spójności bazy danych Apache Cassandra usługi Azure Cosmos DB
 
-W poniższej tabeli przedstawiono "spójności odczytu" mapowanie między klientem 4.x bazy danych Apache Cassandra i domyślny poziom spójności w usłudze Azure Cosmos DB. W tabeli przedstawiono wdrożenia w wielu regionach i jednym regionie.
+W poniższej tabeli przedstawiono mapowania spójności bazy danych Apache Cassandra oraz poziomów spójności w usłudze Azure Cosmos DB. Dla każdej bazy danych Cassandra odczytu i zapisu poziomów spójności, odpowiedni poziom spójności bazy danych Cosmos zapewnia silniejsza, czyli bardziej rygorystyczne gwarancji.
 
-| **Bazy danych Apache Cassandra 4.x** | **Usługa Azure Cosmos DB (wielu regionów)** | **Usługa Azure Cosmos DB (jednym regionie)** |
+W poniższej tabeli przedstawiono **zapisu mapowania spójności** między usługi Azure Cosmos DB i bazy danych Cassandra:
+
+| Cassandra | Azure Cosmos DB | Gwarancja |
 | - | - | - |
-| RAZ DWA TRZY | Spójny prefiks | Spójny prefiks |
-| LOCAL_ONE | Spójny prefiks | Spójny prefiks |
-| KWORUM, WSZYSTKIE, SERYJNY | Powiązana nieaktualność jest ustawieniem domyślnym. Silne znajduje się w prywatnej wersji zapoznawczej. | Silna |
-| LOCAL_QUORUM | Powiązana nieaktualność | Silna |
-| LOCAL_SERIAL | Powiązana nieaktualność | Silna |
+|WSZYSTKIE|Silna  | Operacje atomowe |
+| EACH_QUORUM   | Silna    | Operacje atomowe | 
+| KWORUM SZEREGOWEJ |  Silna |    Operacje atomowe |
+| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks |Globalne spójny prefiks |
+| EACH_QUORUM   | Silna    | Operacje atomowe |
+| KWORUM SZEREGOWEJ |  Silna |    Operacje atomowe |
+| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks | Globalne spójny prefiks |
+| KWORUM SZEREGOWEJ | Silna   | Operacje atomowe |
+| LOCAL_QUORUM, 3, DWÓCH, JEDEN, LOCAL_ONE, WSZYSTKIE | Spójny prefiks | Globalne spójny prefiks |
+| LOCAL_QUORUM, LOCAL_SERIAL, DWÓCH, TRZECH    | Powiązana nieaktualność | <ul><li>Powiązana nieaktualność.</li><li>Co najwyżej K wersji lub czasu (t) za zaporą.</li><li>Odczytaj najnowsze zatwierdzone wartość w regionie.</li></ul> |
+| JEDEN, LOCAL_ONE, WSZYSTKIE   | Spójny prefiks | Spójny prefiks regionu |
+
+W poniższej tabeli przedstawiono **mapowania spójności odczytu** między usługi Azure Cosmos DB i bazy danych Cassandra:
+
+| Cassandra | Azure Cosmos DB | Gwarancja |
+| - | - | - |
+| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, 3, DWÓCH, JEDEN, LOCAL_ONE | Silna  | Operacje atomowe|
+| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA   |Silna |   Operacje atomowe |
+|LOCAL_ONE, PO JEDNYM | Spójny prefiks | Globalne spójny prefiks |
+| WSZYSTKIM KWORUM, SERYJNY   | Silna    | Operacje atomowe |
+| LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH |  Spójny prefiks   | Globalne spójny prefiks |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM |    Spójny prefiks   | Globalne spójny prefiks |
+| WSZYSTKIE KWORUM, SERYJNY LOCAL_QUORUM, LOCAL_SERIAL, TRZY, DWA   |Silna |   Operacje atomowe |
+| LOCAL_ONE, PO JEDNYM    | Spójny prefiks | Globalne spójny prefiks|
+| WSZYSTKIE KWORUM, SERIAL silne atomowych
+LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH  |Spójny prefiks  | Globalne spójny prefiks |
+|WSZYSTKIE    |Silna |Operacje atomowe |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  |Spójny prefiks  |Globalne spójny prefiks|
+|WSZYSTKIE KWORUM, SERIAL silne atomowych
+LOCAL_ONE, JEDNYM, LOCAL_QUORUM LOCAL_SERIAL, DWÓCH, TRZECH  |Spójny prefiks  |Globalne spójny prefiks |
+|WSZYSTKIE    |Silna | Operacje atomowe |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  | Spójny prefiks | Globalne spójny prefiks |
+| KWORUM, LOCAL_QUORUM, LOCAL_SERIAL, DWA, TRZY |  Powiązana nieaktualność   | <ul><li>Powiązana nieaktualność.</li><li>Co najwyżej K wersji lub czasu (t) za zaporą. </li><li>Odczytaj najnowsze zatwierdzone wartość w regionie.</li></ul>
+| LOCAL_ONE, PO JEDNYM |Spójny prefiks | Spójny prefiks regionu |
+| LOCAL_ONE, JEDNEGO, DWÓCH, TRZECH LOCAL_QUORUM, KWORUM  | Spójny prefiks | Spójny prefiks regionu |
+
 
 ## <a id="mongo-mapping"></a>Mapowanie między poziomami spójności bazy danych MongoDB 3.4 i Azure Cosmos DB
 

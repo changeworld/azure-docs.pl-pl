@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3dedf5de1ac2c88a9a00fd5f62e0663b840c0fd9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438527"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823440"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurowanie automatycznych eksperymentów uczenia maszynowego
 
@@ -219,7 +219,8 @@ Właściwość |  Opis | Wartość domyślna
 `iteration_timeout_minutes` |   Ogranicza czas (w minutach), jaki zajmuje konkretnej iteracji. Jeśli iteracji przekroczy określony, pobiera anulowane tej iteracji. W przeciwnym razie zestaw, a następnie iteracji będzie nadal działać, dopóki zostanie zakończone. |   Brak
 `n_cross_validations`   |Liczba podziałów krzyżowego sprawdzania poprawności| Brak
 `validation_size`   |Rozmiar sprawdzania poprawności, Ustaw jako wartość procentowa próbki szkolenia.|  Brak
-`preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes, Brak danych liczbowych ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczbie unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true |  False | 
+`preprocess` | PRAWDA/FAŁSZ <br/>Wartość true włącza eksperymentów do wykonywania przetwarzania wstępnego w danych wejściowych. Poniżej przedstawiono część przetwarzania wstępnego<li>Brak danych: Imputes, Brak danych liczbowych ze średnią, tekst z większości wystąpienia </li><li>Wartości podzielonych na kategorie: Jeśli typ danych liczbowych i liczbie unikatowych wartości jest mniejsza niż 5 procent, konwertuje do hot jednego procesu kodowania </li><li>Itp. Aby uzyskać pełną listę wyboru [repozytorium GitHub](https://aka.ms/aml-notebooks)</li><br/>Uwaga: Jeśli dane są rozrzedzonej nie można użyć wstępnie Przetwórz = true |  False |
+`enable_cache`  | PRAWDA/FAŁSZ <br/>Ustawienie na wartość True umożliwia przetwarzanie wstępne wykonywane raz i ponowne użycie tych samych danych wstępnie przetworzony do wszystkich iteracji. | True |
 `blacklist_models`  | Automatyczne eksperymentu uczenia maszynowego, ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj, aby wykluczyć niektóre algorytmy z eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy nie działają dobrze sprawdza się w zestawie danych. Z wyjątkiem algorytmów można skrócić zasobów obliczeniowych i czasu szkoleń.<br/>Dozwolone wartości klasyfikacji<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Dozwolone wartości regresji<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Dozwolone wartości dla Prognozowanie<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   Brak
 `whitelist_models`  | Automatyczne eksperymentu uczenia maszynowego, ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj obejmujący niektóre algorytmy eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy będą działać dobrze w przypadku zestawu danych. <br/>Dozwolone wartości klasyfikacji<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Dozwolone wartości regresji<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Dozwolone wartości dla Prognozowanie<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  Brak
 `verbosity` |Określa poziom rejestrowania, z użyciem informacji są pełne i najbardziej krytyczne jest najmniej. Poziom szczegółowości ma takie same wartości zgodnie z definicją w pakiecie rejestrowania języka python. Dozwolone wartości to:<br/><li>logging.INFO</li><li>rejestrowanie. OSTRZEŻENIE</li><li>rejestrowanie. BŁĄD</li><li>rejestrowanie. KRYTYCZNE</li>  | logging.INFO</li> 
@@ -234,7 +235,7 @@ Właściwość |  Opis | Wartość domyślna
 `model_explainability` | _Opcjonalnie_ PRAWDA/FAŁSZ <br/>  Wartość true włącza eksperymentów do wykonywania funkcji znaczenie dla każdej iteracji. Umożliwia także metody explain_model() na określonej iteracji można włączyć funkcję znaczenie na żądanie dla tej iteracji po zakończeniu eksperymentu. | False
 `enable_ensembling`|Flaga włączenia ensembling iteracji po ukończeniu wszystkich innych iteracji.| True 
 `ensemble_iterations`|Liczba iteracji, podczas których Wybraliśmy potoku zainstalowane jako część końcowej zespołu.| 15
-`experiment_timeout_minutes`| Ogranicza ilość czasu (minues) może zająć całe uruchomienie eksperymentu | Brak
+`experiment_timeout_minutes`| Ogranicza ilość czasu (w minutach), jaki może zająć całe uruchomienie eksperymentu | Brak
 
 ## <a name="data-pre-processing-and-featurization"></a>Wstępne przetwarzanie danych i cechowania
 
@@ -272,9 +273,9 @@ Jeśli jesteś w notesie, można wyświetlić wyniki w element widget lub wewnę
 Następujące metryki są zapisywane w każdej iteracji dla zadania klasyfikacji.
 
 |Podstawowe metryki|Opis|Obliczenia|Dodatkowe parametry
---|--|--|--|--|
+--|--|--|--|
 AUC_Macro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Makro jest średnią arytmetyczną AUC dla każdej klasy.  | [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "makro"|
-AUC_Micro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Micro jest kolumną obliczaną globably łącząc prawdziwie dodatnie i fałszywych alarmów od każdej klasy| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "micro"|
+AUC_Micro| AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Micro jest kolumną obliczaną globalnie, łącząc prawdziwie dodatnie i fałszywych alarmów od każdej klasy| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | Średni = "micro"|
 AUC_Weighted  | AUC jest obszarem pod krzywą cechy operacyjne odbiorcy. Ważona jest średnią arytmetyczną oceny dla każdej klasy, ważona według liczby wystąpień wartość true w każdej klasie| [Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|Średni = "ważona"
 accuracy|Dokładność jest procent przewidywane etykiety, które dokładnie pasują do etykiety wartość true. |[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Brak|
 average_precision_score_macro|Średnia dokładności znajduje się podsumowanie krzywej precision-recall jako średnią ważoną szczegółowości w opisie w każdej wartości progowej ze wzrostem wycofaniu z poprzedniej wartości progowej, używane jako wagę. Makro jest średnią arytmetyczną wyniku średnią precyzję każdej klasy|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|Średni = "makro"|
@@ -298,7 +299,7 @@ weighted_accuracy|Ważona dokładności jest dokładności, gdzie wagę każdy p
 Następujące metryki są zapisywane w każdej iteracji regresji lub zadanie prognozowania.
 
 |Podstawowe metryki|Opis|Obliczenia|Dodatkowe parametry
---|--|--|--|--|
+--|--|--|--|
 explained_variance|Wariancja wyjaśniono to modelu matematycznego kont odmiany danego zestawu danych. Jest to procent spadek wariancji oryginalne dane do wariancję błędy. Średnia błędów wynosi 0, jest równa wyjaśniono wariancji.|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|Brak|
 r2_score|R2 to określenie lub procent redukcji kwadratów błędów w porównaniu z modelem linii bazowej, który wyprowadza średniej. Średnia błędów wynosi 0, jest równa wyjaśniono wariancji.|[Obliczanie](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|Brak|
 spearman_correlation|Korelacja metodą Spearman jest miarą nonparametric monotonicity relacji między dwoma zestawami danych. W przeciwieństwie do korelacji Pearsona korelacji metodą Spearman nie zakłada, że oba zestawy danych zwykle są rozpowszechniane. Podobnie jak inne współczynniki korelacji ta różni się od -1 do + 1 od 0, co oznacza brak korelacji. Korelacji -1 lub + 1 oznacza dokładne monotoniczny relacji. Dodatnia korelacji oznacza, że x rosną, więc nie y. Korelacji ujemna oznacza, że x rosną, y zmniejsza.|[Obliczanie](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|Brak|
@@ -309,7 +310,7 @@ normalized_median_absolute_error|Znormalizowana mediany bezwzględny błąd jest
 root_mean_squared_error|Główny oznacza to, że błąd kwadratów jest pierwiastek kwadratowy z oczekiwanym kwadratu różnicy między obiektu docelowego i prognozowania|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Brak|
 normalized_root_mean_squared_error|Znormalizowana głównego oznacza to, że błąd kwadratów błędu głównego średniej kwadratów podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Podziel według zakresu danych|
 root_mean_squared_log_error|Główny oznaczać błędów w dzienniku kwadratów pierwiastek kwadratowy z oczekiwanym błędem logarytmicznej kwadrat|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Brak|
-normalized_root_mean_squared_log_error|Błąd średniej kwadratów dziennika głównego Noramlized błędu głównego średniej kwadratów dziennika podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Podziel według zakresu danych|
+normalized_root_mean_squared_log_error|Znormalizowane błąd średniej kwadratów dziennika głównego jest błąd średniej kwadratów dziennika głównego podzielona przez zakres danych|[Obliczanie](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Podziel według zakresu danych|
 
 ## <a name="explain-the-model"></a>Wyjaśniono modelu
 
@@ -321,7 +322,7 @@ Istnieją dwa sposoby generowania funkcji znaczenie.
 
 *   Po zakończeniu eksperymentu można użyć `explain_model` metody na dowolną iterację.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import explain_model
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
@@ -338,7 +339,7 @@ Istnieją dwa sposoby generowania funkcji znaczenie.
 
 *   Aby wyświetlić znaczenie funkcji dla wszystkich iteracji, ustaw `model_explainability` flaga `True` w AutoMLConfig.  
 
-    ```
+    ```python
     automl_config = AutoMLConfig(task = 'classification',
                                  debug_log = 'automl_errors.log',
                                  primary_metric = 'AUC_weighted',
@@ -355,7 +356,7 @@ Istnieją dwa sposoby generowania funkcji znaczenie.
 
     Po zakończeniu retrieve_model_explanation metoda służy do pobierania funkcji znaczenie dla określonej iteracji.
 
-    ```
+    ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
     
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \

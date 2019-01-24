@@ -2,20 +2,20 @@
 title: Integracja usługi Azure datacenter stosu — tożsamość
 description: Dowiedz się, jak zintegrować usług AD FS usługi Azure Stack z centrum danych usług AD FS
 services: azure-stack
-author: jeffgilb
+author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/08/19
-ms.author: jeffgilb
-ms.reviewer: wfayed
+ms.date: 01/23/19
+ms.author: patricka
+ms.reviewer: thoroet
 keywords: ''
-ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4f599379de07a9628ee81425ddac2374411bdf97
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263800"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852766"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -193,16 +193,21 @@ Aby wykonać poniższą procedurę należy użyć komputera, który ma łączno�
 
 Do wykonania tej procedury należy użyć komputera, który może komunikować się z punktem końcowym uprzywilejowanych w usłudze Azure Stack i ma dostęp do pliku metadanych, który został utworzony w poprzednim kroku.
 
-1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień.
+1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i nawiązać połączenie z uprzywilejowanym punktu końcowego.
 
    ```PowerShell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. Uruchom następujące polecenie, aby zaktualizować właściciela subskrypcji dostawcy domyślnego, przy użyciu parametrów, które są odpowiednie dla danego środowiska:
+2. Skoro masz połączenie do uprzywilejowanych punktu końcowego, uruchom następujące polecenie, używając parametrów, które są odpowiednie dla danego środowiska:
+
+    ```PowerShell
+    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
+    ```
+
+3. Uruchom następujące polecenie, aby zaktualizować właściciela subskrypcji dostawcy domyślnego, przy użyciu parametrów, które są odpowiednie dla danego środowiska:
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"

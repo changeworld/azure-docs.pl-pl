@@ -68,7 +68,6 @@
 ### [Dostępność rozwiązania SAP HANA na platformie Azure w wielu regionach świadczenia usługi Azure](sap-hana-availability-across-regions.md)
 ## [SAP Business One na maszynach wirtualnych platformy Azure](business-one-azure.md)
 ## [Rozwiązanie SAP IDES na platformie Windows/SQL Server SAP CAL — podręcznik wdrażania](cal-ides-erp6-erp7-sp3-sql.md)
-## [Oprogramowanie SAP NetWeaver na maszynach wirtualnych platformy Azure z systemem Linux](suse-quickstart.md)
 ## [Łącznik SAP LaMa dla platformy Azure](lama-installation.md)
 ## Wysoka dostępność w systemach Windows i Linux
 ### [Omówienie](sap-high-availability-guide-start.md)

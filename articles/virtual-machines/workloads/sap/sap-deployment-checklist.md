@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/07/2019
+ms.date: 01/18/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 901dfc502470e52600e3a0fafe3f6b91b7686197
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201333"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439157"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania 
 
@@ -36,6 +36,7 @@ W tej fazie migracji obciążeń SAP do chmury publicznej platformy Azure jest p
 
 1. Dokument projektowy wysokiego poziomu — w tym dokumencie powinny zawierać:
     1. Bieżący spis aplikacji i składniki SAP oraz Magazyn aplikacji docelowej, na platformie Azure
+    2. Utwórz i trzymać się kolejności odpowiedzialność przypisania macierzy (RACI) definiujący zakres odpowiedzialności i przydziały różnych zainteresowanych stron. Uruchom na wysokim poziomie i działać na bardziej szczegółowym poziomów przepływności pierwszy i planowania wdrożenia
     2. Architektura wysokiego poziomu rozwiązania.
     3. Decyzja w sprawie regiony platformy Azure do wdrożenia w. Aby uzyskać listę regionów świadczenia usługi Azure, sprawdź [regionów platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/). Usługi jest dostępny we wszystkich regionach platformy Azure, można znaleźć w artykule [produktów dostępnych na region](https://azure.microsoft.com/global-infrastructure/services/)
     4. Sieć architektury, aby połączyć się ze środowiska lokalnego na platformę Azure. Rozpocznij z siebie uczynić zapoznać się z [planu wirtualnego centrum danych platformy Azure](https://docs.microsoft.com/azure/architecture/vdc/)
@@ -46,7 +47,7 @@ W tej fazie migracji obciążeń SAP do chmury publicznej platformy Azure jest p
     3.  Architektura ciągłość biznesową i odzyskiwanie po awarii
     4.  Szczegółowe systemu operacyjnego, bazy danych, jądra i SAP obsługuje wersje pakietu. Nie biorąc pod uwagę, że dowolnej wersji systemu operacyjnego, który jest obsługiwany przez oprogramowanie SAP NetWeaver i S/4HANA, jest obsługiwane w maszynach wirtualnych platformy Azure. Dotyczy to także wersji systemu DBMS. Jest to konieczne, że przed wyrównywanie i w razie potrzeby uaktualnić wersje SAP, wersji systemu DBMS lub wersji systemu operacyjnego, aby w systemie SAP zaznaczyć Pobierz następujące źródła i Azure obsługiwane w oknie. Jest to konieczne, że jesteś w obrębie SAP i platformy Azure obsługiwane kombinacje wersji, aby uzyskać pełną pomoc techniczną, SAP i Microsoft. Jeśli to konieczne, należy zaplanować dla uaktualnienie niektórych składników oprogramowania. Szczegółowe informacje na temat obsługiwanych oprogramowania SAP, systemu operacyjnego i DBMS jest udokumentowany w następujących lokalizacjach:
         1.  Uwaga pomocy technicznej SAP [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Ta uwaga definiuje minimalnej wersji systemu operacyjnego, obsługiwane w maszynach wirtualnych platformy Azure. Definiuje również wersje minimalna bazy danych wymagane dla większości innych HANA bazy danych. Notatki prezentuje też rozmiaru SAP różnych typów maszyn wirtualnych platformy Azure obsługiwane SAP.
-        2.  Uwaga pomocy technicznej SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Notatki definiuje macierz obsługi bazy danych Oracle na platformie Azure. Należy pamiętać, że bazy danych Oracle obsługuje tylko Windows i Oracle Linux jako system operacyjny gościa na platformie Azure w przypadku obciążeń SAP. Dotyczy to stwierdzenie systemem SAP wystąpienia warstwy aplikacji SAP. Jednak Oracle nie obsługuje wysoką dostępność dla usług SAP Central Services. W rezultacie możesz potrzebować innego systemu operacyjnego tylko dla usług SAP Central Services, który nie jest połączony z bazami danych Oracle
+        2.  Uwaga pomocy technicznej SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Notatki definiuje macierz obsługi bazy danych Oracle na platformie Azure. Należy pamiętać, że bazy danych Oracle obsługuje tylko Windows i Oracle Linux jako system operacyjny gościa na platformie Azure w przypadku obciążeń SAP. Dotyczy to stwierdzenie systemem SAP wystąpienia warstwy aplikacji SAP. Jednak Oracle nie obsługuje wysoką dostępność dla usług SAP Central Services w systemie Oracle Linux. Windows SAP obsługiwanych tryb Failover klastra pracy awaryjnej Windows rozwiązania usług SAP Central Services jest obsługiwane w połączeniu z bazą danych Oracle jako warstwa DBMS. 
         3.  Uwaga pomocy technicznej SAP [#2235581](https://launchpad.support.sap.com/#/notes/2235581) można pobrać macierzy obsługi dla wersji oprogramowania SAP HANA w różnych systemach operacyjnych
         4.  SAP HANA obsługiwanych maszynach wirtualnych platformy Azure i [dużych wystąpień HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) należą [tutaj](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
         5.  [Macierz dostępności produktów SAP](https://support.sap.com/en/)
@@ -56,14 +57,18 @@ W tej fazie migracji obciążeń SAP do chmury publicznej platformy Azure jest p
         2.  [SAP ASCS/SCS wystąpienia — wiele identyfikatorów SID wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     6.  Wysoka dostępność i odzyskiwanie po awarii architektury odzyskiwania
         1.  Definiowanie zależności od RTO i RPO wysoką dostępność i odzyskiwanie po awarii architektury odzyskiwania musi wyglądać
-        2.  Wysokiej dostępności w ramach tej samej strefie Sprawdź, co żądany DBMS ma do zaoferowania na platformie Azure. Większość DBMS oferują synchroniczne metody synchronicznej rezerwy, które firma Microsoft zaleca dla systemów produkcyjnych.
+        2.  Wysokiej dostępności w ramach tej samej strefie Sprawdź, co żądany DBMS ma do zaoferowania na platformie Azure. Większość DBMS oferują synchroniczne metody synchronicznej rezerwy, które firma Microsoft zaleca dla systemów produkcyjnych. Również Sprawdź SAP związane z dokumentacji dotyczącej różnych baz danych, rozpoczynając od [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) i powiązanych dokumentów
+            1.  Przy użyciu usługę klastra pracy awaryjnej Windows za pomocą konfiguracji dysku udostępnionego dla warstwy DBMS, jak na przykład opisane dla programu SQL Server [tutaj](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017) jest **nie** obsługiwane. Zamiast tego rozwiązania, takie jak:
+                1.  [AlwaysOn programu SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
+                2.  [Środowiska Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                3.  [Replikacji systemu HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  Do odzyskiwania po awarii w różnych regionach platformy Azure Sprawdź, jakie możliwości są oferowane przez różnych dostawców DBMS. Większość z nich obsługuje replikację asynchroniczną ani wysyłania dziennika
         4.  Dla warstwy aplikacji SAP należy określić, czy należy uruchomić usługi biznesowe regresji systemy testowe, które są najlepiej replik wdrożenia produkcyjne, w tym samym regionie platformy Azure lub w Twoim regionie odzyskiwania po awarii. W drugim przypadku możesz wybrać docelową tego systemu regresji firm jako cel odzyskiwania po awarii dla w środowisku produkcyjnym
-        5.  Jeśli zdecydujesz się na systemów nieprodukcyjnych w lokacji odzyskiwania po awarii, Szukaj w usłudze Azure Site Recovery jako możliwego do użycia metody replikowania warstwie aplikacji SAP w regionie odzyskiwania po awarii z platformy Azure. Zobacz też [Konfigurowanie odzyskiwania po awarii dla wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap) 
-        6.  Jeśli zdecydujesz się używać połączone wykorzystując wysokiej dostępności i odzyskiwania po awarii konfiguracji [strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) przyznać sobie dobrze znanych dzięki regionom platformy Azure, gdzie strefy dostępności są dostępne i bez ograniczeń, które mogą zostać wprowadzony przez zwiększenie opóźnienia sieciowe między dwoma strefy dostępności  
+        5.  Jeśli zdecydujesz się na umieszczenie systemów nieprodukcyjnych w lokacji odzyskiwania po awarii, Szukaj w usłudze Azure Site Recovery jako możliwego do użycia metody replikowania warstwie aplikacji SAP w regionie odzyskiwania po awarii z platformy Azure. Zobacz też [Konfigurowanie odzyskiwania po awarii dla wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver](https://docs.microsoft.com/azure/site-recovery/site-recovery-sap) 
+        6.  Jeśli zdecydujesz się używać połączone konfiguracji o wysokiej dostępności i odzyskiwania po awarii, wykorzystując [strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) przyznać sobie zapoznać się z regionów platformy Azure w przypadku, gdy dostępnych stref dostępności i z ograniczeniami, które mogą zostać wprowadzony przez opóźnienia sieciowe większą od dwóch strefach dostępności  
 3.  Klientowi i partnerowi, należy utworzyć spis wszystkich interfejsów SAP (SAP i inne niż SAP). 
 4.  Projekt projekt usług Foundation — ten projekt obejmuje elementy, takie jak
-    1.  Usługi Active Directory i DSN projektu
+    1.  Projektowanie usługi Active Directory i DNS
     2.  Topologia sieci w systemie Azure lub przypisanie różnych systemów SAP
     3.  [Dostęp oparty na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview) struktury dla zespołów różnych zarządzających infrastrukturą i aplikacjami SAP na platformie Azure
     3.  Topologia grupy zasobów 
@@ -78,7 +83,7 @@ W tej fazie migracji obciążeń SAP do chmury publicznej platformy Azure jest p
 9.  Zdefiniuj regularne projektu i tempa Przegląd wdrażania między Tobą jako klient korzystający z integratora systemów, Microsoft i inne zaangażowane strony
 
  
-## <a name="pilot-phase-optional"></a>Fazy pilotażowej (opcjonalnie)
+## <a name="pilot-phase-strongly-recommended"></a>Fazy pilotażowej (zdecydowanie zalecane)
  
 Przed lub w sposób równoległy do projektu, planowania i przygotowania, można uruchomić programu pilotażowego. Fazy może również służyć do testowania, metod i projektowania, wprowadzone w fazie planowania i przygotowywania. Fazy pilotażowej może być rozciągnięty do rzeczywistego weryfikacji koncepcji. Zaleca się konfigurowanie i weryfikowanie pełne rozwiązanie o wysokiej dostępności i odzyskiwania po awarii oraz projektowania zabezpieczeń podczas wdrożenia pilotażowego. W niektórych przypadkach klient skalowalność badania również może zostać przeprowadzone na tym etapie. Pozostali klienci powinni używać wdrożenie systemów piaskownicy SAP jako fazy pilotażowej. Dlatego przyjęto założenie, że wszystkie podane systemu, w którym chcesz przeprowadzić migrację na platformę Azure na potrzeby programu pilotażowego.
 
@@ -100,6 +105,8 @@ Przed lub w sposób równoległy do projektu, planowania i przygotowania, można
         3.  Akcelerator zapisu platformy Azure na użytek dyski dziennika systemu DBMS z serii M. Należy pamiętać o limity akcelerator zapisu i użycia zgodnie z opisem w [akcelerator zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)
         4.  Dla różnych typów DBMS, sprawdź [ogólnego SAP pokrewnej dokumentacji DBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) i dokumentacje dotyczącą określonych DBMS dokumentu ogólnego punktów do
         5.  For SAP HANA i szczegółowe informacje są udokumentowane w artykule [konfiguracje infrastruktury SAP HANA i operacji na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+        6.  Nigdy nie instalowanie usługi Azure dysków z danymi na maszynie Wirtualnej systemu Linux platformy Azure przy użyciu identyfikatora urządzenia. Zamiast tego należy użyć powszechnie Unikatowy identyfikator (UUID). Użyj narzędzi graficznych z dyskami danych Instalowanie usługi Azure, na przykład, należy zachować ostrożność. Dokładnie sprawdź wpisy w/etc/fstab, aby upewnić się, czy dyski są instalowane przy użyciu identyfikator UUID
+            1.  Więcej szczegółów można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)
     3.  Networking
         1.  Przetestuj i oceń infrastruktury sieci wirtualnej i stopień rozproszenia swoje aplikacje SAP w lub w różnych sieciach wirtualnych platformy Azure
             1.  Podejście Centrum i architektura gwiazdy na sieć wirtualną lub microsegmentation w ramach jednej sieci wirtualnej platformy Azure na podstawie oceny
@@ -121,7 +128,7 @@ Przed lub w sposób równoległy do projektu, planowania i przygotowania, można
         1.   W przypadku warstwy aplikacji SAP wdrożenia bez definiowania określonej strefy dostępności platformy Azure, upewnij się, że wszystkie maszyny wirtualne uruchomione wystąpienie okna dialogowego SAP lub wystąpienia oprogramowania pośredniczącego pojedynczego systemu SAP są wdrażane w [zestawu dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). 
             1.   W przypadku, gdy nie wymagają wysokiej dostępności dla usług SAP Central Services i DBMS, te maszyny wirtualne można wdrożyć na tym samym zestawie dostępności jako warstwa aplikacji SAP
         2.   Jeśli chronisz usług SAP Central Services i warstwy system DBMS wysokiej dostępności z replikami pasywny ma dwa węzły dla usług SAP Central Services w jedną osobnym zestawie dostępności i dwoma węzłami systemu DBMS w innym zestawie dostępności
-        3.   Jeśli wdrażasz do strefy dostępności platformy Azure nie może korzystać z zestawów dostępności. Jednak będziesz potrzebować upewnić się, wdrażanie usług centralnej węzłami aktywnym i pasywnym w dwóch różnych strefach dostępności, które wskazują najmniejszego opóźnienia między strefami.
+        3.   Jeśli wdrażasz do strefy dostępności platformy Azure, nie może korzystać z zestawów dostępności. Jednak będziesz potrzebować upewnić się, wdrażanie usług centralnej węzłami aktywnym i pasywnym w dwóch różnych strefach dostępności, które wskazują najmniejszego opóźnienia między strefami.
             1.   Należy pamiętać, że należy użyć [standardowa usługi Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) w przypadku ustanawiania Windows lub klastry pracy awaryjnej program Pacemaker w strefach dostępności dla warstwy system DBMS i usług SAP Central Services. [Podstawowy moduł równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) nie może być używane do wdrożeń strefowej 
     5.   Ustawienia limitu czasu
         1.   Ślady dla deweloperów oprogramowania SAP NetWeaver różnymi wystąpieniami SAP i upewnij się, podano przerwy połączenie między serwerem umieścić w kolejce i procesów roboczych SAP. Podziały tych połączeń można uniknąć przez ustawienie rejestru dwóch parametrów:
@@ -134,11 +141,11 @@ Przed lub w sposób równoległy do projektu, planowania i przygotowania, można
             1.   SameSubNetDelay = 2
             2.   SameSubNetThreshold = 15
 4.   Testowanie usługi wysokiej procedury odzyskiwania dostępność i odzyskiwanie po awarii
-    1.   Aby symulować sytuacje awaryjne zamykania maszyn wirtualnych lub umieszczenie systemów operacyjnych w trybie alarm, aby ustalić, czy konfiguracje trybu failover działa zgodnie z założeniami. 
+    1.   Aby symulować sytuacje awaryjne zamykania maszyn wirtualnych (system operacyjny gościa Windows) lub umieszczając systemów operacyjnych w trybie alarm (systemu operacyjnego gościa Linux), aby ustalić, czy konfiguracje trybu failover działa zgodnie z założeniami. 
     2.   Zmierz swoje czasu potrzebnego do wykonania pracy w trybie failover. Jeśli czas, w którym trwa zbyt długo, należy wziąć pod uwagę:
         1.   W przypadku systemu SUSE Linux przy użyciu interwencja urządzeń zamiast agenta Odgradzania Azure przyspieszyć tryb failover
         2.   Dla oprogramowania SAP HANA Jeśli ponowne załadowanie danych trwa zbyt długo, należy wziąć pod uwagę do aprowizowania większej przepustowości magazynu
-    3.   Testowanie kopii zapasowych i sekwencję operacji restore i dostrajania, jeśli to konieczne
+    3.   Testowanie sekwencja/przywracania kopii zapasowej i czasu i dostrajania, jeśli to konieczne. Upewnij się, że nie tylko godziny tworzenia kopii zapasowej są wystarczające. Przetestować przywracania i podejmij czas przywracania działania. Upewnij się, że czas przywracania, w którym znajdują się w umowach SLA RTO, gdzie Twój czas RTO korzysta z bazy danych lub w procesie przywracania maszyny Wirtualnej
     4.   Testowanie w regionie odzyskiwania po awarii, funkcji i architektury
 5.  Sprawdzanie zabezpieczeń
     1.  Test ważności rolę na platformie Azure na podstawie architektury dostępu (RBAC), w których zaimplementowano. Celem jest oddzielne i ograniczenie dostępu i uprawnień różnych zespołów. Na przykład członkowie zespołu podstawy SAP powinien móc wdrażać maszyny wirtualne i przypisać dysków z usługi Azure storage w danej sieci wirtualnej platformy Azure. Zespół podstawy SAP nie należy jednak możliwość utworzenia własnych sieci wirtualnych lub zmienić ustawienia istniejących sieciach wirtualnych. Po drugiej stronie Członkowie zespołu sieci, nie należy wdrażać maszyny wirtualne w sieciach wirtualnych, na którym uruchomiona jest aplikacja SAP i systemu DBMS na maszynach wirtualnych. Ani członków zespołu sieci należy można zmienić atrybuty maszyn wirtualnych lub nawet usunąć maszyny wirtualne lub dysków.  
@@ -160,7 +167,8 @@ W tej fazie przyjęto założenie, że po pilotażowego lub weryfikacji koncepcj
 3.  Przetestuj i zdefiniuj, czy chcesz utworzyć własne obrazy systemu operacyjnego dla maszyn wirtualnych na platformie Azure lub tego, czy chcesz użyć obrazu z galerii obrazów platformy Azure. Jeśli używasz obrazu z galerii platformy Azure, upewnij się, czy wykonujesz prawidłowy obraz, który odzwierciedla umowę pomocy technicznej dostawcy systemu operacyjnego. Dla niektórych dostawców systemu operacyjnego galerii Azure oferują użyć własnych obrazów licencji. Dla innych obrazów systemu operacyjnego, pomocy technicznej znajduje się w podanej ceny przez platformę Azure. Jeśli zdecydujesz się utworzyć własne obrazy systemu operacyjnego, dokumentację można znaleźć w następujących artykułach:
     1.  Możesz tworzyć uogólnionego obrazu maszyny wirtualnej Windows wdrożonymi na platformie Azure na podstawie [tej dokumentacji](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)
     2.  Możesz tworzyć uogólnionego obrazu systemu Linux maszyny Wirtualnej wdrożonej na platformie Azure na podstawie [tej dokumentacji](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image)
-3.  Upewnij się, że spełniają wymagania w zakresie obsługi, które firma SAP ma dotyczące umowy dotyczące pomocy technicznej firmy Microsoft. Informacje można znaleźć w uwadze pomocy technicznej SAP [#2015553](https://launchpad.support.sap.com/#/notes/2015553). HANA, duże wystąpienia można znaleźć w dokumencie [wymagań przechodzenia](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)
+3.  Jeśli używasz SUSE i Red Hat Linux obrazów z galerii maszyn wirtualnych platformy Azure, musisz użyć obrazy dla rozwiązania SAP, dostarczone przez dostawców systemu Linux w galerii maszyn wirtualnych platformy Azure
+4.  Upewnij się, że spełniają wymagania w zakresie obsługi, które firma SAP ma dotyczące umowy dotyczące pomocy technicznej firmy Microsoft. Informacje można znaleźć w uwadze pomocy technicznej SAP [#2015553](https://launchpad.support.sap.com/#/notes/2015553). HANA, duże wystąpienia można znaleźć w dokumencie [wymagań przechodzenia](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-onboarding-requirements)
 4.  Upewnij się, że odpowiednie osoby uzyskują [Planned maintenance notifications zaplanowanej](https://azure.microsoft.com/blog/a-new-planned-maintenance-experience-for-your-virtual-machines/), dlatego, że możesz wybrać przestoju i ponowny rozruch maszyn wirtualnych w czasie
 5.  Intensywność w dokumentacji platformy Azure prezentacji firmy Microsoft za pośrednictwem kanałów, takich jak [Channel9](https://channel9.msdn.com/) dla nowych funkcji, które mogą być stosowane do wdrożenia
 6.  Wyboru SAP notes związane z platformą Azure, takich jak obsługa Uwaga [#1928533](https://launchpad.support.sap.com/#/notes/1928533) dla nowych jednostek SKU maszyn wirtualnych lub nowo obsługiwanych wersji systemu operacyjnego i bazami danych. Porównaj nowe typy maszyn wirtualnych starsze maszynę Wirtualną pod kątem typów w zmienionych cennikach, dlatego, że jesteś w stanie wdrożyć maszyny wirtualne za pomocą najlepszych stosunek ceny do wydajności
@@ -178,7 +186,7 @@ W tej fazie przyjęto założenie, że po pilotażowego lub weryfikacji koncepcj
 
  
 ## <a name="production-preparation-phase"></a>Etapu przygotowywania w środowisku produkcyjnym 
-Jest fazy, które chcesz zebrać wszystkie środowiska i wnioski dotyczące wdrożeń nieprodukcyjnych, a następnie zastosuj je w przyszłości wdrożeń produkcyjnych. Ponadto do faz przed, również należy przygotować pracy transfer danych między Twojej bieżącej lokalizacji hostingu i platformą Azure. 
+Na tym etapie, dla których chcesz zbierać wszystkie środowiska i wnioski dotyczące wdrożeń nieprodukcyjnych, a następnie zastosuj je w przyszłości wdrożeń produkcyjnych. Ponadto do faz przed, również należy przygotować pracy transfer danych między Twojej bieżącej lokalizacji hostingu i platformą Azure. 
 
 1.  Pracę niezbędne uaktualnienia wersji SAP systemów produkcyjnych przed przejściem na platformę Azure
 2.  Akceptuję właściciele firm na funkcjonalności i testy biznesowych, które muszą zostać przeprowadzone po zakończeniu migracji do systemu produkcyjnego
@@ -189,8 +197,7 @@ Jest fazy, które chcesz zebrać wszystkie środowiska i wnioski dotyczące wdro
     3.  Użyj SAP Monitor migracji wdrożona w narzędziu SAP SWPM przeprowadzić migrację z heterogenicznych
     4.  Użyj [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) przetwarzania, jeśli chcesz połączyć z uaktualnienia wersji SAP. Należy pamiętać, że nie wszystkie kombinacje między źródłem a celem bazami danych są obsługiwane. Więcej informacji można znaleźć w określonych informacji pomocy technicznej SAP dla różnych wersji DMO. Na przykład [opcji migracji bazy danych (DMO) z SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872)
     5.  Sprawdź, czy lepszą przepustowość jest transfer danych za pośrednictwem Internetu lub za pośrednictwem usługi ExpressRoute, w przypadku, gdy trzeba przenieść kopie zapasowe lub SAP eksportowania plików. Należy pamiętać, że w przypadku przenoszenia danych za pośrednictwem sieci internet, konieczne może być niektórych reguł zabezpieczeń sieciowych grup zabezpieczeń/ASG wymagających jest dostępna dla systemów produkcyjnych. przyszłe zmiany
-3.  Przed przeniesieniem systemy ze starego platform na platformie Azure zbieranie danych użycia zasobów, takich jak użycie procesora CPU, przepływności i operacje We/Wy danych. Zwłaszcza z bazami danych jednostki z warstwy, ale także z jednostek warstwy aplikacji. Także zmierzyć lat sieci i magazynu
-4.  ency.
+3.  Przed przeniesieniem systemy ze starego platform na platformie Azure zbieranie danych użycia zasobów, takich jak użycie procesora CPU, przepływności i operacje We/Wy danych. Zwłaszcza z bazami danych jednostki z warstwy, ale także z jednostek warstwy aplikacji. Również pomiaru opóźnienia sieci i magazynu.
 4.  Sprawdzanie zasobów na informacje o pomocy technicznej SAP, SAP HANA sprzętu katalogu i ponownie PAM SAP upewnij się, że nie wprowadzono żadnych zmian na obsługiwanych maszynach wirtualnych platformy Azure obsługiwanego systemu operacyjnego zwalnia w tych maszyn wirtualnych i obsługiwanych SAP i DBMS wersji 
 4.  Dostosowania skryptów wdrażania do najnowsze zmiany, które decyzji o typach maszyn wirtualnych i funkcjonalność platformy Azure
 5.  Po wdrożeniu infrastruktury i aplikacji przechodzą przez szereg kontroli w celu weryfikacji:
@@ -202,6 +209,8 @@ Jest fazy, które chcesz zebrać wszystkie środowiska i wnioski dotyczące wdro
     6.  Usługa Azure Premium Storage została użyta dla dysków poufnych opóźnienia lub gdzie [pojedyncza maszyna wirtualna SLA na poziomie 99,9%](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) jest wymagana
     7.  Sprawdzanie poprawności wdrożenia akcelerator zapisu platformy Azure
         1.  Upewnij się, że na maszynie wirtualnej, miejsca do magazynowania lub rozłożone został poprawnie zbudowany na dyskach, wymagających pomocy technicznej akcelerator zapisu platformy Azure
+            1.  Sprawdź [Konfigurowanie programowej macierzy RAID w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
+            2.  Sprawdź [skonfigurować LVM na Maszynę wirtualną systemu Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
     8.  [Usługa Azure managed disks](https://azure.microsoft.com/services/managed-disks/) były używane w trybie wyłączności
     9.  Maszyny wirtualne zostały wdrożone na prawidłowe zestawy dostępności i strefy dostępności
     10. Upewnij się, że [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jest włączona na maszyny wirtualne na warstwie aplikacji SAP i SAP DBMS warstwy

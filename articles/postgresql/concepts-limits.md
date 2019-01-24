@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/12/2018
-ms.openlocfilehash: 4616ab535e7edca6d5f919824e9cadaf90886d5f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 1/22/2019
+ms.openlocfilehash: 843107b8d251c2073ba9e02beacb16ab7615eca6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548566"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470736"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Ograniczenia dotyczące usługi Azure Database for PostgreSQL
 W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych.
@@ -33,7 +33,7 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Pamięć| 4| 500|
 |Pamięć| 8| 960|
 |Pamięć| 16| 1900|
-|Pamięć| 32| 3000|
+|Pamięć| 32| 1900|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
 > Błąd krytyczny: Niestety, zbyt wielu klientów już

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 78ad40796a31e0c803b892e0c1b50e66b32c2b0a
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430174"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425885"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrożenie programu SQL Server Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver
 
@@ -235,7 +235,7 @@ ms.locfileid: "49430174"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -328,9 +328,9 @@ W poniższych sekcjach rodzajów części dokumentacji w ramach powyższego łą
 
 Brak niektórych programu SQL Server w modelu IaaS określone informacje, które należy znać przed kontynuowaniem:
 
-* **Obsługa wersji programu SQL**: dla klienci systemu SAP, SQL Server 2008 R2 i nowszej jest obsługiwana na maszynie wirtualnej platformy Microsoft. Wcześniejsze wersje nie są obsługiwane. Przejrzyj ogólnej [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) Aby uzyskać więcej informacji. Ogólnie rzecz biorąc program SQL Server 2008 jest obsługiwana przez firmę Microsoft również. Jednak z powodu znaczącej funkcjonalności dla rozwiązania SAP, który został wprowadzony przy użyciu programu SQL Server 2008 R2, SQL Server 2008 R2 jest minimalna wersja dla rozwiązania SAP. Ogólnie rzecz biorąc należy rozważyć przy użyciu najbardziej aktualnych programu SQL Server wydania do uruchamiania obciążeń SAP w modelu IaaS platformy Azure. Zainstalowane najnowsze wersje programu SQL Server oferują lepszą integrację w niektórych usług platformy Azure i funkcji. Lub zawierają zmiany, które zoptymalizować operacji w infrastrukturze IaaS platformy Azure. W związku z tym ten dokument jest ograniczony do programu SQL Server 2016 i programu SQL Server 2017.
+* **Obsługa wersji programu SQL**: Dla klientów SAP, SQL Server 2008 R2 i nowszej jest obsługiwana na maszynie wirtualnej platformy Microsoft. Wcześniejsze wersje nie są obsługiwane. Przejrzyj ogólnej [oświadczenie pomocy technicznej](https://support.microsoft.com/kb/956893) Aby uzyskać więcej informacji. Ogólnie rzecz biorąc program SQL Server 2008 jest obsługiwana przez firmę Microsoft również. Jednak z powodu znaczącej funkcjonalności dla rozwiązania SAP, który został wprowadzony przy użyciu programu SQL Server 2008 R2, SQL Server 2008 R2 jest minimalna wersja dla rozwiązania SAP. Ogólnie rzecz biorąc należy rozważyć przy użyciu najbardziej aktualnych programu SQL Server wydania do uruchamiania obciążeń SAP w modelu IaaS platformy Azure. Zainstalowane najnowsze wersje programu SQL Server oferują lepszą integrację w niektórych usług platformy Azure i funkcji. Lub zawierają zmiany, które zoptymalizować operacji w infrastrukturze IaaS platformy Azure. W związku z tym ten dokument jest ograniczony do programu SQL Server 2016 i programu SQL Server 2017.
 * **Wydajność programu SQL**: Microsoft Azure udostępnione maszyny wirtualne wykonywania oraz w porównaniu do innych ofert wirtualizacji chmury publicznej, ale poszczególne wyniki mogą się różnić. Zapoznaj się z artykułem [najlepsze rozwiązania dotyczące programu SQL Server w usłudze Azure Virtual Machines wydajności](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
-* **Przy użyciu obrazów z portalu Azure Marketplace**: najszybszy sposób, aby wdrożyć nową maszynę Wirtualną Azure firmy Microsoft jest użycie obrazu z witryny Azure Marketplace. Brak obrazów w portalu Azure Marketplace, które zawierają najbardziej aktualne wersje programu SQL Server. Nie można od razu używać obrazów programu SQL Server już zainstalowanym dla aplikacji SAP NetWeaver. Przyczyną jest to domyślne sortowanie programu SQL Server jest zainstalowane w ramach tych obrazów i nie sortowania wymaganych przez systemy oprogramowania SAP NetWeaver. Aby można było używać tych obrazów, zobacz, jakie kroki opisane w rozdziale [przy użyciu obrazu programu SQL Server z witryny Microsoft Azure Marketplace][dbms-guide-5.6]. 
+* **Przy użyciu obrazów z witryny Azure Marketplace**: Jest to najszybszy sposób, aby wdrożyć nową maszynę Wirtualną Azure firmy Microsoft można użyć obrazu z witryny Azure Marketplace. Brak obrazów w portalu Azure Marketplace, które zawierają najbardziej aktualne wersje programu SQL Server. Nie można od razu używać obrazów programu SQL Server już zainstalowanym dla aplikacji SAP NetWeaver. Przyczyną jest to domyślne sortowanie programu SQL Server jest zainstalowane w ramach tych obrazów i nie sortowania wymaganych przez systemy oprogramowania SAP NetWeaver. Aby można było używać tych obrazów, zobacz, jakie kroki opisane w rozdziale [przy użyciu obrazu programu SQL Server z witryny Microsoft Azure Marketplace][dbms-guide-5.6]. 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Zalecenia dotyczące maszyny Wirtualnej/VHD struktury dla wdrożeń SAP związane z programu SQL Server
@@ -422,8 +422,8 @@ Zautomatyzowane tworzenie kopii zapasowej umożliwia automatyczne usługi kopii 
 
 Więcej szczegółów na temat możliwości tej metody można znaleźć w następujących artykułach:
 
-- Program SQL Server 2014: [zautomatyzowane tworzenie kopii zapasowej dla maszyn wirtualnych programu SQL Server 2014 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
-- Program SQL Server 2016/2017: [automatycznych kopii zapasowych w wersji 2 maszyn wirtualnych platformy Azure (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
+- SQL Server 2014: [Zautomatyzowane tworzenie kopii zapasowej dla maszyn wirtualnych programu SQL Server 2014 (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)
+- SQL Server 2016/2017: [Automatyczne v2 kopii zapasowych maszyn wirtualnych platformy Azure (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)
 
 Wyszukiwanie w dokumentacji, możesz zobaczyć, że ulepszone funkcje z nowszej wersji programu SQL Server. Niektóre szczegółowe informacje na temat programu SQL Server, automatyczne kopie zapasowe są wydawane w artykule [zarządzane kopię zapasową serwera SQL w systemie Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-managed-backup-to-microsoft-azure?view=sql-server-2017). Limit teoretycznych rozmiar kopii zapasowej jest 12 TB.  Automatyczne kopie zapasowe mogą być dobry sposób tworzenia kopii zapasowej rozmiary, do 12 TB. Ponieważ wiele obiektów blob są zapisywane w sposób równoległy, można oczekiwać, że większy niż 100 MB/s przepustowości. 
  
@@ -450,7 +450,7 @@ Ponieważ obrazy programu SQL Server w witrynie Azure Marketplace nie jest skonf
 
 * Otwórz okno poleceń programu Windows jako administrator.
 * Zmień katalog na C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Wykonaj polecenie: Setup.exe/quiet/Action = REBUILDDATABASE InstanceName = parametr/SQLSYSADMINACCOUNTS MSSQLSERVER =`<local_admin_account_name`> /SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+* Wykonaj polecenie: Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> to konto, która została zdefiniowana jako konto administratora, podczas wdrażania maszyny Wirtualnej po raz pierwszy przy użyciu galerii.
 
 Proces powinien potrwać kilka minut. Aby upewnić się, czy krok zakończył przy użyciu prawidłowego wyniku, wykonaj następujące czynności:

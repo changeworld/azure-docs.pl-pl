@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b5b00da1c920d249283625e4970510ea00bafc8
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 01bd8b5d1f8ed0d78f3331b4150df37ef0a1049e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190748"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426786"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Szybki start: Tworzenie serwera — PowerShell
 
@@ -23,7 +23,7 @@ W tym przewodniku Szybki start opisano, jak utworzyć serwer usługi Azure Analy
 
 - **Subskrypcja platformy Azure**: odwiedź stronę [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), aby utworzyć konto.
 - **Azure Active Directory**: subskrypcja musi być skojarzona z dzierżawą usługi Azure Active Directory i musisz mieć konto w tym katalogu. Aby dowiedzieć się więcej, zobacz [Authentication and user permissions (Uwierzytelnianie i uprawnienia użytkownika)](analysis-services-manage-users.md).
-- **Moduł Azure PowerShell w wersji 4.0 lub nowszej**. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie ` Get-Module -ListAvailable AzureRM`. Aby przeprowadzić instalację lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+- **Moduł Azure PowerShell w wersji 4.0 lub nowszej**. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie ` Get-Module -ListAvailable AzureRM`. Aby przeprowadzić instalację lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="import-azurermanalysisservices-module"></a>Importowanie modułu AzureRm.AnalysisServices
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d61810adb24bb56b849a0a07ad1f097a1c33744
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198086"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54410493"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
-W tym artykule opisano jak Deweloper urządzenia do łączenia z ogólnych aplikacji Node.js reprezentujący urządzenia fizycznego do aplikacji Microsoft Azure IoT Central.
+W tym artykule opisano jak Deweloper urządzenia do łączenia z ogólnych aplikacji Node.js reprezentujący rzeczywistego urządzenia do aplikacji Microsoft Azure IoT Central.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -97,7 +97,7 @@ W aplikacji usługi Azure IoT Central należy dodać rzeczywistego urządzenia z
 
 ### <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 
-Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuje rzeczywistego urządzenia, które dodanych do aplikacji. W tym miejscu aplikacji Node.js reprezentuje prawdziwe urządzenie fizyczne. 
+Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuje rzeczywistego urządzenia, które dodanych do aplikacji. W tym miejscu aplikacji Node.js reprezentuje rzeczywistego urządzenia. 
 
 1. Utwórz folder o nazwie `connected-air-conditioner-adv` na maszynie. Przejdź do tego folderu w środowisku wiersza polecenia.
 

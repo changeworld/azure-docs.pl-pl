@@ -3,19 +3,19 @@ title: Użytkownik wersji przepływów w usłudze Azure Active Directory B2C | D
 description: Dowiedz się więcej o wersjach przepływy użytkownika są dostępne w usłudze Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 34099292855606ac5c2653c8d790f59db37251f6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: eed5b27a2bdcc30aaf6befc19c5974936cabf849
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292411"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54854169"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Użytkownik wersji przepływów w usłudze Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Nowych przepływów użytkownika są dodawane jako nowe wersje. W miarę stabiln
 
 | Przepływ użytkownika | Zalecane | Opis |
 | --------- | ----------- | ----------- |
-| Resetowanie hasła w wersji 2 | Nie | Umożliwia użytkownikowi wybranie nowego hasła po sprawdzeniu swojej poczty e-mail. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Ustawienia zgodności tokenu</li><li>[Wieku](basic-age-gating.md)</li><li>[wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul> |
+| Resetowanie hasła w wersji 2 | Nie | Umożliwia użytkownikowi wybranie nowego hasła po sprawdzeniu swojej poczty e-mail. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>Ustawienia zgodności tokenu</li><li>[Wieku](basic-age-gating.md)</li><li>[Wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | Logowanie się w wersji 2 | Nie | Umożliwia użytkownikowi zalogowanie się do swojego konta. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Działanie sesji</li><li>[Wieku](basic-age-gating.md)</li><li>Dostosowywanie strony logowania</li></ul> |
 | Rejestrowanie się w wersji 2 | Nie | Umożliwia użytkownikowi tworzenie konta usługi. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Okres istnienia tokenu](active-directory-b2c-reference-tokens.md)</li><li>Ustawienia zgodności tokenu</li><li>Działanie sesji</li><li>[Wieku](basic-age-gating.md)</li><li>[Wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul> |
 | Rejestrowanie i logowanie się w wersji 2 | Nie | Umożliwia użytkownikowi tworzenie konta lub logowania się na jego koncie. Za pomocą tego przepływu użytkownika, można skonfigurować: <ul><li>[Multi-Factor Authentication](active-directory-b2c-reference-mfa.md)</li><li>[Wieku](basic-age-gating.md)</li><li>[Wymagania dotyczące złożoności hasła](active-directory-b2c-reference-password-complexity.md)</li></ul> |

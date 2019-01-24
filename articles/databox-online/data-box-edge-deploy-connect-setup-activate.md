@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e5477807e4cff6dc745ccfd0383fd216719a7aa5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c50aece847119dd0d2421553e9e9827c2168e553
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259618"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54451650"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge-preview"></a>Samouczek: Łączenie, konfigurowanie i aktywowania usługi Azure Data Box Edge (wersja zapoznawcza) 
 
@@ -87,7 +87,7 @@ Pulpit nawigacyjny wyświetla różne ustawienia, które są wymagane, aby skonf
     - Możesz skonfigurować interfejsu sieciowego w przypadku protokołu IPv4.
 
     >[!NOTE] 
-    > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu siec ze statycznego do protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich adpaters w **właściwości urządzenia** w witrynie Azure portal dla usługi.
+    > Firma Microsoft zaleca, przełącza lokalny adres IP interfejsu sieciowego z statycznego do protokołu DHCP, o ile nie masz innego adresu IP, aby połączyć się z urządzeniem. Jeśli przy użyciu jednego interfejsu sieciowego i przełącz się do protokołu DHCP, będzie można ustalić adres DHCP. Jeśli chcesz zmienić adres DHCP, poczekaj, aż po urządzenia został zarejestrowany w usłudze, a następnie Zmień. Można wyświetlić adresy IP wszystkich kart w **właściwości urządzenia** w witrynie Azure portal dla usługi.
 
 1. (Opcjonalnie) W okienku po lewej stronie wybierz **ustawień serwera proxy sieci Web**, a następnie skonfiguruj serwer proxy sieci web. Mimo, że konfiguracja serwera proxy sieci web jest opcjonalny, jeśli używasz serwera proxy sieci web, możesz go skonfigurować tylko na tej stronie.
    

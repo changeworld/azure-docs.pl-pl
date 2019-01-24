@@ -1,10 +1,10 @@
 ---
-title: 'Synchronizacja programu Azure AD Connect: zmieniania konfiguracji domyślnej | Dokumentacja firmy Microsoft'
+title: 'Synchronizacja programu Azure AD Connect: Zmienianie konfiguracji domyślnej | Dokumentacja firmy Microsoft'
 description: Przedstawia najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej, program Azure AD Connect Sync.
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 7638a031-1635-4942-94c3-fce8f09eed5e
 ms.service: active-directory
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ad19916dc49c2bee870eef77611d120cc66b44cd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f071d97df6932bec5ae4161511ba33369cc1828c
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312200"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461181"
 ---
-# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej
+# <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej
 Ten temat ma na celu opisania obsługiwanych i nieobsługiwanych zmian do synchronizacji Azure AD Connect.
 
 Konfiguracja utworzone przez program Azure AD Connect będzie działać "" dla większości środowisk, które synchronizują w lokalnej usłudze Active Directory z usługą Azure AD. Jednak w niektórych przypadkach należy zastosować niektóre zmiany konfiguracji do zaspokojenia potrzeb określonego lub wymagań.
@@ -73,5 +73,5 @@ W tej regule sklonowany wprowadź niezbędne zmiany w zakresie sprzężenia i pr
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

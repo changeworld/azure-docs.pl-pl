@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: a7ab2e76280458326539fe83d3507dfb4e4a486e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8723d7f113a77266d1ee883e41bade1721fa1afa
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023105"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848958"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -61,7 +61,7 @@ Błąd 53 lub błąd 67 może wystąpić, jeśli port 445 komunikacja wychodząc
 
 Aby sprawdzić, czy zapory lub usługodawcy internetowego blokuje portu 445, użyj [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) narzędzia lub `Test-NetConnection` polecenia cmdlet. 
 
-Aby użyć `Test-NetConnection` polecenia cmdlet, AzureRM PowerShell w module muszą być zainstalowane, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps) Aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resoure-group-name>` nazwami odpowiednimi dla konta magazynu.
+Aby użyć `Test-NetConnection` polecenia cmdlet, AzureRM PowerShell w module muszą być zainstalowane, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) Aby uzyskać więcej informacji. Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resoure-group-name>` nazwami odpowiednimi dla konta magazynu.
 
    
     $resourceGroupName = "<your-resource-group-name>"
@@ -69,12 +69,12 @@ Aby użyć `Test-NetConnection` polecenia cmdlet, AzureRM PowerShell w module mu
 
     # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
     # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
     # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
   
     
 Jeśli połączenie zostało pomyślnie nawiązane, powinny pojawić się następujące dane wyjściowe:

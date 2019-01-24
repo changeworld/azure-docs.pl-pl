@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 66d816795ec06891aafce73036d7aea9bb52b2c8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: e861d8fe22d4e7acb970990b27998caf923ed6c2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140543"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449653"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Wymagania licencyjne technologii FairPlay firmy Apple i Konfiguracja 
 
 Usługa Azure Media Services umożliwia szyfrowanie zawartości przy użyciu protokołu HLS **technologii FairPlay firmy Apple** (CBC AES-128). Media Services udostępnia również usługę dostarczania licencje usługi fairplay:. Gdy gracz próbuje odtwarzanie zawartości chronionej na technologii FairPlay, żądanie jest wysyłane do usługi dostarczania licencji uzyskanie licencji. Jeśli usługa licencji zatwierdza żądanie, problemy z licencji, która jest wysyłana do klienta i jest używany do odszyfrowania i odtwarzania określonej zawartości.
 
-Media Services dostarcza również interfejsy API, które można użyć, aby skonfigurować licencje FairPlay. W tym temacie omówiono wymagania licencyjne FairPlay i pokazuje, jak konfigurować **FairPlay** Uzyskaj licencję za pomocą interfejsów API Sercies nośnika. 
+Media Services dostarcza również interfejsy API, które można użyć, aby skonfigurować licencje FairPlay. W tym temacie omówiono wymagania licencyjne FairPlay i pokazuje, jak konfigurować **FairPlay** Uzyskaj licencję za pomocą interfejsów API usług Media Services. 
 
 ## <a name="requirements"></a>Wymagania
 
@@ -35,7 +35,7 @@ Szyfrowanie zawartości przy użyciu protokołu HLS przy użyciu usługi Media S
 * Firma Apple wymaga właścicielem zawartości w celu uzyskania [pakietu wdrożeniowego](https://developer.apple.com/contact/fps/). Stan już zaimplementowany klucz zabezpieczeń modułu (KSM) za pomocą usługi Media Services i żądają pakiecie końcowym kl. / s. Istnieją instrukcje w pakiecie końcowym kl. / s, aby wygenerować certyfikacji i Uzyskaj klucz klucz tajny aplikacji (AKS). ZADAJ umożliwiają konfigurowanie technologii FairPlay.
 * Stronie dostarczania kluczy/licencji Media Services, musi być ustawione następujące elementy:
 
-    * **Certyfikat aplikacji (AC)**: to jest plik PFX, który zawiera klucz prywatny. Utwórz ten plik i szyfrować je przy użyciu hasła. Shoul plik PFX jest w formacie Base64.
+    * **Certyfikat aplikacji (AC)**: Jest to plik PFX, który zawiera klucz prywatny. Utwórz ten plik i szyfrować je przy użyciu hasła. Plik PFX powinien być w formacie Base64.
 
         W poniższych krokach opisano sposób generowania plik certyfikatu PFX dla technologii FairPlay:
 
@@ -49,12 +49,12 @@ Szyfrowanie zawartości przy użyciu protokołu HLS przy użyciu usługi Media S
 
             Pkcs12 "C:\OpenSSL-Win32\bin\openssl.exe" — Eksportowanie — limit FairPlay out.pfx-inkey privatekey.pem — w file:privatekey-pem-pass.txt - passin out.pem technologii FairPlay
             
-    * **Hasło certyfikatu aplikacji**: hasło do utworzenia pliku .pfx.
-    * **Poproś**: ten klucz jest zgłaszany, jeśli Generowanie certyfikacji przy użyciu portalu dla deweloperów firmy Apple. Każdy zespół programistyczny otrzymuje unikatowy pytanie. Zapisz kopię ZADAJ i zapisz go w bezpiecznym miejscu. Należy skonfigurować poproś jako FairPlayAsk za pomocą usługi Media Services.
+    * **Hasło certyfikatu aplikacji**: Hasło do tworzenia pliku .pfx.
+    * **POPROŚ**: Ten klucz jest zgłaszany, jeśli Generowanie certyfikacji przy użyciu portalu dla deweloperów firmy Apple. Każdy zespół programistyczny otrzymuje unikatowy pytanie. Zapisz kopię ZADAJ i zapisz go w bezpiecznym miejscu. Należy skonfigurować poproś jako FairPlayAsk za pomocą usługi Media Services.
     
 * Po stronie klienta kl. / s, należy ustawić następujące elementy:
 
-  * **Certyfikat aplikacji (AC)**: jest to plik.cer/.der, który zawiera klucz publiczny, który system operacyjny używa szyfrowania niektóre ładunku. Usługa Media Services musi znać na jego temat, ponieważ jest to wymagane przez gracza. Usługa dostarczania kluczy odszyfrowuje ją przy użyciu odpowiedniego klucza prywatnego.
+  * **Certyfikat aplikacji (AC)**: Jest to plik.cer/.der, który zawiera klucz publiczny, który system operacyjny używa szyfrowania niektóre ładunku. Usługa Media Services musi znać na jego temat, ponieważ jest to wymagane przez gracza. Usługa dostarczania kluczy odszyfrowuje ją przy użyciu odpowiedniego klucza prywatnego.
 
 * Aby odtworzyć strumień zaszyfrowanej technologia FairPlay, Pobierz rzeczywistych ZADAJĄ pierwszy, a następnie wygeneruj prawdziwym certyfikatem. Ten proces tworzy wszystkie trzy elementy:
 

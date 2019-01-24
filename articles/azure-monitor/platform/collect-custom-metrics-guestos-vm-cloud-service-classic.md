@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: 31cbdb2d343f4cc8d30decb587df135c3f374467
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.subservice: metrics
+ms.openlocfilehash: e971414cfcd069a4aa8a212f64927407be83ad39
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53326124"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470940"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Wysyłanie metryk systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywać klasycznej usługi w chmurze 
 
@@ -189,3 +189,4 @@ Wymiar, filtrowania i dzielenia możliwości umożliwia wyświetlanie całkowite
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [metryki niestandardowe](metrics-custom-overview.md).
+

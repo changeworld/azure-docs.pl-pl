@@ -4,7 +4,7 @@ description: Sprawdzanie kondycji domeny zarządzanej przy użyciu strony kondyc
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8999eec3-f9da-40b3-997a-7a2587911e96
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: aee8492c73ace608abaeca9d833494e041d2b9dd
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fe5776dad4c4b9ae96484ac266a23e87658cf578
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969008"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852835"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Sprawdzanie kondycji domeny zarządzanej usług domenowych Azure AD
 
@@ -32,7 +32,7 @@ Za pomocą strony kondycji w swojej witrynie Azure portal, jesteś w stanie zape
 2. Kliknij domenę, aby wyświetlić kondycję elementów.
 3. W okienku nawigacji po lewej stronie kliknij **kondycji**.
 
-Poniższy obraz przedstawia przykładową stronę kondycji: ![przykładowa strona kondycji](./media/active-directory-domain-services-alerts/health-page.png)
+Poniższy obraz pokazuje przykładowa strona kondycji: ![Przykładowa strona kondycji](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > Kondycji domeny zarządzanej jest obliczane co godzinę. Po wprowadzeniu zmian do domeny zarządzanej, poczekaj, aż następnym cyklu szacowania, aby wyświetlić zaktualizowaną kondycję domeny zarządzanej. Sygnatura czasowa "Datą ostatniej oceny" w prawym górnym rogu pokazuje, kiedy kondycję domeny zarządzanej datą ostatniej oceny.

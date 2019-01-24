@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6f894310157432a6e03e6ec4753f5efc2d8ac66d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 149a15353a7fd1d698af306971ecb0949db4c165
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267423"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817235"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Migracja Contoso: Ponowne Ustalanie architektury aplikacji w środowisku lokalnym, do kontenera platformy Azure i usługi Azure SQL Database
 
@@ -199,7 +199,7 @@ Kontenera platformy Azure zostanie utworzona wyeksportowane pliki z maszyny Wirt
 
 ## <a name="step-3-provision-azure-service-fabric"></a>Krok 3: Aprowizowanie usługi Azure Service Fabric
 
-Kontener rozwiązania SmartHotel360 będzie działał w Sluster sieci szkieletowej usługi platformy Azure. Administratorzy firmy Contoso Utwórz klaster usługi Service Fabric w następujący sposób:
+Kontener rozwiązania SmartHotel360 zostanie uruchomiony w klastrze usługi Azure Service Fabric. Administratorzy firmy Contoso Utwórz klaster usługi Service Fabric w następujący sposób:
 
 1. Utwórz zasób usługi Service Fabric w portalu Azure Marketplace
 
@@ -282,7 +282,7 @@ Firma Contoso potrzebuje certyfikatów klastra, aby zezwolić na dostęp usługo
 
 8. W przypadku wdrożenia usługi DevOps platformy Azure muszą określić wartość Base64 certyfikatu. One to robić na stacji roboczej dewelopera lokalnego przy użyciu programu PowerShell. Ich wkleić dane wyjściowe do pliku tekstowego do późniejszego użycia.
 
-    ```
+    ```powershell
         [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("C:\path\to\certificate.pfx")) 
     ```
 
@@ -386,7 +386,7 @@ Aplikacja w środowisku lokalnym jest tradycyjnych aplikacji trzy warstwy:
 - Używa platformy Entity Framework do integracji z danymi w bazie danych SQL, uwidaczniania go za pośrednictwem usługi WCF.
 - Aplikacja formularzy sieci Web wchodzi w interakcje z usługą WCF.
 
-Administratorzy firmy Contoso przekonwertuje aplikacji kontenera za pomocą Visual Studio i SDK Tools, w następujący sposób:
+Administratorzy firmy Contoso przekonwertuje aplikacji kontenera za pomocą programu Visual Studio i SDK Tools, w następujący sposób:
 
 
 1. W programie Visual Studio mogą zapoznać się z otwartego pliku rozwiązania (SmartHotel.Registration.sln) w **rozwiązania SmartHotel360 — wewnętrzne — rezerwacji apps\src\Registration** katalogu lokalnego repozytorium.  Dwie aplikacje są wyświetlane. Frontony sieci web SmartHotel.Registration.Web i aplikacja usługi WCF SmartHotel.Registration.WCF.
@@ -530,7 +530,7 @@ Pierwszym krokiem Administratorzy Contoso aprowizować bazy danych Azure Cosmos.
 5. W portalu, otwarciu nowej bazy danych > **kolekcji** > **dokumenty** i kliknij przycisk **nowy dokument**.
 6. One Wklej następujący kod JSON do okna dokumentu. To przykładowe dane w postaci jednego tweetu.
 
-    ```
+    ```json
     {
             "id": "2ed5e734-8034-bf3a-ac85-705b7713d911",
             "tweetId": 927750234331580911,
@@ -565,11 +565,11 @@ Usługa Cosmos DB zainicjowano obsługę administracyjną Contoso Administratorz
 
 2. Wypełnij one następujące dwa parametry:
 
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBEndpoint" Value="[URI]" />
    ```
    
-   ```
+   ```xml
    <Parameter Name="SentimentIntegration.CosmosDBAuthKey" Value="[Key]" />
    ```
 

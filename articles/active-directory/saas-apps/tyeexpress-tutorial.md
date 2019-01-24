@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: B42374E5-2559-4309-8EF2-820BEE7EBB0C
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: ff4d634fb7f6f8057e5f370a694e46ca5e0d772d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 67cc50f3b6812abc566620396369b195d106f2be
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114077"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54815178"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą języka T & E Express
 
@@ -31,7 +31,7 @@ Integrowanie T & E Express z usługą Azure AD zapewnia następujące korzyści:
 - Umożliwia użytkownikom automatyczne pobieranie zalogowanych do T & E Express (logowanie jednokrotne) przy użyciu konta usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -43,10 +43,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą języka T & E Express
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -114,16 +114,16 @@ W tej sekcji możesz włączyć usługi Azure AD logowanie jednokrotne w portalu
 
     a. W **identyfikator** polu tekstowym wpisz wartość jako: `https://<domain>.tyeexpress.com`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
     > [!NOTE] 
-    > Należy pamiętać, że nie są rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych identyfikatorem i adres URL odpowiedzi. W tym miejscu zalecamy przy użyciu unikatowej wartości ciągu w identyfikatorze. Skontaktuj się z pomocą [T & E Express zespołu pomocy technicznej](http://www.tyeexpress.com/contacto.aspx) do uzyskania tych wartości.
+    > Należy pamiętać, że nie są to rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych identyfikatorem i adres URL odpowiedzi. W tym miejscu zalecamy użycie unikatowej wartości ciągu w identyfikatorze. Skontaktuj się z pomocą [T & E Express zespołu pomocy technicznej](http://www.tyeexpress.com/contacto.aspx) do uzyskania tych wartości.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/tyeexpress-tutorial/tutorial_general_400.png)
 
@@ -176,7 +176,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu zarządzania pl
 Aby umożliwić użytkownikom usługi Azure AD zalogować się do T & E Express, musi być obsługiwana w T & E Express.  
 W przypadku T & E Express Inicjowanie obsługi to zadanie ręczne.
 
-**Aby udostępnić konta użytkowników, wykonaj następujące czynności:**
+**Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
 
 1. Zaloguj się do witryny firmy T & E Express jako administrator.
 
@@ -231,7 +231,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 
 Po kliknięciu kafelka T & E Express w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji T & E Express.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

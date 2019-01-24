@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/11/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 945dcf5776867a9b892a879569a4b58890cb1975
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2c496f78650be6fc19197c82dc9534fbd256ac45
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076452"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422596"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrażania systemu DBMS na IBM DB2 Azure maszyn wirtualnych w przypadku obciążeń SAP
 
@@ -235,7 +235,7 @@ ms.locfileid: "39076452"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -321,15 +321,15 @@ Poniższe uwagi SAP odnoszą się do SAP na platformie Azure dotyczące obszaru 
 
 | Numer | Stanowisko |
 | --- | --- |
-| [1928533] |Aplikacje środowiska SAP na platformie Azure: obsługiwane produkty i maszyny Wirtualnej platformy Azure |
-| [2015553] |SAP na platformie Microsoft Azure: wymagania wstępne dotyczące obsługi |
+| [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
+| [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
 | [1999351] |Rozwiązywanie problemów z rozszerzonego monitorowania platformy Azure dla rozwiązania SAP |
 | [2178632] |Klucz metryki monitorowania dla rozwiązania SAP na platformie Microsoft Azure |
-| [1409604] |Wirtualizacji na Windows: Enhanced Monitoring |
-| [2191498] |SAP w systemie Linux przy użyciu platformy Azure: Enhanced Monitoring |
+| [1409604] |Wirtualizacja na Windows: Rozszerzone monitorowanie |
+| [2191498] |SAP w systemie Linux przy użyciu platformy Azure: Rozszerzone monitorowanie |
 | [2233094] |DB6: Aplikacje środowiska SAP na platformie Azure przy użyciu programu IBM DB2 dla systemów Linux, UNIX i Windows — informacje dodatkowe |
-| [2243692] |Systemu Linux w systemie Microsoft Azure (IaaS) maszyn wirtualnych: problemy dotyczące licencji SAP |
-| [1984787] |Systemie SUSE LINUX Enterprise Server 12: Uwagi dotyczące instalacji |
+| [2243692] |Systemu Linux na platformie Microsoft Azure (IaaS) maszyny Wirtualnej: Problemy dotyczące licencji SAP |
+| [1984787] |SUSE LINUX Enterprise Server 12: Uwagi dotyczące instalacji |
 | [2002167] |Red Hat Enterprise Linux 7.x: Instalowanie i uaktualnianie |
 | [1597355] |Zalecenie obszaru wymiany w systemie Linux |
 

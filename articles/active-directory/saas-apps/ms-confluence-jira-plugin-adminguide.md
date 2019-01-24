@@ -4,7 +4,7 @@ description: Podręcznik administratora Atlassian Jira i Confluence za pomocą u
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77aba012d4e8d333d6f57f8f6a7a12927e6a35ec
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426880"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820550"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira i Confluence podręczniku administratora usługi Azure Active Directory
 
@@ -67,14 +67,14 @@ Przed zainstalowaniem dodatku typu plug-in, należy zwrócić uwagę na następu
 
 Wtyczka obsługuje następujące wersje programu Jira Confluence:
 
-* Jira Core i oprogramowania: 6.0 do 7.12
-* Jira pomocy technicznej: 3.5.0 do 3.0.0
-* JIRA obsługuje również 5.2. Aby uzyskać więcej informacji, kliknij przycisk [Microsoft Azure Active Directory logowania jednokrotnego dla 5.2 programu JIRA](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5.10 do 5.0
+* Jira Core i oprogramowania: wersja od 6.0 do 7.12
+* Jira Service Desk: 3.0.0 lub 3.5.0
+* Usługa JIRA obsługuje także wersję 5.2. Aby uzyskać więcej szczegółowych informacji, kliknij następujący link: [logowanie jednokrotne usługi Microsoft Azure Active Directory dla usługi JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* Confluence: 5.0 do 5.10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1
-* Confluence: 6.3.4.
+* Confluence: 6.3.4
 * Confluence: 6.4.0
 * Confluence: 6.5.0
 * Confluence: 6.6.2
@@ -109,39 +109,39 @@ Na poniższej ilustracji przedstawiono ekran konfiguracji w usłudze Jira i Conf
 
 ![Ekran konfiguracji dodatku typu plug-in](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **Adres URL metadanych**: adres URL można uzyskać metadanych federacji z usługi Azure AD.
+*   **Adres URL metadanych**: Adres URL można uzyskać metadanych federacji z usługi Azure AD.
 
-*   **Identyfikatory**: adres URL przez usługę Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/.
+*   **Identyfikatory**: Adres URL usługi Azure AD używa do sprawdzania poprawności źródła żądania. Jest on mapowany **identyfikator** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/.
 
-*   **Adres URL odpowiedzi**: adres URL odpowiedzi, w który inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
+*   **Adres URL odpowiedzi**: Adres URL odpowiedzi, inicjuje logowania języka SAML dostawcy tożsamości (IdP). Jest on mapowany **adres URL odpowiedzi** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
 
-*   **Na adres URL logowania**: adres URL logowania jednokrotnego w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
+*   **Adres URL logowania**: Adres URL logowania w inicjujący logowania języka SAML dostawcy tożsamości. Jest on mapowany **rejestracji jednokrotnej** elementu w usłudze Azure AD. Wtyczka automatycznie dziedziczy ten adres URL jako https://*< domena: port >*/plugins/servlet/saml/auth.
 
-*   **Identyfikator jednostki tożsamości**: identyfikator jednostki, która używa dostawcy tożsamości. To pole jest wypełniana po usunięciu adres URL metadanych.
+*   **Identyfikator dostawcy tożsamości jednostki**: Identyfikator jednostki, która używa dostawcy tożsamości. To pole jest wypełniana po usunięciu adres URL metadanych.
 
-*   **Adres URL logowania**: adres URL logowania z dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+*   **Adres URL logowania**: Zaloguj się adres URL z dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
 
-*   **Adres URL wylogowania**: adres URL wylogowania dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+*   **Adres URL wylogowania**: Adres URL wylogowania dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
 
-*   **Certyfikat X.509**: certyfikat X.509 Twojej tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
+*   **Certyfikat X.509**: Certyfikat X.509 dostawcy tożsamości. To pole jest wypełniane z usługi Azure AD, gdy adres URL metadanych został rozwiązany.
 
-*   **Nazwa przycisku logowania**: Nazwa logowania przycisku, który organizacja chce, aby użytkownicy, aby wyświetlić na stronie logowania.
+*   **Nazwa przycisku logowania**: Nazwa logowania przycisk, który organizacja chce, aby użytkownicy, aby wyświetlić na stronie logowania.
 
-*   **Lokalizacje identyfikator użytkownika SAML**: lokalizację, w którym identyfikator użytkownika w usłudze Jira lub Confluence jest oczekiwany w odpowiedzi SAML. Może być w **NameID** lub w nazwie atrybutu niestandardowego.
+*   **Lokalizacje identyfikator użytkownika SAML**: Lokalizacja, w którym identyfikator użytkownika w usłudze Jira lub Confluence jest oczekiwany w odpowiedzi SAML. Może być w **NameID** lub w nazwie atrybutu niestandardowego.
 
 *   **Atrybut nazwy**: Nazwa atrybutu, gdy jest oczekiwany identyfikator użytkownika.
 
-*   **Włączanie odnajdowania obszaru macierzystego**: zaznaczenie, aby upewnić się, jeśli firma korzysta z usługi Active Directory Federation Services (ADFS) — na podstawie logowania — w.
+*   **Strona główna Włącz odnajdowanie obszaru**: Zaznaczenie, aby upewnić się, jeśli firma korzysta z usługi Active Directory Federation Services (ADFS) — na podstawie logowania — w.
 
-*   **Nazwa domeny**: w przypadku logowania usług AD FS, na podstawie nazwy domeny.
+*   **Nazwa domeny**: Nazwa domeny, jeśli logowanie jest usług AD FS, na podstawie.
 
-*   **Włącz pojedynczego wylogowanie**: zaznaczenie, aby upewnić się, jeśli chcesz wylogować się z usługi Azure AD, gdy użytkownik wylogowuje się z programu Jira lub Confluence.
+*   **Włącz pojedynczego wylogowanie**: Zaznaczenie, aby upewnić się, jeśli chcesz wylogować się z usługi Azure AD, gdy użytkownik wylogowuje się z programu Jira lub Confluence.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 * **Otrzymujesz wiele błędów certyfikatu**: Zaloguj się do usługi Azure AD i usunąć wiele certyfikatów, które są dostępne dla aplikacji. Upewnij się, że występuje tylko jeden certyfikat.
 
-* **Certyfikat wkrótce wygaśnie w usłudze Azure AD**: dodatki zajmie się automatyczne Przerzucanie certyfikatu. Gdy certyfikat wkrótce wygaśnie, nowego certyfikatu powinna być oznaczona jako aktywny i nieużywanych certyfikaty powinny zostać usunięte. Gdy użytkownik próbuje zalogować się do programu Jira, w tym scenariuszu wtyczki odczyty i zapisywany nowy certyfikat.
+* **Certyfikat wkrótce wygaśnie w usłudze Azure AD**: Dodatki zajmie się automatyczne Przerzucanie certyfikatu. Gdy certyfikat wkrótce wygaśnie, nowego certyfikatu powinna być oznaczona jako aktywny i nieużywanych certyfikaty powinny zostać usunięte. Gdy użytkownik próbuje zalogować się do programu Jira, w tym scenariuszu wtyczki odczyty i zapisywany nowy certyfikat.
 
 * **Aby wyłączyć WebSudo (Wyłącz sesji bezpiecznego administratora)**:
 
@@ -157,11 +157,11 @@ Na poniższej ilustracji przedstawiono ekran konfiguracji w usłudze Jira i Conf
 
 * **Wystąpił błąd wewnętrzny serwera**: Przejrzyj dzienniki w katalogu dzienników instalacji. Jeśli otrzymujesz błąd, gdy użytkownik próbuje zarejestrować się przy użyciu logowania jednokrotnego usługi Azure AD, możesz udostępniać dzienniki z zespołem pomocy technicznej.
 
-* **Występuje błąd "Nie znaleziono Identyfikatora użytkownika", gdy użytkownik spróbuje się zalogować**: Utwórz nazwę użytkownika w usłudze Jira lub Confluence.
+* **Występuje błąd "Nie znaleziono Identyfikatora użytkownika", gdy użytkownik próbuje zarejestrować się w**: Utwórz identyfikator użytkownika w usłudze Jira lub Confluence.
 
 * **Występuje błąd "Nie można odnaleźć aplikacji" w usłudze Azure AD**: Zobacz, czy odpowiedni adres URL jest mapowany do aplikacji w usłudze Azure AD.
 
-* **Potrzebujesz pomocy technicznej**: skontaktowanie się z [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zespół odpowiada w 24-48 godzin pracy.
+* **Potrzebujesz pomocy technicznej**: Dotrzyj do [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Zespół odpowiada w 24-48 godzin pracy.
 
   Może również zgłosić bilet pomocy technicznej w firmie Microsoft za pośrednictwem kanału portalu Azure.
 
@@ -185,14 +185,14 @@ Nie. Wtyczka obsługuje tylko lokalne wersje programu Jira i Confluence.
 
 Wtyczka obsługuje następujące wersje:
 
-* Jira Core i oprogramowania: 6.0 do 7.12
-* Jira pomocy technicznej: 3.5.0 do 3.0.0
-* JIRA obsługuje również 5.2. Aby uzyskać więcej informacji, kliknij przycisk [Microsoft Azure Active Directory logowania jednokrotnego dla 5.2 programu JIRA](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
-* Confluence: 5.10 do 5.0
+* Jira Core i oprogramowania: wersja od 6.0 do 7.12
+* Jira Service Desk: 3.0.0 lub 3.5.0
+* Usługa JIRA obsługuje także wersję 5.2. Aby uzyskać więcej szczegółowych informacji, kliknij następujący link: [logowanie jednokrotne usługi Microsoft Azure Active Directory dla usługi JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
+* Confluence: 5.0 do 5.10
 * Confluence: 6.0.1
 * Confluence: 6.1.1
 * Confluence: 6.2.1
-* Confluence: 6.3.4.
+* Confluence: 6.3.4
 * Confluence: 6.4.0
 * Confluence: 6.5.0
 * Confluence: 6.6.2

@@ -1,6 +1,6 @@
 ---
 title: Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard za pomocą platformy .NET | Dokumentacja firmy Microsoft
-description: W tym artykule pokazano, jak kodowanie elementu zawartości przy użyciu Media Encoder w warstwie standardowa przy użyciu platformy .NET.
+description: W tym artykule pokazano, jak kodowanie elementu zawartości przy użyciu usługi Media Encoder Standard za pomocą platformy .NET.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 426ebb90a0d7716b14664f874db259a0cca2aa7e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e557b7220077be7fcca418f0c2cf8aceeace1eb5
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241093"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54809585"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard za pomocą platformy .NET 
 Zadania kodowania to jedna z operacji najczęściej przeprowadzanych przy użyciu usługi Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, możesz użyć wbudowanych Media Encoder usługi Media Services. Można również użyć koder świadczonych przez partnera usługi Media Services; kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. 
@@ -64,7 +64,7 @@ Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następuj
 * Określ wejściowego elementu do zakodowania.
 * Tworzenie zasobu danych wyjściowych, który zawiera zakodowanym elementem zawartości.
 * Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
-* Prześlij zadanie.
+* Przesyłanie zadania.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 

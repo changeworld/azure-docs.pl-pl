@@ -1,21 +1,21 @@
 ---
-title: 'Programu Azure AD Connect: Dokumentacja programu PowerShell ADSyncConfig | Dokumentacja firmy Microsoft'
+title: 'Program Azure AD Connect: Dokumentacja programu PowerShell ADSyncConfig | Dokumentacja firmy Microsoft'
 description: Ten dokument zawiera informacje dotyczące modułu programu ADSyncConfig.psm1 PowerShell.
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84be07eeb112711de35853162b798b5f6ed0b2aa
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 1d2d921e02b56e951b4239c15471995eaf3cd0d1
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422766"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54813584"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Programu Azure AD Connect: Dokumentacja programu PowerShell ADSyncConfig
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncConfig
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncConfig.psm1, dostępnej w programie Azure AD Connect.
 
 
@@ -61,14 +61,14 @@ Wyszukuje w AD od parametru SearchBase i zwraca wszystkich obiektów, przefiltro
 Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled - SearchBase "Contoso"
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
 
 #### <a name="example-2"></a>PRZYKŁAD 2
 ```
 Find 'user' objects with disabled inheritance in 'Contoso' domain
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled - SearchBase "Contoso" - ObjectClass "user"
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
 
 #### <a name="example-3"></a>PRZYKŁAD 3
 ```
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncbasicreadpermissions"></a>Zestaw ADSyncBasicReadPermissions
+## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Zainicjuj lasu usługi Active Directory i domeny dla podstawowych uprawnień do odczytu.
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncexchangehybridpermissions"></a>Zestaw ADSyncExchangeHybridPermissions
+## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Zainicjuj lasu usługi Active Directory i domeny dla funkcji hybrydowego programu Exchange.
@@ -453,7 +453,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Zestaw ADSyncExchangeMailPublicFolderPermissions
+## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Zainicjuj lasu usługi Active Directory i domeny dla funkcji folderu publiczne poczty programu Exchange.
@@ -615,7 +615,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Zestaw ADSyncMsDsConsistencyGuidPermissions
+## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Inicjowanie usługi Active Directory lasu i domeny, mS-DS-ConsistencyGuid funkcji.
@@ -776,7 +776,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncpasswordhashsyncpermissions"></a>Zestaw ADSyncPasswordHashSyncPermissions
+## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Zainicjuj lasu usługi Active Directory i domeny do synchronizacji skrótów haseł.
@@ -897,7 +897,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncpasswordwritebackpermissions"></a>Zestaw ADSyncPasswordWritebackPermissions
+## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Zainicjuj lasu usługi Active Directory i domeny do zapisywania zwrotnego haseł z usługi Azure AD.
@@ -1062,7 +1062,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncrestrictedpermissions"></a>Zestaw ADSyncRestrictedPermissions
+## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Podwyższenie poziomu uprawnień do obiektu usługi AD, w przeciwnym razie nieuwzględnione w dowolnej grupie chronionych zabezpieczeń AD.
@@ -1193,7 +1193,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Zestaw ADSyncUnifiedGroupWritebackPermissions
+## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Zainicjuj lasu usługi Active Directory i domeny dla zapisu zwrotnego grup z usługi Azure AD.
@@ -1355,7 +1355,7 @@ Accept wildcard characters: False
 To polecenie cmdlet obsługuje typowe parametry: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction i -WarningVariable.
 Aby uzyskać więcej informacji, zobacz informacje o parametrach wspólnych (https://go.microsoft.com/fwlink/?LinkID=113216).
 
-## <a name="show-adsyncadobjectpermissions"></a>Pokaż ADSyncADObjectPermissions
+## <a name="show-adsyncadobjectpermissions"></a>Show-ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>STRESZCZENIE
 Zawiera uprawnienia określonego obiektu usługi AD.
@@ -1367,7 +1367,7 @@ Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>OPIS
-Retuns tej funkcji wszystkie uprawnienia AD aktualnie ustawione dla danego obiektu AD podany w parametrze - ADobjectDN.
+Ta funkcja zwraca wszystkie uprawnienia AD aktualnie ustawione dla danego obiektu AD podany w parametrze - ADobjectDN.
 ADobjectDN musi być podana w formacie DistinguishedName.
 
 ### <a name="examples"></a>PRZYKŁADY
@@ -1380,7 +1380,7 @@ Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ### <a name="parameters"></a>PARAMETRY
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-{{Wprowadź opis ADobjectDN}}
+{{Fill ADobjectDN Description}}
 
 ```yaml
 Type: String

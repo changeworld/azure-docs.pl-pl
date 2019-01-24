@@ -1,10 +1,10 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Synchronizacja w domenach zarządzanych | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Synchronizacja w domenach zarządzanych | Dokumentacja firmy Microsoft'
 description: Omówienie synchronizacji w domenie zarządzanej usługi Azure Active Directory Domain Services
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: e0fc1b64514adb710ebcbdd417f65e9e3b3b3d66
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 40b66b85f88cde28cc6a1c52cb456157d8acd68c
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155562"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846953"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronizacja w domenie zarządzanej usług domenowych Azure AD
 Na poniższym diagramie przedstawiono synchronizacji działanie w usługach domenowych Azure AD domen zarządzanych.
@@ -50,26 +50,26 @@ Z kolei dzierżawy usługi Azure AD jest znacznie prostsze i prostego przestrzen
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>Wykluczenia — co nie jest zsynchronizowany z domeną zarządzaną
 Następujących obiektów i atrybutów nie są zsynchronizowane z dzierżawą usługi Azure AD lub do domeny zarządzanej:
 
-* **Wykluczone atrybutów:** chcesz wykluczyć niektóre atrybuty po nieudanym synchronizowaniu do dzierżawy usługi Azure AD z domeny lokalnej za pomocą usługi Azure AD Connect. Te atrybuty wykluczone nie są dostępne w Twojej domeny zarządzanej.
-* **Zasady grupy:** zasad grupy skonfigurowane w domenie lokalnej nie są zsynchronizowane z domeną zarządzaną.
-* **Udział Sysvol:** podobnie zawartość udziału Sysvol w domenie lokalnej nie są zsynchronizowane z domeną zarządzaną.
-* **Obiekty komputerów:** obiekty komputerów dla komputery przyłączone do domeny w środowisku lokalnym nie są synchronizowane z domeny zarządzanej. Te komputery nie mają ustanowioną relację zaufania z domeny zarządzanej i nie należy do Twojej domeny w środowisku lokalnym. W Twojej domeny zarządzanej możesz znaleźć obiekty komputera tylko w przypadku komputerów, na których możesz mieć jawnie przyłączone do domeny zarządzanej.
-* **Atrybuty elementu SidHistory dla użytkowników i grup:** głównego użytkownika i grupy podstawowej identyfikatory SID z Twojej domeny w środowisku lokalnym, które są synchronizowane z domeną zarządzaną. Jednak istniejące atrybuty historii SID dla użytkowników i grup nie są synchronizowane z lokalnej domeny do domeny zarządzanej.
-* **Struktury jednostki Organizacyjnej organizacji:** jednostek organizacyjnych zdefiniowanych w domenie lokalnej nie są synchronizowane z domeną zarządzaną. Istnieją dwie wbudowane jednostek organizacyjnych w domenie zarządzanej. Domyślnie Twoja domena zarządzana ma płaskiej struktury jednostek organizacyjnych. Można jednak wybrać [Tworzenie niestandardowej jednostki Organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md).
+* **Wykluczone atrybuty:** Można wykluczyć określone atrybuty po nieudanym synchronizowaniu do dzierżawy usługi Azure AD z domeny lokalnej za pomocą usługi Azure AD Connect. Te atrybuty wykluczone nie są dostępne w Twojej domeny zarządzanej.
+* **Zasady grupy:** Zasady grupy, które skonfigurowano w domenie lokalnej nie są zsynchronizowane z domeną zarządzaną.
+* **Udział Sysvol:** Podobnie zawartość udziału Sysvol w domenie lokalnej nie są zsynchronizowane z domeną zarządzaną.
+* **Obiekty komputerów:** Obiekty komputera dla komputery przyłączone do domeny w środowisku lokalnym nie są zsynchronizowane z domeną zarządzaną. Te komputery nie mają ustanowioną relację zaufania z domeny zarządzanej i nie należy do Twojej domeny w środowisku lokalnym. W Twojej domeny zarządzanej możesz znaleźć obiekty komputera tylko w przypadku komputerów, na których możesz mieć jawnie przyłączone do domeny zarządzanej.
+* **Atrybuty elementu SidHistory dla użytkowników i grup:** Podstawowy użytkownik i grupa podstawowa identyfikatory SID z Twojej domeny w środowisku lokalnym są synchronizowane z domeną zarządzaną. Jednak istniejące atrybuty historii SID dla użytkowników i grup nie są synchronizowane z lokalnej domeny do domeny zarządzanej.
+* **Struktury jednostki Organizacyjnej organizacji:** Jednostek organizacyjnych zdefiniowanych w domenie lokalnej nie są synchronizowane z domeną zarządzaną. Istnieją dwie wbudowane jednostek organizacyjnych w domenie zarządzanej. Domyślnie Twoja domena zarządzana ma płaskiej struktury jednostek organizacyjnych. Można jednak wybrać [Tworzenie niestandardowej jednostki Organizacyjnej w domenie zarządzanej](active-directory-ds-admin-guide-create-ou.md).
 
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>W jaki sposób określone atrybuty są synchronizowane z domeną zarządzaną
 Poniższej tabeli wymieniono niektóre typowe atrybuty i w tym artykule opisano, jak są one zsynchronizowane z domeną zarządzaną.
 
 | Atrybut w Twojej domeny zarządzanej | Element źródłowy | Uwagi |
 |:--- |:--- |:--- |
-| Nazwa UPN |Atrybutu nazwy UPN użytkownika w dzierżawie usługi Azure AD |Atrybutu nazwy UPN z dzierżawą usługi Azure AD są synchronizowane, ponieważ ma domeny zarządzanej. W związku z tym najbardziej niezawodnym sposobem, aby zalogować się do domeny zarządzanej używa nazwy UPN. |
-| Element SAMAccountName |MailNickname użytkownika atrybutu w dzierżawie usługi Azure AD lub wygenerowany automatycznie |Atrybutu SAMAccountName pochodzi z atrybut mailNickname w dzierżawie usługi Azure AD. Jeśli wiele kont użytkowników mają ten sam atrybut mailNickname, SAMAccountName został wygenerowany automatycznie. Jeśli mailNickname lub prefiks nazwy UPN użytkownika jest dłuższa niż 20 znaków, SAMAccountName jest generowane automatycznie do zaspokojenia limit 20 znaków atrybuty SAMAccountName. |
+| Główna nazwa użytkownika (UPN) |Atrybutu nazwy UPN użytkownika w dzierżawie usługi Azure AD |Atrybutu nazwy UPN z dzierżawą usługi Azure AD są synchronizowane, ponieważ ma domeny zarządzanej. W związku z tym najbardziej niezawodnym sposobem, aby zalogować się do domeny zarządzanej używa nazwy UPN. |
+| SAMAccountName |MailNickname użytkownika atrybutu w dzierżawie usługi Azure AD lub wygenerowany automatycznie |Atrybutu SAMAccountName pochodzi z atrybut mailNickname w dzierżawie usługi Azure AD. Jeśli wiele kont użytkowników mają ten sam atrybut mailNickname, SAMAccountName został wygenerowany automatycznie. Jeśli mailNickname lub prefiks nazwy UPN użytkownika jest dłuższa niż 20 znaków, SAMAccountName jest generowane automatycznie do zaspokojenia limit 20 znaków atrybuty SAMAccountName. |
 | Hasła |Hasło użytkownika z dzierżawy usługi Azure AD |Skrótów poświadczeń wymaganych do uwierzytelniania NTLM i Kerberos (nazywane również dodatkowe poświadczenia) są synchronizowane z dzierżawą usługi Azure AD. Jeśli dzierżawa usługi Azure AD jest dzierżawa zsynchronizowana, te poświadczenia pochodzą z domeny lokalnej. |
 | Podstawowy użytkownik/identyfikator SID grupy |Wygenerowany automatycznie |Podstawowy identyfikator SID dla kont użytkownika/grupy jest generowany automatycznie w Twojej domeny zarządzanej. Ten atrybut jest niezgodna z podstawowego użytkownika/grupy SID obiektu w Twojej lokalnej domeny usługi AD. Ta niezgodność jest, ponieważ domena zarządzana ma innej przestrzeni nazw identyfikator SID niż domeny w środowisku lokalnym. |
 | Historia SID dla użytkowników i grup |W środowisku lokalnym użytkownika podstawowego i identyfikatora SID grupy |Atrybut SidHistory dla użytkowników i grup w domenie zarządzanej jest ustawiona do dopasowania odpowiedniego użytkownika podstawowego lub identyfikator SID w domenie lokalnej grupy. Ta funkcja pomaga w ułatwienia lift-and-shift aplikacji lokalnych do domeny zarządzanej, ponieważ nie trzeba do listy ACL re zasobów. |
 
 > [!NOTE]
-> **Zaloguj się do domeny zarządzanej przy użyciu formatu nazwy UPN:** atrybutu SAMAccountName mogą być generowane automatycznie dla niektórych kont użytkowników w Twojej domeny zarządzanej. Jeśli wielu użytkowników ma taki sam atrybut mailNickname lub użytkownicy mają zbyt długich prefiksy nazwy UPN, SAMAccountName dla tych użytkowników może być generowane automatycznie. W związku z tym w formacie SAMAccountName (na przykład "CONTOSO100\joeuser") nie zawsze jest niezawodny sposób, aby zalogować się do domeny. SAMAccountName generowanych automatycznie użytkowników może różnić się od prefiksu ich nazwy UPN. Użyj formatu nazwy UPN (na przykład "joeuser@contoso100.com") do logowania się w domenie zarządzanej niezawodnie.
+> **Zaloguj się do domeny zarządzanej przy użyciu formatu nazwy UPN:** Atrybutu SAMAccountName może być generowane automatycznie dla niektórych kont użytkowników w Twojej domeny zarządzanej. Jeśli wielu użytkowników ma taki sam atrybut mailNickname lub użytkownicy mają zbyt długich prefiksy nazwy UPN, SAMAccountName dla tych użytkowników może być generowane automatycznie. W związku z tym w formacie SAMAccountName (na przykład "CONTOSO100\joeuser") nie zawsze jest niezawodny sposób, aby zalogować się do domeny. SAMAccountName generowanych automatycznie użytkowników może różnić się od prefiksu ich nazwy UPN. Użyj formatu nazwy UPN (na przykład "joeuser@contoso100.com") do logowania się w domenie zarządzanej niezawodnie.
 >
 >
 
@@ -81,17 +81,17 @@ W poniższej tabeli przedstawiono, jak określone atrybuty dla użytkownika obie
 | accountEnabled |kontroli konta użytkownika (ustawia lub czyści ACCOUNT_DISABLED-bitowy) |
 | city |l |
 | Kraj |co |
-| Dział |Dział |
+| department |department |
 | displayName |displayName |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | Stanowisko |tytuł |
 | poczta |poczta |
-| mailNickname |atrybut msDS-AzureADMailNickname |
+| mailNickname |msDS-AzureADMailNickname |
 | mailNickname |Element SAMAccountName (czasami może się wygenerowany automatycznie) |
 | Telefon komórkowy |Telefon komórkowy |
-| Identyfikator obiektu |atrybut msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |historii SID |
+| Identyfikator obiektu |msDS-AzureADObjectId |
+| onPremiseSecurityIdentifier |historii SID |
 | passwordPolicies |kontroli konta użytkownika (ustawia lub czyści DONT_EXPIRE_PASSWORD-bitowy) |
 | physicalDeliveryOfficeName |physicalDeliveryOfficeName |
 | postalCode |postalCode |
@@ -110,9 +110,9 @@ W poniższej tabeli przedstawiono, jak określone atrybuty dla grupy obiektów w
 | displayName |displayName |
 | displayName |Element SAMAccountName (czasami może się wygenerowany automatycznie) |
 | poczta |poczta |
-| mailNickname |atrybut msDS-AzureADMailNickname |
-| Identyfikator obiektu |atrybut msDS-AzureADObjectId |
-| OnPremiseSecurityIdentifier |historii SID |
+| mailNickname |msDS-AzureADMailNickname |
+| Identyfikator obiektu |msDS-AzureADObjectId |
+| onPremiseSecurityIdentifier |historii SID |
 | securityEnabled |groupType |
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Zagadnienia synchronizacji i zabezpieczeń wyznaczania wartości skrótu hasła

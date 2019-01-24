@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: b0bbd3300e48e82e44a7b7fac05f89c8d25e007f
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 8ab5000f1f50e10195c02b6198fa0bcffd0408b5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603501"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844768"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Słownik interpretacji języka wspólnego słownika i pojęcia
 Language Understanding (LUIS) słownik wyjaśnia, warunki, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
@@ -74,7 +74,7 @@ W kontekście usługi LUIS **domeny** jest obszarem wiedzy. Twoja domena to spec
 
 ## <a name="endpoint"></a>Punkt końcowy
 
-[Punktu końcowego usługi LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[kluczy i punktów końcowych](luis-how-to-manage-keys.md)** strony aplikacji, lub można uzyskać adresu URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
+[Punktu końcowego usługi LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[kluczy i punktów końcowych](luis-how-to-azure-subscription.md)** strony aplikacji, lub można uzyskać adresu URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
 
 Przykładowy punkt końcowy wygląda następująco:
 
@@ -177,7 +177,7 @@ Taki sam jak [klucza programowego](#programmatic-key), których nazwy zostały z
 
 ## <a name="subscription-key"></a>Klucz subskrypcji
 
-Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługi LUIS [tworzenia na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). W przypadku klucza punktu końcowego powinno być używane do wszelkie żądania punktu końcowego, zamiast tworzenia klucza. Możesz zobaczyć swoje bieżącego klucza punktu końcowego wewnątrz adres URL punktu końcowego w dolnej części [ **kluczy i punktów końcowych** strony](luis-how-to-manage-keys.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość z **klucz subskrypcji** pary nazwa/wartość.
+Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługi LUIS [tworzenia na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). W przypadku klucza punktu końcowego powinno być używane do wszelkie żądania punktu końcowego, zamiast tworzenia klucza. Możesz zobaczyć swoje bieżącego klucza punktu końcowego wewnątrz adres URL punktu końcowego w dolnej części [ **kluczy i punktów końcowych** strony](luis-how-to-azure-subscription.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość z **klucz subskrypcji** pary nazwa/wartość.
 
 ## <a name="test"></a>Test
 

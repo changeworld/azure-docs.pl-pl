@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 535c65f58ac9a3f39faa347ca853bfa410b7f182
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61b64b63a53318e0a703678d5525399fe13efa83
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185338"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432766"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Konsola szeregowa maszyny wirtualnej dla Windows
 
@@ -53,6 +53,9 @@ Konsoli szeregowej dla maszyn wirtualnych jest dostępna tylko za pośrednictwem
   1. Przewiń w dół do **pomoc techniczna i rozwiązywanie problemów z** i wybierz pozycję **konsoli szeregowej**. Nowe okienko z konsolą szeregową otwiera się i rozpoczyna połączenie.
 
 ## <a name="enable-serial-console-functionality"></a>Włącz funkcjonalność konsoli szeregowej
+
+> [!NOTE]
+> Jeśli nie widzisz żadnych czynności w konsoli szeregowej, upewnij się, że ten Diagnostyka rozruchu jest włączona na maszynie Wirtualnej.
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Włącz konsoli szeregowej na obrazach niestandardowych lub starszy
 Nowsze obrazy systemu Windows Server na platformie Azure mają [specjalnej konsoli administracyjnej](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) domyślnie włączone (SAC). Konsola SAC jest obsługiwane w wersji Windows server, ale nie jest dostępna w wersji klienta (na przykład systemu Windows 10, Windows 8 lub Windows 7).
@@ -237,6 +240,7 @@ Nie można wpisać w SAC stanie się monit, jeśli włączone jest debugowanie j
 Wklejając w programie PowerShell powoduje SAC trzeciego znaku gdyby oryginalną zawartość powtarzających się znaków. | Obejście tego problemu, uruchom `Remove-Module PSReadLine` wyładować modułu PSReadLine z bieżącej sesji. Ta akcja nie zostanie skasowana czy odinstalowana modułu.
 Niektóre dane wejściowe z klawiatury generuje dziwne SAC dane wyjściowe (na przykład **[A**, **[3 ~**). | [VT100](https://aka.ms/vtsequences) sekwencje ucieczki nie są obsługiwane przez wiersz SAC.
 Wklejanie ciągów długich nie działa. | Konsoli szeregowej ogranicza długość ciągów w terminalu, aby 2048 znaków, aby zapobiec przeciążeniu przepustowość portu szeregowego.
+Konsola szeregowa nie działa z zaporą konta magazynu. | Konsola szeregowa zgodnie z projektem nie może działać z zapór konta usługi storage na konto magazynu diagnostyki rozruchu włączona.
 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania

@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: a09dcfbffb6daa2ae2514c608e88c8dc475c9676
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 3459ef4caa99a2147144354165bef7d2852e87cc
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581440"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54433363"
 ---
 # <a name="alerts-on-activity-log"></a>Alerty dotyczące dzienników aktywności 
 
@@ -65,4 +65,5 @@ Aby dowiedzieć się więcej o grupach akcji, zobacz [tworzenie grup akcji w wit
 - Dowiedz się więcej o [tworzenie i modyfikowanie alertów dziennika aktywności](../../azure-monitor/platform/alerts-activity-log.md).
 - Przegląd [schemat elementów webhook alertu dziennika aktywności](activity-log-alerts-webhook.md).
 - Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](../../azure-monitor/platform/service-notifications.md).
+
 

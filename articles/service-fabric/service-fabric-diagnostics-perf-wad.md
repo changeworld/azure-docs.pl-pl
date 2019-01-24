@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: a6941e28bdfd922a68ff484c57031326a9aa5c0b
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290326"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452636"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorowanie wydajności za pomocą rozszerzenia diagnostyki Azure Windows
 
@@ -43,7 +43,7 @@ Można zebrać liczników wydajności za pomocą funkcji WAD, należy zmodyfikow
     }
     ```
 
-    `scheduledTransferPeriod` Definiuje, jak frquently wartości liczników, które są zbierane są przekazywane do tabeli usługi Azure storage i dowolne skonfigurowane ujścia. 
+    `scheduledTransferPeriod` Definiuje, jak często wartości liczników, które są zbierane są przekazywane do tabeli usługi Azure storage i do dowolnego ujścia skonfigurowany. 
 
 3. Dodaj liczniki wydajności chcesz zbierać do `PerformanceCounterConfiguration` , została zadeklarowana w poprzednim kroku. Wszystkich liczników, które chcesz zbierać jest zdefiniowana za pomocą `counterSpecifier`, `sampleRate`, `unit`, `annotation`, wszelkie odpowiednie `sinks`.
 

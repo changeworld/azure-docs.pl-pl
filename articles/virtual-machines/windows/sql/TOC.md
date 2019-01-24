@@ -11,6 +11,12 @@
 ### [Najlepsze rozwiązania w zakresie wydajności](virtual-machines-windows-sql-performance.md)
 ### [Zagadnienia związane z zabezpieczeniami](virtual-machines-windows-sql-security.md)
 ### [Wzorce aplikacji](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+## Ciągłość działalności biznesowej
+### [Opcje wysokiej dostępności](virtual-machines-windows-sql-high-availability-dr.md) 
+### [Konfigurowanie zawsze włączonej grupy dostępności](virtual-machines-windows-portal-sql-availability-group-overview.md)
+### [Tworzenie kopii zapasowej i przywracanie](virtual-machines-windows-sql-backup-recovery.md)
+### [Zautomatyzowane tworzenie kopii zapasowej programu SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+### [Zautomatyzowane tworzenie kopii zapasowej programu SQL Server 2016+](virtual-machines-windows-sql-automated-backup-v2.md)
 ## Zarządzanie
 ### [Łączenie z maszyną wirtualną](virtual-machines-windows-sql-connect.md)
 ### [Konfigurowanie magazynu](virtual-machines-windows-sql-server-storage-configuration.md)
@@ -18,30 +24,27 @@
 #### [Korzystanie z rozszerzenia agenta IaaS w programie SQL Server](virtual-machines-windows-sql-server-agent-extension.md)
 #### [Automatyczne stosowanie poprawek](virtual-machines-windows-sql-automated-patching.md)
 #### [Konfigurowanie integracji usługi Azure Key Vault](virtual-machines-windows-ps-sql-keyvault.md)
-## Tworzenie kopii zapasowej i przywracanie
-### [Tworzenie kopii zapasowej i przywracanie](virtual-machines-windows-sql-backup-recovery.md)
-### [Zautomatyzowane tworzenie kopii zapasowej programu SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
-### [Zautomatyzowane tworzenie kopii zapasowej programu SQL Server 2016+](virtual-machines-windows-sql-automated-backup-v2.md)
-### [Tworzenie kopii zapasowej i przywracanie za pomocą usługi Azure Storage](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # Przewodniki z instrukcjami
 ## Tworzenie maszyny wirtualnej SQL
 ### [Korzystanie z portalu](virtual-machines-windows-portal-sql-server-provision.md)
 ### [Korzystanie z programu Azure PowerShell](virtual-machines-windows-ps-sql-create.md)
+## [Zmienianie modelu licencjonowania maszyny wirtualnej SQL](virtual-machines-windows-sql-ahb.md)
 ## Migrate (Migracja)
 ### [Migracja bazy danych programu SQL Server](virtual-machines-windows-migrate-sql.md)
 ## Konfigurowanie wysokiej dostępności
-### [Opcje wysokiej dostępności](virtual-machines-windows-sql-high-availability-dr.md) 
-### [Konfigurowanie zawsze włączonej grupy dostępności](virtual-machines-windows-portal-sql-availability-group-overview.md)
-#### [Automatyczne — przy użyciu szablonu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [Ręczne — wymagania wstępne](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [Ręczne — samouczek](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+### [Tworzenie kopii zapasowej i przywracanie za pomocą usługi Azure Storage](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
+### Zawsze włączona grupa dostępności
+#### [Za pomocą szablonu witryny Azure Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Za pomocą szablonów Szybki start](virtual-machines-windows-sql-availability-group-quickstart-template.md)
+#### [Ręcznie — wymagania wstępne](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+#### [Ręcznie — samouczek](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 #### [Moduł równoważenia obciążenia — witryna Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
 #### [Moduł równoważenia obciążenia — program Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
 #### [Wiele regionów](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Wystąpienie klastra trybu failover
 #### [Konfigurowanie](virtual-machines-windows-portal-sql-create-failover-cluster.md)
-## [Zmienianie modelu licencjonowania maszyny wirtualnej SQL](virtual-machines-windows-sql-ahb.md)
+
 
 # Dokumentacja
 ## [Azure PowerShell](/powershell/azure/overview)

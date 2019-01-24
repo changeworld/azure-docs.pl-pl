@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1bd9dd82fb72c3d6b0759139680647be764f273a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0c78974eb9775506f2ccbc6158eb03aa0c73be49
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161557"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431541"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Portal użytkowników serwera usługi Azure Multi-Factor Authentication
 
@@ -88,7 +88,7 @@ Jeśli organizacja używa aplikacji Microsoft Authenticator jako jednej z metod 
 
 Zainstalowanie portalu użytkowników na serwerze innym niż serwer usługi Azure Multi-Factor Authentication wymaga wykonania następujących kroków:
 
-1. **Na serwerze usługi MFA** przejdź do ścieżki instalacji (przykład: C:\Program Files\Multi-Factor Authentication Server), a następnie skopiuj plik **MultiFactorAuthenticationUserPortalSetup64** do lokalizacji dostępnej dla serwera z dostępem do Internetu, na którym zostanie on zainstalowany.
+1. **Na serwerze usługi MFA**, przejdź do ścieżki instalacji (przykład: C:\Program Files\Multi-Factor Authentication Server), a następnie skopiuj plik **MultiFactorAuthenticationUserPortalSetup64** do lokalizacji dostępnej dla serwera dostępnego z Internetu, gdy zostanie ona zainstalowana.
 2. **Na internetowym serwerze dostępnym z Internetu** uruchom plik instalacji MultiFactorAuthenticationUserPortalSetup64 jako administrator, w miarę potrzeb zmieniając miejsce instalacji, a następnie, jeśli chcesz, zmień nazwę katalogu wirtualnego na krótką.
 3. Powiąż certyfikat SSL z witryną w usługach IIS.
 
@@ -138,7 +138,7 @@ Serwer usługi Azure Multi-Factor Authentication zapewnia kilka opcji związanyc
 | Użyj pytań zabezpieczających w przypadku uwierzytelniania rezerwowego | Umożliwia udzielenie odpowiedzi na pytania zabezpieczające w przypadku niepowodzenia weryfikacji dwuetapowej. Można określić liczbę pytań zabezpieczających, na które należy udzielić poprawnej odpowiedzi. |
 | Zezwalaj użytkownikom na skojarzenie tokenu OATH innej firmy | Pozwala użytkownikom na określenie tokenu OATH innej firmy. |
 | Użyj tokenu OATH w przypadku uwierzytelniania rezerwowego | Umożliwia korzystanie z tokenów OATH w przypadku niepowodzenia weryfikacji dwuetapowej. Można również określić limit czasu sesji w minutach. |
-| Włącz rejestrowanie | Włącza funkcję rejestrowania w portalu użytkowników. Pliki dziennika znajdują się w folderze: C:\Program Files\Multi-Factor Authentication Server\Logs. |
+| Włącz rejestrowanie | Włącza funkcję rejestrowania w portalu użytkowników. Pliki dziennika znajdują się w lokalizacji: C:\Program Files\Multi-Factor Authentication Server\Logs. |
 
 Te ustawienia stają się widoczne dla użytkownika w portalu po ich włączeniu oraz po zalogowaniu się do tego portalu.
 

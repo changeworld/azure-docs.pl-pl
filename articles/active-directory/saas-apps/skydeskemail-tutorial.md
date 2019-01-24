@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a9d0bbcb-ddb5-473f-a4aa-028ae88ced1a
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 4dc34a390303ffe5e4bafc6b71d77a19e554374c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 29e1fd9999c70ed4a599cbc65d43402088d876e2
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052193"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54818884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą adresu E-mail SkyDesk
 
@@ -43,9 +43,9 @@ Aby skonfigurować integrację usługi Azure AD przy użyciu adresu E-mail SkyDe
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięcznej wersji próbnej tutaj [oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -115,13 +115,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://mail.skydesk.jp/portal/<companyname>`
 
     > [!NOTE] 
-    > Wartość nie jest prawdziwe. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta poczty E-mail SkyDesk](https://www.skydesk.jp/apps/support/) można uzyskać wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta poczty E-mail SkyDesk](https://www.skydesk.jp/apps/support/) można uzyskać wartość. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_skydeskemail_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/skydeskemail-tutorial/tutorial_general_400.png)
 
@@ -172,7 +172,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d. Kliknij pozycję **uzyskać klucz z pliku** wybierz certyfikat pobrany z witryny Azure portal, a następnie kliknij przycisk **Otwórz** można przekazać certyfikatu.
 
-    e. Jako **algorytm**, wybierz opcję **RSA**.
+    e. Dla ustawienia **Algorithm** (Algorytm) wybierz pozycję **RSA**.
 
     f. Kliknij przycisk **Ok** Aby zapisać zmiany.
 

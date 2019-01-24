@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 5856824ba4aec2998ad38ac73cc5acc0840584cd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: efd645faf3bf85f181b086fea8e55b0ab78be412
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023842"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412856"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie usługi Azure Resource Manager
 
@@ -162,7 +162,7 @@ Wersja interfejsu API, określ w szablonie ma wpływ na właściwości, które m
 
 Użyj tych możliwości w celu uzyskania najnowszej wersji interfejsu API:
 
-- Interfejs API REST — [listy wszystkich dostawców zasobów](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
+- Interfejs API REST — [listy wszystkich dostawców zasobów](https://docs.microsoft.com/rest/api/resources/providers)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
 - Interfejs wiersza polecenia Azure - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 

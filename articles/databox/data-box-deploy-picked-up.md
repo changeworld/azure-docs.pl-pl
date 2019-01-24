@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 42ed9091ff7ab8059ba253f62726b30899d6e697
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b948616aa21d390cedc877b0a09e272815abc82a
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036059"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358562"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box i weryfikowanie przekazania danych na platformę Azure
 
@@ -28,7 +28,7 @@ Ten samouczek zawiera informacje na następujące tematy:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że zostały wykonane wszystkie czynności opisane w samouczku [Kopiowanie danych na urządzenie Data Box i ich weryfikacja](data-box-deploy-copy-data.md).
+Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-deploy-copy-data.md).
 
 ## <a name="ship-data-box-back"></a>Wysyłka zwrotna urządzenia Data Box
 
@@ -37,9 +37,7 @@ Przed rozpoczęciem upewnij się, że zostały wykonane wszystkie czynności opi
 
     Jeśli urządzenie jest wysyłane w Europie, na wyświetlaczu E-ink nie jest wyświetlana etykieta wysyłkowa. Zamiast tego jest dołączona zwrotna etykieta wysyłkowa w przezroczystej kieszeni pod etykietą wysyłkową. Usuń starą etykietę wysyłkową i upewnij się, że etykieta wysyłkowa jest dobrze widoczna.
     
-3. Jeśli zwracasz urządzenie na terenie USA, zamów odbiór paczki przez firmę UPS. Jeśli zwracasz urządzenie w Europie za pośrednictwem firmy DHL, zamów odbiór paczki przez firmę DHL w witrynie internetowej firmy, podając numer listu przewozowego. Przejdź do lokalnej witryny firmy DHL Express i wybierz pozycję **Utwórz przesyłkę zwrotną**. 
-
-    Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.
+3. Jeśli zwracasz urządzenie, zamów odbiór paczki przez firmę UPS. Aby zaplanować odbiór, zadzwoń do lokalnego biura firmy UPS (na bezpłatny numer odpowiedni dla danego kraju) lub dostarcz urządzenie Data Box do najbliższego punktu UPS.
 
 4. Po odebraniu urządzenia Data Box i zeskanowaniu go przez kuriera stan zamówienia w portalu zostanie zmieniony na **Pobrane**. Będzie też wyświetlany identyfikator śledzenia przesyłki.
 

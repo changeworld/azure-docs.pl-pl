@@ -1,45 +1,41 @@
 ---
-Tytuł: Używanie regresji liniowej w usłudze Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Porównanie modele regresji liniowej w programach Excel i usługi Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Porównanie modele regresji liniowej w programach Excel i usługi Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---
-# <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Używanie regresji liniowej w usłudze Azure Machine Learning Studio
-> *Kate Baroni* i *Ben Boatman* są architekci rozwiązań w firmy Microsoft Data Insights centrum doskonałości przedsiębiorstwa. W tym artykule opisano czynności migracja istniejącego zestawu analiz regresji do rozwiązania oparte na chmurze za pomocą usługi Azure Machine Learning. 
-> 
-> 
+# <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio
 
-&nbsp; 
-
-
+> *Kate Baroni* i *Ben Boatman* są architekci rozwiązań w firmy Microsoft Data Insights centrum doskonałości przedsiębiorstwa. W tym artykule opisano czynności migracja istniejącego zestawu analiz regresji do rozwiązania oparte na chmurze za pomocą usługi Azure Machine Learning Studio.
 
 ## <a name="goal"></a>Cel
+
 Nasz projekt do dwóch celów pamiętać: 
 
 1. Korzystaj z analizy predykcyjnej, aby poprawić dokładność naszej organizacji miesięczne projekcje przychodu 
-2. Użyj usługi Azure Machine Learning, aby potwierdzić, optymalizowanie, zwiększenia szybkości pracy i skalowanie naszych wyników. 
+2. Użyj usługi Azure Machine Learning Studio, aby potwierdzić, optymalizowanie, zwiększenia szybkości pracy i skalowanie naszych wyników. 
 
-Podobnie jak wiele firm naszej organizacji przechodzi przez miesięczny przychód, proces prognozowania. Nasz mały zespół analityków biznesowych został nadzorowania przy użyciu usługi Azure Machine Learning do obsługi procesu i zwiększenia dokładności prognozy. Zespół poświęcony kilka miesięcy, zbieranie danych z wielu źródeł i z atrybutów danych za pośrednictwem analizy statystycznej Identyfikowanie kluczowych atrybutów, które dotyczą usług prognozowania sprzedaży. Następnym krokiem było zacząć tworzenie prototypów modele regresji statystycznej na danych w programie Excel. W ciągu kilku tygodni mieliśmy Excel model regresji, który został liderami bieżącej wartości pola i Finanse procesy prognozowania. To stały się wyniki prognozowania linii bazowej. 
+Podobnie jak wiele firm naszej organizacji przechodzi przez miesięczny przychód, proces prognozowania. Nasz mały zespół analityków biznesowych został nadzorowania przy użyciu usługi Azure Machine Learning Studio obsługuje proces i zwiększenia dokładności prognozy. Zespół poświęcony kilka miesięcy, zbieranie danych z wielu źródeł i z atrybutów danych za pośrednictwem analizy statystycznej Identyfikowanie kluczowych atrybutów, które dotyczą usług prognozowania sprzedaży. Następnym krokiem było zacząć tworzenie prototypów modele regresji statystycznej na danych w programie Excel. W ciągu kilku tygodni mieliśmy Excel model regresji, który został liderami bieżącej wartości pola i Finanse procesy prognozowania. To stały się wyniki prognozowania linii bazowej. 
 
-Następnie skorzystaliśmy następnego kroku przenoszenia naszej analizy predykcyjnej za pośrednictwem usługi Azure Machine Learning, aby dowiedzieć się, jak Machine Learning można poprawić predykcyjne wydajności.
+Następnie skorzystaliśmy następnym krokiem do naszej analizy predykcyjnej przeniesieniem Studio, aby dowiedzieć się, jak Studio można poprawić predykcyjne wydajności.
 
 ## <a name="achieving-predictive-performance-parity"></a>Obsługiwanie parzystości predykcyjne wydajności
-Nasz priorytet było osiągnąć parzystość modele regresji uczenia maszynowego i Excel. Celów szkoleniowych i testów danych, biorąc pod uwagę te same dane, a ten sam podział, chcemy osiągnąć parzystości predykcyjne wydajności między programami Excel i usługi Machine Learning. Początkowo firma Microsoft nie powiodło się. Model programu Excel pokonał usługę model usługi Machine Learning. Niepowodzenie było ze względu na brak wiedzę na temat ustawienia bazowego narzędzia w usłudze Machine Learning. Po zakończeniu synchronizacji z zespołem produktu usługi Machine Learning firma Microsoft zdobyte lepszego zrozumienia base ustawienia wymagane dla naszych zestawów danych i osiągnąć równoważności między dwoma modelami. 
+Nasz priorytet było osiągnąć parzystość modele regresji Studio i programu Excel. Celów szkoleniowych i testów danych, biorąc pod uwagę te same dane, a ten sam podział, chcemy osiągnąć parzystości predykcyjne wydajności między programami Excel i Studio. Początkowo firma Microsoft nie powiodło się. Model programu Excel pokonał usługę modelu usługi Studio. Niepowodzenie było ze względu na brak wiedzę na temat ustawienia bazowego narzędzia w programie Studio. Po zakończeniu synchronizacji z zespołem produktu Studio firma Microsoft zdobyte lepszego zrozumienia base ustawienia wymagane dla naszych zestawów danych i osiągnąć równoważności między dwoma modelami. 
 
 ### <a name="create-regression-model-in-excel"></a>Utworzyć model regresji, w programie Excel
 Nasze regresji Excel używane uczenia modelu regresji liniowej standardowego w ToolPak analizy w programie Excel. 
 
-Firma Microsoft obliczona *Mean % bezwzględny błąd* i używać go jako miary wydajności dla modelu. Zajęło 3 miesiące na model pracy, za pomocą programu Excel. Możemy przełączyć ilości nauki do eksperymentu usługi Machine Learning Studio, który ostatecznie korzystne opis wymagań.
+Firma Microsoft obliczona *Mean % bezwzględny błąd* i używać go jako miary wydajności dla modelu. Zajęło 3 miesiące na model pracy, za pomocą programu Excel. Możemy przełączyć ilości nauki do eksperymentu usługi Studio, który ostatecznie korzystne opis wymagań.
 
-### <a name="create-comparable-experiment-in-azure-machine-learning"></a>Tworzenie porównywalne eksperymentu w usłudze Azure Machine Learning
-Firma Microsoft przestrzegane następujące kroki, aby utworzyć nasz eksperyment w usłudze Machine Learning Studio: 
+### <a name="create-comparable-experiment-in-studio"></a>Tworzenie porównywalne eksperymentów w Studio
+Firma Microsoft i te kroki, aby utworzyć naszych eksperymentów w Studio: 
 
-1. Przekazano zestaw danych jako plik csv w usłudze Machine Learning Studio (bardzo mały plik)
+1. Przekazano zestaw danych jako plik csv w programie Studio (bardzo mały plik)
 2. Utworzony nowy eksperyment i używany [Select Columns in Dataset] [ select-columns] modułu, aby wybrać te same funkcje danych używane w programie Excel 
 3. Używane [podziału danych] [ split] modułu (przy użyciu *wyrażenia względne* tryb) podzielić dane na tych samych zestawów danych szkoleniowych, podobnie jak w programie Excel 
 4. Badawcze, mające z [regresji liniowej] [ linear-regression] modułu (tylko opcje domyślne), udokumentowane i porównać wyniki, aby nasz model regresji programu Excel
 
 ### <a name="review-initial-results"></a>Przejrzyj wyniki początkowego
-Na początku modelu programu Excel pokonał wyraźnie usługę modelu usługi Machine Learning Studio: 
+Na początku modelu programu Excel pokonał wyraźnie usługę modelu Studio: 
 
 |  | Excel | Studio |
 | --- |:---:|:---:|
@@ -51,13 +47,13 @@ Na początku modelu programu Excel pokonał wyraźnie usługę modelu usługi Ma
 
 Uruchomiliśmy nasz proces i wyniki przez deweloperów i analityków danych w zespole usługi Machine Learning, one szybko udostępniane niektóre przydatne porady. 
 
-* Kiedy używasz [regresji liniowej] [ linear-regression] modułu w usłudze Machine Learning Studio, znajdują się dwie metody:
+* Kiedy używasz [regresji liniowej] [ linear-regression] modułu w programie Studio znajdują się dwie metody:
   * Spadku gradientu online: Mogą być bardziej odpowiednie dla problemów na dużą skalę
   * Zwykłe najmniejszych kwadratów: Jest to metoda, których większość osób postrzega podczas ich usłyszeć regresji liniowej. W przypadku małych zestawów danych zwykłych najmniejszych kwadratów może być bardziej optymalnym wyborem.
 * Należy wziąć pod uwagę, dostosowywanie parametr L2 uregulowania wagę do zwiększenia wydajności. Ustawiana jest na 0,001 domyślnie, ale dla naszej małej zestawu danych możemy ustawić ją na 0,005 w celu zwiększenia wydajności. 
 
 ### <a name="mystery-solved"></a>Taki rozwiązanie!
-Stosowania zaleceń, możemy osiągnąć ten sam punkt odniesienia wydajności w usłudze Machine Learning Studio jako przy użyciu programu Excel: 
+Stosowania zaleceń, możemy osiągnąć ten sam punkt odniesienia wydajności w programie Studio jako przy użyciu programu Excel: 
 
 |  | Excel | Studio (Initial) | Studio z najmniejszych kwadratów |
 | --- |:---:|:---:|:---:|
@@ -85,7 +81,7 @@ Ponadto współczynniki programu Excel względem również obciążenia funkcji,
 ## <a name="next-steps"></a>Następne kroki
 Chcemy korzystać z usługi sieci web Machine Learning w programie Excel. Nasze analitykom biznesowym zależą od programu Excel i potrzebowaliśmy sposobu wywoływania usługi sieci web Machine Learning z wierszem danych programu Excel i zwraca wartością prognozowaną do programu Excel. 
 
-Chcieliśmy również w celu zoptymalizowania nasz model przy użyciu opcji i algorytmów w usłudze Machine Learning Studio.
+Chcieliśmy również w celu zoptymalizowania nasz model przy użyciu opcji i algorytmy dostępne w programie Studio.
 
 ### <a name="integration-with-excel"></a>Integracja z programem Excel
 Nasze rozwiązanie polegało na operacjonalizować model regresji naszej usługi Machine Learning, tworząc usługi sieci web za pomocą nauczonego modelu. W ciągu kilku minut Usługa sieci web została utworzona, a firma Microsoft może wywołać bezpośrednio z programu Excel w celu zwrócenia wartości przewidywane przychodów. 
@@ -103,7 +99,7 @@ Teraz, mieliśmy punktu odniesienia z nasz model programu Excel, przenieśliśmy
 
 Następnie planujemy uwzględnienie dodatkowych algorytmów, takich jak [Bayesowskie] [ bayesian-linear-regression] lub [wzmocnione drzewa decyzyjne] [ boosted-decision-tree-regression] w naszym doświadczeniu do porównania wydajność. 
 
-Jeśli chcesz poeksperymentować z regresji, dobry zestaw danych, aby spróbować jest regresji wydajności energetycznej przykładowego zestawu danych, która ma wiele atrybutów liczbowych. Zestaw danych jest dostarczany jako część przykładowych zestawów danych w usłudze Machine Learning Studio. Różnorodne szkolenia modułów służy do prognozowania ogrzewania obciążenia lub obciążenia chłodzenie. Wykres poniżej znajduje się porównanie wydajności różnych regresji uczy się przed energię Prognozowanie zestawu danych dla zmiennej docelowej Cooling obciążenia: 
+Jeśli chcesz poeksperymentować z regresji, dobry zestaw danych, aby spróbować jest regresji wydajności energetycznej przykładowego zestawu danych, która ma wiele atrybutów liczbowych. Zestaw danych jest dostarczany jako część przykładowych zestawów danych w programie Studio. Różnorodne szkolenia modułów służy do prognozowania ogrzewania obciążenia lub obciążenia chłodzenie. Wykres poniżej znajduje się porównanie wydajności różnych regresji uczy się przed energię Prognozowanie zestawu danych dla zmiennej docelowej Cooling obciążenia: 
 
 | Modelowanie | Średni bezwzględny błąd | Średnia głównego kwadrat błąd | Względny błąd absolutny | Względna kwadrat błąd | Determinacji |
 | --- | --- | --- | --- | --- | --- |
@@ -113,11 +109,11 @@ Jeśli chcesz poeksperymentować z regresji, dobry zestaw danych, aby spróbowa�
 | Regresja liniowa (zwykłe najmniejszych kwadratów) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
 ## <a name="key-takeaways"></a>Najważniejsze wnioski
-Dowiedzieliśmy się znacznie przez z uruchomionego regresji programu Excel i usługi Azure Machine Learning experiments równolegle. Tworzenie modelu odniesienia w programie Excel i porównanie z modeli za pomocą usługi Machine Learning [regresji liniowej] [ linear-regression] pomogło nam Dowiedz się, usługa Azure Machine Learning i wykryliśmy możliwości poprawy danych wydajność zaznaczenie i modelu. 
+Dowiedzieliśmy się znacznie przez uruchamianie regresji programu Excel i eksperymentów w Studio równolegle. Tworzenie modelu odniesienia w programie Excel i porównanie z modeli za pomocą usługi Machine Learning [regresji liniowej] [ linear-regression] pomogło nam informacje Studio i wykryliśmy możliwości poprawy wybór danych i modelu wydajność. 
 
-Dowiedzieliśmy się także, zaleca się używać [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] aby przyspieszyć prognozowania przyszłych projektów. Stosując wybór funkcji do swoich danych, można utworzyć ulepszone modelu w usłudze Machine Learning o lepszej wydajności ogólnej. 
+Dowiedzieliśmy się także, zaleca się używać [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] aby przyspieszyć prognozowania przyszłych projektów. Stosując wybór funkcji do swoich danych, możesz utworzyć model ulepszone w Studio o lepszej wydajności ogólnej. 
 
-Możliwość przesyłania predykcyjne analizy prognozowania z usługi Machine Learning do programu Excel systemically umożliwia znaczny wzrost w pomyślnie Udostępnianie wyników firm szerokiego grona użytkowników użytkownika. 
+Możliwość przesyłania predykcyjne analizy prognozowania z programu Studio do programu Excel systemically umożliwia znaczny wzrost w pomyślnie Udostępnianie wyników firm szerokiego grona użytkowników użytkownika. 
 
 ## <a name="resources"></a>Zasoby
 Poniżej przedstawiono niektóre zasoby pomagające w pracy z regresji: 

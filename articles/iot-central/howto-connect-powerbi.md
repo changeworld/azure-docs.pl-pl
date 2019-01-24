@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6f8bed8aba43d77cdfad49f4fe62a4c7aa2c5ce3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: a37eb68d135d156c25c58bf91489d5b50ac2c170
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368073"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423124"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Wizualizowanie i analizowanie danych usługi Azure IoT Central na pulpicie nawigacyjnym usługi Power BI
 
@@ -29,7 +29,7 @@ Szablon rozwiązania usługi Azure IoT Central analizy usługi Power BI umożliw
 
 Ten szablon rozwiązania Konfiguruje potok, który przenosi dane na koncie magazynu obiektów Blob platformy Azure z [ciągły Eksport danych](howto-export-data.md). Te dane są przekazywane za pośrednictwem do usługi Azure Functions, Azure Data Factory i Azure SQL Database, przetwarzać i przekształcać dane. Dane wyjściowe można zwizualizować i analizowane w raporcie usługi Power BI, który można pobrać jako plik PBIX. Wszystkie te zasoby są tworzone w ramach subskrypcji platformy Azure, więc można dostosować do własnych potrzeb każdego składnika. Ten szablon rozwiązania jest całkowicie open source, dzięki czemu można dowiedzieć się więcej o architekturze i rozbudowuj rozwiązanie, odwiedzając [repozytorium GitHub](https://aka.ms/iotcentralgithubpowerbisolutiontemplate).
 
-## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Pobierz [szablon rozwiązania usługi Azure IoT Central Analytics](https://aka.ms/iotcentralpowerbisolutiontemplate) z Microsoft AppSource
+## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsbpsolutiontemplatescomnamemicrosoft-iotcontinuousdataexporttemplate-from-microsoft-appsource"></a>Pobierz [szablon rozwiązania usługi Azure IoT Central Analytics](https://bpsolutiontemplates.com/?name=Microsoft-IoTContinuousDataExportTemplate) z Microsoft AppSource.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Konfigurowanie szablonu wymaga następujących elementów:
@@ -52,7 +52,7 @@ Drugi raport bardziej omawia zdarzeń i pokazuje widok historyczny błędów i o
 
 ## <a name="resources"></a>Zasoby
 
-Odwiedź stronę usługi AppSource, aby uzyskać [szablon rozwiązania usługi Azure IoT Central Analytics](https://aka.ms/iotcentralpowerbisolutiontemplate).
+Odwiedź stronę usługi AppSource, aby uzyskać [szablon rozwiązania usługi Azure IoT Central Analytics](https://bpsolutiontemplates.com/?name=Microsoft-IoTContinuousDataExportTemplate).
 
 Odwiedź stronę [repozytorium GitHub](https://aka.ms/iotcentralgithubpowerbisolutiontemplate) Aby dowiedzieć się więcej o architekturze i rozbudowania danego rozwiązania.
 

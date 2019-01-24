@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: dukek
-ms.component: alerts
-ms.openlocfilehash: 2b427669fe692704343d5a3c2096df92cffb8d76
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 38cccf17980f5a6a2cf162cdecdc6aad40d4f38e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583997"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432561"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
@@ -108,3 +108,4 @@ Aby otrzymywać aktualizacje o zmianach na te adresy IP, zaleca się konfigurowa
 * Dowiedz się więcej o [szybkości](../../azure-monitor/platform/alerts-rate-limiting.md) alerty.
 * Pobierz [Przegląd alertów dziennika aktywności](../../azure-monitor/platform/alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.  
 * Dowiedz się, jak [Konfigurowanie alertów po każdym opublikowaniu powiadomienia kondycji usługi](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+

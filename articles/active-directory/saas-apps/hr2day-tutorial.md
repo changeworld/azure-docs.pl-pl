@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z HR2day przez Merces | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą HR2day przez Merces | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i HR2day przez Merces.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 327e6d94cbabd679531935ba330d3096d73f8897
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441619"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821026"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Samouczek: Integracja usługi Azure Active Directory z HR2day przez Merces
+# <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HR2day przez Merces
 
 W tym samouczku dowiesz się, jak zintegrować HR2day przez Merces w usłudze Azure Active Directory (Azure AD).
 
@@ -37,13 +37,13 @@ Aby uzyskać więcej informacji na temat integracji aplikacji SaaS z usługą Az
 
 Aby skonfigurować integrację usługi Azure AD za pomocą HR2day przez Merces, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD.
+- Subskrypcja usługi Azure AD.
 - HR2day przez Merces logowanie jednokrotne włączone subskrypcji.
 
 > [!NOTE]
 > Nie zaleca się testowanie kroki opisane w tym samouczku przy użyciu środowiska produkcyjnego.
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Pobierz [miesięcznej bezpłatnej wersji próbnej usługi Azure AD](https://azure.microsoft.com/pricing/free-trial/) Jeśli nie jeszcze.  
@@ -79,7 +79,7 @@ Aby skonfigurować integrację HR2day przez Merces w usłudze Azure AD, należy 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą HR2day przez Merces, w oparciu o użytkownika testu o nazwie "Britta Simon."
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, który użytkownik odpowiednika w HR2day przez Merces użytkownika w usłudze Azure AD. Innymi słowy należy ustanowić łącze między użytkownika usługi Azure AD i powiązanych użytkowników w HR2day przez Merces.
@@ -88,13 +88,13 @@ HR2day przez Merces, przypisywanie **nazwa_użytkownika** w usłudze Azure AD **
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą HR2day przez Merces, należy wykonać poniższe bloki konstrukcyjne:
 
-1. [Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on): umożliwianie użytkownikom korzystać z tej funkcji.
-1. [Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user): Test usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. [Utwórz HR2day przez użytkownika testowego Merces](#creating-an-hr2day-by-merces-test-user): tworzenie odpowiednikiem Britta Simon w HR2day przez Merces połączonego z usługi Azure AD reprezentacja użytkownika.
-1. [Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user): Włącz Britta Simon, aby korzystać z usługi Azure AD logowania jednokrotnego.
+1. [Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on): Umożliwianie użytkownikom korzystać z tej funkcji.
+1. [Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user): Testowanie usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. [Utwórz HR2day przez użytkownika testowego Merces](#creating-an-hr2day-by-merces-test-user): Utwórz odpowiednikiem Britta Simon w HR2day przez Merces połączonego z usługi Azure AD reprezentacja użytkownika.
+1. [Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user): Włącz Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 1. [Testowanie logowania jednokrotnego](#testing-single-sign-on): Sprawdź, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal, a podczas konfigurowania logowania jednokrotnego w sieci HR2day Merces aplikacji.
 
@@ -117,7 +117,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     b. W **identyfikator** wpisz adres URL przy użyciu następującego wzorca: `https://hr2day.force.com/<companyname>`.
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania i identyfikator. Skontaktuj się z pomocą [HR2day przez zespół pomocy technicznej klienta Merces](mailto:servicedesk@merces.nl) do uzyskania tych wartości. 
  
 
 
@@ -172,11 +172,11 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     >Wspominanie zespołu Merces, że ta integracja wymaga Identyfikatora jednostki można ustawić za pomocą wzorca **https://hr2day.force.com/INSTANCENAME**.
 
     > [!TIP]
-    >Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** kartę. Następnie uzyskać dostęp do dokumentacji embedded za pomocą **konfiguracji** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzone w [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+    >Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z **usługi Active Directory** > **aplikacje dla przedsiębiorstw** zaznacz **logowania jednokrotnego** kartę. Następnie uzyskać dostęp do dokumentacji embedded za pomocą **konfiguracji** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzone w [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -229,11 +229,11 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
     ![Konfigurowanie logowania jednokrotnego](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
 
-1. W menu po lewej stronie wybierz **użytkowników i grup**.
+1. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
     ![Przypisz użytkownika][202] 
 
-1. Wybierz **Dodaj** przycisku. Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
+1. Wybierz przycisk **Add** (Dodaj). Następnie w **Dodaj przydziału** okno dialogowe, wybierz opcję **użytkowników i grup**.
 
     ![Przypisz użytkownika][203]
 
@@ -249,7 +249,7 @@ Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego l
 
 Po wybraniu HR2day przez Merces kafelka w panelu dostępu, automatycznie uzyskać zarejestrowaniu w usłudze usługi HR2day Merces aplikacji.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących sposobu integracji aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

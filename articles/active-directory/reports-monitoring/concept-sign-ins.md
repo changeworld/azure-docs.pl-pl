@@ -4,7 +4,7 @@ description: Wprowadzenie do raportów dotyczących logowań w portalu Azure Act
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e1b1102594e7e4470c08cb0f18068dd368c0fe7a
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245093"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808633"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -44,7 +44,7 @@ Ten temat zawiera omówienie raportów logowania.
 * Ponadto każdy użytkownik (niebędący administratorem) będą mogli ich własnych logowań 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaka licencja usługi Azure AD jest wymagana w celu uzyskania dostępu do informacji dotyczących logowania?
-* Dzierżawca musi mieć licencję usługi Azure AD Premium skojarzonych z nim, aby wyświetlić raport wszystko zależy od aktywności logowania. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Należy pamiętać, że jeśli nie masz żadnych danych działań przed uaktualnieniem, potrwa kilka dni, dane wyświetlane w raportach, po uaktualnieniu do licencji premium.
+* Dzierżawca musi mieć licencję usługi Azure AD Premium skojarzonych z nim, aby wyświetlić raport wszystko zależy od aktywności logowania. Aby uaktualnić swoją wersję usługi Azure Active Directory, zobacz [Wprowadzenie do usługi Azure Active Directory w wersji Premium](../fundamentals/active-directory-get-started-premium.md). Pamiętaj, że jeśli przed uaktualnieniem nie istniały żadne dane działań, po przejściu na licencję premium może minąć kilka dni, zanim te dane pojawią się w raportach.
 
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań
 
@@ -161,7 +161,7 @@ Jeśli potrzebujesz bardziej elastycznych opcji, możesz użyć rozwiązania do 
 
 Jeśli chcesz uruchomić skrypt **systemu Windows 10** maszyny, musisz najpierw wykonać kilka dodatkowych kroków. 
 
-1. Zainstaluj [modułu AzureRM](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0l).
+1. Zainstaluj [modułu AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l).
 2. Zaimportuj moduł, otwierając wiersz polecenia programu PowerShell i uruchamiając polecenie **AzureRM Import-Module**.
 3. Uruchom **Set-ExecutionPolicy unrestricted** i wybierz polecenie **tak na wszystko**. 
 4. Teraz możesz uruchamiać pobranego skryptu programu PowerShell w trybie administratora, aby wygenerować plik CSV.
@@ -203,7 +203,10 @@ Klikając pozycję, można uzyskać więcej szczegółowych informacji na temat 
 - Date
 - Wymagane uwierzytelnianie wieloskładnikowe
 - Stan logowania
- 
+
+> [!NOTE]
+> Adresy IP są przydzielane w taki sposób, że nie ma ostateczne połączenia między adresem IP i gdzie fizycznie znajduje się komputer przy użyciu tego adresu. Mapowanie adresów IP jest skomplikowane faktem, że dostawcy mobilnych i sieci VPN wystawiać adresów IP z centralnej pul, które są często bardzo dalekie od wartości, w którym będzie faktycznie używana na urządzeniu klienckim. Obecnie w raportach usługi Azure AD, konwertowania adresu IP do lokalizacji fizycznej jest najlepszy nakład pracy na podstawie danych śledzenia, dane rejestru, odwrotnej wyszukiwań i inne informacje.
+
 Na stronie **Użytkownicy** znajduje się pełny przegląd wszystkich logowań użytkowników dostępny po kliknięciu pozycji **Logowania** w sekcji **Działanie**.
 
 ![Działania związane z logowaniem](./media/concept-sign-ins/08.png "Działania związane z logowaniem")

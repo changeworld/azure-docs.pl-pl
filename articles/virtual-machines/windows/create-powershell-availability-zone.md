@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 5f76b117b01090864e1bf33e986e8ec96f0bf376
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 23c53982919ad29c639a6441f206abb35ddb7a1b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599938"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430795"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Tworzenie maszyny wirtualnej z systemem Windows w strefie dostępności przy użyciu programu PowerShell
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono szczegółowe informacje dotyczące tworzenia maszy
 
 Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym regionie platformy Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
 
-Upewnij się, że zainstalowano najnowszy moduł Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Upewnij się, że zainstalowano najnowszy moduł Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 

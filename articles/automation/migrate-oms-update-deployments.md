@@ -3,18 +3,18 @@ title: Zmigruj swoje wdrożenia aktualizacji pakietu OMS na platformę Azure
 description: W tym artykule opisano sposób migrowania istniejących wdrożeń aktualizacji pakietu OMS na platformę Azure
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5380372cc1f2928b79b0d20f4dd46e429a93dc5e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c846460d8791c15022b10ecf4517ba01699a64cd
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992258"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439038"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Zmigruj swoje wdrożenia aktualizacji pakietu OMS na platformę Azure
 
@@ -61,7 +61,7 @@ W przypadku maszyny do zaktualizowania wybrać zapisanego wyszukiwania, które s
 | --- | --- |
 |Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| Wybierz **Linux** lub **Windows**.|
-|Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
+|Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
 |Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne. CentOS nie obsługuje to gotowe.|
 |Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. Windows, można wprowadzić w artykule KB bez **KB** prefiks. Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
 |Ustawienia harmonogramu|Wybierz godzinę rozpoczęcia, a następnie wybierz opcję **raz** lub **cyklicznie** cyklu.|| Okno obsługi |Liczba minut dla aktualizacji. Wartość nie może być mniejsza niż 30 minut lub więcej niż 6 godzin. |

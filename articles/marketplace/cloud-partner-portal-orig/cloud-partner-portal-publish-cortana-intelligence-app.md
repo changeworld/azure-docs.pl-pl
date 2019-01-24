@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a6357640ceeb7c5f1bde4eea85aa5265990935f4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dd917136dd777226f421d3ae6315798d36de8dc2
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157160"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452058"
 ---
 # <a name="publish-a-cortana-intelligence-offer-using-the-cloud-partner-portal"></a>Publikowanie oferty pakietu Cortana Intelligence, za pomocą portalu Cloud Partner
 
@@ -31,9 +31,9 @@ Cloud Partner Portal obsługuje opartej na rolach dostęp do portalu, który umo
 
 Można było opublikować ofertę w imieniu wydawcy konta, jedną z osób z \"właściciela\" konieczność roli zobowiązuje się do przestrzegania [warunki użytkowania](https://azure.microsoft.com/support/legal/website-terms-of-use/), [poufności informacji firmy Microsoft](https://www.microsoft.com/privacystatement/default.aspx), i [Umowa dotycząca programu certyfikat platformy Microsoft Azure](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
-## <a name="to-start-creating-a-cortana-inteligence-offer"></a>Aby rozpocząć tworzenie oferty Cortana Inteligence
+## <a name="to-start-creating-a-cortana-intelligence-offer"></a>Aby rozpocząć tworzenie oferty pakietu Cortana Intelligence
 
-Gdy spełniono wszystkie wymagania wstępne, możesz gotowe do rozpoczęcia tworzenia oferty Inteligence Cortany.
+Gdy spełniono wszystkie wymagania wstępne, zostanie gotowe do rozpoczęcia tworzenia oferty usługi pakietu Cortana Intelligence.
 
 1.  Zaloguj się do [portalu cloud partner](http://cloudpartner.azure.com/).
 2.  Na pasku nawigacyjnym po lewej stronie wybierz **+ nowa oferta**.
@@ -179,7 +179,7 @@ Sugerowanego formatu opisu jest mają dzielenia tekstu na sekcje podrzędnych na
 
 - [Optymalizacja magazynu Neal Analytics](https://appsource.microsoft.com/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview)
 - [Plexure handlu detalicznego, personalizacji](https://appsource.microsoft.com/product/web-apps/plexure.c82dc2fc-817b-487e-ae83-1658c1bc8ff2?tab=Overview)
-- [Usług dla obywateli — AvePoint](https://appsource.microsoft.com/product/web-apps/avepoint.7738ac97-fd40-4ed3-aaab-327c3e0fe0b3?tab=Overview)
+- [AvePoint Citizen Services](https://appsource.microsoft.com/product/web-apps/avepoint.7738ac97-fd40-4ed3-aaab-327c3e0fe0b3?tab=Overview)
 
 ### <a name="industries"></a>Branże
 
@@ -206,7 +206,7 @@ Partnerzy można przekazać dwa rodzaje środowisk wersji próbnej w usłudze Ap
         **Przykłady:**
 
         - [Wykonanie handlu detalicznego POP AFS](https://appsource.microsoft.com/product/web-apps/afs.fa9fc926-3bc3-43dd-becd-3ef41b52c10b?tab=Overview)
-        - [Usług dla obywateli AvePoint](https://appsource.microsoft.com/product/web-apps/avepoint.7738ac97-fd40-4ed3-aaab-327c3e0fe0b3?tab=Overview). (Ta aplikacja zapewnia wyselekcjonowanych ze ścieżkami wyczyść wybrany zestaw osób użytkownika.)
+        - [AvePoint Citizen Services](https://appsource.microsoft.com/product/web-apps/avepoint.7738ac97-fd40-4ed3-aaab-327c3e0fe0b3?tab=Overview). (Ta aplikacja zapewnia wyselekcjonowanych ze ścieżkami wyczyść wybrany zestaw osób użytkownika.)
 
      - Wersja testowa
         - Usługi (lub usługi partnera) rozwiązania lub ich część można spakować przy użyciu szablonów usługi Azure Resource Manager, które usługi AppSource, można utworzyć wystąpienie i. Usługa AppSource można zarządzać aplikacji w ramach subskrypcji partnera z czasem konwersja boxing i utrzymywanie gorące i zimne pulę wystąpień itp.

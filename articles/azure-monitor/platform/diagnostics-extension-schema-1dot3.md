@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: b5f1247c43dcbd836c684dbf41bafd0d319e5f7c
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: cd458ba08f12e9553233a1dd3d7caf03acda56c6
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230479"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463511"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostyka 1.3 i nowsze schemat konfiguracji
 > [!NOTE]
@@ -495,7 +495,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników usług IIS:<br /><br /> **containerName** — nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania dzienników usług IIS.|   
 |**FailedRequestLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników dotyczących żądań zakończonych niepowodzeniem do witryny usług IIS lub aplikacji. Należy również włączyć śledzenie opcji w obszarze **systemu. Serwer sieci Web** w **Web.config**.|  
-|**Źródła danych**|Lista katalogów, do monitorowania.|
+|**DataSources**|Lista katalogów, do monitorowania.|
 
 
 
@@ -538,7 +538,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
- *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwEventSourceProviderConfiguration*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
  Umożliwia skonfigurowanie kolekcji zdarzeń generowanych przez [EventSource — klasa](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx).  
 
@@ -550,7 +550,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
- *Drzewo: EtwManifestProviderConfiguration PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - głównego - DiagnosticsConfiguration-*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
@@ -649,10 +649,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Element|Typ|Opis|  
 |-------------|----------|-----------------|  
 |**Application Insights**|ciąg|Używany tylko w przypadku wysyłania danych do usługi Application Insights. Zawiera klucz instrumentacji dla aktywnego konta usługi Application Insights, który ma dostęp do.|  
-|**kanały**|ciąg|Jeden dla każdego dodatkowego filtrowanie strumienia|  
+|**Channels**|ciąg|Jeden dla każdego dodatkowego filtrowanie strumienia|  
 
 ## <a name="channels-element"></a>Element kanałów  
- *Drzewo: Kanały SinksConfig - ujścia - głównego - DiagnosticsConfiguration - PublicConfig - WadCFG-*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
 
  Dodane w wersji 1.5.  
 
@@ -663,7 +663,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Channel**|ciąg|Zobacz opis w innym miejscu na tej stronie.|  
 
 ## <a name="channel-element"></a>Element kanału
- *Drzewo: Kanały SinksConfig - ujścia — główny - DiagnosticsConfiguration - PublicConfig - WadCFG - - kanału*
+ *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
 
  Dodane w wersji 1.5.  
 
@@ -693,3 +693,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
  *Drzewo: Główny - DiagnosticsConfiguration - IsEnabled*
 
  Wartość logiczna. Użyj `true` włączyć diagnostyki lub `false` wyłączenie diagnostyki.
+

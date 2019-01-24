@@ -3,18 +3,18 @@ title: Zmiennych elementów zawartości w usłudze Azure Automation
 description: Zmiennych elementów zawartości są wartościami, które są dostępne dla wszystkich elementów runbook i konfiguracji DSC w usłudze Azure Automation.  W tym artykule opisano szczegóły zmiennych i sposób pracy z nimi w tworzeniu tekstową i graficznego.
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aaf8671ec4bfc4bcf6fecaa357f6ae983eb04499
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: e60c5eee20caafc1c5ad41e3ccf568f4bd944745
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330522"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434431"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Zmiennych elementów zawartości w usłudze Azure Automation
 
@@ -201,3 +201,4 @@ Na poniższej ilustracji przedstawiono przykład działań, aby zaktualizować z
 
 * Aby dowiedzieć się więcej na temat łączenia działań razem w tworzenia elementów graficznych, zobacz [łącza w tworzenie graficzne](automation-graphical-authoring-intro.md#links-and-workflow)
 * Aby rozpocząć pracę z graficznymi elementami Runbook, zobacz artykuł [My first graphical runbook](automation-first-runbook-graphical.md) (Mój pierwszy graficzny element Runbook). 
+

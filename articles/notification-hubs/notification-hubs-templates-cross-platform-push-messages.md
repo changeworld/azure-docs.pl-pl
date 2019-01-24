@@ -1,10 +1,10 @@
 ---
 title: Szablony
-description: W tym temacie wyjaśniono szablonów usługi Azure notification hubs.
+description: W tym temacie wyjaśniono szablonów dla usługi Azure notification hubs.
 services: notification-hubs
 documentationcenter: .net
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
@@ -12,88 +12,101 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 3e587bdf0efc7c5b416183640abb19286a5cff31
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 02473eb5649c7d201b6a54fd57faea997c1a21cc
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776655"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450238"
 ---
 # <a name="templates"></a>Szablony
-## <a name="overview"></a>Przegląd
-Szablony umożliwiają służy do określania dokładnej powiadomienia, które chce otrzymywać aplikacji klienta. Za pomocą szablonów, aplikacji może realizować kilka różnych korzyści, takie jak następujące:
 
-* Niezależne od platformy wewnętrznej bazie danych
-* Spersonalizowanych powiadomień
-* Niezależność od wersji klienta
-* Łatwe lokalizacji
+Szablony pozwalają one aplikacji klienckiej do określenia dokładnego formatu powiadomienia, które chce otrzymać. Za pomocą szablonów, aplikację można weź pod uwagę kilka różne korzyści, w tym następujące czynności:
 
-Ta sekcja zawiera dwa szczegółowe przykłady sposobów użycia szablonów do wysyłania powiadomień niezależny od platformy przeznaczonych dla wszystkich urządzeń na platformach i spersonalizować emisji powiadomienia do poszczególnych urządzeń.
+- Zaplecze niezależne od platformy
+- Spersonalizowanych powiadomień
+- Niezależność od wersji klienta
+- Lokalizacja jest łatwe
 
-## <a name="using-templates-cross-platform"></a>Za pomocą szablonów i platform
-Jest standardowym sposobem wysyłania powiadomień wypychanych do wysłania do każdego powiadomienia, który ma być wysyłane określonych ładunku do usług powiadomień platformy (WNS, APNS). Na przykład aby wysyłać alert do usługi APNS, ładunku jest obiektem Json następującą postać:
+Ta sekcja zawiera dwa przykłady szczegółowy sposób użycia szablonów, można wysyłać powiadomienia niezależne od platformy, przeznaczone dla wszystkich urządzeń na platformach i spersonalizować emisji powiadomień do poszczególnych urządzeń.
 
-    {"aps": {"alert" : "Hello!" }}
+## <a name="using-templates-cross-platform"></a>Za pomocą szablonów dla wielu platform
 
-Aby wysłać wiadomość wyskakujące podobne w aplikacji Sklepu Windows, ładunek XML jest następująca:
+Jest standardowy sposób wysyłania powiadomień wypychanych do wysłania do każdego powiadomienia, który ma być wysyłane określonych ładunku do usług powiadomień platformy (WNS, APNS). Na przykład aby wysłać alert do usługi APNS, ładunek jest obiekt JSON w następującej postaci:
 
-    <toast>
-      <visual>
-        <binding template=\"ToastText01\">
-          <text id=\"1\">Hello!</text>
-        </binding>
-      </visual>
-    </toast>
+```json
+{"aps": {"alert" : "Hello!" }}
+```
 
-Podobne ładunki można tworzyć dla usługi MPNS (Windows Phone) i usługi GCM platform (Android).
+Aby wysłać podobny komunikat wyskakującego powiadomienia w aplikacji Windows Store, ładunek XML jest następująca:
 
-To wymaganie wymusza zaplecza aplikacji do tworzenia różnych ładunków dla każdej platformy i efektywnie sprawia, że wewnętrznej bazy danych odpowiada za część warstwy prezentacji w aplikacji. Niektóre problemy obejmują lokalizacja i układy graficznego (szczególnie w przypadku aplikacji ze Sklepu Windows obejmujących powiadomień dla różnych typów Kafelki).
+```xml
+<toast>
+  <visual>
+    <binding template=\"ToastText01\">
+      <text id=\"1\">Hello!</text>
+    </binding>
+  </visual>
+</toast>
+```
 
-Funkcja szablonu usługi Notification Hubs umożliwia aplikacji klienta, można utworzyć specjalne rejestracji, nazywane rejestracji szablonu, między innymi, oprócz zestawu tagów, szablon. Funkcja szablonu usługi Notification Hubs umożliwia aplikacji klienta skojarzyć urządzenia z szablonów, czy korzystasz z urządzenia (preferowane) lub rejestracji. Podana w poprzednich przykładach ładunku, informacje tylko niezależne od platformy jest rzeczywista komunikat alertu (Witaj!). Szablon jest zestaw instrukcji dla Centrum powiadomień dotyczące formatowania komunikat niezależny od platformy rejestracji, aplikacja określonego klienta. W powyższym przykładzie komunikat niezależny od platformy jest jednej właściwości: **wiadomość = Hello!**.
+Podobne ładunki można utworzyć dla usługi MPNS (Windows Phone) i FCM (Android).
 
-Poniżej przedstawiono proces:
+To wymaganie wymusza zaplecza aplikacji, aby wygenerować różne ładunków dla każdej platformy i skutecznie sprawia, że zaplecze odpowiada za część warstwy prezentacji aplikacji. Niektóre problemy obejmują lokalizacji i układy graficznego (szczególnie w przypadku aplikacji Windows Store, które obejmują powiadomienia dla różnych typów kafelków).
+
+Funkcja szablonów usługi Notification Hubs umożliwia aplikację kliencką na tworzenie specjalnych rejestracji, o nazwie rejestracja szablonu, które obejmują oprócz zestaw znaczników, szablon. Funkcja szablonu usługi Notification Hubs umożliwia aplikacji klienckiej skojarzyć urządzenia przy użyciu szablonów, czy pracujesz za pomocą instalacji (preferowany) lub rejestracji. Biorąc pod uwagę powyższych przykładach ładunek, informacje tylko niezależne od platformy jest rzeczywista komunikat alertu (Hello!). Szablon jest zestaw instrukcji dla Centrum powiadomień na temat do sformatowania komunikatu niezależne od platformy do rejestracji aplikacji określonego klienta. W powyższym przykładzie wiadomość niezależne od platformy jest jedną właściwość: `message = Hello!`.
+
+Poniższej ilustracji przedstawiono proces:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
-Szablon rejestracji aplikacji dla systemu iOS klienta jest następujący:
+Szablon rejestracji aplikacji klienta dla systemu iOS jest następująca:
 
-    {"aps": {"alert": "$(message)"}}
+```json
+{"aps": {"alert": "$(message)"}}
+```
 
-Odpowiedni szablon dla aplikacji ze Sklepu Windows klienta jest:
+Odpowiedni szablon dla aplikacji klienckiej Windows Store jest:
 
-    <toast>
-        <visual>
-            <binding template=\"ToastText01\">
-                <text id=\"1\">$(message)</text>
-            </binding>
-        </visual>
-    </toast>
+```xml
+<toast>
+    <visual>
+        <binding template=\"ToastText01\">
+            <text id=\"1\">$(message)</text>
+        </binding>
+    </visual>
+</toast>
+```
 
-Należy zauważyć, że rzeczywista komunikat zostanie zastąpiony wyrażenia $(komunikat). To wyrażenie powoduje, że Centrum powiadomień przy każdym wysyła komunikat do tej określonej rejestracji, aby utworzyć komunikat, który wykonuje go i przełączników w wartości typowych.
+Należy zauważyć, że komunikat rzeczywiste zostanie zastąpiony wyrażenia $(komunikat). To wyrażenie powoduje, że Centrum powiadomień przy każdym do tej konkretnej rejestracji, do skompilowania komunikatu, występującego go i przełącznikach w typowych wartość jest wysyłana wiadomość.
 
-Podczas pracy z modelem instalacji klucz "Szablony" instalacji przechowuje JSON wielu szablonów. Podczas pracy z modelem rejestracji aplikacji klienckiej, można utworzyć wiele rejestracji aby można było używać wielu szablonów; na przykład szablon komunikaty alertów i szablon do aktualizacji kafelka. Aplikacje klienckie można również mieszać rejestracje natywnego (rejestracje z szablonu) i rejestracji szablonu.
+Pracy z modelem instalacji instalacyjny klucz "templates" zawiera wiele szablonów JSON. Jeśli pracujesz z modelem rejestracji, aplikacja kliencka można utworzyć wiele rejestracji aby można było używać wielu szablonów; na przykład szablon służący do wiadomości o alertach i szablon służący do aktualizacji kafelka. Aplikacje klienckie można także łączyć rejestracje natywnego (rejestracji przy użyciu szablonu) i rejestracja szablonu.
 
-Centrum powiadomień wysyła jedno powiadomienie dla każdego szablonu bez rozważania należą do tej samej aplikacji klienckiej. To zachowanie może służyć do tłumaczenia powiadomienia niezależne od platformy do powiadomień więcej. Na przykład ten sam komunikat niezależny od platformy do Centrum powiadomień można bezproblemowo przeliczane alert wyskakujące i aktualizacji kafelka, bez konieczności wewnętrznej bazy danych należy pamiętać o jego. Niektóre platformy (na przykład iOS) może Zwiń wiele powiadomień do tego samego urządzenia, jeśli są one wysyłane w krótkim czasie.
+Centrum powiadomień wysyła jedno powiadomienie dla każdego szablonu bez uwzględniania należą do tej samej aplikacji klienckiej. To zachowanie może służyć do translacji powiadomienia niezależne od platformy do więcej powiadomień. Na przykład ten sam komunikat niezależne od platformy Centrum powiadomień mogą być bezproblemowo tłumaczone alert wyskakujące i aktualizowanie kafelka, bez konieczności zaplecza informację. Niektóre platformy (na przykład, system iOS) może być Zwiń wiele powiadomień na tym samym urządzeniu, jeśli są one wysyłane w krótkim czasie.
 
-## <a name="using-templates-for-personalization"></a>Za pomocą szablonów na potrzeby personalizacji
-Inną zaletą używania szablonów jest możliwość wykonania na rejestracji personalizacji powiadomień przy użyciu usługi Notification Hubs. Rozważmy na przykład aplikację pogodzie, która wyświetla kafelka z pogodą z określonej lokalizacji. Użytkownik może wybrać między stopni c lub f i prognozy pojedyncze lub pięć dni. Za pomocą szablonów, instalacja aplikacji każdego klienta można zarejestrować do formatu wymaganego (1-dniowego Celsjusz, 1-dniowego f, 5 dni c, 5 dni Stopnie Fahrenheita), i mieć zaplecza Wyślij pojedynczy komunikat, który zawiera wszystkie informacje wymagane do wypełnienia tych szablonów (na przykład pięciodniowego prognozy z stopni c i f).
+## <a name="using-templates-for-personalization"></a>Korzystanie z szablonów na potrzeby personalizacji
 
-Szablon prognozy jeden dzień z c temperatury wygląda następująco:
+Inną zaletą przy użyciu szablonów jest możliwość wykonywania personalizacji na rejestracji powiadomień za pomocą usługi Notification Hubs. Na przykład należy wziąć pod uwagę aplikację pogody, która wyświetla Kafelek z warunków pogodowych w określonej lokalizacji. Użytkownik może wybrać między stopniach Celsjusza lub Fahrenheita i prognozy pojedyncze lub pięć dni. Za pomocą szablonów, poszczególnych instalacji aplikacji klienta można zarejestrować do formatu wymaganego (1-dniowym Celsjusza, 1-dniowym Fahrenheita, 5 dni stopniach Celsjusza, 5 dni Stopnie Fahrenheita), i wysyłać jedną wiadomość, która zawiera wszystkie informacje wymagane do wypełniania tych szablonów wewnętrznej bazy danych (na przykład prognozy przy użyciu stopniach Celsjusza i Fahrenheita pięć dni).
 
-    <tile>
-      <visual>
-        <binding template="TileWideSmallImageAndText04">
-          <image id="1" src="$(day1_image)" alt="alt text"/>
-          <text id="1">Seattle, WA</text>
-          <text id="2">$(day1_tempC)</text>
-        </binding>  
-      </visual>
-    </tile>
+Szablon na potrzeby prognozy jeden dzień w stopniach Celsjusza temperatury jest w następujący sposób:
 
-Komunikat wysłany do Centrum powiadomień zawiera następujące właściwości:
+```xml
+<tile>
+  <visual>
+    <binding template="TileWideSmallImageAndText04">
+      <image id="1" src="$(day1_image)" alt="alt text"/>
+      <text id="1">Seattle, WA</text>
+      <text id="2">$(day1_tempC)</text>
+    </binding>  
+  </visual>
+</tile>
+```
 
+Komunikat wysyłany do Centrum powiadomień zawiera następujące właściwości:
+
+```html
 <table border="1">
 
 <tr><td>day1_image</td><td>day2_image</td><td>day3_image</td><td>day4_image</td><td>day5_image</td></tr>
@@ -102,51 +115,56 @@ Komunikat wysłany do Centrum powiadomień zawiera następujące właściwości:
 
 <tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
 </table><br/>
+```
 
-Za pomocą tego wzorca, wewnętrznej bazy danych tylko wysyła pojedynczą wiadomość bez konieczności przechowywania opcji personalizacji określonych dla użytkowników aplikacji. Poniżej przedstawiono w tym scenariuszu:
+Korzystając z tego wzorca, wewnętrznej bazy danych tylko wysyła pojedynczą wiadomość bez konieczności przechowywania opcji personalizacji określone dla użytkowników aplikacji. Poniższy obraz przedstawia ten scenariusz:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
-## <a name="how-to-register-templates"></a>Jak zarejestrować szablonów
-Aby zarejestrować z szablonów przy użyciu modelu instalacji (preferowane) lub model rejestracji, zobacz [zarządzania rejestracji](notification-hubs-push-notification-registration-management.md).
+## <a name="how-to-register-templates"></a>Jak zarejestrować szablony
+
+Aby zarejestrować się przy użyciu szablonów przy użyciu modelu instalacji (preferowany) lub model rejestrowania, zobacz [Zarządzanie rejestracją](notification-hubs-push-notification-registration-management.md).
 
 ## <a name="template-expression-language"></a>Język wyrażeń
-Szablony są ograniczone do formatowania dokumentu XML lub JSON. Ponadto tylko można umieścić wyrażenia w szczególności miejscach; na przykład atrybutów węzła lub wartości XML ciągu wartości właściwości dla formatu JSON.
 
-W poniższej tabeli przedstawiono dozwolone w szablonach język:
+Szablony są ograniczone do formatowania dokumentu XML lub JSON. Ponadto tylko można umieścić wyrażenia w szczególności miejscach; na przykład węzeł atrybutów lub wartości XML ciągu wartości właściwości dla formatu JSON.
 
-| Wyrażenie | Opis |
-| --- | --- |
-| $(prop) |Odwołanie do właściwości zdarzenia o podanej nazwie. Nazwy właściwości nie jest rozróżniana. To wyrażenie rozpoznaje do właściwości wartości tekstowej lub pusty ciąg, jeśli nie ma właściwości. |
-| $(prop, n) |Jak powyżej ale tekst jest jawnie przycinana n znaków, na przykład $(tytuł, 20) przycina zawartość plików właściwości title 20 znaków. |
-| . (prop, n) |Jak powyżej ale tekst jest sufiksem z wielokropkiem, jak ma zostać przycięta. Całkowity rozmiar ciągu przyciętą i sufiksu nie przekracza n znaków. . (tytuł, 20) z właściwości wejściowej "Jest wiersz tytułu" skutkuje **to jest tytuł...** |
-| %(Prop) |Podobnie jak $(name) z tą różnicą, że dane wyjściowe są zakodowane w formacie identyfikatora URI. |
-| #(prop) |Używane w szablonach JSON (na przykład dla systemów iOS i Android szablonów).<br><br>Ta funkcja działa tak samo jak $(prop) wcześniej określony, z wyjątkiem przypadków, gdy używane w szablonach JSON (na przykład szablony Apple). W tym przypadku, jeśli ta funkcja nie jest ujęta w "{","}" (na przykład "myJsonProperty": "#(nazwa)"), a jej wynikiem jest liczba w formacie Javascript, na przykład regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\. &#91;0-9&#93;+)? ((e&#124;E) (+&#124;—)? &#91;0-9&#93;+)?, a następnie dane wyjściowe JSON jest liczbą.<br><br>Na przykład "badge:"#(nazwa)"staje się"badge": 40 (a nie"40"). |
-| "tekst" lub "text" |Literału. Literały zawiera dowolny tekst ujęty w pojedynczym lub podwójnym cudzysłowie. |
-| Wyr1 + Wyr2 |Operator łączenia Sprzęganie dwóch wyrażeń w jednym ciągu. |
+W poniższej tabeli przedstawiono języka dozwolone w szablonach:
 
-Wyrażenia może być dowolny z poprzednim formularzy.
+| Wyrażenie       | Opis |
+| ---------------- | --- |
+| $(prop)          | Odwołanie do właściwości zdarzenia o podanej nazwie. Nazwy właściwości nie jest rozróżniana wielkość liter. To wyrażenie rozpoznaje do właściwości wartość tekstową lub pusty ciąg, jeśli właściwość nie jest obecny. |
+| $(prop, n)       | Jak powyżej ale tekst jest jawnie przycinana n znaków, na przykład $(tytuł, 20) przycina zawartość właściwości title przy 20 znaków. |
+| . (prop, n)       | Jak powyżej ale tekst jako sufiks z trzema kropkami zgodnie z jego zostanie obcięta. Łączny rozmiar ciągu obciętych i sufiksem nie przekracza n znaków. . (title, 20) za pomocą właściwości wejściowej "Jest wiersz tytułu" powoduje powstanie **to tytuł...** |
+| %(Prop)          | Podobnie jak $(name) z tą różnicą, że dane wyjściowe są zakodowane w formacie identyfikatora URI. |
+| #(prop)          | Używane w szablonach JSON (na przykład dla systemów iOS i Android szablonów).<br><br>Ta funkcja działa tak samo jak $(prop) wcześniej określony, z wyjątkiem w szablonach JSON (na przykład szablony firmy Apple). W tym przypadku, jeśli ta funkcja nie jest ujęta w "{","}" (na przykład "myJsonProperty": "#(nazwa)"), a był oceniany na liczbę w formacie Javascript, na przykład regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;E) (+&#124;—)? &#91;0-9&#93;+)?, a następnie dane wyjściowe JSON jest liczbą.<br><br>Na przykład "wskaźnik:"#(nazwa)"staje się"badge": 40 (i nie 40). |
+| "tekst" lub "text" | Literał. Literały zawierać dowolny tekst, ujęty w pojedynczym lub podwójnym cudzysłowie. |
+| Wyr1 + Wyr2    | Operator łączenia Sprzęganie dwóch wyrażeń w jeden ciąg. |
 
-Korzystając z łączenia, całe wyrażenie musi być ujęty w {}. Na przykład {$(prop) + "-" + $(prop2)}. |
+Wyrażenie może być dowolny z poprzednich formularzy.
 
-Na przykład następujący szablon nie jest prawidłowy szablon XML:
+Korzystając z łączenia, całe wyrażenie musi być ujęty w `{}`. Na przykład `{$(prop) + ‘ - ’ + $(prop2)}`.
 
-    <tile>
-      <visual>
-        <binding $(property)>
-          <text id="1">Seattle, WA</text>
-        </binding>  
-      </visual>
-    </tile>
+Na przykład następujący szablon nie jest prawidłowym szablonem XML:
 
+```xml
+<tile>
+  <visual>
+    <binding $(property)>
+      <text id="1">Seattle, WA</text>
+    </binding>  
+  </visual>
+</tile>
+```
 
-Zgodnie z opisem, korzystając z łączenia, wyrażenia musi być ujęte w nawiasach klamrowych. Na przykład:
+Jak wyjaśniono wcześniej, korzystając z łączenia, wyrażenia muszą być zapakowane w nawiasach klamrowych. Na przykład:
 
-    <tile>
-      <visual>
-        <binding template="ToastText01">
-          <text id="1">{'Hi, ' + $(name)}</text>
-        </binding>  
-      </visual>
-    </tile>
-
+```xml
+<tile>
+  <visual>
+    <binding template="ToastText01">
+      <text id="1">{'Hi, ' + $(name)}</text>
+    </binding>  
+  </visual>
+</tile>
+```

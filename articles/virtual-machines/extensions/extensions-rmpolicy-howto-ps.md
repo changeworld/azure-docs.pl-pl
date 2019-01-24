@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 15a6a7f4753d51118d23d2e3c021010218d2d2d7
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451837"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434993"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Ograniczanie instalacji rozszerzeń na maszynach wirtualnych Windows za pomocą usługi Azure Policy
 
 Jeśli chcesz uniemożliwić używanie lub instalacji niektórych rozszerzeń na maszyn wirtualnych z systemem Windows, można utworzyć zasad platformy Azure przy użyciu programu PowerShell, aby ograniczyć rozszerzenia dla maszyn wirtualnych w grupie zasobów. 
 
-Ten samouczek używa programu Azure PowerShell w usłudze Cloud Shell, które są stale aktualizowane do najnowszej wersji. Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 3.6 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+Ten samouczek używa programu Azure PowerShell w usłudze Cloud Shell, które są stale aktualizowane do najnowszej wersji. Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 3.6 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
 
 ## <a name="create-a-rules-file"></a>Utwórz plik reguł
 
@@ -139,7 +139,7 @@ $assignment
 
 ## <a name="test-the-policy"></a>Testowanie zasad
 
-Aby sprawdzić zasady, spróbuj użyć rozszerzenia VM Access. Następujące powinna zakończyć się niepowodzeniem z komunikatem "AzureRmVMAccessExtension zestawu:"myVMAccess"zasobu zostało zabronione przez zasady."
+Aby sprawdzić zasady, spróbuj użyć rozszerzenia VM Access. Następujące powinna zakończyć się niepowodzeniem z komunikatem "AzureRmVMAccessExtension zestawu: Zasób "myVMAccess" zostało zabronione przez zasady."
 
 ```azurepowershell-interactive
 Set-AzureRmVMAccessExtension `

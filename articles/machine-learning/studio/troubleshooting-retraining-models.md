@@ -1,5 +1,5 @@
 ---
-Tytuł: Rozwiązywanie problemów z ponownego trenowania titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zidentyfikować i rozwiązać typowe problemy z napotkano w przypadku, gdy są ponowne trenowanie modeli usługi sieci web Azure Machine Learning Studio.
+Tytuł: Rozwiązywanie problemów z ponownego trenowania titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zidentyfikować i rozwiązać typowe problemy występujące podczas są ponowne trenowanie modeli usługi sieci web Azure Machine Learning Studio.
 usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 11/01/2017
@@ -31,7 +31,7 @@ Wszystkie elementy w miejscu główne kroki, które należy wykonać, aby ponown
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Sprawdź, czy masz poprawny adres URL poprawki
 Stosowanie poprawek do adresu URL używanego musi być skojarzony z nowego oceniania punktu końcowego, dodane do usługi internetowej przyznawania ocen. Istnieje wiele sposobów, aby uzyskać adres URL poprawki:
 
-**Opcja 1: Programowo**
+**Opcja 1: Programmatically**
 
 Aby uzyskać poprawny adres URL poprawki:
 

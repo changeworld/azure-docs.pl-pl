@@ -3,21 +3,21 @@ title: Zaloguj się przy użyciu protokołu OpenID Connect w usłudze Azure Acti
 description: Tworzenie aplikacji sieci web za pomocą usługi Azure Active Directory implementacji protokołu uwierzytelniania OpenID Connect.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 41f6027378e48b525345e29e1d1e08dd2c48aaa5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f844cc0b798c035e31b45ef00370f95b1ec06d43
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843754"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846034"
 ---
-# <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Usługa Azure Active Directory B2C: Web zaloguj się przy użyciu protokołu OpenID Connect
+# <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Logowanie w sieci Web za pomocą protokołu OpenID Connect
 OpenID Connect to protokół uwierzytelniania, korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników do aplikacji sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) wdrażania protokołu OpenID Connect, można zlecają obsługę tworzenia nowych kont i logowania oraz skuteczniejszego innych zarządzania tożsamościami w aplikacjach sieci web w usłudze Azure Active Directory (Azure AD). Ten przewodnik pokazuje, jak to zrobić w sposób niezależny od języka. Przedstawiono sposób wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek skorzystać z bibliotek typu open source.
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu. Dzięki temu można wykonać logowanie jednokrotne przy użyciu protokołu OAuth. Wprowadza pojęcia *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika i uzyskania podstawowych informacji o profilu użytkownika.
@@ -101,7 +101,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 | Parametr | Opis |
 | --- | --- |
 | id_token |Identyfikator tokenu, który zażądał aplikacji. Identyfikator tokenu można użyć do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. Szczegółowe informacje na temat tokeny Identyfikatora i ich zawartość są objęte [odwołania do tokenu usługi Azure AD B2C](active-directory-b2c-reference-tokens.md). |
-| Kod |Kod autoryzacji, który zażądał aplikacji, jeśli użyto `response_type=code+id_token`. Aplikacja może używać kodu autoryzacji do wysłania żądania tokenu dostępu dla zasobu docelowego. Kody autoryzacji są bardzo krótkotrwałe. Zazwyczaj wygasają po upływie około 10 minut. |
+| kod |Kod autoryzacji, który zażądał aplikacji, jeśli użyto `response_type=code+id_token`. Aplikacja może używać kodu autoryzacji do wysłania żądania tokenu dostępu dla zasobu docelowego. Kody autoryzacji są bardzo krótkotrwałe. Zazwyczaj wygasają po upływie około 10 minut. |
 | state |Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikacja powinna upewnij się, że `state` wartości żądania i odpowiedzi są identyczne. |
 
 Odpowiedzi na błędy mogą również zostać wysłane do `redirect_uri` parametru, aby mógł być je obsłużyć odpowiednio w aplikacji:
@@ -173,7 +173,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | client_id |Wymagane |Identyfikator aplikacji [witryny Azure portal](https://portal.azure.com/) przypisany do aplikacji. |
 | grant_type |Wymagane |Typ przydział, który musi być `authorization_code` dla przepływ kodu autoryzacji. |
 | scope |Zalecane |Rozdzielonej spacjami listy zakresów. Wartość pojedynczy zakres wskazuje do usługi Azure AD, zarówno uprawnienia, które są żądane. `openid` Zakresu wskazuje uprawnienia, aby zalogować użytkownika i pobieranie danych o użytkowniku w formie id_token parametrów. Może służyć do uzyskania tokenów do własnych aplikacji zaplecza interfejsu API sieci web, który jest reprezentowany przez ten sam identyfikator aplikacji, co klient. `offline_access` Zakresu wskazuje, że potrzebuje aplikacja token odświeżania długotrwałe dostępu do zasobów. |
-| Kod |Wymagane |Kod autoryzacji uzyskanego w pierwszej gałęzi przepływu. |
+| kod |Wymagane |Kod autoryzacji uzyskanego w pierwszej gałęzi przepływu. |
 | redirect_uri |Wymagane |`redirect_uri` Parametr aplikacji, na którym odebrano kod autoryzacji. |
 | client_secret |Wymagane |Klucz tajny aplikacji, który został wygenerowany w [witryny Azure portal](https://portal.azure.com/). Wpis tajny aplikacji jest ważny artefakt. Przechowuj je bezpiecznie na serwerze. Należy również obrócić ten klucz tajny klienta w regularnych odstępach czasu. |
 

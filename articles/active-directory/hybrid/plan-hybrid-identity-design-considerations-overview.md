@@ -4,7 +4,7 @@ description: Omówienie i zawartości mapy Przewodnik po zagadnieniach dotycząc
 documentationcenter: ''
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 100509c4-0b83-4207-90c8-549ba8372cf7
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d85157c3f1aafd33a2b996168f2f9eac613a209c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d0930de0ac3272d2858e961ec2038093dcc9ccc9
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344886"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463018"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Zagadnienia dotyczące projektowania tożsamości hybrydowej usługi Azure Active Directory
 Urządzenia z systemem odbiorcy są proliferating świecie korporacyjnym, a oprogramowanie jako usługa (SaaS) aplikacji działających w chmurze są łatwe do przyjęcia. W rezultacie zachowaniu kontroli nad użytkownikom aplikacji wewnętrznych platformach centrów danych i chmury może być trudne.  
@@ -49,7 +49,7 @@ Ilustracja powyżej jest przykładem rozwiązania tożsamości hybrydowej, któr
 
 Ten przewodnik zawiera serię kroków i zadań, które można wykonać w celu projektowania rozwiązania tożsamości hybrydowej, który spełnia unikatowe wymagania danej organizacji. W następujących kroków i zadań przewodnik przedstawia informacje o odpowiednich technologiach i opcjach funkcji dostępnych możesz zapewnić wymaganą funkcjonalność i dotyczące poziomu jakości usługi dla swojej organizacji.
 
-**Założenia**: użytkownik ma pewne doświadczenie z systemu Windows Server, Active Directory Domain Services i Azure Active Directory. W tym dokumencie zakłada się, że szukasz jak te rozwiązania mogą spełniać Twoje potrzeby biznesowe samodzielnie lub w rozwiązaniu zintegrowanym.
+**Założenia**: Użytkownik ma pewne doświadczenie z systemu Windows Server, Active Directory Domain Services i Azure Active Directory. W tym dokumencie zakłada się, że szukasz jak te rozwiązania mogą spełniać Twoje potrzeby biznesowe samodzielnie lub w rozwiązaniu zintegrowanym.
 
 ## <a name="design-considerations-overview"></a>Omówienie zagadnień dotyczących projektowania
 Ten dokument zawiera zestaw kroków i zadań, które można wykonać w celu projektowania rozwiązania tożsamości hybrydowej, która najlepiej spełnia Twoje wymagania. Kroki są prezentowane w uporządkowanej kolejności. Zagadnienia dotyczące projektowania, których można dowiedzieć się w dalszych krokach, mogą wymagać konieczność zmiany decyzji podjętych we wcześniejszych krokach, jednak z powodu sprzecznych decyzji projektowych. Zostanie podjęta próba każdy alert potencjalnymi konfliktami projektowymi dokumentu. 

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 01/17/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 7a744520fe2a3b53b1306d4c80a5eca7d86258a7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: eed3cbbcdc02d0d2faa5f9076bd6fc2dd4328bd8
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104543"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391066"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu programu PowerShell jako operator
 
@@ -29,7 +29,7 @@ Można skonfigurować usługi Azure Stack przy użyciu programu PowerShell do za
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Uruchom następujące wymagania wstępne, albo z [deweloperski](./asdk/asdk-connect.md#connect-with-rdp) lub z systemem Windows klient zewnętrznych przypadku [połączone ASDK za pośrednictwem sieci VPN](./asdk/asdk-connect.md#connect-with-vpn). 
+Uruchom następujące wymagania wstępne, albo z [deweloperski](./asdk/asdk-connect.md#connect-with-rdp) lub z systemem Windows klient zewnętrznej w przypadku [połączone ASDK za pośrednictwem sieci VPN](./asdk/asdk-connect.md#connect-with-vpn). 
 
  - Zainstaluj [modułów programu Azure PowerShell dla usługi Azure Stack zgodnego](azure-stack-powershell-install.md).  
  - Pobierz [narzędzia wymagane do pracy z usługą Azure Stack](azure-stack-powershell-download.md).  
@@ -67,15 +67,13 @@ Podłącz do środowiska operatora usługi Azure Stack przy użyciu programu Pow
 
   # Sign in to your environment
 
-  $cred = get-credential
-
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackAdmin" `
-    -TenantId $tenantId `
-    -Credential $cred
+    -TenantId $tenantId
   ```
 
-
+> [!Note]  
+> Usługi AD FS obsługuje tylko uwierzytelnianie interakcyjne przy użyciu tożsamości użytkowników. Jeśli wymagany jest obiekt poświadczeń należy użyć nazwy głównej usługi (SPN). Aby uzyskać więcej informacji na temat konfigurowania jednostki usługi przy użyciu usługi Azure Stack i usług AS FS co usługa zarządzania tożsamościami, zobacz [nazwy głównej usługi zarządzania dla usług AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 ## <a name="test-the-connectivity"></a>Testowanie łączności
 

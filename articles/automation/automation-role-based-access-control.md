@@ -4,18 +4,18 @@ description: Funkcja kontroli dostępu opartej na rolach (role-based access cont
 keywords: automation rbac, kontrola dostępu oparta na rolach, azure rbac
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727906"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54424323"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Kontrola dostępu oparta na rolach w usłudze Azure Automation
 
@@ -135,7 +135,7 @@ Współautor usługi Log Analytics może odczytywać wszystkie dane monitorowani
 
 |**Akcje**  |**Opis**  |
 |---------|---------|
-|* / Odczyt|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
+|*/read|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
 |Microsoft.Automation/automationAccounts/*|Zarządzanie kontami usługi automation.|
 |Microsoft.ClassicCompute/virtualMachines/extensions/*|Tworzenie i zarządzanie nimi rozszerzenia maszyny wirtualnej.|
 |Microsoft.ClassicStorage/storageAccounts/listKeys/action|Wyświetl klucze konta magazynu klasycznego.|
@@ -155,7 +155,7 @@ Czytelnik usługi Log Analytics można wyświetlać i wyszukiwać wszystkie dane
 
 |**Akcje**  |**Opis**  |
 |---------|---------|
-|* / Odczyt|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
+|*/read|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
 |Microsoft.OperationalInsights/workspaces/analytics/query/action|Zarządzanie zapytaniami w usłudze Log Analytics.|
 |Microsoft.OperationalInsights/workspaces/search/action|Wyszukiwanie danych usługi Log Analytics.|
 |Microsoft.Support/*|Tworzenie i zarządzanie biletami pomocy technicznej.|
@@ -168,7 +168,7 @@ Współautor monitorowania może odczytywać wszystkie dane monitorowania i aktu
 
 |**Akcje**  |**Opis**  |
 |---------|---------|
-|* / Odczyt|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
+|*/read|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
 |Microsoft.AlertsManagement/alerts/*|Zarządzanie alertami.|
 |Microsoft.AlertsManagement/alertsSummary/*|Zarządzaj alertu pulpitu nawigacyjnego.|
 |Microsoft.Insights/AlertRules/*|Zarządzaj regułami alertów.|
@@ -194,7 +194,7 @@ Czytelnik monitorowania może czytać wszystkie dane monitorowania. W poniższej
 
 |**Akcje**  |**Opis**  |
 |---------|---------|
-|* / Odczyt|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
+|*/read|Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych.|
 |Microsoft.OperationalInsights/workspaces/search/action|Przeszukaj obszary robocze usługi Log Analytics.|
 |Microsoft.Support/*|Tworzenie i zarządzanie biletami pomocy technicznej|
 
@@ -204,7 +204,7 @@ Administrator dostępu użytkowników można zarządzać dostępem użytkownikó
 
 |**Akcje**  |**Opis**  |
 |---------|---------|
-|* / Odczyt|Odczyt wszystkich zasobów|
+|*/read|Odczyt wszystkich zasobów|
 |Microsoft.Authorization/*|Zarządzanie autoryzacji|
 |Microsoft.Support/*|Tworzenie i zarządzanie biletami pomocy technicznej|
 
@@ -334,7 +334,7 @@ AssignableScopes : {/}
 ```
 
 [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) Wyświetla przypisania ról RBAC usługi Azure AD w podanym zakresie. Bez żadnych parametrów to polecenie zwraca wszystkie przypisania ról dokonane w ramach subskrypcji. Parametr **ExpandPrincipalGroups** powoduje wyświetlenie listy przypisań dla określonego użytkownika oraz grup, których członkiem jest użytkownik.
-    **Przykład:** użyj poniższego polecenia, aby wyświetlić listę wszystkich użytkowników i ich ról w ramach konta usługi Automation.
+    **Przykład:** Użyj następującego polecenia, aby wyświetlić listę wszystkich użytkowników i ich ról w ramach konta usługi automation.
 
 ```azurepowershell-interactive
 Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
@@ -428,3 +428,4 @@ Gdy użytkownik, który jest przypisany do roli operatora usługi Automation na 
 * Więcej informacji dotyczących różnych sposobów konfigurowania funkcji RBAC w usłudze Azure Automation można znaleźć w artykule [Manage RBAC with Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) (Zarządzanie funkcją RBAC przy użyciu programu Azure PowerShell).
 * Szczegółowe informacje dotyczące różnych sposobów uruchamiania elementu Runbook można znaleźć w artykule [Uruchamianie elementu Runbook](automation-starting-a-runbook.md).
 * Informacje dotyczące różnych typów elementów Runbook można znaleźć w artykule [Azure Automation runbook types](automation-runbook-types.md) (Typy elementów Runbook w usłudze Azure Automation)
+

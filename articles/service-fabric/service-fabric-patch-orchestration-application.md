@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 58e853a3e9df0c3ba78b41f0c62e37bbcc3cdb5a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754037"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427937"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -141,7 +141,10 @@ Aktualizacje automatyczne Windows może prowadzić do utraty dostępności, poni
 
 Aplikacja, która skrypty instalacyjne, które można pobrać z [łącze archiwum](https://go.microsoft.com/fwlink/?linkid=869566).
 
-Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA_v1.2.2.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
+Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
+
+> [!IMPORTANT]
+> V1.3.0 (Najnowsza wersja) Patch Orchestration Application występuje znany problem, w systemie Windows Server 2012. Jeśli korzystasz z systemu Windows Server 2012, Pobierz v1.2.2 aplikacji [tutaj](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip). Łącze SFPkg [tutaj](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg).
 
 ## <a name="configure-the-app"></a>Konfigurowanie aplikacji
 
@@ -150,14 +153,14 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 |**Parametr**        |**Typ**                          | **Szczegóły**|
 |:-|-|-|
 |MaxResultsToCache    |Długie                              | Maksymalna liczba wyników aktualizacji Windows, które mają być buforowane. <br>Wartość domyślna to 3000 zakładając, że: <br> -Liczba węzłów to 20. <br> -Liczba aktualizacje wykonywane w węźle na miesiąc wynosi pięć. <br> -Liczba wyników na operację może być 10. <br> — Powinny być przechowywane wyniki ostatnie trzy miesiące. |
-|TaskApprovalPolicy   |Wyliczenia <br> {NodeWise, UpgradeDomainWise}                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
+|TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | ciąg<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślne: Wartość to true)                 | Ta flaga umożliwia instalację aktualizacji systemu operacyjnego Windows.            |
+| InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślna: true)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
 | WUOperationTimeOutInMinutes | Int <br>(Domyślnie: 90)                   | Określa limit czasu dla wszelkich operacji Windows Update (wyszukiwania lub pobierania lub instalacji). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |
 | WURescheduleCount     | Int <br> (Domyślnie: 5)                  | Maksymalna liczba przypadków, w usłudze zmieni ustalony Windows aktualizacji w przypadku, gdy operacja stale kończy się niepowodzeniem.          |
 | WURescheduleTimeInMinutes | Int <br>(Domyślnie: 30) | Interwał, w którym usługa zmieni ustalony aktualizacji Windows w przypadku, gdy błąd będzie nadal występować. |
-| WUFrequency           | Ciąg rozdzielony przecinkami (domyślne: "Co tydzień, Środa, 7:00:00")     | Częstotliwość instalowania aktualizacji Windows. Format i możliwe wartości to: <br>—: Mm: ss co miesiąc, DD, na przykład co miesiąc, 5, 12: 22:32. <br> -Co tydzień, dzień, ss, na przykład co tydzień, Wtorek, 12:22:32.  <br> -Codziennie: mm: ss, na przykład codziennie, 12:22:32.  <br> -Brak wskazuje nie powinny odbywać Windows Update.  <br><br> Należy pamiętać, że godziny są w formacie UTC.|
+| WUFrequency           | Ciąg rozdzielony przecinkami (domyślne: "Co tydzień, Środa, 7:00:00")     | Częstotliwość instalowania aktualizacji Windows. Format i możliwe wartości to: <br>—: Mm: ss co miesiąc, DD, na przykład co miesiąc, 5, 12: 22:32.<br>Dopuszczalne wartości dla pola DD (dzień) są liczby z zakresu od zakresu 1-28 i "last". <br> -Co tydzień, dzień, ss, na przykład co tydzień, Wtorek, 12:22:32.  <br> -Codziennie: mm: ss, na przykład codziennie, 12:22:32.  <br> -Brak wskazuje nie powinny odbywać Windows Update.  <br><br> Należy pamiętać, że godziny są w formacie UTC.|
 | AcceptWindowsUpdateEula | Wartość logiczna <br>(Domyślnie: true) | Przez ustawienie tej flagi, aplikacja przyjmuje umowy licencji użytkownika końcowego for Windows Update w imieniu właściciela maszyny.              |
 
 > [!TIP]
@@ -229,7 +232,7 @@ Pole | Wartości | Szczegóły
 -- | -- | --
 OperationResult | 0 — Powodzenie<br> 1 — zakończyło się pomyślnie z błędami<br> 2 — nie powiodło się<br> 3 — zostało przerwane<br> 4 — zostało przerwane z przekroczeniem limitu czasu | Wskazuje wynik ogólny operacji (zazwyczaj instalacji co najmniej jednej aktualizacji).
 ResultCode | Takie same jak klasy OperationResult | To pole wskazuje wynik operacji instalacji dla indywidualnej aktualizacji.
-Typ operacji | 1 — Instalacja<br> 0 - wyszukiwanie i pobieranie.| Instalacja jest tylko typ operacji, która będzie wyświetlana w wynikach domyślnie.
+OperationType | 1 — Instalacja<br> 0 - wyszukiwanie i pobieranie.| Instalacja jest tylko typ operacji, która będzie wyświetlana w wynikach domyślnie.
 WindowsUpdateQuery | Wartość domyślna to "IsInstalled = 0" |Windows zaktualizuj zapytanie, które zostało użyte do wyszukiwania aktualizacji. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
 RebootRequired | wartość true — ponowny rozruch nie jest wymagana<br> FALSE — ponowny rozruch nie jest wymagane | Wskazuje, jeśli ponowne uruchomienie komputera nie jest wymagana do ukończenia instalacji aktualizacji.
 
@@ -397,8 +400,14 @@ Administrator musi interweniować i ustalić, dlaczego aplikacji lub klastra sta
 
 - Naprawienie usterki w dół klastra w przepływie pracy. Wprowadzono logikę kolekcji wyrzucania elementów POA naprawy zadania należące do nieistniejącej węzłów.
 
-### <a name="version-122-latest"></a>Wersja 1.2.2 (Najnowsza wersja)
+### <a name="version-122"></a>Wersja 1.2.2
 
 - Różne poprawki.
 - Pliki binarne są teraz podpisane.
-- link pobierania sfpkg wskazuje teraz do określonej wersji.
+- Dodano łącze sfpkg dla aplikacji.
+
+### <a name="version-130"></a>Wersja 1.3.0
+
+- Ustawienie wartości false InstallWindowsOSOnlyUpdates teraz instaluje wszystkie dostępne aktualizacje.
+- Zmienić logiki wyłączanie automatycznych aktualizacji. Naprawia błąd, gdy aktualizacje automatyczne nie wprowadzenie wyłączono systemie Server 2016 lub nowszym.
+- Ograniczenie sparametryzowane umieszczania mikrousług POA dla usecases zaawansowane.

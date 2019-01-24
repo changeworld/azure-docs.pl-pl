@@ -4,7 +4,7 @@ description: Dowiedz się, jak zarządzanie aprowizacją konta użytkownika dla 
 services: active-directory
 documentationcenter: ''
 author: barbkess
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/13/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 13ce1a7c9008a7893892e5d7e6b67a243c381c9f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4bdec7c5aa4e6cd29dec870fd7d28d48a40bae57
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622010"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462984"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji dla przedsiębiorstw w witrynie Azure portal
 W tym artykule opisano sposób używania [witryny Azure portal](https://portal.azure.com) Zarządzanie aprowizacją konta użytkownika automatyczne i cofanie aprowizacji dla aplikacji, które go obsługują. Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej konta użytkowników i sposób jej działania, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](user-provisioning.md).

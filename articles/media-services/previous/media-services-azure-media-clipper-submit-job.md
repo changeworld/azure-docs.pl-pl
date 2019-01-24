@@ -1,29 +1,29 @@
 ---
-title: Przesyłanie zadań wycinka funkcji tworzenia wycinków Azure Media | Dokumentacja firmy Microsoft
-description: Kroki do przesyłania zadań wycinka z funkcji tworzenia wycinków Azure Media
+title: Przesyłanie zadań przycinania usługi Azure Media Clipper | Dokumentacja firmy Microsoft
+description: Kroki dotyczące przesyłanie zadań przycinania z usługi Azure Media Clipper
 services: media-services
-keywords: klip subclip; kodowanie; nośnika
+keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788494"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821451"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Przesyłanie zadań wycinka z funkcji tworzenia wycinków multimediów Azure
-Wymaga usługi Azure Media funkcji tworzenia wycinków **submitSubclipCallback** metody, które mają zostać wdrożone dla obsługi przesyłanie zadań wycinka. Ta funkcja jest wykonywania HTTP POST funkcji tworzenia wycinków danych wyjściowych z usługą sieci web. Ta usługa sieci web jest, gdzie można przesłać zadania kodowania. Dane wyjściowe funkcji tworzenia wycinków jest albo Media Encoder Standard kodowania ustawienie wstępne renderowanych zadań lub ładunek interfejsu API REST dla wywołania dynamicznego filtru manifestu. Ten model przekazujący jest niezbędne, ponieważ poświadczenia konta usługi media services nie jest bezpieczna w przeglądarce klienta.
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Przesyłanie zadań przycinania z usługi Azure Media Clipper
+Wymaga usługi Azure Media Clipper **submitSubclipCallback** metodę, aby zaimplementować obsługę przesyłanie zadań przycinania. Ta funkcja jest implementacji metody POST protokołu HTTP Clipper danych wyjściowych do usługi sieci web. Ta usługa sieci web jest, którego można przesłać zadania kodowania. Dane wyjściowe Clipper jest albo usługi Media Encoder Standard kodowania renderowanych zadań wstępne ustawienie lub ładunek filtr manifestów dynamicznych wywołań interfejsu API REST. Ten model przekazywania jest konieczne, ponieważ poświadczenia konta usługi media services nie są bezpieczne w przeglądarce klienta.
 
-Na poniższym diagramie sekwencji przedstawiono przepływ pracy między klient przeglądarki, usługa sieci web, a usługi Azure Media Services: ![Diagram sekwencji funkcji tworzenia wycinków multimediów Azure](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
+Na poniższym diagramie sekwencji przedstawiono przepływ pracy między klient przeglądarki, usługa sieci web i usługi Azure Media Services: ![Diagram sekwencji usługi Azure Media Clipper](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)
 
-Na powyższym diagramie, są cztery jednostek: przeglądarki przez użytkownika końcowego, usługi sieci web, punkt końcowy CDN hosting funkcji tworzenia wycinków zasoby i usługi Azure Media Services. Gdy użytkownik przechodzi do strony sieci web, strony pobiera funkcji tworzenia wycinków JavaScript i CSS zasobów z hostingu punktu końcowego CDN. Użytkownik końcowy konfiguruje wycinka zadania lub Filtr dynamiczny manifestu wywołania z przeglądarki. Gdy użytkownik przesyła wywołanie tworzenia zadania lub filtr, przeglądarka umieszcza ładunku zadania z usługą sieci web, które należy wdrożyć. Ta usługa sieci web ostatecznie przesyła zadanie wycinka lub wywołanie tworzenia filtru usługi Azure Media Services przy użyciu multimediów usług poświadczenia konta.
+Na powyższym diagramie są cztery jednostki: przeglądarki przez użytkownika końcowego, usługi sieci web, punkt końcowy usługi CDN, które hostują Clipper zasoby i usługi Azure Media Services. Gdy użytkownik przechodzi do strony sieci web, strona pobiera Clipper JavaScript i CSS zasoby z hostingu punktu końcowego usługi CDN. Użytkownik końcowy konfiguruje wycinka zadania lub wywołania tworzenia filtr manifestów dynamicznych z przeglądarki. Gdy użytkownik przesyła wywołania tworzenia zadań lub filtr, przeglądarka umieszcza ładunek zadania do usługi sieci web, które należy wdrożyć. Ta usługa sieci web ostatecznie przesyła zadanie wycinka lub wywołania tworzenia filtru usługi Azure Media Services za pomocą usługi media services — poświadczenia konta.
 
-Poniższy przykładowy kod przedstawia przykład **submitSubclipCallback** metody. W przypadku tej metody należy zaimplementować HTTP POST Media Encoder Standard kodowania ustawienia wstępnego. Jeśli WPIS zakończyło się pomyślnie (**wynik**), **Promise** zostanie rozwiązany, w przeciwnym razie jest odrzucane szczegóły błędu.
+Poniższy przykład kodu ilustruje przykład **submitSubclipCallback** metody. Ta metoda służy do implementowania HTTP POST z usługi Media Encoder Standard ustawienie wstępne kodowania. Jeśli WPIS zakończyło się pomyślnie (**wynik**), **Promise** zostanie rozwiązany, w przeciwnym razie zostanie ono odrzucone z szczegóły błędu.
 
 ```javascript
 // Submit Subclip Callback
@@ -31,7 +31,7 @@ Poniższy przykładowy kod przedstawia przykład **submitSubclipCallback** metod
 // Parameter:
 // - subclip: object that represents the subclip (output contract).
 //
-// Returns: a Promise object that, when resolved, retuns true if the operation was accept in the back-end; otherwise, returns false.
+// Returns: a Promise object that, when resolved, returns true if the operation was accept in the back-end; otherwise, returns false.
 var onSubmitSubclip = function (subclip) {
     var promise = new Promise(function (resolve, reject) {
         // TODO: perform the back-end AJAX request to submit the subclip job.
@@ -54,12 +54,12 @@ var subclipper = new subclipper({
     submitSubclipCallback: onSubmitSubclip,
 });
 ```
-Dane wyjściowe przesyłanie zadań jest ustawienie wstępne kodowania Media Encoder Standard renderowanych zadania lub ładunek interfejsu API REST dla manifest filtrów dynamicznych.
+Dane wyjściowe przesłania zadania jest ustawienie wstępne kodowania usługi Media Encoder Standard renderowanych zadania lub interfejsu API REST ładunek filtry manifestów dynamicznych.
 
-## <a name="submitting-encoding-job-to-create-video"></a>Przesyłania zadania kodowania w celu utworzenia wideo
-Można przesłać Media Encoder Standard zadania kodowania w celu utworzenia dokładne ramki klipu wideo. Kodowanie produktu zadania renderowane wideo, nowy pofragmentowany plik MP4.
+## <a name="submitting-encoding-job-to-create-video"></a>Przesyłanie zadania kodowania w celu utworzenia wideo
+Możesz przesłać Media Encoder Standard zadania kodowania, aby utworzyć ramkę dokładne klipu wideo. Kodowanie produktu zadania renderowania filmów wideo, nowy pofragmentowany plik MP4.
 
-Kontrakt danych wyjściowych zadania dla renderowanych wycinka jest obiektem JSON z następującymi właściwościami:
+Kontrakt danych wyjściowych zadania dla renderowanych wycinka jest obiekt JSON z następującymi właściwościami:
 
 ```json
 {
@@ -99,7 +99,7 @@ Kontrakt danych wyjściowych zadania dla renderowanych wycinka jest obiektem JSO
     "type": "job",
 
     /* Required if "type" === "job" */
-    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to sumit the subclip job.
+    /* NOTE: This is the preset for the Media Encoder Standard (MES) processor that can be used in the back-end to submit the subclip job.
     The encoding profile ("Codecs" property) depends on the "singleBitrateMp4Profile" and "multiBitrateMp4Profile" option parameters
     specified when creating the widget instance. */
     /* REFERENCE: https://docs.microsoft.com/azure/media-services/media-services-advanced-encoding-with-mes */
@@ -152,10 +152,10 @@ Kontrakt danych wyjściowych zadania dla renderowanych wycinka jest obiektem JSO
 }
 ```
 
-Aby wykonać zadania kodowania, przesłać Media Encoder Standard zadania kodowania z skojarzony wstępnie. Zobacz, w tym artykule, aby uzyskać szczegółowe informacje dotyczące przesyłania kodowanie zadania przy użyciu [zestawu .NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) lub [interfejsu API REST](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
+Aby wykonać zadania kodowania, przesłać Media Encoder Standard zadania kodowania za pomocą skojarzonego wstępnie. Zobacz, w tym artykule, aby uzyskać szczegółowe informacje dotyczące przesyłania kodowania zadania, wykorzystując [zestawu .NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) lub [interfejsu API REST](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
 
 ## <a name="quickly-creating-video-clips-without-encoding"></a>Szybkie tworzenie klipów wideo bez kodowania
-Zamiast tworzenia zadania kodowania, można użyć funkcji tworzenia wycinków Azure Media do utworzenia filtrów dynamicznych manifestu. Filtry nie wymagają kodowania i można tworzyć szybko nie tworzenia nowego elementu zawartości. Kontrakt danych wyjściowych dla wycinka filtru jest obiektem JSON z następującymi właściwościami:
+Alternatywą dla tworzenia zadania kodowania, można użyć usługi Azure Media Clipper utworzyć filtry manifestów dynamicznych. Filtry nie wymaga kodowania i można go szybko utworzyć jako nie jest tworzony nowy zasób. Kontrakt danych wyjściowych dla wycinka filtru jest obiekt JSON z następującymi właściwościami:
 
 ```json
 {
@@ -228,4 +228,4 @@ Zamiast tworzenia zadania kodowania, można użyć funkcji tworzenia wycinków A
 }
 ```
 
-Aby przesłać wywołania REST do tworzenia dynamicznych filtru manifestu, przesyłanie przy użyciu ładunku skojarzonego filtru [interfejsu API REST](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).
+Aby przesłać żądanie wywołania REST, aby utworzyć filtr manifestów dynamicznych, przesyłać za pośrednictwem ładunku skojarzony filtr [interfejsu API REST](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).

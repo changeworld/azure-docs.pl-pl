@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: e426e38ce5366f7c0d8b8bc20a639d827ea9e261
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200526"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54826483"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Użyj usługi Azure DNS dla domen prywatnych
 
@@ -64,9 +64,9 @@ Usługa DNS platformy Azure zapewnia następujące możliwości:
 Usługa DNS platformy Azure ma następujące ograniczenia:
 
 * Sieć wirtualną tylko jeden rejestracji jest dozwoloną na strefę prywatną.
-* Maksymalnie 10 rozpoznawanie sieci wirtualne są dozwolone na strefę prywatną.
+* Maksymalnie 10 rozpoznawanie sieci wirtualne są dozwolone na strefę prywatną. Ten limit zostanie usunięta, gdy ta funkcja jest ogólnie dostępna.
 * Określonej sieci wirtualnej można połączyć tylko jedną strefę prywatnego jako sieć wirtualną rejestracji.
-* Określonej sieci wirtualnej można połączyć maksymalnie 10 stref prywatnych jako sieć wirtualną rozpoznawania.
+* Określonej sieci wirtualnej można połączyć maksymalnie 10 stref prywatnych jako sieć wirtualną rozpoznawania. Ten limit zostanie usunięta, gdy ta funkcja jest ogólnie dostępna.
 * Jeśli określisz sieć wirtualną rejestracji, rekordy DNS dla maszyn wirtualnych z tej sieci wirtualnej, które są zarejestrowane do prywatnej strefy nie są widoczne i możliwe do pobierania z programu Azure Powershell i interfejsów API interfejsu wiersza polecenia platformy Azure. Rekordy maszyny Wirtualnej w rzeczywistości są zarejestrowane i zostanie rozwiązany pomyślnie.
 * Odwrotnego DNS działa tylko w przypadku prywatnej przestrzeni adresów IP w sieci wirtualnej rejestracji.
 * Odwrotne DNS dla prywatnego adresu IP, który nie jest zarejestrowany w prywatnej strefy (na przykład, prywatny adres IP dla maszyny wirtualnej w sieci wirtualnej, która zostanie połączona jako sieć wirtualną rozpoznawania prywatnej strefy) zwraca *internal.cloudapp.net* sufiks DNS. Jednak ten sufiks nie można rozpoznać.

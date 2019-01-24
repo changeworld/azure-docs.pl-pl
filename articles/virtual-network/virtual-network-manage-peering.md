@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 39cb9f606e6829fe8265a40216de5312c3e7e60b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 10f8b6b2b1ab6249eff4776c8cba869d72f448c5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075196"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851678"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
@@ -32,7 +32,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta które ma [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej.
-- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Connect-AzureRmAccount` za pomocą konta mającego [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Connect-AzureRmAccount` za pomocą konta mającego [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` za pomocą konta mającego [niezbędne uprawnienia](#permissions) do pracy za pomocą komunikacji równorzędnej, aby utworzyć połączenie z platformą Azure.
 
 Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania, które są wymienione w [uprawnień ](#permissions).
@@ -71,7 +71,7 @@ Instrukcje krok po kroku dotyczące implementowania komunikację równorzędną 
 ### <a name="commands"></a>Polecenia
 
 - **Interfejs wiersza polecenia Azure**: [tworzenie az sieci wirtualne sieci równorzędne](/cli/azure/network/vnet/peering#create)
-- **Program PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
+- **PowerShell**: [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Wyświetl lub zmień ustawienia komunikacji równorzędnej
 
@@ -87,8 +87,8 @@ Przed zmianą, komunikację równorzędną, zapoznaj się z [wymagania i ogranic
 
 **Polecenia**
 
-- **Wiersza polecenia platformy Azure**: [az listę komunikacji równorzędnej sieci wirtualnej sieci](/cli/azure/network/vnet/peering#az_network_vnet_peering_list) do listy połączeń komunikacji równorzędnej sieci wirtualnej, [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) wyświetlanie ustawień dla określonych komunikacji równorzędnej i [az sieci Aktualizacja komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) zmiany ustawień komunikacji równorzędnej. |
-- **Program PowerShell**: [Polecenie GET-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) można pobrać ustawień komunikacji równorzędnej widoku i [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Aby zmienić ustawienia.
+- **Wiersza polecenia platformy Azure**: [az listę komunikacji równorzędnej sieci wirtualnej sieci](/cli/azure/network/vnet/peering) do listy połączeń komunikacji równorzędnej sieci wirtualnej, [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) wyświetlanie ustawień dla określonych komunikacji równorzędnej i [az sieci Aktualizacja komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) zmiany ustawień komunikacji równorzędnej. |
+- **PowerShell**: [Polecenie GET-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering) można pobrać ustawień komunikacji równorzędnej widoku i [Set-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/set-azurermvirtualnetworkpeering) Aby zmienić ustawienia.
 
 ## <a name="delete-a-peering"></a>Usuwanie komunikacji równorzędnej
 
@@ -107,8 +107,8 @@ Jeśli chcesz, aby sieci wirtualne do komunikowania się czasami, ale nie zawsze
 
 **Polecenia**
 
-- **Interfejs wiersza polecenia Azure**: [usuwanie komunikacji równorzędnej sieci wirtualnej sieci az](/cli/azure/network/vnet/peering#az_network_vnet_peering_delete)
-- **Program PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
+- **Interfejs wiersza polecenia Azure**: [usuwanie komunikacji równorzędnej sieci wirtualnej sieci az](/cli/azure/network/vnet/peering)
+- **PowerShell**: [Remove-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/remove-azurermvirtualnetworkpeering)
 
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia 
 

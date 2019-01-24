@@ -5,7 +5,7 @@ services: active-directory
 keywords: Co to są grupy zasad i ustawień zarządzania urządzeniami Przenośnymi Roaming stanu dla przedsiębiorstw, Roaming stanu dla przedsiębiorstw, chmura systemu windows
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.component: devices
 ms.assetid: 6471a9b3-8dd4-4237-89d1-bfbeca9f8252
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: c6ec20b7467998d221858dfd852461ad33a64494
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 5ce3597bb52a22cfba6103b1d6cc5d0ff6371579
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035217"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447663"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Ustawienia zasad grupy i zarządzania urządzeniami Przenośnymi
 Użyj tych zasad grupy i ustawienia zarządzania (urządzeniami przenośnymi MDM) dla urządzeń przenośnych tylko na urządzeniach należących do firmy, ponieważ te zasady są stosowane do całego urządzenia użytkownika. Stosowanie zasad zarządzania urządzeniami Przenośnymi, aby wyłączyć synchronizację ustawień do użytku osobistego, urządzenia należące do użytkownika zostanie negatywny wpływ na korzystanie z tego urządzenia. Ponadto innych kont użytkowników na urządzeniu będą również mieć wpływ na przez zasady.
@@ -44,7 +44,7 @@ Te ustawienia znajdują się na: `Computer Configuration > Administrative Templa
 
 | Name (Nazwa) | Opis |
 | --- | --- |
-| Konta: Konta Microsoft blok |To ustawienie zasad uniemożliwia użytkownikom dodawanie nowych kont Microsoft na tym komputerze |
+| Konta: Blokowanie kont Microsoft |To ustawienie zasad uniemożliwia użytkownikom dodawanie nowych kont Microsoft na tym komputerze |
 | Nie są synchronizowane |Uniemożliwia użytkownikom przechodzą Windows ustawienia i dane aplikacji |
 | Nie są synchronizowane spersonalizować |Wyłącza synchronizację grupy motywów |
 | Nie Synchronizuj ustawienia przeglądarki |Wyłącza synchronizację grupy programu Internet Explorer |

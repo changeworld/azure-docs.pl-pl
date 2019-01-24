@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: b58d6315c4399a7bb23514eb90ab5a94acda2592
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c74c208e77539833c2bc5e1323713191e29aec64
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249034"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54820244"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -91,7 +91,7 @@ Poniżej przedstawiono podstawowe funkcje zarządzania usługi Azure Identity:
 
 - Rejestracja urządzenia
 
-- Usługa Privileged identity management
+- Privileged Identity Management
 
 - Ochrona tożsamości
 
@@ -139,7 +139,7 @@ Korzystając z usługi Azure Active Directory B2C użytkownicy mogą rejestrowa�
 
 W połączeniu z [zarządzania urządzeniami przenośnymi (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) rozwiązań, takich jak usługi Intune, atrybuty urządzenia w usłudze Azure Active Directory są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Umożliwia to tworzenie reguł dostępu warunkowego, które wymuszają dostęp z urządzeń spełniających określone standardy zabezpieczeń i zgodności.
 
-#### <a name="privileged-identity-management"></a>Usługa Privileged identity management
+#### <a name="privileged-identity-management"></a>Privileged Identity Management
 
 [Usługa Azure Active Directory (AD) Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) umożliwia zarządzanie, kontrolować i monitorowanie uprzywilejowanych tożsamości oraz dostęp do zasobów w usłudze Azure AD, a także dla innych usług online firmy Microsoft, takich jak usługi Office 365 lub Microsoft Intune.
 
@@ -179,9 +179,9 @@ Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowa
 
 Jeden z kluczy do ochrony danych w chmurze jest wynikające z możliwe stany, które mogą wystąpić danych i kontrolki są dostępne dla tego stanu. Najlepsze rozwiązania dotyczące danych na platformie Azure bezpieczeństwo i szyfrowanie zaleceń można następujące dane stanów.
 
-- Magazynowanych: Dotyczy to wszystkich informacji, które obiektów magazynu, kontenerów i typy, które istnieją w statycznie na nośniku fizycznym, można go magnetyczne lub dysków optycznych.
+- At-rest: Obejmuje to wszystkie informacje, które obiektów magazynu, kontenerów i typy, które istnieją w statycznie na nośniku fizycznym, można go magnetyczne lub dysków optycznych.
 
-- Podczas przesyłania: Gdy dane są przesyłane między składnikami, lokalizacji lub programów, takich jak ponad sieci przez usługę Service bus (ze środowiska lokalnego do chmury i na odwrót, w tym połączenia hybrydowe, takie jak usługi ExpressRoute) lub w trakcie procesu wejścia/wyjścia , jest go traktować jako znajdujące się w ruchu.
+- Podczas przesyłania: Gdy dane są przesyłane między składnikami, lokalizacji lub programów, takich jak sieci, między usługi Service bus (ze środowiska lokalnego do chmury i na odwrót, w tym połączenia hybrydowe, takie jak usługi ExpressRoute), lub w trakcie operacji wejścia/wyjścia jest myśl o jako w ruchu.
 
 ### <a name="encryption-at-rest"></a>Szyfrowanie w spoczynku
 
@@ -216,7 +216,7 @@ Należy wziąć pod uwagę jakie magazyny używane do przechowywania danych. Na 
 
 Dla każdego sklepu, którego używasz korzystać z istniejących szyfrowania w witrynie pomocy technicznej Rest.
 
-- Usługa Azure Storage: Zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/storage-service-encryption),
+- Azure Storage: Zobacz [szyfrowanie usługi Azure Storage dla danych magazynowanych](https://docs.microsoft.com/azure/storage/storage-service-encryption),
 
 - SQL Azure: Zobacz [Transparent Data Encryption (TDE) programu SQL Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
 
@@ -228,11 +228,11 @@ Maszyna wirtualna i lokalny magazyn na dysku należy używać usługi Azure Disk
 
 Usługi za pomocą maszyn wirtualnych IaaS (Windows lub Linux), należy użyć [usługi Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) do zaszyfrowania woluminy zawierające dane klienta.
 
-#### <a name="paas-v2"></a>PaaS w wersji 2
+#### <a name="paas-v2"></a>PaaS v2
 
 Usługi uruchomione na PaaS w wersji 2 przy użyciu usługi Service Fabric można użyć usługa Azure disk encryption dla zestawu skalowania maszyn wirtualnych [VMSS] do zaszyfrowania swoich maszyn wirtualnych w wersji 2 PaaS.
 
-#### <a name="paas-v1"></a>PaaS w wersji 1
+#### <a name="paas-v1"></a>PaaS v1
 
 Usługa Azure Disk Encryption nie jest obecnie obsługiwane na PaaS w wersji 1. W związku z tym należy użyć szyfrowania na poziomie aplikacji, do szyfrowania danych magazynowanych.  Obejmuje, ale nie jest ograniczona do danych aplikacji, plików tymczasowych, dzienniki i zrzuty awaryjne.
 
@@ -248,7 +248,7 @@ Jeśli są używane klucze zarządzaną przez klienta, należy podać UX dla kli
 
 Szyfrowanie w spoczynku obejmuje szyfrowania hosta, infrastruktury i dzierżawcy danych, utratę kluczy z powodu awarii systemu lub złośliwe działanie może oznaczać, że wszystkie zaszyfrowane dane zostaną utracone. W związku z tym jest krytyczny, że szyfrowania na rozwiązaniu Rest ma wątku odzyskiwania po awarii kompleksowe odporna na awarie systemu i złośliwych działań.
 
-Usługi, które implementują szyfrowanie w spoczynku zwykle są nadal podatne na klucze szyfrowania lub danych pozostaje w postaci niezaszyfrowanej na dysku hosta (na przykład w plik stronicowania systemu operacyjnego hosta.) W związku z tym usług musi upewnij się, że wolumin hosta dla swoich usług są szyfrowane. Ułatwiają to obliczeń zespołu włączył wdrożenia szyfrowania hosta, który używa [funkcji Bitlocker](https://technet.microsoft.com/library/dn306081.aspx) NKP i rozszerzenia do usługi zarządzania żądaną konfiguracją i agenta do szyfrowania woluminu hosta.
+Usługi, które implementują szyfrowanie w spoczynku zwykle są nadal podatne na klucze szyfrowania lub danych pozostaje w postaci niezaszyfrowanej na dysku hosta (na przykład w plik stronicowania systemu operacyjnego hosta.) W związku z tym usług musi upewnij się, że wolumin hosta dla swoich usług są szyfrowane. Ułatwiają to obliczeń zespołu włączył wdrożenia szyfrowania hosta, który używa [funkcji BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP i rozszerzenia do usługi zarządzania żądaną konfiguracją i agenta do szyfrowania woluminu hosta.
 
 Większość usług są implementowane w standardowych maszyn wirtualnych platformy Azure. Tych usług powinna pojawić się [szyfrowania hosta](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) automatycznie podczas obliczeń włączy ją. Usługi uruchomione w obliczeniowej zarządzane klastry hostów szyfrowania jest włączane automatycznie, zgodnie z systemu Windows Server 2016 jest wdrażana.
 
@@ -442,7 +442,7 @@ Centrum zabezpieczeń automatycznie gromadzi, analizuje i integruje dane dzienni
 
 - Alerty zabezpieczeń ze zintegrowanych programów chroniących przed złośliwym oprogramowaniem i zapór
 
-### <a name="azure-monitor"></a>Usługa Azure monitor
+### <a name="azure-monitor"></a>Azure monitor
 
 [Usługa Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) zawiera łącza do informacji o określonych typów zasobów. Oferuje ona wizualizacji, zapytania, routingu, alerty, automatyczne skalowanie i automatyzacja na danych, zarówno z infrastrukturą platformy Azure (Dziennik aktywności) i każdego pojedynczego zasobu platformy Azure (dzienników diagnostycznych).
 
@@ -452,7 +452,7 @@ Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie za
 
 Inspekcja zabezpieczeń sieci jest wykrywanie luk w zabezpieczeniach sieci przy zapewnieniu zgodności z zabezpieczeniami IT i modelu przepisami nadzoru. Widok grupy zabezpieczeń można pobrać skonfigurowanego sieciowej grupy zabezpieczeń i reguł zabezpieczeń, a także obowiązujących reguł zabezpieczeń. Z listą reguł stosowanych możesz określić, że porty są otwarte i ss sieci luk w zabezpieczeniach.
 
-### <a name="network-watcher"></a>Usługa Network watcher
+### <a name="network-watcher"></a>Obserwator sieci
 
 [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher) to regionalna usługa, która pozwala na monitorowanie i diagnozowanie warunków na poziomie sieci w, do i z platformy Azure. Diagnostyka sieci i narzędzi do wizualizacji dostępne w usłudze Network Watcher pomagają zrozumieć, diagnozowanie i uzyskiwanie szczegółowych informacji do sieci na platformie Azure. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 

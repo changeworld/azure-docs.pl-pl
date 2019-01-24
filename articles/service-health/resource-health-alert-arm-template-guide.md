@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/4/2018
 ms.author: shtabriz
-ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ee5712915e552168c0268a44af60ea58e069fc11
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184104"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429532"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurowanie alertów dotyczących kondycji zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -31,7 +31,7 @@ Usługa Azure Resource Health przechowuje, poinformowani o bieżące i historycz
 
 Postępuj zgodnie z instrukcjami na tej stronie, należy wcześniej skonfigurować kilka ustawień:
 
-1. Musisz zainstalować [modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`)
+1. Musisz zainstalować [modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`)
 2. Musisz [tworzenia lub ponownego użycia grupy akcji](../azure-monitor/platform/action-groups.md) skonfigurowane powiadomienia użytkownika
 
 ## <a name="instructions"></a>Instrukcje

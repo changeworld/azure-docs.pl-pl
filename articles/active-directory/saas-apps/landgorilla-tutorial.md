@@ -4,7 +4,7 @@ description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usł
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e93c4721f34b06fec853d876543e9939220efd9f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e4ff5b3fd7797296761ba025dc54d15c491dea06
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116440"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54827691"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-land-gorilla-client"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą klienta Gorilla ziemi
 
@@ -31,7 +31,7 @@ Integrowanie ziemi Gorilla klienta z usługą Azure AD zapewnia następujące ko
 - Użytkowników, aby automatycznie uzyskać zalogowanych do klienta Gorilla ziemi (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
 - Możesz zarządzać konta w jednej centralnej lokalizacji — portalu zarządzania platformy Azure
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -46,10 +46,10 @@ Aby skonfigurować integrację usługi Azure AD za pomocą klienta Gorilla ziemi
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -135,13 +135,13 @@ W tej sekcji Włączanie usługi Azure AD logowanie jednokrotne w portalu zarzą
     `https://www.<customer domain>.landgorilla.com/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp`
 
     > [!NOTE] 
-    > Należy pamiętać, że nie są rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych identyfikatorem i adres URL odpowiedzi. W tym miejscu zalecamy przy użyciu unikatowej wartości ciągu w identyfikatorze. Skontaktuj się z pomocą [zespołu klienta Gorilla ziemi](https://www.landgorilla.com/support/) do uzyskania tych wartości. 
+    > Należy pamiętać, że nie są to rzeczywiste wartości. Musisz zaktualizować te wartości z rzeczywistych identyfikatorem i adres URL odpowiedzi. W tym miejscu zalecamy użycie unikatowej wartości ciągu w identyfikatorze. Skontaktuj się z pomocą [zespołu klienta Gorilla ziemi](https://www.landgorilla.com/support/) do uzyskania tych wartości. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik XML na tym komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/landgorilla-tutorial/tutorial_landgorilla_certificate.png) 
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/landgorilla-tutorial/tutorial_general_400.png) 
 
@@ -222,7 +222,7 @@ W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego lo
 Po kliknięciu kafelka ziemi Gorilla klienta w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji klienckiej Gorilla ziemi.
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

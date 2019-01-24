@@ -1,10 +1,10 @@
 ---
-title: 'Samouczek: Integracji Azure Active Directory z planami 10 000 ft | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie konfigurowania rejestracji jednokrotnej między usługą Azure Active Directory i planów ft 10 000.
+title: 'Samouczek: Integracja usługi Azure Active Directory z planami 10 000 stóp | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i 10 000 stóp planów.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: b60c955e-8fa3-4872-a897-c4e81fd7beac
 ms.service: active-directory
 ms.component: saas-app-tutorial
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: cc6b1036d98aca62360ed8a935d2d1719c7f4069
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 91c485d17b12a973f08660687a4135ff140a84b9
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230356"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808055"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Samouczek: Integracji Azure Active Directory z planami ft 10 000
+# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Samouczek: Integracja usługi Azure Active Directory z planami 10 000 stóp
 
-Z tego samouczka dowiesz się sposobu integracji z usługą Azure Active Directory (Azure AD) planów ft 10 000.
+W tym samouczku dowiesz się, jak zintegrować 10 000 stóp plany z usługą Azure Active Directory (Azure AD).
 
-Integrowanie planów 10 000 ft z usługą Azure AD zapewnia następujące korzyści:
+Integrowanie 10 000 stóp plany z usługą Azure AD zapewnia następujące korzyści:
 
-- Można kontrolować w usłudze Azure AD, który ma dostęp do planów ft 10 000
-- Umożliwia użytkownikom automatycznie pobrać zalogowane do 10 000 ft planów (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD
-- Możesz zarządzać kont w jednej centralnej lokalizacji - portalu Azure
+- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do 10 000 stóp plany
+- Można włączyć użytkowników, aby automatycznie uzyskać zalogowanych do 10 000 stóp plany (logowanie jednokrotne) przy użyciu konta usługi Azure AD
+- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
 
-Jeśli chcesz dowiedzieć się więcej informacji o integracji aplikacji SaaS w usłudze Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z planami 10 000 ft, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z planami 10 000 stóp, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
-- 10 000 ft planów logowanie jednokrotne włączone subskrypcji
+- Subskrypcji usługi Azure AD
+- 10 000 stóp plany logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, jeśli jest to konieczne.
-- Jeśli nie masz środowisko wersji próbnej usługi Azure AD, możesz pobrać miesięczna wersja próbna tutaj [wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięcznej wersji próbnej tutaj [oferta wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W tym samouczku można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych elementów:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie 10 000 ft plany z galerii
-2. Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
+1. Dodawanie 10 000 stóp plany z galerii
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
-## <a name="adding-10000ft-plans-from-the-gallery"></a>Dodawanie 10 000 ft plany z galerii
-Aby skonfigurować integrację 10 000 ft planów usługi Azure AD, należy dodać planów 10 000 ft z galerii do listy zarządzanych aplikacji SaaS.
+## <a name="adding-10000ft-plans-from-the-gallery"></a>Dodawanie 10 000 stóp plany z galerii
+Aby skonfigurować integrację z 10 000 stóp planów w usłudze Azure AD, musisz dodać 10 000 stóp plany z galerii z listą zarządzanych aplikacji SaaS.
 
-**Aby dodać planów 10 000 ft z galerii, wykonaj następujące czynności:**
+**Aby dodać plany 10 000 stóp z galerii, wykonaj następujące czynności:**
 
-1. W  **[portalu Azure](https://portal.azure.com)**, na panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,83 +67,83 @@ Aby skonfigurować integrację 10 000 ft planów usługi Azure AD, należy doda�
 
     ![Aplikacje][2]
     
-3. Aby dodać nową aplikację, kliknij przycisk **nowej aplikacji** przycisk w górnej części okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
-4. W polu wyszukiwania wpisz **planów 10 000 ft**.
+4. W polu wyszukiwania wpisz **plany 10 000 stóp**.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/10000ftplans-tutorial/tutorial_10,000ftplans_search.png)
 
-5. W panelu wyników wybierz **planów 10 000 ft**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+5. W panelu wyników wybierz **plany 10 000 stóp**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/10000ftplans-tutorial/tutorial_10,000ftplans_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne
-W tej sekcji możesz skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z 10 000 ft planów opartych na koncie użytkownika testu o nazwie "Britta Simona".
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne z 10 000 stóp planów, w oparciu o użytkownika testu o nazwie "Britta Simon."
 
-Do rejestracji jednokrotnej do pracy usługi Azure AD musi ustalić użytkownika odpowiednika w planach ft 10 000 do użytkownika w usłudze Azure AD. Innymi słowy link relację między użytkownikiem usługi Azure AD i danemu użytkownikowi w 10 000 ft planów musi się.
+Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w planach 10 000 stóp do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w 10 000 stóp plany musi zostać ustanowione.
 
-W planie 10 000 ft przypisać wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łącza.
+W planach 10 000 stóp przypisze się wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
-Aby skonfigurować i przetestować usługi Azure AD rejestracji jednokrotnej z planami 10 000 ft, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z 10 000 stóp planami, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD rejestracji jednokrotnej](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD rejestracji jednokrotnej z Simona Britta.
-3. **[10 000 ft Tworzenie planów testów użytkownika](#creating-a-10000ft-plans-test-user)**  — mają odpowiednika Simona Britta w 10 000 ft planów połączonego z usługi Azure AD reprezentację użytkownika.
-4. **[Przypisanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — aby umożliwić Simona Britta do użycia usługi Azure AD rejestracji jednokrotnej.
-5. **[Testowanie rejestracji jednokrotnej](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie 10 000 stóp plany testowe użytkownika](#creating-a-10000ft-plans-test-user)**  — aby mają odpowiednika w pozycji Britta simon w 10 000 stóp plany połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD rejestracji jednokrotnej
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji można włączyć usługi Azure AD rejestracji jednokrotnej w portalu Azure i skonfigurować logowanie jednokrotne w aplikacji planów ft 10 000.
+W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji plany 10 000 stóp.
 
-**Aby skonfigurować usługi Azure AD rejestracji jednokrotnej z planami 10 000 ft, wykonaj następujące czynności:**
+**Aby skonfigurować usługi Azure AD logowanie jednokrotne z 10 000 stóp planów, wykonaj następujące czynności:**
 
-1. W portalu Azure na **planów 10 000 ft** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie Azure portal na **plany 10 000 stóp** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie rejestracji jednokrotnej][4]
+    ![Konfigurowanie logowania jednokrotnego][4]
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **na języku SAML logowania jednokrotnego** Aby włączyć logowanie jednokrotne.
+2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
-    ![Konfigurowanie rejestracji jednokrotnej](./media/10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
 
-3. Na **10 000 ft plany domeny i adres URL** sekcji, wykonaj następujące czynności:
+3. Na **10 000 stóp plany domeny i adresów URL** sekcji, wykonaj następujące czynności:
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
 
-    a. W **adres URL logowania** tekstowym, wpisz adres URL: `https://app.10000ft.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://app.10000ft.com`
 
-    b. W **identyfikator** tekstowym, wpisz adres URL: `https://app.10000ft.com/saml/metadata`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL: `https://app.10000ft.com/saml/metadata`
 
     > [!NOTE] 
-    > Wartość **identyfikator** jest inny, jeśli masz domenę niestandardową. Skontaktuj się z [zespołem pomocy technicznej planów 10 000 ft](https://www.10000ft.com/plans/support) aby zyskać tę wartość. 
+    > Wartość **identyfikator** jest inny, jeśli masz domenę niestandardową. Skontaktuj się z pomocą [10 000 stóp plany pomocy technicznej zespół](https://www.10000ft.com/plans/support) aby zyskać tę wartość. 
  
-4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Raw)** , a następnie zapisz plik certyfikatu na tym komputerze.
+4. Na **certyfikat podpisywania SAML** kliknij **Certificate(Raw)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
 
-5. Kliknij przycisk **zapisać** przycisku.
+5. Kliknij przycisk **Save** (Zapisz).
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/10000ftplans-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie logowania jednokrotnego](./media/10000ftplans-tutorial/tutorial_general_400.png)
 
-6. Na **10 000 ft plany konfiguracji** , kliknij przycisk **skonfigurować plany ft 10 000** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **Sign-Out adres URL, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** z **sekcji krótkimi opisami.**
+6. Na **10 000 stóp plany konfiguracji** kliknij **skonfigurować plany 10 000 stóp** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
 
-7. Skonfigurować logowanie jednokrotne w **planów 10 000 ft** stronie, musisz wysłać pobrany **Certificate(Raw), adres URL Sign-Out, identyfikator jednostki SAML i SAML pojedynczy znak na adres URL usługi** do [zespołem pomocy technicznej planów ft 10 000](https://www.10000ft.com/plans/support).
+7. Aby skonfigurować logowanie jednokrotne na **plany 10 000 stóp** stronie, musisz wysłać pobrany **Certificate(Raw), adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [10 000 stóp Plany pomocy technicznej zespół](https://www.10000ft.com/plans/support).
 
 > [!TIP]
-> Teraz możesz przeczytać zwięzły wersji tych instrukcji wewnątrz [portalu Azure](https://portal.azure.com), podczas konfigurowania aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij **rejestracji jednokrotnej** karcie i dostęp do dokumentacji osadzonych za pomocą **konfiguracji** sekcji u dołu. Więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacji osadzonych usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie Simona Britta.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Tworzenie użytkowników usługi Azure AD][100]
+![Utwórz użytkownika usługi Azure AD][100]
 
 **Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
 
-1. W **portalu Azure**, w lewym okienku nawigacji, kliknij polecenie **usługi Azure Active Directory** ikony.
+1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/10000ftplans-tutorial/create_aaduser_01.png) 
 
@@ -151,68 +151,68 @@ Celem tej sekcji jest tworzenie użytkownika testowego w portalu Azure o nazwie 
     
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/10000ftplans-tutorial/create_aaduser_02.png) 
 
-3. Aby otworzyć **użytkownika** okna dialogowego, kliknij przycisk **Dodaj** górnej części okna dialogowego.
+3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/10000ftplans-tutorial/create_aaduser_03.png) 
 
-4. Na **użytkownika** okna dialogowego strony, należy wykonać następujące czynności:
+4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
  
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/10000ftplans-tutorial/create_aaduser_04.png) 
 
-    a. W **nazwa** pole tekstowe, typ **BrittaSimon**.
+    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
 
-    b. W **nazwy użytkownika** pole tekstowe, typ **adres e-mail** z BrittaSimon.
+    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
-### <a name="creating-a-10000ft-plans-test-user"></a>10 000 ft Tworzenie planów użytkownik testowy
+### <a name="creating-a-10000ft-plans-test-user"></a>Tworzenie 10 000 stóp plany testowe użytkownika
 
-Celem tej sekcji jest utworzenie użytkownika o nazwie Simona Britta w planach ft 10 000. 10 000 ft planów obsługę w czasie, który jest domyślnie włączone. Nie ma elementu akcji można w tej sekcji. Nowy użytkownik został utworzony podczas próby dostępu 10 000 ft planów, jeśli go jeszcze nie istnieje. 
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w 10 000 stóp planach. 10 000 stóp plany obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu 10 000 stóp planów, jeśli go jeszcze nie istnieje. 
 
 > [!NOTE]
-> Jeśli trzeba ręcznie utworzyć użytkownika, należy skontaktować się [zespołem pomocy technicznej planów 10 000 ft](https://www.10000ft.com/plans/support).
+> Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [10 000 stóp plany pomocy technicznej zespół](https://www.10000ft.com/plans/support).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisanie użytkownika testowego usługi Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji można włączyć Simona Britta do używania Azure logowania jednokrotnego za udzielanie dostępu do 10 000 ft planów.
+W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do 10 000 stóp planów.
 
 ![Przypisz użytkownika][200] 
 
-**Aby przypisać Simona Britta do 10 000 ft planów, wykonaj następujące czynności:**
+**Aby przypisać Britta Simon do 10 000 stóp planów, wykonaj następujące czynności:**
 
-1. W portalu Azure Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
 
     ![Przypisz użytkownika][201] 
 
-2. Na liście aplikacji zaznacz **planów 10 000 ft**.
+2. Na liście aplikacji wybierz **plany 10 000 stóp**.
 
-    ![Konfigurowanie rejestracji jednokrotnej](./media/10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
+    ![Konfigurowanie logowania jednokrotnego](./media/10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
 
 3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
     ![Przypisz użytkownika][202] 
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Simona Britta** na liście Użytkownicy.
+5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
 
-6. Kliknij przycisk **wybierz** znajdującego się na **użytkowników i grup** okna dialogowego.
+6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
-7. Kliknij przycisk **przypisać** znajdującego się na **Dodaj przydziału** okna dialogowego.
+7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
     
-### <a name="testing-single-sign-on"></a>Testowanie rejestracji jednokrotnej
+### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-Celem tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania za pomocą panelu dostępu.  
-Po kliknięciu kafelka planów 10 000 ft w panelu dostępu należy należy pobrać automatycznie zalogowane do 10 000 ft planów aplikacji.
+Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.  
+Po kliknięciu kafelka plany 10 000 stóp w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do 10 000 stóp planów aplikacji.
  
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących sposobów integracji aplikacji SaaS przy użyciu usługi Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

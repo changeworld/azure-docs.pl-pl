@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3262720f52bc75ba5d430e941da25568a105fe0d
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276256"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54391261"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Wdrożenie usługi Azure odłączonego planowanie decyzji dla usługi Azure Stack zintegrowane systemy
 Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), następnie można zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
@@ -49,8 +49,8 @@ Usługa Azure Stack został zaprojektowany w celu działają najlepiej, jeśli p
 |Portal Marketplace — możliwości, aby wybrać i dodać pakiety galerii bezpośrednio w witrynie Azure Marketplace|Naruszone — podczas wdrażania usługi Azure Stack w trybie rozłączonym (bez żadnych łączności z Internetem), nie można pobrać elementów portalu marketplace, korzystając z portalu usługi Azure Stack. Można jednak użyć [narzędzie syndykacji marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) pobieranie elementów portalu marketplace na komputerze, który ma łączność z Internetem i przenieść je do środowiska usługi Azure Stack.|
 |Korzystanie z kont federacyjnych usługi Azure Active Directory do zarządzania do wdrożenia usługi Azure Stack|Niedostępne — ta funkcja wymaga łączności na platformie Azure. Zamiast tego należy użyć usług AD FS z lokalnym wystąpieniem usługi Active Directory.|
 |App Services|Naruszone — aplikacji internetowych, mogą wymagać dostępu do Internetu na zaktualizowanej zawartości.|
-|Interfejs wiersza polecenia (CLI)|Naruszone — interfejs wiersza polecenia obniżyła funkcji pod kątem uwierzytelniania i inicjowania obsługi zasad usługi.|
-|Visual Studio — rozwiązania Cloud discovery|Naruszone — rozwiązania Cloud Discovery odnajdzie albo innej chmury lub nie będzie działać w ogóle.|
+|Interfejs wiersza polecenia (CLI)|Naruszone — interfejs wiersza polecenia obniżyła funkcji pod kątem uwierzytelniania i inicjowania obsługi administracyjnej jednostki usługi.|
+|Visual Studio – Cloud discovery|Naruszone — rozwiązania Cloud Discovery odnajdzie albo innej chmury lub nie będzie działać w ogóle.|
 |Visual Studio – AD FS|Naruszone — tylko do programu Visual Studio Enterprise obsługuje usługi AD FS.
 Telemetria|Niedostępna — dane telemetryczne dla usługi Azure Stack, jak również wszelkie pakiety galerii innych firm, które są zależne od danych telemetrycznych.|
 |Certyfikaty|Niedostępne — łączność z Internetem jest wymagany dla usługi listy odwołania certyfikatów (CRL) i Online certyfikatu stan protokołu (OSCP) w kontekście protokołu HTTPS.|
@@ -58,7 +58,7 @@ Telemetria|Niedostępna — dane telemetryczne dla usługi Azure Stack, jak rów
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 - Aby uzyskać informacji dotyczących przypadków użycia, zakupów, partnerami i dostawcami sprzętu OEM, zobacz [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stronę produktu.
-- Uzyskać informacje na temat planu i udostępnienia georegionu dla usługi Azure Stack zintegrowanych systemów, zobacz oficjalny dokument: [Usługa Azure Stack: Rozszerzenie platformy Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Uzyskać informacje na temat planu i udostępnienia georegionu dla usługi Azure Stack zintegrowanych systemów, zobacz oficjalny dokument: [Azure Stack: Rozszerzenie platformy Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - Aby dowiedzieć się więcej o Microsoft Azure Stack, pakowania i ceny [Pobierz PDF](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>Kolejne kroki

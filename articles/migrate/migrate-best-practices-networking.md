@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 6d679cc3d24e2f0f2cb79eb2c9f02422d0818c80
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 5cbe0c5e86a1dfd8cc3cb374f0ae7e1c67ae9d77
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215273"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54828302"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Najlepsze rozwiązania w celu skonfigurowania sieci w przypadku obciążeń migracji na platformę Azure
 
@@ -164,7 +164,7 @@ Aby zaimplementować VPN lokacja lokacja, należy skonfigurować bramę sieci VP
 - Każda sieć wirtualna może mieć tylko jedną bramę sieci VPN.
 - Możesz utworzyć wiele połączeń z tą samą bramą sieci VPN. Podczas tworzenia wielu połączeń, wszystkie tunele VPN współdzielą dostępną przepustowość bramy.
 - Każda brama Azure VPN Gateway składa się z dwóch wystąpień działających w konfiguracji aktywne-w gotowości.
-    - Zaplanowanej konserwacji lub unplaned przerw w działaniu aktywnego wystąpienia przejścia do trybu failover i wystąpienie w trybie gotowości automatycznie przejmuje i wznawia działanie lokacja lokacja lub połączenia sieć wirtualna-sieć wirtualna. 
+    - Zaplanowanej konserwacji lub nieplanowanych przerw w działaniu aktywnego wystąpienia przejścia do trybu failover i wystąpienie w trybie gotowości automatycznie przejmuje i wznawia działanie lokacja lokacja lub połączenia sieć wirtualna-sieć wirtualna. 
     - Przełączenie spowoduje krótką przerwę w działaniu.
     - W przypadku planowanej konserwacji łączność powinna zostać przywrócona w ciągu 10 do 15 sekund.
     - W przypadku nieplanowanych odzyskiwanie połączenia potrwa dłużej — około jednej wersji 1.5 minuty w najgorszym przypadku.

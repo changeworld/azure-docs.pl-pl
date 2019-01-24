@@ -10,18 +10,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f4d63d4ad0841244cf2548b0842eea880e27a152
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158860"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463035"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
-W tym artykule pokazano, jak przenieść zasoby platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Instrukcję przenoszenia zasobów, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
+W tym artykule pokazano, jak przenieść zasoby platformy Azure do innej subskrypcji platformy Azure lub innej grupy zasobów w ramach tej samej subskrypcji. Instrukcję przenoszenia zasobów, można użyć witryny Azure portal, programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. Aby wykonać kroki samouczka, zobacz [samouczka: Przenoszenie zasobów platformy Azure do innej grupy zasobów lub subskrypcji](./resource-manager-tutorial-move-resources.md).
 
 Grupy źródłowej i docelowej grupy są zablokowane podczas operacji przenoszenia. Operacje zapisu i usuwania na grupach zasobów są blokowane do momentu zakończenia przenoszenia. Ta blokada oznacza, że nie można dodawać, aktualizować ani usuwać zasobów w tych grupach zasobów, ale nie oznacza to, że zasoby są zamrożone. Jeśli na przykład przeniesiesz program SQL Server i jego bazę danych do nowej grupy zasobów, nie dojdzie do przestoju aplikacji korzystającej z tej bazy danych. Nadal będzie możliwe odczytywanie i zapisywanie danych w bazie danych.
 
@@ -56,6 +56,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Automatyzacja
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Data Explorer
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Azure DevOps — organizacjom przeprowadzającym platformy Azure z rozszerzeniem firmy Microsoft kupuje musi [anulować opłacenia zakupów](https://go.microsoft.com/fwlink/?linkid=871160) przed konta mogą przenosić między subskrypcjami.
@@ -98,7 +99,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Pulpity nawigacyjne portalu
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
-* Magazyn usługi Recovery Services — muszą być zarejestrowane w [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+* Usługi Recovery Services vault — zarejestrować subskrypcję w celu [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.
@@ -166,6 +167,7 @@ Z 24 września 2018 r. Możesz przenieść dysków zarządzanych. Ta obsługa oz
 Jeszcze nie są obsługiwane następujące scenariusze:
 
 * Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault można przenieść do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
+* Dyski zarządzane w strefach dostępności nie można przenieść do innej subskrypcji
 * Nie można przenieść Virtual Machine Scale Sets przy użyciu standardowych jednostek SKU modułu równoważenia obciążenia lub standardowego publicznego adresu IP jednostki SKU
 * Utworzona na podstawie zasobów w portalu Marketplace z planami dołączone maszyny wirtualne nie można przenosić między grupami zasobów lub subskrypcji. Anulowanie aprowizacji maszyny wirtualnej w bieżącej subskrypcji i Wdróż ponownie w nowej subskrypcji.
 
@@ -305,7 +307,7 @@ Operacja może trwać kilka minut.
 
 ### <a name="recovery-services-limitations"></a>Ograniczenia usług odzyskiwania
 
-Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+ Aby przenieść magazyn usługi Recovery Services, należy zarejestrować subskrypcję w celu [ograniczonej publicznej wersji zapoznawczej](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 
 Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS.
 

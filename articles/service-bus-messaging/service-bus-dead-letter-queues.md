@@ -3,23 +3,23 @@ title: Kolejki utraconych wiadomości usługi Service Bus | Dokumentacja firmy M
 description: Omówienie usługi Azure Service Bus, kolejki utraconych wiadomości
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: eb4057b4cfc6a68fb3489a7ab6fb1ee6b5f41d7d
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: aaeebb200197ba6ef15fbcfe02f262a3840197b5
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338466"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856129"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Omówienie usługi Service Bus, kolejki utraconych wiadomości
 
@@ -46,13 +46,13 @@ Aplikacje można zdefiniować własne kody `DeadLetterReason` właściwości, al
 | Warunek | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
 | Zawsze |HeaderSizeExceeded |Przekroczono limit przydziału rozmiaru tego strumienia. |
-| ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing i SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |wyjątek. Komunikat |
+| ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing i SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |exception.Message |
 | EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Komunikat wygasła i została dead lettered. |
 | SubscriptionDescription.RequiresSession |Identyfikator sesji ma wartość null. |Jednostki włączone sesji nie pozwala na komunikat, którego identyfikator sesji ma wartość null. |
 | ! kolejki utraconych wiadomości |MaxTransferHopCountExceeded |Null |
 | Jawne, dead czcionki w aplikacji |Określone przez aplikację |Określone przez aplikację |
 
-## <a name="exceeding-maxdeliverycount"></a>Przekroczenie MaxDeliveryCount
+## <a name="exceeding-maxdeliverycount"></a>Exceeding MaxDeliveryCount
 
 Kolejki, jak i subskrypcje mają [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) i [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) właściwość odpowiednio; wartość domyślna to 10. Zawsze, gdy wiadomość została dostarczona w ramach blokady ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)), ale została albo jawnie porzucone lub blokada wygasła komunikat [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) jest zwiększona. Gdy [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) przekracza [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), wiadomość zostanie przeniesiona do DLQ, określając `MaxDeliveryCountExceeded` kod przyczyny.
 

@@ -1,6 +1,6 @@
 ---
-title: Szybki start — wysyłanie i odbieranie komunikatów do i z usługi Azure Service Bus | Microsoft Docs
-description: Z tego przewodnika Szybki start dowiesz się, jak wysyłać i odbierać komunikaty usługi Service Bus przy użyciu programu PowerShell oraz klienta platformy .NET Standard
+title: Przewodnik Szybki start — używanie programu Azure PowerShell do tworzenia kolejki usługi Service Bus | Microsoft Docs
+description: Z tego przewodnika Szybki start dowiesz się, jak użyć programu Azure PowerShell do utworzenia kolejki usługi Service Bus. Następnie użyjesz przykładowej aplikacji, aby wysyłać komunikaty do kolejki i odbierać komunikaty z kolejki.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -8,17 +8,16 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/22/2018
+ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2669b3ad9abc2370b4ecb66596d6edde17c82ddd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 36f1b39ca4cef33a8cfcdb295b5c4d59e1128a0c
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242436"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426849"
 ---
-# <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>Szybki start: wysyłanie i odbieranie komunikatów przy użyciu programu Azure PowerShell oraz platformy .NET
-
+# <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Szybki start: używanie programu Azure PowerShell do tworzenia kolejki usługi Service Bus
 Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz całkowitą niezawodność. Typowy scenariusz usługi Service Bus zwykle wiąże się z rozdzieleniem co najmniej dwóch aplikacji, usług lub procesów oraz przesłaniem zmian stanu lub danych. Takie scenariusze mogą obejmować planowanie wielu zadań wsadowych w innej aplikacji lub innych usługach bądź wyzwalanie realizacji zamówienia. Na przykład firma handlowa może wysłać dane z punktu sprzedaży na zaplecze biura lub do regionalnego centrum dystrybucji w celu uzupełnienia zapasów oraz aktualizacji spisu inwentarza. W tym scenariuszu aplikacja kliencka wysyła komunikaty do kolejki usługi Service Bus i je z niej odbiera.
 
 ![kolejka](./media/service-bus-quickstart-powershell/quick-start-queue.png)
@@ -264,4 +263,4 @@ W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby w
 > [Update inventory using Azure PowerShell (Aktualizowanie magazynu przy użyciu programu Azure PowerShell)](./service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azure/install-azurerm-ps
+[Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azure/azurerm/install-azurerm-ps

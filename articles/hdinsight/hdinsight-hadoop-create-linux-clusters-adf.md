@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7b20ceb61f522bea11e7256c824a851e587cbd49
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 40bfa8317effd25cf3d9aa28b8f63e292213a83b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975461"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425986"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie na żądanie klastry platformy Apache Hadoop w HDInsight przy użyciu usługi Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+- Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0).
 
 - Jednostki usługi Azure Active Directory. Po utworzeniu nazwy głównej usługi, pamiętaj pobrać **identyfikator aplikacji** i **klucz uwierzytelniania** zgodnie z instrukcjami w artykule połączone. Te wartości będą potrzebne w dalszej części tego samouczka. Ponadto upewnij się, nazwa główna usługi jest członkiem *Współautor* roli subskrypcji lub grupy zasobów, w której został utworzony klaster. Aby uzyskać instrukcje dotyczące pobierania wymaganych wartości i przypisać odpowiednie role, zobacz [Tworzenie jednostki usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -166,7 +166,7 @@ W tym artykule możesz skonfigurować działanie programu Hive, aby utworzyć kl
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
-1. Z menu po lewej stronie wybierz **+ Utwórz zasób**.
+1. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób**.
 
 1. W obszarze **portalu Azure Marketplace**, wybierz opcję **analizy**.
 

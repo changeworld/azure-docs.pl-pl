@@ -7,13 +7,13 @@ ms.author: jamesbak
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/06/2018
-ms.openlocfilehash: c820d2172c3e38d9d744e645d7c0e8b4749b42cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.date: 01/14/2019
+ms.openlocfilehash: 49039e742ebd4354f9a52572ffdc69e95bf7f85e
+ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743378"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54321215"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Szybki start: uruchamianie zadania Spark w usłudze Azure Databricks przy użyciu witryny Azure Portal
 
@@ -27,12 +27,31 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 - [Utworzenie konta magazynu z włączoną usługą Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 
+<a id="config"/>
+
 ## <a name="set-aside-storage-account-configuration"></a>Zapisywanie konfiguracji konta magazynu na później
 
-> [!IMPORTANT]
-> Podczas pracy z tym samouczkiem musisz mieć dostęp do nazwy konta magazynu i klucza dostępu. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi** i odfiltruj je według *magazynu*. Wybierz pozycję **Konta usługi Storage** i znajdź konto utworzone na potrzeby tego samouczka.
->
-> W obszarze **Omówienie** skopiuj **nazwę** konta magazynu do edytora tekstów. Następnie wybierz pozycję **Klucze dostępu** i skopiuj wartość **key1** do edytora tekstów, ponieważ obydwie wartości będą potrzebne w przypadku poleceń używanych później.
+Potrzebna będzie nazwa konta magazynu i identyfikator URI punktu końcowego systemu plików.
+
+Aby uzyskać nazwę konta magazynu w witrynie Azure Portal, wybierz pozycję **Wszystkie usługi** i filtruj listę według terminu *Magazyn*. Następnie wybierz pozycję **Konta magazynu** i znajdź swoje konto magazynu.
+
+Aby uzyskać identyfikator URI punktu końcowego systemu plików, wybierz pozycję **Właściwości**, a w okienku właściwości znajdź wartość pola **Podstawowy punkt końcowy systemu plików usługi ADLS**.
+
+Wklej obie te wartości do pliku tekstowego. Wkrótce będą potrzebne.
+
+<a id="service-principal"/>
+
+## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
+
+Utwórz jednostkę usługi, wykonując czynności opisane w temacie: [Instrukcje: używanie portalu do tworzenia aplikacji usługi Azure AD i jednostki usługi w celu uzyskiwania dostępu do zasobów](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+Istnieje kilka określonych czynności, o których należy pamiętać podczas wykonywania instrukcji przedstawionych w tym artykule.
+
+:heavy_check_mark: Wykonując kroki opisane w sekcji [Tworzenie aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application) tego artykułu, należy ustawić pole **Adres URL logowania** w oknie dialogowym **Tworzenie** na uzyskany uprzednio identyfikator URI punktu końcowego.
+
+:heavy_check_mark: Wykonując kroki opisane w sekcji [Przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) tego artykułu, upewnij się, że przypisano aplikację do **roli Współautor usługi Blob Storage**.
+
+:heavy_check_mark: Wykonując kroki opisane w sekcji [Pobieranie wartości podczas logowania](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) tego artykułu, wklej identyfikator dzierżawy, identyfikator aplikacji i wartości klucza uwierzytelniania do pliku tekstowego. Wkrótce będą potrzebne.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Tworzenie obszaru roboczego usługi Azure Databricks
 
@@ -58,7 +77,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
 
     Zaznacz opcję **Przypnij do pulpitu nawigacyjnego**, a następnie kliknij pozycję **Utwórz**.
 
-3. Tworzenie obszaru roboczego trwa kilka minut. Podczas tworzenia obszaru roboczego po prawej stronie portalu jest wyświetlany kafelek **Przesyłanie wdrożenia dla usługi Azure Databricks**. Aby go zobaczyć, być może trzeba będzie przesunąć pulpit nawigacyjny w prawo. W górnej części ekranu jest również wyświetlany pasek postępu. Postęp można obserwować w dowolnym z tych obszarów.
+3. Utworzenie obszaru roboczego zajmuje trochę czasu. Podczas tworzenia obszaru roboczego po prawej stronie pojawi się kafelek **Przesyłanie wdrożenia dla usługi Azure Databricks**. W celu wyświetlenia tytułu może być konieczne przewinięcie pulpitu nawigacyjnego w prawo. W górnej części ekranu jest również wyświetlany pasek postępu. Postęp można obserwować w dowolnym z tych obszarów.
 
     ![Kafelek wdrażania usługi Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-deployment-tile.png "Kafelek wdrażania usługi Databricks")
 
@@ -77,7 +96,7 @@ W tej sekcji utworzysz obszar roboczy usługi Azure Databricks przy użyciu witr
     Zaakceptuj pozostałe wartości domyślne poza następującymi:
 
     * Wprowadź nazwę klastra.
-    * Utwórz klaster, używając środowiska uruchomieniowego w wersji **5.1 beta**.
+    * Utwórz klaster, używając środowiska uruchomieniowego w wersji **5.1**.
     * Upewnij się, że pole wyboru **Zakończ po 120 min aktywności** zostało zaznaczone. Podaj czas (w minutach), po jakim działanie klastra ma zostać zakończone, jeśli nie jest używany.
 
 4. Wybierz pozycję **Utwórz klaster**. Po uruchomieniu klastra możesz dołączyć do niego notesy i uruchamiać zadania Spark.
@@ -100,49 +119,26 @@ W tej sekcji utworzysz notes w obszarze roboczym usługi Azure Databricks, a nas
 
     Wybierz pozycję **Utwórz**.
 
-4. Połącz obszar roboczy usługi Databricks z kontem usługi ADLS Gen2. Istnieją trzy obsługiwane mechanizmy umożliwiające osiągnięcie tego celu: instalowanie przy użyciu protokołu OAuth, dostęp bezpośredni przy użyciu protokołu OAuth oraz dostęp bezpośredni przy użyciu klucza wspólnego. 
+4. Skopiuj i wklej następujący blok kodu do pierwszej komórki, ale jeszcze nie uruchamiaj kodu.
 
-    Każdy mechanizm przedstawiono w poniższym przykładzie. Podczas testowania przykładów pamiętaj, aby w przykładowym kodzie zastąpić symbole zastępcze widoczne w nawiasach własnymi wartościami:
+   ```scala
+   spark.conf.set("fs.azure.account.auth.type.<storage-account-name>.dfs.core.windows.net", "OAuth")
+   spark.conf.set("fs.azure.account.oauth.provider.type.<storage-account-name>.dfs.core.windows.net", org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
+   spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
+   spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
+   spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
-    **Instalacja przy użyciu protokołu OAuth**     
-        
-    ```scala
-    %python%
-    configs = {"fs.azure.account.auth.type": "OAuth",
-        "fs.azure.account.oauth.provider.type": "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider",
-        "fs.azure.account.oauth2.client.id": "<service-client-id>",
-        "fs.azure.account.oauth2.client.secret": "<service-credentials>",
-        "fs.azure.account.oauth2.client.endpoint": "https://login.microsoftonline.com/<tenant-id>/oauth2/token"}
-    
-    dbutils.fs.mount(
-        source = "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/[<directory-name>]",
-        mount_point = "/mnt/<mount-name>",
-        extra_configs = configs)
-    ```
+   ```
+ 
+    > [!NOTE]
+    > Ten blok kodu uzyskuje bezpośredni dostęp do punktu końcowego usługi Data Lake Gen2 przy użyciu protokołu OAuth, ale istnieją też inne sposoby łączenia obszaru roboczego usługi Databricks z kontem usługi Data Lake Storage Gen2. Możesz na przykład zainstalować system plików przy użyciu protokołu OAuth lub użyć dostępu bezpośredniego z kluczem wspólnym. <br>Aby zapoznać się z przykładami tych metod, zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks.
 
-    **Dostęp bezpośredni przy użyciu protokołu OAuth**
+5. W tym bloku kodu zastąp symbole zastępcze `storage-account-name`, `application-id`, `authentication-id` i `tenant-id` wartościami uzyskanymi podczas wykonywaniu kroków opisanych w sekcjach [Zapisywanie konfiguracji konta magazynu na później](#config) i [Tworzenie jednostki usługi](#service-principal) tego artykułu.  Ustaw wartość symbolu zastępczego `file-system-name` na dowolną nazwę, którą chcesz nadać systemowi plików.
 
-    ```scala
-    spark.conf.set("fs.azure.account.auth.type.<account-name>.dfs.core.windows.net": "OAuth")
-    spark.conf.set("fs.azure.account.oauth.provider.type.<account-name>.dfs.core.windows.net", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id.<account-name>.dfs.core.windows.net": "<service-client-id>")
-    spark.conf.set("fs.azure.account.oauth2.client.secret.<account-name>.dfs.core.windows.net": "<service-credentials>")
-    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<account-name>.dfs.core.windows.net": "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
-
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-        
-    **Dostęp bezpośredni przy użyciu klucza wspólnego** 
-
-    ```scala    
-    spark.conf.set("fs.azure.account.key.<account-name>.dfs.core.windows.net", "<account-key>")
-
-    dbutils.fs.ls("abfss://<file-system-name>@<account-name>.dfs.core.windows.net/")
-    ```
-
-5. Wprowadź kod w pierwszej komórce i naciśnij klawisze **SHIFT + ENTER**, aby go uruchomić.
-
-Został utworzony system plików dla konta magazynu.
+6. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
 ## <a name="ingest-sample-data"></a>Pozyskiwanie przykładowych danych
 
@@ -172,7 +168,7 @@ Aby uruchomić zadanie Spark SQL w danych, wykonaj poniższe zadania.
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path  "abfss://<file-system-name>@<account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
+     path  "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/<PATH>/small_radio_json.json"
     )
     ```
 

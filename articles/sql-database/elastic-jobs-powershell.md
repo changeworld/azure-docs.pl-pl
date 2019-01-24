@@ -12,16 +12,16 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 34277aaa6ad6c5b22fb1691af83091e49d3bf5c1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08571ac8b7e13bc0f414b481a481132793ba865d
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021326"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452755"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 
-[Zadania elastyczne](elastic-jobs-overview.md) umożliwiają uruchamianie jednego lub większej liczby skryptów języka Transact-SQL (T-SQL) równolegle w wielu bazach danych.
+[Zadania elastyczne](sql-database-job-automation-overview.md#elastic-database-jobs) umożliwiają uruchamianie jednego lub większej liczby skryptów języka Transact-SQL (T-SQL) równolegle w wielu bazach danych.
 
 W ramach tego samouczka poznasz kroki wymagane do uruchomienia zapytania w wielu bazach danych:
 
@@ -65,7 +65,7 @@ Jeśli nie masz jeszcze subskrypcji platformy Azure, przed rozpoczęciem utwórz
 
 ## <a name="create-required-resources"></a>Tworzenie wymaganych zasobów
 
-Do utworzenia agenta zadań elastycznych wymagana jest baza danych (S0 lub wyższego poziomu) używana jako [baza danych zadań](elastic-jobs-overview.md#job-database). 
+Do utworzenia agenta zadań elastycznych wymagana jest baza danych (S0 lub wyższego poziomu) używana jako [baza danych zadań](sql-database-job-automation-overview.md#job-database). 
 
 *Poniższy skrypt tworzy nową grupę zasobów, serwer i bazę danych, która będzie używana jako baza danych zadań. Poniższy skrypt tworzy również drugi serwer z 2 pustymi bazami danych, względem których będą wykonywane zadania.*
 
@@ -210,7 +210,7 @@ $JobCred = $JobAgent | New-AzureRmSqlElasticJobCredential -Name "jobuser" -Crede
 
 ## <a name="define-the-target-databases-you-want-to-run-the-job-against"></a>Definiowanie docelowych baz danych, względem których ma być uruchamiane zadanie
 
-[Grupa docelowa](elastic-jobs-overview.md#target-group) definiuje zestaw zawierający co najmniej jedną bazę danych, względem której będzie wykonywane zadanie. 
+[Grupa docelowa](sql-database-job-automation-overview.md#target-group) definiuje zestaw zawierający co najmniej jedną bazę danych, względem której będzie wykonywane zadanie. 
 
 Poniższy fragment kodu tworzy dwie grupy docelowe: *ServerGroup* i *ServerGroupExcludingDb2*. Grupa *ServerGroup* dotyczy wszystkich baz danych, które istnieją na serwerze w czasie wykonywania, a grupa *ServerGroupExcludingDb2* — wszystkich baz danych na serwerze z wyjątkiem *TargetDb2*:
 

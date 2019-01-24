@@ -3,21 +3,21 @@ title: Obsługa usługi Azure Active Directory B2C | Dokumentacja firmy Microsof
 description: Jak zgłosić żądania pomocy technicznej dla usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 04eae00d40470d5f6c992d9a0c8c9b0b49d7495f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 003a65e0c9cc70639850ab9bacef5df3762dedc3
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007641"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852442"
 ---
-# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Żądania pomocy technicznej plik
+# <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Plik żądania pomocy technicznej
 Mogą zgłaszać żądania pomocy technicznej dla usługi Azure Active Directory (Azure AD) B2C w witrynie Azure portal wykonując następujące czynności:
 
 1. Przełącz się z dzierżawą B2C do innej dzierżawy, który ma subskrypcję platformy Azure skojarzone z nią. Zazwyczaj jest Twoja pracownika lub dzierżawą domyślne tworzone podczas tworzenia konta dla subskrypcji platformy Azure. Aby dowiedzieć się więcej, zobacz [jak związane z subskrypcją platformy Azure do usługi Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
@@ -54,7 +54,7 @@ Mogą zgłaszać żądania pomocy technicznej dla usługi Azure Active Directory
     ![Pomoc techniczna — skontaktuj się z](./media/active-directory-b2c-support/support-contact.png)
 8. Po przesłaniu żądania pomocy technicznej, można go monitorować, klikając **Pomoc i obsługa techniczna** na tablicy startowej, a następnie **Zarządzaj żądaniami obsługi**.
 
-## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Znany problem: zgłaszania żądania pomocy technicznej w ramach dzierżawy usługi B2C
+## <a name="known-issue-filing-a-support-request-in-the-context-of-a-b2c-tenant"></a>Znany problem: Zgłaszanie żądania pomocy technicznej w ramach dzierżawy usługi B2C
 Jeśli brakuje kroku 2 powyżej i spróbuj utworzyć żądanie pomocy technicznej w kontekście swojej dzierżawy usługi B2C, zostanie wyświetlony następujący błąd.
 
 > [!IMPORTANT]

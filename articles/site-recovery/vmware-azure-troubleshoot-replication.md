@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/18/2019
 ms.author: ramamill
-ms.openlocfilehash: c53dc81da9469c0628adbd3751dc818997fa4d05
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 5c2d33b39614ded95ac38e07c844b0a8cafa7cd2
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063682"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411479"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Rozwiązywanie problemów z replikacją dla maszyn wirtualnych VMware i serwerów fizycznych
 
@@ -109,14 +109,19 @@ Poniższej liście przedstawiono sposoby można sprawdzić na serwerze przetwarz
 
 Podczas próby wybierz maszyny źródłowej, aby włączyć replikację przy użyciu usługi Site Recovery maszyny może nie być dostępne dla jednego z następujących powodów:
 
-*  Jeśli dwie maszyny wirtualne w ramach programu vCenter to samo wystąpienie identyfikatora UUID, pierwszej maszyny wirtualnej, wykrytych przez serwer konfiguracji jest wyświetlany w witrynie Azure portal. Aby rozwiązać ten problem, upewnij się, że nie dwie maszyny wirtualne mają tego samego wystąpienia identyfikatora UUID.
-*  Nie zapomnij dodać poświadczenia poprawne vCenter, po skonfigurowaniu serwera konfiguracji za pomocą szablonu pakietu OVF lub ujednoliconej konfiguracji. Aby zweryfikować poświadczenia, które dodałeś podczas instalacji, zobacz [zmodyfikowania poświadczeń do automatycznego odnajdowania](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
-*  Jeśli uprawnienia podany dostępu vCenter do nie ma wymaganych uprawnień, może wystąpić błąd, aby odnaleźć maszyny wirtualne. Upewnij się, że uprawnienia opisane w [przygotowywanie konta do automatycznego odnajdowania](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) są dodawane do konta użytkownika vCenter.
-*  Jeśli maszyna wirtualna jest już chroniony przez usługi Site Recovery, maszyna wirtualna nie jest dostępny dla wybranych do ochrony w portalu. Upewnij się, czy maszyny wirtualnej, którego szukasz w portalu nie jest już chroniony przez żadnego innego użytkownika lub innej subskrypcji.
+* **Dwie maszyny wirtualne z tym samym wystąpieniu UUID**: Jeśli dwie maszyny wirtualne w ramach programu vCenter to samo wystąpienie identyfikatora UUID, pierwszej maszyny wirtualnej, wykrytych przez serwer konfiguracji jest wyświetlany w witrynie Azure portal. Aby rozwiązać ten problem, upewnij się, że nie dwie maszyny wirtualne mają tego samego wystąpienia identyfikatora UUID. Ten scenariusz jest typowy widoczne w wystąpieniach, gdzie staje się aktywny kopii zapasowej maszyny Wirtualnej, a jest zalogowany do naszych danych odnajdywania. Zapoznaj się [usługi Azure Site Recovery VMware na platformę Azure: Jak wyczyścić zduplikowane lub nieaktualne wpisy](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) do rozwiązania.
+* **VCenter niepoprawne poświadczenia użytkownika**: Nie zapomnij dodać poświadczenia poprawne vCenter, po skonfigurowaniu serwera konfiguracji za pomocą szablonu pakietu OVF lub ujednoliconej konfiguracji. Aby zweryfikować poświadczenia, które dodałeś podczas instalacji, zobacz [zmodyfikowania poświadczeń do automatycznego odnajdowania](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
+* **niewystarczające uprawnienia vCenter**: Jeśli uprawnienia podany dostępu vCenter do nie ma wymaganych uprawnień, może wystąpić błąd, aby odnaleźć maszyny wirtualne. Upewnij się, że uprawnienia opisane w [przygotowywanie konta do automatycznego odnajdowania](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) są dodawane do konta użytkownika vCenter.
+* **Serwery zarządzania w usłudze Azure Site Recovery**: Jeśli maszyna wirtualna jest używany jako serwer zarządzania w co najmniej jeden z następujących ról — serwer przetwarzania /scale-out serwera konfiguracji / głównym serwerze docelowym, nie będzie mógł wybrać maszynę wirtualną z portalu. Nie można zreplikować serwery zarządzania.
+* **Już chronione/przełączone w tryb failover za pomocą usługi Azure Site Recovery**: Jeśli maszyna wirtualna jest już chronione lub przełączone w tryb failover przez usługi Site Recovery, maszyna wirtualna nie jest dostępny dla wybranych do ochrony w portalu. Upewnij się, czy maszyny wirtualnej, którego szukasz w portalu nie jest już chroniony przez żadnego innego użytkownika lub innej subskrypcji.
+* **vCenter niepołączony**: Sprawdź, czy vCenter jest w stanie połączonym. Aby sprawdzić, przejdź do magazynu usługi Recovery Services > infrastruktura usługi Site Recovery > Serwery konfiguracji > kliknij na serwerze konfiguracji odpowiednich > zostanie otwarty blok z prawej strony ze szczegółami skojarzonych serwerów. Sprawdź, czy vCenter jest połączony. Jeśli komputer znajduje się w stanie "Niepodłączone", rozwiąż problem i następnie [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server) w portalu. Po tym maszyna wirtualna będzie wyświetlane w portalu.
+* **Wyłączone ESXi**: Jeśli host ESXi, pod którą znajduje się maszyna wirtualna znajduje się w stanie, wyłączenia następnie maszyna wirtualna nie będą wyświetlane lub nie będzie możliwe w witrynie Azure portal. Zasilania na hoście ESXi [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server) w portalu. Po tym maszyna wirtualna będzie wyświetlane w portalu.
+* **Oczekujące na ponowny rozruch**: W przypadku oczekuje na ponowny rozruch na maszynie wirtualnej, następnie nie będzie możliwe wybranie maszyny w witrynie Azure portal. Upewnij się, że ukończenie działania oczekiwanie na ponowny rozruch [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Po tym maszyna wirtualna będzie wyświetlane w portalu.
+* **Nie można odnaleźć adresu IP**: Jeśli maszyna wirtualna nie ma prawidłowego adresu IP skojarzone z nim, następnie nie będzie możliwe wybranie maszyny w witrynie Azure portal. Upewnij się, aby przypisać prawidłowego adresu IP do maszyny wirtualnej [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Po tym maszyna wirtualna będzie wyświetlane w portalu.
 
-## <a name="protected-virtual-machines-arent-available-in-the-portal"></a>Chronione maszyny wirtualne nie są dostępne w portalu
+## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Chronione maszyny wirtualne są wyszarzone na zewnątrz w portalu
 
-Maszyny wirtualne, które są replikowane w ramach odzyskiwania lokacji nie są dostępne w witrynie Azure portal, jeśli istnieją zduplikowane wpisy w systemie. Aby dowiedzieć się, jak usunąć przestarzałych wpisów i rozwiązać te problemy, zobacz [usługi Azure Site Recovery VMware na platformę Azure: Jak wyczyścić zduplikowane lub nieaktualne wpisy](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
+Maszyny wirtualne, które są replikowane w ramach odzyskiwania lokacji nie są dostępne w witrynie Azure portal, jeśli istnieją zduplikowane wpisy w systemie. Aby dowiedzieć się, jak usunąć przestarzałych wpisów i rozwiązać problem, zapoznaj się [usługi Azure Site Recovery VMware na platformę Azure: Jak wyczyścić zduplikowane lub nieaktualne wpisy](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5a92f4543f865141d446f5b681674961f6fef046
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021037"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412873"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -52,7 +52,12 @@ Można użyć następujących narzędzi do tworzenia i konfigurowania sieci wirt
 * Plik konfiguracji sieci (netcfg — tylko klasyczne sieci wirtualne). Zobacz [Konfigurowanie sieci wirtualnej przy użyciu pliku konfiguracji sieci](virtual-networks-using-network-configuration-file.md) artykułu.
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Zakresy adresów, które można użyć w mojej sieci wirtualne?
-Dowolny zakres adresów IP określonych w [RFC 1918](http://tools.ietf.org/html/rfc1918). Na przykład: 10.0.0.0/16.
+Dowolny zakres adresów IP określonych w [RFC 1918](http://tools.ietf.org/html/rfc1918). Na przykład: 10.0.0.0/16. Nie można dodać poniższe zakresy adresów:
+* 224.0.0.0/4 multiemisji)
+* 255.255.255.255/32 (emisji)
+* 127.0.0.0/8 (Loopback)
+* 169.254.0.0/16 (Link-local)
+* 168.63.129.16/32 (Internal DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>W mojej sieci wirtualne mogą mieć publiczne adresy IP?
 Tak. Aby uzyskać więcej informacji na temat zakresy publicznych adresów IP, zobacz [tworzenie sieci wirtualnej](manage-virtual-network.md#create-a-virtual-network). Publiczne adresy IP nie są bezpośrednio dostępne z Internetu.
@@ -367,11 +372,11 @@ Nie ma żadnego limitu całkowitej liczby punktów końcowych usługi sieci wirt
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Usługa Azure KeyVault|    127|
+|Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
-|Centrum zdarzeń Azure|   128|
+|Azure Event Hub|   128|
 |Azure Service Bus| 128|
-|Azure Data Lake Store w wersji 1|  100|
+|Azure Data Lake Store V1|  100|
  
 >[!NOTE]
 > Limity są poddawane zmiany według własnego uznania usługi platformy Azure. Zapoznaj się z dokumentacją odpowiedniej usługi, aby uzyskać szczegółowe informacje z usługi. 

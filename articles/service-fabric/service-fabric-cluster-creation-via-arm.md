@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ba870cf722f95fb6516e1969350d3d25ba280a8c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 06e0509f05352a023651d7121aa89e18e375ef32
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043791"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54428329"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Tworzenie klastra usługi Service Fabric przy użyciu usługi Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Szablon, który jest używany jest dostępna w [przykłady szablonów usługi Az
 Następujące polecenie, można utworzyć albo Windows lub klastrach systemu Linux, należy odpowiednio określić systemu operacyjnego. Polecenia programu PowerShell/interfejsu wiersza polecenia również danych wyjściowych dla certyfikatu w określonym *CertificateOutputFolder*; Jednakże, upewnij się, że folder certyfikat już utworzony. Wykonanie tego polecenia może w innych parametrów oraz przykład jednostki SKU maszyny Wirtualnej.
 
 > [!NOTE]
-> Następujące polecenie programu PowerShell działa tylko z programem Azure PowerShell Resource Manager w wersji > 6.1. Aby sprawdzić bieżącą wersję programu Azure PowerShell Resource Manager w wersji, uruchom następujące polecenie programu PowerShell "Get-Module AzureRM". Postępuj zgodnie z [ten link](/powershell/azure/install-azurerm-ps?view=azurermps-6.3.0) uaktualnienie wersji usługi Azure Resource Manager w programie PowerShell. 
+> Następujące polecenie programu PowerShell działa tylko z programem Azure PowerShell Resource Manager w wersji > 6.1. Aby sprawdzić bieżącą wersję programu Azure PowerShell Resource Manager w wersji, uruchom następujące polecenie programu PowerShell "Get-Module AzureRM". Postępuj zgodnie z [ten link](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.3.0) uaktualnienie wersji usługi Azure Resource Manager w programie PowerShell. 
 >
 >
 
@@ -292,7 +292,7 @@ W tym momencie masz działające na platformie Azure zabezpieczonego klastra. Na
 Składnię JSON i właściwości, aby użyć szablonu, zobacz [odwołanie do szablonu Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template

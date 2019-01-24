@@ -3,19 +3,19 @@ title: Uwagi dla deweloperów na temat używania zasad niestandardowych w usłud
 description: Uwagi dla deweloperów, od konfigurowania i konserwowania usługi Azure AD B2C za pomocą zasad niestandardowych.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ea884f6fecc1e8a0de1f6a0f8a4daafcdf612e9f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e0a3a295350fc75915cd839d4ac0da8e03866907
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272711"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844980"
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Informacje o wersji dla publicznej wersji zapoznawczej usługi Azure Active Directory B2C zasad niestandardowych
 Zestaw funkcji niestandardowych zasad jest teraz dostępna w wersji ewaluacyjnej w publicznej wersji zapoznawczej dla wszystkich usługi Azure Active Directory B2C (Azure AD B2C) klientów. Ten zestaw funkcji jest przeznaczona dla deweloperów tożsamości zaawansowanego tworzenia najbardziej złożonych rozwiązań tożsamości.  
@@ -65,8 +65,8 @@ Interfejsy z zewnętrznych składników i aplikacji
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |---------------------------------------------|-------------|---------|----|-------|
 | IDP-OpenIDConnect |  | x |  | na przykład Google + |
-| DOSTAWCA TOŻSAMOŚCI OAUTH2 |  | x |  | na przykład w serwisie Facebook  |
-| DOSTAWCA TOŻSAMOŚCI OAUTH1 |  | x |  | na przykład w usłudze Twitter |
+| IDP-OAUTH2 |  | x |  | na przykład w serwisie Facebook  |
+| IDP-OAUTH1 |  | x |  | na przykład w usłudze Twitter |
 | IDP-SAML |  | x |  | na przykład Salesforce, usług AD FS |
 | IDP-WSFED | x |  |  |  |
 | Jednostki uzależnionej firm OAUTH |  | x |  |  |
@@ -133,7 +133,7 @@ Interfejsy z zewnętrznych składników i aplikacji
 ### <a name="developer-interface"></a>Interfejs dla deweloperów
 | Cecha | Opracowywanie zawartości | Wersja zapoznawcza | Ogólna dostępność | Uwagi |
 |---------------------------------------------|-------------|---------|----|-------|
-| Portal Azure — IEF środowiska użytkownika |  | x |  |  |
+| Azure Portal-IEF UX |  | x |  |  |
 | Dzienniki UserJourney Insights aplikacji  |  | x |  |  |
 | Dzienniki zdarzeń szczegółowe informacje w aplikacji |x|  |  |  |
 

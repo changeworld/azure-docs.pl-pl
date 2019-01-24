@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: zarhoads
-ms.openlocfilehash: bbed197eb78e34c6e53802dfcfdcc192f780df33
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 84e01c319ab058c9abb05cd9882f4c25bea5cffb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465663"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462038"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zarządzanie maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
 W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Ten artykuł szczegółowo opisuje niektóre typowe polecenia interfejsu wiersza polecenia platformy Azure, które umożliwiają wykonywanie tych zadań.
@@ -37,7 +37,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Wyświetlanie maszyn wirtualnych w zestawie skalowania
-Aby wyświetlić listę wystąpień maszyn wirtualnych w zestawie skalowania, użyj [az vmss list-instances](/cli/azure/vmss#list-instances). Poniższy przykład wyświetla listę wszystkich wystąpień maszyn wirtualnych w zestawie o nazwie skalowania *myScaleSet* w *myResourceGroup* grupy zasobów. Należy podać własne wartości dla tych nazw:
+Aby wyświetlić listę wystąpień maszyn wirtualnych w zestawie skalowania, użyj [az vmss list-instances](/cli/azure/vmss). Poniższy przykład wyświetla listę wszystkich wystąpień maszyn wirtualnych w zestawie o nazwie skalowania *myScaleSet* w *myResourceGroup* grupy zasobów. Należy podać własne wartości dla tych nazw:
 
 ```azurecli
 az vmss list-instances \
@@ -46,7 +46,7 @@ az vmss list-instances \
     --output table
 ```
 
-Aby wyświetlić dodatkowe informacje na temat określonego wystąpienia maszyny Wirtualnej, Dodaj `--instance-id` parametr [az vmss get-instance-view](/cli/azure/vmss#get-instance-view) i określ wystąpienie, aby wyświetlić. Poniższy przykład wyświetla informacje o wystąpieniu maszyny Wirtualnej *0* w zestawu skalowania o nazwie *myScaleSet* i *myResourceGroup* grupy zasobów. Wprowadź własne nazwy w następujący sposób:
+Aby wyświetlić dodatkowe informacje na temat określonego wystąpienia maszyny Wirtualnej, Dodaj `--instance-id` parametr [az vmss get-instance-view](/cli/azure/vmss) i określ wystąpienie, aby wyświetlić. Poniższy przykład wyświetla informacje o wystąpieniu maszyny Wirtualnej *0* w zestawu skalowania o nazwie *myScaleSet* i *myResourceGroup* grupy zasobów. Wprowadź własne nazwy w następujący sposób:
 
 ```azurecli
 az vmss get-instance-view \
@@ -108,7 +108,7 @@ az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance
 
 
 ### <a name="start-vms-in-a-scale-set"></a>Uruchom maszyny wirtualne w zestawie skalowania
-Aby uruchomić co najmniej jedną maszynę wirtualną w zestawie skalowania, użyj [az vmss start](/cli/azure/vmss#az_vmss_start). Parametr `--instance-ids` umożliwia wskazanie maszyn wirtualnych, które mają zostać uruchomione. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione wszystkie maszyny wirtualne w zestawie skalowania. Aby uruchomić wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić spacjami.
+Aby uruchomić co najmniej jedną maszynę wirtualną w zestawie skalowania, użyj [az vmss start](/cli/azure/vmss). Parametr `--instance-ids` umożliwia wskazanie maszyn wirtualnych, które mają zostać uruchomione. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione wszystkie maszyny wirtualne w zestawie skalowania. Aby uruchomić wiele maszyn wirtualnych, każdy identyfikator wystąpienia należy oddzielić spacjami.
 
 Poniższy przykład uruchamia wystąpienie *0* w zestawu skalowania o nazwie *myScaleSet* i *myResourceGroup* grupy zasobów. Podaj własne wartości w następujący sposób:
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 861dfacb556b646a288ce7cf7c749cec858f8bd5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634230"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54432663"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Komunikatami o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication
 
@@ -41,7 +41,7 @@ Jeśli wystąpią błędy rozszerzenia serwera NPS dla usługi Azure Multi-Facto
 | Kod błędu | Komunikat o błędzie | Kroki rozwiązywania problemów |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Błąd: userObjectSid wyszukiwania nie powiodło się | Sprawdź, czy użytkownik istnieje w Twoim wystąpieniu usługi Active Directory w środowisku lokalnym. Jeśli używasz relacje zaufania między lasami, [się z pomocą techniczną](#contact-microsoft-support) Aby uzyskać dalszą pomoc. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Błąd: Alternatywne LoginId wyszukiwanie nie powiodło się. | Sprawdź, czy ma ustawioną LDAP_ALTERNATE_LOGINID_ATTRIBUTE [prawidłowego katalogu active directory atrybut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> LDAP_FORCE_GLOBAL_CATALOG jest ustawiona na wartość True lub LDAP_LOOKUP_FORESTS jest skonfigurowany z wartością niepustym, sprawdź skonfigurowano wykazu globalnego i że atrybut AlternateLoginId został dodany do niego. <br><br> Jeśli LDAP_LOOKUP_FORESTS jest skonfigurowany z wartością niepustym, sprawdź, czy wartość jest poprawna. Jeśli istnieje więcej niż jedną nazwę lasu, nazwy muszą być oddzielone średnikami, nie miejsca do magazynowania. <br><br> Jeśli te czynności nie rozwiąże problemu, [się z pomocą techniczną](#contact-microsoft-support) Aby uzyskać dalszą pomoc. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Błąd: Alternatywne wyszukiwania LoginId nie powiodło się | Sprawdź, czy ma ustawioną LDAP_ALTERNATE_LOGINID_ATTRIBUTE [prawidłowego katalogu active directory atrybut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> LDAP_FORCE_GLOBAL_CATALOG jest ustawiona na wartość True lub LDAP_LOOKUP_FORESTS jest skonfigurowany z wartością niepustym, sprawdź skonfigurowano wykazu globalnego i że atrybut AlternateLoginId został dodany do niego. <br><br> Jeśli LDAP_LOOKUP_FORESTS jest skonfigurowany z wartością niepustym, sprawdź, czy wartość jest poprawna. Jeśli istnieje więcej niż jedną nazwę lasu, nazwy muszą być oddzielone średnikami, nie miejsca do magazynowania. <br><br> Jeśli te czynności nie rozwiąże problemu, [się z pomocą techniczną](#contact-microsoft-support) Aby uzyskać dalszą pomoc. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Błąd: Alternatywne LoginId wartość jest pusta | Sprawdź, czy atrybut AlternateLoginId została skonfigurowana dla użytkownika. |
 
 ## <a name="errors-your-users-may-encounter"></a>Mogą wystąpić błędy użytkowników

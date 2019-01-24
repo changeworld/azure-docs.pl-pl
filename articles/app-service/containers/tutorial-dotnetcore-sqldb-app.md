@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fe6a1db295bc8fb1ab8e6c9d2d149be62871e733
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9695c3d40ee85cf1a46e078776c88ad2f61ed839
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629819"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465415"
 ---
 # <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji platformy .NET Core i usługi SQL Database w usłudze Azure App Service dla systemu Linux
 
@@ -364,11 +364,11 @@ Nadal wyświetlane są wszystkie istniejące elementy do wykonania. Po ponownym 
 
 Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić utworzoną aplikację.
 
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji platformy Azure.
+W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji na platformie Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-Domyślnie portal pokazuje stronę **Omówienie** aplikacji. Ta strona udostępnia widok sposobu działania aplikacji. Tutaj możesz również wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. Na kartach po lewej stronie strony są pokazane poszczególne strony konfiguracji, które można otworzyć.
+Domyślnie portal pokazuje stronę **Przegląd** aplikacji. Ta strona udostępnia widok sposobu działania aplikacji. Tutaj możesz również wykonywać podstawowe zadania zarządzania, takie jak przeglądanie, zatrzymywanie, uruchamianie, ponowne uruchamianie i usuwanie. Na kartach po lewej stronie strony są pokazane poszczególne strony konfiguracji, które można otworzyć.
 
 ![Strona usługi App Service w witrynie Azure Portal](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 
@@ -387,7 +387,7 @@ Które czynności umiesz wykonać:
 > * Strumieniowe przesyłanie dzienników z platformy Azure do terminala
 > * Zarządzanie aplikacją w witrynie Azure Portal
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak zamapować niestandardową nazwę DNS na aplikację.
+Przejdź do następnego samouczka, aby dowiedzieć się, jak zmapować niestandardową nazwę DNS na aplikację.
 
 > [!div class="nextstepaction"]
 > [Mapowanie istniejącej niestandardowej nazwy DNS na usługę Azure App Service](../app-service-web-tutorial-custom-domain.md)

@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 01/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 597b8f59ef6991f7868d3de481e98ed9a459077b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0eebfd8b75f428d3b8f6024ed6ee71c18c1309f6
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050799"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435978"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Rozwiązywanie problemów z konfiguracją serwera
 
@@ -58,6 +58,16 @@ Po zainstalowaniu agenta mobilności na maszynie źródłowej rejestruje się z 
 
 Ten błąd występuje, gdy usługa nie może odczytać danych z połączenia transportowego podczas instalowania agenta mobilności i rejestrowanie serwera konfiguracji. Aby rozwiązać ten problem, upewnij się, że protokół TLS 1.0 jest włączona na maszynie źródłowej.
 
+## <a name="vcenter-discovery-failures"></a>błędy wykrywania vCenter
+
+Aby można było rozwiązać błędy wykrywania vCenter, upewnij się, że ten serwer vCenter jest dodawany do ustawień serwera proxy listy obejścia. Aby wykonać to działanie
+
+- Pobierz narzędzie PsExec z [tutaj](https://aka.ms/PsExec) dostępu do zawartości użytkownika systemu.
+- Otwórz program Internet Explorer w systemie użytkownika zawartości, uruchamiając następujące wiersza polecenia programu psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"
+- Dodaj ustawienia serwera proxy w programie Internet Explorer, a następnie uruchom ponownie usługę tmanssvc.
+- Aby skonfigurować ustawienia serwera proxy DRA, uruchom cd dostawcy C:\Program Files\Microsoft Azure Site Recovery
+- Następnie wykonaj DRCONFIGURATOR. Plik EXE / configure /AddBypassUrls [Dodaj adres IP/nazwę FQDN programu vCenter Server oferowane w trakcie **poświadczenia serwera vCenter Server/vSphere ESXi Konfiguruj** kroku [wdrażanie serwera konfiguracji](vmware-azure-deploy-configuration-server.md#configure-settings)]
+
 ## <a name="change-the-ip-address-of-the-configuration-server"></a>Zmienianie adresu IP serwera konfiguracji
 
 Zdecydowanie zaleca się, że nie zmieniaj adresu IP serwera konfiguracji. Upewnij się, że wszystkie adresy IP, które są przypisane do serwera konfiguracji statycznych adresów IP. Nie używaj adresów IP protokołu DHCP.
@@ -70,7 +80,7 @@ Aby uniknąć tego błędu, upewnij się, że czas zegara systemowego nie jest t
 
 Nie można utworzyć certyfikatu, które są wymagane do uwierzytelniania Usługa Site Recovery. Po upewnieniu się, że korzystasz z Instalatora jako administrator lokalny, uruchom ponownie Instalatora.
 
-## <a name="register-the-source-machine-with-the-configuration-server"></a>Zarejestrowanie komputera źródłowego serwera konfiguracji
+## <a name="register-source-machine-with-configuration-server"></a>Zarejestrowanie komputera źródłowego serwera konfiguracji
 
 ### <a name="if-the-source-machine-runs-windows"></a>Jeśli na maszynie źródłowej jest uruchomiony Windows
 
@@ -98,7 +108,7 @@ Uruchom następujące polecenie na maszynie źródłowej:
 
 Ustawienie | Szczegóły
 --- | ---
-Sposób użycia | /usr/local/ASR/Vx/bin dysku CD<br /><br /> UnifiedAgentConfigurator.sh -i < adres IP serwera konfiguracji\> - P < ścieżka do pliku hasła\>
+Sposób użycia | cd /usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh -i < adres IP serwera konfiguracji\> - P < ścieżka do pliku hasła\>
 -i | Obowiązkowy parametr. Określa adres IP serwera konfiguracji. Użyj dowolny prawidłowy adres IP.
 -P |  Obowiązkowy. Pełna ścieżka pliku, w którym zapisywane są hasła. Użyj dowolnej prawidłowy folder.
 
