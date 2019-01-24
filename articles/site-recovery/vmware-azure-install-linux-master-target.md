@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: befc979b84c5ace3b8c787b184e52f09ada9ea2b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7ff73051abc5168b4dc3852a9008adc22d7d56c6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321414"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811863"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -185,7 +185,7 @@ Serwer główny serwer docelowy w usłudze Azure Site Recovery wymaga określone
 #### <a name="download-and-install-additional-packages"></a>Pobierz i zainstaluj dodatkowe pakiety
 
 > [!NOTE]
-> Upewnij się, że masz łączność z Internetem Aby pobrać i zainstalować dodatkowe pakiety. Jeśli nie masz łączności internetowej musisz ręcznie znaleźć tych pakietów RPM i zainstaluj je.
+> Upewnij się, że masz łączność z Internetem Aby pobrać i zainstalować dodatkowe pakiety. Jeśli nie masz łączności internetowej musisz ręcznie wyszukiwać te pakiety Deb i zainstaluj je.
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
