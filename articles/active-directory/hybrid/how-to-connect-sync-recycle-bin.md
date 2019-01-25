@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4836ffc8c6ab013ef5ad7a661db0df3254b6d4e1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 85b05766e99c68fa7054b04cc7d174e5ad24a15d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468786"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882417"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizacja programu Azure AD Connect: Włączanie kosza usługi AD
 Zalecane jest, Włącz funkcję Kosz usługi AD dla katalogów Active w środowisku lokalnym, które są synchronizowane z usługą Azure AD. 
@@ -39,9 +39,6 @@ Ta funkcja pomaga z przywracaniem obiekty użytkownika usługi Azure AD, wykonuj
 
 > [!NOTE]
 > Domyślnie usługa Azure AD przechowuje usunięte obiekty użytkownika usługi Azure AD w stanie usunięty nietrwale przez 30 dni, zanim zostaną one trwale usunięte. Jednak administratorzy mogą przyspieszać usuwania tych obiektów. Gdy obiekty są trwale usuwane, nie będzie można odzyskać, nawet wtedy, gdy lokalne jest włączona funkcja Kosza usługi AD.
-
->[!NOTE]
->Poprzednio po użytkownik został usunięty z zakresu synchronizacji w środowisku lokalnym i usunięte w chmurze, stan DirSyncEnabled konta błędnie została ustawiona na "False". Jeśli później, ten użytkownik został przywrócony ręcznie z Kosza usługi Azure AD, a potem nieprawidłowym stanie "chmura tylko do" konta. Teraz zostało to poprawione i wartość stanu DirSyncEnabled jest zawsze mieć "wartość True" po użytkownik zostanie usunięty z zakresu synchronizacji, następnie wszystkie usunięte nietrwale i ręcznie odtworzonych z Kosza usługi Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**

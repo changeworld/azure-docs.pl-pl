@@ -1,5 +1,5 @@
 ---
-title: Automatyczne skalowanie klastrów Azure HDInsight
+title: Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
 description: Funkcja automatycznego skalowania HDInsight umożliwia automatyczne skalowanie klastrów
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 043c83e2039d87b1650ba17f770ce16a2ad2c13d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 977466d77bee2d6fe49c0438aa1d9d4489f8eb5f
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811166"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888230"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatyczne skalowanie klastrów Azure HDInsight
+# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
 
 Klaster usługi Azure HDInsight automatycznie skaluje liczbę węzłów procesu roboczego w klastrze w górę i w dół w funkcji skalowania automatycznego na podstawie obciążenia w ramach wstępnie zdefiniowanego zakresu. Podczas tworzenia nowego klastra HDInsight można ustawić minimalną i maksymalną liczbę węzłów procesu roboczego. Automatyczne skalowanie, a następnie monitoruje analizami wymagania dotyczące zasobów obciążenia i skalowanie liczby węzłów procesu roboczego w górę lub w dół odpowiednio. Nie ma dodatkowych opłat dla tej funkcji.
 
@@ -27,15 +27,17 @@ Klaster usługi Azure HDInsight automatycznie skaluje liczbę węzłów procesu 
 > [!Note]
 > Automatyczne skalowanie jest obecnie obsługiwana tylko w przypadku usługi Azure HDInsight Hive, MapReduce i platformy Spark klastrów w wersji 3.6.
 
-Postępuj zgodnie z instrukcjami w [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) i po przejściu do kroku 5, **rozmiar klastra**, wybierz opcję **węzła procesu roboczego automatyczne skalowanie (wersja zapoznawcza)** jak pokazano poniżej. 
+Kroki tworzenia klastra HDInsight w kompletny przy użyciu witryny Azure Portal znajduje się w temacie [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).  Włączanie automatycznego skalowania podczas procesu tworzenia wymaga kilku odchyleń od kroki zwykle instalacji.  
 
-![Włącz opcję automatycznego skalowania węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/worker-node-autoscale-option.png)
+1. Wybierz **niestandardowe (rozmiar, ustawienia, aplikacje)** zamiast **szybkie tworzenie**.
+2. Krok 5 — niestandardowe **rozmiar klastra**, sprawdź **automatyczne skalowanie węzłów procesu roboczego** pole wyboru.
+3. Wprowadź odpowiednie wartości dla:  
+  &#8226;Początkowa **węzłów liczba procesów roboczych**.  
+  &#8226;**Minimum** liczba węzłów procesu roboczego.  
+  &#8226;**Maksymalna** liczby węzłów procesu roboczego.  
 
-Wybranie tej opcji, należy określić:
+![Włącz opcję automatycznego skalowania węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
-* Początkowa liczba węzłów procesu roboczego
-* Minimalna liczba węzłów procesu roboczego
-* Maksymalna liczba węzłów procesu roboczego
 
 Początkowa liczba węzłów procesu roboczego musi przypadać między minimalną i maksymalną, włącznie. Ta wartość Określa początkowy rozmiar klastra podczas jego tworzenia. Minimalna liczba węzłów procesu roboczego musi być większa niż zero.
 
@@ -43,12 +45,12 @@ Po wybraniu typu maszyny Wirtualnej dla każdego typu węzła, będzie można wy
 
 Twoja subskrypcja ma limit przydziału pojemności dla każdego regionu. Łączna liczba rdzeni węzły główne w połączeniu z maksymalną liczbę węzłów procesu roboczego nie może przekraczać limit przydziału pojemności. Jednak ten limit przydziału jest zmienny limit; zawsze możesz utworzyć bilet pomocy technicznej, jego zwiększenia, łatwo.
 
-> [!Note]
+> [!Note]  
 > Jeśli przekroczysz limit przydziału rdzeni całkowity, otrzymasz komunikat o błędzie informujący o tym, "maksymalna węzła przekroczyła dostępnych rdzeni w tym regionie, wybierz inny region lub skontaktuj się z pomocą techniczną, aby zwiększyć limit przydziału."
 
 ### <a name="create-cluster-with-an-resource-manager-template"></a>Tworzenie klastra przy użyciu szablonu usługi Resource Manager
 
-Podczas tworzenia klastra usługi HDInsight przy użyciu szablonu usługi Resource Manager, należy dodać następujące ustawienia w sekcji "węzeł procesu roboczego" "computeProfile":
+Kroki tworzenia klastra HDInsight w kompletny przy użyciu szablonów usługi Resource Manager znajduje się w temacie [tworzenie technologii Apache Hadoop clusters w HDInsight przy użyciu szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Podczas tworzenia klastra usługi HDInsight przy użyciu szablonu usługi Azure Resource Manager, należy dodać następujące ustawienia w sekcji "workernode" "computeProfile" i odpowiednio ją edytować:
 
 ```json
 {                            

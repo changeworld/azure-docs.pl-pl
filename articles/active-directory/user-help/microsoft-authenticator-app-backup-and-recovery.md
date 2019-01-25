@@ -8,15 +8,15 @@ ms.component: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 49cc5114106336f41d119b00db1bfa472f09d2d5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: bd15189a9aa70ab99971be9da1bcd1ff243c60d0
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821706"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904356"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator
 
@@ -39,11 +39,11 @@ Przed utworzeniem kopii zapasowej swoje poświadczenia muszą istnieć metody:
 Wymaganie, należy zalogować się do obu kont, które są razem zapewnia lepsze zabezpieczenia, aby uzyskać informacje o kopii zapasowej.
 
 **Aby włączyć w chmurze, kopii zapasowej**
--   Na urządzeniu z systemem iOS, wybierz **ustawienia**, wybierz opcję **kopii zapasowej**, a następnie Włącz **automatyczne kopie zapasowe**.
+-   Na urządzeniu z systemem iOS, wybierz **ustawienia**, wybierz opcję **kopii zapasowej**, a następnie Włącz **kopii zapasowej usługi iCloud**.
 
     Poświadczenia konta kopię zapasową na Twoim koncie usługi iCloud.
 
-    ![Ekran ustawień systemu iOS, wskazującą położenie automatycznej ustawień kopii zapasowej](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
+    ![iOS ustawień przedstawiający ekran lokalizacji usługi iCloud ustawienia kopii zapasowej](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-turn-on.png)
 
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>Odzyskiwanie poświadczeń konta nowe urządzenie
 Poświadczenia konta można odzyskać z Twojego konta usługi iCloud, przy użyciu tego samego konta Microsoft odzyskiwania, które można skonfigurować podczas tworzenia kopii zapasowych informacji.
@@ -101,7 +101,6 @@ Teraz, że wykonano kopię zapasową, a następnie odzyskać Twoje poświadczeni
 
 ## <a name="related-topics"></a>Powiązane tematy
 - [Get started with the Microsoft Authenticator app (Wprowadzenie do aplikacji Microsoft Authenticator)](microsoft-authenticator-app-how-to.md)  
-
 - [Microsoft Authenticator app FAQ (Aplikacja Microsoft Authenticator — często zadawane pytania)](microsoft-authenticator-app-faq.md)
 
 - [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

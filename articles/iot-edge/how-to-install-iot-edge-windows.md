@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 01/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: c280410816bfb48f21c68fe5d57b6ae18af0e855
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 27478de68cde9a097dcc160a4553839aef9a018c
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970665"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902809"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Zainstaluj środowisko uruchomieniowe usługi Azure IoT Edge na Windows
 
@@ -26,7 +26,7 @@ Aby dowiedzieć się więcej na temat środowiska uruchomieniowego usługi IoT E
 W tym artykule wymieniono kroki, aby zainstalować środowisko uruchomieniowe usługi Azure IoT Edge na usługi Windows x64 (AMD/Intel) systemu. Obsługa Windows jest obecnie w wersji zapoznawczej.
 
 >[!NOTE]
-Używanie kontenerów systemu Linux na ows Windows nie jest produkcyjnych zalecane lub obsługiwanych konfiguracji dla usługi Azure IoT Edge. Jednak może służyć do tworzenia i testowania.
+Używanie kontenerów systemu Linux w systemach Windows nie jest produkcyjnych zalecane lub obsługiwanych konfiguracji dla usługi Azure IoT Edge. Jednak może służyć do tworzenia i testowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,8 +37,8 @@ Użyj tej sekcji, aby sprawdzić, czy urządzenie Windows może obsługiwać us�
 Usługa Azure IoT Edge obsługuje różne wersje systemu Windows, w zależności od tego, czy korzystasz z kontenerów Windows lub kontenerów systemu Linux. 
 
 Najnowszą wersję usługi Azure IoT Edge przy użyciu kontenerów Windows można uruchomić w następujących wersjach systemu Windows:
-* Windows 10 lub IoT Core z października 2018 update (kompilacja 17763)
-* Windows Server 2019 (kompilacja 17763)
+* Windows 10 lub IoT Core z aktualizacją z października 2018 (kompilacja 17763)
+* Windows Server 2019 (build 17763)
 
 Najnowszą wersję usługi Azure IoT Edge z kontenerami systemu Linux można uruchomić w następujących wersjach systemu Windows: 
 * Windows 10 rozliczenia aktualizacji (kompilacja 14393) lub nowszej
@@ -64,7 +64,7 @@ W przypadku urządzeń Windows działa IoT Edge w scenariuszach produkcyjnych Mo
 
 Jeśli używasz Windows do tworzenia i testowania kontenery dla urządzeń z systemem Linux, możesz użyć [Docker for Windows](https://www.docker.com/docker-windows) jako aparat kontenera. Platformy docker można skonfigurować w celu [korzystanie z kontenerów systemu Linux](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers). Należy zainstalować platformę Docker i skonfigurować go przed zainstalowaniem usługi IoT Edge. Kontenery systemu Linux nie są obsługiwane na urządzeniach Windows w środowisku produkcyjnym. 
 
-Jeśli urządzenia usługi IoT Edge jest komputerem Windows, sprawdź, czy spełnia [wymagania systemowe](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) funkcji Hyper-v. Jeśli maszynę wirtualną, Włącz [wirtualizacji zagnieżdżonej](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) i przydziel co najmniej 2 GB pamięci RAM.
+Jeśli urządzenia usługi IoT Edge jest komputerem Windows, sprawdź, czy spełnia [wymagania systemowe](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) funkcji Hyper-v. Jeśli jest to maszyna wirtualna, włącz [zagnieżdżoną wirtualizację](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization) i przydziel co najmniej 2 GB pamięci.
 
 ## <a name="install-iot-edge-on-a-new-device"></a>Zainstaluj usługi IoT Edge na nowe urządzenie
 
@@ -175,8 +175,8 @@ Aby zainstalować usługi IoT Edge przy użyciu istniejącej konfiguracji, polec
 | **Usługa DPS** | Brak | **Przełącz parametru**. Każda instalacja musi być zadeklarowany ręcznie, punkty dystrybucji lub existingconfig.<br><br>Deklaruje zapewni urządzenia inicjowania obsługi usługi (DPS) identyfikator zakresu i identyfikator rejestracji urządzenia do aprowizacji za pośrednictwem usługi DPS.  |
 | **ExistingConfig** | Brak | **Przełącz parametru**. Każda instalacja musi być zadeklarowany ręcznie, punkty dystrybucji lub existingconfig.<br><br>Deklaruje, że plik config.yaml już istnieje na urządzeniu z jego informacje o udostępnianiu. |
 | **DeviceConnectionString** | Parametry połączenia, z urządzenia usługi IoT Edge zarejestrowane w usłudze IoT Hub, w pojedynczym cudzysłowie | **Wymagane** dla instalacji ręcznej. Jeśli nie zostaną podane parametry połączenia w parametrach skrypt, użytkownik jest monitowany jednego podczas instalacji. |
-| **Właściwości ScopeId** | Identyfikator zakresu z wystąpienia usługi Device Provisioning skojarzonych z Twoim Centrum IoT Hub. | **Wymagane** instalacji punktu dystrybucji. Jeśli nie podasz Identyfikatora zakresu, w polu Parametry skryptu, użytkownik jest monitowany jednego podczas instalacji. |
-| **Identyfikator** | Identyfikator rejestracji, generowane przez urządzenie | **Wymagane** instalacji punktu dystrybucji. Jeśli nie podasz identyfikator rejestracji, za pomocą parametrów skryptu, użytkownik jest monitowany jednego podczas instalacji. |
+| **ScopeId** | Identyfikator zakresu z wystąpienia usługi Device Provisioning skojarzonych z Twoim Centrum IoT Hub. | **Wymagane** instalacji punktu dystrybucji. Jeśli nie podasz Identyfikatora zakresu, w polu Parametry skryptu, użytkownik jest monitowany jednego podczas instalacji. |
+| **RegistrationId** | Identyfikator rejestracji, generowane przez urządzenie | **Wymagane** instalacji punktu dystrybucji. Jeśli nie podasz identyfikator rejestracji, za pomocą parametrów skryptu, użytkownik jest monitowany jednego podczas instalacji. |
 | **ContainerOs** | **Windows** lub **systemu Linux** | Jeśli brak kontenera jest określana przez system operacyjny Linux jest wartością domyślną. Dla kontenerów Windows aparatu kontenera będzie dostępny w instalacji. Dla kontenerów systemu Linux musisz zainstalować aparat container przed rozpoczęciem instalacji. Uruchamianie kontenerów systemu Linux na Windows jest przydatny rozwojowych, ale nie są obsługiwane w środowisku produkcyjnym. |
 | **Proxy** | Adres URL serwera proxy | Ten parametr należy uwzględnić, jeśli urządzenie musi przechodzić przez serwer proxy do uzyskiwania dostępu do Internetu. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |
 | **InvokeWebRequestParameters** | Tablica skrótów parametrów i wartości | Podczas instalacji są wprowadzane kilka żądań sieci web. Użyj tego pola, aby ustawić parametry te żądania sieci web. Ten parametr jest przydatne skonfigurować poświadczenia dla serwerów proxy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie urządzenia usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md). |

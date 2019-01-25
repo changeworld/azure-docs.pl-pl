@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 403fd0679e0850d758dd0e2f65cec3fe2ff79965
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 784599d682ab05b599f32b3fb502ed840f031ce8
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478607"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902011"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Program Azure AD Connect: Konta i uprawnienia
 
@@ -136,7 +136,7 @@ Wymagane uprawnienia, które jest zależny od funkcji opcjonalnych można włąc
 | Folder publiczne poczty programu Exchange |Odczyt atrybutów udokumentowane w artykule [folderu publicznego poczty Exchange](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) dla folderów publicznych. | 
 | Zapisywanie zwrotne haseł |Uprawnienia do zapisu do atrybutów w [wprowadzenie do zarządzania hasłami](../authentication/howto-sspr-writeback.md) dla użytkowników. |
 | Zapisywanie zwrotne urządzeń |Uprawnienia udzielone za pomocą skryptu programu PowerShell, zgodnie z opisem w [zapisywanie zwrotne urządzeń](how-to-connect-device-writeback.md). |
-| Zapisywanie zwrotne grup |Przeczytaj, tworzenia, aktualizowania lub usuwania grupy obiektów zsynchronizowane **grup usługi Office 365**.  Aby uzyskać więcej informacji, zobacz [zapisu zwrotnego grup](how-to-connect-preview.md#group-writeback).|
+| Zapisywanie zwrotne grup |Umożliwia zapisywanie zwrotne **grup usługi Office 365** do lasu za pomocą programu Exchange jest zainstalowana.  Aby uzyskać więcej informacji, zobacz [zapisu zwrotnego grup](how-to-connect-preview.md#group-writeback).|
 
 ## <a name="upgrade"></a>Uaktualnienie
 Kiedy uaktualniasz z jednej wersji programu Azure AD Connect do nowej wersji, potrzebne są następujące uprawnienia:

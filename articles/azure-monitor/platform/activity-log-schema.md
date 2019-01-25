@@ -8,15 +8,15 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9ad3ca2233237c9cb4aea0a7bd0c476f48613a9c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438239"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888145"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
-**Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./tutorial-dashboards.md) znajduje się na końcu tego artykułu.
+**Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
 
 ## <a name="administrative"></a>Administracyjne
 Ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akcji operacje wykonywane przy użyciu usługi Resource Manager. Typy zdarzeń, które powinny zostać wyświetlone tej kategorii należą "Tworzenie maszyny wirtualnej" i "Usuń sieciową grupę zabezpieczeń" każdej akcji podjętej przez użytkownika lub aplikacji przy użyciu usługi Resource Manager ma formę operacji na określonego typu zasobu. W przypadku typu operacji zapisu, usuń lub akcję, rekordy początkowego i powodzenie lub niepowodzenie tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna także wszelkie zmiany do kontroli dostępu opartej na rolach w ramach subskrypcji.
@@ -275,7 +275,7 @@ Ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, kt
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
 | properties |Zestaw `<Key, Value>` pary (Słownik), opisujący szczegóły zdarzenia.|
 | Properties.Title | Przyjazny dla użytkownika ciąg opisujący stan kondycji zasobu. |
-| properties.details | Ciąg przyjazny dla użytkownika, który opisuje dalsze szczegółowe informacje o zdarzeniu. |
+| properties.details | Przyjazny dla użytkownika ciąg, który opisuje dalsze szczegółowe informacje o zdarzeniu. |
 | properties.currentHealthStatus | Bieżący stan kondycji zasobu. Jeden z następujących wartości: "Dostępne", "Niedostępne", "Negatywny wpływ na dostępność" i "Nieznany". |
 | properties.previousHealthStatus | Poprzedni stan kondycji zasobu. Jeden z następujących wartości: "Dostępne", "Niedostępne", "Negatywny wpływ na dostępność" i "Nieznany". |
 | Properties.Type | Opis typu zdarzenia kondycji zasobów. |
@@ -356,9 +356,9 @@ Ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest 
 | description |Opis statyczny tekst alertu zdarzenia. |
 | eventDataId |Unikatowy identyfikator zdarzenia alertów. |
 | poziom |Poziom zdarzenia. Jeden z następujących wartości: "Krytyczne", "Error", "Ostrzeżenie" i "Informacyjne" |
-| resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest to nazwa grupy zasobów, która zawiera samego alertu. |
-| resourceProviderName |Nazwa dostawcy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest to nazwa dostawcy zasobów dla samego alertu. |
-| resourceId | Nazwa Identyfikatora zasobu zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest to identyfikator zasobu alertu samego zasobu. |
+| resourceGroupName |Nazwa grupy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest nazwa grupy zasobów, która zawiera samego alertu. |
+| resourceProviderName |Nazwa dostawcy zasobów zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest nazwa dostawcy zasobów dla samego alertu. |
+| resourceId | Nazwa Identyfikatora zasobu zasób objęty wpływem przypadku alertu dotyczącego metryki. Inne typy alertów jest identyfikator zasobu alertu samego zasobu. |
 | operationId |Identyfikator GUID współużytkowane przez zdarzenia, które odpowiadają jednej operacji. |
 | operationName |Nazwa operacji. |
 | properties |Zestaw `<Key, Value>` pary (Słownik), opisujący szczegóły zdarzenia. |
@@ -570,7 +570,7 @@ Ta kategoria zawiera rekord wszystkie alerty wygenerowane przez usługę Azure S
 | subscriptionId |Identyfikator subskrypcji platformy Azure. |
 
 ## <a name="recommendation"></a>Zalecenie
-Ta kategoria zawiera rekord nowych zaleceń, które są generowane dla usług. Przykład zalecenie byłoby "skorzystaj z zestawów dostępności dla zwiększenia odporności na uszkodzenia." Istnieją 4 typy zdarzeń zalecenia, które mogą być generowane: Wysokiej dostępności, wydajności, bezpieczeństwa i optymalizacji kosztów. 
+Ta kategoria zawiera rekord nowych zaleceń, które są generowane dla usług. Przykład zalecenie byłoby "skorzystaj z zestawów dostępności dla zwiększenia odporności na uszkodzenia." Istnieją cztery typy zdarzeń zalecenia, które mogą być generowane: Wysokiej dostępności, wydajności, bezpieczeństwa i optymalizacji kosztów. 
 
 ### <a name="sample-event"></a>Zdarzenie próbkowania
 ```json
@@ -757,7 +757,7 @@ Ta kategoria zawiera rekordy wszystkich efekt działania operacji wykonywanych p
 | Typ zasobu | Dla nowych zasobów jest typu obliczania. Dla istniejących zasobów zwraca "Microsoft.Resources/checkPolicyCompliance". |
 | resourceId | Identyfikator zasobu ocenianą zasobów. |
 | status | Ciąg opisujący stan wyniku oceny zasad. Większość oceny zasad zwrócić "Powodzenie", ale efektu odrzucenia zwraca "Niepowodzenie". Błędy w auditIfNotExists lub deployIfNotExists również zwracać "Niepowodzenie". |
-| subStatus | To pole jest puste w przypadku zdarzenia dotyczące zasad. |
+| subStatus | Pole jest puste dla zdarzeń dotyczących zasad. |
 | submissionTimestamp | Sygnatura czasowa, gdy zdarzenie stały się dostępne dla zapytań. |
 | subscriptionId | Identyfikator subskrypcji platformy Azure. |
 | properties.isComplianceCheck | Zwraca wartość "False", podczas wdrażania nowego zasobu lub aktualizacji istniejącego zasobu właściwości Menedżera zasobów. Wszystkie inne [wyzwalaczy oceny](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) spowodować "True". |
@@ -768,7 +768,7 @@ Ta kategoria zawiera rekordy wszystkich efekt działania operacji wykonywanych p
 
 ## <a name="mapping-to-diagnostic-logs-schema"></a>Mapowanie schematu dzienników diagnostycznych
 
-Podczas przesyłania strumieniowego dziennika aktywności platformy Azure na koncie magazynu lub przestrzeni nazw usługi Event Hubs, danych następuje [Azure diagnostyczne dzienniki schematu](./tutorial-dashboards.md). Poniżej przedstawiono Mapowanie właściwości w schemacie powyżej schematu dzienników diagnostycznych:
+Podczas przesyłania strumieniowego dziennika aktywności platformy Azure na koncie magazynu lub przestrzeni nazw usługi Event Hubs, danych następuje [Azure diagnostyczne dzienniki schematu](./diagnostic-logs-schema.md). Poniżej przedstawiono Mapowanie właściwości w schemacie powyżej schematu dzienników diagnostycznych:
 
 | Właściwości schematu dzienników diagnostycznych | Właściwości schematu interfejsu API REST dziennika aktywności | Uwagi |
 | --- | --- | --- |

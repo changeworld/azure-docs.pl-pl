@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: f12aed12138b1b16fcce90401ea0d65bd083675f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 02832ee84e02251239ab4364aac9ad0894c681b9
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546724"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884785"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -37,10 +37,10 @@ Usługa Azure SQL Analytics to w chmurze, tylko do monitorowania rozwiązania po
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| [Diagnostyka Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md) | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
-| [Konto usługi Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa log Analytics nie odczytać danych z konta magazynu. |
-| [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Nie | Agentów bezpośrednich Windows nie są używane przez to rozwiązanie. |
-| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Bezpośredni agenci dla systemu Linux nie są używane przez to rozwiązanie. |
+| [Diagnostyka Azure](../platform/collect-azure-metrics-logs.md) | **Tak** | Danych metryk i dzienników platformy Azure są wysyłane do usługi Log Analytics bezpośrednio przez platformę Azure. |
+| [Konto usługi Azure Storage](../platform/collect-azure-metrics-logs.md) | Nie | Usługa log Analytics nie odczytać danych z konta magazynu. |
+| [Agenci dla systemu Windows](../platform/agent-windows.md) | Nie | Agentów bezpośrednich Windows nie są używane przez to rozwiązanie. |
+| [Agenci dla systemu Linux](../learn/quick-collect-linux-computer.md) | Nie | Bezpośredni agenci dla systemu Linux nie są używane przez to rozwiązanie. |
 | [Grupa zarządzania programu System Center Operations Manager](../platform/om-agents.md) | Nie | Bezpośrednie połączenie agenta programu Operations Manager do usługi Log Analytics nie jest używana przez to rozwiązanie. |
 
 ## <a name="configuration"></a>Konfigurowanie
@@ -185,7 +185,7 @@ Automatyczne alerty w rozwiązaniu opiera się na piśmie zapytanie usługi Log 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Tworzenie alertów dla usługi Azure SQL Database
 
-Możesz z łatwością [tworzyć alerty](../../azure-monitor/platform/alerts-metric.md) przy użyciu danych pochodzących z zasobów usługi Azure SQL Database. Poniżej przedstawiono niektóre przydatne [rejestrowania zapytań](../../azure-monitor/log-query/log-query-overview.md) używanego przy użyciu alertu dzienników:
+Możesz z łatwością [tworzyć alerty](../platform/alerts-metric.md) przy użyciu danych pochodzących z zasobów usługi Azure SQL Database. Poniżej przedstawiono niektóre przydatne [rejestrowania zapytań](../log-query/log-query-overview.md) używanego przy użyciu alertu dzienników:
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Wysokie użycie procesora CPU w usłudze Azure SQL Database
 
@@ -297,6 +297,6 @@ W trakcie można używać bezpłatnie rozwiązanie ma zastosowanie użycie dane 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Użyj [wyszukiwań w dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe dane usługi Azure SQL.
-- [Tworzenie własnych pulpitów nawigacyjnych](../../azure-monitor/platform/dashboards.md) Pokazywanie danych Azure SQL.
-- [Tworzenie alertów](../../azure-monitor/platform/alerts-overview.md) po wystąpieniu określonych zdarzeń usługi Azure SQL.
+- Użyj [wyszukiwań w dziennikach](../log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe dane usługi Azure SQL.
+- [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) Pokazywanie danych Azure SQL.
+- [Tworzenie alertów](../platform/alerts-overview.md) po wystąpieniu określonych zdarzeń usługi Azure SQL.

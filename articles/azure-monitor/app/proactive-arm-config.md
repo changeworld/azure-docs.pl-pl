@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: edfd908166e4334bdfda0f043cba727cb0370405
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7e4756fb241500a2f153b452c6dc5a4e332bdd6b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853599"
+ms.locfileid: "54881600"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie regułami wykrywania inteligentnego usługi Application Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -157,7 +157,7 @@ Poniżej znajduje się tabela nazwy reguł wykrywania inteligentnego, w jakiej w
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Kto otrzymuje powiadomienia o alertach (model klasyczny)?
 
-W tej sekcji dotyczy alertów klasycznych inteligentne wykrywanie i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych] (.. /platform/Alerts-Classic.overview.MD oraz nowe środowisko alertów odnoszą się do [artykuł z omówieniem alerty](../platform/alerts-overview.md). Obecnie wykrywanie inteligentne powiadamia tylko pomocy technicznej, które środowisko alertów klasycznych. Jedynym wyjątkiem jest [usługi Wykrywanie inteligentne alertów na platformie Azure w chmurze](./proactive-cloud-services.md). Do kontrolowania alert powiadomienia dla alertów wykrywania inteligentnego w chmurze Azure services użyj [grup akcji](../platform/action-groups.md).
+W tej sekcji dotyczy alertów klasycznych inteligentne wykrywanie i tylko pomoże Ci zoptymalizować swoje powiadomień o alertach, aby upewnić się, że tylko przez adresatów żądaną otrzymywać powiadomienia. Aby dowiedzieć się więcej o różnicach między [alertów klasycznych](../platform/alerts-classic.overview.md) i nowego środowiska alertów odnoszą się do [artykuł z omówieniem alerty](../platform/alerts-overview.md). Obecnie wykrywanie inteligentne powiadamia tylko pomocy technicznej, które środowisko alertów klasycznych. Jedynym wyjątkiem jest [usługi Wykrywanie inteligentne alertów na platformie Azure w chmurze](./proactive-cloud-services.md). Do kontrolowania alert powiadomienia dla alertów wykrywania inteligentnego w chmurze Azure services użyj [grup akcji](../platform/action-groups.md).
 
 * Firma Microsoft zaleca użycie określonych adresatów powiadomień o alertach inteligentne wykrywanie klasycznego.
 

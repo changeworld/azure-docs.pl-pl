@@ -3,7 +3,7 @@ title: Jak używać zarządzanych tożsamości dla zasobów platformy Azure na M
 description: Przykłady dotyczące używania zestawów SDK usługi Azure za pomocą maszyny Wirtualnej platformy Azure zarządza tożsamości dla zasobów platformy Azure kodu.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: daveba
-ms.openlocfilehash: ad269365fe5318c4a954a32a59f8be193a509b25
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 0d6d122e7f05a14344292fe84608c384c5dcc306
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427886"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882059"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-with-azure-sdks"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure z zestawami SDK Azure 
 

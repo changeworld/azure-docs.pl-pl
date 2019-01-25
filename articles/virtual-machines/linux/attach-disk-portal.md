@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.component: disks
-ms.openlocfilehash: 668f14d491fe3e47a445e6d80efda69c017024e2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f6d875ee9bbc9d7a61ebca9dfa0726f50e2044d7
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470923"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904050"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny Wirtualnej z systemem Linux za pomocą portalu 
 W tym artykule pokazano, jak dołączyć istniejących i nowych dysków do maszyny wirtualnej z systemem Linux w witrynie Azure portal. Możesz również [dołączanie dysku danych do maszyny Wirtualnej z systemem Windows w witrynie Azure portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -99,7 +99,7 @@ Dane wyjściowe są podobne do poniższego przykładu:
 
 W tym miejscu *sdc* to dysk, który chcemy. 
 
-### <a name="partion-a-new-disk"></a>Partion nowy dysk
+### <a name="partition-a-new-disk"></a>Nowy dysk
 Jeśli używasz istniejącego dysku, który zawiera dane, przejdź do instalowania na dysku. Dołączając nowy dysk, musisz partycji na dysku.
 
 Użyj `fdisk` partycji dysku, stał się podstawowym dysku na partycji 1 i zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:

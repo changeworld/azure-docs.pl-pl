@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 176e282a53c19e303fd06629a0045a79fd200dea
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: b39c56e8dcae6cdac45160240a6b0f12a1ac0f2e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580375"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902554"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Zrozumienie, jak rabat związany z rezerwacją platformy Azure są stosowane do bazy danych SQL
 
@@ -32,13 +32,13 @@ Zarezerwowane wystąpienia maszyn wirtualnych, można zobaczyć [discount zrozum
 
 W poniższych przykładach pokazano, jak stosuje rabat w wysokości rezerwowanie pojemności bazy danych SQL w zależności od liczby rdzeni zakupiono i kiedy są one uruchamiane.
 
-- Scenariusz 1: Kup pojemności bazy danych SQL zastrzeżone dla 8-rdzeniowe bazy danych SQL. Możesz uruchomić 16 rdzeni SQL Database, która odpowiada pozostałe atrybuty rezerwacji. Opłaty są naliczane zgodnie z rzeczywistym użyciem cena 8 rdzeni wykorzystanie mocy obliczeniowej bazy danych SQL. Otrzymujesz rabat związany z rezerwacją za jedną godzinę 8-rdzeniowe wykorzystanie mocy obliczeniowej bazy danych SQL.
+- Scenariusz 1: Możesz kupić pojemności bazy danych SQL zastrzeżone dla 8-rdzeniowe bazy danych SQL. Możesz uruchomić 16 rdzeni SQL Database, która odpowiada pozostałe atrybuty rezerwacji. Opłaty są naliczane zgodnie z rzeczywistym użyciem cena 8 rdzeni wykorzystanie mocy obliczeniowej bazy danych SQL. Otrzymujesz rabat związany z rezerwacją za jedną godzinę 8-rdzeniowe wykorzystanie mocy obliczeniowej bazy danych SQL.
 
 Pozostałe tych przykładów założono, że pojemność zastrzeżone bazy danych SQL, którego kupujesz jest dla 16-rdzeniowe bazy danych SQL, i pozostałe atrybuty rezerwacji dopasowania uruchomionej bazy danych SQL.
 
 - Scenariusz 2: Możesz uruchomić dwie bazy danych SQL z 8 rdzeniami każda na godzinę. Rabat związany z rezerwacją 16 rdzeni jest stosowany do obliczeń użycie dla obu 8 rdzeni baz danych SQL.
-- Scenariusz 3: Możesz uruchomić jedną 16 rdzeń bazy danych SQL z 13: 00 do 13:30:00. Możesz uruchomić inny 16-rdzeniowe bazy danych SQL z 1:30 do 14: 00. Oba są objęte rabat związany z rezerwacją.
-- Scenariusz 4: Możesz uruchomić jedną 16 rdzeń bazy danych SQL z 13: 00 do 1:45 pm. Możesz uruchomić inny 16-rdzeniowe bazy danych SQL z 1:30 do 14: 00. Opłaty są naliczane zgodnie z rzeczywistym użyciem ceny 15-minutowy nachodzące na siebie. Rabat związany z rezerwacją dotyczy wykorzystanie mocy obliczeniowej w pozostałym czasie.
+- Scenariusz 3: Uruchom jedno 16 rdzeń bazy danych SQL z 13: 00 do 13:30:00. Możesz uruchomić inny 16-rdzeniowe bazy danych SQL z 1:30 do 14: 00. Oba są objęte rabat związany z rezerwacją.
+- Scenariusz 4: Uruchom jedno 16 rdzeń bazy danych SQL z 13: 00 do 1:45 pm. Możesz uruchomić inny 16-rdzeniowe bazy danych SQL z 1:30 do 14: 00. Opłaty są naliczane zgodnie z rzeczywistym użyciem ceny 15-minutowy nachodzące na siebie. Rabat związany z rezerwacją dotyczy wykorzystanie mocy obliczeniowej w pozostałym czasie.
 
 Aby zrozumieć i wyświetlić aplikację Azure rezerwacji w rozliczeniach raporty użycia, zobacz [użycia rezerwacji Understand Azure](https://go.microsoft.com/fwlink/?linkid=862757).
 

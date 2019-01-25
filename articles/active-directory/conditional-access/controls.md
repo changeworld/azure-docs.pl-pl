@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/22/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 39d49a223fb02d00af2309922ccd98a764264b4d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 57290384b31b868deb9e285fb05fec8ebe10a53f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452517"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902741"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jakie są mechanizmy kontroli dostępu w funkcji dostępu warunkowego usługi Azure Active Directory?
 
@@ -71,9 +71,15 @@ Przy użyciu usługi uwierzytelnianie wieloskładnikowe pomaga chronić zasoby p
 
 ### <a name="compliant-device"></a>Zgodne urządzenie
 
-Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest do udzielania dostępu do zasobów skonfigurowanych tylko z [urządzeń zarządzanych przy użyciu](require-managed-devices.md). Wymaganie zgodnego urządzenia stanowi jedną z opcji konieczne jest zdefiniowanie jest urządzenia zarządzanego. Jeśli ta opcja jest zaznaczona, zasady dostępu warunkowego przyznaje dostęp do podjętych z urządzeniami, które są [zarejestrowany](../devices/overview.md) do subskrypcji platformy Azure Active Directory i są oznaczone jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez użytkownika system zarządzania urządzeniami Przenośnymi innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia typów innych niż Windows 10 nie są obsługiwane.
+Można skonfigurować zasady dostępu warunkowego, które są oparte na urządzeniu. Celem zasad dostępu warunkowego opartego na urządzeniu jest tylko udzielić dostępu do aplikacji w wybranej chmurze z [urządzeń zarządzanych przy użyciu](require-managed-devices.md). Wymaganie urządzenie było oznaczone jako zgodne jest jedną z opcji należy ograniczyć dostęp do zarządzanych urządzeń. Urządzenie może zostać oznaczony jako zgodne przez usługę Intune (dla dowolnego systemu operacyjnego urządzenia) lub przez system MDM innej firmy dla urządzeń z systemem Windows 10. Systemy zarządzania urządzeniami Przenośnymi innej firmy dla systemu operacyjnego urządzenia typów innych niż Windows 10 nie są obsługiwane. 
 
-Aby uzyskać więcej informacji, zobacz [konfigurowania zasad dostępu warunkowego opartego na urządzeniu usługi Azure Active Directory](require-managed-devices.md).
+Urządzenie musi być zarejestrowany w usłudze Azure AD przed mogą zostać oznaczone jako zgodne. Aby zarejestrować urządzenie, masz trzy opcje: 
+
+- [Urządzeń zarejestrowanych w usłudze Azure AD](../devices/overview.md#azure-ad-registered-devices)
+- [Urządzenia przyłączone do usługi Azure AD](../devices/overview.md#azure-ad-joined-devices)  
+- [Urządzenia przyłączone do hybrydowej usługi Azure AD](../devices/overview.md#hybrid-azure-ad-joined-devices)
+
+Aby uzyskać więcej informacji, zobacz [sposób wymagać zarządzanych urządzeń w celu uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego](require-managed-devices.md).
 
 ### <a name="hybrid-azure-ad-joined-device"></a>Urządzenia przyłączone do hybrydowej usługi Azure AD
 

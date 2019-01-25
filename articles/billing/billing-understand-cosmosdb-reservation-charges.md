@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: cwatson
+ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: de7b0a2746c79242cb6538595ca3205455a2cc5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f83499e52b6405ec5475795a80c5a4325043a441
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582752"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904492"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Zrozumienie, jak rabat związany z rezerwacją jest stosowany do usługi Azure Cosmos DB
 
@@ -54,13 +54,13 @@ Rabat związany z rezerwacją jest stosowany do kosztów przepustowości godzina
 |Zachodnia RPA - 100 RU/s/godz. — Azure Cosmos DB |    Zachodnia RPA      |    1     |
 |Usługa Azure Cosmos DB — 100 RU/s/godz. — Indie Południowe|    Indie Południowe     |    1.0375    |
 |Azure Cosmos DB — 100 RU/s/godz. — Kanada Wschodnia|   Kanada Wschodnia      |    1.1      |
-|Azure Cosmos DB — 100 RU/s/godz. — Japonia Wschodnia|   Japonia Wschodnia      |    1,125     |
-|Azure Cosmos DB — 100 RU/s/godz. — Japonia Zachodnia|     Japonia Zachodnia    |   1,125       |
+|Azure Cosmos DB — 100 RU/s/godz. — Japonia Wschodnia|   Japonia Wschodnia      |    1.125     |
+|Azure Cosmos DB — 100 RU/s/godz. — Japonia Zachodnia|     Japonia Zachodnia    |   1.125       |
 |Usługa Azure Cosmos DB — 100 RU/s/godz. — Indie Zachodnie|     Indie Zachodnie    |    1.1375     |
 |Usługa Azure Cosmos DB — 100 RU/s/godz. — Indie środkowe|    Indie Środkowe     |  1.1375       |
 |Azure Cosmos DB — 100 RU/s/godz. — Australia Wschodnia|     Australia Wschodnia    |   1.15       |
 |Azure Cosmos DB — 100 RU/s/godz. — Kanada Środkowa|  Kanada Środkowa       |   1.2       |
-|Azure Cosmos DB — 100 RU/s/godz. — Francja środkowa|   Francja Środkowa      |    1,25      |
+|Azure Cosmos DB — 100 RU/s/godz. — Francja środkowa|   Francja Środkowa      |    1.25      |
 |Azure Cosmos DB — 100 RU/s/godz. — Brazylia Południowa|  Brazylia Południowa       |   1.5      |
 |Azure Cosmos DB — 100 RU/s/godz. — Australia Środkowa|   Australia Środkowa      |   1.5      |
 |Azure Cosmos DB — 100 RU/s/godz. — Australia Środkowa 2| Australia Środkowa 2        |    1.5     |

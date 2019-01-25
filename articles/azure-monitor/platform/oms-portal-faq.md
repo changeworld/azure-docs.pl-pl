@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 6b76249c85f9b8c64435043a75e39601d445ab0c
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384721"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883402"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -77,7 +77,7 @@ Zarządzanie większość ustawień podłączone źródło w **Zaawansowane usta
 | Ustawienie w portalu pakietu OMS | Odpowiednik w witrynie Azure portal |
 |:---|:---|
 | Serwery z systemem Windows   | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
-| Serwery z systemem Linux   | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
+| Linux   Servers   | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Azure Storage     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | System Center     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Office 365        | Zobacz [dokumentację dotyczącą rozwiązania do zarządzania usługi Office 365](../insights/solution-office-365.md) szczegółowe informacje dotyczące konfiguracji. |
@@ -111,7 +111,7 @@ W portalu pakietu OMS zainstalowaniu rozwiązania do zarządzania z galerii rozw
 Reguły alertów na podstawie zapytań usługi Log Analytics zarządza się teraz w [ujednolicone środowisko alertów](../../azure-monitor/platform/alerts-metric.md). Zobacz [sposób rozszerzyć alerty z usługą Log Analytics do usługi Azure Alerts](../../azure-monitor/platform/alerts-extend-tool.md) Aby uzyskać szczegółowe informacje dotyczące konfigurowania i używania alertów w witrynie Azure portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak uzyskać dostęp do moich pulpitów nawigacyjnych?
-[Mój pulpit nawigacyjny](dashboards.md) funkcji w usłudze Log Analytics jest przestarzała. Ta funkcja pozwala na zapewnienie prywatnej kolekcji części projektanta widoków i zostało zastąpione przez wbudowane funkcje pulpitu nawigacyjnego platformy Azure. Wizualizuj dane przy użyciu usługi Log Analytics można kontynuować [Projektant widoków](view-designer.md) udostępnionego widoków. Możesz również przypiąć wizualizacje z tych widoków lub [pojedynczych zapytań](../learn/tutorial-logs-dashboards.md) do pulpitów nawigacyjnych platformy Azure.
+**Mój pulpit nawigacyjny** funkcji w usłudze Log Analytics jest przestarzała. Ta funkcja pozwala na zapewnienie prywatnej kolekcji części projektanta widoków i zostało zastąpione przez wbudowane funkcje pulpitu nawigacyjnego platformy Azure. Wizualizuj dane przy użyciu usługi Log Analytics można kontynuować [Projektant widoków](view-designer.md) udostępnionego widoków. Możesz również przypiąć wizualizacje z tych widoków lub [pojedynczych zapytań](../learn/tutorial-logs-dashboards.md) do pulpitów nawigacyjnych platformy Azure.
 
 ## <a name="how-do-i-check-my-usage"></a>Jak sprawdzić użycia?
 Można teraz łatwo wyświetlać i zarządzać użycia i kosztów usługi Log Analytics, wybierając **użycie i szacunkowe koszty** w obszarze roboczym.

@@ -3,7 +3,7 @@ title: Tworzenie i zarządzanie nimi maszyny Wirtualnej z systemem Windows na pl
 description: Dowiedz się tworzyć i zarządzać nimi maszyny Wirtualnej z systemem Windows na platformie Azure przy użyciu języka Python.
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: zarhoads
-ms.openlocfilehash: b15b3b07768d531b748944529cc7e8e6df6d9808
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: cynthn
+ms.openlocfilehash: c6d1d7e7a6b96b049e313507e9862fde7dba332e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958877"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888808"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Tworzenie i zarządzanie nimi Windows maszyn wirtualnych na platformie Azure przy użyciu języka Python
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 3313d7490ed9a2f51831c76148a54b7ecf19d3b3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c14267f6fc7f8c6be9199b9f25b6430b5f1aa5dd
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338808"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887414"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Rozwiązanie monitorowanie VMware (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -34,13 +34,13 @@ Rozwiązanie korzysta z funkcji natywnej syslog hosta ESXi w celu wypychania dan
 ## <a name="install-and-configure-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
-* Dodaj rozwiązanie monitorowanie VMware do subskrypcji przy użyciu procesu opisanego w [zainstalować rozwiązanie do zarządzania](../../azure-monitor/insights/solutions.md#install-a-management-solution).
+* Dodaj rozwiązanie monitorowanie VMware do subskrypcji przy użyciu procesu opisanego w [zainstalować rozwiązanie do zarządzania](../insights/solutions.md#install-a-management-solution).
 
 #### <a name="supported-vmware-esxi-hosts"></a>Obsługiwane hosty VMware ESXi
 vSphere hosta ESXi 5.5, 6.0 i 6.5
 
 #### <a name="prepare-a-linux-server"></a>Przygotowanie na serwerze z systemem Linux
-Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie dane usługi syslog hostów ESXi. [Agenta Log Analytics dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) to punkt kolekcji wszystkie dane usługi syslog hosta ESXi. Do przekazywania dzienników na jednym serwerze z systemem Linux, jak w poniższym przykładzie, można użyć wielu hostach ESXi.
+Utwórz system operacyjny Linux maszyny Wirtualnej, aby otrzymywać wszystkie dane usługi syslog hostów ESXi. [Agenta Log Analytics dla systemu Linux](../learn/quick-collect-linux-computer.md) to punkt kolekcji wszystkie dane usługi syslog hosta ESXi. Do przekazywania dzienników na jednym serwerze z systemem Linux, jak w poniższym przykładzie, można użyć wielu hostach ESXi.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
@@ -129,7 +129,7 @@ W **VMware** widoku pulpitu nawigacyjnego bloki są uporządkowane według:
 
 Kliknij przycisk bloku, aby otworzyć okienko wyszukiwania usługi Log Analytics, która zawiera szczegółowe informacje specyficzne dla bloku.
 
-W tym miejscu można edytować zapytania wyszukiwania, aby zmodyfikować go dla określonego elementu. Aby uzyskać więcej informacji na temat tworzenia wyszukiwań w dziennikach, zobacz [znaleźć dane przy użyciu przeszukiwania dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+W tym miejscu można edytować zapytania wyszukiwania, aby zmodyfikować go dla określonego elementu. Aby uzyskać więcej informacji na temat tworzenia wyszukiwań w dziennikach, zobacz [znaleźć dane przy użyciu przeszukiwania dzienników w usłudze Log Analytics](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Znajdź wydarzenia hosta ESXi
 Jeden host ESXi generuje wiele dzienników, w oparciu o ich procesów. To rozwiązanie monitorowanie VMware centralizuje je i zawiera podsumowanie liczby zdarzeń. To scentralizowany widok pomaga zrozumieć, które hostów ESXi ma dużej liczby zdarzeń i jakie zdarzenia występują najczęściej w danym środowisku.
@@ -158,12 +158,12 @@ Rozwiązanie zawiera inne przydatne zapytania, które mogą pomóc Ci w zarządz
 
 
 #### <a name="save-queries"></a>Zapisywanie zapytań
-Zapisywanie zapytań wyszukiwania jest funkcją standard w usłudze Log Analytics i ułatwia przechowywanie żadnych zapytań, które znajdziesz przydatne. Po utworzeniu zapytania, które możesz się przydać, zapisz go, klikając **ulubione**. Zapisane zapytanie pozwala z łatwością wykorzystać ją później [Mój pulpit nawigacyjny](../../azure-monitor/platform/dashboards.md) strony, w którym można utworzyć własne niestandardowe pulpity nawigacyjne.
+Zapisywanie zapytań wyszukiwania jest funkcją standard w usłudze Log Analytics i ułatwia przechowywanie żadnych zapytań, które znajdziesz przydatne. Po utworzeniu zapytania, które możesz się przydać, zapisz go, klikając **ulubione**. Zapisane zapytanie pozwala z łatwością wykorzystać ją później [Mój pulpit nawigacyjny](../learn/tutorial-logs-dashboards.md) strony, w którym można utworzyć własne niestandardowe pulpity nawigacyjne.
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 
 #### <a name="create-alerts-from-queries"></a>Tworzenie alertów na podstawie zapytania
-Po utworzeniu zapytania, można użyć zapytań ostrzega w przypadku wystąpienia określonych zdarzeń. Zobacz [alertów w usłudze Log Analytics](../../azure-monitor/platform/alerts-overview.md) informacji o tym, jak tworzyć alerty. Przykłady alertów zapytania i inne przykłady zapytań, zobacz [monitorowanie VMware przy użyciu usługi Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) wpis w blogu.
+Po utworzeniu zapytania, można użyć zapytań ostrzega w przypadku wystąpienia określonych zdarzeń. Zobacz [alertów w usłudze Log Analytics](../platform/alerts-overview.md) informacji o tym, jak tworzyć alerty. Przykłady alertów zapytania i inne przykłady zapytań, zobacz [monitorowanie VMware przy użyciu usługi Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/06/15/monitor-vmware-using-oms-log-analytics) wpis w blogu.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 ### <a name="what-do-i-need-to-do-on-the-esxi-host-setting-what-impact-will-it-have-on-my-current-environment"></a>Co muszę na ESXi hosta ustawienie? Jaki wpływ będzie miał na Moje bieżącego środowiska?
@@ -204,6 +204,6 @@ Może istnieć kilka przyczyn:
     d. Jeśli plik nie istnieje lub nie użytkownika i ustawienia grupy jest nieprawidłowy, akcje naprawcze, [przygotowania serwera z systemem Linux](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [wyszukiwań w dziennikach](../../azure-monitor/log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
-* [Tworzenie własnych pulpitów nawigacyjnych](../../azure-monitor/platform/dashboards.md) przedstawiający dane hosta VMware.
-* [Tworzenie alertów](../../azure-monitor/platform/alerts-overview.md) po wystąpieniu określonych zdarzeń hostów VMware.
+* Użyj [rejestrowania zapytań](../log-query/log-query-overview.md) w usłudze Log Analytics, aby wyświetlić szczegółowe VMware obsługi danych.
+* [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) przedstawiający dane hosta VMware.
+* [Tworzenie alertów](../platform/alerts-overview.md) po wystąpieniu określonych zdarzeń hostów VMware.

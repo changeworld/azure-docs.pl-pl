@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: df8d337e7950400a86dcab14de4484f4811f43e2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b8ce3cdb55d164cefc8b85314a2fa79b4f901a08
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025083"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887346"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopiowanie danych do i z bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi Azure Data Factory
 
@@ -33,9 +33,13 @@ W szczególności ten łącznik wystąpienia zarządzanego Azure SQL Database ob
 - Jako źródła pobierania danych przy użyciu zapytania SQL lub procedury składowanej.
 - Jako ujścia dołączanie danych do tabeli docelowej lub wywołanie procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
 
+Program SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) nie jest obecnie obsługiwane. 
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć kopiowania danych z bazy danych wystąpienia zarządzanego Azure SQL, który znajduje się w sieci Wirtualnej, musisz skonfigurować własne środowisko IR w tej samej sieci Wirtualnej, do którego uzyskuje dostęp do bazy danych. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
+Aby użyć kopiowania danych z bazy danych wystąpienia zarządzanego Azure SQL, który znajduje się w sieci Wirtualnej, musisz skonfigurować własne środowisko Integration Runtime można dostęp do bazy danych. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
+
+W przypadku aprowizowania środowiska IR produktem w tej samej sieci wirtualnej jako wystąpienia zarządzanego, upewnij się, że Twoja maszyna IR jest w innej podsieci niż wystąpienia zarządzanego. W przypadku aprowizowania środowiska IR produktem w innej sieci wirtualnej niż wystąpienia zarządzanego, można użyć komunikacji równorzędnej sieci wirtualnej lub sieci wirtualnej w celu połączenia sieci wirtualnej. Zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -249,7 +253,7 @@ Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy us
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Musi być równa wartości właściwości type ujścia działania kopiowania: **SqlSink** | Yes |
-| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10 000) |
+| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10000) |
 | writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania.<br/>Dozwolone wartości to: przedziału czasu. Przykład: "00: 30:00" (30 minut). |Nie |
 | preCopyScript |Określ zapytanie SQL, działanie kopiowania w celu wykonania przed zapisanie danych w wystąpieniu zarządzanym. Jej będzie można wywołać tylko raz na kopiowania Uruchom. Ta właściwość umożliwia czyszczenie wstępnie załadowanych danych. |Nie |
 | sqlWriterStoredProcedureName |Nazwa procedury składowanej, który definiuje sposób dotyczą źródła danych do tabeli docelowej, np. czy wykonuje operację UPSERT lub przekształcenie za pomocą z własną logiką biznesową. <br/><br/>Należy pamiętać, tę procedurę składowaną będzie **wywoływane na partię**. Jeśli chcesz wykonać operację, która tylko jest uruchamiane jeden raz i nie ma nic wspólnego z źródła danych, np. Usuń/truncate, użyj `preCopyScript` właściwości. |Nie |
@@ -502,7 +506,7 @@ Podczas kopiowania danych z i do wystąpienia zarządzanego Azure SQL Database, 
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Dziesiętna |
-| sql_variant |Obiekt * |
+| sql_variant |Obiekt |
 | tekst |Ciąg, Char] |
 | time |Przedział czasu |
 | sygnatura czasowa |Byte[] |
@@ -511,6 +515,9 @@ Podczas kopiowania danych z i do wystąpienia zarządzanego Azure SQL Database, 
 | varbinary |Byte[] |
 | varchar |Ciąg, Char] |
 | xml |Xml |
+
+>[!NOTE]
+> Mapowania typów danych do typu dziesiętnego przejściowym aktualnie ADF obsługuje dokładności maksymalnie 28. Jeśli masz dane z dokładnością jest większy niż 28, należy wziąć pod uwagę do przekonwertowania na ciąg w zapytaniu SQL.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

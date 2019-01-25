@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
-ms.author: cwatson
-ms.openlocfilehash: b724fc7a887550b4115a988149b4b7a6c95de830
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584472"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902707"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>Opis zawartości rachunku dla klientów platformy Azure z umową Enterprise Agreement
 
@@ -31,8 +31,8 @@ Klienci platformy Azure z umową Enterprise Agreement otrzymywanie faktury przek
 
 Co najmniej jeden faktur można uzyskać w następujących przypadkach:
 
-- **Nadwyżka usługi**: opłaty za użycie Twojej organizacji przekracza saldo środków.
-- **Opłaty są naliczane oddzielnie**: usługi organizacji używane nie są objęte środków. Niezależnie od tego, Saldo środków, są fakturowane dla następujących usług:
+- **Nadwyżka usługi**: Opłaty za użycie Twoja organizacja może przekroczyć Saldo środków.
+- **Opłaty są naliczane oddzielnie**: Usługi organizacji używane nie są objęte środków. Niezależnie od tego, Saldo środków, są fakturowane dla następujących usług:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop 
@@ -44,7 +44,7 @@ Co najmniej jeden faktur można uzyskać w następujących przypadkach:
     - Visual Studio Enterprise (roczna)
     - Visual Studio Professional (miesięcznie)
     - Visual Studio Professional (roczna)
-- **Opłatach w portalu Marketplace**: zakupów w portalu Azure Marketplace i użycia nie są objęte środków Twojej organizacji i są rozliczane osobno. Administrator przedsiębiorstwa może włączać i wyłączać zakupów w portalu Marketplace w organizacji w witrynie Enterprise Portal. 
+- **Opłatach w portalu Marketplace**: Azure zakupów w portalu Marketplace i użycia nie są objęte środków Twojej organizacji i są rozliczane osobno. Administrator przedsiębiorstwa może włączać i wyłączać zakupów w portalu Marketplace w organizacji w witrynie Enterprise Portal. 
 
 Jeśli masz opłat należnych nadwyżka usługi i opłaty rozliczane oddzielnie w trakcie okresu rozliczeniowego, otrzymasz jedną fakturę, który zawiera oba rodzaje opłaty. Opłaty za pośrednictwem platform handlowych zawsze są fakturowane oddzielnie.
 

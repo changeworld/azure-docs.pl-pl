@@ -3,7 +3,7 @@ title: Za pomocą rozszerzenia maszyny Wirtualnej Azure Docker | Dokumentacja fi
 description: Dowiedz się, jak szybko i bezpiecznie wdrożyć w środowisku platformy Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure za pomocą rozszerzenia maszyny Wirtualnej Docker
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 ms.assetid: 936d67d7-6921-4275-bf11-1e0115e66b7f
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
-ms.author: zarhoads
-ms.openlocfilehash: 75959225d6fcc5487466ed26a21ba2d26c55cde9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 59dbbb8374455088d759a5e837b8d3bc22145d3e
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465937"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882767"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Utwórz środowisko platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej Docker
 
@@ -39,7 +39,7 @@ Aby uzyskać więcej informacji na temat różnych metod wdrażania, w tym przy 
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Wdrażanie szablonu przy użyciu rozszerzenia maszyny Wirtualnej Azure Docker
-Użyjmy istniejący szablon szybkiego startu, aby utworzyć maszynę Wirtualną Ubuntu, który używa rozszerzenia maszyny Wirtualnej Azure Docker do zainstalowania i skonfigurowania hosta platformy Docker. Można wyświetlić szablon w tym miejscu: [proste wdrożenie maszyny wirtualnej systemu Ubuntu przy użyciu rozwiązania Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Użyjmy istniejący szablon szybkiego startu, aby utworzyć maszynę Wirtualną Ubuntu, który używa rozszerzenia maszyny Wirtualnej Azure Docker do zainstalowania i skonfigurowania hosta platformy Docker. Aby wyświetlić szablon w tym miejscu: [Proste wdrożenie maszyny wirtualnej systemu Ubuntu przy użyciu rozwiązania Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 

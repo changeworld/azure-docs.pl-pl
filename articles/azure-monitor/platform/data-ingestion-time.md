@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2019
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 5db963b1ffea656455c06092c82ac95e85d87826
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 329472f3edee66db6b12e369ee8f944546ad4734
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213131"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900446"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Czas wprowadzania danych w usłudze Log Analytics
 Usługa Azure Log Analytics to usługa danych dużej skali w usłudze Azure Monitor, pełniącą tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje dane staną się dostępne w usłudze Log Analytics po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
@@ -45,8 +45,15 @@ Rozwiązań do zarządzania i agentów należy użyć różne strategie zbierani
 ### <a name="agent-upload-frequency"></a>Agent przekazywania częstotliwości
 Aby upewnić się, że agent usługi Log Analytics jest uproszczone, agent buforuje dzienniki i okresowo przesyła je do usługi Log Analytics. Przekaż częstotliwość waha się między 30 sekund i 2 minut w zależności od typu danych. Większość danych jest przekazywany w obszarze 1 minutę. Warunki sieciowe może negatywnie wpłynąć na czas oczekiwania na tych danych do usługi Log Analytics punktem pozyskiwania osiągną.
 
-### <a name="azure-logs-and-metrics"></a>Dzienniki platformy Azure i metryk 
-Dane dzienników aktywności może potrwać około 5 minut na udostępnienie w usłudze Log Analytics. Dane z dzienniki diagnostyczne i metryki może 1 – 15 minut, stanie się dostępny dla przetwarzania, w zależności od usługi platformy Azure. Po jej udostępnieniu, następnie przyjmują dodatkowe 30 – 60 sekund dla dzienników i więcej niż trzy minuty dla metryk dla danych do wysłania do usługi Log Analytics punktem pozyskiwania.
+### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Dzienniki aktywności platformy Azure, dzienniki diagnostyczne i metryki
+Usługa Azure data dodaje dodatkowy czas staną się dostępne w momencie pozyskiwania usługi Log Analytics do przetworzenia:
+
+- Dane z dzienników diagnostycznych potrwać 2 – 15 minut, w zależności od usługi platformy Azure. Zobacz [poniższe zapytanie](#checking-ingestion-time) do sprawdzenia tego opóźnienia w danym środowisku
+- Metryki platformy Azure zająć więcej niż trzy minuty do wysłania do usługi Log Analytics punktem pozyskiwania.
+- Dane dzienników aktywności potrwa około 10 – 15 minut do wysłania do usługi Log Analytics punktem pozyskiwania.
+
+Po jego udostępnieniu w momencie pozyskiwania danych ma dodatkowe 2 do 5 minut, które będą dostępne dla zapytań.
+
 
 ### <a name="management-solutions-collection"></a>Zarządzanie rozwiązaniami kolekcji
 Niektóre rozwiązania nie zbierają dane z agenta i może używać metody kolekcji, które wprowadza dodatkowe opóźnienie. Niektóre rozwiązania zbierania danych w regularnych odstępach czasu, bez próby kolekcji niemal w czasie rzeczywistym. Konkretne przykłady są następujące:

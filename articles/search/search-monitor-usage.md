@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie użycia i statystyk usługi wyszukiwania — usługa Azure Search
-description: Śledzenie użycia i indeks rozmiar zasobu usługi Azure Search, Usługa wyszukiwania w hostowanej chmurze Microsoft Azure.
+title: Statystyki użycia i zapytania zasobów dla usługi wyszukiwania — usługa Azure Search
+description: Pobierz metryki działań zapytania, zużycia zasobów i inne dane systemu z usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -8,97 +8,106 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: aaeb24b836b47f72d0be299738e6c90f599f8d1f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 5f8a4e7dcaa1bc2df71246f67d06fc63ae4fcd06
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631903"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883504"
 ---
 # <a name="monitor-an-azure-search-service-in-azure-portal"></a>Monitorowanie usługi Azure Search w witrynie Azure portal
 
-Usługa Azure Search udostępnia różne zasoby dla śledzenia użycia i wydajności usługi wyszukiwania. Daje ona dostęp do metryk, dzienników, statystyki indeksu i rozszerzone możliwości monitorowania w usłudze Power BI. W tym artykule opisano sposób włączania różne strategie monitorowania i jak interpretować dane wynikowe.
+Na stronie Przegląd usługi Azure Search możesz wyświetlić systemowe dane dotyczące użycia zasobów, a także zapytania metryki, takie jak zapytania na drugim (QPS), opóźnienie zapytań i Procent żądań, które zostały ograniczone. Ponadto można użyć portalu wykorzystywać szeroką gamę możliwości platformy Azure dla obszerniejsze zbieranie danych monitorowania. 
 
-## <a name="azure-search-metrics"></a>Metryki usługi Azure Search
-Metryki umożliwiają niemal w czasie rzeczywistym wgląd w usługi wyszukiwania i są dostępne dla każdej usługi, za pomocą żadna dodatkowa konfiguracja. Umożliwiają one można śledzić wydajność usługi przez maksymalnie 30 dni.
+W tym artykule identyfikuje i porównano opcje dostępne dla rejestrowania działań usługi Azure Search. Zawiera on instrukcje dotyczące włączania rejestrowania i dzienniki i sposobu rozszerzania na informacjach, które są zbierane.
 
-Usługa Azure Search służy do zbierania danych, aby uzyskać trzy różne metryki:
+Jeśli są wypełniając bilet pomocy technicznej, brak poszczególnych zadań i informacje, które należy podać. Pracowników działu pomocy technicznej mają informacje niezbędne do badania określonych problemów.  
 
-* Opóźnienie wyszukiwania: Czas usługę wyszukiwania, potrzebne do przetwarzania kwerend wyszukiwania, zagregowane na minutę.
-* Zapytania wyszukiwania na sekundę (QPS): Liczba wyszukiwania kwerend odebranych na sekundę, zagregowane na minutę.
-* Procent zapytań wyszukiwania z ograniczoną przepustowością: Procent zapytań wyszukiwania, które zostały ograniczone zagregowane na minutę.
+## <a name="metrics-at-a-glance"></a>Najistotniejszymi metrykami
 
-![Zrzut ekranu QPS działania][1]
+**Użycie** i **monitorowanie** sekcje wbudowaną omówienie wizualizacji wykorzystanie magazynu i metryk wykonywania zapytania. Te informacje będą dostępne, zaraz po uruchomieniu przy użyciu usługi, bez konieczności konfiguracji. Na tej stronie są odświeżane co kilka minut. Jeśli są finalizowanie decyzje dotyczące [którą warstwę dla obciążeń produkcyjnych](search-sku-tier.md), lub czy [dostosować liczbę aktywnych replik i partycji](search-capacity-planning.md), te metryki ułatwiają wykonywanie tych decyzji przez Pokazuje jak szybko są zużywane zasobów i jak bieżąca konfiguracja obsługuje istniejące obciążenia.
 
-### <a name="set-up-alerts"></a>Konfigurowanie alertów
-Na stronie szczegółów metryki można skonfigurować alerty, aby wyzwolić wiadomość e-mail z powiadomieniem lub zautomatyzowanych akcji, gdy Metryka przekracza wartość progową, które zostały zdefiniowane.
+**Użycia** karta przedstawia dostępność zasobów względem bieżącego [limity](search-limits-quotas-capacity.md). Na poniższej ilustracji jest dla bezpłatnej usługi, jest ograniczone do 3 obiekty danego typu i 50 MB miejsca. Podstawowa lub standardowa usługi mają wyższe limity i zwiększenie liczby partycji pamięci masowej rośnie wraz ze proporcjonalnie.
 
-Aby uzyskać więcej informacji na temat metryk Sprawdź pełną dokumentację dotyczącą usługi Azure Monitor.  
+![Stan zużycia względem skuteczne limity](./media/search-monitor-usage/usage-tab.png
+ "stan zużycia względem skuteczne limity")
 
-## <a name="how-to-track-resource-usage"></a>Jak śledzić użycie zasobów
-Śledzenie indeksy i rozmiaru dokumentu może pomóc aktywnie dostosować pojemność przed osiągnięcia górnego limitu, który został określony dla usługi. Można to zrobić w portalu lub programowo przy użyciu interfejsu API REST.
+## <a name="queries-per-second-qps-and-other-metrics"></a>Zapytań na sekundę (QPS) i innych metryk
 
-### <a name="using-the-portal"></a>Korzystanie z portalu
+**Monitorowanie** karcie pokazuje średnie ruchome dla metryki, takie jak wyszukiwanie *zapytań na sekundę* (QPS), zagregowane na minutę. 
+*Opóźnienie wyszukiwania* jest ilość czasu, Usługa wyszukiwania jest potrzebne do przetwarzania kwerend wyszukiwania, zagregowane na minutę. *Wyszukiwania z ograniczoną przepustowością zapytania procent* (niewyświetlany) jest wyrażoną w procentach kwerend wyszukiwania, które zostały ograniczone, również są agregowane na minutę.
 
-Do monitorowania użycia zasobów, wyświetlania liczby i statystyki dla usługi w [portal](https://portal.azure.com).
+![Zapytania na drugie działanie](./media/search-monitor-usage/monitoring-tab.png "zapytania na drugie działanie")
 
-1. Zaloguj się do [portalu](https://portal.azure.com).
-2. Otwórz pulpit nawigacyjny usługi Azure Search. Kafelki usługi można znaleźć na stronie głównej, lub możesz przejść do usługi z przeglądania na pasku dostępu.
+## <a name="activity-logs"></a>Dzienniki aktywności
 
-Sekcja użycia zawiera miernika, informujące o tym, jaka część dostępne zasoby są obecnie używane. Aby uzyskać informacji na temat limitów za daną usługę, indeksów, dokumenty i magazynu, zobacz [limitów usług](search-limits-quotas-capacity.md).
+**Dziennika aktywności** zbiera informacje z usługi Azure Resource Manager. Przykładami informacji zawartych w dzienniku aktywności tworzenia lub usuwania usługi aktualizowanie grupy zasobów, sprawdzanie dostępności nazwy lub pobieranie klucza dostępu usługi do obsługi żądania. 
 
-  ![Kafelek użycie][2]
+Możesz uzyskać dostęp **dziennika aktywności** z okienka nawigacji po lewej stronie lub powiadomienia w poleceniu okna górny pasek lub z **diagnozowanie i rozwiązywanie problemów** strony.
 
-> [!NOTE]
-> Na powyższym zrzucie ekranu jest bezpłatna usługa, która może zawierać maksymalnie jedną replikę i każdej partycji i można tylko hosta 3 indeksów, 10 000 dokumentów lub 50 MB danych, osiągnięta jako pierwsza. Utworzone w warstwie podstawowa lub standardowa usługi mają znacznie większe limity usługi. Aby uzyskać więcej informacji na temat wybierania warstwy, zobacz [wybierz jednostkę SKU lub warstwy](search-sku-tier.md).
->
->
+Użytkowanych zadań, takich jak tworzenie indeksu lub usuwanie źródła danych zostanie wyświetlone powiadomienie ogólnych, takich jak "Pobierz Admin Key" dla każdego żądania, ale nie sam określonej akcji. Ten poziom informacji, należy włączyć dodatek rozwiązania do monitorowania.
 
-### <a name="using-the-rest-api"></a>Korzystanie z interfejsu API REST
-Zestaw SDK platformy .NET i interfejsu API REST usługi Azure Search zapewniają programistyczny dostęp do metryk usług.  Jeśli używasz [indeksatory](https://msdn.microsoft.com/library/azure/dn946891.aspx) ładowanie indeksu z bazy danych SQL Azure lub usługi Azure Cosmos DB, interfejsu API jest dostępnych numerów, potrzebujesz.
+## <a name="add-on-monitoring-solutions"></a>Dodatek rozwiązania do monitorowania
 
-* [Pobieranie statystyki indeksu](/rest/api/searchservice/get-index-statistics)
-* [Liczba dokumentów](/rest/api/searchservice/count-documents)
-* [Pobierz stan indeksatora](/rest/api/searchservice/get-indexer-status)
+Usługa Azure Search nie przechowuje żadnych danych poza obiektów, którymi zarządza, co oznacza dziennika, które dane mają być przechowywane zewnętrznie. Można skonfigurować dowolne poniższe zasoby, jeśli chcesz zachować dane dzienników. 
 
-## <a name="how-to-export-logs-and-metrics"></a>Eksportowanie dzienników i metryk
+W poniższej tabeli porównano opcje przechowywania dzienników oraz dodanie, szczegółowe monitorowanie operacji usługi i obciążeń związanych z zapytaniami za pomocą usługi Application Insights.
 
-Dzienniki operacji można wyeksportować do usługi i dane pierwotne dotyczące metryk, opisanego w poprzedniej sekcji. Let, wiesz, jak usługa jest używana i mogą być używane z usługi Power BI, gdy dane są kopiowane do konta magazynu dzienników operacji. Usługa Azure search udostępnia monitorowania pakietu zawartości usługi Power BI, w tym celu.
+| Zasób | Używane dla |
+|----------|----------|
+| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | [Analiza ruchu wyszukiwania](search-traffic-analytics.md). Jest to jedyne rozwiązanie, które znajdują się dodatkowe informacje dotyczące żądań, wykraczając poza wartości określone w schematach rejestrowanie i metryki, które muszą być poniżej. Dzięki tej metodzie można kopiowanie i wklejanie kod Instrumentacji do plików źródłowych, aby kierować informacje o żądaniach do usługi Application Insights do analizy w danych wejściowych z termin query, zapytania z żadnych wyników i tak dalej. Firma Microsoft zaleca Power BI jako fronton analiza danych przechowywanych w usłudze Application Insights.  |
+| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Żądania i metryki, na podstawie jednej schematów poniżej. Zdarzenia są rejestrowane na kontener obiektów Blob. Firma Microsoft zaleca programu Excel lub Power BI jako fronton analiz do danych przechowywanych w usłudze Azure Blob storage.|
+| [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) | Żądania i metryki, w oparciu o schematy opisany w tym artykule. Wybierz tę opcję jako usługa zbierania danych alternatywnych dla bardzo dużych dzienników. |
 
+Usługa Azure search oferuje funkcje monitorowania [pakiet zawartości usługi Power BI](https://app.powerbi.com/getdata/services/azure-search) tak, aby analizować dane dzienników. Pakiet zawartości składa się z raportów skonfigurowany do automatycznego nawiązywania połączenia danych i zapewniają wizualizację wyników analizy danych dotyczących usługi wyszukiwania. Aby uzyskać więcej informacji, zobacz [stronę pomocy pakietu zawartości](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
 
-### <a name="enabling-monitoring"></a>Włączanie monitorowania
-Otwórz swoją usługę Azure Search w [witryny Azure portal](https://portal.azure.com) pod opcją Włącz monitorowanie.
+Opcji magazynu obiektów Blob jest dostępna jako bezpłatna usługa udostępniona, dzięki czemu możesz wypróbować ją bezpłatnie przez okres istnienia subskrypcji platformy Azure. Następna sekcja przeprowadzi Cię przez kroki włączania i używania usługi Azure Blob storage do zbierania i uzyskać dostęp do danych dziennika utworzone przez operacje usługi Azure Search.
 
-Wybierz dane, które mają zostać wyeksportowane: Dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do usługi Log Analytics.
+## <a name="enable-logging"></a>Włącz rejestrowanie
 
-![Jak włączyć monitorowanie w portalu][3]
+Rejestrowanie obciążeń indeksowania i zapytania jest domyślnie wyłączona i zależy dodatek rozwiązania dla infrastruktury rejestrowania i magazynu zewnętrznego. Przez siebie tylko utrwalonych danych w usłudze Azure Search jest indeksów, więc dzienników muszą być przechowywane w innym miejscu.
 
-Aby włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
+W tej sekcji dowiesz się, jak używać magazynu obiektów Blob zawierają danych zarejestrowanych zdarzeń i metryk.
 
-### <a name="logs-and-metrics-schemas"></a>Schematy dzienniki i metryki
-Gdy dane są kopiowane do konta magazynu, dane są sformatowane jako JSON i jego miejsce w dwóch kontenerów:
+1. [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) Jeśli nie masz jeszcze jeden. Należy je umieścić w tej samej grupie zasobów usługi Azure Search, aby uprościć czyszczenie później, jeśli chcesz usunąć wszystkie zasoby używane w tym ćwiczeniu.
+
+2. Otwórz stronę przeglądu usługi wyszukiwania w sieci. W okienku nawigacji po lewej stronie, przewiń w dół do **monitorowanie** i kliknij przycisk **Włącz monitorowanie**.
+
+   ![Aby włączyć monitorowanie](./media/search-monitor-usage/enable-monitoring.png "Włącz monitorowanie")
+
+3. Wybierz dane, które mają zostać wyeksportowane: Dzienniki, metryki lub obu. Możesz skopiować go do konta magazynu, wysyłać je do Centrum zdarzeń lub wyeksportować je do usługi Log Analytics.
+
+   Aby uzyskać dane archiwalne do magazynu obiektów Blob na koncie magazynu, musi istnieć. Kontenery i obiekty BLOB zostaną utworzone podczas eksportowania danych dziennika.
+
+   ![Konfigurowanie obiektu blob magazynu archiwum](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurowanie obiektu blob magazynu w warstwie archiwum")
+
+4. Zapisz profil.
+
+5. Logowania przez tworzenie lub usuwanie obiektów dla testu (generuje dziennik operacji) i wysyłaniem zapytań (generuje metryk). 
+
+Rejestrowanie jest włączone po zapisaniu profilu, kontenery są tworzone tylko wtedy, gdy występuje zdarzenie dotyczące dziennika lub miary. Może potrwać kilka minut, zanim kontenerów są wyświetlane. Możesz [wizualizowanie danych w usłudze Power BI](#analyze-with-power-bi) gdy stanie się dostępna.
+
+Gdy dane są kopiowane do konta magazynu, dane te są w formacie JSON, a następnie umieszczony w dwóch kontenerów:
 
 * insights — dzienniki operationlogs: dzienników ruchu wyszukiwania
 * insights — metryki pt1m: dla metryki
 
 Brak obiektu blob na godzinę na kontener.
 
-Przykładowa ścieżka: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2015/m=12/d=25/h=01/m=00/name=PT1H.json`
+Przykładowa ścieżka: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json`
 
-#### <a name="log-schema"></a>Schemat dziennika
-Dzienniki obiektów blob zawierają dzienniki ruchu usługi wyszukiwania.
-Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika.
-Każdy obiekt blob ma rekordów o nieudanej operacji, które miało miejsce w ciągu jednej godziny.
+## <a name="log-schema"></a>Schemat dziennika
+Obiekty BLOB, zawierające dzienniki ruchu usługi wyszukiwania są skonstruowane zgodnie z opisem w tej sekcji. Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika. Każdy obiekt blob zawiera rekordy dla wszystkich operacji, które miały miejsce w ciągu jednej godziny.
 
 | Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
-| time |datetime |"2015-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
 | resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
 | operationName |ciąg |"Query.Search" |Nazwa operacji |
-| operationVersion |ciąg |"2015-02-28" |Używana wersja interfejsu api |
+| operationVersion |ciąg |"2017-11-11" |Używana wersja interfejsu api |
 | category |ciąg |"OperationLogs" |Stałe |
 | resultType |ciąg |Komunikat "success" |Możliwe wartości: Powodzenie lub niepowodzenie |
 | resultSignature |int |200 |Kod wyniku protokołu HTTP |
@@ -110,17 +119,19 @@ Każdy obiekt blob ma rekordów o nieudanej operacji, które miało miejsce w ci
 | Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
 | Opis |ciąg |"Pobierz /indexes('content')/docs" |Operacja punktu końcowego |
-| Zapytanie |ciąg |"? wyszukiwania = AzureSearch & $count = true & parametru api-version = 2015-02-28" |Parametry zapytania |
+| Zapytanie |ciąg |"?search=AzureSearch&$count=true&api-version=2017-11-11" |Parametry zapytania |
 | Dokumenty |int |42 |Liczba przetworzonych dokumentów |
 | indexName |ciąg |"testindex" |Nazwa indeksu skojarzone z operacją |
 
-#### <a name="metrics-schema"></a>Schemat metryki
+## <a name="metrics-schema"></a>Schemat metryki
+
+Metryk jest przechwytywana dla żądań zapytań.
 
 | Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
 | resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/>FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twój identyfikator zasobu |
 | MetricName |ciąg |"Opóźnienie" |Nazwa metryki |
-| time |datetime |"2015-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
 | średnia |int |64 |Średnia wartość próbek pierwotnych w odstępie czasu metryki |
 | minimalnie |int |37 |Minimalna wartość nieprzetworzoną próbek w odstępie czasu metryki |
 | maksymalnie |int |78 |Wartość maksymalna pierwotne próbek w odstępie czasu metryki |
@@ -135,23 +146,39 @@ Pomyśl o tym scenariuszu podczas jednej minuty: sekundy wysoki załadować ozna
 
 Aby uzyskać ThrottledSearchQueriesPercentage, minimalna, maksymalna, średnia i total, wszystkie mają taką samą wartość: procent zapytań wyszukiwania, które zostały ograniczone z łączna liczba zapytań wyszukiwania w ciągu jednej minuty.
 
-## <a name="analyzing-your-data-with-power-bi"></a>Analizowanie danych przy użyciu usługi Power BI
+## <a name="analyze-with-power-bi"></a>Analizowanie za pomocą usługi Power BI
 
-Firma Microsoft zaleca używanie [usługi Power BI](https://powerbi.microsoft.com) można badać i wizualizować dane. Można łatwo połączyć z kontem magazynu platformy Azure i szybko zacząć analizować dane.
+Firma Microsoft zaleca używanie [usługi Power BI](https://powerbi.microsoft.com) można badać i wizualizować dane, zwłaszcza, jeśli włączono [analiza ruchu wyszukiwania](search-traffic-analytics.md). Aby uzyskać więcej informacji, zobacz [stronę pomocy pakietu zawartości](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
 
-Usługa Azure Search udostępnia [pakiet zawartości usługi Power BI](https://app.powerbi.com/getdata/services/azure-search) pozwala na monitorowanie i zrozumienie ruchu wyszukiwania przy użyciu wstępnie zdefiniowanych wykresów i tabel. Zawiera zestaw raportów usługi Power BI, które automatyczne łączenie z danymi i zapewniają wizualizację wyników analizy danych dotyczących usługi wyszukiwania. Aby uzyskać więcej informacji, zobacz [stronę pomocy pakietu zawartości](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/).
+Połączenia wymagają magazynu nazwę oraz klucz dostępu konta, którą możesz pobrać ze strony portalu platformy Azure na **klucze dostępu** strony pulpitu nawigacyjnego konta magazynu.
 
-![Pulpit nawigacyjny usługi Power BI dla usługi Azure Search][4]
+1. Zainstaluj [usługi Power BI Content Pack](https://app.powerbi.com/getdata/services/azure-search). Pakiet zawartości dodaje wstępnie zdefiniowanych wykresów i tabel przydatne podczas analizowania dodatkowe dane przechwycone dla analiza ruchu wyszukiwania. 
+
+   Jeśli używasz magazynu obiektów Blob lub inny mechanizm magazynu, a nie dodano Instrumentacji w kodzie, możesz pominąć ten pakiet zawartości i korzystanie z wbudowanych wizualizacji usługi Power BI.
+
+2. Otwórz **usługi Power BI**, kliknij przycisk **Pobierz dane** > **usług** > **usługi Azure Search**.
+
+3. Wprowadź nazwę konta magazynu, wybierz **klucz** do uwierzytelniania i Wklej klucz dostępu.
+
+4. Importowanie danych, a następnie kliknij przycisk **wyświetlania danych**.
+
+Poniższy zrzut ekranu przedstawia wbudowanych raportów i wykresów na potrzeby analizowania, analiza ruchu wyszukiwania.
+
+![Pulpit nawigacyjny usługi Power BI dla usługi Azure Search](./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png "nawigacyjnym usługi Power BI dla usługi Azure Search")
+
+## <a name="get-sys-info-apis"></a>Uzyskaj informacje o sys interfejsów API
+Zarówno w przypadku interfejsu API REST usługi Azure Search, jak i zestawu .NET SDK zapewniają programowy dostęp do informacji metryki, indeksu i indeksatora usługi i liczby dokumentów.
+
+* [Zebranie statystyk, usługi](/rest/api/searchservice/get-service-statistics)
+* [Pobieranie statystyki indeksu](/rest/api/searchservice/get-index-statistics)
+* [Liczba dokumentów](/rest/api/searchservice/count-documents)
+* [Pobierz stan indeksatora](/rest/api/searchservice/get-indexer-status)
+
+Aby włączyć przy użyciu programu PowerShell lub interfejsu wiersza polecenia platformy Azure, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przegląd [skalowanie replik i partycji](search-limits-quotas-capacity.md) wskazówki dotyczące sposobu równoważenia przydziału partycji i replik dla istniejącej usługi.
 
-Odwiedź stronę [Zarządzanie usługą wyszukiwania w systemie Microsoft Azure](search-manage.md) więcej informacji na temat administrowania usługą lub [wydajność i optymalizacja](search-performance-optimization.md) dla wskazówki dotyczące dostrajania.
+[Zarządzanie usługą wyszukiwania w systemie Microsoft Azure](search-manage.md) więcej informacji na temat administrowania usługą i [wydajność i optymalizacja](search-performance-optimization.md) dla wskazówki dotyczące dostrajania.
 
-Dowiedz się więcej na temat tworzenia zachwycającymi raportami. Zobacz [wprowadzenie do usługi Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) Aby uzyskać szczegółowe informacje
+Dowiedz się więcej na temat tworzenia zachwycającymi raportami. Zobacz [wprowadzenie do usługi Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) Aby uzyskać szczegółowe informacje.
 
-<!--Image references-->
-[1]: ./media/search-monitor-usage/AzSearch-Monitor-BarChart.PNG
-[2]: ./media/search-monitor-usage/AzureSearch-Monitor1.PNG
-[3]: ./media/search-monitor-usage/AzureSearch-Enable-Monitoring.PNG
-[4]: ./media/search-monitor-usage/AzureSearch-PowerBI-Dashboard.png

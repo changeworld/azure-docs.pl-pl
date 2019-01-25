@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: 19fd83f19a8eb8c24beeade650544fbe03ca5b6a
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 51334f7b99b4e60334e6334f5a79ce5933167257
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52580954"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900124"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Rozwiąż zaległe saldo subskrypcji platformy Azure po otrzymaniu wiadomości e-mail z platformy Azure
 

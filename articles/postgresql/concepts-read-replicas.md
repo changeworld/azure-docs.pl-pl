@@ -5,15 +5,19 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/22/2019
-ms.openlocfilehash: cb02f0b786ff6f1c7dbef5471fb95ce6516f824c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.date: 01/23/2019
+ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466078"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904016"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Przeczytaj repliki w bazie danych Azure database for PostgreSQL
+
+> [!IMPORTANT]
+> Funkcja odczytu repliki jest w publicznej wersji zapoznawczej.
+
 Funkcja odczytu replik umożliwia replikowanie danych z usługi Azure Database for postgresql w warstwie serwera (master) serwerom maksymalnie pięć tylko do odczytu (repliki do odczytu) w tym samym regionie platformy Azure. Odczytu replik asynchronicznie są aktualizowane przy użyciu technologii replikacji natywnego aparatu PostgreSQL.
 
 Repliki są nowe serwery, które mogą być zarządzane w podobny sposób jak normalne autonomicznej bazy danych Azure Database dla serwerów MySQL. Dla każdej odczytu repliki są rozliczane dla zainicjowanych zasobów obliczeniowych w rdzeni wirtualnych i zainicjowanego magazynu w GB/miesiąc.

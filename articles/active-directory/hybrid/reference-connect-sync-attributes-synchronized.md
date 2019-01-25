@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 01/24/2019
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 30ed7ff2026c64c7e40d43597a2747f1144ae125
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 13ff2c817e13337da51bb9ad40ce16838af601d9
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468627"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901381"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: Atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez program Azure AD Connect sync.  
@@ -45,6 +45,7 @@ W tym przypadku rozpoczynać lista atrybutów, w tym temacie i zidentyfikować t
 | displayName |X | |
 | atrybuty objectSID |X |tych właściwości. Usługi AD identyfikator użytkownika, używany w celu zachowania synchronizacji między platformą Azure AD i AD. |
 | pwdLastSet |X |tych właściwości. Używane do ustalenia, kiedy unieważnienie już wystawionych tokenów. Używane przez synchronizacji skrótów haseł, uwierzytelniania przekazywanego i federacji. |
+|samAccountName|X| |
 | sourceAnchor |X |tych właściwości. Niemodyfikowalny identyfikator do utrzymania relacji między usług AD DS i Azure AD. |
 | usageLocation |X |tych właściwości. Kraj użytkownika. Używane w celu przypisania licencji. |
 | userPrincipalName |X |Nazwa UPN jest identyfikator logowania dla użytkownika. W większości przypadków wartość taka sama jak [pocztą]. |

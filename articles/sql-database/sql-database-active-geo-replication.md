@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 157d7776cc9a8eff485bd18658527bc8d30f4df0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/24/2019
+ms.openlocfilehash: 3a567bd3656ad31157d51bedcd866290b232af2c
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602973"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884626"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Utwórz odczytu pomocniczych baz danych przy użyciu aktywnej replikacji geograficznej
 
 Aktywna replikacja geograficzna to funkcja usługi Azure SQL Database, która pozwala na tworzenie odczytu pomocniczych baz danych w poszczególnych baz danych na serwerze logicznym, w centrum danych w tej samej lub innej (region).
 
 > [!NOTE]
-> Aktywna replikacja geograficzna nie jest obsługiwana przez wystąpienia zarządzanego.
+> Aktywna replikacja geograficzna nie jest obsługiwana przez wystąpienia zarządzanego. Geograficzny tryb failover wystąpień zarządzanych, można użyć [automatyczny tryb failover grupy](sql-database-auto-failover-group.md).
 
 Aktywna replikacja geograficzna została zaprojektowana jako rozwiązanie ciągłości biznesowej, które umożliwia aplikacji do odzyskiwania po awarii szybkie pojedynczych baz danych w przypadku regionalnej awarii lub awaria w dużej skali. Jeśli włączono replikację geograficzną, aplikacja może zainicjować trybu failover do pomocniczej bazy danych w innym regionie platformy Azure. Maksymalnie cztery pomocnicze bazy danych są obsługiwane w tej samej lub różnych regionach i pomocnicze bazy danych można także dostęp tylko do odczytu zapytań. Przełączenie w tryb failover musi być inicjowana ręcznie przez użytkownika lub aplikacji. Po zakończeniu przejścia w tryb failover nową podstawową ma punkt końcowy inne połączenie. Na poniższym diagramie przedstawiono typową konfigurację aplikacji chmurowych magazynu geograficznie nadmiarowego przy użyciu aktywnej replikacji geograficznej.
 
@@ -38,9 +38,9 @@ Jeśli z dowolnej przyczyny Twojej podstawowej bazy danych, zakończy się niepo
 Możesz zarządzać replikacji i pracy w trybie failover poszczególnych baz danych lub zestaw baz danych na serwerze lub w puli elastycznej przy użyciu aktywnej replikacji geograficznej. Możesz wykonać, przy użyciu:
 
 - [Azure Portal](sql-database-geo-replication-portal.md)
-- [Program PowerShell: Pojedynczą bazę danych](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-- [Program PowerShell: Pula elastyczna](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-- [Języka Transact-SQL: Pojedynczą bazę danych lub puli elastycznej](/sql/t-sql/statements/alter-database-azure-sql-database)
+- [PowerShell: Pojedynczą bazę danych](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+- [PowerShell: Pula elastyczna](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+- [Transact-SQL: Pojedynczą bazę danych lub puli elastycznej](/sql/t-sql/statements/alter-database-azure-sql-database)
 - [INTERFEJS API REST: Pojedynczą bazę danych](https://docs.microsoft.com/rest/api/sql/replicationlinks)
 
 Po przejściu w tryb failover upewnij się, że wymagania dotyczące uwierzytelniania dla serwera i bazy danych są skonfigurowane na nową podstawową. Aby uzyskać więcej informacji, zobacz [zabezpieczeń bazy danych SQL Database po awarii](sql-database-geo-replication-security-config.md).
@@ -135,7 +135,7 @@ Jak wspomniano wcześniej, aktywną replikację geograficzną można również z
 | [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Zwraca informacje o wszystkich istniejących linków replikacji dla każdej bazy danych na serwerze logicznym Azure SQL Database. |
 | [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Pobiera czas ostatniej replikacji, ostatnim opóźnienie replikacji i inne informacje na temat łącze replikacji dla danej bazy danych SQL. |
 | [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Wyświetla stan dla wszystkich operacji bazy danych, w tym stan łącza replikacji. |
-| [Operacja sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |powoduje, że aplikacja poczekaj, aż wszystkie zatwierdzone transakcje są replikowane i potwierdzone przez aktywnej pomocniczej bazy danych. |
+| [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |powoduje, że aplikacja poczekaj, aż wszystkie zatwierdzone transakcje są replikowane i potwierdzone przez aktywnej pomocniczej bazy danych. |
 |  | |
 
 ### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>Program PowerShell: Zarządzaj trybem failover jednym i puli baz danych

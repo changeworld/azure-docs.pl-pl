@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 3a20884dedf2d0f197cd73f0e67f412633736686
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a7c823493369735df23360645004b0bec85dbd7
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421579"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885511"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfiguruj zbieranie metryk zasobów PaaS platformy Azure z usługą Log Analytics
 
@@ -67,7 +67,7 @@ Wykonaj poniższe kroki, aby pobrać i uruchomić skrypt.
 
 Skrypt uruchamiać każdy zasób spełniających wybrane kryteria, a następnie włączyć zbieranie metryk dla nich. Po zakończeniu zostanie wyświetlony komunikat informujący, że konfiguracja została ukończona.  
 
-Zaraz po zakończeniu będzie wyświetlać dane z zasobów PaaS platformy Azure w swoim repozytorium usługi Log Analytics.  Rekord o typie `AzureMetrics` jest tworzony i analizując te rekordy są obsługiwane przez [usługi Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md) i [Azure Web Apps Analytics](../../azure-monitor/insights/azure-web-apps-analytics.md) rozwiązań do zarządzania.   
+Zaraz po zakończeniu będzie wyświetlać dane z zasobów PaaS platformy Azure w swoim repozytorium usługi Log Analytics.  Rekord o typie `AzureMetrics` jest tworzony i analizując te rekordy są obsługiwane przez [usługi Azure SQL Analytics](../insights/azure-sql.md) i [Azure Web Apps Analytics](../insights/azure-web-apps-analytics.md) rozwiązań do zarządzania.   
 
 ## <a name="update-a-resource-to-send-data-to-another-workspace"></a>Aktualizowanie zasobu do wysyłania danych do innego obszaru roboczego
 Jeśli masz zasób, który już jest wysyłanie danych do obszaru roboczego usługi Log Analytics, a później zdecydujesz się ponownie go skonfigurować do odwoływać się do innego obszaru roboczego, możesz uruchomić skrypt o `-Update` parametru.  
@@ -79,8 +79,8 @@ Zostanie wyświetlony monit odpowiedzieć na te same informacje co uruchomiono s
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [dziennikach](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [dziennikach](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
 
-* Użyj [pól niestandardowych](../../azure-monitor/platform/custom-fields.md)(w celu analizowania rekordów zdarzeń do poszczególnych pól.
+* Użyj [pól niestandardowych](custom-fields.md)(w celu analizowania rekordów zdarzeń do poszczególnych pól.
 
-* Przegląd [tworzenia niestandardowego pulpitu nawigacyjnego do użycia w usłudze Log Analytics](../../azure-monitor/platform/dashboards.md) zrozumienie, jak wizualizować dziennik wyszukiwania w przejrzysty sposób dla organizacji.
+* Przegląd [tworzenie i udostępnianie pulpitów nawigacyjnych z danymi usługi Log Analytics](../learn/tutorial-logs-dashboards.md) zrozumienie, jak wizualizować dziennik wyszukiwania w przejrzysty sposób dla organizacji.

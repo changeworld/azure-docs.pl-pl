@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d5a94258e8c17d13e15f22f9fa96ef0647105abe
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807877"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904458"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -29,13 +29,13 @@ Platforma Azure udostępnia wbudowaną funkcję diagnostyki, która pomaga w deb
 W tym artykule wykorzystano [witryny Azure portal](https://portal.azure.com) i wiersza polecenia platformy Azure, aby pracować z dzienników diagnostycznych. Aby uzyskać informacje na temat pracy z dzienników diagnostycznych przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformy Azure w programie Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
 ## <a name="whatisdiag"></a>Diagnostyka serwera sieci Web i diagnostyki aplikacji
-Usługa App Service Obejmij funkcja diagnostyki rejestrowanie informacji z serwera sieci web i aplikacji sieci web. Są one logicznie oddzielone w **diagnostyką serwerów w sieci web** i **programu application diagnostics**.
+Usługa App Service oferuje funkcje diagnostyczne dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web. Są one logicznie oddzielone w **diagnostyką serwerów w sieci web** i **programu application diagnostics**.
 
 ### <a name="web-server-diagnostics"></a>Diagnostyka serwera sieci Web
 Można włączyć lub wyłączyć następujące rodzaje dzienników:
 
 * **Szczegółowe rejestrowanie błędów** — szczegółowe informacje o błędzie dla kodów stanu HTTP, które wskazują błędu (kod stanu 400 lub nowszej). Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu.
-* **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub określić, co powoduje określonego błędu HTTP, który ma zostać zwrócona.
+* **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub izolowania określonego błędu HTTP.
 * **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 
 ### <a name="application-diagnostics"></a>Diagnostyka aplikacji
@@ -45,7 +45,7 @@ Usługa Application diagnostics można przechwytywać informacji generowanych pr
 
 W czasie wykonywania możesz pobrać te dzienniki w celu ułatwienia rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługi Azure App Service w programie Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
-Podczas publikowania zawartości do aplikacji usługi App Service również rejestrować informacje na temat wdrażania. Odbywa się automatycznie i nie ma żadnych ustawień konfiguracji dla rejestrowania wdrożenia. Rejestrowanie wdrażania pozwala określić, dlaczego wdrożenie nie powiodło się. Na przykład jeśli używasz skrypt wdrożenia niestandardowego może umożliwia rejestrowanie wdrożenia Sprawdź, dlaczego skrypt jest możliwe.
+Usługa App Service rejestruje informacje o wdrożeniu podczas publikowania zawartości do aplikacji. Odbywa się automatycznie i nie ma żadnych ustawień konfiguracji dla rejestrowania wdrożenia. Rejestrowanie wdrażania pozwala określić, dlaczego wdrożenie nie powiodło się. Na przykład jeśli używany jest skrypt wdrożenia niestandardowego, może być umożliwia rejestrowanie wdrożenia Sprawdź, dlaczego skrypt jest możliwe.
 
 ## <a name="enablediag"></a>Jak włączyć diagnostykę
 Aby włączyć diagnostykę w [witryny Azure portal](https://portal.azure.com), przejdź do strony aplikacji i kliknij przycisk **Ustawienia > dzienniki diagnostyczne**.
@@ -53,12 +53,16 @@ Aby włączyć diagnostykę w [witryny Azure portal](https://portal.azure.com), 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Część dzienników](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Po włączeniu **programu application diagnostics**, możesz również wybrać **poziom**. To ustawienie pozwala filtrować informacje przechwycenie **informacyjny**, **ostrzeżenie**, lub **błąd** informacji. Ustawienie **pełne** rejestruje wszystkie informacje generowane przez aplikację.
+Po włączeniu **programu application diagnostics**, możesz również wybrać **poziom**. W poniższej tabeli przedstawiono kategorie dzienników, które każdy poziom zawiera:
 
-> [!NOTE]
-> W przeciwieństwie do zmian pliku web.config, włączania diagnostyki aplikacji lub zmiana poziomów dziennik diagnostyczny nie Odtwórz domeny aplikacji, w której aplikacja działa w ramach.
->
->
+| Poziom| Uwzględnione Rejestruj kategorie |
+|-|-|
+|**Disabled (Wyłączone)** | Brak |
+|**Error** | Błąd krytyczny |
+|**Ostrzeżenie** | Ostrzeżenie, błąd krytyczny|
+|**Informacje o** | Info, Warning, błąd krytyczny|
+|**pełne** | Śledzenia, debugowania, informacje, ostrzeżenie, błąd krytyczny (wszystkie kategorie) |
+|-|-|
 
 Aby uzyskać **rejestrowanie aplikacji**, można włączyć opcję systemu pliku tymczasowego na potrzeby debugowania. Ta opcja powoduje wyłączenie automatycznie w ciągu 12 godzin. Można również włączyć opcję magazynu obiektów blob umożliwia wybór kontenera obiektów blob, będą zapisywane dzienniki.
 
@@ -114,7 +118,7 @@ Aby pobrać pliki dziennika przy użyciu interfejsu wiersza polecenia platformy 
 To polecenie zapisuje w dziennikach aplikacji o nazwie "appname" w pliku o nazwie **diagnostics.zip** w bieżącym katalogu.
 
 > [!NOTE]
-> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie został skonfigurowany do korzystania z subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 
@@ -157,7 +161,7 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
     az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie skonfigurowano do użycia w Twojej subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](../cli-install-nodejs.md).
+> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie został skonfigurowany do korzystania z subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](../cli-install-nodejs.md).
 >
 >
 
@@ -165,7 +169,7 @@ Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— śc
 ### <a name="application-diagnostics-logs"></a>Dzienniki diagnostyki aplikacji
 Usługa Application diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy są przechowywane dzienniki do pliku systemu lub blob storage. 
 
-Podstawowy zestaw przechowywanych danych jest taka sama w przypadku obu typów magazynu — Data i godzina wystąpienia zdarzenia, identyfikator procesu, który zdarzenia, typ zdarzenia (informacje, ostrzeżenie, błąd) oraz komunikatów o zdarzeniach. Korzystanie z systemu plików na potrzeby przechowywania dzienników jest przydatne, gdy potrzebujesz uzyskać natychmiastowy dostęp do rozwiązania problemu, ponieważ pliki dziennika są aktualizowane niemal natychmiast. Blob storage jest używany do archiwizacji, ponieważ pliki są buforowane, a następnie opróżniany do kontenera magazynu, zgodnie z harmonogramem.
+Podstawowy zestaw przechowywanych danych jest taka sama w przypadku obu typów magazynu — Data i godzina wystąpienia zdarzenia, identyfikator procesu, który zdarzenia, typ zdarzenia (informacje, ostrzeżenie, błąd) oraz komunikatów o zdarzeniach. Korzystanie z systemu plików na potrzeby przechowywania dzienników jest przydatne, gdy potrzebujesz uzyskać natychmiastowy dostęp do rozwiązania problemu, ponieważ pliki dziennika są aktualizowane niemal natychmiast. Magazyn obiektów blob jest używany w celu jego archiwizacji, ponieważ pliki są buforowane, a następnie opróżniany do kontenera magazynu, zgodnie z harmonogramem.
 
 **System plików**
 

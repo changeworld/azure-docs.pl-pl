@@ -3,7 +3,7 @@ title: Jak wyświetlić jednostka tożsamość zarządzaną w witrynie Azure por
 description: Szczegółowe instrukcje dotyczące wyświetlania jednostka tożsamość zarządzaną w witrynie Azure portal.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
-ms.author: daveba
-ms.openlocfilehash: dfa2f9587d84f14e4a3007607724b39e889ccc80
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: 7661b26da8fb8783fb1698de0e6844788371819a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428821"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881141"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Wyświetl jednostki usługi tożsamości zarządzanych w witrynie Azure portal
 

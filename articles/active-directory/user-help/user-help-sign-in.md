@@ -11,44 +11,44 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 4bd1ceb03ddce572e0571afb87ec2f0c36a49443
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7d4f3586aee5fdf77cb4cc1fa02596481fd58311
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810418"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902248"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Zaloguj się przy użyciu dwuetapowej weryfikacji lub informacji zabezpieczających
 
-Po skonfigurowaniu weryfikacji dwuetapowej lub informacji zabezpieczających, będzie mógł zalogować się do pracy konta firmowego lub szkolnego przy użyciu metody uwierzytelniania określonej.
+Po skonfigurowaniu weryfikacji dwuetapowej lub informacji zabezpieczających, będzie można zalogować się do swojego konta przy użyciu metody uwierzytelniania określonej.
 
 >[!Note]
 >Jeśli nadal używasz środowiska weryfikacji dwuetapowej, musisz skonfigurować swoje metody uwierzytelniania, postępując zgodnie z instrukcjami wyświetlanymi w [Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) artykułu. Jeśli administrator wyłączył środowisko informacje zabezpieczeń, należy ustawić swoje metody uwierzytelniania za pomocą te przewodniki krok po kroku:<ul><li>[Skonfiguruj informacje zabezpieczające do korzystania z aplikacji uwierzytelniania](security-info-setup-auth-app.md)</li><li>[Set up security info to use text messaging](security-info-setup-text-msg.md) (Konfigurowanie informacji zabezpieczających w celu korzystania z wiadomości tekstowych)</li><li>[Ustawiane informacje zabezpieczające, aby używać połączenia telefonicznego](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Zaloguj się przy użyciu powiadomienie aplikacji authenticator na swoim urządzeniu przenośnym
 
-1. Zaloguj się do swojego konta firmowego lub szkolnego, za pomocą nazwy użytkownika i hasła.
+1. Zaloguj się do swojego konta przy użyciu nazwy użytkownika i hasła.
 
 2. Wybierz **Zatwierdź** z powiadomienie o zatwierdzeniu wysyłane do urządzenia przenośnego.
 
 
 ## <a name="sign-in-using-an-authenticator-app-code-on-your-mobile-device"></a>Zaloguj się przy użyciu kodu aplikacji authenticator na swoim urządzeniu przenośnym
 
-1. Zaloguj się do swojego konta firmowego lub szkolnego, za pomocą nazwy użytkownika i hasła.
+1. Zaloguj się do swojego konta przy użyciu nazwy użytkownika i hasła.
 
 2. Otwórz aplikację wystawcy uwierzytelnienia, a następnie wpisz losowo wygenerowany kod dla Twojego konta do **wprowadź kod** pole.
 
 
 ## <a name="sign-in-using-your-phone-number"></a>Zaloguj się przy użyciu numeru telefonu
 
-1. Zaloguj się do swojego konta firmowego lub szkolnego, za pomocą nazwy użytkownika i hasła.
+1. Zaloguj się do swojego konta przy użyciu nazwy użytkownika i hasła.
 
 2. Odpowiedzi na telefonie, a następnie postępuj zgodnie z instrukcjami.
 
 
 ## <a name="sign-in-using-a-text-message"></a>Zaloguj się przy użyciu wiadomości SMS
 
-1. Zaloguj się do swojego konta firmowego lub szkolnego, za pomocą nazwy użytkownika i hasła.
+1. Zaloguj się do swojego konta przy użyciu nazwy użytkownika i hasła.
 
 2. Otwórz w wiadomości SMS, a następnie wpisz kod ze swojej wiadomości SMS do **wprowadź kod** pole.
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/02/2018
+ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 459dd86fd614cb185801b074cea70c36dc7f6ccb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: dc979e4aa9882960b86d902266793910ce6fe8b3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972336"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902962"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer
 
@@ -49,6 +49,11 @@ Aby pobrać narzędzia Service Fabric Explorer, jak aplikacja komputerowa, użyj
 Narzędzie Service Fabric Explorer również znajduje się w punkcie końcowym zarządzania HTTP klaster usługi Service Fabric. Aby uruchomić SFX w przeglądarce sieci web, przejdź do punktu końcowego zarządzania HTTP klastra z dowolnej przeglądarki — na przykład https://clusterFQDN:19080.
 
 Dla konfiguracji stacji roboczej dla deweloperów, możesz uruchomić narzędzie Service Fabric Explorer w klastrze lokalnym, przechodząc do https://localhost:19080/Explorer. Ten artykuł, aby przyjrzeć się [przygotowywanie środowiska projektowego](service-fabric-get-started.md).
+
+> [!NOTE]
+> Jeśli klaster jest zabezpieczony przez certyfikat z podpisem własnym w przeglądarce sieci web będą otrzymywać komunikat o błędzie "Ta lokacja nie jest bezpieczny". Możesz po prostu przejść przez większość nowoczesnych przeglądarek sieci web przez zastąpienie ostrzeżenia. W środowisku produkcyjnym klastra powinien zostać zabezpieczony za pomocą nazwy pospolitej i wystawiony certyfikat. 
+>
+>
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Nawiąż połączenie z klastrem usługi Service Fabric
 Aby połączyć się z klastrem usługi Service Fabric, należy punkt końcowy zarządzania klastrami (IP/nazwę FQDN) i portu HTTP zarządzania punktu końcowego (19080 domyślnie). Na przykład: https://mysfcluster.westus.cloudapp.azure.com:19080. Użyj pola wyboru "Połącz z hostem lokalnym", aby połączyć się z lokalnym klastrem na stacji roboczej.
@@ -118,6 +123,18 @@ Narzędzie Service Fabric Explorer umożliwia również tworzenie wystąpienia a
 >
 >
 
+## <a name="event-store"></a>Zdarzenie Store
+Bazy danych EventStore to funkcja oferowana przez platformę, która dostarcza zdarzenia platformy usługi Service Fabric jest dostępna w narzędziu Service Fabric Explorer i za pośrednictwem interfejsu API REST. Można wyświetlić widoku migawki, co się dzieje w klastrze dla każdej jednostki np. węzeł, usługi, aplikacji i zapytań w zależności od czasu wystąpienia zdarzenia. Możesz również Dowiedz się więcej o bazie danych EventStore na [omówienie bazy danych EventStore](service-fabric-diagnostics-eventstore.md).   
+
+![Bazy danych EventStore][sfx-eventstore]
+
+>[!NOTE]
+>Począwszy od usługi Service Fabric w wersji 6.4. Bazy danych EventStore nie jest domyślnie włączona i musi być włączona w szablonie usługi resource manager
+
+>[!NOTE]
+>Począwszy od usługi Service Fabric w wersji 6.4. interfejsy API bazy danych EventStore są dostępne tylko w przypadku klastrów Windows działających na platformie Azure, tylko. Pracujemy nad przenoszenie tej funkcji do systemu Linux, a także naszych autonomicznych klastrów.
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie aplikacje usługi Service Fabric w programie Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 * [Wdrażanie aplikacji usługi Service Fabric przy użyciu programu PowerShell](service-fabric-deploy-remove-applications.md)
@@ -129,3 +146,4 @@ Narzędzie Service Fabric Explorer umożliwia również tworzenie wystąpienia a
 [sfx-service-essentials]: ./media/service-fabric-visualizing-your-cluster/SfxServiceEssentials.png
 [sfx-delete-application]: ./media/service-fabric-visualizing-your-cluster/SfxDeleteApplication.png
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/SfxCreateAppInstance.png
+[sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png

@@ -5,15 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 8e622a11c489618cf66e9cdddf369309e7188645
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/23/2019
+ms.openlocfilehash: c7622252cd5b375e8c580bfcf7a45806d219d828
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548021"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900565"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Jak utworzyć i zarządzać nimi odczytu replik w usłudze Azure Database for MySQL za pomocą witryny Azure portal
+
+
+> [!IMPORTANT]
+> Funkcja odczytu repliki jest w publicznej wersji zapoznawczej.
 
 W tym artykule dowiesz się, jak tworzyć i zarządzać nimi odczytu replik w tym samym regionie platformy Azure jako główną w usłudze Azure Database dla MySQL za pomocą witryny Azure portal. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 

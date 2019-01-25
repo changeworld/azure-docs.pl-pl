@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywać problemy z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack.
+title: Rozwiązywanie problemów z wdrożenia Azure Stackk Kubernetes | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązywać problemy z wdrożenia rozwiązania Kubernetes do usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 844feb7999f88f63c9406c9f430d1d076cd032df
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8a67ae74f753fdbe3c5301c543e5a57544695922
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390689"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904220"
 ---
-# <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes w usłudze Azure Stack
+# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 

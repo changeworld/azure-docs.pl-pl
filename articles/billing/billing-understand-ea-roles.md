@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2018
-ms.author: cwatson
-ms.openlocfilehash: 77d061166d599fe7556be7d0237100154890fe19
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.author: banders
+ms.openlocfilehash: 98ed28af8df246549fb521a81f1968e1f5c28cc4
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52500380"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901568"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Omówienie usługi Azure Enterprise Agreement ról administracyjnych na platformie Azure
 
@@ -93,9 +93,9 @@ W poniższej tabeli przedstawiono relację między ról administratora umowy Ent
 
 |Rola administratora umowy Enterprise Agreement|Wyświetl zasady opłaty dla roli|Rola RBAC|Wyświetl cennik|
 |---|---|---|---|
-|Właściciel konta lub administratora działu|✔ Włączone|Właściciel|Cennik usługi organizacji EA|
+|Właściciel konta lub administratora działu|✔ Enabled|Właściciel|Cennik usługi organizacji EA|
 |Właściciel konta lub administratora działu|✘ Wyłączone|Właściciel|Ceny detalicznej|
-|Właściciel konta lub administratora działu|✔ Włączone |brak|Nie ceny|
+|Właściciel konta lub administratora działu|✔ Enabled |brak|Nie ceny|
 |Właściciel konta lub administratora działu|✘ Wyłączone |brak|Nie ceny|
 |Brak|Nie dotyczy |Właściciel|Ceny detalicznej|
 
@@ -105,4 +105,4 @@ Ustaw rolę administratora przedsiębiorstwa i wyświetlanie opłat zasady w wit
 
 - [Zarządzanie dostępem do informacji dotyczących rozliczeń dla platformy Azure](billing-manage-access.md)
 - [Manage access using RBAC and the Azure portal (Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal)](../role-based-access-control/role-assignments-portal.md)
-- [Wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md)
+- [Wbudowane role dla zasobów platformy Azure](../role-based-access-control/built-in-roles.md)

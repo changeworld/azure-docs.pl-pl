@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 80b594eb8d926465f37771e2e6911f9ab3e63f1f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0d7c8640cb2a3f6d4d1a32a555c03dc2eca48b9a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423820"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901228"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
@@ -853,7 +853,7 @@ Można zdefiniować niestandardowe parametry szablonu usługi Resource Manager. 
 
 Oto niektóre wytyczne do użycia podczas tworzenia pliku parametrów niestandardowych. Zapoznaj się z przykładami tej składni, zobacz następującą sekcję [przykładowy plik niestandardowych parametrów](#sample).
 
-1. W przypadku określania tablicy w pliku definicji, wskazujesz, że dopasowania właściwości w szablonie jest tablicą. Fabryka danych wykonuje iterację przez wszystkie obiekty w tablicy przy użyciu definicji określony w obiekcie Runtimest fIntegration tablicy. Drugi obiekt ciągu, staje się nazwę właściwości, która jest używana jako nazwa parametru dla każdej iteracji.
+1. W przypadku określania tablicy w pliku definicji, wskazujesz, że dopasowania właściwości w szablonie jest tablicą. Fabryka danych wykonuje iterację przez wszystkie obiekty w tablicy przy użyciu definicji określony w obiekcie środowiska Integration Runtime w tablicy. Drugi obiekt ciągu, staje się nazwę właściwości, która jest używana jako nazwa parametru dla każdej iteracji.
 
     ```json
     ...

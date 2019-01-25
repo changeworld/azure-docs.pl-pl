@@ -3,7 +3,7 @@ title: Sposób wyświetlania nazwy głównej usługi z tożsamości zarządzanej
 description: Szczegółowe instrukcje dotyczące wyświetlania nazwy głównej usługi z tożsamości zarządzanej przy użyciu programu PowerShell.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
-ms.author: daveba
-ms.openlocfilehash: 0cf1915e4013451dbb09f2c4af3df2bad6166475
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: priyamo
+ms.openlocfilehash: bb0462820cc94c06054ada12f0c764d4cfb190f7
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438953"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900157"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>Wyświetl jednostki usługi z tożsamości zarządzanej przy użyciu programu PowerShell
 
@@ -27,28 +27,25 @@ Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi plat
 
 W tym artykule dowiesz się, jak wyświetlić jednostki usługi z tożsamości zarządzanej przy użyciu programu PowerShell.
 
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/).
 - Włącz [tożsamości przypisanej w systemie na maszynie wirtualnej](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) lub [aplikacji](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
-- Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). 
-- Jeśli używasz programu PowerShell lokalnie, wykonaj również te czynności: 
-    - Uruchom polecenie `Login-AzureRmAccount`, aby utworzyć połączenia z platformą Azure.
-    - Zainstaluj [najnowszą wersję modułu PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
-    - Uruchom polecenie `Install-Module -Name PowerShellGet -AllowPrerelease`, aby pobrać wersję wstępną modułu `PowerShellGet` (po uruchomieniu tego polecenia może być konieczne uruchomienie polecenia `Exit` umożliwiającego zakończenie bieżącej sesji programu PowerShell w celu zainstalowania modułu `AzureRM.ManagedServiceIdentity`).
-    - Uruchom `Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease` do zainstalowania wstępnej wersji `AzureRM.ManagedServiceIdentity` modułu, aby wykonać użytkownik przypisany zarządzanych tożsamości operacje, w tym artykule.
+- Zainstaluj najnowszą wersję [programu Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="view-the-service-principal"></a>Wyświetl nazwy głównej usługi
 
 Następujące polecenie pokazuje sposób wyświetlania nazwy głównej usługi, maszyny Wirtualnej lub aplikacji przy użyciu tożsamości przypisanej w systemie włączony. Zastąp `<VM or application name>` własnymi wartościami.
 
 ```PowerShell
-Get-AzureRmADServicePrincipal -DisplayName <VM or application name>
+Get-AzADServicePrincipal -DisplayName <VM or application name>
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o wyświetlaniu jednostki usługi Azure AD przy użyciu programu PowerShell, zobacz [Get AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
+Aby uzyskać więcej informacji o wyświetlaniu jednostki usługi Azure AD przy użyciu programu PowerShell, zobacz [Get AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal).
 
 

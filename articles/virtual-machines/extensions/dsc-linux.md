@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 70280676453bd146102ca331daae038b947aab58
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ade066c08829181bc7d1ad5623934b98909e0310
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632861"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888995"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozszerzenie DSC dla systemu Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -54,7 +54,7 @@ Rozszerzenie DSC w systemie Linux obsługuje wszystkie [rozszerzenia obsługiwan
  
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenie DSCForLinux wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. Na przykład rozszerzenie rejestru wymaga połączenia z usługą Automation. Dla innych akcji, takich jak ściągania ściągania, instalacja wymaga łączności ona magazynu platformy azure/usługi github. To zależy od ustawienia udostępnione przez klienta.
+Rozszerzenie DSCForLinux wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. Na przykład rozszerzenie rejestru wymaga połączenia z usługą Automation. Inne akcje, takie jak ściągania ściągania, instalacja wymaga łączności z magazynu platformy azure/github. To zależy od ustawienia udostępnione przez klienta.
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
@@ -64,11 +64,11 @@ W tym miejscu znajdziesz wszystkie parametry obsługiwanej konfiguracji publiczn
 
 * `FileUri`: (opcjonalnie, ciąg) identyfikator uri pliku ZIP zasobów pliku/niestandardowa MOF pliku/Meta pliku MOF.
 * `ResourceName`: (opcjonalnie, ciąg) Nazwa modułu zasobów niestandardowych
-* `ExtensionAction`: (opcjonalnie, ciąg) określa, jak działa rozszerzenie. Prawidłowe wartości: rejestrowanie, wypychanie, pobierania, zainstalować, usunąć. Jeśli nie zostanie określony, uznaje się jako akcja Push domyślnie.
+* `ExtensionAction`: (opcjonalnie, ciąg) określa, jak działa rozszerzenie. Prawidłowe wartości: Rejestrowanie, wypychania, ściągania, zainstalować, usunąć. Jeśli nie zostanie określony, uznaje się jako akcja Push domyślnie.
 * `NodeConfigurationName`: (opcjonalnie, ciąg) Nazwa konfiguracji węzła do zastosowania.
 * `RefreshFrequencyMins`: (opcjonalne, int) określa, jak często (w minutach), próbuje uzyskać konfigurację z serwera ściągania DSC. 
        Jeśli konfiguracji na serwerze ściągania różni się od bieżącej nazwy na węzeł docelowy, jest kopiowany do magazynu oczekujące i stosowane.
-* `ConfigurationMode`: (opcjonalnie, ciąg) określa sposób stosowania konfiguracji DSC. Prawidłowe wartości to: ApplyAndAutoCorrect ApplyOnly, ApplyAndMonitor,.
+* `ConfigurationMode`: (opcjonalnie, ciąg) określa sposób stosowania konfiguracji DSC. Prawidłowe wartości to: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (opcjonalne, int) określa, jak często (w minutach), DSC zapewnia, że konfiguracja jest w żądanym stanie.
 
 > [!NOTE]
@@ -88,14 +88,14 @@ W tym miejscu znajdziesz wszystkie parametry obsługiwanej konfiguracji chronion
 ## <a name="scenarios"></a>Scenariusze
 
 ### <a name="register-to-azure-automation-account"></a>Zarejestruj się, aby konto usługi Azure Automation
-protected.JSON
+protected.json
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction" : "Register",
@@ -124,7 +124,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Zastosowanie pliku MOF konfiguracji (na koncie magazynu platformy Azure) do maszyny Wirtualnej
 
-protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -132,7 +132,7 @@ protected.JSON
 }
 ```
 
-public.JSON
+public.json
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -156,7 +156,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-mof-configuration-file-in-public-storage-to-the-vm"></a>Zastosowanie pliku MOF konfiguracji (w publicznym magazynie) do maszyny Wirtualnej
 
-public.JSON
+public.json
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -172,7 +172,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-azure-storage-account-to-the-vm"></a>Zastosowanie pliku metadanych pliku MOF konfiguracji (na koncie magazynu platformy Azure) do maszyny Wirtualnej
 
-protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -180,7 +180,7 @@ protected.JSON
 }
 ```
 
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Pull",
@@ -202,7 +202,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Zastosowanie pliku metadanych pliku MOF konfiguracji (w publicznym magazynie) do maszyny Wirtualnej
-public.JSON
+public.json
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -218,14 +218,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-zip-file-in-azure-storage-account-to-the-vm"></a>Zainstaluj moduł zasobów niestandardowych (plik ZIP na koncie magazynu platformy Azure) do maszyny Wirtualnej
-protected.JSON
+protected.json
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Install",
@@ -247,7 +247,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-zip-file-in-public-storage-to-the-vm"></a>Zainstaluj moduł zasobów niestandardowych (plik ZIP w publicznym magazynie) do maszyny Wirtualnej
-public.JSON
+public.json
 ```json
 {
   "ExtensionAction": "Install",
@@ -263,7 +263,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Usuń zasób niestandardowy z maszyny Wirtualnej
-public.JSON
+public.json
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -366,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="222resource-manager"></a>Menedżer 2.2.2.Resource
+#### <a name="222resource-manager"></a>2.2.2.Resource Manager
 
 Możesz zalogować się do konta platformy Azure (tryb usługi Azure Resource Manager), uruchamiając:
 
@@ -425,7 +425,7 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany w następującym plik
 ```
 
 Kod błędu: 51 reprezentuje nieobsługiwany dostępnych dla określonych dystrybucji lub nieobsługiwane rozszerzenie akcji.
-W niektórych przypadkach Linux DSC, rozszerzenie nie powiedzie się zainstalowanie OMI wyższą wersję programu OMI jest już istnieje na maszynie. [odpowiedzi na błąd: (000003) obniżenie poziomu nie jest dozwolone]
+W niektórych przypadkach Linux DSC, rozszerzenie nie powiedzie się zainstalowanie OMI wyższą wersję programu OMI jest już istnieje na maszynie. [błąd odpowiedzi: (000003) Obniżenie poziomu nie jest dozwolone]
 
 
 

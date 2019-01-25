@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/15/2018
 ms.author: aljo
-ms.openlocfilehash: 75ba2ee378e9eddfeaeb2346b4d5bb584844afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636680"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903506"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurowanie usługi Azure Active Directory do uwierzytelniania klientów
 
@@ -33,7 +33,7 @@ Aby uprościć niektóre etapy konfigurowania usługi Azure AD z klastrem usług
 > [!NOTE]
 > Przed utworzeniem klastra, wykonaj następujące kroki. Ponieważ skrypty oczekuje nazwy klastra i punktów końcowych, wartości powinny być planowane i nie wartości, że masz już utworzoną.
 
-1. [Pobierz skrypty] [ sf-aad-ps-script-download] do komputera.
+1. [Pobierz skrypty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) do komputera.
 2. Kliknij prawym przyciskiem myszy plik zip, wybierz **właściwości**, wybierz opcję **odblokowanie** pole wyboru, a następnie kliknij przycisk **Zastosuj**.
 3. Wyodrębnij plik ZIP.
 4. Uruchom `SetupApplications.ps1`i podaj identyfikator dzierżawy, ClusterName i WebApplicationReplyUrl jako parametry. Na przykład:
@@ -108,16 +108,16 @@ Użytkownik nie ma przypisaną rolę w aplikacji do klastra usługi Azure AD. W 
 #### <a name="solution"></a>Rozwiązanie
 Wykonaj instrukcje dotyczące konfigurowania usługi Azure AD i przypisz role użytkownika. Ponadto zaleca się włączenie funkcji "Wymagany dostęp do aplikacji, przypisywanie użytkownika" jako `SetupApplications.ps1` jest.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Połączenie przy użyciu programu PowerShell zakończy się niepowodzeniem z powodu błędu: "określone poświadczenia są nieprawidłowe"
+### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Połączenie przy użyciu programu PowerShell zakończy się niepowodzeniem z powodu błędu: "Określone poświadczenia są nieprawidłowe"
 #### <a name="problem"></a>Problem
-Jeśli używasz programu PowerShell do łączenia z klastrem przy użyciu trybu zabezpieczeń "Usługi AzureActiveDirectory", po zalogowaniu pomyślnie z usługą Azure AD, połączenie kończy się niepowodzeniem z powodu błędu: "określone poświadczenia są nieprawidłowe."
+Jeśli używasz programu PowerShell do łączenia z klastrem przy użyciu trybu zabezpieczeń "Usługi AzureActiveDirectory", po zalogowaniu pomyślnie z usługą Azure AD, połączenie kończy się niepowodzeniem z powodu błędu: "Określone poświadczenia są nieprawidłowe."
 
 #### <a name="solution"></a>Rozwiązanie
 To rozwiązanie jest taka sama jak poprzedni.
 
-### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Narzędzie Service Fabric Explorer zwraca błąd, podczas logowania: "AADSTS50011"
+### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Narzędzia Service Fabric Explorer zwraca błąd, po zalogowaniu: "AADSTS50011"
 #### <a name="problem"></a>Problem
-Przy próbie Zaloguj się do usługi Azure AD w narzędziu Service Fabric Explorer strony zwraca błąd: "AADSTS50011: adres zwrotny &lt;adresu url&gt; jest niezgodna z adresy zwrotne skonfigurowane dla aplikacji: &lt;guid&gt;."
+Gdy spróbujesz się zalogować się do usługi Azure AD w narzędziu Service Fabric Explorer, strony zwraca błąd: "AADSTS50011: Adres zwrotny &lt;adresu url&gt; jest niezgodna z adresy zwrotne skonfigurowane dla aplikacji: &lt;guid&gt;. "
 
 ![Adres zwrotny SFX nie jest zgodny.][sfx-reply-address-not-match]
 

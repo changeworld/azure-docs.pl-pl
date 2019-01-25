@@ -3,7 +3,7 @@ title: Tworzenie zestawu skalowania na platformie Azure, który używa strefy do
 description: Dowiedz się, jak utworzyć zestawy skalowania maszyn wirtualnych platformy Azure, używających stref dostępności w celu zwiększenia nadmiarowości względem awarii
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
-ms.author: zarhoads
-ms.openlocfilehash: 062725ab5e486ff795ffa0f4a72dd3fdb0e6b948
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468878"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886241"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
 
@@ -215,7 +215,7 @@ Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wiele wa
 }
 ```
 
-W przypadku tworzenia publicznego adresu IP lub równoważenia obciążenia, określić *"sku": {"name": "Standardowa"} "* właściwości, aby utworzyć zasoby sieciowe strefowo nadmiarowe. Należy również utworzyć sieciową grupę zabezpieczeń i reguł, aby zezwolić na ruch. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md) i [Balancer w warstwie standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
+W przypadku tworzenia publicznego adresu IP lub równoważenia obciążenia, określić *"sku": {"name": "Standardowy"} "* właściwości, aby utworzyć zasoby sieciowe strefowo nadmiarowe. Należy również utworzyć sieciową grupę zabezpieczeń i reguł, aby zezwolić na ruch. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md) i [Balancer w warstwie standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Pełny przykład skalowania strefowo nadmiarowego zestawu i zasobów sieciowych, zobacz [ten przykładowy szablon usługi Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

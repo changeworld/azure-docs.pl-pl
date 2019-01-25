@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 3eb1228ed9d15fb976f94df114f8725a8c41599d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ba79365ec310c7d62d0a4de07991d516430b9d41
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230462"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886153"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środow
 - Monitorowanie działania wykonywane przez administratora do śledzenia zmian konfiguracji lub operacji na wysokim poziomie uprawnień.
 - Wykrywanie i badanie użytkownika niepożądane zachowanie, które można dostosować do potrzeb organizacji.
 - Prezentacja inspekcje i zapewniaj zgodność. Na przykład można monitorować operacji na plikach dostęp do poufnych plików, które pomogą Ci z procesem inspekcje i zapewniaj zgodność.
-- Rozwiązywać problemy operacyjne przy użyciu [dziennikach](../../azure-monitor/log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
+- Rozwiązywać problemy operacyjne przy użyciu [dziennikach](../log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowane i skonfigurowane.
@@ -40,7 +40,7 @@ Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowa
  
 
 ## <a name="management-packs"></a>Pakiety administracyjne
-To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../../azure-monitor/platform/om-agents.md).
+To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Instalowanie i konfigurowanie
 Rozpocznij od dodania [rozwiązanie usługi Office 365, aby Twoja subskrypcja](solutions.md#install-a-management-solution). Po dodaniu, należy wykonać kroki konfiguracji w tej sekcji, aby umożliwić dostęp do subskrypcji usługi Office 365.
@@ -476,7 +476,7 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
 
 ## <a name="data-collection"></a>Zbieranie danych
 ### <a name="supported-agents"></a>Obsługiwani agenci
-Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
+Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../platform/agent-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 Może upłynąć kilka godzin początkowo zbierane dane. Po uruchomieniu zbieranie, usługi Office 365 wysyła [powiadomień elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szczegółowych danych do usługi Log Analytics zawsze jest tworzony rekord. Ten rekord jest dostępna w usłudze Log Analytics w ramach po kilku minutach od jego odebrania.
@@ -512,7 +512,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 |:--- |:--- |
 | Typ | *OfficeActivity* |
 | ClientIP | Adres IP urządzenia, które było używane podczas zarejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
-| OfficeWorkload | Usługa Office 365, która rekord, który odwołuje się do.<br><br>Usługi AzureActiveDirectory<br>Exchange<br>Sharepoint|
+| OfficeWorkload | Usługa Office 365, która rekord, który odwołuje się do.<br><br>AzureActiveDirectory<br>Exchange<br>Sharepoint|
 | Operacja | Nazwa działania użytkownika lub administratora.  |
 | Identyfikatora organizacji | Identyfikator GUID dzierżawy usługi Office 365 w Twojej organizacji. Tę wartość, zawsze będzie taka sama dla Twojej organizacji, niezależnie od usługi Office 365, w której występuje. |
 | RecordType | Typ operacji wykonywanej. |
@@ -527,10 +527,10 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Az
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Usługi AzureActiveDirectory |
-| RecordType     | Usługi AzureActiveDirectory |
+| OfficeWorkload | AzureActiveDirectory |
+| RecordType     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Typ zdarzenia usługi Azure AD. |
-| Właściwości rozszerzone | Właściwości rozszerzonych zdarzeń usługi Azure AD. |
+| ExtendedProperties | Właściwości rozszerzonych zdarzeń usługi Azure AD. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Logowania konto usługi Active Directory platformy Azure
@@ -538,11 +538,11 @@ Te rekordy są tworzone, gdy próbuje zalogować użytkownika usługi Active Dir
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Usługi AzureActiveDirectory |
+| OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectoryAccountLogon |
 | Aplikacja | Aplikacja, która wyzwala zdarzenia logowania, konta, takie jak pakietu Office 15. |
 | Klient | Szczegółowe informacje o kliencie urządzenia, system operacyjny urządzenia i przeglądarki urządzenia, które było używane dla zdarzenia logowania konta. |
-| Stanu logowania | Ta właściwość jest bezpośrednio z OrgIdLogon.LoginStatus. Mapowania różnych interesujących błędów logowania może zostać wykonana przez alerty algorytmów. |
+| LoginStatus | Ta właściwość jest bezpośrednio z OrgIdLogon.LoginStatus. Mapowania różnych interesujących błędów logowania może zostać wykonana przez alerty algorytmów. |
 | UserDomain | Tożsamość informacji o dzierżawie (TII). | 
 
 
@@ -551,8 +551,8 @@ Te rekordy są tworzone po dokonaniu zmiany lub dodatki do obiektów w usłudze 
 
 | Właściwość | Opis |
 |:--- |:--- |
-| OfficeWorkload | Usługi AzureActiveDirectory |
-| RecordType     | Usługi AzureActiveDirectory |
+| OfficeWorkload | AzureActiveDirectory |
+| RecordType     | AzureActiveDirectory |
 | AADTarget | Użytkownik wykonanej akcji (identyfikowanych na podstawie właściwości Operation). |
 | Aktor | Użytkownik lub nazwa główna usługi, który wykonał akcję. |
 | ActorContextId | Identyfikator GUID aktora należy do organizacji. |
@@ -646,14 +646,14 @@ Te rekordy są tworzone, gdy zmiany i dodatki, które zostaną wprowadzone do gr
 | Foldery |     Informacji o folderach źródła uwzględnionego w operacji; na przykład, jeśli foldery są zaznaczone, a następnie usuwane. |
 
 
-### <a name="sharepoint-base"></a>Podstawowa programu SharePoint
+### <a name="sharepoint-base"></a>SharePoint Base
 Te właściwości są wspólne dla wszystkich rekordów z programu SharePoint.
 
 | Właściwość | Opis |
 |:--- |:--- |
 | OfficeWorkload | Sharepoint |
 | OfficeWorkload | Sharepoint |
-| Źródła zdarzeń | Określa, że wystąpiło zdarzenie w programie SharePoint. Możliwe wartości to SharePoint lub ObjectModel. |
+| EventSource | Określa, że wystąpiło zdarzenie w programie SharePoint. Możliwe wartości to SharePoint lub ObjectModel. |
 | ItemType | Typ obiektu, który został otwierane ani modyfikowane. Znajdują się w tabeli ItemType, aby uzyskać szczegółowe informacje na temat typów obiektów. |
 | MachineDomainInfo | Informacje o operacjach synchronizacji urządzenia. Te informacje są zgłaszane tylko wtedy, gdy jest obecny w żądaniu. |
 | MachineId |   Informacje o operacjach synchronizacji urządzenia. Te informacje są zgłaszane tylko wtedy, gdy jest obecny w żądaniu. |
@@ -682,7 +682,7 @@ Te rekordy są tworzone w odpowiedzi na operacje na plikach w programie SharePoi
 | OfficeWorkload | Sharepoint |
 | OfficeWorkload | SharePointFileOperation |
 | DestinationFileExtension | Rozszerzenie pliku, który jest kopiowane lub przeniesiony. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
-| Parametr DestinationFileName | Nazwa pliku który jest kopiowane lub przeniesiony. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
+| DestinationFileName | Nazwa pliku który jest kopiowane lub przeniesiony. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
 | DestinationRelativeUrl | Adres URL folderu docelowego, gdzie plik jest kopiowane lub przeniesiony. Kombinacja wartości parametrów SiteURL DestinationRelativeURL i parametr DestinationFileName jest taka sama jak wartość właściwości identyfikator obiektu jest pełna nazwa ścieżki dla pliku, który został skopiowany. Ta właściwość jest wyświetlany tylko w przypadku FileCopied i FileMoved zdarzeń. |
 | SharingType | Typ uprawnienia, które zostały przypisane do użytkownika, który został udostępniony zasób do udostępniania. Ten użytkownik jest identyfikowany przez parametr UserSharedWith. |
 | Site_Url | Adres URL witryny, w którym znajduje się plik lub folder, dostępne przez użytkownika. |
@@ -702,12 +702,12 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 |Liczba wszystkich operacji w ramach subskrypcji usługi Office 365 |OfficeActivity &#124; Podsumuj count() by operacji |
 |Użycie witryny programu SharePoint|OfficeActivity &#124; gdzie OfficeWorkload = ~ "sharepoint" &#124; Podsumuj count() by SiteUrl | Sortuj według Count asc|
 |Operacje dostępu do plików według typu użytkownika|Wyszukaj w OfficeWorkload (OfficeActivity) = ~ "usługi azureactivedirectory" i "Test"|
-|Wyszukiwanie przy użyciu określonego słowa kluczowego|Typ = OfficeActivity OfficeWorkload = usługi azureactivedirectory "Test"|
+|Wyszukiwanie przy użyciu określonego słowa kluczowego|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |Monitorowanie działań zewnętrznych, na serwerze Exchange|OfficeActivity &#124; gdzie OfficeWorkload = ~ "programu exchange" i ExternalAccess == true|
 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) w celu wyświetlania szczegółowych danych aktualizacji.
-* [Tworzenie własnych pulpitów nawigacyjnych](../../azure-monitor/platform/dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
-* [Tworzenie alertów](../../azure-monitor/platform/alerts-overview.md) do aktywnego powiadomienia o ważnych działań usługi Office 365.  
+* Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../log-query/log-query-overview.md) w celu wyświetlania szczegółowych danych aktualizacji.
+* [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
+* [Tworzenie alertów](../platform/alerts-overview.md) do aktywnego powiadomienia o ważnych działań usługi Office 365.  

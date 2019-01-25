@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2018
+ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 998a2dac8332ea88f7cee308299ce5a1f90765a4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6f522f7ff216a407e4ba901672f6b5e172952bcb
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449746"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883436"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -58,7 +58,7 @@ Lokalizacja o nazwie zawiera następujące składniki:
 
 - **Nazwa** — Nazwa wyświetlana nazwanych lokalizacji.
 
-- **Zakresy adresów IP** — jeden lub więcej zakresów adresów IPv4 w formacie CIDR. Określanie próg adresów Ipv6 nie jest obsługiwane.
+- **Zakresy adresów IP** — jeden lub więcej zakresów adresów IPv4 w formacie CIDR. Określenie zakresu adresów Ipv6 nie jest obsługiwana.
 
 - **Oznacz jako zaufaną lokalizację** -flagę można ustawić dla nazwanych lokalizacji do wskazania zaufanej lokalizacji. Zazwyczaj zaufanych lokalizacji są obszarów sieci, które są kontrolowane przez dział IT. Oprócz dostępu warunkowego, Zaufane lokalizacje nazwane są również używane przez raporty dotyczące zabezpieczeń usługi Azure Identity Protection i usługą Azure AD do zmniejszenia [wyników fałszywie dodatnich](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 

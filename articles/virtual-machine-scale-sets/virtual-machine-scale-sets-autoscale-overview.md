@@ -3,7 +3,7 @@ title: Omówienie automatycznego skalowania za pomocą zestawów skalowania masz
 description: Dowiedz się więcej o różnych sposobach może automatycznie skalować Azure zestawu skalowania maszyn wirtualnych na podstawie wydajności lub zgodnie z ustalonym harmonogramem
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a5386e56bffd9a9789fe431aae8ed13df8ffae13
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 610f3073594f73f04a68865593be6bfb4188d4f1
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117439"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883300"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Ustawia Omówienie automatycznego skalowania przy użyciu skali maszyny wirtualnej platformy Azure
 Zestaw skalowania maszyn wirtualnych platformy Azure może automatycznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych, na których działa Twoja aplikacja. To zachowanie automatycznych i elastycznych zmniejsza koszty zarządzania do monitorowania i optymalizowania wydajności aplikacji. Możesz utworzyć zasady, które określają akceptowalny poziom wydajności dla pozytywnych komfort. Po spełnieniu tych zdefiniowanych progów, reguły skalowania automatycznego podjąć działania w celu dostosowania pojemność zestawu skalowania. Można także zaplanować zdarzeń, aby automatycznie zwiększać lub zmniejszyć pojemność zestawu skalowania o stałej razy. Ten artykuł zawiera omówienie metryk wydajności, które są dostępne i jakie akcje skalowania automatycznego można wykonywać.

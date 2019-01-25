@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/02/2019
-ms.openlocfilehash: 2f7f317f11bba96e17791ed751c60099457a299a
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.date: 01/24/2019
+ms.openlocfilehash: 4ba34c35d2dd2d986b4a8c78f42fd4e97158391b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002590"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885077"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Usługa Azure SQL Database i programu SQL Server
 
@@ -34,8 +34,8 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 
 | **Funkcja SQL** | **Obsługiwane na serwerze bazy danych/logicznym usługi Azure SQL** | **Obsługiwane w wystąpieniu bazy danych lub zarządzane usługi Azure SQL** |
 | --- | --- | --- |
-| [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy| Nie |
-| [Automatyczny tryb failover grupy](sql-database-auto-failover-group.md) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy| Tak (wersja zapoznawcza)|
+| [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy| Nie, zobacz [grup automatyczny tryb failover](sql-database-auto-failover-group.md) |
+| [Grupy automatycznego trybu failover](sql-database-auto-failover-group.md) | Tak — tylko warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy| [Tak — wersja zapoznawcza](sql-database-auto-failover-group.md)|
 | [Zawsze szyfrowane](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Tak — zobacz [magazyn certyfikatów](sql-database-always-encrypted.md) i [usługi Key vault](sql-database-always-encrypted-azure-key-vault.md) | Tak — zobacz [magazyn certyfikatów](sql-database-always-encrypted.md) i [usługi Key vault](sql-database-always-encrypted-azure-key-vault.md) |
 | [Zawsze włączone grupy dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączony do każdej bazy danych. Odzyskiwanie po awarii została omówiona w [omówienie ciągłości działania za pomocą usługi Azure SQL Database](sql-database-business-continuity.md) | [Wysoka dostępność](sql-database-high-availability.md) jest dołączony do każdej bazy danych. Odzyskiwanie po awarii została omówiona w [omówienie ciągłości działania za pomocą usługi Azure SQL Database](sql-database-business-continuity.md) |
 | [Dołączanie bazy danych](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nie | Nie |
@@ -103,10 +103,10 @@ Poniższej tabeli przedstawiono główne funkcje programu SQL Server i zawiera i
 | [OPENQUERY](https://docs.microsoft.com/sql/t-sql/functions/openquery-transact-sql)|Nie|Tak — zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql)|Nie|Tak — zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md)|
 | [OPENXML](https://docs.microsoft.com/sql/t-sql/functions/openxml-transact-sql)|Yes|Yes|
-| [Operatory](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Większość — Zobacz pojedyncze operatory |Tak — zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md) |
+| [Operators](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | Większość — Zobacz pojedyncze operatory |Tak — zobacz [różnice w języku T-SQL](sql-database-managed-instance-transact-sql-information.md) |
 | [Partycjonowanie](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | Yes | Yes |
 | [Punkt w czasie przywracania bazy danych](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Tak — tylko - Zobacz warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy [odzyskiwanie bazy danych SQL](sql-database-recovery-using-backups.md#point-in-time-restore) | Tak — zobacz [odzyskiwanie bazy danych SQL](sql-database-recovery-using-backups.md#point-in-time-restore) |
-| [Program Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nie | Nie |
+| [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | Nie | Nie |
 | [Zarządzanie oparte na zasadach](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nie | Nie |
 | [Predykaty](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Yes | Yes |
 | [Powiadomienia o zapytaniach](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | Nie | Yes |

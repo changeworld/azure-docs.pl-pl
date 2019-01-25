@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: kraigb
-ms.openlocfilehash: 31cbe2e62582ae810d165ddef5db6a20c52ff050
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847547"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904373"
 ---
 # <a name="manage-and-configure-projects"></a>Konfigurowanie projektów i zarządzanie nimi
 
@@ -41,9 +41,9 @@ Notesy platformy Azure rozpoczyna się maszyny wirtualnej stanowiącej podstawę
 
 ![Obliczenia z listy rozwijanej warstwy na pulpicie nawigacyjnym projekt](media/project-compute-tier-list.png)
 
-Ograniczenia te można pominąć przy użyciu innej maszyny wirtualnej, które zostały aprowizowane w subskrypcji platformy Azure. Należy również Instalacja oprogramowania Jupyter na tej maszynie wirtualnej. Obrazy maszyn wirtualnych do nauki o danych są dobrych wyborów, ponieważ zawierają one Jupyter domyślnie.
+Ograniczenia te można pominąć przy użyciu innej maszyny wirtualnej, które zostały aprowizowane w subskrypcji platformy Azure. Należy zainstalować i uruchomić JupyterHub na tej maszynie wirtualnej. Obrazy maszyny wirtualnej do nauki o danych (dowolnego systemu operacyjnego) są dobrych wyborów, ponieważ zawierają one JupyterHub domyślnie.
 
-Można nawiązać dowolnej odpowiednio skonfigurowanych maszyn wirtualnych platformy Azure za pomocą **bezpośrednie obliczenia** opcji na liście rozwijanej. Wybranie tej opcji wyświetli monit o podanie nazwy (w celu wyświetlenia na liście), adres IP maszyny Wirtualnej i portu (zazwyczaj 8000, domyślny port, na którym nasłuchuje JupyterHub) i poświadczenia maszyny Wirtualnej:
+Po utworzeniu odpowiednio skonfigurowanych maszyn wirtualnych platformy Azure, wybierz **bezpośrednie obliczenia** opcji na liście rozwijanej wyświetli monit o podanie nazwy (w celu wyświetlenia na liście), adres IP maszyny Wirtualnej i port (zazwyczaj 8000, domyślny port, do którego JupyterHub nasłuchuje), a poświadczenia maszyny Wirtualnej:
 
 ![Wiersz do zbierania informacji z opcji usługi obliczenia bezpośrednie serwera](media/project-compute-tier-direct.png)
 
@@ -51,13 +51,13 @@ Jeśli następujące warunki są spełnione, listy rozwijanej również pokazuje
 
 - Po zarejestrowaniu się w notesach Azure przy użyciu konta, który używa usługi Azure Active Directory (AAD), takie jak konto firmy.
 - Twoje konto jest połączone z subskrypcją platformy Azure.
-- Masz co najmniej jednej maszyny wirtualnej w tej subskrypcji z co najmniej dostęp czytnika, używanego przez maszynę wirtualną do nauki o danych do obrazu systemu Linux (Ubuntu).
+- Masz co najmniej jednej maszyny wirtualnej w tej subskrypcji z co najmniej dostęp czytnika, używanego przez maszynę wirtualną do nauki o danych do obrazu systemu Linux (Ubuntu).)
 
 ![Wystąpienia maszyny wirtualnej do nauki o danych na liście rozwijanej na pulpicie nawigacyjnym projekt](media/project-compute-tier-dsvm.png)
 
 Po wybraniu wystąpienia maszyny wirtualnej DSVM, notesy platformy Azure może monit o poświadczenia określonej maszyny używane podczas tworzenia maszyny Wirtualnej.
 
-Aby utworzyć nowe wystąpienie maszyny wirtualnej DSVM, postępuj zgodnie z instrukcjami [tworzenia maszyny Wirtualnej do nauki o danych Ubuntu](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Możesz *musi* użyj **maszyna wirtualna do nauki o danych dla systemu Linux (Ubuntu)** obrazu, ponieważ notesy platformy Azure nie wyświetla maszyny, które używają Windows lub CentOS obrazy.
+Aby utworzyć nowe wystąpienie maszyny wirtualnej DSVM, postępuj zgodnie z instrukcjami [tworzenia maszyny Wirtualnej do nauki o danych Ubuntu](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Użyj **maszyna wirtualna do nauki o danych dla systemu Linux (Ubuntu)** obrazu, jeśli chcesz, aby znajdujący się w rozwijanej liście notesów usługi Azure.  Jeśli z innych przyczyn, należy użyć obrazu Windows lub CentOS, można użyć **bezpośrednie obliczenia** opcję, aby połączyć się z maszyny DSVM ręcznie.
 
 ## <a name="edit-project-metadata"></a>Edytowanie metadanych projektu
 

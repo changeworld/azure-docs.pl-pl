@@ -5,15 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/17/2019
-ms.openlocfilehash: 6c1a0a4a13a70daec157ede98f850f87150f8d93
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 01/23/2019
+ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383528"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902665"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Jak utworzyć i zarządzać nimi odczytu replik w witrynie Azure portal
+
+> [!IMPORTANT]
+> Funkcja odczytu repliki jest w publicznej wersji zapoznawczej.
+
+
 W tym artykule dowiesz się, jak tworzyć i zarządzać nimi odczytu replik w usłudze Azure Database dla PostgreSQL za pomocą witryny Azure portal. Aby dowiedzieć się więcej na temat odczytu repliki, [zapoznaj się z dokumentacją pojęcia](concepts-read-replicas.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -41,6 +46,7 @@ W tym kroku przygotowania głównego dotyczy tylko serwerów ogólnego przeznacz
    ![Azure Database for PostgreSQL — Zapisz powiadomień](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
 6. Uruchom ponownie serwer, aby zastosować zmiany po zapisaniu. Zobacz [dokumentacji ponownego uruchomienia](howto-restart-server-portal.md) dowiesz się, jak uruchomić ponownie serwer.
+
 
 ## <a name="create-a-read-replica"></a>Tworzenie repliki do odczytu
 Można utworzyć odczytu repliki wykonując następujące czynności:

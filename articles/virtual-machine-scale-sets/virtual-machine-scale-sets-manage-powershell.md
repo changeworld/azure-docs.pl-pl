@@ -3,7 +3,7 @@ title: Zarządzanie zestawami skalowania maszyn wirtualnych przy użyciu program
 description: Pojemność zestawu typowych poleceń cmdlet Azure PowerShell do zarządzania programem Virtual Machine Scale Sets, takie jak uruchamianie i zatrzymywanie wystąpienia lub zmienianie skali.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: zarhoads
-ms.openlocfilehash: 0aec3b2d70336e273772f8487b586d2ff23b0604
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 32bcc87cad23c8a9145e2104794701997fca8998
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466312"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883266"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zarządzanie maszyny wirtualnej zestawu skalowania przy użyciu programu Azure PowerShell
 W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Ten artykuł szczegółowo opisuje niektóre typowe poleceń cmdlet programu Azure PowerShell, które umożliwiają wykonywanie tych zadań.

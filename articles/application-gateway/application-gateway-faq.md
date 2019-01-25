@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 45751af66b1b050d4d36d1b8aee52dc6a5d8cc7b
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: bd3711a88b14d7a24df7c20c72b49fca5953b568
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382405"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886471"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -105,8 +105,6 @@ Usługa Application Gateway są wstawiane nagłówek X-oryginalny-Host, zawieraj
 Nowych wdrożeń jednostek SKU v1 Application Gateway może potrwać do 20 minut do aprowizowania. Zmiany rozmiaru/liczba wystąpień nie są naturalnymi, a brama pozostaje aktywna, w tym czasie.
 
 Jednostki SKU v2 wdrożenia może potrwać około pięciu lub sześciu minut aprowizację.
-
-Usługa Application Gateway obsługuje nagłówków x-forwarded dla?
 
 ## <a name="configuration"></a>Konfigurowanie
 

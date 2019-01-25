@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2010
+ms.date: 01/24/2010
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 916de2de6cdc19bfa1e3967661d40693d4be1e99
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: edb4e2b25e5fd7d6c59f07a02cc5d2f0630eac8e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852392"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904407"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -180,6 +180,19 @@ To zachowanie nie ma zastosowania do żadnego innego użytkownika, który loguje
 
 ---
 
+**Pytanie: co to są certyfikaty P2P dostęp, MS organizacji w-znajduje się na naszych urządzeń z systemem Windows 10?**
+
+**ODP.:** Certyfikaty P2P dostęp, MS organizacji w-są wydawane przez usługę Azure AD do obu przyłączonych do usługi Azure AD i urządzeń przyłączonych do hybrydowej usługi Azure AD. Te certyfikaty są używane, aby ustanowić zaufanie między urządzeniami w ramach tej samej dzierżawy dla scenariuszy usług pulpitu zdalnego. Jeden certyfikat jest wystawiony dla urządzenia, a inny wystawionego dla użytkownika. Certyfikat urządzenie znajduje się w `Local Computer\Personal\Certificates` i jest ważny przez jeden dzień. Ten certyfikat zostanie odnowiony (przez wystawienie nowego certyfikatu) Jeśli urządzenie jest nadal aktywne w usłudze Azure AD. Certyfikat użytkownika znajduje się w `Current User\Personal\Certificates` ten certyfikat również jest ważny przez jeden dzień, ale jest wystawiony na żądanie, gdy użytkownik próbuje sesji usług pulpitu zdalnego na innym urządzeniu dołączonym do usługi Azure AD. Nie zostanie odnowiony po upływie. Oba te certyfikaty są wystawiane przy użyciu certyfikatu P2P dostęp, MS organizacji w-obecne w `Local Computer\AAD Token Issuer\Certificates`. Certyfikat został wystawiony przez usługę Azure AD podczas rejestracji urządzenia. 
+
+---
+
+**Q:Why wielu wygasłe certyfikaty wydane przez MS-organizacji-P2P-dostęp na urządzeniach z naszego systemu Windows 10 są widoczne? Jak można je usunąć?**
+
+**ODP.:** Wystąpił problem podczas identyfikowane w systemie Windows 10 w wersji 1709 i niższe, gdzie wygasłe certyfikaty MS-organizacji-P2P-dostęp, nadal istnieją w magazynie komputera z powodu problemów kryptograficznych. Użytkownikom można stoją w obliczu problemów z łącznością sieciową, jeśli używasz dowolnego klientów sieci VPN (np. Cisco AnyConnect), które nie może obsługiwać dużą liczbę wygasłe certyfikaty. Ten problem został rozwiązany w wersji 10 1803 systemu Windows, aby automatycznie usuwać takie wygasłe certyfikaty MS-organizacji-P2P — dostęp. Aby rozwiązać ten problem, należy zaktualizować urządzenia do systemu Windows 10 w wersji 1803. Jeśli nie można zaktualizować, możesz usunąć te certyfikaty, bez żadnych negatywnych skutków.  
+
+---
+
+
 ## <a name="hybrid-azure-ad-join-faq"></a>Przyłączanie do hybrydowej usługi Azure AD — często zadawane pytania
 
 **Pyt.: Gdzie mogę znaleźć, rozwiązywanie problemów z informacje do diagnozowania niepowodzeń przyłączanie do hybrydowej usługi Azure AD?**
@@ -217,15 +230,3 @@ Dołączenie do hybrydowej usługi Azure AD mają pierwszeństwo przed stan usł
 
 - Podczas pierwszej próby dostępu do usługi Użytkownicy są monitowani o zarejestrowanie urządzenia przy użyciu portalu firmy.
 
----
-
-
-**Pytanie: co to są certyfikaty P2P dostęp, MS organizacji w-znajduje się na naszych urządzeń z systemem Windows 10?**
-
-**ODP.:** Certyfikaty P2P dostęp, MS organizacji w-są wydawane przez usługę Azure AD do obu przyłączonych do usługi Azure AD i urządzeń przyłączonych do hybrydowej usługi Azure AD. Te certyfikaty są używane, aby ustanowić zaufanie między urządzeniami w ramach tej samej dzierżawy dla scenariuszy usług pulpitu zdalnego. Jeden certyfikat jest wystawiony dla urządzenia, a inny wystawionego dla użytkownika. Certyfikat urządzenie znajduje się w `Local Computer\Personal\Certificates` i jest ważny przez jeden dzień. Ten certyfikat zostanie odnowiony (przez wystawienie nowego certyfikatu) Jeśli urządzenie jest nadal aktywne w usłudze Azure AD. Certyfikat użytkownika znajduje się w `Current User\Personal\Certificates` ten certyfikat również jest ważny przez jeden dzień, ale jest wystawiony na żądanie, gdy użytkownik próbuje sesji usług pulpitu zdalnego na innym urządzeniu dołączonym do usługi Azure AD. Nie zostanie odnowiony po upływie. Oba te certyfikaty są wystawiane przy użyciu certyfikatu P2P dostęp, MS organizacji w-obecne w `Local Computer\AAD Token Issuer\Certificates`. Certyfikat został wystawiony przez usługę Azure AD podczas rejestracji urządzenia. 
-
----
-
-**Q:Why wielu wygasłe certyfikaty wydane przez MS-organizacji-P2P-dostęp na urządzeniach z naszego systemu Windows 10 są widoczne? Jak można je usunąć?**
-
-**ODP.:** Wystąpił problem podczas identyfikowane w systemie Windows 10 w wersji 1709 i niższe, gdzie wygasłe certyfikaty MS-organizacji-P2P-dostęp, nadal istnieją w magazynie komputera z powodu problemów kryptograficznych. Użytkownikom można stoją w obliczu problemów z łącznością sieciową, jeśli używasz dowolnego klientów sieci VPN (np. Cisco AnyConnect), które nie może obsługiwać dużą liczbę wygasłe certyfikaty. Ten problem został rozwiązany w wersji 10 1803 systemu Windows, aby automatycznie usuwać takie wygasłe certyfikaty MS-organizacji-P2P — dostęp. Aby rozwiązać ten problem, należy zaktualizować urządzenia do systemu Windows 10 w wersji 1803. Jeśli nie można zaktualizować, możesz usunąć te certyfikaty, bez żadnych negatywnych skutków.  

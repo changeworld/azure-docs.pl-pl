@@ -3,7 +3,7 @@ title: Przewodnik po przykładzie infrastruktury platformy Azure | Dokumentacja 
 description: Więcej informacji na temat klucza wytycznych w zakresie projektowania i implementowania wdrażania infrastruktury przykład na platformie Azure.
 documentationcenter: ''
 services: virtual-machines-linux
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 794182e3988a353b1e305a36da0475bacdea69b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: d4b8cd07e50697139f68084f47c847ef8728c429
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469854"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888964"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Przykład Przegląd infrastruktury platformy Azure dla maszyn wirtualnych systemu Linux
 W tym artykule przedstawiono tworzenie infrastruktury aplikacji na przykładzie. Firma Microsoft szczegółowo projektowania infrastruktury dla prostych sklepie internetowym łączącym w sobie wszystkie wskazówki i decyzji związanych z konwencji nazewnictwa, zestawy dostępności, sieci wirtualne i usługi równoważenia obciążenia i faktycznego wdrażania maszyn wirtualnych (VM).
@@ -72,14 +72,14 @@ Ponieważ sieć wirtualna nie musi trwającą łączności z siecią lokalną cy
 
 Sieci wirtualnej tylko w chmurze są tworzone przy użyciu następujących ustawień, korzystając z portalu Azure:
 
-* Nazwa: AZOS — UŻYJ VN01
+* Nazwa: AZOS-USE-VN01
 * Lokalizacja: Wschodnie stany USA 2
 * Przestrzeń adresowa sieci wirtualnej: 10.0.0.0/8
 * Pierwszej podsieci:
   * Nazwa: FrontEnd
   * Przestrzeń adresowa: 10.0.1.0/24
 * Drugą podsieć:
-  * Nazwa: wewnętrznej bazy danych
+  * Nazwa: BackEnd
   * Przestrzeń adresowa: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Zestawy dostępności

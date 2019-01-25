@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956357"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888655"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu wiersza polecenia platformy Azure 
 
@@ -68,7 +68,7 @@ Poniższe informacje o zawierają dodatkowe informacje techniczne na temat stref
 * `$TTL` Dyrektywa jest opcjonalna i jest obsługiwana. Gdy nie `$TTL` podano dyrektywy, rekordy bez jawnego czas wygaśnięcia, które są importowane ustawiono jako domyślny czas wygaśnięcia 3600 sekund. Gdy dwa rekordy, w tym samym zestawie rekordów określić różnych czasów wygaśnięcia, niższa wartość jest używana.
 * `$ORIGIN` Dyrektywa jest opcjonalna i jest obsługiwana. Gdy nie `$ORIGIN` jest ustawiona wartość domyślna używana jest nazwa strefy, jak określono w wierszu polecenia (plus przerywa ".").
 * `$INCLUDE` i `$GENERATE` dyrektywy nie są obsługiwane.
-* Obsługiwane są następujące typy rekordów: A, AAAA, CNAME, MX, NS, SOA, SRV i TXT.
+* Obsługiwane są następujące typy rekordów: A, AAAA, CAA, CNAME, MX, NS, SOA, SRV i TXT.
 * Rekord SOA jest tworzone automatycznie przez usługę Azure DNS, gdy tworzona jest strefa. Podczas importowania pliku strefy wszystkie parametry SOA są pobierane z pliku strefy *z wyjątkiem* `host` parametru. Ten parametr używa wartości dostarczone przez usługę Azure DNS. Jest to spowodowane ten parametr musi odwoływać się do serwera nazwy podstawowej, dostarczone przez usługę Azure DNS.
 * Rekord serwera nazw, ustaw w wierzchołku strefy jest tworzona automatycznie przez usługę Azure DNS podczas tworzenia strefy. Tylko czas wygaśnięcia to zestaw rekordów jest importowany. Te rekordy zawierają nazwy serwerów nazw, dostarczone przez usługę Azure DNS. Rekord danych nie zostanie zastąpiona wartości zawarte w pliku importowanych strefy.
 * Publicznej wersji zapoznawczej usługi Azure DNS obsługuje tylko rekordy TXT pojedynczego ciągu. Wielociągu rekordy TXT, które są połączone się obcięte do 255 znaków.

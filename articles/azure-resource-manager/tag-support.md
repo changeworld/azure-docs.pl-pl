@@ -4,14 +4,14 @@ description: Pokazuje, jakie typy zasobów platformy Azure obsługuje tagi. Zawi
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/11/2019
+ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4899409b225298c521935f2eeaf5e8e59a6833b3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267457"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884949"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-tags.md).
@@ -584,7 +584,7 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
 | Klastry | Yes | 
-| Przestrzenie nazw | Yes | 
+| przestrzenie nazw | Yes | 
 | przestrzenie nazw/reguł autoryzacji | Nie | 
 | przestrzenie nazw/disasterrecoveryconfigs | Nie | 
 | przestrzenie nazw/eventhubs | Nie | 
@@ -673,7 +673,7 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 | scheduledqueryrules | Yes | 
 | vmInsightsOnboardingStatuses | Nie | 
 | testy internetowe | Yes | 
-| Skoroszyty | Yes | 
+| skoroszyty | Yes | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 | Typ zasobu | Obsługa tagów |
@@ -898,7 +898,7 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
-| Przestrzenie nazw | Yes | 
+| przestrzenie nazw | Yes | 
 | namespaces/notificationHubs | Yes | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -959,7 +959,7 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
-| Przestrzenie nazw | Yes | 
+| przestrzenie nazw | Yes | 
 | przestrzenie nazw/reguł autoryzacji | Nie | 
 | przestrzenie nazw/hybridconnections | Nie | 
 | przestrzenie nazw/hybridconnections/reguł autoryzacji | Nie | 
@@ -1063,7 +1063,7 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
-| Przestrzenie nazw | Yes | 
+| przestrzenie nazw | Yes | 
 | przestrzenie nazw/reguł autoryzacji | Nie | 
 | przestrzenie nazw/disasterrecoveryconfigs | Nie | 
 | przestrzenie nazw/eventgridfilters | Nie | 
@@ -1107,6 +1107,16 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
+| managedInstances | Yes |
+| managedInstances/baz danych | Yes |
+| managedInstances/databases/backupShortTermRetentionPolicies | Nie |
+| managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nie |
+| managedInstances/databases/vulnerabilityAssessments | Nie |
+| managedInstances/databases/vulnerabilityAssessments/rules/baselines | Nie |
+| managedInstances/encryptionProtector | Nie |
+| managedInstances/kluczy | Nie |
+| managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nie |
+| managedInstances/vulnerabilityAssessments | Nie |
 | serwerów | Yes | 
 | serwery/administratorów | Nie | 
 | serwery/communicationLinks | Nie | 

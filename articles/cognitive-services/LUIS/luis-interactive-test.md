@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: d355e14d15dc6a393a6fabb90418cb3949fe0cf5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 76db86f8ddaee43654689e78437d3cdbd1c211f6
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601971"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883028"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Przetestuj swoją aplikację usługi LUIS w portalu usługi LUIS
 <a name="train-your-app"></a>
@@ -26,6 +26,7 @@ ms.locfileid: "53601971"
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
+
 ## <a name="test-an-utterance"></a>Testowanie wypowiedź
 
 1. Dostęp do aplikacji, wybierając jego nazwę na **Moje aplikacje** strony. 
@@ -40,13 +41,8 @@ ms.locfileid: "53601971"
 
     ![Testowanie interaktywne identyfikuje niewłaściwego intencji](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="clear-test-panel"></a>Testu zwykłego panelu
-Aby wyczyścić wypowiedzi wprowadzony testu i ich wyniki z konsoli testów, wybierz **zacząć od początku** w lewym górnym rogu **panelu testu**. 
-
-## <a name="close-test-panel"></a>Test Zamknij panel
-Aby zamknąć **testu** panelu wybierz **testu** ponownie przycisk.
-
 ## <a name="inspect-score"></a>Sprawdź wynik
+
 Sprawdź szczegóły wyniku testu w **Sprawdź** panelu. 
  
 1. Za pomocą **testu** Otwórz panel slajdów w poziomie, wybierz opcję **Sprawdź** dla wypowiedź, które chcesz porównać. 
@@ -72,9 +68,11 @@ Jeśli **analizę tonacji** jest skonfigurowany na **[Publikuj](luis-how-to-publ
 ![Obraz przedstawiający okienko testowania za pomocą analizy opinii](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Popraw dopasowany wzorzec intencji
+
 Jeśli używasz [wzorców](luis-concept-patterns.md) wypowiedź dopasowany wzorzec, ale przewidzieć był nieprawidłowy zamiar, wybierz **Edytuj** połączyć za pomocą wzorca, a następnie wybierz poprawny intencji.
 
 ## <a name="compare-with-published-version"></a>Porównaj z opublikowanej wersji
+
 Możesz przetestować aktywnej wersji Twojej aplikacji za pomocą opublikowanego [punktu końcowego](luis-glossary.md#endpoint) wersji. W **Sprawdź** panelu wybierz **Porównaj z opublikowanych**. Wszelkie testowanie opublikowanego modelu jest odejmowany od salda limit przydziału subskrypcji platformy Azure. 
 
 ![Porównaj z opublikowane](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
@@ -88,12 +86,14 @@ Można wyświetlić punkt końcowy JSON zwrócony do porównywania, wybierając 
 ## <a name="additional-settings-in-test-panel"></a>Dodatkowe ustawienia w panelu testu
 
 ### <a name="luis-endpoint"></a>Punkt końcowy usługi LUIS
+
 Jeśli masz kilka punktów końcowych usługi LUIS, użyj **dodatkowe ustawienia** łącze na Test opublikowane w okienku można zmienić punktu końcowego używanego do testowania. Jeśli nie masz pewności, który punkt końcowy do użycia, wybierz domyślną **Starter_Key**. 
 
 ![Panel testu z wyróżnionym linkiem dodatkowe ustawienia](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Wyświetl korekty sprawdzania pisowni Bing w panelu testu
+
 Wymagania, aby wyświetlić korekty pisowni: 
 
 * Opublikowana aplikacja
@@ -124,6 +124,7 @@ Użyj poniższej procedury, aby uwzględnić [sprawdzania pisowni Bing w wersji 
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="batch-testing"></a>Testowanie wsadowe
 Zobacz testowania partii [pojęcia](luis-concept-batch-test.md) i Dowiedz się, [jak](luis-how-to-batch-test.md) partii wypowiedzi testowania.
 

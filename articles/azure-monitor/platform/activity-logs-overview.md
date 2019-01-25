@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: f5d09600829a3efa2682721bf4aedbed7e5cf969
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439072"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883776"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -45,7 +45,7 @@ Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe 
 * **Automatyczne skalowanie** — ta kategoria zawiera rekord wszystkie zdarzenia związane z działaniem aparat skalowania automatycznego na podstawie ustawień automatycznego skalowania, wszelkie zdefiniowane w ramach subskrypcji. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Skalowania automatycznego skalowania w górę akcja nie powiodła się". Przy użyciu skalowania automatycznego, możesz automatycznie skalować w poziomie lub skalowanie liczby wystąpień w obsługiwany typ zasobu na podstawie czasu dzień danych i/lub obciążenia (metryk) przy użyciu ustawienia automatycznego skalowania. Po spełnieniu warunków do skalowania w górę lub w dół, start i zakończyło się powodzeniem lub niepowodzeniem zdarzenia są rejestrowane w tej kategorii.
 * **Zalecenie** — ta kategoria zawiera zdarzenia zalecenia z usługi Azure Advisor.
 * **Zabezpieczenia** — ta kategoria zawiera rekord wszystkie alerty wygenerowane przez usługę Azure Security Center. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii są ""podejrzane podwójne rozszerzenie pliku wykonywane.
-* **Zasady** — ta kategoria zawiera wszystkie zdarzenia; jest zarezerwowany do użytku w przyszłości. 
+* **Zasady** — ta kategoria zawiera rekordy operacji wszystkie efekt działania wykonywane przez usługę Azure Policy. Przykłady typów zdarzeń, które powinny zostać wyświetlone tej kategorii inspekcji i Odmów. Każdej akcji podjętej przez zasady są modelowane jako operacja dotycząca zasobu.
 
 ## <a name="event-schema-per-category"></a>Schemat zdarzeń według kategorii
 [Zobacz ten artykuł, aby zrozumieć schemat zdarzeń dziennika aktywności dla każdej kategorii.](../../azure-monitor/platform/activity-log-schema.md)

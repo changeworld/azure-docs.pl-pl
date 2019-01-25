@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653513"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901789"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego w usłudze Azure App Service
 W tym artykule opisano typowych funkcji systemu operacyjnego linii bazowej, która jest dostępna dla wszystkich aplikacji Windows działających na [usługi Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje plików, sieci i dostępu do rejestru i dzienniki diagnostyczne i zdarzenia. 
@@ -128,6 +128,10 @@ Obszary diagnostyki rejestrowania i śledzenia, które nie są dostępne dla apl
 Aplikacje mają dostęp tylko do odczytu do większości (choć nie wszystkie) rejestru maszyny wirtualnej są uruchomione. W praktyce oznacza to, że klucze rejestru, które umożliwiają dostęp tylko do odczytu do lokalnej grupy użytkowników są dostępne dla aplikacji. Jeden obszar rejestru, który nie jest obecnie obsługiwane dla odczytu lub zapisu jest HKEY\_bieżącego\_gałęzi użytkownika.
 
 Dostęp do zapisu w rejestrze jest zablokowany, łącznie z dostępem do żadnych kluczy rejestru na użytkownika. Z perspektywy aplikacji dostęp do zapisu w rejestrze powinno nigdy nie można polegać w środowisku platformy Azure, ponieważ aplikacje można (i należy) migrowani na różnych maszynach wirtualnych. Tylko trwałego magazynu zapisywalny, który może być zależna od aplikacji jest struktury zawartości katalogu aplikacji przechowywanych w udziałach UNC usługi aplikacji. 
+
+## <a name="remote-desktop-access"></a>Dostęp do pulpitu zdalnego
+
+Usługa App Service nie zapewnia dostęp do pulpitu zdalnego do wystąpień maszyn wirtualnych.
 
 ## <a name="more-information"></a>Więcej informacji
 

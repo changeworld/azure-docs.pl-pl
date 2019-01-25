@@ -3,7 +3,7 @@ title: Jak tworzyć i usuwać przypisane przez użytkownika tożsamości zarząd
 description: Krok po kroku instrukcje dotyczące sposobu tworzenia i usuwania przypisanych do użytkowników zarządzanych tożsamości za pomocą usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
-ms.author: daveba
-ms.openlocfilehash: 5270bcff74f8738bb8449a158e1da16c25157e61
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.author: priyamo
+ms.openlocfilehash: 198bf1e971ee7594668bbd79a1f6fc92acaa6a03
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452857"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885255"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Tworzenie, wyświetlanie i usuwanie przypisanych przez użytkownika tożsamości zarządzanej przy użyciu usługi Azure Resource Manager
 

@@ -1,43 +1,43 @@
 ---
-title: Włącz duży kontrast w portalu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć funkcję Duży kontrast, lub Zmień motyw portalu Azure.
+title: Włączanie dużego kontrastu w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak włączanie dużego kontrastu lub zmienianie motywu portalu Azure.
 services: azure-portal
 keywords: ''
-author: cwatson-cat
-ms.author: cwatson
+author: kfollis
+ms.author: kfollis
 ms.date: 08/24/2017
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: accessibility
 manager: dougeby
-ms.openlocfilehash: 08f42fc70373effd46297ad67d4359bfa42852b7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 0807921ce304bec6848744b5fc6ec3208e71eca0
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165404"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887057"
 ---
-# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Włącz duży kontrast, lub Zmień motyw w portalu Azure
-Jeśli potrzebujesz więcej kontrast, czy chcesz zmienić schemat kolorów w portalu Azure, przejdź do ustawień portalu, aby wprowadzić zmiany. 
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Włączanie dużego kontrastu lub zmienianie motywu w witrynie Azure portal
+Jeżeli potrzebują większego kontrastu lub chcesz zmienić schemat kolorów w witrynie Azure portal, przejdź do ustawień portalu, aby wprowadzić zmianę. 
 
-## <a name="turn-on-high-contrast"></a>Włącz duży kontrast
-1. U góry po prawej [portalu Azure](https://portal.azure.com), wybierz pozycję **ustawienia**. 
+## <a name="turn-on-high-contrast"></a>Włączanie wysokiego kontrastu
+1. U góry po prawej stronie [witryny Azure portal](https://portal.azure.com), wybierz opcję **ustawienia**. 
 
-    ![Zrzut ekranu, który przedstawia się, że ustawienia portalu narzędzi ikonę w portalu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
-1. Wybierz **biały** lub **czarne**.
+    ![Zrzut ekranu pokazujący, że ustawienia portalu ikonę w witrynie Azure portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+1. Wybierz **biały** lub **czarny**.
 
-    ![Zrzut ekranu pokazujący Opcje dużego kontrastu w ustawieniach portalu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Zrzut ekranu przedstawiający opcje wysokiego kontrastu w ustawieniach portalu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. Wybierz przycisk **Zastosuj**.
 
 ## <a name="change-theme"></a>Zmień motyw
-1. U góry po prawej [portalu Azure](https://portal.azure.com), wybierz pozycję **ustawienia**.
+1. U góry po prawej stronie [witryny Azure portal](https://portal.azure.com), wybierz opcję **ustawienia**.
 
-    ![Zrzut ekranu, który przedstawia się, że ustawienia portalu narzędzi ikonę w portalu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Zrzut ekranu pokazujący, że ustawienia portalu ikonę w witrynie Azure portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 1. Umożliwia wybranie motywu.
 
     ![Zrzut ekranu pokazujący opcji motywu w ustawieniach portalu Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 1. Wybierz przycisk **Zastosuj**.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Skróty klawiaturowe w portalu Azure](azure-portal-keyboard-shortcuts.md)
+- [Skróty klawiaturowe w witrynie Azure portal](azure-portal-keyboard-shortcuts.md)
 - [Obsługiwane przeglądarki i urządzenia](../azure-preview-portal-supported-browsers-devices.md)

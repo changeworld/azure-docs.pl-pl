@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 44950a467e99fb7968d838345d80c8e28aee62b9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467472"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885851"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -31,7 +31,7 @@ Dzienniki te różnią się od [dziennika aktywności](activity-logs-overview.md
 
 Dzienniki te różnią się także z poziomu systemu operacyjnego gościa, dzienniki diagnostyczne. System operacyjny gościa, dzienniki diagnostyczne są te zebranych przez agenta uruchomionego na maszynie wirtualnej lub innych obsługiwany typ zasobu. Dzienniki diagnostyczne na poziomie zasobów wymagają nie agenta i przechwytywania danych specyficznych dla zasobów z platformą Azure, natomiast dzienniki diagnostyczne na poziomie systemu operacyjnego gościa przechwytywanie danych z systemu operacyjnego i aplikacji uruchomionych na maszynie wirtualnej.
 
-Nie wszystkie usługi pomocy technicznej opisane w tym miejscu dzienniki diagnostyczne. [Ten artykuł zawiera listę sekcji usług, które obsługują dzienniki diagnostyczne](./../../azure-monitor/platform/tutorial-dashboards.md).
+Nie wszystkie usługi pomocy technicznej opisane w tym miejscu dzienniki diagnostyczne. [Ten artykuł zawiera listę sekcji usług, które obsługują dzienniki diagnostyczne](./../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ## <a name="what-you-can-do-with-diagnostic-logs"></a>Co można zrobić za pomocą dzienników diagnostycznych
 Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
@@ -229,7 +229,7 @@ Dodawanie ustawienia diagnostyczne powoduje wyświetlenie widoku ustawień diagn
 
 ## <a name="supported-services-categories-and-schemas-for-diagnostic-logs"></a>Obsługiwane usługi, kategorie i schematy dla dzienników diagnostycznych
 
-[Ten artykuł](../../azure-monitor/platform/tutorial-dashboards.md) pełną listę obsługiwanych usług i Rejestruj kategorie i schematy używane przez te usługi.
+[Ten artykuł](../../azure-monitor/platform/diagnostic-logs-schema.md) pełną listę obsługiwanych usług i Rejestruj kategorie i schematy używane przez te usługi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

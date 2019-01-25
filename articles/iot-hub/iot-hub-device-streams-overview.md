@@ -8,22 +8,22 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7ffe4a087ae94d6c96019cc045d3d7ff071780d4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 426c8995e5c3d98e42d0ad334b8ae52171556dce
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830354"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884966"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Strumienie urządzenia Centrum IoT (wersja zapoznawcza)
 
 ## <a name="overview"></a>Przegląd
-Usługa Azure IoT Hub *strumieni urządzenia* ułatwia tworzenie bezpiecznych tuneli protokołu TCP dwukierunkowej dla różnych scenariuszy komunikacji z chmury do urządzenia. Strumień urządzeń są przenoszone przez przez usługę IoT Hub *punkt końcowy przesyłania strumieniowego* który działa jako serwer proxy między punktami końcowymi usług i urządzeń. Ta konfiguracja jest przedstawiony na poniższym diagramie, czyli espcially przydatne w przypadku urządzeń znajdujących się za zaporą w sieci lub znajdują się wewnątrz sieci prywatnej. W efekcie strumieni urządzenia usługi IoT Hub pomagają klientów adres trzeba osiągnąć urządzeń IoT w sposób przyjaznego dla zapory oraz bez konieczności szeroko otwarcia portów zapory sieciowych przychodzących lub wychodzących.
+Usługa Azure IoT Hub *strumieni urządzenia* ułatwia tworzenie bezpiecznych tuneli protokołu TCP dwukierunkowej dla różnych scenariuszy komunikacji z chmury do urządzenia. Strumień urządzeń są przenoszone przez przez usługę IoT Hub *punkt końcowy przesyłania strumieniowego* który działa jako serwer proxy między punktami końcowymi usług i urządzeń. Ten Instalator przedstawiony na diagramie poniżej, jest szczególnie przydatne, gdy urządzenia zapory sieciowej lub znajdują się w sieci prywatnej. W efekcie strumieni urządzenia usługi IoT Hub pomagają klientów adres trzeba osiągnąć urządzeń IoT w sposób przyjaznego dla zapory oraz bez konieczności szeroko otwarcia portów zapory sieciowych przychodzących lub wychodzących.
 
 ![Tekst alternatywny](./media/iot-hub-device-streams-overview/iot-hub-device-streams-overview.png "usługi IoT Hub device strumieni — omówienie")
 
 
-Stosowanie strumieni urządzenia usługi IoT Hub, urządzenia pozostaną bezpieczne i wystarczy otworzyć połączenia wychodzące TCP do punktu końcowego przesyłania strumieniowego usługi IoT hub za pośrednictwem portu 443. Po ustanowieniu strumienia usługi po stronie urządzenia i aplikacje każdy będzie miał dostęp programowy do obiektu WebSocket klienta do wysyłania i odbierania bajtowych ze sobą. Niezawodność i kolejność gwarancje udostępniane przez ten tunel jest zgodna z protokołu TCP.
+Stosowanie strumieni urządzenia usługi IoT Hub, urządzenia pozostaną bezpieczne i wystarczy otworzyć połączenia wychodzące TCP do punktu końcowego przesyłania strumieniowego usługi IoT hub za pośrednictwem portu 443. Po ustanowieniu strumienia usługi po stronie urządzenia i aplikacje każdy będzie miał dostęp programowy do obiektu klienta protokołu WebSocket, wysyłanie i odbieranie bajtów raw ze sobą. Niezawodność i kolejność gwarancje udostępniane przez ten tunel jest zgodna z protokołu TCP.
 
 ## <a name="benefits"></a>Korzyści
 Strumienie urządzenia usługi IoT Hub zapewniają następujące korzyści:
@@ -33,14 +33,14 @@ Strumienie urządzenia usługi IoT Hub zapewniają następujące korzyści:
 
 - **Szyfrowanie:** Domyślnie strumieni urządzenia usługi IoT Hub za pomocą połączeń z obsługą protokołu TLS. Dzięki temu dane są zawsze szyfrowane niezależnie od tego, czy aplikacja używa szyfrowania, czy nie.
 
-- **Prostota połączenia:** Korzystanie z urządzeń, strumieni eliminuje potrzebę stosowania złożonych konfiguracji wirtualnych sieci prywatnych do zapewniania łączności urządzeń IoT.
+- **Prostota połączenia:** W wielu przypadkach korzystanie z urządzeń, strumieni eliminuje potrzebę stosowania złożonych konfiguracji wirtualnych sieci prywatnych do zapewniania łączności urządzeń IoT.
 
 - **Zgodność z stos TCP/IP:** Strumienie urządzenia usługi IoT Hub może obsłużyć TCP/IP ruchu aplikacji. Oznacza to, że szeroką gamę protokołów własnościowych, jak również standardami mogą korzystać z tej funkcji.
 
-- **Łatwość użycia w konfiguracji sieci prywatnej.** Usługa może nawiązać połączenia z urządzeniem, odwołując się do Identyfikatora urządzenia, a nie adresu IP. Jest to przydatne w sytuacjach, gdy urządzenie znajduje się w sieci prywatnej i ma prywatny adres IP, lub jego adres IP jest przypisywany dynamicznie i nie jest znana po stronie usługi.
+- **Łatwość użycia w konfiguracji sieci prywatnej.** Usługa może komunikować się z urządzeniem, odwołując się do jego identyfikator urządzenia, a nie adres IP urządzenia. Jest to przydatne w sytuacjach, gdy urządzenie znajduje się w sieci prywatnej i ma prywatny adres IP, lub jego adres IP jest przypisywany dynamicznie i nie jest znana po stronie usługi.
 
 ## <a name="device-stream-workflows"></a>Przepływy pracy Stream urządzenia
-Strumień urządzeń jest inicjowane, gdy usługa żądań nawiązać połączenia z urządzeniem, podając jego identyfikator urządzenia. Ten przepływ pracy jest szczególnie pasuje do wzorca komunikacji klient serwer, łącznie z protokołu SSH i RDP, gdy użytkownik nie chce zdalne połączenia z serwerem SSH lub RDP, działające na urządzeniu przy użyciu klienta SSH lub RDP program kliencki.
+Strumień urządzeń jest inicjowane, gdy usługa żądań nawiązać połączenia z urządzeniem, podając jego identyfikator urządzenia. Ten przepływ pracy szczególnie pasuje do modelu komunikacji klient serwer, łącznie z protokołu SSH i RDP, gdy użytkownik nie chce zdalne połączenia z serwerem SSH lub RDP, działające na urządzeniu za pomocą programu klienta SSH lub RDP.
 
 Proces tworzenia strumienia urządzenia wymaga negocjacji między urządzeniem, usługi, główny usługi IoT hub i punkty końcowe przesyłania strumieniowego. Gdy główny punkt końcowy usługi IoT hub organizuje tworzenia strumienia urządzenia, punkt końcowy przesyłania strumieniowego obsługuje ruch, który przepływa między usługą i urządzeniem.
 
@@ -58,14 +58,14 @@ Programowe tworzenie strumienia urządzenia przy użyciu zestawu SDK obejmuje na
 
 4. Urządzenie tworzy bezpieczne połączenie TCP ruchu wychodzącego do punktu końcowego przesyłania strumieniowego za pośrednictwem portu 443 i uaktualniania połączenia do protokołu WebSocket. Adres URL punktu końcowego przesyłania strumieniowego, a także poświadczenia na potrzeby uwierzytelniania zarówno znajdują się na urządzeniu przez usługę IoT Hub jako część żądania wysłanego w kroku 3.
 
-5. Ta usługa jest powiadamiany o wyniku urządzenia akceptowanie strumienia i przechodzi do utworzenia własnego protokołu WebSocket do punktu końcowego przesyłania strumieniowego. Podobnie otrzymuje informacje na temat przesyłania strumieniowego punktu końcowego adresu URL i uwierzytelniania z usługi IoT Hub.
+5. Ta usługa jest powiadamiany o wyniku urządzenia akceptowanie strumienia i przechodzi do utworzenia własnego klienta protokołu WebSocket do punktu końcowego przesyłania strumieniowego. Podobnie otrzymuje informacje na temat przesyłania strumieniowego punktu końcowego adresu URL i uwierzytelniania z usługi IoT Hub.
 
 W trakcie procesu uzgadniania powyżej:
 - Proces uzgadniania musi zostać zakończone w ciągu 60 sekund (krok 2 do 5), w przeciwnym razie uzgadnianie może zakończyć się niepowodzeniem z limitem czasu i usługi zostanie o tym powiadomiony.
 
 - Po ukończeniu powyżej przepływ tworzenia strumienia punkt końcowy przesyłania strumieniowego będzie działał jako serwer proxy i będzie przesyłać ruch między usługą i urządzeniem za pośrednictwem ich odpowiednich funkcji WebSockets.
 
-- Urządzenia i usługi muszą łączności wychodzącej do główny punkt końcowy usługi IoT Hub, a także punkt końcowy przesyłania strumieniowego za pośrednictwem portu 443. Adres URL z tych punktów końcowych dostępnej na karcie Przegląd w portalu Centrum IoT.
+- Urządzenia i usługi muszą łączności wychodzącej do główny punkt końcowy usługi IoT Hub, a także punkt końcowy przesyłania strumieniowego za pośrednictwem portu 443. Adres URL z tych punktów końcowych dostępnej w *Przegląd* karta w portalu Centrum IoT.
 
 - Niezawodność i kolejność gwarantuje strumień ustanowionych jest zgodna z protokołu TCP.
 
@@ -85,9 +85,20 @@ Alternatywnie informacji punkty końcowe użycia można pobrać przy użyciu wie
 az iot hub show --name <YourIoTHubName>
 ```
 
+## <a name="whitelist-device-streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego do listy dozwolonych urządzeń
+
+Jak wspomniano wcześniej [wcześniej](#Overview), urządzenie tworzy połączenie wychodzące do punktu końcowego przesyłania strumieniowego usługi IoT Hub podczas strumieni urządzenia proces inicjowania. Na urządzeniu lub w jego sieci zapory muszą zezwalać na łączności wychodzącej do przesyłania strumieniowego bramy za pośrednictwem portu 443 (należy zauważyć, że komunikacja odbywa się za pośrednictwem połączenia protokołu WebSocket, który jest szyfrowana przy użyciu protokołu TLS).
+
+Nazwa hosta punktu końcowego przesyłania strumieniowego urządzeń można znaleźć w portalu usługi Azure IoT Hub na karcie Przegląd. ![Tekst alternatywny](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "punktów końcowych usługi stream urządzenia")
+
+Alternatywnie można znaleźć te informacje przy użyciu wiersza polecenia platformy Azure:
+```cmd/sh
+az iot hub show --name <YourIoTHubName>
+```
+
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Rozwiązywanie problemów za pomocą urządzenia strumienie dzienników aktywności
 
-Można skonfigurować usługi Azure Log Analytics, aby zebrać dziennik aktywności strumieni urządzenia w usłudze IoT Hub. Może to być bardzo przydatne w Rozwiązywanie problemów ze scenariuszami.
+Można skonfigurować usługi Azure Log Analytics, można zebrać dziennika aktywności strumieni urządzenia w usłudze IoT Hub. Może to być bardzo przydatne w Rozwiązywanie problemów ze scenariuszami.
 
 Wykonaj poniższe kroki, aby skonfigurować usługi Azure Log Analytics dla działań strumień urządzenie usługi IoT Hub:
 
@@ -105,64 +116,65 @@ Wykonaj poniższe kroki, aby skonfigurować usługi Azure Log Analytics dla dzia
     <p>
 Jak pokazano poniżej tożsamości na urządzeniu docelowym i wynik operacji jest również dostępna w dziennikach.
     ![Tekst alternatywny](./media/iot-hub-device-streams-overview/device-streams-log-analytics.PNG "dostęp do urządzenia strumieniowe przesyłanie dzienników")
-    
 
-## <a name="whitelist-device-streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego do listy dozwolonych urządzeń
 
-Jak wspomniano wcześniej [wcześniej](#Overview), urządzenie tworzy połączenie wychodzące do punktu końcowego przesyłania strumieniowego usługi IoT Hub podczas strumieni urządzenia proces inicjowania. Na urządzeniu lub w jego sieci zapory muszą zezwalać na łączności wychodzącej do przesyłania strumieniowego bramy za pośrednictwem portu 443 (jest to połączenie WebSocket, które są szyfrowane przy użyciu protokołu TLS).
+## <a name="regional-availability"></a>Dostępność regionalna
 
-Nazwa hosta punktu końcowego przesyłania strumieniowego urządzeń można znaleźć w portalu usługi Azure IoT Hub na karcie Przegląd. ![Tekst alternatywny](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "punktów końcowych usługi stream urządzenia")
+W publicznej wersji zapoznawczej strumienie urządzenia usługi IoT Hub są dostępne w regionach środkowe stany USA i centralnym stany USA — EUAP. Upewnij się, że Utwórz koncentrator w jednym z tych regionów. 
 
-Alternatywnie można znaleźć te informacje przy użyciu wiersza polecenia platformy Azure:
-```cmd/sh
-az iot hub show --name tcpstreaming-preview
-```
 
 ## <a name="sdk-availability"></a>Dostępność zestawu SDK
+
 Dwa boki każdego strumienia (po stronie usług i urządzeń) Użyj zestawu SDK usługi IoT Hub, aby ustanowić tunel. W publicznej wersji zapoznawczej klienci mogą wybierać spośród następujących języków zestawu SDK:
 - C i C# przez zestaw SDK obsługuje strumienie urządzenie po stronie urządzenia.
 
 - NodeJS i C# zestaw SDK obsługuje strumienie urządzenie po stronie usługi.
 
+
 ## <a name="iot-hub-device-stream-samples"></a>Przykłady Stream urządzenia Centrum IoT
-Wprowadzono dwa przykłady w celu zademonstrowania działania strumieni urządzenia przez aplikacje. *Echo* w przykładzie pokazano programistyczny użytkowania strumieni urządzenia (na przykład, wywołując interfejs API zestawu SDK). *Lokalnego serwera proxy* przykładowy, pokazują użycie funkcji zestawu SDK do tunelowania ruchu gotowych aplikacji (na przykład protokołu SSH, protokołu RDP lub sieci web) za pośrednictwem urządzenia strumieni.
+
+Opublikowane dotychczas dwa [quickstart — przykłady](/azure/iot-hub) aby zademonstrować użycie strumieni urządzenia przez aplikacje.
+* *Echo* w przykładzie pokazano programistyczny korzystanie z urządzeń, strumieni (przez bezpośrednie wywoływanie interfejsów API zestawu SDK).
+* *Lokalnego serwera proxy* w przykładzie pokazano tunelowania ruchu aplikacji gotowych klient/serwer (na przykład protokołu SSH, protokołu RDP lub sieci web) za pośrednictwem urządzenia strumieni.
+
+Te przykłady zostały omówione bardziej szczegółowo poniżej.
 
 ### <a name="echo-sample"></a>Przykładowe echo
-Przykład echo pokazuje programowe używanie strumieni urządzenia, wysyłanie i odbieranie bajtów między aplikacją usługi i urządzenia. Poniższe linki umożliwiają dostęp przewodniki szybkiego startu (programów usługi i urządzenia można używać w różnych językach, np. programu urządzenia C może współpracować z C# programowi service):
+Przykład echo pokazuje programowe używanie strumieni urządzenia, wysyłanie i odbieranie bajtów między aplikacjami usług i urządzeń. Poniższe łącza umożliwiają dostęp z przewodników Szybki Start. Należy pamiętać, że programy usługi i urządzenia można użyć w różnych językach, np. programu urządzenia C może współpracować z C# program usługi.
 
 | SDK    | Program usługi                                          | Program urządzenia                                           |
 |--------|----------------------------------------------------------|----------------------------------------------------------|
 | C#     | [Link](quickstart-device-streams-echo-csharp.md) | [Link](quickstart-device-streams-echo-csharp.md) |
-| NodeJS | [Link](quickstart-device-streams-echo-nodejs.md) | -                                                        |
+| Node.js | [Link](quickstart-device-streams-echo-nodejs.md) | -                                                        |
 | C      | -                                                        | [Link](quickstart-device-streams-echo-c.md)      |
 
 ### <a name="local-proxy-sample-for-ssh-or-rdp"></a>Przykład lokalnego serwera Proxy (dla protokołu SSH lub RDP)
 Przykład serwera proxy w lokalnych pokazuje sposób włączyć tunelowanie ruchu istniejącej aplikacji, które polega na komunikacji między klientem a serwerem programu. Ten zestaw się sprawdza w przypadku protokołów klient serwer, takich jak SSH i RDP, gdzie po stronie usługi działa jako klient (uruchomione programy klienta SSH lub RDP), a po stronie urządzenia działa jako serwer (uruchomiony demon SSH lub RDP programy serwera). 
 
-W tej sekcji opisano używanie strumieni urządzenia do obsługi scenariuszy SSH na urządzeniu przez urządzenie strumieni (w przypadku protokołu RDP lub innych protokołów klient serwer są podobne, używając odpowiedniego portu protokołu).
+W tej sekcji opisano używanie strumieni urządzenia umożliwiające użytkownikowi SSH na urządzeniu za pośrednictwem urządzenia strumieni (w przypadku protokołu RDP lub innej aplikacji klienta i serwera są podobne, używając odpowiedniego portu protokołu).
 
-Instalator korzysta z dwóch *lokalnego serwera proxy* programy przedstawione na rysunku poniżej, a mianowicie *urządzenia lokalnego serwera proxy* i *lokalnej usługi serwera proxy*. Lokalne serwery proxy są odpowiedzialni za [urządzenia strumienia inicjowania uzgadnianie](#Device-stream-creation-flow) za pomocą usługi IoT Hub i wchodzenie w interakcje przy użyciu klienta SSH i demon SSH za pomocą programowania gniazd regularne klient/serwer.
+Instalator korzysta z dwóch *lokalnego serwera proxy* programy przedstawione na rysunku poniżej, a mianowicie *urządzenia lokalnego serwera proxy* i *lokalnej usługi serwera proxy*. Programy lokalnego serwera proxy są odpowiedzialni za [urządzenia strumienia inicjowania uzgadnianie](#device-stream-creation-flow) za pomocą usługi IoT Hub i wchodzenie w interakcje przy użyciu klienta SSH i demon SSH używanie gniazd regularne klient/serwer.
 
 ![Tekst alternatywny](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png "konfiguracji serwera proxy strumienia urządzenia dla protokołu RDP/SSH")
 
 1. Użytkownik uruchamia lokalnej usługi serwera proxy, aby zainicjować strumień urządzenia na urządzeniu.
 
-2. Urządzenie akceptuje inicjowania strumienia i utworzeniu tunelu do punktu końcowego przesyłania strumieniowego usługi IoT Hub (zgodnie z opisem powyżej).
+2. Serwer proxy urządzenia lokalnego akceptuje żądania rozpoczęcia przesyłania strumieniowego i utworzeniu tunelu do punktu końcowego przesyłania strumieniowego usługi IoT Hub (zgodnie z opisem powyżej).
 
 3. Serwer proxy lokalne urządzenie łączy się punkt końcowy demon SSH nasłuchuje na porcie 22 na urządzeniu.
 
-4. Lokalne usługi Serwer proxy nasłuchuje na porcie wyznaczonym oczekiwanie na nowe połączenia SSH z użytkownika (dowolnego portu to port 2222 użytemu w przykładzie). Użytkownik wskazuje klienta SSH port serwera proxy usługi lokalnej na hoście lokalnym.
+4. Lokalne usługi Serwer proxy nasłuchuje na porcie wyznaczonym oczekiwanie na nowe połączenia SSH z użytkownika (port 2222, używany w przykładzie, ale można skonfigurować dostępny port). Użytkownik wskazuje klienta SSH port serwera proxy usługi lokalnej na hoście lokalnym.
 
 ### <a name="notes"></a>Uwagi
-- Powyższe kroki ukończyć tunel typu end-to-end między klientem protokołu SSH (po prawej stronie) do demona SSH (po lewej stronie). 
+- Powyższe kroki ukończyć tunel typu end-to-end między klientem protokołu SSH (po prawej stronie) do demona SSH (po lewej stronie). Część tego połączenie end-to-end polega na wysyłanie ruchu za pomocą strumienia urządzenia do usługi IoT Hub.
 
 - Strzałki na rysunku wskazuje kierunek, w którym nawiązywane są połączenia między punktami końcowymi. W szczególności należy pamiętać, że nie ma żadnych połączeń przychodzących, przechodząc do urządzenia (to jest często blokowane przez zaporę).
 
-- Wybór przy użyciu portu `2222` w serwerze proxy, lokalne usługi to dowolnego wybór. Serwer proxy można skonfigurować do użycia dostępny port.
+- Wybór przy użyciu portu 2222 w serwerze proxy, lokalne usługi jest wybór dowolnego. Serwer proxy można skonfigurować do użycia dostępny port.
 
-- Wybór portu `22` w tym przypadku jest zależna od procotocol i specyficzne dla protokołu SSH. W przypadku protokołu RDP, port `3389` musi być używana. Można to skonfigurować w podanych przykładowych programów.
+- Wybrany port 22 jest w tym przypadku zależnych od procotocol i specyficzne dla protokołu SSH. W przypadku protokołu RDP należy użyć portu 3389. Można to skonfigurować w podanych przykładowych programów.
 
-Użyj poniższych linków, aby uzyskać instrukcje na temat sposobu uruchamiania programów lokalnego serwera proxy w wybranym języku. Podobnie jak w przykładzie echo, można uruchomić urządzenia i usługi lokalne serwery proxy w różnych językach, ponieważ są one pełni współdziałały.
+Użyj poniższych linków, aby uzyskać instrukcje na temat sposobu uruchamiania programów lokalnego serwera proxy w wybranym języku. Podobnie jak [echo przykład](#echo-sample), lokalnych urządzeń i usługi serwera proxy programy można uruchamiać w różnych językach, ponieważ są one pełni współdziałały.
 
 | SDK    | Lokalne usługi serwera Proxy                                       | Device-Local Proxy                                |
 |--------|-----------------------------------------------------------|---------------------------------------------------|

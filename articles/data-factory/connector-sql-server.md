@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 54db7cc65e05b383b251c21aa95569c6c2d58194
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6da3a9bceaee67d0101abb0837580f4e35e160b3
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306169"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885136"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopiowanie danych do i z programu SQL Server przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-sqlserver-connector.md)
 > * [Bieżąca wersja](connector-sql-server.md)
 
@@ -36,6 +36,8 @@ W szczególności ten łącznik programu SQL Server obsługuje:
 - Kopiowanie danych przy użyciu **SQL** lub **Windows** uwierzytelniania.
 - Jako źródła pobierania danych przy użyciu zapytania SQL lub procedury składowanej.
 - Jako ujścia dołączanie danych do tabeli docelowej lub wywołanie procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
+
+Program SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) nie jest obecnie obsługiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -506,7 +508,7 @@ Podczas kopiowania danych z i do programu SQL Server, następujące mapowania s�
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Dziesiętna |
-| sql_variant |Obiekt * |
+| sql_variant |Obiekt |
 | tekst |Ciąg, Char] |
 | time |Przedział czasu |
 | sygnatura czasowa |Byte[] |
@@ -515,6 +517,9 @@ Podczas kopiowania danych z i do programu SQL Server, następujące mapowania s�
 | varbinary |Byte[] |
 | varchar |Ciąg, Char] |
 | xml |Xml |
+
+>[!NOTE]
+> Mapowania typów danych do typu dziesiętnego przejściowym aktualnie ADF obsługuje dokładności maksymalnie 28. Jeśli masz dane z dokładnością jest większy niż 28, należy wziąć pod uwagę do przekonwertowania na ciąg w zapytaniu SQL.
 
 ## <a name="troubleshooting-connection-issues"></a>Rozwiązywanie problemów z połączeniem
 

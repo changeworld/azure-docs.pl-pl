@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: af7bcf2a83259b9d883a824b05312316f9f1f4f8
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 469d553d60eb7c5cdfac3bc16f1fb479bd84cb70
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794009"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886216"
 ---
 # <a name="azure-data-box-system-requirements"></a>Wymagania systemowe w usłudze Azure Data Box
 
-W tym artykule opisano wymagania systemowe dla usługi Microsoft Azure Data Box i klientom połączenie do urządzenia Data Box. Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed wdrożeniem usługi Data Box i następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
+W tym artykule opisano wymagania systemowe dla usługi Microsoft Azure Data Box i klientom połączenie do urządzenia Data Box. Zaleca się, że starannie Przejrzyj informacje przed wdrożeniem usługi Data Box i następnie wrócić do niego zgodnie z potrzebami podczas wdrażania i kolejna operacja.
 
 Wymagania systemowe, obejmują:
 
@@ -35,7 +35,7 @@ Poniżej przedstawiono listę obsługiwanych systemów operacyjnych dla operacji
 
 | **System operacyjny** | **Wersje** | 
 | --- | --- | 
-| Windows Server |2008 R2 Z DODATKIEM SP1 <br> 2012 <br> 2012 R2 <br> 2016 | 
+| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 | 
 | Windows |7, 8, 10 | 
 |Linux    |         |
 
@@ -48,13 +48,18 @@ Poniżej przedstawiono listę obsługiwanych systemów operacyjnych dla operacji
 
 ### <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 
-Poniżej przedstawiono listę typów magazynu obsługiwane urządzenia Data Box.
+Poniżej przedstawiono listę kont magazynu obsługiwanych typów magazynów dla urządzenia Data Box. Aby uzyskać pełną listę wszystkich różnych typów kont magazynu i ich pełne możliwości, zobacz [typy kont magazynu](/azure/storage/common/storage-account-overview.md#types-of-storage-accounts).
 
-| **Konto magazynu** | **Uwagi** |
-| --- | --- |
-| Wdrożenie klasyczne | Standardowa (Standard) |
-| Zastosowania ogólne  |Standardowe; obsługiwane są zarówno V1 i V2. |
-| Obiekt blob |Obsługiwane są zarówno gorąca i chłodna. |
+| **Konto magazynu / obsługiwane typy magazynu** | **Blokowe obiekty blob** |**Obiekt blob typu Page*** |**Usługa pliki Azure** |**Uwagi**|
+| --- | --- | -- | -- | -- |
+| Standardowa klasycznego | Tak | Tak | Tak |
+| Standardowa ogólnego przeznaczenia w wersji 1  | Tak | Tak | Tak | Obsługiwane są zarówno gorąca i chłodna.|
+| Ogólnego przeznaczenia w wersji 1 — wersja Premium  |  | Tak| | |
+| Standardowa ogólnego przeznaczenia w wersji 2  | Tak | Tak | Tak | Obsługiwane są zarówno gorąca i chłodna.|
+| Ogólnego przeznaczenia w wersji 2 — wersja Premium  |  |Tak | | |
+| Magazyn obiektów blob Standard |Tak | | |Obsługiwane są zarówno gorąca i chłodna. |
+
+\* *-Danych przekazanych do stronicowych obiektów blob musi być 512 bajtów wyrównane, takie jak wirtualne dyski twarde.*
 
 >[!NOTE]
 > Usługa Azure Data Lake Storage Gen 2 konta nie są obsługiwane.
@@ -85,7 +90,7 @@ Poniżej przedstawiono listę przeglądarek sieci web obsługiwane w przypadku l
 
 ## <a name="networking-requirements"></a>Wymagania dotyczące sieci
 
-Twoje centrum danych musi mieć dostęp do szybkiej sieci. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. 10 GbE połączenie nie jest dostępna, 1 GbE danych link może służyć do skopiowania danych, ale dotyczy szybkości kopiowania.
+Twoje centrum danych musi mieć dostęp do szybkiej sieci. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępna, łącza 1 GbE danych może służyć do skopiowania danych, ale kopiowania, które ma wpływ szybkości.
 
 ## <a name="next-step"></a>Następny krok
 

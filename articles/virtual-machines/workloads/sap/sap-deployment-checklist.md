@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2019
+ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78599a350aff4d0aba5603e8ad7959c945f1aca
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 67083a8214724659765922047c1f0ccd6da87b9d
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439157"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884932"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążeń SAP na Azure Lista kontrolna dotycząca planowania i wdrażania 
 
@@ -47,7 +47,7 @@ W tej fazie migracji obciążeń SAP do chmury publicznej platformy Azure jest p
     3.  Architektura ciągłość biznesową i odzyskiwanie po awarii
     4.  Szczegółowe systemu operacyjnego, bazy danych, jądra i SAP obsługuje wersje pakietu. Nie biorąc pod uwagę, że dowolnej wersji systemu operacyjnego, który jest obsługiwany przez oprogramowanie SAP NetWeaver i S/4HANA, jest obsługiwane w maszynach wirtualnych platformy Azure. Dotyczy to także wersji systemu DBMS. Jest to konieczne, że przed wyrównywanie i w razie potrzeby uaktualnić wersje SAP, wersji systemu DBMS lub wersji systemu operacyjnego, aby w systemie SAP zaznaczyć Pobierz następujące źródła i Azure obsługiwane w oknie. Jest to konieczne, że jesteś w obrębie SAP i platformy Azure obsługiwane kombinacje wersji, aby uzyskać pełną pomoc techniczną, SAP i Microsoft. Jeśli to konieczne, należy zaplanować dla uaktualnienie niektórych składników oprogramowania. Szczegółowe informacje na temat obsługiwanych oprogramowania SAP, systemu operacyjnego i DBMS jest udokumentowany w następujących lokalizacjach:
         1.  Uwaga pomocy technicznej SAP [#1928533](https://launchpad.support.sap.com/#/notes/1928533). Ta uwaga definiuje minimalnej wersji systemu operacyjnego, obsługiwane w maszynach wirtualnych platformy Azure. Definiuje również wersje minimalna bazy danych wymagane dla większości innych HANA bazy danych. Notatki prezentuje też rozmiaru SAP różnych typów maszyn wirtualnych platformy Azure obsługiwane SAP.
-        2.  Uwaga pomocy technicznej SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Notatki definiuje macierz obsługi bazy danych Oracle na platformie Azure. Należy pamiętać, że bazy danych Oracle obsługuje tylko Windows i Oracle Linux jako system operacyjny gościa na platformie Azure w przypadku obciążeń SAP. Dotyczy to stwierdzenie systemem SAP wystąpienia warstwy aplikacji SAP. Jednak Oracle nie obsługuje wysoką dostępność dla usług SAP Central Services w systemie Oracle Linux. Windows SAP obsługiwanych tryb Failover klastra pracy awaryjnej Windows rozwiązania usług SAP Central Services jest obsługiwane w połączeniu z bazą danych Oracle jako warstwa DBMS. 
+        2.  Uwaga pomocy technicznej SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619). Notatki definiuje macierz obsługi bazy danych Oracle na platformie Azure. Należy pamiętać, że bazy danych Oracle obsługuje tylko Windows i Oracle Linux jako system operacyjny gościa na platformie Azure w przypadku obciążeń SAP. Dotyczy to stwierdzenie systemem SAP wystąpienia warstwy aplikacji SAP. Jednak Oracle nie obsługuje wysoką dostępność dla usług SAP Central Services w systemie Oracle Linux przez program Pacemaker. Jeśli potrzebujesz wysokiej dostępności dla ASCS w systemie Oracle Linux, musisz wykorzystać pakiet ochronny oprogramowanie SIOS dla systemu Linux. Szczegółowe dane certyfikacji SAP na ten temat można znaleźć w pomocy technicznej uwagę [1662610 # - szczegóły pomocy technicznej, oprogramowanie SIOS Suite Protection dla systemu Linux](https://launchpad.support.sap.com/#/notes/1662610). Windows SAP obsługiwanych tryb Failover klastra pracy awaryjnej Windows rozwiązania usług SAP Central Services jest obsługiwane w połączeniu z bazą danych Oracle jako warstwa DBMS. 
         3.  Uwaga pomocy technicznej SAP [#2235581](https://launchpad.support.sap.com/#/notes/2235581) można pobrać macierzy obsługi dla wersji oprogramowania SAP HANA w różnych systemach operacyjnych
         4.  SAP HANA obsługiwanych maszynach wirtualnych platformy Azure i [dużych wystąpień HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) należą [tutaj](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
         5.  [Macierz dostępności produktów SAP](https://support.sap.com/en/)
@@ -196,7 +196,7 @@ Na tym etapie, dla których chcesz zbierać wszystkie środowiska i wnioski doty
     2.  / Przywracania kopii zapasowej na użytek mniejszych baz danych
     3.  Użyj SAP Monitor migracji wdrożona w narzędziu SAP SWPM przeprowadzić migrację z heterogenicznych
     4.  Użyj [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) przetwarzania, jeśli chcesz połączyć z uaktualnienia wersji SAP. Należy pamiętać, że nie wszystkie kombinacje między źródłem a celem bazami danych są obsługiwane. Więcej informacji można znaleźć w określonych informacji pomocy technicznej SAP dla różnych wersji DMO. Na przykład [opcji migracji bazy danych (DMO) z SUM 2.0 SP04](https://launchpad.support.sap.com/#/notes/2644872)
-    5.  Sprawdź, czy lepszą przepustowość jest transfer danych za pośrednictwem Internetu lub za pośrednictwem usługi ExpressRoute, w przypadku, gdy trzeba przenieść kopie zapasowe lub SAP eksportowania plików. Należy pamiętać, że w przypadku przenoszenia danych za pośrednictwem sieci internet, konieczne może być niektórych reguł zabezpieczeń sieciowych grup zabezpieczeń/ASG wymagających jest dostępna dla systemów produkcyjnych. przyszłe zmiany
+    5.  Sprawdź, czy lepszą przepustowość jest transfer danych za pośrednictwem Internetu lub za pośrednictwem usługi ExpressRoute, w przypadku, gdy trzeba przenieść kopie zapasowe lub SAP eksportowania plików. W przypadku przenoszenia danych za pośrednictwem sieci internet konieczne może być zmiana niektórych reguł zabezpieczeń sieciowych grup zabezpieczeń/ASG wymagających jest dostępna dla systemów produkcyjnych w przyszłości
 3.  Przed przeniesieniem systemy ze starego platform na platformie Azure zbieranie danych użycia zasobów, takich jak użycie procesora CPU, przepływności i operacje We/Wy danych. Zwłaszcza z bazami danych jednostki z warstwy, ale także z jednostek warstwy aplikacji. Również pomiaru opóźnienia sieci i magazynu.
 4.  Sprawdzanie zasobów na informacje o pomocy technicznej SAP, SAP HANA sprzętu katalogu i ponownie PAM SAP upewnij się, że nie wprowadzono żadnych zmian na obsługiwanych maszynach wirtualnych platformy Azure obsługiwanego systemu operacyjnego zwalnia w tych maszyn wirtualnych i obsługiwanych SAP i DBMS wersji 
 4.  Dostosowania skryptów wdrażania do najnowsze zmiany, które decyzji o typach maszyn wirtualnych i funkcjonalność platformy Azure
@@ -224,7 +224,7 @@ Na tym etapie, dla których chcesz zbierać wszystkie środowiska i wnioski doty
     
 
 ## <a name="go-live-phase"></a>Przejdź na żywo fazy
-Na etapie gotowej do pracy musisz upewnij się, że należy postępować zgodnie z elementów playbook, który opracowany na wcześniejszych etapach. Wykonaj kroki, które przetestowane i skonfigurowanych pod kątem. Nie akceptuj najnowsze zmiany w konfiguracji i przetwarzania. Poza tym, które mają zastosowanie następujące czynności:
+Na etapie gotowej do pracy musisz upewnij się, że należy postępować zgodnie z elementów playbook, który opracowany na wcześniejszych etapach. Wykonaj kroki, które przetestowane i skonfigurowanych pod kątem. Nie akceptuj najnowsze zmiany w konfiguracji i przetwarzania. Poza tym, które mają zastosowanie następujące miary:
 
 1. Sprawdź, czy działają monitorowania portalu platformy Azure i innych narzędzi do monitorowania.  Zalecane narzędzia są monitora wydajności (Windows) lub SAR (Linux): 
     1.  Liczniki procesora CPU 

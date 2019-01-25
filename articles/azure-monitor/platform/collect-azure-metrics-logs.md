@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 6b5fc02e763b66f1d7d01643d1c9d6c971d6db84
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d01755ae62843ad1f2f1728df046b767fe123ca
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434209"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886581"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Usługi platformy Azure zbieranie dzienników i metryk do użycia w usłudze Log Analytics
 
@@ -71,12 +71,12 @@ Zasoby platformy Azure, które obsługują [usługa Azure monitor](../../azure-m
 > [!NOTE]
 > Wysyłanie metryk wielowymiarowych do usługi Log Analytics za pomocą ustawień diagnostycznych nie jest obecnie obsługiwane. Metryki wielowymiarowe są eksportowane jako spłaszczone metryki jednowymiarowe z wartościami zagregowanymi we wszystkich wymiarach.
 >
-> *Na przykład*: Metrykę "Komunikaty przychodzące" w Centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych metryka jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejek w zdarzeniu koncentratora.
+> *Na przykład*: metrykę „Komunikaty przychodzące” w centrum zdarzeń można przeglądać i przedstawiać na wykresie na poziomie pojedynczej kolejki. Jednak podczas eksportowania za pomocą ustawień diagnostycznych metryka jest przedstawiana jako wszystkie komunikaty przychodzące we wszystkich kolejek w zdarzeniu koncentratora.
 >
 >
 
 * Szczegóły dostępne metryki, można znaleźć [metryki obsługiwane z usługą Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
-* Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schematu dla dzienników diagnostycznych](../../azure-monitor/platform/tutorial-dashboards.md).
+* Szczegóły dostępne dzienniki, można znaleźć [obsługiwane usługi i schematu dla dzienników diagnostycznych](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Włączanie diagnostyki przy użyciu programu PowerShell
 Potrzebujesz listopada 2016 r. (v2.3.0) lub nowszej wersji [programu Azure PowerShell](/powershell/azure/overview).

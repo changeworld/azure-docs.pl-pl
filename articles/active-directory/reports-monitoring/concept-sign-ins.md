@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 73f90d1df2c1a6a0655a61026112cc2a7a73cb1e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1e20fead4e9eb78946ddbe1ce223915ed0101ccf
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808633"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904203"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące logowań w portalu Azure Active Directory
 
@@ -161,8 +161,8 @@ Jeśli potrzebujesz bardziej elastycznych opcji, możesz użyć rozwiązania do 
 
 Jeśli chcesz uruchomić skrypt **systemu Windows 10** maszyny, musisz najpierw wykonać kilka dodatkowych kroków. 
 
-1. Zainstaluj [modułu AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0l).
-2. Zaimportuj moduł, otwierając wiersz polecenia programu PowerShell i uruchamiając polecenie **AzureRM Import-Module**.
+1. Zainstaluj [modułu Az](/powershell/azure/install-az-ps).
+2. Zaimportuj moduł, otwierając wiersz polecenia programu PowerShell i uruchamiając polecenie **Az Import-Module**.
 3. Uruchom **Set-ExecutionPolicy unrestricted** i wybierz polecenie **tak na wszystko**. 
 4. Teraz możesz uruchamiać pobranego skryptu programu PowerShell w trybie administratora, aby wygenerować plik CSV.
 

@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 433718c19e0df5fac87273f2b46f8ae090ed7510
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974368"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888570"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -78,7 +78,7 @@ Aby użyć właściwości `escapeChar` zamiast `quoteChar`, zastąp wiersz z wł
 
 ### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>Scenariusze użycia właściwości firstRowAsHeader oraz skipLineCount
 
-* Kopiujesz dane ze źródła innego niż plik do pliku tekstowego i chcesz dodać wiersz nagłówka zawierający metadane schematu (na przykład: Schemat SQL). Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wyjściowych dla tego scenariusza.
+* Kopiujesz dane ze źródła innego niż plik do pliku tekstowego i chcesz dodać wiersz nagłówka zawierający metadane schematu (na przykład: SQL schema). Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wyjściowych dla tego scenariusza.
 * Kopiujesz dane z pliku tekstowego zawierającego wiersz nagłówka do ujścia innego niż plik i chcesz pominąć ten wiersz. Ustaw właściwość `firstRowAsHeader` na wartość true w zestawie danych wejściowych.
 * Kopiujesz dane z pliku tekstowego i chcesz pominąć kilka początkowych wierszy, które nie zawierają żadnych danych bądź informacji nagłówka. Określ właściwość `skipLineCount`, aby wskazać liczbę wierszy do pominięcia. Jeśli pozostała część pliku zawiera wiersz nagłówka, możesz również określić właściwość `firstRowAsHeader`. Jeśli określono zarówno właściwość `skipLineCount`, jak i `firstRowAsHeader`, najpierw zostaną pominięte wiersze, a następnie zostaną odczytane informacje nagłówka z pliku wejściowego
 
@@ -414,15 +414,19 @@ Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, 
 }
 ```
 
-> [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Pamiętaj o następujących kwestiach:
 
 * Złożone typy danych są nie są obsługiwane (mapa, lista).
 * Biały znak w nazwie kolumny nie jest obsługiwane.
 * Plik parquet ma następujące opcje związane z kompresją: NONE, SNAPPY, GZIP oraz LZO. Odczytywanie danych z pliku Parquet w dowolnej z tych skompresowanych formatów, z wyjątkiem LZO — używa kodera-dekodera kompresji w metadanych do odczytywania danych obsługuje fabryki danych. Podczas zapisywania w pliku Parquet usługa Data Factory wybiera natomiast opcję SNAPPY, która jest domyślna dla formatu Parquet. Obecnie nie ma możliwości zastąpienia tego zachowania.
+
+> [!IMPORTANT]
+> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików Parquet **jako — jest**, musisz zainstalować **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub OpenJDK** na swojej maszynie Podczerwieni. Zapoznaj się z bardziej szczegółowymi informacjami.
+
+Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku Parquet serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK. 
+
+- **Aby użyć środowiska JRE**: Środowisko IR 64-bitowego wymaga 64-bitowego środowiska JRE. Znajdziesz go z [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Aby użyć OpenJDK**: jest ona obsługiwana od środowiska IR wersji 3.13. Pakiet jvm.dll z pozostałych wymagane w związku z tym zestawy OpenJDK własne środowisko IR maszyny i zestaw systemowej zmiennej środowiskowej JAVA_HOME.
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Mapowanie plików Parquet — typ danych
 
@@ -460,15 +464,19 @@ Jeśli chcesz analizować pliki ORC lub zapisywać dane w formacie ORC, ustaw w�
 }
 ```
 
-> [!IMPORTANT]
-> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików ORC **jako — jest**, należy zainstalować środowisko JRE 8 (Java Runtime Environment) na komputerze Podczerwieni. IR 64-bitowego wymaga 64-bitowego środowiska JRE. Obie wersje można znaleźć [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
->
-
 Pamiętaj o następujących kwestiach:
 
 * Złożone typy danych są nie są obsługiwane (struktura, mapa, lista, Unii).
 * Biały znak w nazwie kolumny nie jest obsługiwane.
 * Plik ORC ma trzy [opcje związane z kompresją](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. Usługa Data Factory obsługuje odczyt danych z pliku ORC w dowolnym z tych skompresowanych formatów. Do odczytywania danych używa kodera-dekodera kompresji z metadanych. Podczas zapisywania w pliku ORC usługa Data Factory wybiera natomiast opcję ZLIB, która jest domyślna dla formatu ORC. Obecnie nie ma możliwości zastąpienia tego zachowania.
+
+> [!IMPORTANT]
+> Dla kopiowania upoważniony przez własne środowisko IR np. między lokalizacją lokalną i chmurą magazyny danych, jeśli nie kopiujesz plików ORC **jako — jest**, musisz zainstalować **64-bitowego środowiska JRE 8 (Java Runtime Environment) lub bibliotekę OpenJDK**  na swojej maszynie Podczerwieni. Zapoznaj się z bardziej szczegółowymi informacjami.
+
+Związanym z kopiowaniem działających w własne środowisko IR za pomocą pliku ORC serializacji/deserializacji, ADF lokalizuje środowisko wykonawcze języka Java po pierwsze, sprawdzając w rejestrze *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* dla środowiska JRE, jeśli nie znaleziono, po drugie sprawdzanie zmiennej systemowej *`JAVA_HOME`* dla OpenJDK. 
+
+- **Aby użyć środowiska JRE**: Środowisko IR 64-bitowego wymaga 64-bitowego środowiska JRE. Znajdziesz go z [tutaj](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Aby użyć OpenJDK**: jest ona obsługiwana od środowiska IR wersji 3.13. Pakiet jvm.dll z pozostałych wymagane w związku z tym zestawy OpenJDK własne środowisko IR maszyny i zestaw systemowej zmiennej środowiskowej JAVA_HOME.
 
 ### <a name="data-type-mapping-for-orc-files"></a>Mapowanie plików ORC — typ danych
 

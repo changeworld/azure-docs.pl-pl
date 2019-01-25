@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 186b0c693b077b4fa0b1287301b52de5d09c3fe6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478505"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882383"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Przygotowanie do zmiany formatu do dzienników diagnostycznych usługi Azure Monitor zarchiwizować na koncie magazynu
 
@@ -31,7 +31,7 @@ Usługa Azure Monitor udostępnia możliwości, które pozwala wysyłać dane di
 * Ustawienie diagnostyczne od chwili 1 listopada w dalszym ciągu Emituj danych w bieżącym formacie, aż do 1 listopada.
 * Ta zmiana zostanie przeprowadzona tylko raz we wszystkich regionach chmury publicznej. Zmiana zostanie przeprowadzona w chińskiej wersji platformy Azure, Azure (Niemcy) lub Azure dla instytucji rządowych chmurach jeszcze.
 * Ta zmiana ma wpływ na następujące typy danych:
-  * [Dzienniki diagnostyczne usługi Azure resource](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([zobacz listę zasobów w tym miejscu](./../../azure-monitor/platform/tutorial-dashboards.md))
+  * [Dzienniki diagnostyczne usługi Azure resource](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([zobacz listę zasobów w tym miejscu](./../../azure-monitor/platform/diagnostic-logs-schema.md))
   * [Metryki zasobów platformy Azure są eksportowane przez ustawienia diagnostyczne](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
   * [Dane dzienników aktywności platformy Azure są eksportowane przez profile dziennika](./../../azure-monitor/platform/archive-activity-log.md)
 * Ta zmiana nie ma wpływu na:

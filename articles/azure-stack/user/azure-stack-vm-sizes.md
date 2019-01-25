@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 99491fdc9758c5ec930db5f584f009eb6705f789
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e9c2bf52cb1999381d7d1cde3a8f62710514b915
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231255"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54884523"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Rozmiary maszyn wirtualnych obsługiwanych w usłudze Azure Stack
 
@@ -37,7 +37,7 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 > [!NOTE]
 > *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](../azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie.
 
-|Rozmiar — rozmiar\nazwa |Procesor wirtualny     |Memory (Pamięć) | Maksymalny rozmiar dysku tymczasowego | System operacyjny maksymalna przepływność dysków: (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna przepływność dysków danych (operacje We/Wy) | Maksymalna liczba kart sieciowych |    
+|Size - Size\Name |Procesor wirtualny     |Memory (Pamięć) | Maksymalny rozmiar dysku tymczasowego | System operacyjny maksymalna przepływność dysków: (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna przepływność dysków danych (operacje We/Wy) | Maksymalna liczba kart sieciowych |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |1   |
 |**A1\Basic_A1**  |1    |1,75 GB  | 40 GB   |300  | 300  |2 / 2 x 300  |1   |
@@ -134,14 +134,14 @@ Rozmiary maszyn wirtualnych ogólnego przeznaczenia udostępniają o zrównoważ
 ### <a name="fsv2-series"></a>Seria Fsv2
 *Wymaga usługi Azure Stack w wersji 1804 lub nowszej* 
 
-|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) |
-|---------------------|----|----|-----|-----|-------|--------------|---------|
-|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |Średnia |
-|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |Średnia |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |Wysoka     |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |Wysoka     |
-|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |Wysoka  |
-|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |Bardzo wysoka  |
+|Rozmiar     |Procesor wirtualny     |Pamięć (GiB) | Magazynu tymczasowego (GiB)  | System operacyjny maksymalna przepływność dysku (IOPS) | Maksymalna przepływność magazynu tymczasowego (IOPS) | Maksymalna liczba dysków danych / przepływność (IOPS) |
+|---------------------|----|----|-----|-----|-------|--------------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |
 
 
 ## <a name="memory-optimized"></a>Optymalizacja pod kątem pamięci

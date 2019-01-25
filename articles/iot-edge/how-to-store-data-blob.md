@@ -5,17 +5,17 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: arduppal
-ms.date: 01/04/2018
+ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b5dcc4295467aee82547bc2a0894320bd110998f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 9faed53540d449f8658655ff7285b38aa20bee6c
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065821"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901823"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store danych na urządzeniach brzegowych za pomocą usługi Azure Blob Storage na urządzeniach brzegowych IoT Edge (wersja zapoznawcza)
 
@@ -61,17 +61,17 @@ Portal Azure Marketplace udostępnia usługi IoT Edge, moduły, które można wd
 
    ![Tworzenie modułu na podstawie wyszukiwania w portalu Marketplace](./media/how-to-store-data-blob/marketplace-module.png)
 
-2. Wybierz urządzenia usługi IoT Edge, aby otrzymać ten moduł. Na **urządzeń docelowych moduł usługi IoT Edge** Podaj następujące informacje:
+2. Wybierz urządzenie usługi IoT Edge, które ma odebrać ten moduł. Na stronie **Urządzenia docelowe dla modułu usługi IoT Edge** podaj następujące informacje:
 
    1. Wybierz **subskrypcji** zawierający korzystania z usługi IoT hub.
 
    2. Wybierz swoje **usługi IoT Hub**.
 
-   3. Jeśli znasz swoje **nazwy urządzenia usługi IoT Edge**, wprowadź, w polu tekstowym. Lub wybierz **znaleźć urządzenia** wybrać z listy urządzenia usługi IoT Edge w usłudze IoT hub. 
+   3. Jeśli znasz swoje **nazwy urządzenia usługi IoT Edge**, wprowadź, w polu tekstowym. Możesz też wybrać opcję **Znajdź urządzenie**, aby wybrać urządzenie z listy urządzeń usługi IoT Edge w centrum IoT. 
    
    4. Wybierz pozycję **Utwórz**.
 
-   Teraz, gdy wybrano moduł usługi IoT Edge w witrynie Azure Marketplace, a wybrane urządzenia usługi IoT Edge, aby otrzymać moduł, nastąpi przekierowanie do kreatora trzech kroków, który ułatwia określenie, dokładnie tak jak moduł zostanie wdrożony.
+   Po wybraniu modułu usługi IoT Edge w witrynie Microsoft Azure Marketplace oraz wybraniu urządzenia usługi IoT Edge, które ma odebrać moduł, nastąpi przekierowanie do trzyetapowego kreatora, który ułatwia dokładne określenie sposobu wdrożenia modułu.
 
 3. W **Dodawanie modułów** kroku kreatora zestawu modułów, zwróć uwagę, że **AzureBlobStorageonIoTEdge** moduł znajduje się już w obszarze **moduły wdrożeń**. 
 
@@ -120,7 +120,7 @@ Portal Azure Marketplace udostępnia usługi IoT Edge, moduły, które można wd
 
    4. Wybierz pozycję **Zapisz**.
 
-4. Wybierz **dalej** aby kontynuować do następnego kroku w kreatorze.
+4. Wybierz **Dalej**, aby przejść do następnego kroku w kreatorze.
 5. W **określanie tras** kroku kreatora wybierz pozycję **dalej**.
 6. W kroku **Przegląd wdrożenia** kreatora wybierz pozycję **Prześlij**.
 7. Po przesłaniu wdrożenia, można wrócić do **usługi IoT Edge** strony Centrum IoT Hub. Wybierz urządzenie usługi IoT Edge docelowych przy użyciu wdrażania, aby otworzyć jego szczegóły. 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 114b6b0cc0fd4e8e51a9dbf2cdc8d9e2a2261754
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823491"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54881873"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Tworzenie potoku CI/CD dla usługi IoT Edge przy użyciu usługi Azure DevOps Projects (wersja zapoznawcza)
 
@@ -38,7 +38,7 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
    ![Wybierz język, aby utworzyć nową aplikację](./media/how-to-devops-project/select-language.png)
 
-2. Wybierz **proste IoT (wersja zapoznawcza)** jako framwork aplikacji, a następnie wybierz **dalej**.
+2. Wybierz **proste IoT (wersja zapoznawcza)** jako platforma aplikacji, a następnie wybierz **dalej**.
 
    ![Wybierz strukturę proste IoT](media/how-to-devops-project/select-iot.png)
 
@@ -73,7 +73,7 @@ Usługa DevOps Projects utworzyć repozytorium Git dla projektu w repozytoriach 
 
 1. Aby przejść do repozytorium dla projektu, wybierz **repozytoriów** w menu pulpitu nawigacyjnego projektu.  
 
-   ![Widok repozytorium wygenerowane w w repozytoriach platformy Azure](./media/how-to-devops-project/view-repositories.png)
+   ![Widok repozytorium generowane w repozytoriach platformy Azure](./media/how-to-devops-project/view-repositories.png)
 
 2. W poniższych krokach objaśniono za pomocą przeglądarki sieci web, aby wprowadzić zmiany kodu. Zamiast tego sklonować repozytorium lokalnie, należy zaznaczyć **klonowania** od góry prawej krawędzi okna. Użyj podanego adresu URL, aby sklonować repozytorium Git w programie Visual Studio Code lub narzędzi do tworzenia. 
 
@@ -93,7 +93,7 @@ Usługa DevOps Projects utworzyć repozytorium Git dla projektu w repozytoriach 
 
 ## <a name="examine-the-cicd-pipeline"></a>Badanie potoku ciągłej integracji/ciągłego wdrażania
 
-W poprzednich sekcjach usługi Azure DevOps Projects automatycznie konfigurowane pełny potok ciągłej integracji/ciągłego Dostarczania dla aplikacji usługi IoT Edge. Następnie możesz przetestować, tworzenie potoku za zatwierdzanie zmian do jednego z plików. Teraz eksplorować i dostosowywać potok zgodnie z potrzebami. Wykonaj poniższe kroki, aby zapoznać się z potokami kompilacji i wydania usługi Azure DevOps.
+W poprzednich sekcjach usługi Azure DevOps Projects automatycznie konfigurowane pełny potok ciągłej integracji/ciągłego Dostarczania dla aplikacji usługi IoT Edge. Następnie przetestowano tego potoku kompilacji przez wprowadzanie zmian w jeden z plików. Teraz eksplorować i dostosowywać potok zgodnie z potrzebami. Wykonaj poniższe kroki, aby zapoznać się z potokami kompilacji i wydania usługi Azure DevOps.
 
 1. Zaznacz, aby wyświetlić potoki kompilacji w projekt DevOps **tworzenie potoków** w menu pulpitu nawigacyjnego projektu. Ten link otwiera kartę przeglądarki i potok kompilacji usługi Azure DevOps dla nowego projektu.
 

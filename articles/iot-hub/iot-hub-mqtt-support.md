@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b26a1fa3f61c7836bbe3466e4d95f406d16eb31e
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052040"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902520"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -198,20 +198,18 @@ Po pierwsze urządzenie subskrybuje `$iothub/twin/res/#`, aby otrzymywać odpowi
 
 Identyfikator żądania może być dowolnego prawidłową wartość dla wartości właściwości komunikatu zgodnie [usługi IoT Hub komunikatów przewodnik dewelopera][lnk-messaging], i stan sprawdzania poprawności jako liczba całkowita.
 
-Treść odpowiedzi zawiera sekcja właściwości bliźniaka urządzenia. Poniższy fragment kodu przedstawia przykład treść wpisu rejestru tożsamości ograniczone do elementu "properties":
+Treść odpowiedzi zawiera sekcji właściwości w bliźniaczej reprezentacji urządzenia, jak pokazano w poniższym przykładzie odpowiedzi:
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
@@ -228,7 +226,7 @@ Aby uzyskać więcej informacji, zobacz [— przewodnik dewelopera bliźniaczych
 
 ### <a name="update-device-twins-reported-properties"></a>Zgłoszonych właściwości bliźniaka urządzenia aktualizacji
 
-Do aktualizowania zgłoszonych właściwości, urządzenie generuje żądanie do usługi IoT Hub za pośrednictwem publikacji w wyznaczonym tematu MQTT. Po przetworzeniu żądania, usługi IoT Hub odpowiada stanie powodzenie lub Niepowodzenie operacji aktualizacji za pośrednictwem publikacji innego tematu. W tym temacie może być subskrybowana przez urządzenie aby powiadomić go o wyniku jego żądanie aktualizacji bliźniaczej reprezentacji. Aby implment tego typu żądanie/odpowiedź interakcji z protokołu MQTT, możemy skorzystać z pojęcie identyfikator żądania (`$rid`) udostępniane początkowo przez urządzenie w jego żądanie aktualizacji. Ten identyfikator żądania znajduje się również w odpowiedzi z usługi IoT Hub umożliwia skorelowanie odpowiedzi na żądanie wcześniej określonego urządzenia.
+Do aktualizowania zgłoszonych właściwości, urządzenie generuje żądanie do usługi IoT Hub za pośrednictwem publikacji w wyznaczonym tematu MQTT. Po przetworzeniu żądania, usługi IoT Hub odpowiada stanie powodzenie lub Niepowodzenie operacji aktualizacji za pośrednictwem publikacji innego tematu. W tym temacie może być subskrybowana przez urządzenie aby powiadomić go o wyniku jego żądanie aktualizacji bliźniaczej reprezentacji. Aby zaimplementować tego typu żądanie/odpowiedź interakcji w MQTT, możemy wykorzystać pojęcie identyfikator żądania (`$rid`) udostępniane początkowo przez urządzenie w jego żądanie aktualizacji. Ten identyfikator żądania znajduje się również w odpowiedzi z usługi IoT Hub umożliwia skorelowanie odpowiedzi na żądanie wcześniej określonego urządzenia.
 
 Poniższa sekwencja opisuje, jak urządzenie aktualizuje zgłoszonych właściwości w bliźniaczej reprezentacji urządzenia w usłudze IoT Hub:
 
@@ -252,7 +250,7 @@ Możliwe kody są:
 |Stan | Opis |
 | ----- | ----------- |
 | 200 | Powodzenie |
-| 400 | Nieprawidłowe żądanie. Nieprawidłowo sformatowany kod JSON |
+| 400 | Nieprawidłowe żądanie. Malformed JSON |
 | 429 | Za dużo żądań (ograniczone), jak na [usługi IoT Hub, ograniczanie przepustowości][lnk-quotas] |
 | 5** | Błędy serwera |
 

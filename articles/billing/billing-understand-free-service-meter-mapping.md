@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: cwatson
-ms.openlocfilehash: 89abf64e6b47700bb16aaf6d4d4c0efbbbd9f520
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 8a6993f19f32e1bdb0bd10013f8f7e3dde844edd
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581590"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903931"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>Omówienie mapowania miernika bezpłatnej usługi
 
@@ -38,16 +38,16 @@ Do każdej usługi platformy Azure emituje użycie względem liczniki, które ko
 | File Storage | Standardowe We/Wy — jednostki operacji odczytu dla plików (w 10 000) | Standardowe we/wy — jednostki operacji odczytu (w 10 000) — bezpłatna pliku | 6207404d-3389-4d20-9087-cc078ddc3fd9
 | File Storage | Standardowe We/Wy — jednostki operacji zapisu dla plików (w 10 000) | Standardowe we/wy — plik jednostki operacji zapisu (w 10 000) — bezpłatnie | 223d8004-d29a-46cf-b4f4-d2d34b12548b
 | File Storage | Standardowe We/Wy — jednostki operacji na protokołach plików (w 10 000) | Standardowe we/wy — plik jednostki operacji na protokołach (w 10 000) — bezpłatnie | a347d8cc-51d1-4a0e-b9eb-76f67566c3f5
-| File Storage | Standardowe We/Wy — jednostki operacji generowania listy dla plików (w 10 000) | Standardowe we/wy — plik jednostki operacji generowania listy (w 10 000) — bezpłatnie | e8ae79ad-c2ab-4D82-b226-dd3c33dfd40c
+| File Storage | Standardowe We/Wy — jednostki operacji generowania listy dla plików (w 10 000) | Standardowe we/wy — plik jednostki operacji generowania listy (w 10 000) — bezpłatnie | e8ae79ad-c2ab-4d82-b226-dd3c33dfd40c
 | Gorących blokowych obiektów Blob magazynu | Standardowe we/wy — operacje odczytu gorących blokowych obiektów Blob (w 10 000) | Standardowe we/wy — operacje (w 10 000) — bezpłatna odczytu dla gorących blokowych obiektów Blob |fd7cfa1e-026e-4be1-871b-1c2386e8902e
 | Gorących blokowych obiektów Blob magazynu | Standardowe we/wy — gorący blokowy obiekt Blob (GB) — lokalnie nadmiarowy | Standardowe we/wy — gorący blokowy obiekt Blob (GB) — bezpłatnie | 67a3a3fd-826f-42c1-8843-bffa14f0da13
 | Gorących blokowych obiektów Blob magazynu | Standardowe we/wy — operacje zapisu programu gorących blokowych obiektów Blob (w 10 000) | Standardowe we/wy — gorący blokowy obiekt Blob operacje zapisu (w 10 000) — bezpłatnie | b34bbb76-edce-4c2d-a288-81a2db1fea53
 | Gorących blokowych obiektów Blob magazynu  | Standardowe we/wy — operacje zapisu/wyświetlenia listy obiektów Blob gorących blokowych (w 10 000) | Standardowe we/wy — gorący blokowy obiekt Blob zapisu/wyświetlenia listy operacje (w 10 000) — bezpłatnie | 7e68cf36-1198-4d3b-baa7-86a74c5b3079
 | Dysk zarządzany *  | Standardowy dysk zarządzany/migawki (GB) — lokalnie nadmiarowy | Standardowy dysk zarządzany/migawki (GB) — bezpłatnie | ad94c237-52a5-4804-ae65-38c5bf85ef42
-| Dysk zarządzany *  | Operacje dysku zarządzanego w warstwie standardowa (w 10 000) | Operacje dysku zarządzanego w warstwie standardowa (w 10 000) — bezpłatnie | 82cc6ea4-0abd-43ac-ACC0-ec34edf0f14c
-| Dysk zarządzany *  | Magazyn w warstwie Premium — stronicowy obiekt Blob/P6 (jednostki) — lokalnie nadmiarowy | Magazyn w warstwie Premium — stronicowy obiekt Blob/P6 (jednostki) — bezpłatna | 2b98c168-27CA-4cc1-b509-e887dec87657
+| Dysk zarządzany *  | Operacje dysku zarządzanego w warstwie standardowa (w 10 000) | Operacje dysku zarządzanego w warstwie standardowa (w 10 000) — bezpłatnie | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
+| Dysk zarządzany *  | Magazyn w warstwie Premium — stronicowy obiekt Blob/P6 (jednostki) — lokalnie nadmiarowy | Magazyn w warstwie Premium — stronicowy obiekt Blob/P6 (jednostki) — bezpłatna | 2b98c168-27ca-4cc1-b509-e887dec87657
 | SQL Database | Liczba dni bazy danych — warstwa standardowa S0 — bazy danych SQL | Liczba dni bazy danych — warstwa standardowa S0 — bezpłatnie | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
-| W warstwie współdzielona — przepustowości ** | Wychodzący transfer danych (GB) | Transfer danych wychodzących (GB) — bezpłatnie | 0fc067a1-65d2-46DA-b24b-7a9cbe2c69bd
+| W warstwie współdzielona — przepustowości ** | Wychodzący transfer danych (GB) | Transfer danych wychodzących (GB) — bezpłatnie | 0fc067a1-65d2-46da-b24b-7a9cbe2c69bd
 
 \* Utwórz maszynę wirtualną Windows i wybierz dysk zarządzany, będą wymagały miernika dysków zarządzanych w ramach maszyny wirtualnej.
 

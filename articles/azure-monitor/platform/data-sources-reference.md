@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4c8d14e01805ea66ff3a954c153d858bf4ecaba6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467506"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54885800"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Używanie danych monitorowania na platformie Azure
 
@@ -29,7 +29,7 @@ Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłud
 | Metryki magazynu | Metryki | Azure Storage | <ul><li>**Tabela magazynu:** [Analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Dane dotyczące rozliczeń | Metryki | Wszystkich usług platformy Azure | <ul><li>**INTERFEJS API REST:** [Użycie zasobów platformy Azure i interfejsów API usługi RateCard](../../billing/billing-usage-rate-card-overview.md)</li></ul> |
 | Dziennik aktywności | Zdarzenia | Wszystkich usług platformy Azure | <ul><li>**INTERFEJS API REST:** [Usługa Azure Monitor zdarzenia interfejsu API](https://docs.microsoft.com/rest/api/monitor/eventcategories)</li><li>**Magazyn obiektów blob lub zdarzenia Centrum:** [Profilu dziennika](activity-logs-overview.md#export-the-activity-log-with-a-log-profile)</li></ul> |
-| Dzienniki diagnostyczne usługi Azure Monitor | Zdarzenia | [Zobacz tutaj](tutorial-dashboards.md) | <ul><li>**Magazyn obiektów blob lub zdarzenia Centrum:** [Ustawienia diagnostyczne](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
+| Dzienniki diagnostyczne usługi Azure Monitor | Zdarzenia | [Zobacz tutaj](diagnostic-logs-schema.md) | <ul><li>**Magazyn obiektów blob lub zdarzenia Centrum:** [Ustawienia diagnostyczne](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
 | Obliczenia dzienników systemu operacyjnego gościa (np.) IIS, ETW, syslogs) | Zdarzenia | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) i maszyn wirtualnych systemu Linux (wersja 2) [usług w chmurze](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md), [usługi Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**Tabela magazynu lub obiektów blob:** [Diagnostyka Windows lub Linux, Azure](diagnostics-extension-to-storage.md)</li><li>**Centrum zdarzeń:** [Usługi Windows Azure diagnostics](diagnostics-extension-stream-event-hubs.md)</li></ul> |
 | Dzienniki usługi App Service | Zdarzenia | Usługi aplikacji | <ul><li>**Plik, tabela lub usługi blob storage:** [Diagnostyka aplikacji sieci Web](../../app-service/troubleshoot-diagnostic-logs.md)</li></ul> |
 | Dzienniki magazynu | Zdarzenia | Azure Storage | <ul><li>**Tabela magazynu:** [Analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
