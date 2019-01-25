@@ -47,7 +47,7 @@ A `Circle` geometrii reprezentowane za pomocą `GeoJSON Feature` obiektu __musi_
    >Koła `radius` jest reprezentowane za pomocą `GeoJSON Feature`jego właściwości. Wartość radius ma _liczniki_ i musi być typu `double`.
 
 3. Podtyp
-   >Geometria koła musi również zawierać `subType` właściwości. Ta właściwość musi być częścią `GeoJSON Feature`firmy właściwości i jej wartość powinna być _Circle_
+   >Geometria koła musi również zawierać właściwość `subType`. Właściwość ta musi wchodzić w skład właściwości elementu `GeoJSON Feature i mieć wartość _Circle_
 
 
 #### <a name="example"></a>Przykład
