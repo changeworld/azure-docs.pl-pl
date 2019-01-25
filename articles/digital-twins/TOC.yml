@@ -47,28 +47,22 @@ items:
       href: security-authenticating-apis.md
 - name: Przewodniki z instrukcjami
   items:
-  - name: Włączanie aplikacji wielodostępnych
+  - name: Jak włączyć aplikacje wielodostępne
     href: how-to-multitenant-applications.md
-  - name: Tworzenie funkcji zdefiniowanych przez użytkownika
+  - name: Jak utworzyć funkcje zdefiniowane przez użytkownika
     href: how-to-user-defined-functions.md
-  - name: Kierowanie zdarzeń i komunikatów przez punkty końcowe
+  - name: Jak kierować zdarzenia i komunikaty za pośrednictwem punktów końcowych
     href: how-to-egress-endpoints.md
-  - name: Dodawanie obiektów blob do obiektów
+  - name: Jak skonfigurować program Postman
+    href: how-to-configure-postman.md
+  - name: Jak dodać obiekty blob do obiektów
     href: how-to-add-blobs.md
-  - name: Używanie struktury Swagger w usłudze Digital Twins
+  - name: Jak używać struktury Swagger w usłudze Digital Twins
     href: how-to-use-swagger.md
-  - name: Debugowanie funkcji zdefiniowanych przez użytkownika
+  - name: Jak debugować funkcje zdefiniowane przez użytkownika
     href: how-to-diagnose-user-defined-functions.md
-  - name: Konfigurowanie monitorowania
+  - name: Jak skonfigurować monitorowanie
     href: how-to-configure-monitoring.md
-  - name: Wykonywanie zapytań kierowanych do interfejsów API usługi Digital Twins
-    items:
-    - name: Konfigurowanie narzędzia Postman
-      href: how-to-configure-postman.md
-    - name: Korzystanie z interfejsów API usługi Digital Twins
-      href: how-to-navigate-apis.md
-    - name: Typowe wzorce zapytań
-      href: how-to-query-common-apis.md
 - name: Dokumentacja
   items:
   - name: Biblioteka kliencka funkcji zdefiniowanych przez użytkownika
@@ -119,9 +113,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: Filmy wideo
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 92d60cbe1de8d8f2b36d67e1a7ff2999a45e1a8e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 04716146653b833461b8230c2895fd1a8b6dcd42
+ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102227"
+ms.lasthandoff: 01/03/2019
+ms.locfileid: "53993471"

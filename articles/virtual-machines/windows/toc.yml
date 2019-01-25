@@ -179,29 +179,16 @@ items:
     - name: Tworzenie magazynu kluczy
       href: key-vault-setup.md
   - name: Ochrona maszyn wirtualnych
+    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     items:
-    - name: Tworzenie kopii zapasowej maszyn wirtualnych
-      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Tworzenie kopii zapasowej pojedynczej maszyny wirtualnej
       items:
-      - name: Tworzenie kopii zapasowej pojedynczej maszyny wirtualnej
-        href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Tworzenie kopii zapasowej wielu maszyn wirtualnych
-        href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Przywracanie dysku
-        href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Przywracanie pojedynczych plików
-        href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych
-      href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      items:
-      - name: Włączanie odzyskiwania po awarii dla maszyny wirtualnej
-        href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Uruchamianie próbnego odzyskiwania po awarii dla maszyny wirtualnej
-        href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-      - name: Przełączanie maszyny wirtualnej do pracy w trybie failover w innym regionie
-        href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Przenoszenie maszyn wirtualnych do innego regionu
-      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Azure Portal
+        href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      - name: Azure PowerShell
+        href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+    - name: Tworzenie kopii zapasowej wielu maszyn wirtualnych
+      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
   - name: Zarządzanie maszynami wirtualnymi
     items:
     - name: Użycie maszyny wirtualnej
@@ -466,9 +453,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Często zadawane pytania
     href: faq.md
-ms.openlocfilehash: a5659317da5077b0dc1716b11a0d221e973ceb46
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1b0aa58f551a7fc03a9fa4b32a1ead9e0024bd08
+ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54822029"
+ms.lasthandoff: 01/12/2019
+ms.locfileid: "54246776"

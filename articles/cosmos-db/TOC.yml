@@ -459,8 +459,6 @@ items:
   items:
   - name: Zarządzanie kontem bazy danych
     href: how-to-manage-database-account.md
-  - name: Konfigurowanie czasu wygaśnięcia
-    href: how-to-time-to-live.md
   - name: Dystrybucja globalna
     items:
     - name: Zarządzanie spójnością
@@ -479,10 +477,12 @@ items:
       href: how-to-create-container.md
     - name: Wykonywanie zapytania względem kontenera
       href: how-to-query-container.md
-  - name: Indeksowanie
-    items:
-    - name: Konfigurowanie indeksowania
-      href: how-to-manage-indexing-policy.md
+    - name: Konfigurowanie czasu wygaśnięcia
+      href: how-to-time-to-live.md
+    - name: Indeksowanie
+      items:
+      - name: Konfigurowanie indeksowania
+        href: how-to-manage-indexing-policy.md
   - name: Bezpieczeństwo
     items:
     - name: Konfigurowanie zapory IP
@@ -617,9 +617,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 55b388b24d5526160423fa61c46620fc09796b24
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 75984b49a5af0538c7534fb326808dcb3c35b46c
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189630"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359803"
