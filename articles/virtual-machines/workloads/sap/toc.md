@@ -63,9 +63,9 @@
 ### [Wdrażanie systemu DBMS usługi Azure Virtual Machines produktu SAP ESE dla obciążenia SAP](dbms_guide_sapase.md)
 ### [Wdrażanie rozwiązania SAP MaxDB, technologii liveCache i serwera zawartości na platformie Azure](dbms_guide_maxdb.md)
 ### Dostępność rozwiązania SAP HANA w usłudze Azure Virtual Machines
-#### [Przegląd dostępności rozwiązania SAP HANA na platformie Azure](sap-hana-availability-overview.md)
-#### [Dostępność rozwiązania SAP HANA na platformie Azure w ramach jednego regionu świadczenia usługi Azure](sap-hana-availability-one-region.md)
-#### [Dostępność rozwiązania SAP HANA na platformie Azure w wielu regionach świadczenia usługi Azure](sap-hana-availability-across-regions.md)
+### [Przegląd dostępności rozwiązania SAP HANA na platformie Azure](sap-hana-availability-overview.md)
+### [Dostępność rozwiązania SAP HANA na platformie Azure w ramach jednego regionu świadczenia usługi Azure](sap-hana-availability-one-region.md)
+### [Dostępność rozwiązania SAP HANA na platformie Azure w wielu regionach świadczenia usługi Azure](sap-hana-availability-across-regions.md)
 ## [SAP Business One na maszynach wirtualnych platformy Azure](business-one-azure.md)
 ## [Rozwiązanie SAP IDES na platformie Windows/SQL Server SAP CAL — podręcznik wdrażania](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Łącznik SAP LaMa dla platformy Azure](lama-installation.md)

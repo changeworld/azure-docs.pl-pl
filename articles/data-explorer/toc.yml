@@ -1,119 +1,126 @@
+items:
 - name: Dokumentacja usługi Azure Data Explorer
   href: index.yml
 - name: Omówienie
   items:
-    - name: Co to jest usługa Data Explorer?
-      href: data-explorer-overview.md
+  - name: Co to jest usługa Data Explorer?
+    href: data-explorer-overview.md
 - name: Przewodniki Szybki start
   items:
-    - name: Tworzenie klastra — witryna Azure Portal
-      href: create-cluster-database-portal.md
-    - name: Pozyskiwanie danych
-      items:
-        - name: Dane przesyłane strumieniowo — centrum zdarzeń
-          href: ingest-data-event-hub.md
-        - name: Dane przesyłane strumieniowo — platforma Kafka
-          href: ingest-data-kafka.md
-        - name: Dane dzielone na partie — język Python
-          href: python-ingest-data.md
-        - name: Dane dzielone na partie — zestaw Node SDK
-          href: node-ingest-data.md
-        - name: Dane dzielone na partie — zestaw .NET Standard SDK
-          href: net-standard-ingest-data.md
-        - name: Dane dzielone na partie — narzędzie Logstash
-          href: ingest-data-logstash.md
-    - name: Zapytania o dane
-      items:
-        - name: Interfejs użytkownika sieci Web
-          href: web-query-data.md
-        - name: Python
-          href: python-query-data.md
-    - name: Wizualizowanie danych
-      items:
-        - name: Power BI — łącznik
-          href: power-bi-connector.md
-        - name: Power BI — zaimportowane zapytanie
-          href: power-bi-imported-query.md
-        - name: Power BI — zapytanie SQL
-          href: power-bi-sql-query.md
+  - name: Tworzenie klastra — witryna Azure Portal
+    href: create-cluster-database-portal.md
+  - name: Pozyskiwanie danych
+    items:
+    - name: Dane przesyłane strumieniowo — centrum zdarzeń
+      href: ingest-data-event-hub.md
+    - name: Dane przesyłane strumieniowo — platforma Kafka
+      href: ingest-data-kafka.md
+    - name: Dane dzielone na partie — język Python
+      href: python-ingest-data.md
+    - name: Dane dzielone na partie — zestaw Node SDK
+      href: node-ingest-data.md
+    - name: Dane dzielone na partie — zestaw .NET Standard SDK
+      href: net-standard-ingest-data.md
+    - name: Dane dzielone na partie — narzędzie Logstash
+      href: ingest-data-logstash.md
+  - name: Zapytania o dane
+    items:
+    - name: Interfejs użytkownika sieci Web
+      href: web-query-data.md
+    - name: Python
+      href: python-query-data.md
+  - name: Wizualizowanie danych
+    items:
+    - name: Power BI — łącznik
+      href: power-bi-connector.md
+    - name: Power BI — zaimportowane zapytanie
+      href: power-bi-imported-query.md
+    - name: Power BI — zapytanie SQL
+      href: power-bi-sql-query.md
 - name: Samouczki
   items:
-    - name: Wizualizacja danych w usłudze Power BI
-      href: visualize-power-bi.md
+  - name: Wizualizacja danych w usłudze Power BI
+    href: visualize-power-bi.md
 - name: Pojęcia
-  expanded: true
   items:
-    - name: Omówienie pozyskiwania danych
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
-    - name: Analiza szeregów czasowych
-      href: time-series-analysis.md
+  - name: Omówienie pozyskiwania danych
+    displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
+    href: ingest-data-overview.md
+  - name: Analiza szeregów czasowych
+    href: time-series-analysis.md
+  expanded: true
 - name: Przewodniki z instrukcjami
   items:
-    - name: Rozpoczęcie pracy
-      expanded: true
-      items:
-        - name: Pisanie zapytań
-          href: write-queries.md
-        - name: Pozyskiwanie przykładowych danych
-          href: ingest-sample-data.md
-    - name: Zarządzanie
-      items:
-        - name: Zarządzanie uprawnieniami dotyczącymi bazy danych
-          href: manage-database-permissions.md
-        - name: Sprawdzanie kondycji klastra
-          href: check-cluster-health.md
-        - name: Zarządzanie skalowaniem klastra
-          href: manage-cluster-scaling.md
-        - name: Usuwanie danych
-          href: delete-data.md
-        - name: Obsługa zduplikowanych danych
-          href: dealing-with-duplicates.md
-    - name: Praca z innymi narzędziami
-      items:
-        - name: Łączenie z usługi Databricks za pomocą języka Python
-          href: connect-from-databricks.md
-        - name: Analizowanie danych przy użyciu notesów programu Jupyter Notebook i rozszerzenia Kqlmagic
-          href: kqlmagic.md
-        - name: Wizualizacja danych na platformie Grafana
-          href: grafana.md
-    - name: Rozwiązywanie problemów
-      items:
-        - name: Tworzenie klastra
-          href: troubleshoot-create-cluster.md
-        - name: Łączenie się z klastrem
-          href: troubleshoot-connect-cluster.md
-        - name: Praca z bazami danych i tabelami
-          href: troubleshoot-database-table.md
+  - name: Rozpoczęcie pracy
+    items:
+    - name: Pisanie zapytań
+      href: write-queries.md
+    - name: Pozyskiwanie przykładowych danych
+      href: ingest-sample-data.md
+    expanded: true
+  - name: Zarządzanie
+    items:
+    - name: Zarządzanie uprawnieniami dotyczącymi bazy danych
+      href: manage-database-permissions.md
+    - name: Sprawdzanie kondycji klastra
+      href: check-cluster-health.md
+    - name: Zarządzanie skalowaniem klastra
+      href: manage-cluster-scaling.md
+    - name: Usuwanie danych
+      href: delete-data.md
+    - name: Obsługa zduplikowanych danych
+      href: dealing-with-duplicates.md
+  - name: Praca z innymi narzędziami
+    items:
+    - name: Łączenie z usługi Databricks za pomocą języka Python
+      href: connect-from-databricks.md
+    - name: Analizowanie danych przy użyciu notesów programu Jupyter Notebook i rozszerzenia Kqlmagic
+      href: kqlmagic.md
+    - name: Wizualizacja danych na platformie Grafana
+      href: grafana.md
+  - name: Rozwiązywanie problemów
+    items:
+    - name: Tworzenie klastra
+      href: troubleshoot-create-cluster.md
+    - name: Łączenie się z klastrem
+      href: troubleshoot-connect-cluster.md
+    - name: Praca z bazami danych i tabelami
+      href: troubleshoot-database-table.md
 - name: Dokumentacja
   items:
-    - name: Język zapytań
-      href: /azure/kusto/query/
-    - name: Polecenia zarządzania
-      href: /azure/kusto/management/
-    - name: Interfejsy API
-      href: /azure/kusto/api/
-    - name: Narzędzia
-      href: /azure/kusto/tools/
-    - name: Pojęcia
-      href: /azure/kusto/concepts/
+  - name: Język zapytań
+    href: /azure/kusto/query/
+  - name: Polecenia zarządzania
+    href: /azure/kusto/management/
+  - name: Interfejsy API
+    href: /azure/kusto/api/
+  - name: Narzędzia
+    href: /azure/kusto/tools/
+  - name: Pojęcia
+    href: /azure/kusto/concepts/
 - name: Zasoby
   items:
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/tag/azure-data-explorer/'
-    - name: Fora
-      items:
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-data-explorer'
-        - name: Społeczność techniczna firmy Microsoft
-          href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'
-        - name: Forum MSDN
-          href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
-    - name: Opinia dotycząca produktu
-      href: 'http://aka.ms/adefeedback'
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Narzędzie do szacowania kosztów
-      href: 'http://aka.ms/adecostestimator'
-    - name: Aktualizacje usług
-      href: 'https://azure.microsoft.com/updates/?product=data-explorer'
+  - name: Blog
+    href: https://azure.microsoft.com/blog/tag/azure-data-explorer/
+  - name: Fora
+    items:
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-data-explorer
+    - name: Społeczność techniczna firmy Microsoft
+      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
+    - name: Forum MSDN
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
+  - name: Opinia dotycząca produktu
+    href: http://aka.ms/adefeedback
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/data-explorer/
+  - name: Narzędzie do szacowania kosztów
+    href: http://aka.ms/adecostestimator
+  - name: Aktualizacje usług
+    href: https://azure.microsoft.com/updates/?product=data-explorer
+ms.openlocfilehash: 4d17e1bd16cbf14d377e40b042a1d28d53c193ed
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467251"
