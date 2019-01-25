@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 1/24/2019
 ms.author: raiye
-ms.openlocfilehash: e621d526aed3c4d98d964dfdcd7ba01e8c1fb830
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 59afdd3bbb00dce6085ea76685768db3e8eec5cc
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104866"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900854"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -43,6 +43,9 @@ Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to] [ c
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
 
+###### <a name="january-24-2019"></a>**24 stycznia 2019 r.**
+Została wydana 6 z rodziny systemów operacyjnych gościa (2019 systemu Windows Server).
+
 ###### <a name="january-7-2019"></a>**7 stycznia 2019 r.**
 System operacyjny gościa grudnia został wydany.
 
@@ -65,8 +68,23 @@ System operacyjny gościa lipca został wydany.
 System operacyjny gościa czerwca został wydany.
 
 ## <a name="releases"></a>Wydania
+
+## <a name="family-6-releases"></a>Zwalnia rodziny 6
+**Windows Server 2019**
+
+Zainstalowane środowisko .NET framework: 3.5, 4.7.2
+
+> [!NOTE]
+> Zestaw Windows Azure SDK dla platformy .NET 3.0 można pobrać [tutaj][Windows Azure SDK].
+>
+
+| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| --- | --- | --- |
+| WA-GUEST-OS-6.2_201812-01 |24 stycznia 2019 r. |Wpis 6.4 |
+| WA-GUEST-OS-6.1_201811-01 |24 stycznia 2019 r. |Wpis 6.3 |
+
 ## <a name="family-5-releases"></a>Zwalnia Family 5
-**System Windows Server 2016**
+**Windows Server 2016**
 
 Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 
@@ -76,13 +94,13 @@ Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
-| WA-GOŚCIA-OS-5.26_201812-01 |7 stycznia 2019 r. |Wpis 5.28 |
-| WA-GOŚCIA-OS-5.25_201811-01 |14 grudnia 2018 r. |Wpis 5.27 |
-|~~WA-GOŚCIA-OS-5.24_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GOŚCIA-OS-5.23_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
-|~~WA-GOŚCIA-OS-5.22_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
-|~~WA-GOŚCIA-OS-5.21_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
-|~~WA-GOŚCIA-OS-5.20_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+| WA-GUEST-OS-5.26_201812-01 |7 stycznia 2019 r. |Wpis 5.28 |
+| WA-GUEST-OS-5.25_201811-01 |14 grudnia 2018 r. |Wpis 5.27 |
+|~~WA-GUEST-OS-5.24_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
+|~~WA-GUEST-OS-5.23_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
+|~~WA-GUEST-OS-5.22_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
+|~~WA-GUEST-OS-5.21_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
+|~~WA-GUEST-OS-5.20_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 
 ## <a name="family-4-releases"></a>Zwalnia rodziny w wersji 4
 **Windows Server 2012 R2**
@@ -91,13 +109,13 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5.1
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
-| WA-GOŚCIA-OS-4.61_201812-01 |7 stycznia 2019 r. |Wpis 4.63 |
-| WA-GOŚCIA-OS-4.60_201811-01 |14 grudnia 2018 r. |Wpis 4.62 |
-|~~WA-GOŚCIA-OS-4.59_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GOŚCIA-OS-4.58_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
-|~~WA-GOŚCIA-OS-4.57_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
-|~~WA-GOŚCIA-OS-4.56_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
-|~~WA-GOŚCIA-OS-4.55_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+| WA-GUEST-OS-4.61_201812-01 |7 stycznia 2019 r. |Wpis 4.63 |
+| WA-GUEST-OS-4.60_201811-01 |14 grudnia 2018 r. |Wpis 4.62 |
+|~~WA-GUEST-OS-4.59_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
+|~~WA-GUEST-OS-4.58_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
+|~~WA-GUEST-OS-4.57_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
+|~~WA-GUEST-OS-4.56_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
+|~~WA-GUEST-OS-4.55_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 
 ## <a name="family-3-releases"></a>Zwalnia rodziny 3
 **Windows Server 2012**
@@ -106,28 +124,28 @@ Zainstalowane środowisko .NET framework: 3.5, 4.5
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
-| WA-GOŚCIA-OS-3.68_201812-01 |7 stycznia 2019 r. |Wpis 3.70 |
-| WA-GOŚCIA-OS-3.67_201811-01 |14 grudnia 2018 r. |Wpis 3,69 |
-|~~WA-GOŚCIA-OS-3.66_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GOŚCIA-OS-3.65_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
-|~~WA-GOŚCIA-OS-3.64_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
-|~~WA-GOŚCIA-OS-3.63_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
-|~~WA-GOŚCIA-OS-3.62_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+| WA-GUEST-OS-3.68_201812-01 |7 stycznia 2019 r. |Wpis 3.70 |
+| WA-GUEST-OS-3.67_201811-01 |14 grudnia 2018 r. |Wpis 3,69 |
+|~~WA-GUEST-OS-3.66_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
+|~~WA-GUEST-OS-3.65_201809-01~~ |12 października 2018 r. |14 grudnia 2018 r. |
+|~~WA-GUEST-OS-3.64_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
+|~~WA-GUEST-OS-3.63_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
+|~~WA-GUEST-OS-3.62_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 
 ## <a name="family-2-releases"></a>Zwalnia rodziny 2
-**Windows Server 2008 R2 z dodatkiem SP1**
+**Windows Server 2008 R2 SP1**
 
 Zainstalowane środowisko .NET framework: 3.5 (w tym w wersji 2.0 i 3.0)
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
-| WA-GOŚCIA-OS-2.81_201812-01 |7 stycznia 2019 r. |Wpis 2,83 |
-| WA-GOŚCIA-OS-2.80_201811-01 |14 grudnia 2018 r. |Wpis 2.82 |
-|~~WA-GOŚCIA-OS-2.79_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
-|~~WA-GOŚCIA-OS-2.78_201809-01~~|12 października 2018 r. |14 grudnia 2018 r. |
-|~~WA-GOŚCIA-OS-2.77_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
-|~~WA-GOŚCIA-OS-2.76_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
-|~~WA-GOŚCIA-OS-2.75_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+| WA-GUEST-OS-2.81_201812-01 |7 stycznia 2019 r. |Wpis 2,83 |
+| WA-GUEST-OS-2.80_201811-01 |14 grudnia 2018 r. |Wpis 2.82 |
+|~~WA-GUEST-OS-2.79_201810-01~~ |8 listopada 2018 r. |7 stycznia 2019 r. |
+|~~WA-GUEST-OS-2.78_201809-01~~|12 października 2018 r. |14 grudnia 2018 r. |
+|~~WA-GUEST-OS-2.77_201808-01~~ |12 września 2018 r. |8 listopada 2018 r. |
+|~~WA-GUEST-OS-2.76_201807-02~~ |3 sierpnia 2018 r. |12 października 2018 r. |
+|~~WA-GUEST-OS-2.75_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
 
 ## <a name="msrc-patch-updates"></a>Centrum MSRC poprawek i aktualizacji
 Lista poprawek, które są dołączone do wydania systemu operacyjnego gościa w każdym miesiącu jest dostępna [tutaj][patches].
@@ -205,3 +223,4 @@ Zasady wycofywania i możliwości obsługi systemu operacyjnego gościa zostało
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
+[Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
