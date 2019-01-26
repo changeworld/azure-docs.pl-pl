@@ -443,6 +443,11 @@ items:
         href: service-fabric-tutorial-deploy-api-management.md
       - name: Zarządzanie wpisami tajnymi aplikacji
         href: service-fabric-application-secret-management.md
+        items:
+        - name: Konfigurowanie certyfikatu szyfrowania i szyfrowanie wpisów tajnych w systemie Windows
+          href: service-fabric-application-secret-management-windows.md
+        - name: Konfigurowanie certyfikatu szyfrowania i szyfrowanie wpisów tajnych w systemie Linux
+          href: service-fabric-application-secret-management-linux.md
       - name: Konfigurowanie zwrotnego serwera proxy na potrzeby bezpiecznej komunikacji
         href: service-fabric-reverseproxy-configure-secure-communication.md
       - name: Uruchamianie skryptu uruchamiania usługi za pomocą użytkownika lokalnego lub konta systemowego
@@ -777,6 +782,8 @@ items:
     href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
   - name: REST
     href: /rest/api/servicefabric
+  - name: Szablon usługi Resource Manager
+    href: /azure/templates/microsoft.servicefabric/clusters
   - name: Zdarzenia usługi Service Fabric
     href: service-fabric-diagnostics-event-generation-operational.md
   - name: Konfigurowanie ustawień klastra i zasad uaktualniania sieci szkieletowej
@@ -820,9 +827,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 9058ac3b7d21b7cd490a14333d2362635809e39b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: abf77c080d6093e9028f82ccac7b20d24389bdbb
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976376"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54352482"

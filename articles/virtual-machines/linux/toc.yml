@@ -170,16 +170,29 @@ items:
       - name: Szczegółowe procedury
         href: create-ssh-keys-detailed.md
   - name: Ochrona maszyn wirtualnych
-    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     items:
-    - name: Tworzenie kopii zapasowej pojedynczej maszyny wirtualnej
-      href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Tworzenie kopii zapasowej wielu maszyn wirtualnych
-      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Przywracanie dysku
-      href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
-    - name: Przywracanie pojedynczych plików
-      href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Tworzenie kopii zapasowej maszyn wirtualnych
+      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: Tworzenie kopii zapasowej pojedynczej maszyny wirtualnej
+        href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Tworzenie kopii zapasowej wielu maszyn wirtualnych
+        href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Przywracanie dysku
+        href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Przywracanie pojedynczych plików
+        href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych
+      href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: Włączanie odzyskiwania po awarii dla maszyny wirtualnej
+        href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Uruchamianie próbnego odzyskiwania po awarii dla maszyny wirtualnej
+        href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: Przełączanie maszyny wirtualnej do pracy w trybie failover w innym regionie
+        href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: Przenoszenie maszyn wirtualnych do innego regionu
+      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
   - name: Zarządzanie maszynami wirtualnymi
     items:
     - name: Użycie maszyny wirtualnej
@@ -547,9 +560,9 @@ items:
     href: faq.md
 - name: Rozwiązywanie problemów
   href: ../troubleshooting/index.md
-ms.openlocfilehash: c230e40c62b3f7f1c485eb4051bed3a0314aa08d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: be99b17042aa8f36b8fb9a1ad7dedf3a945dcf75
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360143"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54822675"

@@ -56,7 +56,7 @@ items:
   - name: 5 — Wypychanie powiadomień na podstawie lokalizacji
     items:
     - name: Windows
-      href: notification-hubs-push-bing-spartial-data-geofencing-notification.md
+      href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
 - name: Przykłady
   items:
   - name: Przykłady kodu
@@ -74,6 +74,8 @@ items:
       href: notification-hubs-tags-segment-push-message.md
     - name: Rejestracja szablonu
       href: notification-hubs-templates-cross-platform-push-messages.md
+  - name: Model zabezpieczeń
+    href: notification-hubs-push-notification-security.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Wysyłanie powiadomień na różne platformy
@@ -82,6 +84,10 @@ items:
     href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
   - name: Wysyłanie powiadomień zaplanowanych
     href: notification-hubs-send-push-notifications-scheduled.md
+  - name: Wdrażanie centrów powiadomień i zarządzanie nimi przy użyciu programu Azure PowerShell
+    href: notification-hubs-deploy-and-manage-powershell.md
+  - name: Bezpieczne wysyłanie powiadomień push do użytkowników
+    href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
   - name: Tworzenie centrum powiadomień przy użyciu zestawów SDK
     items:
     - name: Tworzenie centrum powiadomień — platforma .NET
@@ -128,9 +134,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Opcje pomocy technicznej
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: dcfb667f92f044ae37b0c0c42af337a9c5af49f4
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f8a26954be5154e9d37970a3659fd28a22b615a5
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197712"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54461454"

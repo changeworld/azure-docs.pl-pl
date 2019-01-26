@@ -307,6 +307,12 @@ items:
         href: sql-database-performance.md
       - name: Zalecenia dotyczące wydajności funkcji Database Advisor
         href: sql-database-advisor.md
+  - name: Ładowanie i przenoszenie danych
+    items:
+    - name: SQL Data Sync
+      href: sql-database-sync-data.md
+    - name: Replikacja transakcyjna
+      href: sql-database-managed-instance-transactional-replication.md
   - name: Funkcje bazy danych
     items:
     - name: Funkcje bazy danych
@@ -329,7 +335,7 @@ items:
       href: sql-database-cloud-migrate.md
     - name: Zarządzanie bazą danych SQL po migracji
       href: sql-database-manage-after-migration.md
-    - name: Konfigurowanie replikacji transakcyjnej
+    - name: Konfigurowanie replikacji
       href: replication-to-sql-database.md
     - name: Konfigurowanie wykrywania zagrożeń
       href: sql-database-threat-detection.md
@@ -439,8 +445,6 @@ items:
       href: sql-database-export.md
     - name: Synchronizacja danych
       items:
-      - name: SQL Data Sync
-        href: sql-database-sync-data.md
       - name: Agent synchronizacji danych
         href: sql-database-data-sync-agent.md
       - name: Replikowanie zmian schematu
@@ -682,9 +686,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalowywanie zadania elastycznego (przestarzałe)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 500fd22c19e0aab2cbecf0267329d5a86a5ccda2
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 634018a1807e23700141ac11a961bd1b1411b8a8
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230907"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54331405"
