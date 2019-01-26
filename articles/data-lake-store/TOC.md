@@ -28,7 +28,7 @@
 ### [Kontrola dostępu](data-lake-store-access-control.md)
 ### [Zabezpieczanie przechowywanych danych](data-lake-store-secure-data.md)
 ### [Szyfrowanie](data-lake-store-encryption.md)
-### [Integracja sieci wirtualnej](data-lake-store-network-security.md)
+### [Integracja sieci wirtualnej (wersja zapoznawcza)](data-lake-store-network-security.md)
 
 ## Uwierzytelnianie za pomocą usługi Data Lake Storage 1. generacji
 ### [Opcje uwierzytelniania](data-lakes-store-authentication-using-azure-active-directory.md)
