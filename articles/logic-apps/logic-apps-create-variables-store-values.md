@@ -74,9 +74,9 @@ Można utworzyć zmienną i zadeklarować jego typu danych i wartość początko
 
    | Właściwość | Wymagany | Wartość |  Opis |
    |----------|----------|-------|--------------|
-   | Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
-   | Typ | Yes | <*Typ zmiennej*> | Typ danych dla zmiennej | 
-   | Wartość | Nie | <*Wartość początkowa*> | Początkowa wartość zmiennej <p><p>**Porada**: Mimo, że jest to opcjonalne, ustaw tę wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, wartość początkową zmiennej. | 
+   | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
+   | Type | Yes | <*Typ zmiennej*> | Typ danych dla zmiennej | 
+   | Value | Nie | <*Wartość początkowa*> | Początkowa wartość zmiennej <p><p>**Porada**: Mimo, że jest to opcjonalne, ustaw tę wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, wartość początkową zmiennej. | 
    ||||| 
 
    ![Inicjuj zmienną](./media/logic-apps-create-variables-store-values/initialize-variable.png)
@@ -210,8 +210,8 @@ Aby zwiększyć lub *przyrostu* zmiennej przez wartość stałą, Dodaj **zmienn
 
    | Właściwość | Wymagany | Wartość |  Opis |
    |----------|----------|-------|--------------|
-   | Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
-   | Wartość | Nie | <*wartość przyrostu*> | Wartość przyrostu o wartości zmiennej. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określona wartość przyrostu o wartości do zmiennej. | 
+   | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
+   | Value | Nie | <*wartość przyrostu*> | Wartość przyrostu o wartości zmiennej. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określona wartość przyrostu o wartości do zmiennej. | 
    |||| 
 
    Na przykład: 
@@ -330,8 +330,8 @@ Poniżej przedstawiono właściwości dla **Zmniejsz zmienną** akcji:
 
 | Właściwość | Wymagany | Wartość |  Opis |
 |----------|----------|-------|--------------|
-| Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmniejszyć | 
-| Wartość | Nie | <*wartość przyrostu*> | Wartość dla zmiennej zmniejszanie. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określonej wartości dla zmniejszanie zmiennej. | 
+| Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmniejszyć | 
+| Value | Nie | <*wartość przyrostu*> | Wartość dla zmiennej zmniejszanie. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określonej wartości dla zmniejszanie zmiennej. | 
 ||||| 
 
 Jeśli przełącznik przy użyciu projektanta widoku edytora kodu poniżej przedstawiono sposób **Zmniejsz zmienną** akcji pojawia się wewnątrz definicji aplikacji logiki, która jest w formacie JSON.
@@ -365,8 +365,8 @@ Poniżej przedstawiono właściwości dla **Ustaw zmienną** akcji:
 
 | Właściwość | Wymagany | Wartość |  Opis | 
 |----------|----------|-------|--------------| 
-| Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
-| Wartość | Yes | <*Nowa wartość*> | Wartość, którą chcesz przypisać do zmiennej. Oba muszą mieć ten sam typ danych. | 
+| Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
+| Value | Yes | <*Nowa wartość*> | Wartość, którą chcesz przypisać do zmiennej. Oba muszą mieć ten sam typ danych. | 
 ||||| 
 
 > [!NOTE]
@@ -423,8 +423,8 @@ Poniżej przedstawiono właściwości dla **dołączenia do...**  akcje:
 
 | Właściwość | Wymagany | Wartość |  Opis | 
 |----------|----------|-------|--------------| 
-| Nazwa | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
-| Wartość | Yes | <*Dołącz wartość*> | Wartość, którą chcesz dołączyć, i może mieć dowolny typ | 
+| Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
+| Value | Yes | <*Dołącz wartość*> | Wartość, którą chcesz dołączyć, i może mieć dowolny typ | 
 |||||  
 
 Jeśli przełącznik przy użyciu projektanta widoku edytora kodu poniżej przedstawiono sposób **Dołącz do zmiennej tablicowej** akcji pojawia się wewnątrz definicji aplikacji logiki, która jest w formacie JSON.
