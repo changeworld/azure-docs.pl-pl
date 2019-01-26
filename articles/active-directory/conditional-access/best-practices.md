@@ -9,20 +9,20 @@ manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3ed4d3874056eca93e5c94e225ba25d94e7826e3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 8324b7bf97325c295fdf95819cc2b22fb0f3c14e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911935"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078954"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania z zakresu dostępu warunkowego w usłudze Azure Active Directory
 
@@ -47,9 +47,9 @@ Aby ułatwić zasad usługi działa, należy skonfigurować:
 
 |Elementy           | Jak                                  | Dlaczego|
 |:--            | :--                                  | :-- |
-|**Aplikacje w chmurze** |Musisz wybrać co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwiają kontrolowanie sposobu autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
-| **Użytkownicy i grupy** | Musisz wybrać co najmniej jednego użytkownika lub grupę, która dysponuje autoryzacją do dostępu do aplikacji w wybranej chmurze. | Zasady dostępu warunkowego, która nie ma użytkowników i grup przypisanych, nigdy nie zostanie wywołany. |
-| **Kontrola dostępu** | Musisz wybrać kontroli dostępu co najmniej jeden. | Jeśli warunki są spełnione, procesor zasad musi wiedzieć, co należy zrobić.|
+|**Aplikacje w chmurze** |Wybierz co najmniej jedną aplikację.  | Celem zasad dostępu warunkowego jest umożliwiają kontrolowanie sposobu autoryzowani użytkownicy mogą uzyskiwać dostęp do aplikacji w chmurze.|
+| **Użytkownicy i grupy** | Wybierz co najmniej jednego użytkownika lub grupę, która dysponuje autoryzacją do dostępu do aplikacji w wybranej chmurze. | Zasady dostępu warunkowego, która nie ma użytkowników i grup przypisanych, nigdy nie zostanie wywołany. |
+| **Kontrola dostępu** | Wybierz co najmniej jedno dostępu kontrolkę. | Jeśli warunki są spełnione, procesor zasad musi wiedzieć, co należy zrobić.|
 
 
 
@@ -60,11 +60,11 @@ Aby ułatwić zasad usługi działa, należy skonfigurować:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Jak są stosowane zasady dostępu warunkowego
 
-Więcej niż jedne zasady dostępu warunkowego mogą być naliczane, gdy użytkownik uzyskuje dostęp do aplikacji. W takim przypadku należy spełnić wszystkie zasady, które są stosowane. Na przykład, jeśli jeden zasady wymaga użytkownika uwierzytelniania Wieloskładnikowego i drugi wymagają zgodnego urządzenia użytkownik musi MFA i mieć zgodne urządzenie. 
+Więcej niż jedne zasady dostępu warunkowego może stosować, gdy uzyskujesz dostęp do aplikacji w chmurze. W takim przypadku należy spełnić wszystkie zasady, które są stosowane. Na przykład jeśli jedna zasada wymaga uwierzytelniania Wieloskładnikowego, a druga zgodnego urządzenia, należy przejść przez usługę MFA i użyj zgodnego urządzenia. 
 
 Wszystkie zasady są wymuszane w dwóch fazach:
 
-- W **pierwszy** fazy, wszystkie zasady są oceniane i wszystkich kontroli dostępu, które nie zostały spełnione są zbierane. 
+- W **pierwszy** fazy, wszystkie zasady są oceniane i wszystkich kontroli dostępu, które nie są spełnione są zbierane. 
 
 - W **drugi** fazy, zostanie wyświetlony monit, aby spełniać wymagania nie zostały spełnione. Jeśli jedne z zasad zablokuje dostęp, są zablokowane i nie otrzyma monitu o spełnia inne kontrolki zasad. Jeśli żadna z zasad zablokuje użytkownika pojawia się monit o spełnia inne kontrolki zasad, w następującej kolejności:
 
@@ -88,7 +88,7 @@ Jeśli musisz skonfigurować warunek lokalizacji, która ma zastosowanie do wszy
 
 Jeśli użytkownik z zablokowanym dostępem do portalu usługi Azure AD z powodu niepoprawnego ustawienia zasad dostępu warunkowego:
 
-- Sprawdź, czy są inni administratorzy w Twojej organizacji, które jeszcze nie są blokowane. Administrator z uprawnieniami do witryny Azure portal można wyłączyć zasady, które ma wpływ na logowanie. 
+- Sprawdź jest, że nie ma innych administratorów w Twojej organizacji, które nie są jeszcze zablokowane. Administrator z uprawnieniami do witryny Azure portal można wyłączyć zasady, które ma wpływ na logowanie. 
 
 - Jeśli żaden z administratorami w organizacji można zaktualizować zasad, należy przesłać żądanie pomocy technicznej. Pomoc techniczna firmy Microsoft można przeglądać i aktualizować zasady dostępu warunkowego, które uniemożliwiają dostęp.
 
@@ -140,13 +140,13 @@ W danym środowisku należy unikać następujące konfiguracje:
 
 Pierwszym krokiem należy ocenić przy użyciu zasad [narzędzie analizy warunkowej](what-if-tool.md).
 
-Gdy wszystko jest gotowe do wdrożenia nowych zasad w środowisku, można to zrobić w fazach:
+Gdy nowe zasady są gotowe do środowiska, należy wdrożyć je w fazach:
 
 1. Zastosuj zasady wśród małej grupy użytkowników i sprawdź, czy działa zgodnie z oczekiwaniami. 
 
-2.  Po rozwinięciu zasady w celu uwzględnienia większej liczby użytkowników, w dalszym ciągu wykluczenia wszystkich administratorów z zasad. Dzięki temu administratorzy nadal mają dostęp, a można zaktualizować zasad, jeśli jest wymagane zmiany.
+2.  Po rozwinięciu zasady w celu uwzględnienia większej liczby użytkowników. Przejdź do wykluczenia wszystkich administratorów z zasad, aby upewnić się, że nadal mieć dostęp i można zaktualizować zasad, jeśli jest wymagane zmiany.
 
-3. Zastosuj zasady do wszystkich użytkowników tylko wtedy, gdy jest to naprawdę konieczne. 
+3. Zastosuj zasady do wszystkich użytkowników tylko wtedy, gdy jest to konieczne. 
 
 Najlepszym rozwiązaniem jest tworzenie konta użytkownika, który jest:
 
