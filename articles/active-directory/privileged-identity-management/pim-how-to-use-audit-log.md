@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ab5a072d845bfdbaafabe1e0e7bdce2dfce6184d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 191d384d51fe3aecbd967586516cfb198256af81
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188183"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911731"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Wyświetl historię inspekcji dla ról katalogu usługi Azure AD w usłudze PIM
 Historia inspekcji Privileged Identity Management (PIM) można użyć, aby zobaczyć wszystkie przypisania użytkownika i aktywacji w danym okresie czasu dla wszystkich uprzywilejowanych ról. Jeśli chcesz wyświetlić pełną historię inspekcji aktywności w swojej dzierżawie, w tym administratora, użytkownik końcowy i działanie synchronizacji, można użyć [raportów dostępu i użycia usługi Azure Active Directory.](../reports-monitoring/overview-reports.md)
@@ -64,4 +64,4 @@ Zaznacz lub usuń zaznaczenie pola wyboru **roli** pole wyboru obok każdej roli
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wyświetl historię inspekcji dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-use-the-audit-log.md)
+- [Wyświetl historię działań i inspekcji dla ról zasobów platformy Azure w usłudze PIM](azure-pim-resource-rbac.md)

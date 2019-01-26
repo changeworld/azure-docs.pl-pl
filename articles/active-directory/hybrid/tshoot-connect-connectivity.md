@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 85c60cf25cd00826df6b48ed6714a646fa44a962
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c1a575c3a30dfe5923fc0026c6d41d1b20276e49
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474884"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076472"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Rozwiązywanie problemów z łącznością z programem Azure AD Connect
 W tym artykule wyjaśniono, jak działa łączność między program Azure AD Connect a usługą Azure AD i jak rozwiązać problemy z łącznością. Te problemy z największym prawdopodobieństwem mogą być widoczne w środowisku przy użyciu serwera proxy.
@@ -167,17 +167,52 @@ Nie można autoryzować użytkownika do wykonania akcji w usłudze Azure AD.
 ### <a name="authentication-cancelled"></a>Uwierzytelnianie anulowane
 Uwierzytelnienia Multi-Factor Authentication (MFA) zostało anulowane.
 
+<div id="connect-msolservice-failed">
+<!--
+  Empty div just to act as an alias for the "Connect To MS Online Failed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="connect-to-ms-online-failed"></a>Połącz MS w trybie Online nie powiodło się
 Uwierzytelnianie zakończyło się pomyślnie, ale usługi Azure AD PowerShell ma problem z uwierzytelnianiem.
+
+<div id="get-msoluserrole-failed">
+<!--
+  Empty div just to act as an alias for the "Azure AD Global Admin Role Needed" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Rola administratora globalnego usługi Azure AD wymagane
 Użytkownik został pomyślnie uwierzytelniony. Jednak użytkownik nie jest przypisana rola administratora globalnego. Jest to [przypisywanie roli administratora globalnego](../users-groups-roles/directory-assign-admin-roles.md) dla użytkownika. 
 
+<div id="privileged-identity-management">
+<!--
+  Empty div just to act as an alias for the "Privileged Identity Management Enabled" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="privileged-identity-management-enabled"></a>Usługa Privileged Identity Management włączone
 Uwierzytelnianie zakończyło się pomyślnie. Usługa Privileged identity management został włączony i użytkownik nie jest administratorem globalnym. Aby uzyskać więcej informacji, zobacz [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md).
 
+<div id="get-msolcompanyinformation-failed">
+<!--
+  Empty div just to act as an alias for the "Company Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
+
 ### <a name="company-information-unavailable"></a>Informacje o firmie niedostępny
 Uwierzytelnianie zakończyło się pomyślnie. Nie można pobrać informacji o firmie z usługi Azure AD.
+
+<div id="get-msoldomain-failed">
+<!--
+  Empty div just to act as an alias for the "Domain Information Unavailable" header
+  because we used the mentioned id in the code to jump to this section.
+-->
+</div>
 
 ### <a name="domain-information-unavailable"></a>Informacje o domenie niedostępny
 Uwierzytelnianie zakończyło się pomyślnie. Nie można pobrać informacji o domenie z usługi Azure AD.

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/19/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 8a9fc299f620c7df87544b467cf52535addfe313
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: bfe53ac99ae1719deeacc156b250fe5a7f87a99a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651507"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913465"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące korzystania z maszyn wirtualnych w usłudze Azure Stack
 
@@ -104,8 +104,8 @@ Lista obsługiwane typy zasobów i wersje interfejsów API mogą się różnić,
 
 Produkty Windows może być używany zgodnie z postanowieniami licencyjnymi firmy Microsoft i prawa do używania produktów. Używa usługi Azure Stack [automatyczna aktywacja maszyny Wirtualnej](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA), aby aktywować maszyn wirtualnych systemu Windows Server (VM).
 
-- Hosta platformy Azure Stack aktywuje Windows za pomocą kluczy AVMA dla systemu Windows Server 2016. Wszystkie maszyny wirtualne, które systemem Windows Server 2012 lub nowszym zostaną automatycznie aktywowane.
-- Maszyny wirtualne, które uruchamiania systemu Windows Server 2008 R2 nie zostaną automatycznie aktywowane i muszą zostać aktywowane przy użyciu [klucza MAK](https://technet.microsoft.com/library/ff793438.aspx). Aby zastosować aktywację MAK, należy podać klucz produktu.
+- Hosta platformy Azure Stack aktywuje Windows za pomocą kluczy AVMA dla systemu Windows Server 2016. Wszystkie maszyny wirtualne, które jest uruchomiony system Windows Server 2012 R2 lub nowszym zostaną automatycznie aktywowane.
+- Maszyny wirtualne, które systemem Windows Server 2012 lub starszym nie zostaną automatycznie aktywowane i muszą zostać aktywowane przy użyciu [klucza MAK](https://technet.microsoft.com/library/ff793438.aspx). Aby zastosować aktywację MAK, należy podać klucz produktu.
 
 Microsoft Azure używa aktywacji usługi KMS można aktywować maszyn wirtualnych Windows. Jeśli przenosisz maszynę Wirtualną z usługi Azure Stack na platformie Azure oraz encounter aktywować problemów, zobacz [problemy dotyczące aktywacji maszyny wirtualnej Windows Azure Rozwiązywanie problemów z](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Dodatkowe informacje można znaleźć na [Windows Rozwiązywanie problemów z niepowodzeniami aktywacji na maszynach wirtualnych Azure](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) wpis w blogu zespołu pomocy technicznej platformy Azure.
 

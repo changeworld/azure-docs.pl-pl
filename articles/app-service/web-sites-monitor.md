@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 3a49b30caa087295bbdcffe8762796fdc92f154b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247267"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913176"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorowanie aplikacji w usłudze Azure App Service
 [Usługa Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) zapewnia wbudowaną funkcję monitorowania dla aplikacji sieci web, mobilnych zaplecza i aplikacji API apps w [witryny Azure portal](https://portal.azure.com).
@@ -73,19 +73,37 @@ Dla aplikacji są dostępne metryki:
 | --- | --- |
 | **Średni czas odpowiedzi** | Średni czas dla aplikacji do obsługi żądań, w milisekundach. |
 | **Średni zestaw roboczy pamięci** | Średnia ilość pamięci używanej przez aplikację, w megabajtach (MiB). |
+| **Połączenia** | Liczba powiązanych sockets istniejących w piaskownicy (w3wp.exe i jego procesów podrzędnych).  Gniazdo powiązanej jest tworzony przez wywołanie bind()/connect() interfejsów API i pozostaje do czasu zamknięcia wymienionego gniazda z CloseHandle()/closesocket(). |
 | **Czas procesora CPU** | Moc procesora CPU, używane przez aplikację, w ciągu kilku sekund. Aby uzyskać więcej informacji na temat tej metryki, zobacz [procent vs Procesor czas procesora CPU](#cpu-time-vs-cpu-percentage). |
+| **Aktualna liczba zestawów** | Bieżąca liczba zestawów są ładowane we wszystkich domen aplikacji w tej aplikacji. |
 | **Dane w** | Ilość przychodzącego przepustowości aplikacji MiB. |
 | **Dane wyjściowe** | Ilość przepustowości wychodzącej przez aplikację, w MiB. |
+| **Velikost haldy 0 wyrzucania elementów bezużytecznych** | Liczba przypadków, gdy obiekty generacji 0 są pamięci zbierane od momentu rozpoczęcia procesu aplikacji. Wyższe generowania wykazów globalnych obejmują wszystkie wykazów globalnych z niższych generacji.|
+| **Gen 1 wyrzucania elementów bezużytecznych** | Liczba przypadków, gdy obiekty generacji 1 są pamięci zbierane od momentu rozpoczęcia procesu aplikacji. Wyższe generowania wykazów globalnych obejmują wszystkie wykazów globalnych z niższych generacji.|
+| **Odzyskiwanie obiektów pokolenia 2** | Liczba przypadków, gdy obiekty generacji 2 są pamięci zbierane od momentu rozpoczęcia procesu aplikacji.|
+| **Liczba dojść** | Całkowita liczba dojść otwartych przez proces aplikacji.|
 | **Http 2xx** | Liczba żądań skutkuje ≥ kod stanu HTTP 200, ale < 300. |
 | **Http 3xx** | Liczba żądań, co kod stanu HTTP ≥ 300, ale < 400. |
-| **HTTP 401** | Liczba żądań, co kod stanu HTTP 401. |
-| **HTTP 403** | Liczba żądań, co kod stanu HTTP 403. |
-| **HTTP 404** | Liczba żądań, co kod stanu HTTP 404. |
+| **Http 401** | Liczba żądań, co kod stanu HTTP 401. |
+| **Http 403** | Liczba żądań, co kod stanu HTTP 403. |
+| **Http 404** | Liczba żądań, co kod stanu HTTP 404. |
 | **HTTP 406** | Liczba żądań, co kod stanu HTTP 406. |
 | **Http 4xx** | Liczba żądań skutkuje ≥ kod stanu HTTP 400, ale < 500. |
 | **Błędy serwera HTTP** | Liczba żądań skutkuje ≥ kod stanu HTTP 500, ale < 600. |
+| **We/Wy inne bajty na sekundę** | Szybkość, w którym proces aplikacji wysyła bajty operacji We/Wy, które nie wymagają dane, takie jak operacje kontroli.|
+| **Operacje We/Wy innych na sekundę** | Szybkość, w którym proces aplikacji jest wykonywane operacje We/Wy, które nie są do odczytu ani zapisu.|
+| **Bajty odczytu We/Wy na sekundę** | Szybkość, w którym proces aplikacji odczytywanie bajtów z operacji We/Wy.|
+| **Operacje odczytu We/Wy na sekundę** | Szybkość, z jaką proces aplikacji wysyła odczytać operacji We/Wy.|
+| **We/Wy zapisu bajtów na sekundę** | Szybkość, w którym proces aplikacji zapisuje bajty w operacji We/Wy.|
+| **We/Wy zapisu na sekundę** | Szybkość, w którym proces aplikacji jest wykonywane operacje We/Wy zapisu.|
 | **Zestaw roboczy pamięci** | Bieżąca ilość pamięci używanej przez aplikację, w MiB. |
+| **Bajty prywatne** | Licznik Bajty prywatne wskazuje bieżący rozmiar w bajtach pamięci przydzielonej przez proces aplikacji, nie może być współużytkowana z innymi procesami.|
 | **Żądania** | Całkowita liczba żądań, niezależnie od ich wynikowy kod stanu HTTP. |
+| **Żądania w kolejce aplikacji** | Liczba żądań w kolejce żądań aplikacji.|
+| **Liczba wątków** | Liczba aktywnych wątków w procesie aplikacji.|
+| **Łączna liczba domen aplikacji** | Bieżąca liczba domen aplikacji są ładowane w tej aplikacji.|
+| **Łączna liczba domen aplikacji zwolnione** | Całkowita liczba domen aplikacji usunięty od czasu uruchomienia aplikacji.|
+
 
 Plan usługi App Service są dostępne metryki:
 

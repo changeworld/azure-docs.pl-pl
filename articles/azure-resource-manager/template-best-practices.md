@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd54ae2c82d3baf716784c39951c5cad7ec364b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0736ed32fa6f17cc840d6b144503409365c33d84
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731407"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077947"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Usługa Azure Resource Manager szablon najlepszych rozwiązań
 
@@ -82,7 +82,7 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
 
 * Użyj `allowedValues` rzadko. Go użyć tylko wtedy, gdy należy się upewnić, że niektóre wartości nie są uwzględniane w opcji dozwolone. Jeśli używasz `allowedValues` zbyt szeroko prawidłowe wdrożenia może spowodować zablokowanie, nie aktualizowanie Twojej listy.
 
-* Gdy nazwa parametru w szablonie jest zgodna z parametrem w poleceniu wdrożenia programu PowerShell, Menedżer zasobów jest rozpoznawany jako ten konflikt nazw, dodając przyrostkowa **FromTemplate** z parametrem szablonu. Na przykład, jeśli zawierają parametr o nazwie **ResourceGroupName** w szablonie, powoduje on konflikt z **ResourceGroupName** parametru w [New-AzureRmResourceGroupDeployment ](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) polecenia cmdlet. Podczas wdrażania, zostanie wyświetlony monit podać wartości **ResourceGroupNameFromTemplate**.
+* Gdy nazwa parametru w szablonie jest zgodna z parametrem w poleceniu wdrożenia programu PowerShell, Menedżer zasobów jest rozpoznawany jako ten konflikt nazw, dodając przyrostkowa **FromTemplate** z parametrem szablonu. Na przykład, jeśli zawierają parametr o nazwie **ResourceGroupName** w szablonie, powoduje on konflikt z **ResourceGroupName** parametru w [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) polecenia cmdlet. Podczas wdrażania, zostanie wyświetlony monit podać wartości **ResourceGroupNameFromTemplate**.
 
 ### <a name="security-recommendations-for-parameters"></a>Zalecenia dotyczące zabezpieczeń dla parametrów
 

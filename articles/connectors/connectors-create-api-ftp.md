@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: d57a80ec2a1ebfca173d7eaa165de4d344af2ccf
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391109"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913363"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Tworzenie, monitorowanie i zarządzanie plikami FTP za pomocą usługi Azure Logic Apps
 
@@ -29,7 +29,7 @@ Korzystając z usługi Azure Logic Apps i łącznik FTP można utworzyć automat
 Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępnić dane wyjściowe innych działań. Uruchom akcje w aplikacjach logiki służy do zarządzania plikami na serwerze FTP. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji FTP. Na przykład jeśli regularnie plików z serwera FTP, możesz wysłać pocztą e-mail informacje dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 > [!NOTE]
-> Łącznik FTP obsługuje tylko pliki, które są 50 MB lub mniej, chyba że używasz [segmentu do obsługi dużych komunikatów](../logic-apps/logic-apps-handle-large-messages.md). 
+> Łącznik FTP obsługuje tylko pliki, które są 50 MB lub mniej, chyba że używasz [komunikat segmentu w akcjach](../logic-apps/logic-apps-handle-large-messages.md). Obecnie nie można używać segmentu wyzwalaczy.
 >
 > Ponadto łącznik FTP obsługuje tylko jawne FTP over SSL (FTPS) i nie jest zgodny z niejawne protokołu FTPS. 
 
@@ -66,13 +66,27 @@ Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z serwera FTP i udostępni
 
 1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
+Podczas żądania zawartości pliku, wyzwalacz nie przyniesie oczekiwanych plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru:
+
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+
+* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
+
 ## <a name="examples"></a>Przykłady
+
+<a name="file-added-modified"></a>
 
 ### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>Wyzwalacz FTP: Po dodaniu lub zmodyfikowaniu pliku
 
 Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki po wykryciu wyzwalacz, gdy plik zostanie dodane lub zmienione na serwerze FTP. Na przykład można dodać warunek, który sprawdza, czy zawartość pliku i decyduje o tym, czy można pobrać tej zawartości na podstawie tego, czy tę zawartość spełnia określony warunek. Na koniec możesz dodać akcję, która pobiera zawartość pliku i umieścić tę zawartość w folderze na serwerze SFTP. 
 
 **Przykład Enterprise**: Tego wyzwalacza można używać do monitorowania folderu FTP dla nowych plików, które opisują zamówienia. Można następnie użyć akcji FTP takich jak **Pobierz zawartość pliku**, dzięki czemu można uzyskać zawartość kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
+
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+
+* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 
 Aplikacja logiki prawidłowe i funkcjonalności wymaga wyzwalacza i co najmniej jedną akcję. Dlatego upewnij się, że akcja zostanie dodana po dodaniu wyzwalacza.
 
@@ -101,9 +115,19 @@ Oto przykład pokazujący tego wyzwalacza: **Po dodaniu lub zmodyfikowaniu pliku
 
 Teraz, że Twoja aplikacja logiki ma wyzwalacz, należy dodać akcje, które chcesz uruchomić, gdy Twoja aplikacja logiki znajdzie nowe lub zmodyfikowane pliku. Na przykład możesz dodać akcję FTP, która pobiera zawartość nowe lub zaktualizowane.
 
+<a name="get-content"></a>
+
 ### <a name="ftp-action-get-content"></a>Akcja FTP: Pobieranie zawartości
 
 Ta akcja pobiera zawartość z pliku na serwerze FTP, gdy ten plik jest dodane lub zaktualizowane. Na przykład można dodać wyzwalacza z poprzedniego przykładu i akcji, która pobiera zawartość pliku, po dodaniu lub edytować tego pliku. 
+
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+
+* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
+
+Oto przykład, który pokazuje tę akcję: **Pobieranie zawartości**
 
 1. W obszarze wyzwalacza lub innych akcji, wybierz opcję **nowy krok**. 
 

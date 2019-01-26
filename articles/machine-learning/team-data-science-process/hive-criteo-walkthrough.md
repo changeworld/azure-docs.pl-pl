@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2c2c06a222f3ac949f8e8e6b4aed1b00c0593b6d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135818"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080229"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Zespół danych dla celów naukowych w działaniu — przy użyciu klastra usługi Azure HDInsight Hadoop na zestawie danych 1 TB
 
@@ -33,39 +33,39 @@ Każdy rekord w tym zestawie danych zawiera kolumny 40:
 * są następnie 13 kolumny liczbowe, a
 * ostatnich 26 są podzielone na kategorie kolumny
 
-Kolumny są anonimowe i używać szeregu wyliczenia nazw: "Col1" (dla kolumny etykiety) na "Col40" (dla ostatniej kolumnie kategorii).            
+Kolumny są anonimowe i używać szeregu wyliczany nazwy: "Col1" (dla kolumny etykiety) na "Col40" (dla ostatniej kolumnie kategorii).
 
 Poniżej przedstawiono fragment pierwszych 20 kolumny dwóch uwagi (wierszy) z tego zestawu danych:
 
     Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
 
-    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb           
-    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb                      
+    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb
+    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb
 
 W tym zestawie danych istnieją brakujących wartości w kolumnach liczbowych i podzielonych na kategorie. Opisano w prosty sposób obsługi brakujące wartości. Dodatkowe szczegóły danych są przedstawione w przypadku przechowywania ich do tabel programu Hive.
 
-**Definicja:** *współczynnik przeglądowe (kont.):* procent kliknięć w danych. W tym zestawie danych Criteo kont to około 3.3% lub 0.033.
+**Definicja:** *Szybkość przeglądowe (kont.):* Jest to wartość procentowa kliknięć w danych. W tym zestawie danych Criteo kont to około 3.3% lub 0.033.
 
 ## <a name="mltasks"></a>Przykłady zadań prognoz
 Dwa przykładowe prognozowania problemy zostały rozwiązane w tym przewodniku:
 
-1. **Klasyfikacja binarna**: przewiduje się, czy użytkownik kliknął element Dodaj:
-   
+1. **Klasyfikacja binarna**: Przewiduje się, czy użytkownik kliknął element Dodaj:
+
    * Klasa 0: Nie kliknij
-   * Klasy 1: kliknij przycisk
-2. **Regresja**: przewiduje prawdopodobieństwo kliknij ad z funkcji użytkownika.
+   * Klasy 1: Kliknij pozycję
+2. **Regresja**: Przewiduje prawdopodobieństwo, że kliknięcie ad z funkcji użytkownika.
 
 ## <a name="setup"></a>Ustaw się HDInsight klastra usługi Hadoop do analizy danych
-**Uwaga:** zazwyczaj jest to **administratora** zadania.
+**Uwaga:** Jest to zazwyczaj **administratora** zadania.
 
 Konfigurowanie środowiska nauki o danych platformy Azure do tworzenia rozwiązań do analizy predykcyjnej przy użyciu klastrów HDInsight w trzech krokach:
 
-1. [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md): to konto magazynu jest używane do przechowywania danych w usłudze Azure Blob Storage. Dane używane w klastrach HDInsight są przechowywane w tym miejscu.
-2. [Dostosowywanie klastrów Hadoop w usłudze Azure HDInsight do analizy danych](customize-hadoop-cluster.md): ten krok umożliwia utworzenie klastra usługi Azure HDInsight Hadoop za pomocą 64-bitowego pakietu Anaconda Python 2.7 zainstalowane we wszystkich węzłach. Istnieją dwie ważne czynności (opisanych w tym temacie) do wykonania podczas dostosowywania klastra HDInsight.
-   
+1. [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md): To konto magazynu jest używane do przechowywania danych w usłudze Azure Blob Storage. Dane używane w klastrach HDInsight są przechowywane w tym miejscu.
+2. [Dostosowywanie klastrów usługi Azure HDInsight Hadoop do analizy danych](customize-hadoop-cluster.md): Ten krok powoduje utworzenie klastra z 64-bitowego pakietu Anaconda Python 2.7 zainstalowane we wszystkich węzłach Azure HDInsight Hadoop. Istnieją dwie ważne czynności (opisanych w tym temacie) do wykonania podczas dostosowywania klastra HDInsight.
+
    * Musisz połączyć konta magazynu utworzonego w kroku 1 z klastrem usługi HDInsight podczas jego tworzenia. To konto magazynu jest używane do uzyskiwania dostępu do danych, które mogą być przetwarzane w klastrze.
    * Należy włączyć dostęp zdalny z węzłem głównym klastra po jego utworzeniu. Pamiętaj poświadczenia dostępu zdalnego, określone w tym miejscu (inne niż określone dla klastra podczas jego tworzenia): będą one potrzebne do wykonania poniższych procedur.
-3. [Utwórz obszar roboczy usługi uczenie Maszynowe Azure](../studio/create-workspace.md): ten usługi Azure Machine Learning workspace służy do tworzenia modeli uczenia maszynowego po eksplorację danych początkowych i w dół próbkowania w klastrze HDInsight.
+3. [Tworzenie obszaru roboczego usługi Azure Machine Learning studio](../studio/create-workspace.md): Ten obszar roboczy usługi Azure Machine Learning służy do tworzenia modeli uczenia maszynowego po eksplorację danych początkowych i w dół próbkowania w klastrze HDInsight.
 
 ## <a name="getdata"></a>Pobierz i korzystają z publicznych źródła danych
 [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) zestawu danych może zostać oceniony przez kliknięcie linku, akceptując warunki użytkowania i podając nazwę. Jak to wygląda migawka jest następujący:
@@ -74,10 +74,10 @@ Konfigurowanie środowiska nauki o danych platformy Azure do tworzenia rozwiąza
 
 Kliknij przycisk **Kontynuuj, aby pobrać** Aby dowiedzieć się więcej o zestawie danych i jej dostępność.
 
-Dane znajdują się w publicznym [usługi Azure blob storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) lokalizacji: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" odwołuje się do lokalizacji magazynu obiektów Blob platformy Azure. 
+Dane znajdują się w publicznym [usługi Azure blob storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) lokalizacji: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. "wasb" odwołuje się do lokalizacji magazynu obiektów Blob platformy Azure.
 
 1. Dane w tym magazynie obiektów blob publicznych składa się z trzech podfoldery rozpakowany danych.
-   
+
    1. Podfolderu *nieprzetworzone/licznik/* zawiera pierwszy 21 dni danych — od dnia\_00 dnia\_20
    2. Nazwa podfolderu *nieprzetworzone/train/* składa się z jednego dnia danych, dzień\_21
    3. Podfolderu *nieprzetworzone/testowania/* składa się z dwóch dni dla danych, dzień\_22 i dzień\_23
@@ -103,11 +103,11 @@ Aby utworzyć tabele programu Hive dla naszych Criteo zestawu danych, otwórz **
 
 > [!NOTE]
 > Uruchom wszystkie polecenia gałąź w tym przewodniku z Hive bin / directory wiersza. Odpowiada on za wszelkie problemy, ścieżka automatycznie. Można użyć warunków "Gałęzi katalogu wiersz", "Hive bin / directory wiersza" i "wiersza polecenia usługi Hadoop" zamiennie.
-> 
+>
 > [!NOTE]
 > Aby wykonać dowolne zapytanie programu Hive, jeden zawsze Użyj następujących poleceń:
-> 
-> 
+>
+>
 
         cd %hive_home%\bin
         hive
@@ -157,14 +157,14 @@ Te tabele są zewnętrzne, dzięki czemu można po prostu wskaż ich lokalizacji
 
 **Istnieją dwie metody wykonywania zapytania programu Hive w dowolny:**
 
-1. **Przy użyciu wiersza polecenia REPL Hive**: pierwszy to wydać polecenie "gałąź" i skopiuj i Wklej zapytanie z wiersza polecenia REPL Hive. Aby to zrobić, należy wykonać:
-   
+1. **Przy użyciu wiersza polecenia REPL Hive**: Pierwszy jest wydać polecenie "gałąź" i skopiuj i Wklej zapytanie z wiersza polecenia REPL Hive. Aby to zrobić, należy wykonać:
+
         cd %hive_home%\bin
         hive
-   
+
      Teraz w REPL wiersza polecenia, wycinanie i wklejanie zapytanie wykonuje je.
-2. **Zapisywanie zapytania do pliku i wykonywania polecenia**: drugi cel to zapisać zapytania do pliku .hql ([przykładowe&#95;hive&#95;tworzenie&#95;criteo&#95;bazy danych&#95;i&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a następnie należy wydać następujące polecenie, aby wykonać zapytanie:
-   
+2. **Zapisywanie zapytania do pliku i wykonywania polecenia**: Drugi cel to zapisać zapytania do pliku .hql ([przykładowe&#95;hive&#95;tworzenie&#95;criteo&#95;bazy danych&#95;i&#95;tables.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) i następnie wydać następujące polecenie, aby wykonać zapytanie:
+
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
 ### <a name="confirm-database-and-table-creation"></a>Upewnij się, tworzenie bazy danych i tabeli
@@ -294,7 +294,7 @@ Daje to:
         1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
         Time taken: 564.953 seconds, Fetched: 1 row(s)
 
-Rozkład percentyle jest ściśle powiązane z dystrybucji histogram dowolnej zmiennej numerycznych zazwyczaj.         
+Rozkład percentyle jest ściśle powiązane z dystrybucji histogram dowolnej zmiennej numerycznych zazwyczaj.
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Znajdź liczbę unikatowych wartości dla niektórych kategorii kolumn w zestawie danych szkolenie
 Kontynuowanie eksplorację danych, Znajdź, dla niektórych kolumn podzielonych na kategorie, liczbę unikatowych wartości, które przyjmują. Aby to zrobić, Pokaż zawartość [przykładowe&#95;hive&#95;criteo&#95;unikatowy&#95;wartości&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
@@ -435,13 +435,13 @@ Aby uzyskać **Importuj dane** modułu, wartości parametrów, które znajdują 
 
 1. Wybierz "Zapytanie Hive" **źródła danych**
 2. W **zapytanie bazy danych programu Hive** polu Wybierz prosty * FROM < swoje\_bazy danych\_name.your\_tabeli\_nazwy >-jest wystarczająca.
-3. **Identyfikator URI serwera Hcatalog**: Jeśli klaster jest "abc", a następnie po prostu to: https://abc.azurehdinsight.net
-4. **Nazwa konta użytkownika usługi Hadoop**: nazwa użytkownika, wybrany w momencie uruchomienia urządzeń do klastra. (Nie nazwa użytkownika dostępu zdalnego!)
-5. **Hasło konta użytkownika usługi Hadoop**: hasło dla nazwy użytkownika, wybrany w momencie uruchomienia urządzeń do klastra. (Nie hasła dostępu zdalnego!)
-6. **Lokalizacja danych wyjściowych**: wybierz pozycję "Azure"
-7. **Nazwa konta usługi Azure storage**: Konto magazynu skojarzone z klastrem
-8. **Klucz konta usługi Azure storage**: klucz konta magazynu skojarzonego z klastrem.
-9. **Nazwa kontenera platformy Azure**: Jeśli nazwa klastra jest "abc", a następnie zazwyczaj jest to po prostu "abc,".
+3. **Identyfikator URI serwera Hcatalog**: Jeśli klaster jest "abc", następnie jest to po prostu: https://abc.azurehdinsight.net
+4. **Nazwa konta użytkownika usługi Hadoop**: Nazwa użytkownika, wybrany w momencie uruchomienia urządzeń do klastra. (Nie nazwa użytkownika dostępu zdalnego!)
+5. **Hasło konta użytkownika usługi Hadoop**: Hasło dla nazwy użytkownika, wybrany w momencie uruchomienia urządzeń do klastra. (Nie hasła dostępu zdalnego!)
+6. **Lokalizacja danych wyjściowych**: Wybierz pozycję "Azure"
+7. **Nazwa konta usługi Azure storage**: Konta magazynu skojarzonego z klastrem
+8. **Klucz konta usługi Azure storage**: Klucz konta magazynu skojarzonego z klastrem.
+9. **Nazwa kontenera platformy Azure**: Jeśli nazwa klastra jest "abc", następnie po prostu "abc", zwykle jest.
 
 Gdy **importu danych** zakończy pobieranie danych (widoczna zielona znaczników w Module), zapisać te dane jako zestaw danych (z nazwą wybranego). Jak to wygląda:
 
@@ -455,11 +455,11 @@ Aby wybrać zapisany zestaw danych do użycia w eksperyment machine learning, Zn
 
 > [!NOTE]
 > W tym zarówno pociągu, jak i zestawy danych testowych. Pamiętaj również użyć nazwy bazy danych i nazwy tabel, które udostępniła w tym celu. Wartości używanych na rysunku są przeznaczone wyłącznie dla ilustracji purposes.* *
-> 
-> 
+>
+>
 
 ### <a name="step2"></a> Krok 2: Tworzenie prostego eksperymentu w usłudze Azure Machine Learning do przewidywania kliknięć / nie kliknięć
-Nasze eksperymentu uczenia Maszynowego Azure wygląda następująco:
+Nasze usługi Azure Machine Learning studio eksperymentu wygląda następująco:
 
 ![Eksperymentu uczenia maszynowego](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
@@ -481,9 +481,9 @@ Aby tworzyć funkcje count, należy użyć **kompilacji zliczanie Przekształcan
 ![Zliczanie przekształcania modułu właściwości kompilacji](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![kompilacji zliczanie przekształcania modułu](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > W **liczba kolumn** wprowadź te kolumny, które chcesz wykonać liczby na. Zazwyczaj są to (jak wspomniano) o wielu wymiarach podzielone na kategorie kolumny. Pamiętaj, że zestaw danych Criteo ma 26 podzielone na kategorie kolumny: od Col15 do Col40. W tym miejscu możesz liczyć na wszystkich z nich i zapewnić ich indeksów (od 15 do 40 rozdzielone przecinkami, jak pokazano).
-> 
+>
 
 Aby użyć modułu programu w trybie MapReduce (odpowiedni dla dużych zestawów danych), musisz mieć dostęp do klastra usługi HDInsight Hadoop (używana w przypadku eksploracji funkcji mogą być ponownie używane w tym celu także) i jego poświadczenia. Jakie wypełniane wartości jak wygląda (Zastąp wartości przykładowe z tymi, które są istotne dla własnego przypadek użycia) można znaleźć w poprzednich ilustracjach.
 
@@ -554,7 +554,7 @@ Po utworzeniu trenowanego modelu, wszystko jest gotowe, wynik dla zestawu danych
 
 ![Moduł Score Model (Generowanie wyników przez model)](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a> Krok 4: Oceny modelu
+### <a name="step4"></a> Krok 4: Ocenianie modelu
 Na koniec należy analizowanie wydajności modelu. Zazwyczaj dwa problemy klasyfikacji (binarnych) klasy miarą dobrej jest AUC. Wizualizację tych danych, podpinanie **Score Model** moduł **Evaluate Model** modułu dla tego. Klikając **Visualize** na **Evaluate Model** modułu daje grafiki podobny do następującego:
 
 ![Ocena modelu BDT modułu](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -563,7 +563,7 @@ W danych binarnych (lub dwuklasowego) klasyfikacji problemów z miarą dobrej do
 
 ![Wizualizuj modułu Evaluate Model](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a> Krok 5: Publikowanie modelu jako usługi sieci Web
+### <a name="step5"></a> Krok 5: Opublikuj model jako usługę sieci Web
 Możliwość publikowania model usługi Azure Machine Learning jako usługi sieci web z co najmniej problemów jest funkcją cenne składania powszechnie dostępne. Po zakończeniu tej operacji, każdy użytkownik może wykonywać wywołania do usługi sieci web z danymi wejściowymi, że potrzebują prognoz dotyczących, a usługi sieci web używa modelu do zwracania tych prognozy.
 
 Aby to zrobić, należy najpierw zapisać naszych uczonego modelu w postaci Uczonego modelu obiektu. Jest to realizowane przez kliknięcie prawym przyciskiem myszy **Train Model** moduł i przy użyciu **Zapisz jako Uczonego modelu** opcji.
@@ -588,8 +588,8 @@ Jako krok zerowego ponieważ tabela liczba jest duża, podjąć kilka wierszy da
 
 > [!NOTE]
 > Format danych wejściowych, można użyć w danych wyjściowych **Featurized liczba** modułu. Gdy eksperymenty to uruchomiona zostanie zakończone, Zapisz dane wyjściowe z **Featurized liczba** modułu jako zestaw danych. Ten zestaw danych jest używany do wprowadzania danych w ramach usługi sieci Web.
-> 
-> 
+>
+>
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Ocenianie eksperymentu usługi publikowania w sieci Web
 Po pierwsze jest wyświetlany, jak to wygląda. Struktura niezbędne jest **Score Model** moduł, który akceptuje naszej uczonego modelu obiektu i kilka wierszy danych wejściowych, które zostały wygenerowane w poprzednich krokach za pomocą **Featurized liczba** modułu. Użyj "Wybieranie kolumn w zestawie danych", aby projekt etykiety Scored i prawdopodobieństwa wynik.

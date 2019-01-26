@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: qna-maker`
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: f5587e14a0250e7312f1c95598b481bd052931c3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 74c021788b5fb0cfaa3c2bd8956fc1de4721881c
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094835"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911094"
 ---
-# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Samouczek: Tworzenie Bota pytań i odpowiedzi za pomocą usługi Azure Bot Service w wersji 3
+# <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Samouczek: Utwórz Bota pytań i odpowiedzi z usługi Azure Bot Service w wersji 3
 
 Ten samouczek przeprowadzi Cię przez tworzenie bota pytań i odpowiedzi, przy użyciu usługi Azure Bot service v3 w [witryny Azure portal](https://portal.azure.com) bez pisania żadnego kodu. Proces łączenia dwóch opublikowanych bazy wiedzy (KB) robota przebiega tak prosta jak zmiana ustawień aplikacji botów. 
 

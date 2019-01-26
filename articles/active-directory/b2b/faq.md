@@ -3,19 +3,19 @@ title: Współpraca B2B usługi Active Directory Azure — często zadawane pyta
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące współpracy B2B usługi Azure Active Directory.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: reference
 ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 481fb929a8f937b1d822755e93fae09d9f585fad
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b9f2c29806c29de18c8346e77ddbfcf2bdb411f1
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436828"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075996"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Współpraca B2B usługi Active Directory Azure — często zadawane pytania
 

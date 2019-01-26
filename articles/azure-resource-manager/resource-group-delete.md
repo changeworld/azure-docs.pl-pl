@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: b8c4fdc942af291e912a4c1e74d1292279cf9f8c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b16c67990099291381b6f11d9bd804bf4bef84e8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132333"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078495"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Usuwanie grupy zasobów w usłudze Azure Resource Manager
 
@@ -69,4 +69,4 @@ Dla innych kodów błędu usługi Resource Manager nie usunięcia zasobu.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby zrozumieć pojęcia usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](resource-group-overview.md).
-* Usuwanie poleceń można znaleźć [PowerShell](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup), [wiersza polecenia platformy Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), i [interfejsu API REST](/rest/api/resources/resourcegroups/delete).
+* Usuwanie poleceń można znaleźć [PowerShell](/powershell/module/az.resources/Remove-AzResourceGroup), [wiersza polecenia platformy Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), i [interfejsu API REST](/rest/api/resources/resourcegroups/delete).

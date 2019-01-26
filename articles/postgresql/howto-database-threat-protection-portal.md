@@ -5,13 +5,13 @@ author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/20/2018
-ms.openlocfilehash: b7c1f873d47be0f2ec0125f769a47a399e492662
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/24/2019
+ms.openlocfilehash: bbc0eadebec849dde47cecaf6e3718eb6673a22f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536155"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912820"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-postgresql"></a>Zaawansowana ochrona przed zagrożeniami dla bazy danych Azure database for PostgreSQL
 
@@ -22,6 +22,9 @@ Zaawansowana ochrona przed zagrożeniami jest częścią oferty zaawansowane zab
 > [!NOTE]
 > Funkcja zaawansowanej ochrony przed zagrożeniami jest **nie** dostępne w następujących platformy Azure dla instytucji rządowych i regiony należących do suwerennej chmury: Wschodnie DoD programu Microsoft Gov Teksas stany USA, administracja USA — Arizona Iowa Gov, US, — Wirginia, US Gov, US dod — środkowe, Niemcy środkowe, Niemcy Północne, Chiny wschodnie, Chiny wschodnie stany USA 2. Odwiedź stronę [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/) dostępności głównej produktu.
 >
+
+> [!NOTE]
+> Ta funkcja jest dostępna we wszystkich regionach platformy Azure wdrożonym — Azure Database for postgresql w warstwie ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci serwera.
 
 ## <a name="set-up-threat-detection"></a>Konfigurowanie wykrywania zagrożeń
 1. Uruchamianie witryny Azure portal pod [ https://portal.azure.com ](https://portal.azure.com).

@@ -3,19 +3,19 @@ title: Dodaj użytkownika współpracy B2B usługi Azure Active Directory do rol
 description: Dodawanie użytkownika-gościa do roli w usłudze Azure Active Directory
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 4d2b39d2fefed3532486a4e0a7b713a16c9f8760
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4926a6ae8a35b68828f5e0d328df791cdd3acf95
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437135"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077577"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Udzielić uprawnień dla użytkowników z organizacji partnerskich w dzierżawie usługi Azure Active Directory
 

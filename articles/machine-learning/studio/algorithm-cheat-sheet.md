@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 69b085faf10b9e22618fa248460d269bd2efdb73
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d8ca316b9d2f87e2d5540c81b0865381109f889d
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264312"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080076"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning ściągawka dotycząca algorytmów dla usługi Azure Machine Learning Studio
 
@@ -48,7 +48,7 @@ Pobrać i wydrukować Machine Learning Studio algorytm da się oszukać arkusza 
 
   * W **uczenie nienadzorowane**, punkty danych mają bez etykiet skojarzonych z nimi. Zamiast tego celem algorytmu uczenia nienadzorowanych jest do organizowania danych, które w jakiś sposób, lub do opisania jego struktury. Oznacza to grupowanie w klastrach, tak jak K-średnich lub znajdowania różne sposoby spojrzenie na złożonych danych, tak aby była wyświetlana prostsze.
 
-  * W **uczenia przez wzmacnianie**, pobiera algorytm w celu wybrania akcji w odpowiedzi na każdy punkt danych. Jest typowym podejściem w związane z robotyką, gdzie zestaw odczyty czujników w jednym punkcie w czasie jest punkt danych, a algorytm należy wybrać następne działanie robota. Również jest kluczem naturalnym rozwiązaniem dla aplikacji Internetu rzeczy. Algorytm uczenia otrzymuje również sygnał nagradzania przez krótki czas później, wskazującą, jak dobra była decyzji. Na tej podstawie algorytm modyfikuje podstawę strategii w celu uzyskania najwyższej nagrody. Aktualnie nie istnieją żadne wzmocnienie uczenie algorytmu moduły w usłudze Azure ML.
+  * W **uczenia przez wzmacnianie**, pobiera algorytm w celu wybrania akcji w odpowiedzi na każdy punkt danych. Jest typowym podejściem w związane z robotyką, gdzie zestaw odczyty czujników w jednym punkcie w czasie jest punkt danych, a algorytm należy wybrać następne działanie robota. Również jest kluczem naturalnym rozwiązaniem dla aplikacji Internetu rzeczy. Algorytm uczenia otrzymuje również sygnał nagradzania przez krótki czas później, wskazującą, jak dobra była decyzji. Na tej podstawie algorytm modyfikuje podstawę strategii w celu uzyskania najwyższej nagrody. Aktualnie nie istnieją żadne wzmocnienie uczenie algorytmu moduły w usłudze Azure Machine Learning studio.
 
 * **Metody Bayesowskie** przyjmujemy statystycznie niezależnych punktów danych. Oznacza to, nieskorelowane innym osobom niemodelowanych zmienności w jeden punkt danych, oznacza to, że nie można przewidzieć. Na przykład jeśli dane rejestrowane jest to liczba minut, po odebraniu dalej train całość, dwa pomiary jeden dzień od siebie są statystycznie niezależne. Jednak dwa pomiary minutę od siebie nie są statystycznie niezależne — wartość jednego jest wysoce predykcyjne wartości z drugiej strony.
 

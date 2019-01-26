@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2018
+ms.date: 01/24/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 6ab2d92e2a3c62719af1c8ab6d6eda935fc49505
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: d6d1373a97b62d54d5bfc2595ee773a242af877a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386778"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913455"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Łączenie Eksploratora usługi storage do subskrypcji usługi Azure Stack lub na koncie magazynu
 
@@ -37,7 +37,10 @@ Po połączeniu z subskrypcją usługi Azure Stack lub na koncie magazynu, możn
 
 Należy bezpośredni dostęp do usługi Azure Stack lub połączenia sieci VPN dla Eksploratora usługi storage można uzyskać dostępu do subskrypcji usługi Azure Stack. Aby dowiedzieć się, jak skonfigurować połączenie VPN do usługi Azure Stack, zapoznaj się z tematem [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) (Łączenie z usługą Azure Stack przy użyciu sieci VPN).
 
-Azure Stack Development Kit należy wyeksportować certyfikat główny urzędu usługi Azure Stack.
+Dla usługi Azure Stack Development Kit (ASDK), należy wyeksportować certyfikat główny urzędu usługi Azure Stack.
+
+> [!Note]  
+> Dla ASDK Jeśli łączysz się z ASDK za pośrednictwem sieci VPN, nie należy używać certyfikatu głównego (CA.cer), który został utworzony podczas procesu konfiguracji sieci VPN.  Jest to certyfikat zakodowany w formacie DER, a nie zezwolą Eksploratora usługi Storage można pobrać subskrypcji usługi Azure Stack. Wykonaj poniższe kroki, aby wyeksportować certyfikat zakodowany Base-64 za pomocą Eksploratora usługi Storage.
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Wyeksportowanie i zaimportowanie certyfikatu usługi Azure Stack
 

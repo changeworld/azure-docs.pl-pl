@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 01/24/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 743ac433418386281acc58ad1deef06ee75e38d9
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d7684aa79ac9f58c2a047b01a6d9f5263795221d
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316878"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912054"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 5
 Jeśli używasz wersji 4.0 preview lub starszy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację do używania w wersji 5.
@@ -44,17 +44,26 @@ Zestaw .NET SDK usługi Azure Search w wersji 5 jest przeznaczony dla najnowszej
 ## <a name="steps-to-upgrade"></a>Kroki niezbędne do uaktualnienia
 Najpierw należy zaktualizować odwołania programu NuGet dla `Microsoft.Azure.Search` przy użyciu konsoli Menedżera pakietów NuGet lub przez kliknięcie prawym przyciskiem myszy odwołania projektu i wybierając "Zarządzaj NuGet pakietów..." w programie Visual Studio.
 
-Po NuGet pobrała nowe pakiety i ich zależności, należy ponownie skompilować projekt. Chyba że funkcja w wersji zapoznawczej, który nie znajduje się w nowy zestaw SDK w wersji Ogólnodostępnej, należy przebudować pomyślnie (Jeśli nie, Daj nam znać na [GitHub](https://github.com/azure/azure-sdk-for-net/issues)). Jeśli tak, jesteś gotowy!
+Po NuGet pobrała nowe pakiety i ich zależności, należy ponownie skompilować projekt. W zależności od struktury kodu jego może odbudować pomyślnie. Jeśli tak, jesteś gotowy!
+
+Jeśli kompilacja nie powiedzie się, powinien zostać wyświetlony błąd kompilacji, jak pokazano poniżej:
+
+    The name 'SuggesterSearchMode' does not exist in the current context
+
+Następnym krokiem jest, aby naprawić ten błąd kompilacji. Zobacz [przełomowe zmiany w wersji 5](#ListOfChanges) szczegółowe informacje o co powoduje błąd i jak go naprawić.
 
 Należy pamiętać, że z powodu zmian w opakowanie zestawu .NET SDK usługi Azure Search, należy ponownie skompilować aplikację, aby użyć wersji 5. Zmiany te są szczegółowo opisane w [przełomowe zmiany w wersji 5](#ListOfChanges).
 
 Może zostać wyświetlony ostrzeżenia kompilacji dodatkowe dotyczące przestarzałe metody lub właściwości. Ostrzeżenia zawierają instrukcje dotyczące rozwiązania do zastosowania zamiast przestarzałych funkcji. Na przykład, jeśli aplikacja używa `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` metody powinna pojawić się ostrzeżenie, że jest wyświetlany komunikat "to zachowanie jest teraz włączone domyślnie, więc wywołanie tej metody nie jest już konieczne."
 
-Gdy problem został rozwiązany wszelkie ostrzeżenia kompilacji, można wprowadzić zmiany do aplikacji w taki sposób, aby móc korzystać z nowych funkcji, jeśli chcesz, aby. Nowe funkcje w zestawie SDK są szczegółowo opisane w [nowości w wersji 5](#WhatsNew).
+Gdy problem został rozwiązany żadnych ostrzeżeń ani błędów kompilacji, można wprowadzić zmiany do aplikacji w taki sposób, aby móc korzystać z nowych funkcji, jeśli chcesz, aby. Nowe funkcje w zestawie SDK są szczegółowo opisane w [nowości w wersji 5](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-5"></a>Istotne zmiany w wersji 5
+
+### <a name="new-package-structure"></a>Nowa struktura pakietu
+
 Najbardziej znaczące istotnej zmiany w wersji 5 jest to, że `Microsoft.Azure.Search` zestawu i jego zawartość, ma został podzielony na cztery oddzielne zestawy, które są obecnie dystrybuowane jako cztery oddzielne pakiety NuGet:
 
  - `Microsoft.Azure.Search`: Jest to meta pakiet, który zawiera wszystkie inne pakiety usługi Azure Search jako zależności. Jeśli wykonujesz uaktualnienie z wcześniejszej wersji zestawu SDK, po prostu uaktualnianie tego pakietu i ponowne utworzenie powinny być wystarczająco dużo, aby rozpocząć korzystanie z nowej wersji.
@@ -65,6 +74,10 @@ Najbardziej znaczące istotnej zmiany w wersji 5 jest to, że `Microsoft.Azure.S
 Ta zmiana z technicznego punktu widzenia jest istotne, ponieważ wiele typów zostały przeniesione między zestawami. Jest to, dlaczego ponownie skompilować aplikację jest niezbędne w celu uaktualniania do wersji 5 zestawu SDK.
 
 Istnieje niewielka liczba innych przełomowych zmian wprowadzonych w wersji 5, które mogą wymagać kodu zmienia oprócz ponownie skompilować aplikację.
+
+### <a name="change-to-suggesters"></a>Zmień na Sugestory 
+
+`Suggester` Konstruktor nie ma już `enum` parametr `SuggesterSearchMode`. To wyliczenie tylko miał jedną wartością i dlatego został nadmiarowe. Jeśli widzisz błędy w wyniku tego kompilacji, po prostu usunąć odwołania do `SuggesterSearchMode` parametru.
 
 ### <a name="removed-obsolete-members"></a>Usunięto przestarzali członkowie
 

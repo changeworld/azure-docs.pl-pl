@@ -6,18 +6,18 @@ author: MarkusVi
 manager: daveba
 tags: azuread
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: 1911dd189e21a6d29b2bf1ba3d179b41e948f469
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450511"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081028"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Jak: Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory
 
@@ -54,9 +54,9 @@ Użyj następującego przykładowego szablonu, aby utworzyć zasady dostępu war
 
 |Gdy *to* się dzieje:|Następnie wykonaj *to*:|
 |-|-|
-|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład ryzyka logowania)|Blokuj dostęp do aplikacji|
-|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład ryzyka logowania)|Udzielanie dostępu z (i):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
-|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład ryzyka logowania)|Udzielanie dostępu z (lub):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
+|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Blokuj dostęp do aplikacji|
+|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Udzielanie dostępu z (i):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
+|Zostanie podjęta próba dostępu:<br>— Do aplikacji w chmurze*<br>— przez użytkowników i grup*<br>Przy użyciu:<br>-Stan 1 (na przykład poza siecią firmową)<br>-Warunek 2 (na przykład platform urządzeń)|Udzielanie dostępu z (lub):<br>-Wymaganie 1 (na przykład, MFA)<br>-Wymaganie 2 (na przykład zgodność urządzenia)|
 
 Co najmniej **w takim przypadku** definiuje podmiotu zabezpieczeń (**kto**) który próbuje uzyskać dostęp aplikacji w chmurze (**co**). Jeśli to konieczne, możesz również uwzględnić **jak** odbywa się próba dostępu. W funkcji dostępu warunkowego, elementy definiują kto, co się stanie i jak są znane jako warunki. Aby uzyskać więcej informacji, zobacz [jakie są warunki dostępu warunkowego usługi Azure Active Directory?](conditions.md) 
 
@@ -70,28 +70,42 @@ Kombinacja warunków i mechanizmów kontroli dostępu tworzy zasadę dostępu wa
 
 Aby uzyskać więcej informacji, zobacz [co to są wymagane w celu zmiany celu zasad działają](best-practices.md#whats-required-to-make-a-policy-work).
 
-W tym momencie jest to dobry moment, aby decyzję w sprawie standard nazewnictwa dla zasad. Zasady nazewnictwa pomaga znaleźć zasady i zrozumienie ich przeznaczenie bez ich otwierania w portalu administracyjnego platformy Azure. Należy nadać nazwę zasady, aby wyświetlić:
+W tym momencie jest odpowiedni moment, aby decyzję w sprawie standard nazewnictwa dla zasad. Zasady nazewnictwa pomaga znaleźć zasady i zrozumienie ich przeznaczenie bez ich otwierania w portalu administracyjnego platformy Azure. Należy nadać nazwę zasady, aby wyświetlić:
 
 - Numer sekwencyjny
 - W aplikacji w chmurze, których on obowiązuje
 - Odpowiedź
 - Kto ma zastosowanie do
-- Kiedy ma zastosowanie 
+- Kiedy ma zastosowanie (jeśli dotyczy)
  
 ![Standard nazewnictwa](./media/plan-conditional-access/11.png)
 
-
+Gdy nazwę opisową ułatwia zapewnienie Omówienie wdrożenia dostępu warunkowego, numer sekwencji jest przydatne, jeśli muszą odwoływać się do zasad w konwersacji. Na przykład jeśli administrator innymi możesz skontaktować się telefonicznie, możesz poprosić go, aby otworzyć przystawkę Zasady EM063 do rozwiązania problemu.
 
 
 
 Na przykład następująca Nazwa stwierdza, że zasady wymagają usługi MFA dla użytkowników zewnętrznych sieci za pomocą aplikacji Dynamics CRP marketing:
 
-`CA01-Dynamics CRP: Require MFA For marketing When on external networks`
+`CA01 - Dynamics CRP: Require MFA For marketing When on external networks`
 
 
-Oprócz aktywnego zasad, należy również zasady Implementowanie wyłączone, które działają jako pomocniczą [kontroli dostępu odporne na błędy w scenariuszach awaryjnego/awaria](../authentication/concept-resilient-controls.md). Usługi standard nazewnictwa powinien również zawierać tego celu, aby ułatwić je włączyć podczas awarii. Na przykład:
+Oprócz aktywnego zasad, zaleca się również zasady Implementowanie wyłączone, które działają jako pomocniczą [kontroli dostępu odporne na błędy w scenariuszach awaryjnego/awaria](../authentication/concept-resilient-controls.md). Usługi standard nazewnictwa awaryjny zasad powinien zawierać kilka elementów: 
 
-`EM01-Finance app: Require MFA For Sales When on untrusted network`
+- `ENABLE IN EMERGENCY` na początku, aby nazwa wyróżnić się wśród innych zasad.
+
+- Nazwa przerw w działaniu, które mają dotyczyć.
+
+- Szeregowania numer sekwencyjny mają ułatwić administratorowi znać, w jakiej kolejności zasad powinno być włączone. 
+
+
+Na przykład następująca nazwa wskazuje, że ta zasada jest pierwszej zasady z czterema, które należy włączyć w przypadku przerwy w działaniu usługi MFA:
+
+`EM01 - ENABLE IN EMERGENCY, MFA Disruption[1/4] - Exchange SharePoint: Require hybrid Azure AD join For VIP users`
+
+
+
+
+
 
 
 ## <a name="plan-policies"></a>Planowanie zasad
@@ -118,12 +132,12 @@ Typowe przypadki użycia, aby wymagać uwierzytelniania Wieloskładnikowego są 
 
 - [Przez administratorów](baseline-protection.md#require-mfa-for-admins)
 - [Do określonych aplikacji](app-based-mfa.md) 
-- [Z lokalizacji sieciowej nie ufasz](untrusted-networks.md).
+- [Z lokalizacji sieciowej, nie ufasz](untrusted-networks.md).
 
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>Odpowiadanie na mogą mieć złamane zabezpieczenia konta
 
-Za pomocą warunkowe zasady dostępu, można zaimplementować automatycznych odpowiedzi do logowania z tożsamości mogą mieć złamane zabezpieczenia. Prawdopodobieństwo, że konto zostało zaatakowane jest wyrażona w formie poziomów ryzyka. Istnieją dwa poziomy ryzyka, obliczana na podstawie tożsamości ochrony: ryzyka logowania i ryzyka związanego z użytkownikiem. Aby zaimplementować odpowiedź ryzyka logowania, masz dwie opcje:
+Za pomocą zasad dostępu warunkowego można zaimplementować automatycznych odpowiedzi do logowania z tożsamości mogą mieć złamane zabezpieczenia. Prawdopodobieństwo, że konto zostało zaatakowane jest wyrażona w formie poziomów ryzyka. Istnieją dwa poziomy ryzyka, obliczana na podstawie tożsamości ochrony: ryzyka logowania i ryzyka związanego z użytkownikiem. Aby zaimplementować odpowiedź ryzyka logowania, masz dwie opcje:
 
 - [Warunkiem ryzyka logowania](conditions.md#sign-in-risk) w zasadach dostępu warunkowego
 - [Zasady ryzyka logowania](../identity-protection/howto-sign-in-risk-policy.md) identity Protection 
@@ -232,7 +246,7 @@ Procedura czyszczenia składa się z następujących czynności:
 
 ## <a name="move-to-production"></a>Przenoszenie do środowiska produkcyjnego
 
-Gdy wszystko jest gotowe do wdrożenia nowych zasad w środowisku, można to zrobić w fazach:
+Jeśli nowe zasady są gotowe dla danego środowiska, wdrażać je w fazach::
 
 - Zapewniają komunikację zmian wewnętrznych, użytkowników końcowych.
 

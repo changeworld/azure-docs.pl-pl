@@ -1,15 +1,15 @@
 ---
 author: manish-shukla01
-ms.author: cwatson
+ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 044f735560eb7d57a90a16c1e3ce1255a9fe0d54
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 83b29aa1f0c12661eb1724eb505ad46987ed1019
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52742556"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906334"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Elastyczność rozmiaru maszyny wirtualnej z zarezerwowanymi wystąpieniami maszyn wirtualnych
 
@@ -20,7 +20,7 @@ Z wystąpieniem zastrzeżonej maszyny wirtualnej, która ma jest zoptymalizowana
 - Standardowa_DS3_v2
 - Standardowa_DS4_v2
 
-Jednak ten rabat związany z rezerwacją nie ma zastosowania do rozmiary maszyn wirtualnych, które są wymienione w różnych tabelach, takich jak co to jest w tabeli Seria DSv2 dużą ilość pamięci: Standard_DS11_v2, Standard_DS12_v2, i tak dalej.
+Jednak ten rabat związany z rezerwacją nie ma zastosowania do rozmiary maszyn wirtualnych, które są wymienione w różnych tabelach, takich jak co to jest w tabeli Seria DSv2 dużą ilość pamięci: Standard_DS11_v2 Standard_DS12_v2 i tak dalej.
 
 W ramach grupy serii rozmiar liczbę rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych zależy od rozmiaru maszyny Wirtualnej, które można wybrać w przypadku dokonywania zakupu rezerwacji. Zależy on również rozmiary maszyn wirtualnych, które masz uruchomiony. Kolumny współczynnika, który znajduje się w poniższych tabelach przedstawiono porównanie względnej śladu dla każdego rozmiaru maszyny Wirtualnej w tej grupie. Użyj wartości współczynnika do obliczenia, jak rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych możesz zostać uruchomione.
 
@@ -30,7 +30,7 @@ W poniższych przykładach używane rozmiary i współczynników w tabeli DSv2 s
 
  Możesz kupić wystąpienia zarezerwowanego maszyny Wirtualnej o rozmiarze Standard_DS4_v2, w którym współczynnik lub zużycie względne w porównaniu do innych rozmiarów z tej serii wynosi 8.
 
-- Scenariusz 1: Uruchamianie ośmiu standardowa_ds1_v2 o rozmiarach maszyn wirtualnych przy użyciu współczynnika o wartości 1. Rabat związany z rezerwacją ma zastosowanie do ośmiu wszystkich tych maszyn wirtualnych.
+- Scenariusz 1: Uruchom ośmiu standardowa_ds1_v2 o rozmiarach maszyn wirtualnych przy użyciu współczynnika o wartości 1. Rabat związany z rezerwacją ma zastosowanie do ośmiu wszystkich tych maszyn wirtualnych.
 - Scenariusz 2: Uruchom dwa Standard_DS2_v2 o rozmiarach maszyn wirtualnych o stosunku 2. Również uruchomić standardowa_ds3_v2 o rozmiarach maszyn wirtualnych o stosunku liczby 4. Całkowita śladu jest 2 + 2 + 4 = 8. Dlatego rabat związany z rezerwacją ma zastosowanie do wszystkich trzech tych maszyn wirtualnych.
 - Scenariusz 3: Uruchom jeden Standard_DS5_v2 przy użyciu współczynnika 16. Rabat związany z rezerwacją dotyczy koszt obliczeń w wysokości równej połowie tej maszyny Wirtualnej.
 

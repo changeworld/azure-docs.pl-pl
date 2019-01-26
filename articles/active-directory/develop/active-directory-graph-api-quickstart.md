@@ -9,7 +9,7 @@ editor: ''
 tags: ''
 ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -18,14 +18,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 7a3c3e39792119d296c849c012d4798ec85a0e03
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: da229af181418d84e45f9ade8a8e5af008074f79
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845498"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080836"
 ---
-# <a name="how-to-use-the-azure-ad-graph-api"></a>Porady: Użyj usługi Azure AD interfejsu API programu Graph
+# <a name="how-to-use-the-azure-ad-graph-api"></a>Instrukcje: Korzystanie z interfejsu API Graph usługi Azure AD
 
 Interfejs API programu Graph usługi Azure Active Directory (Azure AD) zapewnia dostęp programistyczny do usługi Azure AD za pośrednictwem punktów końcowych interfejsu API REST protokołu OData. Aplikacje mogą używać interfejsu API usługi Azure AD Graph do wykonywania tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje na danych i obiektów katalogu. Na przykład, można użyć interfejsu API usługi Azure AD Graph, aby utworzyć nowego użytkownika, wyświetlić lub zaktualizować właściwości użytkownika, zmiany hasła użytkownika, sprawdź członkostwo w grupie na potrzeby dostępu opartego na rolach wyłączyć lub usunąć użytkownika. Aby uzyskać więcej informacji na temat funkcji interfejsu API programu Graph usługi Azure AD i scenariuszy aplikacji, zobacz [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) i [wymagania wstępne programu Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx).
 
@@ -38,10 +38,10 @@ Ten artykuł ma zastosowanie do interfejsu API programu Graph usługi Azure AD. 
 
 W interfejsie API programu Graph dostęp do danych katalogu i obiekty (innymi słowy, zasoby lub jednostek), wobec których chcesz wykonać operacje CRUD, można użyć adresów URL na podstawie protokołu Open Data (OData). Adresy URL używane w interfejsie API programu Graph składają się z czterech głównych części: usługi katalogu głównego, identyfikator dzierżawy, ścieżka zasobu i opcje ciągu zapytania: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Przykładowy następującego adresu URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
-* **Element główny usługi**: W interfejsu API programu Graph usługi Azure AD, główny usługi jest zawsze https://graph.windows.net.
-* **Identyfikator dzierżawy**: w tej sekcji można nazwę zweryfikowanej domeny (zarejestrowane), w powyższym przykładzie contoso.com. Może też być identyfikator obiektu dzierżawy lub "myorganization" lub "me" alias. Aby uzyskać więcej informacji, zobacz [adresowania jednostek i operacji w interfejsie API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
+* **Usługa głównego**: W interfejsie API programu Graph usługi Azure AD, główny usługi jest zawsze https://graph.windows.net.
+* **Identyfikator dzierżawy**: W tej sekcji można nazwę zweryfikowanej domeny (zarejestrowane), w powyższym przykładzie contoso.com. Może też być identyfikator obiektu dzierżawy lub "myorganization" lub "me" alias. Aby uzyskać więcej informacji, zobacz [adresowania jednostek i operacji w interfejsie API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview).
 * **Ścieżka zasobu**: Ta część adresu URL identyfikuje zasób jest możliwa bezpośrednia interakcja (użytkowników, grup, określonego użytkownika lub określonej grupy, itp.) W powyższym przykładzie jest najwyższego poziomu "groups" do adresu, który zestawu zasobów. Można też rozwiązać określonej jednostki, na przykład "użytkowników / {objectId}" lub "użytkowników/userPrincipalName".
-* **Parametry zapytania**: znak zapytania (?) oddziela sekcji Ścieżka zasobu z sekcji parametrów zapytania. Parametr zapytania "api-version" jest wymagana dla wszystkich żądań w interfejsie API programu Graph usługi Azure AD. Usługa Azure AD Graph API obsługuje również następujące opcje zapytania OData: **$filter**, **$orderby**, **$expand**, **$top**i **$format**. Następujące opcje zapytania nie są obecnie obsługiwane: **$count**, **$inlinecount**, i **$skip**. Aby uzyskać więcej informacji, zobacz [obsługiwane zapytania, filtry i opcje stronicowania w interfejsie API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
+* **Parametry zapytania**: Znak zapytania (?) oddziela sekcji Ścieżka zasobu z sekcji parametrów zapytania. Parametr zapytania "api-version" jest wymagana dla wszystkich żądań w interfejsie API programu Graph usługi Azure AD. Usługa Azure AD Graph API obsługuje również następujące opcje zapytania OData: **$filter**, **$orderby**, **$expand**, **$top**i **$format**. Następujące opcje zapytania nie są obecnie obsługiwane: **$count**, **$inlinecount**, i **$skip**. Aby uzyskać więcej informacji, zobacz [obsługiwane zapytania, filtry i opcje stronicowania w interfejsie API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
 ## <a name="graph-api-versions"></a>Wersje interfejsu API programu Graph
 
@@ -88,7 +88,7 @@ W poniższym przykładzie umożliwia debuger sieci Web programu Fiddler Utwórz 
 
 **Uzyskiwanie tokenu dostępu**: Aby uzyskać dostęp do usługi Azure AD Graph, klienci są wymagane do pomyślnego uwierzytelnienia najpierw do usługi Azure AD. Aby uzyskać więcej informacji, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](authentication-scenarios.md).
 
-**Tworzenie i uruchamianie kwerendy**: wykonaj następujące czynności:
+**Tworzenie i uruchamianie kwerendy**: Wykonaj następujące czynności:
 
 1. Otwórz program Fiddler debuger sieci Web i przejdź do **Composer** kartę.
 2. Ponieważ chcesz utworzyć nową grupę zabezpieczeń, wybierz opcję **wpis** jako metodę HTTP, z menu rozwijanego. Aby uzyskać więcej informacji na temat operacji i uprawnień w obiekcie grupy, zobacz [grupy](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#group-entity) w ramach [dokumentacja interfejsu API REST usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).

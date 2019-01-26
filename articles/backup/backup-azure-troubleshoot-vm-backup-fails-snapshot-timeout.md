@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 1ee45699040f58a1317009ab44bb5ac863323869
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7446c680ffdba28fef7eb68441d04a4c18398847
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816759"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912565"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -59,7 +59,7 @@ Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, 
 **Krok 1. [Usuń blokadę z grupy zasobów punkt przywracania](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Krok 2. [Wyczyścić kolekcję punktów przywracania](#clean_up_restore_point_collection)**<br>
 
-## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured — kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych.
+## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured — kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych
 
 **Kod błędu:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Komunikat o błędzie**: Kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. <br>
@@ -105,7 +105,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 **Kod błędu:**: UserErrorUnsupportedDiskSize <br>
 **Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków o rozmiarze większym niż 1023 GB <br>
 
-Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do przywrócenia błyskawiczne, operację tworzenia kopii zapasowej może się nie powieść. Uaktualnianie do przywrócenia błyskawiczne zapewni obsługuje do 4TB, zobacz ten [artykułu](backup-instant-restore-capability.md).  
+Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do przywrócenia błyskawiczne, operację tworzenia kopii zapasowej może się nie powieść. Uaktualnianie do przywrócenia błyskawiczne zapewni obsługuje do 4TB, zobacz ten [artykułu](backup-instant-restore-capability.md#upgrading-to-instant-restore).  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported — obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa
 
@@ -114,7 +114,7 @@ Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest wi
 
 Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w przypadku magazynów, które zostaną uaktualnione do [natychmiastowe Przywracanie](backup-instant-restore-capability.md).
 
-## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej.
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej
 
 **Kod błędu:**: UserErrorBackupOperationInProgress <br>
 **Komunikat o błędzie**: Nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej<br>
@@ -132,7 +132,6 @@ Ostatnie zadanie tworzenia kopii zapasowej nie powiodło się, ponieważ ma istn
 4. Ponów próbę wykonania operacji tworzenia kopii zapasowej.
 
 Jeśli zaplanowanych operacji tworzenia kopii zapasowej trwa dłużej powodującą konflikt z następnym konfiguracji kopii zapasowej następnie przejrzyj [najlepszych rozwiązań](backup-azure-vms-introduction.md#best-practices), [wydajności tworzenia kopii zapasowych](backup-azure-vms-introduction.md#backup-performance) i [przywrócić brany pod uwagę ](backup-azure-vms-introduction.md#restore-considerations).
-
 
 
 ## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania

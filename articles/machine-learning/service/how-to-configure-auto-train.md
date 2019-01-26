@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 865d00d4a6608e422fdfca1297962913ee205827
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 5bb9bfdc90c18ff044e73a61aaff9e95bdf28d25
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823440"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081623"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurowanie automatycznych eksperymentów uczenia maszynowego
 
@@ -35,7 +35,7 @@ Opcje konfiguracji dostępne w automatycznych machine learning:
 * Zarejestruj i Wdróż model
 
 ## <a name="select-your-experiment-type"></a>Wybierz typ eksperymentu
-Przed przystąpieniem do wykonywania eksperymentu, należy określić rodzaj maszyny nauczanym problemem, które są rozwiązywania. Automatyczne machine learning obsługuje typy zadań klasyfikacji, regresji i prognozowania. 
+Przed przystąpieniem do wykonywania eksperymentu, należy określić rodzaj maszyny nauczanym problemem, które są rozwiązywania. Automatyczne machine learning obsługuje typy zadań klasyfikacji, regresji i prognozowania.
 
 Chociaż funkcje uczenia maszynowego automatycznych są ogólnie dostępne, **prognozowania jest nadal w publicznej wersji zapoznawczej.**
 
@@ -59,7 +59,7 @@ Klasyfikacja | Regresji | Prognozowanie
 ## <a name="data-source-and-format"></a>Źródło danych i format
 Uczenie maszynowe automatycznych obsługuje dane, które znajdują się na komputerze lokalnym lub w chmurze, takich jak Azure Blob Storage. Dane mogą być odczytywane w scikit-informacje formatów obsługiwanych danych. Można odczytywać dane do:
 * Tablice Numpy X (cech) i y (Zmienna docelowa lub znany także jako etykieta)
-* Pandas dataframe 
+* Pandas dataframe
 
 Przykłady:
 
@@ -67,7 +67,7 @@ Przykłady:
 
     ```python
     digits = datasets.load_digits()
-    X_digits = digits.data 
+    X_digits = digits.data
     y_digits = digits.target
     ```
 
@@ -75,9 +75,9 @@ Przykłady:
 
     ```python
     import pandas as pd
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    df = df.drop(["Label"], axis=1) 
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    df = df.drop(["Label"], axis=1)
     df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     ```
 
@@ -88,18 +88,18 @@ Jeśli używasz zdalnego obliczeń do uruchamiania eksperymentu, pobierania dany
 Oto przykład `get_data`:
 
 ```python
-%%writefile $project_folder/get_data.py 
-import pandas as pd 
-from sklearn.model_selection import train_test_split 
-from sklearn.preprocessing import LabelEncoder 
-def get_data(): # Burning man 2016 data 
-    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"') 
-    # get integer labels 
-    le = LabelEncoder() 
-    le.fit(df["Label"].values) 
-    y = le.transform(df["Label"].values) 
-    df = df.drop(["Label"], axis=1) 
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42) 
+%%writefile $project_folder/get_data.py
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+def get_data(): # Burning man 2016 data
+    df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
+    # get integer labels
+    le = LabelEncoder()
+    le.fit(df["Label"].values)
+    y = le.transform(df["Label"].values)
+    df = df.drop(["Label"], axis=1)
+    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
     return { "X" : df, "y" : y }
 ```
 
@@ -117,7 +117,7 @@ X | Tablica Numpy lub pandas Dataframe | data_train, etykiety kolumn |  Wszystki
 Y | Tablica Numpy lub pandas Dataframe |   label   | Etykiety danych w celu jego trenowanie za pomocą. Klasyfikacja powinna być tablicy liczb całkowitych.
 X_valid | Tablica Numpy lub pandas Dataframe   | data_train, etykiety | _Opcjonalnie_ wszystkie funkcje umożliwiające weryfikację. Jeśli nie zostanie określony, X jest podzielony między szkolenie i sprawdzanie poprawności
 y_valid |   Tablica Numpy lub pandas Dataframe | data_train, etykiety | _Opcjonalnie_ danych etykietę umożliwiające weryfikację. Jeśli nie zostanie określony, y jest podzielony między szkolenie i sprawdzanie poprawności
-sample_weight | Tablica Numpy lub pandas Dataframe |   data_train, etykiety kolumn| _Opcjonalnie_ wartość wagi, dla każdego przykładu. Użyj, jeśli chcesz przypisać różne wagi dla punktów danych 
+sample_weight | Tablica Numpy lub pandas Dataframe |   data_train, etykiety kolumn| _Opcjonalnie_ wartość wagi, dla każdego przykładu. Użyj, jeśli chcesz przypisać różne wagi dla punktów danych
 sample_weight_valid | Tablica Numpy lub pandas Dataframe | data_train, etykiety kolumn |    _Opcjonalnie_ wartość wagi, dla każdego przykładu sprawdzania poprawności. Jeśli nie zostanie określony, sample_weight są dzielone na szkolenie i sprawdzanie poprawności
 data_train |    Pandas Dataframe |  X, y, X_valid, y_valid |    Wszystkie dane (funkcje i etykiety), do jego trenowanie za pomocą
 label | ciąg  | X, y, X_valid, y_valid |  Kolumna data_train reprezentuje etykietę
@@ -136,7 +136,8 @@ Automatyczne eksperymentów uczenia maszynowego obsługuje ładowanie danych i p
 >* Filtrowanie
 >* Niestandardowe przekształcenia języka Python
 
-Aby dowiedzieć się więcej o danych można znaleźć zestawu sdk przygotowywania [sposobu przygotowania danych do modelowania artykułu](how-to-load-data.md). Poniżej przedstawiono przykład ładowania danych przy użyciu zestawu sdk przygotowywania danych. 
+Aby dowiedzieć się więcej o danych można znaleźć zestawu sdk przygotowywania [sposobu przygotowania danych do modelowania artykułu](how-to-load-data.md).
+Poniżej przedstawiono przykład ładowania danych przy użyciu zestawu sdk przygotowywania danych.
 ```python
 # The data referenced here was pulled from `sklearn.datasets.load_digits()`.
 simple_example_data_root = 'https://dprepdata.blob.core.windows.net/automl-notebook-data/'
@@ -189,7 +190,7 @@ Oto niektóre przykłady:
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=2)
     ```
@@ -201,7 +202,7 @@ Oto niektóre przykłady:
         max_time_sec=600,
         iterations=100,
         primary_metric='r2_score',
-        X=X, 
+        X=X,
         y=y,
         n_cross_validations=5)
     ````
@@ -223,7 +224,7 @@ Właściwość |  Opis | Wartość domyślna
 `enable_cache`  | PRAWDA/FAŁSZ <br/>Ustawienie na wartość True umożliwia przetwarzanie wstępne wykonywane raz i ponowne użycie tych samych danych wstępnie przetworzony do wszystkich iteracji. | True |
 `blacklist_models`  | Automatyczne eksperymentu uczenia maszynowego, ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj, aby wykluczyć niektóre algorytmy z eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy nie działają dobrze sprawdza się w zestawie danych. Z wyjątkiem algorytmów można skrócić zasobów obliczeniowych i czasu szkoleń.<br/>Dozwolone wartości klasyfikacji<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Dozwolone wartości regresji<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Dozwolone wartości dla Prognozowanie<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|   Brak
 `whitelist_models`  | Automatyczne eksperymentu uczenia maszynowego, ma wiele różnych algorytmów, które podejmuje próby. Skonfiguruj obejmujący niektóre algorytmy eksperymentu. Parametr jest przydatne, jeśli masz świadomość, że algorytmy będą działać dobrze w przypadku zestawu danych. <br/>Dozwolone wartości klasyfikacji<br/><li>LogisticRegression</li><li>SGD</li><li>MultinomialNaiveBayes</li><li>BernoulliNaiveBayes</li><li>SVM</li><li>LinearSVM</li><li>KNN</li><li>DecisionTree</li><li>RandomForest</li><li>ExtremeRandomTrees</li><li>LightGBM</li><li>GradientBoosting</li><li>TensorFlowDNN</li><li>TensorFlowLinearClassifier</li><br/>Dozwolone wartości regresji<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li><br/>Dozwolone wartości dla Prognozowanie<br/><li>ElasticNet</li><li>GradientBoosting</li><li>DecisionTree</li><li>KNN</li><li>LassoLars</li><li>SGD </li><li>RandomForest</li><li>ExtremeRandomTree</li><li>LightGBM</li><li>TensorFlowLinearRegressor</li><li>TensorFlowDNN</li></li>|  Brak
-`verbosity` |Określa poziom rejestrowania, z użyciem informacji są pełne i najbardziej krytyczne jest najmniej. Poziom szczegółowości ma takie same wartości zgodnie z definicją w pakiecie rejestrowania języka python. Dozwolone wartości to:<br/><li>logging.INFO</li><li>rejestrowanie. OSTRZEŻENIE</li><li>rejestrowanie. BŁĄD</li><li>rejestrowanie. KRYTYCZNE</li>  | logging.INFO</li> 
+`verbosity` |Określa poziom rejestrowania, z użyciem informacji są pełne i najbardziej krytyczne jest najmniej. Poziom szczegółowości ma takie same wartości zgodnie z definicją w pakiecie rejestrowania języka python. Dozwolone wartości to:<br/><li>logging.INFO</li><li>rejestrowanie. OSTRZEŻENIE</li><li>rejestrowanie. BŁĄD</li><li>rejestrowanie. KRYTYCZNE</li>  | logging.INFO</li>
 `X` | Wszystkie funkcje do jego trenowanie za pomocą |  Brak
 `y` |   Etykiety danych w celu jego trenowanie za pomocą. Klasyfikacja powinna być tablicy liczb całkowitych.|  Brak
 `X_valid`|_Opcjonalnie_ wszystkie funkcje umożliwiające weryfikację. Jeśli nie zostanie określony, X jest podzielony między szkolenie i sprawdzanie poprawności |   Brak
@@ -233,7 +234,7 @@ Właściwość |  Opis | Wartość domyślna
 `run_configuration` |   Obiekt RunConfiguration.  Używane dla przebiegów zdalnych. |Brak
 `data_script`  |    Ścieżka do pliku zawierającego metodę get_data.  Wymagane dla zdalnych przebiegów.   |Brak
 `model_explainability` | _Opcjonalnie_ PRAWDA/FAŁSZ <br/>  Wartość true włącza eksperymentów do wykonywania funkcji znaczenie dla każdej iteracji. Umożliwia także metody explain_model() na określonej iteracji można włączyć funkcję znaczenie na żądanie dla tej iteracji po zakończeniu eksperymentu. | False
-`enable_ensembling`|Flaga włączenia ensembling iteracji po ukończeniu wszystkich innych iteracji.| True 
+`enable_ensembling`|Flaga włączenia ensembling iteracji po ukończeniu wszystkich innych iteracji.| True
 `ensemble_iterations`|Liczba iteracji, podczas których Wybraliśmy potoku zainstalowane jako część końcowej zespołu.| 15
 `experiment_timeout_minutes`| Ogranicza ilość czasu (w minutach), jaki może zająć całe uruchomienie eksperymentu | Brak
 
@@ -324,20 +325,20 @@ Istnieją dwa sposoby generowania funkcji znaczenie.
 
     ```python
     from azureml.train.automl.automlexplainer import explain_model
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         explain_model(fitted_model, X_train, X_test)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-*   Aby wyświetlić znaczenie funkcji dla wszystkich iteracji, ustaw `model_explainability` flaga `True` w AutoMLConfig.  
+*   Aby wyświetlić znaczenie funkcji dla wszystkich iteracji, ustaw `model_explainability` flaga `True` w AutoMLConfig.
 
     ```python
     automl_config = AutoMLConfig(task = 'classification',
@@ -346,7 +347,7 @@ Istnieją dwa sposoby generowania funkcji znaczenie.
                                  max_time_sec = 12000,
                                  iterations = 10,
                                  verbosity = logging.INFO,
-                                 X = X_train, 
+                                 X = X_train,
                                  y = y_train,
                                  X_valid = X_test,
                                  y_valid = y_test,
@@ -358,20 +359,20 @@ Istnieją dwa sposoby generowania funkcji znaczenie.
 
     ```python
     from azureml.train.automl.automlexplainer import retrieve_model_explanation
-    
+
     shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
         retrieve_model_explanation(best_run)
-    
+
     #Overall feature importance
     print(overall_imp)
-    print(overall_summary) 
-    
+    print(overall_summary)
+
     #Class-level feature importance
     print(per_class_imp)
-    print(per_class_summary) 
+    print(per_class_summary)
     ```
 
-Można wizualizować wykresu znaczenie funkcji w obszarze roboczym w witrynie Azure portal. Wykres jest również wyświetlany, gdy za pomocą widżetu Jupyter w notesie. Aby dowiedzieć się więcej na temat wykresów się [artykułu notesów przykładowej usługi uczenie Maszynowe Azure.](samples-notebooks.md)
+Można wizualizować wykresu znaczenie funkcji w obszarze roboczym w witrynie Azure portal. Wykres jest również wyświetlany, gdy za pomocą widżetu Jupyter w notesie. Aby dowiedzieć się więcej na temat wykresów się [artykułu notesów usługi przykładowej usługi Azure Machine Learning.](samples-notebooks.md)
 
 ```python
 from azureml.widgets import RunDetails
@@ -383,4 +384,4 @@ RunDetails(local_run).show()
 
 Dowiedz się więcej o [jak i gdzie można wdrożyć model](how-to-deploy-and-where.md).
 
-Dowiedz się więcej o [sposobu uczenia modelu klasyfikacji, przy użyciu uczenia maszynowego automatyczne](tutorial-auto-train-models.md) lub [sposób trenowania przy użyciu zautomatyzowanego machine learning na zasób zdalny](how-to-auto-train-remote.md). 
+Dowiedz się więcej o [sposobu uczenia modelu klasyfikacji, przy użyciu uczenia maszynowego automatyczne](tutorial-auto-train-models.md) lub [sposób trenowania przy użyciu zautomatyzowanego machine learning na zasób zdalny](how-to-auto-train-remote.md).

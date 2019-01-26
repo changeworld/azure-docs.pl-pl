@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2010
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: edb4e2b25e5fd7d6c59f07a02cc5d2f0630eac8e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 26133dbfe6b8e11128393957c377c1827e0d2a6e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904407"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076506"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -128,6 +128,12 @@ Usunięte lub wyłączone użytkowników, którzy nie został wcześniej Zaloguj
 
 ---
 
+**Pyt.: Dlaczego moja użytkownicy mają problemy na urządzeniach przyłączonych do usługi Azure AD po zmianie ich nazwy UPN?**
+
+**ODP.:** Zmiany nazwy UPN nie są obecnie w pełni obsługiwane na urządzeniach przyłączonych do usługi Azure AD. Dlatego ich uwierzytelniania przy użyciu usługi Azure AD nie powiedzie się po zmianie ich nazwy UPN. W rezultacie użytkownicy mają logowania jednokrotnego i dostępu warunkowego problemy na swoich urządzeniach. W tej chwili użytkownicy muszą logować się do Windows za pośrednictwem kafelka "Innego użytkownika", przy użyciu nowych nazw UPN, aby rozwiązać ten problem. Obecnie pracujemy nad tego problemu. Jednak użytkownikom logowanie się przy użyciu Windows Hello dla firm nie stoją w obliczu ten problem. 
+
+---
+
 **Pyt.: Moje użytkownicy nie może wyszukać drukarki z urządzeniami dołączonymi do usługi Azure AD. Jak włączyć drukowanie z tych urządzeń?**
 
 **ODP.:** Aby wdrożyć drukarki dla usługi Azure AD urządzenia przyłączone do, zobacz [wdrażania systemu Windows dla serwera hybrydowego Cloud Print przy użyciu wstępnego uwierzytelniania](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Należy na lokalnym serwerze systemu Windows do wdrożenia drukowania chmury hybrydowej. Obecnie usługa oparta na chmurze usługi drukowania nie jest dostępna. 
@@ -209,7 +215,15 @@ To zachowanie nie ma zastosowania do żadnego innego użytkownika, który loguje
 
 Dołączenie do hybrydowej usługi Azure AD mają pierwszeństwo przed stan usługi Azure AD zarejestrowany. Dlatego Twoje urządzenie jest uznawane za hybrydowe do uwierzytelniania i oceny dostępu warunkowego usługi Azure AD. Możesz bezpiecznie usunąć rekord urządzenia zarejestrowane z usługi Azure AD z portalu usługi Azure AD. Dowiedz się, jak [unikać lub wyczyścić ten stan podwójną na komputerze z systemem Windows 10](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan#review-things-you-should-know). 
 
+
 ---
+
+**Pyt.: Dlaczego Moi użytkownicy mają problemy z urządzeniach z systemem Windows 10 hybrydowego przyłączony Azure AD po zmianie ich nazwy UPN?**
+
+**ODP.:** Zmiany nazwy UPN nie są obecnie w pełni obsługiwane z urządzeniami dołączonymi do usługi Azure AD hybrydowych. Gdy użytkownicy mogą zalogować się do urządzenia i uzyskiwać dostęp do swoich aplikacji w środowisku lokalnym, uwierzytelniania za pomocą usługi Azure AD nie powiedzie się po zmianie nazwy UPN. W rezultacie użytkownicy mają logowania jednokrotnego i dostępu warunkowego problemy na swoich urządzeniach. W tej chwili należy odłączyć urządzenie z usługi Azure AD (Uruchom "dsregcmd /leave" z podniesionymi uprawnieniami) i ponownie Dołącz (wykonywane automatycznie) Aby rozwiązać ten problem. Obecnie pracujemy nad tego problemu. Jednak użytkownikom logowanie się przy użyciu Windows Hello dla firm nie stoją w obliczu ten problem. 
+
+---
+
 
 ## <a name="azure-ad-register-faq"></a>Usługa Azure AD rejestru — często zadawane pytania
 

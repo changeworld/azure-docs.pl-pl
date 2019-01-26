@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 75b3934a7329b4e83a0f36f79bbc8365eaf8a086
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: da46687517dbfe189571286087d4ef29d50d1246
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572504"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54906332"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Standardowy dysk SSD Managed Disks dla obciążeń maszyn wirtualnych platformy Azure
 
@@ -21,14 +21,14 @@ Usługa Azure pełny stan dyski (SSD w warstwie standardowa) Managed Disks to op
 
 ## <a name="standard-ssd-features"></a>Funkcje SSD w warstwie standardowa
 
-**Usługa Managed Disks**: standardowe dyski SSD są dostępne tylko jako dyski Managed Disks. Niezarządzanych dysków i stronicowych obiektów blob nie są obsługiwane na SSD w warstwie standardowa. Podczas tworzenia dysku zarządzanego, określ typ dysku SSD w warstwie standardowa i wskazać rozmiar dysku należy i platforma Azure utworzy i zarządza dysku.
+**Usługa Managed Disks**: Standardowe dyski SSD są dostępne tylko jako dyski Managed Disks. Niezarządzanych dysków i stronicowych obiektów blob nie są obsługiwane na SSD w warstwie standardowa. Podczas tworzenia dysku zarządzanego, określ typ dysku SSD w warstwie standardowa i wskazać rozmiar dysku należy i platforma Azure utworzy i zarządza dysku.
 Standardowe dyski SSD obsługuje wszystkie operacje modelu wdrożenia klasycznego, oferowane przez dyski Managed Disks. Na przykład można utworzyć, skopiować lub migawki dysków SSD zarządzane dyski w warstwie standardowa w taki sam sposób, możesz zrobić z dysków zarządzanych.
 
-**Maszyny wirtualne**: standardowe dyski SSD, mogą być używane z wszystkich maszyn wirtualnych platformy Azure, w tym typy maszyn wirtualnych, które nie obsługują dysków w warstwie Premium. Na przykład, jeśli używasz maszyn wirtualnych serii A, lub maszyn wirtualnych serii N lub serii DS lub innych serii maszyny Wirtualnej platformy Azure, można użyć standardowych dysków SSD przy użyciu tej maszyny Wirtualnej. Wraz z wprowadzeniem SSD w warstwie standardowa udostępniliśmy szerokiej gamy obciążeń, które wcześniej używano dysków opartych na dysk twardy w celu przejścia do dysków na dyskach SSD i spójną wydajność, wyższą dostępność, lepsze opóźnienia i lepsze ogólnej środowisko, które są dostarczane z dysków SSD.
+**Maszyny wirtualne**: Standardowe dyski SSD może służyć za pomocą wszystkich maszyn wirtualnych platformy Azure, w tym typy maszyn wirtualnych, które nie obsługują dysków w warstwie Premium. Na przykład, jeśli używasz maszyn wirtualnych serii A, lub maszyn wirtualnych serii N lub serii DS lub innych serii maszyny Wirtualnej platformy Azure, można użyć standardowych dysków SSD przy użyciu tej maszyny Wirtualnej. Wraz z wprowadzeniem SSD w warstwie standardowa udostępniliśmy szerokiej gamy obciążeń, które wcześniej używano dysków opartych na dysk twardy w celu przejścia do dysków na dyskach SSD i spójną wydajność, wyższą dostępność, lepsze opóźnienia i lepsze ogólnej środowisko, które są dostarczane z dysków SSD.
 
-**Duża trwałość i wysoka dostępność**: standardowe dyski SSD są oparte na tę samą platformę Azure Disks ciągle dostarczał wysoką dostępność i niezawodność dysków. Dyski platformy Azure zaprojektowano z gwarancją dostępności na poziomie 99,999%. Podobnie jak wszystkie dyski zarządzane standardowe dyski SSD będzie także oferować lokalny magazyn nadmiarowy (LRS). Dzięki magazynowi LRS, platforma obsługuje wiele replik danych dla każdego dysku i ciągle dostarczał przeznaczonych dla przedsiębiorstw dzięki wiodącej w branży trwałość IaaS dysków ZERO procent wycena współczynnik błędów.
+**Duża trwałość i wysoka dostępność**: Standardowe dyski SSD są zbudowane na tę samą platformę Azure Disks ciągle dostarczał wysoką dostępność i niezawodność dysków. Dyski platformy Azure zaprojektowano z gwarancją dostępności na poziomie 99,999%. Podobnie jak wszystkie dyski zarządzane standardowe dyski SSD będzie także oferować lokalny magazyn nadmiarowy (LRS). Dzięki magazynowi LRS, platforma obsługuje wiele replik danych dla każdego dysku i ciągle dostarczał przeznaczonych dla przedsiębiorstw dzięki wiodącej w branży trwałość IaaS dysków ZERO procent wycena współczynnik błędów.
 
-**Migawki**: jak wszystkie dyski Managed Disks, standardowe dyski SSD obsługują także tworzenie migawek. Standardowa (HDD) lub Premium (SSD), może być typu migawka. Oszczędności kosztów, zalecamy typ migawki z standardowa (HDD) dla wszystkich typów dysków platformy Azure. To dlatego podczas tworzenia dysku zarządzanego z migawki, zawsze jesteś w stanie wybrać warstwy wyższej, np. SSD w warstwie standardowa lub Premium SSD.
+**Migawki**: Podobnie jak wszystkie dyski zarządzane standardowe dyski SSD obsługuje tworzenie migawek. Standardowa (HDD) lub Premium (SSD), może być typu migawka. Oszczędności kosztów, zalecamy typ migawki z standardowa (HDD) dla wszystkich typów dysków platformy Azure. To dlatego podczas tworzenia dysku zarządzanego z migawki, zawsze jesteś w stanie wybrać warstwy wyższej, np. SSD w warstwie standardowa lub Premium SSD.
 
 ## <a name="scalability-and-performance-targets"></a>Cele dotyczące skalowalności i wydajności
 
@@ -36,15 +36,17 @@ Poniższa tabela zawiera rozmiary dysków, które są obecnie oferowane dla SSD 
 
 |Typ dysku SSD w warstwie standardowa  |Rozmiar dysku  |Operacje We/Wy na dysk  |Przepływność na dysk  |
 |---------|---------|---------|---------|
+|E4     |32 GiB         |Do 120         |Maksymalnie 25 MiB na sekundę         |
+|E6     |64 GiB         |Maksymalnie 240         |Maksymalnie 50 MiB na sekundę         |
 |E10     |128 GiB         |Maks. 500         |MiB maksymalnie 60 na sekundę         |
 |E15     |256 GiB         |Maks. 500         |MiB maksymalnie 60 na sekundę         |
 |E20     |512 GiB         |Maks. 500         |MiB maksymalnie 60 na sekundę         |
 |E30     |1024 giB       |Maks. 500         |MiB maksymalnie 60 na sekundę         |
 |E40     |2048 giB       |Maks. 500         |MiB maksymalnie 60 na sekundę         |
-|E50     |4095 giB       |Maks. 500         |MiB maksymalnie 60 na sekundę         |
+|E50     |4,095 GiB       |Maks. 500         |MiB maksymalnie 60 na sekundę         |
 |E60 *     |8192 giB       |Maksymalnie 1300       |Maksymalnie 300 MiB na sekundę        |
-|E70 *    |16 384 giB      |Do 2000       |Maks. 500 MiB na sekundę        |
-|E80 *    |32 767 giB      |Do 2000       |Maks. 500 MiB na sekundę        |
+|E70 *    |16,384 GiB      |Do 2000       |Maks. 500 MiB na sekundę        |
+|E80 *    |32,767 GiB      |Do 2000       |Maks. 500 MiB na sekundę        |
 
 Standardowe dyski SSD są przeznaczone zapewnienie milisekundowe opóźnienia w przypadku większości operacji We/Wy i operacje We/Wy i Przepływność w granicach opisano w powyższej tabeli 99% czasu. Rzeczywiste operacje We/Wy i przepływność będzie zależeć czasami w zależności od wzorców ruchu. Standardowe dyski SSD będą oferują bardziej spójną wydajność niż dyski HDD, z mniejszymi opóźnieniami.
 
@@ -61,13 +63,13 @@ Jeśli przy użyciu standardowych dysków SSD, zastosuj następujące zagadnieni
 - Wychodzące transfery danych
 - Transakcje
 
-**Rozmiar dysku zarządzanego**: opłaty za dyski zarządzane są naliczane zarezerwowany rozmiar. Platforma Azure mapuje aprowizowany rozmiar (zaokrąglony w górę) na najbliższy oferowany rozmiar dysku. Aby uzyskać szczegóły dotyczące rozmiarów dysków oferowane zobacz tabelę w powyższej sekcji cele skalowalności i wydajności. Każdy dysk mapuje rozmiar dysku obsługiwane i rozliczane w związku z tym. Na przykład, jeśli aprowizowanej 200 GiB SSD w warstwie standardowa go będzie zmapowana do oferty rozmiar dysku E15 (256 GiB). Rozliczenia dla dowolnego dysku jest proporcjonalnie do liczby godzin przy użyciu miesięczna oferta usługi Premium Storage. Na przykład jeśli zainicjowano obsługę administracyjną E10 dysku, a następnie usunięte 20 godzin, są naliczane dla oferty E10 jest naliczany proporcjonalnie do 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku.
+**Rozmiar dysku zarządzanego**: Dyski zarządzane są naliczane zarezerwowany rozmiar. Platforma Azure mapuje aprowizowany rozmiar (zaokrąglony w górę) na najbliższy oferowany rozmiar dysku. Aby uzyskać szczegóły dotyczące rozmiarów dysków oferowane zobacz tabelę w powyższej sekcji cele skalowalności i wydajności. Każdy dysk mapuje rozmiar dysku obsługiwane i rozliczane w związku z tym. Na przykład, jeśli aprowizowanej 200 GiB SSD w warstwie standardowa go będzie zmapowana do oferty rozmiar dysku E15 (256 GiB). Rozliczenia dla dowolnego dysku jest proporcjonalnie do liczby godzin przy użyciu miesięczna oferta usługi Premium Storage. Na przykład jeśli zainicjowano obsługę administracyjną E10 dysku, a następnie usunięte 20 godzin, są naliczane dla oferty E10 jest naliczany proporcjonalnie do 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku.
 
-**Migawki**: migawek Managed Disks są rozliczane pojemności posługują się migawki, w docelowej i źródłowej, jeśli istnieje. Aby uzyskać więcej informacji na temat migawek, zobacz [migawki dysków zarządzanych](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots).
+**Migawki**: Migawki dysków Managed Disks są naliczane pojemności posługują się migawki, w docelowej i źródłowej, jeśli istnieje. Aby uzyskać więcej informacji na temat migawek, zobacz [migawki dysków zarządzanych](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#managed-disk-snapshots).
 
-**Wychodzące transfery danych**: [wychodzące transfery danych](https://azure.microsoft.com/pricing/details/bandwidth/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
+**Wychodzące transfery danych**: [Wychodzące transfery danych](https://azure.microsoft.com/pricing/details/bandwidth/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
 
-**Transakcje**: podobnie do standardowych dysków Twardych, transakcje na standardowych dyskach SSD Naliczanie opłat. Transakcje obejmują odczytu i zapisu na dysku. Rozmiar jednostki we/wy, używany do wyceny transakcji na SSD w warstwie standardowa jest 256 KiB. Większego rozmiaru operacji We/Wy są liczone jako wiele operacji We/Wy o rozmiarze 256 KiB.
+**Transakcje**: Podobnie jak w standardowych dysków Twardych, transakcje na standardowych dyskach SSD Naliczanie opłat. Transakcje obejmują odczytu i zapisu na dysku. Rozmiar jednostki we/wy, używany do wyceny transakcji na SSD w warstwie standardowa jest 256 KiB. Większego rozmiaru operacji We/Wy są liczone jako wiele operacji We/Wy o rozmiarze 256 KiB.
 
 Aby uzyskać więcej informacji na temat cen dla maszyn wirtualnych i dyski Managed Disks zobacz:
 

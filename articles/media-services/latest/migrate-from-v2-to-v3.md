@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 017de43074d4b68c69526ddcc96f98ae826dcd65
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c9d35841620afa454ffddb5e3022f6160021998e
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808735"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912388"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -35,7 +35,7 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 
 ### <a name="api-is-more-approachable"></a>Interfejs API jest bardziej przystępne.
 
-*  Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostępnia zarówno funkcje zarządzania, jak i operacji oparte na usłudze Azure Resource Manager. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, LiveEvents i nie tylko.
+*  Wersja 3 opiera się na ujednoliconej powierzchni interfejsu API, która udostępnia zarówno funkcje zarządzania, jak i operacji oparte na usłudze Azure Resource Manager. Szablony usługi Azure Resource Manager może służyć do tworzenia i wdrażania przekształceń, punkty końcowe przesyłania strumieniowego, zdarzenia na żywo i nie tylko.
 * [Otwórz interfejs API (zwane również struktury Swagger) specyfikacji](https://aka.ms/ams-v3-rest-sdk) dokumentu.
     Przedstawia schematu dla wszystkich składników usługi, w tym kodowanie oparte na plikach.
 * Zestawy SDK dostępne dla [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Przejdź](https://aka.ms/ams-v3-go-ref)i Ruby.
@@ -45,14 +45,14 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 
 * Przetwarzanie zadania oparte na plikach można użyć adresu URL HTTP (S) jako dane wejściowe.<br/>Nie musisz mieć zawartości już przechowywane na platformie Azure i nie potrzebujesz do tworzenia zasobów.
 * Pojęcia związane z [przekształca](transforms-jobs-concept.md) dla przetwarzanie zadań opartych na plikach. Przekształcenie może służyć do tworzenia konfiguracji wielokrotnego użytku, do tworzenia szablonów usługi Azure Resource Manager i izolowania przetwarzania ustawień między wieloma klientami lub dzierżawcy.
-* Element zawartości może mieć [wielu StreamingLocators](streaming-locators-concept.md) każdego z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
+* Element zawartości może mieć wiele [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md) każdego z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
 * [Content protection](content-key-policy-concept.md) obsługuje wiele kluczowych funkcji.
-* Można przesyłać strumieniowo wydarzenia na żywo, które są do 24 godzin długo po za pomocą usługi Media Services w celu przetranskodowania jej wkład pojedyncza szybkość transmisji bitów źródła danych do strumienia wyjściowego, który ma wielokrotnych.
-* Nowe Niskie opóźnienie obsługę przesyłania strumieniowego na żywo na LiveEvents. Aby uzyskać więcej informacji, zobacz [opóźnienie](live-event-latency.md).
-* Element LiveEvent (wersja zapoznawcza) obsługuje funkcję dynamicznego tworzenia pakietów i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
-* LiveOutput jest łatwiejszy w obsłudze niż jednostka Program w interfejsach API w wersji 2. 
+* Zdarzenia na żywo, które są do 24 godzin długo po za pomocą usługi Media Services w celu przetranskodowania jej wkład pojedyncza szybkość transmisji bitów źródła danych do strumienia wyjściowego, który ma wielokrotnych można przesyłać strumieniowo.
+* Nowe niskie opóźnienia obsługę przesyłania strumieniowego na żywo na zdarzenia na żywo. Aby uzyskać więcej informacji, zobacz [opóźnienie](live-event-latency.md).
+* Podgląd zdarzeń na żywo obsługuje funkcję dynamicznego tworzenia pakietów i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
+* Dane wyjściowe na żywo jest łatwiejszy w obsłudze niż jednostka Program w interfejsach API w wersji 2. 
 * Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
-* Pozyskuj RTMPS bezpieczne.<br/>Gdy utworzysz element LiveEvent, otrzymasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
+* Pozyskuj RTMPS bezpieczne.<br/>Po utworzeniu zdarzenia na żywo, uzyskasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   
 * Masz kontroli dostępu opartej na rolach (RBAC) za pośrednictwem jednostek. 
 
 ## <a name="changes-from-v2"></a>Zmiany w wersji 2
@@ -67,11 +67,11 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 * Kluczy zawartości nie jest już jednostki, jest teraz właściwość StreamingLocator.
 * Obsługa siatki zdarzeń zastępuje NotificationEndpoints.
 * Następujące jednostki zostały zmienione.
-    * JobOutput zadań zastępuje i jest teraz częścią zadania.
-    * StreamingLocator zastępuje lokalizatora.
-    * Element LiveEvent zastępuje kanału.<br/>Rozliczenia LiveEvents opiera się na licznikach kanału na żywo. Aby uzyskać więcej informacji, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md#billing) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
-    * LiveOutput zastępuje Program.
-* LiveOutputs nie musiały zostać uruchomione w sposób jawny, start przy tworzeniu i Zatrzymaj po usunięciu. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
+    * Dane wyjściowe zadań zastępuje zadań i jest teraz częścią zadania.
+    * Lokator przesyłania strumieniowego zastępuje lokalizatora.
+    * Zastępuje zdarzenie na żywo kanału.<br/>Rozliczenie jest oparte na liczniki kanału na żywo wydarzeń na żywo. Aby uzyskać więcej informacji, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md#billing) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
+    * Dane wyjściowe na żywo zastępuje Program.
+* Na żywo dane wyjściowe nie musiały zostać uruchomione w sposób jawny, start przy tworzeniu i Zatrzymaj po usunięciu. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>Funkcja luki w odniesieniu do interfejsów API w wersji 2
 
@@ -84,7 +84,7 @@ Interfejs API w wersji 3 ma następujące luki funkcji w odniesieniu do interfej
     * Nakładki
     * Przycinanie
     * Miniatury ikony
-* LiveEvents z transkodowanie obecnie nie obsługują Plansz wstawiania środku strumienia i ad wstawianiem znaczników za pośrednictwem wywołania interfejsu API. 
+* Wydarzeń na żywo za pomocą transkodowanie aktualnie nie obsługują Plansz wstawiania środku strumienia i ad wstawianiem znaczników za pośrednictwem wywołania interfejsu API. 
 
 > [!NOTE]
 > Zakładki w tym artykule i zachować sprawdzania dostępności aktualizacji.
@@ -102,11 +102,11 @@ W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych sc
 ## <a name="known-issues"></a>Znane problemy
 
 * Obecnie nie można użyć witryny Azure portal do zarządzania zasobami v3. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-sdk), interfejsu wiersza polecenia lub w jednym z obsługiwanych zestawów SDK.
-* Należy aprowizować jednostek zarezerwowanych multimediów (lokalizacje MRU) na Twoim koncie w celu kontrolowania współbieżność i wydajności zadań, szczególnie te, które obejmujące wideo lub Audio analizy. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](../previous/media-services-scale-media-processing-overview.md) (Skalowanie przetwarzania multimediów). Można zarządzać za pomocą lokalizacje MRU [interfejsu wiersza polecenia 2.0 dla usługi Media Services v3](media-reserved-units-cli-how-to.md)przy użyciu [witryny Azure portal](../previous/media-services-portal-scale-media-processing.md), lub za pomocą[ interfejsów API w wersji 2](../previous/media-services-dotnet-encoding-units.md). Musisz aprowizować lokalizacje MRU, czy używasz usługi Media Services v2 lub v3 interfejsów API.
+* Należy aprowizować jednostek zarezerwowanych multimediów (lokalizacje MRU) na Twoim koncie w celu kontrolowania współbieżność i wydajności zadań, szczególnie te, które obejmujące wideo lub Audio analizy. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](../previous/media-services-scale-media-processing-overview.md) (Skalowanie przetwarzania multimediów). Można zarządzać za pomocą lokalizacje MRU [interfejsu wiersza polecenia 2.0 dla usługi Media Services v3](media-reserved-units-cli-how-to.md)przy użyciu [witryny Azure portal](../previous/media-services-portal-scale-media-processing.md), lub za pomocą [interfejsów API w wersji 2](../previous/media-services-dotnet-encoding-units.md). Musisz aprowizować lokalizacje MRU, czy używasz usługi Media Services v2 lub v3 interfejsów API.
 * Jednostki usługi Media Services, utworzone w wersji 3, interfejs API nie mogą być zarządzane przez interfejsy API wersji 2.  
 * Nie zaleca się Zarządzanie jednostkami, które zostały utworzone za pomocą interfejsów API w wersji 2, za pośrednictwem interfejsów API w wersji 3. Poniżej przedstawiono przykłady różnic, wchodzące jednostkami w dwóch wersjach niezgodne:   
     * Zadania i zadania utworzone w wersji 2 nie są wyświetlane w wersji 3, ponieważ nie są one powiązane z zadaniami transformacji. Zalecane jest, aby przełączyć się do wersji 3 transformacje i zadania. Będzie konieczności monitor porządkowych w wersji 2 zadania podczas przełączenie okres względnie krótkim czasie.
-    * Kanały i programy utworzone za pomocą wersji 2, (które są mapowane na LiveEvents i LiveOutputs w wersji 3) nie może kontynuować, zarządzane w wersji 3. Zalecane jest, aby przełączyć się do v3 LiveEvents i LiveOutputs na wygodne Zatrzymaj kanał.<br/>Obecnie nie można migrować, stale uruchomione kanały.  
+    * Kanały i programy utworzone za pomocą wersji 2, (które są mapowane na zdarzenia na żywo i na żywo dane wyjściowe w wersji 3) nie może kontynuować, zarządzane w wersji 3. Zalecane jest, aby przełączyć się do v3 zdarzenia na żywo i na żywo dane wyjściowe w wygodny Zatrzymaj kanał.<br/>Obecnie nie można migrować, stale uruchomione kanały.  
 
 > [!NOTE]
 > Ta strona zostanie zachowana, jak zespół usługi Media Services umożliwia dalsze ulepszenia do interfejsów API w wersji 3 i luki między wersjami.

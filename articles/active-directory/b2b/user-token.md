@@ -3,19 +3,19 @@ title: Zrozumienie tokeny użytkowników we współpracy B2B usługi Azure AD | 
 description: Odwołanie do tokenu użytkownika do współpracy B2B usługi Azure Active Directory
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 5d6bcabdf35559ec887dc530b1829fffc6b6eaa7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 74a46c4641612e7206e0f9f61796935380827b24
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430982"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075963"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Zrozumienie tokeny użytkowników we współpracy B2B usługi Azure AD
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: barbkess
 ms.reviewer: richagi
-ms.openlocfilehash: 97cabf7821f223b900f86115c3bd85b12de450d4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 90cfb766e98bfa9706cd88342f8374269bc69d76
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478148"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911629"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Ograniczenia dzierżawy do zarządzania dostępem do aplikacji SaaS działających w chmurze
 
@@ -89,7 +89,7 @@ W tej sekcji przedstawiono środowisko dla administratorów i użytkowników ko�
 
 ### <a name="end-user-experience"></a>Środowisko użytkownika końcowego
 
-Przykładowy użytkownik znajduje się w sieci firmy Contoso, ale próbuje uzyskać dostęp Fabrikam wystąpienie udostępnione aplikacji SaaS takich jak program Outlook online. Jeśli firma Contoso ma dzierżawy nie jest dozwolone dla tego wystąpienia, użytkownik zobaczy następujące strony:
+Przykładowy użytkownik znajduje się w sieci firmy Contoso, ale próbuje uzyskać dostęp Fabrikam wystąpienie udostępnione aplikacji SaaS takich jak program Outlook online. Jeśli Fabricam dzierżawy nie jest dozwolone dla tego wystąpienia firmy Contoso, użytkownik zobaczy następujące strony:
 
 ![Odmowę dostępu do strony dla użytkowników w dzierżawach — dozwolone](./media/tenant-restrictions/end-user-denied.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1279b5319ddd52ff2f3f6b4e696b73e8fe67607
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4688acbb2742579e0f9f3fbb2604ffd8ef12bfd5
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468691"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081045"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Rozwiązywanie błędów dla jednostki SKU nie jest dostępna
 
@@ -41,10 +41,10 @@ Ten błąd jest wyświetlany, gdy zasób jednostki SKU wybrano (np. rozmiar masz
 
 ## <a name="solution-1---powershell"></a>Rozwiązanie 1 — PowerShell
 
-Aby określić, które jednostek SKU są dostępne w regionie, użyj [polecenia Get-AzureRmComputeResourceSku](/powershell/module/azurerm.compute/get-azurermcomputeresourcesku) polecenia. Filtruj wyniki według lokalizacji. Konieczne jest posiadanie najnowszej wersji programu PowerShell dla tego polecenia.
+Aby określić, które jednostek SKU są dostępne w regionie, użyj [Get AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) polecenia. Filtruj wyniki według lokalizacji. Konieczne jest posiadanie najnowszej wersji programu PowerShell dla tego polecenia.
 
 ```azurepowershell-interactive
-Get-AzureRmComputeResourceSku | where {$_.Locations -icontains "centralus"}
+Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
 Wyniki obejmują listę jednostek SKU dla lokalizacji i zastosowanie jakiekolwiek ograniczenia dotyczące tej jednostki SKU. Należy zauważyć, że jednostka SKU mogą być wyświetlane jako `NotAvailableForSubscription`.

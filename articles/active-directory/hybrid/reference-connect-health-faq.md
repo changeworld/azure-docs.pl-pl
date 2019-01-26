@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 101eeb89a44fbc28c831fefcdc6490495e0be7e8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 67523641ff9650a5b35a142147a2f69adcfb3b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470328"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077305"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących usługi Azure Active Directory (Azure AD) Connect Health. Wśród często zadawanych pytań obejmują pytania dotyczące sposobu korzystania z usługi, który zawiera model rozliczeń możliwości, ograniczeń i pomocy technicznej.
@@ -62,7 +62,7 @@ Przykład:
 
 **Pyt.: Usługa Azure AD Connect Health obsługuje Azure Germany Cloud?**
 
-Program Azure AD Connect Health nie jest obsługiwana w chmurze (Niemcy) z wyjątkiem [funkcja raport błędów synchronizacji](how-to-connect-health-sync.md#object-level-synchronization-error-report). 
+Program Azure AD Connect Health nie jest obsługiwana w chmurze (Niemcy) z wyjątkiem [funkcja raport błędów synchronizacji](how-to-connect-health-sync.md#object-level-synchronization-error-report).
 
 | Role | Funkcje | Obsługiwane w niemieckiej wersji chmury |
 | ------ | --------------- | --- |
@@ -71,7 +71,7 @@ Program Azure AD Connect Health nie jest obsługiwana w chmurze (Niemcy) z wyją
 | Program Connect Health dla usług AD FS | Monitorowanie / Insight / alerty / analizy | Nie |
 | Program Connect Health dla usług AD DS | Monitorowanie / Insight / alerty / analizy | Nie |
 
-W celu zapewnienia łączności agenta programu Connect Health do celów synchronizacji, należy skonfigurować [wymaganie instalacyjne](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) odpowiednio.   
+W celu zapewnienia łączności agenta programu Connect Health do celów synchronizacji, należy skonfigurować [wymaganie instalacyjne](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) odpowiednio.
 
 ## <a name="installation-questions"></a>Pytania dotyczące instalacji
 
@@ -163,7 +163,7 @@ Usługi Azure AD Connect Health skanowania wszystkich maszyn, które monitoruje 
 
 Poniższy skrypt programu PowerShell można użyć, aby to sprawdzić ręcznie. Implementuje logikę powyżej.
 
-```
+```powershell
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
@@ -190,7 +190,7 @@ CheckForMS17-010
 
 **Pyt.: Dlaczego są moje usług AD FS inspekcji nie są generowane?**
 
-Użyj polecenia cmdlet programu PowerShell <i>Get-AdfsProperties - AuditLevel</i> upewnij się, dzienniki inspekcji nie znajduje się w stanie wyłączony. Przeczytaj więcej na temat [dzienniki inspekcji usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Zwróć uwagę, jeśli są to zaawansowane ustawienia inspekcji, przekazywane do serwera usług AD FS, zmiany przy użyciu auditpol.exe zostaną zastąpione (zdarzenie w przypadku aplikacji generowany jest nieskonfigurowany). W tym przypadku Ustaw zasady zabezpieczeń lokalnych, aby rejestrować błędy generowane aplikację i Powodzenie. 
+Użyj polecenia cmdlet programu PowerShell <i>Get-AdfsProperties - AuditLevel</i> upewnij się, dzienniki inspekcji nie znajduje się w stanie wyłączony. Przeczytaj więcej na temat [dzienniki inspekcji usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016). Zwróć uwagę, jeśli są to zaawansowane ustawienia inspekcji, przekazywane do serwera usług AD FS, zmiany przy użyciu auditpol.exe zostaną zastąpione (zdarzenie w przypadku aplikacji generowany jest nieskonfigurowany). W tym przypadku Ustaw zasady zabezpieczeń lokalnych, aby rejestrować błędy generowane aplikację i Powodzenie.
 
 
 ## <a name="related-links"></a>Powiązane linki

@@ -1,8 +1,21 @@
 ---
-Tytuł: Jak modelu usługi Machine Learning Studio staje się titleSuffix usługi sieci web: Opis usługi Azure Machine Learning Studio: Omówienie sposobu działania jak eksperymentować z postępów modelu usługi Azure Machine Learning od etapu programowania do zoperacjonalizowanej usługi sieci Web.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 03/20/2017
+title: Jak model uczenia maszynowego staje się usługi sieci web
+titleSuffix: Azure Machine Learning Studio
+description: Omówienie sposobu działania jak eksperymentować z postępów modelu usługi Azure Machine Learning od etapu programowania do zoperacjonalizowanej usługi sieci Web.
+services: machine-learning
+ms.service: machine-learning
+ms.component: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 03/20/2017
+ms.openlocfilehash: d084917f247aa20f59aea5179efa045838d7a2af
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076897"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak modelu usługi Machine Learning Studio w miarę z eksperymentu do zoperacjonalizowanej usługi sieci Web
 Usługa Azure Machine Learning Studio udostępnia interaktywne kanwy, która pozwala na tworzenie, uruchamianie, testów i modyfikować ***eksperymentować*** reprezentujący modelu analizy predykcyjnej. Istnieją szerokiej gamy dostępnych modułów, które można:
@@ -19,9 +32,9 @@ Po zakończeniu eksperymentu można wdrożyć go jako ***klasycznej Azure Machin
 W tym artykule udostępniamy omówienie sposobu działania jak eksperymentować z postępów modelu uczenia maszynowego od etapu programowania do zoperacjonalizowanej usługi sieci Web.
 
 > [!NOTE]
-> Istnieją inne sposoby tworzenia i wdrażania modeli uczenia maszynowego, ale w tym artykule koncentruje się na jak używać usługi Machine Learning Studio. Na przykład, aby uzyskać opis sposobu tworzenia klasycznego predykcyjne usługi sieci Web przy użyciu języka R, zobacz wpis w blogu [kompilacji i wdrażania predykcyjne sieci Web Apps przy użyciu programu RStudio i Azure ML](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
-> 
-> 
+> Istnieją inne sposoby tworzenia i wdrażania modeli uczenia maszynowego, ale w tym artykule koncentruje się na jak używać usługi Machine Learning Studio. Na przykład, aby uzyskać opis sposobu tworzenia klasycznego predykcyjne usługi sieci Web przy użyciu języka R, zobacz wpis w blogu [kompilacji i wdrażania predykcyjne sieci Web Apps przy użyciu programu RStudio i Azure Machine Learning studio](http://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx).
+>
+>
 
 Gdy usługi Azure Machine Learning Studio jest ułatwia tworzenie i wdrażanie *modelu analizy predykcyjnej*, można używać programu Studio do tworzenia eksperymentu, który nie zawiera modelu analizy predykcyjnej. Na przykład eksperymentu może tylko dane wejściowe, manipulowania go, a następnie wyprowadzi wyniki. Podobnie jak eksperymentu analizy predykcyjnej można wdrożyć tego eksperymentu predykcyjny jako usługę sieci Web, ale jest prostszy proces, ponieważ eksperymentu nie jest szkolenia i oceniania modelu uczenia maszynowego. Mimo że nie jest to typowy używać programu Studio w ten sposób, będzie uwzględniamy je w dyskusji, dzięki czemu możemy udostępnić pełne wyjaśnienie sposobu działania Studio.
 
@@ -50,8 +63,8 @@ W ramach tego procesu konwersji eksperymentu szkolenia nie zostanie usunięty. P
 
 > [!NOTE]
 > Po kliknięciu **predykcyjne usługi sieci Web** uruchamiania procesu automatycznego, aby przekonwertować eksperymentu szkolenia na eksperyment predykcyjny i to działa dobrze w większości przypadków. Jeśli eksperymentu szkolenia jest złożony (na przykład masz wiele ścieżek do trenowania, który można dołączyć razem), możesz preferować ręcznego wykonywania konwersji. Aby uzyskać więcej informacji, zobacz [jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
-> 
-> 
+>
+>
 
 ### <a name="the-web-service"></a>Usługa sieci Web
 Po zakończeniu czy eksperymentu predykcyjnej jest gotowy, można wdrożyć jako usługę sieci Web usługi lub usługi sieci Web nowy oparty na usłudze Resource Manager. Do obsługi operacji modelu, wdrażając go jako *usługi sieci Web Machine Learning*, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]**. Do wdrożenia jako *nowe Machine Learning w sieci Web usługi*, kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [New]**. Użytkownicy mogą teraz wysyłać dane do modelu przy użyciu usługi sieci Web interfejsu API REST i ponownie wyświetlone wyniki. Aby uzyskać więcej informacji, zobacz [How to consume an Azure Machine Learning Web service](consume-web-services.md) (Jak korzystać z usługi internetowej Azure Machine Learning).
@@ -84,7 +97,7 @@ Jeśli chcesz zachować modelu uczenia maszynowego, ale chcesz ponownie ucz je z
 
 1. **Ponowne szkolenie modelu, gdy jest uruchomiona usługa sieci Web** — Jeśli chcesz ponowne szkolenie modelu predykcyjnego usługi sieci Web jest uruchomiona, można to zrobić, wprowadzając kilka zmian eksperymentu szkolenia, aby stał się ***ponownego trenowania eksperymentowanie***, a następnie wdrożyć go jako  ***ponownego trenowania w sieci web* usługi**. Aby uzyskać instrukcje, jak to zrobić, zobacz [Retrain Machine Learning models programowo](retrain-models-programmatically.md).
 2. **Wróć do oryginalnego eksperymentu szkolenia i umożliwia tworzenie modelu danych szkoleniowych różnych** — eksperyment predykcyjny jest połączona z usługą sieci Web, ale eksperymentu szkolenia nie są bezpośrednio powiązane w ten sposób. Jeśli zmodyfikujesz oryginalny eksperymentu szkolenia, a kliknij **ustawić usługę sieci Web**, zostanie utworzony *nowe* predykcyjne eksperymentować, utworzy po wdrożeniu *nowe* sieci Web Usługa. Jednak nie powoduje aktualizacji tylko oryginalnej usługi sieci Web.
-   
+
    Jeśli trzeba zmodyfikować eksperymentu szkolenia, otwórz go i kliknij przycisk **Zapisz jako** do skopiowania. Spowoduje to pozostawić bez zmian, oryginalnym eksperymentu szkolenia eksperyment predykcyjny i usługi sieci Web. Teraz można utworzyć nowej usługi sieci Web, z uwzględnieniem zmienionych uprawnień. Po wdrożeniu nowej usługi sieci Web, możesz następnie zdecydować, czy zatrzymanie poprzedniej usługi sieci Web lub zapewnienia jego działania wraz z nowym.
 
 **Ma to w opracowywaniu innego modelu**

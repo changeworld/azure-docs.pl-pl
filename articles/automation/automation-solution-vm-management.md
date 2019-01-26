@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/04/2018
+ms.date: 1/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d9dfc70c7158c5f808367b8b2041725b03b9060d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: cc0ffc0a209dab0e8610966cb24596d95b7927c3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846187"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913431"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -34,7 +34,7 @@ Ograniczenia związane z bieżącego rozwiązania są następujące:
 > [!NOTE]
 > Jeśli używasz rozwiązania dla klasycznych maszyn wirtualnych, następnie wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie na usługę w chmurze. Maszyny wirtualne są nadal przetwarzane równolegle w różnych usługach w chmurze.
 >
-> Subskrypcje dostawcy rozwiązań w chmurze (Azure CSP) platformy Azure obsługują tylko model usługi Azure Resource Manager, usługi — z usługi Azure Resource Manager nie są dostępne w programie. Po uruchomieniu rozwiązania uruchomień/zatrzymań może wystąpią błędy, ponieważ zawiera ona polecenia cmdlet do zarządzania zasobami klasycznymi. Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [usług dostępnych w ramach subskrypcji programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
+> Subskrypcje dostawcy rozwiązań w chmurze (Azure CSP) platformy Azure obsługują tylko model usługi Azure Resource Manager, usługi — z usługi Azure Resource Manager nie są dostępne w programie. Po uruchomieniu rozwiązania uruchomień/zatrzymań może wystąpią błędy, ponieważ zawiera ona polecenia cmdlet do zarządzania zasobami klasycznymi. Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [usług dostępnych w ramach subskrypcji programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Jeśli używasz subskrypcji dostawcy CSP, należy zmodyfikować [ **External_EnableClassicVMs** ](#variables) zmienną **False** po wdrożeniu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -90,6 +90,9 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
 
 8. Po skonfigurowaniu ustawień początkowych wymaganych dla rozwiązania, kliknij przycisk **OK** zamknąć **parametry** strony i wybierz **Utwórz**. Po wszystkie ustawienia zostaną zweryfikowane, rozwiązanie jest wdrożone do subskrypcji. Ten proces może potrwać kilka sekund, aby zakończyć i śledzić postęp w obszarze **powiadomienia** z menu.
 
+> [!NOTE]
+> Jeśli masz subskrypcję usługi Azure Cloud Solution Provider (CSP platformy Azure), po zakończeniu wdrożenia, na koncie usługi Automation, przejdź do strony **zmienne** w obszarze **zasoby udostępnione** i ustaw [ **External_EnableClassicVMs** ](#variables) zmienną **False**. Spowoduje to zatrzymanie rozwiązania z szukasz zasobów klasycznych maszyn wirtualnych.
+
 ## <a name="scenarios"></a>Scenariusze
 
 Rozwiązanie zawiera trzy różne scenariusze. Te scenariusze są następujące:
@@ -108,8 +111,8 @@ Aby umożliwić przeznaczonych dla akcji względem subskrypcji i grupy zasobów 
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Uruchamianie i zatrzymywanie działania względem subskrypcji i grupie zasobów docelowych
 
 1. Konfigurowanie **External_Stop_ResourceGroupNames** i **External_ExcludeVMNames** zmiennych do określania docelowych maszyn wirtualnych.
-1. Włącz i zaktualizuj **StartVM zaplanowane** i **StopVM zaplanowane** harmonogramów.
-1. Uruchom **ScheduledStartStop_Parent** element runbook z parametrem akcji ustawionym na **start** i ustaw parametr WHATIF **True** nad wersją zapoznawczą zmiany.
+2. Włącz i zaktualizuj **StartVM zaplanowane** i **StopVM zaplanowane** harmonogramów.
+3. Uruchom **ScheduledStartStop_Parent** element runbook z parametrem akcji ustawionym na **start** i ustaw parametr WHATIF **True** nad wersją zapoznawczą zmiany.
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Docelowy akcji uruchamianie i zatrzymywanie przez listy maszyn wirtualnych
 
@@ -205,6 +208,7 @@ W poniższej tabeli wymieniono zmiennych utworzonych na koncie usługi Automatio
 |External_AutoStop_Threshold | Próg alertu Azure reguły określone w zmiennej _External_AutoStop_MetricName_. Wartości procentowe mogą należeć do zakresu od 1 do 100.|
 |External_AutoStop_TimeAggregationOperator | Operator agregacji czasu, która jest stosowana do rozmiaru okna wybranego warunku. Dopuszczalne wartości to **średni**, **co najmniej**, **maksymalna**, **całkowita**, i **ostatniego**.|
 |External_AutoStop_TimeWindow | Rozmiar okna, w którym Azure analizuje wybrane metryki służącą do wyzwalania alertu. Ten parametr akceptuje dane wejściowe w formacie przedziału czasu. Możliwe wartości to od 5 minut do 6 godzin.|
+|External_EnableClassicVMs| Określa, czy klasyczne maszyny wirtualne są objęte rozwiązania. Wartość domyślna to True. Należy można ustawić na wartość False dla subskrypcji programu CSP.|
 |External_ExcludeVMNames | Wprowadź nazwy maszyn wirtualnych, które mają być wykluczone, oddzielając nazwy za pomocą przecinka bez spacji.|
 |External_Start_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości przecinkami, przeznaczone dla działania uruchamiania.|
 |External_Stop_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości za pomocą przecinków, przeznaczony dla akcji stop.|

@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: f44f7167cff316b15124448678c4cae90b384ed9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8408d620ba78fed07c44feae74c607a555d5563b
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54890084"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910589"
 ---
 # <a name="administrator-roles-for-microsoft-365-workloads"></a>Role administratorów dla obciążeń Microsoft 365
 
-Ten artykuł zawiera listę obciążeń Microsoft 365, wraz z łączami do roli i funkcji powierzchni interfejsu API zawartości. Ogólne dyskusje na temat delegowania problemów można znaleźć w [delegacja roli planowania w usłudze Azure Active Directory](roles-concept-delegation.md).
+Wszystkie produkty w usłudze Microsoft 365, można zarządzać za pomocą ról administracyjnych w usłudze Azure AD. Niektóre produkty także podać dodatkowe role, które są specyficzne dla danego produktu. Aby uzyskać informacji na temat ról obsługiwanych przez każdy produkt zobacz w poniższej tabeli. Ogólne dyskusje na temat delegowania problemów można znaleźć w [delegacja roli planowania w usłudze Azure Active Directory](roles-concept-delegation.md).
 
 ## <a name="where-to-find-content"></a>Gdzie można znaleźć zawartości
 

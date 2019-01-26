@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3363b0bbd98b125f0108ca842d5c0b6b9941bf9e
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 300ed77322f66150111ecda70dbf95ac373aad2c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330390"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079175"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -39,7 +39,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | Konflikt | W przypadku żądania operacji, która nie jest dozwolona w bieżącym stanie zasobu. Na przykład zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej. | |
 | DeploymentActive | Poczekaj, aż współbieżnych wdrożenie do tej grupy zasobów, aby zakończyć. | |
 | Niepowodzenia wdrożenia | Błąd niepowodzenia wdrożenia jest błąd ogólny, który nie zapewnia szczegółowe informacje, musisz rozwiązać błąd. Sprawdź szczegóły błędu dla kodu błędu, który zawiera więcej informacji. | [Znajdź kod błędu:](#find-error-code) |
-| DeploymentQuotaExceeded | Jeśli przekroczysz limit 800 wdrożeń dla grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Można usunąć wpisów z historii z [Usuń wdrożenie grupy az](/cli/azure/group/deployment#az-group-deployment-delete) wiersza polecenia platformy Azure lub [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) w programie PowerShell. Usuwanie wpisu z historii wdrożenia nie ma wpływu na zasoby wdrażania. | |
+| DeploymentQuotaExceeded | Jeśli przekroczysz limit 800 wdrożeń dla grupy zasobów, należy usunąć wdrożenia z historii, które nie są już potrzebne. Można usunąć wpisów z historii z [Usuń wdrożenie grupy az](/cli/azure/group/deployment#az-group-deployment-delete) wiersza polecenia platformy Azure lub [AzResourceGroupDeployment Usuń](/powershell/module/az.resources/remove-azresourcegroupdeployment) w programie PowerShell. Usuwanie wpisu z historii wdrożenia nie ma wpływu na zasoby wdrażania. | |
 | DnsRecordInUse | Nazwa rekordu DNS musi być unikatowa. Podaj inną nazwę lub zmodyfikować istniejący rekord. | |
 | ImageNotFound | Sprawdź ustawienia obrazu maszyny Wirtualnej. |  |
 | InUseSubnetCannotBeDeleted | Błąd ten może wystąpić podczas próby zaktualizowania zasobu, ale żądanie jest przetwarzane przez usunięcie i utworzenie zasobu. Upewnij się określić wszystkie wartości bez zmian. | [Aktualizowanie zasobu](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -71,7 +71,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | RequestDisallowedByPolicy | Twoja subskrypcja obejmuje zasady zasobów, które uniemożliwiają akcję, którą próbujesz wykonać podczas wdrażania. Znaleźć zasady, która blokuje akcji. Jeśli to możliwe zmodyfikuj wdrożenie spełnia ograniczenia z zasad. | [Rozwiąż zasad](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Podaj nazwę zasobu, który nie zawiera nazwą zastrzeżoną. | [Nazw zarezerwowanych zasobów](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Oczekiwanie na usunięcie zakończyć. | |
-| ResourceGroupNotFound | Sprawdź nazwę docelowej grupy zasobów dla wdrożenia. Musi już istnieć w subskrypcji. Sprawdź kontekst subskrypcji. | [Interfejs wiersza polecenia Azure](/cli/azure/account?#az-account-set) [programu PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
+| ResourceGroupNotFound | Sprawdź nazwę docelowej grupy zasobów dla wdrożenia. Musi już istnieć w subskrypcji. Sprawdź kontekst subskrypcji. | [Interfejs wiersza polecenia Azure](/cli/azure/account?#az-account-set) [programu PowerShell](/powershell/module/az.profile/set-azcontext) |
 | ResourceNotFound | Wdrożenie odwołuje się do zasobu, którego nie można rozpoznać. Upewnij się, że korzystanie z **odwołania** funkcja zawiera parametrów wymaganych dla danego scenariusza. | [Rozpoznawania odwołań](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Wdrożenie próbuje utworzyć zasoby, które przekraczają limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe poprawić swoją infrastrukturę, aby w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Wybierz jednostkę SKU (np. rozmiar maszyny Wirtualnej), który jest dostępny dla lokalizacji, które wybrałeś. | [Rozwiąż jednostki SKU](resource-manager-sku-not-available-errors.md) |
@@ -89,9 +89,9 @@ Istnieją dwa typy błędów, które mogą odbierać:
 * błędy sprawdzania poprawności
 * błędy związane z wdrażaniem
 
-Błędy sprawdzania poprawności wynikają z scenariusze, które można określić przed przystąpieniem do wdrożenia. Obejmują one błędy składniowe w szablonie lub w trakcie wdrażania zasobów, które spowoduje przekroczenie limity przydziału subskrypcji. Błędy związane z wdrażaniem wynikają z warunków, które występują podczas procesu wdrażania. Obejmują one, próby uzyskania dostępu do zasobu, który jest wdrażany w sposób równoległy.
+Błędy sprawdzania poprawności wynikają z scenariusze, które można określić przed przystąpieniem do wdrożenia. Są to na przykład błędy składniowe w szablonie lub próby wdrożenia zasobów, które przekraczają limity przydziału w ramach subskrypcji. Błędy związane z wdrażaniem wynikają z warunków, które występują podczas procesu wdrażania. Obejmują one próby uzyskania dostępu do zasobu, który jest wdrażany równolegle.
 
-Oba rodzaje błędów zwraca kod błędu, która umożliwia rozwiązywanie problemów z wdrożenia. Oba rodzaje błędy są wyświetlane w [dziennika aktywności](resource-group-audit.md). Jednak błędy sprawdzania poprawności nie pojawiają się w historii wdrożenia, ponieważ wdrożenie nigdy nie został uruchomiony.
+Oba rodzaje błędów zwracają kod błędu, którego należy użyć do rozwiązania problemów z wdrożeniem. Oba rodzaje błędy są wyświetlane w [dziennika aktywności](resource-group-audit.md). Błędy weryfikacji nie są jednak wyświetlane w historii wdrażania, ponieważ wdrożenie nie jest w takim przypadku rozpoczynane.
 
 ### <a name="validation-errors"></a>Błędy weryfikacji
 
@@ -110,7 +110,7 @@ Podczas operacji pozytywnie zweryfikowane, ale nie powiedzie się podczas wdraż
 Aby wyświetlić kody błędów wdrażania i wiadomości za pomocą programu PowerShell, należy użyć:
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
+(Get-AzResourceGroupDeploymentOperation -DeploymentName exampledeployment -ResourceGroupName examplegroup).Properties.statusMessage
 ```
 
 Aby wyświetlić kody błędów wdrażania i komunikatów za pomocą wiersza polecenia platformy Azure, należy użyć:
@@ -140,7 +140,7 @@ Czasami potrzebujesz więcej informacji na temat żądań i odpowiedzi, aby dowi
 W programie PowerShell, należy ustawić **DeploymentDebugLogLevel** parametr do wszystkich, obsah ResponseContent lub RequestContent.
 
 ```powershell
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName examplegroup `
   -TemplateFile c:\Azure\Templates\storage.json `
@@ -150,7 +150,7 @@ New-AzureRmResourceGroupDeployment `
 Sprawdź żądanie zawartości za pomocą następującego polecenia cmdlet:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.request `
 | ConvertTo-Json
@@ -159,7 +159,7 @@ Sprawdź żądanie zawartości za pomocą następującego polecenia cmdlet:
 Lub zawartość odpowiedzi:
 
 ```powershell
-(Get-AzureRmResourceGroupDeploymentOperation `
+(Get-AzResourceGroupDeploymentOperation `
 -DeploymentName exampledeployment `
 -ResourceGroupName examplegroup).Properties.response `
 | ConvertTo-Json

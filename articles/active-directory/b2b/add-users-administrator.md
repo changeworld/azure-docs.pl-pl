@@ -3,19 +3,19 @@ title: Dodają użytkowników we współpracy B2B w witrynie Azure portal — us
 description: Pokazuje, jak administrator może dodać użytkowników-gości do swojego katalogu z organizacji partnerskiej użyciu funkcji współpracy B2B usługi Azure Active Directory (Azure AD).
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 4ef6efed5bd13475a07831d1ff6d096a938f09d7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 43cceeb9b65bcee97855f96c781c5d157b32346a
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428277"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080927"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal
 

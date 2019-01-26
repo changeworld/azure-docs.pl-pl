@@ -3,19 +3,19 @@ title: Konfigurowanie serwera usługi Azure MFA wysokiej dostępności | Dokumen
 description: Wdrażanie wielu wystąpień serwera Azure Multi-Factor Authentication w konfiguracjach, które zapewniają wysoką dostępność.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: e8aaf7b3d0ff17682d0288939136cc6d2f1bfd89
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0ce14b3d78b020bbb8872661351794e82944205e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437627"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081844"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication wysokiej dostępności
 

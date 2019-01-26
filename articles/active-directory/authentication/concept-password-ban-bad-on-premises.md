@@ -3,19 +3,19 @@ title: Usługa Azure AD hasło protection w wersji zapoznawczej
 description: Zablokuj słabe hasła w Active Directory w środowisku lokalnym za pomocą hasła usługi Azure AD protection (wersja zapoznawcza)
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 45c77aa63159a8e62f65c0e250c0ace95b0d344e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b99c1b99fe87c755d6092876ccd598d926289192
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429909"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077834"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Wersja zapoznawcza: Wymuszanie ochrona za pomocą hasła usługi Azure AD dla usługi Active Directory systemu Windows Server
 

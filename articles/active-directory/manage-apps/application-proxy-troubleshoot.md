@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 11508c1f65ddfc7e43ef2301f32d67da3f0a4584
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2eb59d9b07587fe2cfddb088e0cf82bb6762caa4
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904271"
+ms.locfileid: "54912685"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 Jeśli wystąpią błędy podczas uzyskiwania dostępu do opublikowanej aplikacji lub publikowania aplikacji, sprawdź następujące opcje, aby zobaczyć, czy serwer Proxy aplikacji programu Microsoft Azure AD działa prawidłowo:
@@ -54,7 +54,7 @@ Po znalezieniu błąd łącznika z dziennika zdarzeń, użyj tej tabeli typowych
 | Rejestracja łącznika nie powiodło się: Upewnij się, że włączono serwer Proxy aplikacji w portalu zarządzania systemu Azure i poprawnie wprowadzono nazwę użytkownika usługi Active Directory i hasło. Błąd: 'AADSTS50059: Żadne informacje identyfikujące dzierżawy odnaleziony ani w żądaniu lub implikowana przez żaden podane poświadczenia i wyszukiwanie według usługi URI jednostki nie powiodła się. | Próbujesz zalogować się przy użyciu Account firmy Microsoft i nie domeny należącego do organizacji w katalogu, który próbujesz uzyskać dostęp. Upewnij się, że administrator jest częścią tej samej nazwy domeny jako domena dzierżawy, na przykład, jeśli domena usługi Azure AD to contoso.com, administratorem powinien być admin@contoso.com. |
 | Nie można pobrać bieżące zasady wykonywania w uruchomionych skryptów PowerShell. | Jeśli instalacja łącznika nie powiedzie się, sprawdź, upewnij się, że zasady wykonywania programu PowerShell nie jest wyłączone. <br><br>1. Otwórz Edytor zasad grupy.<br>2. Przejdź do **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >   **Program Windows PowerShell** i kliknij dwukrotnie **Włącz wykonywanie skryptu**.<br>3. Zasady wykonywania może być ustawiony na **nieskonfigurowane** lub **włączone**. Jeśli ustawiono **włączone**, upewnij się, że w obszarze Opcje, zasady wykonywania jest ustawiony na **Zezwalaj na lokalne i zdalne podpisanych skryptów** lub **zezwolić na uruchamianie wszystkich skryptów**. |
 | Łącznik nie może pobrać konfigurację. | Certyfikat klienta łącznika, który jest używany do uwierzytelniania, wygasł. Może to również nastąpić, jeśli masz zainstalowanego używasz serwera proxy łącznika. W takim przypadku łącznik nie może uzyskać dostęp do Internetu i nie będzie w stanie zapewnić aplikacje do użytkowników zdalnych. Odnowić relacji zaufania ręcznie przy użyciu `Register-AppProxyConnector` polecenia cmdlet programu Windows PowerShell. Jeśli Twój łącznik znajduje się za serwerem proxy, należy udzielić dostępu do Internetu dla konta łącznika "usługi sieciowej" i "system lokalny". Można to osiągnąć przez nadawania im praw do serwera Proxy lub zmieniając ustawienie w celu obejścia serwera proxy. |
-| Rejestracja łącznika nie powiodło się: Upewnij się, że jesteś administratorem aplikacji, usługi Active Directory, aby zarejestrować łącznik. Błąd: "Żądanie rejestracji zostało odrzucone." | Alias, którego próbujesz się zalogować przy użyciu nie jest administratorem tej domeny. Łącznik jest zawsze instalowany w katalogu, który jest właścicielem domeny użytkownika. Upewnij się, że konto administratora, które próbujesz zarejestrować się za pomocą ma co najmniej uprawnienia administratora aplikacji dzierżawy usługi Azure AD. |
+| Rejestracja łącznika nie powiodło się: Upewnij się, że jesteś administratorem usługi Active Directory, aby zarejestrować łącznik aplikacji. Błąd: "Żądanie rejestracji zostało odrzucone." | Alias, którego próbujesz się zalogować przy użyciu nie jest administratorem tej domeny. Łącznik jest zawsze instalowany w katalogu, który jest właścicielem domeny użytkownika. Upewnij się, że konto administratora, które próbujesz zarejestrować się za pomocą ma co najmniej uprawnienia administratora aplikacji dzierżawy usługi Azure AD. |
 
 ## <a name="kerberos-errors"></a>Błędy protokołu Kerberos
 

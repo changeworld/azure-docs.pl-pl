@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 205ba822b1221de34f3ee1ae25974a406f2013cb
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 7897c677df38bb9b71222730a8b6a9ea11fb40bc
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438102"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912667"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Wyodrębnianie, przekształcanie i ładowanie (ETL) na dużą skalę
 
@@ -78,7 +78,7 @@ Azure Data Lake Store jest również zoptymalizowane pod kątem przyjmowanie zda
 
 Do przekazywania zestawów danych w zakresie terabajtów, opóźnienie sieci może być poważny problem, szczególnie w przypadku, gdy dane pochodzą z lokalizacji lokalnej.  W takich przypadkach można użyć poniższych opcji:
 
-* Usługa ExpressRoute systemu Azure:  Usługa Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrami danych platformy Azure a infrastrukturą lokalną. Połączenia te zapewniają niezawodne opcja przesyłania dużych ilości danych. Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute:  Usługa Azure ExpressRoute umożliwia tworzenie prywatnych połączeń między centrami danych platformy Azure a infrastrukturą lokalną. Połączenia te zapewniają niezawodne opcja przesyłania dużych ilości danych. Aby uzyskać więcej informacji, zobacz [dokumentacji usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
 * "Tryb offline" przekazywanie danych. Możesz użyć [usługa Azure Import/Export](../../storage/common/storage-import-export-service.md) do wysłania z stacje dysków twardych z danymi do centrum danych platformy Azure. Dane, najpierw jest przekazywany do obiektów blob usługi Azure Storage. Następnie można użyć [usługi Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) lub [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) narzędzie do kopiowania danych z obiektów blob usługi Azure Storage do usługi Data Lake Storage.
 
@@ -138,3 +138,4 @@ Po danych istnieje w wybranej lokalizacji, należy go wyczyścić, połączyć g
 
 * [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 * [Za pomocą programu Apache Hive jako narzędzia ETL](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

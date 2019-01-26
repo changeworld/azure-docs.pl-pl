@@ -3,19 +3,19 @@ title: Wskazówki dotyczące licencjonowania współpracy w usłudze Azure Activ
 description: Usługa Azure Active Directory B2B, które nie wymagają współpracy płatne licencje usługi Azure AD, ale użytkownik może również uzyskać płatnych funkcji dla użytkowników-gości B2B
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: d89fb86209af2074794d5a5abcdcebadec904799
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e876c720e9cac4f05fd0776a3aba24976720fb15
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434278"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075843"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Wskazówki dotyczące licencjonowania funkcji współpracy między firmami przy użyciu usługi Azure Active Directory
 

@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/23/2018
+ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 62bb9b6b4b0edd9e45b317c3c4e18872bae2eec4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: MT
+ms.openlocfilehash: 3ed4d3874056eca93e5c94e225ba25d94e7826e3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452840"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911935"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania z zakresu dostępu warunkowego w usłudze Azure Active Directory
 
@@ -55,6 +55,24 @@ Aby ułatwić zasad usługi działa, należy skonfigurować:
 
 
 ## <a name="what-you-should-know"></a>Co należy wiedzieć
+
+
+
+### <a name="how-are-conditional-access-policies-applied"></a>Jak są stosowane zasady dostępu warunkowego
+
+Więcej niż jedne zasady dostępu warunkowego mogą być naliczane, gdy użytkownik uzyskuje dostęp do aplikacji. W takim przypadku należy spełnić wszystkie zasady, które są stosowane. Na przykład, jeśli jeden zasady wymaga użytkownika uwierzytelniania Wieloskładnikowego i drugi wymagają zgodnego urządzenia użytkownik musi MFA i mieć zgodne urządzenie. 
+
+Wszystkie zasady są wymuszane w dwóch fazach:
+
+- W **pierwszy** fazy, wszystkie zasady są oceniane i wszystkich kontroli dostępu, które nie zostały spełnione są zbierane. 
+
+- W **drugi** fazy, zostanie wyświetlony monit, aby spełniać wymagania nie zostały spełnione. Jeśli jedne z zasad zablokuje dostęp, są zablokowane i nie otrzyma monitu o spełnia inne kontrolki zasad. Jeśli żadna z zasad zablokuje użytkownika pojawia się monit o spełnia inne kontrolki zasad, w następującej kolejności:
+
+    ![Zamówienie](./media/best-practices/06.png)
+    
+    Zewnętrznych dostawców usługi MFA i warunki użytkowania są dalej.
+
+
 
 ### <a name="how-are-assignments-evaluated"></a>Jak są obliczane przypisania
 
@@ -154,4 +172,7 @@ Aby uzyskać więcej informacji, zobacz [Migrowanie zasad klasycznych w witrynie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Jeśli chcesz wiedzieć, jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+Jeśli chcesz wiedzieć:
+
+- Jak skonfigurować zasady dostępu warunkowego, zobacz [wymagają usługi MFA dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory](app-based-mfa.md).
+- Jak zaplanować zasady dostępu warunkowego, zobacz [jak zaplanować wdrożenie dostępu warunkowego w usłudze Azure Active Directory](plan-conditional-access.md).

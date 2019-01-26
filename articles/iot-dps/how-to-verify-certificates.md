@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6a6782c5e1cd7b5f42b619cd52470b640813a905
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057360"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913618"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Jak przeprowadzić dowodu posiadania dla certyfikatów X.509 urzędu certyfikacji za pomocą usługi Device Provisioning
 
@@ -54,7 +54,7 @@ Teraz należy podpisać *kod weryfikacyjny* przy użyciu klucza prywatnego skoja
 Firma Microsoft udostępnia narzędzia i przykłady, które mogą pomóc Ci utworzyć certyfikat z podpisem weryfikacji: 
 
 - **Zestawu SDK usługi Azure IoT Hub C** zapewnia programu PowerShell (Windows) i skrypty powłoki Bash (Linux), ułatwiające tworzenie certyfikatów urzędu certyfikacji i liścia do tworzenia i wykonywanie dowodu posiadania za pomocą kodu weryfikacyjnego. Możesz pobrać [pliki](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates) odpowiednie system do folderu roboczego i postępuj zgodnie z instrukcjami wyświetlanymi w [readme certyfikatów urzędu certyfikacji zarządzanie](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) przeprowadzić dowodu posiadania w certyfikacie urzędu certyfikacji. 
-- **Azure IoT Hub zestawu SDK C#** zawiera [Group Certificate Verification Sample](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples/GroupCertificateVerificationSample), którego można użyć w celu dowodu posiadania.
+- **Azure IoT Hub zestawu SDK C#** zawiera [Group Certificate Verification Sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample), którego można użyć w celu dowodu posiadania.
  
 > [!IMPORTANT]
 > Oprócz wykonywania dowodu posiadania, skrypty programu PowerShell i programem Bash wymienionych wcześniej również pozwala na tworzenie certyfikatów głównych, certyfikaty pośrednie i certyfikatów liścia, używane do uwierzytelniania i aprowizować urządzenia. Te certyfikaty powinny być używane do tworzenia aplikacji tylko. One nie mogą być używane w środowisku produkcyjnym. 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4ed919b76ddebde8337337c18c04093bc6072e82
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 25592f80abc8aea338679f199f03114c2d0785f6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121264"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077492"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -168,7 +168,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
     /// Execute method is the only method of IDotNetActivity interface you must implement.
     /// In this sample, the method invokes the Calculate method to perform the core logic.
     /// </summary>
-    
+
     public IDictionary<string, string> Execute(
         IEnumerable<LinkedService> linkedServices,
         IEnumerable<Dataset> datasets,
@@ -201,7 +201,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
 
         // get type properties from the dataset object
         inputTypeProperties = inputDataset.Properties.TypeProperties as AzureBlobDataset;
-    
+
         // log linked services passed in linkedServices parameter
         // you will see two linked services of type: AzureStorage
         // one for input dataset and the other for output dataset
@@ -239,7 +239,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
                                      continuationToken,
                                      null,
                                      null);
-    
+
             // Calculate method returns the number of occurrences of
             // the search term (“Microsoft”) in each blob associated
             // with the data slice. definition of the method is shown in the next step.
@@ -257,7 +257,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path   
+        // log the output folder path
         logger.Write("Writing blob to the folder: {0}", folderPath);
 
         // create a storage object for the output blob.
@@ -293,7 +293,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
             return null;
         }
 
-        // get type properties of the dataset   
+        // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
@@ -307,30 +307,30 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
         if (dataArtifact == null || dataArtifact.Properties == null)
         {
             return null;
         }
-    
+
         // get type properties of the dataset
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
             return null;
         }
-    
+
         // return the blob/file name in the type properties
         return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
         string output = string.Empty;
@@ -379,7 +379,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
     > Wszystkie pliki w archiwum ZIP działania niestandardowego muszą znajdować się na **najwyższym poziomie**, bez podfolderów.
 
     ![Binarne pliki wyjściowe](./media/data-factory-use-custom-activities/Binaries.png)
-14. Utwórz kontener obiektów blob o nazwie **customactivitycontainer** Jeśli jeszcze nie istnieje. 
+14. Utwórz kontener obiektów blob o nazwie **customactivitycontainer** Jeśli jeszcze nie istnieje.
 15. Przekaż MyDotNetActivity.zip jako obiekt blob do customactivitycontainer w **ogólnego przeznaczenia** usługi Azure blob storage (nie gorący/chłodny magazyn obiektów Blob), który jest określany przez AzureStorageLinkedService.
 
 > [!IMPORTANT]
@@ -420,7 +420,7 @@ Poniżej przedstawiono kroki, które należy wykonać w tej sekcji:
    1. Kliknij przycisk **Utwórz zasób** w menu po lewej stronie.
    2. Kliknij przycisk **dane + analiza** w **New** bloku.
    3. Kliknij przycisk **Fabryka danych** w bloku **Analiza danych**.
-   
+
     ![Nowe menu usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
 2. W **nowa fabryka danych** bloku wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **Nazwa fabryki danych "CustomActivityFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład **yournameCustomActivityFactory**), a następnie spróbuj utworzyć ją ponownie.
 
@@ -430,7 +430,7 @@ Poniżej przedstawiono kroki, które należy wykonać w tej sekcji:
 5. Kliknij przycisk **Utwórz** w bloku **Nowa fabryka danych**.
 6. Zostanie wyświetlony w fabryce danych tworzony w **pulpit nawigacyjny** w witrynie Azure Portal.
 7. Po pomyślnym utworzeniu fabryki danych, zobaczysz bloku Data Factory zawartością fabryki danych.
-    
+
     ![Blok Fabryka danych](media/data-factory-use-custom-activities/data-factory-blade.png)
 
 ### <a name="step-2-create-linked-services"></a>Krok 2: Tworzenie połączonych usług
@@ -439,7 +439,7 @@ Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką
 #### <a name="create-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
 1. Kliknij przycisk **tworzenie i wdrażanie** kafelków na **usługi DATA FACTORY** bloku **CustomActivityFactory**. Pojawi się Edytor fabryki danych.
 2. Kliknij przycisk **nowy magazyn danych** na polecenia paska, a następnie wybierz **usługi Azure storage**. Powinien zostać wyświetlony skrypt JSON do tworzenia połączonej usługi Azure Storage w edytorze.
-    
+
     ![Nowy magazyn danych — Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
 3. Zastąp `<accountname>` z nazwą konta usługi Azure storage i `<accountkey>` kluczem dostępu konta usługi Azure storage. Informacje na temat pobierania klucza dostępu do magazynu znajdują się w artykule [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
 
@@ -680,7 +680,7 @@ Rozwiązywanie problemów z obejmuje kilka podstawowych technik:
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ```
-2. Jeśli zostanie wyświetlony następujący błąd, upewnij się, że nazwa klasy w pliku CS odpowiada nazwa określona dla **punktu wejścia** właściwości w kodzie JSON potoku. W instruktażu Nazwa klasy jest: MyDotNetActivity i punktu wejścia w kodzie JSON to: MyDotNetActivityNS. **MyDotNetActivity**.
+2. Jeśli zostanie wyświetlony następujący błąd, upewnij się, że nazwa klasy w pliku CS odpowiada nazwa określona dla **punktu wejścia** właściwości w kodzie JSON potoku. W instruktażu Nazwa klasy jest: MyDotNetActivity i punktu wejścia w kodzie JSON to: MyDotNetActivityNS.**MyDotNetActivity**.
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
@@ -722,7 +722,7 @@ Rozwiązywanie problemów z obejmuje kilka podstawowych technik:
 Po zaktualizowaniu kodu niestandardowego działania, skompiluj go, a następnie przekaż plik zip, który zawiera nowe pliki binarne do magazynu obiektów blob.
 
 ## <a name="appdomain-isolation"></a>Izolacja domeny aplikacji
-Zobacz [obejmujące wiele przykładowych AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , dowiesz się, jak utworzyć niestandardowe działanie, które nie jest ograniczony do wersji zestawu, używanych przez uruchamianie usługi Data Factory (przykład: Verze 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, itp.).
+Zobacz [obejmujące wiele przykładowych AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , dowiesz się, jak utworzyć niestandardowe działanie, które nie jest ograniczony do wersji zestawu, używanych przez uruchamianie usługi Data Factory (przykład: WindowsAzure.Storage v4.3.0, Newtonsoft.Json v6.0.x, etc.).
 
 ## <a name="access-extended-properties"></a>Dostęp do właściwości rozszerzone
 Można zadeklarować właściwości rozszerzone w działaniu, w formacie JSON, jak pokazano w następującym przykładzie:
@@ -1025,7 +1025,7 @@ namespace DataFactoryAPITestApp
 | Sample | Jakie niestandardowe działanie robi |
 | --- | --- |
 | [Narzędzie do pobierania danych HTTP](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Pobiera dane z punktu końcowego HTTP do usługi Azure Blob Storage przy użyciu niestandardowych C# działania w usłudze Data Factory. |
-| [Próbka analizy tonacji w usłudze Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Wywołuje modelu usługi uczenie Maszynowe Azure i analiza tonacji oceniania, przewidywania itp. |
+| [Próbka analizy tonacji w usłudze Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Wywołuje się, Azure Machine Learning studio modelu i analiza tonacji oceniania, prognozowania itp. |
 | [Uruchom skrypt języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Wywołuje skrypt języka R, uruchamiając Rscript.exe.{0}nie w klastrze usługi HDInsight, w którym jest już zainstalowany R na nim. |
 | [Krzyżowe elementu AppDomain działanie platformy .NET](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Używa innego zestawu w wersjach od takich, które jest używane przez uruchamianie usługi Data Factory |
 | [Ponowne przetwarzanie modeli w usługach Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Ponownego przetwarzania modelu w usłudze Azure Analysis Services. |

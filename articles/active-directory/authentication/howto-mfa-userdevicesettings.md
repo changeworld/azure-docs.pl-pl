@@ -3,19 +3,19 @@ title: Administratorzy zarządzania użytkownikami i urządzeniami — usługi A
 description: Opisuje sposób zmiany ustawienia użytkownika, takie jak wymuszanie użytkowników w celu procesu Weryfikacja.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: c5d2b492d2126aa98012fbbac4008c78ced47e93
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 620a36b8b39b826a289567a133c78bae8b7e77b8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421508"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075044"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Zarządzanie ustawieniami użytkownika przy użyciu usługi Azure Multi-Factor Authentication w chmurze
 

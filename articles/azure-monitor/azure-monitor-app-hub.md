@@ -2,7 +2,7 @@
 layout: HubPage
 hide_bc: false
 title: Usługa Azure Monitor Application insights dokumentacja — samouczki i dokumentacja interfejsu API | Dokumentacja firmy Microsoft
-description: TBD
+description: Usługa Azure Monitor Application Insights oferuje funkcje monitorowania wydajności głębokiego kodu na poziomie aplikacji.
 services: application-insights
 author: mrbullwinkle
 manager: carmonmills
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 713368ab02e72ad0b8e51d0bb312a20bd2df690c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6cdcea65fd91e7914bd868ad2472de11986916fa
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830431"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913278"
 ---
 <div id="main" class="v2">
     <div class="container">

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d6e4cc585c1239d6a1b81b371f39fc19e3ff37ea
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7d567d01cef59a2402fa8cb9aecd35c68ae6c2bd
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157177"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077203"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -180,10 +180,10 @@ Spróbujmy również model lasu losowych. Losowe lasach wiele algorytmów uczeni
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-ml"></a>Wdrażanie modelu usługi uczenie Maszynowe Azure
-[Usługa Azure Machine Learning Studio](https://studio.azureml.net/) (Azure ml) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. Jedną z nieuprzywilejowany funkcji usługi Azure ml jest możliwość publikowania dowolnej funkcji języka R jako usługi sieci web. Pakietu języka R uczenia maszynowego Azure ułatwia wdrażanie zrobić bezpośrednio z naszym sesji języka R na maszyny DSVM.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Wdrażanie modelu w usłudze Azure Machine Learning studio
+[Usługa Azure Machine Learning Studio](https://studio.azureml.net/) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. Jedną z nieuprzywilejowany funkcji usługi Azure Machine Learning studio polega na publikowanie żadnych funkcji języka R jako usługi sieci web. Pakiet Azure Machine Learning studio R ułatwia wdrożenie bezpośrednio z naszym sesji języka R na maszyny DSVM.
 
-Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, musisz zalogować się do usługi Azure Machine Learning Studio. Potrzebujesz Identyfikatora obszaru roboczego i token autoryzacji, aby zalogować się. Aby znaleźć te wartości i zainicjować zmienne usługi Azure ml z nimi:
+Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, musisz zalogować się do usługi Azure Machine Learning Studio. Potrzebujesz Identyfikatora obszaru roboczego i token autoryzacji, aby zalogować się. Aby znaleźć te wartości i zainicjować zmienne usługi Azure Machine Learning z nimi:
 
 Wybierz **ustawienia** w menu po lewej stronie. Uwaga swoje **identyfikator obszaru roboczego**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
 
@@ -270,7 +270,7 @@ Do tworzenia aplikacji przy użyciu języka Python dystrybucje Anaconda Python 2
 Spróbujmy odczytać w niektórych spambase zestawu danych i klasyfikowanie wiadomości e-mail z maszynami wektor pomocy technicznej w scikit-Dowiedz się więcej:
 
     import pandas
-    from sklearn import svm    
+    from sklearn import svm
     data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
     X = data.ix[:, 0:57]
     y = data.ix[:, 57]

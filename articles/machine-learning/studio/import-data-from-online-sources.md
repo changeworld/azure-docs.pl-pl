@@ -4,13 +4,13 @@ usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio 
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/29/2017
 ---
-# <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Importowanie danych do usługi Azure Machine Learning Studio ze źródeł danych online 
+# <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Importowanie danych do usługi Azure Machine Learning Studio ze źródeł danych online
 W tym artykule opisano obsługę importowanie danych w trybie online z różnych źródeł oraz informacjami potrzebnymi do przeniesienia danych z tych źródeł do usługi Azure Machine Learning Studio eksperymentować.
 
 > [!NOTE]
 > Ten artykuł zawiera ogólne informacje na temat [importu danych] [ import-data] modułu. Aby uzyskać szczegółowe informacje o typach danych, możesz uzyskać dostęp, formatów, parametrów i odpowiedzi na typowe pytania, zobacz temat odwołania modułu dla [importu danych] [ import-data] modułu.
-> 
-> 
+>
+>
 
 ## <a name="introduction"></a>Wprowadzenie
 Za pomocą [importu danych] [ import-data] modułu dostęp można uzyskać danych z jednego z kilku źródeł danych w trybie online po uruchomieniu eksperymentu [Azure Machine Learning Studio](https://studio.azureml.net/Home):
@@ -29,14 +29,14 @@ Aby uzyskać dostęp do źródeł danych w trybie online w eksperymencie Studio,
 Należy zauważyć, że ponieważ te dane szkoleniowe odbywa się po uruchomieniu eksperymentu, jest on dostępny tylko w tym eksperymencie. Natomiast danych przechowywanych w module zestawu danych są dostępne dla każdego doświadczenia w obszarze roboczym.
 
 > [!IMPORTANT]
-> Obecnie [importu danych] [ import-data] i [Eksport danych] [ export-data] moduły mogą odczytywać i zapisywać dane tylko z usługi Azure storage, utworzony za pomocą klasycznego model wdrażania. Innymi słowy nowy typ konta usługi Azure Blob Storage oferuje Warstwa dostępu gorąca lub chłodna Warstwa dostępu nie jest jeszcze obsługiwane. 
-> 
-> Ogólnie rzecz biorąc, wszystkie konta magazynu platformy Azure może być utworzone przed tej opcji usługa stały się dostępne nie powinny zależeć. 
-> Jeśli potrzebujesz utworzyć nowe konto, wybierz **klasycznego** wdrożenia modelu, lub użyj usługi Resource manager i wybierz **ogólnego przeznaczenia** zamiast **magazynu obiektów Blob** dla  **Rodzaj konta**. 
-> 
+> Obecnie [importu danych] [ import-data] i [Eksport danych] [ export-data] moduły mogą odczytywać i zapisywać dane tylko z usługi Azure storage, utworzony za pomocą klasycznego model wdrażania. Innymi słowy nowy typ konta usługi Azure Blob Storage oferuje Warstwa dostępu gorąca lub chłodna Warstwa dostępu nie jest jeszcze obsługiwane.
+>
+> Ogólnie rzecz biorąc, wszystkie konta magazynu platformy Azure może być utworzone przed tej opcji usługa stały się dostępne nie powinny zależeć.
+> Jeśli potrzebujesz utworzyć nowe konto, wybierz **klasycznego** wdrożenia modelu, lub użyj usługi Resource manager i wybierz **ogólnego przeznaczenia** zamiast **magazynu obiektów Blob** dla  **Rodzaj konta**.
+>
 > Aby uzyskać więcej informacji, zobacz [usługi Azure Blob Storage: Gorącego i chłodnego warstw magazynowania](../../storage/blobs/storage-blob-storage-tiers.md).
-> 
-> 
+>
+>
 
 ## <a name="supported-online-data-sources"></a>Obsługiwane źródła danych online
 Usługa Azure Machine Learning **importu danych** Moduł obsługuje następujące źródła danych:
@@ -53,7 +53,7 @@ Usługa Azure Machine Learning **importu danych** Moduł obsługuje następując
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie usługi sieci web Azure ML używających modułów importu i eksportu danych](web-services-that-use-import-export-modules.md)
+[Wdrażanie usługi Azure Machine Learning studio w sieci web korzystające z modułów importu i eksportu danych](web-services-that-use-import-export-modules.md)
 
 
 <!-- Module References -->

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7e5f56251e00b59a6e6d3be40612f4c8e381dff1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84ce13f78a9c597c780cb0dfa0fa5d16e6175b1c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743004"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077730"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Uczenia maszynowego w HDInsight
 
@@ -42,13 +42,13 @@ Usługa Azure Machine Learning udostępnia narzędzia do analizy predykcyjnej w 
 
 ![Podejmowanie advanced analytics, które są dostępne dla platformy Hadoop za pomocą usługi Microsoft Azure Machine Learning](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
 
-Tworzenie funkcji danych w usłudze HDInsight Hadoop dla klastra przy użyciu [zapytań programu Hive](../machine-learning/team-data-science-process/create-features-hive.md). *Inżynieria funkcji* próbuje zwiększają możliwości predykcyjnych algorytmów uczenia, tworząc funkcje z nieprzetworzone dane, które ułatwiają proces uczenia. Uruchamianie zapytań HiveQL z usługi uczenie Maszynowe Azure i uzyskać dostęp do danych przetworzonych w gałęzi i przechowywane w magazynie obiektów blob za pomocą [modułu importu danych](../machine-learning/studio/import-data.md).
+Tworzenie funkcji danych w usłudze HDInsight Hadoop dla klastra przy użyciu [zapytań programu Hive](../machine-learning/team-data-science-process/create-features-hive.md). *Inżynieria funkcji* próbuje zwiększają możliwości predykcyjnych algorytmów uczenia, tworząc funkcje z nieprzetworzone dane, które ułatwiają proces uczenia. Uruchamianie zapytań HiveQL z usługi Azure Machine Learning studio, a dostęp do danych przetworzonych w gałęzi i przechowywane w magazynie obiektów blob za pomocą [modułu importu danych](../machine-learning/studio/import-data.md).
 
 ## <a name="microsoft-cognitive-toolkit"></a>Zestaw narzędzi usług Microsoft Cognitive
 
 [Uczenie głębokie](https://www.microsoft.com/en-us/research/group/dltc/) to gałąź usługi machine learning korzysta z sieci neuronowych przez procesom mózgu ludzi. Wielu pracowników naukowo-badawczych Zobacz uczenia głębokiego jako obietnic podejście związane z poprawianiem sztucznej inteligencji. Przykłady uczenia głębokiego to tłumaczy mowy, systemy rozpoznawania obrazów i logikę maszyny.
 
-Aby pomóc w dojściu pracę w uczenia głębokiego, firma Microsoft opracowała bezpłatny, łatwy w użyciu, open source [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Ten zestaw narzędzi jest używany przez szerokiej gamy produktów firmy Microsoft, firm na całym świecie z konieczności wdrażania uczenia głębokiego na dużą skalę i studentów zainteresowani najnowsze algorytmy i techniki. 
+Aby pomóc w dojściu pracę w uczenia głębokiego, firma Microsoft opracowała bezpłatny, łatwy w użyciu, open source [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Ten zestaw narzędzi jest używany przez szerokiej gamy produktów firmy Microsoft, firm na całym świecie z konieczności wdrażania uczenia głębokiego na dużą skalę i studentów zainteresowani najnowsze algorytmy i techniki.
 
 ## <a name="see-also"></a>Zobacz także
 

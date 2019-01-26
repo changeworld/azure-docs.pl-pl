@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 47699925f057aab25fe6f7c1c7d0b0620e7e4dbe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227998"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076438"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Zarządzanie formułami Azure DevTest Labs
 
@@ -44,39 +44,35 @@ Poniższe kroki ułatwiają tworzenie formuły z niestandardowego obrazu, obrazu
 
 3. Z listy labs wybierz żądane laboratorium.  
 
-4. W bloku laboratorium wybierz **formuły (zasady wielokrotnego użytku)**.
+4. Na stronie laboratorium wybierz **formuły (zasady wielokrotnego użytku)**.
    
     ![Menu formuły](./media/devtest-lab-create-formulas/lab-settings-formulas.png)
 
-5. Na **formuły** bloku wybierz **+ Dodaj**.
+5. Na **formuły** wybierz opcję **+ Dodaj**.
    
     ![Dodawanie formuły](./media/devtest-lab-create-formulas/add-formula.png)
 
-6. Na **wybierz podstawowej** bloku wybierz pozycję podstawowy (niestandardowego obrazu, obrazu z witryny Marketplace lub formuły), z którego chcesz utworzyć formułę.
+6. Na **wybierz podstawowej** Wybierz podstawowy (niestandardowego obrazu, obrazu z witryny Marketplace lub formuły), z którego chcesz utworzyć formułę.
    
     ![Podstawowa lista](./media/devtest-lab-create-formulas/base-list.png)
 
-7. Na **tworzona jest formuła** bloku określ następujące wartości:
+7. Na **podstawowych ustawień** karcie **tworzona jest formuła** określ następujące wartości:
    
     * **Nazwa formuły** — wprowadź nazwę swojej formule. Ta wartość jest wyświetlana na liście obrazy podstawowe, podczas tworzenia maszyny Wirtualnej. Nazwa jest weryfikowana, wpisz ją, a jeśli to nie jest prawidłowa, komunikat wskazuje, wymagania dotyczące prawidłową nazwę.
-    * **Opis** — Podaj znaczący opis formuły. Ta wartość jest dostępne z menu kontekstowego w formule podczas tworzenia maszyny Wirtualnej.
     * **Nazwa użytkownika** — wprowadź nazwę użytkownika, któremu udzielono uprawnień administratora.
     * **Hasło** — wprowadź — lub wybierz z listy rozwijanej - wartość, która jest skojarzona z klucz tajny (hasło), którego chcesz użyć dla określonego użytkownika. Aby dowiedzieć się więcej na temat zapisywania wpisów tajnych w magazynie kluczy i korzystanie z nich podczas tworzenia zasobów laboratorium, zobacz [Store wpisów tajnych w usłudze Azure Key Vault](devtest-lab-store-secrets-in-key-vault.md).
-    * **Typ dysku maszyny wirtualnej** — określ albo HDD (dysk twardy) lub dysk SSD (SSD), aby wskazać typ dysku magazynu, które jest dozwolone w przypadku maszyn wirtualnych aprowizowane za pomocą tego obrazu podstawowego.
-    * ** Maszyna wirtualna rozmiar ** — wybierz jedną z wstępnie zdefiniowane elementy, które Określ rdzeni procesora, pamięci RAM i rozmiar dysku twardego maszyny wirtualnej, aby utworzyć. 
-    * **Artefakty** — wybierz, aby otworzyć **Dodaj artefakty** bloku, w którym można wybrać i skonfigurować artefaktów, które chcesz dodać do obrazu podstawowego. Aby uzyskać więcej informacji na temat artefaktów, zobacz [Tworzenie niestandardowych artefaktów dla maszyny wirtualnej usługi Azure DevTest Labs](devtest-lab-artifact-author.md).
-    * **Zaawansowane ustawienia** — wybierz, aby otworzyć **zaawansowane** bloku, w którym można skonfigurować następujące ustawienia:
-        * **Sieć wirtualna** -Określ żądany sieci wirtualnej.
-        * **Podsieci** -określ odpowiednią podsieć.    
-        * **Konfiguracja adresu IP** — Określ, czy adresy prywatnej, publicznej lub udostępnione adresów IP. Aby uzyskać więcej informacji o współużytkowanych adresach IP, zobacz [omówienie udostępnionych adresów IP w usłudze Azure DevTest Labs](./devtest-lab-shared-ip.md).
-        * **Przydziel tej maszynie przejęcia** -wprowadzania maszynę "przejęcia" oznacza, że go nie można przypisać własności w czasie tworzenia. Zamiast tego laboratorium użytkownicy będą mogli przejęcie na własność ("oświadczenia") maszyny w laboratorium bloku.     
-    * **Obraz** -wyświetlana nazwa obrazu podstawowego wybranej w poprzednim bloku. 
-     
-       ![Tworzenie formuły](./media/devtest-lab-create-formulas/create-formula.png)
+    * **Rozmiar maszyny Wirtualnej** — wybierz tę opcję **zmienić rozmiar** można zmienić rozmiar maszyny Wirtualnej. 
+    * **Artefakty** — wybierz tę opcję **Dodawanie lub usuwanie artefaktów** strony, w którym można wybrać i skonfigurować artefaktów, które chcesz dodać do obrazu podstawowego. Aby uzyskać więcej informacji na temat artefaktów, zobacz [Tworzenie niestandardowych artefaktów dla maszyny wirtualnej usługi Azure DevTest Labs](devtest-lab-artifact-author.md).
+8. Przełącz się do **Zaawansowane ustawienia** kartę, a następnie określ następujące wartości:
+    - **Sieć wirtualna** — Aby zmienić sieć wirtualną, wybrać **zmienić sieci wirtualnej**. 
+    - **Podsieci** — Aby zmienić podsieć, wybierz **zmienić podsieć**. 
+    - **Konfiguracja adresu IP** — Określ, czy adresy prywatnej, publicznej lub udostępnione adresów IP. Aby uzyskać więcej informacji o współużytkowanych adresach IP, zobacz [omówienie udostępnionych adresów IP w usłudze Azure DevTest Labs](./devtest-lab-shared-ip.md).
+    - **Data i godzina wygaśnięcia** — Podaj datę wygaśnięcia i godzina dla maszyny Wirtualnej tak, aby maszyna wirtualna zostanie automatycznie usunięty. 
+    - **Przydziel tej maszynie przejęcia** -wprowadzania maszynę "przejęcia" oznacza, że go nie można przypisać własności w czasie tworzenia. Zamiast tego użytkownicy laboratorium będzie przejęcie na własność ("oświadczenia") maszyny w laboratorium strony.     
+    - **Liczba wystąpień przejęcia** — Określ, ile instacnes przejęcia, którą chcesz utworzyć. 
+8. Wybierz **przesyłania** utworzyć formułę.
 
-8. Wybierz **Utwórz** utworzyć formułę.
-
-9. Formuła został utworzony, jest wyświetlana na liście na **formuły** bloku.
+9. Formuła został utworzony, jest wyświetlana na liście na **formuły** strony.
 
 ### <a name="create-a-formula-from-a-vm"></a>Tworzenie formuły z maszyny Wirtualnej
 Poniższe kroki ułatwiają tworzenie formuły na podstawie istniejącej maszyny wirtualnej. 
@@ -89,15 +85,15 @@ Poniższe kroki ułatwiają tworzenie formuły na podstawie istniejącej maszyny
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 3. Z listy labs wybierz żądane laboratorium.  
-4. W laboratorium **Przegląd** bloku wybierz maszynę Wirtualną, z którego chcesz utworzyć formułę.
+4. W laboratorium **Przegląd** wybierz maszynę Wirtualną, z którego chcesz utworzyć formułę.
    
     ![Maszyny wirtualne laboratoria](./media/devtest-lab-create-formulas/my-vms.png)
-5. W bloku maszyny Wirtualnej wybierz **tworzona jest formuła (base wielokrotnego użytku)**.
+5. Na stronie maszyny wybierz **tworzona jest formuła (base wielokrotnego użytku)**.
    
     ![Tworzenie formuły](./media/devtest-lab-create-formulas/create-formula-menu.png)
-6. Na **tworzona jest formuła** bloku wprowadź **nazwa** i **opis** dla nowej formuły.
+6. Na **tworzona jest formuła** wpisz **nazwa** i **opis** dla nowej formuły.
    
-    ![Tworzenie formuły bloku](./media/devtest-lab-create-formulas/create-formula-blade.png)
+    ![Tworzenie formuły strony](./media/devtest-lab-create-formulas/create-formula-blade.png)
 7. Wybierz **OK** utworzyć formułę.
 
 ## <a name="modify-a-formula"></a>Modyfikowanie formuły
@@ -106,11 +102,11 @@ Aby zmodyfikować formułę, wykonaj następujące kroki:
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 3. Z listy labs wybierz żądane laboratorium.  
-4. W bloku laboratorium wybierz **formuły (zasady wielokrotnego użytku)**.
+4. Na stronie laboratorium wybierz **formuły (zasady wielokrotnego użytku)**.
    
     ![Menu formuły](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. Na **formuły laboratorium** bloku wybierz formułę, którą chcesz zmodyfikować.
-6. Na **Aktualizovat vzorec** bloku, wprowadź żądane zmiany, a następnie wybierz pozycję **aktualizacji**.
+5. Na **formuły laboratorium** wybierz formułę, którą chcesz zmodyfikować.
+6. Na **Aktualizovat vzorec** strony, wprowadź żądane zmiany, a następnie wybierz **aktualizacji**.
 
 ## <a name="delete-a-formula"></a>Usuwanie formuły
 Aby usunąć formułę, wykonaj następujące kroki:
@@ -118,10 +114,10 @@ Aby usunąć formułę, wykonaj następujące kroki:
 1. Zaloguj się w witrynie [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Wybierz **wszystkich usług**, a następnie wybierz pozycję **DevTest Labs** z listy.
 3. Z listy labs wybierz żądane laboratorium.  
-4. W środowisku laboratoryjnym **ustawienia** bloku wybierz **formuły**.
+4. W środowisku laboratoryjnym **ustawienia** wybierz opcję **formuły**.
    
     ![Menu formuły](./media/devtest-lab-manage-formulas/lab-settings-formulas.png)
-5. Na **formuły laboratorium** bloku, wybierz przycisk wielokropka z prawej strony formułę, którą chcesz usunąć.
+5. Na **formuły laboratorium** stronie, wybierz przycisk wielokropka z prawej strony formułę, którą chcesz usunąć.
    
     ![Menu formuły](./media/devtest-lab-manage-formulas/lab-formulas-blade.png)
 6. W menu kontekstowym tej formuły, wybierz **Usuń**.

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 08/30/2018
+ms.date: 01/23/2019
 ms.author: rolyon
-ms.openlocfilehash: d9a6ab49d619e487eee6fb13abe128cfc167b560
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e81aab8268266c99c9f08e165a98df31f2106123
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306693"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912275"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM
 
@@ -52,12 +52,16 @@ Po skonfigurowaniu usługi PIM dla zasobów platformy Azure, należy odnaleźć 
 
 1. Dodaj znacznik wyboru obok niezarządzane zasoby, które mają być zarządzane.
 
+1. Kliknij przycisk **zarządzanie zasobami** do rozpoczęcia zarządzania wybranych zasobów.
+
     > [!NOTE]
     > Po grupę zarządzania lub subskrypcji jest ustawiony do zarządzanego, nie może być niezarządzane. Zapobiega to usunięcie ustawień usługi PIM przez innego administratora zasobów.
 
     ![Odnajdywanie — zarządzanie zasobami](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Kliknij przycisk **zarządzanie zasobami** do rozpoczęcia zarządzania wybranych zasobów.
+1. Jeśli zostanie wyświetlony komunikat o potwierdzenie dołączanie wybranego zasobu do zarządzania, kliknij przycisk **tak**.
+
+    ![Odnajdywanie — Zarządzanie komunikat zasobu](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

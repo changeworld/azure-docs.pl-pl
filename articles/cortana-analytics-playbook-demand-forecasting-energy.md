@@ -10,29 +10,29 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: d327c649fcf0f42fd8618161c184fa4f572e2b90
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 40bff35c1136d55e968a287d259f2304252f5248
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306492"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078784"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Podręcznik dotyczący szablonu rozwiązań analizy Cortany na prognozowaniu popytu energii
 ## <a name="executive-summary"></a>Podsumowanie dla kierownictwa
-W ciągu kilku ostatnich lat platforma Internetu rzeczy (IoT), alternatywnych źródeł energii i danych big data ma scalane, tworząc duże możliwości w domenie, narzędzie i energii. W tym samym czasie narzędzie i sektora energetycznego całego przejrzane zużycie spłaszczanie przy użyciu klientów wymagających lepsze sposoby kontrolowania ich wykorzystania energii. W związku z tym narzędzia i firm, inteligentne siatki znajdują się w doskonałe potrzebę wprowadzania innowacji i odnowić samodzielnie. Ponadto wiele siatki zużycia i narzędzie stają się nieaktualne i bardzo kosztowna, obsługa i zarządzanie nimi. W ciągu ostatniego roku zespół pracował nad liczby engagements w domenie energii. Podczas tych engagements wystąpił wiele przypadków, w których narzędzia lub niezależnym dostawcom oprogramowania (niezależnym dostawcom oprogramowania) została wyszukiwania do prognozowania zapotrzebowania na energię w przyszłości. Te prognozy odgrywa ważną rolę w działalności bieżące i przyszłe i stały się podstawą do różnych przypadków użycia. Należą do nich prognozy obciążenia krótkoterminowe i długoterminowe zasilania, handlu, równoważenia obciążenia, optymalizacji siatki itp. Dane big data i zaawansowanych analiz (UR) metody takie jak Machine Learning (uczenia Maszynowego) są enablers klucza do produkcji dokładnych i wiarygodnych prognozy.  
+W ciągu kilku ostatnich lat platforma Internetu rzeczy (IoT), alternatywnych źródeł energii i danych big data ma scalane, tworząc duże możliwości w domenie, narzędzie i energii. W tym samym czasie narzędzie i sektora energetycznego całego przejrzane zużycie spłaszczanie przy użyciu klientów wymagających lepsze sposoby kontrolowania ich wykorzystania energii. W związku z tym narzędzia i firm, inteligentne siatki znajdują się w doskonałe potrzebę wprowadzania innowacji i odnowić samodzielnie. Ponadto wiele siatki zużycia i narzędzie stają się nieaktualne i bardzo kosztowna, obsługa i zarządzanie nimi. W ciągu ostatniego roku zespół pracował nad liczby engagements w domenie energii. Podczas tych engagements wystąpił wiele przypadków, w których narzędzia lub niezależnym dostawcom oprogramowania (niezależnym dostawcom oprogramowania) została wyszukiwania do prognozowania zapotrzebowania na energię w przyszłości. Te prognozy odgrywa ważną rolę w działalności bieżące i przyszłe i stały się podstawą do różnych przypadków użycia. Należą do nich prognozy obciążenia krótkoterminowe i długoterminowe zasilania, handlu, równoważenia obciążenia, optymalizacji siatki itp. Dane big data i zaawansowanych analiz (UR) metody takie jak Machine Learning (uczenia Maszynowego) są enablers klucza do produkcji dokładnych i wiarygodnych prognozy.
 
 W ten podręcznik umieściliśmy razem działalności biznesowej i analitycznych wskazówki potrzebne do pomyślnego tworzenia aplikacji, a następnie wdrażania zapotrzebowania na energię Prognoza rozwiązania. Te wytyczne proponowane może pomóc programy narzędziowe, naukowcom i inżynierom danych w ustaleniu w pełni zoperacjonalizowanej, oparte na chmurze, prognozowaniu popytu rozwiązań. Dla przedsiębiorstw, które po prostu uruchamiają swoje dane big data i zaawansowanych analiz podróż takie rozwiązanie może reprezentować początkowej inicjatora w ich długoterminowej strategii inteligentne siatki.
 
 > [!TIP]
-> Aby pobrać diagramu, który zawiera omówienie architektury tego szablonu, zobacz [architekturę szablonu rozwiązania dotyczącego Cortana Intelligence prognozowaniu popytu energii](cortana-analytics-architecture-demand-forecasting-energy.md).  
-> 
-> 
+> Aby pobrać diagramu, który zawiera omówienie architektury tego szablonu, zobacz [architekturę szablonu rozwiązania dotyczącego Cortana Intelligence prognozowaniu popytu energii](cortana-analytics-architecture-demand-forecasting-energy.md).
+>
+>
 
 ## <a name="overview"></a>Przegląd
-W tym dokumencie opisano firmy, dane i technicznych aspektów przy użyciu pakietu Cortana Intelligence i w określonej Azure maszyny Learning (AML) do implementacji i wdrażania rozwiązań energii, prognozowanie. Dokument składa się z trzech głównych części:  
+W tym dokumencie opisano firmy, dane i technicznych aspektów przy użyciu pakietu Cortana Intelligence i w określonej Azure maszyny Learning (AML) do implementacji i wdrażania rozwiązań energii, prognozowanie. Dokument składa się z trzech głównych części:
 
-1. Poznawanie firmy  
-2. Opis danych  
+1. Poznawanie firmy
+2. Opis danych
 3. Implementacja techniczna
 
 **Poznawanie firmy** części opisano aspekt biznesowej należy zrozumieć i wziąć pod uwagę przed podjęciem decyzji o inwestycji. Wyjaśniono, jak zakwalifikować się problem biznesowy do upewnij się, że Analiza predykcyjna i uczenie maszynowe w rzeczywistości skuteczne i ma zastosowanie. Dodatkowo dokumentu objaśnia podstawy uczenia maszynowego i sposobie ich użycia energii, prognozowanie problemów. Zawiera wymagania wstępne oraz kryteria kwalifikacyjne w przypadku użycia. Pewnych przykładowych przypadków użycia i przypadek biznesowy scenariusze są również udostępniane.
@@ -43,7 +43,7 @@ Trzecia część dokumentu opisano **implementacji technicznej** aspektów rozwi
 
 Ponadto dokument zawiera materiały referencyjne dla używanego w celu uzyskania dodatkowych znajomości domeny i technologii.
 
-Należy pamiętać, że firma Microsoft nie będą obejmować w tym dokumencie procesu głębiej do nauki o danych jest jego matematyczne i technicznych aspektów. Te informacje można znaleźć w [dokumentacji usługi Azure ML](https://azure.microsoft.com/services/machine-learning/) i [blogi](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Należy pamiętać, że firma Microsoft nie będą obejmować w tym dokumencie procesu głębiej do nauki o danych jest jego matematyczne i technicznych aspektów. Te informacje można znaleźć w [dokumentacji usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) i [blogi](https://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
 ### <a name="target-audience"></a>Docelowi odbiorcy
 Docelowymi odbiorcami tego dokumentu jest biznesowych i personelu technicznego, którzy chcieliby uzyskać wiedzę i wiedzę na temat usługi Machine Learning na podstawie rozwiązania oraz jak te są używane przede wszystkim w domenie energii, prognozowanie.
@@ -87,7 +87,7 @@ W kontekście zapotrzebowania na energię krótki okres ładowania Prognozowanie
 * Równoważenie obciążenia i przeciążenia zapobiegania
 * Długoterminowych Prognozowanie obciążenia
 * Usterki i wykrywanie anomalii
-* Ograniczenie/wyrównywanie szczytu 
+* Ograniczenie/wyrównywanie szczytu
 
 STLF model opierają się przede wszystkim na niedalekiej przeszłości (ostatniego dnia lub tygodnia) dane dotyczące zużycia i użyj prognozowanych temperatury jako ważne predykcyjne. Uzyskiwanie temperatury dokładne Prognozowanie na następną godzinę i się do 24 godzin staje się mniejszy żądanie teraz dni. Te modele są mniej podatne na sezonowych wzorców lub trendów długoterminowych zużycia.
 
@@ -189,9 +189,9 @@ Następujący akapit w tym artykule opisano proces ten krok 4:
 
 1. **Zbieranie danych** — wszystkie zaawansowane rozwiązanie do analizy na podstawie opiera się na danych (zobacz **interpretacji danych**). W szczególności jeśli chodzi o analizy predykcyjnej i przygotowywać trafniejsze prognozy, Polegamy na stałe, dynamicznych przepływu danych. W przypadku energii prognozowaniu popytu, te dane mogą być pobierane bezpośrednio z inteligentnych mierników lub agregowania się już w lokalnej bazie danych. Możemy również zależy od innych zewnętrznych źródeł danych, takich jak pogoda i temperatury. Ten przepływ bieżących danych należy zorganizowanych, planowane i przechowywane. [Usługa Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) jest naszym głównym najważniejszą metodą roboczą dla wykonania tego zadania.
 2. **Modelowanie** — dla prognoz energii dokładnych i wiarygodnych jeden rozwijania (train) i utrzymywania doskonały model, sprawia, że korzystanie z danych historycznych i wyodrębnia zrozumiałe i predykcyjne wzorce w danych. Obszar Machine Learning (ML) ma zostały rośnie szybko za pomocą bardziej zaawansowanych algorytmów rutynowo opracowywane. Usługa Azure ML Studio udostępnia doskonałe środowisko użytkownika, który ułatwia korzystanie z najbardziej zaawansowanych algorytmów uczenia Maszynowego w ramach przepływu pracy nad. Ten przepływ pracy przedstawia intuicyjne diagram przepływu i obejmuje przygotowywania danych, funkcja wyodrębniania, modelowania i ocenę modelu. Użytkownika można ściągać setki różnych modeli, które znajdują się w tym środowisku. Przed zakończeniem tej fazy analitykiem danych mają model roboczy, który jest w pełni ocenione i gotowe do wdrożenia.
-   
+
    Poniższy diagram jest ilustrację Typowy przepływ pracy:
-   
+
    ![Modelowanie przepływu pracy](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
 3. **Wdrożenie** — przy użyciu modelu pracy w kasie, następnym krokiem jest wdrożenie. W tym miejscu modelu jest konwertowana do usługi sieci web, który uwidacznia interfejs API RESTful, który może być wywoływany współbieżnie przez Internet z różnych klientów przez ludzi. Uczenie Maszynowe systemu Azure zapewnia prostą metodę wdrażania modelu bezpośrednio z usługi Azure ML Studio, za pomocą jednego kliknięcia przycisku. Cały proces wdrażania odbywa się pod maską. To rozwiązanie może automatycznie skalować w celu spełnienia wymagane użycie.
 4. **Użycie** — na tym etapie firma naprawdę coś korzystanie z modelu prognozowania można używać w celu tworzenia prognoz. Użycie mogą być napędzane z poziomu aplikacji użytkownika (*np.*, pulpitu nawigacyjnego) lub bezpośrednio z systemu operacyjnego, takie jak żądanie/dostaw równoważenia systemu lub rozwiązanie do optymalizacji siatki. Wiele przypadków użycia może opierać się na jednym modelu.
@@ -321,8 +321,8 @@ W ostatnich latach zostały opracowane zaawansowanych algorytmów umożliwiając
 
 > [!NOTE]
 > W tej sekcji nie jest przeznaczona do użycia jako uczenia maszynowego i prognozowanie Przegląd, ale raczej jako krótką ankietę modelowania technik, które są często używane do prognozowania popytu. Aby uzyskać więcej informacji i materiały edukacyjne o Prognozowanie serii czasu, zdecydowanie zaleca się książki online [Prognozowanie: zasady i praktyki](https://www.otexts.org/).
-> 
-> 
+>
+>
 
 #### <a name="ma-moving-average"></a>**MA (średniej ruchomej)**
 Średnia ruchoma to jedna z pierwszym technik analitycznych, używane do prognozowania serii czasu i jest nadal w jednym z najbardziej najczęściej używanych technik dziś. Jest również podstawą dla bardziej zaawansowane techniki prognozowania. Za pomocą średnia krocząca przy średniej za pośrednictwem K najnowsze punkty, gdzie K oznacza kolejność średniej ruchomej firma Microsoft są Prognozowanie następnego punktu danych.

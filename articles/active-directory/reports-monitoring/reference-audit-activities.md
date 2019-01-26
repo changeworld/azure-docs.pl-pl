@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a851d9cd4322f2460bfa7f74854c44e77a52e0a6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6b5679a8d3f8cf449b9539e8595e14a87e882ac7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818187"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912888"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
@@ -43,34 +43,36 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 
 |Kategorii inspekcji|Działanie|
 |---|---|
-|Zarządzanie katalogami|Dodawanie jednostki administracyjnej|
-|Zarządzanie katalogami|Dodawanie elementu członkowskiego do jednostki administracyjnej|
-|Zarządzanie katalogami|Usuwanie jednostki administracyjnej|
-|Zarządzanie katalogami|Usuwanie elementu członkowskiego z jednostki administracyjnej|
-|Zarządzanie katalogami|Aktualizowanie jednostki administracyjnej|
-|Zarządzanie katalogami|Administracja|
-|Zarządzanie użytkownikami|Operacja katalogu|
-|Zarządzanie użytkownikami|Eksportowanie|
-|Zarządzanie użytkownikami|Import|
-|Zarządzanie użytkownikami|Inne|
-|Zarządzanie użytkownikami|Przetwarzanie depozytu|
-|Zarządzanie użytkownikami|Akcja reguły synchronizacji|
-|Zarządzanie użytkownikami|Dodawanie aplikacji|
-|Zarządzanie użytkownikami|Usuwanie aplikacji|
-|Zarządzanie użytkownikami|Aktualizowanie aplikacji|
-|Zarządzanie użytkownikami|Aktualizowanie trybu logowania jednokrotnego do aplikacji|
-|Zarządzanie użytkownikami|Automatyczne przenoszenie haseł|
-|Zarządzanie użytkownikami|Dodawanie uprawnień aplikacji w wersji 2|
-|Zarządzanie użytkownikami|Tworzenie aplikacji w wersji 1|
-|Zarządzanie użytkownikami|Tworzenie aplikacji w wersji 2|
-|Zarządzanie użytkownikami|Usuwanie aplikacji w wersji 1|
-|Zarządzanie użytkownikami|Usuwanie aplikacji w wersji 2|
-|Zarządzanie użytkownikami|Usuwanie udzielenia uprawnień aplikacji w wersji 2|
-|Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 1 i 2|
-|Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 1|
-|Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 1|
-|Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 2|
-|Zarządzanie użytkownikami|Pobieranie aplikacji w wersji 2|
+|Przeglądy dostępu|Zakończono przegląd dostępu|
+|Przeglądy dostępu|Dodawanie osoby zatwierdzającej do zatwierdzenia żądania|
+|Przeglądy dostępu|Dodawanie recenzenta do przeglądu dostępu|
+|Przeglądy dostępu|Zastosowanie przeglądu dostępu|
+|Przeglądy dostępu|Tworzenie przeglądu dostępu|
+|Przeglądy dostępu|Tworzenie programu|
+|Przeglądy dostępu|Tworzenie zatwierdzenia żądania|
+|Przeglądy dostępu|Usuwanie przeglądu dostępu|
+|Przeglądy dostępu|Usuwanie programu|
+|Przeglądy dostępu|Połączenie kontroli programu|
+|Przeglądy dostępu|Dodawanie do przeglądów dostępu usługi Azure AD|
+|Przeglądy dostępu|Usuwanie recenzenta z przeglądu dostępu|
+|Przeglądy dostępu|Żądanie zatrzymania przeglądu|
+|Przeglądy dostępu|Żądanie zastosowania wyniku przeglądu|
+|Przeglądy dostępu|Przeglądanie członkostwa w roli funkcji RBAC|
+|Przeglądy dostępu|Przeglądanie przypisania aplikacji|
+|Przeglądy dostępu|Przeglądanie członkostwa w grupie|
+|Przeglądy dostępu|Przeglądanie żądania zatwierdzenia żądania|
+|Przeglądy dostępu|Odłączanie kontroli programu|
+|Przeglądy dostępu|Aktualizowanie przeglądu dostępu|
+|Przeglądy dostępu|Aktualizacja stanu dołączania przeglądów dostępu usługi Azure AD|
+|Przeglądy dostępu|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
+|Przeglądy dostępu|Aktualizowanie ustawienia licznika cyklu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizowanie ustawienia czasu trwania cyklu przeglądu dostępu (w dniach)|
+|Przeglądy dostępu|Aktualizowanie ustawienia typu zakończenia cyklu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizowanie ustawienia typu cyklu przeglądu dostępu|
+|Przeglądy dostępu|Aktualizowanie ustawień przypomnienia przeglądu dostępu|
+|Przeglądy dostępu|Aktualizowanie programu|
+|Przeglądy dostępu|Aktualizowanie zatwierdzenia żądania|
+|Przeglądy dostępu|Wyłączony użytkownik|
 
 ## <a name="account-provisioning"></a>Aprowizacja kont
 
@@ -526,23 +528,27 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 
 |Kategorii inspekcji|Działanie|
 |---|---|
-|Zarządzanie rolami|Aktualizowanie ustawień przypomnienia przeglądu dostępu|
-|Zarządzanie rolami|Aktualizowanie zatwierdzenia żądania|
-|Zarządzanie rolami|Dodawanie udzielenia przypisania roli aplikacji do użytkownika|
-|Zarządzanie rolami|Dodawanie użytkownika|
-|Zarządzanie rolami|Dodawanie szczegółów dotyczących aplikacji telefonicznej do silnego uwierzytelniania użytkowników|
-|Zarządzanie rolami|Zmienianie licencji użytkownika|
-|Zarządzanie rolami|Zmienianie hasła użytkownika|
-|Zarządzanie rolami|Konwertowanie użytkownika federacyjnego na zarządzanego|
-|Zarządzanie rolami|Tworzenie hasła aplikacji dla użytkownika|
-|Zarządzanie rolami|Usuwanie hasła aplikacji dla użytkownika|
-|Zarządzanie rolami|Usuwanie użytkownika|
-|Zarządzanie rolami|Wyłączanie konta|
-|Zarządzanie rolami|Włączanie silnego uwierzytelniania|
-|Zarządzanie rolami|Całkowite usuwanie użytkownika|
-|Zarządzanie rolami|Usuwanie przypisania roli aplikacji z użytkownika|
-|Zarządzanie rolami|Usuwanie szczegółów dotyczących aplikacji telefonicznej do silnego uwierzytelniania użytkowników|
-
+|PIM|ActivationAborted|
+|PIM|ActivationApproved|
+|PIM|ActivationCanceled|
+|PIM|ActivationDenied|
+|PIM|ActivationRequested|
+|PIM|Dodano|
+|PIM|AddedOutsidePIM|
+|PIM|Przypisywanie|
+|PIM|DismissAlert|
+|PIM|Podnoszenie poziomu uprawnień|
+|PIM|ReactivateAlert|
+|PIM|Usunięto|
+|PIM|RemovedOutsidePIM|
+|PIM|Żądanie zatrzymania przeglądu|
+|PIM|Zmiany ustawienia roli|
+|PIM|ScanAlertsNow|
+|PIM|Rejestracja|
+|PIM|Cofanie przypisania|
+|PIM|Obniżanie poziomu uprawnień|
+|PIM|UpdateAlertSettings|
+|PIM|UpdateCurrentState|
 
 
 ## <a name="self-service-group-management"></a>Samoobsługowe zarządzanie grupami
@@ -580,13 +586,16 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 
 |Kategorii inspekcji|Działanie|
 |---|---|
-|Zarządzanie zasadami|Zmienianie hasła (samoobsługa)|
-|Zarządzanie zasadami|Resetowanie hasła (przez administratora)|
-|Zarządzanie zasadami|Resetowanie hasła (samoobsługa)|
-|Zarządzanie zasadami|Postęp działania przepływu samoobsługowego resetowania hasła|
-|Zarządzanie zasadami|Postęp działania przepływu samoobsługowego resetowania hasła|
-|Zarządzanie zasadami|Odblokowywanie konta użytkownika (samoobsługa)|
-|Zarządzanie zasadami|Użytkownik zarejestrowany do samoobsługowego resetowania haseł|
+|Warunki użytkowania|Akceptowanie warunków użytkowania|
+|Warunki użytkowania|Tworzenie warunków użytkowania|
+|Warunki użytkowania|Odrzucanie warunków użytkowania|
+|Warunki użytkowania|Usuń zgodę|
+|Warunki użytkowania|Usuwanie warunków użytkowania|
+|Warunki użytkowania|Edytowanie warunków użytkowania|
+|Warunki użytkowania|Wygaśnięcie warunki użytkowania|
+|Warunki użytkowania|Twarde usuwania warunków użytkowania|
+|Warunki użytkowania|Publikowanie warunków użytkowania|
+|Warunki użytkowania|Cofanie publikacji warunków użytkowania|
 
 
 ## <a name="next-steps"></a>Kolejne kroki

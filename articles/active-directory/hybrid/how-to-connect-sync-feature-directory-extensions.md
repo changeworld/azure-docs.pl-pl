@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e96a7d88a2e30bbedd6c57f9a72dd92f63586dd1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0d058dc1875c69fe3c582c4d68da81c09ab92fcb
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476907"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079711"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Synchronizacja programu Azure AD Connect: Rozszerzenia katalogów
 Umożliwia rozszerzeń katalogów rozszerzania schematu w usłudze Azure Active Directory (Azure AD) przy użyciu atrybutów z usługi Active Directory w środowisku lokalnym. Ta funkcja umożliwia tworzenie aplikacji biznesowych za korzystanie z atrybutów, które nadal zarządzać w środowisku lokalnym. Te atrybuty mogą być używane za pośrednictwem [rozszerzenia katalogów interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) lub [programu Microsoft Graph](https://developer.microsoft.com/graph/). Zobaczysz dostępne atrybuty za pomocą [programu Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) i [programu Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)odpowiednio.
@@ -42,7 +42,7 @@ Instalacja pokazuje następujące atrybuty, które są kandydatami prawidłowy:
 
 
 >[!NOTE]
-> Azure AD Connect obsługuje synchronizowanie wielowartościowe atrybuty usługi Active Directory do usługi Azure AD jako rozszerzenia katalogów wielowartościowych. Ale żadnych funkcji w usłudze Azure AD obecnie obsługuje korzystanie z rozszerzenia katalogów wielowartościowe.
+> Mimo że program Azure AD Connect obsługuje synchronizacji wielowartościowe usługi Active Directory atrybutów do usługi Azure AD jako rozszerzenia katalogów wielokrotne, obecnie nie ma możliwości pobierania/korzystanie z danych przekazanych w atrybuty rozszerzenia katalogu wielowartościowych.
 
 Lista atrybutów są odczytywane z pamięci podręcznej schematu, który jest tworzony podczas instalacji programu Azure AD Connect. Jeśli rozszerzono schemat usługi Active Directory przy użyciu dodatkowych atrybutów, musisz najpierw [odświeżyć schemat](how-to-connect-installation-wizard.md#refresh-directory-schema) przed te atrybuty są widoczne.
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 51d3c1c63c07c3e2a36d5e963ec00c9f23831579
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 29fef9177e40bd89dd0f179b028d2f044af8addb
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634222"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913098"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>Analizowanie danych w usługi Data Lake Storage przy użyciu klastra platformy HDInsight Spark
 
@@ -24,7 +24,7 @@ W tym samouczku użyjesz [notesu programu Jupyter](https://jupyter.org/) dostęp
 
 * Konto magazynu Azure Data Lake. Postępuj zgodnie z instrukcjami w artykule [wprowadzenie do usługi Azure Data Lake Storage przy użyciu witryny Azure portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Klaster usługi Azure HDInsight Spark przy użyciu usługi Data Lake Storage jako magazynu. Postępuj zgodnie z instrukcjami w artykule [Szybki start: Konfigurowanie klastrów w HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* Klaster usługi Azure HDInsight Spark przy użyciu usługi Data Lake Storage jako magazynu. Postępuj zgodnie z instrukcjami w artykule [Szybki start: Konfigurowanie klastrów w usłudze HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
@@ -131,3 +131,4 @@ Jeśli utworzono klaster usługi HDInsight przy użyciu usługi Data Lake Storag
 * [Tworzenie autonomicznego Scala aplikacji do uruchamiania w klastrze Apache Spark](apache-spark-create-standalone-application.md)
 * [Narzędzia HDInsight w usłudze Azure Toolkit for IntelliJ do tworzenia aplikacji platformy Apache Spark dla klastra HDInsight Spark systemu Linux](apache-spark-intellij-tool-plugin.md)
 * [Korzystaj z narzędzi HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra HDInsight Spark systemu Linux](apache-spark-eclipse-tool-plugin.md)
+* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

@@ -4,17 +4,17 @@ description: Definicja zasad platformy Azure ma różne efekty, określające sp
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c84af250a9e8dbff578f58abc7e3558d95ecbe93
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904543"
+ms.locfileid: "54912513"
 ---
 # <a name="understand-policy-effects"></a>Interpretacja efektów działania zasad
 
@@ -259,7 +259,7 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
   - Ta właściwość musi zawierać tablicę ciągów, które jest zgodny z Identyfikatorem roli kontroli dostępu opartej na rolach dostępna w subskrypcji. Aby uzyskać więcej informacji, zobacz [korygowania — konfigurowanie definicji zasad](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (opcjonalnie)
   - Dozwolone wartości to _subskrypcji_ i _ResourceGroup_.
-  - Ustawia typ wdrożenia, które należy wykonać. _Subskrypcja_ wskazuje [wdrażania na poziomie subskrypcji]((../../../azure-resource-manager/deploy-to-subscription)), _ResourceGroup_ oznacza wdrożenie w grupie zasobów.
+  - Ustawia typ wdrożenia, które należy wykonać. _Subskrypcja_ wskazuje [wdrażania na poziomie subskrypcji](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ oznacza wdrożenie w grupie zasobów.
   - A _lokalizacji_ musi zostać określona właściwość _wdrożenia_ przy użyciu wdrożeń poziomu subskrypcji.
   - Wartość domyślna to _ResourceGroup_.
 - **Wdrożenie** [wymagane]

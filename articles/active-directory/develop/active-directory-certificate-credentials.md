@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/24/2018
 ms.author: celested
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7d3796d8d4a5a2e292afaf9cd013ff04ffc082c5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d9e877fd648c28564f5eccc46f9c20741fe446f8
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578674"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076319"
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Certyfikat poświadczeń do uwierzytelniania aplikacji
 
@@ -45,12 +45,12 @@ Do obliczenia potwierdzenie, można użyć jednego z wielu [JSON Web Token](http
 
 | Parametr |  Uwagi |
 | --- | --- |
-| `aud` | : Odbiorcy  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/token.** |
+| `aud` | Odbiorcy: Powinien być  **https://login.microsoftonline.com/ *tenant_Id*  /oauth2/token.** |
 | `exp` | Data wygaśnięcia: Data wygaśnięcia tokenu. Czas jest reprezentowany jako sekundach od 1 stycznia 1970 r. (1970-01-01T0:0:0Z) UTC do czasu wygaśnięcia ważności tokenu.|
 | `iss` | Wystawca: powinien być client_id (identyfikator aplikacji usługi klienta) |
 | `jti` | Identyfikator GUID: identyfikator JWT |
 | `nbf` | Nie wcześniej niż: Data przed którym nie można używać tokenu. Czas jest reprezentowany jako sekundach od 1 stycznia 1970 r. (1970-01-01T0:0:0Z) UTC do czasu jego token został wystawiony. |
-| `sub` | Temat: jak w przypadku `iss`, powinny być client_id (identyfikator aplikacji usługi klienta) |
+| `sub` | Temat: Jak w przypadku `iss`, powinny być client_id (identyfikator aplikacji usługi klienta) |
 
 ### <a name="signature"></a>Podpis
 

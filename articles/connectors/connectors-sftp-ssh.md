@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e0f0230241bdffa97b94c88eb4b2d76fd44bcdea
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 807a99a8cac7326648ff4aa91b9fcdeb35de196a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320790"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54910187"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie plikami SFTP przy użyciu protokołu SSH i Azure Logic Apps
 
@@ -27,7 +27,7 @@ Automatyzowanie zadań, które monitorowania, tworzenie, wysyłanie i odbieranie
 * Pobierz zawartość pliku i metadanych.
 * Wyodrębnij archiwum do folderów.
 
-W porównaniu do [łącznika SFTP](../connectors/connectors-create-api-sftp.md), łącznik SFTP-SSH może odczytać lub zapisać pliki do *1 GB* rozmiar. Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) w dalszej części tego artykułu.
+W porównaniu do [łącznika SFTP](../connectors/connectors-create-api-sftp.md), łącznik SFTP-SSH może odczytać lub zapisać pliki do *1 GB* w rozmiarze przez zarządzanie danymi w 50 MB elementy. W przypadku plików większych niż 1 GB, można użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Więcej różnic, można przejrzeć [porównania SFTP-SSH i SFTP](#comparison) w dalszej części tego artykułu.
 
 Możesz użyć wyzwalaczy, które monitorowania zdarzeń na serwerze SFTP i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonywania różnych zadań na serwerze SFTP. Mogą też istnieć inne akcje w aplikacji logiki, użyć danych wyjściowych z akcji SFTP. Na przykład jeśli regularnie możesz pobrać pliki z serwera SFTP, możesz wysłać alerty e-mail dotyczące tych plików i ich zawartości za pomocą łącznika usługi Office 365 Outlook lub łącznik usługi Outlook.com.
 Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
@@ -48,7 +48,7 @@ Poniżej przedstawiono inne podstawowe różnice między łącznik SFTP-SSH i ł
   > * **Algorytmy szyfrowania**: EDE3-DES-CBC, DES-EDE3-CFB DES-CBC, AES-128-CBC, 192-AES-CBC i AES-256-CBC
   > * **Odcisk palca**: MD5
 
-* Operacja odczytu lub zapisu do plików *1 GB* rozmiar w porównaniu do łącznika SFTP, ale obsługuje dane w 50 MB fragmentów, nie 1 GB fragmentów.
+* Operacja odczytu lub zapisu do plików *1 GB* rozmiar w porównaniu do łącznika SFTP, ale obsługuje dane w 50 MB fragmentów, nie 1 GB fragmentów. W przypadku plików większych niż 1 GB, można również użyć akcji [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md). Obecnie usługa wyzwalaczy nie obsługują segmentu.
 
 * Udostępnia **Utwórz folder** akcji, która tworzy folder w określonej ścieżce na serwerze SFTP.
 
@@ -130,12 +130,15 @@ Wyzwalacze SFTP-SSH działają przez sondowanie system plików SFTP i szukasz ka
 
 Jeśli wyzwalacz wykryje nowy plik, wyzwalacz sprawdzi, czy nowy plik jest pełny i niezapisane częściowo. Na przykład plik może mieć zmiany w toku, gdy wyzwalacz sprawdza, czy serwer plików. Aby uniknąć, zwracając częściowo napisane pliku, wyzwalacz — informacje o sygnaturę czasową dla pliku, który zawiera ostatnie zmiany, ale nie natychmiast przywrócić ten plik. Wyzwalacz zwraca plik tylko wtedy, gdy ponownie sondowania serwera. Czasami to zachowanie może powodować opóźnienia, która jest maksymalnie dwa razy tego wyzwalacza interwał sondowania. 
 
-Podczas żądania zawartości pliku, wyzwalacz nie pobierać pliki o rozmiarze większym niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru:
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
 
-* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**. 
-* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**.
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+
+* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 
 ## <a name="examples"></a>Przykłady
+
+<a name="file-added-modified"></a>
 
 ### <a name="sftp---ssh-trigger-when-a-file-is-added-or-modified"></a>SFTP — wyzwalanie SSH: Po dodaniu lub zmodyfikowaniu pliku
 
@@ -143,9 +146,23 @@ Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki, gdy plik zostan
 
 **Przykład Enterprise**: Tego wyzwalacza można używać do monitorowania folderu SFTP dla nowych plików, które reprezentują zamówienia. Można następnie użyć akcji SFTP takich jak **Pobierz zawartość pliku** , Pobierz zawartość w kolejności do dalszego przetwarzania i przechowywania tej kolejności w bazie danych zamówień.
 
-### <a name="sftp---ssh-action-get-content"></a>SFTP - SSH akcji: Pobieranie zawartości
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+
+* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
+
+<a name="get-content"></a>
+
+### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH akcji: Pobierz zawartość przy użyciu ścieżki
 
 Ta akcja pobiera zawartość z pliku na serwer SFTP. Na przykład można dodać wyzwalacza z poprzedniego przykładu i warunek, który musi spełniać zawartość pliku. Jeśli warunek jest spełniony, można uruchomić akcję, która pobiera zawartość. 
+
+Podczas żądania zawartości pliku, wyzwalaczy nie uzyskasz plików większych niż 50 MB. Aby pobrać pliki większe niż 50 MB, należy korzystać z tego wzoru: 
+
+* Użyj wyzwalacz, który zwraca wartość właściwości pliku, taką jak **gdy plik jest dodawany lub modyfikowany (tylko właściwości)**.
+
+* Postępuj zgodnie z wyzwalacza z akcji, która odczytuje plik pełną, takich jak **Pobierz zawartość pliku przy użyciu ścieżki**, i akcji, użyj [segmentu komunikat](../logic-apps/logic-apps-handle-large-messages.md).
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ace5901012c5bc66a560dafd3a403183d6ce8c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 81bbf2b69e0e492ea75e8cbbe980d7e83a86eae7
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422835"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912854"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnozowanie maszyny wirtualnej problemu z routingiem sieciowym - programu Azure PowerShell
 
@@ -127,7 +127,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Jak widać w danych wyjściowych poprzedniego, z trasą **AaddressPrefix** z **0.0.0.0/0** kieruje cały ruch, które nie są przeznaczone dla adresów w obrębie innej trasy prefiksy adresów z następnym przeskokiem **Internet**. Jak widać również w danych wyjściowych, mimo że ma domyślną trasę do prefiksu 172.16.0.0/12, która zawiera 172.31.0.100 adres, **Typ następnego przeskoku** jest **Brak**. Platforma Azure tworzy domyślną trasę dla zakresu adresów 172.16.0.0/12, ale nie określa typu następnego przeskoku, jeśli nie jest to wymagane. Jeśli na przykład dodano 172.16.0.0/12 zakresu adresów przestrzeni adresowej sieci wirtualnej, zmieni się Azure **Typ następnego przeskoku** do **sieć wirtualna** dla danej trasy. Następnie pokazywałaby sprawdzenie **sieć wirtualna** jako **Typ następnego przeskoku**.
+Jak widać w danych wyjściowych poprzedniego, z trasą **AddressPrefix** z **0.0.0.0/0** kieruje cały ruch, które nie są przeznaczone dla adresów w obrębie innej trasy prefiksy adresów z następnym przeskokiem **Internet**. Jak widać również w danych wyjściowych, mimo że ma domyślną trasę do prefiksu 172.16.0.0/12, która zawiera 172.31.0.100 adres, **Typ następnego przeskoku** jest **Brak**. Platforma Azure tworzy domyślną trasę dla zakresu adresów 172.16.0.0/12, ale nie określa typu następnego przeskoku, jeśli nie jest to wymagane. Jeśli na przykład dodano 172.16.0.0/12 zakresu adresów przestrzeni adresowej sieci wirtualnej, zmieni się Azure **Typ następnego przeskoku** do **sieć wirtualna** dla danej trasy. Następnie pokazywałaby sprawdzenie **sieć wirtualna** jako **Typ następnego przeskoku**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

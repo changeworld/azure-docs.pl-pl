@@ -10,17 +10,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 982e92d02e17aaefe0b197562013704636e3065f
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743708"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912422"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Wiele klastrów HDInsight za pomocą konta usługi Azure Data Lake Storage
 
 Począwszy od HDInsight w wersji 3.5, można utworzyć klastry HDInsight z kontami usługi Azure Data Lake Storage jako domyślny system plików.
-Magazyn usługi Data Lake obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. można jednak również do hostowania wielu HDInsight clusters udziału pojedynczego konta magazynu usługi Data Lake. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu usługi Data Lake Storage jako magazynu, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Magazyn usługi Data Lake obsługuje nieograniczony magazyn, który to idealny nie tylko do obsługi dużych ilości danych. można jednak również do hostowania wielu HDInsight clusters udziału pojedynczego konta magazynu usługi Data Lake. Aby uzyskać instrukcje dotyczące sposobu tworzenia klastra usługi HDInsight przy użyciu usługi Data Lake Storage jako magazynu, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 Ten artykuł zawiera zalecenia dla administratora usługi Data Lake Storage dotyczące konfigurowania pojedynczego i udostępnianie magazynu konta usługi Data Lake używany w wielu **active** klastry HDInsight. Te zalecenia dotyczą obsługującego wiele bezpieczne, a także — Zabezpieczanie klastrów Apache Hadoop dla udostępnionego konta usługi Data Lake Storage.
 
@@ -37,9 +37,9 @@ Aby umożliwić tej struktury folderów do efektywnego użycia przez klastry HDI
 
 |Folder  |Uprawnienia  |Użytkownik będący właścicielem  |Grupa będąca właścicielem  | Użytkownik nazwany | Uprawnienia użytkownika o nazwie | Nazwanej grupy | Uprawnienia grupy nazwane |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |Administrator |Administrator  |Jednostka usługi |--x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |Administrator |Administrator |Jednostka usługi |--x  |FINGRP |r-x         |
-|/ klastrów/Finanse | rwxr-x--t |Administrator |FINGRP  |Jednostka usługi |rwx  |-  |-     |
+|/ | rwxr-x--x  |admin |admin  |Jednostka usługi |--x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |admin |admin |Jednostka usługi |--x  |FINGRP |r-x         |
+|/ klastrów/Finanse | rwxr-x--t |admin |FINGRP  |Jednostka usługi |rwx  |-  |-     |
 
 W tabeli
 
@@ -94,4 +94,4 @@ Zestaw odczytu — uprawnienia do uruchamiania **innych** za pośrednictwem hier
 ## <a name="see-also"></a>Zobacz także
 
 * [Szybki start: konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
-
+* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)

@@ -11,33 +11,33 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 333750e4959e0bdfea05347ef0e9a1d968b8f13c
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 052839c679fc3efa61fca612b5139ede1991890c
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214715"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080247"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnych przy użyciu usługi Azure Machine Learning i Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-azure-ml-batch-execution-activity.md)
 > * [Bieżąca wersja](transform-data-using-machine-learning.md)
 
 [Usługa Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) pozwala na tworzenie, testowanie i wdrażanie rozwiązań analizy predykcyjnej. Z wysokiego poziomu punktu widzenia można to zrobić w trzech krokach:
 
-1. **Tworzenie eksperymentu szkolenia**. Ten krok jest wykonywane przy użyciu usługi Azure ML Studio. Usługi ML studio to środowisko współpracy programowanie visual używanej do nauczenia i przetestowania modelu analizy predykcyjnej przy użyciu danych szkoleniowych.
+1. **Tworzenie eksperymentu szkolenia**. Ten krok jest wykonywane przy użyciu usługi Azure Machine Learning studio. Usługa Azure Machine Learning studio to środowisko programowanie zespołowe visual używanej do nauczenia i przetestowania modelu analizy predykcyjnej przy użyciu danych szkoleniowych.
 2. **Przekonwertuj go na eksperyment predykcyjny**. Gdy model po zapoznaniu z istniejącymi danymi i wszystko będzie gotowe na potrzeby oceniać nowe dane, Przygotuj i usprawnić eksperymentu do oceniania.
 3. **Go wdrożyć jako usługę sieci web**. Możesz opublikować oceniania eksperymentu jako usługi sieci web platformy Azure. Można wysyłać dane do modelu przy użyciu tego punktu końcowego usługi sieci web i otrzymywać wyników przewidywań modelu.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Fabryka danych i uczenia maszynowego razem
-Usługa Azure Data Factory umożliwia łatwe tworzenie potoki, które używają opublikowanych [Azure Machine Learning] [azure uczenia maszynowego] usługi sieci web do analizy predykcyjnej. Za pomocą **działanie wykonywania wsadowego** w potoku usługi Azure Data Factory można wywołać usługi sieci web Azure ML do przewidywania przyszłych zdarzeń dotyczących danych w usłudze batch.
+Usługa Azure Data Factory umożliwia łatwe tworzenie potoki, które używają opublikowanych [Azure Machine Learning] [azure uczenia maszynowego] usługi sieci web do analizy predykcyjnej. Za pomocą **działanie wykonywania wsadowego** w potoku usługi Azure Data Factory można wywołać usługi sieci web Azure Machine Learning studio, jak tworzyć prognozy na danych w usłudze batch.
 
-Wraz z upływem czasu modele predykcyjne w usługi Azure ML oceniania eksperymentów konieczne retrained, przy użyciu nowych danych wejściowych zestawów danych. Model usługi Azure ML z potoku usługi fabryka danych mogą przechowywać, wykonując następujące czynności:
+Wraz z upływem czasu modele predykcyjne w programie Azure Machine Learning studio, oceniania eksperymentów konieczne retrained, przy użyciu nowych danych wejściowych zestawów danych. Model z potoku usługi fabryka danych mogą przechowywać, wykonując następujące czynności:
 
-1. Publikuj eksperymentu szkolenia (eksperyment nie predykcyjny) jako usługę sieci web. Możesz wykonać ten krok w usłudze Azure ML Studio, tak jak do udostępnienia eksperyment predykcyjny jako usługę internetową w poprzednim scenariuszu.
-2. Działanie wykonywania wsadowego usługi Azure ML umożliwia wywoływanie usługi sieci web dla eksperymentu szkolenia. Po prostu służy działanie wykonywania wsadowego usługi Azure ML do wywołania usługi sieci web szkolenia i oceniania usługi sieci web.
+1. Publikuj eksperymentu szkolenia (eksperyment nie predykcyjny) jako usługę sieci web. Możesz wykonać ten krok w programie Azure Machine Learning studio, tak jak do udostępnienia eksperyment predykcyjny jako usługę internetową w poprzednim scenariuszu.
+2. Użyj usługi Azure Machine Learning studio działanie wykonywania wsadowego do wywołania usługi sieci web dla eksperymentu szkolenia. Po prostu umożliwia studio usługi Azure Machine Learning Batch Execution, działanie Wywołaj usługę sieci web szkolenia i oceniania usługi sieci web.
 
-Po zakończeniu ponownego trenowania, zaktualizować usługi internetowej przyznawania ocen (udostępniane jako usługi sieci web eksperyment predykcyjny) przy użyciu nowo uczonego modelu przy użyciu **działanie aktualizacji zasobu usługi Azure ML**. Zobacz [aktualizacji modeli za pomocą działania aktualizowania zasobów](update-machine-learning-models.md) artykuł, aby uzyskać szczegółowe informacje.
+Po zakończeniu ponownego trenowania, zaktualizować usługi internetowej przyznawania ocen (udostępniane jako usługi sieci web eksperyment predykcyjny) przy użyciu nowo uczonego modelu przy użyciu **usługi Azure Machine Learning studio działanie aktualizacji zasobu**. Zobacz [aktualizacji modeli za pomocą działania aktualizowania zasobów](update-machine-learning-models.md) artykuł, aby uzyskać szczegółowe informacje.
 
 ## <a name="azure-machine-learning-linked-service"></a>Usługa Azure Machine Learning połączone
 
@@ -133,14 +133,14 @@ Poniższy fragment kodu JSON definiuje działania usługi Azure Machine Learning
 | linkedServiceName | Połączone usługi do usługi Azure Machine Learning połączoną usługę. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu. | Yes      |
 | webServiceInputs  | Klucz, wartość pary mapowania nazw danych wejściowych usługi sieci Web Azure Machine Learning. Klucz musi być zgodny parametry wejściowe zdefiniowane w opublikowanej Azure usługi internetowej Machine Learning. Wartość jest połączonych usług magazynu Azure FilePath właściwości parę i określanie wejściowych lokalizacji obiektu Blob. | Nie       |
 | webServiceOutputs | Wartość pary kluczy, mapowanie nazw usługi Azure Machine Learning sieci Web usługi wyników. Klucz musi być zgodny parametry wyjściowe zdefiniowane w opublikowanej Azure usługi internetowej Machine Learning. Wartość jest połączonych usług magazynu platformy Azure i FilePath parze właściwości, określając dane wyjściowe obiektu Blob w lokalizacji. | Nie       |
-| globalParameters  | Pary wartości klucza, które zostaną przekazane do endpoint usługę wykonywania wsadowego uczenia Maszynowego Azure. Klucze musi być zgodne z nazwami parametry usługi sieci web zdefiniowany w opublikowanej usługi sieci web Azure ML. Wartości są przekazywane we właściwości GlobalParameters żądania wykonywania wsadowego usługi Azure ML | Nie       |
+| globalParameters  | Pary wartości klucza, które zostaną przekazane do punktu końcowego usługi Azure Machine Learning studio usługę wykonywania wsadowego. Klucze musi być zgodne z nazwami parametry usługi sieci web zdefiniowany w opublikowanej usługi sieci web Azure Machine Learning studio. Wartości są przekazywane we właściwości GlobalParameters żądania wykonania partii Azure Machine Learning studio | Nie       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scenariusz 1: Eksperymentów przy użyciu sieci Web usługi danych wejściowych lub wyjściowych, które odwołują się do danych w usłudze Azure Blob Storage
 
-W tym scenariuszu usługi Azure Machine Learning w sieci Web sprawia, że prognozy przy użyciu danych z pliku w magazynie obiektów blob platformy Azure i przechowuje wyniki prognozy w magazynie obiektów blob. Następujący kod JSON definiuje potok usługi Data Factory z działaniem AzureMLBatchExecution. Dane wejściowe i wyjściowe w usłudze Azure Blog Storage odwołuje się za pomocą pary LinkedName i ścieżka pliku. W przykładzie połączonej usługi dane wejściowe i wyjściowe są różne, różnych połączonych usług dla każdej z danych wejściowych/wyjściowych dla usługi Data Factory umożliwia można wczytać odpowiednie pliki i wysyłanie do usługi Azure ML Web Service.
+W tym scenariuszu usługi Azure Machine Learning w sieci Web sprawia, że prognozy przy użyciu danych z pliku w magazynie obiektów blob platformy Azure i przechowuje wyniki prognozy w magazynie obiektów blob. Następujący kod JSON definiuje potok usługi Data Factory z działaniem AzureMLBatchExecution. Dane wejściowe i wyjściowe w usłudze Azure Blog Storage odwołuje się za pomocą pary LinkedName i ścieżka pliku. W przykładzie połączonej usługi dane wejściowe i wyjściowe są różne, różnych połączonych usług dla każdej z danych wejściowych/wyjściowych dla usługi Data Factory umożliwia można wczytać odpowiednie pliki i wysyłanie do usługi Azure Machine Learning studio usługi sieci Web.
 
 > [!IMPORTANT]
-> W swojej eksperymentu usługi Azure ML web service wejściowe i wyjściowe portów i parametrów globalnych mają nazwy domyślnej ("input1", "wejście2"), które można dostosować. Nazwy używanych w przypadku ustawienia globalParameters, webServiceOutputs i webServiceInputs musi dokładnie odpowiadać nazwy w eksperymenty. Przykładowy ładunek żądania można wyświetlić na stronie pomocy wykonywania wsadowego dla punktu końcowego usługi uczenie Maszynowe Azure zweryfikować oczekiwane mapowania.
+> W usłudze Azure Machine Learning studio eksperymentu, dane wejściowe usługi sieci web i danych wyjściowych portów i parametrów globalnych mają nazwy domyślnej ("input1", "wejście2"), które można dostosować. Nazwy używanych w przypadku ustawienia globalParameters, webServiceOutputs i webServiceInputs musi dokładnie odpowiadać nazwy w eksperymenty. Przykładowy ładunek żądania można wyświetlić na stronie pomocy wykonywania wsadowego dla punktu końcowego usługi Azure Machine Learning studio zweryfikować oczekiwane mapowania.
 >
 >
 
@@ -190,16 +190,16 @@ W tym scenariuszu usługi Azure Machine Learning w sieci Web sprawia, że progno
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scenariusz 2: Eksperymentów przy użyciu czytnika/zapisywania modułów do odwoływania się do danych w różnych miejsc
-Inny typowy scenariusz, tworząc eksperymenty uczenia Maszynowego Azure jest używać modułów importu i dane wyjściowe. Modułu importu danych jest używana do ładowania danych do eksperymentu, a moduł danych wyjściowych jest zapisywane są dane z eksperymentów. Aby uzyskać szczegółowe informacje dotyczące modułów importu i dane wyjściowe, zobacz [importu danych](https://msdn.microsoft.com/library/azure/dn905997.aspx) i [dane wyjściowe](https://msdn.microsoft.com/library/azure/dn905984.aspx) tematy w bibliotece MSDN.
+Inny typowy scenariusz, podczas tworzenia usługi Azure Machine Learning studio eksperymentów jest używać modułów importu i dane wyjściowe. Modułu importu danych jest używana do ładowania danych do eksperymentu, a moduł danych wyjściowych jest zapisywane są dane z eksperymentów. Aby uzyskać szczegółowe informacje dotyczące modułów importu i dane wyjściowe, zobacz [importu danych](https://msdn.microsoft.com/library/azure/dn905997.aspx) i [dane wyjściowe](https://msdn.microsoft.com/library/azure/dn905984.aspx) tematy w bibliotece MSDN.
 
 Korzystając z modułów importu i dane wyjściowe, jest dobrym rozwiązaniem, użyj parametru usługi sieci Web dla każdej właściwości tych modułów. Te parametry sieci web umożliwiają skonfigurowanie wartości podczas wykonywania. Na przykład można utworzyć eksperyment za pomocą modułu importu danych, która używa usługi Azure SQL Database: XXX.database.windows.net. Po wdrożeniu usługi sieci web, aby włączyć konsumentów usługi sieci web określić inny serwer SQL platformy Azure o nazwie `YYY.database.windows.net`. Parametr usługi sieci Web można użyć, aby zezwolić na tę wartość do skonfigurowania.
 
 > [!NOTE]
-> Usługa sieci Web w danych wejściowych i wyjściowych różnią się od parametry usługi sieci Web. W przypadku pierwszego scenariusza wiesz, jak dane wejściowe i wyjściowe można określić dla usługi Azure ML w sieci Web. W tym scenariuszu przekażesz parametry usługi sieci Web, które odnoszą się do właściwości modułów importu danych/Wyjście danych.
+> Usługa sieci Web w danych wejściowych i wyjściowych różnią się od parametry usługi sieci Web. W przypadku pierwszego scenariusza wiesz, jak dane wejściowe i wyjściowe można określić dla usługi Azure Machine Learning studio usługi sieci Web. W tym scenariuszu przekażesz parametry usługi sieci Web, które odnoszą się do właściwości modułów importu danych/Wyjście danych.
 >
 >
 
-Spójrzmy na scenariusz użycia parametry usługi sieci Web. Masz wdrożonej usługi sieci web usługi Azure Machine Learning, który używa modułu reader można odczytać danych z jednego źródła danych obsługiwane przez usługi Azure Machine Learning (na przykład: Usługa Azure SQL Database). Wykonywanie wsadowe zostanie wykonane, wyniki są zapisywane z użyciem modułu zapisywania (Azure SQL Database).  Nie sieci web usługi wejściami i wyjściami są definiowane w eksperymenty. W tym przypadku zaleca się skonfigurowanie parametrów usługi web odpowiednie dla modułów czytników i składników zapisywania. Ta konfiguracja pozwala czytnika/zapisywania modułów można skonfigurować podczas używania działania AzureMLBatchExecution. Określ parametry usługi sieci Web w **globalParameters** sekcji w kodzie JSON działania w następujący sposób.
+Spójrzmy na scenariusz użycia parametry usługi sieci Web. Masz wdrożonej usługi sieci web usługi Azure Machine Learning, który używa modułu reader można odczytać danych z jednego źródła danych obsługiwane przez usługi Azure Machine Learning (na przykład: Azure SQL Database). Wykonywanie wsadowe zostanie wykonane, wyniki są zapisywane z użyciem modułu zapisywania (Azure SQL Database).  Nie sieci web usługi wejściami i wyjściami są definiowane w eksperymenty. W tym przypadku zaleca się skonfigurowanie parametrów usługi web odpowiednie dla modułów czytników i składników zapisywania. Ta konfiguracja pozwala czytnika/zapisywania modułów można skonfigurować podczas używania działania AzureMLBatchExecution. Określ parametry usługi sieci Web w **globalParameters** sekcji w kodzie JSON działania w następujący sposób.
 
 ```JSON
 "typeProperties": {
@@ -216,7 +216,7 @@ Spójrzmy na scenariusz użycia parametry usługi sieci Web. Masz wdrożonej us�
 > Parametry usługi sieci Web jest rozróżniana wielkość liter, dlatego upewnij się, że nazwy, które określisz w działaniu JSON są zgodne z typami udostępnianych przez usługę sieci Web.
 >
 
-Po zakończeniu ponownego trenowania, zaktualizować usługi internetowej przyznawania ocen (udostępniane jako usługi sieci web eksperyment predykcyjny) przy użyciu nowo uczonego modelu przy użyciu **działanie aktualizacji zasobu usługi Azure ML**. Zobacz [aktualizacji modeli za pomocą działania aktualizowania zasobów](update-machine-learning-models.md) artykuł, aby uzyskać szczegółowe informacje.
+Po zakończeniu ponownego trenowania, zaktualizować usługi internetowej przyznawania ocen (udostępniane jako usługi sieci web eksperyment predykcyjny) przy użyciu nowo uczonego modelu przy użyciu **usługi Azure Machine Learning studio działanie aktualizacji zasobu**. Zobacz [aktualizacji modeli za pomocą działania aktualizowania zasobów](update-machine-learning-models.md) artykuł, aby uzyskać szczegółowe informacje.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób:

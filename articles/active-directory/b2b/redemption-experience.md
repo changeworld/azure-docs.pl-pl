@@ -3,19 +3,19 @@ title: Realizacja zaproszenia we współpracy B2B — usługi Azure Active Direc
 description: W tym artykule opisano środowisko realizacji zaproszenia współpracy B2B usługi Azure AD dla użytkowników końcowych, w tym umowy postanowienia dotyczące prywatności.
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 0f73509a511450776bc7a6fdc87334c15c9c8da0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4f282edc08b16e226e6028b01f04dc62c1a57fea
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432425"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077272"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Realizacja zaproszenia współpracy w usłudze Azure Active Directory B2B
 

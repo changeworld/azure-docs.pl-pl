@@ -3,19 +3,19 @@ title: Uwierzytelnianie usług IIS i serwer usługi Azure MFA | Microsoft Docs
 description: Wdrażanie uwierzytelniania usług IIS i serwera Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: b3cf329562b10ea73f02a5bfe933a1caf8fe4607
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 749c0de4a268c005fe73fe594ded9ad1d1700670
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434329"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079855"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>Konfigurowanie serwera usługi Azure Multi-Factor Authentication na potrzeby aplikacji internetowych usług IIS
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 1f8807094c6e93cf55467e76e0fa2b617ec3d5fb
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822878"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913312"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Dzienniki przepływu visualizing sieciową grupę zabezpieczeń z usługą Power BI
 
@@ -46,7 +46,7 @@ Z szablonem jest edytowalny, dzięki czemu możesz zmodyfikować go, aby dodać 
 
 ## <a name="setup"></a>Konfigurowanie
 
-Przed przystąpieniem do wykonywania, konieczne jest posiadanie sieci grupy przepływu rejestrowanie zabezpieczeń włączone w jednej lub wielu grup zabezpieczeń sieci w ramach Twojego konta. Aby uzyskać instrukcje na temat włączania zabezpieczeń sieci dzienniki przepływu, zapoznaj się z następującym artykułem: [wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
+Przed przystąpieniem do wykonywania, konieczne jest posiadanie sieci grupy przepływu rejestrowanie zabezpieczeń włączone w jednej lub wielu grup zabezpieczeń sieci w ramach Twojego konta. Aby uzyskać instrukcje na temat włączania dzienników przepływu zabezpieczeń sieci zapoznaj się z następującym artykułem: [Wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń](network-watcher-nsg-flow-logging-overview.md).
 
 Musi również mieć zainstalowanego na maszynie oraz wystarczającą ilością wolnego miejsca na tym komputerze, aby pobrać i ładowania danych dziennika, która istnieje na koncie magazynu klienta programu Power BI Desktop.
 
@@ -73,7 +73,7 @@ Musi również mieć zainstalowanego na maszynie oraz wystarczającą ilością 
 
 Udostępnionego w szablonie są zestawem wizualizacje, które ułatwiają sensu danych dzienników przepływu sieciowej grupy zabezpieczeń. Na poniższych ilustracjach przedstawiono przykładowe jak pulpit nawigacyjny wygląda po wypełniany danymi. Poniżej omówiony bardziej szczegółowo każdy element wizualny 
 
-![usługi Power BI][5]
+![powerbi][5]
  
 Pokazuje visual nadajniki górnej określone adresy IP, które rozpoczęły większość połączeń w okresie. Rozmiar pola odpowiada względną liczbę połączeń. 
 
@@ -123,7 +123,7 @@ Możesz dostosować ten szablon do własnych potrzeb. Istnieje wiele sposobów, 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wizualizowanie dzienników przepływów sieciowych grup zabezpieczeń przy użyciu stosu Elastick, odwiedzając [wizualizacji Azure Network Watcher NSG dzienników przepływów przy użyciu narzędzi typu open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Dowiedz się, jak wizualizowanie dzienników przepływów sieciowych grup zabezpieczeń przy użyciu programu Elastic Stack, odwiedzając [wizualizacji Azure Network Watcher NSG dzienników przepływów przy użyciu narzędzi typu open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

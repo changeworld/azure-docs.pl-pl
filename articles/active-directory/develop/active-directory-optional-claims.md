@@ -7,7 +7,7 @@ services: active-directory
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,14 +16,14 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0983c2235fba0cacbda53208e5dcad5b2878619c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345491"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077254"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Porady: dostarczanie opcjonalnych oświadczeń do aplikacji usługi Azure AD (publiczna wersja zapoznawcza)
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD (publiczna wersja zapoznawcza)
 
 Ta funkcja jest używana przez deweloperów aplikacji, aby określić, które oświadczenia, że chcą w tokenach wysyłanych do swoich aplikacji. Możesz użyć opcjonalnych oświadczeń:
 - Wybierz dodatkowe oświadczenia, które mają zostać objęte tokenów dla aplikacji.
@@ -37,7 +37,7 @@ Listę standardowych oświadczeń i jak są używane w tokenach, zobacz [podstaw
 
 Jednym z celów [punktu końcowego v2.0 usługi Azure AD](active-directory-appmodel-v2-overview.md) jest mniejsze rozmiary tokenu, aby zapewnić optymalną wydajność przez klientów. W wyniku kilku oświadczenia, wcześniej uwzględnione w dostępu i identyfikator tokenów nie są już dostępne w wersji 2.0 tokenów i musi monit o wpisanie specjalnie dla poszczególnych aplikacji.
 
-**Tabela 1: zastosowanie**
+**Tabela 1: Możliwości zastosowania**
 
 | Typ konta | Punkt końcowy w wersji 1.0 | Punkt końcowy v2.0  |
 |--------------|---------------|----------------|
@@ -54,7 +54,7 @@ Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje 
 > [!NOTE]
 > Większość te oświadczenia mogą być dołączane w tokenów Jwt dla wersji 1.0 i tokenów w wersji 2.0, ale nie tokeny SAML, z wyjątkiem w przypadku, gdy wskazane w kolumnie Typ tokenu. Ponadto podczas opcjonalnych oświadczeń tylko obecnie są obsługiwane dla użytkowników usługi AAD, zarządzanych kont usług pomocy technicznej jest dodawany. Gdy MSA ma opcjonalnych oświadczeń obsługuje punktu końcowego v2.0, kolumna typu użytkownika określa, czy roszczenie jest dostępna dla użytkowników usługi AAD lub zarządzanych kont usług. 
 
-**Tabela 2: Zestaw standardowych opcjonalnego roszczenia**
+**Tabela 2: Zestaw standardowych opcjonalnego roszczenia.**
 
 | Name (Nazwa)                        | Opis   | Typ tokenu | Typ użytkownika | Uwagi  |
 |-----------------------------|----------------|------------|-----------|--------|
@@ -90,7 +90,7 @@ Te oświadczenia są zawsze dołączane w tokenach v1.0, ale nie zostały uwzgl�
 | `onprem_sid`  | Identyfikator zabezpieczeń lokalnych |                                             |       |
 | `pwd_exp`     | Czas wygaśnięcia hasła        | Data i godzina jaką hasło wygaśnie. |       |
 | `pwd_url`     | Zmień hasło, adres URL             | Adres URL, który użytkownik może odwiedzić, aby zmienić swoje hasło.   |       |
-| `in_corp`     | Wewnątrz sieci firmowej        | Sygnały, jeśli klient jest logowania się z siecią firmową. Jeśli nie są one oświadczenia nie zostaną uwzględnione.   |       |
+| `in_corp`     | Inside Corporate Network        | Sygnały, jeśli klient jest logowania się z siecią firmową. Jeśli nie są one oświadczenia nie zostaną uwzględnione.   |       |
 | `nickname`    | Pseudonim                        | Dodatkową nazwę użytkownika, niezależnie od imię lub nazwisko. |       |                                                                                                                |       |
 | `family_name` | Nazwisko                       | Zawiera ostatni nazwę, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika usługi Azure AD. <br>"family_name":"Miller" |       |
 | `given_name`  | Imię                      | Zawiera pierwszy lub "" Nazwa użytkownika, według stawki ustalonej w obiekcie użytkownika usługi Azure AD.<br>"given_name": "Piotr"                   |       |
@@ -99,7 +99,7 @@ Te oświadczenia są zawsze dołączane w tokenach v1.0, ale nie zostały uwzgl�
 
 Aby zmienić sposób, w jaki oświadczenie jest zwracany można skonfigurować kilka opcjonalnych oświadczeń. Te dodatkowe właściwości są najczęściej używane migracji aplikacji lokalnych przy użyciu różnych danych oczekiwania (na przykład `include_externally_authenticated_upn_without_hash` może ułatwić realizację klientów, którzy nie może obsługiwać hashmarks (`#`) nazwę UPN)
 
-**Tabela 4: Wartości do konfigurowania standardowa oświadczenia opcjonalne**
+**Tabela 4: Wartości dotyczące konfigurowania standardowa oświadczenia opcjonalne**
 
 | Nazwa właściwości                                     | Nazwa właściwości dodatkowe                                                                                                             | Opis |
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
@@ -209,7 +209,7 @@ Brak dostępnych wiele opcji do aktualizacji właściwości na konfigurację to�
 -   Można zmodyfikować manifest aplikacji. W poniższym przykładzie użyje tej metody do przeprowadzenia konfiguracji. Odczyt [opis dokumentu manifestu aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest) pierwszy wprowadzenie do manifestu.
 -   Istnieje również możliwość pisania aplikacji, która używa [interfejsu API programu Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) zaktualizowania aplikacji. [Jednostki i odwołania do typów złożonych](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) w dokumentacji interfejsu API programu Graph przewodnik pomaga w konfigurowaniu opcjonalnych oświadczeń.
 
-**Przykład:** w poniższym przykładzie należy zmodyfikować manifest aplikacji, aby dodawać oświadczenia dostępu, identyfikator i SAML tokenów przeznaczonych dla aplikacji.
+**Przykład:** W poniższym przykładzie należy zmodyfikować manifest aplikacji, aby dodawać oświadczenia dostępu, identyfikator i SAML tokenów przeznaczonych dla aplikacji.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Po użytkownik został uwierzytelniony, należy wybrać dzierżawy usługi Azure AD, wybierając je z prawym górnym rogu strony.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: e04ee6b74be0bb7ec81166f43295a8a9377f8cf8
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 31be6b99d6c2ccc2c3f13484c409285ff85e12a0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381522"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078677"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Użyj usługi Azure Key Vault, aby przekazać wartość parametru secure podczas wdrażania
 
@@ -84,7 +84,7 @@ Add-Type -AssemblyName System.Web
 [System.Web.Security.Membership]::GeneratePassword(16,3)
 ```
 
-Aby uzyskać przy użyciu szablonu usługi Resource Manager: Zobacz [samouczka: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+Aby uzyskać przy użyciu szablonu usługi Resource Manager: Zobacz [samouczka: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md#prepare-a-key-vault).
 
 > [!NOTE]
 > Każda usługa platformy Azure ma określone wymagania dotyczące hasła. Na przykład wymagania dotyczące maszyny wirtualnej platformy Azure znajduje się w temacie [jakie są wymagania dotyczące hasła, podczas tworzenia maszyny Wirtualnej?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).

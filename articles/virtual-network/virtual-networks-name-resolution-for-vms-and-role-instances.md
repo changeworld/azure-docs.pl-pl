@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 4a4a4c6a37e3c52054d7bc773ef04bf057709fdd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 487bf54d80c9249e5ce69c4b5aeff942a21d5b48
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025100"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913168"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -195,6 +195,11 @@ Korzystając z własnych serwerów DNS, platforma Azure oferuje możliwość okr
 > 
 
 Korzystając z modelu wdrażania usługi Azure Resource Manager, można określić serwery DNS dla sieci wirtualnej i interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [zarządzanie siecią wirtualną](manage-virtual-network.md) i [zarządzania interfejsem sieciowym](virtual-network-network-interface.md).
+
+> [!NOTE]
+> Jeśli postanowisz dla niestandardowego serwera DNS dla sieci wirtualnej, należy określić co najmniej jeden adres IP serwera DNS; w przeciwnym razie sieci wirtualnej zignoruje konfiguracji i zamiast tego użyj DNS platformy Azure.
+> 
+> 
 
 Korzystając z klasycznego modelu wdrażania, można określić serwery DNS dla sieci wirtualnej w witrynie Azure portal lub [plik konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100). Dla usług cloud services, należy określić serwery DNS za pośrednictwem [pliku konfiguracji usługi](https://msdn.microsoft.com/library/azure/ee758710) lub za pomocą programu PowerShell, [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 

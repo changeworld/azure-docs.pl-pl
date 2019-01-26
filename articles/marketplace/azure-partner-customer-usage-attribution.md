@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66f850225faba8d45eaa07493a0817c9ed0ed52b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077746"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075588"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Uznanie autorstwa użycia klienta partnerów platformy Azure
 
@@ -32,11 +32,17 @@ Jako partner firmy Microsoft można skojarzyć użycia platformy Azure z zasobam
 - Szablony usługi Azure Resource Manager: Szablony usługi Resource Manager lub szablony rozwiązań do wdrożenia usług platformy Azure w celu uruchamiania oprogramowania partnera. Partnerzy, można utworzyć szablon usługi Resource Manager w celu zdefiniowania infrastruktury i konfiguracji swoje rozwiązanie na platformie Azure. Szablon usługi Resource Manager umożliwia Tobie i Twoim klientom wdrażać rozwiązania przez cały cykl życia. Można mieć pewność, że Twoje zasoby są wdrażane w spójnym stanie. 
 - Interfejsy API Azure Resource Manager: Partnerzy mogą wywoływać interfejsy API usługi Resource Manager bezpośrednio, aby wdrożyć szablon usługi Resource Manager lub do generowania wywołań interfejsu API, bezpośrednie Inicjowanie obsługi administracyjnej usług platformy Azure. 
 
-Uznanie autorstwa użycia klienta jest wymagany we wszystkich [szablony rozwiązań](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) opublikowane w portalu Azure Marketplace. 
+Uznanie autorstwa użycia klienta jest wymagany na [oferty aplikacji na platformie Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) opublikowane w portalu Azure Marketplace.
 
 ## <a name="use-resource-manager-templates"></a>Używanie szablonów usługi Resource Manager
 
-Wiele rozwiązań partnerskich są wdrażane w ramach subskrypcji klienta przy użyciu szablonów usługi Resource Manager. W przypadku szablonu usługi Resource Manager, który jest dostępny w portalu Azure Marketplace, w usłudze GitHub lub jako Szybki Start, proces, aby zmodyfikować szablon, aby włączyć nowe metody śledzenia powinna być bardzo proste. Aby uzyskać więcej informacji, zobacz [tworzenie i wdrażanie pierwszego szablonu usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+Wiele rozwiązań partnerskich są wdrażane w ramach subskrypcji klienta przy użyciu szablonów usługi Resource Manager. W przypadku szablonu usługi Resource Manager, który jest dostępny w portalu Azure Marketplace, w usłudze GitHub lub jako Szybki Start, proces, aby zmodyfikować szablon, aby włączyć nowe metody śledzenia powinna być bardzo proste.
+
+Aby uzyskać więcej informacji na temat tworzenia i publikowania szablony rozwiązań zobacz
+
+* [Tworzenie i wdrażanie pierwszego szablonu usługi Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+* [Oferta platformy Azure aplikacja](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
+* Wideo: [Tworzenie szablonów rozwiązań i zarządzanych aplikacji dla witryny Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
 ## <a name="add-a-guid-to-your-template"></a>Dodaj identyfikator GUID szablonu

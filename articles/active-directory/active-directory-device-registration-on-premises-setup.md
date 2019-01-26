@@ -6,7 +6,7 @@ documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: 6ae9df8b-31fe-4d72-9181-cf50cfebbf05
 ms.service: active-directory
 ms.workload: identity
@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: b1711b86042c74eba47fe1cfa41bbbd36ceaf127
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: abdeeacc22d2709a3107c9e9e05bd982705d7dea
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248762"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55079073"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Azure Active Directory rejestracji urządzenia
 
@@ -76,7 +76,7 @@ W przewodniku założono, że skonfigurowano usługi Active Directory systemu Wi
 
 Aby wdrożyć usługi Azure Active Directory urządzenia rejestracji z dzierżawą usługi Azure Active Directory, należy wykonać zadania z poniższej listy kontrolnej w kolejności. Gdy łącze odwołania przejście do tematu pojęciowego, wróć do tej listy kontrolnej w efekcie tak, aby móc kontynuować wykonywanie kolejnych zadań. Niektóre zadania obejmują kroku weryfikacji scenariusza, który pomoże Ci upewnij się, czy krok zakończyła się pomyślnie.
 
-## <a name="part-1-enable-azure-active-directory-device-registration"></a>Część 1: Włączanie usługi Azure Active Directory urządzenia rejestracji
+## <a name="part-1-enable-azure-active-directory-device-registration"></a>Część 1: Włączanie rejestracji urządzeń w usłudze Azure Active Directory
 
 Wykonaj kroki z listy kontrolnej, aby włączyć i skonfigurować usługę rejestracji urządzeń usługi Azure Active Directory.
 
@@ -93,7 +93,7 @@ Wykonaj kroki z listy kontrolnej, aby włączyć i skonfigurować usługę rejes
 | Wdrażanie usług Active Directory Domain Services przy użyciu rozszerzeń schematu systemu Windows Server 2012 R2. Jest konieczne uaktualnienie wszystkich kontrolerów domeny do systemu Windows Server 2012 R2. Uaktualnienie schematu jest jedynym wymaganiem. |[Uaktualnienia schematu do usług domenowych Active Directory](#upgrade-your-active-directory-domain-services-schema) |
 | Urządzenia odnajdywać usługi rejestracji urządzeń usługi Azure Active Directory przez wyszukiwanie dobrze znanych rekordów systemu DNS. System DNS firmy należy skonfigurować tak, aby urządzenia mogły odnajdywać usługi rejestracji urządzeń usługi Azure Active Directory. |[Przygotuj urządzenie pomocy technicznej usługi Active Directory](#prepare-your-active-directory-to-support-devices) |
 
-## <a name="part-3-enable-device-writeback-in-azure-ad"></a>Część 3: Włącz urządzenia zapisu w usłudze Azure AD
+## <a name="part-3-enable-device-writeback-in-azure-ad"></a>Część 3: Włączanie zapisywania zwrotnego urządzeń w usłudze Azure AD
 
 | Zadanie | Informacje ogólne |
 | --- | --- |
@@ -158,7 +158,7 @@ Na serwerze federacyjnym, Otwórz okno poleceń programu Windows PowerShell, a n
 
 ### <a name="prepare-azure-ad-connect-for-device-writeback"></a>Przygotowywanie usługi Azure AD Connect do zapisywania zwrotnego urządzeń
 
-Wypełnij część 1: Przygotowanie usługi Azure AD Connect.
+Zakończ część 1: Przygotowywanie usługi Azure AD Connect.
 
 ## <a name="join-devices-to-your-workplace-by-using-azure-active-directory-device-registration-service"></a>Dołączanie urządzenia do miejsca pracy przy użyciu usługi rejestracji urządzeń w usłudze Azure Active Directory
 
@@ -197,7 +197,7 @@ Domyślnie obiekty urządzeń, które są zapisywane z usługi Azure Active Dire
 
 ## <a name="create-an-application-access-policy-and-custom-access-denied-message"></a>Tworzenie zasad dostępu do aplikacji i niestandardowy komunikat odmowy dostępu
 
-Rozważmy następujący scenariusz: tworzenie aplikacji jednostki uzależnionej relacja zaufania w usługach AD FS i skonfigurować regułę autoryzacji wystawiania, który umożliwia tylko zarejestrowanym urządzeniom. Teraz tylko te urządzenia, które są zarejestrowane mogą uzyskiwać dostęp do aplikacji. 
+Rozważmy następujący scenariusz: Tworzenie aplikacji jednostki uzależnionej relacja zaufania w usługach AD FS i skonfigurować regułę autoryzacji wystawiania, który umożliwia tylko zarejestrowanym urządzeniom. Teraz tylko te urządzenia, które są zarejestrowane mogą uzyskiwać dostęp do aplikacji. 
 
 Aby ułatwić użytkownikom w celu uzyskania dostępu do aplikacji, należy skonfigurować niestandardowy komunikat odmowy dostępu, który zawiera instrukcje dotyczące sposobu przyłączania urządzenia. Teraz użytkownicy mają swobodne rejestrowanie swoich urządzeń, dzięki czemu mogą uzyskać dostęp do aplikacji.
 

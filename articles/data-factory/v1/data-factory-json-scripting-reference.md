@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 32e0be682d5d216df6741fa38bb0a16e4b323ef6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 9f8ffe71743f4832d8ce633f050206d21f411276
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354199"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55082201"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Usługi Azure Data Factory — Dokumentacja skryptów JSON
 > [!NOTE]
@@ -5387,7 +5387,7 @@ Pamiętaj o następujących kwestiach:
 - **Typu** właściwość jest ustawiona na **HDInsightSpark**.
 - **RootPath** ustawiono **adfspark\\pyFiles** gdzie adfspark to kontener obiektów Blob platformy Azure i pyFiles jest dobrym rozwiązaniem folder, w tym kontenerze. W tym przykładzie usługi Azure Blob Storage jest ten, który jest skojarzony z klastrem Spark. Możesz przekazać plik do innej usługi Azure Storage. Jeśli tak zrobisz, Utwórz połączoną usługę Azure Storage połączyć tego konta magazynu z fabryką danych. Następnie określ nazwy połączonej usługi, jako wartość **sparkJobLinkedService** właściwości. Zobacz [właściwości działania platformy Spark](#spark-activity-properties) szczegółowe informacje na temat tej właściwości i inne właściwości, obsługiwanych przez działanie platformy Spark.
 - **Właściwość entryFilePath** ustawiono **test.py**, czyli pliku python.
-- **Getdebuginfo —** właściwość jest ustawiona na **zawsze**, co oznacza, że pliki dziennika są zawsze generowany (powodzenie lub niepowodzenie).  
+- **Getdebuginfo —** właściwość jest ustawiona na **zawsze**, co oznacza, że pliki dziennika są zawsze generowany (powodzenie lub niepowodzenie).
 
     > [!IMPORTANT]
     > Zaleca się, że nie ustawisz tej właściwości zawsze w środowisku produkcyjnym, chyba że są rozwiązywania problemów.
@@ -5396,13 +5396,13 @@ Pamiętaj o następujących kwestiach:
 Aby uzyskać więcej informacji na temat działania, zobacz [działania platformy Spark](data-factory-spark.md) artykułu.
 
 ## <a name="machine-learning-batch-execution-activity"></a>Działanie wykonywania wsadowego w usłudze Machine Learning
-Można określić następujące właściwości w definicji Format JSON działania wykonywania wsadowego uczenie Maszynowe Azure. Właściwość type dla działania muszą być: **AzureMLBatchExecution**. Należy utworzyć środowisko Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLBatchExecution:
+W programie Azure Machine Learning studio definicji JSON działania wykonywania wsadowego, można określić następujące właściwości. Właściwość type dla działania muszą być: **AzureMLBatchExecution**. Należy utworzyć środowisko Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLBatchExecution:
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
-webServiceInput | Zestaw danych, które zostaną przekazane jako dane wejściowe dla usługi sieci web Azure ML. Ten zestaw danych, również muszą być zawarte w danych wejściowych na potrzeby działania. |Użyj webServiceInput i webServiceInputs. |
-webServiceInputs | Określ zestawy danych, które zostaną przekazane jako dane wejściowe dla usługi sieci web Azure ML. Jeśli usługa sieci web wymaga wielu danych wejściowych, należy użyć właściwości webServiceInputs zamiast przy użyciu właściwości webServiceInput. Zestawy danych, które są przywoływane przez **webServiceInputs** muszą także być ujęte w działaniu **dane wejściowe**. | Użyj webServiceInput i webServiceInputs. |
-webServiceOutputs | Zestawy danych, które są przypisane jako dane wyjściowe dla usługi sieci web Azure ML. Usługa sieci web zwraca dane wyjściowe, w tym zestawie danych. | Yes |
+webServiceInput | Zestaw danych, które zostaną przekazane jako dane wejściowe dla usługi sieci web Azure Machine Learning studio. Ten zestaw danych, również muszą być zawarte w danych wejściowych na potrzeby działania. |Użyj webServiceInput i webServiceInputs. |
+webServiceInputs | Określ zestawy danych, które zostaną przekazane jako dane wejściowe dla usługi sieci web Azure Machine Learning studio. Jeśli usługa sieci web wymaga wielu danych wejściowych, należy użyć właściwości webServiceInputs zamiast przy użyciu właściwości webServiceInput. Zestawy danych, które są przywoływane przez **webServiceInputs** muszą także być ujęte w działaniu **dane wejściowe**. | Użyj webServiceInput i webServiceInputs. |
+webServiceOutputs | Zestawy danych, które są przypisane jako dane wyjściowe dla usługi sieci web Azure Machine Learning studio. Usługa sieci web zwraca dane wyjściowe, w tym zestawie danych. | Yes |
 globalParameters | Określ wartości dla parametrów usługi sieci web w tej sekcji. | Nie |
 
 ### <a name="json-example"></a>Przykład kodu JSON
@@ -5452,7 +5452,7 @@ W tym przykładzie JSON wdrożonej usługi Azure Machine Learning w sieci Web u�
 > Tylko dane wejściowe i wyjściowe aktywności AzureMLBatchExecution mogą być przekazywane jako parametry do usługi sieci Web. Na przykład w powyższym fragmencie kodu JSON MLSqlInput jest wartością wejściową działania AzureMLBatchExecution, który jest przekazywany jako dane wejściowe do usługi sieci Web za pomocą parametru webServiceInput.
 
 ## <a name="machine-learning-update-resource-activity"></a>Działanie aktualizowania zasobów w usłudze Machine Learning
-Można określić następujące właściwości w definicji zasobu działania JSON dla usługi Azure ML aktualizacji. Właściwość type dla działania muszą być: **AzureMLUpdateResource**. Należy utworzyć środowisko Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLUpdateResource:
+Można określić następujące właściwości w programie Azure Machine Learning studio definicji JSON działania zasobów aktualizacji. Właściwość type dla działania muszą być: **AzureMLUpdateResource**. Należy utworzyć środowisko Azure Machine Learning najpierw połączonej usługi i określ nazwę ją jako wartość **linkedServiceName** właściwości. Następujące właściwości są obsługiwane w **typeProperties** sekcji, gdy wartość typu działania AzureMLUpdateResource:
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
@@ -5460,7 +5460,7 @@ trainedModelName | Nazwa retrained modelu. | Yes |
 trainedModelDatasetName | Zestaw danych wskazuje plik iLearner, zwrócony przez operację ponownego trenowania. | Yes |
 
 ### <a name="json-example"></a>Przykład kodu JSON
-Potok ma dwa działania: **AzureMLBatchExecution** i **AzureMLUpdateResource**. Działanie wykonywania wsadowego usługi Azure ML przyjmuje dane szkoleniowe jako dane wejściowe i tworzy plik iLearner jako dane wyjściowe. Działania wywołuje usługę sieci web szkolenia (udostępniane jako usługi sieci web eksperymentu szkolenia) przy użyciu danych wejściowych szkolenia i odbiera plik ilearner z usługi sieci Web. PlaceholderBlob jest po prostu fikcyjne dane wyjściowe zestawu danych, który jest wymagany przez usługę Azure Data Factory, aby uruchomić potok.
+Potok ma dwa działania: **AzureMLBatchExecution** i **AzureMLUpdateResource**. Azure Machine Learning studio Batch Execution, działanie trwa danych szkoleniowych jako dane wejściowe i tworzy plik iLearner jako dane wyjściowe. Działania wywołuje usługę sieci web szkolenia (udostępniane jako usługi sieci web eksperymentu szkolenia) przy użyciu danych wejściowych szkolenia i odbiera plik ilearner z usługi sieci Web. PlaceholderBlob jest po prostu fikcyjne dane wyjściowe zestawu danych, który jest wymagany przez usługę Azure Data Factory, aby uruchomić potok.
 
 
 ```json

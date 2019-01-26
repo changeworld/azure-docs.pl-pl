@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2fde653c6520b743990ae837f1553004793fefa2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7b54d1b746467695b2c5e6a4ba634c74a3801d4f
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470702"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078733"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -31,7 +31,7 @@ Domyślnie zasobów usług Office 365 dla użytkowników, znajdują się w tej s
 Przez ustawienie atrybutu **preferredDataLocation**, można zdefiniować geograficznej użytkownika. Możesz mieć użytkownika usługi Office 365 zasoby, takie jak skrzynki pocztowej i OneDrive, w tym samym obszarze geograficznym, jako użytkownik i nadal masz jedną dzierżawę dla całej organizacji.
 
 > [!IMPORTANT]
-> Wielu regionów geograficznych jest obecnie dostępny dla klientów z co najmniej 5000 subskrypcji usługi Office 365 Services. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
+> Wielu regionów geograficznych jest obecnie dostępny dla klientów z co najmniej 2500 subskrypcji usługi Office 365 Services. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
 >
 >
 
@@ -53,7 +53,7 @@ Obszarach geograficznych w usłudze Office 365 dostępne dla wielu regionów geo
 | Stany Zjednoczone | NAZWA |
 
 * Jeśli georegionu nie znajduje się w tej tabeli (na przykład, Ameryka Południowa), następnie go nie można używać dla wielu regionów geograficznych.
-* Geograficzna Indii jest dostępna tylko dla klientów z rozliczeń adres i licencji, które zakupiono w tym obszarze geograficznym.
+
 * Nie wszystkie obciążenia usługi Office 365 obsługują ustawienia geograficznej użytkownika.
 
 ### <a name="azure-ad-connect-support-for-synchronization"></a>Usługa Azure AD Connect — pomoc techniczna dla synchronizacji

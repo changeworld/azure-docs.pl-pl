@@ -3,19 +3,19 @@ title: Uwierzytelnianie systemu Windows i serwer Azure MFA | Microsoft Docs
 description: Wdrażanie uwierzytelniania systemu Windows i serwera Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 47e42c637d3d82c8a9fb97c462f39d9b60dbb8e8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e2f6c8986ec5ea21a0c12dfa3f7c0aec9b30ef49
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426101"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080732"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Uwierzytelnianie systemu Windows i serwer usługi Azure Multi-Factor Authentication
 

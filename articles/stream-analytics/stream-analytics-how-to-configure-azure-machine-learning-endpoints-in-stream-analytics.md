@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: 6f8565fcecab2c17794f94f5a051cc2f269a9d1c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8d5e3060d31a260ddba2e7b23d468568ea9569c0
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451042"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078036"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Usługi Machine Learning integracji w usłudze Stream Analytics
 Stream Analytics obsługuje funkcje zdefiniowane przez użytkownika, które wywołują z punktami końcowymi usługi Azure Machine Learning. Obsługa interfejsu API REST, aby ta funkcja została szczegółowo opisana w [biblioteki interfejsu API REST usługi Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Ten artykuł zawiera dodatkowe informacje wymagane do pomyślnego wdrożenia tej funkcji w usłudze Stream Analytics. Samouczek również została opublikowana i jest dostępny [tutaj](stream-analytics-machine-learning-integration-tutorial.md).
@@ -26,7 +26,7 @@ Microsoft Azure Machine Learning zapewnia narzędzie do współpracy, obsługiwa
 * **Punkt końcowy**: *Punkty końcowe* jest obiektem usługi Azure Machine Learning umożliwia wybranie funkcji jako dane wejściowe, model uczenia maszynowego określonego i zwraca wynik ocenami.
 * **Ocenianie usługi sieci Web**: A *oceny Usługa sieci Web* jest kolekcją punktów końcowych, jak wspomniano powyżej.
 
-Każdy punkt końcowy ma interfejsów API w celu wykonywania wsadowego i wykonania synchroniczne. Stream Analytics używa synchronicznej. Nosi nazwę określonej usługi [żądań/odpowiedzi usługi](../machine-learning/studio/consume-web-services.md) w programie Azure ml studio.
+Każdy punkt końcowy ma interfejsów API w celu wykonywania wsadowego i wykonania synchroniczne. Stream Analytics używa synchronicznej. Nosi nazwę określonej usługi [żądań/odpowiedzi usługi](../machine-learning/studio/consume-web-services.md) w usłudze Azure Machine Learning studio.
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Machine Learning zasoby wymagane dla zadania usługi Stream Analytics
 Na potrzeby usługi Stream Analytics, zadania przetwarzania punktu końcowego żądania/odpowiedzi [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md), i definicji struktury swagger są wszystkie niezbędne do pomyślnego wykonania. Stream Analytics ma dodatkowy punkt końcowy, który konstruuje adres url punktu końcowego struktury swagger, wyszukuje interfejsu i zwraca domyślną definicją funkcji zdefiniowanej przez użytkownika dla użytkownika.
@@ -45,10 +45,10 @@ Za pomocą interfejsów API REST można skonfigurować zadania do wywoływania f
 Na przykład następujący przykładowy kod tworzy skalarny systemu plików UDF o nazwie *newudf* wiąże punktu końcowego usługi Azure Machine Learning. Należy pamiętać, że *punktu końcowego* (identyfikator URI usługi) można znaleźć na stronie pomocy interfejsu API dla wybranej usługi i *apiKey* można znaleźć na stronie głównej usługi.
 
 ````
-    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>  
+    PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>
 ````
 
-Przykład treść żądania:  
+Przykład treść żądania:
 
 ```json
     {
@@ -75,7 +75,7 @@ Po szkielet UDF kompletną definicję funkcji zdefiniowanej przez użytkownika j
 POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>/RetrieveDefaultDefinition?api-version=<apiVersion>
 ````
 
-Przykład treść żądania:  
+Przykład treść żądania:
 
 ```json
     {
@@ -87,7 +87,7 @@ Przykład treść żądania:
     }
 ```
 
-Przykład danych wyjściowych, to czy Szukaj coś w rodzaju poniżej.  
+Przykład danych wyjściowych, to czy Szukaj coś w rodzaju poniżej.
 
 ```json
     {
@@ -175,7 +175,7 @@ Treść żądania (dane wyjściowe z RetrieveDefaultDefinition):
 ```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Implementowanie przekształcania usługi Stream Analytics do wywołania funkcji zdefiniowanej przez użytkownika
-Teraz zapytanie funkcji zdefiniowanej przez użytkownika (w tym miejscu o nazwie scoreTweet) dla każdego zdarzenia wejściowe i zapisywać dane wyjściowe odpowiedzi dla tego zdarzenia.  
+Teraz zapytanie funkcji zdefiniowanej przez użytkownika (w tym miejscu o nazwie scoreTweet) dla każdego zdarzenia wejściowe i zapisywać dane wyjściowe odpowiedzi dla tego zdarzenia.
 
 ```json
     {

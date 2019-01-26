@@ -9,26 +9,26 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 902014ff3c242a18b3872ba490845eb0923f39a4
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3f3322245983508e374d081e5d7905f67344ad7a
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451191"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912650"
 ---
 # <a name="azure-media-services-entities-overview"></a>Omówienie jednostek w usłudze Azure Media Services
 
-Ten artykuł zawiera krótkie omówienie punktów i jednostki usługi Azure Media Services do artykułu, aby uzyskać więcej informacji na temat każdej jednostki. 
+Ten artykuł zawiera krótkie omówienie punktów i jednostki usługi Azure Media Services do artykułów, aby uzyskać więcej informacji o sposobie korzystania z każdej jednostki w przepływach pracy usługi Media Services. 
 
 | Temat | Opis |
 |---|---|
 | [Filtry kont i zasobów filtrów](filters-dynamic-manifest-overview.md)|Podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) klienta może wymagać większej elastyczności niż opisane w pliku manifestu zasobu domyślnego. Usługa Azure Media Services umożliwia definiowanie [filtrów kont](https://docs.microsoft.com/rest/api/media/accountfilters) i [filtry zasobów](https://docs.microsoft.com/rest/api/media/assetfilters). Następnie należy użyć **manifestów dynamicznych** oparte na wstępnie zdefiniowanych filtrów. |
 | [Zasoby](assets-concept.md)|[Zasobów](https://docs.microsoft.com/rest/api/media/assets) w jednostce (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów) pliki cyfrowe oraz metadane dotyczące tych plików. Przekazane pliki cyfrowe do elementu zawartości używać w usłudze Media Services, kodowanie, przesyłanie strumieniowe, analizowanie zawartości przepływów pracy.|
 | [Zasady kluczy zawartości](content-key-policy-concept.md)|Usługa Media Services umożliwia zabezpieczenie multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services można dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.|
-| [LiveEvents i LiveOutputs](live-events-outputs-concept.md)|Usługa Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby skonfigurować usługi przesyłania strumieniowego wydarzeń na żywo usługi Media Services v3, musisz Dowiedz się więcej o [zdarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) i [na żywo dane wyjściowe](https://docs.microsoft.com/rest/api/media/liveoutputs).|
+| [Wydarzenia na żywo i na żywo dane wyjściowe](live-events-outputs-concept.md)|Usługa Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby skonfigurować usługi przesyłania strumieniowego wydarzeń na żywo usługi Media Services v3, musisz Dowiedz się więcej o [zdarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) i [na żywo dane wyjściowe](https://docs.microsoft.com/rest/api/media/liveoutputs).|
 | [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)|A [punkty końcowe przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) jednostki reprezentuje usługę przesyłania strumieniowego, która umożliwia dostarczanie zawartości bezpośrednio do aplikacji odtwarzacza klienta lub aby Content Delivery Network (CDN) w celu dalszego rozpowszechniania. Wychodzące strumienia usługi punktu końcowego przesyłania strumieniowego może być strumień na żywo lub element zawartości wideo na żądanie w ramach konta usługi Media Services. Po utworzeniu konta usługi Media Services, **domyślne** punkt końcowy przesyłania strumieniowego zostanie utworzony w stanie zatrzymania. Nie można usunąć **domyślne** punkt końcowy przesyłania strumieniowego. Dodatkowe punkty końcowe przesyłania strumieniowego mogą być tworzone w ramach konta. Aby rozpocząć przesyłanie strumieniowe filmów wideo, należy uruchomić punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać wideo. |
 | [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)|Konieczne jest zapewnienie klientom za pomocą adresu URL, który może służyć do odtwarzania zakodowane pliki audio lub wideo, musisz utworzyć [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) i tworzyć adresy URL przesyłania strumieniowego.|
 | [Zasady przesyłania strumieniowego](streaming-policy-concept.md)| [Przesyłanie strumieniowe zasady](https://docs.microsoft.com/rest/api/media/streamingpolicies) umożliwiają definiowanie protokołów przesyłania strumieniowego i opcje szyfrowania dla Twojego StreamingLocators. Można określić nazwę zasad niestandardowych przesyłania strumieniowego i został utworzony lub użyj jednej z wstępnie zdefiniowane zasady przesyłania strumieniowego, oferowane przez usługę Media Services. <br/><br/>Za pomocą niestandardowych zasad usługi przesyłania strumieniowego, należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi Media i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje szyfrowania i protokołów. Należy nie można utworzeniem nowej zasady przesyłania strumieniowego dla każdego lokalizatora przesyłania strumieniowego.|

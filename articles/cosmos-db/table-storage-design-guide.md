@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 5b418f28cb8cb48d8c9ee369289c899c7f6525bc
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bb759c0b21287f8198f2f4e0dac10020a3b31d62
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331966"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913601"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
 
@@ -252,7 +252,7 @@ Wiele projektów musi spełniać wymagania, aby włączyć wyszukiwanie jednoste
 
 ### <a name="sorting-data-in-the-table-service"></a>Sortowanie danych w usłudze Table service
 
-Wynikach zapytania są sortowane w kolejności rosnącej na podstawie **PartitionKey** a następnie według **RowKey**.
+Wyniki zapytania, zwracane przez usługę tabeli są sortowane w kolejności rosnącej na podstawie **PartitionKey** a następnie według **RowKey**.
 
 > [!NOTE]
 > Wyniki zapytania zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB Cosmso nie są sortowane według klucza partycji i klucza wiersza. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice między interfejsu Table API usługi Azure Cosmos DB i Azure Table storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).

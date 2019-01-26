@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 0f438f59da079633fea54758261ce1bd93a8477b
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d17e4970636818eca14d2e750ec24135e64ddbb6
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251389"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078676"
 ---
 # <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Wdrażaj usługi sieci web Azure Machine Learning Studio, korzystające z modułów importu i eksportu danych
 
@@ -44,9 +44,9 @@ Do odczytywania danych z tabeli Azure SQL:
 5. W okienku właściwości wybierz **usługi Azure SQL Database** w **źródła danych** listy rozwijanej.
 6. W **nazwy serwera bazy danych**, **Nazwa bazy danych**, **nazwy użytkownika**, i **hasło** wprowadź odpowiednie informacje o sieci Baza danych.
 7. W polu zapytania bazy danych wprowadź następujące zapytanie.
-   
+
      Wybierz pozycję [Wiek]
-   
+
         [workclass],
         [fnlwgt],
         [education],
@@ -68,17 +68,17 @@ Do odczytywania danych z tabeli Azure SQL:
 Następnie należy skonfigurować eksperyment predykcyjny, z której można wdrożyć usługi sieci web.
 
 1. W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **ustawić usługę sieci Web** i wybierz **predykcyjne usługi sieci Web [zalecane]**.
-2. Usuń *dane wejściowe usługi sieci Web* i *moduły danych wyjściowych usługi sieci Web* z eksperyment predykcyjny. 
+2. Usuń *dane wejściowe usługi sieci Web* i *moduły danych wyjściowych usługi sieci Web* z eksperyment predykcyjny.
 3. W polu wyszukiwania składniki typu eksportu.
 4. Z listy wyników, należy dodać *Eksport danych* modułu do obszaru roboczego eksperymentu.
-5. Połącz dane wyjściowe *Score Model* modułu danych wejściowych z *Eksport danych* modułu. 
+5. Połącz dane wyjściowe *Score Model* modułu danych wejściowych z *Eksport danych* modułu.
 6. W okienku właściwości wybierz **usługi Azure SQL Database** na liście rozwijanej miejsce docelowe danych.
 7. W **nazwy serwera bazy danych**, **Nazwa bazy danych**, **nazwę konta użytkownika serwera**, i **hasło konta użytkownika serwera** wprowadź odpowiednie informacje dla bazy danych.
 8. W **rozdzielaną przecinkami listę kolumn, które mają być zapisywane** wpisz sklasyfikowane etykiety.
 9. W **pole Nazwa tabeli danych**, wpisz dbo. ScoredLabels. Jeśli tabela nie istnieje, jest tworzony, po uruchomieniu eksperymentu lub nosi nazwę usługi sieci web.
 10. W **rozdzielaną przecinkami listę kolumn tabeli datatable** wpisz ScoredLabels.
 
-Podczas pisania aplikacji, która wywołuje usługę sieci web końcowy, można określić inne zapytanie wejściowe lub docelowej tabeli w czasie wykonywania. Aby skonfigurować te dane wejściowe i wyjściowe, należy użyć funkcji parametry usługi sieci Web można ustawić *importu danych* modułu *źródła danych* właściwości i *Eksport danych* dane trybu Właściwość docelowego.  Aby uzyskać więcej informacji na temat parametrów usługi sieci Web, zobacz [wpis parametry usługi sieci Web Azure ml](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) pakietu Cortana Intelligence i blogu dotyczącym uczenia maszynowego.
+Podczas pisania aplikacji, która wywołuje usługę sieci web końcowy, można określić inne zapytanie wejściowe lub docelowej tabeli w czasie wykonywania. Aby skonfigurować te dane wejściowe i wyjściowe, należy użyć funkcji parametry usługi sieci Web można ustawić *importu danych* modułu *źródła danych* właściwości i *Eksport danych* dane trybu Właściwość docelowego.  Aby uzyskać więcej informacji na temat parametrów usługi sieci Web, zobacz [usługi Azure Machine Learning studio parametry usługi sieci Web wpisu](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) pakietu Cortana Intelligence i blogu dotyczącym uczenia maszynowego.
 
 Aby skonfigurować parametry usługi sieci Web dla zapytań import i tabela docelowa:
 
@@ -108,22 +108,22 @@ Aby wdrożyć jako klasycznej usługi sieci Web i tworzenie aplikacji z jego:
 7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs i usunąć wszystkie odwołania do usługi blob storage.
 8. Zaktualizuj wartość *apiKey* zmiennej za pomocą klucza interfejsu API, zapisany wcześniej.
 9. Znajdź zgłoszenie żądania i zaktualizuj wartości parametrów usługi sieci Web, które są przekazywane do *importu danych* i *Eksport danych* modułów. W tym przypadku użyj oryginalne zapytanie, ale zdefiniowanie nowej nazwy tabeli.
-   
-        var request = new BatchExecutionRequest() 
-        {           
+
+        var request = new BatchExecutionRequest()
+        {
             GlobalParameters = new Dictionary<string, string>() {
                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
                 { "Table", "dbo.ScoredTable2" },
             }
         };
-10. Uruchom aplikację. 
+10. Uruchom aplikację.
 
 Po zakończeniu przebiegu zostanie dodana nowa tabela, z bazą danych zawierającą wyniki oceny.
 
 ### <a name="deploy-a-new-web-service"></a>Wdrażanie nowej usługi sieci Web
 
-> [!NOTE] 
-> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md). 
+> [!NOTE]
+> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md).
 
 Aby wdrożyć jako nową usługę sieci Web i tworzenie aplikacji z jego:
 
@@ -136,9 +136,9 @@ Aby wdrożyć jako nową usługę sieci Web i tworzenie aplikacji z jego:
 7. Skopiuj i Wklej C# przykładowego kodu do pliku Program.cs.
 8. Zaktualizuj wartość *apiKey* zmiennej za pomocą **klucza podstawowego** znajduje się w **informacje podstawowe użycie** sekcji.
 9. Znajdź *scoreRequest* deklaracji i zaktualizuj wartości parametrów usługi sieci Web, które są przekazywane do *importu danych* i *Eksport danych* modułów. W tym przypadku użyj oryginalne zapytanie, ale zdefiniowanie nowej nazwy tabeli.
-   
+
         var scoreRequest = new
-        {       
+        {
             Inputs = new Dictionary<string, StringTable>()
             {
             },
@@ -147,5 +147,5 @@ Aby wdrożyć jako nową usługę sieci Web i tworzenie aplikacji z jego:
                 { "Table", "dbo.ScoredTable3" },
             }
         };
-10. Uruchom aplikację. 
+10. Uruchom aplikację.
 

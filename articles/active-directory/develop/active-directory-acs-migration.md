@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: a06eb35850c12c2813a395ee8c64e16c2a8a5bce
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f472503d43d82209c765a331ba3922a2f25ca327
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156718"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077067"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control Service
 
@@ -307,7 +307,7 @@ W przypadku usług sieci web, które są zabezpieczone przy użyciu tokenów wys
     - Prostych haseł, które są tworzone dla tożsamości usługi
     - Element podpisane SWT przy użyciu klucza symetrycznego lub X509 certyfikatu
     - Token SAML, wystawiony przez zaufanego dostawcy tożsamości (zazwyczaj wystąpienia usług AD FS)
-- Pomoc techniczna dla następujące formaty tokenów: Token JWT, język SAML 1.1, SAML 2.0 i SWT.
+- Pomoc techniczna dla następujące formaty tokenów: JWT, SAML 1.1, SAML 2.0, and SWT.
 - Reguły prostą transformację tokenu.
 
 Tożsamości usługi kontroli dostępu są zazwyczaj używane do uwierzytelniania serwera do zaimplementowania. 

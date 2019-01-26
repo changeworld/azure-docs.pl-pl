@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ec67cb6b4bc1dd29dbbac4056d3365a74b31a24c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013710"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911748"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
 
@@ -99,24 +99,25 @@ Podstawową cechą Data Lake Storage Gen2, to dodanie [hierarchicznej przestrze
 
 W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w zakresie wydajności, zarządzania i zabezpieczeń. Funkcje klucza Gen2 usługi Azure Data Lake Storage (ADLS) są następujące:
 
-- **Dostęp zgodny z usługi Hadoop**: usługi Azure Data Lake Storage Gen2 pozwala na zarządzanie i dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [sterownika ABFS](../../storage/data-lake-storage/abfs-driver.md) jest dostępna w ramach wszystkich środowisk technologii Apache Hadoop, które są objęte [Azure HDInsight](../index.yml). Ten sterownik umożliwia dostęp do danych przechowywanych w Data Lake Storage Gen2.
+- **Dostęp zgodny z usługi Hadoop**: Azure Data Lake magazynu Gen2 pozwala zarządzać i uzyskiwać dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [sterownika ABFS](../../storage/data-lake-storage/abfs-driver.md) jest dostępna w ramach wszystkich środowisk technologii Apache Hadoop, które są objęte [Azure HDInsight](../index.yml). Ten sterownik umożliwia dostęp do danych przechowywanych w Data Lake Storage Gen2.
 
-- **Nadzbiór uprawnień POSIX**: model zabezpieczeń Gen2 Data Lake — w pełni obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą narzędzia administracyjne lub środowisk, takich jak Hive, jak i platformy Spark.
+- **Nadzbiór uprawnień POSIX**: Model zabezpieczeń Gen2 Data Lake — w pełni obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą narzędzia administracyjne lub środowisk, takich jak Hive, jak i platformy Spark.
 
 - **Niskie koszty**: Data Lake Storage Gen2 funkcji niedrogiej pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełnego cyklu życia, stawki rozliczeniowe zmienić, aby zminimalizować koszty, za pomocą wbudowanych funkcji, takich jak [cykl życia magazynu obiektów Blob platformy Azure](../../storage/common/storage-lifecycle-management-concepts.md).
 
-- **Współpracuje z narzędzia magazynu obiektów Blob, struktur i aplikacje**: Data Lake Storage Gen2 w dalszym ciągu działają z szeroką gamą narzędzi, struktur i aplikacje, które istnieją już dzisiaj dla magazynu obiektów Blob.
+- **Współpracuje z narzędzia magazynu obiektów Blob, struktur i aplikacje**: Data Lake Storage Gen2 nadal działają z szeroką gamą narzędzi, struktur i aplikacje, które istnieją już dzisiaj dla magazynu obiektów Blob.
 
-- **Sterownik zoptymalizowane**: sterownik systemu plików obiektów Blob platformy Azure (ABFS) jest [specjalnie zoptymalizowane pod kątem](../../storage/data-lake-storage/abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
+- **Sterownik zoptymalizowane**: Sterownik systemu plików obiektów Blob platformy Azure (ABFS) jest [specjalnie zoptymalizowane pod kątem](../../storage/data-lake-storage/abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
 
 Jedną z następujących formatów można uzyskać dostęp do danych, która jest przechowywana w usłudze ADLS Gen2:
 - `abfs:///`: Dostęp do domyślnej usługi Data Lake Storage dla klastra.
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`: Używane podczas komunikacji z usługi Data Lake Storage innych niż domyślne.
+- `abfs[s]://file_system@account_name.dfs.core.windows.net`: Używany podczas komunikacji z usługi Data Lake Storage innych niż domyślne.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Wprowadzenie do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)](../../storage/data-lake-storage/introduction.md)
+- [Wprowadzenie do usługi Azure Data Lake Storage 2. generacji (wersja zapoznawcza)](../../storage/data-lake-storage/introduction.md)
 - [Sterownik systemu plików obiektów Blob platformy Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Kluczy zabezpieczeń usługi Azure Storage w konfiguracji klastra usługi Hadoop w środowisku lokalnym
 
@@ -173,7 +174,7 @@ HDInsight domyślnie ma pełny dostęp do danych w ramach kont usługi Azure Sto
 
 6. Użyj następujących wartości dla **klucz** i **wartość** pola:
 
-    **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **wartość**: klucz sygnatury dostępu Współdzielonego zwrócony przez FROM aplikacji języka Python w kroku 4 powyżej.
+    **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Wartość**: KLUCZ sygnatury dostępu Współdzielonego zwracane przez FROM aplikacji języka Python w kroku 4 powyżej.
 
 7. Kliknij przycisk **Dodaj** przycisk, aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** przycisk, aby zapisać zmiany konfiguracji. Po wyświetleniu monitu, Dodaj opis zmiany ("Dodawanie dostępu do magazynu sygnatur dostępu Współdzielonego" na przykład), a następnie kliknij przycisk **Zapisz**.
 

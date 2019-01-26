@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1fa5a2f9d63dfd9af006285beec256395d7ac668
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 5dd5920eae97399bae03c6917bb610103bd556c2
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069509"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912718"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Można skonfigurować okresów istnienia tokenu w usłudze Azure Active Directory (wersja zapoznawcza)
 
@@ -79,21 +79,19 @@ Zasady okres istnienia tokenu jest typem obiektu zasad, który zawiera reguły o
 | --- | --- | --- | --- | --- | --- |
 | Okres istnienia tokenu dostępu |AccessTokenLifetime |Tokeny dostępu, tokeny Identyfikatora, SAML2 tokenów |1 godzina |10 minut |1 dzień |
 | Odświeżanie tokenu maksymalny czas nieaktywny |MaxInactiveTime |Tokenów odświeżania |90 dni |10 minut |90 dni |
-| Token odświeżania Jednoskładnikowego maksymalny wiek |MaxAgeSingleFactor |Odświeżanie tokenów (dla wszystkich użytkowników) |Do momentu odwołane |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek Token odświeżania usługi Multi-Factor Authentication |MaxAgeMultiFactor |Odświeżanie tokenów (dla wszystkich użytkowników) |Do momentu odwołane |10 minut |Until-revoked<sup>1</sup> |
-| Sesja Jednoskładnikowego tokenu maksymalny wiek |MaxAgeSessionSingleFactor<sup>2</sup> |Tokeny sesji (trwałe i nietrwałe) |Do momentu odwołane |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu sesji usługi Multi-Factor Authentication |MaxAgeSessionMultiFactor<sup>3</sup> |Tokeny sesji (trwałe i nietrwałe) |Do momentu odwołane |10 minut |Until-revoked<sup>1</sup> |
+| Token odświeżania Jednoskładnikowego maksymalny wiek |MaxAgeSingleFactor |Odświeżanie tokenów (dla wszystkich użytkowników) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
+| Maksymalny wiek Token odświeżania usługi Multi-Factor Authentication |MaxAgeMultiFactor |Odświeżanie tokenów (dla wszystkich użytkowników) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
+| Sesja Jednoskładnikowego tokenu maksymalny wiek |MaxAgeSessionSingleFactor<sup>2</sup> |Tokeny sesji (trwałe i nietrwałe) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
+| Maksymalny wiek tokenu sesji usługi Multi-Factor Authentication |MaxAgeSessionMultiFactor<sup>3</sup> |Tokeny sesji (trwałe i nietrwałe) |Until-revoked |10 minut |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 dni jest maksymalna długość jawne, które mogą być ustawione dla tych atrybutów.
-* <sup>2</sup>Jeśli **MaxAgeSessionSingleFactor** nie jest ustawiona, ta wartość ma **MaxAgeSingleFactor** wartości. Jeśli parametr nie jest ustawiona, właściwość przyjmuje wartość domyślną (aż do odwołane).
-* <sup>3</sup>Jeśli **MaxAgeSessionMultiFactor** nie jest ustawiona, ta wartość ma **MaxAgeMultiFactor** wartości. Jeśli parametr nie jest ustawiona, właściwość przyjmuje wartość domyślną (aż do odwołane).
 
 ### <a name="exceptions"></a>Wyjątki
 | Właściwość | Dotyczy | Domyślne |
 | --- | --- | --- |
 | Odświeżanie tokenu maksymalny wiek (wydane dla użytkowników federacyjnych, posiadający odwołanie za mało informacji<sup>1</sup>) |Tokenów odświeżania (wydane dla użytkowników federacyjnych, posiadający odwołanie za mało informacji<sup>1</sup>) |12 godzin |
 | Odświeżanie tokenu czas nieaktywności Max (wystawiony dla poufnych klientów) |Odśwież tokeny (wystawione dla poufnych klientów) |90 dni |
-| Odświeżanie tokenu maksymalny wiek (wystawiony dla poufnych klientów) |Odśwież tokeny (wystawione dla poufnych klientów) |Do momentu odwołane |
+| Odświeżanie tokenu maksymalny wiek (wystawiony dla poufnych klientów) |Odśwież tokeny (wystawione dla poufnych klientów) |Until-revoked |
 
 * <sup>1</sup>Sfederowane osób, które mają odwołania niewystarczające informacje obejmują użytkownicy, którzy nie mają atrybutu "LastPasswordChangeTimestamp" zsynchronizowane. Tacy użytkownicy otrzymują tej krótkiej maksymalny wiek, ponieważ usługi AAD nie może sprawdzić, kiedy można odwołać tokenów, które są powiązane z starych poświadczeń (takich jak hasła, które zostało zmienione) i należy zaewidencjonować ponownie więcej często, aby upewnić się, że użytkownika i skojarzone tokeny nadal w dobrej  stały. Aby poprawić to środowisko, Administratorzy dzierżawy musi zapewnić, że trwa synchronizacja się atrybut "LastPasswordChangeTimestamp" (można ją skonfigurować w obiekcie użytkownika przy użyciu programu Powershell lub za pośrednictwem aplikacji AADSync).
 
@@ -114,7 +112,7 @@ Wszystkie timespans używane w tym miejscu są sformatowane zgodnie z języka C#
 > [!NOTE]
 > Poniżej przedstawiono przykładowy scenariusz.
 >
-> Użytkownik chce, aby uzyskiwać dostęp do dwóch aplikacji sieci web: aplikacja sieci Web A i B. aplikacji sieci Web
+> Użytkownik chce, aby uzyskiwać dostęp do dwóch aplikacji sieci web: Aplikacja sieci Web, A i B. aplikacji sieci Web
 > 
 > Czynniki:
 > * Obie aplikacje sieci web znajdują się w tej samej organizacji nadrzędnej.
@@ -136,16 +134,16 @@ Wszystkie timespans używane w tym miejscu są sformatowane zgodnie z języka C#
 ### <a name="access-token-lifetime"></a>Okres istnienia tokenu dostępu
 **Ciąg:** AccessTokenLifetime
 
-**Ma wpływ na:** tokenów dostępu, tokeny Identyfikatora
+**Dotyczy:** Tokeny dostępu, tokeny Identyfikatora
 
-**Podsumowanie:** ta zasada kontroluje, jak długo dostępu i tokeny Identyfikatora dla tego zasobu są uznawane za prawidłowe. Zmniejszenie właściwość okres istnienia tokenu dostępu zmniejsza ryzyko tokenu dostępu lub identyfikator tokenu używany przez złośliwe Aktor przez dłuższy czas. (Nie można odwołać te tokeny.) Jest to kompromis, to niekorzystny wpływ na wydajność, ponieważ tokeny muszą zostać zastąpione częściej.
+**Podsumowanie:** Ta zasada kontroluje, jak długo dostępu i tokeny Identyfikatora dla tego zasobu są uznawane za prawidłowe. Zmniejszenie właściwość okres istnienia tokenu dostępu zmniejsza ryzyko tokenu dostępu lub identyfikator tokenu używany przez złośliwe Aktor przez dłuższy czas. (Nie można odwołać te tokeny.) Jest to kompromis, to niekorzystny wpływ na wydajność, ponieważ tokeny muszą zostać zastąpione częściej.
 
 ### <a name="refresh-token-max-inactive-time"></a>Odświeżanie tokenu maksymalny czas nieaktywny
 **Ciąg:** MaxInactiveTime
 
-**Ma wpływ na:** tokenów odświeżania
+**Dotyczy:** Tokenów odświeżania
 
-**Podsumowanie:** te zasady umożliwiają kontrolowanie wiek token odświeżania może być, zanim klient nie jest już służy do pobierania nową parę tokenu dostępu/odświeżanie, podczas próby dostępu do tego zasobu. Ponieważ zazwyczaj nowego tokena odświeżania jest zwracana, gdy jest używany token odświeżania, ta zasada uniemożliwia dostęp, jeśli klient próbuje uzyskać dostęp do dowolnego zasobu za pomocą bieżącego tokenu odświeżania w określonym przedziale czasu.
+**Podsumowanie:** Ta zasada kontroluje, jak stary token odświeżania może być, zanim klient nie jest już służy do pobierania nową parę tokenu dostępu/odświeżanie, podczas próby dostępu do tego zasobu. Ponieważ zazwyczaj nowego tokena odświeżania jest zwracana, gdy jest używany token odświeżania, ta zasada uniemożliwia dostęp, jeśli klient próbuje uzyskać dostęp do dowolnego zasobu za pomocą bieżącego tokenu odświeżania w określonym przedziale czasu.
 
 Ta zasada wymusza użytkowników, którzy nie byli aktywni na komputerze klienckim, ich ponownego uwierzytelnienia do nowego tokena odświeżania do pobrania.
 
@@ -154,36 +152,36 @@ Właściwość odświeżanie tokenu maksymalny czas nieaktywności, musi być r�
 ### <a name="single-factor-refresh-token-max-age"></a>Token odświeżania Jednoskładnikowego maksymalny wiek
 **Ciąg:** MaxAgeSingleFactor
 
-**Ma wpływ na:** tokenów odświeżania
+**Dotyczy:** Tokenów odświeżania
 
-**Podsumowanie:** tego kontroli zasad, jak długo użytkownik może używać tokenu odświeżania, aby uzyskać nową parę tokenu dostępu/odświeżania po ich ostatniego uwierzytelnieniu pomyślnie za pomocą pojedynczego współczynnika. Po użytkownik uwierzytelni i otrzymuje nowego tokena odświeżania, użytkownik może użyć przepływu tokenu odświeżania w określonym okresie czasu. (Ta zasada obowiązuje tak długo, jak bieżący token odświeżania nie został odwołany, a nie pozostanie niewykorzystane przez czas dłuższy niż czas nieaktywności.) W tym momencie użytkownik jest zmuszony do ponownego uwierzytelnienia do odbierania nowego tokena odświeżania.
+**Podsumowanie:** To jak długo użytkownik może używać tokenu odświeżania, aby uzyskać nową parę tokenu dostępu/odświeżania po ich ostatniego uwierzytelnieniu pomyślnie za pomocą pojedynczego współczynnika kontroli zasad. Po użytkownik uwierzytelni i otrzymuje nowego tokena odświeżania, użytkownik może użyć przepływu tokenu odświeżania w określonym okresie czasu. (Ta zasada obowiązuje tak długo, jak bieżący token odświeżania nie został odwołany, a nie pozostanie niewykorzystane przez czas dłuższy niż czas nieaktywności.) W tym momencie użytkownik jest zmuszony do ponownego uwierzytelnienia do odbierania nowego tokena odświeżania.
 
 Ograniczenie maksymalnego wieku wymuszającej uwierzytelnianie częściej. Ponieważ uwierzytelniania jednoskładnikowego jest uznawana za mniej bezpieczna niż uwierzytelnianie wieloskładnikowe, zaleca się ustawić tę właściwość na wartość, która jest równa lub mniejsza niż wartość właściwości usługi Multi-Factor Authentication odświeżanie tokenu maksymalny wiek.
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Maksymalny wiek Token odświeżania usługi Multi-Factor Authentication
 **Ciąg:** MaxAgeMultiFactor
 
-**Ma wpływ na:** tokenów odświeżania
+**Dotyczy:** Tokenów odświeżania
 
-**Podsumowanie:** tego kontroli zasad, jak długo użytkownik może używać tokenu odświeżania, aby uzyskać nową parę tokenu dostępu/Odśwież po ich ostatniego uwierzytelnieniu pomyślnie za pomocą wielu czynników. Po użytkownik uwierzytelni i otrzymuje nowego tokena odświeżania, użytkownik może użyć przepływu tokenu odświeżania w określonym okresie czasu. (Ta zasada obowiązuje tak długo, jak bieżący token odświeżania nie został odwołany i nie jest nieużywany przez czas dłuższy niż czas nieaktywności.) W tym momencie użytkownicy muszą ponownie uwierzytelniać do odbierania nowego tokena odświeżania.
+**Podsumowanie:** To jak długo użytkownik może używać tokenu odświeżania, aby uzyskać nową parę tokenu dostępu/Odśwież po ich ostatniego uwierzytelnieniu pomyślnie za pomocą wielu czynników kontroli zasad. Po użytkownik uwierzytelni i otrzymuje nowego tokena odświeżania, użytkownik może użyć przepływu tokenu odświeżania w określonym okresie czasu. (Ta zasada obowiązuje tak długo, jak bieżący token odświeżania nie został odwołany i nie jest nieużywany przez czas dłuższy niż czas nieaktywności.) W tym momencie użytkownicy muszą ponownie uwierzytelniać do odbierania nowego tokena odświeżania.
 
 Ograniczenie maksymalnego wieku wymuszającej uwierzytelnianie częściej. Ponieważ uwierzytelniania jednoskładnikowego jest uznawana za mniej bezpieczna niż uwierzytelnianie wieloskładnikowe, zaleca się ustawić tę właściwość na wartość, która jest równa lub większa niż wartość właściwości Jednoskładnikowego odświeżanie tokenu maksymalny wiek.
 
 ### <a name="single-factor-session-token-max-age"></a>Sesja Jednoskładnikowego tokenu maksymalny wiek
 **Ciąg:** MaxAgeSessionSingleFactor
 
-**Ma wpływ na:** tokenów sesji (trwałe i nietrwałe)
+**Dotyczy:** Tokeny sesji (trwałe i nietrwałe)
 
-**Podsumowanie:** tego kontroli zasad, jak długo użytkownik może używać tokenu sesji na otrzymanie nowy identyfikator i tokenu sesji nastąpiło ostatnie uwierzytelnienie pomyślnie za pomocą pojedynczego współczynnika. Po użytkownik uwierzytelni i odbiera token nowej sesji, użytkownik może użyć przepływu tokenu sesji w określonym przedziale czasu. (Ta zasada obowiązuje tak długo, jak token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia do odbierania token nowej sesji.
+**Podsumowanie:** To jak długo użytkownik może używać tokenu sesji na otrzymanie nowy identyfikator i tokenu sesji nastąpiło ostatnie uwierzytelnienie pomyślnie za pomocą pojedynczego współczynnika kontroli zasad. Po użytkownik uwierzytelni i odbiera token nowej sesji, użytkownik może użyć przepływu tokenu sesji w określonym przedziale czasu. (Ta zasada obowiązuje tak długo, jak token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia do odbierania token nowej sesji.
 
 Ograniczenie maksymalnego wieku wymuszającej uwierzytelnianie częściej. Ponieważ uwierzytelniania jednoskładnikowego jest uznawana za mniej bezpieczna niż uwierzytelnianie wieloskładnikowe, zaleca się ustawić tę właściwość na wartość, która jest równa lub mniejsza niż wartość właściwości usługi Multi-Factor Authentication sesji tokenu maksymalny wiek.
 
 ### <a name="multi-factor-session-token-max-age"></a>Maksymalny wiek tokenu sesji usługi Multi-Factor Authentication
 **Ciąg:** MaxAgeSessionMultiFactor
 
-**Ma wpływ na:** tokenów sesji (trwałe i nietrwałe)
+**Dotyczy:** Tokeny sesji (trwałe i nietrwałe)
 
-**Podsumowanie:** tego kontroli zasad jak długo użytkownik może używać tokenu sesji, aby uzyskać nowy identyfikator i sesji tokenu od czasu ostatniego pomyślnie uwierzytelniony przy użyciu wielu czynników. Po użytkownik uwierzytelni i odbiera token nowej sesji, użytkownik może użyć przepływu tokenu sesji w określonym przedziale czasu. (Ta zasada obowiązuje tak długo, jak token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia do odbierania token nowej sesji.
+**Podsumowanie:** Tego kontroli zasad, jak długo użytkownik może używać tokenu sesji w celu uzyskania nowego Identyfikatora i sesji tokenu po ostatniej one uwierzytelniane pomyślnie za pomocą wielu czynników. Po użytkownik uwierzytelni i odbiera token nowej sesji, użytkownik może użyć przepływu tokenu sesji w określonym przedziale czasu. (Ta zasada obowiązuje tak długo, jak token bieżącej sesji nie został odwołany i nie wygasł.) Po upływie określonego czasu użytkownik jest zmuszony do ponownego uwierzytelnienia do odbierania token nowej sesji.
 
 Ograniczenie maksymalnego wieku wymuszającej uwierzytelnianie częściej. Ponieważ uwierzytelniania jednoskładnikowego jest uznawana za mniej bezpieczna niż uwierzytelnianie wieloskładnikowe, zaleca się ustawić tę właściwość na wartość, która jest równa lub większa niż wartość właściwości Jednoskładnikowego sesji tokenu maksymalny wiek.
 
@@ -219,7 +217,7 @@ Aby rozpocząć pracę, wykonaj następujące czynności:
     Get-AzureADPolicy
     ```
 
-### <a name="example-manage-an-organizations-default-policy"></a>Przykład: Zarządzanie organizacji domyślne zasady
+### <a name="example-manage-an-organizations-default-policy"></a>Przykład: Zarządzanie zasadami domyślne w organizacji
 W tym przykładzie utworzysz zasadę, która pozwala użytkownikom rzadziej Zaloguj się w całej organizacji. Aby to zrobić, należy utworzyć zasadę okres istnienia tokenu Jednoskładnikowego odświeżanie tokenów, która jest stosowana w całej organizacji. Zasady są stosowane do każdej aplikacji w Twojej organizacji i każdej jednostki usługi, która nie ma jeszcze zestaw zasad.
 
 1. Utwórz zasady okres istnienia tokenu.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c6c13d0e27edd5563f10df59ce7af585a345bfab
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fe28eda7571bf95d1e86419f5caf3cf65e4020b3
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463341"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078648"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrowanie z Federacji na synchronizację skrótów haseł usługi Azure Active Directory
 
@@ -30,7 +30,8 @@ Następujące wymagania wstępne są wymagane do migracji z za pomocą usług AD
 
 ### <a name="update-azure-ad-connect"></a>Aktualizacja usługi Azure AD Connect
 
-Aby pomyślnie wykonać kroki zajmuje należy przeprowadzić migrację do synchronizacji skrótów haseł, konieczne jest posiadanie [Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) (Azure AD Connect) 1.1.819.0 lub nowszej. W programie Azure AD Connect 1.1.819.0 sposób rejestrowania konwersja jest wykonywane znacznie zmiany. Całkowity czas migracji z usług AD FS do uwierzytelniania w chmurze w tej wersji zmniejszono z potencjalnie godziny do minuty.
+Co najmniej do pomyślnego przeprowadzenia kroków migracji do synchronizacji skrótów haseł, powinny mieć [programu Azure AD connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.1.819.0. Ta wersja zawiera istotne zmiany sposobu logowania konwersji odbywa się i zmniejsza całkowity czas migracji z Federacji do uwierzytelniania w chmurze z potencjalnie godziny do minuty.
+
 
 > [!IMPORTANT]
 > Można mogą odczytać w nieaktualnych dokumentację, narzędzia i blogi konwersji użytkownika jest wymagana podczas konwertowania domen z tożsamości federacyjnej tożsamość zarządzaną. *Konwertowanie użytkowników* nie jest już wymagane. Firma Microsoft pracuje się do aktualizacji, dokumentacji i narzędzi w celu odzwierciedlenia tej zmiany.

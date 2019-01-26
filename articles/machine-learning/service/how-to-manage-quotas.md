@@ -11,18 +11,18 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6a08a5a79a8a072bd4621a7e200e84c2c71c9cd4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2f7eeab8f9d2265cf0f6cfa28499a078ba9cb108
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475071"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077373"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Zarządzanie i zażądać przydziały dla zasobów platformy Azure
 
 Jak z innymi usługami platformy Azure istnieją limity określonych zasobów skojarzonych z usługą Azure Machine Learning. Te limity należeć do zakresu od dzienny limit liczby obszarów roboczych, można utworzyć w celu ograniczenia dotyczące rzeczywistego podstawowe zasoby obliczeniowe, które pobiera używane do celów szkoleniowych lub wnioskowania modeli. Ten artykuł zawiera szczegółowe informacje dotyczące wstępnie skonfigurowane limity dla różnych zasobów platformy Azure dla Twojej subskrypcji i zawiera także przydatne linki, które żądania udoskonalenia limitu przydziału dla każdego typu zasobu. Limity te są umieszczane w miejscu, aby zapobiec budżetu przepełnień z powodu oszustw i uwzględnić ograniczenia pojemność na platformie Azure.
 
-Należy pamiętać tych limitów przydziału podczas projektowania i skalowania w górę zasobami usługi Azure ML w przypadku obciążeń produkcyjnych. Na przykład jeśli klaster nie dociera do docelowej liczby węzłów, który określiłeś, następnie może osiągnięto limit rdzeni obliczeniowego usługi Azure Machine Learning dla Twojej subskrypcji. Jeśli chcesz zwiększyć limit lub limitu przydziału przekracza Limit domyślne, otwórz żądanie obsługi klienta online bez dodatkowych opłat. Nie można zwiększyć limity powyżej maksymalny Limit pokazanymi w poniższych tabelach ze względu na ograniczenia pojemności na platformie Azure. W przypadku żadnej kolumny maksymalny Limit zasób nie ma limitów dostosowywalnych. 
+Należy pamiętać tych limitów przydziału podczas projektowania i skalowania w górę zasobów usługi Azure Machine Learning w przypadku obciążeń produkcyjnych. Na przykład jeśli klaster nie dociera do docelowej liczby węzłów, który określiłeś, następnie może osiągnięto limit rdzeni obliczeniowego usługi Azure Machine Learning dla Twojej subskrypcji. Jeśli chcesz zwiększyć limit lub limitu przydziału przekracza Limit domyślne, otwórz żądanie obsługi klienta online bez dodatkowych opłat. Nie można zwiększyć limity powyżej maksymalny Limit pokazanymi w poniższych tabelach ze względu na ograniczenia pojemności na platformie Azure. W przypadku żadnej kolumny maksymalny Limit zasób nie ma limitów dostosowywalnych.
 
 ## <a name="special-considerations"></a>Specjalne uwagi
 
@@ -34,12 +34,12 @@ Należy pamiętać tych limitów przydziału podczas projektowania i skalowania 
 
 ## <a name="default-resource-quotas"></a>Domyślne przydziały zasobów
 
-Poniżej przedstawiono podział limitów przydziału przez różnych typów zasobów w ramach subskrypcji platformy Azure. 
+Poniżej przedstawiono podział limitów przydziału przez różnych typów zasobów w ramach subskrypcji platformy Azure.
 
 > [!Important]
 > Limity mogą ulec zmianie. Najnowsze informacje zawsze znajduje się w temacie przydział poziomu usługi [dokumentu](https://docs.microsoft.com/azure/azure-subscription-service-limits/) na wszystkie usługi platformy Azure.
 
-### <a name="virtual-machines"></a>Maszyny wirtualne 
+### <a name="virtual-machines"></a>Maszyny wirtualne
 Ma limitu liczby maszyn wirtualnych, które można udostępnić w subskrypcji platformy Azure dla usługi lub w sposób autonomiczny. Ten limit jest na poziomie regionu na łączna liczba rdzeni, a także na podstawie poszczególnych rodziny.
 
 Należy podkreślić, że rdzenie maszyny wirtualnej mają regionalny limit całkowitej i regionalny limit rozmiaru serii (Dv2, F itp.), są wymuszane oddzielnie na. Rozważmy na przykład subskrypcję z całkowitym limitem rdzeni maszyn wirtualnych dla regionu Wschodnie stany USA wynoszącym 30, limitem rdzeni dla serii A wynoszącym 30 i limitem rdzeni dla serii D wynoszącym 30. W przypadku tej subskrypcji dozwolone będzie wdrożenie 30 maszyn wirtualnych A1 lub 30 maszyn wirtualnych D1 albo kombinacji obu rodzajów maszyn wirtualnych, pod warunkiem, że liczba rdzeni nie przekroczy 30 (na przykład 10 maszyn wirtualnych A1 i 20 maszyn wirtualnych D1).
@@ -91,8 +91,8 @@ Przeglądanie przydziału dla różnych zasobów, takich jak maszyny wirtualne, 
 
 1. Z listy subskrypcji Wybierz subskrypcję, którego limit przydziału, którego szukasz.
 
-   **Istnieje ostrzeżenie**, specjalnie do wyświetlania limitu przydziału obliczeniowego usługi Azure Machine Learning. Jak wspomniano powyżej, ten limit przydziału jest niezależna od limitu przydziału obliczeniowego w ramach Twojej subskrypcji. 
-   
+   **Istnieje ostrzeżenie**, specjalnie do wyświetlania limitu przydziału obliczeniowego usługi Azure Machine Learning. Jak wspomniano powyżej, ten limit przydziału jest niezależna od limitu przydziału obliczeniowego w ramach Twojej subskrypcji.
+
 1. W okienku po lewej stronie wybierz **usługi Machine Learning** a następnie z wyświetlonej listy wybierz pozycję dowolnym obszarze roboczym
 
 1. W następnym bloku w obszarze **pomoc techniczna i rozwiązywanie problemów z sekcji** wybierz **użycie i przydziały** Aby wyświetlić bieżące limity przydziału i użycia.

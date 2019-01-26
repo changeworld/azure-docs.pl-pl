@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1f7921093bc97aa6dc776213be4dbdf9537b7fe2
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255265"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075707"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
@@ -26,7 +26,7 @@ W tym artykule opisano Uściślanie zawartości grupy przez wizualizację zależ
 Usługa Azure Migrate korzysta z rozwiązania mapy usługi w usłudze Log Analytics, aby umożliwić wizualizacja zależności maszyn.
 
 > [!NOTE]
-> Funkcji wizualizacji zależności nie jest dostępna na platformie Azure Government.
+> Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
 ### <a name="associate-a-log-analytics-workspace"></a>Skojarzyć obszar roboczy usługi Log Analytics
 Aby korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy usługi Log Analytics, nowej lub istniejącej z projektem migracji platformy Azure. Możesz tworzyć lub dołączyć obszaru roboczego w tej samej subskrypcji, w której jest tworzony projekt migracji.
@@ -52,6 +52,8 @@ Aby wyświetlić zależności grupy, musisz pobrać i zainstalować agentów na 
 
 ### <a name="install-the-mma"></a>Instalowanie programu MMA
 
+#### <a name="install-the-agent-on-a-windows-machine"></a>Zainstaluj agenta na komputerze Windows
+
 Aby zainstalować agenta na komputerze Windows:
 
 1. Kliknij dwukrotnie pobranego agenta.
@@ -60,6 +62,9 @@ Aby zainstalować agenta na komputerze Windows:
 4. W **opcje instalacji agenta**, wybierz opcję **usługi Azure Log Analytics** > **dalej**.
 5. Kliknij przycisk **Dodaj** Aby dodać nowy obszar roboczy usługi Log Analytics. Wklej identyfikator obszaru roboczego i klucz, który został skopiowany z portalu. Kliknij przycisk **Dalej**.
 
+Można zainstalować agenta z wiersza polecenia lub przy użyciu zautomatyzowanej metody, np. usługi Azure Automation DSC, System Center Configuration Manager, lub przy użyciu szablonu usługi Azure Resource Manager, jeśli usługa Microsoft Azure Stack zostały wdrożone w Twoim centrum danych. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) o używaniu tych metod instalowania agenta MMA.
+
+#### <a name="install-the-agent-on-a-linux-machine"></a>Zainstaluj agenta na maszynie z systemem Linux
 
 Aby zainstalować agenta na maszynie z systemem Linux:
 
@@ -76,6 +81,8 @@ Aby zainstalować agenta na maszynie z systemem Linux:
 
 Dowiedz się więcej o obsłudze agenta zależności [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) systemów operacyjnych.
 
+[Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) dotyczące wykorzystania skryptów do zainstalowania agenta zależności.
+
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Dostosować grupę, w oparciu o wizualizacji zależności
 Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować zależności grupy i dostosuj je, wykonując poniższe kroki.
 
@@ -91,6 +98,10 @@ Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować za
      ![Wyświetlanie zależności grupowych](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. Aby wyświetlić bardziej szczegółowe zależności, kliknij zakres czasu, aby go zmodyfikować. Domyślnie zakres jest godzinę. Możesz modyfikować zakres czasu lub określ rozpoczęcia i zakończenia daty i czasu trwania.
+
+    > [!NOTE]
+      Wizualizacji zależności interfejsu użytkownika nie obsługuje obecnie wybór zakresu czasu, więcej niż jedna godzina. Używanie programu Log Analytics do [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-a-group#query-dependency-data-from-log-analytics) przez dłuższy czas.
+
 4. Sprawdź zależnych maszyn proces uruchomiony na każdej maszynie, a następnie zidentyfikuje maszyny, które powinny zostać dodane lub usunięte z grupy.
 5. Użyj klawiszy Ctrl + kliknięcie, aby wybrać maszyny na mapie, aby dodać lub usunąć je z niej.
     - Można dodawać tylko te maszyny, które zostały odnalezione.
@@ -101,6 +112,20 @@ Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować za
     ![Dodawanie lub usuwanie komputerów](./media/how-to-create-group-dependencies/add-remove.png)
 
 Jeśli chcesz sprawdzić zależności określonej maszyny, która pojawia się na mapie zależności grupy [Konfigurowanie mapowania zależności maszyn](how-to-create-group-machine-dependencies.md).
+
+## <a name="query-dependency-data-from-log-analytics"></a>Wykonywanie zapytań dotyczących danych w zależności od usługi Log Analytics
+
+Zależność dane przechwycone przez rozwiązania Service Map są dostępne do wykonywania zapytań w usłudze Log Analytics. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) o tabele danych mapy usługi do wykonywania zapytań w usłudze Log Analytics. 
+
+Aby uruchamiać zapytania usługi Log Analytics:
+
+1. Po zainstalowaniu agentów, przejdź do portalu i kliknij przycisk **Przegląd**.
+2. W **Przegląd**, przejdź do **Essentials** części projektu i kliknij przycisk Dalej, aby nazwa obszaru roboczego **obszaru roboczego pakietu OMS**.
+3. Na stronie obszaru roboczego usługi Log Analytics kliknij **ogólne** > **dzienniki**.
+4. Napisz zapytanie do zbierania danych zależności za pomocą usługi Log Analytics. Przykładowe zapytania, aby zebrać dane zależności są dostępne [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+5. Uruchom zapytanie, klikając polecenie Uruchom. 
+
+[Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) o tym, jak pisać zapytania usługi Log Analytics. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

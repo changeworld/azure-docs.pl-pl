@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 7dc2136fe6ee28da0583ebdb2b2749ddf1c37049
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728044"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912037"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
 
@@ -46,8 +46,8 @@ W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
 
 |Protokół|Przykład|
 |---|---|
-|HLS W WERSJI 4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
-|HLS W WERSJI 3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
+|HLS V4|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`|
+|HLS V3|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,filter=myAccountFilter)`|
 |MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
 
@@ -113,7 +113,7 @@ Możesz użyć następujących właściwości do opisania filtry.
 |Name (Nazwa)|Opis|
 |---|---|
 |firstQuality|Pierwszy bitrate jakości filtru.|
-|PresentationTimeRange|Zakres czasu prezentacji. Ta właściwość jest używana do filtrowania punktów manifestu rozpoczęcia/zakończenia, długość okna prezentacji i pozycja początkowa na żywo. <br/>Aby uzyskać więcej informacji, zobacz [PresentationTimeRange](#PresentationTimeRange).|
+|presentationTimeRange|Zakres czasu prezentacji. Ta właściwość jest używana do filtrowania punktów manifestu rozpoczęcia/zakończenia, długość okna prezentacji i pozycja początkowa na żywo. <br/>Aby uzyskać więcej informacji, zobacz [PresentationTimeRange](#PresentationTimeRange).|
 |ścieżki|Warunki wybór ścieżki. Aby uzyskać więcej informacji, zobacz [ścieżki](#tracks)|
 
 ### <a name="presentationtimerange"></a>PresentationTimeRange
@@ -124,8 +124,8 @@ Użyj tej właściwości, za pomocą **filtry zasobów**. Nie zaleca się ustawi
 |---|---|
 |**endTimestamp**|Przedział czasu zakończenia bezwzględne. Ma zastosowanie do materiałów wideo na żądanie (VoD). Prezentacji na żywo jest dyskretnie ignorowana i stosowane po zakończeniu prezentacji i dane ze strumienia staje się wideo na żądanie.<br/><br/>Wartość reprezentuje punkt końcowy bezwzględne strumienia. Pobiera on zaokrąglony do najbliższej następnym uruchomieniu GOP.<br/><br/>Użyj StartTimestamp i EndTimestamp można przycięcia listy odtwarzania (manifest). Na przykład StartTimestamp = 40000000 i EndTimestamp = 100000000 wygeneruje listy odtwarzania, która zawiera multimediów między StartTimestamp i EndTimestamp. Jeśli fragment pokrywającej granicy, całego fragmentu będą uwzględniane w manifeście.<br/><br/>Zobacz też **forceEndTimestamp** definicję, która jest zgodna.|
 |**forceEndTimestamp**|Dotyczy filtrów na żywo.<br/><br/>**forceEndTimestamp** jest wartością logiczną, wskazującą, czy **endTimestamp** zostało ustawione na prawidłową wartość. <br/><br/>Jeśli wartość jest **true**, **endTimestamp** wartość powinna być określona. Jeśli nie zostanie określony, zwracany jest nieprawidłowe żądanie.<br/><br/>Jeśli na przykład, aby zdefiniować filtr, który rozpoczyna się od 5 minut do wejściowego pliku wideo, a jest dostępna do końca strumienia, należy ustawić **forceEndTimestamp** o wartości false i pominąć ustawienie **endTimestamp**.|
-|**liveBackoffDuration**|Dotyczy tylko na żywo. Właściwość jest używana do definiowania pozycji odtwarzania na żywo. Przy użyciu tej reguły, możesz opóźnić pozycji odtwarzania na żywo i utworzyć bufor po stronie serwera dla graczy. LiveBackoffDuration jest określana względem transmisji na żywo. Czas trwania maksymalna wycofywania na żywo wynosi 60 sekund.|
-|**presentationWindowDuration**|Ma zastosowanie do na żywo. Użyj **presentationWindowDuration** dotyczą przesuwającego się okna listy odtwarzania. Na przykład ustawić presentationWindowDuration = 1200000000, aby zastosować przesuwającego się okna dwie minuty. Nośnik w ciągu 2 minut na żywo edge zostaną uwzględnione w listy odtwarzania. Jeśli fragment pokrywającej granicy, całego fragmentu zostaną uwzględnione na liście odtwarzania. Czas trwania okna prezentacji minimalna to 120 sekund.|
+|**liveBackoffDuration**|Dotyczy tylko na żywo. Właściwość jest używana do definiowania pozycji odtwarzania na żywo. Przy użyciu tej reguły, możesz opóźnić pozycji odtwarzania na żywo i utworzyć bufor po stronie serwera dla graczy. LiveBackoffDuration jest określana względem transmisji na żywo. Czas trwania maksymalna wycofywania na żywo to 300 sekund.|
+|**presentationWindowDuration**|Ma zastosowanie do na żywo. Użyj **presentationWindowDuration** dotyczą przesuwającego się okna listy odtwarzania. Na przykład ustawić presentationWindowDuration = 1200000000, aby zastosować przesuwającego się okna dwie minuty. Nośnik w ciągu 2 minut na żywo edge zostaną uwzględnione w listy odtwarzania. Jeśli fragment pokrywającej granicy, całego fragmentu zostaną uwzględnione na liście odtwarzania. Czas trwania okna prezentacji minimalna wynosi 60 sekund.|
 |**startTimestamp**|Ma zastosowanie do strumieni wideo na żądanie lub na żywo. Wartość stanowi punkt początkowy bezwzględne strumienia. Wartość jest zaokrąglana do najbliższej następnym uruchomieniu GOP.<br/><br/>Użyj **startTimestamp** i **endTimestamp** można przycięcia listy odtwarzania (manifest). Na przykład startTimestamp = 40000000 i endTimestamp = 100000000 wygeneruje listy odtwarzania, która zawiera multimediów między StartTimestamp i EndTimestamp. Jeśli fragment pokrywającej granicy, całego fragmentu będą uwzględniane w manifeście.|
 |**Skala czasu**|Ma zastosowanie do strumieni wideo na żądanie lub na żywo. Skala czasu używany przez sygnatury czasowe i czasów trwania określonym powyżej. Skala czasu domyślny to 10000000. Służy alternatywne skali czasu. Wartość domyślna to 10000000 SNS (kilkuset nanosekund).|
 

@@ -1,6 +1,6 @@
 ---
-title: Widok, który ma role zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
-description: Widok, który ma role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
+title: Wyświetl historię działań i inspekcji dla ról zasobów platformy Azure w usłudze PIM | Dokumentacja firmy Microsoft
+description: Wyświetlanie działań i inspekcji historii dla ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,54 +13,103 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 03/30/2018
+ms.date: 01/24/2019
 ms.author: rolyon
-ms.openlocfilehash: ce7c96d92938c4e3b4cc0b53271df48350083754
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 21decb8260abfe98df913763a2338b34aacb1f91
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465235"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911460"
 ---
-# <a name="view-who-has-azure-resource-roles-in-pim"></a>Widok, który ma role zasobów platformy Azure w usłudze PIM
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Wyświetl historię działań i inspekcji dla ról zasobów platformy Azure w usłudze PIM
 
-Za pomocą usługi Azure Active Directory Privileged Identity Management (PIM), możesz zarządzanie, sterowanie i monitorowanie dostępu do zasobów platformy Azure w Twojej organizacji. W tym subskrypcji, grupy zasobów i nawet maszyn wirtualnych. Dowolnego zasobu w witrynie Azure portal, która korzysta z funkcji kontroli dostępu opartej na rolach na platformie Azure korzystać z zalet zabezpieczeń i cyklu życia możliwości zarządzania w usłudze Azure AD PIM. 
+Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), mogą wyświetlać działania, aktywacji i Historia inspekcji dla ról zasobów platformy Azure w Twojej organizacji. W tym subskrypcji, grupy zasobów i nawet maszyn wirtualnych. Dowolnego zasobu w witrynie Azure portal, która korzysta z funkcji kontroli dostępu opartej na rolach na platformie Azure korzystać z zalet zabezpieczeń i cyklu życia możliwości zarządzania w usłudze PIM.
 
-## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Usługa PIM dla zasobów platformy Azure pomaga administratorom zasobów
+## <a name="view-activity-and-activations"></a>Wyświetl działania i aktywacji
 
-- Zobacz, którzy użytkownicy i grupy są przypisane role zasobów platformy Azure, którymi administrujesz
-- Włącz na żądanie, dostęp "just in time" do zarządzania zasobami, takimi jak subskrypcji, grupy zasobów i więcej
-- Wygasa automatycznie z nowymi ustawieniami przypisania czasowo, dostęp do zasobów przypisanych użytkowników/grup
-- Przypisz dostęp do zasobów tymczasowego dla szybkich zadań lub harmonogramów dyżurów
-- Wymuszanie uwierzytelniania wieloskładnikowego, aby uzyskać dostęp do zasobów w dowolnej roli wbudowanej lub niestandardowej 
-- Uzyskiwanie raportów o działaniu zasobów skorelowane dostępu do zasobów podczas aktywnej sesji użytkownika
-- Otrzymuj alerty, gdy nowych użytkowników lub grup są przypisywane dostęp do zasobów, a podczas aktywacji z kwalifikującymi się przypisaniami
+Aby zobaczyć, jakie akcje określonego użytkownika odbyło się w różnych zasobów, możesz wyświetlić działania zasobów platformy Azure, który jest skojarzony z okresem danego aktywacji.
 
-## <a name="view-activation-and-azure-resource-activity"></a>Wyświetl aktywacji i działanie zasobów platformy Azure
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
 
-W przypadku potrzebujesz zobaczyć, jakie akcje określony użytkownik nie wykonał dla różnych zasobów, możesz sprawdzić działanie zasobów platformy Azure skojarzone z okresem danego aktywacji (w przypadku uprawnionych użytkowników). Rozpocznij od wybranie użytkownika z widoku elementów członkowskich lub listę elementów członkowskich w określonej roli. Wynik przedstawia widok graficzny akcje użytkownika dla zasobów platformy Azure według daty, a ostatnie aktywacje ról w tym samym przedziale czasu.
+1. Kliknij przycisk **zasobów platformy Azure**.
 
-![](media/azure-pim-resource-rbac/user-details.png)
+1. Kliknij zasób, którą chcesz wyświetlić, działania i aktywacji dla.
 
-Wybieranie aktywacji określonej roli zostaną wyświetlone szczegóły uaktywnienia roli, a odpowiadającego im działania zasobów platformy Azure, który wystąpił podczas, gdy ten użytkownik był aktywny.
+1. Kliknij przycisk **role** lub **członków**.
 
-![](media/azure-pim-resource-rbac/audits.png)
+1. Kliknij użytkownika.
 
-## <a name="review-who-has-access-in-a-subscription"></a>Przejrzyj, kto ma dostęp w ramach subskrypcji
+    Zobaczysz graficzne przedstawienie czynności wykonywanych przez użytkownika w ramach zasobów platformy Azure według daty. Pokazuje również ostatnie aktywacje ról w tym samym okresie czasu.
 
-Aby zapoznać się z przypisań ról w ramach subskrypcji, wybierz kartę elementy członkowskie w lewym obszarze nawigacji, lub wybierz role, a następnie wybierz określoną rolę, aby zapoznać się z elementów członkowskich. 
+    ![Szczegóły użytkownika](media/azure-pim-resource-rbac/rbac-user-details.png)
 
-Wybierz pozycję Przegląd, na pasku akcji, aby wyświetlić istniejące przeglądów dostępu, a następnie wybierz pozycję Dodaj, aby utworzyć nowy Przegląd.
+1. Kliknij przycisk aktywacji określoną rolę, aby wyświetlić szczegóły i odpowiadającego im działania zasobów platformy Azure, który wystąpił podczas, gdy ten użytkownik był aktywny.
 
-![](media/azure-pim-resource-rbac/owner.png)
+    ![Wybierz aktywacji roli](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
-[Dowiedz się więcej o przeglądach dostępu](pim-how-to-perform-security-review.md)
+## <a name="export-role-assignments-with-children"></a>Wyeksportowanie przypisań roli z elementami podrzędnymi
 
->[!NOTE]
-Recenzje są obsługiwane tylko dla typów zasobów subskrypcji w tej chwili.
+Może być wymagań zgodności, gdzie należy podać pełną listę przypisań ról do obrachunkowego. PIM pozwala przesyłać zapytania przypisania ról w określonego zasobu, który zawiera przypisania roli dla wszystkich zasobów podrzędnych. Wcześniej było trudne dla administratorów uzyskać pełną listę przypisań ról w ramach subskrypcji i powodowały one na wyeksportowanie przypisań roli dla każdego określonego zasobu. Korzystając z usługi PIM, można wysyłać zapytania dotyczące wszystkich przypisań roli aktywnych i kwalifikujących się w ramach subskrypcji, w tym przypisania roli dla wszystkich grup zasobów i zasobów.
+
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
+
+1. Kliknij przycisk **zasobów platformy Azure**.
+
+1. Kliknij zasób, aby eksportować przypisania roli, np. subskrypcji.
+
+1. Kliknij przycisk **członków**.
+
+1. Kliknij przycisk **wyeksportować** aby otworzyć okienko członkostwa eksportu.
+
+    ![Okienko członkostwa eksportu](media/azure-pim-resource-rbac/export-membership.png)
+
+1. Kliknij przycisk **wyeksportować wszystkie elementy członkowskie** Aby wyeksportować wszystkie przypisania roli w pliku CSV.
+
+    ![Eksportowanie pliku CSV](media/azure-pim-resource-rbac/export-csv.png)
+
+## <a name="view-resource-audit-history"></a>Wyświetl historię inspekcji zasobów
+
+Inspekcja zasobu zapewnia wgląd w całą aktywność roli dla zasobu.
+
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
+
+1. Kliknij przycisk **zasobów platformy Azure**.
+
+1. Kliknij zasób, którą chcesz wyświetlić historię inspekcji.
+
+1. Kliknij przycisk **inspekcja zasobu**.
+
+1. Filtruj historię za pomocą wstępnie zdefiniowanych datę lub zakres niestandardowy.
+
+    ![Inspekcja zasobu filtru](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+
+1. Aby uzyskać **typ inspekcji**, wybierz opcję **Aktywuj (przypisane + aktywowany)**.
+
+    ![Szczegóły działania](media/azure-pim-resource-rbac/rbac-audit-activity.png)
+
+1. W obszarze **akcji**, kliknij przycisk **(działanie)** dla użytkownika, aby wyświetlić szczegóły dotyczące działania tego użytkownika w ramach zasobów platformy Azure.
+
+    ![Szczegóły działania użytkownika](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
+
+## <a name="view-my-audit"></a>Wyświetl moje inspekcji
+
+Moja Inspekcja umożliwia wyświetlenie swoje działania w roli osobistej.
+
+1. Otwórz **usługi Azure AD Privileged Identity Management**.
+
+1. Kliknij przycisk **zasobów platformy Azure**.
+
+1. Kliknij zasób, którą chcesz wyświetlić historię inspekcji.
+
+1. Kliknij przycisk **Moja inspekcja**.
+
+1. Filtruj historię za pomocą wstępnie zdefiniowanych datę lub zakres niestandardowy.
+
+    ![Działania roli osobistej](media/azure-pim-resource-rbac/my-audit-time.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Przypisz role zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)
 - [Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)
-- [Wbudowane role na platformie Azure](../../role-based-access-control/built-in-roles.md)
+- [Wyświetl historię inspekcji dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-use-audit-log.md)

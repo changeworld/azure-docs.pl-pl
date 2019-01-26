@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: 22cb3b908301c298bd7d37f39fbcb1ffa1d0d3ce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b4e784e7d249976b95c5f70986ba007351d2abb4
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816997"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55076976"
 ---
 # <a name="reset-your-work-or-school-password"></a>Resetowanie hasła służbowego
 
@@ -32,7 +32,7 @@ Jeśli nie pamiętasz hasła nigdy nie otrzyma jeden z pomocy technicznej Twojej
 
 Może się nie można uzyskać dostępu do konta usługi Azure Active Directory (Azure AD) z jednego z następujących powodów:
 
-* Hasło nie działa, i chcesz je zresetować.
+* Hasło nie działa, a chcesz je zresetować.
 * Znać hasło, ale Twoje konto jest zablokowane i zechcesz je odblokować.
 
 Dostęp do usługi Azure AD samoobsługowego resetowania haseł (SSPR) i do niej wrócić do swojego konta, wykonaj następujące kroki.

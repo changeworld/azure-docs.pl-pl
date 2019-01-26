@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: b26a1fa3f61c7836bbe3466e4d95f406d16eb31e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902520"
+ms.locfileid: "54913577"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -218,7 +218,7 @@ Możliwe kody są:
 
 |Stan | Opis |
 | ----- | ----------- |
-| 200 | Powodzenie |
+| 204 | Powodzenie (Brak zawartości jest zwracana) |
 | 429 | Za dużo żądań (ograniczone), jak na [usługi IoT Hub, ograniczanie przepustowości][lnk-quotas] |
 | 5** | Błędy serwera |
 

@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 01/24/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 9e197929ce08f4e0c665f96d1c4ddbd382fdfb22
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7e9093582776db82cfe4bdd36094f94634bd3c23
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084463"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911306"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wybieranie pojemności dla danego wdrożenia usługi QnA Maker
 
@@ -28,11 +28,14 @@ Usługa QnA Maker przyjmuje zależność dla trzech zasobów platformy Azure:
 Przed przystąpieniem do tworzenia usługi QnA Maker możesz zdecydować, którą warstwę usług powyżej jest odpowiednia dla Ciebie. 
 
 Zwykle istnieją trzy parametry, które należy wziąć pod uwagę:
+
 1. **Przepływność należy z niej**: Wybierz odpowiedni [Plan usługi App](https://azure.microsoft.com/pricing/details/app-service/plans/) dla usługi App service zgodnie z potrzebami. Możesz [skalowanie w górę](https://docs.microsoft.com/azure/app-service/web-sites-scale) lub w dół aplikacji. To powinien również mieć wpływ na wybór jednostki SKU usługi Azure Search, zobacz więcej szczegółów [tutaj](https://docs.microsoft.com/azure/search/search-sku-tier).
 
-2. **Rozmiaru i liczby baz wiedzy**: wybierz odpowiednie [Azure wyszukiwanie jednostek SKU](https://azure.microsoft.com/pricing/details/search/) dla danego scenariusza. N-1, baz wiedzy można publikować w konkretnej warstwy, gdzie N to maksymalna liczba indeksów dozwolone w ramach warstwy. Sprawdź również maksymalnego rozmiaru i liczby dokumentów dozwolone na warstwę.
+1. **Rozmiaru i liczby baz wiedzy**: Wybierz odpowiedni [Azure wyszukiwanie jednostek SKU](https://azure.microsoft.com/pricing/details/search/) dla danego scenariusza. N-1, baz wiedzy można publikować w konkretnej warstwy, gdzie N to maksymalna liczba indeksów dozwolone w ramach warstwy. Sprawdź również maksymalnego rozmiaru i liczby dokumentów dozwolone na warstwę.
 
-3. **Liczba dokumentów jako źródła**: bezpłatna jednostka SKU usługi zarządzania usługi QnA Maker ogranicza liczbę dokumentów można zarządzać za pośrednictwem portalu i interfejsów API do 3 (1 MB rozmiar każdego). Standardowa jednostka SKU nie ma limitów liczby dokumentów, którymi można zarządzać. Zobacz więcej szczegółów [tutaj](https://aka.ms/qnamaker-pricing).
+    Na przykład warstwę ma 15 dozwolonych indeksów, można opublikować 14 bazy wiedzy (1 indeks na opublikowane bazy wiedzy knowledge base). 15 indeks jest używany dla wszystkich baz wiedzy do tworzenia i testowania. 
+
+1. **Liczba dokumentów jako źródła**: Bezpłatna jednostka SKU usługi zarządzania usługi QnA Maker ogranicza liczbę dokumentów, którymi można zarządzać za pośrednictwem portalu i interfejsów API do 3 (1 MB rozmiar każdego). Standardowa jednostka SKU nie ma limitów liczby dokumentów, którymi można zarządzać. Zobacz więcej szczegółów [tutaj](https://aka.ms/qnamaker-pricing).
 
 W poniższej tabeli przedstawiono niektóre wytyczne wysokiego poziomu.
 

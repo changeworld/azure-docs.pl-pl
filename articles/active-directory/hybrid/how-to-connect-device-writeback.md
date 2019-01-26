@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 82ccbe8e57ff35904b7e763e838a81660ab13f88
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8be4274f2f971202172b09bbab2e6529fd5a8070
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412822"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075690"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Program Azure AD Connect: Włączanie zapisywania zwrotnego urządzeń
 > [!NOTE]
@@ -89,7 +89,7 @@ Jeśli pole wyboru, aby funkcja zapisywania zwrotnego urządzeń nie jest włąc
 
 Najważniejsze pierwszy:
 
-* Upewnij się, że co najmniej jeden las ma system Windows Server 2012 R2. Typ obiektu urządzenia musi być obecny.
+* Lasu, gdy urządzenia są obecne musi mieć schemat lasu uaktualnione do poziomu systemu Windows 2012 R2, aby obiekt urządzenia i skojarzonych z nimi atrybutów są obecne.
 * Jeśli Kreator instalacji jest już uruchomiona, wszelkie zmiany nie można wykryć. W takim przypadku można zakończyć działanie Kreatora instalacji i uruchom go ponownie.
 * Upewnij się, że konto, którego należy podać w skrypcie inicjowania jest faktycznie właściwy użytkownik używane przez łącznik usługi Active Directory. Aby to sprawdzić, wykonaj następujące kroki:
   * Z start menu, otwórz **usługi synchronizacji**.

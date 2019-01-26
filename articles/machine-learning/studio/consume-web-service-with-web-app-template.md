@@ -8,7 +8,7 @@ author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20
 
 Mogą tworzyć model predykcyjny i wdrożyć go jako usługę sieci web platformy Azure przy użyciu:
 - Azure Machine Learning Studio.
-- Narzędzia, takie jak R lub Python. 
+- Narzędzia, takie jak R lub Python.
 
 Po tym modelu zoperacjonalizowanej dostęp przy użyciu interfejsu API REST.
 
@@ -23,10 +23,10 @@ Szablony aplikacji sieci web dostępnych w witrynie Azure Marketplace można utw
 
 Dostępne są dwa szablony:
 
-* [Szablon aplikacji sieci Web usługi Azure ML odpowiedź na żądanie](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
-* [Usługa Azure Batch ML — szablonu aplikacji sieci Web usługi wykonywania](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
+* [Usługa Azure Machine Learning studio szablonu aplikacji sieci Web usługi odpowiedź na żądanie](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
+* [Usługa Azure Machine Learning studio szablonu aplikacji sieci Web usługa wykonywania wsadowego](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Każdy szablon służy do tworzenia przykładowej aplikacji platformy ASP.NET za pomocą identyfikatora URI interfejsu API i klucza dla usługi sieci web. Szablon następnie aplikacja jest wdrażana jako witryny sieci Web na platformie Azure. 
+Każdy szablon służy do tworzenia przykładowej aplikacji platformy ASP.NET za pomocą identyfikatora URI interfejsu API i klucza dla usługi sieci web. Szablon następnie aplikacja jest wdrażana jako witryny sieci Web na platformie Azure.
 
 Szablon usługi odpowiedź na żądanie (RRS) umożliwia utworzenie aplikacji sieci web, które można użyć, aby wysłać pojedynczy wiersz danych do usługi sieci web, umożliwiającej uzyskanie pojedynczego wyniku. Szablon usługi Batch Execution Service (BES) tworzy aplikację internetową, która służy do wysyłania wiele wierszy danych, aby wyświetlić wyniki wielu.
 
@@ -51,33 +51,33 @@ Wykonaj następujące kroki, aby użyć szablonu aplikacji sieci web RRS, jak po
 <!--    ![API Key][image3] -->
 
 <!-- This value will look like this:
-   
+
         https://ussouthcentral.services.azureml.net/workspaces/<workspace-id>/services/<service-id>/execute?api-version=2.0&details=true
-   
+
     ![Request URI][image4] -->
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **nowy**, wyszukiwanie i wybieranie **usługi Azure ML odpowiedź na żądanie usługi Web App**, a następnie wybierz pozycję **Utwórz**. 
+2. Wybierz **nowy**, wyszukiwanie i wybieranie **usługi Azure ML odpowiedź na żądanie usługi Web App**, a następnie wybierz pozycję **Utwórz**.
 3. W **Utwórz** okienka:
-   
+
    * Nadaj aplikacji sieci web unikatową nazwę. Adres URL aplikacji sieci web będzie to nazwa, następuje **. azurewebsites.net**. Na przykład **http://carprediction.azurewebsites.net**.
    * Wybierz subskrypcję platformy Azure i usług, w których jest uruchomiona usługa sieci web.
    * Wybierz pozycję **Utwórz**.
-     
+
    ![Tworzenie aplikacji internetowej][image5]
 
 4. Po zakończeniu Azure podczas wdrażania aplikacji sieci web, wybierz **adresu URL** w ustawieniach aplikacji sieci web na platformie Azure, lub strony wprowadź adres URL w przeglądarce sieci web. Na przykład, wprowadź **http://carprediction.azurewebsites.net**.
 5. Po uruchomieniu pierwszych aplikacji sieci web, prosi o **adresu URL interfejsu API wpisu** i **klucz interfejsu API**. Wprowadź wartości, które zostały wcześniej zapisane (żądanie identyfikatora URI i klucz API,). Wybierz **przesłać**.
-     
+
    ![Po wprowadź identyfikator URI i klucz API][image6]
 
 6. Aplikacja sieci web jest wyświetlana jego **konfigurację aplikacji sieci Web** strony z bieżącymi ustawieniami usługi sieci web. W tym miejscu można wprowadzić zmiany do ustawień, których używa aplikacja sieci web.
-   
+
    > [!NOTE]
    > Zmiana ustawień w tym miejscu zmienia tylko je dla tej aplikacji sieci web. Go nie powoduje zmiany ustawień domyślnych usługi sieci web. Na przykład w przypadku zmiany tekstu w **opis** w tym miejscu nie zmienia opis wyświetlany na pulpicie nawigacyjnym usługi sieci web w usłudze Machine Learning Studio.
-   > 
-   > 
-   
+   >
+   >
+
     Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz zmiany**, a następnie wybierz pozycję **przejdź do strony głównej**.
 
 7. Na stronie głównej można wprowadzić wartości do wysłania do usługi sieci web. Wybierz **przesyłania** gdy wszystko będzie gotowe, a wynik zostanie zwrócony.
@@ -93,11 +93,11 @@ Wartości wejściowe dla usługi sieci web wykonywanie wsadowe mogą pochodzić 
 
 ![Proces, aby użyć szablonu sieci web usługi BES][image2]
 
-1. Wykonaj tę samą procedurę do tworzenia aplikacji sieci web usługi BES, jak w przypadku szablonu rekordy zasobów. Ale w takim przypadku przejdź do [szablonu aplikacji sieci Web Azure ML partii wykonywania usługi](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) aby otworzyć szablon usługi BES w witrynie Azure Marketplace. Wybierz **tworzenie aplikacji sieci Web**.
+1. Wykonaj tę samą procedurę do tworzenia aplikacji sieci web usługi BES, jak w przypadku szablonu rekordy zasobów. Jednak w takim przypadku przejść do obszaru [usługi Azure Machine Learning studio szablonu aplikacji sieci Web usługa wykonywania wsadowego](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) aby otworzyć szablon usługi BES w witrynie Azure Marketplace. Wybierz **tworzenie aplikacji sieci Web**.
 
 2. Aby określić, w którym wyniki, przechowywane, wprowadź informacje kontener docelowy, na stronie głównej aplikacji sieci web. Również określić, gdzie w aplikacji sieci web można uzyskać wartości wejściowe: w pliku lokalnym lub w kontenerze usługi Azure storage.
    Wybierz **przesłać**.
-   
+
    ![Informacje dotyczące magazynu][image7]
 
 Aplikacja sieci web wyświetla stronę o stanie zadania. Po zakończeniu zadania możesz uzyskać lokalizację wyników w usłudze Azure Blob storage. Istnieje również możliwość pobierania wyniki do pliku lokalnego.

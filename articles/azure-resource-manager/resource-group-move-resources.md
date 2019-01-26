@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9465be92d2289bb174834cc856d6f20b6b64c81b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8a5fd44f1122b682ee4e3b4c6fcf56408098cae1
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888128"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080723"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -176,7 +176,7 @@ Aby przenieść maszyny wirtualne skonfigurowane przy użyciu usługi Azure Back
 * Znajdź lokalizację maszyny wirtualnej.
 * Znajdź grupę zasobów, z następującym wzorcem nazewnictwa: `AzureBackupRG_<location of your VM>_1` na przykład AzureBackupRG_westus2_1
 * Jeśli komputer znajduje się w witrynie Azure portal, a następnie sprawdź "Pokaż ukryte typy"
-* Jeśli w programie PowerShell użyj `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` polecenia cmdlet
+* Jeśli w programie PowerShell użyj `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` polecenia cmdlet
 * Jeśli w interfejsu wiersza polecenia, użyj `az resource list -g AzureBackupRG_<location of your VM>_1`
 * Znaleźć zasobu o typie `Microsoft.Compute/restorePointCollections` zawierający wzorzec nazewnictwa `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Usuń ten zasób. Ta operacja usuwa tylko punkty natychmiastowe odzyskiwanie, a nie dane kopii zapasowej w magazynie.
@@ -343,8 +343,8 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
   Dla programu Azure PowerShell użyj polecenia:
 
   ```azurepowershell-interactive
-  (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
 
   W przypadku interfejsu wiersza polecenia platformy Azure użyj polecenia:
@@ -364,14 +364,14 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
   W przypadku programu PowerShell Użyj następujących poleceń, można pobrać stanu rejestracji:
 
   ```azurepowershell-interactive
-  Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
-  Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+  Set-AzContext -Subscription <destination-subscription-name-or-id>
+  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   Aby zarejestrować dostawcę zasobów, należy użyć:
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
   Wiersza polecenia platformy Azure Użyj następujących poleceń, aby uzyskać stan rejestracji:
@@ -475,12 +475,12 @@ Po ukończeniu, otrzymasz powiadomienie o wyniku.
 
 ### <a name="by-using-azure-powershell"></a>Za pomocą programu Azure PowerShell
 
-Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) polecenia. Poniższy przykład pokazuje, jak przenieść kilka zasobów do nowej grupy zasobów.
+Aby przenieść istniejące zasoby do innej grupy zasobów lub subskrypcji, użyj [AzResource przenoszenia](/powershell/module/az.resources/move-azresource) polecenia. Poniższy przykład pokazuje, jak przenieść kilka zasobów do nowej grupy zasobów.
 
 ```azurepowershell-interactive
-$webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
 Aby przejść do nowej subskrypcji, należy dołączyć wartość dla `DestinationSubscriptionId` parametru.
