@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 00124562d3bc21f9139ae54f022d7893a4eaf11c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6d9370ce6a031377e37c4e830400337f3e57a62e
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53638806"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55084796"
 ---
 | Zasób | Środowisko docelowe | Stały limit |
 |----------|--------------|------------|
-| Usługi synchronizacji magazynu na subskrypcję | 15 usługi synchronizacji magazynu na region | Nie |
+| Usługi synchronizacji magazynu na region | 15 usługi synchronizacji magazynu | Yes |
 | Grupy synchronizacji na usługę synchronizacji magazynu | 100 grupy synchronizacji | Yes |
 | Zarejestrowane serwery na usługę synchronizacji magazynu | serwery 99 | Yes |
 | Punkty końcowe w chmurze dla każdej grupy synchronizacji | punkt końcowy w chmurze 1 | Yes |
