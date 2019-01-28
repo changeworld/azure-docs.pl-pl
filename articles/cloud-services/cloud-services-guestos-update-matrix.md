@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/24/2019
+ms.date: 1/25/2019
 ms.author: raiye
-ms.openlocfilehash: 59afdd3bbb00dce6085ea76685768db3e8eec5cc
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 9d2fa8497ac773ba086f3a4550e20ac5f5f0d882
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900854"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075469"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -75,7 +75,7 @@ System operacyjny gościa czerwca został wydany.
 Zainstalowane środowisko .NET framework: 3.5, 4.7.2
 
 > [!NOTE]
-> Zestaw Windows Azure SDK dla platformy .NET 3.0 można pobrać [tutaj][Windows Azure SDK].
+> Zestaw Windows Azure SDK dla platformy .NET — 3.0 można pobrać [tutaj][Windows Azure SDK].
 >
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
@@ -155,6 +155,7 @@ Mimo że [zasady wycofywania z zestawu Azure SDK] [ retire policy sdk] oznacza, 
 
 | Rodzina systemów operacyjnych gościa | Zgodne wersje zestawu SDK |
 | --- | --- |
+| 6 |Wersja 2.9.6+ |
 | 5 |Wersja 2.9.5.1+ |
 | 4 |W wersji 2.1 + |
 | 3 |W wersji 1.8 + |
