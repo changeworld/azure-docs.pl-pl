@@ -26,7 +26,7 @@ Usługa drzwiami frontowymi zapewnia duże pliki bez limitu rozmiaru pliku. Drzw
 
 </br>Po fragmencie dociera do środowiska drzwiami frontowymi, pamięci podręcznej i obsłużonych natychmiast użytkownika. Następnie drzwiami frontowymi pobiera wstępnie dalej fragmentów w sposób równoległy. Ta pobierania wstępnego gwarantuje, że zawartość pozostaje w jednym fragmencie w przód od użytkownika, co zmniejsza opóźnienie. Ten proces jest kontynuowany aż do całego pobrany plik (jeśli jest to wymagane), wszystkich zakresów bajtów są dostępne (jeśli jest to wymagane), lub klient zakończy połączenie.
 
-</br>Aby uzyskać więcej informacji na temat żądania zakresu bajtów, przeczytaj [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
+</br>Aby uzyskać więcej informacji na temat żądania zakresu bajtów, przeczytaj [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html).
 Drzwiami frontowymi buforuje wszelkie fragmenty, po odebraniu i dlatego nie trzeba być buforowane w pamięci podręcznej drzwiami frontowymi całego pliku. Kolejne żądania dla pliku lub bajt zakresy są udostępniane z pamięci podręcznej. Jeśli nie wszystkie fragmenty są buforowane, wstępnego pobierania jest używany do zażądania fragmentów z wewnętrznej bazy danych. Tego rodzaju optymalizacji opiera się na możliwość obsługi żądania zakresu bajtów; wewnętrznej bazy danych Jeśli wewnętrznej bazy danych nie obsługuje żądania zakresu bajtów, optymalizacja nie jest skuteczna.
 
 ## <a name="file-compression"></a>Kompresja plików
