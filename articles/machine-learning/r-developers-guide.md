@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 102191b885d2a4a9234b7783b0a51b09903d3abd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c5120cdb743e031c081f727c947752419db3a9d7
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807460"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55081113"
 ---
 # <a name="r-developers-guide-to-azure"></a>Przewodnik dewelopera języka R na platformie Azure
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -82,24 +82,24 @@ Ponieważ usługi Databricks bazuje na platformie Spark oraz skoncentrowanie si�
 Artykuł ["Co to jest usługa Azure Databricks?"](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks)
 zapewnia więcej szczegółów na temat platform i ułatwiają rozpoczęcie.
 
-## <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
-[Usługa Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) jest narzędziem współpracy, obsługiwane metodą przeciągania i upuszczania, można użyć do tworzenia, testowania i wdrażania rozwiązań do analizy predykcyjnej w chmurze.  Dzięki temu pojawiających się analityków danych, do tworzenia i wdrażania modeli uczenia maszynowego bez konieczności pisania większej ilości kodu.
+## <a name="azure-machine-learning-studio"></a>Studio uczenia maszynowego Azure
+[Usługa Azure Machine Learning studio](https://azure.microsoft.com/services/machine-learning-studio/) jest narzędziem współpracy, obsługiwane metodą przeciągania i upuszczania, można użyć do tworzenia, testowania i wdrażania rozwiązań do analizy predykcyjnej w chmurze.  Dzięki temu pojawiających się analityków danych, do tworzenia i wdrażania modeli uczenia maszynowego bez konieczności pisania większej ilości kodu.
 
-ML Studio obsługuje języków R i Python.  Za pomocą języka R i usługi ML Studio na dwa sposoby.
+Usługa Azure Machine Learning studio obsługuje języków R i Python.  Za używanie języka R za pomocą usługi Azure Machine Learning studio na dwa sposoby.
 
 ### <a name="custom-r-scripts-in-your-experiments"></a>Skrypty niestandardowe języka R w eksperymentów
 Po pierwsze można rozszerzyć, manipulowanie danymi i usługi machine learning możliwości usługi ML Studio, pisząc niestandardowych skryptów języka R.
 Chociaż usługi ML Studio zawiera szereg modułów na potrzeby przygotowywania i analizowania danych, nie może być zgodna możliwości dojrzała języków języka R.  W związku z tym usługi zaprojektowano tak, aby możliwe było wprowadzenie własnych niestandardowych skryptów języka R w przypadkach, gdzie nie spełnia podany modułów Twoich potrzeb.
 
-Aby wykorzystać tę funkcję, przeciągnij i upuść moduł "Wykonanie skryptu języka R" w eksperymencie.  Następnie należy użyć edytora kodu w okienku "Properties", aby napisać nowy skrypt języka R lub wkleić istniejącego skryptu.  W ramach skryptów możesz odwoływać się zewnętrznych pakietów języka R.  Aby użyć skryptu, można manipulować danymi lub do nauczenia złożonych modeli uczenia Maszynowego, które nie są częścią standardowej biblioteki modeli usługi ML Studio.
+Aby wykorzystać tę funkcję, przeciągnij i upuść moduł "Wykonanie skryptu języka R" w eksperymencie.  Następnie należy użyć edytora kodu w okienku "Properties", aby napisać nowy skrypt języka R lub wkleić istniejącego skryptu.  W ramach skryptów możesz odwoływać się zewnętrznych pakietów języka R.  Aby użyć skryptu, można manipulować danymi lub do nauczenia złożonych modeli uczenia Maszynowego, które nie są częścią standardowej biblioteki modelu usługi Azure Machine Learning studio.
 
-Aby uzyskać dokładne wprowadzenie przy użyciu języka R w ramach eksperymentów w usłudze ML Studio, zapoznaj się ["Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning".](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)
+Aby uzyskać dokładne wprowadzenie przy użyciu języka R w ramach eksperymentów w usłudze ML Studio, zapoznaj się ["Samouczek szybkiego startu dotyczący języka R, języka programowania dla usługi Azure Machine Learning studio."](https://docs.microsoft.com/azure/machine-learning/studio/r-quickstart)
 
 ### <a name="create-manage-and-deploy-experiments-from-your-local-r-environment"></a>Tworzenie, zarządzanie i wdrażanie eksperymentów ze środowiska lokalnego języka R
-Inny sposób, że za pomocą języka R ML Studio jest użycie
-<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> pakiet do monitorowania i kontrolowania procesu eksperymentowania przy użyciu środowisko programistyczne języka R.  Ten pakiet, który jest obsługiwany przez firmę Microsoft, pozwala na przekazywanie i pobieranie zestawów danych do i z usługi Azure ML na potrzeby analizowania eksperymentów funkcji języka R jako usługi sieci web Azure ML, publikowanie, a także uruchamianie danych języka R za pośrednictwem istniejących usług sieci web i pobrać dane wyjściowe.
+Inny sposób, że można użyć języka R za pomocą usługi Azure Machine Learning studio jest użycie
+<code>[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)</code> pakiet do monitorowania i kontrolowania procesu eksperymentowania przy użyciu środowisko programistyczne języka R.  Tego pakietu, które są obsługiwane przez firmę Microsoft, pozwala na przekazywanie i pobieranie zestawów danych do i z usługi Azure Machine Learning studio na potrzeby analizowania eksperymentów w celu publikowania R działa jako usług sieci web oraz do uruchamiania R danych przy użyciu istniejących usług sieci web i pobierania dane wyjściowe.
 
-Ten pakiet sprawia, że znacznie łatwiej wykorzystać usługę Azure ML jako platforma skalowalnego wdrażania kodu R.  Zamiast klikając i przeciągając w interfejsie użytkownika, możesz zautomatyzować proces całego wdrożenia, korzystając z narzędzi, które już znasz.
+Ten pakiet sprawia, że znacznie łatwiej jest używać usługi Azure Machine Learning studio platforma skalowalnego wdrażania kodu języka R.  Zamiast klikając i przeciągając w interfejsie użytkownika, możesz zautomatyzować proces całego wdrożenia, korzystając z narzędzi, które już znasz.
 
 ## <a name="azure-batch"></a>Azure Batch
 W przypadku zadania R na dużą skalę, można użyć [usługi Azure Batch](https://azure.microsoft.com/services/batch/).  Ta usługa zapewnia zarządzanie obliczeniami i Planowanie zadania skali chmury, dzięki czemu obciążenia języka R mogą skalować dziesiątek, setek lub tysięcy maszyn wirtualnych.  Ponieważ jest uogólniony platforma obliczeniowa, istnieje kilka opcji do uruchamiania zadań języka R w usłudze Azure Batch.

@@ -86,6 +86,22 @@ items:
       href: service-fabric-tutorial-standalone-install-an-application.md
     - name: 4 — Czyszczenie klastra i usuwanie infrastruktury
       href: service-fabric-tutorial-standalone-clean-up.md
+- name: Najlepsze praktyki
+  items:
+  - name: Omówienie najlepszych rozwiązań usługi Service Fabric
+    href: service-fabric-best-practices-overview.md
+  - name: Bezpieczeństwo
+    href: service-fabric-best-practices-security.md
+  - name: Networking
+    href: service-fabric-best-practices-networking.md
+  - name: Planowanie i skalowanie obliczeń
+    href: service-fabric-best-practices-capacity-scaling.md
+  - name: Infrastruktura jako kod
+    href: service-fabric-best-practices-infrastructure-as-code.md
+  - name: Monitorowanie i diagnostyka
+    href: service-fabric-best-practices-monitoring.md
+  - name: Lista kontrolna gotowości do produkcji
+    href: service-fabric-production-readiness-checklist.md
 - name: Przykłady
   items:
   - name: Przykłady kodu
@@ -702,10 +718,6 @@ items:
       href: service-fabric-reverse-proxy-diagnostics.md
     - name: Rozwiązywanie problemów z klastrem lokalnym
       href: service-fabric-troubleshoot-local-cluster-setup.md
-  - name: Najlepsze praktyki
-    items:
-    - name: Lista kontrolna gotowości do produkcji
-      href: service-fabric-production-readiness-checklist.md
 - name: Dokumentacja
   items:
   - name: Azure PowerShell
@@ -827,9 +839,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: abf77c080d6093e9028f82ccac7b20d24389bdbb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5b487a8212cabb6809a9152e10dde7a1c9c7158f
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352482"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913533"

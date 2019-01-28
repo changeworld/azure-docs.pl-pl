@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 854485863786a4892ea04d4d5400732742436210
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103693"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54913074"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -40,13 +40,13 @@ Jeśli nie określono inaczej, przykłady w niniejszym artykule dotyczą wersji 
 
 ### <a name="v2"></a>W wersji 2.x
 
-Wersja środowiska uruchomieniowego usługi Azure Functions korzysta z 2.x narzędzia 2.x, która jest oparta na module .NET Core. Ta wersja jest obsługiwana na wszystkich platformach .NET Core 2.x obsługuje, w tym [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux).
+Wersja środowiska uruchomieniowego usługi Azure Functions korzysta z 2.x narzędzia 2.x, która jest oparta na module .NET Core. Ta wersja jest obsługiwana na wszystkich platformach .NET Core 2.x obsługuje, w tym [Windows](#windows-npm), [macOS](#brew), i [Linux](#linux). Należy zainstalować program .NET Core 2.x SDK.
 
 #### <a name="windows-npm"></a>Windows
 
 Następujące kroki umożliwiają instalowanie podstawowych narzędzi na Windows npm. Można również użyć [Chocolatey](https://chocolatey.org/). Aby uzyskać więcej informacji, zobacz [readme podstawowe narzędzia](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
-1. Zainstaluj [.NET Core 2.1 dla Windows](https://www.microsoft.com/net/download/windows).
+1. Zainstaluj [zestawu .NET Core 2.x SDK for Windows](https://www.microsoft.com/net/download/windows).
 
 2. Zainstaluj [Node.js], która obejmuje npm. W wersji 2.x narzędzia tylko 8.5 środowiska Node.js i nowsze wersje są obsługiwane.
 
@@ -60,7 +60,7 @@ Następujące kroki umożliwiają instalowanie podstawowych narzędzi na Windows
 
 Poniższe kroki umożliwiają instalowanie podstawowych narzędzi w systemie macOS Homebrew.
 
-1. Zainstaluj [platformy .NET Core 2.1 dla systemu macOS](https://www.microsoft.com/net/download/macos).
+1. Zainstaluj [platformy .NET Core SDK 2.x dla systemu macOS](https://www.microsoft.com/net/download/macos).
 
 2. Zainstaluj [Homebrew](https://brew.sh/), jeśli nie jest jeszcze zainstalowana.
 
@@ -75,7 +75,7 @@ Poniższe kroki umożliwiają instalowanie podstawowych narzędzi w systemie mac
 
 Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania podstawowych narzędzi w Twojej dystrybucji systemu Ubuntu/Debian Linux. Inne dystrybucje systemu Linux, zobacz [readme podstawowe narzędzia](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
-1. Zainstaluj [platformy .NET Core 2.1 dla systemu Linux](https://www.microsoft.com/net/download/linux).
+1. Zainstaluj [zestawu .NET Core 2.x SDK dla systemu Linux](https://www.microsoft.com/net/download/linux).
 
 2. Zarejestruj klucz produktu firmy Microsoft jako zaufaną:
 
@@ -192,7 +192,7 @@ Local.settings.json pliku przechowuje ustawienia aplikacji, parametry połączen
 
 Wartości ustawień aplikacji funkcji mogą być odczytywane w kodzie jako zmienne środowiskowe. Aby uzyskać więcej informacji zobacz sekcję zmiennych środowiska te tematy referencyjne języka:
 
-+ [Wstępnie skompilowany C#](functions-dotnet-class-library.md#environment-variables)
++ [C# precompiled](functions-dotnet-class-library.md#environment-variables)
 + [Skryptu C# (csx)](functions-reference-csharp.md#environment-variables)
 + [F#Skrypt (.fsx)](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables)

@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ef0bfc744e43491e6ac8c238904f4c1704cdeaba
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 516bd4c5edaaec2545be35032c4c87cb394ec0b3
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793346"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54912017"
 documentType: LandingData
 title: Dokumentacja interfejsu API wyszukiwania obrazów Bing
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: Dokumentacja interfejsu API wyszukiwania obrazów Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs
-  description: Dowiedz się, jak uzyskać wyniki z Internetu dotyczące zapytań użytkowników za pomocą interfejsu API wyszukiwania obrazów Bing. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z usługi.
+  description: Dowiedz się, jak używać interfejsu API wyszukiwania obrazów Bing do przeszukiwania Internetu pod kątem obrazów.
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -19,10 +19,10 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  ms.date: 1/16/2019
   ms.author: nitinme
 abstract:
-  description: Interfejs API wyszukiwania obrazów Bing udostępnia środowisko podobne do witryny Bing.com/images, zwracając obrazy, które usługa Bing określi jako istotne dla zapytania użytkownika.
+  description: Interfejs API wyszukiwania obrazów Bing umożliwia integrowanie możliwości wyszukiwania obrazów Bing z aplikacjami. Wysyłając zapytania wyszukiwania użytkownika za pomocą interfejsu API, możesz pobierać i wyświetlać odpowiednie obrazy wysokiej jakości, podobnie jak w witrynie bing.com/images.
 sections:
 - items:
   - type: list
@@ -34,35 +34,35 @@ sections:
       html: <p>Poznaj interfejs API wyszukiwania obrazów Bing</p>
       image:
         src: ../media/index/i_overview.svg
-      title: Czym jest funkcja wyszukiwania obrazów Bing?
+      title: Co to jest interfejs API wyszukiwania obrazów Bing?
     - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries
-      html: <p>Dowiedz się, jak wysyłać zapytania wyszukiwania obrazów do usługi Bing</p>
+      html: <p>Dowiedz się, jak wysyłać zapytania wyszukiwania obrazów do interfejsu API wyszukiwania obrazów Bing</p>
       image:
         src: ../media/index/i_guidelines.svg
       title: Zapytania wyszukiwania obrazów
     - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
-      html: <p>Interpretacja odpowiedzi wyszukiwania obrazów</p>
+      html: <p>Interpretacja odpowiedzi interfejsu API wyszukiwania obrazów Bing</p>
       image:
         src: ../media/index/i_guidelines.svg
       title: Odpowiedź wyszukiwania obrazów
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: 'Zacznij korzystać z interfejsu API wyszukiwania obrazów Bing przez utworzenie zapytania i wyświetlenie odpowiedzi JSON:'
+    text: 'Wyszukuj obrazy w Internecie przy użyciu języka:'
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/logo_csharp.svg
-      href: quickstarts/csharp
+      href: image-search-sdk-quickstart
       text: C&#35;
     - image:
         src: media/index/logo_java.svg
-      href: quickstarts/java
+      href: image-sdk-java-quickstart
       text: Java
     - image:
         src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
+      href: image-search-sdk-node-quickstart
       text: Node.js
     - image:
         src: media/index/logo_php.svg
@@ -70,7 +70,7 @@ sections:
       text: PHP
     - image:
         src: media/index/logo_python.svg
-      href: quickstarts/python
+      href: image-sdk-python-quickstart
       text: Python
     - image:
         src: media/index/logo_ruby.svg
