@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/27/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 9be8ddb6869a4872ff3eae9b589584f850c7dc96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 57ba89de9eeb69ee9c78ba2d3adef758134283b7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463623"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203610"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Określić wymagania dotyczące tożsamości dla Twojego rozwiązania tożsamości hybrydowej
 Pierwszym krokiem podczas projektowania rozwiązania tożsamości hybrydowej jest do określenia wymagań dla organizacji biznesowej, która będzie wykorzystaniu tego rozwiązania.  Tożsamość hybrydowa startuje jako rolę pomocniczą (obsługuje on wszystkie inne rozwiązania w chmurze, zapewniając uwierzytelniania) i przechodzi do możliwości i interesujące, które uwalniają nowych obciążeń dla użytkowników.  Te obciążenia lub usługi, które chcesz przyjmuje użytkowników określają wymagania dotyczące projektowania tożsamości hybrydowej.  Te usługi i obciążeń musiał skorzystać tożsamości hybrydowej w środowisku lokalnym i w chmurze.  

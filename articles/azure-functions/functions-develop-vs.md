@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: f610a221dca296561fefab65a6c40b52a5dd292a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275840"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098085"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -48,7 +48,7 @@ Aby utworzyć i wdrożyć funkcje, również należy:
 
 * Aktywna subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [bezpłatne konta](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) są dostępne.
 
-* Konto usługi Azure Storage. Aby utworzyć konto magazynu, zobacz [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
+* Konto usługi Azure Storage. Aby utworzyć konto magazynu, zobacz temat [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 
 ### <a name="check-your-tools-version"></a>Sprawdź swoją wersję narzędzia
 
@@ -78,9 +78,9 @@ Aby utworzyć i wdrożyć funkcje, również należy:
 
 Szablon projektu tworzy projekt C#, instaluje `Microsoft.NET.Sdk.Functions` pakietu NuGet i ustawia platformę docelową. Funkcje 1.x obiektów docelowych programu .NET Framework i funkcji cele 2.x .NET Standard. Nowy projekt ma następujące pliki:
 
-* **Host.JSON**: umożliwia skonfigurowanie hosta funkcji. Te ustawienia mają zastosowanie zarówno, gdy uruchomiona lokalnie i na platformie Azure. Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON](functions-host-json.md).
+* **host.json**: Umożliwia konfigurowanie hostów funkcji. Te ustawienia mają zastosowanie zarówno, gdy uruchomiona lokalnie i na platformie Azure. Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON](functions-host-json.md).
 
-* **Local.Settings.JSON**: przechowuje ustawienia używane podczas uruchamiania funkcji lokalnie. Te ustawienia nie są używane przez platformę Azure, są one używane przez [podstawowych narzędzi usługi Azure Functions](functions-run-local.md). Użyj tego pliku, aby określić ustawienia aplikacji dla zmiennych wymaganych funkcji. Dodaj nowy element do **wartości** tablicy dla każdego połączenia wymagane przez powiązania funkcji w projekcie. Aby uzyskać więcej informacji, zobacz [pliku ustawień lokalnych](functions-run-local.md#local-settings-file) w artykule podstawowych narzędzi usługi Azure Functions.
+* **local.settings.json**: Przechowuje ustawienia używane podczas uruchamiania funkcji lokalnie. Te ustawienia nie są używane przez platformę Azure, są one używane przez [podstawowych narzędzi usługi Azure Functions](functions-run-local.md). Użyj tego pliku, aby określić ustawienia aplikacji dla zmiennych wymaganych funkcji. Dodaj nowy element do **wartości** tablicy dla każdego połączenia wymagane przez powiązania funkcji w projekcie. Aby uzyskać więcej informacji, zobacz [pliku ustawień lokalnych](functions-run-local.md#local-settings-file) w artykule podstawowych narzędzi usługi Azure Functions.
 
     >[!IMPORTANT]
     >Pliku local.settings.json może zawierać klucze tajne, musi on spod kontroli źródła z projektu. **Kopiuj do katalogu wyjściowego** ustawienie dla tego pliku powinna zawsze być **Kopiuj Jeśli nowszy**. 
@@ -115,7 +115,7 @@ W przypadku funkcji wstępnie skompilowanym powiązania używane przez funkcję 
 
     Na przykład następujące klasy C# reprezentuje podstawowej funkcji wyzwalanej przez magazyn kolejki:
 
-    ````csharp
+    ```csharp
     using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Host;
@@ -132,7 +132,7 @@ W przypadku funkcji wstępnie skompilowanym powiązania używane przez funkcję 
             }
         }
     }
-    ````
+    ```
     Atrybut specyficzny dla powiązania są stosowane do każdego parametru powiązania przekazana do metody punktu wejścia. Ten atrybut ma informacje o powiązaniu jako parametry. W poprzednim przykładzie pierwszy parametr ma **QueueTrigger** zastosowany, wskazując funkcji wyzwalanej przez kolejkę. Nazwa kolejki i nazwa ustawienia parametrów połączenia, które są przekazywane jako parametry do **QueueTrigger** atrybutu. Aby uzyskać więcej informacji, zobacz [powiązania magazynu kolejek platformy Azure dla usługi Azure Functions](functions-bindings-storage-queue.md#trigger---c-example).
     
 Powyższej procedury można użyć, aby dodać więcej funkcji do projektu aplikacji funkcji. Każda funkcja w projekcie mogą mieć różne wyzwalacza, ale funkcja musi mieć dokładnie jeden wyzwalacz. Aby uzyskać więcej informacji, zobacz [pojęcia powiązania i Wyzwalacze usługi Azure Functions](functions-triggers-bindings.md).

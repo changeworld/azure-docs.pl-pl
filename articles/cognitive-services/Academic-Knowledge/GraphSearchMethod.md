@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 83f29106d72f564f894c968102b703ab6bb5d8c2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e8472323d99de9d0d81130eac5fbe3ec9e11c590
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902387"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197640"
 ---
 # <a name="graph-search-method"></a>Metoda wyszukiwania programu Graph
 
@@ -178,8 +178,8 @@ Dane wyjściowe *lambda* zapytania wyszukiwania jest również tablica ścieżek
 }
 ```
  
-## <a name="graph-schema"></a>Schemat grafu
+## <a name="graph-schema"></a>Graph Schema
 
 Schemat grafu jest przydatne przy pisaniu zapytań wyszukiwania programu graph. Jest on wyświetlany na poniższej ilustracji.
 
-![Schemat grafu akademickie firmy Microsoft](./Images/AcademicGraphSchema.png)
+![Microsoft Academic Graph Schema](./Images/AcademicGraphSchema.png)

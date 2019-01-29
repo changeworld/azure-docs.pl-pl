@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 471277433f0fc9a54a28baa158f1e20f1efb613f
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 2ba3de32f4ec3b9f6faf1d5a51da9c1c91e4a2e4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000524"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099310"
 ---
 # <a name="creating-filters-with-cli"></a>Tworzenie filtrów za pomocą interfejsu wiersza polecenia 
 
@@ -29,11 +29,10 @@ W tym temacie pokazano, jak skonfigurować filtr dla elementu zawartości wideo 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-- Zainstaluj interfejs wiersza polecenia i korzystaj z niego lokalnie. Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
-
-    Obecnie nie wszystkie polecenia [interfejsu wiersza polecenia usługi Media Services w wersji 3](https://aka.ms/ams-v3-cli-ref) działają w usłudze Azure Cloud Shell. Zaleca się używanie interfejsu wiersza polecenia lokalnie.
 - [Utwórz konto usługi Media Services](create-account-cli-how-to.md). Upewnij się, że do zapamiętania nazwę grupy zasobów i nazwę konta usługi Media Services. 
 - Przegląd [filtrów i manifestów dynamicznych](filters-dynamic-manifest-overview.md).
+
+[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-filter"></a>Określa filtr 
 
@@ -80,13 +79,6 @@ Następujące [filtru konta usługi ams az](https://docs.microsoft.com/cli/azure
 
 To polecenie umożliwia przekazywanie opcjonalny `--tracks` parametr, który zawiera JSON reprezentujący wybór ścieżki.  Użyj @{file}, aby załadować JSON z pliku. Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, należy określić ścieżkę całego pliku:
 
-
-```azurecli
-az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @c:\tracks.json
-```
-
-Jeśli używasz usługi Azure Cloud Shell przekazania pliku do usługi Cloud Shell (znaleźć przycisk pobierania/przekazywania plików w górnej części okna powłoki). Następnie możesz odwołać się go następująco:
-
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
@@ -96,9 +88,6 @@ Zobacz też [JSON Przykłady filtrów](https://docs.microsoft.com/rest/api/media
 ## <a name="create-asset-filters"></a>Tworzenie filtrów zasobów
 
 Następujące [filtrowania zawartości usługi ams az](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) polecenie umożliwia utworzenie filtru zasobów za pomocą filtru śledzenie wybrane opcje, które były [wcześniej zdefiniowaną](#define-a-filter). 
-
-> [!TIP]
-> Zapoznaj się z informacjami o określaniu lokalizacji nazwy pliku w poprzedniej sekcji.
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json

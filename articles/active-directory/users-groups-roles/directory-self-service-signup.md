@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
 ms.date: 10/16/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b86d7938279133c303ad4eae840f520a4900e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 63ddff08b93ffa072add0e8f093e1d4e0f1aa01e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394684"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195821"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?
 W tym artykule wyjaśniono, Samoobsługowe tworzenie konta i sposobu jego obsługi w usłudze Azure Active Directory (Azure AD). Jeśli chcesz przejąć nazwę domeny z niezarządzanych do usługi Azure AD dzierżawy, zobacz [przejmowanie katalogu niezarządzanego, jako administrator](domains-admin-takeover.md).
@@ -31,9 +31,9 @@ W tym artykule wyjaśniono, Samoobsługowe tworzenie konta i sposobu jego obsłu
 * Niezależne-eksploatacyjnych utworzonego katalogu usługi Azure AD mogą być uwzględniane zarządzany katalog, który może służyć do innych usług
 
 ## <a name="terms-and-definitions"></a>Terminy i definicje
-* **Samoobsługowa**: jest to metoda, za pomocą którego użytkownik rejestruje się w usłudze w chmurze i tworzone automatycznie dla nich w usłudze Azure AD tożsamości opartego na swojej domeny poczty e-mail.
-* **Niezarządzany katalog usługi Azure AD**: jest to katalog, w którym utworzono tej tożsamości. Niezarządzanego katalogu jest katalogiem, który nie ma administratora globalnego.
-* **Weryfikowany pocztą e-mail użytkownika**: jest to typ konta użytkownika w usłudze Azure AD. Użytkownik, który ma automatycznie utworzone po zarejestrowaniu się do oferty samoobsługowego tożsamość jest określany jako użytkownik weryfikowany pocztą e-mail. Użytkownik weryfikowany pocztą e-mail jest regularny członek katalogu oznakowane za pomocą creationmethod = EmailVerified.
+* **Samoobsługowa**: Jest to metoda, za pomocą którego użytkownik rejestruje się w usłudze w chmurze i tworzone automatycznie dla nich w usłudze Azure AD tożsamości opartego na swojej domeny poczty e-mail.
+* **Niezarządzany katalog usługi Azure AD**: Jest to katalog, w którym zostanie utworzona tej tożsamości. Niezarządzanego katalogu jest katalogiem, który nie ma administratora globalnego.
+* **Weryfikowany pocztą e-mail użytkownika**: Jest to typ konta użytkownika w usłudze Azure AD. Użytkownik, który ma automatycznie utworzone po zarejestrowaniu się do oferty samoobsługowego tożsamość jest określany jako użytkownik weryfikowany pocztą e-mail. Użytkownik weryfikowany pocztą e-mail jest regularny członek katalogu oznakowane za pomocą creationmethod = EmailVerified.
 
 ## <a name="how-do-i-control-self-service-settings"></a>Jak kontrolować ustawienia samoobsługowego?
 Administratorzy mają dwie kontrolki samoobsługi już dziś. Kontrolować, czy:
@@ -63,9 +63,9 @@ Flow i PowerApps rejestracji wersji próbnej nie są kontrolowane przez **AllowA
 ### <a name="how-do-the-controls-work-together"></a>Jak formanty działają razem?
 Te dwa parametry może służyć w połączeniu do definiowania bardziej precyzyjną kontrolę nad samoobsługowej. Na przykład następujące polecenie umożliwi użytkownikom wykonywanie Samoobsługowe tworzenie konta, ale tylko wtedy, jeśli ci użytkownicy mają już konta w usłudze Azure AD (innymi słowy, użytkownicy potrzebują konta weryfikowany pocztą e-mail do utworzenia najpierw nie można wykonać samoobsługowej):
 
-````powershell
+```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
-````
+```
 
 Następujące schemat blokowy opisano różne kombinacje tych parametrów i wynikowe warunki do katalogu i samoobsługowej.
 

@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ae9f55943d4b178096230269215ac771ee1d20a1
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: dabffd88965a10fe4feca2b600cfaf5741e2f664
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856118"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157911"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego wystawcy tokenów JWT, w zasadach niestandardowych usługi Azure Active Directory B2C
 

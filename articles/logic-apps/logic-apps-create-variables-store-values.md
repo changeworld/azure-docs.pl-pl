@@ -72,7 +72,7 @@ Można utworzyć zmienną i zadeklarować jego typu danych i wartość początko
 
 4. Podaj te informacje w zmiennej:
 
-   | Właściwość | Wymagany | Wartość |  Opis |
+   | Właściwość | Wymagany | Value |  Opis |
    |----------|----------|-------|--------------|
    | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
    | Type | Yes | <*Typ zmiennej*> | Typ danych dla zmiennej | 
@@ -208,7 +208,7 @@ Aby zwiększyć lub *przyrostu* zmiennej przez wartość stałą, Dodaj **zmienn
 
 3. Podaj te informacje w zmiennej przyrostu o wartości:
 
-   | Właściwość | Wymagany | Wartość |  Opis |
+   | Właściwość | Wymagany | Value |  Opis |
    |----------|----------|-------|--------------|
    | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zwiększyć | 
    | Value | Nie | <*wartość przyrostu*> | Wartość przyrostu o wartości zmiennej. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określona wartość przyrostu o wartości do zmiennej. | 
@@ -328,7 +328,7 @@ Aby zmniejszyć lub *dekrementacji* zmiennej przez wartość stałą, postępuj 
 
 Poniżej przedstawiono właściwości dla **Zmniejsz zmienną** akcji:
 
-| Właściwość | Wymagany | Wartość |  Opis |
+| Właściwość | Wymagany | Value |  Opis |
 |----------|----------|-------|--------------|
 | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmniejszyć | 
 | Value | Nie | <*wartość przyrostu*> | Wartość dla zmiennej zmniejszanie. Wartość domyślna to jeden. <p><p>**Porada**: Mimo że jest to opcjonalne, ta wartość zgodnie z zaleceniami, dzięki czemu zawsze będzie wiadomo, określonej wartości dla zmniejszanie zmiennej. | 
@@ -363,7 +363,7 @@ Wartość jest wymagana, ponieważ ta akcja nie ma wartości domyślnej.
 
 Poniżej przedstawiono właściwości dla **Ustaw zmienną** akcji:
 
-| Właściwość | Wymagany | Wartość |  Opis | 
+| Właściwość | Wymagany | Value |  Opis | 
 |----------|----------|-------|--------------| 
 | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
 | Value | Yes | <*Nowa wartość*> | Wartość, którą chcesz przypisać do zmiennej. Oba muszą mieć ten sam typ danych. | 
@@ -421,7 +421,7 @@ W przypadku zmiennych, które przechowują ciągi lub tablice można wstawić lu
 
 Poniżej przedstawiono właściwości dla **dołączenia do...**  akcje:
 
-| Właściwość | Wymagany | Wartość |  Opis | 
+| Właściwość | Wymagany | Value |  Opis | 
 |----------|----------|-------|--------------| 
 | Name | Yes | <*Nazwa zmiennej*> | Nazwa zmiennej zmienić | 
 | Value | Yes | <*Dołącz wartość*> | Wartość, którą chcesz dołączyć, i może mieć dowolny typ | 

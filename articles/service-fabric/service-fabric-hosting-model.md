@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 367f21c63eac3969fb19eada91eae9a8577921de
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 80d9d447a86b58c8d6db5a62d3b0df997e42f673
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348484"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172378"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Usługa Azure Service Fabric modelu hostingu
 Ten artykuł zawiera omówienie modele udostępniane przez usługi Azure Service Fabric do hostowania aplikacji i w tym artykule opisano różnice między **udostępnionego procesu** i **wyłączne procesu** modeli. Opisuje, jak wygląda wdrożonej aplikacji na węzła usługi Service Fabric i relacji między repliki (lub wystąpieniami), usługi i procesu hosta usługi.
@@ -150,7 +150,7 @@ W niektórych przypadkach usługa Service Fabric umożliwia również więcej ni
 
 Wyłączne proces model hostingu nie jest spójny z modelem aplikacji, posiadanie wielu *ServiceTypes* na *pakiet ServicePackage*. Jest to spowodowane wieloma *ServiceTypes* na *pakiet ServicePackage* zaprojektowano w celu osiągnięcia wyższej zasobów współużytkowanie danych przez repliki i umożliwia zwiększenie gęstości repliki na proces. Model procesów wyłączne zaprojektowano w celu osiągnięcia różne wyniki.
 
-Należy wziąć pod uwagę w przypadku wielu *ServiceTypes* na *pakiet ServicePackage*, z innym *CodePackage* zarejestrowanie każdego *ServiceType*. Załóżmy, że mamy *pakiet ServicePackage* "MultiTypeServicePackge", który ma dwa *CodePackages*:
+Należy wziąć pod uwagę w przypadku wielu *ServiceTypes* na *pakiet ServicePackage*, z innym *CodePackage* zarejestrowanie każdego *ServiceType*. Załóżmy, że mamy *pakiet ServicePackage* "MultiTypeServicePackage", który ma dwa *CodePackages*:
 
 - "MyCodePackageA", która rejestruje *ServiceType* "MyServiceTypeA".
 - "MyCodePackageB", która rejestruje *ServiceType* "MyServiceTypeB".
@@ -160,15 +160,15 @@ Teraz załóżmy, że możemy utworzyć aplikację, **Service fabric: / SpecialA
 - Usługa **Service fabric: / SpecialApp/ServiceA** typu "MyServiceTypeA" za pomocą dwóch partycji (na przykład **P1** i **P2**) i trzech replik dla każdej partycji.
 - Usługa **Service fabric: / SpecialApp/ServiceB** typu "MyServiceTypeB" za pomocą dwóch partycji (**P3** i **P4**) i trzech replik dla każdej partycji.
 
-W danym węźle usług mają dwie repliki. Ponieważ użyliśmy model procesu wyłączne trzeba utworzyć usługi Service Fabric aktywuje nową kopię "MyServicePackage" dla każdej repliki. Każda aktywacja "MultiTypeServicePackge" rozpoczyna się kopię "MyCodePackageA" i "MyCodePackageB". Jednak tylko jeden z "MyCodePackageA" lub "MyCodePackageB" obsługuje replikę, dla którego została aktywowana "MultiTypeServicePackge". Na poniższym diagramie przedstawiono widok węzła:
+W danym węźle usług mają dwie repliki. Ponieważ użyliśmy model procesu wyłączne trzeba utworzyć usługi Service Fabric aktywuje nową kopię "MyServicePackage" dla każdej repliki. Każda aktywacja "MultiTypeServicePackage" rozpoczyna się kopię "MyCodePackageA" i "MyCodePackageB". Jednak tylko jeden z "MyCodePackageA" lub "MyCodePackageB" obsługuje replikę, dla którego została aktywowana "MultiTypeServicePackage". Na poniższym diagramie przedstawiono widok węzła:
 
 
 ![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-five]
 
 
-W oknie Aktywacja systemu "MultiTypeServicePackge" dla repliki partycji **P1** usługi **Service fabric: / SpecialApp/ServiceA**, "MyCodePackageA" jest hostem repliki. "MyCodePackageB" jest uruchomiona. Podobnie, w przypadku aktywacji "MultiTypeServicePackge" dla repliki partycji **P3** usługi **Service fabric: / SpecialApp/ServiceB**, "MyCodePackageB" jest hostem repliki. "MyCodePackageA" jest uruchomiona. W związku z tym większa liczba *CodePackages* (rejestrowanie różnych *ServiceTypes*) na *pakiet ServicePackage*, tym większe obciążenie zasobów nadmiarowe. 
+W oknie Aktywacja systemu "MultiTypeServicePackage" dla repliki partycji **P1** usługi **Service fabric: / SpecialApp/ServiceA**, "MyCodePackageA" jest hostem repliki. "MyCodePackageB" jest uruchomiona. Podobnie, w przypadku aktywacji "MultiTypeServicePackage" dla repliki partycji **P3** usługi **Service fabric: / SpecialApp/ServiceB**, "MyCodePackageB" jest hostem repliki. "MyCodePackageA" jest uruchomiona. W związku z tym większa liczba *CodePackages* (rejestrowanie różnych *ServiceTypes*) na *pakiet ServicePackage*, tym większe obciążenie zasobów nadmiarowe. 
  
- Jednak jeśli utworzymy usług **Service fabric: / SpecialApp/ServiceA** i **Service fabric: / SpecialApp/ServiceB** z modelem procesu udostępnionych usługi Service Fabric aktywuje tylko jedna kopia " MultiTypeServicePackge "dla aplikacji **Service fabric: / SpecialApp**. "MyCodePackageA" obsługuje wszystkie repliki usługi **Service fabric: / SpecialApp/ServiceA**. "MyCodePackageB" obsługuje wszystkie repliki usługi **Service fabric: / SpecialApp/ServiceB**. Na poniższym diagramie przedstawiono widok węzła, w tym ustawieniu: 
+ Jednak jeśli utworzymy usług **Service fabric: / SpecialApp/ServiceA** i **Service fabric: / SpecialApp/ServiceB** z modelem procesu udostępnionych usługi Service Fabric aktywuje tylko jedna kopia " MultiTypeServicePackage "dla aplikacji **Service fabric: / SpecialApp**. "MyCodePackageA" obsługuje wszystkie repliki usługi **Service fabric: / SpecialApp/ServiceA**. "MyCodePackageB" obsługuje wszystkie repliki usługi **Service fabric: / SpecialApp/ServiceB**. Na poniższym diagramie przedstawiono widok węzła, w tym ustawieniu: 
 
 
 ![Diagram przedstawiający widok węzła wdrożonej aplikacji][node-view-six]

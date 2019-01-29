@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8bfd4ca6a9bdac999653fa9448bf7e754e9e6180
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254472"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168247"
 ---
 <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 ====================================
@@ -106,7 +106,7 @@ Microsoft Developer Center jest używane do rejestrowania danych firmy, jeden ra
    ![Wybierz kraj/region](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"Sprzedaż — od" kraje: sprzedaż usługi w portalu Azure Marketplace, zarejestrowanych jednostki musi pochodzić z jednego z krajów zatwierdzonych "sprzedaż — od" wyświetlane na liście rozwijanej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Aby uzyskać więcej informacji zobacz zasad uczestnictwa w portalu Marketplace.
+    >"Sprzedaż — od" krajach: Aby sprzedawać swoje usługi w portalu Azure Marketplace, zarejestrowanych jednostka musi być z jednej z zatwierdzonych "sprzedaż — od" krajów wyświetlane na liście rozwijanej. To ograniczenie jest ze względu na informacje dotyczące wypłat i opodatkowania. Aby uzyskać więcej informacji zobacz zasad uczestnictwa w portalu Marketplace.
 
 5. Wybierz **firmy** jako "Konto Type" i następnie wybierz pozycję **dalej**.
 
@@ -181,7 +181,8 @@ Aby opublikować komercyjnych oferty zakupu, należy dodać informacje dotycząc
     - Wybierz opcję **Dalej**.
 4.  Wprowadź szczegóły podatku, a następnie wybierz pozycję **dalej**.
 
->[OSTRZEŻENIE]! Nie można wypchnąć do komercyjnego ofert do środowiska produkcyjnego bez podawania konta bankowego i informacje podatkowe w ramach Twojego konta Microsoft Developer Center.
+>[!WARNING]
+>Nie można wypchnąć do komercyjnego ofert do środowiska produkcyjnego bez podawania konta bankowego i informacje podatkowe w ramach Twojego konta Microsoft Developer Center.
 
 ### <a name="developer-center-registration-issues"></a>Problemy dotyczące rejestracji Centrum deweloperów
 

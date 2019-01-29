@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: 48df598ab12c509952b7712bb8cc9fe21355325f
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 39034d069c0c0feb2ac81437e34c7206d7fe6c4c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613685"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102820"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Dlaczego mikrousługi podejście do tworzenia aplikacji?
 
@@ -33,11 +33,11 @@ Zmieniających się potrzeb biznesowych są:
 
 Tych potrzeb biznesowych mają wpływ na *jak* możemy tworzyć aplikacje.
 
-Aby uzyskać więcej informacji na temat podejścia platformy Azure do mikrousług odczytu [Mikrousługi: Rewolucja w aplikacjach obsługiwana przez chmurę](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+Aby uzyskać więcej informacji na temat podejścia platformy Azure do mikrousług odczytu [Mikrousług: Rewolucja w aplikacjach obsługiwana przez chmurę](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>Monolityczne, a na etapie projektowania mikrousług
 
-Rozwój aplikacji wraz z upływem czasu. Udane aplikacje rozwój dzięki przydatne dla osób. Aplikacje nie powiedzie nie ewolucji i po pewnym czasie są przestarzałe. Pytanie: ile informacje dotyczące wymagań już dziś i co one będzie w przyszłości? Na przykład załóżmy, że możesz tworzyć aplikacji do raportowania dla działu. Masz pewność, że aplikacja ma zastosowanie tylko w zakresie swojej firmy i że raporty są krótkotrwałe. Wybór podejście różni się od, powiedz, kompilowanie to usługa, która dostarcza zawartość wideo dziesiątki milionów klientów.
+Rozwój aplikacji wraz z upływem czasu. Udane aplikacje rozwój dzięki przydatne dla osób. Aplikacje nie powiedzie nie ewolucji i po pewnym czasie są przestarzałe. Pytanie jest: Ile informacje dotyczące wymagań już dziś i co one będzie w przyszłości? Na przykład załóżmy, że możesz tworzyć aplikacji do raportowania dla działu. Masz pewność, że aplikacja ma zastosowanie tylko w zakresie swojej firmy i że raporty są krótkotrwałe. Wybór podejście różni się od, powiedz, kompilowanie to usługa, która dostarcza zawartość wideo dziesiątki milionów klientów.
 
 Czasami pobraniem czegoś spory jako Weryfikacja koncepcji jest współczynnik opracowuje, gdy wiesz, że później przeprojektowany aplikacji. Istnieje mały punkt w nadmiernie inżynierii coś, który nigdy nie zostanie wykorzystany. Jest zwykle kompromis inżynierów. Z drugiej strony mówiąc firmy dotyczące tworzenia aplikacji dla chmury, oczekiwania jest wskaźnik wzrostu i użycia. Problem polega na rozwój i skalowanie są nieprzewidywalne. Chcielibyśmy można było prototypu szybko codzienne również jesteśmy na ścieżce do czynienia z sukcesem w przyszłości. Jest to metoda startupu: kompilowanie, mierzenie, Dowiedz się i iteracji.
 
@@ -149,7 +149,7 @@ Usługa Service Fabric pomaga w tworzeniu aplikacji, które używają podejście
 
 * Platforma, która zapewnia usługi systemowe na wdrażanie, uaktualnianie, wykryć, ponowne uruchomienie usługi nie powiodło się, Odkryj usługi, kierowanie komunikatów w postaci, zarządzanie stanem i monitorowanie kondycji.
 * Możliwość wdrażania aplikacji albo uruchomione w kontenerach lub procesach. Service Fabric to kontener i procesów programu orchestrator.
-* Produktywność programowania interfejsów API, aby ułatwić Ci budowanie aplikacji zgodnie z mikrousług: [ASP.NET Core, elementów Reliable Actors oraz usług Reliable Services](service-fabric-choose-framework.md). Na przykład możesz uzyskać informacje, kondycja i Diagnostyka lub możesz skorzystać z wbudowaną wysoką dostępność.
+* Produktywność programowania interfejsy API, aby ułatwić Ci budowanie aplikacji zgodnie z mikrousług: [ASP.NET Core, elementów Reliable Actors oraz usług Reliable Services](service-fabric-choose-framework.md). Na przykład możesz uzyskać informacje, kondycja i Diagnostyka lub możesz skorzystać z wbudowaną wysoką dostępność.
 
 ***Usługa Service Fabric jest niezależny, w jaki sposób opracować swoje usługi, a następnie można użyć dowolnej technologii. Jednak zapewnia wbudowane programowania interfejsów API, które ułatwiają tworzenie mikrousług.***
 
@@ -181,7 +181,7 @@ W wielu organizacjach zatrzymać w tym miejscu. Mają zalety kontenery i Usługa
 Dodanie nowych usług wraz z istniejącą kontenerowych nimi kodu. Jeśli zamierzasz pisanie nowego kodu, najlepiej chce wykonać proces na niewielkie etapy do ścieżki mikrousług. Może to dodawania nowego punktu końcowego interfejsu API REST lub nowej logiki biznesowej. W ten sposób, możesz rozpocząć tworzenie nowych mikrousług i praktyki opracowywania i wdrażania ich podróży.
 
 **Wprowadzanie innowacji**  
-Mikrousługi podejście dostosowuje zmiany potrzeb biznesowych. Na tym etapie decyzja jest, czy należy uruchomić, dzieląc monolityczną aplikację na usługi lub innowacje. W tym przykładzie jest, gdy bazę danych jako kolejkę przepływu pracy staje się wąskim gardłem przetwarzania. Jak liczba przepływów pracy żądań rośnie, pracy musi być dystrybuowane do skalowania. Dla tego określonego elementu aplikacji, która nie jest skalowany lub wymagający będą aktualizowane częściej podzielić tę możliwość mikrousługi i wprowadzania innowacji.
+To podejście mikrousług jest przystosowana do zmieniających się potrzeb biznesowych. Na tym etapie decyzja jest, czy należy uruchomić, dzieląc monolityczną aplikację na usługi lub innowacje. W tym przykładzie jest, gdy bazę danych jako kolejkę przepływu pracy staje się wąskim gardłem przetwarzania. Jak liczba przepływów pracy żądań rośnie, pracy musi być dystrybuowane do skalowania. Dla tego określonego elementu aplikacji, która nie jest skalowany lub wymagający będą aktualizowane częściej podzielić tę możliwość mikrousługi i wprowadzania innowacji.
 
 **Przekształcone w mikrousługach**  
 Jest to, gdzie aplikacja jest w pełni składa się z (lub rozłożona na) mikrousług. Aby uzyskać dostęp w tym miejscu, wprowadzono podróż mikrousług. Można uruchomić w tym miejscu, ale aby to zrobić bez mikrousług platformy, aby ułatwić jest znaczących inwestycji. 

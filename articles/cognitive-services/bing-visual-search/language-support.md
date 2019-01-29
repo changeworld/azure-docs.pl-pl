@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1dd434bbf71e482f5d0a52b3c84e46382079b43a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0f7d3f8a7a9c7bdd67dc80a98744e1cd6a2433a1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886403"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180831"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania wizualnego Bing
 
@@ -41,31 +41,31 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Argentyna|AR|
 |Australia|AU|
 |Austria|AT|
-|Belgia|MOŻNA|
-|Brazylia|BRAZYLIA|
-|Kanada|Urząd certyfikacji|
+|Belgia|BE|
+|Brazylia|BR|
+|Kanada|CA|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
 |Francja|PW|
 |Niemcy|DE|
 |SRA Hongkong|HK|
-|Indie|INDIE|
+|Indie|IN|
 |Indonezja|ID|
 |Włochy|IT|
 |Japonia|JP|
 |Korea|KR|
-|Malezja|MOJE|
+|Malezja|MY|
 |Meksyk|MX|
-|Holandia|HOLANDIA|
+|Holandia|NL|
 |Nowa Zelandia|NZ|
-|Norwegia|NIE|
+|Norwegia|NO|
 |Chiny|CN|
 |Polska|PL|
-|Portugalia|(CZAS PACYFICZNY)|
+|Portugalia|PT|
 |Filipiny|PH|
-|Rosja|JEDNOSTKA ŻĄDANIA|
-|Arabia Saudyjska|AMERYKA POŁUDNIOWA|
+|Rosja|RU|
+|Arabia Saudyjska|SA|
 |Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
@@ -83,8 +83,8 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
 |Austria|Niemiecki|de-AT|
-|Belgia|Holenderski|Holandia — być|
-|Belgia|Francuski|FR — być|
+|Belgia|Holenderski|nl-BE|
+|Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
 |Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
@@ -106,10 +106,10 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|EN PH|
+|Filipiny|Polski|en-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|EN ZA|
+|Republika Południowej Afryki|Polski|en-ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
 |Szwajcaria|Francuski|FR-CH|
@@ -117,5 +117,5 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|en-US|
 |Stany Zjednoczone|Hiszpański|es-US|

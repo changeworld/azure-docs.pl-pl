@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e73a979950e856a7fc2bfa2193ea4ca0d59bac2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242232"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166173"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 
@@ -91,45 +91,45 @@ Zasady przechowywania zostały skonfigurowane za pomocą Centrum zabezpieczeń i
 Poniżej przedstawiono przykłady jak można użyć poleceń cmdlet programu PowerShell, aby skonfigurować ustawienia wygasania grup usługi Office 365 w Twojej dzierżawie:
 
 1. Zainstaluj moduł programu PowerShell w wersji 2.0 (wersja zapoznawcza) (2.0.0.137), a następnie zaloguj się w wierszu polecenia programu PowerShell:
-  ````
+  ```
   Install-Module -Name AzureADPreview
   connect-azuread 
-  ````
-2. Skonfiguruj ustawienia wygaśnięcia New-AzureADMSGroupLifecyclePolicy: to polecenie cmdlet Ustawia okres istnienia dla wszystkich grup usługi Office 365 w ramach dzierżawy do 365 dni. Powiadomienia o odnowieniu dla usługi Office 365 grup bez właścicieli zostanie wysłany do "emailaddress@contoso.com"
+  ```
+2. Skonfiguruj ustawienia wygaśnięcia New-AzureADMSGroupLifecyclePolicy:  To polecenie cmdlet Ustawia okres istnienia dla wszystkich grup usługi Office 365 w ramach dzierżawy do 365 dni. Powiadomienia o odnowieniu dla usługi Office 365 grup bez właścicieli zostanie wysłany do "emailaddress@contoso.com"
   
-  ````
+  ```
   New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
-  ````
-3. Pobieranie istniejących zasad Get-AzureADMSGroupLifecyclePolicy: to polecenie cmdlet pobiera bieżące, które zostały skonfigurowane ustawienia wygaśnięcia grupy usługi Office 365. W tym przykładzie widać:
+  ```
+3. Pobierz istniejące zasady Get-AzureADMSGroupLifecyclePolicy: To polecenie cmdlet pobiera bieżące, które zostały skonfigurowane ustawienia wygaśnięcia grupy usługi Office 365. W tym przykładzie widać:
   * Identyfikator zasad 
   * Okres istnienia dla wszystkich grup usługi Office 365 w ramach dzierżawy jest ustawiony do 365 dni
   * Powiadomienia o odnowieniu dla usługi Office 365 grup bez właścicieli zostanie wysłany do "emailaddress@contoso.com."
   
-  ````
+  ```
   Get-AzureADMSGroupLifecyclePolicy
   
   ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
   --                                    ------------------- ----------------- ---------------------------
   26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-  ```` 
+  ``` 
    
-4. Zaktualizuj istniejące zasady zestaw-AzureADMSGroupLifecyclePolicy: to polecenie cmdlet służy do aktualizowania istniejącej zasady. W poniższym przykładzie okres istnienia grupy w istniejących zasad została zmieniona z 365 dni do 180 dni. 
+4. Zaktualizuj istniejące zasady zestaw-AzureADMSGroupLifecyclePolicy: To polecenie cmdlet używane do aktualizowania istniejącej zasady. W poniższym przykładzie okres istnienia grupy w istniejących zasad została zmieniona z 365 dni do 180 dni. 
   
-  ````
+  ```
   Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
-  ````
+  ```
   
-5. Dodaj określonych grup do zasad Add-AzureADMSLifecyclePolicyGroup: to polecenie cmdlet dodaje grupę do zasady cyklu życia. Na przykład: 
+5. Dodaj określonych grup do zasad Add-AzureADMSLifecyclePolicyGroup: To polecenie cmdlet służy do dodawania grupy zasad cyklu życia. Na przykład: 
   
-  ````
+  ```
   Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
-  ````
+  ```
   
-6. Usuń istniejące zasady Remove-AzureADMSGroupLifecyclePolicy: to polecenie cmdlet usuwa ustawienia wygasania grup usługi Office 365, ale wymaga identyfikatora zasad. Spowoduje to wyłączenie wygasania grup usługi Office 365. 
+6. Usuń istniejące zasady Remove-AzureADMSGroupLifecyclePolicy: To polecenie cmdlet usuwa ustawienia wygasania grup usługi Office 365, ale wymaga identyfikatora zasad. Spowoduje to wyłączenie wygasania grup usługi Office 365. 
   
-  ````
+  ```
   Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
-  ````
+  ```
   
 Następujące polecenia cmdlet, można skonfigurować zasady bardziej szczegółowo. Aby uzyskać więcej informacji, zobacz [dokumentacji programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
 

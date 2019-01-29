@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: dekapur
-ms.openlocfilehash: a568fc6316211755fabc15ab3cf0227e3a87cb01
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e4537c789bfae0fb485e818bf68e87de27b88720
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727362"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102056"
 ---
 # <a name="list-of-service-fabric-events"></a>Lista zdarzeń usługi Service Fabric 
 
@@ -102,7 +102,7 @@ Szczegółowe informacje na temat uaktualniania aplikacji można znaleźć [tuta
 
 | Identyfikator zdarzenia | Name (Nazwa) | Kategoria | Opis |Źródło (zadanie) | Poziom | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Cykl życia | Ponowna konfiguracja partycji zostało zakończone. | POMOC ZDALNA | Informacyjne | 
+| 18940 | PartitionReconfigured | Cykl życia | Ponowna konfiguracja partycji zostało zakończone. | RA | Informacyjne | 
 
 ## <a name="container-events"></a>Zdarzenia kontenera
 
@@ -215,7 +215,7 @@ Szczegółowe informacje na temat uaktualniania aplikacji można znaleźć [tuta
 
 | Identyfikator zdarzenia | Name (Nazwa) | Opis |Źródło (zadanie) | Poziom | Wersja |
 | --- | --- | ---| --- | --- | --- |
-| 65011 | CorrelationOperational | Korelacja został detacted | Testowalności | Informacyjne | 1 |
+| 65011 | CorrelationOperational | Wykryto korelacji | Testowalności | Informacyjne | 1 |
 
 ## <a name="events-prior-to-version-62"></a>Zdarzenia przed wersję 6.2
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f73f90b76900a3a5213297f8a28ff13204852039
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: adaed5f15facb00b6ed624234ebad31f60782de1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105551"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094329"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Obsługiwane na maszynie wirtualnej do nauki o danych platformy danych
 
@@ -95,7 +95,7 @@ Przed uruchomieniem w kontekście platformy Spark w programie Microsoft R Server
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop można zatrzymać związane z usług, kiedy nie potrzebują, uruchamiając ````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` próbkę ukazujące sposób tworzenia i testowania PANI w zdalnym kontekstu aparatu Spark (czyli wystąpieniu platformy Spark autonomiczne maszyny DSVM) są dostępne w `/dsvm/samples/MRS` katalog. 
+Hadoop można zatrzymać związane z usług, kiedy nie potrzebują, uruchamiając ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` próbkę ukazujące sposób tworzenia i testowania PANI w zdalnym kontekstu aparatu Spark (czyli wystąpieniu platformy Spark autonomiczne maszyny DSVM) są dostępne w `/dsvm/samples/MRS` katalog. 
 
 
 ### <a name="how-is-it-configured--installed-on-the-dsvm"></a>Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM? 

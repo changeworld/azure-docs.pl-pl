@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 7446c680ffdba28fef7eb68441d04a4c18398847
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912565"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104239"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -105,7 +105,7 @@ Po zarejestrowaniu i zaplanować maszyny Wirtualnej dla usługi Kopia zapasowa A
 **Kod błędu:**: UserErrorUnsupportedDiskSize <br>
 **Komunikat o błędzie**: Obecnie usługa Azure Backup nie obsługuje dysków o rozmiarze większym niż 1023 GB <br>
 
-Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do przywrócenia błyskawiczne, operację tworzenia kopii zapasowej może się nie powieść. Uaktualnianie do przywrócenia błyskawiczne zapewni obsługuje do 4TB, zobacz ten [artykułu](backup-instant-restore-capability.md#upgrading-to-instant-restore).  
+Podczas wykonywania kopii zapasowej maszyny Wirtualnej o rozmiarze dysku jest większy niż 1023GB, ponieważ magazynu nie zostanie uaktualniona do przywrócenia błyskawiczne, operację tworzenia kopii zapasowej może się nie powieść. Uaktualnianie do przywrócenia błyskawiczne zapewni obsługuje do 4TB, zobacz ten [artykułu](backup-instant-restore-capability.md#upgrading-to-instant-restore). Po uaktualnieniu, potrwa do dwóch godzin dla subskrypcji móc korzystać z tej funkcji. Zapewniają wystarczające buforu przed ponowieniem operacji.  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported — obecnie usługa Azure Backup nie obsługuje dysków SSD w warstwie standardowa
 

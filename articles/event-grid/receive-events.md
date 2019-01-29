@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: bb82ef542db09b3b7f864c4901107e1c5c0827f6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: bb22a2545466c72f7dac68f80668b8b530832c21
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464790"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094722"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Odbieranie zdarzeń w punkcie końcowym HTTP
 
@@ -370,6 +370,6 @@ Możesz również przetestować tę funkcję na żywo przez [wysłanie zdarzenia
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Zapoznaj się z [usługi Azure Event Grid Management i publikować zestawy SDK](./sdk-overview.md)
+* Zapoznaj się z [usługi Azure Event Grid zarządzania i publikować zestawy SDK](./sdk-overview.md)
 * Dowiedz się, jak [wpis do tematu niestandardowego](./post-to-custom-topic.md)
 * Wypróbuj jedną z szczegółowe samouczki usługi Event Grid i funkcje, takie jak [zmiana rozmiaru obrazów przekazanych do magazynu obiektów Blob](resize-images-on-storage-blob-upload-event.md)

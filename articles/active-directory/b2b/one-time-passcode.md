@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 5259176328803d3b6c0715c741d7f43b6ecc2d8a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bc88b46182eadf431efcb5be89f05256a9e0eb1b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082554"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095586"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Uwierzytelnianie jednorazowy kod dostępu konta e-mail (wersja zapoznawcza)
 
@@ -81,29 +81,29 @@ Najpierw należy zainstalować najnowszą wersję programu Azure AD PowerShell d
 #### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Wymagania wstępne: Zainstalowanie najnowszego modułu AzureADPreview
 Najpierw sprawdź, które moduły zostały zainstalowane. Otwórz program PowerShell jako użytkownik z podwyższonym poziomem uprawnień (Uruchom jako administrator) i uruchom następujące polecenie:
  
-````powershell  
+```powershell  
 Get-Module -ListAvailable AzureAD*
-````
+```
 
 Jeśli moduł AzureADPreview nie wyświetla żadnego komunikatu informującego o tym, że istnieje nowsza wersja, wszystko jest gotowe. W przeciwnym razie — w zależności od rezultatu — wykonaj jedną z następujących czynności:
 
 - Jeśli nie są zwracane żadne wyniki, uruchom następujące polecenie, aby zainstalować moduł AzureADPreview:
   
-   ````powershell  
+   ```powershell  
    Install-Module AzureADPreview
-   ````
+   ```
 - Jeśli w wynikach jest wyświetlany tylko moduł AzureAD, uruchom następujące polecenia, aby zainstalować moduł AzureADPreview: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
-   ````
+   ```
 - Jeśli w wynikach jest wyświetlany tylko moduł AzureADPreview, ale pojawia się komunikat informujący o tym, że istnieje nowsza wersja, uruchom następujące polecenia, aby zaktualizować moduł: 
 
-   ````powershell 
+   ```powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
-  ````
+  ```
 
 Może zostać wyświetlony monit z informacją, że instalujesz moduł z niezaufanego repozytorium. Dzieje się tak w sytuacji, gdy repozytorium PSGallery nie zostało ustawione wcześniej jako zaufane. Naciśnij klawisz **Y**, aby zainstalować moduł.
 
@@ -111,25 +111,25 @@ Może zostać wyświetlony monit z informacją, że instalujesz moduł z niezauf
 
 Następnie sprawdź, czy istnieje obecnie B2BManagementPolicy, uruchamiając następujące:
 
-````powershell 
+```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
-````
+```
 - Jeśli wynikiem jest wartość False, zasady nie istnieje. Utwórz nowy B2BManagementPolicy i korzystania z wersji zapoznawczej, uruchamiając następujące:
 
-   ````powershell 
+   ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
-   ````
+   ```
 
 - Jeśli wynik to True, zasady B2BManagementPolicy już istnieje. Aby zaktualizować zasady i korzystania z wersji zapoznawczej, uruchom następujące polecenie:
   
-   ````powershell 
+   ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
    $features=[PSCustomObject]@{'Features'=@('OneTimePasscode')}; $policy.B2BManagementPolicy | Add-Member 'PreviewPolicy' $features -Force; $policy.B2BManagementPolicy
    $updatedPolicy = $policy | ConvertTo-Json -Depth 3
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-   ````
+   ```
 
 ## <a name="opting-out-of-the-preview-after-opting-in"></a>Rezygnacja z wersji zapoznawczej po zgodzie na rozwiązanie
 Może upłynąć kilka minut, zanim Akcja rezygnacji z zaczęły obowiązywać. Jeśli wyłączysz korzystania z wersji zapoznawczej żadnych użytkowników-gości, którzy wprowadzono jednorazowy kod dostępu nie będzie się zalogować. Można usunąć użytkownika gościa i Zaproś ponownie użytkownika, aby umożliwić im Zaloguj się ponownie przy użyciu innej metody uwierzytelniania.
@@ -144,17 +144,17 @@ Może upłynąć kilka minut, zanim Akcja rezygnacji z zaczęły obowiązywać. 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Aby wyłączyć przy użyciu programu PowerShell w wersji zapoznawczej
 Zainstaluj najnowszy moduł AzureADPreview, jeśli nie masz go jeszcze (zobacz [wymagań wstępnych: Zainstaluj najnowszy moduł AzureADPreview](#prerequisite-install-the-latest-azureadpreview-module) powyżej). Następnie sprawdź, czy istnieją obecnie zasady (wersja zapoznawcza) jednorazowy kod dostępu, uruchamiając następujące:
 
-````powershell 
+```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
-````
+```
 
 Jeśli wynik to True, zrezygnować z korzystania z wersji zapoznawczej, uruchamiając następujące:
 
-````powershell 
+```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json
 $policy.B2BManagementPolicy.PreviewPolicy.Features = $policy.B2BManagementPolicy.PreviewPolicy.Features.Where({$_ -ne "OneTimePasscode"})
 $updatedPolicy = $policy | ConvertTo-Json -Depth 3
 Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
-````
+```
 

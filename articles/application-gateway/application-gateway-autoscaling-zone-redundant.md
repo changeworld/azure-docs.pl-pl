@@ -1,25 +1,25 @@
 ---
 title: Skalowanie automatyczne i strefowo nadmiarowe Application Gateway na platformie Azure (publiczna wersja zapoznawcza)
-description: Ten artykuł zawiera informacje dotyczące limitów rozmiarów żądania zapory aplikacji sieci web i listy wykluczeń w usłudze Application Gateway przy użyciu witryny Azure portal.
+description: W tym artykule przedstawiono SKU v2 aplikacji na platformie Azure, w tym funkcji skalowania automatycznego i strefowo nadmiarowe.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 1/29/2019
 ms.author: victorh
-ms.openlocfilehash: f5885fd2ac76550990c9a56a1d200bbe11555918
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 7301460014e4d547d1950c8edfbd7534d8a4c103
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213760"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101672"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
 Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostępne w publicznej wersji zapoznawczej w ramach nowej jednostki SKU v2, oferuje ulepszenia wydajności, która dodaje obsługę krytyczne nowe funkcje, takie jak skalowanie automatyczne, nadmiarowości strefy i obsługę statycznych adresów VIP. Istniejących funkcji w ramach jednostki SKU jest ogólnie dostępna w dalszym ciągu być obsługiwane w nowej jednostki SKU w wersji 2 z pewnymi wyjątkami, wymienione w sekcji znanych ograniczeń polecenia. Nowe jednostki SKU w wersji 2 obejmują następujące ulepszenia:
 
 - **Skalowanie automatyczne**: Usługa Application Gateway i zapory aplikacji sieci Web wdrożenia w ramach jednostki SKU skalowania automatycznego można skalować w górę lub dół zależności od zmieniających się wzorców obciążenia ruchu. Dzięki skalowaniu automatycznemu nie trzeba również wybierać rozmiaru wdrożenia ani liczby wystąpień podczas aprowizowania usługi. Dzięki temu jednostka SKU oferuje elastyczność wartość true. W ramach nowej jednostki SKU bramy Application Gateway mogą działać zarówno w stałym pojemności (skalowanie automatyczne wyłączone), jak i w trybie z włączonym skalowaniem automatycznym. Tryb stałych pojemności jest przydatne w scenariuszach ze spójnego i przewidywalnego obciążenia. Tryb skalowania automatycznego jest korzystne w aplikacjach, które Zobacz mnóstwo wariancji w ruchu aplikacji.
-   
+
    > [!NOTE]
    > Automatyczne skalowanie nie jest obecnie dostępna w ramach jednostki SKU zapory aplikacji sieci Web. Konfigurowanie zapory aplikacji sieci Web przy użyciu trybu stałych pojemności, zamiast trybu skalowania automatycznego.
 - **Strefa nadmiarowości**: Wdrożenie usługi Application Gateway lub zapory aplikacji sieci Web może obejmować wielu strefach dostępności, usuwając konieczność do aprowizacji i pokrętła osobnych wystąpień bramy Application Gateway w każdej strefie przy użyciu usługi Traffic Manager. Możesz wybrać jedną strefę lub wieloma strefami wdrożonym wystąpień bramy Application Gateway, dlatego zapewnianie odporności błąd strefy. Pula zaplecza dla aplikacji można rozpowszechniać podobnie w różnych strefach dostępności.
@@ -33,10 +33,12 @@ Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostęp
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
-Automatyczne skalowanie jednostek SKU jest dostępna w wschodnie stany USA 2, środkowe stany USA, zachodnie stany USA 2, północno-środkowe stany USA, zachodnie stany USA, południowo-środkowe stany USA, Francja środkowa, Europa Zachodnia, Europa Północna, zachodnie Zjednoczone Królestwo, Południowo-Wschodnia i Japonia, część wschodnia.
+
+Automatyczne skalowanie jednostek SKU jest dostępna w następujących regionach: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, eastus, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, eastus (BL) centralus (DM) japanwest (system operacyjny ).
 
 ## <a name="pricing"></a>Cennik
-W trakcie okresu zapoznawczego nie ma opłat. Opłata jest naliczana za zasobów innych niż bramy aplikacji, takich jak usługi Key Vault, maszyny wirtualne itp. 
+
+W trakcie okresu zapoznawczego nie ma opłat. Opłata jest naliczana za zasobów innych niż bramy aplikacji, takich jak usługi Key Vault, maszyny wirtualne itp.
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 

@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1d47d8e35a1be28b5610961c1b1c7b5d1492e871
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: f76c9bfa5dc6a3542ace7025e0889ee64cd2e783
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250505"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188630"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
@@ -296,7 +296,7 @@ Wyrażenie matematyczne może zawierać następujących symboli:
 |*|Mnożenie|
 |^|Zasilania|
 |!|Silnia|
-|.|Dziesiętna|
+|.|Dziesiętny|
 |()|Pierwszeństwo grupowania|
 |[]|Funkcja|
 
@@ -304,23 +304,23 @@ Wyrażenie matematyczne może zawierać następujących stałych:
 
 |Symbol|Opis|
 |------------|-----------------|
-|Pi|3,14159...|
+|Pi|3.14159...|
 |Stopień|Stopień|
 |Czy mogę|Liczba urojone|
-|E|e, 2.71828...|
+|e|e, 2.71828...|
 |GoldenRatio|Złoty współczynnik 1.61803...|
 
 Wyrażenie matematyczne może zawierać następujące funkcje:
 
 |Symbol|Opis|
 |------------|-----------------|
-|SQRT|Pierwiastek kwadratowy|
+|Sqrt|Pierwiastek kwadratowy|
 |SIN [x], Cos [x], Tan [x]<br />CSC [x] s [x] Cot [x]|Funkcje trygonometryczne (z argumentami w radianach)|
-|ArcSin [x], [x] ArcCos ArcTan [x]<br />ArcCsc [x], [x] ArcSec ArcCot [x]|Odwrotny funkcje trygonometryczne (w radianach, dzięki czemu wyników)|
+|ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc[x], ArcSec[x], ArcCot[x]|Odwrotny funkcje trygonometryczne (w radianach, dzięki czemu wyników)|
 |EXP [x] E ^ x|Funkcja wykładnicza|
 |Dziennik [x]|Logarytm naturalny|
 |SINH — [x], [x] Cosh Tanh [x]<br />Csch [x], [x] Sech Coth [x]|Funkcje hiperboliczne|
-|ArcSinh [x], [x] ArcCosh ArcTanh [x]<br />ArcCsch [x], [x] ArcSech ArcCoth [x]|Odwrotne funkcje hiperboliczne|
+|ArcSinh[x], ArcCosh[x], ArcTanh[x]<br />ArcCsch [x], [x] ArcSech ArcCoth [x]|Odwrotne funkcje hiperboliczne|
 
 Wyrażenia matematyczne, które zawierają zmienne (na przykład 4 x + 6 = 18, gdzie x jest zmienna) nie są obsługiwane.
 

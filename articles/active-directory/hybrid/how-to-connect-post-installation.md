@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f9c9af94b15c78783f95fb92be548321a35b15a6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0341dda197f0950bfb3519e281a56eb99bc877b7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473218"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179314"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Kolejne kroki i jak zarządzać program Azure AD Connect
 Użyj procedur operacyjnych w tym artykule dostosować usługi Azure Active Directory (Azure AD) Connect do zaspokojenia potrzeb i wymagań swojej organizacji.  

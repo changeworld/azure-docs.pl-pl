@@ -11,18 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: f4ded67ef964482a2acea0d731b1b154a95168d2
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: db6646c2066be940b2c058653fe8f2ceb9bff3a2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741355"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169710"
 ---
-# <a name="liveevent-latency-in-media-services"></a>Element LiveEvent opóźnienia w usłudze Media Services
+# <a name="live-event-latency-in-media-services"></a>Czas oczekiwania na zdarzenie na żywo w usłudze Media Services
 
-W tym artykule przedstawiono sposób ustawiania małe opóźnienia na [element LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents). Omawia także typowe wyniki, które podczas przy użyciu ustawień małe opóźnienia w różne odtwarzacze są wyświetlane. Wyniki różnią się zależnie od opóźnienia sieci i usługi CDN.
+W tym artykule przedstawiono sposób ustawiania małe opóźnienia na [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents). Omawia także typowe wyniki, które podczas przy użyciu ustawień małe opóźnienia w różne odtwarzacze są wyświetlane. Wyniki różnią się zależnie od opóźnienia sieci i usługi CDN.
 
 Aby użyć nowego **LowLatency** funkcji, możesz ustawić **StreamOptionsFlag** do **LowLatency** na **element LiveEvent**. Podczas tworzenia [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) odtwarzania HLS, ustaw [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) 1. Gdy strumień jest uruchomiona, możesz użyć [usługi Azure Media Player](http://ampdemo.azureedge.net/) (AMP pokaz strony) i ustaw opcje odtwarzania, aby używać "Niskie opóźnienie Algorytm heurystyczny profil".
 
@@ -54,7 +54,7 @@ LiveEvent liveEvent = new LiveEvent(
 
 Zobacz pełny przykład: [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-## <a name="liveevents-latency"></a>Opóźnienie LiveEvents
+## <a name="live-events-latency"></a>Czas oczekiwania na zdarzenia na żywo
 
 W poniższej tabeli przedstawiono typowe wyniki opóźnienia (jeśli jest włączona Flaga LowLatency) w usłudze Media Services, zmierzony od momentu kanału informacyjnego wkład osiągnie usługi, gdy przeglądarka widzi odtwarzanie na odtwarzaczu. Aby użyć optymalnie małe opóźnienia, powinien Dostosowywanie ustawień kodera do 1 sekunda "Grupa z obrazów" (GOP) długości. Przy użyciu nowszej długości GOP, możesz zminimalizować użycie przepustowości i zmniejszenie szybkości transmisji bitów w ramach tej samej szybkość klatek. Jest szczególnie korzystne w filmach wideo z mniej ruchu.
 

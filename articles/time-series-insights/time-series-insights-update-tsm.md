@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a6eb142cf607c286ccce1282bb5c67a30c040c62
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716586"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099904"
 ---
 # <a name="time-series-model"></a>Model szeregów czasowych
 
@@ -72,7 +72,7 @@ Przykład:
         }
     }
 }
-``````
+```
 
 Aby uzyskać więcej informacji na temat typów modelu szeregów czasowych, zobacz [dokumentację referencyjną](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
@@ -141,7 +141,7 @@ W zależności od *wystąpienia pól*, hierarchii atrybutów i wartości są wy�
 | Identyfikator szeregu czasowego | Pola wystąpienia |
 | --- | --- |
 | ID1 | "Tworzenie" = "1000", "floor" = "10", "pomieszczenie" = "55"  |
-| IDENTYFIKATOR 2 | "Tworzenie" = "1000", "pomieszczenie" = "55" |
+| ID2 | "Tworzenie" = "1000", "pomieszczenie" = "55" |
 | ID3 | "floor" = "10" |
 | ID4 | "Tworzenie" = "1000", "floor" = "10"  |
 | ID5 | "Tworzenie", "floor" ani "pomieszczenie" jest ustawiona |

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: 151f6fa7880db03909c522147d9c1f74508f51a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 6f67945bcd84eef5c332b92440afa3199429d365
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351853"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092115"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Wdrażanie klastra usługi Service Fabric w usłudze Azure Stack
 
@@ -27,7 +27,7 @@ Użyj **klastra usługi Service Fabric** elementu w witrynie Azure Marketplace, 
 
 Aby uzyskać więcej informacji na temat pracy z usługą Service Fabric, zobacz [Omówienie usługi Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) i [scenariusze zabezpieczeń klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), w dokumentacji platformy Azure.
 
-Dostawca zasobów Microsoft.ServiceFabric nie korzysta z klastra usługi Service Fabric w usłudze Azure Stack. Zamiast klastra usługi Service Fabric w usłudze Azure Stack jest maszyny wirtualnej zestawu skalowania przy użyciu wstępnie zainstalowane oprogramowanie, można ustawić przy użyciu Desired State Configuration (DSC).
+Dostawca zasobów Microsoft.ServiceFabric nie korzysta z klastra usługi Service Fabric w usłudze Azure Stack. Zamiast klastra usługi Service Fabric w usłudze Azure Stack jest maszyny wirtualnej zestawu skalowania z zestawu wstępnie zainstalowane oprogramowanie przy użyciu Desired State Configuration (DSC).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -210,7 +210,7 @@ Za dostęp do klastra usługi Service Fabric przy użyciu narzędzia Service Fab
 
 1. Po zmianie kolejności zmiennych środowiskowych, ponownie uruchom program PowerShell, a następnie uruchom poniższy skrypt programu PowerShell w celu uzyskania dostępu do klastra usługi Service Fabric:
 
-   ````PowerShell  
+   ```PowerShell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
     CLUSTER FQDN\]:19000" \`
 
@@ -221,8 +221,11 @@ Za dostęp do klastra usługi Service Fabric przy użyciu narzędzia Service Fab
     0272251171BA32CEC7938A65B8A6A553AA2D3283 \`
 
     -StoreLocation CurrentUser -StoreName My -Verbose
-   ````
+   ```
    
    > [!NOTE]  
    > Istnieje nie *https://* przed nazwą klastra w skrypcie. Port 19000 jest wymagany.
- 
+
+## <a name="next-steps"></a>Kolejne kroki
+
+[Wdrażanie rozwiązania Kubernetes do usługi Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)

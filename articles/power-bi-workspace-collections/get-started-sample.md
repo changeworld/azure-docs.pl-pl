@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: a2e1604a51b8343d926dda3b258d38b19266deeb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 630413d15df04d27599389f647c57876fff9d295
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246688"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094431"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych usługi Power BI
 
@@ -24,7 +24,7 @@ Za pomocą **kolekcji obszarów roboczych pakietu Microsoft Power BI**, można z
 > [!IMPORTANT]
 > Kolekcje obszarów roboczych usługi Power BI są przestarzałe i będą dostępne do czerwca 2018 roku lub do daty podanej w kontrakcie. Zachęcamy do zaplanowania migracji do usługi Power BI Embedded, aby uniknąć przerw w działaniu aplikacji. Aby uzyskać informacje dotyczące sposobu przeprowadzenia migracji danych do usługi Power BI Embedded, zobacz [How to migrate Power BI Workspace Collections content to Power BI Embedded (Migrowanie zawartości kolekcji obszarów roboczych usługi Power BI do usługi Power BI Embedded)](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-Zanim przejdziemy dalej, na którym chcesz zapisać następujące zasoby: one pomóc Ci przy integrowanie raportów usługi Power BI przykładową aplikację i własne aplikacje za.
+Zanim przejdziemy dalej, którym chcesz zapisać następujące zasoby: Ułatwiają one podczas integrowanie raportów usługi Power BI przykładową aplikację i własne aplikacje za.
 
 * [Przykładowa aplikacja internetowa obszaru roboczego](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [Dokumentacja usługi Power BI obszar roboczy kolekcji z interfejsu API](https://msdn.microsoft.com/library/azure/mt711507.aspx)
@@ -71,7 +71,7 @@ W tym momencie masz raport usługi Power BI PBIX zaimportowane do Twojej **obsza
 Przykład aplikacji sieci web jest przykładowej aplikacji, która renderuje raporty zaimportowane do Twojej **obszaru roboczego**. Poniżej przedstawiono sposób konfigurowania przykładowej aplikacji sieci web.
 
 1. W **osadzonych w usłudze Power BI** rozwiązania Visual Studio kliknij prawym przyciskiem myszy **EmbedSample** aplikacji sieci web, a następnie wybierz **Ustaw jako projekt startowy**.
-2. W **web.config**w **EmbedSample** aplikacji sieci web, Edytuj **appSettings**: **AccessKey**,  **WorkspaceCollection** nazwy i **WorkspaceId**.
+2. W **web.config**w **EmbedSample** aplikacji sieci web, Edytuj **appSettings**: **AccessKey**, **WorkspaceCollection** nazwy i **WorkspaceId**.
 
     ```
     <appSettings>
@@ -104,14 +104,14 @@ Po kliknięciu raportu, **EmbedSample** aplikacji sieci web powinien wyglądać 
 
 Przykład obejmuje **ReportsViewModel** i **ReportViewModel**.
 
-**ReportsViewModel.cs**: reprezentuje raporty usługi Power BI.
+**ReportsViewModel.cs**: Reprezentuje raporty usługi Power BI.
 
     public class ReportsViewModel
     {
         public List<Report> Reports { get; set; }
     }
 
-**ReportViewModel.cs**: reprezentuje raportu usługi Power BI.
+**ReportViewModel.cs**: Reprezentuje raportu usługi Power BI.
 
     public classReportViewModel
     {
@@ -134,11 +134,11 @@ Za pomocą wspólnego serwera i bazy danych atrybutów kończyć się niepowodze
 
 **Widoku** zarządza wyświetlania usługi Power BI **raporty** i usługi Power BI **raportu**.
 
-**Reports.cshtml**: iteracja **Model.Reports** utworzyć **ActionLink**. **ActionLink** składa się w następujący sposób:
+**Reports.cshtml**: Iteracja **Model.Reports** utworzyć **ActionLink**. **ActionLink** składa się w następujący sposób:
 
 | Część | Opis |
 | --- | --- |
-| Stanowisko |Nazwa raportu. |
+| Tytuł |Nazwa raportu. |
 | Ciąg zapytania |Link do raportu identyfikatora. |
 
     <div id="reports-nav" class="panel-collapse collapse">
@@ -168,7 +168,7 @@ Report.cshtml: Ustaw **Model.AccessToken**i wyrażenie Lambda **PowerBIReportFor
 
 ### <a name="controller"></a>Kontroler
 
-**DashboardController.cs**: tworzy przekazywanie PowerBIClient **tokenu aplikacji**. JSON Web Token (token JWT) jest generowany na podstawie **klucza podpisywania** można pobrać **poświadczenia**. **Poświadczenia** są używane do tworzenia instancji **PowerBIClient**. Po utworzeniu wystąpienia **PowerBIClient**, można wywołać GetReports() i GetReportsAsync().
+**DashboardController.cs**: Tworzy przekazywanie PowerBIClient **tokenu aplikacji**. JSON Web Token (token JWT) jest generowany na podstawie **klucza podpisywania** można pobrać **poświadczenia**. **Poświadczenia** są używane do tworzenia instancji **PowerBIClient**. Po utworzeniu wystąpienia **PowerBIClient**, można wywołać GetReports() i GetReportsAsync().
 
 CreatePowerBIClient()
 
@@ -228,7 +228,7 @@ Po utworzeniu **raportu**, możesz użyć **IFrame** do osadzania usługi Power 
 ```
 init: function() {
     var embedUrl = this.getEmbedUrl();
-    var iframeHtml = '<igrame style="width:100%;height:100%;" src="' + embedUrl + 
+    var iframeHtml = '<iframe style="width:100%;height:100%;" src="' + embedUrl + 
         '" scrolling="no" allowfullscreen="true"></iframe>';
     this.element.innerHTML = iframeHtml;
     this.iframe = this.element.childNodes[0];

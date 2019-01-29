@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7374b3f71474cb4d4e59e9d81ab1de7bea265483
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f8c5e5f598ab8566eacb594ff66b63ce3793f57f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337142"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093200"
 ---
 # <a name="support-and-help-options-for-developers"></a>Opcje pomocy technicznej i pomocy dla deweloperów
 
@@ -52,13 +52,13 @@ Gdzie *{Your wyszukiwane terminy}* są wyszukiwane słowa kluczowe.
 
 |Narzędzie  |Opis  |
 |---------|---------|
-|[jwt.MS](https://jwt.ms)| Wklej identyfikator lub dostęp do tokenów do zdekodowania nazwy oświadczenia i wartości |
+|[jwt.ms](https://jwt.ms)| Wklej identyfikator lub dostęp do tokenów do zdekodowania nazwy oświadczenia i wartości |
 |[Analizator kodu błędu](https://apps.dev.microsoft.com/portal/tools/errors)| Wklej odebrany kod błędu podczas logowania lub wyrazić zgodę strony, aby wyświetlić możliwe przyczyny i korygowania funkcję |
-|[Program Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Narzędzie, które pozwala wysyłać żądania i odpowiedzi dla interfejsu API programu Microsoft Graph|
+|[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Narzędzie, które pozwala wysyłać żądania i odpowiedzi dla interfejsu API programu Microsoft Graph|
 
 <br/>
 
-[![Przepełnienie stosu](./media/developer-support-help-options/stackoverflow-logo.png)](https://www.stackoverflow.com)
+[![Stack Overflow](./media/developer-support-help-options/stackoverflow-logo.png)](https://www.stackoverflow.com)
 ## <a name="post-a-question-to-stack-overflow"></a>Zamieść pytanie na przepełnienie stosu
 
 Przepełnienie stosu jest preferowany kanał w razie pytań związanych z opracowywaniem — gdzie oba elementy społeczność jako Microsoft członkowie zespołu zaangażowani w ułatwienia możesz rozwiązać tego problemu.
@@ -70,9 +70,9 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 |Biblioteka ADAL |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
 |Biblioteka MSAL     |[[msal]](https://stackoverflow.com/questions/tagged/msal)|
 |Oprogramowanie pośredniczące OWIN  |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)|
-|[Funkcje B2B platformy Azure](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Usługa Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Interfejs API programu Microsoft Graph](https://developer.microsoft.com/graph/) |[[-programu microsoft graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
+|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Interfejs API programu Microsoft Graph](https://developer.microsoft.com/graph/) |[[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
 |Wszelkich innych aspektów do tematów, uwierzytelniania i autoryzacji |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
@@ -83,7 +83,7 @@ Jeśli nie możesz znaleźć odpowiedzi na problem za pomocą wyszukiwania, Prze
 <br/>
 
 
-[![Przepełnienie stosu](./media/developer-support-help-options/github-logo.png)](https://www.github.com)
+[![Stack Overflow](./media/developer-support-help-options/github-logo.png)](https://www.github.com)
 ## <a name="create-a-github-issue"></a>Utwórz problem usługi GitHub
 
  Jeśli znajdziesz błąd lub problem związany z naszych bibliotek, należy zgłosić problem w repozytoriach usługi GitHub. Ponieważ skorzystać z bibliotek typu open source, również są bezpłatne przesłać żądanie ściągnięcia, który jest również. Następujący artykuł zawiera listę bibliotek i ich repozytoriów GitHub:
