@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: priyamo
-ms.openlocfilehash: 3eee0c42fc5dd6970d6cae8e6be0dbdb800a09c5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: cfa9a2ab2ec5d5a666bd431a430c7d1bdce6c8d8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882434"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150452"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Utwórz listę lub usunąć przypisanych przez użytkownika tożsamości zarządzanej przy użyciu wywołań interfejsu API REST
 
@@ -66,7 +66,7 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 
 **Treść żądania**
 
-|Name (Nazwa)  |Opis  |
+|Name  |Opis  |
 |---------|---------|
 |location     | Wymagany. Lokalizacja zasobu.        |
 

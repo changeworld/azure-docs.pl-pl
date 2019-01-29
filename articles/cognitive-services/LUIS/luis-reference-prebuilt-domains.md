@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 94bae7ddfd0d7f885b8441ed3b9d5943d052dbaf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140969"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101924"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Dokumentacja ze wstępnie utworzonych domen aplikacją usługi LUIS
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -402,7 +402,7 @@ Domena miejsc zapewnia intencji do obsługi zapytań dotyczących takich firm, i
 |CheckAccident|Zadaj pytanie, czy określony drogach jest awarii.|Na 880 jest awarii?<br/>Pokaż informacje o awarii|
 |CheckAreaTraffic|Sprawdź ruch dla ogólnego obszaru lub Kalifornijskiej nie na określonej trasy.|Ruch w Seattle<br/>Co to jest traffic podobnie jak w Seattle?|
 |CheckIntoPlace|Zaewidencjonuj w miejscu, za pomocą mediów społecznościowych.|Zaewidencjonuj mnie na Foursquare<br/>Sprawdź w tym miejscu|
-|CheckRouteTraffic| Sprawdź ruch określoną trasę określone przez użytkownika.|W jaki sposób ruch do Mashiko?<br/>Pokaż mi traffice do Kirkland<br/>W jaki sposób ruch do Seattle?| 
+|CheckRouteTraffic| Sprawdź ruch określoną trasę określone przez użytkownika.|W jaki sposób ruch do Mashiko?<br/>Pokaż mi ruch do Kirkland<br/>W jaki sposób ruch do Seattle?| 
 |Potwierdź|Potwierdź akcję odnoszących się do miejsca.|Upewnij się, Moja Rezerwacja restauracji.|
 |Zakończ|Akcja, aby zakończyć zadanie odnoszących się do miejsca.|Zamknij.<br/>Zamknij, zapewniając mnie kierunki|
 |FindPlace|Wyszukaj miejsca (biznesowe, instytucja, restauracji, przestrzeń publicznych adresów).|Gdzie znajduje się najbliższy biblioteki?<br/>Znajdź dobre restauracji włoski w widoku górski|

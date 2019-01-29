@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 0fcdb2324868528e62e69fa0ce24ab2334052ced
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 186e5ed062be8210f4efa0bdaf134f3af51d268b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245417"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094142"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
@@ -209,7 +209,7 @@ Istnieją dwie części do tego scenariusza:
     -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
 
-   **Informacje o szablonach rozwiązania:** Niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.VHD.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
+   **Informacje o szablonach rozwiązania:** Niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.vhd.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
 
    Przejrzyj opis szablonów i Pobierz, a następnie zaimportować dodatkowe wymagania, takie jak wirtualne dyski twarde, które są wymagane do pracy za pomocą szablonu rozwiązania.  
    
@@ -232,9 +232,9 @@ Istnieją dwie części do tego scenariusza:
 
 Wersja programu Azure Stack PowerShell 1.3.0 może teraz dodawać rozszerzenia maszyny wirtualnej. Na przykład:
 
-````PowerShell
+```PowerShell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
-````
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

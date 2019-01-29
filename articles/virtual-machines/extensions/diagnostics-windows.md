@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 2a4f55ea15c933094befb8855185c4b7e353dee3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 26e902cb31a77ffb1516f084bb71b5a99a89fba9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054754"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188647"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Używanie programu PowerShell do uruchamiania narzędzia Diagnostyka Azure na maszynie wirtualnej systemu Windows
 
@@ -84,13 +84,13 @@ Konfiguracja musi zostać zaktualizowany i zawiera następujące czynności:
   * Identyfikator zasobu można skonstruować przy użyciu następującego wzorca: "/ subscriptions / {*identyfikator subskrypcji dla subskrypcji z maszyną Wirtualną*} /resourceGroups/ {*nazwę grupy zasobów dla maszyny Wirtualnej*} / providers/Microsoft.Compute/virtualMachines/ {*Nazwa maszyny Wirtualnej*} ".
   * Na przykład, jeśli subskrypcji IDENTYFIKATORA subskrypcji, w którym maszyna wirtualna jest uruchomiona jest **11111111-1111-1111-1111-111111111111**, nazwa grupy zasobów dla grupy zasobów jest **MyResourceGroup**i Nazwa maszyny Wirtualnej jest **MyWindowsVM**, następnie wartość *resourceID* będzie:
     
-      ```
+      ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
   * Aby uzyskać więcej informacji na temat metryki są generowane na podstawie konfiguracji liczników i metryki wydajności, zobacz [tabeli metryk usługi Azure Diagnostics w magazynie](diagnostics-template.md#wadmetrics-tables-in-storage).
 * **StorageAccount** element musi zostać zaktualizowany o nazwie konto magazynu diagnostyki.
   
-    ```
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <PublicConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
         <WadCfg>

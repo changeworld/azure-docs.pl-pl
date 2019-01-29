@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: ffc8832fa2da9d4bfad23752a5bc767ace2b573e
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5361b93d24c66ef6ccb2f117e6e3a68de4c5f459
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478624"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195610"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: Obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
 
@@ -89,7 +89,7 @@ Powinna to być istniejącą regułę synchronizacji, która jest włączone i s
 
 2. Konfigurowanie filtrów wyszukiwania, z następującymi wartościami:
 
-    | Atrybut | Wartość |
+    | Atrybut | Value |
     | --- | --- |
     | Kierunek |**Wychodzące** |
     | Typ obiektu MV |**Osoby** |
@@ -104,7 +104,7 @@ Powinna to być istniejącą regułę synchronizacji, która jest włączone i s
 7. Na ekranie edycji wybierz **filtru Scoping** kartę.
 8. Zanotuj wartości zakresu konfiguracji filtru. Jeśli używane są reguły synchronizacji OOB, powinien dokładnie istnieć **jedna grupa filtrów określania zakresu zawierające dwóch klauzul**, w tym:
 
-    | Atrybut | Operator | Wartość |
+    | Atrybut | Operator | Value |
     | --- | --- | --- |
     | sourceObjectType | RÓWNA SIĘ | Użytkownik |
     | cloudMastered | NOTEQUAL | True |
@@ -114,9 +114,9 @@ Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu*
 1. Za pomocą edytora reguł synchronizacji, kliknij przycisk **Dodaj nową regułę** przycisku.
 2. W obszarze **kartę opis**, podaj następującą konfigurację:
 
-    | Atrybut | Wartość | Szczegóły |
+    | Atrybut | Value | Szczegóły |
     | --- | --- | --- |
-    | Name (Nazwa) | *Podaj nazwę* | Np. *"Się do usługi AAD — niestandardowe przesłonięcia dla certyfikatu użytkownika"* |
+    | Name | *Podaj nazwę* | Np. *"Się do usługi AAD — niestandardowe przesłonięcia dla certyfikatu użytkownika"* |
     | Opis | *Podaj opis* | Np. *"Jeśli atrybut userCertificate ma więcej niż 15 wartości, Eksportuj NULL".* |
     | Połączonego systemu | *Wybierz łącznik usługi Azure AD* |
     | Połączony System typu obiektu | **Użytkownik** | |
@@ -128,7 +128,7 @@ Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu*
 4. Pomiń **Dołącz zasady** kartę.
 5. Przejdź do **przekształcenia** kartę, aby dodać nowe przekształcenia przy użyciu następujących konfiguracji:
 
-    | Atrybut | Wartość |
+    | Atrybut | Value |
     | --- | --- |
     | Typ przepływu |**Expression** |
     | Atrybut docelowy |**userCertificate** |

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: 92c1651a-675d-42c8-b337-f78e7dbcc40d
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
-ms.openlocfilehash: b89be37d9c77fb83e607a1af0bc2f6ba716ab2c1
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 073f6d925a6868937410972a9400daefa802876d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724166"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152046"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Dodaj aplikację wielodostępną do galerii aplikacji usługi Azure AD
 
@@ -31,9 +31,9 @@ Azure Active Directory (Azure AD) to oparta na chmurze Usługa zarządzania toż
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Jeśli aplikacja obsługuje SAML lub OpenIDConnect
 W przypadku wielodostępnej aplikacji, która ma być wyświetlane w galerii aplikacji usługi Azure AD musi najpierw upewnij się, że aplikacja obsługuje jeden z następujących pojedynczego logowania jednokrotnego technologii:
 
-- **OpenID Connect**: aplikacja na liście, tworzenie wielodostępnych aplikacji w usłudze Azure AD i zaimplementować [platformy wyrażania zgody w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework) dla aplikacji. Wyślij żądanie logowania do wspólnego punktu końcowego, aby każdy klient może zapewnić zgody na aplikację. Możesz kontrolować dostęp użytkownika na podstawie Identyfikatora dzierżawy i nazwa UPN użytkownika odebrane w tokenie. Przesyłanie aplikacji przy użyciu z procedurą opisaną w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **OpenID Connect**: Aby na liście aplikacji, tworzenie wielodostępnych aplikacji w usłudze Azure AD i zaimplementować [platformy wyrażania zgody w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) dla aplikacji. Wyślij żądanie logowania do wspólnego punktu końcowego, aby każdy klient może zapewnić zgody na aplikację. Możesz kontrolować dostęp użytkownika na podstawie Identyfikatora dzierżawy i nazwa UPN użytkownika odebrane w tokenie. Przesyłanie aplikacji przy użyciu z procedurą opisaną w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
-- **SAML**: Jeśli aplikacja obsługuje SAML 2.0, aplikacji mogą być wyświetlane w galerii. Postępuj zgodnie z instrukcjami w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+- **SAML**: Jeśli aplikacja obsługuje SAML 2.0, aplikacja może wyświetlane w galerii. Postępuj zgodnie z instrukcjami w [listę aplikacji w galerii aplikacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Jeśli aplikacja nie obsługuje protokołu SAML lub OpenIDConnect
 Galeria aplikacji za pomocą hasła pojedynczego logowania jednokrotnego technologii mogą być nadal zintegrowane aplikacje, które nie obsługują protokołu SAML lub OpenIDConnect.

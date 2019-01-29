@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
 ms.component: queues
-ms.openlocfilehash: 016d6b1991085e3ed881deb68317dbde0ee46326
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b46aea2a50b12f82858b8f465f8dfbfff8aa0bbe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213233"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165017"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
 
@@ -111,15 +111,15 @@ Poniższy przykład pokazuje, jak dodać komunikat do kolejki.
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 1"
 # Add a new message to the queue
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue 
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 2"
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage `
   -ArgumentList "This is message 3"
-$queue.CloudQueue.AddMessage($QueueMessage)
+$queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
 Jeśli używasz [Eksploratora usługi Azure Storage](http://storageexplorer.com), nawiąż połączenie z kontem platformy Azure i wyświetlić kolejek na koncie magazynu oraz przechodzenie do kolejki, aby wyświetlić komunikaty w kolejce. 
@@ -140,25 +140,29 @@ W poniższym przykładzie możesz zapoznaj się z trzech kolejka komunikatów, a
 $invisibleTimeout = [System.TimeSpan]::FromSeconds(10)
 
 # Read the message from the queue, then show the contents of the message. Read the other two messages, too.
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queueMessage 
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
 
 # After 10 seconds, these messages reappear on the queue. 
 # Read them again, but delete each one after reading it.
 # Delete the message.
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
-$queueMessage = $queue.CloudQueue.GetMessage($invisibleTimeout)
-$queue.CloudQueue.DeleteMessage($queueMessage)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
+$queueMessage = $queue.CloudQueue.GetMessageAsync($invisibleTimeout,$null,$null)
+$queueMessage.Result
+$queue.CloudQueue.DeleteMessageAsync($queueMessage.Result.Id,$queueMessage.Result.popReceipt)
 ```
 
 ## <a name="delete-a-queue"></a>Usuwanie kolejki
+
 Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj polecenie cmdlet Remove-AzStorageQueue. Poniższy przykład pokazuje, jak można usunąć określonej kolejki używane w tym ćwiczeniu za pomocą polecenia cmdlet Remove-AzStorageQueue.
 
 ```powershell
@@ -187,7 +191,9 @@ W tym artykule omówiono podstawowe zarządzanie magazynem kolejki przy użyciu 
 > * Usuwanie kolejki
 
 ### <a name="microsoft-azure-powershell-storage-cmdlets"></a>Polecenia cmdlet programu PowerShell dla programu Microsoft Azure Storage
+
 * [Polecenia cmdlet programu PowerShell usługi Storage](/powershell/module/az.storage)
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) jest bezpłatną aplikacją autonomiczną oferowaną przez firmę Microsoft, która umożliwia wizualną pracę z danymi w usłudze Azure Storage w systemach Windows, macOS i Linux.

@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 33c148fc-d490-4bb9-90c1-d5933679ce4e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 7df615caf3ca1b8ca7dd7d4da876c840e20defd8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b93e63acbad5a43b898e80dc706dfe17837f0183
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833129"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą sklepu cyfrowego EFI
 
@@ -30,7 +30,7 @@ Integrowanie sklepu cyfrowego EFI z usługą Azure AD zapewnia następujące kor
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do sklepu cyfrowego EFI.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do sklepu cyfrowego EFI (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -44,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą sklepu cyfrowego EFI,
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -68,15 +68,15 @@ Aby skonfigurować integrację sklepu cyfrowego EFI w usłudze Azure AD, należy
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **sklepu cyfrowego EFI**, wybierz opcję **sklepu cyfrowego EFI** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Witryna sklepu cyfrowego EFI, na liście wyników](./media/efidigitalstorefront-tutorial/tutorial_efidigital_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą interfejsu EFI sklepu cyfrowego oparte na użytkownika testu o nazwie "Britta Simon".
 
@@ -86,13 +86,13 @@ W sklepie cyfrowego EFI, przypisz wartość **nazwy użytkownika** w usłudze Az
 
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu sklepu cyfrowego EFI, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego sklepu cyfrowego EFI](#create-a-efi-digital-storefront-test-user)**  — aby odpowiednikiem Britta Simon w sklepu cyfrowego EFI, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji sklepu cyfrowego EFI.
 
@@ -100,7 +100,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **sklepu cyfrowego EFI** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -110,9 +110,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![EFI cyfrowego StoreFront domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/efidigitalstorefront-tutorial/tutorial_efidigital_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.myprintdesk.net/DSF`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.myprintdesk.net/DSF`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.myprintdesk.net/DSF/asp4/`
+    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.myprintdesk.net/DSF/asp4/`
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -120,12 +120,12 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/efidigitalstorefront-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/efidigitalstorefront-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **sklepu cyfrowego EFI** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej sklepu cyfrowego EFI](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **sklepu cyfrowego EFI** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej sklepu cyfrowego EFI](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
@@ -162,7 +162,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-efi-digital-storefront-test-user"></a>Tworzenie użytkownika testowego sklepu cyfrowego EFI
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w EFI sklepu cyfrowego. Praca z [zespołem pomocy technicznej sklepu cyfrowego EFI](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) Aby dodać użytkowników na platformie EFI sklepu cyfrowego. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego. 
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w EFI sklepu cyfrowego. Praca z [zespołem pomocy technicznej sklepu cyfrowego EFI](https://www.efi.com/products/productivity-software/ecommerce-web-to-print/efi-digital-storefront/support/) Aby dodać użytkowników na platformie EFI sklepu cyfrowego. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

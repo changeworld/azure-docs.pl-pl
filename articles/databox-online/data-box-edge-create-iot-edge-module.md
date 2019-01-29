@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 8d4a99ab9d8107f1b3fbe70f59299f427bc88bd5
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465894"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094108"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Tworzenie modułu C# usługi IoT Edge, aby przenieść pliki na krawędzi pola danych (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Gdy plik znajduje się w udziale chmury, automatycznie zostaje on przesłany do 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że masz:
+Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
 - Urządzenie krawędź pola danych, które jest uruchomiona.
 
@@ -97,8 +97,8 @@ Poniższe kroki umożliwiają utworzenie usługi IoT Edge modułu projektu na po
 Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyciu własnego kodu.
 
 1. W programie Visual Studio Code wybierz **Widok > paletę poleceń** aby otworzyć paletę poleceń programu VS Code.
-2. W palecie poleceń wprowadź i uruchom polecenie **Azure: zaloguj się**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
-3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: nowe rozwiązanie usługi IoT Edge**. W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie:
+2. W palecie poleceń wprowadź i uruchom polecenie **Azure: Sign in (Azure: zaloguj się)**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na swoim koncie platformy Azure. Jeśli już się zalogowano, można pominąć ten krok.
+3. W palecie poleceń wprowadź i uruchom polecenie **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: nowe rozwiązanie usługi IoT Edge). W palecie poleceń podaj następujące informacje, aby utworzyć rozwiązanie:
 
     1. Wybierz folder, w którym chcesz utworzyć rozwiązanie.
     2. Podaj nazwę rozwiązania lub zaakceptuj nazwę domyślną **EdgeSolution**.
@@ -143,7 +143,7 @@ Utwórz szablon rozwiązania w języku C#, który można dostosować przy użyci
             static int counter;
             private const string InputFolderPath = "/home/LocalShare";
             private const string OutputFolderPath = "/home/CloudShare";
-    ````
+    ```
 
     > [!IMPORTANT]
     > Zwróć uwagę na `InputFolderPath` i `OutputFolderPath`. Należy podać te ścieżki, podczas wdrażania tego modułu.
@@ -269,7 +269,7 @@ W poprzedniej sekcji utworzyliśmy rozwiązanie IoT Edge i dodać kod do FileCop
 
     Zobaczysz poniższe ostrzeżenie, który można zignorować:
 
-    *Program.cs(77,44): ostrzeżenie CS1998: Ta metoda async nie zawiera operatorów "await", dlatego będzie wykonywana synchronicznie. Należy wziąć pod uwagę, aby poczekać na nieblokujące wywołania interfejsów API za pomocą operatora "await" lub "await Task.Run(...)" do wykonania pracy Procesora CPU w wątku tła.*
+    *Program.cs(77,44): ostrzeżenie CS1998: Tej metodzie asynchronicznej brakuje operatorów "await" i zostanie ona uruchomiona synchronicznie. Należy wziąć pod uwagę, aby poczekać na nieblokujące wywołania interfejsów API za pomocą operatora "await" lub "await Task.Run(...)" do wykonania pracy Procesora CPU w wątku tła.*
 
 4. Pełny adres obrazu kontenera możesz wyświetlić za pomocą tagu w zintegrowanym terminalu programu VS Code. Adres obrazu jest tworzona na podstawie informacji w pliku module.json przy użyciu formatu `<repository>:<version>-<platform>`. W tym artykule, powinien on wyglądać podobnie `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`.
 

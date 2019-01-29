@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: 905f00842c5ce74f681a6c5c09ff8bf6c7a9e162
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b24435501ed1312e91ebec9b9c434971dbc94b55
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091253"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163453"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Utwórz Maszynę wirtualną z poziomu dysku VHD za pomocą witryny Azure portal
 
@@ -28,6 +28,8 @@ Istnieje kilka sposobów, aby utworzyć maszynę wirtualną (VM) na platformie A
 - Jeśli masz już wirtualny dysk twardy (VHD) do użycia lub chcesz skopiować wirtualny dysk twardy z istniejącej maszyny Wirtualnej do użycia, możesz utworzyć nową maszynę Wirtualną przez *dołączanie* wirtualnego dysku twardego do nowej maszyny Wirtualnej jako dysk systemu operacyjnego. 
 
 - Możesz utworzyć nową maszynę Wirtualną z wirtualnego dysku twardego maszyny wirtualnej, która została usunięta. Na przykład jeśli masz maszyny Wirtualnej platformy Azure, która nie działa prawidłowo, możesz usunąć maszynę Wirtualną i użyj jej wirtualnego dysku twardego, aby utworzyć nową maszynę Wirtualną. Możesz ponownie użyć tego samego pliku VHD lub tworzenie kopii wirtualnego dysku twardego przez utworzenie migawki, a następnie utworzenie nowego dysku zarządzanego z migawki. Chociaż tworzenie migawek zajmuje kilka kroków, zachowuje oryginalny dysk VHD i zapewnia rezerwowe.
+
+- Pobierz klasycznej maszyny Wirtualnej, a następnie użyj wirtualnego dysku twardego do tworzenia nowej maszyny Wirtualnej, który używa modelu wdrażania usługi Resource Manager i dysków zarządzanych. Aby uzyskać najlepsze wyniki **zatrzymać** klasycznej maszyny Wirtualnej w witrynie Azure portal, przed utworzeniem migawki.
  
 - Możesz utworzyć Maszynę wirtualną platformy Azure z dysku VHD w środowisku lokalnym przez przekazanie dysku VHD w środowisku lokalnym i dołączania ich do nowej maszyny Wirtualnej. Użyj programu PowerShell lub innego narzędzia do przekazania dysku VHD do konta magazynu, a następnie tworzenie dysku zarządzanego z dysku VHD. Aby uzyskać więcej informacji, zobacz [przekazywanie wyspecjalizowanego wirtualnego dysku twardego](create-vm-specialized.md#option-2-upload-a-specialized-vhd). 
 

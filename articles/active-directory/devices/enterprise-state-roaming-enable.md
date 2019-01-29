@@ -7,7 +7,7 @@ documentationcenter: ''
 author: tanning
 manager: daveba
 editor: curtand
-ms.component: devices
+ms.subservice: devices
 ms.assetid: f71d66fd-7f9e-45eb-9cfe-5d989870f8a4
 ms.service: active-directory
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 3e6b2d09c2b3c204fc62428ab53a4d4e33d57eac
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a4f1e45f25e00a000127499f86d941501fc54138
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448384"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098684"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Włączanie roamingu stanu przedsiębiorstwa w usłudze Azure Active Directory
 Roaming stanu dla przedsiębiorstw jest dostępny dla każdej organizacji za pomocą usługi Azure AD Premium lub pakietu Enterprise Mobility + Security (EMS) licencji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcję usługi Azure AD, zobacz [strona produktu usługi Azure AD](https://azure.microsoft.com/services/active-directory).

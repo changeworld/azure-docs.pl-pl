@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902335"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187304"
 ---
 # <a name="evaluate-method"></a>Oceń — metoda
 
@@ -28,22 +28,22 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ```   
 <br>
 ## <a name="request-parameters"></a>Parametry żądania  
-Name (Nazwa)     | Wartość | Wymagana?  | Opis
+Name     | Value | Wymagana?  | Opis
 -----------|-----------|---------|--------
 **expr**       | Ciąg tekstowy | Yes | Wyrażenie zapytania, które określa jednostki, która ma zostać zwrócony.
-**Model**      | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
-**Atrybuty** | Ciąg tekstowy | Nie<br>domyślne: identyfikator | Listę rozdzielonych przecinkami, która określa wartości atrybutów, które znajdują się w odpowiedzi. Nazwy atrybutów jest rozróżniana wielkość liter.
-**Liczba**        | Liczba | Nie<br>Domyślnie: 10 | Liczba wyników do zwrócenia.
-**offset**     | Liczba |   Nie<br>Domyślna: 0    | Indeks pierwszego wyniku do zwrócenia.
+**model**      | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
+**Atrybuty** | Ciąg tekstowy | Nie<br>Wartość domyślna: Identyfikator | Listę rozdzielonych przecinkami, która określa wartości atrybutów, które znajdują się w odpowiedzi. Nazwy atrybutów jest rozróżniana wielkość liter.
+**count**        | Liczba | Nie<br>Domyślne: 10 | Liczba wyników do zwrócenia.
+**offset**     | Liczba |   Nie<br>Domyślne: 0    | Indeks pierwszego wyniku do zwrócenia.
 **orderby** |   Ciąg tekstowy | Nie<br>Wartość domyślna: dzięki skróceniu PRAWDPD | Nazwa atrybutu, który jest używany na potrzeby sortowania jednostki. Opcjonalnie rosnąco/malejąco może być określona. Format to: *name: asc* lub *name: desc*.
   
  <br>
 ## <a name="response-json"></a>Odpowiedź (JSON)
-Name (Nazwa) | Opis
+Name | Opis
 -------|-----   
 **expr** |  *Expr* parametrów z żądania.
 **Jednostki** |  Tablica 0 lub więcej jednostek, które dopasowane wyrażenia zapytania. Każda jednostka zawiera wartość prawdopodobieństwa logarytmu naturalnego i wartości innych wymaganych atrybutów.
-**Zostało przerwane** | Wartość true, jeśli upłynął limit czasu żądania.
+**aborted** | Wartość true, jeśli upłynął limit czasu żądania.
 
 <br>
 #### <a name="example"></a>Przykład:

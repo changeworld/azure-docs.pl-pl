@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: a42236af7e301a21a91a3c1294b20167824dfc84
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62812dd8f92bcace8f764a21aba608157815cec3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024794"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093168"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Tryby sieci kontenera usługi Service Fabric
 
@@ -78,7 +78,7 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
             ],
     ```
     
-2. Skonfiguruj profil sieci części zasobu zestawu skalowania maszyn wirtualnych. Dzięki temu wiele adresów IP, należy skonfigurować na każdym węźle klastra. Poniższy przykład ustawia pięciu adresów IP w każdym węźle klastra systemu Windows/Linux usługi Service Fabric. Masz pięć wystąpień usługi nasłuchuje na porcie w każdym węźle. Aby pięć adresów IP, być dostępny z usługi Azure Load Balancer, należy zarejestrować pięć adresów IP w puli adresów zaplecza modułu równoważenia obciążenia platformy Azure, jak pokazano poniżej.  Możesz również będą potrzebne, aby dodać zmienne na początku w sekcji zmiennych szablonu.
+2. Skonfiguruj profil sieci części zasobu zestawu skalowania maszyn wirtualnych. Dzięki temu wiele adresów IP, należy skonfigurować na każdym węźle klastra. Poniższy przykład ustawia pięciu adresów IP w każdym węźle klastra systemu Windows/Linux usługi Service Fabric. Masz pięć wystąpień usługi nasłuchuje na porcie w każdym węźle. Aby pięć adresów IP, być dostępny z usługi Azure Load Balancer, należy zarejestrować pięć adresów IP w puli adresów zaplecza modułu równoważenia obciążenia platformy Azure, jak pokazano poniżej.  Należy również dodać zmienne na początku w sekcji zmiennych szablonu.
 
     Tę sekcję należy dodać do zmiennych:
 
@@ -209,10 +209,10 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
  
 3. Tylko Windows klastrów Skonfiguruj regułę sieciowej grupy zabezpieczeń (NSG) platformy Azure, która otwiera port UDP/53 dla sieci wirtualnej, z następującymi wartościami:
 
-   |Ustawienie |Wartość | |
+   |Ustawienie |Value | |
    | --- | --- | --- |
    |Priorytet |2000 | |
-   |Name (Nazwa) |Custom_Dns  | |
+   |Name |Custom_Dns  | |
    |Element źródłowy |VirtualNetwork | |
    |Element docelowy | VirtualNetwork | |
    |Usługa | DNS (UDP/53) | |
@@ -264,7 +264,7 @@ Gdy z nich usługę kontenera powoduje ponowne uruchomienie lub przechodzi do in
    </Resources>
    ```
    
-6. Dla Windows ponowne uruchomienie maszyny Wirtualnej spowoduje, że otwartej sieci do odtworzenia. Ma to rozwiązać problemu bazowego w stos sieciowy. To zachowanie domyślne jest do odtworzenia w sieci. Jeśli to zachowanie musi być wyłączona, następującą konfigurację można następuje uaktualnienie konfiguracji.
+6. Dla Windows ponowne uruchomienie maszyny Wirtualnej spowoduje, że otwartej sieci do odtworzenia. Ma to rozwiązać problemu bazowego w stos sieciowy. Domyślnym zachowaniem jest ponownie utworzyć w sieci. Jeśli to zachowanie musi być wyłączona, następującą konfigurację można następuje uaktualnienie konfiguracji.
 
 ```json
 "fabricSettings": [

@@ -1,5 +1,5 @@
 ---
-title: 'Usługa Azure Active Directory Domain Services: Rozwiązywanie problemów z konfiguracją protokołu Secure LDAP | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Rozwiązywania problemów z Secure konfigurację protokołu LDAP | Dokumentacja firmy Microsoft'
 description: Rozwiązywanie problemów z bezpiecznego protokołu LDAP dla usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
@@ -8,25 +8,25 @@ manager: ''
 editor: ''
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3a31749407f9ec0494e8452b602ed9966c5ab83
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: be07579d8273ab19101aa6c475ae5d23375517ca
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504213"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177189"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services — Konfiguracja Rozwiązywanie problemów z bezpiecznego protokołu LDAP
 
 Ten artykuł zawiera rozwiązania typowych problemów, gdy [Konfigurowanie protokołu secure LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md) dla usług domenowych Azure AD.
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Konfiguracja bezpiecznego protokołu LDAP sieciowej grupy zabezpieczeń
+## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101: Secure LDAP konfiguracją sieciowej grupy zabezpieczeń
 
 **Komunikat alertu:**
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 5c904feacef4f5c15784c5f30c5f8bedf3940329
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425347"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097048"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Porady: logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
 
 Jeśli oferujesz oprogramowanie jako usługa (SaaS) aplikacji dla wielu organizacji, można skonfigurować aplikację, aby akceptować logowania z dzierżawami usługi Azure Active Directory (Azure AD). Ta konfiguracja jest nazywana *wprowadzania Twojej aplikacji wielodostępnych*. Użytkownicy w dowolnej dzierżawy usługi Azure AD będą mogli logować się do aplikacji po wyrażanie zgody na korzystanie z tego konta z aplikacją. 
 
@@ -59,7 +59,7 @@ W przypadku aplikacji pojedynczej dzierżawy żądań logowania są wysyłane do
 
 Za pomocą aplikacji z wieloma dzierżawami aplikacji nie może ustalić na początku dzierżawy, jakie użytkownik jest, więc nie mogą wysyłać żądania do punktu końcowego dzierżawcy. Zamiast tego żądania są wysyłane do punktu końcowego, który multipleksuje dla dzierżaw wszystkie usługi Azure AD: `https://login.microsoftonline.com/common`
 
-Gdy usługa Azure AD odbiera żądanie na / Common punktu końcowego, jego loguje się użytkownik i, w konsekwencji odnajduje dzierżawy, który użytkownik pochodzi z. / Endpoint wspólnego pracuje ze wszystkimi protokołów uwierzytelniania, obsługiwanych przez usługę Azure AD: OpenID Connect, OAuth 2.0, SAML 2.0 i WS-Federation.
+Gdy usługa Azure AD odbiera żądanie na / Common punktu końcowego, jego loguje się użytkownik i, w konsekwencji odnajduje dzierżawy, który użytkownik pochodzi z. / Endpoint wspólnego pracuje ze wszystkimi protokołów uwierzytelniania, obsługiwanych przez usługę Azure AD:  OpenID Connect, OAuth 2.0, SAML 2.0 i WS-Federation.
 
 Odpowiedź logowania do aplikacji, następnie zawiera token reprezentujący użytkownika. Wartość wystawcy w tokenie informuje aplikację dzierżawy, jakie użytkownik pochodzi. Gdy odpowiedzi zwraca znajdujący punktu końcowego, wartość wystawcy w tokenie odnosi się do dzierżawy użytkownika. 
 
@@ -114,15 +114,15 @@ To środowisko zgody dotyczy uprawnień żądany przez aplikację. Usługa Azure
 
 Niektóre uprawnienia mogą wyrażono zgodę przez zwykłego użytkownika, a inne wymagają zgody administratora dzierżawy. 
 
-### <a name="admin-consent"></a>Zgoda administratora
+### <a name="admin-consent"></a>zgoda administratora
 
-Uprawnień dotyczących tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli Twoja aplikacja żąda uprawnienia tylko do aplikacji, a użytkownik próbuje zalogować się do aplikacji, jest wyświetlany komunikat o błędzie, informujący o tym, że użytkownik nie jest w stanie do wyrażenia zgody.
+Uprawnienia dotyczące tylko aplikacji zawsze wymagają zgody administratora dzierżawy. Jeśli Twoja aplikacja żąda uprawnienia tylko do aplikacji, a użytkownik próbuje zalogować się do aplikacji, jest wyświetlany komunikat o błędzie, informujący o tym, że użytkownik nie jest w stanie do wyrażenia zgody.
 
 Niektóre uprawnienia delegowane również wymagają zgody administratora dzierżawy. Na przykład możliwość zapisania z powrotem do usługi Azure AD jako zalogowany użytkownik wymaga zgody administratora dzierżawy. Jak uprawnień dotyczących tylko aplikacji Jeśli zwykły użytkownik próbuje zalogować się do aplikacji, która żąda uprawnienia delegowanego, który wymaga zgody administratora aplikacji otrzymuje informację o błędzie. Czy uprawnienie wymaga zgody administratora jest określany przez dewelopera, opublikowane zasobu, która znajduje się w dokumentacji dla zasobu. W dokumentacji uprawnienia [interfejsu API usługi Azure AD Graph] [ AAD-Graph-Perm-Scopes] i [interfejsu API Microsoft Graph] [ MSFT-Graph-permission-scopes] wskazują, uprawnienia, które wymagają administratora wyrażenie zgody.
 
 Jeśli aplikacja używa uprawnień, które wymagają zgody administratora, musisz mieć gest, takich jak przycisk lub łącze, gdzie administrator może zainicjować akcji. Żądania, Twoja aplikacja przesyła ta akcja jest zwykle OAuth2/OpenID Connect żądanie autoryzacji, która obejmuje również `prompt=admin_consent` parametr ciągu zapytania. Gdy administrator wyraził zgodę i nazwy głównej usługi jest tworzony w dzierżawie klienta, kolejne żądania logowania nie ma potrzeby `prompt=admin_consent` parametru. Ponieważ administrator podjęto decyzję, że żądane uprawnienia są dopuszczalne, żaden użytkownik w dzierżawie monit o zgodę od tego momentu.
 
-Administrator dzierżawy może wyłączyć przez regularne użytkownikom wyrażanie zgody na aplikacje. Jeśli ta funkcja jest wyłączona, zawsze jest wymagana dla aplikacji do użycia w dzierżawie zgoda administratora. Aby przetestować aplikację, za zgodą użytkownika końcowego wyłączone, możesz znaleźć przełącznika konfiguracji w [witryny Azure portal] [ AZURE-portal] w **[ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** sekcji **aplikacje dla przedsiębiorstw**.
+Administrator dzierżawy może wyłączyć możliwość wyrażania zgody na aplikacje przez zwykłych użytkowników. Jeśli ta funkcja jest wyłączona, zgoda administratora jest zawsze wymagana do używania aplikacji w dzierżawie. Aby przetestować aplikację, za zgodą użytkownika końcowego wyłączone, możesz znaleźć przełącznika konfiguracji w [witryny Azure portal] [ AZURE-portal] w **[ustawienia użytkownika](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)** sekcji **aplikacje dla przedsiębiorstw**.
 
 `prompt=admin_consent` Parametru używać przez aplikacje, które zażądać uprawnień, które nie wymagają zgody administratora. Przykładem kiedy będzie to używana jest, jeśli aplikacja wymaga środowiska, w którym administrator dzierżawy "zarejestruje się w" jednym czasie, a żadne inne monit o zgodę od tego momentu.
 

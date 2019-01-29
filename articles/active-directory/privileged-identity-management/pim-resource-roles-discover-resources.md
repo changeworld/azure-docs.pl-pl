@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 01/23/2019
 ms.author: rolyon
-ms.openlocfilehash: e81aab8268266c99c9f08e165a98df31f2106123
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e6548c2635afd8e1ac784a1930c2277548647cfd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912275"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192761"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM
 

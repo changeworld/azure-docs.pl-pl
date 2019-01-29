@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: priyamo
-ms.openlocfilehash: 198bf1e971ee7594668bbd79a1f6fc92acaa6a03
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fb133ec9c19195568eb876526adaff193028cb16
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885255"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197487"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Tworzenie, wyświetlanie i usuwanie przypisanych przez użytkownika tożsamości zarządzanej przy użyciu usługi Azure Resource Manager
 

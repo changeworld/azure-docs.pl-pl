@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3995b544-e751-4e0f-ab8b-c9a3862da6ba
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 9f4adbacf2749e8c8ff2da8f331a007e8dcaaea3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099957"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Samouczek: Integracja usługi Azure Active Directory z Kampusu nieskończona
 
@@ -44,9 +44,9 @@ Do konfigurowania integracji z usługą Azure AD z Kampusu nieskończoną, potrz
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 - Co najmniej musisz być administratorem usługi Azure Active Directory, aby zakończyć konfigurację.
 
@@ -71,7 +71,7 @@ Aby skonfigurować integrację z Kampusu nieskończonej w usłudze Azure AD, nal
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
@@ -117,7 +117,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
         ![image](common/b9_saml.png)
 
-    b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
+    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
 
     ![image](common/b9(1)_saml.png)
 
@@ -132,7 +132,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
 6. Jeśli nie masz **plik metadanych usługodawcy**, wykonaj następujące czynności (należy pamiętać, że domena zależy od modelu hostingu):
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
 
@@ -194,9 +194,9 @@ Celem tej sekcji jest utworzenie _pojedynczego_ użytkownika testowego w witryni
 
     ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_02.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.

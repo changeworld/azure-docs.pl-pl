@@ -6,14 +6,14 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.date: 01/24/2019
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 723a02c529718ea17750fa72fe568aec6e963118
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 19b7cebd1c75e1a2bbfe34e3ab4e657051e8a6d4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901296"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159536"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncConfig
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncConfig.psm1, dostępnej w programie Azure AD Connect.

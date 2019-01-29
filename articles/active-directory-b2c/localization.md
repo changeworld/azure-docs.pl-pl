@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a0abf2fd3502238af0e0f02cb8f9917cfb90b586
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854981"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187559"
 ---
 # <a name="localization"></a>Lokalizacja
 
@@ -111,7 +111,7 @@ ms.locfileid: "54854981"
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Tekst | Yes | Ciąg wyświetlania przyjazny dla użytkownika, który ma być wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
-| Wartość | Yes | Ciąg oświadczenie wartość skojarzoną z wybraniu tej opcji. |
+| Value | Yes | Ciąg oświadczenie wartość skojarzoną z wybraniu tej opcji. |
 
 Poniższy przykład pokazuje użycie **LocalizedCollections** elementu. Zawiera dwa **LocalizedCollection** elementy, jeden dla języka angielskiego i inny dla języka hiszpańskiego. Jednocześnie ustawionych **ograniczeń** kolekcji oświadczenia `Gender` z listy elementów w języku angielskim i hiszpańskim.
 

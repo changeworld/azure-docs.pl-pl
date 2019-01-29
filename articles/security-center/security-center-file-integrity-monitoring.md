@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6c101878c474e605106bb2fbb6ea6568f433e756
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b7e2a075df7d0d7f6bb68163414fab525aad25a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338536"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093453"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować plik Integrity Monitoring (FIM) w usłudze Azure Security Center za pomocą tego przewodnika.
@@ -31,7 +31,7 @@ Centrum zabezpieczeń File Integrity Monitoring weryfikuje integralność plikó
 
 - Tworzenie plików i rejestru i usuwania
 - Modyfikacje plików (zmiany rozmiaru pliku, listy kontroli dostępu i wyznaczania wartości skrótu zawartości)
-- Modyfikacje rejestru (zmiany rozmiaru, listy sterowania dostępu, typu i zawartości)
+- Modyfikacje rejestru (zmiany rozmiaru, listy kontroli dostępu, typu i zawartości)
 
 Usługa Security Center zaleca jednostki do monitorowania, które można łatwo włączać programu FIM. Można również definiować własne zasady FIM lub jednostek do monitorowania. W tym przewodniku przedstawiono, jak.
 
@@ -152,7 +152,7 @@ W obszarze **edytowanie na potrzeby śledzenia zmian** możesz:
 - Usunąć jednostki, odrzucić zmianę lub zapisać zmiany
 
 ## <a name="add-a-new-entity-to-monitor"></a>Dodaj nową jednostkę do monitorowania
-1. Wróć do **referencyjna pliku pulpit nawigacyjny monitorowania** i wybierz **ustawienia** u góry. **Konfiguracja obszaru roboczego** zostanie otwarty.
+1. Wróć do **File integrity monitoring pulpit nawigacyjny** i wybierz **ustawienia** u góry. **Konfiguracja obszaru roboczego** zostanie otwarty.
 2. W obszarze **Konfiguracja obszaru roboczego**, wybierz kartę dla typu jednostki, który chcesz dodać: Windows rejestru, plików Windows lub pliki systemu Linux. W tym przykładzie Wybraliśmy **pliki systemu Linux**.
 
   ![Dodaj nowy element do monitorowania][14]
@@ -191,14 +191,14 @@ Używać symboli wieloznacznych, aby uprościć śledzenia między katalogami. P
 -   Jeśli zmienna środowiskowa zawiera ścieżkę, która jest nieprawidłowa, weryfikacja zakończy się powodzeniem, ale ścieżka zakończy się niepowodzeniem po uruchomieniu spisu.
 -   Podczas ustawiania ścieżki, należy unikać ogólne ścieżek, takich jak c:\*. * co spowoduje zbyt wiele folderów-są przenoszone.
 
-## <a name="disable-fim"></a>Wyłącz usługi FIM
+## <a name="disable-fim"></a>Disable FIM
 Można wyłączyć usługi FIM. FIM używa rozwiązania Azure Change Tracking w celu śledzenia i identyfikowania zmian w Twoim środowisku. Po wyłączeniu usługi FIM, usuniesz rozwiązania Change Tracking z wybranego obszaru roboczego.
 
 1. Aby wyłączyć programu FIM, wróć do **File Integrity Monitoring** pulpitu nawigacyjnego.
 2. Wybierz obszar roboczy.
 3. W obszarze **File Integrity Monitoring**, wybierz opcję **wyłączyć**.
 
-  ![Wyłącz usługi FIM][20]
+  ![Disable FIM][20]
 
 4. Wybierz **Usuń** można wyłączyć.
 

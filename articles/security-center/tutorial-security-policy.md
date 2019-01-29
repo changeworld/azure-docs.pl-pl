@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52af6051b4534ba65b4822205cb5395a59ef9d6a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c706dbd4536b9c75281500ace6f02db00ff2f95d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259968"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095575"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
@@ -36,7 +36,7 @@ Zasady zabezpieczeń definiują pożądaną konfigurację Twoich obciążeń ora
 
 Zasady zabezpieczeń dla dysku zalecenia dotyczące zabezpieczeń, który jest pobierany w usłudze Azure Security Center. Można monitorować zgodność z nimi ułatwiają znalezienie potencjalnych luk i uniknięcie zagrożeń. Aby uzyskać więcej informacji na temat sposobu określenia która opcja jest odpowiednia dla Ciebie, zobacz listę [zasad wbudowanych rozwiązań zabezpieczeń](security-center-policy-definitions.md).
 
-Po włączeniu usługi Security Center, wbudowana w usłudze Security Center zasad zabezpieczeń jest odzwierciedlana w zasadach usługi Azure jako wbudowane inicjatywy kategorii usługi Security Center. Wbudowane intitiative jest automatycznie przypisywana do wszystkich subskrypcji zarejestrowane w usłudze Security Center (warstwy bezpłatna lub standardowa). Wbudowane inicjatywy zawiera tylko zasady inspekcji. 
+Po włączeniu usługi Security Center, wbudowana w usłudze Security Center zasad zabezpieczeń jest odzwierciedlana w zasadach usługi Azure jako wbudowane inicjatywy kategorii usługi Security Center. Wbudowana inicjatywa jest automatycznie przypisywana do wszystkich subskrypcji zarejestrowanych w usłudze Security Center (w warstwach Bezpłatna lub Standardowa). Wbudowana inicjatywa zawiera tylko zasady inspekcji. 
 
 
 ### <a name="management-groups"></a>Grupy zarządzania
@@ -121,7 +121,7 @@ Wbudowane inicjatywy zawiera wszystkie zasady Centrum zabezpieczeń, domyślnie 
 W poniższych przykładach należy zastąpić następujące zmienne:
 
 - **{zakresu}**  wprowadź nazwę grupy zarządzania lub subskrypcji są stosowane zasady.
-- **{poicyAssignmentName}**  wprowadź [nazwa przypisania zasad odpowiednich](#policy-names).
+- **{policyAssignmentName}**  wprowadź [nazwa przypisania zasad odpowiednich](#policy-names).
 - **{name}**  wprowadź swoją nazwę lub nazwę administratora, który zatwierdzone zmiany zasad.
 
 W tym przykładzie pokazano, jak przypisać wbudowanych inicjatywy Centrum zabezpieczeń dla subskrypcji lub grupy zarządzania
@@ -212,7 +212,7 @@ W tym przykładzie pokazano, jak usunąć przypisanie:
 |Konfiguracje zabezpieczeń |Monitorowanie luk w zabezpieczeniach systemu operacyjnego, w usłudze Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Ochrona punktów końcowych |Monitorowanie brakującej ochrony punktów końcowych w usłudze Azure Security Center |endpointProtectionMonitoringEffect |
 |Szyfrowanie dysków |Monitoruj nieszyfrowane dyski maszyn wirtualnych w usłudze Azure Security Center |diskEncryptionMonitoringEffect|
-|Ocena luk w zabezpieczeniach |Monitoruj luki w zabezpieczeniach maszyn wirtualnych w usłudze Azure Security Center |vulnerabilityAssesmentMonitoringEffect|
+|Ocena luk w zabezpieczeniach |Monitoruj luki w zabezpieczeniach maszyn wirtualnych w usłudze Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
 |Zapora aplikacji internetowej |Monitoruj niechronione aplikacje internetowe w usłudze Azure Security Center |webApplicationFirewallMonitoringEffect |
 |Zapora nowej generacji |Monitoruj niechronione punkty końcowe sieci w Centrum zabezpieczeń Azure| |
 

@@ -10,18 +10,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: da974800e39a7b3a305af2a2d10b2174e017245a
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 465ee5acb768e772dd708037f10d7ea13fe17758
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607759"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148761"
 ---
-# <a name="review-your-access"></a>Przejrzeć swój dostęp
+# <a name="review-your-access"></a>Przeglądanie dostępu
 
 Azure Active Directory (Azure AD) upraszcza przedsiębiorstw zarządzanie dostępem do aplikacji i członkami grup w usłudze Azure AD i przeglądy innych Microsoft Online Services, przy użyciu funkcji o nazwie dostęp. Być może otrzymasz wiadomość e-mail od firmy Microsoft, która prosi o przegląd dostępu wszystkich użytkowników dla członków grupy lub użytkownicy z dostępem do aplikacji. 
 

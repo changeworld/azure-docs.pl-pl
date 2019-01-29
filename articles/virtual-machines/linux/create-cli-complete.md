@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 27cef0287156d4cf76914704b849cb646c21dd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467489"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180368"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Utwórz pełną maszyny wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure
 Aby szybko utworzyć maszynę wirtualną (VM) na platformie Azure, można użyć jednego polecenia wiersza polecenia platformy Azure, która używa domyślnych wartości, aby utworzyć wszystkie wymagane zasoby pomocnicze. Zasoby, takie jak sieć wirtualną, publiczny adres IP i reguły sieciowej grupy zabezpieczeń są tworzone automatycznie. Aby uzyskać większą kontrolę środowiska w środowisku produkcyjnym należy użyć, możesz utworzyć te zasoby, które wcześniej i następnie dodać maszyny wirtualne do nich. Ten artykuł przeprowadzi Cię przez tworzenie maszyny Wirtualnej, a każdy z pomocnicze zasoby pojedynczo.
@@ -30,13 +30,13 @@ Upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/c
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myVnet*, i *myVM*.
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
-Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Przed maszynę wirtualną i pomocnicze zasoby sieci wirtualnej należy utworzyć grupę zasobów. Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Przed maszynę wirtualną i pomocnicze zasoby sieci wirtualnej należy utworzyć grupę zasobów. Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Domyślnie dane wyjściowe poleceń interfejsu wiersza polecenia platformy Azure jest w formacie JSON (JavaScript Object Notation). Aby zmienić domyślne dane wyjściowe do listy lub tabeli, na przykład użyć [skonfigurować az--dane wyjściowe](/cli/azure/reference-index#az_configure). Można również dodać `--output` do dowolnego polecenia jeden raz, Zmień format danych wyjściowych. Poniższy przykład przedstawia dane wyjściowe JSON z `az group create` polecenia:
+Domyślnie dane wyjściowe poleceń interfejsu wiersza polecenia platformy Azure jest w formacie JSON (JavaScript Object Notation). Aby zmienić domyślne dane wyjściowe do listy lub tabeli, na przykład użyć [skonfigurować az--dane wyjściowe](/cli/azure/reference-index). Można również dodać `--output` do dowolnego polecenia jeden raz, Zmień format danych wyjściowych. Poniższy przykład przedstawia dane wyjściowe JSON z `az group create` polecenia:
 
 ```json                       
 {
@@ -559,7 +559,7 @@ Aby wyświetlić domyślna witryna serwera NGINX w akcji, otwórz przeglądarkę
 ![Domyślna witryna serwera NGINX na maszynie Wirtualnej](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Eksportuj jako szablon
-Co zrobić, jeśli teraz chcesz utworzyć środowisko dodatkowego programowania z tymi samymi parametrami lub w środowisku produkcyjnym, które odpowiadają go? Usługi Resource Manager korzysta z szablonów JSON, które definiują wszystkie parametry dla danego środowiska. Twórz się całych środowisk, odwołując się do tego szablonu JSON. Możesz [ręczne tworzenie szablonów JSON](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub wyeksportować istniejącego środowiska, aby utworzyć szablon JSON dla Ciebie. Użyj [eksportowanie grupy az](/cli/azure/group#az_group_export) Aby wyeksportować grupy zasobów w następujący sposób:
+Co zrobić, jeśli teraz chcesz utworzyć środowisko dodatkowego programowania z tymi samymi parametrami lub w środowisku produkcyjnym, które odpowiadają go? Usługi Resource Manager korzysta z szablonów JSON, które definiują wszystkie parametry dla danego środowiska. Twórz się całych środowisk, odwołując się do tego szablonu JSON. Możesz [ręczne tworzenie szablonów JSON](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub wyeksportować istniejącego środowiska, aby utworzyć szablon JSON dla Ciebie. Użyj [eksportowanie grupy az](/cli/azure/group) Aby wyeksportować grupy zasobów w następujący sposób:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json

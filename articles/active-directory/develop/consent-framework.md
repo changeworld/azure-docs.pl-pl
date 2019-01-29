@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.date: 11/30/2018
 ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 2f9cefa31b007cae715ff2ea98bccb3112babbef
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: d31c54da82a8580fee9ad3d681c449aff74b14c4
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619796"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097849"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Platformy wyrażania zgody w usłudze Azure Active Directory
 
@@ -37,23 +37,23 @@ Aby uzyskać więcej informacji o korzystaniu z platformy wyrażania zgody z prz
 
 Poniższe kroki pokazują, jak środowisko działa zgody dla deweloperów aplikacji i użytkownika.
 
-1. Załóżmy, że masz klienta aplikacji sieci web, który wymaga, aby żądać określonych uprawnień dostępu do zasobów/interfejsu API. Dowiesz się, jak przeprowadzić tę konfigurację w następnej sekcji, ale zasadniczo witryny Azure portal jest używane do deklarowania żądań dotyczących uprawnień podczas konfiguracji. Podobnie jak inne ustawienia konfiguracji staną się częścią aplikacji usługi Azure AD rejestracji:
+1. Załóżmy, że masz klienta aplikacji sieci web, który wymaga, aby żądać określonych uprawnień dostępu do zasobów/interfejsu API. Dowiesz się, jak przeprowadzić tę konfigurację w następnej sekcji, ale zasadniczo witryny Azure portal jest używane do deklarowania żądań dotyczących uprawnień podczas konfiguracji. Podobnie jak inne ustawienia konfiguracji, staną się one częścią rejestracji aplikacji w usłudze Azure AD:
 
     ![Uprawnienia do innych aplikacji](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
 
-1. Należy wziąć pod uwagę uprawnienia aplikacji zostały zaktualizowane, aplikacja jest uruchomiona i użytkownik ma użyć go po raz pierwszy. Po pierwsze, aplikacja musi uzyskać kod autoryzacji z usługi Azure AD `/authorize` punktu końcowego. Kod autoryzacji mogą następnie służyć do uzyskania nowego dostępu i token odświeżania.
+1. Należy wziąć pod uwagę uprawnienia aplikacji zostały zaktualizowane, aplikacja jest uruchomiona i użytkownik ma użyć go po raz pierwszy. Po pierwsze, aplikacja musi uzyskać kod autoryzacji z usługi Azure AD `/authorize` punktu końcowego. Może wtedy użyć kodu autoryzacji do uzyskania nowego tokenu dostępu i odświeżania.
 
 1. Jeśli użytkownik nie jest już uwierzytelniony, Azure AD `/authorize` punktu końcowego monituje użytkownika do logowania.
 
     [Użytkownik lub administrator, zaloguj się do usługi Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
-1. Po użytkownik zalogował się w usłudze Azure AD określi, jeśli użytkownik powinien być wyświetlony strona zgody użytkownika. To jest na podstawie tego, czy użytkownik (lub administratora w organizacji) już udzielił zgody aplikacji. Jeśli zgody nie ma już przyznane, usługi Azure AD monituje użytkownika o zgodę i wyświetli wymagane uprawnienia niezbędne do działania. Zestaw uprawnień, które są wyświetlane w oknie dialogowym wyrażania zgody są zgodne z typami, które wybrano w **delegowane uprawnienia** w witrynie Azure portal.
+1. Po użytkownik zalogował się w usłudze Azure AD określi, jeśli użytkownik powinien być wyświetlony strona zgody użytkownika. Jest to uzależnione do tego, czy użytkownik (lub administrator w jego organizacji) już wyraził zgodę na aplikację. Jeśli zgody nie ma już przyznane, usługi Azure AD monituje użytkownika o zgodę i wyświetli wymagane uprawnienia niezbędne do działania. Zestaw uprawnień, które są wyświetlane w oknie dialogowym wyrażania zgody są zgodne z typami, które wybrano w **delegowane uprawnienia** w witrynie Azure portal.
 
     ![Środowisko zgody użytkownika](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
 1. Po użytkownik udziela zgody, Kod autoryzacji jest zwracana do aplikacji jest zrealizowany uzyskiwanie tokenu dostępu i token odświeżania. Aby uzyskać więcej informacji na temat tego przepływu, zobacz [typ aplikacji interfejsu API sieci Web](web-api.md).
 
-1. Jako administrator mogą również wyrazić zgodę na delegowane uprawnienia aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgody administratora, okno dialogowe ze zgodą zapobiega wyświetlane dla każdego użytkownika w dzierżawie i może odbywać się [witryny Azure portal](https://portal.azure.com) przez użytkowników z roli administratora. Aby dowiedzieć się, który administrator ról mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+1. Jako administrator możesz także wyrazić zgodę na uprawnienia delegowane aplikacji w imieniu wszystkich użytkowników w dzierżawie. Zgody administratora, okno dialogowe ze zgodą zapobiega wyświetlane dla każdego użytkownika w dzierżawie i może odbywać się [witryny Azure portal](https://portal.azure.com) przez użytkowników z roli administratora. Aby dowiedzieć się, który administrator ról mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
     **Do wyrażenia zgody na aplikację na delegowane uprawnienia**
 
@@ -64,7 +64,7 @@ Poniższe kroki pokazują, jak środowisko działa zgody dla deweloperów aplika
     ![Przyznawanie uprawnień dla zgody administratora jawne](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
 
   > [!IMPORTANT]
-  > Udzielanie jawnej zgody, za pomocą **udzielić uprawnień** przycisk jest obecnie wymagane dla aplikacji jednostronicowej (SPA), które używają ADAL.js. W przeciwnym razie aplikacja ulegnie awarii, gdy żąda tokenu dostępu.
+  > Udzielanie jawnej zgody, za pomocą **udzielić uprawnień** przycisk jest obecnie wymagane dla aplikacji jednostronicowej (SPA), które używają ADAL.js. W przeciwnym przypadku wystąpi błąd aplikacji przy żądaniu tokenu dostępu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

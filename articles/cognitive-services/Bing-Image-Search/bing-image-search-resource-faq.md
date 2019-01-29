@@ -3,19 +3,19 @@ title: Często zadawane pytania (FAQ) — interfejs API wyszukiwania obrazów Bi
 titleSuffix: Azure Cognitive Services
 description: Znajdź odpowiedzi na często zadawane pytania na temat pojęć, kodu i scenariusze związane z interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: cdc8d8cad26ce4807c8f7bf8fe1d33f13d5799c1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.author: aahi
+ms.openlocfilehash: 986e1affeb9e3326644bc252e8f8f85ab5bdd89d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232940"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168680"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Często zadawane pytania (FAQ) dotyczące interfejsu API wyszukiwania obrazów Bing
 
@@ -65,4 +65,4 @@ To pytanie dotyczące brakujących funkcji lub funkcje? Należy wziąć pod uwag
 
 ## <a name="see-also"></a>Zobacz także
 
- [Witrynie Stack Overflow: Usługi Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow: Cognitive Services](http://stackoverflow.com/questions/tagged/bing-api)

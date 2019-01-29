@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Dyrektor wydatki SciQuest | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Azure integracji usługi Active Directory za pomocą Dyrektor wydatki SciQuest | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i dyrektora wydatków SciQuest.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9fab641b-292e-4bef-91d1-8ccc4f3a0c1f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 0ddc8a42f4e0454061fa645b8c5d465e9e8dd9bf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2100e2fcc085efc50a72e0f9d339621800563bb3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445173"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153287"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Samouczek: Integracja usługi Azure Active Directory z SciQuest wydatków Dyrektor
+# <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Samouczek: Azure integracji usługi Active Directory za pomocą SciQuest wydatków Dyrektor
 
 W tym samouczku dowiesz się, jak zintegrować SciQuest Dyrektor wydatków za pomocą usługi Azure Active Directory (Azure AD).
 
@@ -30,7 +30,7 @@ Integrowanie SciQuest Dyrektor wydatków z usługą Azure AD zapewnia następuj�
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do SciQuest Dyrektor wydatki.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do SciQuest Dyrektor wydatki (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -38,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Do konfigurowania integracji z usługą Azure AD z SciQuest wydatków Dyrektor, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Dyrektor wydatki SciQuest logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -60,7 +60,7 @@ Aby skonfigurować integrację dyrektora SciQuest wydatków w usłudze Azure AD,
 
 **Aby dodać SciQuest Dyrektor wydatków z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -68,15 +68,15 @@ Aby skonfigurować integrację dyrektora SciQuest wydatków w usłudze Azure AD,
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **SciQuest wydatków Dyrektor**, wybierz opcję **Dyrektor wydatki SciQuest** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Dyrektor SciQuest poświęcić na liście wyników](./media/sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą SciQuest Dyrektor wydatki w oparciu o nazwie "Britta Simon" użytkownika testowego.
 
@@ -86,13 +86,13 @@ Dyrektor wydatki SciQuest przypisywanie wartości **nazwy użytkownika** w usłu
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą SciQuest wydatków Dyrektor, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego Dyrektor wydatki SciQuest](#create-a-sciquest-spend-director-test-user)**  — aby odpowiednikiem Britta Simon w wydatki Dyrektor SciQuest, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji SciQuest Dyrektor wydania.
 
@@ -100,7 +100,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
 1. W witrynie Azure portal na **Dyrektor wydatki SciQuest** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -110,14 +110,14 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![SciQuest wydatki Dyrektor ds. domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.sciquest.com`
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej SciQuest wydatków Dyrektor ds. klienta](https://www.jaggaer.com/contact-us/) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej SciQuest wydatków Dyrektor ds. klienta](https://www.jaggaer.com/contact-us/) do uzyskania tych wartości. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -125,12 +125,12 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
 1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/sciquest-spend-director-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/sciquest-spend-director-tutorial/tutorial_general_400.png)
 
 1. Do konfigurowania logowania jednokrotnego na **Dyrektor wydatki SciQuest** stronie, musisz wysłać pobrany **XML metadanych** do [Dyrektor wydatki SciQuest zespołem pomocy technicznej](https://www.jaggaer.com/contact-us/).
 
 > [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD

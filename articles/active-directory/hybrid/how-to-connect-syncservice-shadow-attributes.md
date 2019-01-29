@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 12067b4413924717228547fccdc3ef07d07beaf8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7be6570d61bc3697bec143478404d32123b4f8d2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470379"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184227"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Atrybuty w tle usługi Azure AD Connect sync
 Większość atrybutów są reprezentowane taki sam sposób w usłudze Azure AD, ponieważ znajdują się w usłudze Active Directory w środowisku lokalnym. Jednak niektóre atrybuty mają pewne specjalnej obsługi, a wartość atrybutu w usłudze Azure AD może być inny niż Azure AD Connect synchronizuje.
@@ -37,7 +37,7 @@ Mają one wielu sufiksów nazw UPN w usłudze Active Directory ich w środowisku
 ### <a name="userprincipalname"></a>userPrincipalName
 Użytkownik ma następujące wartości atrybutów w domenie zweryfikować:
 
-| Atrybut | Wartość |
+| Atrybut | Value |
 | --- | --- |
 | userPrincipalName w środowisku lokalnym | lee.sperry@fabrikam.com |
 | Usługa Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
@@ -52,7 +52,7 @@ Ten sam proces, w tym tylko zweryfikowanych domen występuje także proxyAddress
 
 W przypadku skrzynek pocztowych użytkownika lokalnie lub w usłudze Exchange Online są wyświetlane tylko wartości dla zweryfikowanych domen. Jego może wyglądać następująco:
 
-| Atrybut | Wartość |
+| Atrybut | Value |
 | --- | --- |
 | w środowisku lokalnym proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | ProxyAddresses usługi Exchange Online | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |

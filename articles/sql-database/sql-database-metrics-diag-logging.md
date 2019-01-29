@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 49c411487a29a7faa5a6cec5087a85d472309a4b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e44ac8dca3b27a21e1a7564bbee31c156f80e929
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044573"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102193"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -68,7 +68,7 @@ Można skonfiguruj baz danych SQL Azure i bazy danych w wystąpieniu zarządzany
 | [Wszystkie metryki](sql-database-metrics-diag-logging.md#all-metrics): Zawiera procent jednostek DTU/użycia procesora CPU, limit jednostek DTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP. | Yes | Nie |
 | [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Zawiera informacje dotyczące zapytań środowiska uruchomieniowego statystyki, takie jak użycie procesora CPU i Statystyki czasu trwania zapytań. | Yes | Yes |
 | [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany), takie jak procesor CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
-| [Błędy](sql-database-metrics-diag-logging.md#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Yes | Nie |
+| [Błędy](sql-database-metrics-diag-logging.md#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Yes | Yes |
 | [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Zawiera informacje o ile czasu, w bazie danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
 | [Limity czasu](sql-database-metrics-diag-logging.md#time-outs-dataset): Zawiera informacje dotyczące limitów czasu w bazie danych. | Yes | Nie |
 | [Bloki](sql-database-metrics-diag-logging.md#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Yes | Nie |
@@ -414,8 +414,8 @@ Zapoznaj się z poniższą tabelą, aby uzyskać szczegółowe informacje o dzie
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure|
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: ResourceUsageStats |
 |Zasób|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: MANAGEDINSTANCES |
@@ -443,8 +443,8 @@ Zapoznaj się z następującymi tabelami, szczegółowe informacje na temat dzie
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: QueryStoreRuntimeStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreRuntimeStatisticsEvent |
 |Zasób|Nazwa zasobu |
@@ -494,8 +494,8 @@ Dowiedz się więcej o [danych statystyki czasu wykonywania zapytania Store](htt
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: QueryStoreWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: QueryStoreWaitStatisticsEvent |
 |Zasób|Nazwa zasobu |
@@ -532,7 +532,7 @@ Dowiedz się więcej o [Query Store oczekiwania dane statystyk](https://docs.mic
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
+|Type|Zawsze: AzureDiagnostics |
 |ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQ |
 |Kategoria|Nazwa kategorii. Zawsze: Błędy |
 |OperationName|Nazwa operacji. Zawsze: ErrorEvent |
@@ -561,8 +561,8 @@ Dowiedz się więcej o [komunikaty o błędach programu SQL Server](https://msdn
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: DatabaseWaitStatistics |
 |OperationName|Nazwa operacji. Zawsze: DatabaseWaitStatisticsEvent |
 |Zasób|Nazwa zasobu |
@@ -590,8 +590,8 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: Limity czasu |
 |OperationName|Nazwa operacji. Zawsze: TimeoutEvent |
 |Zasób|Nazwa zasobu |
@@ -613,8 +613,8 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: bloki |
 |OperationName|Nazwa operacji. Zawsze: BlockEvent |
 |Zasób|Nazwa zasobu |
@@ -637,8 +637,8 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC] |Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: Zakleszczenia |
 |OperationName|Nazwa operacji. Zawsze: DeadlockEvent |
 |Zasób|Nazwa zasobu |
@@ -658,8 +658,8 @@ Dowiedz się więcej o [bazy danych statystyki oczekiwania](https://docs.microso
 |TenantId|Identyfikator dzierżawy |
 |SourceSystem|Zawsze: Azure |
 |TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania |
-|Typ|Zawsze: AzureDiagnostics |
-|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: FIRMY MICROSOFT. SQL |
+|Type|Zawsze: AzureDiagnostics |
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT.SQL |
 |Kategoria|Nazwa kategorii. Zawsze: AutomaticTuning |
 |Zasób|Nazwa zasobu |
 |ResourceType|Nazwa typu zasobu. Zawsze: SERWERY/BAZ DANYCH |

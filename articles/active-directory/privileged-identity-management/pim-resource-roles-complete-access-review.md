@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f998c509e9bea65980367690a5e9d03f579b8e98
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 1e2bdeeb8f2b59d69e761303176c36b26f47d4c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189131"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165493"
 ---
 # <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>Kończenie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM
 Administratorzy ról uprzywilejowanych, można przejrzeć uprzywilejowanego dostępu po [przeglądu dostępu została uruchomiona](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) dla zasobów platformy Azure automatycznie wysyła wiadomość e-mail, który monituje użytkowników, aby zapoznać się z ich dostęp. Jeśli użytkownik nie otrzymają wiadomość e-mail, możesz wysłać im instrukcje [jak przeprowadzić przegląd dostępu](pim-resource-roles-perform-access-review.md).
@@ -63,4 +63,4 @@ Wyświetlanie i dodawanie recenzentów do Twojej istniejący Przegląd dostępu.
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Rozpoczynanie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-start-access-review.md)
-- [Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM](pim-resource-roles-perform-access-review.md)
+- [Wykonywanie przeglądu dostępu ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-perform-access-review.md)

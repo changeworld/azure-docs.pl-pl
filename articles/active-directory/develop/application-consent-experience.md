@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: 3193e9ac6ac5e90584bbf548142b7573d61c310a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f5ec31cf0f88b9bfdff2e4fa877d56a2689054ae
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413077"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097949"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis usługi Azure AD aplikacji zgody środowisk
 
@@ -43,10 +43,10 @@ Poniższy diagram i tabeli, podaj informacje na temat bloków konstrukcyjnych mo
 
 ![Bloki konstrukcyjne monit o wyrażenie zgody](./media/application-consent-experience/consent_prompt.png)
 
-| # | Składnik | Cel |
+| # | Składnik | Przeznaczenie |
 | ----- | ----- | ----- |
 | 1 | Identyfikator użytkownika | Ten identyfikator reprezentuje użytkownika, który aplikacja kliencka żąda dostępu do chronionych zasobów w imieniu osób. |
-| 2 | Stanowisko | Tytuł zmienia się zależnie od tego, czy użytkownicy są poddawane przepływu wyrażania zgody użytkownika lub administratora. W usłudze flow zgody użytkownika tytuł będzie "Żądane uprawnienia" podczas przepływu wyrażania zgody administratora tytuł będzie miał dodatkowy wiersz "Akceptuj dla Twojej organizacji". |
+| 2 | Tytuł | Tytuł zmienia się zależnie od tego, czy użytkownicy są poddawane przepływu wyrażania zgody użytkownika lub administratora. W usłudze flow zgody użytkownika tytuł będzie "Żądane uprawnienia" podczas przepływu wyrażania zgody administratora tytuł będzie miał dodatkowy wiersz "Akceptuj dla Twojej organizacji". |
 | 3 | Logo aplikacji | Ten obraz Ci użytkownicy wizualną od tego, czy ta aplikacja jest aplikacją ma dostęp. Ten obraz jest dostarczany przez deweloperów aplikacji i własność ten obraz nie jest zweryfikowany. |
 | 4 | Nazwa aplikacji | Tę wartość należy poinformować użytkowników, która aplikacja żąda dostępu do swoich danych. Należy pamiętać, ta nazwa jest świadczona przez deweloperów i własności to nazwa aplikacji nie jest zweryfikowany. |
 | 5 | Domena wydawcy | Ta wartość powinna udostępniają użytkownikom domeny, które mogą być w stanie oceniająca wiarygodności. Ta domena jest świadczona przez deweloperów i zweryfikowaniu własności tej domeny wydawcy. |

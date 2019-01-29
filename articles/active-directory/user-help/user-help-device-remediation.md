@@ -6,18 +6,18 @@ author: eross-msft
 manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: eb924a612188d905eb6c7127067fed2fd4b0f218
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 97d35eb3442b63736b40d51dda57b872813293ad
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825531"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164065"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Potencjalne przyczyny komunikat o błędzie "Nie można dostać się tam z tego miejsca"
 Podczas uzyskiwania dostępu do wewnętrznej sieci web aplikacji lub usług w organizacji, może uzyskać komunikat o błędzie informujący, że, **nie możesz tam przejść stąd**. Ten komunikat oznacza, że Twoja organizacja opracowała zasady, co uniemożliwia urządzeniu dostęp do zasobów organizacji. Gdy użytkownik może pozostać konieczności kontaktowania się z pomocą techniczną, aby rozwiązać ten problem, Oto kilka rzeczy, które możesz najpierw wypróbować.

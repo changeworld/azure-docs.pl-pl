@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f3b9815b8e2836b3ee87f969efdc52aca5f5db6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5076c662390c9a28682930e8c5f06cfc79f7134b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077251"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169695"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Znajdowanie obrazów maszyny Wirtualnej systemu Linux w witrynie Azure Marketplace przy użyciu wiersza polecenia platformy Azure
 
@@ -286,7 +286,7 @@ Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Mana
 
 ### <a name="view-plan-properties"></a>Wyświetl właściwości planu
 
-Aby wyświetlić informacje o planu zakupu z obrazu, uruchom [az vm image show](/cli/azure/image#az_image_show) polecenia. Jeśli `plan` właściwość w danych wyjściowych jest `null`, obraz, który ma warunki muszą zaakceptować przed przystąpieniem do wdrożenia programowego.
+Aby wyświetlić informacje o planu zakupu z obrazu, uruchom [az vm image show](/cli/azure/image) polecenia. Jeśli `plan` właściwość w danych wyjściowych jest `null`, obraz, który ma warunki muszą zaakceptować przed przystąpieniem do wdrożenia programowego.
 
 Na przykład obrazów Canonical Ubuntu LTS 18.04 serwera nie ma dodatkowe warunki, ponieważ `plan` informacje są `null`:
 

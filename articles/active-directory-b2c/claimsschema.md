@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a49553941b83e323f23f20b794a464f47ef31981
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 635700529007cc90c7e9b79c224f55f34b326f0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849094"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167074"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -71,7 +71,7 @@ PredicateValidationReference| 0:1 | Odwołanie do **PredicateValidationsInput** 
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Yes | Nazwa Nieprawidłowa protokołu obsługiwanego przez usługę Azure AD B2C. Możliwe wartości:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
+| Name | Yes | Nazwa Nieprawidłowa protokołu obsługiwanego przez usługę Azure AD B2C. Możliwe wartości:  OAuth1, OAuth2, SAML2, OpenIdConnect, WsFed lub WsTrust. |
 | PartnerClaimType | Yes | Nazwa typu oświadczenia, która ma być używany. |
 
 W poniższym przykładzie, gdy struktura środowiska tożsamości korzysta z dostawcy tożsamości SAML2 lub aplikacji jednostki uzależnionej **nazwisko** oświadczeń jest mapowany na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`, za pomocą OpenIdConnect i protokołu OAuth2 jest oświadczenie mapowany do `family_name`.
@@ -106,7 +106,7 @@ W wyniku token JWT wystawione przez usługę Azure AD B2C, emituje `family_name`
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Typ | Yes | Typ oświadczenia maski. Możliwe wartości: `Simple` lub `Regex`. `Simple` Wartość wskazuje, że maska prosty tekst jest stosowane wiodących części oświadczenia ciągu. `Regex` Wartość wskazuje, że wyrażenie regularne jest stosowany do oświadczenia ciągu jako całości.  Jeśli `Regex` jest określona, opcjonalny atrybut musi także być zdefiniowany za pomocą wyrażeń regularnych do użycia. |
+| Type | Yes | Typ oświadczenia maski. Możliwe wartości: `Simple` lub `Regex`. `Simple` Wartość wskazuje, że maska prosty tekst jest stosowane wiodących części oświadczenia ciągu. `Regex` Wartość wskazuje, że wyrażenie regularne jest stosowany do oświadczenia ciągu jako całości.  Jeśli `Regex` jest określona, opcjonalny atrybut musi także być zdefiniowany za pomocą wyrażeń regularnych do użycia. |
 | Regex | Nie | Jeśli **typu** ustawiono `Regex`, określ wyrażenie regularne do użycia.
 
 Poniższy przykład umożliwia skonfigurowanie **PhoneNumber** oświadczenia `Simple` maski:
@@ -162,7 +162,7 @@ Struktura środowiska tożsamości powoduje wyświetlenie tylko pierwszą liter�
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Tekst | Yes | Ciąg wyświetlany, który jest wyświetlany w interfejsie użytkownika dla tej opcji. |
-|Wartość | Yes | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
+|Value | Yes | Wartość oświadczenia, który jest skojarzony z wybraniu tej opcji. |
 | SelectByDefault | Nie | Wskazuje, czy należy wybrać tę opcję, domyślnie w interfejsie użytkownika. Możliwe wartości: Wartość TRUE lub False. |
 
 Poniższy przykład umożliwia skonfigurowanie **Miasto** lista rozwijana lista oświadczeń z wartością domyślną wartość `New York`:

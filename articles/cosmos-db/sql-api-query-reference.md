@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9ec8ecf7b875b32d0ea5715e407b444fa1b25c50
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: b099848f2d0392a25a0906a96dba53885962c79b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354471"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102349"
 ---
 # <a name="azure-cosmos-db-sql-language-reference"></a>Dokumentacja języka w usłudze Azure Cosmos DB SQL 
 
@@ -2169,7 +2169,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 -   `num_expr`  
   
-     Jest dowolne prawidłowe wyrażenie liczbowe.  
+     Jest dowolne prawidłowe wyrażenie liczbowe. W przypadku ujemny lub nieskończona num_expr wynik jest niezdefiniowany.
+
+  > [!NOTE]
+  > Maksymalna długość wyniku jest 10 000 znaków, czyli (length(str_expr) * num_expr) < = 10 000.
   
  **Typy zwracane**  
   

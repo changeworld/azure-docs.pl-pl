@@ -3,19 +3,19 @@ title: Korzystanie ze znaczników dekoracji, aby wyróżnić tekst — Bing Cust
 titlesuffix: Azure Cognitive Services
 description: Pokazuje, jak włączyć dekoracje tekstu w odpowiedzi wyszukiwania.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: 848255418e7cc0f80d10006aa4b13e89121c8834
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: a535a31678dcdb611acb1606e6091a1a40a6d42e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466260"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184074"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Wyróżnianie tekstu przy użyciu znaczników dekorację
 
@@ -33,28 +33,28 @@ Jeśli `textDecorations` jest **true**, Bing może obejmować następujące znac
 
 |Unicode|HTML|Opis
 |-|-|-
-|U + E000|\<b >|Oznacza początek wyrażenia kwerendy (wyróżnianie trafień)
-|U + E001|\</b >|Oznacza koniec wyszukiwanego terminu
-|U + E002|\<Czy mogę >|Oznacza początek kursywą zawartości 
-|U + E003|\</i >|Oznacza koniec zawartości kursywą
-|U + E004|\<br / >|Znaki końca wiersza
-|U + E005||Oznacza początek numeru telefonu
-|U + E006||Oznacza koniec numeru telefonu
-|U + E007||Oznacza początek adresu
-|U + E008||Oznacza koniec adresu
-|U + E009|\&nbsp;|Oznacza spacja nierozdzielająca
-|U + E00C|\<strong >|Oznacza początek bold zawartości
-|U + E00D|\</ strong >|Oznacza koniec zawartości pogrubienia
-|U + E00E||Oznacza początek zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
-|U + E00F||Oznacza koniec zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
-|U + E010||Oznacza początek zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
-|U + E011||Oznacza koniec zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
-|U + E012|\<del >|Oznacza początek zawartości, która powinna być przekreślone
-|U + E013|\</ del >|Oznacza koniec zawartości, która powinna być przekreślone
-|U + E016|\<Sub >|Oznacza początek zawartości indeksu dolnego
-|U + E017|\</ Sub->|Oznacza koniec zawartości indeksu dolnego
-|U + E018|\<sup >|Oznacza początek superscript zawartości
-|U + E019|\</ sup >|Oznacza koniec superscript zawartości
+|U+E000|\<b>|Oznacza początek wyrażenia kwerendy (wyróżnianie trafień)
+|U+E001|\</b>|Oznacza koniec wyszukiwanego terminu
+|U+E002|\<i>|Oznacza początek kursywą zawartości 
+|U+E003|\</i>|Oznacza koniec zawartości kursywą
+|U+E004|\<br/>|Znaki końca wiersza
+|U+E005||Oznacza początek numeru telefonu
+|U+E006||Oznacza koniec numeru telefonu
+|U+E007||Oznacza początek adresu
+|U+E008||Oznacza koniec adresu
+|U+E009|\&nbsp;|Oznacza spacja nierozdzielająca
+|U+E00C|\<strong>|Oznacza początek bold zawartości
+|U+E00D|\</ strong >|Oznacza koniec zawartości pogrubienia
+|U+E00E||Oznacza początek zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
+|U+E00F||Oznacza koniec zawartości, w których tło powinny być cieńszego niż jego otaczającego tła
+|U+E010||Oznacza początek zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
+|U+E011||Oznacza koniec zawartości, w których tło powinny być ciemniejsze od jego otaczającego tła
+|U+E012|\<del>|Oznacza początek zawartości, która powinna być przekreślone
+|U+E013|\</del>|Oznacza koniec zawartości, która powinna być przekreślone
+|U+E016|\<sub>|Oznacza początek zawartości indeksu dolnego
+|U+E017|\</ Sub->|Oznacza koniec zawartości indeksu dolnego
+|U+E018|\<sup>|Oznacza początek superscript zawartości
+|U+E019|\</ sup >|Oznacza koniec superscript zawartości
 
 W poniższym przykładzie przedstawiono `Computation` odpowiedź, która zawiera indeksu dolnego znaczniki log(2) wyszukiwanego terminu. `expression` Pole zawiera znaczników tylko wtedy, gdy "jest textdecoration — **true**.
 

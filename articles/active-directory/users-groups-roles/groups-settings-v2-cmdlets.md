@@ -9,18 +9,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: d6fb5a97ef573a35f335875beddc7752f580bec1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cb496ad1ad679fd3a4e6f55f15f658f084e308a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296648"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176339"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Usługi Active Directory w wersji 2 poleceń cmdlet platformy Azure do zarządzania grupami
 > [!div class="op_single_selector"]
@@ -218,15 +218,15 @@ Aby wyłączyć tworzenie grupy dla użytkowników bez uprawnień administratora
 
 1. Sprawdź, czy użytkownicy niebędący administratorami mogą tworzyć grupy:
    
-  ````
+  ```
   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ````
+  ```
   
 2. Jeśli zostanie zwrócona `UsersPermissionToCreateGroupsEnabled : True`, a następnie użytkownicy niebędący administratorami mogą tworzyć grupy. Aby wyłączyć tę funkcję:
   
-  ```` 
+  ``` 
   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ````
+  ```
   
 ## <a name="manage-owners-of-groups"></a>Zarządzenie właścicielami grup
 Aby dodać właścicieli do grupy, użyj polecenia cmdlet Add-AzureADGroupOwner:
@@ -250,18 +250,18 @@ Jeśli chcesz usunąć właściciela z grupy, użyj polecenia cmdlet Remove-Azur
     PS C:\Windows\system32> remove-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -OwnerId e831b3fd-77c9-49c7-9fca-de43e109ef67
 
 ## <a name="reserved-aliases"></a>Aliasy zarezerwowane 
-Po utworzeniu grupy pewność, że punkty końcowe umożliwiają użytkownikom końcowym określić mailNickname lub alias ma być używany jako część adresu e-mail grupy. Grupy z następujących aliasów e-mail o wysokim poziomie uprawnień można tworzyć tylko przez administratora globalnego usługi Azure AD. 
-  
+Po utworzeniu grupy pewność, że punkty końcowe umożliwiają użytkownikom końcowym określić mailNickname lub alias ma być używany jako część adresu e-mail grupy. Grupy z następujących aliasów e-mail o wysokim poziomie uprawnień można tworzyć tylko przez administratora globalnego usługi Azure AD. 
+  
 * nadużyć 
-* Administrator 
+* admin 
 * administrator 
 * hostmaster 
 * majordomo 
 * Postmaster 
-* Główny 
+* root 
 * Zabezpieczanie 
 * security 
-* Administrator protokołu SSL 
+* ssl-admin 
 * webmastera 
 
 ## <a name="next-steps"></a>Kolejne kroki

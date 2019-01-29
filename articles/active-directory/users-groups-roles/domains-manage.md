@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 85c990d6bfd90c93dea764383453d7f3cc53efde
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854919"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152335"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w usłudze Azure Active Directory
 
@@ -86,14 +86,14 @@ Zwracany jest błąd, gdy:
 
 ### <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**P: Dlaczego jest usunięcie domeny kończy się niepowodzeniem z powodu błędu informujący o tym, mają grupy programu Exchange zarządzanych na tę nazwę domeny?** <br>
-**Odp.:** obecnie pewnych grup, takich jak grupy zabezpieczeń z włączoną obsługą poczty i rozproszonych listy aprowizowanych przez program Exchange i trzeba ręcznie wyczyszczone w [Centrum administracyjnego programu Exchange (EAC)](https://outlook.office365.com/ecp/). Może być lingering ProxyAddresses, które zależą od niestandardowej nazwy domeny, a musi być ręcznie aktualizowane na inną nazwę domeny. 
+**Pyt.: Dlaczego jest usunięcie domeny kończy się niepowodzeniem z powodu błędu informujący o tym, mają grupy programu Exchange zarządzanych na tę nazwę domeny?** <br>
+**ODP.:** Obecnie pewnych grup, takich jak grupy zabezpieczeń z włączoną obsługą poczty i rozproszonych listy aprowizowanych przez program Exchange i trzeba ręcznie wyczyszczone w [Centrum administracyjnego programu Exchange (EAC)](https://outlook.office365.com/ecp/). Może być lingering ProxyAddresses, które zależą od niestandardowej nazwy domeny, a musi być ręcznie aktualizowane na inną nazwę domeny. 
 
-**P: jestem zalogować się jako admin@contoso.com , ale nie mogę usunąć nazwy domeny "contoso.com"?**<br>
-**Odp.:** nie może odwoływać się nazwy domeny niestandardowej, który próbujesz usunąć w nazwie konta. Upewnij się, że konto administratora globalnego przy użyciu początkowej domyślnej nazwy domeny (. onmicrosoft.com) takich jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego administratora globalnego konta, takie jak admin@contoso.onmicrosoft.com lub inną nazwę domeny niestandardowej, takich jak "fabrikam.com" gdy konto jest admin@fabrikam.com.
+**Pyt.: Jestem zalogować się jako admin@contoso.com , ale nie mogę usunąć nazwy domeny "contoso.com"?**<br>
+**ODP.:** Nie można odwoływać się nazwy domeny niestandardowej, którą chcesz usunąć nazwę konta użytkownika. Upewnij się, że konto administratora globalnego przy użyciu początkowej domyślnej nazwy domeny (. onmicrosoft.com) takich jak admin@contoso.onmicrosoft.com. Zaloguj się przy użyciu innego administratora globalnego konta, takie jak admin@contoso.onmicrosoft.com lub inną nazwę domeny niestandardowej, takich jak "fabrikam.com" gdy konto jest admin@fabrikam.com.
 
-**P: czy mogę kliknięto przycisk domeny Delete i wyświetlić `In Progress` stanu operacji usuwania. Jak długo trwa? Co się stanie, jeśli zakończy się niepowodzeniem?**<br>
-**Odp.:** operacji usuwania domeny jest zadanie w tle asynchroniczną, która zmienia nazwę wszystkich odwołań do nazwy domeny. Powinno zająć minutę lub dwie. Jeśli usunięcie domeny zakończy się niepowodzeniem, upewnij się, że nie masz:
+**Pyt.: Po kliknięciu przycisku domeny Usuń i zobacz `In Progress` stanu operacji usuwania. Jak długo trwa? Co się stanie, jeśli zakończy się niepowodzeniem?**<br>
+**ODP.:** Operacja usuwania domeny jest zadanie w tle asynchroniczną, która zmienia nazwę wszystkich odwołań do nazwy domeny. Powinno zająć minutę lub dwie. Jeśli usunięcie domeny zakończy się niepowodzeniem, upewnij się, że nie masz:
 
 * Aplikacje skonfigurowane na nazwy domeny w usłudze appIdentifierURI
 * Grupy obsługujące pocztę odwołuje się do nazwy domeny niestandardowej

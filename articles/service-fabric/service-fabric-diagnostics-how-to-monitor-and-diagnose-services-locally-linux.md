@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 9f0c4789e73659e5965440989c23a8cf673f7cd2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309165"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185469"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim
 
@@ -51,7 +51,7 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Folder wskazywany przez `app.properties` plik musi istnieć. Po `app.properties` tworzony jest plik, musisz także zmodyfikować skrypt punktu wejścia `entrypoint.sh` w `<applicationfolder>/<servicePkg>/Code/` folder, aby ustawić właściwości `java.util.logging.config.file` do `app.propertes` pliku. Wpis powinien wyglądać w następujący fragment kodu:
+Folder wskazywany przez `app.properties` plik musi istnieć. Po `app.properties` tworzony jest plik, musisz także zmodyfikować skrypt punktu wejścia `entrypoint.sh` w `<applicationfolder>/<servicePkg>/Code/` folder, aby ustawić właściwości `java.util.logging.config.file` do `app.properties` pliku. Wpis powinien wyglądać w następujący fragment kodu:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
@@ -74,7 +74,7 @@ Wiele struktur są dostępne w celu śledzenia aplikacji CoreCLR w systemie Linu
 
 Pierwszym krokiem jest zawierać System.Diagnostics.Tracing dzienników można zapisywać do pamięci, strumieni wyjściowych lub pliki konsoli.  Do rejestrowania przy użyciu źródła zdarzeń, należy dodać do Twojego pliku project.json następującego projektu:
 
-```
+```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 0f4bb3f32b264bd894341a8776d48eb9f8b061a2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258735"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168417"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Pakowanie i wdrażanie istniejącego pliku wykonywalnego do usługi Service Fabric
 Podczas pakowania istniejącego pliku wykonywalnego jako [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md), możesz wybrać użycie szablonu projektu programu Visual Studio lub [ręcznie utworzyć pakiet aplikacji](#manually). W programie Visual Studio struktury pakietu aplikacji i plików manifestu są tworzone przez nowy szablon projektu.
@@ -143,7 +143,7 @@ CodePackage element określa lokalizację (i wersji) z kodem usługi.
 
 `Name` Element jest używany do określenia nazwy katalogu w pakiecie aplikacji, która zawiera kod usługi. `CodePackage` ma również `version` atrybutu. Może służyć do określenia wersji kodu, a także potencjalnie może służyć do uaktualnienia kodu usługi za pomocą infrastruktury zarządzania cyklem życia aplikacji w usłudze Service Fabric.
 
-#### <a name="optional-update-setupentrypoint"></a>Opcjonalnie: Aktualizacja SetupEntrypoint
+#### <a name="optional-update-setupentrypoint"></a>Opcjonalnie: Aktualizuj SetupEntrypoint
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -302,4 +302,4 @@ W tym artykule mają pokazaliśmy, jak pakiet wykonywalnej gościa i wdrożyć j
 * [Przykład pakowanie i wdrażanie wykonywalnej gościa](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), łącznie z łączem do wstępną narzędzia pakowania
 * [Przykład dwóch gościa pliki wykonywalne (C# i nodejs) podczas komunikowania się za pośrednictwem usługi nazewnictwa przy użyciu usługi REST](https://github.com/Azure-Samples/service-fabric-containers)
 * [Wdrażanie wielu aplikacji wykonywalnych gości](service-fabric-deploy-multiple-apps.md)
-* [Tworzenie pierwszej aplikacji usługi Service Fabric przy użyciu programu Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
+* [Tworzenie pierwszej aplikacji usługi Service Fabric przy użyciu programu Visual Studio](service-fabric-tutorial-create-dotnet-app.md)

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: a7f939d9-532d-4b6d-b6d3-95520207965d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8f32d8f05d5ba5a7a813157adbf07ff7590153bb
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0afcb022cf6a62479253efcf07843d06b17117cd
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425382"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092871"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Wywołania Usługa do usługi przy użyciu poświadczeń klienta (wspólne hasło lub certyfikat)
 
@@ -53,7 +53,7 @@ https://login.microsoftonline.com/<tenant id>/oauth2/token
 ## <a name="service-to-service-access-token-request"></a>Żądanie tokenu dostępu do usługi
 Istnieją dwa przypadki, w zależności od tego, czy aplikacja kliencka zdecyduje się na chronione przez wspólne hasło lub certyfikat.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: żądanie tokenu dostępu za pomocą wspólny klucz tajny
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: Żądanie tokenu dostępu za pomocą wspólny klucz tajny
 Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawiera następujące informacje:
 
 | Parametr |  | Opis |
@@ -74,7 +74,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&client_secret=qkDwDJlDfig2IpeuUZYKH1Wb8q1V0ju6sILxQQqhJ+s=&resource=https%3A%2F%2Fservice.contoso.com%2F
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: żądanie tokenu dostępu przy użyciu certyfikatu
+### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: Żądanie tokenu dostępu przy użyciu certyfikatu
 Żądanie tokenu dostępu do usługi, za pomocą certyfikatu zawiera następujące parametry:
 
 | Parametr |  | Opis |
@@ -105,7 +105,7 @@ Odpowiedź sukcesu zawiera odpowiedź JSON OAuth 2.0, z następującymi parametr
 | Parametr | Opis |
 | --- | --- |
 | access_token |Token żądanego dostępu. Wywoływania usługi sieci web można użyć tego tokenu do uwierzytelnienia w usłudze sieci web odbierania. |
-| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | expires_in |Jak długo token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
 | not_before |Czas, z którego token dostępu nadaje się do wykorzystania. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu ważności tokenu.|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: fb3e61b2b43194cb550a7c87c6841e91b4025560
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002760"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55167278"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -32,7 +32,7 @@ Istnieją trzy różne zasady uaktualniania:
 
 Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dostosować, uporządkowane według sekcji.
 
-## <a name="applicationgatewayhttp"></a>Brama ApplicationGateway/Http
+## <a name="applicationgatewayhttp"></a>ApplicationGateway/Http
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |ApplicationCertificateValidationPolicy|ciąg, domyślnie jest "None"|Statyczny| Nie sprawdza certyfikat serwera; Powodzenie żądanie. Można znaleźć konfiguracji ServiceCertificateThumbprints rozdzielaną przecinkami listę odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Można znaleźć konfiguracji ServiceCommonNameAndIssuer dla podmiotu nazwy i Wystawca odcisk palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Aby dowiedzieć się więcej, zobacz [odwrotnego serwera proxy bezpiecznego połączenia](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
@@ -49,9 +49,9 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |IgnoreCrlOfflineError|wartość logiczna, domyślny ma wartość TRUE|Dynamiczny|Czy chcesz zignorować listy CRL błąd w trybie offline dla aplikacji/usługi certyfikatu weryfikacji. |
 |IsEnabled |Wartość logiczna, wartość domyślna to false |Statyczny| Włącza/wyłącza HttpApplicationGateway. HttpApplicationGateway jest domyślnie wyłączona, a ta konfiguracja musi być ustawiona, aby go włączyć. |
 |NumberOfParallelOperations | Uint, wartość domyślna to 5000 |Statyczny|Liczba odczytów w stosunku do wysłania do kolejki serwera http. Kontroluje to liczbę żądań, które mogą zostać wykonane przez HttpGateway. |
-|RemoveServiceResponseHeaders|ciąg, domyślną jest "Data; Serwer"|Statyczny|Średnikami / rozdzielana przecinkami lista nagłówków odpowiedzi, które zostaną usunięte z odpowiedzi usługi; przed przekazaniem go do klienta. Jeśli jest ono ustawione na pusty ciąg; Przekaż wszystkie nagłówki, które są zwracane przez usługę jako-to. tj Nie zastępuj daty i serwera |
+|RemoveServiceResponseHeaders|ciąg, domyślną jest "Data; Serwer"|Statyczny|Średnikami / rozdzielana przecinkami lista nagłówków odpowiedzi, które zostaną usunięte z odpowiedzi usługi; przed przekazaniem go do klienta. Jeśli jest ono ustawione na pusty ciąg; Przekaż wszystkie nagłówki, które są zwracane przez usługę jako-to. i.e Nie zastępuj daty i serwera |
 |ResolveServiceBackoffInterval |Czas w sekundach, domyślna to 5 |Dynamiczny|Określ przedział czasu w sekundach.  Udostępnia rozwiązania interwał wycofywania domyślne przed ponowieniem próby wykonania nieudanej operacji usługi. |
-|SecureOnlyMode|wartość logiczna, domyślna to FALSE|Dynamiczny| SecureOnlyMode: true: Zwrotny serwer Proxy tylko przesyła do usług, które publikują bezpieczne punkty końcowe. wartość false: Zwrotny serwer Proxy może przekazywać żądania do bezpiecznego/niezabezpieczone punktów końcowych. Aby dowiedzieć się więcej, zobacz [odwrotnego logikę wyboru punktu końcowego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
+|SecureOnlyMode|wartość logiczna, domyślna to FALSE|Dynamiczny| SecureOnlyMode: true: Zwrotny serwer Proxy tylko przesyła do usług, które publikują bezpieczne punkty końcowe. false: Zwrotny serwer Proxy może przekazywać żądania do bezpiecznego/niezabezpieczone punktów końcowych. Aby dowiedzieć się więcej, zobacz [odwrotnego logikę wyboru punktu końcowego serwera proxy](service-fabric-reverseproxy-configure-secure-communication.md#endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints).  |
 |ServiceCertificateThumbprints|ciąg, domyślna to ""|Dynamiczny|Rozdzielana przecinkami lista odciski palca certyfikatów zdalnego, ufające zwrotnego serwera proxy. Aby dowiedzieć się więcej, zobacz [odwrotnego serwera proxy bezpiecznego połączenia](service-fabric-reverseproxy-configure-secure-communication.md#secure-connection-establishment-between-the-reverse-proxy-and-services). |
 
 ## <a name="applicationgatewayhttpservicecommonnameandissuer"></a>Brama ApplicationGateway/Http/ServiceCommonNameAndIssuer
@@ -130,7 +130,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |MaxDiskQuotaInMB |Int, wartość domyślna to 65536 | Dynamiczny |Przydział dysku w plikach dziennika MB dla Windows Fabric. |
 |ProducerInstances |Ciąg | Dynamiczny |Lista wystąpień producentów DCA. |
 
-## <a name="dnsservice"></a>Usługa DNS
+## <a name="dnsservice"></a>DnsService
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |EnablePartitionedQuery|wartość logiczna, domyślna to FALSE|Statyczny|Flaga ustawiana, aby włączyć obsługę zapytań DNS dotyczących usług podzielonym na partycje. Ta funkcja jest domyślnie wyłączona. Aby uzyskać więcej informacji, zobacz [DNS usługa Service Fabric.](service-fabric-dnsservice.md)|
@@ -232,7 +232,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |StandByReplicaKeepDuration| Czas w sekundach, wartość domyślna to (60*24*7) minut |Statyczny|Określ przedział czasu w sekundach. StandByReplicaKeepDuration dla FaultAnalysisService. |
 |StoredActionCleanupIntervalInSeconds | Int, wartość domyślna to 3600 |Statyczny|Jest to, jak często wyczyszczone magazynu. Tylko akcje w stan końcowy; i ukończone co najmniej CompletedActionKeepDurationInSeconds temu zostanie usunięty. |
 |StoredChaosEventCleanupIntervalInSeconds | Int, wartość domyślna to 3600 |Statyczny|Jest to, jak często będą inspekcji magazynie oczyszczania; Jeśli liczba zdarzeń jest więcej niż 30000; oczyszczanie będzie zaczną działać. |
-|TargetReplicaSetSize |int, domyślna to 0 |Statyczny|NOT_PLATFORM_UNIX_START TargetReplicaSetSize dla FaultAnalysisService. |
+|TargetReplicaSetSize |int, domyślna to 0 |Statyczny|NOT_PLATFORM_UNIX_START The TargetReplicaSetSize for FaultAnalysisService. |
 
 ## <a name="federation"></a>Federacja
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -317,8 +317,8 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |DeploymentMaxFailureCount|Int, domyślna to 20| Dynamiczny|Wdrażanie aplikacji zostanie ponowiona dla czasów DeploymentMaxFailureCount przed zaniechaniem wdrożenie tej aplikacji w węźle.| 
 |DeploymentMaxRetryInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(3600)|Dynamiczny| Określ przedział czasu w sekundach. Maksymalny interwał ponawiania dla wdrożenia. W przypadku każdego niepowodzenia ciągłe interwał ponawiania jest obliczany jako (DeploymentMaxRetryInterval; Min Liczba niepowodzeń ciągłe * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(10)|Dynamiczny|Określ przedział czasu w sekundach. Interwał wycofywania niepowodzenia wdrożenia. W przypadku niepowodzenia ciągłego wdrażania, co system ponowi próbę wdrożenia dla maksymalnie MaxDeploymentFailureCount. Interwał ponawiania jest wynikiem błędu ciągłego wdrażania i interwał wycofywania wdrożenia. |
-|DisableContainers|wartość logiczna, domyślna to FALSE|Statyczny|Konfiguracja dla wyłączenie containers — używana zamiast DisableContainerServiceStartOnContainerActivatorOpen, który jest przestarzały konfiguracji |
-|DisableDockerRequestRetry|wartość logiczna, domyślna to FALSE |Dynamiczny| Domyślnie SF komunikuje się za pomocą DD (docker dameon) z limitem czasu równym "DockerRequestTimeout" dla każdego żądania http wysyłane do niej. Jeśli DD nie odpowie w tym okresie; Jeśli najwyższego poziomu operacji środki, nieopłacone remining czasu wysyła żądanie SF ponownie.  Za pomocą kontenera funkcji Hyper-v; DD upłynąć znacznie więcej czasu na wyświetlenie kontenera lub go dezaktywować. W takich przypadkach DD żądaniu limit czasu z punktu widzenia SF i SF ponawia operację. Czasami zajmuje to nieco dodaje więcej wykorzystanie w polu DD. Ta konfiguracja umożliwia wyłączenie ta ponowna próba i poczekaj, aż DD odpowiedzi. |
+|DisableContainers|wartość logiczna, domyślna to FALSE|Statyczny|Config wyłączenie containers — zamiast DisableContainerServiceStartOnContainerActivatorOpen, który jest używany przestarzały konfiguracji |
+|DisableDockerRequestRetry|wartość logiczna, domyślna to FALSE |Dynamiczny| Domyślnie SF komunikuje się za pomocą DD (docker dameon) z limitem czasu równym "DockerRequestTimeout" dla każdego żądania http wysyłane do niej. Jeśli DD nie odpowie w tym okresie; Jeśli najwyższego poziomu operacji środki, nieopłacone pozostały czas wysyła żądanie SF ponownie.  Za pomocą kontenera funkcji Hyper-v; DD upłynąć znacznie więcej czasu na wyświetlenie kontenera lub go dezaktywować. W takich przypadkach DD żądaniu limit czasu z punktu widzenia SF i SF ponawia operację. Czasami zajmuje to nieco dodaje więcej wykorzystanie w polu DD. Ta konfiguracja umożliwia wyłączenie ta ponowna próba i poczekaj, aż DD odpowiedzi. |
 |EnableActivateNoWindow| wartość logiczna, domyślna to FALSE|Dynamiczny| Aktywowanego procesu jest tworzony w tle bez żadnych konsoli. |
 |EnableContainerServiceDebugMode|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Włączanie/wyłączanie rejestrowania dla kontenerów docker.  Tylko Windows.|
 |EnableDockerHealthCheckIntegration|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Umożliwia integrację zdarzeń funkcji HEALTHCHECK platformy docker za pomocą usługi Service Fabric raport o kondycji systemu |
@@ -460,12 +460,12 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="placementandloadbalancing"></a>PlacementAndLoadBalancing
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|AffinityConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet koligacji ograniczenia: 0: Twarde; 1: Elastyczne; ujemne: Ignoruj. |
-|ApplicationCapacityConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet pojemności ograniczenia: 0: Twarde; 1: Elastyczne; ujemne: Ignoruj. |
+|AffinityConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet koligacji ograniczenia: 0: Twarde; 1: Soft; negative: Ignoruj. |
+|ApplicationCapacityConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet pojemności ograniczenia: 0: Twarde; 1: Soft; negative: Ignoruj. |
 |AutoDetectAvailableResources|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Ta konfiguracja wywoła automatyczne wykrywanie dostępnych zasobów w węźle (procesora CPU i pamięci) kiedy ta konfiguracja jest ustawiona na wartość true, — firma Microsoft odczytać rzeczywistej pojemności i popraw je, jeśli użytkownik określony nieprawidłowy węzeł pojemności lub nie zostały zdefiniowane je w każdym przypadku ta konfiguracja jest ustawiona na false — firma Microsoft będzie  Ostrzeżenie, ten użytkownik określony nieprawidłowy węzeł możliwości; śledzenia Jednak firma Microsoft nie może poprawiać co oznacza, że użytkownik chce, aby mieć pojemności, określony jako > niż węzeł naprawdę czy pojemności są niezdefiniowane; przyjmowane jest założenie nieograniczoną pojemność |
 |BalancingDelayAfterNewNode | Czas w sekundach, domyślna to 120 |Dynamiczny|Określ przedział czasu w sekundach. Nie należy uruchamiać równoważenia działań w tym okresie po dodaniu nowego węzła. |
 |BalancingDelayAfterNodeDown | Czas w sekundach, domyślna to 120 |Dynamiczny|Określ przedział czasu w sekundach. Nie należy uruchamiać równoważenia działań w tym okresie po węźle szczegółów zdarzenia. |
-|CapacityConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet pojemności ograniczenia: 0: Twarde; 1: Elastyczne; ujemne: Ignoruj. |
+|CapacityConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet pojemności ograniczenia: 0: Twarde; 1: Soft; negative: Ignoruj. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, domyślna to 20 | Dynamiczny|Określa, ile razy pod rząd, które ruchów wystawionych ResourceBalancer są usuwane, zanim powiązane diagnostyki i ostrzeżenia dotyczące kondycji są emitowane. Ujemne: Nie ostrzeżeń emitowane w ramach tego warunku. |
 |ConstraintFixPartialDelayAfterNewNode | Czas w sekundach, domyślna to 120 |Dynamiczny| Określ przedział czasu w sekundach. DDo nie naprawić FaultDomain i UpgradeDomain naruszenia ograniczeń w tym okresie po dodaniu nowego węzła. |
 |ConstraintFixPartialDelayAfterNodeDown | Czas w sekundach, domyślna to 120 |Dynamiczny| Określ przedział czasu w sekundach. Czy nie naprawić FaultDomain i UpgradeDomain naruszenia ograniczeń w tym okresie po węźle szczegółów zdarzenia. |
@@ -475,7 +475,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |DetailedNodeListLimit | int, domyślna to 15 |Dynamiczny| Określa liczbę węzłów na ograniczenia do uwzględnienia przed obcięciem w raportach nieumieszczone repliki. |
 |DetailedPartitionListLimit | int, domyślna to 15 |Dynamiczny| Definiuje liczbę partycji wpisami diagnostyczne dla ograniczenia do uwzględnienia przed obcięciem w diagnostyce. |
 |DetailedVerboseHealthReportLimit | Int, wartość domyślna to 200 | Dynamiczny|Określa liczbę przypadków, gdy nieumieszczone repliki musi być trwałe nieumieszczone, zanim są emitowane raportów o kondycji szczegółowe. |
-|FaultDomainConstraintPriority | int, domyślna to 0 |Dynamiczny| Określa priorytet ograniczenia domeny błędów: 0: Twarde; 1: Elastyczne; ujemne: Ignoruj. |
+|FaultDomainConstraintPriority | int, domyślna to 0 |Dynamiczny| Określa priorytet ograniczenia domeny błędów: 0: Twarde; 1: Soft; negative: Ignoruj. |
 |GlobalMovementThrottleCountingInterval | Czas w sekundach, domyślna to 600 |Statyczny| Określ przedział czasu w sekundach. Wskazuje ostatnich interwał, który chcesz śledzić na przemieszczania repliki domeny (używane wraz z GlobalMovementThrottleThreshold). Może być równa 0 ignorowanie, globalne ograniczenie całkowicie. |
 |GlobalMovementThrottleThreshold | Uint — wartość domyślna to 1000 |Dynamiczny| Maksymalna liczba przeniesień typu dozwolone w fazie równoważenia w ostatnim interwale wskazywanym przez GlobalMovementThrottleCountingInterval. |
 |GlobalMovementThrottleThresholdForBalancing | Uint — wartość domyślna to 0 | Dynamiczny|Maksymalna liczba przeniesień typu dozwolone w fazie równoważenia w ostatnim interwale wskazywanym przez GlobalMovementThrottleCountingInterval. 0 oznacza brak limitu. |
@@ -495,19 +495,19 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |MoveParentToFixAffinityViolation | Wartość logiczna, wartość domyślna to false |Dynamiczny| Ustawienie, który określa, czy nadrzędnego repliki można przenieść naprawić ograniczenia koligacji.|
 |PartiallyPlaceServices | Wartość logiczna, wartość domyślna to true |Dynamiczny| Określa, jeśli wszystkie repliki usługi w klastrze zostaną umieszczone "wszystko lub nic" podany ograniczone odpowiednich węzłów dla nich.|
 |PlaceChildWithoutParent | Wartość logiczna, wartość domyślna to true | Dynamiczny|Ustawienia, które określa, czy podrzędnych usługi repliki można umieścić w przypadku replikacji nie jest włączony. |
-|PlacementConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet ograniczeń umieszczania: 0: Twarde; 1: Elastyczne; ujemne: Ignoruj. |
+|PlacementConstraintPriority | int, domyślna to 0 | Dynamiczny|Określa priorytet ograniczeń umieszczania: 0: Twarde; 1: Soft; negative: Ignoruj. |
 |PlacementConstraintValidationCacheSize | Int, wartość domyślna to 10000 |Dynamiczny| Ogranicza rozmiar tabeli używany do szybkiego sprawdzania poprawności i buforowanie wyrażenia ograniczeń umieszczania. |
 |PlacementSearchTimeout | Czas w sekundach, wynosi 0,5 |Dynamiczny| Określ przedział czasu w sekundach. W przypadku umieszczenia usług. Wyszukaj co najwyżej to długo przed zwróceniem wyników. |
 |PLBRefreshGap | Czas w sekundach, wartość domyślna to 1 |Dynamiczny| Określ przedział czasu w sekundach. Określa minimalną ilość czasu, jaki musi minąć, zanim PLB odświeża stan ponownie. |
-|PreferredLocationConstraintPriority | Int, domyślna to 2| Dynamiczny|Określa priorytet ograniczenie preferowanych lokalizacji: 0: Twarde; 1: Elastyczne; 2: Optymalizacja; ujemne: Zignoruj |
+|PreferredLocationConstraintPriority | Int, domyślna to 2| Dynamiczny|Określa priorytet ograniczenie preferowanych lokalizacji: 0: Twarde; 1: Soft; 2: Optymalizacja; ujemne: Zignoruj |
 |PreferUpgradedUDs|wartość logiczna, domyślny ma wartość TRUE|Dynamiczny|Włącza włączać i wyłączać logiki, która preferuje przechodzenia do już uaktualniona domenami aktualizacji.|
 |PreventTransientOvercommit | Wartość logiczna, wartość domyślna to false | Dynamiczny|Określa, powinien modułu PLB natychmiast możesz liczyć na zasoby, które zostaną zwolnione przez przenosi zainicjowane. Domyślnie; PLB można zainicjować Przenieś i overcommit przeniesienie w na tym samym węźle, który można utworzyć przejściowy. Ustawienie tego parametru na wartość true uniemożliwi tych rodzajów z overcommits defragmentacji na żądanie (zwane również placementWithMove) zostanie wyłączony. |
-|ScaleoutCountConstraintPriority | int, domyślna to 0 |Dynamiczny| Określa priorytet ograniczenie liczby skalowania w poziomie: 0: Twarde; 1: Elastyczne; ujemne: Ignoruj. |
+|ScaleoutCountConstraintPriority | int, domyślna to 0 |Dynamiczny| Określa priorytet ograniczenie liczby skalowania w poziomie: 0: Twarde; 1: Soft; negative: Ignoruj. |
 |SwapPrimaryThrottlingAssociatedMetric | ciąg, domyślna to ""|Statyczny| Skojarzone nazwę metryki dla tego ograniczania. |
 |SwapPrimaryThrottlingEnabled | Wartość logiczna, wartość domyślna to false|Dynamiczny| Ustal, czy jest włączone ograniczenie podstawowe wymiany. |
 |SwapPrimaryThrottlingGlobalMaxValue | int, domyślna to 0 |Dynamiczny| Maksymalna liczba replik podstawowego wymiany dozwolone globalnie. |
 |TraceCRMReasons |Wartość logiczna, wartość domyślna to true |Dynamiczny|Określa, czy śledzenie przyczyn CRM wystawiony przemieszczania do kanału zdarzenia operacyjne. |
-|UpgradeDomainConstraintPriority | int, domyślna to 1| Dynamiczny|Określa priorytet ograniczenia domeny uaktualnień: 0: Twarde; 1: Elastyczne; ujemne: Ignoruj. |
+|UpgradeDomainConstraintPriority | int, domyślna to 1| Dynamiczny|Określa priorytet ograniczenia domeny uaktualnień: 0: Twarde; 1: Soft; negative: Ignoruj. |
 |UseMoveCostReports | Wartość logiczna, wartość domyślna to false | Dynamiczny|Powoduje, że modułu równoważenia obciążenia, aby zignorować element kosztów funkcji oceniania; Wynikowy potencjalnie dużą liczbę przenosi umieszczania lepiej o zrównoważonym obciążeniu. |
 |UseSeparateSecondaryLoad | Wartość logiczna, wartość domyślna to true | Dynamiczny|Ustawienia, które określa, czy użyć różne obciążenia dodatkowej. |
 |ValidatePlacementConstraint | Wartość logiczna, wartość domyślna to true |Dynamiczny| Określa, czy wyrażenie PlacementConstraint usługi sprawdzania poprawności po zaktualizowaniu ServiceDescription usługi. |
@@ -541,7 +541,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |ReplicatorAddress|ciąg, domyślną jest "localhost:0"|Statyczny|Punkt końcowy w postaci ciągu - IP:Port, który jest używany przez replikatora sieci szkieletowej Windows do nawiązywania połączeń z innymi replikami w celu wysyłania i odbierania operacji.|
 |ReplicatorListenAddress|ciąg, domyślną jest "localhost:0"|Statyczny|Punkt końcowy w postaci ciągu - IP:Port, który jest używany przez replikatora Windows Service Fabric do operacji odbioru z innymi replikami.|
 |ReplicatorPublishAddress|ciąg, domyślną jest "localhost:0"|Statyczny|Punkt końcowy w postaci ciągu - IP:Port, który jest używany przez replikatora Windows Fabric wysyłać operacje z innymi replikami.|
-|retryInterval|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(5)|Statyczny|Określ przedział czasu w sekundach. Podczas operacji zostanie utracone lub odrzucony ten czasomierz Określa, jak często replikatora ponowi próbę wykonania operacji wysyłania.|
+|RetryInterval|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(5)|Statyczny|Określ przedział czasu w sekundach. Podczas operacji zostanie utracone lub odrzucony ten czasomierz Określa, jak często replikatora ponowi próbę wykonania operacji wysyłania.|
 
 ## <a name="resourcemonitorservice"></a>ResourceMonitorService
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |
@@ -615,7 +615,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |UseClusterCertForIpcServerTlsSecurity|wartość logiczna, domyślna to FALSE|Statyczny|Czy ma być używany certyfikat klastra do zabezpieczania IPC serwera TLS transportu jednostki |
 |X509Folder|ciąg, domyślny jest /var/lib/waagent|Statyczny|Folder gdzie X509 znajdują certyfikaty i klucze prywatne |
 
-## <a name="securityadminclientx509names"></a>Zabezpieczenia/AdminClientX509Names
+## <a name="securityadminclientx509names"></a>Security/AdminClientX509Names
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla administratora operacji klienta. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikaty klienta administrator musi być na liście. |
@@ -642,7 +642,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |DeleteGatewayResource|ciąg, domyślna to "Admin"| Dynamiczny|Usuwa zasób bramy |
 |DeleteName |ciąg, domyślna to "Admin" |Dynamiczny|Konfiguracja zabezpieczeń do usunięcia z identyfikatora URI nazewnictwa. |
 |DeleteNetwork|ciąg, domyślna to "Admin" |Dynamiczny|Usuwa sieć kontenerów |
-|Funkcja DeleteService |ciąg, domyślna to "Admin" |Dynamiczny|Konfiguracja zabezpieczeń do usunięcia usługi. |
+|DeleteService |ciąg, domyślna to "Admin" |Dynamiczny|Konfiguracja zabezpieczeń do usunięcia usługi. |
 |DeleteVolume|ciąg, domyślna to "Admin"|Dynamiczny|Usuwa woluminu.| 
 |EnumerateProperties |ciąg, domyślna to "Admin\|\|użytkownika" | Dynamiczny|Konfiguracja zabezpieczeń nazewnictwa wyliczanie właściwości. |
 |EnumerateSubnames |ciąg, domyślna to "Admin\|\|użytkownika" |Dynamiczny| Konfiguracja zabezpieczeń dla identyfikatora URI nazewnictwa wyliczenia. |
@@ -721,7 +721,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |UpgradeFabric |ciąg, domyślna to "Admin" |Dynamiczny| Konfiguracja zabezpieczeń do uruchamiania uaktualnienia klastra. |
 |Upload |ciąg, domyślna to "Admin" | Dynamiczny|Konfiguracja zabezpieczeń dla obrazu przechowywać operacji przekazywania klienta. |
 
-## <a name="securityclientcertificateissuerstores"></a>Zabezpieczenia/ClientCertificateIssuerStores
+## <a name="securityclientcertificateissuerstores"></a>Security/ClientCertificateIssuerStores
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, domyślna wartość to Brak |Dynamiczny|X509 magazyny certyfikatów wystawcy certyfikatów klienta; Nazwa = clientIssuerCN; Wartość = rozdzielana przecinkami lista magazynów |
@@ -731,22 +731,22 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla operacji klienta. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikaty klienta musi być na liście.|
 
-## <a name="securityclustercertificateissuerstores"></a>Zabezpieczenia/ClusterCertificateIssuerStores
+## <a name="securityclustercertificateissuerstores"></a>Security/ClusterCertificateIssuerStores
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, domyślna wartość to Brak |Dynamiczny|X509 magazyny certyfikatów wystawcy certyfikatów klastra; Nazwa = clusterIssuerCN; Wartość = rozdzielana przecinkami lista magazynów |
 
-## <a name="securityclusterx509names"></a>Zabezpieczenia/ClusterX509Names
+## <a name="securityclusterx509names"></a>Security/ClusterX509Names
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla operacji klastra. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikatów klastra musi być na liście.|
 
-## <a name="securityservercertificateissuerstores"></a>Zabezpieczenia/ServerCertificateIssuerStores
+## <a name="securityservercertificateissuerstores"></a>Security/ServerCertificateIssuerStores
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|IssuerStoreKeyValueMap, domyślna wartość to Brak |Dynamiczny|X509 magazyny certyfikatów wystawcy dla certyfikatów serwera; Nazwa = serverIssuerCN; Wartość = rozdzielana przecinkami lista magazynów |
 
-## <a name="securityserverx509names"></a>Zabezpieczenia/ServerX509Names
+## <a name="securityserverx509names"></a>Security/ServerX509Names
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
 |PropertyGroup|X509NameMap, domyślna wartość to Brak|Dynamiczny|To jest lista par "Name" i "Wartość". Każdy "Name" jest nazwa pospolita podmiotu lub DnsName X509 certyfikaty autoryzacji dla operacji serwera. Dla danego "Name" "Value" jest listę oddzielaną przecinkami odciski palców certyfikatu dla wystawcy, przypinanie, jeśli nie puste, bezpośredniego wystawcę certyfikaty serwera musi być na liście.|
@@ -792,7 +792,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |FrameHeaderErrorCheckingEnabled|wartość logiczna, domyślny ma wartość TRUE|Statyczny|Domyślne ustawienie dla błąd podczas sprawdzania w nagłówku ramki w trybie — Zabezpieczanie; ustawienie składnika zastępuje to. |
 |MessageErrorCheckingEnabled|wartość logiczna, domyślna to FALSE|Statyczny|Domyślne ustawienie dla sprawdzanie błędów dla nagłówka wiadomości oraz treść w trybie — Zabezpieczanie; ustawienie składnika zastępuje to. |
 |ResolveOption|ciąg, domyślna to "nieokreślone"|Statyczny|Określa, jak są rozwiązywane nazwy FQDN.  Prawidłowe wartości to "nie określono tego parametru/ipv4/ipv6". |
-|Właściwości SendTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(300)|Dynamiczny|Określ przedział czasu w sekundach. Limitu czasu wykrywania zablokowane połączenia wysyłania. Raporty o awarii TCP nie są wiarygodne niektóre środowiska. To może być konieczne można dostosować zgodnie z dostępną przepustowość sieci i rozmiar danych wychodzących (\*MaxMessageSize\/\*SendQueueSizeLimit). |
+|SendTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(300)|Dynamiczny|Określ przedział czasu w sekundach. Limitu czasu wykrywania zablokowane połączenia wysyłania. Raporty o awarii TCP nie są wiarygodne niektóre środowiska. To może być konieczne można dostosować zgodnie z dostępną przepustowość sieci i rozmiar danych wychodzących (\*MaxMessageSize\/\*SendQueueSizeLimit). |
 
 ## <a name="upgradeorchestrationservice"></a>UpgradeOrchestrationService
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -823,7 +823,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |X509FindType | ciąg, domyślna to ""|Dynamiczny| X509FindType dla UpgradeService. |
 |X509FindValue | ciąg, domyślna to "" |Dynamiczny| X509FindValue dla UpgradeService. |
 |X509SecondaryFindValue | ciąg, domyślna to "" |Dynamiczny| X509SecondaryFindValue dla UpgradeService. |
-|X509StoreLocation | ciąg, domyślna to "" |Dynamiczny| X509StoreLocation dla UpgradeService. |
+|X509StoreLocation | ciąg, domyślna to "" |Dynamiczny| X509StoreLocation for UpgradeService. |
 |X509StoreName | ciąg, domyślnie jest "Mój"|Dynamiczny|X509StoreName dla UpgradeService. |
 
 ## <a name="next-steps"></a>Kolejne kroki

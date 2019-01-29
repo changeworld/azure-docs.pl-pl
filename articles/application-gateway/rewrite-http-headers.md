@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198529"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103432"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Ponownie zapisuje nagłówki HTTP z usługą Application Gateway (publiczna wersja zapoznawcza)
 
@@ -94,14 +94,12 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Zwraca listę szyfrów obsługiwanych przez klienta          |
 | ciphers_used               | Zwraca ciąg mechanizmów szyfrowania używany do ustanowionego połączenia SSL |
-| client_latitude            | Aby określić kraju, regionu i miasta, w zależności od adresu IP klienta |
-| client_longitude           | Aby określić kraju, regionu i miasta, w zależności od adresu IP klienta |
 | client_port                | port klienta                                                  |
 | client_tcp_rtt             | informacje na temat klienta połączenie TCP. dostępna w systemach, które obsługują opcję gniazda TCP_INFO |
 | client_user                | Korzystając z uwierzytelniania HTTP, nazwa użytkownika podana dla uwierzytelniania |
 | host                       | w następującej kolejności: Nazwa hosta z wiersz żądania lub nazwy hosta z pola nagłówka żądania "Host" lub nazwę serwera, dopasowywanie na żądanie |
 | http_method                | Metoda użyta do utworzenia adresu URL żądania. Na przykład pobrać POST itp. |
-| HTTP_STATUS                | Stan sesji, na przykład: 200, 400, 403 itp.                       |
+| http_status                | Stan sesji, na przykład: 200, 400, 403 itp.                       |
 | http_version               | żądanie protokołu, zazwyczaj "HTTP/1.0", "HTTP/1.1" lub "HTTP/2.0" |
 | QUERY_STRING               | na liście wartość zmiennej pary poniżej "?" w żądanego adresu URL. |
 | received_bytes             | długość żądania (w tym wierszu żądania, nagłówek i treść żądania) |
@@ -109,7 +107,7 @@ Ta funkcja obsługuje przebudowywania nagłówki do następujących zmiennych se
 | request_scheme             | Schemat żądania, "http" lub "https"                            |
 | request_uri                | pełne oryginalnego identyfikatora URI żądania (z argumentami)                   |
 | sent_bytes                 | Liczba bajtów wysłanych do klienta                             |
-| SERVER_PORT                | Port serwera, które zaakceptowane żądanie                 |
+| server_port                | Port serwera, które zaakceptowane żądanie                 |
 | ssl_connection_protocol    | Zwraca protokół ustanowionego połączenia SSL        |
 | ssl_enabled                | "włączone" if połączenie działa w trybie SSL lub ciąg pusty, w przeciwnym razie |
 

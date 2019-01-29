@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 70305468ca20c48bdc26e7e000a0e5edb63508cd
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261574"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55198218"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partycjonowanie usług reliable services usługi Service Fabric
 Ten artykuł zawiera wprowadzenie do podstawowych pojęć dotyczących partycjonowanie usług reliable services w usłudze Azure Service Fabric. Kodu źródłowego użytego w artykule jest dostępna również na [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -129,11 +129,7 @@ Ponieważ chcemy dosłownie ma jedną partycję na literę, możemy użyć 0 jak
 1. Otwórz **programu Visual Studio** > **pliku** > **nowe** > **projektu**.
 2. W **nowy projekt** okno dialogowe, wybierz aplikację usługi Service Fabric.
 3. Wywołaj projektu "AlphabetPartitions".
-4. W **utworzyć usługę** okna dialogowego wybierz **stanowa** usługi, a następnie wywołaj ją "Alphabet.Processing", jak pokazano na poniższej ilustracji.
-       ![Okno dialogowe nowej usługi w programie Visual Studio][1]
-
-  <!--  ![Stateful service screenshot](./media/service-fabric-concepts-partitioning/createstateful.png)-->
-
+4. W **utworzyć usługę** okna dialogowego wybierz **stanowa** usługi, a następnie wywołaj ją "Alphabet.Processing".
 5. Ustaw liczbę partycji. Otwórz plik Applicationmanifest.xml znajduje się w folderze ApplicationPackageRoot AlphabetPartitions projektu i zaktualizuj parametr Processing_PartitionCount do 26, jak pokazano poniżej.
    
     ```xml
@@ -167,7 +163,7 @@ Ponieważ chcemy dosłownie ma jedną partycję na literę, możemy użyć 0 jak
    
     Wiele replik tej usługi może być obsługiwany na tym samym komputerze, więc ten adres musi być unikatowa dla repliki. Jest to, dlaczego identyfikator partycji: + identyfikator repliki są w adresie URL. HttpListener może nasłuchiwać na wiele adresów, w tym samym porcie, tak długo, jak prefiks adresu URL jest unikatowa.
    
-    Nadmiarowe identyfikator GUID jest dostępna dla zaawansowanych przypadek, gdzie również nasłuchiwania żądań tylko do odczytu replikach pomocniczych. Jeśli tak jest rzeczywiście chcesz upewnij się, że nowy unikatowy adres jest używany podczas przenoszenia z podstawowej do dodatkowej Wymuś na klientach do ponownego rozpoznawania adresów. "+" jest używany jako adres, w tym miejscu, aby repliki nasłuchuje na wszystkich dostępnych hostów (adresu IP, FQDM, localhost itp.) Poniższy kod przedstawia przykład.
+    Nadmiarowe identyfikator GUID jest dostępna dla zaawansowanych przypadek, gdzie również nasłuchiwania żądań tylko do odczytu replikach pomocniczych. Jeśli tak jest rzeczywiście chcesz upewnij się, że nowy unikatowy adres jest używany podczas przenoszenia z podstawowej do dodatkowej Wymuś na klientach do ponownego rozpoznawania adresów. "+" jest używany jako adres, w tym miejscu, aby repliki nasłuchuje na wszystkich dostępnych hostów (adresu IP, nazwy FQDN, nazwy localhost, itp.) Poniższy kod przedstawia przykład.
    
     ```CSharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -365,7 +361,7 @@ Ponieważ chcemy dosłownie ma jedną partycję na literę, możemy użyć 0 jak
 Kod źródłowy całego próbki jest dostępny w [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Niezawodne usługi i aktora rozwidlenia procesy podrzędne
-Usługa Service Fabric nie obsługuje usług reliable services, a następnie elementy Reliable actors, tworzenia rozwidlenia procesy podrzędne. Dlaczego nie jest obsługiwane na przykład [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nie może służyć do rejestrowania nieobsługiwanych proces podrzędny i tokenów anulowania są wysyłane tylko do zarejestrowanych składników procesów; skutkuje szerokiej gamy problemów, takich jak błędy uaktualnień, gdy procesy podrzędne nie zamykaj po otrzymaniu token anulowania dla procesu nadrzędnego. 
+Usługa Service Fabric nie obsługuje usług reliable services, a następnie elementy Reliable actors, tworzenia rozwidlenia procesy podrzędne. Dlaczego nie jest obsługiwane na przykład [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nie może służyć do rejestrowania nieobsługiwanych proces podrzędny i przetwarza anulowania tokeny są wysyłane tylko do zarejestrowanych; skutkuje szerokiej gamy problemów, takich jak błędy uaktualnień, gdy procesy podrzędne nie zamykaj po otrzymaniu token anulowania dla procesu nadrzędnego. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać informacji na temat pojęć usługi Service Fabric zobacz następujące tematy:

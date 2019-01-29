@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: bbfb070a66bdae415d357542459ee88fd8b1865f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159064"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104477"
 ---
 # <a name="security-groups"></a>Grupy zabezpieczeń
 <a name="network-security-groups"></a>
@@ -32,7 +32,7 @@ Grupa zabezpieczeń sieci nie zawiera żadnych reguł lub dowolną liczbę regu�
 
 |Właściwość  |Wyjaśnienie  |
 |---------|---------|
-|Name (Nazwa)|Unikatowa nazwa w obrębie grupy zabezpieczeń sieci.|
+|Name|Unikatowa nazwa w obrębie grupy zabezpieczeń sieci.|
 |Priorytet | Liczba z zakresu od 100 do 4096. Reguły są przetwarzane w kolejności priorytetów. Im niższy numer, tym wyższy priorytet, więc te o niższych numerach są przetwarzane przed tymi o wyższych numerach. Kiedy ruch jest zgodny z regułą, przetwarzanie zostaje zatrzymane. W związku z tym żadne istniejące reguły o niższych priorytetach (wyższych numerach), które mają takie same atrybuty jak reguły o wyższych priorytetach, nie będą przetwarzane.|
 |Obiekt źródłowy lub docelowy| Dowolny lub indywidualny adres IP, blok CIDR (na przykład 10.0.0.0/24), [tag usługi](#service-tags) lub [grupa zabezpieczeń aplikacji](#application-security-groups). W przypadku określenia adresu dla zasobu platformy Azure należy określić prywatny adres IP przypisany do zasobu. W przypadku ruchu przychodzącego grupy zabezpieczeń sieci są przetwarzane po tym, jak platforma Azure przetłumaczy publiczny adres IP na prywatny adres IP, a w przypadku ruchu wychodzącego — zanim platforma Azure przetłumaczy prywatny adres IP na publiczny adres IP. Dowiedz się więcej o [adresach IP](virtual-network-ip-addresses-overview-arm.md) platformy Azure. Określenie zakresu, tagu usługi lub grupy zabezpieczeń aplikacji umożliwia utworzenie mniejszej liczby reguł zabezpieczeń. Możliwość określenia wielu poszczególnych adresów IP i zakresów (nie można określić wielu tagów usługi ani grup aplikacji) w regule nosi nazwę [rozszerzonych reguł zabezpieczeń](#augmented-security-rules). Rozszerzone reguły zabezpieczeń można tworzyć tylko w grupach zabezpieczeń sieci utworzonych za pośrednictwem modelu wdrażania przy użyciu usługi Resource Manager. Nie można określić wielu adresów IP i zakresów adresów IP w grupach zabezpieczeń sieci utworzonych za pomocą klasycznego modelu wdrażania. Dowiedz się więcej o [modelach wdrażania platformy Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |Protokół     | TCP, UDP lub Dowolny (obejmuje protokoły TCP, UDP i ICMP). Nie można określić samego protokołu ICMP, a więc jeśli potrzebujesz protokołu ICMP, użyj opcji Dowolny. |
@@ -47,7 +47,7 @@ Istnieją ograniczenia dotyczące liczby reguł zabezpieczeń, które można utw
 
 ## <a name="augmented-security-rules"></a>Rozszerzone reguły zabezpieczeń
 
-Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla sieci wirtualnych, umożliwiając definiowanie zasad zabezpieczeń większych i złożonych sieci przy użyciu mniejszej liczby reguł. Można połączyć wiele portów, wiele jawnych adresów IP i zakresów w jedną, łatwo zrozumiałą regułę zabezpieczeń. Rozszerzone reguły stosuje się w polach źródła, obiektu docelowego i portów reguły. Aby uprościć zarządzanie definicją reguły zabezpieczeń, połącz rozszerzone reguły zabezpieczeń z [tagami usług](#service-tags) lub [grupami zabezpieczeń aplikacji](#application-security-groups). Istnieją ograniczenia liczby adresów, zakresów i portów, które można określić w regule. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla sieci wirtualnych, umożliwiając definiowanie zasad zabezpieczeń większych i złożonych sieci przy użyciu mniejszej liczby reguł. Można połączyć wiele portów, wiele jawnych adresów IP i zakresów w jedną, łatwo zrozumiałą regułę zabezpieczeń. Rozszerzone reguły stosuje się w polach źródła, obiektu docelowego i portów reguły. Aby uprościć zarządzanie definicją reguły zabezpieczeń, połącz rozszerzone reguły zabezpieczeń z [tagami usług](#service-tags) lub [grupami zabezpieczeń aplikacji](#application-security-groups). Istnieją limity liczby adresów, zakresy adresów i portów, które można określić w regule. Aby uzyskać więcej informacji, zobacz [Azure limits (Ograniczenia platformy Azure)](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="service-tags"></a>Tagi usługi
 
@@ -58,7 +58,7 @@ Rozszerzone reguły zabezpieczeń upraszczają definicję zabezpieczeń dla siec
  Poniżej wymienione tagi usługi są dostępne do użycia w definicji reguły zabezpieczeń. Ich nazwy różnią się nieco między sobą w [modelach wdrażania platformy Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 * **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** — model klasyczny): ten tag obejmuje przestrzeń adresową sieci wirtualnej (wszystkie zakresy CIDR zdefiniowane dla sieci wirtualnej), wszystkie połączone lokalne przestrzenie adresowe oraz [skomunikowane równorzędnie](virtual-network-peering-overview.md) sieci wirtualne lub sieć wirtualną połączoną z [bramą sieci wirtualnej](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** — model klasyczny): ten tag moduł równoważenia obciążenia infrastruktury platformy Azure. Ten znacznik przekłada się na [wirtualny adres IP hosta](security-overview.md##azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Jeśli nie jest używana usługa Azure Load Balancer, tę zasadę można przesłonić.
+* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** — model klasyczny): ten tag moduł równoważenia obciążenia infrastruktury platformy Azure. Ten znacznik przekłada się na [wirtualny adres IP hosta](security-overview.md#azure-platform-considerations) (168.63.129.16), z którego pochodzą sondy kondycji platformy Azure. Jeśli nie jest używana usługa Azure Load Balancer, tę zasadę można przesłonić.
 * **Internet** (Resource Manager) (**INTERNET** — model klasyczny): określa przestrzeń adresów IP, która znajduje się poza siecią wirtualną i do której można uzyskać dostęp w publicznym Internecie. Ten zakres adresów obejmuje [publiczną przestrzeń adresów IP należącą do platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 * **AzureCloud** (tylko usługa Resource Manager): ten tag określa przestrzeń adresów IP dla platformy Azure, w tym wszystkie [publiczne adresy IP centrum danych](https://www.microsoft.com/download/details.aspx?id=41653). W przypadku określenia wartości *AzureCloud* dozwolony lub blokowany jest ruch do publicznych adresów IP platformy Azure. Jeśli chcesz zezwolić na dostęp do usługi AzureCloud w konkretnym [regionie](https://azure.microsoft.com/regions), możesz określić region. Jeśli na przykład chcesz zezwolić na dostęp do usługi AzureCloud platformy Azure tylko w regionie Wschodnie stany USA, możesz określić *AzureCloud.EastUS* jako tag usługi. 
 * **AzureTrafficManager** (tylko usługa Resource Manager): ten tag określa przestrzeń adresów IP dla adresów IP sondy usługi Azure Traffic Manager. Więcej informacji na temat adresów IP sondy usługi Traffic Manager można znaleźć w temacie [Usługa Azure Traffic Manager — często zadawane pytania](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: aahi
-ms.openlocfilehash: 6d7b227ac182ca2cd30d6a6eaa428ea86757214c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: dbe9fe5b8e9cd31ca20d88b7db89a9d35e1fe8de
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164404"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161142"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Obsługa języka i regionu API wyszukiwania w Internecie Bing
 
@@ -73,8 +73,8 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
 |Austria|Niemiecki|de-AT|
-|Belgia|Holenderski|Holandia — być|
-|Belgia|Francuski|FR — być|
+|Belgia|Holenderski|nl-BE|
+|Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
 |Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
@@ -97,10 +97,10 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|EN PH|
+|Filipiny|Polski|en-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|EN ZA|
+|Republika Południowej Afryki|Polski|en-ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
 |Szwajcaria|Francuski|FR-CH|
@@ -108,5 +108,5 @@ Alternatywnie, można określić na rynek `mkt` parametr zapytania i kod z **ryn
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|en-US|
 |Stany Zjednoczone|Hiszpański|es-US|

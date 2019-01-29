@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/29/2018
+ms.date: 01/28/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 16bf68a5fdb1df2a4f60de9167893a42295cbc52
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260537"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098342"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Szablon rozwiązania konsorcjum dowód pracy Ethereum
 
 Szablon rozwiązania konsorcjum Ethereum dowód elementu pracy jest przeznaczony do umożliwiają łatwiejsze i szybsze wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich przy minimalnej znajomości platformy Azure i Ethereum.
 
-Za pomocą kliku dane wejściowe użytkownika i wdrożenia jednym kliknięciem w witrynie Azure portal każdy element członkowski można udostępnić sieciowych zużycia, za pomocą programu Microsoft Azure Compute, sieć i usługi storage na całym świecie. Każdy element członkowski sieciowych zużycia składa się z zestawu węzłów ze zrównoważonym obciążeniem transakcji za pomocą której aplikacji lub użytkownika mogą wchodzić w interakcje przesłać transakcji, zestaw węzłów wyszukiwania rekordu transakcji i bramy sieci VPN. Krok kolejne połączenie nawiązuje połączenie bramy, aby utworzyć sieć pełni skonfigurowanej zawierającym wiele elementów członkowskich łańcucha bloków.
+Każdy element członkowski przy użyciu szablonu usługi Azure Resource Manager, można udostępnić sieciowych zużycia, za pomocą programu Microsoft Azure Compute, sieć i usługi magazynu. Każdy element członkowski sieciowych zużycia składa się z zestawu węzłów ze zrównoważonym obciążeniem transakcji za pomocą której aplikacji lub użytkownika wchodzi w interakcję można przesłać transakcji, zestaw węzłów wyszukiwania rekordu transakcji i bramy sieci VPN. Po wdrożeniu możesz łączyć z bramy, aby utworzyć sieć pełni skonfigurowanej zawierającym wiele elementów członkowskich łańcucha bloków.
 
 ## <a name="about-blockchain"></a>Temat łańcucha bloków
 
@@ -35,7 +35,7 @@ Członek konsorcjum może aprowizować maksymalnie pięciu regionach zawierając
 
 Wszystkie węzły mają stabilną wersję klienta Przejdź Ethereum (Geth) i są skonfigurowane jako węzły wyszukiwania. Jeśli blok genesis niestandardowe nie podana, wszystkie węzły, skorzystaj z tego samego adresu Ethereum i parę kluczy, który jest chroniony przez Ethereum hasło do konta. Hasło Ethereum, które podano jest używany do generowania domyślnego konta (coinbase) dla każdego węzła wyszukiwania. Jako węzły wyszukiwania analizować, pobierają opłaty, które są dodawane do tego konta.
 
-Liczbę węzłów wyszukiwania poszczególnych członków konsorcjum zależy od rozmiaru sieci żądanego i ilości mocy wyznaczania wartości skrótu, przeznaczonych dla każdego elementu członkowskiego. Im większy sieci, więcej węzłów, które muszą zostać złamane, aby uzyskać nienależną przewagę. Szablon obsługuje maksymalnie 15 węzłami wyszukiwania na region aprowizowane za pomocą zestawów skalowania maszyn wirtualnych.
+Liczba węzłów wyszukiwania poszczególnych członków konsorcjum zależy od rozmiaru sieci żądanego i ilości mocy wyznaczania wartości skrótu, które jest przeznaczone do każdego członka. Większe sieci wymaga większą liczbę węzłów do zostaną ujawnione w celu uzyskania nienależną przewagę. Szablon obsługuje maksymalnie 15 węzłami wyszukiwania na region aprowizowane za pomocą zestawów skalowania maszyn wirtualnych.
 
 ### <a name="transaction-node-details"></a>Szczegóły węzła transakcji
 
@@ -45,7 +45,7 @@ Węzły transakcji są ze zrównoważonym obciążeniem w obrębie zestaw dostę
 
 ### <a name="log-analytics-details"></a>Szczegóły analizy dziennika
 
-Każde wdrożenie również tworzy nowe wystąpienie usługi Log Analytics lub dołączyć do istniejącego wystąpienia. Dzięki temu monitorowanie różnych metryk wydajności poszczególnych maszyn wirtualnych, tworzącą sieć wdrożone.
+Każde wdrożenie również tworzy nowe wystąpienie Log analytics lub dołączyć do istniejącego wystąpienia. Usługa log analytics umożliwia monitorowanie różnych metryk wydajności poszczególnych maszyn wirtualnych, tworzącą sieć wdrożone.
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 
@@ -88,11 +88,9 @@ Subskrypcja| Subskrypcja, dla której chcesz wdrożyć sieci konsorcjum||Nie dot
 Grupa zasobów| Grupa zasobów, dla której chcesz wdrożyć sieci konsorcjum.||Nie dotyczy
 Lokalizacja| Region platformy Azure dla grupy zasobów. ||Nie dotyczy
 
-
-
 ### <a name="operations-management-suite"></a>Operations Management Suite
 
-W bloku usługi Operations Management Suite (OMS) umożliwia skonfigurowanie zasobów pakietu OMS w sieci. Pakiet OMS będzie zbierać i powierzchni przydatne metryki i dzienniki z Twojej sieci, umożliwiając szybkie sprawdzenie kondycji sieci lub debugowania problemów. Bezpłatne oferty pakietu OMS zostaną elegancko nie powieść się po przekroczeniu pojemności.
+Operations Management Suite (OMS) umożliwia skonfigurowanie zasobów pakietu OMS w sieci. Pakiet OMS będzie zbierać i powierzchni przydatne metryki i dzienniki z Twojej sieci, umożliwiając szybkie sprawdzenie kondycji sieci lub debugowania problemów. Bezpłatne oferty pakietu OMS zostaną elegancko nie powieść się po przekroczeniu pojemności.
 
 ![Tworzenie nowego pakietu OMS](./media/ethereum-deployment/new-oms.png)
 
@@ -143,8 +141,8 @@ Nazwa parametru |Opis |Dozwolone wartości|Wartości domyślne
 Identyfikator ConsortiumMember|Identyfikator skojarzony z każdym elementem członkowskim należących do sieci konsorcjum używane do konfigurowania przestrzeni adresów IP w celu uniknięcia kolizji. <br /><br />Identyfikator elementu członkowskiego powinna być unikatowa w różne organizacje w tej samej sieci. Identyfikator unikatowy elementu członkowskiego jest potrzebny, nawet wtedy, gdy w tej samej organizacji wdraża do wielu regionów.<br /><br />Zanotuj wartość tego parametru, ponieważ musisz udostępnić go innym członkom przyłączany.|0 - 255
 Identyfikator sieci Ethereum|Identyfikator sieci konsorcjum sieci Ethereum wdrażane. Każda sieć Ethereum ma swój własny identyfikator sieci 1 oznacza identyfikator sieci publicznej. Podczas dostępu do sieci jest ograniczone do węzłów wyszukiwania, nadal zaleca się użycie dużą liczbą, aby uniknąć kolizji.|5 - 999,999,999| 10101010
 Blok genesis niestandardowe|Opcję, aby automatycznie wygenerować bloku genesis lub podaj niestandardowego.|Tak/Nie| Nie
-Hasło do konta Ethereum (bloku genesis niestandardowe = No)|Hasło administratora, używany do zabezpieczania konta Ethereum zaimportowane do każdego węzła. Hasło musi zawierać następujące informacje: 1 Wielka litera, 1 małą literę i numer 1.|co najmniej 12 znaków.|Nie dotyczy
-Hasło klucza prywatnego Ethereum (niestandardowe genesis bloku = No)|Hasło używane do generowania klucza prywatnego ECC skojarzone z kontem Ethereum domyślny, który jest generowany. Wcześniej wygenerowany klucz prywatny nie musi jawnie przekazać.<br /><br />Za pomocą losowości wystarczającą do zapewnienia silnego klucza prywatnego i bez nakładania się z innymi członkami konsorcjum, należy wziąć pod uwagę hasła. Hasło musi zawierać na co najmniej następujących: 1 Wielka litera, 1 małą literę i numer 1.<br /><br />Należy pamiętać o tym, jeśli dwa elementy członkowskie, użyj tego samego hasła konta generowane będą takie same. Hasło jest przydatne, jeśli jednej organizacji jest w trakcie wdrażania w różnych regionach i chce udostępnić na jednym koncie (monet podstawowej) we wszystkich węzłach.|co najmniej 12 znaków.|Nie dotyczy
+Hasło do konta Ethereum (bloku genesis niestandardowe = No)|Hasło administratora, używany do zabezpieczania konta Ethereum zaimportowane do każdego węzła. Hasło musi zawierać: 1 Wielka litera, 1 małą literę i numer 1.|co najmniej 12 znaków.|Nie dotyczy
+Hasło klucza prywatnego Ethereum (niestandardowe genesis bloku = No)|Hasło używane do generowania klucza prywatnego ECC skojarzone z kontem Ethereum domyślny, który jest generowany. Wcześniej wygenerowany klucz prywatny nie musi jawnie przekazać.<br /><br />Za pomocą losowości wystarczającą do zapewnienia silnego klucza prywatnego i bez nakładania się z innymi członkami konsorcjum, należy wziąć pod uwagę hasła. Hasło musi zawierać co najmniej: 1 Wielka litera, 1 małą literę i numer 1.<br /><br />Należy pamiętać o tym, jeśli dwa elementy członkowskie, użyj tego samego hasła konta generowane będą takie same. Hasło jest przydatne, jeśli jednej organizacji jest w trakcie wdrażania w różnych regionach i chce udostępnić na jednym koncie (monet podstawowej) we wszystkich węzłach.|co najmniej 12 znaków.|Nie dotyczy
 Genesis block (Blokuj genesis niestandardowe = Yes)|Ciąg JSON reprezentujący niestandardowe genesis bloku. Szczegółowe informacje na temat formatu bloku genesis w tym miejscu można znaleźć w sekcji sieci niestandardowe.<br /><br />Nadal zostanie utworzone konto Ethereum podczas podawania bloku genesis niestandardowych. Należy wziąć pod uwagę, określając prefunded konta Ethereum w bloku genesis nie oczekiwania wyszukiwania.|Valid JSON |Nie dotyczy
 Wspólny klucz połączenia|Klucz współużytkowany dla połączenia między bramami sieci Wirtualnej.| co najmniej 12 znaków.|Nie dotyczy
 Adres URL danych konsorcjum|Adres URL wskazujący konsorcjum odpowiednie dane konfiguracji, dostarczone przez innego użytkownika wdrożenia. <br /><br />Te informacje, znajduje się już połączoną elementu członkowskiego, który ma wdrożenia. Jeśli wdrożono pozostałej części sieci, adres URL jest szablon wdrożenia danych wyjściowych o nazwie konsorcjum danych.||Nie dotyczy
@@ -154,7 +152,7 @@ Klucz elementu równorzędnego informacji rejestratora|Klucz podstawowy informac
 
 ### <a name="summary"></a>Podsumowanie
 
-Kliknij blok podsumowania, aby wyświetlić dane wejściowe określone, a także aby uruchomić podstawową walidację przed wdrożeniem.
+Klikaj elementy podsumowanie, aby wyświetlić dane wejściowe określone, a także aby uruchomić podstawową walidację przed wdrożeniem.
 
 ![Podsumowanie](./media/ethereum-deployment/summary.png)
 

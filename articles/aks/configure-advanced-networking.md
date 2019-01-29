@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 943c0d4eb25fad1282b3329b945ded45581aeba3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: bee4bb74733f2142ad450dd53de0686f30ac2bbc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994553"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181847"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Skonfiguruj zaawansowane funkcje sieciowe w usłudze Azure Kubernetes Service (AKS)
 
@@ -68,9 +68,9 @@ Maksymalna liczba zasobników w każdym węźle w klastrze AKS wynosi 110. *Domy
 
 Możesz skonfigurować maksymalną liczbę zasobników w każdym węźle *tylko w czasie wdrażania klastra*. W przypadku wdrożenia przy użyciu wiersza polecenia platformy Azure lub przy użyciu szablonu usługi Resource Manager, można ustawić maksymalny zasobników na możliwie jak 110 wartość węzła.
 
-* **Wiersza polecenia platformy Azure**: Określ `--max-pods` argumentu, w przypadku wdrażania klastra za pomocą [tworzenie az aks] [ az-aks-create] polecenia. Maksymalna wartość wynosi 110.
+* **Interfejs wiersza polecenia platformy Azure**: Określ `--max-pods` argumentu, w przypadku wdrażania klastra za pomocą [tworzenie az aks] [ az-aks-create] polecenia. Maksymalna wartość wynosi 110.
 * **Szablon usługi Resource Manager**: Określ `maxPods` właściwość [ManagedClusterAgentPoolProfile] obiektu w przypadku wdrażania klastra za pomocą szablonu usługi Resource Manager. Maksymalna wartość wynosi 110.
-* **Witryna Azure portal**: nie można zmienić maksymalną liczbę zasobników w każdym węźle, w przypadku wdrażania klastra za pomocą witryny Azure portal. Zaawansowane sieci klastrów są ograniczone do 30 zasobniki w każdym węźle, gdy wdrażasz za pomocą witryny Azure portal.
+* **Witryna Azure portal**: Nie można zmienić maksymalną liczbę zasobników w każdym węźle, w przypadku wdrażania klastra za pomocą witryny Azure portal. Zaawansowane sieci klastrów są ograniczone do 30 zasobniki w każdym węźle, gdy wdrażasz za pomocą witryny Azure portal.
 
 ### <a name="configure-maximum---existing-clusters"></a>Konfigurowanie maksimum – istniejących klastrów
 
@@ -80,11 +80,11 @@ Nie można zmienić maksymalną zasobników w każdym węźle w istniejącym kla
 
 Podczas tworzenia klastra usługi AKS, można skonfigurować, aby uzyskać zaawansowane funkcje sieciowe są następujące parametry:
 
-**Sieć wirtualna**: sieci wirtualnej, w której chcesz wdrożyć klaster usługi Kubernetes. Aby utworzyć nową sieć wirtualną dla klastra, należy zaznaczyć *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz sieć wirtualną* sekcji. Aby uzyskać informacji na temat limity i przydziały dla sieci wirtualnej platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+**Sieć wirtualna**: Sieć wirtualna, w której chcesz wdrożyć klaster usługi Kubernetes. Aby utworzyć nową sieć wirtualną dla klastra, należy zaznaczyć *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz sieć wirtualną* sekcji. Aby uzyskać informacji na temat limity i przydziały dla sieci wirtualnej platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
-**Podsieci**: podsieci w sieci wirtualnej, której chcesz wdrożyć w klastrze. Jeśli chcesz utworzyć nową podsieć w sieci wirtualnej dla klastra, wybierz opcję *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz podsieć* sekcji. Łączność hybrydowa zakres adresów nie mogą nakładać się z innymi sieciami wirtualnymi w danym środowisku.
+**Podsieć**: Podsieć w sieci wirtualnej, której chcesz wdrożyć w klastrze. Jeśli chcesz utworzyć nową podsieć w sieci wirtualnej dla klastra, wybierz opcję *Utwórz nową* i postępuj zgodnie z instrukcjami w *Utwórz podsieć* sekcji. Łączność hybrydowa zakres adresów nie mogą nakładać się z innymi sieciami wirtualnymi w danym środowisku.
 
-**Zakres adresów usługi platformy Kubernetes**: jest to zestaw wirtualnych adresów IP, który przypisuje Kubernetes [usług] [ services] w klastrze. Można użyć dowolnego zakresu prywatnego adresu, który spełnia następujące wymagania:
+**Zakres adresów usługi platformy Kubernetes**: Jest to zestaw wirtualnych adresów IP, który przypisuje Kubernetes [usług] [ services] w klastrze. Można użyć dowolnego zakresu prywatnego adresu, który spełnia następujące wymagania:
 
 * Nie może być w zakresie adresów IP sieci wirtualnej klastra
 * Nie może pokrywać z innymi sieciami wirtualnymi, z którymi łączy równorzędnie sieć wirtualna klastra
@@ -93,9 +93,9 @@ Podczas tworzenia klastra usługi AKS, można skonfigurować, aby uzyskać zaawa
 
 Chociaż jest technicznie możliwe określić zakres adresów usługi, w ramach tej samej sieci wirtualnej co klaster, to nie jest to zalecane. Jeśli nakładających się zakresów adresów IP są używane, może spowodować nieprzewidywalne zachowanie. Aby uzyskać więcej informacji, zobacz [— często zadawane pytania](#frequently-asked-questions) dalszej części tego artykułu. Aby uzyskać więcej informacji na temat usługi Kubernetes, zobacz [usług] [ services] w dokumentacji platformy Kubernetes.
 
-**Adres IP usługi DNS platformy Kubernetes**: adres IP usługi DNS klastra. Adres ten musi być *zakresu adresów usługi platformy Kubernetes*. Nie używaj pierwszego adresu IP z zakresu adresów, takich jak.1. Pierwszy adres z zakresu podsieci jest używany do *kubernetes.default.svc.cluster.local* adresu.
+**Adres IP usługi DNS platformy Kubernetes**:  Adres IP usługi DNS klastra. Adres ten musi być *zakresu adresów usługi platformy Kubernetes*. Nie używaj pierwszego adresu IP z zakresu adresów, takich jak.1. Pierwszy adres z zakresu podsieci jest używany do *kubernetes.default.svc.cluster.local* adresu.
 
-**Adres mostka platformy docker**: adres IP i maska sieci można przypisać do mostka platformy Docker. Ten adres IP nie musi być w zakresie adresów IP sieci wirtualnej klastra.
+**Adres mostka platformy docker**: Adres IP i maska sieci można przypisać do mostka platformy Docker. Ten adres IP nie musi być w zakresie adresów IP sieci wirtualnej klastra.
 
 ## <a name="configure-networking---cli"></a>Konfigurowanie sieci — interfejs wiersza polecenia
 
@@ -164,7 +164,7 @@ Dowiedz się więcej na temat sieci w usłudze AKS w następujących artykułach
 
 ### <a name="aks-engine"></a>Aparat usługi AKS
 
-[Aparat usługi w usłudze Azure Kubernetes (aparat AKS)] [ aks-engine] to projekt typu open source, który generuje szablony usługi Azure Resource Manager umożliwia wdrażanie klastrów z obsługą platformy Docker na platformie Azure. Kubernetes, DC/OS, Swarm tryb i Swarm koordynatorów można wdrożyć przy użyciu aparatu usługi AKS.
+[Aparat usługi w usłudze Azure Kubernetes (aparat AKS)] [ aks-engine] to projekt typu open source, który generuje szablony usługi Azure Resource Manager umożliwia wdrażanie klastrów Kubernetes na platformie Azure.
 
 Klastry Kubernetes utworzonych za pomocą aparatu AKS obsługiwać zarówno [wtyczki kubenet] [ kubenet] i [wtyczki Azure CNI] [ cni-networking] wtyczek. W efekcie podstawowe i zaawansowane scenariusze sieciowe są obsługiwane przez aparat usługi AKS.
 

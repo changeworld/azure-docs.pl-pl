@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: cb47b3933ecb6e38aa7945ac7f81f7602a0c8034
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321295"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192540"
 ---
 # <a name="calchistogram-method"></a>Metoda CalcHistogram
 
@@ -30,30 +30,30 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
   
 ## <a name="request-parameters"></a>Parametry żądania
 
-Name (Nazwa)  |Wartość | Wymagana?  |Opis
+Name  |Value | Wymagana?  |Opis
 -----------|----------|--------|----------
 **expr**    |Ciąg tekstowy | Yes  |Wyrażenie zapytania, które określa jednostki, względem którego ma zostać obliczanie histogramów.
-**Model** |Ciąg tekstowy | Nie |Wybierz nazwę modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.
+**model** |Ciąg tekstowy | Nie |Wybierz nazwę modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.
 **Atrybuty** | Ciąg tekstowy | Nie<br>Wartość domyślna: | Listę rozdzielonych przecinkami, która określa wartości atrybutów, które znajdują się w odpowiedzi. Nazwy atrybutów jest rozróżniana wielkość liter.
-**count** |Liczba | Nie<br>Domyślnie: 10 |Liczba wyników do zwrócenia.
-**offset**  |Liczba | Nie<br>Domyślna: 0 |Indeks pierwszego wyniku do zwrócenia.
-**limit czasu**  |Liczba | Nie<br>Domyślnie: 1000 |Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
+**count** |Liczba | Nie<br>Domyślne: 10 |Liczba wyników do zwrócenia.
+**offset**  |Liczba | Nie<br>Domyślne: 0 |Indeks pierwszego wyniku do zwrócenia.
+**limit czasu**  |Liczba | Nie<br>Domyślne: 1000 |Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
 
 ## <a name="response-json"></a>Odpowiedź (JSON)
 
-Name (Nazwa) | Opis
+Name | Opis
 --------|---------
 **expr**  |Parametr wyrażenie z żądania.
 **num_entities** | Łączna liczba zgodnych jednostek.
-**histogramy** |  Tablica histogramów, jeden dla każdego atrybutu określona w żądaniu.
-**.attribute histogramy [x]** | Nazwa atrybutu, względem której została obliczona histogram.
-**.distinct_values histogramy [x]** | Liczba unikatowych wartości między dopasowania jednostek dla tego atrybutu.
-**.total_count histogramy [x]** | Całkowita liczba wystąpień wartość między dopasowania jednostek dla tego atrybutu.
-**.histogram histogramy [x]** | Histogram dane dla tego atrybutu.
-**histogramy [x] .value .histogram [t]** |  Wartość atrybutu.
-**histogramy [.logprob .histogram [t] x]**  |Łączna liczba logarytmu naturalnego prawdopodobieństwo, że dopasowanie jednostki z wartością tego atrybutu.
-**histogramy [.count .histogram [t] x]**  |Liczba zgodne jednostki z wartością tego atrybutu.
-**Zostało przerwane** | Wartość true, jeśli upłynął limit czasu żądania.
+**histograms** |  Tablica histogramów, jeden dla każdego atrybutu określona w żądaniu.
+**histograms[x].attribute** | Nazwa atrybutu, względem której została obliczona histogram.
+**histograms[x].distinct_values** | Liczba unikatowych wartości między dopasowania jednostek dla tego atrybutu.
+**histograms[x].total_count** | Całkowita liczba wystąpień wartość między dopasowania jednostek dla tego atrybutu.
+**histograms[x].histogram** | Histogram dane dla tego atrybutu.
+**histograms[x].histogram[y].value** |  Wartość atrybutu.
+**histograms[x].histogram[y].logprob**  |Łączna liczba logarytmu naturalnego prawdopodobieństwo, że dopasowanie jednostki z wartością tego atrybutu.
+**histograms[x].histogram[y].count**  |Liczba zgodne jednostki z wartością tego atrybutu.
+**aborted** | Wartość true, jeśli upłynął limit czasu żądania.
 
 
 #### <a name="example"></a>Przykład:

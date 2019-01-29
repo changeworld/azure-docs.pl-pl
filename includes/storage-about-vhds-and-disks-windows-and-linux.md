@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 76ccbb3eabbf7186498ad0d57753314bdeffc2ea
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: aa740cfb203f50dc97a06359774dae367a20252b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585786"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148072"
 ---
 ## <a name="about-vhds"></a>Informacje o wirtualnych dyskach twardych
 
@@ -71,6 +71,6 @@ Poniższa tabela zawiera porównanie standardowych dysków Twardych, SSD w warst
 | Typ dysku | Dyski półprzewodnikowe (SSD) | Dyski półprzewodnikowe (SSD) | Dyski twarde (HDD)  
 | Przegląd  | Pamięć dyskowa o wysokiej wydajności i małych opóźnieniach, bazująca na dyskach SSD, przeznaczona dla maszyn wirtualnych uruchamiających obciążenia intensywnie korzystające z operacji wejścia/wyjścia lub hostujących środowisko produkcyjne o znaczeniu krytycznym |Bardziej spójną wydajność i niezawodność niż dysk twardy. Zoptymalizowane pod kątem obciążeń niska-operacje We/Wy| Oparte na dysk twardy ekonomiczne dysku rzadki dostęp
 | Scenariusz  | Obciążenia produkcyjne i wrażliwe na wydajność |Serwery sieci Web, aplikacje dla przedsiębiorstw używana w niewielkim stopniu oraz tworzenia i testowania| Kopia zapasowa, niekrytyczne, rzadki dostęp
-| Rozmiar dysku | P4: 32 GiB (tylko w przypadku dysków zarządzanych)<br>Poziom P6 odpowiada: 64 GiB (tylko w przypadku dysków zarządzanych)<br>P10: 128 GiB<br>P15: 256 GiB (tylko w przypadku dysków zarządzanych)<br>P20: 512 GiB<br>P30: GiB 1024<br>P40: 2048 GiB<br>P50: 4095 GiB<br>P60: GiB 8192 * (8 TiB)<br>P70: 16 384 GiB * (16 TiB)<br>P80: GiB 32 767 * (32 TiB) |Tylko dyski zarządzane:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: GiB 1024<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: GiB 8192 * (8 TiB)<br>E70: 16 384 GiB * (16 TiB)<br> E80: GiB 32 767 * (32 TiB) | Dyski niezarządzane: 1 GiB — 4 TiB (4095 GiB) <br><br>Dyski zarządzane:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: GiB 1024 <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: GiB 8192 * (8 TiB)<br>S70: 16 384 GiB * (16 TiB)<br>S80: GiB 32 767 * (32 TiB)
-| Maksymalna przepływność na dysk | P4: 25 MiB/s<br> Poziom P6 odpowiada: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 125 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40 P50: 250 MiB/s<br> P60: 480 MiB/s *<br> P70 P80: 750 MiB/s * | E10 E50: Maksymalnie 60 MiB/s<br> E60: maksymalnie 300 MiB/s *<br> E70 E80: 500 MiB/s *| S4 — S50: Upt o 60 MiB/s<br> S60: maksymalnie 300 MiB/s *<br> S70 S80: maksymalnie 500 MiB/s *
-| Maksymalna liczba operacji wejścia/wyjścia na dysk | P4: 120 OPERACJE WE/WY<br> P6: 240 OPERACJE WE/WY<br> P10: 500 OPERACJI WE/WY<br> P15: OPERACJE WE/WY DLA 1100<br> P20: OPERACJE WE/WY DLA 2300<br> P30: 5000 OPERACJI WE/WY<br> P40 P50: 7500 OPERACJI WE/WY<br> P60: 12 500 OPERACJI WE/WY *<br> P70: 15 000 OPERACJE WE/WY *<br> P80: 20 000 IOPS * | E10 E50: Maksymalnie 500 operacji We/Wy<br> E60: maksymalnie 1300 operacje We/Wy *<br> E70 E80: maksymalnie 2000 operacji We/Wy * | S4 — S50: Maksymalnie 500 operacji We/Wy<br> S60: maksymalnie 1300 operacje We/Wy *<br> S70 S80: maksymalnie 2000 operacji We/Wy *
+| Rozmiar dysku | P4: 32 giB (tylko w przypadku dysków zarządzanych)<br>P6: 64 giB (tylko w przypadku dysków zarządzanych)<br>P10: 128 GiB<br>P15: 256 giB (tylko w przypadku dysków zarządzanych)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4,095 GiB<br>P60: 8192 giB * (8 TiB)<br>P70: 16,384 GiB * (16 TiB)<br>P80: 32 767 giB * (32 TiB) |Tylko dyski zarządzane:<br>E4: 32 GiB<br>E6: 64 GiB<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8192 giB * (8 TiB)<br>E70: 16,384 GiB * (16 TiB)<br> E80: 32 767 giB * (32 TiB) | Dyski niezarządzane: 1 GiB – 4 TiB (4095 GiB) <br><br>Dyski zarządzane:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8192 giB * (8 TiB)<br>S70: 16,384 GiB * (16 TiB)<br>S80: 32 767 giB * (32 TiB)
+| Maksymalna przepływność na dysk | P4: 25 MiB/s<br> P6: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 125 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40-P50: 250 MiB/s<br> P60: 480 MiB/s *<br> P70-P80: 750 MiB/s * | E10-E50: Maksymalnie 60 MiB/s<br> E60: Maksymalnie 300 MiB/s *<br> E70-E80: 500 MiB/s *| S4 - S50: O 60 Upt MiB/s<br> S60: Maksymalnie 300 MiB/s *<br> S70-S80: Maks. 500 MiB/s *
+| Maksymalna liczba operacji wejścia/wyjścia na dysk | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100 IOPS<br> P20: 2300 IOPS<br> P30: 5000 IOPS<br> P40-P50: 7500 IOPS<br> P60: 12 500 OPERACJI WE/WY *<br> P70: 15 000 OPERACJI WE/WY *<br> P80: 20 000 OPERACJI WE/WY * | E10-E50: Maks. 500 operacji We/Wy<br> E60: Maksymalnie 1300 operacje We/Wy *<br> E70-E80: Maksymalnie 2000 operacji We/Wy * | S4-S50: Maks. 500 operacji We/Wy<br> S60: Maksymalnie 1300 operacje We/Wy *<br> S70-S80: Maksymalnie 2000 operacji We/Wy *

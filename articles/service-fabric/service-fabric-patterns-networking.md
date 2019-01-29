@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2fce90f971d13b94c73012d4089cca05739c5440
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 7f6e95b28482ed6d75bb76773da05aebd1855a66
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853714"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093397"
 ---
 # <a name="service-fabric-networking-patterns"></a>Wzorce sieci usługi Service Fabric
 Klaster usługi Azure Service Fabric można zintegrować z inne funkcje sieci platformy Azure. W tym artykule pokazujemy, jak tworzyć klastry, korzystających z następujących funkcji:
@@ -81,7 +81,7 @@ W przykładach w tym artykule używamy template.json usługi Service Fabric. Mo�
 
 1. Zmień wartość parametru podsieci nazwę istniejącej podsieci, a następnie dodaj dwa nowe parametry, aby odwoływać się do istniejącej sieci wirtualnej:
 
-    ```
+    ```json
         "subnet0Name": {
                 "type": "string",
                 "defaultValue": "default"
@@ -108,26 +108,26 @@ W przykładach w tym artykule używamy template.json usługi Service Fabric. Mo�
 
 2. Komentarz `nicPrefixOverride` atrybutu `Microsoft.Compute/virtualMachineScaleSets`, ponieważ w przypadku korzystania z istniejącej podsieci i wyłączono tej zmiennej w kroku 1.
 
-    ```
+    ```json
             /*"nicPrefixOverride": "[parameters('subnet0Prefix')]",*/
     ```
 
 3. Zmiana `vnetID` zmiennej, aby wskazywała istniejącą sieć wirtualną:
 
-    ```
+    ```json
             /*old "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",*/
             "vnetID": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingVNetRGName'), '/providers/Microsoft.Network/virtualNetworks/', parameters('existingVNetName'))]",
     ```
 
 4. Usuń `Microsoft.Network/virtualNetworks` z Twoich zasobów, dlatego Azure nie tworzy nową sieć wirtualną:
 
-    ```
+    ```json
     /*{
     "apiVersion": "[variables('vNetApiVersion')]",
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
     "location": "[parameters('computeLocation')]",
-    "properities": {
+    "properties": {
         "addressSpace": {
             "addressPrefixes": [
                 "[parameters('addressPrefix')]"
@@ -151,7 +151,7 @@ W przykładach w tym artykule używamy template.json usługi Service Fabric. Mo�
 
 5. Komentarz dla sieci wirtualnej z `dependsOn` atrybutu `Microsoft.Compute/virtualMachineScaleSets`, dzięki czemu użytkownik nie należy polegać na temat tworzenia nowej sieci wirtualnej:
 
-    ```
+    ```json
     "apiVersion": "[variables('vmssApiVersion')]",
     "type": "Microsoft.Computer/virtualMachineScaleSets",
     "name": "[parameters('vmNodeType0Name')]",
@@ -185,7 +185,7 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
 
 1. Dodawanie parametrów nazwę istniejącej grupy zasobów statycznych adresów IP, nazwy i w pełni kwalifikowaną nazwę domeny (FQDN):
 
-    ```
+    ```json
     "existingStaticIPResourceGroup": {
                 "type": "string"
             },
@@ -199,7 +199,7 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
 
 2. Usuń `dnsName` parametru. (Statyczny adres IP już ma jeden).
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -209,13 +209,13 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
 
 3. Dodawanie zmiennej można odwoływać się do istniejącego statyczny adres IP:
 
-    ```
+    ```json
     "existingStaticIP": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', parameters('existingStaticIPResourceGroup'), '/providers/Microsoft.Network/publicIPAddresses/', parameters('existingStaticIPName'))]",
     ```
 
 4. Usuń `Microsoft.Network/publicIPAddresses` z Twoich zasobów, dlatego Azure nie tworzy nowego adresu IP:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -237,7 +237,7 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
 
 5. Komentarz do adresu IP z `dependsOn` atrybutu `Microsoft.Network/loadBalancers`, dzięki czemu użytkownik nie należy polegać na utworzenie nowego adresu IP:
 
-    ```
+    ```json
     "apiVersion": "[variables('lbIPApiVersion')]",
     "type": "Microsoft.Network/loadBalancers",
     "name": "[concat('LB', '-', parameters('clusterName'), '-', parameters('vmNodeType0Name'))]",
@@ -251,7 +251,7 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
 
 6. W `Microsoft.Network/loadBalancers` zasobów, zmień `publicIPAddress` elementu `frontendIPConfigurations` można odwoływać się do istniejącego statyczny adres IP zamiast nowo utworzony:
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -267,7 +267,7 @@ Inny przykład, zobacz [taki, który nie jest specyficzne dla usługi Service Fa
 
 7. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` do nazwy FQDN DNS statyczny adres IP. Jeśli używasz zabezpieczonego klastra upewnij się, możesz zmienić *http://* do *https://*. (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',parameters('existingStaticIPDnsFQDN'),':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -294,7 +294,7 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
 
 1. Usuń `dnsName` parametru. (Nie jest potrzebna.)
 
-    ```
+    ```json
     /*
     "dnsName": {
         "type": "string"
@@ -304,7 +304,7 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
 
 2. Opcjonalnie Jeśli używasz metody alokacji statycznej, można dodać parametrem statyczny adres IP. Jeśli używasz metody dynamicznej alokacji, nie musisz wykonać ten krok.
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -313,7 +313,7 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
 
 3. Usuń `Microsoft.Network/publicIPAddresses` z Twoich zasobów, dlatego Azure nie tworzy nowego adresu IP:
 
-    ```
+    ```json
     /*
     {
         "apiVersion": "[variables('publicIPApiVersion')]",
@@ -335,7 +335,7 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
 
 4. Usuń adres IP `dependsOn` atrybutu `Microsoft.Network/loadBalancers`, dzięki czemu użytkownik nie należy polegać na utworzenie nowego adresu IP. Dodaj sieć wirtualną `dependsOn` atrybutu, ponieważ moduł równoważenia obciążenia zależy od teraz podsieci z sieci wirtualnej:
 
-    ```
+    ```json
                 "apiVersion": "[variables('lbApiVersion')]",
                 "type": "Microsoft.Network/loadBalancers",
                 "name": "[concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'))]",
@@ -348,7 +348,7 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
 
 5. Zmiana modułu równoważenia obciążenia `frontendIPConfigurations` ustawienie z przy użyciu `publicIPAddress`, za pomocą podsieci i `privateIPAddress`. `privateIPAddress` używa wstępnie zdefiniowanych statyczne wewnętrzne adresy IP. Aby użyć dynamicznego adresu IP, Usuń `privateIPAddress` elementu, a następnie zmień `privateIPAllocationMethod` do **dynamiczne**.
 
-    ```
+    ```json
                 "frontendIPConfigurations": [
                         {
                             "name": "LoadBalancerIPConfig",
@@ -369,7 +369,7 @@ W tym scenariuszu zamienia zewnętrznym modułem równoważenia obciążenia w s
 
 6. W `Microsoft.ServiceFabric/clusters` zasobów, zmień `managementEndpoint` wskaż adres usługi równoważenia obciążenia wewnętrznego. Jeśli korzystasz z zabezpieczonym klastrem, upewnij się, możesz zmienić *http://* do *https://*. (Zwróć uwagę, że ten krok ma zastosowanie tylko w klastrach usługi Service Fabric. Jeśli używasz zestawu skalowania maszyn wirtualnych, Pomiń ten krok).
 
-    ```
+    ```json
                     "fabricSettings": [],
                     /*"managementEndpoint": "[concat('http://',reference(concat(parameters('lbIPName'),'-','0')).dnsSettings.fqdn,':',parameters('nt0fabricHttpGatewayPort'))]",*/
                     "managementEndpoint": "[concat('http://',reference(variables('lbID0')).frontEndIPConfigurations[0].properties.privateIPAddress,':',parameters('nt0fabricHttpGatewayPort'))]",
@@ -394,7 +394,7 @@ W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem r
 
 1. Dodaj parametr adres IP modułu równoważenia statycznego wczytywnia wewnętrznego. (Aby uzyskać informacje powiązane z użyciem dynamiczny adres IP, zobacz wcześniejsze sekcje w tym artykule).
 
-    ```
+    ```json
             "internalLBAddress": {
                 "type": "string",
                 "defaultValue": "10.0.0.250"
@@ -405,7 +405,7 @@ W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem r
 
 3. Dodaj wewnętrzne wersje istniejących sieci zmiennych, skopiuj i wklej je, a następnie dodaj "-Int" do nazwy:
 
-    ```
+    ```json
     /* Add internal load balancer networking variables */
             "lbID0-Int": "[resourceId('Microsoft.Network/loadBalancers', concat('LB','-', parameters('clusterName'),'-',parameters('vmNodeType0Name'), '-Internal'))]",
             "lbIPConfig0-Int": "[concat(variables('lbID0-Int'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -418,7 +418,7 @@ W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem r
 
 4. W przypadku uruchomienia przy użyciu szablonu wygenerowanych przez portal, która korzysta z aplikacji portu 80, domyślnego szablonu portalu dodaje AppPort1 (port 80) w module równoważenia obciążenia zewnętrznych. W takim przypadku usuń AppPort1 z zewnętrznym modułem równoważenia obciążenia `loadBalancingRules` sond i, dzięki czemu można dodać go do wewnętrznego modułu równoważenia obciążenia:
 
-    ```
+    ```json
     "loadBalancingRules": [
         {
             "name": "LBHttpRule",
@@ -495,7 +495,7 @@ W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem r
 
 5. Dodaj drugą `Microsoft.Network/loadBalancers` zasobów. Będzie on podobny do wewnętrznego modułu równoważenia obciążenia utworzony w [tylko do wewnętrznego równoważenia](#internallb) sekcji, ale używa "-Int" zmiennych modułu równoważenia obciążenia i implementuje tylko aplikacji port 80. Spowoduje to również usunięcie `inboundNatPools`, aby zachować punktów końcowych protokołu RDP na publiczny moduł równoważenia obciążenia. Protokół RDP na wewnętrznego modułu równoważenia obciążenia, przenieść `inboundNatPools` z zewnętrznego module równoważenia obciążenia do tego wewnętrznego modułu równoważenia obciążenia:
 
-    ```
+    ```json
             /* Add a second load balancer, configured with a static privateIPAddress and the "-Int" load balancer variables. */
             {
                 "apiVersion": "[variables('lbApiVersion')]",
@@ -580,7 +580,7 @@ W klastrze typu węzła dwóch jeden typ węzła jest na zewnętrznym modułem r
 
 6. W `networkProfile` dla `Microsoft.Compute/virtualMachineScaleSets` zasobu, Dodawanie puli adresów zaplecza wewnętrznego:
 
-    ```
+    ```json
     "loadBalancerBackendAddressPools": [
                                                         {
                                                             "id": "[variables('lbPoolID0')]"

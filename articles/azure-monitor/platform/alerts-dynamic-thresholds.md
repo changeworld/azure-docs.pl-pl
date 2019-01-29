@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 4024ecddde4b0d020e2c657214a4a258ea0b2ea5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449014"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097813"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Alerty metryk z dynamicznymi progami w usłudze Azure Monitor (publiczna wersja zapoznawcza)
 
@@ -21,7 +21,7 @@ Alert dotyczący metryki z dynamicznymi progami wykrywania korzysta z zaawansowa
 
 Po utworzeniu reguły alertu jego uruchomienie nastąpi tylko, gdy monitorowane metryki nie działa zgodnie z oczekiwaniami, na podstawie jego progów dostosowanych do potrzeb.
 
-Chętnie poznamy Twoją opinię i zapewnić jej mieszczących się na azurealertsfeedback@microsoft.com.
+Chętnie poznamy Twoją opinię i zapewnić jej mieszczących się na <azurealertsfeedback@microsoft.com>.
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Kiedy i dlaczego jest przy użyciu typu warunek dynamiczny, zaleca się?
 
@@ -37,7 +37,7 @@ Alerty z dynamicznymi progami można skonfigurować za pomocą alertów metryk w
 
 ## <a name="how-are-the-thresholds-calculated"></a>Jak są obliczane progi
 
-Próg dynamiczny ciągle uczy się dane metryk serii próbuje modelu za pomocą zestawu algorytmów i metod. i próbuje go za pomocą zestawu algorytmów i metod modelu. Wykrywa wzorce w danych, takich jak sezonowość (co godzinę / codziennie / co tydzień) i będzie mogło obsłużyć generujące dużo alertów metryk (np. maszyn procesora CPU lub pamięci) oraz metryki o niskim rozproszenia (np. wskaźnik dostępności i błędów).
+Dynamicznymi progami ciągle uczy się dane serii metryki i próbuje go za pomocą zestawu algorytmów i metod modelu. Wykrywa wzorce w danych, takich jak sezonowość (co godzinę / codziennie / co tydzień) i będzie mogło obsłużyć generujące dużo alertów metryk (np. maszyn procesora CPU lub pamięci) oraz metryki o niskim rozproszenia (np. wskaźnik dostępności i błędów).
 
 Progi są zaznaczone w taki sposób, że odchylenie od tych progów wskazuje anomalii zachowania metryki.
 
@@ -80,3 +80,80 @@ Prawdopodobnie nie. Dynamicznymi progami dla zastosowań dobre są wykrywanie zn
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Jak dużo danych jest używane do przeglądania i następnie obliczyć progi?
 
 Progi pojawiające się na wykresie, przed utworzeniem reguły alertu na metryce, są obliczane na podstawie w ciągu ostatnich 10 dni dla danych historycznych, po utworzeniu reguły alertu dynamicznymi progami spowoduje nabyć dodatkowe dane historyczne, która jest dostępna i zostanie stale Dowiedz się, na podstawie nowych danych umożliwiają bardziej precyzyjne progów.
+
+## <a name="dynamic-thresholds-best-practices"></a>Dynamiczne progi najlepszych rozwiązań.
+
+Dynamicznymi progami mogą być stosowane do dowolnej platformy lub metryk niestandardowych w usłudze Azure Monitor, a także została dostosowana dla typowych metryk aplikacji i infrastruktury.
+Następujące elementy są najlepsze rozwiązania dotyczące sposobu konfigurowania alertów dla niektórych z tych wskaźników przy użyciu dynamicznymi progami.
+
+### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dynamicznymi progami dotyczące metryk procent procesorów maszyny wirtualnej
+
+1. W [witryny Azure portal](https://portal.azure.com), kliknij pozycję **Monitor**. Widok monitora konsoliduje wszystkie ustawienia monitorowania i danych w jednym widoku.
+
+2. Kliknij przycisk **alerty** kliknięcie **+ Nowa reguła alertu**.
+
+    > [!TIP]
+    > Większość bloków zasobów również ma **alerty** w ich menu zasobów w ramach **monitorowanie**, alerty można utworzyć, także z niego.
+
+3. Kliknij przycisk **Wybieranie lokalizacji docelowej**, w okienku kontekstowym, który ładuje, zaznacz zasób docelowy, który ma zostać wyświetlony alert. Użyj **subskrypcji** i **typu zasobu "Maszyn wirtualnych"** list rozwijanych można znaleźć zasobu, który chcesz monitorować. Umożliwia także na pasku wyszukiwania można znaleźć zasobu.
+
+4. Po wybraniu zasobu docelowego kliknij **Dodaj warunek**.
+
+5. Wybierz **"Procent użycia procesora CPU"**.
+
+6. Opcjonalnie można dostosować metryki, dostosowując **okres** i **agregacji**. Zaleca się do użycia typ agregacji "Maximum" dla tego typu metryki, ponieważ jest mniej reprezentatywne zachowanie. "Maksymalna" progu statycznych typu agregacji może być więcej właściwe.
+
+7. Zostanie wyświetlony wykres metryki przez ostatnie 6 godzin. Zdefiniuj parametry alertu:
+    1. **Typ warunku** — wybierz opcję "Dynamic".
+    1. **Czułość** — wybierz umiarkowanym czułości w celu ograniczenia liczby niepotrzebnych alertów.
+    1. **Operator** — wybierz pozycję "Większe niż", chyba że zachowanie reprezentuje użycia aplikacji.
+    1. **Częstotliwość** — należy wziąć pod uwagę obniżenia oparte na działalność alertu.
+    1. **Niepowodzenie okresy** (opcja zaawansowana) — okno wstecz wygląd powinien być co najmniej 15 minut. Na przykład jeśli w okresie jest równa pięć minut, następnie kończy się niepowodzeniem okresów powinna być co najmniej trzech lub więcej.
+
+8. Wykresu metryki będą wyświetlane progi obliczony na podstawie ostatnich danych.
+
+9. Kliknij przycisk **Gotowe**.
+
+10. Wypełnij **szczegóły alertu** takich jak **Nazwa reguły alertu**, **opis**, i **ważność**.
+
+11. Dodawanie grupy akcji alertu, przez wybranie istniejącej grupy akcji lub tworzenia nowej grupy akcji.
+
+12. Kliknij przycisk **gotowe** można zapisać regułę alertu metryki.
+
+> [!NOTE]
+> Alert dotyczący metryki, zasady utworzone za pośrednictwem portalu są tworzone w tej samej grupie zasobów co zasób docelowy.
+
+### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dynamicznymi progami na czas wykonywania żądania HTTP szczegółowych informacji w aplikacji
+
+1. W [witryny Azure portal](https://portal.azure.com), kliknij pozycję **Monitor**. Widok monitora konsoliduje wszystkie ustawienia monitorowania i danych w jednym widoku.
+
+2. Kliknij przycisk **alerty** kliknięcie **+ Nowa reguła alertu**.
+
+    > [!TIP]
+    > Większość bloków zasobów również ma **alerty** w ich menu zasobów w ramach **monitorowanie**, alerty można utworzyć, także z niego.
+
+3. Kliknij przycisk **Wybieranie lokalizacji docelowej**, w okienku kontekstowym, który ładuje, zaznacz zasób docelowy, który ma zostać wyświetlony alert. Użyj **subskrypcji** i **typu zasobu "Application Insights"** list rozwijanych można znaleźć zasobu, który chcesz monitorować. Umożliwia także na pasku wyszukiwania można znaleźć zasobu.
+
+4. Po wybraniu zasobu docelowego kliknij **Dodaj warunek**.
+
+5. Wybierz **"Czas wykonywania żądania HTTP"**.
+
+6. Opcjonalnie można dostosować metryki, dostosowując **okres** i **agregacji**. Zaleca się do użycia typ agregacji "Maximum" dla tego typu metryki, ponieważ jest mniej reprezentatywne zachowanie. "Maksymalna" progu statycznych typu agregacji może być więcej właściwe.
+
+7. Zostanie wyświetlony wykres metryki przez ostatnie 6 godzin. Zdefiniuj parametry alertu:
+    1. **Typ warunku** — wybierz opcję "Dynamic".
+    1. **Operator** — wybierz pozycję "Większe niż", aby ograniczyć alerty wyzwalane na poprawę czas trwania.
+    1. **Częstotliwość** — należy wziąć pod uwagę obniżenia oparte na działalność alertu.
+
+8. Wykresu metryki będą wyświetlane progi obliczony na podstawie ostatnich danych.
+
+9. Kliknij przycisk **Gotowe**.
+
+10. Wypełnij **szczegóły alertu** takich jak **Nazwa reguły alertu**, **opis**, i **ważność**.
+
+11. Dodawanie grupy akcji alertu, przez wybranie istniejącej grupy akcji lub tworzenia nowej grupy akcji.
+
+12. Kliknij przycisk **gotowe** można zapisać regułę alertu metryki.
+
+> [!NOTE]
+> Alert dotyczący metryki, zasady utworzone za pośrednictwem portalu są tworzone w tej samej grupie zasobów co zasób docelowy.

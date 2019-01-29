@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4eb6850e4b6e267e0b4ef83f7639e90308cee989
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6df19f8d20853b569a2bc357e6c1115976a7de2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841442"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097975"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory w wersji 2.0 i poświadczeń hasła właściciela zasobów OAuth 2.0
 
@@ -58,10 +58,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane | Chcesz się zalogować użytkownika do dzierżawy katalogu. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID. Nie można ustawić ten parametr `common` lub `consumers`, ale może być ustawiona na `organizations`. |
-| `grant_type` | Wymagane | Musi być równa `password`. |
-| `username` | Wymagane | Adres e-mail użytkownika. |
-| `password` | Wymagane | Hasło użytkownika. |
+| `tenant` | Wymagany | Chcesz się zalogować użytkownika do dzierżawy katalogu. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID. Nie można ustawić ten parametr `common` lub `consumers`, ale może być ustawiona na `organizations`. |
+| `grant_type` | Wymagany | Musi być równa `password`. |
+| `username` | Wymagany | Adres e-mail użytkownika. |
+| `password` | Wymagany | Hasło użytkownika. |
 | `scope` | Zalecane | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md), lub uprawnienia, których wymaga aplikacja. Te zakresy muszą wyrażono zgodę wcześniej przez administratora lub przez użytkownika w przepływie interaktywne. |
 
 ### <a name="successful-authentication-response"></a>Pomyślne uwierzytelnienie odpowiedzi
@@ -97,7 +97,7 @@ Jeśli użytkownik udzielona poprawna nazwa użytkownika lub hasło lub nie odeb
 | Błąd | Opis | Akcja klienta |
 |------ | ----------- | -------------|
 | `invalid_grant` | Uwierzytelnianie nie powiodło się | Poświadczenia są niepoprawne lub klient nie ma wyrażania zgody dla żądanych zakresów. Jeśli zakresy nie są przyznawane, `consent_required` suberror zostaną zwrócone. W takim przypadku klient powinien wysłać użytkownika do monitu interakcyjnego przy użyciu widoku sieci Web lub w przeglądarce. |
-| `invalid_request` | Żądanie zostało nieprawidłowo skonstruowany. | Typ udzielania nie jest obsługiwana na `/common` lub `/consumers` kontekst uwierzytelniania.  Użyj `/organizations` zamiast tego. |
+| `invalid_request` | Żądanie zostało nieprawidłowo skonstruowany. | Typ udzielania nie jest obsługiwana na `/common` lub `/consumers` kontekst uwierzytelniania.  Zamiast nich należy używać słów kluczowych `/organizations`. |
 | `invalid_client` | Aplikacja jest nieprawidłowo skonfigurowana | Może się to zdarzyć, jeśli `allowPublicClient` właściwość nie jest ustawiona wartość true w [manifest aplikacji](reference-app-manifest.md). `allowPublicClient` Właściwość jest niezbędne, ponieważ przydział ROPC nie ma identyfikatora URI przekierowania. Usługa Azure AD nie może określić, jeśli aplikacja jest aplikacji publicznych klienta lub poufne klienta, chyba że właściwość jest ustawiona. Należy pamiętać, ROPC jest obsługiwana tylko w przypadku aplikacji publicznych klienta. |
 
 ## <a name="learn-more"></a>Dowiedz się więcej

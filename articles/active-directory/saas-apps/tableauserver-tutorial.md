@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: c1917375-08aa-445c-a444-e22e23fa19e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c727cddf41c269c214b541134cd9f688017ee687
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a68ffb867a738e11c9895416bbdf2009b268c0c6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789725"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155815"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Tableau Server
 
@@ -44,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Tableau Server, potrz
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -143,7 +143,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://azure.<domain name>.link`
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     ![image](./media/tableauserver-tutorial/tutorial-tableauserver-url.png)
      

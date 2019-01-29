@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 28eacdce922e26d391cf34f78cb03ead9c6887a1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 40f1790806aac6756979f28ad29442b7abf96019
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391270"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096895"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Użyj następny przeskok do diagnozowania problemów z routingiem maszyny wirtualnej
 
@@ -42,4 +42,4 @@ Aby dowiedzieć się więcej na temat każdego typu następnego przeskoku, zobac
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się, jak używać miejsca docelowego następnego skoku do diagnozowania problemów z routingiem maszyny Wirtualnej sieci, zobacz [diagnozowania sieci maszyny Wirtualnej problemy z routingiem](diagnose-vm-network-routing-problem.md).
+Aby dowiedzieć się, jak używać miejsca docelowego następnego skoku do diagnozowania problemów z routingiem maszyny Wirtualnej sieci, zobacz diagnozowanie problemów z routingiem przy użyciu sieci maszyny Wirtualnej [witryny Azure portal](diagnose-vm-network-routing-problem.md), [PowerShell](diagnose-vm-network-routing-problem-powershell.md), lub [wiersza polecenia platformy Azure](diagnose-vm-network-routing-problem-cli.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 6cba4e1fd9c9fe5fdaa7ff4513218a606a4eace9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215234"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194291"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Wprowadzenie do monitorowania kondycji usługi Service Fabric
 Usługa Azure Service Fabric wprowadza modelu kondycji, który umożliwia ocenę kondycji funkcjonalnej, elastyczny i rozszerzalny i raportowania. Model umożliwia monitorowanie stanu klastra i usługi działające w niej niemal w czasie rzeczywistym. Można łatwo uzyskać informacje o kondycji i rozwiązać potencjalne problemy zanim będą oni kaskadowo i spowodować ogromne awarii. W typowym modelu services wysłać raporty oparte na ich lokalnych widokach i że informacje mają charakter zapewnienie ogólną klastra na poziomie widoku.
@@ -68,7 +68,7 @@ Hierarchia health składa się z relacjami nadrzędny podrzędny. Klaster skład
 Hierarchia kondycji reprezentuje najnowszy stan systemu, w oparciu o najnowszych raportów kondycji, który jest prawie w czasie rzeczywistym informacje.
 W tych samych jednostek na podstawie logikę specyficzną dla aplikacji lub niestandardowe warunki monitorowanych zgłosić watchdogs wewnętrznych i zewnętrznych. Raporty użytkownika współistnieć z raportami systemu.
 
-Należy zaplanować i inwestowania w sposób tworzenie raportów i reagować na kondycji podczas projektowania usługi w chmurze dużych. Ta ponoszonych z góry inwestycyjny sprawia, że usługa jest łatwiejszy do debugowania, monitorowanie i obsługiwanie.
+Należy zaplanować i inwestowania w sposób tworzenie raportów i reagować na kondycji podczas projektowania usługi w chmurze dużych. Ta początkowych inwestycji sprawia, że usługa jest łatwiejszy do debugowania, monitorowanie i obsługiwanie.
 
 ## <a name="health-states"></a>Stany kondycji
 Usługa Service Fabric używa trzech stanów kondycji do opisywania, czy jednostka jest dobrej kondycji: OK, ostrzeżeń i błędów. Każdy raport wysyłany do magazynu kondycji należy określić jedną z tych stanów. Wynik oceny kondycji jest jednym z tych stanów.

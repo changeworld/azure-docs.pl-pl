@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: 977466d77bee2d6fe49c0438aa1d9d4489f8eb5f
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: fd2d9bd325d79a1fd8aa0da74da64f6ba98decda
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888230"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101060"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
 
@@ -22,7 +22,7 @@ Klaster usługi Azure HDInsight automatycznie skaluje liczbę węzłów procesu 
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-### <a name="create-cluster-with-azure-portal"></a>Tworzenie klastra przy użyciu witryny Azure portal
+### <a name="create-a-cluster-with-the-azure-portal"></a>Tworzenie klastra przy użyciu witryny Azure portal
 
 > [!Note]
 > Automatyczne skalowanie jest obecnie obsługiwana tylko w przypadku usługi Azure HDInsight Hive, MapReduce i platformy Spark klastrów w wersji 3.6.
@@ -48,7 +48,7 @@ Twoja subskrypcja ma limit przydziału pojemności dla każdego regionu. Łączn
 > [!Note]  
 > Jeśli przekroczysz limit przydziału rdzeni całkowity, otrzymasz komunikat o błędzie informujący o tym, "maksymalna węzła przekroczyła dostępnych rdzeni w tym regionie, wybierz inny region lub skontaktuj się z pomocą techniczną, aby zwiększyć limit przydziału."
 
-### <a name="create-cluster-with-an-resource-manager-template"></a>Tworzenie klastra przy użyciu szablonu usługi Resource Manager
+### <a name="create-a-cluster-with-a-resource-manager-template"></a>Tworzenie klastra przy użyciu szablonu usługi Resource Manager
 
 Kroki tworzenia klastra HDInsight w kompletny przy użyciu szablonów usługi Resource Manager znajduje się w temacie [tworzenie technologii Apache Hadoop clusters w HDInsight przy użyciu szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Podczas tworzenia klastra usługi HDInsight przy użyciu szablonu usługi Azure Resource Manager, należy dodać następujące ustawienia w sekcji "workernode" "computeProfile" i odpowiednio ją edytować:
 
@@ -74,7 +74,7 @@ Kroki tworzenia klastra HDInsight w kompletny przy użyciu szablonów usługi Re
 }
 ```
 
-### <a name="enable-and-disabling-autoscale-for-a-running-cluster"></a>Włączanie i wyłączanie funkcji automatycznego skalowania działającego klastra
+### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Włączanie i wyłączanie skalowania automatycznego dla działającego klastra
 
 Włączanie automatycznego skalowania dla działającego klastra nie jest obsługiwana w prywatnej wersji zapoznawczej. Musi być włączona podczas tworzenia klastra.
 
@@ -82,7 +82,7 @@ Wyłączanie automatycznego skalowania lub modyfikowanie ustawień automatyczneg
 
 ## <a name="monitoring"></a>Monitorowanie
 
-Możesz wyświetlić historię jako część metryki klastra w górę i w dół w skali klastra. Możesz wyświetlić listę wszystkich akcji skalowania w ciągu ostatnich dni, tygodni lub dłuższy czas.
+Możesz wyświetlić skalowanie klastra w górę i skalowania w dół historii jako część metryki klastra. Możesz także wyświetlić listę wszystkich akcji skalowania w ciągu ostatnich dni, tygodni lub dłuższy czas.
 
 ## <a name="how-it-works"></a>Jak to działa
 

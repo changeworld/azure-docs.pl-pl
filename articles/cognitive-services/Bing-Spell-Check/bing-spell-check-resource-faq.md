@@ -6,16 +6,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: e6662ffcbab9ea274a67bc4437ca1600f1625ff1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 90acc80b19058c2a7eb963f9e423883846519b2c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801509"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164932"
 ---
 # <a name="frequently-asked-questions-about-the-bing-spell-check-api"></a>Często zadawane pytania dotyczące pisowni Bing Sprawdź interfejsu API
 
@@ -26,14 +26,14 @@ ms.locfileid: "48801509"
 Następujące nagłówki są opcjonalne, ale firma Microsoft zaleca, aby traktować je zgodnie z potrzebami. Nagłówki te pomagają dokładniejsze wyniki zwracane interfejsu API sprawdzania pisowni Bing.
 
 - Lokalizacja w przypadku wyszukiwania X
-- ClientID-X-MSEdge
+- X-MSEdge-ClientID
 - X-MSEdge-ClientIP
 
 Jednak gdy wywołujesz API sprawdzania pisowni Bing poziomu języka JavaScript w przeglądarce wbudowane funkcje zabezpieczeń może uniemożliwić dostęp do wartości tych nagłówków.
 
 Aby rozwiązać ten problem, może wykonać żądania interfejsu API sprawdzania pisowni Bing za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` Nagłówek tego dozwolonych nagłówków odpowiedzi i udostępnienie ich dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby umożliwić [samouczek aplikacji](tutorials/spellcheck.md) nagłówki opcjonalne klienta dostępu do. Pierwsze, jeśli nie masz jeszcze, [zainstalować środowisko Node.js](https://nodejs.org/en/download/). Następnie wprowadź następujące polecenie w wierszu polecenia.
+To proste zainstalować serwer proxy CORS, aby umożliwić [samouczek aplikacji](tutorials/spellcheck.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wprowadź następujące polecenie w wierszu polecenia.
 
     npm install -g cors-proxy-server
 
@@ -41,11 +41,11 @@ Następnie Zmień punkt końcowy interfejsu API sprawdzania pisowni Bing w pliku
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
 
-Na koniec uruchom serwer proxy mechanizmu CORS za pomocą następującego polecenia:
+Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
     cors-proxy-server
 
-Pozostaw otwarte okno polecenia podczas korzystania z samouczka aplikacji; Zamyka okno zatrzymuje serwera proxy. W sekcji można rozwijać nagłówków HTTP poniżej wyniki wyszukiwania, będą teraz widoczne `X-MSEdge-ClientID` nagłówka (między innymi) i sprawdź, czy jest taka sama dla każdego żądania.
+Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W sekcji można rozwijać nagłówków HTTP poniżej wyniki wyszukiwania, będą teraz widoczne `X-MSEdge-ClientID` nagłówka (między innymi) i sprawdź, czy jest taka sama dla każdego żądania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -53,4 +53,4 @@ To pytanie dotyczące brakujących funkcji lub funkcje? Należy wziąć pod uwag
 
 ## <a name="see-also"></a>Zobacz także
 
- [Witrynie StackOverflow: Usługi Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

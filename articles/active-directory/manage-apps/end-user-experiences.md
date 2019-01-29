@@ -5,18 +5,18 @@ services: active-directory
 author: barbkess
 manager: daveba
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 0adc9b72dc752788b76e8383be91233a5c3958c7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 19e6c34ac549926626900db82b78a9bd9dc9265c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462123"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55204171"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Środowiska użytkownika końcowego dla aplikacji w usłudze Azure Active Directory
 Azure Active Directory (Azure AD) oferuje kilka sposobów dostosowania do wdrażania aplikacji dla użytkowników końcowych w organizacji:

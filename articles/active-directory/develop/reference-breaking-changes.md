@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 68517c83-1279-4cc7-a7c1-c7ccc3dbe146
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8e00674f331a56be9abe6f2356aa88d7dcf1d0b0
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 3da99506d50ec12140c188cd86cde2556be4a308
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282388"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099145"
 ---
 # <a name="whats-new-for-authentication"></a>What's new do uwierzytelniania? 
 
@@ -48,9 +48,9 @@ Brak zaplanowane w tej chwili.
 
 **Data rozpoczęcia obowiązywania**: 15 listopada 2018 r.
 
-**Punkty końcowe wpływ**: zarówno w wersji 1.0 i 2.0
+**Punkty końcowe wpływ**: Zarówno w wersji 1.0, jak i w wersji 2.0
 
-**Protokół wpływ**: [kodu przepływu](v2-oauth2-auth-code-flow.md)
+**Protokół wpływ**: [Przepływ kodu](v2-oauth2-auth-code-flow.md)
 
 15 listopada 2018 r. usługi Azure AD będzie akceptować kody poprzednio używanych uwierzytelniania dla aplikacji. Ta zmiana zabezpieczeń pomaga do usługi Azure AD zgodnie ze specyfikacją protokołu OAuth i będzie wymuszany w punktach końcowych v1 i v2.
 
@@ -64,9 +64,9 @@ Aby uzyskać więcej informacji na temat tokeny odświeżania, zobacz [odśwież
 
 **Data**: 1 maja 2018 r.
 
-**Punkty końcowe wpływ**: zarówno w wersji 1.0 i 2.0
+**Punkty końcowe wpływ**: Zarówno w wersji 1.0, jak i w wersji 2.0
 
-**Protokoły wpływ**: niejawny przepływ i [przepływu OBO](v1-oauth2-on-behalf-of-flow.md)
+**Protokoły wpływ**: Niejawny przepływ i [przepływu OBO](v1-oauth2-on-behalf-of-flow.md)
 
 Po 1 maja 2018 r id_tokens nie może służyć jako potwierdzenie przepływu OBO dla nowych aplikacji. Tokeny dostępu należy zamiast tego zabezpieczanie interfejsów API, nawet między klientem a warstwy środkowej w tej samej aplikacji. Aplikacje zarejestrowane przed 1 maja 2018 będą nadal działać i wymieniać id_tokens tokenu dostępu; Jednak ten wzorzec nie jest uważany za najlepszym rozwiązaniem.
 

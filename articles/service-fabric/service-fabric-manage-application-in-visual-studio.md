@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie aplikacjami Servic sieci szkieletowej platformy Azure w programie Visual Studio | Dokumentacja firmy Microsoft
+title: Zarządzaj aplikacjami usługi Azure Service Fabric w programie Visual Studio | Dokumentacja firmy Microsoft
 description: Visual Studio umożliwia tworzenie, opracowywanie, pakietów, wdrażanie i debugowanie aplikacji usługi Azure Service Fabric i usług.
 services: service-fabric
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: 01a9852157cbaefd966be974a3175c25e7ff69f8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: b90c39416a522b42932dd82214316e586ba4293a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001706"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192557"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Upraszczanie pisania i zarządzania nimi aplikacje usługi Service Fabric przy użyciu programu Visual Studio
 Możesz zarządzać aplikacje usługi Azure Service Fabric i usługi za pomocą programu Visual Studio. Po [Konfigurowanie środowiska projektowego](service-fabric-get-started.md), można użyć programu Visual Studio do tworzenia aplikacji usługi Service Fabric, dodawanie usług lub pakietu, zarejestruj się i wdrażanie aplikacji w lokalnego klastra projektowego.
@@ -47,7 +47,7 @@ Program Visual Studio zapewniają właściwość o nazwie **tryb debugowania apl
 
 #### <a name="application-debug-modes"></a>Tryb debugowania aplikacji
 
-1. **Aktualizovat aplikaci** ten tryb pozwala szybko zmienić, i debugowania kodu oraz obsługuje edycję plików statyczną sieci web podczas debugowania. W tym trybie tylko wtedy, gdy trwa lokalnego klastra projektowego [trybu 1 węzła](./service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode). Jest to domyślny tryb debugowania aplikacji.
+1. **Aktualizovat aplikaci** ten tryb pozwala szybko zmienić, i debugowania kodu oraz obsługuje edycję plików statyczną sieci web podczas debugowania. Ten tryb działa tylko jeśli trybu 1 węzła lokalnego klastra projektowego. Jest to domyślny tryb debugowania aplikacji.
 2. **Usuń aplikację** powoduje, że aplikacja ma zostać usunięty podczas kończenia sesji debugowania.
 3. **Automatyczne uaktualnienie** aplikacji będzie kontynuował działanie podczas kończenia sesji debugowania. Następnej sesji debugowania traktują wdrożenia jako uaktualnienie. Proces uaktualniania zachowuje wszelkie dane, które zostały wprowadzone w poprzedniej sesji debugowania.
 4. **Aplikacja** aplikacji utrzymuje uruchomionych w klastrze podczas kończenia sesji debugowania. Po rozpoczęciu następnej sesji debugowania aplikacji zostaną usunięte.

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą centralnej Desktop | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą programu Desktop centralnej | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i centralnym pulpicie.
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b805d485-93db-49b4-807a-18d446c7090e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 82a6911c85dd1438aa8f60cb36194a2916bc91e7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bc8aec25d6493d87393a45549fb89f978c469912
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429050"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu centralnej pulpitu
 
@@ -38,13 +38,13 @@ Aby uzyskać więcej szczegółów na temat integracji aplikacji SaaS z usługą
 
 Aby skonfigurować integrację usługi Azure AD przy użyciu centralnej pulpitu, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Centralnym pulpicie pojedynczej logowania na włączona subskrypcji
 
 > [!NOTE]
 > Nie zaleca się testowanie kroki opisane w tym samouczku przy użyciu środowiska produkcyjnego.
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz jeszcze środowiska wersji próbnej usługi Azure AD [bezpłatna wersja próbna miesięcznej](https://azure.microsoft.com/pricing/free-trial/).
@@ -62,21 +62,21 @@ Aby skonfigurować integrację programu Desktop centralnej w usłudze Azure AD, 
 
 1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![Blok Aplikacje dla przedsiębiorstw][2]
     
 1. Aby dodać nowe aplikacje, wybierz **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **centralnym pulpicie**. Wybierz **centralnym pulpicie** z panel wyników, a następnie wybierz **Dodaj** przycisk, aby dodać aplikację.
 
     ![Centralnym pulpicie na liście wyników](./media/central-desktop-tutorial/tutorial_centraldesktop_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji konfigurowania i testowania usługi Azure AD logowania jednokrotnego przy użyciu centralnej pulpitu oparte na użytkownika testu o nazwie "Britta Simon."
 
@@ -92,7 +92,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy u�
 1. [Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user) umożliwiające Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 1. [Testowanie logowania jednokrotnego](#test-single-sign-on) można sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Desktop centralnej.
 
@@ -100,7 +100,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **centralnym pulpicie** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Aby włączyć logowanie jednokrotne, w **logowanie jednokrotne** dialogowym **tryb** listy rozwijanej wybierz **opartej na SAML logowania jednokrotnego**.
  
@@ -121,11 +121,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     c. W **adres URL odpowiedzi** wpisz adres URL z następującym wzorcem: `https://<companyname>.centraldesktop.com/saml2-assertion.php`    
      
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizować te wartości z identyfikatorem rzeczywisty adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pulpitu centralnej](https://imeetcentral.com/contact-us) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizować te wartości z identyfikatorem rzeczywisty adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pulpitu centralnej](https://imeetcentral.com/contact-us) do uzyskania tych wartości. 
 
 1. W **certyfikat podpisywania SAML** zaznacz **certyfikatu**. Następnie zapisz plik certyfikatu na komputerze.
 
-    ![Link pobierania certyfikatu](./media/central-desktop-tutorial/tutorial_centraldesktop_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/central-desktop-tutorial/tutorial_centraldesktop_certificate.png) 
 
 1. Wybierz ikonę **Zapisz**.
 
@@ -178,11 +178,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory** przycisku.
 
-    ![Przycisk usługi Azure Active Directory](./media/central-desktop-tutorial/create_aaduser_01.png)
+    ![Przycisk Azure Active Directory](./media/central-desktop-tutorial/create_aaduser_01.png)
 
 1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**. Następnie wybierz pozycję **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/central-desktop-tutorial/create_aaduser_02.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](./media/central-desktop-tutorial/create_aaduser_02.png)
 
 1. Aby otworzyć **użytkownika** okno dialogowe, wybierz opcję **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
 
@@ -190,7 +190,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
-    ![Okno dialogowe użytkownika](./media/central-desktop-tutorial/create_aaduser_04.png)
+    ![Okno dialogowe Użytkownik](./media/central-desktop-tutorial/create_aaduser_04.png)
 
     a. W **nazwa** wpisz **BrittaSimon**.
 
@@ -215,7 +215,7 @@ Dla użytkowników usługi Azure AD można było się zalogować musi być obsł
 
 1. Wybierz **Dodaj wewnętrznych składowych**.
 
-    ![Osoby](./media/central-desktop-tutorial/ic781051.png "osoby")
+    ![Osoby](./media/central-desktop-tutorial/ic781051.png "Osoby")
     
 1. W **wiadomości E-mail adres dla nowych elementów członkowskich** wpisz konto usługi Azure AD, którą chcesz aprowizować, a następnie wybierz **dalej**.
 
@@ -246,11 +246,11 @@ W tej sekcji można włączyć użytkownika Britta Simon do nadawania im praw do
 
     ![Link centralnej pulpitu na liście aplikacji](./media/central-desktop-tutorial/tutorial_centraldesktop_app.png)  
 
-1. W menu po lewej stronie wybierz **użytkowników i grup**.
+1. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Link „Użytkownicy i grupy”][202]
 
-1. Wybierz **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
+1. Wybierz przycisk **Add** (Dodaj). Następnie wybierz pozycję **użytkowników i grup** w **Dodaj przydziału** okno dialogowe.
 
     ![Okienko Dodawanie przypisania][203]
 
@@ -267,7 +267,7 @@ W tej sekcji należy przetestować konfiguracji usługi Azure AD pojedynczego lo
 Po wybraniu kafelka pulpitu centralnej w panelu dostępu, automatycznie pobrać zarejestrowaniu w usłudze aplikacji pulpitu centralnej.
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

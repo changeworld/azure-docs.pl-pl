@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 1ff63dddfa21ba92bb3da44c6711b64e8ad3f1b6
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: a5e6d63627764ff64ac5e0621e271140ab3ed828
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913937"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099819"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Jak: Konfigurowanie zasad usługi o podwyższonym ryzyku ochronę tożsamości usługi Azure Active Directory (odświeżyć)
 
@@ -83,7 +83,7 @@ Jeśli chcesz pozyskać usługę MFA dla ryzykownych logowań, należy:
 
 1. Włącz [zasady rejestracji uwierzytelniania wieloskładnikowego](#multi-factor-authentication-registration-policy) dla użytkowników, których to dotyczy.
 
-2. Wymagać od użytkowników dotyczy, zaloguj się w sesji — ryzykowne do przeprowadzenia rejestracji usługi MFA.
+2. Wymaga odpowiednich użytkowników do logowania w sesji — ryzykowne do przeprowadzenia rejestracji usługi MFA.
 
 Wykonanie tych kroków gwarantuje, że to uwierzytelnianie wieloskładnikowe jest wymagany do ryzykowne logowania.
 

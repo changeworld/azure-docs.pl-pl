@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 284f1d90f043e2634e143508e2ab0e98cd309f46
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a76be5203c7d62ba973993bf6338b7496e2fce80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902692"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203933"
 ---
 # <a name="lambda-search-syntax"></a>Składnia wyszukiwania lambda
 
@@ -93,7 +93,7 @@ Zwraca *Action.Continue* Jeśli warunek nie jest *true*. Jeśli warunek nie jest
 
 Generuje losową liczbę, która jest mniejsza niż 0,0 i mniejszą niż 1,0. Ta funkcja zwraca *true* tylko wtedy, gdy liczba jest mniejsza niż lub równa *p*.
 
-W porównaniu z *json* wyszukiwania, *lambda* wyszukiwanie jest bardziej ekspresyjnego: wyrażeń lambda w języku C# bezpośrednio służy do określania wzorców zapytań. Poniżej przedstawiono dwa przykłady.
+W porównaniu z *json* wyszukiwania, *lambda* wyszukiwanie jest bardziej ekspresyjnego: C#wyrażenia lambda mogą bezpośrednio używane do określania wzorców zapytań. Poniżej przedstawiono dwa przykłady.
 
 ```
 MAG.StartFrom(@"{

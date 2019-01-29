@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 50a1522f-81de-4d14-9b6b-dd27bb1338a4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e23d76074f4b428b672e0cd5aeeaba99d080a4cf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 65f11b5a65adf86b4115b54b49b10c57ebf21a98
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435938"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154137"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Samouczek: Integracja usługi Azure Active Directory z teraz schematu organizacyjnego
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu schematu organizacyjnego teraz
 
 W tym samouczku dowiesz się, jak zintegrować teraz schematu organizacyjnego przy użyciu usługi Azure Active Directory (Azure AD).
 
@@ -30,7 +30,7 @@ Integrowanie schematu organizacyjnego teraz z usługą Azure AD zapewnia następ
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do chwili schematu organizacyjnego.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do teraz schemat organizacyjny (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -38,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD przy użyciu schematu organizacyjnego teraz, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Schemat organizacyjny teraz logowania jednokrotnego włączonych subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -60,7 +60,7 @@ Aby skonfigurować integrację teraz schematu organizacyjnego w usłudze Azure A
 
 **Aby dodać teraz schematu organizacyjnego z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -68,15 +68,15 @@ Aby skonfigurować integrację teraz schematu organizacyjnego w usłudze Azure A
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **teraz schematu organizacyjnego**, wybierz opcję **teraz schemat organizacyjny** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Schemat organizacyjny teraz na liście wyników](./media/orgchartnow-tutorial/tutorial_orgchartnow_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji można skonfigurować, i test usługi Azure AD logowania jednokrotnego przy użyciu schematu organizacyjnego teraz oparte na użytkownika testu o nazwie "Britta Simon".
 
@@ -84,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu schematu organizacyjnego teraz, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego teraz schematu organizacyjnego](#create-an-orgchart-now-test-user)**  — aby odpowiednikiem Britta Simon teraz schematu organizacyjnego, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji teraz schematu organizacyjnego.
 
@@ -98,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **teraz schematu organizacyjnego** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -114,7 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Schemat organizacyjny teraz domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/orgchartnow-tutorial/tutorial_orgchartnow_url1.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
      
     > [!NOTE]
     > `<YourEntityID>` Identyfikator jednostki SAML został skopiowany z sekcji krótki, opisany w dalszej części samouczka.
@@ -125,13 +125,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/orgchartnow-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/orgchartnow-tutorial/tutorial_general_400.png)
     
 1. Na **schematu organizacyjnego teraz konfiguracji** kliknij **Konfiguruj teraz schematu organizacyjnego** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML identyfikator jednostki** z **krótki przewodnik po sekcji** i za jego pomocą wykonaj **adres URL logowania** w **schematu organizacyjnego teraz domena i adresy URL w sekcji**.
 
     ![Schemat organizacyjny teraz konfiguracji](./media/orgchartnow-tutorial/tutorial_orgchartnow_configure.png) 
 
-1. Aby skonfigurować logowanie jednokrotne na **teraz schematu organizacyjnego** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej teraz schemat organizacyjny](mailto:ocnsupport@officeworksoftware.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **teraz schematu organizacyjnego** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej teraz schemat organizacyjny](mailto:ocnsupport@officeworksoftware.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -187,7 +187,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do chwili schemat
 
     ![Schemat organizacyjny teraz blokują](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
-1. Aby utworzyć **administratora** użytkowników i **odczytu/zapisu** użytkowników, należy ręcznie utworzyć użytkownika w celu uzyskania dostępu do ich poziomu uprawnień przy użyciu logowania jednokrotnego. Aby udostępnić konto użytkownika, wykonaj następujące czynności:
+1. Aby utworzyć **administratora** użytkowników i **odczytu/zapisu** użytkowników, należy ręcznie utworzyć użytkownika w celu uzyskania dostępu do ich poziomu uprawnień przy użyciu logowania jednokrotnego. Aby aprowizować konto użytkownika, wykonaj następujące czynności:
 
     a. Zaloguj się do schematu organizacyjnego teraz jako Administrator zabezpieczeń.
 
@@ -201,7 +201,7 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się do chwili schemat
 
     * W **identyfikator użytkownika** polu tekstowym wprowadź identyfikator użytkownika, takich jak **brittasimon@contoso.com**.
 
-    * W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **brittasimon@contoso.com**.
+    * W polu tekstowym **Email Address** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład **brittasimon@contoso.com**.
 
     * Kliknij pozycję **Add** (Dodaj).
     

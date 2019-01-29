@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 534714accb504e4ce487950fef028ab675c46a87
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 75c8952b1fa7003b6a2c12c7e3e6be4983a25bba
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496404"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174112"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Uaktywnij Moje role katalogu usługi Azure AD w usłudze PIM
 
@@ -68,7 +68,7 @@ Gdy trzeba przełączyć w roli katalogu usługi Azure AD, możesz poprosić akt
 
     ![Ukończone okienko aktywacji](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
 
-1. Kliknij przycisk **aktywować**.
+1. Kliknij pozycję **Aktywuj**.
 
     Jeśli rola wymaga zatwierdzenia, jest aktywowana i dodany do listy aktywnych ról. Jeśli chcesz użyć roli od razu, postępuj zgodnie z instrukcjami w następnej sekcji.
 

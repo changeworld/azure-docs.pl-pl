@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f301c0156265f055f0ebf7cdad8dba7f39f5ba2b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 391fc493d642c260a10b74aa42b805ad055dd8b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044581"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164558"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Omówienie cyklu życia usług Reliable Services
 > [!div class="op_single_selector"]
@@ -99,7 +99,7 @@ Podobnie jak w przypadku usług bezstanowych zdarzenia cyklu życia podczas zamy
 3. Po `StatefulServiceBase.OnCloseAsync()` zostanie zakończone, obiekt usługi jest usuwane.
 
 ## <a name="stateful-service-primary-swaps"></a>Zamiany podstawowej usługi stanowej
-Po uruchomieniu usługi stanowej replikami podstawowymi tego stanowych usług ma ich odbiorników komunikacji otwarte i ich **RunAsync** metodę o nazwie. Repliki pomocnicze są tworzone, ale wyświetlenie nie dalsze wezwania. Po uruchomieniu usługi stanowej repliki, który jest aktualnie podstawowego można zmienić. Co to znaczy w warunkach użytkowania zdarzenia cyklu życia, widocznych dla repliki Zachowanie, które widzi stanowych repliki zależy od tego, czy jest replika jest obniżony podnoszony podczas wymiany.
+Po uruchomieniu usługi stanowej replikami podstawowymi tego stanowych usług ma ich odbiorników komunikacji otwarte i ich **RunAsync** metodę o nazwie. Repliki pomocnicze są tworzone, ale wyświetlenie nie dalsze wezwania. Po uruchomieniu usługi stanowej repliki, która jest obecnie serwerem podstawowym można zmienić w wyniku błędu lub w klastrze równoważenia optymalizacji. Co to znaczy w warunkach użytkowania zdarzenia cyklu życia, widocznych dla repliki Zachowanie, które widzi stanowych repliki zależy od tego, czy jest replika jest obniżony podnoszony podczas wymiany.
 
 ### <a name="for-the-primary-thats-demoted"></a>Dla podstawowego, który jest obniżony
 Dla repliki podstawowej, która jest obniżony usługi Service Fabric wymaga tej repliki, aby zatrzymać przetwarzanie komunikatów, a następnie zamknij wszelkie prace tła, których wykonywanie operacji. W wyniku tego kroku wygląda tak, jak po zamknięciu usługi. Jeden różnica polega na tym, usługa nie jest niszczone lub zamknięta, ponieważ pozostaje pomocniczego. Następujące interfejsy API są nazywane:

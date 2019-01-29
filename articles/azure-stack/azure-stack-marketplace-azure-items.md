@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: d006deb83ca16860eb669548ae8563304f7937fa
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 06252d2fc33fafc27371c45f41f792e8e5abd542
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306611"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196212"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit.*
 
-## <a name="virtual-machine-extensions"></a>Rozszerzenia maszyny wirtualnej
+## <a name="virtual-machine-extensions"></a>Rozszerzenia maszyn wirtualnych
 
 Zawsze, gdy są dostępne aktualizacje rozszerzenia maszyny wirtualnej (VM), którego używasz, należy je pobrać. Rozszerzenia dostarczane w ramach produktu nie są uaktualniane w normalny proces poprawek i aktualizacji; Dlatego sprawdzał dostępność aktualizacji często. Inne rozszerzenia są dostępne tylko za pośrednictwem witryny Marketplace zarządzania.
 
@@ -97,10 +97,11 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
 | ![SLES 15 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 15. | SUSE |
 
-## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>Obrazy BYOL innych firm, bezpłatnej i wersji próbnej i szablony rozwiązań
+## <a name="third-party-byol-free-trial-images-and-solution-templates"></a>BYOL innych firm, bezpłatne i próbne obrazów i szablony rozwiązań
 
 |  | Nazwa elementu | Opis | Wydawca |
 | --- | --- | --- | --- |
+| ![A10 vThunder ADC](media/azure-stack-marketplace-azure-items/a10.png) | [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1) | VThunder A10 sieci kontroler dostarczania aplikacji dla systemu Microsoft Azure jest zaprojektowanemu pod kątem wysokiej wydajności, elastyczności i dostarczanie łatwych do wdrożenia aplikacji i serwera Równoważenie obciążenia zoptymalizowane pod kątem uruchamiania w sposób natywny w chmurze platformy Azure. | A10 Networks |
 | ![VEOS arista routera](media/azure-stack-marketplace-azure-items/arista.png) | [VEOS arista routera](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | Arista vEOS Router jest wielu bogate, chmur i wielu funkcji hypervisor wirtualnego routera, który korzysta z możliwości przedsiębiorstw i dostawców w chmurze do tworzenia spójnego, bardzo bezpieczne i skalowalne hybrydowe sieci. | Arista Networks |
 | ![Centrum sterowania zabezpieczeniami aplikacji barracuda](media/azure-stack-marketplace-azure-items/barracuda.png) | [Centrum sterowania zabezpieczeniami aplikacji barracuda](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-app-sec-control-center) | Można centralnie zarządzać wieloma Barracuda aplikacji sieci Web zapory (WAF). | Barracuda Networks, Inc. |
 | ![Brama zabezpieczeń poczty E-mail firmy barracuda](media/azure-stack-marketplace-azure-items/barracuda.png) | [Brama zabezpieczeń poczty E-mail firmy barracuda](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-email-security-gateway) | Bramy zabezpieczeń poczty e-mail, aby chronić przed zagrożeniami ponoszone poczty e-mail dla ruchu przychodzącego. | Barracuda Networks, Inc. |

@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b4b49cd679ee5d770696b4fa5cc29ebdd908cecf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816348"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093125"
 ---
 # <a name="application-types-in-v10"></a>Typy aplikacji w wersji 1.0
 
@@ -33,11 +33,11 @@ Na poniższym diagramie przedstawiono scenariusze i typy aplikacji, oraz w jaki 
 
 Poniżej przedstawiono pięciu scenariuszy głównej aplikacji obsługiwanych przez usługę Azure AD:
 
-- **[Aplikacja jednostronicowa (SPA)](single-page-application.md)**: użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
-- **[Przeglądarki sieci Web do aplikacji sieci web](web-app.md)**: użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
-- **[Aplikacja natywna do internetowego interfejsu API](native-app.md)**: natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z internetowego interfejsu API, która jest zabezpieczony przez usługę Azure AD.
-- **[Aplikacja do internetowego interfejsu API sieci Web](web-api.md)**: aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
-- **[Demon lub serwera aplikacji do internetowego interfejsu API](service-to-service.md)**: aplikacji demona albo aplikacja serwera bez interfejsu użytkownika sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+- **[Aplikacja jednostronicowa (SPA)](single-page-application.md)**: Użytkownik musi zalogować się do aplikacji jednostronicowej, która jest zabezpieczony przez usługę Azure AD.
+- **[Przeglądarki sieci Web do aplikacji sieci web](web-app.md)**: Użytkownik musi zalogować się do aplikacji sieci web, która jest zabezpieczony przez usługę Azure AD.
+- **[Aplikacja natywna do internetowego interfejsu API](native-app.md)**: Natywnych aplikacji, która działa na telefonie, tablecie lub komputerze wymaga uwierzytelnienia użytkownika można pobrać zasobów z internetowego interfejsu API, która jest zabezpieczony przez usługę Azure AD.
+- **[Aplikacja do internetowego interfejsu API sieci Web](web-api.md)**: Aplikacja sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
+- **[Demon lub serwera aplikacji do internetowego interfejsu API](service-to-service.md)**: Aplikacji demona albo aplikacja serwera bez interfejsu użytkownika sieci web musi pobrać zasoby z internetowego interfejsu API zabezpieczony przez usługę Azure AD.
 
 Skorzystaj z linków, aby dowiedzieć się więcej na temat każdego rodzaju aplikacji i zrozumienie ogólnych scenariuszy przed rozpoczęciem pracy z kodem. Można także Poznaj różnice, które należy znać podczas zapisywania danej aplikacji, która współdziała z punktu końcowego w wersji 1.0 lub punktu końcowego v2.0.
 
@@ -69,7 +69,7 @@ Aby uzyskać szczegółowe informacje, Dowiedz się, jak [rejestrowanie aplikacj
 Inicjowanie obsługi administracyjnej staje się bardziej zrozumiały po zapoznaniu się, że istnieją dwie kategorie aplikacji, które mogą być opracowane i zintegrowane z usługą Azure AD:
 
 * **Pojedyncza aplikacja dzierżawy** — aplikacja jednej dzierżawy jest przeznaczony do użytku w jednej z organizacji. Są to zazwyczaj line-of-business (LoB) aplikacji napisanych przez Deweloper w przedsiębiorstwie. Aplikacja jednej dzierżawy musi tylko uzyskiwać dostęp użytkownicy w jednym katalogu, a w rezultacie wymaga tylko do udostępnienia w pojedynczym katalogu. Te aplikacje zwykle są rejestrowane przez dewelopera w organizacji.
-* **Aplikacja wielodostępna** -aplikacji z wieloma dzierżawami jest przeznaczona do użycia w wielu organizacjach nie tylko jednej z organizacji. Są to zazwyczaj software-as-a-service (SaaS) aplikacji napisanych przez niezależnego dostawcę oprogramowania (ISV). Wielodostępne aplikacje muszą być obsługiwana w każdym katalogu gdzie zostaną użyte, wymaga zgody użytkownika lub administratora, aby zarejestrować je. Ten proces zgody rozpoczyna się, gdy aplikacja została zarejestrowana w katalogu i otrzymuje dostęp do interfejsu API programu Graph lub może być inny interfejs API sieci web. Gdy użytkownik lub administrator z innej organizacji zarejestruje się w celu korzystania z aplikacji, zobaczą okno dialogowe, które wyświetla uprawnienia, których wymaga aplikacja. Użytkownik lub administrator, następnie mogą wyrazić zgodę na aplikację, która zapewnia dostęp do aplikacji do podanych danych, a na koniec rejestruje swojego katalogu aplikacji. Aby uzyskać więcej informacji, zobacz [Przegląd Framework zgody](consent-framework.md).
+* **Aplikacja wielodostępna** -aplikacji z wieloma dzierżawami jest przeznaczona do użycia w wielu organizacjach nie tylko jednej z organizacji. Są to zazwyczaj aplikacje typu SaaS (software-as-a-service) napisane przez niezależnych dostawców oprogramowania (ISV). Wielodostępne aplikacje muszą być obsługiwana w każdym katalogu gdzie zostaną użyte, wymaga zgody użytkownika lub administratora, aby zarejestrować je. Proces wyrażania zgody rozpoczyna się po zarejestrowaniu aplikacji w katalogu i udzieleniu jej dostępu do interfejsu API programu Graph lub innego internetowego interfejsu API. Gdy użytkownik lub administrator z innej organizacji zarejestruje się w celu korzystania z aplikacji, zobaczą okno dialogowe, które wyświetla uprawnienia, których wymaga aplikacja. Użytkownik lub administrator, następnie mogą wyrazić zgodę na aplikację, która zapewnia dostęp do aplikacji do podanych danych, a na koniec rejestruje swojego katalogu aplikacji. Aby uzyskać więcej informacji, zobacz [Przegląd Framework zgody](consent-framework.md).
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Dodatkowe zagadnienia dotyczące opracowywania pojedynczego dzierżawy lub wielodostępnych aplikacji
 

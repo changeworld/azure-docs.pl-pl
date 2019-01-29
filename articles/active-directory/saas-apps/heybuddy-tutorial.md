@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z HeyBuddy | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą HeyBuddy | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i HeyBuddy.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d51b5af6-018e-4678-9a3f-b70438394f67
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ef345d866de16b856d3c8b56fa086b83b74ae0f
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 123b74298ebb01e8ebcfd70d023b4e71a879e7f9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289764"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197895"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>Samouczek: Integracja usługi Azure Active Directory z HeyBuddy
+# <a name="tutorial-azure-active-directory-integration-with-heybuddy"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HeyBuddy
 
 W tym samouczku dowiesz się, jak zintegrować HeyBuddy w usłudze Azure Active Directory (Azure AD).
 
@@ -30,7 +30,7 @@ Integrowanie HeyBuddy z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do HeyBuddy.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do HeyBuddy (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
@@ -44,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą HeyBuddy, potrzebne s
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -70,15 +70,15 @@ Aby skonfigurować integrację HeyBuddy w usłudze Azure AD, należy dodać HeyB
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **HeyBuddy**, wybierz opcję **HeyBuddy** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![HeyBuddy na liście wyników](./media/heybuddy-tutorial/tutorial_heybuddy_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą HeyBuddy w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -100,7 +100,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **HeyBuddy** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
@@ -110,7 +110,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące czynności:
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
     ![HeyBuddy domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/heybuddy-tutorial/tutorial_heybuddy_url.png)
 
@@ -119,9 +119,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. W **identyfikator jednostki** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `YourCompanyInstanceofHeyBuddy`
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator jednostki. `Entity ID` Adres url logowania jest automatycznie generowana dla każdej organizacji. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HeyBuddy](mailto:support@heybuddy.com) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator jednostki. `Entity ID` Adres url logowania jest automatycznie generowana dla każdej organizacji. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta HeyBuddy](mailto:support@heybuddy.com) do uzyskania tych wartości.
 
-5. Aplikacja HeyBuddy oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkowników i oświadczeń** sekcji na stronie integracji aplikacji. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **atrybutów użytkowników i oświadczeń** okna dialogowego.
+5. Aplikacja HeyBuddy oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty i oświadczenia użytkownika** na stronie integracji aplikacji. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **atrybutów użytkowników i oświadczeń** okna dialogowego.
 
     ![image](./media/heybuddy-tutorial/tutorial_heybuddy_attribute.png)
 
@@ -130,37 +130,37 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 6. W **oświadczenia użytkownika** sekcji na **atrybutów użytkowników i oświadczeń** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
     
-    | Name (Nazwa)  | Atrybut źródłowy  |
+    | Name  | Atrybut źródłowy  |
     | --------------- | --------------- |
-    | Role               | User.assignedroles |
+    | Role               | user.assignedroles |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie** otworzyć **Zarządzanie oświadczenia użytkownika** okna dialogowego.
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
     ![image](./common/new_save_attribute.png)
 
     ![image](./common/new_attribute_details.png)
 
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
     c. Pozostaw **Namespace** wartość pustą.
 
-    d. Wybierz źródło jako **atrybutu**.
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-    e. Z **atrybut źródłowy** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
     f. Kliknij pozycję **Zapisz**.
 
 7. Na **certyfikat podpisywania SAML** stronie **certyfikat podpisywania SAML** , kliknij przycisk kopiowania **ikonę** do skopiowania **adres Url metadanych Federacji aplikacji**  i wklej go w Notatniku.
 
-    ![Link pobierania certyfikatu](./media/heybuddy-tutorial/tutorial_heybuddy_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/heybuddy-tutorial/tutorial_heybuddy_certificate.png) 
 
-8. Aby skonfigurować logowanie jednokrotne na **HeyBuddy** stronie, musisz wysłać skopiowany **adres Url metadanych Federacji aplikacji** do [HeyBuddy zespołem pomocy technicznej](mailto:support@heybuddy.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+8. Aby skonfigurować logowanie jednokrotne na **HeyBuddy** stronie, musisz wysłać skopiowany **adres Url metadanych Federacji aplikacji** do [HeyBuddy zespołem pomocy technicznej](mailto:support@heybuddy.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -172,9 +172,9 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_02.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -183,7 +183,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="creating-a-heybuddy-test-user"></a>Tworzenie użytkownika testowego HeyBuddy
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w HeyBuddy. HeyBuddy obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu HeyBuddy, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w HeyBuddy. HeyBuddy obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu HeyBuddy, jeśli go jeszcze nie istnieje.
 >[!Note]
 >Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej HeyBuddy](mailto:support@heybuddy.com).
 

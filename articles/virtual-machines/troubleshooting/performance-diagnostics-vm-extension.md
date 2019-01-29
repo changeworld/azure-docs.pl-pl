@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7037c0b4c1021ac7b91134fa429a774f600a774f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 3430ff2b292a3e5fe675c3a5f332a12a88d4bfbf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194168"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096793"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure dla Windows
 
@@ -81,7 +81,7 @@ Następujące dane JSON zawiera schemat dla rozszerzenia maszyny Wirtualnej diag
 |storPortTrace|s|Opcja Włącz StorPort śledzenia. Prawidłowe wartości to **s** lub wartość pusta. Jeśli nie chcesz przechwycić ślad, pozostaw wartość jako pusty.
 |srNumber|123452016365929|Numer biletu pomocy technicznej, jeśli jest dostępny. Pozostaw wartość jako pusty, jeśli nie masz go.
 |requestTimeUtc|2017-09-28T22:08:53.736Z|Bieżąca data i godzina w formacie Utc. Jeśli są przy użyciu portalu, aby zainstalować to rozszerzenie, nie musisz podać tę wartość.
-|resourceId|/Subscriptions/ {subscriptionId} /resourceGroups/ {resourceGroupName} /providers/ {resourceProviderNamespace} / {resourceType} / {resourceName}|Unikatowy identyfikator maszyny Wirtualnej.
+|resourceId|/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}|Unikatowy identyfikator maszyny Wirtualnej.
 |storageAccountName|mystorageaccount|Nazwa konta magazynu do przechowywania dzienników diagnostycznych i wyników.
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Klucz konta magazynu.
 
@@ -123,7 +123,7 @@ Aby usunąć rozszerzenie z maszyny wirtualnej, wykonaj następujące kroki:
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager. To uruchamia rozszerzenie maszyny Wirtualnej diagnostyki wydajności platformy Azure podczas wdrażania szablonu usługi Azure Resource Manager. Poniżej przedstawiono przykładowy szablon:
 
-````
+```
 {
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -207,14 +207,14 @@ Rozszerzenia maszyny wirtualnej platformy Azure można wdrażać przy użyciu sz
     }
   ]
 }
-````
+```
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 `Set-AzureRmVMExtension` Polecenie może służyć do wdrażania rozszerzenia maszyny Wirtualnej diagnostyki wydajności platformy Azure do istniejącej maszyny wirtualnej.
 
 PowerShell
 
-````
+```
 $PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z";"resourceId"="VMResourceId" }
 $ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
@@ -227,7 +227,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
     -Location WestUS
-````
+```
 
 ## <a name="information-on-the-data-captured"></a>Informacje na temat danych przechwyconych
 Narzędzie to program PerfInsights zbiera różne dzienniki, konfiguracji i danych diagnostycznych, w zależności od wybranego scenariusza. Aby uzyskać więcej informacji, zobacz [dokumentacji program PerfInsights](https://aka.ms/perfinsights).

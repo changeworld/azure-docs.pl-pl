@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: ddc14c371f2aa56b056dd7f9f1802de081f4ccd9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: f928061942782fe287c621728d04836d0fdce2da
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620701"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194134"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Udostępnianie kont w usłudze Azure AD
 ## <a name="overview"></a>Przegląd
@@ -58,7 +58,7 @@ Funkcje platformy Azure AD, które umożliwiają udostępnianie konta obejmują:
 * [Raporty pulpitu nawigacyjnego użycie aplikacji](../active-directory-passwords-get-insights.md)
 * Portale dostępu użytkownika końcowego
 * [Serwer proxy aplikacji](../manage-apps/application-proxy.md)
-* [Rynek usługi Active Directory](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/all/)
 
 ## <a name="sharing-an-account"></a>Udostępnianie kont
 Aby korzystać z usługi Azure AD, aby udostępnić konto, należy:

@@ -7,16 +7,16 @@ author: bradumbaugh
 manager: cgronlun
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: bking
-ms.openlocfilehash: ebe95c8ebad8c7d6b77d98dc0d590a4d38d76b94
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 90ad2ff87e9541c892262edb2e48366826b2a388
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465971"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188443"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Tworzenie klienta wyszukiwania aplikacji konsoli w języku C#
 
@@ -223,9 +223,9 @@ Przed wyświetleniem jak wyświetlać wyniki według rangi, spójrz na przykład
 
 `rankingResponse` Obiekt JSON ([dokumentacji](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) opisuje kolejność wyświetlania odpowiednie wyniki wyszukiwania. Zawiera co najmniej jednej z poniższych, priorytetyzacji grup:
 
-- `pole`: Wyników wyszukiwania, aby uzyskać najbardziej widoczne traktowania (na przykład wyświetlane powyżej linii głównej i paska bocznego).
-- `mainline`: Wyniki wyszukiwania do wyświetlenia w ramach linii głównej.
-- `sidebar`: Wyników wyszukiwania, aby wyświetlić na pasku bocznym. Jeśli nie ma paska bocznego, wyświetlić wyniki poniżej linii głównej.
+- `pole`: Wyniki wyszukiwania, aby uzyskać najbardziej widoczne traktowania (na przykład wyświetlane powyżej linii głównej i paska bocznego).
+- `mainline`: Wyniki wyszukiwania w celu wyświetlenia w ramach linii głównej.
+- `sidebar`: Wyniki wyszukiwania, aby wyświetlić na pasku bocznym. Jeśli nie ma paska bocznego, wyświetlić wyniki poniżej linii głównej.
 
 Klasyfikacja odpowiedź JSON może obejmować jeden lub więcej grup.
 

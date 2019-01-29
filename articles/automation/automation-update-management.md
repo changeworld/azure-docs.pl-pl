@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8635d943120f0e79b8efcfe1f9be0b74d8bb4fac
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: adc780577e8c83411e173a5bfad75c3555119f11
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433904"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093521"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -216,7 +216,7 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 
 | Właściwość | Opis |
 | --- | --- |
-| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
+| Name |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
 | Grupy można zaktualizować (wersja zapoznawcza)|Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
@@ -443,8 +443,8 @@ on SourceComputerId
 on SourceComputerId
 | extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
 | summarize computersBySeverity=count() by WorstMissingUpdateSeverity)
-| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
-| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeeedOtherUpdatesCount=sum(computersNeeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
+| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
+| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeedOtherUpdatesCount=sum(computersNeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
 | extend allComputersCount=assessedComputersCount+notAssessedComputersCount
 
 
@@ -574,7 +574,7 @@ Aby dowiedzieć się, jak zintegrować rozwiązanie do zarządzania z System Cen
 
 Włączenie aktualizacji można określić określonej aktualizacji do zastosowania. Poprawki lub pakietów, które są uwzględniane są zainstalowane. Po wybraniu klasyfikacji również i uwzględniono poprawki lub pakietów, dołączone elementy i elementy, które spełniają klasyfikacji są instalowane.
 
-Jest ważne dowiedzieć się, że wykluczenia zastąpienia dołączenia. Na przykład jeśli zdefiniujesz regułę wykluczania z `*`, a następnie żadnych poprawek ani pakiety są zainstalowane, ponieważ są one wszystkie wyłączone. Dla maszyn z systemem Linux Jeśli pakiet jest dołączony, ale ma z pakietu zależnego, który został wykluczony, pakiet nie jest zainstalowany.
+Jest ważne dowiedzieć się, że wykluczenia zastąpienia dołączenia. Na przykład jeśli zdefiniujesz regułę wykluczania z `*`, a następnie żadnych poprawek ani pakiety są zainstalowane, ponieważ są one wszystkie wyłączone. Wykluczone poprawki nadal wyświetlane jako brakujące na tej maszynie. Dla maszyn z systemem Linux Jeśli pakiet jest dołączony, ale ma z pakietu zależnego, który został wykluczony, pakiet nie jest zainstalowany.
 
 ## <a name="patch-linux-machines"></a>Maszyny z systemem Linux poprawki
 

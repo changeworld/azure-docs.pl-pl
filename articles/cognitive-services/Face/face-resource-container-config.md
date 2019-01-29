@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: a75f5ec11644bbd64a6bafeb8585371437eedc3b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9e1d4ae38b18feb01d32ff62d4923b14d33494fa
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476924"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197674"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 
@@ -185,7 +185,7 @@ W poniższej tabeli opisano ustawienia konfiguracji objęte `Fluentd` sekcji.
   | `Format` | Ciąg | Format danych wyjściowych dla plików dziennika.<br/> **Uwaga:** Ta wartość musi być równa `json` do włączenia rejestrowania dostawcy usług. Jeśli ta wartość jest określona bez jednoczesnego określenia dane wyjściowe instalacji podczas tworzenia wystąpienia kontenera, wystąpi błąd. |
   | `MaxFileSize` | Liczba całkowita | Maksymalny rozmiar w megabajtach (MB), plik dziennika. Gdy rozmiar bieżącego pliku dziennika, spełnia lub przekracza tę wartość, nowy plik dziennika został uruchomiony przez dostawcę rejestrowania. Jeśli określono wartość -1, rozmiar pliku dziennika jest ograniczona tylko przez maksymalny rozmiar pliku, ewentualne instalacji danych wyjściowych. Wartość domyślna to 1. |
 
-Aby uzyskać więcej informacji na temat konfigurowania obsługi rejestrowania platformy ASP.NET Core, zobacz [ustawień pliku konfiguracji](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
+Aby uzyskać więcej informacji na temat konfigurowania obsługi rejestrowania platformy ASP.NET Core, zobacz [ustawień pliku konfiguracji](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).
 
 ## <a name="mounts-configuration-settings"></a>Instaluje ustawień konfiguracji
 

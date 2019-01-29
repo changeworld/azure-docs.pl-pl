@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e189fb8b2bc5079d1560d3b7a54fea2db7366fe7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ab5a3b00d063dfdd42e67247bb2cdc37866d0164
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46293976"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164133"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>Rozwiązywanie problemów z członkostwem dynamicznym w grupach
 
@@ -33,7 +33,7 @@ ms.locfileid: "46293976"
 
 | Błąd analizatora reguły | Błąd użycia | Poprawiony użycia |
 | --- | --- | --- |
-| Błąd: Atrybutu nie jest obsługiwane. |(user.invalidProperty - eq "Value") |(user.department - eq "value")<br/><br/>Upewnij się, że atrybut jest [obsługiwane listy właściwości](groups-dynamic-membership.md#supported-properties). |
+| Błąd: Atrybut nie jest obsługiwane. |(user.invalidProperty - eq "Value") |(user.department - eq "value")<br/><br/>Upewnij się, że atrybut jest [obsługiwane listy właściwości](groups-dynamic-membership.md#supported-properties). |
 | Błąd: Operator nie jest obsługiwany dla atrybutu. |(user.accountEnabled — zawiera wartość true) |(user.accountEnabled - eq true)<br/><br/>Operator używany nie jest obsługiwana dla typu właściwości (w tym przykładzie-zawiera nie można użyć typu boolean). Prawidłowe operatory na użytek typ właściwości. |
 | Błąd: Błąd kompilacji zapytania. | 1. (user.department - eq "Sprzedaż") (user.department - eq "Marketing")<br>2. (user.userPrincipalName-zgodny "*@domain.ext") | 1. Brak operatora. Użyj - i - lub dołączyć dwa predykatów<br>(user.department - eq "Sprzedaż")- lub (user.department - eq "Marketing")<br>2. Błąd w wyrażeniu regularnym, w ramach - dopasowania<br>(user.userPrincipalName-zgodny ". *@domain.ext")<br>lub też: (user.userPrincipalName-zgodny "@domain.ext$") |
 

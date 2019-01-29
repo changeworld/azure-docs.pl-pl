@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 064d73aa3d1a9183eddd53b1a1b8ddbf02afb04d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 426f89437b91bf32efc7d4887c92ebe9cd729b5b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792853"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166292"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 Bieżące wersje:
 * Service Fabric SDK i narzędzia 3.3.622
 * Środowisko uruchomieniowe usługi Service Fabric 6.4.622
-* Narzędzia usługi Service Fabric dla programu Visual Studio 2015 2.4.11116.1
+* Service Fabric Tools for Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 obejmuje narzędzia usługi Service Fabric dla programu Visual Studio 2.4.11024.1 
 
 Listę obsługiwanych wersji można znaleźć na stronie [pomocy technicznej usługi Service Fabric](service-fabric-support.md)
@@ -91,8 +91,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="next-steps"></a>Kolejne kroki
 Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruchamiać aplikacje.
 
-* [Tworzenie pierwszej aplikacji platformy Service Fabric w programie Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
-* [Informacje o wdrażaniu aplikacji i zarządzaniu nimi w klastrze lokalnym](service-fabric-get-started-with-a-local-cluster.md)
+* [Dowiedz się, jak tworzenie, wdrażanie i zarządzanie aplikacjami](service-fabric-tutorial-create-dotnet-app.md)
 * [Więcej informacji o modelach programowania: Usług Reliable Services i Reliable Actors](service-fabric-choose-framework.md)
 * [Przykłady kodu platformy Service Fabric w witrynie GitHub](https://aka.ms/servicefabricsamples)
 * [Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)

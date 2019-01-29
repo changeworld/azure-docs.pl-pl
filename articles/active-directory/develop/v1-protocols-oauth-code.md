@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c4a18fa022304e7ccfb4503cf2e02650555d6d7b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 19199d25b960d768f844d725616220fb78e7d983
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425126"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094057"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływie przyznawania kodu OAuth 2.0
 
@@ -63,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | state |Zalecane |Wartość uwzględnione w żądaniu, która jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](https://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 | zasób | Zalecane |Identyfikator URI Identyfikatora aplikacji docelowej internetowego interfejsu API (zabezpieczono zasób). Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takie jak `https://graph.microsoft.com`. Jest to wymagane w jedno autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieść go w żądaniu autoryzacji, aby upewnić się, że otrzymaniu zgody przez użytkownika. |
 | scope | **ignorowane** | W przypadku aplikacji usługi Azure AD w wersji 1, zakresy muszą być skonfigurowane statycznie w witrynie Azure Portal w obszarze aplikacje **ustawienia**, **wymagane uprawnienia**. |
-| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.<p> Prawidłowe wartości to: <p> *Zaloguj się*: monitowany o ponowne uwierzytelnianie. <p> *select_account*: użytkownik jest monitowany o wybranie konta przerywania logowania jednokrotnego na. Użytkownik może wybrać istniejące konto zalogowanego, wprowadź swoje poświadczenia dla konta zapamiętanych lub chce użyć całkowicie innego konta. <p> *zgoda*: zgody użytkownika przyznano, ale musi zostać zaktualizowany. Użytkownik powinien monit o zgodę. <p> *admin_consent*: administrator powinien być monitowany o zgody w imieniu wszystkich użytkowników w organizacji |
+| wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.<p> Prawidłowe wartości to: <p> *Zaloguj się*: Użytkownik powinien monitowany ponownego uwierzytelnienia. <p> *select_account*: Użytkownik jest monitowany o wybranie konta, przerywania logowania jednokrotnego na. Użytkownik może wybrać istniejące konto zalogowanego, wprowadź swoje poświadczenia dla konta zapamiętanych lub chce użyć całkowicie innego konta. <p> *Zgoda*: Zgoda użytkownika przyznano, ale musi zostać zaktualizowany. Użytkownik powinien monit o zgodę. <p> *admin_consent*: Administrator powinien być monitowany o zgody w imieniu wszystkich użytkowników w organizacji |
 | login_hint |opcjonalne |Można wstępnie wypełnić pola Adres e-mail/nazwy użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, mających już wyodrębnione nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia. |
 | Element domain_hint |opcjonalne |Zawiera wskazówki dotyczące dzierżawy lub domeny, które użytkownik powinien używać do logowania. Element domain_hint wartość zarejestrowanej domeny dla dzierżawy. Jeśli dzierżawa jest sfederowana do katalogu lokalnego, AAD przekierowuje do określonej dzierżawy serwera federacyjnego. |
 | code_challenge_method | Zalecane    | Metoda użyta do zakodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z `plain` lub `S256`. Jeśli wykluczone, `code_challenge` przyjęto, że będzie mieć postać zwykłego tekstu, jeśli `code_challenge` jest dołączony. Obsługuje platformy Azure 1.0 w usłudze AAD, zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
@@ -87,7 +87,7 @@ Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | Parametr | Opis |
 | --- | --- |
 | admin_consent |Ma wartość True, jeśli administrator wyraził zgodę na monit o wyrażenie zgody żądania. |
-| Kod |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kod autoryzacji do żądania tokenu dostępu dla zasobu docelowego. |
+| kod |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kod autoryzacji do żądania tokenu dostępu dla zasobu docelowego. |
 | session_state |Unikatowa wartość, która identyfikuje bieżącą sesję użytkownika. Ta wartość jest identyfikatorem GUID, ale powinien być traktowany jako nieprzezroczysta wartość przekazywaną bez badania. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Jest dobrym rozwiązaniem dla aplikacji, aby zweryfikować, że wartości stanu żądania i odpowiedzi są identyczne, przed rozpoczęciem korzystania z odpowiedzi. Ułatwia to wykrywanie [ataki fałszerstwo żądania Międzywitrynowego Międzywitrynowych](https://tools.ietf.org/html/rfc6749#section-10.12) względem klienta. |
 
@@ -143,11 +143,11 @@ grant_type=authorization_code
 | dzierżawa |wymagane |`{tenant}` Wartość w polu Ścieżka żądania może służyć do kontrolowania, kto może zalogować się do aplikacji. Dozwolone są wartości identyfikatorów dzierżawy, na przykład `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` lub `contoso.onmicrosoft.com` lub `common` tokenów niezależne od dzierżawcy |
 | client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania za pomocą usługi Azure AD. To można znaleźć w witrynie Azure portal. Identyfikator aplikacji jest wyświetlany w ustawieniach rejestracji aplikacji. |
 | grant_type |wymagane |Musi być `authorization_code` dla przepływ kodu autoryzacji. |
-| Kod |wymagane |`authorization_code` Uzyskany w poprzedniej sekcji |
+| kod |wymagane |`authorization_code` Uzyskany w poprzedniej sekcji |
 | redirect_uri |wymagane |Taki sam `redirect_uri` wartości, które zostało użyte do uzyskania `authorization_code`. |
 | client_secret |wymagane dla aplikacji sieci web, nie jest dozwolona dla klientów publicznych |Klucz tajny aplikacji, utworzony w witrynie Azure Portal na potrzeby aplikacji w środowisku **klucze**. Nie można użyć w aplikacji macierzystej (publicznych klienta), ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest to wymagane dla aplikacji internetowych i internetowych interfejsów API (wszystkich poufnych klientów), która ma możliwość przechowywania `client_secret` bezpiecznie po stronie serwera. Wartość client_secret powinna być zakodowane w adresie URL przed wysłaniem. |
 | zasób | Zalecane |Identyfikator URI Identyfikatora aplikacji docelowej internetowego interfejsu API (zabezpieczono zasób). Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takie jak `https://graph.microsoft.com`. Jest to wymagane w jedno autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieść go w żądaniu autoryzacji, aby upewnić się, że otrzymaniu zgody przez użytkownika. Jeśli w żądaniu autoryzacji i żądania tokenu zasobu "Parametry muszą być zgodne. | 
-| wartość parametru code_verifier | opcjonalne | Tym samym wartość parametru code_verifier użytego do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
+| code_verifier | opcjonalne | Tym samym wartość parametru code_verifier użytego do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |
 
 Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**.
 
@@ -175,7 +175,7 @@ Odpowiedź oznaczająca Powodzenie może wyglądać następująco:
 | Parametr | Opis |
 | --- | --- |
 | access_token |Żądany [token dostępu](access-tokens.md) jako podpisem JSON Web Token (JWT). Aplikacja może używać tego tokenu do uwierzytelniania zabezpieczonych zasobów, takich jak interfejs API sieci web. |
-| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [ramy autoryzacji OAuth 2.0: użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [ramy autoryzacji OAuth 2.0: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Jak długo token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
 | zasób |Identyfikator URI Identyfikatora aplikacji internetowego interfejsu API (zabezpieczono zasób). |

@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315778"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103076"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -48,7 +48,7 @@ Ten plan ma służyć jako podstawa modułowej klienci będą mogli dostosować 
 
 -   **Diagram architektury.** Na diagramie przedstawiono architekturę referencyjną, używany do planu, a przykładowy scenariusz przypadków użycia.
 
--   [Rozszerzenie IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) to rozwiązanie pokażemy, jak migrować rozwiązanie SQL na podstawie lokalnych na platformę Azure oraz do wykonywania Privieged stacji roboczej z dostępem do bezpiecznego zarządzania bsed chmurze usług i rozwiązań. 
+-   [Rozszerzenie IaaS](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) to rozwiązanie pokażemy, jak migrować rozwiązanie SQL na podstawie lokalnych na platformę Azure oraz do wykonywania uprzywilejowanych stacji roboczej z dostępem do bezpiecznego zarządzania bsed chmurze usług i rozwiązań. 
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 
@@ -156,7 +156,7 @@ Alex przez zadanie jest ocena technologii, które można zmniejszyć obciążeni
 
 **Analityk danych — Magdalena**
 
-*Adres e-mail: Magdalena\_DataScientist*
+*Adres e-mail: Debra\_DataScientist*
 
 Magdalena odpowiada za używanie i tworzenie modeli, które analizują dokumentacji medycznej, aby zapewnić wgląd w opiece nad pacjentami. Magdalena korzysta z języków SQL i statystycznego języka programowania R na potrzeby tworzenia jej modeli.
 

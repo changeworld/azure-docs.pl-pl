@@ -1,6 +1,6 @@
 ---
-title: Azure CLI przykładowym skrypcie - równorzędnej dwie sieci wirtualne | Dokumentacja firmy Microsoft
-description: Azure CLI przykładowym skrypcie - równorzędnej dwie sieci wirtualne
+title: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — komunikacja równorzędna dwóch sieci wirtualnych | Dokumentacja firmy Microsoft
+description: Przykładowy skrypt interfejsu wiersza polecenia platformy Azure — komunikacja równorzędna dwóch sieci wirtualnych
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: 8ad1e7de85f851b5db6764175bc1136dd19d418d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8d11ad9d2722bb8fc23154509feeca2a293bfa41
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852374"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098000"
 ---
-# <a name="peer-two-virtual-networks"></a>Dwie wirtualne sieci równorzędne
+# <a name="peer-two-virtual-networks"></a>Komunikacja równorzędna dwóch sieci wirtualnych
 
-Ten skrypt tworzy i łączy dwie sieci wirtualne w tej samej trhough region sieć platformy Azure. Po uruchomieniu skryptu spowoduje utworzenie komunikacji równorzędnej między dwiema sieciami wirtualnymi.
+Ten skrypt tworzy i łączy dwie sieci wirtualne w tym samym regionie za pośrednictwem sieci platformy Azure. Po uruchomieniu skryptu utworzysz komunikację równorzędną pomiędzy dwiema sieciami wirtualnymi.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -45,17 +45,17 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następujących poleceń do utworzenia grupy zasobów, maszyny wirtualnej i wszystkie powiązane zasoby. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobów, maszyny wirtualnej i wszystkich powiązanych zasobów. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [Tworzenie sieci wirtualnej sieci az](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Tworzy sieć wirtualna platformy Azure i podsieć. |
-| [równorzędna az sieci wirtualne sieci równorzędne — tworzenie](https://docs.microsoft.com/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Tworzy komunikacji równorzędnej między dwiema sieciami wirtualnymi.  |
+| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Tworzy sieć wirtualną i podsieć platformy Azure. |
+| [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | Tworzy komunikację równorzędną między dwiema sieciami wirtualnymi.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 
-Dodatkowe przykłady skryptów sieci interfejsu wiersza polecenia można znaleźć w [Azure Przegląd dokumentacji](../cli-samples.md).
+Dodatkowe przykłady skryptów interfejsu wiersza polecenia dla sieci można znaleźć w [dokumentacji i omówieniu sieci platformy Azure](../cli-samples.md).

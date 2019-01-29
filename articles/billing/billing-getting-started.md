@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 6cc42477e167b7c1a72c1ef74af477073b9af16e
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901908"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101655"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -75,7 +75,7 @@ W tym przykładzie użyto **rzeczywisty koszt względem czasu** raport, aby wys�
 5. Wybierz **próg** , a następnie wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). 
    1. W **czerwonego alertu** próg wprowadź 10000. 
    2. W **żółty alert** próg wprowadź 9000. 
-   3. W **liczbę kolejnych alertów** wprowadź liczbę kolejnych alertów do odbierania. Po otrzymaniu łączną liczbę alertów, które można określić dodatkowe alerty nie są wysyłane. 
+   3. W **liczbę kolejnych alertów** wprowadź liczbę kolejnych alertów do odbierania. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. 
 6. Wybierz pozycję **Zapisz**.
 
     ![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/billing-getting-started/schedule-alert01.png)

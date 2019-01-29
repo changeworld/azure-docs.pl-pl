@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: be3a3a50d3ace369964814bc7fcc0fa0d353a332
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 15924f2da72318603d11b2d4aadff72cb14ad5f7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54842906"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156959"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Rozwiązywanie problemów z niestandardowych zasad usługi Azure AD B2C i platformy środowiska tożsamości
 

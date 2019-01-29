@@ -1,5 +1,5 @@
 ---
-title: 'Współdziałanie w funkcji łączność z zaplecza platformy Azure: szczegóły konfiguracji | Dokumentacja firmy Microsoft'
+title: 'Współdziałanie w funkcjach łączność z zaplecza platformy Azure: Szczegóły konfiguracji | Dokumentacja firmy Microsoft'
 description: W tym artykule opisano szczegóły konfiguracji dla konfiguracji testu, które służy do analizowania współdziałanie usługi ExpressRoute, sieci VPN typu lokacja lokacja i wirtualnych sieci równorzędnych na platformie Azure.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: a460a8f4c652182a7916cba5aef0520834432909
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4aa594769a3665908f0adce498a4a2bf3a4f4f83
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614824"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189072"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Współdziałanie w funkcji łączność z zaplecza platformy Azure: szczegóły konfiguracji testu
+# <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Współdziałanie w funkcjach łączność z zaplecza platformy Azure: Szczegóły konfiguracji testu
 
 W tym artykule opisano szczegóły konfiguracji [Testuj ustawienia][Setup]. Ustawienia testu pomaga analizować jak usługi platformy Azure networking współdziałać na poziomie poziom płaszczyzna kontroli i płaszczyzny danych.
 
@@ -186,7 +186,7 @@ W sieci wirtualnej komunikacji równorzędnej w regionie sieci wirtualne będąc
 
 ### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Połączenie między sieciami gałęzi przy użyciu sieci VPN typu lokacja lokacja
 
-Możesz chcieć gałęzi sieci wirtualne, które znajdują się w różnych regionach i sieciami lokalnymi do komunikowania się ze sobą za pośrednictwem sieci wirtualnej serwera centralnego. Natywne rozwiązanie platformy Azure dla tego cofiguration jest połączenie sieci VPN typu lokacja lokacja przy użyciu sieci VPN. Alternatywą jest na potrzeby routingu w piaście wirtualnego urządzenia sieciowego (WUS).
+Możesz chcieć gałęzi sieci wirtualne, które znajdują się w różnych regionach i sieciami lokalnymi do komunikowania się ze sobą za pośrednictwem sieci wirtualnej serwera centralnego. Natywne rozwiązanie platformy Azure dla tej konfiguracji jest połączenie sieci VPN typu lokacja lokacja przy użyciu sieci VPN. Alternatywą jest na potrzeby routingu w piaście wirtualnego urządzenia sieciowego (WUS).
 
 Aby uzyskać więcej informacji, zobacz [co to jest usługa VPN Gateway?] [ VPN] i [wdrożenia o wysokiej dostępności urządzeń WUS][Deploy-NVA].
 

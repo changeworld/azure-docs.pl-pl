@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 62b6b40e6289ccca92c0a92d8bb7d0489dd44246
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 0aad231b4a57c2d9927a553a43394681282b5494
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902947"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155956"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Wprowadzenie do Akustyka projektu
 Ten przewodnik Szybki Start będzie pokazują, jak zintegrować wtyczkę w swoim projekcie aparatu Unity, tworzenie sceny i dotyczą Akustyka źródeł dźwięku. W tym przewodniku Szybki Start, musisz najpierw utworzyć [konta usługi Azure batch](create-azure-account.md). W tym przewodniku założono pewną znajomość środowiska Unity.
@@ -24,7 +24,7 @@ Ten przewodnik Szybki Start będzie pokazują, jak zintegrować wtyczkę w swoim
 Zarejestruj [tutaj](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) do dołączenia do projektanta w wersji zapoznawczej.
 
 ## <a name="supported-platforms-for-quickstart"></a>Obsługiwane platformy pod kątem szybkiego startu
-* [Unity 2018.2 +](http://www.unity3d.com)
+* [Unity 2018.2+](http://www.unity3d.com)
   * Wymaga ustawienia projektu **.NET 4.x odpowiednik** skryptów wersji środowiska uruchomieniowego 
   * Wymaga edytora aparatu Unity z systemem Windows
 
@@ -91,7 +91,7 @@ Kliknij pozycję **ProjectAcoustics** obiektu gry, a następnie przejść do jeg
 ## <a name="apply-acoustics-to-sound-sources"></a>Dotyczą Akustyka źródeł dźwięku
 Utwórz źródła audio. Kliknij pole wyboru w dolnej części panelu Inspektor AudioSource informujący, że **Spatialize**. Upewnij się, że **przestrzenne programu Blend** jest ustawiona na pełne 3D.  
 
-![Źródło audio](media/AudioSource.png)
+![Audio Source](media/AudioSource.png)
 
 ## <a name="apply-post-bake-design"></a>Stosowanie po Tworzenie projektu
 Możesz dołączyć skrypt **AcousticsAdjust** do źródła dźwięku w sceny w taki sposób, aby włączyć dodatkowe źródła projektu parametrów, klikając **Dodaj składnik** i wybierając pozycję **Skrypty > Akustyka Dostosuj**:

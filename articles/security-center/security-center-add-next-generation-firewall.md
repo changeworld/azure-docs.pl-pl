@@ -1,6 +1,6 @@
 ---
 title: Dodaj zaporę następnej generacji w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: W tym dokumencie przedstawiono sposób implementowania zaleceń Centrum zabezpieczeń Azure **Dodaj zaporę następnej generacji** i **traffice o trasy przez zaporę nowej generacji tylko**.
+description: W tym dokumencie przedstawiono sposób implementowania zaleceń Centrum zabezpieczeń Azure **Dodaj zaporę następnej generacji** i **kierowania ruchu przez zaporę nowej generacji tylko**.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0f1949373e99df1cccd6c49ff92c80d595519377
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: a71f2044b799fb47e4ab8991d76f92a1ccc049f5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341155"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102451"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Dodaj zaporę następnej generacji w usłudze Azure Security Center
 Usługa Azure Security Center może zalecić sytuacja: dodajesz zaporę nowej generacji (nowej NGFW) od partnera firmy Microsoft, aby zwiększyć Twoje zabezpieczenia. Ten dokument zawiera opis przykładu przekonamy się jak to zrobić.

@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5a5b166e9b90ede5f5c51b2c288ce1d2d6290ba6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e8ac6b7bef06eae16224f9db8e216f13c21f13a1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464837"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161396"
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących reagowania na zdarzenia, dla Twojego rozwiązania z tożsamością hybrydową
 Dużych i średnich organizacji najprawdopodobniej będą mieć [reagowania na zdarzenia zabezpieczeń](https://technet.microsoft.com/library/cc700825.aspx) mające na celu pomóc IT podjąć odpowiednie działania na poziomie wystąpienia zdarzenia. Systemu zarządzania tożsamościami jest ważnym elementem procesu reagowania na zdarzenia, ponieważ może służyć do pomocy w identyfikacji, kto wykonał określonej akcji w odniesieniu do obiektu docelowego. Rozwiązania z tożsamością hybrydową musi mieć możliwość zapewnienia możliwości monitorowania i raportowania, które mogą zostać wykorzystane przez IT, aby wykonać działania, aby identyfikować i minimalizować potencjalne zagrożenie. W ramach planu reagowania na zdarzenia typowe mają następujące fazy w ramach planu:

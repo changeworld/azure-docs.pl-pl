@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d17f3ba0ac16ec8e6dec3adc5fa326c93c2eb0a2
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 854e944d91c5d43131cf6a9c05e69d5684267022
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810787"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161804"
 documentType: LandingData
 title: Raporty i monitorowanie w usłudze Azure Active Directory
 metadata:
@@ -12,7 +12,7 @@ metadata:
   title: Dokumentacja dotycząca raportów i monitorowania usługi Azure Active Directory — samouczki, przewodniki Szybki start, pojęcia | Microsoft Docs
   description: Dowiedz się, jak skonfigurować i przetestować rozwiązania raportów i monitorowania usługi Azure Active Directory.
   services: active-directory
-  ms.component: report-monitor
+  ms.subservice: report-monitor
   author: priyamohanram
   manager: daveba
   ms.service: active-directory

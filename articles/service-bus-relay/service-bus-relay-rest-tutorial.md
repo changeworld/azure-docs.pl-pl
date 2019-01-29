@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 40562c77cf38ad316d64f68b54dd4174dae6da1a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e0f85e11b2be8a615f949e0d37325dbd748f728a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614476"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103279"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Samouczek dotyczący usługi Azure WCF Relay REST
 W tym samouczku opisano, jak utworzyć prostą aplikację hosta przekaźnika usługi Azure, która uwidacznia interfejs REST. Interfejs REST umożliwia klientowi sieci Web, takiemu jak przeglądarka sieci Web, uzyskiwanie dostępu do interfejsów API usługi Service Bus za pomocą żądań HTTP.
 
 W tym samouczku użyto usługi Windows Communication Foundation (WCF) modelu programowania interfejsu REST do utworzenia usługi REST w usłudze Azure Relay. Aby uzyskać więcej informacji, zobacz [Model programowania interfejsu REST usługi WCF](/dotnet/framework/wcf/feature-details/wcf-web-http-programming-model) oraz [Projektowanie i implementowanie usług](/dotnet/framework/wcf/designing-and-implementing-services) w dokumentacji usługi WCF.
 
-W tym samouczku można wykonać następujące czynności:
+W tym samouczku wykonasz następujące kroki:
 
 > [!div class="checklist"]
 > * Tworzenie przestrzeni nazw usługi Relay.
@@ -41,7 +41,7 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 - [Program Visual Studio 2015 lub nowszy](http://www.visualstudio.com). W przykładach znajdujących się w tym samouczku używany jest program Visual Studio 2017.
-- Zestaw Azure SDK dla platformy .NET. Zainstaluj go z [strony pobierania zestawu SDK](https://azure.microsoft.com/downloads/).
+- Zestaw Azure SDK dla platformy .NET. Zainstaluj go ze [strony pobierania zestawu SDK](https://azure.microsoft.com/downloads/).
 
 ## <a name="create-a-relay-namespace"></a>Tworzenie przestrzeni nazw usługi Relay
 
@@ -439,9 +439,9 @@ Poniższy kod przedstawia plik App.config skojarzony z usługą.
       </behaviors>
     </system.serviceModel>
     <appSettings>
-        <!-- Service Bus specific app setings for messaging connections -->
+        <!-- Service Bus specific app settings for messaging connections -->
         <add key="Microsoft.ServiceBus.ConnectionString"
-            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey="YOUR_SAS_KEY"/>
+            value="Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SAS_KEY>"/>
     </appSettings>
 </configuration>
 ```

@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: be4ba84a-275d-4f71-afce-cb064edc713f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 30a1498ab41f263c77656400c4200313048cc331
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 447307c0c27fda9e7719e74e529f21d767c9f58d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436169"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152369"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą klucza tajnego Server (lokalnie)
 
@@ -30,7 +30,7 @@ Integrowanie wpis tajny serwera (lokalnie) z usługą Azure AD zapewnia następu
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do klucza tajnego Server (lokalnie).
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do wpisu tajnego Server (lokalnie) (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -38,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą klucza tajnego Server (lokalnie), potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Klucz tajny Server (lokalnie) logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -60,7 +60,7 @@ Aby skonfigurować integrację serwera klucz tajny (lokalnie) w usłudze Azure A
 
 **Aby dodać wpis tajny serwera (lokalnie) z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -68,15 +68,15 @@ Aby skonfigurować integrację serwera klucz tajny (lokalnie) w usłudze Azure A
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **wpis tajny serwera (lokalnie)**, wybierz opcję **wpis tajny serwera (lokalnie)** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Tajne Server (lokalnie) na liście wyników](./media/secretserver-on-premises-tutorial/tutorial_secretserver_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą klucza tajnego serwera (lokalnie) w oparciu o nazwie "Britta Simon" użytkownika testowego.
 
@@ -84,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą klucza tajnego Server (lokalnie), należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego wpis tajny serwera (lokalnie)](#create-a-secret-server-on-premises-test-user)**  — aby odpowiednikiem Britta Simon w serwera klucz tajny (lokalnie), który jest połączony z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji wpis tajny serwera (lokalnie).
 
@@ -98,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **wpis tajny serwera (lokalnie)** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
@@ -110,7 +110,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     a. W **identyfikator** polu tekstowym wprowadź nazwę użytkownika, wybranych wartości, na przykład: `https://secretserveronpremises.azure`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
 
     > [!NOTE]
     > Identyfikator jednostki powyżej jest tylko przykładem i masz swobodę wyboru unikatową wartość, która identyfikuje Twoje wystąpienie serwera klucz tajny w usłudze Azure AD. Trzeba będzie wysłać ten identyfikator jednostki [zespołem pomocy technicznej klienta wpis tajny serwera (lokalnie)](https://thycotic.force.com/support/s/) i ich konfigurowanie na bok. Aby uzyskać więcej informacji, przeczytaj [w tym artykule](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server).
@@ -119,28 +119,28 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Tajne Server (lokalnie) domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url1.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<SecretServerURL>/login.aspx`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SecretServerURL>/login.aspx`
      
     > [!NOTE] 
-    > Te wartości są prawdziwe. Rzeczywisty adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta wpis tajny serwera (lokalnie)](https://thycotic.force.com/support/s/) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta wpis tajny serwera (lokalnie)](https://thycotic.force.com/support/s/) do uzyskania tych wartości.
 
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Link pobierania certyfikatu](./media/secretserver-on-premises-tutorial/tutorial_secretserver_certificate.png)
+    ![Link do pobierania certyfikatu](./media/secretserver-on-premises-tutorial/tutorial_secretserver_certificate.png)
 
 1. Sprawdź **Pokaż zaawansowane ustawienia podpisywania certyfikatów** i wybierz **opcja podpisywania** jako **odpowiedź i potwierdzenie SAML logowania**.
 
     ![Opcje podpisywania](./media/secretserver-on-premises-tutorial/signing.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/secretserver-on-premises-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/secretserver-on-premises-tutorial/tutorial_general_400.png)
     
 1. Na **konfiguracji wpis tajny serwera (lokalnie)** , kliknij przycisk **skonfigurować klucz tajny Server (lokalnie)** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
 
     ![Konfiguracja serwera tajny (lokalnie)](./media/secretserver-on-premises-tutorial/tutorial_secretserver_configure.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **wpis tajny serwera (lokalnie)** stronie, musisz wysłać pobrany **Certificate(Base64), adres URL wylogowania protokołu SAML pojedynczego logowania jednokrotnego adres URL usługi**, i **jednostki SAML Identyfikator** do [wpis tajny serwera (lokalnie), zespół pomocy technicznej](https://thycotic.force.com/support/s/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **wpis tajny serwera (lokalnie)** stronie, musisz wysłać pobrany **Certificate(Base64), adres URL wylogowania protokołu SAML pojedynczego logowania jednokrotnego adres URL usługi**, i **jednostki SAML Identyfikator** do [wpis tajny serwera (lokalnie), zespół pomocy technicznej](https://thycotic.force.com/support/s/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -176,7 +176,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-secret-server-on-premises-test-user"></a>Tworzenie użytkownika testowego wpis tajny serwera (lokalnie)
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon klucz tajny Server (lokalnie). Praca z [wpis tajny serwera (lokalnie), zespół pomocy technicznej](https://thycotic.force.com/support/s/) Aby dodać użytkowników na platformie wpis tajny serwera (lokalnie). Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon klucz tajny Server (lokalnie). Praca z [wpis tajny serwera (lokalnie), zespół pomocy technicznej](https://thycotic.force.com/support/s/) Aby dodać użytkowników na platformie wpis tajny serwera (lokalnie). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

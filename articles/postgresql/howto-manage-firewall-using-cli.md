@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 05/4/2018
-ms.openlocfilehash: 214c6c4dc3b2dd83e6bf3dfa3355ad6f6aa2eb18
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d450b8d154e920bfc9a82314d34f20a52af71dab
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539147"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182000"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure
 Reguły zapory na poziomie serwera umożliwiają administratorom zarządzanie dostępem do usługi Azure Database dla serwera PostgreSQL z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Omówienie usługi Azure Database dla PostgreSQL reguł zapory, zobacz [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md)
@@ -70,7 +70,7 @@ az postgres server firewall-rule show --resource-group myresourcegroup --server-
 W razie powodzenia dane wyjściowe polecenia Wyświetla szczegóły reguły zapory, który został określony, domyślnie w formacie JSON. W przypadku awarii dane wyjściowe pokazują komunikat o błędzie zamiast tego.
 
 ## <a name="delete-firewall-rule"></a>Usuń regułę zapory
-Aby odwołać dostęp dla zakresu adresów IP do serwera, należy usunąć istniejącą regułę zapory, wykonując [Usuń az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_delete) polecenia. Podaj nazwę istniejącej reguły zapory.
+Aby odwołać dostęp dla zakresu adresów IP do serwera, należy usunąć istniejącą regułę zapory, wykonując [Usuń az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule) polecenia. Podaj nazwę istniejącej reguły zapory.
 ```azurecli-interactive
 az postgres server firewall-rule delete --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```

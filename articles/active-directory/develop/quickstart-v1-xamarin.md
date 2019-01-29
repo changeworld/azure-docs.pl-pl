@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 8af6846da78d12460b7866297c9802c5dab20a69
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5b721dfd7a229220836f273be58c5ca74c4284d1
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967527"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097935"
 ---
-# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Szybki Start: Tworzenie aplikacji platformy Xamarin, która integruje się logowania firmy Microsoft
+# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Szybki start: Zbuduj aplikację Xamarin, która integruje się logowania firmy Microsoft
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -39,7 +39,7 @@ W przypadku aplikacji platformy Xamarin, które muszą uzyskać dostęp do chron
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Pobierz [szkielet projektu](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip), lub pobrać [ukończone przykładowe](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip). Każdego pobrania to rozwiązanie programu Visual Studio 2013.
-* Należy również dzierżawy usługi Azure AD w taki sposób, w której chcesz utworzyć użytkowników i rejestrowania aplikacji. Jeśli nie masz jeszcze dzierżawy, [Dowiedz się, jak je](quickstart-create-new-tenant.md).
+* Należy również dzierżawy usługi Azure AD w taki sposób, w której chcesz utworzyć użytkowników i rejestrowania aplikacji. Jeśli nie masz jeszcze dzierżawy, [dowiedz się, jak ją uzyskać](quickstart-create-new-tenant.md).
 
 Gdy wszystko będzie gotowe, należy wykonać procedury opisane w następnych czterech sekcjach.
 
@@ -55,16 +55,16 @@ Aby włączyć aplikację, aby uzyskać tokenów, należy najpierw zarejestrowa�
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Na górnym pasku kliknij swoje konto. Następnie w obszarze **katalogu** wybierz dzierżawę usługi Active Directory, w którym chcesz zarejestrować aplikację.
-3. Kliknij przycisk **wszystkich usług** w okienku po lewej stronie, a następnie wybierz **usługi Azure Active Directory**.
-4. Kliknij przycisk **rejestracje aplikacji**, a następnie wybierz pozycję **Dodaj**.
+3. Kliknij pozycję **Wszystkie usługi** w okienku po lewej stronie, a następnie wybierz pozycję **Azure Active Directory**.
+4. Kliknij przycisk **Rejestracje aplikacji**, a następnie wybierz pozycję **Dodaj**.
 5. Aby utworzyć nowy **natywną aplikację kliencką**, postępuj zgodnie z monitami.
   * **Nazwa** opisuje aplikacji dla użytkowników.
-  * **Identyfikator URI przekierowania** jest połączeniem schemat i parametry, które usługa Azure AD używa do zwracania odpowiedzi tokenu. Wprowadź wartość (na przykład http://DirectorySearcher).
+  * **Identyfikator URI przekierowania** jest połączeniem schematu i ciągu, przy użyciu którego usługa Azure AD zwraca odpowiedzi tokenów. Wprowadź wartość (na przykład http://DirectorySearcher).
 6. Po zakończeniu rejestracji usługi Azure AD przypisze aplikacji Unikatowy identyfikator aplikacji. Skopiuj wartości z **aplikacji** karcie, ponieważ będzie on potrzebny później.
 7. Na **ustawienia** wybierz opcję **wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**.
 8. Wybierz **programu Microsoft Graph** jako interfejs API. W obszarze **delegowane uprawnienia**, Dodaj **Czytaj dane katalogu** uprawnień. Ta akcja umożliwia aplikacji do wykonywania zapytań interfejsu API programu Graph dla użytkowników.
 
-## <a name="step-3-install-and-configure-adal"></a>Krok 3. Instalowanie i konfigurowanie biblioteki ADAL
+## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalowanie i konfigurowanie biblioteki ADAL
 
 Teraz, gdy masz aplikację w usłudze Azure AD, można zainstalować biblioteki ADAL i pisanie kodu związanych z tożsamościami. Aby włączyć biblioteki ADAL w celu komunikowania się z usługą Azure AD, nadaj pewne informacje o rejestracji aplikacji.
 
@@ -187,12 +187,12 @@ List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(
 
 Masz teraz działającą aplikację Xamarin, która może uwierzytelniać użytkowników i bezpiecznie wywoływać interfejsy API sieci web przy użyciu protokołu OAuth 2.0 na pięć różnych platformach.
 
-## <a name="step-5-populate-your-tenant"></a>Krok 5: Wypełnij dzierżawy 
+## <a name="step-5-populate-your-tenant"></a>Krok 5. Wypełnij dzierżawy 
 
 Jeśli nie została już wypełniona dzierżawy z użytkownikami, nadszedł czas, aby to zrobić.
 
 1. Uruchom aplikację DirectorySearcher, a następnie zaloguj się przy użyciu jednego z użytkowników.
-2. Wyszukiwać innych użytkowników, w oparciu o ich nazwy UPN.
+2. Wyszukaj innych użytkowników na podstawie ich nazw UPN.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

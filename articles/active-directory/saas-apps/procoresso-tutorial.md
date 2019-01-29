@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9818edd3-48c0-411d-b05a-3ec805eafb2e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 12e7a37c1d2811b44dbf943b460b7d620770d45e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1cd82188ef9f5a4e0078a8ea21882f99bb8b8f44
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017529"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171290"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Procore
 
@@ -30,7 +30,7 @@ Integrowanie Procore logowanie Jednokrotne z usługą Azure AD zapewnia następu
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Procore logowania jednokrotnego.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do Procore SSO (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
@@ -44,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD przy użyciu logowania jednokrot
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -70,15 +70,15 @@ Aby skonfigurować integrację Procore logowania jednokrotnego w usłudze Azure 
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Procore logowania jednokrotnego**, wybierz opcję **Procore logowania jednokrotnego** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Procore logowania jednokrotnego na liście wyników](./media/procoresso-tutorial/tutorial_procoresso_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Procore Usługa rejestracji Jednokrotnej w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -100,7 +100,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Procore logowania jednokrotnego** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
@@ -116,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 5. Na **certyfikat podpisywania SAML** strony w **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **XML metadanych Federacji** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Link pobierania certyfikatu](./media/procoresso-tutorial/tutorial_procoresso_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
 6. Na **skonfigurować logowanie Jednokrotne Procore** sekcji, skopiuj odpowiedni adres URL, zgodnie z wymaganiami.
 
@@ -144,7 +144,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. Teraz Otwórz **XML metadanych Federacji** pobrane powyżej w witrynie Azure portal i skopiować certyfikat w tagu o nazwie **X509Certificate**. Wklej skopiowany wartość do **certyfikatu logowania jednokrotnego x509** pole.
 
-10. Kliknij pozycję **Zapisz zmiany**.
+10. Kliknij przycisk **Zapisz zmiany**.
 
 11. Po tych ustawień musi wysyłać **nazwy domeny** (np. **contoso.com**) za pomocą którego logujesz się do Procore do [zespołem pomocy technicznej Procore](https://support.procore.com/) i będą oni mogli Aktywuj federacyjnego logowania jednokrotnego dla tej domeny.
 
@@ -162,9 +162,9 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -176,9 +176,9 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_02.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
        Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.

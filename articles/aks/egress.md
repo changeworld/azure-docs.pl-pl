@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 175fa625a94626cde4d782abd1e9629530cab8b4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: aeffe172fd422f18e2828c5274e9a2ed13cc546a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408526"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103364"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Użyj statyczny publiczny adres IP dla ruchu wychodzącego w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ W tym artykule przedstawiono sposób tworzenia i używania statyczny publiczny a
 
 W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.46 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="egress-traffic-overview"></a>Omówienie ruchu wychodzącego
 
@@ -63,7 +63,7 @@ Adres IP jest wyświetlany, jak pokazano w następujących danych wyjściowych s
     "ipAddress": "40.121.183.52",
     [..]
   }
-````
+```
 
 Możesz później uzyskać publiczny adres IP, korzystając [az sieci public-ip list] [ az-network-public-ip-list] polecenia. Określ nazwę grupy zasobów, węzeł, a następnie wyszukać *ipAddress* jak pokazano w poniższym przykładzie:
 

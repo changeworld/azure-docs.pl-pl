@@ -6,18 +6,18 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 409e4d2e71766ddba2b1d7bcf7e10afdbe298104
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e58bd9afcbb7684cae93d3e71bae89d49f640111
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968547"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203967"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Szybki Start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing przy użyciu środowiska Node.js
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Szybki start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing przy użyciu środowiska Node.js
 
 Użyj tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań lokalnych firm interfejs API wyszukiwania Bing, czyli usługi Azure Cognitive Service. Gdy ta prosta aplikacja, jest napisany w języku Node.js, interfejs API jest zgodny z dowolnego języka programowania możliwością wysyłania żądań HTTP i analizowania danych JSON Usługa sieci Web typu RESTful.
 
@@ -27,7 +27,7 @@ Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla z
 
 * Najnowsza wersja środowiska [Node.js](https://nodejs.org/en/download/).
 
-* [Biblioteki JavaScript żądania](https://github.com/request/request)
+* [Biblioteka żądań języka JavaScript](https://github.com/request/request)
 
 Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) za pomocą interfejsów API usługi Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Użyj klucza dostępu, dostarczone przez bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
@@ -43,7 +43,7 @@ Poniższy kod pobiera definiuje i wysyła żądanie. W celu zaimplementowania ko
 
 Pełny kod tej wersji demonstracyjnej wygląda następująco:
 
-````
+```
 'use strict';
 
 let https = require('https');
@@ -90,7 +90,7 @@ let Search = function () {
 
 Search();
 
-````
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

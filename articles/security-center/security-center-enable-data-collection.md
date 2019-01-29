@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5150f782d13e198c59e8d79f09ba0ffead5426d3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082457"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100550"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -81,7 +81,7 @@ Aby wybrać obszar roboczy utworzony przez usługę Security Center:
 
 2. Kliknij pozycję **Zapisz**.<br>
     Usługa Security Center utworzy nowy zasób grupy i domyślny obszar roboczy w tym geolokalizacja i łączy agenta do tego obszaru roboczego. Konwencja nazewnictwa dla obszaru roboczego i grupy zasobów jest:<br>
-**Obszar roboczy: DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]<br> grupy zasobów: DefaultResourceGroup-[geograficzna]**
+**Obszar roboczy: DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]<br> grupy zasobów: DefaultResourceGroup-[geo]**
 
    Jeśli subskrypcja zawiera maszyny wirtualne z wieloma geolocations, usługa Security Center tworzy wiele obszarów roboczych. Wiele obszarów roboczych są tworzone do obsługi zasad ochrony prywatności danych.
 -   Usługa Security Center spowoduje automatyczne włączenie rozwiązania Security Center w obszarze roboczym na warstwy cenowej dla subskrypcji. 
@@ -279,7 +279,7 @@ Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu
      
             $PublicConf = '{
                 "workspaceId": "WorkspaceID value",
-                "MultipleConnectistopOnons": true
+                "MultipleConnections": true
             }' 
  
             $PrivateConf = '{

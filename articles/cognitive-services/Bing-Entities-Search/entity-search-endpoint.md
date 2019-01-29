@@ -3,19 +3,19 @@ title: Punkty końcowe wyszukiwania jednostek Bing
 titlesuffix: Azure Cognitive Services
 description: Podsumowanie punktu końcowego interfejsu API wyszukiwania jednostek.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.author: v-jaswel
-ms.openlocfilehash: b1b89cbacf43df544261847d4e3fae396a52f423
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 561c64db2b97ed8792acab6cc87de861ecc30fe9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816280"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183989"
 ---
 # <a name="entity-search-endpoints"></a>Punkty końcowe wyszukiwanie jednostki
 **Interfejs API wyszukiwania jednostek** zawiera jeden punkt końcowy.
@@ -29,8 +29,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
 
 Wymagane są następujące parametry adresu URL:
-- mkt. Na rynku, skąd pochodzą wyniki. 
-- PYTANIA I ODPOWIEDZI. Zapytanie wyszukiwania jednostki.
+- mkt. Rynek, z którego pochodzą wyniki. 
+- q. Zapytanie wyszukiwania jednostki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

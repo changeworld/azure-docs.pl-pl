@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 39dcbb95-c192-448c-86a1-cedede1c0972
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: c08b57c41cc43bfa47dee69a75663e7a58ef4c21
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f7973ccb384a8e882a9ced5020a53824bf0c4e7d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632844"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169879"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-drift"></a>Samouczek: Integracja usługi Azure Active Directory z odejściem od tego stanu
+# <a name="tutorial-azure-active-directory-integration-with-drift"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą odejściem od tego stanu
 
 W tym samouczku dowiesz się, jak zintegrować odejściem od tego stanu za pomocą usługi Azure Active Directory (Azure AD).
 
@@ -30,7 +30,7 @@ Integrowanie odejściem od tego stanu za pomocą usługi Azure AD zapewnia nast�
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do odejściem od tego stanu.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do dryfu (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
@@ -44,10 +44,10 @@ Aby skonfigurować integrację usługi Azure AD z odejściem od tego stanu, potr
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
 - Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+- Jeśli nie masz środowiska usługi Azure AD w wersji próbnej, możesz skorzystać z [miesięcznej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
@@ -70,15 +70,15 @@ Aby skonfigurować integrację odejściem od tego stanu w usłudze Azure AD, nal
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **dryfu**, wybierz opcję **dryfu** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
 
     ![Odstępstw na liście wyników](./media/drift-tutorial/tutorial_drift_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą odchylenie w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -100,7 +100,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **dryfu** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
@@ -110,17 +110,17 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
     ![Domena i adresy URL pojedynczego logowania jednokrotnego informacji odstępstw](./media/drift-tutorial/tutorial_drift_url.png)
 
-    a. Kliknij przycisk **Ustaw dodatkowe adresy URL**.
+    a. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
 
     b. W **tan przekaźnika** pole tekstowe, wpisz adres URL: `https://app.drift.com`
 
     c. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, w **adres URL logowania** pole tekstowe, wpisz adres URL: `https://start.drift.com`
 
-5. Aplikacja dryfu oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkowników i oświadczeń** sekcji na stronie integracji aplikacji. Kliknij przycisk **Edytuj** przycisk, aby otworzyć **atrybutów użytkowników i oświadczeń** okna dialogowego.
+5. Aplikacja dryfu oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty i oświadczenia użytkownika** na stronie integracji aplikacji. Kliknij przycisk **Edytuj** przycisk, aby otworzyć **atrybutów użytkowników i oświadczeń** okna dialogowego.
 
     ![image](./media/drift-tutorial/tutorial_drift_attribute.png)
 
@@ -128,7 +128,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     | Nazwa atrybutu | Wartość atrybutu |
     | ---------------| --------------- |    
-    | Name (Nazwa) | user.displayname |
+    | Name | user.displayname |
 
     a. Kliknij pozycję `name` oświadczenia (wyróżnione oświadczeń), aby otworzyć **Zarządzanie oświadczenia użytkownika** okna dialogowego.
 
@@ -136,7 +136,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![image](./media/drift-tutorial/tutorial_drift_attribute3.png)
 
-    b. Wybierz źródło jako **atrybutu**.
+    b. Dla opcji Źródło wybierz wartość **Atrybut**.
 
     c. Wprowadź **Namespace** puste.
 
@@ -146,7 +146,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 7. Na **certyfikat podpisywania SAML** strony w **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **XML metadanych Federacji** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Link pobierania certyfikatu](./media/drift-tutorial/tutorial_drift_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/drift-tutorial/tutorial_drift_certificate.png) 
 
 8. W oknie przeglądarki internetowej innej, zaloguj się do dryfu jako Administrator.
 
@@ -158,13 +158,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Po przekazaniu pliku metadanych, pozostałe wartości Uzyskaj automatycznie wypełniane na stronie automatycznie.
 
-    c. Kliknij przycisk **Włącz SAML**.
+    c. Kliknij pozycję **Enable SAML** (Włącz protokół SAML).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -176,9 +176,9 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_02.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -187,7 +187,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="creating-a-drift-test-user"></a>Tworzenie użytkownika testowego odejściem od tego stanu
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w odejściem od tego stanu. Dryfu obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu dryfu, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w odejściem od tego stanu. Dryfu obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu dryfu, jeśli go jeszcze nie istnieje.
 >[!Note]
 >Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej dryfu](mailto:integrations@drift.com).
 
@@ -211,7 +211,7 @@ W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowa
 
     ![Przypisz użytkownika][203]
 
-5. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
 6. W **Dodaj przydziału**, wybierz okno dialogowe **przypisać** przycisku.
 

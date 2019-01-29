@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 70ec0f1acc54aae7de5f815d62a876ce3d033193
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6288a976547cc405c804eaeca9b83e9dccc72240
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966912"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092240"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Zarządzanie przechwytywaniem pakietów przy użyciu usługi Azure Network Watcher przy użyciu wiersza polecenia platformy Azure
 
@@ -66,7 +66,7 @@ Dla maszyn wirtualnych systemu Linux:
 
 ```azurecli
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
-````
+```
 
 ### <a name="step-2"></a>Krok 2
 
@@ -194,13 +194,13 @@ Poniższy przykład przedstawia dane wyjściowe z `az network watcher packet-cap
   "additionalProperties": {
     "status": "Succeeded"
   },
-  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
+  "captureStartTime": "2016-12-06T17:20:01.5671279Z",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus/pa
 cketCaptures/packetCaptureName",
-  "name": "packetCaptureName",
+  "name": "packetCaptureName",
   "packetCaptureError": [],
-  "packetCaptureStatus": "Stopped",
-  "stopReason": "TimeExceeded"
+  "packetCaptureStatus": "Stopped",
+  "stopReason": "TimeExceeded"
 }
 ```
 

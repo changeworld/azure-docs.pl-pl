@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 152149f94bba9077909d5b5c6bf92f3706b31b8c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 403e126795a877be018cf4f4eb42581dee080e9c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848448"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163164"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -96,7 +96,7 @@ Aby dołączyć listę funkcji transformacji roszczenia, które mogą być używ
 | --------- | ----------- |----------- |
 | Identyfikator | Yes | Identyfikator, który jest odwołaniem do parametru metody przekształcania oświadczeń. Każda metoda przekształcania oświadczeń ma własne wartości. Znajdują się w tabeli przekształcania oświadczeń, aby uzyskać pełną listę dostępnych wartości. |
 | DataType | Yes | Typ danych parametru, takie jak ciąg, wartość logiczna, Int lub daty/godziny zgodnie z wyliczenia typu danych w schemacie XML zasad niestandardowych. Ten typ służy do wykonywania operacji arytmetycznych poprawnie. Każde przekształcenie oświadczeń ma własne wartości. Zobacz [odwołanie do przekształcania oświadczeń](#Claims-transformations-reference) pełną listę dostępnych wartości. |
-| Wartość | Yes | Wartość, która jest przekazywana verbatim do przekształcania. Niektóre wartości są dowolne, niektóre z nich, możesz wybrać spośród metoda przekształcania oświadczeń. |
+| Value | Yes | Wartość, która jest przekazywana verbatim do przekształcania. Niektóre wartości są dowolne, niektóre z nich, możesz wybrać spośród metoda przekształcania oświadczeń. |
 
 ### <a name="outputclaims"></a>OutputClaims
 

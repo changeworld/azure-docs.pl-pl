@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 688194c8d5ec0c2594d8c7178d8cae3925b8e482
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 93f086ed6ff7b8cc9ccc03290d3e901427783887
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413378"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103950"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -79,6 +79,10 @@ Aby uzyskać pełną listę neuronowych głosów i dostępności regionalnej zob
 |--------|----------|---------|--------------------|
 | en-US | English (US) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (en US, GuyNeural)" |
 | en-US | English (US) | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, JessaNeural)" |
+| zh-CN | Chiński | Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, XiaoxiaoNeural)" |
+
+> [!IMPORTANT]
+> Microsoft Server mowy tekstu na głos mowy (zh-CN, XiaoxiaoNeural) jest tylko dostępne za pośrednictwem punktu końcowego Azja południowo-wschodnia: https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1.
 
 ### <a name="standard-voices"></a>Standardowa głosów
 

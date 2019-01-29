@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 990f300055f7c0c7132dd44271dea73044649fc5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1d67f981991796b81ba3ab6540631e6d62be8077
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307002"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092176"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Ramka zabezpieczeń: Inspekcja i rejestrowanie | Środki zaradcze 
 | Produkt/usługę | Artykuł |
@@ -30,12 +30,12 @@ ms.locfileid: "43307002"
 | **Azure Storage** | <ul><li>[Użyj usługi Azure Storage Analytics, aby inspekcja dostępu do usługi Azure Storage](#analytics)</li></ul> |
 | **WCF** | <ul><li>[Implementowanie rejestrowania wystarczające](#sufficient-logging)</li><li>[Implementowanie obsługi wystarczające Niepowodzenie inspekcji](#audit-failure-handling)</li></ul> |
 | **Interfejs API sieci Web** | <ul><li>[Upewnij się, że inspekcji i rejestrowania są wymuszane na interfejs API sieci Web](#logging-web-api)</li></ul> |
-| **Bramy w terenie IoT** | <ul><li>[Upewnij się, czy odpowiednie inspekcji i rejestrowania są wymuszane na terenie bramy](#logging-field-gateway)</li></ul> |
-| **Brama chmury IoT** | <ul><li>[Upewnij się, czy odpowiednie inspekcji i rejestrowania są wymuszane na bramy w chmurze](#logging-cloud-gateway)</li></ul> |
+| **IoT Field Gateway** | <ul><li>[Upewnij się, czy odpowiednie inspekcji i rejestrowania są wymuszane na terenie bramy](#logging-field-gateway)</li></ul> |
+| **IoT Cloud Gateway** | <ul><li>[Upewnij się, czy odpowiednie inspekcji i rejestrowania są wymuszane na bramy w chmurze](#logging-cloud-gateway)</li></ul> |
 
 ## <a id="sensitive-entities"></a>Identyfikowanie jednostki poufne w swoim rozwiązaniu i zaimplementować inspekcji zmian
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Dynamics CRM | 
 | **Faza SDL**               | Kompilacja |  
@@ -46,7 +46,7 @@ ms.locfileid: "43307002"
 
 ## <a id="auditing"></a>Upewnij się, czy inspekcji i rejestrowania są wymuszane na aplikację
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -57,7 +57,7 @@ ms.locfileid: "43307002"
 
 ## <a id="log-rotation"></a>Upewnij się, że rotacja dziennika i separacji w miejscu
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -68,7 +68,7 @@ ms.locfileid: "43307002"
 
 ## <a id="log-sensitive-data"></a>Upewnij się, czy aplikacja nie rejestruje danych poufnych użytkownika
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -79,7 +79,7 @@ ms.locfileid: "43307002"
 
 ## <a id="log-restricted-access"></a>Upewnij się, że inspekcji i pliki dziennika mają ograniczony dostęp
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -90,7 +90,7 @@ ms.locfileid: "43307002"
 
 ## <a id="user-management"></a>Upewnij się, że są rejestrowane zdarzenia zarządzania użytkownika
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -101,7 +101,7 @@ ms.locfileid: "43307002"
 
 ## <a id="inbuilt-defenses"></a>Upewnij się, że system ma wbudowane zabezpieczenia przed niewłaściwym użyciem
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -112,7 +112,7 @@ ms.locfileid: "43307002"
 
 ## <a id="diagnostics-logging"></a>Włączanie rejestrowania diagnostycznego dla aplikacji sieci web w usłudze Azure App Service
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Aplikacja sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -123,7 +123,7 @@ ms.locfileid: "43307002"
 
 ## <a id="identify-sensitive-entities"></a>Upewnij się, że inspekcja logowania jest włączona w programie SQL Server
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -134,7 +134,7 @@ ms.locfileid: "43307002"
 
 ## <a id="threat-detection"></a>Włącz wykrywanie zagrożeń w usłudze Azure SQL
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Database (Baza danych) | 
 | **Faza SDL**               | Kompilacja |  
@@ -145,7 +145,7 @@ ms.locfileid: "43307002"
 
 ## <a id="analytics"></a>Użyj usługi Azure Storage Analytics, aby inspekcja dostępu do usługi Azure Storage
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Azure Storage | 
 | **Faza SDL**               | Wdrożenie |  
@@ -156,7 +156,7 @@ ms.locfileid: "43307002"
 
 ## <a id="sufficient-logging"></a>Implementowanie rejestrowania wystarczające
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -185,7 +185,7 @@ Poniżej przedstawiono przykładową konfigurację po włączeniu inspekcji
 
 ## <a id="audit-failure-handling"></a>Implementowanie obsługi wystarczające Niepowodzenie inspekcji
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | WCF | 
 | **Faza SDL**               | Kompilacja |  
@@ -196,7 +196,7 @@ Poniżej przedstawiono przykładową konfigurację po włączeniu inspekcji
 
 ### <a name="example"></a>Przykład
 `<behavior/>` Element pliku konfiguracji usługi WCF poniżej powoduje, że usługi WCF nie powiadomić aplikację, gdy WCF nie można zapisać w dzienniku inspekcji.
-````
+```
 <behaviors>
     <serviceBehaviors>
         <behavior name="NewBehavior">
@@ -207,12 +207,12 @@ Poniżej przedstawiono przykładową konfigurację po włączeniu inspekcji
         </behavior>
     </serviceBehaviors>
 </behaviors>
-````
+```
 Konfigurowanie usługi WCF do powiadamiania programu zawsze wtedy, gdy go nie można zapisać w dzienniku inspekcji. Program powinien mieć schemat alternatywnych powiadomień w miejscu z alertem organizacji, która dzienników inspekcji nie są już uaktualniana. 
 
 ## <a id="logging-web-api"></a>Upewnij się, że inspekcji i rejestrowania są wymuszane na interfejs API sieci Web
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Interfejs API sieci Web | 
 | **Faza SDL**               | Kompilacja |  
@@ -223,7 +223,7 @@ Konfigurowanie usługi WCF do powiadamiania programu zawsze wtedy, gdy go nie mo
 
 ## <a id="logging-field-gateway"></a>Upewnij się, czy odpowiednie inspekcji i rejestrowania są wymuszane na terenie bramy
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
 | **Składnik**               | Bramy w terenie IoT | 
 | **Faza SDL**               | Kompilacja |  
@@ -234,9 +234,9 @@ Konfigurowanie usługi WCF do powiadamiania programu zawsze wtedy, gdy go nie mo
 
 ## <a id="logging-cloud-gateway"></a>Upewnij się, czy odpowiednie inspekcji i rejestrowania są wymuszane na bramy w chmurze
 
-| Stanowisko                   | Szczegóły      |
+| Tytuł                   | Szczegóły      |
 | ----------------------- | ------------ |
-| **Składnik**               | Brama chmury IoT | 
+| **Składnik**               | IoT Cloud Gateway | 
 | **Faza SDL**               | Kompilacja |  
 | **Odpowiednich technologii** | Ogólny |
 | **Atrybuty**              | ND  |

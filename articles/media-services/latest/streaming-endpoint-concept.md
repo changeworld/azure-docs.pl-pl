@@ -11,16 +11,19 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: e286617897ecc9201c3880affd0a974f7330305a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359643"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104573"
 ---
 # <a name="streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego
 
-W programie Microsoft Azure Media Services (AMS), [punkty końcowe przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) jednostki reprezentuje usługę przesyłania strumieniowego, który może dostarczać zawartość bezpośrednio do aplikacji odtwarzacza klienta lub dalsze do Content Delivery Network (CDN) dla Dystrybucja. Wychodzące strumienia usługi punktu końcowego przesyłania strumieniowego może być strumień na żywo lub element zawartości wideo na żądanie w ramach konta usługi Media Services. Po utworzeniu konta usługi Media Services, **domyślne** punkt końcowy przesyłania strumieniowego zostanie utworzony w stanie zatrzymania. Nie można usunąć **domyślne** punkt końcowy przesyłania strumieniowego. Dodatkowe punkty końcowe przesyłania strumieniowego mogą być tworzone w ramach konta. Aby rozpocząć przesyłanie strumieniowe filmów wideo, należy uruchomić punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać wideo. 
+W programie Microsoft Azure Media Services (AMS), [punkty końcowe przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) jednostki reprezentuje usługę przesyłania strumieniowego, który może dostarczać zawartość bezpośrednio do aplikacji odtwarzacza klienta lub dalsze do Content Delivery Network (CDN) dla Dystrybucja. Strumień wychodzący, z **punkt końcowy przesyłania strumieniowego** usługa może być strumień na żywo lub element zawartości wideo na żądanie w ramach konta usługi Media Services. Po utworzeniu konta usługi Media Services, **domyślne** punkt końcowy przesyłania strumieniowego zostanie utworzony w stanie zatrzymania. Nie można usunąć **domyślne** punkt końcowy przesyłania strumieniowego. Dodatkowe punkty końcowe przesyłania strumieniowego mogą być tworzone w ramach konta. 
+
+> [!NOTE]
+> Aby rozpocząć przesyłanie strumieniowe filmów wideo, wówczas musisz uruchomić **punkt końcowy przesyłania strumieniowego** z którego chcesz strumieniowo przesyłać wideo. 
 
 ## <a name="naming-convention"></a>Konwencje nazewnictwa
 
@@ -34,7 +37,7 @@ Istnieją dwa **StreamingEndpoint** typów: **Standardowa** i **Premium**. Typ j
 
 W tabeli opisano typy:  
 
-|Typ|Jednostki skalowania|Opis|
+|Type|Jednostki skalowania|Opis|
 |--------|--------|--------|  
 |**Standardowy punkt końcowy przesyłania strumieniowego** (zalecane)|0|**Standardowa** typu jest to zalecana opcja, do niemal wszystkich scenariuszy przesyłania strumieniowego i publiczność każdej wielkości. **Standardowa** typu automatycznie skaluje przepustowość wychodzącą. <br/>Dla klientów korzystających z bardzo wymagających wymagania dotyczące usługi Media Services oferuje **Premium** punkty końcowe, które mogą być używane przesyłania strumieniowego umożliwiają skalowanie pojemności dla największych odbiorców internet. Jeśli spodziewasz się dużej liczby odbiorców i osoby przeglądające współbieżnych, skontaktuj się z nami pod adresem amsstreaming@microsoft.com wskazówki dotyczące tego, czy należy przenieść do **Premium** typu. |
 |**Punkt końcowy przesyłania strumieniowego Premium**|>0|Punkty końcowe przesyłania strumieniowego **Premium** są odpowiednie w przypadku zaawansowanych obciążeń, ponieważ zapewniają dedykowaną i skalowalną pojemność przepustowości. Przenieś do **Premium** typu, dostosowując `scaleUnits`. `scaleUnits` umożliwiają pojemności dedykowanej ruch wychodzący, który można zakupić według przyrostów 200 MB/s. Korzystając z **Premium** typ, każda włączona jednostka zapewnia dodatkową przepustowość do aplikacji. |

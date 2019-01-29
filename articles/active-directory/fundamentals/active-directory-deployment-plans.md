@@ -5,18 +5,18 @@ services: active-directory
 author: eross-msft
 manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 6ca6d0ab9f18665f6e271bedba63ce98996ba7db
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: dc231fc17a864401873c2f5acefbac6aa4816215
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54445987"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102672"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plany wdrażania usługi Azure Active Directory
 Szukasz kompleksowych wskazówek dotyczących wdrażania niektórych funkcji usługi Azure Active Directory (Azure AD)? W następujących planach wdrażania przedstawiono wartość biznesową, zagadnienia dotyczące planowania, projektowanie i procedury operacyjne potrzebne do pomyślnego wdrożenia niektórych z najpopularniejszych funkcji usługi Azure AD. 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1963708fb05feb7797bc8b4df024d16175687b17
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945590"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177912"
 ---
 # <a name="provider-resource-usage-api"></a>Interfejs API użycia zasobów dostawcy
 Termin *dostawcy* stosuje się do administratora usługi i żadnych delegowanych dostawców. Operatorzy usługi Azure Stack i delegowanych dostawców służy interfejs API użycia dostawcy do wyświetlania użycia bezpośrednich dzierżawcom. Na przykład jak pokazano na diagramie, P0 można wywołać interfejsu API, aby uzyskać informacje dotyczące firmy P1 zastosowania dostawcy i jego P2 bezpośredniego użycia i P1 może wywołać dotyczące użycia jednostek P3 i P4.
@@ -83,10 +83,10 @@ meterID1",
 | *id* |Unikatowy identyfikator użycia agregacji. |
 | *Nazwa* |Nazwa użycia agregacji. |
 | *type* |Definicja zasobu. |
-| *Identyfikator subskrypcji* |Identyfikator subskrypcji użytkownika usługi Azure Stack. |
+| *subscriptionId* |Identyfikator subskrypcji użytkownika usługi Azure Stack. |
 | *usageStartTime* |Godzina przedział użycia, do której należy ta wartość zagregowana użycia rozpoczęcia UTC.|
 | *usageEndTime* |Godzina zakończenia UTC zasobnika użycia, do której należy ta wartość zagregowana użycia. |
-| *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w nowym formacie):<br> *Identyfikator URI zasobu*: w pełni kwalifikowany identyfikator zasobu, który zawiera grupy zasobów i nazwę wystąpienia. <br> *Lokalizacja*: Region, w którym ta usługa została uruchomiona. <br> *tagi*: tagi zasobów, które są określone przez użytkownika. <br> *additionalInfo*: więcej szczegółowych informacji o zasobie, który został wykorzystany, na przykład typ wersji lub obrazu systemu operacyjnego. |
+| *instanceData* |Pary klucz wartość Szczegóły wystąpienia (w nowym formacie):<br> *Identyfikator URI zasobu*: Pełni kwalifikowanego Identyfikatora zasobu, co obejmuje grupy zasobów i nazwę wystąpienia. <br> *Lokalizacja*: Region, w którym ta usługa została uruchomiona. <br> *Tagi*: Tagi zasobów, które są określone przez użytkownika. <br> *additionalInfo*: Wpisz więcej szczegółów na temat zasobów, który został wykorzystany, na przykład wersja systemu operacyjnego lub obrazu. |
 | *Ilość* |Ilość użycia zasobów, które wystąpiły w tym horyzoncie czasowym. |
 | *meterId* |Unikatowy identyfikator zasobu, który został wykorzystany (nazywane również *ResourceID*). |
 

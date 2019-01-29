@@ -6,12 +6,12 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: dd62e0f4ff110ec8454031f1b66b56025328c33c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 55e9ef0f8bd268f36378c7d34cea95384c6f725e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101483"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099349"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partycjonowanie i skalowanie w poziomie w usłudze Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Partycja logiczna definiuje zakres transakcji bazy danych. Należy zaktualizowa�
 
 ## <a name="physical-partitions"></a>Partycje fizyczne
 
-Kontener usługi Azure Cosmos skalowania przez dystrybucję dużej liczby partycji logicznej danych i przepływności. Wewnętrznie, co najmniej jedną partycję logiczne są mapowane na **fizyczną partycję** składający się z zestawu replik, nazywana także zestawu replik. Każdego zestawu replik znajduje się wystąpienie aparatu bazy danych Azure Cosmos. Zestawu replik sprawia, że dane są przechowywane w partycję fizyczną trwałych, wysoce dostępny i spójne. Fizyczną partycję obsługuje stały, maksymalna wielkość magazynu oraz jednostek RU. Każdej repliki partycji fizycznych wchodzących w skład dziedziczy przydział magazynowania. I wszystkie repliki partycji fizycznej obsługuje zbiorczo przepływności przydzielone do fizyczną partycję. Na poniższej ilustracji przedstawiono, jak logicznej partycji są mapowane na partycje fizyczne, które są globalnie rozproszone:
+Kontener usługi Azure Cosmos skalowania przez dystrybucję dużej liczby partycji logicznej danych i przepływności. Wewnętrznie, co najmniej jedną partycję logiczne są mapowane na **fizyczną partycję** składający się z zestawu replik, nazywana także zestawu replik. Każdego zestawu replik znajduje się wystąpienie aparatu bazy danych Azure Cosmos. Zestawu replik sprawia, że dane są przechowywane w partycję fizyczną trwałych, wysoce dostępny i spójne. Fizyczną partycję obsługuje maksymalną ilość pamięci masowej i jednostek RU. Każdej repliki partycji fizycznych wchodzących w skład dziedziczy przydział magazynowania. I wszystkie repliki partycji fizycznej obsługuje zbiorczo przepływności przydzielone do fizyczną partycję. Na poniższej ilustracji przedstawiono, jak logicznej partycji są mapowane na partycje fizyczne, które są globalnie rozproszone:
 
 ![Partycjonowanie usługi Azure Cosmos DB](./media/partition-data/logical-partitions.png)
 

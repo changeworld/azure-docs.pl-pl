@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 923ba21574cce201c7b073b3078145239dd8c0ec
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 094f706878b82956398cd08100b3daf76b9f6cbc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121604"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203797"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Tworzenie pierwszej aplikacji Java z interfejsem Reliable Actors usługi Service Fabric w systemie Linux
 > [!div class="op_single_selector"]
-> * [C# — Windows](service-fabric-create-your-first-application-in-visual-studio.md)
 > * [Java — Linux](service-fabric-create-your-first-linux-application-with-java.md)
 > * [C# — Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 >

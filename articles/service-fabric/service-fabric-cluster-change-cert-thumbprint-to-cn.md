@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: ryanwi
-ms.openlocfilehash: 6e596b0db1a03efbf6b029487ed956105b632edb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 0501ccbf2b5d9124a82cb1758e09236e8ad8455a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972808"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197980"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Zmień klaster z odcisk palca certyfikatu na nazwę pospolitą
 Nie dwóch certyfikatów może mieć ten sam odcisk palca, który sprawia, że Przerzucanie certyfikatów klastra lub zarządzania trudne. Wiele certyfikatów, mogą jednak mieć tę samą nazwę pospolitą lub temat.  Przełączanie wdrożonego klastra z za pomocą odcisków palca certyfikatu za pomocą nazw pospolitych certyfikatów sprawia, że zarządzanie certyfikatami znacznie prostsze. W tym artykule opisano sposób aktualizacji działającego klastra usługi Service Fabric do użycia nazwy pospolitej certyfikatu zamiast odcisk palca certyfikatu.
@@ -94,6 +94,9 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     -Name $VmssName -VirtualMachineScaleSet $vmss 
 ```
+
+>[!NOTE]
+> Oblicza hasła zestawu skali maszyny wirtualnej nie obsługują ten sam identyfikator zasobu dla dwóch osobnych wpisów tajnych oraz ich każdego wpisu tajnego jest wersjonowany unikatowy zasób. 
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>Pobieranie i aktualizowanie szablonu z portalu
 Certyfikat został zainstalowany w podstawowym zestawie skalowania, ale należy również zaktualizować klastra usługi Service Fabric, aby użyć tego certyfikatu i nazwy pospolitej.  Pobierz szablon do wdrożenia klastra.  Zaloguj się do [witryny Azure portal](https://portal.azure.com) i przejdź do grupy zasobów klastra hostingu.  W **ustawienia**, wybierz opcję **wdrożeń**.  Wybierz najbardziej aktualne wdrożenie, a następnie kliknij przycisk **Wyświetl szablon**.

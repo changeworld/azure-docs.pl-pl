@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 16c7ad523bcd4a1f7b7b1f80d99e4d36dade72df
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334197"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102434"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Dostosowywanie konfiguracji zabezpieczeń systemu operacyjnego w usłudze Azure Security Center (wersja zapoznawcza)
 
@@ -90,29 +90,29 @@ W pliku dostosowania każdej obsługiwanej wersji systemu operacyjnego ma zestaw
 >
 >
 
-Podczas edycji pliku dostosowywania, można zmodyfikować reguły jeden lub wszystkie z nich. Każdy zestaw reguł zawiera *reguły* sekcja, która jest podzielone na trzy kategorie: rejestr, zasady inspekcji i zasady zabezpieczeń, jak pokazano poniżej:
+Podczas edycji pliku dostosowywania, można zmodyfikować reguły jeden lub wszystkie z nich. Każdy zestaw reguł zawiera *reguły* sekcja, która jest podzielone na trzy kategorie: Rejestru zasad inspekcji i zasady zabezpieczeń, jak pokazano poniżej:
 
 ![Trzy kategorie reguł](media/security-center-customize-os-security-config/rules-section.png)
 
 Każda kategoria ma swój własny zestaw atrybutów. Można zmienić następujące atrybuty:
 
-- **expectedValue**: typ danych pola tego atrybutu musi odpowiadać obsługiwane wartości dla każdego *typ reguły*, na przykład:
+- **expectedValue**: Typ danych pola tego atrybutu musi odpowiadać obsługiwane wartości dla każdego *typ reguły*, na przykład:
 
-  - **baselineRegistryRules**: wartość powinna być zgodna [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) zdefiniowanego w tej regule.
+  - **baselineRegistryRules**: Wartość powinna być zgodna [regValueType](https://msdn.microsoft.com/library/windows/desktop/ms724884) zdefiniowanego w tej regule.
 
-  - **baselineAuditPolicyRules**: użyj jednej z następujących wartości ciągu:
+  - **baselineAuditPolicyRules**: Użyj jednej z następujących wartości ciągu:
 
     - *Sukcesów i niepowodzeń*
 
     - *Powodzenie*
 
-  - **baselineSecurityPolicyRules**: użyj jednej z następujących wartości ciągu:
+  - **baselineSecurityPolicyRules**: Użyj jednej z następujących wartości ciągu:
 
     - *Nikt*
 
     - Lista dozwolonych grup użytkowników, na przykład: *Administratorzy*, *Operatorzy kopii zapasowych*
 
--   **Stan**: ciąg może zawierać odpowiednie opcje *wyłączone* lub *włączone*. W tej wersji prywatnej wersji zapoznawczej ciąg jest rozróżniana wielkość liter.
+-   **Stan**: Ciąg może zawierać odpowiednie opcje *wyłączone* lub *włączone*. W tej wersji prywatnej wersji zapoznawczej ciąg jest rozróżniana wielkość liter.
 
 Są to tylko pola, które można skonfigurować. Jeśli możesz naruszyć format pliku lub rozmiaru, nie można zapisać zmiany. Zostanie wyświetlony błąd informujący, że należy przekazać prawidłowy plik konfiguracji JSON.
 
@@ -121,7 +121,7 @@ Aby uzyskać listę innych potencjalnych błędów, zobacz [kody błędów](#err
 Trzy poniższe sekcje zawierają przykłady powyższych zasad. *ExpectedValue* i *stanu* atrybuty mogą być zmieniane.
 
 **baselineRegistryRules**
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -144,7 +144,7 @@ Trzy poniższe sekcje zawierają przykłady powyższych zasad. *ExpectedValue* i
 ```
 
 **baselineAuditPolicyRules**
-```
+```json
     {
     "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
     "ruleId": "37745508-95fb-44ec-ab0f-644ec0b16995",
@@ -161,7 +161,7 @@ Trzy poniższe sekcje zawierają przykłady powyższych zasad. *ExpectedValue* i
 ```
 
 **baselineSecurityPolicyRules**
-```
+```json
     {
     "sectionName": "Privilege Rights",
     "settingName": "SeIncreaseWorkingSetPrivilege",
@@ -194,17 +194,17 @@ Można również utworzyć nowe zasady. Przed utworzeniem nowej reguły, pamięt
 
 Nowe reguły niestandardowe są oznaczone jako nowe źródło niestandardowe (! = "Microsoft"). *RuleId* pole może być zerowa lub pusta. Jeśli jest on pusty, Microsoft generuje go. Jeśli nie jest pusta, musi być prawidłowym identyfikatorem GUID, która jest unikatowa dla wszystkich reguł (domyślne i niestandardowe). Przejrzyj następujące ograniczenia dla pól podstawowych:
 
--   **originalId**: może to być wartość null lub jest pusty. Jeśli *originalId* jest nie jest pusty, powinno być prawidłowym identyfikatorem GUID.
+-   **originalId**: Może to być wartość null lub jest pusty. Jeśli *originalId* jest nie jest pusty, powinno być prawidłowym identyfikatorem GUID.
 
--   **cceId**: może to być wartość null lub jest pusty. Jeśli *cceId* jest nie jest pusty, musi być unikatowa.
+-   **cceId**: Może to być wartość null lub jest pusty. Jeśli *cceId* jest nie jest pusty, musi być unikatowa.
 
 -   **Typ ruleType**: (wybierz jedną opcję) rejestru, AuditPolicy lub SecurityPolicy.
 
 -   **Ważność**: (wybierz jedną opcję) nieznany, krytyczne, ostrzeżenie lub komunikat o charakterze informacyjnym.
 
--   **analyzeOperation**: musi być *jest równa*.
+-   **analyzeOperation**: Musi być *jest równa*.
 
--   **auditPolicyId**: musi być prawidłowym identyfikatorem GUID.
+-   **auditPolicyId**: Musi być prawidłowym identyfikatorem GUID.
 
 -   **regValueType**: (wybierz jedną opcję) Int, Long, String lub MultipleString.
 
@@ -216,7 +216,7 @@ Nowe reguły niestandardowe są oznaczone jako nowe źródło niestandardowe (! 
 Przykład nową regułę niestandardową:
 
 **Rejestr**:
-```
+```json
     {
     "hive": "LocalMachine",
     "regValueType": "Int",
@@ -225,7 +225,7 @@ Przykład nową regułę niestandardową:
     "valueName": "MyValueName",
     "originalId": "",
     "cceId": "",
-    "ruleName": "My new registry rule”, "baselineRuleType": "Registry",
+    "ruleName": "My new registry rule", "baselineRuleType": "Registry",
     "expectedValue": "123", "severity": "Critical",
     "analyzeOperation": "Equals",
     "source": "MyCustomSource",
@@ -233,7 +233,7 @@ Przykład nową regułę niestandardową:
     }
 ```
 **Zasady zabezpieczeń**:
-```
+```json
    {
    "sectionName": "Privilege Rights",
    "settingName": "SeDenyBatchLogonRight",
@@ -248,7 +248,7 @@ Przykład nową regułę niestandardową:
    }
 ```
 **Zasady inspekcji**:
-```
+```json
    {
    "auditPolicyId": "0cce923a-69ae-11d9-bed3-505054503030",
    "originalId": "",
@@ -275,7 +275,7 @@ Wszystkie potencjalne błędy są wymienione w poniższej tabeli:
 
 | **Error**                                | **Opis**                                                                                                                              |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| BaselineConfiguratiohSchemaVersionError  | Właściwość *schemaVersion* znaleziono nieprawidłowy lub pusty. Wartość musi być równa *{0}*.                                                         |
+| BaselineConfigurationSchemaVersionError  | Właściwość *schemaVersion* znaleziono nieprawidłowy lub pusty. Wartość musi być równa *{0}*.                                                         |
 | BaselineInvalidStringError               | Właściwość *{0}* nie może zawierać  *\\n*.                                                                                                         |
 | BaselineNullRuleError                    | Lista reguł linii bazowej konfiguracji zawiera reguły z wartością *null*.                                                                         |
 | BaselineRuleCceIdNotUniqueError          | Identyfikator CCE *{0}* nie jest unikatowa.                                                                                                                  |
@@ -298,7 +298,7 @@ Wszystkie potencjalne błędy są wymienione w poniższej tabeli:
 | BaselineRuleTypeDoesntMatchError         | Rzeczywisty typ reguły to *{0}*, ale *typ ruleType* właściwość *{1}*.                                                                          |
 | BaselineRuleUnpermittedChangesError      | Tylko *expectedValue* i *stanu* właściwości mogą zostać zmienione.                                                                       |
 | BaselineTooManyRules                     | Maksymalna liczba dozwolonych niestandardowych reguł to {0} reguły. Zawiera daną konfigurację {1} reguł, {2} domyślne reguły, a {3} dostosowanej reguły. |
-| ErrorNoConfigurationStatus               | Brak stanu konfiguracji został znaleziony. Stan konfiguracji żądanego stanu: *domyślne* lub *niestandardowe*.                                    |
+| ErrorNoConfigurationStatus               | Brak stanu konfiguracji został znaleziony. Stan konfiguracji żądanego stanu: *Domyślne* lub *niestandardowe*.                                    |
 | ErrorNonEmptyRulesetOnDefault            | Stan konfiguracji jest ustawiona jako domyślna. *BaselineRulesets* listy musi być wartość null lub jest pusty.                                                          |
 | ErrorNullRulesetsPropertyOnCustom        | Jest w stanie danej konfiguracji *niestandardowe* ale *baselineRulesets* właściwość ma wartość null lub jest pusty.                                             |
 | ErrorParsingBaselineConfig               | Danej konfiguracji jest nieprawidłowy. Przynajmniej jedna z wartości zdefiniowanych ma wartość null lub nieprawidłowego typu.                                  |

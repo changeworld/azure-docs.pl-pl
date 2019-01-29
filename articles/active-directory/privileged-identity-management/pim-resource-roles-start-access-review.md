@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9a35d32d89931a03b33f232ba4f79226fc3f57e5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 607104c5a8021107be9e343d71ade049712454f6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55160053"
 ---
 # <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>Rozpoczynanie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM
 Przypisania ról stają się "starych", gdy użytkownicy mają uprzywilejowany dostęp, które nie potrzebują już. Aby zmniejszyć ryzyko, że jest skojarzona z te przypisania roli starych, Administratorzy ról uprzywilejowanych regularnie należy przejrzeć role. W tym dokumencie opisano kroki do uruchamiania przeglądu dostępu w Privileged Identity Management (PIM) dla zasobów platformy Azure.
@@ -32,7 +32,7 @@ Na stronie głównej aplikacji PIM przejdź do:
 
 Po wybraniu **Dodaj** przycisku **tworzenie przeglądu dostępu** zostanie wyświetlony blok. W tym bloku Konfigurowanie przeglądu przy użyciu nazwy i limit czasu, wybierz rolę, aby przejrzeć i zdecydować, kto wykonuje przeglądu.
 
-![Utwórz przegląd dostępu](media/azure-pim-resource-rbac/rbac-create-access-review.png)
+![Tworzenie przeglądu dostępu](media/azure-pim-resource-rbac/rbac-create-access-review.png)
 
 ### <a name="configure-the-review"></a>Konfigurowanie przeglądu
 Aby utworzyć przeglądu dostępu, najpierw nadaj jej nazwę, a następnie ustaw datę początkową i końcową.
@@ -74,5 +74,5 @@ Do momentu okres przeglądu za pośrednictwem można Przypomnij przeprowadzenie 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Kończenie przeglądu dostępu dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-complete-access-review.md)
-- [Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM](pim-resource-roles-perform-access-review.md)
+- [Wykonywanie przeglądu dostępu ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-perform-access-review.md)
 - [Rozpoczynanie przeglądu dostępu dla ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md)

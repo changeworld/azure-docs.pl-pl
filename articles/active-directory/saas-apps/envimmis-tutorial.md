@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Envi MMIS | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Envi MMIS | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Envi MMIS.
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,21 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ab89f8ee-2507-4625-94bc-b24ef3d5e006
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 96168dcb8400d2580d0b64257ceb861c1da3ff65
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b85dc27f6b6a23be6dc89a0f0a7cf9f78681446d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447289"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197453"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Samouczek: Integracja usługi Azure Active Directory z Envi MMIS
+# <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Envi MMIS
 
 W tym samouczku dowiesz się, jak zintegrować Envi MMIS w usłudze Azure Active Directory (Azure AD).
 
@@ -30,7 +30,7 @@ Integrowanie Envi MMIS z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Envi MMIS.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do MMIS Envi (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -38,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Envi MMIS, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Envi MMIS logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -60,7 +60,7 @@ Aby skonfigurować integrację Envi MMIS w usłudze Azure AD, należy dodać Env
 
 **Aby dodać Envi MMIS z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -68,15 +68,15 @@ Aby skonfigurować integrację Envi MMIS w usłudze Azure AD, należy dodać Env
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **Envi MMIS**, wybierz opcję **Envi MMIS** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![MMIS Envi na liście wyników](./media/envimmis-tutorial/tutorial_envimmis_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji można skonfigurować, i test usługi Azure AD logowanie jednokrotne za pomocą Envi MMIS oparte na użytkownika testu o nazwie "Britta Simon".
 
@@ -84,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Envi MMIS, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego Envi MMIS](#create-an-envi-mmis-test-user)**  — aby odpowiednikiem Britta Simon w MMIS Envi, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Envi MMIS.
 
@@ -98,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Envi MMIS** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -108,18 +108,18 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Envi MMIS domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/envimmis-tutorial/tutorial_envimmis_url.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.<CUSTOMER DOMAIN>.com/Account`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
 1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Envi MMIS domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/envimmis-tutorial/tutorial_envimmis_url1.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.<CUSTOMER DOMAIN>.com/Account`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.<CUSTOMER DOMAIN>.com/Account`
      
     > [!NOTE]
-    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta MMIS Envi](mailto:support@ioscorp.com) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta MMIS Envi](mailto:support@ioscorp.com) do uzyskania tych wartości.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -127,29 +127,29 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/envimmis-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envimmis-tutorial/tutorial_general_400.png)
 
 1. W oknie przeglądarki internetowej innej Zaloguj się do witryny Envi MMIS, jako administrator.
 
 1. Kliknij pozycję **Moja domena** kartę.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/envimmis-tutorial/configure1.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envimmis-tutorial/configure1.png)
 
 1. Kliknij pozycję **Edytuj**.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/envimmis-tutorial/configure2.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envimmis-tutorial/configure2.png)
 
 1. Wybierz **zdalne uwierzytelnianie** pole wyboru, a następnie wybierz **przekierowania HTTP** z **typ uwierzytelniania** listy rozwijanej.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/envimmis-tutorial/configure3.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envimmis-tutorial/configure3.png)
 
 1. Wybierz **zasobów** kartę, a następnie kliknij przycisk **Przekazywanie metadanych**.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/envimmis-tutorial/configure4.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envimmis-tutorial/configure4.png)
 
 1. W **Przekazywanie metadanych** okna podręcznego, wykonaj następujące czynności:
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/envimmis-tutorial/configure5.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envimmis-tutorial/configure5.png)
 
     a. Wybierz **pliku** opcję **przekazywania z** listy rozwijanej.
 
@@ -157,9 +157,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. Kliknij przycisk **OK**.
 
-1. Po przekazaniu pliku pobranego metadanych pola zostanie wypełniony automatycznie. Kliknij przycisk **aktualizacji**
+1. Po przekazaniu pliku pobranego metadanych pola zostanie wypełniony automatycznie. Kliknij pozycję **Update** (Aktualizuj)
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/envimmis-tutorial/configure6.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envimmis-tutorial/configure6.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -198,7 +198,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Envi MMIS, musi być obsługiwana w Envi MMIS.  
 W przypadku Envi MMIS aprowizacji to zadanie ręczne.
 
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do witryny firmy Envi MMIS jako administrator.
 

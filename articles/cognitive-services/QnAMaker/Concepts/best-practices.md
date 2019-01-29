@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d51cbc7bd88fd9f4baf066210e7b7da8cd175cd6
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 20b6089d74752fd4c3f9fa5c761113b0ae145ad6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603127"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55090596"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 [Cykl życia projektowania bazy wiedzy knowledge base](../Concepts/development-lifecycle-knowledge-base.md) przeprowadzi Cię o tym, jak zarządzać wiedzy od początku do końca. Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy i zapewniają lepsze wyniki użytkownikom końcowym bota aplikacji/rozmowy.
@@ -95,6 +95,10 @@ Ponieważ te dwa znacznie są ma inną pisownię słów bardzo podobne, to podob
 
 ## <a name="collaborate"></a>Współpraca
 Usługa QnA Maker umożliwia użytkownikom [współpracy](../How-to/collaborate-knowledge-base.md) na wiedzy. Użytkownicy muszą mieć dostęp do grupy zasobów platformy Azure usługa QnA Maker w celu uzyskania dostępu do bazy wiedzy. W niektórych organizacjach może być oddelegowanie edytowanie wiedzy i konserwacji i nadal mieć możliwość ochrony dostępu do swoich zasobów platformy Azure. Ten model osoba zatwierdzająca edytora odbywa się przez skonfigurowanie dwóch identycznych [usługi QnA Maker](../How-to/set-up-qnamaker-service-azure.md) w różnych subskrypcjach i wybranie jednego cyklu testowania edycji. Po zakończeniu testowania zawartości bazy wiedzy są przesyłane przy użyciu [import-export](../Tutorials/migrate-knowledge-base.md) procesu usługi QnA Maker osoby zatwierdzającej, która zostanie ostatecznie publikowanie bazy wiedzy knowledge base i aktualizowanie punktu końcowego.
+
+## <a name="active-learning"></a>Aktywne uczenie
+
+[Aktywna nauka](../How-to/improve-knowledge-base.md) jest najlepiej sugerowanie alternatywnych pytania, gdy ma ona szeroką gamę jakości i ilości zapytania oparte na użytkownikach. Ważne jest, aby zezwolić na zapytania użytkowników klienta aplikacji do wzięcia udziału w aktywnej nauki sprzężenia zwrotnego bez cenzurą.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

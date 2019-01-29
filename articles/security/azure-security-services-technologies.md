@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2018
+ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6f571655bb0501f8ef4018bf47588c8db4cc2a3e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384891"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097669"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Zabezpieczenia usługi i technologie dostępne na platformie Azure
 
@@ -35,7 +35,7 @@ Wraz z upływem czasu ta lista zmiany i rozwój tak, jak platforma Azure zrobi. 
 |[Azure&nbsp;zabezpieczeń&nbsp;Centrum](../security-center/security-center-intro.md)| Rozwiązanie ochrony obciążenia chmury, które zapewnia zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w obciążeniach chmury hybrydowej.|
 |[Usługa Azure Key Vault](../key-vault/key-vault-overview.md)| Bezpieczny magazyn wpisów tajnych dla hasła, parametry połączenia i inne informacje, które musisz zachować aplikacji działa. |
 |[Log Analytics](../log-analytics/log-analytics-overview.md)|Usługa monitorowania zbiera dane telemetryczne i inne dane, która zapewnia aparat zapytań języka i analizy, aby dostarczać usługi operational insights dla aplikacji i zasobów. Mogą być używane autonomicznie lub z innymi usługami takich jak usługa Security Center. |
-|[Usługa Azure Dev/Test Labs](../devtest-lab/devtest-lab-overview.md)|To usługa, która pomaga programistom i testerom szybko twórz środowiska na platformie Azure, minimalizując równocześnie straty i kontrolując koszty.  |
+|[Azure Dev/Test Labs](../devtest-lab/devtest-lab-overview.md)|To usługa, która pomaga programistom i testerom szybko twórz środowiska na platformie Azure, minimalizując równocześnie straty i kontrolując koszty.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
@@ -55,9 +55,9 @@ Wraz z upływem czasu ta lista zmiany i rozwój tak, jak platforma Azure zrobi. 
 ## <a name="database-security"></a>Zabezpieczenia bazy danych
 |Usługa|Opis|
 |------|--------|
-| [Azure&nbsp;SQL&nbsp;zapory](../sql-database/sql-database-firewall-configure.md)|Funkcja kontroli dostępu do sieci, która chroni przed atakami sieciowymi wykorzystującymi do bazy danych. |
-|[Azure&nbsp;SQL&nbsp;komórki&nbsp;poziomu szyfrowania](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Technologia zabezpieczeń bazy danych, która zapewnia szyfrowanie na poziomie szczegółowym.  |
-| [Azure&nbsp;SQL&nbsp;szyfrowanie połączenia](../sql-database/sql-database-control-access.md)|Aby zapewnić bezpieczeństwo, usługa SQL Database kontroluje dostęp za pomocą reguł zapory, ograniczając adresy IP dla połączeń, stosując mechanizmy uwierzytelniania wymagające potwierdzenia tożsamości przez użytkowników oraz mechanizmy autoryzacji ograniczające użytkowników do określonych działań i danych. |
+| [Azure&nbsp;SQL&nbsp;Firewall](../sql-database/sql-database-firewall-configure.md)|Funkcja kontroli dostępu do sieci, która chroni przed atakami sieciowymi wykorzystującymi do bazy danych. |
+|[Azure&nbsp;SQL&nbsp;Cell&nbsp;Level Encryption](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Technologia zabezpieczeń bazy danych, która zapewnia szyfrowanie na poziomie szczegółowym.  |
+| [Azure&nbsp;SQL&nbsp;Connection Encryption](../sql-database/sql-database-control-access.md)|Aby zapewnić bezpieczeństwo, usługa SQL Database kontroluje dostęp za pomocą reguł zapory, ograniczając adresy IP dla połączeń, stosując mechanizmy uwierzytelniania wymagające potwierdzenia tożsamości przez użytkowników oraz mechanizmy autoryzacji ograniczające użytkowników do określonych działań i danych. |
 | [Usługi Azure SQL zawsze szyfrowania](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Ochrona poufnych danych, takich jak numery kart kredytowych czy narodowe numery identyfikacyjne (na przykład USA numery ubezpieczenia społecznego), przechowywane w bazach danych Azure SQL Database lub SQL Server.  |
 | [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Funkcja zabezpieczeń bazy danych, która szyfruje magazyn całą bazę danych. |
 | [Usługa Azure SQL Database inspekcji](../sql-database/sql-database-auditing.md)|Baza danych inspekcji funkcji, która śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure.  |
@@ -76,15 +76,19 @@ Wraz z upływem czasu ta lista zmiany i rozwój tak, jak platforma Azure zrobi. 
 |Usługa|Opis|
 |------|--------|
 | [Azure&nbsp;kopii zapasowej](../backup/backup-introduction-to-azure-backup.md)| Oparte na platformie Azure usługa umożliwia tworzenie kopii zapasowej i przywracanie danych w chmurze platformy Azure. |
-| [Azure&nbsp;witryny&nbsp;odzyskiwania](../site-recovery/site-recovery-overview.md)|Usługa online, która replikuje obciążenia uruchomione na fizycznych i maszyn wirtualnych (VM) z lokacji głównej do lokalizacji dodatkowej, aby włączyć odzyskiwanie usług w po awarii. |
+| [Azure&nbsp;Site&nbsp;Recovery](../site-recovery/site-recovery-overview.md)|Usługa online, która replikuje obciążenia uruchomione na fizycznych i maszyn wirtualnych (VM) z lokacji głównej do lokalizacji dodatkowej, aby włączyć odzyskiwanie usług w po awarii. |
 
 ## <a name="networking"></a>Networking
 |Usługa|Opis|
 |------|--------|
 | [Sieć&nbsp;zabezpieczeń&nbsp;grup](../virtual-network/virtual-networks-nsg.md)| Funkcja kontroli dostępu opartej na sieci korzystania z krotki 5 w celu podejmowania blokują lub zezwalają na decyzje.  |
 | [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)| Urządzenie sieciowe używane jako obejmujących punktu końcowego sieci VPN, aby zezwolić na dostęp do sieci wirtualnych platformy Azure.  |
-| [Usługa Azure Application Gateway](../application-gateway/application-gateway-introduction.md)|Aplikacja sieci web zaawansowane równoważenia który trasy, na podstawie adresu URL i wykonaj odciążanie protokołu SSL. |
+| [Azure Application Gateway](../application-gateway/application-gateway-introduction.md)|Aplikacja sieci web zaawansowane równoważenia który trasy, na podstawie adresu URL i wykonaj odciążanie protokołu SSL. |
+|[Zapora aplikacji sieci Web](../application-gateway/waf-overview.md) (WAF)|Funkcja Application Gateway, która zapewnia scentralizowaną ochronę aplikacji sieci web z typowe luki w zabezpieczeniach i luk w zabezpieczeniach|
 | [Azure Load Balancer](../load-balancer/load-balancer-overview.md)|TCP/UDP aplikacji moduły równoważenia obciążenia sieciowego. |
-| [Usługa ExpressRoute systemu Azure](../expressroute/expressroute-introduction.md)| Dedykowane łącze sieci WAN między sieciami lokalnymi i sieciami wirtualnymi platformy Azure. |
+| [Azure ExpressRoute](../expressroute/expressroute-introduction.md)| Dedykowane łącze sieci WAN między sieciami lokalnymi i sieciami wirtualnymi platformy Azure. |
 | [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)| Moduł równoważenia obciążenia globalne DNS.|
 | [Serwer Proxy aplikacji platformy Azure](../active-directory/active-directory-application-proxy-get-started.md)| Uwierzytelnianie frontonu umożliwia bezpieczny dostęp zdalny dla aplikacji sieci web hostowanych lokalnie. |
+|[Zaporę platformy Azure](../firewall/overview.md)|Usługa zabezpieczeń sieci zarządzanej, oparte na chmurze, która chroni Twoje zasoby usługi Azure Virtual Network.|
+|[Usługa Azure DDoS protection](../virtual-network/ddos-protection-overview.md)|W połączeniu z najlepsze rozwiązania dotyczące projektowania aplikacji, zapewnia ochronę przed atakami DDoS.|
+|[Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)|Rozszerza Twojej sieci wirtualnej prywatną przestrzeń adresową oraz tożsamość sieci wirtualnej do usług platformy Azure za pośrednictwem bezpośredniego połączenia.|

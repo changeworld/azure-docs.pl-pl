@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z E Sales Manager Remix | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą E Sales Manager Remix | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i E Sales Manager Remix.
 services: active-directory
 documentationCenter: na
@@ -8,19 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: d96fd1eacc98e88dc8578b259781cc661cf85933
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2e2bc0c7e590796a533d9f593eb61e57def91fc8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442833"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55188002"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integracja usługi Azure Active Directory z Remix kierownikiem ds. sprzedaży E
 
@@ -38,15 +38,15 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 
 Aby skonfigurować integrację usługi Azure AD za pomocą E Sales Manager Remix, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Subskrypcję z obsługą E Sales Manager Remix Usługa rejestracji Jednokrotnej
 
 > [!NOTE]
 > Podczas testowania kroki opisane w tym samouczku, firma Microsoft zaleca wykonanie *nie* za pomocą środowiska produkcyjnego.
 
-Aby przetestować czynności w ramach tego samouczka, wykonaj te zalecenia:
+Aby przetestować kroki w tym samouczku, musisz mieć dostęp do następujących elementów:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -60,9 +60,9 @@ Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków kons
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>Dodaj E Sales Manager Remix z galerii
 Aby skonfigurować integrację usługi Azure AD z E Sales Manager Remix, Dodaj E Sales Manager Remix z galerii z listą zarządzanych aplikacji SaaS, wykonując następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com), w okienku po lewej stronie wybierz **usługi Azure Active Directory**. 
+1. W [witrynie Azure Portal](https://portal.azure.com) w okienku po lewej stronie wybierz pozycję **Azure Active Directory**. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 1. Wybierz **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -70,13 +70,13 @@ Aby skonfigurować integrację usługi Azure AD z E Sales Manager Remix, Dodaj E
     
 1. Aby dodać nową aplikację, wybierz **nową aplikację** w górnej części okna.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **E Sales Manager Remix**, wybierz opcję **E Sales Manager Remix** w na liście wyników, a następnie wybierz **Dodaj**.
 
     ![E Sales Manager Remix na liście wyników](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz skonfigurować i przetestować usługi Azure AD logowanie jednokrotne za pomocą E Sales Manager Remix, oparte na użytkownika testu o nazwie "Britta Simon."
 
@@ -84,7 +84,7 @@ Dla logowania jednokrotnego do pracy usługa Azure AD wymaga do identyfikowania 
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą E Sales Manager Remix, wykonaj bloki konstrukcyjne w pięć następnych sekcjach:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji E Sales Manager Remix, wykonując następujące czynności:
 
@@ -107,7 +107,7 @@ Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i k
     c. Uwaga **identyfikator** wartości do późniejszego użycia w ramach tego samouczka.
     
     > [!NOTE] 
-    > Powyższe wartości nie są prawdziwe. Zaktualizuj je przy użyciu rzeczywistego adresu logowania i identyfikator. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej klienta Remix E Sales Manager](mailto:esupport@softbrain.co.jp).
+    > Podane wyżej wartości nie są rzeczywiste. Zaktualizuj je przy użyciu rzeczywistego adresu logowania i identyfikator. Aby uzyskać wartości, skontaktuj się z pomocą [zespołem pomocy technicznej klienta Remix E Sales Manager](mailto:esupport@softbrain.co.jp).
 
 1. W obszarze **certyfikat podpisywania SAML**, wybierz opcję **certyfikat (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
 
@@ -185,7 +185,7 @@ W tej sekcji utworzysz użytkownika testowego Britta Simon w witrynie Azure port
 
 1. Aby wyświetlić listę bieżących użytkowników, wybierz **użytkowników i grup** > **wszyscy użytkownicy**.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
 1. W górnej części **wszyscy użytkownicy** wybierz **Dodaj**.
 
@@ -249,7 +249,7 @@ W tej sekcji można włączyć użytkownika Britta Simon do używania usługi Az
 
 1. W okienku po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Link „Użytkownicy i grupy”][202]
 
 1. Wybierz **Dodaj** a następnie w **Dodaj przydziału** okienku wybierz **użytkowników i grup**.
 
@@ -269,7 +269,7 @@ Po wybraniu kafelka E Sales Manager Remix w panelu dostępu, możesz powinny by�
 
 Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
