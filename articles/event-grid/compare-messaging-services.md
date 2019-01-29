@@ -2,19 +2,19 @@
 title: Porównanie obsługi wiadomości na platformie Azure — Event Grid, Event Hubs, Service Bus
 description: W tym artykule opisano trzy usługi do obsługi wiadomości na platformie Azure — Azure Event Grid, Event Hubs i Service Bus. Zalecenia dotyczące tego, której usługi używać w różnych scenariuszach.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
 ms.date: 12/07/2018
-ms.author: tomfitz
+ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 0eeded4e6bfe9041b360441d1e7b2a5c7dd4a099
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 80a2f9aa07f67c4d149a1ef8245f5e3269a751b3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166527"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469852"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Wybór usługi do obsługi wiadomości na platformie Azure — Event Grid, Event Hubs i Service Bus
 
@@ -77,7 +77,7 @@ Ma następujące cechy:
 
 ### <a name="service-bus"></a>Service Bus
 
-Usługa Service Bus jest przeznaczona dla tradycyjnych aplikacji dla przedsiębiorstw. Te aplikacje dla przedsiębiorstw wymagają obsługi transakcji, zamawiania, wykrywania duplikatów oraz natychmiastowej spójności. Usługa Service Bus umożliwia aplikacjom natywnym dla chmury zapewnianie niezawodnego zarządzania zmianami stanu dla procesów biznesowych. Usługi Azure Service Bus należy użyć w przypadku obsługi komunikatów o wysokiej wartości, które nie mogą być utracone ani zduplikowane. Usługa Service Bus ułatwia także bardzo bezpieczną komunikację między hybrydowymi rozwiązaniami w chmurze oraz może połączyć istniejące systemy lokalne z rozwiązaniami w chmurze.
+Usługa Service Bus jest przeznaczona dla tradycyjnych aplikacji dla przedsiębiorstw. Te aplikacje dla przedsiębiorstw wymagają obsługi transakcji, zamawiania, wykrywania duplikatów oraz natychmiastowej spójności. Usługa Service Bus umożliwia aplikacjom [natywnym dla chmury](https://azure.microsoft.com/overview/cloudnative/) zapewnianie niezawodnego zarządzania zmianami stanu dla procesów biznesowych. Usługi Azure Service Bus należy użyć w przypadku obsługi komunikatów o wysokiej wartości, które nie mogą być utracone ani zduplikowane. Usługa Service Bus ułatwia także bardzo bezpieczną komunikację między hybrydowymi rozwiązaniami w chmurze oraz może połączyć istniejące systemy lokalne z rozwiązaniami w chmurze.
 
 Usługa Service Bus jest systemem komunikatów obsługiwanych przez brokera. W niezawodny sposób przechowuje komunikaty w „brokerze” (np. w kolejce) do momentu, w którym strona odbierająca będzie gotowa do odebrania komunikatów.
 

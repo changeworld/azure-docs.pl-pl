@@ -3,7 +3,7 @@ title: Raport o zabezpieczeniach dotyczący użytkowników oflagowanych w związ
 description: Dowiedz się więcej o raporcie o zabezpieczeniach dotyczącym użytkowników oflagowanych w związku z ryzykiem w portalu usługi Azure Active Directory
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
@@ -11,15 +11,15 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/17/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a7a3877970d5ecf3b86471b94fbb1bf6e5efbb4
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: de9cf73ba7ad68d84e43a7774617959f9c3789ee
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621075"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54810758"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Użytkownicy oflagowani w związku z raportem dotyczącym narażonych użytkowników w witrynie Azure Portal
 
@@ -55,19 +55,16 @@ Raport dotyczący użytkowników oflagowanych w związku z ryzykiem w usłudze A
 
 ![Ryzykowne logowania](./media/concept-user-at-risk/03.png)
 
-Wybranie użytkownika powoduje otwarcie bloku z danymi tego użytkownika. W przypadku narażonego użytkownika można przejrzeć jego historię logowania i w razie potrzeby zresetować hasło.
-
-![Ryzykowne logowania](./media/concept-user-at-risk/46.png)
-
+Wybranie użytkownika powoduje podanie informacji logowania. W przypadku narażonego użytkownika można przejrzeć jego historię logowania i w razie potrzeby zresetować hasło.
 
 To okno dialogowe oferuje opcję:
 
 - Pobierania raportu
-
 - Wyszukiwania użytkowników
 
-![Ryzykowne logowania](./media/concept-user-at-risk/16.png)
+    ![Ryzykowne logowania](./media/concept-user-at-risk/16.png)
 
+Do uzyskania szczegółowych informacji jest wymagana licencja wersji Premium.
 
 ## <a name="users-at-risk-report-for-azure-ad-premium-editions"></a>Raport dotyczący narażonych użytkowników dla usługi Azure AD w wersjach Premium
 

@@ -10,16 +10,16 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 63b0b843-f6b0-4d9a-98d0-17500be17385
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 0c6062fb9e9708b0fa6aef7a6d7390287cbf69d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 58e59e4faa135e24124f494d90437b49caa30129
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124039"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098667"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenariusz: Obsługa wyjątków i rejestrowania błędów dla usługi logic apps
 
-W tym scenariuszu opisano, jak rozszerzyć aplikację logiki w celu lepszej obsługi wyjątków. Aby odpowiedzieć na pytanie użyliśmy przypadek użycia rzeczywistych: "Azure Logic Apps obsługuje wyjątek i obsługa błędów?"
+W tym scenariuszu opisano, jak rozszerzyć aplikację logiki w celu lepszej obsługi wyjątków. Przypadek użycia rzeczywistych była używana do odpowiedzi na pytanie: "Azure Logic Apps obsługuje wyjątek i obsługa błędów?"
 
 > [!NOTE]
 > Bieżący schemat usługi Azure Logic Apps udostępnia standardowego szablonu dla akcji odpowiedzi. Ten szablon obejmuje zarówno w weryfikacji wewnętrznych, jak i w odpowiedzi na błędy zwrócone przez aplikację interfejsu API.
@@ -57,7 +57,7 @@ Ponieważ w tym do logowania się w rekordzie pochodzące z usługi Dynamics CRM
 
 Używamy **żądania** wyzwalacza, jak pokazano w poniższym przykładzie:
 
-```` json
+``` json
 "triggers": {
         "request": {
           "type": "request",
@@ -90,7 +90,7 @@ Używamy **żądania** wyzwalacza, jak pokazano w poniższym przykładzie:
         }
       },
 
-````
+```
 
 
 ## <a name="steps"></a>Kroki
@@ -402,7 +402,7 @@ Nasze rozwiązanie dodaje możliwości [usługi Azure Cosmos DB](https://azure.m
 Aby wyświetlić błędy, można utworzyć aplikację sieci web MVC, która wyświetla rekordy błędów z usługi Cosmos DB. **Listy**, **szczegóły**, **Edytuj**, i **Usuń** operacje znajdują się w bieżącej wersji.
 
 > [!NOTE]
-> Próba operacji edycji: Usługa Cosmos DB zamienia cały dokument. Rekordy objętego **listy** i **szczegółów** widoki są tylko przykłady. Nie są one rzeczywisty termin pacjentów rekordów.
+> Próba operacji edycji: Usługa cosmos DB zamienia cały dokument. Rekordy objętego **listy** i **szczegółów** widoki są tylko przykłady. Nie są one rzeczywisty termin pacjentów rekordów.
 
 Poniżej przedstawiono przykłady naszych szczegóły aplikacji MVC utworzone przy użyciu podejścia opisany wcześniej.
 

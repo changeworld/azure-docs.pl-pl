@@ -9,25 +9,23 @@ ms.topic: quickstart
 ms.reviewer: sgilley
 author: hning86
 ms.author: haining
-ms.date: 12/04/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14c500d77cc0e67aaade5e6be490f599f39bfad5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: e3569f560224ab8c9a64ababb2fcea7e96e87367
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807724"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54812458"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w witrynie Azure Portal
 
-W tym przewodniku Szybki start utworzysz obszar roboczy usługi Azure Machine Learning przy użyciu witryny Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. Ten przewodnik Szybki start korzysta z zasobów w chmurze i nie wymaga żadnej instalacji. Aby zamiast tego skonfigurować własny serwer notesów Jupyter Notebook, zobacz [Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w języku Python](quickstart-create-workspace-with-python.md).  
+Obszar roboczy usługi Azure Machine Learning można utworzyć w witrynie Azure Portal. Ten obszar roboczy to podstawowy blok w chmurze umożliwiający eksperymentowanie z modelami uczenia maszynowego, ich uczenie oraz wdrażanie za pomocą usługi Machine Learning. Ten przewodnik Szybki start korzysta z zasobów w chmurze i nie wymaga żadnej instalacji. Aby zamiast tego skonfigurować własny serwer notesów Jupyter Notebook, zobacz [Szybki start: Rozpoczynanie pracy z usługą Azure Machine Learning w języku Python](quickstart-create-workspace-with-python.md).  
  
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
-
 W tym przewodniku Szybki start wykonasz następujące czynności:
 
 * Tworzenie obszaru roboczego w subskrypcji platformy Azure.
-* Wypróbowanie jego działania za pomocą języka Python w notesie platformy Azure i rejestrowanie wartości z wielu iteracji.
+* Wypróbowanie jego działania za pomocą języka Python w notesie Jupyter i rejestrowanie wartości z wielu iteracji.
 * Wyświetlanie zarejestrowanych wartości w obszarze roboczym.
 
 Do obszaru roboczego zostaną automatycznie dodane następujące zasoby platformy Azure, gdy będą dostępne w regionie:
@@ -46,14 +44,14 @@ Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-Na stronie obszaru roboczego wybierz pozycję `Explore your Azure Machine Learning service Workspace`.
-
- ![Eksplorowanie obszaru roboczego](./media/quickstart-get-started/explore_aml.png)
-
 
 ## <a name="use-the-workspace"></a>Korzystanie z obszaru roboczego
 
-Teraz zobaczysz, jak obszar roboczy ułatwia zarządzanie skryptami uczenia maszynowego. W tej sekcji wykonasz następujące kroki:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+
+
+
+Teraz dowiesz się, jak obszar roboczy ułatwia zarządzanie skryptami uczenia maszynowego. W tej sekcji wykonasz następujące kroki:
 
 * Otwieranie notesu w usłudze Azure Notebooks.
 * Uruchamianie kodu, który tworzy niektóre rejestrowane wartości.
@@ -63,46 +61,57 @@ W tym przykładzie pokazano, jak obszar roboczy może pomóc w śledzeniu inform
 
 ### <a name="open-a-notebook"></a>Otwieranie notesu 
 
-Usługa Azure Notebooks udostępnia bezpłatną platformę w chmurze do przechowywania notesów Jupyter, które są wstępnie skonfigurowane do obsługi wszystkich elementów potrzebnych, aby uruchomić usługę Machine Learning.  
+Usługa [Azure Notebooks](https://notebooks.azure.com) udostępnia bezpłatną platformę w chmurze do przechowywania notesów Jupyter, które są wstępnie skonfigurowane do obsługi wszystkich elementów potrzebnych, aby uruchomić usługę Machine Learning. Tę platformę można uruchomić z poziomu obszaru roboczego, aby rozpocząć korzystanie z obszaru roboczego usługi Azure Machine Learning.
 
-Wybierz pozycję `Open Azure Notebooks`, aby wypróbować pierwszy eksperyment.
+1. Na stronie obszaru roboczego wybierz pozycję **Eksplorowanie obszaru roboczego usługi Azure Machine Learning**.
+
+ ![Eksplorowanie obszaru roboczego](./media/quickstart-get-started/explore_aml.png)
+
+1. Wybierz pozycję **Otwórz usługę Azure Notebooks**, aby spróbować przeprowadzić swój pierwszy eksperyment w usłudze Azure Notebooks.  Azure Notebooks to oddzielna usługa, która umożliwia bezpłatne uruchamianie notesów programu Jupyter w chmurze.  Jeśli użyjesz tego linku do usługi, informacje o sposobie łączenia się z obszarem roboczym zostaną dodane do biblioteki tworzonej w usłudze Azure Notebooks.
 
  ![Otwieranie usługi Azure Notebooks](./media/quickstart-get-started/explore_ws.png)
 
-Organizacja może wymagać [zgody administratora](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) przed zalogowaniem się.
+1. Zaloguj się do usługi Azure Notebooks.  Upewnij się, że logujesz się przy użyciu tego samego konta, którego używasz do logowania się do witryny Azure Portal. Organizacja może wymagać [zgody administratora](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) przed zalogowaniem się.
 
-Zaloguj się do notesów platformy Azure przy użyciu tego samego konta, którego używasz do logowania się do witryny Azure Portal.  Po zalogowaniu zostanie otwarta nowa karta z wyświetlonym monitem `Clone Library`. Wybierz pozycję `Clone`.
+1. Po zalogowaniu zostanie otwarta nowa karta z wyświetlonym monitem `Clone Library`. Sklonowanie tej biblioteki spowoduje załadowanie zestawu notesów i innych plików na konto usługi Azure Notebooks.  Te pliki pomogą Ci w eksplorowaniu możliwości usługi Azure Machine Learning.
 
+1. Usuń zaznaczenie pola wyboru **Publiczne**, aby nie udostępniać informacji o obszarze roboczym innym osobom.
+
+1. Wybierz pozycję **Klonuj**.
+
+ ![Klonowanie biblioteki](./media/quickstart-get-started/clone.png)
+
+1. Jeśli zobaczysz, że projekt jest w stanie Zatrzymano, kliknij pozycję **Uruchom w ramach bezpłatnych obliczeń**, aby korzystać z bezpłatnego serwera notesu.
+
+    ![Uruchamianie projektu w ramach bezpłatnych obliczeń](./media/quickstart-get-started/run-project.png)
 
 ### <a name="run-the-notebook"></a>Uruchamianie notesu
 
-Oprócz dwóch notesów zobaczysz jeszcze plik `config.json`. Ten plik konfiguracji zawiera informacje o utworzonym obszarze roboczym.  
+Na liście plików tego projektu zobaczysz plik `config.json`. Ten plik konfiguracji zawiera informacje o obszarze roboczym utworzonym w witrynie Azure Portal.  Ten plik umożliwia kodowi nawiązywanie połączenia i dodawanie informacji do obszaru roboczego.
 
-Wybierz pozycję `01.run-experiment.ipynb`, aby otworzyć notes.
+1. Wybierz plik **01.run experiment.ipynb**, aby otworzyć notes.
 
-Uruchom komórki pojedynczo (Shift+Enter). Możesz też uruchomić cały notes, wybierając pozycje `Cells`  >  `Run All`. Gdy obok komórki jest wyświetlana gwiazdka __*__, oznacza to, że komórka jest uruchomiona. Po zakończeniu działania kodu tej komórki pojawi się liczba. 
+1. W obszarze stanu jest widoczna informacja o tym, że musisz zaczekać na uruchomienie jądra.  Komunikat zniknie, gdy jądro będzie gotowe.
+
+    ![Oczekiwanie na uruchomienie jądra](./media/quickstart-get-started/wait-for-kernel.png)
+
+1. Gdy jądro zacznie działać, przy użyciu kombinacji klawiszy **Shift + Enter** uruchom kolejno poszczególne komórki. Możesz też wybrać kolejno pozycje **Komórki** > **Uruchom wszystkie** w celu uruchomienia całego notesu. Gdy obok komórki pojawi się znak gwiazdki, __*__, oznacza to, że komórka jest nadal uruchomiona. Po zakończeniu działania kodu tej komórki pojawi się liczba. 
+
+1. Postępuj zgodnie z instrukcjami w notesie w celu uwierzytelnienia subskrypcji platformy Azure.
 
 Po zakończeniu uruchamiania wszystkich komórek w notesie możesz wyświetlić zarejestrowane wartości w swoim obszarze roboczym.
 
 ## <a name="view-logged-values"></a>Wyświetlanie zarejestrowanych wartości
 
-Po uruchomieniu wszystkich komórek notesu wróć do strony portalu.  
+1. Dane wyjściowe z komórki `run` zawierają link do witryny Azure Portal, dzięki któremu można wyświetlić wyniki eksperymentu w obszarze roboczym. 
 
-Wybierz pozycję `View Experiments`.
+    ![Wyświetlanie eksperymentów](./media/quickstart-get-started/view_exp.png)
 
-![Wyświetlanie eksperymentów](./media/quickstart-get-started/view_exp.png)
+1. Kliknij pozycję **Link do witryny Azure Portal**, aby wyświetlić informacje o uruchomieniu w obszarze roboczym.  Ten link powoduje otwarcie obszaru roboczego w witrynie Azure Portal.
 
-Zamknij wyskakujące okienko `Reports`.
+1. Wykresy zarejestrowanych wartości, które zobaczysz, zostały automatycznie utworzone w obszarze roboczym. Zawsze w przypadku zarejestrowania wielu wartości z tym samym parametrem nazwa wykres jest generowany automatycznie.
 
-Wybierz pozycję `my-first-experiment`.
-
-Przejrzyj informacje o wykonanym właśnie przebiegu. Przewiń stronę w dół do tabeli przebiegów. Wybierz link liczby przebiegów.
-
- ![Link historii przebiegów](./media/quickstart-get-started/report.png)
-
-Zostaną wyświetlone wykresy utworzone automatycznie na podstawie zarejestrowanych wartości. Zawsze w przypadku zarejestrowania wielu wartości z tym samym parametrem nazwa wykres jest generowany automatycznie.
-
-   ![Wyświetlanie historii](./media/quickstart-get-started/plots.png)
+   ![Wyświetlanie historii](./media/quickstart-get-started/web-results.png)
 
 Kod obliczania przybliżonej liczby pi używa wartości losowych, dlatego wykresy będą przedstawiać różne wartości.  
 

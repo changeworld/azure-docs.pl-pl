@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 12/28/2018
+ms.date: 01/22/2019
 ms.author: juliako
-ms.openlocfilehash: 858c062c2b3d61b38247e323bf70d2768d33b257
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: c51a36f4380199de1ac62ef3f0c32bd0a8f06c01
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969339"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811217"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Samouczek: transmisja strumieniowa na żywo z usługi Media Services w wersji 3 przy użyciu interfejsów API
 
@@ -89,7 +89,7 @@ Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platfor
 
 ### <a name="create-a-live-event"></a>Utwórz wydarzenie na żywo
 
-W tej sekcji przedstawiono sposób tworzenia **przekazywanego** typu kanału LiveEvent (o wartości parametru LiveEventEncodingType ustawionej na None). Jeśli chcesz utworzyć kanał LiveEvent obsługujący kodowanie na żywo, musisz nadać parametrowi LiveEventEncodingType wartość Standard. 
+W tej sekcji przedstawiono sposób tworzenia **przekazywanego** typu kanału LiveEvent (o wartości parametru LiveEventEncodingType ustawionej na None). Jeśli chcesz utworzyć kanał LiveEvent obsługujący kodowanie na żywo, musisz nadać parametrowi LiveEventEncodingType wartość **Standard**. 
 
 Jest kilka rzeczy, które warto określić podczas tworzenia zdarzenia na żywo:
 
@@ -100,8 +100,12 @@ Jest kilka rzeczy, które warto określić podczas tworzenia zdarzenia na żywo:
 * Ograniczenia dotyczące adresów IP w pozyskiwaniu i podglądzie. Można zdefiniować adresy IP, które mogą pozyskiwać pliki wideo w tym kanale LiveEvent. Jako dozwolone adresy IP można podać pojedynczy adres IP (na przykład „10.0.0.1”), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład „10.0.0.1/22”) lub zakres adresów IP przy użyciu adresu IP i maski podsieci w notacji z kropką dziesiętną (na przykład, „10.0.0.1(255.255.252.0)”).
     
     Jeśli adresy IP nie zostaną określone i brakuje definicji reguły, to żaden adres IP nie będzie dozwolony. Aby zezwolić na jakikolwiek adres IP, utwórz regułę i ustaw wartość 0.0.0.0/0.
+    
+    Adresy IP muszą mieć jeden z następujących formatów: adres IPv4 z 4 cyframi, zakres adresów CIDR.
 
-Podczas tworzenia zdarzenia można określić, że będzie ono automatycznie uruchamiane. 
+* Podczas tworzenia zdarzenia można określić, że będzie ono automatycznie uruchamiane. 
+
+    Jeśli automatyczne uruchamianie zostanie ustawione na wartość true, wydarzenie na żywo rozpocznie się po utworzeniu. Oznacza to, że rozliczenia rozpoczną się po uruchomieniu wydarzenia na żywo. Należy jawnie wywołać operację zatrzymywania w zasobie LiveEvent, aby zatrzymać dalsze rozliczenia. Aby uzyskać więcej informacji, zobacz [LiveEvent states and billing (Stany i rozliczenia dotyczące elementu LiveEvent)](live-event-states-billing.md).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 

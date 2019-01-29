@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 49d5761e3e37e1265938d1f1b27324de667a13ca
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 93d7a6e884cf02fa41838d4a07644c122a43823b
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707099"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54823831"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Samouczek: śledzenie użycia laboratorium w usłudze Azure Lab Service
 W tym samouczku zostanie pokazane, w jaki sposób twórca/właściciel laboratorium może śledzić użycie laboratorium.
@@ -37,14 +37,14 @@ W tym samouczku wykonasz następujące czynności:
 1. Przejdź do [witryny internetowej usługi Azure Lab Services](https://labs.azure.com). 
 2. Wybierz pozycję **Zaloguj się** i wprowadź swoje poświadczenia. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft.
 3. Na stronie **My labs** (Moje laboratoria) wybierz laboratorium, którego użycie chcesz śledzić. 
-4. Wybierz kartę **Users** (Użytkownicy). Zostanie wyświetlona lista uczniów, którzy zarejestrowali się w Twoim laboratorium. Wybierz pozycję **Registration link** (Link rejestracji), skopiuj link i wyślij go do każdego nowego studenta, który jeszcze nie zarejestrował się w Twoim laboratorium. 
+4. Wybierz kafelek **Users** (Użytkownicy) lub pozycję **Users** (Użytkownicy) w menu po lewej stronie. Zostanie wyświetlona lista uczniów, którzy zarejestrowali się w Twoim laboratorium. Wybierz pozycję **Registration link** (Link rejestracji), skopiuj link i wyślij go do każdego nowego studenta, który jeszcze nie zarejestrował się w Twoim laboratorium. 
 
     ![Zarejestrowani użytkownicy](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>Wyświetlanie użycia maszyn wirtualnych w laboratorium 
 
 1. Wybierz pozycję **Virtual Machines** (Maszyny wirtualne) w menu po lewej stronie. 
-2. Upewnij się, że jest wyświetlany stan maszyn wirtualnych i liczba godzin, podczas których maszyny wirtualne były uruchomione. Czas spędzony na maszynie wirtualnej ucznia nie jest wliczany do czasu użycia widocznego w ostatniej kolumnie. 
+2. Upewnij się, że jest wyświetlany stan maszyn wirtualnych i liczba godzin, podczas których maszyny wirtualne były uruchomione. Czas, który właściciel laboratorium spędza na maszynie wirtualnej ucznia, nie jest wliczany do czasu użycia widocznego w ostatniej kolumnie. 
 
     ![Użycie maszyny wirtualnej](../media/tutorial-track-usage/vm-usage.png)
 
@@ -55,6 +55,8 @@ Po umieszczeniu wskaźnika myszy nad wierszem na liście maszyn wirtualnych zost
 - Uruchamianie maszyny wirtualnej
 - Zatrzymywanie maszyny wirtualnej
 - Usuwanie maszyny wirtualnej
+
+Za pomocą przycisków paska narzędzi możesz również uruchomić, zatrzymać lub usunąć maszynę wirtualną. 
 
 
 

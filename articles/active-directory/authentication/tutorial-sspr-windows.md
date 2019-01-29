@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 5c40e6c681a4f37c61519040eb32531d3c8f071c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437150"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430676"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: Resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -32,6 +32,7 @@ W tym samouczku umożliwisz użytkownikom resetowanie swoich haseł z ekranu log
    * [Maszyna dołączona do usługi Azure AD](../device-management-azure-portal.md) lub
    * [Maszyna dołączona do hybrydowej usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) z łącznością sieciową z kontrolerem domeny.
 * Włączona funkcja samoobsługowego resetowania haseł w usłudze Azure AD.
+* Jeśli Twoje maszyny z systemem Windows 10 znajdują się za serwerem proxy lub zaporą, ruch HTTPS (443) na adresy `passwordreset.microsoftonline.com` i `ajax.aspnetcdn.com` powinien być dozwolony.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurowanie linku resetowania hasła przy użyciu usługi Intune
 
@@ -126,8 +127,6 @@ Wiadomo, że następujące ustawienia zasad zakłócają możliwość resetowani
    * Plik Explorer.exe został zastąpiony niestandardową powłoką
 
 Ta funkcja nie działa w przypadku sieci z wdrożonym uwierzytelnianiem sieci 802.1x oraz opcji „Wykonaj bezpośrednio przed logowaniem użytkownika”. W sieciach z wdrożonym uwierzytelnianiem sieci 802.1x zalecane jest używanie uwierzytelniania maszynowego w celu włączenia tej funkcji.
-
-Jeśli Twoje maszyny z systemem Windows 10 znajdują się za serwerem proxy lub zaporą, ruch HTTPS (443) na adresy passwordreset.microsoftonline.com i ajax.aspnetcdn.com powinien być dozwolony.
 
 W przypadku scenariuszy z hybrydowym dołączeniem do domeny istnieje scenariusz, w którym przepływ pracy samoobsługowego resetowania haseł zakończy się bez konieczności używania kontrolera domeny usługi Active Directory. Łączność z kontrolerem domeny jest wymagana do użycia nowego hasła po raz pierwszy.
 

@@ -3,21 +3,21 @@ title: Samouczek — włączanie uwierzytelniania aplikacji internetowej przy u�
 description: Samouczek dotyczący sposobu użycia usługi Azure Active Directory B2C w celu określenia nazwy logowania użytkownika na potrzeby aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 8b482391dfafdda0e54b3f9e2b8a3a7de2f2d5cd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 30a94cb5de2d618938f17c4e5733821ac7247785
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834727"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54851525"
 ---
-# <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Samouczek — włączanie uwierzytelniania aplikacji internetowej przy użyciu kont w usłudze Azure Active Directory B2C
+# <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania aplikacji internetowej przy użyciu kont w usłudze Azure Active Directory B2C
 
 W tym samouczku pokazano, jak używać usługi Azure Active Directory (Azure AD) B2C do logowania i rejestracji użytkowników w aplikacji internetowej platformy ASP.NET. Usługa Azure AD B2C umożliwia aplikacjom uwierzytelnianie się na kontach społecznościowych, kontach przedsiębiorstw i kontach usługi Azure Active Directory za pomocą otwartych standardowych protokołów.
 
@@ -171,9 +171,9 @@ Przykładowa aplikacja internetowa platformy ASP.NET to prosta aplikacja z list�
 
 Przykładowe rozwiązanie zawiera dwa projekty:
 
-**Przykładowa aplikacja internetowa (TaskWebApp):** aplikacja internetowa do tworzenia i edytowania listy zadań. Ta aplikacja internetowa używa przepływu użytkownika dotyczącego **tworzenia konta lub logowania** na potrzeby tworzenia kont lub logowania użytkowników.
+**Przykładowa aplikacja internetowa (TaskWebApp):** Aplikacja internetowa do tworzenia i edytowania listy zadań. Ta aplikacja internetowa używa przepływu użytkownika dotyczącego **tworzenia konta lub logowania** na potrzeby tworzenia kont lub logowania użytkowników.
 
-**Przykładowa aplikacja internetowego interfejsu API (TaskService):** internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
+**Przykładowa aplikacja internetowego interfejsu API (TaskService):** Internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
 
 Należy zmienić aplikację w celu korzystania z rejestracji aplikacji w dzierżawie; obejmuje to zanotowane wcześniej identyfikator aplikacji i klucz. Należy też skonfigurować utworzone przepływy użytkownika. Przykładowa aplikacja internetowa definiuje wartości konfiguracji jako ustawienia aplikacji w pliku Web.config. Aby zmienić ustawienia aplikacji:
 

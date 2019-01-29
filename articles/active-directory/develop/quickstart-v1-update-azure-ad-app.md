@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f311f951e09e064b8eac779b1082c666fe029479
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a89768a5cf02cc8d4cdce670bdfb5b90f504bdf
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977250"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447466"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Szybki start: aktualizowanie aplikacji w usłudze Azure Active Directory
 
@@ -44,8 +44,8 @@ Aby aplikacje klienckie przeznaczone dla Internetu lub aplikacje poufne mogły u
 
 Zanim klient będzie mógł uzyskać dostęp do internetowego interfejsu API uwidocznionego przez aplikację zasobów (np. interfejsu API programu Microsoft Graph), platforma wyrażania zgody zapewnia, że klient uzyskuje udzielenie wymaganych uprawnień na podstawie żądanych uprawnień. Domyślnie wszystkie aplikacje mogą wybierać uprawnienia z usługi **Azure Active Directory** (interfejs API programu Graph) i klasycznego modelu wdrażania platformy Azure. [Uprawnienie „Loguj się i odczytuj profil użytkownika” interfejsu API programu Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) jest również domyślnie zaznaczone. Jeśli Twój klient jest rejestrowany w dzierżawie, która ma konta z subskrypcją usługi Office 365, do wyboru są dostępne internetowe interfejsy API i uprawnienia dla programu SharePoint i usługi Exchange Online. Dla każdego żądanego internetowego interfejsu API możesz wybrać spośród dwóch rodzajów uprawnień:
 
-- Uprawnienia aplikacji: Twoja aplikacja kliencka musi mieć bezpośredni dostęp do internetowego interfejsu API w swoim imieniu (bez kontekstu użytkownika). Tego rodzaju uprawnienia wymagają zgody administratora i nie są dostępne dla natywnych aplikacji klienckich.
-- Uprawnienia delegowane: Twoja aplikacja kliencka musi mieć dostęp do internetowego interfejsu API w imieniu zalogowanego użytkownika, ale z dostępem ograniczonym przez wybrane uprawnienie. Tego rodzaju uprawnienie może być udzielane przez użytkownika, chyba że wymaga ono zgody administratora.
+- Uprawnienia aplikacji: twoja aplikacja kliencka musi mieć bezpośredni dostęp do internetowego interfejsu API w swoim imieniu (bez kontekstu użytkownika). Tego rodzaju uprawnienia wymagają zgody administratora i nie są dostępne dla natywnych aplikacji klienckich.
+- Uprawnienia delegowane: twoja aplikacja kliencka musi mieć dostęp do internetowego interfejsu API w imieniu zalogowanego użytkownika, ale z dostępem ograniczonym przez wybrane uprawnienie. Tego rodzaju uprawnienie może być udzielane przez użytkownika, chyba że wymaga ono zgody administratora.
 
   > [!NOTE]
   > Dodanie uprawnienia delegowanego do aplikacji nie powoduje automatycznego udzielenia zgody dla użytkowników w dzierżawie. Użytkownicy muszą nadal ręcznie wyrażać zgodę na dodane uprawnienia delegowane w czasie wykonywania, chyba że administrator wyrazi zgodę w imieniu wszystkich użytkowników.

@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: c28a3097e8b0733db229fc10778d0ac77a3b0a7a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 9ad3730968f22f89bf8618454039e16581b3f94b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52306374"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54473048"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Python
 
@@ -170,7 +170,7 @@ Teraz, gdy wykonaliśmy pierwsze wywołanie interfejsu API wyszukiwania w Intern
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Ograniczanie liczby wyników zwracanych przez usługę Bing
 
-W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczbę wyników zwracanych przy użyciu metody [ `search` zestawu SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search). Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczbę wyników zwracanych przy użyciu metody [ `search` zestawu SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python). Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
 
 1. Dodaj następujący kod do projektu języka Python:
     ```python
@@ -181,7 +181,7 @@ W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczb�
         try:
             '''
             Set the query, offset, and count using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="Best restaurants in Seattle", offset=10, count=20)
             print("\r\nSearching for \"Best restaurants in Seattle\"")
@@ -207,7 +207,7 @@ W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczb�
 
 ### <a name="filter-for-news-and-freshness"></a>Filtrowanie według wiadomości i aktualności
 
-W tym przykładzie użyto parametrów `response_filter` i `freshness`, aby przefiltrować wyniki wyszukiwania przy użyciu metody [ `search` zestawu SDK](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations#search). Zwracane wyniki wyszukiwania są ograniczane do artykułów z wiadomościami i stron, które usługa Bing odnalazła w ciągu ostatnich 24 godzin. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+W tym przykładzie użyto parametrów `response_filter` i `freshness`, aby przefiltrować wyniki wyszukiwania przy użyciu metody [ `search` zestawu SDK](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations). Zwracane wyniki wyszukiwania są ograniczane do artykułów z wiadomościami i stron, które usługa Bing odnalazła w ciągu ostatnich 24 godzin. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
 
 1. Dodaj następujący kod do projektu języka Python:
     ```python
@@ -217,7 +217,7 @@ W tym przykładzie użyto parametrów `response_filter` i `freshness`, aby przef
         try:
             '''
             Set the query, response_filter, and freshness using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(query="xbox",
                 response_filter=["News"],
@@ -255,7 +255,7 @@ W tym przykładzie użyto parametrów `response_filter` i `freshness`, aby przef
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Używanie filtrów safe search, answer count i promote
 
-W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`, aby przefiltrować wyniki wyszukiwania przy użyciu metody [ `search` zestawu SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search). Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`, aby przefiltrować wyniki wyszukiwania przy użyciu metody [ `search` zestawu SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python). Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
 
 1. Dodaj następujący kod do projektu języka Python:
     ```python
@@ -267,7 +267,7 @@ W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`,
         try:
             '''
             Set the query, answer_count, promote, and safe_search parameters using the SDK's search method. See:
-            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search.
+            https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python.
             '''
             web_data = client.web.search(
                 query="Niagara Falls",

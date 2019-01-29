@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 737dc40bafa519d59bcbc0ff6510a89cb3a840fa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c8aa7050163c2b58ca68adcf9a9b4d0bc96bb126
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263207"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54808361"
 ---
 # <a name="about-azure-migrate"></a>Informacje o usłudze Azure Migrate
 
@@ -57,7 +57,7 @@ Ustawienia oceny można dostosować zgodnie z potrzebami. Właściwości oceny s
 
 **Właściwość** | **Szczegóły**
 --- | ---
-**Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obecnie obsługuje 33 regiony jako lokalizacje docelowe migracji. [Sprawdź regiony](https://azure.microsoft.com/global-infrastructure/services/). Domyślny region docelowy to Zachodnie stany USA 2.
+**Lokalizacja docelowa** | Lokalizacja platformy Azure, do której chcesz przeprowadzić migrację.<br/><br/>Usługa Azure Migrate obecnie obsługuje 33 regiony jako lokalizacje docelowe migracji. [Sprawdź regiony](https://azure.microsoft.com/global-infrastructure/services/). Domyślny region docelowy to Wschodnie stany USA.
 **Typ magazynu** | Typ dysków zarządzanych, które chcesz przydzielić dla wszystkich maszyn wirtualnych będących częścią oceny. Jeśli kryterium ustalania rozmiaru to *ustalanie rozmiaru zgodnie ze środowiskiem lokalnym*, jako typ dysku docelowego możesz określić dyski w warstwie Premium (ustawienie domyślne), dyski SSD w warstwie Standardowa lub dyski HDD w warstwie Standardowa. W przypadku *ustalania rozmiaru na podstawie wydajności* oprócz powyższych opcji jest dostępna również opcja Automatycznie, która zapewnia, że zalecenie dotyczące rozmiaru dysku jest określane automatycznie na podstawie danych wydajności maszyn wirtualnych. Jeśli na przykład chcesz uzyskać [czas pracy zgodnie z umową SLA na poziomie 99,9% dla maszyny wirtualnej z pojedynczym wystąpieniem](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), warto określić dyski zarządzane w warstwie Premium jako typ magazynu. Da to pewność, że dla wszystkich dysków w ocenie będą zalecane dyski zarządzane w warstwie Premium. Usługa Azure Migrate obsługuje dyski zarządzane tylko na potrzeby oceny migracji.
 **Wystąpienia zarezerwowane** |  Określ, czy masz [wystąpienia zarezerwowane](https://azure.microsoft.com/pricing/reserved-vm-instances/) na platformie Azure. Zgodnie z tym usługa Azure Migrate odpowiednio szacuje koszty.
 **Kryterium rozmiaru** | Ustalanie rozmiaru może być przeprowadzane na podstawie **historii wydajności** lokalnych maszyn wirtualnych (ustawienie domyślne) lub **zgodnie ze środowiskiem lokalnym** bez uwzględniania historii wydajności.

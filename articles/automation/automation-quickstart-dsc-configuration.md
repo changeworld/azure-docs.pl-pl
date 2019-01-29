@@ -3,7 +3,7 @@ title: Szybki start platformy Azure — konfigurowanie maszyny wirtualnej za pom
 description: Konfigurowanie stosu LAMP w maszynie wirtualnej systemu Linux za pomocą konfiguracji żądanego stanu (DSC)
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 keywords: dsc, konfiguracja, automatyzacja
 author: KrisBash
 ms.author: krbash
@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243696"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431592"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurowanie maszyny wirtualnej systemu Linux za pomocą DSC
 
@@ -108,7 +108,7 @@ Aby zaimportować konfigurację:
 
 ## <a name="compile-a-configuration"></a>Kompilacja konfiguracji
 
-Konfiguracja DSC musi zostać skompilowana do konfiguracji węzła (dokument MOF) przed przypisaniem do węzła. Kompilacja weryfikuje konfigurację i pozwala na wprowadzanie wartości parametrów. Aby uzyskać więcej informacji na temat kompilacji konfiguracji, zobacz: [Compiling Configurations in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile) (Kompilowanie konfiguracji w DSC usługi Azure Automation)
+Konfiguracja DSC musi zostać skompilowana do konfiguracji węzła (dokument MOF) przed przypisaniem do węzła. Kompilacja weryfikuje konfigurację i pozwala na wprowadzanie wartości parametrów. Aby dowiedzieć się więcej na temat kompilacji konfiguracji, zobacz: [Kompilowanie konfiguracji w usłudze Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile)
 
 Aby skompilować konfigurację:
 
@@ -145,3 +145,4 @@ W tym przewodniku Szybki Start maszyna wirtualna systemu Linux została dołącz
 * Aby dowiedzieć się więcej na temat konfiguracji DSC programu PowerShell, zobacz [PowerShell Desired State Configuration Overview](https://docs.microsoft.com/powershell/dsc/overview) (Omówienie środowiska PowerShell żądanego stanu konfiguracji).
 * Aby dowiedzieć się więcej o zarządzaniu Konfiguracją DSC usługi Automation z programem PowerShell, zobacz [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0) (Program Azure PowerShell)
 * Aby dowiedzieć się, jak przekazywać raporty DSC do usługi Log Analytics w celu raportowania i przekazywania alertów, zobacz [Forwarding DSC Reporting to Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) (Przekazywanie raportów DSC do usługi Log Analytics) 
+

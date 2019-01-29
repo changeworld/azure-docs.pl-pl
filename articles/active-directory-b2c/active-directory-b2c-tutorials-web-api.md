@@ -3,19 +3,19 @@ title: Samouczek — udzielanie dostępu do internetowego interfejsu API platfor
 description: Samouczek dotyczący używania usługi Active Directory B2C do chronienia internetowego interfejsu API platformy ASP.NET i wywoływania go z aplikacji internetowej platformy ASP.NET.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.author: davidmu
 ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4051c0438cfb7c33f36cf49542e422e54e723cfc
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726410"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856064"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Samouczek: udzielanie dostępu do internetowego interfejsu API platformy ASP.NET z aplikacji internetowej przy użyciu usługi Azure Active Directory B2C
 
@@ -116,13 +116,13 @@ Aplikacja **Moja przykładowa aplikacja internetowa** zostanie zarejestrowana w 
 
 Po zarejestrowaniu internetowego interfejsu API i zdefiniowaniu zakresów należy skonfigurować kod internetowego interfejsu API w celu korzystania z dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładowy internetowy interfejs API. 
 
-Przykładowy internetowy interfejs API jest zawarty w projekcie pobranym w samouczku, który określono w wymaganiach wstępnych: [Samouczek dotyczący uwierzytelniania użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji internetowej platformy ASP.NET](active-directory-b2c-tutorials-web-app.md). Przed kontynuowaniem ukończ samouczek określony w wymaganiach wstępnych, jeśli nie zostało to jeszcze zrobione.
+Przykładowy internetowy interfejs API jest częścią projektu, który pobrano w samouczku wskazanym w wymaganiach wstępnych: [Samouczek dotyczący uwierzytelniania użytkowników za pomocą usługi Azure Active Directory B2C w aplikacji internetowej platformy ASP.NET](active-directory-b2c-tutorials-web-app.md) Przed kontynuowaniem ukończ samouczek określony w wymaganiach wstępnych, jeśli nie zostało to jeszcze zrobione.
 
 Przykładowe rozwiązanie zawiera dwa projekty:
 
-**Przykładowa aplikacja internetowa (TaskWebApp):** aplikacja internetowa do tworzenia i edytowania listy zadań. Ta aplikacja internetowa używa przepływu użytkownika **rejestracja lub logowanie**, aby rejestrować lub logować użytkowników za pomocą adresu e-mail.
+**Przykładowa aplikacja internetowa (TaskWebApp):** Aplikacja internetowa do tworzenia i edytowania listy zadań. Ta aplikacja internetowa używa przepływu użytkownika **rejestracja lub logowanie**, aby rejestrować lub logować użytkowników za pomocą adresu e-mail.
 
-**Przykładowa aplikacja internetowego interfejsu API (TaskService):** Internetowy interfejs API, który obsługuje funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
+**Przykładowa aplikacja internetowego interfejsu API (TaskService):** Internetowy interfejs API, który obsługuje następujące funkcje listy zadań: tworzenie, odczytywanie, aktualizowanie i usuwanie. Internetowy interfejs API jest chroniony przez usługę Azure AD B2C i wywoływany przez aplikację internetową.
 
 Przykładowa aplikacja internetowa i internetowy interfejs API definiują wartości konfiguracji jako ustawienia aplikacji w pliku Web.config w każdym projekcie.
 

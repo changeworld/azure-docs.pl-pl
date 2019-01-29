@@ -3,19 +3,19 @@ title: Co to jest usługa Azure Active Directory B2C? | Microsoft Docs
 description: Dowiedz się, jak utworzyć środowisko logowania w aplikacji i zarządzać nim przy użyciu usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b667934fefe0b9afb5aeca786839f5e105be2c4d
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724030"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844997"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co to jest usługa Azure Active Directory B2C?
 
@@ -102,17 +102,17 @@ W usłudze Azure AD B2C dzierżawa reprezentuje Twoją organizację i jest katal
 
 W celu uzyskania pełnej funkcjonalności i dokonania opłat za zużycie połącz dzierżawę usługi Azure AD B2C z subskrypcją platformy Azure. Aby umożliwić klientom logowanie się do aplikacji, zarejestruj ją w dzierżawie usługi Azure AD B2C.
 
-Przed rozpoczęciem konfigurowania aplikacji do korzystania z usługi Azure AD B2C należy utworzyć dzierżawę usługi Azure AD B2C i zarejestrować aplikację. Aby zarejestrować aplikację, wykonaj kroki opisane w artykule [Tutorial: Register an application to enable sign-up and sign-in using Azure AD B2C (Samouczek: rejestrowanie aplikacji w celu umożliwienia przeprowadzenia procesu rejestracji i logowania przy użyciu usługi Azure AD B2C)](tutorial-register-applications.md).
+Przed rozpoczęciem konfigurowania aplikacji do korzystania z usługi Azure AD B2C należy utworzyć dzierżawę usługi Azure AD B2C i zarejestrować aplikację. Aby zarejestrować aplikację, wykonaj kroki opisane w artykule [Samouczek: rejestrowanie aplikacji w celu umożliwienia przeprowadzenia procesu rejestracji i logowania przy użyciu usługi Azure AD B2C](tutorial-register-applications.md).
   
 Jeśli jesteś deweloperem aplikacji internetowych platformy ASP.NET, skonfiguruj aplikację do uwierzytelniania kont, wykonując kroki opisane w artykule [Samouczek: włączanie uwierzytelniania aplikacji internetowej przy użyciu kont w usłudze Azure AD B2C](active-directory-b2c-tutorials-web-app.md).
 
 Jeśli jesteś deweloperem aplikacji klasycznych, skonfiguruj aplikację do uwierzytelniania kont, wykonując kroki opisane w artykule [Samouczek: włączanie uwierzytelniania aplikacji klasycznej przy użyciu kont w usłudze Azure AD B2C](active-directory-b2c-tutorials-desktop-app.md).
 
-Jeśli jesteś deweloperem aplikacji jednostronicowych i korzystasz ze środowiska Node.js, skonfiguruj aplikację do uwierzytelniania kont, wykonując kroki opisane w artykule [Samouczek: włączanie uwierzytelniania aplikacji jednostronicowej przy użyciu kont w usłudze Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md).
+Jeśli jesteś deweloperem aplikacji jednostronicowych i korzystasz z technologii Node.js, skonfiguruj aplikację do uwierzytelniania kont, wykonując kroki opisane w artykule [Samouczek: włączanie uwierzytelniania aplikacji jednostronicowej przy użyciu kont w usłudze Azure AD B2C](active-directory-b2c-tutorials-spa.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 Rozpocznij konfigurowanie aplikacji dla funkcji rejestracji i logowania, przechodząc do samouczka.
 
 > [!div class="nextstepaction"]
-> [Samouczek: tworzenie dzierżawy usługi Azure Active Directory B2C](tutorial-create-tenant.md)
+> [Samouczek: Tworzenie dzierżawy usługi Azure Active Directory B2C](tutorial-create-tenant.md)

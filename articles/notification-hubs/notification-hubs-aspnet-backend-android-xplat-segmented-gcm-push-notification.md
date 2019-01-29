@@ -3,8 +3,8 @@ title: Wysyłanie powiadomień push do określonych urządzeń z systemem Androi
 description: Dowiedz się, jak wysyłać powiadomienia push do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging.
 services: notification-hubs
 documentationcenter: android
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru'
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
@@ -13,39 +13,43 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/06/2018
-ms.author: dimazaid
-ms.openlocfilehash: 1751071aa37665b5cea51f7be76990020ad569ab
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: fb0eca8a6871fbcc3a9da99334ede6c758350dba
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919805"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449250"
 ---
 # <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging"></a>Samouczek: wysyłanie powiadomień push do określonych urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging
+
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Omówienie
+
 Korzystając z tego samouczka, dowiesz się, jak rozgłaszać powiadomienia z najważniejszymi informacjami do aplikacji systemu Android przy użyciu usługi Azure Notification Hubs. Po zakończeniu pracy z samouczkiem będziesz wiedzieć, jak rejestrować kategorie ważnych wiadomości, które Cię interesują, oraz otrzymywać tylko powiadomienia push dla tych kategorii. Ten scenariusz jest typowym wzorcem dla wielu aplikacji wymagających wysyłania powiadomień do grup użytkowników, które wcześniej zadeklarowały zainteresowanie nimi, na przykład czytników danych RSS, aplikacji dla fanów muzyki itp.
 
 Scenariusze rozgłaszania są włączone w przypadku co najmniej jednego *tagu* podczas tworzenia rejestracji w centrum powiadomień. W przypadku wysłania powiadomień do tagu wszystkie urządzenia zarejestrowane dla tego tagu otrzymają powiadomienie. Tagi to po prostu ciągi, dlatego nie muszą być aprowizowane z wyprzedzeniem. Aby uzyskać więcej informacji na temat tagów, zobacz [Notification Hubs Routing and Tag Expressions (Wyrażenia routingu i tagów w usłudze Notification Hubs)](notification-hubs-tags-segment-push-message.md).
 
-W tym samouczku wykonasz następujące czynności: 
+W tym samouczku wykonasz następujące czynności:
 
 > [!div class="checklist"]
 > * Dodawanie wyboru kategorii do aplikacji mobilnej.
-> * Rejestrowanie powiadomień z tagami. 
-> * Wysyłanie powiadomień z tagami. 
+> * Rejestrowanie powiadomień z tagami.
+> * Wysyłanie powiadomień z tagami.
 > * Testowanie aplikacji
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Ten samouczek jest oparty na aplikacji utworzonej w [samouczku: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging][get-started]. Przed rozpoczęciem tego samouczka ukończ [Samouczek: wysyłanie powiadomień wypychanych do urządzeń z systemem Android przy użyciu usługi Azure Notification Hubs i Google Cloud Messaging][get-started].
+
+Ten samouczek korzysta z aplikacji utworzonej w artykule [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging][get-started]. Przed rozpoczęciem tego samouczka należy wykonać czynności opisane w artykule [Samouczek: wysyłanie powiadomień push do urządzeń z systemem Android przy użyciu usług Azure Notification Hubs i Google Cloud Messaging][get-started].
 
 ## <a name="add-category-selection-to-the-app"></a>Dodawanie wyboru kategorii do aplikacji
+
 Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejącej strony głównej, co umożliwi użytkownikowi wybranie kategorii do zarejestrowania. Kategorie wybrane przez użytkownika są przechowywane na urządzeniu. Po uruchomieniu aplikacji w centrum powiadomień zostanie utworzona rejestracja urządzenia z wybranymi kategoriami w formie tagów.
 
-1. Otwórz plik res/layout/activity_main.xml i zastąp zawartość następującą zawartością:
-   
+1. Otwórz plik `res/layout/activity_main.xml file` i zastąp jego zawartość następującą zawartością:
+
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -97,7 +101,7 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
             />
     </LinearLayout>
     ```
-2. Otwórz plik res/values/strings.xml i dodaj następujące wiersze:
+2. Otwórz plik `res/values/strings.xml` i dodaj następujące wiersze:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -109,12 +113,12 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
     <string name="label_sports">Sports</string>
     ```
 
-    Twój układ graficzny pliku main_activity.xml powinien wyglądać podobnie do poniższego:
-   
-    ![][A1]
-3. Utwórz klasę `Notifications` w tym samym pakiecie co klasa **MainActivity**.
+    Układ graficzny pliku `main_activity.xml` powinien wyglądać mniej więcej tak:
 
-    ```java   
+    ![][A1]
+3. Utwórz klasę `Notifications` w tym samym pakiecie co klasa `MainActivity`.
+
+    ```java
     import java.util.HashSet;
     import java.util.Set;
 
@@ -135,7 +139,7 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
         private Context context;
         private String senderId;
 
-        public Notifications(Context context, String senderId, String hubName, 
+        public Notifications(Context context, String senderId, String hubName,
                                 String listenConnectionString) {
             this.context = context;
             this.senderId = senderId;
@@ -165,7 +169,7 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
 
                         String templateBodyGCM = "{\"data\":{\"message\":\"$(messageParam)\"}}";
 
-                        hub.registerTemplate(regid,"simpleGCMTemplate", templateBodyGCM, 
+                        hub.registerTemplate(regid,"simpleGCMTemplate", templateBodyGCM,
                             categories.toArray(new String[categories.size()]));
                     } catch (Exception e) {
                         Log.e("MainActivity", "Failed to register - " + e.getMessage());
@@ -185,16 +189,16 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
 
     }
     ```
-       
-    Ta klasa używa magazynu lokalnego do przechowywania kategorii wiadomości, które mają być odbierane na tym urządzeniu. Zawiera również metody rejestracji w tych kategoriach.
-4. W klasie **MainActivity** usuń pola prywatne elementów **NotificationHub** i **GoogleCloudMessaging**, a następnie dodaj pole elementu **Notifications**:
 
-    ```java   
+    Ta klasa używa magazynu lokalnego do przechowywania kategorii wiadomości, które mają być odbierane na tym urządzeniu. Zawiera również metody rejestracji w tych kategoriach.
+4. W klasie `MainActivity` usuń pola prywatne elementów `NotificationHub` i `GoogleCloudMessaging`, a następnie dodaj pole elementu `Notifications`:
+
+    ```java
     // private GoogleCloudMessaging gcm;
     // private NotificationHub hub;
     private Notifications notifications;
     ```
-5. Następnie w metodzie **onCreate** usuń inicjowanie pola **hub** i metody **registerWithNotificationHubs**. Następnie dodaj następujące wiersze, które inicjują wystąpienie klasy **Notifications**. 
+5. Następnie w metodzie `onCreate` usuń inicjowanie pola `hub` i metody `registerWithNotificationHubs`. Dodaj następujące wiersze, które inicjują wystąpienie klasy `Notifications`.
 
     ```java
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,16 +217,18 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
 
     Upewnij się, że nazwa centrum i parametry połączenia są poprawnie ustawione w klasie NotificationSettings.
 
-    > [AZURE.NOTE] Ponieważ poświadczenia dystrybuowane przy użyciu aplikacji klienckiej nie są zazwyczaj bezpieczne, należy przy użyciu aplikacji klienckiej dystrybuować wyłącznie klucz dostępu do nasłuchiwania. Dostęp do nasłuchiwania umożliwia aplikacji rejestrowanie powiadomień, ale nie może ona modyfikować istniejących rejestracji ani wysyłać powiadomień. Klucz pełnego dostępu jest używany w zabezpieczonej usłudze zaplecza do wysyłania powiadomień oraz zmiany istniejących rejestracji.
-1. Następnie dodaj następujące instrukcje importu:
+    > [!NOTE]
+    > Ponieważ poświadczenia dystrybuowane przy użyciu aplikacji klienckiej nie są zazwyczaj bezpieczne, należy przy użyciu aplikacji klienckiej dystrybuować wyłącznie klucz dostępu do nasłuchiwania. Dostęp do nasłuchiwania umożliwia aplikacji rejestrowanie powiadomień, ale nie może ona modyfikować istniejących rejestracji ani wysyłać powiadomień. Klucz pełnego dostępu jest używany w zabezpieczonej usłudze zaplecza do wysyłania powiadomień oraz zmiany istniejących rejestracji.
 
-    ```java   
+6. Następnie dodaj następujące instrukcje importu:
+
+    ```java
     import android.widget.CheckBox;
     import java.util.HashSet;
     import java.util.Set;
     ```
-1. Dodaj następującą metodę `subscribe` w celu obsługi zdarzenia kliknięcia przycisku subskrybowania:        
-   
+7. Dodaj następującą metodę `subscribe` w celu obsługi zdarzenia kliknięcia przycisku subskrybowania:
+
     ```java
     public void subscribe(View sender) {
         final Set<String> categories = new HashSet<String>();
@@ -249,37 +255,36 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
         notifications.storeCategoriesAndSubscribe(categories);
     }
     ```
-       
-    Ta metoda tworzy listę kategorii i używa klasy **Notifications** do przechowywania listy w magazynie lokalnym oraz rejestrowania odpowiednich tagów w centrum powiadomień. Jeśli kategorie zostaną zmienione, rejestracja zostanie ponownie utworzona przy użyciu nowych kategorii.
+
+    Ta metoda tworzy listę kategorii i używa klasy `Notifications` do przechowywania listy w magazynie lokalnym oraz rejestrowania odpowiednich tagów w centrum powiadomień. Jeśli kategorie zostaną zmienione, rejestracja zostanie ponownie utworzona przy użyciu nowych kategorii.
 
 Aplikacja może teraz przechowywać zestaw kategorii w magazynie lokalnym na urządzeniu i dokonywać rejestracji przy użyciu centrum powiadomień za każdym razem, gdy użytkownik zmieni wybór kategorii.
 
 ## <a name="register-for-notifications"></a>Rejestrowanie do otrzymywania powiadomień
+
 Te kroki umożliwiają zarejestrowanie przy użyciu centrum powiadomień przy uruchamianiu przy użyciu kategorii przechowywanych w magazynie lokalnym.
 
 > [!NOTE]
 > Identyfikator registrationId przypisany przez usługę Google Cloud Messaging (GCM) może ulec zmianie w dowolnym momencie, dlatego należy rejestrować powiadomienia często, aby unikać niepowodzeń w zakresie powiadomień. Poniższy przykład przeprowadza rejestrację w celu otrzymywania powiadomień za każdym razem, gdy aplikacja jest uruchamiana. W przypadku często uruchamianych aplikacji — więcej niż raz dziennie — prawdopodobnie możesz pominąć rejestrację, aby zachować przepustowość, jeśli od poprzedniej rejestracji upłynął czas krótszy niż jeden dzień.
-> 
-> 
 
-1. Dodaj następujący kod na końcu metody **onCreate** w klasie **MainActivity**:
-   
+1. Dodaj następujący kod na końcu metody `onCreate` klasy `MainActivity`:
+
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
     ```
-   
-    Ten kod gwarantuje, że podczas każdego uruchomienia aplikacja pobiera kategorie z magazynu lokalnego oraz żąda rejestracji dla tych kategorii. 
+
+    Ten kod gwarantuje, że podczas każdego uruchomienia aplikacja pobiera kategorie z magazynu lokalnego oraz żąda rejestracji dla tych kategorii.
 2. Następnie zaktualizuj metodę `onStart()` klasy `MainActivity` w następujący sposób:
-   
+
     ```java
     @Override
     protected void onStart() {
-   
+
         super.onStart();
         isVisible = true;
-   
+
         Set<String> categories = notifications.retrieveCategories();
-   
+
         CheckBox world = (CheckBox) findViewById(R.id.worldBox);
         world.setChecked(categories.contains("world"));
         CheckBox politics = (CheckBox) findViewById(R.id.politicsBox);
@@ -294,25 +299,28 @@ Te kroki umożliwiają zarejestrowanie przy użyciu centrum powiadomień przy ur
         sports.setChecked(categories.contains("sports"));
     }
     ```
-   
+
     Ten kod aktualizuje stronę główną w oparciu o stan poprzednio zapisanych kategorii.
 
 Aplikacja jest teraz zakończona i może przechowywać w magazynie lokalnym na urządzeniu zestaw kategorii używanych do rejestracji w centrum powiadomień za każdym razem, gdy użytkownik zmieni wybór kategorii. Następnie zdefiniuj zaplecze, które może wysyłać powiadomienia dla kategorii do tej aplikacji.
 
 ## <a name="send-tagged-notifications"></a>Wysyłanie powiadomień z tagami
+
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="test-the-app"></a>Testowanie aplikacji
+
 1. W programie Android Studio uruchom aplikację w urządzeniu z systemem Android lub emulatorze systemu Android. Interfejs użytkownika aplikacji udostępnia zestaw przełączników pozwalających wybrać kategorie do zasubskrybowania.
 2. Włącz co najmniej jeden przełącznik kategorii, a następnie kliknij przycisk **Subscribe** (Subskrybuj). Aplikacja konwertuje wybrane kategorie na tagi i żąda nowej rejestracji urządzenia dla wybranych tagów z centrum powiadomień. Zarejestrowane kategorie są zwracane i wyświetlane w wyskakującym powiadomieniu.
 
     ![Subskrybowanie kategorii](./media/notification-hubs-aspnet-backend-android-breaking-news/subscribe-for-categories.png)
-1. Uruchom aplikację konsolową .NET, która wysyła powiadomienia dla każdej kategorii. Powiadomienia dla wybranych kategorii będą wyświetlane jako powiadomienia wyskakujące.
+3. Uruchom aplikację konsolową .NET, która wysyła powiadomienia dla każdej kategorii. Powiadomienia dla wybranych kategorii będą wyświetlane jako powiadomienia wyskakujące.
 
     ![Powiadomienia dotyczące wiadomości technologicznych](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku wysłano rozgłoszone powiadomienia do określonych urządzeń z systemem Android zarejestrowanych dla kategorii. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, przejdź do następującego samouczka: 
+
+W tym samouczku wysłano rozgłoszone powiadomienia do określonych urządzeń z systemem Android zarejestrowanych dla kategorii. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych użytkowników, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
 >[Wysyłanie powiadomień push do konkretnych użytkowników](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)

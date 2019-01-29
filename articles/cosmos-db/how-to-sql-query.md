@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d101931fb2a4184ff9ffffc0aed4fc90fee2cbd5
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042142"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452959"
 ---
 # <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Przykłady zapytań SQL umożliwiających wykonywanie zapytań o dane z usługi Azure Cosmos DB
 
@@ -506,7 +506,7 @@ Można także zagnieżdżać wywołania w operatorze, podobnie jak w poniższym 
 
 Tak jak w przypadku innych operatorów zapytań, jeśli w dowolnym elemencie brakuje właściwości przywoływanych w wyrażeniu warunkowym lub jeśli porównywane typy są różne, ten element jest wykluczany w wynikach zapytania.
 
-Operator Coalesce (??) może służyć do efektywnego sprawdzania obecności właściwości (czyli czy została zdefiniowana) w elemencie. Ten operator jest przydatny w przypadku wykonywania zapytań względem lub danych z częściową strukturą lub mieszanych typów danych. Na przykład to zapytanie zwraca element „lastName”, jeśli jest obecny, lub element „Name”, jeśli nie jest obecny.
+Operator Coalesce (??) może służyć do efektywnego sprawdzania obecności właściwości w elemencie. Ten operator jest przydatny w przypadku wykonywania zapytań względem lub danych z częściową strukturą lub mieszanych typów danych. Na przykład to zapytanie zwraca element „lastName”, jeśli jest obecny, lub element „Name”, jeśli nie jest obecny.
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName

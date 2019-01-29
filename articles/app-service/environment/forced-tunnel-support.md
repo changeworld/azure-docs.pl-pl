@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89827cdc7d29a817c83fd16ec2a4340f06c8343c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272739"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389282"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurowanie wymuszonego tunelowania środowiska App Service Environment
 
-Środowisko Azure App Service Environment (ASE) to wdrożenie usługi Azure App Service w sieci Azure Virtual Network klienta. Wielu klientów konfiguruje sieci wirtualne platformy Azure jako rozszerzenia sieci lokalnych za pomocą sieci VPN lub połączeń usługi Azure ExpressRoute. Wymuszone tunelowanie ma miejsce podczas przekierowywania ruchu powiązanego z Internetem do sieci VPN lub urządzenia wirtualnego. Często jest to wykonywane w ramach wymagań dotyczących zabezpieczeń w celu przeglądania i inspekcji całego ruchu wychodzącego. 
+Środowisko Azure App Service Environment (ASE) to wdrożenie usługi Azure App Service w sieci Azure Virtual Network klienta. Wielu klientów konfiguruje sieci wirtualne platformy Azure jako rozszerzenia sieci lokalnych za pomocą sieci VPN lub połączeń usługi Azure ExpressRoute. Wymuszone tunelowanie ma miejsce podczas przekierowywania ruchu powiązanego z Internetem do sieci VPN lub urządzenia wirtualnego. Urządzenia wirtualne są często używane w celu sprawdzania i inspekcji wychodzącego ruchu sieciowego. 
 
 Środowisko ASE jest zależne od szeregu elementów zewnętrznych, które opisano w dokumencie [App Service Environment network architecture][network] (Architektura sieci w środowisku App Service Environment). Zwykle cały ruch wychodzący zależności środowiska ASE musi przechodzić przez wirtualny adres IP, dla którego zainicjowano obsługę tego środowiska. Jeśli zmienisz routing ruchu do lub ze środowiska ASE bez przestrzegania poniższych informacji, Twoje środowisko ASE przestanie działać.
 
@@ -62,28 +62,25 @@ Jeśli sieć już przekierowuje ruch lokalnie, należy utworzyć podsieć w celu
 
 ## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>Konfigurowanie podsieci środowiska ASE w celu ignorowania tras protokołu BGP ## 
 
-Można skonfigurować podsieć środowiska ASE tak, aby były w niej ignorowane wszystkie trasy protokołu BGP.  Przy takiej konfiguracji środowisko ASE może uzyskać dostęp do wszystkich zależności bez problemów.  Jednak aby umożliwić aplikacjom dostęp do zasobów lokalnych, konieczne będzie utworzenie tras zdefiniowanych przez użytkownika.
+Można skonfigurować podsieć środowiska ASE tak, aby były w niej ignorowane wszystkie trasy protokołu BGP.  W przypadku skonfigurowania ignorowania tras protokołu BGP środowisko ASE może uzyskać dostęp do wszystkich zależności bez problemów.  Jednak aby umożliwić aplikacjom dostęp do zasobów lokalnych, konieczne będzie utworzenie tras zdefiniowanych przez użytkownika.
 
 Aby skonfigurować ignorowanie tras protokołu BGP w podsieci środowiska ASE:
 
 * Utwórz trasę zdefiniowaną przez użytkownika i przypisz ją do podsieci środowiska ASE (jeśli taka trasa jeszcze nie istnieje).
 * W witrynie Azure Portal otwórz interfejs użytkownika tabeli tras przypisanej do podsieci środowiska ASE.  Wybierz pozycję Konfiguracja.  Wyłącz propagację tras protokołu BGP.  Kliknij pozycję Zapisz. Informacje o wyłączaniu tej funkcji znajdziesz w dokumencie [Create a route table][routetable] (Tworzenie tabeli tras).
 
-Po wykonaniu tej czynności aplikacje nie będą mogły uzyskać dostępu do zasobów lokalnych. Aby rozwiązać ten problem, zmodyfikuj trasę zdefiniowaną przez użytkownika przypisaną do podsieci środowiska ASE, dodając trasy dla lokalnych zakresów adresów. Należy wybrać opcję Brama sieci wirtualnej jako Typ następnego przeskoku. 
+Po skonfigurowaniu ignorowania wszystkich tras protokołu BGP w podsieci środowiska ASE aplikacje nie będą mogły nawiązywać połączenia ze środowiskiem lokalnym. Aby umożliwić aplikacjom uzyskiwanie dostępu do zasobów lokalnych, zmodyfikuj trasę zdefiniowaną przez użytkownika przypisaną do podsieci środowiska ASE, dodając trasy dla lokalnych zakresów adresów. Należy wybrać opcję Brama sieci wirtualnej jako Typ następnego przeskoku. 
 
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurowanie środowiska ASE z punktami końcowymi usługi ##
 
- > [!NOTE]
-   > Punkty końcowe usługi z bazą danych SQL nie działają ze środowiskiem ASE w regionach dla instytucji rządowych Stanów Zjednoczonych.  Poniższe informacje dotyczą tylko publicznych regionów świadczenia usługi Azure.  
-
 Aby przekierować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wychodzącego do usług Azure SQL i Azure Storage, wykonaj następujące czynności:
 
-1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Aby znaleźć adresy zgodne z Twoim regionem, zobacz [App Service Environment management addresses][management] (Adresy zarządzania środowiska App Service Environment). Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Jest to niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany.   
+1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Aby znaleźć adresy zgodne z Twoim regionem, zobacz [App Service Environment management addresses][management] (Adresy zarządzania środowiska App Service Environment). Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Te trasy są niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany.   
 
 2. Włączanie punktów końcowych w usługach Azure SQL i Azure Storage dla podsieci środowiska ASE.  Po wykonaniu tego kroku można skonfigurować sieć wirtualną przy użyciu wymuszonego tunelowania.
 
-Aby utworzyć środowisko ASE w sieci wirtualnej, która została już skonfigurowana do kierowania ruchu lokalnie, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager.  Środowiska ASE nie można utworzyć przy użyciu portalu we wcześniej istniejącej podsieci.  W przypadku wdrażania środowiska ASE w sieci wirtualnej, która została już skonfigurowana do lokalnego kierowania ruchu wychodzącego, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager, który nie zezwala na wybranie wcześniej istniejącej podsieci. Szczegółowe informacje o wdrażaniu środowiska ASE przy użyciu szablonu można znaleźć w temacie [Creating an App Service Environment using a template][template] (Tworzenie środowiska App Service Environment przy użyciu szablonu).
+Aby utworzyć środowisko ASE w sieci wirtualnej, która została już skonfigurowana do kierowania ruchu lokalnie, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager.  Środowiska ASE nie można utworzyć przy użyciu portalu we wcześniej istniejącej podsieci.  W przypadku wdrażania środowiska ASE w sieci wirtualnej, która została już skonfigurowana do lokalnego kierowania ruchu wychodzącego, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager, który nie zezwala na wybranie wcześniej istniejącej podsieci. Szczegółowe informacje o wdrażaniu środowiska ASE przy użyciu szablonu można znaleźć w temacie [Tworzenie środowiska App Service Environment przy użyciu szablonu][template].
 
 Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi sieci wirtualnej][serviceendpoints]. 
 
@@ -91,7 +88,7 @@ Po włączeniu punktów końcowych usługi w zasobie niektóre trasy są utworzo
 
 Kiedy punkty końcowe usługi są włączone w podsieci z wystąpieniem usługi Azure SQL, wszystkie wystąpienia usługi Azure SQL połączone z tej podsieci muszą mieć włączone punkty końcowe usługi. Jeśli chcesz uzyskać dostęp do wielu wystąpień usługi Azure SQL z tej samej podsieci, musisz włączyć punkty końcowe usługi na każdym wystąpieniu usługi Azure SQL.  Usługa Azure Storage nie zachowuje się tak samo jak usługa Azure SQL.  Włączenie punktów końcowych usługi w usłudze Azure Storage powoduje zablokowanie dostępu do tego zasobu z podsieci, ale można nadal uzyskiwać dostęp do innych kont usługi Azure Storage, nawet jeśli nie mają włączonych punktów końcowych usługi.  
 
-Jeśli konfigurujesz wymuszone tunelowanie przy użyciu urządzenia filtru sieciowego, pamiętaj, że środowisko ASE ma zależności oprócz usług Azure SQL i Azure Storage. Musisz zezwolić na ruch do tych zależności; w przeciwnym razie środowisko ASE nie będzie działać prawidłowo.
+Jeśli konfigurujesz wymuszone tunelowanie przy użyciu urządzenia filtru sieciowego, pamiętaj, że środowisko ASE ma zależności oprócz usług Azure SQL i Azure Storage. Jeśli ruch do tych zależności zostanie zablokowany, środowisko ASE nie będzie działać prawidłowo.
 
 ![Wymuszone tunelowanie z punktów końcowych usługi][2]
 
@@ -99,7 +96,7 @@ Jeśli konfigurujesz wymuszone tunelowanie przy użyciu urządzenia filtru sieci
 
 Aby tunelować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wychodzącego do usługi Azure Storage, wykonaj następujące czynności:
 
-1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Aby znaleźć adresy zgodne z Twoim regionem, zobacz [App Service Environment management addresses][management] (Adresy zarządzania środowiska App Service Environment). Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Jest to niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany. 
+1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Aby znaleźć adresy zgodne z Twoim regionem, zobacz [App Service Environment management addresses][management] (Adresy zarządzania środowiska App Service Environment). Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Te trasy są niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany. 
 
 2. Włączanie punktów końcowych w usłudze Azure Storage dla podsieci środowiska ASE
 

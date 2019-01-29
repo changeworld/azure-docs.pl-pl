@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 098973e2ece3477ec87b154c0304c4ca7e0246d1
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5bd27ed71e93edc10fd86395121c524cb54c98e7
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163336"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427614"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Samouczek: przeprowadzanie pilotażowego wdrożenia usługi Azure Multi-Factor Authentication
 
@@ -29,7 +29,7 @@ Ten samouczek przeprowadzi Cię przez konfigurowanie zasad dostępu warunkowego,
 
 * Działająca dzierżawa usługi Azure AD z włączoną co najmniej próbną wersją licencji.
 * Konto z uprawnieniami administratora globalnego.
-* Testowe konto użytkownika niebędącego administratorem i hasło do tego konta na potrzeby przeprowadzenia testów. Jeśli chcesz utworzyć użytkownika, zobacz artykuł [Szybki start: dodawanie nowych użytkowników do usługi Azure Active Directory](../add-users-azure-active-directory.md).
+* Testowe konto użytkownika niebędącego administratorem i znane hasło do tego konta na potrzeby testowania. Jeśli chcesz utworzyć użytkownika, zobacz artykuł [Szybki start: Dodawanie nowych użytkowników do usługi Azure Active Directory](../add-users-azure-active-directory.md).
 * Grupa pilotażowa na potrzeby testów z użytkownikiem niebędącym administratorem jako jej członkiem. Jeśli chcesz utworzyć grupę, zobacz artykuł [Tworzenie grupy i dodawanie do niej członków w usłudze Azure Active Directory](../active-directory-groups-create-azure-portal.md).
 
 ## <a name="enable-azure-multi-factor-authentication"></a>Włączanie usługi Azure Multi-Factor Authentication

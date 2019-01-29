@@ -1,20 +1,20 @@
 ---
 title: Tworzenie usługi Azure Search w portalu — Azure Search
-description: Aprowizowanie usługi Azure Search w witrynie Azure Portal. Wybierz grupy zasobów, regiony i jednostki SKU lub warstwę cenową.
+description: Aprowizowanie zasobu usługi Azure Search w witrynie Azure Portal. Wybierz grupy zasobów, regiony i jednostki SKU lub warstwę cenową.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/02/2019
+ms.date: 01/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: dfb6ccac01933ea114694de361c2f1d4d5a649b0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6d71ad9bdc7744898480fb2cc6743e59131ec588
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230530"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423446"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Tworzenie usługi Azure Search w portalu
 
@@ -22,9 +22,9 @@ Usługa Azure Search jest zasobem autonomicznym służącym do dołączania funk
 
 Ten artykuł zawiera informacje dotyczące tworzenia zasobu usługi Azure Search w [portalu Azure](https://portal.azure.com/). 
 
-![Zasób usługi Azure Search w portalu](media/search-create-service-portal/azure-search-resource-label.png)
+[ ![Animowany obraz GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif) ](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
-Preferujesz program PowerShell? Użyj [szablonu usługi](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manager. Jeśli potrzebujesz pomocy, aby rozpocząć, zapoznaj się z artykułem [Manage Azure Search with PowerShell](search-manage-powershell.md) (Zarządzanie usługą Azure Search przy użyciu programu PowerShell).
+Preferujesz program PowerShell? Użyj [szablonu usługi](https://azure.microsoft.com/resources/templates/101-azure-search-create/) Azure Resource Manager. Aby uzyskać pomoc dotyczącą rozpoczynania pracy, zobacz [Zarządzanie usługą Azure Search przy użyciu programu PowerShell](search-manage-powershell.md).
 
 ## <a name="subscribe-free-or-paid"></a>Subskrypcja (bezpłatna lub płatna)
 
@@ -37,7 +37,7 @@ Możesz również [aktywować korzyści dla subskrybentów MSDN](https://azure.m
 2. Kliknij znak plus („+ Utwórz zasób”) w lewym górnym rogu.
 3. Za pomocą paska wyszukiwania znajdź ciąg „Azure Search” lub przejdź do zasobu, wybierając opcje **Sieć Web** > **Azure Search**.
 
-![](./media/search-create-service-portal/find-search3.png)
+![Przechodzenie do zasobu usługi Azure Search](./media/search-create-service-portal/find-search3.png "Ścieżka nawigacji do usługi Azure Search")
 
 ## <a name="name-the-service-and-url-endpoint"></a>Tworzenie nazwy usługi i punktu końcowego adresu URL
 
@@ -53,7 +53,7 @@ Wymagania dotyczące nazwy usługi:
    * Nie może zawierać następujących po sobie łączników („--”)
 
 ## <a name="select-a-subscription"></a>Wybieranie subskrypcji
-Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Usługa Azure Search może automatycznie wykrywać magazyn tabel i obiektów blob platformy Azure, bazę danych SQL i usługę Azure Cosmos DB na potrzeby indeksowania za pośrednictwem [*indeksatorów*](search-indexer-overview.md), ale wyłącznie w ramach usług w tej samej subskrypcji.
+Jeśli masz więcej niż jedną subskrypcję, wybierz tę, która obejmuje usługi magazynu danych lub plików. Usługa Azure Search może automatycznie wykrywać magazyn tabel i obiektów blob platformy Azure, usługę SQL Database i usługę Azure Cosmos DB na potrzeby indeksowania za pośrednictwem [*indeksatorów*](search-indexer-overview.md), ale wyłącznie w ramach usług w tej samej subskrypcji.
 
 ## <a name="select-a-resource-group"></a>Wybieranie grupy zasobów
 Grupa zasobów jest kolekcją używanych razem usług i zasobów platformy Azure. Jeśli na przykład używasz usługi Azure Search do indeksowania bazy danych SQL, obie usługi powinny należeć do tej samej grupy zasobów.
@@ -64,7 +64,9 @@ Jeśli nie łączysz zasobów w pojedynczą grupę lub jeśli istniejące grupy 
 > Usunięcie grupy zasobów powoduje usunięcie zawartych w niej usług. Umieszczenie w tej samej grupie zasobów wszystkich projektów będących prototypami korzystającymi z wielu usług ułatwia proces czyszczenia po zakończeniu projektu. 
 
 ## <a name="select-a-hosting-location"></a>Wybieranie lokalizacji hostowania 
-W związku z tym, że usługa Azure Search należy do usług platformy Azure, może być hostowana w centrach danych na całym świecie. Należy pamiętać, że [ceny mogą się różnić](https://azure.microsoft.com/pricing/details/search/) w zależności od lokalizacji geograficznej.
+W związku z tym, że usługa Azure Search należy do usług platformy Azure, może być hostowana w centrach danych na całym świecie. [Ceny mogą się różnić](https://azure.microsoft.com/pricing/details/search/) w zależności od lokalizacji geograficznej.
+
+Jeśli planujesz używać wyszukiwania poznawczego, wybierz [region z dostępnością funkcji](cognitive-search-quickstart-blob.md#supported-regions).
 
 ## <a name="select-a-pricing-tier-sku"></a>Wybieranie warstwy cenowej (jednostek SKU)
 [Usługa Azure Search jest obecnie dostępna w wielu warstwach cenowych](https://azure.microsoft.com/pricing/details/search/): bezpłatnej, podstawowej i standardowej. Poszczególne warstwy różnią się między sobą [pojemnością i limitami](search-limits-quotas-capacity.md). Aby uzyskać wskazówki, zobacz [Choose a pricing tier or SKU](search-sku-tier.md) (Wybieranie warstwy cenowej lub jednostek SKU).
@@ -77,7 +79,21 @@ Po utworzeniu usługi nie można zmienić warstwy cenowej. W razie konieczności
 
 Należy pamiętać o przypięciu usługi do pulpitu nawigacyjnego, aby mieć do niej łatwy dostęp po każdym zalogowaniu.
 
-![](./media/search-create-service-portal/new-service3.png)
+![Przypinanie do pulpitu nawigacyjnego](./media/search-create-service-portal/new-service3.png "Przypnij zasób do pulpitu nawigacyjnego, aby mieć do niego wygodny dostęp")
+
+## <a name="get-a-key-and-url-endpoint"></a>Pobieranie klucza i punktu końcowego adresu URL
+
+Poza pewnymi wyjątkami, używanie nowej usługi wymaga podania punktu końcowego adresu URL i klucza interfejsu API autoryzacji. Przewodniki Szybki start, samouczki, takie jak [Poznaj interfejs API REST usługi Azure Search (Postman)](search-fiddler.md) i [Jak używać usługi Azure Search z platformy .NET](search-howto-dotnet-sdk.md), przykłady i kod niestandardowy — wszystkie te zasoby wymagają punktu końcowego i klucza, aby można je było uruchomić w określonym zasobie.
+
+1. W lewej części strony przeglądu usługi zlokalizuj punkt końcowy adresu URL i skopiuj go. 
+
+   ![Strona przeglądu usługi z punktem końcowym adresu URL](./media/search-create-service-portal/url-endpoint.png "Strona przeglądu usługi z punktem końcowym adresu URL")
+
+2. W okienku nawigacji po lewej stronie wybierz pozycję **Klucze**, a następnie skopiuj jeden z kluczy administratora (są one równoważne). Klucze interfejsu API administratora są wymagane do tworzenia, aktualizowania i usuwania obiektów w usłudze.
+
+   ![Strona Klucze z kluczem podstawowym i pomocniczym](./media/search-create-service-portal/admin-api-keys.png "Klucze interfejsu API administratora na potrzeby autoryzacji")
+
+Klucz i punkt końcowy nie są wymagane do zadań wykonywanych w portalu. Portal jest już połączony z zasobem usługi Azure Search przy użyciu uprawnień administratora. Aby zapoznać się z samouczkiem portalu, zobacz [Samouczek: importowanie, indeksowanie i wysyłanie zapytań w usłudze Azure Search](search-get-started-portal.md).
 
 ## <a name="scale-your-service"></a>Skalowanie usługi
 Tworzenie usługi może potrwać kilka minut (15 minut lub dłużej w zależności od warstwy). Po aprowizacji usługi można ją skalować stosownie do potrzeb. Ponieważ dla usługi Azure Search wybrano warstwę standardową, można ją skalować w dwóch wymiarach: replik i partycji. Wybór warstwy podstawowej oznaczałby, że można dodawać wyłącznie repliki. W razie aprowizacji bezpłatnej usługi skalowanie nie jest dostępne.
@@ -95,7 +111,7 @@ Dodawanie zasobów wiąże się z dodaniem opłat do rachunku miesięcznego. [Ka
 2. W okienku nawigacji po lewej wybierz kolejno pozycje **Ustawienia** > **Skalowanie**.
 3. Użyj suwaka, aby dodać zasoby wybranego typu.
 
-![](./media/search-create-service-portal/settings-scale.png)
+![Dodawanie pojemności](./media/search-create-service-portal/settings-scale.png "Dodawanie pojemności za pośrednictwem replik i partycji")
 
 > [!Note] 
 > Każda warstwa ma inne [limity](search-limits-quotas-capacity.md) całkowitej liczby jednostek wyszukiwania dozwolonych w ramach jednej usługi (repliki * partycje = suma jednostek wyszukiwania).

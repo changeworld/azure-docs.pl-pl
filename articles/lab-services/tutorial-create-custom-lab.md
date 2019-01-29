@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 84a6cdb5e91128bbade43ee9212cfa9658228964
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839045"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423296"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Samouczek: konfigurowanie laboratorium przy użyciu usługi Azure DevTest Labs
 W tym samouczku utworzysz laboratorium za pomocą witryny Azure Portal. Administrator laboratorium konfiguruje laboratorium w organizacji, tworzy maszyny wirtualne w laboratorium i konfiguruje zasady. Użytkownicy laboratorium (na przykład deweloper i testerzy) przejmują maszyny wirtualne w laboratorium, nawiązują połączenie z nimi i korzystają z nich. 
@@ -49,24 +49,31 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
     6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**. Utworzone laboratorium zostanie wyświetlone na pulpicie nawigacyjnym. 
 
         ![Tworzenie sekcji laboratorium usługi DevTest Labs](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
+2. Upewnij się, że laboratorium zostało utworzone pomyślnie, sprawdzając powiadomienia. Wybierz pozycję **Przejdź do zasobu**.  
+
+    ![Powiadomienie](./media/tutorial-create-custom-lab/creation-notification.png)
+3. Upewnij się, że strona **laboratorium DevTest Lab** dla Twojego laboratorium jest widoczna. 
+
+    ![Strona główna laboratorium](./media/tutorial-create-custom-lab/lab-home-page.png)
 
 ## <a name="add-a-vm-to-the-lab"></a>Dodawanie maszyny wirtualnej do laboratorium
 
 1. Na stronie **Laboratorium DevTest Lab** wybierz pozycję **+ Dodaj** na pasku narzędzi. 
 
     ![Przycisk dodawania](./media/tutorial-create-custom-lab/add-vm-to-lab-button.png)
-1. Na stronie **Wybieranie bazy** wyszukaj słowo kluczowe (na przykład: Windows, Ubuntu) i wybierz jeden z obrazów podstawowych z listy. 
+1. Na stronie **Wybieranie bazy** wyszukaj za pomocą słowa kluczowego (na przykład: Windows, Ubuntu) i wybierz jeden z obrazów podstawowych na liście. 
 1. Na stronie **Maszyna wirtualna** wykonaj następujące czynności: 
     1. W polu **Nazwa maszyny wirtualnej** wprowadź nazwę maszyny wirtualnej. 
     2. W polu **Nazwa użytkownika** wprowadź nazwę użytkownika, który ma dostęp do maszyny wirtualnej. 
-    3. W polu **Wpisz wartość** wprowadź hasło użytkownika. 
-    4. Wybierz pozycję **Ustawienia zaawansowane**.
-    5. W obszarze **Oznacz tę maszynę jako możliwą do przejęcia** wybierz pozycję **Tak**.
-    6. Upewnij się, że w polu **Liczba wystąpień** ustawiono wartość **1**. Ustawienie wartości **2** spowoduje utworzenie 2 maszyn wirtualnych o następujących nazwach: `<base image name>00' and <base image name>01`. Przykład: `win10vm00` i `win10vm01`. 
-    7. Aby zamknąć stronę **Zaawansowane**, kliknij przycisk **OK**. 
-    8. Wybierz pozycję **Utwórz**. 
+    3. W polu **Hasło** wprowadź hasło użytkownika. 
 
         ![Wybieranie bazy](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+1. Wybierz kartę **Ustawienia zaawansowane**.
+    1. W obszarze **Oznacz tę maszynę jako możliwą do przejęcia** wybierz pozycję **Tak**.
+    2. Upewnij się, że w polu **Liczba wystąpień** ustawiono wartość **1**. Ustawienie wartości **2** spowoduje utworzenie 2 maszyn wirtualnych o następujących nazwach: `<base image name>00' and <base image name>01`. Przykład: `win10vm00` i `win10vm01`.     
+    3. Wybierz pozycję **Prześlij**. 
+
+        ![Wybieranie bazy](./media/tutorial-create-custom-lab/new-vm-advanced-settings.png)
     9. Stan maszyny wirtualnej jest wyświetlany na liście **Maszyny wirtualne możliwe do przejęcia**. Tworzenie maszyny wirtualnej może potrwać około 25 minut. Maszyna wirtualna jest tworzona w oddzielnej grupie zasobów platformy Azure, której nazwa rozpoczyna się od nazwy bieżącej grupy zasobów zawierającej laboratorium. Jeśli na przykład laboratorium znajduje się w grupie `labrg`, maszyna wirtualna może zostać utworzona w grupie zasobów `labrg3988722144002`. 
 
         ![Stan tworzenia maszyny wirtualnej](./media/tutorial-create-custom-lab/vm-creation-status.png)
@@ -81,19 +88,26 @@ Następujące kroki ilustrują tworzenie laboratorium w usłudze Azure DevTest L
 
     ![Konfiguracja i zasady](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
 1. Z menu wybierz pozycję **Kontrola dostępu (Zarządzanie dostępem i tożsamościami)**, a następnie wybierz pozycję **+ Dodaj przypisanie roli** na pasku narzędzi. 
+
+    ![Dodaj przypisanie roli — przycisk](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
 1. Na stronie **Dodawanie uprawnień** wykonaj następujące czynności:
     1. W obszarze **Rola** wybierz pozycję **Użytkownik usługi DevTest Labs**. 
     2. Wybierz **użytkownika**, którego chcesz dodać. 
     3. Wybierz pozycję **Zapisz**.
-4. Aby zamknąć okno **Konfiguracja i zasady — Kontrola dostępu (IAM)**, wybierz pozycję **X** w prawym rogu. 
 
-## <a name="cleanup-resources"></a>Oczyszczanie zasobów
+        ![Dodawanie użytkownika](./media/tutorial-create-custom-lab/add-user.png)
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 W następnym samouczku pokazano, jak użytkownik laboratorium może przejąć maszynę wirtualną w laboratorium i nawiązać z nią połączenie. Jeśli nie chcesz korzystać z tamtego samouczka i chcesz oczyścić zasoby utworzone w ramach tego samouczka, wykonaj następujące czynności: 
 
 1. W witrynie Azure Portal wybierz z menu pozycję **Grupy zasobów**. 
-2. Wybierz grupę zasobów, w której utworzono laboratorium. 
-3. Wybierz pozycję **Usuń grupę zasobów** na pasku narzędzi. Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w grupie, łącznie z laboratorium. 
-4. Powtórz te czynności, aby usunąć dodatkową utworzoną grupę zasobów o nazwie `<your resource group name><random numbers>`. Na przykład: `splab3988722144001`. Maszyny wirtualne są tworzone w tej grupie zasobów, a nie w grupie zasobów, w której istnieje laboratorium. 
+
+    ![Grupy zasobów](./media/tutorial-create-custom-lab/resource-groups.png)
+1. Wybierz grupę zasobów, w której utworzono laboratorium. 
+1. Wybierz pozycję **Usuń grupę zasobów** na pasku narzędzi. Usunięcie grupy zasobów powoduje usunięcie wszystkich zasobów w grupie, łącznie z laboratorium. 
+
+    ![Grupa zasobów laboratorium](./media/tutorial-create-custom-lab/lab-resource-group.png)
+1. Powtórz te czynności, aby usunąć dodatkową utworzoną grupę zasobów o nazwie `<your resource group name><random numbers>`. Na przykład: `splab3988722144001`. Maszyny wirtualne są tworzone w tej grupie zasobów, a nie w grupie zasobów, w której istnieje laboratorium. 
 
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku utworzono laboratorium z maszyną wirtualną i udzielono użytkownikowi dostępu do laboratorium. Aby dowiedzieć się, jak uzyskać dostęp laboratorium jako użytkownik laboratorium, przejdź do następnego samouczka:

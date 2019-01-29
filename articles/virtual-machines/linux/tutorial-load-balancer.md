@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: b37f8c53e9528919da3aaf0acf66376876bd64b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 47e3f449ef3ef0b732dfcef2af595ce5ccd24f16
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470884"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856421"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych z systemem Linux na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -53,7 +53,7 @@ Jeśli został wykonany poprzedni samouczek omawiający [tworzenie zestawu skalo
 
 
 ## <a name="create-azure-load-balancer"></a>Tworzenie modułu równoważenia obciążenia na platformie Azure
-W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania poszczególnych składników modułu równoważenia obciążenia. Zanim będzie można utworzyć własny moduł równoważenia obciążenia, należy utworzyć grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie zostanie utworzona grupa zasobów o nazwie *myResourceGroupLoadBalancer* w lokalizacji *eastus*:
+W tej sekcji opisano szczegółowo procedurę tworzenia i konfigurowania poszczególnych składników modułu równoważenia obciążenia. Zanim będzie można utworzyć własny moduł równoważenia obciążenia, należy utworzyć grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). W poniższym przykładzie zostanie utworzona grupa zasobów o nazwie *myResourceGroupLoadBalancer* w lokalizacji *eastus*:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupLoadBalancer --location eastus
@@ -226,7 +226,7 @@ az vm availability-set create \
     --name myAvailabilitySet
 ```
 
-Teraz możesz utworzyć maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). W poniższym przykładzie pokazano tworzenie trzech maszyn wirtualnych i generowanie kluczy SSH, jeśli jeszcze nie istnieją:
+Teraz możesz utworzyć maszyny wirtualne za pomocą polecenia [az vm create](/cli/azure/vm). W poniższym przykładzie pokazano tworzenie trzech maszyn wirtualnych i generowanie kluczy SSH, jeśli jeszcze nie istnieją:
 
 ```bash
 for i in `seq 1 3`; do

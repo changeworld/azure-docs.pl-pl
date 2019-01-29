@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: ba06e568b3d7b0125d5868c1ad4a85e5e42f7e18
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ffceeeeb5a55b0fab1dd1cf91aebfcd4cfd852ef
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246215"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848601"
 ---
 # <a name="overview-of-azure-notebooks"></a>Omówienie usługi Azure Notebooks
 
 Azure Notebooks to bezpłatna usługa hostowana umożliwiająca tworzenie i uruchamianie notesów Jupyter w chmurze bez instalacji. [Jupyter](https://jupyter.org/) (wcześniej IPython) to projekt typu open source, który umożliwia łatwe łączenie tekstu Markdown, kodu wykonywalnego, trwałych danych, grafiki i wizualizacji na jednej kanwie nazywanej *notesem* z możliwością udostępniania (zdjęcia za zgodą jupyter.org):
 
-[![](https://jupyter.org/assets/jupyterpreview.png "Notesy programu Jupyter")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Przykłady notesów programu Jupyter](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Dzięki zaawansowanemu połączeniu kodu, grafiki i opisowego tekstu notesy Jupyter znalazły wiele zastosowań, takich jak instrukcje przetwarzania danych do celów naukowych, czyszczenie i transformacje danych, symulacje numeryczne, modelowanie statystyczne oraz tworzenie modeli uczenia maszynowego.
 
@@ -55,9 +55,9 @@ Krótko mówiąc, usługa Azure Notebooks pomaga wydajniej wykonywać swoją pra
 
 ## <a name="pricing-and-quotas"></a>Cennik i przydziały
 
-Azure Notebooks to bezpłatna usługa, jednak każdy projekt jest ograniczony do 4 GB pamięci i 1 GB miejsca na dane, aby zapobiegać nadużywaniu zasobów. Uprawnieni użytkownicy, którzy przekroczą te limity, muszą przejść weryfikację Captcha umożliwiającą kontynuowanie pracy z notesami.
+Azure Notebooks to bezpłatna usługa, jednak każdy projekt jest ograniczony do 4 GB pamięci i 1 GB miejsca na dane, co zapobiega nadużywaniu zasobów. Uprawnieni użytkownicy, którzy przekroczą te limity, muszą przejść weryfikację Captcha umożliwiającą kontynuowanie pracy z notesami.
 
-Aby zwolnić wszystkie limity, zaloguj się do usługi Azure Notebooks przy użyciu konta korzystającego z usługi Azure Active Directory (na przykład konta firmowego). Jeśli to konto jest skojarzone z subskrypcją platformy Azure, możesz użyć warstw wystąpień obliczeniowych usługi Azure Data Science Virtual Machine.
+Aby zwolnić wszystkie limity, zaloguj się do usługi Azure Notebooks przy użyciu konta korzystającego z usługi Azure Active Directory (na przykład konta firmowego). Jeśli to konto jest skojarzone z subskrypcją platformy Azure, możesz nawiązać połączenie z dowolnymi wystąpieniami usługi Azure Data Science Virtual Machine w ramach tej subskrypcji. Aby uzyskać więcej informacji, zobacz [Konfigurowanie projektów i zarządzanie nimi — warstwa Obliczenia](configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ## <a name="available-kernels-and-environments"></a>Dostępne jądra i środowiska
 

@@ -4,8 +4,8 @@ description: Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadom
 services: notification-hubs
 documentationcenter: ios
 keywords: powiadomienie wypychane, powiadomienia wypychane, powiadomienia wypychane w systemie ios
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: 27172696a1b94c1571bdade27d80de6b9a82d911
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: 63fb04e6b31fe4026b93cef09d88601d6182101a
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353972"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448313"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs. Przy użyciu usługi [Apple Push Notification Service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) utworzysz pustą aplikację dla systemu iOS służącą do odbierania powiadomień push. 
+Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadomienia push do aplikacji dla systemu iOS przy użyciu usługi Azure Notification Hubs. Przy użyciu usługi [Apple Push Notification Service (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) utworzysz pustą aplikację dla systemu iOS służącą do odbierania powiadomień push.
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -44,27 +44,28 @@ Kompletny kod dla tego samouczka można znaleźć [w witrynie GitHub](https://gi
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aktywne konto platformy Azure. Jeśli go nie masz, możesz utworzyć [bezpłatne konto próbne](https://azure.microsoft.com/free) w zaledwie kilka minut. 
-- [Struktura Windows Azure Messaging]
-- Najnowsza wersja środowiska [Xcode]
-- Urządzenie zgodne z systemem iOS 10 (lub nowszą wersją)
-- Członkostwo w [programie dla deweloperów firmy Apple](https://developer.apple.com/programs/).
+* Aktywne konto platformy Azure. Jeśli go nie masz, możesz [utworzyć bezpłatne konto platformy Azure](https://azure.microsoft.com/free) w zaledwie kilka minut.
+* [Struktura Windows Azure Messaging]
+* Najnowsza wersja środowiska [Xcode]
+* Urządzenie zgodne z systemem iOS 10 (lub nowszą wersją)
+* Członkostwo w [programie dla deweloperów firmy Apple](https://developer.apple.com/programs/).
   
-  > [!NOTE]
-  > Ze względu na wymagania dotyczące konfiguracji powiadomień wypychanych należy wdrożyć i przetestować powiadomienia wypychane na fizycznym urządzeniu z systemem iOS (telefonie iPhone lub tablecie iPad), a nie w symulatorze systemu iOS.
+ > [!NOTE]
+ > Ze względu na wymagania dotyczące konfiguracji powiadomień wypychanych należy wdrożyć i przetestować powiadomienia wypychane na fizycznym urządzeniu z systemem iOS (telefonie iPhone lub tablecie iPad), a nie w symulatorze systemu iOS.
   
 Wykonanie czynności opisanych w tym samouczku jest wymaganiem wstępnym dla wszystkich innych samouczków usługi Notification Hubs dotyczących aplikacji dla systemu iOS.
 
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Konfigurowanie centrum powiadomień dla powiadomień wypychanych systemu iOS
+
 W tej sekcji utworzysz centrum powiadomień i skonfigurujesz uwierzytelnianie w usłudze APNs przy użyciu utworzonego wcześniej certyfikatu powiadomień wypychanych **.p12**. Jeśli chcesz użyć już utworzonego centrum powiadomień, możesz przejść do kroku 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 ### <a name="configure-your-notification-hub-with-apns-information"></a>Konfigurowanie centrum powiadomień przy użyciu informacji o usłudze APNS
 
-1. W obszarze **Usługi powiadomień** wybierz pozycję **Apple (APNS)**. 
+1. W obszarze **Usługi powiadomień** wybierz pozycję **Apple (APNS)**.
 2. Wybierz pozycję **Certyfikat**.
 3. Wybierz **ikonę pliku**.
 4. Wybierz wcześniej wyeksportowany plik **.p12**.
@@ -99,7 +100,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane z usługą APNs i masz para
 
     ![Rozpakowywanie zestawu SDK platformy Azure][10]
 
-6. Dodaj nowy plik nagłówkowy do projektu o nazwie **HubInfo.h**. Ten plik zawiera stałe używane przez centrum powiadomień. Dodaj następujące definicje i zastąp symbole zastępcze literału ciągu przy użyciu *nazwy centrum* i zanotowanej wcześniej wartości *DefaultListenSharedAccessSignature*.
+6. Dodaj nowy plik nagłówkowy do projektu o nazwie `HubInfo.h`. Ten plik zawiera stałe używane przez centrum powiadomień. Dodaj następujące definicje i zastąp symbole zastępcze literału ciągu przy użyciu *nazwy centrum* i zanotowanej wcześniej wartości *DefaultListenSharedAccessSignature*.
 
     ```objc
     #ifndef HubInfo_h
@@ -111,14 +112,14 @@ Twoje centrum powiadomień jest teraz skonfigurowane z usługą APNs i masz para
     #endif /* HubInfo_h */
     ```
 
-7. Otwórz plik **AppDelegate.h** i dodaj następujące dyrektywy importu:
+7. Otwórz plik `AppDelegate.h` i dodaj następujące dyrektywy importu:
 
     ```objc
     #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
-    #import <UserNotifications/UserNotifications.h> 
+    #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. W **pliku AppDelegate.m** dodaj następujący kod w metodzie **didFinishLaunchingWithOptions** zależnie od wersji systemu iOS. Ten kod rejestruje dojście do urządzenia w usłudze APNs:
+8. W pliku `AppDelegate.m` dodaj następujący kod w metodzie `didFinishLaunchingWithOptions` zależnie od wersji systemu iOS. Ten kod rejestruje dojście do urządzenia w usłudze APNs:
 
     ```objc
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
@@ -191,14 +192,12 @@ Aby przetestować powiadomienia wypychane w systemie iOS, należy wdrożyć apli
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym prostym przykładzie wysłano powiadomienia wypychane do wszystkich zarejestrowanych urządzeń z systemem iOS. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń z systemem iOS, przejdź do następującego samouczka: 
+W tym prostym przykładzie wysłano powiadomienia wypychane do wszystkich zarejestrowanych urządzeń z systemem iOS. Aby dowiedzieć się, jak wysyłać powiadomienia push do konkretnych urządzeń z systemem iOS, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
 >[Wysyłanie powiadomień push do konkretnych urządzeń](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
-
 <!-- Images. -->
-
 [6]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png
 [7]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png
 [8]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app.png
@@ -206,15 +205,11 @@ W tym prostym przykładzie wysłano powiadomienia wypychane do wszystkich zareje
 [10]: ./media/notification-hubs-ios-get-started/notification-hubs-create-ios-app3.png
 [11]: ./media/notification-hubs-ios-get-started/notification-hubs-xcode-product-name.png
 [12]: ./media/notification-hubs-ios-get-started/notification-hubs-enable-push.png
-
 [30]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
-
 [31]: ./media/notification-hubs-ios-get-started/notification-hubs-ios-ui.png
 [32]: ./media/notification-hubs-ios-get-started/notification-hubs-storyboard-view.png
 [33]: ./media/notification-hubs-ios-get-started/notification-hubs-test1.png
 [35]: ./media/notification-hubs-ios-get-started/notification-hubs-test3.png
-
-
 
 <!-- URLs. -->
 [Struktura Windows Azure Messaging]: http://go.microsoft.com/fwlink/?LinkID=799698&clcid=0x409
@@ -222,15 +217,12 @@ W tym prostym przykładzie wysłano powiadomienia wypychane do wszystkich zareje
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
 [Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
-
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
 [Azure Notification Hubs Notify Users for iOS with .NET backend]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-
 [Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Azure Portal]: https://portal.azure.com

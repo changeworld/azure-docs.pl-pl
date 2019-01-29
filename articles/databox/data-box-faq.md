@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/16/2019
 ms.author: alkohli
-ms.openlocfilehash: c8aa08dc189a77a206ea24b535aedf64454838c7
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ad52427263c4bbd2effb373b00ef8ff37b8f5b67
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359412"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54449575"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -192,7 +192,9 @@ Aby uzyskać więcej informacji, zobacz temat [Funkcje zabezpieczeń urządzenia
 
 ### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>PYTANIE: Przygotowywanie urządzenia do wysłania zostało zakończone, a urządzenie zostało wyłączone. Czy wciąż mogę dodać więcej danych do urządzenia Data Box?
 A. Tak. Włączenie urządzenia i dodanie większej ilości danych jest możliwe. Po zakończeniu kopiowania danych należy ponownie uruchomić funkcję **Przygotuj do wysłania**.
-  
+
+### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>PYTANIE: Otrzymane urządzenie nie uruchamia się. Jak mogę je odesłać?
+A. Jeśli urządzenie nie uruchamia się, przejdź do zamówienia w witrynie Azure Portal. Pobierz etykietę wysyłkową i dołącz ją do urządzenia. Aby uzyskać więcej informacji, przejdź do sekcji [Pobierz etykietę wysyłkową](data-box-portal-admin.md#download-shipping-label).
 
 ## <a name="verify-and-upload"></a>Weryfikowanie i przekazywanie
 

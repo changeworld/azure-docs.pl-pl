@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f1ab6d955c81ce6f7b141eef42341f43bb379f6
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 9670d67fa1eb79e9e5e8c81726c10cc78767fb74
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165321"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435468"
 ---
 # <a name="what-is-azure-data-box-gateway-preview"></a>Co to jest usługa Azure Data Box Gateway (wersja zapoznawcza)? 
 
@@ -39,7 +39,10 @@ Usługa Data Box Gateway daje następujące korzyści:
 
 - **Łatwy transfer danych**— przenoszenie danych do i z usługi Azure Storage jest tak proste jak praca z lokalnym udziałem sieciowym.  
 - **Wysoka wydajność** — bezproblemowe przesyłanie danych między sieciami dzięki wydajnym transferom na platformę Azure i z platformy Azure. 
-- **Szybki dostęp** — buforuje najnowsze pliki w celu zapewnienia szybkiego dostępu do plików lokalnych.  
+- **Szybki dostęp i wysokie tempo pozyskiwania danych w godzinach pracy** — usługa Data Box Gateway ma lokalną pamięć podręczną definiowaną jako rozmiar pojemności lokalnej podczas aprowizacji urządzenia wirtualnego. Rozmiar dysku danych należy określić zgodnie z [minimalnymi wymaganiami dla urządzenia wirtualnego](data-box-gateway-system-requirements.md#specifications-for-the-virtual-device). Lokalna pamięć podręczna zapewnia następujące korzyści:
+    - Lokalna pamięć podręczna umożliwia pozyskiwanie danych z dużą szybkością. Jeśli duże ilości danych są pozyskiwane w godzinach szczytu, pamięć podręczna może przechować te dane i przekazać je do chmury.
+    - Lokalna pamięć podręczna umożliwia szybki dostęp do odczytu do chwili osiągnięcia określonego progu. Dopóki urządzenie nie zostanie zapełnione w 50-60%, dostęp do wszystkich odczytów z urządzenia jest uzyskiwany z pamięci podręcznej, dzięki czemu są one szybsze. Kiedy zajęte miejsce na urządzeniu przekracza tę wartość progową, urządzenie zaczyna usuwać pliki lokalne. 
+ 
 - **Ograniczone użycie przepustowości** — dane mogą zostać zapisane na platformie Azure nawet przy ograniczonych możliwościach użycia sieci w czasie godzin szczytu.  
 
 ## <a name="key-capabilities"></a>Najważniejsze możliwości
@@ -67,7 +70,7 @@ Urządzenie wirtualne Data Box Gateway ma następujące parametry:
 | Procesory wirtualne (rdzenie)   | Minimum 4 |            
 | Memory (Pamięć)  | Minimum 8 GB|
 | Dostępność|Jeden węzeł|
-| Dyski| Dysk systemu operacyjnego: 250 GB <br> Dysk danych: minimum 2 TB, alokowany elastycznie, wymagane dyski SSD|
+| Dyski| Dysk systemu operacyjnego: 250 GB <br> Dysk z danymi: minimum 2 TB, alokowany elastycznie, wymagane dyski SSD|
 | Interfejsy sieciowe|Co najmniej 1 wirtualny interfejs sieciowy|
 | Natywne protokoły udostępniania plików|Protokoły SMB i NFS  |
 | Bezpieczeństwo| Odblokowanie dostępu do urządzenia i danych wymaga uwierzytelnienia <br> Transmitowane dane są szyfrowane przy użyciu 256-bitowego algorytmu AES|

@@ -8,14 +8,14 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f70f3804bb1c6f385081b56fe6139b1b680a95cf
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055017"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467336"
 ---
-# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Samouczek: sterowanie routingiem ruchu za pomocą punktów końcowych z wagami przy użyciu usługi Traffic Manager 
+# <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Samouczek: sterowanie routingiem ruchu za pomocą punktów końcowych z wagami przy użyciu usługi Traffic Manager
 
 W tym samouczku opisano, jak sterować routingiem ruchu użytkowników między punktami końcowymi metodą routingu ważonego za pomocą usługi Azure Traffic Manager. W przypadku tej metody routingu należy przypisać wagi do każdego punktu końcowego w konfiguracji profilu usługi Traffic Manager. Ruch użytkowników jest kierowany zgodnie z wagami przypisanymi do poszczególnych punktów końcowych. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Im większa jest wartość wagi przypisana do punktu końcowego, tym wyższy jest priorytet.
 
@@ -36,7 +36,7 @@ Aby zobaczyć usługę Traffic Manager w działaniu, na potrzeby tego samouczka 
 - dwa wystąpienia podstawowych witryn internetowych działających w różnych regionach świadczenia usługi Azure — Wschodnie stany USA i Europa Zachodnia,
 - dwie testowe maszyny wirtualne do testowania usługi Traffic Manager — jedną maszynę wirtualną w regionie Wschodnie stany USA i drugą w regionie Europa Zachodnia. Testowe maszyny wirtualne są używane w celu zilustrowania sposobu kierowania ruchu użytkowników przez usługę Traffic Manager do witryny internetowej, która ma wyższą wagę przypisaną do punktu końcowego.
 
-### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
+### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -89,24 +89,24 @@ W tej sekcji utworzysz dwie maszyny wirtualne (*myIISVMEastUS* i *myIISVMWEurope
 W tej sekcji zainstalujesz serwer usług IIS na dwóch maszynach wirtualnych — &mdash;myIISVMEastUS i myIISVMWEurope&mdash;, a następnie zaktualizujesz domyślną stronę internetową. Dostosowana strona internetowa wyświetla nazwę maszyny wirtualnej, z którą jest nawiązywane połączenie podczas odwiedzania witryny internetowej z przeglądarki internetowej.
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myIISVMEastUS** w grupie zasobów **myResourceGroupTM1**.
-2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**. 
-3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło, które zostały określone podczas tworzenia tej maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej. 
+2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**.
+3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło, które zostały określone podczas tworzenia tej maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
 4. Kliknij przycisk **OK**.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 6. Na pulpicie serwera przejdź do pozycji **Narzędzia administracyjne systemu Windows** > **Menedżer serwera**.
 7. Otwórz program Windows PowerShell na maszynie wirtualnej VM1. Użyj poniższych poleceń, aby zainstalować serwer usług IIS i zaktualizować domyślny plik HTM.
     ```powershell-interactive
     # Install IIS
-      Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # Remove default .htm file
-     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    remove-item C:\inetpub\wwwroot\iisstart.htm
     
     #Add custom .htm file
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
 
-     ![Instalowanie usług IIS i dostosowywanie strony internetowej](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
+    ![Instalowanie usług IIS i dostosowywanie strony internetowej](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 
 8. Zamknij połączenie protokołu RDP z maszyną wirtualną **myIISVMEastUS**.
 9. Powtórz kroki 1–8. Utwórz połączenie RDP z maszyną wirtualną **myIISVMWEurope** w grupie zasobów **myResourceGroupTM2**, aby zainstalować usługi IIS i dostosować domyślną stronę internetową.
@@ -165,7 +165,7 @@ Utwórz profil usługi Traffic Manager, bazując na metodzie routingu **ważoneg
 
 ## <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
-Dodaj dwie maszyny wirtualne, na których działają serwery IIS — myIISVMEastUS i myIISVMWEurope, aby skierować do nich ruch użytkowników.
+Dodaj dwie maszyny wirtualne, na których działają serwery IIS, myIISVMEastUS i myIISVMWEurope, aby skierować do nich ruch użytkowników.
 
 1. Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji. Wybierz profil w wyświetlanych wynikach.
 2. W bloku **Profil usługi Traffic Manager** w sekcji **Ustawienia** wybierz pozycję **Punkty końcowe** > **Dodaj**.
@@ -180,8 +180,8 @@ Dodaj dwie maszyny wirtualne, na których działają serwery IIS — myIISVMEast
     |  Waga      | Wprowadź wartość **100**.        |
     |        |           |
 
-4. Powtórz kroki 2 i 3, aby dodać inny punkt końcowy o nazwie **myWestEuropeEndpoint** z publicznym adresem IP **myIISVMWEurope-ip**. Ten adres jest skojarzony z serwerem IIS na maszynie wirtualnej o nazwie myIISVMWEurope. W ustawieniu **Waga** wprowadź **25**. 
-5.  Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w profilu usługi Traffic Manager, ze stanem monitorowania **Online**.
+4. Powtórz kroki 2 i 3, aby dodać inny punkt końcowy o nazwie **myWestEuropeEndpoint** z publicznym adresem IP **myIISVMWEurope-ip**. Ten adres jest skojarzony z serwerem IIS na maszynie wirtualnej o nazwie myIISVMWEurope. W ustawieniu **Waga** wprowadź **25**.
+5. Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w profilu usługi Traffic Manager, ze stanem monitorowania **Online**.
 
 ## <a name="test-the-traffic-manager-profile"></a>Testowanie profilu usługi Traffic Manager
 Aby zobaczyć usługę Traffic Manager w działaniu, wykonaj następujące czynności:
@@ -189,28 +189,28 @@ Aby zobaczyć usługę Traffic Manager w działaniu, wykonaj następujące czynn
 2. Sprawdź działanie usługi Traffic Manager.
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Określanie nazwy DNS profilu usługi Traffic Manager
-Dla uproszczenia w tym samouczku użyjesz nazwy DNS profilu usługi Traffic Manager do odwiedzania witryn internetowych. 
+Dla uproszczenia w tym samouczku użyjesz nazwy DNS profilu usługi Traffic Manager do odwiedzania witryn internetowych.
 
 Nazwę DNS profilu usługi Traffic Manager można określić w następujący sposób:
 
-1.  Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji. W wyświetlonych wynikach wybierz profil usługi Traffic Manager.
+1. Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji. W wyświetlonych wynikach wybierz profil usługi Traffic Manager.
 1. Wybierz pozycję **Przegląd**.
 2. Profil usługi Traffic Manager wyświetli swoją nazwę DNS. We wdrożeniach produkcyjnych można skonfigurować niestandardową nazwę domeny w celu wskazania nazwy domeny usługi Traffic Manager przy użyciu rekordu CNAME systemu DNS.
 
    ![Nazwa DNS usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-dns-name.png)
 
 ### <a name="view-traffic-manager-in-action"></a>Wyświetlanie informacji o działaniu usługi Traffic Manager
-W tej sekcji zobaczysz działanie usługi Traffic Manager. 
+W tej sekcji zobaczysz działanie usługi Traffic Manager.
 
 1. Wybierz pozycję **Wszystkie zasoby** w menu po lewej stronie. Z listy zasobów wybierz pozycję **myVMEastUS** w grupie zasobów **myResourceGroupTM1**.
-2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**. 
-3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej. 
+2. Na stronie **Przegląd** wybierz pozycję **Połącz**. W polu **Połącz z maszyną wirtualną** wybierz opcję **Pobierz plik RDP**.
+3. Otwórz pobrany plik RDP. Jeśli zostanie wyświetlony monit, wybierz pozycję **Połącz**. Wprowadź nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. Może być konieczne wybranie pozycji **Więcej opcji** > **Użyj innego konta**, aby określić poświadczenia wprowadzone podczas tworzenia maszyny wirtualnej.
 4. Kliknij przycisk **OK**.
-5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie. 
+5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie.
 6. W przeglądarce internetowej na maszynie wirtualnej myVMEastUS wprowadź nazwę DNS profilu usługi Traffic Manager, aby wyświetlić witrynę internetową. Nastąpi przekierowanie do witryny internetowej hostowanej na serwerze usług IIS myIISVMEastUS, ponieważ ma on przypisaną wyższą wartość wagi (**100**). Serwer IIS myIISVMWEurope ma przypisaną niższą wartość wagi punktu końcowego — **25**.
 
    ![Testowanie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
-   
+
 ## <a name="delete-the-traffic-manager-profile"></a>Usuwanie profilu usługi Traffic Manager
 Jeżeli nie potrzebujesz już grup zasobów utworzonych w ramach tego samouczka, możesz je usunąć. Aby to zrobić, wybierz grupę zasobów (**ResourceGroupTM1** lub **ResourceGroupTM2**), a następnie wybierz pozycję **Usuń**.
 
@@ -218,5 +218,3 @@ Jeżeli nie potrzebujesz już grup zasobów utworzonych w ramach tego samouczka,
 
 > [!div class="nextstepaction"]
 > [Kierowanie ruchu do określonych punktów końcowych na podstawie lokalizacji geograficznej użytkownika](traffic-manager-configure-geographic-routing-method.md)
-
-

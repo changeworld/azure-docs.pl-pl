@@ -4,7 +4,7 @@ description: Dowiedz się, jak pobrać raport z inspekcji przy użyciu witryny A
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3f4090f1724850b0263905a0593fc77cc6dbfd16
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: afa92c40bd3cebea1024cf783a746450d3430a8d
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51620738"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54821836"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Szybki start: pobieranie raportu z inspekcji przy użyciu witryny Azure Portal
 
-W tym przewodniku Szybki start dowiesz się, jak pobrać dzienniki inspekcji dla swojej dzierżawy z ostatnich 24 godzin.
+W tym przewodniku Szybki start dowiesz się, jak pobrać dzienniki inspekcji dla swojej dzierżawy z ostatnich 24 godzin. Z witryny Azure Portal można pobrać maksymalnie 5000 rekordów. Rekordy są sortowane w kolejności od najnowszego, więc domyślnie otrzymujesz 5000 najnowszych rekordów. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,7 +34,7 @@ Potrzebne elementy:
 * Dzierżawa usługi Azure Active Directory. 
 * Użytkownik mający rolę **administratora zabezpieczeń**, **czytelnika zabezpieczeń** lub **administratora globalnego** dla dzierżawy. Ponadto każdy użytkownik w dzierżawie może uzyskiwać dostęp do własnych dzienników inspekcji.
 
-## <a name="quickstart-download-an-audit-report"></a>Szybki start: pobieranie raportu z inspekcji
+## <a name="quickstart-download-an-audit-report"></a>Szybki start: Pobieranie raportu inspekcji
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 2. Wybierz usługę **Azure Active Directory** z okienka nawigacji po lewej stronie i za pomocą przycisku **Przełącz katalog** wybierz swój katalog Active Directory.

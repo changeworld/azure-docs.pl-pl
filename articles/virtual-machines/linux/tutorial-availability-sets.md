@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: f7bf5e233307703dca522974d52a86bc193186b8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9391db9bf270511f734a31a621985f5b6ad31ec0
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465835"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54848737"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Samouczek: tworzenie i wdrażanie maszyn wirtualnych o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -70,7 +70,7 @@ Zestawy dostępności pozwalają izolować zasoby w domenach błędów i aktuali
 
 Aby zapewnić właściwe rozproszenie maszyn wirtualnych na sprzęcie, należy utworzyć je w ramach zestawu dostępności. Do zestawu dostępności nie można dodać istniejącej maszyny wirtualnej po jej utworzeniu.
 
-Podczas tworzenia maszyny wirtualnej za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create) określ nazwę zestawu dostępności przy użyciu parametru `--availability-set`.
+Podczas tworzenia maszyny wirtualnej za pomocą polecenia [az vm create](/cli/azure/vm) określ nazwę zestawu dostępności przy użyciu parametru `--availability-set`.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do

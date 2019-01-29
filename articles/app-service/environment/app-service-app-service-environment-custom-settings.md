@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2016
+ms.date: 01/16/2018
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: de68c59987a7ec1198c344cc22978ebed09c75e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6463759dbd217cd054f838c09c7cfcf99a06aa2c
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271362"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54390812"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Niestandardowe ustawienia konfiguracji dla środowisk App Service Environment
 ## <a name="overview"></a>Omówienie
-Ponieważ środowiska App Service Environment są izolowane do jednego klienta, istnieją pewne ustawienia konfiguracji, które można stosować wyłącznie do środowisk App Service Environment. W tym artykule opisano różne dostosowania specjalne, które są dostępne w przypadku środowisk App Service Environment.
+Ponieważ środowiska App Service Environment (ASE) są izolowane do jednego klienta, istnieją pewne ustawienia konfiguracji, które można stosować wyłącznie do środowisk App Service Environment. W tym artykule opisano różne dostosowania specjalne, które są dostępne w przypadku środowisk App Service Environment.
 
 Jeśli nie masz środowiska App Service Environment, zobacz, [jak utworzyć środowisko App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
 
@@ -65,10 +65,11 @@ Usługę App Service Environment można również aktualizować przy użyciu wit
 Bez względu na to, jak prześlesz zmianę, jej zastosowanie potrwa około 30 minut pomnożonych przez liczbę frontonów w środowisku App Service Environment.
 Jeśli na przykład środowisko App Service Environment ma cztery frontony, kończenie aktualizacji konfiguracji potrwa około dwie godziny. W trakcie wdrażania żadne inne operacje skalowania ani zmian konfiguracji nie mogą być wykonywane w środowisku App Service Environment.
 
-## <a name="disable-tls-10"></a>Wyłączanie protokołu TLS 1.0
-Klienci, w szczególności ci, którzy przeprowadzają inspekcje zgodności ze specyfikacją PCI, często pytają, jak jawnie wyłączyć protokół TLS 1.0 w swoich aplikacjach.
+## <a name="disable-tls-10-and-tls-11"></a>Wyłączanie protokołów TLS 1.0 i TLS 1.1
 
-Protokół TLS 1.0 można wyłączyć za pośrednictwem następującego wpisu atrybutu **clusterSettings**:
+Jeśli chcesz zarządzać ustawieniami protokołu TLS dla każdej aplikacji z osobna, możesz skorzystać ze wskazówek zawartych w dokumentacji [Wymuszanie ustawień protokołu TLS](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl#enforce-tls-versions). 
+
+Jeśli chcesz wyłączyć całych ruch przychodzący protokołów TLS 1.0 i TLS 1.1 dla wszystkich aplikacji w środowisku ASE, możesz ustawić następujący wpis **clusterSettings**:
 
         "clusterSettings": [
             {
@@ -76,6 +77,8 @@ Protokół TLS 1.0 można wyłączyć za pośrednictwem następującego wpisu at
                 "value": "1"
             }
         ],
+
+W nazwie ustawienia znajduje się numer wersji 1.0, ale po skonfigurowaniu wyłączane są protokoły TLS 1.0 i TLS 1.1.
 
 ## <a name="change-tls-cipher-suite-order"></a>Zmienianie kolejności zestawów szyfrowania protokołu TLS
 Kolejne pytanie klientów dotyczy tego, czy mogą oni modyfikować listę szyfrów wynegocjowaną przez serwer. Ten cel można osiągnąć, modyfikując atrybut **clusterSettings**, jak pokazano poniżej. Listę dostępnych zestawów szyfrowania można pobrać z [tego artykułu MSDN](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx).

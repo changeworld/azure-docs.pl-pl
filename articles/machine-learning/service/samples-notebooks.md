@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6befe3a3fee80dd65fd3ac5be241c558707224e6
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434532"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54811098"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Korzystanie z notesów Jupyter Notebook w celu eksplorowania usługi Azure Machine Learning
 
@@ -31,7 +31,7 @@ Wykonaj czynności opisane w [przewodniku Szybki start dotyczącym języka Pytho
 
 ## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Wypróbuj usługę Azure Notebooks: bezpłatne notesy Jupyter Notebook w chmurze
 
-Rozpoczęcie pracy z usługą Azure Notebooks jest bardzo proste. [Zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) jest już zainstalowany i skonfigurowany w usłudze Azure Notebooks. Instalacja i przyszłe aktualizacje są automatycznie zarządzane za pomocą usług platformy Azure.
+Rozpoczęcie pracy z usługą Azure Notebooks jest bardzo proste. [Zestaw Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) został już zainstalowany i skonfigurowany w usłudze [Azure Notebooks](https://notebooks.azure.com/). Instalacja i przyszłe aktualizacje są automatycznie zarządzane za pomocą usług platformy Azure.
   
 + Aby uruchomić **podstawowe notesy samouczków**:
   1. Przejdź do usługi [Azure Notebooks](https://notebooks.azure.com/).

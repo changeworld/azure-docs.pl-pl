@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 924fea7a8a8e6fb1ab25584a49f38b25156d1ec6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bca92b5079b5ef21c954b46bfbeab9b973828fc8
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230516"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427444"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Samouczek: tworzenie niestandardowego obrazu i używanie go dla zestawów skalowania maszyn wirtualnych za pośrednictwem programu Azure PowerShell
 Podczas tworzenia zestawu skalowania należy wskazać obraz używany do wdrożenia wystąpień maszyn wirtualnych. Aby zmniejszyć liczbę zadań wykonywanych po wdrożeniu wystąpień maszyn wirtualnych, można użyć niestandardowego obrazu maszyny wirtualnej. Niestandardowy obraz maszyny wirtualnej obejmuje wszystkie wymagane instalacje i konfiguracje aplikacji. Wszystkie wystąpienia maszyn wirtualnych utworzone w zestawie skalowania używają niestandardowego obrazu maszyny wirtualnej i są gotowe do obsługi ruchu aplikacji. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 6.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
+Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 6.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
 
 
 ## <a name="create-and-configure-a-source-vm"></a>Tworzenie i konfigurowanie źródłowej maszyny wirtualnej
@@ -76,7 +76,7 @@ Aby dostosować maszynę wirtualną, należy zainstalować podstawowy serwer int
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Ostatnim krokiem jest uogólnienie maszyny wirtualnej w celu przygotowania jej do użycia jako obraz niestandardowy. Program Sysprep usuwa wszystkie informacje i konfiguracje osobiste oraz resetuje maszynę wirtualną do czystego stanu przeznaczonego do przyszłych wdrożeń. Aby uzyskać więcej informacji, zobacz [How to Use Sysprep: An Introduction (Używanie programu Sysprep: wprowadzenie)](https://technet.microsoft.com/library/bb457073.aspx).
+Ostatnim krokiem jest uogólnienie maszyny wirtualnej w celu przygotowania jej do użycia jako obraz niestandardowy. Program Sysprep usuwa wszystkie informacje i konfiguracje osobiste oraz resetuje maszynę wirtualną do czystego stanu przeznaczonego do przyszłych wdrożeń. Aby uzyskać więcej informacji, zobacz [Używanie programu Sysprep: wprowadzenie](https://technet.microsoft.com/library/bb457073.aspx).
 
 Aby uogólnić maszynę wirtualną, uruchom program Sysprep i ustaw maszynę wirtualną jako gotową do użycia. Po zakończeniu zamknij maszynę wirtualną za pomocą programu Sysprep:
 

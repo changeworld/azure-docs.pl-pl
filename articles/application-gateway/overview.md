@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 1/11/2019
+ms.date: 1/22/2019
 ms.author: victorh
-ms.openlocfilehash: 21aac318542f9d30cb44d940392d05367f1f7b9f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: c574e3ab82f97f5fffc7c834a53d19df93fc426f
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246470"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448946"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co to jest Azure Application Gateway?
 
@@ -102,7 +102,7 @@ Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz z
 
 ## <a name="websocket-and-http2-traffic"></a>Ruch protokołów WebSocket i HTTP/2
 
-Usługa Application Gateway zapewnia natywną obsługę protokołów WebSocket i HTTP/2. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket. Obsługę protokołu HTTP/2 można włączyć przy użyciu programu Azure PowerShell.
+Usługa Application Gateway zapewnia natywną obsługę protokołów WebSocket i HTTP/2. Nie ma żadnych ustawień konfigurowanych przez użytkownika umożliwiających selektywne włączenie lub wyłączenie obsługi protokołu WebSocket.
 
 Protokoły WebSocket i HTTP/2 umożliwiają pełnodupleksową komunikację między serwerem i klientem przez długotrwałe połączenie TCP. Pozwala to na bardziej interaktywną komunikację między serwerem internetowym a klientem, która może być dwukierunkowa bez konieczności sondowania, co jest wymagane w implementacjach opartych na protokole HTTP. Te protokoły mają niskie obciążenie, w odróżnieniu od protokołu HTTP, i mogą ponownie używać tego samego połączenia TCP dla wielu żądań/odpowiedzi, co zapewnia bardziej efektywne wykorzystanie zasobów. Te protokoły są przeznaczone do pracy z użyciem tradycyjnych portów HTTP, tj. 80 i 443.
 
@@ -113,6 +113,22 @@ Nagłówki HTTP umożliwiają klientowi i serwerowi przekazywanie dodatkowych in
 Usługa Application Gateway obsługuje teraz możliwość ponownego zapisywania nagłówków w przychodzących żądaniach HTTP, jak również w wychodzących odpowiedziach HTTP. Będzie można dodawać, usuwać lub aktualizować nagłówki żądania i odpowiedzi HTTP podczas przenoszenia pakietów żądań/odpowiedzi między pulami klienta i wewnętrznej bazy danych. Można ponownie zapisać zarówno standardowe (zdefiniowane w [dokumencie RFC 2616](https://www.ietf.org/rfc/rfc2616.txt)), jak i niestandardowe pola nagłówka.  
 
 Aby uzyskać więcej informacji na temat tej funkcji w publicznej wersji zapoznawczej, zobacz artykuł [Ponowne zapisywanie nagłówków HTTP](rewrite-http-headers.md).
+
+## <a name="sizing"></a>Ustalanie rozmiaru
+
+Usługa Application Gateway jest obecnie oferowana w trzech rozmiarach: małym (**Small**), średnim (**Medium**) i dużym (**Large**). Rozmiary małych wystąpień są przeznaczone na potrzeby programowania i scenariuszy testowania.
+
+Pełna lista limitów usługi Application Gateway znajduje się na stronie [ograniczeń usługi Application Gateway](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+W poniższej tabeli przedstawiono przepływność przy średniej wydajności dla każdego wystąpienia bramy aplikacji z włączonym obciążeniem SSL:
+
+| Średni rozmiar odpowiedzi strony zaplecza | Small | Medium | Large |
+| --- | --- | --- | --- |
+| 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
+| 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |
+
+> [!NOTE]
+> Są to przybliżone wartości przepływności bramy aplikacji. Rzeczywista przepływność zależy od różnorodnych szczegółów środowiska, takich jak średni rozmiar strony, lokalizacja wystąpień zaplecza i czas przetwarzania potrzebny do obsługi strony. Aby uzyskać dokładne wartości wydajności, należy przeprowadzić własne testy. Te wartości są podane tylko jako wskazówki na potrzeby planowania pojemności.
 
 ## <a name="next-steps"></a>Następne kroki
 

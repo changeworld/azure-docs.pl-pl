@@ -4,8 +4,8 @@ description: Korzystając z tego samouczka, dowiesz się, jak wysyłać powiadom
 services: notification-hubs
 keywords: powiadomienia wypychane w systemie ios, wiadomości wypychane, powiadomienia wypychane, wiadomość wypychana
 documentationcenter: xamarin
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 4d4dfd42-c5a5-4360-9d70-7812f96924d2
 ms.service: notification-hubs
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/23/2018
-ms.author: dimazaid
-ms.openlocfilehash: 4704d9bb04f6dc69c69df434562c03b868baf045
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: f81066489d09bd6abef3f96ed83bea1108f99b77
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917707"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447449"
 ---
 # <a name="tutorial-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Samouczek: wysyłanie powiadomień push do aplikacji platformy Xamarin.iOS przy użyciu usługi Azure Notification Hubs
 
@@ -44,11 +44,11 @@ W tym samouczku utworzysz/zaktualizujesz kod, aby wykonać następujące zadania
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Najnowsza wersja środowiska [Xcode][Install Xcode]
-- Urządzenie zgodne z systemem iOS 10 (lub nowszą wersją)
-- Członkostwo w [programie dla deweloperów firmy Apple](https://developer.apple.com/programs/).
-- [program Visual Studio dla komputerów Mac]
+* **Subskrypcja platformy Azure**. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Najnowsza wersja środowiska [Xcode][Install Xcode]
+* Urządzenie zgodne z systemem iOS 10 (lub nowszą wersją)
+* Członkostwo w [programie dla deweloperów firmy Apple](https://developer.apple.com/programs/).
+* [program Visual Studio dla komputerów Mac]
   
   > [!NOTE]
   > Ze względu na wymagania dotyczące konfiguracji powiadomień wypychanych w systemie iOS należy wdrożyć i przetestować aplikację przykładową na fizycznym urządzeniu z systemem iOS (telefonie iPhone lub tablecie iPad), a nie w symulatorze.
@@ -90,13 +90,13 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą APNs i 
 
     ![Visual Studio — konfiguracja aplikacji systemu iOS][32]
 
-4. W widoku rozwiązania kliknij dwukrotnie plik *Entitlements.plist* i upewnij się, że zaznaczono opcję **„Włącz powiadomienia wypychane”****.
+4. W widoku rozwiązania kliknij dwukrotnie plik `Entitlements.plist` i upewnij się, że zaznaczono opcję **Włącz powiadomienia wypychane****.
 
     ![Visual Studio — konfigurowanie uprawnień systemu iOS][33]
 
 5. Dodaj pakiet składnika Azure Messaging. W widoku Solution kliknij prawym przyciskiem myszy projekt i wybierz polecenie **Dodaj** > **Dodawanie pakietów NuGet**. Wyszukaj pakiet **Xamarin.Azure.NotificationHubs.iOS** i dodaj go do projektu.
 
-6. Dodaj nowy plik do klasy, nadaj mu nazwę **Constants.cs**, dodaj następujące zmienne i zastąp symbole zastępcze literału ciągu przy użyciu *nazwy centrum* i zanotowanej wcześniej wartości *DefaultListenSharedAccessSignature*.
+6. Dodaj nowy plik do klasy, nadaj mu nazwę `Constants.cs`, dodaj następujące zmienne i zastąp symbole zastępcze literału ciągu przy użyciu zanotowanych wcześniej wartości `hubname` i `DefaultListenSharedAccessSignature`.
 
     ```csharp
     // Azure app-specific connection string and hub path
@@ -104,19 +104,19 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą APNs i 
     public const string NotificationHubName = "<Azure Notification Hub Name>";
     ```
 
-7. W pliku **AppDelegate.cs** dodaj następującą instrukcję using:
+7. W pliku `AppDelegate.cs` dodaj następującą instrukcję using:
 
     ```csharp
     using WindowsAzure.Messaging;
     ```
 
-8. Zadeklaruj wystąpienie **SBNotificationHub**:
+8. Zadeklaruj wystąpienie elementu `SBNotificationHub`:
 
     ```csharp
     private SBNotificationHub Hub { get; set; }
     ```
 
-9. W pliku **AppDelegate.cs** zaktualizuj metodę **FinishedLaunching()** zgodnie z poniższym kodem:
+9. W pliku `AppDelegate.cs` zaktualizuj element `FinishedLaunching()`, aby był zgodny z następującym kodem:
 
     ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -145,7 +145,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą APNs i 
     }
     ```
 
-10. Zastąp metodę **RegisteredForRemoteNotifications()** w pliku **AppDelegate.cs**:
+10. W pliku `AppDelegate.cs` zastąp metodę `RegisteredForRemoteNotifications()`:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -168,7 +168,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą APNs i 
     }
     ```
 
-11. Zastąp metodę **ReceivedRemoteNotification()** w pliku **AppDelegate.cs**:
+11. W pliku `AppDelegate.cs` zastąp metodę `ReceivedRemoteNotification()`:
 
     ```csharp
     public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
@@ -177,7 +177,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą APNs i 
     }
     ```
 
-12. Utwórz następującą metodę **ProcessNotification()** w pliku **AppDelegate.cs**:
+12. W pliku `AppDelegate.cs` utwórz metodę `ProcessNotification()`:
 
     ```csharp
     void ProcessNotification(NSDictionary options, bool fromFinishedLaunching)
@@ -216,7 +216,7 @@ Twoje centrum powiadomień jest teraz skonfigurowane do pracy z usługą APNs i 
     ```
 
     > [!NOTE]
-    > Możesz również opcjonalnie zastąpić metodę **FailedToRegisterForRemoteNotifications()** w celu obsługi sytuacji takich jak brak połączenia z siecią. Jest to szczególnie istotne w przypadku, gdy użytkownik może uruchomić aplikację w trybie offline (na przykład w trybie samolotowym), a chcesz obsługiwać scenariusze powiadomień push specyficzne dla aplikacji.
+    > Możesz również opcjonalnie zastąpić metodę `FailedToRegisterForRemoteNotifications()` w celu obsługi sytuacji takich jak brak połączenia z siecią. Jest to szczególnie istotne w przypadku, gdy użytkownik może uruchomić aplikację w trybie offline (na przykład w trybie samolotowym), a chcesz obsługiwać scenariusze powiadomień push specyficzne dla aplikacji.
 
 13. Uruchom aplikację na urządzeniu.
 
@@ -239,24 +239,19 @@ W tym samouczku wysłano wyemitowane powiadomienia do wszystkich urządzeń z sy
 [6]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png
 [7]: ./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png
 [213]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-create-console-app.png
-
 [215]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-scheduler1.png
 [216]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-scheduler2.png
-
 [30]: ./media/notification-hubs-ios-get-started/notification-hubs-test-send.png
 [31]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-create-ios-app.png
 [32]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-app-settings.png
 [33]: ./media/partner-xamarin-notification-hubs-ios-get-started/notification-hub-entitlements-settings.png
 
-
 <!-- URLs. -->
 [Install Xcode]: https://go.microsoft.com/fwLink/p/?LinkID=266532
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 [program Visual Studio dla komputerów Mac]: https://visualstudio.microsoft.com/vs/mac/
-
 [Local and Push Notification Programming Guide]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/HandlingRemoteNotifications.html#//apple_ref/doc/uid/TP40008194-CH6-SW1
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: http://go.microsoft.com/fwlink/p/?LinkId=272584
-
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
 [Azure Portal]: https://portal.azure.com

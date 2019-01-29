@@ -9,18 +9,18 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 5505ceaa88f1ad792df57f9728f5e4809404942c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599505"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448078"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania
 
 W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania, aby skonfigurować połączone urządzenia IoT i nimi zarządzać. Dodasz nowe urządzenie do akceleratora rozwiązań i skonfigurujesz je.
 
-Firma Contoso zamówiła nowe maszyny, aby rozwinąć jedną ze swoich placówek. Czekając na dostawę nowych maszyn, chcesz uruchomić symulację, aby przetestować działanie rozwiązania. Aby uruchomić symulację, dodasz nowy symulowany silnik do akceleratora rozwiązań do zdalnego monitorowania i sprawdzisz, czy symulowane urządzenie prawidłowo reaguje na aktualizacje konfiguracji. W tym samouczku używane są urządzenia symulowane, ale deweloper urządzeń może wdrażać metody bezpośrednie na [urządzeniu fizycznym połączonym z akceleratorem rozwiązań do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
+Firma Contoso zamówiła nowe maszyny, aby rozwinąć jedną ze swoich placówek. Czekając na dostawę nowych maszyn, chcesz uruchomić symulację, aby przetestować działanie rozwiązania. Aby uruchomić symulację, dodasz nowy symulowany silnik do akceleratora rozwiązań do zdalnego monitorowania i sprawdzisz, czy symulowane urządzenie prawidłowo reaguje na aktualizacje konfiguracji. W tym samouczku używane są urządzenia symulowane, ale deweloper urządzeń może wdrażać metody bezpośrednie na [rzeczywistym urządzeniu połączonym z akceleratorem rozwiązań do zdalnego monitorowania](iot-accelerators-connecting-devices.md).
 
 W tym samouczku zostaną wykonane następujące czynności:
 

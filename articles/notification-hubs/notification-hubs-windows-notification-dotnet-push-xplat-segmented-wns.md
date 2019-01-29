@@ -3,8 +3,8 @@ title: Wysyłanie powiadomień do konkretnych urządzeń (platforma uniwersalna 
 description: Za pomocą usługi Azure Notification Hubs z tagami w rejestracji wysyłaj ważne wiadomości do aplikacji platformy uniwersalnej systemu Windows.
 services: notification-hubs
 documentationcenter: windows
-author: dimazaid
-manager: kpiteira
+author: jwargo
+manager: patniko
 editor: spelluru
 ms.assetid: 994d2eed-f62e-433c-bf65-4afebf1c0561
 ms.service: notification-hubs
@@ -13,27 +13,29 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/14/2018
-ms.author: dimazaid
-ms.openlocfilehash: b95f3f4b45b0a4e32c4ce08c58bedf68c9dc44c2
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.date: 01/04/2019
+ms.author: jowargo
+ms.openlocfilehash: bddf6bfdbc1548d16c48def696126301d2af35f3
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41921032"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54446752"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Samouczek: wysyłanie powiadomień push do konkretnych urządzeń z systemem Windows z uruchomionymi aplikacjami platformy uniwersalnej systemu Windows
+
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Omówienie
-Korzystając z tego samouczka, dowiesz się, jak rozgłaszać ważne wiadomości do aplikacji ze Sklepu Windows lub aplikacji dla systemu Windows Phone 8.1 (bez użycia platformy Silverlight) przy użyciu usługi Azure Notification Hubs. Jeśli aplikacja ma być przeznaczona dla systemu Windows Phone 8.1 z platformą Silverlight, zobacz wersję dla systemu [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md). 
 
-Korzystając z tego samouczka, dowiesz się, jak wypychać powiadomienia do konkretnych urządzeń z systemem Windows z uruchomioną aplikacją platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs. Po zakończeniu samouczka możesz przeprowadzić rejestrację interesujących Cię kategorii ważnych wiadomości. Będziesz otrzymywać tylko powiadomienia push dla tych kategorii. 
+Korzystając z tego samouczka, dowiesz się, jak rozgłaszać ważne wiadomości do aplikacji ze Sklepu Windows lub aplikacji dla systemu Windows Phone 8.1 (bez użycia platformy Silverlight) przy użyciu usługi Azure Notification Hubs. Jeśli aplikacja ma być przeznaczona dla systemu Windows Phone 8.1 z platformą Silverlight, zobacz wersję dla systemu [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
+
+Korzystając z tego samouczka, dowiesz się, jak wypychać powiadomienia do konkretnych urządzeń z systemem Windows z uruchomioną aplikacją platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs. Po zakończeniu samouczka możesz przeprowadzić rejestrację interesujących Cię kategorii ważnych wiadomości. Będziesz otrzymywać tylko powiadomienia push dla tych kategorii.
 
 Scenariusze rozgłaszania są włączane przez uwzględnienie co najmniej jednego *tagu* podczas tworzenia rejestracji w centrum powiadomień. W przypadku wysłania powiadomień do tagu wszystkie urządzenia zarejestrowane dla tego tagu otrzymają powiadomienie. Aby uzyskać więcej informacji o tagach, zobacz [Tagi w rejestracjach](notification-hubs-tags-segment-push-message.md).
 
 > [!NOTE]
-> Wersje projektu dla Sklepu Windows i systemu Windows Phone w wersji 8.1 i wcześniejszych nie są obsługiwane w programie Visual Studio 2017. Aby uzyskać więcej informacji, zobacz [Obsługiwane platformy i zgodność programu Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs). 
+> Wersje projektu dla Sklepu Windows i systemu Windows Phone w wersji 8.1 i wcześniejszych nie są obsługiwane w programie Visual Studio 2017. Aby uzyskać więcej informacji, zobacz [Obsługiwane platformy i zgodność programu Visual Studio 2017](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
 W tym samouczku wykonasz następujące kroki:
 
@@ -44,46 +46,50 @@ W tym samouczku wykonasz następujące kroki:
 > * Uruchamianie aplikacji i generowanie powiadomień
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem tego samouczka wykonaj kroki podane w artykule [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs][get-started].  
+
+Wykonaj kroki z artykułu [Samouczek: wysyłanie powiadomień do aplikacji platformy uniwersalnej systemu Windows przy użyciu usługi Azure Notification Hubs][get-started] przed rozpoczęciem tego samouczka.  
 
 ## <a name="add-category-selection-to-the-app"></a>Dodawanie wyboru kategorii do aplikacji
+
 Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejącej strony głównej, co umożliwi użytkownikom wybieranie kategorii do zarejestrowania. Wybrane kategorie są przechowywane na urządzeniu. Po uruchomieniu aplikacji w centrum powiadomień zostanie utworzona rejestracja urządzenia z wybranymi kategoriami w formie tagów.
 
-1. Otwórz plik projektu MainPage.xaml, a następnie skopiuj i wklej następujący kod w elemencie **Grid**:
-   
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  TextWrapping="Wrap" Text="Breaking News" FontSize="42" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-            <ToggleSwitch Header="World" Name="WorldToggle" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"/>
-            <ToggleSwitch Header="Politics" Name="PoliticsToggle" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"/>
-            <ToggleSwitch Header="Business" Name="BusinessToggle" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"/>
-            <ToggleSwitch Header="Technology" Name="TechnologyToggle" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"/>
-            <ToggleSwitch Header="Science" Name="ScienceToggle" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
-            <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"/>
-            <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click"/>
-        </Grid>
+1. Otwórz plik projektu MainPage.xaml, a następnie skopiuj i wklej następujący kod w elemencie `Grid`:
 
-2. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i dodaj nową klasę: **Notifications**. Dodaj modyfikator **public** do definicji klasy, a następnie dodaj następujące instrukcje **using** do nowego pliku kodu:
+    ```xml
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  TextWrapping="Wrap" Text="Breaking News" FontSize="42" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <ToggleSwitch Header="World" Name="WorldToggle" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"/>
+        <ToggleSwitch Header="Politics" Name="PoliticsToggle" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"/>
+        <ToggleSwitch Header="Business" Name="BusinessToggle" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center"/>
+        <ToggleSwitch Header="Technology" Name="TechnologyToggle" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"/>
+        <ToggleSwitch Header="Science" Name="ScienceToggle" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center"/>
+        <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"/>
+        <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click"/>
+    </Grid>
+    ```
 
-    ```csharp   
+2. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy projekt i dodaj nową klasę: **Notifications**. Dodaj modyfikator **public** do definicji klasy, a następnie dodaj następujące instrukcje `using` do nowego pliku kodu:
+
+    ```csharp
     using Windows.Networking.PushNotifications;
     using Microsoft.WindowsAzure.Messaging;
     using Windows.Storage;
     using System.Threading.Tasks;
     ```
 
-3. Skopiuj następujący kod do nowej klasy **Notifications**:
-   
+3. Skopiuj następujący kod do nowej klasy `Notifications`:
+
     ```csharp
     private NotificationHub hub;
 
@@ -123,38 +129,37 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
                 categories);
     }
     ```
-   
-    Ta klasa używa magazynu lokalnego do przechowywania kategorii wiadomości, które mają być odbierane przez to urządzenie. Zamiast wywoływać metodę *RegisterNativeAsync*, wywołaj metodę *RegisterTemplateAsync*, aby przeprowadzić rejestrację na potrzeby kategorii przy użyciu rejestracji szablonu. 
-   
+
+    Ta klasa używa magazynu lokalnego do przechowywania kategorii wiadomości, które mają być odbierane przez to urządzenie. Zamiast wywoływać metodę `RegisterNativeAsync`, wywołaj metodę `RegisterTemplateAsync`, aby przeprowadzić rejestrację na potrzeby kategorii przy użyciu rejestracji szablonu.
+
     Jeśli chcesz zarejestrować więcej niż jeden szablon (np. jeden szablon dla powiadomień wyskakujących i jeden dla kafelków), podaj nazwę szablonu (np. „simpleWNSTemplateExample”). Nadaj nazwy szablonom, aby można było je aktualizować lub usuwać.
-   
+
     >[!NOTE]
     >Jeśli urządzenie zarejestruje wiele szablonów z tym samym tagiem, nadejście wiadomości z tym tagiem jako docelowym spowoduje dostarczenie wielu powiadomień do urządzenia (jedno dla każdego szablonu). To zachowanie jest przydatne, jeśli jedna wiadomość logiczna ma powodować wiele powiadomień wizualnych (np. wyświetlać wskaźnik i powiadomienie wyskakujące w aplikacji ze Sklepu Windows).
-   
+
     Aby uzyskać więcej informacji, zobacz [Szablony](notification-hubs-templates-cross-platform-push-messages.md).
 
-4. W pliku projektu App.xaml.cs dodaj następującą właściwość do klasy **App**:
+4. W pliku projektu App.xaml.cs dodaj następującą właściwość do klasy `App`:
 
-    ```csharp   
+    ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
     ```
-   
-    Ta właściwość służy do tworzenia wystąpienia klasy **Notifications** i uzyskiwania do niego dostępu.
-   
+
+    Ta właściwość służy do tworzenia wystąpienia klasy `Notifications` i uzyskiwania do niego dostępu.
+
     W kodzie zamień symbole zastępcze `<hub name>` i `<connection string with listen access>` na uzyskane wcześniej wartości: nazwę centrum powiadomień i parametry połączenia *DefaultListenSharedAccessSignature*.
-   
+
    > [!NOTE]
    > Ponieważ poświadczenia dystrybuowane przy użyciu aplikacji klienckiej nie są zazwyczaj zabezpieczone, przy użyciu aplikacji klienckiej dystrybuuj wyłącznie klucz dostępu do *nasłuchiwania*. Dostęp do nasłuchiwania umożliwia aplikacji rejestrowanie powiadomień, ale nie może ona modyfikować istniejących rejestracji ani wysyłać powiadomień. Klucz pełnego dostępu jest używany w zabezpieczonej usłudze zaplecza do wysyłania powiadomień oraz zmiany istniejących rejestracji.
-   > 
-   > 
-5. W pliku projektu MainPage.xaml.cs dodaj następujący wiersz:
-   
+
+5. W pliku `MainPage.xaml.cs` dodaj następujący wiersz:
+
     ```csharp
     using Windows.UI.Popups;
     ```
 
-6. W pliku projektu MainPage.xaml.cs dodaj następującą metodę:
-   
+6. W pliku `MainPage.xaml.cs` dodaj następującą metodę:
+
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
     {
@@ -174,31 +179,31 @@ Pierwszym krokiem jest dodanie elementów interfejsu użytkownika do istniejące
     }
     ```
 
-    Ta metoda tworzy listę kategorii i używa klasy **Notifications** do przechowywania listy w magazynie lokalnym. Ponadto rejestruje ona odpowiednie tagi w centrum powiadomień. Jeśli kategorie zostaną zmienione, rejestracja zostanie ponownie utworzona przy użyciu nowych kategorii.
+    Ta metoda tworzy listę kategorii i używa klasy `Notifications` do przechowywania listy w magazynie lokalnym. Ponadto rejestruje ona odpowiednie tagi w centrum powiadomień. Jeśli kategorie zostaną zmienione, rejestracja zostanie ponownie utworzona przy użyciu nowych kategorii.
 
 Aplikacja może teraz przechowywać zestaw kategorii w magazynie lokalnym na urządzeniu. Aplikacja rejestruje się w centrum powiadomień za każdym razem, gdy użytkownik zmieni wybór kategorii.
 
 ## <a name="register-for-notifications"></a>Rejestrowanie na potrzeby powiadomień
+
 W tej sekcji rejestrujesz się w centrum powiadomień przy uruchamianiu przy użyciu kategorii przechowywanych w magazynie lokalnym.
 
 > [!NOTE]
 > Ponieważ identyfikator URI kanału przypisany przez usługę powiadomień systemu Windows (WNS) może ulec zmianie w dowolnym momencie, należy często rejestrować się w celu otrzymywania powiadomień, aby uniknąć niepowodzeń ich dostarczania. Poniższy przykład przeprowadza rejestrację w celu otrzymywania powiadomień za każdym razem, gdy aplikacja jest uruchamiana. W przypadku często uruchamianych aplikacji (więcej niż raz dziennie) prawdopodobnie możesz pominąć rejestrację, aby zachować przepustowość, jeśli od poprzedniej rejestracji upłynął czas krótszy niż jeden dzień.
-> 
-> 
 
-1. Aby użyć klasy `notifications` do subskrybowania w oparciu o kategorie, otwórz plik App.xaml.cs, a następnie zaktualizuj metodę **InitNotificationsAsync**.
-   
+1. Aby użyć klasy `notifications` do subskrybowania w oparciu o kategorie, otwórz plik App.xaml.cs, a następnie zaktualizuj metodę `InitNotificationsAsync`.
+
     ```csharp
-    // *** Remove or comment out these lines *** 
+    // *** Remove or comment out these lines ***
     //var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
     //var hub = new NotificationHub("your hub name", "your listen connection string");
     //var result = await hub.RegisterNativeAsync(channel.Uri);
 
     var result = await notifications.SubscribeToCategories();
-   ```
-    Ten proces gwarantuje, że podczas uruchamiania aplikacja pobiera kategorie z magazynu lokalnego oraz żąda rejestracji tych kategorii. Metodę **InitNotificationsAsync** utworzono w ramach samouczka [Rozpoczynanie pracy z usługą Notification Hubs][get-started].
-2. W pliku projektu MainPage.xaml.cs dodaj następujący kod do metody *OnNavigatedTo*:
-   
+    ```
+
+    Ten proces gwarantuje, że podczas uruchamiania aplikacja pobiera kategorie z magazynu lokalnego oraz żąda rejestracji tych kategorii. Metodę `InitNotificationsAsync` utworzono w ramach samouczka [Rozpoczynanie pracy z usługą Notification Hubs][get-started].
+2. W pliku projektu `MainPage.xaml.cs` dodaj następujący kod do metody `OnNavigatedTo`:
+
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
     {
@@ -218,29 +223,32 @@ W tej sekcji rejestrujesz się w centrum powiadomień przy uruchamianiu przy uż
 Aplikacja jest teraz ukończona. Może przechowywać zestaw kategorii w magazynie lokalnym na urządzeniu, który jest używany do rejestrowania w centrum powiadomień, gdy użytkownicy dokonają zmian w wyborach kategorii. W następnej sekcji zdefiniujesz zaplecze, które może wysyłać do tej aplikacji powiadomienia w odpowiednich kategoriach.
 
 ## <a name="send-tagged-notifications"></a>Wysyłanie powiadomień z tagami
+
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="run-the-app-and-generate-notifications"></a>Uruchamianie aplikacji i generowanie powiadomień
-1. W programie Visual Studio naciśnij klawisz **F5**, aby skompilować i uruchomić aplikację. Interfejs użytkownika aplikacji udostępnia zestaw przełączników pozwalających wybrać kategorie do zasubskrybowania. 
-   
+
+1. W programie Visual Studio naciśnij klawisz **F5**, aby skompilować i uruchomić aplikację. Interfejs użytkownika aplikacji udostępnia zestaw przełączników pozwalających wybrać kategorie do zasubskrybowania.
+
     ![Aplikacja Breaking News][1]
 
 2. Włącz co najmniej jeden przełącznik kategorii, a następnie kliknij przycisk **Subscribe** (Subskrybuj).
-   
+
     Aplikacja konwertuje wybrane kategorie na tagi i żąda nowej rejestracji urządzenia dla wybranych tagów z centrum powiadomień. Zarejestrowane kategorie są zwracane i wyświetlane w oknie dialogowym.
-   
+
     ![Przełączniki kategorii i przycisk Subscribe (Subskrybuj)][19]
 
 3. Wyślij nowe powiadomienie z zaplecza, korzystając z jednego z następujących sposobów:
 
    * **Aplikacja konsolowa**: uruchom aplikację konsolową.
    * **Java/PHP**: uruchom aplikację lub skrypt.
-     
+
      Powiadomienia dla wybranych kategorii będą wyświetlane jako powiadomienia wyskakujące.
-     
+
      ![Powiadomienia wyskakujące][14]
 
 ## <a name="next-steps"></a>Następne kroki
+
 W tym artykule przedstawiono sposób rozgłaszania ważnych wiadomości według kategorii. Aplikacja zaplecza wypycha otagowane powiadomienia do urządzeń, które zarejestrowały się do odbierania powiadomień dla danego tagu. Aby dowiedzieć się, jak wypychać powiadomienia do konkretnych użytkowników, niezależnie od używanego urządzenia, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
@@ -255,10 +263,7 @@ W tym artykule przedstawiono sposób rozgłaszania ważnych wiadomości według 
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
-
 [14]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
-
-
 [19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
@@ -271,5 +276,4 @@ W tym artykule przedstawiono sposób rozgłaszania ważnych wiadomości według 
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591

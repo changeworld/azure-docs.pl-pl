@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 854485863786a4892ea04d4d5400732742436210
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 214f32c4dc35661480b96477caf0cdf6243c75a8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913074"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094249"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -371,7 +371,7 @@ Aby przekazać dane testowe do punktu końcowego administratora funkcji, musisz 
 {
     "input": "<trigger_input>"
 }
-````
+```
 
 `<trigger_input>` Wartość zawiera dane w formacie oczekiwanego przez funkcję. W poniższym przykładzie narzędzie cURL jest POST `QueueTriggerJS` funkcji. W tym przypadku dane wejściowe to ciąg, który jest odpowiednikiem to wiadomość oczekiwana znajdują się w kolejce.
 

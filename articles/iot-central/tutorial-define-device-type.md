@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d50059fb6fe03309609c91b56fb3763bad32e46b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 0aef8c5e055eb43576ea0ecc7ef8bf09d22d6ed3
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199973"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412907"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
@@ -75,7 +75,7 @@ Do ukończenia tego samouczka potrzebna jest aplikacja usługi Azure IoT Central
 
 ## <a name="create-a-new-custom-device-template"></a>Tworzenie nowego niestandardowego szablonu urządzenia
 
-Jako konstruktor możesz tworzyć i edytować szablony urządzenia w aplikacji. Podczas tworzenia szablonu urządzenia usługa Azure IoT Central generuje symulowane urządzenie na podstawie szablonu. Symulowane urządzenie generuje dane telemetryczne, który umożliwiają testowanie zachowania aplikacji przed podłączeniem urządzenia fizycznego.
+Jako konstruktor możesz tworzyć i edytować szablony urządzenia w aplikacji. Podczas tworzenia szablonu urządzenia usługa Azure IoT Central generuje symulowane urządzenie na podstawie szablonu. Symulowane urządzenie generuje dane telemetryczne, który umożliwiają testowanie zachowania aplikacji przed podłączeniem prawdziwego urządzenia.
 
 Aby dodać nowy szablon urządzenia do aplikacji, należy przejść na stronę **Konstruktor aplikacji**. W tym celu wybierz pozycję **Konstruktor aplikacji** z menu nawigacji po lewej stronie.
 
@@ -155,7 +155,7 @@ Poniższe kroki przedstawiają sposób tworzenia nowego szablonu urządzenia **P
 
 ## <a name="define-event-measurement"></a>Definiowanie miary zdarzenia
 
-Zdarzenie umożliwia zdefiniowanie danych punktu w czasie wysyłanych przez urządzenie i oznaczających znaczące wydarzenie, takie jak błąd lub awaria składnika. Usługa Azure IoT Central może symulować zdarzenia urządzenia, podobnie jak miary telemetrii, aby umożliwić testowanie zachowania aplikacji przed podłączeniem urządzenia fizycznego. Miary zdarzenia dla typu urządzenia definiuje się w widoku **Miary**.
+Zdarzenie umożliwia zdefiniowanie danych punktu w czasie wysyłanych przez urządzenie i oznaczających znaczące wydarzenie, takie jak błąd lub awaria składnika. Usługa Azure IoT Central może symulować zdarzenia urządzenia, podobnie jak miary telemetrii, aby umożliwić testowanie zachowania aplikacji przed podłączeniem prawdziwego urządzenia. Miary zdarzenia dla typu urządzenia definiuje się w widoku **Miary**.
 
 1. Aby dodać miarę zdarzenia **Błąd silnika wentylatora**, wybierz pozycję **Nowa miara**. Następnie wybierz pozycję **Zdarzenie** jako typ miary:
 
@@ -191,7 +191,7 @@ Zdarzenie umożliwia zdefiniowanie danych punktu w czasie wysyłanych przez urz�
 
 ## <a name="define-state-measurement"></a>Definiowanie miary stanu
 
-Stan służy do definiowania i wizualizowania stanu urządzenia lub jego składników w danym okresie. Usługa Azure IoT Central może symulować stan urządzenia, podobnie jak miary telemetrii, aby umożliwić testowanie zachowania aplikacji przed podłączeniem urządzenia fizycznego. Miary stanu dla typu urządzenia definiuje się w widoku **Miary**.
+Stan służy do definiowania i wizualizowania stanu urządzenia lub jego składników w danym okresie. Usługa Azure IoT Central może symulować stan urządzenia, podobnie jak miary telemetrii, aby umożliwić testowanie zachowania aplikacji przed podłączeniem prawdziwego urządzenia. Miary stanu dla typu urządzenia definiuje się w widoku **Miary**.
 
 1. Aby dodać miarę **Tryb wentylatora**, wybierz pozycję **Nowa miara**. Następnie wybierz pozycję **Stan** jako typ miary:
 

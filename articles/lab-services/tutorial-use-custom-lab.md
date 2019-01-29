@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/17/2018
+ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b5abb8d4aad7c58bf673aa578255efe12d32ad4b
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470867"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54422902"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Samouczek: uzyskiwanie dostępu do laboratorium w usłudze Azure DevTest Labs
-W tym samouczku będziesz używać laboratorium, które zostało utworzone w temacie [Samouczek: tworzenie laboratorium w usłudze Azure DevTest Labs](tutorial-create-custom-lab.md).
+W tym samouczku użyjesz laboratorium, które zostało utworzone w temacie [Samouczek: tworzenie laboratorium w usłudze Azure DevTest Labs](tutorial-create-custom-lab.md).
 
 W tym samouczku wykonasz następujące czynności:
 
@@ -68,10 +68,12 @@ Po zakończeniu korzystania z maszyny wirtualnej cofnij jej przejęcie, wykonuj�
 1. Na stronie maszyny wirtualnej wybierz pozycję **Cofnij przejęcie** na pasku narzędzi. 
 
     ![Cofanie przejęcia maszyny wirtualnej](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. Maszyna wirtualna jest zamykana przed cofnięciem przejęcia. 
+1. Maszyna wirtualna jest zamykana przed cofnięciem przejęcia. Stan tej operacji można zobaczyć w powiadomieniach.  
+3. Przejdź z powrotem do strony laboratorium DevTest Lab, klikając nazwę laboratorium w menu linków do stron nadrzędnych, znajdującym się u góry. 
+    
+    ![Przechodzenie z powrotem do laboratorium](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. Upewnij się, że maszyna wirtualna jest widoczna na liście **Maszyny wirtualne możliwe do przejęcia** w dolnej części.
 
-    ![Stan cofania przejęcia](./media/tutorial-use-custom-lab/unclaim-status.png) 
-1. Po ukończeniu operacji cofania przejęcia maszyna wirtualna zostanie wyświetlona na liście **Maszyny wirtualne możliwe do przejęcia** w dolnej części strony. 
     
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku pokazano, jak uzyskiwać dostęp do laboratorium, które zostało utworzone za pomocą usługi Azure DevTest Labs, i korzystać z niego. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do maszyn wirtualnych i używania ich w laboratorium, zobacz 

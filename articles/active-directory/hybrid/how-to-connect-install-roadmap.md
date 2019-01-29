@@ -3,7 +3,7 @@ title: Harmonogram instalacji usługi Azure AD Connect i Azure AD Connect Health
 description: Ten dokument zawiera omówienie opcji instalacji i dostępnych ścieżek instalacji usług Azure AD Connect i Connect Health.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.date: 09/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5da946ff0c9bdda91668999db2fccdd12a67c0d2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 149c6436101750811af9ba3051ab715dd9eac021
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253197"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462339"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Harmonogram instalacji usług Azure AD Connect i Azure AD Connect Health.
 
@@ -55,7 +55,7 @@ Warto również przygotować się na kwestie związane z [działaniem](how-to-co
 |Obsługiwane topologie | [Topologie obsługiwane w programie Azure AD Connect](plan-connect-topologies.md)|
 |Zagadnienia dotyczące projektowania | [Zagadnienia dotyczące projektowania przy korzystaniu z programu Azure AD Connect](plan-connect-design-concepts.md)|
 |Konta używane do instalacji | [Więcej informacji na temat poświadczeń i uprawnień dla programu Azure AD Connect](reference-connect-accounts-permissions.md)|
-|Planowanie operacyjne | [Synchronizacja programu Azure AD Connect: zagadnienia i zadania operacyjne](how-to-connect-sync-operations.md)|
+|Planowanie operacyjne | [Synchronizacja w programie Azure AD Connect: zagadnienia i zadania operacyjne](how-to-connect-sync-operations.md)|
 |Opcje logowania użytkowników | [Opcje logowania użytkowników w programie Azure AD Connect](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Konfigurowanie funkcji synchronizacji
@@ -76,13 +76,13 @@ Funkcja [zapobiegania przypadkowemu usuwaniu](how-to-connect-sync-feature-preven
 ### <a name="next-steps-to-configure-sync-features"></a>Następne kroki konfigurowania funkcji synchronizacji
 |Temat |Link|  
 | --- | --- |
-|Konfigurowanie filtrowania | [Synchronizacja programu Azure AD Connect: konfigurowanie filtrowania](how-to-connect-sync-configure-filtering.md)|
+|Konfigurowanie filtrowania | [Synchronizacja w programie Azure AD Connect: konfigurowanie filtrowania](how-to-connect-sync-configure-filtering.md)|
 |Synchronizacja skrótów haseł | [Synchronizacja skrótów haseł](how-to-connect-password-hash-synchronization.md)|
 |Uwierzytelnianie przekazywane | [Uwierzytelnianie przekazywane](how-to-connect-pta.md)
 |Zapisywanie zwrotne haseł | [Wprowadzenie do zarządzania hasłami](../authentication/quickstart-sspr.md)|
 |Zapisywanie zwrotne urządzeń | [Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](how-to-connect-device-writeback.md)|
-|Zapobieganie przypadkowemu usuwaniu | [Synchronizacja programu Azure AD Connect: zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
-|Automatycznie uaktualnianie | [Azure AD Connect: automatyczne uaktualnianie](how-to-connect-install-automatic-upgrade.md)|
+|Zapobieganie przypadkowemu usuwaniu | [Synchronizacja w programie Azure AD Connect: zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
+|Automatycznie uaktualnianie | [Azure AD Connect: automatycznie uaktualnianie](how-to-connect-install-automatic-upgrade.md)|
 
 ## <a name="customize-azure-ad-connect-sync"></a>Dostosowywanie synchronizacji w programie Azure AD Connect
 Składnik synchronizacji programu Azure AD Connect ma konfigurację domyślną, która powinna działać w przypadku większości klientów i topologii. Zawsze jednak mogą występować sytuacje, w których konfiguracja domyślna nie sprawdza się i wymaga dostosowania. Obsługiwane jest wprowadzanie zmian zgodnie z opisem w tej sekcji i w połączonych tematach.
@@ -97,10 +97,10 @@ Model konfiguracji synchronizacji jest nazywany [aprowizacją deklaratywną](con
 |Temat |Link|  
 | --- | --- |
 |Wszystkie artykuły dotyczące synchronizacji programu Azure AD Connect | [Synchronizacja programu Azure AD Connect](how-to-connect-sync-whatis.md)|
-|Zagadnienia techniczne | [Synchronizacja programu Azure AD Connect: zagadnienia techniczne](how-to-connect-sync-technical-concepts.md)|
-|Opis konfiguracji domyślnej | [Synchronizacja programu Azure AD Connect: opis konfiguracji domyślnej](concept-azure-ad-connect-sync-default-configuration.md)|
-|Opis użytkowników i kontaktów | [Synchronizacja programu Azure AD Connect: opis użytkowników i kontaktów](concept-azure-ad-connect-sync-user-and-contacts.md)|
-|Aprowizacja deklaratywna | [Synchronizacja programu Azure AD Connect: wyjaśnienie wyrażeń związanych z aprowizacją deklaratywną](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
+|Zagadnienia techniczne | [Synchronizacja w programie Azure AD Connect: zagadnienia techniczne](how-to-connect-sync-technical-concepts.md)|
+|Opis konfiguracji domyślnej | [Synchronizacja w programie Azure AD Connect: opis konfiguracji domyślnej](concept-azure-ad-connect-sync-default-configuration.md)|
+|Opis użytkowników i kontaktów | [Synchronizacja w programie Azure AD Connect: opis użytkowników i kontaktów](concept-azure-ad-connect-sync-user-and-contacts.md)|
+|Aprowizacja deklaratywna | [Synchronizacja programu Azure AD Connect: opis wyrażeń związanych z aprowizacją deklaratywną](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
 |Zmienianie konfiguracji domyślnej | [Najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>Konfigurowanie funkcji federacyjnych
@@ -158,13 +158,13 @@ Portal programu Azure AD Connect Health umożliwia wyświetlanie alertów, wynik
     
 ![Portal programu Azure AD Connect Health](./media/whatis-hybrid-identity-health/portalsidebar.png)
 
-* **Szybki Start**: wybranie tej opcji powoduje otwarcie bloku **Szybki start**. Agenta programu Azure AD Connect Health można pobrać, wybierając pozycję **Pobierz narzędzia**. Można również uzyskać dostęp do dokumentacji i przekazać swoją opinię.
+* **Szybki start**: wybranie tej opcji powoduje otwarcie bloku **Szybki start**. Agenta programu Azure AD Connect Health można pobrać, wybierając pozycję **Pobierz narzędzia**. Można również uzyskać dostęp do dokumentacji i przekazać swoją opinię.
 * **Azure Active Directory Connect (synchronizacja)**: ta opcja umożliwia pokazanie serwerów programu Azure AD Connect, które są aktualnie monitorowane przez program Azure AD Connect Health. Pozycja **Błędy synchronizacji** umożliwia wyświetlenie podstawowych błędów synchronizacji Twojej pierwszej dołączonej usługi synchronizacji według kategorii. Wybranie pozycji **Usługi synchronizacji** powoduje otwarcie bloku z informacjami na temat serwerów programu Azure AD Connect. Aby dowiedzieć się więcej o dostępnych możliwościach, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](how-to-connect-health-sync.md).
 * **Active Directory Federation Services**: ta opcja umożliwia pokazanie wszystkich usług AD FS, które są aktualnie monitorowane przez program Azure AD Connect Health. Po wybraniu wystąpienia zostaje otwarty blok z informacjami dotyczącymi tego wystąpienia usługi. Informacje te obejmują przegląd, właściwości, alerty, wyniki monitorowania i analizy użycia. Aby dowiedzieć się więcej o dostępnych możliwościach, zobacz [Używanie programu Azure AD Connect Health z usługami AD FS](how-to-connect-health-adfs.md).
 * **Active Directory Domain Services**: ta opcja umożliwia pokazanie wszystkich lasów usług AD DS, które są aktualnie monitorowane przez program Azure AD Connect Health. Po wybraniu lasu zostaje otwarty blok z informacjami dotyczącymi tego lasu. Te informacje obejmują przegląd najważniejszych danych, pulpit nawigacyjny Kontrolery domeny, pulpit nawigacyjny Stan replikacji, alerty i monitorowanie. Aby dowiedzieć się więcej o dostępnych możliwościach, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](how-to-connect-health-adds.md).
 * **Konfiguracja**: ta sekcja obejmuje opcje umożliwiające włączanie i wyłączanie ustawień:
 
-  - Pozycja **Ustawienia** zawiera podstawową konfigurację Twoich agentów. Ustawienie automatycznego uaktualniania umożliwia aktualizowanie agenta programu Azure AD Connect Health do najnowszej wersji — agent programu Azure AD Connect Health zostanie automatycznie zaktualizowany do najnowszej wersji, gdy stanie się ona dostępna. Ta opcja jest domyślnie włączona. Pozwalaj firmie Microsoft na dostęp do danych o kondycji katalogu usługi Azure AD wyłącznie w celu rozwiązywania problemów — jeśli ta opcja jest włączona, firma Microsoft może zobaczyć te same dane co Ty. Te informacje mogą ułatwić rozwiązywanie problemów i uzyskiwanie pomocy. Ta opcja jest domyślnie wyłączona.
+  - Pozycja **Ustawienia** zawiera podstawową konfigurację Twoich agentów. Ustawienie Automatyczne uaktualnienie umożliwia automatyczne aktualizowanie agenta programu Azure AD Connect Health do najnowszej wersji: Automatyczna aktualizacja do najnowszych wersji agenta programu Azure AD Connect Health będzie przeprowadzana, gdy zostaną one udostępnione. Ta opcja jest domyślnie włączona. Pozwalaj firmie Microsoft na dostęp do danych o kondycji katalogu usługi Azure AD wyłącznie w celu rozwiązywania problemów: jeśli ta opcja jest włączona, firma Microsoft może zobaczyć te same dane co Ty. Te informacje mogą ułatwić rozwiązywanie problemów i uzyskiwanie pomocy. Ta opcja jest domyślnie wyłączona.
 * W sekcji **Kontrola dostępu oparta na rolach (IAM)** można zarządzać dostępem do danych programu Connect Health na podstawie ról. 
 
 ## <a name="next-steps"></a>Następne kroki

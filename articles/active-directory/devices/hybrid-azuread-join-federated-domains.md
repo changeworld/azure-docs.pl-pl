@@ -4,7 +4,7 @@ description: Dowiedz się, jak konfigurować dołączanie hybrydowe do usługi A
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f904690187f6f2b020cb9cc32f9a20712d8bb53
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: af1495af69255c7daa7de94da6ce0321c13d7599
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107569"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54448215"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Samouczek: Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen federacyjnych
 
@@ -73,11 +73,11 @@ Kroki konfiguracji w tym artykule zostały oparte na tym kreatorze. W przypadku 
 
 Dołączenie hybrydowe do usługi Azure AD wymaga urządzeń z dostępem do następujących zasobów Microsoft z wewnątrz sieci organizacji:  
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
+- https\://enterpriseregistration.windows.net
+- https\://login.microsoftonline.com
+- https\://device.login.microsoftonline.com
 - Usługa STS (domen federacyjnych) w organizacji
-- https://autologon.microsoftazuread-sso.com (jeśli używasz lub planujesz użycie bezproblemowego logowania jednokrotnego)
+- https\://autologon.microsoftazuread-sso.com (jeśli używasz lub zamierzasz używać bezproblemowego logowania jednokrotnego)
 
 Od wersji systemu Windows 10 1803, jeśli natychmiastowe dołączenie hybrydowe do usługi Azure AD w przypadku domeny federacyjnej, na przykład AD FS, zakończy się niepowodzeniem, usługa Azure AD Connect jest używana do synchronizacji obiektu komputera w usłudze Azure AD, który jest następnie używany do ukończenia rejestracji urządzenia na potrzeby hybrydowego dołączenia do usługi Azure AD.
 
