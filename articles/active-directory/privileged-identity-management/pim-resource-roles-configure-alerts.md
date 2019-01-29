@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 5d990d86124a7360dbc0398cf4250f9b088c183b
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 564517052796ee5dbc022ff92afcaa0216bdf8ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465575"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196842"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurowanie alertów zabezpieczeń dla ról zasobów platformy Azure w usłudze PIM
 Privileged Identity Management (PIM) dla zasobów platformy Azure generuje alerty w przypadku działania związane z niebezpieczne lub podejrzane w danym środowisku. Po wyzwoleniu alertu ona wyświetlona na stronie alertów. 
@@ -40,9 +40,9 @@ Wybierz alert, aby wyświetlić raport zawierający listę użytkowników lub r�
 
 
 ### <a name="severity"></a>Ważność
-* **Wysoka**: wymaga natychmiastowego działania z powodu naruszenia zasad. 
-* **Średnia**: nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
-* **Niska**: nie wymagać natychmiastowego działania, ale sugeruje zmiana preferowanego zasad.
+* **Wysoka**: Wymaga natychmiastowego działania z powodu naruszenia zasad. 
+* **Średnia**: Nie wymagać natychmiastowego działania, ale sygnalizuje potencjalne naruszenie zasad.
+* **Niska**: Nie wymagać natychmiastowego działania, ale sugeruje zmiana preferowanego zasad.
 
 ## <a name="configure-security-alert-settings"></a>Konfigurowanie ustawień alertów zabezpieczeń
 Na stronie alertów, przejdź do **ustawienia**.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 98902c7a27d769b59b20d4560b2cda21bfcff6c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 5187052316e229273aa49eb784bf200c0f16a0f7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310255"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165391"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w usłudze Azure Search
 Maksymalne zawartości w pamięci masowej, obciążeń i ilości indeksów i dokumentów, a inne obiekty zależne od tego, czy możesz [aprowizowanie usługi Azure Search](search-create-service-portal.md) na **bezpłatna**, **podstawowe**, lub **Standardowa** warstw cenowych.
@@ -124,6 +124,10 @@ Operacje dużej ilości zasobów, takich jak analiza obrazu w indeksowanie obiek
 Liczby zapytań na Sekundę oszacowania musi być opracowana niezależnie przez każdy klient korzystający z. Rozmiar indeksu i złożoność, rozmiaru zapytania i złożoności i natężenie ruchu są podstawowym uwarunkowania liczby zapytań na Sekundę. Nie istnieje żaden sposób zapewniają znaczących szacunki, gdy takie czynniki są nieznane.
 
 Szacunki są bardziej przewidywalna, gdy została obliczona dla usług uruchomionych na dedykowanych zasobów (w warstwach podstawowa i standardowa). Liczby zapytań na Sekundę więcej można oszacować ściśle, ponieważ masz kontrolę nad jeden z parametrów. Aby uzyskać wskazówki na temat szacowania podejście, zobacz [wydajności usługi Azure Search i optymalizacji](search-performance-optimization.md).
+
+## <a name="data-limits-cognitive-search"></a>Limity danych (cognitive search)
+
+A [potoku w usłudze wyszukiwania poznawczego](cognitive-search-concept-intro.md) sprawia to, że wywołania zasobu analizy tekstu [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md), [kluczowe frazy](cognitive-search-skill-keyphrases.md), [analizy tonacji ](cognitive-search-skill-sentiment.md), i [wykrywanie języka](cognitive-search-skill-language-detection.md) podlega limity danych. Maksymalny rozmiar rekord powinien być 50 000 znaków, gdyż jest mierzone przez `String.Length`. Jeśli chcesz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md).
 
 ## <a name="api-request-limits"></a>Limity żądań interfejsu API
 * Maksymalna liczba 16 MB na żądanie <sup>1</sup>

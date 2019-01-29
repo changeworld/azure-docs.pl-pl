@@ -10,16 +10,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 423842d3e2485334a916423e997c12669a126adb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215008"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155072"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory
 
@@ -59,7 +59,7 @@ W tym przykładzie dzierżawcy zawiera grupę zabezpieczeń o nazwie **dział KA
 Teraz możemy określony szablon licencji dla grupy Dział KADR. Proces w tle w usłudze Azure AD został uruchomiony do przetworzenia istniejący członkowie tej grupy. Ta początkowa operacja może trochę potrwać, w zależności od bieżącego rozmiaru grupy. Następnym krokiem w tym artykule opisano sposób sprawdzić, czy proces zostanie zakończony i określić, jeśli dalszej uwagi jest wymagane do rozwiązania problemów.
 
 > [!NOTE]
-> Przypisanie tych samych można uruchomić z lokalizacji alternatywnej: **użytkowników i grup** w usłudze Azure AD. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Następnie znajdź grupę, wybierz ją i przejdź do **licencji** kartę. **Przypisać** przycisk u góry okienka powoduje otwarcie okienka przypisania licencji.
+> Przypisanie tych samych można uruchomić z lokalizacji alternatywnej: **Użytkownicy i grupy** w usłudze Azure AD. Po przetworzeniu przez usługę **Azure AD zmiany**  > **dział KADR** >  **poprawnie przypisanych licencji**. Następnie znajdź grupę, wybierz ją i przejdź do **licencji** kartę. **Przypisać** przycisk u góry okienka powoduje otwarcie okienka przypisania licencji.
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Krok 2: Sprawdź, czy zakończyła początkowego przydziału
 
@@ -83,7 +83,7 @@ Teraz możemy określony szablon licencji dla grupy Dział KADR. Proces w tle w 
 
    [Przeczytaj tę sekcję](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) Aby dowiedzieć się więcej na temat sposobu dzienników inspekcji może służyć do analizowania zmian wprowadzonych przez usługę licencjonowania opartego na grupach.
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: Sprawdź problemów z licencją i ich rozwiązania
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Krok 3: Sprawdź, czy problemów z licencją i ich rozwiązania
 
 1. Przejdź do **usługi Azure Active Directory** > **użytkowników i grup** > **wszystkich grup**i Znajdź **dział KADR** licencje zostały przypisane do grupy.
 2. Na **dział KADR** grupy wybierz opcję **licencji**. Powiadomienia u góry okienka pokazuje, że istnieją 10 użytkowników, których nie można przypisać licencji. Kliknięcie powoduje otwarcie listy wszystkich użytkowników w stanie błąd licencjonowania dla tej grupy.

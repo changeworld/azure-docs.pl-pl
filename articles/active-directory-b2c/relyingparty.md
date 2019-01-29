@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8ec9e5a50f2350a17d5845f5c52954df10fa1d10
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856829"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55176016"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -44,7 +44,7 @@ W poniższym przykładzie przedstawiono **RelyingParty** element *B2C_1A_signup_
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" />
+      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -125,6 +125,7 @@ Opcjonalny **RelyingParty** element zawiera następujące elementy:
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Zakres | Yes | Zakres jednego zachowanie logowania jednokrotnego. Możliwe wartości: `Suppressed`, `Tenant`, `Application`, lub `Policy`. `Suppressed` Wartość wskazuje, że zachowanie jest pomijane. Na przykład w przypadku jednej sesji logowania jednokrotnego, sesja nie jest zachowywana na potrzeby użytkownika, a użytkownik zawsze jest monitowany o wyboru dostawcy tożsamości. `TrustFramework` Wartość wskazuje, że zachowanie jest stosowana dla wszystkich zasad w ramach relacji zaufania. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Tenant` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad w ramach dzierżawy. Na przykład użytkownik w nawigowaniu po dwóch kursów zasad dla dzierżawy nie jest monitowany o wyboru dostawcy tożsamości. `Application` Wartość wskazuje, że zachowanie jest stosowane do wszystkich zasad dla aplikacji, dzięki czemu żądania. Na przykład dwóch kursów zasad dla aplikacji w nawigowaniu po użytkownik nie jest monitowany o wyboru dostawcy tożsamości. `Policy` Wartość wskazuje, że zachowanie ma zastosowanie tylko do zasad. Na przykład dwóch kursów zasad dla struktury zaufania w nawigowaniu po użytkownik jest monitowany o wyboru dostawcy tożsamości podczas przełączania między zasadami. |
+| KeepAliveInDays | Yes | Określa, jak długo użytkownik pozostaje zalogowany. Ustawienie wartości 0 spowoduje wyłączenie funkcji KMSI. Aby uzyskać więcej informacji, zobacz [nie wylogowuj mnie](active-directory-b2c-reference-kmsi-custom.md). |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 

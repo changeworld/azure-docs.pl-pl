@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/19/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1d52e3b8871a5af219d1c9eafd559f06bb19f560
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: dd9bdc4638d1c055706026798acba08d6add08c7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424887"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098755"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokół SAML logowania jednokrotnego
 
@@ -81,10 +81,10 @@ A `NameIdPolicy` element będzie wyglądać jak w następującym przykładzie:
 
 Jeśli `NameIDPolicy` zostanie podana, możesz uwzględnić jego opcjonalne `Format` atrybutu. `Format` Atrybut może mieć tylko jedną z następujących wartości; wszystkie inne wartości będzie skutkowało błędem.
 
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Usługa azure Active Directory wystawia oświadczenia NameID jako identyfikator parowania.
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Usługa azure Active Directory wystawia oświadczenia NameID w formacie adresu e-mail.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Usługa Azure Active Directory wystawia oświadczenia NameID jako identyfikator parowania.
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Usługa Azure Active Directory wystawia oświadczenia NameID w formacie adresu e-mail.
 * `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Ta wartość umożliwia usłudze Azure Active Directory, aby wybrać format oświadczenia. Usługa Azure Active Directory wystawia NameID jako identyfikator parowania.
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Usługa azure Active Directory wystawia oświadczenia NameID jako wartość losowo generowany unikatowy dla bieżącej operacji logowania jednokrotnego. Oznacza to, że wartość jest tymczasowe i nie może służyć do identyfikowania użytkownika.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Usługa Azure Active Directory wystawia oświadczenia NameID jako wartość losowo generowany unikatowy dla bieżącej operacji logowania jednokrotnego. Oznacza to, że wartość jest tymczasowe i nie może służyć do identyfikowania użytkownika.
 
 Usługa Azure AD ignoruje `AllowCreate` atrybutu.
 
@@ -153,7 +153,7 @@ Jeśli żądana logowania zakończy się pomyślnie, usługi Azure AD publikuje 
 `Response` Element zawiera wynik żądania autoryzacji. Usługa Azure AD zestawy `ID`, `Version` i `IssueInstant` wartości w `Response` elementu. Ustawia również następujące atrybuty:
 
 * `Destination`: Podczas logowania jednokrotnego zakończy się pomyślnie, jest ono ustawione na `RedirectUri` usługodawcy (usługi w chmurze).
-* `InResponseTo`: Ta jest równa `ID` atrybutu `AuthnRequest` element, który zainicjował odpowiedzi.
+* `InResponseTo`: Jest ono ustawione na `ID` atrybutu `AuthnRequest` element, który zainicjował odpowiedzi.
 
 ### <a name="issuer"></a>Wystawca
 

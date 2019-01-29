@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 522e9209da5d2df796700dea764270382b1170f5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852983"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102769"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Instalowanie i konfigurowanie zwrotnego serwera proxy w usłudze Azure Service Fabric
 Zwrotny serwer proxy to opcjonalna usługa Azure Service Fabric, która ułatwia mikrousług działającego w klastrze usługi Service Fabric, odnajdywanie i komunikować się z innymi usługami, które mają punktów końcowych http. Aby dowiedzieć się więcej, zobacz [zwrotny serwer proxy w usłudze Azure Service Fabric](service-fabric-reverseproxy.md). W tym artykule przedstawiono sposób instalowania i konfigurowania zwrotny serwer proxy w klastrze. 
@@ -33,7 +33,7 @@ Aby skonfigurować zwrotnego serwera proxy podczas możesz [Tworzenie klastra pr
 1. W **krok 2: Konfiguracja klastra**w obszarze **konfiguracja typu węzła**, wybierz opcję **Włącz zwrotny serwer proxy**.
 
    ![Włącz zwrotny serwer proxy w portalu](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Opcjonalnie) Aby skonfigurować bezpieczne zwrotny serwer proxy, należy skonfigurować certyfikat SSL. W **krok 3: zabezpieczeń**na **Konfiguruj ustawienia zabezpieczeń klastra**w obszarze **typu konfiguracji**, wybierz opcję **niestandardowe**. Następnie w obszarze **certyfikat zwrotnego serwera Proxy protokołu SSL**, wybierz opcję **obejmują certyfikat protokołu SSL dla zwrotnego serwera proxy** i wprowadź informacje dotyczące certyfikatu.
+2. (Opcjonalnie) Aby skonfigurować bezpieczne zwrotny serwer proxy, należy skonfigurować certyfikat SSL. W **krok 3: Zabezpieczenia**na **Konfiguruj ustawienia zabezpieczeń klastra**w obszarze **typu konfiguracji**, wybierz opcję **niestandardowe**. Następnie w obszarze **certyfikat zwrotnego serwera Proxy protokołu SSL**, wybierz opcję **obejmują certyfikat protokołu SSL dla zwrotnego serwera proxy** i wprowadź informacje dotyczące certyfikatu.
 
    ![Konfigurowanie bezpiecznego zwrotny serwer proxy w portalu](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -239,7 +239,7 @@ Po zmodyfikowaniu pliku ClusterConfig.json, aby włączyć zwrotny serwer proxy,
 Aby adres zwrotny serwer proxy z poza klastrze platformy Azure, należy skonfigurować zasady usługi Azure Load Balancer i Azure kondycji sondować port zwrotnego serwera proxy. Te kroki można wykonać przy użyciu witryny Azure portal lub szablonu usługi Resource Manager, w dowolnym momencie po utworzeniu klastra. 
 
 > [!WARNING]
-> Po skonfigurowaniu port zwrotnego serwera proxy w module równoważenia obciążenia, wszystkie mikrousług w klastrze, które ujawniają punkt końcowy HTTP adresowane z poza klastrem. Oznacza to, że mikrousług należy traktować jako wewnętrzny mogą być wykrywalny przez złośliwego użytkownika określone. Ta potenially przedstawia poważnych usterek, które mogą być wykorzystane; na przykład:
+> Po skonfigurowaniu port zwrotnego serwera proxy w module równoważenia obciążenia, wszystkie mikrousług w klastrze, które ujawniają punkt końcowy HTTP adresowane z poza klastrem. Oznacza to, że mikrousług należy traktować jako wewnętrzny mogą być wykrywalny przez złośliwego użytkownika określone. Potencjalnie stwarza poważne luki w zabezpieczeniach, które mogą być wykorzystane; na przykład:
 >
 > * Złośliwy użytkownik będą mogły uruchamiać wielokrotnie, wywołując wewnętrzna usługa, która nie ma wystarczająco ataku typu "odmowa usługi".
 > * Złośliwy użytkownik może dostarczyć źle sformułowane pakiety do wewnętrzna usługa skutkuje niezamierzone zachowanie.

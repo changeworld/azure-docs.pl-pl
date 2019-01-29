@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8b5ea39c1cfb3a37a8e3009f59312728bcb0331
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 07e65e6ff544d6372197010a2b9d7f3f647eeb0f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900397"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166564"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -69,7 +69,7 @@ Projekt Akustyka zapewnia dokładnych i wiarygodnych parametrów akustycznych na
 
 ## <a name="what-exactly-happens-during-baking"></a>Co to dokładnie będzie się działo podczas "pieczenie"?
 
-System uważa potencjalne lokalizacje odtwarzacza, aby wygenerować zestaw równomiernie rozmieszczonych pozycji "sondy" przykładowy. Tworzenie dla poziomu składa się z niezależnych zadań dla każdego sondy: system uzna cuboid "Symulacji Region", a ich tematyka na sondę i wykonuje symulacji wave szczegółowe, w tym regionie, rozdzielczością maksymalnie 25 cm.
+System uważa potencjalne lokalizacje odtwarzacza, aby wygenerować zestaw równomiernie rozmieszczonych pozycji "sondy" przykładowy. Tworzenie dla poziomu składa się z niezależnych zadań dla każdego sondowania: System uzna cuboid "Symulacji Region", a ich tematyka na sondę i jest symulacja wave szczegółowe, w tym regionie, rozdzielczością maksymalnie 25 cm.
 
 ## <a name="next-steps"></a>Następne kroki
 * Zapoznaj się z [sceny próbki](sample-walkthrough.md)

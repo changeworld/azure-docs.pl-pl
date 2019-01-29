@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1c53dfb1447b0abd5b96d109a657eae5f5947118
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401439"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098034"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -66,7 +66,7 @@ Usługa Azure Monitor może zbierać dane dzienników z dowolnego klienta REST p
 
 
 ## <a name="insights"></a>Insights
-Dane monitorowania jest przydatna, jeśli można zwiększyć wgląd w działanie środowiska obliczeniowego. Usługa Azure Monitor obejmuje kilka funkcji i narzędzi, które zapewniają cenne informacje dotyczące aplikacji i innych zasobów, których one zależą. [Monitorowanie rozwiązań](insights/solutions.md) i funkcje, takie jak [usługi Application Insights](app/app-insights-overview.md) i szczegółowe informacje o kontenerze zapewniają wgląd w różnych aspektów aplikacji i określonych usług platformy Azure. 
+Dane monitorowania jest przydatna, jeśli można zwiększyć wgląd w działanie środowiska obliczeniowego. Usługa Azure Monitor obejmuje kilka funkcji i narzędzi, które zapewniają cenne informacje dotyczące aplikacji i innych zasobów, których one zależą. [Monitorowanie rozwiązań](insights/solutions.md) i funkcje, takie jak [usługi Application Insights](app/app-insights-overview.md) i [usługi Azure Monitor dla kontenerów](insights/container-insights-overview.md) umożliwiają uzyskiwanie szczegółowych do różnych aspektów aplikacji i określone platformy Azure usługi. 
 
 ### <a name="application-insights"></a>Application Insights
 [Usługa Application Insights](app/app-insights-overview.md) monitoruje dostępność, wydajność i użycie aplikacji sieci web, czy są one hostowane w chmurze lub lokalnie. Wykorzystuje platformę analiz zaawansowanych danych w usłudze Azure Monitor, aby udostępnić niepowtarzalna okazja operacji Twojej aplikacji i diagnozować błędy bez oczekiwania na zgłoszenie ich przez użytkownika. Usługa Application Insights obejmuje punkty połączenia z szeroką gamą narzędzi programistycznych i integruje się z programem Visual Studio w celu lepszego wspierania procesów metodyki DevOps.
@@ -74,12 +74,12 @@ Dane monitorowania jest przydatna, jeśli można zwiększyć wgląd w działanie
 ![App Insights](media/overview/app-insights.png)
 
 ### <a name="azure-monitor-for-containers"></a>Usługa Azure Monitor dla kontenerów
-Usługa Azure Monitor dla kontenerów to funkcja przeznaczona do monitorowania wydajności obciążeń kontenerów wdrożonych na zarządzane klastry Kubernetes hostowanych na platformie Azure Kubernetes Service (AKS). Zapewnia widoczność wydajności na zbieranie pamięci i procesora metryk z kontrolerów, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki. Gromadzone są też dzienniki kontenerów.  Po włączeniu monitorowania z klastrów Kubernetes, te metryki i dzienniki są automatycznie zbierane dla Ciebie za pośrednictwem konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux.
+[Usługa Azure Monitor dla kontenerów](insights/container-insights-overview.md) to funkcja przeznaczona do monitorowania wydajności obciążeń kontenerów wdrożonych na zarządzane klastry Kubernetes hostowanych na platformie Azure Kubernetes Service (AKS). Zapewnia widoczność wydajności na zbieranie pamięci i procesora metryk z kontrolerów, węzły i kontenerów, które są dostępne w usłudze Kubernetes za pomocą interfejsu API metryki. Gromadzone są też dzienniki kontenerów.  Po włączeniu monitorowania z klastrów Kubernetes, te metryki i dzienniki są automatycznie zbierane dla Ciebie za pośrednictwem konteneryzowanych wersję agenta usługi Log Analytics dla systemu Linux.
 
 ![Kondycji kontenera](media/overview/container-insights.png)
 
 ### <a name="azure-monitor-for-vms"></a>Usługa Azure Monitor dla maszyn wirtualnych
-Usługa Azure Monitor maszyny Wirtualnej insights monitoruje usługi Azure virtual machines (VM) na dużą skalę przez analizowanie wydajności i kondycji Windows i maszyn wirtualnych systemu Linux, łącznie z różnych procesów i wzajemnie połączonych zależności od innych zasobów i procesów zewnętrznych. Rozwiązanie obejmuje obsługę monitorowania wydajności i zależności aplikacji w przypadku maszyn wirtualnych hostowanych lokalnie lub innego dostawcy chmury.  
+[Usługa Azure Monitor dla maszyn wirtualnych](insights/vminsights-overview.md) monitoruje usługi Azure virtual machines (VM) na dużą skalę, analizując wydajności i kondycji Windows i maszyn wirtualnych systemu Linux, łącznie z różnych procesów i wzajemnie połączonych zależności od innych zasobów i zewnętrzne procesy. Rozwiązanie obejmuje obsługę monitorowania wydajności i zależności aplikacji w przypadku maszyn wirtualnych hostowanych lokalnie lub innego dostawcy chmury.  
 
 
 ![VM Insights](media/overview/vm-insights.png)
@@ -138,7 +138,7 @@ Często będziesz mieć wymagań integracji usługi Azure Monitor z innymi syste
 
 ![Aplikacja logiki](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
-### <a name="api"></a>interfejs API
+### <a name="api"></a>Interfejs API
 Wiele interfejsów API dostępnych do odczytu i zapisu metryk i dzienników z usługi Azure Monitor i oprócz uzyskiwania dostępu do alerty generowane przez monitory. Można również skonfigurować i pobrać alertów. Zapewnia to zasadniczo nieograniczone możliwości do tworzenia niestandardowych rozwiązań, które integrują się z usługą Azure Monitor.
 
 ## <a name="next-steps"></a>Kolejne kroki

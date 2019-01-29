@@ -6,7 +6,7 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
@@ -15,14 +15,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: de0d8d5fb538619e94595ef322eeb80c4de743be
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6c68070a9b94cf867f8c1c930874a5f02a685294
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426292"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096742"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Porady: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Instrukcje: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -36,7 +36,7 @@ Niniejszy instruktaż mają zastosowanie do:
 
 * Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
-* Usługa Azure Active Directory B2B
+* Azure Active Directory B2B
 * Dostęp warunkowy usługi Azure Active Directory
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -262,7 +262,7 @@ Możliwości aplikacji pod kątem wykorzystania brokera jest włączona, podczas
 ```
 `AD_CREDENTIALS_AUTO` Ustawienie umożliwia zestawu SDK w celu wyróżnienia do brokera, `AD_CREDENTIALS_EMBEDDED` uniemożliwi zestawu SDK wywołania do brokera.
 
-#### <a name="step-2-registering-a-url-scheme"></a>Krok 2: Zarejestrowanie schemat adresu URL
+#### <a name="step-2-registering-a-url-scheme"></a>Krok 2: Rejestrowanie schemat adresu URL
 
 Platforma tożsamości używa adresów URL do wywołania elementu broker, a następnie wróć kontrolki do aplikacji. Na zakończenie tej komunikacji dwustronnej należy zarejestrowany dla twojej aplikacji, która platforma tożsamości będzie wiedzieć o schemat adresów URL. Może to być oprócz innych systemów aplikacji, które mogą zostały wcześniej zarejestrowane z aplikacją.
 
@@ -287,7 +287,7 @@ Poniżej przedstawiono przykładowy sposób wyświetlania w konfiguracji projekt
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 3: Ustanawiania nowego identyfikatora URI z schemat adresu URL przekierowania
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>Krok 3: Ustanowienie nowych przekierowania URI ze schematem Twojego adresu URL
 
 Aby zapewnić, że firma Microsoft zawsze zwracają tokenów poświadczeń do właściwej aplikacji, musimy upewnić się, że firma Microsoft wywołania zwrotnego do aplikacji w taki sposób, aby sprawdzić, systemu operacyjnego iOS. Systemu operacyjnego iOS raportów do aplikacji brokera firmy Microsoft, identyfikator pakietu aplikacji, wywołując ją. To nie może być sfałszowane przez aplikacji. W związku z tym możemy wykorzystać to wraz z identyfikatora URI naszej aplikacji brokera, aby upewnić się, że tokeny są zwracane do właściwej aplikacji. Wymagane do nawiązania to unikatowy identyfikator URI zarówno przekierowania do aplikacji i ustawić jako identyfikator URI przekierowania w portalu dla deweloperów.
 

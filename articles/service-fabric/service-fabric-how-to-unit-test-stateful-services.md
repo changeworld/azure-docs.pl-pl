@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: 4941d893c6c871541772569e42bf5169270def88
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413561"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164167"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Tworzenie testów jednostkowych dla usług stanowych
 Jednostki testowania usług stanowych usługi Service Fabric udostępnia typowych błędów, które będą nie musi być przechwycony przez konwencjonalne aplikacji lub testy jednostkowe specyficznego dla domeny. Podczas tworzenia testów jednostkowych dla usług stanowych, istnieją pewne specjalne zagadnienia, które powinny być przechowywane w uwadze.
@@ -91,7 +91,7 @@ replicaSet.PromoteNewReplicaToPrimaryAsync(4);
 
 //promote the first idle secondary to an active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync();
-//promote idle secodary with replica id 4 to active secondary
+//promote idle secondary with replica id 4 to active secondary
 PromoteIdleSecondaryToActiveSecondaryAsync(4);
 
 //add a new replica with randomly assigned replica id and promote it to primary

@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/08/2018
+ms.date: 01/25/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 6b7f3dc79e3b4c06b2b974e0cdca0bf20221c3ad
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 99498646a65865add35ec4a86cb7a25b42dd5523
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845019"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55162195"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Temat rozwiązujący oświadczenia w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -97,6 +97,11 @@ Nazwa parametru dołączone jako część żądania OIDC lub OAuth2 mogą zosta�
 | {OAUTH-KV:loyalty_number} | Parametr ciągu zapytania. | 1234 |
 | {OAUTH KV: dowolny ciąg zapytania niestandardowego} | Parametr ciągu zapytania. | ND |
 
+### <a name="oauth2"></a>OAuth2
+
+| Claim | Opis | Przykład |
+| ----- | ----------------------- | --------|
+| {oauth2:access_token} | Token dostępu. | ND |
 
 ## <a name="how-to-use-claim-resolvers"></a>Jak używać oświadczeń rozpoznawania nazw
 

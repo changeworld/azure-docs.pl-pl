@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 72b1ba51f306203092b420e6f2d6186b3307d35d
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 3c2953d44587d72517c6f619ee9c9f05aabff186
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422749"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094380"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Service to service wywołania tej tożsamości użytkownika użycia delegowanego przepływu w imieniu z
 
@@ -37,7 +37,7 @@ Przepływ OAuth 2.0 "w imieniu" (OBO) umożliwia aplikacji, która wywołuje us�
 
 Po użytkownik został uwierzytelniony w aplikacji, która używa można uruchomić przepływu OBO [kod autoryzacji OAuth 2.0 udzielić przepływ](v1-protocols-oauth-code.md). W tym momencie aplikacji wysyła token dostępu (token A) w sieci web warstwy środkowej interfejsu API (interfejs API A) zawierający oświadczenia użytkownika i zgody na dostęp do interfejsu API A. Następnie element API sprawia, że uwierzytelnionego żądania podrzędnego sieci Web interfejsu API (interfejs API B).
 
-Te kroki tworzą przepływu w imieniu z: ![przepływ "w imieniu" OAuth 2.0](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Te kroki tworzą przepływu w imieniu z: ![OAuth 2.0 w imieniu użytkownika z usługi Flow](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Aplikacja kliencka wysyła żądanie do interfejsu API, A za pomocą tokenu A.
 1. A interfejs API jest uwierzytelniany punktu końcowego wystawiania tokenu usługi Azure AD i żądania tokenu służącego do dostępu do interfejsu API B.
@@ -103,7 +103,7 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 Aplikacja kliencka jest zabezpieczony przez Wspólny klucz tajny lub przy użyciu certyfikatu.
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: żądanie tokenu dostępu za pomocą wspólny klucz tajny
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>Pierwszy przypadek: Żądanie tokenu dostępu za pomocą wspólny klucz tajny
 
 Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawiera następujące informacje:
 
@@ -137,7 +137,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=openid
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: żądanie tokenu dostępu przy użyciu certyfikatu
+### <a name="second-case-access-token-request-with-a-certificate"></a>Drugi przypadek: Żądanie tokenu dostępu przy użyciu certyfikatu
 
 Żądanie tokenu dostępu do usługi, za pomocą certyfikatu zawiera następujące parametry:
 
@@ -181,7 +181,7 @@ Odpowiedź sukcesu jest odpowiedź JSON OAuth 2.0, z następującymi parametrami
 
 | Parametr | Opis |
 | --- | --- |
-| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
@@ -263,16 +263,16 @@ Niektóre usługi sieci web opartych na OAuth konieczne dostęp inne usługi sie
 
 Odpowiedź zawiera token SAML zakodowane w UTF8 i Base64url.
 
-- **SubjectConfirmationData dla asercji SAML źródło wywołanie OBO**: Jeśli aplikacja docelowa wymaga odbiorcy wartości w **SubjectConfirmationData**, a następnie wartość musi być adres URL odpowiedzi bez symboli wieloznacznych w Konfiguracja aplikacji zasobu.
-- **Węzeł SubjectConfirmationData**: węzeł nie może zawierać **InResponseTo** atrybutu, ponieważ nie jest częścią odpowiedzi SAML. Aplikacja odbiera SAML token musi być w stanie zaakceptować potwierdzenie SAML bez **InResponseTo** atrybutu.
+- **Źródło SubjectConfirmationData dla asercji SAML wywołanie OBO**: Jeśli aplikacja docelowa wymaga odbiorcy wartości w **SubjectConfirmationData**, a następnie wartość musi być adres URL odpowiedzi bez symboli wieloznacznych w konfiguracji aplikacji zasobu.
+- **Węzeł SubjectConfirmationData**: Węzeł nie może zawierać **InResponseTo** atrybutu, ponieważ nie jest częścią odpowiedzi SAML. Aplikacja odbiera SAML token musi być w stanie zaakceptować potwierdzenie SAML bez **InResponseTo** atrybutu.
 
-- **Zgoda**: zgody należy przyznać otrzymujących token SAML zawierającego dane użytkowników na przepływ OAuth. Aby uzyskać informacje na temat uprawnień i uzyskania zgody administratora, zobacz [uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
+- **Zgoda**: Zgoda należy przyznać otrzymujących token SAML zawierającego dane użytkowników na przepływ OAuth. Aby uzyskać informacje na temat uprawnień i uzyskania zgody administratora, zobacz [uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
 
 ### <a name="response-with-saml-assertion"></a>Odpowiedź i potwierdzenie SAML
 
 | Parametr | Opis |
 | --- | --- |
-| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest **elementu nośnego**. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [OAuth 2.0 autoryzacji Framework: Użycie tokenu elementu nośnego (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Zakres dostępu przyznane w tokenie. |
 | expires_in |Długość czasu, przez który token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
@@ -280,14 +280,14 @@ Odpowiedź zawiera token SAML zakodowane w UTF8 i Base64url.
 | access_token |Parametr, który zwraca potwierdzenie SAML. |
 | refresh_token |Token odświeżania. Wywoływania usługi można użyć tego tokenu do żądania inny token dostępu po wygaśnięciu bieżącego potwierdzenie SAML. |
 
-- token_type: elementu nośnego
+- token_type: Elementu nośnego
 - expires_in: 3296
 - ext_expires_in: 0
 - expires_on: 1529627844
 - Zasób: `https://api.contoso.com`
-- access_token: \<potwierdzenie SAML\>
+- access_token: \<Potwierdzenie SAML\>
 - issued_token_type: urn: ietf:params:oauth:token — typ: saml2
-- refresh_token: \<tokenu odświeżania\>
+- refresh_token: \<Token odświeżania\>
 
 ## <a name="client-limitations"></a>Ograniczenia klienta
 

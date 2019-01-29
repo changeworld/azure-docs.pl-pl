@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: bf6dbde725670030046aad4fccf41554b8d917fe
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c130c6cd5fcb5191195712f570db66408734200a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901281"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150877"
 ---
 # <a name="query-expression-syntax"></a>Składnia wyrażenia zapytania
 
@@ -25,7 +25,7 @@ Można również utworzyć własne wyrażenia zapytania i używać ich w **oceny
 
 Każdy atrybut jednostki, które mogą być zawarte w wyrażeniu zapytania ma na określony typ danych i zestaw operatorów, to możliwe. Określono zestaw atrybutów jednostki i obsługiwane operatory dla każdego atrybutu w [atrybutów jednostki](EntityAttributes.md). Zapytanie jednowartościowych wymaga, aby atrybut do obsługi *jest równa* operacji. Zapytanie prefiks wymaga, aby atrybut do obsługi *StartsWith* operacji. Kwerendy zakresu liczbowego wymaga, aby atrybut do obsługi *IsBetween* operacji.
 
-Niektóre dane jednostki są przechowywane jako atrybuty złożonego, wskazane przez pojedynczego znaku kropki "." w nazwie atrybutu. Na przykład informacji o przynależności/autor jest reprezentowany jako atrybut złożonego. Zawiera składniki 4: AuN AuId, AfN, AfId. Te składniki są oddzielne fragmenty danych, które stanowią wartość atrybutu pojedynczej jednostki.
+Niektóre dane jednostki są przechowywane jako atrybuty złożonego, wskazane przez pojedynczego znaku kropki "." w nazwie atrybutu. Na przykład informacji o przynależności/autor jest reprezentowany jako atrybut złożonego. Zawiera 4 składniki: AuN, AuId, AfN, AfId. Te składniki są oddzielne fragmenty danych, które stanowią wartość atrybutu pojedynczej jednostki.
 
 
 **Atrybut ciągu: Pojedyncza wartość** (w tym odpowiedników synonimy)  
@@ -40,25 +40,25 @@ Złożone (AA. AuN == "dumais susan t")
 Oś = "indeksowania przez ukrytego seman"...  
 Złożone (AA. AuN =... "dochodzić jednostka bazy danych")
 
-**Liczbową atrybut: Pojedyncza wartość**  
-Y = 2010
+**Atrybut liczbowego: Pojedyncza wartość**  
+Y=2010
  
-**Liczbowego atrybut: Wartość zakresu**  
-Y &GT; 2005  
-Y &GT; = 2005  
-T &LT; 2010  
-T &LT; = 2010  
+**Atrybut liczbowego: Wartość zakresu**  
+Y>2005  
+Y>=2005  
+Y<2010  
+Y<=2010  
 Y =\[2010, 2012\) (zawiera tylko lewej granicy, wartość: 2010, 2011)  
-Y =\[2010, 2012\] (obejmuje zarówno wartości graniczne: 2010, 2011, 2012)
+Y =\[2010, 2012\] (obejmuje zarówno wartości granic: 2010, 2011, 2012)
  
-**Numerycznych atrybutów: Wartość prefiksu**  
+**Atrybut liczbowego: Wartość prefiksu**  
 Y = "19"... (wszystkie wartość liczbową rozpoczyna się od 19) 
  
-**Atrybutu daty: Pojedyncza wartość**  
-D = "2010-02-04"
+**Atrybut Data: Pojedyncza wartość**  
+D='2010-02-04'
 
-**Dat atrybut: Wartość zakresu**  
-D &GT; "2010-02-03"  
+**Atrybut Data: Wartość zakresu**  
+D>'2010-02-03'  
 D = ["2010-02-03", "2010-02-05"]
 
 **I/lub zapytania:**  
@@ -85,7 +85,7 @@ And(Composite(AA.AuN='mike smith'),Composite(AA.AfN='harvard university'))
 ```
 <br>W tej wersji ponieważ Composite() została zastosowana do autora i przynależność do indywidualnie przed And(), uzyskujemy wszystkich dokumentów, gdzie jest jeden z autorzy "Jan Kowalski" i jest jeden z przynależności autorów "Harvard". Ta funkcja sprawa podobny do poprzedniego przykładu zapytania, ale nie jest tak samo.
 
-Ogólnie rzecz biorąc, rozważmy następujący przykład: Firma Microsoft ma atrybut złożony języka C, który ma dwa składniki, A i B. Jednostka może mieć wiele wartości dla języka C. Oto nasze jednostki:
+Ogólnie rzecz biorąc Rozważmy następujący przykład: Mamy atrybut złożony języka C, który ma dwa składniki, A i B. Jednostka może mieć wiele wartości dla języka C. Oto nasze jednostki:
 ```
 E1: C={A=1, B=1}  C={A=1,B=2}  C={A=2,B=3}
 E2: C={A=1, B=3}  C={A=3,B=2}

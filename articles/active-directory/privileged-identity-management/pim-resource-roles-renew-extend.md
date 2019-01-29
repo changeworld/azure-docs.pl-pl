@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 95fdb90fe69bc3b1db1f8d9b178a893ff82086a1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344089"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186711"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Rozszerzanie lub odnawianie przypisań ról zasobów platformy Azure w usłudze PIM
 
@@ -113,7 +113,7 @@ Po przesłaniu żądania administratorom zasobów jest powiadamiany o oczekując
 
 Administratorom zasobów mogą uzyskiwać dostęp do żądania odnowienia z linku powiadomienia e-mail lub uzyskiwanie dostępu do usługi PIM w witrynie Azure portal i wybierając **zatwierdzanie żądań** z okienka po lewej stronie.
 
-![Zatwierdź żądania](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
+![Zatwierdzanie żądań](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
 
 Gdy administrator wybierze **Zatwierdź** lub **Odmów**, Szczegóły żądania są wyświetlane wraz z polem, aby podać uzasadnienie dla dzienników inspekcji.
 

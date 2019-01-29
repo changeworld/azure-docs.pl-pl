@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 83694f121fb17f90aa89fb9ba99e8514cadd5b09
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 90b7638acf6df721a16bdcca6ceebb6f9d65ca2c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724027"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096827"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Sposobu wypełniania określonych pól dla aplikacji niestandardowej
 
@@ -40,9 +40,9 @@ Ten artykuł zawiera krótki opis dostępnych pól w formularzu rejestracji apli
 
 | Pole            | Opis                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name (Nazwa)             | Nazwa aplikacji. Powinien mieć co najmniej cztery znaki.                |
-| Typ aplikacji | **Sieci Web aplikacji/internetowy interfejs API**: aplikację reprezentującą aplikację sieci web, internetowy interfejs API lub oba 
-| |**Natywne**: aplikację, którą można zainstalować na urządzeniu lub komputerze użytkownika           |
+| Name             | Nazwa aplikacji. Powinien mieć co najmniej cztery znaki.                |
+| Typ aplikacji | **Sieci Web aplikacji/internetowy interfejs API**: Aplikację reprezentującą aplikację sieci web, internetowy interfejs API lub oba 
+| |**Natywne**: Aplikację, którą można zainstalować na urządzeniu lub komputerze użytkownika           |
 | Adres URL logowania      | Adres URL, w którym użytkownicy mogą logować się do korzystania z aplikacji                                  |
 
 Po wypełnieniu pól powyżej, aplikacja jest zarejestrowana w witrynie Azure portal, a następnie nastąpi przekierowanie do strony aplikacji. **Ustawienia** przycisk w okienku aplikacji zostanie otwarty na stronie ustawień, które ma więcej pól, którą można dostosować aplikację. W poniższej tabeli opisano wszystkie pola na stronie ustawień. należy pamiętać, że byłaby widoczna tylko podzbiór tych pól, w zależności od tego, czy utworzona aplikacja sieci web lub aplikacji natywnej.

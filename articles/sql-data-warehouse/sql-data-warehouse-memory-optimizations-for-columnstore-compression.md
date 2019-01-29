@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: e30320631a7fd9b4ee27096556af01f2ad77a746
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: de7cc0e67960edf95ace67808ffc677b57a46dab
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306836"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096997"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maksymalizacja jakości i magazynu kolumn
 
@@ -69,7 +69,7 @@ from cte;
 Trim_reason_desc informuje, czy została przycięta grupy wierszy (trim_reason_desc = NO_TRIM oznacza wystąpił brak przycinania i grupę wierszy jest optymalne jakości). Przyczyny przycinania wskazują przedwczesne przycinanie grupy wierszy:
 - BULKLOAD: Z tego powodu przycinania jest używany, gdy przychodzący partii wierszy dla obciążenia było mniej niż 1 milion wierszy. Aparat tworzenia skompresowanych grup wierszy, jeśli istnieje większa niż 100 000 wierszy, jest wstawiany (w przeciwieństwie do wstawiania do magazynu delta), ale ustawia BULKLOAD Przyczyna przycinania. W tym scenariuszu należy rozważyć zwiększenie okna obciążenia usługi batch do większej liczby wierszy. Ponadto to ponowne ocenienie schematu partycji w celu zapewnienia, że nie jest zbyt szczegółową jako granice partycji nie mogą rozciągać się grupy wierszy.
 - MEMORY_LIMITATION: Aby utworzyć grupy wierszy z 1 milion wierszy, pewna ilość pamięci pracy jest wymagany przez aparat. Gdy dostępna pamięć sesji ładowania jest mniejsza niż wymaganej ilości pamięci w pracy, grupy wierszy przedwcześnie Pobierz spacje. W poniższych sekcjach opisano sposób szacowania pamięci wymaganej i przydzielanie większej ilości pamięci.
-- DICTIONARY_SIZE: Z tego powodu przycinania wskazuje, że przycinania i wystąpił, ponieważ wystąpił co najmniej jedną kolumnę ciągu z szerokim lub wysokiej kardynalności ciągami. Rozmiar słownika jest ograniczony do 16 MB w pamięci, a po osiągnięciu tego limitu grupę wierszy jest skompresowany. Jeśli napotkasz ten problem, należy wziąć pod uwagę izolowanie problematyczne kolumny w osobnej tabeli.
+- DICTIONARY_SIZE: Z tego powodu przycinania wskazuje, że przycinania i wystąpił, ponieważ wystąpił co najmniej jedną kolumnę ciągu z ciągami o szerokim lub wysokiej kardynalności. Rozmiar słownika jest ograniczony do 16 MB w pamięci, a po osiągnięciu tego limitu grupę wierszy jest skompresowany. Jeśli napotkasz ten problem, należy wziąć pod uwagę izolowanie problematyczne kolumny w osobnej tabeli.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Jak oszacować wymagania dotyczące pamięci
 
@@ -88,7 +88,7 @@ gdzie krótki ciąg kolumn użyć typów danych ciągu < = 32 bajtów i użyj lo
 
 Długie ciągi są kompresowane za pomocą metody kompresji przeznaczone do kompresowania tekstu. Ta metoda kompresji używa *słownika* do przechowywania wzorców tekstu. Maksymalny rozmiar słownik to 16 MB. Istnieje tylko jeden słownika dla każdej kolumny długi ciąg w grupy wierszy.
 
-Szczegółowe omówienie wymagań dotyczących pamięci magazynu kolumn, można znaleźć w temacie wideo [skalowania usługi Azure SQL Data Warehouse: Konfiguracja i wskazówki dotyczące](https://myignite.microsoft.com/videos/14822).
+Szczegółowe omówienie wymagań dotyczących pamięci magazynu kolumn, można znaleźć w temacie wideo [skalowania usługi Azure SQL Data Warehouse: Konfiguracja i wskazówki dotyczące](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Sposoby, aby zmniejszyć wymagania dotyczące pamięci
 

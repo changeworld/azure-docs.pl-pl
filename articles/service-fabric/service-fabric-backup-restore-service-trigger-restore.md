@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ad89acb63057ff260332384372bcb7719cc8e4f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 1482497f3767e7533d1d56e6eb63e55cdb5c9ebb
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064835"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104647"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Przywracanie kopii zapasowej w usłudze Azure Service Fabric
 
@@ -220,7 +220,7 @@ $restoreResponse | Format-List
     RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
     RestoredLsn   : 3552
     ```
-2. **W toku**: _InProgress_ Przywróć stan wskazuje, że proces przywracania odbywa się w partycji z kopiami zapasowymi, o których wspomniano w żądaniu. Raporty partycji _dataloss_ stanu.
+2. **InProgress**: _InProgress_ Przywróć stan wskazuje, że proces przywracania odbywa się w partycji z kopiami zapasowymi, o których wspomniano w żądaniu. Raporty partycji _dataloss_ stanu.
     ```
     RestoreState  : RestoreInProgress
     TimeStampUtc  : 0001-01-01T00:00:00Z
@@ -229,7 +229,7 @@ $restoreResponse | Format-List
     ```
     
 3. **Powodzenie**, **błąd**, lub **limitu czasu**: Żądana przywracania można wykonać w dowolnej z następujących stanów. Każdy stan zawiera następujące informacje dotyczące znaczenia i odpowiedzi:
-    - **Powodzenie**: A _Powodzenie_ Przywróć stan wskazuje na stan odzyskała partycji. Raporty partycji _RestoreEpoch_ i _RestordLSN_ stany, wraz z czasu w formacie UTC.
+    - **Powodzenie**: A _Powodzenie_ Przywróć stan wskazuje na stan odzyskała partycji. Raporty partycji _RestoredEpoch_ i _RestoredLSN_ stany, wraz z czasu w formacie UTC.
 
         ```
         RestoreState  : Success

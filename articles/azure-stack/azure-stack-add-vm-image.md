@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 1/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: bac0b2933d4b6d4a88ebbb0402bba0ffd508b395
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 54f7b596eebf2cc5ad7a9bf1b795fab087b6fac0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474374"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102485"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
@@ -82,14 +82,14 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 3. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
       -version "<#.#.#>” `
       -OSType "<ostype>" `
       -OSUri "<osuri>"
-  ````
+  ```
 
   **AzsPlatformimage Dodaj** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
   - **publisher**  
@@ -157,24 +157,24 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 
 5. Przygotowywanie obrazu systemu operacyjnego Windows lub Linux w formacie VHD (nie VHDX), przekazania obrazu do swojego konta magazynu i Pobierz identyfikator URI, do której można pobrać obrazu maszyny Wirtualnej programu PowerShell.  
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzureRmAccount `
       -EnvironmentName "AzureStackAdmin" `
       -TenantId $TenantID
-  ````
+  ```
 
 6. (Opcjonalnie) Możesz przekazać tablicę dysków z danymi w ramach obrazu maszyny Wirtualnej. Tworzenie dysków danych za pomocą polecenia cmdlet New-DataDiskObject. Otwórz program PowerShell w wierszu polecenia z podwyższonym poziomem uprawnień i uruchom:
 
-  ````PowerShell  
+  ```PowerShell  
     New-DataDiskObject -Lun 2 `
     -Uri "https://storageaccount.blob.core.windows.net/vhds/Datadisk.vhd"
-  ````
+  ```
 
 7. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-  ````PowerShell  
+  ```PowerShell  
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
-  ````
+  ```
 
     Aby uzyskać więcej informacji na temat polecenia cmdlet Add-AzsPlatformimage i polecenia cmdlet New-DataDiskObject zobacz Microsoft PowerShell [Dokumentacja modułu usługi Azure Stack operatora](https://docs.microsoft.com/powershell/module/).
 
@@ -188,13 +188,13 @@ Jeśli nie potrzebujesz już obraz maszyny wirtualnej, który został przekazany
 
 3. Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i uruchom:
 
-  ````PowerShell  
+  ```PowerShell  
   Remove-AzsPlatformImage `
     -publisher "<publisher>" `
     -offer "<offer>" `
     -sku "<sku>" `
     -version "<version>" `
-  ````
+  ```
   **AzsPlatformImage Usuń** polecenia cmdlet określa wartości używane przez Szablony usługi Azure Resource Manager, aby odwoływać się do obrazu maszyny Wirtualnej. Wartości:
   - **publisher**  
     Na przykład: `Canonical`  

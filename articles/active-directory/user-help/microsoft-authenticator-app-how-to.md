@@ -7,17 +7,17 @@ manager: daveba
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 6a55be6a7443017250a00a473fd57cd7d49226aa
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 0616118274c3698c8f49e02f80dbfb5e2e818074
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902724"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168171"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Pobierz i zainstaluj aplikację Microsoft Authenticator
 Aplikacja Microsoft Authenticator pomaga logowania do kont użycie weryfikacji two-Factor Authentication. Weryfikacja Two-Factor Authentication ułatwia dostęp do Twoich kont bezpieczniejsze, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione, lub ze złamanymi zabezpieczeniami, two-Factor Authentication Weryfikacja jest kroku dodatkowe zabezpieczenia, która pomaga chronić Twoje konto, co utrudnia innym osobom włamanie się.

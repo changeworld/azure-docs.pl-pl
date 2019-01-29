@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 7b19aa42c669fec5872e210351ecec22360ef24e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427937"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55155310"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -143,9 +143,6 @@ Aplikacja, która skrypty instalacyjne, które można pobrać z [łącze archiwu
 
 Aplikacja w formacie sfpkg można pobrać z [łącze sfpkg](https://aka.ms/POA/POA.sfpkg). Jeśli źródłem jest przydatna dla [usługi Azure Resource Manager, na podstawie wdrożenia aplikacji](service-fabric-application-arm-resource.md).
 
-> [!IMPORTANT]
-> V1.3.0 (Najnowsza wersja) Patch Orchestration Application występuje znany problem, w systemie Windows Server 2012. Jeśli korzystasz z systemu Windows Server 2012, Pobierz v1.2.2 aplikacji [tutaj](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.zip). Łącze SFPkg [tutaj](http://download.microsoft.com/download/C/9/1/C91780A5-F4B8-46AE-ADD9-E76B9B0104F6/PatchOrchestrationApplication_v1.2.2.sfpkg).
-
 ## <a name="configure-the-app"></a>Konfigurowanie aplikacji
 
 Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych potrzeb. Zastąp wartości domyślne, przekazując w parametrze aplikacji podczas tworzenia aplikacji lub aktualizacji. Można podać parametry aplikacji, określając `ApplicationParameter` do `Start-ServiceFabricApplicationUpgrade` lub `New-ServiceFabricApplication` polecenia cmdlet.
@@ -156,7 +153,7 @@ Zachowanie aplikacji orkiestracji poprawek można skonfigurować do własnych po
 |TaskApprovalPolicy   |Wyliczenia <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy wskazuje zasady, które ma być używany przez usługę koordynatora do instalowania aktualizacji Windows w węzłach klastra usługi Service Fabric.<br>                         Dozwolone wartości to: <br>                                                           <b>NodeWise</b>. Windows Update jest zainstalowane na jednym węźle naraz. <br>                                                           <b>UpgradeDomainWise</b>. Aktualizacja Windows jest zainstalowane jedną domenę uaktualnienia w danym momencie. (Maksymalnie, wszystkie węzły należące do domeny uaktualnienia można szukać Windows Update.)<br> Zapoznaj się [— często zadawane pytania](#frequently-asked-questions) sekcję dotyczącą sposobu określenia, który jest najbardziej odpowiednie zasady dla klastra.
 |LogsDiskQuotaInMB   |Długie  <br> (Domyślnie: 1024)               |Maksymalny rozmiar patch orchestration aplikacja rejestruje się w MB, co może być utrwalony lokalnie w węzłach.
 | WUQuery               | ciąg<br>(Domyślnie: "IsInstalled = 0")                | Zapytanie w celu pobrania aktualizacji i Windows. Aby uzyskać więcej informacji, zobacz [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
-| InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślna: true)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
+| InstallWindowsOSOnlyUpdates | Wartość logiczna <br> (domyślna: false)                 | Użyj tej flagi do kontroli, które aktualizacje powinny zostać pobrana i zainstalowana. Następujące wartości są dozwolone. <br>wartość true — instaluje tylko aktualizacje systemu operacyjnego Windows.<br>FALSE — instaluje wszystkie dostępne aktualizacje na komputerze.          |
 | WUOperationTimeOutInMinutes | Int <br>(Domyślnie: 90)                   | Określa limit czasu dla wszelkich operacji Windows Update (wyszukiwania lub pobierania lub instalacji). Jeśli operacja nie jest ukończone przed upływem określonego limitu czasu, zostało przerwane.       |
 | WURescheduleCount     | Int <br> (Domyślnie: 5)                  | Maksymalna liczba przypadków, w usłudze zmieni ustalony Windows aktualizacji w przypadku, gdy operacja stale kończy się niepowodzeniem.          |
 | WURescheduleTimeInMinutes | Int <br>(Domyślnie: 30) | Interwał, w którym usługa zmieni ustalony aktualizacji Windows w przypadku, gdy błąd będzie nadal występować. |
@@ -295,7 +292,7 @@ Na podstawie zasad dla aplikacji, albo jeden węzeł można przejść w dół po
 
 Przed zakończeniem instalacji aktualizacji Windows węzły są reenabled po ponownym uruchomieniu.
 
-W poniższym przykładzie klaster przeszedł do stanu błędu tymczasowo z uwzględnieniem dwóch węzłów było wyłączone, ponieważ zasady MaxPercentageUnhealthNodes został naruszony, zwiększyłaby. Ten błąd jest tymczasowy, dopóki trwa operacja stosowania poprawek.
+W poniższym przykładzie klaster przeszedł do stanu błędu tymczasowo z uwzględnieniem dwóch węzłów było wyłączone, ponieważ zasady MaxPercentageUnhealthyNodes został naruszony, zwiększyłaby. Ten błąd jest tymczasowy, dopóki trwa operacja stosowania poprawek.
 
 ![Obraz przedstawiający klaster w złej kondycji](media/service-fabric-patch-orchestration-application/MaxPercentage_causing_unhealthy_cluster.png)
 
@@ -330,7 +327,7 @@ PYTANIE: **Jak długo trwa stosowanie poprawek do całego klastra?**
 A. Czas potrzebny na stosowanie poprawek do całego klastra zależy od następujących czynników:
 
 - Czas potrzebny do poprawiania węzła.
-- Zasady usługi koordynatora. Domyślne zasady `NodeWise`, powoduje stosowanie poprawek tylko jeden węzeł w momencie, która będzie wolniejszy niż `UpgradeDomainWise`. Na przykład: Jeśli węzeł przyjmuje ~ 1 godziny do poprawienia, wyłączność zastosowania poprawki względem 20 (ten sam typ węzłów) węzeł klastra z 5 domenami uaktualniania, każdy z nich zawierający 4 węzły.
+- Zasady usługi koordynatora. Domyślne zasady `NodeWise`, powoduje stosowanie poprawek tylko jeden węzeł w momencie, która będzie wolniejszy niż `UpgradeDomainWise`. Na przykład: Jeśli węzeł przyjmuje ~ 1 godziny do poprawienia, aby można było zastosować poprawki na 20 (ten sam typ węzłów) węzeł klastra z 5 domenami uaktualniania, każdy z nich zawierający 4 węzły.
     - Jeśli zasady powinno zająć ~ 20 godzin zastosowania poprawki względem całego klastra `NodeWise`
     - Jeśli zasady powinno zająć ~ 5 godzin `UpgradeDomainWise`
 - Obciążenie klastra — każda operacja stosowania poprawek wymaga przenoszenie obciążenia klientów do innych dostępnych węzłów w klastrze. Węzeł w trakcie poprawki będą miały [wyłączenie](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) stanu, w tym czasie. Jeśli klaster działa w pobliżu szczytowego obciążenia, wyłączenie procesu zajęłoby dłuższy czas. Dlatego całego procesu stosowania poprawek może wydawać się wolno w takich warunkach stressed.
@@ -411,3 +408,8 @@ Administrator musi interweniować i ustalić, dlaczego aplikacji lub klastra sta
 - Ustawienie wartości false InstallWindowsOSOnlyUpdates teraz instaluje wszystkie dostępne aktualizacje.
 - Zmienić logiki wyłączanie automatycznych aktualizacji. Naprawia błąd, gdy aktualizacje automatyczne nie wprowadzenie wyłączono systemie Server 2016 lub nowszym.
 - Ograniczenie sparametryzowane umieszczania mikrousług POA dla usecases zaawansowane.
+
+### <a name="version-131"></a>Wersji 1.3.1
+- Naprawianie regresji, w którym POA 1.3.0 nie będzie działać w systemie Windows Server 2012 R2 lub niższą z powodu błędu podczas wyłączania automatycznej aktualizacji. 
+- Naprawianie błędów gdzie InstallWindowsOSOnlyUpdates konfiguracji zawsze jest wybrany jako wartość True.
+- Zmiana wartości domyślnej InstallWindowsOSOnlyUpdates na wartość False.

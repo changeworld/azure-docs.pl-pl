@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: dabee3f4eb6fb2bf4f58ff8654068e138858dbbd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249679"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156925"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utworzyć grupę dynamiczną i sprawdzić stan
 
@@ -54,17 +54,17 @@ Możesz zobaczyć członkostwa przetwarzanie stanu i Data ostatniej aktualizacji
 
 Następujące komunikaty o stanie mogą być wyświetlane dla **przetwarzania członkostwa** stanu:
 
-* **Ocena**: Zmiana grupy zostało odebrane i aktualizacji są oceniane.
-* **Przetwarzanie**: aktualizacje są przetwarzane.
-* **Ukończono aktualizację**: przetwarzanie zostało ukończone i wszystkie odpowiednie aktualizacje zostały wprowadzone.
+* **Ocena**:  Zmiana grupy zostało odebrane i aktualizacji są oceniane.
+* **Przetwarzanie**: Aktualizacje są przetwarzane.
+* **Ukończono aktualizację**: Przetwarzanie zostało ukończone, a wszystkie odpowiednie aktualizacje zostały wprowadzone.
 * **Błąd przetwarzania**: Napotkano błąd podczas obliczania reguły członkostwa i nie można ukończyć przetwarzanie.
-* **Aktualizowanie wstrzymane**: dynamiczną regułę członkostwa aktualizacji została wstrzymana przez administratora. MembershipRuleProcessingState jest ustawiona na "Wstrzymana".
+* **Aktualizowanie wstrzymane**: Wstrzymano aktualizacje reguły członkostwa dynamicznego przez administratora. MembershipRuleProcessingState jest ustawiona na "Wstrzymana".
 
 Następujące komunikaty o stanie mogą być wyświetlane dla **członkostwa Ostatnia aktualizacja:** stanu:
 
-* &lt;**Data i godzina**&gt;: czas ostatniego członkostwo zostało zaktualizowane.
-* **Trwającą**: aktualizacje są obecnie w toku.
-* **Nieznany**: nie można pobrać czas ostatniej aktualizacji. Może to być spowodowane nowo tworzonej grupy.
+* &lt;**Data i godzina**&gt;: Czas ostatniej aktualizacji członkostwa.
+* **Trwającą**: Aktualizacje są obecnie w toku.
+* **Nieznany**: Nie można pobrać czas ostatniej aktualizacji. Może to być spowodowane nowo tworzonej grupy.
 
 Jeśli wystąpi błąd podczas przetwarzania reguły członkostwa dla określonej grupy, alert jest wyświetlany w górnej części **strony Przegląd** dla grupy. Jeśli nie oczekujące członkostwo dynamiczne aktualizacje mogą być przetwarzane dla wszystkich grup w ramach dzierżawy więcej następnie 24 godziny, alert jest wyświetlany w górnej części **wszystkich grup**.
 

@@ -9,22 +9,27 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d98ff2c5b9d18c36e7d16ec19d3e136be03b8d4c
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9446bbd4783aaf20f1bc9079ec43f7050274bf11
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848006"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095620"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Usługa Azure odzyskiwanie po awarii geograficznego usługi Service Bus
 
-Gdy cały regiony platformy Azure lub w centrach danych (Jeśli nie [strefy dostępności](../availability-zones/az-overview.md) są używane) doświadczają przestoju, koniecznie do przetwarzania danych w dalszym ciągu działać w innym regionie lub w centrum danych. W efekcie *odzyskiwania po awarii geograficznie* i *Geografickou replikaci* są ważne funkcje w każdej firmie. Usługa Azure Service Bus obsługuje zarówno odzyskiwania po awarii geograficzne i replikacja geograficzna, na poziomie przestrzeni nazw. 
+Gdy cały regiony platformy Azure lub w centrach danych (Jeśli nie [strefy dostępności](../availability-zones/az-overview.md) są używane) doświadczają przestoju, koniecznie do przetwarzania danych w dalszym ciągu działać w innym regionie lub w centrum danych. W efekcie *odzyskiwania po awarii geograficznie* jest ważną funkcję w każdej firmie. Usługa Azure Service Bus obsługuje odzyskiwanie po awarii geograficznej na poziomie przestrzeni nazw.
 
 Funkcji odzyskiwania po awarii geograficznej jest ogólnie dostępna dla jednostki SKU usługi Service Bus Premium. 
 
+>[!NOTE]
+> Odzyskiwanie po awarii geograficznie obecnie tylko gwarantuje, że metadanych (kolejki, tematy, subskrypcje, filtry) są kopiowane z podstawowej przestrzeni nazw do pomocniczej przestrzeni nazw w połączeniu.
+
 ## <a name="outages-and-disasters"></a>Wyłączeń i awarii
 
-Ważne jest, aby należy zauważyć różnicę między "wyłączeń" i "awarii." *Awarii* jest tymczasowa niedostępność usługi Azure Service Bus i może mieć wpływ na niektóre składniki usługi, takie jak magazyn obsługi komunikatów lub nawet całe centrum danych. Jednak po usunięciu problemu usługi Service Bus znowu dostępne. Zazwyczaj awaria nie powoduje utraty wiadomości lub inne dane. Przykładem takich awarii może być awaria zasilania w centrum danych. Niektóre awarie są tylko połączenia krótki straty ze względu na problemy przejściowe lub sieci. 
+Ważne jest, aby należy zauważyć różnicę między "wyłączeń" i "awarii." 
+
+*Awarii* jest tymczasowa niedostępność usługi Azure Service Bus i może mieć wpływ na niektóre składniki usługi, takie jak magazyn obsługi komunikatów lub nawet całe centrum danych. Jednak po usunięciu problemu usługi Service Bus znowu dostępne. Zazwyczaj awaria nie powoduje utraty wiadomości lub inne dane. Przykładem takich awarii może być awaria zasilania w centrum danych. Niektóre awarie są tylko połączenia krótki straty ze względu na problemy przejściowe lub sieci. 
 
 A *po awarii* jest zdefiniowany jako stałe lub dłuższy okres utraty klastra usługi Service Bus, region platformy Azure lub centrum danych. Region lub centrum danych może nie może stać się dostępna ponownie lub może nie działać przez kilka godzin lub dni. Przykładami takich awarii są pożaru, przepełnieniu lub trzęsienie ziemi. Po awarii, która staje się stałe może spowodować utratę niektórych komunikatów, zdarzenia lub inne dane. Jednak w większości przypadków należy bez utraty danych, a komunikaty mogą być odzyskiwane po centrum danych zacznie ponownie działać.
 
@@ -36,33 +41,47 @@ Funkcja odzyskiwania po awarii implementuje odzyskiwanie po awarii metadane i op
 
 W tym artykule są używane następujące terminy:
 
--  *Alias*: Nazwa konfiguracji odzyskiwania po awarii, który został ustawiony. Alias zapewnia pojedynczy ciąg stabilne połączenie w pełni kwalifikowanej domeny nazwę (FQDN). Aplikacje za pomocą te parametry połączenia aliasu połączyć z przestrzeni nazw. 
+-  *Alias*: Nazwa konfiguracji odzyskiwania po awarii, który został ustawiony. Alias zapewnia pojedynczy ciąg stabilne połączenie w pełni kwalifikowanej domeny nazwę (FQDN). Aplikacje za pomocą te parametry połączenia aliasu połączyć z przestrzeni nazw. Za pomocą aliasu zapewnia, że ciąg połączenia jest bez zmian, po wyzwoleniu przełączenie w tryb failover.
 
 -  *Przestrzeń nazw podstawowy/pomocniczy*: Przestrzenie nazw, które odnoszą się do aliasu. Podstawowa przestrzeń nazw jest "aktywny" i odbiera komunikaty (może to być istniejącej lub nowej przestrzeni nazw). Pomocnicza przestrzeń nazw jest "pasywny" i nie otrzymywać wiadomości. Metadanych między obiema jest zsynchronizowany, więc zarówno bezproblemowo może akceptować komunikaty bez wprowadzania żadnych zmian parametry aplikacji, jak połączenie lub kod. Aby upewnić się, że tylko aktywnej przestrzeni nazw odbiera komunikaty, musisz użyć tego aliasu. 
 
--  *metadane*: Jednostki, takie jak kolejki, tematy i subskrypcje; i ich właściwości usługi, które są skojarzone z przestrzenią nazw. Należy pamiętać, że tylko jednostek i ich ustawienia są replikowane automatycznie. Komunikaty nie są replikowane. 
+-  *metadane*: Jednostki, takie jak kolejki, tematy i subskrypcje; i ich właściwości usługi, które są skojarzone z przestrzenią nazw. Należy pamiętać, że tylko jednostek i ich ustawienia są replikowane automatycznie. Komunikaty nie są replikowane.
 
 -  *Tryb failover*: Proces aktywowanie pomocniczej przestrzeni nazw.
 
-## <a name="setup-and-failover-flow"></a>Przepływ instalacji i trybu failover
+## <a name="setup"></a>Konfigurowanie
 
-Poniższa sekcja zawiera omówienie procesu pracy awaryjnej i wyjaśniono, jak skonfigurować początkowe trybu failover. 
+Poniższa sekcja to Przegląd — Konfiguracja parowanie między obszarami nazw.
 
 ![1][]
 
-### <a name="setup"></a>Konfigurowanie
+Proces instalacji przebiega następująco:
 
-Możesz najpierw utworzyć lub użyj istniejącej głównej przestrzeni nazw i nowej pomocniczej przestrzeni nazw, a następnie łączyć dwóch. Połączenie umożliwia alias, który służy do łączenia. Ponieważ używasz aliasu, trzeba zmienić parametry połączenia. Można dodać tylko nowe przestrzenie nazw na parowanie zegarków trybu failover. Na koniec należy dodać pewne informacje monitorowania do wykrywania, jeśli konieczne jest przejścia w tryb failover. W większości przypadków usługa jest jedną z części dużego ekosystemu, tak więc automatycznego przejścia w tryb failover są rzadko jest to możliwe, jak bardzo często przejścia w tryb failover należy wykonać synchronizację z pozostałych podsystemu lub infrastruktury.
+1. Aprowizacja ***głównej*** usługi Service Bus Premium Namespace.
 
-### <a name="example"></a>Przykład
+2. Aprowizacja ***dodatkowej*** usługi Service Bus Premium Namespace w regionie *różni się od której zainicjowano podstawowej przestrzeni nazw*. Ułatwi to umożliwia izolację awarii między regionami w innym centrum danych.
 
-W jednym z przykładów tego scenariusza należy wziąć pod uwagę rozwiązanie punktu sprzedaży (POS), który emituje komunikaty lub zdarzenia. Usługa Service Bus przekazuje te zdarzenia do niektórych mapowania lub ponowne sformatowanie rozwiązania, które następnie przekazuje zmapowanych danych do innego systemu w celu dalszego przetwarzania. W tym momencie wszystkich tych systemach mogą być hostowane w tym samym regionie platformy Azure. Decyzja w sprawie kiedy i jaka część do trybu failover jest zależna od przepływu danych w infrastrukturze. 
+3. Utwórz parowania z zakresu od podstawowej przestrzeni nazw do pomocniczej przestrzeni nazw w celu uzyskania ***alias***.
 
-Można zautomatyzować trybu failover z systemów monitorowania lub za pomocą niestandardowej rozwiązania do monitorowania. Jednak takie automatyzacji zajmują dodatkowego planowania i współpracować, która wykracza poza zakres tego artykułu.
+4. Użyj ***alias*** uzyskaną w kroku 3 do łączenia z Geo-DR aplikacjom klienckim włączone podstawowej przestrzeni nazw. Początkowo wskazuje alias do podstawowej przestrzeni nazw.
 
-### <a name="failover-flow"></a>Przepływ pracy awaryjnej
+5. [Opcjonalnie] Dodaj pewne informacje monitorowania do wykrywania, jeśli konieczne jest przejścia w tryb failover.
 
-Możesz zainicjować trybu failover, wymagane są dwa kroki:
+## <a name="failover-flow"></a>Przepływ pracy awaryjnej
+
+Tryb failover zostanie wyzwolone ręcznie przez klienta (lub jawnie za pomocą poleceń, za pomocą klienta należące do logiki biznesowej, która powoduje uruchomienie polecenia) i nigdy nie przez platformę Azure. Zapewnia to klient pełne prawo własności i widoczność w rozdzielczości awarii w sieci szkieletowej platformy Azure.
+
+![4][]
+
+Po wyzwoleniu przełączenie w tryb failover —
+
+1. ***Alias*** parametry połączenia zostały zaktualizowane, aby wskazywał przestrzeń nazw Premium dodatkowej.
+
+2. Klienci (nadawców i odbiorców) automatycznie łączyć się z pomocniczą przestrzeń nazw.
+
+3. Istniejące parowanie między podstawowym i pomocniczym przestrzeń nazw premium został przerwany.
+
+Po pracy w trybie failover jest inicjowane-
 
 1. Jeśli inna awaria wystąpi, chcesz mieć możliwość pracy awaryjnej ponownie. W związku z tym Ustaw innej pasywnym przestrzeni nazw i zaktualizuj parowanie. 
 
@@ -70,6 +89,8 @@ Możesz zainicjować trybu failover, wymagane są dwa kroki:
 
 > [!NOTE]
 > Obsługiwane są wyłącznie zakończyć się niepowodzeniem do przodu semantyki. W tym scenariuszu w trybie Failover, a następnie ponownie łączyć się z nową przestrzeń nazw. Powrotem nie jest obsługiwana; na przykład w klastrze programu SQL. 
+
+Można zautomatyzować trybu failover z systemów monitorowania lub za pomocą niestandardowej rozwiązania do monitorowania. Jednak takie automatyzacji zajmują dodatkowego planowania i współpracować, która wykracza poza zakres tego artykułu.
 
 ![2][]
 
@@ -95,20 +116,20 @@ W przypadku scenariusza, w której nie można zmienić połączenia producentów
 
 Należy zwrócić uwagę następujące kwestie, które należy uwzględnić w tej wersji:
 
-1. W procesie planowania trybu failover, należy również rozważyć współczynnik czasu. Na przykład jeśli w przypadku utraty łączności przez czas dłuższy niż 15-20 minut, można zdecydować do zainicjowania trybu failover. 
- 
+1. W procesie planowania trybu failover, należy również rozważyć współczynnik czasu. Na przykład jeśli w przypadku utraty łączności przez czas dłuższy niż 15-20 minut, można zdecydować do zainicjowania trybu failover.
+
 2. Fakt, że żadne dane nie są replikowane oznacza, że obecnie aktywnych sesji nie są replikowane. Ponadto wykrywania duplikatów i zaplanowane komunikaty mogą nie działać. Nowej sesji, nowe zaplanowane wiadomości i nowe duplikaty będą działać. 
 
-3. Przechodzenie w tryb failover złożonych rozproszonej infrastruktury powinny być [rehearsed](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) co najmniej raz. 
+3. Przechodzenie w tryb failover złożonych rozproszonej infrastruktury powinny być [rehearsed](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) co najmniej raz.
 
-4. Synchronizowanie jednostek może zająć trochę czasu około 50 – 100 jednostek na minutę. Subskrypcje i reguł również liczone jako jednostki. 
+4. Synchronizowanie jednostek może zająć trochę czasu około 50 – 100 jednostek na minutę. Subskrypcje i reguł również liczone jako jednostki.
 
-## <a name="availability-zones-preview"></a>Strefy dostępności (wersja zapoznawcza)
+## <a name="availability-zones"></a>Strefy dostępności
 
-Jednostka SKU usługi Service Bus Premium obsługuje również [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure. 
+Jednostka SKU usługi Service Bus Premium obsługuje również [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure.
 
 > [!NOTE]
-> Strefy dostępności w wersji zapoznawczej jest obsługiwana tylko w programie **środkowe stany USA**, **wschodnie stany USA 2**, i **Francja środkowa** regionów.
+> Obsługa stref dostępności platformy Azure Service Bus w warstwie Premium jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones) gdzie strefy dostępności są obecne.
 
 Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu witryny Azure portal. Usługa Service Bus nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowości strefy po jej włączeniu, w ramach przestrzeni nazw.
 
@@ -127,6 +148,7 @@ Aby dowiedzieć się więcej na temat obsługi komunikatów usługi Service Bus,
 * [Jak używać tematów i subskrypcji usługi Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 * [Interfejs API REST](/rest/api/servicebus/) 
 
-[1]: ./media/service-bus-geo-dr/geo1.png
+[1]: ./media/service-bus-geo-dr/geodr_setup_pairing.png
 [2]: ./media/service-bus-geo-dr/geo2.png
 [3]: ./media/service-bus-geo-dr/az.png
+[4]: ./media/service-bus-geo-dr/geodr_failover_alias_update.png

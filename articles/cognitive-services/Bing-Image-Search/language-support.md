@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 10/06/2017
 ms.author: aahi
-ms.openlocfilehash: e5c9a4291501c657a94509aec2edd90d00ab795d
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d214c227171066e0a401e22d20538014790a58d3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160431"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157333"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania obrazów Bing
 
@@ -81,8 +81,8 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
 |Austria|Niemiecki|de-AT|
-|Belgia|Holenderski|Holandia — być|
-|Belgia|Francuski|FR — być|
+|Belgia|Holenderski|nl-BE|
+|Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
 |Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
@@ -104,10 +104,10 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|EN PH|
+|Filipiny|Polski|en-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|EN ZA|
+|Republika Południowej Afryki|Polski|en-ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
 |Szwajcaria|Francuski|FR-CH|
@@ -115,7 +115,7 @@ Alternatywnie można określić za pomocą kraju/regionu `cc` parametr zapytania
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|en-US|
 |Stany Zjednoczone|Hiszpański|es-US|
 
 ## <a name="next-steps"></a>Kolejne kroki

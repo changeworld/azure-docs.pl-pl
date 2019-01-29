@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: a9888a23088949b5373aa0eef7d4df3b3064466f
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358589"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096674"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Wtyczka usługi Service Fabric na potrzeby tworzenia aplikacji Java w środowisku Eclipse
 Eclipse jest jednym z najczęściej używanych zintegrowanych środowisk projektowych (IDE, integrated development environment) przez programistów języka Java. W tym artykule omówiono konfigurowanie środowiska projektowego Eclipse do pracy z usługą Azure Service Fabric. Dowiedz się, jak zainstalować wtyczkę usługi Service Fabric oraz utworzyć aplikację usługi Service Fabric i wdrożyć ją w lokalnym lub zdalnym klastrze usługi Service Fabric w środowisku Eclipse. 
@@ -37,7 +37,7 @@ W środowisku Eclipse można zainstalować wtyczkę usługi Service Fabric. Wtyc
 
 Zainstaluj program Eclipse Neon lub nowszy z [witryny programu Eclipse](https://www.eclipse.org).  Zainstaluj także wersję 2.2.1 lub nowszą wtyczki Buildship (wtyczka usługi Service Fabric nie jest zgodna ze starszymi wersjami wtyczki Buildship):
 -   Aby sprawdzić wersje zainstalowanych składników, w środowisku Eclipse przejdź do pozycji **Help** > **About Eclipse** > **Installation Details** (Pomoc > Informacje o środowisku Eclipse > Szczegóły instalacji).
--   Aby zaktualizować zestaw Buildship, zobacz [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: wtyczki środowiska Eclipse dla narzędzia Gradle).
+-   Aby zaktualizować zestaw Buildship, zobacz [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update].
 -   Aby sprawdzić i zainstalować aktualizacje środowiska Eclipse, wybierz opcję **Help** > **Check for Updates** (Pomoc — Sprawdź dostępność aktualizacji).
 
 Zainstaluj wtyczkę usługi Service Fabric: w środowisku Eclipse przejdź do pozycji **Help** > **Install New Software** (Pomoc > Instaluj nowe oprogramowanie).
@@ -112,7 +112,7 @@ Po skonstruowaniu aplikacji usługi Service Fabric, wykonaj następujące kroki,
 
 Informacje na temat debugowania aplikacji w środowisku Eclipse, przy użyciu klastra lokalnego, zobacz [debugowanie usługi Java w środowisku Eclipse](./service-fabric-debugging-your-application-java.md).
 
-Można także wdrożyć aplikację w usłudze wuth klastra lokalnego **Publikuj aplikację** polecenia:
+Można także wdrożyć aplikację w klastrze lokalnym za pomocą **Publikuj aplikację** polecenia:
 
 1. Kliknij prawym przyciskiem myszy aplikację usługi Service Fabric, a następnie wybierz **usługi Service Fabric**.
 2. W menu kontekstowym kliknij **Publikuj aplikację...** .
@@ -165,7 +165,7 @@ Aby opublikować aplikację w chmurze, wykonaj następujące kroki:
 
 W klastrach systemu Linux bezpieczne Jeśli Twoja aplikacja usług Reliable Services, należy również skonfigurować certyfikat, który umożliwia wywołanie środowiska uruchomieniowego usługi Service Fabric interfejsów API usługi. Aby dowiedzieć się więcej, zobacz [skonfigurować aplikację usług Reliable Services, aby działały w klastrach systemu Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 
-Aby uzyskać szybkie omówienie sposobu wdrażania aplikacji usług Reliable Services usługi Service Fabric, napisane w języku Java do zabezpieczonego klastra systemu Linux, zobacz [Quckstart: Wdrażanie aplikacji Java usług Reliable Services](./service-fabric-quickstart-java-reliable-services.md).
+Aby uzyskać szybkie omówienie sposobu wdrażania aplikacji usług Reliable Services usługi Service Fabric, napisane w języku Java do zabezpieczonego klastra systemu Linux, zobacz [Szybki Start: Wdrażanie aplikacji Java usług Reliable Services](./service-fabric-quickstart-java-reliable-services.md).
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Wdrażanie aplikacji usługi Service Fabric za pomocą konfiguracji uruchamiania środowiska Eclipse
 
@@ -211,7 +211,7 @@ Jeśli zaznaczysz opcję **Automatycznie aktualizuj wersje aplikacji i usługi**
 
 ## <a name="upgrade-your-service-fabric-java-application"></a>Uaktualnianie aplikacji Java usługi Service Fabric
 
-Na potrzeby scenariusza uaktualniania przyjmijmy, że utworzono projekt **App1** za pomocą wtyczki usługi Service Fabric w środowisku Eclipse. Wdrożono go za pomocą wtyczki w celu utworzenia aplikacji o nazwie **fabric:/App1Application**. Typ aplikacji to **App1ApplicationType**, a jej wersja to 1.0. Teraz chcesz uaktualnić aplikację bez przerw w dostępności.
+Na potrzeby scenariusza uaktualniania przyjmijmy, że utworzono projekt **App1** za pomocą wtyczki usługi Service Fabric w środowisku Eclipse. Wdrożono go za pomocą wtyczki w celu utworzenia aplikacji o nazwie **fabric:/App1Application**. Typ aplikacji jest **App1ApplicationType**, a jej wersja to 1.0. Teraz chcesz uaktualnić aplikację bez przerw w dostępności.
 
 Najpierw wprowadź zmiany w aplikacji i ponownie skompiluj zmodyfikowaną usługę. Zaktualizuj plik manifestu zmodyfikowanej usługi (ServiceManifest.xml) za pomocą zaktualizowanych wersji usługi (i kodu, konfiguracji lub danych — odpowiednio do potrzeb). Zmodyfikuj także manifest aplikacji (ApplicationManifest.xml), określając zaktualizowany numer wersji dla aplikacji i zmodyfikowaną usługę.  
 
@@ -230,7 +230,7 @@ Ostatnio przenieśliśmy biblioteki Java usługi Service Fabric z zestawu SDK Ja
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Szybkie kroki tworzenia niezawodnych Java usługi aplikacji i wdrażania go lokalnie, jak i na platformie Azure, zobacz [Quckstart: Wdrażanie aplikacji Java usług Reliable Services](./service-fabric-quickstart-java-reliable-services.md).
+- Szybkie kroki tworzenia niezawodnych Java usługi aplikacji i wdrażania go lokalnie, jak i na platformie Azure, zobacz [Szybki Start: Wdrażanie aplikacji Java usług Reliable Services](./service-fabric-quickstart-java-reliable-services.md).
 - Aby dowiedzieć się, jak debugowanie aplikacji Java w klastrze lokalnym, zobacz [debugowanie usługi Java w środowisku Eclipse](./service-fabric-debugging-your-application-java.md).
 - Aby dowiedzieć się, jak monitorować i diagnozować aplikacje usługi Service Fabric, zobacz [monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 319bae3025741d6a3130c92d876ae38fcbcdf11e
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333942"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096912"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Wprowadzenie do Menedżer zasobów klastra usługi Service Fabric
 Tradycyjnie Zarządzanie systemów informatycznych lub usługi online polegało na dedykowanym określonych fizycznych lub maszyn wirtualnych do tych określonych usług lub systemów. Usługi zostały zaprojektowana jako warstwy. Może to być warstwy "Internet" i "dane" lub "Magazyn" warstwy. Aplikacje będą mieć warstwa obsługi komunikatów, gdzie żądania przepływ wewnątrz i na zewnątrz, a także zestaw maszyn dedykowanego dla usługi pamięć podręczna. Każdą warstwę lub typu obciążenia ma określonych maszyn do niego w wersji dedykowanej: kilka maszyn w wersji dedykowanej, serwery sieci web w kilka stało się bazy danych. Określonego typu obciążenie spowodowane maszyn, które było do uruchomić zbyt gorąca, a następnie dodać więcej maszyn w tej samej konfiguracji dla tej warstwy. Jednak nie wszystkie obciążenia może być skalowana w poziomie tak łatwe — szczególnie z warstwą danych zazwyczaj spowodowałoby zastąpienie maszyn z większych maszyn. Łatwe. Maszyna nie powiodło się, część cała aplikacja był uruchamiany niższe osiągnięto maksymalną dopóki komputer może zostać przywrócona. Nadal dość proste (o ile nie zawsze przyjemne).
@@ -53,7 +53,7 @@ W tradycyjnych N warstwy aplikacji ma zawsze [modułu równoważenia obciążeni
 
 Równoważenia sieciowego czy routery komunikat próbował upewnij się, że warstwa sieci web/proces roboczy pozostaje około o zrównoważonym obciążeniu. Strategie równoważenia warstwy danych były różne i zależne na mechanizmie magazynu danych. Równoważenie warstwy danych opiera się na dzielenie danych na fragmenty, buforowanie, zarządzanych widoki, procedury składowane i innych mechanizmów specyficzne dla magazynu.
 
-Mimo że niektóre z tych strategii interesujące, Menedżer zasobów klastra usługi Service Fabric nie jest żadnych takich jak moduły równoważenia obciążenia sieciowego lub pamięci podręcznej. Moduł równoważenia obciążenia sieciowego równoważy frontonów przez rozłożenie ruchu na frontonów. Menedżer zasobów klastra usługi Service Fabric ma innych strategii. Zasadniczo, przenosi usługi Service Fabric *usług* gdzie sens najbardziej, oczekiwano ruchu lub załadować do wykonania. Na przykład: to przeniesienie usług do węzłów, które są aktualnie zimne, ponieważ usługi, które są nie robią dużo pracy. Węzły mogą być zimne, ponieważ usługi, które były obecne zostały usunięte lub przeniesione w innym miejscu. Inny przykład Menedżer zasobów klastra można również przenosić usługi od maszyny. Być może jest maszyny zostaną uaktualnione lub jest przeciążony ze względu na wzrost użycia przez usługi działające na nim. Alernatively, wymagania dotyczące zasobów usługi może wzrosnąć. W rezultacie nie ma wystarczających zasobów na tej maszynie, nadal z niego korzystać. 
+Mimo że niektóre z tych strategii interesujące, Menedżer zasobów klastra usługi Service Fabric nie jest żadnych takich jak moduły równoważenia obciążenia sieciowego lub pamięci podręcznej. Moduł równoważenia obciążenia sieciowego równoważy frontonów przez rozłożenie ruchu na frontonów. Menedżer zasobów klastra usługi Service Fabric ma innych strategii. Zasadniczo, przenosi usługi Service Fabric *usług* gdzie sens najbardziej, oczekiwano ruchu lub załadować do wykonania. Na przykład: to przeniesienie usług do węzłów, które są aktualnie zimne, ponieważ usługi, które są nie robią dużo pracy. Węzły mogą być zimne, ponieważ usługi, które były obecne zostały usunięte lub przeniesione w innym miejscu. Inny przykład Menedżer zasobów klastra można również przenosić usługi od maszyny. Być może jest maszyny zostaną uaktualnione lub jest przeciążony ze względu na wzrost użycia przez usługi działające na nim. Alternatywnie wymagania dotyczące zasobów usługi może wzrosnąć. W rezultacie nie ma wystarczających zasobów na tej maszynie, nadal z niego korzystać. 
 
 Ponieważ Menedżer zasobów klastra jest odpowiedzialny za przesuwanie usług Buduj wokół, zawiera zestaw funkcji w porównaniu do będzie pozyskane w moduł równoważenia obciążenia sieciowego. Jest to spowodowane usługą równoważenia obciążenia sieci dostarczania ruchu sieciowego do, w którym usługi już są, nawet jeśli w tej lokalizacji nie jest idealnym rozwiązaniem do uruchamiania usługi. Menedżer zasobów klastra usługi Service Fabric wykorzystuje całkowicie różne strategie za zapewnienie, że zasoby w klastrze wydajne są wykorzystywane.
 

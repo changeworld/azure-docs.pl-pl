@@ -1,6 +1,6 @@
 ---
-title: Przerzucanie certyfikatów klastra usługi sieć szkieletowa usług Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak na Przerzucanie certyfikatów klastra usługi sieć szkieletowa identyfikowane przez nazwa pospolita certyfikatu.
+title: Przerzucanie certyfikatów klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak na Przerzucanie certyfikatów klastra usługi Service Fabric identyfikowane przez nazwy pospolitej certyfikatu.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: df919e23fd608cdf41e93844f13342ca00657adb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 72640a4d917ddb2485199f0df1fead8b0bdcd1c9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205148"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192977"
 ---
-# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ręcznie przerzucane certyfikatu klastra sieci szkieletowej usług
-Gdy certyfikat z klastra usługi sieć szkieletowa jest bliski wygaśnięcia, musisz zaktualizować certyfikat.  Przerzucanie certyfikatów jest proste, jeśli klaster został [Ustaw maksymalnie Użyj certyfikatów na podstawie nazwy wspólnej](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (zamiast odcisk palca).  Uzyskaj nowy certyfikat od urzędu certyfikacji z nową datą wygaśnięcia.  Certyfikaty z podpisem własnym, włącznie z wygenerowanymi w przypadku wdrażania klastra sieci szkieletowej usług w portalu Azure, nie są obsługiwane.  Nowy certyfikat musi mieć tę samą nazwę pospolitą jako starszych certyfikatów. 
+# <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ręcznie przechodzą certyfikatu klastra usługi Service Fabric
+Gdy certyfikat klastra usługi Service Fabric jest bliski wygaśnięcia, musisz zaktualizować certyfikat.  Przerzucanie certyfikatów jest proste, jeśli klaster został [do Użyj certyfikatów na podstawie nazwy wspólnej](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (zamiast odcisk palca).  Uzyskaj nowy certyfikat z urzędu certyfikacji z nową datę wygaśnięcia.  Certyfikaty z podpisem własnym nie są obsługiwane w środowisku produkcyjnym klastrów usługi Service Fabric, aby uwzględnić certyfikaty generowane podczas Azure portal klastra przepływ pracy tworzenia. Nowy certyfikat musi mieć tę samą nazwę pospolitą jako starszych certyfikatów. 
 
-Poniższy skrypt przekazuje nowy certyfikat do magazynu kluczy, a następnie instaluje certyfikat na zestaw skali maszyny wirtualnej.  Klaster sieci szkieletowej usług będą automatycznie używać certyfikatu przy użyciu najnowszej daty wygaśnięcia.
+Klaster usługi Service Fabric będzie automatycznie używać certyfikatu zadeklarowane z następnych na przyszłą datę wygaśnięcia; podczas sprawdzania poprawności więcej niż jeden certyfikat jest zainstalowany na hoście. Najlepszym rozwiązaniem jest użycie szablonu usługi Resource Manager do aprowizacji zasobów platformy Azure. W środowisku nieprodukcyjnym poniższy skrypt może służyć do przekazania nowego certyfikatu do magazynu kluczy, a następnie instaluje certyfikat na zestaw skalowania maszyn wirtualnych: 
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
@@ -79,7 +79,10 @@ $vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $Sour
 Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
 ```
 
+>[!NOTE]
+> Oblicza hasła zestawu skali maszyny wirtualnej nie obsługują ten sam identyfikator zasobu dla dwóch osobnych wpisów tajnych oraz ich każdego wpisu tajnego jest wersjonowany unikatowy zasób. 
+
 Aby dowiedzieć się więcej, przeczytaj następujące czynności:
 * Dowiedz się więcej o [klastra zabezpieczeń](service-fabric-cluster-security.md).
-* [Aktualizowanie certyfikatów i zarządzania nimi klastra](service-fabric-cluster-security-update-certs-azure.md)
+* [Aktualizowanie i zarządzanie certyfikatami klastra](service-fabric-cluster-security-update-certs-azure.md)
 

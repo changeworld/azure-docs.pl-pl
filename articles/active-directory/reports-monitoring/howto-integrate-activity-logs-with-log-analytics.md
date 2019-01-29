@@ -1,5 +1,5 @@
 ---
-title: Jak zintegrować dzienniki usługi Azure Active Directory z usługą Log Analytics przy użyciu usługi Azure Monitor (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Stream dzienniki usługi Azure Active Directory do usługi Log Analytics przy użyciu usługi Azure Monitor (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zintegrować dzienniki usługi Azure Active Directory z usługą Log Analytics przy użyciu usługi Azure Monitor (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 8b9189ef3fff75023316d5272bd93c136106cf94
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ad01784f3a808be4a27c97934b7ce4e83de8cdc2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824681"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168485"
 ---
 # <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Integrowanie dzienników usługi Azure AD z usługą Log Analytics przy użyciu usługi Azure Monitor (wersja zapoznawcza)
 

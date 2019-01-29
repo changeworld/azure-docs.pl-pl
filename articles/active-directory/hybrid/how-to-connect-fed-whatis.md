@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3462c61bbd7c9972248eb1126763782f5fbc7e84
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2a2e835f074ac2f5d1eede9f68e77774938da6af
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472300"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181745"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Program Azure AD Connect a federacja
 Platformy Azure umożliwia usługi Active Directory (Azure AD) Connect skonfigurowania federacji z usługą Active Directory Federation Services (AD FS) lokalną i usługą Azure AD. Za pomocą logowania federacyjnego można umożliwić użytkownikom Zaloguj się do usług platformy Azure na podstawie usługi AD za pomocą swoich haseł lokalnych — oraz znajduje się w sieci firmowej, bez konieczności ponownego wprowadzania haseł. Przy użyciu opcji federacji z usługami AD FS, można wdrożyć nowej instalacji usług AD FS, lub można określić istniejącą instalację w farmie programu Windows Server 2012 R2.

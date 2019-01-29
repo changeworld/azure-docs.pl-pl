@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: 4e6d5cb3191be7188c1a7c4753200cf049800f04
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ac263ef842c780e09576303f2f49e782612294c2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436011"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159118"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
@@ -27,15 +27,15 @@ Jest gotowy do zastąpienia jest przesyłany ruch produkcyjny aplikacji i klastr
 
 
 ## <a name="pre-requisites-for-production"></a>Wymagania wstępne dla środowiska produkcyjnego
-1. [Najlepsze rozwiązania platformy Azure Service Fabric](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) są: 
+1. [Zabezpieczenia usługi Service Fabric najlepszych rozwiązań dotyczących platformy Azure](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices) są: 
 * Używanie certyfikatów X.509
 * Konfiguruj zasady zabezpieczeń
 * Konfigurowanie certyfikatu SSL dla usługi Azure Service Fabric
 * Izolacja sieci i zabezpieczeń za pomocą usługi Azure Service Fabric
 * Konfigurowanie usługi Azure Key Vault dla zabezpieczeń
-* Przypisywanie użytkowników do ról
+* Microsoft.Network/loadBalancersAssign użytkowników do ról
 * Implementuj konfiguracji zabezpieczeń elementów Reliable Actors przy użyciu aktorów model programowania
-2. Dla klastrów liczących więcej niż 20 rdzeni lub 10 węzłów utworzyć typ dedykowanych węzła podstawowego dla usług systemowych. Dodaj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) zarezerwować typu węzła podstawowego dla usług systemowych. 
+2. Dla klastrów liczących więcej niż 20 rdzeni lub 10 węzłów utworzyć typ dedykowanych węzła podstawowego dla usług systemowych. Dodaj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) zarezerwować typu węzła podstawowego dla usług systemowych.
 3. Za pomocą D2v2 wyższej wersji jednostki SKU dla typu węzła podstawowego. Zalecane jest pobranie jednostki SKU o co najmniej 50 GB dysk twardy pojemności.
 4. Musi być klastrów produkcyjnych [bezpiecznego](service-fabric-cluster-security.md). Na przykład Konfigurowanie zabezpieczonego klastra zobacz [szablonu klastra](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Użyj nazwy pospolite certyfikatów i certyfikaty z podpisem własnym należy unikać.
 5. Dodaj [ograniczenia zasobów dotyczące kontenerów i usług](service-fabric-resource-governance.md), dzięki czemu nie zajmują więcej niż 75% węzła zasobów. 
@@ -61,8 +61,8 @@ Jeśli używasz modelu programowania usług Reliable Services usługi Service Fa
 22. Uaktualnianie aplikacji podczas programowania lokalnego, aby sprawdzić, czy kodu usługi jest zapewniane token anulowania w `RunAsync` metody i zamykanie odbiorników komunikacji niestandardowych.
 23. Należy unikać [typowych pułapek](service-fabric-work-with-reliable-collections.md) przy użyciu niezawodnych kolekcji.
 24. Monitorowanie wydajności pamięci środowiska .NET CLR liczników podczas uruchamiania testów obciążenia i sprawdź, czy wysoki stopień wyrzucania elementów bezużytecznych lub wzrost braków sterty.
-25. Obsługa kopia zapasowa offline [usług Reliable Services i Reliable Actors](service-fabric-reliable-services-backup-restore.md) i przetestuj proces przywracania. 
-
+25. Obsługa kopia zapasowa offline [usług Reliable Services i Reliable Actors](service-fabric-reliable-services-backup-restore.md) i przetestuj proces przywracania.
+26. Liczba wystąpień usługi podstawowej maszyny wirtualnej NodeType najlepiej powinien być równy co najmniej w warstwie niezawodność klastrów; zawiera warunki, w stosownych przypadkach przekracza minimalne warstwy: tymczasowo po pionowo skalowanie one podstawowe elementy NodeType maszyn wirtualnych skalowania Ustaw jednostki SKU.
 
 ## <a name="optional-best-practices"></a>Opcjonalne najlepszych rozwiązań
 
