@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: ae238a3c3af091b764147fcde8aa2a98986da92e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: d36a39f10f9e0129af3b730a65387d7108209004
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158894"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168383"
 ---
 # <a name="paper-entity"></a>Jednostka papieru
 
@@ -32,17 +32,17 @@ D       |Data papieru                                         |Date       |Równ
 DW      |Liczba cytatu                                     |Int32      |brak  
 ECC     |Cytat szacowana liczba                           |Int32      |brak
 AA. AuN  |Autor                                        |Ciąg     |Równa się,<br/>StartsWith
-AA. AuId |Tworzenie Identyfikatora                                          |Int64      |Równa się
+AA.AuId |Tworzenie Identyfikatora                                          |Int64      |Równa się
 AA. AfN  |Nazwa przynależność do autora                            |Ciąg     |Równa się,<br/>StartsWith
-AA. AfId |ID przynależność do autora                              |Int64      |Równa się
-AA. S    |Kolejność Autor papieru                         |Int32      |Równa się
+AA.AfId |ID przynależność do autora                              |Int64      |Równa się
+AA.S    |Kolejność Autor papieru                         |Int32      |Równa się
 F.FN    |Pole o nazwie analiza                                |Ciąg     |Równa się,<br/>StartsWith
 F.FId   |Pole Identyfikator badania                                  |Int64      |Równa się
 J.JN    |Nazwa dziennika                                       |Ciąg     |Równa się,<br/>StartsWith
 J.JId   |Identyfikator dziennika                                         |Int64      |Równa się
 C.CN    |Nazwa serii konferencji                             |Ciąg     |Równa się,<br/>StartsWith
 C.CId   |Identyfikator seria konferencji                               |Int64      |Równa się
-Identyfikator rId     |Identyfikator przywoływanego dokumentów                              |Int64]    |Równa się
+Identyfikator rId     |Identyfikator przywoływanego dokumentów                              |Int64[]    |Równa się
 W       |Wyrazy z tytułu dokument i abstrakcyjny                |Ciąg]   |Równa się
 E       |Rozszerzone metadane (zobacz w poniższej tabeli)                |Ciąg     |brak  
         
@@ -68,5 +68,5 @@ LP      | LastPage - ostatniej strony dokumentu
 DOI     | Identyfikator cyfrowy obiektu
 DW      | Konteksty cytat — lista odwołania dokument identyfikatory i odpowiadający mu kontekst w dokumencie (np. [{123: ["brązowy lisów znane umożliwiające przejście zgodnie z odwołaniem w dokumencie 123", "z opóźnieniem psy są misnomer historyczne, jak pokazano w dokumencie 123"]})
 IA      | Odwrócony abstrakcyjny
-IA. IndexLength| Liczba elementów w indeksie (liczba słów w abstrakcyjny)
-IA. InvertedIndex| Listę słów abstrakcyjnej i ich odpowiedniej pozycji w oryginalnej abstrakcyjny (np. [{"": [0, 15, 30]}, {"brown": [1]}, {"fox":[2]}])
+IA.IndexLength| Liczba elementów w indeksie (liczba słów w abstrakcyjny)
+IA.InvertedIndex| Listę słów abstrakcyjnej i ich odpowiedniej pozycji w oryginalnej abstrakcyjny (np. [{"": [0, 15, 30]}, {"brown": [1]}, {"fox":[2]}])

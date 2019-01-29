@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
 ms.date: 06/28/2018
 ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
-ms.openlocfilehash: 86f6aa0de177196bb78ecdd855b21b3158b9c672
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4dd7f5044733f0eeb6bcf4cb59eb9785ae22d38f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37872504"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172072"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Usługi Azure AD, ograniczenia i limity
 Ten artykuł zawiera ograniczenia używania i inne limity usługi dotyczące usługi Azure Active Directory (Azure AD). Jeśli potrzebujesz pełnego zestawu limity usługi Microsoft Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md).

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: b9f2c29806c29de18c8346e77ddbfcf2bdb411f1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 36efb943855d36d1f830ba08554eabd0a8a88f50
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075996"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169335"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Współpraca B2B usługi Active Directory Azure — często zadawane pytania
 
@@ -73,7 +73,7 @@ Jeśli dzierżawa usługi Azure AD jest katalogu macierzystego użytkownika, mo�
  
 * Użytkowników-gości, którzy Zaloguj się przy użyciu konta Microsoft (na przykład guestuser@live.com) mogą resetować swoje hasła przy użyciu konta Microsoft, Samoobsługowe resetowanie haseł (SSPR). Zobacz [jak zresetować hasło do konta Microsoft](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).
 * Użytkowników-gości, którzy zarejestrują się przy użyciu konta Google lub innego zewnętrznego dostawcy tożsamości mogą resetować swoje hasła przy użyciu metody funkcji samoobsługowego resetowania HASEŁ jego dostawcy tożsamości. Na przykład gościa za pomocą konta Google guestuser@gmail.com mogą zresetować swoje hasło, postępując zgodnie z instrukcjami wyświetlanymi w [zmiany lub resetowania hasła](https://support.google.com/accounts/answer/41078).
-* Jeśli dzierżawa tożsamości jest just-in-time (JIT) lub "wirusowego" dzierżawy (co oznacza, że jest oddzielnym niezarządzanej dzierżawy platformy Azure), tylko użytkownik-Gość mogą zresetować swoje hasło.
+* Jeśli dzierżawa tożsamości jest just-in-time (JIT) lub "wirusowego" dzierżawy (co oznacza, że jest oddzielnym niezarządzanej dzierżawy platformy Azure), tylko użytkownik-Gość mogą zresetować swoje hasło. Czasami organizacji będzie [przejęcie zarządzania wirusowe dzierżaw](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/domains-admin-takeover) które są tworzone, gdy pracownicy korzystają ich służbowe adresy e-mail, aby się zarejestrować dla usług. Po organizacji ma utworzyć niezbędnej dzierżawy, tylko przez administratorów w organizacji można zresetować hasła użytkownika lub włączyć funkcji samoobsługowego resetowania HASEŁ. W razie potrzeby jako organizacji zapraszającej można usunąć konta gościa z katalogu i ponownie wysłać zaproszenia.
 * Jeśli w katalogu macierzystym użytkownika gościa jest dzierżawą usługi Azure AD, możesz zresetować hasła użytkownika. Na przykład możesz być może został utworzony przez użytkownika lub zsynchronizować użytkownika z usługi Active Directory w środowisku lokalnym i ustawić ich UserType do gościa. Ponieważ ten użytkownik jest umieszczone w katalogu, możesz zresetować swoje hasło w witrynie Azure portal.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics 365 oferuje pomocy online do współpracy B2B usługi Azure AD?

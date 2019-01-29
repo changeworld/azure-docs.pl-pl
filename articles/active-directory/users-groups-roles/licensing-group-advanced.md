@@ -10,16 +10,16 @@ editor: piotrci
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: b2e52b1e9aad05af173bf86e769e0c6ff7d28d9d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215416"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55195164"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenariusze, ograniczenia i znane problemy, używanie grup do zarządzania, Licencjonowanie w usłudze Azure Active Directory
 
@@ -69,7 +69,7 @@ W tym przykładzie należy zmodyfikować jednego użytkownika i ustaw ich extens
 
 Użytkownik może należeć do wielu grup z licencjami. Poniżej przedstawiono niektóre kwestie, należy wziąć pod uwagę:
 
-- Wiele licencji dla tego samego produktu może pokrywać się i powodują one wszystkie włączone usługi, które są stosowane do użytkownika. W poniższym przykładzie przedstawiono dwie grupy licencji: *E3 usługi podstawowej* zawiera usługi foundation, aby najpierw wdrożyć dla wszystkich użytkowników. I *E3 rozszerzone usług* zawiera dodatkowe usługi (aplikacji Sway i Planner), aby wdrożyć tylko dla niektórych użytkowników. W tym przykładzie użytkownik został dodany do obu grup:
+- Wiele licencji dla tego samego produktu może pokrywać się i powodują one wszystkie włączone usługi, które są stosowane do użytkownika. Poniższy przykład przedstawia dwa grup licencji: *Usługi podstawowej E3* zawiera usługi foundation, aby najpierw wdrożyć dla wszystkich użytkowników. I *E3 rozszerzone usług* zawiera dodatkowe usługi (aplikacji Sway i Planner), aby wdrożyć tylko dla niektórych użytkowników. W tym przykładzie użytkownik został dodany do obu grup:
 
   ![Zrzut ekranu przedstawiający włączone usługi](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -201,7 +201,7 @@ To przykładowe dane wyjściowe pokazują rozpoczęcia przetwarzania, wynikowe z
 
 Nie jest możliwe usunąć grupę za pomocą active przypisaną licencję usługi. Administrator może usunąć grupy nie zawierającemu, że spowoduje licencji były usuwane z użytkowników — z tego powodu, wymagamy, aby wszystkie licencje, aby najpierw usunąć z grupy, aby można było usunąć.
 
-Podczas próby usunięcia grupy w witrynie Azure portal może zostać wyświetlony powiadomienia o błędzie następująco: ![usunięcia grupy zrzut ekranu nie powiodło się.](./media/licensing-group-advanced/groupdeletionfailed.png)
+Podczas próby usunięcia grupy w witrynie Azure portal może zostać wyświetlony powiadomienia o błędzie następująco: ![Nie można usunąć grupy zrzut ekranu](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Przejdź do **licencji** karty w grupie i sprawdzić, czy są wszystkie licencje przypisane. Jeśli tak, usuń te licencje i spróbuj ponownie usunąć grupy.
 

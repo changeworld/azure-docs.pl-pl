@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 794a2c77c5601b76f258b2b73f5a01f3c6b8f8c9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 2f7e6cd577b1eabbaabdfe87fca8ea0f036a062d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712300"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149394"
 ---
 # <a name="web-search-endpoint"></a>Punkt końcowy wyszukiwania w sieci Web
 
@@ -25,7 +25,7 @@ ms.locfileid: "51712300"
 
 Aby uzyskać wyniki wyszukiwania w Internecie przy użyciu interfejsu API usługi Bing, Wyślij `GET` żądanie następujący punkt końcowy. Nagłówki i parametry adresu URL dalsze Definiowanie specyfikacji.
 
-**Punkt końcowy**: wyniki z Internetu zwraca, które są istotne dla użytkownika wyszukiwania zapytanie zdefiniowane przez `?q=""`.
+**Punkt końcowy**: Zwraca wyniki z Internetu, które są istotne dla zapytania wyszukiwania użytkownika zdefiniowane przez `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
@@ -33,7 +33,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/search
 
 Punkt końcowy: Aby uzyskać szczegółowe informacje na temat nagłówków, parametry, kody na rynku, obiekty odpowiedzi, błędów i innych, zobacz [interfejsu API sieci Web Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) odwołania.
 
-## <a name="response-json"></a>Odpowiedź JSON
+## <a name="response-json"></a>Response JSON
 
 Odpowiedź na żądanie wyszukiwania w sieci Web zawiera wszystkie wyniki jako obiekty JSON. Analizowanie wyników wymaga procedur, które obsługują elementy każdego typu. Zobacz [samouczek](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) i [kod źródłowy](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) przykłady.
 

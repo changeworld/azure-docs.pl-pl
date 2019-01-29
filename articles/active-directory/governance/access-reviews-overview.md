@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 11/19/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: ecaceea42d64ab15676a9cb5a42ee8659e40d517
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1f204d9e21f523b8bab12248dfaf5845902297fe
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847290"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151791"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądów dostępu usługi Azure AD?
 
@@ -41,13 +41,13 @@ Usługa Azure AD umożliwia współpracę wewnętrznie w Twojej organizacji i u�
 
 ## <a name="when-to-use-access-reviews"></a>Kiedy należy używać dostępu przeglądy?
 
-- **Zbyt wielu użytkowników pełniących uprzywilejowane role:** jest dobry pomysł, aby sprawdzić, ilu użytkowników mają dostęp administracyjny, ile z nich są globalne Admininistrators i jeśli istnieją zaproszenie gości lub partnerów, które nie zostały usunięte po jest przydzielony do wykonania zadania administracyjne. Można ponownie certyfikować użytkownicy przypisania roli w [ról katalogu usługi Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takich jak Administratorzy globalni lub [role zasobów platformy Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takie jak Administrator dostępu użytkowników w [usługi Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) środowiska.
-- **Jeśli usługa automation jest niewykonalne:** można utworzyć reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub grupach usługi Office 365, ale co zrobić, jeśli dane Kadrowe nie jest w usłudze Azure AD, lub jeśli użytkownicy nadal muszą mieć dostęp po opuszczeniu grupy to w opracowywaniu ich wymiany? Następnie można utworzyć przeglądu w tej grupie, aby upewnić się, że tych, którzy nadal muszą mieć dostęp powinni mieć przedłużony dostęp.
-- **Gdy grupa jest używana w celu nowe:** Jeśli masz grupę, która ma być synchronizowane z usługą Azure AD, lub jeśli planowane jest umożliwienie aplikacji Salesforce dla wszystkich użytkowników w grupie zespołu sprzedaży, przydatne byłoby poprosić właściciela grupy, aby zapoznać się z membershi grupy p przed grupy używany w zawartości innego ryzyka.
+- **Zbyt wielu użytkowników pełniących uprzywilejowane role:** To dobry pomysł, aby sprawdzić, ilu użytkowników mają dostęp administracyjny, ile z nich są globalne Admininistrators i jeśli istnieją zaproszenie gości lub partnerów, które nie zostały usunięte po przypisywane do wykonywania zadań administracyjnych. Można ponownie certyfikować użytkownicy przypisania roli w [ról katalogu usługi Azure AD](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takich jak Administratorzy globalni lub [role zasobów platformy Azure](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) takie jak Administrator dostępu użytkowników w [usługi Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) środowiska.
+- **Jeśli usługa automation jest praktyce:** Można utworzyć reguły dynamicznego członkostwa w grupach zabezpieczeń lub grupach usługi Office 365, ale co zrobić, jeśli dane Kadrowe nie jest w usłudze Azure AD lub jeśli użytkownicy nadal potrzebują dostępu po opuszczeniu grupy to w opracowywaniu ich wymiany? Następnie można utworzyć przeglądu w tej grupie, aby upewnić się, że tych, którzy nadal muszą mieć dostęp powinni mieć przedłużony dostęp.
+- **Gdy grupa jest używana do nowego celu:** Jeśli masz grupę, która ma być synchronizowane z usługą Azure AD lub planowane jest umożliwienie aplikacji Salesforce dla wszystkich użytkowników w grupie zespołu sprzedaży, należałoby poproś właściciela grupy, aby przejrzeć członkostwo w grupie przed grupy używany w co różne ryzyka tości.
 - **Dostęp do najważniejszych danych biznesowych:** dla niektórych zasobów może być wymagana poprosić osoby spoza IT regularnie wylogowanie i podać uzasadnienie w Dlaczego potrzebują dostępu na potrzeby inspekcji.
-- **Do obsługi listy wyjątków zasadę:** idealne świata, wszyscy użytkownicy wykonać dostępu zasady, aby zabezpieczyć dostęp do zasobów organizacji. Jednak czasami istnieją przypadków biznesowych, które wymagają wprowadzenia wyjątków. Jako administrator IT może zarządzać to zadanie, uniknąć nadzoru wyjątki od zasad i zapewnić audytorów dowód regularnie weryfikowane tych wyjątków.
-- **Poproś właściciele grupy, aby upewnić się, nadal potrzebują gości w ich grupach:** dostępem pracowników może można zautomatyzować niektóre zarządzania tożsamościami i Dostępem w lokalnej, ale nie zaproszonego gości. Jeśli grupy zapewnia gości dostęp do poufnej zawartości firmy, a następnie jego odpowiedzialność właściciela grupy, aby potwierdzić gości nadal masz potrzebą biznesową, aby uzyskać dostęp.
-- **Mają przeglądy powtarzanie okresowo:** cyklicznego przeglądy dostępu użytkowników na zestaw częstotliwości, np. kwartalnych co miesiąc, co tydzień, lub roczna, możesz skonfigurować i recenzenci będą powiadamiani na początku każdej recenzji. Recenzenci mogli zatwierdzać lub odrzucać dostęp za pomocą interfejsu przyjazne i za pomocą inteligentne zalecenia.
+- **Aby zachować listy wyjątków zasad:** W świecie idealne, wszyscy użytkownicy wykonać dostępu zasady, aby zabezpieczyć dostęp do zasobów organizacji. Jednak czasami istnieją przypadków biznesowych, które wymagają wprowadzenia wyjątków. Jako administrator IT może zarządzać to zadanie, uniknąć nadzoru wyjątki od zasad i zapewnić audytorów dowód regularnie weryfikowane tych wyjątków.
+- **Poproś właściciele grupy, aby upewnić się, że nadal potrzebują gości w ich grupach:** Dostępem pracowników może zautomatyzować niektóre zarządzania tożsamościami i Dostępem w lokalnej, ale nie zaproszeni goście. Jeśli grupy zapewnia gości dostęp do poufnej zawartości firmy, a następnie jego odpowiedzialność właściciela grupy, aby potwierdzić gości nadal masz potrzebą biznesową, aby uzyskać dostęp.
+- **Mają przeglądy powtarzanie okresowo:** Możesz skonfigurować cykliczny przeglądy dostępu użytkowników częstotliwością zestaw takich jak co tydzień, co miesiąc, co kwartał i co roku i recenzenci będą powiadamiani na początku każdej recenzji. Recenzenci mogli zatwierdzać lub odrzucać dostęp za pomocą interfejsu przyjazne i za pomocą inteligentne zalecenia.
 
 ## <a name="where-do-you-create-reviews"></a>Gdzie można utworzyć przeglądy?
 
@@ -57,17 +57,17 @@ W zależności od tego, co chcesz przejrzeć utworzysz zapoznania się z nimi do
 | --- | --- | --- | --- |
 | Członkowie grupy zabezpieczeń</br>Członkowie grupy pakietu Office | Określony osób dokonujących przeglądu</br>Właściciele grupy</br>Zapoznaj się samodzielnie | Przeglądy dostępu w usłudze Azure AD</br>Grupy usługi Azure AD | Panel dostępu |
 | Przypisane do połączonej aplikacji | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Przeglądy dostępu w usłudze Azure AD</br>Usługa Azure AD aplikacji przedsiębiorstwa (w wersji zapoznawczej) | Panel dostępu |
-| Rola katalogu usługi Azure AD | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Usługa Azure AD PIM | Azure Portal |
-| Rola zasobów platformy Azure | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Usługa Azure AD PIM | Azure Portal |
+| Rola katalogu usługi Azure AD | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Azure AD PIM | Azure Portal |
+| Rola zasobów platformy Azure | Określony osób dokonujących przeglądu</br>Zapoznaj się samodzielnie | Azure AD PIM | Azure Portal |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby korzystać z przeglądów dostępu, musi mieć jeden z następujących licencji:
 
 - Usługa Azure AD — warstwa Premium P2
-- Pakiet Enterprise Mobility + Security (EMS) E5 licencji
+- Enterprise Mobility + Security (EMS) E5 license
 
-Aby uzyskać więcej informacji, zobacz [jak: Zarejestruj się w usłudze Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) lub [pakietu Enterprise Mobility + Security E5 w wersji próbnej](https://aka.ms/emse5trial).
+Aby uzyskać więcej informacji, zobacz [Instrukcje: Zarejestruj się w usłudze Azure Active Directory — wersja Premium](../fundamentals/active-directory-get-started-premium.md) lub [pakietu Enterprise Mobility + Security E5 w wersji próbnej](https://aka.ms/emse5trial).
 
 ## <a name="get-started-with-access-reviews"></a>Rozpoczynanie pracy za pomocą przeglądów dostępu
 

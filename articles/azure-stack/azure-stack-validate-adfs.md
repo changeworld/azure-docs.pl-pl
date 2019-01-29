@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 87e3f03ce5d4c65d5c4b1754300f5d57feca2a49
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 7e6c54add856a69e1750b0b6ca0a058c2d80bfd8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416515"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101740"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack"></a>Zweryfikuj integrację usług AD FS dla usługi Azure Stack
 
@@ -29,7 +29,7 @@ Aby sprawdzić, czy środowisko jest gotowe do integracji usługi Active Directo
 Narzędzie sprawdzania gotowości weryfikuje:
 
 * *Metadanych Federacji* zawiera prawidłowe elementy XML dla Federacji.
-* *Certyfikat SSL usług AD FS* mogą zostać pobrane i łańcuch zaufania może zostać utworzony. Dla sygnatury usług AD FS muszą ufać łańcucha certyfikatów SSL. Certyfikat musi być podpisany przez ten sam *urząd certyfikacji* jako certyfikaty wdrożenia usługi Azure Stack lub przez partnera zaufanego głównego urzędu. Aby uzyskać pełną listę partnerów urząd zaufany główny urząd certyfikacji, zobacz [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+* *Certyfikat SSL usług AD FS* mogą zostać pobrane i łańcuch zaufania może zostać utworzony. Dla sygnatury usług AD FS muszą ufać łańcucha certyfikatów SSL. Certyfikat musi być podpisany przez ten sam *urząd certyfikacji* używany na potrzeby certyfikatów wdrożenia usługi Azure Stack lub przez zaufany główny urząd partnera. Aby uzyskać pełną listę partnerów urząd zaufany główny urząd certyfikacji, zobacz [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 * *Certyfikatu podpisywania usług AD FS* jest zaufaną i nie jest bliskie wygaśnięcia.
 
 Aby uzyskać więcej informacji na temat integracji centrum danych usługi Azure Stack, zobacz [Integracja z centrum danych usługi Azure Stack — tożsamość](azure-stack-integrate-identity.md).
@@ -101,8 +101,8 @@ Domyślnie oba pliki są zapisywane w `C:\Users\<username>\AppData\Local\Temp\Az
 
 Użycie:
 
-* **-OutputPath**: *ścieżki* parametru na końcu polecenia uruchomienia, aby określić lokalizację inny raport.
-* **-CleanReport**: parametr na końcu polecenia uruchomienia, aby wyczyścić AzsReadinessCheckerReport.json poprzednich informacji w raporcie. Aby uzyskać więcej informacji, zobacz [raportu sprawdzania poprawności w usłudze Azure Stack](azure-stack-validation-report.md).
+* **-OutputPath**: *Ścieżki* parametru na końcu polecenia uruchomienia, aby określić lokalizację inny raport.
+* **-CleanReport**: Parametr na końcu polecenia uruchomienia, aby wyczyścić AzsReadinessCheckerReport.json poprzednich informacji w raporcie. Aby uzyskać więcej informacji, zobacz [raportu sprawdzania poprawności w usłudze Azure Stack](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Błędy sprawdzania poprawności
 
@@ -114,9 +114,9 @@ Poniższe przykłady zapewnić wskazówki dotyczące typowych błędów sprawdza
 
 `Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`
 
-**Przyczyna**: nie można prawidłowo załadować moduł sprawdzania gotowości Załaduj programu PowerShell.
+**Przyczyna**: Nie można prawidłowo załadować moduł sprawdzania gotowości Załaduj programu PowerShell.
 
-**Rozpoznawanie**: jawnie Zaimportuj moduł sprawdzania gotowości. Skopiuj i wklej następujący kod do programu PowerShell i zaktualizuj \<wersji\> numerem dla obecnie zainstalowanej wersji.
+**Rozwiązanie**: Zaimportuj moduł sprawdzania gotowości jawnie. Skopiuj i wklej następujący kod do programu PowerShell i zaktualizuj \<wersji\> numerem dla obecnie zainstalowanej wersji.
 
 `Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force`
 
