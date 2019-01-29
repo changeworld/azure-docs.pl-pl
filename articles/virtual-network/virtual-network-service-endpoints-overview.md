@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 77d21a9db54a34d3f9981929bb90dfd3b54e23dd
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 45a0c179677a0a2c144ea33dbfb031c88257e1cb
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190599"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382511"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 
@@ -58,7 +58,8 @@ Punkty końcowe usługi oferują następujące korzyści:
 
 - Funkcja jest dostępna tylko dla sieci wirtualnych wdrożonych za pomocą modelu wdrażania przy użyciu usługi Azure Resource Manager.
 - Punkty końcowe są włączone w podsieciach skonfigurowanych w sieciach wirtualnych platformy Azure. Punktów końcowych nie można używać dla ruchu ze środowiska lokalnego do usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usług platformy Azure ze środowiska lokalnego](#securing-azure-services-to-virtual-networks)
-- W przypadku usługi Azure SQL punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. W przypadku usług Azure Storage i ADLS Gen 1 na potrzeby obsługi ruchu w magazynach GRS i RA-GRS punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- W przypadku usługi Azure SQL punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. W przypadku usługi Azure Storage na potrzeby obsługi ruchu w magazynach GRS i RA-GRS punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- W przypadku usługi ADLS Gen 1 funkcja integracji z siecią wirtualną jest dostępna tylko dla sieci wirtualnych w tym samym regionie.
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Zabezpieczanie usług platformy Azure w sieciach wirtualnych
 

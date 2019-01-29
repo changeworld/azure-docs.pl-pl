@@ -47,6 +47,8 @@ items:
         href: iot-accelerators-remote-monitoring-deploy-local.md
       - name: Wdrażanie lokalne za pomocą programu VS Code
         href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
+      - name: Wdrażanie lokalne za pomocą środowiska IntelliJ
+        href: iot-accelerators-remote-monitoring-deploy-local-java.md
       - name: Wdrażanie lokalne za pomocą platformy Docker
         href: iot-accelerators-remote-monitoring-deploy-local-docker.md
     - name: Podłączanie rzeczywistego urządzenia
@@ -257,9 +259,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Zdalne monitorowanie w wersji 1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 04fb84d9f62f2e09dc3f493d5df06cc65e0022b6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3e3b8a7319a622d4b340b4ac704c45c00030a23b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451515"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099773"

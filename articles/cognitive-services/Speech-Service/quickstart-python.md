@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy w języku Python za pomocą zestawu SDK usługi Mowa'
+title: 'Szybki start: rozpoznawanie mowy, Python — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w języku Python przy użyciu zestawu SDK usługi Mowa
+description: Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu zestawu SDK usługi Mowa dla języka Python. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 services: cognitive-services
 author: chlandsi
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: chlandsi
-ms.openlocfilehash: 7610b12b351b2652df7ade603711d4d92e587292
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 40869457ce933368e17a2054dfca50fc4505fa22
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723913"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54381568"
 ---
-# <a name="quickstart-using-the-speech-service-from-python"></a>Szybki start: Korzystanie z usługi rozpoznawania mowy w języku Python
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla języka Python
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -39,7 +39,7 @@ Przed rozpoczęciem pracy zapoznaj się z poniższą listą wymagań wstępnych:
 
 * W systemie Windows potrzebny jest też składnik [Microsoft Visual C++ Redistributable for Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) dla danej platformy.
 
-## <a name="get-the-speech-sdk-python-package"></a>Pobieranie pakietu zestawu Speech SDK dla języka Python
+## <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
@@ -61,7 +61,7 @@ W przypadku problemów lub braku funkcji zapoznaj się z naszą [stroną pomocy 
 
 ## <a name="create-a-python-application-using-the-speech-sdk"></a>Tworzenie aplikacji języka Python za pomocą zestawu Speech SDK
 
-### <a name="running-the-sample-in-a-terminal"></a>Uruchamianie przykładu w terminalu
+### <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
 Możesz skopiować [kod](#quickstart-code) z tego przewodnika Szybki start do pliku źródłowego `quickstart.py` i uruchomić go w środowisku IDE lub w konsoli
 
@@ -69,13 +69,13 @@ Możesz skopiować [kod](#quickstart-code) z tego przewodnika Szybki start do pl
 python quickstart.py
 ```
 
-albo możesz pobrać ten samouczek Szybki start jako notes [Jupyter](https://jupyter.org) z [repozytorium przykładów dotyczących mowy w usłudze Cognitive Services](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) i uruchomić go jako notes.
+lub możesz pobrać ten samouczek Szybki start jako notes programu [Jupyter](https://jupyter.org) z [repozytorium przykładów mowy usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) i uruchomić go jako notes.
 
-### <a name="quickstart-code"></a>Kod przewodnika Szybki start
+### <a name="sample-code"></a>Przykładowy kod
 
 [!code-python[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/python/quickstart.py#code)]
 
-### <a name="installing-the-speech-sdk-python-package-and-running-the-sample-in-visual-studio-code"></a>Instalowanie pakietu zestawu Speech SDK dla języka Python i uruchamianie przykładu w programie Visual Studio Code
+### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalowanie i używanie zestawu SDK usługi Mowa za pomocą programu Visual Studio Code
 
 1. [Pobierz](https://www.python.org/downloads/) i zainstaluj 64-bitową wersję (3.5 lub nowszą) języka Python na komputerze.
 1. [Pobierz](https://code.visualstudio.com/Download) i zainstaluj program Visual Studio Code.
@@ -91,7 +91,7 @@ albo możesz pobrać ten samouczek Szybki start jako notes [Jupyter](https://jup
 1. Jeśli został już wybrany interpreter języka Python, zostanie wyświetlony po lewej stronie paska stanu u dołu okna.
    W przeciwnym razie możesz wyświetlić listę dostępnych interpreterów języka Python, otwierając **paletę poleceń** (`Ctrl+Shift+P`), wpisując **Python: Select Interpreter** (Python: wybierz interpreter) i wybierając odpowiedni interpreter.
 1. Jeśli pakiet zestawu Speech SDK dla języka Python nie jest jeszcze zainstalowany dla wybranego interpretera języka Python, można to łatwo zrobić z poziomu programu Visual Studio Code.
-   Aby zainstalować pakiet zestawu Speech SDK, otwórz terminal, ponownie wyświetlając paletę poleceń (`Ctrl+Shift+P`) i wpisując **Terminal: Create New Integrated Terminal** (Terminal: utwórz nowy zintegrowany terminal).
+   Aby zainstalować pakiet zestawu SDK usługi Mowa, otwórz terminal, ponownie wyświetlając paletę poleceń (`Ctrl+Shift+P`) i wpisując **Terminal: Create New Integrated Terminal** (Terminal: utwórz nowy zintegrowany terminal).
    W wyświetlonym terminalu wprowadź polecenie `python -m pip install azure-cognitiveservices-speech` lub polecenie odpowiednie dla swojego systemu.
 1. Aby uruchomić przykładowy kod, kliknij prawym przyciskiem myszy w dowolnym miejscu w edytorze, a następnie wybierz pozycję **Run Python File in Terminal** (Uruchom plik języka Python w terminalu).
    Po otrzymaniu monitu powiedz kilka słów. Transkrypcja tekstu powinna zostać wyświetlona po chwili.

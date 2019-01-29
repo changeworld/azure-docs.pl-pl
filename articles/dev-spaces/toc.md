@@ -28,6 +28,7 @@
 ### [Korzystanie z niestandardowego źródła danych NuGet](how-to/use-custom-nuget-feed.md)
 ### [Używanie narzędzia kubectl w ramach usługi Azure Dev Spaces](how-to/use-kubectl-with-azure-dev-spaces.md)
 ### [Uaktualnianie rozszerzenia Azure Dev Spaces Tools](how-to/upgrade-tools.md)
+### [Ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) dla usługi Azure Dev Spaces](how-to/dev-spaces-business-continuity.md)
 
 ## [Rozwiązywanie problemów](troubleshooting.md)
 

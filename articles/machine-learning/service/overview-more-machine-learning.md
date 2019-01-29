@@ -9,32 +9,54 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 12/04/2018
-ms.openlocfilehash: b2d7888234a05c82f1245bd58b98f505989d7f2d
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 1/17/2019
+ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557890"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389143"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Jakie produkty z zakresu uczenia maszynowego oferuje firma Microsoft?
 
 Firma Microsoft dostarcza różne rozwiązania z zakresu tworzenia i wdrażania modeli uczenia maszynowego oraz zarządzania nimi. Porównaj te produkty i wybierz najodpowiedniejsze do tworzenia swoich rozwiązań z zakresu uczenia maszynowego w najbardziej efektywny sposób.
 
-| Produkt związany z uczeniem maszynowym | Co to jest | Co można zrobić za jego pomocą |
+
+**Opcje oparte na chmurze**
+
+Następujące opcje są dostępne dla uczenia maszynowego w chmurze platformy Azure.
+
+| Opcje&nbsp;w chmurze | Co to jest | Co można zrobić za jego pomocą |
 |-|-|-|
-| ***W chmurze*** | | |
 | [Usługa Azure Machine Learning](#azure-machine-learning-services) | Zarządzana usługa uczenia maszynowego w chmurze  | Szkolenie i wdrażanie modeli na platformie Azure przy użyciu języka Python oraz interfejsu wiersza polecenia i zarządzanie nimi |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio) | Interfejs wizualny uczenia maszynowego z funkcją „przeciągnij i upuść” | Tworzenie i wdrażanie modeli przy użyciu wstępnie skonfigurowanych algorytmów oraz eksperymentowanie z nimi |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio) | Interfejs wizualny uczenia maszynowego z funkcją „przeciągnij i upuść” | Tworzenie i wdrażanie modeli przy użyciu wstępnie skonfigurowanych algorytmów oraz eksperymentowanie z nimi (języki Python i R)|
 | [Azure Databricks](#azure-databricks) | Platforma analityczna oparta na projekcie Spark | Tworzenie i wdrażanie modeli i przepływów pracy danych |
 | [Azure Cognitive Services](#azure-cognitive-services) | Usługi platformy Azure wykorzystujące gotowe modele sztucznej inteligencji i uczenia maszynowego | Łatwe dodawanie do aplikacji funkcji inteligentnych |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | Maszyna wirtualna ze wstępnie zainstalowanymi narzędziami do analizy danych | Tworzenie rozwiązań uczenia maszynowego we wstępnie skonfigurowanym środowisku |
-| ***Środowisko lokalne***<br>*(serwery lokalne także mogą być uruchamiane na maszynie wirtualnej w chmurze)* | | |
+
+**Opcje lokalne**
+
+Następujące opcje są dostępne dla uczenia maszynowego w środowisku lokalnym. Serwery lokalne mogą być także uruchamiane na maszynie wirtualnej w chmurze.
+
+| Opcje&nbsp;lokalne | Co to jest | Co można zrobić za jego pomocą |
+|-|-|-|
 | [SQL Server Machine Learning Services](#sql-server-machine-learning-services) | Aparat analityczny osadzony w języku SQL | Tworzenie i wdrażanie modeli w ramach platformy SQL Server |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | Autonomiczny serwer przedsiębiorstwa do analizy predykcyjnej | Tworzenie i wdrażanie modeli za pomocą języków R i Python |
-| ***Narzędzia programistyczne*** | | |
+
+**Narzędzia programistyczne**
+
+Następujące narzędzia programistyczne są dostępne dla uczenia maszynowego.
+
+| Narzędzia&nbsp;programistyczne | Co to jest | Co można zrobić za jego pomocą |
+|-|-|-|
 | [ML.NET](#mlnet) | Międzyplatformowy zestaw ML SDK typu „open source” | Tworzenie rozwiązań uczenia maszynowego dla aplikacji platformy .NET |
 | [Windows ML](#windows-ml) | Platforma Windows 10 ML | Ocena przeszkolonych modeli na urządzeniu z systemem Windows 10 |
+
+
+
+
+
+
 
 ## <a name="azure-machine-learning-service"></a>Usługa Azure Machine Learning
 

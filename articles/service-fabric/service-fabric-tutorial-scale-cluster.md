@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 010/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 54433aa9e618bdde7badec3be8a786f943f88198
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: abc60d11a2e6b1f830822e93a8fef40be1181f07
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236917"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54426033"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Samouczek: skalowanie klastra usługi Service Fabric na platformie Azure
 
@@ -44,8 +44,8 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) albo [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Zainstaluj [moduł Azure PowerShell w wersji 4.1 lub nowszej](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) albo [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Utwórz bezpieczny [klaster systemu Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) lub [klaster systemu Linux](service-fabric-tutorial-create-vnet-and-linux-cluster.md) na platformie Azure.
 * W przypadku wdrażania klastra systemu Windows skonfiguruj środowisko deweloperskie w systemie Windows. Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com), a następnie zainstaluj obciążenia **Programowanie na platformie Azure**, **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych** oraz **Programowanie dla wielu platform w środowisku .NET Core**.  Następnie skonfiguruj [środowisko deweloperskie platformy .NET](service-fabric-get-started.md).
 * W przypadku wdrażania klastra systemu Linux skonfiguruj środowisko projektowe Java w systemie [Linux](service-fabric-get-started-linux.md) lub [MacOS](service-fabric-get-started-mac.md).  Zainstaluj [interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md).

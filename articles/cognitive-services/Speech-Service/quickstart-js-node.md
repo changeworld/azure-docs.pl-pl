@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: Rozpoznawanie mowy w języku JavaScript na platformie Node.js przy użyciu zestawu SDK usługi Mowa'
+title: 'Szybki start: rozpoznawanie mowy, Node.js — usługi mowy'
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak rozpoznawać mowę w języku JavaScript na platformie Node.js przy użyciu zestawu SDK usługi Mowa
+description: Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu zestawu SDK usługi Mowa dla środowiska Node.js. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: 35652b169067bc545fa0d1fcc977bbaee79ec3aa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e0ae916687ca32835dd8daf6e5059b8f6eea0ff6
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724437"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54382163"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-nodejs-using-the-speech-service-sdk"></a>Szybki start: Rozpoznawanie mowy w języku JavaScript na platformie Node.js przy użyciu zestawu SDK usługi Mowa
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla środowiska Node.js
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -29,9 +29,9 @@ Aplikacja jest oparta na [zestawie Speech SDK z usługi Microsoft Cognitive Serv
 * Klucz subskrypcji platformy Azure dla usługi Mowa. [Uzyskaj bezpłatnie](get-started.md).
 * Bieżąca wersja platformy [Node.js](https://nodejs.org).
 
-## <a name="create-a-new-project-folder"></a>Tworzenie nowego folderu projektu
+## <a name="create-a-new-project"></a>Tworzenie nowego projektu
 
-Utwórz nowy, pusty folder i zainicjuj go jako nowy projekt języka JavaScript i platformy Node.js.
+Utwórz nowy folder i zainicjuj projekt.
 
 ```sh
 npm init -f
@@ -39,13 +39,17 @@ npm init -f
 
 Spowoduje to zainicjowanie plików package.json przy użyciu wartości domyślnych. Prawdopodobnie będziesz później edytować ten plik.
 
-## <a name="install-the-speech-sdk-for-javascript-into-that-folder"></a>Instalowanie zestawu Speech SDK dla języka JavaScript w tym folderze
+## <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
 
-Dodaj zestaw Speech SDK do projektu platformy Node.js za pomocą polecenia `npm install microsoft-cognitiveservices-speech-sdk`.
+Dodaj zestaw SDK usługi Mowa do projektu platformy Node.js.
 
-Spowoduje to pobranie i zainstalowanie najnowszej wersji zestawu Speech SDK i wymaganych wstępnie elementów z witryny npmjs. Zestaw SDK zostanie zainstalowany w katalogu `node_modules` w folderze projektu.
+```
+npm install microsoft-cognitiveservices-speech-sdk
+```
 
-## <a name="using-the-speech-sdk"></a>Korzystanie z zestawu Speech SDK
+Spowoduje to pobranie i zainstalowanie najnowszej wersji zestawu SDK usługi Mowa i wymaganych wstępnie elementów z witryny npmjs. Zestaw SDK zostanie zainstalowany w katalogu `node_modules` w folderze projektu.
+
+## <a name="use-the-speech-sdk"></a>Korzystanie z zestawu SDK usługi Mowa
 
 Utwórz w folderze nowy plik o nazwie `index.js`, a następnie otwórz ten plik za pomocą edytora tekstów.
 
@@ -58,7 +62,7 @@ Dodaj następujący kod JavaScript:
 
 [!code-javascript[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/js-node/index.js#code)]
 
-## <a name="running-the-sample-from-command-line"></a>Uruchamianie przykładu z wiersza polecenia
+## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
 Aby uruchomić aplikację, dostosuj wartości `YourSubscriptionKey`, `YourServiceRegion` i `YourAudioFile.wav` do swojej konfiguracji. Następnie możesz ją uruchomić, wywołując następujące polecenie:
 
@@ -88,7 +92,7 @@ SpeechRecognitionResult {
 }
 ```
 
-## <a name="running-the-sample-from-visual-studio-code"></a>Uruchamianie przykładu z programu Visual Studio Code
+## <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalowanie i używanie zestawu SDK usługi Mowa za pomocą programu Visual Studio Code
 
 Przykład możesz też uruchomić z programu Visual Studio Code. Wykonaj następujące kroki, aby zainstalować, otworzyć i uruchomić ten przewodnik Szybki start:
 

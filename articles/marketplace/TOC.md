@@ -35,7 +35,10 @@
 #### [Promowanie swojej firmy we współpracy z firmą Microsoft](./gtm-promote-your-business.md)
 #### [Preferowane rozwiązania](./preferred-solutions.md) 
 
-### [Pomoc techniczna dla witryny Azure Marketplace i usługi AppSource](./support-azure-marketplace.md)  
+### [Pomoc techniczna dla witryny Azure Marketplace i usługi AppSource](./support-azure-marketplace.md)
+#### [Portal Marketplace — często zadawane pytania](./marketplace-faq-publisher-guide.md)
+#### [Warunki dotyczące witryny Marketplace](./marketplace-terms.md)
+#### [Portal Marketplace — zasady udziału](./marketplace-participation-policy.md)
 
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
@@ -151,7 +154,6 @@
 #### [Publikowanie oferty](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [Aktualizowanie istniejącej oferty](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
 #### [Interfejsy API aplikacji SaaS](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
-#### [Klient autotestu SaaS](./cloud-partner-portal/saas-app/cpp-selftest-client.md)
 
 ### [Oferta maszyny wirtualnej](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [Wymagania wstępne](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
@@ -176,6 +178,7 @@
 ###### [Szablon wdrożenia wirtualnego dysku twardego](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
 ###### [Wdrażanie maszyny wirtualnej z witryny Marketplace](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-marketplace.md)
 ##### [Certyfikowanie obrazu maszyny wirtualnej](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
+##### [Klient autotestu maszyny wirtualnej](./cloud-partner-portal/virtual-machine/cpp-selftest-client.md)
 ##### [Uzyskiwanie identyfikatora URI sygnatury dostępu współdzielonego](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
 ##### [Typowe problemy z adresem URL sygnatury dostępu współdzielonego](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
 #### [Publikowanie oferty maszyny wirtualnej](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)

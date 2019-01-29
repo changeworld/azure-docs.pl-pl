@@ -272,6 +272,16 @@ items:
           href: bulk-executor-dot-net.md
         - name: Funkcja wykonywania zbiorczego — biblioteka Java
           href: bulk-executor-java.md
+      - name: Tworzenie w środowisku Java
+        items:
+        - name: Używanie programu Spring Boot Starter
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+        - name: Używanie interfejsu API Apache Cassandra rozwiązania Spring Data
+          href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+        - name: Używanie rozwiązania Spring Data Gremlin Starter
+          href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
+        - name: Używanie interfejsu API bazy danych MongoDB rozwiązania Spring Data
+          href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
     - name: Dokumentacja
       items:
       - name: .NET
@@ -617,9 +627,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 75984b49a5af0538c7534fb326808dcb3c35b46c
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359803"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094482"

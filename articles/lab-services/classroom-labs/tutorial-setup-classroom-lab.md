@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: babff55d6684feb1f0414970616260be96b994f4
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: d0d02f491f14cc6e0664d79bcfd2cda44d433b5b
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706011"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389960"
 ---
-# <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: konfigurowanie laboratorium na potrzeby zajęć 
+# <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: Konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
 
 W tym samouczku wykonasz następujące czynności:
@@ -93,7 +93,7 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 1. Zostanie wyświetlony **pulpit nawigacyjny** laboratorium. 
     
     ![Pulpit nawigacyjny laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. Przejdź do strony **Maszyny wirtualne** i sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
+4. Przejdź na stronę **Maszyny wirtualne**, wybierając pozycję Maszyny wirtualne w menu po lewej stronie lub wybierając kafelek Maszyny wirtualne. Sprawdź, czy są widoczne maszyny wirtualne o stanie **Nie przypisano**. Te maszyny wirtualne nie zostały jeszcze przypisane do uczniów. Powinny mieć stan **Zatrzymano**. Z poziomu tej strony możesz uruchomić maszynę wirtualną ucznia, połączyć się z maszyną wirtualną, zatrzymać maszynę wirtualną i usunąć maszynę wirtualną. Maszyny wirtualne możesz uruchomić na tej stronie lub pozwolić, aby zrobili to uczniowie. 
 
     ![Maszyny wirtualne w stanie Zatrzymano](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -112,19 +112,12 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 ## <a name="send-registration-link-to-students"></a>Wysyłanie linków rejestracyjnych do uczniów
 
 1. Jeśli jeszcze nie jesteś na tej stronie, przełącz się do widoku **Użytkownicy**. 
-2. Wybierz kafelek **Pobierz link rejestracji**.
+2. Wybierz pozycję **Pobierz link rejestracji** na pasku narzędzi.
+1. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Kopiuj**. Link zostanie skopiowany do Schowka.
 
-    ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
-1. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Kopiuj**. Link zostanie skopiowany do Schowka. 
-
-    ![Link rejestracji ucznia](../media/tutorial-setup-classroom-lab/registration-link.png)
-2. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Zamknij**. 
-4. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie. Jeśli ustawienie **Ogranicz dostęp** jest włączone i masz listę użytkowników, wykonaj następujące czynności:
-    1. Wybierz **adres e-mail** użytkownika na liście. 
-    2. Zostanie wyświetlone okno domyślnego programu poczty e-mail z wypełnionym polem adresu **DO**. 
-    3. Wklej skopiowany wcześniej **adres URL rejestracji**. 
-    4. Wyślij wiadomość **e-mail**.
-
+    ![Link rejestracji](../media/tutorial-setup-classroom-lab/registration-link.png)
+1. W oknie dialogowym **Rejestracja użytkownika** wybierz przycisk **Zamknij**. 
+2. Udostępnij link rejestracji uczniowi, aby mógł się zarejestrować w klasie.
 
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku utworzono i skonfigurowano laboratorium na potrzeby zajęć. Aby dowiedzieć się, jak uczeń może uzyskać dostęp do maszyny wirtualnej w laboratorium przy użyciu linku rejestracyjnego, przejdź do następnego samouczka:
