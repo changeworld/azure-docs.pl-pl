@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 10/17/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: da22c09a227069af0eeb42ab67a59189ae494185
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 81df0a776cd22490342230567deacb23097cd12e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256676"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094193"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Wymagania systemowe bramy pola danych platformy Azure (wersja zapoznawcza)
 
@@ -46,7 +46,7 @@ Poniżej przedstawiono listę obsługiwanych systemów operacyjnych dla klientó
 
 | **System operacyjny i platformy** | **Wersje** |
 | --- | --- |
-| Windows Server |2012 R2 <br> 2016 |
+| Windows Server |2012 R2 <br> 2016 <br> 2019 |
 | Windows |8, 10 |
 | SUSE Linux |Enterprise Server 12 (x86_64)|
 | Ubuntu |16.04.3 LTS|
@@ -64,7 +64,7 @@ Poniżej przedstawiono listę obsługiwanych systemów operacyjnych dla klientó
 | **System operacyjny i platformy**  |**Wersje**   |**Uwagi**  |
 |---------|---------|---------|
 |Funkcja Hyper-V  |  2012 R2 <br> 2016  |         |
-|Host VMware ESXi     | 6.0 <br> 6.5        |Narzędzia VMware nie są obsługiwane.         |
+|VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |Narzędzia VMware nie są obsługiwane.         |
 
 
 ## <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
@@ -103,7 +103,7 @@ Poniżej przedstawiono listę przeglądarek obsługiwanych dla lokalnego interne
 
 Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, aby umożliwić SMB, w chmurze lub ruch związany z zarządzaniem. W tej tabeli *w* lub *dla ruchu przychodzącego* odnosi się do kierunku z które dostępu przychodzących żądań klienta do Twojego urządzenia. *Limit* lub *wychodzącego* Określa kierunek, w którym urządzenie bramy pola danych wysyła dane zewnętrznie, poza wdrożenia: na przykład, ruch wychodzący do Internetu.
 
-| Nr portu.| Wewnątrz lub na zewnątrz | Zakres portów| Wymagane|   Uwagi                                                             |                                                                                     |
+| Nr portu.| Wewnątrz lub na zewnątrz | Zakres portów| Wymagany|   Uwagi                                                             |                                                                                     |
 |--------|---------|----------|--------------|----------------------|---------------|
 | TCP 80 (HTTP)|Wyjście|WAN |Nie|Wychodząca przez port służy do dostępu do Internetu do pobierania aktualizacji. <br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika. |                          
 | TCP 443 (HTTPS)|Wyjście|WAN|Yes|Wychodząca przez port jest używany do uzyskiwania dostępu do danych w chmurze.<br>Serwer proxy ruchu wychodzącego w sieci web jest użytkownika.|   
@@ -129,10 +129,10 @@ Firma Microsoft zaleca ustawienie reguły zapory dla ruchu wychodzącego, oparte
 |    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    Aktywacja urządzenia                                                                                    |
 |    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    Odwoływanie certyfikatów                                                                               |
 |    https://*.core.windows.net/* https://*. data.microsoft.com http://*. msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Konta usługi Azure storage i monitorowania                                                                |
-|    http://windowsupdate.microsoft.com<br>http://*. windowsupdate.microsoft.com<br>https://*. windowsupdate.microsoft.com<br>http://*. update.microsoft.com<br>https://*. update.microsoft.com<br>http://*. windowsupdate.com<br>http://download.microsoft.com<br>http://*. download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*. ws.microsoft.com<br>https://*. ws.microsoft.com<br>http://*.MP.microsoft.com        |    Serwerami usługi Microsoft Update                                                                             |
-|    http://*.Deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
+|    http://windowsupdate.microsoft.com<br>http://*.windowsupdate.microsoft.com<br>https://*.windowsupdate.microsoft.com<br>http://*.update.microsoft.com<br>https://*.update.microsoft.com<br>http://*.windowsupdate.com<br>http://download.microsoft.com<br>http://*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://*.ws.microsoft.com<br>https://*.ws.microsoft.com<br>http://*.mp.microsoft.com        |    Serwerami usługi Microsoft Update                                                                             |
+|    http://*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                             |    Akamai CDN                                                                                           |
 |    https://*.partners.extranet.microsoft.com/*                                                                                                                                                                                                                                                                                                                                                                                                        |    Pakiet dla pomocy technicznej                                                                                      |
-|    http://*.Data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    Usługa telemetrii w Windows, zobacz aktualizację komfort i diagnostycznych telemetrii      |
+|    http://*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                        |    Usługa telemetrii w Windows, zobacz aktualizację komfort i diagnostycznych telemetrii      |
 |                                                                                                                                                                                                                                                                                                                                                                                                                                                       |                                                                                                         |
 
 

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ad62b306849b2291c81399cedc1634057e2eec9d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828098"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55177036"
 ---
 # <a name="publish-azure-application-offer"></a>Publikowanie oferty aplikacji platformy Azure
 
@@ -28,6 +28,7 @@ Po utworzeniu oferty, podając informacje o **nowa oferta** strony, możesz opub
 Na poniższym diagramie przedstawiono główne kroki w procesie publikowania w celu skorzystania z oferty "Przejdź na żywo".
 
 ![Kroki publikowania oferty](./media/offer-publishing-steps.png)
+
 
 ## <a name="detailed-description-of-publishing-steps"></a>Szczegółowy opis kroków publikowania
 
@@ -44,12 +45,14 @@ Poniższej tabeli wymieniono i opisano poszczególne kroki publikowania i zapewn
 | Przegląd firmy Microsoft                | 7 — 14 dni | Firma Microsoft całościowo przeglądy aplikacji systemu Azure i wiadomości e-mail, jeśli zostaną wykryte problemy.  Długość tego kroku zależy od złożoności aplikacji problemów niewykrytych i jak szybko możesz Reaguj na nie.  |
 | Na żywo                           | < 1 dzień | Oferta jest zwolniony, replikowane do określonych regionów i udostępnione publicznie. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
+
  
 Możesz monitorować proces publikowania w **stan** karcie oferty w portalu Cloud Partner.
 
 ![Karta Stan dla oferty aplikacji platformy Azure](./media/offer-status-tab.png)
 
 Po zakończeniu procesu publikowania, oferty, zostaną wyświetlone w [kategorii aplikacji Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/).
+
 
 
 ## <a name="errors-and-review-feedback"></a>Błędy i opinii

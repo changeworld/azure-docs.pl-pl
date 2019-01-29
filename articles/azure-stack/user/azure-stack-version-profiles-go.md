@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 36496dd80111689b510bbbd27edc35a454d230a3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f865d08f742ebd1072b80a95960609e6ae5f4a82
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448296"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098412"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Go w usłudze Azure Stack
 
@@ -33,9 +33,9 @@ Profil jest kombinacją różnych typów zasobów z różnymi wersjami z różny
 
 W zestawie SDK Przejdź profile są dostępne w ścieżce profile mają wersję w **RRRR-MM-DD** formatu. W tej chwili, najnowsza wersja interfejsu API usługi Azure Stack w profilu jest **2017-03-09**. Aby zaimportować dla danej usługi z profilu, należy zaimportować jego odpowiedniego modułu z profilu. Na przykład, aby zaimportować **obliczenia** usługi z **2017-03-09** profilu, użyj następującego kodu:
 
-````go
+```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute"
-````
+```
 
 ## <a name="install-azure-sdk-for-go"></a>Zainstaluj zestaw Azure SDK dla języka Go
 

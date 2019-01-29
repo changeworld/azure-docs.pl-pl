@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: b9fa5fff46fa330a55125053b831c780f21f6e8f
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54404671"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55147930"
 ---
 Można korzystać z zalet wiele okazji do monitorowania maszyn wirtualnych, zbierając, wyświetlanie i analizowanie danych diagnostycznych i dane dziennika. W prostych [monitorowania](../articles/azure-monitor/overview.md) ekran Przegląd maszyny wirtualnej, można użyć dla maszyny Wirtualnej w witrynie Azure portal. Możesz użyć [rozszerzenia](../articles/virtual-machines/windows/extensions-features.md) Aby skonfigurować diagnostykę na maszynach wirtualnych, aby zbierać dodatkowe dane metryk. Umożliwia również bardziej zaawansowane opcje monitorowania, takich jak [usługi Application Insights](../articles/azure-monitor/app/app-insights-overview.md) i [usługi Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -41,7 +41,7 @@ Możesz utworzyć [alerty](../articles/azure-monitor/platform/alerts-overview.md
 
 [Kondycja zasobów Azure](../articles/service-health/resource-health-overview.md) pomaga diagnozować i uzyskać pomoc techniczną, gdy na Twoje zasoby wpływa jakiś problem z platformą Azure. Informuje o bieżącej i wcześniejszej kondycji zasobów oraz pomaga uniknąć problemów. Usługa Resource Health oferuje pomoc techniczną w przypadku problemów z usługą platformy Azure.
 
-## <a name="logs"></a>Dzienniki
+## <a name="azure-activity-log"></a>Dziennik aktywności platformy Azure
 
 [Dziennika aktywności platformy Azure](../articles/azure-monitor/platform/activity-logs-overview.md) jest Dziennik subskrypcji, który zapewnia wgląd w zdarzenia na poziomie subskrypcji, które miały miejsce w systemie Azure. Dziennik zawiera szeroką gamę danych z usługi Azure Resource Manager danych operacyjnych do aktualizacji dla zdarzeń kondycji usługi. Możesz kliknąć dziennika aktywności w witrynie Azure portal, aby wyświetlić dziennik dla maszyny Wirtualnej.
 
@@ -64,11 +64,13 @@ Oto niektóre rzeczy, które można zrobić z dziennikami diagnostycznymi:
 
 ## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie
 
-- [Log Analytics](../articles/log-analytics/log-analytics-overview.md) to usługa, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. Można zainstalować rozszerzenia na [maszyny Wirtualnej systemu Linux](../articles/virtual-machines/linux/extensions-oms.md) lub [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) instaluje agenta usługi Log Analytics i rejestruje maszynę Wirtualną do istniejącego obszaru roboczego usługi Log Analytics.
+- [Usługa Azure Monitor](../articles/azure-monitor/overview.md) to usługa, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Ona zapewnia kompleksowe rozwiązanie umożliwiające obsługę zbieranie, analizowanie i przetwarzanie danych telemetrycznych z chmury i środowiskach lokalnych. Pomaga interpretować działanie aplikacji i proaktywnie identyfikuje problemy dotyczące aplikacji i zasobów, od których zależą. Można zainstalować rozszerzenia na [maszyny Wirtualnej systemu Linux](../articles/virtual-machines/linux/extensions-oms.md) lub [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) , instaluje agenta usługi Log Analytics w taki sposób, aby zebrać dane dziennika i zapisać w obszarze roboczym usługi Log Analytics.
 
-    Dla maszyn wirtualnych systemu Linux i Windows zbieranie dzienników i metryk zalecaną metodą jest po zainstalowaniu agenta usługi Log Analytics. Najprostszym sposobem zainstalowania agenta usługi Log Analytics na maszynie Wirtualnej jest użycie [rozszerzenia Log Analytics VM Extension](../articles/log-analytics/log-analytics-azure-vm-extension.md). Użycie tego rozszerzenia upraszcza proces instalacji i automatycznie konfiguruje agenta do przesyłania danych do określonego obszaru roboczego usługi Log Analytics. Agent jest również automatycznie uaktualniany, co zapewnia, że posiadane funkcje i poprawki są zawsze najnowsze.
+    Dla maszyn wirtualnych systemu Linux i Windows zalecaną metodą do zbierania dzienników jest po zainstalowaniu agenta usługi Log Analytics. Najprostszym sposobem zainstalowania agenta usługi Log Analytics na maszynie Wirtualnej jest użycie [rozszerzenia Log Analytics VM Extension](../articles/log-analytics/log-analytics-azure-vm-extension.md). Użycie tego rozszerzenia upraszcza proces instalacji i automatycznie konfiguruje agenta do przesyłania danych do określonego obszaru roboczego usługi Log Analytics. Agent jest również automatycznie uaktualniany, co zapewnia, że posiadane funkcje i poprawki są zawsze najnowsze.
 
 - [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) umożliwia monitorowanie maszyny Wirtualnej i skojarzone z nią zasoby odnoszących się do sieci, w którym się znajdują. Można zainstalować rozszerzenia Agent usługi Network Watcher na [maszyny Wirtualnej systemu Linux](../articles/virtual-machines/linux/extensions-nwa.md) lub [Windows VM](../articles/virtual-machines/windows/extensions-nwa.md).
+
+- [Usługa Azure Monitor dla maszyn wirtualnych](../articles/azure-monitor/insights/vminsights-overview.md) monitoruje usługi Azure virtual machines (VM) na dużą skalę, analizując wydajności i kondycji Windows i maszyn wirtualnych systemu Linux, łącznie z różnych procesów i wzajemnie połączonych zależności od innych zasobów i zewnętrzne procesy. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Przewodnik po krokach w [umożliwia monitorowanie maszyny wirtualnej Windows przy użyciu programu Azure PowerShell](../articles/virtual-machines/windows/tutorial-monitoring.md) lub [monitorowanie maszyny wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/tutorial-monitoring.md).

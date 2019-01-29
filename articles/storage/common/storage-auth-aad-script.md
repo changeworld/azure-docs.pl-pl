@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 29b44e4b281ded635359148e251527c44efaa6d4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 49c1c95cfd91c23547c07b6e9388ef366bde4ad3
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214049"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174690"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)
 
@@ -25,7 +25,7 @@ Po zalogowaniu do wiersza polecenia platformy Azure lub programu PowerShell przy
 
 ## <a name="supported-operations"></a>Obsługiwane operacje
 
-Rozszerzenia (wersja zapoznawcza) są obsługiwane dla operacji na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia udzielone do tożsamości usługi Azure AD za pomocą którego możesz Zaloguj się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład jeśli rola czytnik danych jest przypisany do odpowiedniej tożsamości, następnie można uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli rola Współautor danych jest przypisany do odpowiedniej tożsamości, można uruchomić poleceń skryptu, które odczytu, zapisu lub usuwania kontenera lub kolejki lub danych, które zawierają. 
+Rozszerzenia (wersja zapoznawcza) są obsługiwane dla operacji na kontenerach i kolejek. Jakie operacje może wywołać zależy od uprawnienia udzielone do tożsamości usługi Azure AD za pomocą którego możesz Zaloguj się do wiersza polecenia platformy Azure lub programu PowerShell. Uprawnienia do kontenerów usługi Azure Storage lub kolejki są przypisywane przy użyciu kontroli dostępu opartej na rolach (RBAC). Na przykład jeśli rola czytnik danych jest przypisany do odpowiedniej tożsamości, następnie można uruchomić poleceń skryptu, które odczytują dane z kontenera lub kolejki. Jeśli rola Współautor Data jest przypisany do odpowiedniej tożsamości, można uruchomić poleceń skryptu, które odczytu, zapisu lub usuwania kontenera lub kolejki lub danych, które zawierają. 
 
 Aby uzyskać szczegółowe informacje o uprawnieniach wymaganych dla każdej operacji magazynu platformy Azure, kontenera lub kolejki, zobacz [uprawnień do wywoływania operacji REST](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 

@@ -8,19 +8,19 @@ manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
-ms.openlocfilehash: cf205249c4d07cee1ff17c9c726283cfddca1fce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 7210610f8a082c34f8e87ef715b8252c2821bc83
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155228"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187100"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Usługi domenowe Azure Active Directory (AD) dla dostawców rozwiązań w chmurze platformy Azure (CSP)
 W tym artykule wyjaśniono, jak można użyć usług domenowych Azure AD w ramach subskrypcji Azure CSP.
@@ -72,18 +72,18 @@ Ten model wdrażania mogą być dostosowane do scenariuszy, w którym ISV (nieza
 ## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Administrowanie usługą Azure AD Domain Services zarządzanych domen w subskrypcji dostawcy CSP
 Następujące ważne kwestie podczas administrowania domeny zarządzanej, w ramach subskrypcji Azure CSP:
 
-* **Agenci administrator dostawcy usług Kryptograficznych aprowizowanie domeny zarządzanej przy użyciu swoich poświadczeń:** usługi domenowe Azure AD obsługuje subskrypcji Azure CSP. W związku z tym użytkownicy należący do grupy agentów administratorów partner programu CSP może aprowizować nowe domeny zarządzanej usług domenowych Azure AD.
+* **Agenci administrator dostawcy usług Kryptograficznych można udostępnić domeny zarządzanej przy użyciu swoich poświadczeń:** Usługi domenowe Azure AD obsługuje subskrypcji Azure CSP. W związku z tym użytkownicy należący do grupy agentów administratorów partner programu CSP może aprowizować nowe domeny zarządzanej usług domenowych Azure AD.
 
-* **Dostawcy usług kryptograficznych utworzyć skrypt tworzenia nowych domen zarządzanych dla swoich klientów przy użyciu programu PowerShell:** zobacz [jak włączyć usługę Azure AD Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md) Aby uzyskać szczegółowe informacje.
+* **Dostawcy usług kryptograficznych utworzyć skrypt tworzenia nowych domen zarządzanych dla swoich klientów przy użyciu programu PowerShell:** Zobacz [jak włączyć usługę Azure AD Domain Services przy użyciu programu PowerShell](active-directory-ds-enable-using-powershell.md) Aby uzyskać szczegółowe informacje.
 
-* **Agenci administrator dostawcy usług Kryptograficznych nie może wykonać zadania ciągłego zarządzania w domenie zarządzanej przy użyciu swoich poświadczeń:** użytkownicy Administratorzy dostawcy usług Kryptograficznych nie może wykonać zadania zarządzania procedury w ramach domeny zarządzanej przy użyciu swoich poświadczeń. Ci użytkownicy są zewnętrzne w stosunku do katalogu usługi Azure AD przez klienta i ich poświadczenia nie są dostępne w katalogu usługi Azure AD przez klienta. W związku z tym usług domenowych Azure AD nie ma dostępu do skróty haseł Kerberos i NTLM dla tych użytkowników. W wyniku tych użytkowników nie można uwierzytelnić w domenach usług domenowych Azure AD zarządzane.
+* **Agenci administrator dostawcy usług Kryptograficznych nie można wykonać zadania ciągłego zarządzania w domenie zarządzanej przy użyciu swoich poświadczeń:** Użytkownicy Administratorzy dostawcy usług Kryptograficznych nie można wykonać zadania zarządzania procedury w ramach domeny zarządzanej przy użyciu swoich poświadczeń. Ci użytkownicy są zewnętrzne w stosunku do katalogu usługi Azure AD przez klienta i ich poświadczenia nie są dostępne w katalogu usługi Azure AD przez klienta. W związku z tym usług domenowych Azure AD nie ma dostępu do skróty haseł Kerberos i NTLM dla tych użytkowników. W wyniku tych użytkowników nie można uwierzytelnić w domenach usług domenowych Azure AD zarządzane.
 
   > [!WARNING]
   > **Należy utworzyć konto użytkownika w katalogu klienta do wykonywania bieżących zadań administracyjnych w domenie zarządzanej.**
   > Nie możesz się zarejestrować do domeny zarządzanej przy użyciu poświadczeń użytkownika Administrator dostawcy usług Kryptograficznych. Aby to zrobić, należy użyć poświadczeń konta użytkownika należącego do katalogu usługi Azure AD przez klienta. Potrzebujesz tych poświadczeń dla zadań, takich jak przyłączanie maszyn wirtualnych do domeny zarządzanej, administrowanie systemem DNS, administrowanie itp zasad grupy.
   >
 
-* **Konto użytkownika utworzone dla administracją muszą być dodane do grupy "Administratorzy usługi AAD DC":** grupy "Administratorzy usługi AAD DC" ma uprawnienia do wykonywania określonych zadań jednocześnie na administrację delegowaną w domenie zarządzanej. Te zadania obejmują konfigurowanie usługi DNS, tworzenie jednostki organizacyjnej, administrowanie zasadami grupy itp. Aby partner programu CSP, można wykonywać takie zadania w domenie zarządzanej konto użytkownika musi można utworzyć katalogu usługi Azure AD przez klienta. Poświadczenia dla tego konta muszą zostać udostępnione z agentami administratora partner programu CSP. Ponadto to konto użytkownika musi dodać do grupy "Administratorzy usługi AAD DC", aby włączyć zadania konfiguracji w domenie zarządzanej do wykonania za pomocą tego konta użytkownika.
+* **Konto użytkownika utworzone dla administracją muszą być dodane do grupy "Administratorzy usługi AAD DC":** Grupy "Administratorzy usługi AAD DC" ma uprawnienia do wykonywania określonych zadań jednocześnie na administrację delegowaną w domenie zarządzanej. Te zadania obejmują konfigurowanie usługi DNS, tworzenie jednostki organizacyjnej, administrowanie zasadami grupy itp. Aby partner programu CSP, można wykonywać takie zadania w domenie zarządzanej konto użytkownika musi można utworzyć katalogu usługi Azure AD przez klienta. Poświadczenia dla tego konta muszą zostać udostępnione z agentami administratora partner programu CSP. Ponadto to konto użytkownika musi dodać do grupy "Administratorzy usługi AAD DC", aby włączyć zadania konfiguracji w domenie zarządzanej do wykonania za pomocą tego konta użytkownika.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

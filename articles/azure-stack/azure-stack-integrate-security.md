@@ -6,25 +6,25 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: d81478e6bdaf4a1844d01278b961350c81b2edd6
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 5826ab8ac50a5d27f5a74cff4bebba4b2809d5f0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087733"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096623"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Integracja centrum danych usługi Azure Stack — przekazywania usługi syslog
 
-W tym artykule pokazano, jak zintegrować infrastruktury Azure Stack z rozwiązania zabezpieczenia zewnętrzne wdrożone w Twoim centrum danych za pomocą usługi syslog. Na przykład system zabezpieczeń informacji Event Management (SIEM). Kanał syslog udostępnia inspekcje, alerty i dzienniki zabezpieczeń ze wszystkich składników infrastruktury Azure Stack. Użyj przekazywania usługi syslog, aby zintegrować z rozwiązania do monitorowania zabezpieczeń i/lub pobrać inspekcje, alerty i zabezpieczenia dzienników do ich przechowywania do przechowywania danych. 
+W tym artykule pokazano, jak zintegrować infrastruktury Azure Stack z rozwiązania zabezpieczenia zewnętrzne wdrożone w Twoim centrum danych za pomocą usługi syslog. Na przykład system zabezpieczeń informacji Event Management (SIEM). Kanał syslog udostępnia inspekcje, alerty i dzienniki zabezpieczeń ze wszystkich składników infrastruktury Azure Stack. Użyj przekazywania usługi syslog, aby zintegrować z rozwiązania do monitorowania zabezpieczeń i/lub pobrać inspekcje, alerty i zabezpieczenia dzienników do ich przechowywania do przechowywania danych.
 
 Usługi Azure Stack, począwszy od aktualizacji 1809 ma syslog zintegrowanego klienta, który, po skonfigurowaniu emituje komunikaty dziennika systemowego z ładunku w Common Event Format (CEF).
 
 Na poniższym diagramie przedstawiono integracji usługi Azure Stack przy użyciu zewnętrznego rozwiązania SIEM. Istnieją dwa wzorce integracji, które należy wziąć pod uwagę: najpierw (po jednej w kolorze niebieskim) on infrastruktury Azure Stack, który obejmuje maszyny wirtualne infrastruktury i węzłów funkcji Hyper-V. Wszystkie inspekcji, dzienniki zabezpieczeń i alertów z tych składników są centralnie zbierane i udostępniane za pośrednictwem usługi syslog z ładunku w formacie CEF. Ten wzorzec integracji jest opisane na tej stronie dokumentu.
-W drugim wzorcu integracji jest przedstawiony w kolorze pomarańczowym i obejmuje kontrolery zarządzania płytą główną (BMC), hosta cyklu życia sprzętu (HLH), maszyn wirtualnych i/lub urządzeń wirtualnych, systemem partnerów sprzętowych, monitorowanie i zarządzanie oprogramowanie, a górną krawędzią przełączników rack (TOR). Ponieważ te składniki są partnerów sprzętowych określonych, skontaktuj się z partnerem sprzętu dokumentację na temat sposobu zintegrowanie ich z zewnętrznego rozwiązania SIEM.
+W drugim wzorcu integracji jest przedstawiony w kolorze pomarańczowym i obejmuje kontrolery zarządzania płytą główną (BMC), hosta cyklu życia sprzętu (HLH), maszyn wirtualnych i/lub urządzeń wirtualnych, systemem partnerów sprzętowych, monitorowanie i zarządzanie oprogramowanie, a górną krawędzią przełączników rack (TOR). Ponieważ te składniki są partnerów sprzętowych określonych, skontaktuj się z sprzęt partnera dokumentację na temat sposobu zintegrowanie ich z zewnętrznego rozwiązania SIEM.
 
 ![Diagram przekazywania usługi SYSLOG](media/azure-stack-integrate-security/syslog-forwarding.png)
 
@@ -32,13 +32,13 @@ W drugim wzorcu integracji jest przedstawiony w kolorze pomarańczowym i obejmuj
 
 Klient usługi syslog w usłudze Azure Stack obsługuje następujące konfiguracje:
 
-1. **SYSLOG za pośrednictwem protokołu TCP, przy użyciu wzajemnego uwierzytelniania (klient i serwer) i szyfrowania TLS 1.2:** w tej konfiguracji klienta usługi syslog i serwera syslog można sprawdzić tożsamości od siebie przy użyciu certyfikatów. Komunikaty są wysyłane za pośrednictwem szyfrowanego kanału protokołu TLS 1.2.
+1. **SYSLOG za pośrednictwem protokołu TCP, przy użyciu wzajemnego uwierzytelniania (klient i serwer) i szyfrowania TLS 1.2:** W tej konfiguracji klienta usługi syslog i serwera syslog można zweryfikować tożsamości od siebie przy użyciu certyfikatów. Komunikaty są wysyłane za pośrednictwem szyfrowanego kanału protokołu TLS 1.2.
 
-2. **SYSLOG za pośrednictwem protokołu TCP serwera uwierzytelniania i szyfrowania TLS 1.2:** w tej konfiguracji klienta usługi syslog można sprawdzić tożsamości serwera usługi syslog za pomocą certyfikatu. Komunikaty są wysyłane za pośrednictwem szyfrowanego kanału protokołu TLS 1.2.
+2. **SYSLOG za pośrednictwem protokołu TCP serwera uwierzytelniania i szyfrowania TLS 1.2:** W tej konfiguracji klienta usługi syslog można sprawdzić tożsamości serwera usługi syslog za pomocą certyfikatu. Komunikaty są wysyłane za pośrednictwem szyfrowanego kanału protokołu TLS 1.2.
 
-3. **SYSLOG za pośrednictwem protokołu TCP z bez szyfrowania:** w tej konfiguracji klienta usługi syslog ani z serwera syslog weryfikuje tożsamość siebie nawzajem. Komunikaty są wysyłane w postaci zwykłego tekstu za pośrednictwem protokołu TCP.
+3. **SYSLOG za pośrednictwem protokołu TCP z bez szyfrowania:** W tej konfiguracji klienta usługi syslog i tożsamości serwera syslog nie są weryfikowane. Komunikaty są wysyłane w postaci zwykłego tekstu za pośrednictwem protokołu TCP.
 
-4. **SYSLOG za pośrednictwem protokołu UDP z bez szyfrowania:** w tej konfiguracji klienta usługi syslog ani z serwera syslog weryfikuje tożsamość siebie nawzajem. Komunikaty są wysyłane w postaci zwykłego tekstu za pośrednictwem protokołu UDP.
+4. **SYSLOG za pośrednictwem protokołu UDP z bez szyfrowania:** W tej konfiguracji klienta usługi syslog i tożsamości serwera syslog nie są weryfikowane. Komunikaty są wysyłane w postaci zwykłego tekstu za pośrednictwem protokołu UDP.
 
 > [!IMPORTANT]
 > Firma Microsoft zdecydowanie zaleca się używać uwierzytelniania i szyfrowania protokołu TCP (Konfiguracja #1 lub, co bardzo minimalne #2) dla środowisk produkcyjnych chronić przed atakami typu man-in--middle i podsłuchiwaniu komunikatów.
@@ -60,10 +60,10 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 Parametry *SyslogServer zestaw* polecenia cmdlet:
 
-| Parametr | Opis | Typ | Wymagane |
+| Parametr | Opis | Type | Wymagany |
 |---------|---------|---------|---------|
 |*ServerName* | Nazwa FQDN lub adres IP serwera syslog | Ciąg | tak|
-|*Właściwość ServerPort* | Nasłuchuje numer portu serwera syslog | Ciąg | tak|
+|*ServerPort* | Nasłuchuje numer portu serwera syslog | Ciąg | tak|
 |*Bez szyfrowania*| Wymuszaj na kliencie i wysłać komunikaty dziennika systemu w postaci zwykłego tekstu | Flaga | nie|
 |*SkipCertificateCheck*| Pomiń sprawdzanie poprawności certyfikatu oferowane przez serwer usługi syslog w trakcie początkowego uzgadniania TLS | Flaga | nie|
 |*SkipCNCheck*| Pomiń sprawdzanie poprawności wartości nazwy pospolitej certyfikatu oferowane przez serwer usługi syslog w trakcie początkowego uzgadniania TLS | Flaga | nie|
@@ -71,7 +71,7 @@ Parametry *SyslogServer zestaw* polecenia cmdlet:
 |*Usuń*| Usuń konfigurację serwera z klienta, a następnie Zatrzymaj przekazywania usługi syslog| Flaga | nie|
 
 Parametry *SyslogClient zestaw* polecenia cmdlet:
-| Parametr | Opis | Typ |
+| Parametr | Opis | Type |
 |---------|---------| ---------|
 | *pfxBinary* | plik PFX zawierający certyfikat, który ma być używany przez klienta jako tożsamości do uwierzytelniania względem serwera syslog  | Byte[] |
 | *CertPassword* |  Hasła do importowania klucza prywatnego, który jest skojarzony z pliku pfx | SecureString |
@@ -129,7 +129,7 @@ Invoke-Command @params -ScriptBlock {
 
 ### <a name="configuring-syslog-forwarding-with-tcp-server-authentication-and-tls-12-encryption"></a>Konfigurowanie przekazywania usługi syslog za pomocą protokołu TCP serwera uwierzytelniania i szyfrowania TLS 1.2
 
-W tej konfiguracji klienta usługi syslog w usłudze Azure Stack przesyła dalej wiadomości do serwera syslog za pośrednictwem protokołu TCP, za pomocą szyfrowania TLS 1.2. Podczas uzgadniania początkowej klient sprawdza również, czy serwer udostępnia nieprawidłowy zaufany certyfikat. Zapobiega to klienta do wysyłania komunikatów do niezaufanych miejsc docelowych.
+W tej konfiguracji klienta usługi syslog w usłudze Azure Stack przesyła dalej wiadomości do serwera syslog za pośrednictwem protokołu TCP, za pomocą szyfrowania TLS 1.2. Podczas uzgadniania początkowej klient sprawdza również, czy serwer udostępnia nieprawidłowy zaufany certyfikat. Taka konfiguracja zapobiega klienta, aby wysyłać komunikaty do niezaufanych miejsc docelowych.
 TCP, uwierzytelniania i szyfrowania jest domyślna konfiguracja i przedstawia minimalny poziom zabezpieczeń, które firma Microsoft zaleca w środowisku produkcyjnym. 
 
 ```powershell
@@ -258,8 +258,8 @@ Program ten Tabela ważności:
 
 | Ważność | Poziom | Wartość numeryczna |
 |----------|-------| ----------------|
-|0|Nie zdefiniowano|Wartości: 0. Wskazuje, dzienniki na wszystkich poziomach|
-|10|Krytyczny|Wartości: 1. Wskazuje, dzienniki alert krytyczny|
+|0|Niezdefiniowane|Wartość: 0. Wskazuje, dzienniki na wszystkich poziomach|
+|10|Krytyczny|Wartość: 1. Wskazuje, dzienniki alert krytyczny|
 |8|Błąd| Wartość: 2. Wskazuje, dzienniki dla błędu|
 |5|Ostrzeżenie|Wartość: 3. Wskazuje, dzienniki ostrzeżenie|
 |2|Informacje|Wartość: 4. Wskazuje, dzienniki, aby uzyskać komunikat informacyjny|
@@ -288,8 +288,8 @@ Tabela zdarzeń dla punktu końcowego odzyskiwania:
 Tabela przedstawiciela ważności:
 | Ważność | Poziom | Wartość numeryczna |
 |----------|-------| ----------------|
-|0|Nie zdefiniowano|Wartości: 0. Wskazuje, dzienniki na wszystkich poziomach|
-|10|Krytyczny|Wartości: 1. Wskazuje, dzienniki alert krytyczny|
+|0|Niezdefiniowane|Wartość: 0. Wskazuje, dzienniki na wszystkich poziomach|
+|10|Krytyczny|Wartość: 1. Wskazuje, dzienniki alert krytyczny|
 |8|Błąd| Wartość: 2. Wskazuje, dzienniki dla błędu|
 |5|Ostrzeżenie|Wartość: 3. Wskazuje, dzienniki ostrzeżenie|
 |2|Informacje|Wartość: 4. Wskazuje, dzienniki, aby uzyskać komunikat informacyjny|
@@ -307,8 +307,8 @@ Tabela przedstawiciela ważności:
 Tabela ważności dla zdarzeń Windows:
 | Wartości ważności CEF | Poziom zdarzenia Windows | Wartość numeryczna |
 |--------------------|---------------------| ----------------|
-|0|Nie zdefiniowano|Wartości: 0. Wskazuje, dzienniki na wszystkich poziomach|
-|10|Krytyczny|Wartości: 1. Wskazuje, dzienniki alert krytyczny|
+|0|Niezdefiniowane|Wartość: 0. Wskazuje, dzienniki na wszystkich poziomach|
+|10|Krytyczny|Wartość: 1. Wskazuje, dzienniki alert krytyczny|
 |8|Błąd| Wartość: 2. Wskazuje, dzienniki dla błędu|
 |5|Ostrzeżenie|Wartość: 3. Wskazuje, dzienniki ostrzeżenie|
 |2|Informacje|Wartość: 4. Wskazuje, dzienniki, aby uzyskać komunikat informacyjny|
@@ -318,10 +318,10 @@ Niestandardowe rozszerzenia tabeli zdarzeń Windows w usłudze Azure Stack:
 | Nazwa rozszerzenia niestandardowe | Przykład zdarzenia Windows | 
 |-----------------------|---------|
 |MasChannel | System|
-|MasComputer | Test.azurestack.contoso.com|
+|MasComputer | test.azurestack.contoso.com|
 |MasCorrelationActivityID| C8F40D7C-3764-423B-A4FA-C994442238AF|
 |MasCorrelationRelatedActivityID| C8F40D7C-3764-423B-A4FA-C994442238AF|
-|MasEventData| Svchost!! 4132, G, 0!!! EseDiskFlushConsistency!! ESENT!! 0x800000|
+|MasEventData| svchost!!4132,G,0!!!!EseDiskFlushConsistency!!ESENT!!0x800000|
 |MasEventDescription| Pomyślnie przetworzono ustawienia zasad grupy dla użytkownika. Nie wprowadzono żadnych zmian, wykryto od momentu ostatniego pomyślnego przetwarzania zasad grupy.|
 |MasEventID|1501|
 |MasEventRecordID|26637|
@@ -334,7 +334,7 @@ Niestandardowe rozszerzenia tabeli zdarzeń Windows w usłudze Azure Stack:
 |MasOpcodeName |informacje|
 |MasProviderEventSourceName ||
 |MasProviderGuid |AEA1B4FA-97D1-45F2-A64C-4D69FFFD92C9|
-|MasProviderName |Microsoft-Windows-zasadach grupy|
+|MasProviderName |Microsoft-Windows-GroupPolicy|
 |MasSecurityUserId |\<Windows SID\> |
 |MasTask |0|
 |MasTaskCategory| Tworzenie procesu|
@@ -353,14 +353,14 @@ Niestandardowe rozszerzenia tabeli zdarzeń Windows w usłudze Azure Stack:
 Tabela ważność alertów:
 | Ważność | Poziom |
 |----------|-------|
-|0|Nie zdefiniowano|
+|0|Niezdefiniowane|
 |10|Krytyczny|
 |5|Ostrzeżenie|
 
 Niestandardowe rozszerzenia tabeli alerty utworzone w usłudze Azure Stack:
 | Nazwa rozszerzenia niestandardowe | Przykład | 
 |-----------------------|---------|
-|MasEventDescription|Opis: Konto użytkownika \<TestUser\> została utworzona dla \<TestDomain\>. To potencjalne zagrożenie bezpieczeństwa. — KORYGOWANIE: Skontaktuj się z pomocą techniczną. Obsługa klienta jest wymagany, aby rozwiązać ten problem. Nie należy próbować rozwiązać ten problem, bez ich pomocy. Zanim utworzysz żądanie obsługi, należy uruchomić proces zbierania plików dziennika przy użyciu wskazówek z https://aka.ms/azurestacklogfiles |
+|MasEventDescription|OPIS: Konto użytkownika \<TestUser\> została utworzona dla \<TestDomain\>. To potencjalne zagrożenie bezpieczeństwa. --KORYGOWANIA: Skontaktuj się z pomocą techniczną. Obsługa klienta jest wymagany, aby rozwiązać ten problem. Nie należy próbować rozwiązać ten problem, bez ich pomocy. Zanim utworzysz żądanie obsługi, należy uruchomić proces zbierania plików dziennika przy użyciu wskazówek z https://aka.ms/azurestacklogfiles |
 
 ### <a name="cef-mapping-for-alerts-closed"></a>Mapowanie CEF zamknięte alerty
 

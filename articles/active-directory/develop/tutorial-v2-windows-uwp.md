@@ -7,7 +7,7 @@ author: andretms
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986546"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097065"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywołanie interfejsu API Microsoft Graph z poziomu aplikacji platformy uniwersalnej Windows (XAML)
 
@@ -48,7 +48,7 @@ W tym przewodniku używane są następujące pakiety NuGet:
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Biblioteka uwierzytelniania firmy Microsoft|
 
-## <a name="set-up-your-project"></a>Konfigurowanie projektu
+## <a name="set-up-your-project"></a>konfigurowanie projektu
 
 Ta sekcja zawiera instrukcje krok po kroku, aby zintegrować aplikację Windows Desktop .NET (XAML) za pomocą *Zaloguj się przy użyciu Microsoft*. Następnie może wysyłać zapytania interfejsów API sieci Web, które wymagają tokenu, np. interfejsu API Microsoft Graph.
 
@@ -60,7 +60,7 @@ Ten przewodnik tworzy aplikację, która wyświetla przycisk tego zapytania inte
 
 ### <a name="create-your-application"></a>Tworzenie aplikacji
 
-1. W programie Visual Studio, wybierz **pliku** > **New** > **projektu**.
+1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**.
 2. W obszarze **szablony**, wybierz opcję **Visual C#**.
 3. Wybierz pozycję **Pusta aplikacja (platforma uniwersalna systemu Windows)**.
 4. Określanie nazwy aplikacji, a następnie wybierz pozycję **OK**.
@@ -334,7 +334,7 @@ Aby włączyć zintegrowane uwierzytelnianie Windows, gdy jest używany z domeny
 > [!IMPORTANT]
 > Nie skonfigurowano zintegrowane uwierzytelnianie Windows domyślnie dla tego przykładu. Aplikacje, które żądają *uwierzytelnianie w przedsiębiorstwie* lub *udostępnione certyfikaty użytkownika* możliwości wymagać wyższego poziomu weryfikacji przez Windows Store. Ponadto nie wszystkie deweloperów chcesz wykonać wyższy poziom weryfikacji. To ustawienie jest włączone, tylko wtedy, gdy potrzebujesz zintegrowane uwierzytelnianie Windows za pomocą federacyjnego domeny usługi Azure Active Directory.
 
-## <a name="test-your-code"></a>Testowanie kodu
+## <a name="test-your-code"></a>testowanie kodu
 
 Aby przetestować aplikację, naciśnij klawisz F5, aby uruchomić projekt w programie Visual Studio. Zostanie wyświetlone okno główne:
 
@@ -382,15 +382,15 @@ Po zalogowaniu się w swojej aplikacji w domenie usługi Azure Active Directory 
  - Nie znaleziono w magazynie certyfikatów użytkownika prawidłowe certyfikaty.
  - Spróbuj ponownie, wybierając innej metody uwierzytelniania.
 
-**Przyczyna:** możliwości przedsiębiorstwa i certyfikat nie są włączone.
+**Przyczyna:** Funkcje przedsiębiorstwa i certyfikat nie są włączone.
 
-**Rozwiązanie:** postępuj zgodnie z instrukcjami w [zintegrowanego uwierzytelniania w przypadku domen federacyjnych](#enable-integrated-authentication-on-federated-domains-optional).
+**Rozwiązanie:** Postępuj zgodnie z instrukcjami w [zintegrowanego uwierzytelniania w przypadku domen federacyjnych](#enable-integrated-authentication-on-federated-domains-optional).
 
 ### <a name="issue-2"></a>Problem 2
 Możesz włączyć [zintegrowanego uwierzytelniania w przypadku domen federacyjnych](#enable-integrated-authentication-on-federated-domains-optional) , a następnie spróbuj się korzystanie z usługi Windows Hello na komputerze z systemem Windows 10 do logowania się w środowisku z uwierzytelnianiem wieloskładnikowym skonfigurowane. Jest wyświetlana lista certyfikatów. Jednak jeśli zdecydujesz się użyć numeru PIN, w oknie Kod PIN nigdy nie zobaczy.
 
-**Przyczyna:** tego problemu jest to znane ograniczenie broker uwierzytelniania w sieci web w aplikacjach platformy uniwersalnej systemu Windows, działających w systemie Windows 10 desktop. Współpracuje z systemu Windows 10 Mobile.
+**Przyczyna:** Ten problem jest znanym ograniczeniem broker uwierzytelniania w sieci web w aplikacjach platformy uniwersalnej systemu Windows, działających w systemie Windows 10 desktop. Współpracuje z systemu Windows 10 Mobile.
 
-**Obejście:** wybierz **Zaloguj się przy użyciu innych opcji**. Następnie wybierz pozycję **Zaloguj się przy użyciu nazwy użytkownika i hasła**. Wybierz **Podaj hasło**. Następnie przejdź przez proces uwierzytelniania phone.
+**Obejście:** Wybierz **Zaloguj się przy użyciu innych opcji**. Następnie wybierz pozycję **Zaloguj się przy użyciu nazwy użytkownika i hasła**. Wybierz **Podaj hasło**. Następnie przejdź przez proces uwierzytelniania phone.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

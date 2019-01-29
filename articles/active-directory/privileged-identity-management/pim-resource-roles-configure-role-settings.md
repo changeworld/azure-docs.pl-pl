@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a4aecd276df8e5453f0c35d6290bbe8a8d156ffa
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 37938896c21bbe0ba5d6fafedc3c30ef52d3cfef
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669367"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153355"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM
 
@@ -92,7 +92,7 @@ Aby wymagać kwalifikującego się elementu członkowskiego uruchomić usługę 
 
 Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe (MFA) i PIM](pim-how-to-require-mfa.md).
 
-## <a name="activation-maximum-duration"></a>Maksymalny czas trwania aktywacji
+## <a name="activation-maximum-duration"></a>Maksymalny czas trwania uaktywniania
 
 Użyj **maksymalny czas trwania aktywacji** suwak, aby ustawić maksymalny czas w godzinach, rola pozostaje aktywna, przed jego wygaśnięciem. Ta wartość może mieć wartość od 1 do 24 godzin.
 

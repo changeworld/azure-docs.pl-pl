@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: e9fb1795ecb26fc87fd8f3ff000d125d71e9d594
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 2a51447f3d9f8e9e8bed41c47214d7784924c85a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846714"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099836"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Najlepsze rozwiązania dotyczące izolacji aplikacji w ramach usługi Service Bus wyłączeń i awarii
 
@@ -24,44 +24,46 @@ Awaria jest zdefiniowany jako tymczasową niedostępność usługi Azure Service
 
 Po awarii jest zdefiniowany jako trwałą utratę jednostki skalowania usługi Service Bus lub centrum danych. Centrum danych mogą być lub może nie stanie się dostępny ponownie. Zazwyczaj awarii spowoduje utratę niektórych lub wszystkich wiadomości lub inne dane. Przykłady awarii to pożaru, przepełnieniu lub trzęsienie ziemi.
 
-## <a name="current-architecture"></a>Bieżącej architektury
-Usługa Service Bus używa wiele magazynów obsługi komunikatów do przechowywania komunikatów, które są wysyłane do kolejki lub tematy. Partycjonowane kolejki lub tematu jest przypisany do jednego magazynu obsługi komunikatów. Ten magazyn obsługi komunikatów jest niedostępny, wszystkie operacje dla tej kolejki lub tematu zakończy się niepowodzeniem.
+## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Ochrona przed wyłączeń i awarii — usługi Service Bus w warstwie Premium
+Wysoka dostępność i odzyskiwanie awaryjne pojęcia wbudowanych warstwy usługi Azure Service Bus w warstwie Premium, zarówno w tym samym regionie (przy użyciu stref dostępności) i w różnych regionach (za pośrednictwem Geo-Disaster Recovery).
 
-Wszystkie jednostki obsługi komunikatów usługi Service Bus (kolejek, tematów, przekaźników) znajdują się w przestrzeni nazw usługi, który jest powiązany z centrum danych. Usługa Service Bus obsługuje teraz [ *odzyskiwania po awarii geograficznie* i *Geografickou replikaci* ](service-bus-geo-dr.md) na poziomie przestrzeni nazw.
+### <a name="geo-disaster-recovery"></a>Geograficzne odzyskiwanie po awarii
 
-## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>Ochrona kolejki i tematy dla komunikatów błędów magazynu
-Partycjonowane kolejki lub tematu jest przypisany do jednego magazynu obsługi komunikatów. Ten magazyn obsługi komunikatów jest niedostępny, wszystkie operacje dla tej kolejki lub tematu zakończy się niepowodzeniem. Partycjonowane kolejki, z drugiej strony, składa się z wielu fragmentów. Poszczególne fragmenty są przechowywane w różnych Magazyn obsługi komunikatów. Gdy wiadomość jest wysyłana na podzieleniu kolejki lub tematu, Service Bus przydziela ten komunikat do jednego z fragmentów. Jeśli odpowiedni magazyn obsługi komunikatów jest niedostępny, usługi Service Bus zapisuje komunikat różnych fragmentów, jeśli jest to możliwe. Partycjonowane jednostki nie są już obsługiwane w [jednostki SKU Premium](service-bus-premium-messaging.md). 
+Service Bus w warstwie Premium obsługuje odzyskiwanie po awarii geograficznie, na poziomie przestrzeni nazw. Aby uzyskać więcej informacji, zobacz [odzyskiwania po awarii geograficznej usługi Azure Service Bus](service-bus-geo-dr.md). Funkcja odzyskiwania po awarii, dostępne dla [jednostki SKU Premium](service-bus-premium-messaging.md) tylko implementuje odzyskiwanie po awarii metadane i opiera się na przestrzeni nazw odzyskiwania po awarii podstawowego i pomocniczego.
 
-Aby uzyskać więcej informacji na temat partycjonowane jednostki zobacz [partycjonowane jednostki do obsługi komunikatów][Partitioned messaging entities].
+### <a name="availability-zones"></a>Strefy dostępności
 
-## <a name="protecting-against-datacenter-outages-or-disasters"></a>Ochrona przed awariami centrum danych lub awarii
-Aby umożliwić przejścia w tryb failover między dwoma centrami danych, można utworzyć przestrzeni nazw usługi Service Bus w poszczególnych centrach danych. Na przykład, obszaru nazw usługi Service Bus **contosoPrimary.servicebus.windows.net** może znajdować się w regionie środkowa część północy USA i **contosoSecondary.servicebus.windows.net**może znajdować się w regionie nam Południowej/centralnego. Jeśli jednostka wiadomości usługi Service Bus muszą pozostać dostępne obecności awarii centrum danych, można utworzyć tej jednostki, w obu tych przestrzeni nazw.
+Jednostka SKU usługi Service Bus Premium obsługuje [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w tym samym regionie platformy Azure.
 
-Aby uzyskać więcej informacji, zobacz sekcję "Błąd usługi Service Bus w obrębie centrum danych platformy Azure" w [asynchronicznej obsługi komunikatów, wzorce i wysoka dostępność][Asynchronous messaging patterns and high availability].
+> [!NOTE]
+> Obsługa stref dostępności platformy Azure Service Bus w warstwie Premium jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones) gdzie strefy dostępności są obecne.
 
-## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Punktem końcowym przekaźnika ochronę przed awariami centrum danych lub awarii
-Replikacja geograficzna punktem końcowym przekaźnika umożliwia to usługa, która uwidacznia punkt końcowy usługi relay, być dostępny w obecności awarii usługi Service Bus. Aby osiągnąć replikacji geograficznej, usługi należy utworzyć dwa punkty końcowe usługi relay w różnych obszarach nazw. Przestrzenie nazw musi znajdować się w różnych centrach danych i dwa punkty końcowe muszą mieć różne nazwy. Na przykład podstawowego punktu końcowego można z Tobą skontaktować w obszarze **contosoPrimary.servicebus.windows.net/myPrimaryService**, natomiast jego odpowiednika dodatkowej można z Tobą skontaktować w obszarze **contosoSecondary.servicebus.windows.net /mySecondaryService**.
+Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu witryny Azure portal. Usługa Service Bus nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowości strefy po jej włączeniu, w ramach przestrzeni nazw.
 
-Usługa następnie nasłuchuje na obu punktów końcowych, a klient może wywołać usługę za pośrednictwem dowolnego punktu końcowego. Aplikacja kliencka losowo wybiera jeden z przekaźników jako podstawowego punktu końcowego i wysyła jego żądanie do aktywnego punktu końcowego. Jeśli operacja zakończy się niepowodzeniem z kodem błędu, ten błąd wskazuje, że punkt końcowy usługi relay jest dostępne. Aplikacja otworzy kanał do endpoint kopii zapasowej i wysyła żądanie. W tym momencie aktywny i tworzenia kopii zapasowych punktów końcowych przełączyć role: aplikacja kliencka uwzględnia stare aktywny punkt końcowy był nowy punkt końcowy z kopii zapasowej i starych kopii zapasowych punktu końcowego jako nowy, aktywny punkt końcowy. Jeśli niepowodzenie operacji zarówno wysyłać, uległy zmianie role dwie jednostki i zostanie zwrócony błąd.
+![1][]
 
-## <a name="protecting-queues-and-topics-against-datacenter-outages-or-disasters"></a>Ochrona kolejek i tematów przed awariami centrum danych lub awarii
-Aby osiągnąć odporności na awarie centrów danych przy użyciu komunikatów obsługiwanych przez brokera, Usługa Service Bus obsługuje dwa podejścia: *active* i *pasywnym* replikacji. Dla danej metody Jeśli danej kolejki lub tematu muszą pozostać dostępne obecności awarii centrum danych, można go utworzyć w obu tych przestrzeni nazw. Obie te jednostki można mieć taką samą nazwę. Na przykład kolejki głównej można z Tobą skontaktować w obszarze **contosoPrimary.servicebus.windows.net/myQueue**, natomiast jego odpowiednika dodatkowej można z Tobą skontaktować w obszarze **contosoSecondary.servicebus.windows.net/myQueue**.
+
+## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>Ochrona przed wyłączeń i awarii — Standard magistrali usług
+Aby osiągnąć odporności na awarie centrów danych przy użyciu standardowych komunikatów warstwy cenowej, Usługa Service Bus obsługuje dwa podejścia: *active* i *pasywnym* replikacji. Dla danej metody Jeśli danej kolejki lub tematu muszą pozostać dostępne obecności awarii centrum danych, można go utworzyć w obu tych przestrzeni nazw. Obie te jednostki można mieć taką samą nazwę. Na przykład kolejki głównej można z Tobą skontaktować w obszarze **contosoPrimary.servicebus.windows.net/myQueue**, natomiast jego odpowiednika dodatkowej można z Tobą skontaktować w obszarze **contosoSecondary.servicebus.windows.net/myQueue**.
+
+>[!NOTE]
+> **Aktywna replikacja** i **pasywnym replikacji** instalacji są rozwiązań ogólnego przeznaczenia i nie określonych funkcji usługi Service Bus. Logiki replikacji (wysłanie do 2 różnych obszarach nazw) znajduje się na aplikacjach nadawca i odbiorca musi mieć niestandardowej logiki do wykrywania duplikatów.
 
 Jeśli aplikacja wymaga trwałych komunikacji nadawcy do odbiorcy, aplikacja można zaimplementować trwałej kolejce po stronie klienta, aby zapobiec utracie wiadomości i włączyć osłonę nadawca wszelkich przejściowych błędów usługi Service Bus.
 
-## <a name="active-replication"></a>Aktywna replikacja
+### <a name="active-replication"></a>Aktywna replikacja
 Aktywna replikacja korzysta z jednostek w obu tych przestrzeni nazw dla każdej operacji. Każdy klient, który jest wysyłany komunikat wysyła dwie kopie tego samego komunikatu. Pierwsza kopia są wysyłane do podstawowej jednostki (na przykład **contosoPrimary.servicebus.windows.net/sales**), i drugą kopię wiadomości są wysyłane do dodatkowej jednostki (na przykład  **contosoSecondary.servicebus.windows.net/sales**).
 
 Klient odbiera komunikaty z kolejek o obu. Odbiorca przetwarza pierwsza kopia wiadomości, a druga kopia jest pominięty. Aby pominąć zduplikowanych komunikatów, nadawca musisz otagować każdy komunikat o unikatowym identyfikatorze. Obu kopiach wiadomości muszą być oznaczone tym samym identyfikatorze. Możesz użyć [BrokeredMessage.MessageId] [ BrokeredMessage.MessageId] lub [BrokeredMessage.Label] [ BrokeredMessage.Label] właściwości lub właściwość niestandardową do znakowania wiadomości. Odbiornik, musisz utrzymywać listę komunikatów, które już otrzymało.
 
-[Replikację geograficzną za pomocą usługi Service Bus obsługiwanych przez brokera komunikatów] [ Geo-replication with Service Bus Brokered Messages] w przykładzie pokazano aktywna replikacja jednostek do obsługi komunikatów.
+[Replikację geograficzną za pomocą usługi Service Bus w warstwie standardowa] [ Geo-replication with Service Bus Standard Tier] w przykładzie pokazano aktywna replikacja jednostek do obsługi komunikatów.
 
 > [!NOTE]
 > Podejście aktywna replikacja podwaja się liczba operacji, w związku z tym takie podejście może prowadzić do wyższych kosztów.
 > 
 > 
 
-## <a name="passive-replication"></a>Pasywnym replikacji
+### <a name="passive-replication"></a>Pasywnym replikacji
 W przypadku usterek pasywnym replikacji używa tylko jeden z dwóch jednostek obsługi komunikatów. Klient wysyła komunikat do aktywnego jednostki. W przypadku niepowodzenia operacji na jednostce active z kodem błędu, który wskazuje, że centrum danych, który jest hostem aktywnej jednostki może być niedostępny, klient wysyła kopię wiadomości do tworzenia kopii zapasowej jednostki. W tym momencie aktywny i jednostek kopii zapasowej przełączyć role: wysyłanie klienta uwzględnia stare jednostki aktywne do nowych jednostek kopii zapasowej i starych jednostek kopii zapasowej jest nowa jednostka active. Jeśli niepowodzenie operacji zarówno wysyłać, uległy zmianie role dwie jednostki i zostanie zwrócony błąd.
 
 Klient odbiera komunikaty z kolejek o obu. Ponieważ istnieje ryzyko, że odbiorca otrzyma dwie kopie tej samej wiadomości, odbiorca musi pomijania zduplikowanych komunikatów. Można pominąć duplikaty w taki sam sposób, zgodnie z opisem dla aktywnej replikacji.
@@ -73,22 +75,12 @@ Korzystając z pasywnego replikacji, w następujących scenariuszach komunikaty 
 * **Opóźnienie wiadomości lub utratą**: Załóżmy, że nadawca pomyślnie wysłane m1 komunikat do kolejki głównej, a kolejki staje się niedostępny przed odbiornika odbiera m1. Nadawca wysyła m2 wyświetlony komunikat do kolejki dodatkowej. Jeśli podstawowy kolejka jest tymczasowo niedostępny, odbiornik odbiera m1 po kolejce znowu dostępne. W razie awarii odbiornika nigdy nie może zostać wyświetlony m1.
 * **Duplikuj odbioru**: Załóżmy, że nadawca wysyła komunikat m do kolejki głównej. Usługa Service Bus pomyślnie przetwarza m, ale nie może wysłać odpowiedź. Po upłynie limit czasu operacji wysyłania, nadawca wysyła identyczną kopię m do kolejki dodatkowej. Jeśli odbiorca jest możliwość odbierania pierwszego kopiowania m, zanim kolejki głównej staje się niedostępny, odbiornik odbiera obu kopiach m, w tym samym czasie. Jeśli odbiornik nie jest możliwość odbierania pierwszego kopiowania m, zanim kolejki głównej staje się niedostępny, odbiornik początkowo odbiera drugą kopię m, ale odbiera drugą kopię m po udostępnieniu kolejki głównej.
 
-[Replikację geograficzną za pomocą usługi Service Bus obsługiwanych przez brokera komunikatów] [ Geo-replication with Service Bus Brokered Messages] w przykładzie pokazano pasywnym replikacji jednostki obsługi komunikatów.
+[Replikację geograficzną za pomocą usługi Service Bus w warstwie standardowa] [ Geo-replication with Service Bus Standard Tier] w przykładzie pokazano pasywnym replikacji jednostki obsługi komunikatów.
 
-## <a name="geo-replication"></a>Replikacja geograficzna
+## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Punktem końcowym przekaźnika ochronę przed awariami centrum danych lub awarii
+Replikacja geograficzna punktem końcowym przekaźnika umożliwia to usługa, która uwidacznia punkt końcowy usługi relay, być dostępny w obecności awarii usługi Service Bus. Aby osiągnąć replikacji geograficznej, usługi należy utworzyć dwa punkty końcowe usługi relay w różnych obszarach nazw. Przestrzenie nazw musi znajdować się w różnych centrach danych i dwa punkty końcowe muszą mieć różne nazwy. Na przykład podstawowego punktu końcowego można z Tobą skontaktować w obszarze **contosoPrimary.servicebus.windows.net/myPrimaryService**, natomiast jego odpowiednika dodatkowej można z Tobą skontaktować w obszarze **contosoSecondary.servicebus.windows.net /mySecondaryService**.
 
-Usługa Service Bus obsługuje odzyskiwanie po awarii geograficzne i replikacja geograficzna, na poziomie przestrzeni nazw. Aby uzyskać więcej informacji, zobacz [odzyskiwania po awarii geograficznej usługi Azure Service Bus](service-bus-geo-dr.md). Funkcja odzyskiwania po awarii, dostępne dla [jednostki SKU Premium](service-bus-premium-messaging.md) tylko implementuje odzyskiwanie po awarii metadane i opiera się na przestrzeni nazw odzyskiwania po awarii podstawowego i pomocniczego.
-
-## <a name="availability-zones-preview"></a>Strefy dostępności (wersja zapoznawcza)
-
-Jednostka SKU usługi Service Bus Premium obsługuje [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure. 
-
-> [!NOTE]
-> Strefy dostępności w wersji zapoznawczej jest obsługiwana tylko w programie **środkowe stany USA**, **wschodnie stany USA 2**, i **Francja środkowa** regionów.
-
-Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu witryny Azure portal. Usługa Service Bus nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowości strefy po jej włączeniu, w ramach przestrzeni nazw.
-
-![1][]
+Usługa następnie nasłuchuje na obu punktów końcowych, a klient może wywołać usługę za pośrednictwem dowolnego punktu końcowego. Aplikacja kliencka losowo wybiera jeden z przekaźników jako podstawowego punktu końcowego i wysyła jego żądanie do aktywnego punktu końcowego. Jeśli operacja zakończy się niepowodzeniem z kodem błędu, ten błąd wskazuje, że punkt końcowy usługi relay jest dostępne. Aplikacja otworzy kanał do endpoint kopii zapasowej i wysyła żądanie. W tym momencie aktywny i tworzenia kopii zapasowych punktów końcowych przełączyć role: aplikacja kliencka uwzględnia stare aktywny punkt końcowy był nowy punkt końcowy z kopii zapasowej i starych kopii zapasowych punktu końcowego jako nowy, aktywny punkt końcowy. Jeśli niepowodzenie operacji zarówno wysyłać, uległy zmianie role dwie jednostki i zostanie zwrócony błąd.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz następujące artykuły:
@@ -102,7 +94,7 @@ Aby dowiedzieć się więcej na temat odzyskiwania po awarii, zobacz następują
 [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
 [BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label
-[Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
+[Geo-replication with Service Bus Standard Tier]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
 

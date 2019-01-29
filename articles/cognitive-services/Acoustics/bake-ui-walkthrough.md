@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f376b6bcb0238f96b4f5bb35d898cc600e108c65
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902250"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169760"
 ---
 # <a name="bake-acoustics"></a>Tworzenie Akustyka
 
@@ -187,7 +187,7 @@ A to może wydawać się prosty, ma wiele skutki akustyczny symulacji:
 
 ![Gruba drzwi](media/CoarseVoxelDoorway.png)
 
-![Dobrym rozwiązaniem drzwi](media/FineVoxelDoorway.png)
+![Fine Doorway](media/FineVoxelDoorway.png)
 
 ## <a name="bake-tab"></a>Tworzenie karty
 
@@ -240,7 +240,7 @@ Na przykład na komputerze przy użyciu Intel Xeon E5-1660 @ 3 GHz oraz 32 GB pa
 * Niewielkiej sceny przy użyciu 100 sondy zajmuje OK. 2 dla zdalnego tworzenie i około 32 godziny na tworzenie rozwiązania dobrym rozwiązaniem.
 * Większe sceny za pomocą sondy 1000 może potrwać maksymalnie ~ 20 godzin zgrubnym rozwiązanie problemu i ~ 21 dni tworzenie rozwiązania dobrym rozwiązaniem.
 
-### <a name="setup-docker"></a>Konfigurowanie platformy Docker
+### <a name="setup-docker"></a>Setup Docker
 Instalowanie i konfigurowanie platformy Docker na komputerze, który będzie przetwarzał Symulacja-
 1. Zainstaluj [zestawu narzędzi platformy Docker](https://www.docker.com/products/docker-desktop).
 2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowany", a następnie konfiguruje zasoby, aby w przynajmniej 8 GB pamięci RAM. Więcej procesorów można przydzielić do platformy Docker, tym szybsze tworzenie zostanie ukończone. ![Przykład ustawień platformy Docker](media/DockerSettings.png)
@@ -255,10 +255,10 @@ Instalowanie i konfigurowanie platformy Docker na komputerze, który będzie prz
 
 Istnieją cztery pliki danych utworzonych przez ten dodatek w różnych punktach. Wymagane jest tylko jeden z nich w czasie wykonywania, w związku z tym pozostałych trzech znajdują się wewnątrz foldery o nazwie "Editor", dzięki czemu nie będzie można skompilować do projektu.
 
-* **Zasobów/Edytor / [SceneName]\_AcousticsParameters.asset**: ten plik przechowuje dane, możesz wprowadzić w polach w Interfejsie użytkownika Akustyka. Nie można zmienić lokalizację i nazwę tego pliku. Istnieją inne wartości przechowywane w tym pliku, które wpływają na tworzenie, ale są dla użytkowników zaawansowanych i nie powinna być zmieniana.
-* **Zasobów/AcousticsData/Akustyka\_.ace.bytes [SceneName]**: ten plik jest jest tworzony podczas symulacji tworzenie i zawiera dane wyszukiwania używany przez środowisko uruchomieniowe do renderowania Akustyka swoje sceny. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
-* **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**: ten plik przechowuje geometrii Akustyka voxelized i właściwości materiału. Obliczane przy użyciu **Calculate...**  przycisku na karcie sondy. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
-* **Zasobów/AcousticsData/Edytor/Akustyka\_[SceneName]\_pliku config.xml**: ten plik przechowuje obliczane przy użyciu parametrów **Calculate...**  znajdujący się na **sondy** kartę. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
+* **Zasobów/Edytor / [SceneName]\_AcousticsParameters.asset**: Ten plik przechowuje dane, które możesz wprowadzić w polach w Interfejsie użytkownika Akustyka. Nie można zmienić lokalizację i nazwę tego pliku. Istnieją inne wartości przechowywane w tym pliku, które wpływają na tworzenie, ale są dla użytkowników zaawansowanych i nie powinna być zmieniana.
+* **Zasobów/AcousticsData/Akustyka\_.ace.bytes [SceneName]**: Ten plik jest jest tworzony podczas symulacji tworzenie i zawiera dane wyszukiwania używany przez środowisko uruchomieniowe do renderowania Akustyka swoje sceny. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
+* **Assets/AcousticsData/Editor/Acoustics_[SceneName].vox**: Ten plik przechowuje geometrii Akustyka voxelized i właściwości materiału. Obliczane przy użyciu **Calculate...**  przycisku na karcie sondy. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
+* **Assets/AcousticsData/Editor/Acoustics\_[SceneName]\_config.xml**: Ten plik przechowuje obliczane przy użyciu parametrów **Calculate...**  znajdujący się na **sondy** kartę. Lokalizację i nazwę tego pliku można zmienić przy użyciu pól na **sondy** kartę.
 
 Uważaj, aby usunąć *. plik ace.bytes pobrany z tworzenie. Ten plik nie jest możliwe do odzyskania, z wyjątkiem przez rebaking sceny.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: fab422612bc3f83c8dc75d0dd99f42369dfa1d26
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6c0207a68cea70951143c87f83f6b17bb0c7b1f3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438086"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098463"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Konsola szeregowa maszyny wirtualnej dla systemu Linux
 
@@ -89,7 +89,7 @@ Reguły zapory niepoprawne | Dostęp do konsoli szeregowej i naprawić iptables.
 System plików uszkodzenie/wyboru | Dostęp do konsoli szeregowej i odzyskiwanie systemu plików.
 Problemy z konfiguracją protokołu RDP/SSH | Dostęp do konsoli szeregowej i zmienić ustawienia.
 Blokowanie sieci w systemie| W witrynie Azure portal do zarządzania systemem, należy uzyskać dostęp do konsoli szeregowej.
-Interakcja z programu inicjującego | Program GRUB dostęp z konsoli szeregowej. Aby uzyskać więcej informacji, zobacz [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
+Interakcja z programu inicjującego | Ponowne uruchomienie Twojej maszyny Wirtualnej z w ramach bloku konsoli szeregowej dostępu CHODNIKÓW na maszynie Wirtualnej systemu Linux. Aby uzyskać więcej informacji, zobacz [Użyj konsoli szeregowej, dostęp do programu GRUB i trybie jednego użytkownika](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Wyłącz konsoli szeregowej
 Domyślnie wszystkie subskrypcje mają dostęp do konsoli szeregowej włączone dla wszystkich maszyn wirtualnych. Można wyłączyć konsoli szeregowej na poziomie subskrypcji lub na poziomie maszyny Wirtualnej.

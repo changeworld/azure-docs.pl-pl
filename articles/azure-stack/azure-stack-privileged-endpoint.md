@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: df1f8d805c950bdfbe2c18f365a450a6d630891b
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: a9ca61d7845c427429282885c658f4a4cb9b7b7a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300442"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097675"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Za pomocą uprzywilejowanych punktu końcowego w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Jako operatorów usługi Azure Stack należy użyć portalu administratora w programie PowerShell lub interfejsów API usługi Azure Resource Manager dla najbardziej codziennych zadań zarządzania. Jednak w przypadku niektórych mniej typowych operacji, należy użyć *uprzywilejowanych punktu końcowego* (program ten). Program ten jest wstępnie skonfigurowane zdalnego konsoli programu PowerShell, która zawiera wystarczający tylko funkcje, które ułatwiają wykonywanie wymaganych zadań. Punkt końcowy korzysta z [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) do udostępnienia tylko ograniczony zestaw poleceń cmdlet. Program ten dostęp, i wywoływać ograniczony zestaw poleceń cmdlet, używane jest konto o niskich uprawnieniach. Żadnych kont administratora są wymagane. Dla dodatkowego bezpieczeństwa skryptów nie jest dozwolone.
 
@@ -52,33 +52,33 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
 
     - W zintegrowanym systemie, uruchom następujące polecenie w sesji środowiska Windows PowerShell z podwyższonym poziomem uprawnień do dodania program ten jako zaufanego hosta na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami, uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem.
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - Jeśli korzystasz z ASDK, zaloguj się do rozwoju hosta zestawu.
 
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
     - W zintegrowanym systemie:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
     - Jeśli korzystasz z ASDK:
      
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         Enter-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    Po wyświetleniu monitu użyj następujących poświadczeń:
 
       - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny usługi Azure Stack*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
-      - **Hasło**: wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+      - **Hasło**: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
     > [!NOTE]
     > Jeśli nie można nawiązać połączenia z punktem końcowym ERCS, spróbuj ponownie, podając adres IP ERCS maszyny Wirtualnej, do którego nie zostały już próbowano połączyć kroki 1 i 2.
@@ -88,7 +88,7 @@ Przed przystąpieniem do wykonywania tej procedury do zintegrowanego systemu, up
     Wiele z tych poleceń cmdlet są przeznaczone tylko dla środowisk zintegrowanego systemu (na przykład polecenia cmdlet związane z integracją usługi Centrum danych). Następujące polecenia cmdlet zostały zweryfikowane w ASDK:
 
     - Wyczyść hosta
-    - Zamknij PrivilegedEndpoint
+    - Close-PrivilegedEndpoint
     - PSSession zakończenia
     - Get-AzureStackLog
     - Get-AzureStackStampInformation
@@ -124,38 +124,38 @@ Aby zaimportować program ten sesji na komputerze lokalnym, wykonaj następując
 
     -W zintegrowany system, uruchom następujące polecenie w sesji środowiska Windows PowerShell z podwyższonym poziomem uprawnień do dodania program ten jako zaufanego hosta na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami, uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem.
 
-      ````PowerShell
+      ```PowerShell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
-      ````
+      ```
     - Jeśli korzystasz z ASDK, zaloguj się do rozwoju hosta zestawu.
 
 2. Na maszynie wirtualnej ze wzmocnionymi zabezpieczeniami uruchomiona na hoście cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem Otwórz sesję środowiska Windows PowerShell. Uruchom następujące polecenia, aby ustanowić sesję zdalną na maszynie wirtualnej, który hostuje program ten:
  
     - W zintegrowanym systemie:
-      ````PowerShell
+      ```PowerShell
         $cred = Get-Credential
 
         $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ````
+      ```
       `ComputerName` Parametr może być adres IP lub nazwa DNS jednej z maszyn wirtualnych, które obsługuje program ten. 
     - Jeśli korzystasz z ASDK:
      
-      ````PowerShell
+      ```PowerShell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName azs-ercs01 `
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-      ```` 
+      ``` 
    Po wyświetleniu monitu użyj następujących poświadczeń:
 
       - **Nazwa użytkownika**: Określ konto CloudAdmin w formacie  **&lt; *domeny usługi Azure Stack*&gt;\cloudadmin**. (ASDK, nazwa użytkownika jest **azurestack\cloudadmin**.)
-      - **Hasło**: wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+      - **Hasło**: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
 
 3. Importuj sesję program ten, na komputerze lokalnym
-    ````PowerShell 
+    ```PowerShell 
         Import-PSSession $session
-    ````
+    ```
 4. Teraz możesz użyć uzupełniania po naciśnięciu tabulatora i wykonać skryptów w zwykły sposób, w lokalnej sesji programu PowerShell przy użyciu wszystkich funkcji i poleceń cmdlet programu program ten, bez wpływu na stan zabezpieczeń usługi Azure Stack. Owocnej pracy.
 
 
@@ -178,4 +178,5 @@ Po transkrypcji pliki dziennika są pomyślnie przekazywane do udziału plików,
 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 [Narzędzia diagnostyczne platformy Azure Stack](azure-stack-diagnostics.md)

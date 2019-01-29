@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 0f8db7dd3a90e06587a7e0e05f33cb6fba5c72e1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 21ac48ff473dcf494f96f87210bdfe09e4d82646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539793"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103398"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optymalizacja autovacuum w usłudze Azure Database dla serwera PostgreSQL 
 W tym artykule opisano, jak skutecznie zoptymalizować autovacuum w usłudze Azure Database for PostgreSQL.
@@ -97,6 +97,6 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 Jest Autovacuum na procesie synchronicznym tabeli. Większy procent martwy krotek tabeli ma większą "koszt" autovacuum.  Dzielenie tabel, które mają wysoki wskaźnik aktualizowania/usuwania na wiele tabel pomoże zrównoleglić autovacuum i zmniejszyć "koszt" Aby ukończyć autovacuum w odniesieniu do jednej tabeli. Można również zwiększyć liczbę równoległych autovacuum procesy robocze, aby upewnić się, że pracownicy liberally są zaplanowane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zapoznaj się z następujących documenatation PostgreSQL, aby dowiedzieć się więcej o używaniu i dostrajanie autovacuum:
+Przejrzyj poniższą dokumentację PostgreSQL, Dowiedz się więcej o używaniu i dostrajanie autovacuum:
  - Dokumentacja programu PostgreSQL — [rozdział 18, konfiguracja serwera](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
  - Dokumentacja usługi PostgreSQL — [rozdziału 24, rutynowe zadania konserwacji bazy danych](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

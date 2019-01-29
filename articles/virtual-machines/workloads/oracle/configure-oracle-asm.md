@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 236809336975eec94d7decd9822fc9143ae19bfb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 692f6b1f02c6c1e86170971886e83722d0160838
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203593"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Skonfiguruj rozwiązanie Oracle ASM na maszynie wirtualnej z systemem Linux na platformie Azure  
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 
-Aby utworzyć maszynę wirtualną na podstawie obrazu bazy danych Oracle Database i skonfigurować go do użycia rozwiązanie Oracle ASM, należy użyć [tworzenie az vm](/cli/azure/vm#az_vm_create) polecenia. 
+Aby utworzyć maszynę wirtualną na podstawie obrazu bazy danych Oracle Database i skonfigurować go do użycia rozwiązanie Oracle ASM, należy użyć [tworzenie az vm](/cli/azure/vm) polecenia. 
 
 Poniższy przykład tworzy Maszynę wirtualną o nazwie myVM, który rozmiar Standard_DS2_v2 cztery dołączone dyski danych 50 GB. Jeśli jeszcze nie istnieją w domyślnej lokalizacji kluczy, również tworzy klucze SSH.  Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.  
 
@@ -293,7 +293,7 @@ W tym samouczku jest domyślny użytkownik *siatki* i jest domyślną grupą *as
    Scanning the system for Oracle ASMLib disks:               [  OK  ]
    ```
 
-7. Utwórz rozwiązanie Oracle ASM dyski:
+7. Create Oracle ASM disks:
 
    ```bash
    service oracleasm createdisk ASMSP /dev/sdc1 
@@ -311,7 +311,7 @@ W tym samouczku jest domyślny użytkownik *siatki* i jest domyślną grupą *as
    Marking disk "FRA" as an ASM disk:                         [  OK  ]
    ```
 
-8. Wyświetlenie listy dysków programu Oracle ASM:
+8. List Oracle ASM disks:
 
    ```bash
    service oracleasm listdisks
@@ -513,7 +513,7 @@ Aby skonfigurować instalację programu Oracle ASM, wykonaj następujące czynno
 
    Otwiera Asystenta konfiguracji programu Oracle ASM.
 
-2. W **skonfigurować ASM: grupy dysków** okno dialogowe, kliknij przycisk `Create` przycisk, a następnie kliknij przycisk `Show Advanced Options`.
+2. W **skonfigurować ASM: Dysk grup** okno dialogowe, kliknij przycisk `Create` przycisk, a następnie kliknij przycisk `Show Advanced Options`.
 
 3. W **Utwórz grupę dysku** okno dialogowe:
 
@@ -525,7 +525,7 @@ Aby skonfigurować instalację programu Oracle ASM, wykonaj następujące czynno
 
    ![Zrzut ekranu przedstawiający okno dialogowe Tworzenie grupy dysków](./media/oracle-asm/asm02.png)
 
-4. W **skonfigurować ASM: grupy dysków** okno dialogowe, kliknij przycisk `Create` przycisk, a następnie kliknij przycisk `Show Advanced Options`.
+4. W **skonfigurować ASM: Dysk grup** okno dialogowe, kliknij przycisk `Create` przycisk, a następnie kliknij przycisk `Show Advanced Options`.
 
 5. W **Utwórz grupę dysku** okno dialogowe:
 
@@ -540,7 +540,7 @@ Aby skonfigurować instalację programu Oracle ASM, wykonaj następujące czynno
 
 6. Wybierz **zakończenia** zamknąć Asystenta ustawień konfiguracji usługi ASM.
 
-   ![Zrzut ekranu przedstawiający Konfigurowanie ASM: okno dialogowe grupy dysków za pomocą przycisku Zakończ](./media/oracle-asm/asm05.png)
+   ![Zrzut ekranu przedstawiający Konfigurowanie ASM: Okno dialogowe grupy dysków za pomocą przycisku Zakończ](./media/oracle-asm/asm05.png)
 
 ## <a name="create-the-database"></a>Tworzenie bazy danych
 

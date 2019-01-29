@@ -1,5 +1,5 @@
 ---
-title: 'Pobierz tabele ARP — Rozwiązywanie problemów — ExpressRoute: Azure | Dokumentacja firmy Microsoft'
+title: 'Pobierz tabele ARP — Rozwiązywanie problemów — ExpressRoute: Azure| Microsoft Docs'
 description: Ta strona zawiera instrukcje dotyczące pobieranie tabel ARP dla obwodu usługi ExpressRoute
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: a16b2dd61a1a04d8fc3362ce2e26c7d3c9433972
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1807bda35f6bfcc9dbbb30f054cedb9454a88a7f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274478"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158574"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Pobieranie tabel ARP w modelu wdrażania usługi Resource Manager
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ Następujące polecenie cmdlet udostępnia protokołu ARP tabel dla prywatnej ko
         # ARP table for Azure private peering - Primary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
-        # ARP table for Azure private peering - Secodary path
+        # ARP table for Azure private peering - Secondary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
 Przykładowe dane wyjściowe poniżej pokazano dla jednej ze ścieżek
@@ -92,7 +92,7 @@ Następujące polecenie cmdlet udostępnia protokołu ARP tabel dla publicznej k
         # ARP table for Azure public peering - Primary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
 
-        # ARP table for Azure public peering - Secodary path
+        # ARP table for Azure public peering - Secondary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
@@ -114,7 +114,7 @@ Następujące polecenie cmdlet udostępnia protokołu ARP tabel dla komunikacji 
         # ARP table for Microsoft peering - Primary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
 
-        # ARP table for Microsoft peering - Secodary path
+        # ARP table for Microsoft peering - Secondary path
         Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 

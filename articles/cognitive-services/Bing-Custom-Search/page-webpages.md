@@ -3,19 +3,19 @@ title: Przejrzyj dostępne stron sieci Web — Bing Custom Search
 titlesuffix: Azure Cognitive Services
 description: Pokazuje, jak stronicować za pośrednictwem wszystkich stron sieci Web, która usługa Bing Custom Search może zwracać.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: fea0e4d640f42909b33ae418315c460946544256
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 50c4389830c6a9c131610e9091f7166097b1e728
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739587"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158251"
 ---
 # <a name="paging-webpages"></a>Stronicowanie stron sieci Web 
 

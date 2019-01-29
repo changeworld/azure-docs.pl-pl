@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: 1410d61fed2dc98f5fa657541c3863e09b803166
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d93ebb01c905be6bf799ed6e4a037e3ddfdc2430
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321787"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094176"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Klastry skalowania usługi Azure Service Fabric
 Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Klastry mogą zawierać potencjalnie tysiącach węzłów. Po utworzeniu klastra usługi Service Fabric można skalować klastra w poziomie (zmienić liczbę węzłów), czy w pionie (zmienić zasoby węzłów).  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
@@ -92,5 +92,5 @@ Jeśli, nie jest to możliwe, należy utworzyć nowy klaster i [Przywróć stan 
 * Dowiedz się więcej o [skalowalności aplikacji](service-fabric-concepts-scalability.md).
 * [Skalowanie klastra usługi Azure wewnątrz lub na zewnątrz](service-fabric-tutorial-scale-cluster.md).
 * [Skalowanie klastra usługi Azure programowo](service-fabric-cluster-programmatic-scaling.md) przy użyciu fluent Azure compute zestawu SDK.
-* [Skalowanie klastra autonomiczna wewnątrz lub na zewnątrz](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* [Skalowanie klastra autonomicznego wewnątrz lub na zewnątrz](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

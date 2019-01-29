@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z FreshGrade | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą FreshGrade | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i FreshGrade.
 services: active-directory
 documentationCenter: na
@@ -7,21 +7,21 @@ author: jeevansd
 manager: femila
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: c6439b31d2f8c95e0dc1526b92f21aee2966f12f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1861dfb23d105fa6b403095b5fc36d1f2a894fe9
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436363"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152559"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Samouczek: Integracja usługi Azure Active Directory z FreshGrade
+# <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą FreshGrade
 
 W tym samouczku dowiesz się, jak zintegrować FreshGrade w usłudze Azure Active Directory (Azure AD).
 
@@ -37,16 +37,16 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą FreshGrade, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - FreshGrade logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
@@ -59,7 +59,7 @@ Aby skonfigurować integrację FreshGrade w usłudze Azure AD, należy dodać Fr
 
 **Aby dodać FreshGrade z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -67,7 +67,7 @@ Aby skonfigurować integrację FreshGrade w usłudze Azure AD, należy dodać Fr
 
     ![Aplikacje][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -112,26 +112,26 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/freshgrade-tutorial/tutorial_freshgrade_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następujących wzorców:
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następujących wzorców:
       | |
       |--|
       | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następujących wzorców:
+    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następujących wzorców:
       | |
       |--|
       | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
       | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta FreshGrade](mailTo:support@freshgrade.com) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta FreshGrade](mailTo:support@freshgrade.com) do uzyskania tych wartości.
 
-1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
+1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
     
     ![Konfigurowanie logowania jednokrotnego](./media/freshgrade-tutorial/tutorial_metadataurl.png)
      
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
 
     ![Konfigurowanie logowania jednokrotnego](./media/freshgrade-tutorial/tutorial_general_400.png)
 
@@ -139,10 +139,10 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/freshgrade-tutorial/tutorial_freshgrade_configure.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **FreshGrade** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [ Zespół pomocy technicznej FreshGrade](mailTo:support@freshgrade.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **FreshGrade** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** i **SAML pojedynczego logowania jednokrotnego usługi adresu URL** do [ Zespół pomocy technicznej FreshGrade](mailTo:support@freshgrade.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
 ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -211,9 +211,9 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka FreshGrade w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji FreshGrade.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do rozwiązywania problemów w obserwatora sieciowego Azure zasobów | Dokumentacja firmy Microsoft
-description: Ta strona zawiera omówienie funkcji rozwiązywania problemów z zasobów obserwatora sieciowego
+title: Wprowadzenie do zasobów, rozwiązywanie problemów w usłudze Azure Network Watcher | Dokumentacja firmy Microsoft
+description: Ta strona zawiera omówienie funkcji rozwiązywania problemów zasób usługi Network Watcher
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,107 +14,107 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 8048dde6158d9eaa9bf38a8c3020420b81bdd55b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779264"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099785"
 ---
-# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Wprowadzenie do rozwiązywania problemów w obserwatora sieciowego Azure zasobów
+# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Wprowadzenie do zasobów, rozwiązywanie problemów w usłudze Azure Network Watcher
 
-Bramy sieci wirtualnej zapewniają łączność między zasobami lokalnymi i innych sieci wirtualnych w obrębie platformy Azure. Ich połączeń i monitorowania bram są niezbędne do zapewnienia komunikacji nie jest uszkodzona. Obserwatora sieciowego umożliwia rozwiązywanie problemów z bram i połączeń. Ta funkcja może zostać wywołana za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia Azure lub interfejsu API REST. Wywołuje się, obserwatora sieciowego diagnozuje kondycji bramy lub połączenia i zwraca odpowiednie wyniki. Żądanie jest długo działającą transakcję. Wyniki są zwracane po zakończeniu diagnostyki.
+Bramy sieci wirtualnej zapewnia łączność między zasobami lokalnymi i innymi sieciami wirtualnymi w obrębie platformy Azure. Monitorowania bram i ich połączeń jest niezbędne do zapewnienia nieprzerwanej komunikacji. Usługa Network Watcher umożliwia rozwiązywanie problemów z bram i połączeń. Ta funkcja może być wywoływany za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. Po wywołaniu usługi Network Watcher diagnozuje kondycję bramy lub połączenia, a następnie zwraca odpowiednie wyniki. Żądanie jest długotrwałą transakcją. Wyniki są zwracane po zakończeniu diagnostyki.
 
 ![portal][2]
 
 ## <a name="results"></a>Wyniki
 
-Wstępne wyników zwróconych nadaj ogólny obraz kondycji zasobu. Lepszy informacje mogą być dostępne dla zasobów, jak pokazano w poniższej sekcji:
+Zwrócone wyniki wstępne stworzyć ogólny obraz kondycji zasobu. Bardziej szczegółowych informacji może być dostarczona dla zasobów, jak pokazano w poniższej sekcji:
 
-Poniżej znajduje się wartości zwracane z Rozwiązywanie problemów z interfejsu API:
+Poniższa lista jest wartości zwracanych z Rozwiązywanie problemów z interfejsu API:
 
-* **wartość startTime** — ta wartość jest uruchomieniu wywołania interfejsu API Rozwiązywanie problemów.
-* **wartość endTime** — ta wartość jest czas zakończenia rozwiązywania problemów.
-* **Kod** — ta wartość jest zła, w przypadku awarii jednego diagnostyki.
-* **wyniki** -wyników jest zbiór wyników zwróconych na połączenie lub brama sieci wirtualnej.
-    * **Identyfikator** — ta wartość jest typu błędu.
-    * **Podsumowanie** — ta wartość jest podsumowanie usterki.
-    * **szczegółowe** -wartość zawiera szczegółowy opis błędu.
-    * **recommendedActions** — ta właściwość jest kolekcją zalecane akcje.
-      * **actionText** — ta wartość zawiera opis czynności do wykonania.
+* **Godzina rozpoczęcia** — ta wartość jest czasu uruchomienia wywołań interfejsu API rozwiązywania problemów.
+* **wartość endTime** — ta wartość jest czas, kiedy zakończył się rozwiązywania problemów.
+* **Kod** — ta wartość jest zła, jeśli wystąpi awaria jednego diagnostyki.
+* **wyniki** -wyników jest zbiór wyników zwróconych na połączenia lub bramy sieci wirtualnej.
+    * **Identyfikator** — ta wartość jest typu błędów.
+    * **Podsumowanie** — ta wartość jest podsumowanie błędu.
+    * **szczegółowe** — ta wartość zawiera szczegółowy opis błędu.
+    * **recommendedActions** -tej właściwości to zbiór zalecane akcje do wykonania.
+      * **actionText** — ta wartość zawiera tekst opisujący jaką akcję należy podjąć.
       * **actionUri** — ta wartość Określa identyfikator URI do dokumentacji na temat sposobu działania.
-      * **actionUriText** — ta wartość jest krótki opis tekst akcji.
+      * **actionUriText** — ta wartość jest krótki opis tekstowy akcji.
 
-W poniższej tabeli przedstawiono typy inny błąd (identyfikator w obszarze wyniki z powyższej listy), które są dostępne, a jeśli błąd tworzy dzienniki.
+W poniższej tabeli przedstawiono typy różnych domenach błędów (identyfikator w obszarze wyniki z powyższej liście), które są dostępne, a w przypadku błędu tworzy dzienniki.
 
 ### <a name="gateway"></a>Brama
 
 | Typ błędu | Przyczyna | Log|
 |---|---|---|
-| NoFault | Po wykryciu bez błędu |Yes|
-| GatewayNotFound | Nie można odnaleźć bramy lub bramy nie zostanie zainicjowana. |Nie|
+| NoFault | Po wykryciu braku błędów |Yes|
+| GatewayNotFound | Nie można odnaleźć bramy lub bramy nie zostało aprowizowane. |Nie|
 | PlannedMaintenance |  Wystąpienie bramy jest w trakcie konserwacji  |Nie|
-| UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizację można operacji zmiany rozmiaru. | Nie |
-| VipUnResponsive | Ten błąd występuje, gdy podstawowy wystąpienie bramy nie można połączyć się z powodu błędu sondy kondycji. | Nie |
-| PlatformInActive | Istnieje problem z platformą. | Nie|
+| UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacji zmiany rozmiaru. | Nie |
+| VipUnResponsive | Ten błąd występuje, gdy podstawowe wystąpienie bramy nie można połączyć się z powodu błędu sondy kondycji. | Nie |
+| PlatformInActive | Występuje problem z platformą. | Nie|
 | ServiceNotRunning | Usługa podstawowy nie jest uruchomiona. | Nie|
-| NoConnectionsFoundForGateway | Połączenia nie istnieje w bramie. Ten błąd jest tylko ostrzeżenie.| Nie|
-| ConnectionsNotConnected | Połączenia nie są połączone. Ten błąd jest tylko ostrzeżenie.| Yes|
-| GatewayCPUUsageExceeded | Bieżące użycie procesora CPU bramy jest > 95%. | Yes |
+| NoConnectionsFoundForGateway | Nawiązywanie połączeń nie istnieje w bramie. Ten błąd jest tylko to ostrzeżenie.| Nie|
+| ConnectionsNotConnected | Połączenia są połączone. Ten błąd jest tylko to ostrzeżenie.| Yes|
+| GatewayCPUUsageExceeded | Brama bieżące użycie procesora CPU jest > 95%. | Yes |
 
 ### <a name="connection"></a>Połączenie
 
 | Typ błędu | Przyczyna | Log|
 |---|---|---|
-| NoFault | Po wykryciu bez błędu |Yes|
-| GatewayNotFound | Nie można odnaleźć bramy lub bramy nie zostanie zainicjowana. |Nie|
+| NoFault | Po wykryciu braku błędów |Yes|
+| GatewayNotFound | Nie można odnaleźć bramy lub bramy nie zostało aprowizowane. |Nie|
 | PlannedMaintenance | Wystąpienie bramy jest w trakcie konserwacji  |Nie|
-| UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizację można operacji zmiany rozmiaru.  | Nie |
-| VipUnResponsive | Ten błąd występuje, gdy podstawowy wystąpienie bramy nie można połączyć się z powodu błędu sondy kondycji. | Nie |
+| UserDrivenUpdate | Ten błąd występuje, gdy aktualizacja użytkownika jest w toku. Aktualizacja może być operacji zmiany rozmiaru.  | Nie |
+| VipUnResponsive | Ten błąd występuje, gdy podstawowe wystąpienie bramy nie można połączyć się z powodu błędu sondy kondycji. | Nie |
 | ConnectionEntityNotFound | Brak konfiguracji połączenia | Nie |
-| ConnectionIsMarkedDisconnected | Połączenie zostało oznaczone jako "odłączony" |Nie|
-| ConnectionNotConfiguredOnGateway | Podległej usłudze nie ma skonfigurowanego połączenia. | Yes |
-| ConnectionMarkedStandy | Podstawowe usługi jest oznaczony jako stan wstrzymania.| Yes|
+| ConnectionIsMarkedDisconnected | Połączenie jest oznaczone jako "odłączonego" |Nie|
+| ConnectionNotConfiguredOnGateway | Usłudze podstawowej nie ma skonfigurowanego połączenia. | Yes |
+| ConnectionMarkedStandby | Usłudze podstawowej jest oznaczana w stanie wstrzymania.| Yes|
 | Authentication | Niezgodność klucza wstępnego | Yes|
-| PeerReachability | Brama elementu równorzędnego nie jest dostępny. | Yes|
-| IkePolicyMismatch | Brama równorzędnej ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
-| Błąd WfpParse | Wystąpił błąd podczas analizowania dziennika platformy filtrowania systemu Windows. |Yes|
+| PeerReachability | Bramy równorzędnej jest nieosiągalny. | Yes|
+| IkePolicyMismatch | Brama elementów równorzędnych ma zasady IKE, które nie są obsługiwane przez platformę Azure. | Yes|
+| WfpParse Error | Wystąpił błąd podczas analizowania dziennika wywołanie. |Yes|
 
-## <a name="supported-gateway-types"></a>Obsługiwane typy bramy
+## <a name="supported-gateway-types"></a>Obsługiwane typy bram
 
-W poniższej tabeli wymieniono połączenia i bram, które są obsługiwane w rozwiązywaniu problemów obserwatora sieciowego:
+W poniższej tabeli przedstawiono, które bram i połączeń są obsługiwane w rozwiązywaniu problemów usługi Network Watcher:
 
 |  |  |
 |---------|---------|
-|**Typy bramy**   |         |
+|**Typy bram**   |         |
 |Sieć VPN      | Obsługiwane        |
 |ExpressRoute | Nieobsługiwane |
-|**Typy z siecią VPN** | |
+|**Typy sieci VPN** | |
 |Na podstawie trasy | Obsługiwane|
-|Na podstawie zasad | Nieobsługiwane|
+|Oparte na zasadach | Nieobsługiwane|
 |**Typy połączeń**||
-|Protokół IPSec| Obsługiwane|
+|IPSec| Obsługiwane|
 |VNet2Vnet| Obsługiwane|
 |ExpressRoute| Nieobsługiwane|
 |VPNClient| Nieobsługiwane|
 
 ## <a name="log-files"></a>Pliki dziennika
 
-Pliki zasobów do rozwiązywania problemów z dziennika są przechowywane na koncie magazynu po zakończeniu rozwiązywania problemów z zasobów. Na poniższej ilustracji przedstawiono przykład zawartość wywołanie, które spowodowało wystąpienie błędu.
+Pliki zasobów do rozwiązywania problemów z dziennika są przechowywane na koncie magazynu po zakończeniu rozwiązywania problemów z zasobów. Na poniższej ilustracji przedstawiono przykład zawartość wywołania, które spowodowały błąd.
 
 ![plik zip][1]
 
 > [!NOTE]
-> W niektórych przypadkach tylko podzestaw pliki dzienników są zapisywane w pamięci masowej.
+> W niektórych przypadkach tylko podzbiór Pliki dziennika są zapisywane do magazynu.
 
-Aby uzyskać instrukcje dotyczące pobierania plików z kontami magazynu azure, zapoznaj się [Rozpoczynanie pracy z magazynem obiektów Blob platformy Azure przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Kolejnym narzędziem, który może służyć jest Eksploratora usługi Storage. Więcej informacji na temat Eksploratora usługi Storage można znaleźć tutaj przy użyciu następującego łącza: [Eksploratora usługi Storage](http://storageexplorer.com/)
+Aby uzyskać instrukcje dotyczące pobierania plików z konta usługi azure storage, zapoznaj się [wprowadzenie do usługi Azure Blob storage przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Inne narzędzie, które mogą być używane jest Eksploratora usługi Storage. Więcej informacji na temat Eksploratora usługi Storage można znaleźć tutaj z łącza: [Storage Explorer](http://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 
-**ConnectionStats.txt** plik zawiera ogólna Statystyka połączenia, w tym Bajty przychodzące i wychodzące, stan połączenia i czasu, połączenie zostało nawiązane.
+**ConnectionStats.txt** plik zawiera ogólne statystyki połączenia, w tym Bajty przychodzące i wychodzące, stan połączenia i godzinę, o której nawiązano połączenie.
 
 > [!NOTE]
-> Jeśli wywołanie do rozwiązywania problemów z interfejsu API zwraca dobrej kondycji, jest jedynym elementem zwrócił w pliku zip **ConnectionStats.txt** pliku.
+> Jeśli wywołanie do rozwiązywania problemów z interfejsu API zwraca dobrej kondycji, jedyną czynnością, które są zwracane w pliku zip jest **ConnectionStats.txt** pliku.
 
 Zawartość tego pliku są podobne do poniższego przykładu:
 
@@ -128,7 +128,7 @@ Connected Since : 2/1/2017 8:22:06 PM
 
 ### <a name="cpustatstxt"></a>CPUStats.txt
 
-**CPUStats.txt** plik zawiera użycie procesora CPU i pamięci w czasie testów.  Zawartość tego pliku jest podobny do poniższego przykładu:
+**CPUStats.txt** plik zawiera użycie procesora CPU i pamięci w czasie testowania.  Zawartość tego pliku jest podobny do poniższego przykładu:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
@@ -136,9 +136,9 @@ Current CPU Usage : 0 % Current Memory Available : 641 MBs
 
 ### <a name="ikeerrorstxt"></a>IKEErrors.txt
 
-**IKEErrors.txt** plik zawiera błędy IKE, które zostały odnalezione podczas monitorowania.
+**IKEErrors.txt** plik zawiera wszystkie błędy protokołu IKE, które zostały znalezione w trakcie monitorowania.
 
-W poniższym przykładzie przedstawiono zawartość pliku IKEErrors.txt. Błędy mogą się różnić w zależności od tego problemu.
+Poniższy przykład pokazuje zawartość pliku IKEErrors.txt. Błędy mogą się różnić w zależności od danego problemu.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -149,9 +149,9 @@ Error: On-prem device sent invalid payload.
 
 ### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
 
-**Scrubbed wfpdiag.txt** plik dziennika zawiera dziennik platformy filtrowania systemu Windows. Ten dziennik zawiera rejestrowanie IKE/AuthIP błędy i listy pakietów.
+**Scrubbed wfpdiag.txt** plik dziennika zawiera dziennik wywołanie. Ten dziennik zawiera rejestrowanie porzucania pakietów i IKE/AuthIP błędów.
 
-W poniższym przykładzie przedstawiono zawartość pliku Scrubbed wfpdiag.txt. W tym przykładzie klucza współużytkowanego połączenia jest niepoprawny, co wynika z trzeciego wiersza od dołu. Poniższy przykład się tylko fragment dziennika cały dziennik może być długi w zależności od tego problemu.
+Poniższy przykład pokazuje zawartość pliku Scrubbed wfpdiag.txt. W tym przykładzie klucz współużytkowany połączenia nie jest poprawna, co wynika z trzeciego wiersza od dołu. Poniższy przykład to tylko fragment cały dziennik, ponieważ dziennik może być długi, w zależności od problemu.
 
 ```
 ...
@@ -182,7 +182,7 @@ W poniższym przykładzie przedstawiono zawartość pliku Scrubbed wfpdiag.txt. 
 
 ### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.sum
 
-**Wfpdiag.txt.sum** plik jest dziennika pokazującego buforów i przetworzonych zdarzeń.
+**Wfpdiag.txt.sum** plik jest wyświetlanie buforów i przetworzone zdarzenia dziennika.
 
 Poniższy przykład jest zawartość pliku wfpdiag.txt.sum.
 ```
@@ -212,7 +212,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się, jak zdiagnozować problem z połączeniem bramy lub bramy, zobacz [diagnozowanie problemów z komunikacją między sieciami](diagnose-communication-problem-between-networks.md).
+Aby dowiedzieć się, jak i diagnozowanie problemów z połączeniem bramy lub bramy, zobacz [diagnozowanie problemów z komunikacją między sieciami](diagnose-communication-problem-between-networks.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

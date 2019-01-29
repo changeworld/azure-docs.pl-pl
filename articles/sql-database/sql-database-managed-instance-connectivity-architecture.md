@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2077978ac9353531d10359edf396e4426e9d6988
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536053"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104497"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Usługa Azure SQL Database Managed architektura łączności wystąpienia
 
@@ -68,7 +68,7 @@ Przyjrzyjmy się szczegółowo z wizualizacją w architekturze połączenia wyst
 
 ![klaster wirtualny diagram architektury łączności](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Klienci łączą się z wystąpieniem zarządzanym przy użyciu nazwy hosta, który ma postać z `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawany jako prywatny adres IP jest zarejestrowany w publicznej strefie DNS, i jest rozpoznania publicznie. `zone-id` Jest generowana automatycznie po utworzeniu klastra. Jeśli nowo utworzonego klastra jest hostem dodatkowej wystąpienia zarządzanego, udostępnia identyfikatora strefy za pomocą klastra podstawowego. Aby uzyskać więcej informacji, zobacz [grup automatyczny tryb failover](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)
+Klienci łączą się z wystąpieniem zarządzanym przy użyciu nazwy hosta, który ma postać z `<mi_name>.<dns_zone>.database.windows.net`. Ta nazwa hosta jest rozpoznawany jako prywatny adres IP jest zarejestrowany w publicznej strefie DNS, i jest rozpoznania publicznie. `zone-id` Jest generowana automatycznie po utworzeniu klastra. Jeśli nowo utworzonego klastra jest hostem dodatkowej wystąpienia zarządzanego, udostępnia Identyfikatora strefy za pomocą klastra podstawowego. Aby uzyskać więcej informacji, zobacz [grup automatyczny tryb failover](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)
 
 Ten prywatny adres IP należy do zarządzanego wystąpienia wewnętrznego obciążenia równoważenia (ILB) która kieruje ruch do bramy zarządzane wystąpienia (GW). Zgodnie z wewnątrz tego samego klastra, potencjalnie może uruchomić wiele wystąpień zarządzanych, GW używa nazwy hosta wystąpienia zarządzanego przekierowywanie ruchu na prawidłowe usługi aparatu programu SQL.
 
@@ -78,7 +78,7 @@ Połączenie usług zarządzania i wdrażania do wystąpienia zarządzanego przy
 
 Klaster wirtualny wystąpienia zarządzanego Azure SQL Database zawiera punkt końcowy zarządzania, używane przez firmę Microsoft do zarządzania wystąpienia zarządzanego. Punkt końcowy zarządzania jest chroniony za pomocą wbudowanej zapory sieciowej poziomu i wzajemne certyfikat weryfikacji na poziomie aplikacji. Możesz [znaleźć adres ip punktu końcowego zarządzania](sql-database-managed-instance-find-management-endpoint-ip-address.md).
 
-Gdy połączenia były inicjowane z wewnątrz wystąpienia zarządzanego (kopia zapasowa, dziennik inspekcji) wygląda na to, że ruch pochodzący z punktu końcowego zarządzania publicznego adresu IP. Można ograniczyć dostęp usług publicznych z wystąpieniem zarządzanym przez ustawienie reguły zapory zezwalające na tylko za pomocą adresu IP wystąpienia zarządzanego. Znajdź więcej einformation o metodzie, która może być [Sprawdź wbudowanej zapory wystąpienia zarządzanego](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+Gdy połączenia były inicjowane z wewnątrz wystąpienia zarządzanego (kopia zapasowa, dziennik inspekcji) wygląda na to, że ruch pochodzący z punktu końcowego zarządzania publicznego adresu IP. Można ograniczyć dostęp usług publicznych z wystąpieniem zarządzanym przez ustawienie reguły zapory zezwalające na tylko za pomocą adresu IP wystąpienia zarządzanego. Znajdź więcej informacji o metodzie, która może być [Sprawdź wbudowanej zapory wystąpienia zarządzanego](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
 > To nie ma zastosowania do ustawiania reguły zapory dla usług platformy Azure, które znajdują się w tym samym regionie, co wystąpienie zarządzane usługi platformy Azure ma optymalizacji dla ruchu, który przechodzi między usługami, które są zlokalizowana.
@@ -98,17 +98,17 @@ Wystąpienie zarządzane usługi można wdrażać w dedykowanej podsieci (podsie
 
 ### <a name="mandatory-inbound-security-rules"></a>Reguły zabezpieczeń ruchu przychodzącego obowiązkowe 
 
-| Name (Nazwa)       |Port                        |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
+| Name       |Port                        |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438 1440, 1452|TCP     |Dowolne              |Dowolne        |Zezwalaj |
+|zarządzanie  |9000, 9003, 1438, 1440, 1452|TCP     |Dowolne              |Dowolne        |Zezwalaj |
 |mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |Dowolne        |Zezwalaj |
 |health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|Dowolne        |Zezwalaj |
 
 ### <a name="mandatory-outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe 
 
-| Name (Nazwa)       |Port          |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
+| Name       |Port          |Protokół|Obiekt źródłowy           |Element docelowy|Akcja|
 |------------|--------------|--------|-----------------|-----------|------|
-|zarządzanie  |80, 443, 12000|TCP     |Dowolne              |Dowolne        |Zezwalaj |
+|zarządzanie  |80, 443, 12000|TCP     |Dowolne              |Internet   |Zezwalaj |
 |mi_subnet   |Dowolne           |Dowolne     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
 
   > [!Note]

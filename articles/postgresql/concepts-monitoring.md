@@ -6,15 +6,15 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: c412ace453eb37646654375454d80a5c4e8dc3a6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c936d7946398183f0b0aac025503bb172bc147af
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540915"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101012"
 ---
 # <a name="monitor-and-tune"></a>Monitorowanie i dostrajanie
-Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne opcje monitorowania zapewniają wgląd w zachowania serwera.
+Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne opcje monitorowania zapewniają wgląd w zachowanie serwera.
 
 ## <a name="metrics"></a>Metryki
 Usługa Azure Database for PostgreSQL udostępnia różne metryki, które zapewniają wgląd w zachowanie zasobach obsługujących serwera PostgreSQL. Wszystkie metryki jest emitowane z częstotliwością co minutę, a także zawiera maksymalnie 30 dni historii. Można skonfigurować alerty dotyczące metryk. Aby uzyskać wskazówki krok po kroku, zobacz [jak skonfigurować alerty](howto-alert-on-metric.md). Inne zadania obejmują skonfigurowanie zautomatyzowanych akcji, wykonywanie zaawansowanych analiz i archiwizowanie historii. Aby uzyskać więcej informacji, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).

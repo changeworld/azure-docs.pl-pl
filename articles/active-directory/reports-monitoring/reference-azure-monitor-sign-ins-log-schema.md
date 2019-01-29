@@ -1,5 +1,5 @@
 ---
-title: Interpretowanie Azure schematu usługi Active Directory logowania w dzienniku w usłudze Azure Monitor (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Schemat rejestrowania w dzienniku usługi Azure Active Directory w usłudze Azure Monitor (wersja zapoznawcza) | Dokumentacja firmy Microsoft
 description: Opisz logowania usługi Azure AD w schemacie dziennika do użycia w usłudze Azure Monitor (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2957cd12fb6ef37b3e120b90b1500c6a43bb3e04
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3c67446f1e828ae528f2e4eb4a0292da2c993ded
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813427"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156296"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Interpretowanie schematu dzienniki logowania w usłudze Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 

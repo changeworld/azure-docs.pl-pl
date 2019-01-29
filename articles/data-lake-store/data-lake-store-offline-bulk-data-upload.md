@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: fc70089517bbc1aa90f95f1e0231f2c67f930090
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43b482324f0244baf52edbb8989a56dd12833331
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242198"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104474"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Usługa Azure Import/Export kopię danych do usługi Azure Data Lake Storage Gen1 w trybie offline
 W tym artykule dowiesz się, jak skopiować ogromnych zestawów danych (> 200 GB) do usługi Azure Data Lake magazynu Gen1 przy użyciu metod kopii w trybie offline, takie jak [usługa Azure Import/Export](../storage/common/storage-import-export-service.md). Ściślej mówiąc plik, który został użyty w przykładzie w tym artykule jest 339,420,860,416 bajtów lub około 319 GB na dysku. Nadajmy 319GB.tsv tego pliku.
@@ -54,9 +54,9 @@ Postępuj zgodnie z instrukcjami w [przy użyciu usługi Azure Import/Export](..
 2. Określ konto magazynu platformy Azure, w którym dane zostaną skopiowane po wysłaniu go do centrum danych platformy Azure.
 3. Użyj [narzędzie importu/eksportu platformy Azure](https://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), narzędzie wiersza polecenia. Oto przykład fragment kodu, który pokazuje, jak korzystać z narzędzia.
 
-    ````
+    ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
-    ````
+    ```
     Zobacz [przy użyciu usługi Azure Import/Export](../storage/common/storage-import-export-service.md) dla więcej przykładowych fragmentów kodu.
 4. Poprzednie polecenie tworzy plik dziennika w określonej lokalizacji. Ten plik dziennika umożliwia tworzenie zadania importu z [witryny Azure portal](https://portal.azure.com).
 
@@ -72,7 +72,7 @@ Gdy stan zadania importu zostanie wyświetlona jego zakończenia, można sprawdz
 W tej sekcji firma Microsoft udostępnia użytkownikowi przy użyciu definicji JSON, które można użyć w celu utworzenia potoku usługi Azure Data Factory do kopiowania danych. Możesz użyć tych definicji JSON z [witryny Azure portal](../data-factory/tutorial-copy-data-portal.md) lub [programu Visual Studio](../data-factory/tutorial-copy-data-dot-net.md).
 
 ### <a name="source-linked-service-azure-storage-blob"></a>Źródło połączone usługi (Azure Storage blob)
-````
+```
 {
     "name": "AzureStorageLinkedService",
     "properties": {
@@ -83,10 +83,10 @@ W tej sekcji firma Microsoft udostępnia użytkownikowi przy użyciu definicji J
         }
     }
 }
-````
+```
 
 ### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>Docelowa usługa połączona (Azure Data Lake Storage Gen1)
-````
+```
 {
     "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
@@ -99,9 +99,9 @@ W tej sekcji firma Microsoft udostępnia użytkownikowi przy użyciu definicji J
         }
     }
 }
-````
+```
 ### <a name="input-data-set"></a>Wejściowy zestaw danych
-````
+```
 {
     "name": "InputDataSet",
     "properties": {
@@ -119,9 +119,9 @@ W tej sekcji firma Microsoft udostępnia użytkownikowi przy użyciu definicji J
         "policy": {}
     }
 }
-````
+```
 ### <a name="output-data-set"></a>Wyjściowy zestaw danych
-````
+```
 {
 "name": "OutputDataSet",
 "properties": {
@@ -137,9 +137,9 @@ W tej sekcji firma Microsoft udostępnia użytkownikowi przy użyciu definicji J
     }
   }
 }
-````
+```
 ### <a name="pipeline-copy-activity"></a>Potok (działanie kopiowania)
-````
+```
 {
     "name": "CopyImportedData",
     "properties": {
@@ -186,7 +186,7 @@ W tej sekcji firma Microsoft udostępnia użytkownikowi przy użyciu definicji J
         "pipelineMode": "Scheduled"
     }
 }
-````
+```
 Aby uzyskać więcej informacji, zobacz [przenieść dane z usługi Azure Storage blob do usługi Azure Data Lake Storage Gen1 za pośrednictwem usługi Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Odtworzenie plików danych w usłudze Azure Data Lake magazynu Gen1
@@ -205,7 +205,7 @@ Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
 Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
-````
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)

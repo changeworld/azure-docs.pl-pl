@@ -10,18 +10,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: b090633ee33582a235a92ab7100741e0be48cb27
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: abcf22dfebee695de54c36952c8f93dfaae31d57
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200160"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178770"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Współdziałanie w funkcjach łączność z zaplecza platformy Azure: Ustawienia testu
 
 W tym artykule opisano ustawienia testu, służących do analizowania jak usługi platformy Azure networking współdziałać na poziomie poziom płaszczyzna kontroli i płaszczyzny danych. Przyjrzyjmy się chwilę składników sieci platformy Azure:
 
--   **Usługa Azure ExpressRoute**: Użyj prywatnej komunikacji równorzędnej w usługi Azure ExpressRoute, aby bezpośrednio łączyć się wdrożenia usługi Azure Virtual Network z prywatnych przestrzeni adresów IP w sieci lokalnej. Usługa ExpressRoute może pomóc Ci osiągnąć wyższą przepustowość i połączenie prywatne. Wielu partnerów ekonomicznym usługi ExpressRoute oferuje połączenia usługi ExpressRoute z umowami SLA. Aby dowiedzieć się więcej na temat usługi ExpressRoute i Dowiedz się, jak skonfigurować usługi ExpressRoute, zobacz [wprowadzenie do usługi ExpressRoute][ExpressRoute].
+-   **Azure ExpressRoute**: Użyj prywatnej komunikacji równorzędnej w usługi Azure ExpressRoute, aby bezpośrednio łączyć się wdrożenia usługi Azure Virtual Network z prywatnych przestrzeni adresów IP w sieci lokalnej. Usługa ExpressRoute może pomóc Ci osiągnąć wyższą przepustowość i połączenie prywatne. Wielu partnerów ekonomicznym usługi ExpressRoute oferuje połączenia usługi ExpressRoute z umowami SLA. Aby dowiedzieć się więcej na temat usługi ExpressRoute i Dowiedz się, jak skonfigurować usługi ExpressRoute, zobacz [wprowadzenie do usługi ExpressRoute][ExpressRoute].
 -   **Site-to-site VPN**: Bramy sieci VPN platformy Azure jako sieci VPN lokacja lokacja służy do bezpiecznego połączenia między siecią lokalną na platformę Azure za pośrednictwem Internetu lub przy użyciu usługi ExpressRoute. Aby dowiedzieć się, jak skonfigurować sieć VPN lokacja lokacja, do połączenia z platformą Azure, zobacz [Konfigurowanie bramy sieci VPN][VPN].
 -   **Komunikacja równorzędna sieci wirtualnych**: Użyj komunikacji równorzędnej sieci wirtualnych (VNet), aby poprawnie ustanowić połączenia między sieciami wirtualnymi w sieci wirtualnej platformy Azure. Aby dowiedzieć się więcej na temat komunikacji równorzędnej sieci wirtualnych, zobacz [samouczek dotyczący wirtualnych sieci równorzędnych][VNet].
 
@@ -63,7 +63,7 @@ W sieci wirtualnej komunikacji równorzędnej w regionie sieci wirtualne będąc
 
 ### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Połączenie między sieciami gałęzi przy użyciu sieci VPN typu lokacja lokacja
 
-Możesz chcieć gałęzi sieci wirtualne, które znajdują się w różnych regionach i sieciami lokalnymi do komunikowania się ze sobą za pośrednictwem sieci wirtualnej serwera centralnego. Natywne rozwiązanie platformy Azure dla tego cofiguration jest połączenie sieci VPN typu lokacja lokacja przy użyciu sieci VPN. Alternatywą jest na potrzeby routingu w piaście wirtualnego urządzenia sieciowego (WUS).
+Możesz chcieć gałęzi sieci wirtualne, które znajdują się w różnych regionach i sieciami lokalnymi do komunikowania się ze sobą za pośrednictwem sieci wirtualnej serwera centralnego. Natywne rozwiązanie platformy Azure dla tej konfiguracji jest połączenie sieci VPN typu lokacja lokacja przy użyciu sieci VPN. Alternatywą jest na potrzeby routingu w piaście wirtualnego urządzenia sieciowego (WUS).
 
 Aby uzyskać więcej informacji, zobacz [co to jest usługa VPN Gateway?] [ VPN] i [wdrożenia o wysokiej dostępności urządzeń WUS][Deploy-NVA].
 

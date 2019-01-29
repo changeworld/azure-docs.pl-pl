@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: e83ba321a98e40f07ff82e68c7961c2a6a49076d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191839"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104664"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>wyrażenie metodzie App() zapytanie usługi Log Analytics
 
@@ -37,10 +37,10 @@ ms.locfileid: "53191839"
 
 | Identyfikator | Opis | Przykład
 |:---|:---|:---|
-| Nazwa zasobu | Przez ludzi dla użytkownika nazwę aplikacji (zwane również "Nazwa składnika") | App("fabrikamapp") |
+| Nazwa zasobu | Przez ludzi dla użytkownika nazwę aplikacji (zwane również "Nazwa składnika") | app("fabrikamapp") |
 | Kwalifikowana nazwa | Pełna nazwa aplikacji w postaci: "componentName-subscriptionName/resourceGroup" | App('AI-prototype/Fabrikam/fabrikamapp') |
-| ID | Identyfikator GUID aplikacji | App("988ba129-363e-4415-8fe7-8cbab5447518") |
-| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure |App("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/Providers/Microsoft.insights/Components/fabrikamapp") |
+| ID | Identyfikator GUID aplikacji | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
 ## <a name="notes"></a>Uwagi
@@ -48,6 +48,7 @@ ms.locfileid: "53191839"
 * Musi mieć dostęp do odczytu do aplikacji.
 * Identyfikowanie aplikacji za pomocą nazwy przyjęto założenie, że jest ona unikatowa we wszystkich subskrypcjach dostępne. Jeśli masz wiele aplikacji o określonej nazwie, zapytanie zakończy się niepowodzeniem z powodu niejednoznaczności. W takim przypadku należy użyć jednego z innych identyfikatorów.
 * Użyj wyrażenia powiązane [obszaru roboczego](workspace-expression.md) do wykonywania zapytań w obszarach roboczych usługi Log Analytics.
+* Wyrażenie metodzie app() nie jest obecnie obsługiwane w zapytaniu wyszukiwania podczas używania witryny Azure portal do utworzenia [reguły alertów wyszukiwania dziennika niestandardowego](../platform/alerts-log.md), chyba że aplikacja usługi Application Insights jest używana jako zasób dla reguły alertu.
 
 ## <a name="examples"></a>Przykłady
 

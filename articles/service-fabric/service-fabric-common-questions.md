@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 60fe7296d95a7746fd703c3a45349faf294e5bbd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: ce88c8c4850e5226ddda12ce5ee0e1d18b51ea5c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320603"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104086"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Często zadawane pytania na temat usługi Service Fabric
 
@@ -73,7 +73,7 @@ Firma Microsoft wymaga produkcyjnego klastra dla co najmniej 5 węzłów z trzec
 
 Chcemy, aby klaster ma być dostępny w przypadku równoczesnej awarii dwóch węzłów. W przypadku klastra usługi Service Fabric mają być dostępne usługi systemowe muszą być dostępne. Usługi stanowe systemu, takie jak nazewnictwa i usługi Menedżer trybu failover, śledzenie, jakie usługi zostały wdrożone w klastrze i gdzie są obecnie obsługiwane, są zależne od wysoki poziom spójności. Silnej spójności, z kolei jest zależny od możliwość uzyskania *kworum* wszelkich aktualizacji danego stanu, które z tych usług, gdzie kworum reprezentuje strict większość repliki (N/2 + 1) dla danej usługi. Dlatego jeśli chcemy być odporny na jednoczesne utratę dwóch węzłów (tym samym jednoczesnych utraty dwie repliki usługi system), firma Microsoft musi mieć wartość ClusterSize - QuorumSize > = 2, co zmusza minimalny rozmiar do pięciu osób. Aby zobaczyć, które należy wziąć pod uwagę klaster ma węzły N wiąże się z replik N usługa systemowa — jeden w każdym węźle. Rozmiar kworum usługi system jest (N/2 + 1). Powyższe nierówności wygląda N - (N/2 + 1) > = 2. Istnieją dwa przypadki, które należy rozważyć: gdy N jest parzysta, a N jest nieparzysta. Jeśli N jest parzysta, załóżmy, że N = 2\*m gdzie m > = 1, nierówności wygląda 2\*m - (2\*m/2 + 1) > = 2 lub m > = 3. Co najmniej n to 6 i to osiągnąć, kiedy m = 3. Z drugiej strony, jeśli N jest nieparzysta, powiedz N = 2\*m + 1 gdzie m > = 1, nierówności wygląda 2\*m + 1 – ((2\*m + 1) / 2 + 1) > = 2 lub 2\*m + 1 – (m + 1) > = 2 lub m > = 2. Co najmniej n wynosi 5, a to osiągnąć, kiedy m = 2. W związku między wszystkie wartości N, które spełniają kryteria nierówności wartość ClusterSize - QuorumSize > = 2, wartość minimalna to 5.
 
-Uwaga: w argumencie powyżej, które firma Microsoft ma zakłada, że każdy węzeł repliki usługi systemu, dlatego rozmiar kworum jest obliczana na podstawie liczby węzłów w klastrze. Jednakże, zmieniając *TargetReplicaSetSize* firma Microsoft może spowodować, że rozmiar kworum mniej niż (N / 2 + 1) który może stworzyć wrażenie, że mogliśmy mają mniejszy niż 5 węzłów klastra i nadal masz 2 dodatkowe węzły rozmiar kworum. Na przykład 4 węzłami klastra, jeśli ustawimy TargetReplicaSetSize na 3, rozmiar kworum, w oparciu o TargetReplicaSetSize jest (3/2 + 1) lub 2, dlatego mamy CluserSize - QuorumSize 4-2 = > = 2. Jednak firma Microsoft nie gwarantuje, że usługa system będzie w lub powyżej kworum możemy utraty jakiejkolwiek parze węzłów jednocześnie, może to być dwa węzły stracimy zostały hostingu dwie repliki, dzięki czemu usługa systemowa zostaną umieszczone w utraciła kworum (o pojedynczą replikę w lewo) ND staną się niedostępne.
+Uwaga: w argumencie powyżej, które firma Microsoft ma zakłada, że każdy węzeł repliki usługi systemu, dlatego rozmiar kworum jest obliczana na podstawie liczby węzłów w klastrze. Jednakże, zmieniając *TargetReplicaSetSize* firma Microsoft może spowodować, że rozmiar kworum mniej niż (N / 2 + 1) który może stworzyć wrażenie, że mogliśmy mają mniejszy niż 5 węzłów klastra i nadal masz 2 dodatkowe węzły rozmiar kworum. Na przykład 4 węzłami klastra, jeśli ustawimy TargetReplicaSetSize na 3, rozmiar kworum, w oparciu o TargetReplicaSetSize jest (3/2 + 1) lub 2, dlatego mamy wartość ClusterSize - QuorumSize 4-2 = > = 2. Jednak firma Microsoft nie gwarantuje, że usługa system będzie w lub powyżej kworum możemy utraty jakiejkolwiek parze węzłów jednocześnie, może to być dwa węzły stracimy zostały hostingu dwie repliki, dzięki czemu usługa systemowa zostaną umieszczone w utraciła kworum (o pojedynczą replikę w lewo) ND staną się niedostępne.
 
 W tle Przeanalizujmy niektóre konfiguracje klastra możliwe:
 

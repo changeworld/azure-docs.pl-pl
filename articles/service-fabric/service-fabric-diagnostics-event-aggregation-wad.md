@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002403"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187440"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Zdarzenie agregacji i kolekcji przy użyciu Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -187,7 +187,7 @@ Po zmodyfikowaniu plik template.json, zgodnie z opisem, należy ponownie opublik
 
 ### <a name="update-storage-quota"></a>Aktualizowanie limitu przydziału pamięci masowej
 
-Od tabel wypełnione przez rozszerzenie powiększa się dopóki nie zostanie osiągnięty limit przydziału, warto rozważyć zmniejszenie rozmiaru przydziału. Wartością domyślną jest 50 GB i można skonfigurować w szablonie w obszarze `overallQuotainMB` pole w obszarze `DiagnosticMonitorConfiguration`
+Od tabel wypełnione przez rozszerzenie powiększa się dopóki nie zostanie osiągnięty limit przydziału, warto rozważyć zmniejszenie rozmiaru przydziału. Wartością domyślną jest 50 GB i można skonfigurować w szablonie w obszarze `overallQuotaInMB` pole w obszarze `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",

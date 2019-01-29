@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: cf86d2a644c2732f27442a807dec1ad960b94af5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157636"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095161"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -246,15 +246,15 @@ Aby wyświetlić te błędy, uruchom **FileSyncErrorsReport.ps1** skrypt program
 **Dziennik ItemResults — błędy synchronizacji na element**  
 | WARTOŚĆ HRESULT | HRESULT (dziesiętna) | Ciąg błędu | Problem | Korygowanie |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ nie jest jeszcze zsynchronizowany folder zależny. Ten element zostanie zsynchronizowany po zsynchronizowaniu zmian zależnych. | Nie jest wymagana żadna akcja. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Nie można jeszcze zsynchronizować zmiany pliku lub katalogu, ponieważ nie jest jeszcze zsynchronizowany folder zależny. Ten element zostanie zsynchronizowany po zsynchronizowaniu zmian zależnych. | Żadna akcja nie jest wymagana. |
 | 0x7B | 123 | ERROR_INVALID_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę pliku lub katalogu jest zagrożona. Zobacz [obsługi nieobsługiwane znaki](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Aby uzyskać więcej informacji. |
 | 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Nazwa pliku lub katalogu jest nieprawidłowa. | Zmień nazwę pliku lub katalogu jest zagrożona. Zobacz [obsługi nieobsługiwane znaki](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) Aby uzyskać więcej informacji. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Nie jest wymagana żadna akcja. Usługa Azure File Sync tworzy migawkę usługi VSS tymczasowe raz dziennie na serwerze, aby synchronizować pliki, które mają otwarte dojścia. |
-| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiany nie ma jeszcze wykryty przez synchronizacji. Synchronizacja zostanie przywrócona do działania po wykryciu tej zmiany. | Nie jest wymagana żadna akcja. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Żadna akcja nie jest wymagana. Usługa Azure File Sync tworzy migawkę usługi VSS tymczasowe raz dziennie na serwerze, aby synchronizować pliki, które mają otwarte dojścia. |
+| 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Plik został zmieniony, ale zmiany nie ma jeszcze wykryty przez synchronizacji. Synchronizacja zostanie przywrócona do działania po wykryciu tej zmiany. | Żadna akcja nie jest wymagana. |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Nie można zsynchronizować pliku, ponieważ osiągnięto limit udziału plików platformy Azure. | Aby rozwiązać ten problem, zobacz [osiągnięto limit magazynowania udziału plików platformy Azure](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) w przewodniku rozwiązywania problemów. |
 | 0x80070005 | -2147024891 | E_ACCESSDENIED | Ten błąd może wystąpić, jeśli plik jest szyfrowany przez rozwiązanie nieobsługiwany (np. systemu plików NTFS system szyfrowania plików) lub plik ma blokadę usuwania w stanie oczekiwania. | Jeśli plik jest szyfrowany przez rozwiązanie nieobsługiwane, odszyfrowywania pliku i przy użyciu rozwiązania obsługiwanych szyfrowania. Aby uzyskać listę rozwiązań pomocy technicznej, zobacz [rozwiązań do szyfrowania](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions) w przewodniku planowania. Jeśli plik znajduje się w obszarze usuwanie w stanie oczekiwania, plik zostanie usunięty, gdy są zamykane wszystkie otwarte dojścia do plików. |
-| 0x20 | 32 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Nie jest wymagana żadna akcja. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi on zostać ponownie zsynchronizowany. | Nie jest wymagana żadna akcja. |
+| 0x20 | 32 | ERROR_SHARING_VIOLATION | Nie można zsynchronizować pliku, ponieważ jest on używany. Plik zostanie zsynchronizowany, gdy nie jest już używana. | Żadna akcja nie jest wymagana. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi on zostać ponownie zsynchronizowany. | Żadna akcja nie jest wymagana. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwane znaki
 Jeśli **FileSyncErrorsReport.ps1** skrypt programu PowerShell pokazuje błędy spowodowane nieobsługiwane znaki (0x7b kody błędów i 0x8007007b), należy usunąć lub zmienić znaków na pozycji błędu z nazwami odpowiednich plików. Program PowerShell prawdopodobnie zostanie wydrukowana te znaki jako znaki zapytania lub prostokąty pusty, ponieważ większość z tych znaków ma nie standardowych wizualnego kodowania. [Uruchamiania narzędzia oceny](storage-sync-files-planning.md#evaluation-tool) może służyć do identyfikowania znaków, które nie są obsługiwane.
@@ -283,7 +283,7 @@ Sesje synchronizacji może się nie powieść z różnych powodów, łącznie z 
 <a id="-2147012889"></a>**Nie można nawiązać połączenia z usługą.**    
 | | |
 |-|-|
-| **HRESULT** | 0x80072EE7 |
+| **HRESULT** | 0x80072ee7 |
 | **HRESULT (dziesiętna)** | -2147012889 | 
 | **Ciąg błędu** | WININET_E_NAME_NOT_RESOLVED |
 | **Wymagana korekta** | Yes |
@@ -441,7 +441,7 @@ Jeśli ten błąd będzie się powtarzać dłużej niż kilka godzin, Utwórz ż
 
 Ten błąd może wystąpić, jeśli Twoja organizacja używa serwera proxy protokołu SSL kończący lub zamierzających przechwytują dane komunikacji między serwerem i usługa Azure File Sync. Jeśli masz pewność, że jest to oczekiwane (ponieważ jest to Twoja organizacja korzysta z protokołu SSL, zakończenie serwera proxy), możesz pominąć weryfikację certyfikatu za pomocą zastąpienia rejestru.
 
-1. Utwórz wartość rejestru SkipVerifyingPinnedRootCertificate.
+1. Create the SkipVerifyingPinnedRootCertificate registry value.
 
     ```PowerShell
     New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Azure\StorageSync -Name SkipVerifyingPinnedRootCertificate -PropertyType DWORD -Value 1
@@ -458,7 +458,7 @@ Ustawiając tę wartość rejestru, agent usługi Azure File Sync zaakceptuje ka
 <a id="-2147012894"></a>**Nie można nawiązać połączenia z usługą.**  
 | | |
 |-|-|
-| **HRESULT** | 0x80072EE2 |
+| **HRESULT** | 0x80072ee2 |
 | **HRESULT (dziesiętna)** | -2147012894 |
 | **Ciąg błędu** | WININET_E_TIMEOUT |
 | **Wymagana korekta** | Yes |
@@ -804,24 +804,19 @@ Istnieją dwa główne klasy błędów, które mogą wystąpić przy użyciu alb
 Poniższe sekcje określają, jak rozwiązywanie problemów obsługi warstw w chmurze i określ, czy problem występuje problem z magazynem chmury lub błąd serwera.
 
 <a id="monitor-tiering-activity"></a>**Jak monitorować działania obsługi warstw na serwerze**  
-Aby monitorować aktywność obsługi warstw na serwerze, należy użyć 9002 identyfikator zdarzenia, 9003, 9016 i 9029 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń).
-
-- Identyfikator zdarzenia 9002 zawiera dane statystyczne duplikowania punkt końcowy serwera. Na przykład TotalGhostedFileCount, SpaceReclaimedMB, itd.
+Aby monitorować aktywność obsługi warstw na serwerze, należy użyć Event ID 9003 9016 i 9029 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń).
 
 - Identyfikator zdarzenia 9003 zapewnia rozkład błędów dla punktu końcowego serwera. Np. Łączna liczba błędów, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
-
 - Identyfikator zdarzenia 9016 zapewnia duplikowania wyniki dla woluminu. Na przykład wolnego miejsca, które jest procent, liczba plików jest zduplikowany w sesji, liczba plików nie powiodło się z ghost itp.
-
-- Identyfikator zdarzenia 9029 zawiera informacje o sesji duplikowania. Na przykład warstwy liczbę plików, które podjęto w danej sesji, liczba plików w danej sesji, liczby plików już warstwowe, itp.
+- Identyfikator zdarzenia 9029 informacje duplikowania sesji dla punktu końcowego serwera. Na przykład warstwy liczbę plików, które podjęto w danej sesji, liczba plików w danej sesji, liczby plików już warstwowe, itp.
 
 <a id="monitor-recall-activity"></a>**Jak monitorować działania odwołania na serwerze**  
-Aby monitorować aktywność odwołania na serwerze, należy użyć 9005 identyfikator zdarzenia, 9006, 9007 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń). Należy zauważyć, że te zdarzenia są rejestrowane co godzinę.
+Aby monitorować aktywność odwołania na serwerze, należy użyć Event ID 9005 9006 i 9009 9059 w dzienniku zdarzeń Telemetrii (znajdujący się w aplikacji i Services\Microsoft\FileSync\Agent w Podglądzie zdarzeń).
 
 - Identyfikator zdarzenia 9005 zapewnia niezawodność odwołania dla punktu końcowego serwera. Na przykład łączna liczba unikatowych plików uzyskiwać dostęp, a łączna liczba unikatowych plików nieudanych prób dostępu itd.
-
 - Identyfikator zdarzenia 9006 zapewnia rozkład błędów odwołań dla punktu końcowego serwera. Np. Łączna liczba żądań nie powiodło się, kod błędu, itd. Uwaga: jedno zdarzenie jest rejestrowane na kod błędu.
-
-- Identyfikator zdarzenia 9007 zapewnia wydajność odwołania dla punktu końcowego serwera. Na przykład TotalRecallIOSize, TotalRecallTimeTaken, itd.
+- Identyfikator zdarzenia 9009 informacje wycofaniu sesji dla punktu końcowego serwera. Na przykład DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed, itd.
+- Identyfikator zdarzenia 9059 zapewnia dystrybucję wycofaniu aplikacji dla punktu końcowego serwera. Na przykład ShareId, nazwę aplikacji i TotalEgressNetworkBytes.
 
 <a id="files-fail-tiering"></a>**Rozwiązywanie problemów z plikami, które nie są do warstwy**  
 Jeśli pliki nie powiodły się warstwy do usługi Azure Files:

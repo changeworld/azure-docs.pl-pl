@@ -6,16 +6,16 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: aahi
-ms.openlocfilehash: 4f1f52c7954b4985d0da24f51eb199e2cbeac3a6
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: c569c44d358049605aa8bbe1cbc96d0028f7aea1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063594"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55189693"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Wysyłanie kwerend wyszukiwania do interfejsu API wyszukiwania wizualnego Bing
 
@@ -76,7 +76,7 @@ Punkt końcowy wyszukiwania wizualnego jest następujący: https:\/\/api.cogniti
 
 Poniżej przedstawiono parametry zapytania, które należy określić w żądaniu. Należy uwzględnić przynajmniej parametr zapytania `mkt`.
 
-| Name (Nazwa)                              | Wartość                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Typ   | Wymagane |
+| Name                              | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Type   | Wymagany |
 |-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|----------|
 | <a name="cc" />cc                 | 2-znakowy kod kraju dla kraju, z którego pochodzą wyniki.<br /><br /> Jeśli ustawisz ten parametr, musisz także określić nagłówek [Accept-Language](#acceptlanguage). Usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście języków i łączy ten język z określonym kodem kraju, aby ustalić rynek, z którego mają być zwrócone wyniki. Jeśli lista języków nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie. Może też używać rynku zagregowanego lub domyślnego, zamiast podanego.<br /><br /> Tego parametru zapytania i parametru `Accept-Language` należy używać tylko wtedy, gdy jest określanych wiele języków. W przeciwnym razie należy użyć parametrów zapytania `mkt` i `setLang`.<br /><br /> Ten parametr i parametr zapytania [mkt](#mkt) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | Ciąg | Nie       |
 | <a name="mkt" />mkt               | Rynek, z którego pochodzą wyniki. <br /><br /> **UWAGA:** Zachęcamy do zawsze określać na rynku, jeśli jest znany. Określenie rynku pomaga usłudze Bing w kierowaniu żądania i zwracaniu odpowiedniej i optymalnej odpowiedzi.<br /><br /> Ten parametr i parametr zapytania [cc](#cc) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Ciąg | Yes      |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 91813e31c6237cf47a744a4290e3e2d7736195f0
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 14d7ae7cc347b771dfdb1209bc8d55c484d00db0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54322099"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193735"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Opis okresowe konfiguracji kopii zapasowej w usłudze Azure Service Fabric
 
@@ -219,9 +219,9 @@ Po potrzebę zawieszenia dane kopii zapasowej można przywrócić przy użyciu o
 * Jeśli zawieszenia została zastosowana na _partycji_, a następnie wznowić, przy użyciu [partycji Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) interfejsu API.
 
 ### <a name="difference-between-suspend-and-disable-backups"></a>Różnica między wstrzymaniem i Wyłącz kopii zapasowych
-Wyłącz kopię zapasową powinny być używane, gdy kopie zapasowe nie są wymagane dla określonej aplikacji, usługi lub partycji. Jeden infact może wywołać żądania utworzenia kopii zapasowej Wyłącz wraz z parametru z czystej kopii zapasowych jako wartość true oznacza, że wszystkie istniejące kopie zapasowe są także usuwane. Jednakże zawiesić ma być używany w scenariuszach, gdzie jeden chce wyłączyć tworzenie kopii zapasowych tymczasowo takich jak po zapełnieniu dysku lokalnego lub przekazywanie kopii zapasowej kończy się niepowodzeniem z powodu problemu z znanej sieci itp. 
+Wyłącz kopię zapasową powinny być używane, gdy kopie zapasowe nie są wymagane dla określonej aplikacji, usługi lub partycji. Jeden wywołać żądania utworzenia kopii zapasowej Wyłącz wraz z parametru z czystej kopii zapasowych jako wartość true oznacza, że wszystkie istniejące kopie zapasowe są także usuwane. Jednakże zawiesić ma być używany w scenariuszach, gdzie jeden chce wyłączyć tworzenie kopii zapasowych tymczasowo takich jak po zapełnieniu dysku lokalnego lub przekazywanie kopii zapasowej kończy się niepowodzeniem z powodu problemu z znanej sieci itp. 
 
-Gdy wyłączenie może być wywołana tylko na poziomie który został wcześniej włączone dla explicilty kopii zapasowej, jednak zawieszenia mogą być stosowane na dowolnym poziomie, który jest obecnie włączona dla kopii zapasowej albo bezpośrednio lub przez dziedziczenie / hierarchii. Na przykład, jeśli kopia zapasowa jest włączona na poziomie aplikacji, jednego wywołania wyłączyć tylko na poziomie aplikacji zawiesić jednak może być wywoływana na aplikacji, usług lub partycji w ramach tej aplikacji. 
+Podczas Wyłącz może być wywołana tylko na poziomie której była wcześniejsza aktywne do utworzenia kopii zapasowej jawnie jednak zawieszenia mogą być stosowane na dowolnym poziomie, który jest obecnie włączona dla kopii zapasowej albo bezpośrednio lub przez dziedziczenie / hierarchii. Na przykład, jeśli kopia zapasowa jest włączona na poziomie aplikacji, jednego wywołania wyłączyć tylko na poziomie aplikacji zawiesić jednak może być wywoływana na aplikacji, usług lub partycji w ramach tej aplikacji. 
 
 ## <a name="auto-restore-on-data-loss"></a>Automatycznego przywracania na utratę danych
 Service partition może spowodować utratę danych z powodu nieoczekiwanych awarii. Na przykład dysk dla dwóch spośród trzech replik partycji (łącznie z repliką podstawową) pobiera uszkodzony lub wyczyszczone.

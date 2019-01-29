@@ -10,12 +10,12 @@ ms.component: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: 12e91a07d09929ba59873d0d56f4e19b20077f53
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 297547d52333bf84af69a780c98ce9d84938cf94
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999753"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097757"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odwołanie do projektu Podgląd adresu URL w wersji 7
 
@@ -31,10 +31,10 @@ Do wyświetlania fragmentów (wersja zapoznawcza) i obrazy miniatur hiperłącza
 Aby zażądać Podgląd adresu URL wyników, należy wysłać żądanie do następujący punkt końcowy. Umożliwia dalsze Definiowanie specyfikacji w nagłówki i parametry adresu URL.
 
 Pobierz punkt końcowy:
-````
+```
 https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 
-````
+```
 
 Żądanie musi używać protokołu HTTPS i obejmują następujące parametru zapytania:
 
@@ -73,11 +73,11 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 ## <a name="query-parameters"></a>Parametry zapytania
 Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania. Zapytanie musi być bezwzględnym adresem URL za pomocą protokołu http lub https schematu; Firma Microsoft nie obsługuje względnych adresów URL lub innych systemów, takich jak ftp: / /
 
-|Name (Nazwa)|Wartość|Typ|Wymagane|
+|Name|Value|Type|Wymagany|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku, zobacz [kody rynku](#market-codes).<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko język angielski i położenia geograficznego w Stanach Zjednoczonych.<br /><br />|Ciąg|Yes|
-|<a name="query" />pytania i odpowiedzi|Adres URL, aby wyświetlić podgląd|Ciąg|Yes|
-|<a name="responseformat" />Format odpowiedzi|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](http://json-ld.org/).|Ciąg|Nie|
+|<a name="query" />q|Adres URL, aby wyświetlić podgląd|Ciąg|Yes|
+|<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](http://json-ld.org/).|Ciąg|Nie|
 |<a name="safesearch"/>safeSearch|Nielegalnych treści dla dorosłych lub pirackich zawartości jest zablokowany kod błędu: 400 i *isFamilyFriendly* flaga nie jest zwracana. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200, a *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = ograniczeniami: Tytuł i opis, adres URL obrazu nie zostaną zwrócone.</li><li>bezpieczne wyszukiwanie = średni; Uzyskaj tytuł, adres URL i opis, ale nie opisowy obraz.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |Ciąg|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = strict.|
 
 ## <a name="response-objects"></a>Obiekty odpowiedzi
@@ -85,32 +85,32 @@ Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API w
 
 |Obiekt|Opis|
 |------------|-----------------|
-|[Strony sieci Web](#webpage)|Najwyższego poziomu obiekt JSON, który zawiera atrybuty (wersja zapoznawcza).|
+|[WebPage](#webpage)|Najwyższego poziomu obiekt JSON, który zawiera atrybuty (wersja zapoznawcza).|
 
 ### <a name="error"></a>Błąd
 Definiuje błąd, który wystąpił.
 
-|Element|Opis|Typ|
+|Element|Opis|Type|
 |-------------|-----------------|----------|
 |<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|Ciąg|
 |<a name="error-message" />Komunikat|Opis błędu.|Ciąg|
 |<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o tym błędzie.|Ciąg|
 |<a name="error-parameter" />Parametr|Parametr zapytania w żądaniu, które spowodowały błąd.|Ciąg|
-|<a name="error-subcode" />Podrzędnego|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |Ciąg|
+|<a name="error-subcode" />subCode|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |Ciąg|
 |<a name="error-value" />Wartość|Wartość parametru zapytania, która nie jest prawidłowa.|Ciąg|
 
 ### <a name="errorresponse"></a>ErrorResponse
 Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.
 
-|Name (Nazwa)|Wartość|Typ|
+|Name|Value|Type|
 |----------|-----------|----------|
-|_typ|Wskazówka typu.|Ciąg|
+|_type|Wskazówka typu.|Ciąg|
 |<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Błąd](#error)]|
 
 ### <a name="webpage"></a>Strony sieci Web
 Określa informacje o stronie sieci Web w wersji zapoznawczej.
 
-|Name (Nazwa)|Wartość|Typ|
+|Name|Value|Type|
 |----------|-----------|----------|
 |name|Tytuł strony, niekoniecznie tytuł HTML|Ciąg|
 |url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|Ciąg|
@@ -119,7 +119,7 @@ Określa informacje o stronie sieci Web w wersji zapoznawczej.
 |primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|Ciąg|
 
 ### <a name="identifiable"></a>Do zidentyfikowania
-|Name (Nazwa)|Wartość|Typ|
+|Name|Value|Type|
 |-------------|-----------------|----------|
 |id|Identyfikator zasobu|Ciąg|
 

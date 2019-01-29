@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 5a5fbcb4cd2e073192ec7032bdbed15ab49798ad
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: ebd374cc8792545d1db57f624a5831dc9ded272f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075427"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102128"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -153,9 +153,17 @@ Usługa Azure Migrate modułu zbierającego pobiera interfejs PowerCLI i instalu
 Ten problem może wystąpić z powodu problemu z instalacją programu VMware PowerCLI. Wykonaj poniższe kroki, aby rozwiązać ten problem:
 
 1. Jeśli nie jesteś w najnowszej wersji urządzenia modułu zbierającego [Uaktualnij moduł zbierający do najnowszej wersji](https://aka.ms/migrate/col/checkforupdates) i sprawdź, czy problem został rozwiązany.
-2. Jeśli masz już najnowszą wersję modułu zbierającego, wykonaj poniższe kroki, aby wykonać czystą instalację programu PowerCLI:. Zamknij przeglądarkę sieci web w urządzeniu.
-   b. Zatrzymaj usługę Azure Migrate Collector, przechodząc do Windows Service Manager (Otwórz "Uruchom" i typ services.msc otworzyć Windows Service Manager). Kliknij prawym przyciskiem myszy kliknij usługę modułu zbierającego migracji platformy Azure, a następnie kliknij przycisk Zatrzymaj, c. Usuń wszystkie foldery, rozpoczynając od "VMware, w następujących lokalizacjach: C:\Program Files\WindowsPowerShell\Modules  
-        C:\Program Files (x86)\WindowsPowerShell\Modules d. Uruchom ponownie usługę Azure Migrate Collector w Windows Service Manager (Otwórz "Uruchom" i typ services.msc otworzyć Windows Service Manager). Kliknij prawym przyciskiem myszy kliknij usługę modułu zbierającego migracji platformy Azure, a następnie kliknij przycisk Uruchom.
+2. Jeśli masz już najnowszą wersję modułu zbierającego, wykonaj poniższe kroki, aby wykonać czystą instalację programu PowerCLI:
+
+   a. Zamknij przeglądarkę sieci web w urządzeniu.
+
+   b. Zatrzymaj usługę Azure Migrate Collector, przechodząc do Windows Service Manager (Otwórz "Uruchom" i typ services.msc otworzyć Windows Service Manager). Kliknij prawym przyciskiem myszy kliknij usługę modułu zbierającego migracji platformy Azure, a następnie kliknij przycisk Zatrzymaj.
+
+   c. Usuń wszystkie foldery, rozpoczynając od "VMware, w następujących lokalizacjach: C:\Program Files\WindowsPowerShell\Modules  
+        C:\Program Files (x86)\WindowsPowerShell\Modules
+
+   d. Uruchom ponownie usługę Azure Migrate Collector w Windows Service Manager (Otwórz "Uruchom" i typ services.msc otworzyć Windows Service Manager). Kliknij prawym przyciskiem myszy kliknij usługę modułu zbierającego migracji platformy Azure, a następnie kliknij przycisk Uruchom.
+   
    e. Kliknij dwukrotnie skrót "Uruchom moduł zbierający" Aby uruchomić aplikację modułu zbierającego. Aplikację modułu zbierającego automatycznie należy pobrać i zainstalować wymaganą wersję fo PowerCLI.
 
 3. Jeśli powyższe nie rozwiąże problemu, ręcznie zainstaluj [program VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) i sprawdź, czy problem został rozwiązany.
@@ -214,7 +222,7 @@ Lista systemów operacyjnych Windows obsługiwanych przez agenta zależności je
 Lista systemów operacyjnych Linux obsługiwane przez agenta zależności jest [tutaj](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nie można wizualizować zależności w usłudze Azure Migrate dla więcej niż jedna godzina, czas trwania?
-Usługa Azure Migrate umożliwia wizualizowanie zależności maksymalnie jedną godzinę czasu trwania. Mimo że usługa Azure Migrate umożliwia wróć do określonej daty w historii dla maksymalnie ostatni miesiąc, maksymalny czas trwania, dla którego można wizualizować zależności jest maksymalnie 1 godzinę. Na przykład można użyć funkcji okres czasu z mapy zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Log Analytics do [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) przez dłuższy czas. 
+Usługa Azure Migrate umożliwia wizualizowanie zależności maksymalnie jedną godzinę czasu trwania. Mimo że usługa Azure Migrate umożliwia wróć do określonej daty w historii dla maksymalnie ostatni miesiąc, maksymalny czas trwania, dla którego można wizualizować zależności jest maksymalnie 1 godzinę. Na przykład można użyć funkcji okres czasu z mapy zależności, aby wyświetlić zależności dla wczoraj, ale tylko wtedy można wyświetlić okna jedną godzinę. Jednak można użyć usługi Log Analytics do [wykonywanie zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) przez dłuższy czas.
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nie można wizualizować zależności dla grup zawierających więcej niż 10 maszyn wirtualnych?
 Możesz [wizualizacja zależności dla grup](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) ma się do 10 maszyn wirtualnych, jeśli istnieje grupa z ponad 10 maszyn wirtualnych, zalecamy wizualizowanie zależności i podzielić grupy w mniejszym grupom.

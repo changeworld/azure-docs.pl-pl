@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 74973371b3d893c1e0c94024a97c77b59fa570fe
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c3e5c6bd2c41d778450412babb8fc35b36d9d329
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461947"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197096"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji
 Usługi synchronizacji usługi Azure Active Directory Connect (Azure AD Connect sync) jest głównym składnikiem programu Azure AD Connect. Ta odpowiada za wszystkie operacje, które odnoszą się do synchronizowania danych tożsamości między środowiskiem lokalnym i usługi Azure AD. Synchronizacja programu Azure AD Connect jest następcą narzędzia DirSync, Azure AD Sync i Forefront Identity Manager za pomocą usługi Azure łącznika usługi Active Directory skonfigurowane.

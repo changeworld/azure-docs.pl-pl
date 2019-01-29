@@ -11,33 +11,34 @@ ms.component: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75a1a8763125e1e93691e2a28bc90a6d02ed7c40
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1187460deff0ac1ec71ddc70e503169a728c8b5c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246334"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099955"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
-Za pomocą usługi Azure Machine Learning można uczenie modelu na wielu różnych zasobów lub środowisk, zbiorczo określany jako [ __celów obliczeń__](concept-azure-machine-learning-architecture.md#compute-target). Cel obliczenia może być komputer lokalny lub zasobem w chmurze, takich jak Azure obliczeniowego usługi Machine Learning, Azure HDInsight lub zdalnego maszyny wirtualnej.  
+Za pomocą usługi Azure Machine Learning można uczenie modelu na wielu różnych zasobów lub środowisk, zbiorczo określany jako [ __celów obliczeń__](concept-azure-machine-learning-architecture.md#compute-target). Cel obliczenia może być komputer lokalny lub zasobem w chmurze, takich jak Azure obliczeniowego usługi Machine Learning, Azure HDInsight lub zdalnego maszyny wirtualnej.  Można również utworzyć obliczeniowych elementów docelowych dla modelu wdrożenia, zgodnie z opisem w ["gdzie i jak wdrożyć swoje modele"](how-to-deploy-and-where.md).
 
 Można tworzyć i zarządzać obliczeniowego elementu docelowego przy użyciu zestawu SDK usługi Azure Machine Learning, witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone za pomocą innej usługi (na przykład klastra usługi HDInsight), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
  
-W tym artykule dowiesz się, jak używać różnych celów obliczeń.  Kroków dla wszystkich celów obliczeń, użyj tego samego przepływu pracy:
+W tym artykule dowiesz się, jak używać różnych celów obliczeń do trenowania modelu.  Kroków dla wszystkich celów obliczeń, użyj tego samego przepływu pracy:
 1. __Utwórz__ cel obliczenia, jeśli nie masz jeszcze jeden.
 2. __Dołącz__ obliczeniowego elementu docelowego do swojego obszaru roboczego.
 3. __Konfigurowanie__ obliczenia docelowych tak, aby zawierała zależności środowiska i pakiet języka Python wymagane przez skrypt.
 
+
 >[!NOTE]
 > Kod w tym artykule został przetestowany przy użyciu zestawu SDK usługi Azure Machine Learning w wersji 1.0.6.
 
-## <a name="supported-compute-targets"></a>Obsługiwane obliczeniowych elementów docelowych
+## <a name="compute-targets-for-training"></a>Obliczeniowych elementów docelowych na potrzeby szkolenia
 
 Usługa Azure Machine Learning obsługuje różne w różnych obliczeniowych elementów docelowych. Cykl projektowania modelu Typowa rozpoczyna się od dev/eksperymentów na niewielkiej ilości danych. Na tym etapie firma Microsoft zaleca używanie środowiska lokalnego. Na przykład komputera lokalnego lub maszyny Wirtualnej opartej na chmurze. Skalowanie w górę szkolenia na większych zestawów danych lub czy rozproszonego szkolenia, firma Microsoft zaleca obliczeniowego usługi Azure Machine Learning Tworzenie klastra przy użyciu jednego lub wielu node tego skalowania każdej próbie przesłania przebiegu. Można również dołączyć własnych zasobów obliczeniowych, mimo że obsługi różnych scenariuszy mogą się różnić zależnie z poniższym opisem:
 
 
-|Obliczeniowego elementu docelowego| Przyspieszanie procesora GPU | Automatyczne<br/> do strojenia hiperparametrycznego | Automatyczne</br> Uczenie maszynowe | Przyjazne potoku|
+|Obliczeniowego elementu docelowego na potrzeby szkolenia| Przyspieszanie procesora GPU | Automatyczne<br/> do strojenia hiperparametrycznego | Automatyczne</br> Uczenie maszynowe | Przyjazne potoku|
 |----|:----:|:----:|:----:|:----:|
 |[Komputer lokalny](#local)| Być może | &nbsp; | ✓ | &nbsp; |
 |[Usługi Azure Machine Learning obliczeń](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
@@ -352,7 +353,7 @@ Najpierw należy utworzyć eksperyment, w obszarze roboczym.
 
 Przesyłanie eksperymentu za pomocą `ScriptRunConfig` obiektu.  Ten obiekt zawiera:
 
-* **katalog_źródłowy**: Katalog źródłowy, który zawiera skrypt szkolenia
+* **source_directory**: Katalog źródłowy, który zawiera skrypt szkolenia
 * **skrypt**: Skrypt szkolenia
 * **run_config**: Konfiguracja uruchamiania, który z kolei definiuje, gdzie nastąpi szkolenia.
 

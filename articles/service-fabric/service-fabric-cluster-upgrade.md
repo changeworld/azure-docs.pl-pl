@@ -1,6 +1,6 @@
 ---
 title: Uaktualnianie klastra usługi Azure Service Fabric | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat uaktualniania wersji lub konfiguracji klastra usługi Service Svice Fabric platformy Azure.  W tym artykule opisano ustawienia klastra tryb aktualizacji uaktualnianie certyfikaty, dodawanie portów aplikacji, wykonując poprawek systemu operacyjnego i czego mogą oczekiwać podczas uaktualnienia są wykonywane
+description: Więcej informacji na temat uaktualniania wersji lub konfiguracji klastra usługi Azure Service Fabric.  W tym artykule opisano ustawienia klastra tryb aktualizacji uaktualnianie certyfikaty, dodawanie portów aplikacji, wykonując poprawek systemu operacyjnego i czego mogą oczekiwać podczas uaktualnienia są wykonywane
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: a864d6423dc530857009e58a2fa90f0fa2cbc84f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 2e5838046cdb60023495c7e9e111506c333cecc7
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853289"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102400"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Uaktualnianie i aktualizowanie klastra usługi Azure Service Fabric
 
@@ -49,7 +49,7 @@ Będziemy próbować wykonać uaktualnienie samej kilka razy w przypadku uaktual
 
 Jeśli zasady dotyczące kondycji klastra są spełnione, uaktualnienie jest uznawany za pomyślny i oznaczone jako ukończone. Może to nastąpić podczas uaktualniania początkowej lub dowolne powtórkami uaktualniania na tym etapie. Nie ma żadnych e-mail z potwierdzeniem pomyślnego przebiegu. To jest unikać wysyłania, że możesz zbyt dużo żądań wiadomości e-mail — otrzymania wiadomości e-mail powinno być postrzegane jako wyjątek do normalnego. Oczekujemy, że większość Uaktualnianie klastra została wykonana pomyślnie, bez wywierania wpływu na dostępność Twojej aplikacji.
 
-### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Faza 2: Uaktualnienie odbywa się przy użyciu domyślnego tylko zasad dotyczących kondycji
+### <a name="phase-2-an-upgrade-is-performed-by-using-default-health-policies-only"></a>Faza 2: Uaktualnianie jest przeprowadzane przy użyciu tylko zasady dotyczące kondycji domyślne
 Zasady dotyczące kondycji, w tej fazie są ustawiane w taki sposób, aby wiele aplikacji, będące w dobrej kondycji na początku uaktualnienia pozostała taka sama na czas trwania procesu uaktualniania. Tak jak w fazie 1 uaktualnień fazy 2 Przejdź jedną domenę uaktualnienia w danym momencie, a aplikacje, które były uruchomione w klastrze nadal działać bez żadnych przestojów. Zasady dotyczące kondycji klastra (kombinację kondycji węzła i kondycji wszystkich aplikacji uruchomionych w klastrze) są przestrzegane na czas trwania uaktualniania.
 
 Jeśli zasady dotyczące kondycji klastra w praktyce nie są spełnione, uaktualnienie zostanie wycofana. Następnie zostanie wysłana wiadomość e-mail do właściciela subskrypcji. Wiadomość e-mail zawiera następujące informacje:
@@ -62,7 +62,7 @@ Będziemy próbować wykonać uaktualnienie samej kilka razy w przypadku uaktual
 
 Jeśli zasady dotyczące kondycji klastra są spełnione, uaktualnienie jest uznawany za pomyślny i oznaczone jako ukończone. Może to nastąpić podczas uaktualniania początkowej lub dowolne powtórkami uaktualniania na tym etapie. Nie ma żadnych e-mail z potwierdzeniem pomyślnego przebiegu.
 
-### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Faza 3 — Uaktualnianie jest przeprowadzane przy użyciu zasady dotyczące kondycji agresywne
+### <a name="phase-3-an-upgrade-is-performed-by-using-aggressive-health-policies"></a>Faza 3: Uaktualnianie jest przeprowadzane przy użyciu zasady dotyczące kondycji agresywne
 Te zasady dotyczące kondycji, w tej fazie są przeznaczone dla ukończenie uaktualnienia, a nie kondycji aplikacji. Uaktualnianie klastra kilka znajdą się w tej fazie. Jeśli na tym etapie klaster, istnieje duże prawdopodobieństwo, że aplikacja staje się nieprawidłowy, i/lub utratę dostępności.
 
 Podobnie jak w pozostałych faz, fazy 3 uaktualnienia Przejdź jedną domenę uaktualnienia w danym momencie.

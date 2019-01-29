@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: ce27a6f78dfdeb00e1e7b2c82c928d28f1504a1d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 91271888adf8e467e807c409f445fe85e9c3aa22
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347523"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169896"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie BlueJeans dla automatycznej aprowizacji użytkowników
 
@@ -40,14 +40,14 @@ Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następu
 > [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [BlueJeans API](https://BlueJeans.github.io/developer), co jest dostępne dla zespołów BlueJeans z planem Standard lub większą.
 
-## <a name="adding-bluejeans-from-the-gallery"></a>Dodawanie BlueJeans z galerii
+## <a name="adding-bluejeans-from-the-gallery"></a>Dodawanie rozwiązania BlueJeans z galerii
 Przed skonfigurowaniem BlueJeans dla automatycznej aprowizacji użytkowników z usługą Azure AD, musisz dodać BlueJeans z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać BlueJeans z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -55,7 +55,7 @@ Przed skonfigurowaniem BlueJeans dla automatycznej aprowizacji użytkowników z 
     
 3. Aby dodać BlueJeans, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **BlueJeans**.
 
@@ -150,7 +150,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 
 * Bluejeans nie zezwala na nazwy użytkowników, która przekracza 30 znaków.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

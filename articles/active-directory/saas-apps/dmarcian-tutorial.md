@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z dmarcian | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą dmarcian | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i dmarcian.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 197e0cceb7457ffdd96ada7d4561de56c7ed10fc
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039891"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095655"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Samouczek: Integracja usługi Azure Active Directory z dmarcian
+# <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą dmarcian
 
 W tym samouczku dowiesz się, jak zintegrować dmarcian w usłudze Azure Active Directory (Azure AD).
 
@@ -29,7 +29,7 @@ Integrowanie dmarcian z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do dmarcian.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do dmarcian (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -43,9 +43,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą dmarcian, potrzebne s
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -67,15 +67,15 @@ Aby skonfigurować integrację dmarcian w usłudze Azure AD, należy dodać dmar
 
     ![Aplikacje dla przedsiębiorstw][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **dmarcian**, wybierz opcję **dmarcian** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![dmarcian na liście wyników](./media/dmarcian-tutorial/tutorial_dmarcian_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą dmarcian w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +83,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą dmarcian, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 3. **[Tworzenie użytkownika testowego dmarcian](#create-a-dmarcian-test-user)**  — aby mają odpowiednika w pozycji Britta simon w dmarcian połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji dmarcian.
 
@@ -97,7 +97,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **dmarcian** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -107,14 +107,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![dmarcian domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/dmarcian-tutorial/tutorial_dmarcian_url.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
     | |
     | -- |
     | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
     | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
     | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
@@ -125,7 +125,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![dmarcian domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/dmarcian-tutorial/tutorial_dmarcian_url1.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
@@ -133,15 +133,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
      
     > [!NOTE] 
-    > Te wartości są prawdziwe. Te wartości zostaną zaktualizowane o rzeczywisty identyfikator, adres URL odpowiedzi i URL logowania jednokrotnego, co zostało wyjaśnione w dalszej części tego samouczka. 
+    > Te wartości nie są prawdziwe. Te wartości zostaną zaktualizowane o rzeczywisty identyfikator, adres URL odpowiedzi i URL logowania jednokrotnego, co zostało wyjaśnione w dalszej części tego samouczka. 
 
 5. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
-    ![Link pobierania certyfikatu](./media/dmarcian-tutorial/tutorial_dmarcian_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/dmarcian-tutorial/tutorial_dmarcian_certificate.png) 
 
 6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/dmarcian-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/dmarcian-tutorial/tutorial_general_400.png)
     
 7. W oknie przeglądarki internetowej innej Zaloguj się do dmarcian jako Administrator zabezpieczeń.
 
@@ -157,15 +157,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Uwierzytelnianie ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
-    * W obszarze **Dodaj dmarcian do dostawcy tożsamości** , kliknij przycisk **KOPIOWANIA** do skopiowania **adres URL usługi konsumenta potwierdzenie** wystąpienia i wklej go w  **Adres URL odpowiedzi** polu tekstowym w **dmarcian sekcji domena i adresy URL** w witrynie Azure portal.
+    * W obszarze **Dodaj dmarcian do dostawcy tożsamości** , kliknij przycisk **KOPIOWANIA** do skopiowania **adres URL usługi konsumenta potwierdzenie** wystąpienia i wklej go w  **Adres URL odpowiedzi** polu tekstowym w **dmarcian sekcji domena i adresy URL** w witrynie Azure portal.
 
-    * W obszarze **Dodaj dmarcian do dostawcy tożsamości** kliknij **kopii** do skopiowania **identyfikator jednostki** wystąpienia i wklej go w **identyfikator**polu tekstowym w **dmarcian sekcji domena i adresy URL** w witrynie Azure portal.
+    * W obszarze **Dodaj dmarcian do dostawcy tożsamości** kliknij **KOPIOWANIA** do skopiowania **identyfikator jednostki** wystąpienia i wklej go w ** Identyfikator** polu tekstowym w **dmarcian sekcji domena i adresy URL** w witrynie Azure portal.
 
     * W obszarze **skonfigurować uwierzytelnianie** sekcji w **metadanych dostawcy tożsamości** Wklej w pole tekstowe **adres Url metadanych Federacji aplikacji**, który skopiowano z witryny Azure portal.
 
     * W obszarze **skonfigurować uwierzytelnianie** sekcji w **instrukcje atrybutu** pola tekstowego, wklej adres url `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    * W obszarze **Konfigurowanie adresu URL logowania** sekcji, skopiuj **adres URL logowania** wystąpienia i wklej go w **adres URL logowania** polu tekstowym w **dmarcian domena i adresy URL w sekcji** w witrynie Azure portal.
+    * W obszarze **Konfigurowanie adresu URL logowania** sekcji, skopiuj **adres URL logowania** wystąpienia i wklej go w **adres URL logowania** polu tekstowym w **dmarcian domena i adresy URL w sekcji** w witrynie Azure portal.
 
         > [!Note]
         > Możesz zmodyfikować **adres URL logowania** zgodnie z Twojej organizacji.
@@ -208,7 +208,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do dmarcian, musi być obsługiwana w dmarcian. W dmarcian Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do dmarcian jako Administrator zabezpieczeń.
 
@@ -228,7 +228,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do dmarcian, musi b
 
     b. Jeśli chcesz nadać uprawnienia administratora dla użytkownika, wybierz opcję **wprowadzić użytkownika Administrator**.
 
-    c. Kliknij przycisk **Dodaj użytkownika**.
+    c. Kliknij pozycję **Add User** (Dodaj użytkownika).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

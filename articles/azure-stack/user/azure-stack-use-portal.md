@@ -10,19 +10,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 0bf725a20a7c030b0a835439c0f97f23b3cbef71
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086509"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55097895"
 ---
 # <a name="use-the-azure-stack-portal"></a>Używaj portalu Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Można subskrybować oferty publicznej za pomocą portalu usługi Azure Stack i korzystania z usług, które zapewniają te oferty. Jeśli używano globalne w witrynie Azure portal już znasz sposób działania lokacji.
 
@@ -60,7 +60,7 @@ Aby uzyskać wskazówki dotyczące sposobu korzystania z dostępnych usług, pra
 
     W szczególności zalecamy, aby przejrzeć następujące artykuły, aby rozpocząć pracę:
 
-    - [Zagadnienia dotyczące klucza: przy użyciu usług lub tworzenia aplikacji dla usługi Azure Stack](azure-stack-considerations.md)
+    - [Najważniejsze kwestie: Za pomocą usług lub tworzenia aplikacji dla usługi Azure Stack](azure-stack-considerations.md)
     - W **korzystania z usług** sekcji dokumentacji, jest w artykule uwagi dla każdej usługi. Na stronie zagadnienia opisano różnice między usług oferowanych na platformie Azure i tej samej usługi, które są oferowane w usłudze Azure Stack. Aby uzyskać przykład, zobacz [zagadnienia dotyczące maszyn wirtualnych](azure-stack-vm-considerations.md). Mogą istnieć inne informacje w **korzystania z usług** sekcji, która jest unikatowa w usłudze Azure Stack.
 
       Dokumentacja usługi Azure można użyć jako informacje ogólne, usługi, ale należy pamiętać o tych różnic. Zrozumienie, że dokumentacja łączy **samouczki Szybki Start** Kafelek wskaż dokumentacji platformy Azure.
@@ -73,4 +73,4 @@ Jeśli używasz usługi Azure Stack Development Kit [forum usługi Azure Stack](
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zagadnienia dotyczące klucza: przy użyciu usług lub tworzenia aplikacji dla usługi Azure Stack](azure-stack-considerations.md)
+[Najważniejsze kwestie: Za pomocą usług lub tworzenia aplikacji dla usługi Azure Stack](azure-stack-considerations.md)

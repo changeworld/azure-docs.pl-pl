@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a96a1de7828797f1124280fca95a3358210b55b7
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3b9c998351432a591ece0a61d60256aea89a6f8f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189722"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55180895"
 ---
 # <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>Wykonywanie przeglądu dostępu z Moje role zasobów platformy Azure w usłudze PIM
 Privileged Identity Management (PIM) dla zasobów platformy Azure upraszcza, jak zarządzać uprzywilejowanego dostępu do zasobów na platformie Azure w przedsiębiorstwach. 
@@ -53,4 +53,4 @@ Wykonaj następujące kroki, aby znaleźć i zakończyć Przegląd dostępu:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wykonywanie przeglądu dostępu z Moje role katalogu usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)
+- [Wykonywanie przeglądu dostępu ról katalogu usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)

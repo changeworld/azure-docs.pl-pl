@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 6a6cfb2cb1fd6b70be0437c8b6fa62f50e76e53b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9f18fcb38e6e0855a00ffb454211273dfb2041a6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345417"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55168502"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie OnDemand podstawy dla automatycznej aprowizacji użytkowników
 
@@ -43,14 +43,14 @@ Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące
 > [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [OnDemand Webservice podstawy](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf), który jest dostępny dla zespołów OnDemand podstawy.
 
-## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Dodawanie OnDemand podstawy z galerii
+## <a name="adding-cornerstone-ondemand-from-the-gallery"></a>Dodawanie aplikacji Cornerstone OnDemand z galerii
 Przed skonfigurowaniem OnDemand podstawy dla automatycznej aprowizacji użytkowników z usługą Azure AD, musisz dodać OnDemand podstawy z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać OnDemand podstawy z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -58,7 +58,7 @@ Przed skonfigurowaniem OnDemand podstawy dla automatycznej aprowizacji użytkown
     
 3. Aby dodać OnDemand podstawy, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **OnDemand podstawy**.
 
@@ -155,7 +155,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 * OnDemand podstawy **pozycji** atrybut oczekuje, że wartość, która odnosi się do ról w portalu OnDemand podstawy. Lista prawidłowe **pozycji** będzie można uzyskać, przechodząc do wartości **edytowanie rekordu użytkownika > struktury organizacji > pozycja** w portalu OnDemand podstawy.
     ![Inicjowanie obsługi administracyjnej OnDemand podstawy Edytowanie użytkownika](./media/cornerstone-ondemand-provisioning-tutorial/UserEdit.png) ![OnDemand podstawy aprowizacji pozycji](./media/cornerstone-ondemand-provisioning-tutorial/UserPosition.png) ![OnDemand podstawy aprowizacji pozycji listy](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
     
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

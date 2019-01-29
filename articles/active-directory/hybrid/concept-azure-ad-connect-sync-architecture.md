@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 787fa051dfeeea45f9480f5906244f544f747279
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 12eb678262d11ca3bcb727d03e31a50b0aee4a68
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474391"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203848"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Synchronizacja programu Azure AD Connect: Opis architektury
 W tym temacie opisano podstawową architekturę, do synchronizacji Azure AD Connect. Pod wieloma względami przypomina poprzedników MIIS 2003, ILM 2007 i programem FIM 2010. Synchronizacja programu Azure AD Connect jest rozwoju tych technologii. Osoby zaznajomione z dowolnym z tych technologii wcześniej zawartość tego tematu będzie znane, jak również. Jeśli jesteś nowym użytkownikiem synchronizacji, w tym temacie jest dla Ciebie. Jednak nie jest wymaganie, aby wiedzieć, szczegółowe informacje o tym temacie, aby odnieść sukces w podejmowaniu dostosowań do synchronizacji Azure AD Connect (nazywane aparatem synchronizacji w tym temacie).

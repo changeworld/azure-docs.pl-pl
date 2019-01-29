@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ac50078dcc60e925f1e2e27a1296b2644939baef
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014135"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55153729"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
 ## <a name="overview"></a>Przegląd
 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-data-movement-activities.md)
 > * [Bieżąca wersja](copy-activity-overview.md)
 
@@ -155,7 +155,7 @@ Kliknij, aby wyświetlić listę działań w tym przebiegu potoku. W **akcje** k
 
 ![Monitorowanie uruchomień działania](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Kliknij przycisk "**szczegóły**" link w obszarze **akcje** Aby wyświetlić szczegóły wykonania działania kopiowania i charakterystyk wydajności. Przedstawia on informacje takie jak wolumin/wiersze/pliki danych skopiowane ze źródła do ujścia, przepływności, kroki przechodzi przez odpowiedni czas trwania i używane konfiguracje dla danego scenariusza kopiowania.
+Kliknij przycisk "**szczegóły**" link w obszarze **akcje** Aby wyświetlić szczegóły wykonania działania kopiowania i charakterystyk wydajności. Przedstawia on informacje takie jak wolumin/wiersze/pliki danych skopiowane ze źródła do ujścia, przepływności, kroki przechodzi przez odpowiedni czas trwania i używane konfiguracje dla danego scenariusza kopiowania. W niektórych scenariuszach, pojawi się także "**porady dotyczące dostrajania wydajności**" sekcji u góry, który informuje o identyfikowany wąskie gardło i prowadzi Cię o tym, jak zwiększyć przepływność kopiowania dla takiej sytuacji kopiowania, zobacz przykład [tutaj](#performance-and-tuning).
 
 **Przykład: skopiuj z usługi Amazon S3 do usługi Azure Data Lake Store**
 ![szczegóły uruchamiania działania monitora](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -232,6 +232,11 @@ Domyślnie działanie kopiowania zatrzymuje kopiowania danych i zwraca błąd, g
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
 
 Zobacz [dostrajania przewodnik dotyczący wydajności działania kopiowania i](copy-activity-performance.md), która opisuje kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory. Ponadto Wyświetla zaobserwowanego podczas testowania wewnętrznego i w tym artykule omówiono różne sposoby, aby zoptymalizować wydajność działania kopiowania.
+
+W niektórych scenariuszach podczas wykonywania działania kopiowania w usłudze ADF, pojawi się także "**porady dotyczące dostrajania wydajności**" sekcji w górnej części [działanie monitorowania strony kopiowania](#monitor-visually), informuje identyfikowany wąskie gardło i prowadzi Cię o tym, jak zwiększyć przepływność kopiowania dla takiej sytuacji kopiowania.
+
+**Przykład: Skopiuj do bazy danych SQL Azure za pomocą wskazówki dotyczące dostrajania wydajności**
+![skopiuj monitorowanie za pomocą wskazówki dotyczące dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>Przyrostowa kopia 
 Usługa Data Factory obsługuje scenariusze dla przyrostowego kopiowania danych różnicowych z magazynu danych źródłowych do docelowego magazynu danych. Zobacz [samouczek: przyrostowe kopiowanie danych](tutorial-incremental-copy-overview.md). 

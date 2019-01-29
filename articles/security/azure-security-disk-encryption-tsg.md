@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/08/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36ecfe8942d263ed84e430b01727743ed2cad00c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0b486831118ace7d2112acf1562f5df4a64d1e1b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103169"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092131"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -33,7 +33,23 @@ Ten błąd może wystąpić, gdy wypróbowuje szyfrowania dysku systemu operacyj
 - Dyski danych są rekursywnie zainstalowane w katalogu /mnt/ lub każdego innego (na przykład /mnt/data1, /mnt/data2, /data3 + /data3/data4).
 - Inne usługi Azure Disk Encryption [wymagania wstępne](azure-security-disk-encryption-prerequisites.md) dla systemu Linux nie są spełnione.
 
-## <a name="unable-to-encrypt"></a>Nie można zaszyfrować
+## <a name="bkmk_Ubuntu14"></a> Ubuntu 14.04 LTS aktualizacji jądra domyślne
+
+Obraz Ubuntu 14.04 LTS jest dostarczany z domyślną wersję jądra 4.4. Ta wersja jądra jest to znany problem, w którym poza identyfikatory pamięci nieprawidłowo kończy działanie polecenia dd w procesie szyfrowania systemu operacyjnego. Ten błąd został naprawiony w ostatnim Azure dostrojone jądra systemu Linux. Aby uniknąć tego błędu, przed włączeniem szyfrowania na obrazie, należy zaktualizować do [Azure dostrojone jądra 4.15](https://packages.ubuntu.com/trusty/linux-azure) lub później za pomocą następujących poleceń:
+
+```
+sudo apt-get update
+sudo apt-get install linux-azure
+sudo reboot
+```
+
+Po ponownym uruchomieniu maszyny Wirtualnej do nowego jądra nowa wersja jądra można potwierdzić, przy użyciu:
+
+```
+uname -a
+```
+
+## <a name="unable-to-encrypt-linux-disks"></a>Nie można zaszyfrować dyski w systemie Linux
 
 W niektórych przypadkach Linux, szyfrowanie dysków prawdopodobnie nie reaguje na "Do szyfrowania dysku systemu operacyjnego" i ustawieniami SSH jest wyłączona. Szyfrowanie może potrwać od 3 – 16 godzin dla obrazu podstawowego galerii. Jeśli zostaną dodane dyski danych o rozmiarze terabajt multi, proces może potrwać dni.
 

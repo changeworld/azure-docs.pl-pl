@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: ab196645cc14acb3ed2e56ee785d4790a8df3c23
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: caccdcb0d90a817c82e8d7816f0770b09b4ea27a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052551"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101026"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Zrozumienie i wywoływanie metod bezpośrednich z usługi IoT Hub
 
@@ -36,7 +36,7 @@ Metody bezpośrednie są implementowane na urządzeniu i mogą wymagać zero lub
 > Po wywołaniu metody bezpośredniej o urządzeniu nazwy i wartości właściwości mogą zawierać tylko US-ASCII drukowania litery, cyfry, z wyjątkiem tych w następującym zestawie: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
-Bezpośrednie metody są synchroniczne i albo powodzenie lub Niepowodzenie po upływie limitu czasu (domyślne: 30 sekund, można ustawić się 3600 sekund). Metody bezpośrednie są przydatne w scenariuszach interaktywne, którego urządzenia, która będzie działać tylko wtedy, gdy urządzenie jest w trybie online i odbieranie poleceń. Na przykład włączenie światła przez telefon. W tych scenariuszach chcesz zobaczyć natychmiastowego powodzenie lub niepowodzenie, więc usługę w chmurze może działać na wynik tak szybko, jak to możliwe. Urządzenie może zwrócić niektóre treści wiadomości, w wyniku metody, ale nie jest wymagana dla metody to zrobić. Brak żadnej gwarancji, w kolejności lub dowolnym semantyki współbieżności na wywołania metody.
+Bezpośrednie metody są synchroniczne i albo powodzenie lub Niepowodzenie po upływie limitu czasu (domyślne: 30 sekund, można ustawić się 300 sekund). Metody bezpośrednie są przydatne w scenariuszach interaktywne, którego urządzenia, która będzie działać tylko wtedy, gdy urządzenie jest w trybie online i odbieranie poleceń. Na przykład włączenie światła przez telefon. W tych scenariuszach chcesz zobaczyć natychmiastowego powodzenie lub niepowodzenie, więc usługę w chmurze może działać na wynik tak szybko, jak to możliwe. Urządzenie może zwrócić niektóre treści wiadomości, w wyniku metody, ale nie jest wymagana dla metody to zrobić. Brak żadnej gwarancji, w kolejności lub dowolnym semantyki współbieżności na wywołania metody.
 
 Bezpośrednie metody to HTTPS-only z po stronie chmury i protokołu MQTT lub AMQP po stronie urządzenia.
 

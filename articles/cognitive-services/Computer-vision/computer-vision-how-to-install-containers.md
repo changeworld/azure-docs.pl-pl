@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f344bb893a453a5f0b00f5cb1d87528b5943f779
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: eb586a71747bb1708b069f30a86421c691cb3d46
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462950"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55186403"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
 

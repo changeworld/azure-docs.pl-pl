@@ -7,7 +7,7 @@ documentationcenter: ''
 author: MarkusVi
 manager: daveba
 editor: ''
-ms.component: devices
+ms.subservice: devices
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
 ms.workload: identity
@@ -18,12 +18,12 @@ ms.date: 10/25/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 417b909e4a5272b993a4696c1ef8d6718e055738
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f1547e424805358cf700930f087fb4c900998f02
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452942"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094006"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Rozwiązywanie problemów z ustawieniami Roaming stanu dla przedsiębiorstw w usłudze Azure Active Directory
 

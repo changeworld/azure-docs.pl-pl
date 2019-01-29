@@ -1,0 +1,158 @@
+---
+title: Poprawa wiedzy — QnA Maker
+titleSuffix: Azure Cognitive Services
+description: ''
+author: diberry
+manager: cgronlun
+displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
+ms.service: cognitive-services
+ms.component: qna-maker
+ms.topic: article
+ms.date: 01/28/2019
+ms.author: diberry
+ms.openlocfilehash: da32d1e7a3cc9fc0c37418e24c1f1f270a104b09
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55105664"
+---
+# <a name="use-active-learning-to-improve-knowledge-base"></a>Umożliwia aktywne uczenie poprawić bazy wiedzy
+
+Aktywna nauka można poprawić jakość bazy wiedzy w postaci sugerowanych alternatywnych pytania, oparte na użytkownika — wiadomości, do Twojego pary pytań i odpowiedzi. Albo dodanie ich do istniejącego pytania lub odrzucenia ich przejrzenie tych propozycji. 
+
+Bazy wiedzy nie zmienia się automatycznie. Sugestie, aby zmiany zaczęły obowiązywać, należy zaakceptować. Tego rodzaju sugestie dodać pytania, ale nie Zmień lub usuń istniejące pytania.
+
+## <a name="active-learning"></a>Aktywne uczenie
+
+Usługa QnA Maker uzyskuje informacje o nowych zmian pytanie jawne i niejawne opinii.
+ 
+* Niejawne opinia — tematycznie rozumie, jeśli pytanie użytkownika ma wiele odpowiedzi za pomocą wyniki, które są bardzo podobne i uznaje jako opinii. 
+* Jawne opinie — gdy wiele odpowiedzi za pomocą niewielkie różnice w wyniki są zwracane z bazy wiedzy knowledge base, aplikacja kliencka prosi użytkownika zapytania, które jest poprawne pytanie. Jawne opinii użytkownika są wysyłane do usługi QnA Maker przy użyciu interfejsu API pociągu. 
+
+Każda z tych metod zapewnia tematycznie przy użyciu podobnych zapytań, które są klastrowane.
+
+Podobnie zapytania są klastrowane, narzędzie QnA Maker sugeruje pytania oparte na użytkownikach do projektanta bazy wiedzy knowledge base, aby zaakceptować lub odrzucić.
+
+## <a name="how-active-learning-works"></a>Jak aktywne uczenie działa
+
+Aktywne uczenie jest wyzwalana, oparte na wyniki najważniejsze odpowiedzi kilka zwrócone przez narzędzie QnA Maker dla dowolnej podanej kwerendy. Różnice wynik leży w obrębie małe, a następnie zapytanie jest traktowane jako potencjalnie _sugestii_ dla wszystkich możliwych odpowiedzi. 
+
+Wszystkie sugestie są zgrupowane razem wg podobieństwa i najbardziej oczekiwanych alternatywne pytania są wyświetlane na podstawie częstotliwości określonej zapytań przez użytkowników końcowych. Aktywna nauka zapewnia najlepsze możliwe sugestie w przypadkach, gdzie punkty końcowe są objęte ilość uzasadnione i różne zapytania do użycia.
+
+## <a name="best-practices"></a>Najlepsze praktyki
+
+Aby uzyskać najlepsze rozwiązania związane z używaniem aktywne uczenie, zobacz [najlepsze praktyki](../Concepts/best-practices.md#active-learning).
+
+## <a name="score-proximity-between-knowledge-base-questions"></a>Ocena odległości między wiedzy pytań
+
+Gdy wynik zapytania jest wysoce pewność, takie jak 80%, zakres wyniki, które są uważane za dla aktywne uczenie są szerokie w przybliżeniu w ciągu 10%. Jak zmniejsza współczynnik ufności, takich jak 40%, zakres wyniki zmniejsza to także około w 4%. 
+
+Algorytm ustalania odległości między elementami nie jest proste obliczenia. Zakresy w powyższych przykładach nie są przeznaczone do rozwiązany, ale powinny służyć jako przewodnik Aby zrozumieć wpływ tylko algorytmu.
+
+## <a name="turn-on-active-learning"></a>Włącz aktywne uczenie
+
+Aktywna nauka jest domyślnie wyłączona. Włączyłem to wyświetlić sugerowane pytania. 
+
+1. Aby włączyć aktywne uczenie się na, przejdź do swojej **ustawienia usługi** w prawym górnym rogu portalu narzędzia QnA Maker.  
+
+    ![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie](../media/improve-knowledge-base/Endpoint-Keys.png)
+
+
+1. Znajdź usługę QnA Maker, a następnie przełącz **aktywne uczenie**. 
+
+    [![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+
+    Gdy **aktywne uczenie** jest włączona, wiedza sugeruje nowe pytania w regularnych odstępach czasu, w oparciu o przesłane przez użytkownika pytań. Możesz wyłączyć **aktywne uczenie** przełączając ustawienia ponownie.
+
+## <a name="add-active-learning-suggestion-to-knowledge-base"></a>Dodaj sugestię aktywne uczenie do bazy wiedzy
+
+1. Aby można było wyświetlić sugerowane pytania na **Edytuj** bazy wiedzy knowledge base, wybierz **Pokaż sugestie**. 
+
+    [![Na stronie Ustawienia usługi przycisk Pokaż sugestie dotyczące przełączania](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+
+1. Filtruj wiedzy z parami pytań i odpowiedzi, aby były wyświetlane tylko sugestie, wybierając **Filtruj według sugestii**.
+
+    [![Na stronie Ustawienia usługi filtrowanie według sugestii, aby wyświetlić tylko te pytania/odpowiedzi par](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+
+1.  Każda sekcja zapytania z sugestiami pokazuje nowe pytania ze znacznikiem wyboru `✔` , aby zaakceptować pytanie lub `x` do odrzucenia sugestie. Kliknij znacznik wyboru, aby dodać pytanie. 
+
+    [![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+
+    Można dodawać lub usuwać _wszystkie sugestie_ , wybierając **Dodaj wszystkie** lub **Odrzuć wszystkie**.
+
+1. Wybierz **Zapisz i szkolenie** można zapisać zmian w bazie wiedzy knowledge base.
+
+
+## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>Określenia najlepszym wyborem w przypadku, gdy kilka pytań mają podobne wyniki
+
+Gdy pytanie jest zbyt najbliżej w wyniku inne pytania, Deweloper aplikacji klienckiej można poprosić o wyjaśnienie.
+
+### <a name="use-the-top-property-in-the-generateanswer-request"></a>Najważniejsze właściwości należy użyć żądania GenerateAnswer
+
+Podczas przesyłania zapytania do usługi QnA Maker odpowiedź, część treści JSON umożliwia zwracanie więcej niż jedną odpowiedź najważniejsze:
+
+```json
+{
+    "question": "wi-fi",
+    "isTest": false,
+    "top": 3
+}
+```
+
+Gdy aplikacja kliencka (takie jak czatbot) odbiera odpowiedź, zwracane są najczęściej zadawane pytania z 3:
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "Wi-Fi Direct Status Indicator"
+            ],
+            "answer": "**Wi-Fi Direct Status Indicator**\n\nStatus bar icons indicate your current Wi-Fi Direct connection status:  \n\nWhen your device is connected to another device using Wi-Fi Direct, '$  \n\n+ •+ ' Wi-Fi Direct is displayed in the Status bar.",
+            "score": 74.21,
+            "id": 607,
+            "source": "Bugbash KB.pdf",
+            "metadata": []
+        },
+        {
+            "questions": [
+                "Wi-Fi - Connections"
+            ],
+            "answer": "**Wi-Fi**\n\nWi-Fi is a term used for certain types of Wireless Local Area Networks (WLAN). Wi-Fi communication requires access to a wireless Access Point (AP).",
+            "score": 74.15,
+            "id": 599,
+            "source": "Bugbash KB.pdf",
+            "metadata": []
+        },
+        {
+            "questions": [
+                "Turn Wi-Fi On or Off"
+            ],
+            "answer": "**Turn Wi-Fi On or Off**\n\nTurning Wi-Fi on makes your device able to discover and connect to compatible in-range wireless APs.  \n\n1.  From a Home screen, tap ::: Apps > e Settings .\n2.  Tap Connections > Wi-Fi , and then tap On/Off to turn Wi-Fi on or off.",
+            "score": 69.99,
+            "id": 600,
+            "source": "Bugbash KB.pdf",
+            "metadata": []
+        }
+    ]
+}
+```
+
+### <a name="client-application-follow-up-when-questions-have-similar-scores"></a>Monitowania aplikacji klienta, gdy wyniki podobne pytania
+
+Aplikacja kliencka Wyświetla wszystkie pytania przy użyciu opcji użytkownikowi na wybranie pytanie najlepiej odpowiadającej reprezentuje zamiar. 
+
+Gdy użytkownik wybierze jeden z istniejących pytań. Opinie użytkowników są wysyłane do usługi QnA Maker [Train](http://www.aka.ms/activelearningsamplebot) interfejsu API, aby kontynuować opinii aktywne uczenie pętli. 
+
+```http
+POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
+Authorization: EndpointKey <endpoint-key>
+Content-Type: application/json
+{"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
+```
+
+## <a name="next-steps"></a>Kolejne kroki
+ 
+> [!div class="nextstepaction"]
+> [Użyj interfejsu API QnAMaker](./upgrade-qnamaker-service.md)

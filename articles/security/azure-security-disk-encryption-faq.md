@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/21/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1db379a48d4dafdaa2494d081658296a7145bcd9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 80510b4f3f07b96b9084108fcb89c75e108cbc65
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815238"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096853"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS — często zadawane pytania
 
@@ -42,8 +42,8 @@ Usługa Azure Disk Encryption jest obsługiwana na poniższe dystrybucje serwera
 
 | Dystrybucja systemu Linux | Wersja | Typ woluminu obsługiwany w przypadku szyfrowania|
 | --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | Dysk systemu operacyjnego i danych |
-| Ubuntu | 14.04.5-DAILY-LTS | Dysk systemu operacyjnego i danych |
+| Ubuntu | 16.04| Dysk systemu operacyjnego i danych |
+| Ubuntu | 14.04.5</br>[za pomocą platformy Azure dostosowanych jądra zaktualizowana w celu 4.15 lub nowszej](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Dysk systemu operacyjnego i danych |
 | RHEL | 7.5 | Systemu operacyjnego i danych dysku * |
 | RHEL | 7.4 | Systemu operacyjnego i danych dysku * |
 | RHEL | 7.3 | Systemu operacyjnego i danych dysku * |
@@ -59,12 +59,10 @@ Usługa Azure Disk Encryption jest obsługiwana na poniższe dystrybucje serwera
 | CentOS | 6.7 | Dysk z danymi |
 | CentOS | 6.6 | Dysk z danymi |
 | CentOS | 6.5 | Dysk z danymi |
-| openSUSE | 13.2 | Dysk z danymi |
-| SLES | 12 SP1 | Dysk z danymi |
-| SLES | Priorytet: 12-SP1 | Dysk z danymi |
-| SLES | HPC 12 | Dysk z danymi |
-| SLES | Priorytet: 11-SP4 | Dysk z danymi |
-| SLES | 11 SP4 | Dysk z danymi |
+| openSUSE | SUSE:openSUSE-przestępnym: 42.3:latest | Dysk z danymi |
+| SLES | SUSE:SLES — priorytet: 12-SP4:latest | Dysk z danymi |
+| SLES | SUSE:SLES-HPC:12-SP3:latest | Dysk z danymi |
+| SLES | SUSE:SLES — priorytet: 12-SP3:latest | Dysk z danymi |
 
 
 *__Nowa implementacja ADE jest obsługiwana dla systemu operacyjnego systemu RHEL i dyskiem danych o płatności RHEL7 obrazów. ADE nie jest obecnie obsługiwane dla obrazów systemu RHEL Bring-Your-właścicielem-subskrypcji (BYOS). Można również znaleźć [usługi Azure Disk Encryption dla systemu Linux](azure-security-disk-encryption-linux.md) artykuł, aby uzyskać więcej informacji.__

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 08108863d7b6348e3ab26d7040c70f29ed641ebe
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fa17b2bb440f574f63349c5bb51573725aa45876
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081657"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55191545"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -998,8 +998,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/operationStatuses/read | Odczytuje stan operacji dla bram sieci wirtualnych. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/packages/read | Pobiera pakiet bramy sieci wirtualnej. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/read | Pobiera bramy sieci wirtualnej. |
-> | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/startDiagnostics/action | Uruchamia diagnostykę bramy sieci wirtualnej. |
-> | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/stopDiagnostics/action | Zatrzymuje diagnostykę bramy sieci wirtualnej. |
+> | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/startDiagnostics/action | Uruchamia diagnostyczne dla bramy sieci wirtualnej. |
+> | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/stopDiagnostics/action | Zatrzymuje diagnostyczne dla bramy sieci wirtualnej. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/gateways/write | Dodaje bramę sieci wirtualnej. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/join/action | Umożliwia dołączenie do sieci wirtualnej. |
 > | Akcja | Microsoft.ClassicNetwork/virtualNetworks/operationStatuses/read | Odczytuje stan operacji dla sieci wirtualnych. |
@@ -1836,7 +1836,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.DBforPostgreSQL/locations/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
 > | Akcja | Microsoft.DBforPostgreSQL/performanceTiers/read | Zwraca listę dostępnych warstw wydajności. |
-> | Akcja | Microsoft.DBforPostgreSQL/servers/advisors/read | Zwraca listę advisros |
+> | Akcja | Microsoft.DBforPostgreSQL/servers/advisors/read | Zwraca listę doradców |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActions/read | Zwraca listę zalecanych akcji |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/advisors/recommendedActionSessions/action | Zalecenia |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/configurations/read | Zwraca listę konfiguracji serwera lub pobiera właściwości dla określonej konfiguracji. |
@@ -2198,7 +2198,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.EventHub/checkNameAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. |
-> | Akcja | Microsoft.EventHub/checkNamespaceAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. Ten interfejs API jest przestarzała Użyj zamiast niego interfejsu CheckNameAvailabiltiy. |
+> | Akcja | Microsoft.EventHub/checkNamespaceAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. Ten interfejs API jest przestarzały. zamiast tego użyj CheckNameAvailability. |
 > | Akcja | Microsoft.EventHub/clusters/providers/Microsoft.Insights/metricDefinitions/read | Pobierz listę metryki klastra opisów zasobów |
 > | Akcja | Microsoft.EventHub/clusters/read | Pobiera opis zasobu klastra |
 > | Akcja | Microsoft.EventHub/clusters/write | Pobiera opis zasobu klastra |
@@ -2609,7 +2609,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.IoTSpaces/Graph/delete | Usuwa zasób grafu Microsoft.IoTSpaces |
 > | Akcja | Microsoft.IoTSpaces/Graph/read | Pobiera zasoby Microsoft.IoTSpaces wykresu |
 > | Akcja | Microsoft.IoTSpaces/Graph/write | Utwórz zasób Microsoft.IoTSpaces wykresu |
-> | Akcja | Microsoft.IoTSpaces/register/action | Zarejestruj subskrypcję dostawcy zasobów Microsoft.IoTSpaces wykres umożliwić creationg zasobów |
+> | Akcja | Microsoft.IoTSpaces/register/action | Rejestruj subskrypcję dostawcy zasobów programu Microsoft.IoTSpaces Graph umożliwiające tworzenie zasobów |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -3326,7 +3326,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/checkTrafficManagerNameAvailability/action | Służy do sprawdzania dostępności nazwy DNS względem usługi Traffic Manager. |
 > | Akcja | Microsoft.Network/connections/delete | Deletes VirtualNetworkGatewayConnection |
 > | Akcja | Microsoft.Network/connections/read | Gets VirtualNetworkGatewayConnection |
-> | Akcja | Microsoft.Network/connections/revoke/action | Oznacza stan połączenia usługi Expressroute Exprress jako odwołane |
+> | Akcja | Microsoft.Network/connections/revoke/action | Oznacza stan połączenia usługi Expressroute jako odwołane |
 > | Akcja | Microsoft.Network/connections/sharedkey/action | Get VirtualNetworkGatewayConnection SharedKey |
 > | Akcja | Microsoft.Network/connections/sharedKey/read | Gets VirtualNetworkGatewayConnection SharedKey |
 > | Akcja | Microsoft.Network/connections/sharedKey/write | Tworzy lub aktualizuje istniejące VirtualNetworkGatewayConnection SharedKey |
@@ -3567,14 +3567,14 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/routeFilters/routeFilterRules/delete | Usuwa definicję reguły filtru trasy |
 > | Akcja | Microsoft.Network/routeFilters/routeFilterRules/read | Pobiera definicji reguły filtru trasy |
 > | Akcja | Microsoft.Network/routeFilters/routeFilterRules/write | Tworzy reguły filtru trasy lub aktualizuje istniejącą regułę filtru trasy |
-> | Akcja | Microsoft.Network/routeFilters/write | Filtr tras tworzy lub aktualizuje istniejący filtr rotue |
+> | Akcja | Microsoft.Network/routeFilters/write | Tworzy filtru tras lub aktualizuje istniejący filtr tras |
 > | Akcja | Microsoft.Network/routeTables/delete | Usuwa definicję tabeli tras |
 > | Akcja | Microsoft.Network/routeTables/join/action | Tworzy sprzężenie tabeli tras |
 > | Akcja | Microsoft.Network/routeTables/read | Pobiera definicję tabeli tras |
 > | Akcja | Microsoft.Network/routeTables/routes/delete | Usuwa definicję trasy |
 > | Akcja | Microsoft.Network/routeTables/routes/read | Pobiera definicję trasy |
 > | Akcja | Microsoft.Network/routeTables/routes/write | Tworzy trasę lub aktualizuje istniejącą trasę |
-> | Akcja | Microsoft.Network/routeTables/write | Tworzy tabelę tras lub aktualizuje istniejącą tabelę rotue |
+> | Akcja | Microsoft.Network/routeTables/write | Tworzy tabelę tras lub aktualizuje istniejącą tabelę tras |
 > | Akcja | Microsoft.Network/securegateways/delete | Usuwanie bramy zabezpieczeń |
 > | Akcja | Microsoft.Network/securegateways/read | Pobierz bramy zabezpieczeń |
 > | Akcja | Microsoft.Network/securegateways/write | Tworzy lub aktualizuje bramę zabezpieczeń |
@@ -3583,7 +3583,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/joinSubnet/action | Dołącza podsieci do zasad punktów końcowych usługi |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/read | Pobiera opis zasad punktu końcowego usługi |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/delete | Usuwa definicją zasad punktów końcowych usługi |
-> | Akcja | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/read | Pobiera Decription definicji usługi punktu końcowego zasad |
+> | Akcja | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/read | Pobiera opis definicji zasad punktu końcowego usługi |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/write | Tworzy definicją zasad punktów końcowych usługi lub aktualizuje istniejące definicją zasad punktów końcowych usługi |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/write | Tworzy zasad punktów końcowych usługi lub aktualizuje istniejące zasady punktu końcowego usługi |
 > | Akcja | Microsoft.Network/trafficManagerGeographicHierarchies/read | Pobiera hierarchia geograficzna usługi Traffic Manager zawierający regiony, do których mogą być używane z metody geograficznego routingu ruchu |
@@ -3626,7 +3626,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | microsoft.network/virtualnetworkgateways/setvpnclientipsecparameters/action | Konfigurowanie klienta VPN Ipsec parametrów VirtualNetworkGateway P2S klienta. |
 > | Akcja | Microsoft.Network/virtualnetworkgateways/supportedvpndevices/action | Listy obsługiwanych urządzeń sieci Vpn |
 > | Akcja | Microsoft.Network/virtualNetworkGateways/write | Tworzy lub aktualizuje element VirtualNetworkGateway |
-> | Akcja | Microsoft.Network/virtualNetworks/BastionHosts/action | Pobiera refrences hostem bastionu w sieci wirtualnej. |
+> | Akcja | Microsoft.Network/virtualNetworks/BastionHosts/action | Pobiera hostem bastionu odwołań w sieci wirtualnej. |
 > | Akcja | Microsoft.Network/virtualNetworks/checkIpAddressAvailability/read | Sprawdź, czy adres Ip jest dostępne w określonej sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualNetworks/delete | Usuwa sieć wirtualną |
 > | Akcja | Microsoft.Network/virtualNetworks/peer/action | Łączy równorzędnie sieć wirtualną z inną siecią wirtualną |
@@ -3700,8 +3700,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.NotificationHubs/Namespaces/write | Tworzenie zasobu Namespace i zaktualizuj jego właściwości. Tagi i pojemność Namespace są właściwości, które mogą być aktualizowane. |
 > | Akcja | Microsoft.NotificationHubs/operationResults/read | Zwraca wyniki operacji dla dostawcy usługi Notification Hubs |
 > | Akcja | Microsoft.NotificationHubs/operations/read | Zwraca listę obsługiwanych operacji dla dostawcy usługi Notification Hubs |
-> | Akcja | Microsoft.NotificationHubs/register/action | Rejestruje subskrypcję dostawcy zasobów usługi NotifciationHubs i włącza funkcję tworzenia przestrzeni nazw i centrów NotificationHub |
-> | Akcja | Microsoft.NotificationHubs/unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów usługi NotificationHubs i włącza funkcję tworzenia przestrzeni nazw i centrów NotificationHub |
+> | Akcja | Microsoft.NotificationHubs/register/action | Rejestruje subskrypcję dostawcy zasobów NotificationHubs i włącza funkcję tworzenia przestrzeni nazw i NotificationHubs |
+> | Akcja | Microsoft.NotificationHubs/unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów NotificationHubs i włącza funkcję tworzenia przestrzeni nazw i NotificationHubs |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -3995,7 +3995,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationsManagement/managementAssociations/delete | Usuń istniejące skojarzenie zarządzania |
 > | Akcja | Microsoft.OperationsManagement/managementAssociations/read | Pobieranie istniejącego skojarzenia zarządzania |
 > | Akcja | Microsoft.OperationsManagement/managementAssociations/write | Utwórz nowe skojarzenie zarządzania |
-> | Akcja | Microsoft.OperationsManagement/managementConfigurations/delete | Usuwanie istniejącej konfiguracji zarządzania |
+> | Akcja | Microsoft.OperationsManagement/managementConfigurations/delete | Usuń istniejącą konfigurację zarządzania |
 > | Akcja | Microsoft.OperationsManagement/managementConfigurations/read | Pobieranie istniejącej konfiguracji zarządzania |
 > | Akcja | Microsoft.OperationsManagement/managementConfigurations/write | Utwórz nową konfigurację zarządzania |
 > | Akcja | Microsoft.OperationsManagement/register/action | Zarejestruj subskrypcję u dostawcy zasobów. |
@@ -4233,7 +4233,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.Relay/checkNameAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. |
-> | Akcja | Microsoft.Relay/checkNamespaceAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. Ten interfejs API jest przestarzała Użyj zamiast niego interfejsu CheckNameAvailabiltiy. |
+> | Akcja | Microsoft.Relay/checkNamespaceAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. Ten interfejs API jest przestarzały. zamiast tego użyj CheckNameAvailability. |
 > | Akcja | Microsoft.Relay/namespaces/authorizationRules/action | Reguły autoryzacji Namespace aktualizacji. Ten interfejs API jest przestarzały. Można zaktualizować reguły autoryzacji Namespace zamiast niego użyj wywołania PUT... Ta operacja nie jest obsługiwana w wersji 2017-04-01 interfejsu API. |
 > | Akcja | Microsoft.Relay/namespaces/authorizationRules/delete | Usuń regułę autoryzacji Namespace. Nie można usunąć domyślnej reguły autoryzacji Namespace.  |
 > | Akcja | Microsoft.Relay/namespaces/authorizationRules/listkeys/action | Pobierz parametry połączenia z przestrzenią nazw |
@@ -4444,7 +4444,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.ServiceBus/checkNameAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. |
-> | Akcja | Microsoft.ServiceBus/checkNamespaceAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. Ten interfejs API jest przestarzała Użyj zamiast niego interfejsu CheckNameAvailabiltiy. |
+> | Akcja | Microsoft.ServiceBus/checkNamespaceAvailability/action | Sprawdza dostępność przestrzeni nazw w ramach danej subskrypcji. Ten interfejs API jest przestarzały. zamiast tego użyj CheckNameAvailability. |
 > | Akcja | Microsoft.ServiceBus/locations/deleteVirtualNetworkOrSubnets/action | Usuwa reguły sieci wirtualnej w dostawcy zasobów usługi ServiceBus dla określonej sieci wirtualnej |
 > | Akcja | Microsoft.ServiceBus/namespaces/authorizationRules/action | Reguły autoryzacji Namespace aktualizacji. Ten interfejs API jest przestarzały. Można zaktualizować reguły autoryzacji Namespace zamiast niego użyj wywołania PUT... Ta operacja nie jest obsługiwana w wersji 2017-04-01 interfejsu API. |
 > | Akcja | Microsoft.ServiceBus/namespaces/authorizationRules/delete | Usuń regułę autoryzacji Namespace. Nie można usunąć domyślnej reguły autoryzacji Namespace.  |
@@ -4883,7 +4883,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Sql/servers/providers/Microsoft.Insights/metricDefinitions/read | Zwracane typy metryk, które są dostępne dla serwerów |
 > | Akcja | Microsoft.Sql/servers/read | Zwraca listę serwerów lub pobiera właściwości dla określonego serwera. |
 > | Akcja | Microsoft.Sql/servers/recommendedElasticPools/databases/read | Pobierz metryki dla zalecane elastyczne pule baz danych dla danego serwera |
-> | Akcja | Microsoft.Sql/servers/recommendedElasticPools/read | Pobierz zalecenia dla elastycznych pul baz danych do zmniejszania kosztów lub zwiększenia wydajności na podstawie wykorzystania zasobów historica |
+> | Akcja | Microsoft.Sql/servers/recommendedElasticPools/read | Pobierz zalecenia dla elastycznych pul baz danych do zmniejszania kosztów lub zwiększenia wydajności na podstawie wykorzystania historycznych zasobów |
 > | Akcja | Microsoft.Sql/servers/recoverableDatabases/read | Ta operacja służy do odzyskiwania po awarii na żywo bazy danych do przywracania bazy danych Ostatnia znana dobra punktu kopii zapasowej. Zwraca informacje o ostatnim dobrej kopii zapasowej, ale doesn\u0027t faktycznie Przywracanie bazy danych. |
 > | Akcja | Microsoft.Sql/servers/replicationLinks/read | Zwraca listę replikacji łącza lub pobiera właściwości dla wybranych łączach replikacji określony. |
 > | Akcja | Microsoft.Sql/servers/restorableDroppedDatabases/read | Zostanie wyświetlona lista baz danych, które zostały usunięte na danym serwerze, które są nadal w ramach zasad przechowywania. |
@@ -4892,7 +4892,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Sql/servers/securityAlertPolicies/write | Zmień zasady wykrywania zagrożeń serwera dla danego serwera |
 > | Akcja | Microsoft.Sql/servers/serviceObjectives/read | Pobieranie listy celów poziomu usług (znany także jako warstwy wydajności) dostępne na danym serwerze |
 > | Akcja | Microsoft.Sql/servers/syncAgents/delete | Usuwa istniejącego agenta synchronizacji. |
-> | Akcja | Microsoft.Sql/servers/syncAgents/generateKey/action | Generuj klucz Rejestracja agenta synchronizacji |
+> | Akcja | Microsoft.Sql/servers/syncAgents/generateKey/action | Wygeneruj klucz rejestracji agenta synchronizacji |
 > | Akcja | Microsoft.Sql/servers/syncAgents/linkedDatabases/read | Zwraca listę bazy danych połączone agenta synchronizacji |
 > | Akcja | Microsoft.Sql/servers/syncAgents/read | Zwraca listę agentów synchronizacji lub pobiera właściwości dla agenta synchronizacji określonej. |
 > | Akcja | Microsoft.Sql/servers/syncAgents/write | Tworzy agenta synchronizacji z określonymi parametrami lub aktualizuje właściwości dla agenta synchronizacji określonej. |

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 0ae6c27091dd2938ec7410e78ae12dbe20509029
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 12a9602ecd61da5dc497790ecca6d8d6f874252e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167953"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184295"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>Przeglądy dostępu usługa Azure AD do zarządzania użytkownikami, które zostały wykluczone z zasad dostępu warunkowego
 
