@@ -14,29 +14,34 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 5029365e665ce3ee9ba65886a3d6d5bbced0ed9a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580148"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103313"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
-Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
+Program GRUB jest sumy Unified program inicjujący, który prawdopodobnie jest pierwszą rzeczą, jaką będzie wyświetlany po rozruchem maszyny Wirtualnej. Ponieważ wyświetla zanim został uruchomiony system operacyjny, nie jest dostępny za pośrednictwem protokołu SSH. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
 
 Tryb jednego użytkownika jest minimalne środowisko z minimalną liczbę funkcji. Może być przydatne do badania problemów rozruchu, problemy z systemu plików lub problemy z siecią. Mniej usług może działać w tle i w zależności od uruchamiania przełącznika/RL, system plików może nie nawet automatycznie zainstalowany.
 
-Tryb jednego użytkownika jest również przydatne w sytuacjach, w której maszyna wirtualna tylko może być skonfigurowany do akceptowania kluczy SSH do logowania się w. W takim przypadku można utworzyć konto przy użyciu uwierzytelniania hasła w trybie jednego użytkownika.
+Tryb jednego użytkownika jest również przydatne w sytuacjach, w której maszyna wirtualna tylko może być skonfigurowany do akceptowania kluczy SSH do logowania się w. W takim przypadku można utworzyć konto przy użyciu uwierzytelniania hasła w trybie jednego użytkownika. Należy pamiętać, że usługa konsoli szeregowej zezwala tylko użytkowników z poziomu dostępu współautora lub nowszego dostępu do konsoli szeregowej maszyny wirtualnej.
 
-Aby przejść do trybu jednego użytkownika, należy wprowadzić CHODNIKÓW, kiedy maszyna wirtualna jest uruchamiana i modyfikowanie konfiguracji rozruchu w CHODNIKÓW. Można to zrobić, za pomocą konsoli szeregowej maszyny Wirtualnej.
+Aby przejść do trybu jednego użytkownika, należy wprowadzić CHODNIKÓW, kiedy maszyna wirtualna jest uruchamiana i modyfikowanie konfiguracji rozruchu w CHODNIKÓW. Szczegółowe instrukcje dotyczące wprowadzania CHODNIKÓW są poniżej. Ogólnie rzecz biorąc może używać przycisku ponownego uruchomienia w ramach konsoli szeregowej maszyny Wirtualnej, aby ponownie uruchomić maszynę Wirtualną i Pokaż CHODNIKÓW, jeśli maszyna wirtualna została skonfigurowana do Pokaż CHODNIKÓW.
+
+![Przycisk Linux Serial ponownego uruchomienia konsoli](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
 ## <a name="general-grub-access"></a>Ogólny program GRUB dostępu
 Dostępu CHODNIKÓW, będzie konieczne ponowne uruchomienie maszyny Wirtualnej przy jednoczesnym zachowaniu Otwórz blok konsoli szeregowej. Niektóre dystrybucje wymaga danych wprowadzonych z klawiatury do wyświetlenia CHODNIKÓW, podczas gdy inne automatycznie Pokaż CHODNIKÓW na kilka sekund i Zezwalaj na klawiatury danych wprowadzonych przez użytkownika limit czasu anulowania.
 
 Należy upewnić się, że CHODNIKÓW jest włączona na maszynie Wirtualnej, aby można było w trybie jednego użytkownika dostępu. W zależności od Twojej dystrybucji może być jakąś pracę Instalatora, aby upewnić się, że włączono programu GRUB. Informacje specyficzne dla dystrybucji znajduje się poniżej oraz w [ten link](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
 
-### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Ponowne uruchomienie maszyny Wirtualnej, aby uzyskać dostęp CHODNIKÓW w konsoli szeregowej
-Ponowne uruchamianie maszyny Wirtualnej za pomocą bloku konsoli szeregowej, otwórz może odbywać się przy użyciu SysRq `'b'` polecenia, jeśli [SysRq](./serial-console-nmi-sysrq.md) jest włączona lub przez kliknięcie przycisku ponownego uruchomienia znajdujący się w bloku przeglądu (Otwieranie maszyny Wirtualnej w nowej karcie przeglądarki, ponowne uruchomienie bez zamknięcia Blok konsoli szeregowej). Postępuj zgodnie z poniższymi instrukcjami specyficzne dla dystrybucji, aby dowiedzieć się, czego można oczekiwać od CHODNIKÓW, po ponownym uruchomieniu.
+### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Ponowne uruchomienie maszyny Wirtualnej, aby uzyskać dostęp CHODNIKÓW w konsoli szeregowej
+Możesz ponownie uruchomić maszynę Wirtualną w ramach konsoli szeregowej, przechodzenia do przycisku zasilania, a następnie klikając polecenie "Uruchom ponownie maszynę Wirtualną". Spowoduje to zainicjowanie ponownego uruchomienia maszyny Wirtualnej, a następnie zostanie wyświetlone powiadomienie w witrynie Azure portal dotyczących ponownego uruchomienia.
+Ponowne uruchamianie maszyny Wirtualnej można również wykonać przy użyciu SysRq `'b'` polecenia, jeśli [SysRq](./serial-console-nmi-sysrq.md) jest włączona. Postępuj zgodnie z poniższymi instrukcjami specyficzne dla dystrybucji, aby dowiedzieć się, czego można oczekiwać od CHODNIKÓW, po ponownym uruchomieniu.
+
+![Ponowne uruchomienie konsoli seryjne systemu Linux](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>Ogólnego dostępu tryb jednego użytkownika
 Ręczne dostęp do trybu jednego użytkownika mogą być potrzebne w sytuacjach, w których nie skonfigurowano konta przy użyciu uwierzytelniania hasła. Należy zmodyfikować konfigurację programu GRUB, aby ręcznie wprowadzić w trybie jednego użytkownika. Gdy to zrobisz, zobacz [tryb jednego użytkownika użycia zresetować lub Dodaj hasło](#-Use-Single-User-Mode-to-reset-or-add-a-password) uzyskać dalsze instrukcje.
@@ -146,7 +151,7 @@ Może to być sytuacjach (np. głównym zapomniane hasła) mogą nadal być nie 
     - Spowoduje to instalacji usługi systemu plików w trybie odczytu, zapisu i użyj /bin/bash jako proces inicjowania
 1. Naciśnij klawisze Ctrl + X, ponowne uruchomienie przy użyciu tych ustawień
 
-## <a name="access-for-coreos"></a>Dostęp do systemu CoreOS
+## <a name="access-for-coreos"></a>Access for CoreOS
 Tryb jednego użytkownika w CoreOS wymaga CHODNIKÓW włączyć.
 
 ### <a name="grub-access-in-coreos"></a>Program GRUB dostępu w CoreOS

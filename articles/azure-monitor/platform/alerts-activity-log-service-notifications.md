@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
-ms.openlocfilehash: b22ecb9d8948a77df43f47cd9fd218be4319d06e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6b617ff99b9183c6b5008292dd3e5d11f2e69da9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583735"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092234"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług
 ## <a name="overview"></a>Przegląd
@@ -37,7 +37,7 @@ Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action g
 
 Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień alertów przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager](alerts-activity-log.md).
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-portal"></a>Tworzenie alertu na powiadomienie usługi kondycji dla nowej grupy akcji przy użyciu witryny Azure portal
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Akcja alertu i nowe grupy przy użyciu witryny Azure portal
 1. W [portal](https://portal.azure.com), wybierz opcję **Service Health**.
 
     ![Usługa "Service Health"](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -86,7 +86,7 @@ Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejącyc
 >
 >
 
-## <a name="create-an-alert-on-a-service-health-notification-for-an-existing-action-group-by-using-the-azure-portal"></a>Tworzenie alertu na powiadomienie usługi kondycji dla istniejącej grupy akcji przy użyciu witryny Azure portal
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Alert o istniejącej grupy akcji przy użyciu witryny Azure portal
 
 1. Wykonaj kroki od 1 do 7 w poprzedniej sekcji, aby utworzyć powiadomienia usługi kondycji. 
 
@@ -96,7 +96,7 @@ Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejącyc
 
 W ciągu kilku minut ten alert jest aktywna i rozpoczyna się do wyzwalania na podstawie warunków, które zostały określone podczas tworzenia.
 
-## <a name="create-an-alert-on-a-service-health-notification-for-a-new-action-group-by-using-the-azure-resource-manager-templates"></a>Tworzenie alertu na powiadomienie usługi kondycji dla nowej grupy akcji przy użyciu szablonów usługi Resource Manager platformy Azure
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Akcja alertu i nowe grupy przy użyciu szablonów usługi Azure Resource Manager
 
 Oto przykład, który tworzy grupy akcji z elementem docelowym poczty e-mail i włącza wszystkie powiadomień dotyczących kondycji usługi dla subskrypcji docelowej.
 

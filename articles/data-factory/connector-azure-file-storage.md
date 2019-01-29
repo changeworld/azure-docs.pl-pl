@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 5f7770d9331df46c16ed7f5e565c781a864bc5e1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 86fccf71463a2f00b31f5f1e6082db4c404bbf9b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077944"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55152202"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopiowanie danych z lub do usługi Azure File Storage przy użyciu usługi Azure Data Factory
 
@@ -42,8 +42,8 @@ Następujące właściwości są obsługiwane w przypadku pliku połączoną us�
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **FileServer**. | Yes |
-| host | Określa punkt końcowy usługi Azure File Storage jako `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Yes |
-| Identyfikator użytkownika | Określ użytkownika, dostęp do usługi Azure File Storage jako `"userid": "AZURE\\<storage name>"`. | Yes |
+| host | Określa punkt końcowy usługi Azure File Storage jako: <br/>— Za pomocą interfejsu użytkownika: Określ `\\<storage name>.file.core.windows.net\<file service name>`<br/>-Przy użyciu formatu JSON: `"host": "\\\\<storage name>.file.core.windows.net\\<file service name>"`. | Yes |
+| Identyfikator użytkownika | Określ użytkownikowi dostęp do usługi Azure File Storage jako: <br/>— Za pomocą interfejsu użytkownika: Określ `AZURE\<storage name>`<br/>-Przy użyciu formatu JSON: `"userid": "AZURE\\<storage name>"`. | Yes |
 | hasło | Określ klucz dostępu do magazynu. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Brak źródła tak dla ujścia |
 

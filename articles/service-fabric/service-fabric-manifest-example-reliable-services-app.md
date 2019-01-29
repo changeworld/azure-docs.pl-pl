@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: c90715608b5d35520605c504b5cebb5e7a3ec021
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096637"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171460"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Przykłady manifestu aplikacji i usługi Reliable Services
 Poniżej przedstawiono przykłady manifestów aplikacji i usługi dla aplikacji usługi Service Fabric za pomocą frontonu sieci web platformy ASP.NET Core i stanowej back-end. Te przykłady ma na celu Pokaż jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usługi są oparte na [usługi Service Fabric platformy .NET Przewodnik Szybki Start](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) manifestów.
@@ -198,7 +198,7 @@ Zobacz [elementy manifestu aplikacji](#application-manifest-elements), [elementy
         the root of the code package regardless of where the EXE is defined in the code package directory. This is where the processes can write the data. Writing data 
         in the code package or code base is not recommended as those folders could be shared between different application instances and may get deleted.-->
         <WorkingFolder>CodePackage</WorkingFolder>
-        <!-- Warning! Do not use console rediriction in a production application, only use it for local development and debugging. Redirects console output from the startup
+        <!-- Warning! Do not use console redirection in a production application, only use it for local development and debugging. Redirects console output from the startup
         script to an output file in the application folder called "log" on the cluster node where the application is deployed and run. Also set the number of output files
         to retain and the maximum file size (in KB). -->
         <ConsoleRedirection FileRetentionCount="10" FileMaxSizeInKb="20480"/>
@@ -215,7 +215,7 @@ Zobacz [elementy manifestu aplikacji](#application-manifest-elements), [elementy
     </EntryPoint>
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an 
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -399,10 +399,12 @@ Nazwa pliku wykonywalnego.  Na przykład "MySetup.bat" lub "MyServiceHost.exe". 
  Aby uzyskać więcej informacji, zobacz [Element argumentów](service-fabric-service-model-schema-elements.md#ArgumentsElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder Element
-Katalog roboczy dla procesu w pakiecie kod w węźle klastra, w którym aplikacja jest wdrażana. Można określić trzy wartości: pracy (ustawienie domyślne), CodePackage lub kodu. CodeBase Określa, że katalog roboczy jest ustawiony do katalogu, w którym plik EXE jest zdefiniowany w pakiecie kodu. CodePackage Ustawia katalog roboczy być katalogiem głównym pakietu kodu, niezależnie od tego, gdzie plik EXE jest zdefiniowana w katalogu pakietu kodu. Praca Ustawia katalog roboczy unikatowy folder utworzony w węźle.  Ten folder jest taka sama dla wystąpienia całej aplikacji. Domyślnie katalog roboczy przez wszystkie procesy w aplikacji jest równa folderu roboczego aplikacji. Jest to, gdzie procesów można zapisywać dane. Zapisywanie danych w pakiecie kod lub kod podstawowy nie jest zalecane, ponieważ te foldery mogą być współużytkowane przez różne wystąpienia aplikacji i może być usunięty. Aby uzyskać więcej informacji, zobacz [WorkingFolder — Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+Katalog roboczy dla procesu w pakiecie kod w węźle klastra, w którym aplikacja jest wdrażana. Można określić trzy wartości: Praca (ustawienie domyślne), CodePackage lub kodu. CodeBase Określa, że katalog roboczy jest ustawiony do katalogu, w którym plik EXE jest zdefiniowany w pakiecie kodu. CodePackage Ustawia katalog roboczy być katalogiem głównym pakietu kodu, niezależnie od tego, gdzie plik EXE jest zdefiniowana w katalogu pakietu kodu. Praca Ustawia katalog roboczy unikatowy folder utworzony w węźle.  Ten folder jest taka sama dla wystąpienia całej aplikacji. Domyślnie katalog roboczy przez wszystkie procesy w aplikacji jest równa folderu roboczego aplikacji. Jest to, gdzie procesów można zapisywać dane. Zapisywanie danych w pakiecie kod lub kod podstawowy nie jest zalecane, ponieważ te foldery mogą być współużytkowane przez różne wystąpienia aplikacji i może być usunięty. Aby uzyskać więcej informacji, zobacz [WorkingFolder — Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="consoleredirection-element"></a>ConsoleRedirection Element
-Ostrzeżenie! Użyj rediriction konsoli w aplikacji produkcyjnej, nie tylko używać lokalne programowanie i debugowanie. Przekierowuje dane wyjściowe konsoli skryptu uruchamiania do pliku wyjściowego w folderze aplikacji o nazwie "Zaloguj" w węźle klastra, w którym aplikacja jest wdrażany i uruchamiany. Aby uzyskać więcej informacji, zobacz [ConsoleRedirection — Element](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+
+> [!WARNING]
+> Przekierowywanie konsoli jest używany w aplikacji produkcyjnych, nie tylko używać lokalne programowanie i debugowanie. Przekierowuje dane wyjściowe konsoli skryptu uruchamiania do pliku wyjściowego w folderze aplikacji o nazwie "Zaloguj" w węźle klastra, w którym aplikacja jest wdrażany i uruchamiany. Aby uzyskać więcej informacji, zobacz [ConsoleRedirection — Element](service-fabric-service-model-schema-elements.md#ConsoleRedirectionElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="entrypoint-element"></a>EntryPoint — Element
 Plik wykonywalny określony przez punkt wejścia jest zazwyczaj długotrwałych hosta usługi. Obecność punktu wejścia Instalatora oddzielne pozwala na uniknięcie konieczności uruchamiania hosta usługi z wysokim poziomem uprawnień na dłuższy czas. Plik wykonywalny określony przez punkt wejścia jest uruchamiany po SetupEntryPoint kończy się pomyślnie. Proces wynikowy jest monitorowana i uruchomione ponownie (od początku ponownie, używając SetupEntryPoint), jeśli kiedykolwiek kończy się lub ulega awarii. Aby uzyskać więcej informacji, zobacz [EntryPoint — Element](service-fabric-service-model-schema-elements.md#EntryPointElementEntryPointDescriptionTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -447,7 +449,7 @@ Plik wykonywalny określony przez punkt wejścia jest zazwyczaj długotrwałych 
 Nazwa pliku wykonywalnego.  Na przykład "MySetup.bat" lub "MyServiceHost.exe". Aby uzyskać więcej informacji, zobacz [elementu programu](service-fabric-service-model-schema-elements.md#ProgramElementxs:stringComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="workingfolder-element"></a>WorkingFolder Element
-Katalog roboczy dla procesu w pakiecie kod w węźle klastra, w którym aplikacja jest wdrażana. Można określić trzy wartości: pracy (ustawienie domyślne), CodePackage lub kodu. CodeBase Określa, że katalog roboczy jest ustawiony do katalogu, w którym plik EXE jest zdefiniowany w pakiecie kodu. CodePackage Ustawia katalog roboczy być katalogiem głównym pakietu kodu, niezależnie od tego, gdzie plik EXE jest zdefiniowana w katalogu pakietu kodu. Praca Ustawia katalog roboczy unikatowy folder utworzony w węźle.  Ten folder jest taka sama dla wystąpienia całej aplikacji. Domyślnie katalog roboczy przez wszystkie procesy w aplikacji jest równa folderu roboczego aplikacji. Jest to, gdzie procesów można zapisywać dane. Zapisywanie danych w pakiecie kod lub kod podstawowy nie jest zalecane, ponieważ te foldery mogą być współużytkowane przez różne wystąpienia aplikacji i może być usunięty. Aby uzyskać więcej informacji, zobacz [WorkingFolder — Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
+Katalog roboczy dla procesu w pakiecie kod w węźle klastra, w którym aplikacja jest wdrażana. Można określić trzy wartości: Praca (ustawienie domyślne), CodePackage lub kodu. CodeBase Określa, że katalog roboczy jest ustawiony do katalogu, w którym plik EXE jest zdefiniowany w pakiecie kodu. CodePackage Ustawia katalog roboczy być katalogiem głównym pakietu kodu, niezależnie od tego, gdzie plik EXE jest zdefiniowana w katalogu pakietu kodu. Praca Ustawia katalog roboczy unikatowy folder utworzony w węźle.  Ten folder jest taka sama dla wystąpienia całej aplikacji. Domyślnie katalog roboczy przez wszystkie procesy w aplikacji jest równa folderu roboczego aplikacji. Jest to, gdzie procesów można zapisywać dane. Zapisywanie danych w pakiecie kod lub kod podstawowy nie jest zalecane, ponieważ te foldery mogą być współużytkowane przez różne wystąpienia aplikacji i może być usunięty. Aby uzyskać więcej informacji, zobacz [WorkingFolder — Element](service-fabric-service-model-schema-elements.md#WorkingFolderElementanonymouscomplexTypeComplexTypeDefinedInExeHostEntryPointTypecomplexType)
 
 ### <a name="configpackage-element"></a>ConfigPackage Element
 Deklaruje folderem o nazwie określonej przez atrybut Name w obszarze PackageRoot, który zawiera plik Settings.xml. Ten plik zawiera sekcje ustawień zdefiniowanych przez użytkownika, pary klucz wartość pary, które ten proces może odczytywać Wstecz w czasie wykonywania. Podczas uaktualniania Jeśli istnieją tylko w wersji ConfigPackage został zmieniony, następnie uruchomiony proces nie zostanie ponownie uruchomiony. Zamiast tego wywołania zwrotnego powiadamia procesu, które uległy zmianie ustawień konfiguracji, aby dynamicznie załadowania. Aby uzyskać więcej informacji, zobacz [ConfigPackage — Element](service-fabric-service-model-schema-elements.md#ConfigPackageElementConfigPackageTypeComplexTypeDefinedInServiceManifestTypecomplexTypeDefinedInDigestedConfigPackageelement)

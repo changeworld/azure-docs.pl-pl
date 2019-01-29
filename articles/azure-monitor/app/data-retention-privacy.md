@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 812478c13ef39b369471a731c52dc38ba6a4368c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 511937fde859f47af2b7bc273daaab88bb8809c3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119751"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094533"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -148,7 +148,7 @@ Domyślnie `ServerTelemetryChannel` używa bieżącego użytkownika lokalnej apl
 
 
 Za pomocą pliku konfiguracji:
-```
+```xml
 <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
     <StorageFolder>D:\NewTestFolder</StorageFolder>
 </TelemetryChannel>
@@ -158,7 +158,7 @@ Za pomocą kodu:
 
 - Usuń ServerTelemetryChannel z pliku konfiguracji
 - Dodaj następujący fragment do konfiguracji:
-```
+```csharp
 ServerTelemetryChannel channel = new ServerTelemetryChannel();
 channel.StorageFolder = @"D:\NewTestFolder";
 channel.Initialize(TelemetryConfiguration.Active);
@@ -171,7 +171,7 @@ Domyślnie `ServerTelemetryChannel` używa bieżącego użytkownika lokalnej apl
 
 Poniższy fragment kodu przedstawia sposób ustawiania `ServerTelemetryChannel.StorageFolder` w `ConfigureServices()`  metody usługi `Startup.cs` klasy:
 
-```
+```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
@@ -241,9 +241,9 @@ Zestawy SDK różnią się między platformami, a jest wiele składników, któr
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Klasy danych przesyłanych w różnych scenariuszach
 | Twoja Akcja | Klasy danych zebranych (zobacz następną tabelę) |
 | --- | --- |
-| [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |Obiekt ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>użytkownicy |
-| [Zainstaluj Monitor stanu na serwerze IIS][redfield] |Zależności<br/>Obiekt ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności |
-| [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |Obiekt ServerContext<br/>Wywnioskowane<br/>Żądanie<br/>Sesja<br/>użytkownicy |
+| [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>użytkownicy |
+| [Zainstaluj Monitor stanu na serwerze IIS][redfield] |Zależności<br/>ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności |
+| [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |ServerContext<br/>Wywnioskowane<br/>Żądanie<br/>Sesja<br/>użytkownicy |
 | [Dodaj zestaw SDK JavaScript do strony sieci web][client] |ClientContext <br/>Wywnioskowane<br/>Strona<br/>ClientPerf<br/>Ajax |
 | [Zdefiniuj właściwości domyślne][apiproperties] |**Właściwości** na wszystkich standardowych i niestandardowych zdarzeń |
 | [Wywołanie TrackMetric][api] |Wartości liczbowe<br/>**Właściwości** |
@@ -260,11 +260,11 @@ Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokument
 | DeviceContext |Identyfikator adresu IP, ustawienia regionalne, model urządzenia, sieć, typ sieci, nazwa producenta OEM, rozdzielczość ekranu i wystąpienia roli, nazwa roli, rodzaju urządzenia |
 | ClientContext |System operacyjny, ustawienia regionalne, języka, sieć, rozdzielczość okna |
 | Sesja |Identyfikator sesji |
-| Obiekt ServerContext |Nazwa maszyny, ustawień regionalnych systemu operacyjnego, urządzenie, sesja użytkownika, kontekst użytkownika, operacji |
+| ServerContext |Nazwa maszyny, ustawień regionalnych systemu operacyjnego, urządzenie, sesja użytkownika, kontekst użytkownika, operacji |
 | Wywnioskowane |Lokalizacja geograficzna z adresu IP, timestamp, systemu operacyjnego, przeglądarki |
 | Metryki |Nazwa metryki i wartości |
 | Zdarzenia |Nazwa zdarzenia i wartości |
-| Wyświetleń strony |Nazwa adresu URL i strony lub ekranu |
+| PageViews |Nazwa adresu URL i strony lub ekranu |
 | Wydajności klienta |Nazwa adresu URL/strony, czas ładowania przez przeglądarkę |
 | Ajax |Wywołania HTTP ze strony sieci web serwera |
 | Żądania |Adres URL, czas trwania, kod odpowiedzi |

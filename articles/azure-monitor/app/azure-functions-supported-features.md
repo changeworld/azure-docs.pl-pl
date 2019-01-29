@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 9ad0579ff9c25753b1e4816b80948b4d8d1232f7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083067"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55185818"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Usługa Application Insights dla usługi Azure Functions obsługiwane funkcje
 
@@ -34,22 +34,27 @@ Platforma Azure oferuje funkcje [wbudowana integracja](https://docs.microsoft.co
 | &bull; Wyjątki                   | Yes             | Yes               | 
 | &bull; Zależności                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash; magistrali usług|                 | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
 | &nbsp;&nbsp;&nbsp;&mdash; Centrum zdarzeń  |                 | Yes               | 
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Yes               | 
 | | | | 
 | **Obsługiwane funkcje**                |                   |                   |               
 | &bull; QuickPulse/LiveMetrics       | Yes             | Yes               | 
+| &nbsp;&nbsp;&nbsp;&mdash; Bezpieczny kanał kontrolny|                 | Yes               | 
 | &bull; Próbkowania                     | Yes             | Yes               | 
 | &bull; Puls                   |                 | Yes               | 
 | | | | 
 | **Korelacja**                       |                   |                   |               
-| &bull; magistrali usług                     |                   | Yes               | 
+| &bull; ServiceBus                     |                   | Yes               | 
 | &bull; Centrum zdarzeń                       |                   | Yes               | 
 | | | | 
 | **Można konfigurować**                      |                   |                   |           
 | &bull;W pełni konfigurowalne.<br/>Zobacz [usługi Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) instrukcje.<br/>Zobacz [platformy Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) dla wszystkich opcji.               |                   | Yes                   | 
 
+
+## <a name="live-metrics--secure-control-channel"></a>Metryki na żywo i bezpiecznego kanału kontroli
+
+Filtry niestandardowe określonych kryteriów są wysyłane do składnika metryki na żywo w zestaw SDK usługi Application Insights. Filtry potencjalnie mogą zawierać poufne informacje, takie jak customerIDs. Kanał można zabezpieczyć przy użyciu klucza tajnego klucza interfejsu API. Zobacz [bezpieczny kanał kontrolny](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) instrukcje.
 
 ## <a name="sampling"></a>Próbkowanie
 

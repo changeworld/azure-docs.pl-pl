@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b4c3bc21591e8472dc8d51309f7431cb5d4421fd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 740864276b8d4d7a40a263a0d6d2e09c3534dbd6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054176"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55190908"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorowanie i diagnozowanie usług w lokalnym komputerze deweloperskim
 > [!div class="op_single_selector"]
@@ -39,12 +39,12 @@ Monitorowanie, wykrywanie, diagnozowanie i rozwiązywanie problemów z umożliwi
 * **Brak wbudowanej obsługi w narzędziach usługi Service Fabric programu Visual Studio, aby wyświetlić zdarzenia ETW.** Zdarzenia ETW są wyświetlane w widoku zdarzeń diagnostycznych programu Visual Studio, gdy program Visual Studio jest poprawnie skonfigurowana przy użyciu usługi Service Fabric. 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Wyświetlać zdarzenia systemowe Service Fabric w programie Visual Studio
-Usługa Service Fabric emituje zdarzenia ETW, aby ułatwić deweloperom aplikacji zrozumieć, co dzieje się na platformie. Jeśli nie zostało to jeszcze zrobione, przejdź dalej i postępuj zgodnie z instrukcjami w [Utwórz swoją pierwszą aplikację w programie Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md). Ta informacja pomoże Ci rozpocząć pracę aplikacji za pomocą Podglądu zdarzeń diagnostycznych, które są wyświetlane komunikaty śledzenia.
+Usługa Service Fabric emituje zdarzenia ETW, aby ułatwić deweloperom aplikacji zrozumieć, co dzieje się na platformie. Jeśli nie zostało to jeszcze zrobione, przejdź dalej i postępuj zgodnie z instrukcjami w [Utwórz swoją pierwszą aplikację w programie Visual Studio](service-fabric-tutorial-create-dotnet-app.md). Ta informacja pomoże Ci rozpocząć pracę aplikacji za pomocą Podglądu zdarzeń diagnostycznych, które są wyświetlane komunikaty śledzenia.
 
 1. Jeśli Diagnostyka okno zdarzenia automatycznie nie uwzględnia, przejdź do **widoku** karcie w programie Visual Studio, wybierz polecenie **Windows inne** i następnie **podglądu zdarzeń diagnostycznych**.
 2. Każde zdarzenie ma standardowy metadane, informujące o węzła, aplikacji i usług, których pochodzi zdarzenie. Można również filtrować listę zdarzeń za pomocą **Filtruj zdarzenia** polu w górnej części okna zdarzenia. Na przykład można filtrować na **nazwa węzła** lub **nazwy usługi.** A jeśli patrzysz szczegóły zdarzenia można również wstrzymać przy użyciu **wstrzymać** znajdujący się w górnej części okna zdarzenia i wznowić później bez utraty zdarzeń.
    
-   ![Podglądu zdarzeń diagnostycznych programu Visual Studio](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
+   ![Visual Studio Diagnostics Events Viewer](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
 ## <a name="add-your-own-custom-traces-to-the-application-code"></a>Dodawanie własnych niestandardowych danych śledzenia do kodu aplikacji
 Szablony projektu usługi Service Fabric Visual Studio zawiera przykładowy kod. Kod przedstawia sposób dodawania aplikacji niestandardowej śladów funkcji ETW kodu, które pojawiają się w podglądzie ETW. program Visual Studio obok ślady systemu z usługi Service Fabric. Zaletą tej metody jest, że metadanych jest automatycznie dodawany do śledzenia i Visual Studio podglądu zdarzeń diagnostycznych jest już skonfigurowany, aby je wyświetlić.

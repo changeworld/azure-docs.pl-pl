@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 8fa70705d1dff5c3150fa5868938a3c50ef863fe
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 24b14c4f0ca185a7916aeb19671a22ff46a23ee2
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815567"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194852"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Obsługa języka i regionu dla interfejsu API wyszukiwania niestandardowego Bing
 
@@ -34,31 +34,31 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Argentyna|AR|
 |Australia|AU|
 |Austria|AT|
-|Belgia|MOŻNA|
-|Brazylia|BRAZYLIA|
-|Kanada|Urząd certyfikacji|
+|Belgia|BE|
+|Brazylia|BR|
+|Kanada|CA|
 |Chile|CL|
 |Dania|DK|
 |Finlandia|FI|
 |Francja|PW|
 |Niemcy|DE|
 |SRA Hongkong|HK|
-|Indie|INDIE|
+|Indie|IN|
 |Indonezja|ID|
 |Włochy|IT|
 |Japonia|JP|
 |Korea|KR|
-|Malezja|MOJE|
+|Malezja|MY|
 |Meksyk|MX|
-|Holandia|HOLANDIA|
+|Holandia|NL|
 |Nowa Zelandia|NZ|
-|Norwegia|NIE|
+|Norwegia|NO|
 |Chiny|CN|
 |Polska|PL|
-|Portugalia|(CZAS PACYFICZNY)|
+|Portugalia|PT|
 |Filipiny|PH|
-|Rosja|JEDNOSTKA ŻĄDANIA|
-|Arabia Saudyjska|AMERYKA POŁUDNIOWA|
+|Rosja|RU|
+|Arabia Saudyjska|SA|
 |Republika Południowej Afryki|ZA|
 |Hiszpania|ES|
 |Szwecja|SE|
@@ -76,8 +76,8 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Argentyna|Hiszpański|ES AR|
 |Australia|Polski|EN-AU|
 |Austria|Niemiecki|de-AT|
-|Belgia|Holenderski|Holandia — być|
-|Belgia|Francuski|FR — być|
+|Belgia|Holenderski|nl-BE|
+|Belgia|Francuski|fr-BE|
 |Brazylia|Portugalski|pt-BR|
 |Kanada|Polski|EN-CA|
 |Kanada|Francuski|fr-CA|
@@ -100,10 +100,10 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Chiny|Chiński|zh-CN|
 |Polska|Polski|pl-PL|
 |Portugalia|Portugalski|pt-PT|
-|Filipiny|Polski|EN PH|
+|Filipiny|Polski|en-PH|
 |Rosja|Rosyjski|ru-RU|
 |Arabia Saudyjska|Arabski|ar-SA|
-|Republika Południowej Afryki|Polski|EN ZA|
+|Republika Południowej Afryki|Polski|en-ZA|
 |Hiszpania|Hiszpański|es-ES|
 |Szwecja|Szwedzki|sv-SE|
 |Szwajcaria|Francuski|FR-CH|
@@ -111,5 +111,5 @@ Można określić kraj/region, w którym używana jest `cc` parametr zapytania. 
 |Tajwan|Chiński (tradycyjny)|zh-TW|
 |Turcja|Turecki|tr-TR|
 |Wielka Brytania|Polski|en-GB|
-|Stany Zjednoczone|Polski|pl-PL|
+|Stany Zjednoczone|Polski|en-US|
 |Stany Zjednoczone|Hiszpański|es-US|

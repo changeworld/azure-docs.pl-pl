@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 17826bb250f1cc7c4d512f76400eeb43c2637c73
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: b88f1ff84cc26e1db88027a55b506fd37476aae5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994797"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197691"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -37,10 +37,10 @@ Usługa jest dostępna w regionach platformy Azure jest ogólnie dostępna. Nie 
 
 Regiony                                        | Dostępność?                                 | Obsługiwane wersje
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
-[Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
-[Chińska wersja platformy Azure](https://www.azure.cn/)                                                           | Ogólnie dostępne | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
-[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
+[Wszystkie ogólnie dostępne globalnych regionów platformy Azure](https://azure.microsoft.com/regions/)     | Ogólnie dostępne   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
+[Platforma Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Chińska wersja platformy Azure](https://www.azure.cn/)                                                           | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Azure (Niemcy)](https://azure.microsoft.com/overview/clouds/germany/)                    | Ogólnie dostępne | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 
 Ta tabela jest aktualizowany, gdy są dostępne aktualizacje usługi i/lub nowych wersji są dostępne
 
@@ -76,7 +76,7 @@ Poniższa tabela jest odwołaniem do innych formatów danych, które mogą obsł
 
 Interfejs API | Domyślny Format danych | W innych formatach
 --------|---------------------|--------------
-/ instance | json | tekst
+/instance | json | tekst
 /scheduledevents | json | brak
 
 Aby uzyskać dostęp, format odpowiedzi innych niż domyślne, do określania żądanego jako parametr querystring w żądaniu. Na przykład:
@@ -305,9 +305,9 @@ vmScaleSetName | [Nazwa zestawu skalowania maszyny wirtualnej](../../virtual-mac
 strefa | [Strefa dostępności](../../availability-zones/az-overview.md) maszyny wirtualnej | 2017-12-01 
 ipv4/privateIpAddress | Lokalny adres IPv4 maszyny wirtualnej | 2017-04-02
 ipv4/publicIpAddress | Publiczny adres IPv4 maszyny wirtualnej | 2017-04-02
-podsieć lub adres | Adres podsieci maszyny wirtualnej | 2017-04-02 
+subnet/address | Adres podsieci maszyny wirtualnej | 2017-04-02 
 podsieci/prefiks | Prefiks podsieci, przykład 24 | 2017-04-02 
-adres IPv6/IP | Lokalny adres IPv6 maszyny wirtualnej | 2017-04-02 
+ipv6/ipAddress | Lokalny adres IPv6 maszyny wirtualnej | 2017-04-02 
 macAddress | Adres mac dla maszyny Wirtualnej | 2017-04-02 
 scheduledevents | Zobacz [zaplanowane zdarzenia](scheduled-events.md) | 2017-08-01
 identity | (Wersja zapoznawcza) Zarządzanych tożsamości dla zasobów platformy Azure. Zobacz [uzyskiwanie tokenu dostępu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -496,7 +496,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Aby uzyskać pomoc techniczną dla usługi, utworzyć problemu wymagającego pomocy technicznej w witrynie Azure portal dla maszyny Wirtualnej, której nie jesteś można uzyskać odpowiedź metadanych długie ponowne próby 
 9. Uzyskać żądań przekroczyła limit czasu dla mojego wywołanie usługi?
    * Wywołania metadanych musi nastąpić z podstawowego adresu IP przypisane do karty sieciowej maszyny wirtualnej, ponadto w przypadku, gdy zmieniono trasy musi być trasę dla adresu 169.254.0.0/16 poza karty sieciowej.
-10. Czy mogę zaktualizować Moje znaczniki w zestawie skalowania maszyny wirtualnej, ale nie są wyświetlane w przypadkach, w przeciwieństwie do maszyn wirtualnych?
+10. Czy mogę zaktualizować Moje znaczniki w zestawie skalowania maszyn wirtualnych, ale nie są wyświetlane w przypadkach, w przeciwieństwie do maszyn wirtualnych?
    * Obecnie dla ScaleSets tagi zawierają tylko do maszyny Wirtualnej na ponowne uruchomienie/odtworzenia z obrazu/lub dyskiem zmiany do wystąpienia. 
 
    ![Obsługa metadanych wystąpienia](./media/instance-metadata-service/InstanceMetadata-support.png)

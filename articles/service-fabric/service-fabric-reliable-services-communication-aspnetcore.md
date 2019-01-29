@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310253"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151094"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Platforma ASP.NET Core usług usługi Service Fabric Reliable Services
 
@@ -62,15 +62,15 @@ Wystąpienie usługi Reliable Service jest reprezentowany przez pochodząca od k
 `ICommunicationListener` Implementacje dla słowa kluczowego HttpSys w usługach Kestrel i `Microsoft.ServiceFabric.AspNetCore.*` pakiety NuGet podobnych wzorców użycia, ale także wykonać nieco różne akcje specyficzne dla każdego serwera sieci web. 
 
 Zarówno odbiorników komunikacji zapewniają konstruktora, który przyjmuje następujące argumenty:
- - **`ServiceContext serviceContext`**`ServiceContext` Obiektu, który zawiera informacje dotyczące uruchomionej usługi.
- - **`string endpointName`**: nazwa `Endpoint` konfiguracji w ServiceManifest.xml. Jest to głównie których różnią się odbiorników komunikacji dwa: słowa kluczowego HttpSys **wymaga** `Endpoint` konfiguracji, a nie Kestrel.
+ - **`ServiceContext serviceContext`**: `ServiceContext` Obiektu, który zawiera informacje dotyczące uruchomionej usługi.
+ - **`string endpointName`**: nazwa `Endpoint` konfiguracji w ServiceManifest.xml. Jest to przede wszystkim, których różnią się odbiorników komunikacji dwa: Słowa kluczowego HttpSys **wymaga** `Endpoint` konfiguracji, a nie Kestrel.
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Wyrażenie lambda, który implementuje, w którym możesz utworzyć i zwracają `IWebHost`. Dzięki temu można skonfigurować `IWebHost` sposób zwykle w aplikacji ASP.NET Core. Wyrażenie lambda zawiera, używać adresu URL, który jest generowany dla opcje można w zależności od integracji usługi Service Fabric i `Endpoint` konfiguracji należy podać. Adres URL następnie można zmodyfikować lub używany jako — jest uruchomienie serwera sieci web.
 
 ## <a name="service-fabric-integration-middleware"></a>Oprogramowania pośredniczącego integracji usługi Service Fabric
 `Microsoft.ServiceFabric.AspNetCore` Obejmuje pakiet NuGet `UseServiceFabricIntegration` metody rozszerzenia `IWebHostBuilder` , dodaje oprogramowanie pośredniczące obsługujących usługi Service Fabric. To oprogramowanie pośredniczące konfiguruje Kestrel lub słowa kluczowego HttpSys `ICommunicationListener` zarejestrować adres URL, unikatowa usługa, za pomocą usługi nazewnictwa Service Fabric i następnie weryfikuje żądań klientów, aby upewnić się, klienci nawiązywania odpowiednią usługę. Jest to konieczne w środowisku hosta udostępnione takich jak Usługa Service Fabric, gdzie wielu aplikacji sieci web można uruchamiać na takie same fizyczne lub maszyny wirtualnej, ale nie używaj nazw hostów unikatowy, aby uniemożliwić klientom przez pomyłkę połączenia z usługą problem. Ten scenariusz jest opisany bardziej szczegółowo w następnej sekcji.
 
 ### <a name="a-case-of-mistaken-identity"></a>Przypadek omyłkowe tożsamości
-Repliki usługi, niezależnie od tego protokołu, nasłuchiwać IP:port unikatową kombinację. Po rozpoczęciu repliki service nasłuchiwania w punkcie końcowym IP:port zgłasza ten adres punktu końcowego do usługi Service Fabric Naming gdzie mogą być odnajdowane przez klientów lub innych usług. Użycie porty dynamicznie przypisany do aplikacji, usług repliki usługi przypadkowo może używać tego samego punktu końcowego IP:port innej usługi, która była wcześniej w tej samej fizyczne lub maszyny wirtualnej. Może to spowodować klientowi mistakely nawiązać połączenie z usługą problem. Może się to zdarzyć, jeśli ma miejsce następująca sekwencja zdarzeń:
+Repliki usługi, niezależnie od tego protokołu, nasłuchiwać IP:port unikatową kombinację. Po rozpoczęciu repliki service nasłuchiwania w punkcie końcowym IP:port zgłasza ten adres punktu końcowego do usługi Service Fabric Naming gdzie mogą być odnajdowane przez klientów lub innych usług. Użycie porty dynamicznie przypisany do aplikacji, usług repliki usługi przypadkowo może używać tego samego punktu końcowego IP:port innej usługi, która była wcześniej w tej samej fizyczne lub maszyny wirtualnej. Może to spowodować, że klient nawiązać omyłkowo niewłaściwego usługi. Może się to zdarzyć, jeśli ma miejsce następująca sekwencja zdarzeń:
 
  1. A usługa nasłuchuje na 10.0.0.1:30000 za pośrednictwem protokołu HTTP. 
  2. Klient jest rozpoznawana jako usługa A i pobiera 10.0.0.1:30000 adresu
@@ -106,7 +106,7 @@ Słowa kluczowego HttpSys jest oparta na [interfejsu API serwera HTTP Windows](h
 
 Na poniższym diagramie przedstawiono, jak używa słowa kluczowego HttpSys *http.sys* sterownik jądra na Windows współużytkowania portów:
 
-![Sterownik HTTP.sys][3]
+![http.sys][3]
 
 ### <a name="httpsys-in-a-stateless-service"></a>Słowa kluczowego HttpSys usługi bezstanowej
 Aby użyć `HttpSys` w usługę bezstanową, należy zastąpić `CreateServiceInstanceListeners` metody i wróć `HttpSysCommunicationListener` wystąpienia:
@@ -196,7 +196,7 @@ Kestrel może służyć w niezawodnej usługi przez zaimportowanie **Microsoft.S
 
 Kestrel jest oparte na serwerze sieci web dla wielu platform dla platformy ASP.NET Core na libuv, bibliotekę asynchronicznych operacji We/Wy dla wielu platform. W odróżnieniu od słowa kluczowego HttpSys, Kestrel nie używać scentralizowane punktu końcowego Menedżera takich jak *http.sys*. I w przeciwieństwie do słowa kluczowego HttpSys, Kestrel nie obsługuje udostępniania portów między wiele procesów. Każde wystąpienie Kestrel należy użyć unikatowy port.
 
-![Kestrel][4]
+![kestrel][4]
 
 ### <a name="kestrel-in-a-stateless-service"></a>Kestrel usługi bezstanowej
 Aby użyć `Kestrel` w usługę bezstanową, należy zastąpić `CreateServiceInstanceListeners` metody i wróć `KestrelCommunicationListener` wystąpienia:

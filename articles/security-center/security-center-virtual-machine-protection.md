@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3a2ccd04cd7ec36cafdf56830b9ad8249f89eb7e
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321594"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181473"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -46,7 +46,7 @@ W obszarze **obliczenia i aplikacje**, istnieją następujące karty:
 - **Kontenery (wersja zapoznawcza)**: Lista kontenerów hostowanych na maszynach z systemem IaaS Linux i ocenę zabezpieczeń ich konfiguracji platformy Docker.
 - **(Wersja zapoznawcza) zasoby obliczeniowe**: listę zaleceń dotyczących zasobów obliczeniowych, takich jak klastry usługi Service Fabric i usługi Event hubs.
 
-Aby kontynuować, wybierz **obliczenia i aplikacje** w obszarze **hygeine zabezpieczeń zasobu**.
+Aby kontynuować, wybierz **obliczenia i aplikacje** w obszarze **higieny zabezpieczeń zasobu**.
 
 ![Wystąpienia obliczeniowe](./media/security-center-virtual-machine-recommendations/compute.png)
 
@@ -196,8 +196,8 @@ Istnieją trzy typy ikon przedstawianych na tej liście:
 |Obliczenia zasobów (Centrum zdarzeń)|5|Włącz dzienniki diagnostyki w Centrum zdarzeń|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
 |Obliczenia zasoby (aplikacje Logic Apps)|5|Włącz dzienniki diagnostyki w usłudze Logic Apps|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
 |(Usługa Service fabric) zasobów obliczeniowych|15|Ustaw właściwość ClusterProtectionLevel EncryptAndSign w usłudze Service Fabric|Usługa Service Fabric udostępnia trzy poziomy ochrony (Brak, logowania i EncryptAndSign) do komunikacji między węzłami, przy użyciu certyfikatu klastra podstawowego.  Ustaw poziom ochrony, aby zapewnić zaszyfrowany i podpisany cyfrowo wszystkie komunikaty węzła do węzła. |
-|(Usługa Service bus) zasobów obliczeniowych|1|Usuń wszystkie reguły autoryzacji, z wyjątkiem RootManageSharedAccessKey z przestrzeni nazw usługi Service Bus |Klienci usługi Service Bus nie należy używać zasady dostępu na poziomie przestrzeni nazw, która zapewnia dostęp do wszystkich kolejek i tematów w przestrzeni nazw. Aby było zgodne z co najmniej uprawnień zabezpieczeń modelu powinny możesz utworzyć zasady dostępu na poziomie jednostki dla kolejek i tematów, aby zapewnić dostęp do określonej jednostki.|
-|Obliczenia zasobów (Centrum zdarzeń)|1|Usuń wszystkie reguły autoryzacji, z wyjątkiem RootManageSharedAccessKey z przestrzeni nazw Centrum zdarzeń |Klienci Centrum zdarzeń nie należy używać zasady dostępu na poziomie przestrzeni nazw, która zapewnia dostęp do wszystkich kolejek i tematów w przestrzeni nazw. Aby było zgodne z co najmniej uprawnień zabezpieczeń modelu powinny możesz utworzyć zasady dostępu na poziomie jednostki dla kolejek i tematów, aby zapewnić dostęp do określonej jednostki.|
+|(Usługa Service bus) zasobów obliczeniowych|1|Usuń wszystkie reguły autoryzacji, z wyjątkiem RootManageSharedAccessKey z przestrzeni nazw usługi Service Bus |Klienci usługi Service Bus nie należy używać zasady dostępu na poziomie przestrzeni nazw, która zapewnia dostęp do wszystkich kolejek i tematów w przestrzeni nazw. Aby wyrównać z najniższymi uprawnieniami model zabezpieczeń, należy utworzyć zasady dostępu na poziomie jednostki dla kolejek i tematów, aby zapewnić dostęp do określonej jednostki.|
+|Obliczenia zasobów (Centrum zdarzeń)|1|Usuń wszystkie reguły autoryzacji, z wyjątkiem RootManageSharedAccessKey z przestrzeni nazw Centrum zdarzeń |Klienci Centrum zdarzeń nie należy używać zasady dostępu na poziomie przestrzeni nazw, która zapewnia dostęp do wszystkich kolejek i tematów w przestrzeni nazw. Aby wyrównać z najniższymi uprawnieniami model zabezpieczeń, należy utworzyć zasady dostępu na poziomie jednostki dla kolejek i tematów, aby zapewnić dostęp do określonej jednostki.|
 |Obliczenia zasobów (Centrum zdarzeń)|5|Zdefiniuj reguły autoryzacji na jednostce Centrum zdarzeń|Inspekcja reguły autoryzacji na jednostce Centrum zdarzeń przyznania najmniej uprzywilejowanego dostępu.|
 |Maszyna|50|Zainstaluj agenta monitorowania na maszynach|Zainstaluj agenta monitorowania, aby włączyć zbieranie danych, aktualizacje skanowania, skanowania linii bazowej i programem endpoint protection na każdym komputerze.|
 |Maszyna|50|Włączanie automatycznej aprowizacji i zbierania danych dla subskrypcji |Włączanie automatycznej aprowizacji i zbierania danych dla maszyn w Twoich subskrypcjach, aby włączyć zbieranie danych aktualizacji skanowania, skanowania linii bazowej i programem endpoint protection na każdej maszynie, dodać do swojej subskrypcji.|
@@ -217,7 +217,7 @@ Istnieją trzy typy ikon przedstawianych na tej liście:
 |Maszyna|15|Dodawanie zapory aplikacji internetowej| Wdróż rozwiązanie umożliwiającymi zainstalowanie zapory aplikacji sieci web w celu zabezpieczenia aplikacji sieci web. |
 |Maszyna|30|Korygowanie luk w zabezpieczeniach przy użyciu rozwiązania do oceny luk w zabezpieczeniach|Maszyny wirtualne, dla których wdrożono luk w zabezpieczeniach 3rd strona rozwiązania do oceny są stale oceniane względem aplikacji i luk w zabezpieczeniach systemu operacyjnego. Zawsze, gdy zostaną znalezione lukami umożliwiającymi takie ataki, są dostępne, aby uzyskać więcej informacji, w ramach zalecenia.|
 |Maszyna|30|Instaluj rozwiązanie do oceny luk w zabezpieczeniach na maszynach wirtualnych|Instaluj rozwiązanie do oceny luk w zabezpieczeniach na maszynach wirtualnych|
-|Maszyna|1|Migrowanie maszyn wirtualnych na nowe zasoby usługi Azure Resource Manager|Usługa Azure Resource Manager dla usługi maszyny wirtualne zapewnienie wzmocnienia zabezpieczeń, takich jak: silniejsze kontroli dostępu (RBAC), lepiej inspekcji, wdrażania usługi Resource Manager i nadzoru, dostęp do zarządzanych tożsamości i dostępu do magazynu kluczy dla wpisów tajnych oraz ich Uwierzytelnianie na podstawie usługi AD systemu Azure i obsługa tagów i grupy zasobów, aby ułatwić zarządzanie zabezpieczeniami. |
+|Maszyna|1|Migrowanie maszyn wirtualnych na nowe zasoby usługi Azure Resource Manager|Usługa Azure Resource Manager dla maszyn wirtualnych zapewnienie wzmocnienia zabezpieczeń, takich jak: silniejsze kontroli dostępu (RBAC), lepiej inspekcji, wdrażania usługi Resource Manager i nadzoru, dostęp do zarządzanych tożsamości i dostępu do magazynu kluczy dla wpisów tajnych oraz ich Uwierzytelnianie na podstawie usługi AD systemu Azure i obsługa tagów i grupy zasobów, aby ułatwić zarządzanie zabezpieczeniami. |
 |Maszyna|30|Korygowanie luk w zabezpieczeniach przy użyciu rozwiązania do oceny luk w zabezpieczeniach|Maszyny wirtualne, dla których wdrożono luk w zabezpieczeniach 3rd strona rozwiązania do oceny są stale oceniane względem aplikacji i luk w zabezpieczeniach systemu operacyjnego. Zawsze, gdy zostaną znalezione lukami umożliwiającymi takie ataki, są dostępne, aby uzyskać więcej informacji, w ramach zalecenia.|
 
  

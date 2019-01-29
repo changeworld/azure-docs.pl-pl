@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hub-page
-ms.date: 01/15/2019
+ms.date: 01/25/2019
 ms.author: magoedte
-ms.openlocfilehash: 5c3a61eb4509742f8f5a8732f5d4e81cab59ff78
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: afdc71e5bbc70d3553adeb161e0bfc48a129b3c6
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830270"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55094091"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -53,8 +53,8 @@ ms.locfileid: "54830270"
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Co to jest usługa Azure Monitor?</a><br/>
                                                                         <a href="/azure/azure-monitor/azure-monitor-rebrand">Zmiany znakowania</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/monitoring-data-sources">Monitorowanie źródła danych</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/log-analytics-service-providers">Zagadnienia dotyczące projektowania dla dostawców usług</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-sources">Monitorowanie źródła danych</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/service-providers">Zagadnienia dotyczące projektowania dla dostawców usług</a><br/>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -103,7 +103,7 @@ ms.locfileid: "54830270"
                                                     <h3>Monitorowanie</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/data-collection">Metryki i dzienniki</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/log-analytics-data-ingestion-time">Czas pozyskiwanie danych dziennika</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Czas pozyskiwanie danych dziennika</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>Źródła danych</h3>
@@ -147,7 +147,7 @@ ms.locfileid: "54830270"
                                                         <br>
                                                         <h3>Reagowanie na zdarzenia</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified">Przegląd alertów</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-overview">Przegląd alertów</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">Skalowanie automatyczne</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-unified-log">Alerty dzienników</a><br/>
                                                             <a href="/azure/azure-monitor/platform/alerts-activity-log">Alerty dziennika aktywności</a><br/>

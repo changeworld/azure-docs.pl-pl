@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 148a657b1a5db5b1b33c94e27d695e7c24dfb265
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214645"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172327"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -100,9 +100,9 @@ Poniżej przedstawiono właściwości użytkownika, które można użyć do utwo
 | Adres |Dowolną wartość ciągu lub *o wartości null* |(user.streetAddress - eq "value") |
 | nazwisko |Dowolną wartość ciągu lub *o wartości null* |(user.surname - eq "value") |
 | telephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.telephoneNumber - eq "value") |
-| Element usageLocation |Numer kierunkowy kraju własną literą dwa |(user.usageLocation - eq "PL") |
+| usageLocation |Numer kierunkowy kraju własną literą dwa |(user.usageLocation - eq "PL") |
 | userPrincipalName |dowolną wartość ciągu |(user.userPrincipalName - eq "alias@domain") |
-| UserType |element członkowski gościa *o wartości null* |(user.userType - eq "Członek") |
+| userType |element członkowski gościa *o wartości null* |(user.userType - eq "Członek") |
 
 ### <a name="properties-of-type-string-collection"></a>Właściwości typu kolekcji ciągów
 
@@ -348,16 +348,16 @@ Następujące atrybuty urządzenia może służyć.
  accountEnabled | wartość true, false | (device.accountEnabled - eq true)
  displayName | dowolną wartość ciągu |(device.displayName - eq "Rob Iphone")
  deviceOSType | dowolną wartość ciągu | (device.deviceOSType - eq "iPad")- lub (device.deviceOSType - eq "iPhone")
- deviceOSVersion | dowolną wartość ciągu | (device.deviceOSVersion - eq "9.1")
+ deviceOSVersion | dowolną wartość ciągu | (device.deviceOSVersion -eq "9.1")
  deviceCategory | Nazwa kategorii prawidłowe urządzenie | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | dowolną wartość ciągu | (device.deviceManufacturer - eq "Samsung")
  deviceModel | dowolną wartość ciągu | (device.deviceModel - eq "iPad Air")
  deviceOwnership | Osobiste, firma, nieznany | (device.deviceOwnership - eq "Firma")
- Nazwa_domeny | dowolną wartość ciągu | (device.domainName - eq "contoso.com")
+ domainName | dowolną wartość ciągu | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Nazwa profilu profilu rejestracji urządzeń firmy Apple lub rozwiązania Windows Autopilot | (device.enrollmentProfileName - eq "IPhone DEP")
  isRooted | wartość true, false | (device.isRooted - eq true)
  managementType | Zarządzanie urządzeniami Przenośnymi (dla urządzeń przenośnych)<br>Komputer (w przypadku komputerów zarządzanych przez agenta PC usługi Intune) | (device.managementType - eq "MDM")
- deviceId | Nieprawidłowy identyfikator urządzenia usługi Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ deviceId | Nieprawidłowy identyfikator urządzenia usługi Azure AD | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Identyfikator obiektu | Identyfikator obiektu prawidłowy, usługa Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | dowolny ciąg dopasowania właściwości urządzenia usługi Intune do znakowania nowoczesnym miejscu pracy urządzenia | (device.systemLabels — zawiera "M365Managed")
 

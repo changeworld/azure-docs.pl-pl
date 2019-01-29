@@ -1,5 +1,5 @@
 ---
-title: 'Usługi Azure Active Directory Domain Services: Konfiguracja Rozwiązywanie problemów z sieciową grupą zabezpieczeń | Dokumentacja firmy Microsoft'
+title: 'Azure Active Directory Domain Services: Rozwiązywanie problemów z sieciową grupą zabezpieczeń konfiguracji | Dokumentacja firmy Microsoft'
 description: Rozwiązywanie problemów z konfiguracją sieciowej grupy zabezpieczeń dla usług domenowych Azure AD
 services: active-directory-ds
 documentationcenter: ''
@@ -8,25 +8,25 @@ manager: ''
 editor: ''
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957542"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181898"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłowej konfiguracji sieci dla domeny zarządzanej
 Ten artykuł pomoże Ci rozwiązać błędy konfiguracji odnoszące się do sieci, których wynikiem następujący komunikat alertu:
 
 ## <a name="alert-aadds104-network-error"></a>AADDS104 alertu: Błąd sieci
-**Komunikat alertu:** *firmy Microsoft nie może nawiązać połączenia z kontrolerami domeny dla tej domeny zarządzanej. Może to nastąpić, jeśli sieciowa grupa zabezpieczeń (NSG) skonfigurowane w Twojej sieci wirtualnej blokuje dostęp do domeny zarządzanej. Inny możliwych przyczyn jest to, jeśli istnieje trasa zdefiniowana przez użytkownika, która blokuje ruch przychodzący z Internetu.*
+**Komunikat alertu:** *Microsoft nie może nawiązać połączenia z kontrolerami domeny dla tej domeny zarządzanej. Może to nastąpić, jeśli sieciowa grupa zabezpieczeń (NSG) skonfigurowane w Twojej sieci wirtualnej blokuje dostęp do domeny zarządzanej. Inny możliwych przyczyn jest to, jeśli istnieje trasa zdefiniowana przez użytkownika, która blokuje ruch przychodzący z Internetu.*
 
 Nieprawidłowe konfiguracje sieciowej grupy zabezpieczeń są najbardziej typowe przyczyny błędów sieci dla usługi Azure AD Domain Services. Grupy zabezpieczeń sieci (NSG) skonfigurowany na potrzeby sieci wirtualnej muszą zezwalać na dostęp do [określonych portów](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services). Jeśli te porty są zablokowane, firma Microsoft nie może monitorować lub zaktualizować Twojej domeny zarządzanej. Ponadto ma wpływ na synchronizacji katalogu usługi Azure AD Twojej domeny zarządzanej. Podczas tworzenia w sieciowej grupie zabezpieczeń, nie zamykaj tych portów w celu uniknięcia przerwy w działaniu usługi.
 
@@ -38,10 +38,10 @@ Nieprawidłowe konfiguracje sieciowej grupy zabezpieczeń są najbardziej typowe
 4. Zapoznaj się z zasadami w miejscu i zidentyfikować, które zasady blokują dostęp do [tych portów](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)
 5. Edytuj sieciowej grupy zabezpieczeń w celu zapewnienia zgodności przez usunięcie reguły, dodanie reguły albo całkowicie tworzenia nowej sieciowej grupy zabezpieczeń. Kroki umożliwiające [Dodaj regułę](#add-a-rule-to-a-network-security-group-using-the-azure-portal) lub [Utwórz nowe, zgodne sieciowa grupa zabezpieczeń](#create-a-nsg-for-azure-ad-domain-services-using-powershell) są poniżej
 
-## <a name="sample-nsg"></a>Przykładowe sieciowej grupy zabezpieczeń
+## <a name="sample-nsg"></a>Sample NSG
 Poniższa tabela przedstawia przykładowe sieciowej grupy zabezpieczeń, który będzie chronić Twojej domeny zarządzanej zezwalając firmy Microsoft, aby monitorować, zarządzania i aktualizowania informacji.
 
-![Przykładowe sieciowej grupy zabezpieczeń](./media/active-directory-domain-services-alerts/default-nsg.png)
+![sample NSG](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 >[!NOTE]
 > Azure AD Domain Services wymaga nieograniczony dostęp ruchu wychodzącego z sieci wirtualnej. Nie zaleca się tworzenie wszelkie dodatkowe reguły sieciowej grupy zabezpieczeń, która ogranicza dostęp ruchu wychodzącego dla sieci wirtualnej.

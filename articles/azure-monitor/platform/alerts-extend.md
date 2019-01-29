@@ -1,5 +1,5 @@
 ---
-title: Rozszerzanie alertów usługi Log Analytics (kopiowanie) do alertów platformy Azure — omówienie
+title: Rozszerzanie alertów usługi Log Analytics (kopiowanie) w chmurze Azure Government
 description: Omówienie procesu kopiowanie alertów z usługi Log Analytics w portalu pakietu OMS do alertów platformy Azure przy użyciu szczegółów adresowania typowych problemów klienta.
 author: msvijayn
 services: azure-monitor
@@ -8,19 +8,21 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e2f2a739f78072a0479e77e68e84c8f4b395468f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: efd2fc9d164564126b7b641ef35bbb10c4834f49
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422230"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099332"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozszerzanie alertów usługi Log Analytics do usługi Azure Alerts
 
 > [!NOTE]
 > Microsoft ukończenia procesu opisanego w tym artykule, aby wersjach publicznych platformy Azure. Jednak nadal jest stosowana do wersji dla instytucji rządowych USA.  
 
-Niedawno, dopóki nie usługi Azure Log Analytics uwzględnione własną funkcję alertu, która może aktywnie powiadomić użytkownika o warunków opartych na danych usługi Log Analytics. Możesz zarządzać reguły alertów w portalu Microsoft Operations Management Suite. Nowe środowisko alertów ma teraz zintegrowane alertów w różnych usługach w systemie Microsoft Azure. Ta opcja jest dostępna jako **alerty** w ramach usługi Azure Monitor w witrynie Azure portal obsługuje alerty z dzienników aktywności, metryk i dzienników z usługi Log Analytics i Azure Application Insights. 
+Niedawno, dopóki nie usługi Azure Log Analytics uwzględnione własną funkcję alertu, która może aktywnie powiadomić użytkownika o warunków opartych na danych usługi Log Analytics. Możesz zarządzać reguły alertów w portalu Microsoft Operations Management Suite. Nowe środowisko alertów ma teraz zintegrowane alertów w różnych usługach w systemie Microsoft Azure. Ta opcja jest dostępna jako **alerty** w ramach usługi Azure Monitor w witrynie Azure portal obsługuje alerty z dzienników aktywności, metryk i dzienników z usługi Log Analytics i Azure Application Insights.
+
+Klienci platformy Azure Government cloud przy użyciu portalu pakietu OMS mogą [dobrowolnie rozszerzanie własnych reguł alertów na platformę Azure](alerts-extend-tool.md) z **1 lutego 2019**. Uruchamianie **1 marca 2019** — firma Microsoft automatycznie rozszerzy w sposób systematyczny wszystkich istniejących reguł alertów na platformie Azure Government — portalu pakietu OMS do platformy Azure; bez przestojów ani podziału na monitorowanie. Wszelkie nowy obszar roboczy utworzone **1 marca 2019** w chmurze Azure Government OMS portalu będą automatycznie rozszerzane do platformy Azure.
 
 ## <a name="benefits-of-extending-your-alerts"></a>Zalety rozszerzanie alertów
 Istnieje kilka korzyści wynikające z tworzenia i zarządzania nimi alertów w witrynie Azure portal, takich jak:

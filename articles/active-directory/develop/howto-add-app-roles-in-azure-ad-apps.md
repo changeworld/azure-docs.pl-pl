@@ -7,7 +7,7 @@ author: kkrishna
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,14 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 6321823eed00cffc6565471ec1ba3b4d846cd027
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b44aa35765cba33a85519fcd53f0df365c26be6b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948710"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093424"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Porady: Dodawanie ról aplikacji w aplikacji i odbierać je w tokenie
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Instrukcje: Dodawanie ról aplikacji w aplikacji i odbierać je w tokenie
 
 Kontrola dostępu oparta na rolach (RBAC) to mechanizm popularne, aby wymusić autoryzację w aplikacji. Korzystając z funkcji RBAC, administrator przyznaje uprawnienia do ról, a nie poszczególnych użytkowników lub grup. Administrator może następnie przypisać role do różnych użytkowników i grup w celu kontrolowania, kto ma dostęp do jakich funkcji i zawartości.
 
@@ -126,4 +126,4 @@ Po dodaniu role aplikacji w aplikacji, można przypisać użytkowników i grup d
 - [Azure Active Directory, teraz oświadczenia grupy i role aplikacji](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles)
 - [Manifest aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [Tokeny dostępu usługi AAD](access-tokens.md)
-- [USŁUGI AAD `id_tokens`](id-tokens.md)
+- [AAD `id_tokens`](id-tokens.md)

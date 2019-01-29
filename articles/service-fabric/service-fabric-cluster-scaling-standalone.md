@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: cbd8374e055d1bb9781990f70ed42ae5d5a5ad9b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0c211c2bb9dc07e705679b5d4079b85de9d72d8c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634712"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100465"
 ---
 # <a name="scaling-service-fabric-standalone-clusters"></a>Skalowanie klastrów autonomicznych usługi Service Fabric
 Klaster usługi Service Fabric to zbiór połączonych z siecią maszyn wirtualnych lub fizycznych, w których mikrousługi są wdrażania i zarządzania nimi. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem. Klastry mogą zawierać potencjalnie tysiącach węzłów. Po utworzeniu klastra usługi Service Fabric można skalować klastra w poziomie (zmienić liczbę węzłów), czy w pionie (zmienić zasoby węzłów).  Możesz skalować klastra w dowolnym momencie, nawet gdy działają obciążenia w klastrze.  Jak jest skalowana w klastrze, aplikacje będą skalowane automatycznie również.
@@ -37,7 +37,7 @@ Klastry autonomiczne umożliwia wdrażanie usługi Service Fabric klastra w śro
 Usuwanie węzłów może zainicjować kilku uaktualnień. Niektóre węzły są oznaczone `IsSeedNode=”true”` tagu i mogą być identyfikowane przez wysyłanie zapytań do klastra manifestu za pomocą [Get ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest). Usunięcie tych węzłów może trwać dłużej niż inne, ponieważ węzły obiektów początkowych będą musieli można przenosić w takich scenariuszach. Klaster musi zachować co najmniej trzy węzły typu węzła podstawowego.
 
 > [!WARNING]
-> Firma Microsoft zaleca obniżają poniżej liczby węzłów [rozmiaru klastra z warstwy niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) klastra. Zakłóca to obsługi usług usługi Service Fabric systemu być replikowane w klastrze i będzie zdestabilizować lub prawdopodobnie zniszczyć klaster.
+> Firma Microsoft zaleca obniżają poniżej liczby węzłów [rozmiaru klastra z warstwy niezawodności](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) klastra. Spowoduje to zakłócać zdolność usług usługi Service Fabric systemu być replikowane w klastrze i będzie zdestabilizować lub prawdopodobnie zniszczyć klaster.
 >
 
 Podczas skalowania klastra autonomicznego, należy przestrzegać następujących wytycznych:
@@ -48,12 +48,12 @@ Aby uzyskać więcej informacji, zobacz [skalowanie klastra autonomicznego](serv
 
 ## <a name="scaling-up-and-down-or-vertical-scaling"></a>Skalowanie w górę i w dół lub skalowanie w pionie 
 Zmienia zasobów (procesor CPU, pamięcią lub magazynem) z węzłów w klastrze.
-- Zalety: Oprogramowania i Architektura aplikacji pozostaje taka sama.
-- Wady: Skończoną skali, ponieważ istnieje ograniczenie ile może zwiększyć zasoby na poszczególnych węzłach. Czas przestoju, ponieważ będą potrzebne do podejmowania maszyn fizycznych lub wirtualnych w trybie offline w celu Dodawanie lub usuwanie zasobów.
+- Zalety: Architektura oprogramowania i aplikacji pozostaje taka sama.
+- Wady: Ograniczone skalowania, ponieważ ma ograniczenie ile może zwiększyć zasoby na poszczególnych węzłach. Czas przestoju, ponieważ będą potrzebne do podejmowania maszyn fizycznych lub wirtualnych w trybie offline w celu Dodawanie lub usuwanie zasobów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Dowiedz się więcej o [skalowalności aplikacji](service-fabric-concepts-scalability.md).
 * [Skalowanie klastra usługi Azure wewnątrz lub na zewnątrz](service-fabric-tutorial-scale-cluster.md).
 * [Skalowanie klastra usługi Azure programowo](service-fabric-cluster-programmatic-scaling.md) przy użyciu fluent Azure compute zestawu SDK.
-* [Skalowanie klastra autonomiczna wewnątrz lub na zewnątrz](service-fabric-cluster-windows-server-add-remove-nodes.md).
+* [Skalowanie klastra autonomicznego wewnątrz lub na zewnątrz](service-fabric-cluster-windows-server-add-remove-nodes.md).
 

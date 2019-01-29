@@ -6,16 +6,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: 84f1b0555922119e9de4addc3d51ac233e7bae65
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b0ec10bbf03e8a8d005eece4b6496b74b2943233
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831368"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55173262"
 ---
 # <a name="frequently-asked-questions-faq-about-bing-autosuggest-api"></a>Często zadawane że API automatycznego sugerowania pytania (FAQ) dotyczących usługi Bing
  
@@ -26,14 +26,14 @@ ms.locfileid: "48831368"
 Następujące nagłówki są opcjonalne, ale firma Microsoft zaleca, aby traktować je zgodnie z potrzebami. Nagłówki te pomagają API automatycznego sugerowania Bing zwraca dokładniejsze wyniki.
 
 - Lokalizacja w przypadku wyszukiwania X
-- ClientID-X-MSEdge
+- X-MSEdge-ClientID
 - X-MSEdge-ClientIP
 
 Jednak po wywołaniu interfejsu API automatycznego sugerowania Bing poziomu języka JavaScript, funkcje zabezpieczeń wbudowane w przeglądarce może uniemożliwić dostęp do wartości tych nagłówków.
 
 Aby rozwiązać ten problem, może wykonać żądania interfejsu API automatycznego sugerowania usługi Bing za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z serwera proxy ma `Access-Control-Expose-Headers` Nagłówek tego dozwolonych nagłówków odpowiedzi i udostępnienie ich dla języka JavaScript.
 
-To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorials/autosuggest.md) nagłówki opcjonalne klienta dostępu do. Pierwsze, jeśli nie masz jeszcze, [zainstalować środowisko Node.js](https://nodejs.org/en/download/). Następnie wprowadź następujące polecenie w wierszu polecenia.
+To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorials/autosuggest.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wprowadź następujące polecenie w wierszu polecenia.
 
     npm install -g cors-proxy-server
 
@@ -41,11 +41,11 @@ Następnie Zmień punkt końcowy interfejsu API automatycznego sugerowania Bing 
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
-Na koniec uruchom serwer proxy mechanizmu CORS za pomocą następującego polecenia:
+Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
 
     cors-proxy-server
 
-Pozostaw otwarte okno polecenia podczas korzystania z samouczka aplikacji; Zamyka okno zatrzymuje serwera proxy. W sekcji można rozwijać nagłówków HTTP poniżej wyniki wyszukiwania, będą teraz widoczne `X-MSEdge-ClientID` nagłówka (między innymi) i sprawdź, czy jest taka sama dla każdego żądania.
+Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -53,4 +53,4 @@ To pytanie dotyczące brakujących funkcji lub funkcje? Należy wziąć pod uwag
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Witrynie Stack Overflow: Usługi Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+- [Stack Overflow: Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

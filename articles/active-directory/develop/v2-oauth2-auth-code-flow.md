@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: ae1d7d86-7098-468c-aa32-20df0a10ee3d
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3a6e0284c9ef0e986ade3689452ecd0fac2797c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 25b2e90c6293b93a15aeae2fbf08b70cb191cef0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549583"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098718"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -316,6 +316,6 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 | `error_codes` |Lista kodów błędów specyficznych dla usługi STS, które mogą pomóc w diagnostyce. |
 | `timestamp` | Czas, w którym wystąpił błąd. |
 | `trace_id` | Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce. |
-| C`orrelation_id` | Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce składnikami. |
+| c`orrelation_id` | Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce składnikami. |
 
 Opis kodów błędów i działań opartej na zalecanym kliencie, zobacz [kody błędów dla błędów punktu końcowego tokenu](#error-codes-for-token-endpoint-errors).

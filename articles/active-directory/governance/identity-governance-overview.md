@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 20b1c8673bfdb3b2207ed63749f79539c396642c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 887c0bd4246c7c4215cb4d97dfd96db5d2aba6cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167961"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170022"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest Zarządzanie tożsamościami usługi Azure AD?
 
@@ -73,15 +73,15 @@ Następujące konfiguracje oferują przewodnika po to, jakie zasady linii bazowe
 
 ### <a name="access-reviews"></a>Przeglądy dostępu
 
-- [Co to jest przeglądu dostępu?](access-reviews-overview.md)
+- [Co to jest przegląd dostępu?](access-reviews-overview.md)
 - [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu](manage-user-access-with-access-reviews.md)
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu](manage-guest-access-with-access-reviews.md)
 - [Uruchamianie przeglądu dostępu z rolą katalogu](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Warunki użytkowania
 
-- [Co można zrobić z warunkami użytkowania?](active-directory-tou.md)
+- [Do czego można wykorzystać warunki użytkowania?](active-directory-tou.md)
 
-### <a name="privileged-identity-management"></a>Usługa Privileged identity management
+### <a name="privileged-identity-management"></a>Privileged Identity Management
 
 - [Co to jest usługa Azure AD PIM?](../privileged-identity-management/pim-configure.md)

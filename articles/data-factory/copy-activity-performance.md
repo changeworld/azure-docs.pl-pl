@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0a8a229beab03dd8cb26d9cfb9c3b945059d6f70
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020893"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164949"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-copy-activity-performance.md)
 > * [Bieżąca wersja](copy-activity-performance.md)
 
@@ -241,7 +241,13 @@ Sugerujemy, wykonaj następujące kroki, aby dostosować wydajność usługi Dat
 
 1. **Ustalenie linii bazowej**. Podczas fazy opracowywania testowanie potoku za pomocą działania kopiowania względem przykładowych danych. Zbieraj szczegóły wykonania i charakterystyk wydajności [skopiuj Monitorowanie działania](copy-activity-overview.md#monitoring).
 
-2. **Diagnozowanie i zoptymalizować wydajność**. Jeśli wydajność, której możesz obserwować nie spełniają Twoich oczekiwań, musisz określić wąskie gardła wydajności. Następnie zoptymalizować wydajność, aby usunąć lub zmniejszają efekt wąskich gardeł. Pełny opis Diagnostyka wydajności wykracza poza zakres tego artykułu, ale poniżej przedstawiono niektóre typowe kwestie dotyczące:
+2. **Diagnozowanie i zoptymalizować wydajność**. Jeśli wydajność, której możesz obserwować nie spełniają Twoich oczekiwań, musisz określić wąskie gardła wydajności. Następnie zoptymalizować wydajność, aby usunąć lub zmniejszają efekt wąskich gardeł. 
+
+    W niektórych scenariuszach, pojawi się także "**porady dotyczące dostrajania wydajności**" sekcji w górnej części [działanie monitorowania strony kopiowania](copy-activity-overview.md#monitor-visually), która informuje identyfikowany wąskie gardło i przeprowadzi Cię o tym, jak zwiększyć kopiowania Przepływność dla takiej sytuacji kopiowania.
+
+    **Przykład: Skopiuj do bazy danych SQL Azure za pomocą wskazówki dotyczące dostrajania wydajności** ![skopiuj monitorowanie za pomocą wskazówki dotyczące dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    Pełny opis Diagnostyka wydajności wykracza poza zakres tego artykułu, ale poniżej przedstawiono niektóre typowe kwestie dotyczące:
 
    * Funkcje wydajności:
      * [Kopiuj równoległe](#parallel-copy)
@@ -392,7 +398,7 @@ W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Prze
 Poniżej przedstawiono monitorowanie wydajności i dostosowywania odwołania dla niektórych obsługiwanych magazynów danych:
 
 * Usługa Azure Storage (w tym magazyn obiektów Blob i Table storage): [Cele skalowalności usługi Azure Storage](../storage/common/storage-scalability-targets.md) i [Lista kontrolna wydajności i skalowalności usługi Azure Storage](../storage/common/storage-performance-checklist.md)
-* Usługa Azure SQL Database: Możesz [monitorować wydajność](../sql-database/sql-database-single-database-monitor.md) i sprawdź wartość procentowa jednostki (DTU) dla transakcji bazy danych
+* Azure SQL Database: Możesz [monitorować wydajność](../sql-database/sql-database-single-database-monitor.md) i sprawdź wartość procentowa jednostki (DTU) dla transakcji bazy danych
 * Azure SQL Data Warehouse: Jej możliwości jest mierzony w liczbę jednostek magazynu danych (dwu); zobacz [Zarządzaj obliczeniowa w usłudze Azure SQL Data Warehouse (omówienie)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Usługa Azure Cosmos DB [Poziomy wydajności w usłudze Azure Cosmos DB](../cosmos-db/performance-levels.md)
 * Na lokalnym serwerze SQL Server: [Monitorowanie i dostrajanie wydajności](https://msdn.microsoft.com/library/ms189081.aspx)

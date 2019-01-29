@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 42aaafd346c6db9d4a8780628319720aa3f28134
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727719"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095774"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Kopia zapasowa i przywracanie usług Reliable Services i Reliable Actors
 Usługa Azure Service Fabric to platforma wysokiej dostępności, która replikuje stanu w wielu węzłach, aby zachować ten wysokiej dostępności.  W związku z tym nawet w przypadku awarii jednego węzła w klastrze, usługi nadal dostępne. Tę nadmiarowość wbudowane dostarczonego przez platformę, może być wystarczające dla niektórych, w niektórych przypadkach pożądane jest usługi do tworzenia kopii zapasowych (do magazynu zewnętrznego).
@@ -44,7 +44,7 @@ Na przykład usługa warto tworzyć kopie zapasowe danych w celu zapewnienia och
 Funkcja Backup/Restore umożliwia usług oparty na niezawodne API usług w celu tworzenia i przywracania kopii zapasowych. Kopii zapasowej interfejsów API dostarczonego przez platformę Zezwalaj na kopie zapasowe stanu partycji usługi, bez blokowania odczytu lub zapisu. Przywracanie interfejsy API umożliwiają można przywrócić z kopii zapasowej wybrany stan partycji usługi.
 
 ## <a name="types-of-backup"></a>Typy kopii zapasowych
-Dostępne są dwie opcje tworzenia kopii zapasowych: pełne i przyrostowe.
+Dostępne są dwie opcje tworzenia kopii zapasowej: Pełne i przyrostowe.
 Pełna kopia zapasowa jest kopii zapasowej, która zawiera wszystkie dane, które są wymagane, aby odtworzyć stan repliki: punkty kontrolne i wszystkie rekordy dziennika.
 Ponieważ ma ona punkty kontrolne i dziennik, pełnej kopii zapasowej można przywrócić samodzielnie.
 
@@ -227,7 +227,7 @@ Po włączeniu przyrostowej kopii zapasowej przyrostowej kopii zapasowej może z
   - Replika ma nigdy niepobrane pełnej kopii zapasowej, ponieważ stały się podstawowe.
   - Niektóre rekordy dziennika został obcięty, ponieważ ostatnia kopia zapasowa została wykonana.
 
-Po włączeniu przyrostowej kopii zapasowej `KvsActorStateProvider` używają cyklicznego buforu do zarządzania jej rekordów dziennika bazy danych i okresowo obcina go. Jeśli kopia zapasowa nie zostanie podjęta przez użytkownika w danym okresie 45 minut, system automatycznie obcina rekordów dziennika. Ten interwał można skonfigurować, określając `logTrunctationIntervalInMinutes` w `KvsActorStateProvider` konstruktora (podobnie jak podczas włączania obsługi funkcji przyrostowej kopii zapasowej). Również uzyskać obcięte rekordów dziennika, jeśli replika podstawowa musi stworzyć innej repliki, wysyłając swoje dane.
+Po włączeniu przyrostowej kopii zapasowej `KvsActorStateProvider` używają cyklicznego buforu do zarządzania jej rekordów dziennika bazy danych i okresowo obcina go. Jeśli kopia zapasowa nie zostanie podjęta przez użytkownika w danym okresie 45 minut, system automatycznie obcina rekordów dziennika. Ten interwał można skonfigurować, określając `logTruncationIntervalInMinutes` w `KvsActorStateProvider` konstruktora (podobnie jak podczas włączania obsługi funkcji przyrostowej kopii zapasowej). Również uzyskać obcięte rekordów dziennika, jeśli replika podstawowa musi stworzyć innej repliki, wysyłając swoje dane.
 
 W trakcie przywracania z kopii zapasowej łańcucha, podobne do usług Reliable Services, BackupFolderPath powinna zawierać podkatalogów z podkatalogu jeden zawierający pełnej kopii zapasowej i w innych podkatalogach zawierający przyrostowych kopii zapasowych. Interfejsu API przywracania zgłosi FabricException przy użyciu odpowiedniego komunikatu o błędzie w przypadku niepowodzenia weryfikacji łańcuch kopii zapasowych. 
 

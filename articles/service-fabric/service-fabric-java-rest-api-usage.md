@@ -1,6 +1,6 @@
 ---
-title: Interfejsów API usługi Azure Service Fabric Java klienta | Dokumentacja firmy Microsoft
-description: Generowanie i używanie klienta usługi sieci szkieletowej Java interfejsów API przy użyciu specyfikacji interfejsu API REST klienta sieci szkieletowej usług
+title: Usługa Azure Service Fabric Java klienta API | Dokumentacja firmy Microsoft
+description: Generowanie i używanie interfejsów API klienta Java usługi Service Fabric przy użyciu specyfikacji interfejsu API REST klienta usługi Service Fabric
 services: service-fabric
 documentationcenter: java
 author: rapatchi
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 987959742335940dca8eb57c54d593aea90dec15
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 116defb43126932c1a9ce0e7a9d588e731abff78
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111188"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55182034"
 ---
-# <a name="azure-service-fabric-java-client-apis"></a>Interfejsów API usługi Azure Service Fabric Java klienta
+# <a name="azure-service-fabric-java-client-apis"></a>Usługa Azure Service Fabric Java klienta API
 
-Klient sieci szkieletowej usług API umożliwia wdrażanie i zarządzanie mikrousług aplikacji i kontenery w klastrze usługi sieć szkieletowa usług na podstawie Azure, w infrastrukturze lokalnej, na komputerze deweloperskim lokalnej lub w chmurze innych. W tym artykule opisano sposób generowania i użytkowania interfejsów API klienta usługi sieci szkieletowej Java na klienta usługi sieć szkieletowa interfejsów API REST
+Interfejsów API klienta usługi Service Fabric umożliwia wdrażanie i zarządzanie nimi mikrousług na podstawie aplikacji i kontenerów w klastrze usługi Service Fabric na platformie Azure, lokalnie na lokalnej maszynie do programowania lub inne chmury. W tym artykule opisano sposób generowania i używania interfejsów API klienta Java usługi Service Fabric na podstawie klienta interfejsów API REST usługi Service Fabric
 
-## <a name="generate-the-client-code-using-autorest"></a>Generowanie kodu klienta przy użyciu AutoRest
+## <a name="generate-the-client-code-using-autorest"></a>Generowanie kodu klienta, za pomocą AutoRest
 
-[AutoRest](https://github.com/Azure/autorest) to narzędzie, które generuje bibliotek klienta do uzyskiwania dostępu do usług sieci web RESTful. Dane wejściowe AutoRest jest specyfikacją opisujący w formacie OpenAPI specyfikacja interfejsu API REST. [Klient usługi sieć szkieletowa interfejsów API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) wykonaj tej specyfikacji.
+[AutoRest](https://github.com/Azure/autorest) to narzędzie, które generuje biblioteki klienckie do uzyskiwania dostępu do usług sieci web typu RESTful. Dane wejściowe AutoRest jest specyfikacja, która opisuje interfejs API REST w formacie specyfikacji interfejsu OpenAPI. [Klient usługi Service Fabric interfejsów API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/servicefabric/data-plane) postępuj zgodnie z tą specyfikacją.
 
-Wykonaj kroki wymienione poniżej do generowania kodu klienta usługi sieci szkieletowej w języku Java za pomocą narzędzia AutoRest.
+Wykonaj kroki wymienione poniżej, aby wygenerować kod klienta Java usługi Service Fabric przy użyciu narzędzia AutoRest.
 
 1. Zainstaluj środowisko NodeJs i menedżera NPM na swojej maszynie
 
@@ -43,21 +43,21 @@ Wykonaj kroki wymienione poniżej do generowania kodu klienta usługi sieci szki
     brew install node
     ```
 
-2. Zainstaluj AutoRest za pomocą programu NPM.
+2. Zainstaluj AutoRest za pomocą Menedżera NPM.
     ```bash
     npm install -g autorest
     ```
 
-3. Rozwidlenia i klonowania [azure-rest-api specyfikacji](https://github.com/Azure/azure-rest-api-specs) repozytorium w komputerze lokalnym i przejdź do lokalizacji sklonowany z terminalu na komputerze.
+3. Rozwidlenia i klonowania [azure-rest-api specyfikacje](https://github.com/Azure/azure-rest-api-specs) repozytorium na komputerze lokalnym i przejdź do lokalizacji sklonowany z poziomu terminalu maszyny.
 
 
-4. Przejdź do lokalizacji wymienione poniżej w Twojej sklonowanego repozytorium.
+4. Przejdź do lokalizacji wymienionych poniżej w sklonowanym repozytorium.
     ```bash
     cd specification\servicefabric\data-plane\Microsoft.ServiceFabric\stable\6.0
     ```
 
     > [!NOTE]
-    > Jeśli nie jest klastra w wersji 6.0. * następnie przejdź do odpowiedniego katalogu w folderze stabilna.
+    > Jeśli używana wersja klastra nie jest w wersji 6.0. * Przejdź do odpowiedniego katalogu w folderze stabilne.
     >   
 
 5. Uruchom następujące polecenie autorest do generowania kodu klienta java.
@@ -71,20 +71,20 @@ Wykonaj kroki wymienione poniżej do generowania kodu klienta usługi sieci szki
     autorest --input-file=servicefabric.json --java --output-folder=java-rest-api-code --namespace=servicefabricrest
     ```
    
-   Następujące polecenie przyjmuje ``servicefabric.json`` specyfikacji pliku jako dane wejściowe i generuje kod klienta java w ``java-rest-api-     code`` folderu i umieszcza kod w ``servicefabricrest`` przestrzeni nazw. Po wykonaniu tego kroku znajdował dwa foldery ``models``, ``implemenation`` i dwa pliki ``ServiceFabricClientAPIs.java`` i ``package-info.java`` wygenerowanych w ``java-rest-api-code`` folderu.
+   Następujące polecenie pobiera ``servicefabric.json`` specyfikacji pliku jako dane wejściowe i generuje kod klienta java w ``java-rest-api-     code`` folder i umieszcza kod w ``servicefabricrest`` przestrzeni nazw. Po wykonaniu tego kroku można znaleźć dwa foldery ``models``, ``implementation`` i dwa pliki ``ServiceFabricClientAPIs.java`` i ``package-info.java`` wygenerowane w ``java-rest-api-code`` folderu.
 
 
-## <a name="include-and-use-the-generated-client-in-your-project"></a>Obejmują i używania wygenerowanego klienta w projekcie
+## <a name="include-and-use-the-generated-client-in-your-project"></a>Uwzględnienia, a następnie użyj wygenerowanego klienta w projekcie
 
-1. Dodaj wygenerowany kod odpowiednio do projektu. Firma Microsoft zaleca utworzenie bibliotekę przy użyciu wygenerowanego kodu i umieścić tę bibliotekę w swoim projekcie.
-2. Jeśli tworzysz biblioteki obejmują następujące zależności w projekcie biblioteki. Jeśli wykonujesz różne podejścia następnie obejmują zależności odpowiednio.
+1. Dodaj wygenerowany kod odpowiednio do projektu. Firma Microsoft zaleca tworzenie biblioteki za pomocą wygenerowanego kodu, a następnie dołączyć tej biblioteki do projektu.
+2. Jeśli tworzysz bibliotekę, obejmują następujące zależności w projekcie biblioteki. Jeśli korzystasz z innego podejścia następnie uwzględnić zależności odpowiednio.
 
     ```
         GroupId:  com.microsoft.rest
         Artifactid: client-runtime
         Version: 1.2.1
     ```
-    Na przykład, jeśli używasz Maven system kompilacji są następujące w Twojej ``pom.xml`` pliku:
+    Na przykład, jeśli używasz narzędzia Maven, system kompilacji obejmują następujące elementy w swojej ``pom.xml`` pliku:
 
     ```xml
         <dependency>
@@ -104,8 +104,8 @@ Wykonaj kroki wymienione poniżej do generowania kodu klienta usługi sieci szki
             .build();
         ServiceFabricClientAPIs client = new ServiceFabricClientAPIsImpl(simpleClient);
     ```
-4. Użyć obiektu klienta i odpowiednie wywołania zgodnie z potrzebami. Oto kilka przykładów, które wykazują użycie obiektu klienta. Przyjęto założenie, że pakiet aplikacji jest wbudowane i przekazać do magazynu obrazów przed rozpoczęciem korzystania z poniższych interfejsów API.
-    * Udostępnianie aplikacji
+4. Użyj obiektu klienta i wykonywanie odpowiednich wywołań zgodnie z potrzebami. Poniżej przedstawiono kilka przykładów, które pokazują użycie obiektu klienta. Przyjęto założenie, że pakiet aplikacji jest utworzone i przekazane do magazynu obrazów przed rozpoczęciem korzystania z poniższych interfejsów API.
+    * Aprowizacja aplikacji
     
         ```java
             ApplicationTypeImageStorePath imageStorePath = new ApplicationTypeImageStorePath();
@@ -123,16 +123,16 @@ Wykonaj kroki wymienione poniżej do generowania kodu klienta usługi sieci szki
         ```
 
 ## <a name="understanding-the-generated-code"></a>Opis wygenerowanego kodu
-Dla każdego interfejsu API można znaleźć cztery przeciążenia implementacji. Istnieją następujące parametry opcjonalne może znaleźć cztery więcej zmian, łącznie z tych parametrów opcjonalnych. Na przykład należy wziąć pod uwagę interfejsu API ``removeReplica``.
- 1. **publiczny removeReplica void (nodeName ciągu, UUID partitionId, replicaId ciągu, logiczna forceRemove, długi limitu czasu)**
+Dla każdego interfejsu API zawiera cztery przeciążenia implementacji. Jeśli istnieją następujące parametry opcjonalne czy możesz znaleźć cztery więcej zmian, łącznie z tych parametrów opcjonalnych. Na przykład rozważmy interfejsu API ``removeReplica``.
+ 1. **publiczne removeReplica void (nodeName ciąg identyfikatora UUID partycji, replicaId ciągu, logiczna forceRemove, długi limit czasu)**
     * Jest to wariant synchroniczne wywołanie removeReplica interfejsu API
- 2. **publiczny ServiceFuture<Void> removeReplicaAsync (String nodeName, partitionId identyfikator UUID, replicaId ciągu, logiczna forceRemove, długi limitu czasu końcowego ServiceCallback<Void> serviceCallback)**
-    * Ten wariant wywołanie interfejsu API mogą być używane, gdy chcesz używać przyszłych oparte na programowanie asynchroniczne oraz wywołań zwrotnych
- 3. **publiczny według<Void> removeReplicaAsync (nodeName ciąg, identyfikator UUID partitionId replicaId ciąg)**
-    * Ten wariant wywołanie interfejsu API mogą być używane, gdy chcesz użyć reaktywne programowanie asynchroniczne
- 4. **publiczny według < ServiceResponse<Void>> removeReplicaWithServiceResponseAsync (nodeName ciąg, identyfikator UUID partitionId replicaId ciąg)**
-    * Ten wariant wywołanie interfejsu API mogą być używane, gdy chcesz użyć reaktywne programowanie asynchroniczne i postępowania w przypadku reakcji NIEPRZETWORZONA rest
+ 2. **publiczne ServiceFuture<Void> removeReplicaAsync (ciąg nodeName, identyfikatora UUID partycji, replicaId ciągu, logiczna forceRemove, długi limit czasu, ostatnim ServiceCallback<Void> serviceCallback)**
+    * Ten wariant wywołania interfejsu API może być używany, jeśli chcesz używać przyszłości na podstawie programowania asynchronicznego i wywołania zwrotne
+ 3. **publiczne Obserwowalnymi<Void> removeReplicaAsync (nodeName ciągu, identyfikatora UUID partycji, replicaId ciąg)**
+    * Ten wariant wywołania interfejsu API może być używany, jeśli chcesz użyć programowania asynchronicznego
+ 4. **możliwość obserwowania publiczny < ServiceResponse<Void>> removeReplicaWithServiceResponseAsync (nodeName ciągu, identyfikatora UUID partycji, replicaId ciąg)**
+    * Ten wariant wywołania interfejsu API może być używany, jeśli chcesz użyć programowania asynchronicznego i przeciwdziałania odpowiedź rest NIEPRZETWORZONE
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [usługi sieć szkieletowa interfejsów API REST](https://docs.microsoft.com/rest/api/servicefabric/)
+* Dowiedz się więcej o [usługi Service Fabric interfejsów API REST](https://docs.microsoft.com/rest/api/servicefabric/)
 

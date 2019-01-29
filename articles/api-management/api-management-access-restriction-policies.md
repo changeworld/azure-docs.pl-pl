@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 10023d34a245f9493cfe244882dbdc1351a78513
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 59562d0571486a4bcbc96be4cb7dcddb4dfb0a44
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447218"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095723"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu do usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -65,9 +65,9 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   
 |Name (Nazwa)|Opis|Wymagane|Domyślne|  
 |----------|-----------------|--------------|-------------|  
-|nie powiodło się — sprawdzanie-komunikatu o błędzie|Komunikat o błędzie do zwrócenia w treści odpowiedzi HTTP, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość. Ta wiadomość musi mieć żadnych znaków specjalnych, które zostały prawidłowo poprzedzone znakiem zmiany znaczenia.|Yes|ND|  
-|nie powiodło się — sprawdzanie httpcode|Kod stanu HTTP do zwrócenia, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość.|Yes|ND|  
-|Nazwa nagłówka|Nazwa nagłówka HTTP do sprawdzenia.|Yes|ND|  
+|failed-check-error-message|Komunikat o błędzie do zwrócenia w treści odpowiedzi HTTP, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość. Ta wiadomość musi mieć żadnych znaków specjalnych, które zostały prawidłowo poprzedzone znakiem zmiany znaczenia.|Yes|ND|  
+|failed-check-httpcode|Kod stanu HTTP do zwrócenia, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość.|Yes|ND|  
+|header-name|Nazwa nagłówka HTTP do sprawdzenia.|Yes|ND|  
 |Ignoruj case|Można ustawić na wartość True lub False. Jeśli ustawiona na wartość True, przypadek jest ignorowana, gdy wartość nagłówka jest porównywana zestaw wartości dozwolonych.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
@@ -181,7 +181,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |----------|-----------------|--------------|-------------|  
 |wywołania|Maksymalna całkowita liczba wywołań określona w interwale `renewal-period`.|Yes|ND|  
 |klucz liczników|Klucz do użycia dla zasad limitu szybkości.|Yes|ND|  
-|warunek inkrementacji|Wyrażenie logiczne, określając, jeśli żądanie powinno być liczone na limit przydziału (`true`).|Nie|ND|  
+|increment-condition|Wyrażenie logiczne, określając, jeśli żądanie powinno być liczone na limit przydziału (`true`).|Nie|ND|  
 |okres odnowienia|Okres czasu w sekundach, po upływie których resetuje limitu przydziału.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
@@ -217,7 +217,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |ip-filter|Element główny.|Yes|  
-|Adres|Określa pojedynczy adres IP, według której chcesz filtrować.|Co najmniej jeden `address` lub `address-range` element jest wymagany.|  
+|address|Określa pojedynczy adres IP, według której chcesz filtrować.|Co najmniej jeden `address` lub `address-range` element jest wymagany.|  
 |zakres adresów z = "address", aby = "address"|Określa adres zakresu adresów IP, według której chcesz filtrować.|Co najmniej jeden `address` lub `address-range` element jest wymagany.|  
   
 ### <a name="attributes"></a>Atrybuty  
@@ -340,7 +340,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |bandwidth|Maksymalna całkowita liczba kilobajtów dozwolone określona w interwale `renewal-period`.|Albo `calls`, `bandwidth`, lub ze sobą musi być jednocześnie określone.|ND|  
 |wywołania|Maksymalna całkowita liczba wywołań określona w interwale `renewal-period`.|Albo `calls`, `bandwidth`, lub ze sobą musi być jednocześnie określone.|ND|  
 |klucz liczników|Klucz do użycia zasad limitu przydziału.|Yes|ND|  
-|warunek inkrementacji|Wyrażenie logiczne, określając, jeśli żądanie powinno być liczone na limit przydziału (`true`)|Nie|ND|  
+|increment-condition|Wyrażenie logiczne, określając, jeśli żądanie powinno być liczone na limit przydziału (`true`)|Nie|ND|  
 |okres odnowienia|Okres czasu w sekundach, po upływie których resetuje limitu przydziału.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  
@@ -350,11 +350,12 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 -   **Zakresy zasad:** globalny, produktu, interfejsu API, operacji  
   
 ##  <a name="ValidateJWT"></a> Sprawdzanie poprawności tokenu JWT  
- `validate-jwt` Zasada wymusza obecność i ważności token JWT wyodrębnione z dowolnego określonego nagłówka HTTP lub parametr zapytania określony.  
+ `validate-jwt` Zasada wymusza obecność i ważności token JWT wyodrębnione z dowolnego określonego nagłówka HTTP lub parametr zapytania określony.
   
 > [!IMPORTANT]
 >  `validate-jwt` Zasad wymaga, aby `exp` zarejestrowanych oświadczenia znajduje się w JWT token, chyba że `require-expiration-time` atrybut jest określona i ustawiona na `false`.  
-> `validate-jwt` Zasady obsługuje algorytmy podpisywania HS256 i RS256. HS256 klucza musi być podana wbudowane w zasady w formie zakodowane w formacie base64. Ma klucz RS256 zapewnienie za pośrednictwem punktu końcowego Otwórz identyfikator konfiguracji.  
+> `validate-jwt` Zasady obsługuje algorytmy podpisywania HS256 i RS256. HS256 klucza musi być podana wbudowane w zasady w formie zakodowane w formacie base64. Ma klucz RS256 zapewnienie za pośrednictwem punktu końcowego Otwórz identyfikator konfiguracji.
+> `validate-jwt` Zasady obsługują szyfrowane przy użyciu kluczy symetrycznych przy użyciu następujących algorytmów szyfrowania A128CBC-HS256 A192CBC-HS384 A256CBC HS512 tokenów.
   
 ### <a name="policy-statement"></a>Deklaracja zasad  
   
@@ -370,7 +371,11 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   <issuer-signing-keys>  
     <key>base64 encoded signing key</key>  
     <!-- if there are multiple keys, then add additional key elements -->  
-  </issuer-signing-keys>  
+  </issuer-signing-keys>
+  <decryption-keys>
+    <key>base64 encoded signing key</key>  
+    <!-- if there are multiple keys, then add additional key elements -->  
+  </decryption-keys>
   <audiences>  
     <audience>audience string</audience>  
     <!-- if there are multiple possible audiences, then add additional audience elements -->  
@@ -444,7 +449,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 ```  
   
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>Autoryzowanie dostępu do operacji na podstawie tokenu oświadczeń  
- W tym przykładzie pokazano, jak używać [weryfikacji tokenu JWT](api-management-access-restriction-policies.md#ValidateJWT) zasad do wstępnej autoryzacji dostępu do operacji na podstawie tokenu oświadczeń. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 13:50. Szybkie przewijanie do przodu do 15:00, aby wyświetlić zasady skonfigurowane w edytorze zasad, a następnie do 18:50 do pokazania wywoływanie operacji z portalu dla deweloperów, zarówno z i bez tokenu autoryzacji wymagane.  
+ W tym przykładzie pokazano, jak używać [weryfikacji tokenu JWT](api-management-access-restriction-policies.md#ValidateJWT) zasad do wstępnej autoryzacji dostępu do operacji na podstawie tokenu oświadczeń. Demonstracyjne, konfigurowania i korzystania z tych zasad, zobacz [Cloud Cover odcinek 177: Więcej funkcji zarządzania interfejsu API za pomocą Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) i szybkie przewijanie do przodu do 13:50. Szybkie przewijanie do przodu do 15:00, aby wyświetlić zasady skonfigurowane w edytorze zasad, a następnie do 18:50 do pokazania wywoływanie operacji z portalu dla deweloperów, zarówno z i bez tokenu autoryzacji wymagane.  
   
 ```xml  
 <!-- Copy the following snippet into the inbound section at the api (or higher) level to pre-authorize access to operations based on token claims -->  
@@ -490,10 +495,11 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |-------------|-----------------|--------------|  
 |validate-jwt|Element główny.|Yes|  
 |grupy odbiorców|Zawiera listę oświadczeń dopuszczalne odbiorców, które mogą być obecne w tokenie. Jeśli istnieją wartości wielu odbiorców, a następnie wypróbowuje każdej wartości do momentu wszystkie wyczerpania (w którym to przypadku niepowodzenia weryfikacji) lub aż któraś się powiedzie. Należy określić co najmniej jednego odbiorcy.|Nie|  
-|podpisywania — klucze wystawcy|Lista kluczy algorytmem Base64 zabezpieczeń służący do weryfikowania podpisanych tokenów. Jeśli wiele kluczy zabezpieczeń są obecne, a następnie każdy klucz zostanie podjęta próba do momentu wszystkie wyczerpania (w którym to przypadku niepowodzenia weryfikacji) lub aż któraś się powiedzie (przydatne w przypadku przerzucenia tokenu). Kluczowe elementy mieć opcjonalną `id` atrybut używany do dopasowywania `kid` oświadczenia.|Nie|  
+|issuer-signing-keys|Lista kluczy algorytmem Base64 zabezpieczeń służący do weryfikowania podpisanych tokenów. Jeśli wiele kluczy zabezpieczeń są obecne, a następnie każdy klucz zostanie podjęta próba do momentu wszystkie wyczerpania (w którym to przypadku niepowodzenia weryfikacji) lub aż któraś się powiedzie (przydatne w przypadku przerzucenia tokenu). Kluczowe elementy mieć opcjonalną `id` atrybut używany do dopasowywania `kid` oświadczenia.|Nie|  
+|decryption-keys|Lista kluczy algorytmem Base64, używany do odszyfrowywania tokenów. Jeśli wiele kluczy zabezpieczeń są obecne, każdy klucz zostanie wybrany do momentu albo wszystkie klucze są wyczerpane (w którym to przypadku niepowodzenia weryfikacji) lub klucza zakończy się pomyślnie. Kluczowe elementy mieć opcjonalną `id` atrybut używany do dopasowywania `kid` oświadczenia.|Nie|  
 |wystawcy|Lista dopuszczalne podmiotów zabezpieczeń, które wystawiony token. Jeśli wiele wartości wystawcy są obecne, a następnie wypróbowuje każdej wartości do momentu wszystkie wyczerpania (w którym to przypadku niepowodzenia weryfikacji) lub aż któraś się powiedzie.|Nie|  
 |Konfiguracja protokołu openid|Element używany do określania zgodności Otwórz identyfikator konfiguracji punktu końcowego z którego podpisywania kluczy i Wystawca można uzyskać.|Nie|  
-|wymagane oświadczenia|Zawiera listę oświadczeń powinny być obecne w tokenie, aby były uważane za prawidłowe. Gdy `match` ma ustawioną wartość atrybutu `all` każda wartość oświadczenia w zasadach musi być obecne w tokenie do weryfikacji została wykonana pomyślnie. Gdy `match` ma ustawioną wartość atrybutu `any` co najmniej jedno oświadczenie musi być obecne w tokenie do weryfikacji została wykonana pomyślnie.|Nie|  
+|required-claims|Zawiera listę oświadczeń powinny być obecne w tokenie, aby były uważane za prawidłowe. Gdy `match` ma ustawioną wartość atrybutu `all` każda wartość oświadczenia w zasadach musi być obecne w tokenie do weryfikacji została wykonana pomyślnie. Gdy `match` ma ustawioną wartość atrybutu `any` co najmniej jedno oświadczenie musi być obecne w tokenie do weryfikacji została wykonana pomyślnie.|Nie|  
 |zumo-master-key|Klucz główny dla tokeny wystawione przez usług Azure Mobile Services|Nie|  
   
 ### <a name="attributes"></a>Atrybuty  
@@ -501,14 +507,14 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Name (Nazwa)|Opis|Wymagane|Domyślne|  
 |----------|-----------------|--------------|-------------|  
 |przesunięcia czasowego zegara|Zakres czasu. Użyj, aby określić maksymalną oczekiwanego różnicę czasu między zegarami systemowymi wystawcy tokenów i wystąpienia usługi API Management.|Nie|0 sekund|  
-|nie powiodło się — —-komunikat o błędzie weryfikacji|Komunikat o błędzie do zwrócenia w treści odpowiedzi HTTP, jeśli tokenu JWT nie przeszły pomyślnie sprawdzania poprawności. Ta wiadomość musi mieć żadnych znaków specjalnych, które zostały prawidłowo poprzedzone znakiem zmiany znaczenia.|Nie|Domyślny komunikat o błędzie, który jest zależny od problem ze sprawdzaniem poprawności, na przykład "JWT nie istnieje."|  
-|nie powiodło się — weryfikacja httpcode|Kod stanu HTTP do zwrócenia, jeśli tokenu JWT nie przeszło weryfikacji.|Nie|401|  
-|Nazwa nagłówka|Nazwa nagłówka HTTP zawierający tokenu.|Albo `header-name` lub `query-parameter-name` musi być wybrany; ale nie oba.|ND|  
+|failed-validation-error-message|Komunikat o błędzie do zwrócenia w treści odpowiedzi HTTP, jeśli tokenu JWT nie przeszły pomyślnie sprawdzania poprawności. Ta wiadomość musi mieć żadnych znaków specjalnych, które zostały prawidłowo poprzedzone znakiem zmiany znaczenia.|Nie|Domyślny komunikat o błędzie, który jest zależny od problem ze sprawdzaniem poprawności, na przykład "JWT nie istnieje."|  
+|failed-validation-httpcode|Kod stanu HTTP do zwrócenia, jeśli tokenu JWT nie przeszło weryfikacji.|Nie|401|  
+|header-name|Nazwa nagłówka HTTP zawierający tokenu.|Albo `header-name` lub `query-parameter-name` musi być wybrany; ale nie oba.|ND|  
 |id|`id` Atrybutu na `key` element można określić ciąg, który dopasowywane `kid` oświadczenia w tokenie (jeśli istnieje) dowiedzieć się, odpowiedni klucz do użycia w celu weryfikacji podpisu.|Nie|ND|  
 |dopasowanie|`match` Atrybutu na `claim` element określa, czy każda wartość oświadczenia w ramach zasad musi być obecne w tokenie do weryfikacji została wykonana pomyślnie. Możliwe wartości:<br /><br /> -                          `all` — Każda wartość oświadczenia w zasadach musi być obecne w tokenie do weryfikacji została wykonana pomyślnie.<br /><br /> -                          `any` -wartość co najmniej jedno oświadczenie musi być obecne w tokenie do weryfikacji została wykonana pomyślnie.|Nie|all|  
 |nazwa_zapytania paremeter|Nazwa parametru zapytania, zawierający tokenu.|Albo `header-name` lub `query-paremeter-name` musi być wybrany; ale nie oba.|ND|  
-|Wymagaj wygasania w czasie|Wartość logiczna. Określa, czy oświadczeniu wygaśnięcia jest wymagany w tokenie.|Nie|true|
-|wymaga schematu|Nazwa tokenu schemat, np. "Bearer". Gdy ten atrybut jest ustawiony, zasady zapewni, że określony schemat jest obecny w wartości nagłówka autoryzacji.|Nie|ND|
+|require-expiration-time|Wartość logiczna. Określa, czy oświadczeniu wygaśnięcia jest wymagany w tokenie.|Nie|true|
+|require-scheme|Nazwa tokenu schemat, np. "Bearer". Gdy ten atrybut jest ustawiony, zasady zapewni, że określony schemat jest obecny w wartości nagłówka autoryzacji.|Nie|ND|
 |Wymagaj podpisane — tokeny zabezpieczające|Wartość logiczna. Określa, czy token jest wymagany do podpisania.|Nie|true|  
 |Separator|ciąg. Określa separator (np. ",") ma być używany do wyodrębniania zestawu wartości z oświadczeń wielowartościowe.|Nie|ND| 
 |url|Otwórz adres URL punktu końcowego konfiguracji identyfikator, z którym można uzyskać metadanych konfiguracji Open ID. Odpowiedź musi być zgodny specyfikacje, zgodnie z definicją pod adresem URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Usługi Azure Active Directory, użyj następującego adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` podstawiając nazwy dzierżawy katalogu, np. `contoso.onmicrosoft.com`.|Yes|ND|  

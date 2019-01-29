@@ -6,18 +6,18 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.component: bing-local-business
+ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 533e8b30bf59010f71df477b96b5441c83c34be7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: ada75f9ebe38615d17276c9e5b731924a45c8e75
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307112"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55148460"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Szybki Start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing za pomocą języka Java
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Szybki start: Wysłanie zapytania do lokalnych firm interfejs API wyszukiwania Bing za pomocą języka Java
 
 Użyj tego przewodnika Szybki Start, aby rozpocząć wysyłanie żądań lokalnych firm interfejs API wyszukiwania Bing, czyli usługi Azure Cognitive Service. Gdy ta prosta aplikacja został napisany w języku Java, interfejs API jest zgodny z dowolnego języka programowania możliwością wysyłania żądań HTTP i analizowania danych JSON Usługa sieci Web typu RESTful.
 
@@ -27,7 +27,7 @@ Ta przykładowa aplikacja pobiera dane lokalne odpowiedzi z interfejsu API dla z
 
 * [Kit(JDK) programowania w języku Java](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Wymagane jest [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Konieczne będzie klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną.  Zobacz też [usług Cognitive Services cennik — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Wymagane jest [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do interfejsów API wyszukiwania Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny będzie klucz dostępu podany podczas aktywacji bezpłatnej wersji próbnej.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Tej przykładowej aplikacji pobiera dane odpowiedzi lokalnego z zapytania dla *hotelu w Bellevue*.
 
@@ -35,7 +35,7 @@ Tej przykładowej aplikacji pobiera dane odpowiedzi lokalnego z zapytania dla *h
 
 Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla "hotel Bellevue".  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
 
-````
+```
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -47,7 +47,7 @@ Poniższy kod tworzy `WebRequest`, ustawia nagłówek klucza dostępu i dodaje c
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="run-the-complete-application"></a>Uruchom kompletnej aplikacji
 
@@ -58,7 +58,7 @@ Lokalnych firm interfejsu API wyszukiwania Bing zwraca wyników z wyszukiwarki B
 4. Zastąp wartość subscriptionKey kluczem dostępu właściwym dla Twojej subskrypcji.
 5. Uruchom program.
 
-````
+```
 package localSearch;
 import java.net.*;
 import java.util.*;
@@ -162,7 +162,7 @@ public class LocalSearchCls {
         }
     }
 
-````
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Lokalne wyszukiwanie firm Szybki Start](local-quickstart.md)

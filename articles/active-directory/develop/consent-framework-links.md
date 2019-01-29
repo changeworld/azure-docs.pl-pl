@@ -7,19 +7,19 @@ author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: d8a475bad5c232ceb7553674d97ad8abdb89ae5b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: da22c7a62d39b348e2114fd208d2aa8dd9711e0d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421678"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099230"
 ---
 # <a name="how-application-consent-works"></a>Jak zgody dla aplikacji działa
 
@@ -33,4 +33,4 @@ W tym artykule jest ułatwią Ci dowiedzieć się więcej na temat sposobu dzia�
 - Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [jak zgody jest obsługiwana na poziomie warstwy protokołu OAuth 2.0 w przepływie przyznawania kodu autoryzacji.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Usługi Azure AD w witrynie StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

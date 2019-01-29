@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9bcdf5a4de0ce54b922f3fd176cc6c979f3d7a17
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 2c67e40cf540062aeadd533962c0fb296648fb86
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425109"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100006"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Dokumentacja programu Azure AD SAML tokenu
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) emituje kilka rodzajów tokenów zabezpieczaj�
 ## <a name="claims-in-saml-tokens"></a>Oświadczenia w tokeny SAML
 
 > [!div class="mx-codeBreakAll"]
-| Name (Nazwa) | Równoważne JWT oświadczeń | Opis | Przykład |
+| Name (Nazwa) | Equivalent JWT Claim | Opis | Przykład |
 | --- | --- | --- | ------------|
 |Grupy odbiorców | `aud` |Adresat tokenu. Aplikację, która odbiera token musi sprawdzić, czy wartość odbiorców jest poprawny i odrzucić wszystkie tokeny przeznaczone dla różnych odbiorców. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 | Błyskawiczne uwierzytelnianie | |Rejestruje datę i godzinę wystąpienia uwierzytelniania. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 

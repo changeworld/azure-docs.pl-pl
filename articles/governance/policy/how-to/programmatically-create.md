@@ -4,17 +4,17 @@ description: W tym artykule opisano proces programowego tworzenia i zarządzanie
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: adeb963333ffc2b587d7468eb357fab8dc4d6bbe
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847054"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101791"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
 
@@ -201,17 +201,34 @@ Aby utworzyć definicję zasad, użyj następującej procedury:
   }
   ```
 
+   Aby uzyskać więcej informacji na temat tworzenia definicji zasad, zobacz [struktura definicji zasad platformy Azure](../concepts/definition-structure.md).
+
 1. Uruchom następujące polecenie, aby utworzyć definicję zasad:
 
    ```azurecli-interactive
    az policy definition create --name 'audit-storage-accounts-open-to-public-networks' --display-name 'Audit Storage Accounts Open to Public Networks' --description 'This policy ensures that storage accounts with exposures to public networks are audited.' --rules '<path to json file>' --mode All
    ```
 
+   Polecenie tworzy definicję zasad o nazwie _inspekcji magazynu kont otwarte do sieci publicznych_.
+   Aby uzyskać więcej informacji na temat innych parametrów, których można wyświetlić [utworzenia definicji zasad az](/cli/azure/policy/definition#az-policy-definition-create).
+
+   Gdy zostanie wywołana bez parametrów lokalizacji `az policy definition creation` wartość domyślna to zapisanie definicji zasad w wybranej subskrypcji kontekstu sesji. Aby zapisać definicję do innej lokalizacji, należy użyć następujących parametrów:
+
+   - **--subskrypcji** — Zapisz się do innej subskrypcji. Wymaga _GUID_ wartość ID subskrypcji lub _ciąg_ wartość dla nazwy subskrypcji.
+   - **--grupy zarządzania** — zapisywanie do grupy zarządzania. Wymaga _ciąg_ wartość.
+
 1. Użyj następującego polecenia, aby utworzyć przypisanie zasad. Zastąp przykładowe informacje przedstawione w &lt; &gt; symboli z własnymi wartościami.
 
    ```azurecli-interactive
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
+
+   **--Zakres** parametru `az policy assignment create` współpracuje z grupy zarządzania, subskrypcji, grupy zasobów lub pojedynczy zasób. Parametr używa ścieżki wszystkich zasobów. Wzorzec **--zakres** dla każdego kontenera jest w następujący sposób. Zastąp `{rName}`, `{rgName}`, `{subId}`, i `{mgName}` nazwą zasobu, grupa zasobów nazwa, identyfikator subskrypcji i nazwę grupy zarządzania, odpowiednio. `{rType}` zostanie zamienione **typ zasobu** z zasobów, takich jak `Microsoft.Compute/virtualMachines` dla maszyny Wirtualnej.
+
+   - Zasób — `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Grupa zasobów- `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Subskrypcja — `/subscriptions/{subID}`
+   - Grupa zarządzania- `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Możesz uzyskać identyfikator definicji zasad przy użyciu programu PowerShell za pomocą następującego polecenia:
 

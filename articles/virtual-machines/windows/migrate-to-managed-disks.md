@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
 ms.component: disks
-ms.openlocfilehash: 5e2a485630b7e3c9cc5977170d7e7e7eeb3e6ff5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b87e27ae914a01f03ce78eafe5792433d18e417f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474221"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193713"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrowanie maszyn wirtualnych platformy Azure do usługi Managed Disks na platformie Azure
 
@@ -37,7 +37,7 @@ Można migrować do usługi Managed Disks w następujących scenariuszach:
 | Migrowanie...                                            | Link do dokumentacji                                                                                                                                                                                                                                                                  |
 |----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Konwertuj autonomiczny maszyn wirtualnych i maszyn wirtualnych w zestawie do usługi managed disks dostępności   | [Konwertowanie maszyn wirtualnych w celu używania dysków zarządzanych](convert-unmanaged-to-managed-disks.md) |
-| Pojedyncza maszyna wirtualna z wersji klasycznej do usługi Resource Manager na dyskach zarządzanych     | [Migrowanie pojedynczej maszyny Wirtualnej](migrate-single-classic-to-resource-manager.md)  | 
+| Pojedyncza maszyna wirtualna z wersji klasycznej do usługi Resource Manager na dyskach zarządzanych     | [Tworzenie maszyny Wirtualnej z klasycznym wirtualnego dysku twardego](create-vm-specialized-portal.md)  | 
 | Wszystkie maszyny wirtualne w sieci wirtualnej z wersji klasycznej do usługi Resource Manager na dyskach zarządzanych     | [Migrację zasobów IaaS od modelu klasycznego do usługi Resource Manager](migration-classic-resource-manager-ps.md) i następnie [konwertowanie maszyny Wirtualnej z dysków niezarządzanych do usługi managed disks](convert-unmanaged-to-managed-disks.md) | 
 
 

@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/28/2017
 ms.author: priyamo
-ms.openlocfilehash: 7d95600323e862513c1856a5015f400e2ae814eb
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: dfe0b46411c5ed4cb37cdb2c95ddb1b57407f435
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887244"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193628"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurowanie maszyny Wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure przy użyciu zestawu Azure SDK
 

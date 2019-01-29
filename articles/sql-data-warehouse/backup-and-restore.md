@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca18aa5af89ec0a80d1aa8139671bf017a86e36c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 12764574c92c494e27290f98f274d2b76c7a4dc6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465177"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183236"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj danych magazynu migawek do odzyskiwania lub skopiuj magazynu danych do poprzedniego punktu przywracania w regionie podstawowym. Użyj danych, Magazyn geograficznie nadmiarowych kopii zapasowych do przywrócenia w innym regionie geograficznym. 
@@ -73,7 +73,7 @@ Kopie zapasowe geograficznej są domyślnie włączone. Jeśli magazyn danych je
 
 
 ## <a name="backup-and-restore-costs"></a>Koszty i przywracania kopii zapasowych
-Zauważ, że rachunku za platformę Azure zawiera element wiersza dla magazynu i element wiersza dla magazynu odzyskiwania po awarii. Opłata za magazyn jest całkowity koszt przechowywania danych w regionie podstawowym oraz zmiany przyrostowe przechwycone przez migawki. Aby uzyskać bardziej szczegółowy opis w sposób migawki aktualnie są wykonywane, zapoznaj się z tym [dokumentacji](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Geograficznie nadmiarowy opłaty po awarii obejmuje koszt do przechowywania kopii zapasowych geograficznie.  
+Zauważ, że rachunku za platformę Azure zawiera element wiersza dla magazynu i element wiersza dla magazynu odzyskiwania po awarii. Opłata za magazyn jest całkowity koszt przechowywania danych w regionie podstawowym oraz zmiany przyrostowe przechwycone przez migawki. Aby uzyskać bardziej szczegółowy opis jak rozliczane są migawki, zobacz [zrozumienie sposobu migawek naliczania opłat za](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Geograficznie nadmiarowy opłaty po awarii obejmuje koszt do przechowywania kopii zapasowych geograficznie.  
 
 Łączny koszt magazynu danych podstawowych i siedmiu dni zmian migawki jest zaokrąglana do najbliższego TB. Na przykład jeśli magazyn danych to 1,5 TB, a migawki przechwytuje 100 GB, są rozliczane za 2 TB danych według stawek usługi Azure Premium Storage. 
 

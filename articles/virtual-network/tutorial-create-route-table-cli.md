@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 89ac87436fb6807177acf3882dd6e923b1722bd5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849213"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157469"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem wiersza polecenia platformy Azure
 
@@ -121,7 +121,7 @@ az network vnet subnet update \
 
 Urządzenie NVA jest maszyną wirtualną, która realizuje funkcje sieci, takie jak routing, zapora lub optymalizacja sieci WAN.
 
-Tworzenie urządzenia NVA w *DMZ* podsieć o [tworzenie az vm](/cli/azure/vm#az_vm_create). Podczas tworzenia maszyny Wirtualnej, platforma Azure utworzy i przypisanie publicznego adresu IP do maszyny Wirtualnej, domyślnie. `--public-ip-address ""` Parametru powoduje, że Azure nie można utworzyć i przypisać publiczny adres IP do maszyny Wirtualnej, ponieważ maszyna wirtualna nie musi być połączony z Internetem. Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.
+Tworzenie urządzenia NVA w *DMZ* podsieć o [tworzenie az vm](/cli/azure/vm). Podczas tworzenia maszyny Wirtualnej, platforma Azure utworzy i przypisanie publicznego adresu IP do maszyny Wirtualnej, domyślnie. `--public-ip-address ""` Parametru powoduje, że Azure nie można utworzyć i przypisać publiczny adres IP do maszyny Wirtualnej, ponieważ maszyna wirtualna nie musi być połączony z Internetem. Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.
 
 ```azure-cli-interactive
 az vm create \
@@ -161,7 +161,7 @@ Polecenia może potrwać do minuty do wykonania.
 
 Utwórz dwie maszyny wirtualne w sieci wirtualnej, dzięki czemu można sprawdzić, czy ruch z *publicznych* podsieci jest kierowany do *prywatnej* podsieci za pośrednictwem urządzenia NVA w późniejszym kroku. 
 
-Utwórz Maszynę wirtualną w *publicznych* podsieć o [tworzenie az vm](/cli/azure/vm#az_vm_create). `--no-wait` Parametr umożliwia platformie Azure można wykonać polecenia w tle, dzięki czemu można kontynuować do następnego polecenia. Aby uprościć ten artykuł, używane jest hasło. Klucze są zazwyczaj używane we wdrożeniach produkcyjnych. Jeśli używasz kluczy, należy również skonfigurować agenta przekazywania SSH. Aby uzyskać więcej informacji zobacz dokumentację używanego klienta SSH. Zastąp `<replace-with-your-password>` w następującym poleceniu za pomocą wybrane hasło.
+Utwórz Maszynę wirtualną w *publicznych* podsieć o [tworzenie az vm](/cli/azure/vm). `--no-wait` Parametr umożliwia platformie Azure można wykonać polecenia w tle, dzięki czemu można kontynuować do następnego polecenia. Aby uprościć ten artykuł, używane jest hasło. Klucze są zazwyczaj używane we wdrożeniach produkcyjnych. Jeśli używasz kluczy, należy również skonfigurować agenta przekazywania SSH. Aby uzyskać więcej informacji zobacz dokumentację używanego klienta SSH. Zastąp `<replace-with-your-password>` w następującym poleceniu za pomocą wybrane hasło.
 
 ```azurecli-interactive
 adminPassword="<replace-with-your-password>"

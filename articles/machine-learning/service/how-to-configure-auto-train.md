@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5bb9bfdc90c18ff044e73a61aaff9e95bdf28d25
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 22217ce551b4af4b04a271af99dfdf601ea5efe2
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081623"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095801"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurowanie automatycznych eksperymentów uczenia maszynowego
 
@@ -196,7 +196,7 @@ Oto niektóre przykłady:
     ```
 2.  Poniżej znajduje się przykład regresji zestaw eksperymentu do końca po 100 iteracji, z każdą iteracją, trwających maksymalnie 600 sekund z 5 weryfikacji wielu złożeń.
 
-    ````python
+    ```python
     automl_regressor = AutoMLConfig(
         task='regression',
         max_time_sec=600,
@@ -205,7 +205,7 @@ Oto niektóre przykłady:
         X=X,
         y=y,
         n_cross_validations=5)
-    ````
+    ```
 
 Poniższa tabela zawiera listę dostępnych eksperymentu i ich wartości domyślne ustawień parametrów.
 

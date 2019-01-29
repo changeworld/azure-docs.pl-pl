@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 21c0fd9b258100e769172332713769024fb12969
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 48c78f4c3332f28cc37aea0c663976ce7c2d489b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520575"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170950"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Wyświetlanie podglądu użycia dysków przez zadanie eksportu
 Przed przystąpieniem do tworzenia zadania eksportu, musisz wybrać zestaw obiektów blob do wyeksportowania. Usługa Microsoft Azure Import/Export umożliwia za pomocą listy ścieżek, obiektów blob lub obiektu blob prefiksów do reprezentowania obiektów blob, które wybrałeś.  
@@ -28,10 +28,10 @@ Można użyć poniższych parametrów, korzystając z `PreviewExport` polecenia 
 |--------------------------|-----------------|  
 |**/ logdir:**< LogDirectory\>|Opcjonalny. Katalog dziennika. Plików pełnego dziennika będą zapisywane do tego katalogu. Jeśli katalog dziennika nie jest określony, bieżący katalog będzie służyć jako katalog dziennika.|  
 |**/SN:**< StorageAccountName\>|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
-|**/SK:**< StorageAccountKey\>|Wymagane tylko wtedy, gdy nie określono sygnatury dostępu Współdzielonego kontenera. Klucz konta dla konta magazynu dla zadania eksportu.|  
+|**/sk:**<StorageAccountKey\>|Wymagane tylko wtedy, gdy nie określono sygnatury dostępu Współdzielonego kontenera. Klucz konta dla konta magazynu dla zadania eksportu.|  
 |**/csas:**< ContainerSas\>|Wymagane tylko wtedy, gdy nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
-|**/ ExportBlobListFile:**< ExportBlobListFile\>|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji interfejs API REST usługi Import/Export.|  
-|**/ DriveSize:**< DriveSize\>|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.*, 500 GB, 1,5 TB.|  
+|**/ExportBlobListFile:**<ExportBlobListFile\>|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs) operacji interfejs API REST usługi Import/Export.|  
+|**/DriveSize:**<DriveSize\>|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.*, 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Przykład wiersza polecenia
 

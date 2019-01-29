@@ -9,17 +9,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: trinadhk
-ms.openlocfilehash: a0cbb8650a818c3ae6c839d69bbc9b94f8d080ca
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a5afdd0dca55a5df075acb99e488c932196d95c5
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351400"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092304"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
 > [!NOTE]
-> Na podstawie opinii otrzymanych od użytkowników, **stosu kopii zapasowej maszyny Wirtualnej V2** jest myląca ze za pomocą usługi Azure stack, zmieniono jego **natychmiastowe Przywracanie** zapewniając w ten sposób uaktualniony oraz lepsze środowisko.
+> Na podstawie opinii użytkowników, zmieniamy **stosu kopii zapasowej maszyny Wirtualnej V2** do **natychmiastowe Przywracanie** aby wyeliminować problemy z funkcjami usługi Azure Stack.
 
 Nowy model dla przywracania błyskawiczne zapewnia następujące ulepszenia funkcji:
 

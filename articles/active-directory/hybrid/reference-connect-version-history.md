@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/18/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e5d98b1d10051fee6ee5299fcdd8376434109603
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c42abf043c528f86db7af164c21c45b21e7bf1ac
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469767"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196280"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -333,7 +333,7 @@ Blokowanie dostępu do konta usługi AD DS, implementując następujące zmiany 
 *   Usuń wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie. Chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE.
 *   Przypisz te określone uprawnienia:
 
-Typ     | Name (Nazwa)                          | Dostęp               | Dotyczy
+Type     | Name                          | Dostęp               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
 Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |

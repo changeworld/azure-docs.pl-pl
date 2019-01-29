@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: ce4ff3fe2917d4dc34718fccc740223df0c52e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 80ca9df064239e9c7beb9d45acfabe963c532e4a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970944"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150552"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej przy użyciu wiersza polecenia platformy Azure
 
@@ -186,7 +186,7 @@ echo $saConnectionString
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Tworzenie udziału plików w ramach konta magazynu
 
-Utwórz udział plików na koncie magazynu przy użyciu [Utwórz udział magazynu az](/cli/azure/storage/share#az_storage_share_create). W późniejszym kroku tego udziału plików jest zainstalowany, aby upewnić się do niego dostęp w sieci.
+Utwórz udział plików na koncie magazynu przy użyciu [Utwórz udział magazynu az](/cli/azure/storage/share). W późniejszym kroku tego udziału plików jest zainstalowany, aby upewnić się do niego dostęp w sieci.
 
 ```azurecli-interactive
 az storage share create \

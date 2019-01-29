@@ -1,98 +1,96 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Egnyte | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Egnyte | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Egnyte.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2017
+ms.date: 11/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 4f6f6ef12f5a8dd8a9f210e9b1f1ca978ec5a1ac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e33fc71e0e43864d7d70495fc5056a8acaf4ad56
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440460"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159016"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Samouczek: Integracja usługi Azure Active Directory z Egnyte
+# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Egnyte
 
 W tym samouczku dowiesz się, jak zintegrować Egnyte w usłudze Azure Active Directory (Azure AD).
 
 Integrowanie Egnyte z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Egnyte
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Egnyte (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Egnyte.
+- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Egnyte (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Egnyte, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Egnyte logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz pobrać miesięczna wersja próbna [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
+- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
+
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Egnyte z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-egnyte-from-the-gallery"></a>Dodawanie Egnyte z galerii
+
 Aby skonfigurować integrację Egnyte w usłudze Azure AD, należy dodać Egnyte z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Egnyte z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![Usługa Active Directory][1]
+    ![Przycisk usługi Azure Active Directory][1]
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![W bloku aplikacji przedsiębiorstwa][2]
 
-    ![Aplikacje][3]
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W polu wyszukiwania wpisz **Egnyte**.
+    ![Przycisk Nowa aplikacja][3]
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/egnyte-tutorial/tutorial_egnyte_search.png)
+4. W polu wyszukiwania wpisz **Egnyte**, wybierz opcję **Egnyte** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-1. W panelu wyników wybierz **Egnyte**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Egnyte na liście wyników](./media/egnyte-tutorial/tutorial_egnyte_addfromgallery.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/egnyte-tutorial/tutorial_egnyte_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Egnyte w oparciu o użytkownika testu o nazwie "Britta Simon."
+W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Egnyte w oparciu o użytkownika testu o nazwie "Britta Simon".
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Egnyte do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Egnyte musi można ustanowić.
-
-W Egnyte, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Egnyte, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Egnyte](#creating-an-egnyte-test-user)**  — aby odpowiednikiem Britta Simon w Egnyte połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie użytkownika testowego Egnyte](#creating-an-egnyte-test-user)**  — aby odpowiednikiem Britta Simon w Egnyte połączonego z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -102,48 +100,54 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Egnyte** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/egnyte-tutorial/tutorial_egnyte_samlbase.png)
+2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
-1. Na **Egnyte domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Konfigurowanie logowania jednokrotnego](common/tutorial_general_301.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/egnyte-tutorial/tutorial_egnyte_url.png)
+3. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** ikonę, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.egnyte.com`
+    ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Egnyte domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/egnyte-tutorial/tutorial_egnyte_url.png)
+
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.egnyte.com`
 
     > [!NOTE] 
     > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Egnyte](https://www.egnyte.com/corp/contact_egnyte.html) aby zyskać tę wartość. 
- 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/egnyte-tutorial/tutorial_egnyte_certificate.png) 
+5. Na **certyfikat podpisywania SAML** strony w **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **certyfikat (Base64)**, a następnie zapisz plik certyfikatu na komputerze.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    ![Link do pobierania certyfikatu](./media/egnyte-tutorial/tutorial_egnyte_certificate.png) 
 
-    ![Konfigurowanie logowania jednokrotnego](./media/egnyte-tutorial/tutorial_general_400.png)
+6. Na **Konfigurowanie Egnyte** sekcji, skopiuj odpowiedni adres URL, zgodnie z wymaganiami.
 
-1. Na **konfiguracji Egnyte** , kliknij przycisk **skonfigurować Egnyte** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+    a. Adres URL logowania
 
-    ![Konfigurowanie logowania jednokrotnego](./media/egnyte-tutorial/tutorial_egnyte_configure.png) 
+    b. Identyfikator usługi Azure AD
 
-1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Egnyte.
+    c. Adres URL wylogowywania
 
-1. Kliknij przycisk **ustawienia**.
+    ![Konfiguracja Egnyte](common/configuresection.png)
+
+7. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Egnyte.
+
+8. Kliknij pozycję **Ustawienia**.
    
-   ![Ustawienia](./media/egnyte-tutorial/ic787819.png "ustawienia")
+    ![Ustawienia](./media/egnyte-tutorial/ic787819.png "Ustawienia")
 
-1. W menu, kliknij **ustawienia**.
+9. W menu, kliknij **ustawienia**.
 
-   ![Ustawienia](./media/egnyte-tutorial/ic787820.png "ustawienia")
+    ![Ustawienia](./media/egnyte-tutorial/ic787820.png "Ustawienia")
 
-1. Kliknij przycisk **konfiguracji** kartę, a następnie kliknij przycisk **zabezpieczeń**.
+10. Kliknij przycisk **konfiguracji** kartę, a następnie kliknij przycisk **zabezpieczeń**.
 
-    ![Zabezpieczenia](./media/egnyte-tutorial/ic787821.png "zabezpieczeń")
+    ![Zabezpieczenia](./media/egnyte-tutorial/ic787821.png "Zabezpieczenia")
 
-1. W **uwierzytelniania rejestracji jednokrotnej** sekcji, wykonaj następujące czynności:
+11. W **uwierzytelniania rejestracji jednokrotnej** sekcji, wykonaj następujące czynności:
 
     ![Rejestracja jednokrotna uwierzytelnianie](./media/egnyte-tutorial/ic787822.png "pojedynczego logowania dla uwierzytelniania")   
     
@@ -151,9 +155,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     b. Jako **dostawcy tożsamości**, wybierz opcję **AzureAD**.
    
-    c. Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** skopiowane z witryny Azure portal do **adres URL logowania dostawcy tożsamości** pola tekstowego.
+    c. Wklej **adres URL logowania** skopiowane z witryny Azure portal do **adres URL logowania dostawcy tożsamości** pola tekstowego.
    
-    d. Wklej **identyfikator jednostki SAML** skopiowanej w witrynie Azure portal do **Identyfikatora jednostki dostawcy tożsamości** pola tekstowego.
+    d. Wklej **usługi Azure AD identyfikator** skopiowanej w witrynie Azure portal do **Identyfikatora jednostki dostawcy tożsamości** pola tekstowego.
       
     e. Otwórz swój certyfikat zakodowany base-64 w Notatniku pobranego z witryny Azure portal, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikatu dostawcy tożsamości** pola tekstowego.
    
@@ -163,62 +167,56 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     h. Kliknij pozycję **Zapisz**.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+    ![Utwórz użytkownika usługi Azure AD][100]
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/egnyte-tutorial/create_aaduser_01.png) 
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/egnyte-tutorial/create_aaduser_02.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_01.png) 
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/egnyte-tutorial/create_aaduser_03.png) 
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/egnyte-tutorial/create_aaduser_04.png) 
+    ![Tworzenie użytkownika testowego usługi Azure AD](common/create_aaduser_02.png)
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
+    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
 
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Wybierz pozycję **Utwórz**.
 
-    d. Kliknij pozycję **Utwórz**.
- 
 ### <a name="creating-an-egnyte-test-user"></a>Tworzenie użytkownika testowego Egnyte
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Egnyte, musi być obsługiwana w Egnyte. W przypadku Egnyte Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby udostępnić konta użytkowników, wykonaj następujące czynności:**
+**Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
 
 1. Zaloguj się do Twojej **Egnyte** witryny firmy jako administrator.
 
-1. Przejdź do **ustawienia \> użytkownikami i grupami**.
+2. Przejdź do **ustawienia \> użytkownikami i grupami**.
 
-1. Kliknij przycisk **Dodaj nowego użytkownika**, a następnie wybierz typ użytkownika, które chcesz dodać.
+3. Kliknij przycisk **Dodaj nowego użytkownika**, a następnie wybierz typ użytkownika, które chcesz dodać.
    
-   ![Użytkownicy](./media/egnyte-tutorial/ic787824.png "użytkowników")
+    ![Użytkownicy](./media/egnyte-tutorial/ic787824.png "Użytkownicy")
 
-1. W **nowego użytkownika standardowego** sekcji, wykonaj następujące czynności:
-   
-   ![Nowego użytkownika standardowego](./media/egnyte-tutorial/ic787825.png "nowego użytkownika standardowego")   
+4. W **nowy użytkownik zaawansowany** sekcji, wykonaj następujące czynności:
+    
+    ![Nowego użytkownika standardowego](./media/egnyte-tutorial/ic787825.png "nowego użytkownika standardowego")   
 
-   a. Typ **E-mail**, **Username**i inne informacje szczegółowe dotyczące prawidłowego konta usługi Azure Active Directory do aprowizowania.
+    a. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **Brittasimon@contoso.com**.
+
+    b. W **Username** tekstu wprowadź nazwę użytkownika, użytkownika, takich jak **Brittasimon**.
+
+    c. Wybierz **logowanie jednokrotne** jako **typ uwierzytelniania**.
    
-   b. Kliknij pozycję **Zapisz**.
+    d. Kliknij pozycję **Zapisz**.
     
     >[!NOTE]
     >Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z powiadomieniem.
@@ -232,57 +230,47 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Egnyte, musi by�
 
 W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Egnyte.
 
-![Przypisz użytkownika][200] 
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**.
 
-**Aby przypisać Britta Simon Egnyte, wykonaj następujące czynności:**
+    ![Przypisz użytkownika][201]
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz **Egnyte**.
 
-    ![Przypisz użytkownika][201] 
+    ![Konfigurowanie logowania jednokrotnego](./media/egnyte-tutorial/tutorial_egnyte_app.png)
 
-1. Na liście aplikacji wybierz **Egnyte**.
+3. W menu po lewej stronie kliknij **użytkowników i grup**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/egnyte-tutorial/tutorial_egnyte_app.png) 
+    ![Przypisz użytkownika][202]
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
 
     ![Przypisz użytkownika][203]
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+5. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+6. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
 ### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka Egnyte w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Egnyte.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
-[1]: ./media/egnyte-tutorial/tutorial_general_01.png
-[2]: ./media/egnyte-tutorial/tutorial_general_02.png
-[3]: ./media/egnyte-tutorial/tutorial_general_03.png
-[4]: ./media/egnyte-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/egnyte-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/egnyte-tutorial/tutorial_general_200.png
-[201]: ./media/egnyte-tutorial/tutorial_general_201.png
-[202]: ./media/egnyte-tutorial/tutorial_general_202.png
-[203]: ./media/egnyte-tutorial/tutorial_general_203.png
-
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

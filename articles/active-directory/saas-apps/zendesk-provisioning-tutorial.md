@@ -8,19 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 7df4cb5e988b4037675d5bf1c45ee103d5939568
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 919c4d3dc08d81fa5fe95a7e63df8d02258aab80
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999326"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194325"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie systemu Zendesk dla automatycznej aprowizacji użytkowników
 
@@ -40,7 +40,7 @@ Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące
 > [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API Rest systemu Zendesk](https://developer.zendesk.com/rest_api/docs/core/introduction), co jest dostępne dla zespołów systemu Zendesk z planem Enterprise lub większą.
 
-## <a name="adding-zendesk-from-the-gallery"></a>Dodawanie systemu Zendesk z galerii
+## <a name="adding-zendesk-from-the-gallery"></a>Dodawanie aplikacji Zendesk z galerii
 Przed skonfigurowaniem systemu Zendesk dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać systemu Zendesk z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać systemu Zendesk z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
@@ -59,13 +59,13 @@ Przed skonfigurowaniem systemu Zendesk dla użytkownika automatyczne Inicjowanie
 
 4. W polu wyszukiwania wpisz **Zendesk**.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk6.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk6.png)
 
 5. W panelu wyników wybierz **Zendesk**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać systemu Zendesk z listą aplikacji SaaS.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk7.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk7.png)
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk20.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk20.png)
 
 ## <a name="assigning-users-to-zendesk"></a>Przypisywanie użytkowników do systemu Zendesk
 
@@ -98,15 +98,15 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 2. Wybierz systemu Zendesk z listy aplikacji SaaS.
  
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk3.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk3.png)
 
 3. Wybierz **aprowizacji** kartę.
     
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk16.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk16.png)
 
 4. Ustaw **tryb obsługi administracyjnej** do **automatyczne**.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk1.png)
 
 5. W obszarze **poświadczeń administratora** sekcji danych wejściowych **nazwa użytkownika administratora**, **klucz tajny tokenu**, i **domeny** konta użytkownika systemu Zendesk. Przykłady te wartości są:
 
@@ -123,43 +123,43 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 7. Podczas wypełniania pola wyświetlane w kroku 5, kliknij przycisk **Testuj połączenie** aby zapewnić usłudze Azure AD można połączyć się z systemu Zendesk. Jeśli połączenie nie powiedzie się, upewnij się, że konta systemu Zendesk, ma uprawnienia administratora i spróbuj ponownie.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk19.png)
     
 8. W **wiadomość E-mail z powiadomieniem** wprowadź adres e-mail osoby lub grupy, który powinien otrzymywać powiadomienia błąd inicjowania obsługi administracyjnej i zaznacz pole wyboru - **Wyślij wiadomość e-mail z powiadomieniem, gdy wystąpi awaria**.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk9.png)
 
 9. Kliknij pozycję **Zapisz**.
 
 10. W obszarze **mapowania** zaznacz **synchronizacji Azure użytkownicy usługi Active Directory do systemu Zendesk**.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk10.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk10.png)
 
 11. Przejrzyj atrybuty użytkownika, które są synchronizowane z usługi Azure AD zendesk w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania kont użytkowników w usłudze Zendesk dla operacji aktualizacji. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk11.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk11.png)
 
 12. W obszarze **mapowania** zaznacz **synchronizacji Azure grup usługi Active Directory do systemu ZenDesk**.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk12.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk12.png)
 
 13. Przejrzyj atrybuty grupy, które są synchronizowane z usługi Azure AD zendesk w **mapowanie atrybutu** sekcji. Atrybuty wybrany jako **zgodne** właściwości są używane do dopasowania grup w usłudze Zendesk dla operacji aktualizowania. Wybierz **Zapisz** przycisk, aby zatwierdzić zmiany.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
 14. Aby skonfigurować filtrów określania zakresu, można znaleźć w następujących instrukcjach podanych w [samouczek filtru Scoping](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Aby włączyć usługi Azure AD provisioning service dla systemu Zendesk, zmień **stanie aprowizacji** do **na** w **ustawienia** sekcji.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk14.png)
 
 16. Zdefiniuj użytkowników i/lub grup, które chcesz aby obsługiwać je na systemu Zendesk, wybierając odpowiednie wartości w **zakres** w **ustawienia** sekcji.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk15.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk15.png)
 
 17. Gdy wszystko jest gotowe do aprowizowania, kliknij przycisk **Zapisz**.
 
-    ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk18.png)
+    ![Zendesk Provisioning](./media/zendesk-provisioning-tutorial/ZenDesk18.png)
 
 
 Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub grup zdefiniowanych w **zakres** w **ustawienia** sekcji. Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które występują co około 40 minut, tak długo, jak działa usługa aprowizacji usługi Azure AD. Możesz użyć **szczegóły synchronizacji** sekcji, aby monitorować postęp i skorzystaj z linków do inicjowania obsługi administracyjnej raportu działań w tym artykule opisano wszystkie akcje wykonywane przez usługę Azure AD provisioning service w systemie Zendesk.

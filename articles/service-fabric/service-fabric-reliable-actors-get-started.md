@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054761"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093160"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Wprowadzenie do elementów Reliable Actors
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Rozwiązanie zawiera trzy projekty:
 
 * **Projekt interfejsu (HelloWorld.Interfaces)**. Ten projekt zawiera definicję interfejsu aktora. W każdym projekcie o dowolnej nazwie można zdefiniować interfejsów aktora.  Interfejs definiuje kontrakt aktora udostępniany implementacji aktora i klientom wywołującym aktora.  Ponieważ projektów klienckich mogą od niej zależne, zazwyczaj warto zdefiniować go w zestawie, który jest oddzielony od implementacji aktora.
 
-* **Projekt usługi aktora (HelloWorld)**. Ten projekt definiuje usługę Service Fabric, która będzie hostować aktora. Zawiera implementację aktora, *HellowWorld.cs*. Implementację aktora to klasa, która pochodzi od typu podstawowego `Actor` i implementuje interfejsy zdefiniowane w *MyActor.Interfaces* projektu. Klasa aktora musi implementować też Konstruktor, który akceptuje `ActorService` wystąpienia i `ActorId` i przekazuje je do podstawy `Actor` klasy.
+* **Projekt usługi aktora (HelloWorld)**. Ten projekt definiuje usługę Service Fabric, która będzie hostować aktora. Zawiera implementację aktora, *HelloWorld.cs*. Implementację aktora to klasa, która pochodzi od typu podstawowego `Actor` i implementuje interfejsy zdefiniowane w *MyActor.Interfaces* projektu. Klasa aktora musi implementować też Konstruktor, który akceptuje `ActorService` wystąpienia i `ActorId` i przekazuje je do podstawy `Actor` klasy.
     
     Ten projekt zawiera także *Program.cs*, który rejestruje przy użyciu środowiska uruchomieniowego usługi Service Fabric aktora klasy `ActorRuntime.RegisterActorAsync<T>()`. `HelloWorld` Klasa jest już zarejestrowany. Wszelkie implementacji aktora dodatkowe dodany do projektu, również musi być zarejestrowana w `Main()` metody.
 

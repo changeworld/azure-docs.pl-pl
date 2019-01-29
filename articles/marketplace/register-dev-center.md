@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 393426678d9331837bdc3b73c4e491dbe7eae6fa
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834829"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179841"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -68,7 +68,7 @@ Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglą
 
 9.  W `Registration - Review` sekcji, przejrzyj informacje o koncie i upewnij się, że wszystko jest poprawna.  
 
-    Przeczytaj warunki i postanowienia Umowy wydawcy portalu Microsoft Azure Marketplace.  
+    Przeczytaj warunki i postanowienia programu Microsoft Azure Marketplace [umowie wydawcy portalu](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf).  
 
     Kliknij pole wyboru, aby wskazać, że użytkownik przeczytał i zaakceptował warunki.  
     
@@ -143,7 +143,7 @@ Bank i informacje podatkowe jest wymagana dla wszystkich ofert komercyjnych przy
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania: 
 
 *   **Wydawcy, który wymaga rejestracji konta Centrum deweloperów?** 
-> Wydawcy, którzy publikują w Transact typ oferty: maszyna wirtualna, aplikacje platformy Azure: szablony rozwiązań i aplikacje zarządzane.  
+> Wydawca, którzy publikują w Transact typ oferty: Maszyna wirtualna, aplikacje platformy Azure: szablony rozwiązań i aplikacje zarządzane.  
 
 *   **Dlaczego jest wymagane konto Centrum deweloperów?**
 > Konto Centrum deweloperów jest wymagane, aby umożliwić firmie Microsoft rozliczenia z klientami w imieniu wydawcy, aby uzyskać listę typów języka Transact. Konto Centrum deweloperów rejestracji umożliwia firmie Microsoft sprawdzić poprawność prawne, podatku i informacji bankowych dla Twojej firmy. Aby dowiedzieć się więcej, kliknij [tutaj.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)

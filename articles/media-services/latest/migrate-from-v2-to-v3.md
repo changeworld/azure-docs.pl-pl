@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 12/18/2018
+ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: c9d35841620afa454ffddb5e3022f6160021998e
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ec40de04f46d0be8f40c2223346f17d288eb580c
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912388"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104069"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -64,12 +64,12 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 * W interfejsach API w wersji 3 są wszystkie kodowania szybkości transmisji bitów w bitach na sekundę. Stanowi to odmianę v2, które ustawienia wstępne usługi Media Encoder Standard. Na przykład szybkości transmisji bitów w wersji 2 będzie można określić jako 128 (KB/s), ale w wersji 3 byłoby 128000 (bity/sekundę). 
 * AssetFiles jednostek, AccessPolicies i IngestManifests nie istnieją w wersji 3.
 * Właściwość IAsset.ParentAssets nie istnieje w wersji 3.
-* Kluczy zawartości nie jest już jednostki, jest teraz właściwość StreamingLocator.
+* Kluczy zawartości nie jest już jednostki, jest teraz właściwość lokalizatora przesyłania strumieniowego.
 * Obsługa siatki zdarzeń zastępuje NotificationEndpoints.
 * Następujące jednostki zostały zmienione.
     * Dane wyjściowe zadań zastępuje zadań i jest teraz częścią zadania.
     * Lokator przesyłania strumieniowego zastępuje lokalizatora.
-    * Zastępuje zdarzenie na żywo kanału.<br/>Rozliczenie jest oparte na liczniki kanału na żywo wydarzeń na żywo. Aby uzyskać więcej informacji, zobacz [na żywo, przesyłanie strumieniowe Przegląd](live-streaming-overview.md#billing) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
+    * Zastępuje zdarzenie na żywo kanału.<br/>Rozliczenie jest oparte na liczniki kanału na żywo wydarzeń na żywo. Aby uzyskać więcej informacji, zobacz [rozliczeń](live-event-states-billing.md) i [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * Dane wyjściowe na żywo zastępuje Program.
 * Na żywo dane wyjściowe nie musiały zostać uruchomione w sposób jawny, start przy tworzeniu i Zatrzymaj po usunięciu. Programy działały inaczej w interfejsach API w wersji 2, mieli oni ma zostać uruchomiony po utworzeniu.
 
@@ -97,7 +97,7 @@ W poniższej tabeli przedstawiono różnice kodu między v2 i v3 dla typowych sc
 |---|---|---|
 |Utworzenie elementu zawartości i przekaż plik |[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |Przesyłanie zadania|[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Pokazuje, jak utworzyć przekształcenie, a następnie przesyłać zadania.|
-|Publikowanie elementu zawartości przy użyciu szyfrowania AES |1. Utwórz ContentKeyAuthorizationPolicyOption<br/>2. Utwórz ContentKeyAuthorizationPolicy<br/>3. Utwórz AssetDeliveryPolicy<br/>4. Tworzenie elementu zawartości i przekazywać zawartość lub Prześlij zadanie i korzystają z danych wyjściowych elementu zawartości<br/>5. Kojarzenie AssetDeliveryPolicy z elementem zawartości<br/>6. Utwórz ContentKey<br/>7. Dołącz ContentKey do zasobu<br/>8. Utwórz AccessPolicy<br/>9. Tworzenie lokalizatora<br/><br/>[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tworzenie zasad kluczy zawartości<br/>2. Utwórz zasób<br/>3. Przekazywanie zawartości lub Użyj zasobów jako JobOutput<br/>4. Utwórz StreamingLocator<br/><br/>[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Publikowanie elementu zawartości przy użyciu szyfrowania AES |1. Utwórz ContentKeyAuthorizationPolicyOption<br/>2. Utwórz ContentKeyAuthorizationPolicy<br/>3. Utwórz AssetDeliveryPolicy<br/>4. Tworzenie elementu zawartości i przekazywać zawartość lub Prześlij zadanie i korzystają z danych wyjściowych elementu zawartości<br/>5. Kojarzenie AssetDeliveryPolicy z elementem zawartości<br/>6. Utwórz ContentKey<br/>7. Dołącz ContentKey do zasobu<br/>8. Utwórz AccessPolicy<br/>9. Tworzenie lokalizatora<br/><br/>[przykład dla środowiska .NET w wersji 2](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Tworzenie zasad kluczy zawartości<br/>2. Utwórz zasób<br/>3. Przekazywanie zawartości lub Użyj zasobów jako JobOutput<br/>4. Utwórz Lokalizator przesyłania strumieniowego<br/><br/>[przykład dla środowiska .NET w wersji 3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 
 ## <a name="known-issues"></a>Znane problemy
 

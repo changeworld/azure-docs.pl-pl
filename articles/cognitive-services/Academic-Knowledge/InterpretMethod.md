@@ -6,16 +6,16 @@ services: cognitive-services
 author: alch-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: academic-knowledge
+ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e16a772caa5fba632f8544094e2d8b57ed4ca765
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902573"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55171664"
 ---
 # <a name="interpret-method"></a>Interpretowanie — metoda
 
@@ -29,29 +29,29 @@ Aby zapewnić środowisko interaktywne, tę metodę można wywołać wielokrotni
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Name (Nazwa)     | Wartość | Wymagana?  | Opis
+Name     | Value | Wymagana?  | Opis
 ---------|---------|---------|---------
 **Zapytanie**    | Ciąg tekstowy | Yes | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, zapytania będą interpretowane jako prefiks dla generowania sugestie automatyczne uzupełnianie zapytań.        
-**Model**    | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
+**model**    | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
 **Wykonaj** | 0 lub 1 | Nie<br>domyślna: 0  | 1 oznacza, że wygenerowany automatycznego uzupełniania, sugestii na podstawie danych gramatyki i graph.         
-**Liczba**    | Liczba | Nie<br>domyślny: 10 | Maksymalna liczba interpretacji do zwrócenia.         
+**count**    | Liczba | Nie<br>domyślny: 10 | Maksymalna liczba interpretacji do zwrócenia.         
 **offset**   | Liczba | Nie<br>domyślna: 0  | Indeks pierwszego interpretacji do zwrócenia. Na przykład *count = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
-**limit czasu**  | Liczba | Nie<br>domyślne: 1000 | Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
+**limit czasu**  | Liczba | Nie<br>default:1000 | Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
 <br>
   
 ## <a name="response-json"></a>Odpowiedź (JSON)
-Name (Nazwa)     | Opis
+Name     | Opis
 ---------|---------
 **Zapytanie** |*Zapytania* parametrów z żądania.
 **interpretacji** |Tablica 0 lub więcej różnych sposobów dopasowywania danych wejściowych użytkownika względem gramatyki.
-**.logprob interpretacji [x]**  |Prawdopodobieństwo względne logarytmu naturalnego interpretacji. Większe wartości są bardziej prawdopodobne.
-**.parse interpretacji [x]**  |Ciąg XML, który pokazuje, jak interpretować została każda część zapytania.
-**Rules interpretacji [x]**  |Tablica co najmniej 1 reguł zdefiniowanych w gramatyce, które były wywoływane podczas interpretacji. Dla interfejsu Academic Knowledge API zawsze będzie 1 regułę.
-**interpretacji [.name Rules [t] x]**  |Nazwa reguły.
+**interpretations[x].logprob**  |Prawdopodobieństwo względne logarytmu naturalnego interpretacji. Większe wartości są bardziej prawdopodobne.
+**interpretations[x].parse**  |Ciąg XML, który pokazuje, jak interpretować została każda część zapytania.
+**interpretations[x].rules**  |Tablica co najmniej 1 reguł zdefiniowanych w gramatyce, które były wywoływane podczas interpretacji. Dla interfejsu Academic Knowledge API zawsze będzie 1 regułę.
+**interpretations[x].rules[y].name**  |Nazwa reguły.
 **interpretacji [.output Rules [t] x]**  |Dane wyjściowe reguły.
-**interpretacji [.output.type Rules [t] x]** |Typ danych dane wyjściowe reguły.  Dla interfejsu Academic Knowledge API zawsze będzie to "query".
-**interpretacji [.output.value Rules [t] x]**  |Dane wyjściowe reguły. Interfejs Academic Knowledge API to ciąg wyrażenia zapytania, który może być przekazywany do metody Oceń i calchistogram.
-**Zostało przerwane** | Wartość true, jeśli upłynął limit czasu żądania.
+**interpretations[x].rules[y].output.type** |Typ danych dane wyjściowe reguły.  Dla interfejsu Academic Knowledge API zawsze będzie to "query".
+**interpretations[x].rules[y].output.value**  |Dane wyjściowe reguły. Interfejs Academic Knowledge API to ciąg wyrażenia zapytania, który może być przekazywany do metody Oceń i calchistogram.
+**aborted** | Wartość true, jeśli upłynął limit czasu żądania.
 
 <br>
 #### <a name="example"></a>Przykład:

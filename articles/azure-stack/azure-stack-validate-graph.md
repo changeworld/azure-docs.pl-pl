@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fbc6e7586e116df1fa19c6c9e0c5a5b17f00d646
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416243"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096775"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Weryfikowanie integracji programu graph dla usługi Azure Stack
 
@@ -94,7 +94,7 @@ Należy spełnić następujące wymagania wstępne.
     Invoke-AzsGraphValidation Completed
     ```
 
-W środowiskach produkcyjnych testowania połączenia sieciowego z poziomu stacji roboczej operator nie jest w pełni wskazujące na połączenia, które są udostępniane w usłudze Azure Stack. Sygnatury usługi Azure Stack sieci publicznych adresów VIP, należy łączności dla ruchu protokołu LDAP, przeprowadzenie integracji tożsamości.
+W środowiskach produkcyjnych testowania połączenia sieciowego z poziomu stacji roboczej operator nie jest w pełni wskazujące na połączenia, które są udostępniane w usłudze Azure Stack. Sygnatury usługi Azure Stack sieci publicznych adresów VIP, musi mieć łączność dla ruchu protokołu LDAP, przeprowadzenie integracji tożsamości.
 
 ## <a name="report-and-log-file"></a>Raport i plik dziennika
 
@@ -106,8 +106,8 @@ Domyślnie oba pliki są zapisywane w `C:\Users\<username>\AppData\Local\Temp\Az
 
 Użycie:
 
-* **-OutputPath**: *ścieżki* parametru na końcu polecenia uruchomienia, aby określić lokalizację inny raport.
-* **-CleanReport**: parametr na końcu polecenia uruchomienia, aby wyczyścić *AzsReadinessCheckerReport.json* z poprzednich informacji w raporcie. Aby uzyskać więcej informacji, zobacz [raportu sprawdzania poprawności w usłudze Azure Stack](azure-stack-validation-report.md).
+* **-OutputPath**: *Ścieżki* parametru na końcu polecenia uruchomienia, aby określić lokalizację inny raport.
+* **-CleanReport**: Parametr na końcu polecenia uruchomienia, aby wyczyścić *AzsReadinessCheckerReport.json* z poprzednich informacji w raporcie. Aby uzyskać więcej informacji, zobacz [raportu sprawdzania poprawności w usłudze Azure Stack](azure-stack-validation-report.md).
 
 ## <a name="validation-failures"></a>Błędy sprawdzania poprawności
 

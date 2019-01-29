@@ -3,23 +3,23 @@ title: Udostępnianie wyszukiwania niestandardowego — Bing Custom Search
 titlesuffix: Azure Cognitive Services
 description: W tym artykule opisano sposób udostępniania wystąpienia wyszukiwania niestandardowego.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: b6834681f2b6478943c43e44d694ae278ddd4682
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: 8c984e7c4b85940d457955b1e3cba93d7eb964e5
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815923"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55183581"
 ---
 # <a name="share-your-custom-search-instance"></a>Udostępnianie swojego wystąpienia wyszukiwania niestandardowego
 
-Łatwo można zezwolić na współpracy, edycji i testowania wystąpienia usługi przez udostępnianie członkom zespołu. Możesz udostępniać wystąpienie z dowolnymi osobami za pomocą samego adresu e-mail. Aby udostępnić wystąpienie:
+Możesz łatwo umożliwić wspólne edytowanie i testowanie wystąpienia, udostępniając je członkom swojego zespołu. Możesz udostępniać wystąpienie z dowolnymi osobami za pomocą samego adresu e-mail. Aby udostępnić wystąpienie:
 
 - Zaloguj się do [wyszukiwania niestandardowego](https://customsearch.ai)
 - Wybierz wystąpienie wyszukiwania niestandardowego

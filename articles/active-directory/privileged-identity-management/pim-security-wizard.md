@@ -9,16 +9,16 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: a38f6cac007ec130c860e3a7c5de838cb63b1675
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 337e4ee0c0b60e4b505fa9e4a2654b1a30b4c71f
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497816"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194131"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>Azure AD role zabezpieczeń kreatora w usłudze PIM
 
@@ -52,7 +52,7 @@ Drugiego kroku kreatora daje możliwość zmiany przypisania ról administratora
 
 1. Kliknij przycisk **dalej** zaznacz składniki mają być uprawnieni.
 
-    ![Konwertuj elementy członkowskie na uprawnionych](./media/pim-security-wizard/convert-members-eligible.png)
+    ![Konwersja członków na uprawnionych](./media/pim-security-wizard/convert-members-eligible.png)
 
 1. Po wybraniu elementów członkowskich, kliknij przycisk **dalej**.
 

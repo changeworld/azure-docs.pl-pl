@@ -1,6 +1,6 @@
 ---
 title: Zagrożeń analizy i Mapa alertów zabezpieczeń w usłudze Azure Security Center | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak na potrzeby zabezpieczeń alertu mapy i zagrożeniami funkcji analizy w usłudze Azure Security Center wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerów.
+description: Dowiedz się, jak używać funkcji alertu zabezpieczeń mapy i zagrożeniami analizy w usłudze Azure Security Center można wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerów.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: c41cb48e61b4c2bd1dc81e508c8218fad688bbaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 85930ef8d0753c28cf4bfa2eb2eb487e419ed5f3
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241723"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092127"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Mapa alertów zabezpieczeń i analiza zagrożeń
 Ten artykuł ułatwia korzystanie Mapa alertów zabezpieczeń usługi Azure Security Center i Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń do rozwiązania problemów związanych z zabezpieczeniami.

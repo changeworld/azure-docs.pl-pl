@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c59065b21935336a77e3fb88c30f12cded341808
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 351231fb50b60be1163c787913ef7ab944ba01b6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473932"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172174"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Synchronizacja programu Azure AD Connect: Opis użytkowników, grup i kontaktów
 Istnieje kilka przyczyn, dlaczego może mieć wiele lasów usługi Active Directory i istnieje kilka topologii rozmieszczania. Typowe modeli obejmują wdrożenia zasobów konta usługi i lasów sync'ed GAL po połączeniu & pozyskiwania. Ale nawet w przypadku modeli czystego, modele hybrydowe są również wspólne. Domyślna konfiguracja przedstawiona w synchronizacji programu Azure AD Connect nie przyjmuje żadnych określonego modelu, ale w zależności od tego, jak dopasowanie użytkownika został wybrany w podręczniku instalacji, można zaobserwować inne zachowania.

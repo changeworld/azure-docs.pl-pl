@@ -9,13 +9,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: ab2361eae7dac58adb2739437d0616bcd05f870f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850386"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175098"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego sprawdzania poprawności w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -65,14 +65,14 @@ Samodzielnie profilu technicznego mogą definiować profilu technicznego sprawdz
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Typ | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia warunek wstępny. Albo `ClaimsExist` jest określony, aby upewnić się, że akcje, należy wykonać, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub `ClaimEquals` określono, że akcje można wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa Określona wartość. |
+| Type | Yes | Typ wyboru lub zapytanie w celu przeprowadzenia warunek wstępny. Albo `ClaimsExist` jest określony, aby upewnić się, że akcje, należy wykonać, jeśli określone oświadczenia istnieje w bieżącym zestawie oświadczeń użytkownika lub `ClaimEquals` określono, że akcje można wykonać, jeśli istnieje w określonym oświadczenia, a jego wartość jest równa Określona wartość. |
 | ExecuteActionsIf | Yes | Wskazuje, czy akcje warunek wstępny należy przeprowadzić, gdy wynikiem testu jest wartość PRAWDA lub FAŁSZ. |
 
 **Wstępnym** element zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Wartość | 1: n | Dane, które jest używane przez wyboru. Jeśli typ to sprawdzanie jest `ClaimsExist`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Jeśli typ wyboru `ClaimEquals`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Podczas gdy inny element wartość zawiera wartość do sprawdzenia.|
+| Value | 1: n | Dane, które jest używane przez wyboru. Jeśli typ to sprawdzanie jest `ClaimsExist`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Jeśli typ wyboru `ClaimEquals`, to pole określa ClaimTypeReferenceId, aby wykonać zapytanie. Podczas gdy inny element wartość zawiera wartość do sprawdzenia.|
 | Akcja | 1:1 | Akcja, która należy podjąć, jeśli sprawdzanie warunku wstępnego w ramach kroku aranżacji ma wartość true. Wartość **akcji** ustawiono `SkipThisValidationTechnicalProfile`. Określa profil techniczny skojarzone sprawdzania poprawności nie powinien być wykonywany. |
 
 ### <a name="example"></a>Przykład

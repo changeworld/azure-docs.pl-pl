@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 29142f7e-d862-4076-9a1a-ecae5bcd9d9b
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,12 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b60a659700b1e464f4d8f70516a2ceaa0f08b6b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b78d8a5bd5ebb0d7b2f3c2012ec2021e4f999c1f
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423749"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100805"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OpenID Connect i Azure Active Directory
 
@@ -33,7 +33,7 @@ OpenID Connect jest nasze zalecenie, jeśli tworzysz aplikację internetową, kt
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 
-## <a name="authentication-flow-using-openid-connect"></a>Przepływ uwierzytelniania za pomocą protokołu OpenID Connect
+## <a name="authentication-flow-using-openid-connect"></a>Przepływ uwierzytelniania w przypadku protokołu OpenID Connect
 
 Najbardziej podstawowa przepływ logowania zawiera następujące czynności — każdego z nich jest opisany szczegółowo poniżej.
 
@@ -226,7 +226,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | Parametr | Opis |
 | --- | --- |
 | id_token |`id_token` Żądany przez aplikację. Możesz użyć `id_token` do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. |
-| Kod |Authorization_code, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Authorization_codes są krótkie krótkotrwałe i zazwyczaj wygasają po upływie około 10 minut. |
+| kod |Authorization_code, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Authorization_codes są krótkie krótkotrwałe i zazwyczaj wygasają po upływie około 10 minut. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Aplikację należy sprawdzić, czy wartości stanu żądania i odpowiedzi są identyczne. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd

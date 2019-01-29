@@ -7,19 +7,19 @@ author: priyamohanram
 manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
-ms.openlocfilehash: 8c554ad96b0f73d1e7bbc61f03c547a3191d5303
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904254"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166581"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure w celu pobrania tokenu dostępu 
 
@@ -380,7 +380,7 @@ W tej sekcji omówiono możliwy błąd odpowiedzi. Element "200 OK" stan to pomy
 |           | access_denied | Właściciel zasobu lub autoryzacji serwer odrzucił żądanie. |  |
 |           | unsupported_response_type | Serwer autoryzacji nie obsługuje uzyskiwania tokenu dostępu przy użyciu tej metody. |  |
 |           | invalid_scope | Żądany zakres jest nieprawidłowy, nieznany lub źle skonstruowany. |  |
-| 500 Wewnętrzny błąd serwera | nieznane | Nie można pobrać token z usługi Active directory. Szczegółowe informacje można znaleźć w dziennikach w  *\<ścieżki pliku\>* | Sprawdź, czy zarządzanych tożsamości dla zasobów platformy Azure został włączony na maszynie Wirtualnej. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej.<br><br>Sprawdź także, że Twoje żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany, szczególnie zasób, do którego identyfikatora URI określonego w ciągu zapytania. Zobacz sekcję "przykładowe żądanie" w [poprzedniej sekcji REST](#rest) przykład lub [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-msi.md) listę usług i ich odpowiednich identyfikatorów zasobów.
+| 500 Wewnętrzny błąd serwera | nieznana | Nie można pobrać token z usługi Active directory. Szczegółowe informacje można znaleźć w dziennikach w  *\<ścieżki pliku\>* | Sprawdź, czy zarządzanych tożsamości dla zasobów platformy Azure został włączony na maszynie Wirtualnej. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej.<br><br>Sprawdź także, że Twoje żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany, szczególnie zasób, do którego identyfikatora URI określonego w ciągu zapytania. Zobacz sekcję "przykładowe żądanie" w [poprzedniej sekcji REST](#rest) przykład lub [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-msi.md) listę usług i ich odpowiednich identyfikatorów zasobów.
 
 ## <a name="retry-guidance"></a>Wskazówki dotyczące ponawiania prób 
 

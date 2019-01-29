@@ -6,18 +6,18 @@ author: eross-msft
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 1f321ea3a7fffd4d54887fb41aee25b17d391e67
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: a659b4d25581153228cff6102b2835ef2e012981
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825412"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55154783"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Rejestrowanie urządzenia osobistego w sieci organizacji
 Zarejestruj urządzenie osobiste (zazwyczaj telefonie lub tablecie) w sieci organizacji. Po zarejestrowaniu urządzenia będzie dostęp do zasobów z ograniczeniami w organizacji.

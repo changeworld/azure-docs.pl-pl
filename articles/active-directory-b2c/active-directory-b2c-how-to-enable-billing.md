@@ -1,5 +1,5 @@
 ---
-title: Jak połączyć subskrypcję platformy Azure z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Jak połączyć subskrypcję platformy Azure — usługa Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Przewodnik krok po kroku do włączenia opcji naliczania opłat dla dzierżawy usługi Azure AD B2C do subskrypcji platformy Azure.
 services: active-directory-b2c
 author: davidmu1
@@ -7,27 +7,29 @@ manager: daveba
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/07/2018
+ms.date: 01/24/2019
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e39b7472904e7635340327d311eb7d4b9123f51e
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: B2C
+ms.openlocfilehash: c914b3a3ab40971cf9318cafc787d358dab2faff
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853191"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196178"
 ---
-# <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Łączenie subskrypcji platformy Azure z dzierżawy usługi Azure AD B2C
+# <a name="link-an-azure-subscription-to-an-azure-active-directory-b2c-tenant"></a>Połączyć subskrypcję platformy Azure z dzierżawy usługi Azure Active Directory B2C
 
 > [!IMPORTANT]
-> Najnowsze informacje dotyczące użycia, rozliczeniach i cenach dla usługi Azure AD B2C jest na następującej stronie: [Usługa Azure AD B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> Aby uzyskać najnowsze informacje dotyczące użycia, rozliczeniach i cenach usługi Azure Active Directory (Azure AD) B2C, zobacz [cennik usługi Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 Opłaty za użycie w usłudze Azure AD B2C są rozliczane z subskrypcją platformy Azure. Po utworzeniu dzierżawy usługi Azure AD B2C, administrator dzierżawy musi jawnie utworzyć łącze dzierżawy usługi Azure AD B2C z subskrypcją platformy Azure. W tym artykule przedstawiono, jak.
 
 > [!NOTE]
 > Naliczanie opłat za użycie usługi Azure AD B2C lub innych zasobów platformy Azure, łącznie z dodatkowymi zasobami usługi Azure AD B2C umożliwia subskrypcji połączonej z dzierżawą usługi Azure AD B2C.  Nie można dodać innych usług platformy Azure na podstawie licencji lub licencji usługi Office 365 w ramach dzierżawy usługi Azure AD B2C.
 
- Link do subskrypcji można uzyskać, tworząc usługi Azure AD B2C "Zasób" w ramach docelowa subskrypcja platformy Azure. Wiele usługi Azure AD B2C "zasoby" mogą być tworzone w ramach pojedynczej subskrypcji platformy Azure wraz z innymi zasobami platformy Azure (na przykład maszyny wirtualne, Magazyn danych, LogicApps). Widać wszystkie zasoby w ramach subskrypcji, przechodząc do dzierżawy usługi Azure AD, która jest skojarzona subskrypcja.
+Link do subskrypcji można uzyskać, tworząc usługi Azure AD B2C "Zasób" w ramach docelowa subskrypcja platformy Azure. Wiele usługi Azure AD B2C "zasoby" mogą być tworzone w ramach pojedynczej subskrypcji platformy Azure wraz z innymi zasobami platformy Azure (na przykład maszyny wirtualne, Magazyn danych, LogicApps). Widać wszystkie zasoby w ramach subskrypcji, przechodząc do dzierżawy usługi Azure AD, która jest skojarzona subskrypcja.
+
+Subskrypcje dostawcy rozwiązań w chmurze (CSP) obsługiwanych w usłudze Azure AD B2C. Funkcje są dostępne dla usługi Azure AD B2C i dla wszystkich zasobów platformy Azure przy użyciu interfejsów API lub portalu Azure. Administratorzy subskrypcji dostawcy CSP można połączyć, przenieść, a następnie usunięcie relacji z usługi Azure AD B2C w taki sam sposób, że została wykonana dla wszystkich zasobów platformy Azure. Skojarzenie między dzierżawy usługi Azure AD B2C i subskrypcji Azure CSP nie dotyczy zarządzania usługi Azure AD B2C, za pomocą kontroli dostępu opartej na rolach. Kontrola dostępu oparta na rolach odbywa się przy użyciu ról base dzierżawy, nie subskrypcji na podstawie ról.
 
 Aby kontynuować, potrzebna jest ważnej subskrypcji platformy Azure.
 
@@ -81,10 +83,6 @@ Możesz użyć tego zasobu, aby:
 ![Ustawienia zasób B2C](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
 ## <a name="known-issues"></a>Znane problemy
-
-### <a name="csp-subscriptions"></a>Subskrypcje dostawcy usług Kryptograficznych
-
-Obecnie dzierżawę usługi Azure AD B2C **nie** link do subskrypcji programu CSP.
 
 ### <a name="self-imposed-restrictions"></a>Samodzielnie narzuconego ograniczenia
 
