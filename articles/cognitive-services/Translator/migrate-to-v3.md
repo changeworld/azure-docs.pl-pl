@@ -41,13 +41,13 @@ Poniższa lista metod V2 i V3 zawiera metody V3 i interfejsów API, które zapew
 
 | W wersji 2 Metoda interfejsu API   | W wersji 3 Zgodnością z interfejsem API |
 |:----------- |:-------------|
-| Tłumaczenie     | [Przetłumacz](reference/v3-0-translate.md)          |
+| Translate     | [Przetłumacz](reference/v3-0-translate.md)          |
 | TranslateArray      | [Przetłumacz](reference/v3-0-translate.md)        |
 | GetLanguageNames      | [Języki](reference/v3-0-languages.md)         |
 | GetLanguagesForTranslate     | [Języki](reference/v3-0-languages.md)       |
 | GetLanguagesForSpeak      | [Usługa Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Czytaj     | [Usługa Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Wykrywanie     | [Wykrywanie](reference/v3-0-detect.md)         |
+| Speak     | [Usługa Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Detect     | [Wykrywanie](reference/v3-0-detect.md)         |
 | DetectArray     | [Wykrywanie](reference/v3-0-detect.md)         |
 | AddTranslation     | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
 | AddTranslationArray    | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
@@ -75,12 +75,12 @@ Microsoft Translator w wersji 3 jest rozliczana w taki sam sposób, który zosta
 
 | Metoda v3   | Znaki uwzględniany w rozliczeniach |
 |:----------- |:-------------|
-| Języki     | Nie przesłano żadnych znaków, brak zliczane, bez opłat.          |
-| Tłumaczenie     | Liczba zależy od liczby znaków są przesyłane do tłumaczenia i jak wiele języków znaki są tłumaczone na. przesłany 50 znaków i 5 języków, wymagane będzie 50 x 5.           |
-| Transliteracja     | Liczba znaków, które przesłano transliterację są uwzględniane.         |
-| Słownik odnośników i przykład     | Liczba znaków przesłane do słownika lookup i examples są uwzględniane.         |
+| Languages     | Nie przesłano żadnych znaków, brak zliczane, bez opłat.          |
+| Translate     | Liczba zależy od liczby znaków są przesyłane do tłumaczenia i jak wiele języków znaki są tłumaczone na. przesłany 50 znaków i 5 języków, wymagane będzie 50 x 5.           |
+| Transliterate     | Liczba znaków, które przesłano transliterację są uwzględniane.         |
+| Dictionary lookup & example     | Liczba znaków przesłane do słownika lookup i examples są uwzględniane.         |
 | BreakSentence     | Dostępny bezpłatnie.       |
-| Wykrywanie     | Dostępny bezpłatnie.      |
+| Detect     | Dostępny bezpłatnie.      |
 
 ## <a name="v3-end-points"></a>V3 punkty końcowe
 
