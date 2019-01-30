@@ -6,12 +6,12 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 32500e4c7319411555e028889d6ec94150776250
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 6ff3aa57ceedbf9cfe4920cc8c3ca2327a1f882c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306594"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246817"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1428,6 +1428,12 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <a href="/azure/api-management/">
                                                 <img src="media/index/APIManagement.svg" alt="" />
                                                 <p>API Management</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure-sphere/">
+                                                <img src="media/index/azure_sphere.svg" alt="" />
+                                                <p>Azure Sphere</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -3565,7 +3571,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                         </ul>
                     </li>
                     <li>
-                        <a href="#ai">AI i uczenie maszynowe</a>
+                        <a href="#ai">SI i uczenie maszynowe</a>
                         <ul id="ai" class="cardsA">
                             <li class="fullSpan">
                                 <h2>Sztuczna inteligencja i uczenie maszynowe</h2>
@@ -4276,6 +4282,25 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
                                                     <p>Bezpieczne publikowanie interfejsów API dla deweloperów, partnerów i pracowników w dowolnej skali</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure-sphere/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure_sphere.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Sphere</h3>
+                                                    <p>Tworzenie urządzeń bazujących na mikrokontrolerach z funkcją łączności i z wysokim poziomem zabezpieczeń</p>
                                                 </div>
                                             </div>
                                         </div>
