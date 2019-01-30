@@ -8,16 +8,21 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 44801663165b85edc988dab8ae2b668ef0e613b7
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 7f821c86712b239435d01cfc377da15c498fe7bf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381587"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219876"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Rozwiązywanie problemów z replikacją maszyny Wirtualnej platformy Azure do platformy Azure
 
 W tym artykule opisano, jakie są najczęstsze problemy w usłudze Azure Site Recovery podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego regionu i wyjaśniono, jak rozwiązywać problemy z nimi. Aby uzyskać więcej informacji o obsługiwanych konfiguracjach, zobacz [macierz obsługi do replikowania maszyn wirtualnych platformy Azure](site-recovery-support-matrix-azure-to-azure.md).
+
+## <a name="list-of-errors"></a>Lista błędów
+- **[Problemy z przydziałami zasobów platformy Azure (kod błędu: 150097)](#azure-resource-quota-issues-error-code-150097)** 
+- **[Zaufane certyfikaty główne (kod błędu: 151066)](#trusted-root-certificates-error-code-151066)** 
+- **[Łączność wychodząca na potrzeby usługi Site Recovery (kod błędu: 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)** 
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Problemy z przydziałami zasobów platformy Azure (kod błędu: 150097)
 Twoja subskrypcja powinna być włączona w celu tworzenia maszyn wirtualnych platformy Azure w regionie docelowym, który ma być używany jako swój region odzyskiwania po awarii. Ponadto subskrypcji powinny mieć wystarczającego limitu przydziału, włączone, aby tworzyć maszyny wirtualne o określonym rozmiarze. Domyślnie usługa Site Recovery wybiera ten sam rozmiar dla docelowej maszyny Wirtualnej, co źródłowa maszyna wirtualna. Jeśli dopasowania rozmiaru nie jest dostępna, najbardziej zbliżony rozmiar jest pobierany automatycznie. W przypadku nie pasującego rozmiar, który obsługuje konfiguracji źródłowej maszyny Wirtualnej, zostanie wyświetlony ten komunikat o błędzie:
@@ -322,7 +327,12 @@ blkid /dev/sda1
 
 1. Now replace the device name with its UUID in the format like "root=UUID=<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
 *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+1. Restart the protection again
 
+
+## Site recovery mobility service update completed with warnings ( error code 151083)
+Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  site recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
+**Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
 
 ## Next steps
 [Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)
