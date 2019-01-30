@@ -12,18 +12,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2d5fdde14c1a33ace81e8999dbb365dac9de3e6e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872895"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227900"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Warstwy usług na dużą skalę (wersja zapoznawcza) do 100 TB
 
 Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych programu SQL Server, która jest uwzględniany w środowisku chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy modele architektury, które są używane w usłudze Azure SQL Database:
 - Ogólnego przeznaczenia/Standard 
-- Krytyczne biznesowych/Premium
+- Business Critical/Premium
 - Hiperskalowanie
 
 Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza warstwy usług w modelu zakupu opartego na rdzeniach wirtualnych. Ta warstwa usługi jest wysoce skalowalny magazyn i warstwy wydajności obliczeniowej, który korzysta z architektury platformy Azure do skalowania magazynu i zasoby obliczeniowe dla usługi Azure SQL Database w znacznym stopniu po przekroczeniu limitów dostępnych dla firm i ogólnego przeznaczenia Warstwy usług krytycznych.
@@ -40,7 +40,7 @@ Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza war
 Warstwy usług na dużą skalę w usłudze Azure SQL Database zapewnia następujące dodatkowe funkcje:
 
 - Obsługa do 100 TB, rozmiar bazy danych
-- Niemal natychmiastowych kopii zapasowych, (na podstawie migawki plików przechowywanych w usłudze Azure Blob storage) bazy danych bez względu na rozmiar wpływu we/wy na obliczeń
+- Niemal natychmiastowych kopii zapasowych, (na podstawie migawki plików przechowywanych w usłudze Azure Blob storage) bazy danych bez względu na rozmiar wpływu we/wy na obliczeń   
 - Szybkie przywracanie bazy danych (na podstawie migawki plików) w ciągu kilku minut, a nie godzin lub dni (nie rozmiar operacji na danych)
 - Ogólną wydajność ze względu na większą przepływność dziennika i krótszy czas zatwierdzenia transakcji, niezależnie od ilości danych
 - Szybkie skalowanie w poziomie — można udostępnić co najmniej jeden węzeł tylko do odczytu dla odciążania obciążenia odczytu i do użytku jako spełniają hot
@@ -133,9 +133,6 @@ ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen
 GO
 ```
 
-> [!IMPORTANT]
-> [Przezroczyste szyfrowanie bazy danych (TDE)](transparent-data-encryption-azure-sql.md) powinno zostać wyłączone przed zmianą bazy danych — na dużą skalę na dużą skalę.
-
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Połącz się z repliką skalę odczytywania, bazy danych na dużą skalę
 
 W przypadku baz danych na dużą skalę `ApplicationIntent` argumentu w ciągu połączenia, udostępniane przez klienta określa, czy połączenie jest kierowany do repliki zapisu lub tylko do odczytu repliki pomocniczej. Jeśli `ApplicationIntent` równa `READONLY` i bazy danych nie ma w replice pomocniczej, połączenia będą kierowane do repliki podstawowej i wartość domyślna to `ReadWrite` zachowanie.
@@ -147,7 +144,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="available-regions"></a>Dostępne regiony
 
-Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępna w następujących regionach świadczenia usługi Azure: EastUS1 EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
+Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w następujących regionach platformy Azure: EastUS1, EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
 ## <a name="known-limitations"></a>Znane ograniczenia
 
@@ -158,7 +155,8 @@ Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i 
 | Jeśli plik bazy danych zwiększa się podczas migracji ze względu na to aktywne obciążenie i przekracza 1 TB na granicy pliku, migracja nie powiedzie się | Środki zaradcze: <br> — Jeśli to możliwe, migracji bazy danych, po nie obciążenia aktualizacji.<br> -Ponów próbę migracji, zakończy się powodzeniem tak długo, jak granica 1 TB nie jest przekroczony podczas migracji.|
 | Wystąpienie zarządzane nie jest obecnie obsługiwane. | Nie jest obecnie obsługiwany |
 | Operacja jednokierunkowa trwa w migracji do usługi w Hiperskali | Po migracji bazy danych na dużą skalę, nie można migrować bezpośrednio do warstwy usług — na dużą skalę. Obecnie jedynym sposobem na migrację bazy danych w Hiperskali do innego niż w Hiperskali jest eksportu/importu za pomocą pliku BACPAC.|
-| Migracja bazy danych z obiektów w pamięci nie jest obecnie obsługiwane. | Obiekty w pamięci, należy porzucić i tworzony ponownie jako obiektów innych niż w pamięci, przed przeprowadzeniem migracji bazy danych do warstwy usług na dużą skalę.
+| Migracja bazy danych z obiektów w pamięci nie jest obecnie obsługiwane. | Obiekty w pamięci, należy porzucić i tworzony ponownie jako obiektów innych niż w pamięci, przed przeprowadzeniem migracji bazy danych do warstwy usług na dużą skalę.|
+| Śledzenie danych zmian nie jest obecnie obsługiwane. | Nie można databasess na dużą skalę za pomocą Change Tracking danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

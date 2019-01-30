@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 4118e52e8fac34e860f05e17effb01e9375582ec
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 2571c4a1e5a3ff6228cd6647c4367555d0add866
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913918"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212593"
 ---
 # <a name="networking"></a>Networking
 
@@ -48,7 +48,7 @@ Maksymalizuj wydajność maszyny wirtualnej z przyspieszonej sieci, deklarując 
 ```
 Klaster usługi Service Fabric mogą być udostępniane na [systemu Linux przy użyciu Accelerated Networking](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli), i [Windows dzięki przyspieszonej sieci](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell).
 
-Przyspieszona sieć jest obsługiwana dla jednostki SKU serię maszyn wirtualnych platformy Azure: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 i Ms/Mms. Przyspieszona sieć został przetestowany pomyślnie za pomocą jednostki SKU Standard_DS8_v3 na 1/23/2019 r.
+Przyspieszona sieć jest obsługiwana dla jednostki SKU serię maszyn wirtualnych platformy Azure: D/DSv2, D/DSv3, E/ESv3, F/FS, FSv2 i Ms/Mms. Przyspieszona sieć został przetestowany pomyślnie za pomocą jednostki SKU Standard_DS8_v3 2019 1/23/dla klastra usługi Service Fabric Windows i używaniu Standard_DS12_v2 dla 2019-01/29 klaster usługi Service Fabric systemu Linux.
 
 Aby Accelerated Networking w istniejącym klastrze usługi Service Fabric, trzeba wcześniej [skalowanie klastra usługi Service Fabric na zewnątrz, przez dodanie zestawu skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), wykonaj następujące czynności:
 1. Aprowizowanie NodeType dzięki przyspieszonej sieci włączona

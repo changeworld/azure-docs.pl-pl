@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122760"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214317"
 ---
 # <a name="calchistogram-method"></a>calchistogram — metoda
 *Calchistogram* metoda oblicza obiektów dopasowywania wyrażeń zapytań ze strukturą i oblicza rozkład wartości atrybutu.
@@ -23,12 +23,12 @@ ms.locfileid: "46122760"
 ## <a name="request"></a>Żądanie
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Name (Nazwa)|Wartość|Opis
+Name|Value|Opis
 ----|-----|-----------
-wyrażenie | Ciąg tekstowy | Wyrażenia zapytań ze strukturą, które określa jednostki indeksu, względem którego ma zostać obliczanie histogramów.
+expr | Ciąg tekstowy | Wyrażenia zapytań ze strukturą, które określa jednostki indeksu, względem którego ma zostać obliczanie histogramów.
 Atrybuty | Ciąg tekstowy (domyślny = "") | Rozdzielana przecinkami lista atrybutów do dołączenia w odpowiedzi.
 count   | Liczba (domyślny = 10) | Liczba wyników do zwrócenia.
-Przesunięcie  | Liczba (domyślny = 0) | Indeks pierwszego wyniku do zwrócenia.
+offset  | Liczba (domyślny = 0) | Indeks pierwszego wyniku do zwrócenia.
 
 ## <a name="response-json"></a>Odpowiedź (JSON)
 JSONPath | Opis
@@ -36,13 +36,13 @@ JSONPath | Opis
 $.expr | *wyrażenie* parametrów z żądania.
 $.num_entities | Łączna liczba zgodnych jednostek.
 $.histograms |  Tablica histogramów, jeden dla każdego żądanego atrybutu.
-$.histograms [\*] .attribute | Nazwa atrybutu, względem której została obliczona histogram.
-$.histograms [\*] .distinct_values | Liczba unikatowych wartości między dopasowania jednostek dla tego atrybutu.
-$.histograms [\*] .total_count | Całkowita liczba wystąpień wartość między dopasowania jednostek dla tego atrybutu.
-$.histograms [\*] .histogram | Histogram dane dla tego atrybutu.
-$.histograms [\*] .histogram [\*] .value | Wartość atrybutu.
-$.histograms [\*] .histogram [\*] .logprob  | Łączna liczba logarytmu naturalnego prawdopodobieństwo, że dopasowanie jednostki z wartością tego atrybutu.
-$.histograms [\*] .histogram [\*] .count    | Liczba zgodne jednostki z wartością tego atrybutu.
+$.histograms[\*].attribute | Nazwa atrybutu, względem której została obliczona histogram.
+$.histograms[\*].distinct_values | Liczba unikatowych wartości między dopasowania jednostek dla tego atrybutu.
+$.histograms[\*].total_count | Całkowita liczba wystąpień wartość między dopasowania jednostek dla tego atrybutu.
+$.histograms[\*].histogram | Histogram dane dla tego atrybutu.
+$.histograms[\*].histogram[\*].value | Wartość atrybutu.
+$.histograms[\*].histogram[\*].logprob  | Łączna liczba logarytmu naturalnego prawdopodobieństwo, że dopasowanie jednostki z wartością tego atrybutu.
+$.histograms[\*].histogram[\*].count    | Liczba zgodne jednostki z wartością tego atrybutu.
 $.aborted | Wartość true, jeśli upłynął limit czasu żądania.
 
 ### <a name="example"></a>Przykład

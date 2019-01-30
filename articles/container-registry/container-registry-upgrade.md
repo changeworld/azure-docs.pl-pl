@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: danlep
-ms.openlocfilehash: 73e207dae61dfc8912fd79a151adf982753701f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 077ca3c876a3078e7e627dbfefdff38e09ec57b9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969111"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228359"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Uaktualnianie rejestru klasycznego kontenera
 
@@ -52,7 +52,7 @@ W procesie konwersji wszystkich `docker push` operacje są blokowane, podczas gd
 
 Nie należy usuwać ani modyfikować zawartość konta magazynu, kopii rejestru klasycznego w procesie konwersji. To może doprowadzić do uszkodzenia obrazów kontenerów.
 
-Po zakończeniu migracji konta magazynu w ramach subskrypcji, która pierwotnie wspierana rejestru klasycznego jest już używany przez usługi ACR. Po zweryfikowaniu, że migracja się powiodła, rozważ usunięcie konta magazynu, aby zminimalizować koszty.
+Po zakończeniu migracji konta magazynu w ramach subskrypcji, która pierwotnie wspierana rejestru klasycznego nie jest już jest używany przez usługi ACR. Po zweryfikowaniu, że migracja się powiodła, rozważ usunięcie konta magazynu, aby zminimalizować koszty.
 
 >[!IMPORTANT]
 > Uaktualnienie z wersji klasycznej do jednego z zarządzanymi jednostkami SKU jest **jednokierunkowe procesu**. Po konwersji klasyczny rejestr do warstwy podstawowa, standardowa lub Premium, nie można przywrócić do klasycznego modelu. Jednak dowolnie przenosić między zarządzanymi jednostkami SKU o wystarczającej pojemności dla rejestru.

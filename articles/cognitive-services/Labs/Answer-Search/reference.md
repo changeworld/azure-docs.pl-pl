@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 001ef83e23aeb21104d8efb8c4aad9c8a007cba6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6ec09627fb80925fef72c491936a1dd83106874b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103916"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211699"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odwołanie do projektu odpowiedzi wyszukiwania w wersji 7
 
@@ -83,7 +83,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania.  
   
   
-|Name (Nazwa)|Wartość|Typ|Wymagane|  
+|Name|Value|Type|Wymagany|  
 |----------|-----------|----------|--------------|  
 |<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku, zobacz [kody rynku](#market-codes).<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko en-us rynku i język.<br /><br />|Ciąg|Yes|  
 |<a name="query" />q|Adres URL, aby wyświetlić podgląd|Ciąg|Yes|  
@@ -106,7 +106,7 @@ Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API w
 ### <a name="error"></a>Błąd  
 Definiuje błąd, który wystąpił.  
   
-|Element|Opis|Typ|  
+|Element|Opis|Type|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|Ciąg|  
 |<a name="error-message" />Komunikat|Opis błędu.|Ciąg|  
@@ -119,7 +119,7 @@ Definiuje błąd, który wystąpił.
 ### <a name="errorresponse"></a>ErrorResponse  
 Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu.|Ciąg|  
 |<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Error](#error)|  
@@ -129,7 +129,7 @@ Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy 
 ### <a name="license"></a>Licencja  
 Definiuje licencji w ramach której można użyć typu text lub zdjęć.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |name|Nazwa licencji.|Ciąg|  
 |url|Adres URL witryny sieci Web, gdzie użytkownik może uzyskać więcej informacji o licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|Ciąg|  
@@ -138,7 +138,7 @@ Definiuje licencji w ramach której można użyć typu text lub zdjęć.
 ### <a name="licenseattribution"></a>LicenseAttribution  
 Definiuje umownych regułę autorstwa licencji.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa LicenseAttribution.|Ciąg|  
 |licencja|Licencja, pod którym zawartość może być używany.|[Licencja](#license)|  
@@ -150,7 +150,7 @@ Definiuje umownych regułę autorstwa licencji.
 ### <a name="link"></a>Link  
 Określa składniki hiperłącza.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu.|Ciąg|  
 |tekst|Tekst wyświetlany.|Ciąg|  
@@ -160,7 +160,7 @@ Określa składniki hiperłącza.
 ### <a name="linkattribution"></a>LinkAttribution  
 Definiuje umownych regułę autorstwa łącza.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa LinkAttribution.|Ciąg|  
 |mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
@@ -172,7 +172,7 @@ Definiuje umownych regułę autorstwa łącza.
 ### <a name="mediaattribution"></a>MediaAttribution  
 Definiuje umownych regułę autorstwa nośnika.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa MediaAttribution.|Ciąg|  
 |mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
@@ -186,7 +186,7 @@ Określa wydawcę.
   
 Należy pamiętać, że wydawca może zapewnić ich nazwy, ich witryny sieci Web lub obu tych.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |name|Nazwa wydawcy.|Ciąg|  
 |url|Adres URL witryny sieci Web wydawcy.<br /><br /> Należy pamiętać, wydawca nie mogą zawierać witryny sieci Web.|Ciąg|  
@@ -196,7 +196,7 @@ Należy pamiętać, że wydawca może zapewnić ich nazwy, ich witryny sieci Web
 ### <a name="webpage"></a>Strony sieci Web  
 Określa informacje o stronie sieci Web w wersji zapoznawczej.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|
 |name|Tytuł strony, niekoniecznie tytuł HTML|Ciąg|
 |url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|Ciąg|  
@@ -208,7 +208,7 @@ Określa informacje o stronie sieci Web w wersji zapoznawczej.
 ### <a name="querycontext"></a>QueryContext  
 Definiuje kontekst zapytania, które Bing użyta dla żądania.  
   
-|Element|Opis|Typ|  
+|Element|Opis|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|Wartość logiczna wskazująca, czy określona kwerenda ma dorosłych. Wartość jest **true** Jeśli kwerenda ma dorosłych; w przeciwnym razie **false**.|Wartość logiczna|  
 |alterationOverrideQuery|Ciąg zapytania do użycia, aby wymusić Bing w celu użycia oryginalny ciąg. Na przykład, jeśli ciąg zapytania jest *saling downwind*, zastąpienie ciągu zapytania będą *+ saling downwind*. Pamiętaj, aby zakodować ciąg zapytania, co skutkuje *% 2Bsaling + downwind*.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|Ciąg|  
@@ -217,19 +217,19 @@ Definiuje kontekst zapytania, które Bing użyta dla żądania.
 |originalQuery|Ciąg zapytania określony w żądaniu.|Ciąg|  
 
 ### <a name="identifiable"></a>Do zidentyfikowania
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |id|Identyfikator zasobu|Ciąg|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiuje grupy w wynikach wyszukiwania, takie jak mainline.
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |pozycje|Lista wyników wyszukiwania do wyświetlenia w grupie.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania, aby wyświetlić.
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Liczba całkowita|
 |answerType|Odpowiedź, który zawiera element, aby wyświetlić. Na przykład wiadomości.<br /><br />Aby znaleźć odpowiedzi w obiekcie SearchResponse, należy użyć typu. Typ jest nazwa pola SearchResponse.<br /><br /> Jednak używać typu odpowiedzi, tylko wtedy, gdy ten obiekt zawiera pola wartości; w przeciwnym razie go zignorować.|Ciąg|
@@ -239,7 +239,7 @@ Definiuje element wyników wyszukiwania, aby wyświetlić.
 ### <a name="rankingresponse"></a>RankingResponse  
 Określa, gdzie na wyszukiwanie zawartości strony wyników powinny zostać umieszczone i w jakiej kolejności.  
   
-|Name (Nazwa)|Wartość|  
+|Name|Value|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Wyniki wyszukiwania w celu wyświetlenia w ramach linii głównej.|  
 |<a name="ranking-pole" />pole|Wyniki wyszukiwania, które powinny otrzymać najbardziej widoczne traktowania (na przykład wyświetlane powyżej linii głównej i paska bocznego).|  
@@ -251,7 +251,7 @@ Definiuje obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie 
   
 Należy pamiętać, że jeśli usługa podejrzewa "odmowa usługi", żądanie zakończy się pomyślnie (kod stanu HTTP jest 200 OK); jednak treści odpowiedzi jest pusta.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu jest ustawiona na SearchResponse.|Ciąg|  
 |Strony sieci Web|Obiekt JSON, który definiuje korzystania z wersji zapoznawczej|ciąg|  
@@ -260,7 +260,7 @@ Należy pamiętać, że jeśli usługa podejrzewa "odmowa usługi", żądanie za
 ### <a name="textattribution"></a>TextAttribution  
 Definiuje umownych regułę autorstwa zwykły tekst.  
   
-|Name (Nazwa)|Wartość|Typ|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka typu, która jest równa TextAttribution.|Ciąg|  
 |tekst|Tekst: uznanie autorstwa.<br /><br /> Tekst: uznanie autorstwa dotyczy jednostki jako całość i powinien zostać wyświetlony od razu po przedstawieniu jednostki. Jeśli istnieje wiele tekstu lub linków reguł autorstwa, których nie określono elementu docelowego, połącz je i wyświetlaj je za pomocą "dane:" etykiety.|Ciąg| 

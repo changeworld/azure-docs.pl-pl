@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 2c5fac377dfab4b4c85991dcb8f4e15f4e3cb61a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809101"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225941"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyny Wirtualnej z systemem Windows, dołączając dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu witryny Azure portal
 Windows maszyny wirtualnej (VM) na platformie Azure napotka błąd rozruchu lub dysk, może być konieczne wykonanie kroków rozwiązywania problemów na samym wirtualnym dysku twardym. Typowym przykładem może być Niepowodzenie aktualizacji aplikacji, która uniemożliwia maszynie Wirtualnej możliwość wykonania rozruchu pomyślnie. Ten artykuł szczegółowo opisuje sposób użycia witryny Azure portal połączyć wirtualny dysk twardy do innej Windows maszyny Wirtualnej, aby naprawić wszystkie błędy, a następnie ponownie utworzyć oryginalną maszynę Wirtualną.
@@ -37,12 +37,11 @@ Dla maszyn wirtualnych dysku zarządzanego używa firma Microsoft teraz używać
 ## <a name="determine-boot-issues"></a>Określenia problemów rozruchu
 Aby określić, dlaczego nie jest poprawnie rozruch maszyny Wirtualnej, sprawdź diagnostyki rozruchu zrzut ekranu maszyny Wirtualnej. Typowym przykładem może być Niepowodzenie aktualizacji aplikacji lub podstawowy wirtualny dysk twardy jest usunięty lub przeniesiony.
 
-Wybierz maszynę Wirtualną w portalu, a następnie przewiń w dół do **pomoc techniczna i rozwiązywanie problemów** sekcji. Kliknij przycisk **diagnostykę rozruchu** do wyświetlania na zrzucie ekranu. Należy pamiętać, wszystkie określone komunikaty o błędach lub kody błędów, aby określić, dlaczego maszyny Wirtualnej napotkała problem. Oczekiwanie na zatrzymanie usługi maszyny Wirtualnej można znaleźć w poniższym przykładzie:
+Wybierz maszynę Wirtualną w portalu, a następnie przewiń w dół do **pomoc techniczna i rozwiązywanie problemów** sekcji. Kliknij przycisk **diagnostykę rozruchu** do wyświetlania na zrzucie ekranu. Należy pamiętać, wszystkie określone komunikaty o błędach lub kody błędów, aby określić, dlaczego maszyny Wirtualnej napotkała problem. 
 
 ![Wyświetlanie maszyny Wirtualnej diagnostyki rozruchu dzienniki konsoli](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
-Możesz również kliknąć **zrzut ekranu** można pobrać Przechwyć zrzut ekranu maszyny Wirtualnej.
-
+Możesz również kliknąć **Pobierz zrzut ekranu** można pobrać Przechwyć zrzut ekranu maszyny Wirtualnej.
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Szczegółowe informacje są istniejącego wirtualnego dysku twardego
 Zanim będzie możliwe dołączenie wirtualny dysk twardy do innej maszyny Wirtualnej, należy określić nazwę wirtualnego dysku twardego (VHD). 

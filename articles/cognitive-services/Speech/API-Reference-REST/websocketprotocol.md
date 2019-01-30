@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341824"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217292"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokół WebSocket rozpoznawania mowy Bing
 
@@ -77,7 +77,7 @@ Content-Length: 0
 
 Następujące informacje nagłówka są wymagane do uzyskania tokenu dostępu.
 
-| Name (Nazwa) | Format | Opis |
+| Name | Format | Opis |
 |----|----|----|
 | OCP-Apim-Subscription-Key | ASCII | Twój klucz subskrypcji |
 
@@ -99,9 +99,9 @@ Klienci *musi* użyć odpowiednich punktów końcowych usługi mowy. Punkt końc
 
 | Tryb | Ścieżka | Identyfikator URI usługi |
 | -----|-----|-----|
-| Interaktywne | /Speech/Recognition/Interactive/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| Konwersacja | /Speech/Recognition/Conversation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
-| Dyktowanie | /Speech/Recognition/Dictation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
+| Interaktywne | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| Konwersacja | /speech/recognition/conversation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
+| Dyktowanie | /speech/recognition/dictation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 Aby uzyskać więcej informacji, zobacz [identyfikator URI usługi](../GetStarted/GetStartedREST.md#service-uri) strony.
 
@@ -149,11 +149,11 @@ Główne wiadomości wysłane przez klienta do usług są `speech.config`, `audi
 
 Następujące nagłówki są wymagane dla wszystkich komunikatów pochodzących od klientów.
 
-| Nagłówek | Wartość |
+| Nagłówek | Value |
 |----|----|
 | Ścieżka | Ścieżka podana w tym dokumencie |
-| Identyfikator żądania X | Identyfikator UUID w formacie "nie-dash" |
-| Sygnatura czasowa X | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
+| X-RequestId | Identyfikator UUID w formacie "nie-dash" |
+| X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 
 #### <a name="x-requestid-header"></a>Nagłówek X-RequestId
 
@@ -178,11 +178,11 @@ Klienci *musi* wysyłania `speech.config` komunikatów bezpośrednio w przypadku
 
 #### <a name="required-message-headers"></a>Nagłówki komunikatów wymagane
 
-| Nazwa nagłówka | Wartość |
+| Nazwa nagłówka | Value |
 |----|----|
 | Ścieżka | `speech.config` |
-| Sygnatura czasowa X | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
-| Content-Type | Application/json; charset = utf-8 |
+| X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
+| Content-Type | application/json; charset=utf-8 |
 
 Podobnie jak w przypadku wszystkich wiadomości pochodzi klienta za pomocą protokołu rozpoznawania mowy usługi `speech.config` komunikat *musi* obejmują *sygnatura czasowa X* nagłówek, który rejestruje czas zegara klienta UTC, kiedy wiadomość została wysłana w usłudze. `speech.config` Komunikat *nie* wymagają *X RequestId* nagłówka ponieważ ten komunikat nie jest skojarzona z żądaniem określonego mowy.
 
@@ -218,17 +218,17 @@ Elementem system.version `speech.config` wiadomość zawiera wersję mowy SDK op
 
 | Pole | Opis | Sposób użycia |
 |-|-|-|
-| OS.platform | Systemu operacyjnego platformy, który jest hostem aplikacji, na przykład, Windows, Android, iOS i Linux |Wymagane |
-| OS.name | Nazwa produktu systemu operacyjnego, na przykład Debian lub Windows 10 | Wymagane |
-| OS.Version | Wersja systemu operacyjnego w formie *major.minor.build.branch* | Wymagane |
+| os.platform | Systemu operacyjnego platformy, który jest hostem aplikacji, na przykład, Windows, Android, iOS i Linux |Wymagany |
+| os.name | Nazwa produktu systemu operacyjnego, na przykład Debian lub Windows 10 | Wymagany |
+| OS.Version | Wersja systemu operacyjnego w formie *major.minor.build.branch* | Wymagany |
 
 ##### <a name="device-element"></a>Element urządzenia
 
 | Pole | Opis | Sposób użycia |
 |-|-|-|
-| Device.Manufacturer | Producent sprzętu urządzenia | Wymagane |
-| Device.model | Model urządzenia | Wymagane |
-| Device.Version | Wersja oprogramowania urządzenia, dostarczone przez producenta urządzenia. Ta wartość określa wersję urządzenia, które mogą być śledzone przez producenta. | Wymagane |
+| Device.Manufacturer | Producent sprzętu urządzenia | Wymagany |
+| device.model | Model urządzenia | Wymagany |
+| Device.Version | Wersja oprogramowania urządzenia, dostarczone przez producenta urządzenia. Ta wartość określa wersję urządzenia, które mogą być śledzone przez producenta. | Wymagany |
 
 ### <a name="message-audio"></a>Komunikat `audio`
 
@@ -249,11 +249,11 @@ Usługa rozpoznawania mowy używa pierwszego `audio` wiadomość, która zawiera
 
 Następujące nagłówki są wymagane w przypadku wszystkich `audio` wiadomości.
 
-| Nagłówek         |  Wartość     |
+| Nagłówek         |  Value     |
 | ------------- | ---------------- |
 | Ścieżka | `audio` |
-| Identyfikator żądania X | Identyfikator UUID w formacie "nie-dash" |
-| Sygnatura czasowa X | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
+| X-RequestId | Identyfikator UUID w formacie "nie-dash" |
+| X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | Typ zawartości audio. Typ musi być albo *audio/x-wav* (PCM) lub *audio/silk* (SILK). |
 
 #### <a name="supported-audio-encodings"></a>Obsługiwane są audio
@@ -308,7 +308,7 @@ Klienci muszą potwierdzić koniec Włącz, wysyłając `telemetry` wiadomości 
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `telemetry` |
-| Sygnatura czasowa X | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
+| X-Timestamp | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | `application/json` |
 | Treść | Strukturę JSON, która zawiera informacje o kliencie o Włącz |
 
@@ -330,7 +330,7 @@ W tej sekcji opisano wiadomości, które pochodzą z usługi rozpoznawania mowy 
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `speech.startDetected` |
-| Content-Type | Application/json; charset = utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 | Treść | Struktura JSON, która zawiera informacje o warunkach, gdy wykryte początek mowy. *Przesunięcie* pola w tej strukturze określa przesunięcie (w jednostkach 100-nanosekundowych) czas wykrycia mowy w usłudze stream audio względem początku strumienia. |
 
 #### <a name="sample-message"></a>Przykładowy komunikat
@@ -355,7 +355,7 @@ Podczas rozpoznawania mowy usługa rozpoznawania mowy okresowo generuje hipotez�
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `speech.hypothesis` |
-| Identyfikator żądania X | Identyfikator UUID w formacie "nie-dash" |
+| X-RequestId | Identyfikator UUID w formacie "nie-dash" |
 | Content-Type | application/json |
 | Treść | Hipoteza mowy strukturze JSON |
 
@@ -416,7 +416,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `speech.endDetected` |
 | Treść | Struktura JSON, która zawiera przesunięcie, gdy wykryto koniec mowy. Przesunięcie jest reprezentowany w jednostkach 100-nanosekundowych przesunięcie od początku dźwięk, który jest używany do rozpoznawania. |
-| Content-Type | Application/json; charset = utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 
 #### <a name="sample-message"></a>Przykładowy komunikat
 
@@ -440,7 +440,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `turn.start` |
-| Content-Type | Application/json; charset = utf-8 |
+| Content-Type | application/json; charset=utf-8 |
 | Treść | Struktura JSON |
 
 #### <a name="sample-message"></a>Przykładowy komunikat
@@ -507,10 +507,10 @@ Klienci mogą zawierać informacje o zdarzeniach, które wystąpiły w okresie i
 
 | Pole | Opis | Sposób użycia |
 | ----- | ----------- | ----- |
-| Name (Nazwa) | `Connection` | Wymagane |
-| Identyfikator | Wartość identyfikatora połączenia, który był używany w *X ConnectionId* nagłówek dla tego żądania połączenia | Wymagane |
-| Uruchamianie | Czas, kiedy klient wysyłał żądania połączenia | Wymagane |
-| Zakończ | Podczas gdy klient otrzymał powiadomienie, że połączenie zostało nawiązane pomyślnie, lub w przypadku błędów, odrzucona, odrzuconych lub nie powiodło się | Wymagane |
+| Name | `Connection` | Wymagany |
+| Identyfikator | Wartość identyfikatora połączenia, który był używany w *X ConnectionId* nagłówek dla tego żądania połączenia | Wymagany |
+| Uruchamianie | Czas, kiedy klient wysyłał żądania połączenia | Wymagany |
+| Koniec | Podczas gdy klient otrzymał powiadomienie, że połączenie zostało nawiązane pomyślnie, lub w przypadku błędów, odrzucona, odrzuconych lub nie powiodło się | Wymagany |
 | Błąd | Opis błędu, który wystąpił, jeśli istnieje. Połączenie zakończyło się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
 Opis błędu nie powinna przekraczać 50 znaków i najlepiej musi mieć jedną z wartości wymienione w poniższej tabeli. Jeśli warunek błędu nie odpowiada jednej z tych wartości, klienci mogą używać zwięzły opis warunku błędu przy użyciu [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez biały znak. Możliwość wysyłania *telemetrii* komunikat wymaga połączenia z usługą, więc tylko przejściowy lub tymczasowe błędy mogą być zgłaszane w *telemetrii* wiadomości. Błędów, które *trwale* bloku przez klienta podczas nawiązywania połączenia z usługą zapobiec wysyła wszystkie komunikaty do usługi, w tym *telemetrii* wiadomości.
@@ -547,9 +547,9 @@ Można użyć następujących przykładów jak wskazówki for rejestrujące *Sta
 
 | Pole | Opis | Sposób użycia |
 | ----- | ----------- | ----- |
-| Name (Nazwa) | Mikrofon | Wymagane |
-| Uruchamianie | Czas, kiedy klient uruchomiony przy użyciu audio dane wejściowe z mikrofonu lub innego strumienia audio lub odebrane wyzwalacza z spotter — słowo kluczowe | Wymagane |
-| Zakończ | Czas, kiedy klient zatrzymana, za pomocą usługi stream mikrofon lub nagrania dźwiękowego | Wymagane |
+| Name | Mikrofon | Wymagany |
+| Uruchamianie | Czas, kiedy klient uruchomiony przy użyciu audio dane wejściowe z mikrofonu lub innego strumienia audio lub odebrane wyzwalacza z spotter — słowo kluczowe | Wymagany |
+| Koniec | Czas, kiedy klient zatrzymana, za pomocą usługi stream mikrofon lub nagrania dźwiękowego | Wymagany |
 | Błąd | Opis błędu, który wystąpił, jeśli istnieje. Operacje mikrofon zakończyły się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
 ### <a name="metric-listeningtrigger"></a>Metryki `ListeningTrigger`
@@ -567,9 +567,9 @@ Można użyć następujących przykładów jak wskazówki for rejestrujące *Sta
 
 | Pole | Opis | Sposób użycia |
 | ----- | ----------- | ----- |
-| Name (Nazwa) | ListeningTrigger | Optional (Opcjonalność) |
-| Uruchamianie | Czas rozpoczęcia nasłuchiwania wyzwalacz klient | Wymagane |
-| Zakończ | Czas, po zakończeniu nasłuchiwania wyzwalacz klient | Wymagane |
+| Name | ListeningTrigger | Optional (Opcjonalność) |
+| Uruchamianie | Czas rozpoczęcia nasłuchiwania wyzwalacz klient | Wymagany |
+| Koniec | Czas, po zakończeniu nasłuchiwania wyzwalacz klient | Wymagany |
 | Błąd | Opis błędu, który wystąpił, jeśli istnieje. Operacja wyzwalacza zakończyło się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
 #### <a name="sample-message"></a>Przykładowy komunikat

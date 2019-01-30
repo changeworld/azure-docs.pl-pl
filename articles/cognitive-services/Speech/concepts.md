@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344929"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219774"
 ---
 # <a name="basic-concepts"></a>Podstawowe pojęcia
 
@@ -75,8 +75,8 @@ Od Microsoft usługi mowy uczestniczy w niektóre stany, protokół usługi defi
 
 Usługa rozpoznawania mowy Microsoft udostępnia dwa sposoby deweloperzy mogą dodać mowy do aplikacji.
 
-- [Interfejsów API REST](GetStarted/GetStartedREST.md): deweloperzy mogą używać połączeń HTTP z ich aplikacji do usługi rozpoznawania mowy.
-- [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md): zaawansowane funkcje, deweloperzy mogą pobrać bibliotek klienta Microsoft Speech i link do ich aplikacji.  Biblioteki klienckie są dostępne na różnych platformach (Windows, Android, iOS) przy użyciu różnych języków, (C#, Java, JavaScript, ObjectiveC).
+- [Interfejsy API REST](GetStarted/GetStartedREST.md): Deweloperzy mogą używać połączeń HTTP z ich aplikacji do usługi rozpoznawania mowy.
+- [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md): Dla zaawansowanych funkcji deweloperzy mogą pobrać bibliotek klienta Microsoft Speech i link do ich aplikacji.  Biblioteki klienckie są dostępne na różnych platformach (Windows, Android, iOS) przy użyciu różnych języków, (C#, Java, JavaScript, ObjectiveC).
 
 | Przypadki zastosowań | [Interfejsy API REST](GetStarted/GetStartedREST.md) | [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|

@@ -5,16 +5,16 @@ description: Jak zarządzać ustawieniami, Utwórz obszar roboczy, Udostępnij o
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 7b6dd0ec271d335d1055381a8cb7256600be283f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627433"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227084"
 ---
 # <a name="how-to-manage-settings"></a>Jak zarządzać ustawieniami
 
@@ -85,11 +85,11 @@ W niestandardowych w usłudze Translator można udostępniać obszaru roboczego 
 
 ## <a name="sharing-permissions"></a>Uprawnienia do udostępniania
 
-1.  **Czytnik:** czytnika w obszarze roboczym będą mogli wyświetlać wszystkie informacje w obszarze roboczym. 
+1.  **Czytnik:** Czytnik w obszarze roboczym będą mogli wyświetlać wszystkie informacje w obszarze roboczym. 
 
-2.  **Edytor:** edytora w obszarze roboczym będą mogli dodać dokumenty, uczyć modele i usuwać dokumenty i projektów. One można dodać klucz subskrypcji, ale nie można modyfikować, który jest udostępniany przez obszar roboczy, usunąć obszar roboczy lub zmienić nazwę obszaru roboczego.
+2.  **Edytor:** Edytor w obszarze roboczym będą mogli dodać dokumenty, uczyć modele i usuwać dokumenty i projektów. One można dodać klucz subskrypcji, ale nie można modyfikować, który jest udostępniany przez obszar roboczy, usunąć obszar roboczy lub zmienić nazwę obszaru roboczego.
 
-3.  **Właściciel:** właściciel ma pełne uprawnienia do obszaru roboczego.
+3.  **Właściciel:** Właściciel ma pełne uprawnienia do obszaru roboczego.
 
 ## <a name="change-sharing-permission"></a>Zmiana uprawnień do udostępniania
 

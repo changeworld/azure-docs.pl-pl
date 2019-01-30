@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 52d001e32e1bdb0d0046853f18649bafa49b1f14
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127159"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228529"
 ---
 # <a name="command-line-interface"></a>Command Line Interface
 
@@ -48,7 +48,7 @@ Te pliki mogą być określone przez lokalne ścieżki do plików lub ścieżki 
 
 Ciąg opisu można opcjonalnie określić, aby później zidentyfikować binarnego indeksu przy użyciu **describe_index** polecenia.  
 
-Domyślnie indeks jest oparty na komputerze lokalnym.  Poza środowiskiem platformy Azure lokalnych kompilacji są ograniczone do plików danych, zawierające do 10 000 obiektów.  Podczas zdalnego flaga zostanie określona, indeks przyniesie tymczasowo utworzonej maszyny wirtualnej platformy Azure o określonym rozmiarze.  Dzięki temu dużych indeksów efektywnie przy użyciu maszyn wirtualnych platformy Azure przy użyciu większej ilości pamięci.  Aby uniknąć stronicowania, który spowalnia proces kompilacji, zaleca się używania maszyny Wirtualnej z 3 razy ilość pamięci RAM jako dane wejściowe rozmiar pliku.  Aby uzyskać listę dostępnych rozmiarów maszyn wirtualnych, zobacz [rozmiary maszyn wirtualnych](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Domyślnie indeks jest oparty na komputerze lokalnym.  Poza środowiskiem platformy Azure lokalnych kompilacji są ograniczone do plików danych, zawierające do 10 000 obiektów.  Podczas zdalnego flaga zostanie określona, indeks przyniesie tymczasowo utworzonej maszyny wirtualnej platformy Azure o określonym rozmiarze.  Dzięki temu dużych indeksów efektywnie przy użyciu maszyn wirtualnych platformy Azure przy użyciu większej ilości pamięci.  Aby uniknąć stronicowania, który spowalnia proces kompilacji, zaleca się używania maszyny Wirtualnej z 3 razy ilość pamięci RAM jako dane wejściowe rozmiar pliku.  Aby uzyskać listę dostępnych rozmiarów maszyn wirtualnych, zobacz [Rozmiary maszyn wirtualnych](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
 > [!TIP] 
 > Aby przyspieszyć kompilowanie presort obiektów w pliku danych, zmniejszając prawdopodobieństwo.

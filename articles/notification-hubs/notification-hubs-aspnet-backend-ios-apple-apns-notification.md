@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4ecac47de08b458eac375f8f5e774c396aeb2f5d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448112"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227713"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Samouczek: Powiadomienia wypychane do określonych użytkowników przy użyciu usługi Azure Notification Hubs
 
@@ -86,7 +86,7 @@ Jeśli chcesz używać jako usługi zaplecza usługi Mobile Apps, zobacz [Mobile
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. W `ViewController.h`, Dodaj następujący kod `#define` po Twoich instrukcjach importu. Zastąp `<Enter Your Backend Endpoint>` zastępczego docelowy adres URL umożliwia wdrażanie zaplecza aplikacji w poprzedniej sekcji. Na przykład *http://your_backend.azurewebsites.net*.
+4. W `ViewController.h`, Dodaj następujący kod `#define` po Twoich instrukcjach importu. Zastąp `<Enter Your Backend Endpoint>` zastępczego docelowy adres URL umożliwia wdrażanie zaplecza aplikacji w poprzedniej sekcji. Na przykład `http://your_backend.azurewebsites.net`.
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"

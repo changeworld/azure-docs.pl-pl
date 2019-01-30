@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9b462ba594122b86580b9d136a844db070eea92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340362"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217649"
 ---
 # <a name="what-is-bing-speech"></a>Co to jest rozpoznawanie mowy Bing?
 
@@ -28,10 +28,10 @@ API rozpoznawania mowy Bing firmy Microsoft oparte na chmurze oferuje dewelopero
 
 ## <a name="speech-to-text-speech-recognition"></a>Zamiana mowy na tekst (rozpoznawanie mowy)
 
-Interfejs API rozpoznawania mowy Microsoft *transcribes* strumieni audio na tekst, który aplikacji można wyświetlić użytkownikowi lub działać jako polecenia dane wejściowe. Udostępnia dwie metody dla deweloperów dodać mowy do aplikacji: interfejsy API REST **lub** bibliotek klienckich opartych na protokołu Websocket.
+Interfejs API rozpoznawania mowy Microsoft *transcribes* strumieni audio na tekst, który aplikacji można wyświetlić użytkownikowi lub działać jako polecenia dane wejściowe. Umożliwia ona deweloperzy mogą dodać mowy do aplikacji na dwa sposoby: Interfejsów API REST **lub** bibliotek klienckich opartych na protokołu Websocket.
 
-- [Interfejsów API REST](GetStarted/GetStartedREST.md): deweloperzy mogą używać połączeń HTTP z ich aplikacji do usługi rozpoznawania mowy.
-- [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md): zaawansowane funkcje, deweloperzy mogą pobrać bibliotek klienta Microsoft Speech i link do ich aplikacji.  Biblioteki klienckie są dostępne na różnych platformach (Windows, Android, iOS) przy użyciu różnych języków, (C#, Java, JavaScript, ObjectiveC). W przeciwieństwie do interfejsów API REST bibliotek klienckich korzystanie z protokołu opartego na protokole Websocket.
+- [Interfejsy API REST](GetStarted/GetStartedREST.md): Deweloperzy mogą używać połączeń HTTP z ich aplikacji do usługi rozpoznawania mowy.
+- [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md): Dla zaawansowanych funkcji deweloperzy mogą pobrać bibliotek klienta Microsoft Speech i link do ich aplikacji.  Biblioteki klienckie są dostępne na różnych platformach (Windows, Android, iOS) przy użyciu różnych języków, (C#, Java, JavaScript, ObjectiveC). W przeciwieństwie do interfejsów API REST bibliotek klienckich korzystanie z protokołu opartego na protokole Websocket.
 
 | Przypadki zastosowań | [Interfejsy API REST](GetStarted/GetStartedREST.md) | [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
@@ -60,4 +60,4 @@ Niezależnie od deweloperów podejście wybierz (interfejsy API REST lub bibliot
 
 ### <a name="next-steps"></a>Kolejne kroki
 
-- Wprowadzenie do używania usługi zamiany tekstu na mowę firmy Microsoft: [tekstu, aby dokumentacja interfejsu API rozpoznawania mowy](api-reference-rest/bingvoiceoutput.md). Aby uzyskać pełną listę języków i głosy są obsługiwane przez zamiany tekstu na mowę, zobacz [obsługiwanych ustawień regionalnych i czcionki głosowe](api-reference-rest/bingvoiceoutput.md#SupLocales).
+- Wprowadzenie do używania usługi zamiany tekstu na mowę firmy Microsoft: [Dokumentacja interfejsu API zamiany tekstu na mowę](api-reference-rest/bingvoiceoutput.md). Aby uzyskać pełną listę języków i głosy są obsługiwane przez zamiany tekstu na mowę, zobacz [obsługiwanych ustawień regionalnych i czcionki głosowe](api-reference-rest/bingvoiceoutput.md#SupLocales).

@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 5cbdad82e25baa95c0342eb514f39c7026f1618b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: fc40f20349e3424dbcf50f5ca0395b06a818566f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753082"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224058"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Szybki start: Używanie rozpoznawania mowy Bing interfejsu API REST
 
@@ -124,7 +124,7 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 W przykładzie użyto programu curl w systemie Linux przy użyciu programu bash. Jeśli nie jest dostępny na Twojej platformie, może być konieczne do zainstalowania programu curl. Przykład działa również na Cygwin na Windows, systemu Git Bash, zsh i innych powłoki.
 
@@ -191,7 +191,7 @@ Poniższy fragment kodu przedstawia przykład jak odpowiedzi może być odczytan
 ConvertTo-Json $RecoResponse
 ```
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 W tym przykładzie curl bezpośrednio zwraca komunikat odpowiedzi w ciągu. Jeśli chcesz było wyświetlane w formacie JSON, można użyć dodatkowych narzędzi, na przykład jq.
 

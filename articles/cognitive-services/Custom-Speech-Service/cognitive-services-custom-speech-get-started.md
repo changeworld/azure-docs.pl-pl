@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7392459f0b80558aac22bd585c0d30bf4105d76f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339937"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224449"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Rozpoczynanie pracy z usługą Custom Speech Service
 
@@ -28,15 +28,15 @@ Znajduje się przykład dobre rozwiązanie, które oferujemy Ci rozpoczęcie pra
 ## <a name="prerequisites"></a>Wymagania wstępne  
 
 ### <a name="subscribe-to-custom-speech-service-and-get-a-subscription-key"></a>Subskrybowanie usługi Custom Speech Service i Uzyskaj klucz subskrypcji
-Przed gry z powyższych przykładu, należy zasubskrybować Custom Speech Service i uzyskać subskrypcji z klucza, zobacz [subskrypcje](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) lub wyjaśnienia [tutaj](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). Zarówno klucz podstawowy i pomocniczy może służyć w ramach tego samouczka. Upewnij się, że stosowanie najlepszych rozwiązań w zakresie utrzymania klucz tajny klucza interfejsu API i bezpieczne.
+Przed gry z powyższych przykładu, należy zasubskrybować Custom Speech Service i uzyskać subskrypcji z klucza, zobacz [subskrypcje](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) lub wyjaśnienia [tutaj](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). W tym samouczku można używać zarówno klucza podstawowego, jak i pomocniczego. Pamiętaj, aby wdrożyć najlepsze rozwiązania umożliwiające bezpieczne przechowywanie klucza interfejsu API.
 
-### <a name="get-the-client-library-and-example"></a>Pobieranie klienta, biblioteki i przykładowe
-Możesz ją pobrać bibliotekę klienta oraz przykład za pośrednictwem [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Plik zip pobranego musi zostać wyodrębniona do wybranego folderu, wielu użytkowników, wybierz folder programu Visual Studio 2015.
+### <a name="get-the-client-library-and-example"></a>Pobieranie przykładu i biblioteki klienta
+Możesz ją pobrać bibliotekę klienta oraz przykład za pośrednictwem [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). Pobrany plik zip trzeba rozpakować do dowolnego folderu; wielu użytkowników wybiera folder Visual Studio 2015.
 
 ## <a name="creating-a-custom-acoustic-model"></a>Tworzenie niestandardowych modeli akustycznych
 Aby dostosować model akustyczny pod kątem wybranej domeny, wymagana jest kolekcja danych mowy. Ta kolekcja składa się z zestawu plików dźwiękowych z danymi mowy oraz pliku tekstowego z transkrypcjami wszystkich plików dźwiękowych. Dane audio powinna być reprezentatywna dla scenariusza, w której chcesz użyć aparatu rozpoznawania
 
-Na przykład: Jeśli chcesz lepiej rozpoznawanie mowy w środowisku fabryki generujące dużo alertów, pliki audio powinna składać się z osób wypowiedzi w fabryce generujące dużo alertów.
+Na przykład: Jeżeli chcesz lepiej rozpoznawać mowę w głośnym środowisku fabryki, pliki dźwiękowe powinny zawierać mowę osób rozmawiających w głośnej fabryce.
 Jeśli interesuje Cię Optymalizacja wydajności dla pojedynczej osoby mówiącej, może np. Czy chcesz także wszystkie rozmowy Fireside FDR firmy, a następnie pliki audio powinna składać się z wielu przykładów tylko tej osoby mówiącej.
 
 Szczegółowy opis można znaleźć w sposób utworzyć niestandardowy model akustyczny [tutaj](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).

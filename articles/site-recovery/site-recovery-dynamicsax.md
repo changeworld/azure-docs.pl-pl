@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c2151be1644cde0e737be7f026bdf63cef0b3686
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838144"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221967"
 ---
-# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji Dynamics AX 
+# <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji Dynamics AX   
 
 
 
@@ -120,13 +120,13 @@ Plan odzyskiwania dla aplikacji systemu Dynamics AX można dostosować, dodając
 
 * **Kroki pracy awaryjnej programu SQL Server**: Aby uzyskać informacji na temat określonych kroków odzyskiwania do programu SQL server, zobacz [replikacji aplikacji za pomocą programu SQL Server i usługi Azure Site Recovery](site-recovery-sql.md).
 
-* **Grupy trybu failover 1**: tryb failover maszyn wirtualnych serwera obiektu aplikacji.
+* **Grupy trybu failover 1**: Pracy awaryjnej maszyn wirtualnych serwera obiektu aplikacji.
 Upewnij się, że wybrany punkt odzyskiwania jest możliwie najdokładniej bazą PIT, ale nie przed jej.
 
-* **Skrypt**: Dodaj moduł równoważenia obciążenia (tylko E-A).
+* **skrypt**: Dodaj usługę równoważenia obciążenia (tylko E-A).
 Dodaj skrypt (za pośrednictwem usługi Azure Automation) po grupie maszyn wirtualnych serwera obiektu aplikacji funkcjonuje dodać moduł równoważenia obciążenia do niej. Można użyć skryptu do wykonania tego zadania. Aby uzyskać więcej informacji, zobacz [sposób dodawania równoważenia obciążenia na potrzeby odzyskiwania po awarii aplikacji wielowarstwowej](https://azure.microsoft.com/blog/cloud-migration-and-disaster-recovery-of-load-balanced-multi-tier-applications-using-azure-site-recovery/).
 
-* **Praca awaryjna grupy 2**: klient Dynamics AX maszyny wirtualne w tryb failover. Tryb failover maszyn wirtualnych warstwy internetowej jako część planu odzyskiwania.
+* **Grupy trybu failover 2**: Tryb failover klienta systemu Dynamics AX maszyn wirtualnych. Tryb failover maszyn wirtualnych warstwy internetowej jako część planu odzyskiwania.
 
 
 ### <a name="perform-a-test-failover"></a>Wykonaj test trybu failover

@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych do i z bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o sposobach przenoszenia danych z bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi Azure Data Factory.
+title: Kopiowanie danych do i z wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przenieść dane do i z wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,40 +12,40 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: jingwang
-ms.openlocfilehash: b8ce3cdb55d164cefc8b85314a2fa79b4f901a08
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: dc84f6a6a2e10bb7bdbe859eefc71c74769595de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887346"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215133"
 ---
-# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopiowanie danych do i z bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi Azure Data Factory
+# <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopiowanie danych do i z wystąpienia zarządzanego Azure SQL Database przy użyciu usługi Azure Data Factory
 
-W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do wystąpienia usługi Azure SQL Database Managed. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych do i z wystąpienia zarządzanego Azure SQL Database. Opiera się na [omówieniu działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Kopiowanie danych z wystąpienia zarządzanego Azure SQL Database do dowolnego obsługiwanego magazynu danych ujścia lub skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do wystąpienia zarządzanego. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Możesz skopiować dane z wystąpienia zarządzanego Azure SQL Database, do dowolnego obsługiwanego magazynu danych ujścia. Możesz także skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do wystąpienia zarządzanego. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła i ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
 W szczególności ten łącznik wystąpienia zarządzanego Azure SQL Database obsługuje:
 
-- Kopiowanie danych przy użyciu **SQL** lub **Windows** uwierzytelniania.
+- Kopiowanie danych przy użyciu uwierzytelniania SQL lub Windows.
 - Jako źródła pobierania danych przy użyciu zapytania SQL lub procedury składowanej.
-- Jako ujścia dołączanie danych do tabeli docelowej lub wywołanie procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
+- Jako obiekt sink dołączanie danych do tabeli docelowej lub wywołanie procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
 
 Program SQL Server [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017) nie jest obecnie obsługiwane. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć kopiowania danych z bazy danych wystąpienia zarządzanego Azure SQL, który znajduje się w sieci Wirtualnej, musisz skonfigurować własne środowisko Integration Runtime można dostęp do bazy danych. Zobacz [własne środowisko IR](create-self-hosted-integration-runtime.md) artykuł, aby uzyskać szczegółowe informacje.
+Aby użyć kopiowania danych z bazy danych wystąpienia zarządzanego Azure SQL, który znajduje się w sieci wirtualnej, skonfiguruj Self-Hosted integration runtime, które mogą dostęp do bazy danych. Aby uzyskać więcej informacji, zobacz [może być samodzielnie hostowane środowisko IR](create-self-hosted-integration-runtime.md).
 
-W przypadku aprowizowania środowiska IR produktem w tej samej sieci wirtualnej jako wystąpienia zarządzanego, upewnij się, że Twoja maszyna IR jest w innej podsieci niż wystąpienia zarządzanego. W przypadku aprowizowania środowiska IR produktem w innej sieci wirtualnej niż wystąpienia zarządzanego, można użyć komunikacji równorzędnej sieci wirtualnej lub sieci wirtualnej w celu połączenia sieci wirtualnej. Zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
+Alokowania swoje własne środowisko integration runtime w tej samej sieci wirtualnej jako wystąpienia zarządzanego upewnij się, że komputerze integration runtime jest w innej podsieci niż wystąpienie zarządzane. Aprowizujesz swoje własne środowisko integration runtime w innej sieci wirtualnej niż wystąpienie zarządzane umożliwia komunikację równorzędną sieci wirtualnej lub sieci wirtualnej w celu połączenia sieci wirtualnej. Aby uzyskać więcej informacji, zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
 
-## <a name="getting-started"></a>Wprowadzenie
+## <a name="get-started"></a>Rozpoczęcie pracy
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do wystąpienia zarządzanego Azure SQL Database łącznika.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi Azure SQL Database Managed Instance.
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
@@ -53,16 +53,16 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **SqlServer** | Yes |
-| Parametry połączenia |Określ informacje connectionString wymagany do połączenia z wystąpieniem zarządzanym przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. Zapoznaj się z poniższego przykładu. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| userName |Określ nazwę użytkownika, jeśli korzystasz z uwierzytelniania Windows. Przykład: **nazwa_domeny\\username**. |Nie |
-| hasło |Określ hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Nie |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Aprowizuj środowiskiem Integration Runtime w tej samej sieci Wirtualnej jako wystąpienia zarządzanego. |Yes |
+| type | Właściwość type musi być równa **SqlServer**. | Tak. |
+| Parametry połączenia |Ta właściwość określa informacje parametry połączenia, które jest wymagane do połączenia wystąpienia zarządzanego przy użyciu uwierzytelniania SQL lub uwierzytelniania Windows. Aby uzyskać więcej informacji zobacz następujące przykłady. Wybierz **SecureString** można bezpiecznie przechowywać informacji parametry połączenia w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Tak. |
+| userName |Ta właściwość określa nazwę użytkownika, jeśli używasz uwierzytelniania Windows. Na przykład **nazwa_domeny\\username**. |Nie. |
+| hasło |Ta właściwość określa hasło dla konta użytkownika, która została określona jako nazwy użytkownika. Wybierz **SecureString** można bezpiecznie przechowywać informacji parametry połączenia w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Nie. |
+| connectVia | To [środowiska integration runtime](concepts-integration-runtime.md) służy do łączenia się z magazynem danych. Dostarczanie własnego środowiska integration runtime w tej samej sieci wirtualnej jako wystąpienia zarządzanego. |Tak. |
 
 >[!TIP]
->Jeśli osiągnięty błąd z kodem jako "UserErrorFailedToConnectToSqlServer", a wiadomości, takich jak "limit sesji dla bazy danych jest XXX i został osiągnięty.", Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
+>Można napotkać "UserErrorFailedToConnectToSqlServer" z komunikatem, takich jak "limit sesji dla bazy danych jest XXX i osiągnięto". kod błędu: Jeśli ten błąd występuje, Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
 
-**Przykład 1: Przy użyciu uwierzytelniania SQL**
+**Przykład 1: Użyj uwierzytelniania SQL**
 
 ```json
 {
@@ -83,7 +83,7 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 }
 ```
 
-**Przykład 2: Przy użyciu uwierzytelniania Windows**
+**Przykład 2: Uwierzytelnianie Windows**
 
 ```json
 {
@@ -111,14 +111,14 @@ Następujące właściwości są obsługiwane dla bazy danych wystąpienia zarz�
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych w wystąpieniu zarządzanym usługi Azure SQL Database.
+Aby uzyskać pełną listę sekcje i właściwości można używać do definiowania zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych wystąpienia zarządzanego Azure SQL Database.
 
-Aby skopiować dane z/do wystąpienia zarządzanego Azure SQL Database, należy ustawić właściwość typu zestawu danych na **SqlServerTable**. Obsługiwane są następujące właściwości:
+Aby skopiować dane do i z wystąpienia zarządzanego Azure SQL Database, należy ustawić właściwość typu zestawu danych na **SqlServerTable**. Obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **SqlServerTable** | Yes |
-| tableName |Nazwa tabeli lub widoku w wystąpieniu bazy danych, które połączona usługa przywołuje. | Brak źródła tak dla ujścia |
+| type | Właściwość typu elementu dataset musi być równa **SqlServerTable**. | Tak. |
+| tableName |Ta właściwość jest nazwa tabeli lub widoku w wystąpieniu bazy danych, które połączona usługa przywołuje. | Brak źródła. Tak w przypadku ujścia. |
 
 **Przykład**
 
@@ -141,25 +141,25 @@ Aby skopiować dane z/do wystąpienia zarządzanego Azure SQL Database, należy 
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez wystąpienia zarządzanego Azure SQL Database źródła i ujścia.
+Aby uzyskać pełną listę właściwości, które można używać do definiowania działań i sekcje zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez wystąpienia zarządzanego Azure SQL Database źródła i ujścia.
 
-### <a name="azure-sql-database-managed-instance-as-source"></a>Wystąpienie usługi Azure SQL Database Managed jako źródło
+### <a name="azure-sql-database-managed-instance-as-a-source"></a>Wystąpienie usługi Azure SQL Database Managed jako źródło
 
-Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, należy ustawić typ źródła w działaniu kopiowania, aby **SqlSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, należy ustawić typ źródła w działaniu kopiowania, aby **SqlSource**. W sekcji Źródło działania kopiowania, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **SqlSource** | Yes |
-| sqlReaderQuery |Umożliwia odczytywanie danych niestandardowe zapytania SQL. Przykład: `select * from MyTable`. |Nie |
-| sqlReaderStoredProcedureName |Nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie |
-| storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to: par nazwa/wartość. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie |
+| type | Właściwość typu źródła działania kopiowania musi być równa **SqlSource**. | Tak. |
+| sqlReaderQuery |Ta właściwość używa niestandardowe zapytania SQL do odczytywania danych. Może to być na przykład `select * from MyTable`. |Nie. |
+| sqlReaderStoredProcedureName |Ta właściwość jest nazwa procedury składowanej, która odczytuje dane z tabeli źródłowej. Ostatnią instrukcję SQL musi być instrukcja SELECT w procedurze składowanej. |Nie. |
+| storedProcedureParameters |Te parametry są przeznaczone dla procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie. |
 
-**Uwagi na**
+Pamiętaj o następujących kwestiach:
 
-- Jeśli **sqlReaderQuery** określono SqlSource uruchomieniu działania kopiowania to zapytanie względem źródła wystąpienia zarządzanego, aby uzyskać dane. Alternatywnie, można określić procedury składowanej, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** (jeśli jest to procedura składowana pobiera parametry).
-- Jeśli właściwość "sqlReaderQuery" lub "sqlReaderStoredProcedureName" nie jest określona, kolumny zdefiniowane w sekcji "strukturę" zestaw danych JSON służą do utworzenia kwerendy (`select column1, column2 from mytable`) w celu uruchomienia wystąpienia zarządzanego. Definicja zestawu danych nie ma "strukturę", wszystkie kolumny są wybierane z tabeli.
+- Jeśli **sqlReaderQuery** jest określona dla **SqlSource**, działanie kopiowania jest uruchamiane to zapytanie względem źródła wystąpienia zarządzanego w celu pobrania danych. Można również określić procedury przechowywanej, określając **sqlReaderStoredProcedureName** i **storedProcedureParameters** Jeśli procedura składowana pobiera parametry.
+- Jeśli nie podasz **sqlReaderQuery** lub **sqlReaderStoredProcedureName** właściwość, kolumny, zdefiniowane w sekcji "strukturę" zestawu danych JSON służą do utworzenia zapytania. Zapytanie `select column1, column2 from mytable` jest uruchamiana dla wystąpienia zarządzanego. Definicja zestawu danych nie ma "strukturę", wszystkie kolumny są wybierane z tabeli.
 
-**Przykład: Przy użyciu zapytania SQL**
+**Przykład: Korzystać z zapytania SQL**
 
 ```json
 "activities":[
@@ -191,7 +191,7 @@ Aby skopiować dane z wystąpienia zarządzanego Azure SQL Database, należy ust
 ]
 ```
 
-**Przykład: Za pomocą procedury składowanej**
+**Przykład: Użyj procedury składowanej**
 
 ```json
 "activities":[
@@ -246,22 +246,22 @@ END
 GO
 ```
 
-### <a name="azure-sql-database-managed-instance-as-sink"></a>Wystąpienie usługi Azure SQL Database zarządzane jako ujścia
+### <a name="azure-sql-database-managed-instance-as-a-sink"></a>Wystąpienie usługi Azure SQL Database Managed jako obiekt sink
 
-Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy ustawić typ ujścia w działaniu kopiowania, aby **SqlSink**. Następujące właściwości są obsługiwane w działaniu kopiowania **ujścia** sekcji:
+Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy ustawić typ ujścia w działaniu kopiowania, aby **SqlSink**. W sekcji ujścia działania kopiowania, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type ujścia działania kopiowania: **SqlSink** | Yes |
-| writeBatchSize |Wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to: liczba całkowita (liczba wierszy). |Nie (domyślne: 10000) |
-| writeBatchTimeout |Czas na ukończenie przed upływem limitu czasu operacji wstawiania wsadowego oczekiwania.<br/>Dozwolone wartości to: przedziału czasu. Przykład: "00: 30:00" (30 minut). |Nie |
-| preCopyScript |Określ zapytanie SQL, działanie kopiowania w celu wykonania przed zapisanie danych w wystąpieniu zarządzanym. Jej będzie można wywołać tylko raz na kopiowania Uruchom. Ta właściwość umożliwia czyszczenie wstępnie załadowanych danych. |Nie |
-| sqlWriterStoredProcedureName |Nazwa procedury składowanej, który definiuje sposób dotyczą źródła danych do tabeli docelowej, np. czy wykonuje operację UPSERT lub przekształcenie za pomocą z własną logiką biznesową. <br/><br/>Należy pamiętać, tę procedurę składowaną będzie **wywoływane na partię**. Jeśli chcesz wykonać operację, która tylko jest uruchamiane jeden raz i nie ma nic wspólnego z źródła danych, np. Usuń/truncate, użyj `preCopyScript` właściwości. |Nie |
-| storedProcedureParameters |Parametry procedury składowanej.<br/>Dozwolone wartości to: par nazwa/wartość. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie |
-| sqlWriterTableType |Określ nazwę typu tabeli ma być używany w procedurze składowanej. Działanie kopiowania udostępnia dane jest przenoszony w tabeli tymczasowej w przypadku tego typu tabeli. Kod procedury składowanej można następnie scalić dane, w której są kopiowane z istniejącymi danymi. |Nie |
+| type | Właściwość type ujścia działania kopiowania musi być równa **SqlSink**. | Tak. |
+| writeBatchSize |Ta właściwość wstawia dane do tabeli SQL, gdy writeBatchSize osiągnie rozmiar buforu.<br/>Dozwolone wartości to liczby całkowite, liczby wierszy. |Nie (domyślne: 10,000). |
+| writeBatchTimeout |Ta właściwość określa czas oczekiwania na zakończenie przed upływem limitu czasu operacji wstawiania wsadowego.<br/>Dozwolone wartości to zakresu czasu. Na przykład "00: 30:00," który jest 30 minut. |Nie. |
+| preCopyScript |Ta właściwość określa zapytanie SQL, działanie kopiowania do wykonania przed zapisaniem danych do wystąpienia zarządzanego. Jest wywoływana tylko raz na kopiowania Uruchom. Ta właściwość umożliwia oczyszczania załadowanych danych. |Nie. |
+| sqlWriterStoredProcedureName |Ta nazwa jest procedury przechowywanej, która definiuje sposób stosowania źródła danych do tabeli docelowej. Przykłady procedury to zrobić za pomocą z własną logiką biznesową wykonuje operację UPSERT lub przekształcenia. <br/><br/>Procedura składowana jest *wywoływane na partię*. Do wykonania operacji, która jest uruchamiany tylko raz i nie ma nic wspólnego z danych źródłowych, na przykład, usunąć lub obciąć należy użyć `preCopyScript` właściwości. |Nie. |
+| storedProcedureParameters |Te parametry są używane dla procedury składowanej.<br/>Dozwolone wartości to pary nazw ani wartości. Nazwy i wielkość liter w wyrazie parametry muszą być zgodne, nazwy i wielkość liter w wyrazie parametrów procedury składowanej. |Nie. |
+| sqlWriterTableType |Ta właściwość określa nazwę typu tabeli ma być używany w procedurze składowanej. Działanie kopiowania udostępnia dane jest przenoszony w tabeli tymczasowej w przypadku tego typu tabeli. Kod procedury składowanej można następnie scalić dane, które są kopiowane z istniejącymi danymi. |Nie. |
 
 > [!TIP]
-> Podczas kopiowania danych do wystąpienia zarządzanego Azure SQL Database, działanie kopiowania dołącza dane do tabeli ujścia domyślnie. Aby przeprowadzić UPSERT lub dodatkowe reguły biznesowe, użyj procedury składowanej w SqlSink. Dowiedz się więcej szczegółów z [wywoływania procedury składowanej dla SQL ujścia](#invoking-stored-procedure-for-sql-sink).
+> Gdy dane są kopiowane do wystąpienia zarządzanego Azure SQL Database, działanie kopiowania dołącza dane do tabeli ujścia domyślnie. Aby przeprowadzić upsert lub dodatkowe reguły biznesowe, użyj procedury składowanej w SqlSink. Aby uzyskać więcej informacji, zobacz [wywołaj procedurę składowaną z ujścia SQL](#invoke-a-stored-procedure-from-a-sql-sink).
 
 **Przykład 1: Dołączanie danych**
 
@@ -295,9 +295,9 @@ Aby skopiować dane do wystąpienia zarządzanego Azure SQL Database, należy us
 ]
 ```
 
-**Przykład 2: Wywoływanie procedury składowanej podczas kopiowania dla upsert**
+**Przykład 2: Wywołaj procedurę składowaną podczas kopiowania dla upsert**
 
-Dowiedz się więcej szczegółów z [wywoływania procedury składowanej dla SQL ujścia](#invoking-stored-procedure-for-sql-sink).
+Dowiedz się więcej szczegółów z [wywołaj procedurę składowaną z ujścia SQL](#invoke-a-stored-procedure-from-a-sql-sink).
 
 ```json
 "activities":[
@@ -336,7 +336,7 @@ Dowiedz się więcej szczegółów z [wywoływania procedury składowanej dla SQ
 
 ## <a name="identity-columns-in-the-target-database"></a>Kolumny tożsamości w docelowej bazie danych
 
-Ta sekcja zawiera przykład, który kopiuje dane z tabeli źródłowej, za pomocą żadnej kolumny tożsamości do tabeli docelowej z kolumną tożsamości.
+Poniższy przykład kopiuje dane z tabeli źródłowej, za pomocą żadnej kolumny tożsamości do docelowej tabeli z kolumną tożsamości.
 
 **Tabela źródłowa**
 
@@ -401,15 +401,15 @@ Należy zauważyć, że tabela docelowa ma kolumny tożsamości.
 }
 ```
 
-Należy zauważyć, że jako tabela źródłowa i docelowa mają różne schemat (element docelowy ma dodatkową kolumnę z tożsamością). W tym scenariuszu należy określić **struktury** właściwości w definicji zestawu danych docelowego nie zawiera kolumny tożsamości.
+Należy zauważyć, że tabela źródłowa i docelowa mają różne schemat. Tabela docelowa ma kolumny tożsamości. W tym scenariuszu należy określić właściwość "strukturę" w definicji zestawu danych docelowych, które nie zawiera kolumny tożsamości.
 
-## <a name="invoking-stored-procedure-for-sql-sink"></a> Wywołaj procedurę składowaną z SQL ujścia
+## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a> Wywołaj procedurę składowaną z SQL ujścia
 
-Podczas kopiowania danych do bazy danych wystąpienia zarządzanego Azure SQL, określonego przez użytkownika, które zostały zapisane procedury może skonfigurować i wywołana z dodatkowych parametrów.
+Gdy dane są kopiowane do wystąpienia zarządzanego Azure SQL Database, procedurę składowaną można konfigurować i wywoływane z dodatkowymi parametrami, które określisz.
 
-Procedura składowana służy podczas kopiowania wbudowane mechanizmy nie służą do celów. Jest ona zwykle używana, gdy upsert (insert i update) lub dodatkowego przetwarzania (Scalanie kolumn wyszukiwania dodatkowe wartości, wstawiania do wielu tabel, itp.) musi odbywać się przed ostatnim wstawiania danych źródłowych w tabeli docelowej.
+Podczas kopiowania wbudowane mechanizmy nie służą do celów, można użyć procedury składowanej. Jest ona zwykle używana, gdy upsert (aktualizacja + insert) lub dodatkowego przetwarzania musi odbywać się przed ostatnim wstawiania danych źródłowych w tabeli docelowej. Dodatkowe operacje mogą obejmować zadania, takie jak scalanie kolumn wyszukiwania dodatkowe wartości, a jego wstawieniem do wielu tabel.
 
-Poniższy przykład pokazuje, jak zrobić upsert do tabeli w wystąpieniu zarządzanym za pomocą procedury składowanej. Zakładając, że dane wejściowe, jak i w tabeli "Marketing" sink ma trzy kolumny: Identyfikator profilu, stan i kategorii. Przeprowadź upsert, w oparciu o kolumnę "ProfileID" i mają zastosowanie tylko do określonej kategorii.
+Poniższy przykład pokazuje, jak zrobić upsert do tabeli w wystąpieniu zarządzanym za pomocą procedury składowanej. Przykład przyjęto założenie, iż dane wejściowe, jak i w tabeli "Marketing" sink trzy kolumny: Identyfikator profilu, stan i kategorii. Przeprowadź upsert, w oparciu o kolumnę ProfileID i poprosić o określonej kategorii.
 
 **Wyjściowy zestaw danych**
 
@@ -430,7 +430,7 @@ Poniższy przykład pokazuje, jak zrobić upsert do tabeli w wystąpieniu zarzą
 }
 ```
 
-Zdefiniuj sekcji SqlSink w działaniu kopiowania w następujący sposób.
+Zdefiniuj sekcji SqlSink w działaniu kopiowania w następujący sposób:
 
 ```json
 "sink": {
@@ -445,7 +445,7 @@ Zdefiniuj sekcji SqlSink w działaniu kopiowania w następujący sposób.
 }
 ```
 
-W bazie danych zdefiniuj procedurę składowaną o takiej samej nazwie jako SqlWriterStoredProcedureName. Obsługuje on danych wejściowych z określonego źródła, a merge w tabeli danych wyjściowych. Nazwa parametru typu tabeli w procedurze składowanej powinna być taka sama jak nazwa "tableName" zdefiniowany w zestawie danych.
+W bazie danych zdefiniuj procedurę składowaną o takiej samej nazwie jako SqlWriterStoredProcedureName. Obsługuje dane wejściowe z określonego źródła i scala tabela danych wyjściowych. Nazwa parametru typu tabeli w procedurze składowanej jest taka sama jak nazwa "tableName", który jest zdefiniowany w zestawie danych.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -462,7 +462,7 @@ BEGIN
 END
 ```
 
-W bazie danych należy zdefiniować typ tabeli o takiej samej nazwie jako sqlWriterTableType. Zauważ, że schemat tabeli powinna być taka sama jak schemat zwrócony przez dane wejściowe.
+W bazie danych należy zdefiniować typ tabeli o takiej samej nazwie jako sqlWriterTableType. Schemat tabeli jest taka sama jak schemat zwrócony przez dane wejściowe.
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(
@@ -472,16 +472,16 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 )
 ```
 
-Funkcja procedura składowana wykorzystuje [parametry Table-Valued](https://msdn.microsoft.com/library/bb675163.aspx).
+Funkcja procedura składowana wykorzystuje [parametry z wartościami przechowywanymi w tabeli](https://msdn.microsoft.com/library/bb675163.aspx).
 
 >[!NOTE]
->Jeśli piszesz na typ danych pieniądze/Smallmoney przez wywoływanie procedury składowanej, mogą być zaokrąglane wartości. Określ odpowiedni typ danych w TVP jako dziesiętne zamiast pieniądze/Smallmoney, aby uniknąć. 
+>Jeśli piszesz do **pieniądze/Smallmoney** typ danych, wywołując procedurę składowaną, może być zaokrąglane wartości. Określ odpowiedni typ danych w parametrach wartościami przechowywanymi w tabeli jako **dziesiętna** zamiast **pieniądze/Smallmoney** Aby rozwiązać ten problem. 
 
 ## <a name="data-type-mapping-for-azure-sql-database-managed-instance"></a>Mapowanie typu danych dla wystąpienia zarządzanego Azure SQL Database
 
-Podczas kopiowania danych z i do wystąpienia zarządzanego Azure SQL Database, następujące mapowania są używane do typów danych tymczasowych usługi Azure Data Factory z typów danych w wystąpieniu zarządzanym. Zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md) Aby poznać sposób działania kopiowania mapowania typ schematu i danych źródła do ujścia.
+Gdy dane są kopiowane do i z wystąpienia zarządzanego Azure SQL Database, następujące mapowania są używane z typów danych w wystąpieniu zarządzanym usługi Azure SQL Database do typów danych tymczasowych usługi Azure Data Factory. Aby dowiedzieć się, jak działanie kopiowania mapuje źródłowy typ schematu i danych ujścia, zobacz [schemat i dane mapowanie typu](copy-activity-schema-and-type-mapping.md).
 
-| Typ danych w wystąpieniu zarządzanym bazy danych SQL platformy Azure | Typ danych tymczasowych fabryki danych |
+| Typ danych w wystąpieniu zarządzanym bazy danych SQL platformy Azure | Typ danych tymczasowych w usłudze Azure Data Factory |
 |:--- |:--- |
 | bigint |Int64 |
 | dane binarne |Byte[] |
@@ -517,7 +517,7 @@ Podczas kopiowania danych z i do wystąpienia zarządzanego Azure SQL Database, 
 | xml |Xml |
 
 >[!NOTE]
-> Mapowania typów danych do typu dziesiętnego przejściowym aktualnie ADF obsługuje dokładności maksymalnie 28. Jeśli masz dane z dokładnością jest większy niż 28, należy wziąć pod uwagę do przekonwertowania na ciąg w zapytaniu SQL.
+> Dla typów danych, które mapowania typu dziesiętnego przejściowym usługi Azure Data Factory obsługuje obecnie dokładności maksymalnie 28. W przypadku danych, które wymagają dokładności jest większy niż 28 należy wziąć pod uwagę konwertowanie na ciąg w zapytaniu SQL.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

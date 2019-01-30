@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: e81428d5bdffb65b5e61a7aba7496da275f249a5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3f56bd4efafe506a95d46524713ebe49e3250f63
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230560"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220396"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
@@ -41,7 +41,7 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 
 ## <a name="supported-types-for-named-entity-recognition"></a>Obsługiwane typy dla rozpoznawanie jednostek znaku
 
-| Typ  | Podtyp | Przykład |
+| Type  | SubType | Przykład |
 |:-----------   |:------------- |:---------|
 | Person (Osoba)        | N/D\*         | "Jan", "Billa Gatesa"     |
 | Lokalizacja      | N/D\*         | "Redmond w stanie Waszyngton", "Paryż"  |
@@ -51,14 +51,14 @@ Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu 
 | Ilość      | Liczba porządkowa       | "2", "drugi"     | 
 | Ilość      | NumberRange   | "od 4 do 8"     | 
 | Ilość      | Wiek           | "90 dni temu" lub "30 lat"    | 
-| Ilość      | Waluta      | "$10,99"     | 
+| Ilość      | Waluta      | "$10.99"     | 
 | Ilość      | Wymiar     | "10 mil", "40 cm"     | 
 | Ilość      | Temperatura   | "stopni 32"    |
 | DateTime      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
 | DateTime      | Date          | "2nd maja 2017", "2017-05-02"   | 
 | Data i godzina     | Time          | "8: 00", "8:00"  | 
 | DateTime      | DateRange     | "Maja 2 do 5 maja."    | 
-| DateTime      | timeRange     | "18: 00 – 19: 00"     | 
+| DateTime      | TimeRange     | "18: 00 – 19: 00"     | 
 | DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
 | DateTime      | Set           | "każdy wtorek"     | 
 | DateTime      | Strefa czasowa      |    | 
@@ -93,7 +93,7 @@ Dokument musi mieć mniej niż 5000 znaków, a kolekcja może zawierać maksymal
 
 Szczegółowe informacje na temat definicji żądania można znaleźć w artykule [Jak wywołać interfejs API analizy tekstu](text-analytics-how-to-call-api.md). Dla wygody poniżej ponownie podano odpowiednie kroki:
 
-+ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
 + Ustaw punkt końcowy HTTP dla działania funkcji wydobywania podmiotów. Musi on obejmować zasób `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
@@ -104,13 +104,13 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 > [!Tip]
 > Użyj programu [Postman](text-analytics-how-to-call-api.md) lub otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), aby określić strukturę żądania i przesłać je do usługi za pomocą operacji POST.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
+## <a name="step-2-post-the-request"></a>Krok 2. Wysłanie żądania
 
 Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 100 żądań na minutę. Maksymalny rozmiar każdego żądania to 1 MB.
 
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
-## <a name="step-3-view-results"></a>Krok 3: Wyświetlenie wyników
+## <a name="step-3-view-results"></a>Krok 3. Wyświetlanie wyników
 
 Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami i wykrytymi właściwościami.
 

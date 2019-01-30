@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 967bd0d980bf0f9c184287c10fd531758c992247
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ff2352005470755c8ca0f472c4a790a820fea6b6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437862"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215524"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure
 
-Można utworzyć zasobu obrazu zarządzanego z uogólnionej maszyny wirtualnej (VM), która jest przechowywana jako dysk zarządzany lub dysk niezarządzany na koncie magazynu. Obraz, który następnie może służyć do tworzenia wielu maszyn wirtualnych. Aby uzyskać informacji na temat zarządzanych bille obrazów, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). 
+Można utworzyć zasobu obrazu zarządzanego z uogólnionej maszyny wirtualnej (VM), która jest przechowywana jako dysk zarządzany lub dysk niezarządzany na koncie magazynu. Obraz, który następnie może służyć do tworzenia wielu maszyn wirtualnych. Aby uzyskać informacje dotyczące zarządzanych obrazy są rozliczane, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Uogólnianie maszyny wirtualnej z systemem Windows za pomocą narzędzia Sysprep
 

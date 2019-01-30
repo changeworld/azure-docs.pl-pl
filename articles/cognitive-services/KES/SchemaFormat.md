@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 07f5536641b55aadf9d8b2623bf4797b8dcd7bd5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4fa8f072d420a0245b9de65482ab4c97fa775bdf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129254"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227305"
 ---
 # <a name="schema-format"></a>Format schematu
 
@@ -41,15 +41,15 @@ W nazwach atrybutów jest rozróżniana wielkość liter identyfikatorów, któr
 
 Poniżej przedstawiono listę typów danych obsługiwanych atrybutu:
 
-| Typ | Opis | Operacje | Przykład |
+| Type | Opis | Operacje | Przykład |
 |------|-------------|------------|---------|
 | Ciąg | Ciąg (1 – 1024 znaki) | Equals, starts_with | "hello world" |
 | Int32 | 32-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 2016 |
 | Int64 | 64-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 9876543210 |
 | Podwójne | Wartość zmiennoprzecinkowa o podwójnej precyzji | równa się, starts_with, is_between | 1.602e-19 |
-| Date | Data (1400-01-01 do 9999-12-31) | Equals, is_between | "2016-03-14" |
+| Date | Data (1400-01-01 do 9999-12-31) | Equals, is_between | '2016-03-14' |
 | Identyfikator GUID | Unikatowy identyfikator globalny | równa się | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| Blob | Wewnętrznie skompresowanych danych nieindeksowaną | *Brak* | "Zwiększenie możliwości dostępnych dla każdej osoby i każdej organizacji, na świecie, aby mogli osiągnąć więcej" |
+| Obiekt blob | Wewnętrznie skompresowanych danych nieindeksowaną | *Brak* | "Zwiększenie możliwości dostępnych dla każdej osoby i każdej organizacji, na świecie, aby mogli osiągnąć więcej" |
 | Złożone | Kompozycja wiele atrybutów podrzędnych| *Nie dotyczy* | {"Name": "harry shum", "Przynależności": "microsoft"} |
 
 Atrybuty ciągu są używane do reprezentowania wartości ciągów, które mogą się pojawić jako część zapytania użytkownika.  Obsługują one dokładne dopasowanie *jest równa* operacji, jak również *starts_with* operacji scenariuszach uzupełniania zapytań, na przykład dopasowania "micros" z "microsoft".  Bez uwzględniania wielkości liter i rozmyte dopasowywanie do obsługi błędów pisowni będą obsługiwane w przyszłych wydaniach.

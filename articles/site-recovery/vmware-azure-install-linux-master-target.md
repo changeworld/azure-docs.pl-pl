@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7ff73051abc5168b4dc3852a9008adc22d7d56c6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811863"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217989"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalowanie serwera głównego elementu docelowego systemu Linux do powrotu po awarii
 Po przełączeniu w tryb failover maszyn wirtualnych na platformie Azure możesz można wykonać powrotu po awarii maszyn wirtualnych do lokacji lokalnej. Do powrotu po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. Ten proces wymaga lokalny główny serwer docelowy serwer do odbierania ruchu. 
@@ -130,7 +130,7 @@ Zachowaj obrazu ISO systemu Ubuntu 16.04.2 minimalny 64-bitowych w stacji dyskó
 
     ![Wybierz oprogramowanie](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. W selction dotyczące instalowania modułu ładującego rozruchu CHODNIKÓW, wybierz **tak**, a następnie wybierz pozycję **Enter**.
+1. Przy wyborze dotyczące instalowania modułu ładującego rozruchu CHODNIKÓW, wybierz **tak**, a następnie wybierz pozycję **Enter**.
      
     ![Program GRUB rozruchu Instalatora](./media/vmware-azure-install-linux-master-target/image20.png)
 

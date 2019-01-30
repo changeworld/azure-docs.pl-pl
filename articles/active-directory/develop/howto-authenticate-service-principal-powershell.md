@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: c768d5a35016b0725d4dbca2a418c8e780812d62
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 35a69f12dc73ef0cbf9bc1541fa75037f6ef06f5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091650"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228240"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Instrukcje: Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
 
@@ -46,7 +46,7 @@ Najłatwiejszym sposobem sprawdzenia, czy Twoje konto ma odpowiednie uprawnienia
 
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Tworzenie jednostki usługi z certyfikatem z podpisem własnym
 
-Poniższy przykład przedstawia prosty scenariusz. Używa ona [New AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) do utworzenia jednostki usługi przy użyciu certyfikatu z podpisem własnym i używa [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) można przypisać [Współautor](../../role-based-access-control/built-in-roles.md#contributor) Rola do nazwy głównej usługi. Zakres przypisania roli to aktualnie wybrana subskrypcja platformy Azure. Aby wybrać inną subskrypcję, użyj [AzContext zestaw](/powershell/module/az.profile/set-azcontext).
+Poniższy przykład przedstawia prosty scenariusz. Używa ona [New AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) do utworzenia jednostki usługi przy użyciu certyfikatu z podpisem własnym i używa [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) można przypisać [Współautor](../../role-based-access-control/built-in-roles.md#contributor) Rola do nazwy głównej usługi. Zakres przypisania roli to aktualnie wybrana subskrypcja platformy Azure. Aby wybrać inną subskrypcję, użyj [AzContext zestaw](/powershell/module/Az.Accounts/Set-AzContext).
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" `

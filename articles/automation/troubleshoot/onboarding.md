@@ -4,22 +4,40 @@ description: Dowiedz się, jak rozwiązywać problemy z błędami dołączania p
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879645"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228784"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Rozwiązywanie problemów z błędami podczas dołączania do rozwiązania
 
 Mogą wystąpić błędy podczas dołączania rozwiązań, takich jak zarządzanie aktualizacjami lub śledzenia zmian i spisu. W tym artykule opisano różne błędy, które mogą występować i ich rozwiązania.
 
 ## <a name="general-errors"></a>Ogólne błędy
+
+### <a name="missing-write-permissions"></a>Scenariusz: Dołączanie zakończy się niepowodzeniem z komunikatem — nie można włączyć rozwiązania
+
+#### <a name="issue"></a>Problem
+
+Pojawi się następujący komunikat o błędzie podczas próby dołączenia maszyny wirtualnej do rozwiązania:
+
+```
+The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Ten błąd jest spowodowany przez niepoprawne lub brakujące uprawnienia na maszynie wirtualnej, czy dla użytkownika.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Upewnij się, że masz odpowiednie uprawnienia do dołączenia maszyny wirtualnej. Przegląd [uprawnienia wymagane do dołączania maszyn](../automation-role-based-access-control.md#onboarding) , a następnie spróbuj dołączyć rozwiązanie ponownie.
 
 ### <a name="computer-group-query-format-error"></a>Scenariusz: ComputerGroupQueryFormatError
 
@@ -55,7 +73,7 @@ Aby pomyślnie wdrożyć to rozwiązanie, należy wziąć pod uwagę zmianę wsk
   * Ponownie celem zasad do określonego zasobu (np. na określonym koncie usługi Automation).
   * Zmiana zestawu zasobów tej zasady został skonfigurowany do odmowy.
 
-Sprawdź powiadomienia w prawym górnym rogu witryny Azure Portal lub przejdź do grupy zasobów, który zawiera Twoje konto usługi automation i wybierz **wdrożeń** w obszarze **ustawienia** wyświetlić nieudane wdrożenie. Aby dowiedzieć się więcej na temat usługi Azure Policy, odwiedź stronę: [Omówienie usługi Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
+Sprawdź powiadomienia w prawym górnym rogu witryny Azure Portal lub przejdź do grupy zasobów, który zawiera Twoje konto usługi automation i wybierz **wdrożeń** w obszarze **ustawienia** wyświetlić nieudane wdrożenie. Aby dowiedzieć się więcej o zasadach usługi Azure, odwiedź stronę: [Omówienie usługi Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="mma-extension-failures"></a>Błędy rozszerzenia programu MMA
 

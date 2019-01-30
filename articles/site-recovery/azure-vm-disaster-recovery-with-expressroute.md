@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 5a16b81abb9cc95f46bd61f6c0232a28f3cda0ff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875403"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228291"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -28,8 +28,8 @@ Usługa Site Recovery umożliwia odzyskiwanie po awarii maszyn wirtualnych platf
 
 Usługa ExpressRoute umożliwia rozszerzanie sieci lokalnych na chmurę Microsoft Azure za pośrednictwem połączenia prywatnego wspieranego przez dostawcę połączenia. W przypadku usługi ExpressRoute skonfigurować ją integruje się z usługą Site Recovery w następujący sposób:
 
-- **Podczas replikacji między regionami platformy Azure**: ruch związany z replikacją dla odzyskiwania po awarii maszyny Wirtualnej platformy Azure jest tylko w obrębie platformy Azure i usługi ExpressRoute nie jest wymagane lub używane na potrzeby replikacji. Jednak jeśli łączysz z lokacji lokalnej do maszyn wirtualnych platformy Azure w lokacji głównej platformy Azure, istnieje szereg zagadnień, które należy zwrócić uwagę podczas konfigurowania odzyskiwania po awarii dla tych maszyn wirtualnych platformy Azure.
-- **Tryb failover między regionami platformy Azure**: w przypadku wystąpienia awarii, trybu failover maszyny wirtualne platformy Azure z serwera podstawowego na regionie pomocniczym platformy Azure. Po awarii do regionu pomocniczego, istnieje kilka kroków do wykonania w celu uzyskania dostępu do maszyn wirtualnych platformy Azure w dodatkowym regionie, przy użyciu usługi ExpressRoute.
+- **Podczas replikacji między regionami platformy Azure**: Ruch związany z replikacją dla odzyskiwania po awarii maszyny Wirtualnej platformy Azure jest tylko w obrębie platformy Azure i usługi ExpressRoute nie jest wymagane lub używane na potrzeby replikacji. Jednak jeśli łączysz z lokacji lokalnej do maszyn wirtualnych platformy Azure w lokacji głównej platformy Azure, istnieje szereg zagadnień, które należy zwrócić uwagę podczas konfigurowania odzyskiwania po awarii dla tych maszyn wirtualnych platformy Azure.
+- **Tryb failover między regionami platformy Azure**: W przypadku wystąpienia awarii, trybu failover maszyny wirtualne platformy Azure z serwera podstawowego na regionie pomocniczym platformy Azure. Po awarii do regionu pomocniczego, istnieje kilka kroków do wykonania w celu uzyskania dostępu do maszyn wirtualnych platformy Azure w dodatkowym regionie, przy użyciu usługi ExpressRoute.
 
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -93,7 +93,7 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 - **Piastą**. Brak sieci wirtualnej koncentratora **źródła piastą**: 10.10.10.0/24.
     - Tej sieci wirtualnej koncentratora pełnić rolę strażnika.
     - Cała komunikacja między podsieciami przechodzą przez tego koncentratora.
- - ** Centrum sieci wirtualnej podsieci**. Sieć wirtualna Centrum ma dwie podsieci:
+ - Centrum sieci wirtualnej podsieci **. Sieć wirtualna Centrum ma dwie podsieci:
      - **Urządzenie WUS podsieci**: 10.10.10.0/25. Ta podsieć zawiera NVA (. 10.10.10.10).
      - **Podsieć bramy**: 10.10.10.128/25. Ta podsieć zawiera bramę usługi ExpressRoute, nawiązanie połączenia usługi ExpressRoute, która kieruje do lokacji lokalnej za pośrednictwem prywatnej komunikacji równorzędnej domeny routingu.
 - W lokalnym centrum danych ma połączenie obwodu usługi ExpressRoute za pośrednictwem przewagę partnera w Hongkongu.
@@ -104,7 +104,7 @@ Zazwyczaj wdrożeń w przedsiębiorstwach mają obciążeń podzielone między w
 
 #### <a name="spoke-to-hub"></a>Szprycha do piasty
 
-**Kierunek** | **Ustawienie** | **Stan**
+**Kierunek** | **Ustawienie** | **State**
 --- | --- | ---
 Szprycha do piasty | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Szprycha do piasty | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
@@ -115,7 +115,7 @@ Szprycha do piasty | Za pomocą bram remove | Enabled (Włączony)
 
 #### <a name="hub-to-spoke"></a>Piasta do szprychy
 
-**Kierunek** | **Ustawienie** | **Stan**
+**Kierunek** | **Ustawienie** | **State**
 --- | --- | ---
 Piasta do szprychy | Zezwalaj na adres sieci wirtualnej | Enabled (Włączony)
 Piasta do szprychy | Zezwalaj na ruch przesłany dalej | Enabled (Włączony)
@@ -146,7 +146,7 @@ Po maszyny wirtualne platformy Azure przejścia w tryb failover do docelowego re
 
 #### <a name="two-circuits-with-two-peering-locations"></a>Dwa obwody z dwóch lokalizacji komunikacji równorzędnej
 
-Dzięki temu konfiguracja chroni obwodów usługi ExpressRoute względem regionalnej awarii. Jeśli Twojej podstawowej położenie komunikacji równorzędnej ulegnie awarii, nadal połączenia z innej lokalizacji.
+Dzięki temu konfiguracja chroni obwodów usługi ExpressRoute względem regionalnej awarii. Jeśli lokalizacji głównej komunikacji równorzędnej ulegnie awarii, nadal połączenia z innej lokalizacji.
 
 - Obwód podłączone do środowiska produkcyjnego jest zazwyczaj podstawowym. Obwód pomocniczy ma zazwyczaj mniejszej przepustowości, która może być zwiększana w przypadku wystąpienia awarii.
 - Po włączeniu trybu failover można ustanowić połączenia z pomocniczego obwodu usługi ExpressRoute w docelowej sieci wirtualnej. Alternatywnie możesz mieć połączenia skonfigurowane i można w razie awarii, aby zmniejszyć ogólny czas odzyskiwania.

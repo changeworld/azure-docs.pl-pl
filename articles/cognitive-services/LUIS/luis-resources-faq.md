@@ -7,16 +7,16 @@ manager: cgronlun
 ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 95af7a5e051a756d3067469aa42ecf4d71d56950
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 704c3c6b4c998526936e7532fcd92c85ccce54e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912173"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222188"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -228,7 +228,7 @@ Następujące funkcje zostały wydane na konferencji Build 2018 r.:
 
 Tworzenie dodatkowych [trasy interfejsu API](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md) zostały uwzględnione.
 
-Wideo:
+Filmy wideo:
 * [Azure Friday konferencji Build 2018: Cognitive Services — języka (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Pokaż sztucznej Inteligencji 2018 kompilacji — nowości pojawiły się z usługą interpretacji języka](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
 * [Sesja konferencji Build 2018 — inteligencja botów, możliwości rozpoznawania mowy i najlepsze rozwiązania dotyczące NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)

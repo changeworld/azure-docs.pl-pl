@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: c2285b4d7764592d3e210177edd8f127ca4bfaee
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: MT
+ms.openlocfilehash: 43f4aa5cc0d8545c6148fc15991817356ff69827
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55090667"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228104"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Użyj protokołu SSL do zabezpieczania usług sieci web za pomocą usługi Azure Machine Learning
 
@@ -82,36 +82,11 @@ Aby wdrożyć (lub ponownie wdrożyć) usługi z włączonym protokołem SSL, us
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-<a name="fpga"></a>
-+ **Wdrażanie na Tablice bramek programowane (układów FPGA)**
-
-  Odpowiedź `create_service` operacja zawiera adres IP usługi. Adres IP jest używany, gdy mapowanie nazwy DNS na adres IP usługi. Odpowiedź zawiera również __klucza podstawowego__ i __klucz pomocniczy__ służące do korzystania z usługi. Podaj wartości parametrów związanych z protokołu SSL, jak pokazano we fragmencie kodu:
-
-    ```python
-    from amlrealtimeai import DeploymentClient
-
-    subscription_id = "<Your Azure Subscription ID>"
-    resource_group = "<Your Azure Resource Group Name>"
-    model_management_account = "<Your Azure Machine Learning service Model Management Account Name>"
-    location = "eastus2"
-
-    model_name = "resnet50-model"
-    service_name = "quickstart-service"
-
-    deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account, location)
-
-    with open('cert.pem','r') as cert_file:
-        with open('key.pem','r') as key_file:
-            cert = cert_file.read()
-            key = key_file.read()
-            service = deployment_client.create_service(service_name, model_id, ssl_enabled=True, ssl_certificate=cert, ssl_key=key)
-    ```
-
 ## <a name="update-your-dns"></a>Zaktualizuj serwer DNS
 
 Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
-+ **ACI i FPGA**:
++ **Aby uzyskać ACI**:
 
   Użyj narzędzi dostarczanych przez rejestratora nazw domen, aby zaktualizować rekord DNS dla nazwy domeny. Rekord musi wskazywać na adres IP usługi.
 
@@ -122,6 +97,10 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
   Aktualizowanie systemu DNS, na karcie "Konfiguracja" "Publiczny adres IP" dla klastra AKS, jak pokazano na ilustracji. Możesz znaleźć publiczny adres IP jako jeden z typów zasobów utworzonych w ramach grupy zasobów, która zawiera węzły agenta usługi AKS i innych zasobów sieciowych.
 
   ![Usługa Azure Machine Learning: Zabezpieczanie usług sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+
++ **Aby uzyskać FPGA**:
+
+Używanie protokołu SSL z usługami wdrożonymi FPGA nie jest obecnie obsługiwane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

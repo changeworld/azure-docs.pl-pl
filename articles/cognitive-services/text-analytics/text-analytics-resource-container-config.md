@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 8f3c6b62f71247aabe88fd06956c6f2a26db82c1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 2360cb56f40bf899cec5d4a5fb6637eaac59f4d1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460927"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224330"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurowanie analizy tekstu kontenerów platformy docker
 
@@ -49,7 +49,7 @@ To ustawienie można znaleźć w tym miejscu następujące:
 
 * Azure Portal: **Analiza tekstu** Przegląd, etykietą `Endpoint`
 
-|Wymagane| Name (Nazwa) | Typ danych | Opis |
+|Wymagany| Name (Nazwa) | Typ danych | Opis |
 |--|------|-----------|-------------|
 |Yes| `Billing` | Ciąg | Identyfikator URI punktu końcowego rozliczeń<br><br>Przykład:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
 
@@ -77,7 +77,7 @@ Kontenery Analiza tekstu nie używaj danych wejściowych lub danych wyjściowych
 
 Dokładna składnia lokalizację instalacji hosta różni się zależnie od systemu operacyjnego hosta. Ponadto [komputerze-hoście](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)w lokalizacji instalacji może być niedostępna z powodu konfliktu między uprawnienia użyte dla konta usługi docker i hosta instalacji uprawnienia do lokalizacji. 
 
-|Optional (Opcjonalność)| Name (Nazwa) | Typ danych | Opis |
+|Optional (Opcjonalność)| Name | Typ danych | Opis |
 |-------|------|-----------|-------------|
 |Niedozwolone| `Input` | Ciąg | Kontenery Analiza tekstu nie należy używać tego.|
 |Optional (Opcjonalność)| `Output` | Ciąg | Miejsce docelowe instalacji danych wyjściowych. Wartość domyślna to `/output`. Jest to Lokalizacja dzienników. W tym dzienniki kontenerów. <br><br>Przykład:<br>`--mount type=bind,src=c:\output,target=/output`|

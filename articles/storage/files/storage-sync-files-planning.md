@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 750ab99df1d241cf4252c49a5a9ced08a82b1c92
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 55d73d51cf7d1867b868b3a9b8385340e01cdd02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809195"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223397"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -283,3 +283,4 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 * [Planowanie wdrożenia usługi Azure Files](storage-files-planning.md)
 * [Wdrażanie usługi pliki Azure](storage-files-deployment-guide.md)
 * [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
+* [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

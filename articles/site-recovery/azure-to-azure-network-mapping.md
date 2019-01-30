@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 6140687d583534d21ee50652811c2fd1624a5cf5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840456"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223786"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Konfigurowanie mapowania sieci i adresowania IP dla sieci wirtualnych
 
@@ -62,8 +62,8 @@ Podsieć docelowa wybrania maszyny Wirtualnej na podstawie nazwy podsieci źród
 
 Adres IP dla każdego interfejsu Sieciowego docelowej maszyny wirtualnej są skonfigurowane w następujący sposób:
 
-- **DHCP**: Jeśli karta sieciowa źródłowej maszyny Wirtualnej korzysta z protokołu DHCP, kart interfejsu Sieciowego docelowej maszyny Wirtualnej jest również ustawiona do używania protokołu DHCP.
-- **Statyczny adres IP**: Jeśli karta sieciowa źródłowej maszyny Wirtualnej używa statycznego adresu IP, docelowej karty Sieciowej maszyny Wirtualnej będzie również użyć statycznego adresu IP.
+- **DHCP**: Jeśli karta sieciowa źródłowej maszyny Wirtualnej korzysta z protokołu DHCP, kart interfejsu Sieciowego docelowej maszyny Wirtualnej jest również ustawiona na korzystania z usługi DHCP.
+- **Statyczny adres IP**: Jeśli karta sieciowa źródłowej maszyny Wirtualnej używa statycznego adresu IP, docelowej karty Sieciowej maszyny Wirtualnej również użyje statyczny adres IP.
 
 
 ## <a name="ip-address-assignment-during-failover"></a>Przypisywanie adresów IP podczas trybu failover
@@ -79,8 +79,8 @@ Różnymi przestrzeniami adresowymi<br/><br/> Następnym dostępnym adresem IP w
 
 **Sieć docelowa** | **Szczegóły**
 --- | ---
-Docelowa sieć jest siecią wirtualną w tryb failover | -Docelowy adres IP jest statyczna, ale nie jako ten sam adres IP zarezerwowane dla trybu failover.<br/><br/>  -Przypisanego adresu jest następnym dostępnym adresem od końca zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy adres IP jest 10.0.0.19 i trybu failover sieć używa zakresu 10.0.0.0/24, a następnie dalej adresu IP przypisanego do docelowej maszyny Wirtualnej jest 10.0.0.254.
-Sieć docelowa nie jest trybem failover sieci wirtualnej | -Docelowy adres IP będzie statycznych przy użyciu tego samego adresu IP dla trybu failover.<br/><br/>  -Jeśli ten sam adres IP jest już przypisany, adres IP jest kolejny dostępne pod adresem eeach zakresu podsieci.<br/><br/> Na przykład: Jeśli statyczny adres IP źródła 10.0.0.19 i trybu failover znajduje się w sieci, które nie są sieci trybu failover, w której zakres 10.0.0.0/24, to statyczny adres IP docelowej będą 10.0.0.0.19, jeśli jest dostępny, i w przeciwnym razie będzie 10.0.0.254.
+Docelowa sieć jest siecią wirtualną w tryb failover | -Docelowy adres IP jest statyczna, ale nie jako ten sam adres IP zarezerwowane dla trybu failover.<br/><br/>  -Przypisanego adresu jest następnym dostępnym adresem od końca zakresu podsieci.<br/><br/> Na przykład: Jeśli źródłowy adres IP jest 10.0.0.19 i trybu failover sieć używa zakresu 10.0.0.0/24, dalej adresu IP przypisanego do docelowej maszyny Wirtualnej jest 10.0.0.254.
+Sieć docelowa nie jest trybem failover sieci wirtualnej | -Docelowy adres IP będzie statycznych przy użyciu tego samego adresu IP dla trybu failover.<br/><br/>  -Jeśli ten sam adres IP jest już przypisany, adres IP jest kolejny dostępny w ramach każdego zakresu podsieci.<br/><br/> Na przykład: Jeśli źródło statyczny adres IP jest 10.0.0.19 i trybu failover znajduje się w sieci, która nie jest sieć trybu failover, to przy użyciu zakresu 10.0.0.0/24, statyczny adres IP docelowego będzie 10.0.0.0.19, jeśli jest dostępny, a w przeciwnym razie będzie 10.0.0.254.
 
 - Przełączenie w tryb failover w sieci wirtualnej jest sieci docelowej, która została wybrana, podczas konfigurowania odzyskiwania po awarii.
 - Firma Microsoft zaleca, zawsze używać innych produkcyjnego środowiska sieciowego do testowania trybu failover.

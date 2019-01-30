@@ -6,29 +6,29 @@ services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095487"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217182"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Rozwiązywanie problemów z zestawu SDK usługi mowy
 
 Ten artykuł zawiera informacje, aby pomóc w rozwiązywaniu problemów, które można napotkać, korzystając z zestawu SDK usługi mowy.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnienie WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnianie WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
 
 Konieczne może być nieprawidłowy punkt końcowy dla Twojego regionu lub usługi. Sprawdź identyfikator URI, aby upewnić się, że jest on poprawny.
 
 Ponadto może być problem z Twoim klucz subskrypcji lub autoryzacji tokenu. Aby uzyskać więcej informacji zobacz następną sekcję.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Błąd: HTTP 403 Dostęp zabroniony lub HTTP 401 Brak autoryzacji
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Błąd: HTTP 403 — Dostęp zabroniony lub HTTP 401 Brak autoryzacji
 
 Ten błąd jest często spowodowane przez problemy z uwierzytelnianiem. Żądania połączenia bez prawidłowego `Ocp-Apim-Subscription-Key` lub `Authorization` nagłówka zostały odrzucone ze stanem 403 lub 401.
 
@@ -108,7 +108,7 @@ Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poni
 
 Ten błąd występuje zazwyczaj, gdy treść żądania zawiera nieprawidłowe dane audio. Jest obsługiwany tylko format WAV. Sprawdź, czy nagłówki żądania, aby upewnić się, można określić odpowiednie wartości dla `Content-Type` i `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Błąd: Limit czasu z 408 żądania HTTP
+## <a name="error-http-408-request-timeout"></a>Błąd: Limit czasu 408 żądania HTTP
 
 Najbardziej prawdopodobną błąd występuje, ponieważ nie dane audio są wysyłane do usługi. Ten błąd może być także spowodowany przez problemy z siecią.
 

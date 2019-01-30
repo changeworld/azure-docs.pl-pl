@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 8ef8f66a67ee93ea8c015c33e69b87e7c5d2a898
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d729d840bb055452eb8bb87cc978f1e38dcea48e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259991"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227951"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Serializowanie danych na platformie Apache Hadoop przy użyciu Microsoft Avro Library
 
@@ -1351,7 +1351,7 @@ W szóstej przykładzie pokazano kilka technik programowania, związane z intera
 Przykład wykonuje następujące zadania:
 
 * Łączy do istniejącego klastra usługi HDInsight.
-* Serializuje kilka plików CSV i przesyła wyniki do usługi Azure Blob storage. (Pliki CSV są dystrybuowane wraz z przykładu i reprezentują wyciąg z danych historycznych AMEX Stock dystrybuowane przez [Infochimps](https://www.infochimps.com/) okres 1970 roku 2010. Przykład odczytuje danych z plików CSV, konwertuje rekordy do wystąpień **Stock** klasy i szereguje je przy użyciu odbicia. Definicja typu podstawowego jest tworzony na podstawie schematu JSON, za pomocą narzędzia generowania kodu programu Microsoft Avro Library.
+* Serializuje kilka plików CSV i przesyła wyniki do usługi Azure Blob storage. (Pliki CSV są dystrybuowane wraz z przykładu i reprezentują wyciąg z danych historycznych AMEX Stock dystrybuowane przez [Infochimps](https://www.infochimps.org/) okres 1970 roku 2010. Przykład odczytuje danych z plików CSV, konwertuje rekordy do wystąpień **Stock** klasy i szereguje je przy użyciu odbicia. Definicja typu podstawowego jest tworzony na podstawie schematu JSON, za pomocą narzędzia generowania kodu programu Microsoft Avro Library.
 * Tworzy nową tabelę zewnętrzne o nazwie **zasobów** w gałęzi i łączy ją z danymi przekazany w poprzednim kroku.
 * Wykonuje zapytanie przy użyciu programu Hive za pośrednictwem **zasobów** tabeli.
 

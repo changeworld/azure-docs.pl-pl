@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5fcc7b760b5445e57b41787d8818ef11ed926e6c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2b0065dbdac8e3bdbc535f2d7d103b24110e1d02
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129356"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217275"
 ---
 # <a name="semantic-interpretation"></a>Interpretacja semantyczna
 
@@ -33,7 +33,7 @@ Zmienna jest określona za pomocą identyfikator nazwy, który rozpoczyna się o
 
 Poniżej znajduje się lista aktualnie obsługiwanych typów danych:
 
-|Typ|Opis|Przykłady|
+|Type|Opis|Przykłady|
 |----|----|----|
 |Ciąg|Sekwencja 0 lub więcej znaków|"Hello World!"<br/>""|
 |wartość logiczna|Wartość logiczna|true<br/>false|
@@ -139,7 +139,7 @@ Zmienne zakresu żądania są współużytkowane przez wszystkie interpretacji w
 
 Zmienne systemowe są wstępnie zdefiniowane przez usługę i może służyć do pobierania różne statystyki dotyczące bieżącego stanu systemu.  Poniżej znajduje się zestaw zmiennych aktualnie obsługiwany system:
 
-|Name (Nazwa)|Typ|Opis|
+|Name|Typ|Opis|
 |----|----|----|
 |IsAtEndOfQuery|wartość logiczna|wartość true, jeśli bieżący interpretacji spowodowało dopasowanie całego tekstu kwerendy wejściowej|
 |IsBeyondEndOfQuery|wartość logiczna|wartość true, jeśli bieżący interpretacji proponuje uzupełnienia poza tekst wejściowy zapytania|

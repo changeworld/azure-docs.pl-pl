@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 02f6c3f81cbaa26eed8de8b7785b519ecbc3bf26
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 889eabf38f25923d9bd84ea6ceaa5567c74216df
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344255"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223820"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -60,7 +60,7 @@ Proces konwersji "pierwotne" niesformatowanego tekstu sformatowanego tekstu, tj.
 
 ## <a name="l"></a>L
 
-### <a name="language-model"></a>Model językowy
+### <a name="language-model"></a>Model języka
 
 Model języka to rozkład prawdopodobieństwa dla sekwencji słów. Model języka pomaga systemowi wybierać między sekwencjami słów, które brzmią podobnie, w oparciu o prawdopodobieństwo sekwencji
 
@@ -70,13 +70,13 @@ Model języka to rozkład prawdopodobieństwa dla sekwencji słów. Model język
 
 ### <a name="normalization"></a>Normalizacja
 
-Normalizacji (tekst): Przekształcanie tekst wynikowy (czyli transkrypcji) do postaci standardowych, jednoznaczną odczytany przez system.
+Normalizacja (tekst): Przekształcenie tekst wynikowy (czyli transkrypcji) do postaci standardowych, jednoznaczną odczytany przez system.
 
 ## <a name="o"></a>O
 
 ## <a name="p"></a>P
 
-## <a name="q"></a>PYTANIA I ODPOWIEDZI
+## <a name="q"></a>Q
 
 ## <a name="r"></a>R
 
@@ -94,7 +94,7 @@ Klucz subskrypcji jest ciągiem, który należy określić jako parametr ciągu 
 
 ### <a name="transcription"></a>Transkrypcji
 
-Transkrypcja: Fragment tekstu, która wynika z procesu część pliku audio w formacie .wav
+Tekst: Fragment tekstu, która wynika z procesu część pliku audio w formacie .wav
 
 ## <a name="u"></a>U
 

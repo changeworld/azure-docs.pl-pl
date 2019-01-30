@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: e34409490f9e120cb39daf99b280cc52c59f54e2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845649"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210424"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorowanie i rozwiązywanie problemów Site Recovery
 
@@ -35,7 +35,7 @@ W tym artykule dowiesz się, jak używać usługi Azure Site Recovery w wbudowan
 
 Sekcja zreplikowane elementy nie pokazuje kondycję wszystkich maszyn, które mają włączoną w magazynie replikację.
 
-**Stan** | **Szczegóły**
+**State** | **Szczegóły**
 --- | ---
 W dobrej kondycji | Zwykle jest wykonywana replikacja. Nie błąd lub ostrzeżenie objawów są wykrywane.
 Ostrzeżenie | Objawy ostrzeżenia, które mogą mieć wpływ na replikację są wykrywane.
@@ -49,7 +49,7 @@ Możesz wyświetlić stan testu trybu failover dla maszyn w magazynie.
 - Firma Microsoft zaleca się uruchomienie testu trybu failover na replikowanych maszynach co najmniej raz na każde sześć miesięcy. Jest to sposób, aby sprawdzić, czy tryb failover działa zgodnie z oczekiwaniami, bez zakłócania działania środowiska produkcyjnego. 
 - Testowanie trybu failover jest uznawany za pomyślny, tylko wtedy, gdy czyszczenie trybu failover i po przełączeniu w tryb failover została ukończona pomyślnie.
 
-**Stan** | **Szczegóły**
+**State** | **Szczegóły**
 --- | ---
 Test jest zalecany | Maszyny, które nie mam testowy tryb failover, ponieważ ochrona została włączona.
 Wykonano pomyślnie | Maszyny z lub osiągania sukcesów testowych trybów Failover.
@@ -62,7 +62,7 @@ Nie dotyczy | Maszyny, które nie są aktualnie kwalifikuje się do testowania t
 - Problemy z konfiguracją w (z wyjątkiem dostępności aktualizacji oprogramowania), są wykrywane przez operację okresowe modułu sprawdzania poprawności, która jest domyślnie uruchamiany co 12 godzin. Można wymusić operacji modułu sprawdzania poprawności, aby natychmiast uruchomić, klikając ikonę odświeżania obok pozycji **problemy z konfiguracją** nagłówek sekcji.
 - Kliknij łącza, aby uzyskać więcej szczegółów. W przypadku problemów wpływających na określonych maszyn, kliknij przycisk **wymaga uwagi** w **docelowe konfiguracje** kolumny. Szczegółowe informacje obejmują zaleceniami związanymi z korygowaniem.
 
-**Stan** | **Szczegóły**
+**State** | **Szczegóły**
 --- | ---
 Brak konfiguracji | Brak wymaganych ustawień, takich jak sieć odzyskiwania lub grupy zasobów.
 Brak zasobów | Określony zasób, nie można odnaleźć lub nie jest dostępna w ramach subskrypcji. Na przykład zasób został usunięty lub migracji. Monitorowanych zasobów uwzględnione w docelowej grupie zasobów, docelowej sieci wirtualnej/podsieci, dziennika/docelowego konta magazynu, docelowy zestaw dostępności, docelowy adres IP.
@@ -95,7 +95,7 @@ Aktualizacje oprogramowania | Dostępność nowych aktualizacji oprogramowania o
 - Aby korzystać ze wszystkich funkcji w widoku infrastruktury, powinien być uruchomiony [22 pakiet zbiorczy aktualizacji](https://support.microsoft.com/help/4072852) tych składników.
 - Aby użyć widoku infrastruktury, wybierz scenariusz replikacji odpowiednie w Twoim środowisku. Można przejść do szczegółów w widoku, aby uzyskać więcej informacji. W poniższej tabeli przedstawiono scenariusze, które są reprezentowane.
 
-    **Scenariusz** | **Stan**  | **Wyświetl dostępne?**
+    **Scenariusz** | **State**  | **Wyświetl dostępne?**
     --- |--- | ---
     **Replikacja między lokacjami lokalnymi** | Wszystkie stany | Nie 
     **Replikacja maszyn wirtualnych usługi Azure między regionami platformy Azure**  | Replikacja włączona początkowej replikacji w toku | Yes
@@ -149,17 +149,17 @@ Na pulpicie nawigacyjnym dodatku można monitorować maszyn, na stronie maszyn w
     ![Usługa Site Recovery zreplikowane elementy widoku listy](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Na **zreplikowane elementy** strony, można wyświetlić i filtrować informacje. W menu Akcja u góry można wykonać akcje dla określonego komputera, takich jak uruchamianie testu trybu failover lub wyświetlanie określonych błędów.
-3.  Kliknij przycisk **kolumn** pokazanie dodatkowych kolumn, na przykład wyświetlić cel punktu odzyskiwania, przeznaczony dla problemów z konfiguracją oraz błędy replikacji.
+3.  Kliknij przycisk **kolumn** Aby wyświetlić dodatkowe kolumny, na przykład wyświetlić cel punktu odzyskiwania, przeznaczony dla problemów z konfiguracją oraz błędy replikacji.
 4. Kliknij przycisk **filtr** do wyświetlania informacji na podstawie określonych parametrów, takich jak kondycja replikacji lub zasady replikacji w określonej.
 5. Kliknij prawym przyciskiem myszy maszynę, aby zainicjować operacji, takich jak testowanie trybu failover dla niego lub aby wyświetlić szczegółowe informacje o błędzie skojarzony z nim.
 6. Kliknij maszynę, aby przejść do bardziej szczegółowe informacje dla niego. Szczegółowe informacje obejmują:
-      - **Informacje o replikacji**: bieżący stan i kondycję komputera.
-      - **Cel punktu odzyskiwania** (cel punktu odzyskiwania): bieżący cel punktu odzyskiwania dla maszyny wirtualnej i czas ostatniego obliczane cel punktu odzyskiwania.
-      - **Punkty odzyskiwania**: najnowsze dostępne punkty odzyskiwania dla maszyny.
-      - **Gotowość do pracy awaryjnej**: wskazuje, czy test trybu failover zostało uruchomione dla komputera, wersja agenta uruchomione na maszynie (dla maszyn, na którym jest uruchomiona usługa mobilności) oraz problemów dotyczących konfiguracji.
-      - **Błędy**: Lista objawy błąd replikacji obecnie obserwowana na maszyn i możliwych przyczyn/akcji.
-      - **Zdarzenia**: chronologiczną listę ostatnie zdarzenia wpływające na ochronę na maszynie. Szczegóły błędu pokazuje objawy błędu obecnie zauważalne, gdy zdarzenia jest historycznym problemy, które mają wpływ na maszynie.
-      - **Widok infrastruktury**: Wyświetla stan infrastruktury na potrzeby tego scenariusza, podczas replikowania maszyn na platformę Azure.
+      - **Informacje o replikacji**: Bieżący stan i kondycję komputera.
+      - **Cel punktu odzyskiwania** (cel punktu odzyskiwania): Bieżący cel punktu odzyskiwania dla maszyny wirtualnej i czas ostatniego obliczane cel punktu odzyskiwania.
+      - **Punkty odzyskiwania**: Najnowsze dostępne punkty odzyskiwania dla maszyny.
+      - **Gotowość do pracy awaryjnej**: Wskazuje, czy test trybu failover zostało uruchomione dla komputera, wersja agenta uruchomione na maszynie (dla maszyn, na którym jest uruchomiona usługa mobilności) oraz problemów dotyczących konfiguracji.
+      - **Błędy**: Lista objawy błąd replikacji obecnie obserwowana na komputera i możliwych przyczyn/działań.
+      - **Zdarzenia**: Chronologiczną listę ostatnie zdarzenia wpływające na ochronę na maszynie. Szczegóły błędu pokazuje objawy błędu obecnie zauważalne, gdy zdarzenia jest historycznym problemy, które mają wpływ na maszynie.
+      - **Widok infrastruktury**: Pokazuje stan infrastruktury dla scenariusza podczas replikowania maszyn na platformę Azure.
 
     ![Usługa Site Recovery zreplikowany element szczegóły/Przegląd](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
