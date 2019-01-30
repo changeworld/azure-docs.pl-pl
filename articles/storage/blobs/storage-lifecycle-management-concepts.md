@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
-ms.component: common
-ms.openlocfilehash: 5c77d7d8f1ce3b4a13e497d461244aae5b34d08c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631366"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247803"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie usługą Azure Blob storage w cyklu życia (wersja zapoznawcza)
 
@@ -136,7 +136,7 @@ Każda reguła w ramach zasad wymaga trzech parametrów:
 
 | Nazwa parametru | Typ parametru | Uwagi |
 |----------------|----------------|-------|
-| Name (Nazwa)           | Ciąg | Nazwa reguły może zawierać dowolną kombinację znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter. Musi być unikatowa w ramach zasad. |
+| Name           | Ciąg | Nazwa reguły może zawierać dowolną kombinację znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter. Musi być unikatowa w ramach zasad. |
 | type           | Wartość wyliczenia | Nieprawidłowa wartość (wersja zapoznawcza) jest `Lifecycle`. |
 | definicja     | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. |
 

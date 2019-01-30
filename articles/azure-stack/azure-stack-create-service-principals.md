@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
-ms.openlocfilehash: 50ece9edbc4bee1dea2cc61f2cdd851b278aa7b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/18/2018
+ms.openlocfilehash: 5ff2ee3ed271d8c32e2d41f40a56f71aa4c6c67c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720445"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245273"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Zapewnianie aplikacjom dostępu do usługi Azure Stack
 
@@ -38,7 +39,7 @@ Nazwy główne usług są preferowane w porównaniu do uruchamiania aplikacji z 
 W zależności od tego, jak zostały wdrożone usługi Azure Stack należy rozpocząć od tworzenia jednostki usługi. W tym dokumencie opisano tworzenie usługi podmiotu zabezpieczeń dla:
 
 - [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad). Usługa Azure AD to wielodostępna, oparta na chmurze katalogu, a usługa zarządzania tożsamościami. Za pomocą usługi Azure AD połączonej usługi Azure Stack.
-- [Usługi Active Directory Federation Services (AD FS)](#create-service-principal-for-ad-fs). Usługi AD FS zapewniają uproszczoną, zabezpieczoną Federację tożsamości i możliwości logowania jednokrotnego (SSO) dla sieci Web. Za pomocą usług AD FS zarówno połączonych i niepołączonych wystąpień usługi Azure Stack.
+- [Active Directory Federation Services (AD FS)](#create-service-principal-for-ad-fs). Usługi AD FS zapewniają uproszczoną, zabezpieczoną Federację tożsamości i możliwości logowania jednokrotnego (SSO) dla sieci Web. Za pomocą usług AD FS zarówno połączonych i niepołączonych wystąpień usługi Azure Stack.
 
 Po utworzeniu nazwy głównej usługi zestaw typowych kroków do usług AD FS i Azure Active Directory są używane do [delegować uprawnienia](#assign-role-to-service-principal) do roli.
 
@@ -64,14 +65,14 @@ Programowe zalogować, użyj Identyfikatora aplikacji i aplikacji sieci Web / in
 
 2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Aplikacje w [przykładowe aplikacje](#sample-applications) sekcji odnoszą się do tej wartości jako identyfikatora klienta.
 
-     ![identyfikator klienta](./media/azure-stack-create-service-principal/image12.png)
+     ![Identyfikator klienta](./media/azure-stack-create-service-principal/image12.png)
 3. Aby wygenerować klucz uwierzytelniania dla aplikacji sieci Web / interfejs API, wybierz **ustawienia** > **klucze**. 
 
 4. Podaj opis i czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
 
 Po zapisaniu klucza zostanie wyświetlona jego wartość. Skopiuj tę wartość do Notatnika lub innej tymczasowej lokalizacji, ponieważ nie można pobrać klucza później. Możesz podać wartość klucza z Identyfikatorem aplikacji do podpisania aplikacji. Store wartość klucza w miejscu, gdzie aplikacja będzie mogła ją pobrać.
 
-![Zapisany klucz](./media/azure-stack-create-service-principal/image15.png)
+![zapisany klucz](./media/azure-stack-create-service-principal/image15.png)
 
 Po wykonaniu tych czynności, możesz [przypisania roli aplikacji](#assign-role-to-service-principal).
 
@@ -85,7 +86,7 @@ Aby utworzyć jednostkę usługi usługi z usługami AD FS, można użyć jednej
 
 Jednostki usług zadania zarządzania usług AD FS.
 
-| Typ | Akcja |
+| Type | Akcja |
 | --- | --- |
 | Certyfikat usług AD FS | [Tworzenie](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
 | Certyfikat usług AD FS | [Aktualizacja](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
@@ -115,7 +116,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|Name (Nazwa)|Nazwę SPN konta|MyAPP|
+|Name|Nazwę SPN konta|MyAPP|
 |ClientCertificates|Tablica obiektów certyfikatu|X509 certyfikatu|
 |ClientRedirectUris<br>(Opcjonalnie)|Identyfikator URI przekierowania aplikacji|-|
 
@@ -125,19 +126,19 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-    $creds = Get-Credential
+    $Creds = Get-Credential
 
     # Creating a PSSession to the ERCS PrivilegedEndpoint
-    $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+    $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
     # If you have a managed certificate use the Get-Item command to retrieve your certificate from your certificate location.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
-    # $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
-    $cert = Get-Item "<yourcertificatelocation>"
+    # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
+    $Cert = Get-Item "<YourCertificateLocation>"
     
-    $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}
-    $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
-    $session|remove-pssession
+    $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -ClientCertificates $using:cert}
+    $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
+    $Session | Remove-PSSession
 
     # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. This is read from the AzureStackStampInformation output of the ERCS VM.
     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
@@ -159,7 +160,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-    Add-AzureRmAccount -EnvironmentName "azurestackuser" `
+    Add-AzureRmAccount -EnvironmentName "AzureStackUser" `
     -ServicePrincipal `
     -CertificateThumbprint $ServicePrincipal.Thumbprint `
     -ApplicationId $ServicePrincipal.ClientId `
@@ -173,7 +174,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
    > Do celów sprawdzania poprawności, można utworzyć certyfikatu z podpisem własnym za pomocą poniższym przykładzie:
 
    ```PowerShell  
-   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
 
@@ -202,7 +203,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|Name (Nazwa)|Nazwę SPN konta|MyAPP|
+|Name|Nazwę SPN konta|MyAPP|
 |ApplicationIdentifier|Unikatowy identyfikator|S-1-5-21-1634563105-1224503876-2692824315-2119|
 |ClientCertificate|Tablica obiektów certyfikatu|X509 certyfikatu|
 
@@ -214,14 +215,14 @@ Ten przykład tworzy certyfikat z podpisem własnym. Po uruchomieniu polecenia c
 
      ```powershell
           # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
           # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
 
-          $RemoveServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $Newcert}
+          $RemoveServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $NewCert}
 
-          $session|remove-pssession
+          $Session | Remove-PSSession
      ```
 
 2. Po zakończeniu pracy automatyzacji, wyświetlana jest wartość odcisku palca zaktualizowane, wymaganych do uwierzytelniania nazwy SPN.
@@ -246,7 +247,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 | Parametr | Opis | Przykład |
 |----------------------|--------------------------|---------|
-| Name (Nazwa) | Nazwę SPN konta | MyAPP |
+| Name | Nazwę SPN konta | MyAPP |
 | GenerateClientSecret | Tworzenie wpisu tajnego |  |
 
 #### <a name="use-the-ercs-privilegedendpoint-to-create-the-service-principal"></a>Użyj ERCS PrivilegedEndpoint, aby utworzyć nazwę główną usługi
@@ -255,15 +256,15 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
      ```PowerShell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-     $creds = Get-Credential
+     $Creds = Get-Credential
 
      # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
      # Creating a SPN with a secre
-     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -GenerateClientSecret}
-     $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
-     $session|remove-pssession
+     $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -GenerateClientSecret}
+     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
+     $Session | Remove-PSSession
 
      # Output the SPN details
      $ServicePrincipal
@@ -299,20 +300,20 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 ##### <a name="example-of-updating-a-client-secret-for-ad-fs"></a>Przykład aktualizowanie klucz tajny klienta usług AD FS
 
-W przykładzie użyto **resetclientsecret** parametr, który natychmiast zmienia się klucz tajny klienta.
+W przykładzie użyto **ResetClientSecret** parametr, który natychmiast zmienia się klucz tajny klienta.
 
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenia cmdlet:
 
      ```PowerShell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
           # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
 
-          $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
+          $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
 
-          $session|remove-pssession
+          $Session | Remove-PSSession
      ```
 
 2. Po zakończeniu pracy automatyzacji, wyświetla nowo wygenerowane klucz tajny, wymaganych do uwierzytelniania nazwy SPN. Upewnij się, że nowy wpis tajny klienta są przechowywane.
@@ -348,19 +349,19 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 ```powershell  
      Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-     $creds = Get-Credential
+     $Creds = Get-Credential
 
      # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-     $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock { Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
+     $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
 
-     $session|remove-pssession
+     $Session | Remove-PSSession
 ```
 
 ## <a name="assign-a-role"></a>Przypisywanie roli
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](../role-based-access-control/built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: wbudowane role](../role-based-access-control/built-in-roles.md).
 
 Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli Czytelnik dla grupy zasobów oznacza, że może odczytywać, grupy zasobów i wszystkie zasoby, które zawiera.
 

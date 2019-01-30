@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: ff8508db55b04d2c55158b5846325d0c13665048
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f25d87c7c557404071d777f4efcf22e53886d96d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542751"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242624"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql"></a>Łączenie usługi Azure Kubernetes Service i Azure Database for PostgreSQL
 
@@ -32,6 +32,14 @@ Można sprawdzić, czy klaster AKS jest przyspieszoną sieć:
 6. Przejdź do maszyny Wirtualnej **sieć** kartę.
 7. Upewnij się, czy **funkcji przyspieszonej łączności sieciowej** ma wartość "włączona."
 
+Lub za pośrednictwem wiersza polecenia platformy Azure przy użyciu dwóch następujących poleceń:
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
+```
+Dane wyjściowe będą grupy zasobów wygenerowanego, że AKS tworzy zawierający interfejs sieciowy. Przyjmuje nazwę "nodeResourceGroup" i używać go w następnego polecenia. **EnableAcceleratedNetworking** będzie mieć wartość true lub false:
+```azurecli
+az network nic list --resource-group nodeResourceGroup -o table
+```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Otwórz Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) umożliwia udostępniania usług platformy Azure bezpośrednio z klastrem Kubernetes lub Cloud Foundry. Jest [interfejsu Open Service Broker API](https://www.openservicebrokerapi.org/) wdrożenia na platformie Azure.

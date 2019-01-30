@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 7413ebac82adce9f034d5ceec16ec76b9ad53f82
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: d9ab89afba2b83f99bfbf432d033cd0546a25a9d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359548"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247395"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -444,7 +445,7 @@ Aby uruchomić polecenia cmdlet, potrzebne są:
     <String>] [<CommonParameters>]
    ```
 
-| Parametr | Typ | Opis |
+| Parametr | Type | Opis |
 |-------------------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PrivilegedEndpointCredential | PSCredential | Poświadczenia używane do [dostęp uprzywilejowany punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Nazwa użytkownika jest w formacie **AzureStackDomain\CloudAdmin**. |
 | PrivilegedEndpoint | Ciąg | Wstępnie skonfigurowane zdalnego programu PowerShell konsoli, która udostępnia możliwości, takich jak zbieranie danych dziennika i innych post zadania związane z wdrażaniem. Aby dowiedzieć się więcej, zapoznaj się [przy użyciu uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) artykułu. |
@@ -466,7 +467,7 @@ Get-AzsRegistrationToken generuje token rejestracji z poziomu parametrów wejśc
     [-BillingModel] <String> [[-TokenOutputFilePath] <String>] [-UsageReportingEnabled] [[-AgreementNumber] <String>]
     [<CommonParameters>]
 ```
-| Parametr | Typ | Opis |
+| Parametr | Type | Opis |
 |-------------------------------|--------------|-------------|
 | PrivilegedEndpointCredential | PSCredential | Poświadczenia używane do [dostęp uprzywilejowany punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Nazwa użytkownika jest w formacie **AzureStackDomain\CloudAdmin**. |
 | PrivilegedEndpoint | Ciąg |  Wstępnie skonfigurowane zdalnego programu PowerShell konsoli, która udostępnia możliwości, takich jak zbieranie danych dziennika i innych post zadania związane z wdrażaniem. Aby dowiedzieć się więcej, zapoznaj się [przy użyciu uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint) artykułu. |

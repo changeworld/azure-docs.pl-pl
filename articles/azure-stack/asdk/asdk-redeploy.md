@@ -16,12 +16,13 @@ ms.custom: ''
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 91ac75f3cb41f73ea18595138969dfb7b1444173
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 2139b4c9a26aba829a0bfbe5cb5a56f2a8918aa7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263515"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239863"
 ---
 # <a name="redeploy-the-asdk"></a>Ponowne wdrażanie ASDK
 W tym artykule dowiesz się, jak i ponowne wdrażanie usługi Azure Stack Development Kit (ASDK) w środowisku nieprodukcyjnym. Ponieważ uaktualnianie ASDK nie jest obsługiwane, należy całkowicie ją ponownie wdrożyć można przenieść do nowszej wersji. Można także wdrożyć ponownie ASDK w dowolnym momencie po prostu chcesz zacząć od początku, od podstaw.

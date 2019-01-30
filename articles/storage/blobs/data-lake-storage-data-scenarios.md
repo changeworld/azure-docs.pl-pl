@@ -3,17 +3,17 @@ title: Scenariusze danych dotyczących usługi Azure Data Lake Storage Gen2 | Do
 description: Zapoznać się z różnymi scenariuszami i narzędzi przy użyciu danych, które można pozyskiwane, przetwarzane, pobrane i wizualizowane w Gen2 magazynu Data Lake z (wcześniej znane jako usługi Azure Data Lake Store)
 services: storage
 author: normesta
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
-ms.openlocfilehash: 978f86141d72cc7be43f24909f9780ab9570605d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dfc47c40ce82eb8e9d414cb49c22bee033d000a6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974892"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239035"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake Storage Gen2 dla wymagających danych big Data
 
@@ -36,7 +36,7 @@ Ta pozycja reprezentuje mniejszych zestawów danych, które są używane do twor
 
 | Źródło danych | Za pomocą pozyskiwania |
 | --- | --- |
-| Komputer lokalny |<ul> <li>[Eksplorator usługi Storage](https://azure.microsoft.com/features/storage-explorer/)</ul> |
+| Komputer lokalny |<ul> <li>[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)</ul> |
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)</li> <li>[Narzędzie AzCopy](../common/storage-use-azcopy-v10.md)</li><li>[Uruchomione w klastrze HDInsight narzędzia DistCp](data-lake-storage-use-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Dane przesyłane strumieniowo

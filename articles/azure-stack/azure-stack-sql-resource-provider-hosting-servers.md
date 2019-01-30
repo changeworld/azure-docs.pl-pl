@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: f1b39601f0f6d254daadfafdd812549c6c95ed35
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362062"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239472"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
@@ -61,9 +62,9 @@ Istnieją inne opcje wdrażania maszyn wirtualnych SQL, w tym szablony w [galeri
 
 Użytkownik administracyjny możesz utworzyć przy użyciu niższe uprawnienia niż aktualnie SQL sysadmin. Użytkownik musi jedynie uprawnień w przypadku następujących operacji:
 
-* Baza danych: Utwórz, Alter, przy użyciu zawierania (dla zawsze włączonych tylko), porzucić, utworzyć kopię zapasową
-* Grupy dostępności: Alter, dołączenia, dodawać i usuwać bazy danych
-* Zaloguj się: Tworzenie, wybierz, Alter, Drop, odwołać
+* Baza danych: Tworzenie, Alter, przy użyciu zawierania (dla zawsze włączonych tylko), porzucić, utworzyć kopię zapasową
+* Grupy dostępności: Instrukcja ALTER, dołączenia, dodawać i usuwać bazy danych
+* Logowanie: Tworzenie, wybierz, Alter, Drop, odwoływanie
 * Wybierz operacje: \[wzorca\].\[ sys\].\[ availability_group_listeners\] (AlwaysOn) sys.availability_replicas (AlwaysOn), sys.databases, \[wzorca\].\[ sys\].\[ dm_os_sys_memory\], SERVERPROPERTY, \[wzorca\].\[ sys\].\[ availability_groups\] (AlwaysOn) sys.master_files
 
 ### <a name="additional-security-information"></a>Informacje dodatkowe zabezpieczenia
@@ -86,7 +87,7 @@ Aby dodać autonomicznego serwera hostingu, który został już skonfigurowany, 
 
 2. Wybierz **wszystkich usług** &gt; **zasoby administracyjne** &gt; **serwerów do hostingu SQL**.
 
-   ![Serwerów do hostingu SQL](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+   ![SQL Hosting Servers](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
    W obszarze **serwerów do hostingu SQL**, łączysz dostawcy zasobów bazy danych SQL do wystąpienia programu SQL Server, która będzie służyć jako dostawca zasobów wewnętrznej bazy danych.
 

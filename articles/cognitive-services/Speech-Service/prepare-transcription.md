@@ -6,16 +6,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 44f2cb9e95a9a79c85c23b0eebd919851b94c1f8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467739"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228138"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Tekst wskazówki dotyczące używania usługi mowy
 
@@ -53,7 +53,7 @@ Oto kilka przykładów:
 | "Jak?" wspomniane Batman sidekick, działanie okrężne. | jakie wspomniane batman sidekick okrężnego |
 | Przejdź pobieranie - em! | Wybierz pozycję Pobierz em |
 | Jestem double-jointed | Jestem double jointed |
-| Ulica wiąz 104 | co o czterech wiąz ulicy |
+| 104 Elm Street | co o czterech wiąz ulicy |
 | Dostosowywanie do 102.7 | Dostosowywanie do jednego o dwóch siedem |
 | Pi jest około 3,14 | pi jest około trzy punktu 1 4 |
 | To kosztuje $3,14 | to kosztuje trzech czternastu |
@@ -73,7 +73,7 @@ Oto kilka przykładów:
 | 14 NE 3 odzyskiwania po awarii. | czternastu dysku trzeci północno-wschodnie |
 | Dr. Bruce transparentu | Transparent Bruce lekarzem |
 | James Bond, 007 | Niestety dwukrotnie James Bond siedem |
-| KE$ zaświadczanie o kondycji | Kesha |
+| Ke$ha | Kesha |
 | Jak długo trwa 2 x 4 | Jak długo trwa dwa, cztery |
 | Spotkania przechodzi z 1-15: 00 | Spotkania przechodzi od jednej do trzech pm |
 | Mój typ krwi jest O + | Mój typ krwi jest dodatnia O |
@@ -90,7 +90,7 @@ Unikaj stosowania znaków interpunkcyjnych połowę szerokości. Te znaki mogą 
 | Znaki, aby uniknąć | Podstawienia |
 |----- | ----- |
 | "你好" (Otwieranie i zamykanie podwójnego cudzysłowu) | "你好" (cudzysłów) |
-| 需要什么帮助? (znak zapytania) | 需要什么帮助? |
+| 需要什么帮助? (znak zapytania) | 需要什么帮助？ |
 
 ### <a name="text-normalization-rules-for-chinese"></a>Tekst reguł normalizacji chiński
 
@@ -105,7 +105,7 @@ Oto kilka przykładów:
 
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
-| 3,1415 | 三 点 一 四 一 五 |
+| 3.1415 | 三 点 一 四 一 五 |
 | ￥3.5 | 三 元 五 角 |
 | w f y z | W F Y Z |
 | 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
@@ -166,7 +166,7 @@ Oto kilka przykładów:
 |--------  | ----- | -------- |
 | ES ISTA 12.23 Uhr | ES ISTA 12:23 Uhr | ES ISTA zwölf uhr drei i zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf ||
-| 2 + 3 – 4 | 2 i 3 minus 4 | zwei oraz drei minus vier|
+| 2 + 3 - 4 | 2 i 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

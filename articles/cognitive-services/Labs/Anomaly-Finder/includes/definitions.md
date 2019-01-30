@@ -5,17 +5,17 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.component: anomaly-finder
+ms.subservice: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: a49df0c18ef9db9d0d41ca2e714474e6386ae7d1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 5ad589c4adb60369f81979e214935f73d9eb0755
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48904576"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228920"
 ---
 <a name="definitions"></a>
 ## <a name="definitions"></a>Definicje
@@ -23,16 +23,16 @@ ms.locfileid: "48904576"
 <a name="point"></a>
 ### <a name="point"></a>Punkt
 
-|Name (Nazwa)|Opis|Schemat|
+|Name|Opis|Schemat|
 |---|---|---|
-|**Znacznik czasu:**  <br>*Opcjonalne*|Sygnatura czasowa dla punktu danych. Upewnij się, powoduje wyrównanie z o północy i użyj formatu UTC Data i godzina ciąg znaków, na przykład 2017-08-01T00:00:00Z.|ciąg (Data godzina)|
+|**Sygnatura czasowa**  <br>*Opcjonalne*|Sygnatura czasowa dla punktu danych. Upewnij się, powoduje wyrównanie z o północy i użyj formatu UTC Data i godzina ciąg znaków, na przykład 2017-08-01T00:00:00Z.|ciąg (Data godzina)|
 |**Wartość**  <br>*Opcjonalne*|Dane wartości miary.|Liczba (podwójny)|
 
 
 <a name="request"></a>
 ### <a name="request"></a>Żądanie
 
-|Name (Nazwa)|Opis|Schemat|
+|Name|Opis|Schemat|
 |---|---|---|
 |**Okres**  <br>*Opcjonalne*|Okres punktów danych. Jeśli wartość jest pusta lub nie są wyświetlane, interfejs API określa okres automatycznie.|Liczba (podwójny)|
 |**punkty**  <br>*Opcjonalne*|Punkty danych szeregów czasowych. Dane powinny być posortowane według sygnatur czasowych w kolejności rosnącej, aby dopasować wyniku anomalii. Jeśli dane nie są sortowane poprawnie, istnieje zduplikowana sygnatura czasowa interfejsu API będzie wykrywał punktów anomalii poprawnie, ale nie można również zgodne punkty zwracany za pomocą danych wejściowych. W takim przypadku zostanie dodany komunikat ostrzegawczy w odpowiedzi.|< [polecenie](#point) > tablicy|
@@ -41,7 +41,7 @@ ms.locfileid: "48904576"
 <a name="response"></a>
 ### <a name="response"></a>Odpowiedź
 
-|Name (Nazwa)|Opis|Schemat|
+|Name|Opis|Schemat|
 |---|---|---|
 |**ExpectedValues**  <br>*Opcjonalne*|Wartością prognozowaną ucząc model oparty na protokole. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania oczekiwaną wartość i oryginalna wartość.|Tablica < numer (podwójny) >|
 |**IsAnomaly**  <br>*Opcjonalne*|Wynik tego, czy punkty danych są anomalii lub nie w obu kierunkach (wzrostów lub spadku). wartość TRUE oznacza, że punkt znajduje się anomalii, wartość false oznacza, że punkt znajduje się bez anomalii. Jeśli punkty danych wejściowych są posortowane według sygnatur czasowych w kolejności rosnącej, indeks tablicy może służyć do mapowania oczekiwaną wartość i oryginalna wartość.|Tablica < wartość logiczna >|

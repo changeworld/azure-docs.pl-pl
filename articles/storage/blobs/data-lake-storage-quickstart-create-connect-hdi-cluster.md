@@ -3,17 +3,17 @@ title: Klastrze konfiguracji w usłudze Hadoop, Spark, Kafka, HBase i R Server �
 description: Konfigurowanie usługi Hadoop, platformy Kafka, Spark, HBase, R Server lub klastry Storm dla HDInsight z przeglądarki, wiersza polecenia platformy Azure, programu Azure PowerShell, REST lub zestawu SDK.
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: 791598da593c25a135c05d72b6846053af3ff344
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a3c6474c6b1c27c3b413d98d86cdadbcb61e2040
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353859"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247293"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Szybki start: Konfigurowanie klastrów w HDInsight
 
@@ -142,7 +142,7 @@ Tak długo, jak istnieje klastra stosowana jest stawka za użycie węzła dla. N
 
 Każdy typ klastra ma swój własny liczbę węzłów, terminologii dla węzłów i domyślny rozmiar maszyny Wirtualnej. W poniższej tabeli liczba węzłów dla każdego typu węzła jest w nawiasach.
 
-| Typ | Węzły | Diagram |
+| Type | Węzły | Diagram |
 | --- | --- | --- |
 | Hadoop |Węzeł główny (2), węzeł danych (1 +) |![Węzły klastra usługi HDInsight Hadoop](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-hadoop-cluster-type-nodes.png) |
 | HBase |Główny serwer (2), region (1 +), węzeł główne/dozorcy (3) |![Węzły klastra HDInsight HBase](media/data-lake-storage-quickstart-create-connect-hdi-cluster/hdinsight-hbase-cluster-type-setup.png) |

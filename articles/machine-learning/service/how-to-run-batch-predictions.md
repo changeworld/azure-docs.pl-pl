@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak prognozowania partii asynchronicznie na dużych ilości danych przy użyciu usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: adac498b2f1e3331497c08f41558575c06b5823c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 4c38230c1d5a4dcad9a10b82d810f82515980076
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102945"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245875"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Uruchom prognoz usługi batch w dużych zestawach danych przy użyciu usługi Azure Machine Learning
 

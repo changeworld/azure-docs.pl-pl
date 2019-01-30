@@ -3,17 +3,17 @@ title: Kopiowanie danych do usługi Azure Data Lake Gen2 — wersja zapoznawcza 
 description: Kopiowanie danych do i z Data Lake Gen2 — wersja zapoznawcza za pomocą narzędzia DistCp
 services: storage
 author: seguler
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 6c231de0a37eda4f5593c9fbbfa5e611a97996a0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9c12f96399de218241c8aa7ed686113c17a7410c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975564"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244151"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2-preview"></a>Kopiowanie danych między obiektów blob usługi Azure Storage i Azure Data Lake Storage Gen2 (wersja zapoznawcza) za pomocą narzędzia DistCp
 
@@ -71,9 +71,9 @@ Ponieważ firmy DistCp najniższy poziom szczegółowości jest pojedynczy plik,
 
 Oto kilka użytecznych wskazówek.
 
-* **Krok 1: Określanie całkowitej ilości pamięci, które są dostępne w kolejce aplikacji usługi YARN "default"** -pierwszym krokiem jest określenie ilość pamięci dostępnej w kolejce aplikacji usługi YARN "default". Te informacje są dostępne w portalu narzędzia Ambari skojarzonego z klastrem. Przejdź do usługi YARN i wyświetlić kartę konfiguracje, aby wyświetlić pamięci usługi YARN w kolejce aplikacji "default". Jest to łączna ilość dostępnej pamięci dla zadania narzędzia DistCp (który jest faktycznie zadania MapReduce).
+* **Krok 1. Określić całkowitej ilości pamięci, które są dostępne w kolejce aplikacji usługi YARN "default"** -pierwszym krokiem jest określenie ilość pamięci dostępnej w kolejce aplikacji usługi YARN "default". Te informacje są dostępne w portalu narzędzia Ambari skojarzonego z klastrem. Przejdź do usługi YARN i wyświetlić kartę konfiguracje, aby wyświetlić pamięci usługi YARN w kolejce aplikacji "default". Jest to łączna ilość dostępnej pamięci dla zadania narzędzia DistCp (który jest faktycznie zadania MapReduce).
 
-* **Krok 2: Oblicz liczbę liczby maperów** — wartość **m** jest taki sam, jak iloraz całkowity rozmiar pamięci usługi YARN podzielonej przez rozmiar kontenera YARN. Informacje o rozmiarze kontenera YARN jest dostępna w witrynie portal Ambari. Przejdź do usługi YARN i wyświetlić kartę konfiguracje. Rozmiar kontenera YARN jest wyświetlany w tym oknie. Równanie na liczbę liczby maperów (**m**) jest
+* **Krok 2. Oblicz liczbę liczby maperów** — wartość **m** jest taki sam, jak iloraz całkowity rozmiar pamięci usługi YARN podzielonej przez rozmiar kontenera YARN. Informacje o rozmiarze kontenera YARN jest dostępna w witrynie portal Ambari. Przejdź do usługi YARN i wyświetlić kartę konfiguracje. Rozmiar kontenera YARN jest wyświetlany w tym oknie. Równanie na liczbę liczby maperów (**m**) jest
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -81,11 +81,11 @@ Oto kilka użytecznych wskazówek.
 
 Załóżmy, że klaster x D14v2s 4 i chcesz przenosić 10 TB danych na 10 różnych folderach. Zawiera foldery różnej ilości danych i rozmiary plików w ramach każdego folderu są różne.
 
-* **Łączna pamięć YARN**: portal z Ambari, możesz określić, że pamięci usługi YARN jest 96 GB dla węzła D14. Dlatego jest całkowity rozmiar pamięci usługi YARN dla cztery węzły klastra: 
+* **Łączna pamięć YARN**: Z poziomu portalu Ambari należy określić, że pamięci usługi YARN jest 96 GB dla węzła D14. Dlatego jest całkowity rozmiar pamięci usługi YARN dla cztery węzły klastra: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* **Liczba liczby maperów**: portal z Ambari, należy określić, że rozmiar kontenera YARN jest 3,072 MB dla węzłów klastra D14. Dlatego jest liczba liczby maperów:
+* **Liczba liczby maperów**: Z poziomu portalu Ambari należy określić, że rozmiar kontenera YARN jest 3,072 MB dla węzłów klastra D14. Dlatego jest liczba liczby maperów:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

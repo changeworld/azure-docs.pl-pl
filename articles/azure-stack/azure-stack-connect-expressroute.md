@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: ee247dcadd7ba8574bbdae1e25b0e39ca1ebc2da
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: b12e696260793a79bab6b384fc7be810eb2a803c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246232"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240832"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
@@ -59,7 +60,7 @@ Aby połączyć z usługi Azure Stack i platformą Azure przy użyciu usługi Ex
 
 Na poniższym diagramie przedstawiono usługi Azure Stack i środowisk platformy Azure po zakończeniu konfigurowania usługi ExpressRoute przy użyciu przykładów w tym artykule:
 
-*Rysunek 1. Sieć usługi ExpressRoute*
+*Rysunek 1. ExpressRoute network*
 
 ![Sieć usługi ExpressRoute](media/azure-stack-connect-expressroute/Conceptual.png)
 
@@ -105,9 +106,9 @@ Użyj poniższych procedur do tworzenia wymaganych zasobów sieciowych w usłudz
 
 5. W obszarze **Utwórz sieć wirtualną**, wprowadź wartości podanych w poniższej tabeli w odpowiednich polach:
 
-   |Pole  |Wartość  |
+   |Pole  |Value  |
    |---------|---------|
-   |Name (Nazwa)     |Tenant1VNet1         |
+   |Name     |Tenant1VNet1         |
    |Przestrzeń adresowa     |10.1.0.0/16|
    |Nazwa podsieci     |Tenant1 Sub1|
    |Zakres adresów podsieci     |10.1.1.0/24|

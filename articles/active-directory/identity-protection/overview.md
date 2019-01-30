@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/29/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 3017d92115a61dbf5ce647e75a01360224843f44
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e08af577bec463263045a0f0355acffaad5e599
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165034"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244168"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co to jest Azure Active Directory Identity Protection?
 
@@ -48,7 +48,7 @@ W wyniku tego następujące czynności:
 
 Wykrywanie tożsamości ze złamanymi zabezpieczeniami jest nie łatwym zadaniem. Usługa Azure Active Directory korzysta z algorytmów uczenia maszynowego adaptacyjne i algorytmów heurystycznych w celu wykrycia anomalii i podejrzanych zdarzeń, które wskazują na potencjalne naruszenia tożsamości. Przy użyciu tych danych, Identity Protection generuje raporty i alerty, które umożliwiają użytkownikowi oceniać wykryte problemy i podjąć odpowiednie środki zaradcze lub działania korygujące.
 
-Usługa Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. W celu ochrony tożsamości w organizacji, można skonfigurować opartych na ryzykach zasady, które automatycznie odpowiadać na wykryte problemy, jeśli osiągnięty poziom ryzyka określony. Te zasady, oprócz innych kontrolek dostępu warunkowego, dostarczone przez usługę Azure Active Directory i usług EMS można automatycznie blokować lub zainicjować akcji adaptacyjne korygowania, które resetowania haseł w tym i wymuszanie uwierzytelniania wieloskładnikowego.
+Usługa Azure Active Directory Identity Protection jest większa niż monitorowania i raportowania narzędzia. W celu ochrony tożsamości w organizacji, można skonfigurować opartych na ryzykach zasady, które automatycznie odpowiadać na wykryte problemy, jeśli osiągnięty poziom ryzyka określony. Te zasady, oprócz innych kontrolek dostępu warunkowego, dostarczone przez usługę Azure Active Directory i [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS), można automatycznie Blokuj lub zainicjować działania korygujące adaptacyjne, w tym Resetowanie haseł i wymuszanie uwierzytelniania wieloskładnikowego.
 
 
 #### <a name="identity-protection-capabilities"></a>Funkcje ochrony tożsamości

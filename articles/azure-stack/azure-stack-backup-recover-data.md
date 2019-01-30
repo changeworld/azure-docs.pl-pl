@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 326fd38f7cb738540a389c93de2a9b5be015e0d7
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 9dc023eedf0ddca4e760d9d066b019b75597fb69
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968736"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246487"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Odzyskiwanie z utratą danych w wyniku katastrofy
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack.*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack.*
 
 Usługa Azure Stack jest uruchamiany usług platformy Azure w centrum danych. Usługa Azure Stack można uruchamiać w środowiskach tak małej, jak czterech węzłów zainstalowane w jednym stojaku. Z kolei platforma Azure działa w ponad 40 regionach w wielu centrach danych i wielu stref w każdym regionie. Zasoby użytkownika może obejmować wiele serwerów, stojaki, centrach danych i regionach. Dzięki usłudze Azure Stack aktualnie masz możliwość wdrażania całej chmury na jednym stojaku. To udostępnia Twoja chmura istnieje wtedy ryzyko katastrofą w centrum danych lub w błędy z powodu błędów produktu. W przypadku awarii, wystąpienie usługi Azure Stack przejdzie do trybu offline. Wszystkie dane jest potencjalnie nieodwracalny.
 

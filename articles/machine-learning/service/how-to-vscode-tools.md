@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning service
 description: Dowiedz się, jak zainstalować usługi Azure Machine Learning dla programu Visual Studio Code i tworzenie prostego eksperymentu w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d6f49eb0359db6184b5ecd146d7328a64611a9f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013149"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245571"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Rozpoczynanie pracy z usługą Azure Machine Learning dla programu Visual Studio Code
 
@@ -80,7 +80,7 @@ Przed rozpoczęciem szkolenia i wdrażania modeli uczenia maszynowego przy użyc
 
 1. Kliknij ikonę platformy Azure, w pasku działań programu Visual Studio Code. Zostanie wyświetlona na pasku bocznym usługi Azure Machine Learning.
 
-   [![Zainstaluj](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+   [![install](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
 
 
 1. Kliknij prawym przyciskiem myszy subskrypcji platformy Azure, a następnie wybierz pozycję **Utwórz obszar roboczy**. Zostanie wyświetlona lista. W animowany obraz bezpłatna wersja próbna jest nazwa subskrypcji i obszar roboczy jest "TeamWorkspace". 

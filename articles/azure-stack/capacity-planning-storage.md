@@ -15,21 +15,22 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: 9ea46860817d60c2ffbde68c0fc5ae6f6ca14877
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.lastreviewed: 09/18/2018
+ms.openlocfilehash: 5d9d01a482483d030569a4dcad03c9ecef7cffc0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368784"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245154"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Planowanie pojemności magazynu stosu platformy Azure
 Pojemność magazynu usługi Azure Stack informacje dotyczące planowania ułatwiających planowanie potrzeb dotyczących magazynowania te rozwiązania można znaleźć w poniższych sekcjach.
 
 ## <a name="uses-and-organization-of-storage-capacity"></a>Zastosowań i organizacji pojemność magazynu
-Konfiguracji hiperkonwergentnej usługi Azure Stack umożliwia udostępnianie urządzeniami pamięci fizycznej. Trzech głównych części dostępnego magazynu należą do zakresu od infrastruktury, magazyn tymczasowy maszyn wirtualnych dzierżawy i magazynem obiektów blob, tabel i kolejek usługi Azure Storage spójne (ACS).
+Konfiguracja hiperkonwergentnej usługi Azure Stack umożliwia udostępnianie urządzeń magazynu fizycznego. Trzech głównych części dostępnego magazynu należą do zakresu od infrastruktury, magazyn tymczasowy maszyn wirtualnych dzierżawy i magazynem obiektów blob, tabel i kolejek usługi Azure Storage spójne (ACS).
 
 ## <a name="spaces-direct-cache-and-capacity-tiers"></a>Bezpośrednie miejsca do magazynowania, pamięć podręczną i warstwy pojemności
-Jest pojemność magazynu używane do systemu operacyjnego, lokalne rejestrowanie, zrzuty i innych magazynów tymczasowych infrastruktury potrzeb. Ta pojemność magazynu lokalnego jest oddzielić (urządzenia i pojemność) z urządzeń magazynujących, przenieść do zarządzania bezpośrednimi miejscami do magazynowania konfiguracji. W pozostałej części urządzenia magazynujące są umieszczane w pojedynczej puli pojemności, niezależnie od liczby serwerów w jednostce skalowania. Te urządzenia istnieją dwa typy: pamięć podręczna i pojemności.  Urządzenia pamięci podręcznej są po prostu czy — pamięć podręczna. Bezpośrednie miejsca do magazynowania spowoduje wykorzystanie tych urządzeń do zapisu i odczytu pamięci podręcznej. Możliwości te urządzenia pamięci podręcznej używane, nie są przekazywane do pojemności sformatowany, "visible" sformatowane-dysków wirtualnych. Pojemnościowe są używane w tym celu i podaj "Lokalizacja główna" danych zarządzanych przez miejsca do magazynowania.
+Jest pojemność magazynu używane do systemu operacyjnego, lokalne rejestrowanie, zrzuty i innych magazynów tymczasowych infrastruktury potrzeb. Ta pojemność magazynu lokalnego jest oddzielić (urządzenia i pojemność) z urządzeń magazynujących, przenieść do zarządzania bezpośrednimi miejscami do magazynowania konfiguracji. W pozostałej części urządzenia magazynujące są umieszczane w pojedynczej puli pojemności, niezależnie od liczby serwerów w jednostce skalowania. Te urządzenia istnieją dwa typy: Pamięć podręczna i pojemności.  Urządzenia pamięci podręcznej są po prostu czy — pamięć podręczna. Bezpośrednie miejsca do magazynowania spowoduje wykorzystanie tych urządzeń do zapisu i odczytu pamięci podręcznej. Możliwości te urządzenia pamięci podręcznej używane, nie są przekazywane do pojemności sformatowany, "visible" sformatowane-dysków wirtualnych. Pojemnościowe są używane w tym celu i podaj "Lokalizacja główna" danych zarządzanych przez miejsca do magazynowania.
 
 Wszystkie pojemność magazynu jest przydzielany i zarządzane bezpośrednio przez infrastrukturę usługi Azure Stack. Operator konieczne wyborów dotyczących konfiguracji i alokacji, lub kliknij przycisk postępowania z opcjami, jeśli chodzi o zwiększanie pojemności. Te decyzje dotyczące projektu zostały wprowadzone w celu zapewnienia zgodności z wymaganiami rozwiązania i są automatyzowane podczas albo początkowej instalacji/wdrażania lub podczas rozszerzania pojemności. Szczegółowe informacje o odporności, zarezerwowanego miejsca na ponowne kompilowanie i inne szczegóły zostały uwzględnione w ramach projektu. 
 
@@ -51,7 +52,7 @@ Krótkie podsumowanie bezpośrednimi miejscami do magazynowania i konfiguracja m
 
 
 
-|Name (Nazwa)|Obliczenia pojemności|Opis|
+|Name|Obliczenia pojemności|Opis|
 |-----|-----|-----|
 |Urządzenie lokalne/rozruchowe|Minimalna 340 GB<sup>1</sup>|Magazyn poszczególnych serwerów dla obrazów systemu operacyjnego i maszynami wirtualnymi infrastruktury "local"|
 |Infrastruktura|3,5 TB|Całe użycie infrastruktury Azure Stack|

@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d709acfe378583a21b72971f465e4b5d73818bcd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307732"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244696"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indeksowanie tabel w usłudze SQL Data Warehouse
 Zalecenia i przykłady dla indeksowania tabel w usłudze Azure SQL Data Warehouse.
@@ -240,7 +240,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 Ponowne tworzenie indeksu w usłudze SQL Data Warehouse jest operacją w trybie offline.  Aby uzyskać więcej informacji na temat ponowne tworzenie indeksów, zobacz sekcję ALTER INDEX REBUILD w [defragmentacji indeksów magazynu kolumn](/sql/relational-databases/indexes/columnstore-indexes-defragmentation), i [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
 
-### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Sprawdź, czy uległa poprawie jakości segmentów klastrowanego magazynu kolumn
+### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: Upewnij się, że uległa poprawie jakości segmentów klastrowanego magazynu kolumn
 Ponownie uruchom zapytanie tabeli, która zidentyfikowanego za pomocą niska jakość segmentu i sprawdź jakości segmentów uległa poprawie.  Jeżeli nie poprawiła się jakość segmentu, może to być, że wiersze w tabeli są bardzo szerokie.  Należy rozważyć użycie wyższą klasą zasobu lub jednostek DWU, gdy ponowne tworzenie indeksów.
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Ponowne tworzenie indeksów za pomocą instrukcji CTAS i przełączanie partycji

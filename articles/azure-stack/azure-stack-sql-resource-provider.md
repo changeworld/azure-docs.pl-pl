@@ -14,16 +14,17 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 3d608843ef31a1ed665fcb1fd90b822f34f77fdd
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 7183cae491287042c778c2e56be8a1451c8c71a2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086356"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247769"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Użyj bazy danych SQL w usłudze Microsoft Azure Stack
 
-Karty dostawcy zasobów programu SQL Server umożliwiają oferowanie baz danych SQL jako usługa [usługi Azure Stack](azure-stack-poc.md). Po zainstalowaniu dostawcy zasobów i połącz go z co najmniej jednego wystąpienia programu SQL Server, Ty i Twoi użytkownicy można utworzyć:
+Karty dostawcy zasobów programu SQL Server umożliwiają oferowanie baz danych SQL jako usługa [usługi Azure Stack](azure-stack-poc.md). Po zainstalowaniu dostawcy zasobów i połączeniu go z co najmniej jednym wystąpieniem programu SQL Server, Ty i Twoi użytkownicy możecie tworzyć:
 
 - Bazy danych w przypadku aplikacji natywnych dla chmury.
 - Witryn sieci Web z programu SQL.

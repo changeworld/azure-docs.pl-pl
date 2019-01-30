@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c08e3d2e8f712f5eb7c56585507a283c7fd040c1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b2c43ad2475ab75d251e57fca6009eb1fa2e1f00
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796893"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225299"
 ---
 # <a name="how-to-create-a-hello-world-model-with-conversation-learner"></a>Jak utworzyć model "Hello World" przy użyciu uczeń konwersacji
 
@@ -62,7 +62,7 @@ Jest to, gdzie uczenie modelu w sposób reagowania na wypowiedzi użytkowników.
 2. Typ "Hi" naciśnij klawisz enter.
     - Jako przykład to, jak użytkownik może Załóżmy, że na początku konwersacji.
 3. Kliknij przycisk "Wynik akcje".
-4. Wybierz pozycję "Hello".
+4. Select "Hello".
     - Pełne ruchu w tym oknie dialogowym przykład jest właśnie został ukończony. 
 5. Wpisz odpowiedź użytkownika "Goodbye".
 6. Kliknij przycisk "Wynik akcje".
@@ -82,7 +82,7 @@ Przejdźmy wykonaj jeden więcej szkoleń i zobacz, jak reaguje robota.
     - Jest to podobne do okna dialogowego pierwszego i oczekujemy, że można uzyskać dobrą ocenę z Bota.
 3. Kliknij przycisk "Wynik akcje".
     - Położenie i ocena może nadal być niewystarczająco dokładne i może wymagać dodatkowych szkoleń.
-4. Wybierz pozycję "Hello".
+4. Select "Hello".
 5. Wpisz odpowiedź użytkownika "tworzycie".
 6. Kliknij przycisk "Wynik akcje".
 7. Wybierz pozycję "Goodbye"!

@@ -3,18 +3,18 @@ title: Akcja zlecenie dla usługi Azure Machine Learning w 59 znaków lub mniej.
 description: Dowiedz się, jak to zrobić i czy przy użyciu klienta wyrazów w usłudze Azure Machine Learning. Ten ciąg opis artykułu w 115, 145 znaków. W tym miejscu użyć optymalizacji dla aparatów wyszukiwania rodzaj zlecenia akcji. Te informacje są wyświetlane na tekście strony wyszukiwania z sygnaturą daty artykułu. Jeśli Twoje akapit wprowadzający opisuje przeznaczenie tego artykułu, można go tutaj edytować długości.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: your-msft-alias
 author: your-github-account-name
 ms.date: 04/10/2018
-ms.openlocfilehash: 1fd64cca8eb51cdcaa2eb6e8cbce853b6a55b0e6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1367f09fa9cac3a5d3a23a1192ada49f16976125
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013009"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245554"
 ---
 # <a name="this-h1-is-the-title-of-the-article-it-appears-in-search-appears-at-the-top-of-article-second-greatest-impact-on-search-100-chars-or-less"></a>Ta H1 jest tytuł artykułu. Wygląda na to, w polu wyszukiwania, pojawi się w górnej części artykułu, drugi największy oddźwięk, wyszukiwania, znaki 100 lub mniej
 
@@ -45,7 +45,7 @@ Ta tabela ma nagłówki:
 |---------|---------|---------|
 |Row1|Wartość 1|Wartość A|
 |Row2|Wartość 2|Wartość B|
-|Row3|Wartość 3|Wartość C|
+|Row3|Wartość 3|Value C|
 
 ## <a name="section-here-h2"></a>W tym miejscu sekcji H2
 Jest to lista numerowana:

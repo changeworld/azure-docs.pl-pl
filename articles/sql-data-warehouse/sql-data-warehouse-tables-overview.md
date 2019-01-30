@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 365b15f11409f985b71c9bba4372552321f162f2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212553"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247344"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w usłudze Azure SQL Data Warehouse
 
@@ -116,7 +116,7 @@ Można utworzyć tabeli jako nowej, pustej tabeli. Można również utworzyć i 
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Tworzy pustą tabelę, definiując wszystkie kolumny w tabeli i opcje. |
 | [TWORZENIE ZEWNĘTRZNEJ TABELI](/sql/t-sql/statements/create-external-table-transact-sql) | Tworzy tabelę zewnętrzną. Definicja tabeli są przechowywane w usłudze SQL Data Warehouse. Dane tabeli są przechowywane w usłudze Azure Blob storage lub Azure Data Lake Store. |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Wypełnia nową tabelę z wynikami instrukcji select. Tabela kolumny i typy danych są oparte na wyniki instrukcji select. Aby zaimportować dane, tej instrukcji można wybrać z tabeli zewnętrznej. |
-| [UTWORZYĆ ZEWNĘTRZNE TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Tworzy nową tabelę zewnętrznego przez wyeksportowanie wyników instrukcji select w lokalizacji zewnętrznej.  Lokalizacja jest usługi Azure Blob storage lub Azure Data Lake Store. |
+| [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Tworzy nową tabelę zewnętrznego przez wyeksportowanie wyników instrukcji select w lokalizacji zewnętrznej.  Lokalizacja jest usługi Azure Blob storage lub Azure Data Lake Store. |
 
 ## <a name="aligning-source-data-with-the-data-warehouse"></a>Wyrównywanie danych źródłowych w magazynie danych
 

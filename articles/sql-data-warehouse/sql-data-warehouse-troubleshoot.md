@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 8f83733462e66bc36ecd31bb2767969e24b78d8c
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890742"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244593"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Rozwiązywanie problemów z usługi Azure SQL Data Warehouse
 W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
@@ -23,8 +23,8 @@ W tym artykule wymieniono typowe pytania dotyczące rozwiązywania problemów.
 ## <a name="connecting"></a>Łączenie
 | Problem                                                        | Rozwiązanie                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Nie można zalogować użytkownika "NT\LOGOWANIE". (Program Microsoft SQL Server, błąd: 18456) | Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń] [ Security overview] artykuł, aby uzyskać więcej informacji. |
-| Serwer nie jest możliwość dostępu do bazy danych "master" w bieżącym kontekście zabezpieczeń podmiotu zabezpieczeń "Moja_nazwa_użytkownika". Nie można otworzyć domyślnej bazy danych użytkownika. Logowanie nie powiodło się. Nie można zalogować użytkownika "Moja_nazwa_użytkownika". (Program Microsoft SQL Server, błąd: 916) | Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń] [ Security overview] artykuł, aby uzyskać więcej informacji. |
+| Nie można zalogować użytkownika "NT\LOGOWANIE". (Microsoft SQL Server, Error: 18456) | Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń] [ Security overview] artykuł, aby uzyskać więcej informacji. |
+| Serwer nie jest możliwość dostępu do bazy danych "master" w bieżącym kontekście zabezpieczeń podmiotu zabezpieczeń "Moja_nazwa_użytkownika". Nie można otworzyć domyślnej bazy danych użytkownika. Logowanie nie powiodło się. Nie można zalogować użytkownika "Moja_nazwa_użytkownika". (Microsoft SQL Server, Error: 916) | Ten błąd występuje, gdy użytkownika usługi AAD, próbuje połączyć się z główną bazą danych, ale nie ma użytkownika głównego.  Aby rozwiązać ten problem, należy albo określić magazyn danych SQL, które chcesz połączyć się z chwili połączenia lub dodać użytkownika do bazy danych master.  Zobacz [Przegląd zabezpieczeń] [ Security overview] artykuł, aby uzyskać więcej informacji. |
 | Błąd CTAIP                                                  | Ten błąd może wystąpić po utworzeniu nazwy logowania na główna baza danych SQL, ale nie w bazie danych SQL Data Warehouse.  Jeśli wystąpi ten błąd, Przyjrzyj się [Przegląd zabezpieczeń] [ Security overview] artykułu.  W tym artykule wyjaśniono, jak utworzyć identyfikator logowania i użytkownika na wzorzec, a następnie utworzyć użytkownika w bazie danych SQL Data Warehouse. |
 | Blokowane przez zaporę                                          | Baz danych SQL Azure są chronione przez zapory poziomu serwera i bazy danych zapewniające tylko znane adresy IP, które mają dostęp do bazy danych. Zapory są zabezpieczone przez domyślne, co oznacza, że musisz jawnie włączyć i adres IP lub zakres adresów, zanim będzie można połączyć.  Aby skonfigurować zaporę w taki sposób, aby uzyskać dostęp, wykonaj kroki opisane w [skonfigurować dostęp do zapory serwera na Twój adres IP klienta] [ Configure server firewall access for your client IP] w [aprowizacji instrukcje] [Provisioning instructions]. |
 | Nie można nawiązać połączenia przy użyciu narzędzia lub sterownika                           | Usługa SQL Data Warehouse zaleca używanie [SSMS][SSMS], [SSDT dla programu Visual Studio][SSDT for Visual Studio], lub [sqlcmd] [ sqlcmd] wykonywać zapytania o swoje dane. Aby uzyskać więcej informacji na temat sterowników i łączenie z usługą SQL Data Warehouse, zobacz [sterowniki dla usługi Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] i [nawiązywanie połączenia z usługi Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] artykułów. |

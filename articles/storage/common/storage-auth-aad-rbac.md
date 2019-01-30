@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: fce89cc754ac179054a60ce837949bb02b2102c6
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.subservice: common
+ms.openlocfilehash: 6cecb2d5fde4fc651cf0ba971189ef62fa330c13
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408701"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241716"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do obiektów Blob platformy Azure i dane w kolejce przy użyciu RBAC (wersja zapoznawcza)
 
@@ -43,7 +43,7 @@ Można również definiować role niestandardowe do użycia z kontenerami i kole
 
 Przypisz rolę RBAC do tożsamości usługi platformy Azure, aby udzielić uprawnień do kontenerów lub kolejek na koncie magazynu. Można określić zakres przypisania roli do konta magazynu lub do określonego kontenera lub kolejki. W poniższej tabeli przedstawiono prawa dostępu do wbudowanych ról w zależności od zakresu:
 
-|Zakres|Właściciel danych obiektów blob|Współautor danych obiektu blob|Czytnik danych obiektu blob|Współautor danych kolejki|Czytnik danych kolejki|
+|Zakres|Właściciel danych obiektów blob|Współautor danych obiektu blob|Czytnik danych obiektu blob|Queue Data Contributor|Queue Data Reader|
 |---|---|---|---|---|---|
 |Poziom subskrypcji|Dostęp do odczytu/zapisu i POSIX dostęp do zarządzania kontrolą do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w ramach subskrypcji| Dostęp do odczytu do wszystkich kontenerów i obiektów blob w ramach subskrypcji|Odczyt/zapis dostęp do wszystkich kolejek w ramach subskrypcji|Dostęp do odczytu do wszystkich kolejek w ramach subskrypcji|
 |Poziomu grupy zasobów|Dostęp do odczytu/zapisu i POSIX dostęp do zarządzania kontrolą do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kontenerów i obiektów blob w grupie zasobów|Dostęp do odczytu do wszystkich kontenerów i obiektów blob w grupie zasobów|Odczyt/zapis dostęp do wszystkich kolejek w grupie zasobów|Dostęp do odczytu do wszystkich kolejek w grupie zasobów|

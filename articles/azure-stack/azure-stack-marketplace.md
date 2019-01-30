@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: df1d263b321361c00ceb37c84858dd2c62033228
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/09/2019
+ms.openlocfilehash: 6c1750e6a523828400b3d06d4e1c22fb34f8273f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245353"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247871"
 ---
 # <a name="azure-stack-marketplace-overview"></a>Omówienie usługi Azure Stack w portalu Marketplace
 
