@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 6fd3d33d40b0ed142127e46dd7c9173de39947c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 545f3669f04c3cd30f4766357c5d582dfe515c80
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121995"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215592"
 ---
 # <a name="face-api-release-notes"></a>Informacje o wersji interfejsu API rozpoznawania twarzy
 
@@ -51,7 +51,7 @@ Ten artykuł odnosi się do usługi interfejsu API rozpoznawania twarzy w wersji
 * Ustalony rozmiar wykrywalny twarzy, aby upewnić się, że jest on dokładnie od 36 x 36 do 4096 x 4096 pikseli.
 
 ### <a name="release-changes-in-november-2016"></a>Zmiany wersji listopada 2016 r.
-* Dodaje standardowy magazyn twarzy subskrypcji na przechowywanie dodatkowych twarzy w przypadku korzystania z [grupie osoba — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) lub [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) potrzeby identyfikacji lub dopasowywania podobieństw. Opłata za przechowywane obrazy wynosi 0,5 $ za 1000 twarzy i ten kurs jest naliczana codziennie. Subskrypcje w ramach warstwy bezpłatna w dalszym ciągu ograniczone do 1000, łączna liczba osób.
+* Dodaje standardowy magazyn twarzy subskrypcji na przechowywanie dodatkowych twarzy w przypadku korzystania z [grupie osoba — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) lub [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) potrzeby identyfikacji lub dopasowywania podobieństw. Opłata za przechowywane obrazy jest naliczana przy użyciu stawki wynoszącej 0,5 USD za 1000 twarzy proporcjonalnie do liczby dni. Subskrypcje w ramach warstwy bezpłatna w dalszym ciągu ograniczone do 1000, łączna liczba osób.
 
 ### <a name="release-changes-in-october-2016"></a>Zmiany wersji października 2016 r.
 * Zmienić komunikat o błędzie z więcej niż jeden twarzy targetFace z "Istnieją więcej niż jeden twarzy na obrazie" do "Ma więcej niż jeden twarzy na obrazie" w [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250) i [grupie osoba — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
@@ -66,7 +66,7 @@ Ten artykuł odnosi się do usługi interfejsu API rozpoznawania twarzy w wersji
 * Dodano opcjonalne `start` i `top` parametrów w [grupie — lista](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395248) umożliwia użytkownikowi określenie punktu początkowego i łączną liczbę grup osób, do listy.
 
 ### <a name="v10-changes-from-v0"></a>Zmiany w wersji 1.0 z V0
-* Zaktualizowano usługę główny punkt końcowy z ```https://westus.api.cognitive.microsoft.com/face/v0/``` do ```https://westus.api.cognitive.microsoft.com/face/v1.0/```. Zmiany zostały wprowadzone do: [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [twarzy — ustalenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [twarzy — Znajdź podobne](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) i [twarzy — grupa](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+* Zaktualizowano usługę główny punkt końcowy z ```https://westus.api.cognitive.microsoft.com/face/v0/``` do ```https://westus.api.cognitive.microsoft.com/face/v1.0/```. Zmiany zostały wprowadzone do: [Twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [twarzy — ustalenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [twarzy — Znajdź podobne](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) i [twarzy — grupa](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 
 * Zaktualizowano rozmiar minimalny wykrywalny twarzy do 36 x 36 pikseli. Mniejsze niż 36 x 36 pikseli twarzy nie zostanie wykryty.
 

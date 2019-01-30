@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e682850d331770766a9b97c2b4b9102af143f2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836274"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211359"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Konfigurowanie adresów IP, odnoszący się nawiązać połączenia z maszynami wirtualnymi platformy Azure po włączeniu trybu failover
 
@@ -30,8 +30,8 @@ W tym artykule poznasz:
 
 Podczas planowania strategii trybu failover i replikacji, na których, jedną z kluczowych pytań jest sposób nawiązywania połączenia z maszyną wirtualną Azure po włączeniu trybu failover. Istnieje kilka opcji podczas projektowania strategii sieci, repliki maszyn wirtualnych platformy Azure:
 
-- **Użyj innego adresu IP**: można określić, aby używać różnych zakresów adresów IP dla replikowanego sieci maszyny Wirtualnej platformy Azure. W tym scenariuszu maszyna wirtualna pobiera nowego adresu IP po włączeniu trybu failover i aktualizacja DNS jest wymagana.
-- **Zachować ten sam adres IP**: możesz chcieć użyć tego samego zakresu adresów IP co w lokacji głównej w środowisku lokalnym, dla sieci platformy Azure po włączeniu trybu failover. Utrzymywanie w tym samym adresem IP adresów upraszcza odzyskiwanie przez zmniejszenie problemów dotyczących sieci po włączeniu trybu failover. Jednak jeśli przeprowadzasz replikację do platformy Azure, musisz zaktualizować tras do nowej lokalizacji, adresy IP, po włączeniu trybu failover.
+- **Użyj innego adresu IP**: Możesz wybrać, czy używać różnych zakresów adresów IP dla sieci maszyny Wirtualnej platformy Azure replikowane. W tym scenariuszu maszyna wirtualna pobiera nowego adresu IP po włączeniu trybu failover i aktualizacja DNS jest wymagana.
+- **Zachować ten sam adres IP**: Można użyć tego samego zakresu adresów IP co w lokacji głównej w środowisku lokalnym, dla sieci platformy Azure po włączeniu trybu failover. Utrzymywanie w tym samym adresem IP adresów upraszcza odzyskiwanie przez zmniejszenie problemów dotyczących sieci po włączeniu trybu failover. Jednak jeśli przeprowadzasz replikację do platformy Azure, musisz zaktualizować tras do nowej lokalizacji, adresy IP, po włączeniu trybu failover.
 
 ## <a name="retaining-ip-addresses"></a>Zachowywanie adresów IP
 
@@ -73,7 +73,7 @@ Dla Woodgrove można było do jej maszyny wirtualne można replikować na platfo
 #### <a name="site-to-site-connection"></a>Połączenia lokacja lokacja
 
 Oprócz połączenia sieć wirtualna-sieć wirtualna, po przejściu w tryb failover Woodgrove można skonfigurować połączenie sieci VPN typu lokacja lokacja:
-- Podczas konfigurowania połączenia lokacja lokacja w sieci platformy Azure, który może tylko kierować ruch do lokalizacji lokalnej (lokalnego sieć) Jeśli zakres adresów IP różni się od zakresu adresów IP w środowisku lokalnym. Jest to spowodowane platforma Azure nie obsługuje rozciągnięta podsieci. Dlatego jeśli masz podsieci 192.168.1.0/24 w środowisku lokalnym, nie można dodać 192.168.1.0/24 sieci lokalnej sieci platformy Azure. Jest to oczekiwane, ponieważ platformy Azure nie wie, że nie istnieją żadne aktywne maszyny wirtualne w podsieci i że podsieć jest tworzona dla wyłącznie podczas odzyskiwania po awarii.
+- Podczas konfigurowania połączenia lokacja lokacja w sieci platformy Azure, który może tylko kierować ruch do lokalizacji lokalnej (sieci lokalne) Jeśli zakres adresów IP różni się od zakresu adresów IP w środowisku lokalnym. Jest to spowodowane platforma Azure nie obsługuje rozciągnięta podsieci. Dlatego jeśli masz podsieci 192.168.1.0/24 w środowisku lokalnym, nie można dodać 192.168.1.0/24 sieci lokalnej sieci platformy Azure. Jest to oczekiwane, ponieważ platformy Azure nie wie, że nie istnieją żadne aktywne maszyny wirtualne w podsieci i że podsieć jest tworzona dla wyłącznie podczas odzyskiwania po awarii.
 - Aby można było poprawnie kierować ruchem sieciowym poza siecią platformy Azure, nie może powodować konflikt podsieci w sieci i sieci lokalnej.
 
 

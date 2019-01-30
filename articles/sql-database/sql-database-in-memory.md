@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 399a0e6dd2b5c83a599aa50973417ba5a9be708d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 890ed64779c6e5704915609552cdd7490ede123a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813359"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210305"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizowanie wydajności przy użyciu technologii w pamięci w bazie danych SQL
 
@@ -163,7 +163,7 @@ Korzystając z klastrowanych indeksów magazynu kolumn tabeli podstawowej jest n
 Jeśli masz **klastra** indeksu magazynu kolumn po obniżania niedostępny całej tabeli. W związku z tym firma Microsoft zaleca umieszczeniu wszystkich *klastra* indeksy magazynu kolumn, zanim obniżanie poziomu bazy danych do warstwy nieobsługiwana lub poziom.
 
 > [!Note]
-> Zarządzane wystąpienie obsługuje indeksy Columstore we wszystkich warstwach.
+> Zarządzane wystąpienie obsługuje indeksów magazynu kolumn we wszystkich warstwach.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 

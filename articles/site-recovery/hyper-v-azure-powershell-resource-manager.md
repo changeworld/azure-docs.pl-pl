@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: c20f61788086806d3eebb62d35b7ac9fbcbd6fb9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4e1b25133914a65f34e281c145d7db5969b0581
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846933"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208027"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych funkcji Hyper-V przy użyciu programu PowerShell i usługi Azure Resource Manager
 
@@ -43,12 +43,12 @@ Ponadto konkretnemu przykładowi, opisane w tym artykule ma następujące wymaga
 * Host funkcji Hyper-V, systemem Windows Server 2012 R2 lub Microsoft Hyper-V Server 2012 R2 zawierającego co najmniej jedną maszynę wirtualną. Serwery funkcji Hyper-V powinien połączony z Internetem, bezpośrednio lub za pośrednictwem serwera proxy.
 * Maszyny wirtualne mają być replikowane powinna być zgodna z [tych wymaganiach wstępnych](hyper-v-azure-support-matrix.md#replicated-vms).
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Zaloguj się do konta platformy Azure
+## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: Zaloguj się do swojego konta platformy Azure
 
-1. Otwórz konsolę programu PowerShell i uruchom to polecenie, aby zalogować się do konta platformy Azure. Polecenie cmdlet powoduje wyświetlenie strony wyświetli monit o podanie poświadczeń konta usługi: **Connect-AzureRmAccount**.
+1. Otwórz konsolę programu PowerShell i uruchom to polecenie, aby zalogować się do konta platformy Azure. Polecenie cmdlet powoduje wyświetlenie strony wyświetli monit o podanie poświadczeń konta: **Connect-AzureRmAccount**.
     - Alternatywnie można uwzględnić poświadczeń konta jako parametru w **Connect-AzureRmAccount** polecenia cmdlet, za pomocą **-poświadczeń** parametru.
     - Jeśli jesteś partnerem CSP, Praca w imieniu dzierżawy, określenia klienta jako dzierżawca, za pomocą ich identyfikatora dzierżawy lub dzierżawy podstawowej nazwy domeny. Na przykład: **Connect-AzureRmAccount-dzierżawy "fabrikam.com"**
-2. Skojarz subskrypcję, której chcesz użyć z konto, ponieważ konto może mieć kilka subskrypcji:
+2. Skojarz subskrypcję, której chcesz użyć przy użyciu konta, ponieważ konto może mieć kilka subskrypcji:
 
     `Select-AzureRmSubscription -SubscriptionName $SubscriptionName`
 
@@ -78,13 +78,13 @@ Ponadto konkretnemu przykładowi, opisane w tym artykule ma następujące wymaga
     Można pobrać listy istniejących magazynów z **Get-AzureRmRecoveryServicesVault** polecenia cmdlet.
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: Ustawić kontekst magazynu usługi Recovery Services
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: Ustaw kontekst magazynu usługi Recovery Services
 
 Ustaw kontekst magazynu w następujący sposób:
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Tworzenie lokacji funkcji Hyper-V
+## <a name="step-4-create-a-hyper-v-site"></a>Krok 4: Utwórz lokację funkcji Hyper-V
 
 1. Utwórz nową lokację funkcji Hyper-V w następujący sposób:
 
@@ -102,7 +102,7 @@ Ustaw kontekst magazynu w następujący sposób:
 
 5. Skopiuj pobrany klucz do hosta funkcji Hyper-V. Wymagany jest klucz, aby zarejestrować hosta funkcji Hyper-V do lokacji.
 
-## <a name="step-5-install-the-provider-and-agent"></a>Krok 5. Instalowanie dostawcy i agenta
+## <a name="step-5-install-the-provider-and-agent"></a>Krok 5. Zainstaluj dostawcę i agenta
 
 1. Pobierz Instalatora, aby uzyskać najnowszą wersję dostawcy z [Microsoft](https://aka.ms/downloaddra).
 2. Uruchom Instalatora na hoście theHyper-V.
@@ -112,7 +112,7 @@ Ustaw kontekst magazynu w następujący sposób:
 
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
-## <a name="step-6-create-a-replication-policy"></a>Krok 6. Tworzenie zasad replikacji
+## <a name="step-6-create-a-replication-policy"></a>Krok 6: Tworzenie zasad replikacji
 
 Przed rozpoczęciem należy pamiętać, że konto magazynu określone powinna być w tym samym regionie platformy Azure co magazyn i powinna mieć włączoną replikacją geograficzną.
 
@@ -132,7 +132,7 @@ Przed rozpoczęciem należy pamiętać, że konto magazynu określone powinna by
         $protectionContainer = Get-AsrProtectionContainer
 3. Kojarzenie kontenera ochrony z zasadami replikacji w następujący sposób:
 
-     $Policy = get-AsrPolicy - FriendlyName $PolicyName $associationJob = New-AsrProtectionContainerMapping — nazwa $mappingName-$Policy zasad — PrimaryProtectionContainer $protectionContainer [0]
+     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
 
 4. Poczekaj, aż do pomyślnego ukończenia zadania skojarzenia.
 
@@ -175,7 +175,7 @@ Przed rozpoczęciem należy pamiętać, że konto magazynu określone powinna by
 
 
 
-## <a name="step-8-run-a-test-failover"></a>Krok 8. wykonywanie testu trybu failover
+## <a name="step-8-run-a-test-failover"></a>Krok 8: Wykonywanie próby przejścia w tryb failover
 1. Uruchom testowanie trybu failover w następujący sposób:
 
         $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

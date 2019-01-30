@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 00ce83a7ec52e24ce858c720e834b8396c2f808c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 118ecc08604cbe05181dd3ba943fd73a34fd47f1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523969"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212481"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Dodaj/Usuń punkt końcowy serwera usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -29,7 +29,7 @@ Aby utworzyć punkt końcowy serwera, najpierw upewnij się, że są spełnione 
 - Upewnij się, czy grupa synchronizacji został pomyślnie wdrożony. Dowiedz się, jak [Tworzenie grupy synchronizacji](storage-sync-files-deployment-guide.md#create-a sync-group-and-a-cloud-endpoint).
 - Upewnij się, że serwer jest połączony z Internetem i czy Azure jest dostępna. Firma Microsoft korzysta z portu 443 dla całej komunikacji między serwerem a naszej usługi.
 
-## <a name="add-a-server-endpoint"></a>Dodaj punkt końcowy serwera
+## <a name="add-a-server-endpoint"></a>Dodawanie punktu końcowego serwera
 Aby dodać punkt końcowy serwera, przejdź do grupy synchronizacji żądany, a następnie wybierz pozycję "Dodaj punkt końcowy serwera".
 
 ![Dodawanie nowego punktu końcowego serwera w okienku grupy synchronizacji](media/storage-sync-files-server-endpoint/add-server-endpoint-1.png)
@@ -37,8 +37,8 @@ Aby dodać punkt końcowy serwera, przejdź do grupy synchronizacji żądany, a 
 Poniższe informacje są wymagane w ramach **Dodaj punkt końcowy serwera**:
 
 - **Zarejestrowany serwer**: Nazwa serwera lub klastra, aby utworzyć punkt końcowy serwera na.
-- **Ścieżka**: ścieżka w systemie Windows Server mają być synchronizowane w ramach grupy synchronizacji.
-- **Obsługa poziomów w chmurze**: przełącznik, aby włączyć lub wyłączyć chmury warstw. Po włączeniu będzie warstw w chmurze *warstwy* pliki do udziałów plików platformy Azure. Spowoduje to konwersję lokalnych udziałów plików do pamięci podręcznej zamiast pełną kopię zestawu danych, ułatwiające zarządzanie wydajności miejsca na serwerze.
+- **Ścieżka**: Ścieżka w systemie Windows Server mają być synchronizowane w ramach grupy synchronizacji.
+- **Obsługa warstw w chmurze**: Przełącznik, aby włączyć lub wyłączyć chmury warstw. Po włączeniu będzie warstw w chmurze *warstwy* pliki do udziałów plików platformy Azure. Spowoduje to konwersję lokalnych udziałów plików do pamięci podręcznej zamiast pełną kopię zestawu danych, ułatwiające zarządzanie wydajności miejsca na serwerze.
 - **Wolne miejsce w woluminie**: ilość wolnego miejsca na dysku zarezerwowane na wolumin, który znajduje się punkt końcowy serwera. Na przykład jeśli wolne miejsce w woluminie wynosi 50% na woluminie z punktem końcowym pojedynczego serwera, około połowie wielkości danych będą umieszczane do usługi Azure Files. Niezależnie od tego, czy w chmurze warstw jest włączona, udziału plików platformy Azure ma zawsze pełne kopii danych w grupie synchronizacji.
 
 Wybierz **Utwórz** Dodawanie punktu końcowego serwera. Pliki znajdujące się w przestrzeni nazw grupy synchronizacji będą teraz przechowywane w synchronizacji. 
@@ -70,3 +70,4 @@ Aby usunąć punkt końcowy serwera:
 ## <a name="next-steps"></a>Kolejne kroki
 - [Zarejestrować/wyrejestrować serwer usługi Azure File Sync](storage-sync-files-server-registration.md)
 - [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
+- [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)

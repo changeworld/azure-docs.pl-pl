@@ -4,16 +4,16 @@ description: Użyj zaawansowanych algorytmów w narzędzie do wyszukiwania anoma
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
-ms.component: anomaly-detection
+ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: c0c15f077a0a7dd302a377aa6f82ba2f8533d862
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: ad0af6137e2a127e2f9981c2707906514bf8c591
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456256"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215201"
 ---
 # <a name="what-is-anomaly-finder"></a>Czym jest narzędzie do wyszukiwania anomalii?
 
@@ -30,15 +30,15 @@ Zobacz, co można skompilować przy użyciu tego interfejsu API:
 
 ![Anomaly_Finder](./media/anomaly_detection1.png) 
 
-Rysunek 1: Wykrycia anomalii w sprzedaży, przychodów
+Rysunek 1: Wykrywanie anomalii w sprzedaży, przychodów
 
 ![Anomaly_Finder](./media/anomaly_detection2.png)
 
-Rysunek 2: Wykrywanie zmian wzorców w żądania obsługi
+Rysunek 2: Wykrywanie zmian wzorców w żądaniach usługi
 
 ## <a name="requirements"></a>Wymagania
 
-- Minimalną ilość danych na dane wejściowe czas serii: co najmniej 13 danych punkty dla szeregów czasowych bez wyczyść okresowości, co najmniej 4 cykle danych punkty dla szeregów czasowych za pomocą znanych okresowości. 
+- Minimalną ilość danych serii czasu danych wejściowych: Co najmniej 13 danych punktów dla szeregów czasowych bez wyczyść okresowości, co najmniej 4 cykle danych punkty dla szeregów czasowych za pomocą znanych okresowości. 
 - Integralność danych: czas serii punktów danych są oddzielone w tym samym interwale i nie brakujących punktów. 
 
 ## <a name="identify-anomalies"></a>Identyfikować anomalie

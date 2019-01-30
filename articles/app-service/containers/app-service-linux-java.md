@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 653d88aafc683b8a67e93945c62a99bbcf8c92fc
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 61bbc65c543801b0f783d01dfb803f47dbcf8a07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900678"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215303"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -28,7 +28,7 @@ Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka
 
 ## <a name="logging-and-debugging-apps"></a>Rejestrowanie i debugowanie aplikacji
 
-Raporty dotyczące wydajności, wizualizacji ruchu i kontrole kondycji są dostępne dla aplikacji eeach za pośrednictwem witryny Azure portal. Zobacz [Omówienie diagnostyki usługi Azure App Service](/azure/app-service/overview-diagnostics) Aby uzyskać więcej informacji na temat uzyskać dostęp do tych narzędzi diagnostycznych.
+Raporty dotyczące wydajności, wizualizacji ruchu i kontrole kondycji są dostępne dla każdej aplikacji za pośrednictwem witryny Azure portal. Zobacz [Omówienie diagnostyki usługi Azure App Service](/azure/app-service/overview-diagnostics) Aby uzyskać więcej informacji na temat uzyskać dostęp do tych narzędzi diagnostycznych.
 
 ## <a name="application-performance-monitoring"></a>Monitorowanie wydajności aplikacji
 

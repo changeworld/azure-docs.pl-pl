@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: ffa1c45b2d9449310a2b0dcc66a513b4d8efbc5d
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 8dfcee6e7f0e2fd21c35ed2507b572c6e8cffc42
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232991"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217241"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 
@@ -28,7 +28,7 @@ Odnajdowanie i klasyfikowanie najbardziej poufnych danych (biznesowe, finansowyc
 - Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując nietypowego dostępu do poufnych danych.
 - Kontrolowanie dostępu do i wzmacniania ochrony bezpieczeństwa baz danych zawierających poufne dane.
 
-Odnajdywanie i klasyfikacja danych jest częścią [SQL Zaawansowana ochrona przed zagrożeniami](sql-advanced-threat-protection.md) oferty (ATP), która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Odnajdywanie i klasyfikacja danych można uzyskać dostęp i zarządzane za pośrednictwem centralnej portal SQL ATP.
+Odnajdywanie i klasyfikacja danych jest częścią [zaawansowane zabezpieczenia danych SQL](sql-advanced-threat-protection.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Odnajdywanie i klasyfikacja danych można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
 
 > [!NOTE]
 > Ten dokument dotyczy tylko usługi Azure SQL Database. Dla programu SQL Server (lokalnie), zobacz [odnajdywanie danych SQL i klasyfikacji](https://go.microsoft.com/fwlink/?linkid=866999).
@@ -77,7 +77,7 @@ Po zdefiniowaniu zasad obowiązujących w całej dzierżawy możesz kontynuować
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
-2. Przejdź do **zaawansowanej ochrony przed zagrożeniami** w pozycji zabezpieczeń, w okienku usługi Azure SQL Database. Kliknij, aby włączyć zaawansowanej ochrony przed zagrożeniami, a następnie kliknij polecenie **danych, odnajdowanie i klasyfikacja (wersja zapoznawcza)** karty.
+2. Przejdź do **zaawansowanych danych** w pozycji zabezpieczeń, w okienku usługi Azure SQL Database. Kliknij, aby włączyć zaawansowane zabezpieczenia danych, a następnie kliknij polecenie **danych, odnajdowanie i klasyfikacja (wersja zapoznawcza)** karty.
 
    ![Skanuj bazę danych](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -134,8 +134,8 @@ T-SQL umożliwia dodawanie/usuwanie klasyfikacje kolumn, a także pobrać wszyst
 > [!NOTE]
 > Zarządzanie etykiety za pomocą języka T-SQL, nie ma możliwości weryfikacji etykiety dodawane do kolumny istniejące w organizacji zasad usługi information protection (zestaw etykiet, które są wyświetlane w portalu zalecenia). Dlatego jest maksymalnie można to sprawdzić.
 
-- Dodawanie/aktualizowanie klasyfikacji co najmniej jedna kolumna: [Dodaj klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- Usunąć klasyfikację z co najmniej jedna kolumna: [PORZUCIĆ klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- Dodawanie/aktualizowanie klasyfikacji co najmniej jedną kolumnę: [DODAJ KLASYFIKACJI CHARAKTERU](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- Usunąć klasyfikację z co najmniej jedną kolumnę: [KLASYFIKACJA CHARAKTERU LISTY](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Wyświetl wszystkie klasyfikacje w bazie danych: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 Interfejsów API REST można również użyć do programowego zarządzania klasyfikacje. Opublikowanych interfejsów API REST obsługują następujące operacje:
@@ -147,7 +147,7 @@ Interfejsów API REST można również użyć do programowego zarządzania klasy
 
 ## <a id="subheading-5"></a>Następne kroki
 
-- Dowiedz się więcej o [SQL zaawansowanej ochrony przed zagrożeniami](sql-advanced-threat-protection.md).
+- Dowiedz się więcej o [danych zaawansowanych SQL](sql-advanced-threat-protection.md).
 - Należy rozważyć skonfigurowanie [Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) monitorowania i inspekcji dostępu do danych poufnych niejawnych.
 
 <!--Anchors-->

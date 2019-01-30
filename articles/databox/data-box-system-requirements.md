@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 469d553d60eb7c5cdfac3bc16f1fb479bd84cb70
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7d52af9e3948f40936795efab5b6671c3f71007a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886216"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206751"
 ---
 # <a name="azure-data-box-system-requirements"></a>Wymagania systemowe w usłudze Azure Data Box
 
@@ -48,7 +48,7 @@ Poniżej przedstawiono listę obsługiwanych systemów operacyjnych dla operacji
 
 ### <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 
-Poniżej przedstawiono listę kont magazynu obsługiwanych typów magazynów dla urządzenia Data Box. Aby uzyskać pełną listę wszystkich różnych typów kont magazynu i ich pełne możliwości, zobacz [typy kont magazynu](/azure/storage/common/storage-account-overview.md#types-of-storage-accounts).
+Poniżej przedstawiono listę kont magazynu obsługiwanych typów magazynów dla urządzenia Data Box. Aby uzyskać pełną listę wszystkich różnych typów kont magazynu i ich pełne możliwości, zobacz [typy kont magazynu](/azure/storage/common/storage-account-overview#types-of-storage-accounts).
 
 | **Konto magazynu / obsługiwane typy magazynu** | **Blokowe obiekty blob** |**Obiekt blob typu Page*** |**Usługa pliki Azure** |**Uwagi**|
 | --- | --- | -- | -- | -- |

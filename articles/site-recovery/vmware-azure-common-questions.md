@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 12/31/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 703d255a962dbac7a430404835c6d45c358d99a7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.author: mayg
+ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478108"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212243"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -42,6 +42,9 @@ Wymagane jest konto magazynu LRS lub GRS. Zalecamy użycie konta GRS, dzięki cz
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Czy Moje konto platformy Azure potrzebuje uprawnień do tworzenia maszyn wirtualnych?
 Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz, potrzebujesz uprawnień, aby utworzyć Maszynę wirtualną platformy Azure w grupie zasobów i sieci wirtualnej można określić podczas konfigurowania Site Recovery i uprawnienia do zapisu do wybranego konta magazynu. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
+
+### <a name="can-i-use-guest-os-server-license-on-azure"></a>Czy można używać licencji serwera systemu operacyjnego gościa, na platformie Azure?
+Tak, klienci Microsoft Software Assurance mogą używać korzyści użycia hybrydowego platformy Azure do skracają koszty licencjonowania **maszyn z systemem Windows Server** , migracji na platformę Azure lub korzystanie z systemu Azure w celu odzyskiwania po awarii.
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Uaktualnij składniki usługi Azure Site Recovery
 
@@ -250,7 +253,7 @@ Tak, jeśli Failover na platformie Azure można powrotu po awarii do innej lokal
 Podczas powrotu po awarii z platformy Azure, powrót do maszyny Wirtualnej w środowisku lokalnym są kopiowane dane z platformy Azure i dostęp prywatny jest wymagany.
 
 ### <a name="can-i-resize-the-azure-vm-after-failover"></a>Czy mogę zmienić rozmiar maszyny Wirtualnej platformy Azure po włączeniu trybu failover?
-Nie, nie można zmienić rozmiar docelowej maszyny Wirtualnej po przejściu w tryb failover.
+Nie, nie można zmienić rozmiaru lub typu docelową maszynę Wirtualną po przejściu w tryb failover.
 
 
 ## <a name="automation-and-scripting"></a>Automatyzacji i opracowywaniu skryptów

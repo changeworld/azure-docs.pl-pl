@@ -5,16 +5,16 @@ description: Słownik niestandardowy w usłudze Translator
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: reference
-ms.openlocfilehash: 35d2ef734e1d1ce71ae6c8d7a607fe0dad1915fb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 28f9ca2cdb622e54bf4938863e4dd826c28d92de
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627675"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206429"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -35,4 +35,4 @@ ms.locfileid: "51627675"
 | Testowanie plików            | Są to często pochodnej pliki, wybierane losowo spośród zestawu szkoleniowego (Jeśli nie zaznaczono żadnego zestawu testów). Celem tych zdań jest do oceny dokładności modelu tłumaczenia. Są to zdania, przeznaczonych do upewnij się, że dokładnie tłumaczy systemu. Dlatego możesz utworzyć zestaw testów i przekaż go do usługi translator, aby upewnić się, że te zdania są używane w wersji ewaluacyjnej systemu (Generowanie wyników BELEU).   |
 | Pole kombi pliku               | Typ pliku, w którym źródło i zdań przetłumaczonych znajdują się w tym samym pliku. Obsługiwane formaty plików (".tmx", ".xliff", ".xlf", ".lcl", "xlsx").                                                                                                                                                                                                                                                                                                                       |
 | Plik archiwum             | Plik, który zawiera inne pliki. Obsługiwane formaty plików (pliku zip, gz, tgz).                                                                                                                                                                                                                                                                                                                                                                                                |
-| Ocena BELEU               | [BELEU](what-is-bleu-score.md) jest standardowa metoda oceny "dokładności" lub dokładności modelu tłumaczenia. Jednak istnieją inne metody oceny, Microsoft Translator korzysta z metody BELEU dokładności raportów do projektu właścicieli.
+| Wynik BLEU               | [BELEU](what-is-bleu-score.md) jest standardowa metoda oceny "dokładności" lub dokładności modelu tłumaczenia. Jednak istnieją inne metody oceny, Microsoft Translator korzysta z metody BELEU dokładności raportów do projektu właścicieli.

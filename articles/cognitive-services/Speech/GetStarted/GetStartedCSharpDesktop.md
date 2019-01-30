@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: f79b148558e7881f852ccd57916b0b0f31a98219
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 4d03ccfddab9a4aab4a1eacde02d68652bf5103a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342334"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219077"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Szybki Start: Używanie rozpoznawania mowy Bing interfejsu API w języku C&#35; dla platformy .NET w Windows
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Szybki start: Używanie rozpoznawania mowy Bing interfejsu API w języku C&#35; dla platformy .NET w Windows
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -46,7 +46,7 @@ Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project
 >
 > * Użyj klucza subskrypcji. Podana C# pulpitu przykładowej aplikacji Wklej swój klucz subskrypcji w polu tekstowym, po uruchomieniu przykładu. Aby uzyskać więcej informacji, zobacz [uruchamianie przykładowej aplikacji](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>Krok 1. Instalowanie przykładowej aplikacji
+## <a name="step-1-install-the-sample-application"></a>Krok 1: Zainstaluj przykładową aplikację.
 
 1. Uruchom program Visual Studio 2015 i wybierz **pliku** > **Otwórz** > **projekt/rozwiązanie**.
 
@@ -54,7 +54,7 @@ Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project
 
 3. Kliknij dwukrotnie, można otworzyć pliku programu Visual Studio 2015 rozwiązania (.sln) o nazwie Samples.sln-SpeechToText-WPF. Rozwiązanie zostanie otwarty w programie Visual Studio.
 
-## <a name="step-2-build-the-sample-application"></a>Krok 2. Tworzenie przykładowej aplikacji
+## <a name="step-2-build-the-sample-application"></a>Krok 2: Tworzenie przykładowej aplikacji
 
 1. Jeśli chcesz używać *uznanie z zamiarem*, najpierw musisz zarejestrować się w celu [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). Następnie użyj adresu URL punktu końcowego z aplikacją usługi LUIS, aby ustawić wartość klucza `LuisEndpointUrl` w pliku app.config, w folderze samples/SpeechRecognitionServiceExample. Aby uzyskać więcej informacji na adres URL punktu końcowego aplikacji usługi LUIS, zobacz [opublikować aplikację](../../luis/luis-get-started-create-app.md#publish-your-app).
 
@@ -78,9 +78,9 @@ Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project
 
    Każda kategoria ma trzy tryby rozpoznawania:
 
-    * **Tryb ShortPhrase**: wypowiedź maksymalnie 15 sekund długo. Ponieważ dane są wysyłane na serwer, klient odbierze wiele wyników częściowych i jeden wynik końcowy z wieloma opcjami n najlepszych.
-    * **Tryb LongDictation**: wypowiedź maksymalnie dwie minuty długo. Ponieważ dane są wysyłane na serwer, klient odbierze wiele wyników częściowych i wiele wyników końcowych w oparciu o którym serwer pauzy zdaniowe.
-    * **Funkcja wykrywania**: serwer zwraca dodatkowe ze strukturą informacje na temat rozpoznawania mowy, danych wejściowych. Aby korzystać z wykrywania intencji, musisz najpierw wytrenuj model przy użyciu [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+    * **Tryb ShortPhrase**: Długości wypowiedź maksymalnie 15 sekund. Ponieważ dane są wysyłane na serwer, klient odbierze wiele wyników częściowych i jeden wynik końcowy z wieloma opcjami n najlepszych.
+    * **Tryb LongDictation**: Wypowiedź maksymalnie dwóch minut long. Ponieważ dane są wysyłane na serwer, klient odbierze wiele wyników częściowych i wiele wyników końcowych w oparciu o którym serwer pauzy zdaniowe.
+    * **Funkcja wykrywania**: Serwer zwraca dodatkowe ze strukturą informacje na temat rozpoznawania mowy, danych wejściowych. Aby korzystać z wykrywania intencji, musisz najpierw wytrenuj model przy użyciu [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 Przykładowe pliki audio za pomocą tej przykładowej aplikacji. Znajdź pliki w repozytorium, które zostały pobrane z tego przykładu w folderze samples/SpeechRecognitionServiceExample. Te przykładowe pliki audio uruchamiane automatycznie, jeśli żadne inne pliki nie są wybierane po wybraniu **Użyj plików wav dla trybu Shortphrase** lub **Użyj plików wav dla trybu Longdictation** jako dane wejściowe mowy. Obecnie jest obsługiwany tylko format audio WAV.
 
@@ -90,9 +90,9 @@ Przykładowe pliki audio za pomocą tej przykładowej aplikacji. Znajdź pliki w
 
 ### <a name="recognition-events"></a>Rozpoznawanie zdarzenia
 
-* **Częściowe wyniki zdarzeń**: to zdarzenie jest wywoływane za każdym razem, gdy usługa rozpoznawania mowy przewiduje, użytkownik może być opinie, nawet zakończeniem wypowiedzi (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeśli używasz `DataRecognitionClient`).
-* **Zdarzenia błędu**: wywoływane, gdy usługa wykrywa błąd.
-* **Intencji zdarzenia**: wywoływana na klientach "WithIntent" (tylko w trybie ShortPhrase) po ostatnim rozpoznawania wynik jest przekształcany do ze strukturą intencji JSON.
+* **Częściowe wyniki zdarzeń**: To zdarzenie jest wywoływane za każdym razem, gdy usługa rozpoznawania mowy przewiduje, użytkownik może być opinie, nawet zakończeniem wypowiedzi (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeśli używasz `DataRecognitionClient`).
+* **Zdarzenia błędu**: Wywołuje się, gdy usługa wykrywa błąd.
+* **Zdarzenia intencji**: Wywoływana na klientach "WithIntent" (tylko w trybie ShortPhrase) po ostatnim rozpoznawania wynik jest przekształcany do ze strukturą intencji JSON.
 * **Wynik zdarzenia**:
   * W `ShortPhrase` tryb, to zdarzenie jest wywoływana i zwraca wyniki n najlepszych, po zakończeniu mówić.
   * W `LongDictation` tryb, program obsługi zdarzeń jest wywoływana wiele razy, oparte na którym usługa identyfikuje wstrzymuje zdania.

@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 961bc2f5d8d619c5a1815b0f4be3b837f72513f4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1f184d54c0d9edc8e203b697c06c2178436172ff
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340039"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206940"
 ---
 # <a name="supported-languages"></a>Obsługiwane języki
 
@@ -36,7 +36,7 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 | en-GB | Angielski (Zjednoczone Królestwo) |pl-PL | Polski (Polska) |
 | EN-IN | English (India) | pt-BR | Portugalski (Brazylia)  |
 | EN NZ | Angielski (Nowa Zelandia) |pt-PT | Portugalski (Portugalia)  |
-| pl-PL | Angielski (Stany Zjednoczone) | ru-RU | Rosyjski (Rosja) |
+| en-US | Angielski (Stany Zjednoczone) | ru-RU | Rosyjski (Rosja) |
 | es-ES | Hiszpański (Hiszpania) | sv-SE | Szwedzki (Szwecja) |
 | es-MX | Hiszpański (Meksyk) |zh-CN | Chiński (mandaryński uproszczony)  |
 | fi-FI | Fiński (Finlandia) |zh-HK | Chiński (SRA Hongkong) |
@@ -49,8 +49,8 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 
 | Kod | Język | Kod | Język |
 |-----|-----|-----|-----|
-| ar EG | Arabski (Egipt), standard nowoczesne | IT-IT | Włoski (Włochy) |
+| ar EG | Arabski (Egipt), standard nowoczesne | It-IT | Włoski (Włochy) |
 | de-DE. | Niemiecki (Niemcy) | ja-JP | Japoński (Japonia) |
-| pl-PL | Angielski (Stany Zjednoczone) | pt-BR | Portugalski (Brazylia) |
+| en-US | Angielski (Stany Zjednoczone) | pt-BR | Portugalski (Brazylia) |
 | es-ES | Hiszpański (Hiszpania) | ru-RU | Rosyjski (Rosja) |
 | fr-FR | Francuski (Francja) | zh-CN | Chiński (mandaryński uproszczony) |

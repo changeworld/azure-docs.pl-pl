@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 64011614c28fc2d94132e0bf4848b9a2c4fad599
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7a9c0ec081b676631f950270f9234284a102d7fa
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118328"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212192"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -88,6 +88,8 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
             $registrationPath = $asrHivePath + '\Registration'
             $proxySettingsPath = $asrHivePath + '\ProxySettings'
             $draIdvalue = 'DraID'
+            $idMgmtCloudContainerId='IdMgmtCloudContainerId'
+
 
             if (Test-Path $asrHivePath)
             {
@@ -108,6 +110,11 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
                 {            
                     "Removing DraId"
                     Remove-ItemProperty -Path $asrHivePath -Name $draIdValue
+                }
+                if($regNode.IdMgmtCloudContainerId -ne $null)
+                {            
+                    "Removing IdMgmtCloudContainerId"
+                    Remove-ItemProperty -Path $asrHivePath -Name $idMgmtCloudContainerId
                 }
                 "Registry keys removed."
             }

@@ -6,17 +6,17 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8d6e768e5cf846cb2c34ceb61d269854418e1dc5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 778005ee321c981fec1d1271cee54229bb3a522f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976600"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214181"
 ---
 # <a name="constituency-parsing"></a>Analiza grupowa
 
@@ -70,24 +70,24 @@ Istnieje kilka takich fraz: *Czy mogę*, *nowy samochód hybrydowego*, *Bluetoot
 |ADJP   | Fraza przymiotników | "Dlatego prosta" |
 |ADVP   | Parametr frazy | "clear za pośrednictwem" |
 |CONJP  | Fraza połączeniu | "oraz" |
-|OSTR   | Fragment, używany dla danych wejściowych niekompletne lub fragmentary | "Zdecydowanie zaleca się..." |
+|FRAG   | Fragment, używany dla danych wejściowych niekompletne lub fragmentary | "Zdecydowanie zaleca się..." |
 |INTJ   | interjection | "Hura" |
-|DZIEŁ    | Znacznik listy, w tym znaki interpunkcyjne | "#4)" |
-|KONTROLI DOSTĘPU DO SIECI    | Nie składowych, używany do wskazania zakresu frazy bez składnika |  "i uzyskać dobrą ofertę" w "możesz wszystko i towary postępowania" |
+|LST    | Znacznik listy, w tym znaki interpunkcyjne | "#4)" |
+|NAC    | Nie składowych, używany do wskazania zakresu frazy bez składnika |  "i uzyskać dobrą ofertę" w "możesz wszystko i towary postępowania" |
 |NP | Rzeczownik frazy | "pancake tasty ziemniaczanej" |
 |NX | Używany w ramach niektórych złożonych serwera NPs do oznaczania nagłówek| |
-|STRONY | Fraza przyimkowych| "w puli" |
+|PP | Fraza przyimkowych| "w puli" |
 |PRN    | Nawiasach| "(tzw.)" |
 |PRT    | Cząstka| "limit" w "zgranych out" |
-|QP | Ilość frazy (czyli złożone miary/kwota) w obrębie frazy rzeczownik| "around 75 zł" |
-|KOD PRZYCZYNY REJESTRACJI    | Zmniejszenie względem klauzuli.| "nadal nieokreślony" w "wszechstronne nadal nierozpoznanych" |
+|QP | Ilość frazy (czyli złożone miary/kwota) w obrębie frazy rzeczownik| "around $75" |
+|RRC    | Zmniejszenie względem klauzuli.| "nadal nieokreślony" w "wszechstronne nadal nierozpoznanych" |
 |S  | Zdania lub klauzuli. | "Jest zdania".
 |SBAR   | Klauzula podrzędny, często wynikające z subordinating połączeniu | "jako I lewej" w "I rozejrzeliśmy jak mogę left."|
 |SBARQ  | Zapytania bezpośrednie wprowadzone przez pytania "Wh" słowo lub — wyrażenie | "Jaki był punkt?" |
-|SPISU OPROGRAMOWANIA   | Odwrócony zdania deklaratywne | "W żadnym momencie cynk one." (Zwróć uwagę, jak normalne podmiotu "one" został przeniesiony do po czasownik "były") |
+|SINV   | Odwrócony zdania deklaratywne | "W żadnym momencie cynk one." (Zwróć uwagę, jak normalne podmiotu "one" został przeniesiony do po czasownik "były") |
 |SQ | Odwrócony tak/nie pytanie lub klauzuli main pytanie pytania "Wh" | "Znalazły się samochodu?" |
 |UCP    | W odróżnieniu od skoordynowanego frazy| "małe, a z usterkami" (należy pamiętać, jak conjoined przymiotnikiem i frazy preposition z "i")|
-|WICEPREZES | Fraza zlecenia | "ran w czasie" |
+|VP | Fraza zlecenia | "ran w czasie" |
 |WHADJP | Fraza przymiotnik pytania "Wh" | "jak przykrość" |
 |WHADVP | Parametr pytania "Wh" frazy| "po" |
 |WHNP   | Pytania "Wh" rzeczownik frazy| "które ziemniak", "ile od początku"|

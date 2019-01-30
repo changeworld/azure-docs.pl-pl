@@ -6,16 +6,16 @@ services: cognitive-services
 author: priyaravi20
 manager: yanbo
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: db69a9e3beb819600109603a8c0129547db57fa5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343031"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215864"
 ---
 # <a name="bing-text-to-speech-api"></a>Tekst do API rozpoznawania mowy Bing
 
@@ -40,7 +40,7 @@ Content-Length: 0
 
 Informacje nagłówka wymagane dla tokenu dostępu jest w następujący sposób.
 
-Name (Nazwa)| Format | Opis
+Name| Format | Opis
 ----|----|----
 OCP-Apim-Subscription-Key | ASCII | Twój klucz subskrypcji
 
@@ -59,10 +59,10 @@ Klienci muszą używać następujący punkt końcowy dostępu do zamiany tekstu 
 
 W poniższej tabeli przedstawiono nagłówki HTTP, które są używane na potrzeby syntezy polecenia głosowe.
 
-Nagłówek |Wartość |Komentarze
+Nagłówek |Value |Komentarze
 ----|----|----
 Content-Type | Aplikacja/ssml + xml | Typ zawartości danych wejściowych.
-X-Microsoft-OutputFormat | **1.** ssml-16 khz-16-bitowych-mono-tts <br> **2.** pierwotne-16 khz-16-bitowych-mono-pcm <br>**3.** audio-16 khz-16 KB/s-mono-siren <br> **4.** riff-16 khz-16 KB/s-mono-siren <br> **5.** riff-16 khz-16-bitowych-mono-pcm <br> **6.** audio-16 khz-128kbitrate-mono-mp3 <br> **7.** audio-16 khz-64kbitrate-mono-mp3 <br> **8.** audio-16 khz-32kbitrate-mono-mp3 | Format danych wyjściowych audio.
+X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** pierwotne-16 khz-16-bitowych-mono-pcm <br>**3.** audio-16 khz-16 KB/s-mono-siren <br> **4.** riff-16 khz-16 KB/s-mono-siren <br> **5.** riff-16 khz-16-bitowych-mono-pcm <br> **6.** audio-16 khz-128kbitrate-mono-mp3 <br> **7.** audio-16 khz-64kbitrate-mono-mp3 <br> **8.** audio-16 khz-32kbitrate-mono-mp3 | Format danych wyjściowych audio.
 X-Search-AppId | Identyfikator GUID (tylko szesnastkowy, nie kresek) | Identyfikator, który unikatowo identyfikuje aplikację klienta. Może to być identyfikator magazynu dla aplikacji. Jeśli nie jest dostępny, identyfikator może być generowany dla aplikacji użytkownika.
 X-Search-ClientID | Identyfikator GUID (tylko szesnastkowy, nie kresek) | Identyfikator, który jednoznacznie identyfikuje wystąpienie aplikacji dla każdej instalacji.
 Agent użytkownika | Nazwa aplikacji | Nazwa aplikacji jest wymagany i musi zawierać mniej niż 255 znaków.
@@ -179,7 +179,7 @@ Interfejs API zamiany tekstu na mowę firmy Microsoft obsługuje SSML 1.0, zgodn
   ```
 
 > [!NOTE]
-> Pamiętaj dane audio, musi być 8k lub 16 wav k zgłoszone w następującym formacie: **kod CRC** (CRC-32): 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0xFFFFFFFF; **Flagi formatu audio**: 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0xFFFFFFFF; **Liczba próbek**: 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0x7FFFFFFF; **Rozmiar dane binarne ciała**: 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0x7FFFFFFF; **Dane binarne ciała**: n bajtów.
+> Uwaga danych musi być 8k lub 16 wav k, w następującym formacie: **Kod CRC** (CRC-32): 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0xFFFFFFFF; **Flagi formatu audio**: 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0xFFFFFFFF; **Liczba próbek**: 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0x7FFFFFFF; **Rozmiar dane binarne ciała**: 4 bajty (DWORD) z prawidłowym zakresem 0x00000000 ~ 0x7FFFFFFF; **Dane binarne ciała**: n bajtów.
 
 ## <a name="SampleApp"></a>Przykładowa aplikacja
 
@@ -214,9 +214,9 @@ EN-IE | Mężczyzna | "Microsoft Server mowy Text na głos mowy (en-IE, Sean)"
 EN-IN | Kobieta | "Microsoft Server mowy Text na głos mowy (en-IN, Heera, Apollo)"
 EN-IN | Kobieta | "Microsoft Server mowy Text na głos mowy (en-IN PriyaRUS)"
 EN-IN | Mężczyzna | "Microsoft Server mowy Text na głos mowy (en-IN, Ravi, Apollo)"
-pl-PL | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, ZiraRUS)"
-pl-PL | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, JessaRUS)"
-pl-PL | Mężczyzna | "Microsoft Server mowy Text na głos mowy (en US, BenjaminRUS)"
+en-US | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, ZiraRUS)"
+en-US | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, JessaRUS)"
+en-US | Mężczyzna | "Microsoft Server mowy Text na głos mowy (en US, BenjaminRUS)"
 es-ES | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (es-ES, Laura, Apollo)"
 es-ES | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (es-ES, HelenaRUS)"
 es-ES | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (es-ES, urządzenia Pablo, Apollo)"

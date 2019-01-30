@@ -5,16 +5,16 @@ description: Podczas wykonywania szkolenia zdania obecne w dokumentach równoleg
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 557cd8d3af0c774d4dd0558d5d25dba8eec07268
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 663dba72619a14c66fdafe083454d0df9b3f6216
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627425"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209931"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Jak w zdaniu dotyczących parowania i wyrównania w dokumentach równoległe
 
@@ -36,9 +36,9 @@ Szkolenia została wykonana pomyślnie, w poniższej tabeli przedstawiono minima
 
 | Zestaw danych   | Zalecane minimalne zdania wyodrębnione liczba | Zalecane minimalne zdania wyrównany liczba | Liczba maksymalna wyrównany zdania |
 |------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Szkolenia   | 10 000                                     | 2,000                                    | Żadnego górnego limitu                 |
-| Dostrajanie     | 2,000                                      | 500                                      | 2,500                          |
-| Testowanie    | 2,000                                      | 500                                      | 2,500                          |
+| Szkolenia   | 10 000                                     | 2000                                    | Żadnego górnego limitu                 |
+| Dostrajanie     | 2000                                      | 500                                      | 2,500                          |
+| Testowanie    | 2000                                      | 500                                      | 2,500                          |
 | Słownik | 0                                          | 0                                        | Żadnego górnego limitu                 |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -6,16 +6,16 @@ services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: a70ef893019264ffc0eb3cb2982b05b15ebd0acf
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 579040c3a1466d431a9ae2105edbf02fa41570b6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884372"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211592"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -44,9 +44,9 @@ Obecnie można przesyłać tych samych dokumentów dla wszystkich operacji anali
 
 | Element | Prawidłowe wartości | Wymagana? | Sposób użycia |
 |---------|--------------|-----------|-------|
-|`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagane | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
-|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5000 znaków. | Wymagane | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
-|`language` | 2-znakowy [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kod [obsługiwanym językiem](../text-analytics-supported-languages.md) | Różni się | Wymagane do analizy tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów; Opcjonalnie na potrzeby wykrywania języka. Nie ma żadnych błędów, jeśli go wykluczyć, ale analiza jest obniżony bez niego. Kod języka powinna odpowiadać `text` należy podać. |
+|`id` |Typ danych jest ciągiem, ale w praktyce identyfikatory dokumentów mają tendencję do być liczbami całkowitymi. | Wymagany | System używa identyfikatorów zapewnienie struktury danych wyjściowych. Wyniki tonacji kodów języków i wyrażenia kluczowe są generowane dla każdego Identyfikatora w żądaniu.|
+|`text` | Bez określonej struktury nieprzetworzony tekst, maksymalnie 5000 znaków. | Wymagany | Do wykrywania języka tekst może być wyrażona w dowolnym języku. Analiza tonacji, wyodrębnianie kluczowych fraz i identyfikacji jednostki, tekst musi znajdować na [obsługiwanym językiem](../text-analytics-supported-languages.md). |
+|`language` | 2-znakowy [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kod [obsługiwanym językiem](../text-analytics-supported-languages.md) | Różna | Wymagane do analizy tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów; Opcjonalnie na potrzeby wykrywania języka. Nie ma żadnych błędów, jeśli go wykluczyć, ale analiza jest obniżony bez niego. Kod języka powinna odpowiadać `text` należy podać. |
 
 Aby uzyskać więcej informacji na temat limitów, zobacz [Text Analytics — Przegląd > limity danych](../overview.md#data-limits). 
 

@@ -5,16 +5,16 @@ description: Przy użyciu funkcji przekazywania dokumentów możesz przekazać r
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a0adb4b761121334e93f2b8d2d764ff3ab495e2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633252"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217224"
 ---
 # <a name="upload-a-document"></a>Przekazywanie dokumentu
 
@@ -37,11 +37,11 @@ Z [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.a
 
     a.  Typ dokumentu:
 
-    -  Szkolenie: Te dokumenty stosowanych w odniesieniu do zestawu szkoleniowego.
-    -  Dostrajania: Te dokumenty stosowanych w odniesieniu do dostosowywania zestawu.
-    -  Testowanie: Te dokumenty będą używane do testowania zestawu.
-    -  Słownik fraza: Te dokumenty stosowanych w odniesieniu do słownika frazę.
-    -  Słownik zdanie: Te dokumenty stosowanych w odniesieniu do słownika zdania
+    -  Szkolenia: Te dokumenty będą używane na zestaw szkoleniowy.
+    -  Dostosowywanie: Te dokumenty będą używane do dostosowywania zestawu.
+    -  Testing: Te dokumenty będą używane do testowania zestawu.
+    -  Słownik frazy: Te dokumenty będą używane dla słownika frazę.
+    -  Słownik zdanie: Te dokumenty będą używane dla słownika zdania
 
     b.  Pary języków.
 
@@ -52,7 +52,7 @@ Z [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.a
     -  Równoległe dane:
         -  Plik źródłowy: Wybierz język źródłowy plik z komputera lokalnego.
         -  Plik docelowy: Wybierz docelowy język pliku z komputera lokalnego.
-        -  Nazwa dokumentu: używana tylko wtedy, gdy masz przekazywania plików równoległych.
+        -  Nazwa dokumentu: Używana tylko wtedy, gdy masz przekazywania plików równoległych.
 
     - Pole kombi dane:
         -  Pole kombi plik: Wybierz plik kombi z komputera lokalnego. Plik kombi zawiera zarówno źródłowe i język docelowy zdań. [Konwencje nazewnictwa](document-formats-naming-convention.md) jest ważne w przypadku plików kombi.

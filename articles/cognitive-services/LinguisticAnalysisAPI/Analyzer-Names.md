@@ -6,22 +6,22 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: f8c7aba2b853f3916c2d01d94d49090a4b3e36a0
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 997dcdd6ce99815a79006b40b87568e573c63ff3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237235"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221687"
 ---
 # <a name="analyzer-names"></a>Nazwy analizatorów
 
 > [!IMPORTANT]
-> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
+> Wersja zapoznawcza analizy językowej została wycofana 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 Używamy nieco skomplikowane struktura nazewnictwa analizatorów, aby zezwalał na elastyczność, zarówno na analizatory i dokładność zrozumieć, co oznacza nazwę.
 Nazwy analizatorów składają się z czterech części: identyfikator, rodzaj, Specyfikacja i implementację.

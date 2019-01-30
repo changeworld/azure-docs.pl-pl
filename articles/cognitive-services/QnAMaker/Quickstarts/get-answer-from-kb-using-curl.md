@@ -1,38 +1,38 @@
 ---
-title: 'Szybki Start: Aby uzyskać odpowiedzi z bazy wiedzy knowledge base — QnA Maker korzystanie z programu cURL'
+title: 'Szybki start: Aby uzyskać odpowiedzi z bazy wiedzy knowledge base — QnA Maker korzystanie z programu cURL'
 titleSuffix: Azure Cognitive Services
 description: Ten przewodnik Szybki Start przeprowadzi Cię przez uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu programu cURL.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 0cbd25c0ea906c0b0f35b6ac0ae798505863ac8a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6eccf4014eb663d0a3275d70c4e997f9ed324762
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273259"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211988"
 ---
-# <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Szybki Start: Uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu programu cURL
+# <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Szybki start: Uzyskiwanie odpowiedzi z bazy wiedzy przy użyciu programu cURL
 
 Szybki Start to narzędzie cURL przeprowadzi Cię przez uzyskiwanie odpowiedzi z bazy wiedzy.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Najnowsze [ **cURL**](https://curl.haxx.se/).
-* Konieczne jest posiadanie [usługę QnA Maker](../How-To/set-up-qnamaker-service-azure.md) i [wiedzy pytań i odpowiedzi](../Tutorials/create-publish-query-in-portal.md).
+* Konieczne jest posiadanie [usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md) oraz [bazy wiedzy zawierającej pytania i odpowiedzi](../Tutorials/create-publish-query-in-portal.md).
 
-## <a name="publish-to-get-endpoint"></a>Publikować można pobrać punktu końcowego
+## <a name="publish-to-get-endpoint"></a>Publikowanie w celu pobrania punktu końcowego
 
-Gdy wszystko jest gotowe do generowania odpowiedzi na pytania z bazy wiedzy, [publikowania](../How-to/publish-knowledge-base.md) bazy wiedzy.
+Aby wygenerować odpowiedź na pytanie z bazy wiedzy, [opublikuj](../How-to/publish-knowledge-base.md) bazę wiedzy.
 
 ## <a name="use-production-endpoint-with-curl"></a>Produkcyjny punkt końcowy za pomocą programu cURL
 
-Po opublikowaniu bazy wiedzy **Publikuj** strony wyświetli ustawienia żądania HTTP do generowania odpowiedzi. **CURL** karta zawiera ustawienia wymagane do generowania odpowiedzi za pomocą narzędzia wiersza polecenia [CURL](https://www.getpostman.com).
+Po opublikowaniu bazy wiedzy na stronie **Publikowanie** zostaną wyświetlone ustawienia żądania HTTP do generowania odpowiedzi. **CURL** karta zawiera ustawienia wymagane do generowania odpowiedzi za pomocą narzędzia wiersza polecenia [CURL](https://www.getpostman.com).
 
 [![Publikowanie wyników](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
@@ -67,9 +67,9 @@ Aby wygenerować odpowiedzi za pomocą programu CURL, wykonaj następujące czyn
     }
     ```
 
-## <a name="use-staging-endpoint-with-curl"></a>Używanie przemieszczania punktu końcowego za pomocą programu cURL
+## <a name="use-staging-endpoint-with-curl"></a>Korzystanie z przejściowego punktu końcowego przy użyciu programu cURL
 
-Jeśli chcesz uzyskać odpowiedzi z przemieszczania punktu końcowego, użyj parametru logiczna querystring `isTest` z wartością `true`.
+Aby uzyskać odpowiedź z przejściowego punktu końcowego, użyj parametru logicznego ciągu kwerendy `isTest` o wartości `true`.
 
 `isTest=true`
 
@@ -78,4 +78,4 @@ Jeśli chcesz uzyskać odpowiedzi z przemieszczania punktu końcowego, użyj par
 Strona publikowania zawiera również informacje [Generowanie odpowiedzi](get-answer-from-kb-using-postman.md) za pomocą narzędzia Postman. 
 
 > [!div class="nextstepaction"]
-> [Używanie metadanych podczas generowania odpowiedzi](../How-to/metadata-generateanswer-usage.md)
+> [Korzystanie z metadanych podczas generowania odpowiedzi](../How-to/metadata-generateanswer-usage.md)

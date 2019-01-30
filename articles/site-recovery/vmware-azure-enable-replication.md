@@ -1,17 +1,17 @@
 ---
 title: Włączanie replikacji maszyn wirtualnych programu VMware na potrzeby odzyskiwania po awarii programu VMware na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób włączania replikacji maszyn wirtualnych programu VMware do odzyskiwania po awarii na platformie Azure przy użyciu usługi Azure Site Recovery.
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: f160fc5f15ad9ca8994995c34d9eba7ee375c015
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.author: mayg
+ms.openlocfilehash: 51086b894de7a02ec78302323512c7766dc9f4fb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424158"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226337"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -59,7 +59,7 @@ Podczas replikowania maszyn wirtualnych programu VMware:
 8. Wybierz sieć platformy Azure i podsieć, z którą nawiążą połączenie maszyny wirtualne Azure, gdy zostaną uruchomione po przejściu do trybu failover. Sieć musi znajdować się w tym samym regionie co magazyn Usług odzyskiwania. Wybierz opcję **Konfiguruj teraz dla wybranych maszyn**, aby zastosować ustawienia sieci do wszystkich maszyn wybranych do ochrony. Wybierz opcję **Konfiguruj później**, aby wybrać sieć platformy Azure dla poszczególnych maszyn. Jeśli nie masz sieci, należy [utworzyć](#set-up-an-azure-network). Aby utworzyć sieć przy użyciu usługi Resource Manager, kliknij przycisk **Utwórz nową**. Wybierz podsieć, jeśli ma to zastosowanie, a następnie kliknij przycisk **OK**.
 
     ![Włącz ustawienie obiektu docelowego replikacji](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**. Jeśli nie jesteś w stanie widoku/wybrać dowolną określoną maszynę wirtualną, kliknij przycisk [tutaj](https://aka.ms/doc-plugin-VM-not-showing) Aby rozwiązać ten problem.
+9. W pozycji **Maszyny wirtualne** > **Wybierz maszyny wirtualne** wybierz każdą maszynę, którą chcesz replikować. Możesz wybrać tylko te maszyny, dla których można włączyć replikację. Następnie kliknij przycisk **OK**. Jeśli nie możesz wyświetlić/wybrać żadnej konkretnej maszyny wirtualnej, kliknij [tutaj](https://aka.ms/doc-plugin-VM-not-showing), aby rozwiązać ten problem.
 
     ![Włączanie replikacji wybierz maszyn wirtualnych](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. W **właściwości** > **skonfigurować właściwości**, wybierz konto używane przez serwer przetwarzania, aby automatycznie zainstalować usługi mobilności na maszynie.  
@@ -86,18 +86,20 @@ Następnie możesz sprawdzić właściwości maszyny źródłowej. Należy pami�
 
 1. Kliknij przycisk **ustawienia** > **zreplikowane elementy** >, a następnie wybierz maszynę. **Essentials** strona zawiera informacje o ustawieniach komputera i stanu.
 2. W obszarze **Właściwości** możesz wyświetlić informacje dotyczące replikacji i trybu failover dla danej maszyny wirtualnej.
-3. W pozycji **Obliczenia i sieć** > **Właściwości obliczeń** możesz określić nazwę i docelowy rozmiar maszyny wirtualnej Azure. Zmodyfikuj nazwę aby spełniać wymagania dotyczące usługi Azure, jeśli to konieczne.
+3. W **obliczenia i sieć** > **właściwości obliczania**, można zmienić wiele propoerties maszyny Wirtualnej:
+* Maszyna wirtualna platformy Azure name - zmodyfikuj nazwę aby spełniać wymagania dotyczące usługi Azure, jeśli to konieczne
+* Rozmiar docelowej maszyny Wirtualnej lub typ — domyślny rozmiar maszyny Wirtualnej zostanie wybrany na podstawie źródła rozmiar maszyny Wirtualnej. Możesz wybrać innego rozmiaru maszyny Wirtualnej, w oparciu o potrzeby dowolnym momencie przed włączeniem trybu failover. Należy pamiętać, że rozmiar dysku maszyny Wirtualnej również zależy od rozmiaru dysku źródłowego i może być tylko zmieniane po pracy awaryjnej. Dowiedz się więcej o [standardowa](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) i [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) rozmiarów i operacje We/Wy dysku.
 
     ![Właściwości sieci i obliczeń](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  Możesz wybrać [grupy zasobów](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) z którym maszynę staje się częścią po przejściu w tryb failover. Można zmienić tego ustawienia, ilekroć przed włączeniem trybu failover. Po przejściu w tryb failover w przypadku migrowania komputera do innej grupy zasobów, ustawienia ochrony dla tego podziału maszyny.
-5. Możesz wybrać [zestaw dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Jeśli komputerze musi być częścią po przejściu w tryb failover. Podczas zaznaczania zestawie dostępności, należy pamiętać, że:
+*  Grupy zasobów — możesz wybrać [grupy zasobów](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines) z którym maszynę staje się częścią po przejściu w tryb failover. Można zmienić tego ustawienia, ilekroć przed włączeniem trybu failover. Po przejściu w tryb failover w przypadku migrowania komputera do innej grupy zasobów, ustawienia ochrony dla tego podziału maszyny.
+* Zestaw dostępności — możesz wybrać [zestaw dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) Jeśli komputerze musi być częścią po przejściu w tryb failover. Podczas zaznaczania zestawie dostępności, należy pamiętać, że:
 
     * Wyświetlane są tylko zestawy dostępności należących do określonej grupy zasobów.  
     * Maszyny z różnych sieci wirtualnych nie może być częścią tego samego zestawu dostępności.
     * Tylko maszyny wirtualne w tej samej wielkości może być częścią zestawu dostępności.
-5. Można również wyświetlić i dodać informacje dotyczące sieci docelowej, podsieci i adresu IP przypisywanego do maszyny Wirtualnej platformy Azure.
-6. W **dysków**, można wyświetlić systemu operacyjnego i dysków z danymi, które znajdują się na maszynę Wirtualną do replikacji.
+4. Można również wyświetlić i dodać informacje dotyczące sieci docelowej, podsieci i adresu IP przypisywanego do maszyny Wirtualnej platformy Azure.
+5. W **dysków**, można wyświetlić systemu operacyjnego i dysków z danymi, które znajdują się na maszynę Wirtualną do replikacji.
 
 ### <a name="configure-networks-and-ip-addresses"></a>Konfigurowanie sieci i adresy IP
 
@@ -120,7 +122,7 @@ Dowiedz się więcej o [korzyść użycia hybrydowego platformy Azure](https://a
 
 ## <a name="common-issues"></a>Typowe problemy
 
-* Każdy dysk powinien być mniejszy niż 1 TB.
+* Każdy dysk powinien być mniejszy niż 4 TB.
 * Dysk systemu operacyjnego powinien być dyskiem podstawowym, a nie dyskiem dynamicznym.
 * Generacja 2/UEFI — włączone maszyn wirtualnych Rodzina systemów operacyjnych powinny być Windows, a dysk rozruchowy powinien być mniejszy niż 300 GB.
 
@@ -128,4 +130,5 @@ Dowiedz się więcej o [korzyść użycia hybrydowego platformy Azure](https://a
 
 Po zakończeniu ochrony i maszyny osiągnęła stanu chronionego, możesz spróbować [trybu failover](site-recovery-failover.md) do sprawdzenia, czy aplikacja pojawi się na platformie Azure lub nie.
 
-Dowiedz się, jeśli chcesz wyłączyć ochronę, jak [wyczyścić ustawienia rejestracją i ochroną](site-recovery-manage-registration-and-protection.md).
+* Dowiedz się, jak [wyczyścić ustawienia rejestracją i ochroną](site-recovery-manage-registration-and-protection.md) można wyłączyć replikacji.
+* Dowiedz się, jak [Automatyzowanie replikacji maszyn wirtualnych przy użyciu programu Powershell](vmware-azure-disaster-recovery-powershell.md)

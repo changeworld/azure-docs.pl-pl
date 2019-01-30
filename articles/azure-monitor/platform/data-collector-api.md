@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 01/28/2019
 ms.author: bwren
-ms.openlocfilehash: 674a26b9c8eb5fe8f44b416b5296b61c6678d2cd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211104"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania danych do usługi Log Analytics z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji przez usługę Log Analytics.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -43,7 +43,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Atrybut | Właściwość |
 |:--- |:--- |
 | Metoda |POST |
-| Identyfikator URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Typ zawartości |application/json |
 
 ### <a name="request-uri-parameters"></a>Parametry identyfikatora URI żądania
@@ -57,7 +57,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | Nagłówek | Opis |
 |:--- |:--- |
 | Autoryzacja |Podpis autoryzacji. W dalszej części tego artykułu możesz przeczytać o tym, jak utworzyć nagłówek HMAC SHA256. |
-| Typ dziennika |Określ typ rekordu jest przesyłane dane. Obecnie typ dziennika obsługuje tylko znaki alfanumeryczne. Nie obsługuje wartości numeryczne i znaki specjalne. Limit rozmiaru dla tego parametru to 100 znaków. |
+| Typ dziennika |Określ typ rekordu jest przesyłane dane. Limit rozmiaru dla tego parametru to 100 znaków. |
 | x-ms-date |Data przetwarzania żądania, w formacie RFC 1123. |
 | time-generated-field |Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określasz pole, a następnie jej zawartość są używane do **TimeGenerated**. Jeśli to pole nie jest określona, wartość domyślna dla **TimeGenerated** to czas, pobieranym wiadomości. Zawartość pola komunikat powinien być zgodny z formatu ISO 8601 RRRR-MM-Ddtgg. |
 
