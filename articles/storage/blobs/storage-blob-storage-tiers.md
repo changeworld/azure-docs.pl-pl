@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kuhussai
-ms.component: blobs
-ms.openlocfilehash: 19a9ef3e3f6a33e1f8e4d1e47ddc7562c0b90e37
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.subservice: blobs
+ms.openlocfilehash: 3e89f5de247cf18abdb710577ce55c6e2cb5765e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197678"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251898"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob storage: — Wersja Premium (wersja zapoznawcza), warstw magazynowania gorąca, chłodna i archiwum
 
@@ -123,7 +123,7 @@ Gdy obiekt blob jest przenoszony do chłodniejszej warstwy (gorąca -> chłodna,
 
 | | **Zapis opłaty (Operacja + dostępu)** | **Opłaty odczytu (Operacja + dostępu)** 
 | ---- | ----- | ----- |
-| **Kierunek SetBlobTier** | Gorąca -> chłodna, gorąca -> archiwum, chłodna -> archiwum | Archiwum -> chłodna, archiwum -> gorąca, chłodna -> gorąca
+| **SetBlobTier Direction** | Gorąca -> chłodna, gorąca -> archiwum, chłodna -> archiwum | Archiwum -> chłodna, archiwum -> gorąca, chłodna -> gorąca
 
 W przypadku przełączania warstwy konta z gorąca na chłodna, opłata wyniesie za operacje zapisu (za 10 000 operacji) dla wszystkich obiektów blob bez ustawionej warstwy tylko na kontach GPv2. Nie ma opłat dla tej zmiany w kontach magazynu obiektów Blob. Opłata wyniesie zarówno dla operacji odczytu (za 10 000 operacji) i pobieranie danych (za GB) w przypadku przełączania usługi Blob storage lub GPv2 Zmiana warstwy konta z chłodna na gorąca. Opłaty za wczesne usunięcie dla dowolnego obiektu blob przeniesionych z warstwy chłodna lub archiwum mogą także obowiązywać.
 

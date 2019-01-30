@@ -6,17 +6,17 @@ services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232757"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224925"
 ---
 # <a name="tutorial-build-an-image-processing-app---c35"></a>Samouczek: Zbuduj obraz przetwarzania aplikacji - C&#35;
 
@@ -66,7 +66,7 @@ Należy najpierw utworzyć przykładową aplikację tak, aby program Visual Stud
 1. Upewnij się, że rozwiązanie programu Visual Studio zawiera dwa projekty:  
 
    * SampleUserControlLibrary
-   * Przykłady interfejsów WPF VisionAPI  
+   * VisionAPI-WPF-Samples  
 
    Jeśli projekt SampleUserControlLibrary jest niedostępny, upewnij się, że pomyślnie dodano rekursywnie sklonowany `Microsoft/Cognitive-Vision-Windows` repozytorium.
 1. W programie Visual Studio, naciśnij klawisze Ctrl + Shift + B lub wybierz **kompilacji** menu wstążki, a następnie wybierz **Kompiluj rozwiązanie** do skompilowania rozwiązania.
@@ -113,7 +113,7 @@ Rozwiązanie dla przykładowej aplikacji komputerowej dla programu Visual Studio
     Strona, która udostępnia standardowy układ wprowadzenie subskrypcji key i punktu końcowego adresu URL dla przykładowej aplikacji. Komputerowej Przykładowa aplikacja korzysta z tej strony do zarządzania klucz subskrypcji i adres URL punktu końcowego używane przez strony scenariusza.
   * VideoResultControl  
     UserControl, zapewniający ustandaryzowane prezentacja wideo informacji. Ten formant nie korzysta z przykładowej aplikacji komputerowej.
-* Przykłady interfejsów WPF VisionAPI  
+* VisionAPI-WPF-Samples  
   Głównego projektu dla przykładowej aplikacji komputerowej, ten projekt zawiera wszystkie ciekawe funkcje do przetwarzania obrazów. Projekt zawiera następujące informacje:
   * AnalyzeInDomainPage.xaml  
     Strona scenariusz analizowanie obrazu ze scenariuszem modelu domeny.

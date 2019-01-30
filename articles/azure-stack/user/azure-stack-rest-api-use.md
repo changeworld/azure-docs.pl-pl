@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: fe516d1d34496d190ae45e00893deb646fc08408
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 651950cfe6ab1b752c4bcf92c4e2f00591e9eb97
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306560"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252102"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -192,7 +193,7 @@ subscriptionPolicies : @{locationPlacementId=AzureStack}
 Rodzajowe żądanie identyfikatora URI, który składa się z: {identyfikator URI scheme} :// {host identyfikatora URI} / {ścieżka zasobu}? {Ciąg zapytania}
 
 - **Schemat identyfikatora URI**:  
-Identyfikator URI Określa protokół używany do wysyłania żądania. Na przykład `http` lub `https`.
+Identyfikator URI Określa protokół używany do wysyłania żądania. Na przykład: `http` lub `https`.
 - **Host identyfikatora URI**:  
 Host Określa nazwę domeny lub adres IP serwera, na którym hostowana jest punkt końcowy usługi REST, takich jak `graph.microsoft.com` lub `adminmanagement.local.azurestack.external`.
 - **Ścieżka zasobu**:  

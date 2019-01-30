@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: db4c0f2d1197a190b33bd297bb597fd19057d875
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 267c3c2d8430d769b5d42de33796da8b57504516
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230343"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238792"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
@@ -200,7 +201,7 @@ Aby wdrożyć usługi App Service w środowisku bez połączenia, należy najpie
 
 2. W obszarze Przegląd, w obszarze Stan zaznacz, aby zobaczyć, że **stan** Wyświetla **wszystkie role są gotowe**.
 
-    ![Zarządzanie App Service](media/azure-stack-app-service-deploy/image12.png)
+    ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
 > [!NOTE]
 > Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:

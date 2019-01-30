@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960655"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246445"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integracja z zaporą Azure Stack
 Zaleca się używać urządzenia zapory w celu bezpiecznej usługi Azure Stack. Mimo że zapory może ułatwić elementów, takich jak rozproszonej typu "odmowa usługi" (DDOS) ataki, Wykrywanie nieautoryzowanego dostępu i inspekcji zawartości, może również zostać przepływności wąskiego gardła dla usług Azure storage, takie jak obiekty BLOB, tabel i kolejek.
@@ -34,7 +35,7 @@ Przedsiębiorstwa to organizacje zewnętrznej sieci mogą być istniejącej siec
 ### <a name="network-address-translation"></a>Translator adresów sieciowych
 Translacji adresów sieciowych (NAT) jest zalecane, aby zezwolić na wdrożenie maszyny wirtualnej (Menedżer DVM), dostęp do zasobów zewnętrznych i Internetu podczas wdrażania, a także maszyn wirtualnych z konsoli odzyskiwania awaryjnego (ERCS) lub uprzywilejowanego punktu końcowego (program ten) podczas Rejestracja i rozwiązywania problemów.
 
-Translator adresów Sieciowych można także alternatywę dla publicznych adresów IP w sieci zewnętrznej lub publicznych adresów VIP. Jednak nie zaleca się zrobić, ponieważ ogranicza środowisko użytkownika dzierżawy i zwiększa złożonością. Dwie opcje byłoby NAT 1:1, która nadal wymaga jeden publiczny adres IP na adres IP użytkownika, w puli lub wiele: 1 translatora adresów Sieciowych wymaga regułą dla każdego użytkownika adresu VIP, zawierający skojarzenia do wszystkich portów NAT, użytkownik może używać.
+Translator adresów Sieciowych można także alternatywę dla publicznych adresów IP w sieci zewnętrznej lub publicznych adresów VIP. Jednak nie zaleca się zrobić, ponieważ ogranicza środowisko użytkownika dzierżawy i zwiększa złożonością. Dwie opcje będą NAT 1:1, która nadal wymaga jeden publiczny adres IP na adres IP użytkownika, w puli lub wiele: 1 translatora adresów Sieciowych wymaga reguły translatora adresów Sieciowych dla każdego użytkownika adresu VIP, zawierający skojarzenia do wszystkich portów użytkownik może użyć.
 
 Oto niektóre z wad korzystania z translatora adresów Sieciowych dla publicznych adresów VIP są:
 - Translator adresów Sieciowych dodaje obciążenie związane z zarządzaniem reguły zapory, ponieważ użytkownicy kontrolować swoje własne punkty końcowe i własne reguły publikowania w stosie programowalnej sieci (komputerowej SDN). Użytkownicy powinni skontaktować się ze operatora infrastruktury Azure Stack, aby uzyskać ich adresy VIP opublikowane i można zaktualizować listy portów.
@@ -54,7 +55,7 @@ Zazwyczaj publiczne adresy IP routingowi określono pulę publicznych adresów V
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Intranet lub obwód sieci zapory zrealizować scenariusz przedsiębiorstwa
 W sieci intranet lub obwód wdrożenia w przedsiębiorstwie usługi Azure Stack jest wdrażany w zaporze podzielone na strefy multi lub Between zapory na krawędzi, a Zapora wewnętrznej sieci firmowej. Ruch jest dystrybuowane między bezpiecznego, sieci obwodowej (lub sieć obwodowa), a niezabezpieczone strefy, jak opisano poniżej:
 
-- **Bezpieczne strefy**: jest to sieci wewnętrznej, który wykorzystuje wewnętrzną lub korporacyjną rutowalne adresy IP. Bezpiecznej sieci mogą zostać podzielone ma wychodzący dostęp do Internetu za pośrednictwem translatora adresów Sieciowych na zaporze i jest zazwyczaj dostępny z dowolnego miejsca w centrum danych za pośrednictwem sieci wewnętrznej. Wszystkie sieci usługi Azure Stack powinien znajdować się w strefie bezpieczny, z wyjątkiem pulę publicznych adresów VIP sieci zewnętrznej.
+- **Bezpieczne strefy**: To jest siecią wewnętrzną, która wykorzystuje wewnętrzną lub korporacyjną rutowalne adresy IP. Bezpiecznej sieci mogą zostać podzielone ma wychodzący dostęp do Internetu za pośrednictwem translatora adresów Sieciowych na zaporze i jest zazwyczaj dostępny z dowolnego miejsca w centrum danych za pośrednictwem sieci wewnętrznej. Wszystkie sieci usługi Azure Stack powinien znajdować się w strefie bezpieczny, z wyjątkiem pulę publicznych adresów VIP sieci zewnętrznej.
 - **Obwodowej strefę**. W sieci obwodowej jest w przypadku, gdy zewnętrznych lub aplikacji, takich jak serwery sieci Web są zazwyczaj wdrożone z Internetem. Zazwyczaj jest monitorowany przez zaporę, aby uniknąć ataków, takich jak przed atakami DDoS i włamań (stosowanie metod hakerskich), umożliwiając jednocześnie określony ruch przychodzący z Internetu. Tylko zewnętrzne sieci publicznych pulę adresów VIP stosu Azure powinien znajdować się w sieci obwodowej.
 - **Niezabezpieczony strefy**. Jest to zewnętrznej sieci internet. Jego **nie** zaleca, aby wdrożyć usługę Azure Stack w strefie niezabezpieczonych.
 

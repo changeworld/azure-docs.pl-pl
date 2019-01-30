@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 44530a1c4eec0f2efca7357438366dd7b6abe42a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: 1545fa3c1c94edc98e53b3579e5617a6bf16461c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093346"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238861"
 ---
 # <a name="azure-stack-validation-report"></a>Raport weryfikacji usługi Azure Stack
 Można uruchomić operacji walidacji, które obsługują wdrażanie i obsługa środowiska Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack. Narzędzie zapisuje wyniki do pliku raportu JSON. Raport przedstawia szczegółowe i sumaryczne dane o stanie wymagania wstępne dotyczące wdrażania usługi Azure Stack. Przedstawia również informacje o rotacji kluczy tajnych dla istniejących wdrożeń programu Azure Stack.  

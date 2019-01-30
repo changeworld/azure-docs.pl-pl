@@ -14,16 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: ff58cc713a6aba211f9eeb1dc42912d21c5b0bdb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: d6f2ca53829642009adbc50061966c5a7e924f7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913953"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240407"
 ---
 # <a name="capacity-planning-and-scaling"></a>Planowanie wydajności i skalowania
 
 Przed utworzeniem dowolnego klastra usługi Azure Service Fabric lub skalowanie zasobów obliczeniowych hostingu klastra, ważne jest planowania pojemności. Aby uzyskać więcej informacji na temat planowania pojemności, zobacz [Planowanie pojemności klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity). Oprócz biorąc pod uwagę charakterystyki element Nodetype i klastra, wybierz plan zapewniający skalowanie w operacji trwać dłużej niż godzinę, aby zakończyć w środowisku produkcyjnym, bez względu na liczbę maszyn wirtualnych, które dodajesz.
+
+## <a name="auto-scaling"></a>Auto Scaling
+Operacje skalowania należy wykonywać za pomocą wdrażania szablonu zasobów platformy Azure, ponieważ jest najlepszym rozwiązaniem, aby traktować [konfiguracje zasobów jako kod]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)i używanie, wynikiem będzie automatyczne skalowanie zestawu skalowania maszyn wirtualnych usługi numerów wersji szablonu usługi Resource Manager niedokładnie Definiowanie skalowania maszyny wirtualnej Ustaw liczbę wystąpień; zwiększenie ryzyka dla przyszłych wdrożeniach, co powoduje niezamierzone operacje skalowania i ogólnie rzecz biorąc należy używać automatycznego skalowania, jeśli:
+
+* Wdrażanie szablonów usługi Resource Manager przy użyciu odpowiednią pojemność zadeklarowana nie obsługuje danego przypadku użycia.
+  * Oprócz skalowanie ręczne, możesz skonfigurować [ciągłej integracji i potoku dostaw w usługom DevOps platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure]( https://docs.microsoft.com/azure/vs-azure-tools-resource-groups-ci-in-vsts), które często jest wyzwalane przez aplikację logiki, która korzysta z metryki wydajności maszyny wirtualnej z kwerendy [interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/rest-api-walkthrough); efektywnego skalowania automatycznego na podstawie metryk, niezależnie od ma, przy jednoczesnej optymalizacji dla usługi Azure Resource Manager Dodaj wartość.
+* Musisz skalować w poziomie 1 węzeł zestawu skalowania maszyn wirtualnych w danym momencie.
+  * Aby skalowanie w poziomie przez co najmniej 3 węzły w czasie, należy [skalowanie klastra usługi Service Fabric na zewnątrz, przez dodanie zestawu skalowania maszyn wirtualnych](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), i jest najbezpieczniejszym umożliwiającą skalowanie w pionie i limit skalowania maszyn wirtualnych ustawia poziomo 1 węzeł w danym momencie.
+* Masz niezawodność Silver lub nowszej dla klastra usługi Service Fabric i trwałości Silver lub większą w dowolnej skali zestaw, możesz skonfigurować reguły skalowania automatycznego.
+  * Pojemność reguły skalowania automatycznego [minimalne] musi być równa lub większa niż 5 wystąpień maszyny wirtualnej, a musi być równa lub większa niż wartość minimalna z warstwy niezawodności dla typu węzła podstawowego.
+
+> [!NOTE]
+> Usługa Azure Service Fabric stanowej usługi Service fabric: / System/InfastructureService/< NODE_TYPE_NAME > działa na każdy typ węzła, który ma Silver lub zapewnienia większej niezawodności, która jest tylko usługa systemowa, która jest obsługiwany na platformie Azure na wszystkich klastrach typy węzłów . 
 
 ## <a name="vertical-scaling-considerations"></a>Zagadnienia skalowanie pionowe
 
@@ -150,10 +163,10 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ## <a name="reliability-levels"></a>Poziom niezawodności
 
 [Poziom niezawodności](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) właściwość zasobu klastra usługi Service Fabric jest i nie można skonfigurować inaczej poszczególne elementy NodeType. Określa współczynnik replikacji usług systemowych dla klastra, a ustawienie poziomie zasobów klastra. Poziom niezawodności określi, minimalna liczba węzłów, które musi być typu węzła podstawowego. Warstwa niezawodności może przyjmować następujące wartości:
-* Platinum — uruchamia usługi systemowe wraz z liczbą docelowego zestawu replik siedmiu
-* Złoty — uruchamia usługi systemowe wraz z liczbą docelowego zestawu replik siedmiu
-* Srebrny — uruchamia usługi systemowe wraz z liczbą zestawu replik docelowej do 5
-* Bronze — uruchamia usługi systemowe wraz z liczbą docelowego zestawu replik trzech
+* Platinum — uruchamia usługi systemowe wraz z liczbą zestawu replik docelowej siedmiu i dziewięć węzły obiektów początkowych.
+* Złoty — uruchamia usługi systemowe wraz z liczbą zestawu replik docelowej siedmiu lub siedmiu węzłów inicjatora.
+* Srebrny — uruchamia usługi systemowe wraz z liczbą docelowej repliki zestaw pięciu do pięciu węzły obiektów początkowych.
+* Bronze — uruchamia usługi systemowe wraz z liczbą docelowej repliki zestaw trzech i trzy węzły obiektów początkowych.
 
 Poziom niezawodności zalecaną minimalną jest Silver.
 

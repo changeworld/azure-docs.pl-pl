@@ -6,17 +6,17 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b06864e08f6edf52e4c96c33c88bba9f8ef4e859
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: MT
+ms.openlocfilehash: 7439a2c5466784a881e71649fa86a8e51d757957
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343211"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226421"
 ---
 # <a name="about-the-text-to-speech-api"></a>O interfejsie API zamiany tekstu na mowę
 
@@ -64,6 +64,6 @@ Wiele możliwości **zamiany tekstu na mowę** interfejsu API, zwłaszcza w czę
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Uzyskaj subskrypcję usługi mowy bezpłatna](https://azure.microsoft.com/try/cognitive-services/)
-* [Szybki Start: Konwertuj tekst na mowę, języka Python](quickstart-python-text-to-speech.md)
-* [Szybki Start: Konwertuj tekst na mowę, .NET Core](quickstart-dotnet-text-to-speech.md)
+* [Szybki start: Konwertuj tekst na mowę, języka Python](quickstart-python-text-to-speech.md)
+* [Szybki start: Konwertuj tekst na mowę, .NET Core](quickstart-dotnet-text-to-speech.md)
 * [Dokumentacja interfejsu API REST](rest-apis.md)

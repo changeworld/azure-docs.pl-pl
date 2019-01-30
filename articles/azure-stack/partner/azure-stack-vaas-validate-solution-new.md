@@ -13,13 +13,14 @@ ms.topic: quickstart
 ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 12/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c8a723137761c12ab335af79dfffb9e124348eac
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 57aa0146f29d45dbcb5b1a0ac2f4fbdf31cb045b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246606"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238758"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>Weryfikowanie nowych rozwiązań usługi Azure Stack
 
@@ -77,7 +78,7 @@ Po pomyślnym zakończeniu testu **harmonogram** akcja zostanie wyłączona.
     - Test identyfikator dysku
     - Pakiet operacyjnej zestaw SDK rozszerzenia usługi KeyVault
     - Operacyjnej zestaw SDK magazynu kluczy
-    - Pakiet operacyjnej zestaw SDK sieci
+    - Network SDK Operational Suite
     - Pakiet operacyjnej zestaw SDK konta magazynu
 
 3. Wybierz **harmonogram** z menu kontekstowego, aby otworzyć wiersz do planowania wystąpieniem testu.

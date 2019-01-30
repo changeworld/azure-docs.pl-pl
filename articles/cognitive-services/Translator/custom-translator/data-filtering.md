@@ -5,16 +5,16 @@ description: Po przesłaniu dokumentów służący do szkolenia niestandardowego
 author: jann-skotdal
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 12/18/2018
 ms.author: v-jansko
 ms.topic: article
-ms.openlocfilehash: bf5dc911fc41cac63c28e5d77434402c04332dfc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: dadcf228d2a633426fc759ca6914b8b894ea8c3d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609320"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226319"
 ---
 # <a name="data-filtering"></a>Filtrowanie danych 
 

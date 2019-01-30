@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 0663f569edd0dec47949053b6ecf7fe49fa24a17
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.subservice: blobs
+ms.openlocfilehash: 81e0e89a8ad17c92a707bae001d2861404cd0d10
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229306"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238843"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostowania statycznej witryny internetowej w usłudze Azure Storage
 Konta magazynu GPv2 platformy Azure umożliwiają obsługę zawartości statycznej (HTML, CSS, JavaScript i plików obrazów) bezpośrednio z kontenera magazynu o nazwie *$web*. Korzystając z zalet hosting w usłudze Azure Storage pozwala na używanie architektur bez użycia serwera, w tym [usługi Azure Functions](/azure/azure-functions/functions-overview) i inne usługi PaaS.
@@ -108,7 +108,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 Dostępne metody wdrażania zawartości do kontenera magazynu są następujące:
 
 - [Narzędzie AzCopy](../common/storage-use-azcopy.md)
-- [Eksplorator usługi Storage](https://azure.microsoft.com/features/storage-explorer/)
+- [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - [Potoki usługi Azure](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
 - [Rozszerzenie programu Visual Studio Code](https://code.visualstudio.com/tutorials/static-website/getting-started)
 

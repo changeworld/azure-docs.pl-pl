@@ -5,16 +5,16 @@ description: Jest to przewodnik po formaty dokumentów i konwencję nazewnictwa 
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 74b421691f5d3536c44af16e99dc54451dfde3f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: afd3192117bd22c62fd8e36752515166e4c6e043
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872768"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225486"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Formaty i nazewnictwa wskazówki Konwencji dokumentów
 
@@ -25,15 +25,15 @@ Poniższa tabela zawiera wszystkie obsługiwane formaty plików, które można u
 | Format            | Rozszerzenia   | Opis                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | XLIFF             | . XLF. XLIFF | Format dokumentu równoległe eksportu systemów Translation pamięci. Języki używane są definiowane w pliku.                                                                                                                                                              |
-| TMX               | . TMX         | Format dokumentu równoległe eksportu systemów Translation pamięci. Języki używane są definiowane w pliku.                                                                                                                                                              |
-| ZIP               | . ZIP         | ZIP to format pliku archiwum.                                                                                                                                                                                                        |
-| Locstudio         | . LCL         | Format Microsoft równoległe dokumentów                                                                                                                                                                                                                                      |
-| Microsoft Word    | . DOCX        | Dokument programu Microsoft Word                                                                                                                                                                                                                                                        |
-| Adobe Acrobat     | . PLIK PDF         | Adobe Acrobat przenośny dokument                                                                                                                                                                                                                                                |
-| HTML              | . KOD HTML. HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
-| Plik tekstowy         | . TXT         | UTF-16 lub UTF-8 zakodowane pliki tekstowe                                                                                                                                                                                                                                             |
+| TMX               | .TMX         | Format dokumentu równoległe eksportu systemów Translation pamięci. Języki używane są definiowane w pliku.                                                                                                                                                              |
+| ZIP               | .ZIP         | ZIP to format pliku archiwum.                                                                                                                                                                                                        |
+| Locstudio         | .LCL         | Format Microsoft równoległe dokumentów                                                                                                                                                                                                                                      |
+| Microsoft Word    | .DOCX        | Dokument programu Microsoft Word                                                                                                                                                                                                                                                        |
+| Adobe Acrobat     | .PDF         | Adobe Acrobat przenośny dokument                                                                                                                                                                                                                                                |
+| HTML              | .HTML, .HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
+| Plik tekstowy         | .TXT         | UTF-16 lub UTF-8 zakodowane pliki tekstowe                                                                                                                                                                                                                                             |
 | Tekst wyrównany w pliku | . DOPASUJ       | Rozszerzenie `.ALIGN` to specjalne rozszerzenie, które można użyć, jeśli wiesz, że zdań w parze dokumentu są dokładnie wyrównana. Jeśli podasz `.ALIGN` pliku, niestandardowe w usłudze Translator nie zostaną wyrównane zdania dla Ciebie. |
-| Plik programu Excel        | . XLSX        | Plik programu Excel (2013 lub nowszy). Pierwszy wiersz / wiersz arkusz kalkulacyjny powinien być kod języka.                                                                                                                                                                                                                                                      |
+| Plik programu Excel        | .XLSX        | Plik programu Excel (2013 lub nowszy). Pierwszy wiersz / wiersz arkusz kalkulacyjny powinien być kod języka.                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>Słownik formatów
 

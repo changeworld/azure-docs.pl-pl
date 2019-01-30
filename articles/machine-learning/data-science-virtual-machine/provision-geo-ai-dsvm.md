@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103952"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240476"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej z geograficznie sztucznej inteligencji na platformie Azure 
 
@@ -49,24 +49,24 @@ Poniżej przedstawiono procedurę, aby utworzyć wystąpienie maszyna wirtualna 
 
    - **Podstawy**
 
-      1. **Nazwa**: Nazwa serwera do nauki o danych, które tworzysz.
+      1. **Nazwa**: Nazwa serwera do nauki o danych, który tworzysz.
 
-      2. **Nazwa użytkownika**: identyfikator logowania konta administratora.
+      2. **Nazwa użytkownika**: Identyfikator logowania konta administratora.
 
-      3. **Hasło**: hasło konta administratora.
+      3. **Hasło**: Hasło do konta administratora.
 
       4. **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane.
 
-      5. **Grupa zasobów**: możesz utworzyć nową lub użyj **pusty** istniejącą grupę zasobów platformy Azure w ramach subskrypcji.
+      5. **Grupa zasobów**: Możesz utworzyć nową lub użyj **pusty** istniejącą grupę zasobów platformy Azure w ramach subskrypcji.
 
-      6. **Lokalizacja**: wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. Jeśli konieczne uczenia głębokiego na procesorze GPU, trzeba wybrać jedną z lokalizacji platformy Azure, która ma wystąpień maszyn wirtualnych GPU seria NC. Obecnie są lokalizacji, które mają maszynach wirtualnych procesorów GPU: **wschodnie stany USA, północno-środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia**. Aby wyświetlić najnowszą listę, sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) i poszukaj **seria NC** w obszarze **obliczenia**. 
+      6. **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. Jeśli konieczne uczenia głębokiego na procesorze GPU, trzeba wybrać jedną z lokalizacji platformy Azure, która ma wystąpień maszyn wirtualnych GPU seria NC. Obecnie są lokalizacji, które mają maszynach wirtualnych procesorów GPU: **Wschodnie stany USA, północno środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA 2, Europa Północna, Europa Zachodnia**. Aby wyświetlić najnowszą listę, sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) i poszukaj **seria NC** w obszarze **obliczenia**. 
 
 
-   - **Ustawienia**: Wybierz jeden z rozmiar maszyny wirtualnej serii NC procesora GPU, jeśli planujesz uruchomić uczenia głębokiego na GPU na maszyny wirtualnej DSVM geograficznie. W przeciwnym razie można wybrać jedną z procesora CPU na podstawie wystąpienia.  Tworzenie konta magazynu dla maszyny Wirtualnej. 
+   - **Ustawienia**: Wybierz jeden z rozmiar maszyny wirtualnej serii NC procesora GPU, jeśli planuje się uruchamianie głębokiego uczenia GPU na maszyny wirtualnej DSVM geograficznie. W przeciwnym razie można wybrać jedną z procesora CPU na podstawie wystąpienia.  Tworzenie konta magazynu dla maszyny Wirtualnej. 
    
-   - **Podsumowanie**: Sprawdź poprawność wszystkie informacje, które zostały wprowadzone.
+   - **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
 
-   - **Kup**: kliknij **Kup** można uruchomić aprowizacji. Link znajduje się na warunki użytkowania usługi. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
+   - **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Link znajduje się na warunki użytkowania usługi. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
 
 >[!NOTE]
 > Aprowizacja powinno zająć około 20 – 30 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: b5314ce874c253151b88882b086257f96612c019
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: ec7b56a7324f3c8c3e3459639e4fd00e92d93e8f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615402"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249752"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>Przygotuj komputer-host ASDK
 Przed zainstalowaniem ASDK na komputerze-hoście, należy przygotować środowisko ASDK instalacji. Gdy na komputerze deweloperskim zestaw hostów zostały przygotowane, uruchomi się z dysku twardego maszyny wirtualnej CloudBuilder.vhdx, aby rozpocząć wdrażanie ASDK.
@@ -53,7 +54,7 @@ Przed zainstalowaniem ASDK na komputerze-hoście, należy przygotować środowis
 
 6. Na **opcjonalne ustawienia** Podaj administratora lokalnego konta informacje o komputerze deweloperskim zestaw hosta, a następnie kliknij przycisk **dalej**. Można również podać wartości następujące opcjonalne ustawienia:
   - **Nazwa_komputera**: Ta opcja określa nazwę hosta development kit. Nazwa musi spełniać wymagania w pełni kwalifikowaną nazwę domeny i musi być co najwyżej 15 znaków lub mniej znaków. Wartość domyślna to losową nazwę komputera generowane przez Windows.
-  - **Konfiguracji statycznych adresów IP**: ustawia wdrożenia do użycia statycznego adresu IP. W przeciwnym razie gdy Instalator jest wykonywany ponowny rozruch cloudbuilder.vhdx, interfejsy sieciowe są skonfigurowane za pomocą usługi DHCP.
+  - **Konfiguracji statycznych adresów IP**: Ustawia wdrożenia do użycia statycznego adresu IP. W przeciwnym razie gdy Instalator jest wykonywany ponowny rozruch cloudbuilder.vhdx, interfejsy sieciowe są skonfigurowane za pomocą usługi DHCP.
 
     ![](media/asdk-prepare-host/3.PNG)
 

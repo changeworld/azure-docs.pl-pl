@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: f928f27c8c1dbfe6c65cb25cb5c34680fc58bff3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: blobs
+ms.openlocfilehash: a9b7d15bebdef40c983eaf4d5eee6953b5a10994
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955874"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236942"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Jak używać magazynu obiektów Blob w języku C++
 
@@ -33,8 +33,8 @@ W tym celu należy zainstalować bibliotekę klienta usługi Azure Storage dla j
 
 Możesz zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, korzystając z następujących metod:
 
-* **Linux:** wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.  
-* **Windows:** w programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.  
+* **Linux:** Wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.  
+* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.  
   
      Install-Package wastorage
 
@@ -82,7 +82,7 @@ Następnie Pobierz odwołanie do **cloud_blob_client** klasy, ponieważ pozwala 
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
 ```
 
-## <a name="how-to-create-a-container"></a>Porady: Tworzenie kontenera
+## <a name="how-to-create-a-container"></a>Instrukcje: Tworzenie kontenera
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
 W tym przykładzie pokazano, jak utworzyć kontener, jeśli jeszcze nie istnieje:  
@@ -119,7 +119,7 @@ container.upload_permissions(permissions);
 
 Wszyscy użytkownicy Internetu mogą wyświetlać obiekty BLOB w kontenerze publicznym, ale użytkownik może je modyfikować lub usuwać tylko wtedy, gdy masz odpowiedni klucz dostępu.  
 
-## <a name="how-to-upload-a-blob-into-a-container"></a>Porady: przekazywanie obiektu blob w kontenerze
+## <a name="how-to-upload-a-blob-into-a-container"></a>Instrukcje: Przekazywanie obiektu blob do kontenera
 Azure Blob storage obsługuje block, obiekty BLOB i stronicowe obiekty BLOB. W większości przypadków zalecane jest użycie blokowych obiektów blob.  
 
 Aby przekazać plik do blokowego obiektu blob, pobierz odwołanie do kontenera i uzyskaj za jego pomocą odwołanie do blokowego obiektu blob. Po uzyskaniu odwołania do obiektu blob możesz przekazać dowolny strumień danych do niego, wywołując **upload_from_stream** metody. Ta operacja spowoduje utworzenie obiektu blob, jeśli jeszcze nie istnieje, lub jego zastąpienie, jeśli już istnieje. W poniższym przykładzie przedstawiono, jak przekazać obiekt blob do kontenera, zakładając, że kontener został już utworzony.  
@@ -154,7 +154,7 @@ blob3.upload_text(U("other text"));
 
 Alternatywnie, można użyć **upload_from_file** metodę, aby przekazać plik do blokowego obiektu blob.
 
-## <a name="how-to-list-the-blobs-in-a-container"></a>Porady: wyświetlanie listy obiektów blob w kontenerze
+## <a name="how-to-list-the-blobs-in-a-container"></a>Instrukcje: Wyświetlanie listy obiektów blob w kontenerze
 Aby wyświetlić listę obiektów blob w kontenerze, należy najpierw uzyskać odwołanie do kontenera. Następnie można użyć kontenera **list_blobs** metodę, aby pobrać obiekty BLOB i/lub zawarte w nim katalogi. Aby uzyskać dostęp z bogatego zestawu właściwości i metod zwróconego do **list_blob_item**, należy wywołać **list_blob_item.as_blob** metodę, aby uzyskać **cloud_blob** obiektu, lub **list_blob.as_directory** metodę, aby pobrać obiekt cloud_blob_directory. Poniższy kod przedstawia sposób pobierania i zwracania identyfikatora URI poszczególnych elementów w **kontenera mój przykład** kontenera:
 
 ```cpp
@@ -184,7 +184,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 Aby uzyskać szczegółowe informacje na temat wyświetlania listy operacji, zobacz [zasobów magazynu Azure listy w języku C++](../storage-c-plus-plus-enumeration.md).
 
-## <a name="how-to-download-blobs"></a>Porady: pobieranie obiektów blob
+## <a name="how-to-download-blobs"></a>Instrukcje: Pobieranie obiektów blob
 Aby pobrać obiekty BLOB, należy najpierw pobrać odwołanie do obiektu blob, a następnie wywołać **download_to_stream** metody. W poniższym przykładzie użyto **download_to_stream** metodę, aby przesłać zawartość obiektu blob do obiektu strumienia, który można następnie zachować w pliku lokalnym.  
 
 ```cpp
@@ -232,7 +232,7 @@ azure::storage::cloud_block_blob text_blob = container.get_block_blob_reference(
 utility::string_t text = text_blob.download_text();
 ```
 
-## <a name="how-to-delete-blobs"></a>Porady: usuwanie obiektów blob
+## <a name="how-to-delete-blobs"></a>Instrukcje: Usuwanie obiektów blob
 Aby usunąć obiekt blob, najpierw pobrać odwołanie do obiektu blob, a następnie wywołać **delete_blob** metody na nim.  
 
 ```cpp

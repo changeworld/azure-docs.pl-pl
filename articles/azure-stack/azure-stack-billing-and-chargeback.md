@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 32d0e0f48a99b5c06b1efa61e6e1a53cf5b0e61b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/19/2018
+ms.openlocfilehash: f17a76b62c511e1cdcd98e387fe0132e2bd15c16
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971797"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238071"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Użycie i rozliczenia w usłudze Azure Stack
 
@@ -59,7 +60,7 @@ Każdy klient ma swoją tożsamość, reprezentowane przez innej dzierżawy usł
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Rejestrowanie w usłudze Azure Stack](azure-stack-registration.md)
-- [Raport danych użycia usługi Azure Stack na platformie Azure](azure-stack-usage-reporting.md)
+- [Raportowanie platformie Azure danych użycia usługi Azure Stack](azure-stack-usage-reporting.md)
 - [Interfejs API użycia zasobów dostawcy](azure-stack-provider-resource-api.md)
 - [Interfejs API użycia zasobów dzierżawy](azure-stack-tenant-resource-usage-api.md)
 - [— Często zadawane pytania dotyczące wykorzystania](azure-stack-usage-related-faq.md)

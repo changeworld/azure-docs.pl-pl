@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7d9b8b5a2ad8ccb447462ef7d34a8c25e5af6ef4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342470"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55225027"
 ---
 # <a name="transcription-guidelines"></a>Wytyczne dotyczące transkrypcji
 
@@ -36,7 +36,7 @@ Dane tekstowe przekazany do tej usługi, zapisywane są w postaci zwykłego teks
 
 Należy unikać użycia znaków Unicode, znaki interpunkcyjne. Przyczyną może być przypadkowo przygotowywania danych w programie przetwarzania program lub oskrobaniu danych ze stron sieci web. Zastąp te znaki odpowiednie podstawienia ASCII. Na przykład:
 
-| Unicode, aby uniknąć | Podstawianie ASCII |
+| Unicode, aby uniknąć | ASCII substitution |
 |----- | ----- |
 | "Hello world" (Otwórz i Zamknij cudzysłów) | "Hello world" (podwójne cudzysłowy) |
 | John's dnia (prawy pojedynczy cudzysłów) | John's dnia (apostrof) |
@@ -53,7 +53,7 @@ Poniżej przedstawiono kilka przykładów
 
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
-| Kawa kawę | Kawa kawę |
+| Starbucks Coffee | Kawa kawę |
 | "Joseph krowy!" wspomniane Batman. | krowy Joseph powiedział batman |
 | "Jak?" wspomniane Batman sidekick, działanie okrężne. | jakie wspomniane batman sidekick okrężnego |
 | Przejdź pobieranie - em! | Wybierz pozycję Pobierz em |
@@ -77,9 +77,9 @@ Poniżej przedstawiono kilka przykładów
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
 | 14 NE 3 odzyskiwania po awarii. | czternastu dysku trzeci północno-wschodnie |
-| Dr Strangelove | Strangelove lekarzem |
+| Dr. Strangelove | Doctor Strangelove |
 | James Bond 007 | James obligacji double o 7 |
-| KE$ zaświadczanie o kondycji | Kesha |
+| Ke$ha | Kesha |
 | Jak długo trwa 2 x 4 | Jak długo trwa dwa, cztery |
 | Spotkania przechodzi z 1-15: 00 | Spotkania przechodzi od jednej do trzech pm |
 | Mój typ krwi jest O + | Mój typ krwi jest dodatnia O |
@@ -92,10 +92,10 @@ Należy użyć danych tekstowych przekazany do Custom Speech Service **kodowania
 
 Należy unikać użycia znaków interpunkcyjnych połowę szerokości. Przyczyną może być przypadkowo przygotowywania danych w programie przetwarzania program lub oskrobaniu danych ze stron sieci web. Zastąp te znaki odpowiednie podstawienia pełnej szerokości. Na przykład:
 
-| Unicode, aby uniknąć | Podstawianie ASCII |
+| Unicode, aby uniknąć | ASCII substitution |
 |----- | ----- |
 | "你好" (otwierających i zamykających podwójne cudzysłowy) | "你好" (cudzysłów) |
-| 需要什么帮助? (znak zapytania) | 需要什么帮助? |
+| 需要什么帮助? (znak zapytania) | 需要什么帮助？ |
 
 ### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Tekst normalizacji wykonywane przez Custom Speech Service
 
@@ -110,11 +110,11 @@ Oto kilka przykładów:
 
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
-| 3,1415 | 三 点 一 四 一 五 |
+| 3.1415 | 三 点 一 四 一 五 |
 | ￥3.5 | 三 元 五 角 |
 | w f y z | W F Y Z |
 | 1992年8月8日 | 一 九 九 二 年 八 月 八 日 |
-| 你吃饭了吗? | 你 吃饭 了 吗 |
+| 你吃饭了吗 ? | 你 吃饭 了 吗 |
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
@@ -178,7 +178,7 @@ Poniżej przedstawiono kilka przykładów
 | ES ISTA 12.23Uhr | 12:23Uhr ISTA ES | ES ISTA zwölf uhr drei i zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf |
 | 3 < 5 | 3 kleiner als 5 | drei kleiner als vier |
-| 2 + 3 – 4 | 2 i 3 minus 4 | zwei oraz drei minus vier|
+| 2 + 3 - 4 | 2 i 3 minus 4 | zwei plus drei minus vier|
 | DAS macht 12€ | DAS macht euro 12 | euro zwölf macht DAS |
 
 

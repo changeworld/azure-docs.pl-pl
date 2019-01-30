@@ -1,6 +1,6 @@
 ---
 Tytuł: Algorytm przykłady titleSuffix: Opis usługi Azure Machine Learning Studio: Omówienie łatwych do zrozumienia podstawy uczenia maszyny zawiera przykłady algorytmu. Do pobrania grafikę informacyjną obejmuje większość usługi machine learning pytania.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: garyericson ms.author: garye ms.custom: seodc18 ms.date: 12/18/2017
 ---

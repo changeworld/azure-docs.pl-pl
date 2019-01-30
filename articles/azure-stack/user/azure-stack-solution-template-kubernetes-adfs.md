@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 3ae0a67a8aa2d403a72b0e20471c2044dbf557bf
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: b032dea67bba6f78b8172e772ab2f8fe492f39f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389065"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250439"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack przy użyciu usługi Active Directory Federation Services
 
@@ -65,7 +66,7 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
 
     - Potrzebujesz następujących rodzajów informacji:
 
-        | Wartość | Opis |
+        | Value | Opis |
         | ---   | ---         |
         | Punkt końcowy usługi Azure Resource Manager | Menedżer zasobów platformy Azure to platforma zarządzania, która umożliwia administratorom wdrażanie, zarządzanie i monitorowanie zasobów platformy Azure. Usługa Azure Resource Manager może obsługiwać te zadania jako grupę, a nie indywidualnie, w ramach jednej operacji.<br>Punkt końcowy w usłudze Azure Stack Development Kit (ASDK) to: `https://management.local.azurestack.external/`<br>Punktu końcowego w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Identyfikator subskrypcji | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |
@@ -106,7 +107,7 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
 
     - Potrzebujesz następujących rodzajów informacji:
 
-        | Wartość | Opis |
+        | Value | Opis |
         | ---   | ---         |
         | Ścieżka do certyfikatu | Ścieżka pliku lub nazwa FQDN certyfikatu. |
         | Hasło certyfikatu | Hasło certyfikatu. |

@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 50c5838f576b6fd6775373f2dbe3c46d751545c1
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3237932c66c77f979c4e95798163621e65735bed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437592"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247157"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Użyj pakiet Enterprise Security w HDInsight
 
@@ -55,9 +55,41 @@ Aby uzyskać więcej informacji, zobacz [HDInsight konfigurowanie klastrów przy
 
 Jeśli masz wystąpienie usługi Active Directory w środowisku lokalnym lub bardziej złożonych konfiguracji usługi Active Directory dla domeny, można zsynchronizować te tożsamości do usługi Azure AD za pomocą usługi Azure AD Connect. Następnie można włączyć usługi Azure AD DS w tej dzierżawie usługi Active Directory. 
 
-Ponieważ protokół Kerberos opiera się na wartości skrótów haseł, konieczne będzie [Włączanie synchronizacji skrótów haseł w usłudze Azure AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Jeśli używasz federacji z usługi Active Directory Federation Services (AD FS), możesz opcjonalnie skonfigurować synchronizacji skrótów haseł do przechowywania kopii zapasowych na wypadek awarii infrastruktury usług AD FS. Aby uzyskać więcej informacji, zobacz [Włączanie synchronizacji skrótów haseł za pomocą usługi Azure AD Connect sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+Ponieważ protokół Kerberos opiera się na wartości skrótów haseł, należy najpierw [Włączanie synchronizacji skrótów haseł w usłudze Azure AD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). 
+
+Jeśli używasz federacji z Active Directory Federation Services (ADFS), konieczne jest włączenie synchronizacji skrótów haseł (zalecane instalacji, zobacz [to](https://youtu.be/qQruArbu2Ew)) który pomaga również odzyskiwania po awarii na wypadek awarii infrastruktury usług AD FS i ochrony z ujawnionymi poświadczeniami. Aby uzyskać więcej informacji, zobacz [Włączanie synchronizacji skrótów haseł za pomocą usługi Azure AD Connect sync](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
 Używanie w lokalnej usłudze Active Directory lub usługi Active Directory na maszynach wirtualnych IaaS samodzielnie, bez usługi Azure AD i Azure AD DS, nie jest obsługiwana konfiguracja w przypadku klastrów HDInsight przy użyciu ESP.
+
+Jeśli federacyjnej jest używana i skróty haseł są zsynchronizowane correcty, ale pojawiają się błędy uwierzytelniania,. Sprawdź, czy środowisko powershell jednostki usługi w chmurze uwierzytelniania hasła jest włączona, jeśli nie, należy ustawić [Home obszaru odnajdywania (HRD ) zasad](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) dla Twojej dzierżawy usługi AAD. Do sprawdzenia i zestaw zasad HRD:
+
+ 1. Zainstaluj moduł programu powershell usługi Azure AD
+
+ ```
+  Install-Module AzureAD
+ ```
+
+ 2. ```Connect-AzureAD``` przy użyciu poświadczeń administratora globalnego (administratora dzierżawy)
+
+ 3. Sprawdź, jeśli została już utworzona jednostka usługi "Azure powershell"
+
+```
+ Get-AzureADServicePrincipal -SearchString "1950a258-227b-4e31-a9cf-717495945fc2"
+```
+
+ 4. Jeśli nie istnieje utworzenia jednostki usługi
+
+```
+ New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+```
+
+ 5. Dołącz zasady do tej jednostki usługi: 
+
+```
+ $policy = New-AzureADPolicy -Definition @("{"HomeRealmDiscoveryPolicy":{"AllowCloudPasswordValidation":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+
+ Add-AzureADServicePrincipalPolicy -Id <Service Principal ID> -refObjectID $policy.ID
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

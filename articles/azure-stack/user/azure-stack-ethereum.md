@@ -11,12 +11,13 @@ ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.openlocfilehash: 1d0e04e4fbc964400e8b5c1544344864f7e757a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.lastreviewed: 11/02/2018
+ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019516"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239234"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Wdrażanie sieci łańcucha bloków Ethereum w usłudze Azure Stack
 
@@ -72,7 +73,7 @@ Szablon lidera konsorcjum konfiguruje zużycie pierwszego elementu członkowskie
     NAMEPREFIX | Ciąg używany jako podstawa nazewnictwa wdrożonych zasobów. | Alfanumerycznym o długości od 1 do 6 | ETH
     WARTOŚĆ AUTHTYPE | Metoda uwierzytelniania do maszyny wirtualnej. | Klucz publiczny hasła lub protokołu SSH | Hasło
     ADMINUSERNAME | Nazwa użytkownika administratora w każdej wdrożonej maszyny wirtualnej | 1 - 64 znaki | gethadmin
-    ADMINPASSWORD (typ uwierzytelniania = hasło)| Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać 3 z następujących warunków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. <br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 - 72 znaków|
+    ADMINPASSWORD (typ uwierzytelniania = hasło)| Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać 3 z następujących wymagań: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. <br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 - 72 znaków|
     ADMINSSHKEY (typ uwierzytelniania = sshPublicKey) | Klucz protokołu secure shell, używany do logowania zdalnego. | |
     GENESISBLOCK | Ciąg JSON reprezentujący niestandardowe genesis bloku.  Określenie wartości tego parametru jest opcjonalne. | |
     ETHEREUMACCOUNTPSSWD | Hasło administratora, używany do zabezpieczania konta Ethereum. | |
@@ -122,7 +123,7 @@ Aby zweryfikować wdrożenie liderów, Przeglądaj liderów administratora witry
     NAMEPREFIX | Ciąg używany jako podstawa nazewnictwa wdrożonych zasobów. | Alfanumerycznym o długości od 1 do 6 | ETH
     WARTOŚĆ AUTHTYPE | Metoda uwierzytelniania do maszyny wirtualnej. | Klucz publiczny hasła lub protokołu SSH | Hasło
     ADMINUSERNAME | Nazwa użytkownika administratora w każdej wdrożonej maszyny wirtualnej | 1 - 64 znaki | gethadmin
-    ADMINPASSWORD (typ uwierzytelniania = hasło)| Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać 3 z następujących warunków: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. <br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 - 72 znaków|
+    ADMINPASSWORD (typ uwierzytelniania = hasło)| Hasło dla konta administratora dla każdej z wdrożonych maszyn wirtualnych. Hasło musi zawierać 3 z następujących wymagań: 1 Wielka litera, 1 mała litera, 1 cyfra i 1 znak specjalny. <br />Gdy wszystkie maszyny wirtualne początkowo miały to samo hasło, możesz zmienić hasło po zainicjowaniu obsługi administracyjnej.|12 - 72 znaków|
     ADMINSSHKEY (typ uwierzytelniania = sshPublicKey) | Klucz protokołu secure shell, używany do logowania zdalnego. | |
     CONSORTIUMMEMBERID | Identyfikator skojarzony z każdego elementu członkowskiego sieci konsorcjum.   | Ten identyfikator powinny być unikatowe w sieci. | 0
     NUMMININGNODES | Liczba węzłów wyszukiwania. | Pomiędzy 2 a 15. | 2

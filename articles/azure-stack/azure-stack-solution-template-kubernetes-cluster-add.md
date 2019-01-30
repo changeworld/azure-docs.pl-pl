@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 81a47a730978a9ecdda7a09bbad0707d436fb116
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: b7e293018f2dc248fae8de8bd9e82943606f4ead
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388471"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239506"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Dodaj rozwiązanie Kubernetes w portalu Marketplace usługi Azure Stack
 
@@ -68,7 +69,7 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
 
     - Potrzebujesz następujących rodzajów informacji:
 
-       | Wartość | Opis |
+       | Value | Opis |
        | ---   | ---         |
        | Hasło | Hasło certyfikatu. |
        | Ścieżka do lokalnego certyfikatu | Ścieżka i nazwa pliku certyfikatu. Na przykład: `path\certfilename.pfx` |
@@ -108,7 +109,7 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
 
     - Potrzebujesz następujących rodzajów informacji:
 
-       | Wartość | Opis                     |
+       | Value | Opis                     |
        | ---   | ---                             |
        | ERCS IP | W ASDK uprzywilejowanych punkt końcowy jest zwykle `AzS-ERCS01`. |
        | Nazwa aplikacji | Prosta nazwa dla nazwy głównej usługi aplikacji. |

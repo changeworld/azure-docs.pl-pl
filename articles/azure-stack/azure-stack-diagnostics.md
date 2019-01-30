@@ -10,12 +10,13 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: ef8a01228ff31afa78f469b2ad80b864fc9d3497
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.lastreviewed: 11/20/2018
+ms.openlocfilehash: bd1994aca3dbbc23977b01d3511f87b5ec08b96d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283456"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251864"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyczne w usłudze Azure Stack
 
@@ -130,7 +131,7 @@ Wykonaj następujące kroki, aby uruchomić Get AzureStackLog na komputerze-hoś
  | - | - | - | -  |   
  |ACS                   |CacheService                   |IBC                            |Producent OEM|
  |ACSDownloadService    |Wystąpienia obliczeniowe                        |InfraServiceController         |OnboardRP|
- |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |ŚRODOWISKA PXE|
+ |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE|
  |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
  |ACSMetrics            |DeploymentMachine              |KeyVaultDataPlane              |QueryServiceWorker|
  |ACSMigrationService   |DiskRP                         |KeyVaultInternalControlPlane   |SeedRing|
@@ -143,9 +144,9 @@ Wykonaj następujące kroki, aby uruchomić Get AzureStackLog na komputerze-hoś
  |ApplicationController |FabricRingServices             |MetricsStoreService            |URP   |
  |ASAppGateway          |FirstTierAggregationService    |MonAdminRP                     |UsageBridge|
  |AzureBridge           |FRP                            |MonRP                          |VirtualMachines   |
- |AzureMonitor          |Brama                        |KONTROLER SIECI                             |WAS|
+ |AzureMonitor          |Brama                        |NC                             |WAS|
  |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |WASPUBLIC|
- |BRP                   |HintingServiceV2               |DOSTAWCA NRP                            |   |
+ |BRP                   |HintingServiceV2               |NRP                            |   |
  |CA                    |HRP                            |OboService                     |   |
  |   |   |   |    |
 

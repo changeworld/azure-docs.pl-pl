@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 94b2ab0263ccb7b6835a7bbe76ed8776aadb1a65
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844995"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228206"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
 
@@ -110,8 +110,8 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
 5. Sprawdź, że usługa Kopia zapasowa jest włączona. Sprawdź, czy jest włączone w **ustawienia funkcji Hyper-V** > **usług Integration Services**.
 6. Upewnij się, że nie ma żadnych konfliktów z aplikacjami, wykonywanie migawki VSS. Może wystąpić, jeśli wiele aplikacji próbuje wykonać migawki VSS w tej samej konflikty czasu. Na przykład, jeśli aplikacja kopii zapasowej trwa migawki VSS, gdy usługa Site Recovery jest zaplanowane przez zasady replikacji, aby zrobić migawkę.   
 7. Sprawdź, jeśli maszyna wirtualna występuje wysokie tempo:
-    - W przypadku maszyn wirtualnych gościa, przy użyciu liczników wydajności na hoście funkcji Hyper-V można zmierzyć dziennych zmian danych. Aby zmierzyć współczynnik zmian danych, należy włączyć następujący licznik. Aggregrate próbkę tę wartość na dyskach maszyn wirtualnych na 5 – 15 minut, można pobrać postęp dokonany w maszynie Wirtualnej.
-        - Kategoria: "funkcji Hyper-V wirtualne urządzenie magazynujące"
+    - W przypadku maszyn wirtualnych gościa, przy użyciu liczników wydajności na hoście funkcji Hyper-V można zmierzyć dziennych zmian danych. Aby zmierzyć współczynnik zmian danych, należy włączyć następujący licznik. Agregować próbkę tę wartość na dyskach maszyn wirtualnych na 5 – 15 minut, można pobrać postęp dokonany w maszynie Wirtualnej.
+        - Kategoria: "Funkcji hyper-V wirtualne urządzenie magazynujące"
         - Licznik: "Zapisane bajty / s"</br>
         - Współczynnik zmian danych w tym danych zwiększa lub pozostać na wysokim poziomie, w zależności od ich obciążenia maszyny Wirtualnej lub jej aplikacji.
         - Średni źródłowy współczynnik zmian danych dysku to 2 MB/s dla magazynu w warstwie standardowa dla usługi Site Recovery. [Dowiedz się więcej](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
@@ -125,7 +125,7 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
 1. Sprawdź dzienniki zdarzeń błędów usługi VSS i zalecenia:
     - Na serwerze hosta funkcji Hyper-V, Otwórz dziennik zdarzeń administratora funkcji Hyper-V w **Podgląd zdarzeń** > **Dzienniki aplikacji i usług** > **Microsoft**  >  **Windows** > **funkcji Hyper-V** > **administratora**.
     - Sprawdź, czy są wszystkie zdarzenia, które wskazują błędy migawki spójności aplikacji.
-    - Typowy błąd to: "funkcji Hyper-V nie można wygenerować zestaw migawkę usługi VSS dla maszyny wirtualnej"XYZ": moduł zapisujący napotkał błąd nieprzejściowych. Ponowne uruchamianie usługi VSS może rozwiązać problemy, jeśli usługa nie odpowiada."
+    - Typowy błąd to: "Funkcji Hyper-V nie można wygenerować zestaw migawkę usługi VSS dla maszyny wirtualnej"XYZ": Moduł zapisujący napotkał błąd nieprzejściowych. Ponowne uruchamianie usługi VSS może rozwiązać problemy, jeśli usługa nie odpowiada."
 
 2. Aby wygenerować migawki VSS na maszynie Wirtualnej, sprawdź, czy są zainstalowane usługi integracji funkcji Hyper-V, na maszynie Wirtualnej i czy jest włączona usługa integracji kopii zapasowych w tle (VSS).
     - Sprawdź, czy integracji usługi VSS usług/demonów uruchomionych na gościa i znajdują się w **OK** stanu.
@@ -136,7 +136,7 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
 
 **Kod błędu:** | **Komunikat** | **Szczegóły**
 --- | --- | ---
-**0x800700EA** | "Nie można wygenerować zestaw migawkę usługi VSS dla maszyny wirtualnej funkcji Hyper-V: dostępnych jest więcej danych. (0x800700EA). Generowanie Ustaw migawki VSS może zakończyć się niepowodzeniem, jeśli operacja tworzenia kopii zapasowej jest w toku.<br/><br/> Operacja replikacji dla maszyny wirtualnej nie powiodło się: dostępnych jest więcej danych. " | Sprawdź, czy maszyna wirtualna ma dysk dynamiczny włączone. Ta funkcja nie jest obsługiwana.
+**0x800700EA** | "Funkcji Hyper-V nie można wygenerować zestaw migawkę usługi VSS dla maszyny wirtualnej: Dostępnych jest więcej danych. (0x800700EA). Generowanie Ustaw migawki VSS może zakończyć się niepowodzeniem, jeśli operacja tworzenia kopii zapasowej jest w toku.<br/><br/> Operacja replikacji dla maszyny wirtualnej nie powiodła się: Dostępnych jest więcej danych." | Sprawdź, czy maszyna wirtualna ma dysk dynamiczny włączone. Ta funkcja nie jest obsługiwana.
 **0x80070032** | "Żądającego kopii w tle woluminu funkcji Hyper-V nie można nawiązać połączenia z maszyną wirtualną <. / VMname > ponieważ wersja jest niezgodna wersja oczekiwana przez funkcję Hyper-V | Sprawdź, jeśli są zainstalowane najnowsze aktualizacje Windows.<br/><br/> [Uaktualnij](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) do najnowszej wersji usług Integration Services.
 
 

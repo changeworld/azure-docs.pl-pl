@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8a5fd44f1122b682ee4e3b4c6fcf56408098cae1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 1ab3abb2542b3fec461f1d9ff569ea8ab74458d3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080723"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251983"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -57,6 +57,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Azure Active Directory B2C
 * Azure Cosmos DB
 * Azure Data Explorer
+* Azure Database for MariaDB
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Azure DevOps — organizacjom przeprowadzającym platformy Azure z rozszerzeniem firmy Microsoft kupuje musi [anulować opłacenia zakupów](https://go.microsoft.com/fwlink/?linkid=871160) przed konta mogą przenosić między subskrypcjami.

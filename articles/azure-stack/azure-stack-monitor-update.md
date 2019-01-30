@@ -13,16 +13,17 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 09d3d996e4c939d6691162d66f303536a3f2038d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037223"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239268"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Monitorowanie aktualizacji w usłudze Azure Stack przy użyciu uprzywilejowanych punktu końcowego
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 Możesz użyć [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md) do monitorowania postępu w usłudze Azure Stack przebieg aktualizacji, a do wznowienia aktualizacji nie powiodło się, uruchom w ostatnim kroku pomyślnie powinien portalu usługi Azure Stack staną się niedostępne.  Za pomocą portalu usługi Azure Stack jest zalecaną metodą do zarządzania aktualizacjami w usłudze Azure Stack.
 
@@ -35,7 +36,7 @@ Następujące nowe polecenia cmdlet programu PowerShell do zarządzania aktualiz
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>Upewnij się, że polecenia cmdlet są dostępne
-Ponieważ polecenia cmdlet są nowe w pakiecie aktualizacji 1710 usługi Azure Stack, proces aktualizacji 1710 serwer musi pobrać do pewnego momentu przed funkcją monitorowania jest dostępna. Zazwyczaj polecenia cmdlet są dostępne, jeśli jego stan w portalu administratora wskazuje, że aktualizacji 1710 znajduje się na **ponownie uruchomić Magazyn hosty** kroku. W szczególności aktualizacji polecenie cmdlet występuje w ciągu **krok: uruchamianie kroku 2.6 — dozwolonych aktualizacji PrivilegedEndpoint**.
+Ponieważ polecenia cmdlet są nowe w pakiecie aktualizacji 1710 usługi Azure Stack, proces aktualizacji 1710 serwer musi pobrać do pewnego momentu przed funkcją monitorowania jest dostępna. Zazwyczaj polecenia cmdlet są dostępne, jeśli jego stan w portalu administratora wskazuje, że aktualizacji 1710 znajduje się na **ponownie uruchomić Magazyn hosty** kroku. W szczególności aktualizacji polecenie cmdlet występuje w ciągu **krok: Uruchamianie kroku 2.6 — dozwolonych aktualizacji PrivilegedEndpoint**.
 
 Można również określić, czy polecenia cmdlet są dostępne programowo, badając lista poleceń z uprzywilejowanym punktu końcowego. Aby to zrobić, uruchom następujące polecenia z hosta cyklu życia sprzętu lub uprzywilejowanego stacji roboczej z dostępem. Ponadto upewnij się, że uprzywilejowanych punkt końcowy jest zaufanego hosta. Aby uzyskać więcej informacji, zobacz krok 1 [dostęp uprzywilejowany punktu końcowego](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
 

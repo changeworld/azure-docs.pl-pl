@@ -3,17 +3,17 @@ title: Omówienie kontroli dostępu w usłudze Azure Data Lake magazynu Gen2 | D
 description: Zrozumienie sposobu działania kontroli dostępu w usłudze Azure Data Lake magazynu Gen2
 services: storage
 author: jamesbak
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 52af1a45f920139ddda1d02734de91372fe4719d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3005f19ffbc4771da442e36290a5803dddebfdbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974913"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240179"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen2
 
@@ -29,7 +29,7 @@ Usługa Azure Storage zapewnia trzy wbudowane role kontroli RBAC dla usługi Blo
 
 - [Właściciel danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
 - [Współautor danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
-- [Czytnik danych obiektu Blob magazynu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
+- [Storage Blob Data Reader](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
 
 Użytkownika lub jednostka usługi jest uprawnień RBAC danych za pomocą jednego z tych ról wbudowanych lub za pośrednictwem rolę niestandardową, te uprawnienia są obliczane najpierw od autoryzacji żądania. Jeśli żądana operacja jest autoryzowany przez wywołującego RBAC przydziałów autoryzacji jest natychmiast rozwiązanych i Brak dodatkowych listy ACL są sprawdzane. Alternatywnie Jeśli obiekt wywołujący nie ma przypisania RBAC lub żądania operacji jest niezgodna z przypisane uprawnienie, listy ACL testy są wykonywane do określenia, czy obiekt wywołujący jest autoryzowany do wykonania żądanej operacji.
 
@@ -47,9 +47,9 @@ Tokeny sygnatur dostępu Współdzielonego obejmują dozwolone uprawnienia jako 
 
 Istnieją dwa rodzaje dostępu formantu listy (kontroli dostępu ACL): dostęp do listy ACL i domyślnej listy ACL.
 
-* **Dostęp do listy ACL**: listy ACL dostępu kontrola dostępu do obiektu. Pliki i katalogi mają dostęp do listy kontroli dostępu.
+* **Dostęp do listy ACL**: Listy ACL dostępu kontrolują dostęp do obiektu. Pliki i katalogi mają osobne listy ACL dostępu.
 
-* **Domyślne listy ACL**: szablon list ACL skojarzonych z katalogu, które określają listy ACL dostępu dla wszelkich elementów podrzędnych, które zostały utworzone w tym katalogu. Pliki nie mają domyślnej listy ACL.
+* **Domyślne listy ACL**: Szablon list ACL skojarzony z katalogiem, które określają listy ACL dostępu dla wszelkich elementów podrzędnych, które zostały utworzone w tym katalogu. Pliki nie mają domyślnych list ACL.
 
 Zarówno listy ACL dostępu i domyślnej listy ACL mają tę samą strukturę.
 
@@ -130,8 +130,8 @@ Na listach ACL modelu POSIX, każdy użytkownik jest skojarzony z *grupa podstaw
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Przypisywanie grupa będąca właścicielem dla nowego pliku lub katalogu
 
-* **Przypadek 1**: katalog główny "/". Ten katalog jest tworzony po utworzeniu systemu plików Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiona dla użytkownika, która utworzyła systemu plików, jeśli zostało to zrobione, przy użyciu protokołu OAuth. Jeśli system plików jest tworzony przy użyciu klucza wspólnego, sygnatury dostępu Współdzielonego konta lub sygnatury dostępu Współdzielonego usługi, a następnie właścicielem i grupy będącej właścicielem są ustawione na **$superuser**.
-* **Przypadek 2** (każdy inny przypadek): gdy tworzony jest nowy element, grupa będąca właścicielem jest kopiowany z katalogu nadrzędnego.
+* **Przypadek 1**: Katalog główny "/". Ten katalog jest tworzony po utworzeniu systemu plików Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiona dla użytkownika, która utworzyła systemu plików, jeśli zostało to zrobione, przy użyciu protokołu OAuth. Jeśli system plików jest tworzony przy użyciu klucza wspólnego, sygnatury dostępu Współdzielonego konta lub sygnatury dostępu Współdzielonego usługi, a następnie właścicielem i grupy będącej właścicielem są ustawione na **$superuser**.
+* **Przypadek 2** (każdy inny przypadek): Gdy zostanie utworzony nowy element, grupa będąca właścicielem jest kopiowany z katalogu nadrzędnego.
 
 #### <a name="changing-the-owning-group"></a>Zmiana grupy będącej właścicielem
 
@@ -213,7 +213,7 @@ Gdy nowy plik lub katalog jest tworzony w istniejącym katalogiem, domyślne lis
 
 Podczas tworzenia pliku lub katalogu, maska umask jest używana do modyfikowania konfiguracji domyślnej listy ACL dla elementu podrzędnego. Maska umask jest 9-bitową wartością w katalogi nadrzędne, które zawiera wartość RWX **użytkownika będącego właścicielem**, **grupy będącej właścicielem**, i **innych**.
 
-Maska umask for Azure Data Lake Storage Gen2 stałą wartość, która jest równa 007. Ta wartość przekłada się na:
+Maska umask for Azure Data Lake Storage Gen2 stałą wartość, która jest równa 007. This value translates to:
 
 | Maska umask składnika     | Forma liczbowa | Forma krótka | Znaczenie |
 |---------------------|--------------|------------|---------|

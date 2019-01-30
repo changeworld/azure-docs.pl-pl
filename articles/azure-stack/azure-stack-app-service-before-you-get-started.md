@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: anwestg
-ms.openlocfilehash: ec34b99f48fbe7b634d7d143e8e108e8f2868f67
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.lastreviewed: 12/11/2018
+ms.openlocfilehash: 558fc7280af398f0037c33121f662649ba9c3506
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182731"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251388"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 

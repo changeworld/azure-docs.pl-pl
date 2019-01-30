@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: 2077978ac9353531d10359edf396e4426e9d6988
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b709bbacce23a89b8c60b77a524018b50ca1ca5e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104497"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245671"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Usługa Azure SQL Database Managed architektura łączności wystąpienia
 
@@ -111,6 +111,9 @@ Wystąpienie zarządzane usługi można wdrażać w dedykowanej podsieci (podsie
 |zarządzanie  |80, 443, 12000|TCP     |Dowolne              |Internet   |Zezwalaj |
 |mi_subnet   |Dowolne           |Dowolne     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
 
+  > [!Note]
+  > PODSIECI wystąpienia Zarządzanego odnosi się do zakresu adresów IP dla podsieci w 10.x.x.x/y formularza. Te informacje można znaleźć w witrynie Azure portal (za pośrednictwem właściwości podsieci).
+  
   > [!Note]
   > Chociaż zasady obowiązkowych zabezpieczeń dla ruchu przychodzącego zezwalającą na ruch z _wszelkie_ źródła na portach 9000, 9003, 1438, 1440, 1452 te porty są chronione przez zaporę wbudowanych. To [artykułu](sql-database-managed-instance-find-management-endpoint-ip-address.md) pokazuje, jak odnaleźć adres IP punktu końcowego zarządzania i sprawdź reguły zapory. 
   

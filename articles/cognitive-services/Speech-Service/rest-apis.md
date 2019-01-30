@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 45af8f554bf38c65c886c4d101c78255f5671037
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218669"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247446"
 ---
 # <a name="speech-service-rest-apis"></a>Interfejsy API REST usługi mowy
 
@@ -439,6 +439,9 @@ Zamiany tekstu na mowę interfejsu API REST obsługuje neuronowych i standard g�
 
 * Aby uzyskać pełną listę głosów, zobacz [języki](language-support.md#text-to-speech).
 * Aby uzyskać informacje o dostępności regionalnej, zobacz [regionów](regions.md#text-to-speech).
+
+> [!IMPORTANT]
+> Koszty się różnić w przypadku standardowych, niestandardowych i neuronowych głosów. Aby uzyskać więcej informacji, zobacz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="request-headers"></a>Nagłówki żądań
 

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: b2520864589558a530f4f9dbfed83a9f3b8c727a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104101"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243644"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Tworzenie i publikowanie elementu portalu Marketplace
 
@@ -128,15 +129,15 @@ ms.locfileid: "54104101"
 
 ### <a name="identity-information"></a>Informacje o tożsamości
 
-| Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
+| Name | Wymagany | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Name (Nazwa) |X |Ciąg |[A-Za-z0-9]+ | |
+| Name |X |Ciąg |[A-Za-z0-9]+ | |
 | Wydawca |X |Ciąg |[A-Za-z0-9]+ | |
 | Wersja |X |Ciąg |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadane
 
-| Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
+| Name | Wymagany | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
 | Nazwa wyświetlana |X |Ciąg |Zalecenie wynoszącą 80 znaków |Portalu mogą być wyświetlane nazwy elementu bez problemu zmieniała, jeśli jest więcej niż 80 znaków. |
 | PublisherDisplayName |X |Ciąg |Zalecenie 30 znaków |Portalu mogą być wyświetlane swoją nazwę wydawcy zostanie wyłączone poprawnie, jeśli jest więcej niż 30 znaków. |
@@ -149,13 +150,13 @@ ms.locfileid: "54104101"
 
 Portal Marketplace korzysta z następujących ikon:
 
-| Name (Nazwa) | Szerokość | Wysokość | Uwagi |
+| Name | Szerokość | Wysokość | Uwagi |
 | --- | --- | --- | --- |
-| Szerokie |255 piks. |115 piks. |Zawsze wymagane |
-| Large |115 piks. |115 piks. |Zawsze wymagane |
-| Medium |90 piks. |90 piks. |Zawsze wymagane |
+| Szerokie |255 px |115 px |Zawsze wymagane |
+| Large |115 px |115 px |Zawsze wymagane |
+| Medium |90 px |90 px |Zawsze wymagane |
 | Small |40 piks. |40 piks. |Zawsze wymagane |
-| Zrzut ekranu |533 piks. |32 piks. |Optional (Opcjonalność) |
+| Zrzut ekranu |533 px |32 px |Optional (Opcjonalność) |
 
 ### <a name="categories"></a>Kategorie
 
@@ -165,7 +166,7 @@ Każdy element portalu Marketplace powinny być oznakowane za pomocą kategorii,
 
 Każdy element portalu Marketplace, mogą obejmować różne linki do dodatkowej zawartości. Linki są określone jako listę wartości nazwy i identyfikatory URI:
 
-| Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
+| Name | Wymagany | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
 | Nazwa wyświetlana |X |Ciąg |Co najwyżej 64 znaków. | |
 | Identyfikator URI |X |URI | | |
@@ -174,10 +175,10 @@ Każdy element portalu Marketplace, mogą obejmować różne linki do dodatkowej
 
 Oprócz poprzedniego metadane autorzy Marketplace można podać niestandardowy klucz/wartość pary danych w następującej postaci:
 
-| Name (Nazwa) | Wymagane | Typ | Ograniczenia | Opis |
+| Name | Wymagany | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
 | Nazwa wyświetlana |X |Ciąg |Maksymalnie 25 znaków. | |
-| Wartość |X |Ciąg |Maksymalnie 30 znaków | |
+| Value |X |Ciąg |Maksymalnie 30 znaków | |
 
 ### <a name="html-sanitization"></a>Narzędzie oczyszczania HTML
 

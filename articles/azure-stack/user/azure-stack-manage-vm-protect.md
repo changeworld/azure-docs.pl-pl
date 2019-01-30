@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 45e22f19c6e2da26105615da6a775eed4f8676f0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: 759ea6b8e4981b3ea198077cabf9df7966d6e883
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243645"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242964"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrona maszyn wirtualnych wdrożonych w usłudze Azure Stack
 
@@ -64,9 +65,9 @@ Zaplanuj strategię odzyskiwania kopii zapasowych i odzyskiwania po awarii dla k
 
 Należy określić ilość przestoju i utraty danych, które Twoja organizacja może tolerować dla każdej aplikacji. Za kwantyfikacja przestoju i utraty danych można utworzyć plan odzyskiwania, które minimalizuje wpływ awarii w Twojej organizacji. Dla każdej aplikacji należy wziąć pod uwagę:
 
- - **Cel czasu odzyskiwania (RTO)**  
+ - **Cel czasu odzyskiwania**  
 Czas RTO wynosi maksymalny dopuszczalny czas, który aplikacja może być niedostępna po incydencie. Na przykład RTO 90 minut oznacza, że użytkownik musi być możliwe do przywrócenia aplikacji do stanu roboczego w ciągu 90 minut od początku awarii. Jeśli masz niski wskaźnik RTO, możesz przechowywać stale uruchomione w stan wstrzymania, aby zapewnić ochronę przed awarią regionalną drugie wdrożenie.
- - **Cel punktu odzyskiwania (RPO)**  
+ - **Cel punktu odzyskiwania**  
 Cel punktu odzyskiwania jest maksymalny czas trwania utraty danych, który jest dopuszczalny podczas awarii. Jeśli na przykład przechowujesz dane w pojedynczej bazie danych bez replikacji do innych baz danych i co godzinę wykonujesz kopię zapasową, możesz stracić nawet godzinę danych.
 
 RTO i RPO są wymaganiami biznesowymi. Należy przeprowadzić ocenę ryzyka, aby zdefiniować RTO i RPO aplikacji.
@@ -77,12 +78,12 @@ Jest kolejną metrykę **średniego czasu odzyskiwanie** (MTTR), czyli Średni c
 
 Najbardziej typowe schemat ochrony dla aplikacji opartych na maszynie Wirtualnej jest użycie oprogramowania do tworzenia kopii zapasowej. Tworzenie kopii zapasowej maszyny Wirtualnej zwykle zawiera system operacyjny, konfiguracja systemu operacyjnego, plików binarnych aplikacji i danych aplikacji. Kopie zapasowe są tworzone przez wykonanie migawki woluminów, dysków lub całą maszynę Wirtualną. Dzięki usłudze Azure Stack elastyczność tworzenia kopii zapasowych z w ramach systemu operacyjnego gościa lub z magazynu usługi Azure Stack i obliczenia interfejsów API. Usługa Azure Stack nie obsługuje wykonywanie kopii zapasowych, na poziomie funkcji hypervisor.
  
-![Kopia zapasowa restor](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
+![Backup-restor](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
 Odzyskiwanie aplikacji wymaga, aby przywracanie przynajmniej jednej maszyny wirtualnej do tej samej chmurze lub do nowej chmury. Można wskazać chmurę w centrum danych lub chmury publicznej. Chmury, któremu możesz wybrać, jest w całości w ramach kontroli nad i opiera się na wymagania dotyczące ochrony prywatności i niezależność danych.
  
- - CEL CZASU ODZYSKIWANIA: Czas przestoju, mierzone w godzinach
- - CEL PUNKTU ODZYSKIWANIA: Utrata danych zmiennej (w zależności od częstotliwości wykonywania kopii zapasowych)
+ - RTO: Czas przestoju, mierzone w godzinach
+ - RPO: Utrata danych zmiennej (w zależności od częstotliwości wykonywania kopii zapasowych)
  - Topologia wdrożenia: Aktywny/pasywny
 
 #### <a name="planning-your-backup-strategy"></a>Planowanie strategii tworzenia kopii zapasowych
@@ -109,8 +110,8 @@ Dzięki tej metodzie aplikacja jest wdrażana w chmurze jeden i jego maszyny Wir
 
 ![Replikacja ręcznej pracy awaryjnej](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
- - CEL CZASU ODZYSKIWANIA: Czas przestoju w ciągu kilku minut
- - CEL PUNKTU ODZYSKIWANIA: Utrata danych zmiennej (w zależności od częstotliwości replikacji)
+ - RTO: Czas przestoju w ciągu kilku minut
+ - RPO: Utrata danych zmiennej (w zależności od częstotliwości replikacji)
  - Topologia wdrożenia: Zapasowego aktywny/pasywny
  
 ### <a name="high-availabilityautomatic-failover"></a>Wysoka dostępność/automatyczny tryb failover
@@ -121,8 +122,8 @@ W połączeniu z zestawami skalowania aplikacji należy zapewnić wysoką dostę
 
 W ten sposób aplikacja jest aktywny tylko w jednej chmury, ale oprogramowanie zostanie wdrożone do wielu chmur. Inne chmury są w trybie gotowości gotowe do uruchomienia aplikacji, gdy zostanie wyzwolony przełączenie w tryb failover.
 
- - CEL CZASU ODZYSKIWANIA: Czas przestoju, mierzony w sekundach
- - CEL PUNKTU ODZYSKIWANIA: Minimalną utratą danych
+ - RTO: Czas przestoju, mierzony w sekundach
+ - RPO: Minimalną utratą danych
  - Topologia wdrożenia: Zapasowego aktywny/aktywny
 
 ### <a name="fault-tolerance"></a>Odporność na uszkodzenia
@@ -133,16 +134,16 @@ Najpierw należy upewnić się, że ustawia zapewnić ochronę przed awariami w�
 
 Należy pamiętać, że każda chmura usługi Azure Stack znajduje niezależne od siebie nawzajem, dlatego chmury są zawsze traktowane jako aktywne z perspektywy infrastruktury. W tym przypadku wiele aktywnych wystąpień aplikacji są wdrażane do co najmniej jedna chmura active.
 
- - CEL CZASU ODZYSKIWANIA: Bez przerwy w działaniu
- - CEL PUNKTU ODZYSKIWANIA: Bez utraty danych
+ - RTO: Bez przerwy w działaniu
+ - RPO: Bez utraty danych
  - Topologia wdrożenia: Aktywny/aktywny
 
 ### <a name="no-recovery"></a>Brak odzyskiwania
 
 Niektóre aplikacje w danym środowisku nie może być konieczne ochrony przed nieplanowane przestoje lub utraty danych. Na przykład maszyny wirtualne używane do tworzenia i testowania zazwyczaj nie trzeba go odzyskać. Należy zdecydować, czy bez ochrony dla aplikacji lub określonej maszyny Wirtualnej. Usługa Azure Stack nie oferuje tworzenia kopii zapasowej lub replikacji maszyn wirtualnych z podstawową infrastrukturą. Podobnie jak na platformie Azure, musisz wyrazić zgodę na ochronę dla każdej maszyny Wirtualnej w każdej subskrypcji.
 
- - CEL CZASU ODZYSKIWANIA: Nieodwracalny
- - CEL PUNKTU ODZYSKIWANIA: Całkowita utrata danych
+ - RTO: Nieodwracalny
+ - RPO: Całkowita utrata danych
 
 ## <a name="recommended-topologies"></a>Zalecane topologie
 

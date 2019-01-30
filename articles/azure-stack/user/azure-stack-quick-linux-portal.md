@@ -11,16 +11,17 @@ ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: ef2d59393902194af3e257ce0fd5bf403b293af1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836750"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245427"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Szybki Start: tworzenie maszyny wirtualnej z systemem Linux server za pomocą portalu usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Aby utworzyć maszynę wirtualną Ubuntu Server 16.04 LTS, należy za pomocą portalu usługi Azure Stack. Wykonaj kroki opisane w tym artykule, aby utworzyć maszynę wirtualną. Ten artykuł zawiera również kroki, aby:
 
@@ -40,7 +41,7 @@ Aby utworzyć maszynę wirtualną Ubuntu Server 16.04 LTS, należy za pomocą po
 
 * **Dostęp do klienta SSH**
 
-   Jeśli używasz usługi Azure Stack Development Kit (ASDK), możesz utracić dostęp do klienta SSH. Jeśli potrzebujesz klienta, istnieje kilka pakietów, które zawierają klienta SSH. Na przykład program PuTTY zawiera klient SSH i generatora klucza SSH (puttygen.exe). Aby uzyskać więcej informacji na temat dostępnych pakietów, przeczytaj następujący artykuł platformy Azure: [sposobu użycia kluczy SSH z Windows Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
+   Jeśli używasz usługi Azure Stack Development Kit (ASDK), możesz utracić dostęp do klienta SSH. Jeśli potrzebujesz klienta, istnieje kilka pakietów, które zawierają klienta SSH. Na przykład program PuTTY zawiera klient SSH i generatora klucza SSH (puttygen.exe). Aby uzyskać więcej informacji na temat dostępnych pakietów przeczytaj następujący artykuł platformy Azure: [Jak używać kluczy protokołu SSH z Windows Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
    Ten przewodnik Szybki Start używa programu PuTTY, można wygenerować kluczy SSH i łączenie z maszyną wirtualną serwera dla systemu Linux. Aby pobrać i zainstalować program PuTTY, przejdź do [ http://www.putty.org/ ](http://www.putty.org).
 

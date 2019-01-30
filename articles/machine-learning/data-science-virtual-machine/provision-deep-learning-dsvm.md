@@ -9,18 +9,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: e1467c0f-497b-48f7-96a0-7f806a7bec0b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 6963515958cd55314562e37ffc6ab1d8e0af5bee
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 53ddea5426d2adfa7b0ddfcbda3375efae8d0859
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078760"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250810"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Aprowizowanie maszyny wirtualnej na platformie Azure do uczenia głębokiego 
 
@@ -38,21 +38,21 @@ Poniżej przedstawiono kroki, aby utworzyć wystąpienie programu Deep maszyna w
    
    1. **Podstawy**
       
-      1. **Nazwa**: Nazwa serwera do nauki o danych tworzysz.
-      2. **Wybierz typ systemu operacyjnego dla maszyny Wirtualnej z głębokiego uczenia**: wybierz pozycję Windows lub Linux (dla Windows 2016 i Ubuntu Linux-DSVM podstawowy)
-      2. **Nazwa użytkownika**: identyfikator logowania konta administratora.
-      3. **Hasło**: hasło konta administratora.
+      1. **Nazwa**: Nazwa tworzonej serwera do nauki o danych.
+      2. **Wybierz typ systemu operacyjnego dla maszyny Wirtualnej z głębokiego uczenia**: Wybierz pozycję Windows lub Linux (dla Windows 2016 i Ubuntu Linux-DSVM podstawowy)
+      2. **Nazwa użytkownika**: Identyfikator logowania konta administratora.
+      3. **Hasło**: Hasło do konta administratora.
       4. **Subskrypcja**: Jeśli masz więcej niż jedną subskrypcję, wybierz ten, na którym maszyna ma zostać utworzona i rozliczane.
-      5. **Grupa zasobów**: możesz utworzyć nową lub użyj **pusty** istniejącą grupę zasobów platformy Azure w ramach subskrypcji.
-      6. **Lokalizacja**: wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. 
+      5. **Grupa zasobów**: Możesz utworzyć nową lub użyj **pusty** istniejącą grupę zasobów platformy Azure w ramach subskrypcji.
+      6. **Lokalizacja**: Wybierz centrum danych, które jest najbardziej odpowiednie. Zazwyczaj jest centrum danych, który zawiera większość danych lub znajduje się najbliżej Twojej lokalizacji fizycznej najszybszy dostęp do sieci. 
       
 > [!NOTE]
 > DLVM obsługuje wszystkie NC i ND serii wystąpień maszyn wirtualnych procesorów GPU. Podczas aprowizowania DLVM, musisz wybrać jedną z lokalizacji platformy Azure, która ma procesorów GPU. Sprawdź [produkty Azure według regionu strony](https://azure.microsoft.com/regions/services/) stronie dostępnych lokalizacji i poszukaj **seria NC**, **seria NCv2**, **seria NCv3** , lub **seria ND** w obszarze **obliczenia**. 
 
    2. **Ustawienia**: Wybierz jeden z serii NC (NC, NCv2, NCv3) lub seria ND rozmiarów maszyn wirtualnych GPU, który spełnia Twoje wymagania funkcjonalne i ograniczenia kosztów. Tworzenie konta magazynu dla maszyny Wirtualnej.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-   3. **Podsumowanie**: Sprawdź poprawność wszystkie informacje, które zostały wprowadzone.
-   5. **Kup**: kliknij **Kup** można uruchomić aprowizacji. Dostępny jest link do warunków transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
+   3. **Podsumowanie**: Sprawdź, czy wszystkie wprowadzone informacje jest poprawna.
+   5. **Kup**: Kliknij przycisk **Kup** do uruchomienia, jego obsługi. Dostępny jest link do warunków transakcji. Maszyna wirtualna nie ma żadnych dodatkowych kosztów poza obliczenia rozmiaru serwera wybranej w ramach **rozmiar** kroku. 
 
 > [!NOTE]
 > Aprowizacja powinno zająć około 10-20 minut. Stan aprowizacji jest wyświetlany w witrynie Azure portal.
@@ -79,12 +79,12 @@ DLVM systemu Linux jest już zainicjowana przy użyciu serwera X2Go i gotowy do 
 1. Pobieranie i instalowanie klienta X2Go dla danej platformy klienta [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 2. Uruchom klienta X2Go, a następnie wybierz pozycję **nowej sesji**. Otwiera okno konfiguracji z wieloma kartami. Wprowadź następujące parametry konfiguracji:
    * **Karta sesji**:
-     * **Host**: Nazwa hosta lub adres IP maszyny Wirtualnej do nauki o danych systemu Linux.
-     * **Zaloguj się**: nazwa użytkownika na maszynie Wirtualnej systemu Linux.
-     * **SSH Port**: pozostaw 22, wartością domyślną.
+     * **Host**: Nazwa hosta lub adres IP maszyny wirtualnej do nauki o danych systemu Linux.
+     * **Zaloguj się**: Nazwa użytkownika na maszynie Wirtualnej systemu Linux.
+     * **SSH portu**: Pozostaw to pole o 22, wartością domyślną.
      * **Typ sesji**: Zmień wartość na **XFCE**. Obecnie DSVM systemu Linux obsługuje tylko pulpit xfce.
-   * **Karta Media**: można wyłączyć dźwięk pomocy technicznej i klienta, drukowanie, jeśli nie potrzebujesz umożliwić ich używanie.
-   * **Foldery udostępnione**: katalogi z maszyn klienta zainstalowanego na maszynie Wirtualnej systemu Linux, dodać katalogi maszyny klienta, które chcesz się podzielić z maszyną Wirtualną na tej karcie.
+   * **Karta Media**: Można wyłączyć dźwięk pomocy technicznej i klienta, drukowanie, jeśli nie potrzebujesz umożliwić ich używanie.
+   * **Foldery udostępnione**: Katalogi z maszyn klienta zainstalowanego na maszynie Wirtualnej systemu Linux, dodać katalogi maszyny klienta, które chcesz się podzielić z maszyną Wirtualną na tej karcie.
 
 Po zalogowaniu do maszyny Wirtualnej przy użyciu klienta SSH lub graficznego pulpit xfce za pomocą klienta X2Go, jesteś gotowy rozpocząć korzystanie z narzędzia, które są zainstalowane i skonfigurowane na maszynie Wirtualnej. Na XFCE widać ikony pulpitu i skróty w menu aplikacji dla wielu narzędzi.
 

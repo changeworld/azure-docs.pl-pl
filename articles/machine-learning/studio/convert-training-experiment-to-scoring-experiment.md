@@ -1,6 +1,6 @@
 ---
 Tytuł: Przygotowanie modelu do wdrożenia titleSuffix: Opis usługi Azure Machine Learning Studio: Jak przygotować uczonego modelu do wdrożenia jako usługę sieci web przy użyciu konwertowanie eksperymentu szkolenia usługi Machine Learning Studio na eksperyment predykcyjny.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.date: 03/28/2017
 ---
