@@ -7,16 +7,16 @@ author: diberry
 ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 160721560b6cf311f146cd0f48ae719d95b30a0f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103935"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206293"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Wstępnie utworzonych jednostek, rozpoznawał standardowe typy danych
 
@@ -60,7 +60,7 @@ Test nowe opcje w punkcie końcowym dodany przez wartość **q** parametru. Skor
 
  Aby oznaczyć ten typ tokenu, gdy jej część jest oznaczona jako przy użyciu wstępnie utworzone jednostki, należy usunąć wstępnie utworzone jednostki z aplikacji usługi LUIS. Nie potrzebujesz, to w opracowywaniu aplikacji. Następnie oznaczyć tokenu przy użyciu jednostki niestandardowej. Wstępnie utworzone jednostki można następnie dodać do aplikacji usługi LUIS.
 
- Inny przykład, należy wziąć pod uwagę wypowiedź jako listę preferencji klasy: `I want first year spanish, second year calculus, and fourth year english lit.` wtedy aplikacja usługi LUIS ma numer Prebuild dodane, `first`, `second`, i `fourth` już będą oznaczone znakiem liczb porządkowych. Jeśli chcesz przechwytywać numeru porządkowego a klasy, można tworzyć złożone jednostki i otacza go wstępnie porządkowe i jednostką niestandardową dla nazwy klasy.
+ Inny przykład należy wziąć pod uwagę wypowiedź jako listę preferencji klasy: `I want first year spanish, second year calculus, and fourth year english lit.` Jeśli aplikacja usługi LUIS ma numer Prebuild dodane, `first`, `second`, i `fourth` już będą oznaczone znakiem liczb porządkowych. Jeśli chcesz przechwytywać numeru porządkowego a klasy, można tworzyć złożone jednostki i otacza go wstępnie porządkowe i jednostką niestandardową dla nazwy klasy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]

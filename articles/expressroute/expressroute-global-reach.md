@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 8ee57bf101b432049d895b65a1dc7641653c7f21
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3d2f831da0106bce2c83ee8b0ff3588f721f3ffe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105460"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207806"
 ---
 # <a name="expressroute-global-reach-preview"></a>Globalny zasięg usługi ExpressRoute (wersja zapoznawcza)
 Usługa ExpressRoute jest prywatny i odporne na błędy sposób łączenia sieci lokalnej Microsoft Cloud. Wiele usług w chmurze firmy Microsoft, takich jak Azure, Office 365 i Dynamics 365 dostęp z Twojego Centrum danych prywatnych lub sieci firmowej. Na przykład masz oddziału w San Francisco z obwodem usługi ExpressRoute w Dolinie Krzemowej i innego oddziału firmy w Londynie z obwodem usługi ExpressRoute, w tym samym mieście. Obu biur oddziałów mogą mieć łączność o dużej szybkości do zasobów platformy Azure w zachodnich stanach USA i Południowe Zjednoczone Królestwo. Jednak oddziałów nie wymiany danych bezpośrednio ze sobą. Innymi słowy 10.0.1.0/24 może wysyłać dane do 10.0.3.0/24 i 10.0.4.0/24, ale nie do 10.0.2.0/24.
@@ -33,10 +33,12 @@ ExpressRoute zasięgu globalnym zaprojektowano w celu uzupełnienia WAN implemen
 Zasięgu globalnym usługi ExpressRoute jest obecnie obsługiwane w następujących miejscach.
 
 * Australia
+* Kanada
 * Francja
 * SRA Hongkong
 * Irlandia
 * Japonia
+* Korea
 * Holandia
 * Zjednoczonego Królestwa
 * Stany Zjednoczone

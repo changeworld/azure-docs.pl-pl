@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 2c8d4486b235534db2bb7d06206d5767c1496fbd
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 12107ce5596f1a238675ffe4ef17ca08e2aac5f1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754394"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211675"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Samouczek: Zestawy danych testowych usługi Batch
 
@@ -36,7 +36,7 @@ Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wyp
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importuj przykładową aplikację
+> * Importowanie aplikacji przykładowej
 > * Utwórz plik wsadowy testu 
 > * Uruchom test usługi batch
 > * Przejrzyj wyniki testu
@@ -45,7 +45,7 @@ Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wyp
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importuj przykładową aplikację
+## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 
 Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 

@@ -7,16 +7,16 @@ manager: cgronlun
 ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 5657db9abb3addbc25b97f2e6a7e88f0156aadb6
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ecf79f5c294b7ef7d14eea49c9bd568f6921fb65
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888468"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218029"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
 Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji. 

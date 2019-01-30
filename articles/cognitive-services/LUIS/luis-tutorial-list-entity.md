@@ -6,16 +6,16 @@ author: diberry
 titleSuffix: Azure
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: dd5b35a4a1a5baccf367d1d6d521bac05d40e6df
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: fe9276cb0af96baa8d818b1f2e965c83cb6b26c2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913329"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211495"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy w celu zwiększenia wykrywania jednostki 
 W tym samouczku zademonstrowano użycie [listy jednostek](luis-concept-entity-types.md) zwiększenia wykrywania jednostki. Lista jednostek jest konieczne etykietą, ponieważ są one dokładne dopasowanie warunków.  

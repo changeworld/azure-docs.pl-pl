@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f3cb307a52cfddebfa97c1b8608549acdd89169d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125157"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215077"
 ---
 # <a name="grammar-format"></a>Format gramatyki
 
@@ -89,7 +89,7 @@ Gdy `item` elementy są wyświetlane jako elementy podrzędne `one-of` elementu,
 </one-of>
 ```
 
-### <a name="ruleref-element"></a>ruleref — Element
+### <a name="ruleref-element"></a>ruleref Element
 
 `ruleref` Element określa prawidłowe rozszerzenia za pomocą odwołania do innego `rule` elementu.  Za pośrednictwem `ruleref` elementów, mogą być wbudowane bardziej złożonych wyrażeń z reguł prostsze.  Wymagane `uri` atrybut wskazuje nazwę występujących w odwołaniu `rule` przy użyciu składni "#*rulename*".  Aby przechwycić semantycznego dane wyjściowe reguły z odwołaniami, Użyj opcjonalnego `name` atrybutu, aby określić nazwę zmiennej, do której przypisany jest semantycznego danych wyjściowych.
  

@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: b03ee4ebf1113fd422d34ebf219461e75c4a5a45
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970767"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208180"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej
 
@@ -64,7 +64,7 @@ Host - IPv6 | Nie
 Maszyna wirtualna - gościa zespołu kart interfejsu Sieciowego | Nie
 Gość maszyny Wirtualnej — protokołu IPv4 | Yes
 Gość maszyny Wirtualnej — IPv6 | Nie
-Maszyna wirtualna Gues — Windows/Linux — statyczny adres IP | Yes
+Gość maszyny Wirtualnej — Windows/Linux — statyczny adres IP | Yes
 Gość maszyny Wirtualnej — Multi-NIC | Yes
 
 

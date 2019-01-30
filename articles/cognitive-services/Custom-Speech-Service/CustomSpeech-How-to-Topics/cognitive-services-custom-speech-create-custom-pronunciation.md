@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: panosper
-ms.openlocfilehash: 1e9de9755ef4baee7e2a0e6c093e2cf27cb4281f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0459fdb63134598e65657e5e26020c2ee0dc0efc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339818"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209795"
 ---
 # <a name="enable-custom-pronunciation"></a>Włącz Wymowa niestandardowe
 
@@ -51,7 +51,7 @@ Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en U
 | Język | Znaki |
 |---------- |----------|
 | Angielski (en US) | , b, c, d, e, f, g, h, i, "j", k, l, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
-| Niemiecki (de-de) | ä strumień świetlny, znaki ü, ẞ, a, b, c, d, e, f, g, h, i, "j", k, l, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
+| Niemiecki (de-de) | ä, ö, ü, ẞ, a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
 
 >[UWAGA] Formularz wyświetlania termin (w pliku Wymowa) zapisywane taki sam sposób w zestawie danych dostosowywania języka.
 

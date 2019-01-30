@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ms.openlocfilehash: a9bdb257137db0063d39f028a69e2164eccbdc31
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 71aa20c779ae0c73db3d7ce6f267524c5bf71ea5
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340464"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214572"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>Migracja wdrożenia do nowego modelu cen
 
@@ -37,7 +37,7 @@ Mapowanie ze starego warstwy, aby przeskalować jednostki przedstawiono w poniż
 
 Aby przeprowadzić migrację do nowej warstwy, wykonaj następujące czynności:
 
-## <a name="step-1-check-your-existing-deployment"></a>Krok 1: Sprawdź istniejącego wdrożenia
+## <a name="step-1-check-your-existing-deployment"></a>Krok 1: Sprawdzanie istniejącego wdrożenia
 Przejdź do [portal usługi Custom Speech Service](http://cris.ai)i sprawdź istniejących wdrożeń. W tym przykładzie istnieją dwa wdrożenia. Jedno wdrożenie działa w warstwie S0 i innych wdrożeń działających w warstwie S1. Wdrożenia są wyświetlane w **opcje wdrażania** kolumny w następującej tabeli:
 
 ![Na stronie wdrożeń](../../../media/cognitive-services/custom-speech-service/custom-speech-deployments.png)
@@ -72,5 +72,5 @@ Stan wdrożenia powiązanych należy nastąpiło przełączenie na *przetwarzani
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej samouczków zobacz:
 * [Tworzenie niestandardowego modelu akustycznego](cognitive-services-custom-speech-create-acoustic-model.md)
-* [Utwórz model języka niestandardowego](cognitive-services-custom-speech-create-language-model.md)
+* [Tworzenie niestandardowego modelu językowego](cognitive-services-custom-speech-create-language-model.md)
 * [Utwórz niestandardowy punkt końcowy rozpoznawania mowy na tekst](cognitive-services-custom-speech-create-endpoint.md)

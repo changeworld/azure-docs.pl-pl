@@ -1,26 +1,22 @@
 ---
 title: Rozwiązywanie problemów z trybu failover do błędów platformy Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposoby rozwiązywania typowych problemów w przypadku przechodzenia w tryb failover na platformie Azure
-services: site-recovery
-documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/11/2018
+ms.date: 1/29/2019
 ms.author: mayg
-ms.openlocfilehash: 742e7891ec9c7151f23f1ad6eb57e728dd2a1ddd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255095"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207500"
 ---
-# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Rozwiązywanie problemów podczas przechodzenia w tryb failover maszyny wirtualnej na platformie Azure
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Rozwiązywanie problemów podczas przechodzenia w tryb failover maszyny Wirtualnej VMware lub maszyny fizyczne na platformie Azure
 
 Może pojawić się jeden z następujących błędów podczas wykonywania pracy w trybie failover maszyny wirtualnej na platformie Azure. Aby rozwiązać problemy, należy użyć opisane kroki poszczególnych warunków wystąpienia błędu.
 
@@ -48,7 +44,9 @@ Usługa Site Recovery nie mógł utworzyć nie powiodło się za pośrednictwem 
 
 Usługa Site Recovery nie był w stanie niepowodzenia tworzenia maszyny wirtualnej platformy Azure. Może się zdarzyć, ponieważ wewnętrzny działania wypełniania nie powiodła się dla maszyny wirtualnej w środowisku lokalnym.
 
-Aby wyświetlić wszystkie maszyny na platformie Azure, w środowisku systemu Azure wymaga niektóre sterowniki rozruchowe są uruchamiane stanu i usług, takich jak DHCP, będzie w stanie automatyczne uruchamianie. W związku z tym, działanie wypełniania w momencie przejścia w tryb failover konwertuje typ uruchomienia **sterowniki atapi, intelide, storflt, vmbus i storvsc** do ekranu startowego rozruchu. Konwertuje również typ uruchomienia kilku usług, takich jak DHCP, automatyczne uruchamianie. To działanie może zakończyć się niepowodzeniem ze względu na problemy dotyczące określonego środowiska. Aby ręcznie zmienić typ uruchamiania sterowników, wykonaj następujące czynności:
+Aby wyświetlić wszystkie maszyny na platformie Azure, w środowisku systemu Azure wymaga niektóre sterowniki rozruchowe są uruchamiane stanu i usług, takich jak DHCP, będzie w stanie automatyczne uruchamianie. W związku z tym, działanie wypełniania w momencie przejścia w tryb failover konwertuje typ uruchomienia **sterowniki atapi, intelide, storflt, vmbus i storvsc** do ekranu startowego rozruchu. Konwertuje również typ uruchomienia kilku usług, takich jak DHCP, automatyczne uruchamianie. To działanie może zakończyć się niepowodzeniem ze względu na problemy dotyczące określonego środowiska. 
+
+Aby ręcznie zmienić typ uruchamiania sterowników dla **systemie operacyjnym gościa Windows**, wykonaj poniższe kroki:
 
 1. [Pobierz](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) nie wypełniania skrypt i uruchom go jako zgodny. Ten skrypt sprawdza, czy maszyna wirtualna wymaga wypełniania zasobami.
 
@@ -78,7 +76,7 @@ Aby wyświetlić wszystkie maszyny na platformie Azure, w środowisku systemu Az
 
 Jeśli **Connect** przycisku w trybie Failover maszyny Wirtualnej na platformie Azure jest wyszarzona i nie masz połączenia Expressroute lub sieci VPN typu lokacja-lokacja połączenie, następnie na platformie Azure
 
-1. Przejdź do **maszyny wirtualnej** > **sieć**, kliknij nazwę interfejsu sieciowego wymagane.  ![Interfejs sieciowy](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. Przejdź do **maszyny wirtualnej** > **sieć**, kliknij nazwę interfejsu sieciowego wymagane.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. Przejdź do **konfiguracje adresów Ip**, następnie kliknij pole nazwy wymaganych konfiguracji adresu IP. ![Elementy Ipconfiguration](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. Aby włączyć publiczny adres IP, kliknij **Włącz**. ![Włączyć adresu IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. Kliknij pozycję **Skonfiguruj wymagane ustawienia** > **Utwórz nową**. ![Utwórz nową](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)

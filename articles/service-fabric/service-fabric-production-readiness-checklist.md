@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: ac263ef842c780e09576303f2f49e782612294c2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 02ad880f3c4a4f5812b60887090c29a0a39f6742
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159118"
+ms.locfileid: "55206973"
 ---
 # <a name="production-readiness-checklist"></a>Lista kontrolna gotowości do produkcji
 
@@ -62,7 +62,7 @@ Jeśli używasz modelu programowania usług Reliable Services usługi Service Fa
 23. Należy unikać [typowych pułapek](service-fabric-work-with-reliable-collections.md) przy użyciu niezawodnych kolekcji.
 24. Monitorowanie wydajności pamięci środowiska .NET CLR liczników podczas uruchamiania testów obciążenia i sprawdź, czy wysoki stopień wyrzucania elementów bezużytecznych lub wzrost braków sterty.
 25. Obsługa kopia zapasowa offline [usług Reliable Services i Reliable Actors](service-fabric-reliable-services-backup-restore.md) i przetestuj proces przywracania.
-26. Liczba wystąpień usługi podstawowej maszyny wirtualnej NodeType najlepiej powinien być równy co najmniej w warstwie niezawodność klastrów; zawiera warunki, w stosownych przypadkach przekracza minimalne warstwy: tymczasowo po pionowo skalowanie one podstawowe elementy NodeType maszyn wirtualnych skalowania Ustaw jednostki SKU.
+26. Liczba wystąpień usługi podstawowej maszyny wirtualnej NodeType najlepiej powinien być równy co najmniej w warstwie niezawodność klastrów; zawiera warunki, w stosownych przypadkach przekracza minimalne warstwy: tymczasowo po pionowo skalowanie podstawowe elementy NodeType maszyn wirtualnych skalowania Ustaw jednostki SKU.
 
 ## <a name="optional-best-practices"></a>Opcjonalne najlepszych rozwiązań
 

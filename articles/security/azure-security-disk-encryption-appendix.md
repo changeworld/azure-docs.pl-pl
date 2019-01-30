@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d0b702a334bf1127f570bff026fa4332331209
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 64ae354c9233821ea7e53abfdc0dde105b22e466
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260141"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208078"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek dla usługi Azure Disk Encryption 
 
@@ -325,7 +325,7 @@ Konfigurowanie szyfrowania do pracy z platformą Azure, wykonując następujące
 
 1. Utwórz plik w obszarze /usr/local/sbin/azure_crypt_key.sh, z zawartością w poniższym skrypcie. Należy zwrócić uwagę na KeyFileName, ponieważ jest to nazwa pliku hasło używane przez platformę Azure.
 
-    ```
+    ```bash
     #!/bin/sh
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -405,7 +405,7 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
     add_drivers+=" vfat ntfs nls_cp437 nls_iso8859-1"
     ```
 2. Komentarz następujące wiersze do końca /usr/lib/dracut/modules.d/90crypt/module-setup.sh pliku:
- ```
+ ```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -418,20 +418,20 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
  ```
 
 3. Dołącz następujący wiersz na początku /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh pliku:
- ```
+ ```bash
     DRACUT_SYSTEMD=0
  ```
 I Zamień wszystkie wystąpienia klasy:
- ```
+ ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
  ```
 na:
-```
+```bash
     if [ 1 ]; then
 ```
 4. Edytuj /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh i dołącza je do "# Otwórz LUKS urządzenie":
 
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2
@@ -485,7 +485,7 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
     ```
 
 2. Komentarz następujące wiersze do końca /usr/lib/dracut/modules.d/90crypt/module-setup.sh pliku:
-```
+```bash
     #        inst_multiple -o \
     #        $systemdutildir/system-generators/systemd-cryptsetup-generator \
     #        $systemdutildir/systemd-cryptsetup \
@@ -498,19 +498,19 @@ Aby skonfigurować szyfrowanie w celu współpracy z platformą Azure, wykonaj n
 ```
 
 3. Dołącz następujący wiersz na początku /usr/lib/dracut/modules.d/90crypt/parse-crypt.sh pliku:
-```
+```bash
     DRACUT_SYSTEMD=0
 ```
 I Zamień wszystkie wystąpienia klasy:
-```
+```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
 ```
 na
-```
+```bash
     if [ 1 ]; then
 ```
 4. Edytuj /usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh i Dołącz następujący po "# Otwórz LUKS urządzenie":
-    ```
+    ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
     echo "Trying to get the key from disks ..." >&2

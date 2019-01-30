@@ -10,14 +10,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: ba79365ec310c7d62d0a4de07991d516430b9d41
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886153"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216616"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -158,7 +158,7 @@ Aby włączyć konta administracyjnego po raz pierwszy, musisz podać zgody admi
     AdminConsent -ErrorAction Stop
     ```
 
-2. Uruchom skrypt za pomocą następującego polecenia.
+2. Uruchom skrypt za pomocą następującego polecenia. Użytkownik jest monitowany dwukrotnie o poświadczenia. Najpierw podaj poświadczenia dla obszaru roboczego usługi Log Analytics, a następnie dzierżawy poświadczenia administratora globalnego usługi Office 365.
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
@@ -351,7 +351,7 @@ Ostatnim krokiem jest do subskrybowania aplikacji do swojego obszaru roboczego u
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Może zostać wyświetlony następujący błąd, Jeśli spróbujesz utworzyć subskrypcję, po Subskrypcja już istnieje.
+Jeśli aplikacja jest już subskrybowana przez ten obszar roboczy lub jeśli ta dzierżawa jest subskrybentem z innym obszarem roboczym, mogą pojawić się następujący błąd.
 
 ```
 Invoke-WebRequest : {"Message":"An error has occurred."}
@@ -394,7 +394,7 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -510,7 +510,7 @@ Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Of
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ | *OfficeActivity* |
+| Type | *OfficeActivity* |
 | ClientIP | Adres IP urządzenia, które było używane podczas zarejestrowania działania. Adres IP jest wyświetlany w formacie adresu IPv4 lub IPv6. |
 | OfficeWorkload | Usługa Office 365, która rekord, który odwołuje się do.<br><br>AzureActiveDirectory<br>Exchange<br>Sharepoint|
 | Operacja | Nazwa działania użytkownika lub administratora.  |

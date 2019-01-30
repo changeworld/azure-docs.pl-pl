@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 9149cef7ba7fa2d0a3d853c3b8e26d364f22d954
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a6dba36eadde9bc9bb1e6ca778a3bce07b561e54
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999989"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207296"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Typy jednostek i ich celów w usługi LUIS
 
@@ -88,13 +88,13 @@ Gdy jednostki są wyodrębniane, dane jednostki można reprezentowane jako pojed
 
 |Przedstawiono maszyny|Można oznaczyć|Samouczek|Przykład<br>Odpowiedź|Typ jednostki|Przeznaczenie|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Złożone**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Grupowanie jednostki, niezależnie od tego typu jednostki.|
 |✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchiczna**](#hierarchical-entity)|Grupowanie proste jednostki.|
 |||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Lista**](#list-entity)|Lista elementów i ich synonimy wyodrębnione z tekstem dokładnie zgodne.|
 |Mieszany||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Jednostka, w których koniec jednostki trudno jest określić.|
-|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Wstępnie utworzone**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
-|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Wyrażenie regularne**](#regular-expression-entity)|Używa wyrażeń regularnych w celu dopasowania tekstu.|
-|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Proste**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
+|||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Prebuilt**](#prebuilt-entity)|Przeprowadzono już uczenie do wyodrębniania różnych rodzajów danych.|
+|||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regular Expression**](#regular-expression-entity)|Używa wyrażeń regularnych w celu dopasowania tekstu.|
+|✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Simple**](#simple-entity)|Zawiera pojedynczy pojęciem wyrazu lub frazy.|
 
 Tylko jednostki maszyny do opanowania konieczne oznaczone w wypowiedzi przykład dla każdego intencji. Maszyny do opanowania jednostek działają najlepiej, jeśli testowany za pośrednictwem [kwerendy punktu końcowego](luis-concept-test.md#endpoint-testing) i [przeglądania punktu końcowego wypowiedzi](luis-how-to-review-endoint-utt.md). 
 
@@ -153,7 +153,7 @@ Jednostka jest bardzo dopasowania, gdy dane tekstowe:
 
 * Są znanego zestawu.
 * Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dopasowania tekstu do dokładnego dopasowania. Analiza słowotwórcza, liczba mnoga i inne różnice nie są rozpoznawane z jednostką listy. Aby zarządzać odmiany, należy rozważyć użycie [wzorzec](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) ze składnią opcjonalny tekst.
+* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. Usługa LUIS nie korzysta z listy poza dokładnymi dopasowaniami tekstu. Analiza słowotwórcza, liczba mnoga i inne różnice nie są rozpoznawane z jednostką listy. Aby zarządzać wariacjami, rozważ użycie [wzorca](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) z opcjonalną składnią tekstu.
 
 ![Lista jednostek](./media/luis-concept-entities/list-entity.png)
 

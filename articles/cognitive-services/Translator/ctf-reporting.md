@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 273b54961adafb58fe9faa7993003ff74d50b6f9
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646016"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218160"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Jak korzystać z raportowania na platformie CTF (Collaborative Translation Framework)
 
@@ -31,15 +31,15 @@ Interfejs API raportowania współpracy Translation Framework (CTF) zwraca staty
 * Zwraca tłumaczonej zawartości i jego łączna liczba bez dopasowania zdania źródła.
 * Nie zwraca automatycznego tłumaczenia (tłumaczeniem maszynowym).
 
-## <a name="endpoint"></a>Punkt końcowy
+## <a name="endpoint"></a>Endpoint
 Punkt końcowy interfejsu API raportowania CTF jest http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
 
 
 ## <a name="methods"></a>Metody
-| Nazwa |    Opis|
+| Name |    Opis|
 |:---|:---|
-| Metoda GetUserTranslationCounts | Pobierz liczniki tłumaczenia, które są tworzone przez użytkownika. |
-| Metoda GetUserTranslations | Pobiera tłumaczenia, które są tworzone przez użytkownika. |
+| GetUserTranslationCounts Method | Pobierz liczniki tłumaczenia, które są tworzone przez użytkownika. |
+| GetUserTranslations Method | Pobiera tłumaczenia, które są tworzone przez użytkownika. |
 
 Te metody umożliwiają:
 * Pobierz kompletny zestaw tłumaczenia użytkownika i poprawek w ramach swojego Identyfikatora konta do pobrania.
@@ -79,10 +79,10 @@ UserTranslationCount[]GetUserTranslationCounts(
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | uriPrefix | **Opcjonalnie** ciąg zawierający prefiks identyfikatora URI tłumaczenia.|
 | z | **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia. |
-| do | **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
+| na | **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
 | minRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację minimalnej jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
 | maxRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację maksymalna jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
-| użytkownik | **Opcjonalnie** ciąg, który jest używany do filtrowania wyników oparte na inicjatorem przesyłania. |
+| Użytkownik | **Opcjonalnie** ciąg, który jest używany do filtrowania wyników oparte na inicjatorem przesyłania. |
 | category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.|
 | minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC. |
 | maxDateUtc| **Opcjonalnie** daty do kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC. |
@@ -98,8 +98,8 @@ Zestaw wyników zawiera tablicę **UserTranslationCount**. Każdy UserTranslatio
 
 | Pole | Opis |
 |:---|:---|
-| Liczba| Liczba wyników, które są pobierane|
-| Z | Język źródłowy|
+| Licznik| Liczba wyników, które są pobierane|
+| Od | Język źródłowy|
 | Ocena| Ocena, która jest stosowana przez osoby przesyłającej w wywołaniu metody AddTranslation()|
 | Do| Język docelowy|
 | Identyfikator URI| Identyfikator URI stosowany w wywołaniu metody AddTranslation()|
@@ -109,7 +109,7 @@ Zestaw wyników zawiera tablicę **UserTranslationCount**. Każdy UserTranslatio
 
 | Wyjątek | Komunikat | Warunki |
 |:---|:---|:---|
-| Trwa wyjątku ArgumentOutOfRangeException | Parametr "**maxDateUtc**"musi być większa lub równa"**minDateUtc**".| Wartość parametru **maxDateUtc** jest mniejsza niż wartość parametru **minDateUtc**.|
+| ArgumentOutOfRangeException | Parametr "**maxDateUtc**"musi być większa lub równa"**minDateUtc**".| Wartość parametru **maxDateUtc** jest mniejsza niż wartość parametru **minDateUtc**.|
 | TranslateApiException | Adres IP za pośrednictwem przydziału.| <ul><li>Osiągnięto limit liczby żądań na minutę.</li><li>Rozmiar żądania będzie ograniczony w 10 000 znaków.</li><li>Co godzinę i dzienny limit przydziału ograniczyć liczbę znaków, które będzie akceptować interfejsu API w usłudze Translator firmy Microsoft.</li></ul>|
 | TranslateApiException | Identyfikator aplikacji znajduje się nad limitu przydziału.| Identyfikator aplikacji przekroczony przydział godzinowo lub dziennie.|
 
@@ -150,10 +150,10 @@ UserTranslation[] GetUserTranslations (
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | uriPrefix| **Opcjonalnie** ciąg zawierający prefiks identyfikatora URI tłumaczenia.|
 | z| **Opcjonalnie** ciąg reprezentujący kod języka tekstu tłumaczenia.|
-| do| **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
+| na| **Opcjonalnie** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w.|
 | minRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację minimalnej jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
 | maxRating| **Opcjonalnie** wartość całkowitą reprezentującą klasyfikację maksymalna jakości przetłumaczonego tekstu. Prawidłowa wartość to zakresu od -10 do 10. Wartość domyślna to 1.|
-| użytkownik| **Opcjonalnie. Ciąg, który jest używany do filtrowania wyników, w oparciu o inicjatorem przesyłania**|
+| Użytkownik| **Opcjonalnie. Ciąg, który jest używany do filtrowania wyników, w oparciu o inicjatorem przesyłania**|
 | category| **Opcjonalnie** ciąg zawierający kategorii lub domeny tłumaczenia. Ten parametr obsługuje tylko domyślną opcję ogólne.|
 | minDateUtc| **Opcjonalnie** Data, od kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|
 | maxDateUtc| **Opcjonalnie** daty do kiedy chcesz pobrać tłumaczenia. Data musi przypadać w formacie UTC.|
@@ -170,7 +170,7 @@ Zestaw wyników zawiera tablicę **UserTranslation**. Każdy UserTranslation zaw
 | Pole | Opis |
 |:---|:---|
 | CreatedDateUtc| Data utworzenia przy użyciu AddTranslation()|
-| Z| Język źródłowy|
+| Od| Język źródłowy|
 | OriginalText| Tekst języka źródłowego, który jest używany podczas wysyłania żądania|
 |Ocena |Ocena, która jest stosowana przez osoby przesyłającej w wywołaniu metody AddTranslation()|
 |Do|    Język docelowy|
@@ -182,7 +182,7 @@ Zestaw wyników zawiera tablicę **UserTranslation**. Każdy UserTranslation zaw
 
 | Wyjątek | Komunikat | Warunki |
 |:---|:---|:---|
-| Trwa wyjątku ArgumentOutOfRangeException | Parametr "**maxDateUtc**"musi być większa lub równa"**minDateUtc**".| Wartość parametru **maxDateUtc** jest mniejsza niż wartość parametru **minDateUtc**.|
+| ArgumentOutOfRangeException | Parametr "**maxDateUtc**"musi być większa lub równa"**minDateUtc**".| Wartość parametru **maxDateUtc** jest mniejsza niż wartość parametru **minDateUtc**.|
 | TranslateApiException | Adres IP za pośrednictwem przydziału.| <ul><li>Osiągnięto limit liczby żądań na minutę.</li><li>Rozmiar żądania będzie ograniczony w 10 000 znaków.</li><li>Co godzinę i dzienny limit przydziału ograniczyć liczbę znaków, które będzie akceptować interfejsu API w usłudze Translator firmy Microsoft.</li></ul>|
 | TranslateApiException | Identyfikator aplikacji znajduje się nad limitu przydziału.| Identyfikator aplikacji przekroczony przydział godzinowo lub dziennie.|
 

@@ -5,16 +5,16 @@ description: Słownik jest wyrównany dokumentu, który określa listę frazy lu
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 3a92e41ad9611981777012cd231845587a6f947b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: bc297fd4cdda8cdb3dc618b73e91d2f4e31e8b6a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627572"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212413"
 ---
 # <a name="what-is-a-dictionary"></a>Co to jest słownikiem?
 
@@ -32,7 +32,7 @@ Słownik zdania pozwala określić dokładną docelowego Translacja zdania źró
 Możesz uczyć model przy użyciu tylko dane słownika. Aby to zrobić, wybierz słowniki dokumentu (lub wiele dokumentów słownika) czy chcesz dołączyć, a następnie naciśnij pozycję Utwórz model. Ponieważ jest to szkolenie tylko do słownika, istnieje nie minimalną liczbę zdań szkolenia wymagane. Model są zazwyczaj wykonywane szkolenia znacznie szybsze niż standardowe szkolenia.  Modele wynikowy będzie używać modeli podstawowych w Microsoft tłumaczenia dodając słowników, które wcześniej dodałeś.  Nie otrzymasz raport z testu.
 
 >[!Note]
->Niestandardowe w usłudze Translator jest nie zdania Wyrównaj do plików słownika tak ważne jest, że były równej liczbie źródłowych i docelowych fraz/zdań w dokumentach słownika oraz czy są one dokładnie wyrównane.
+>Niestandardowe w usłudze Translator nie jak w zdaniu wyrównać pliki słownika tak ważne jest, aby były równej liczby wyrażeń źródłowych i docelowych / zdania w słowniku dokumentów i że dokładnie wyrównana.
 
 ## <a name="recommendations"></a>Zalecenia
 

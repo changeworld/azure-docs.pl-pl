@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4f950734081be6cf76770b1c6cb2feca7efdae70
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128011"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221407"
 ---
 # <a name="interpret-method"></a>Interpretowanie — metoda
 
@@ -25,12 +25,12 @@ ms.locfileid: "46128011"
 
 `http://<host>/interpret?query=<query>[&<options>]`
 
-Name (Nazwa)|Wartość| Opis
+Name|Value| Opis
 ----|----|----
 query    | Ciąg tekstowy | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, zapytania będą interpretowane jako prefiks dla generowania sugestie automatyczne uzupełnianie zapytań.        
 Wykonaj | 0 (ustawienie domyślne) lub 1 | 1 oznacza, że wygenerowany automatycznego uzupełniania, sugestii na podstawie danych Gramatyka języka i indeksem.         
 count    | Liczba (domyślny = 10) | Maksymalna liczba interpretacji do zwrócenia.         
-Przesunięcie   | Liczba (domyślny = 0) | Indeks pierwszego interpretacji do zwrócenia.  Na przykład *count = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
+offset   | Liczba (domyślny = 0) | Indeks pierwszego interpretacji do zwrócenia.  Na przykład *count = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
 timeout  | Liczba (domyślny = 1000) | Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
 
 Za pomocą *liczba* i *przesunięcie* parametrów, dużą liczbę wyników można uzyskać przyrostowo za pośrednictwem wielu żądań.
@@ -41,8 +41,8 @@ JSONPath     | Opis
 ---------|---------
 $.query |*Zapytanie* parametrów z żądania.
 $.interpretations   |Tablica 0 lub więcej sposobów, aby dopasować wejściowych zapytania dotyczącego gramatyki.
-$.interpretations [\*] .logprob   |Względna dziennika prawdopodobieństwo interpretacji (< = 0).  Większe wartości są bardziej prawdopodobne.
-$.interpretations [\*] .parse |Ciąg XML, który pokazuje, jak interpretować została każda część zapytania.
+$.interpretations[\*].logprob   |Względna dziennika prawdopodobieństwo interpretacji (< = 0).  Większe wartości są bardziej prawdopodobne.
+$.interpretations[\*].parse |Ciąg XML, który pokazuje, jak interpretować została każda część zapytania.
 $.interpretations [\*] Rules |Tablica 1 lub więcej reguł zdefiniowanych w gramatyce wywoływane podczas interpretacji.
 $.interpretations [\*] Rules [\*] .name    |Nazwa reguły.
 $.interpretations [\*] Rules [\*] .output  |Semantyczne dane wyjściowe reguły.

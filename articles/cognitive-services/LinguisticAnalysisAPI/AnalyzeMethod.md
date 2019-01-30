@@ -6,22 +6,22 @@ services: cognitive-services
 author: RichardSunMS
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: linguistic-analysis
+ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239306"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208639"
 ---
 # <a name="analyze-method"></a>Metoda analyze
 
 > [!IMPORTANT]
-> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
+> Wersja zapoznawcza analizy językowej została wycofana 9 sierpnia 2018 r. W celu przetwarzania i analizy tekstu zalecamy korzystanie z [modułów analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics).
 
 **Analizowanie** interfejsu API REST jest używany do analizowania danych wejściowych danego języka naturalnego.
 Który może obejmować tylko znajdowanie [zdania i tokeny](Sentences-and-Tokens.md) w tym dane wejściowe, znajdowanie [tagów części mowy](POS-tagging.md), lub znajdowania [drzewa constitutency](Constituency-Parsing.md).
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Name (Nazwa) | Typ | Wymagane | Opis
+Name | Type | Wymagane | Opis
 -----|-------|----------|------------
 **Język**    | ciąg | Yes | Dwuliterowa kod języka ISO ma być używany do analizy. Na przykład "en" jest angielski.
 **analyzerIds** | Lista ciągów | Yes | Lista identyfikatorów GUID analizatorów, aby zastosować. Zobacz dokumentację analizatorów, aby uzyskać więcej informacji.
@@ -50,7 +50,7 @@ Tablica wyników analizy, po jednym dla każdego atrybutu określona w żądaniu
 
 Wyniki wyglądają następująco:
 
-Name (Nazwa) | Typ | Opis
+Name | Typ | Opis
 -----|------|--------------
 analyzerId | ciąg | Analizator określony identyfikator GUID
 wynik | obiekt | wynik analizatora
@@ -59,14 +59,14 @@ Należy pamiętać, że typ wyniku zależy od typu analizatora danych wejściowy
 
 ### <a name="tokens-response-json"></a>Tokeny odpowiedzi (JSON)
 
-Name (Nazwa) | Typ | Opis
+Name | Typ | Opis
 -----|------|-------------
 wynik | Lista obiektów zdania | granice zdania zidentyfikowany w tekście |
-wynik [x]. Przesunięcie | Int | każde zdanie początkowe przesunięcie znaku |
-wynik [x]. Len | Int | Długość w znakach każdego zdania |
-wynik [x]. Tokeny | Lista obiektów tokenu | Token granice wskazane w zdaniu |
-wynik [x]. Tokeny [t]. Przesunięcie | Int | początkowe przesunięcie znaku tokenu |
-wynik [x]. Tokeny [t]. Len | Int | Długość w znakach tokenu |
+result[x].Offset | int | każde zdanie początkowe przesunięcie znaku |
+result[x].Len | int | Długość w znakach każdego zdania |
+result[x].Tokens | Lista obiektów tokenu | Token granice wskazane w zdaniu |
+wynik [x]. Tokeny [t]. Przesunięcie | int | początkowe przesunięcie znaku tokenu |
+result[x].Tokens[y].Len | int | Długość w znakach tokenu |
 wynik [x]. Tokeny [t]. RawToken | ciąg | znak wewnątrz ten token, zanim normalizacji |
 wynik [x]. Tokeny [t]. NormalizedToken | ciąg | znormalizowana postać znaku bezpieczne użycie [drzewo analizy](Constituency-Parsing.md); na przykład znak nawiasu otwierającego "(" staje się - LRB - |
 
@@ -147,7 +147,7 @@ Drzew analizy są reprezentowane w formularzu ujęty w nawiasy.
 
 `POST /analyze`
 
-Treści żądania: Ładunek JSON
+Treść żądania: Ładunek JSON
 ```json
 {
   "language": "en",

@@ -11,24 +11,23 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 587c0718e333f121d0ff8b32d8c2a7dad6b8f774
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/29/2019
+ms.openlocfilehash: 2f52cbaf5d50eca13a87ff8e745b0f8baefbe23e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037144"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210379"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń w usłudze Azure SQL Database
 
 Wykrywania zagrożeń usługi Azure SQL dla [usługi Azure SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych.
 
-Wykrywanie zagrożeń jest częścią [SQL Zaawansowana ochrona przed zagrożeniami](sql-advanced-threat-protection.md) oferty (ATP), która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem centralnej portal SQL ATP.
+Wykrywanie zagrożeń jest częścią [zaawansowane zabezpieczenia danych SQL](sql-advanced-threat-protection.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
 
 > [!NOTE]
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
 
-Usługa wykrywania zagrożeń są naliczane opłaty 15$ / miesiąc dla wszystkich baz danych na serwerze logicznym lub wystąpienia zarządzanego przy użyciu ciągu pierwszych 30 dni wolne od opłat.
 
 ## <a name="what-is-threat-detection"></a>Co to jest wykrywanie zagrożeń
 
@@ -69,7 +68,7 @@ Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowych działań 
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Zapoznaj się z alerty wykrywania zagrożeń dla bazy danych w witrynie Azure portal
 
-Wykrywanie zagrożeń SQL Database integruje jego alerty z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/). Żywe Kafelki wykrywania zagrożeń SQL na w ramach bazy danych i bloków SQL zaawansowanej ochrony przed zagrożeniami w witrynie Azure portal śledzenia stanu aktywne zagrożenia.
+Wykrywanie zagrożeń SQL Database integruje jego alerty z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/). Dynamiczne wykrywanie kafelków w obrębie bazy danych i REKLAM SQL bloków w witrynie Azure portal śledzić stan aktywne zagrożenia zagrożeń SQL.
 
 Kliknij przycisk **alert wykrycia zagrożeń** można uruchomić usługi Azure Security Center alerty strony i zapoznaj się z omówieniem aktywne zagrożenia SQL wykryte na bazę danych ani na magazyn danych.
 
@@ -81,7 +80,7 @@ Kliknij przycisk **alert wykrycia zagrożeń** można uruchomić usługi Azure S
 
 - Dowiedz się więcej o [wykrywanie zagrożeń w pojedynczej bazy danych](sql-database-threat-detection.md).
 - Dowiedz się więcej o [wykrywania zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).
-- Dowiedz się więcej o [SQL zaawansowanej ochrony przed zagrożeniami](sql-advanced-threat-protection.md).
+- Dowiedz się więcej o [danych zaawansowanych SQL](sql-advanced-threat-protection.md).
 - Dowiedz się więcej o [inspekcji usługi Azure SQL Database](sql-database-auditing.md)
 - Dowiedz się więcej o [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 - Aby uzyskać więcej informacji na temat cen, zobacz [stronę cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/)  

@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 4154950cf8d8b6ec2e47a9f8100cb7983ac127bf
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 5ff6666eceeaee2296c6323eaa4e7201841a1526
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648041"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212464"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Dodaj wulgaryzmów filtrowanie przy użyciu interfejsu API tłumaczenia tekstu
 
@@ -26,11 +26,11 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, nawet jeśli wulgaryzmów z
 Metoda Translate() przyjmuje parametr "Opcje", który zawiera nowy element "ProfanityAction". Akceptowane wartości ProfanityAction to "NoAction", "Oznaczone" i "Usunięte".
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>Dopuszczalne wartości ProfanityAction i przykłady
-|Wartość ProfanityAction | Akcja | Przykład: Source — japoński | Przykład: Docelowy — angielski|
+|Wartość ProfanityAction | Akcja | Przykład: Source — japoński | Przykład: TARGET — angielski|
 | :---|:---|:---|:---|
 | NoAction | Domyślne. Taka sama jak nie Ustawianie opcji. Wulgaryzmów przekazuje ze źródła do docelowego. | 彼は変態です。 | Jest on ostatnim draniem. |
 | Oznaczone jako | Obsceniczne wyrazy są ujęte w znaczników XML \<wulgaryzmów >... \</profanity >. | 彼は変態です。 | Jest on \<wulgaryzmów > jerk\</profanity >. |
-| Usunięto | Obsceniczne wyrazy są usuwane z danych wyjściowych bez zastępowania. | 彼は。 | Jest on. |
+| Usunięte | Obsceniczne wyrazy są usuwane z danych wyjściowych bez zastępowania. | 彼は。 | Jest on. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
