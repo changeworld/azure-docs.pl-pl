@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d1ff154c42709f0c672b30f7ec51a436fb44ce13
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/21/2018
+ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724746"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240348"
 ---
 # <a name="asdk-release-notes"></a>Informacje o wersji ASDK 
  
@@ -27,7 +28,7 @@ Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problem
 
 > Na bieżąco what's new in ASDK subskrybując [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanału informacyjnego](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
-## <a name="build-118110101"></a>Tworzenie 1.1811.0.101
+## <a name="build-118110101"></a>Build 1.1811.0.101
 
 ### <a name="new-features"></a>Nowe funkcje
 
@@ -304,7 +305,7 @@ Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Az
 
 <!-- #### Identity -->
 
-## <a name="build-11808097"></a>Tworzenie 1.1808.0.97
+## <a name="build-11808097"></a>Build 1.1808.0.97
 
 ### <a name="new-features"></a>Nowe funkcje
 Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Stack.  
@@ -420,7 +421,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 
 <!-- 2403291 - IS ASDK --> 
 - Nie może być użycie poziomych pasków przewijania u dołu portali administratora i użytkownika. Jeśli nie masz dostępu poziomych pasków przewijania, użyj linki do stron nadrzędnych na przejście do poprzedniego bloku w portalu, wybierając nazwę bloku mają być wyświetlane na liście łączy do stron nadrzędnych znajdujących się u góry lewym rogu portalu.
-  ![Łącza do stron nadrzędnych](media/asdk-release-notes/breadcrumb.png)
+  ![Breadcrumb](media/asdk-release-notes/breadcrumb.png)
 
 <!-- TBD -  IS ASDK --> 
 - Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.

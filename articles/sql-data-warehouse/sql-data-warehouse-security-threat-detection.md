@@ -6,16 +6,16 @@ author: kavithaj
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 7ff23235e9681301984e13e346b23f277662bb5c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 112d093946099e623d1edfa4555eda681069892e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300938"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243389"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Wykrywanie zagrożeń w usłudze Azure SQL Data Warehouse
 Konfigurowanie wykrywania zagrożeń i eksplorować podejrzane zdarzenia w usłudze Azure SQL Data Warehouse.
@@ -54,7 +54,7 @@ Na przykład funkcja wykrywania zagrożeń wykrywa niektóre nietypowe działani
    
     ![Okienko nawigacji](media/sql-data-warehouse-security-threat-detection/6_td_audit_record_details.png)
 4. W bloku Rekordy inspekcji kliknij opcję **Otwórz w programie Excel**, aby otworzyć wstępnie skonfigurowany szablon programu Excel i zaimportować oraz uruchomić dogłębną analizę dziennika inspekcji dla przybliżonego czasu wystąpienia podejrzanego zdarzenia.<br/>
-   **Uwaga:** w programie Excel 2010 lub nowszej Power Query i **szybkiego łączenia** ustawienie jest wymagane
+   **Uwaga:** W programie Excel 2010 lub nowszej Power Query i **szybkiego łączenia** ustawienie jest wymagane
    
     ![Okienko nawigacji](media/sql-data-warehouse-security-threat-detection/7_td_audit_records_open_excel.png)
 5. Aby skonfigurować ustawienie **Szybkie łączenie** — na karcie wstążki **POWER QUERY** wybierz pozycję **Opcje**, aby wyświetlić okno dialogowe Opcje. Wybierz sekcję prywatności i wybierz drugą opcję — „Ignorowanie poziomów prywatności i potencjalne poprawianie wydajności”:

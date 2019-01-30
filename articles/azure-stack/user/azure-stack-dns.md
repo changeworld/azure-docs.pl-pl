@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 822fd40b2fc707efe34d4081c3c49e5f71621cdb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052346"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245545"
 ---
 # <a name="using-dns-in-azure-stack"></a>Przy użyciu systemu DNS w usłudze Azure Stack
 
@@ -89,7 +90,7 @@ Na poziomie interfejsu API REST usługi Azure Stack DNS elementów etag są okre
 | Nagłówek | Zachowanie|
 |--------|---------|
 | Brak   | Umieść zawsze powiedzie się (nie sprawdzeń element Etag)|
-| IF-match| Umieść powiedzie się tylko, jeśli zasób istnieje i element Etag jest zgodny|
+| If-match| Umieść powiedzie się tylko, jeśli zasób istnieje i element Etag jest zgodny|
 | IF-match *| Umieść powiedzie się tylko, jeśli istnieje zasób|
 | IF-none-match *| Umieść powiedzie się tylko, jeśli zasób nie istnieje.|
 

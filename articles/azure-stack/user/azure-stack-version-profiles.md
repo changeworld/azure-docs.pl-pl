@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9c4b66501cfb51088609de81fe00b5b041e056d3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 28ff7c9f6ca5fc6365b3fe1b9a91d2159c8b3f48
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037532"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247616"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack
 
@@ -53,10 +54,10 @@ Najnowsze profile interfejsu API platformy Azure nie są zgodne z usługą Azure
 **najnowsze**  
 Ten profil jest najbardziej aktualne wersje interfejsu API w globalnej platformy Azure, które nie działają w usłudze Azure Stack. **Najnowsze** ma największą liczbę przełomowe zmiany. Profil, który umieszcza specjalnie stabilności i zgodności z innych chmur. Jeśli próbujesz użyć najbardziej aktualne wersje interfejsu API **najnowsze** jest profil, należy użyć.
 
-**Rrrr mm-dd hybrydowe**  
+**Yyyy-mm-dd-hybrid**  
 Ten profil jest zwalniany marca i września co roku. Posiada optymalne stabilności i zgodności z różnych chmur. **Rrrr mm-dd hybrydowego** zaprojektowano pod kątem globalnej platformy Azure i usługi Azure Stack. Wersje interfejsu API platformy Azure wymienionych w tym profilu będą takie same jak te, które są wyświetlane w usłudze Azure Stack. Ten profil umożliwia opracowywanie kodu dla rozwiązań w chmurze hybrydowej.
 
-**rrrr mm-dd-profile**  
+**yyyy-mm-dd-profile**  
 Ten profil jest zwalniany globalnej platformy Azure w czerwcu i grudnia. Nie działa z usługą Azure Stack; Zazwyczaj będzie istnieć wiele przełomowych zmianach. Mimo że bilansuje optymalne stabilności i najnowszych funkcji, a różnica między **najnowsze** i ten profil jest fakt, że **najnowsze** zawsze zawiera najnowsze wersje interfejsu API, niezależnie od tego, kiedy został interfejsu API wydana. Na przykład, jeśli nowa wersja interfejsu API jest tworzona dla interfejsu API obliczenia jutro, ta wersja interfejsu API znajduje się w **najnowsze**, ale nie **rrrr mm-dd-profile** profilu, ponieważ istnieje już w tym profilu. **rrrr mm-dd-profile** obejmuje najbardziej aktualne wersje wydane przed czerwca lub przed grudnia.
 
 ## <a name="azure-resource-manager-api-profiles"></a>Usługa Azure profilami interfejsu API usługi Resource Manager

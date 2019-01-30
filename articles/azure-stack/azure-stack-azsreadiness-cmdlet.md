@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: af959507fc2e0d1b68f547d2856eb7020d3ed5c6
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247580"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250652"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Dokumentacja poleceń cmdlet Start-AzsReadinessChecker
 
@@ -306,7 +307,7 @@ Określa nazwę region wdrożenia usługi Azure Stack.
 |Akceptować wejście potokowe:      |False         |
 |Akceptować symbole wieloznaczne: |False         |
 
-> — NAZWA FQDN
+> -FQDN
 
 Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana jako ExternalFQDN i ExternalDomainName.
 |  |  |
@@ -407,7 +408,7 @@ Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości MultipleCS
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Prawidłowe wartości:               |"MultipleCSR", "SingleCSR" |
+|Prawidłowe wartości:               |'MultipleCSR','SingleCSR' |
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
@@ -452,7 +453,7 @@ Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i 
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Prawidłowe wartości:               |"AzureCloud", "AzureChinaCloud", "AzureUSGovernment" |
+|Prawidłowe wartości:               |'AzureCloud','AzureChinaCloud','AzureUSGovernment' |
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
@@ -531,7 +532,7 @@ Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegół
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Wszyscy      |
-|Prawidłowe wartości:               |"Certyfikat", "AzureRegistration", "AzureIdentity", "Zadania", "All" |
+|Prawidłowe wartości:               |'Certificate','AzureRegistration','AzureIdentity','Jobs','All' |
 |Akceptować wejście potokowe:      |False    |
 |Akceptować symbole wieloznaczne: |False    |
 
@@ -552,7 +553,7 @@ Usuwa historię wykonywania i sprawdzania poprawności i zapisuje operacji spraw
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
-|Aliasy:                    |usługi CF                |
+|Aliases:                    |cf                |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
 |Akceptować wejście potokowe:      |False             |
@@ -566,7 +567,7 @@ Określa ścieżkę niestandardową, aby zapisać raport gotowości JSON i pełn
 |----------------------------|------------------|
 |Wpisz:                       |Ciąg            |
 |Położenie:                   |o nazwie             |
-|Wartość domyślna:              |$ENV: TEMP\AzsReadinessChecker  |
+|Wartość domyślna:              |$ENV:TEMP\AzsReadinessChecker  |
 |Akceptować wejście potokowe:      |False             |
 |Akceptować symbole wieloznaczne: |False             |
 
@@ -576,7 +577,7 @@ Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
-|Aliasy:                    |usługi CF                |
+|Aliases:                    |cf                |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
 |Akceptować wejście potokowe:      |False             |
@@ -588,7 +589,7 @@ Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie 
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
-|Aliasy:                    |Wi                |
+|Aliases:                    |wi                |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
 |Akceptować wejście potokowe:      |False             |

@@ -5,16 +5,16 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: panosper
-ms.openlocfilehash: 7b7bbf89f04e4c8b12df46c2a7100a08001eb7d1
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f9aca8529bf0407022ff3683c1cd73b87045f2f2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340805"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216676"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Tworzenie niestandardowego punktu końcowego funkcji zamiany mowy na tekst
 
@@ -75,4 +75,4 @@ Gdy wdrożenie będzie gotowe, nazwa wdrożenia staje się linkiem. Klikając li
 Aby uzyskać więcej samouczków zobacz:
 * [Użyj niestandardowego punktu końcowego mowy na tekst](cognitive-services-custom-speech-use-endpoint.md)
 * [Tworzenie niestandardowego modelu akustycznego](cognitive-services-custom-speech-create-acoustic-model.md)
-* [Utwórz model języka niestandardowego](cognitive-services-custom-speech-create-language-model.md)
+* [Tworzenie niestandardowego modelu językowego](cognitive-services-custom-speech-create-language-model.md)

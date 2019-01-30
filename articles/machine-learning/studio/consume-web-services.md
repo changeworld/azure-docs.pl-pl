@@ -1,6 +1,6 @@
 ---
 Tytuł: Używanie titleSuffix usługi sieci web: Opis usługi Azure Machine Learning Studio: Po wdrożeniu usługi uczenia maszynowego z usługi Azure Machine Learning Studio, usługę sieci Web typu RESTFul mogą być używane jako usługi w czasie rzeczywistym odpowiedź na żądanie lub jako usługę wykonywania wsadowego.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
 ---

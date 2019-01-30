@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: e4131bc8f038957e52b914937b2d45e670be8f5f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.lastreviewed: 12/18/2018
+ms.openlocfilehash: 09988009712f9312eb97d5c32dc8991ec5b2f1f9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157279"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251354"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -43,7 +44,7 @@ Certyfikaty usług infrastruktury usługi dołączonej do Internetu, które są 
 - KeyVault
 - Host rozszerzenia administratora
 - Usługi ACS (w tym obiektów blob, tabela i queue storage)
-- USŁUGI AD FS *
+- ADFS *
 - Wykres *
 
 \* Dotyczy tylko w przypadku dostawcy tożsamości środowiska Active Directory federacyjnego Services (AD FS).
@@ -62,13 +63,13 @@ Usługa Azure Stack obsługuje obrotu wpisu tajnego za pomocą certyfikatów zew
 
 |Zainstalowany certyfikat urzędu certyfikacji.|Obróć do urzędu certyfikacji|Obsługiwane|Obsługiwane wersje usługi Azure Stack|
 |-----|-----|-----|-----|
-|Z podpisem własnym|Do wersji Enterprise|Nieobsługiwane||
+|Z podpisem własnym|To Enterprise|Nieobsługiwane||
 |Z podpisem własnym|Aby z podpisem własnym|Nieobsługiwane||
 |Z podpisem własnym|Na wartość publiczne<sup>*</sup>|Obsługiwane|1803 i nowsze|
-|Dla przedsiębiorstw|Do wersji Enterprise|Obsługiwane tak długo, jak klienci używają tego samego przedsiębiorstwa urzędu certyfikacji, ponieważ używany we wdrożeniu|1803 i nowsze|
+|Dla przedsiębiorstw|To Enterprise|Obsługiwane tak długo, jak klienci używają tego samego przedsiębiorstwa urzędu certyfikacji, ponieważ używany we wdrożeniu|1803 i nowsze|
 |Dla przedsiębiorstw|Aby z podpisem własnym|Nieobsługiwane||
 |Dla przedsiębiorstw|Na wartość publiczne<sup>*</sup>|Obsługiwane|1803 i nowsze|
-|Z publicznego<sup>*</sup>|Do wersji Enterprise|Nieobsługiwane|1803 i nowsze|
+|Z publicznego<sup>*</sup>|To Enterprise|Nieobsługiwane|1803 i nowsze|
 |Z publicznego<sup>*</sup>|Aby z podpisem własnym|Nieobsługiwane||
 |Z publicznego<sup>*</sup>|Na wartość publiczne<sup>*</sup>|Obsługiwane|1803 i nowsze|
 
@@ -297,7 +298,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Typ | Wymagane | Pozycja | Domyślne | Opis |
+| Parametr | Type | Wymagany | Pozycja | Domyślne | Opis |
 | -- | -- | -- | -- | -- | -- |
 | PfxFilesPath | Ciąg  | False  | o nazwie  | Brak  | Ścieżka udziału plików do **\Certificates** katalogu zawierającego wszystkich zewnętrznych sieci certyfikaty punktu końcowego. Wymagany tylko w przypadku rotacji zewnętrznych wpisów tajnych. Katalog end musi być **\Certificates**. |
 | CertificatePassword | SecureString | False  | o nazwie  | Brak  | Hasło dla wszystkich certyfikatów w PfXFilesPath —. Wymagane wartości, jeśli PfxFilesPath jest udostępniany, gdy są obracane zewnętrznych wpisów tajnych. |

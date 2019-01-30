@@ -8,15 +8,15 @@ ms.topic: article
 ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 6e33f700e9f453f419bf431d772d3db27e806ac0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240702"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244916"
 ---
-# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą magazynu obiektów Blob
+# <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Udostępnione sygnatur dostępu, część 2: Tworzenie i używanie sygnatury dostępu Współdzielonego z usługą Blob storage
 
 [Część 1](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) po ukończeniu tego samouczka zbadano udostępnione access signatures (SAS) i opisano najlepsze rozwiązania dotyczące korzystania z nich. Części 2 dowiesz się, jak wygenerować, a następnie użyj sygnatury dostępu współdzielonego z usługą Blob storage. Przykłady są napisane w języku C# i używać biblioteki klienta usługi Azure Storage dla platformy .NET. Przykłady w tym samouczku:
 
@@ -28,9 +28,9 @@ ms.locfileid: "51240702"
 ## <a name="about-this-tutorial"></a>Informacje o tym samouczku
 W tym samouczku utworzymy dwie aplikacje konsolowe, które pokazują, tworzenia i używania sygnatur dostępu współdzielonego dla kontenerów i obiektów blob:
 
-**Aplikacja 1**: aplikacji do zarządzania. Generuje sygnaturę dostępu współdzielonego dla kontenera i obiektu blob. Zawiera klucz dostępu konta magazynu w kodzie źródłowym.
+**Aplikacja 1**: Aplikacji do zarządzania. Generuje sygnaturę dostępu współdzielonego dla kontenera i obiektu blob. Zawiera klucz dostępu konta magazynu w kodzie źródłowym.
 
-**Aplikacja 2**: aplikacja kliencka. Uzyskuje dostęp do kontenerów i obiektów blob zasobów przy użyciu sygnatury dostępu współdzielonego utworzony przy użyciu pierwszej aplikacji. Używa tylko sygnatur dostępu współdzielonego kontenera dostępu i zasobów obiektów blob — robi *nie* obejmują klucz dostępu konta magazynu.
+**Aplikacja 2**: Aplikacja kliencka. Uzyskuje dostęp do kontenerów i obiektów blob zasobów przy użyciu sygnatury dostępu współdzielonego utworzony przy użyciu pierwszej aplikacji. Używa tylko sygnatur dostępu współdzielonego kontenera dostępu i zasobów obiektów blob — robi *nie* obejmują klucz dostępu konta magazynu.
 
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>Część 1: Tworzenie aplikacji konsoli aby wygenerować sygnatury dostępu współdzielonego
 Najpierw upewnij się, że biblioteki klienta usługi Azure Storage dla programu .NET zainstalowane. Możesz zainstalować [pakietu NuGet](http://nuget.org/packages/WindowsAzure.Storage/ "pakietu NuGet") zawierającego najnowsze zestawy dla biblioteki klienta. Jest to zalecana metoda za zapewnienie, że masz najnowsze poprawki. Możesz również pobrać jako część najnowszej wersji biblioteki klienckiej [zestawu Azure SDK dla platformy .NET](https://azure.microsoft.com/downloads/).
@@ -589,7 +589,7 @@ Additional error information: The remote server returned an error: (403) Forbidd
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Sygnatury dostępu współdzielonego, część 1: Opis modelu sygnatur dostępu Współdzielonego](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Udostępnione sygnatur dostępu, część 1: Opis modelu sygnatur dostępu Współdzielonego](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Zarządzanie dostępem anonimowym odczytu do kontenerów i obiektów blob](storage-manage-access-to-resources.md)
 * [Delegowanie dostępu za pomocą sygnatury dostępu współdzielonego (interfejs API REST)](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Wprowadzenie do tabel i token SAS kolejki](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

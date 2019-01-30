@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: b721545f27135e36b2999de5acc61e77539a94b2
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 11/13/2018
+ms.openlocfilehash: 2555ce4b9485ba6464bde3422df114343b579641
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247320"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243423"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>Usługa App Service w usłudze Azure Stack update 4 — informacje o wersji
 
@@ -69,7 +70,7 @@ Usługa Azure App Service w usłudze Azure Stack Update 4 zawiera następujące 
 - **Aktualizacje do narzędzi i struktur aplikacji na następujących**:
   - Dodano NodeJS 10.6.0
   - Dodano NPM 6.1.0
-  - Dodano OpenJDK Zulu 8.31.0.2
+  - Added Zulu OpenJDK 8.31.0.2
   - Dodano Tomcat 8.5.34 i 9.0.12
   - Dodano PHP wersje:
     - 5.6.37

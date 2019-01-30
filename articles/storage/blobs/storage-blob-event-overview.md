@@ -7,13 +7,13 @@ ms.author: cbrooks
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.component: blobs
-ms.openlocfilehash: 0f726769b9e4266e310f9f50b1a7ef768c0c1d55
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.subservice: blobs
+ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735888"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247752"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
 
@@ -28,7 +28,7 @@ Przyjrzyj się [zdarzenia usługi Route Blob storage do niestandardowego sieci w
 ![Model siatki zdarzeń](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
 ## <a name="blob-storage-accounts"></a>Konta usługi Blob Storage
-Zdarzenia usługi blob storage są dostępne w kont magazynu ogólnego przeznaczenia v2 i konta usługi Blob storage. **Ogólnego przeznaczenia v2** konta magazynu obsługują wszystkie funkcje wszystkich usług magazynu, w tym obiektów blob, plików, kolejek i tabel. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. Aby uzyskać więcej informacji, zobacz [Przegląd konta usługi Azure storage](../common/storage-account-overview.md).
+Zdarzenia usługi Blob Storage są dostępne na kontach magazynu ogólnego przeznaczenia w wersji 2 i kontach usługi Blob Storage. **Ogólnego przeznaczenia v2** konta magazynu obsługują wszystkie funkcje wszystkich usług magazynu, w tym obiektów blob, plików, kolejek i tabel. **Konto usługi Blob Storage** to specjalne konto magazynu służące do przechowywania danych niestrukturalnych w formie obiektów blob w usłudze Azure Storage. Konta usługi Blob Storage przypominają konta magazynu ogólnego przeznaczenia i udostępniają wszystkie używane obecnie funkcje doskonałej trwałości, dostępności, skalowalności i wydajności, łącznie z pełną spójnością interfejsu API na potrzeby blokowych obiektów blob i obiektów blob dołączania. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../common/storage-account-overview.md).
 
 ## <a name="available-blob-storage-events"></a>Dostępności zdarzenia usługi Blob storage
 Korzysta z usługi Event grid [subskrypcji zdarzeń](../../event-grid/concepts.md#event-subscriptions) aby komunikaty o zdarzeniach trasy dla subskrybentów.  Subskrypcje zdarzeń magazyn obiektów blob może zawierać dwa typy zdarzeń:  
@@ -44,9 +44,9 @@ Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowa
 > |Właściwość|Typ|Opis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |temat|ciąg|Pełny identyfikator usługi Azure Resource Manager konta magazynu, który emituje zdarzenia.|
-> |Temat|ciąg|Ścieżka względna zasobu do obiektu, który jest przedmiotem zdarzenia, korzystając z tych samych rozszerzony format usługi Azure Resource Manager, której używamy w celu opisania kont magazynu, usługi i kontenery dla RBAC platformy Azure.  Ten format obejmuje zachowywanie nazwa obiektu blob.|
+> |temat|ciąg|Ścieżka względna zasobu do obiektu, który jest przedmiotem zdarzenia, korzystając z tych samych rozszerzony format usługi Azure Resource Manager, której używamy w celu opisania kont magazynu, usługi i kontenery dla RBAC platformy Azure.  Ten format obejmuje zachowywanie nazwa obiektu blob.|
 > |eventTime|ciąg|Data/Godzina, który wygenerowania zdarzenia w formacie ISO 8601|
-> |Typ zdarzenia|ciąg|"Microsoft.Storage.BlobCreated" lub "Microsoft.Storage.BlobDeleted"|
+> |eventType|ciąg|"Microsoft.Storage.BlobCreated" or "Microsoft.Storage.BlobDeleted"|
 > |Identyfikator|ciąg|Unikatowy identyfikator, jeśli to zdarzenie|
 > |dataVersion|ciąg|Wersja schematu dla obiektu danych.|
 > |metadataVersion|ciąg|Wersja schematu właściwości najwyższego poziomu.|

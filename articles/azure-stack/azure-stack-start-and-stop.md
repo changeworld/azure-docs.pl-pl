@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: b8d13377b2fb1545ecf88645a5e19bf5eab24c74
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344017"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238139"
 ---
 # <a name="start-and-stop-azure-stack"></a>Uruchamianie i zatrzymywanie usługi Azure Stack
 Należy wykonać procedury opisane w tym artykule, aby poprawnie zamknąć i ponownie uruchomić usługi Azure Stack. Zamknięcie fizycznie będzie wyłączyć całego środowiska usługi Azure Stack. Uruchamianie włącza wszystkie role infrastruktury i zwraca zasoby dzierżawcy do jego stanu zasilania, w jakim były przed zamknięciem.
@@ -72,7 +73,7 @@ Wykonaj następujące czynności, jeśli usług infrastruktury i dzierżawcy nie
 
 1. Otwórz sesję punktu końcowego uprzywilejowanego na komputerze z dostępem do sieci, do maszyn wirtualnych usługi Azure Stack ERCS.
 
-2. Uruchom polecenie: 
+2. Uruchomienie: 
 
     ```powershell
       Test-AzureStack
@@ -80,7 +81,7 @@ Wykonaj następujące czynności, jeśli usług infrastruktury i dzierżawcy nie
 
 3. Przejrzyj dane wyjściowe i usuń wszelkie błędy kondycji. Aby uzyskać więcej informacji, zobacz [uruchomienie testu poprawności z usługi Azure Stack](azure-stack-diagnostic-test.md).
 
-4. Uruchom polecenie:
+4. Uruchomienie:
 
     ```powershell
       Start-AzureStack

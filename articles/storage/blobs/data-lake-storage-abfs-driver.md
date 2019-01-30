@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 71821b71e2e6ca524e38d0e1eb4fa11f557bd799
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: f50723fa494df0ff1490bf27451394a6e13da467
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52974920"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240883"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów Blob platformy Azure (ABFS): dedykowanych sterownika usługi Azure Storage dla platformy Hadoop
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Sterownik systemu plików obiektów Blob platformy Azure (ABFS): Dedykowany sterownika usługi Azure Storage dla platformy Hadoop
 
 Jedną z metod dostępu do danych w usłudze Azure Data Lake Gen2 — wersja zapoznawcza jest za pośrednictwem [system plików Hadoop](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Data Lake Storage Gen2 umożliwia użytkownikom dostępu usługi Azure Blob Storage do nowego sterownika sterownik systemu plików obiektów Blob platformy Azure lub `ABFS`. ABFS jest częścią technologii Apache Hadoop i znajduje się w wielu komercyjnych dystrybucje usługi Hadoop. Przy użyciu tego sterownika, wiele aplikacji i struktury mogą dostęp do danych w usłudze Azure Blob Storage bez konieczności wprowadzania kodu jawnie odwołujące się do Data Lake Storage Gen2.
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Możliwość uprzedniego: sterownik Windows Azure Storage Blob
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Wcześniejsze możliwości: Sterownik systemu Windows Azure Storage Blob
 
 Sterownik systemu Windows Azure Storage Blob lub [sterownika WASB](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) pod warunkiem, oryginalnym pomocy technicznej dla usługi Azure Blob Storage. Ten sterownik wykonać złożone zadania system plików mapowania semantyki (zgodnie z potrzebami przy użyciu interfejsu systemu plików usługi Hadoop) do tego obiektu przechowywania interfejs w stylu udostępnianych przez usługi Azure Blob Storage. Ten sterownik w dalszym ciągu obsługuje ten model, zapewniając wysoką wydajność dostępu do danych przechowywanych w obiektach blob, ale zawiera znaczną ilość kodu, wykonywanie tego mapowania, dzięki czemu trudne w utrzymaniu. Ponadto niektóre operacje, takie jak [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) i [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) po zastosowaniu do katalogów wymagają sterowników do wykonania ogromną liczbę operacji (z powodu braku magazyny obiektów obsługę katalogów) co często prowadzi do pogorszenie wydajności. Sterownik ABFS został zaprojektowany w celu pokonania nieprzerwaną pracę braki WASB.
 
@@ -46,9 +46,9 @@ Wewnętrznie sterownik ABFS tłumaczy zasoby określona w identyfikatorze URI do
 
 Sterownik ABFS obsługuje dwie formy uwierzytelniania, dzięki czemu aplikacji platformy Hadoop bezpieczny dostęp do zasobów znajdujących się w ramach konta Data Lake Storage Gen2 stanie. Pełne informacje na temat schematów uwierzytelniania dostępne znajdują się w [Przewodnik po zabezpieczeniach usługi Azure Storage](../common/storage-security-guide.md). Oto one:
 
-- **Klucz współużytkowany:** to pozwala użytkownikom dostęp do wszystkich zasobów w ramach konta. Klucz jest zaszyfrowany i przechowywane w konfiguracji usługi Hadoop.
+- **Klucz współużytkowany:** Umożliwia użytkownikom dostęp do wszystkich zasobów w ramach konta. Klucz jest zaszyfrowany i przechowywane w konfiguracji usługi Hadoop.
 
-- **Usługa Azure Active Directory elementu nośnego OAuth Token:** tokenów elementu nośnego usługi Azure AD są uzyskane i odświeżane przez sterownik przy użyciu tożsamości użytkownika albo skonfigurowanej nazwy głównej usługi. Przy użyciu tego modelu uwierzytelniania, wszelki dostęp jest autoryzowany dla każdego wywołania przy użyciu tożsamości skojarzone z tokenem dostarczony i oceniać je względem przypisanych POSIX kontroli dostępu listy (ACL).
+- **Token elementu nośnego OAuth usługi Azure Active Directory:** Tokenów elementu nośnego w usłudze Azure AD są uzyskane i odświeżane przez sterownik przy użyciu tożsamości użytkownika albo skonfigurowanej nazwy głównej usługi. Przy użyciu tego modelu uwierzytelniania, wszelki dostęp jest autoryzowany dla każdego wywołania przy użyciu tożsamości skojarzone z tokenem dostarczony i oceniać je względem przypisanych POSIX kontroli dostępu listy (ACL).
 
 ### <a name="configuration"></a>Konfigurowanie
 

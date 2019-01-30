@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
-ms.openlocfilehash: 90830c4e27e90af6c9d77509844696f64e4909f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 78ea9071f220b2a78c6d9260d47145f22284d760
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994772"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250269"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Tworzenie Centrum IoT przy użyciu wiersza polecenia platformy Azure
 
@@ -32,9 +32,9 @@ Jeśli korzystasz z wiersza polecenia platformy Azure lokalnie, zamiast korzysta
 
 W wierszu polecenia Uruchom [polecenie logowania](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli):
 
-    ```azurecli
-    az login
-    ```
+   ```azurecli
+   az login
+   ```
 
 Postępuj zgodnie z instrukcjami w celu uwierzytelnienia przy użyciu kodu i zaloguj się na konto platformy Azure za pośrednictwem przeglądarki internetowej.
 

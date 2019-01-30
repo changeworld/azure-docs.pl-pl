@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 63a198b082c7486de2392153291a11be5bcb2f9e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: 82a691c0e0b6280a168605d56ee628d81f10823f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103227"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245654"
 ---
 # <a name="validate-azure-stack-system-state"></a>Sprawdzanie poprawności stanu systemu w usłudze Azure Stack
 

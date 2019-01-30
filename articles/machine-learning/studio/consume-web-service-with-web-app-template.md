@@ -1,6 +1,6 @@
 ---
 Tytuł: Korzystać z titleSuffix szablonu aplikacji sieci web usług sieci web w Studio: Opis usługi Azure Machine Learning Studio: Użyj szablonu aplikacji sieci web w witrynie Azure Marketplace z predykcyjna usługa internetowa Azure Machine Learning.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---

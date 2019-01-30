@@ -6,16 +6,16 @@ author: sachinpMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 131a2102ec3ede930de3cad7516e486d793fec3d
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686606"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250568"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Usługa SQL Data Warehouse limity pojemności
 Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse.
@@ -28,7 +28,7 @@ Maksymalna dozwolona dla różnych składników usługi Azure SQL Data Warehouse
 | Połączenie z bazą danych |Współbieżne otwarte sesje |1024<br/><br/>Każdy z 1024 aktywne sesje mogą przesyłać żądania do bazy danych SQL Data Warehouse, w tym samym czasie. Należy pamiętać, że istnieją ograniczenia dotyczące liczby zapytań, które mogą być wykonywane jednocześnie. Po przekroczeniu limitu współbieżności, żądanie przechodzi w stan kolejki wewnętrznej, gdzie oczekuje na przetworzenie. |
 | Połączenie z bazą danych |Maksymalna ilość pamięci dla przygotowanej instrukcji |20 MB |
 | [Zarządzanie obciążeniami](resource-classes-for-workload-management.md) |Maksymalna liczba jednoczesnych kwerend |128<br/><br/> Usługa SQL Data Warehouse można wykonywać maksymalnie 128 zapytań jednoczesnych lub kolejek, pozostałe zapytania.<br/><br/>Liczba równoczesnych zapytań można zmniejszyć, gdy użytkownicy są przypisane do wyższe klasy zasobów lub jeśli usługa SQL Data Warehouse ma mniejszy [data warehouse Unit, jednostka](memory-and-concurrency-limits.md) ustawienie. Niektórych kwerend, takich jak zapytania DMV, są zawsze może działać i czy nie wpływa na limit współbieżnych zapytania. Aby uzyskać szczegółowe informacje na temat wykonywania zapytań jednoczesnych, zobacz [maksymalne wartości współbieżności](memory-and-concurrency-limits.md#concurrency-maximums) artykułu. |
-| [bazy danych tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna GB |399 GB na DW100. W związku z tym w DWU1000, bazy danych tempdb jest o rozmiarze do 3,99 TB. |
+| [tempdb](sql-data-warehouse-tables-temporary.md) |Maksymalna GB |399 GB per DW100. W związku z tym w DWU1000, bazy danych tempdb jest o rozmiarze do 3,99 TB. |
 
 ## <a name="database-objects"></a>Obiekty bazy danych
 | Kategoria | Opis | Maksimum |

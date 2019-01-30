@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 6cf32ba50e83b95d51493244ef8e8646433b0b02
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.lastreviewed: 01/02/2019
+ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024947"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244253"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure Stack infrastruktury kluczy publicznych certyfikatów
 
@@ -70,7 +71,7 @@ Dla danego wdrożenia [region] i [externalfqdn] wartości muszą być zgodne, re
 | Folder wdrożenia | Temat wymaganego certyfikatu i alternatywnej nazwy podmiotu (SAN) | Zakres (na region) | Przestrzeń nazw poddomeny |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
 | Publiczny | portal.&lt;region>.&lt;fqdn> | Portale | &lt;region>.&lt;fqdn> |
-| Portal administracyjny | adminportal. &lt;region >. &lt;fqdn > | Portale | &lt;region>.&lt;fqdn> |
+| Portal administracyjny | adminportal.&lt;region>.&lt;fqdn> | Portale | &lt;region>.&lt;fqdn> |
 | Azure Resource Manager Public | management.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
 | Administratora usługi Azure Resource Manager | adminmanagement.&lt;region>.&lt;fqdn> | Azure Resource Manager | &lt;region>.&lt;fqdn> |
 | ACSBlob | *.blob.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) | Blob Storage | blob.&lt;region>.&lt;fqdn> |
@@ -78,8 +79,8 @@ Dla danego wdrożenia [region] i [externalfqdn] wartości muszą być zgodne, re
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) | Usługa Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(Wieloznaczny certyfikat SSL) |  Wewnętrzny magazyn kluczy |  adminvault.&lt;region>.&lt;fqdn> |
-| Host rozszerzenia administratora | *.adminhosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia administratora | adminhosting. \<region >. \<fqdn > |
-| Host rozszerzenia publiczne | * .hosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia publiczne | hosting. \<region >. \<fqdn > |
+| Host rozszerzenia administratora | *.adminhosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia administratora | adminhosting.\<region>.\<fqdn> |
+| Host rozszerzenia publiczne | * .hosting. \<region >. \<fqdn > (wieloznaczne certyfikaty SSL) | Host rozszerzenia publiczne | hosting.\<region>.\<fqdn> |
 
 W przypadku wdrożenia usługi Azure Stack przy użyciu trybu wdrożenia usługi Azure AD, wystarczy do żądania certyfikatów wymienione w powyższej tabeli. Jednak w przypadku wdrożenia usługi Azure Stack przy użyciu trybu wdrożenia usług AD FS, należy także żądania certyfikatów opisanych w poniższej tabeli:
 

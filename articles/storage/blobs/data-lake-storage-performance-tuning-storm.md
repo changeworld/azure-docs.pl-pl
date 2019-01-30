@@ -3,17 +3,17 @@ title: Usługa Azure Data Lake Storage Gen2 Storm wydajności, wytyczne dotyczą
 description: Usługa Azure Data Lake Storage Gen2 Storm wydajności, wytyczne dotyczące dostosowywania
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 845bb739408cb38d823ae662e261d6955726d28a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b242fca5a5a8490cc51222a6dd8b1ff1bb724417
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975193"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247912"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Wskazówki dotyczące systemu Storm w HDInsight i Azure Data Lake Storage Gen2 dostrajania wydajności
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 20e96ad7a99fdb8c90f3b7990965d7225aef8be0
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.lastreviewed: 12/07/2018
+ms.openlocfilehash: e335f4cb112c0f029768ccf050f888e00a6efdc1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555017"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250626"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą platformy .NET w usłudze Azure Stack
 
@@ -126,11 +127,11 @@ Przykładowy plik JSON:
 
 ## <a name="existing-api-profiles"></a>Istniejące profile interfejsu API
 
-1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01. *ResourceProvider*. 0.9.0-preview.nupkg**: Profil najnowsze stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi najbardziej zgodnych z usługą Azure Stack, tak długo, jak korzystasz z sygnatury 1808 lub więcej.
+1.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.*ResourceProvider*.0.9.0-preview.nupkg**: Profil najnowsze stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi najbardziej zgodnych z usługą Azure Stack, tak długo, jak korzystasz z sygnatury 1808 lub więcej.
 
-2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09. *ResourceProvider*. 0.9.0-preview.nupkg**: Jeśli używany jest niższa niż kompilacji 1808 sygnatury, za pomocą tego profilu.
+2.  **Microsoft.Azure.Management.Profiles.hybrid\_2017\_03\_09.*ResourceProvider*.0.9.0-preview.nupkg**: Jeśli używany jest niższa niż kompilacji 1808 sygnatury, za pomocą tego profilu.
 
-3.  **Najnowsze**: Profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług. Ten profil jest częścią **Microsoft.Azure.Management** pakietu NuGet.
+3.  **Najnowszy**: Profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług. Ten profil jest częścią **Microsoft.Azure.Management** pakietu NuGet.
 
 Aby uzyskać więcej informacji na temat profilów Azure Stack i interfejsu API, zobacz [Podsumowanie profilami interfejsu API][].
 

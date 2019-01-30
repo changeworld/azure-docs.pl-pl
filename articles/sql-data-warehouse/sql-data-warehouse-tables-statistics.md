@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a7ea00e8bdf4fa1a22dd765e5108dce72e2d380
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 699538666a3bdbea94d35844f9c5c4fb7b4fd0f2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307466"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241053"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Tworzenie i aktualizowanie statystyk dotyczących tabel w usłudze Azure SQL Data Warehouse
 Zalecenia i przykłady do tworzenia i aktualizowania statystyk optymalizacji zapytań dotyczących tabel w usłudze Azure SQL Data Warehouse.
@@ -38,7 +38,7 @@ Jeśli magazyn danych nie ma AUTO_CREATE_STATISTICS skonfigurowane, firma Micros
 ALTER DATABASE <yourdatawarehousename> 
 SET AUTO_CREATE_STATISTICS ON
 ```
-Poniższe instrukcje wywoła automatyczne tworzenie statystyk: wykrycia obecności predykat lub wybrać, wybierz OPCJĘ Wstaw, CTAS, AKTUALIZOWANIA, usuwania i wyjaśnienia podczas zawierających sprzężenia. 
+Poniższe instrukcje wywoła automatyczne tworzenie statystyk: Wykrycia obecności predykat lub wybrać, wybierz OPCJĘ Wstaw, CTAS, AKTUALIZOWANIA, usuwania i wyjaśnienia podczas zawierających sprzężenia. 
 
 > [!NOTE]
 > Automatyczne tworzenie statystyk nie są tworzone w tabelach tymczasowych lub zewnętrznego.
@@ -67,7 +67,7 @@ Poniżej przedstawiono zalecenia dotyczące zaktualizowanie statystyk:
 
 |||
 |-|-|
-| **Częstotliwości aktualizacji statystyk**  | Zachowawcze: dzienne <br></br> Po ładowania i przekształcania danych |
+| **Częstotliwości aktualizacji statystyk**  | Zachowawcze: Codziennie <br></br> Po ładowania i przekształcania danych |
 | **Próbkowanie** |  Mniej niż 1 miliard wierszy, użyj domyślnej próbkowania (20 procent) <br></br> Za pomocą więcej niż 1 miliard wierszy statystyki 2-procentowy zakres jest dobra |
 
 Jeden z pierwszych pytań zadać, kiedy rozwiązywaniu zapytania jest, **"Są statystyki na bieżąco?"**
@@ -337,7 +337,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 
 Aby utworzyć próbkowanych statystyk dla wszystkich kolumn 
 
-## <a name="examples-update-statistics"></a>Przykłady: Update statistics
+## <a name="examples-update-statistics"></a>Przykłady: Zaktualizuj statystyki
 Aktualizowanie statystyk, możesz wykonywać następujące czynności:
 
 - Aktualizacja statystyk jeden obiekt. Określ nazwę obiektu statystyki, który chcesz zaktualizować.

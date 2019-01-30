@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 4ec617fe49a3b55ba0608b77a8d1226fae025e6c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: 6bf84d7ecf2d436bdc00839699b150466b9de3ca
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246453"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247310"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Wyszukaj szablony usługi Azure Stack przy użyciu narzędzia sprawdzania poprawności szablonu
 
@@ -83,7 +84,7 @@ Szablon sprawdzania poprawności ostrzeżenia i błędy są rejestrowane w konso
 
 Moduł sprawdzania poprawności szablonu obsługuje następujące parametry.
 
-| Parametr | Opis | Wymagane |
+| Parametr | Opis | Wymagany |
 | ----- | -----| ----- |
 | TemplatePath | Określa ścieżkę do rekursywnie Znajdź szablony usługi Azure Resource Manager | Yes | 
 | TemplatePattern | Określa nazwę pliki szablonów do dopasowania. | Nie |

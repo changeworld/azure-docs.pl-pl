@@ -1,5 +1,5 @@
 ---
-title: 'Wdrażanie usługi App Services: Usługa Azure Stack | Dokumentacja firmy Microsoft'
+title: 'Wdrażanie usługi App Services: Azure Stack | Microsoft Docs'
 description: Szczegółowe wskazówki dotyczące wdrażania usługi App Service w usłudze Azure Stack
 services: azure-stack
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: anwestg
-ms.openlocfilehash: bbb8e39e60500a2d8310159cfbac5659964fc387
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: c3d120b8d124ce8c5536365e25bf8ffa500d4cbb
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230020"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251175"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -203,7 +204,7 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
 2. W obszarze Przegląd, w obszarze Stan zaznacz, aby zobaczyć, że **stan** Wyświetla **wszystkie role są gotowe**.
 
-    ![Zarządzanie App Service](media/azure-stack-app-service-deploy/image12.png)
+    ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
     Jeśli wdrażasz do istniejącej sieci wirtualnej i przy użyciu wewnętrznego adresu IP, aby nawiązać połączenie magazynowi, należy dodać regułę zabezpieczeń dla ruchu wychodzącego. Ta reguła umożliwia ruch SMB między podsieci procesów roboczych i serwera plików.  Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
 

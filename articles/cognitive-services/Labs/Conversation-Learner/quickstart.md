@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 02501cba75bd64d6a09fce671d2949759b5cd577
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 0990ae2c21017c0d6ff25478eb4b5e3bfb4f0d11
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207024"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251439"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Tworzenie modelu uczeń konwersacji za pomocą środowiska Node.js
 
@@ -78,26 +78,18 @@ Uczeń konwersacji projekt składa się z zestawu SDK, Dodaj do bota i usługi w
 
     Spowoduje to uruchomienie ogólnego bot pusty `cl-bot-01/src/app.ts`.
 
-3. Uczeń konwersacji uruchamiania interfejsu użytkownika:
-
-    ```bash
-    [open second command prompt window]
-    cd cl-bot-01
-    npm run ui
-    ```
-
-4. Otwórz przeglądarkę, aby http://localhost:5050 
+3. Otwórz przeglądarkę, aby http://localhost:3978
 
 Obecnie używasz uczeń konwersacji i można tworzyć i uczenie modelu uczeń konwersacji.  
 
 > [!NOTE]
-> Po uruchomieniu projektu uczeń konwersacji jest dostępna na zaproszenie.  Jeśli http://localhost:5050 pokazuje HTTP `403` błąd, to oznacza, że Twoje konto nie otrzymało zaproszenia.  Proszę [poproś o zaproszenie](https://aka.ms/conversation-learner-request-invite).
+> Po uruchomieniu projektu uczeń konwersacji jest dostępna na zaproszenie.  Jeśli http://localhost:3978/ui pokazuje HTTP `403` błąd, to oznacza, że Twoje konto nie otrzymało zaproszenia.  Proszę [poproś o zaproszenie](https://aka.ms/conversation-learner-request-invite).
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>W samouczkach, pokazy i przełączania się między botów
 
 Zgodnie z instrukcjami pracę ogólnego bot puste.  Uruchom samouczek lub pokaz bot zamiast tego:
 
-1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:5050/home.
+1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:3978/ui/home.
     
 2. Jeśli jest uruchomiony inny bot (takich jak `npm start` lub `npm run demo-pizza`), zatrzymaj ją.  Nie musisz zatrzymać proces interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
 
@@ -114,7 +106,7 @@ Zgodnie z instrukcjami pracę ogólnego bot puste.  Uruchom samouczek lub pokaz 
   npm run demo-storage
   ```
 
-4. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:5050/home. 
+4. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:3978/ui/home. 
 
 5. Kliknij pozycję "Importuj samouczki" i wybierz model pokaz w interfejsie użytkownika uczeń konwersacji, odpowiadającą wersję demonstracyjną, którego rozpoczęto.
 
@@ -122,7 +114,7 @@ Pokazy pliki źródłowe znajdują się w `cl-bot-01/src/demos`
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>Tworzenie botów, która zawiera kod zaplecza
 
-1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:5050/home.
+1. Jeśli masz uczeń konwersacji w sieci web, Otwórz interfejs użytkownika, wróć do listy modeli w http://localhost:3978/ui/home.
     
 2. Jeśli działa robota (takich jak `npm run demo-pizza`), zatrzymaj ją.  Nie musisz zatrzymać proces interfejsu użytkownika, lub zamknij przeglądarkę sieci web.
 
@@ -135,7 +127,7 @@ Pokazy pliki źródłowe znajdują się w `cl-bot-01/src/demos`
     npm start
     ```
 
-5. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:5050/home. 
+5. Jeśli nie wiesz jeszcze, przełącz się do uczeń konwersacji interfejsu użytkownika sieci web w przeglądarce Chrome, ładując http://localhost:3978/ui/home. 
 
 6. Utwórz nowy model uczeń konwersacji w interfejsie użytkownika, a następnie uruchom nauczania.
 

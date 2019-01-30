@@ -6,16 +6,16 @@ author: hirokib
 manager: jrj
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 09f3126725b9a2cd6a8277447c0eed4a16838429
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1f8c2590ea01e9a819ebdacd6b3774555dded800
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355516"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250844"
 ---
 # <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Portal SQL magazynu danych Striim Azure Marketplace oferuje Przewodnik instalacji
 
@@ -46,10 +46,10 @@ Otwiera inne okno wiersza polecenia lub użyj ssh narzędzia ssh do Striim klast
 Wykonaj następujące polecenia, aby przenieść plik jar JDBC do katalogu lib firmy Striim i uruchamianie i zatrzymywanie serwera.
 
    1. "sudo" su
-   2. TMP dysku CD
-   3. mV sqljdbc42.jar /opt/striim/lib
-   4. węzłami striim systemctl stop
-   5. danych striim stop systemctl-dbms
+   2. cd /tmp
+   3. mv sqljdbc42.jar /opt/striim/lib
+   4. systemctl stop striim-node
+   5. systemctl stop striim-dbms
    6. danych striim start systemctl-dbms
    7. węzeł striim systemctl początkowy
 

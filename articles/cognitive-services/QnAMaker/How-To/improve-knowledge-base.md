@@ -8,16 +8,16 @@ displayName: active learning, suggestion, dialog prompt, train api, feedback loo
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: da32d1e7a3cc9fc0c37418e24c1f1f270a104b09
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: cf652c1b0edd469f29d14ed10d66ebe78b0fbb7c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105664"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247837"
 ---
-# <a name="use-active-learning-to-improve-knowledge-base"></a>Umożliwia aktywne uczenie poprawić bazy wiedzy
+# <a name="use-active-learning-to-improve-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
 Aktywna nauka można poprawić jakość bazy wiedzy w postaci sugerowanych alternatywnych pytania, oparte na użytkownika — wiadomości, do Twojego pary pytań i odpowiedzi. Albo dodanie ich do istniejącego pytania lub odrzucenia ich przejrzenie tych propozycji. 
 
@@ -39,6 +39,10 @@ Podobnie zapytania są klastrowane, narzędzie QnA Maker sugeruje pytania oparte
 Aktywne uczenie jest wyzwalana, oparte na wyniki najważniejsze odpowiedzi kilka zwrócone przez narzędzie QnA Maker dla dowolnej podanej kwerendy. Różnice wynik leży w obrębie małe, a następnie zapytanie jest traktowane jako potencjalnie _sugestii_ dla wszystkich możliwych odpowiedzi. 
 
 Wszystkie sugestie są zgrupowane razem wg podobieństwa i najbardziej oczekiwanych alternatywne pytania są wyświetlane na podstawie częstotliwości określonej zapytań przez użytkowników końcowych. Aktywna nauka zapewnia najlepsze możliwe sugestie w przypadkach, gdzie punkty końcowe są objęte ilość uzasadnione i różne zapytania do użycia.
+
+## <a name="upgrade-version-to-use-active-learning"></a>Uaktualnij wersję na korzystanie z aktywnej nauki
+
+Aktywne uczenie jest obsługiwana w wersji środowiska uruchomieniowego 4.4.0 i nowszych. Jeśli wiedzy został utworzony we wcześniejszej wersji, [uaktualnienia usługi](upgrade-qnamaker-service.md) Aby użyć tej funkcji. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
@@ -152,7 +156,9 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
+Dowiedz się więcej o sposobie używania aktywne uczenie z [Azure Bot C# przykład](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+
 ## <a name="next-steps"></a>Kolejne kroki
  
 > [!div class="nextstepaction"]
-> [Użyj interfejsu API QnAMaker](./upgrade-qnamaker-service.md)
+> [Użyj usługi QnA Maker API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c5f5b43a96d5fad5d5f7737ef82585593cd05a7b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242164"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240662"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -73,7 +73,7 @@ Warstwy usług na dużą skalę jest przeznaczone głównie dla klientów, któr
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Jakie regiony obsługują obecnie na dużą skalę
 
-Na dużą skalę jest obecnie dostępna dla pojedynczych baz danych w następujących regionach: zachodnie US1, zachodnie stany USA 2, wschodnie US1, środkowe stany USA, Europa Zachodnia, Europa Północna, zachodnie Zjednoczone Królestwo, Azja południowo-wschodnia, Japonia Wschodnia, Korea środkowa, Australia Południowo-Wschodnia i Australia Wschodnia.
+Na dużą skalę jest obecnie dostępna dla pojedynczych baz danych w następujących regionach:  US1 Zachodnia, zachodnie stany USA 2, wschodnie US1, środkowe stany USA, Europa Zachodnia, Europa Północna, zachodnie Zjednoczone Królestwo, Azja południowo-wschodnia, Japonia Wschodnia, Korea środkowa, Australia Południowo-Wschodnia i Australia Wschodnia.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Można tworzyć wiele Hiperskali baz danych na każdym serwerze logicznym
 
@@ -98,7 +98,7 @@ Bazy danych SQL na dużą skalę oferuje szybką skalowalność, zależnie od po
 
 ## <a name="deep-dive-questions"></a>Szczegółowe omówienie pytania
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-logical-server"></a>Czy można mieszać w Hiperskali i pojedynczych baz danych Mój serwer logiczny
+### <a name="can-i-mix-hyperscale-and-single-databases-on-my-logical-server"></a>Na serwerze w sieci logicznej można łączyć w Hiperskali i pojedynczych baz danych
 
 Tak, możesz.
 
@@ -243,7 +243,7 @@ Nie. Baza danych SQL na dużą skalę jest architektura SMP i nie asymetrycznego
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>Co to jest najstarsze programu SQL Server wersji będą migracji obsługi bazy danych SQL na dużą skalę z
 
-Program SQL Server 2005. Aby uzyskać więcej informacji, zobacz [Przeprowadź migrację do pojedynczej bazy danych lub baza danych w puli](sql-database-cloud-migrate.md#migrate-to-a-single-database-or-a-pooled-database). W przypadku problemów ze zgodnością, zobacz [Rozwiązywanie problemów ze zgodnością migracji bazy danych](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues).
+SQL Server 2005. Aby uzyskać więcej informacji, zobacz [Przeprowadź migrację do pojedynczej bazy danych lub baza danych w puli](sql-database-cloud-migrate.md#migrate-to-a-single-database-or-a-pooled-database). W przypadku problemów ze zgodnością, zobacz [Rozwiązywanie problemów ze zgodnością migracji bazy danych](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues).
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>Baza danych SQL na dużą skalę obsługuje migrację z innych źródeł danych, takich jak Aurora, MySQL, Oracle, DB2 i innych platform bazy danych
 

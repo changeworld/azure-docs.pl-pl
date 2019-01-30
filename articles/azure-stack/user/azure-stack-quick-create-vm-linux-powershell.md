@@ -14,16 +14,17 @@ ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: a2dea792db39c753d0ea720c8e610a399401315f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: fd7dd06692e20eb0e7cc02af8d2f36c4dad8b597
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840575"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251932"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki Start: Tworzenie maszyny wirtualnej z systemem Linux server przy użyciu programu PowerShell w usłudze Azure Stack
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Szybki start: Tworzenie maszyny wirtualnej z systemem Linux server przy użyciu programu PowerShell w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Aby utworzyć maszynę wirtualną Ubuntu Server 16.04 LTS, należy za pomocą usługi Azure Stack PowerShell. Wykonaj kroki opisane w tym artykule, aby utworzyć maszynę wirtualną.  Ten artykuł zawiera również kroki, aby:
 

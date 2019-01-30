@@ -15,12 +15,13 @@ ms.topic: get-started-article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: shnatara
-ms.openlocfilehash: 46dd9c786fddb2f6ce9fb8a761a1b9f135a82d74
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/19/2018
+ms.openlocfilehash: c9288d47dc9df8604c7eb676ba5d93f91a6b0063
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959200"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245688"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Zmień właściciela subskrypcji użytkownika usługi Azure Stack
 
@@ -28,7 +29,7 @@ Operatorzy usługi Azure Stack można zmienić właściciela rozliczeń subskryp
 
 Istnieją dwa rodzaje *właścicieli* są przypisane do subskrypcji:
 
-- **Właściciel rozliczeń**: domyślnie rozliczeń właściciel jest konto użytkownika, który pobiera subskrypcji z oferty, a następnie należy relacja rozliczeń dla tej subskrypcji. To konto jest również administratorem subskrypcji. Tylko jedno konto użytkownika może mieć oznaczenie to w ramach subskrypcji. Właściciel rozliczeń jest często organizacji lub zespołu potencjalnego klienta. 
+- **Właściciel rozliczeń**: Domyślnie właściciel rozliczeń jest konto użytkownika, który pobiera subskrypcji z oferty, a następnie należy relacja rozliczeń dla tej subskrypcji. To konto jest również administratorem subskrypcji. Tylko jedno konto użytkownika może mieć oznaczenie to w ramach subskrypcji. Właściciel rozliczeń jest często organizacji lub zespołu potencjalnego klienta. 
 
   Możesz użyć polecenia cmdlet programu PowerShell [AzsUserSubscription zestaw](/powershell/module/azs.subscriptions.admin/set-azsusersubscription) można zmienić właściciela rozliczeń.  
 
@@ -46,7 +47,7 @@ Uruchom następujący skrypt, aby zmienić właściciela rozliczeń subskrypcji 
 Zastąp następujące wartości w skrypcie, zanim zostanie ona uruchomiona: 
  
 - **$ArmEndpoint**: Określ punkt końcowy usługi Resource Manager dla danego środowiska.  
-- **$TenantId**: Określ identyfikatora dzierżawy. 
+- **$TenantId**: Określanie identyfikatora dzierżawy. 
 - **$SubscriptionId**: Określ identyfikator subskrypcji.
 - **$OwnerUpn**: Określ konto jako **user@example.com** do dodania jako nowy właściciel rozliczeń.  
 

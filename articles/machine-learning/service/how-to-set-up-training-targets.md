@@ -7,16 +7,16 @@ author: heatherbshapiro
 ms.author: hshapiro
 ms.reviewer: sgilley
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1187460deff0ac1ec71ddc70e503169a728c8b5c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099955"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250711"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -97,7 +97,7 @@ Użyj celów obliczeń poniżej, aby skonfigurować te sekcje:
 
 1. **Tworzenie i dołączanie**: Nie ma potrzeby tworzenia lub dołączyć do korzystania z komputera lokalnego jako środowisko szkoleniowe obliczeniowego elementu docelowego.  
 
-1. **Konfigurowanie**:  Gdy komputer lokalny jest używany jako cel obliczenia, kod szkolenia jest uruchamiany swojej [środowisko programistyczne](how-to-configure-environment.md).  Jeśli środowisko już pakiety języka Python, czego potrzebujesz, za pomocą środowiska zarządzanego przez użytkownika.
+1. **Konfiguracja**:  Gdy komputer lokalny jest używany jako cel obliczenia, kod szkolenia jest uruchamiany swojej [środowisko programistyczne](how-to-configure-environment.md).  Jeśli środowisko już pakiety języka Python, czego potrzebujesz, za pomocą środowiska zarządzanego przez użytkownika.
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=run_local)]
 
@@ -144,7 +144,7 @@ Trwałe Azure obliczeniowego usługi Machine Learning mogą zostać ponownie uż
     
  Lub można tworzyć i dołączać trwałe zasobu obliczeniowego usługi Azure Machine Learning [w witrynie Azure portal](#portal-create).
 
-1. **Konfigurowanie**: Utwórz konfigurację uruchomieniową dla trwałego obliczeniowego elementu docelowego.
+1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla trwałego obliczeniowego elementu docelowego.
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
@@ -191,7 +191,7 @@ Użyj usługi Azure Data Science Virtual Machine (dsvm dystrybucji) jako maszyny
 
  Lub można dołączyć maszyny DSVM do swojego obszaru roboczego [przy użyciu witryny Azure portal](#portal-reuse).
 
-1. **Konfigurowanie**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeniowe DSVM. Platforma docker i narzędzia conda są używane do tworzenia i konfigurowania środowiska szkolenia na maszyny DSVM.
+1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeniowe DSVM. Platforma docker i narzędzia conda są używane do tworzenia i konfigurowania środowiska szkolenia na maszyny DSVM.
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
@@ -232,7 +232,7 @@ Usługa Azure HDInsight to popularne platformy do analizy danych big data. Ta pl
 
   Lub możesz dołączyć klastra HDInsight z obszarem roboczym [przy użyciu witryny Azure portal](#portal-reuse).
 
-1. **Konfigurowanie**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeniowych usługi HDI. 
+1. **Konfiguracja**: Utwórz konfigurację uruchomieniową dla elementu docelowego obliczeniowych usługi HDI. 
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 

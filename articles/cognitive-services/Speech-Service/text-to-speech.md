@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 7439a2c5466784a881e71649fa86a8e51d757957
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226421"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251558"
 ---
 # <a name="about-the-text-to-speech-api"></a>O interfejsie API zamiany tekstu na mowę
 
@@ -37,6 +37,9 @@ Scenariusze, w których mowy przyjmowana jest syntezy obejmują:
 ## <a name="voice-support"></a>Obsługa głosu
 
 Microsoft **zamiany tekstu na mowę** usługa oferuje ponad 75 głosów w ponad 45 języków i ustawień regionalnych. Aby zastosować te standard "czcionki głosowe", należy tylko określić nazwę głosu kilka innych parametrów, po wywołaniu interfejsu API REST usługi. Aby uzyskać więcej informacji na temat obsługiwanych języków, ustawień regionalnych i głosów, zobacz [obsługiwane języki](language-support.md#text-to-speech).
+
+> [!IMPORTANT]
+> Koszty się różnić w przypadku standardowych, niestandardowych i neuronowych głosów. Aby uzyskać więcej informacji, zobacz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="neural-voices"></a>Głosy neuronowych
 

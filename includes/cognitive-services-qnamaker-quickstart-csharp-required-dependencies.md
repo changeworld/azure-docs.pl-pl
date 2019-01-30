@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: include
 ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
-ms.openlocfilehash: c3081dc89740e4b97f773265ad598112e77af65f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b377f464b8a9ef421fb964d5b8fd6374987bec41
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266865"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250720"
 ---
 W górnej części pliku **Program.cs** zastąp pojedynczą instrukcję _using_ następującymi wierszami, aby dodać niezbędne zależności do projektu:
 

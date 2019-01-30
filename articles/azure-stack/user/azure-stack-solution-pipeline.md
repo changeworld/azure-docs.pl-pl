@@ -14,12 +14,13 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 984f6713445b53429758d616945a6e64245b42bc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 11/07/2018
+ms.openlocfilehash: 63d22aaa402c77b55591a15745b258cdd6f0ef0a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263224"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244355"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
 
@@ -166,7 +167,7 @@ W ramach konfiguracji punktu końcowego usługi, usługom DevOps platformy Azure
 
 ### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Przyznanie praw jednostki usługi do wdrażania zasobów w subskrypcji usługi Azure Stack
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje najlepsze uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje najlepsze uprawnień dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: wbudowane role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 Zakres można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład dodanie aplikacji do roli Czytelnik dla grupy zasobów oznacza, że może odczytywać, grupy zasobów i wszystkie jej zasoby.
 
@@ -261,14 +262,14 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
     ![Dodaj członka](media/azure-stack-solution-hybrid-pipeline/014_members_tab.png)
 
 5. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
-6. Wybierz **Zapisz zmiany**.
+6. Wybierz pozycję **Save changes** (Zapisz zmiany).
 7. W **grup usługi DevOps platformy Azure** listy wybierz **Administratorzy punktu końcowego**.
 
     ![Administratorzy NorthwindCloud punktu końcowego](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
 
 8. Na **członków** zaznacz **Dodaj**.
 9. W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
-10. Wybierz **Zapisz zmiany**.
+10. Wybierz pozycję **Save changes** (Zapisz zmiany).
 
 Teraz, gdy informacje o punkcie końcowym istnieje, usługom DevOps platformy Azure do połączenia usługi Azure Stack jest gotowe do użycia. Agenta kompilacji w usłudze Azure Stack pobiera instrukcje z usługom DevOps platformy Azure, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 
@@ -280,7 +281,7 @@ Możesz wykonać instrukcje w [tworzenia połączenia z usługą Azure Resource 
 
 Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
-| Name (Nazwa) | Przykład | Opis |
+| Name | Przykład | Opis |
 | --- | --- | --- |
 | Nazwa połączenia | Usługa Azure Stack w usłudze Azure AD | Nazwa połączenia. |
 | Środowisko | AzureStack | Nazwa środowiska. |
@@ -305,7 +306,7 @@ Najnowsza aktualizacja DevOps platformy Azure umożliwia tworzenie za pomocą je
 
 Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
-| Name (Nazwa) | Przykład | Opis |
+| Name | Przykład | Opis |
 | --- | --- | --- |
 | Nazwa połączenia | Azure Stack ADFS | Nazwa połączenia. |
 | Środowisko | AzureStack | Nazwa środowiska. |

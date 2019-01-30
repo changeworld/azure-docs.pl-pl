@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: a108d89ab3eb3cf9c7a729f14e3c88bf2b67b20b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5a646f83d3bd6a2c2824aef679f8a46e352f2263
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154103"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246936"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikacja Microsoft Authenticator — często zadawane pytania
 
@@ -47,6 +47,8 @@ Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a 
 |Otrzymuję błąd komunikacji między Apple Watch i Mój telefon. Co można zrobić, aby rozwiązać?|Ten błąd występuje, gdy ekran Obejrzyj przechodzi w stan uśpienia przed zakończeniem, komunikacji za pomocą telefonu.<br><br><b>W takim przypadku podczas instalacji:</b><br>Spróbuj uruchomić Instalatora ponownie, upewniając się zachować zegarku wznowione, dopóki ten proces odbywa się. W tym samym czasie Otwórz aplikację na telefon i Odpowiedz na wszystkie monity, które są wyświetlane.<br><br>Jeśli telefonie i obejrzyj nadal nie są komunikacji, możesz wypróbować następujące czynności:<ol><li>Wymuś Zamknij aplikację Microsoft Authenticator i otwórz go ponownie na telefonie iPhone.</li><li>Wymuś Zamknij aplikację pomocnika na Twoje Apple Watch.<ol><li> Otwórz aplikację Microsoft Authenticator Pomocnik w zegarku</li><li>Wciśnij przycisk po stronie do momentu **zamknięcia** pojawi się ekran.</li><li>Zwolnij przycisk po stronie, a następnie wciśnij klawisz korony cyfrowej, aby wymusić Zamknij aktywnych aplikacji.</li></ol></li><li>Wyłącz funkcję Bluetooth i sieci Wi-Fi dla telefonu i urządzenia Watch, a następnie ponownie je włączyć.</li><li>Uruchom ponownie urządzenia iPhone i urządzenia Watch.</li></ol><b>Jeśli tak się stanie, gdy próbujesz zatwierdzić powiadomienie:</b><br>Następnym razem użytkownik próbuje zatwierdzić powiadomienie na Twoje Apple Watch Zachowaj ekranu wznowione zakończenie żądania i posłuchaj dźwięk, który wskazuje, że było pomyślne.|
 |Dlaczego nie jest aplikacja Microsoft Authenticator pomocnika dla Apple Watch synchronizowanie lub pojawia się na Moje Obejrzyj?|Jeśli aplikacja nie jest wyświetlane na zegarku, spróbuj wykonać następujące czynności: <ol><li>Upewnij się, że urządzenia Watch działa systemu watchOS, 4.0 lub nowszy.</li><li>Ponownie Synchronizuj zegarka.</li></ol>|
 |Moja aplikacja pomocnika Apple Watch wystąpiła awaria. Czy mogę wysyłać możesz Moje dzienniki awarii dzięki którym możesz zbadać? |Musisz najpierw upewnij się, że został wybrany, aby udostępnić nam analizy. Jeśli jesteś użytkownikiem usługi TestFlight, już masz konta. W przeciwnym razie możesz przejść do **Ustawienia > Prywatność > Analytics** i zaznacz **udostępnianie urządzenia iPhone i analiza Obejrzyj** i **udziału z deweloperami aplikacji** opcje.<br><br>Po zarejestrowaniu się możesz odtworzyć awarii sieci, więc dzienniki awarii są automatycznie wysyłane do nas podczas analiz. Jednak jeśli nie można odtworzyć awarii sieci, można ręcznie skopiować pliki dzienników i wysyłać je do nas.<ol><li>Otwórz w aplikacji Watch na Twój telefon, przejdź do **Ustawienia > Ogólne**, a następnie kliknij przycisk **Analytics Obejrzyj kopiowania**.</li><li>Znaleźć odpowiedniego awarii w ramach **Ustawienia > Prywatność > Analytics > danych analitycznych**i ręcznie skopiować cały tekst.</li><li>Otwórz aplikację Microsoft Authenticator na telefonie i Wklej, który skopiowany tekst do **udziału z deweloperami aplikacji** pola tekstowego **Wyślij dzienniki** strony.</li></ol>|
+|Co to jest funkcja blokady aplikacji i w jaki sposób pomaga chronić mnie więcej?|Aby zachować bezpieczniejsze jednorazowe kodów dostępu, informacje o aplikacji i ustawień aplikacji, można włączyć funkcję blokady aplikacji w aplikacji Microsoft Authenticator. Włączanie blokady aplikacji z **ustawienia** ekranu aplikacji Microsoft Authenticator oznacza, że użytkownik zostanie zapytany do uwierzytelniania przy użyciu PIN lub biometrycznych, za każdym razem, gdy otworzysz aplikację Microsoft Authenticator. Funkcja ta zapewnia dodatkową ochronę, sposób zatwierdzenie powiadomienia w aplikacji Microsoft Authenticator nie ulegnie zmianie.<br><br>**Uwaga**<br>Po powrocie do aplikacji Microsoft Authenticator, uruchomione na urządzeniu z systemem Android w mniej niż 30 sekund, monit nie uwierzytelnić się ponownie.| 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d1225cb90d0eecddb5ec7eca56437b020be50c71
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.date: 01/29/2019
+ms.openlocfilehash: f1376e98dc1a018bd6c0b263939cecbc012d4815
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080835"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250776"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -138,7 +138,7 @@ Baza danych SQL dynamiczne maskowanie danych ogranicza ujawnianie poufnych danyc
 
 ### <a name="sql-vulnerability-assessment"></a>Ocena luk w zabezpieczeniach SQL
 
-[Ocena luk w zabezpieczeniach SQL](sql-vulnerability-assessment.md) można łatwo skonfigurować usługę, która może odnajdywać, śledzenie i ułatwić korygowanie potencjalnych luk w zabezpieczeniach bazy danych z celem aktywnie poprawy ogólnego stanu zabezpieczeń bazy danych. Ocena luk w zabezpieczeniach (VA) jest częścią oferty SQL zaawansowane Threat Protection (ATP), która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Ocena luk w zabezpieczeniach można uzyskać dostęp i zarządzane za pośrednictwem centralnej portal SQL ATP.
+[Ocena luk w zabezpieczeniach SQL](sql-vulnerability-assessment.md) można łatwo skonfigurować usługę, która może odnajdywać, śledzenie i ułatwić korygowanie potencjalnych luk w zabezpieczeniach bazy danych z celem aktywnie poprawy ogólnego stanu zabezpieczeń bazy danych. Ocena luk w zabezpieczeniach (VA) jest częścią oferty SQL zaawansowanych danych zabezpieczeń (AD) to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Ocena luk w zabezpieczeniach można uzyskać dostępu do i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
 
 ### <a name="data-discovery--classification"></a>Odnajdywanie i klasyfikacja danych
 

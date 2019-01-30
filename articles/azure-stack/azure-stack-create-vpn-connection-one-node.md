@@ -15,13 +15,14 @@ ms.topic: get-started-article
 ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: scottnap
+ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 65bf3d7eb84f4a4e6fe6d74bd08c41ba4d9dd637
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078906"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247225"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Tworzenie połączenia sieci VPN typu lokacja lokacja między dwiema sieciami wirtualnymi w różnych środowiskach Azure Stack Development Kit
 ## <a name="overview"></a>Przegląd
@@ -35,7 +36,7 @@ Na poniższym diagramie przedstawiono konfigurację połączenia jak powinien wy
 ### <a name="before-you-begin"></a>Przed rozpoczęciem
 Aby ukończyć konfigurację połączenia, upewnij się, że masz następujące elementy, przed rozpoczęciem:
 
-* Dwa serwery i inne wymagania wstępne, które spełniają wymagania sprzętowe usługi Azure Stack Development Kit, zgodnie z opisem w [Szybki Start: Azure Stack Development Kit oceny](azure-stack-deploy-overview.md). 
+* Dwa serwery i inne wymagania wstępne, które spełniają wymagania sprzętowe usługi Azure Stack Development Kit, zgodnie z opisem w [Szybki Start: Ocena usługi Azure Stack Development Kit](azure-stack-deploy-overview.md). 
 * [Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/) pakietu wdrożeniowego.
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Wdrażanie środowisk Azure Stack Development Kit
@@ -94,7 +95,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 1. Użyj konta dzierżawy do logowania do portalu użytkowników.
 2. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**.
 3. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
-4. Wybierz **sieć wirtualna**.
+4. Wybierz pozycję **Sieć wirtualna**.
 5. Dla **nazwa**, **przestrzeń adresowa**, **Nazwa podsieci**, i **zakres adresów podsieci**, użyj wartości, które są wyświetlane we wcześniejszej części sieci Tabela konfiguracji.
 6. W **subskrypcji**, pojawi się w subskrypcji, która została utworzona wcześniej.
 7. Aby uzyskać **grupy zasobów**, możesz utworzyć grupę zasobów lub jeśli już istnieje, wybrać **Użyj istniejącej**.
@@ -184,7 +185,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 1. Zaloguj się przy użyciu konta dzierżawy.
 2. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**.
 3. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
-4. Wybierz **sieć wirtualna**.
+4. Wybierz pozycję **Sieć wirtualna**.
 5. Użyj informacji znajdujących się wcześniej w tabeli konfiguracji sieci, aby zidentyfikować wartości dla środowiska POC2 **nazwa**, **przestrzeń adresowa**, **Nazwa podsieci**i **Zakres adresów podsieci**.
 6. W **subskrypcji**, pojawi się w subskrypcji, która została utworzona wcześniej.
 7. Aby uzyskać **grupy zasobów**, Utwórz nową grupę zasobów, lub jeśli już masz, wybierz **Użyj istniejącej**.
@@ -207,7 +208,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 3. Wybierz z listy zasobów sieciowych, **bramy sieci wirtualnej**.
 4. W **nazwa**, wprowadź **GW2**.
 5. Aby wybrać sieć wirtualną, wybrać **sieć wirtualna**. Następnie wybierz pozycję **VNET-02** z listy.
-6. Wybierz **publiczny adres IP**. Gdy **wybierz publiczny adres IP** zostanie otwarty blok wybierz **Utwórz nową**.
+6. Wybierz pozycję **Publiczny adres IP**. Gdy **wybierz publiczny adres IP** zostanie otwarty blok wybierz **Utwórz nową**.
 7. W **nazwa**, wprowadź **GW2-PiP**, a następnie wybierz pozycję **OK**.
 8. Domyślnie dla **typu sieci VPN**, **oparte na trasach** jest zaznaczone.
     Zachowaj **oparte na trasach** typu sieci VPN.

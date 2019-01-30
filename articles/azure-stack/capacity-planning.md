@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.openlocfilehash: ad76e19e324c29c277e72f1e93d2b505984b50ba
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.lastreviewed: 09/18/2018
+ms.openlocfilehash: 10a333e8521c781a223c767660ae6acaa1286929
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368825"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251830"
 ---
 # <a name="azure-stack-capacity-planning"></a>Planowanie pojemności platformy Azure w stos
 Podczas obliczania rozwiązanie usługi Azure Stack, istnieją opcje konfiguracji sprzętu, które mają bezpośredni wpływ na ogólną pojemność chmury Azure Stack. Są to klasyczne możliwości procesora CPU, pamięci gęstości, konfiguracji magazynu i ogólną skalowania rozwiązania lub liczby serwerów. W przeciwieństwie do rozwiązania tradycyjną wirtualizację proste operacje arytmetyczne na tych składników w celu ustalenia pojemności do wykorzystania nie ma zastosowania. Pierwszym powodem tego jest, że usługi Azure Stack została zaprojektowana do obsługi składników infrastruktury ani zarządzania w obrębie samego rozwiązania. Drugi przyczyna jest część pojemności tego rozwiązania jest zarezerwowana w odniesieniu do odporności; Aktualizowanie oprogramowania rozwiązania w sposób, aby zminimalizować zakłócenia obciążenia dzierżaw.

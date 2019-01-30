@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 13483333c2135f858191f62b255e2887c0e61f01
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: data-lake-storage-gen2
+ms.openlocfilehash: 967e24ae6e004fe6ce2b1c0aa6c039f46be2598c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975305"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244508"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Gen2 — wersja zapoznawcza hierarchiczne — przestrzeń nazw
 
@@ -23,11 +23,11 @@ Mechanizm klucza, który umożliwia usługi Azure Data Lake Gen2 — wersja zapo
 
 Następujące korzyści są skojarzone z systemami plików, które implementują hierarchicznej przestrzeni nazw za pośrednictwem danych obiektów blob:
 
-- **Manipulowanie Atomic katalogu:** magazyny obiektów w przybliżeniu hierarchii katalogów przez przyjęcie Konwencji osadzania ukośnikami (/) w nazwie obiektu do określenia segmentów ścieżki. Gdy ta Konwencja działa w przypadku organizowania obiektów, Konwencji zapewnia nie pomocy dla akcji, takich jak przenoszenie, zmiana nazwy lub usuwanie katalogów. Bez rzeczywistego katalogów aplikacji musi przetworzyć potencjalnie milionów poszczególne obiekty BLOB do osiągnięcia poziomie katalogu zadania. Z kolei hierarchicznej przestrzeni nazw przetwarza te zadania, aktualizując pojedynczy wpis (katalog nadrzędny).
+- **Manipulowanie Atomic katalogu:** Magazyny obiektów określenie w przybliżeniu hierarchii katalogów przez przyjęcie Konwencji osadzania ukośnikami (/) w nazwie obiektu do określenia segmentów ścieżki. Gdy ta Konwencja działa w przypadku organizowania obiektów, Konwencji zapewnia nie pomocy dla akcji, takich jak przenoszenie, zmiana nazwy lub usuwanie katalogów. Bez rzeczywistego katalogów aplikacji musi przetworzyć potencjalnie milionów poszczególne obiekty BLOB do osiągnięcia poziomie katalogu zadania. Z kolei hierarchicznej przestrzeni nazw przetwarza te zadania, aktualizując pojedynczy wpis (katalog nadrzędny).
 
     Optymalizacja znaczne jest szczególnie istotne dla wielu platform analizy danych big data. Narzędzia, takie jak Hive, Spark, itp. często zapisywać dane wyjściowe do tymczasowej lokalizacji, a następnie zmień nazwę lokalizacji podczas kończenia zadania. Bez hierarchicznej przestrzeni nazw to zmiana nazwy często może trwać dłużej, niż analizami przetworzyć sam. Mniejsze opóźnienia i zadania jest równa niższy całkowity koszt posiadania (TCO) dla obciążeń analitycznych.
 
-- **Styl interfejsu znanych:** systemy plików są dobrze zrozumiałe przez programistów i użytkowników. Istnieje nie musisz uczyć się nowego modelu magazynu po przeniesieniu do chmury, interfejsu systemu plików, które są udostępniane przez Data Lake Storage Gen2 jest tego samego modelu, używany przez komputery, małych i dużych.
+- **Styl znany interfejs:** Systemy plików są dobrze zrozumiałe przez programistów i użytkowników. Istnieje nie musisz uczyć się nowego modelu magazynu po przeniesieniu do chmury, interfejsu systemu plików, które są udostępniane przez Data Lake Storage Gen2 jest tego samego modelu, używany przez komputery, małych i dużych.
 
 Jest jednym z powodów, że magazyny obiektów nie ma w przeszłości obsługiwane hierarchiczne przestrzenie nazw, że hierarchiczne przestrzenie nazw ograniczone skali. Jednak Data Lake Storage Gen2 hierarchicznej przestrzeni nazw jest skalowana liniowo i nie zmniejsza pojemnością danych lub wydajnością.
 

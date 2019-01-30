@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/16/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 98a1235532ec4cc225ac6a5117265e145b21034b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 11/16/2018
+ms.openlocfilehash: be537d9598eeda902254e56a9202415f4f498d93
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245176"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245137"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Dodawanie obrazów systemu Linux w usłudze Azure Stack
 
@@ -42,7 +43,7 @@ Agent systemu Linux platformy Azure (zazwyczaj nazywany `WALinuxAgent` lub `wali
 Można przygotować własnego obrazu systemu Linux przy użyciu następujących instrukcji:
 
 * [Dystrybucje systemu centOS](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Debian systemu Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
 * [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Serwer Ubuntu](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

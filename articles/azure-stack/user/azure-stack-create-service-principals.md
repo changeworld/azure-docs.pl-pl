@@ -13,12 +13,13 @@ ms.workload: na
 ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 4c205055239b7bf16bbb73448c21818de419e623
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/12/2018
+ms.openlocfilehash: 6ac5a44f941f8ebcecc3a1d7e6b5e9dccf5704de
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715835"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242216"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Udzielić aplikacji dostępu do zasobów usługi Azure Stack, tworząc jednostki usługi
 
@@ -98,7 +99,7 @@ Aby uzyskać więcej informacji na temat tworzenia jednostki usługi, zobacz [Tw
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Przypisywanie nazwy głównej usługi do roli
 
-Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: Wbudowane role](../../role-based-access-control/built-in-roles.md).
+Aby uzyskać dostęp do zasobów w ramach subskrypcji, należy przypisać aplikacji do roli. Zdecyduj, rolę, która reprezentuje odpowiednie uprawnienia dla aplikacji. Aby dowiedzieć się więcej na temat dostępnych ról, zobacz [RBAC: wbudowane role](../../role-based-access-control/built-in-roles.md).
 
 >[!NOTE]
 Zakres roli można ustawić na poziomie subskrypcji, grupy zasobów lub zasobu. Uprawnienia są dziedziczone na niższych poziomach zakresu. Na przykład aplikacji za pomocą roli Czytelnik dla grupy zasobów oznacza, że aplikacja może odczytywać zasoby w grupie zasobów.

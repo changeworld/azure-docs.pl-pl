@@ -16,12 +16,13 @@ ms.custom: ''
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.lastreviewed: 09/10/2018
+ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716030"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247735"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Wdrażanie ASDK z wiersza polecenia
 ASDK jest środowiskiem środowisk testowych i programistycznych, które można wdrożyć do oceny i zademonstrowania funkcji usługi Azure Stack i usług. Jego skonfigurowaniu i uruchomieniu należy przygotować środowisko sprzętu i uruchomić niektóre skrypty (będzie to potrwać kilka godzin). Po tym można Zaloguj się do portali administratora i użytkownika Aby rozpocząć korzystanie z usługi Azure Stack.
@@ -105,7 +106,7 @@ Aby wdrożyć zestaw development kit **jako dostawcy tożsamości za pomocą us�
 
 W przypadku wdrożeń usług AD FS sygnatury domyślnej usługi katalogowej jest używany jako dostawcy tożsamości. Domyślne konto do zalogowania to azurestackadmin@azurestack.local, a hasło zostanie ustawione na podana jako część polecenia Instalatora programu PowerShell.
 
-Proces wdrażania może potrwać kilka godzin, w tym czasie system automatycznie ponownie uruchamia jeden raz. Po pomyślnym zakończeniu wdrożenia konsoli programu PowerShell Wyświetla: **ZAKOŃCZONE: Akcja "Wdrożenie"**. Jeśli wdrożenie zakończy się niepowodzeniem, można spróbować uruchomić skrypt ponownie, używając - Uruchom ponownie parametru. Można też [ponownie wdrożyć ASDK](asdk-redeploy.md) od podstaw.
+Proces wdrażania może potrwać kilka godzin, w tym czasie system automatycznie ponownie uruchamia jeden raz. Po pomyślnym wdrożeniu Wyświetla konsoli programu PowerShell: **NALEŻY WYKONAĆ: Akcja "Wdrożenie"**. Jeśli wdrożenie zakończy się niepowodzeniem, można spróbować uruchomić skrypt ponownie, używając - Uruchom ponownie parametru. Można też [ponownie wdrożyć ASDK](asdk-redeploy.md) od podstaw.
 
 > [!IMPORTANT]
 > Jeśli chcesz monitorować postęp wdrażania, po ponownym uruchomieniu hosta ASDK, musisz zarejestrować się jako AzureStack\AzureStackAdmin. Jeśli rejestrujesz się jako administrator lokalny po komputer-host jest ponownie uruchomiona (i przyłączone do domeny azurestack.local), nie będzie wyświetlany postęp wdrożenia. Ponownie uruchom wdrożenie, nie zamiast tego zaloguj się jako azurestack można sprawdzić, czy jest uruchomiona.
@@ -139,9 +140,9 @@ Jeśli Twoje środowisko nie ma włączony protokół DHCP, należy uwzględnić
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>Parametry opcjonalne ASDK InstallAzureStackPOC.ps1
 |Parametr|Wymagane/opcjonalne|Opis|
 |-----|-----|-----|
-|AdminPassword|Wymagane|Ustawia konta administratora lokalnego i innych kont użytkowników na wszystkich maszynach wirtualnych utworzonych jako część wdrożenia zestawu rozwoju. To hasło musi być zgodna bieżące hasło administratora lokalnego na hoście.|
-|InfraAzureDirectoryTenantName|Wymagane|Określa katalog dzierżawy. Ten parametr umożliwia określenie katalogu, gdzie konto usługi AAD ma uprawnienia do zarządzania wieloma katalogami. Pełna nazwa dzierżawy katalogu usługi AAD w formacie. onmicrosoft.com lub usługi Azure AD należy zweryfikować niestandardowej nazwy domeny.|
-|TimeServer|Wymagane|Użyj tego parametru, aby określić serwer określony czas. Ten parametr musi zostać podana jako adres IP serwera prawidłową godzinę. Nazwy serwerów nie są obsługiwane.|
+|AdminPassword|Wymagany|Ustawia konta administratora lokalnego i innych kont użytkowników na wszystkich maszynach wirtualnych utworzonych jako część wdrożenia zestawu rozwoju. To hasło musi być zgodna bieżące hasło administratora lokalnego na hoście.|
+|InfraAzureDirectoryTenantName|Wymagany|Określa katalog dzierżawy. Ten parametr umożliwia określenie katalogu, gdzie konto usługi AAD ma uprawnienia do zarządzania wieloma katalogami. Pełna nazwa dzierżawy katalogu usługi AAD w formacie. onmicrosoft.com lub usługi Azure AD należy zweryfikować niestandardowej nazwy domeny.|
+|TimeServer|Wymagany|Użyj tego parametru, aby określić serwer określony czas. Ten parametr musi zostać podana jako adres IP serwera prawidłową godzinę. Nazwy serwerów nie są obsługiwane.|
 |InfraAzureDirectoryTenantAdminCredential|Optional (Opcjonalność)|Ustawia nazwę użytkownika usługi Azure Active Directory i hasło. Te poświadczenia platformy Azure musi być identyfikatorem organizacji.|
 |InfraAzureEnvironment|Optional (Opcjonalność)|Wybierz środowisko platformy Azure, z którym chcesz zarejestrować tego wdrożenia usługi Azure Stack. Opcje obejmują publicznej platformy Azure, Azure — Chiny, Azure — instytucje rządowe USA.|
 |DNSForwarder|Optional (Opcjonalność)|Serwer DNS jest tworzona jako część wdrożenia usługi Azure Stack. Aby zezwolić komputerom wewnątrz rozwiązania do rozpoznawania nazw poza sygnatury, podaj istniejącej infrastruktury serwera DNS. Serwer DNS w sygnatury przekazuje żądania rozpoznania nieznanej nazwy do tego serwera.|

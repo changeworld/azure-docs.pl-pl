@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 632cf506477bdc6f35c66a473963168f81e22351
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 03/20/2018
+ms.openlocfilehash: 9288ffa406b0e5765b35fa9b23aa13dee5754e9a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971899"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240033"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>Usługa App Service w usłudze Azure Stack update — informacje o wersji 1
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Tych informacjach o wersji opisano ulepszeń i poprawek w usłudze Azure App Service, Azure Stack Update 1 i znanych problemach. Znane problemy są podzielone na problemy z bezpośrednio do wdrożenia, proces aktualizacji i problemy z kompilacją (po instalacji).
 
@@ -202,10 +203,10 @@ Zamiany gniazda witryny jest przerywana w tej wersji. Aby przywrócić funkcjona
 
 Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
 
-- Źródło: wszystkie
+- Źródło: Dowolne
 - Zakres portów źródłowych: *
 - Miejsce docelowe: Adresy IP
-- Docelowy zakres adresów IP: zakres adresów IP dla serwera plików
+- Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
 - Zakres portów docelowych: 445
 - Protokół: TCP
 - Akcja: Zezwalaj

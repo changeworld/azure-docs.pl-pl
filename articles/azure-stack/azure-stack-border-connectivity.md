@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 51f9d2dbc8a0aef6dc84e76755a71eeb73149192
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: 3681d583760be2ca537559e334c2facdeeb373db
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262748"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55240390"
 ---
 # <a name="border-connectivity"></a>Łączność obramowania 
 Planowanie integracji sieci jest ważnego wymagania wstępnego pomyślne wdrożenie systemów zintegrowanych w usłudze Azure Stack, operacji i zarządzania. Planowanie łączności obramowania rozpoczyna się przez wybranie, czy nie używają routingu dynamicznego przy użyciu protokołu border gateway protocol (BGP). Wymaga to przypisanie 16-bitowy numer systemu autonomicznego BGP (publicznym lub prywatnym) lub przy użyciu routingu statycznego, gdy domyślnej trasy statycznej jest przypisany do urządzeń obramowania.

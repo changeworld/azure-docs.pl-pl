@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 4fcc38d34dd645ddb62acce4577fa145c517684b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097892"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247820"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Informacje o wersji dotyczące weryfikacji jako usługa
 

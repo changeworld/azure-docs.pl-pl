@@ -6,18 +6,18 @@ services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: b098ce78143cbcfd53d6ab1c7e4127df336f2bc4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 02d0afd18ad966baf8954ae5add180c970fe302e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212039"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247412"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -248,7 +248,7 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
 1. Tworzenie [klastra usługi Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) z następującymi ustawieniami:
 
-    | Ustawienie | Value |
+    | Ustawienie | Wartość |
     |----|---|
     | Nazwa klastra | yourclustername |
     | Środowisko uruchomieniowe usługi Databricks | Środowisko uruchomieniowe żadnych innych ML (innego niż ML 4.x, 5.x) |
@@ -257,7 +257,7 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
     Użyj tych ustawień, tylko wtedy, gdy będziesz używać uczenia maszynowego automatyczne w usłudze Databricks:
     
-    |   Ustawienie | Value |
+    |   Ustawienie | Wartość |
     |----|---|
     | Typy maszyn wirtualnych na węzeł procesu roboczego | Preferowane maszyny Wirtualnej zoptymalizowane pod kątem pamięci |
     | Włączanie skalowania automatycznego | Usuń zaznaczenie pola wyboru |
@@ -271,13 +271,13 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
     * [Utworzyć bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library) przy użyciu jednego z tych ustawień (_wybierz tylko jeden z tych opcji_):
     
         * Aby zainstalować zestaw SDK usługi Azure Machine Learning _bez_ zautomatyzowane machine learning możliwości:
-            | Ustawienie | Value |
+            | Ustawienie | Wartość |
             |----|---|
             |Element źródłowy | Przekaż Python Egg lub PyPI
             |Nazwa PyPi | azureml-sdk[databricks]
     
         * Aby zainstalować zestaw SDK usługi Azure Machine Learning _z_ automatyczne usługi machine learning:
-            | Ustawienie | Value |
+            | Ustawienie | Wartość |
             |----|---|
             |Element źródłowy | Przekaż Python Egg lub PyPI
             |Nazwa PyPi | azureml-sdk[automl_databricks]

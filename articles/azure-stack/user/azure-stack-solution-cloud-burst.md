@@ -14,12 +14,13 @@ ms.topic: tutorial
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 800e41fe26cb58840c7371606ed746c149f7024d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: a8c4ef5df586c87862ea8e1634e9a72356401d0b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304146"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247429"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Samouczek: Tworzenie rozwiązań skalowania wielu chmur przy użyciu platformy Azure
 
@@ -246,7 +247,7 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 
 5.  W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
 
-6.  Wybierz **Zapisz zmiany**.
+6.  Wybierz pozycję **Save changes** (Zapisz zmiany).
 
 7.  W **grupy usługi VSTS** listy wybierz **Administratorzy punktu końcowego**.
 
@@ -254,7 +255,7 @@ Tworząc punktów końcowych, kompilacja programu Visual Studio Online (Narzędz
 
 9.  W **dodanie użytkowników i grup**, wprowadź nazwę użytkownika i wybierz użytkownika z listy użytkowników.
 
-10. Wybierz **Zapisz zmiany**.
+10. Wybierz pozycję **Save changes** (Zapisz zmiany).
 
 Teraz, gdy informacje o punkcie końcowym istnieje, potoki platformy Azure do połączenia usługi Azure Stack jest gotowe do użycia. Agent kompilacji w usłudze Azure Stack pobiera instrukcje z potoki usługi Azure, a następnie agenta umożliwia przekazywanie informacji o punkcie końcowym komunikacji z usługą Azure Stack.
 

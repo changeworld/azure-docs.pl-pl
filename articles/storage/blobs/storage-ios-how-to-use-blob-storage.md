@@ -8,13 +8,13 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
-ms.component: blobs
-ms.openlocfilehash: be9254686eeb285fb4f0a5e29ba60023abee84ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: blobs
+ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961930"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244766"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak używać magazynu obiektów Blob z poziomu systemu iOS
 
@@ -28,7 +28,7 @@ Aby dowiedzieć się więcej o usłudze Blob storage, zobacz [wprowadzenie do us
 Możesz zaimportować biblioteki usługi Azure Storage z systemem iOS do aplikacji za pomocą [CocoaPod magazynu Azure](https://cocoapods.org/pods/AZSClient) lub importując **Framework** pliku. CocoaPod jest zalecany, ponieważ ułatwia integrowanie było prostsze, ale importowania z pliku framework jest płynniejsza dla istniejącego projektu biblioteki.
 
 Aby użyć tej biblioteki, potrzebne są następujące elementy:
-- iOS 8 +
+- iOS 8+
 - Xcode 7 +
 
 ## <a name="cocoapod"></a>CocoaPod
@@ -129,9 +129,9 @@ Możesz potwierdzić, że to działa, analizując [Microsoft Azure Storage Explo
 ## <a name="set-container-permissions"></a>Ustaw uprawnienia do kontenera
 Kontener uprawnienia są skonfigurowane dla **prywatnej** dostępu domyślnie. Jednak kontenery zapewniają kilka różnych opcji dla dostępu do kontenera:
 
-* **Prywatne**: kontenerów i obiektów blob dane mogą być odczytywane tylko właściciel konta.
-* **Obiekt blob**: danych obiektów Blob w ramach tego kontenera, można je odczytać za pomocą żądania od użytkowników anonimowych, ale kontenera dane są niedostępne. Klienci nie można wyliczyć obiektów blob w kontenerze za pomocą żądania od użytkowników anonimowych.
-* **Kontener**: kontenerów i obiektów blob, dane mogą być odczytywane za pośrednictwem żądania od użytkowników anonimowych. Klientów można wyliczyć obiektów blob w kontenerze za pomocą żądania od użytkowników anonimowych, ale nie można wyliczyć kontenerów na koncie magazynu.
+* **Prywatne**: Dane kontenera i obiektów blob mogą być odczytywane tylko właściciel konta.
+* **Obiekt blob**: Danych obiektów blob w ramach tego kontenera, można je odczytać za pomocą żądania od użytkowników anonimowych, ale kontenera dane są niedostępne. Klienci nie można wyliczyć obiektów blob w kontenerze za pomocą żądania od użytkowników anonimowych.
+* **kontener**: Dane kontenera i obiektów blob mogą być odczytywane za pośrednictwem żądania od użytkowników anonimowych. Klientów można wyliczyć obiektów blob w kontenerze za pomocą żądania od użytkowników anonimowych, ale nie można wyliczyć kontenerów na koncie magazynu.
 
 Poniższy przykład pokazuje jak utworzyć kontener z **kontenera** dostęp do uprawnień, które pozwoli na dostęp publiczny, tylko do odczytu dla wszystkich użytkowników w Internecie:
 
@@ -216,12 +216,12 @@ Poniższy przykład ilustruje sposób wyświetlenia listy wszystkich obiektów b
 * **prefiks** — można określić prefiks używany dla listy obiektów blob. Zostaną wyświetlone tylko te obiekty BLOB, które zaczynają się od tego prefiksu.
 * **useFlatBlobListing** — zgodnie z opisem w [nazewnictwo i odwoływanie się do kontenerów i obiektów blob](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) sekcji, chociaż usługi obiektów Blob jest schemat prostego magazynu można utworzyć wirtualnego hierarchii za pomocą nazw obiektów blob przy użyciu ścieżki informacje. Jednak bez płaskiej listy nie jest obecnie obsługiwane. Ta funkcja będzie dostępna wkrótce. Na razie ta wartość powinna być **tak**.
 * **blobListingDetails** — można określić elementów do uwzględnienia podczas wyświetlania listy obiektów blob
-  * _AZSBlobListingDetailsNone_: wyświetlanie tylko zatwierdzone obiektów blob i zwraca metadane obiektu blob.
-  * _AZSBlobListingDetailsSnapshots_: wyświetlanie listy obiektów blob zatwierdzone i migawek obiektów blob.
-  * _AZSBlobListingDetailsMetadata_: Pobierz metadane obiektu blob dla każdego obiektu blob zwrócony na liście.
-  * _AZSBlobListingDetailsUncommittedBlobs_: wyświetlanie listy obiektów blob zatwierdzone i niezatwierdzone.
-  * _AZSBlobListingDetailsCopy_: obejmują kopiowania właściwości na liście.
-  * _AZSBlobListingDetailsAll_: wyświetlić listę wszystkich dostępnych zatwierdzone obiektów blob, niezatwierdzone obiektów blob i migawek i zwracać wszystkie stany metadanych i kopii tych obiektów blob.
+  * _AZSBlobListingDetailsNone_: Wyświetlanie listy jedynie zatwierdzone obiektów blob, a nie zwracają metadane obiektu blob.
+  * _AZSBlobListingDetailsSnapshots_: Wyświetlanie listy obiektów blob zatwierdzone i migawek obiektów blob.
+  * _AZSBlobListingDetailsMetadata_: Pobierz metadane obiektu blob dla każdego obiektu blob są zwracane na liście.
+  * _AZSBlobListingDetailsUncommittedBlobs_: Wyświetlanie listy obiektów blob zatwierdzone i niezatwierdzone.
+  * _AZSBlobListingDetailsCopy_: Właściwości kopiowania są uwzględniane na liście.
+  * _AZSBlobListingDetailsAll_: Lista wszystkich dostępnych zatwierdzone obiektów blob, niezatwierdzone obiektów blob i migawek i zwracać wszystkie stany metadanych i kopii tych obiektów blob.
 * **maxResults** — maksymalna liczba wyników do zwrócenia dla tej operacji. Użyj wartości -1 nie ustawić limit.
 * **completionHandler** — blok kodu do wykonania z wynikami Operacja tworzenia listy.
 

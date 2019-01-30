@@ -14,16 +14,17 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 8fe7f0ddd630cfca0242af6cc1d728bdef163352
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.lastreviewed: 08/16/2018
+ms.openlocfilehash: 10d7303c4323305e177cf006b9a259a817dc695e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055421"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247480"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Włącz usługę Backup infrastruktury za pomocą programu Windows PowerShell więc warto poświęcić okresowe kopie zapasowe:
  - Wewnętrzny tożsamości usługi i certyfikatu głównego
