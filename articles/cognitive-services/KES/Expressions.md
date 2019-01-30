@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: bdde2dfc9ab8e8ffdf7123c916538a8c98ecfce9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 335bcc025d2f3e972a02234da89e35c90c91afeb
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129171"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222700"
 ---
 # <a name="structured-query-expression"></a>Wyrażenia zapytań ze strukturą
 
@@ -29,17 +29,17 @@ Wyrażenia zapytań strukturalnych, które mogą być uzyskane z [ *interpretacj
 
 Wyrażenie zapytania atrybut identyfikuje zestaw obiektów, w oparciu o dopasowanie względem określonego atrybutu.  Różne pasujących operacji są obsługiwane w zależności od typu atrybutu i indeksowanej operacji określone w [schematu](SchemaFormat.md):
 
-| Typ | Operacja | Przykłady |
+| Type | Operacja | Przykłady |
 |------|-------------|------------|
 | Ciąg | równa się | Title = "ukryte analizy semantycznej" (canonical + synonimy) |
 | Ciąg | równa się | Author.Name=='susan t dumais (canonical tylko)|
 | Ciąg | starts_with | Title = "ukryte s"... |
 | Int32/Int64/podwójnej precyzji | równa się | Roku = 2000 |
 | Int32/Int64/podwójnej precyzji | starts_with | Rok = "20"... (wartości dziesiętnej począwszy od "20") |
-| Int32/Int64/podwójnej precyzji | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(zawiera tylko lewej granicy, wartość: 2010, 2011)* <br/> Rok = [2000,2012] *(obejmuje zarówno wartości graniczne: 2010, 2011, 2012)* |
-| Date | równa się | Data urodzenia = "1984-05-14" |
+| Int32/Int64/podwójnej precyzji | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(zawiera tylko lewej granicy, wartość: 2010, 2011)* <br/> Rok = [2000,2012] *(obejmuje zarówno wartości granic: 2010, 2011, 2012)* |
+| Date | równa się | BirthDate='1984-05-14' |
 | Date | is_between | Data urodzenia&lt;= "2008/03/14' <br/> PublishDate = ["01-01-2000", "2009-12-31'] |
-| Identyfikator GUID | równa się | ID = "602DD052-CC47-4B23-A16A-26B52D30C05B" |
+| Identyfikator GUID | równa się | Id='602DD052-CC47-4B23-A16A-26B52D30C05B' |
 
 
 Na przykład, wyrażenie "Title ="ukryte s"..." dopasowuje wszystkie publikacje typu akademickich, których tytuł zaczyna się od ciągu "ukryte s".  Aby można było obliczyć to wyrażenie, atrybut tytułu należy określić operację "starts_with" w schemacie, używany do tworzenia indeksu.

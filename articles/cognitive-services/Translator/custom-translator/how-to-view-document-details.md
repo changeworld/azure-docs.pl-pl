@@ -5,18 +5,18 @@ description: Na stronie listy dokumentów zawiera 10 pierwszych dokumentu w obsz
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: how to edit a model
-ms.openlocfilehash: fe108831f173eb31af79a2f8e5f7faf57015c38a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e656c6dd7050851eb9885fe253ab29f4e3675216
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627630"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219808"
 ---
-# <a name="view-document-details"></a>Wyświetl szczegóły dokumentu
+# <a name="view-document-details"></a>Wyświetlanie szczegółów dokumentu
 
 Na stronie listy dokumentów zawiera 10 pierwszych dokumentu w obszarze roboczym. Dla każdego z dokumentów wyświetla nazwę, parowania, typu, języka, sygnaturę czasową przekazywania i adres e-mail użytkownika, który przekazywane dokumentu.
 

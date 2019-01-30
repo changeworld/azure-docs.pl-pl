@@ -6,16 +6,16 @@ services: cognitive-services
 author: slivkins
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: 3d9b87241946a04ae71fabde9958b24ad626c0db
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 3476c353a2b5c5eeaaa7406712bebd178ac5c1e7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227747"
 ---
 # <a name="api"></a>Interfejs API
 
@@ -58,7 +58,7 @@ callback({
                  {"id":"<A2>","lastRefresh":"2017-04-30T22:34:25.3401438Z"}]});
 ```
 
-Następnie wykonuje ten ciąg jako wywołanie w przeglądarce `callback()` funkcji.
+Następnie przeglądarka wykonuje ten ciąg jako wywołanie funkcji `callback()`.
 
 Parametr do funkcji wywołania zwrotnego w powyższym przykładzie jest zgodny z następującym schematem:
 
@@ -144,7 +144,7 @@ W tym miejscu `data` jest argumentem `callback()` działać zgodnie z wcześniej
 Tylko do celów testowych, można wywołać interfejsu API programu nagradzania za pośrednictwem [cURL](https://en.wikipedia.org/wiki/CURL):
 
 ```sh
-curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST -d 1 -H "Content-Type: application/json"
+curl -v https://ds.microsoft.com/api/v2/<appId>/reward/<eventId> -X POST -d 1 -H "Content-Type: application/json"
 ```
 
 Oczekiwany efekt jest odpowiedź HTTP 200 (OK). Możesz zobaczyć nagradzania 1 dla tego zdarzenia w dzienniku, (Jeśli klucz konta magazynu platformy Azure została dostarczona w portalu).

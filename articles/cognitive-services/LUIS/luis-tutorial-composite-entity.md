@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 18a32f5e07470f71ba276fbe3a2633150b1bf188
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43d72b88c96b45939cb394a26881b1272e250819
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754668"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217258"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Samouczek: Grupowanie i wyodrębnianie powiązanych danych
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
@@ -33,7 +33,7 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Importuj przykładową aplikację
+> * Importowanie aplikacji przykładowej
 > * Tworzenie intencji
 > * Dodawanie jednostki złożonej 
 > * Szkolenie
@@ -42,7 +42,7 @@ Złożone jednostki jest odpowiednia dla danych tego typu, ponieważ dane:
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Importuj przykładową aplikację
+## <a name="import-example-app"></a>Importowanie aplikacji przykładowej
 
 1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/build-app/tutorial_list.json) z samouczka jednostki listy.
 
@@ -60,8 +60,8 @@ Przykład wypowiedzi konwersji między innymi:
 
 |Przykładowe wypowiedzi|
 |--|
-|Przenieś Jan Kowalski W. do działu księgowości|
-|Transfer Jill Jones z języka R & D|
+|Move John W. Smith to the accounting department (Przenieś Johna W. Smitha do działu księgowości)|
+|Transfer Jill Jones from to R&D (Przenieś Jill Jones z do zespołu badawczo-rozwojowego)|
  
 Żądanie przeniesienia powinien zawierać nazwę działu i nazwiska pracownika. 
 
@@ -104,15 +104,15 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. Sprawdź, czy wszystkie wypowiedzi w celem są oznaczone etykietami z jednostką złożonego. 
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uczenie aplikacji, dzięki czemu można przetestować zmiany do intencji 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trenowanie aplikacji w celu umożliwienia testowania zmian w intencji 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikowanie aplikacji, więc uczony model jest odpytywalny z punktu końcowego
+## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Publikowanie aplikacji w celu umożliwienia wysyłania zapytań z punktu końcowego do trenowanego modelu
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Pobierz prognozowania intencji i jednostki z punktu końcowego 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Pobieranie przewidywania intencji i jednostek z punktu końcowego 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -192,9 +192,9 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 * [Samouczek jednostki](luis-quickstart-intents-only.md)
 * [Złożone jednostki](luis-concept-entity-types.md) informacje koncepcyjne
-* [Sposób trenowania](luis-how-to-train.md)
+* [Jak trenować](luis-how-to-train.md)
 * [Jak opublikować](luis-how-to-publish-app.md)
-* [Testowanie w portalu usługi LUIS](luis-interactive-test.md)
+* [Jak przeprowadzać testy w portalu usługi LUIS](luis-interactive-test.md)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

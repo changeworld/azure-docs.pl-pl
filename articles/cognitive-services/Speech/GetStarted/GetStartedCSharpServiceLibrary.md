@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 79ed6f1d2dc5495994d2522abf5af391cc79b705
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343695"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226047"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Szybki Start: Korzystanie z biblioteki usługi rozpoznawania mowy Bing w języku C&#35; dla Windows .NET
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Szybki start: Korzystanie z biblioteki usługi rozpoznawania mowy Bing w języku C&#35; dla Windows .NET
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -46,13 +46,13 @@ Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project
 >
 > * Użyj klucza subskrypcji. Podana C# usługi biblioteki przykładowej aplikacji musisz podać klucz subskrypcji jako jeden z parametrów wiersza polecenia. Aby uzyskać więcej informacji, zobacz [uruchamianie przykładowej aplikacji](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>Krok 1. Instalowanie przykładowej aplikacji
+## <a name="step-1-install-the-sample-application"></a>Krok 1: Zainstaluj przykładową aplikację.
 
 1. Uruchom program Visual Studio 2015 i wybierz **pliku** > **Otwórz** > **projekt/rozwiązanie**.
 
 2. Kliknij dwukrotnie, aby otworzyć plik programu Visual Studio 2015 rozwiązania (.sln) o nazwie SpeechClient.sln. Rozwiązanie zostanie otwarty w programie Visual Studio.
 
-## <a name="step-2-build-the-sample-application"></a>Krok 2. Tworzenie przykładowej aplikacji
+## <a name="step-2-build-the-sample-application"></a>Krok 2: Tworzenie przykładowej aplikacji
 
 Naciśnij klawisze Ctrl + Shift + B, lub wybierz **kompilacji** menu wstążki. Następnie wybierz pozycję **Kompiluj rozwiązanie**.
 
@@ -65,16 +65,16 @@ Naciśnij klawisze Ctrl + Shift + B, lub wybierz **kompilacji** menu wstążki. 
 3. Uruchom `SpeechClientSample.exe` z następującymi argumentami:
 
    * ARG [0]: Określ plik wejściowy WAV audio.
-   * ARG [1]: Określ audio ustawień regionalnych.
-   * Argument [2]: Określ tryby rozpoznawania: *krótki* dla `ShortPhrase` tryb i *długie* dla `LongDictation` trybu.
+   * ARG [1]: Określ ustawienia regionalne audio.
+   * Argument [2]: Określ tryby rozpoznawania: *Krótki* dla `ShortPhrase` tryb i *długie* dla `LongDictation` trybu.
    * Argument [3]: Określ klucz subskrypcji dostęp do usługi rozpoznawania mowy.
 
 ## <a name="samples-explained"></a>Przykłady wyjaśniono
 
 ### <a name="recognition-modes"></a>Tryby rozpoznawania
 
-* `ShortPhrase` tryb: wypowiedź maksymalnie 15 sekund długo. Ponieważ dane są wysyłane do serwera, klient odbierze wiele wyników częściowych i jeden końcowy wynik najlepsze.
-* `LongDictation` tryb: wypowiedź maksymalnie 10 minut długo. Ponieważ dane są wysyłane na serwer, klient odbierze wiele wyników częściowych i wiele wyników końcowych w oparciu o którym serwer pauzy zdaniowe.
+* `ShortPhrase` tryb: Długości wypowiedź maksymalnie 15 sekund. Ponieważ dane są wysyłane do serwera, klient odbierze wiele wyników częściowych i jeden końcowy wynik najlepsze.
+* `LongDictation` tryb: Wypowiedź maksymalnie 10 minut long. Ponieważ dane są wysyłane na serwer, klient odbierze wiele wyników częściowych i wiele wyników końcowych w oparciu o którym serwer pauzy zdaniowe.
 
 ### <a name="supported-audio-formats"></a>Obsługiwane formaty audio
 
@@ -89,19 +89,19 @@ Interfejs API mowy obsługuje audio/WAV przy użyciu następujących koderów-de
 Aby utworzyć SpeechClient, musisz najpierw utwórz obiekt preferencji. Obiekt preferencji jest zestaw parametrów, który służy do konfigurowania zachowania usługi mowy. Składa się z następujących pól:
 
 * `SpeechLanguage`: Ustawienia regionalne audio wysyłane do usługi rozpoznawania mowy.
-* `ServiceUri`: Punktu końcowego używanego do wywołania usługi mowy.
-* `AuthorizationProvider`: IAuthorizationProvider implementacja używane do pobierania tokenów w celu uzyskania dostępu do usługi rozpoznawania mowy. Mimo że przykład zawiera dostawcę autoryzacji usług Cognitive Services, firma Microsoft zdecydowanie zaleca się utworzenie własnej implementacji w celu obsługi pamięci podręcznej tokenu.
+* `ServiceUri`: Punkt końcowy, używany do wywoływania usługi mowy.
+* `AuthorizationProvider`: Implementacja IAuthorizationProvider używane do pobierania tokenów w celu uzyskania dostępu do usługi rozpoznawania mowy. Mimo że przykład zawiera dostawcę autoryzacji usług Cognitive Services, firma Microsoft zdecydowanie zaleca się utworzenie własnej implementacji w celu obsługi pamięci podręcznej tokenu.
 * `EnableAudioBuffering`: Zaawansowana opcja. Zobacz [zarządzania połączeniami](#connection-management).
 
 ### <a name="speech-input"></a>Dane wejściowe mowy
 
 Obiekt SpeechInput składa się z dwóch pól:
 
-* **Audio**: implementacja strumienia w dowolnie, z której zestaw SDK pobiera audio. Może być dowolną [strumienia](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , która obsługuje Odczyt.
+* **Dźwięk**: Strumień implementacja dowolnie, z której zestaw SDK pobiera audio. Może być dowolną [strumienia](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , która obsługuje Odczyt.
    > [!NOTE]
    > Zestaw SDK wykrywa koniec strumienia, gdy strumień zwraca **0** podczas odczytywania.
 
-* **RequestMetadata**: metadane dotyczące żądania mowy. Aby uzyskać więcej informacji, zobacz [odwołania](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
+* **RequestMetadata**: Metadane o żądaniu rozpoznawania mowy. Aby uzyskać więcej informacji, zobacz [odwołania](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
 
 ### <a name="speech-request"></a>Żądanie rozpoznawania mowy
 
@@ -122,7 +122,7 @@ To zdarzenie jest wywoływane za każdym razem, gdy usługa rozpoznawania mowy p
 **Zwraca format** | Opis |
 ------|------
 **LexicalForm** | Ta forma jest optymalna dla aplikacji wymagających wyniki rozpoznawania mowy raw, nieprzetworzonych.
-**Wyświetlany_tekst** | Rozpoznane fraza normalizacji odwrotność tekstu, wielkość liter, znaki interpunkcyjne i maskowania wulgaryzmów stosowane. Wulgaryzmów są maskowane symbolami gwiazdki po początkowej znaku, na przykład, "d ***." Ta forma jest optymalna do używania przez aplikacje, które wyświetlają wyniki rozpoznawania mowy do użytkownika.
+**DisplayText** | Rozpoznane fraza normalizacji odwrotność tekstu, wielkość liter, znaki interpunkcyjne i maskowania wulgaryzmów stosowane. Wulgaryzmów są maskowane symbolami gwiazdki po początkowej znaku, na przykład, "d ***." Ta forma jest optymalna do używania przez aplikacje, które wyświetlają wyniki rozpoznawania mowy do użytkownika.
 **zaufania** | Poziom zaufania rozpoznaną frazę reprezentuje dźwięk skojarzonego zgodnie z definicją serwera rozpoznawania mowy.
 **MediaTime** | Bieżąca godzina względem początku strumienia audio (w jednostkach 100-nanosekundowych czasu).
 **MediaDuration** | Bieżąca frazy czas trwania/długość względem audio segmentu (w jednostkach 100-nanosekundowych czasu).

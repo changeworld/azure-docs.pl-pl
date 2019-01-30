@@ -6,18 +6,18 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 7c4a5029208854528afdfdbfcdc63434a2a94e24
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f8bc13aa2adad5c27b1754303ea30304c491f7ca
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338706"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211801"
 ---
-# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Przewodnika Szybki Start: Użyj interfejs API rozpoznawania mowy Bing w języku Objective-C w systemie iOS
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Szybki start: Użyj interfejsu API rozpoznawania mowy Bing w języku Objective C w systemie iOS
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
@@ -113,9 +113,9 @@ Poniższy kod w przykładzie przedstawiono sposób tworzenia klasy klienta rozpo
 
 Biblioteka klienta zapewnia wstępnie zaimplementowano rozpoznawania klasy klienta dla typowych scenariuszy rozpoznawanie mowy:
 
-* `DataRecognitionClient`: Usługa rozpoznawania mowy PCM danych (na przykład z pliku lub nagrania dźwiękowego źródła). Dane są dzielone na buforów, a każdy bufor są wysyłane do usługi rozpoznawania mowy. Brak możliwości modyfikacji odbywa się do buforów, dzięki czemu użytkownicy mogą stosować własne wykrywania wyciszenia, w razie potrzeby. Jeśli nie podano danych z plików WAV, umożliwia wysyłanie danych z prawej strony plików do serwera. Jeśli masz dane pierwotne, na przykład, audio, dostępne za pośrednictwem połączenia Bluetooth, najpierw wysyłasz nagłówka formatu do serwera, a następnie dane.
-* `MicrophoneRecognitionClient`: Usługa rozpoznawania mowy dźwięku z mikrofonu. Upewnij się, że mikrofon jest włączony i danych z mikrofonu są wysyłane do usługi rozpoznawania mowy. Wbudowane "wyciszenia detektora" są stosowane do danych mikrofonu, przed wysłaniem ich do usługi rozpoznawania.
-* `DataRecognitionClientWithIntent` i `MicrophoneRecognitionClientWithIntent`: oprócz rozpoznawanie tekstu, Ci klienci zwrócone ze strukturą informacje na temat zamiar osoby mówiącej, Twoje aplikacje mogą używać do dysku dalsze akcje. Aby użyć "Opcje", musisz najpierw wytrenuj model przy użyciu [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: Rozpoznawanie mowy z danymi PCM (na przykład z pliku lub nagrania dźwiękowego źródła). Dane są dzielone na buforów, a każdy bufor są wysyłane do usługi rozpoznawania mowy. Brak możliwości modyfikacji odbywa się do buforów, dzięki czemu użytkownicy mogą stosować własne wykrywania wyciszenia, w razie potrzeby. Jeśli nie podano danych z plików WAV, umożliwia wysyłanie danych z prawej strony plików do serwera. Jeśli masz dane pierwotne, na przykład, audio, dostępne za pośrednictwem połączenia Bluetooth, najpierw wysyłasz nagłówka formatu do serwera, a następnie dane.
+* `MicrophoneRecognitionClient`: Rozpoznawanie mowy z dźwięku z mikrofonu. Upewnij się, że mikrofon jest włączony i danych z mikrofonu są wysyłane do usługi rozpoznawania mowy. Wbudowane "wyciszenia detektora" są stosowane do danych mikrofonu, przed wysłaniem ich do usługi rozpoznawania.
+* `DataRecognitionClientWithIntent` i `MicrophoneRecognitionClientWithIntent`: Oprócz rozpoznawanie tekstu Ci klienci zwrócone ze strukturą informacje na temat zamiar osoby mówiącej, Twoje aplikacje mogą używać do dysku dalsze akcje. Aby użyć "Opcje", musisz najpierw wytrenuj model przy użyciu [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 ### <a name="recognition-language"></a>Rozpoznawania języka
 
@@ -125,16 +125,16 @@ Kiedy używasz `SpeechRecognitionServiceFactory` tworzenia klienta, musisz wybra
 
 Należy także określić `SpeechRecognitionMode` po utworzeniu klienta z `SpeechRecognitionServiceFactory`:
 
-* `SpeechRecognitionMode_ShortPhrase`: Wypowiedź maksymalnie 15 sekund długo. Ponieważ dane są wysyłane do usługi, klient odbierze wiele wyników częściowych i jeden wynik końcowy z wieloma opcjami n najlepszych.
+* `SpeechRecognitionMode_ShortPhrase`: Długości wypowiedź maksymalnie 15 sekund. Ponieważ dane są wysyłane do usługi, klient odbierze wiele wyników częściowych i jeden wynik końcowy z wieloma opcjami n najlepszych.
 * `SpeechRecognitionMode_LongDictation`: Wypowiedź maksymalnie dwóch minut long. Ponieważ dane są wysyłane do usługi, klient odbierze wiele wyników częściowych i wiele wyników końcowych, w którym serwer identyfikuje wstrzymuje zdanie w oparciu.
 
 ### <a name="attach-event-handlers"></a>Dołącz procedury obsługi zdarzeń
 
 Różne programy obsługi zdarzeń można dołączyć do klienta został utworzony:
 
-* **Częściowe wyniki zdarzeń**: to zdarzenie jest wywoływane za każdym razem, gdy usługi mowy przewiduje, użytkownik może być opinie, nawet zakończeniem wypowiedzi (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeśli używasz `DataRecognitionClient`).
-* **Zdarzenia błędu**: wywoływane, gdy usługa wykrywa błąd.
-* **Intencji zdarzenia**: wywoływana na klientach "WithIntent" (tylko w trybie ShortPhrase) po ostatnim rozpoznawania wynik jest przekształcany do ze strukturą intencji JSON.
+* **Częściowe wyniki zdarzeń**: To zdarzenie jest wywoływane za każdym razem, gdy usługi mowy przewiduje, użytkownik może być opinie, nawet zakończeniem wypowiedzi (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeśli używasz `DataRecognitionClient`).
+* **Zdarzenia błędu**: Wywołuje się, gdy usługa wykrywa błąd.
+* **Zdarzenia intencji**: Wywoływana na klientach "WithIntent" (tylko w trybie ShortPhrase) po ostatnim rozpoznawania wynik jest przekształcany do ze strukturą intencji JSON.
 * **Wynik zdarzenia**:
   * W `SpeechRecognitionMode_ShortPhrase` tryb, to zdarzenie jest wywoływana i zwraca wyniki n najlepszych, po zakończeniu mówić.
   * W `SpeechRecognitionMode_LongDictation` tryb, program obsługi zdarzeń jest wywoływana wiele razy, oparte na którym usługa identyfikuje wstrzymuje zdania.

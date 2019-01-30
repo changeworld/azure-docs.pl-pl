@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ebd25fe7b60cb3f8701793f222bbbc8bd4990e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: f93457315fec03210213ddfd79d027c8cfec4555
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196773"
+ms.locfileid: "55227322"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Wdrażanie modelu jako usługi sieci web na FPGA za pomocą usługi Azure Machine Learning
 
@@ -165,7 +165,7 @@ registered_model.delete()
 
 ## <a name="secure-fpga-web-services"></a>Zabezpieczania usług sieci web FPGA
 
-Azure modeli uczenia maszynowego usługi uruchomione na układów FPGA zapewniają obsługę protokołu SSL i uwierzytelniania opartego na kluczu. Dzięki temu można ograniczyć dostęp do swojej usługi i zabezpieczanie danych przesyłanych przez klientów. [Dowiedz się, jak zabezpieczyć usługę sieci web](how-to-secure-web-service.md#fpga).
+Zabezpieczanie usług sieci web FPGA przy użyciu protokołu SSL nie jest obecnie obsługiwane.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

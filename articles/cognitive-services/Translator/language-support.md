@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 3d25cfd39b4b4278fedf33e042d394208fd5eafc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 96f73d7d1324de9e5531aefcc4ee3b9a054cf941
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713183"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228053"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -35,7 +35,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 
 **Interfejs API usługi Translator w wersji 3** interfejs API usługi Translator w wersji 3 jest neuronowych domyślnie i systemy statystyczne są dostępne tylko, gdy nie istnieje żaden system neuronowych. Niestandardowe w usłudze Translator należy używać tylko z językami neuronowych. 
 
-|Język|  Kod języka|  INTERFEJSY API WERSJI 2| W WERSJI 3 INTERFEJSU API|
+|Język|  Kod języka|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
 |Afrikaans| `af`    |Tylko statystyczne|  Neuronowych|
 |Arabski|    `ar`    |Neuronowych dostępne|  Neuronowych|
@@ -45,7 +45,7 @@ Interfejs API tekstu usługi Translator obsługuje następujące języki do tłu
 |Kantoński (tradycyjny)|   `yue`   |Tylko statystyczne|  Statystyczne|
 |Kataloński|   `ca`    |Tylko statystyczne|  Statystyczne|
 |Chiński (uproszczony)|    `zh-Hans`   |Domyślne neuronowych |Neuronowych|
-|Chiński (tradycyjny)|   `zh-Hant`   |Domyślne neuronowych |Neuronowych|
+|Chiński tradycyjny|   `zh-Hant`   |Domyślne neuronowych |Neuronowych|
 |Chorwacki|  `hr`    |Neuronowych dostępne|  Neuronowych|
 |Czeski| `cs`    |Neuronowych dostępne|  Neuronowych|
 |Duński|    `da`    |Neuronowych dostępne   |Neuronowych|
@@ -121,7 +121,7 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 | Kannada | `kn` | Kannada `Knda` | --> | Łaciński `Latn` |
 | Malajalam | `ml` | Malayalam `Mlym` | --> | Łaciński `Latn` |
 | Marathi | `mr` | Dewanagari `Deva` | --> | Łaciński `Latn` |
-| Orija | `or` | Orija `Orya` | <--> | Łaciński `Latn` |
+| Orija | `or` | Oriya `Orya` | <--> | Łaciński `Latn` |
 | Pendżabski | `pa` | Gurmukhi `Guru`  | <--> | Łaciński `Latn`  |
 | Serbski (cyrylica) | `sr-Cyrl` | Cyrylica `Cyrl`  | --> | Łaciński `Latn` |
 | Serbski (łaciński) | `sr-Latn` | Łaciński `Latn` | --> | Cyrylica `Cyrl`|

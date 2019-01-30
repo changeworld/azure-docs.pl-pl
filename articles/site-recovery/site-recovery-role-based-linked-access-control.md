@@ -1,17 +1,17 @@
 ---
 title: Zarządzanie dostępem do usługi Azure Site Recovery, przy użyciu kontroli dostępu opartej na rolach (RBAC) | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób stosowania bontrol dostępu opartej na rolach (RBAC) w celu zarządzania dostępem do usługi Azure Site Recovery.
+description: W tym artykule opisano sposób stosowania kontroli dostępu opartej na rolach (RBAC) w celu zarządzania dostępem do usługi Azure Site Recovery.
 ms.service: site-recovery
 ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 815eb1f94d80c36824dc34f3f9410458b9837003
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5a6ef10f03bb5e108c226fe3d68f1dec67e6164a
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849534"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218074"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Zarządzanie dostępem Site Recovery przy użyciu kontroli dostępu opartej na rolach (RBAC)
 
@@ -69,7 +69,7 @@ Użytkownik wymaga następujących uprawnień do ukończenia replikacji nowej ma
 Rozważ użycie "Współautor maszyny wirtualnej" i "Współautora klasycznej maszyny wirtualnej" [wbudowane role](../role-based-access-control/built-in-roles.md) dla wdrożenia usługi Resource Manager i Model Klasyczny odpowiednio modeli.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md): wprowadzenie do funkcji RBAC w witrynie Azure portal.
+* [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md): Wprowadzenie do funkcji RBAC w witrynie Azure portal.
 * Dowiedz się, jak zarządzanie dostępem przy użyciu:
   * [Program PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Interfejs wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)

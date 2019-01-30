@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 196e2fadea10c1527576961b0e4b31c058cf9ba6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002556"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223480"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Zarządzanie serwerami zarejestrowanych za pomocą usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -191,5 +191,6 @@ Gdy usługi Azure File Sync jest hostowany w maszynie wirtualnej na hoście wirt
 
 ## <a name="see-also"></a>Zobacz także
 - [Planowanie wdrożenia usługi Azure File Sync](storage-sync-files-planning.md)
-- [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md) 
+- [Wdrażanie usługi Azure File Sync](storage-sync-files-deployment-guide.md)
+- [Monitorowanie usługi Azure File Sync](storage-sync-files-monitoring.md)
 - [Rozwiązywanie problemów z usługi Azure File Sync](storage-sync-files-troubleshoot.md)

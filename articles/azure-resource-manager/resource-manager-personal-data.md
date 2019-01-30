@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3948bf08f0309072de57f70d0c7c2e539b4fc28b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 01e2b1608d55d7852db947181482d34d6d8010d2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075736"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215049"
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Zarządzanie danymi osobowymi skojarzonych z usługą Azure Resource Manager
 
@@ -65,13 +65,13 @@ Nazwy tagów i wartości utrzymują się, dopóki nie można usunąć ani zmodyf
 Do listy **tagi**, użyj:
 
 * [Lista](/rest/api/resources/tags/list)
-* [Get-AzTag](/powershell/module/az.tags/get-aztag)
+* [Get-AzTag](/powershell/module/az.resources/Get-AzTag)
 * [AZ tag list](/cli/azure/tag#az-tag-list)
 
 Aby usunąć **tagi**, użyj:
 
 * [Usuwanie](/rest/api/resources/tags/delete)
-* [Remove-AzTag](/powershell/module/az.tags/remove-aztag)
+* [Remove-AzTag](/powershell/module/az.resources/Remove-AzTag)
 * [AZ tag delete](/cli/azure/tag#az-tag-delete)
 
 ## <a name="next-steps"></a>Kolejne kroki

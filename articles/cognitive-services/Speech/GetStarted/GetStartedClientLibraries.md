@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 2682236ae9f9256b91d1259248e72139c907c8e5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 6166875c04ff9d183336a89da56c4b77521d0f29
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345020"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217428"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Rozpoczynanie pracy z bibliotekami klienckimi usługa rozpoznawania mowy Bing
 
@@ -35,7 +35,7 @@ Obecnie dostępne są następujące biblioteki klienta mowy Bing:
 - [Biblioteka języka Java dla systemu Android](GetStartedJavaAndroid.md)
 - [Biblioteka języka Objective-C dla systemu iOS](Get-Started-ObjectiveC-iOS.md)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Przykłady](../samples.md) strona zawiera pełną próbek do użycia biblioteki klienta mowy.
 - Jeśli potrzebujesz biblioteki klienckiej, która nie jest jeszcze dostępna, można utworzyć własnych zestawów SDK. Implementowanie [protokołu WebSocket mowy](../API-Reference-REST/websocketprotocol.md) na platformie i Użyj preferowanego języka.

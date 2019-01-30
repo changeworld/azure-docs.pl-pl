@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e9b9620c3c631a9984bc6d1d02dc792c592b6e69
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0392d84efa3a82a6323d6d09db792df7d6c42256
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078393"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210679"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -82,8 +82,46 @@ W poniższych instrukcji, przypisujemy usługi Key Vault, jako usługa musi mie�
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
+    
+## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>Jak uzyskać dostęp do konta magazynu przy użyciu tokenów sygnatur dostępu Współdzielonego
+
+W tej sekcji omówimy, jak operacje na koncie magazynu przez pobieranie [tokeny sygnatur dostępu Współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) z usługi Key Vault
+
+W poniżej sekcji pokażemy, jak można pobrać klucz konta magazynu, która jest przechowywana w usłudze Key Vault i za pomocą tego, aby utworzyć definicję SAS (Shared Access Signature) dla konta magazynu.
+
+> [!NOTE] 
+  Istnieją 3 sposoby uwierzytelnienia do usługi Key Vault, ponieważ możesz przeczytać w [podstawowe pojęcia](key-vault-whatis.md#basic-concepts)
+- Przy użyciu tożsamości usługi zarządzanej (zdecydowanie zalecane)
+- Za pomocą jednostki usługi i certyfikatu 
+- Przy użyciu nazwy głównej usługi i hasła (niezalecane)
+
+```cs
+// Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials
+var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
+
+// Get a SAS token for our storage from Key Vault. SecretUri is of the format https://<VaultName>.vault.azure.net/secrets/<ExamplePassword>
+var sasToken = await kv.GetSecretAsync("SecretUri");
+
+// Create new storage credentials using the SAS token.
+var accountSasCredential = new StorageCredentials(sasToken.Value);
+
+// Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
+var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null);
+
+var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
+```
+
+Jeśli Twój token SAS jest wygaśnie, następnie będzie ponownie pobrać tokenu sygnatury dostępu Współdzielonego z usługi Key Vault i aktualizowanie kodu
+
+```cs
+// If your SAS token is about to expire, get the SAS Token again from Key Vault and update it.
+sasToken = await kv.GetSecretAsync("SecretUri");
+accountSasCredential.UpdateSASToken(sasToken);
+```
+
+
 ### <a name="relavant-azure-cli-cmdlets"></a>Polecenia cmdlet interfejsu wiersza polecenia Relavant Azure
-- [Polecenia cmdlet usługi Storage wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
+[Polecenia cmdlet usługi Storage wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/keyvault/storage?view=azure-cli-latest)
 
 ### <a name="relevant-powershell-cmdlets"></a>Odpowiednich poleceń cmdlet programu Powershell
 

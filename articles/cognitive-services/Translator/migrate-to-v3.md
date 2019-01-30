@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682600"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227781"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
 
@@ -41,13 +41,13 @@ Poniższa lista metod V2 i V3 zawiera metody V3 i interfejsów API, które zapew
 
 | W wersji 2 Metoda interfejsu API   | W wersji 3 Zgodnością z interfejsem API |
 |:----------- |:-------------|
-| Translate     | [Przetłumacz](reference/v3-0-translate.md)          |
+| Tłumaczenie     | [Przetłumacz](reference/v3-0-translate.md)          |
 | TranslateArray      | [Przetłumacz](reference/v3-0-translate.md)        |
 | GetLanguageNames      | [Języki](reference/v3-0-languages.md)         |
 | GetLanguagesForTranslate     | [Języki](reference/v3-0-languages.md)       |
-| GetLanguagesForSpeak      | [Usługa Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Usługa Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Wykrywanie](reference/v3-0-detect.md)         |
+| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| Czytaj     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Wykrywanie     | [Wykrywanie](reference/v3-0-detect.md)         |
 | DetectArray     | [Wykrywanie](reference/v3-0-detect.md)         |
 | AddTranslation     | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
 | AddTranslationArray    | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
@@ -59,7 +59,7 @@ Poniższa lista metod V2 i V3 zawiera metody V3 i interfejsów API, które zapew
 
 V2 tłumaczenia tekstu w usłudze Translator firmy Microsoft zaakceptowane i zwrócił dane w formacie XML. W wersji 3 wszystkich danych wysłanych i odebranych przy użyciu interfejsu API jest w formacie JSON. XML, nie zostanie zaakceptowany lub zwracany w wersji 3.
 
-Ta zmiana wpłynie na różne aspekty aplikacji napisanych dla interfejsu API tłumaczenia tekstu w wersji 2. Na przykład: interfejs API języków zwraca informacje języka na tłumaczenie tekstu, transliterację i metod dwóch słownika. Można zażądać wszystkie informacje o języku dla wszystkich metod w jednym wywołaniu lub zażądać ich osobno.
+Ta zmiana wpłynie na różne aspekty aplikacji napisanych dla interfejsu API tłumaczenia tekstu w wersji 2. Na przykład: Interfejs API języków zwraca informacje języka tłumaczenie tekstu, transliterację i metod dwóch słownika. Można zażądać wszystkie informacje o języku dla wszystkich metod w jednym wywołaniu lub zażądać ich osobno.
 
 Metoda języków nie wymaga uwierzytelniania Klikając poniższe łącze, można wyświetlić wszystkich informacji o języku V3 w formacie JSON:
 
@@ -75,18 +75,18 @@ Microsoft Translator w wersji 3 jest rozliczana w taki sam sposób, który zosta
 
 | Metoda v3   | Znaki uwzględniany w rozliczeniach |
 |:----------- |:-------------|
-| Languages     | Nie przesłano żadnych znaków, brak zliczane, bez opłat.          |
-| Translate     | Liczba zależy od liczby znaków są przesyłane do tłumaczenia i jak wiele języków znaki są tłumaczone na. przesłany 50 znaków i 5 języków, wymagane będzie 50 x 5.           |
-| Transliterate     | Liczba znaków, które przesłano transliterację są uwzględniane.         |
-| Dictionary lookup & example     | Liczba znaków przesłane do słownika lookup i examples są uwzględniane.         |
+| Języki     | Nie przesłano żadnych znaków, brak zliczane, bez opłat.          |
+| Tłumaczenie     | Liczba zależy od liczby znaków są przesyłane do tłumaczenia i jak wiele języków znaki są tłumaczone na. przesłany 50 znaków i 5 języków, wymagane będzie 50 x 5.           |
+| Transliteracja     | Liczba znaków, które przesłano transliterację są uwzględniane.         |
+| Słownik odnośników i przykład     | Liczba znaków przesłane do słownika lookup i examples są uwzględniane.         |
 | BreakSentence     | Dostępny bezpłatnie.       |
-| Detect     | Dostępny bezpłatnie.      |
+| Wykrywanie     | Dostępny bezpłatnie.      |
 
 ## <a name="v3-end-points"></a>V3 punkty końcowe
 
 Globalny
 
-* API.cognitive.microsofttranslator.com
+* api.cognitive.microsofttranslator.com
 
 
 ## <a name="v3-api-text-translations-methods"></a>Metody tłumaczenia tekstu w wersji 3 interfejsu API
@@ -113,8 +113,8 @@ Tłumaczenie neuronowe z tekstem w wersji 3 interfejsu API nie obsługuje korzys
 
 | |Endpoint|    Zgodność z RODO procesora|  Za pomocą Centrum w usłudze Translator| Użyj niestandardowego w usłudze Translator (wersja zapoznawcza)|
 |:-----|:-----|:-----|:-----|:-----|
-|Interfejs API tekstu usługi Translator w wersji 2| API.microsofttranslator.com|    Nie  |Yes    |Nie|
-|Wersja interfejsu API tekstu usługi Translator 3| API.cognitive.microsofttranslator.com|  Yes|    Nie| Yes|
+|Interfejs API tekstu usługi Translator w wersji 2| api.microsofttranslator.com|    Nie  |Yes    |Nie|
+|Wersja interfejsu API tekstu usługi Translator 3| api.cognitive.microsofttranslator.com|  Yes|    Nie| Yes|
 
 **Wersja interfejsu API tekstu usługi Translator 3**
 * Jest ogólnie dostępna i w pełni obsługiwane.

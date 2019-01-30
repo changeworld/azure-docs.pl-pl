@@ -5,24 +5,24 @@ description: Karta modeli w dowolnym projekcie zawiera szczegóły każdego mode
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 80ee99fc4490f1fdc591093f357c8db55a97abb9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d82d41a254164c635f4488db63766b39d922f002
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627651"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219123"
 ---
-# <a name="view-model-details"></a>Wyświetl szczegóły modelu
+# <a name="view-model-details"></a>Wyświetlanie szczegółów modelu
 
 Karta modeli w ramach projektu pokazuje wszystkie modele, w tym projekcie. Wszystkie modele uczony, dla których projekt znajduje się na tej karcie.
 
 Dla każdego modelu w projekcie są wyświetlane następujące dane modelu.
 
-1.  Nazwa modelu: Pokazuje nazwę modelu danego modelu.
+1.  Nazwa modelu: Wyświetlana nazwa modelu danego modelu.
 
 2.  Stan: Wyświetla stan podanego modelu. Szkolenia nowych będzie posiadał status przesłane, dopóki nie zostanie zaakceptowany. Stan zmieni się do przetwarzania danych, gdy usługa oblicza zawartości dokumentów. Po zakończeniu oceny dokumentów stan zmieni się na uruchomiony i będzie można znaleźć liczbę zdań, które są częścią szkolenia, w tym dostosowywania i testowania zestawów, które są tworzone automatycznie. Poniżej znajduje się lista stan modelu, który opisuje stan modeli.
 
@@ -30,17 +30,17 @@ Dla każdego modelu w projekcie są wyświetlane następujące dane modelu.
 
     -  TrainingQueued: Określa, że szkolenie jest dodawane do kolejki MT systemu dla tego modelu.
 
-    -  Uruchamianie: Określa, czy szkolenia jest uruchomiona w systemie MT dla tego modelu.
+    -  Uruchomione: Określa, że szkolenie działa w systemie MT dla tego modelu.
 
-    -  Powodzenie: Określa, że szkolenie zakończyło się pomyślnie w systemie MT i model jest dostępna. W ten stan wynik BELEU jest wyświetlany dla tego modelu.
+    -  Powodzenie: Określa, że szkolenie zakończyło się pomyślnie w systemie MT, jak i model jest dostępna. W ten stan wynik BELEU jest wyświetlany dla tego modelu.
 
     -  Wdrożone: Określa, że pomyślnie uczony model jest przesyłany do usługi system MT na potrzeby wdrażania.
 
-    -  Aby można: Określa, że wdrożony model jest można.
+    -  Aby można: Określa, że można jest wdrożony model.
 
-    -  Wycofane: Określa, że proces wycofania wdrożenia modelu została zakończona pomyślnie.
+    -  Cofnięto jego wdrożenie: Określa, że proces wycofania wdrożenia modelu została zakończona pomyślnie.
 
-    -  Szkolenie nie powiodła się: Określa, że szkolenie nie powiodło się. Jeśli wystąpi błąd szkolenia, ponów próbę wykonania zadania szkolenia. Jeśli błąd będzie się powtarzać, skontaktuj się z nami. Nie należy usuwać modelu nie powiodło się.
+    -  Szkolenie nie powiodło się: Określa, że szkolenie nie powiodło się. Jeśli wystąpi błąd szkolenia, ponów próbę wykonania zadania szkolenia. Jeśli błąd będzie się powtarzać, skontaktuj się z nami. Nie należy usuwać modelu nie powiodło się.
 
     - DataProcessingFailed: Określa, czy przetwarzanie danych nie powiodło się dla jednego lub więcej dokumentów należących do modelu.
 
@@ -50,19 +50,19 @@ Dla każdego modelu w projekcie są wyświetlane następujące dane modelu.
 
 4.  Wynik BELEU: pokazuje wynik BELEU (Understudy dwujęzyczny oceny) modelu określający jakość tłumaczenia systemu. Ten wynik informuje, jak blisko tłumaczenia wykonywane przez system tłumaczeń wynikające z to szkolenie dopasowania zdań odwołanie do zestawu danych testowych. Wynik BELEU jest wyświetlana, gdy szkolenie zostało pomyślnie ukończone. Jeśli szkolenia nie jest pełną / nie powiodło się, nie zobaczysz żadnych wynik BELEU.
 
-5.  Szkolenie liczba zdanie: pokazuje całkowitą liczbę zdań używany jako zestaw szkoleniowy.
+5.  Liczba zdania szkolenia: Przedstawia sumę zdania używany jako zestaw szkoleniowy.
 
-6.  Dostosowywanie liczby zdanie: przedstawia sumę zdania używany jako dostosowywania zestawu.
+6.  Dostosowywanie liczby zdanie: Pokazuje całkowitą liczbę zdań używane jako dostosowywania zestawu.
 
-7.  Szkolenie liczba zdanie: przedstawia sumę zdania używany jako zestaw testów.
+7.  Liczba zdania szkolenia: Pokazuje sumę zdania używany jako zestaw testów.
 
-8.  Mono liczba zdanie: przedstawia sumę zdania używany jako zestaw mono.
+8.  Mono liczba zdanie: Pokazuje łączna liczba zdania używany jako zestaw mono.
 
-9.  Przycisk akcji wdrażania: pomyślnie uczonego modelu pokazuje "Wdróż" przycisk Jeśli nie zostanie wdrożony. Jeśli model jest wdrażany, jest wyświetlany przycisk "Undeploy".
+9.  Wdróż przycisk akcji: Pomyślnie nauczonego modelu należy go przedstawia przycisk "Deploy" w przeciwnym razie wdrożone. Jeśli model jest wdrażany, jest wyświetlany przycisk "Undeploy".
 
-10. Usuwanie: Można użyć ten przycisk, aby usunąć model. Usuwanie modelu nie usuwa wszelkie dokumenty, użyty do utworzenia tego modelu.
+10. Usuwanie: Możesz użyć tego przycisku, jeśli chcesz usunąć model. Usuwanie modelu nie usuwa wszelkie dokumenty, użyty do utworzenia tego modelu.
 
-    ![Wyświetl szczegóły modelu](media/how-to/how-to-view-model-details.png)
+    ![Wyświetlanie szczegółów modelu](media/how-to/how-to-view-model-details.png)
 
 >[!Note]
 >Do porównywania kolejnych szkoleniach dla tych samych systemach, warto zachować Ustaw dostosowywania i testowania ustawianie stałej.
@@ -71,25 +71,25 @@ Dla każdego modelu w projekcie są wyświetlane następujące dane modelu.
 
 Po zakończeniu szkolenia można przejrzeć szczegółowe informacje o szkolenia na stronie szczegółów. Wybierz projekt, zlokalizuj i wybierz kartę w modele i wybierz model.
 
-Na stronie modelu ma dwie karty: szczegóły szkolenia i testowania.
+Na stronie modelu ma dwie karty: Szczegóły szkolenia i testowania.
 
-1.  **Szkolenie szczegóły:** ta karta przedstawia listę dokumentów używanych w szkolenia:
+1.  **Szczegóły szkolenia:** Ta karta przedstawia listę dokumentów używanych w szkolenia:
 
     -  Nazwa dokumentów: To pole zawiera nazwę dokumentu
 
     -  Typ dokumentu: To pole wskazuje, czy ten dokument jest równoległe / mono.
 
-    -  Jak w zdaniu count w źródłowy języka: pole ten pokazuje liczbę zdań są dostępne jako część języka źródłowego.
+    -  Liczba zdanie w języku źródła: Pole to pokazuje liczbę zdań są dostępne jako część języka źródłowego.
 
-    -  Jak w zdaniu liczby w języku docelowym: pole ten pokazuje liczbę zdań są dostępne jako część języka docelowego.
+    -  Liczba zdanie w języku docelowym: Pole to pokazuje liczbę zdań są dostępne jako część języka docelowego.
 
     -  Zdania wyrównany: To pole, które pokazuje liczbę zdań ma zostały dostosowane przez niestandardowe w usłudze Translator podczas dostosowanie procesu.
 
-    -  Używane zdania: Ten pokazuje liczbę zdań była używana przez niestandardowe w usłudze Translator w trakcie tego szkolenia pola.
+    -  Używane zdania: To pole, które pokazuje liczbę zdań była używana przez niestandardowe w usłudze Translator w trakcie tego szkolenia.
 
     ![Szczegóły szkolenie modelu](media/how-to/how-to-model-training-details.png)
 
-2.  **Testowanie:** ta karta przedstawia szczegóły testu dla pomyślnego szkolenia.
+2.  **Test:** Ta karta przedstawia szczegóły testu dla pomyślnego szkolenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

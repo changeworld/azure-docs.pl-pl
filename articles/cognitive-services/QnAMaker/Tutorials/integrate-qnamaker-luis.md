@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: c5eb80e093423475204fab4e4dda2fa51be853b8
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 1d7130e841ce48ead4fca1d76bf5e3e051263efd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911664"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216799"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Za pomocą bot usługi QnA Maker i LUIS do dystrybucji bazy wiedzy
 Wraz z rozwojem dużej wiedzy usługi QnA Maker staje się trudne w utrzymaniu go jako monolityczny jeden zestaw i ma konieczności dzielenia bazy wiedzy knowledge base na mniejsze części logiczne.

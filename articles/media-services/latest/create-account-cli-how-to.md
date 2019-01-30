@@ -12,19 +12,19 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 7d5c093eba4af10847827900557a87efece954ae
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b01958dc320ff6c81bb27c85ff4a5e508eabb01b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196824"
+ms.locfileid: "55209948"
 ---
 # <a name="create-an-azure-media-services-account"></a>Tworzenie konta usługi Azure Media Services
 
 Aby rozpocząć, szyfrowanie, kodowanie, analizowanie, zarządzanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services. W czasie tworzenia konta usługi Media Services, można również utworzyć skojarzony magazyn konta (lub użyć istniejącego).  
 
 > [!NOTE]
-> Konto usługi Media Services oraz powiązane z nią konto magazynu muszą być znajdować się w tym samym centrum danych i tej samej grupie zasobów.
+> Konto usługi Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Zalecane jest korzystanie z kont magazynu w tej samej lokalizacji co konto usługi Media Services.
 
 W tym artykule opisano kroki tworzenia nowego konta usługi Azure Media Services przy użyciu wiersza polecenia platformy Azure.  
 
@@ -32,10 +32,9 @@ W tym artykule opisano kroki tworzenia nowego konta usługi Azure Media Services
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aktywna subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Zainstaluj interfejs wiersza polecenia i korzystaj z niego lokalnie. Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+Aktywna subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-    Obecnie nie wszystkie polecenia [interfejsu wiersza polecenia usługi Media Services w wersji 3](https://aka.ms/ams-v3-cli-ref) działają w usłudze Azure Cloud Shell. Zaleca się używanie interfejsu wiersza polecenia lokalnie.
+[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="set-the-azure-subscription"></a>Ustawianie subskrypcji platformy Azure
 

@@ -7,25 +7,25 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6319ef908b5b040bf61285451448c08bb3960fe2
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956520"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215014"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Temat usługi mobilności na potrzeby maszyn wirtualnych VMware i serwerów fizycznych
 
 Podczas konfigurowania odzyskiwania po awarii dla maszyn wirtualnych VMware i serwerów fizycznych, za pomocą [usługi Azure Site Recovery](site-recovery-overview.md), zainstaluj usługę Site Recovery Mobility na każdej lokalnej maszyny Wirtualnej VMware i serwerów fizycznych.  Usługa mobilności służy do przechwytywania zapisów danych na maszynie i przekazuje je do serwera przetwarzania Site Recovery. Można wdrożyć usługę mobilności, za pomocą następujących metod:
 
-[Instalacja wypychana](vmware-azure-install-mobility-service.md): Konfigurowanie Site Recovery do przeprowadzenia instalacji wypychanej usługi mobilności: Aby to zrobić, konfigurując odzyskiwanie po awarii, można również ustawić konta używanego przez serwer przetwarzania Site Recovery do uzyskania dostępu do maszyny Wirtualnej lub serwera fizycznego na potrzeby instalowania usługi.
-[Zainstaluj ręcznie](vmware-physical-mobility-service-install-manual.md): można zainstalować usługi mobilności ręcznie na każdym komputerze, przy użyciu interfejsu użytkownika lub wiersza polecenia.
-[Automatyczne wdrażanie](vmware-azure-mobility-install-configuration-mgr.md): można zautomatyzować instalację przy użyciu narzędzi wdrażania oprogramowania takich jak System Center Configuration Manager.
+[Instalacja wypychana](vmware-azure-install-mobility-service.md): Skonfiguruj Site Recovery do przeprowadzenia instalacji wypychanej usługi mobilności: Aby to zrobić, podczas konfigurowania odzyskiwania po awarii, należy również skonfigurować konta używanego przez serwer przetwarzania Site Recovery w celu uzyskania dostępu do maszyny Wirtualnej lub serwera fizycznego na potrzeby instalowania usługi.
+[Zainstaluj ręcznie](vmware-physical-mobility-service-install-manual.md): Usługa mobilności można zainstalować ręcznie na każdym komputerze, przy użyciu interfejsu użytkownika lub wiersza polecenia.
+[Automatyczne wdrażanie](vmware-azure-mobility-install-configuration-mgr.md): Można zautomatyzować instalację przy użyciu narzędzi wdrażania oprogramowania takich jak System Center Configuration Manager.
 
 ## <a name="azure-virtual-machine-agent"></a>Agent maszyny wirtualnej platformy Azure
 
-- **Maszyny wirtualne Windows**: Z 9.7.0.0 wersję usługi mobilności [agenta maszyny Wirtualnej platformy Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) jest instalowany przez Instalatora usługi mobilności. Gwarantuje to, czy po maszyny przejściu w tryb failover na platformie Azure, maszyny Wirtualnej platformy Azure spełnia wymagania wstępne dla przy użyciu każde rozszerzenie maszyny wirtualnej instalacji agenta.
-- **Maszyny wirtualne systemu Linux**: [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) musi być zainstalowany ręcznie na maszynie Wirtualnej platformy Azure po włączeniu trybu failover.
+- **Maszyny wirtualne z systemem Windows**: Z 9.7.0.0 wersję usługi mobilności [agenta maszyny Wirtualnej platformy Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) jest instalowany przez Instalatora usługi mobilności. Gwarantuje to, czy po maszyny przejściu w tryb failover na platformie Azure, maszyny Wirtualnej platformy Azure spełnia wymagania wstępne dla przy użyciu każde rozszerzenie maszyny wirtualnej instalacji agenta.
+- **Maszyny wirtualne z systemem Linux**: [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) musi być zainstalowany ręcznie na maszynie Wirtualnej platformy Azure po włączeniu trybu failover.
 
 ## <a name="installer-files"></a>Pliki Instalatora
 
@@ -34,10 +34,10 @@ W tabeli przedstawiono pliki Instalatora dla każdej maszyny Wirtualnej VMware i
 
 **Plik Instalatora** | **System operacyjny (tylko 64-bitowy)** 
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | System Windows Server 2016; Windows Server 2012 R2 Windows Server 2012; Windows Server 2008 R2 z dodatkiem SP1 
-Usługa ASR Microsoft\_UA\*RHEL6 64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
+Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1 
+Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* </br> CentOS 6.*
 Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* </br> CentOS 7.* 
-Usługa ASR Microsoft\_UA\*SLES12 64\*release.tar.gz | SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 
+Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1,SP2,SP3 
 Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 
 Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 
 Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5
@@ -64,7 +64,7 @@ Jeśli maszyn, które mają być replikowane active oprogramowanie antywirusowe 
 
 5. Uruchamia zadanie Aktualizacja usługi mobilności dla każdego z wybranych maszyn.
 
-## <a name="update-the-acount-used-for-push-installation-of-the-mobility-service"></a>Aktualizuj konto używane do instalacji wypychanej usługi mobilności
+## <a name="update-the-account-used-for-push-installation-of-the-mobility-service"></a>Aktualizuj konto używane do instalacji wypychanej usługi mobilności
 
 Po wdrożeniu Site Recovery, aby umożliwić instalację wypychaną usługi Mobility określono konta używanego przez serwer procesu odzyskiwania lokacji dostęp do maszyny i zainstalować usługę po włączeniu replikacji dla maszyny. Jeśli chcesz zaktualizować poświadczenia dla tego konta, postępuj zgodnie z [w instrukcjach](vmware-azure-manage-configuration-server.md).
 
@@ -74,7 +74,7 @@ Po wdrożeniu Site Recovery, aby umożliwić instalację wypychaną usługi Mobi
 
 Odinstaluj z interfejsu użytkownika lub z wiersza polecenia.
 
-- **W interfejsie użytkownika**: W Panelu sterowania komputera, wybierz opcję **programy**. Wybierz **Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy** > **Odinstaluj**.
+- **W interfejsie użytkownika**: W Panelu sterowania na komputerze wybierz **programy**. Wybierz **Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy** > **Odinstaluj**.
 - **Z poziomu wiersza polecenia**: Otwórz okno wiersza polecenia z uprawnieniami administratora na komputerze. Uruchom następujące polecenie: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

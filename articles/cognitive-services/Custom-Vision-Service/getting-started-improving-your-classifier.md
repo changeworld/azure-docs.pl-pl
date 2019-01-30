@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: pafarley
-ms.openlocfilehash: 2bee7f0af98bf03a13e376dea9dbf083b3f61815
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 72ba363201b27a8ca31c73af1d0cceb436de468d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340294"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209405"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak poprawianie klasyfikatora
 
@@ -41,23 +41,23 @@ Kolejna kwestia jest związana, upewnij się, że Twoje dane jest równoważone.
 
 Podaj obrazy, które reprezentują co będzie można przesłać do klasyfikatora podczas normalnego użytkowania. Na przykład jeśli uczony klasyfikatora "apple", klasyfikatora może okazać możliwie dokładny tylko szkolenie zdjęcia jabłek talerzy, ale upewnij prognozy na zdjęciach jabłek w drzewach. Łącznie z wielu różnych obrazów będzie upewnij się, że klasyfikatora nie jest obciążona i również uogólnić. Poniżej ustawiono bardziej zróżnicowane kilka metod, których można dokonać szkolenia:
 
-__Tło:__ zapewniają obrazów obiektu przed różnych kolorów tła (czyli owoce na tablicy, a owoców w zbiorze artykułów spożywczych). Zdjęcia w kontekście są lepsze niż zdjęcia przed neutralne tła, ponieważ zapewniają dodatkowe informacje dotyczące klasyfikatora.
+__Tło:__ Podaj obrazów obiektu przed różnych kolorów tła (czyli owoce na tablicy, a owoców w zbiorze artykułów spożywczych). Zdjęcia w kontekście są lepsze niż zdjęcia przed neutralne tła, ponieważ zapewniają dodatkowe informacje dotyczące klasyfikatora.
 
 ![Obraz tła próbek](./media/getting-started-improving-your-classifier/background.png)
 
-__Oświetlenie:__ udostępnić obrazy zróżnicowane oświetlenia (oznacza to, przekierowanie z usługą flash, wysoka, itp.), szczególnie w przypadku, jeśli obrazy używane w celu prognozowania ma innego oświetlenia. Warto również uwzględnić obrazów przy użyciu różnorodnych nasycenie, hue i jasności.
+__Oświetlenie:__ Udostępnianie obrazów zróżnicowane oświetlenia (oznacza to, przekierowanie z usługą flash, wysoka, itp.), zwłaszcza w przypadku, gdy obrazy używane w celu prognozowania mają różne oświetlenia. Warto również uwzględnić obrazów przy użyciu różnorodnych nasycenie, hue i jasności.
 
 ![Obraz przedstawiający przykłady oświetlenia](./media/getting-started-improving-your-classifier/lighting.png)
 
-__Rozmiar obiektów:__ Podaj obrazów, w których obiekty są zróżnicowane rozmiaru przechwytywania różnych części obiektu. Na przykład zdjęcie kiście banany i zbliżenie banany jednego. Różne zmiany rozmiaru pomaga klasyfikatora generalize lepiej.
+__Object Size:__ Podaj obrazów, w których obiekty są zależeć od rozmiaru przechwytywania różnych części obiektu. Na przykład zdjęcie kiście banany i zbliżenie banany jednego. Różne zmiany rozmiaru pomaga klasyfikatora generalize lepiej.
 
 ![Obraz przedstawiający rozmiar próbki](./media/getting-started-improving-your-classifier/size.png)
 
-__Kąt kamery:__ zapewniają obrazów z opcją kątów kamery różne. Jeśli wszystkie zdjęcia są pobierane z zestawem kamer stałych (np. kamer nadzoru), upewnij się, że przypisać inną etykietę do każdej kamery, nawet wtedy, gdy przechwyceniem te same obiekty, aby uniknąć overfitting — modelowanie niepowiązanych obiektów (takich jak lampposts) jako klucza funkcji.
+__Kąt aparatu:__ Podaj obrazów z opcją kątów kamery różne. Jeśli wszystkie zdjęcia są pobierane z zestawem kamer stałych (np. kamer nadzoru), upewnij się, że przypisać inną etykietę do każdej kamery, nawet wtedy, gdy przechwyceniem te same obiekty, aby uniknąć overfitting — modelowanie niepowiązanych obiektów (takich jak lampposts) jako klucza funkcji.
 
 ![Obraz przedstawiający przykłady kąt](./media/getting-started-improving-your-classifier/angle.png)
 
-__Styl:__ zapewniają obrazy różnych stylów w tej samej klasy (czyli różne rodzaje cytrusów). Jednak w przypadku obrazów obiektów znacząco różne style (czyli Mickey myszy a rat rzeczywistych), zalecane jest oznaczenie ich jako osobne klasy, aby lepiej reprezentują ich różne funkcje.
+__Styl:__ Podaj obrazy różnych stylów w tej samej klasy (czyli różne rodzaje cytrusów). Jednak w przypadku obrazów obiektów znacząco różne style (czyli Mickey myszy a rat rzeczywistych), zalecane jest oznaczenie ich jako osobne klasy, aby lepiej reprezentują ich różne funkcje.
 
 ![Obraz przedstawiający próbki stylu](./media/getting-started-improving-your-classifier/style.png)
 

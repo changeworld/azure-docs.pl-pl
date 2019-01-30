@@ -5,16 +5,16 @@ description: Po pomyślnym szkolenia, przejrzyj testy systemu, aby analizować w
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 701f97a006e7457fcbdcc835f87832b269f986a8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6cad142c050ca1de7e4c5f9b4415132a82f38c7b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630346"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55215253"
 ---
 # <a name="view-system-test-results"></a>Wyświetlanie wyników testu systemu
 
@@ -54,7 +54,7 @@ Kliknij link Pobierz tłumaczeń, aby pobrać plik zip. Plik zip zawiera tłumac
 
 To archiwum zip pobranego zawiera trzy pliki.
 
-1.  **Custom.MT.txt:** Ten plik zawiera tłumaczenia maszynowe zdań język źródłowy w języku docelowym, wykonywane przez modelu wyszkolonego przy danych użytkownika.
+1.  **custom.mt.txt:** Ten plik zawiera tłumaczenia maszynowe zdań język źródłowy w języku docelowym, wykonywane przez modelu wyszkolonego przy danych użytkownika.
 
 2.  **REF.txt:** Ten plik zawiera tłumaczenia zdania język źródłowy w języku docelowym podane przez użytkownika.
 

@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/23/2018
+ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4a3581b3d61c5ad17352c2865fc059704c1eece1
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035297"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55235996"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>Co to jest usługa ExpressRoute zasięgu globalnym?
 
@@ -33,16 +33,7 @@ Usługa ExpressRoute zapewnia łączność z sieci lokalnych usług chmurowych f
 
 ### <a name="where-is-expressroute-global-reach-supported"></a>Gdzie jest zasięgu globalnym ExpressRoute obsługiwane?
 
-Zasięgu globalnym usługi ExpressRoute jest obsługiwana w następujących krajach. Obwody usługi ExpressRoute musi zostać utworzony w lokalizacji komunikacji równorzędnej w tych krajach.
-
-* Australia
-* Francja
-* Hongkong
-* Irlandia
-* Japonia
-* Holandia
-* Wielka Brytania
-* Stany Zjednoczone
+Zasięgu globalnym usługi ExpressRoute jest obsługiwana w [Wybierz kraje lub miejsca](../articles/expressroute/expressroute-global-reach.md). Obwody usługi ExpressRoute musi zostać utworzony w lokalizacji komunikacji równorzędnej w tych krajach lub miejsca.
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Czy mogę mieć więcej niż dwie sieci lokalne, każda jest połączona z obwodem usługi ExpressRoute. Można włączyć usługi ExpressRoute zasięgu globalnym do łączenia wszystkich moich sieci w środowisku lokalnym?
 

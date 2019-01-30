@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: 9b26c80b59a57b4a9b2423e1a9028cf723f40fb1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321232"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216969"
 ---
 # <a name="exclude-disks-from-replication"></a>Wykluczanie dysków z replikacji
 W tym artykule opisano sposób wykluczania dysków z replikacji. Takie wykluczenie może zoptymalizować przepustowość używaną przez replikację lub zoptymalizować zasoby po stronie docelowej, z których korzystają takie dyski.
@@ -59,7 +59,7 @@ Rozważmy dwa scenariusze, aby zrozumieć funkcję wykluczania dysku:
 - Dysk bazy danych tempdb programu SQL Server
 - Dysk pliku stronicowania (pagefile.sys)
 
-## <a name="excample-1-exclude-the-sql-server-tempdb-disk"></a>Excample 1: Wykluczanie dysku bazy danych tempdb programu SQL Server
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Przykład 1: Wykluczanie dysku bazy danych tempdb programu SQL Server
 Rozważmy maszynę wirtualną programu SQL Server z bazą danych tempdb, którą można wykluczyć.
 
 Nazwa dysku wirtualnego to SalesDB.

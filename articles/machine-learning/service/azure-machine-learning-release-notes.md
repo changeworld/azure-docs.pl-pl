@@ -11,16 +11,49 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5341c4901ca2a7aa0b4935e13d06c8fb5a1f0d1b
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
-ms.translationtype: MT
+ms.openlocfilehash: 9556a87b8de08dadb211d73e93f3daa9033c2cc1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304105"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221321"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning. 
+
+## <a name="2019-01-28"></a>2019-01-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.10
+
++ **Dokumentacja zestawu SDK**: https://aka.ms/aml-sdk
+
++ **Zmiany**: 
+  + Zestaw SDK usługi Azure ML nie ma już pakiety wiersza polecenia platformy azure jako zależność. W szczególności zależności azure-cli-core i profilu w przypadku interfejsu wiersza polecenia platformy azure zostały usunięte z usługi Azure ml core. Poniżej przedstawiono użytkownika, wpływ na zmiany:
+    + Jeśli wykonanie "az login", a następnie za pomocą zestawu sdk usługi Azure ml, zestaw SDK będzie wykonywać przeglądarki lub logowanie do urządzenia kod jeszcze raz. Nie będzie ona używać każdy stan poświadczeń utworzonych przez "az login".
+    + Uwierzytelnianie wiersza polecenia platformy Azure, takiej jak "az login", można użyć _azureml.core.authentication.AzureCliAuthentication_ klasy. Uwierzytelnianie wiersza polecenia platformy Azure, wykonaj _polecenia pip install azure cli_ w środowisku Python, w którym jest zainstalowany zestaw sdk usługi Azure ml.
+    + Jeśli macie "az login", przy użyciu nazwy głównej usługi do automatyzacji, zalecamy użycie _azureml.core.authentication.ServicePrincipalAuthentication_ klasy, jak zestaw sdk usługi Azure ml nie będzie używać stan poświadczeń utworzonych przez wiersza polecenia platformy azure. 
+
++ **Poprawki błędów**: Ta wersja zawiera przede wszystkim poprawki drobnych błędów
+
+### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Zestaw SDK v1.0.8 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Dokumentacja zestawu SDK**: https://aka.ms/data-prep-sdk
+
++ **Poprawki błędów**
+  + Znaczne zwiększenie wydajności pobieranie danych profilów.
+  + Naprawiono drobnych usterek związane z raportowaniem błędów.
+  
+### <a name="azure-portal-new-features"></a>Witryna Azure portal: nowe funkcje
++ Nowe przeciągnij i upuść środowisko tworzenia wykresów dla raportów. Użytkownikom można przeciągnąć kolumny lub atrybutu z obszaru do obszaru wykresu, do której system automatycznie wybiera typ odpowiedniego wykresu dla użytkownika, na podstawie typu danych. Użytkownikom można zmienić typ wykresu do innych odpowiednich typów lub dodawać dodatkowe atrybuty.
+
+    Obsługiwane typy wykresów:
+    - Wykres liniowy
+    - Histogram
+    - Skumulowany wykres słupkowy
+    - Wykres skrzynkowy
+    - Wykres punktowy
+    - Wykres bąbelkowy
 
 ## <a name="2019-01-14"></a>2019-01-14
 

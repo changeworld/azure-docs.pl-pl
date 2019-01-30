@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 300ed77322f66150111ecda70dbf95ac373aad2c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 64af946c3f8f58808f1bca06f1ef21d92da8cda8
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079175"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223565"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -71,7 +71,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | RequestDisallowedByPolicy | Twoja subskrypcja obejmuje zasady zasobów, które uniemożliwiają akcję, którą próbujesz wykonać podczas wdrażania. Znaleźć zasady, która blokuje akcji. Jeśli to możliwe zmodyfikuj wdrożenie spełnia ograniczenia z zasad. | [Rozwiąż zasad](resource-manager-policy-requestdisallowedbypolicy-error.md) |
 | ReservedResourceName | Podaj nazwę zasobu, który nie zawiera nazwą zastrzeżoną. | [Nazw zarezerwowanych zasobów](resource-manager-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | Oczekiwanie na usunięcie zakończyć. | |
-| ResourceGroupNotFound | Sprawdź nazwę docelowej grupy zasobów dla wdrożenia. Musi już istnieć w subskrypcji. Sprawdź kontekst subskrypcji. | [Interfejs wiersza polecenia Azure](/cli/azure/account?#az-account-set) [programu PowerShell](/powershell/module/az.profile/set-azcontext) |
+| ResourceGroupNotFound | Sprawdź nazwę docelowej grupy zasobów dla wdrożenia. Musi już istnieć w subskrypcji. Sprawdź kontekst subskrypcji. | [Interfejs wiersza polecenia Azure](/cli/azure/account?#az-account-set) [programu PowerShell](/powershell/module/Az.Accounts/Set-AzContext) |
 | ResourceNotFound | Wdrożenie odwołuje się do zasobu, którego nie można rozpoznać. Upewnij się, że korzystanie z **odwołania** funkcja zawiera parametrów wymaganych dla danego scenariusza. | [Rozpoznawania odwołań](resource-manager-not-found-errors.md) |
 | ResourceQuotaExceeded | Wdrożenie próbuje utworzyć zasoby, które przekraczają limit przydziału dla subskrypcji, grupy zasobów lub regionu. Jeśli to możliwe poprawić swoją infrastrukturę, aby w ramach limitów przydziału. W przeciwnym razie należy wziąć pod uwagę żądania zmiany limity przydziału. | [Rozwiąż przydziałów](resource-manager-quota-errors.md) |
 | SkuNotAvailable | Wybierz jednostkę SKU (np. rozmiar maszyny Wirtualnej), który jest dostępny dla lokalizacji, które wybrałeś. | [Rozwiąż jednostki SKU](resource-manager-sku-not-available-errors.md) |

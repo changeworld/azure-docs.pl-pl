@@ -6,17 +6,17 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 891b9aa1e4eda0df2ff4972993e8b4a396acba7b
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 1bc70e5c8243c50506cea871220412a4941cbe35
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911340"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213113"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu środowiska Node.js 
 <a name="HOLTop"></a>

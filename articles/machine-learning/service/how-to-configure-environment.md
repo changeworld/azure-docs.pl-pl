@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f53b3cec843ca8016c61a360025b5e731b96f55
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: MT
+ms.openlocfilehash: b098ce78143cbcfd53d6ab1c7e4127df336f2bc4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54815875"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212039"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -64,7 +64,7 @@ Jeśli już masz środowisko Python 3 lub po prostu ma podstawowe kroki dotyczą
 
 Aby rozpocząć tworzenie aplikacji za pomocą notesów usługi Azure, zobacz [wprowadzenie do usługi Azure Machine Learning](quickstart-get-started.md).
 
-Domyślnie notesów usługi Azure korzysta z warstwy bezpłatna usługa, która jest ograniczony do 4GB pamięci i 1GB danych. Można jednak usunąć te limity, dołączając wystąpienia maszyny wirtualnej do nauki o danych do projektu notesy platformy Azure. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Domyślnie notesów usługi Azure korzysta z warstwy bezpłatna usługa, która jest ograniczony do 4GB pamięci i 1GB danych. Można jednak usunąć te limity, dołączając wystąpienia maszyny wirtualnej do nauki o danych do projektu notesy platformy Azure. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
@@ -248,7 +248,7 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
 1. Tworzenie [klastra usługi Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) z następującymi ustawieniami:
 
-    | Ustawienie | Wartość |
+    | Ustawienie | Value |
     |----|---|
     | Nazwa klastra | yourclustername |
     | Środowisko uruchomieniowe usługi Databricks | Środowisko uruchomieniowe żadnych innych ML (innego niż ML 4.x, 5.x) |
@@ -257,7 +257,7 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
 
     Użyj tych ustawień, tylko wtedy, gdy będziesz używać uczenia maszynowego automatyczne w usłudze Databricks:
     
-    |   Ustawienie | Wartość |
+    |   Ustawienie | Value |
     |----|---|
     | Typy maszyn wirtualnych na węzeł procesu roboczego | Preferowane maszyny Wirtualnej zoptymalizowane pod kątem pamięci |
     | Włączanie skalowania automatycznego | Usuń zaznaczenie pola wyboru |
@@ -271,13 +271,13 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
     * [Utworzyć bibliotekę](https://docs.databricks.com/user-guide/libraries.html#create-a-library) przy użyciu jednego z tych ustawień (_wybierz tylko jeden z tych opcji_):
     
         * Aby zainstalować zestaw SDK usługi Azure Machine Learning _bez_ zautomatyzowane machine learning możliwości:
-            | Ustawienie | Wartość |
+            | Ustawienie | Value |
             |----|---|
             |Element źródłowy | Przekaż Python Egg lub PyPI
             |Nazwa PyPi | azureml-sdk[databricks]
     
         * Aby zainstalować zestaw SDK usługi Azure Machine Learning _z_ automatyczne usługi machine learning:
-            | Ustawienie | Wartość |
+            | Ustawienie | Value |
             |----|---|
             |Element źródłowy | Przekaż Python Egg lub PyPI
             |Nazwa PyPi | azureml-sdk[automl_databricks]

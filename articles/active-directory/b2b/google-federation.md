@@ -10,18 +10,18 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 05216f62c45940c475f245c1b69c25219c438906
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bc0a4d4ce13c4013d634748503f98451e5fae9be
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076268"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216160"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
 
 Przez skonfigurowanie Federacji za pomocą usługi Google, możesz zezwolić zaproszonych użytkowników do logowania się na udostępnionych aplikacji i zasobów przy użyciu własnych kont Google, bez konieczności tworzenia kont usługi Azure AD lub Accounts firmy Microsoft (MSA).  
 > [!NOTE]
-> Usługi Google użytkowników-gości musi Zaloguj się przy użyciu łącza, które zawiera na przykład kontekstu dzierżawy `https://myapps.microsoft.com/<tenant id>`. Bezpośrednie linki do aplikacji i zasobów również działać tak długo, jak należą do kontekstu dzierżawy. Użytkownicy-goście, są obecnie nie można zalogować się przy użyciu punktów końcowych, które mają nie kontekstu dzierżawy. Na przykład za pomocą `https://myapps.microsoft.com`, `https://portal.azure.com`, lub endpoint wspólnego zespoły spowoduje wystąpienie błędu.
+> Usługi Google użytkowników-gości musi Zaloguj się przy użyciu łącza, które obejmuje kontekstu dzierżawy (na przykład `https://myapps.microsoft.com/?tenantid=<tenant id>` lub `https://portal.azure.com/<tenant id>`, lub w przypadku domeną zweryfikowaną domyślną `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Bezpośrednie linki do aplikacji i zasobów również działać tak długo, jak należą do kontekstu dzierżawy. Użytkownicy-goście, są obecnie nie można zalogować się przy użyciu punktów końcowych, które mają nie kontekstu dzierżawy. Na przykład za pomocą `https://myapps.microsoft.com`, `https://portal.azure.com`, lub endpoint wspólnego zespoły spowoduje wystąpienie błędu.
  
 ## <a name="what-is-the-experience-for-the-google-user"></a>Co to jest środowisko użytkownika usługi Google?
 Podczas wysyłania zaproszenia do użytkownika usługi Google Gmail użytkownik-Gość powinien uzyskać dostęp do swoje aplikacje udostępnione lub zasobów za pomocą łącza, które obejmuje kontekstu dzierżawy. Ich środowisko pracy różni się zależnie od tego, czy są już przeprowadzono logowanie do usługi Google:

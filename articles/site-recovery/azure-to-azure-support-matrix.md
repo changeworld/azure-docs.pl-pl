@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: fa25c144737c4d070b2dbd08700c68e617950e0d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 148efb47d123938c3914f36e1432d447e277b051
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452262"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210561"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -59,9 +59,9 @@ Chiny | Chiny wschodnie, Chiny Północne, Chiny North2, 2 (Chiny)
 >
 > - Aby uzyskać **Brazylia Południowa** regionu, możesz zreplikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA. Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Jego **nie może pełnić roli regionie docelowym odzyskiwania po awarii** dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.
 > 
-> - Jeśli jesteś **nie mogli zobaczyć region** miejscu **utworzyć magazyn** następnie upewnij się, że Twoja subskrypcja ma dostęp do tworzenia zasobów w danym regionie. Na przykład: Jeśli nie można utworzyć magazyn w Francja Południowa Twoja subskrypcja nie ma dostępu do regionu południowo-(Francja). Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "whitlelist subskrypcji XXX region platformy Azure"
+> - Jeśli jesteś **nie mogli zobaczyć region** miejscu **utworzyć magazyn** następnie upewnij się, że Twoja subskrypcja ma dostęp do tworzenia zasobów w danym regionie. Na przykład: Jeśli nie można utworzyć magazyn w Francja Południowa Twoja subskrypcja nie ma dostępu do regionu południowo-(Francja). Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "subskrypcji listy dozwolonych adresów dla XXX region platformy Azure"
 > 
-> - Jeśli jesteś **nie mogli zobaczyć region** w ramach klastra geograficzne **podczas włączania replikacji** następnie upewnij się, że Twoja subskrypcja ma dostęp do utworzenia maszyny wirtualnej w danym regionie. Na przykład: Jeśli próbujesz chronić maszyny wirtualne z Francja środkowa do Francja Południowa, a nie widzisz Francja Południowa w regionie listy rozwijanej, a następnie Twoja subskrypcja nie ma dostępu, aby wdrożyć maszynę Wirtualną, w tym regionie. Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "whitlelist subskrypcji XXX region platformy Azure"
+> - Jeśli jesteś **nie mogli zobaczyć region** w ramach klastra geograficzne **podczas włączania replikacji** następnie upewnij się, że Twoja subskrypcja ma dostęp do utworzenia maszyny wirtualnej w danym regionie. Na przykład: Jeśli próbujesz chronić maszyny wirtualne z Francja środkowa do Francja Południowa, a nie widzisz Francja Południowa w regionie listy rozwijanej, a następnie Twoja subskrypcja nie ma dostępu, aby wdrożyć maszynę Wirtualną, w tym regionie. Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "subskrypcji listy dozwolonych adresów dla XXX region platformy Azure"
 > - Nie można wybrać regionów, w klastrach geograficzne wymienionych powyżej.
 
 

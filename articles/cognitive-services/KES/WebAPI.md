@@ -6,22 +6,22 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 5be39e8dce6aeeef32d20273c56650620d6fe986
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 131d8d58982b5430063aa3dc7b3d1982cd430148
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122029"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211308"
 ---
 # <a name="web-api-interface"></a>Interfejs API sieci Web
 
 Model kompilowaną przez Knowledge Exploration Service można obsługiwane i dostępne za pośrednictwem zestawu interfejsów API sieci web.  Interfejsy API może być hostowana na komputerze lokalnym przy użyciu [ `host_service` ](CommandLine.md#host_service-command) polecenie lub można wdrożyć usługi platformy Azure w chmurze przy użyciu [ `deploy_service` ](CommandLine.md#deploy_service-command) polecenia.  Obu tych technik ujawnić następujące punkty końcowe interfejsu API:
 
-* [*Interpretowanie* ](interpretMethod.md) — interpretuje ciąg zapytania w języku naturalnym. Zwraca interpretacje z adnotacjami, aby zapewnić rozbudowane środowisko automatycznego uzupełniania w polu wyszukiwania, które przewiduje wpisywany tekst.
+* [*Interpretowanie* ](interpretMethod.md) — interpretuje ciąg zapytania w języku naturalnym. Zwraca interpretacje z adnotacjami, aby zapewnić zaawansowaną obsługę automatycznego uzupełniania w polu wyszukiwania, które przewiduje wpisywany tekst.
 * [*Ocena* ](evaluateMethod.md) — Evaluates i zwraca wyniki wyrażeń zapytań ze strukturą.
 * [*calchistogram* ](calchistogramMethod.md) — oblicza histogram wartości atrybutu dla obiektów zwróconych przez wyrażeń zapytań ze strukturą.
 
@@ -29,8 +29,8 @@ Razem te metody interfejsu API pozwala na tworzenie zaawansowanych semantycznego
 
 **Przykład**
 
-W domenie akademickich publikacje, jeśli użytkownik wpisze ciąg "s ukryte" *interpretacji* metoda może dostarczyć zestaw rangi interpretacji, sugerujące, że użytkownik może wyszukiwanie — słowo kluczowe "ukryte analizy semantycznej" Tytuł "analiza struktury ukryte", lub innych wyrażeń, począwszy od "ukryte s".  Te informacje mogą służyć do szybko Przewodnik po użytkownik żądanych wyników wyszukiwania.
+W domenie akademickich publikacje, jeśli użytkownik wpisze ciąg "s ukryte" *interpretacji* metoda może dostarczyć zestaw rangi interpretacji, sugerujące, że użytkownik może wyszukiwanie — słowo kluczowe "ukryte analizy semantycznej" Tytuł "analiza struktury ukryte", lub innych wyrażeń, począwszy od "ukryte s".  Na podstawie tych informacji można udostępnić użytkownikowi wskazówki szybko prowadzące do żądanych wyników wyszukiwania.
 
 Dla tej domeny *oceny* metoda może służyć do pobierania zestawu pasujących publikacji z indeksu akademickich oraz *calchistogram* metody mogą być używane do obliczania dystrybucji atrybutu wartości dla publikacji dopasowania, które mogą służyć do dalszego filtrowania i zawęzić wyniki wyszukiwania.
 
-Należy pamiętać, aby poprawić czytelność przykłady, wywołań interfejsu API REST zawiera znaki (takie jak spacje), które nie zostały zakodowane w adresie URL. Kod, należy zastosować odpowiednie kodowania adresu URL.
+Aby poprawić czytelność przykładów, wywołania interfejsu API REST zawierają znaki (takie jak spacje), które nie zostały zakodowane w adresie URL. We własnym kodzie należy stosować odpowiednie kodowania adresów URL.

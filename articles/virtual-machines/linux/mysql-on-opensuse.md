@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: za-rhoads
-ms.openlocfilehash: 1823e6eab6bc7efc6a59da525472463cb06ea087
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 98eb331fbd82ff718b01c99afd6840e3c2252777
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887550"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55227866"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalowanie bazy danych MySQL na maszynie wirtualnej z dystrybucją systemu OpenSUSE Linux na platformie Azure
 
@@ -163,7 +163,7 @@ quit
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać szczegółowe informacje o MySQL, zobacz [dokumentacji MySQL](http://dev.mysql.com/doc/index-topic.html).
+Aby uzyskać szczegółowe informacje o MySQL, zobacz [dokumentacji MySQL](http://dev.mysql.com/doc).
 
 
 

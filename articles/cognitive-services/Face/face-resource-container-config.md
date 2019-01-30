@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 9e1d4ae38b18feb01d32ff62d4923b14d33494fa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a1c9791bd12bd41c44bc9ff6353f6169c6c2f4ce
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197674"
+ms.locfileid: "55226829"
 ---
 # <a name="configure-containers"></a>Konfigurowanie kontenerów
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 45b25ec5cfc6e198b9b125675f4942463cef247a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d6ddb76954108c037dc4135393df8622c9dbd101
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128268"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220777"
 ---
 # <a name="evaluate-method"></a>Oceń — metoda
 
@@ -27,13 +27,13 @@ Zwykle wyrażenia zostaną uzyskane z odpowiedzi metody interpretację.  Można 
 
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
-Name (Nazwa)|Wartość|Opis
+Name|Value|Opis
 ----|----|----
-wyrażenie       | Ciąg tekstowy | Wyrażenie zapytań ze strukturą, który wybierze podzbiór jednostek indeksu.
+expr       | Ciąg tekstowy | Wyrażenie zapytań ze strukturą, który wybierze podzbiór jednostek indeksu.
 Atrybuty | Ciąg tekstowy | Rozdzielana przecinkami lista atrybutów do uwzględnienia w odpowiedzi.
 count      | Liczba (domyślny = 10) | Maksymalna liczba wyników do zwrócenia.
-Przesunięcie     | Liczba (domyślny = 0) | Indeks pierwszego wyniku do zwrócenia.
-OrderBy |   Ciąg tekstowy | Nazwa atrybutu używanego w celu posortowania wyników, a następnie według kolejności sortowania opcjonalne (domyślny = asc): "*attrname*[: (asc&#124;desc)]".  Jeśli nie zostanie określony, wyniki są zwracane przez zmniejszenie prawdopodobieństwa logarytmu naturalnego.
+offset     | Liczba (domyślny = 0) | Indeks pierwszego wyniku do zwrócenia.
+orderby |   Ciąg tekstowy | Nazwa atrybutu używanego w celu posortowania wyników, a następnie według kolejności sortowania opcjonalne (domyślny = asc): "*attrname*[: (asc&#124;desc)]".  Jeśli nie zostanie określony, wyniki są zwracane przez zmniejszenie prawdopodobieństwa logarytmu naturalnego.
 timeout  | Liczba (domyślny = 1000) | Przekroczono limit czasu w milisekundach. Zwracane są tylko wyniki obliczane przed upływem limitu czasu.
 
 Za pomocą *liczba* i *przesunięcie* parametrów, dużą liczbę wyników można uzyskać przyrostowo za pośrednictwem wielu żądań.

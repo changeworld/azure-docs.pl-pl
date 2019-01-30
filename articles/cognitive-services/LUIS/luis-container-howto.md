@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: ac97cf3e269652dc33ce4211947b45631228a697
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e6f13994d404d58082b953fc98ac6028eea2e43e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463290"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216209"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby można było uruchomić kontener usługi LUIS, musisz mieć następujące czynności: 
 
-|Wymagane|Przeznaczenie|
+|Wymagany|Przeznaczenie|
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
@@ -169,7 +169,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{APPLICATION_ID} | Identyfikator aplikacji opublikowanej aplikacji usługi LUIS. |
 |{APPLICATION_ENVIRONMENT} | Środowisko opublikowanej aplikacji usługi LUIS. Użyj jednej z następujących wartości:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -197,7 +197,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{APPLICATION_ID} | Identyfikator aplikacji uczonego aplikacji usługi LUIS. |
 |{APPLICATION_VERSION} | Wersja aplikacji uczonego aplikacji usługi LUIS. |
@@ -219,7 +219,7 @@ Jeśli to się powiedzie, odpowiedź jest plik pakietu usługi LUIS. Zapisz plik
 
 Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenie do uruchomienia kontenera. Polecenie używa następujących parametrów:
 
-| Symbol zastępczy | Wartość |
+| Symbol zastępczy | Value |
 |-------------|-------|
 |{ENDPOINT_KEY} | Ten klucz jest używany do uruchomienia kontenera. Nie należy używać klucza starter. |
 |{BILLING_ENDPOINT} | Rozliczeń wartości punktu końcowego jest dostępna na stronie Przegląd interpretacji języka w witrynie Azure portal.|
@@ -268,7 +268,7 @@ Użyj hosta, https://localhost:5000, dla kontenera interfejsów API.
 
 Skonfiguruj parametry zapytania jak i co to jest zwracany w odpowiedzi na zapytanie:
 
-|Parametr zapytania|Typ|Przeznaczenie|
+|Parametr zapytania|Type|Przeznaczenie|
 |--|--|--|
 |`q`|ciąg|Wypowiedź użytkownika.|
 |`timezoneOffset`|numer|TimezoneOffset umożliwia [Zmień strefę czasową](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) posługują się datetimeV2 wstępnie utworzone jednostki.|

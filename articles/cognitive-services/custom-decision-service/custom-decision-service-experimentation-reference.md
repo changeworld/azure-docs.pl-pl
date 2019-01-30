@@ -6,16 +6,16 @@ services: cognitive-services
 author: marco-rossi29
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-decision-service
+ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 90a99d4910b0afb885b415760f6a7ef1ca2aec33
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366560"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219825"
 ---
 # <a name="experimentation"></a>Eksperymentowanie
 
@@ -35,7 +35,7 @@ Za pomocą pliku dziennika, eksperymentowanie ma na celu znaleźć zasady korzys
 * Testuje oceny zasad `--cb_type` (odwrotność tendencje wynik (`ips`) lub podwójnie niezawodne (`dr`). Aby uzyskać więcej informacji, zobacz [przykład kontekstowych Bandit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
 * Testy notatek.
 * Funkcje interakcji drugiego stopnia testów:
-   * **Faza atak metodą siłową**: sprawdza wszystkie kombinacje z `--q_bruteforce_terms` pary lub mniej.
+   * **Faza atak metodą siłową**: Sprawdza wszystkie kombinacje z `--q_bruteforce_terms` pary lub mniej.
    * **Faza zachłanne**: Dodaje parę najlepsze, dopóki nie istnieje żadne improvement dla `--q_greedy_stop` zaokrągla.
 * Wykonuje drugi czyszczenia hiperparametrów (`learning rate`, `L1 regularization`, i `power_t`).
 
@@ -54,12 +54,12 @@ Szczegółowe objaśnienia dotyczące powyższych argumentów, zobacz [argumenty
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Vowpal Wabbit: Zainstalowana i w zmiennej path.
-  - Windows: [użyj `.msi` Instalatora](https://github.com/eisber/vowpal_wabbit/releases).
+  - W systemie Windows: [Użyj `.msi` Instalatora](https://github.com/eisber/vowpal_wabbit/releases).
   - Inne platformy: [Uzyskaj kod źródłowy](https://github.com/JohnLangford/vowpal_wabbit/releases).
 - Python 3: Zainstalowana i w zmiennej path.
 - NumPy: Użyj Menedżera pakietów wybranych przez użytkownika.
 - *O Microsoft-ds* repozytorium: [Sklonuj repozytorium](https://github.com/Microsoft/mwt-ds).
-- Plik dziennika JSON usługi decyzji: domyślnie zawiera podstawowy polecenia `--dsjson`, umożliwiająca JSON usługi decyzji podczas analizowania pliku danych wejściowych. [Pobierz przykład ten format](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
+- Plik dziennika JSON usługi decyzji: Domyślnie polecenie podstawowy zawiera `--dsjson`, które umożliwia analizowanie JSON usługi decyzji w pliku danych wejściowych. [Pobierz przykład ten format](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
 
 ## <a name="usage"></a>Sposób użycia
 Przejdź do `mwt-ds/DataScience` i uruchom `Experimentation.py` z odpowiednimi argumentami, zgodnie z opisem w poniższym kodzie:
@@ -80,7 +80,7 @@ Dziennik wyników jest dołączana do *mwt-ds/DataScience/experiments.csv* pliku
 | Dane wejściowe | Opis | Domyślne |
 | --- | --- | --- |
 | `-h`, `--help` | Pokaż komunikat pomocy i zakończenia. | |
-| `-f FILE_PATH`, `--file_path FILE_PATH` | Ścieżka pliku danych (`.json` lub `.json.gz` format — każdy wiersz jest `dsjson`). | Wymagane |  
+| `-f FILE_PATH`, `--file_path FILE_PATH` | Ścieżka pliku danych (`.json` lub `.json.gz` format — każdy wiersz jest `dsjson`). | Wymagany |  
 | `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Podstawowy polecenie Vowpal Wabbit.  | `vw --cb_adf --dsjson -c` |  
 | `-p N_PROC`, `--n_proc N_PROC` | Liczba równoległych procesów do użycia. | Procesory logiczne |  
 | `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | Udostępnione funkcji w przestrzeni nazw (na przykład `abc` oznacza, że przestrzenie nazw `a`, `b`, i `c`).  | Automatyczne wykrywanie z pliku danych |  

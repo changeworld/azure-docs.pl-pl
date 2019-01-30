@@ -6,16 +6,16 @@ services: cognitive-services
 author: fmegen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b7779131a0fd30d263fa87f2e55c9642984d054b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 4b7386ad800bea69e7227554c5e4d71ba0c1c101
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467974"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213144"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Temat audio zestaw SDK rozpoznawania mowy danych wejściowych interfejsu API usługi stream
 
@@ -38,7 +38,7 @@ Poniższe kroki są wymagane, gdy za pomocą audio strumienie wejściowe:
 
 - Upewnij się, że Twój kod może zapewnić pierwotne dane audio zgodnie z tymi specyfikacjami. Jeśli Twoje źródło audio nie są zgodne z obsługiwanych formatów, audio, musi być transkodowane na wymagany format.
 
-- Utwórz własne klasy strumienia wejściowego audio pochodną `PullAudioInputStreamCallback`. Implementowanie `Read()` i `Close()` elementów członkowskich. Podpis funkcji Porównaj jest zależne od języka, ale kod będzie wyglądać podobnie do tego przykładu kodu:
+- Utwórz własne klasy strumienia wejściowego audio pochodną `PullAudioInputStreamCallback`. Zaimplementuj elementy członkowskie `Read()` i `Close()`. Podpis funkcji Porównaj jest zależne od języka, ale kod będzie wyglądać podobnie do tego przykładu kodu:
 
   ```
    public class ContosoAudioStream : PullAudioInputStreamCallback {
