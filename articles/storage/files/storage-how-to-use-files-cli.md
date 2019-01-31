@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 236a4e4f79e6da89154e1e52bb9f45daf3a54d59
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: files
+ms.openlocfilehash: 82d1a83dfd96dd6d4c2b37567c745998a6f0cbdb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632047"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473514"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi przy użyciu interfejsu wiersza polecenia platformy Azure
 W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z [udziałami plików platformy Azure](storage-files-introduction.md) przy użyciu interfejsu wiersza polecenia platformy Azure. Udziały plików platformy Azure są podobne do innych udziałów plików, ale są przechowywane w chmurze i obsługiwane przez platformę Azure. Udziały plików platformy Azure obsługują standardowy w branży protokół SMB i umożliwiają udostępnianie plików między wieloma maszynami, aplikacjami i wystąpieniami. 

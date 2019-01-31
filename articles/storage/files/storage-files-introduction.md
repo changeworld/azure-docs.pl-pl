@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: overview
 ms.date: 07/19/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: ef2930f30bf700ce81a2763a5a96a5d154bda1b5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.subservice: files
+ms.openlocfilehash: 647b1723136edd23f3e58f1c225c9226714d4d97
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008491"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466901"
 ---
 # <a name="what-is-azure-files"></a>Co to jest usługa Azure Files?
 Usługa Azure Files oferuje w pełni zarządzane udziały plików w chmurze, dostępne za pośrednictwem [protokołu Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx), będącego standardem branżowym. Udziały plików platformy Azure można instalować współbieżnie za pośrednictwem chmurowych lub lokalnych wdrożeń systemów Windows, Linux i macOS. Ponadto udziały plików platformy Azure mogą być buforowane w systemach Windows Server za pomocą usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko miejsca, w którym dane są używane.

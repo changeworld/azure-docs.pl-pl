@@ -12,32 +12,32 @@ ms.author: srbozovi
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/14/2018
-ms.openlocfilehash: 40d07827cbd856fe3be3d797dde793b1a7f50207
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: f75ea7bd728b16c91122119c3e14da2a1e123d45
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653242"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452315"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Szybki start: Przywracanie bazy danych do wystąpienia zarządzanego 
 
-W tym przewodniku Szybki start użyjesz programu SQL Server Management Studio (SSMS), aby przywrócić bazę danych (plik kopii zapasowej Wide World Importers — Standard) z usługi Azure Blob Storage do [wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) usługi Azure SQL Database. 
+W tym przewodniku Szybki start użyjesz programu SQL Server Management Studio (SSMS), aby przywrócić bazę danych (plik kopii zapasowej Wide World Importers — Standard) z usługi Azure Blob Storage do [wystąpienia zarządzanego](sql-database-managed-instance.md) usługi Azure SQL Database. 
 
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 > [!NOTE]
-> * Aby uzyskać więcej informacji na temat migracji przy użyciu usługi Azure Database Migration Service (DMS), zobacz artykuł [Managed Instance migration using DMS](../dms/tutorial-sql-server-to-managed-instance.md) (Migracja wystąpień zarządzanych przy użyciu usługi DMS). 
-> * Aby uzyskać więcej informacji dotyczących różnych metod migracji, zobacz artykuł [SQL Server instance migration to Azure SQL Database Managed Instance](sql-database-managed-instance-migrate.md) (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database).
+> - Aby uzyskać więcej informacji na temat migracji przy użyciu usługi Azure Database Migration Service (DMS), zobacz artykuł [Managed Instance migration using DMS](../dms/tutorial-sql-server-to-managed-instance.md) (Migracja wystąpień zarządzanych przy użyciu usługi DMS). 
+> - Aby uzyskać więcej informacji dotyczących różnych metod migracji, zobacz artykuł [SQL Server instance migration to Azure SQL Database Managed Instance](sql-database-managed-instance-migrate.md) (Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ten przewodnik Szybki start:
+
 - Wykorzystuje zasoby z przewodnika Szybki start [Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
 - Wymaga komputera z zainstalowanym najnowszym programem [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms).
 - Wymaga użycia programu SSMS do połączenia z wystąpieniem zarządzanym. Zobacz te przewodniki Szybki start dotyczące nawiązywania połączenia:
-  * [Nawiązywanie połączenia z wystąpieniem zarządzanym usługi Azure SQL Database z maszyny wirtualnej platformy Azure](sql-database-managed-instance-configure-vm.md)
-  * [Configure a point-to-site connection to an Azure SQL Database Managed Instance from on-premises](sql-database-managed-instance-configure-p2s.md) (Konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym usługi Azure SQL Database ze środowiska lokalnego).
-
+  - [Nawiązywanie połączenia z wystąpieniem zarządzanym usługi Azure SQL Database z maszyny wirtualnej platformy Azure](sql-database-managed-instance-configure-vm.md)
+  - [Configure a point-to-site connection to an Azure SQL Database Managed Instance from on-premises](sql-database-managed-instance-configure-p2s.md) (Konfigurowanie połączenia punkt-lokacja z wystąpieniem zarządzanym usługi Azure SQL Database ze środowiska lokalnego).
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat tworzenia kopii zapasowych i przywracania bazy danych programu SQL Server przy użyciu usługi Azure Blob Storage i [klucza sygnatury dostępu współdzielonego (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), zobacz artykuł [SQL Server Backup to URL](sql-database-managed-instance-get-started-restore.md) (Tworzenie kopii zapasowej programu SQL Server pod określonym adresem URL).
@@ -47,9 +47,7 @@ Ten przewodnik Szybki start:
 W programie SSMS użyj następujących kroków, aby przywrócić bazę danych Wide World Importers do wystąpienia zarządzanego. Plik kopii zapasowej bazy danych znajduje na wstępnie skonfigurowanym koncie usługi Azure Blob Storage.
 
 1. Otwórz program SMSS i nawiąż połączenie z wystąpieniem zarządzanym.
-
 2. W menu po lewej stronie, kliknij prawym przyciskiem myszy wystąpienie zarządzane i wybierz pozycję **Nowe zapytanie**, aby otworzyć okno nowego zapytania.
-
 3. Uruchom poniższy skrypt SQL wykorzystujący wstępnie skonfigurowane konto magazynu i klucz SAS, aby [utworzyć poświadczenie](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql?view=sql-server-2017) w wystąpieniu zarządzanym.
 
    ```sql
@@ -60,8 +58,7 @@ W programie SSMS użyj następujących kroków, aby przywrócić bazę danych Wi
 
     ![tworzenie poświadczenia](./media/sql-database-managed-instance-get-started-restore/credential.png)
 
-  
-3. Aby sprawdzić swoje poświadczenie, uruchom następujący skrypt, który używa adresu URL [kontenera](https://azure.microsoft.com/services/container-instances/), aby uzyskać listę plików kopii zapasowej.
+4. Aby sprawdzić swoje poświadczenie, uruchom następujący skrypt, który używa adresu URL [kontenera](https://azure.microsoft.com/services/container-instances/), aby uzyskać listę plików kopii zapasowej.
 
    ```sql
    RESTORE FILELISTONLY FROM URL = 
@@ -70,7 +67,7 @@ W programie SSMS użyj następujących kroków, aby przywrócić bazę danych Wi
 
     ![lista plików](./media/sql-database-managed-instance-get-started-restore/file-list.png)
 
-4. Uruchom następujący skrypt, aby przywrócić bazę danych Wide World Importers.
+5. Uruchom następujący skrypt, aby przywrócić bazę danych Wide World Importers.
 
    ```sql
    RESTORE DATABASE [Wide World Importers] FROM URL =
@@ -79,7 +76,7 @@ W programie SSMS użyj następujących kroków, aby przywrócić bazę danych Wi
 
     ![Przywracanie](./media/sql-database-managed-instance-get-started-restore/restore.png)
 
-5. Uruchom następujący skrypt, aby śledzić stan przywracania.
+6. Uruchom następujący skrypt, aby śledzić stan przywracania.
 
    ```sql
    SELECT session_id as SPID, command, a.text AS Query, start_time, percent_complete
@@ -89,7 +86,7 @@ W programie SSMS użyj następujących kroków, aby przywrócić bazę danych Wi
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-6. Po zakończeniu operacji przywracania wyświetl ją w Eksploratorze obiektów. 
+7. Po zakończeniu operacji przywracania wyświetl ją w Eksploratorze obiektów. 
 
 ## <a name="next-steps"></a>Następne kroki
 
