@@ -167,27 +167,27 @@ Podczas kopiowania danych z systemu SAP BW, następujące mapowania są używane
 | Typ danych SAP BW | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | ACCP | Int |
-| CHAR | Ciąg |
-| CLNT | Ciąg |
-| CURR | Dziesiętny |
-| CUKY | Ciąg |
-| GRU | Dziesiętny |
-| FLTP | Podwójne |
-| INT1 | Bajtów |
+| CHAR | String |
+| CLNT | String |
+| CURR | Decimal |
+| CUKY | String |
+| DEC | Decimal |
+| FLTP | Double |
+| INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| JĘZYK | Ciąg |
-| LCHR | Ciąg |
+| LANG | String |
+| LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Dziesiętny |
-| NIEPRZETWORZONE | Byte[] |
+| QUAN | Decimal |
+| RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| CIĄG | Ciąg |
-| JEDNOSTKA | Ciąg |
-| DATS | Ciąg |
-| NUMC | Ciąg |
-| TIMS | Ciąg |
+| STRING | String |
+| UNIT | String |
+| DATS | String |
+| NUMC | String |
+| TIMS | String |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
