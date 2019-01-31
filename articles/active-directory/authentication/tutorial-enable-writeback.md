@@ -3,19 +3,19 @@ title: Włączanie zapisywania zwrotnego haseł w usłudze Azure AD
 description: W tym samouczku włączysz zapisywanie zwrotne haseł, aby pobierać zmiany haseł zainicjowane w chmurze z powrotem do środowiska lokalnego usługi AD w ramach programu Azure AD Connect.
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 6cbc4fa071a45e670dae3cc6be66272bc67767f7
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5143b59028b3894d3b9a10add594dd91743a4196
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437185"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55078886"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Samouczek: włączanie zapisywania zwrotnego haseł
 

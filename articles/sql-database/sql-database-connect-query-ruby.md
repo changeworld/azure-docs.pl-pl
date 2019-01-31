@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 66819cbd65f6f044d0dac68326eb5890476964b6
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 8fa161f82cf73e61127ab67aba6ca3408c8e7c10
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993913"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197827"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z języka Ruby do wykonywania zapytań w bazie danych Azure SQL
 
@@ -28,8 +28,6 @@ W tym przewodniku Szybki start pokazano, jak używać języka [Ruby](https://www
 Do wykonania kroków tego przewodnika Szybki start niezbędne jest spełnienie następujących wymagań wstępnych:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-  
-- [Reguła zapory poziomu serwera](sql-database-get-started-portal-firewall.md) dla publicznego adresu IP komputera, który będzie używany w tym przewodniku Szybki start.
   
 - Oprogramowanie związane z językiem Ruby dla Twojego systemu operacyjnego:
   

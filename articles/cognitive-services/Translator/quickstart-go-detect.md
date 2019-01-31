@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/05/2018
 ms.author: erhopf
-ms.openlocfilehash: 84522612dbd31d406537b9679887e0f82a971b1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 31db299fba70775c85ac5b5ad1a641c2ebe2575b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000510"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221134"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka Go
 
@@ -118,7 +118,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>Tworzenie żądania
 
-Teraz gdy treść żądania została zakodowana jako dane JSON możesz utworzyć żądanie POST i wywołać interfejs API tłumaczenia tekstu w usłudze Translator.
+Teraz, gdy treść żądania została zakodowana jako dane JSON, możesz utworzyć żądanie POST i wywołać interfejs API tłumaczenia tekstu w usłudze Translator.
 
 ```go
 // Build the HTTP POST request
@@ -139,7 +139,7 @@ if err != nil {
 
 ## <a name="handle-and-print-the-response"></a>Obsługa i wyświetlanie odpowiedzi
 
-Dodaj następujący kod do funkcji `detect` , aby zdekodować odpowiedź JSON, a następnie sformatować i wyświetlić wynik.
+Dodaj następujący kod do funkcji `detect`, aby zdekodować odpowiedź JSON, a następnie sformatować i wyświetlić wynik.
 
 ```go
 // Decode the JSON response

@@ -3,19 +3,19 @@ title: Uwierzytelnianie wieloskładnikowe i samoobsługowe resetowanie haseł op
 description: W tym samouczku włączysz integracje usługi Azure Identity Protection na potrzeby uwierzytelniania wieloskładnikowego i samoobsługowego resetowania haseł, aby zmniejszyć liczbę ryzykownych zachowań.
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: fea87a711bf43ea73d3e09efeb42f5133d8f4e9f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 504e314151409732cba23af97224683eb35a7c81
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434924"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075486"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Samouczek: wyzwalanie uwierzytelniania wieloskładnikowego i zmiany hasła przy użyciu zdarzeń o podwyższonym ryzyku
 

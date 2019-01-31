@@ -6,16 +6,16 @@ services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 175203269f524f5c680345602e6382f5c26f1bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901028"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55178906"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 Wtyczka Project Acoustics Unity zapewnia okluzję, pogłos i przestrzenność dla projektów, których medium będzie rzeczywistość wirtualna i tradycyjne ekrany. Zapewnia ona sposób projektowania akustyki w grach, który nakłada intencje projektanta na opartą na fizyce symulację fal.

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/11/2018
-ms.openlocfilehash: 04a0abd0fba7ec53aebeb481ac80d36653d118b6
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 93249b7d274ce9d7928dfa46eb339da68c92b785
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384942"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163300"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Szybki start: Korzystanie z platformy .NET i języka C# w programie Visual Studio w celu nawiązywania połączenia i wykonywania zapytań w bazie danych Azure SQL Database
 
@@ -28,8 +28,6 @@ Ten przewodnik Szybki Start przedstawia sposób użycia [platformy .NET ](https:
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-  
-- [Reguła zapory poziomu serwera](sql-database-get-started-portal-firewall.md) zezwalająca na korzystanie z publicznego adresu IP używanego przez Ciebie komputera.
   
 - [Program Visual Studio 2017](https://www.visualstudio.com/downloads/), wersja Community, Professional lub Enterprise.
 

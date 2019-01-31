@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f23aa49d44e8f29f860174ebde2447fad79c8c52
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: be78c91a4fb5c1e79e7b58620f65c9f17bfb4bae
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54843382"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226489"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Tworzenie aplikacji języka Python w usłudze App Service dla systemu Linux (wersja zapoznawcza)
 
@@ -180,7 +180,7 @@ Wbudowany obraz języka Python w usłudze App Service w systemie Linux jest obec
 > [Python z PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie niestandardowego polecenia uruchamiania](how-to-configure-python.md#custom-startup-command)
+> [Konfigurowanie niestandardowego polecenia uruchamiania](how-to-configure-python.md#customize-startup-command)
 
 > [!div class="nextstepaction"]
 > [Rozwiązywanie problemów](how-to-configure-python.md#troubleshooting)

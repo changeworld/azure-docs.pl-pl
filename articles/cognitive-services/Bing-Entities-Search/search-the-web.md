@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: 2b3adf07a8522322434a6596475fa06c0df978e8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 98d624b51835f88d34ec7ffd9658e40985482498
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813604"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55181830"
 ---
 # <a name="what-is-bing-entity-search"></a>Czym jest wyszukiwanie jednostek Bing?
 
@@ -48,7 +48,7 @@ Odpowiedź zawiera obiekt [SearchResponse](https://docs.microsoft.com/rest/api/c
 > [!NOTE]
 > Odpowiedzi dotyczące jednostek są obsługiwane na wielu rynkach, ale odpowiedzi dotyczące miejsc są obsługiwane tylko w przypadku lokalizacji firmowych w USA. 
 
-Pole `entities` to obiekt [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer) zawierający listę obiektów [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) (zobacz pole `value`). Lista może zawierać jedną jednostkę dominującą, wiele jednostek uściślających lub oba te elementy. 
+Pole `entities` to obiekt [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) zawierający listę obiektów [Entity](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) (zobacz pole `value`). Lista może zawierać jedną jednostkę dominującą, wiele jednostek uściślających lub oba te elementy. 
 
 Jednostka dominująca to jednostka uznana przez usługę Bing za jedyną jednostkę spełniającą kryteria żądania (można jednoznacznie stwierdzić, jaka jednostka spełnia kryteria żądania). Jeśli kryteria żądania spełnia wiele jednostek, lista zawiera większą liczbę jednostek uściślających. Na przykład jeśli w żądaniu użyto ogólnego tytułu serii filmów, lista będzie najprawdopodobniej zawierała jednostki uściślające. Jeśli jednak w żądaniu użyto tytułu konkretnego filmu z serii, lista będzie najprawdopodobniej zawierała jedną jednostkę dominującą.
 

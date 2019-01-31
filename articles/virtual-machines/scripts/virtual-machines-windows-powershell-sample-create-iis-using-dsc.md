@@ -3,7 +3,7 @@ title: Przykładowy skrypt programu Azure PowerShell — usługi IIS przy użyci
 description: Przykładowy skrypt programu Azure PowerShell — usługi IIS przy użyciu rozszerzenia DSC
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: zarhoads
-ms.openlocfilehash: 0916ebee4295acf0b8cb4b04767fde958479ba83
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: e23a1d7d1a90065aa2f6fe954bb2b7406e2db498
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468793"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883963"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>Tworzenie maszyny wirtualnej usług IIS przy użyciu programu PowerShell
 

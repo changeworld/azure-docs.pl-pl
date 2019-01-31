@@ -7,16 +7,16 @@ author: diberry
 manager: cgronlun
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 20cd3931488f3d3cf4728b3022316b685da3277a
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 6d663dfe90bb8178b2c66b21a58d59618bac30a4
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754264"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223956"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Samouczek: Tworzenie aplikacji usługi LUIS umożliwiającej określanie intencji użytkownika
 
@@ -49,7 +49,7 @@ Ta aplikacja ma kilka intencji.
 |--|--|
 |ApplyForJob|Określa, czy użytkownik ubiega się o pracę.|
 |GetJobInformation|Określa, czy użytkownik szuka informacji dotyczących pracy w ogóle, czy jakiejś konkretnej pracy.|
-|None|Określa, czy użytkownik zadaje pytanie, na które aplikacja nie powinna odpowiadać. Ta intencja jest dostarczana jako część procesu tworzenia aplikacji i nie można jej usunąć. |
+|Brak|Określa, czy użytkownik zadaje pytanie, na które aplikacja nie powinna odpowiadać. Ta intencja jest dostarczana jako część procesu tworzenia aplikacji i nie można jej usunąć. |
 
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
 
@@ -163,7 +163,7 @@ Wróć do portalu usługi LUIS i utwórz nową intencję, która będzie określ
     |My paperwork for the holiday delivery position (Moje dokumenty dotyczące oferty pracy jako dostawcy w dni wolne od pracy)|
     |Please send my resume for the new accounting job in seattle (Wyślij mój życiorys na potrzeby nowej pracy w księgowości w Seattle)|
     |Submit resume for engineering position (Prześlij CV w odpowiedzi na ofertę pracy dla inżyniera)|
-    |This is my c.v. for post 234123 in Tampa (To jest moje CV w odpowiedzi na ofertę pracy 234123 w Tampie)|
+    |To jest Moja doświadczeń for post 234123 in Tampa (To jest moje CV w odpowiedzi na ofertę pracy 234123 w Tampie)|
 
     [![Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji ApplyForJob](media/luis-quickstart-intents-only/utterance-applyforjob.png "Zrzut ekranu przedstawiający wprowadzanie nowych wypowiedzi dla intencji ApplyForJob")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 

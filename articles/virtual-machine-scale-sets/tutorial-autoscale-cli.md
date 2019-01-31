@@ -3,7 +3,7 @@ title: Samouczek — skalowanie automatyczne zestawu skalowania przy użyciu int
 description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure automatycznie skalować zestaw skalowania maszyn wirtualnych w odpowiedzi na wzrosty i spadki zapotrzebowania na procesor CPU
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b30c3a2e9f06cf02f27636592634884a7c3fdfc8
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471309"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55170712"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: Automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
 Podczas tworzenia zestawu skalowania musisz zdefiniować liczbę wystąpień maszyn wirtualnych, które chcesz uruchamiać. W odpowiedzi na zmieniające się zapotrzebowanie aplikacji możesz automatycznie zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych. Skalowanie automatyczne pozwala spełniać potrzeby klientów lub reagować na zmiany wydajności aplikacji w całym cyklu jej życia. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -41,13 +41,13 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#create):
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group):
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss#create). W poniższym przykładzie pokazano tworzenie zestawu skalowania z liczbą wystąpień równą *2* i generowanie kluczy SSH, jeśli nie istnieją:
+Teraz utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss). W poniższym przykładzie pokazano tworzenie zestawu skalowania z liczbą wystąpień równą *2* i generowanie kluczy SSH, jeśli nie istnieją:
 
 ```azurecli-interactive
 az vmss create \
@@ -137,7 +137,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Gdy narzędzie **stress** wyświetli dane wyjściowe podobne do *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, naciśnij klawisz *Enter*, aby powrócić do wiersza polecenia.
+Kiedy narzędzie **stress** pokazuje dane wyjściowe podobne do następujących: *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, naciśnij klawisz *Enter*, aby powrócić do wiersza polecenia.
 
 Aby potwierdzić obecność wygenerowanego obciążenia procesora CPU przez narzędzie **stress**, sprawdź aktywne obciążenie systemu za pomocą narzędzia **top**:
 
@@ -165,7 +165,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-I ponownie, gdy narzędzie **stress** wyświetli dane wyjściowe podobne do *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, naciśnij klawisz *Enter*, aby powrócić do wiersza polecenia.
+Ponownie kiedy narzędzie **stress** pokazuje dane wyjściowe podobne do następujących: *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, naciśnij klawisz *Enter*, aby powrócić do wiersza polecenia.
 
 Zamknij połączenie z drugim wystąpieniem maszyny wirtualnej. Narzędzie **stress** będzie kontynuować działanie na wystąpieniu maszyny wirtualnej.
 
