@@ -5,19 +5,19 @@ services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: aeaa56d192899ef12b698ebbc5f19305f79f4ff1
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e81073850ebb45e82f2f702bec976eed4725f62e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706266"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462566"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core i programu Visual Studio
 
@@ -47,7 +47,7 @@ Ten przewodnik zawiera informacje na temat wykonywania następujących czynnośc
 
    ![Ustawienia konfiguracji platformy Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
 
-   Wybierz pozycję **Dalej: uwierzytelnianie** po zakończeniu.
+   Wybierz opcję **Dalej: uwierzytelnianie** po zakończeniu.
 
 1. Wybierz żądane ustawienie kontroli dostępu na podstawie ról (RBAC, role-based access control). Usługa Azure Dev Spaces obsługuje klastry z włączoną lub wyłączoną kontrolą RBAC.
 
