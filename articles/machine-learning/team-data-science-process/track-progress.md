@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7745a53084f4477f7b736ea9d130ffd3eed771f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134306"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451992"
 ---
 # <a name="tracking-the-progress-of-data-science-projects"></a>Śledzenie postępu projekty do nauki o danych
 
@@ -39,7 +39,7 @@ Poniżej przedstawiono prosty przykład pulpitu nawigacyjnego, przeznaczonego do
 
 Pozostałe panele Pokaż zbiorczego diagramu przepływu (CFD), raport dotyczący wypalenia i burnup dla projektu:
 
-- **Lewym dolnym**: CFD ilość pracy w danym stanie pokazujący zatwierdzonych w kolorze szarym zatwierdzone w kolorze niebieskim i wykonywane w kolorze zielonym.
+- **Lewym dolnym**:  CFD ilość pracy w danym stanie pokazujący zatwierdzonych w kolorze szarym zatwierdzone w kolorze niebieskim i wykonywane w kolorze zielonym.
 - **Górnego prawego**: raport dotyczący wypalenia wykresu pracy od lewej do kompletne i pozostały czas).
 - **Na dole z prawej**: burnup wykresu pracy, który został wykonany w porównaniu z łączną ilość pracy.
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ed5f3db3f9f8f7231d8f865f69cd11c2430054b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024318"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297493"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
@@ -42,9 +42,10 @@ Aby skopiować dane z usługi Office 365 na platformie Azure, musisz wykonać na
 - Administrator dzierżawy usługi Office 365 należy wykonać akcje na pokład, zgodnie z opisem [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding).
 - Utwórz i skonfiguruj aplikację sieci web usługi Azure AD w usłudze Azure Active Directory.  Aby uzyskać instrukcje, zobacz [Utwórz aplikację usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
 - Zanotuj następujące wartości, które będą używane do definiowania połączonej usługi dla usługi Office 365:
-    - Identyfikator dzierżawy.  Aby uzyskać instrukcje, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+    - Identyfikator dzierżawy. Aby uzyskać instrukcje, zobacz [uzyskanie Identyfikatora dzierżawy](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
     - Klucz Identyfikatora aplikacji i aplikacji.  Aby uzyskać instrukcje, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
-- Dodaj tożsamość użytkownika, który powoduje ustawienie żądania dostępu do danych jako właściciel aplikacji sieci web usługi Azure AD (aplikacji internetowej z usługi Azure AD > Ustawienia > właścicieli > Dodaj właściciela).
+- Dodaj tożsamość użytkownika, który powoduje ustawienie żądania dostępu do danych jako właściciel aplikacji sieci web usługi Azure AD (aplikacji internetowej z usługi Azure AD > Ustawienia > właścicieli > Dodaj właściciela). 
+    - Tożsamość użytkownika musi być w organizacji usługi Office 365 są pobieranie danych z i nie może być użytkownikiem-gościem.
 
 ## <a name="approving-new-data-access-requests"></a>Zatwierdzanie żądań dostępu do nowych danych
 

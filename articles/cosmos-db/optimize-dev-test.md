@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
-ms.openlocfilehash: 7e75ee6e7c9cd30911dd00a81cdd50b688346985
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3bb39fe99e612fb19f12fd049ebb8f600e48373e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036481"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457874"
 ---
-# <a name="optimizing-for-development-and-testing-in-azure-cosmos-db"></a>Optymalizacja do tworzenia i testowania w usłudze Azure Cosmos DB
+# <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optymalizacja tworzenia i testowania kosztów w usłudze Azure Cosmos DB
 
 W tym artykule opisano różne opcje do użycia usługi Azure Cosmos DB do tworzenia i testowania za darmo kosztów.
 

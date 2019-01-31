@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: rogarana
-ms.component: queues
-ms.openlocfilehash: b46aea2a50b12f82858b8f465f8dfbfff8aa0bbe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.subservice: queues
+ms.openlocfilehash: 10b85b2efd4359617ea9aab5838129e7e96ed605
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165017"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463212"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Wykonaj operacjami usługi Azure Queue storage przy użyciu programu Azure PowerShell
 

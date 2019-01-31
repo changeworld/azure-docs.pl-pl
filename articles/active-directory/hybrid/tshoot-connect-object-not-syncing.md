@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d10b8760409d5deb0828d15e8c0daf50853a9624
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158268"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296609"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Rozwiązywanie problemów z obiektem, który nie jest synchronizowany z usługą Azure AD
 
@@ -28,6 +28,34 @@ Jeśli obiekt nie jest synchronizowany zgodnie z oczekiwaniami z usługą Azure 
 
 >[!IMPORTANT]
 >Dla usługi Azure Active Directory (AAD) Connect wdrożenia przy użyciu wersji 1.1.749.0 lub wyższą od nich, użyj [Rozwiązywanie problemów z zadaniem](tshoot-connect-objectsync.md) w kreatorze, aby rozwiązać problemy z synchronizacją obiektu. 
+
+## <a name="synchronization-process"></a>Proces synchronizacji
+
+Przed sprawdzeniem problemów z synchronizacją, Przyjrzyjmy się **program Azure AD Connect** w procesie synchronizacji:
+
+  ![Proces synchronizacji programu Azure AD Connect](./media/tshoot-connect-object-not-syncing/syncingprocess.png)
+
+### <a name="terminology"></a>**Terminologia**
+
+* **CS:** Obszar łączników tabeli w bazie danych.
+* **MV:** Metaverse, tabeli w bazie danych.
+* **USŁUGI AD:** Usługa Active Directory
+* **USŁUGI AAD:** Usługa Azure Active Directory
+
+### <a name="synchronization-steps"></a>**Kroki synchronizacji**
+Proces synchronizacji obejmuje następujące kroki:
+
+1. **Importuj z usługi AD:** **Usługi Active Directory** obiekty są przenoszone do **usług AD CS**.
+
+2. **Importuj z usługi AAD:** **Usługa Azure Active Directory** obiekty są przenoszone do **AAD CS**.
+
+3. **Synchronizacja:** **Reguły synchronizacji ruchu przychodzącego** i **reguły synchronizacji ruchu wychodzącego** są uruchamiane według numerze pierwszeństwa od niższych do wyższych. Aby wyświetlić reguły synchronizacji, możesz przejść do **Synchronization Rules Editor** z aplikacji klasycznych. **Reguły synchronizacji ruchu przychodzącego** zapewnia dodatkowe dane z CS MV. **Reguły synchronizacji ruchu wychodzącego** przenosi dane z MV do CS.
+
+4. **Eksportowanie do usługi AD:** Po uruchomieniu synchronizacji, obiekty są eksportowane z usług AD CS **usługi Active Directory**.
+
+5. **Eksportowanie do usługi AAD:** Po uruchomieniu synchronizacji, obiekty są eksportowane z usługi AAD CS **usługi Azure Active Directory**.
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 Aby znaleźć błędy, którą chcesz Przyjrzyj się kilku różnych miejscach w następującej kolejności:
 
@@ -123,7 +151,28 @@ W **Menedżera usługi synchronizacji**, kliknij przycisk **wyszukiwanie magazyn
 
 W **wyniki wyszukiwania** okna, kliknij obiekt.
 
-Jeśli go nie znaleziono obiektu, następnie go nie osiągnęły jeszcze obiektu metaverse. Wyszukaj obiektu w usłudze Active Directory w dalszym ciągu [obszaru łącznika](#connector-space-object-properties). Może to być błąd z synchronizacji, która blokuje obiekt do obiektu metaverse lub może być zastosowany filtr.
+Jeśli go nie znaleziono obiektu, następnie go nie osiągnęły jeszcze obiektu metaverse. Kontynuuj wyszukiwanie obiektu w **usługi Active Directory** [obszaru łącznika](#connector-space-object-properties). Jeśli okaże się obiektu w **usługi Active Directory** przestrzeni łącznika, następnie może być błąd z synchronizacji, która blokuje obiekt do obiektu metaverse lub może być stosowane filtru określania zakresu reguły synchronizacji.
+
+### <a name="object-not-found-in-the-mv"></a>Nie można odnaleźć obiektu w MV
+Jeśli obiekt jest w **usługi Active Directory** CS, ale nie znajduje się w MV, a następnie zastosowaniu filtru określania zakresu. 
+
+* Przyjrzyj się filtru określania zakresu przejdź do menu aplikacji pulpitu i kliknij **Synchronization Rules Editor**. Filtruj zasady mające zastosowanie obiektu przez dostosowanie poniższym filtrze.
+
+  ![Wyszukaj reguły synchronizacji ruchu przychodzącego](./media/tshoot-connect-object-not-syncing/syncrulessearch.png)
+
+* Wyświetlanie każdą regułę z góry na liście i sprawdź **filtru Scoping**. W poniższych filtru, określania zakresu, jeśli **isCriticalSystemObject** wartość null lub wartość FALSE lub jest pusty, a następnie znajduje się w zakresie.
+
+  ![Wyszukaj reguły synchronizacji ruchu przychodzącego](./media/tshoot-connect-object-not-syncing/scopingfilter.png)
+
+* Przejdź do [importu CS](#cs-import) atrybutu z listy i wyboru filtru, który blokuje obiektu, aby przejść do MV. Oznacza, km **obszaru łącznika** atrybut Lista będzie zawierała tylko atrybuty inną niż null i nie jest pusty. Na przykład jeśli **isCriticalSystemObject** nie są wyświetlane na liście, a następnie oznacza, że wartość tego atrybutu o wartości null ani być pusta.
+
+### <a name="object-not-found-in-the-aad-cs"></a>Nie można odnaleźć obiektu w CS usługi AAD
+Jeśli obiekt nie jest obecny w **obszaru łącznika** z **usługi Azure Active Directory**. Jednak znajduje się on na MV, Przyjrzyj się filtru Scoping **ruchu wychodzącego** reguły odpowiadającego **obszaru łącznika** i sprawdź, jeśli obiekt jest odfiltrowana z powodu [MV atrybuty](#mv-attributes) nie spełnia kryteriów.
+
+* Aby wyświetlić wychodzącego filtru określania zakresu, wybierz odpowiednie reguły dla obiektu, dostosowując poniższym filtrze. Wyświetl każdej reguły i spójrz na odpowiednich [atrybut MV](#mv-attributes) wartość.
+
+  ![Wyszukaj reguły ruchu wychodzącego Synchroniztion](./media/tshoot-connect-object-not-syncing/outboundfilter.png)
+
 
 ### <a name="mv-attributes"></a>Atrybuty MV
 Na karcie atrybuty można zobaczyć wartości, a następnie łącznika, które przyczyniły się go.  

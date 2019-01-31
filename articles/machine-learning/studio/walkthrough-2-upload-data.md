@@ -1,6 +1,6 @@
 ---
-Tytuł: "Krok 2: Przekazywanie danych do eksperymentu usługi Machine Learning Studio' titleSuffix: Opis usługi Azure Machine Learning Studio: "Krok 2 programowanie przewodnik rozwiązania do analizy predykcyjnej: Przekazywanie przechowywanych danych publicznych do usługi Azure Machine Learning Studio. "
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: "Krok 2: Przekazywanie danych do eksperymentu usługi Machine Learning Studio' titleSuffix: Opis usługi Azure Machine Learning Studio: "Krok 2 programowanie przewodnik rozwiązania do analizy predykcyjnej: Przekazywanie przechowywanych danych publicznych do usługi Azure Machine Learning Studio. "
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
 ---

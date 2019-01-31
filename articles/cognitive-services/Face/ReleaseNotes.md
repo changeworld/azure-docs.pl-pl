@@ -10,16 +10,24 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 545f3669f04c3cd30f4766357c5d582dfe515c80
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 40ad849525ab0afb36754012f735a52f6b5d520d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215592"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297365"
 ---
 # <a name="face-api-release-notes"></a>Informacje o wersji interfejsu API rozpoznawania twarzy
 
 Ten artykuł odnosi się do usługi interfejsu API rozpoznawania twarzy w wersji 1.0.
+
+### <a name="release-changes-in-january-2019"></a>Zmiany wersji w styczniu 2019 r
+
+* Dodano funkcję migawki, aby obsługiwać migrację danych między subskrypcjami: [Migawka](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/face/snapshot).
+
+### <a name="release-changes-in-october-2018"></a>Zmiany wersji października 2018 r.
+
+* Opis Elegancja `status`, `createdDateTime`, `lastActionDateTime`, i `lastSuccessfulTrainingDateTime` w [grupie — pobieranie stanu w szkolenia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395247), [LargePersonGroup — pobieranie stanu w szkolenia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae32c6ac60f11b48b5aa5)i [ LargeFaceList - pobiera stan szkolenia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a1582f8d2de3616c086f2cf).
 
 ### <a name="release-changes-in-may-2018"></a>Zmiany wersji w maju 2018 r.
 

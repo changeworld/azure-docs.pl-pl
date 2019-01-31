@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 8a5c25cd5836c3bde630684eff24da7dc8b62fc6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.subservice: common
+ms.openlocfilehash: 306b94fbe23e0ae92dcd59f7a87b7bb58ef7c3b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855809"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454661"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostyka i odzyskiwanie po błędach zadań usługi Azure Import/Export
 Dla każdego dysku, przetwarzania usługa Azure Import/Export tworzy dziennik błędów w skojarzonego konta magazynu. Można również włączyć pełne rejestrowanie, ustawiając `LogLevel` właściwości `Verbose` podczas wywoływania [umieścić zadania](/rest/api/storageimportexport/jobs) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs) operacji.

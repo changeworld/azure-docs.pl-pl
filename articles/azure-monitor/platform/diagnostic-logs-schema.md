@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ebadf69d5740dc9b9907880917516419129db170
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6470e2e48854d091c219fb4ec3224e87b1567dd7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54890098"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300221"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Obsługiwane usługi, schematów i kategorie dzienników diagnostycznych platformy Azure
 
@@ -76,7 +76,7 @@ Schemat dla dzienników diagnostycznych zasobów zależy od kategorii zasobów i
 | Service Bus |[Dzienniki diagnostyczne platformy Azure Service Bus](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Usługa Azure SQL Database rejestrowania diagnostycznego](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[Dzienniki diagnostyczne zadania](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| Traffic Manager | Schemat nie jest dostępna. |
+| Traffic Manager | [Schemat dziennika usługi Traffic Manager](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Sieci wirtualne | Schemat nie jest dostępna. |
 | Bramy sieci wirtualnej | Schemat nie jest dostępna. |
 

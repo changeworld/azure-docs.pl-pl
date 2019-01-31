@@ -10,18 +10,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 33326aa0f033800268d0eb439f9c8c81b4d2e675
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f0c9c06e953df16199acda5f821fdac35b86f07f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094397"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477560"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 

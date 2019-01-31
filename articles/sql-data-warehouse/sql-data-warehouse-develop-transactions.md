@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 121fa87cb295799fdcd3de5e627fb894efc24c49
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2f463620f43ae95535a55005ebe9732495b89dc9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301269"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456667"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>W usłudze SQL Data Warehouse za pomocą transakcji
 Porady dotyczące wykonywania transakcji w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.

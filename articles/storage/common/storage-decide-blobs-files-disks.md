@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 9819b2bf3c5e5a07d788dc7f51b674a07e6c41ef
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: common
+ms.openlocfilehash: 2c8f27c9b5b9c13cd6cb722bafb23dd19b944d27
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972341"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474687"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
 
@@ -26,7 +26,7 @@ Poniższa tabela porównuje pliki, obiekty BLOB i dyski oraz przedstawiono przyk
 | Cecha | Opis | Kiedy stosować |
 |--------------|-------------|-------------|
 | **Usługa pliki Azure** | Udostępnia interfejs dla protokołu SMB, bibliotek klienckich i [interfejsu REST](/rest/api/storageservices/file-service-rest-api) umożliwiającą dostęp z dowolnego miejsca do przechowywanych plików. | Chcesz metodą "lift and shift" aplikacji w chmurze, która już korzysta z systemu plików natywnych interfejsów API do udostępniania danych pomiędzy tym programem i innych aplikacji działających na platformie Azure.<br/><br/>Chcesz przechowywać programowania i debugowania narzędzi, które muszą być dostępne z wielu maszyn wirtualnych. |
-| **Obiekty BLOB platformy Azure** | Zawiera biblioteki klienckie i [interfejsu REST](/rest/api/storageservices/blob-service-rest-api) umożliwiająca pozbawionych struktury danych są przechowywane i używane w bardzo dużej skali w blokowych obiektach blob.<br/><br/>Obsługuje również [usługi Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) dla przedsiębiorstw rozwiązań do analizy danych big data. | Chcesz aplikację do obsługi przesyłania strumieniowego i scenariuszy dostępu swobodnego.<br/><br/>Chcesz można było uzyskać dostęp do danych aplikacji z dowolnego miejsca.<br/><br/>Chcesz tworzyć usługi data lake enterprise w systemie Azure i wykonywać analizy danych big data. |
+| **Azure Blobs** | Zawiera biblioteki klienckie i [interfejsu REST](/rest/api/storageservices/blob-service-rest-api) umożliwiająca pozbawionych struktury danych są przechowywane i używane w bardzo dużej skali w blokowych obiektach blob.<br/><br/>Obsługuje również [usługi Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) dla przedsiębiorstw rozwiązań do analizy danych big data. | Chcesz aplikację do obsługi przesyłania strumieniowego i scenariuszy dostępu swobodnego.<br/><br/>Chcesz można było uzyskać dostęp do danych aplikacji z dowolnego miejsca.<br/><br/>Chcesz tworzyć usługi data lake enterprise w systemie Azure i wykonywać analizy danych big data. |
 | **Dyski platformy Azure** | Zawiera biblioteki klienckie i [interfejsu REST](/rest/api/compute/manageddisks/disks/disks-rest-api) , umożliwia danych można trwale przechowywane i udostępniane z dołączonego wirtualnego dysku twardego. | Chcesz lift- and -shift aplikacje, które używają interfejsów API systemu plików natywnej do odczytu i zapisu danych na stałych dyskach.<br/><br/>Chcesz przechowywać dane, które nie są wymagane były dostępne z zewnątrz maszyny wirtualnej, do której jest dołączony dysk. |
 
 ## <a name="comparison-files-and-blobs"></a>Porównania: Pliki i obiekty BLOB
@@ -35,7 +35,7 @@ W poniższej tabeli porównano usługi Azure Files za pomocą obiektów blob pla
   
 ||||  
 |-|-|-|  
-|**Atrybut**|**Obiekty BLOB platformy Azure**|**Usługa pliki Azure**|  
+|**Atrybut**|**Azure Blobs**|**Usługa pliki Azure**|  
 |Opcje trwałości|LRS, ZRS, GRS, RA-GRS|LRS, ZRS, GRS|  
 |Ułatwienia dostępu|Interfejsy API REST|Interfejsy API REST<br /><br /> Protokół SMB 2.1 i protokołu SMB 3.0 (system standardowych plikowych interfejsów API)|  
 |Łączność|Interfejsy API REST — na całym świecie|Interfejsy API REST — na całym świecie<br /><br /> Protokół SMB 2.1--w obrębie regionu<br /><br /> Protokół SMB 3.0 — na całym świecie|  

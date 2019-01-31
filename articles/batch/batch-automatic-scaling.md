@@ -3,7 +3,7 @@ title: Automatyczne skalowanie węzłów obliczeniowych w puli usługi Azure Bat
 description: Włącz automatyczne skalowanie na pulę chmury w celu dynamicznego dostosowania liczby węzłów obliczeniowych w puli.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab41211fb0b0b6360bdbc255e367d0492c2438ed
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fa5588ae31e63ae54e654ef26563c7570fe4cd13
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330973"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459846"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę skalowania automatycznego skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -129,7 +129,7 @@ Te typy są obsługiwane w formule:
 * ciąg
 * Sygnatura czasowa — sygnatura czasowa jest złożone struktury, która zawiera następujące elementy:
 
-  * rok
+  * rocznie
   * miesiąc (1-12)
   * dzień (1-31)
   * dzień tygodnia (w formacie numer; na przykład 1 dla kalendarza poniedziałek)
@@ -455,7 +455,7 @@ Możesz ocenić formuły, zanim zostaną one zastosowane do puli. W ten sposób 
 
 Aby ocenić formułę skalowania automatycznego, należy włączyć Skalowanie automatyczne w puli z prawidłową formułę. Aby przetestować formuły w puli, która nie ma jeszcze z włączonym skalowaniem automatycznym, użyj formuły jednowierszowych `$TargetDedicatedNodes = 0` po pierwszym włączeniu funkcji skalowania automatycznego. Następnie użyj jednego z następujących do oceny formułę, którą chcesz przetestować:
 
-* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) lub [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
+* [BatchClient.PoolOperations.EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) or [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
     Te metody .NET usługi Batch wymagają identyfikator istniejącej puli i ciąg zawierający formułę skalowania automatycznego do oceny.
 
@@ -611,7 +611,7 @@ $TargetDedicatedNodes = max(0, min($targetVMs, 20));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>Przykład 3: Uwzględniająca zadań równoległych
+### <a name="example-3-accounting-for-parallel-tasks"></a>Przykład 3: Dla zadań równoległych
 W tym przykładzie dopasowuje rozmiar puli na podstawie liczby zadań. Ta formuła również uwzględnia [MaxTasksPerComputeNode] [ net_maxtasks] wartość, która została ustawiona dla puli. Takie podejście jest przydatne w sytuacjach, w którym [równoległe wykonywanie zadań](batch-parallel-node-tasks.md) została włączona w puli.
 
 ```csharp

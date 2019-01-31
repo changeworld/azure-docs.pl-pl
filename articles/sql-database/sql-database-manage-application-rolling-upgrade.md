@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: 1aa3960e3a974703cfecec2bd28fc41f74f7df96
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 50f6f114a4d90f48218f751e1649e8694e664491
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238411"
+ms.locfileid: "55295750"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Zarządzanie przeprowadzania uaktualnienia równoległych aplikacji w chmurze przy użyciu aktywnej replikacji geograficznej bazy danych SQL
 
@@ -54,7 +54,7 @@ Po wykonaniu kroków przygotowania, aplikacja jest gotowa do rzeczywistego uaktu
 Jeśli uaktualnianie zakończone pomyślnie, możesz teraz przystąpić do przełączania użytkowników końcowych w uaktualnionym kopii aplikacji. Staną się teraz miejscem produkcyjnym.  Przełączanie obejmuje kilka kroków pokazanych na poniższym diagramie.
 
 1. Aktywuj operację zamiany między środowiskami produkcyjnym i przejściowym miejsc aplikacji sieci web (6). Przełączą się adresy URL dwa gniazda. Teraz `contoso.azurewebsites.net` wskaże witryny sieci web i bazy danych (środowisko produkcyjne) w wersji V2.  
-2. Jeśli nie potrzebujesz już wersji V1 stało się tymczasowej kopii po wymiany, można zlikwidować envoronment przemieszczania (7).
+2. Jeśli nie potrzebujesz już wersji V1 stało się tymczasowej kopii po wymiany, można zlikwidować środowisko przejściowe (7).
 
 ![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/option1-3.png)
 
@@ -111,7 +111,7 @@ Po wykonaniu kroków przygotowania, środowisko przejściowe jest gotowy do uakt
 Jeśli uaktualnianie zakończone pomyślnie, możesz teraz przystąpić do użytkowników końcowych przełączyć się do aplikacji w wersji V2. Na poniższym diagramie przedstawiono kroki do wykonania.
 
 1. Aktywuj operację zamiany między środowiskami produkcyjnym i przejściowym miejsc aplikacji sieci web w regionie podstawowym (13) i region kopii zapasowej (14). V2 teraz aplikacja staje się miejscem produkcyjnym, przy użyciu kopii w regionie kopii zapasowej.
-2. Można zlikwidować środowisko przejściowe, jeśli nie potrzebujesz już aplikacji (15 i 16) w wersji 1.  
+2. Jeśli nie potrzebujesz już aplikacji (15 i 16) w wersji 1, można zlikwidować środowisko przejściowe.  
 
 ![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/option2-3.png)
 

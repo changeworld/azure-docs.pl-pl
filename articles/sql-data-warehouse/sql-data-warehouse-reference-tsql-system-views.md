@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: c4663c71bb3aee3547174345cfe9fb1d06c4015e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6e68fe624a92d0a2d5a8accd3f34b1c5c10f2868
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256208"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472171"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Widoki systemowe, obsługiwany w usłudze Azure SQL Data Warehouse
 Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse.
@@ -104,8 +104,8 @@ Następujące dynamiczne widoki zarządzania mają zastosowanie do usługi SQL D
 * [sys.partition_parameters](https://msdn.microsoft.com/library/ms175054.aspx)
 * [sys.partition_range_values](https://msdn.microsoft.com/library/ms187780.aspx)
 * [sys.partition_schemes](https://msdn.microsoft.com/library/ms189752.aspx)
-* [sys.PARTITIONS](https://msdn.microsoft.com/library/ms175012.aspx)
-* [sys.Procedures](https://msdn.microsoft.com/library/ms188737.aspx)
+* [sys.partitions](https://msdn.microsoft.com/library/ms175012.aspx)
+* [sys.procedures](https://msdn.microsoft.com/library/ms188737.aspx)
 * [sys.schemas](https://msdn.microsoft.com/library/ms176011.aspx)
 * [sys.securable_classes](https://msdn.microsoft.com/library/ms408301.aspx)
 * [sys.sql_expression_dependencies](https://msdn.microsoft.com/library/bb677315.aspx)

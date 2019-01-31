@@ -1,5 +1,5 @@
 ---
-Tytuł: Wdrażanie i korzystanie titleSuffix: Opis usługi Azure Machine Learning Studio: Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Wdrażanie i korzystanie titleSuffix: Opis usługi Azure Machine Learning Studio: Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

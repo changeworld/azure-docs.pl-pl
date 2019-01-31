@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 0c46ba3d2fcd59f43df2383c3e0471fa36217536
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551531"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300255"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Wielomodelowa możliwości usługi Azure SQL Database
 
@@ -50,7 +50,7 @@ Relacje wykresu i możliwości zapytań grafu są zintegrowane z instrukcji Tran
 
 Nie ma nic, który może osiągnąć bazy danych grafów, które nie mogą być osiągnięte relacyjnej bazy danych. Jednak bazy danych grafów może ułatwić określenie niektórych zapytań. Twoją decyzję, aby wybrać jedno zamiast drugiego może bazować na następujące czynniki:
 
-- Model danych hierarchicznych, gdzie jeden węzeł może mieć wielu elementów nadrzędnych, więc nie można używać HieararchyId
+- Model danych hierarchicznych, gdzie jeden węzeł może mieć wielu elementów nadrzędnych, więc nie można używać HierarchyId
 - Model ma Twoja aplikacja zawiera złożone relacje wiele do wielu; zgodnie z rozwojem aplikacji są dodawane nowe relacje.
 - Potrzebujesz przeanalizować wzajemnie połączonych danych i relacje.
 
@@ -96,7 +96,7 @@ Usługa Azure SQL Database udostępnia również wyspecjalizowane [Indeksy przes
 Program SQL Server udostępnia to zaawansowana platforma do tworzenia rozbudowanych aplikacji do zarządzania danymi z częściową strukturą. Obsługa XML jest zintegrowana z wszystkich składników w programie SQL Server i zawiera następujące części:
 
 - Typ danych xml. Wartości XML mogą być przechowywane w sposób natywny w kolumnie Typ danych xml, które mogą być wpisana zgodnie z kolekcji schematów XML lub lewym bez typu. Umożliwia Indeksowanie kolumn XML.
-- Możliwość określenia XQuery zapytanie XML — dane przechowywane w kolumnach i zmiennych typu xml. Funkcje języka XQUery może służyć w każdym zapytaniu języka Transact-SQL, którego dostęp z dowolnego modelu danych, którego używasz w bazie danych.
+- Możliwość określenia XQuery zapytanie XML — dane przechowywane w kolumnach i zmiennych typu xml. Funkcje języka XQuery może służyć w każdym zapytaniu języka Transact-SQL, którego dostęp z dowolnego modelu danych, którego używasz w bazie danych.
 - Automatyczne indeksowanie wszystkich elementów w dokumentach XML przy użyciu [podstawowy indeks XML](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#primary-xml-index) lub określić dokładną ścieżek, które powinny być indeksowane, za pomocą [pomocniczy indeks XML](https://docs.microsoft.com/sql/relational-databases/xml/xml-indexes-sql-server#secondary-xml-indexes).
 - OPENROWSET, który umożliwia ładowanie zbiorcze danych XML.
 - Przekształcanie danych relacyjnych w formacie XML.

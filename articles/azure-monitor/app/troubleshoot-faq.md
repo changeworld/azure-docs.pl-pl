@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: a8c371d9d221ac6232c9293f6ca3192f163dfacb
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 115be0ad1b7dec44f036f6d50c2ac30ceba37ba7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156293"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457092"
 ---
-# <a name="application-insights-frequently-asked-questions"></a>Usługa Application Insights: Często zadawane pytania
+# <a name="application-insights-frequently-asked-questions"></a>Application Insights: Często zadawane pytania
 
 ## <a name="configuration-problems"></a>Problemy z konfiguracją
 *Mam problem z ustawienie mojej:*
@@ -121,7 +121,7 @@ Z innych źródeł, jeśli można je skonfigurować:
 * [Diagnostyka Azure](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Importowanie do analizy](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
 * [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
-* [Program Logstash](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
+* [Logstash](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>Można odfiltrować lub zmodyfikować dane telemetryczne?
 
@@ -245,42 +245,51 @@ Firma Microsoft zaleca korzystanie z naszych zestawów SDK i użyj [interfejs AP
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Czy mogę monitorować serwer sieci web do sieci intranet
 
-Poniżej przedstawiono dwie metody:
+Tak, ale należy zezwolić na ruch z usługami firmy Microsoft przez wyjątki zapory lub serwera proxy przekierowania.
+- QuickPulse `rt.services.visualstudio.com:443` 
+- ApplicationIdProvider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
-### <a name="firewall-door"></a>Drzwi zapory
 
-Zezwalaj na serwerze sieci web do wysyłania telemetrii do naszych punktów końcowych https://dc.services.visualstudio.com:443 i https://rt.services.visualstudio.com:443. 
+Przejrzyj naszą listę usług i adresy IP [tutaj](../../azure-monitor/app/ip-addresses.md).
 
-### <a name="proxy"></a>Serwer proxy
+### <a name="firewall-exception"></a>Wyjątek zapory
 
-Kierowanie ruchu z serwera bramy w sieci intranet, zastępując tych ustawień w przykładzie plik ApplicationInsights.config. Jeśli te właściwości "Punktu końcowego" nie są obecne w pliku config, w ramach tych zajęć będzie używać wartości domyślne, pokazana w poniższym przykładzie.
+Zezwalaj na serwerze sieci web do wysyłania telemetrii do naszych punktów końcowych. 
 
-#### <a name="example-applicationinsightsconfig"></a>Przykładowy plik ApplicationInsights.config:
+### <a name="proxy-redirect"></a>Przekierowania serwera proxy
+
+Kierowanie ruchu z serwera bramy w sieci intranet, zastępując punktów końcowych w konfiguracji.
+Jeśli te właściwości "Punktu końcowego" nie są obecne w pliku config, w ramach tych zajęć użyje wartości domyślne, pokazana poniżej w przykładzie plik ApplicationInsights.config. 
+
+Brama powinna kierować ruch do naszych punkt końcowy adres podstawowy. W konfiguracji, Zastąp wartości domyślnych za `http://<your.gateway.address>/<relative path>`.
+
+
+#### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Przykład ApplicationInsights.config przy użyciu domyślnych punktów końcowych:
 ```xml
 <ApplicationInsights>
+  ...
+  <TelemetryModules>
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector"/>
+      <QuickPulseServiceEndpoint>https://rt.services.visualstudio.com/QuickPulseService.svc</QuickPulseServiceEndpoint>
+    </Add>
+  </TelemetryModules>
     ...
-    <TelemetryChannel>
-         <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
-    </TelemetryChannel>
-    ...
-    <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
-        <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
-    </ApplicationIdProvider>
-    ...
+  <TelemetryChannel>
+     <EndpointAddress>https://dc.services.visualstudio.com/v2/track</EndpointAddress>
+  </TelemetryChannel>
+  ...
+  <ApplicationIdProvider Type="Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId.ApplicationInsightsApplicationIdProvider, Microsoft.ApplicationInsights">
+    <ProfileQueryEndpoint>https://dc.services.visualstudio.com/api/profiles/{0}/appId</ProfileQueryEndpoint>
+  </ApplicationIdProvider>
+  ...
 </ApplicationInsights>
 ```
 
 _Uwaga ApplicationIdProvider jest dostępna, począwszy od v2.6.0_
 
-Brama powinna kierować ruch do https://dc.services.visualstudio.com:443
 
-Zastąp wartości powyżej za pomocą: `http://<your.gateway.address>/<relative path>`
  
-Przykład: 
-```
-http://<your.gateway.endpoint>/v2/track 
-http://<your.gateway.endpoint>/api/profiles/{0}/apiId
-```
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Na serwerze sieci intranet można uruchomić testy sieci web dostępności?
 

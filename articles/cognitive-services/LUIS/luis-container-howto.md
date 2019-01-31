@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: e6f13994d404d58082b953fc98ac6028eea2e43e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216209"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296906"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -32,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby można było uruchomić kontener usługi LUIS, musisz mieć następujące czynności: 
 
-|Wymagany|Przeznaczenie|
+|Wymagane|Przeznaczenie|
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
@@ -40,11 +40,7 @@ Aby można było uruchomić kontener usługi LUIS, musisz mieć następujące cz
 
 ### <a name="the-host-computer"></a>Komputer-host
 
-**Hosta** komputer, który uruchamia kontener platformy docker. Może być komputer w środowisku lokalnym lub docker obsługującego usługę z platformy Azure, w tym:
-
-* [Azure Kubernetes Service](../../aks/index.yml)
-* [Azure Container Instances](../../container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) wdrażany klaster do [usługi Azure Stack](../../azure-stack/index.yml). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
@@ -52,9 +48,11 @@ Ten kontener obsługuje minimalne i zalecane wartości ustawień:
 
 |Ustawienie| Minimalne | Zalecane |
 |-----------|---------|-------------|
-|Rdzenie<BR>`--cpus`|1 rdzeń<BR>co najmniej 2,6 gigaherc (GHz) lub szybszy|1 rdzeń|
+|Rdzenie<BR>`--cpus`|1 rdzeń|1 rdzeń|
 |Memory (Pamięć)<BR>`--memory`|2 GB|4 GB|
 |Transakcje na sekundę<BR>(TPS)|20 TPS|40 TPS|
+
+Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
 
 `--cpus` i `--memory` ustawienia są używane jako część `docker run` polecenia.
 
@@ -66,17 +64,12 @@ Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pul
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
+Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera.
+
 Aby uzyskać pełny opis dostępnych tagów takich jak `latest` używane w poprzednim poleceniu, zobacz [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) w usłudze Docker Hub.
 
-> [!TIP]
-> Możesz użyć [obrazów platformy docker](https://docs.docker.com/engine/reference/commandline/images/) polecenie, aby wyświetlić listę obrazów kontenerów pobrany. Na przykład następujące polecenie wyświetla identyfikator, repozytorium i tag każdy obraz kontenera pobrany, sformatowane jako tabela:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>Jak używać kontenera
 
@@ -169,7 +162,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Symbol zastępczy | Value |
+| Symbol zastępczy | Wartość |
 |-------------|-------|
 |{APPLICATION_ID} | Identyfikator aplikacji opublikowanej aplikacji usługi LUIS. |
 |{APPLICATION_ENVIRONMENT} | Środowisko opublikowanej aplikacji usługi LUIS. Użyj jednej z następujących wartości:<br/>```PRODUCTION```<br/>```STAGING``` |
@@ -197,7 +190,7 @@ Host: {AZURE_REGION}.api.cognitive.microsoft.com
 Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 ```
 
-| Symbol zastępczy | Value |
+| Symbol zastępczy | Wartość |
 |-------------|-------|
 |{APPLICATION_ID} | Identyfikator aplikacji uczonego aplikacji usługi LUIS. |
 |{APPLICATION_VERSION} | Wersja aplikacji uczonego aplikacji usługi LUIS. |
@@ -219,7 +212,7 @@ Jeśli to się powiedzie, odpowiedź jest plik pakietu usługi LUIS. Zapisz plik
 
 Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenie do uruchomienia kontenera. Polecenie używa następujących parametrów:
 
-| Symbol zastępczy | Value |
+| Symbol zastępczy | Wartość |
 |-------------|-------|
 |{ENDPOINT_KEY} | Ten klucz jest używany do uruchomienia kontenera. Nie należy używać klucza starter. |
 |{BILLING_ENDPOINT} | Rozliczeń wartości punktu końcowego jest dostępna na stronie Przegląd interpretacji języka w witrynie Azure portal.|
@@ -325,14 +318,7 @@ Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](luis-container-co
 
 ## <a name="containers-api-documentation"></a>Dokumentacja interfejsu API kontenera
 
-Kontener zawiera pełny zestaw dokumentacji dla punktów końcowych, a także `Try it now` funkcji. Ta funkcja umożliwia wprowadzanie ustawień do formularza HTML, oparte na sieci web i utworzyć zapytanie bez konieczności pisania kodu. Gdy zapytanie zwraca przykład polecenia CURL jest dostarczany w celu pokazują nagłówków HTTP i treści w formacie wymaganym. 
-
-> [!TIP]
-> Odczyt [specyfikacji interfejsu OpenAPI](https://swagger.io/docs/specification/about/), opisujący operacje interfejsu API, obsługiwane przez kontener z `/swagger` względnym identyfikatorem URI. Na przykład:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -346,7 +332,7 @@ Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez 
 |--------|-------------|
 | `ApiKey` | Klucz interfejsu API _Language Understanding_ zasoby używane do śledzenia informacji dotyczących rozliczeń.<br/>Wartość tej opcji, musi być równa klucza interfejsu API dla aprowizowanego zasobu LUIS Azure określone w `Billing`. |
 | `Billing` | Punkt końcowy _Language Understanding_ zasoby używane do śledzenia informacji dotyczących rozliczeń.<br/>Wartość ta opcja musi być równa punkt końcowy identyfikatora URI zasobu LUIS Azure elastycznie.|
-| `Eula` | Wskazuje, zaakceptowane licencji dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
+| `Eula` | Wskazuje, że zaakceptowano licencję dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
 
 > [!IMPORTANT]
 > Prawidłowe wartości należy określić wszystkie trzy opcje, lub uruchomić kontenera.
@@ -371,7 +357,7 @@ Konfiguracje nieobsługiwanych aplikacji|Szczegóły|
 
 W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, instalowania i uruchamiania kontenerów Language Understanding (LUIS). Podsumowanie:
 
-* Language Understanding (LUIS) oferuje co kontenery systemu Linux platformy Docker udostępnianie punktu końcowego zapytania przewidywań wypowiedzi.
+* Language Understanding (LUIS) oferuje jeden kontener systemu Linux platformy Docker udostępnianie punktu końcowego zapytania przewidywań wypowiedzi.
 * Obrazy kontenerów są pobierane z rejestru kontenerów firmy Microsoft (MCR).
 * Obrazy kontenera Uruchom na platformie Docker.
 * Za pomocą interfejsu API REST do wykonywania zapytań punktów końcowych kontenera, określając host identyfikatora URI kontenera.

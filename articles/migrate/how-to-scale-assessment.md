@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 2bc6f14eeb974ded462b8dcaf65d5401cc35291d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6b74c81f44ee747cdd80a1106b669d89c8c7fbc3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262221"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297144"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -19,7 +19,7 @@ Usługa Azure Migrate ma limit 1500 maszyn według projektu, w tym artykule opis
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **VMware**: Maszyny wirtualne, które mają być poddane migracji, musi być zarządzany przez program vCenter Server w wersji 5.5, 6.0, 6.5 lub 6.7. Ponadto należy jeden host ESXi z wersją 5.0 lub nowszej, aby wdrożyć maszyny Wirtualnej modułu zbierającego.
+- **VMware**: Maszyny wirtualne, które mają być poddane migracji, musi być zarządzany przez program vCenter Server w wersji 5.5, 6.0, 6.5 lub 6.7. Ponadto należy jeden host ESXi z wersją 5.5 lub nowszej, aby wdrożyć maszyny Wirtualnej modułu zbierającego.
 - **Konto vCenter**: Potrzebujesz konta tylko do odczytu do dostępu do serwera vCenter. To konto jest używane w usłudze Azure Migrate do odnajdowania lokalnych maszyn wirtualnych.
 - **Uprawnienia**: W programie vCenter Server, musisz mieć uprawnienia do tworzenia maszyny Wirtualnej, importując plik w formacie OVA.
 - **Ustawienia statystyk**: To wymaganie dotyczy tylko [modelu jednorazowe](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) które jest obecnie przestarzałe. W przypadku modelu jednorazowe ustawieniach statystyk programu vCenter Server powinna być równa poziom 3 przed rozpoczęciem wdrażania. Poziom statystyki jest należy ustawić na 3 dla każdego dnia, tygodnia i interwału zbierania miesiąca. Jeśli poziom jest niższy niż 3 dla każdego interwału zbierania trzy, ocena będzie działać, ale nie będą zbierane dane wydajności dotyczące magazynu i sieci. Zalecenia dotyczące rozmiaru, następnie będzie zależeć od dane wydajności dotyczące procesora CPU i pamięci, a dane konfiguracji dla dysku i kart sieciowych.

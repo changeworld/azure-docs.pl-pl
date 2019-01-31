@@ -1,5 +1,5 @@
 ---
-Tytuł: Zarządzanie titleSuffix obszaru roboczego usługi Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zarządzanie dostępem do usługi Azure Machine Learning obszarów roboczych i wdrożenia oraz zarządzanie usługami usług sieci web interfejsu API uczenia Maszynowego: uczenia maszynowego ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Zarządzanie titleSuffix obszaru roboczego usługi Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zarządzanie dostępem do usługi Azure Machine Learning obszarów roboczych i wdrożenia oraz zarządzanie usługami usług sieci web interfejsu API uczenia Maszynowego: uczenia maszynowego ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 02/27/2017
 ---

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 30d0818b57057785784c1fbda1c67ca0be10d769
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.subservice: common
+ms.openlocfilehash: 1cf2276ca1995df19cc7068764a31916e4981100
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384772"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452698"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Files
 
@@ -40,7 +40,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
  
 
 
-## <a name="step-1-prepare-the-drives"></a>Krok 1. Przygotowywanie dysków
+## <a name="step-1-prepare-the-drives"></a>Krok 1: Przygotowywanie dysków
 
 W tym kroku generuje plik dziennika. Plik dziennika zawiera podstawowe informacje, takie jak numer seryjny dysku, klucz szyfrowania i szczegółów konta magazynu.
 
@@ -112,7 +112,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
 
 Aby uzyskać więcej przykładów, przejdź do [przykłady dla plików dziennika](#samples-for-journal-files).
 
-## <a name="step-2-create-an-import-job"></a>Krok 2. Tworzenie zadania importu 
+## <a name="step-2-create-an-import-job"></a>Krok 2: Tworzenie zadania importu 
 
 Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 1. Zaloguj się do https://portal.azure.com/.
@@ -162,7 +162,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
         ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3. Dostarczaj dyski w centrach danych platformy Azure 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Krok 3: Dostarczaj dyski w centrach danych platformy Azure 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
@@ -170,7 +170,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Weryfikowanie przekazania danych na platformę Azure
+## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5. Weryfikowanie przekazania danych na platformę Azure
 
 Śledź zadania do zakończenia. Po zakończeniu zadania Sprawdź, czy danych został przekazany na platformę Azure. Usuń lokalne dane tylko w przypadku, gdy będziesz mieć pewność, że przekazywanie powiodło się.
 

@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9e22299a508810cabaa9361d764fd2a8e1ecdee8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: b49ec91af0c2b55185d7f750420825bb174c4b6d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975988"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473736"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Omówienie używania platformy Spark w usłudze Azure HDInsight do analizy danych
 
@@ -41,9 +41,9 @@ Te notesy to będą uruchamiane w jądra pySpark serwer notesu Jupyter.
 ### <a name="spark-20-notebooks"></a>Notesy platformy Spark w wersji 2.0
 Te notesy to będą uruchamiane w jądra pySpark3 serwer notesu Jupyter.
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania, oraz do oceniania platformy Spark w wersji 2.0 klastrów za pomocą taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zobacz uwagi na końcu tej listy pozwalające porównać te notesy.
-- [Spark2.0 pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0 pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ten plik pokazuje, jak przeprowadzić danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu dobrze znanych linie lotnicze w czasie wyjścia zestawu danych z 2011 i 2012. Zintegrowaliśmy linii lotniczych zestawu danych z danymi pogody Kuwejcie (np. prędkość wiatru, temperatury, wysokość itp.) przed modelowaniu, dzięki czemu te funkcje pogody mogły zostać uwzględnione w modelu.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ten plik zawiera informacje na temat wykonywania eksploracji danych, modelowania, oraz do oceniania platformy Spark w wersji 2.0 klastrów za pomocą taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ten notes może być dobry punkt wyjścia do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0. Aby uzyskać bardziej szczegółowy notesu analizuje dane taksówek NYC, zobacz następnego notesu na tej liście. Zobacz uwagi na końcu tej listy pozwalające porównać te notesy.
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ten plik pokazuje sposób wykonania danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu taksówek NYC podróży i klasie zestawu danych, opisano [tutaj](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ten plik pokazuje, jak przeprowadzić danych inteligencji (operacje Spark SQL i dataframe) eksploracji, modelowania i oceniania przy użyciu dobrze znanych linie lotnicze w czasie wyjścia zestawu danych z 2011 i 2012. Zintegrowaliśmy linii lotniczych zestawu danych z danymi pogody Kuwejcie (np. prędkość wiatru, temperatury, wysokość itp.) przed modelowaniu, dzięki czemu te funkcje pogody mogły zostać uwzględnione w modelu.
 
 <!-- -->
 
@@ -61,7 +61,7 @@ Te notesy to będą uruchamiane w jądra pySpark3 serwer notesu Jupyter.
 <!-- -->
 
 > [!NOTE]
-Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście przedstawiono wiele aspektów eksplorację, wizualizację i szkolenie modelu uczenia Maszynowego w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być przeznaczona punkt początkowy do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0.
+Notesy platformy Spark 2.0 na NYC taksówek i linie lotnicze lotu opóźnienie-zestawów danych może potrwać 10 minut lub dłużej (w zależności od rozmiaru klastra usługi HDI). Pierwszy notesu na powyższej liście przedstawiono wiele aspektów eksplorację, wizualizację i szkolenie modelu uczenia Maszynowego w notesie, który zajmuje mniej czasu do uruchomienia z próbkowana w dół NYC zestaw danych, w którym zostały wstępnie dołączonym do plików taksówek i klasie: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb). Ten notes, trwa znacznie krótszy czas zakończenia (2-3 minuty) i może być przeznaczona punkt początkowy do szybkiego analizowania kodu, który udostępniliśmy dla platformy Spark w wersji 2.0.
 
 <!-- -->
 

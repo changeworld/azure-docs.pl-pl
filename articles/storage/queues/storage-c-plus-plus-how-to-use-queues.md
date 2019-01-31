@@ -9,13 +9,13 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
-ms.component: queues
-ms.openlocfilehash: 36fa2e5bc7eda7c47017713008aec2a245213462
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: 1f2f52fc08ab4da4a7525f3018b7a9aea2f7c576
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521571"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457365"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Jak używać magazynu kolejek w języku C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -41,8 +41,8 @@ W tym celu należy zainstalować bibliotekę klienta usługi Azure Storage dla j
 
 Możesz zainstalować bibliotekę klienta usługi Azure Storage dla języka C++, korzystając z następujących metod:
 
-* **Linux:** wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.
-* **Windows:** w programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
+* **Linux:** Wykonaj instrukcje podane w [biblioteki klienta usługi Azure Storage dla języka C++ w pliku README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) strony.
+* **Windows:** W programie Visual Studio kliknij pozycję **Narzędzia > Menedżer pakietów NuGet > Konsola menedżera pakietów**. Wpisz następujące polecenie w [Konsola Menedżera pakietów NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) i naciśnij klawisz **ENTER**.
 
 ```  
 Install-Package wastorage
@@ -83,7 +83,7 @@ Możesz użyć **cloud_storage_account** klasy do reprezentowania informacje o T
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-## <a name="how-to-create-a-queue"></a>Porady: Tworzenie kolejki
+## <a name="how-to-create-a-queue"></a>Instrukcje: Tworzenie kolejki
 A **cloud_queue_client** obiektu pozwala uzyskać obiekty odwołanie do kolejki. Poniższy kod tworzy **cloud_queue_client** obiektu.
 
 ```cpp
@@ -104,7 +104,7 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
  queue.create_if_not_exists();  
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Porady: wstawianie komunikatu do kolejki
+## <a name="how-to-insert-a-message-into-a-queue"></a>Instrukcje: Wstawianie komunikatu do kolejki
 Aby wstawić komunikat do istniejącej kolejki, najpierw utwórz nowe **cloud_queue_message**. Następnie wywołaj **add_message** metody. A **cloud_queue_message** można utworzyć przy użyciu dowolnego ciągu lub **bajtów** tablicy. Oto kod, który tworzy kolejkę (jeśli kolejka nie istnieje) i wstawia komunikat „Hello, World”:
 
 ```cpp
@@ -125,7 +125,7 @@ azure::storage::cloud_queue_message message1(U("Hello, World"));
 queue.add_message(message1);  
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Porady: Podgląd kolejnego komunikatu
+## <a name="how-to-peek-at-the-next-message"></a>Instrukcje: Podgląd kolejnego komunikatu
 Użytkownik może wglądu do wiadomości uzyskać kolejki bez jego usuwania z kolejki, wywołując **peek_message** metody.
 
 ```cpp
@@ -145,7 +145,7 @@ azure::storage::cloud_queue_message peeked_message = queue.peek_message();
 std::wcout << U("Peeked message content: ") << peeked_message.content_as_string() << std::endl;
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Porady: zmiana zawartości komunikatu w kolejce
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Instrukcje: Zmiana zawartości komunikatu w kolejce
 Możesz zmienić zawartość komunikatu w kolejce. Jeśli komunikat reprezentuje zadanie robocze, możesz użyć tej funkcji, aby zaktualizować stan zadania. Poniższy kod aktualizuje komunikat kolejki o nową zawartość i ustawia rozszerzenie limitu czasu widoczności o kolejne 60 sekund. Operacja ta zapisuje stan pracy powiązanej z komunikatem i daje klientowi kolejną minutę na kontynuowanie pracy nad komunikatem. Możesz użyć tej metody do śledzenia wieloetapowych przepływów pracy związanych z komunikatami kolejek, bez konieczności rozpoczynania od nowa, gdy dany etap nie powiedzie się ze względu na awarię sprzętu lub oprogramowania. Zazwyczaj zachowa również liczbę ponownych prób, a jeśli komunikat zostanie ponowiony więcej niż n razy, zostanie usunięty. Jest to zabezpieczenie przed komunikatami, które wyzwalają błąd aplikacji zawsze, gdy są przetwarzane.
 
 ```cpp
@@ -171,7 +171,7 @@ queue.update_message(changed_message, std::chrono::seconds(60), true);
 std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 ```
 
-## <a name="how-to-de-queue-the-next-message"></a>Porady: usuwanie następnego komunikatu z kolejki
+## <a name="how-to-de-queue-the-next-message"></a>Instrukcje: Usunięcie następnego komunikatu z kolejki
 Twój kod usuwa komunikat z kolejki w dwóch etapach. Gdy wywołujesz **get_message**, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z **get_message** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Aby zakończyć usuwanie komunikatu z kolejki, musisz również wywołać **delete_message**. Ten dwuetapowy proces usuwania komunikatów gwarantuje, że jeśli kod nie będzie w stanie przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu będzie w stanie uzyskać ten sam komunikat i ponowić próbę. Twój kod wywołuje **delete_message** natychmiast po przetworzeniu komunikatu.
 
 ```cpp
@@ -192,7 +192,7 @@ std::wcout << U("Dequeued message: ") << dequeued_message.content_as_string() <<
 queue.delete_message(dequeued_message);
 ```
 
-## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Porady: wykorzystanie dodatkowych opcji do usuwania komunikatów z kolejek
+## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Instrukcje: Wykorzystanie dodatkowych opcji do usuwania komunikatów z kolejek
 Istnieją dwa sposoby dostosowania pobierania komunikatów z kolejki. Po pierwsze można uzyskać komunikaty zbiorczo (do 32). Po drugie można ustawić dłuższy lub krótszy limit czasu niewidoczności, dzięki czemu kod będzie mieć więcej lub mniej czasu na pełne przetworzenie każdego komunikatu. Poniższy przykład kodu wykorzystuje **get_messages** metodę, aby pobrać 20 komunikatów w jednym wywołaniu. Następnie przetwarza każdy komunikat przy użyciu **dla** pętli. Ustawia również limitu czasu niewidoczności na pięć minut dla każdego komunikatu. Należy zauważyć, że 5 minut rozpoczyna się dla wszystkich komunikatów w tym samym czasie, dlatego po 5 minut ma minęło od wywołania **get_messages**, wszystkie komunikaty, które nie zostały usunięte, będą widoczne ponownie.
 
 ```cpp
@@ -220,7 +220,7 @@ for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Porady: pobieranie długości kolejki
+## <a name="how-to-get-the-queue-length"></a>Instrukcje: Pobieranie długości kolejki
 Możesz uzyskać szacunkową liczbę komunikatów w kolejce. **Download_attributes** metoda prosi usługę kolejki o pobranie atrybutów kolejki, w tym liczby komunikatów. **Approximate_message_count** metoda pobiera przybliżona liczba komunikatów w kolejce.
 
 ```cpp
@@ -243,7 +243,7 @@ int cachedMessageCount = queue.approximate_message_count();
 std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::endl;  
 ```
 
-## <a name="how-to-delete-a-queue"></a>Porady: Usuwanie kolejki
+## <a name="how-to-delete-a-queue"></a>Instrukcje: Usuwanie kolejki
 Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **delete_queue_if_exists** metody na obiekcie kolejki.
 
 ```cpp

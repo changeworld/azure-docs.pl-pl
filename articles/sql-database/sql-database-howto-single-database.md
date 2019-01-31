@@ -1,6 +1,6 @@
 ---
-title: Jak skonfigurować usługi Azure SQL Database — pojedyncze | Dokumentacja firmy Microsoft
-description: Informacje o sposobie konfigurowania i zarządzania usługi Azure SQL Database — Pojedyncza baza danych.
+title: Jak skonfigurować usługi Azure SQL Database — autonomiczna | Dokumentacja firmy Microsoft
+description: Informacje o sposobie konfigurowania i zarządzania usługi Azure SQL Database — autonomicznej bazy danych
 services: sql-database
 ms.service: sql-database
 ms.subservice: ''
@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 12/14/2018
-ms.openlocfilehash: d34853220e423e73c6ca8cf7c76ba616b815b8bd
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/25/2019
+ms.openlocfilehash: bf126caa378eafe569b83f211d9d2bbfd37e18f9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440653"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477798"
 ---
-# <a name="how-to-use-single-database"></a>Jak korzystać z pojedynczej bazy danych
+# <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Jak korzystać z pojedynczej bazy danych w usłudze Azure SQL Database
 
-W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, które mogą ułatwić zarządzanie i konfigurowanie usługi Azure SQL Database — Pojedyncza baza danych.
+W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, które mogą ułatwić zarządzanie i konfigurowanie pojedynczej bazy danych w usłudze Azure SQL Database
 
 ## <a name="migrate"></a>Migrate (Migracja)
 
-- [Migrowanie do usługi SQL Database](sql-database-cloud-migrate.md) — Dowiedz się więcej na temat procesu migracji zalecane i narzędzia do migracji do wystąpienia zarządzanego.
+- [Migrowanie do usługi SQL Database](sql-database-cloud-migrate.md) — Dowiedz się więcej na temat procesu zalecane migracji i narzędzia do migracji do wystąpienia zarządzanego.
 - Dowiedz się, jak [Zarządzanie usługą SQL database po migracji](sql-database-manage-after-migration.md).
 
 ## <a name="configure-features"></a>Konfigurowanie funkcji
@@ -66,7 +66,7 @@ W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, kt�
 - Uruchom [zapytania z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md).
 - [Przenoszenie danych podzielonych na fragmenty](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 - [Konfigurowanie zabezpieczeń](sql-database-elastic-scale-split-merge-security-configuration.md) we fragmentach bazy danych.
-- [Dodawanie fragmentu](sql-database-elastic-scale-add-a-shard.md) do bieżącego zestawu od fragmentów bazy danych.
+- [Dodawanie fragmentu](sql-database-elastic-scale-add-a-shard.md) w bieżącym zestawie fragmentów bazy danych.
 - [Rozwiązywanie problemów z mapą fragmentów](sql-database-elastic-database-recovery-manager.md).
 - [Migrowanie bazy danych podzielonej na fragmenty](sql-database-elastic-convert-to-use-elastic-tools.md).
 - [Tworzenie liczników](sql-database-elastic-database-perf-counters.md).
@@ -74,4 +74,4 @@ W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, kt�
 - [Użyj programem Dapper framework](sql-database-elastic-scale-working-with-dapper.md) wykonywać zapytania względem danych podzielonych na fragmenty.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [instrukcje przeprowadza w wystąpieniu zarządzanym](sql-database-howto-managed-instance.md)
+- Dowiedz się więcej o [instrukcje prowadzi do wystąpienia zarządzanego](sql-database-howto-managed-instance.md)

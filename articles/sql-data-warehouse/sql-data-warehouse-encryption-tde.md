@@ -2,27 +2,27 @@
 title: Przezroczyste szyfrowanie danych w usłudze SQL Data Warehouse (Portal) | Dokumentacja firmy Microsoft
 description: Transparent Data Encryption (TDE) w usłudze SQL Data Warehouse
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: e641ddb5360c18b5977fb79de41334d4216c2b90
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 6ca5ac013716db9712063e8efc0e2116570008a9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306191"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455613"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Rozpoczynanie pracy z przezroczystego szyfrowania danych (TDE) w usłudze SQL Data Warehouse
 > [!div class="op_single_selector"]
 > * [Omówienie zabezpieczeń](sql-data-warehouse-overview-manage-security.md)
 > * [Uwierzytelnianie](sql-data-warehouse-authentication.md)
 > * [Szyfrowanie (Portal)](sql-data-warehouse-encryption-tde.md)
-> * [Szyfrowanie (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
+> * [Encryption (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 

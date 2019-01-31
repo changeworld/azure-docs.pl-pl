@@ -1,6 +1,6 @@
 ---
-Tytuł: Użyj przykładowych titleSuffix zestawy danych: Opis usługi Azure Machine Learning Studio: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowe zestawy danych można użyć do eksperymentów.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Użyj przykładowych titleSuffix zestawy danych: Opis usługi Azure Machine Learning Studio: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowe zestawy danych można użyć do eksperymentów.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/19/2018
 ---

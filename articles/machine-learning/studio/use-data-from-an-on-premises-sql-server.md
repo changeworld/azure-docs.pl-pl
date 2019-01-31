@@ -1,6 +1,6 @@
 ---
-Tytuł: W środowisku lokalnym titleSuffix programu SQL Server: Opis usługi Azure Machine Learning Studio: Użyj danych z lokalnej bazy danych programu SQL Server, przeprowadzanie zaawansowanych analiz za pomocą usługi Azure Machine Learning Studio.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: W środowisku lokalnym titleSuffix programu SQL Server: Opis usługi Azure Machine Learning Studio: Użyj danych z lokalnej bazy danych programu SQL Server, przeprowadzanie zaawansowanych analiz za pomocą usługi Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/13/2017
 ---

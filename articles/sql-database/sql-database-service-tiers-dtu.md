@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 5e24ec6124b6a5f7dea66e33018dffc753966075
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.date: 01/25/2019
+ms.openlocfilehash: 911380539e3558e8bb1384449e415a6f0c1cd69b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141972"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465235"
 ---
 # <a name="dtu-based-service-tiers"></a>Warstwy usług oparte na jednostkach DTU
 
@@ -72,7 +72,7 @@ Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) d
 ||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: zachodnio-środkowe stany USA, Chiny wschodnie, USDoDCentral, Niemcy środkowe, Południowy Zachód klientów rządowych USA USDoDEast, USGov — Iowa, Niemcy północno-wschodnie, Chin północnych. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Zachód środkowe stany USA, Chiny wschodnie, USDoDCentral, Niemcy środkowe, Południowy Zachód klientów rządowych USA USDoDEast, USGov — Iowa, Niemcy północno-wschodnie, Chiny Północne. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 

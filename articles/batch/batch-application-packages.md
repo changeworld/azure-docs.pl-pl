@@ -3,7 +3,7 @@ title: Instalowanie pakietów aplikacji w węzłach obliczeniowych — usługi A
 description: Użyj funkcji pakietów aplikacji usługi Azure Batch w prosty sposób zarządzać wielu aplikacji i wersji do instalacji w usłudze Batch węzłów obliczeniowych.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/15/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6fd3eccf3de5d46520dc5a50cab66667c875799e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094139"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454613"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji do węzłów za pomocą pakietów aplikacji usługi Batch obliczeniowych
 
@@ -113,9 +113,9 @@ Wybranie tej opcji menu otwiera **aplikacje** okna:
 
 To okno wyświetla identyfikator każdej aplikacji w koncie oraz następujące właściwości:
 
-* **Pakiety**: numer wersji skojarzonej z tą aplikacją.
-* **Domyślna wersja**: wersja aplikacji zainstalowane, jeśli nie wskazują wersji po określeniu aplikacji dla puli. To ustawienie jest opcjonalne.
-* **Zezwalaj na aktualizacje**: wartość, która określa, czy pakiet aktualizacji, usuwania i dodatki są dozwolone. Jeśli jest ono ustawione na **nie**, pakiet aktualizacji i usuwania są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **Tak**.
+* **Pakiety**: Numer wersji skojarzonej z tą aplikacją.
+* **Domyślna wersja**: Wersja aplikacji zainstalowane, jeśli nie wskazują wersji po określeniu aplikacji dla puli. To ustawienie jest opcjonalne.
+* **Zezwalaj na aktualizacje**: Wartość, która określa, czy pakiet aktualizacji, usuwania i dodatki są dozwolone. Jeśli jest ono ustawione na **nie**, pakiet aktualizacji i usuwania są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **Tak**.
 
 ### <a name="view-application-details"></a>Wyświetlanie szczegółów aplikacji
 Aby wyświetlić szczegółowe informacje dotyczące aplikacji, wybierz aplikację w **aplikacje** okna.
@@ -125,7 +125,7 @@ Aby wyświetlić szczegółowe informacje dotyczące aplikacji, wybierz aplikacj
 W szczegółach aplikacji można skonfigurować następujące ustawienia dla aplikacji.
 
 * **Zezwalaj na aktualizacje**: Określ, czy jego pakiety aplikacji mogą zostać zaktualizowane lub usunięte. Zobacz "Aktualizowanie lub usuwanie pakietu aplikacji" w dalszej części tego artykułu.
-* **Domyślna wersja**: Określ domyślny pakiet aplikacji do wdrożenia w węzłach obliczeniowych.
+* **Domyślna wersja**: Określ domyślny pakiet aplikacji, aby wdrożyć węzły obliczeniowe.
 * **Nazwa wyświetlana**: Określ przyjazną nazwę, która rozwiązania usługi Batch można użyć, gdy na przykład wyświetla informacje o aplikacji, w Interfejsie użytkownika usługi, która zapewnia klientom za pomocą usługi Batch.
 
 ### <a name="add-a-new-application"></a>Dodaj nową aplikację

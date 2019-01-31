@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: e2497233ec97ffc88bf13797f62d601d4da373a1
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: c749a9dedef3970002c4f0672ffcc67aeaea422a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628497"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457432"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 

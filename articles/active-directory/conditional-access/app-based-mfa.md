@@ -13,15 +13,15 @@ ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b474c0fdabbe5c2a2bb9731fbeb24c1715f7c859
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6276231f8d63840dcf46f7456d584880315533bf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080736"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299915"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Szybki start: Wymagać uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory 
 
@@ -43,6 +43,9 @@ Aby ukończyć ten scenariusz, w tym przewodniku Szybki Start, potrzebne są:
 - **Dostęp do usługi Azure AD — wersja Premium** — dostęp warunkowy usługi Azure AD jest możliwość usługi Azure AD Premium. 
 
 - **Konto testowe o nazwie Isabella Simonsen** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+
+
+Scenariusz, w tym przewodniku Szybki Start wymaga dla poszczególnych użytkowników usługi MFA nie włączenia konta testu. Aby uzyskać więcej informacji, zobacz [jak, które wymuszają weryfikację dwuetapową dla użytkownika](../authentication/howto-mfa-userstates.md).
 
 
 ## <a name="test-your-sign-in"></a>Testowanie logowania

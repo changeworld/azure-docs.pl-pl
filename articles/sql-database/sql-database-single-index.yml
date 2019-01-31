@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cfc5779768ccd1efdc406da6b2701b52f2ab81cf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0768b856e38972b33384db004dc6a973d18d6f91
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121468"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475826"
 documentType: LandingData
-title: 'Usługa Azure SQL Database: Pojedyncza baza danych'
+title: 'Azure SQL Database: Pojedyncza baza danych'
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Dokumentacja bazy danych SQL platformy Azure — samouczki i dokumentacja interfejsu API
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 12/01/2018
+  ms.date: 01/25/2019
   ms.author: jovanpop-msft
 abstract:
   description: Azure SQL Database to relacyjna baza danych jako usługa (DBaaS), na podstawie najnowszej stabilnej wersji aparatu bazy danych programu Microsoft SQL Server. SQL Database to wysokiej wydajności, łatwy w użyciu, niezawodną i bezpiecznej bazie danych używanej do tworzenia nowych aplikacji, witryn sieci Web i mikrousług w wybranym języku programowania bez konieczności zarządzania infrastrukturą. Dowiedz się, jak używać usługi SQL Database, korzystając z przewodników Szybki Start, samouczków i przykładów.
@@ -43,9 +43,9 @@ sections:
       html: <p>Pule elastyczne usługi SQL Database to proste i niedrogie rozwiązanie do zarządzania i skalowania wielu baz danych, które mają różne i nieprzewidywalne wymagania dotyczące użycia.</p>
       image:
         src: media/index/i_elasticpool.svg
-    - title: Serwer logiczny
-      href: /azure/sql-database/sql-database-logical-servers
-      html: <p>Serwer logiczny to centralne miejsce administracji do konfigurowania zabezpieczeń, dostosowywania, zasady tworzenia kopii zapasowych i innych właściwości konfiguracji na zestaw baz danych na serwerze.</p>
+    - title: Serwer usługi SQL Database
+      href: /azure/sql-database/sql-database-servers
+      html: <p>Serwer bazy danych SQL Database to centralne miejsce administracji do konfigurowania zabezpieczeń, dostosowywania, zasady tworzenia kopii zapasowych i innych właściwości konfiguracji na zbiór jednego lub pulami baz danych na serwerze.</p>
       image:
         src: media/index/i_mi.svg
     - title: Ceny i usługi

@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
-ms.custom: seo-update-jan
-ms.openlocfilehash: 49756f516a2e8132d4c3829b07a30f631380cad1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 3d2c15d3658ed93348c5ec23198d2cc97a94e0aa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182191"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297875"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Nazw produktów i usługa identyfikuje planu licencjonowania
 
@@ -27,7 +27,7 @@ Gdy zarządzanie licencjami w [witryny Azure portal](https://portal.azure.com/#b
 
 - **Nazwa produktu**: Używanych w portalach zarządzania
 - **Identyfikator ciągu**: Używany przez polecenia cmdlet programu PowerShell w wersji 1.0, podczas wykonywania operacji na licencji
-- **Identyfikator GUID**: Identyfikator GUID używany przez usługi Azure AD Graph i programu Microsoft Graph
+- **GUID**: Identyfikator GUID używany przez usługi Azure AD Graph i programu Microsoft Graph
 - **Usługa plany uwzględnione**: Lista planów usług w ramach produktu, które odpowiadają identyfikator ciągu i identyfikator GUID
 
 >[!NOTE]

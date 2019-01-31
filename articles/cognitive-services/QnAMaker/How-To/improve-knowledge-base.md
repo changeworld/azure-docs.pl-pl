@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: cf652c1b0edd469f29d14ed10d66ebe78b0fbb7c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247837"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463739"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
@@ -42,7 +42,7 @@ Wszystkie sugestie są zgrupowane razem wg podobieństwa i najbardziej oczekiwan
 
 ## <a name="upgrade-version-to-use-active-learning"></a>Uaktualnij wersję na korzystanie z aktywnej nauki
 
-Aktywne uczenie jest obsługiwana w wersji środowiska uruchomieniowego 4.4.0 i nowszych. Jeśli wiedzy został utworzony we wcześniejszej wersji, [uaktualnienia usługi](upgrade-qnamaker-service.md) Aby użyć tej funkcji. 
+Aktywne uczenie jest obsługiwana w wersji środowiska uruchomieniowego 4.4.0 i nowszych. Jeśli wiedzy został utworzony we wcześniejszej wersji, [uaktualnić swoje środowisko uruchomieniowe](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) Aby użyć tej funkcji. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 

@@ -2,26 +2,25 @@
 title: Konfigurowanie raportów usługi Azure Backup
 description: Konfigurowanie raportów usługi Power BI dla usługi Azure Backup przy użyciu magazynu usługi Recovery Services.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 01/30/2019
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e93c51365adfc867082e180d8e4db804d02003ca
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418283"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297732"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 W tym artykule przedstawiono kroki, aby wykonać, aby skonfigurować raporty usługi Azure Backup przy użyciu magazynu usługi Recovery Services. Pokazano również, jak dostęp do raportów przy użyciu usługi Power BI. Po wykonaniu tych czynności, możesz przejść bezpośrednio do usługi Power BI, aby wyświetlić, dostosowywanie i tworzenie raportów.
 
 > [!IMPORTANT]
-> Od 1 listopada 2018 r niektórzy klienci mogą zobaczyć problemy podczas ładowania danych w usłudze Azure App kopii zapasowej w usłudze Power BI, informujący o tym, "znaleziono dodatkowe znaki na końcu danych wejściowych JSON. Wyjątek został zgłoszony przez interfejs IDataReader."
-Jest to ze względu na zmianę w formacie, w którym dane są ładowane do konta magazynu.
+> Od 1 listopada 2018 r niektórzy klienci mogą zobaczyć problemy podczas ładowania danych w usłudze Azure App kopii zapasowej w usłudze Power BI, informujący o tym, "znaleziono dodatkowe znaki na końcu danych wejściowych JSON. Wyjątek został zgłoszony przez interfejs IDataReader”.
+Przyczyną tego jest zmiana formatu, w którym dane są ładowane do konta magazynu.
 Pobierz najnowszą wersję aplikacji (wersja 1.8) aby uniknąć tego problemu.
 >
 >

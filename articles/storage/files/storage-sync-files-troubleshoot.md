@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: fe712648cf3e76f4161f9f3a7b97b7990bc692a1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.subservice: files
+ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214470"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471406"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -852,6 +852,9 @@ Oprogramowanie antywirusowe, kopia zapasowa i inne aplikacje, które odczytują 
 Skonsultuj się z dostawcą oprogramowania, aby dowiedzieć się, w jaki sposób skonfigurować rozwiązanie tak, aby odczytywanie plików offline było pomijane.
 
 Niezamierzonym odwołania może również wystąpić w innych scenariuszach, takich jak podczas przeglądania plików w Eksploratorze plików. Otwarcie folderu, w którym znajdują się pliki w warstwach chmury, w Eksploratorze plików na serwerze może spowodować niezamierzone odwołania. Prawdopodobieństwo wystąpienia takiej sytuacji jest wyższe, jeśli na serwerze włączono rozwiązanie antywirusowe.
+
+> [!NOTE]
+>Użyj 9059 identyfikator zdarzenia w dzienniku zdarzeń Telemetrii, aby określić aplikacje, które powoduje odwołania. To zdarzenie umożliwia aplikacji odwołanie dystrybucji dla punktu końcowego serwera i jest rejestrowany raz na godzinę.
 
 ## <a name="general-troubleshooting"></a>Rozwiązywanie ogólnych
 Jeśli wystąpią problemy z usługi Azure File Sync na serwerze, należy uruchomić, wykonując następujące czynności:

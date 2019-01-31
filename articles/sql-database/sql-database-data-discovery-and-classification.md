@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 8dfcee6e7f0e2fd21c35ed2507b572c6e8cffc42
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/29/2019
+ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217241"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466596"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 
@@ -123,7 +123,7 @@ Po zdefiniowaniu zasad obowiązujących w całej dzierżawy możesz kontynuować
 
 ## <a id="subheading-3"></a>Inspekcja dostępu do poufnych danych
 
-Ważnym aspektem modelu ochrona informacji jest możliwość monitorowania dostępu do poufnych danych. [Usługa Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) zostało rozszerzone, aby uwzględnić nowe pole w dzienniku inspekcji o nazwie *data_sensitivity_information*, która rejestruje klasyfikacje czułość (etykiety) rzeczywistych danych, który został zwrócony przez Zapytanie.
+Ważnym aspektem modelu ochrona informacji jest możliwość monitorowania dostępu do poufnych danych. [Usługa Azure SQL Database Auditing](sql-database-auditing.md) zostało rozszerzone, aby uwzględnić nowe pole w dzienniku inspekcji o nazwie *data_sensitivity_information*, która rejestruje klasyfikacje czułość (etykiety) rzeczywistych danych, który został zwrócony przez Zapytanie.
 
 ![Dziennik inspekcji](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -148,7 +148,7 @@ Interfejsów API REST można również użyć do programowego zarządzania klasy
 ## <a id="subheading-5"></a>Następne kroki
 
 - Dowiedz się więcej o [danych zaawansowanych SQL](sql-advanced-threat-protection.md).
-- Należy rozważyć skonfigurowanie [Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) monitorowania i inspekcji dostępu do danych poufnych niejawnych.
+- Należy rozważyć skonfigurowanie [Azure SQL Database Auditing](sql-database-auditing.md) monitorowania i inspekcji dostępu do danych poufnych niejawnych.
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

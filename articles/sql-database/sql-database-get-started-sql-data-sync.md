@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 01/08/2018
-ms.openlocfilehash: eb788c07ed9424ae6d5beed5be11c71a11c62265
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 01/25/2018
+ms.openlocfilehash: 03ea4a7db27e32b370be89adf308ded9a22f9e37
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304282"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478427"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Samouczek: Konfigurowanie synchronizacji danych programu SQL między usługi Azure SQL Database i programu SQL Server w środowisku lokalnym
 
@@ -71,11 +71,11 @@ W **baza danych koncentratora** sekcji, wprowadź poświadczenia istniejącego s
 
 ### <a name="to-add-an-azure-sql-database"></a>Aby dodać bazy danych SQL Azure
 
-W **bazy danych elementów członkowskich** sekcji i opcjonalnie dodać do grupy synchronizacji usługi Azure SQL Database, wybierając **Dodawanie bazy danych Azure**. **Konfigurowanie bazy danych Azure** zostanie otwarta strona.
+W **bazy danych elementów członkowskich** sekcji i opcjonalnie dodać do grupy synchronizacji usługi Azure SQL Database, wybierając **Dodawanie usługi Azure SQL Database**. **Konfigurowanie usługi Azure SQL Database** zostanie otwarta strona.
 
   ![Krok 2 — Konfigurowanie bazy danych](media/sql-database-get-started-sql-data-sync/steptwo-configure.png)
 
-  Na **Konfigurowanie bazy danych Azure** strony, zmienić następujące ustawienia:
+  Na **Konfigurowanie usługi Azure SQL Database** strony, zmienić następujące ustawienia:
 
   | Ustawienie                       | Opis |
   | ----------------------------- | ------------------------------------------------- |

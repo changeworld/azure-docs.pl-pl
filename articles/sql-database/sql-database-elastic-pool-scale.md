@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 04fcb84b22e84060652b4a3743cb73e4543ee573
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 310d662782ff7d9713007b59f0d9b75620a03f5f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868450"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455103"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalowanie elastycznej puli zasobów w usłudze Azure SQL Database
 
@@ -35,7 +35,7 @@ W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które m
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>modelu zakupu opartego na rdzeniach wirtualnych: zasoby (rdzenie wirtualne) obliczeniowe zmiany puli elastycznej
+## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>modelu zakupu opartego na rdzeniach wirtualnych: Pula elastyczna zmiana obliczenia zasobów (rdzenie wirtualne)
 
 Można zwiększyć lub zmniejszyć rozmiar obliczeń do puli elastycznej oparte na zasób, używając wymaga [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
@@ -44,7 +44,7 @@ Można zwiększyć lub zmniejszyć rozmiar obliczeń do puli elastycznej oparte 
 - Ogólnie rzecz biorąc, czas trwania, aby zmienić rdzeni wirtualnych min na bazie danych lub maksymalna liczba rdzeni wirtualnych na bazę danych to pięć minut lub mniej.
 - Gdy zmniejszenie rozmiaru puli rdzeni wirtualnych, przestrzeni puli musi być mniejszy niż maksymalny dozwolony rozmiar docelowej usługi warstwy i puli rdzeni wirtualnych.
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>Model zakupu w oparciu o jednostki DTU: Zmień rozmiar magazynu puli elastycznej
+## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>Modelu zakupu opartego na jednostkach DTU: Zmień rozmiar magazynu puli elastycznej
 
 - Cena jednostki eDTU dla puli elastycznej obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [puli elastycznej: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
 - Dodatkowy magazyn dla elastycznej puli mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), lub [interfejsu API REST ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
@@ -53,7 +53,7 @@ Można zwiększyć lub zmniejszyć rozmiar obliczeń do puli elastycznej oparte 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>Model zakupu w oparciu o jednostki DTU: zasoby (Edtu) obliczeniowe zmiany puli elastycznej
+## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>Modelu zakupu opartego na jednostkach DTU: Pula elastyczna zmiana obliczenia zasobów (Edtu)
 
 Można zwiększyć lub zmniejszyć zasoby dostępne dla elastycznej puli w oparciu o zasobu wymaga za pomocą [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), [wiersza polecenia platformy Azure](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 

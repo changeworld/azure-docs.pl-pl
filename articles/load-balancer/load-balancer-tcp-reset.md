@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/03/2018
+ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257303"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296923"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Moduł równoważenia obciążenia za pomocą funkcji resetowania TCP w stanie bezczynności (publiczna wersja zapoznawcza)
 
-Możesz użyć [Balancer w warstwie standardowa](load-balancer-standard-overview.md) do tworzenia bardziej przewidywalne zachowanie aplikacji dla swoich scenariuszy za pomocą dwukierunkowych TCP resetuje (pakiet TCP RST) dla każdego można skonfigurować limit czasu bezczynności.  Zachowanie domyślne równoważenia obciążenia jest dyskretnie pomijać przepływów, po osiągnięciu limitu czasu bezczynności przepływu.
+Możesz użyć [Balancer w warstwie standardowa](load-balancer-standard-overview.md) do utworzenia bardziej przewidywalne zachowanie aplikacji dla swoich scenariuszy przez włączenie resetowania bezczynności TCP dla danej reguły. Zachowanie domyślne równoważenia obciążenia jest dyskretnie pomijać przepływów, po osiągnięciu limitu czasu bezczynności przepływu.  Włączenie tej funkcji spowoduje, że moduł równoważenia obciążenia wysłać dwukierunkowe resetuje TCP (TCP RST pakiet) przy użyciu limitu czasu bezczynności.  Informuje punktów końcowych aplikacji sieci czy połączenie przekroczyło limit czasu i nie jest już możliwe.  Punkty końcowe natychmiast może nawiązać nowe połączenie, jeśli to konieczne.
 
 ![Resetowanie TCP modułu równoważenia obciążenia](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
@@ -69,31 +69,10 @@ Za pomocą interfejsu API w wersji 2018-07-01, można włączyć wysyłanie dwuk
 
 ## <a name="regions"></a> Dostępność regionalna
 
-Ten parametr jest obecnie obowiązujące w następujących regionach.  W regionach niewymienione w tym miejscu parametru nie ma znaczenia.
-
-| Region |
-|---|
-| Azja Południowo-Wschodnia |
-| Brazylia Południowa |
-| Kanada Środkowa |
-| Europa Zachodnia |
-| Indie Środkowe |
-| Indie Zachodnie |
-| Japonia Zachodnia |
-| Korea Środkowa |
-| Korea Południowa |
-| Północne Zjednoczone Królestwo |
-| Południowe Zjednoczone Królestwo 2 |
-| Wschodnie stany USA |
-| Wschodnie stany USA 2 |
-| Północne stany USA |
-| Zachodnie stany USA |
-
-W tej tabeli zostaną zaktualizowane zgodnie z wersji zapoznawczej jest rozwinięty w innych regionach.  
+Dostępne we wszystkich regionach.
 
 ## <a name="limitations"></a>Ograniczenia
 
-- Ograniczone [dostępność w poszczególnych regionach](#regions).
 - Portal nie można skonfigurować lub wyświetlić resetowania TCP.  Zamiast tego użyj szablonów, interfejs API REST, Az interfejsu wiersza polecenia w wersji 2.0 lub programu PowerShell.
 
 ## <a name="next-steps"></a>Kolejne kroki

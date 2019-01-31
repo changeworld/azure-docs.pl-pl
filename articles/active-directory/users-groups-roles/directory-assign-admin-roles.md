@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/29/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: ca988c78abb42aeb377dfabeff58c95b4527e20e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 16f238114b56bd4e13358de34dfb33d93dbb1890
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223531"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301292"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -85,7 +85,7 @@ Dostępne są następujące role administratora:
   > [!NOTE] 
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Dynamics 365". Jest on "Administrator Dynamics 365" [witryny Azure portal](https://portal.azure.com).
 
-* **[Administrator programu Exchange](#exchange-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, jeśli została zainstalowana. a także możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Administrator programu Exchange](#exchange-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, jeśli została zainstalowana. a także możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Exchange". Jest on "Administrator programu Exchange" [witryny Azure portal](https://portal.azure.com).
 
@@ -100,7 +100,7 @@ Dostępne są następujące role administratora:
 
 * **[Administrator usługi Information Protection](#information-protection-administrator)**: Użytkownicy z tą rolą mają wszystkie uprawnienia w usłudze Azure Information Protection. Ta rola umożliwia konfigurowanie etykiet w zasadach usługi Azure Information Protection, Zarządzanie szablonami ochrony i aktywacja ochrony. Ta rola nie przyznaje wszystkie uprawnienia w Centrum usługi Identity Protection, Privileged Identity Management, kondycji usługi Monitor Office 365, lub Office 365 Centrum zabezpieczeń i zgodności.
 
-* **[Administrator usługi Intune](#intune-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, gdy ta usługa została zainstalowana. Ponadto ta rola oferuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenie grup i zarządzanie nimi. Więcej informacji o [kontrola administracji opartej na rolach (RBAC) w usłudze Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
+* **[Administrator usługi Intune](#intune-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, gdy ta usługa została zainstalowana. Ponadto ta rola oferuje możliwość zarządzania użytkownikami i urządzeniami w celu kojarzenia zasad, a także tworzenie grup i zarządzanie nimi. Więcej informacji o [kontrola administracji opartej na rolach (RBAC) w usłudze Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Intune". Jest on "Administrator usługi Intune" [witryny Azure portal](https://portal.azure.com).
 
@@ -130,7 +130,7 @@ Dostępne są następujące role administratora:
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator pomocy technicznej". Jest on "Administrator haseł" [witryny Azure portal](https://portal.azure.com/).
   >
   
-* **[Power BI Administrator](#power-bi-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Power BI, jeśli ta usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [opis roli administratora usługi Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
+* **[Power BI Administrator](#power-bi-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Power BI, jeśli ta usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [opis roli administratora usługi Power BI](https://docs.microsoft.com/power-bi/service-admin-role).
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Power BI". Jest on "Administrator usługi Power BI" [witryny Azure portal](https://portal.azure.com).
 
@@ -186,24 +186,24 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator pomocy technicznej usługi." Jest on "Administrator usługi" [witryny Azure portal](https://portal.azure.com), portalu administracyjnego usługi Office 365 i portalu usługi Intune.
 
-* **[Administrator programu SharePoint](#sharepoint-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft SharePoint Online, jeśli usługa została zainstalowana, a także możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Administrator programu SharePoint](#sharepoint-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft SharePoint Online, jeśli usługa została zainstalowana, a także możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi SharePoint." Jest on "Administrator programu SharePoint" [witryny Azure portal](https://portal.azure.com).
 
-* **[Skype dla firm / Administrator usługi Lync](#skype-for-business-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype dla firm, gdy usługa jest obecna, a także zarządzać specyficzne dla programu Skype atrybutów użytkownika w usłudze Azure Active Directory. Ponadto ta rola daje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi i uzyskać dostęp do zespołów i Skype dla firm Centrum administracyjnego. Konto musi mieć również licencję dla zespołów lub nie można uruchomić polecenia cmdlet programu PowerShell zespołów. Więcej informacji o [dotyczące programu Skype dla firm przypisaną rolę administratora](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) i zespołów, informacje o licencjonowaniu na [Skype dla firm i Microsoft Teams dodatek licencjonowania](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+* **[Skype dla firm / Administrator usługi Lync](#lync-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype dla firm, gdy usługa jest obecna, a także zarządzać specyficzne dla programu Skype atrybutów użytkownika w usłudze Azure Active Directory. Ponadto ta rola daje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi i uzyskać dostęp do zespołów i Skype dla firm Centrum administracyjnego. Konto musi mieć również licencję dla zespołów lub nie można uruchomić polecenia cmdlet programu PowerShell zespołów. Więcej informacji o [dotyczące programu Skype dla firm przypisaną rolę administratora](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) i zespołów, informacje o licencjonowaniu na [Skype dla firm i Microsoft Teams dodatek licencjonowania](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Lync". ""Skype dla firm Administrator znajduje się w [witryny Azure portal](https://portal.azure.com/).
+
+* **[Zespoły administratora](#teams-service-administrator)**: Użytkownicy w tej roli mogą zarządzać wszystkimi aspektami obciążenie Microsoft Teams przy użyciu programu Microsoft Teams & Skype Centrum administracyjnego usługi biznesowe i odpowiednie moduły programu PowerShell. W tym, wśród innych obszarów, wszystkie narzędzia do zarządzania związane z telefoniczne, wiadomości, spotkań i same zespoły dbają. Ta rola również przyznaje możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi.
+  > [!NOTE]
+  > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "zespoły Administrator usługi". "Administrator zespoły" znajduje się w [witryny Azure portal](https://portal.azure.com).
 
 * **[Zespoły administratora komunikacji](#teams-communications-administrator)**: Użytkownicy w tej roli może zarządzać aspektami Microsoft Teams obciążenie związane z głosu & telefonii. W tym narzędzia do zarządzania dla przypisywania numerów telefonów, głos i spotkania zasady i pełny dostęp do narzędzi analizy wywołania.
 
 * **[Zespoły ze specjalistą pomocy technicznej komunikacji](#teams-communications-support-engineer)**: Użytkownicy w tej roli można rozwiązywać problemy z komunikacją w ramach Microsoft Teams i Skype dla firm przy użyciu wywołania użytkownika narzędzi w Microsoft Teams i Skype dla firm Centrum administracyjnego do rozwiązywania problemów. Użytkownicy w tej roli mogą wyświetlać pełną wywołanie rejestrowanie informacji dla wszystkich uczestników związane. Ta rola nie ma dostępu do wyświetlania, tworzenia lub zarządzania biletami pomocy technicznej.
 
 * **[Zespoły, specjalista ds. pomocy technicznej komunikacji](#teams-communications-support-specialist)**: Użytkownicy w tej roli można rozwiązywać problemy z komunikacją w ramach Microsoft Teams i Skype dla firm przy użyciu wywołania użytkownika narzędzi w Microsoft Teams i Skype dla firm Centrum administracyjnego do rozwiązywania problemów. Użytkownicy w tej roli mogą wyświetlać szczegóły użytkownika tylko w wywołaniu dla określonego użytkownika, że ma wyszukiwać. Ta rola nie ma dostępu do wyświetlania, tworzenia lub zarządzania biletami pomocy technicznej.
-
-* **[Zespoły administratora](#teams-administrator)**: Użytkownicy w tej roli mogą zarządzać wszystkimi aspektami obciążenie Microsoft Teams przy użyciu programu Microsoft Teams & Skype Centrum administracyjnego usługi biznesowe i odpowiednie moduły programu PowerShell. W tym, wśród innych obszarów, wszystkie narzędzia do zarządzania związane z telefoniczne, wiadomości, spotkań i same zespoły dbają. Ta rola również przyznaje możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi.
-  > [!NOTE]
-  > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "zespoły Administrator usługi". "Administrator zespoły" znajduje się w [witryny Azure portal](https://portal.azure.com).
 
 * **[Administrator kont użytkowników](#user-account-administrator)**: Użytkownicy z tą rolą mogą tworzyć użytkowników i zarządzać wszystkimi aspektami użytkowników z pewnymi ograniczeniami (patrz poniżej). Ponadto użytkownicy posiadający tę rolę można tworzyć i zarządzać wszystkich grup. Ta rola obejmuje również możliwość tworzenia i zarządzania widoki użytkowników, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi.
 

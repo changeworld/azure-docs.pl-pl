@@ -9,52 +9,69 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/15/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3fcfd0f3e4f9ca6e94a7213bc60e54560938799b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d86a1591c81c6343ec376c080945b4bf1f97638a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077569"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471780"
 ---
-# <a name="create-resource-groups-and-resources-for-an-azure-subscription"></a>Tworzenie grupy zasobów i zasoby dotyczące subskrypcji platformy Azure
+# <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grupy zasobów i zasoby na poziomie subskrypcji
 
-Zazwyczaj wdrażania zasobów w grupie zasobów w subskrypcji platformy Azure. Jednak można użyć wdrożenia poziom subskrypcji do utworzenia grupy zasobów i zasoby, które są stosowane w ramach subskrypcji.
+Zazwyczaj wdrażania zasobów platformy Azure do grupy zasobów w subskrypcji platformy Azure. Jednakże można także tworzyć grupy zasobów platformy Azure i tworzenie zasobów platformy Azure na poziomie subskrypcji. Aby wdrożyć szablony na poziomie subskrypcji, należy użyć wiersza polecenia platformy Azure i programu Azure PowerShell. Witryna Azure portal nie obsługuje wdrażania na poziomie subskrypcji.
 
-Aby utworzyć grupę zasobów w szablonie usługi Azure Resource Manager, należy zdefiniować **Microsoft.Resources/resourceGroups** zasób mający nazwę i lokalizację grupy zasobów. Można utworzyć grupę zasobów i wdrażania zasobów w tej grupie zasobów, w tym samym szablonie.
+Aby utworzyć grupę zasobów w szablonie usługi Azure Resource Manager, należy zdefiniować [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions.md) zasób mający nazwę i lokalizację grupy zasobów. Można utworzyć grupę zasobów i wdrażania zasobów w tej grupie zasobów, w tym samym szablonie. Zasoby, które można wdrożyć na poziomie subskrypcji obejmują: [Zasady](../azure-policy/azure-policy-introduction.md), i [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
 
-[Zasady](../azure-policy/azure-policy-introduction.md), [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md), i [usługi Azure Security Center](../security-center/security-center-intro.md) usług, które chcesz zastosować na poziomie subskrypcji, a nie względem poziomu grupy zasobów.
+## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
-W tym artykule przedstawiono sposób tworzenia grupy zasobów oraz jak tworzyć zasoby, które są stosowane w ramach subskrypcji. Aby wdrożyć szablony używa programu PowerShell i wiersza polecenia platformy Azure. Nie można użyć portalu, można wdrożyć w szablonach, ponieważ interfejs portalu wdraża do grupy zasobów, subskrypcji platformy Azure.
+Wdrażanie na poziomie subskrypcji różni się od wdrożenia grupy zasobów w następujących aspektach:
 
-## <a name="schema-and-commands"></a>Schemat i polecenia
+### <a name="schema-and-commands"></a>Schemat i polecenia
 
 Schemat i poleceń, których można użyć na potrzeby wdrożeń poziom subskrypcji są inne niż wdrożenia grupy zasobów. 
 
 Dla schematu, należy użyć `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`.
 
-Polecenie wdrożenia wiersza polecenia platformy Azure, można użyć [tworzenia wdrożenia az](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create).
+Polecenie wdrożenia wiersza polecenia platformy Azure, można użyć [tworzenia wdrożenia az](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create). Na przykład następujące polecenie interfejsu wiersza polecenia służy do wdrażania szablonu, aby utworzyć grupę zasobów:
 
-Polecenie wdrożenia programu PowerShell, użyj [New AzDeployment](/powershell/module/az.resources/new-azdeployment).
+```azurecli
+az deployment create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
+  --parameters rgName=demoResourceGroup rgLocation=centralus
+```
 
-## <a name="name-and-location"></a>Nazwa i lokalizacja
+Polecenie wdrożenia programu PowerShell, użyj [New AzDeployment](/powershell/module/az.resources/new-azdeployment). Na przykład następujące polecenie programu PowerShell służy do wdrażania szablonu, aby utworzyć grupę zasobów:
+
+```azurepowershell
+New-AzDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -rgName demoResourceGroup `
+  -rgLocation centralus
+```
+
+### <a name="deployment-name-and-location"></a>Nazwa wdrożenia i lokalizacji
 
 Podczas wdrażania do Twojej subskrypcji, należy podać lokalizację dla wdrożenia. Można również podać nazwę dla wdrożenia. Jeśli nie określisz nazwę wdrożenia, nazwę szablonu jest używana jako nazwa wdrożenia. Na przykład wdrażania szablonu o nazwie **azuredeploy.json** tworzy domyślną nazwę wdrożenia **azuredeploy**.
 
 Lokalizacja wdrożenia poziomu subskrypcji jest niezmienny. Nie można utworzyć wdrożenia w jednej lokalizacji w przypadku istniejącego wdrożenia o takiej samej nazwie, ale inną lokalizację. Jeśli zostanie wyświetlony kod błędu: `InvalidDeploymentLocation`, użyj innej nazwy lub tej samej lokalizacji co poprzedniego wdrożenia dla tej nazwy.
 
-## <a name="using-template-functions"></a>Za pomocą funkcji szablonu
+### <a name="use-template-functions"></a>Użyj szablonu funkcji
 
-W przypadku wdrożeń z poziomu subskrypcji istnieją pewne istotne kwestie, korzystając z funkcji szablonu:
+W przypadku wdrożeń na poziomie subskrypcji istnieją pewne istotne kwestie, korzystając z funkcji szablonu:
 
 * [ResourceGroup()](resource-group-template-functions-resource.md#resourcegroup) funkcja **nie** obsługiwane.
 * [ResourceId()](resource-group-template-functions-resource.md#resourceid) funkcja jest obsługiwana. Należy użyć go, aby uzyskać identyfikator zasobu dla zasobów, które są używane w wdrożeń poziomu subskrypcji. Na przykład uzyskać identyfikator zasobu definicji zasad za pomocą `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
 * [Reference()](resource-group-template-functions-resource.md#reference) i [list()](resource-group-template-functions-resource.md#list) funkcje są obsługiwane.
 
-## <a name="create-resource-group"></a>Tworzenie grupy zasobów
+## <a name="create-resource-groups"></a>Tworzenie grupy zasobów
 
-Poniższy przykład tworzy pustą grupę zasobów.
+Następujący szablon tworzy pustą grupę zasobów.
 
 ```json
 {
@@ -82,28 +99,9 @@ Poniższy przykład tworzy pustą grupę zasobów.
 }
 ```
 
-Aby wdrożyć ten szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+Schemat szablonu, można znaleźć w folderze [tutaj](/azure/templates/microsoft.resources/allversions.md). Podobne szablony, można znaleźć w folderze [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
 
-```azurecli-interactive
-az deployment create \
-  -n demoEmptyRG \
-  -l southcentralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
-  --parameters rgName=demoRG rgLocation=northcentralus
-```
-
-Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzDeployment `
-  -Name demoEmptyRG `
-  -Location southcentralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
-  -rgName demogroup `
-  -rgLocation northcentralus
-```
-
-## <a name="create-several-resource-groups"></a>Utwórz wiele grup zasobów
+## <a name="create-multiple-resource-groups"></a>Utwórz wiele grup zasobów
 
 Użyj [copy element](resource-group-create-multiple.md) z grupami zasobów, aby utworzyć więcej niż jednej grupy zasobów. 
 
@@ -140,29 +138,9 @@ Użyj [copy element](resource-group-create-multiple.md) z grupami zasobów, aby 
 }
 ```
 
-Aby wdrożyć ten szablon przy użyciu wiersza polecenia platformy Azure i utworzyć trzy grupy zasobów, należy użyć:
+Aby uzyskać informacji na temat zasobów iteracji, zobacz [wdrożenie więcej niż jednego wystąpienia zasobu lub właściwości w szablonach usługi Resource Manager platformy Azure](./resource-group-create-multiple.md), i [samouczka: Tworzenie wielu wystąpień zasobów za pomocą szablonów usługi Resource Manager](./resource-manager-tutorial-create-multiple-instances.md).
 
-```azurecli-interactive
-az deployment create \
-  -n demoCopyRG \
-  -l southcentralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json \
-  --parameters rgNamePrefix=demoRG rgLocation=northcentralus instanceCount=3
-```
-
-Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzDeployment `
-  -Name demoCopyRG `
-  -Location southcentralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json `
-  -rgNamePrefix demogroup `
-  -rgLocation northcentralus `
-  -instanceCount 3
-```
-
-## <a name="create-resource-group-and-deploy-resource"></a>Utwórz grupę zasobów i wdrażanie zasobów
+## <a name="create-resource-group-and-deploy-resources"></a>Utwórz grupę zasobów i wdrażanie zasobów
 
 Aby utworzyć grupę zasobów i wdrażania zasobów, użyj zagnieżdżonych szablonów. Zagnieżdżony szablon definiuje zasoby do wdrożenia w grupie zasobów. Ustaw zagnieżdżonych szablonów jako zależny od grupy zasobów, aby upewnić się, że grupa zasobów znajduje się przed przystąpieniem do wdrażania zasobów.
 
@@ -231,29 +209,9 @@ Poniższy przykład tworzy grupę zasobów, a następnie wdraża konto magazynu 
 }
 ```
 
-Aby wdrożyć ten szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
+## <a name="create-policies"></a>Tworzenie zasad
 
-```azurecli-interactive
-az deployment create \
-  -n demoRGStorage \
-  -l southcentralus \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json \
-  --parameters rgName=rgStorage rgLocation=northcentralus storagePrefix=storage
-```
-
-Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzDeployment `
-  -Name demoRGStorage `
-  -Location southcentralus `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json `
-  -rgName rgStorage `
-  -rgLocation northcentralus `
-  -storagePrefix storage
-```
-
-## <a name="assign-policy"></a>Przypisz zasady
+### <a name="assign-policy"></a>Przypisz zasady
 
 Poniższy przykład przypisuje istniejącą definicję zasad do subskrypcji. Jeśli zasady pobiera parametry, należy podać je jako obiekt. Jeśli zasady nie przyjmuje parametrów, należy użyć domyślnego pustego obiektu.
 
@@ -291,25 +249,25 @@ Poniższy przykład przypisuje istniejącą definicję zasad do subskrypcji. Je�
 
 Aby zastosować wbudowane zasady do Twojej subskrypcji platformy Azure, użyj następujących poleceń interfejsu wiersza polecenia platformy Azure:
 
-```azurecli-interactive
+```azurecli
 # Built-in policy that does not accept parameters
 definition=$(az policy definition list --query "[?displayName=='Audit resource location matches resource group location'].id" --output tsv)
 
 az deployment create \
-  -n policyassign \
-  -l southcentralus \
+  --name demoDeployment \
+  --location centralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
   --parameters policyDefinitionID=$definition policyName=auditRGLocation
 ```
 
 Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
 
-```azurepowershell-interactive
+```azurepowershell
 $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit resource location matches resource group location' }
 
 New-AzDeployment `
   -Name policyassign `
-  -Location southcentralus `
+  -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
   -policyDefinitionID $definition.PolicyDefinitionId `
   -policyName auditRGLocation
@@ -317,20 +275,20 @@ New-AzDeployment `
 
 Aby zastosować wbudowane zasady do Twojej subskrypcji platformy Azure, użyj następujących poleceń interfejsu wiersza polecenia platformy Azure:
 
-```azurecli-interactive
+```azurecli
 # Built-in policy that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment create \
-  -n policyassign \
-  -l southcentralus \
+  --name demoDeployment \
+  --location centralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json \
   --parameters policyDefinitionID=$definition policyName=setLocation policyParameters="{'listOfAllowedLocations': {'value': ['westus']} }"
 ```
 
 Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
 
-```azurepowershell-interactive
+```azurepowershell
 $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Allowed locations' }
 
 $locations = @("westus", "westus2")
@@ -338,14 +296,14 @@ $policyParams =@{listOfAllowedLocations = @{ value = $locations}}
 
 New-AzDeployment `
   -Name policyassign `
-  -Location southcentralus `
+  -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policyassign.json `
   -policyDefinitionID $definition.PolicyDefinitionId `
   -policyName setLocation `
   -policyParameters $policyParams
 ```
 
-## <a name="define-and-assign-policy"></a>Zdefiniuj i przypisz zasady
+### <a name="define-and-assign-policy"></a>Zdefiniuj i przypisz zasady
 
 Możesz [zdefiniować](../azure-policy/policy-definition.md) i przypisywanie zasad, w tym samym szablonie.
 
@@ -392,23 +350,25 @@ Możesz [zdefiniować](../azure-policy/policy-definition.md) i przypisywanie zas
 
 Aby utworzyć definicję zasad w ramach subskrypcji i zastosować je do subskrypcji, użyj następującego polecenia interfejsu wiersza polecenia:
 
-```azurecli-interactive
+```azurecli
 az deployment create \
-  -n definePolicy \
-  -l southcentralus \
+  --name demoDeployment \
+  --location centralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
 Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
 
-```azurepowershell-interactive
+```azurepowershell
 New-AzDeployment `
   -Name definePolicy `
-  -Location southcentralus `
+  -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="assign-role-at-subscription"></a>Przypisywanie roli w subskrypcji
+## <a name="create-roles"></a>Tworzenie ról
+
+### <a name="assign-role-at-subscription"></a>Przypisywanie roli w subskrypcji
 
 Poniższy przykład przypisuje rolę użytkownika lub grupy dla subskrypcji. W tym przykładzie nie Określ zakres przypisania, ponieważ zakres jest automatycznie ustawiana na subskrypcję.
 
@@ -441,7 +401,7 @@ Poniższy przykład przypisuje rolę użytkownika lub grupy dla subskrypcji. W t
 
 Aby przypisać grupy usługi Active Directory do roli dla Twojej subskrypcji, użyj następujących poleceń interfejsu wiersza polecenia platformy Azure:
 
-```azurecli-interactive
+```azurecli
 # Get ID of the role you want to assign
 role=$(az role definition list --name Contributor --query [].name --output tsv)
 
@@ -449,28 +409,28 @@ role=$(az role definition list --name Contributor --query [].name --output tsv)
 principalid=$(az ad group show --group demogroup --query objectId --output tsv)
 
 az deployment create \
-  -n demoRole \
-  -l southcentralus \
+  --name demoDeployment \
+  --location centralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json \
   --parameters principalId=$principalid roleDefinitionId=$role
 ```
 
 Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
 
-```azurepowershell-interactive
+```azurepowershell
 $role = Get-AzRoleDefinition -Name Contributor
 
 $adgroup = Get-AzADGroup -DisplayName demogroup
 
 New-AzDeployment `
   -Name demoRole `
-  -Location southcentralus `
+  -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/roleassign.json `
   -roleDefinitionId $role.Id `
   -principalId $adgroup.Id
 ```
 
-## <a name="assign-role-at-scope"></a>Przypisz rolę w zakresie
+### <a name="assign-role-at-scope"></a>Przypisz rolę w zakresie
 
 Następujący szablon poziom subskrypcji przypisuje rolę użytkownika lub grupy, które są ograniczone do grupy zasobów w ramach subskrypcji. Zakres musi być większa niż stopień wdrożenia. Można wdrożyć do subskrypcji i określić przypisania roli do zakresu grupy zasobów, w ramach tej subskrypcji. Jednak nie można wdrożyć w grupie zasobów i określ zakres przypisania roli w subskrypcji.
 
@@ -528,7 +488,7 @@ Aby przypisać rolę w zakresie, należy użyć do wdrożenia zagnieżdżonego. 
 
 Aby przypisać grupy usługi Active Directory do roli dla Twojej subskrypcji, użyj następujących poleceń interfejsu wiersza polecenia platformy Azure:
 
-```azurecli-interactive
+```azurecli
 # Get ID of the role you want to assign
 role=$(az role definition list --name Contributor --query [].name --output tsv)
 
@@ -536,22 +496,22 @@ role=$(az role definition list --name Contributor --query [].name --output tsv)
 principalid=$(az ad group show --group demogroup --query objectId --output tsv)
 
 az deployment create \
-  -n demoRole \
-  -l southcentralus \
+  --name demoDeployment \
+  --location centralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json \
   --parameters principalId=$principalid roleDefinitionId=$role rgName demoRg
 ```
 
 Aby wdrożyć ten szablon przy użyciu programu PowerShell, należy użyć:
 
-```azurepowershell-interactive
+```azurepowershell
 $role = Get-AzRoleDefinition -Name Contributor
 
 $adgroup = Get-AzADGroup -DisplayName demogroup
 
 New-AzDeployment `
   -Name demoRole `
-  -Location southcentralus `
+  -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/scopedRoleAssign.json `
   -roleDefinitionId $role.Id `
   -principalId $adgroup.Id `
@@ -559,6 +519,7 @@ New-AzDeployment `
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Aby uzyskać przykład wdrażania ustawień obszaru roboczego usługi Azure Security Center, zobacz [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
 * Aby dowiedzieć się więcej na temat tworzenia szablonów usługi Azure Resource Manager, zobacz [Tworzenie szablonów](resource-group-authoring-templates.md). 
 * Aby uzyskać listę dostępnych funkcji w szablonie, zobacz [funkcje szablonu](resource-group-template-functions.md).

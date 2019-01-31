@@ -3,7 +3,7 @@ title: Limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL platfor
 description: Ta strona zawiera opis niektórych typowych limitów zasobów opartych na rdzeniach wirtualnych, pojedynczej bazy danych w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,24 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/09/2019
-ms.openlocfilehash: 894922a80ab874e5304ef441571e03ef559a34b0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/25/2019
+ms.openlocfilehash: e38f90acf1ffb0b63379727287f7451f99b6dd0d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215426"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460169"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
 Ten artykuł zawiera limity zasobów szczegółowe dla pojedynczych baz danych Azure SQL Database przy użyciu modelu zakupu opartego na rdzeniach wirtualnych.
 
-Oparte na jednostkach DTU zakupu modelu limitów dla pojedynczych baz danych na serwerze logicznym, zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md).
+Oparte na jednostkach DTU zakupu modelu limitów dla pojedynczych baz danych na serwerze bazy danych SQL, zobacz [Przegląd zasobów limity na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md).
 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [ Interfejs wiersza polecenia Azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [języka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [ Interfejs wiersza polecenia Azure](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases), lub [interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług ogólnego przeznaczenia: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
@@ -152,7 +152,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|49|56|63|70|112|168|
 |Obsługa magazynu kolumn|ND|ND|ND|ND|ND|ND|
-|Pojemność magazynu OLTP w pamięci (GB)|7|8|9,5|11|20|36|
+|Pojemność magazynu OLTP w pamięci (GB)|7|8|9.5|11|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
@@ -174,7 +174,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazyni
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|11|22|33|44|55|66|77|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Pojemność magazynu OLTP w pamięci (GB)|1.571|3,142|4.713|6.284|8.655|11.026|13.397|
+|Pojemność magazynu OLTP w pamięci (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
 |Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|

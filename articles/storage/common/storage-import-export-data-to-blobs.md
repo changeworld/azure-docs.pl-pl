@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: ea81cb52b8492e429903de15a9ff0156c91abae2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309590"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462838"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -39,7 +39,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
         - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
         - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-prepare-the-drives"></a>Krok 1. Przygotowywanie dysków
+## <a name="step-1-prepare-the-drives"></a>Krok 1: Przygotowywanie dysków
 
 W tym kroku generuje plik dziennika. Plik dziennika zawiera podstawowe informacje, takie jak numer seryjny dysku, klucz szyfrowania i szczegółów konta magazynu. 
 
@@ -67,9 +67,9 @@ Wykonaj poniższe kroki, aby przygotować dyski.
     |Opcja  |Opis  |
     |---------|---------|
     |/j:     |Nazwa pliku dziennika z rozszerzeniem jrn. Generowany jest plik dziennika na dysku. Zalecamy użycie numer seryjny dysku jako nazwa pliku dziennika.         |
-    |/ Identyfikator:     |Identyfikator sesji. Użyj numeru sesji unikatowy dla poszczególnych wystąpień tego polecenia.      |
-    |/SK:     |Klucz konta usługi Azure Storage.         |
-    |t:     |Literę dysku, który ma zostać wysłane. Na przykład dysk `D`.         |
+    |/id:     |Identyfikator sesji. Użyj numeru sesji unikatowy dla poszczególnych wystąpień tego polecenia.      |
+    |/sk:     |Klucz konta usługi Azure Storage.         |
+    |/t:     |Literę dysku, który ma zostać wysłane. Na przykład dysk `D`.         |
     |/bk:     |Klucz funkcji BitLocker dla dysku. Jego hasło numeryczne z danych wyjściowych ` manage-bde -protectors -get D: `      |
     |/srcdir:     |Następuje literę dysku, który ma zostać wysłane `:\`. Na przykład `D:\`.         |
     |/dstdir:     |Nazwa kontenera docelowego w usłudze Azure Storage.         |
@@ -79,7 +79,7 @@ Wykonaj poniższe kroki, aby przygotować dyski.
     > [!IMPORTANT]
     > - Wraz z pliku dziennika `<Journal file name>_DriveInfo_<Drive serial ID>.xml` plik również jest tworzony w tym samym folderze, w którym znajduje się narzędzie. Plik XML jest używany zamiast pliku dziennika, podczas tworzenia zadania, jeśli plik dziennika jest zbyt duży. 
 
-## <a name="step-2-create-an-import-job"></a>Krok 2. Tworzenie zadania importu
+## <a name="step-2-create-an-import-job"></a>Krok 2: Tworzenie zadania importu
 
 Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
@@ -129,7 +129,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
     ![Tworzenie zadania importu — krok 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives"></a>Krok 3. Dostarczaj dyski 
+## <a name="step-3-ship-the-drives"></a>Krok 3: Dostarczaj dyski 
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
@@ -138,7 +138,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5: Weryfikowanie przekazania danych na platformę Azure
+## <a name="step-5-verify-data-upload-to-azure"></a>Krok 5. Weryfikowanie przekazania danych na platformę Azure
 
 Śledź zadania do zakończenia. Po zakończeniu zadania Sprawdź, czy danych został przekazany na platformę Azure. Usuń lokalne dane tylko w przypadku, gdy będziesz mieć pewność, że przekazywanie powiodło się.
 

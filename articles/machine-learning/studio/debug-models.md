@@ -1,6 +1,6 @@
 ---
-Tytuł: Debugowanie usługi titleSuffix modelu: Opis usługi Azure Machine Learning Studio: Jak debugować błędy wygenerowane przez moduły Train Model i Score Model w usłudze Azure Machine Learning Studio.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Debugowanie usługi titleSuffix modelu: Opis usługi Azure Machine Learning Studio: Jak debugować błędy wygenerowane przez moduły Train Model i Score Model w usłudze Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/14/2017
 ---

@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5faa7a58a252a5d3b8cc044f9e81a6d7cb2df7d5
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0cf9ffddffe7f97008e69c9c4fb7945faeb779da
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138045"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469604"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy
 Jakie zasoby należy zaplanować do uwzględnienia podczas konfigurowania środowiska do zaawansowanej analizy, przetwarzanie w zestawie danych? W tym artykule sugeruje szereg pytań do zadania ułatwiające identyfikowanie własnego scenariusza zadania i odpowiednie zasoby. Kolejność etapów wysokiego poziomu do analizy predykcyjnej jest opisany w [co to jest Team Data Science naukowych?](overview.md). Każdy z tych kroków wymaga określonych zasobów dla zadania, które są odpowiednie dla danego scenariusza. Kluczowe pytania do identyfikowanie własnego scenariusza dotyczą danych logistycznych, właściwości, jakości zestawy danych, narzędzia i języki, aby wykonać analizy.
@@ -65,14 +65,14 @@ Te pytania są kluczem do planowania sieci magazynowania i przetwarzania środow
    * Tabel programu SQL Server
 3. **Jak duże są Twoje dane?**
    
-   * Mała liczba godzin: mniej niż 2 GB
-   * Średni: Większa niż 2 GB i mniejsza niż 10 GB
+   * Small: Mniej niż 2 GB
+   * Średnie: Większe niż 2 GB i mniejsza niż 10 GB
    * Duże: Większy niż 10 GB
 
 Na przykład wykonać środowisko Azure Machine Learning Studio:
 
 * Aby uzyskać listę formatów danych i typy obsługiwanych przez usługi Azure Machine Learning Studio, zobacz [formatów danych i typy danych obsługiwane](../studio/import-data.md#data-formats-and-data-types-supported) sekcji.
-* Aby uzyskać informacji na temat ograniczeń danych usługi Azure Machine Learning Studio, zobacz **jak duży może być zestaw danych dla moich modułów?** części [importowanie i eksportowanie danych na potrzeby usługi Machine Learning](../studio/faq.md#machine-learning-studio-questions)
+
 
 Aby uzyskać informacji na temat ograniczeń innych usług platformy Azure używane w procesie analytics, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md).
 

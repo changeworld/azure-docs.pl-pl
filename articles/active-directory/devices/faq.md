@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2010
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 02a961f799ebd8d290385e6be9a3081695453f5d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093589"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296179"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -176,7 +176,7 @@ To zachowanie nie ma zastosowania do żadnego innego użytkownika, który loguje
 
 **Pyt.: Dlaczego widzę *Niestety... Wystąpił błąd!* okna dialogowego, gdy próbuję z usługą Azure AD join moim komputerze?**
 
-**ODP.:** Ten błąd występuje podczas konfigurowania usługi Azure Active Directory rejestracji w usłudze Intune. Upewnij się, że użytkownik, który próbuje dołączania do usługi Azure AD ma przypisaną odpowiednią licencję usługi Intune. Aby uzyskać więcej informacji, zobacz [konfigurowania rejestracji dla urządzeń Windows](https://docs.microsoft.com/intune/deploy-use/set-up-windows-device-management-with-microsoft-intune#azure-active-directory-enrollment).  
+**ODP.:** Ten błąd występuje podczas konfigurowania usługi Azure Active Directory rejestracji w usłudze Intune. Upewnij się, że użytkownik, który próbuje dołączania do usługi Azure AD ma przypisaną odpowiednią licencję usługi Intune. Aby uzyskać więcej informacji, zobacz [konfigurowania rejestracji dla urządzeń Windows](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment).  
 
 ---
 

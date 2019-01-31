@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/16/2018
-ms.openlocfilehash: 3e807033b109b8281057f6881a315f5c1c783a22
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/25/2019
+ms.openlocfilehash: 7ca54117b014cb093b63e265864b0b0efa787865
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536376"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461223"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Baza danych SQL dynamiczne maskowanie danych
 
@@ -28,12 +28,15 @@ Dynamiczne maskowanie danych pomaga zapobiec nieautoryzowanemu dostępowi do dan
 Na przykład z przedstawicielem w Centrum połączenia może identyfikować obiekty wywołujące kilka cyfry numeru karty kredytowej, ale te elementy danych nie należy całkowicie uwidaczniać do przedstawiciela biura obsługi. Czy maski wszystkie, ale cztery ostatnie cyfry wszelkie numer karty kredytowej, w wyniku zestaw dowolnego zapytania można zdefiniować regułę maskowania. Inny przykład można zdefiniować maskę odpowiednie dane do ochrony danych identyfikowalne dane osobowe (PII), dzięki czemu deweloper może zapytania środowisk produkcyjnych na potrzeby rozwiązywania problemów bez naruszania kryteria zgodności z przepisami.
 
 ## <a name="sql-database-dynamic-data-masking-basics"></a>Baza danych SQL dynamiczne maskowanie podstawowe informacje o danych
+
 Dane dynamiczne maskowanie zasady w witrynie Azure portal, wybierając dane dynamiczne maskowanie operacji w bloku konfiguracji bazy danych SQL lub w bloku ustawienia należy skonfigurować.
 
 ### <a name="dynamic-data-masking-permissions"></a>Dane dynamiczne maskowanie uprawnień
-Dynamiczne maskowanie danych mogą być konfigurowane przez administratora bazy danych Azure, administrator serwera lub [Menedżer zabezpieczeń SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) ról.
+
+Dynamiczne maskowanie danych mogą być konfigurowane przez administratora usługi Azure SQL Database, administrator serwera lub [Menedżer zabezpieczeń SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) ról.
 
 ### <a name="dynamic-data-masking-policy"></a>Dane dynamiczne maskowanie zasad
+
 * **Użytkownicy SQL wykluczeni z maskowania** — A zbiór użytkowników SQL lub tożsamości usługi AAD, które pobierają dane pozbawiony maskowania w SQL wyniki zapytania. Użytkownicy z uprawnieniami administratora są zawsze wykluczeni z maskowania i zobaczyć oryginalne dane bez żadnych maski.
 * **Reguły maskowania** — zestaw reguł, które definiują wyznaczonych polach maskowane i funkcji maskowania, który jest używany. Można zdefiniować wyznaczonych polach przy użyciu nazwy schematu bazy danych, nazwę tabeli i nazwę kolumny.
 * **Maskowanie funkcje** — zestaw metod, które kontrolują ujawnienia danych dla różnych scenariuszy.
@@ -49,11 +52,13 @@ Dynamiczne maskowanie danych mogą być konfigurowane przez administratora bazy 
 <a name="Anchor1"></a>
 
 ### <a name="recommended-fields-to-mask"></a>Zalecane pola do zamaskowania
+
 Aparat zaleceń DDM flag określonych pól z bazy danych jako potencjalnie poufnych pola, które mogą być odpowiednimi obiektami do maskowania. W bloku funkcja dynamiczne maskowanie danych w portalu zobaczysz zalecane kolumny bazy danych. To wszystko, czego potrzebujesz, aby zrobić, kliknij przycisk **Dodaj maskę** dla co najmniej jednej kolumny i następnie **Zapisz** do zastosowania do maski dla tych pól.
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Skonfigurować dynamiczne maskowanie danych dla bazy danych przy użyciu poleceń cmdlet programu Powershell
+
 Zobacz [polecenia cmdlet usługi Azure SQL Database](https://docs.microsoft.com/powershell/module/azurerm.sql).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Konfigurowanie dynamicznego maskowania danych dla bazy danych przy użyciu interfejsu API REST
-Zobacz [operacji dla usługi Azure SQL Database](https://msdn.microsoft.com/library/dn505719.aspx).
 
+Zobacz [operacji dla usługi Azure SQL Database](https://msdn.microsoft.com/library/dn505719.aspx).

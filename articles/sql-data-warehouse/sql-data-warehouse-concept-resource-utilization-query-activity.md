@@ -6,19 +6,19 @@ author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 11/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b53a3f99f601f540723a9a383e3bf7bd2908de23
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4613a16ee27168dd5c00435ee04fa5a7f95f4d97
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499567"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460424"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorowanie aktywności wykorzystanie i kwerendy zasobów w usłudze Azure SQL Data Warehouse
-Usługa Azure SQL Data Warehouse zapewnia rozbudowane funkcje monitorowania w witrynie Azure portal, aby udostępniać szczegółowe informacje do obciążenia magazynu danych. Witryna Azure portal jest zalecanym narzędziem podczas monitorowania usługi data warehouse zapewnia konfigurowalne utrzymania okresów, alerty, zalecenia i możliwe do dostosowania wykresów i pulpitów nawigacyjnych metryk i dzienników. Portal umożliwia także integrację z innych usług, takich jak usługi Operations Management Suite (OMS) do monitorowania platformy Azure / Log Analytics i Azure Monitor, aby zapewnić kompleksowe monitorowanie środowisko nie tylko magazyn danych, ale także całą platformę Azure Platforma analiz dla zintegrowane rozwiązanie monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji i zarządzać Twoją platformą analytics z usługą SQL Data Warehouse. 
+Usługa Azure SQL Data Warehouse zapewnia rozbudowane funkcje monitorowania w witrynie Azure portal, aby udostępniać szczegółowe informacje do obciążenia magazynu danych. Witryna Azure portal jest zalecanym narzędziem podczas monitorowania magazynu danych, ponieważ zapewnia okresów przechowywania można skonfigurować, alerty, zalecenia i możliwe do dostosowania wykresów i pulpitów nawigacyjnych metryk i dzienników. Portal umożliwia także integrację z innych usług, takich jak usługi Operations Management Suite (OMS) do monitorowania platformy Azure / Log Analytics i Azure Monitor, aby zapewnić kompleksowe monitorowanie środowisko nie tylko magazyn danych, ale także całą platformę Azure Platforma analiz dla zintegrowane rozwiązanie monitorowania. W tej dokumentacji opisano, jakie funkcje monitorowania są dostępne do optymalizacji i zarządzać Twoją platformą analytics z usługą SQL Data Warehouse. 
 
 ## <a name="resource-utilization"></a>Wykorzystanie zasobów 
 Następujące metryki są dostępne w witrynie Azure portal dla usługi SQL Data Warehouse. Te metryki są udostępniane za pośrednictwem [usługi Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).

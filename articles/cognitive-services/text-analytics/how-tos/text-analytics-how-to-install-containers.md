@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: c874bdd36813438edbb4546d3ee11705535d5d51
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 07fbf51f584d691b08d94f68fefa8c3f9348227f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207126"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55294832"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalowanie i uruchamianie kontenerów analizy tekstu
 
@@ -32,7 +32,7 @@ Aby można było uruchomić dowolny kontener, analiza tekstu, musi mieć następ
 
 Przed rozpoczęciem korzystania z kontenerów analizy tekstu, musi spełniać następujące wymagania wstępne:
 
-|Wymagany|Przeznaczenie|
+|Wymagane|Przeznaczenie|
 |--|--|
 |Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
 |Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
@@ -40,12 +40,7 @@ Przed rozpoczęciem korzystania z kontenerów analizy tekstu, musi spełniać na
 
 ### <a name="the-host-computer"></a>Komputer-host
 
-**Hosta** komputer, który uruchamia kontener platformy docker. Może być komputer w środowisku lokalnym lub docker obsługującego usługę z platformy Azure, w tym:
-
-* [Azure Kubernetes Service](../../../aks/index.yml)
-* [Azure Container Instances](../../../container-instances/index.yml)
-* [Kubernetes](https://kubernetes.io/) wdrażany klaster do [usługi Azure Stack](../../../azure-stack/index.yml). Aby uzyskać więcej informacji, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](../../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
-
+[!INCLUDE [Request access to private preview](../../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
@@ -77,6 +72,8 @@ Pełny opis dostępnych tagów dla kontenerów analizy tekstu zobacz następują
 * [Wykrywanie języka](https://go.microsoft.com/fwlink/?linkid=2018759)
 * [Analiza tonacji](https://go.microsoft.com/fwlink/?linkid=2018654)
 
+Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera.
+
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Polecenie docker pull kontenera klucza frazy wyodrębniania
 
@@ -96,13 +93,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
-### <a name="listing-the-containers"></a>Wyświetlanie listy kontenerów
-
-Możesz użyć [obrazów platformy docker](https://docs.docker.com/engine/reference/commandline/images/) polecenie, aby wyświetlić listę obrazów kontenerów pobrany. Na przykład następujące polecenie wyświetla identyfikator, repozytorium i tag każdy obraz kontenera pobrany, sformatowane jako tabela:
-
-```Docker
-docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-```
+[!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
 
 ## <a name="how-to-use-the-container"></a>Jak używać kontenera
@@ -116,7 +107,7 @@ Gdy kontener będzie na [komputerze-hoście](#the-host-computer), użyj następu
 
 Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenie, aby uruchomić dowolne trzy kontenery. Polecenie używa następujących parametrów:
 
-| Symbol zastępczy | Value |
+| Symbol zastępczy | Wartość |
 |-------------|-------|
 |{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie klucze analizy tekstu w witrynie Azure portal.  |
 |{BILLING_ENDPOINT_URI} | Rozliczeń wartość identyfikatora URI punktu końcowego jest dostępna na stronie Przegląd analizy tekstu witryny Azure portal.|
@@ -159,14 +150,7 @@ Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](../text-analytics
 
 ## <a name="containers-api-documentation"></a>Dokumentacja interfejsu API kontenera
 
-Kontener zawiera pełny zestaw dokumentacji dla punktów końcowych, a także `Try it now` funkcji. Ta funkcja umożliwia wprowadzanie ustawień do formularza HTML, oparte na sieci web i utworzyć zapytanie bez konieczności pisania kodu. Gdy zapytanie zwraca przykład polecenia CURL jest dostarczany w celu pokazują nagłówków HTTP i treści w formacie wymaganym. 
-
-> [!TIP]
-> Odczyt [specyfikacji interfejsu OpenAPI](https://swagger.io/docs/specification/about/), opisujący operacje interfejsu API, obsługiwane przez kontener z `/swagger` względnym identyfikatorem URI. Na przykład:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -180,7 +164,7 @@ Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez 
 |--------|-------------|
 | `ApiKey` | Klucz interfejsu API _analizy tekstu_ zasoby używane do śledzenia informacji dotyczących rozliczeń. |
 | `Billing` | Punkt końcowy _analizy tekstu_ zasoby używane do śledzenia informacji dotyczących rozliczeń.|
-| `Eula` | Wskazuje, zaakceptowane licencji dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
+| `Eula` | Wskazuje, że zaakceptowano licencję dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
 
 > [!IMPORTANT]
 > Prawidłowe wartości należy określić wszystkie trzy opcje, lub uruchomić kontenera.

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/24/2018
+ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 03862f88bb5debc66940ebae5308771525f51b0b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0f6fff5047bc72fa1171e06bb2f160196ecef807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54351650"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300612"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Zmiana .NET kanału informacyjnego procesora zestawu SDK: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -40,6 +40,12 @@ ms.locfileid: "54351650"
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="v2-builds"></a>kompilacje w wersji 2
+
+### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+* Lepsza obsługa wyjątków obserwatora.
+* Więcej informacji na temat błędów obserwatora:
+ * Po zamknięciu obserwatora ze względu na wyjątek generowany przez obserwatora ProcessChangesAsync CloseAsync otrzyma parametr Przyczyna ustawiony ChangeFeedObserverCloseReason.ObserverError.
+ * Dodano informacje śledzenia do identyfikowania błędów w kodzie użytkownika w obserwatora.
 
 ### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
 * Dodano obsługę obsługi podziału w kolekcjach, korzystających z udostępnionej bazy danych przepływności.
@@ -157,6 +163,7 @@ Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostan
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.2.6](#2.2.6) |29 stycznia 2019 r. |--- |
 | [2.2.5](#2.2.5) |13 grudnia 2018 r. |--- |
 | [2.2.4](#2.2.4) |29 listopada 2018 r. |--- |
 | [2.2.3](#2.2.3) |19 listopada 2018 r. |--- |

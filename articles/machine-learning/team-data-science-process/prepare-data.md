@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a926edc3409290a0e8cd89fd909427833f9e1427
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134373"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453522"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Zadania w celu przygotowania danych do rozszerzonego uczenia maszynowego
 Wstępne przetwarzanie i czyszczenie danych są ważne zadania, które zazwyczaj należy przeprowadzić przed zestawu danych można efektywnie używać uczenia maszynowego. Nieprzetworzone dane są często hałas i zawodnych i może brakować wartości. Przy użyciu tych danych do modelowania może spowodować wyświetlenie nieprawdziwych wyników. Te zadania są dostępne w ramach procesu do nauki o danych zespołu (TDSP) i zwykle należy wykonać początkową eksploracji zestawu danych używane do odnajdywania i planowanie wstępnego przetwarzania wymagane. Aby uzyskać szczegółowe instrukcje na temat procesu przetwarzania TDSP, zobacz kroki opisane w temacie [zespołu danych dla celów naukowych](overview.md).
@@ -30,9 +30,9 @@ Aby uzyskać przykład eksploracji danych i wstępnego przetwarzania wykonywane 
 ## <a name="why-pre-process-and-clean-data"></a>Dlaczego wstępne przetwarzanie i czyszczenie danych?
 Rzeczywiste dane są zbierane z różnych źródeł i procesy i może zawierać nieprawidłowości lub uszkodzone dane pogarszania jakości zestawu danych. Problemy z jakością typowych danych, które powstają są:
 
-* **Niekompletne**: danych nie ma atrybutów lub zawierające brakujące wartości.
-* **Hałas**: dane zawierają błędne rekordów lub elementy odstające.
-* **Niespójne**: dane zawierają rekordy powodujące konflikt lub niezgodności.
+* **Niekompletne**: Danych nie ma atrybutów lub zawierające brakujące wartości.
+* **Hałas**: Dane zawierają błędne rekordów lub elementy odstające.
+* **Niespójne**: Dane zawierają rekordy powodujące konflikt lub niezgodności.
 
 Dane dotyczące jakości jest wymaganiem wstępnym dla modeli predykcyjnych jakości. Aby uniknąć "wyrzucania elementów w pamięci out" i poprawić jakość danych i w związku z tym modelu wydajności, konieczne jest przeprowadzenie ekran kondycji danych wczesne wykrywanie problemów z danych i wybrać odpowiedniego przetwarzania danych i czynności czyszczenia.
 
@@ -54,10 +54,10 @@ Jeśli znajdziesz problemy z danymi, **kroki przetwarzania** są niezbędne, kt�
 **Usługa Azure Machine Learning wykorzystuje dane tabelaryczne z dobrze sformułowany**.  Jeśli dane są już w formie tabelarycznej, przetwarzanie wstępne danych można wykonać bezpośrednio z usługi Azure Machine Learning, Machine Learning Studio.  Jeśli dane nie są w formie tabelarycznej, powiedz, który jest w formacie XML, analizowania może być wymagane w celu konwersji danych w formie tabelarycznej.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Jakie są niektóre z najważniejszych zadań wstępne przetwarzanie danych?
-* **Czyszczenie danych**: Wypełnij lub brakujące wartości, wykrywanie i usuwanie danych hałas i elementy odstające.
-* **Przekształcanie danych**: normalizacji danych, aby zmniejszyć wymiary i szumu.
-* **Redukcja danych**: przykładowa rekordów danych lub atrybutów w celu łatwiejszej obsługi danych.
-* **Dane dyskretyzacji**: przekonwertować atrybutów ciągłych podzielonych na kategorie atrybutów w celu ułatwienia za pomocą niektórych metod learning maszyny.
+* **Czyszczenie danych**:  Wypełnij lub brakujące wartości, wykrywanie i usuwanie danych hałas i elementy odstające.
+* **Przekształcanie danych**:  Normalizacji danych, aby zmniejszyć wymiary i szumu.
+* **Redukcja danych**:  Rejestruje dane przykładowe lub atrybutów w celu łatwiejszej obsługi danych.
+* **Dane dyskretyzacji**:  Convert ciągłe atrybutów do kategorii atrybutów w celu ułatwienia za pomocą niektórych metod usługi machine learning.
 * **Czyszczenie tekstu**: usunięcie osadzonych znaków, które mogą spowodować niespójność danych, dla np. karty osadzone w pliku danych rozdzielane znakami tabulacji osadzone nowe wiersze, które mogą przestać działać rekordów itp.
 
 W poniższych sekcjach opisano niektóre z tych kroków przetwarzania danych.
@@ -65,31 +65,31 @@ W poniższych sekcjach opisano niektóre z tych kroków przetwarzania danych.
 ## <a name="how-to-deal-with-missing-values"></a>Jak radzić sobie z brakującymi wartościami?
 Aby poradzić sobie z brakującymi wartościami, najlepiej jest najpierw określić przyczynę brakujące wartości, aby lepiej obsługiwać ten problem. Typowe metody obsługi brakujące wartości to:
 
-* **Usuwanie**: usuwania rekordów z brakującymi wartościami
-* **Fikcyjny podstawienia**: Zastąp brakujące wartości z wartości: np. *nieznany* dla kategorii lub równa 0 dla wartości liczbowych.
-* **Oznacza podstawienia**: Jeśli brakujące dane liczbowe, Zamień brakujące wartości średniej.
+* **Usuwanie**: Usuń rekordy z brakującymi wartościami
+* **Fikcyjny podstawienia**: Zamień wartości Brak wartości: np. *nieznany* dla kategorii lub równa 0 dla wartości liczbowych.
+* **Oznacza podstawienia**: Jeśli brakujące dane liczbowe, Zastąp brakujące wartości średniej.
 * **Częste odzyskiwanie pamięci podstawienia**: Jeśli brakujące dane są podzielone na kategorie, Zamień brakujące wartości najczęściej występujących elementów
-* **Podstawianie regresji**: metodą regresji Aby zastąpić wartości pogorszonej brakujące wartości.  
+* **Podstawianie regresji**: Aby zastąpić wartości pogorszonej brakujące wartości, należy użyć metody regresji.  
 
 ## <a name="how-to-normalize-data"></a>Jak normalizacji danych?
 Normalizacji danych można skalować ponownie wartości liczbowych do określonego zakresu. Metody normalizacji danych popularnych obejmują:
 
-* **Normalizacji minimum-maksimum**: liniowo przekształcić je do zakresu, na przykład od 0 do 1, w którym wartość minimalna jest skalowany 0 i maksymalna wartość na 1.
-* **Wynik Z normalizacji**: skalowanie danych na podstawie średniej i odchylenie standardowe: dzielenie różnicy między danymi a średnia, odchylenie standardowe.
-* **Skalowanie dziesiętna**: skalowanie danych, przenosząc punktu dziesiętnego, wartość atrybutu.  
+* **Normalizacji minimum maksimum**: Liniowo przekształcać dane do zakresu, załóżmy, że z zakresu od 0 do 1, w którym wartość minimalna jest skalowany 0 i maksymalna wartość na 1.
+* **Wynik Z normalizacji**: Skaluj dane na podstawie średniej i odchylenie standardowe: dzielenie różnicy między danymi a średnia, odchylenie standardowe.
+* **Skalowanie dziesiętna**: Skalować dane, przenosząc punktu dziesiętnego, wartość atrybutu.  
 
 ## <a name="how-to-discretize-data"></a>Jak dyskretyzowania danych?
 Dane można zdyskretyzować konwertując ciągłe wartości atrybutów nominalna lub odstępach czasu. W ten sposób niektóre sposoby są następujące:
 
-* **Szerokość równe pakowania**: podzielona zakresu wszystkich możliwych wartości atrybutu N grup taki sam rozmiar, a następnie przypisz wartości, które mieszczą się w pojemniku numerem bin.
-* **Wysokość równe pakowania**: podzielona zakresu wszystkich możliwych wartości atrybutu N grup, każdy z nich zawierający tę samą liczbę wystąpień, a następnie przypisz wartości, które mieszczą się w pojemniku numerem bin.  
+* **Szerokość równe pakowania**: Podzielić zakresu wszystkich możliwych wartości atrybutu N grup w tej samej wielkości i przypisać wartości, które mieszczą się w pojemniku numerem bin.
+* **Wysokość równe pakowania**: Podziel zakres wszystkie możliwe wartości atrybutu do N grup, każdy z nich zawierający tę samą liczbę wystąpień, a następnie przypisz wartości, które mieszczą się w pojemniku numerem bin.  
 
 ## <a name="how-to-reduce-data"></a>W jaki sposób zmniejszenia ilości danych?
 Istnieją różne metody, aby zmniejszyć rozmiar danych do obsługi danych łatwiejsze. W zależności od rozmiaru danych i domeny można zastosować następujących metod:
 
 * **Zarejestruj próbkowania**: Przykładowe rekordów danych i wybrać tylko reprezentatywnego podzestawu danych.
-* **Atrybut próbkowania**: wybierać tylko podzbiór atrybutów najważniejszych danych.  
-* **Agregacja**: dzielenie danych na grupy i przechowujące liczby, dla każdej grupy. Na przykład przychód dziennej liczby sieć restauracji, w ciągu ostatnich 20 lat, może być agregowany dochodem miesięczny, aby zmniejszyć rozmiar danych.  
+* **Atrybut próbkowania**: Wybierz tylko podzbiór najważniejsze atrybuty z danych.  
+* **Agregacja**: Dzielenie danych na grupy i przechowujące liczby, dla każdej grupy. Na przykład przychód dziennej liczby sieć restauracji, w ciągu ostatnich 20 lat, może być agregowany dochodem miesięczny, aby zmniejszyć rozmiar danych.  
 
 ## <a name="how-to-clean-text-data"></a>Jak wyczyścić dane tekstowe?
 **Pola tekstowe w danych tabelarycznych** może zawierać znaki, które mają wpływ na granicach kolumn wyrównania i/lub rekordu. Np. osadzone kart w niezgodność kolumny Przyczyna plik wartości rozdzielanych przecinkami kartę i osadzone znaki nowego wiersza przerwanie wiersze rekordów. Obsługa kodowania tekstu niewłaściwy podczas zapisu/odczytu tekstu prowadzi do utraty informacji przypadkowego wprowadzenia nie można go odczytać znaków, np. null i może również mogą wpłynąć na tekst podczas analizowania. Dokładnej analizy i edytowania może być wymagane, aby można było wyczyścić pola tekstowe do prawidłowego wyrównania i/lub dane wyodrębnione ze strukturą danych niestrukturyzowanych i strukturyzowanych tekstu.

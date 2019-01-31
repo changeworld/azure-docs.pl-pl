@@ -1,6 +1,6 @@
 ---
-Tytuł: Oceń titleSuffix wydajności modelu: Opis usługi Azure Machine Learning Studio: Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Oceń titleSuffix wydajności modelu: Opis usługi Azure Machine Learning Studio: Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Learning Studio i zawiera krótki opis dostępnych metryk dla tego zadania.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

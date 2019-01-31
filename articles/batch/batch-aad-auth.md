@@ -3,7 +3,7 @@ title: Usługa Azure Active Directory do uwierzytelniania usługi Azure Batch se
 description: Usługa Batch obsługuje usługi Azure AD do uwierzytelniania z poziomu usługi Batch.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
-ms.author: danlep
-ms.openlocfilehash: 964ef3bd988d71bfb90dbaa473b4b259769064b3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: lahugh
+ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722059"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477605"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch za pomocą usługi Active Directory
 
@@ -171,7 +171,7 @@ Przykłady kodu w tej sekcji przedstawiają sposób uwierzytelniania przy użyci
 >
 >
 
-### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Przykład kodu: używanie programu Azure AD zintegrowane uwierzytelnianie przy użyciu platformy .NET usługi Batch
+### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Przykład kodu: Używanie programu Azure AD zintegrowane uwierzytelnianie przy użyciu platformy .NET usługi Batch
 
 Aby uwierzytelniać się przy użyciu uwierzytelniania zintegrowanego z platformy .NET usługi Batch, należy odwołać [usługi Azure Batch dla środowiska .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch/) pakietu i [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pakietu.
 
@@ -244,7 +244,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Przykład kodu: korzystania z jednostki usługi Azure AD przy użyciu platformy .NET usługi Batch
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Przykład kodu: Za pomocą jednostki usługi Azure AD przy użyciu platformy .NET usługi Batch
 
 Aby uwierzytelniać się przy użyciu jednostki usługi, z platformy .NET usługi Batch, należy odwołać [usługi Azure Batch dla środowiska .NET](https://www.nuget.org/packages/Azure.Batch/) pakietu i [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) pakietu.
 
@@ -311,7 +311,7 @@ public static async Task PerformBatchOperations()
     }
 }
 ```
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Przykład kodu: korzystania z jednostki usługi Azure AD za pomocą języka Python usługi Batch
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Przykład kodu: Za pomocą jednostki usługi Azure AD za pomocą języka Python usługi Batch
 
 Aby uwierzytelniać się przy użyciu jednostki usługi, za pomocą języka Python usługi Batch, zainstalowania i odwołania [usługi azure batch](https://pypi.org/project/azure-batch/) i [azure common](https://pypi.org/project/azure-common/) modułów.
 

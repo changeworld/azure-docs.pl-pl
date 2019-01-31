@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure SQL Database Managed Przegląd instancji | Dokumentacja firmy Microsoft
-description: W tym temacie opisano wystąpienia usługi Azure SQL Database Managed oraz wyjaśniono, jak to działa, i jak jest inny niż pojedynczej bazy danych w usłudze Azure SQL Database.
+description: W tym temacie opisano wystąpienia usługi Azure SQL Database Managed oraz wyjaśniono, jak to działa, i jak różni się od jednego lub puli bazy danych w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 2807e989436aa80fa812b337340db8cb534b2b28
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 01/25/2019
+ms.openlocfilehash: ac9a7c081515b35348d10a2968b10647af29ef61
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994763"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465711"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>Użyj wystąpienia zarządzanego usługi SQL Database przy użyciu sieci wirtualnych i w prawie 100% zgodności
 
@@ -34,7 +34,7 @@ Wystąpienie usługi Azure SQL Database Managed zaprojektowano z myślą klienci
 
 Wg ogólnej dostępności wystąpienia zarządzanego ma na celu dostarczać blisko powierzchni 100% zgodności z najnowszą wersją programu SQL Server w środowisku lokalnym za pośrednictwem planu wersji etapowe.
 
-Podjęcie decyzji, między pojedynczej bazy danych Azure SQL Database, wystąpienia zarządzanego Azure SQL Database i SQL Server IaaS hostowanych maszyn wirtualnych, zobacz [sposobu wybierania właściwej wersji programu SQL Server w chmurze platformy Azure](sql-database-paas-vs-sql-server-iaas.md).
+Aby wybrać między pojedynczej bazy danych Azure SQL Database, baza danych w puli, wystąpienia zarządzanego i programu SQL Server hostowanego na maszynie wirtualnej, zobacz [sposobu wybierania właściwej wersji programu SQL Server w chmurze platformy Azure](sql-database-paas-vs-sql-server-iaas.md).
 
 ## <a name="key-features-and-capabilities"></a>Najważniejsze funkcje i możliwości
 
@@ -185,7 +185,7 @@ Podejście do migracji wykorzystuje kopii zapasowych SQL w usłudze Azure blob s
 - Aby uzyskać informacji na temat przywracania z adresu URL, zobacz [natywnych przywracania z adresu URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
 
 > [!IMPORTANT]
-> Kopie zapasowe z wystąpienia zarządzanego można przywrócić tylko do innego wystąpienia zarządzanego. Nie można przywrócić do lokalnego programu SQL Server lub usługi Azure SQL Database serwer logiczny pojedyncze lub zbiorcze bazy danych.
+> Kopie zapasowe z wystąpienia zarządzanego można przywrócić tylko do innego wystąpienia zarządzanego. Nie można przywrócić do lokalnego programu SQL Server lub do pojedynczej bazy danych/elastycznej puli.
 
 ### <a name="data-migration-service"></a>Data Migration Service
 
@@ -210,7 +210,7 @@ Korzyści z wystąpienia zarządzanego nie zawsze w górę — od początku w ch
 - Wystąpienie zarządzane nie zezwala na określanie ścieżek Pełna fizyczna, dzięki czemu wszystkie scenariusze odpowiedniego mają być obsługiwane inaczej: Przywracanie bazy danych nie obsługuje opcji WITH MOVE, tworzenie bazy danych nie zezwala na ścieżki fizyczne BULK INSERT współpracuje z obiektów blob platformy Azure, tylko itp.
 - Zarządzane wystąpienie obsługuje [uwierzytelniania usługi Azure AD](sql-database-aad-authentication.md) chmury alternatywę dla uwierzytelniania Windows.
 - Wystąpienie zarządzane automatycznie zarządza XTP plików i plików baz danych zawierających obiekty OLTP w pamięci
-- Wystąpienie zarządzane obsługuje usługi SQL Server Integration Services (SSIS) i mogą hosta wykazu usług SSIS (SSISDB), która przechowuje pakietów usług SSIS, ale są one wykonywane na zarządzanego środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF), zobacz [Create Azure-SSIS IR w usłudze ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Aby porównać funkcji SSIS w bazie danych SQL i wystąpienia zarządzanego, zobacz [serwer logiczny Porównaj bazy danych SQL i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
+- Wystąpienie zarządzane obsługuje usługi SQL Server Integration Services (SSIS) i mogą hosta wykazu usług SSIS (SSISDB), która przechowuje pakietów usług SSIS, ale są one wykonywane na zarządzanego środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF), zobacz [Create Azure-SSIS IR w usłudze ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Aby porównać funkcji SSIS w bazie danych SQL i wystąpienia zarządzanego, zobacz [porównanie usługi Azure SQL Database pojedynczej bazy danych/elastycznych pul i wystąpienia zarządzanego](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Zarządzane funkcji administrowania wystąpienia
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: a49ce4e997a21e0db707c851f5ea46817bcb642e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84a51f65ef46c390f84308ab17cf83859a16c3b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960175"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55428512"
 ---
 W poniższej tabeli przedstawiono limity przydziału i limity specyficzne dla [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Aby uzyskać informacje na temat cen usługi Event Hubs, zobacz [cen usługi Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -24,7 +24,7 @@ W poniższej tabeli przedstawiono limity przydziału i limity specyficzne dla [u
 | Liczba partycji na Centrum zdarzeń |Jednostka |- |32 |
 | Liczba grup odbiorców dla Centrum zdarzeń |Jednostka |- |20 |
 | Liczba połączeń AMQP na przestrzeń nazw |Przestrzeń nazw |Każde kolejne wywołanie dodatkowe połączenia zostaną odrzucone, a wyjątek jest odbierany przez kod wywołujący. |5000 |
-| Maksymalny rozmiar zdarzeń usługi Event Hubs|Jednostka |- |256 KB |
+| Maksymalny rozmiar zdarzeń usługi Event Hubs|Jednostka |- |1 MB |
 | Maksymalny rozmiar nazwy Centrum zdarzeń |Jednostka |- |50 znaków |
 | Liczba innych niż epoka odbiorców dla każdej grupy odbiorców |Jednostka |- |5 |
 | Maksymalny okres przechowywania danych zdarzenia |Jednostka |- |1-7 dni |

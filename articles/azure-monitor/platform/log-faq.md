@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 693d66c6b56fd759086236ae0252d2c6f1b5693e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214746"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301258"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -49,9 +49,9 @@ Odp.: Pola niestandardowe wyodrębniania są obecnie obsługiwane w klasycznym k
 
 Odp.: Widok listy nie jest dostępna w nowe dzienniki. Strzałka w lewo każdy rekord w tabeli wyników nie istnieje. Strzałki można otworzyć szczegóły dla określonego rekordu. 
 
-### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>PYTANIE: Po uruchomieniu kwerendy, listę sugerowanych filtry jest wyświetlane, ale nie zawiera wszystkie filtry. Jak zobaczyć pozostałe? 
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>PYTANIE: Po uruchomieniu kwerendy, listę sugerowanych filtrów są dostępne. Jak można sprawdzić filtry? 
 
-Odp.: Obecnie wyświetlanych jest w wersji zapoznawczej, implementacji nowych filtrów. Teraz jest oparta na wynik Twojego pełnego ustawić zamiast jest ograniczona przez limit 10 000 rekordów interfejsu użytkownika. Obecnie jest lista najpopularniejszych filtry i 10 najczęściej dla każdego filtru. 
+Odp.: Kliknij "Filtrów" po lewej stronie pan Aby wyświetlić podgląd nowego wdrożenia filtrów. Teraz jest oparta na wynik Twojego pełnego ustawić zamiast jest ograniczona przez limit 10 000 rekordów interfejsu użytkownika. Obecnie jest lista najpopularniejszych filtry i 10 najczęściej dla każdego filtru. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>PYTANIE: Dlaczego otrzymuję błąd: "Zarejestruj dostawcę zasobów"Microsoft.Insights"dla tej subskrypcji. Aby włączyć to zapytanie" w dziennikach, po przechodzenia do szczegółów z maszyny Wirtualnej? 
 

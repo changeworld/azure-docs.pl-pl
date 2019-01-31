@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 83080d1e73ddb06de9b454f106517ef230c4b25a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.subservice: common
+ms.openlocfilehash: 7cc051697f3928e360ec0b3c6647a3a718315c18
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984268"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477270"
 ---
 # <a name="azure-storage-samples-using-java"></a>Przykłady usługi Azure Storage przy użyciu języka Java
 
@@ -25,7 +25,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Endpoint</th><th style="font-size:110%">Scenariusz</th><th style="font-size:110%">Przykładowy kod</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Obiekt blob</b></td>
-<td>Obiekt Blob dołączania</td> 
+<td>Dołącz obiekt blob</td> 
 <td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Wprowadzenie do usługi obiektów Blob platformy Azure w języku Java</a></td> 
 </tr> 
 <tr> 
@@ -210,5 +210,5 @@ Zapoznaj się z następującymi przewodnikami, jeśli chcesz, aby uzyskać instr
 
 Aby uzyskać informacje, przykłady w innych językach:
 
-* .NET: [przykładów usługi azure Storage przy użyciu platformy .NET](storage-samples-dotnet.md)
-* Wszystkie inne języki: [przykłady usługi Azure Storage](storage-samples.md)
+* .NET: [Przykłady usługi Azure Storage korzystające z platformy .NET](storage-samples-dotnet.md)
+* Inne języki: [Przykłady usługi Azure Storage](storage-samples.md)

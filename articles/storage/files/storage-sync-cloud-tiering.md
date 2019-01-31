@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
-ms.component: files
-ms.openlocfilehash: a0f427ef84a6540522f521cd365e2422a70eb0cd
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.subservice: files
+ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623655"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470455"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie obsługi warstw w chmurze
 Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często używanych plików są buforowane lokalnie na serwerze, podczas gdy inne pliki są organizowane w warstwy do usługi Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowe, filtru systemu plików usługi Azure File Sync (StorageSync.sys) zamienia plik lokalnie wskaźnik lub punkt ponownej analizy. Punkt ponownej analizy reprezentuje adres URL do pliku w usłudze Azure Files. Plik warstwowy zawiera zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ustawiony w systemie plików NTFS, dzięki czemu aplikacje innych firm można bezpiecznie zidentyfikować pliki warstwowe.
@@ -21,7 +21,7 @@ Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często 
 Gdy użytkownik otwiera plik warstwowy, usługi Azure File Sync bezproblemowo odwołania do danych plików z usługi Azure Files użytkownik nie musi wiedzieć, że plik rzeczywiście jest przechowywana w usłudze Azure. 
  
  > [!Important]  
-    > Ważne: W chmurze obsługi warstw nie jest obsługiwana dla punkty końcowe serwera w woluminach systemu Windows, a tylko pliki większe niż 64 KiB rozmiarze mogą należeć do warstwy do usługi Azure Files.
+    > Ważne: Chmura obsługi warstw nie jest obsługiwana dla punkty końcowe serwera w woluminach systemu Windows, a tylko pliki większe niż 64 KiB rozmiarze mogą należeć do warstwy do usługi Azure Files.
     
 Usługa Azure File Sync nie obsługuje warstw pliki mniejsze niż 64 KiB, zmniejszenie wydajności warstw i odwoływania takich małych plików może być większe niż oszczędności miejsca.
 
@@ -105,7 +105,7 @@ Również umożliwia PowerShell wymuszenie można wycofać. Ta opcja może być 
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Dlaczego nie *rozmiar na dysku* właściwość dopasowania plików *rozmiar* właściwości po zakończeniu korzystania z usługi Azure File Sync? 
-Eksploratora plików Windows udostępnia dwie właściwości do reprezentowania rozmiaru pliku: **rozmiar** i **rozmiar na dysku**. Te właściwości różnią się w niewielkim stopniu w znaczenie. **Rozmiar** reprezentuje pełną rozmiaru pliku. **Rozmiar na dysku** reprezentuje rozmiar strumienia pliku, który jest przechowywany na dysku. Wartości tych właściwości można różnią się z różnych powodów, takich jak kompresja, korzystanie z funkcji deduplikacji danych lub obsługa warstw przy użyciu usługi Azure File Sync w chmurze. Jeśli plik jest warstwowe udziału plików platformy Azure, rozmiar na dysku wynosi zero, ponieważ strumienia pliku są przechowywane w udziale plików platformy Azure, a nie na dysku. Istnieje także możliwość pliku do się częściowo warstwowego (lub częściowo odwołane). W pliku częściowo warstwowego część pliku znajduje się na dysku. Taka sytuacja może wystąpić, częściowo są odczytywane przez aplikacje, takie jak odtwarzaczy multimedialnych lub zip narzędzia plików. 
+Eksploratora plików Windows udostępnia dwie właściwości do reprezentowania rozmiaru pliku: **Rozmiar** i **rozmiar na dysku**. Te właściwości różnią się w niewielkim stopniu w znaczenie. **Rozmiar** reprezentuje pełną rozmiaru pliku. **Rozmiar na dysku** reprezentuje rozmiar strumienia pliku, który jest przechowywany na dysku. Wartości tych właściwości można różnią się z różnych powodów, takich jak kompresja, korzystanie z funkcji deduplikacji danych lub obsługa warstw przy użyciu usługi Azure File Sync w chmurze. Jeśli plik jest warstwowe udziału plików platformy Azure, rozmiar na dysku wynosi zero, ponieważ strumienia pliku są przechowywane w udziale plików platformy Azure, a nie na dysku. Istnieje także możliwość pliku do się częściowo warstwowego (lub częściowo odwołane). W pliku częściowo warstwowego część pliku znajduje się na dysku. Taka sytuacja może wystąpić, częściowo są odczytywane przez aplikacje, takie jak odtwarzaczy multimedialnych lub zip narzędzia plików. 
 
 <a id="afs-force-tiering"></a>
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Jak wymusić, plik lub katalog do umieszczane?

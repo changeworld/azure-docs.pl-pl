@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 3b3f1268866c936ae4674188f8e3297702167415
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599437"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473429"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -46,7 +46,7 @@ Następnie informacje na temat dodatkowych mechanizmów, które umożliwiają od
 
 - [Tabele danych czasowych](sql-database-temporal-tables.md) umożliwiają przywrócenie wersje wiersza z dowolnego punktu w czasie.
 - [Wbudowane automatyczne kopie zapasowe](sql-database-automated-backups.md) i [punktu przywracania do określonego](sql-database-recovery-using-backups.md#point-in-time-restore) umożliwia przywrócenie pełnej bazy danych do pewnego momentu w czasie w ciągu ostatnich 35 dni.
-- Możesz [przywrócić usuniętą bazę](sql-database-recovery-using-backups.md#deleted-database-restore) do punktu, w którym został usunięty, jeśli **nie został usunięty serwer logiczny**.
+- Możesz [przywrócić usuniętą bazę](sql-database-recovery-using-backups.md#deleted-database-restore) do punktu, w którym został usunięty, jeśli **bazy danych programu SQL server nie został usunięty**.
 - [Długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md) pozwala na bieżąco kopie zapasowe do 10 lat.
 - [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) pozwala na tworzenie replik z możliwością odczytu i ręcznego trybu failover do dowolnej repliki w przypadku uaktualniania data center awarii lub aplikacji.
 - [Automatyczny tryb failover grupy](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) umożliwia to aplikacji automatyczne odzyskiwanie w przypadku awarii centrum danych.
@@ -63,7 +63,7 @@ W poniższej tabeli porównano wartości ERT i RPO dla każdej warstwy usług dl
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Odzyskiwanie bazy danych do istniejącego serwera
 
-SQL Database automatycznie przeprowadza kombinację tworzenia pełnych kopii zapasowych co tydzień, różnicowe kopie zapasowe, zazwyczaj wykonywane co 12 godzin i dziennika kopii zapasowych co 5 – 10 minut, aby chronić swoją firmę przed utratą danych transakcji. Kopie zapasowe są przechowywane w magazynu RA-GRS do 35 dni dla wszystkich warstwach usługi, z wyjątkiem następujących warstwach usługi podstawowa jednostek DTU przechowywania kopii zapasowych przez 7 dni. Aby uzyskać więcej informacji, zobacz [automatycznych kopiach zapasowych](sql-database-automated-backups.md). Możesz przywrócić istniejącego formularza bazy danych automatycznych kopii zapasowych do wcześniejszego punktu w czasie jako nową bazę danych na tym samym serwerze logicznym przy użyciu witryny Azure portal, programu PowerShell lub interfejsu API REST. Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore).
+SQL Database automatycznie przeprowadza kombinację tworzenia pełnych kopii zapasowych co tydzień, różnicowe kopie zapasowe, zazwyczaj wykonywane co 12 godzin i dziennika kopii zapasowych co 5 – 10 minut, aby chronić swoją firmę przed utratą danych transakcji. Kopie zapasowe są przechowywane w magazynu RA-GRS do 35 dni dla wszystkich warstwach usługi, z wyjątkiem następujących warstwach usługi podstawowa jednostek DTU przechowywania kopii zapasowych przez 7 dni. Aby uzyskać więcej informacji, zobacz [automatycznych kopiach zapasowych](sql-database-automated-backups.md). Możesz przywrócić istniejącego formularza bazy danych automatycznych kopii zapasowych do wcześniejszego punktu w czasie jako nową bazę danych na tym samym serwerze bazy danych SQL przy użyciu witryny Azure portal, programu PowerShell lub interfejsu API REST. Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Maksymalna obsługiwana w momencie przywracania (Odzyskiwanie) okres przechowywania nie jest wystarczający dla aplikacji, można go rozszerzyć, konfigurując długoterminowe zasady przechowywania (od lewej do prawej) dla baz danych. Aby uzyskać więcej informacji, zobacz [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md).
 

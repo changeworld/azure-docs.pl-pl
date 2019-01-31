@@ -13,13 +13,13 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro;seo-update-jan
-ms.openlocfilehash: bf357a4f46f0aed26b8f06c524faffa9e7431de2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro;seo-update-azuread-jan
+ms.openlocfilehash: 08009324ea44b9c31602ebddd19e50588a0dbc65
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176560"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296855"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Wymuszanie zasad nazewnictwa dla grup usługi Office 365 w usłudze Azure Active Directory (wersja zapoznawcza)
 

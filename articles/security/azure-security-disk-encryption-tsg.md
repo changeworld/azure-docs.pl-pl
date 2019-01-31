@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b486831118ace7d2112acf1562f5df4a64d1e1b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092131"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468397"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Usługa Azure Disk Encryption przewodnik rozwiązywania problemów
 
@@ -87,7 +87,7 @@ Gdy łączność jest ograniczona przez zapory, wymagania serwera proxy lub usta
 Wszelkie ustawienia sieciowej grupy zabezpieczeń, które są stosowane nadal muszą zezwalać na punkt końcowy, aby spełnić konfiguracji sieci udokumentowanego [wymagania wstępne](azure-security-disk-encryption-prerequisites.md#bkmk_GPO) dotyczące szyfrowania dysku.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Usługa Azure Key Vault za zaporą
-Maszyna wirtualna musi mieć możliwość dostępu do magazynu kluczy. Zobacz wskazówki dotyczące dostępu do usługi key vault za zaporą, [usługi Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) zespół zachowuje. 
+Jeśli szyfrowanie jest włączone za pomocą [poświadczeń usługi Azure AD](azure-security-disk-encryption-prerequisites-aad.md), docelowa maszyna wirtualna musi otrzymać dostęp do punktów końcowych uwierzytelniania usługi Azure AD, a także punkty końcowe usługi Key Vault.  Aby uzyskać więcej informacji na temat tego procesu można znaleźć wskazówki dotyczące uzyskiwania dostępu do usługi key vault za zaporą, [usługi Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md) zespół zachowuje. 
 
 ### <a name="azure-instance-metadata-service"></a>Wystąpienie usługi Azure Metadata Service 
 Maszyna wirtualna musi być w stanie uzyskać dostęp do [Azure Instance Metadata service](../virtual-machines/windows/instance-metadata-service.md) punktu końcowego, który używa dobrze znanego adresu IP bez obsługi routingu (`169.254.169.254`), są dostępne tylko z poziomu maszyny Wirtualnej.

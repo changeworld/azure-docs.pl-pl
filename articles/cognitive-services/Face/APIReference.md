@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: dd36147688f4c53383d31db8b4aa860b5bbf39a7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 6c5bfb052fc887bb189edb06247642419b14ecf7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214169"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296974"
 ---
 # <a name="api-reference"></a>Dokumentacja interfejsu API
 
@@ -28,5 +28,6 @@ Interfejs API rozpoznawania twarzy Azure jest oparta na chmurze interfejs API, k
 - [Interfejsy API zarządzania LargeFaceList](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist): Umożliwia zarządzanie LargeFaceList dla [Znajdź podobne](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar).
 - [Interfejsy API zarządzania w grupie osób](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson): Używane do zarządzania w grupie twarzy osób [identyfikacji](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
 - [Interfejsy API zarządzania w grupie](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup): Umożliwia zarządzanie zestawu danych grupie [identyfikacji](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
+- [Tworzenie migawki interfejsów API zarządzania](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot): Umożliwia zarządzanie migawki migracji danych między subskrypcjami.
 
 <!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

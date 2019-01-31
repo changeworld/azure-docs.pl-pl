@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: d8ddbb2590852ed80ce02f147886dc125815fc23
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 94b793d4ab68ae4d2b8a28961d76eed1ea875ff7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605980"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468635"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
 W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
@@ -27,6 +27,7 @@ W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure
 W usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
 
 Monitorowanie użycia miejsca na pliki i zmniejszania plików danych może być konieczne w następujących scenariuszach:
+
 - Zezwalanie na wzrost ilości danych w elastycznej puli, gdy miejsce na pliki przydzielone dla jej baz danych osiągnie maksymalny rozmiar dla puli.
 - Zezwalanie na zmniejszenie maksymalnego rozmiaru pojedynczej bazy danych lub elastycznej puli.
 - Zezwalanie na zmianę warstwy usługi lub wydajności dla pojedynczej bazy danych lub elastycznej puli na warstwę obsługującą mniejszy rozmiar maksymalny.
@@ -37,7 +38,7 @@ Większość metryk miejsce magazynowania wyświetlane w witrynie Azure portal o
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Jednak następujące interfejsy API pomiaru rozmiar ilość miejsca przydzielonego dla baz danych i elastyczne pule:
-- T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Zmniejszanie rozmiaru plików danych
@@ -118,6 +119,7 @@ Informacje o następujących ilości miejsca magazynu są ważne w przypadku zar
 Następujące zapytania może służyć do określenia ilości miejsca magazynu dla puli elastycznej.  
 
 ### <a name="elastic-pool-data-space-used"></a>Używać przestrzeni danych puli elastycznej
+
 Zmodyfikuj następujące zapytanie, aby zwrócić ilość przestrzeni danych puli elastycznej używane.  Jednostki wyniki zapytania są w MB.
 
 ```sql
@@ -234,9 +236,9 @@ Po zmniejszyć są pliki danych bazy danych, indeksów może ulec fragmentacji i
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać informacji na temat maksymalny rozmiar bazy danych zobacz:
-  - [Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)
-  - [Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
-  - [Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)
-  - [Limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools)
+  - [Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+  - [Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-single-databases.md)
+  - [Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [Limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU](sql-database-dtu-resource-limits-elastic-pools.md)
 - Aby uzyskać więcej informacji na temat `SHRINKDATABASE` polecenia, zobacz [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 - Aby uzyskać więcej informacji na temat fragmentacji i ponowne tworzenie indeksów, zobacz [z opcją Reorganize i odbudowy indeksów](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

@@ -10,19 +10,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 8cc5d1a2d78179624ee1ba17482e9d1892625d6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bc7a183220219b14cb793f8115284d38d544b0e0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104292"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453182"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Języki obsługiwane na maszynie wirtualnej do nauki o danych 
 
@@ -193,7 +193,7 @@ Język R jest zainstalowany na DSVM w środowisku globalnym do odczytu dla wszys
 | ------------- | ------------- |
 | Wersje językowe obsługiwane | Update 0.6 |
 | Wersje maszyny DSVM obsługiwane      | Linux, Windows     |
-| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | Windows: Instalować `C:\JuliaPro-VERSION`<br /> Systemu Linux: Instalować `/opt/JuliaPro-VERSION`    |
+| Jak jest ona skonfigurowana / zainstalowanym maszyny DSVM?  | W systemie Windows: Zainstalowane w `C:\JuliaPro-VERSION`<br /> W systemie Linux: Zainstalowane w `/opt/JuliaPro-VERSION`    |
 | Zawiera linki do przykładów      | Znajdują się przykładowe notesów programu Jupyter dla Julia     |
 | Pokrewne narzędzia na maszyny DSVM      | Python, R      |
 ### <a name="how-to-use--run-it"></a>Jak używać / ją uruchomić?    
@@ -234,12 +234,12 @@ Domyślna lokalizacja Julia jest środowisku globalnym do odczytu dla wszystkich
 
 ## <a name="other-languages"></a>Inne języki
 
-**C#**: Dostępne w Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `csc` polecenia. 
+**C#**: Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `csc` polecenia. 
 
 **Java**: OpenJDK jest dostępna w wersji systemu Linux i Windows maszyny wirtualnej DSVM i zestawu w ścieżce. Możesz wpisać `javac` lub `java` polecenia w wierszu polecenia w Windows lub w powłoce bash w systemie Linux, aby użyć platformy Java. 
 
 **node.js**: node.js jest dostępna w wersji systemu Linux i Windows maszyny wirtualnej DSVM i zestawu w ścieżce. Możesz wpisać `node` lub `npm` polecenia w wierszu polecenia w Windows lub w powłoce bash w systemie Linux do dostępu do środowiska node.js. Na Windows narzędzia Node.js dla rozszerzenia programu Visual Studio jest zainstalowany na zapewnienie graficznego środowiska IDE do tworzenia aplikacji node.js. 
 
-**F#**: Dostępne w Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `fsc` polecenia. 
+**F#**: Dostępne na Windows i jest dostępny za pomocą programu Visual Studio Community edition lub na `Developer Command Prompt for Visual Studio` gdzie możesz po prostu uruchomić `fsc` polecenia. 
 
 

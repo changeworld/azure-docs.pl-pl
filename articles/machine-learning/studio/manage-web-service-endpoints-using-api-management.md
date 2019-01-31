@@ -1,6 +1,6 @@
 ---
-Tytuł: Zarządzanie usługami sieci web Machine Learning Studio, za pomocą usługi API Management titleSuffix: Opis usługi Azure Machine Learning Studio: Przewodnik, w którym pokazano, jak zarządzać usługami sieci web Azure ml za pomocą usługi API Management. Zarządzanie punktami końcowymi usługi interfejsu API REST, definiując dostępu użytkownika, ograniczenie przepustowości i pulpit nawigacyjny monitorowania.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Zarządzanie usługami sieci web Machine Learning Studio, za pomocą usługi API Management titleSuffix: Opis usługi Azure Machine Learning Studio: Przewodnik, w którym pokazano, jak zarządzać usługami sieci web Azure ml za pomocą usługi API Management. Zarządzanie punktami końcowymi usługi interfejsu API REST, definiując dostępu użytkownika, ograniczenie przepustowości i pulpit nawigacyjny monitorowania.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 11/03/2017
 ---

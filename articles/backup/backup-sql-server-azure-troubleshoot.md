@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: anuragm
 ms.custom: ''
-ms.openlocfilehash: 89344b6e06dbc62fe56c0aebc30a049aebf5c097
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339522"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296125"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -37,6 +37,15 @@ Można skonfigurować ochrony dla bazy danych programu SQL Server na maszynie wi
 ## <a name="troubleshooting-errors"></a>Rozwiązywanie problemów z błędami
 
 Skorzystaj z informacji w poniższych tabelach, aby rozwiązywać problemy i błędów napotkanych podczas chroni program SQL Server na platformie Azure.
+
+## <a name="alerts"></a>Alerty
+
+### <a name="backup-type-unsupported"></a>Nieobsługiwany typ kopii zapasowej
+
+| Ważność | Opis | Możliwe przyczyny | Zalecana akcja |
+|---|---|---|---|
+| Ostrzeżenie | Bieżące ustawienia dla tej bazy danych nie obsługują pewnego rodzaju typy kopii zapasowych, które są obecne w skojarzonych zasad. | <li>**Bazy danych Master**: Tylko operacja tworzenia kopii zapasowej pełnej bazy danych może zostać wykonana w bazie danych master; ani **różnicowej** kopii zapasowych ani transakcji **dzienniki** kopii zapasowej są możliwe. </li> <li>Wszystkie bazy danych w **model odzyskiwania prostego** nie zezwala na transakcji **dzienniki** kopii zapasowej należy podjąć.</li> | Zmodyfikuj ustawienia bazy danych w taki sposób, że wszystkie typy kopii zapasowych w ramach zasad są obsługiwane. Alternatywnie Zmień bieżące zasady w celu uwzględnienia tylko obsługiwane typy kopii zapasowych. W przeciwnym razie nieobsługiwane typy kopii zapasowych zostaną pominięte podczas zaplanowanej kopii zapasowej lub kopii zapasowej ad hoc zadania tworzenia kopii zapasowej zakończy się niepowodzeniem.
+
 
 ## <a name="backup-failures"></a>Niepowodzeniami tworzenia kopii zapasowych
 

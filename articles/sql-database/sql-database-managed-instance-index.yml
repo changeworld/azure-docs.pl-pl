@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01df34025c0389a4ea8bcd5eceaa29f0351df5f7
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 556ec0b55ea2e62975661eb5f668b4d3acda7c30
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329710"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466357"
 documentType: LandingData
 title: Wystąpienie zarządzane usługi Azure SQL Database
 metadata:
@@ -55,7 +55,7 @@ sections:
       html: <p>Przeprowadź migrację floty bazy danych, z minimalnym czasem przestojów za pomocą usługi Database Migration Service.</p>
     - title: Cennik
       href: https://azure.microsoft.com/pricing/hybrid-benefit/
-      html: <p>Zapisz do 40% za pomocą korzyści użycia hybrydowego platformy Azure (AHB) przy użyciu istniejących licencjami w środowisku lokalnym.</p>
+      html: <p>Zapisz do 40% za pomocą korzyści użycia hybrydowego platformy Azure (AHB) przy użyciu istniejących licencji w środowisku lokalnym.</p>
     - title: Możliwości PaaS
       href: /azure/sql-database/sql-database-paas
       html: <p>Usługi Azure PaaS umożliwia użycie dostępność przez 99,99% dostępnego wystąpienia za pomocą funkcji zarządzania minimalny.</p>
@@ -78,7 +78,7 @@ sections:
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurowanie przechowywania kopii zapasowych w górę do 35 dni</a> do punktu w czasie przywracania. Należy pamiętać, że długoterminowego przechowywania kopii zapasowych (do 10 lat) nadal nie jest włączone, można użyć <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">kopie zapasowe tylko do kopiowania</a> alternatywą.
     - html: (Wersja zapoznawcza) Użyj <a href="https://aka.ms/managed-instance-failover-groups">grupy trybu failover z rozproszone geograficznie</a> przechowywać kopię wystąpienia w innym regionie i upewnij się, że Twoje dane będą dostępne, nawet w przypadku scenariusza regionalnej awarii.
     - html: (Wersja zapoznawcza) <a href="https://aka.ms/managed-instance-tde-byok">Przenieść klucze szyfrowania</a> podczas migracji lokalnych baz danych, które już zostały włączone przezroczystego szyfrowania danych (TDE).
-    - html: Wystąpienia zarządzane są chronione za pomocą <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-management-endpoint-verify-built-in-firewall">wbudowanej zapory</a>.
+    - html: Wystąpienia zarządzane są chronione za pomocą <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">wbudowanej zapory</a>.
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
@@ -134,7 +134,7 @@ sections:
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurowanie</a> sieci wirtualnej platformy Azure, w którym zostanie wdrożony wystąpienia zarządzanego.
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Sprawdź poprawność</a> że istniejącej sieci wirtualnej platformy Azure może służyć do wdrożenia wystąpienia zarządzanego.
     - html: Nawiązać połączenie przy użyciu wystąpienia <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">maszyny wirtualnej platformy Azure</a> lub <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">punkt lokacja połączenie</a>, lub <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">aplikacji</a>.
-    - html: Sprawdź, czy można migrować bazy danych przy użyciu <a href="https://www.microsoft.com/download/details.aspx?id=53595">Asisstant migracji danych</a> lub <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Asystent eksperymentowania w usłudze bazy danych</a>.
+    - html: Sprawdź, czy można migrować bazy danych przy użyciu <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> lub <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Asystent eksperymentowania w usłudze bazy danych</a>.
     - html: Przenieś bazy danych do wystąpienia zarządzanego przy użyciu <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natywnych przywracania</a> lub <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.
     - html: Przenoszenie pakietów SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">usługi Azure Data Factory</a>, modele tabelaryczne usług SSAS, aby <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, i raporty usług SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">usługi Power BI Premium</a>.
     - html: Zastosuj <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące warstwy usług ogólnego przeznaczenia</a>.

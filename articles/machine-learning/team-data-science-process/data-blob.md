@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 36e3512caa8922f8bc1a65f13ea41d6873b51e5e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c7d8414fdc1070204ef02cf6d88b238575d0817a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140545"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472426"
 ---
 # <a name="heading"></a>Przetwarzanie danych obiektów blob platformy Azure za pomocą zaawansowanej analizy
 W tym dokumencie opisano analizowania danych i generowania funkcji z danych przechowywanych w usłudze Azure Blob storage. 
@@ -130,7 +130,7 @@ Podczas generowania funkcji kwanty, możemy wykonać następujące czynności:
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>Zapisywanie danych z powrotem w obiektów blob platformy Azure i używania w usłudze Azure Machine Learning
-Po mają eksplorować dane i utworzyć wymagane funkcje, możesz przekazać dane (próbkowane lub neural) do usługi Azure blob i stosować go w usłudze Azure Machine Learning wykonując następujące kroki: należy pamiętać, że można tworzyć dodatkowe funkcje maszynie platformy Azure Również Learning Studio. 
+Po mają eksplorować dane i utworzyć wymagane funkcje, możesz przekazać dane (próbkowane lub neural) do usługi Azure blob i stosować go w usłudze Azure Machine Learning wykonując następujące czynności: Należy pamiętać, że można tworzyć dodatkowe funkcje w usłudze Azure Machine Learning Studio również. 
 
 1. Zapis ramki danych do pliku lokalnego
    

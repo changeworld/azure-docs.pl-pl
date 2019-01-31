@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135168"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454134"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Zadania w projekcie przewodzenia w procesie nauki o danych zespołu
 
@@ -35,10 +35,10 @@ W tym temacie omówiono obecnie zadania 1,2 i 6 tego przepływu pracy dla projek
 
 Ten samouczek używa skrócone nazwy dla repozytoriów i katalogów. Nazwy te ułatwiają wykonaj operacje między repozytoria i katalogi. Ten zapis (R dla repozytoriów Git) i D katalogi lokalne na maszyny wirtualnej DSVM jest używany w następujących sekcjach:
 
-- **R3**: zespół **ProjectTemplate** repozytorium w usłudze Git skonfigurował Twoje lider zespołu.
-- **R5**: repozytorium projektu w usłudze Git, możesz skonfigurować dla Twojego projektu.
-- **D3**: katalog lokalny sklonować z R3.
-- **D5**: katalog lokalny sklonować z R5.
+- **R3**: Zespół **ProjectTemplate** repozytorium w usłudze Git skonfigurował Twoje lider zespołu.
+- **R5**: Repozytorium projektu w usłudze Git, możesz skonfigurować dla Twojego projektu.
+- **D3**: Sklonowany katalog lokalny z R3.
+- **D5**: Sklonowany katalog lokalny z R5.
 
 
 ## <a name="0-prerequisites"></a>0. Wymagania wstępne
@@ -90,9 +90,9 @@ Jeśli trzeba dostosować swoje **DSProject1** repozytorium projektu w celu spe�
 
 - Klonowanie projektu szablonu repozytorium do katalogu lokalnego: team R3 - sklonowany do -> lokalne D3.
 - Klonuj repozytorium DSProject1 do katalogu lokalnego: team R5 - sklonowany do -> D5 lokalnego.
-- Skopiuj zawartość szablonu projektu sklonowany do lokalnego klona repozytorium DSProject1: D3 — zawartość jest kopiowana do -> D5.
+- Skopiuj zawartość szablonu projektu sklonowany do lokalnego klona repozytorium DSProject1:  D3 — zawartość jest kopiowana do -> D5.
 - (Opcjonalnie) Dostosowywanie D5 lokalnego.
-- Wypychanie DSProject1 lokalnej zawartości do zespołu repozytoriów: D5 — zawartość, Dodaj do -> R5 zespołu.
+- Wypchnij lokalną zawartość DSProject1 do repozytoriami zespołu: D5 - do -> zespół R5 dodać zawartość.
 
 
 ### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>Sklonuj repozytorium (R3) szablonu projektu do katalogu (D3) na komputerze lokalnym.

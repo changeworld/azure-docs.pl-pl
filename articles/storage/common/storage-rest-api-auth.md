@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 78e2620ba6e5e29a1f1ac9719b709d5a2f468122
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 08a86e1b2808a0778734edecc9385f4d61779b25
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531159"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476200"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Storage
 
@@ -58,15 +58,15 @@ Przykładowa aplikacja wyświetla listę kontenerów na koncie magazynu. Po zapo
 
 Jeśli przyjrzymy się [interfejsu API REST usługi Blob](/rest/api/storageservices/Blob-Service-REST-API), zobaczysz wszystkie operacje można wykonywać na magazynu obiektów blob. Biblioteki klienta magazynu są otok wokół interfejsów API REST — ułatwiają one można uzyskać dostęp do magazynu bez bezpośrednio za pomocą interfejsów API REST. Ale jak wspomniano powyżej, czasami trzeba zamiast biblioteki klienta magazynu za pomocą interfejsu API REST.
 
-## <a name="rest-api-reference-list-containers-api"></a>Dokumentacja interfejsu API REST: Lista kontenerów z interfejsu API
+## <a name="rest-api-reference-list-containers-api"></a>Dokumentacja interfejsu API REST: Lista kontenerów interfejsu API
 
 Przyjrzyjmy się na stronie dokumentacja interfejsu API REST [ListContainers](/rest/api/storageservices/List-Containers2) operację, aby zrozumieć, niektóre pola pochodzenie w żądaniu i odpowiedzi w następnej sekcji kodu.
 
-**Metoda żądania**: pobieranie. To polecenie jest metoda HTTP, który został określony jako właściwość obiektu żądania. Inne wartości dla tego zlecenia obejmują HEAD, PUT i DELETE, w zależności od tego, wywoływany jest interfejs API.
+**Metoda żądania**: POBIERZ. To polecenie jest metoda HTTP, który został określony jako właściwość obiektu żądania. Inne wartości dla tego zlecenia obejmują HEAD, PUT i DELETE, w zależności od tego, wywoływany jest interfejs API.
 
-**Identyfikator URI żądania**: https://myaccount.blob.core.windows.net/?comp=list zostanie on utworzony z punktu końcowego konta magazynu obiektów blob `http://myaccount.blob.core.windows.net` i ciągu zasobu `/?comp=list`.
+**Identyfikator URI żądania**: https://myaccount.blob.core.windows.net/?comp=list  To jest tworzona na podstawie punkt końcowy konta usługi blob storage `http://myaccount.blob.core.windows.net` i ciągu zasobu `/?comp=list`.
 
-[Parametry identyfikatora URI](/rest/api/storageservices/List-Containers2#uri-parameters): istnieją dodatkowe parametry zapytania można użyć podczas wywoływania ListContainers. Kilka z tych parametrów są *limitu czasu* wywołania (w sekundach) i *prefiks*, która jest używana do filtrowania.
+[Parametry identyfikatora URI](/rest/api/storageservices/List-Containers2#uri-parameters): Istnieją dodatkowe parametry zapytania używane podczas wywoływania ListContainers. Kilka z tych parametrów są *limitu czasu* wywołania (w sekundach) i *prefiks*, która jest używana do filtrowania.
 
 Inny parametr pomocne jest *maxresults:* Jeśli większej liczbie kontenerów są dostępne od tej wartości, będzie zawierać treści odpowiedzi *NextMarker* element, który wskazuje następnego kontenera do zwrócenia na następnej żądanie. Aby użyć tej funkcji, podaj *NextMarker* wartość jako *znacznika* parametru w identyfikatorze URI po wprowadzeniu następnego żądania. Dzięki tej funkcji jest odpowiednikiem stronicować wyniki. 
 
@@ -76,15 +76,15 @@ Aby korzystać z dodatkowych parametrów, dołącz je do ciągu zasobu o wartoś
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Nagłówki żądania](/rest/api/storageservices/List-Containers2#request-headers)**:** w tej sekcji przedstawiono nagłówki żądania wymaganych i opcjonalnych. Wymagane są trzy nagłówki: *autoryzacji* nagłówka, *x-ms-date* (zawiera czas UTC żądania), a *x-ms-version* (określa wersję pozostałe Interfejs API do użycia). W tym *x-ms klient request-id* w nagłówkach jest opcjonalna — można ustawić wartość dla tego pola do żadnego elementu; są zapisywane do magazynu analizy dzienników, gdy jest włączone rejestrowanie.
+[Nagłówki żądania](/rest/api/storageservices/List-Containers2#request-headers)**:** Ta sekcja zawiera nagłówki żądania wymaganych i opcjonalnych. Wymagane są trzy nagłówki: *autoryzacji* nagłówka, *x-ms-date* (zawiera czas UTC żądania), a *x-ms-version* (określa wersję pozostałe Interfejs API do użycia). W tym *x-ms klient request-id* w nagłówkach jest opcjonalna — można ustawić wartość dla tego pola do żadnego elementu; są zapisywane do magazynu analizy dzienników, gdy jest włączone rejestrowanie.
 
-[Treść żądania](/rest/api/storageservices/List-Containers2#request-body)**:** jest nie treści żądania ListContainers. Treść żądania jest używana we wszystkich operacji PUT przy przekazywaniu obiektów blob, a także SetContainerAccessPolicy, co pozwala na wysyłanie na liście XML przechowywane zasady dostępu do zastosowania. Zapisane zasady dostępu zostały omówione w artykule [przy użyciu dostępu współdzielonego Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
+[Treść żądania](/rest/api/storageservices/List-Containers2#request-body)**:** Brak treści żądania nie ListContainers. Treść żądania jest używana we wszystkich operacji PUT przy przekazywaniu obiektów blob, a także SetContainerAccessPolicy, co pozwala na wysyłanie na liście XML przechowywane zasady dostępu do zastosowania. Zapisane zasady dostępu zostały omówione w artykule [przy użyciu dostępu współdzielonego Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md).
 
-[Kod stanu odpowiedzi](/rest/api/storageservices/List-Containers2#status-code)**:** Tells żadnych kodów stanu, trzeba znać. W tym przykładzie kod stanu HTTP 200 to ok. Aby uzyskać pełną listę kodów stanu HTTP, zapoznaj się [definicjami kodów stanu](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Aby wyświetlić kody błędów specyficzne dla interfejsów API REST magazynu, zobacz [kody błędów wspólnego interfejsu API REST](/rest/api/storageservices/common-rest-api-error-codes)
+[Kod stanu odpowiedzi](/rest/api/storageservices/List-Containers2#status-code)**:** Informuje żadnych kodów stanu, które trzeba znać. W tym przykładzie kod stanu HTTP 200 to ok. Aby uzyskać pełną listę kodów stanu HTTP, zapoznaj się [definicjami kodów stanu](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html). Aby wyświetlić kody błędów specyficzne dla interfejsów API REST magazynu, zobacz [kody błędów wspólnego interfejsu API REST](/rest/api/storageservices/common-rest-api-error-codes)
 
-[Nagłówki odpowiedzi](/rest/api/storageservices/List-Containers2#response-headers)**:** należą do nich *typu zawartości*; *x-ms-request-id* (identyfikator żądania przekazałeś, jeśli ma to zastosowanie); *x-ms-version* (wskazuje wersję usługi obiektów Blob używane), a *data* (czas UTC, informuje, jakich czasie wysłano żądanie).
+[Nagłówki odpowiedzi](/rest/api/storageservices/List-Containers2#response-headers)**:** Obejmują one *typu zawartości*; *x-ms-request-id* (identyfikator żądania przekazałeś, jeśli ma to zastosowanie); *x-ms-version* (wskazuje wersję usługi obiektów Blob używane), a *data* (czas UTC, informuje, jakich czasie wysłano żądanie).
 
-[Treść odpowiedzi](/rest/api/storageservices/List-Containers2#response-body): to pole jest zapewnienie żądanych danych struktury XML. W tym przykładzie odpowiedź jest listę kontenerów i ich właściwości.
+[Treść odpowiedzi](/rest/api/storageservices/List-Containers2#response-body): To pole jest zapewnienie żądanych danych struktury XML. W tym przykładzie odpowiedź jest listę kontenerów i ich właściwości.
 
 ## <a name="creating-the-rest-request"></a>Tworzenie żądania REST
 
@@ -204,7 +204,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**Treść odpowiedzi (XML):** dla ListContainers pokazuje listę kontenerów i ich właściwości.
+**Treść odpowiedzi (XML):** Dla ListContainers to pokazuje listę kontenerów i ich właściwości.
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -283,24 +283,24 @@ Następujący fragment kodu przedstawia format ciągu podpis klucza wspólnego:
 
 ```csharp  
 StringToSign = VERB + "\n" +  
-               Content-Encoding + "\n" +  
-               Content-Language + "\n" +  
-               Content-Length + "\n" +  
-               Content-MD5 + "\n" +  
-               Content-Type + "\n" +  
-               Date + "\n" +  
-               If-Modified-Since + "\n" +  
-               If-Match + "\n" +  
-               If-None-Match + "\n" +  
-               If-Unmodified-Since + "\n" +  
-               Range + "\n" +  
-               CanonicalizedHeaders +  
-               CanonicalizedResource;  
+               Content-Encoding + "\n" +  
+               Content-Language + "\n" +  
+               Content-Length + "\n" +  
+               Content-MD5 + "\n" +  
+               Content-Type + "\n" +  
+               Date + "\n" +  
+               If-Modified-Since + "\n" +  
+               If-Match + "\n" +  
+               If-None-Match + "\n" +  
+               If-Unmodified-Since + "\n" +  
+               Range + "\n" +  
+               CanonicalizedHeaders +  
+               CanonicalizedResource;  
 ```
 
 Większość z tych pól są rzadko używane. Dla magazynu obiektów Blob należy określić ZLECENIE, md5, długość zawartości, w postaci kanonicznej nagłówków i zasobów w postaci kanonicznej. Puste innych (ale put w `\n` będzie wówczas traktował są puste).
 
-Jakie są CanonicalizedHeaders i CanonicalizedResource? Dobre pytanie. W rzeczywistości jak działa w postaci kanonicznej średniej? Program Microsoft Word nawet nie rozpoznaje je jako wyraz. Oto, co [Wikipedia mówi o canonicalization](http://en.wikipedia.org/wiki/Canonicalization): *informatyki, kanoniczną (czasami normalizacji lub normalizacji) to proces konwersji danych, który ma więcej niż jeden to możliwe reprezentacja w formie "standardowy", "normal" lub kanonicznej.* Czytaj w normalnym, oznacza to przejąć kontrolę na liście elementów (takich jak nagłówki w przypadku nagłówków w postaci kanonicznej) i je ustandaryzować w wymaganym formatem. Po prostu Microsoft decyzję formatu i muszą zapewnić zgodność.
+Jakie są CanonicalizedHeaders i CanonicalizedResource? Dobre pytanie. W rzeczywistości jak działa w postaci kanonicznej średniej? Program Microsoft Word nawet nie rozpoznaje je jako wyraz. Oto, co [Wikipedia mówi o canonicalization](http://en.wikipedia.org/wiki/Canonicalization): *Informatyki kanoniczną (czasami normalizacji lub normalizacji) to proces konwersji danych, który ma więcej niż jedną możliwą reprezentację w formie "standardowy", "normal" lub kanonicznej.* Czytaj w normalnym, oznacza to przejąć kontrolę na liście elementów (takich jak nagłówki w przypadku nagłówków w postaci kanonicznej) i je ustandaryzować w wymaganym formatem. Po prostu Microsoft decyzję formatu i muszą zapewnić zgodność.
 
 Zacznijmy od tych dwóch pól postaci kanonicznej, ponieważ są one wymagane do utworzenia nagłówka autoryzacji.
 
@@ -512,7 +512,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Treść odpowiedzi (XML):** odpowiedzi XML ten zawiera listę obiektów blob i ich właściwości. 
+**Treść odpowiedzi (XML):** Ta odpowiedź XML zawiera listę obiektów blob i ich właściwości. 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

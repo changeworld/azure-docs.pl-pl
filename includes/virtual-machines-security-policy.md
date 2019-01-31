@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 801266ed13aa993ad04ed8a3b21d6a6b3e1d6603
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c44b39effdc6d8fcdc144915ec7b51489e3798cd
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54841442"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302363"
 ---
 Należy chronić maszyny wirtualnej (VM) dla aplikacji, które zostanie uruchomione. Zabezpieczanie maszyn wirtualnych może zawierać jeden lub więcej usług platformy Azure, jak i funkcji, które obejmują bezpieczny dostęp do maszyn wirtualnych i bezpieczne przechowywanie danych. Ten artykuł zawiera informacje, która pozwala zapewnić bezpieczeństwo swoich maszyn wirtualnych i aplikacji.
 
@@ -20,6 +20,8 @@ Nowoczesne zagrożeniach dla środowisk chmury jest dynamiczny, zwiększyć wyko
 ## <a name="azure-security-center"></a>Azure Security Center
 
 [Usługa Azure Security Center](../articles/security-center/security-center-intro.md) pomaga zapobiec, wykrywania i reagowania na zagrożenia na maszynach wirtualnych. Usługa Security Center zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
+
+Dostęp just in time Security Center mogą być stosowane dla wdrożenia maszyny Wirtualnej do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure, zmniejszenia narażenia na ataki przy zapewnianiu łatwego dostępu, aby nawiązać połączenie z maszynami wirtualnymi w razie. Gdy just in time jest włączone i użytkownik poprosi o dostęp do maszyny Wirtualnej, Centrum zabezpieczeń sprawdza uprawnienia, jakie użytkownik ma dla maszyny Wirtualnej. Jeśli mają odpowiednie uprawnienia, żądanie zostanie zatwierdzone, a usługa Security Center automatycznie skonfiguruje sieciowe grupy zabezpieczeń (NSG), aby zezwolić na ruch przychodzący do portów wybranych przez ograniczony czas. Po upływie czasu, usługa Security Center przywraca sieciowych grup zabezpieczeń do poprzedniego stanu. 
 
 ## <a name="encryption"></a>Szyfrowanie
 

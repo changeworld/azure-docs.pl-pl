@@ -3,7 +3,7 @@ title: Uruchamianie zadań w sposób równoległy efektywnie - używania zasobó
 description: Zwiększ wydajność i Obniż koszty przy użyciu mniejszej liczby węzłów obliczeniowych i uruchomieniu współbieżnych zadań w każdym węźle w puli usługi Azure Batch
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 538a067c-1f6e-44eb-a92b-8d51c33d3e1a
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c52c9fc6b47b03b3ca6db96decb8b4777577d00e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6c4fd63213eaaf402bd72b1754ba50a9ea35e965
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174374"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475435"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>Węzły obliczeniowe uruchamiania zadań jednocześnie w celu zmaksymalizowania użycia usługi Batch 
 

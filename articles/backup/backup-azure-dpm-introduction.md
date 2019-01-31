@@ -2,19 +2,18 @@
 title: Przygotuj serwer programu DPM do tworzenia kopii zapasowych obciążeń na platformie Azure
 description: Wprowadzenie do tworzenia kopii zapasowej danych programu DPM w magazynie usługi Azure Recovery Services.
 services: backup
-author: adigan
-manager: nkolli
-keywords: System Center Data Protection Manager, programu data protection manager, kopia zapasowa programu dpm
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: ac89f0f2e2f86fa34fc754ee23e9b67329560fa4
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: 1f2defd2adb580aee71482a699c7987ca3fa7807
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024481"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301071"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Przygotowanie do tworzenia kopii zapasowych obciążeń na platformę Azure za pomocą programu System Center DPM
 
@@ -50,8 +49,8 @@ Program DPM na serwerze fizycznym | System Center 2012 SP1 lub nowszym; System C
 Program DPM na maszynie Wirtualnej funkcji Hyper-V | System Center 2012 SP1 lub nowszym; System Center 2012 R2. 
 Program DPM na maszynie Wirtualnej VMware | System Center 2012 R2 z pakietem zbiorczym aktualizacji 5 lub nowszym.
 Składniki | Serwer programu DPM powinien mieć, programu Windows PowerShell i .net Framework 4.5 zainstalowane.
-Obsługiwane aplikacje | [Dowiedz się,](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) co program DPM może tworzyć kopie zapasowe.
-Obsługiwane typy plików | Następujące typy plików utworzeniem kopii zapasowej w usłudze Azure Backup: zaszyfrowane (tylko pełne kopie zapasowe); Skompresowane (obsługą przyrostowych kopii zapasowych); Rozrzedzone (obsługą przyrostowych kopii zapasowych); Skompresowane i rozrzedzone (traktowane jako rozrzedzone).
+Obsługiwane aplikacje | [Dowiedz się,](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) dla jakich elementów można wykonywać kopie zapasowe w programie DPM.
+Obsługiwane typy plików | Następujące typy plików można kopii zapasowej za pomocą usługi Azure Backup: Zaszyfrowane (tylko pełne kopie zapasowe); Skompresowane (obsługą przyrostowych kopii zapasowych); Rozrzedzone (obsługą przyrostowych kopii zapasowych); Skompresowane i rozrzedzone (traktowane jako rozrzedzone).
 Nieobsługiwane typy plików | Serwery w systemach plików rozróżniana wielkość liter; twarde linki (pomijane); (pomijane); punkty ponownej analizy zaszyfrowane i skompresowane (pomijane); zaszyfrowane i rozrzedzone (pomijane); Skompresowany strumień; Przeanalizuj strumień.
 Magazyn lokalny | Każda maszyna, który chcesz utworzyć kopię zapasową musi mieć lokalne ilość wolnego miejsca, który jest co najmniej 5% rozmiaru danych, która jest tworzona kopia zapasowa.  Na przykład tworzenie kopii zapasowej 100 GB danych wymaga co najmniej 5 GB wolnego miejsca w lokalizacji pliki tymczasowe.
 Vault storage | Nie ma żadnego limitu ilości danych, które można wykonać kopię zapasową do magazynu usługi Azure Backup, ale rozmiar źródła danych (na przykład maszyny wirtualnej lub bazy danych) nie może przekraczać 54400 GB.

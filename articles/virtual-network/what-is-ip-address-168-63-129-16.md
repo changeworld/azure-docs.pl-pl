@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: genli
-ms.openlocfilehash: e018cbf0c71a9acf76e60f38aff1aa1ba8a81516
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f0539e7c2f7e5ae8847b35b47d3708c6c5d6a09
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229315"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296042"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Co to jest adres IP 168.63.129.16?
 
@@ -35,8 +35,7 @@ Adres IP 168.63.129.16 jest wirtualnej publiczny adres IP, która jest używana 
 
 Wirtualnej publiczny adres IP 168.63.129.16 jest używany we wszystkich regionach i wszystkich chmur krajowych. Ten specjalny publiczny adres IP nie ulegnie zmianie. Jest ona dozwolona przez domyślne reguły sieciowej grupy zabezpieczeń. Zaleca się zezwolić na ten adres IP w żadnych zasadach zapory lokalnej. Komunikacja między ten specjalny adres IP i zasobów jest bezpieczne, ponieważ źródeł wiadomości z tego adresu IP mogą być tylko wewnętrzne platformy Azure. Jeśli ten adres jest zablokowany lub nieoczekiwane zachowanie mogą wystąpić w różnych scenariuszach.
 
-Ponadto traffics z wirtualnej publiczny adres IP adres 168.63.129.16 do punktu końcowego skonfigurowanego dla [sondy kondycji modułu równoważenia obciążenia](../load-balancer/load-balancer-custom-probe-overview.md) nie powinny być uważane za atak ruchu. W przypadku sieci niewirtualnej sondy kondycji pochodzi z prywatnym adresem IP.
-
+Ponadto można oczekiwać, że ten przepływ ruchu z wirtualnej publiczny adres IP 168.63.129.16 do punktu końcowego, który jest skonfigurowany dla [sondy kondycji modułu równoważenia obciążenia](../load-balancer/load-balancer-custom-probe-overview.md). W przypadku sieci niewirtualnej sondy kondycji pochodzi z prywatnym adresem IP. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

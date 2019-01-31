@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: dineshmurthy
-ms.component: common
-ms.openlocfilehash: 55fa63e75768662a0f909cef0e3cc04b9c2dae41
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c45c70055817eeeed19f9c8a832a76b10beceaa6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526202"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467037"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage Client Tools
 Użytkownicy usługi Azure Storage często chcą mieć możliwość danych/interakcji z danymi za pomocą narzędzia klienta usługi Azure Storage. W poniższych tabelach listę szereg narzędzi, które pozwalają w tym celu. Umieściliśmy "X" w każdym bloku zapewnia możliwość zarówno wyliczanie i/lub dostęp do pozyskiwania danych. W tabeli przedstawiono również, czy jest bezpłatne narzędzia, czy nie. "Próbne" wskazuje, czy istnieje bezpłatna wersja próbna, ale pełnego produktu nie jest bezpłatne. "T/N" wskazuje, że wersja jest dostępna bezpłatnie, podczas gdy inna wersja jest dostępna do zakupu.
@@ -24,10 +24,10 @@ Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Stora
 
 <table>
   <tr>
-    <th rowspan="2">Narzędzie klienta usługi Azure Storage</th>
-    <th rowspan="2">Blokowe obiekty Blob</th>
-    <th rowspan="2">Obiekt blob typu Page</th>
-    <th rowspan="2">Obiekt Blob dołączania</th>
+    <th rowspan="2">Azure Storage Client Tool</th>
+    <th rowspan="2">Blokowy obiekt blob</th>
+    <th rowspan="2">Stronicowy obiekt blob</th>
+    <th rowspan="2">Dołącz obiekt blob</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
@@ -69,7 +69,7 @@ Przedstawiliśmy tylko migawki dostępnych narzędzi klienta usługi Azure Stora
     <td>X</td>
   </tr>
   <tr>
-    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Eksplorator serwera programu Microsoft Visual Studio</a></td>
+    <td><a href="https://www.visualstudio.com/features/azure-tools-vs.aspx">Microsoft Visual Studio Server Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -90,10 +90,10 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
 
 <table>
   <tr>
-    <th rowspan="2">Narzędzie klienta usługi Azure Storage</th>
-    <th rowspan="2">Blokowe obiekty Blob</th>
-    <th rowspan="2">Obiekt blob typu Page</th>
-    <th rowspan="2">Obiekt Blob dołączania</th>
+    <th rowspan="2">Azure Storage Client Tool</th>
+    <th rowspan="2">Blokowy obiekt blob</th>
+    <th rowspan="2">Stronicowy obiekt blob</th>
+    <th rowspan="2">Dołącz obiekt blob</th>
     <th rowspan="2">Tabele</th>
     <th rowspan="2">Kolejki</th>
     <th rowspan="2">Pliki</th>
@@ -121,7 +121,7 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Eksplorator usługi Azure</a></td>
+    <td><a href="https://www.red-gate.com/products/azure-development/azure-explorer/index">Redgate: Azure Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -135,7 +135,7 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
   </tr>
   <tr>
-    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Eksplorator usługi Storage platformy Azure w sieci Web</a></td>
+    <td><a href="https://github.com/sebagomez/azurestorageexplorer">Azure Web Storage Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -163,7 +163,7 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gapotchenko.com/cloudcombine">Łączenie z chmury</a></td>
+    <td><a href="http://www.gapotchenko.com/cloudcombine">Cloud Combine</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -177,7 +177,7 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://clumsyleaf.com">ClumsyLeaf: TableXplorer AzureXplorer, CloudXplorer,</a></td>
+    <td><a href="http://clumsyleaf.com">ClumsyLeaf: AzureXplorer, CloudXplorer, TableXplorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -191,7 +191,7 @@ Firma Microsoft nie została zweryfikowana funkcja lub jakości przez następuj�
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gladinet.com/Azure-Storage/index.htm">Gladinet chmury</a></td>
+    <td><a href="http://www.gladinet.com/Azure-Storage/index.htm">Gladinet Cloud</a></td>
     <td>X</td>
     <td></td>
     <td></td>

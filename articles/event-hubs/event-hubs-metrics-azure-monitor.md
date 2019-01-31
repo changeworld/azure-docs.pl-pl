@@ -1,5 +1,5 @@
 ---
-title: Metryki w usłudze Azure Monitor (wersja zapoznawcza) — usługi Azure Event Hubs | Dokumentacja firmy Microsoft
+title: Metryki w usłudze Azure Monitor — usługi Azure Event Hubs | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera informacje dotyczące sposobu używania funkcji monitorowania platformy Azure do monitorowania usługi Azure Event Hubs
 services: event-hubs
 documentationcenter: .NET
@@ -15,14 +15,14 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 148071d71030638ddec4095ef2e33482327f3db3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 31aaa24dd6020cb8203e4ab1bfec8ce3e0ffd2b8
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537924"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299694"
 ---
-# <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Metryki usługi Azure Event Hubs w usłudze Azure Monitor (wersja zapoznawcza)
+# <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Metryki usługi Azure Event Hubs w usłudze Azure Monitor
 
 Event Hubs metryki zapewnia stan zasoby usługi Event Hubs w ramach subskrypcji platformy Azure. Bogaty zestaw danych metryk możesz ocenić ogólną kondycję usługi event hubs, nie tylko na poziomie przestrzeni nazw, ale na poziomie jednostki. Te statystyki może być ważne, ponieważ one pomóc Ci do monitorowania stanu usługi event hubs. Metryki może również pomóc główną przyczynę problemów bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.
 
@@ -40,7 +40,7 @@ Możesz monitorować metryki, wraz z upływem czasu w [witryny Azure portal](htt
 
 ![Wyświetl metryki pomyślne][1]
 
-Można również uzyskać dostęp do metryk bezpośrednio za pośrednictwem przestrzeni nazw. Aby to zrobić, wybierz przestrzeń nazw, a następnie kliknij przycisk **metryki (Peview)**. Aby wyświetlić metryki filtrowane do zakresu Centrum zdarzeń, wybierz Centrum zdarzeń, a następnie kliknij przycisk **metryki (wersja zapoznawcza)**.
+Można również uzyskać dostęp do metryk bezpośrednio za pośrednictwem przestrzeni nazw. Aby to zrobić, wybierz przestrzeń nazw, a następnie kliknij przycisk ** metryki **. Aby wyświetlić metryki filtrowane do zakresu Centrum zdarzeń, wybierz Centrum zdarzeń, a następnie kliknij przycisk **metryki**.
 
 Dla metryk, obsługa wymiarów możesz filtrować z żądaną wartością jak pokazano w poniższym przykładzie:
 
@@ -48,7 +48,7 @@ Dla metryk, obsługa wymiarów możesz filtrować z żądaną wartością jak po
 
 ## <a name="billing"></a>Rozliczenia
 
-Przy użyciu metryk w usłudze Azure Monitor jest aktualnie opłat w wersji zapoznawczej. Jednak jeśli używasz dodatkowych rozwiązań, które pozyskiwania danych metryk, może zostać naliczona według tych rozwiązań. Na przykład opłaty są naliczane przez usługę Azure Storage archiwizowania danych metryk z kontem usługi Azure Storage. Są również rozliczane przez platformę Azure w przypadku strumienia danych metryk do usługi Log Analytics w celu zaawansowanej analizy.
+Przy użyciu metryk w usłudze Azure Monitor jest aktualnie wolne. Jednak jeśli używasz dodatkowych rozwiązań, które pozyskiwania danych metryk, może zostać naliczona według tych rozwiązań. Na przykład opłaty są naliczane przez usługę Azure Storage archiwizowania danych metryk z kontem usługi Azure Storage. Są również rozliczane przez platformę Azure w przypadku strumienia danych metryk do usługi Log Analytics w celu zaawansowanej analizy.
 
 Następujące metryki umożliwiają przegląd kondycji usługi. 
 

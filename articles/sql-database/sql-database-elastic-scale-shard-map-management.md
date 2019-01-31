@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 77ef1fed7bbdb53898a688f14944b9b6b16773c7
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 01/25/2019
+ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200976"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476795"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Skalowanie w poziomie bazy danych z Menedżera map fragmentów
 
@@ -40,11 +40,11 @@ W przypadku modelu jednej dzierżawy, utworzyć **mapowanie list** mapowania fra
 
 ![Mapowanie list][1]
 
-Modelu wielodostępnym przypisuje kilka dzierżaw w jednej bazie danych (i grup dzierżawców można rozpowszechniać w wielu bazach danych). Jeśli oczekujesz, że każdego dzierżawcy, aby korzystać z danych w małych, należy użyć tego modelu. W tym modelu należy przypisać określonego zakresu dzierżaw, bazę danych za pomocą **mapowania zakresu**.
+Modelu wielodostępnym przypisuje kilka dzierżaw poszczególnych baz danych (i grup dzierżawców można rozpowszechniać w wielu bazach danych). Jeśli oczekujesz, że każdego dzierżawcy, aby korzystać z danych w małych, należy użyć tego modelu. W tym modelu należy przypisać określonego zakresu dzierżaw, bazę danych za pomocą **mapowania zakresu**.
 
 ![Mapowanie zakresu][2]
 
-Lub możesz zaimplementować modelu wielodostępną bazą danych przy użyciu *mapowanie list* można przypisać wielu dzierżaw w jednej bazie danych. Na przykład DB1 służy do przechowywania informacji o dzierżawie ID 1 i 5, a bazy danych DB2 przechowuje dane dla dzierżawy 7 i dzierżawy 10.
+Lub możesz zaimplementować modelu wielodostępną bazą danych przy użyciu *mapowanie list* można przypisać wielu dzierżaw do poszczególnych baz danych. Na przykład DB1 służy do przechowywania informacji o dzierżawie ID 1 i 5, a bazy danych DB2 przechowuje dane dla dzierżawy 7 i dzierżawy 10.
 
 ![Wielu dzierżaw w pojedynczej bazy danych][3]
 

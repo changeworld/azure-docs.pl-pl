@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 7c4c1a5991445448f015dc0912383baf53f4e38c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbc11e2fc54ecffbea22a66354f334f3562e3339
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034934"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459217"
 ---
-# <a name="working-with-azure-cosmos-account"></a>Praca z kontem usługi Azure Cosmos
+# <a name="work-with-azure-cosmos-account"></a>Praca z konta usługi Azure Cosmos
 
 Usługa Azure Cosmos DB to w pełni zarządzana platforma as-a-service (PaaS). Aby rozpocząć korzystanie z usługi Azure Cosmos DB, początkowo należy utworzyć konto usługi Azure Cosmos w subskrypcji platformy Azure. Twoje konto usługi Azure Cosmos zawiera unikatową nazwę DNS, a konto można zarządzać za pomocą witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub przy użyciu różnych zestawów SDK specyficzne dla języka. Aby uzyskać więcej informacji, zobacz [jak zarządzać kontem usługi Azure Cosmos](how-to-manage-database-account.md).
 

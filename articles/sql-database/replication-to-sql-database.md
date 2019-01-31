@@ -11,17 +11,17 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 6fbfaaa82095fbf093560e65076b40a392356da8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.date: 01/25/2019
+ms.openlocfilehash: 78858ba888986b75a1da77caaec1ef02ffcdf307
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330164"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467700"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikacja bazy danych SQL pojedynczych i puli baz danych
 
-Można skonfigurować replikacji programu SQL Server do pojedynczych i puli baz danych na [serwer logiczny](sql-database-logical-servers.md) w usłudze Azure SQL Database.  
+Można skonfigurować replikacji programu SQL Server do pojedynczych i puli baz danych na [bazy danych programu SQL server](sql-database-servers.md) w usłudze Azure SQL Database.  
 
 ## <a name="supported-configurations"></a>**Obsługiwane konfiguracje:**
   
@@ -65,7 +65,7 @@ Można skonfigurować replikacji programu SQL Server do pojedynczych i puli baz 
 
 1. Utwórz publikację Replikacja transakcyjna bazy danych programu SQL Server w środowisku lokalnym.  
 2. W programie SQL Server w środowisku lokalnym, użyj **Kreatora nowej subskrypcji** lub instrukcji Transact-SQL, aby utworzyć powiadomienie wypychane do subskrypcji usługi Azure SQL Database.  
-3. Z jednej puli baz danych i w usłudze Azure SQL Database początkowy zestaw danych jest migawką, tworzonego przez agenta migawek i rozproszonych i stosowane przez agenta dystrybucji. Azure SQL Database Managed Instance również użyć kopii zapasowej bazy danych Aby zapełnić bazę danych subskrybenta.
+3. Z jednej puli baz danych i w usłudze Azure SQL Database początkowy zestaw danych jest migawką, tworzonego przez agenta migawek i rozproszonych i stosowane przez agenta dystrybucji. Wystąpienie zarządzane bazy danych również użyć kopii zapasowej bazy danych Aby zapełnić bazę danych subskrybenta.
 
 ### <a name="data-migration-scenario"></a>Scenariusz migracji danych  
 
@@ -107,7 +107,7 @@ Następujące opcje nie są obsługiwane w przypadku subskrypcji usługi Azure S
 Tworzenie publikacji i subskrypcji wypychanej. Aby uzyskać więcej informacji, zobacz:
   
 - [Tworzenie publikacji](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
-- [Tworzenie subskrypcji wypychanych](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) przy użyciu nazwy serwera logicznego bazy danych Azure SQL jako subskrybenta (na przykład **N'azuresqldbdns.database.windows.net "**) i nazwę bazy danych Azure SQL jako miejsce docelowe (bazy danych na przykład **AdventureWorks**).  
+- [Tworzenie subskrypcji wypychanych](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład **N'azuresqldbdns.database.windows.net "**) i nazwę bazy danych Azure SQL jako docelowej bazy danych (w przypadku przykład **AdventureWorks**).  
 
 ## <a name="see-also"></a>Zobacz też  
 

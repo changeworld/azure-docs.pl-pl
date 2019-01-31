@@ -1,6 +1,6 @@
 ---
-Tytuł: Usługa Azure titleSuffix Galeria sztucznej Inteligencji: Opis usługi Azure Machine Learning Studio: Udostępnianie i odnajdywanie zasobów analiz i innych elementów galerii sztucznej Inteligencji platformy Azure. Ucz się od innych, a następnie wprowadzić własny wkład do społeczności.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Usługa Azure titleSuffix Galeria sztucznej Inteligencji: Opis usługi Azure Machine Learning Studio: Udostępnianie i odnajdywanie zasobów analiz i innych elementów galerii sztucznej Inteligencji platformy Azure. Ucz się od innych, a następnie wprowadzić własny wkład do społeczności.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/11/2019
 ---

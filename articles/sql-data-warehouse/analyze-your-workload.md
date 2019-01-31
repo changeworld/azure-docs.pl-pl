@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 9025eccabcbf7052131fee741a1e1f6a2139366b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248097"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476761"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analizowanie obciążenia w usłudze Azure SQL Data Warehouse
 Techniki do analizowania priorytetyzacji zapytania dla obciążenia w usłudze Azure SQL Data Warehouse.
@@ -144,10 +144,10 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 
 Usługa SQL Data Warehouse ma czekać typów:
 
-* **LocalQueriesConcurrencyResourceType**: zapytania, które znajdują się poza szablonem miejsca współbieżności. Zapytania DMV i systemu przez funkcje, takie jak `SELECT @@VERSION` są przykłady kwerend lokalnych.
-* **UserConcurrencyResourceType**: zapytania, które znajdują się w strukturze gniazdo współbieżności. Zapytania dotyczące tabel przez użytkownika końcowego reprezentują przykłady używających tego typu zasobu.
-* **DmsConcurrencyResourceType**: czeka, wynikające z operacje przenoszenia danych.
-* **BackupConcurrencyResourceType**: ten oczekiwania wskazuje, że bazy danych jest tworzona kopia zapasowa. Maksymalna wartość dla tego typu zasobu to 1. Jeśli zażądano wielu kopii zapasowych, w tym samym czasie inne kolejki.
+* **LocalQueriesConcurrencyResourceType**: Zapytania, które znajdują się poza szablonem miejsca współbieżności. Zapytania DMV i systemu przez funkcje, takie jak `SELECT @@VERSION` są przykłady kwerend lokalnych.
+* **UserConcurrencyResourceType**: Zapytania, które znajdują się w strukturze gniazdo współbieżności. Zapytania dotyczące tabel przez użytkownika końcowego reprezentują przykłady używających tego typu zasobu.
+* **DmsConcurrencyResourceType**: W tym czasie czeka wynikające z operacje przenoszenia danych.
+* **BackupConcurrencyResourceType**: Ta oczekiwania wskazuje, że bazy danych jest tworzona kopia zapasowa. Maksymalna wartość dla tego typu zasobu to 1. Jeśli zażądano wielu kopii zapasowych, w tym samym czasie inne kolejki.
 
 `sys.dm_pdw_waits` DMV może służyć do wyświetlania zasobów, które czeka na żądanie.
 

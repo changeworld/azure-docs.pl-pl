@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7be89a2c02769d09f93e8d5d1545cf814c86bba
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c67b9185f38137113b34c8f3a74ae199e50091f1
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102742"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296328"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Biblioteki klienckie do łączenia się z usług Azure Analysis Services
 
@@ -37,7 +37,7 @@ Biblioteki klienckie usług Analysis Services Management Objects (AMO) i ADOMD s
 |[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.12.1.0    |
 |[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.12.1.0     |
 
-Zestawy pakietów NuGet AssemblyVersion wykonaj semantycznego wersji: GŁÓWNE. POMOCNICZA. POPRAWKI. Odwołania do NuGet obciążenia oczekiwanej wersji, nawet jeśli dostępny jest inna wersja w globalnej pamięci podręcznej zestawów (wynikające z instalacji MSI). POPRAWKI są zwiększane dla każdej wersji. Wersje AMO i ADOMD są utrzymywane w synchronizacji.
+Zestawy pakietów NuGet AssemblyVersion wykonaj semantycznego wersji: MAJOR.MINOR.PATCH. Odwołania do NuGet obciążenia oczekiwanej wersji, nawet jeśli dostępny jest inna wersja w globalnej pamięci podręcznej zestawów (wynikające z instalacji MSI). POPRAWKI są zwiększane dla każdej wersji. Wersje AMO i ADOMD są utrzymywane w synchronizacji.
 
 ## <a name="understanding-client-libraries"></a>Omówienie biblioteki klienckie
 

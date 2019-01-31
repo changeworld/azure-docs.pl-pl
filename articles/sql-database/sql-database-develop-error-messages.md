@@ -12,22 +12,24 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/31/2018
-ms.openlocfilehash: 00fe4e109df2ac8954e657a1a567842ec5eb7d37
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 01/25/2019
+ms.openlocfilehash: 6bbb2bfa0fe3c157114d53b070d6c98e68099643
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317461"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464742"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich bazy danych SQL: Błędy połączenia bazy danych i inne problemy
 
 Ten artykuł zawiera listę kodów błędów programu SQL dla aplikacji klienckich bazy danych SQL, w tym błędów połączenia bazy danych, błędy przejściowe (nazywane również błędów przejściowych), błędy nadzoru zasobów, problemów kopii bazy danych, puli elastycznej i inne błędy. Większość kategorii dla usługi Azure SQL Database, a nie dotyczą programu Microsoft SQL Server. Zobacz też [komunikaty o błędach systemu](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Błędy połączenia bazy danych, błędy przejściowe i innych tymczasowe błędy
+
 Poniższa tabela zawiera kody błędów SQL dla błędów utraty połączenia i innych błędów przejściowych, które mogą wystąpić, gdy aplikacja próbuje dostępu do bazy danych SQL. W celu uzyskania wprowadzenie samouczki na temat do łączenia z usługą Azure SQL Database, zobacz [nawiązywania połączenia z bazą danych SQL Azure](sql-database-libraries.md).
 
 ### <a name="most-common-database-connection-errors-and-transient-fault-errors"></a>Najbardziej typowe błędy połączenia bazy danych i błędów przejściowych błędów
+
 Infrastruktura platformy Azure ma możliwość dynamicznego ponownego konfigurowania serwerów w przypadku wystąpienia dużych obciążeń w ramach usługi SQL Database.  To dynamiczne zachowanie może powodować utratę połączenia z bazą danych SQL program kliencki. Ten rodzaj błędu nazywa się *błędu przejściowego*.
 
 Zdecydowanie zaleca się program kliencki ma logikę ponawiania próby, aby dało się je można ponownie ustanowić połączenie po nadaniu Popraw sam czas błędu przejściowego.  Firma Microsoft zaleca opóźnienia na 5 sekund przed swoje pierwsze ponowienie. Ponawianie próby po opóźnieniu mniej niż 5 sekund ryzyka przeciąża usługę w chmurze. Na każdym kolejnym ponowieniem próby opóźnienie powinien rosnąć wykładniczo maksymalnie do 60 sekund.
@@ -35,7 +37,7 @@ Zdecydowanie zaleca się program kliencki ma logikę ponawiania próby, aby dał
 Błędów przejściowych błędów zwykle objawiać się jedną z następujących komunikatów o błędach z programów klienckich:
 
 * Baza danych &lt;db_name&gt; na serwerze &lt;Azure_instance&gt; nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id&gt;
-* Baza danych &lt;db_name&gt; na serwerze &lt;Azure_instance&gt; nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id&gt;. (Program Microsoft SQL Server, błąd: 40613)
+* Baza danych &lt;db_name&gt; na serwerze &lt;Azure_instance&gt; nie jest obecnie dostępna. Ponów próbę połączenia później. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną i podaj identyfikator śledzenia sesji &lt;session_id&gt;. (Microsoft SQL Server, Error: 40613)
 * Istniejące połączenie zostało zamknięte przez hosta zdalnego.
 * System.Data.Entity.Core.EntityCommandExecutionException: Wystąpił błąd podczas wykonywania definicji polecenia. Zobacz wyjątek wewnętrzny, aby uzyskać szczegółowe informacje. ---> System.Data.SqlClient.SqlException: Poziom transportu wystąpił błąd podczas odbierania wyników z serwera. (Dostawca: Dostawcy sesji, błąd: 19 - fizyczne połączenie nie jest używany)
 * Próba połączenia pomocniczej bazy danych nie powiodła się, ponieważ baza danych jest w trakcie ponownej konfiguracji i jest zajęty, zastosowanie nowych stron w trakcie wykonywania aktywnej transakcji w głównej bazie danych. 
@@ -48,6 +50,7 @@ Aby uzyskać przykłady kodu logikę ponawiania próby zobacz:
 Omówienie *czasu blokowania* dla klientów używających ADO.NET jest dostępna w [programu SQL Server połączenia puli (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 ### <a name="transient-fault-error-codes"></a>Kody błędów przejściowych błędów
+
 Następujące błędy są przejściowe i powinno być ponowione w aplikacji logiki: 
 
 | Kod błędu | Ważność | Opis |
@@ -62,6 +65,7 @@ Następujące błędy są przejściowe i powinno być ponowione w aplikacji logi
 | 4221 |16 |Zaloguj się do pomocniczej odczytu nie powiodło się z powodu długiego oczekiwania na "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING". Replika jest niedostępna dla nazwy logowania, ponieważ brakuje wersji wierszy, transakcje, które były aktywne podczas odtwarzania repliki. Ten problem można rozwiązać przez przywrócenie lub Zatwierdź aktywne transakcje w replice podstawowej. Wystąpienia tego warunku można zminimalizować, unikając długich transakcji zapisu na serwerze podstawowym. |
 
 ## <a name="database-copy-errors"></a>Błędy kopiowania bazy danych
+
 Następujące błędy mogą podczas kopiowania bazy danych w usłudze Azure SQL Database. Więcej informacji znajdziesz w artykule [Kopiowanie bazy danych usługi Azure SQL Database](sql-database-copy.md).
 
 | Kod błędu | Ważność | Opis |
@@ -81,6 +85,7 @@ Następujące błędy mogą podczas kopiowania bazy danych w usłudze Azure SQL 
 | 40571 |16 |Kopiowanie bazy danych nie powiodło się z powodu błędu wewnętrznego. Porzuć docelową bazę danych i spróbuj ponownie później. |
 
 ## <a name="resource-governance-errors"></a>Błędy nadzoru zasobów
+
 Następujące błędy są spowodowane nadmiernego wykorzystania zasobów podczas pracy z usługą Azure SQL Database. Na przykład:
 
 * Transakcja została otwarta do zbyt długo.
@@ -94,8 +99,8 @@ Tematy pokrewne:
 
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
-| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL dla autonomicznych i bazy danych w puli](sql-database-resource-limits-database-server.md).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL dla autonomicznych i bazy danych w puli](sql-database-resource-limits-database-server.md). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Baza danych osiągnęła limit przydziału rozmiaru. Partycji lub Usuń dane, Porzuć indeksy lub zapoznaj się z dokumentacją, aby ustalić możliwe rozwiązania. |
 | 40549 |16 |Sesja jest przerwana z powodu długotrwałej transakcji. Spróbuj skrócić transakcję. |
 | 40550 |16 |Sesja została przerwana, ponieważ uzyskała zbyt wiele blokad. Spróbuj odczytu lub modyfikować mniej wierszy w ramach jednej transakcji. |
@@ -104,15 +109,16 @@ Tematy pokrewne:
 | 40553 |16 |Sesja została przerwana z powodu nadmiernego wykorzystania pamięci. Spróbuj zmodyfikować zapytanie, tak aby przetwarzało mniejszą liczbę wierszy.<br/><br/>Zmniejszenie liczby `ORDER BY` i `GROUP BY` operacji w kodzie języka Transact-SQL zmniejsza wymagania dotyczące pamięci zapytania. |
 
 ## <a name="elastic-pool-errors"></a>Błędy puli elastycznej
+
 Następujące błędy odnoszą się do tworzenia i używania pul elastycznych:
 
 | Kod błędu | Ważność | Opis | Działania naprawcze |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Osiągnięto limit przestrzeni dyskowej w puli elastycznej. Użycie magazynu dla puli elastycznej nie może przekroczyć (%d) MB. Podjęto próbę zapisu danych do bazy danych, gdy został osiągnięty limit magazynu elastycznej puli. |Należy rozważyć zwiększenie Dtu i/lub Dodawanie magazynu do elastycznej puli, jeśli jest to możliwe, aby zwiększyć limit przestrzeni dyskowej, zmniejszenie miejsca używanego przez poszczególnych baz danych w puli elastycznej lub usuwać bazy danych z puli elastycznej. |
-| 10929 | 16 |Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-logical-server) uzyskać pomoc. W przeciwnym razie spróbuj ponownie później. Jednostka DTU / minimalna liczba rdzeni wirtualnych na bazę danych; Jednostka DTU / maksymalna liczba na bazę danych rdzeni wirtualnych. Całkowita liczba współbieżnych procesów roboczych (żądań) we wszystkich bazach danych w puli elastycznej próba przekracza limit puli. |Należy rozważyć zwiększenie liczby jednostek Dtu lub rdzeni wirtualnych w puli elastycznej w miarę możliwości w celu zwiększenia limitu jego procesów roboczych lub usuwać bazy danych z puli elastycznej. |
+| 10929 | 16 |Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](sql-database-resource-limits-database-server.md) uzyskać pomoc. W przeciwnym razie spróbuj ponownie później. Jednostka DTU / minimalna liczba rdzeni wirtualnych na bazę danych; Jednostka DTU / maksymalna liczba na bazę danych rdzeni wirtualnych. Całkowita liczba współbieżnych procesów roboczych (żądań) we wszystkich bazach danych w puli elastycznej próba przekracza limit puli. |Należy rozważyć zwiększenie liczby jednostek Dtu lub rdzeni wirtualnych w puli elastycznej w miarę możliwości w celu zwiększenia limitu jego procesów roboczych lub usuwać bazy danych z puli elastycznej. |
 | 40844 | 16 |Baza danych "%ls" na serwerze "%ls" jest bazą danych w wersji "%ls" w puli elastycznej i nie może mieć relacji ciągłych kopii.  |ND |
 | 40857 | 16 |Nie znaleziono serwera puli elastycznej: "%ls", nazwa puli elastycznej: "%ls". Określona pula elastyczna nie istnieje na określonym serwerze. | Podaj nazwę puli elastycznej prawidłowe. |
-| 40858 | 16 |Pula elastyczna "%ls" już istnieje na serwerze: "%ls". Określona pula elastyczna jest już istnieje na określonym serwerze logicznym. | Podaj nową nazwę puli elastycznej. |
+| 40858 | 16 |Pula elastyczna "%ls" już istnieje na serwerze: "%ls". Określona pula elastyczna już istnieje na określonym serwerze SQL Database. | Podaj nową nazwę puli elastycznej. |
 | 40859 | 16 |Pula elastyczna nie obsługuje warstwy usług "%ls". Warstwa określonej usługi nie jest obsługiwana dla puli elastycznej inicjowania obsługi administracyjnej. |Podaj poprawną wersję, lub pozostaw puste, aby użyć domyślnej warstwy usługi warstwy usług. |
 | 40860 | 16 |Kombinacja puli elastycznej "%ls" i usługi cel "%ls" jest nieprawidłowa. Elastycznej puli i usługi warstwy mogą jednocześnie można określić tylko wtedy, gdy typ zasobu jest określony jako "ElasticPool". |Określ poprawny kombinacja puli elastycznej i warstwy usług. |
 | 40861 | 16 |Wersja bazy danych "%. *ls nie może być inna niż warstwa usług puli elastycznej, czyli "%.* ls. Wersja bazy danych jest inna niż warstwa usług puli elastycznej. |Nie można określić wersji bazy danych, która jest inna niż warstwa usług puli elastycznej.  Należy pamiętać, że wersja bazy danych nie muszą być określone. |
@@ -137,6 +143,7 @@ Tematy pokrewne:
 * [Monitorowanie i zarządzanie pulą elastyczną (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
 
 ## <a name="general-errors"></a>Ogólne błędy
+
 Następujące błędy, które nie należą do żadnych poprzednich kategorii.
 
 | Kod błędu | Ważność | Opis |
@@ -204,10 +211,11 @@ Następujące błędy, które nie należą do żadnych poprzednich kategorii.
 | 40671 |17 |Błąd komunikacji między bramą i usługą zarządzania. Spróbuj ponownie później. |
 | 40852 |16 |Nie można otworzyć bazy danych "%. \*ls na serwerze "%. \*ls żądanego podczas logowania. Dostęp do bazy danych jest dozwolone tylko przy użyciu parametrów połączenia z włączoną obsługą zabezpieczeń. Aby uzyskać dostęp do tej bazy danych, należy zmodyfikować parametry połączenia zawierają bezpieczny, FQDN -.database.windows "name server" serwera .net należy zmodyfikować, aby .database "name server". `secure`. windows.net. |
 | 40914 | 16 | Nie można otworzyć serwera "*[nazwa_serwera]*" żądanego podczas logowania. Klient nie może uzyskać dostęp do serwera.<br /><br />Aby rozwiązać problem, należy rozważyć dodanie [reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md). |
-| 45168 |16 |System SQL Azure jest obciążony i umieszcza górny limit współbieżnych operacji CRUD bazy danych dla jednego serwera (np. Tworzenie bazy danych). Serwer, który został określony w komunikacie o błędzie przekroczyła maksymalną liczbę równoczesnych połączeń. Spróbuj ponownie później. |
+| 45168 |16 |System SQL Azure jest obciążony i umieszcza górny limit współbieżnych operacji CRUD bazy danych dla jednego serwera bazy danych SQL (np. Tworzenie bazy danych). Serwer, który został określony w komunikacie o błędzie przekroczyła maksymalną liczbę równoczesnych połączeń. Spróbuj ponownie później. |
 | 45169 |16 |System SQL azure jest obciążony i umieszcza górny limit liczby współbieżnych serwera operacji CRUD dla pojedynczej subskrypcji (np. do tworzenia serwera). Subskrypcja określona w komunikacie o błędzie przekroczyła maksymalną liczbę jednoczesnych połączeń, a żądanie zostało odrzucone. Spróbuj ponownie później. |
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Przeczytaj o [funkcji usługi Azure SQL Database](sql-database-features.md).
 * Przeczytaj o [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md).
 * Przeczytaj o [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).

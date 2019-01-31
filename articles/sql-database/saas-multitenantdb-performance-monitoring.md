@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7681e3fabe9eb216da81d9f09dc584097bcbaf84
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 01/25/2019
+ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830009"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458129"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
 
@@ -161,7 +161,7 @@ Jeśli zostały już aprowizowane nową dzierżawę w oddzielnej bazie danych, P
 
 Skrypt aprowizacji tej dzierżawy w oddzielnej bazy danych, Zarejestruj bazę danych i dzierżawy w wykazie i następnie otworzyć stronę zdarzenia dzierżawy w przeglądarce. Odśwież stronę Centrum zdarzeń, a zobaczysz, że "Wierzbowate Salsa" został dodany jako miejsca.
 
-## <a name="manage-performance-of-a-single-database"></a>Zarządzanie wydajnością pojedynczej bazy danych
+## <a name="manage-performance-of-an-individual-database"></a>Zarządzanie wydajnością poszczególnych baz danych
 
 Jeśli obciążenie pojedynczej dzierżawy w wielodostępnej bazie danych, może to zwykle zdominować zasoby bazy danych i wpłynąć na innych dzierżawców w tej samej bazy danych. W przypadku prawdopodobnie przez pewien czas działanie dzierżawy mogą tymczasowo przeniesiony z bazy danych i do jego własnej bazy danych jedną dzierżawą. Aby dzierżawa dysponowała dodatkowe zasoby wymaga w pełni jednocześnie zostanie odizolowana od innych dzierżawców, a dzięki temu.
 
@@ -194,7 +194,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Skalowanie w górę bazy danych w odpowiedzi na zwiększone obciążenie bazy danych
 > * Aprowizacja dzierżawy do bazy danych w pojedynczej dzierżawy
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 <!--* [Additional tutorials that build upon the Wingtip Tickets SaaS Multi-tenant Database application deployment](saas-multitenantdb-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 * [Azure Automation](../automation/automation-intro.md)

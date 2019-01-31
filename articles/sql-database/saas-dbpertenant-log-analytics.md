@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.date: 01/25/2019
+ms.openlocfilehash: 7a5245a9c97748e7b46132eaaa91f6bbc8311266
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890215"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475146"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Konfigurowanie i używanie programu Log Analytics za pomocą wielodostępnych aplikacji SaaS usługi SQL Database
 
@@ -104,7 +104,7 @@ W tym ćwiczeniu Otwórz program Log Analytics w witrynie Azure portal, aby wyś
 
     ![Filtr czasu](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-1. Wybierz pojedynczą bazę danych, aby zapoznać się z użycia zapytania i metryki dla tej bazy danych.
+1. Wybierz poszczególne bazy danych, aby zapoznać się z użycia zapytania i metryki dla tej bazy danych.
 
     ![Analiza bazy danych](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
@@ -148,7 +148,7 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 
 Spróbuj [samouczek analiz dzierżaw](saas-dbpertenant-log-analytics.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Dodatkowe samouczki, które są kompilowane w na początkowym wdrożeniu bazy danych dla dzierżawcy aplikacji SaaS o nazwie Wingtip Tickets](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Program Azure Log Analytics](../azure-monitor/insights/azure-sql.md)

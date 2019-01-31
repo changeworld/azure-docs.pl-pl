@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 77cb60c1a459d7c3f98d902d82e5fef86e8c34f4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/25/2019
+ms.openlocfilehash: a7ebf246300fdafe69f45aca0237964c8e669d5c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541624"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463960"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database — często zadawane pytania (FAQ)
 
@@ -35,7 +35,7 @@ Nie. Zwykle wpływ poprawek nie jest widoczne w przypadku możesz [stosować log
 
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co to jest nowy oparty na rdzeniach wirtualnych zakupu model usługi Azure SQL Database
 
-Nowy model zakupów stanowi dodatek do już istniejącego modelu bazującego na jednostkach DTU. Model oparty na rdzeniach wirtualnych jest przeznaczona do zapewnić klientom elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Umożliwia także klienci mogą skalować swoje rsources zasobów obliczeniowych i magazynu, na podstawie ich potrzeby związane z obciążeniem. Pojedynczą bazę danych i opcje puli elastycznej za pomocą modelu rdzenia wirtualnego są również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) Aby uzyskać więcej informacji.
+Nowy model zakupów stanowi dodatek do już istniejącego modelu bazującego na jednostkach DTU. Model oparty na rdzeniach wirtualnych jest przeznaczona do zapewnić klientom elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Umożliwia także klienci mogą skalować swoje zasoby obliczeniowe i magazynowe, na podstawie ich potrzeby związane z obciążeniem. Pojedynczą bazę danych i opcje puli elastycznej za pomocą modelu rdzenia wirtualnego są również kwalifikuje się do 30 procent oszczędności w przypadku [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/#services). Zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) Aby uzyskać więcej informacji.
 
 ## <a name="what-is-a-vcore"></a>Co to jest rdzeń wirtualny
 
@@ -141,9 +141,9 @@ Tak często, jak chcesz. Zobacz [Zarządzanie elastycznymi pulami](sql-database-
 
 ## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak długo trwa zmiana warstwy usługi compute rozmiar pojedynczej bazy danych lub przenosić bazy danych do i z puli elastycznej
 
-Zmiana warstwy usługi bazy danych i przeniesienie do i z puli wymaga bazy danych do skopiowania na platformie jako operacji w tle. Zmiana warstwy usługi może potrwać od kilku minut do kilku godzin w zależności od rozmiaru bazy danych. W obu przypadkach bazy danych pozostają online i dostępne podczas przenoszenia. Aby uzyskać więcej informacji o zmienianiu pojedynczych baz danych, zobacz [Zmienianie warstwy usługi bazy danych](sql-database-service-tiers-dtu.md).
+Zmiana warstwy usługi bazy danych i przeniesienie do i z puli wymaga bazy danych do skopiowania na platformie jako operacji w tle. Zmiana warstwy usługi może potrwać od kilku minut do kilku godzin w zależności od rozmiaru bazy danych. W obu przypadkach bazy danych pozostają online i dostępne podczas przenoszenia. Aby uzyskać więcej informacji o zmienianiu pojedynczych baz danych, zobacz [Zmienianie warstwy usługi bazy danych](sql-database-single-database-scale.md).
 
-## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Kiedy należy używać pojedynczej bazy danych i elastycznych baz danych
+## <a name="when-should-i-use-a-single-database-vs-elastic-pools"></a>Kiedy używać pojedynczej bazy danych i pul elastycznych
 
 Ogólnie rzecz biorąc, pule elastyczne są przeznaczone dla typowej [oprogramowanie jako usługa (SaaS) aplikacji wzorca](sql-database-design-patterns-multi-tenancy-saas-applications.md), w którym występuje jedna baza danych dla dzierżawcy lub klienta. Kupowanie poszczególnych baz danych i konieczności nadmiernej aprowizacji zaspokojenia zmiennych i szczytowych zapotrzebowań poszczególnych baz często nie jest ekonomiczne. Zarządzanie zbiorczą wydajnością puli pul i baz danych automatyczne skalowanie w górę i w dół. Inteligentnego aparatu platformy Azure zaleca puli baz danych, gdy wzorzec użycia na to pozwala. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące puli elastycznej](sql-database-elastic-pool.md).
 

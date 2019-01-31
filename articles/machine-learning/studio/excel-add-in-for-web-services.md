@@ -1,6 +1,6 @@
 ---
-Tytuł: Dodatek programu Excel dla sieci web usługi titleSuffix: Opis usługi Azure Machine Learning Studio: Jak używać usługi Azure Machine Learning w sieci Web bezpośrednio w programie Excel, bez konieczności pisania jakiegokolwiek kodu.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Dodatek programu Excel dla sieci web usługi titleSuffix: Opis usługi Azure Machine Learning Studio: Jak używać usługi Azure Machine Learning w sieci Web bezpośrednio w programie Excel, bez konieczności pisania jakiegokolwiek kodu.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018
 ---

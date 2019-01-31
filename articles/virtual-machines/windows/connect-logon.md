@@ -1,6 +1,6 @@
 ---
 title: Nawiązywanie połączenia z maszyną wirtualną z systemem Windows Server | Microsoft Docs
-description: Dowiedz się, jak nawiązać połączenie z maszyną wirtualną z systemem Windows oraz zalogować się do niej za pomocą witryny Azure Portal i modelu wdrażania przy użyciu usługi Azure Resource Manager.
+description: Dowiedz się, jak połączyć i zaloguj się do maszyny Wirtualnej Windows przy użyciu witryny Azure portal i modelu wdrażania usługi Resource Manager.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: fdd0c82f64b55c801ef04f1d533ed91683a07f9a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4bfb17a7c50e97ae71908f052f7f38110cf376df
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867073"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296891"
 ---
-# <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Sposób nawiązywania połączenia z maszyną wirtualną platformy Azure z systemem Windows oraz logowania się do niej
-Korzystając z przycisku **Połącz** w witrynie Azure Portal, uruchomisz sesję pulpitu zdalnego z poziomu pulpitu systemu Windows. Najpierw nawiążesz połączenie z maszyną wirtualną, a następnie logowania.
+# <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak połączyć i logowanie się na maszynie wirtualnej platformy Azure, systemem Windows
+Korzystając z przycisku **Połącz** w witrynie Azure Portal, uruchomisz sesję pulpitu zdalnego z poziomu pulpitu systemu Windows. Najpierw nawiążesz połączenie z maszyną wirtualną, a następnie zaloguj się.
 
 Aby połączyć się z maszyny Wirtualnej z systemem Windows z poziomu komputera Mac, konieczne będzie zainstalowanie klienta RDP dla komputerów Mac, takie jak [Pulpit zdalny Microsoft](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
 
@@ -32,14 +32,14 @@ Aby połączyć się z maszyny Wirtualnej z systemem Windows z poziomu komputera
 2. W menu po lewej stronie wybierz **maszyn wirtualnych**.
 3. Wybierz maszynę wirtualną z listy.
 4. Górnej części strony dla maszyny wirtualnej, wybierz **Connect**.
-2. Na **Połącz z maszyną wirtualną** strony, wybierz odpowiednie opcje i wybierz **pliku RDP Pobierz**.
-2. Otwórz pobrany plik RDP, a następnie wybierz pozycję **Connect** po wyświetleniu monitu. 
-2. Zostanie wyświetlone ostrzeżenie, że plik RDP pochodzi od nieznanego wydawcy. Jest to oczekiwane. W **Podłączanie pulpitu zdalnego** wybierz **Connect** aby kontynuować.
+2. Na **Połącz z maszyną wirtualną** wybierz odpowiedni adres IP i port. W większości przypadków domyślny adres IP i port powinny być używane. Wybierz **pliku RDP Pobierz**pliku RDP Pobierz **. Jeśli maszyna wirtualna ma zestaw zasad just-in-time, musisz najpierw wybrać **żądania dostępu** przycisk, aby zażądać dostępu, przed pobraniem pliku RDP. Aby uzyskać więcej informacji na temat zasad just-in-time, zobacz [zarządzanie dostępem maszyny wirtualnej przy użyciu tylko w zasadach czasu](../../security-center/security-center-just-in-time.md).
+2. Otwórz pobrany plik RDP i wybierz polecenie **Połącz**, gdy wyświetli się odpowiedni monit. 
+2. Zostanie wyświetlone ostrzeżenie, że `.rdp` plik pochodzi od nieznanego wydawcy. Jest to oczekiwane. W **Podłączanie pulpitu zdalnego** wybierz **Connect** aby kontynuować.
    
     ![Zrzut ekranu przedstawiający ostrzeżenie o nieznanym wydawcy.](./media/connect-logon/rdp-warn.png)
 3. W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a następnie pozycję **Użyj innego konta**. Wprowadź poświadczenia dla konta na maszynie wirtualnej, a następnie wybierz pozycję **OK**.
    
-     **Konto lokalne**: jest to zazwyczaj konta lokalnego, nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. W tym przypadku domeną jest nazwa maszyny wirtualnej wprowadzana jako *nazwa_maszyny_wirtualnej*&#92;*nazwa_użytkownika*.  
+     **Konto lokalne**: Jest to zazwyczaj konta lokalnego, nazwę użytkownika i hasło określone podczas tworzenia maszyny wirtualnej. W tym przypadku domeną jest nazwa maszyny wirtualnej wprowadzana jako *nazwa_maszyny_wirtualnej*&#92;*nazwa_użytkownika*.  
    
     **Maszyna wirtualna przyłączona do domeny**: Jeśli maszyna wirtualna należy do domeny, wprowadź nazwę użytkownika w formacie *domeny*&#92;*Username*. Konto musi również należeć do grupy Administratorzy albo mieć przydzielone uprawnienia dostępu zdalnego do maszyny wirtualnej.
    

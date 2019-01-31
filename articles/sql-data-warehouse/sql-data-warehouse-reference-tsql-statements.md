@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: fa497979349346016e1c176ace98407d98eebdca
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4cec5dd38d41f354f4d1430240a23f0b328cbb7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307872"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452434"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Instrukcje T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse
 Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse.
@@ -56,12 +56,12 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 ## <a name="data-manipulation-language-dml-statements"></a>Instrukcje języka DML (Manipulation) danych
 * [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)
-* [AKTUALIZACJA](https://msdn.microsoft.com/library/ms177523.aspx)
+* [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Poleceń konsoli bazy danych
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [POLECENIE DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
-* [POLECENIE DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
+* [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
 * [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
 * [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
@@ -71,7 +71,7 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 * [WYBIERZ POZYCJĘ](https://msdn.microsoft.com/library/ms189499.aspx)
 * [Za pomocą common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [Z wyjątkiem i INTERSECT](https://msdn.microsoft.com/library/ms188055.aspx)
-* [WYJAŚNIONO](https://msdn.microsoft.com/library/mt631615.aspx)
+* [EXPLAIN](https://msdn.microsoft.com/library/mt631615.aspx)
 * [Z](https://msdn.microsoft.com/library/ms177634.aspx)
 * [Za pomocą PIVOT i UNPIVOT](https://msdn.microsoft.com/library/ms177410.aspx)
 * [GRUPUJ WEDŁUG](https://msdn.microsoft.com/library/ms177673.aspx)
@@ -86,7 +86,7 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 * [Zapytania podrzędne](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Instrukcje zabezpieczeń
-* Uprawnienia: [GRANT](https://msdn.microsoft.com/library/ms187965.aspx), [ODMÓW](https://msdn.microsoft.com/library/ms188338.aspx), [odwołania](https://msdn.microsoft.com/library/ms187728.aspx)
+* Uprawnienia: [UDZIEL](https://msdn.microsoft.com/library/ms187965.aspx), [ODMÓW](https://msdn.microsoft.com/library/ms188338.aspx), [ODWOŁANIA](https://msdn.microsoft.com/library/ms187728.aspx)
 * [INSTRUKCJA ALTER AUTORYZACJI](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ALTER CERTIFICATE](https://msdn.microsoft.com/library/ms189511.aspx)
 * [INSTRUKCJA ALTER DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)
@@ -97,14 +97,14 @@ Zawiera łącza do dokumentacji dla instrukcji języka T-SQL obsługiwanych w us
 * [WYKONAJ KOPIĘ ZAPASOWĄ CERTYFIKATU](https://msdn.microsoft.com/library/ms178578.aspx)
 * [ZAMKNIJ KLUCZA GŁÓWNEGO](https://msdn.microsoft.com/library/ms188387.aspx)
 * [TWORZENIE CERTYFIKATU](https://msdn.microsoft.com/library/ms187798.aspx)
-* [UTWÓRZ KLUCZ SZYFROWANIA BAZY DANYCH](https://msdn.microsoft.com/library/bb677241.aspx)
-* [UTWÓRZ NAZWĘ LOGOWANIA](https://msdn.microsoft.com/library/ms189751.aspx)
+* [CREATE DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb677241.aspx)
+* [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx)
 * [TWORZENIE KLUCZA GŁÓWNEGO](https://msdn.microsoft.com/library/ms174382.aspx)
 * [TWORZENIE ROLI](https://msdn.microsoft.com/library/ms187936.aspx)
 * [TWORZENIE UŻYTKOWNIKA](https://msdn.microsoft.com/library/ms173463.aspx)
 * [UPUŚĆ CERTYFIKATU](https://msdn.microsoft.com/library/ms179906.aspx)
 * [DROP DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630256.aspx)
-* [PORZUCIĆ NAZWY LOGOWANIA](https://msdn.microsoft.com/library/ms188012.aspx)
+* [DROP LOGIN](https://msdn.microsoft.com/library/ms188012.aspx)
 * [UPUŚĆ KLUCZA GŁÓWNEGO](https://msdn.microsoft.com/library/ms180071.aspx)
 * [BEZPOŚREDNIEJ ROLI](https://msdn.microsoft.com/library/ms174988.aspx)
 * [USUNĄĆ UŻYTKOWNIKA](https://msdn.microsoft.com/library/ms189438.aspx)

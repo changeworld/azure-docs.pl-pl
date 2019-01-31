@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 80c413c874ca3e1bf46bfa4e5becb184223c5eeb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4da89e0f99832c429091e0a028fafd8943df811a
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091295"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300119"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Wysyłanie zdarzeń do usługi Azure Event Hubs przy użyciu języka Java
 
@@ -33,21 +33,21 @@ Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących 
 * Środowisko projektowe Java. W tym samouczku [Eclipse](https://www.eclipse.org/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń
-Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć obszar nazw i Centrum zdarzeń, wykonaj procedurę opisaną w [w tym artykule](event-hubs-create.md).
+Pierwszym krokiem jest skorzystanie z witryny [Azure Portal](https://portal.azure.com) w celu utworzenia przestrzeni nazw typu Event Hubs i uzyskania poświadczeń zarządzania wymaganych przez aplikację do komunikacji z centrum zdarzeń. Aby utworzyć przestrzeń nazw i centrum zdarzeń, wykonaj procedurę opisaną w [tym artykule](event-hubs-create.md).
 
-Pobierz wartość klucza dostępu Centrum zdarzeń, postępując zgodnie z instrukcjami opisanymi w artykule: [pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu został użyty w kodzie, napisany w dalszej części tego samouczka. Domyślna nazwa klucza to: **RootManageSharedAccessKey**.
+Pobierz wartość klucza dostępu Centrum zdarzeń, postępując zgodnie z instrukcjami opisanymi w artykule: [Pobieranie parametrów połączenia](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Klucz dostępu został użyty w kodzie, napisany w dalszej części tego samouczka. Jest domyślna nazwa klucza: **RootManageSharedAccessKey**.
 
 Teraz przejdź do następujących czynności w ramach tego samouczka.
 
 ## <a name="add-reference-to-azure-event-hubs-library"></a>Dodaj odwołanie do biblioteki usługi Azure Event Hubs
 
-Biblioteki klienta Java dla usługi Event Hubs jest dostępna do użytku w projektach narzędzia Maven z [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Możesz odwoływać się tę bibliotekę przy użyciu poniższej deklaracji zależności wewnątrz pliku projektu Maven. Bieżąca wersja to 1.0.2:    
+Biblioteki klienta Java dla usługi Event Hubs jest dostępna do użytku w projektach narzędzia Maven z [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Możesz odwoływać się do tej biblioteki, przy użyciu poniższej deklaracji zależności wewnątrz pliku projektu Maven:
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 ```
 
@@ -57,11 +57,9 @@ Wydawca zdarzeń prostego, można zaimportować *com.microsoft.azure.eventhubs* 
 
 ## <a name="write-code-to-send-messages-to-the-event-hub"></a>Pisanie kodu w celu wysyłania komunikatów do centrum zdarzeń
 
-Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Nazwa klasy `SimpleSend`:     
+Na potrzeby poniższego przykładu należy w ulubionym środowisku programowania Java utworzyć nowy projekt Maven dla aplikacji konsoli lub powłoki. Dodaj klasę o nazwie `SimpleSend`i Dodaj następujący kod do klasy:
 
 ```java
-package com.microsoft.azure.eventhubs.samples.send;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.microsoft.azure.eventhubs.ConnectionStringBuilder;
@@ -74,7 +72,7 @@ import java.nio.charset.Charset;
 import java.time.Instant;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
 
 public class SimpleSend {
 
@@ -91,11 +89,11 @@ public class SimpleSend {
 Klasa ConnectionStringBuilder służy do konstruowania wartość parametrów połączenia w celu przekazania do wystąpienia klienta usługi Event Hubs. Zastąp symbole zastępcze wartości, które zostały uzyskane podczas tworzenia przestrzeni nazw i Centrum zdarzeń:
 
 ```java
-final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
-        .setNamespaceName("Your Event Hubs namespace name")
-        .setEventHubName("Your event hub")
-        .setSasKeyName("Your policy name")
-        .setSasKey("Your primary SAS key");
+        final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
+                .setNamespaceName("speventhubns") 
+                .setEventHubName("speventhub")
+                .setSasKeyName("RootManageSharedAccessKey")
+                .setSasKey("2+WMsyyy1XmUtEnRsfOmTTyGasfJgsVjGAOIN20J1Y8=");
 ```
 
 ### <a name="send-events"></a>Wysyłanie zdarzeń
@@ -103,15 +101,40 @@ final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
 Utwórz zdarzenie pojedynczej poprzez przekształcanie ciąg do jego kodowania UTF-8 bajtów. Następnie utwórz nowe wystąpienie klienta usługi Event Hubs z parametrów połączenia i wysyłanie wiadomości:   
 
 ```java 
-String payload = "Message " + Integer.toString(i);
-byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
-EventData sendEvent = EventData.create(payloadBytes);
+        final Gson gson = new GsonBuilder().create();
 
-final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-ehClient.sendSync(sendEvent);
-    
-// close the client at the end of your program
-ehClient.closeSync();
+        // The Executor handles all asynchronous tasks and this is passed to the EventHubClient instance.
+        // This enables the user to segregate their thread pool based on the work load.
+        // This pool can then be shared across multiple EventHubClient instances.
+        // The following sample uses a single thread executor, as there is only one EventHubClient instance,
+        // handling different flavors of ingestion to Event Hubs here.
+        final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
+
+        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // It is always a best practice to reuse these instances. The following sample shows this.
+        final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
+
+
+        try {
+            for (int i = 0; i < 10; i++) {
+
+                String payload = "Message " + Integer.toString(i);
+                byte[] payloadBytes = gson.toJson(payload).getBytes(Charset.defaultCharset());
+                EventData sendEvent = EventData.create(payloadBytes);
+
+                // Send - not tied to any partition
+                // Event Hubs service will round-robin the events across all Event Hubs partitions.
+                // This is the recommended & most reliable way to send to Event Hubs.
+                ehClient.sendSync(sendEvent);
+            }
+
+            System.out.println(Instant.now() + ": Send Complete...");
+            System.out.println("Press Enter to stop.");
+            System.in.read();
+        } finally {
+            ehClient.closeSync();
+            executorService.shutdown();
+        }
 
 ``` 
 

@@ -4,26 +4,26 @@ description: Omówienie wdrażania Avere vFXT dla platformy Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: aa5737d67ea2c9cb8cc7c7098764ae67fc91137d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634154"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298538"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>VFXT Avere dla platformy Azure — Omówienie wdrożenia
 
 Ten artykuł zawiera omówienie kroki niezbędne do uzyskania vFXT Avere klastra platformy Azure i uruchomione.
 
-Podczas pierwszego wdrażania Avere vFXT systemu, można zauważyć obejmuje więcej czynności niż wdrażanie większości innych narzędzi platformy Azure. Wyczyść sensie rozpoczęcia do zakończenia procesu o pomoże Ci nakład pracy wymagany zakres. Po skonfigurowaniu i uruchomieniu systemu jego możliwości, aby przyspieszyć zadania mocą obliczeniową opartą na chmurze, spowoduje to warte włożonej pracy.
+Niektóre zadania są wymagane, przed i po utworzeniu klastra vFXT w portalu Azure Marketplace. Wyczyść sensie rozpoczęcia do zakończenia procesu o pomoże Ci nakład pracy wymagany zakres. 
 
 ## <a name="deployment-steps"></a>Kroki wdrażania
 
 Po [planowania systemu](avere-vfxt-deploy-plan.md), możesz rozpocząć tworzenie Avere vFXT klastra. 
 
-Rozpocznij od utworzenia kontrolera klastra maszyny Wirtualnej, który jest używany do utworzenia klastra vFXT.
+Szablon usługi Azure Resource Manager w witrynie Azure Marketplace zbiera niezbędne informacje i automatycznie wdraża całego klastra. 
 
 Po skonfigurowaniu i uruchomieniu klastra vFXT warto wiedzieć, jak połączyć klientów i, jeśli to konieczne, jak przenieść dane do nowego kontenera magazynu obiektów Blob.  
 
@@ -33,25 +33,30 @@ Poniżej przedstawiono omówienie wszystkich kroków.
 
    Przed utworzeniem maszyny Wirtualnej, należy utworzyć nową subskrypcję dla projektu vFXT Avere, skonfiguruj własności subskrypcji, sprawdź limity przydziału i poprosić o zwiększenie, jeśli potrzebne i zaakceptuj postanowienia dotyczące korzystania z oprogramowania vFXT Avere. Odczyt [przed rozpoczęciem tworzenia Avere vFXT](avere-vfxt-prereqs.md) szczegółowe informacje.
 
-1. Tworzenie kontrolera klastra
+1. Utworzenie roli dostępu w węzłach klastra
 
-   *Klastra kontroler* jest prostą maszynę Wirtualną, która znajduje się w tej samej sieci wirtualnej jako klaster vFXT Avere. Kontroler tworzy vFXT węzłów i formularze klastra i zapewnia również interfejs wiersza polecenia do zarządzania klastrem jego okres istnienia.
+   Usługa Azure korzysta [kontroli dostępu opartej na rolach](../role-based-access-control/index.yml) (RBAC), aby autoryzować węzła klastra maszyny wirtualne do wykonywania określonych zadań. Na przykład węzły klastra muszą mieć możliwość przypisywania lub ponowne przypisywanie adresów IP do innych węzłów klastra. Przed utworzeniem klastra, należy zdefiniować rolę, która umożliwi im odpowiednie uprawnienia.
 
-   Jeśli skonfigurujesz kontroler z publicznym adresem IP również służył jako host skok do łączenia się z klastrem z spoza sieci wirtualnej.
+   Odczyt [tworzenie roli dostęp do węzła klastra](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) instrukcje.
 
-   Całe oprogramowanie wymagane do utworzenia klastra vFXT i zarządzania jego węzłów jest preinstalowany na kontrolerze klastra.
-
-   Odczyt [tworzenie maszyny Wirtualnej kontrolera klastra](avere-vfxt-deploy.md#create-the-cluster-controller-vm) Aby uzyskać szczegółowe informacje.
-
-1. Tworzenie roli środowiska wykonawczego dla węzłów klastra 
-
-   Usługa Azure korzysta [kontroli dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC), aby autoryzować węzła klastra maszyny wirtualne do wykonywania określonych zadań. Na przykład węzły klastra muszą mieć możliwość przypisywania lub ponowne przypisywanie adresów IP do innych węzłów klastra. Przed utworzeniem klastra, należy zdefiniować rolę, która umożliwi im odpowiednie uprawnienia.
-
-   Wstępnie zainstalowane oprogramowanie kontrolera klastra zawiera rolę prototypu, można go dostosować. Odczyt [tworzenie roli dostęp do węzła klastra](avere-vfxt-deploy.md#create-the-cluster-node-access-role) instrukcje.
+   Kontroler klastra używa również rola dostępu, ale możesz zaakceptować domyślna rola właściciela, zamiast tworzyć własne. Jeśli chcesz utworzyć niestandardową rolę kontrolera klastra, zapoznaj się z [roli dostęp do kontrolera dostosowany](avere-vfxt-controller-role.md). 
 
 1. Tworzenie klastra vFXT Avere 
 
-   Na kontrolerze Przeprowadź edycję skryptu tworzenia odpowiedniego klastra, a następnie uruchomić go do utworzenia klastra. [Edytuj skrypt wdrażania](avere-vfxt-deploy.md#edit-the-deployment-script) zawiera szczegółowe instrukcje. 
+   Użyj portalu Azure Marketplace, aby utworzyć vFXT Avere klastra platformy Azure. Szablon służy do zbierania wymaganych informacji i wykonuje skrypty w celu utworzenia produktu końcowego.
+
+   Tworzenie klastra obejmuje następujące kroki, które są wszystkie wykonywane tylko przez szablon witryny marketplace: 
+
+   * Tworzenie nowej sieci infrastruktury i grup zasobów, jeśli to konieczne
+   * Tworzenie *kontrolera klastra*  
+
+     Kontroler klastra jest prostą maszynę Wirtualną, która znajduje się w tej samej sieci wirtualnej jako klaster vFXT Avere i ma niestandardowe oprogramowanie wymagane do tworzenia i zarządzania klastrem. Kontroler tworzy vFXT węzłów i formularze klastra i zapewnia również interfejs wiersza polecenia do zarządzania klastrem jego okres istnienia.
+
+     Jeśli skonfigurujesz kontroler z publicznym adresem IP również służył jako host skok do łączenia się z klastrem z spoza sieci wirtualnej.
+
+   * Tworzenie klastra maszyn wirtualnych węzła
+   * Konfigurowanie maszyn wirtualnych węzłów klastra jako klastra
+   * Opcjonalnie, tworzeniu nowego kontenera obiektów Blob i skonfigurowania go jako magazynu zaplecza dla klastra
 
 1. Konfigurowanie klastra 
 

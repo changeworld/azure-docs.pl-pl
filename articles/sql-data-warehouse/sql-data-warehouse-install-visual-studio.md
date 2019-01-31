@@ -4,20 +4,20 @@ description: Instalacja programu Visual Studio i narzędzi SQL Server Data Tools
 services: sql-data-warehouse
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ba84b64afb1d5ebcd5ec153787ddc7d0739bd8d8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e27a3d4f2fe4b8421b637e485d77d6376d15bf9a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307389"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461495"
 ---
 # <a name="install-visual-studio-and-ssdt-for-sql-data-warehouse"></a>Instalacja programu Visual Studio i narzędzi SSDT dla usługi SQL Data Warehouse
 Do tworzenia aplikacji dla usługi SQL Data Warehouse, zaleca się używanie najnowszej wersji programu Visual Studio z najnowszej wersji programu SQL Server Data Tools (SSDT).  W celu zapewnienia zgodności z poprzednimi wersjami możliwa jest również obsługa programu Visual Studio 2013 Update 5 z narzędziami SSDT.  
@@ -29,13 +29,13 @@ Za pomocą programu Visual Studio z narzędziami SSDT pozwala na używanie Ekspl
 > 
 > 
 
-## <a name="step-1-install-visual-studio"></a>Krok 1: Zainstaluj program Visual Studio
+## <a name="step-1-install-visual-studio"></a>Krok 1: Instalacja programu Visual Studio
 Skorzystaj z poniższych linków, aby pobrać i zainstalować program Visual Studio. Jeśli masz już program Visual Studio 2013 lub nowszy jest zainstalowany, możesz przejść do kroku 2, należy zainstalować narzędzia SSDT.
 
 1. [Pobierz program Visual Studio][].
 2. Postępuj zgodnie z [Instalowanie programu Visual Studio] [ Installing Visual Studio] pomagające w witrynie MSDN i wybierz domyślne konfiguracje.
 
-## <a name="step-2-install-ssdt"></a>Krok 2: instalowanie narzędzi SSDT
+## <a name="step-2-install-ssdt"></a>Krok 2: Instalowanie narzędzi SSDT
 Aby zainstalować narzędzia SSDT dla programu Visual Studio, najpierw Wyszukaj aktualizację SSDT z poziomu programu Visual Studio wykonaj następujące czynności.
 
 1. W programie Visual Studio kliknij **narzędzia** / **rozszerzenia i aktualizacje...** / **Aktualizacje**

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 118ecc08604cbe05181dd3ba943fd73a34fd47f1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.subservice: files
+ms.openlocfilehash: 68f21ef70b402fe45613fdcbda3074bac1d4eb5a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212481"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464963"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Dodaj/Usuń punkt końcowy serwera usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.

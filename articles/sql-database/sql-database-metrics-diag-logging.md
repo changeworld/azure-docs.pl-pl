@@ -11,19 +11,19 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: e44ac8dca3b27a21e1a7564bbee31c156f80e929
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 01/25/2019
+ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102193"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462804"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
 Usługa Azure SQL Database, pul elastycznych, wystąpienia zarządzanego i baz danych w wystąpieniu zarządzanym można przesyłać strumieniowo dzienniki metryki i Diagnostyka ułatwiają monitorowanie wydajności. Można skonfigurować bazę danych do przesłania użycia zasobów, pracowników i sesji oraz łączność z jedną z następujących zasobów platformy Azure:
 
-- **Usługa Azure SQL Analytics**: Aby uzyskać inteligentnego monitorowania platformy Azure bazach danych, które zawiera raporty dotyczące wydajności, alerty i zalecenia dotyczące ograniczania ryzyka.
+- **Usługa Azure SQL Analytics**: Aby uzyskać inteligentnego monitorowania baz danych Azure SQL, które zawiera raporty dotyczące wydajności, alerty i zalecenia dotyczące ograniczania ryzyka.
 - **Usługa Azure Event Hubs**: zintegrować telemetrycznych usługi SQL Database za pomocą Twojego niestandardowego rozwiązania do monitorowania lub potokami.
 - **Usługa Azure Storage**: w celu archiwizowania ogromnych ilości danych telemetrycznych za ułamek ceny.
 

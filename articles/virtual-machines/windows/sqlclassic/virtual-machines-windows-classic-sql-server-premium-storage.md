@@ -16,19 +16,19 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac5b3bec9915574dd33d40ae2dcbc5aa3c91280a
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: df3f4dc163f94ddab08ecdad7f8d4cc625b8917d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332170"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300272"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Korzystanie z usługi Azure Premium Storage z programem SQL Server na maszynach wirtualnych
 ## <a name="overview"></a>Przegląd
 [Usługa Azure Premium Storage](../premium-storage.md) to następna generacja magazynu, który zapewnia małe opóźnienia i wysoką przepływność operacji We/Wy. Działa najlepiej w kluczowych obciążeń intensywnie korzystających z operacji We/Wy, takich jak SQL Server w usłudze IaaS [maszyn wirtualnych](https://azure.microsoft.com/services/virtual-machines/).
 
 > [!IMPORTANT]
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 Ten artykuł zawiera wskazówki dotyczące migrowania maszyny wirtualnej z systemem SQL Server do korzystania z usługi Premium Storage i planowania. W tym infrastruktury platformy Azure (sieci, magazynu) i kroki Windows maszyny Wirtualnej gościa. W przykładzie w [dodatku](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) przedstawia pełne kompleksowe migracji typu end to end, jak przenieść większych maszyn wirtualnych, aby korzystać z zalet ulepszonych lokalny magazyn SSD przy użyciu programu PowerShell.
 

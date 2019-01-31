@@ -2,18 +2,18 @@
 title: Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 description: Dowiedz się, jak wykonać kopię zapasową programu Exchange server w usłudze Azure Backup przy użyciu programu System Center 2012 R2 DPM
 services: backup
-author: adigan
-manager: NKolli1
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/19/2018
-ms.author: adigan
-ms.openlocfilehash: 7e95fa0cc6b5f9476df68ab44e5dbc8bb5432d52
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/31/2019
+ms.author: kasinh
+ms.openlocfilehash: ef976667ec580ea75dd1b8566c7bdddf35eeb0fc
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234463"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298317"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Tworzenie kopii zapasowych serwera programu Exchange do usługi Azure Backup przy użyciu programu System Center 2012 R2 DPM
 W tym artykule opisano sposób konfigurowania serwera System Center 2012 R2 Data Protection Manager (DPM), aby utworzyć kopię zapasową serwera Microsoft Exchange do usługi Azure Backup.  
@@ -110,11 +110,11 @@ Aby zainstalować agenta ochrony programu DPM na serwerze programu Exchange, wyk
 
 Punkty odzyskiwania online są pięć typów odzyskiwania:
 
-* **Odzyskaj do oryginalnej lokalizacji serwera Exchange:** dane zostaną przywrócone na oryginalnym serwerze programu Exchange.
-* **Odzyskaj do innej bazy danych programu Exchange Server:** dane zostaną odzyskane do innej bazy danych na innym serwerze programu Exchange.
-* **Odzyskaj do bazy danych odzyskiwania:** dane zostaną odzyskane do bazy danych odzyskiwania programu Exchange (RDB).
-* **Kopiuj do folderu sieciowego:** dane zostaną odzyskane do folderu sieciowego.
-* **Kopiuj na taśmę:** w przypadku biblioteki taśm lub autonomiczna stacja taśm dołączonych i skonfigurowane na serwerze programu DPM, punkt odzyskiwania zostanie skopiowany do wolnej taśmy.
+* **Odzyskaj do oryginalnej lokalizacji serwera Exchange:** Dane zostaną odzyskane do oryginalnego serwera programu Exchange.
+* **Odzyskaj do innej bazy danych programu Exchange Server:** Dane zostaną odzyskane do innej bazy danych na innym serwerze programu Exchange.
+* **Odzyskaj do bazy danych odzyskiwania:** Dane zostaną odzyskane do bazy danych odzyskiwania programu Exchange (RDB).
+* **Kopiuj do folderu sieciowego:** Dane zostaną odzyskane do folderu sieciowego.
+* **Kopiuj na taśmę:** Jeśli masz bibliotekę taśm lub autonomiczna stacja taśm dołączonych i skonfigurowane na serwerze programu DPM, punkt odzyskiwania zostaną skopiowane do wolnej taśmy.
 
     ![Wybierz replikację online](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 

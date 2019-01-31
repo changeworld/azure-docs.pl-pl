@@ -1,6 +1,6 @@
 ---
-Tytuł: Prognozowanie odpowiedzi za pomocą regresji modeli titleSuffix: Opis usługi Azure Machine Learning Studio: Jak utworzyć model regresji prosty, aby przewidzieć cenę w zakresie analizy danych dla początkujących 4 wideo. Obejmuje regresji liniowej z danych docelowych.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Prognozowanie odpowiedzi za pomocą regresji modeli titleSuffix: Opis usługi Azure Machine Learning Studio: Jak utworzyć model regresji prosty, aby przewidzieć cenę w zakresie analizy danych dla początkujących 4 wideo. Obejmuje regresji liniowej z danych docelowych.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

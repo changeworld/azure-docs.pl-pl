@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 77edf892c3c2ca1434331fb5560f0db8ca16e306
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956988"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470879"
 ---
-# <a name="translator-text-api-30-translate"></a>API 3.0 tekstu usługi Translator: tłumaczenie
+# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
 Tłumaczy tekst.
 
@@ -57,11 +57,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>*Opcjonalny parametr*.<br/>Ciąg określający kategoria tłumaczenia (domena). Ten parametr umożliwia uzyskiwanie tłumaczenia niestandardowych utworzonych za pomocą systemu [niestandardowe w usłudze Translator](../customization.md). Wartość domyślna to: `general`.</td>
   </tr>
   <tr>
-    <td>ProfanityAction</td>
+    <td>profanityAction</td>
     <td>*Opcjonalny parametr*.<br/>Określa, jak profanities powinny być traktowane w translacji. Możliwe wartości to: `NoAction` (ustawienie domyślne), `Marked` lub `Deleted`. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
   </tr>
   <tr>
-    <td>ProfanityMarker</td>
+    <td>profanityMarker</td>
     <td>*Opcjonalny parametr*.<br/>Określa, jak profanities powinien być oznaczony w translacji. Możliwe wartości to: `Asterisk` (ustawienie domyślne) lub `Tag`. Aby poznać sposoby traktować wulgaryzmów, zobacz [obsługi wulgaryzmów](#handle-profanity).</td>
   </tr>
   <tr>
@@ -85,7 +85,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>*Opcjonalny parametr*.<br/>Określa skrypt przetłumaczonego tekstu.</td>
   </tr>
   <tr>
-    <td>AllowFallback</td>
+    <td>allowFallback</td>
     <td>*Opcjonalny parametr*.<br/>Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje. Możliwe wartości to: `true` (ustawienie domyślne) lub `false`.<br/><br/>`allowFallback=false` Określa, czy tłumaczenie należy używać wyłącznie systemów uczona dla `category` określonym przez żądanie. Jeśli tłumaczenie język X język Y wymaga łańcucha przy użyciu języka pivot E, następnie wszystkich systemów w łańcuchu (X -> E i E -> Y) będzie musiał być niestandardowych i mieć tej samej kategorii. Jeśli system nie zostanie znaleziony o określonej kategorii, żądanie zwróci kod stanu 400. `allowFallback=true` Określa, że usługi może być powrót do ogólnego systemu, gdy niestandardowego systemu nie istnieje.
 </td>
   </tr>
@@ -109,7 +109,7 @@ Nagłówki żądania obejmują:
     <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
-    <td>X ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
@@ -135,9 +135,9 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
   * `detectedLanguage`: Obiekt opisujący wykryty język za pomocą następujących właściwości:
 
-      * `language`: Ciąg reprezentującą kod wykryty język.
+      * `language`: Ciąg reprezentujący kod wykryty język.
 
-      * `score`: Float wartość wskazująca pewność dotyczącą wyników. Wynik jest między zero a, oraz niskim wynikiem wskazuje niski zaufania.
+      * `score`: Wartość zmiennoprzecinkowa wskazująca pewność dotyczącą wyników. Wynik jest między zero a, oraz niskim wynikiem wskazuje niski zaufania.
 
     `detectedLanguage` Właściwość jest obecny w obiekcie wynikowym tylko, gdy automatyczne wykrywanie języka.
 
@@ -145,7 +145,7 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
     * `to`: Ciąg reprezentujący kod języka w języku docelowym.
 
-    * `text`: Ciąg, dzięki czemu przetłumaczonego tekstu.
+    * `text`: Ciąg, zapewniając przetłumaczonego tekstu.
 
     * `transliteration`: Obiekt, zapewniając zawierające przetłumaczony tekst w skrypcie, określony przez `toScript` parametru.
 
@@ -155,17 +155,17 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
     `transliteration` Obiektu nie jest dołączona, jeśli transliterację, nie odbywa się.
 
-    * `alignment`: Obiekt o jeden ciąg właściwość o nazwie `proj`, mapująca wprowadzanie tekstu do tłumaczenia. Informacje o wyrównania jest podawana tylko wtedy, gdy parametr żądania `includeAlignment` jest `true`. Wyrównanie jest zwracana jako wartość ciągu w następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela start końcowego indeksu, kreska oddziela językach i spacja oddziela słowa. O jeden wyraz może być dostosowanie zero, jeden lub wiele słów w innym języku, a wyrównany wyrażenie może być nieciągłe. Po udostępnieniu żadnych informacji wyrównanie elementu wyrównania jest pusta. Zobacz [uzyskać informacji o wyrównanie](#obtain-alignment-information) przykładem i ograniczenia.
+    * `alignment`: Obiekt z właściwością pojedynczego ciągu o nazwie `proj`, mapująca wprowadzanie tekstu do tłumaczenia. Informacje o wyrównania jest podawana tylko wtedy, gdy parametr żądania `includeAlignment` jest `true`. Wyrównanie jest zwracana jako wartość ciągu w następującym formacie: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Dwukropek oddziela start końcowego indeksu, kreska oddziela językach i spacja oddziela słowa. O jeden wyraz może być dostosowanie zero, jeden lub wiele słów w innym języku, a wyrównany wyrażenie może być nieciągłe. Po udostępnieniu żadnych informacji wyrównanie elementu wyrównania jest pusta. Zobacz [uzyskać informacji o wyrównanie](#obtain-alignment-information) przykładem i ograniczenia.
 
-    * `sentLen`: Obiekt zwracanie granice zdanie w tekstach wejściowych i wyjściowych.
+    * `sentLen`: Obiekt, który zwraca granice zdanie w tekstach wejściowe i wyjściowe.
 
       * `srcSentLen`: Tablicę liczb całkowitych reprezentujących długości zdań w tekście wejściowym. Długość tablicy jest liczba zdania, a wartości są długość każdego zdania.
 
-      * `transSentLen`: Tablicę liczb całkowitych reprezentujących długości zdań w przetłumaczonego tekstu. Długość tablicy jest liczba zdania, a wartości są długość każdego zdania.
+      * `transSentLen`:  Tablicę liczb całkowitych reprezentujących długości zdań w przetłumaczonego tekstu. Długość tablicy jest liczba zdania, a wartości są długość każdego zdania.
 
     Granice zdania są tylko włączone, gdy parametr żądania `includeSentenceLength` jest `true`.
 
-  * `sourceText`: Obiekt o jeden ciąg właściwość o nazwie `text`, co daje tekst wejściowy w skrypcie domyślnego języka źródłowego. `sourceText` Właściwość jest tylko wtedy, gdy dane wejściowe jest wyrażona w skrypcie, który nie jest zwykle skryptu języka. Na przykład, jeśli dane wejściowe zostały arabski napisana łacińskim, następnie `sourceText.text` zostanie ten sam tekst arabski konwertowany do Emiraty skryptu.
+  * `sourceText`: Obiekt z właściwością pojedynczego ciągu o nazwie `text`, co daje tekst wejściowy w skrypcie domyślnego języka źródłowego. `sourceText` Właściwość jest tylko wtedy, gdy dane wejściowe jest wyrażona w skrypcie, który nie jest zwykle skryptu języka. Na przykład, jeśli dane wejściowe zostały arabski napisana łacińskim, następnie `sourceText.text` zostanie ten sam tekst arabski konwertowany do Emiraty skryptu.
 
 Przykład odpowiedzi JSON znajdują się w [przykłady](#examples) sekcji.
 
@@ -175,7 +175,7 @@ Przykład odpowiedzi JSON znajdują się w [przykłady](#examples) sekcji.
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
     <tr>
-    <td>Identyfikator żądania X</td>
+    <td>X-RequestId</td>
     <td>Wartość generowane przez usługę w celu zidentyfikowania żądania. Jest on używany na potrzeby rozwiązywania problemów.</td>
   </tr>
   <tr>
@@ -231,7 +231,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
 
 Ten przykład przedstawia, jak przekształcać jednym zdaniu z angielskiego na język chiński uproszczony.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -257,7 +257,7 @@ Treść odpowiedzi jest:
 
 Ten przykład przedstawia, jak przekształcać jednym zdaniu z angielskiego na język chiński uproszczony. W żądaniu nie określono języka. Automatyczne wykrywanie języka źródłowego jest używana zamiast tego.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -283,7 +283,7 @@ Odpowiedź jest podobna do odpowiedzi z poprzedniego przykładu. Ponieważ zaż�
 
 Teraz można rozszerzyć poprzedni przykład, dodając transliterację. Następujące żądanie prosi o Tłumaczenie chińskie zapisywane w skrypcie alfabetu łacińskiego.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -314,7 +314,7 @@ Wynik tłumaczenia zawiera teraz `transliteration` właściwość, która zapewn
 
 Tłumaczenie jednocześnie wielu ciągów jest po prostu kwestią określania tablicę ciągów w treści żądania.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
@@ -343,7 +343,7 @@ Treść odpowiedzi jest:
 
 Ten przykład przedstawia, jak przekształcać to samo wejście do kilku języków w jednym żądaniu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -377,14 +377,14 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, niezależnie od obecności 
     <td>`NoAction`</td>
     <td>To zachowanie domyślne. Wulgaryzmów zostaną spełnione ze źródła do docelowego.<br/><br/>
     **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: jest on jackass.
+    **Przykład tłumaczenie (język angielski)**: Jest on jackass.
     </td>
   </tr>
   <tr>
     <td>`Deleted`</td>
     <td>Wyrazy obsceniczne zostaną usunięte z danych wyjściowych bez zastępowania.<br/><br/>
     **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: jest on.
+    **Przykład tłumaczenie (język angielski)**: Jest on.
     </td>
   </tr>
   <tr>
@@ -392,16 +392,16 @@ Jeśli chcesz uniknąć wulgaryzmów w tłumaczeniu, niezależnie od obecności 
     <td>Obsceniczne wyrazów są zastępowane przez znacznika w danych wyjściowych. Zależy od znacznika `ProfanityMarker` parametru.<br/><br/>
 Aby uzyskać `ProfanityMarker=Asterisk`, obsceniczne wyrazów są zastępowane `***`:<br/>
     **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: jest on \* \* \*.<br/><br/>
+    **Przykład tłumaczenie (język angielski)**: Jest on \* \* \*.<br/><br/>
 Aby uzyskać `ProfanityMarker=Tag`, obsceniczne wyrazy są ujęte w znaczników XML &lt;wulgaryzmów&gt; i &lt;/profanity&gt;:<br/>
     **Przykład źródłowej (japoński)**: 彼はジャッカスです。<br/>
-    **Przykład tłumaczenie (język angielski)**: jest on &lt;wulgaryzmów&gt;jackass&lt;/profanity&gt;.
+    **Przykład tłumaczenie (język angielski)**: Jest on &lt;wulgaryzmów&gt;jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 
 Na przykład:
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -423,7 +423,7 @@ Spowoduje to zwrócenie:
 
 Porównaj z:
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -454,7 +454,7 @@ Jest to często tłumaczone zawartość, która zawiera kod znaczników, np. zaw
 
 Oto przykładowe żądanie, aby zilustrować.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
@@ -478,7 +478,7 @@ Odpowiedź jest:
 
 Aby otrzymywać informacje wyrównanie, należy określić `includeAlignment=true` w ciągu zapytania.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -516,7 +516,7 @@ Należy zauważyć następujące ograniczenia:
 
 Aby otrzymywać informacje o długości zdanie w tekście źródłowym i przetłumaczonego tekstu, należy określić `includeSentenceLength=true` w ciągu zapytania.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"

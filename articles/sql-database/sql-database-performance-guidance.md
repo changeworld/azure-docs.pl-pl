@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: b2312534cdd63f5672f6b2294e3aef6b50be229a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: c4776d2c6f8ca2b23ba2df379b2682a6844f9a1b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600050"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461597"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ręczne dostosowywanie wydajności zapytań w usłudze Azure SQL Database
 
@@ -235,18 +235,18 @@ Jeśli obciążenie ma zbiór powtarzania zapytań, często dobrym pomysłem do 
 
 ### <a name="cross-database-sharding"></a>Dzielenie na fragmenty między bazami danych
 
-Ponieważ usługi Azure SQL Database działa na sprzęcie masowym, poziomów wydajności dla pojedynczej bazy danych są niższe niż w przypadku tradycyjnych lokalnych instalacji programu SQL Server. Niektórzy klienci Użyj dzielenia na fragmenty techniki, aby rozłożyć operacji bazy danych między wieloma bazami danych podczas operacji nie mieści się w granicach pojedynczej bazy danych w usłudze Azure SQL Database. Większość klienci, którzy używają techniki dzielenia na fragmenty w usłudze Azure SQL Database Podziel swoje dane w jednym wymiarze, w wielu bazach danych. W tym podejściu, musisz zrozumieć, że aplikacje OLTP często wykonywać transakcje, które dotyczą tylko jeden wiersz lub niewielkiej liczby wierszy w schemacie.
+Ponieważ usługi Azure SQL Database działa na sprzęcie masowym, limity pojemności poszczególnych baz danych są niższe niż w przypadku tradycyjnych lokalnych instalacji programu SQL Server. Niektórzy klienci Użyj dzielenia na fragmenty techniki, aby rozłożyć operacji bazy danych między wieloma bazami danych podczas operacji nie mieści się w granicach poszczególne bazy danych w usłudze Azure SQL Database. Większość klienci, którzy używają techniki dzielenia na fragmenty w usłudze Azure SQL Database Podziel swoje dane w jednym wymiarze, w wielu bazach danych. W tym podejściu, musisz zrozumieć, że aplikacje OLTP często wykonywać transakcje, które dotyczą tylko jeden wiersz lub niewielkiej liczby wierszy w schemacie.
 
 > [!NOTE]
 > SQL Database oferuje teraz biblioteki uzyskanymi dzielenia na fragmenty. Aby uzyskać więcej informacji, zobacz [Przegląd biblioteki klienckiej Elastic Database](sql-database-elastic-database-client-library.md).
 
-Na przykład jeśli baza danych ma nazwę klienta, kolejność i szczegóły zamówienia (np. przykład tradycyjne bazy danych Northwind dostarczany z programem SQL Server), można rozdzielić te dane do wielu baz danych za pomocą grupowania klientów dotyczące odpowiednich zamówień i szczegóły zamówienia informacje. Aby zagwarantować, że odbiorcy danych pozostaje w pojedynczej bazy danych. Aplikacja będzie podzielić różnych klientów w bazach danych, efektywnie rozłożenie obciążenia na wiele baz danych. Dzielenie na fragmenty klienci nie tylko można uniknąć limitu rozmiaru maksymalnego bazy danych, ale również usługi Azure SQL Database może przetwarzać obciążenia, które są znacznie większe niż limity różnych rozmiarów wystąpień obliczeniowych, tak długo, jak każdej pojedynczej bazy danych jest dopasowywana do jego jednostek DTU.
+Na przykład jeśli baza danych ma nazwę klienta, kolejność i szczegóły zamówienia (np. przykład tradycyjne bazy danych Northwind dostarczany z programem SQL Server), można rozdzielić te dane do wielu baz danych za pomocą grupowania klientów dotyczące odpowiednich zamówień i szczegóły zamówienia informacje. Aby zagwarantować, że odbiorcy danych pozostaje w poszczególnych baz danych. Aplikacja będzie podzielić różnych klientów w bazach danych, efektywnie rozłożenie obciążenia na wiele baz danych. Dzielenie na fragmenty klienci nie tylko można uniknąć limitu rozmiaru maksymalnego bazy danych, ale również usługi Azure SQL Database może przetwarzać obciążenia, które są znacznie większe niż limity różnych rozmiarów wystąpień obliczeniowych, tak długo, jak każdej pojedynczej bazy danych jest dopasowywana do jego jednostek DTU.
 
 Fragmentowanie bazy danych nie zmniejsza pojemność zagregowanych danych zasobu dla rozwiązania, ale jest bardzo skuteczne w obsłudze bardzo dużych rozwiązań, które są dystrybuowane między wieloma bazami danych. Każda baza danych można uruchomić w rozmiarze obliczeniowej do obsługi bardzo dużych "od" bazy danych o wysokich wymagań dotyczących zasobów.
 
 ### <a name="functional-partitioning"></a>Partycjonowanie funkcjonalne
 
-Użytkownicy programu SQL Server często łączyć wiele funkcji w jednej bazie danych. Na przykład jeśli aplikacja logiki można zarządzać zapasami magazynu, bazy danych może być logiki skojarzonej z spisu i śledzenie zamówień zakupu, procedury składowane i indeksowane lub zmaterializowanych widoków, które Zarządzanie raportowaniem koniec miesiąca. Ta technika sprawia, że łatwiej zarządzać bazą danych dla operacji takich jak backup, ale również wymaga rozmiaru sprzętu do obsługi szczytowego obciążenia na wszystkie funkcje aplikacji.
+Użytkownikom programu SQL Server jest często łączyć wiele funkcji w poszczególnych baz danych. Na przykład jeśli aplikacja logiki można zarządzać zapasami magazynu, bazy danych może być logiki skojarzonej z spisu i śledzenie zamówień zakupu, procedury składowane i indeksowane lub zmaterializowanych widoków, które Zarządzanie raportowaniem koniec miesiąca. Ta technika sprawia, że łatwiej zarządzać bazą danych dla operacji takich jak backup, ale również wymaga rozmiaru sprzętu do obsługi szczytowego obciążenia na wszystkie funkcje aplikacji.
 
 Jeśli używasz skalowalność architektury usługi Azure SQL Database, jest dobry pomysł, aby podzielić różne funkcje aplikacji w różnych bazach danych. Korzystając z tej techniki, każda aplikacja jest skalowana niezależnie. Jak aplikacja staje się zajęty i zwiększa obciążenie bazy danych, administrator może wybrać rozmiarów obliczeniowych niezależnie od dla poszczególnych funkcji w aplikacji. Osiągnęło limit, za pomocą tej architektury aplikacji może być większy niż może obsłużyć maszyny pojedynczego towaru, ponieważ obciążenie jest rozłożona się między wieloma maszynami.
 

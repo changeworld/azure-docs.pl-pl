@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: c5120cdb743e031c081f727c947752419db3a9d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081113"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211444"
 ---
 # <a name="r-developers-guide-to-azure"></a>Przewodnik dewelopera języka R na platformie Azure
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -114,7 +114,7 @@ Trzecia opcja jest użycie [rozproszonych danych inżynierów zestawu narzędzi 
 
 [Notesy platformy Azure](https://notebooks.azure.com) jest metodą niskie koszty, prostego, dla deweloperów języka R, którzy wolą Praca z notesami do Przenieś swój kod na platformę Azure.  Jest to bezpłatna usługa dla wszystkim użytkownikom tworzenie i uruchamianie kodu w ich przy użyciu przeglądarki [Jupyter](https://jupyter.org/), co jest projekt typu open source, łącząc prose języka znaczników markdown, kodu wykonywalnego i grafiki na jednym kanwę.
 
-Warstwy bezpłatna usługi notesów usługi Azure jest rentowną opcją projektów na małą skalę, ponieważ ogranicza każdego notesu procesu do 4GB pamięci i 1GB zestawów danych. Jeśli potrzebujesz mocy obliczeniowej i poza te ograniczenia, jednak można uruchamiać notesów w wystąpieniu maszyny wirtualnej do nauki o danych. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
+Warstwy bezpłatna usługi notesów usługi Azure jest rentowną opcją projektów na małą skalę, ponieważ ogranicza każdego notesu procesu do 4GB pamięci i 1GB zestawów danych. Jeśli potrzebujesz mocy obliczeniowej i poza te ograniczenia, jednak można uruchamiać notesów w wystąpieniu maszyny wirtualnej do nauki o danych. Aby uzyskać więcej informacji, zobacz [zarządzanie i konfigurować projekty notesy platformy Azure — warstwa wystąpień obliczeniowych](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 [Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/) to usługa bazy danych w inteligentną i w pełni zarządzana relacyjna chmury firmy Microsoft.  Umożliwia ona używać pełnych możliwości programu SQL Server bez żadnych trudności związanych ze skomplikowanymi konfigurowania infrastruktury.  Obejmuje to [usługi Machine Learning](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning?view=sql-server-2017), który jest nowsze dodatki do usługi SQL.

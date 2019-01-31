@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.component: common
-ms.openlocfilehash: a15c983291d35063884178f7b84e21fe4908b49a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: 095c592e53f44cb674994c440258bcca1bfa760c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632318"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467174"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -276,7 +276,7 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
 -   Jeśli używasz magazynu geograficznie nadmiarowego do odczytu, w dowolnym momencie za dostępne dane z regionu pomocniczego. Użyj jednej z następujących metod:  
       
-    - **Narzędzie AzCopy**: Dołącz **-dodatkowej** do nazwy konta magazynu w adresie URL, dostęp do pomocniczego punktu końcowego. Na przykład:  
+    - **AzCopy**: Dołącz **-dodatkowej** do nazwy konta magazynu w adresie URL, dostęp do pomocniczego punktu końcowego. Na przykład:  
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 

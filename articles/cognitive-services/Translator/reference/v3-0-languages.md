@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7489c4298abe91755a2bf9edd8335061ed42d6d2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129645"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470930"
 ---
-# <a name="translator-text-api-30-languages"></a>API 3.0 tekstu usługi Translator: języków
+# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
 Pobiera zestaw języki, które są obecnie obsługiwane przez inne operacje interfejsu API tłumaczenia tekstu. 
 
@@ -52,11 +52,11 @@ Nagłówki żądania są:
   <th>Opis</th>
   <tr>
     <td>Zaakceptuj języka</td>
-    <td>*Nagłówek żądania opcjonalne*.<br/>Język na potrzeby ciągi interfejsu użytkownika. Niektóre pola w odpowiedzi są nazwy języków lub nazw regionów. Użyj tego parametru, aby określić język, w której zwracane są te nazwy. Język jest określony, podając tag języka sformułowany BCP 47. Na przykład użyj wartości `fr` do żądania nazw w języku francuskim, lub użyj wartości `zh-Hant` do żądania nazw w chińskim tradycyjnym.<br/>Nazwy są dostarczane w języku angielskim, gdy język docelowy nie jest określony lub gdy lokalizacja jest niedostępna.
+    <td>*Nagłówek żądania opcjonalne*.<br/>Język ciągów interfejsu użytkownika. Niektóre pola w odpowiedzi są nazwy języków lub nazw regionów. Użyj tego parametru, aby określić język, w której zwracane są te nazwy. Język jest określony, podając tag języka sformułowany BCP 47. Na przykład użyj wartości `fr` do żądania nazw w języku francuskim, lub użyj wartości `zh-Hant` do żądania nazw w chińskim tradycyjnym.<br/>Nazwy są dostarczane w języku angielskim, gdy język docelowy nie jest określony lub gdy lokalizacja jest niedostępna.
     </td>
   </tr>
   <tr>
-    <td>X ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td>*Nagłówek żądania opcjonalne*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania.</td>
   </tr>
 </table> 
@@ -97,9 +97,9 @@ Wartość dla każdej właściwości jest w następujący sposób.
 
   Wartość `translation` właściwość jest słownikiem (klucz, wartość) pary. Każdy klucz jest tag języka BCP 47. Klucz identyfikuje język, dla którego tekst mogą być tłumaczone lub przetłumaczone z. Wartość skojarzoną z kluczem jest obiekt JSON z właściwościami, które opisują języka:
 
-  * `name`: Nazwa wyświetlana języka, w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
+  * `name`: Nazwa wyświetlana języka w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
 
-  * `nativeName`: Nazwa wyświetlana języka, w ustawieniach regionalnych natywne dla tego języka.
+  * `nativeName`: Nazwa wyświetlana języka w ustawieniach regionalnych natywne dla tego języka.
 
   * `dir`: Kierunek tekstu, który jest `rtl` w językach od prawej do lewej lub `ltr` w językach od lewej do prawej.
 
@@ -123,17 +123,17 @@ Wartość dla każdej właściwości jest w następujący sposób.
 
   Wartość `transliteration` właściwość jest słownikiem (klucz, wartość) pary. Każdy klucz jest tag języka BCP 47. Klucz identyfikuje język, dla którego można przekonwertować tekst z jednego skryptu do innego skryptu. Wartość skojarzoną z kluczem jest obiekt JSON z właściwościami, które opisują, języka i jego obsługiwanych skryptów:
 
-  * `name`: Nazwa wyświetlana języka, w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
+  * `name`: Nazwa wyświetlana języka w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
 
-  * `nativeName`: Nazwa wyświetlana języka, w ustawieniach regionalnych natywne dla tego języka.
+  * `nativeName`: Nazwa wyświetlana języka w ustawieniach regionalnych natywne dla tego języka.
 
   * `scripts`: Lista skryptów, aby przekonwertować. Każdy element obiektu `scripts` liście ma właściwości:
 
     * `code`: Kod identyfikujący skryptu.
 
-    * `name`: Nazwa wyświetlana skrypt w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
+    * `name`: Nazwa wyświetlana skryptu w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
 
-    * `nativeName`: Nazwa wyświetlana języka, w ustawieniach regionalnych natywne dla języka.
+    * `nativeName`: Wyświetlana nazwa języka w ustawieniach regionalnych natywne dla języka.
 
     * `dir`: Kierunek tekstu, który jest `rtl` w językach od prawej do lewej lub `ltr` w językach od lewej do prawej.
 
@@ -190,19 +190,19 @@ Wartość dla każdej właściwości jest w następujący sposób.
 
   * `name`: Nazwa wyświetlana języka źródłowego w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
 
-  * `nativeName`: Nazwa wyświetlana języka, w ustawieniach regionalnych natywne dla tego języka.
+  * `nativeName`: Nazwa wyświetlana języka w ustawieniach regionalnych natywne dla tego języka.
 
   * `dir`: Kierunek tekstu, który jest `rtl` w językach od prawej do lewej lub `ltr` w językach od lewej do prawej.
 
   * `translations`: Lista języków za pomocą alternatywny tłumaczenia i przykłady dla zapytania wyrażona w języku źródła. Każdy element obiektu `translations` liście ma właściwości:
 
-    * `name`: Nazwa wyświetlana język docelowy, w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
+    * `name`: Nazwa wyświetlana języka docelowego w ustawieniach regionalnych za pośrednictwem `Accept-Language` nagłówka.
 
-    * `nativeName`: Nazwa wyświetlana języka docelowego w ustawieniach regionalnych natywne dla języka docelowego.
+    * `nativeName`: Wyświetlana nazwa języka docelowego w ustawieniach regionalnych natywne dla języka docelowego.
 
     * `dir`: Kierunek tekstu, który jest `rtl` w językach od prawej do lewej lub `ltr` w językach od lewej do prawej.
     
-    * `code`: Kod języka identyfikowanie języka docelowego.
+    * `code`: Identyfikowanie język docelowy kodu języka.
 
   Przykładem jest:
 
@@ -237,7 +237,7 @@ Listę obsługiwanych języków nie zmieni się często. Aby oszczędzić przepu
     </td>
   </tr>
   <tr>
-    <td>Identyfikator żądania X</td>
+    <td>X-RequestId</td>
     <td>Wartość generowane przez usługę w celu zidentyfikowania żądania. Jest on używany na potrzeby rozwiązywania problemów.</td>
   </tr>
 </table> 
@@ -279,7 +279,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
 
 Poniższy przykład pokazuje, jak pobrać języki obsługiwane w przypadku tłumaczenie tekstu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

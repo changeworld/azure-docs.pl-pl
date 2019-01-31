@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: dbb8417975d051b4a13d6f94fca76fd3bf321a35
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6c340cde488ee37d2454468356f1ceee03f74844
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074247"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302108"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -151,7 +151,7 @@ Aby automatycznie wdrożyć to rozszerzenie przeglądarki Chrome, utwórz nastę
 |--- | ---|
 |Ścieżka | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 |Name (Nazwa) | 1 |
-|Typ | REG_SZ (ciąg) |
+|Type | REG_SZ (ciąg) |
 |Dane | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx
 
 Dla programu Chrome obsługi w programie **7 i Windows 8.1**, utwórz następujący klucz rejestru:
@@ -160,7 +160,7 @@ Dla programu Chrome obsługi w programie **7 i Windows 8.1**, utwórz następuj�
 |--- | ---|
 |Ścieżka | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 |Name (Nazwa) | 1 |
-|Typ | REG_SZ (ciąg) |
+|Type | REG_SZ (ciąg) |
 |Dane | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 Te przeglądarki obsługują uwierzytelnianie urządzeń, umożliwiając można zidentyfikowane i zweryfikować względem zasad. Sprawdzanie urządzenia kończy się niepowodzeniem, jeśli przeglądarka działa w trybie prywatnym. 
@@ -244,7 +244,7 @@ To ustawienie dotyczy następujących aplikacji klienta:
 
 - **Wymagaj zatwierdzonej aplikacji klienckiej** wymagania:
 
-    - Obsługuje tylko systemy iOS i Android, aby uzyskać [warunek platformy urządzenia](#device-platforms-condition).
+    - Obsługuje tylko systemy iOS i Android, aby uzyskać [warunek platformy urządzenia](#device-platform-condition).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

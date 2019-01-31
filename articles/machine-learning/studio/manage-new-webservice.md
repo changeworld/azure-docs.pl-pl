@@ -1,6 +1,6 @@
 ---
-Tytuł: Użyj titleSuffix portalu usług sieci Web programu Azure Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Użyj titleSuffix portalu usług sieci Web programu Azure Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 02/28/2017
 ---

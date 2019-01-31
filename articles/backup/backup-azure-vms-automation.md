@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: raynew
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0a18931c037a1cf34d8a296a6330264bc8d38af
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fa53a7e598b42e93e86eb059c36ff89f38bb7093
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424527"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300595"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych przy użyciu programu PowerShell
 
@@ -355,11 +355,17 @@ $restorejob
 #### <a name="restore-managed-disks"></a>Przywracanie dysków zarządzanych
 
 > [!NOTE]
-> Jeśli chcesz przywrócić je jako dyski zarządzane dyski zarządzane kopii maszyny Wirtualnej, firma Microsoft wprowadza możliwość z programu Azure PowerShell v 6.7.0. lub nowszy
+> Jeśli chcesz przywrócić je jako dyski zarządzane dyski zarządzane kopii maszyny Wirtualnej, firma Microsoft wprowadza możliwość z modułu usługi Azure RM PowerShell v 6.7.0. lub nowszy
 >
 >
 
-Zapewnia dodatkowy parametr **TargetResourceGroupName** do określenia grupą zasobów, do którego zostanie przywrócona dysków zarządzanych.
+Zapewnia dodatkowy parametr **TargetResourceGroupName** do określenia grupą zasobów, do którego zostanie przywrócona dysków zarządzanych. 
+
+> [!NOTE]
+> Zdecydowanie zaleca się używać **TargetResourceGroupName** parametr przywracanie dysków zarządzanych, ponieważ powoduje to znaczne ulepszenia wydajności. Ponadto z programu Azure Powershell Az modułu 1.0 lub nowszy, ten parametr jest obowiązkowy w przypadku przywracania z dyskami zarządzanymi
+>
+>
+
 
 ```powershell
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"

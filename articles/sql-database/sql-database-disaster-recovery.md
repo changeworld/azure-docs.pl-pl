@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 889f8f597b0b744ea5fe6ef2f5c82f2d09629607
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605215"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474789"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie bazy danych SQL Azure lub trybu failover do dodatkowej
 
 Usługa Azure SQL Database oferuje następujące możliwości odzyskiwania sprawności po awarii:
 
 - [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md)
-- [Automatyczny tryb failover grupy](sql-database-auto-failover-group.md)
+- [Grupy automatycznego trybu failover](sql-database-auto-failover-group.md)
 - [Funkcja przywracania geograficznego](sql-database-recovery-using-backups.md#point-in-time-restore)
 - [Strefowo nadmiarowe bazy danych](sql-database-high-availability.md)
 
@@ -37,7 +37,7 @@ Aby dowiedzieć się więcej na temat ciągłość działania — scenariusze i 
 
 Do poprawnego działania odzyskiwania do innego regionu danych przy użyciu grupy trybu failover lub geograficznie nadmiarowych kopii zapasowych, należy przygotować serwer w innym centrum danych awarię w stanie się nowym serwerem podstawowym należy wystąpić również mają dobrze zdefiniowane czynności opisanych i należy przetestować, aby zapewnić sprawne odzyskiwanie. Te kroki przygotowania obejmują:
 
-- Zidentyfikuj serwer logiczny w innym regionie, aby stać się nowym serwerem podstawowym. Dla przywracania geograficznego, zwykle jest to serwer w [sparowanym regionie](../best-practices-availability-paired-regions.md) dla regionu, w którym znajdują się bazy danych. Pozwala to wyeliminować koszty dodatkowy ruch podczas operacji przywracania geograficznego.
+- Określ serwer bazy danych SQL w innym regionie, aby stać się nowym serwerem podstawowym. Dla przywracania geograficznego, zwykle jest to serwer w [sparowanym regionie](../best-practices-availability-paired-regions.md) dla regionu, w którym znajdują się bazy danych. Pozwala to wyeliminować koszty dodatkowy ruch podczas operacji przywracania geograficznego.
 - Identyfikowanie i opcjonalnie zdefiniowanie, reguły zapory na poziomie serwera, potrzebne na użytkownikom dostęp do nowej podstawowej bazy danych.
 - Określ, jak chcesz przekierować użytkowników do nowym serwerem podstawowym, takie jak, zmieniając parametry połączenia lub zmieniając wpisy DNS.
 - Identyfikowanie i opcjonalnie utworzyć, dane logowania, które muszą znajdować się w bazie danych master w nowym serwerem podstawowym i upewnij się, że te logowania do odpowiednich uprawnień w bazie danych master, jeśli istnieje. Aby uzyskać więcej informacji, zobacz [zabezpieczeń bazy danych SQL Database po awarii](sql-database-geo-replication-security-config.md)

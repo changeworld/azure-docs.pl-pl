@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: f1376e98dc1a018bd6c0b263939cecbc012d4815
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250776"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462022"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -45,7 +45,7 @@ Reguły zapory IP udzielić dostępu do bazy danych na podstawie źródłowego a
 ## <a name="access-management"></a>Zarządzanie dostępem
 
 > [!IMPORTANT]
-> Zarządzanie bazami danych i serwerami logicznymi na platformie Azure jest kontrolowane przez przypisania do ról konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [kontroli dostępu opartej na rolach w witrynie Azure portal](../role-based-access-control/overview.md).
+> Zarządzanie bazami danych i serwery baz danych w obrębie platformy Azure jest kontrolowane przez przypisania ról konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [kontroli dostępu opartej na rolach w witrynie Azure portal](../role-based-access-control/overview.md).
 
 ### <a name="authentication"></a>Authentication
 
@@ -53,7 +53,7 @@ Uwierzytelnianie jest to proces potwierdzania użytkownika, który podaje. Usłu
 
 - **Uwierzytelnianie SQL**:
 
-    Uwierzytelnianie bazy danych SQL odwołuje się do uwierzytelniania użytkownika podczas łączenia się z [usługi Azure SQL Database](sql-database-technical-overview.md) przy użyciu nazwy użytkownika i hasła. Podczas tworzenia serwera logicznego bazy danych można określić identyfikatora logowania "Server admin" przy użyciu nazwy użytkownika i hasła. Przy użyciu tych poświadczeń, "server admin" może uwierzytelniać się do dowolnej bazy danych na tym serwerze logicznym jako właściciel bazy danych. Po tym dodatkowych kont logowania SQL i użytkownicy mogą być tworzone przez administratora serwera, które umożliwiają użytkownikom nawiązywanie połączeń za pomocą nazwy użytkownika i hasła.
+    Uwierzytelnianie bazy danych SQL odwołuje się do uwierzytelniania użytkownika podczas łączenia się z [usługi Azure SQL Database](sql-database-technical-overview.md) przy użyciu nazwy użytkownika i hasła. Podczas tworzenia serwera bazy danych dla bazy danych można określić identyfikatora logowania "Server admin" przy użyciu nazwy użytkownika i hasła. Przy użyciu tych poświadczeń, "server admin" może uwierzytelniać się do dowolnej bazy danych na tym serwerze bazy danych jako właściciel bazy danych. Po tym dodatkowych kont logowania SQL i użytkownicy mogą być tworzone przez administratora serwera, które umożliwiają użytkownikom nawiązywanie połączeń za pomocą nazwy użytkownika i hasła.
 
 - **Usługa Azure Active Directory Authentication**:
 
@@ -63,7 +63,8 @@ Uwierzytelnianie jest to proces potwierdzania użytkownika, który podaje. Usłu
 
     Dodatkowe są dostępne opcje uwierzytelniania usługi Azure AD [uniwersalne uwierzytelnianie usługi Active Directory dla programu SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) połączeń w tym [uwierzytelnianie wieloskładnikowe](../active-directory/authentication/concept-mfa-howitworks.md) i [ Dostęp warunkowy](sql-database-conditional-access.md).
 
-### <a name="authorization"></a>Autoryzacja
+> [!IMPORTANT]
+> Zarządzanie bazami danych i serwerów w ramach platformy Azure jest kontrolowane przez przypisania ról konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [kontroli dostępu opartej na rolach w witrynie Azure portal](../role-based-access-control/overview.md). Kontrola dostępu za pomocą reguł zapory jest *nie* dotyczą **wystąpienia zarządzanego Azure SQL Database**. Zobacz następujący artykuł w [połączenie do wystąpienia zarządzanego](sql-database-managed-instance-connect-app.md) uzyskać więcej informacji o konfiguracji sieci niezbędnej.
 
 Autoryzacja odwołuje się do uprawnienia przypisane do użytkownika w ramach usługi Azure SQL Database i określa, jakie użytkownik może wykonywać. Uprawnienia są kontrolowane przez dodawanie kont użytkowników do [ról bazy danych](/sql/relational-databases/security/authentication-access/database-level-roles) definiują uprawnienia na poziomie bazy danych lub przyznawanie użytkownikowi niektórych [uprawnienia na poziomie obiektu](/sql/relational-databases/security/permissions-database-engine). Aby uzyskać więcej informacji, zobacz [identyfikatory logowania i użytkowników](sql-database-manage-logins.md)
 
@@ -75,7 +76,7 @@ Zabezpieczenia na poziomie wiersza umożliwiają klientom kontrolowanie dostępu
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
-### <a name="permissions"></a>Uprawnienia
+  Ta metoda uwierzytelniania używa nazwy użytkownika i hasła. 
 
 Aby uzyskać omówienie uprawnień w usłudze Azure SQL Database, zobacz [identyfikatory logowania i użytkowników](sql-database-manage-logins.md#permissions)
 

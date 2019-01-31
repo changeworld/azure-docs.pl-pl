@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: d2182942b8d1ce78fd4a72ff387c7a6a1cfead5a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.subservice: common
+ms.openlocfilehash: ca1012e0f1b0b7a9e0d8bd88d94876c20d22dec5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975088"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473786"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Przewodnik po zabezpieczeniach usługi Azure Data Lake Storage Gen2
 
@@ -79,7 +79,7 @@ Poniżej przedstawiono główne punkty, które musisz wiedzieć o otwieranie ope
 * [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   W tym artykule objaśniono funkcję kontroli dostępu opartej na rolach w usłudze Azure Active Directory i sposób jej działania.
-* [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../../role-based-access-control/built-in-roles.md)
+* [RBAC: Wbudowane role](../../role-based-access-control/built-in-roles.md)
 
   Ten artykuł szczegółowo wszystkie wbudowane Role dostępne w RBAC.
 * [Omówienie wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../../azure-resource-manager/resource-manager-deployment-model.md)
@@ -225,7 +225,7 @@ Aby uzyskać szczegółowe informacje na temat używania sygnatur dostępu wspó
 * Są to samouczki dotyczące tworzenia sygnatury dostępu współdzielonego i przechowywanych zasad dostępu za pomocą biblioteki klienckiej .NET.
 
   * [Używanie sygnatur dostępu współdzielonego (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
-  * [Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą usługi Blob Service](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+  * [Udostępnione sygnatur dostępu, część 2: Tworzenie i używanie sygnatury dostępu Współdzielonego z usługi Blob Service](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     Ten artykuł zawiera opis modelu sygnatur dostępu Współdzielonego, przykłady sygnatur dostępu współdzielonego i zalecenia dotyczące najlepszych praktyk korzystanie z sygnatury dostępu Współdzielonego. Omówiono również jest cofnięcie przyznanie uprawnienia.
 

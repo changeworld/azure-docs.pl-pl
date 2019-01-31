@@ -1,5 +1,5 @@
 ---
-Tytuł: Wdróż obszar roboczy Studio za pomocą usługi Azure Resource Manager titleSuffix: Opis usługi Azure Machine Learning Studio: Jak wdrożyć obszaru roboczego dla usługi Azure Machine Learning, za pomocą usługi Azure Resource Manager szablon usługi: ms.service uczenia maszynowego: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Wdróż obszar roboczy Studio za pomocą usługi Azure Resource Manager titleSuffix: Opis usługi Azure Machine Learning Studio: Jak wdrożyć obszaru roboczego dla usługi Azure Machine Learning, za pomocą usługi Azure Resource Manager szablon usługi: ms.service uczenia maszynowego: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/05/2018
 ---

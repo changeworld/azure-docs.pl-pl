@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: 95a9f3d553bb3d8ca07ed90578861f6267058532
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463749"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472787"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -228,7 +228,7 @@ Nieudokumentowany instrukcji DBCC, które są włączone w programie SQL Server 
 
 ### <a name="distributed-transactions"></a>Transakcje rozproszone
 
-Żadna usługa MSDTC ani [transakcje elastyczne](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) są obecnie obsługiwane w wystąpieniu zarządzanym.
+Żadna usługa MSDTC ani [transakcje elastyczne](sql-database-elastic-transactions-overview.md) są obecnie obsługiwane w wystąpieniu zarządzanym.
 
 ### <a name="extended-events"></a>Rozszerzone zdarzenia
 
@@ -279,8 +279,8 @@ Operacje
 - Utworzone nazw logowania SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, i `FROM SID` są obsługiwane. Zobacz [logowania Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Usługa Azure Active Directory (AAD) logowania do utworzonych za pomocą [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) składni lub [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) składni są obsługiwane (**publicznej wersji zapoznawczej**).
 - Logowania Windows utworzonych za pomocą `CREATE LOGIN ... FROM WINDOWS` składni nie są obsługiwane. Za pomocą usługi Azure Active Directory, logowania i użytkowników.
-- Azure użytkownik usługi Active Directory (Azure AD), który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
-- Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)
+- Azure użytkownik usługi Active Directory (Azure AD), który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](sql-database-manage-logins.md#non-administrator-users)
 
 ### <a name="polybase"></a>Program Polybase
 
@@ -367,23 +367,23 @@ Broker usług dla wielu wystąpień nie jest obsługiwana:
   - Kroki w zadaniu języka T-SQL są obsługiwane.
   - Obsługiwane są następujące zadania replikacji:
     - Czytnik dziennika transakcji.  
-    - Migawki.
+    - Migawka.
     - Dystrybutor
   - Kroki zadania SSIS są obsługiwane.
-  - Inne rodzaje kroków zadania nie są obecnie obsługiwane, w tym:
-    - Krok zadania replikacji scalającej nie jest obsługiwane.  
-    - Czytnik kolejki nie jest obsługiwane.  
+  - Inne typy kroków zadania nie są obecnie obsługiwane, w tym:
+    - Krok zadania replikacji scalającej nie jest obsługiwany.  
+    - Czytnik danych kolejki nie jest obsługiwany.  
     - Powłoka poleceń nie jest jeszcze obsługiwana.
   - Wystąpienia zarządzanego nie można uzyskać dostępu zewnętrznych zasobów (np. udziały sieciowe za pośrednictwem robocopy).  
   - Program PowerShell nie jest jeszcze obsługiwana.
   - Usługi Analysis Services nie są obsługiwane.
-- Powiadomienia są obsługiwane częściowo
+- Powiadomienia są obsługiwane częściowo.
 - Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile` w publicznej wersji zapoznawczej (tymczasowe ograniczenie).  
-  - Pagera nie jest obsługiwane.  
-  - NetSend nie jest obsługiwane.
+  - Pager nie jest obsługiwany.  
+  - Polecenie NetSend nie jest obsługiwane.
   - Alerty nie są jeszcze nie obsługiwane.
   - Serwery proxy nie są obsługiwane.  
-- Dziennik zdarzeń nie jest obsługiwane.
+- Dziennik zdarzeń nie jest obsługiwany.
 
 Następujące funkcje nie są obecnie obsługiwane, ale zostaną włączone w przyszłości:
 
@@ -392,7 +392,7 @@ Następujące funkcje nie są obecnie obsługiwane, ale zostaną włączone w pr
 - Włączanie/wyłączanie agenta
 - Alerty
 
-Aby uzyskać informacji na temat programu SQL Server Agent, zobacz [programu SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+Aby uzyskać informacje na temat agenta programu SQL Server, zobacz [SQL Server Agent (Agent programu SQL Server)](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
 ### <a name="tables"></a>Tabele
 

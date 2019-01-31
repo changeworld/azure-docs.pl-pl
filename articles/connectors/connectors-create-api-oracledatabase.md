@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 78ac8f83bceef88e89edefa0eececb058e8efe2b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230237"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295362"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Rozpoczynanie pracy z łącznikiem usługi bazy danych Oracle
 
@@ -95,27 +95,27 @@ W tym artykule przedstawiono sposób korzystania z łącznika bazy danych Oracle
 
 ## <a name="common-errors"></a>Typowe błędy
 
-#### <a name="error-cannot-reach-the-gateway"></a>**Błąd**: nie można uzyskać dostępu do bramy
+#### <a name="error-cannot-reach-the-gateway"></a>**Błąd**: Nie można uzyskać dostępu do bramy
 
-**Przyczyna**: lokalna brama danych nie jest w stanie połączyć się z chmury. 
+**Przyczyna**: Lokalna brama danych nie jest w stanie połączyć się z chmury. 
 
 **Środki zaradcze**: Upewnij się, że brama jest uruchomiona na maszynie lokalnej, na którym został zainstalowany, a może nawiązać połączenie z Internetem.  Firma Microsoft zaleca nie instalowania bramy na komputerze, który może zostać wyłączony lub uśpiony. Można również uruchomić ponownie usługę bramy danych (PBIEgwService) w środowisku lokalnym.
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Błąd**: używany dostawca jest przestarzały: "element System.Data.OracleClient wymaga oprogramowania Oracle w wersji oprogramowania 8.1.7 lub nowszej.". Zobacz [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) zainstalować oficjalnego dostawcę.
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**Błąd**: Używany dostawca jest przestarzały: "Element System.Data.OracleClient wymaga oprogramowania Oracle w wersji oprogramowania 8.1.7 lub nowszej.". Zobacz [ https://go.microsoft.com/fwlink/p/?LinkID=272376 ](https://go.microsoft.com/fwlink/p/?LinkID=272376) zainstalować oficjalnego dostawcę.
 
-**Przyczyna**: zestaw SDK nie jest zainstalowany na komputerze, na którym uruchomiony jest lokalna brama danych wersję klienta Oracle.  
+**Przyczyna**: Nie zainstalowano zestawu SDK klienta Oracle na maszynie, na którym jest uruchomiona brama danych lokalnych.  
 
-**Rozpoznawanie**: Pobierz i zainstaluj zestaw SDK klienta Oracle na tym samym komputerze co lokalna brama danych.
+**Rozwiązanie**: Pobierz i zainstaluj zestaw SDK klienta Oracle na tym samym komputerze co lokalna brama danych.
 
 #### <a name="error-table-tablename-does-not-define-any-key-columns"></a>**Błąd**: Tabela "[Tablename]" nie definiuje żadnych kolumn kluczy
 
-**Przyczyna**: tabela nie ma żadnego klucza podstawowego.  
+**Przyczyna**: Tabela nie ma żadnego klucza podstawowego.  
 
-**Rozpoznawanie**: łącznik bazy danych programu Oracle wymaga wykorzystania tabelę z kolumną kluczy podstawowych.
+**Rozwiązanie**: Łącznik bazy danych programu Oracle wymaga służyć tabelę z kolumną kluczy podstawowych.
 
 #### <a name="currently-not-supported"></a>Obecnie nieobsługiwane
 
-* Widoki i procedury składowane 
+* Widoki 
 * Każda tabela za pomocą kluczy złożonych
 * Zagnieżdżone typy obiektów w tabelach
  

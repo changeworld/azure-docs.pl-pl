@@ -11,24 +11,28 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
-ms.date: 08/27/2018
-ms.openlocfilehash: b3bdcc81776067f279c1f95458a0a79a8824f51c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: dbc3b7e2e013dc53a1e2524c44bd2229a6a1b18d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603053"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462974"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Wprowadzenie do narzędzi elastycznej bazy danych
+
 Ten dokument stanowi wprowadzenie do środowiska dewelopera w systemie [Biblioteka kliencka elastic database](sql-database-elastic-database-client-library.md) , ułatwiając uruchamianie przykładowej aplikacji. Przykładowa aplikacja tworzy prostą podzieloną aplikację i analizuje kluczowe możliwości funkcji elastyczne narzędzia graficzne bazy danych Azure SQL Database. Koncentruje się ona na przypadki użycia [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md), [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md), i [zapytań z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md). Biblioteka klienta jest dostępna dla platformy .NET, a także języka Java. 
 
 ## <a name="elastic-database-tools-for-java"></a>Narzędzia elastycznych baz danych dla języka Java
+
 ### <a name="prerequisites"></a>Wymagania wstępne
+
 * Java Developer Kit (JDK), wersja 1.8 lub nowszego
 * [Maven](http://maven.apache.org/download.cgi)
-* Serwer logiczny, na platformie Azure lub lokalnego wystąpienia programu SQL Server
+* Serwer bazy danych SQL na platformie Azure lub lokalnego wystąpienia programu SQL Server
 
 ### <a name="download-and-run-the-sample-app"></a>Pobieranie i uruchamianie przykładowej aplikacji
+
 Aby utworzyć pliki JAR i rozpocząć pracę z projektem przykładowym, wykonaj następujące czynności: 
 1. Klonuj [repozytorium GitHub](https://github.com/Microsoft/elastic-db-tools-for-java) zawierający biblioteki klienckiej, wraz z przykładowej aplikacji. 
 
@@ -65,12 +69,15 @@ Aby dodać biblioteki klienckiej Projekt narzędzia Maven, dodaj następującą 
 </dependency> 
 ```
 
-## <a name="elastic-database-tools-for-net"></a>Narzędzia elastycznych baz danych dla platformy .NET 
+## <a name="elastic-database-tools-for-net"></a>Narzędzia elastycznych baz danych dla platformy .NET
+
 ### <a name="prerequisites"></a>Wymagania wstępne
+
 * Program Visual Studio 2012 lub nowszym za pomocą języka C#. Pobierz bezpłatną wersję na [pobieranie Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 * NuGet 2.7 lub nowszego. Aby uzyskać najnowszą wersję, zobacz [Instalowanie systemu NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).
 
 ### <a name="download-and-run-the-sample-app"></a>Pobieranie i uruchamianie przykładowej aplikacji
+
 Aby zainstalować bibliotekę, przejdź do [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Biblioteka jest instalowany z przykładowej aplikacji, opisanej w poniższej sekcji.
 
 Aby pobrać i uruchomić przykład, wykonaj następujące kroki: 
@@ -91,10 +98,9 @@ Gratulacje! Pomyślnie skompilowane i uruchamianie pierwszej aplikacji podzielon
 
 > [!IMPORTANT]
 > Firma Microsoft zaleca, zawsze używaj najnowszej wersji programu Management Studio, aby to zapewnić synchronizację z aktualizacjami platformy Azure i usługi SQL Database. [Zaktualizuj program SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
-> 
-> 
 
 ## <a name="key-pieces-of-the-code-sample"></a>Kluczowych przykładowy kod
+
 * **Zarządzanie fragmentami i fragmentów mapowania**: Kod ilustruje sposób pracy z fragmentów, zakresy i mapowania w *ShardManagementUtils.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).  
 
 * **Routing zależny od danych**: Routing transakcji do prawego fragmentu jest wyświetlany w *DataDependentRoutingSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [routingu zależnego od danych](https://go.microsoft.com/?linkid=9862596). 
@@ -104,11 +110,13 @@ Gratulacje! Pomyślnie skompilowane i uruchamianie pierwszej aplikacji podzielon
 * **Dodawanie pustego fragmentów**: Iteracyjne Dodawanie nowych fragmentów pusty odbywa się przez kod w *CreateShardSample.cs* pliku. Aby uzyskać więcej informacji, zobacz [skalowania w poziomie bazy danych z Menedżera map fragmentów](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Inne operacje elastycznego skalowania
+
 * **Podział istniejących fragmentu**: Możliwość podziału fragmentów są udostępniane przez narzędzie do dzielenia i scalania. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md).
 
 * **Scalanie istniejącego fragmentów**: Scalenia fragmentów są również wykonywane przy użyciu narzędzia do dzielenia i scalania. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między bazami danych w chmurze skalowanych w poziomie](sql-database-elastic-scale-overview-split-and-merge.md).   
 
 ## <a name="cost"></a>Koszty
+
 Biblioteka narzędzi elastycznej bazy danych jest bezpłatna. Korzystając z narzędzi elastycznych baz danych, ponosisz żadnych dodatkowych opłat za poza koszty użycia platformy Azure. 
 
 Na przykład przykładowa aplikacja tworzy nowe bazy danych. Koszt tej funkcji zależy od wybranej wersji bazy danych SQL Database i Azure użycia aplikacji.
@@ -116,6 +124,7 @@ Na przykład przykładowa aplikacja tworzy nowe bazy danych. Koszt tej funkcji z
 Aby uzyskać informacje o cenach, zobacz [szczegóły cennika usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby uzyskać więcej informacji na temat narzędzia elastycznych baz danych zobacz następujące artykuły:
 
 * Przykłady kodu: 
@@ -123,7 +132,7 @@ Aby uzyskać więcej informacji na temat narzędzia elastycznych baz danych zoba
   * [Narzędzia elastycznych baz danych dla usług SQL Azure - Entity Framework integracji](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Skrypty dotyczące elastyczności w Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [Elastyczne skalowanie anonsu](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
-* Witryna Channel 9: [Elastyczne skalowanie — omówienie wideo](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Channel 9: [Elastyczne skalowanie — omówienie wideo](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Forum dyskusyjne: [Forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * Aby zmierzyć wydajność: [Liczniki wydajności dla menedżera map fragmentów](sql-database-elastic-database-client-library.md)
 

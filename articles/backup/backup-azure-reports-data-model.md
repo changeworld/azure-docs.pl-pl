@@ -2,19 +2,18 @@
 title: Model danych do usługi Azure Backup
 description: Ten artykuł zawiera informacje o szczegóły modelu danych usługi Power BI dla raportów usługi Azure Backup.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c6160570644da108ba713e8229b38f9587495c92
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877137"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299422"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Model danych dla raportów usługi Azure Backup
 W tym artykule opisano model danych usługi Power BI, używany do tworzenia raportów usługi Azure Backup. Przy użyciu tego modelu danych, można filtrować istniejące raporty na podstawie odpowiednich pól i więcej co ważniejsze, tworzyć własne raporty za pomocą tabel i pól w modelu. 
@@ -31,8 +30,8 @@ Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól p
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |Liczba całkowita |Liczba alertów utworzone w wybranym okresie |
-| % ActiveAlertsCreatedInPeriod |Procentowe |Odsetek aktywnych alertów w wybranym okresie |
-| % CriticalAlertsCreatedInPeriod |Procentowe |Wartość procentowa alerty krytyczne w wybranym okresie |
+| %ActiveAlertsCreatedInPeriod |Procentowe |Odsetek aktywnych alertów w wybranym okresie |
+| %CriticalAlertsCreatedInPeriod |Procentowe |Wartość procentowa alerty krytyczne w wybranym okresie |
 | AlertOccurrenceDate |Date |Data utworzenia alertu |
 | AlertSeverity |Tekst |Ważność alertu, na przykład, krytyczny |
 | AlertStatus |Tekst |Stan alertu, na przykład aktywny |
@@ -83,7 +82,7 @@ Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól z
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Liczba całkowita |Liczba zadań utworzonych w wybranym okresie |
-| % FailuresForJobsCreatedInPeriod |Procentowe |Procent ogólnej zadaniami w wybranym okresie |
+| %FailuresForJobsCreatedInPeriod |Procentowe |Procent ogólnej zadaniami w wybranym okresie |
 | 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Liczba dziesiętna |80. wartość percentylu danych przesyłanych w Megabajtach **kopii zapasowej** zadań utworzonych w wybranym okresie |
 | AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Liczba dziesiętna |Średni czas w minutach, aby **Zakończono tworzenie kopii zapasowej** zadań utworzonych w wybranym okresie |
@@ -178,7 +177,7 @@ Ta tabela zawiera podstawowe pól i agregacji za pośrednictwem różnych pól p
 
 | Pole | Typ danych | Opis |
 | --- | --- | --- |
-| #Vaults |Liczba całkowita |Liczby magazynów |
+| #Vaults |Liczba całkowita |Liczba magazynów |
 | AsOnDateTime |Data/godzina |Ostatni czas odświeżania dla wybranego wiersza |
 | AzureDataCenter |Tekst |Centrum danych, w którym znajduje się magazyn |
 | EntityState |Tekst |Bieżący stan obiektu magazynu, na przykład, aktywne, usunięte |

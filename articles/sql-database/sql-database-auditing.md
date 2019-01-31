@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 598d2b86e7aeeac9525f37b1ab9422d854e75392
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 0c79554d2db4c1dc17cfbdeed052c1ae16cd68c2
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034033"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297688"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -154,7 +154,7 @@ Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage
 
     4. Scalono plik zostanie otwarty w programie SSMS, gdzie możesz można wyświetlać i analizować je, a także go wyeksportować w pliku XEL lub CSV lub tabeli.
 
-- Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Aby uzyskać więcej informacji i uzyskać dostęp do pobrania szablonu, zobacz [Analyzie dane z dziennika inspekcji w usłudze Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+- Usługa Power BI. Można wyświetlać i analizować dane dzienników inspekcji w usłudze Power BI. Aby uzyskać więcej informacji i uzyskać dostęp do pobrania szablonu, zobacz [Analizuj dane z dziennika inspekcji w usłudze Power BI](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 - Pobierz pliki dziennika z kontenera obiektów blob usługi Azure Storage za pośrednictwem portalu lub przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/).
   - Po pobraniu pliku dziennika, który jest lokalnie, kliknij dwukrotnie plik, Otwórz, wyświetlać i analizować dzienniki w programie SSMS.
   - Można również pobrać wielu plików jednocześnie, za pomocą Eksploratora usługi Azure Storage. Aby to zrobić, kliknij prawym przyciskiem myszy określony podfolder, a następnie wybierz **Zapisz jako** można zapisać w folderze lokalnym.

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: 18e8b7699a388dabbf0e4f5cff7d4fb927e549c2
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: daf75987a49d2ce90a436fdfcff1a85d2fc0ca21
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853820"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300408"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migracja Contoso: Ocena obciążeń lokalnych pod kątem migracji do platformy Azure
 
@@ -121,7 +121,7 @@ Contoso i inni użytkownicy muszą spełniać następujące wymagania wstępne d
 - Wystąpienie serwera vCenter lokalnej wersji 6.5, 6.0 lub 5.5.
 - Konto tylko do odczytu w programie vCenter Server lub uprawnienia, aby go utworzyć.
 - Uprawnienia do tworzenia maszyny Wirtualnej w wystąpieniu programu vCenter Server przy użyciu szablonu .ova.
-- Co najmniej jeden host ESXi w wersji 5.0 lub nowszy.
+- Co najmniej jeden host ESXi w wersji 5.5 lub nowszej.
 - Co najmniej dwie lokalne maszyny wirtualne VMware, w tym jedna z uruchomioną bazą danych programu SQL Server.
 - Uprawnienia do instalowania agentów usługi Azure Migrate na każdej maszynie Wirtualnej.
 - Maszyny wirtualne powinny mieć bezpośrednie połączenie z Internetem.  
@@ -287,13 +287,7 @@ Przed wdrożeniem maszyny Wirtualnej, Contoso sprawdza, czy plik OVA bezpieczneg
     **Przykład**
 
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Wygenerowany skrót powinien odpowiadać następującym ustawieniom (wersja 1.0.9.15):
-
-    **Algorytm** | **Wartość skrótu**
-    --- | ---
-    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+3. Wygenerowany skrót powinien odpowiadać wartości skrótów na liście [tutaj](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#continuous-discovery).
 
 ### <a name="create-the-collector-appliance"></a>Tworzenie urządzenia modułu zbierającego
 

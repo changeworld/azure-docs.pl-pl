@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 05c237eb071b48f2373ecfd78eeab6f7bceb8c5c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 01/25/2019
+ms.openlocfilehash: 4c8e93948532da02c64eb9eb1277abb425abc250
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584166"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455760"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane
 
@@ -34,9 +34,9 @@ Zobacz szczegółowe informacje na jak rozliczane są klientów korporacyjnych i
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Rozmiar jest określany na prawo SQL przed dokonaniem zakupu
 
-Rozmiar rezerwacji powinna być oparta na całkowitej ilości zasobów obliczeniowych, używane przez istniejące lub wkrótce do--wdrażanych SQL pojedynczy baz danych i/lub pul elastycznych w określonym regionie i przy użyciu tej samej generacji sprzętu i warstwy wydajności. 
+Rozmiar rezerwacji powinna być oparta na łącznej ilości użytych przez jedną istniejącą lub wkrótce do--wdrażanych zasobów obliczeniowych baz danych i/lub pul elastycznych w określonym regionie i przy użyciu tej samej generacji sprzętu i warstwy wydajności. 
 
-Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generacji — 16 rdzeniach wirtualnych elastycznej puli oraz dwóch krytyczne dla działania, 5. generacji — 4 pojedynczych baz danych (rdzeń wirtualny). Dodatkowo załóżmy powinien planujesz wdrożenie w ramach następnego miesiąca, dodatkowe ogólnego przeznaczenia, 5. generacji — 16 rdzeniach wirtualnych elastycznej puli i jedną krytyczne dla działania, 5. generacji — 32 puli elastycznej (rdzeń wirtualny). Ponadto Załóżmy, że wiesz, że te zasoby będą potrzebne do co najmniej 1 rok. W takim przypadku należy kupić 32 rdzenie wirtualne (2 x 16 pikseli), 1 rok Rezerwacja SQL bazy danych jedną/elastycznej puli ogólnego przeznaczenia — obliczenia 5. generacji i 40 (2 x 4 + 32) rdzeń wirtualny 1 rok Rezerwacja SQL bazy danych jedną/elastycznej puli krytyczne dla działania firmy — obliczenia 5. generacji.
+Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generacji — 16 rdzeniach wirtualnych elastycznej puli oraz dwóch krytyczne dla działania, 5. generacji — 4 pojedynczych baz danych (rdzeń wirtualny). Dodatkowo załóżmy powinien planujesz wdrożenie w ramach następnego miesiąca, dodatkowe ogólnego przeznaczenia, 5. generacji — 16 rdzeniach wirtualnych elastycznej puli i jedną krytyczne dla działania, 5. generacji — 32 puli elastycznej (rdzeń wirtualny). Ponadto Załóżmy, że wiesz, że te zasoby będą potrzebne do co najmniej 1 rok. W takim przypadku należy kupić 32 rdzenie wirtualne (2 x 16 pikseli), 1 rok rezerwacji dla bazy danych SQL autonomicznego/elastycznej puli ogólnego przeznaczenia — obliczenia 5. generacji i 40 (2 x 4 + 32) rdzeń wirtualny rezerwację 1 rok dla autonomicznej bazy danych SQL elastyczna baza danych w puli krytyczne dla działania firmy — obliczenia 5. generacji.
 
 ## <a name="buy-sql-database-reserved-capacity"></a>Kup pojemność zastrzeżone bazy danych SQL
 
@@ -50,7 +50,7 @@ Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generac
     | Pole      | Opis|
     |:------------|:--------------|
     |Name (Nazwa)        |Nazwa tego zastrzeżenia.| 
-    |Subskrypcja|Subskrypcja użytej do zapłacenia za rezerwację pojemności bazy danych SQL zastrzeżone. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji wydajności bazy danych SQL zastrzeżone. Wymagany typ subskrypcji to Enterprise Agreement (numer oferty MS-AZR-0017P) lub Płatność zgodnie z rzeczywistym użyciem (numer oferty MS-AZR-0003P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|    
+    |Subskrypcja|Subskrypcja użytej do zapłacenia za rezerwację pojemności bazy danych SQL zastrzeżone. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji wydajności bazy danych SQL zastrzeżone. Typ subskrypcji musi być umowy enterprise agreement (numer oferty: MS-AZR-0017P) lub płatność za rzeczywiste użycie (numer oferty: MS-AZR-0003P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|    
     |Zakres       |Zakres rezerwacji pamięci rdzeń wirtualny może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Subskrypcja pojedyncza — rabat związany z rezerwacją pamięci rdzeń wirtualny jest stosowany do wystąpienia bazy danych SQL w ramach tej subskrypcji. </li><li>Czy rabat związany z rezerwacją pamięci rdzeń wirtualny w warstwie współdzielona — są stosowane do wystąpień bazy danych SQL w ramach dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje (z wyjątkiem tworzenia i testowania subskrypcje) w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.</li></ul>|
     |Region      |Region platformy Azure, który pasuje do żadnego z bazą danych SQL zastrzeżone rezerwacji wydajności.|    
     |Typ wdrożenia|Typ zasobu SQL, który chcesz kupić rezerwację dla.|

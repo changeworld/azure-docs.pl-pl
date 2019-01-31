@@ -2,18 +2,18 @@
 title: Tworzenie kopii zapasowej plików w usłudze Azure Stack maszyn wirtualnych
 description: Usługa Azure Backup umożliwia tworzenie kopii zapasowej i odzyskiwanie plików usługi Azure Stack i aplikacji do środowiska usługi Azure Stack.
 services: backup
-author: adiganmsft
+author: adigan
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 67d79f2aa41bab8a14d693098538d22ffeb05a4e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579208"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301479"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Tworzenie kopii zapasowej plików w usłudze Azure Stack
 Usługi Azure Backup umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji w usłudze Azure Stack. Aby utworzyć kopię zapasową plików i aplikacji, zainstaluj serwer usługi Microsoft Azure Backup jako maszynę wirtualną działającą w usłudze Azure Stack. Można chronić pliki na każdym serwerze usługi Azure Stack w tej samej sieci wirtualnej. Po zainstalowaniu serwera usługi Azure Backup, Dodaj dysków platformy Azure w celu zwiększenia magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Usługa Azure Backup Server używa usługi Azure storage do długoterminowego przechowywania danych.
@@ -55,7 +55,7 @@ Aby skonfigurować usługi Azure Backup Server, aby chronić pliki na maszynach 
 
     ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Aby wybrać **chcę uzyskać ochronę online**, musisz najpierw wybrać **chcę krótkoterminową ochronę za pomocą:** dysku. Usługa Azure Backup Server nie ochrona na taśmie, dysk jest tylko opcja w przypadku ochrony krótkoterminowej.
+    Aby wybrać **chcę uzyskać ochronę online**, musisz najpierw wybrać **chcę krótkoterminową ochronę za pomocą:** Dysk. Usługa Azure Backup Server nie ochrona na taśmie, dysk jest tylko opcja w przypadku ochrony krótkoterminowej.
 
 5. W **Określ cele krótkoterminowe** ekranu, czas przechowywania punktów odzyskiwania, zapisane na dysku i kiedy należy zapisywać przyrostowe kopie zapasowe. Kliknij przycisk **Dalej**.
 

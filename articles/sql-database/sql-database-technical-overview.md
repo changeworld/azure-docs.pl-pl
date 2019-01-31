@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: e0a3f5239e9d0f16312894dee598c0fc490f1e73
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6b4bc5a75f49287ad0425a7fe94f099204b73e44
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53270012"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469553"
 ---
 # <a name="the-azure-sql-database-service"></a>Usługa Azure SQL Database
 
@@ -26,8 +26,8 @@ Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego
 
 Usługa Azure SQL Database udostępnia następujące opcje wdrażania na potrzeby bazy danych SQL platformy Azure:
 
-- Jako pojedyncza baza danych z własnym zestawem zasobów zarządzanych za pośrednictwem serwera logicznego
-- Jako baza danych w [elastycznej puli](sql-database-elastic-pool.md) ze współdzielonym zestawem zasobów zarządzanych za pośrednictwem serwera logicznego
+- Jako pojedynczą bazę danych za pomocą swój własny zestaw zasobów zarządzanych za pomocą serwera usługi SQL Database
+- Jako bazy danych w puli w [puli elastycznej](sql-database-elastic-pool.md) z współdzielonym zestawem zasobów zarządzanych za pomocą serwera usługi SQL Database
 - W ramach kolekcji baz danych, nazywane [wystąpienia zarządzanego](sql-database-managed-instance.md) zawierający system i baz danych użytkownika i udostępnianie zestaw zasobów
 
 Poniższa ilustracja przedstawia te opcje wdrażania:
@@ -68,7 +68,7 @@ Możesz utworzyć pierwszą aplikację na małej, pojedynczej bazy danych na nis
 > [!IMPORTANT]
 > [Warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md) jest obecnie dostępna w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania firma Microsoft zaleca, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 
-Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowaniu automatycznym mówimy, gdy usługa jest skalowana automatycznie na podstawie kryteriów, natomiast dynamiczna skalowalność uwzględnia skalowanie ręczne bez przestojów. Pojedyncza baza danych SQL Azure Database obsługuje ręczną dynamiczną skalowalność, ale nie skalowanie automatyczne. Aby zapewnić środowisko bardziej *zautomatyzowane*, rozważ użycie elastycznych pul baz danych, które umożliwiają bazom danych udostępnianie zasobów w puli w zależności od potrzeb. Istnieją jednak skrypty, które mogą pomóc zautomatyzować skalowalność dla pojedynczej bazy danych SQL Azure. Na przykład zobacz temat [Monitorowanie i skalowanie pojedynczej bazy danych SQL za pomocą programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowaniu automatycznym mówimy, gdy usługa jest skalowana automatycznie na podstawie kryteriów, natomiast dynamiczna skalowalność uwzględnia skalowanie ręczne bez przestojów. Pojedyncza baza danych obsługuje ręcznego dynamiczną skalowalność, ale nie automatycznego skalowania. Aby zapewnić środowisko bardziej *zautomatyzowane*, rozważ użycie elastycznych pul baz danych, które umożliwiają bazom danych udostępnianie zasobów w puli w zależności od potrzeb. Istnieją jednak skrypty, które mogą pomóc zautomatyzować skalowalność dla pojedynczej bazy danych. Aby uzyskać przykład, zobacz [Użyj programu PowerShell do monitorowania i skalowania pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów
 
@@ -93,7 +93,7 @@ Jednak jak porównać względną wydajność pojedynczych baz danych i pul elast
 
 Ponadto usługa SQL Database może [tworzyć metryki i dzienniki diagnostyczne](sql-database-metrics-diag-logging.md), które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
-- **Usługa Azure Storage**: W celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę
+- **Azure Storage**: W celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę
 - **Centrum zdarzeń platformy Azure**: Do integracji danych telemetrycznych usługi SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami
 - **Usługi Azure Log Analytics**: Aby uzyskać wbudowanego rozwiązania monitorowania obejmującego raportowania, zgłaszania alertów i łagodzenia możliwości.
 
@@ -148,7 +148,7 @@ Usługa SQL Database oferuje szeroką gamę [wbudowanych funkcji zabezpieczeń i
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
-Usługa SQL Advanced Threat Protection to ujednolicony pakiet zaawansowanych możliwości zabezpieczeń SQL. Obejmuje to funkcję wykrywania i klasyfikowania danych poufnych, likwidowanie luk w zabezpieczeniach bazy danych i wykrywanie nietypowych działań, które mogą wskazywać, że baza danych jest zagrożona. Zapewnia ona pojedynczą lokalizację, w której można włączać te możliwości i zarządzać nimi.
+Zaawansowane zabezpieczenia danych SQL jest ujednoliconego pakietu dla zaawansowane funkcje zabezpieczeń programu SQL. Obejmuje to funkcję wykrywania i klasyfikowania danych poufnych, likwidowanie luk w zabezpieczeniach bazy danych i wykrywanie nietypowych działań, które mogą wskazywać, że baza danych jest zagrożona. Zapewnia ona pojedynczą lokalizację, w której można włączać te możliwości i zarządzać nimi.
 
 - [Odnajdywanie i klasyfikacja danych](sql-database-data-discovery-and-classification.md):
 
@@ -186,10 +186,10 @@ Dzięki usłudze SQL Database tworzenie i konserwowanie aplikacji jest łatwiejs
 - **[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)**:
 
   Bezpłatna, dostępna do pobrania aplikacja kliencka do zarządzania dowolną infrastrukturą SQL — od programu SQL Server do usługi SQL Database
-- **[SQL Server Data Tools w programie Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
+- **[SQL Server Data Tools in Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)**:
 
   Bezpłatna, dostępna do pobrania aplikacja kliencka do projektowania relacyjnych baz danych programu SQL Server, bazy danych Azure SQL, pakiety usług Integration Services, modele danych usług Analysis Services i raporty usług Reporting Services.
-- **[Program Visual Studio Code](https://code.visualstudio.com/docs)**:
+- **[Visual Studio Code](https://code.visualstudio.com/docs)**:
 
   Edytor kodu bezpłatny, dostępny do pobrania, typu open source dla Windows, macOS i Linux obsługujący rozszerzenia, w tym [rozszerzenie mssql](https://aka.ms/mssql-marketplace) do wykonywania zapytań programu Microsoft SQL Server, usługi Azure SQL Database i SQL Data Warehouse.
 

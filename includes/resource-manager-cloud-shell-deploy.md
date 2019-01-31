@@ -2,18 +2,18 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 11/25/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a2ee8705be3f34b6df113c68d88e375411f84bf2
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440336"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302346"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Wdrażanie szablonu za pomocą usługi Cloud Shell
 
-Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). Jednak musisz najpierw załadować szablon do konta magazynu dla usługi Cloud Shell. Jeśli nie używasz usługi Cloud Shell, zobacz [Overview of Azure Cloud Shell (Omówienie usługi Azure Cloud Shell)](../articles/cloud-shell/overview.md), aby uzyskać informacje o jej konfigurowaniu.
+Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/cloud-shell/overview.md). Aby wdrożyć szablon zewnętrznych, podaj identyfikator URI szablonu dokładnie tak jak w przypadku każdego wdrożenia zewnętrznych. Aby wdrożyć szablon lokalnego, musisz najpierw załadować swój szablon do konta magazynu dla usługi Cloud Shell. W tej sekcji opisano, jak załadować szablon do swojego konta powłoki w chmurze i wdrożyć go jako plik lokalny. Jeśli nie znasz usługi Cloud Shell, zobacz [Omówienie usługi Azure Cloud Shell](../articles/cloud-shell/overview.md) informacji o jej konfigurowaniu.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
@@ -55,7 +55,7 @@ Do wdrożenia swojego szablonu możesz użyć usługi [Cloud Shell](../articles/
 
 1. Skopiuj adres URL.
 
-   ![Skopiuj adres URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![Kopiuj adres URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Otwórz wiersz polecenia.
 

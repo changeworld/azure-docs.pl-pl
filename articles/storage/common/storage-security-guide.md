@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 3d9da96e5bf6c88f76089dea930b02248cfa1d24
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243798"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454491"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
@@ -89,7 +89,7 @@ Poniżej przedstawiono główne punkty, które musisz wiedzieć o otwieranie ope
 * [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../../role-based-access-control/role-assignments-portal.md)
 
   W tym artykule objaśniono funkcję kontroli dostępu opartej na rolach w usłudze Azure Active Directory i sposób jej działania.
-* [Kontrola dostępu oparta na rolach (RBAC): wbudowane role](../../role-based-access-control/built-in-roles.md)
+* [RBAC: Wbudowane role](../../role-based-access-control/built-in-roles.md)
 
   Ten artykuł szczegółowo wszystkie wbudowane Role dostępne w RBAC.
 * [Omówienie wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../../azure-resource-manager/resource-manager-deployment-model.md)
@@ -240,7 +240,7 @@ Aby uzyskać szczegółowe informacje na temat używania sygnatur dostępu wspó
 * Są to samouczki dotyczące tworzenia sygnatury dostępu współdzielonego i przechowywanych zasad dostępu za pomocą biblioteki klienckiej .NET.
 
   * [Używanie sygnatur dostępu współdzielonego (SAS)](../storage-dotnet-shared-access-signature-part-1.md)
-  * [Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą usługi Blob Service](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+  * [Udostępnione sygnatur dostępu, część 2: Tworzenie i używanie sygnatury dostępu Współdzielonego z usługi Blob Service](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     Ten artykuł zawiera opis modelu sygnatur dostępu Współdzielonego, przykłady sygnatur dostępu współdzielonego i zalecenia dotyczące najlepszych praktyk korzystanie z sygnatury dostępu Współdzielonego. Omówiono również jest cofnięcie przyznanie uprawnienia.
 
@@ -307,7 +307,7 @@ Usługa Azure Disk Encryption jest nową funkcją. Ta funkcja umożliwia szyfrow
 Rozwiązanie obsługuje następujące scenariusze dla maszyn wirtualnych IaaS, gdy są one włączone w systemie Microsoft Azure:
 
 * Integracja z usługą Azure Key Vault
-* Maszyny wirtualne w warstwie standardowa: [A, D, DS, G, GS i tak dalej serię maszyn wirtualnych IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* W warstwie standardowa maszyny wirtualne: [A, D, DS, G, GS i tak dalej serię maszyn wirtualnych IaaS](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Włączanie szyfrowania na Windows i maszyn wirtualnych IaaS z systemem Linux
 * Wyłączenie szyfrowania systemu operacyjnego i danych dyski dla maszyn wirtualnych IaaS Windows
 * Wyłączenie szyfrowania dla dysków z danymi dla maszyn wirtualnych IaaS z systemem Linux
@@ -328,7 +328,7 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii w
 
 
 > [!NOTE]
-> Szyfrowanie dysków systemu operacyjnego Linux jest obecnie obsługiwany na poniższe dystrybucje systemu Linux: systemu RHEL 7.2 CentOS 7.2n i Ubuntu 16.04.
+> Szyfrowanie dysków systemu operacyjnego Linux jest obecnie obsługiwany w poniższe dystrybucje systemu Linux: RHEL 7.2 CentOS 7.2n i Ubuntu 16.04.
 >
 >
 
@@ -504,6 +504,6 @@ Aby uzyskać więcej informacji na temat mechanizmu CORS i jak go włączyć zap
 * [Standard FIPS 140 sprawdzania poprawności](https://technet.microsoft.com/library/cc750357.aspx)
 
   Ten artykuł zawiera informacje dotyczące sposobu modułów kryptograficznych i produktów firmy Microsoft są zgodne ze standardem FIPS dla Stanów Zjednoczonych Rządu federalnego.
-* ["Kryptografia systemu: Korzystanie ze standardem FIPS dla celów szyfrowania, mieszania i podpisywania algorytmów" efekty ustawienia zabezpieczeń w Windows XP i nowszych wersjach systemu Windows](https://support.microsoft.com/kb/811833)
+* ["Kryptografia systemu: Użyj zgodnych algorytmów FIPS dla celów szyfrowania, mieszania i podpisywania"w Windows XP i nowszych wersjach systemu Windows efekty ustawienia zabezpieczeń](https://support.microsoft.com/kb/811833)
 
   Ten artykuł zawiera informacje o trybu FIPS w starszych komputerów Windows.

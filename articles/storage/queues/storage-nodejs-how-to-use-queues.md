@@ -9,13 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 38da370e8e3cd81e209d0fd592d6b2afa8c82e44
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: queues
+ms.openlocfilehash: 295ca353530fb438d0bd77a9144813543102b997
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138517"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472715"
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Jak używać Magazynu kolejek w oprogramowaniu Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -105,7 +105,7 @@ var retryOperations = new azure.ExponentialRetryPolicyFilter();
 var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Porady: Wstawianie komunikatu do kolejki
+## <a name="how-to-insert-a-message-into-a-queue"></a>Instrukcje: Wstawianie komunikatu do kolejki
 Aby wstawić komunikat do kolejki, należy użyć **createMessage** metodę, aby utworzyć nową wiadomość i dodać go do kolejki.
 
 ```javascript
@@ -116,7 +116,7 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Porady: Podgląd kolejnego komunikatu
+## <a name="how-to-peek-at-the-next-message"></a>Instrukcje: Podgląd kolejnego komunikatu
 Użytkownik może wglądu do wiadomości uzyskać kolejki bez jego usuwania z kolejki, wywołując **peekMessages** metody. Domyślnie **peekMessages** wglądu w pojedynczym komunikacie.
 
 ```javascript
@@ -164,7 +164,7 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Porady: Zmiana zawartości komunikatu w kolejce
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Instrukcje: Zmień zawartość komunikatu w kolejce
 Możesz zmienić zawartość komunikatu w miejscu w kolejce przy użyciu **updateMessage**. Poniższy przykład aktualizuje tekst wiadomości:
 
 ```javascript
@@ -181,7 +181,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 });
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Instrukcje: Dodatkowych opcji usuwania z kolejki komunikatów
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Instrukcje: Dodatkowe opcje usuwania z kolejki komunikatów
 Istnieją dwa sposoby, które można dostosować odebrania komunikatu z kolejki:
 
 * `options.numOfMessages` -Pobrać partię komunikatów (maksymalnie 32).
@@ -217,7 +217,7 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 });
 ```
 
-## <a name="how-to-list-queues"></a>Instrukcje: Lista kolejek
+## <a name="how-to-list-queues"></a>Instrukcje: Wyświetl listę kolejek
 Aby pobrać listę kolejek, użyj **listQueuesSegmented**. Aby pobrać listy filtrowane według określonego prefiksu, użyj **listQueuesSegmentedWithPrefix**.
 
 ```javascript
@@ -230,7 +230,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 
 Jeśli nie można zwrócić wszystkich kolejkach, `result.continuationToken` mogą być używane jako pierwszy parametr **listQueuesSegmented** lub drugi parametr **listQueuesSegmentedWithPrefix** można pobrać więcej wyników.
 
-## <a name="how-to-delete-a-queue"></a>Porady: Usuwanie kolejki
+## <a name="how-to-delete-a-queue"></a>Instrukcje: Usuwanie kolejki
 Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **deleteQueue** metody na obiekcie kolejki.
 
 ```javascript
@@ -243,7 +243,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 
 Aby wyczyścić wszystkie komunikaty z kolejki bez jego usuwania, należy użyć **clearMessages**.
 
-## <a name="how-to-work-with-shared-access-signatures"></a>Porady: Praca z sygnaturami dostępu współdzielonego
+## <a name="how-to-work-with-shared-access-signatures"></a>Instrukcje: Praca z sygnaturami dostępu współdzielonego
 Udostępnione sygnatur dostępu (SAS) to bezpieczny sposób zapewnienia szczegółowej dostępu do kolejek bez podawania swojej nazwy konta magazynu lub klucze. Sygnatury dostępu Współdzielonego są często używane do udzielany ograniczony dostęp do kolejek, na przykład zezwalając aplikacji mobilnej w celu przesyłania wiadomości.
 
 Generuje zaufanych aplikacji, takich jak usługi oparte na chmurze, przy użyciu sygnatury dostępu Współdzielonego **generateSharedAccessSignature** z **QueueService**i przekazuje go do niezaufanych lub na wpół zaufanych aplikacji. Na przykład, aplikacja mobilna. Sygnatura dostępu współdzielonego jest generowana przy użyciu zasad opisujących daty rozpoczęcia i zakończenia okresu, w którym ta sygnatura obowiązuje, a także poziom dostępu przyznany właścicielowi sygnatury dostępu współdzielonego.

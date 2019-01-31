@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 01/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 738cc5b4e90d9572b65f122076973e2d9f1b264f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450494"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55302125"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Informacje o wersji usługi Azure Data Box — wersja zapoznawcza bramy
 
@@ -50,7 +50,9 @@ Poniższa tabela zawiera podsumowanie znanych problemów występujących dla bra
 | **5.** |Typy plików | Nie są obsługiwane następujące typy plików systemu Linux: znak plików bloku, gniazda, potoki, plików łącza symbolicznego.  |Kopiowanie tych plików wyników w plikach długość 0 tworzonych na systemu plików NFS jest udostępnianie. Te pliki pozostają w stanie błędu i są również zgłaszane w *error.xml*. |
 | **6.** |Usuwanie | Z powodu błędu w tej wersji usunięcie udziału NFS następnie udział mogą nie zostać usunięte. Będzie wyświetlany stan udziału *usuwanie*.  |Dzieje się tak, tylko wtedy, gdy udział jest przy użyciu nazwy pliku nieobsługiwany. |
 | **7.** |Odświeżanie | Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania.  | |
-| **8.** |Pomoc online |Linki pomocy w witrynie Azure portal nie może połączyć się z dokumentacją.|Linki pomocy będzie działać w wersji ogólnodostępnej. |
+| **8.** |Copy | Kopiowanie danych kończy się niepowodzeniem z powodu błędu:  Nie można ukończyć żądanej operacji ze względu na ograniczenia systemu plików.  |Ten błąd występuje, gdy alternatywne Data Stream (ADS) skojarzone z plikiem przekracza 128 KB (maksymalny limit dla systemu plików ReFS).  |
+| **9.** |Linki symboliczne |Łącza symbolicznego nie są obsługiwane.  |Linki symboliczne z katalogami spowodować katalogi, które nigdy nie wprowadzenie oznaczone w trybie offline. W rezultacie nie widać szarego między na katalogi, które wskazuje, że katalogi są w trybie offline i powiązanej zawartości całkowicie został przekazany na platformę Azure. |
+| **10.** |Pomoc online |Linki pomocy w witrynie Azure portal nie może połączyć się z dokumentacją.|Linki pomocy będzie działać w wersji ogólnodostępnej. |
 
 
 

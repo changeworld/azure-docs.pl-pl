@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.component: common
-ms.openlocfilehash: 25de4f28d7516f5c7830b24e4c999ceb855a7759
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242980"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478240"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Zarządzanie współbieżnością w usłudze Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -284,5 +284,5 @@ Aby uzyskać więcej informacji na temat usługi Azure Storage, zobacz:
 * [Strona główna programu Microsoft Azure Storage](https://azure.microsoft.com/services/storage/)
 * [Wprowadzenie do usługi Azure Storage](storage-introduction.md)
 * Wprowadzenie do magazynu [Blob](../blobs/storage-dotnet-how-to-use-blobs.md), [tabeli](../../cosmos-db/table-storage-how-to-use-dotnet.md), [kolejek](../storage-dotnet-how-to-use-queues.md), i [plików](../storage-dotnet-how-to-use-files.md)
-* Architektura magazynu — [usługi Azure Storage: Usługa magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+* Architektura magazynu — [usługi Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
 

@@ -1,10 +1,22 @@
 ---
-Tytuł: Eksportować i usuwać dane z usługi Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: W ramach produktu — dane przechowywane w usłudze Azure Machine Learning Studio jest dostępna dla eksportowania i usuwania za pośrednictwem witryny Azure portal, a także za pośrednictwem uwierzytelnionych interfejsów API REST. Dane telemetryczne są dostępne za pośrednictwem portalu Azure ochrony prywatności. W tym artykule przedstawiono, jak.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: koncepcyjny
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 05/25/2018
+title: Eksportować i usuwać dane z usługi Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: W ramach produktu — dane przechowywane w usłudze Azure Machine Learning Studio jest dostępna dla eksportowania i usuwania za pośrednictwem witryny Azure portal, a także za pośrednictwem uwierzytelnionych interfejsów API REST. Dane telemetryczne są dostępne za pośrednictwem portalu Azure ochrony prywatności. W tym artykule przedstawiono, jak.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: conceptual
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 05/25/2018
+ms.openlocfilehash: d2276eb11ce904b485440a6ce91981846a980dbc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462192"
 ---
-
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Eksportowanie i usunąć dane użytkownika w produkcie z usługi Azure Machine Learning Studio
 
 Można usunąć lub Eksportuj dane w ramach produktu przechowywane przez usługi Azure Machine Learning Studio za pomocą witryny Azure portal, interfejsu Studio, środowiska PowerShell i uwierzytelniony interfejsów API REST. W tym artykule wyjaśniono sposób. 

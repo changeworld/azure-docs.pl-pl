@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 05e5c0a37d2de78393048728b73d9bcf6e56c491
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: files
+ms.openlocfilehash: 277c570079e8c3f051916452492ff62758688e03
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159170"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454865"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Usługa Azure cele skalowalności i wydajności plików
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. W tym artykule omówiono cele skalowalności i wydajności dla usługi Azure Files i usługi Azure File Sync.
@@ -59,7 +59,7 @@ Aby ułatwić planowanie wdrożenia dla każdego z etapów, poniżej wyniki prze
 |-|-|
 | Liczba obiektów | 10 mln obiektów | 
 | Rozmiar zestawu danych| TiB ~ 4 |
-| Średni rozmiar plików | KiB ~ 500 (największy plik: 100 giB) |
+| Średni rozmiar plików | KiB ~ 500 (największy plik: 100 GiB) |
 | Przekaż przepływności | 20 obiektów na sekundę |
 | Namespace pobierania przepływności * | 400 obiektów na sekundę |
  

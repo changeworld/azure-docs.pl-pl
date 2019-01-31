@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0fc9b8b6a8bcd62aafda7c04697ab8b9c096b17e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081965"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296583"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu języka Java
 
@@ -55,18 +55,18 @@ Aby używać klasy EventProcessorHost, musisz mieć [konta usługi Azure Storage
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>Tworzenie projektu języka Java za pomocą hosta EventProcessor
 
-Biblioteki klienta Java dla usługi Event Hubs jest dostępna do użytku w projektach narzędzia Maven z [Maven Central Repository][Maven Package]i można się odwoływać przy użyciu poniższej deklaracji zależności wewnątrz usługi Maven plik projektu. Bieżąca wersja artefaktu azure-eventhubs-eph jest 2.0.1 i bieżąca wersja dla artefaktu azure-eventhubs jest 1.0.2:    
+Biblioteki klienta Java dla usługi Event Hubs jest dostępna do użytku w projektach narzędzia Maven z [Maven Central Repository][Maven Package]i można się odwoływać przy użyciu poniższej deklaracji zależności wewnątrz usługi Maven plik projektu: 
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
-    <version>2.0.1</version>
+    <version>2.4.0</version>
 </dependency>
 ```
 

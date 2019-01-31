@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 2d5fdde14c1a33ace81e8999dbb365dac9de3e6e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 01/25/2019
+ms.openlocfilehash: 25936fa1156dea4beff6e593646d0468a4687f36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476183"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Warstwy usług na dużą skalę (wersja zapoznawcza) do 100 TB
 
 Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych programu SQL Server, która jest uwzględniany w środowisku chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy modele architektury, które są używane w usłudze Azure SQL Database:
+
 - Ogólnego przeznaczenia/Standard 
 - Business Critical/Premium
 - Hiperskalowanie
@@ -150,7 +151,7 @@ Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i 
 
 | Problem | Opis |
 | :---- | :--------- |
-| W okienku Zarządzanie kopiami zapasowymi dla serwera logicznego nie pokazuje, że będą filtrowane baz danych na dużą skalę z programu SQL server ->  | W Hiperskali ma oddzielne metodę zarządzania kopiami zapasowymi i jako takie długotrwałego przechowywania danych i punktu w czasie tworzenia kopii zapasowej ustawień przechowywania nie stosuje się / są unieważniane. W związku z tym baz danych na dużą skalę, nie są wyświetlane w okienku Zarządzanie kopii zapasowej. |
+| W okienku Zarządzanie kopiami zapasowymi bazy danych SQL server nie pokazuje, że będą filtrowane baz danych na dużą skalę z programu SQL server ->  | W Hiperskali ma oddzielne metodę zarządzania kopiami zapasowymi i jako takie długotrwałego przechowywania danych i punktu w czasie tworzenia kopii zapasowej ustawień przechowywania nie stosuje się / są unieważniane. W związku z tym baz danych na dużą skalę, nie są wyświetlane w okienku Zarządzanie kopii zapasowej. |
 | Przywracanie do określonego momentu | Po migracji bazy danych w warstwie usługi w Hiperskali, przywracanie do punktu w czasie przed migracją nie jest obsługiwane.|
 | Jeśli plik bazy danych zwiększa się podczas migracji ze względu na to aktywne obciążenie i przekracza 1 TB na granicy pliku, migracja nie powiedzie się | Środki zaradcze: <br> — Jeśli to możliwe, migracji bazy danych, po nie obciążenia aktualizacji.<br> -Ponów próbę migracji, zakończy się powodzeniem tak długo, jak granica 1 TB nie jest przekroczony podczas migracji.|
 | Wystąpienie zarządzane nie jest obecnie obsługiwane. | Nie jest obecnie obsługiwany |
@@ -162,6 +163,6 @@ Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i 
 
 - Aby — często zadawane pytania na dużą skalę, zobacz [często zadawane pytania dotyczące Hiperskali](sql-database-service-tier-hyperscale-faq.md).
 - Aby uzyskać informacji o warstwach usługi, zobacz [warstwy usług](sql-database-service-tiers.md)
-- Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
+- Zobacz [Przegląd zasobów limity na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Zakupu limity modelu pojedynczej bazy danych, zobacz [usługi Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md).
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).

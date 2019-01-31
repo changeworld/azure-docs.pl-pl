@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/29/2019
+ms.date: 1/31/2019
 ms.author: victorh
-ms.openlocfilehash: 7301460014e4d547d1950c8edfbd7534d8a4c103
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0c8a600342e0240d435999b1b5ddabc0234c142f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101672"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461444"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
@@ -53,9 +53,9 @@ W trakcie okresu zapoznawczego nie ma opłat. Opłata jest naliczana za zasobów
 |Tryb FIPS, WebSocket|Te nie są obecnie obsługiwane.|
 |Trybie tylko do wewnętrznego modułu równoważenia obciążenia|To nie jest obecnie obsługiwane. Publiczne i tryb wewnętrznego modułu równoważenia obciążenia ze sobą jest obsługiwany.|
 |Skalowanie automatyczne zapory aplikacji sieci Web|Zapora aplikacji sieci Web nie obsługuje trybu skalowania automatycznego. Tryb stałych pojemności jest obsługiwany.|
+|Sieć, obserwator integracji|Nie są obsługiwane w publicznej wersji zapoznawczej.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Tworzenie automatycznego skalowania, strefa nadmiarowe usługa application gateway z zarezerwowanym wirtualnym adresem IP przy użyciu programu Azure PowerShell](tutorial-autoscale-ps.md)
 - Dowiedz się więcej o [Application Gateway](overview.md).
-- Dowiedz się więcej o [zapory usługi Azure](../firewall/overview.md). 
-
+- Dowiedz się więcej o [zapory usługi Azure](../firewall/overview.md).

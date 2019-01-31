@@ -1,5 +1,5 @@
 ---
-Tytuł: Moduły programu PowerShell dla usługi Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Tworzenie i zarządzanie nimi w usłudze Azure Machine Learning Studio obszarów roboczych, eksperymentów, usług sieci web i więcej za pomocą programu PowerShell. usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Moduły programu PowerShell dla usługi Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Tworzenie i zarządzanie nimi w usłudze Azure Machine Learning Studio obszarów roboczych, eksperymentów, usług sieci web i więcej za pomocą programu PowerShell. usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 01/25/2019
 ---

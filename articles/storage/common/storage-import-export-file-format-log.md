@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 2ae44edf0d9356000f64ab72fd609f1921cf095c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316594"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454848"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format pliku dziennika usługi Azure Import/Export
 Gdy usługa Microsoft Azure Import/Export wykonuje akcję na dysku jako część zadania importu lub eksportu, dzienniki są zapisywane w blokowe obiekty BLOB na koncie magazynu skojarzonego z tym zadaniem.  
@@ -101,19 +101,19 @@ properties-status ::=
 
 W poniższej tabeli opisano elementy w pliku dziennika.  
   
-|— Element XML|Typ|Opis|  
+|XML Element|Type|Opis|  
 |-----------------|----------|-----------------|  
-|`DriveLog`|— Element XML|Reprezentuje dziennika dysku.|  
+|`DriveLog`|XML Element|Reprezentuje dziennika dysku.|  
 |`Version`|Atrybut ciągu|Wersja format dziennika.|  
-|`DriveId`|Ciąg|Numer seryjny sprzętu stacji dysków.|  
-|`Status`|Ciąg|Stan przetwarzania dysku. Zobacz `Drive Status Codes` poniższą tabelę, aby uzyskać więcej informacji.|  
+|`DriveId`|String|Numer seryjny sprzętu stacji dysków.|  
+|`Status`|String|Stan przetwarzania dysku. Zobacz `Drive Status Codes` poniższą tabelę, aby uzyskać więcej informacji.|  
 |`Blob`|Zagnieżdżone — element XML|Reprezentuje obiekt blob.|  
-|`Blob/BlobPath`|Ciąg|Identyfikator URI obiektu blob.|  
-|`Blob/FilePath`|Ciąg|Ścieżka względna do pliku na dysku.|  
+|`Blob/BlobPath`|String|Identyfikator URI obiektu blob.|  
+|`Blob/FilePath`|String|Ścieżka względna do pliku na dysku.|  
 |`Blob/Snapshot`|DateTime|Wersja migawki obiektu blob przez zadanie eksportu.|  
 |`Blob/Length`|Liczba całkowita|Łączna długość obiektu blob w bajtach.|  
 |`Blob/LastModified`|DateTime|Data/godzina ostatniej modyfikacji obiektu blob, przez zadanie eksportu.|  
-|`Blob/ImportDisposition`|Ciąg|Dyspozycja import obiektu blob do zadania importu tylko.|  
+|`Blob/ImportDisposition`|String|Dyspozycja import obiektu blob do zadania importu tylko.|  
 |`Blob/ImportDisposition/@Status`|Atrybut ciągu|Stan dyspozycji importu.|  
 |`PageRangeList`|Zagnieżdżone — element XML|Reprezentuje listę zakresów stron dla stronicowych obiektów blob.|  
 |`PageRange`|— Element XML|Reprezentuje zakres stron.|  
@@ -130,17 +130,17 @@ W poniższej tabeli opisano elementy w pliku dziennika.
 |`Block/@Status`|Atrybut ciągu|Stan przetwarzania bloku.|  
 |`Metadata`|Zagnieżdżone — element XML|Reprezentuje metadane obiektu blob.|  
 |`Metadata/@Status`|Atrybut ciągu|Stan przetwarzania metadane obiektu blob.|  
-|`Metadata/GlobalPath`|Ciąg|Ścieżka względna do pliku metadanych globalnego.|  
+|`Metadata/GlobalPath`|String|Ścieżka względna do pliku metadanych globalnego.|  
 |`Metadata/GlobalPath/@Hash`|Atrybut ciągu|Zakodowane w formacie Base16 Skrót MD5 pliku metadanych globalnego.|  
-|`Metadata/Path`|Ciąg|Ścieżka względna do pliku metadanych.|  
+|`Metadata/Path`|String|Ścieżka względna do pliku metadanych.|  
 |`Metadata/Path/@Hash`|Atrybut ciągu|Zakodowane w formacie Base16 Skrót MD5 pliku metadanych.|  
 |`Properties`|Zagnieżdżone — element XML|Reprezentuje właściwości obiektu blob.|  
 |`Properties/@Status`|Atrybut ciągu|Stan przetwarzania właściwości obiektu blob, np. nie można odnaleźć pliku, zakończone.|  
-|`Properties/GlobalPath`|Ciąg|Ścieżka względna do pliku właściwości globalne.|  
+|`Properties/GlobalPath`|String|Ścieżka względna do pliku właściwości globalne.|  
 |`Properties/GlobalPath/@Hash`|Atrybut ciągu|Zakodowane w formacie Base16 Skrót MD5 pliku globalne właściwości.|  
-|`Properties/Path`|Ciąg|Ścieżka względna do pliku właściwości.|  
+|`Properties/Path`|String|Ścieżka względna do pliku właściwości.|  
 |`Properties/Path/@Hash`|Atrybut ciągu|Zakodowane w formacie Base16 Skrót MD5 pliku właściwości.|  
-|`Blob/Status`|Ciąg|Stan przetwarzania obiektu blob.|  
+|`Blob/Status`|String|Stan przetwarzania obiektu blob.|  
   
 ## <a name="drive-status-codes"></a>Kody stanu dysku  
 Poniższa tabela zawiera listę kodów stanu przetwarzania na dysku.  

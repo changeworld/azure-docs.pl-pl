@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 7fbf86a24ca6b2ba55ca33b20e67dea6a6e0c994
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b66b293e5d6e422c994e2b7cef13fd4100144cbf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731411"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297008"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -64,7 +64,7 @@ Usługa App Service zapewnia wbudowaną magazynu tokenu, która jest repozytoriu
 - wpis na osi czasu w serwisie Facebook uwierzytelnionego użytkownika
 - Odczytywanie danych firmowych przez użytkownika z usługi Azure Active Directory interfejsu API programu Graph lub nawet programu Microsoft Graph
 
-Zazwyczaj należy napisać kod do zbierania, przechowywania i odświeżania tych tokenów w aplikacji. Ze sklepem token został właśnie [pobieranie tokenów](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) kiedy ich potrzebują i [nakazać usłudze App Service, aby odświeżyć je](app-service-authentication-how-to.md#refresh-access-tokens) kiedy staną się nieprawidłowe. 
+Zazwyczaj należy napisać kod do zbierania, przechowywania i odświeżania tych tokenów w aplikacji. Ze sklepem token został właśnie [pobieranie tokenów](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) kiedy ich potrzebują i [nakazać usłudze App Service, aby odświeżyć je](app-service-authentication-how-to.md#refresh-identity-provider-tokens) kiedy staną się nieprawidłowe. 
 
 Tokeny identyfikatora, tokenami dostępu i tokenów odświeżania pamięci podręcznej i sesja uwierzytelniona i są one dostępne tylko dla skojarzonego użytkownika.  
 
@@ -151,7 +151,7 @@ Przewodniki z instrukcjami właściwe dla dostawcy:
 * [Jak skonfigurować aplikację do używania logowania usługi Google][Google]
 * [Jak skonfigurować aplikację do używania Microsoft Account login][MSA]
 * [Jak skonfigurować aplikację do używania logowania usługi Twitter][Twitter]
-* [Jak: Użyj uwierzytelniania niestandardowego dla aplikacji][custom-auth]
+* [Instrukcje: Użyj uwierzytelniania niestandardowego dla aplikacji][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

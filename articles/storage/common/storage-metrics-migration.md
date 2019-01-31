@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 3f2ebb82f5affa3c41f237edcc039eb6214c7a4c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.subservice: common
+ms.openlocfilehash: f8a73bb6e86a187a504c2d36098001cfd90015f9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649299"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454930"
 ---
 # <a name="azure-storage-metrics-migration"></a>Migracji metryki magazynu platformy Azure
 
@@ -75,17 +75,17 @@ Nowe oferty, które nie obsługują stare metryki są następujące metryki:
 | **AnonymousThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** i wymiar **uwierzytelniania** równa **anonimowe** |
 | **AuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** |
 | **Dostępność** | **Dostępność** |
-| **Wartość AverageE2ELatency** | **SuccessE2ELatency** |
-| **Wartość AverageServerLatency** | **SuccessServerLatency** |
+| **AverageE2ELatency** | **SuccessE2ELatency** |
+| **AverageServerLatency** | **SuccessServerLatency** |
 | **ClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** |
 | **ClientTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ClientTimeoutError** |
 | **NetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** |
 | **PercentAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** |
 | **PercentClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** |
-| **Wartości PercentNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** |
+| **PercentNetworkError** | Transakcje z wymiarem **ResponseType** równa **NetworkError** |
 | **PercentServerOtherError** | Transakcje z wymiarem **ResponseType** równa **ServerOtherError** |
 | **PercentSuccess** | Transakcje z wymiarem **ResponseType** równa **sukces** |
-| **Wartości PercentThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** |
+| **PercentThrottlingError** | Transakcje z wymiarem **ResponseType** równa **ClientThrottlingError** lub **ServerBusyError** |
 | **Wartości PercentTimeoutError** | Transakcje z wymiarem **ResponseType** równa **ServerTimeoutError** lub **ResponseType** równa **ClientTimeoutError** |
 | **SASAuthorizationError** | Transakcje z wymiarem **ResponseType** równa **AuthorizationError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |
 | **SASClientOtherError** | Transakcje z wymiarem **ResponseType** równa **ClientOtherError** i wymiar **uwierzytelniania** równa **sygnatury dostępu Współdzielonego** |

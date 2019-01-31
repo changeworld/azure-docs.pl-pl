@@ -8,13 +8,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: a62af881efd4f6f3422db19850a0ce9987c6ae7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245124"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467836"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Hudson
 ## <a name="overview"></a>Przegląd
@@ -144,10 +144,10 @@ Po uruchomieniu kompilacji, można sprawdzić dane wyjściowe konsoli z kompilac
 ## <a name="components-used-by-the-blob-service"></a>Składniki używane przez usługę obiektów Blob
 Poniżej zawiera omówienie składników usługi obiektów Blob.
 
-* **Konto magazynu**: cały dostęp do usługi Azure Storage odbywa się przez konto magazynu. Jest to najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do obiektów blob. Konto może zawierać nieograniczoną liczbę kontenerów, tak długo, jak ich łączny rozmiar wynosi poniżej 100 TB.
-* **Kontener**: kontener zawiera grupowanie zestawu obiektów blob. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob.
-* **Obiekt blob**: plik dowolnego typu i rozmiaru. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blokowe i stronicowe obiekty BLOB. Większość plików to blokowe obiekty BLOB. Pojedynczy blokowy obiekt blob może być maksymalnie 200 GB. W tym samouczku korzysta z blokowych obiektów blob. Stronicowe obiekty BLOB, innego typu obiektu blob, może być maksymalnie 1 TB, rozmiar i są bardziej efektywne, gdy zakresów bajtów w pliku są często modyfikowane. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).
-* **Format adresu URL**: obiekty BLOB są adresy, przy użyciu następującego formatu adresu URL:
+* **Konto magazynu**: Dostęp do usługi Azure Storage odbywa się za pośrednictwem konta magazynu. Jest to najwyższy poziom przestrzeni nazw do uzyskiwania dostępu do obiektów blob. Konto może zawierać nieograniczoną liczbę kontenerów, tak długo, jak ich łączny rozmiar wynosi poniżej 100 TB.
+* **kontener**: Kontener zawiera grupowanie zestawu obiektów blob. Wszystkie obiekty blob muszą być w kontenerze. Konto może zawierać nieograniczoną liczbę kontenerów. Kontener może przechowywać nieograniczoną liczbę obiektów blob.
+* **Obiekt blob**: Plik dowolnego typu i rozmiaru. Istnieją dwa typy obiektów blob, które mogą być przechowywane w usłudze Azure Storage: blokowe i stronicowe obiekty BLOB. Większość plików to blokowe obiekty BLOB. Pojedynczy blokowy obiekt blob może być maksymalnie 200 GB. W tym samouczku korzysta z blokowych obiektów blob. Stronicowe obiekty BLOB, innego typu obiektu blob, może być maksymalnie 1 TB, rozmiar i są bardziej efektywne, gdy zakresów bajtów w pliku są często modyfikowane. Aby uzyskać więcej informacji na temat obiektów blob, zobacz [omówienie blokowych obiektów blob, Uzupełnialnych obiektów blob i stronicowe obiekty BLOB](https://msdn.microsoft.com/library/azure/ee691964.aspx).
+* **Format adresu URL**: Obiekty BLOB są adresy, przy użyciu następującego formatu adresu URL:
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   
@@ -158,7 +158,7 @@ Poniżej zawiera omówienie składników usługi obiektów Blob.
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Spełnia Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Usługa Azure Storage SDK dla języka Java](https://github.com/azure/azure-storage-java)
 * [Dokumentacja zestawu SDK klienta usługi Azure Storage](http://dl.windowsazure.com/storage/javadoc/)
 * [Interfejs API REST usług Azure Storage](https://msdn.microsoft.com/library/azure/dd179355.aspx)

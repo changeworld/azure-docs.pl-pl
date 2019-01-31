@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 663df77a7fb574f05cfaa9378dff53ca5db21c49
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: c4dcb3f42d97624e66258228ce27e130a05cac70
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526113"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456140"
 ---
 # <a name="azure-storage-samples-using-net"></a>Przykłady usługi Azure Storage przy użyciu platformy .NET
 
@@ -25,11 +25,11 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <table style="font-size:90%"><thead><tr><th style="font-size:110%">Endpoint</th><th style="font-size:110%">Scenariusz</th><th style="font-size:110%">Przykładowy kod</th></tr></thead><tbody> 
 <tr> 
 <td rowspan="16"><b>Obiekt blob</b></td>
-<td>Obiekt Blob dołączania</td> 
+<td>Dołącz obiekt blob</td> 
 <td><a href="https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.cloudblobcontainer.getappendblobreference.aspx">Przykład CloudBlobContainer.GetAppendBlobReference — metoda</a></td> 
 </tr> 
 <tr> 
-<td>Blokowe obiekty Blob</td>
+<td>Blokowy obiekt blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Aplikacja sieci Web galerii fotografii systemu Azure Blob Storage</a></td>
 </tr> 
 <tr> 
@@ -73,7 +73,7 @@ Poniższa tabela zawiera omówienie naszego repozytorium przykładów i scenariu
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Wprowadzenie do obiektów blob</a></td>
 </tr> 
 <tr> 
-<td>Obiekt blob typu Page</td>
+<td>Stronicowy obiekt blob</td>
 <td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">Wprowadzenie do obiektów blob</a></td>
 </tr>
 <tr> 
@@ -210,5 +210,5 @@ Zapoznaj się z następującymi przewodnikami, jeśli chcesz, aby uzyskać instr
 
 Aby uzyskać informacje, przykłady w innych językach:
 
-* Java: [przykładów usługi Azure Storage przy użyciu języka Java](storage-samples-java.md)
-* Wszystkie inne języki: [przykłady usługi Azure Storage](../storage-samples.md)
+* Java: [Przykłady usługi Azure Storage korzystające z języka Java](storage-samples-java.md)
+* Inne języki: [Przykłady usługi Azure Storage](../storage-samples.md)

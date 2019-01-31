@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/24/2019
-ms.openlocfilehash: 2638617679e1aaadfdb18f1d8580f3aef28ab127
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.date: 01/25/2019
+ms.openlocfilehash: 1f2dcb43878359d20d737cef6ceb492eb79b7f4c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884355"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468329"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Monitorowanie i dostrajanie wydajności
 
@@ -34,14 +34,14 @@ Masz następujące opcje monitorowania i rozwiązywanie problemów z wydajności
 - Użyj [SQL Database Advisor](sql-database-advisor-portal.md) Aby wyświetlić zalecenia dotyczące tworzenia i usuwanie indeksów, parametryzacji zapytań i naprawia problemy ze schematem.
 - Użyj [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) automatyczne monitorowanie wydajności bazy danych. Po wykryciu problemu z wydajnością, dziennik diagnostyczny jest generowany ze szczegółami i głównej przyczyny Analysis (analiza głównej przyczyny) problemu. Zalecenie dotyczące poprawy wydajności znajduje się, gdy jest to możliwe.
 - [Włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md) i pozwól SQL Azure, bazy danych automatycznego rozwiązywania zidentyfikowanych problemów z wydajnością.
-- Użyj [dynamicznych widoków zarządzania (DMV)](sql-database-monitoring-with-dmvs.md), [zdarzeniom rozszerzonym](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr)i [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) szczegółowe Rozwiązywanie problemów z wydajnością.
+- Użyj [dynamicznych widoków zarządzania (DMV)](sql-database-monitoring-with-dmvs.md), [zdarzeniom rozszerzonym](sql-database-xevent-db-diff-from-svr.md)i [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) szczegółowe Rozwiązywanie problemów z wydajnością.
 
 > [!TIP]
 > Zobacz [wskazówki dotyczące wydajności](sql-database-performance-guidance.md) można znaleźć technik, które można użyć w celu poprawy wydajności usługi Azure SQL Database po zidentyfikowaniu problemu z wydajnością za pomocą co najmniej jednym z powyższych metod.
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Monitorowanie baz danych za pomocą witryny Azure Portal
 
-W [witryny Azure portal](https://portal.azure.com/), możesz monitorować wykorzystanie pojedynczej bazy danych s, wybrać bazę danych, a następnie klikając polecenie **monitorowanie** wykresu. Spowoduje to wyświetlenie okna **Metryka**, które możesz zmienić, klikając przycisk **Edytuj wykres**. Dodaj następujące metryki:
+W [witryny Azure portal](https://portal.azure.com/), możesz monitorować wykorzystanie pojedynczej bazy danych s wybrać bazę danych, a następnie klikając polecenie **monitorowanie** wykresu. Spowoduje to wyświetlenie okna **Metryka**, które możesz zmienić, klikając przycisk **Edytuj wykres**. Dodaj następujące metryki:
 
 - Procent użycia procesora CPU
 - Procent użycia jednostek DTU
@@ -204,7 +204,7 @@ Jak pokazano na poprzednim wykresie, czeka najczęściej są:
 
 Na koniec Brak elementów informacje z możliwością działania, które może poprawić wydajność bazy danych, możesz zmienić ilość zasobów dostępnych w usłudze Azure SQL Database. Można przypisać więcej zasobów, zmieniając [warstwy usługi jednostki DTU](sql-database-service-tiers-dtu.md) pojedynczej bazy danych lub zwiększenie jednostek Edtu elastycznej puli w dowolnej chwili. Alternatywnie Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), możesz zmienić warstwę usługi lub zwiększenie zasobów przydzielonych do bazy danych.
 
-1. Dla pojedynczych baz danych, możesz [zmienianie warstw usług](sql-database-service-tiers-dtu.md) lub [zasoby obliczeniowe](sql-database-service-tiers-vcore.md) na żądanie w celu poprawy wydajności bazy danych.
+1. Dla pojedynczych baz danych, możesz [zmienianie warstw usług](sql-database-single-database-scale.md) lub [zasoby obliczeniowe](sql-database-single-database-scale.md) na żądanie w celu poprawy wydajności bazy danych.
 2. W przypadku wielu baz danych można rozważyć użycie [pul elastycznych](sql-database-elastic-pool-guidance.md) automatycznie skalować zasoby.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Dostrajanie i refaktoryzacji aplikacji lub kodu bazy danych

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/08/2019
-ms.openlocfilehash: 6b5ff7294735048347c500d64b411f16bda5422f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/25/2019
+ms.openlocfilehash: 0d55b5d4c8d42a89a51fa5342d1ed747659a441b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212943"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465099"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
 
@@ -40,9 +40,9 @@ Poniższa tabela pomoże Ci zrozumieć różnice między trzy warstwy:
 ||**Ogólnego przeznaczenia**|**Krytyczne dla działania**|**Na dużą skalę (wersja zapoznawcza)**|
 |---|---|---|---|
 |Najlepsze dla|Większości obciążeń biznesowych. Oferty budżetu, aby poznać podstawy zrównoważonych oraz skalowalnych opcji obliczeniowych i magazynu.|Aplikacje biznesowe z wysokimi wymaganiami w zakresie operacji wejścia/wyjścia. Oferuje najwyższą odporność na awarie, korzystając z kilku izolowanych replik.|Większości obciążeń biznesowych za pomocą wysoce skalowalny magazyn i wymagań skali odczytu|
-|Wystąpienia obliczeniowe|4. generacji: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|4. generacji: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|4. generacji: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|
-|Memory (Pamięć)|4. generacji: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń | 4. generacji: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń |4. generacji: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń|
-|Magazyn|Używa [premium Magazyn zdalny](../virtual-machines/windows/premium-storage.md):<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 8 TB |Używa lokalnego magazynu SSD:<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB – 4 TB |Elastyczne, automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci masowej i nie tylko. Lokalny magazyn SSD w pamięci podręcznej puli bufora lokalnych i lokalne przechowywanie danych. Usługa Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
+|Wystąpienia obliczeniowe|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|Gen4: 1-24 (rdzeń wirtualny)<br/>5. generacji: 1 do 80 (rdzeń wirtualny)|
+|Memory (Pamięć)|Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń | Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń |Gen4: 7 GB na rdzeń<br>5. generacji: 5.1 GB na rdzeń|
+|Magazyn|Używa [premium Magazyn zdalny](../virtual-machines/windows/premium-storage.md):<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB - 8 TB |Używa lokalnego magazynu SSD:<br/>Pojedyncza baza danych: 5 GB – 4 TB<br/>Wystąpienie zarządzane: 32 GB - 4 TB |Elastyczne, automatyczne zwiększanie magazynu zgodnie z potrzebami. Obsługuje maksymalnie 100 TB pamięci masowej i nie tylko. Lokalny magazyn SSD w pamięci podręcznej puli bufora lokalnych i lokalne przechowywanie danych. Usługa Azure storage zdalnego końcowego długoterminowego przechowywania danych. |
 |Przepustowość operacji We/Wy (w przybliżeniu)|Pojedyncza baza danych: 500 operacji We/Wy na rdzeniach wirtualnych za pomocą 7000 maksymalna liczba IOPS</br>Wystąpienie zarządzane: Zależy od [rozmiar pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 operacji We/Wy na rdzeń z 200 000 maksymalna liczba IOPS|TBD|
 |Dostępność|1 repliki, bez skalowania odczytu|3 repliki, 1 [skali odczytu replik](sql-database-read-scale-out.md),<br/>Strefa nadmiarowe wysokiej dostępności|?|
 |Tworzenie kopii zapasowych|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dni (domyślnie co 7 dni)|na podstawie migawki kopii zapasowej w magazynie zdalnym platformy Azure i przywracanie na użytek migawek Szybkie odzyskiwanie. Kopie zapasowe są natychmiastowe i nie wpływać na wydajność operacji We/Wy, mocy obliczeniowej. Operacje przywracania są bardzo szybkie i nie rozmiar operacji danych (trwa minuty, a nie godziny lub dni).|
@@ -71,10 +71,10 @@ Dzięki korzyści użycia hybrydowego platformy Azure, możesz płacić tylko za
 
 - Aby ustawić lub zaktualizowania typu licencji przy użyciu programu PowerShell:
 
-  - [Nowe AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
-  - [Zestaw AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
-  - [Nowe AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Zestaw AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
+  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase):
+  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql)
+  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
+  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql)
 
 - Aby ustawić lub zaktualizowania typu licencji przy użyciu wiersza polecenia platformy Azure:
 

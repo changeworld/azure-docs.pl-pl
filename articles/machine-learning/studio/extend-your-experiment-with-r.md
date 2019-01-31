@@ -1,6 +1,6 @@
 ---
-Tytuł: Rozszerzanie eksperymentu przy użyciu języka R titleSuffix: Opis usługi Azure Machine Learning Studio: Jak rozszerzyć funkcjonalność usługi Azure Machine Learning Studio za pomocą języka R przy użyciu modułu wykonywania skryptu języka R.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Rozszerzanie eksperymentu przy użyciu języka R titleSuffix: Opis usługi Azure Machine Learning Studio: Jak rozszerzyć funkcjonalność usługi Azure Machine Learning Studio za pomocą języka R przy użyciu modułu wykonywania skryptu języka R.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

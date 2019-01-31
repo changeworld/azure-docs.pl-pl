@@ -11,20 +11,22 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: genemi
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: c41420e46a0bd4afbaed96da0e2fb9775d49c6fc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 7542e9fa04eb838baca37dbe13f7cdacdfaf041b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606541"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470267"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Pojemność magazynu OLTP w pamięci monitora
+
 Korzystając z [OLTP w pamięci](sql-database-in-memory.md), znajdują się szczegółowe dane w tabelach zoptymalizowanych pod kątem pamięci i zmiennych tabel w pojemność magazynu OLTP w pamięci. Każda warstwa usługi Premium i krytyczne dla działania firmy ma maksymalny rozmiar magazynu OLTP w pamięci. Zobacz [limity zasobów oparty na jednostkach DTU — Pojedyncza baza danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów oparty na jednostkach DTU - pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów opartych na rdzeniach wirtualnych - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Po przekroczeniu tego limitu, wstawiania i aktualizowania operacji może uruchomić kończy się niepowodzeniem z błędem 41823 dla pojedynczych baz danych i błąd 41840 dla pul elastycznych. W tym momencie należy albo usunąć danych w celu odzyskania pamięci, lub Uaktualnij warstwę usług lub obliczenia rozmiaru bazy danych.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Określić, czy data mieści się w limit pojemności magazynu OLTP w pamięci
+
 Określ limity magazynu z różnymi warstwami usług. Zobacz [limity zasobów oparty na jednostkach DTU — Pojedyncza baza danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów oparty na jednostkach DTU - pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów opartych na rdzeniach wirtualnych - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Szacowanie wymagania dotyczące pamięci dla tabel zoptymalizowanych pod kątem pamięci działa taki sam sposób dla programu SQL Server, ponieważ jest w usłudze Azure SQL Database. Dopiero po kilku minutach, aby zapoznać się z tego artykułu na [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
@@ -40,10 +42,12 @@ Możesz monitorować użycie magazynu w pamięci w procentach limit magazynu dla
 
 Lub użyj następującego zapytania, aby pokazać wykorzystanie magazynu w pamięci:
 
+```sql
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
-
+```
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>Popraw sytuacjach magazynu OLTP-w-pamięci — błędy 41823 i 41840
+
 Osiągnięcia limit pojemności magazynu OLTP w pamięci w wynikach bazy danych w WSTAWIANIA, aktualizacji, zmienić operacje i tworzenia niepowodzeniem z powodu komunikat o błędzie 41823 (dla pojedynczych baz danych) lub błąd 41840 (dla pul elastycznych). Zarówno błędy powodują przerwanie aktywnej transakcji.
 
 Komunikaty o błędach 41823 i 41840 wskazują, że tabele zoptymalizowane pod kątem pamięci i zmiennych tabel w bazie danych lub puli Osiągnięto maksymalny rozmiar magazynu OLTP w pamięci.

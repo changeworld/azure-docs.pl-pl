@@ -3,21 +3,21 @@ title: Zasób oparty na jednostkach DTU bazy danych SQL platformy Azure ogranicz
 description: Ta strona zawiera opis niektórych typowych limitów zasobów na podstawie jednostek DTU dla pojedynczej bazy danych w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: sachinpMSFT
-ms.author: sachinp
-ms.reviewer: carlrab
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: 5ddcacbf805ae9d2ce093058b21d53189457ffb9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: e73bb2f1908abd049ea6e2406c0d1db02381695f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233773"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455545"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU
 
@@ -28,9 +28,9 @@ Aby uzyskać oparty na jednostkach DTU zakupu model zasobu limity dla pul elasty
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Pojedyncza baza danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>Pojedyncza baza danych: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [wiersza polecenia platformy Azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [ Interfejs API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+W poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [języka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [ Interfejs wiersza polecenia Azure](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases), lub [interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
 
 ### <a name="basic-service-tier"></a>Warstwa Podstawowa usług
 
@@ -81,17 +81,17 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: Chiny wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-wschodnie, Północne Zjednoczone Królestwo, południowe Zjednoczone Królestwo, dod — środkowe stany, US dod — wschodnie stany, instytucji rządowych środkowe stany USA i zachodnio-środkowe stany USA.  W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Chiny wschodnie, Chiny Północne, Niemcy środkowe, Niemcy północno-wschodnie, Północne Zjednoczone Królestwo, południowe Zjednoczone Królestwo, US dod — środkowe, dod — wschodnie stany USA, środkowe dla instytucji rządowych USA i zachodnie środkowe stany USA.  W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
-## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: zmiana rozmiaru magazynu
+## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: Zmień rozmiar magazynu
 
-- Cena jednostki DTU dla pojedynczej bazy danych obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [pojedynczej bazy danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych](#single-database-storage-sizes-and-compute-sizes).
-- Dodatkowy magazyn dla pojedynczej bazy danych mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [platformy Azure Interfejs wiersza polecenia](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
+- Cena jednostki DTU dla pojedynczej bazy danych obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [pojedynczej bazy danych: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych](#single-database-storage-sizes-and-compute-sizes).
+- Dodatkowy magazyn dla pojedynczej bazy danych mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-storage-size), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [platformy Azure Interfejs wiersza polecenia](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
 - Cena dodatkowego magazynu dla pojedynczej bazy danych jest mnożony przez cena jednostkowa dodatkowego magazynu w warstwie usług wielkość dodatkowego magazynu. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
-## <a name="single-database-change-dtus"></a>Pojedyncza baza danych: zmiana liczby jednostek Dtu
+## <a name="single-database-change-dtus"></a>Pojedyncza baza danych: Zmiana liczby jednostek Dtu
 
-Po początkowym wybraniu warstwy usług, rozmiar obliczeń i ilość miejsca w magazynie, użytkownik może pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistej wydajności przy użyciu [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [ Program PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
+Po początkowym wybraniu warstwy usług, rozmiar obliczeń i ilość miejsca w magazynie, użytkownik może pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistej wydajności przy użyciu [witryny Azure portal](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-compute-resources-dtus), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [ Program PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 Wideo pokazano, dynamicznie zmieniające się usługa warstwy i obliczenia rozmiaru w celu zwiększenia dostępna liczba jednostek Dtu dla pojedynczej bazy danych.
 
@@ -103,8 +103,8 @@ Zmiana usługi warstwy i/lub obliczyć rozmiar bazy danych powoduje utworzenie r
 Czas trwania całego procesu skalowania w górę zależy zarówno od rozmiaru, jak i warstwy usług bazy danych przed zmianą oraz po niej. Na przykład 250 GB bazy danych, zmiana do, z lub do warstwy standardowa, należy wykonać w ciągu 6 godzin. Dla bazy danych taki sam rozmiar, zmiana rozmiarów wystąpień obliczeniowych w ramach warstwy Premium skalowanie w górę powinno zakończyć się w ciągu trzech godzin.
 
 > [!TIP]
-> Aby monitorować działania w toku, zobacz: [zarządzania operacjami usługi przy użyciu interfejsu API REST programu SQL](https://docs.microsoft.com/rest/api/sql/databaseoperations/listbydatabase
-), [zarządzania operacjami usługi przy użyciu interfejsu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i te dwie Polecenia programu PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) i [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
+> Aby monitorować działania w toku, zobacz: [Zarządzanie operacjami za pomocą interfejsu API REST programu SQL](https://docs.microsoft.com/rest/api/sql/databaseoperations/listbydatabase
+), [zarządzania operacjami usługi przy użyciu interfejsu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i te dwa polecenia programu PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) i [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
 
 - W przypadku uaktualniania do wersji na wyższą warstwę usługi lub obliczenia rozmiaru, maksymalnego rozmiaru bazy danych zwiększa, chyba że jawnie określisz o większym rozmiarze (maxsize).
 - Na starszą wersję bazy danych, miejsca w bazie danych, używane musi być mniejszy niż maksymalny dozwolony rozmiar docelowej warstwy usług i rozmiaru obliczeń.
@@ -114,7 +114,7 @@ Czas trwania całego procesu skalowania w górę zależy zarówno od rozmiaru, j
 - Oferowane usługi przywracania różnią się w zależności do warstwy usług. Jeśli to powrót do subskrypcji **podstawowe** warstwy, jest krótszym okresie przechowywania kopii zapasowych. Zobacz [kopie zapasowe bazy danych Azure SQL](sql-database-automated-backups.md).
 - Nowe właściwości bazy danych są stosowane dopiero po zakończeniu wprowadzania zmian.
 
-## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Pojedyncza baza danych: ograniczenia P11 i P15 podczas maksymalny rozmiar większy niż 1 TB
+## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>Pojedyncza baza danych: Ograniczenia P11 i P15 podczas maksymalny rozmiar większy niż 1 TB
 
 Następujące istotne zagadnienia i ograniczenia dotyczą P11 i P15 baz danych o maksymalnym rozmiarze większym niż 1 TB:
 
@@ -131,7 +131,7 @@ Następujące istotne zagadnienia i ograniczenia dotyczą P11 i P15 baz danych o
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
+- Zobacz [Przegląd zasobów limity na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 - Aby uzyskać informacji na temat jednostek Dtu i Edtu, zobacz [jednostek Dtu i Edtu](sql-database-service-tiers.md#dtu-based-purchasing-model).
 - Aby uzyskać informacje na temat limitów rozmiarów bazy danych tempdb, zobacz [bazy danych SQL tempdb limity](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

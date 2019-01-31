@@ -11,22 +11,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: a36c5cfc977920f43b7f73e3e7cf9176de7c1f8a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 9f61748a489987bf6c3f38e8ebfdab660198e10a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867090"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463025"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)
 Można łatwo skalować w poziomie baz danych Azure SQL przy użyciu **Elastic Database** narzędzia. Te narzędzia i funkcje pozwalają korzystać z zasobów bazy danych **usługi Azure SQL Database** nad tworzeniem rozwiązań dla obciążeń transakcyjnych, a szczególnie oprogramowanie jako usługa (SaaS) aplikacji. Funkcje elastycznej bazy danych składają się:
 
-* [Biblioteka kliencka elastic Database](sql-database-elastic-database-client-library.md): biblioteki klienta jest funkcją, która pozwala na tworzenie i obsługa baz danych podzielonych na fragmenty.  Zobacz [Rozpocznij pracę z narzędziami elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
+* [Biblioteka kliencka elastic Database](sql-database-elastic-database-client-library.md): Biblioteka klienta jest funkcją, która pozwala na tworzenie i obsługa baz danych podzielonych na fragmenty.  Zobacz [Rozpocznij pracę z narzędziami elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
 * [Narzędzie do dzielenia i scalania elastycznych baz danych](sql-database-elastic-scale-overview-split-and-merge.md): przenosi dane między bazami danych podzielonych na fragmenty. To narzędzie jest przydatne w przypadku przenoszenia danych z wielodostępną bazą danych do bazy danych jedną dzierżawą (lub odwrotnie). Zobacz [Elastic database Split-Merge tool samouczek](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Zadania elastic Database](sql-database-elastic-jobs-overview.md) (wersja zapoznawcza): używanie zadań do zarządzania dużą liczbą baz danych Azure SQL. Łatwo wykonywać operacje administracyjne, takie jak zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych referencyjnych, zbierania danych o wydajności lub zbieranie danych telemetrycznych dzierżaw (klientów) przy użyciu zadań.
-* [Zapytanie elastic Database](sql-database-elastic-query-overview.md) (wersja zapoznawcza): można uruchamiać zapytanie Transact-SQL, która obejmuje wiele baz danych. Umożliwia to połączenie narzędzi do raportowania, takie jak Excel, Power BI, Tableau, itp.
-* [Transakcje elastyczne](sql-database-elastic-transactions-overview.md): Ta funkcja pozwala na uruchamianie transakcje obejmujące wiele baz danych w usłudze Azure SQL Database. Transakcje elastyczne bazy danych są dostępne dla aplikacji .NET za pomocą ADO .NET i integracji z dobrze znanych programowania środowisko przy użyciu [klasy System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx).
+* [Zadania elastic Database](sql-database-elastic-jobs-overview.md) (wersja zapoznawcza): Używanie zadań do zarządzania dużą liczbą baz danych Azure SQL. Łatwo wykonywać operacje administracyjne, takie jak zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych referencyjnych, zbierania danych o wydajności lub zbieranie danych telemetrycznych dzierżaw (klientów) przy użyciu zadań.
+* [Zapytanie elastic Database](sql-database-elastic-query-overview.md) (wersja zapoznawcza): Umożliwia uruchamianie zapytanie Transact-SQL, która obejmuje wiele baz danych. Umożliwia to połączenie narzędzi do raportowania, takie jak Excel, Power BI, Tableau, itp.
+* [Transakcje elastyczne](sql-database-elastic-transactions-overview.md): Ta funkcja umożliwia uruchamianie transakcje obejmujące wiele baz danych w usłudze Azure SQL Database. Transakcje elastyczne bazy danych są dostępne dla aplikacji .NET za pomocą ADO .NET i integracji z dobrze znanych programowania środowisko przy użyciu [klasy System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx).
 
 Na poniższym rysunku przedstawiono architekturę, która obejmuje **funkcje Elastic Database** względem kolekcji baz danych.
 
@@ -67,8 +67,8 @@ Większość aplikacji baz danych w skali chmury użyć kombinacji tych dwóch s
 ## <a name="sharding"></a>Dzielenie na fragmenty
 *Dzielenie na fragmenty* to technika, aby rozdystrybuować dużych ilości danych strukturalnych identycznie wiele niezależnych baz danych. Jest to szczególnie popularne wśród deweloperów rozwiązań w chmurze tworzenia oprogramowania jako oferty usługi (SAAS) dla klientów końcowych lub firmy. Ci klienci końcowi często są określane jako "dzierżawy". Dzielenie na fragmenty może być wymagany przez dowolną liczbę powodów:  
 
-* Łączna ilość danych jest zbyt duży, aby zmieścić w ramach ograniczeń pojedynczej bazy danych
-* Przepływność transakcji całkowitego obciążenia przekracza możliwości pojedynczej bazy danych
+* Łączna ilość danych jest zbyt duży, aby zmieścić w ramach ograniczeń poszczególnych baz danych
+* Przepływność transakcji całkowitego obciążenia przekracza możliwości poszczególnych baz danych
 * Dzierżawcy mogą wymagać fizyczne odizolowanie od siebie, więc osobne bazy danych są wymagane dla każdego dzierżawcy
 * Poszczególne sekcje bazy danych może być konieczne znajdują się w różnych lokalizacjach geograficznych dla zgodności, wydajność lub z przyczyn geopolitycznych.
 

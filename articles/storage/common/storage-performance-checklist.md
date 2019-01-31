@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: f865768e6ebfd9e01de1bd7e69c1224b66f2ea5e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: d627fa1ca52356c43c9a771f612ae6d043299678
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231792"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460833"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -52,7 +52,7 @@ W tym artykule organizuje sprawdzonych rozwiązań w następujących grupach. Sp
 | &nbsp; | Obiekty blob |Kopiowanie obiektów blob |[Kopiowanie blob znajdują się w sposób efektywny?](#subheading17) |
 | &nbsp; | Obiekty blob |Kopiowanie obiektów blob |[Czy używasz narzędzia AzCopy do zbiorczego kopiowania obiektów blob?](#subheading18) |
 | &nbsp; | Obiekty blob |Kopiowanie obiektów blob |[Czy używasz usługi Azure Import/Export do przesyłania dużych ilości danych?](#subheading19) |
-| &nbsp; | Obiekty blob |Używanie metadanych |[Czy przechowywania często używanych metadane dotyczące obiektów blob w ich metadanych?](#subheading20) |
+| &nbsp; | Obiekty blob |Use Metadata |[Czy przechowywania często używanych metadane dotyczące obiektów blob w ich metadanych?](#subheading20) |
 | &nbsp; | Obiekty blob |Szybkie przekazywanie |[Podczas próby szybko przekazać jeden obiekt blob, przekazujesz bloków w sposób równoległy?](#subheading21) |
 | &nbsp; | Obiekty blob |Szybkie przekazywanie |[Podczas próby szybko przekazać wiele obiektów blob, przekazujesz obiektów blob w sposób równoległy?](#subheading22) |
 | &nbsp; | Obiekty blob |Popraw typ obiektu Blob |[Czy używasz stronicowych obiektów blob lub blokowych obiektów blob, jeśli jest potrzebne?](#subheading23) |
@@ -147,7 +147,7 @@ Zwykle przeglądarki nie zezwoli JavaScript na stronie hostowanej przez witrynę
 Obie te technologie mogą pomóc w uniknięciu niepotrzebne obciążenie (i wąskie gardła) w aplikacji sieci web.  
 
 #### <a name="useful-resources"></a>Przydatne zasoby
-Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego, zobacz [sygnatur dostępu współdzielonego, część 1: opis modelu sygnatur dostępu Współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).  
+Aby uzyskać więcej informacji na temat sygnatury dostępu Współdzielonego, zobacz [sygnatur dostępu współdzielonego, część 1: Opis modelu sygnatur dostępu Współdzielonego](../storage-dotnet-shared-access-signature-part-1.md).  
 
 Aby uzyskać więcej informacji na temat mechanizmu CORS zobacz [obsługi udostępniania zasobów między źródłami (CORS) dla usług Azure Storage](https://msdn.microsoft.com/library/azure/dn535601.aspx).  
 
@@ -178,7 +178,7 @@ Należy ustawić limit połączeń, przed otwarciem żadnych połączeń.
 
 Dla innych języków programowania zobacz dokumentację danego języka, aby określić, jak ustawić limit połączeń.  
 
-Aby uzyskać dodatkowe informacje, zobacz wpis w blogu [usług sieci Web: równoczesnych połączeń](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
+Aby uzyskać dodatkowe informacje, zobacz wpis w blogu [usług sieci Web: Połączenia współbieżne](https://blogs.msdn.com/b/darrenj/archive/2005/03/07/386655.aspx).  
 
 #### <a name="subheading10"></a>Zwiększ ThreadPool Min wątków, jeśli przy użyciu kodu synchronicznego przy użyciu zadań asynchronicznych
 Ten kod zwiększy wątków z puli min wątków:  
@@ -255,10 +255,10 @@ Szybko przekazać obiekty BLOB, jest pierwsze pytanie do odpowiedzi: czy przekaz
 #### <a name="subheading21"></a>Szybkie przekazywanie jeden duży obiekt blob
 Aby szybko przekazać jeden duży obiekt blob, Twoja aplikacja kliencka należy przekazać jej bloków lub stron równolegle (co mając na uwadze cele skalowalności dla poszczególnych obiektów blob i konta magazynu jako całość).  Należy zauważyć, że oficjalnych bibliotek udostępnionych przez firmę Microsoft klienta RTM magazynu (.NET, Java) zdolność, aby to zrobić.  Dla każdej wersji biblioteki, użyj poniżej określonego obiektu/właściwości można ustawić poziom współbieżności:  
 
-* .NET: Zestaw ParallelOperationThreadCount obiektu BlobRequestOptions ma być używany.
+* .NET: Ustaw ParallelOperationThreadCount w obiekcie BlobRequestOptions ma być używany.
 * Java/Android: Use BlobRequestOptions.setConcurrentRequestCount()
 * Node.js: Użyj parallelOperationThreadCount od opcji żądania lub usługi blob.
-* C++: Użyj metody blob_request_options::set_parallelism_factor.
+* C++: Use the blob_request_options::set_parallelism_factor method.
 
 #### <a name="subheading22"></a>Szybkie przekazywanie wiele obiektów blob
 Aby szybko przekazać wiele obiektów blob, przekazywanie obiektów blob w sposób równoległy. To jest szybsza niż przekazywanie pojedynczego obiektów blob w czasie z bloku równoległe przekazywanie, ponieważ rozprzestrzenia się przekazywania na wielu partycjach usługi storage. Pojedynczy obiekt blob obsługuje tylko przepływność 60 MB na sekundę (około 480 MB/s). W czasie pisania kont LRS amerykańskiej obsługuje do 20 ruch przychodzący GB/s, który jest o wiele więcej niż obsługiwane przez poszczególne obiektu blob.  [Narzędzie AzCopy](#subheading18) wykonuje przekazywanie w równoległych domyślnie i jest zalecane w przypadku tego scenariusza.  
@@ -286,9 +286,9 @@ W tej sekcji przedstawiono kilka ustawień szybkiej konfiguracji, które można 
 #### <a name="subheading25"></a>Przy użyciu formatu JSON
 Począwszy od wersji usługi storage 2013-08-15, usłudze table service obsługuje, przy użyciu zamiast formatu AtomPub oparty na formacie XML do przesyłania danych tabeli. To może zmniejszyć rozmiary obciążeń żądań, o ile 75% i może znacznie poprawić wydajność aplikacji.
 
-Aby uzyskać więcej informacji, zobacz wpis [tabele platformy Azure firmy Microsoft: JSON: wprowadzenie](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) i [Format ładunku dla operacji usługi tabeli](https://msdn.microsoft.com/library/azure/dn535600.aspx).
+Aby uzyskać więcej informacji, zobacz wpis [tabele platformy Azure firmy Microsoft: Wprowadzenie do formatu JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) i [Format ładunku dla operacji usługi tabeli](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
-#### <a name="subheading26"></a>Nagle'a wyłączone
+#### <a name="subheading26"></a>Nagle Off
 Algorytm Nagle'a firmy jest często stosowana w sieciach TCP/IP w celu zwiększenia wydajności sieci. Jednak nie jest optymalna w każdych okolicznościach (na przykład wysoce interaktywnych środowisk). Dla usługi Azure Storage algorytm Nagle'a firmy ma negatywny wpływ na wydajność żądań do tabel i kolejek usługi i należy ją wyłączyć, jeśli jest to możliwe.  
 
 Aby uzyskać więcej informacji, zobacz nasz wpis w blogu [algorytm Nagle'a firmy jest nie przyjazną kierunku żądań o małym rozmiarze](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), co wyjaśnia dlaczego algorytm firmy Nagle'a źle współdziała z żądaniami, tabela i kolejka i pokazuje, jak ją wyłączyć w swoim kliencie aplikacja.  
@@ -304,7 +304,7 @@ Jak reprezentują i wykonuj zapytania na danych jest największy pojedynczy czyn
 Tabele są podzielone na partycje. Każda jednostka, przechowywane w partycji udostępnia ten sam klucz partycji i kluczu unikatowych wierszach, aby zidentyfikować go w ramach tej partycji. Partycje zapewniają korzyści, ale także wprowadzają limity skalowalności.  
 
 * Korzyści: Można aktualizować jednostek w tej samej partycji w jednym, atomic, batch transakcji, która zawiera maksymalnie 100 operacji przechowywania (ograniczenie całkowitego rozmiaru 4MB). Zakładając, że taką samą liczbę jednostek, które mają zostać pobrane, możesz także zbadać danych w jednej partycji efektywniej niż danych z różnych partycji (chociaż należy zapoznać się otrzymać dalsze zalecenia na wykonywanie zapytań o dane tabeli).
-* Limit skalowalności: dostęp do jednostek przechowywanych w jednej partycji nie może być równoważenia obciążenia ponieważ partycje obsługuje transakcje niepodzielne partii. Z tego powodu tę docelową skalowalność dla pojedynczej tabeli partycji jest mniejszy niż usługi tabeli jako całości.  
+* Limit skalowalności: Dostęp do jednostek przechowywanych w jednej partycji nie może być równoważenia obciążenia ponieważ partycje obsługuje transakcje niepodzielne partii. Z tego powodu tę docelową skalowalność dla pojedynczej tabeli partycji jest mniejszy niż usługi tabeli jako całości.  
 
 Ze względu na te cechy tabele i partycje powinna przyjąć następujące zasady projektowania:  
 
@@ -359,7 +359,7 @@ Transakcje usługi Batch są określane jako transakcje grupy jednostek (ETG) w 
 ##### <a name="subheading36"></a>UPSERT
 Użyj tabeli **Upsert** operacje wszędzie tam, gdzie to możliwe. Istnieją dwa rodzaje **Upsert**, które mogą być bardziej efektywne niż tradycyjne **Wstaw** i **aktualizacji** operacje:  
 
-* **InsertOrMerge**: Użyj tego ustawienia podczas przekazania podzbioru właściwości jednostki, ale nie wiesz, czy ta jednostka już istnieje. Jeśli jednostka istnieje, to wywołanie aktualizuje właściwości zawarte w **Upsert** operacji i pozostawia wszystkich istniejących właściwości są one, jeśli jednostka nie istnieje, Nowa jednostka do wstawienia. Jest to podobne do rzutowania w zapytaniu, w tym, że musisz przekazać właściwości, które zmieniają się.
+* **InsertOrMerge**: Użyj tego ustawienia podczas przekazywania podzbioru właściwości jednostki, ale nie wiesz, czy ta jednostka już istnieje. Jeśli jednostka istnieje, to wywołanie aktualizuje właściwości zawarte w **Upsert** operacji i pozostawia wszystkich istniejących właściwości są one, jeśli jednostka nie istnieje, Nowa jednostka do wstawienia. Jest to podobne do rzutowania w zapytaniu, w tym, że musisz przekazać właściwości, które zmieniają się.
 * **InsertOrReplace**: Użyj tego, gdy chcesz przekazać nowe jednostki, ale nie masz pewności, czy już istnieje. Należy używać tylko to, gdy wiesz, że nowo przesłanym jednostki jest całkowicie poprawny całkowicie zastępuje stare jednostki. Na przykład chcesz zaktualizować jednostki, która przechowuje lokalizację bieżącego użytkownika, niezależnie od tego, czy aplikacja wcześniej zapisanych danych lokalizacji dla użytkownika; Nowa jednostka lokalizacji zostało zakończone, a nie ma potrzeby dowolnych informacji z dowolnej poprzedniej jednostki.
 
 ##### <a name="subheading37"></a>Przechowywanie serii danych w pojedynczej jednostki
@@ -378,7 +378,7 @@ Kolejka może przetworzyć około 2000 komunikatów (1KB) na sekundę (AddMessag
 
 Wyświetl bieżące cele skalowalności w [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md).  
 
-### <a name="subheading40"></a>Nagle'a wyłączone
+### <a name="subheading40"></a>Nagle Off
 Zobacz sekcję dotyczącą konfiguracji tabeli, która w tym artykule omówiono algorytm Nagle'a — algorytm Nagle'a jest zazwyczaj negatywnie wpływać na wydajność żądań kolejki i należy je wyłączyć.  
 
 ### <a name="subheading41"></a>Rozmiar komunikatu
@@ -395,7 +395,7 @@ Koszt aktualności informacji, zobacz [cennik usługi Azure Storage](https://azu
 ### <a name="subheading44"></a>UpdateMessage
 Możesz użyć **UpdateMessage** zwiększenie limitu czasu niewidoczności, lub można zaktualizować informacji o stanie wiadomości. Gdy jest to zaawansowane, należy pamiętać, że każdy **UpdateMessage** operacji liczy się do tę docelową skalowalność. Jednak może to być to podejście znacznie bardziej efektywne niż posiadanie przepływu pracy, który przekazuje zadania z jedną kolejką na następny jako krok po kroku przez zadanie jest ukończone. Za pomocą **UpdateMessage** operacji umożliwia aplikacji w taki sposób zapisać stan zadania do wiadomości, a następnie kontynuować pracę, zamiast ponownie usługę kolejkowania komunikatów na kolejny krok zadania za każdym razem, gdy krok jest wykonywany.  
 
-Aby uzyskać więcej informacji, zobacz artykuł [jak: zmienić zawartość komunikatu w kolejce](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
+Aby uzyskać więcej informacji, zobacz artykuł [jak: Zmień zawartość komunikatu w kolejce](../queues/storage-dotnet-how-to-use-queues.md#change-the-contents-of-a-queued-message).  
 
 ### <a name="subheading45"></a>Architektura aplikacji
 Należy użyć kolejek się skalowalne architektury aplikacji. Poniżej wymieniono niektóre sposoby kolejek można użyć, aby Twoje aplikacje były bardziej skalowalne:  

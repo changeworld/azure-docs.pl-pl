@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 25ea4f41ac1fa36c7f9b6f64bc7c4eede4702f38
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.subservice: common
+ms.openlocfilehash: 0480a8d4079a39c8e365dde893a9a1af2d7341aa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315183"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453114"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
 Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.
@@ -33,7 +33,7 @@ Przed przystąpieniem do tworzenia zadania eksportu transferować dane z usługi
         - [Utwórz konto FedEX](https://www.fedex.com/en-us/create-account.html), lub 
         - [Tworzenie konta przez firmę DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-create-an-export-job"></a>Krok 1. Tworzenie zadania eksportu
+## <a name="step-1-create-an-export-job"></a>Krok 1: Tworzenie zadania eksportu
 
 Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
 
@@ -99,13 +99,13 @@ Wykonaj poniższe kroki, aby utworzyć zadanie eksportu w witrynie Azure portal.
 
     - Kliknij przycisk **OK** aby zakończyć tworzenie zadania eksportu.
 
-## <a name="step-2-ship-the-drives"></a>Krok 2. Dostarczaj dyski
+## <a name="step-2-ship-the-drives"></a>Krok 2: Dostarczaj dyski
 
 Jeśli nie znasz liczbę stacji, należy przejść do [Sprawdź liczbę dysków](#check-the-number-of-drives). Jeśli wiesz, liczba dysków, przejdź do wysłania dysków.
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3. Aktualizacja zadania przy użyciu informacji o śledzeniu
+## <a name="step-3-update-the-job-with-tracking-information"></a>Krok 3: Aktualizacja zadania przy użyciu informacji o śledzeniu
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
@@ -141,12 +141,12 @@ To *opcjonalne* krok ułatwia określa liczbę dysków wymaganych do zadania eks
     
     |Parametr wiersza polecenia|Opis|  
     |--------------------------|-----------------|  
-    |**/ logdir:**|Opcjonalny. Katalog dziennika. Plików pełnego dziennika są zapisywane do tego katalogu. Jeśli nie zostanie określony, bieżący katalog jest używany jako katalog dziennika.|  
+    |**/logdir:**|Opcjonalny. Katalog dziennika. Plików pełnego dziennika są zapisywane do tego katalogu. Jeśli nie zostanie określony, bieżący katalog jest używany jako katalog dziennika.|  
     |**/SN:**|Wymagany. Nazwa konta magazynu dla zadania eksportu.|  
-    |**/SK:**|Wymagane tylko, jeśli sygnatury dostępu Współdzielonego kontenera nie jest określony. Klucz konta dla konta magazynu dla zadania eksportu.|  
+    |**/sk:**|Wymagane tylko, jeśli sygnatury dostępu Współdzielonego kontenera nie jest określony. Klucz konta dla konta magazynu dla zadania eksportu.|  
     |**/csas:**|Wymagane tylko, jeśli nie określono klucza konta magazynu. Sygnatury dostępu Współdzielonego kontenera do wyświetlania listy obiektów blob, które mają zostać wyeksportowane przez zadanie eksportu.|  
-    |**/ ExportBlobListFile:**|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji interfejs API REST usługi Import/Export.|  
-    |**/ DriveSize:**|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.*, 500 GB, 1,5 TB.|  
+    |**/ExportBlobListFile:**|Wymagany. Ścieżka do pliku XML plik zawierający listę ścieżek obiektów blob lub obiektu blob prefiksy ścieżki dla obiektów blob do wyeksportowania. Format pliku używany w `BlobListBlobPath` element [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji interfejs API REST usługi Import/Export.|  
+    |**/DriveSize:**|Wymagany. Rozmiar dysków do użycia przez zadanie eksportu *np.*, 500 GB, 1,5 TB.|  
 
     Zobacz [przykład polecenia PreviewExport](#example-of-previewexport-command).
  
@@ -197,7 +197,7 @@ W poniższej tabeli przedstawiono przykłady ścieżek prawidłowy obiekt blob:
    | --- | --- | --- |
    | Rozpoczyna się od |/ |Eksportuje wszystkie obiekty BLOB na koncie magazynu |
    | Rozpoczyna się od |/$root / |Eksportuje wszystkie obiekty BLOB w kontenerze głównego |
-   | Rozpoczyna się od |/Book |Eksportuje wszystkie obiekty BLOB w dowolnym kontenerze, który rozpoczyna się od prefiksu **książki** |
+   | Rozpoczyna się od |/book |Eksportuje wszystkie obiekty BLOB w dowolnym kontenerze, który rozpoczyna się od prefiksu **książki** |
    | Rozpoczyna się od |/Music/ |Eksportuje wszystkie obiekty BLOB w kontenerze **utworów muzycznych** |
    | Rozpoczyna się od |/ music/love |Eksportuje wszystkie obiekty BLOB w kontenerze **utworów muzycznych** , zaczynać się od prefiksu **ulubionych** |
    | Równa się |$root/logo.bmp |Eksportowanie obiektów blob **logo.bmp** w kontenerze głównego |

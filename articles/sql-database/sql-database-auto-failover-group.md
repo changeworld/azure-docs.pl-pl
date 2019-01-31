@@ -1,6 +1,6 @@
 ---
 title: Grupy trybu failover — usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Automatyczny tryb failover grupy jest funkcją bazy danych SQL, która umożliwia zarządzanie replikacji i trybu failover automatyczne / skoordynowanego grupy baz danych na serwerze logicznym lub wszystkich baz danych w wystąpieniu zarządzanym.
+description: Automatyczny tryb failover grupy jest funkcją bazy danych SQL, która umożliwia zarządzanie replikacji i trybu failover automatyczne / skoordynowanego grupy baz danych na serwerze bazy danych SQL lub wszystkich baz danych w wystąpieniu zarządzanym.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,27 +11,27 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 958dcb8113f58409d413b5471c96d2e0ba83c361
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033812"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468703"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
-Automatyczny tryb failover grupy jest funkcją bazy danych SQL, która umożliwia zarządzanie replikacji i trybu failover grupy baz danych na serwerze logicznym lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie (obecnie dostępna w publicznej wersji zapoznawczej dla wystąpienia zarządzanego). Używa tych samych podstawowych technologii jako [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). Należy ręcznie zainicjować trybu failover, lub możesz go delegować do usługi SQL Database, na podstawie zasad zdefiniowanych przez użytkownika. Tę druga opcję umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
+Automatyczny tryb failover grupy jest funkcją bazy danych SQL, która umożliwia zarządzanie replikacji i trybu failover dla grupy baz danych na serwerze bazy danych SQL lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie (obecnie dostępna w publicznej wersji zapoznawczej dla wystąpienia zarządzanego). Używa tych samych podstawowych technologii jako [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). Należy ręcznie zainicjować trybu failover, lub możesz go delegować do usługi SQL Database, na podstawie zasad zdefiniowanych przez użytkownika. Tę druga opcję umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
 
 > [!NOTE]
-> Korzystanie z jednego lub pulami baz danych na serwer logiczny, wiele pomocniczych baz danych w tej samej lub różnych regionach, należy zastosować [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
+> Praca z autonomicznych baz danych w puli na serwerze bazy danych SQL wielu pomocnicze bazy danych w tej samej lub różnych regionach, należy zastosować [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
 
 Jeśli używasz grup automatyczny tryb failover zasady automatycznej pracy awaryjnej, ewentualnej awarii, która ma wpływ na co najmniej kilka baz danych w grupie skutkuje automatycznej pracy awaryjnej. Ponadto automatyczny tryb failover grupy zapewniają odczytu i zapisu oraz punktów końcowych odbiornika tylko do odczytu, które pozostają bez zmian podczas pracy w trybie Failover. Czy korzystasz z aktywacji ręcznego lub automatycznego trybu failover, pracy awaryjnej przełącza wszystkie pomocnicze bazy danych w grupie do podstawowej. Po zakończeniu pracy w trybie failover bazy danych rekord DNS jest automatycznie aktualizowana do przekierowania punktów końcowych w nowym regionie. Dla określonych danych RPO i RTO, zobacz [omówienie ciągłości](sql-database-business-continuity.md).
 
-Jeśli używasz grup automatyczny tryb failover zasady automatycznej pracy awaryjnej, ewentualnej awarii, który ma wpływ na baz danych na serwerze logicznym lub powoduje wystąpienie automatycznej pracy awaryjnej. Można zarządzać za pomocą grupy automatyczny tryb failover:
+Jeśli używasz grup automatyczny tryb failover zasady automatycznej pracy awaryjnej, ewentualnej awarii, który ma wpływ na baz danych na serwerze bazy danych SQL Database lub wystąpienia wynikiem automatycznej pracy awaryjnej. Można zarządzać za pomocą grupy automatyczny tryb failover:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [Program PowerShell: Grupy trybu failover](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
+- [PowerShell: Grupy trybu failover](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
 - [INTERFEJS API REST: Grupy trybu failover](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
 Po przejściu w tryb failover upewnij się, że wymagania dotyczące uwierzytelniania dla serwera i bazy danych są skonfigurowane na nową podstawową. Aby uzyskać więcej informacji, zobacz [zabezpieczeń bazy danych SQL Database po awarii](sql-database-geo-replication-security-config.md).
@@ -42,11 +42,11 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Grupy trybu failover**
 
-  Grupy trybu failover jest grupą baz danych zarządzanych przez jeden serwer logiczny lub w ramach jednego wystąpienia zarządzanego, który przełączanie do trybu failover jako jednostka do innego regionu w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym.
+  Grupy trybu failover jest grupą baz danych zarządzanych przez jeden serwer bazy danych SQL lub w ramach jednego wystąpienia zarządzanego, który przełączanie do trybu failover jako jednostka do innego regionu w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym.
 
-  - **Serwerami logicznymi**
+  - **Serwery usługi SQL Database**
 
-     Z serwerami logicznymi niektórych lub wszystkich baz danych użytkownika na jednym serwerze można umieścić w grupie trybu failover. Ponadto serwer logiczny obsługuje wiele grup trybu failover na jednym serwerze.
+     Na serwerze bazy danych SQL niektórych lub wszystkich baz danych użytkownika na jednym serwerze bazy danych SQL można umieścić w grupie trybu failover. Serwer SQL Database obsługuje także wiele grup trybu failover na jednym serwerze bazy danych SQL.
 
   - **Wystąpienia zarządzanego**
   
@@ -54,15 +54,15 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Podstawowy**
 
-  Serwer logiczny lub wystąpienia zarządzanego, który jest hostem podstawowych baz danych w grupie trybu failover.
+  Serwer usługi SQL Database lub wystąpienia zarządzanego, który jest hostem podstawowych baz danych w grupie trybu failover.
 
 - **Pomocniczy**
 
-  Serwer logiczny lub wystąpienia zarządzanego, który jest hostem pomocniczych baz danych w grupie trybu failover. Pomocniczy nie może należeć do tego samego regionu podstawowego.
+  Serwer usługi SQL Database lub wystąpienia zarządzanego, który jest hostem pomocniczych baz danych w grupie trybu failover. Pomocniczy nie może należeć do tego samego regionu podstawowego.
 
-- **Dodawanie baz danych do grupy trybu failover na serwerze logicznym**
+- **Dodawanie baz danych do grupy trybu failover na serwerze bazy danych SQL**
 
-  Możesz umieścić kilka pojedynczych baz danych lub bazy danych w puli elastycznej na tym samym serwerze logicznym do tej samej grupy trybu failover. Jeśli dodasz pojedynczej bazy danych do grupy trybu failover, automatycznie tworzy pomocniczą bazę danych przy użyciu tego samego rozmiaru edition i mocy obliczeniowej. Jeśli podstawowa baza danych znajduje się w puli elastycznej, pomocnicza jest automatycznie tworzony w elastycznej puli o takiej samej nazwie. Po dodaniu bazy danych, która ma już pomocniczej bazy danych serwera pomocniczego, że replikacja geograficzna jest dziedziczona przez grupę. Po dodaniu bazy danych, która ma już pomocniczej bazy danych na serwerze, który nie jest częścią grupy pracy awaryjnej, nowym serwerem pomocniczym jest tworzony w serwerze pomocniczym.
+  Można umieścić kilka pojedynczych baz danych lub bazy danych w puli elastycznej na tym samym serwerze bazy danych SQL w tej samej grupy trybu failover. Jeśli dodasz pojedynczej bazy danych do grupy trybu failover, automatycznie tworzy pomocniczą bazę danych przy użyciu tego samego rozmiaru edition i mocy obliczeniowej. Jeśli podstawowa baza danych znajduje się w puli elastycznej, pomocnicza jest automatycznie tworzony w elastycznej puli o takiej samej nazwie. Po dodaniu bazy danych, która ma już pomocniczej bazy danych serwera pomocniczego, że replikacja geograficzna jest dziedziczona przez grupę. Po dodaniu bazy danych, która ma już pomocniczej bazy danych na serwerze, który nie jest częścią grupy pracy awaryjnej, nowym serwerem pomocniczym jest tworzony w serwerze pomocniczym.
   
 > [!IMPORTANT]
   > W wystąpieniu zarządzanym replikacja wszystkich baz danych użytkownika. Nie można wybrać podzbiór baz danych użytkownika na potrzeby replikacji w grupie trybu failover.
@@ -71,9 +71,9 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   Rekord CNAME w systemie DNS sformułowany wskazujący na bieżący podstawowy adres URL. Umożliwia aplikacji SQL odczytu i zapisu przezroczyste ponownie nawiązać połączenie z podstawowej bazy danych podstawowego zmianie po włączeniu trybu failover.
 
-  - **Serwer logiczny rekordu CNAME systemu DNS dla odbiornika do odczytu i zapisu**
+  - **Serwer usługi SQL Database rekordu CNAME systemu DNS dla odbiornika do odczytu i zapisu**
 
-     Na serwerze logicznym rekordu CNAME systemu DNS dla grupy trybu failover, wskazujący na bieżący podstawowy adres URL został utworzony jako `failover-group-name.database.windows.net`.
+     Na serwerze bazy danych SQL, rekordu CNAME systemu DNS dla grupy trybu failover, wskazujący na bieżący podstawowy adres URL został utworzony jako `failover-group-name.database.windows.net`.
 
   - **Zarządzane rekordu CNAME systemu DNS wystąpienia dla odbiornika do odczytu i zapisu**
 
@@ -83,9 +83,9 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   Rekord CNAME w systemie DNS sformułowany wskazujący odbiornika tylko do odczytu, wskazujący na adres URL pomocniczej. Umożliwia aplikacji SQL tylko do odczytu do jawnego połączenia do regionu pomocniczego, za pomocą określonych reguł równoważenia obciążenia.
 
-  - **Serwer logiczny rekordu CNAME systemu DNS dla odbiornika tylko do odczytu**
+  - **Serwer usługi SQL Database rekordu CNAME systemu DNS dla odbiornika tylko do odczytu**
 
-     Na serwerze logicznym rekordu CNAME systemu DNS dla odbiornika tylko do odczytu, wskazujący na adres URL pomocniczy został utworzony jako `failover-group-name.secondary.database.windows.net`.
+     Na serwerze bazy danych SQL, rekordu CNAME systemu DNS dla odbiornika tylko do odczytu, wskazujący na adres URL pomocniczy został utworzony jako `failover-group-name.secondary.database.windows.net`.
 
   - **Zarządzane rekordu CNAME systemu DNS wystąpienia dla odbiornika tylko do odczytu**
 
@@ -128,7 +128,7 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Najlepsze rozwiązania przy użyciu grupy trybu failover przy użyciu pojedynczych baz danych i pul elastycznych
 
-Grupa automatyczny tryb failover musi być skonfigurowany na podstawowym serwerze logicznym i podłącz go do pomocniczego serwera logicznego w innym regionie platformy Azure.  Grupy mogą obejmować wszystkie lub niektóre bazy danych na tych serwerach. Na poniższym diagramie przedstawiono typową konfigurację aplikacji chmurowych magazynu geograficznie nadmiarowego przy użyciu wielu baz danych i grupy automatyczny tryb failover.
+Grupa automatyczny tryb failover musi być skonfigurowany na serwerze podstawowym bazy danych SQL i połącz go na serwer pomocniczy bazy danych SQL w innym regionie platformy Azure.  Grupy mogą obejmować wszystkie lub niektóre bazy danych na tych serwerach. Na poniższym diagramie przedstawiono typową konfigurację aplikacji chmurowych magazynu geograficznie nadmiarowego przy użyciu wielu baz danych i grupy automatyczny tryb failover.
 
 ![Automatyczny tryb failover](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
@@ -295,7 +295,7 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 | [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Pobiera konfigurację grupy trybu failover |
 | [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Modyfikuje konfigurację grupy trybu failover |
 | [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy |
-| [Dodaj AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Dodaje jeden lub więcej baz danych do grupy trybu failover usługi Azure SQL Database|
+| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Dodaje jeden lub więcej baz danych do grupy trybu failover usługi Azure SQL Database|
 |  | |
 
 > [!IMPORTANT]
@@ -325,13 +325,13 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 
 | Interfejs API | Opis |
 | --- | --- |
-| Nowe AzureRmSqlDatabaseInstanceFailoverGroup |To polecenie tworzy grupę trybu failover i rejestruje je na serwerach podstawowych i pomocniczych|
-| Zestaw AzureRmSqlDatabaseInstanceFailoverGroup |Modyfikuje konfigurację grupy trybu failover|
+| New-AzureRmSqlDatabaseInstanceFailoverGroup |To polecenie tworzy grupę trybu failover i rejestruje je na serwerach podstawowych i pomocniczych|
+| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Modyfikuje konfigurację grupy trybu failover|
 | Get-AzureRmSqlDatabaseInstanceFailoverGroup |Pobiera konfigurację grupy trybu failover|
-| AzureRmSqlDatabaseInstanceFailoverGroup przełącznika |Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy|
-| Usuń AzureRmSqlDatabaseInstanceFailoverGroup | Usuwa grupę trybu failover|
+| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy|
+| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Usuwa grupę trybu failover|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie grupy trybu failover bazy danych SQL za pomocą jednego i puli baz danych
+### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie grupami w tryb failover bazy danych SQL przy użyciu autonomicznego i bazy danych w puli
 
 | Interfejs API | Opis |
 | --- | --- |

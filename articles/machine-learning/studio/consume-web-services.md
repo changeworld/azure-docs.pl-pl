@@ -1,8 +1,21 @@
 ---
-Tytuł: Używanie titleSuffix usługi sieci web: Opis usługi Azure Machine Learning Studio: Po wdrożeniu usługi uczenia maszynowego z usługi Azure Machine Learning Studio, usługę sieci Web typu RESTFul mogą być używane jako usługi w czasie rzeczywistym odpowiedź na żądanie lub jako usługę wykonywania wsadowego.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 06/02/2017
+title: Używanie usługi sieci web
+titleSuffix: Azure Machine Learning Studio
+description: Po wdrożeniu usługi uczenia maszynowego z usługi Azure Machine Learning Studio, usługę sieci Web typu RESTFul mogą być używane jako usługi w czasie rzeczywistym odpowiedź na żądanie lub jako usługę wykonywania wsadowego.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 06/02/2017
+ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464385"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Jak używać usługi sieci web Azure Machine Learning Studio
 

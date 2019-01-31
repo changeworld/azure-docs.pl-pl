@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0ade4ac054f345084cf0bc0a6dc7885329eb8b9c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141887"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458027"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Tworzenie funkcji dla danych w klastrze usługi Hadoop przy użyciu zapytań Hive
 W tym dokumencie przedstawiono sposób tworzenia funkcji — dane przechowywane w klastrze usługi Azure HDInsight Hadoop przy użyciu zapytań programu Hive. Te zapytania programu Hive za pomocą osadzonych funkcji Hive User-Defined przez użytkownika (UDF), skryptów, dla której są dostarczane.
@@ -136,26 +136,26 @@ Wyrażenia matematyczne, które obliczyć odległość między dwoma współrzę
 
 Pełną listę gałęzi osadzone funkcje zdefiniowane przez użytkownika można znaleźć w **funkcje wbudowane** sekcji na <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a>).  
 
-## <a name="tuning"></a> Tematy zaawansowane: gałąź dostrajanie parametrów do zwiększenia szybkości zapytań
+## <a name="tuning"></a> Zaawansowane tematy: Dostosuj parametry gałąź do zwiększenia szybkości zapytań
 Domyślne parametry Hive klastra może nie być odpowiednie dla zapytań programu Hive i dane, które są przetwarzania zapytań. W tej sekcji omówiono niektóre parametry, które użytkownicy można dostrajanie poprawić wydajność zapytań technologii Hive. Użytkownicy musieli dodać parametr dostrajania kwerendy przed zapytania przetwarzania danych.
 
-1. **Miejsca na stercie Java**: dla zapytań obejmujących dołączenie do dużych zestawów danych lub przetwarzania rekordów długie **brakować miejsca na stercie** jest jednym z typowych problemów. Ten błąd można uniknąć przez ustawienie parametrów *mapreduce.map.java.opts* i *mapreduce.task.io.sort.mb* na odpowiednie wartości. Oto przykład:
+1. **Miejsca na stercie Java**: Dla zapytań obejmujących dołączenie do dużych zestawów danych lub przetwarzania rekordów długie **brakować miejsca na stercie** jest jednym z typowych problemów. Ten błąd można uniknąć przez ustawienie parametrów *mapreduce.map.java.opts* i *mapreduce.task.io.sort.mb* na odpowiednie wartości. Oto przykład:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
     Ten parametr przydziela pamięci 4GB miejsca na stercie Java i sprawia, że sortowanie bardziej wydajne przez przydzielanie większej ilości pamięci dla niego. To dobry pomysł, aby odtworzyć za pomocą tych środków w przypadku dowolnego zadania, błędy związane z miejsca na stercie.
 
-1. **Systemu plików DFS rozmiaru bloku**: ten parametr określa najmniejsza jednostka danych przechowywanych w systemie plików. Na przykład jeśli rozmiar bloku systemu plików DFS jest 128 MB, a następnie dowolnych danych o rozmiarze mniejsza i maksymalnie 128 MB jest przechowywany w jednym bloku. Dane, które są większe niż 128 MB jest przydzielony dodatkowe bloki. 
+1. **Systemu plików DFS rozmiaru bloku**: Ten parametr określa najmniejsza jednostka danych przechowywanych w systemie plików. Na przykład jeśli rozmiar bloku systemu plików DFS jest 128 MB, a następnie dowolnych danych o rozmiarze mniejsza i maksymalnie 128 MB jest przechowywany w jednym bloku. Dane, które są większe niż 128 MB jest przydzielony dodatkowe bloki. 
 2. Wybierając rozmiar małych blokach powoduje dużych kosztów ogólnych na platformie Hadoop, ponieważ węzeł nazw ma do przetworzenia wiele więcej żądań w celu znalezienia odpowiedniego bloku odnoszących się do pliku. Zalecane ustawienie w przypadku, gdy zajmujących się gigabajty (lub więcej) danych:
 
         set dfs.block.size=128m;
 
-2. **Optymalizacja operacji tworzenia sprzężenia w gałęzi**: podczas operacji łączenia w ramach map/reduce zazwyczaj miejsce w fazie Zmniejsz czasami ogromne korzyści można osiągnąć, planowanie sprzężeń w fazie mapy (zwane również "mapjoins"). Aby skierować gałęzi, aby to zrobić, jeśli to możliwe, należy ustawić:
+2. **Optymalizacja operacji tworzenia sprzężenia w gałęzi**: Podczas operacji łączenia w ramach map/reduce zazwyczaj miejsce w fazie reduce, czasami ogromne korzyści można osiągnąć dzięki zaplanowaniu sprzężeń w fazie mapy (zwane również "mapjoins"). Aby skierować gałęzi, aby to zrobić, jeśli to możliwe, należy ustawić:
    
        set hive.auto.convert.join=true;
 
-3. **Określanie liczby liczby maperów do gałęzi**: Hadoop podczas zezwala użytkownikowi na ustawianie liczby reduktorów, liczba liczby maperów jest zwykle nie można ustawić przez użytkownika. Lewy, umożliwiająca pewien stopień kontroli o tym numerze jest wybranie zmienne Hadoop *mapred.min.split.size* i *mapred.max.split.size* jako rozmiar każdej mapy zadania jest określana przez:
+3. **Określanie liczby liczby maperów do gałęzi**: Gdy Hadoop zezwala użytkownikowi na ustawianie liczby reduktorów, liczba liczby maperów jest zwykle nie można ustawić przez użytkownika. Lewy, umożliwiająca pewien stopień kontroli o tym numerze jest wybranie zmienne Hadoop *mapred.min.split.size* i *mapred.max.split.size* jako rozmiar każdej mapy zadania jest określana przez:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

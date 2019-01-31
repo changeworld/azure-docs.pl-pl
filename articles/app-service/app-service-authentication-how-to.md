@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722655"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301581"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service
 
@@ -151,7 +151,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 Usługa App Service przekazuje oświadczenia użytkownika do aplikacji za pomocą specjalnych nagłówków. Zewnętrzne żądania nie są dozwolone do ustawiania tych nagłówków, dzięki czemu są one obecne tylko wtedy, gdy ustawiony przez usługę App Service. Niektóre nagłówki przykład obejmują:
 
-* X-MS-KLIENT PRINCIPAL-NAME
+* X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
 Kod, który jest zapisywany w dowolnym języku lub framework można uzyskać informacji wymaganych z tych nagłówków. W przypadku aplikacji platformy ASP.NET 4.6 **ClaimsPrincipal** jest automatycznie ustawiana odpowiednimi wartościami.
@@ -165,7 +165,7 @@ W kodzie serwera tokenów właściwe dla dostawcy są wprowadzane w nagłówku �
 | Dostawca | Nazwy nagłówków |
 |-|-|
 | Usługa Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
-| Token usługi Facebook | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
+| Facebook Token | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |
 | Google | `X-MS-TOKEN-GOOGLE-ID-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-ACCESS-TOKEN` <br/> `X-MS-TOKEN-GOOGLE-EXPIRES-ON` <br/> `X-MS-TOKEN-GOOGLE-REFRESH-TOKEN` |
 | Konto Microsoft | `X-MS-TOKEN-MICROSOFTACCOUNT-ACCESS-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-EXPIRES-ON` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-AUTHENTICATION-TOKEN` <br/> `X-MS-TOKEN-MICROSOFTACCOUNT-REFRESH-TOKEN` |
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
@@ -176,9 +176,9 @@ Z poziomu kodu klienta (np. aplikacji mobilnej lub JavaScript w przeglądarce) w
 > [!NOTE]
 > Tokeny dostępu służą do uzyskiwania dostępu do dostawcy zasobów, dzięki czemu są one występuje tylko w przypadku konfigurowania dostawcy z kluczem tajnym klienta. Aby zobaczyć, jak uzyskać tokeny odświeżania, zobacz [odświeżanie tokenów dostępu](#refresh-access-tokens).
 
-## <a name="refresh-access-tokens"></a>Odświeżanie tokenów dostępu
+## <a name="refresh-identity-provider-tokens"></a>Tożsamość dostawcy tokenów odświeżania
 
-Po wygaśnięciu token dostępu z dostawcą, musisz ponownego uwierzytelnienia użytkownika. Możesz uniknąć wygaśnięcia tokenu, wprowadzając `GET` wywołanie `/.auth/refresh` punktu końcowego aplikacji. Po wywołaniu usługi App Service automatycznie odświeża tokenów dostępu w magazynie tokenów dla tego uwierzytelnionego użytkownika. Kolejnych żądań tokenów przez kod aplikacji uzyskiwać tokeny odświeżony. Jednak w wyniku odświeżenia tokenu do pracy, token magazynu musi zawierać [tokenów odświeżania](https://auth0.com/learn/refresh-tokens/) dla dostawcy. Opisano sposób uzyskania tokenów odświeżania przez każdego dostawcy, ale poniżej przedstawiono krótkie podsumowanie:
+Gdy token dostępu z dostawcą (nie [tokenu sesji](#extend-session-token-expiration-grace-period)) wygaśnie, należy ponownego uwierzytelnienia użytkownika, aby ponownie użyć tego tokenu. Możesz uniknąć wygaśnięcia tokenu, wprowadzając `GET` wywołanie `/.auth/refresh` punktu końcowego aplikacji. Po wywołaniu usługi App Service automatycznie odświeża tokenów dostępu w magazynie tokenów dla tego uwierzytelnionego użytkownika. Kolejnych żądań tokenów przez kod aplikacji uzyskiwać tokeny odświeżony. Jednak w wyniku odświeżenia tokenu do pracy, token magazynu musi zawierać [tokenów odświeżania](https://auth0.com/learn/refresh-tokens/) dla dostawcy. Opisano sposób uzyskania tokenów odświeżania przez każdego dostawcy, ale poniżej przedstawiono krótkie podsumowanie:
 
 - **Google**: Dołącz `access_type=offline` parametr ciągu zapytania usługi `/.auth/login/google` wywołania interfejsu API. Jeśli używasz zestawu SDK aplikacji mobilnych, można dodać parametr do jednego z `LogicAsync` przeciążenia (zobacz [tokenów odświeżania Google](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Nie zapewnia tokenów odświeżania. Długotrwałe tokenów wygaśnie po upływie 60 dni (zobacz [wygaśnięcia Facebook i rozszerzenie tokenów dostępu](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
@@ -213,9 +213,9 @@ function refreshTokens() {
 
 Jeśli użytkownik odwołuje uprawnienia udzielone aplikacji, wywołania do `/.auth/me` może się nie powieść `403 Forbidden` odpowiedzi. Aby zdiagnozować błędy, sprawdź dzienniki aplikacji, aby uzyskać szczegółowe informacje.
 
-## <a name="extend-session-expiration-grace-period"></a>Przedłużyć okres prolongaty wygaśnięcia sesji
+## <a name="extend-session-token-expiration-grace-period"></a>Przedłużenie okresu prolongaty wygaśnięcia tokenu sesji
 
-Po wygaśnięciu uwierzytelnionej sesji jest domyślnie 72-godzinny okres prolongaty. W tym okresie prolongaty możesz odświeżyć pliku cookie sesji lub tokenu sesji przy użyciu usługi App Service bez ponownego uwierzytelniania nazwy użytkownika. Można wywołać `/.auth/refresh` gdy token sesji lub plik cookie sesji, na których staje się nieprawidłowy i nie trzeba samodzielnie śledzić wygaśnięcia tokenu. 72-godzinny okres prolongaty, po wygaśnięciu, użytkownik musi ponownie zaloguj do pobrania pliku cookie sesji prawidłowe lub tokenu sesji.
+Sesja uwierzytelniona wygasa po upływie 8 godzin. Po wygaśnięciu uwierzytelnionej sesji jest domyślnie 72-godzinny okres prolongaty. W tym okresie prolongaty możesz odświeżyć tokenu sesji przy użyciu usługi App Service bez ponownego uwierzytelniania nazwy użytkownika. Można wywołać `/.auth/refresh` kiedy tokenu sesji staje się nieprawidłowy i nie trzeba samodzielnie śledzić wygaśnięcia tokenu. 72-godzinny okres prolongaty, po wygaśnięciu, użytkownik musi ponownie zaloguj można uzyskać tokenu prawidłową sesję.
 
 72 godziny nie jest wystarczająco dużo czasu, można rozszerzyć tego okna wygaśnięcia. Rozszerzanie wygaśnięcia w długim okresie może mieć wpływ zabezpieczeń (na przykład gdy token uwierzytelniania jest ujawnione lub kradzieży). Dlatego należy pozostawić domyślne 72 godziny lub Ustaw okres rozszerzenia do najmniejszej wartości.
 

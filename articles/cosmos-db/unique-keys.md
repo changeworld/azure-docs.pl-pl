@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 20e5c96110f07d8eaec218ed167c87a48fd65782
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 73d4ba0c82f26a6249528f2dbef1fd30f99ccedb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037382"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475877"
 ---
-# <a name="unique-keys-in-azure-cosmos-db"></a>Unikatowe klucze w usłudze Azure Cosmos DB
+# <a name="unique-key-constraints-in-azure-cosmos-db"></a>Unikatowe ograniczenia klucza w usłudze Azure Cosmos DB
 
 Unikatowe klucze umożliwiają dodanie warstwy integralności danych do kontenera Cosmos. Możesz utworzyć zasady unikatowych kluczy podczas tworzenia kontenera Cosmos. Z unikatowymi kluczami, można zapewnić unikatowość co najmniej jednej wartości w ramach partycji logicznej (unikatowość na można zagwarantować [klucza partycji](partition-data.md)). Po utworzeniu kontenera za pomocą zasady unikatowych kluczy, uniemożliwia tworzenie wszelkich nowych (lub zaktualizowanych) zduplikowane elementy w ramach partycji logicznej określony przez unikatowe ograniczenie klucza. Klucz partycji w połączeniu z unikatowości unikatowe gwarancje klucza elementu w zakresie kontenera.
 
@@ -26,8 +26,8 @@ Jeśli chcesz zapewnić użytkownikom możliwość tworzenia wielu elementów pr
 |---|---|---|---|
 |Contoso|Gaby|Duperre|gaby@contoso.com |
 |Contoso|Gaby|Duperre|gaby@fabrikam.com|
-|Firma Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
-|Firma Fabrikam|Ivanowi|Duperre|gaby@fabrikam.com|
+|Fabrikam|Gaby|Duperre|gaby@fabrikam.com|
+|Fabrikam|Ivan|Duperre|gaby@fabrikam.com|
 |Fabrkam|   |Duperre|gaby@fabraikam.com|
 |Fabrkam|   |   |gaby@fabraikam.com|
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: ac50078dcc60e925f1e2e27a1296b2644939baef
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e7d08ec0d25e7666acb510c4bae5533975b21039
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153729"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296549"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
@@ -155,7 +155,10 @@ Kliknij, aby wyświetlić listę działań w tym przebiegu potoku. W **akcje** k
 
 ![Monitorowanie uruchomień działania](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-Kliknij przycisk "**szczegóły**" link w obszarze **akcje** Aby wyświetlić szczegóły wykonania działania kopiowania i charakterystyk wydajności. Przedstawia on informacje takie jak wolumin/wiersze/pliki danych skopiowane ze źródła do ujścia, przepływności, kroki przechodzi przez odpowiedni czas trwania i używane konfiguracje dla danego scenariusza kopiowania. W niektórych scenariuszach, pojawi się także "**porady dotyczące dostrajania wydajności**" sekcji u góry, który informuje o identyfikowany wąskie gardło i prowadzi Cię o tym, jak zwiększyć przepływność kopiowania dla takiej sytuacji kopiowania, zobacz przykład [tutaj](#performance-and-tuning).
+Kliknij przycisk "**szczegóły**" link w obszarze **akcje** Aby wyświetlić szczegóły wykonania działania kopiowania i charakterystyk wydajności. Przedstawia on informacje takie jak wolumin/wiersze/pliki danych skopiowane ze źródła do ujścia, przepływności, kroki przechodzi przez odpowiedni czas trwania i używane konfiguracje dla danego scenariusza kopiowania. 
+
+>[!TIP]
+>W niektórych scenariuszach, pojawi się także "**porady dotyczące dostrajania wydajności**" na podstawie kopii monitorowania strony, która informuje, zidentyfikować wąskie gardło i prowadzi Cię w celu zmiany w taki sposób, aby zwiększyć przepływność kopiowania, zobacz przykład ze szczegółowymi informacjami [tutaj](#performance-and-tuning).
 
 **Przykład: skopiuj z usługi Amazon S3 do usługi Azure Data Lake Store**
 ![szczegóły uruchamiania działania monitora](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -233,10 +236,13 @@ Domyślnie działanie kopiowania zatrzymuje kopiowania danych i zwraca błąd, g
 
 Zobacz [dostrajania przewodnik dotyczący wydajności działania kopiowania i](copy-activity-performance.md), która opisuje kluczowe czynniki wpływające na wydajność przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory. Ponadto Wyświetla zaobserwowanego podczas testowania wewnętrznego i w tym artykule omówiono różne sposoby, aby zoptymalizować wydajność działania kopiowania.
 
-W niektórych scenariuszach podczas wykonywania działania kopiowania w usłudze ADF, pojawi się także "**porady dotyczące dostrajania wydajności**" sekcji w górnej części [działanie monitorowania strony kopiowania](#monitor-visually), informuje identyfikowany wąskie gardło i prowadzi Cię o tym, jak zwiększyć przepływność kopiowania dla takiej sytuacji kopiowania.
+W niektórych przypadkach po wykonaniu działania kopiowania w usłudze ADF, bezpośrednio zobaczysz "**porady dotyczące dostrajania wydajności**" w górnej części [działanie monitorowania strony kopiowania](#monitor-visually) jak pokazano w poniższym przykładzie. Go nie pozwalają określić wąskie gardło do wykonywania kopii danej tylko przeprowadzi Cię w celu zmiany w taki sposób, aby zwiększyć przepływność kopiowania. Wydajność, której porady dotyczące dostrajania aktualnie zawierają sugestie, takich jak przy użyciu technologii PolyBase podczas kopiowania danych do usługi Azure SQL Data Warehouse, aby zwiększyć liczbę usługi Azure Cosmos DB RU lub jednostek DTU bazy danych SQL Azure, gdy zasobu na dane przechowywane po stronie jest wąskie gardło, aby usunąć niepotrzebne przygotowane kopiowania, itd. Dostrajanie reguł wydajności będą stopniowo wzbogacone także.
 
-**Przykład: Skopiuj do bazy danych SQL Azure za pomocą wskazówki dotyczące dostrajania wydajności**
-![skopiuj monitorowanie za pomocą wskazówki dotyczące dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+**Przykład: kopiowania do bazy danych SQL Azure, za pomocą wskazówki dotyczące dostrajania wydajności**
+
+W tym przykładzie podczas kopiowania Uruchom ADF Zauważ, że ujścia Azure SQL DB osiągnie wysokie wykorzystanie jednostek DTU, której spowalnia operacje zapisu, dlatego sugestię jest zwiększenie warstwy bazy danych SQL Azure za pomocą więcej jednostek DTU. 
+
+![Skopiuj monitorowanie za pomocą wskazówki dotyczące dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>Przyrostowa kopia 
 Usługa Data Factory obsługuje scenariusze dla przyrostowego kopiowania danych różnicowych z magazynu danych źródłowych do docelowego magazynu danych. Zobacz [samouczek: przyrostowe kopiowanie danych](tutorial-incremental-copy-overview.md). 

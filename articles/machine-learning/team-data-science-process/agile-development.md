@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ee8e3e3ef33a8b09b92d4dfc262fce26dd60abb3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: adf713fc3f875168f99b302b0a9affef88e8414f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134407"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457688"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Programowanie metodą agile projektów do nauki o danych
 
@@ -38,20 +38,20 @@ Na poniższym rysunku przedstawiono typowy sprint, planowanie, kodowanie i przep
 
 ##  1. <a name='Terminology-1'></a>Terminologia 
 
-W przetwarzania TDSP przebiegu framework planowania, istnieją cztery typy często używanych **elementów roboczych**: **funkcji**, **historii użytkownika**, **zadań**, i **Usterki**. Każdy projekt obsługuje pojedynczą Zaległość dla wszystkich elementów roboczych. Nie występuje Zaległość na poziomie repozytorium Git w projekcie. Oto ich definicje:
+W przetwarzania TDSP przebiegu framework planowania, istnieją cztery typy często używanych **elementów roboczych**: **Funkcja**, **historii użytkownika**, **zadań**, i **usterki**. Każdy projekt obsługuje pojedynczą Zaległość dla wszystkich elementów roboczych. Nie występuje Zaległość na poziomie repozytorium Git w projekcie. Oto ich definicje:
 
-- **Funkcja**: funkcja odnosi się do zaangażowania projektu. Różne engagements za pomocą klienta są traktowane jako różne funkcje. Podobnie najlepiej należy wziąć pod uwagę poszczególne etapy projektu za pomocą klienta jako różne funkcje. Jeśli wybierzesz takie jak schemat ***ClientName EngagementName*** nazwę funkcji, następnie możesz łatwo rozpoznać kontekst projektu/zaangażowania nazw samodzielnie.
-- **Historia**: historii elementów pracy, które są potrzebne do ukończenia funkcji (projekt) end-to-end. Przykłady scenariuszy:
+- **Funkcja**: Funkcja odnosi się do zaangażowania projektu. Różne engagements za pomocą klienta są traktowane jako różne funkcje. Podobnie najlepiej należy wziąć pod uwagę poszczególne etapy projektu za pomocą klienta jako różne funkcje. Jeśli wybierzesz takie jak schemat ***ClientName EngagementName*** nazwę funkcji, następnie możesz łatwo rozpoznać kontekst projektu/zaangażowania nazw samodzielnie.
+- **Historia**: Wątki są elementy pracy, które są potrzebne do ukończenia funkcji (projekt) end-to-end. Przykłady scenariuszy:
     - Pobieranie danych 
     - Eksplorowanie danych 
     - Generowanie funkcji
     - Tworzenie modeli
     - Operacjonalizacji modeli 
     - Ponowne trenowanie modeli
-- **Zadanie**: zadania są elementy robocze można przypisać kodu lub dokument lub innych działań, które należy wykonać w celu przeprowadzenia określonego wątku. Na przykład zadania w wątku *pobieranie danych* może być:
+- **Zadanie**: Zadania są można przypisać kod lub elementy robocze dokumentu lub innych działań, które należy wykonać w celu przeprowadzenia określonego wątku. Na przykład zadania w wątku *pobieranie danych* może być:
     -  Pobieranie poświadczeń programu SQL Server 
     -  Przekazywanie danych do usługi SQL Data Warehouse. 
-- **Błąd**: błędy zwykle dotyczą poprawki, które są potrzebne do istniejącego kodu lub dokument, które są wykonywane podczas wykonywania zadania. Jeśli ten błąd jest spowodowany przez brak etapów lub zadania, odpowiednio, wartość można przekazać do wątku lub zadania. 
+- **Błąd**: Błędy zwykle odnoszą się do poprawki, które są potrzebne do istniejącego kodu lub dokument, które są wykonywane podczas wykonywania zadania. Jeśli ten błąd jest spowodowany przez brak etapów lub zadania, odpowiednio, wartość można przekazać do wątku lub zadania. 
 
 > [!NOTE]
 > Pojęcia są pobierają funkcji, historii, zadania i usterki z zarządzania przy użyciu oprogramowania kodu (SCM), który ma być używany w zakresie analizy danych. Może być różnią się nieco od ich poziomu konwencjonalnego definicje SCM.

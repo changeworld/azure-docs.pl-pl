@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dac686878ff128e3d556c0dbd7e9a2d51ac1756d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139959"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474024"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modelowanie etap cyklu życia zespołowego danych dla celów naukowych
 
@@ -41,8 +41,8 @@ Oto wizualnej reprezentacji cyklu przetwarzania TDSP:
 ## <a name="how-to-do-it"></a>Jak to zrobić
 Istnieją trzy główne zadania, które zostały omówione w tym etapie:
 
-  * **Inżynieria funkcji**: Tworzenie funkcji danych na podstawie danych pierwotnych w celu ułatwienia szkoleń modelowych.
-  * **Szkolenie modelu**: znaleźć odpowiedzi na pytania najdokładniej przez porównanie ich metryki sukcesu modelu.
+  * **Inżynieria funkcji**: Utwórz funkcje związane z danymi na podstawie danych pierwotnych w celu ułatwienia szkoleń modelowych.
+  * **Szkolenie modelu**: Znajdź odpowiedzi na pytania najdokładniej przez porównanie ich metryki sukcesu modelu.
   * Określa, czy model jest **odpowiednich dla środowiska produkcyjnego.**
 
 ### <a name="feature-engineering"></a>Inżynieria funkcji
@@ -63,7 +63,7 @@ Proces do trenowania modelu obejmuje następujące kroki:
    * **Określić, jakie rozwiązanie "Najważniejsze"** odpowiedź na pytanie, porównując metryki sukcesu między alternatywne metody.
 
 > [!NOTE]
-> **Należy unikać wycieku**: może spowodować wycieku danych, jeśli zawierają dane pochodzące spoza szkoleniowy zestaw danych umożliwiający modelu lub Algorytm uczenia maszynowego, jak tworzyć prognozy nierealistycznie dobre. Wyciek jest typową przyczyną, dlaczego dane, które analityków otrzymaj nerwowe w przypadku, gdy uzyskują predykcyjne wyniki wydawać się zbyt dobrze. Te zależności, może być trudny do wykrycia. W celu uniknięcia wycieku często wymaga iteracja między tworzenia zestawu analiz danych, tworzenie modelu i oceny dokładności wyników. 
+> **Należy unikać wycieku**: Jeśli dołączysz dane pochodzące spoza szkoleniowy zestaw danych umożliwiający modelu lub Algorytm uczenia maszynowego, jak tworzyć prognozy nierealistycznie dobre, może spowodować wycieku danych. Wyciek jest typową przyczyną, dlaczego dane, które analityków otrzymaj nerwowe w przypadku, gdy uzyskują predykcyjne wyniki wydawać się zbyt dobrze. Te zależności, może być trudny do wykrycia. W celu uniknięcia wycieku często wymaga iteracja między tworzenia zestawu analiz danych, tworzenie modelu i oceny dokładności wyników. 
 > 
 > 
 
@@ -72,9 +72,9 @@ Firma Microsoft zapewnia [zautomatyzowane, modelowania i raportowania narzędzie
 ## <a name="artifacts"></a>Artefakty
 Artefakty utworzone podczas tego etapu obejmują:
 
-   * [Zestawy funkcji](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): funkcje rozwinięte modelowania są opisane w **zestawy funkcji** części **definicji danych** raportu. Zawiera wskaźniki kod służący do generowania funkcji i opis jak funkcja został wygenerowany.
-   * [Model raportu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): dla każdego modelu, który zostanie podjęta próba standard, jest generowany na podstawie szablonu raportu, który zawiera szczegółowe informacje dotyczące każdego doświadczenia.
-   * **CheckPoint decision**: ocenić, czy model wykonuje wystarczająco dobrze wdrożenie go w systemie produkcyjnym. Niektóre kluczowe pytania są następujące:
+   * [Zestawy funkcji](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): Funkcje rozwinięte modelowania są opisane w **zestawy funkcji** części **definicji danych** raportu. Zawiera wskaźniki kod służący do generowania funkcji i opis jak funkcja został wygenerowany.
+   * [Model raportu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): Dla każdego modelu, który zostanie podjęta próba standard, jest generowany na podstawie szablonu raportu, który zawiera szczegółowe informacje dotyczące każdego doświadczenia.
+   * **CheckPoint decision**: Należy ocenić, czy model wykonuje wystarczająco dobrze wdrożenie go w systemie produkcyjnym. Niektóre kluczowe pytania są następujące:
      * Model odpowiedzi na pytanie, bez obaw wystarczające, biorąc pod uwagę dane testowe 
      * Należy spróbować żadnych alternatywnych metod? Należy zbierać dodatkowe dane, nie więcej technicznego opracowywania funkcji lub eksperymentować z innych algorytmów?
 

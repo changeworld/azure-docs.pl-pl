@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a0b7d3f059001aec28dd52c9666ea7b5af3c6f95
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: b13becf8530f478a5e58b46a1b422593051c95cf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603799"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478172"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w usłudze Azure SQL Database
 
@@ -65,6 +65,7 @@ Omówienie sposobu automatycznego dostrajania działa i typowe scenariusze użyc
 ## <a name="automatic-tuning-options"></a>Opcje dostrajania automatycznego
 
 Dostępne są następujące opcje dostrajania automatycznego dostępnych w usłudze Azure SQL Database:
+
  1. **CREATE INDEX** — identyfikuje indeksy, które może poprawić wydajność przetwarzania obciążenia, tworzy indeksy i automatycznie sprawdza, czy wydajność kwerend uległa poprawie.
  2. **Instrukcja DROP INDEX** — identyfikuje indeksy nadmiarowy i zduplikowane raz dziennie, z wyjątkiem indeksy unikatowe i indeksy, które nie były używane przez długi czas (> 90 dni). Należy pamiętać, że w tej chwili opcja nie jest zgodne z aplikacji przy użyciu wskazówek przełączanie i indeksu partycji.
  3. **WYMUŚ OSTATNI dobry PLAN** — identyfikuje zapytań SQL za pomocą planu wykonania, jest mniejsza niż poprzednie dobrego planu, która wysyła kwerendę za pomocą ostatni znany dobry plan zamiast pogorszonej planu.
@@ -73,7 +74,7 @@ Automatyczne dostrajanie identyfikuje **CREATE INDEX**, **DROP INDEX**, i **WYMU
 
 Można ręcznie zastosować zalecenia dotyczące dostrajania za pomocą portalu lub umożliwić dostrajania automatycznego autonomicznie stosowanie zalecenia dotyczące dostrajania za Ciebie. Korzyści wynikające z informacją o systemie autonomicznie stosowanie zalecenia dotyczące dostrajania dla Ciebie jest automatycznie weryfikuje istnieje dodatnią korzyści na wydajność obciążeń, a w przypadku braku poprawy istotnie poprawiającą wydajność wykryto będzie Przywróć automatycznie zalecenia dostrajania. Należy pamiętać, w przypadku zapytań dotyczy dostosowywania zaleceń, które nie są często wykonywane, fazy weryfikacji może potrwać do 72 godzin zgodnie z projektem. W przypadku, gdy chcesz ręcznie zastosować dostrajania zalecenia, wydajność automatycznego sprawdzania poprawności i mechanizmy wycofanie nie są dostępne.
 
-Opcje dostrajania automatycznego można niezależnie włączać lub wyłączać na bazę danych lub można je skonfigurować na serwerach logicznych i stosowane w każdej bazie danych, która dziedziczy ustawienia z serwera. Serwerami logicznymi może dziedziczyć ustawień domyślnych platformy Azure dla ustawienia automatycznego dostrajania. Ustawień domyślnych platformy Azure, w tym momencie są ustawione na FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona i DROP_INDEX jest wyłączona.
+Opcje dostrajania automatycznego można niezależnie włączać lub wyłączać na bazę danych lub mogą być skonfigurowane na serwerze bazy danych SQL i stosowane w każdej bazie danych, która dziedziczy ustawienia z serwera. Serwery usługi SQL Database może dziedziczyć ustawień domyślnych platformy Azure dla ustawienia automatycznego dostrajania. Ustawień domyślnych platformy Azure, w tym momencie są ustawione na FORCE_LAST_GOOD_PLAN jest włączona, CREATE_INDEX jest włączona i DROP_INDEX jest wyłączona.
 
 Konfigurowanie automatycznego dostrajania opcji na serwerze i dziedziczenie ustawień dla baz danych należących do nadrzędnego serwera jest zalecaną metodą Konfigurowanie dostrajania automatycznego, ponieważ upraszcza zarządzanie opcje dostrajania automatycznego dla dużej liczby baz danych.
 

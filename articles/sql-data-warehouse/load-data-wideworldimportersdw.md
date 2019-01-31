@@ -1,21 +1,21 @@
 ---
-title: 'Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse | Microsoft Docs'
+title: 'Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft'
 description: W samouczku opisano ładowanie magazynu danych WideWorldImportersDW z publicznego obiektu blob platformy Azure do usługi Azure SQL Data Warehouse za pomocą witryny Azure Portal i programu SQL Server Management Studio.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 57803d6b83b71e65064c4ec701ed5b7e7607321f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286937"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454338"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Samouczek: Ładowanie danych do usługi Azure SQL Data Warehouse
 

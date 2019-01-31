@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 12/17/2018
 ms.custom: seodec18
-ms.openlocfilehash: 27204710cb6a94efaebc0b8f075b0a8f50b45a6c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 608cc7a9e7c3b09c4b033397cbae6ac68e0a503a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079838"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478444"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Włączanie usługi Azure Disk Encryption dla maszyn wirtualnych IaaS z systemem Linux 
 
@@ -24,7 +24,7 @@ Wykonaj [migawki](../virtual-machines/windows/snapshot-copy-managed-disk.md) i/l
 >[!WARNING]
 > - Jeśli wcześniej używano [usługi Azure Disk Encryption przy użyciu aplikacji Azure AD](azure-security-disk-encryption-prerequisites-aad.md) do zaszyfrowania tej maszyny Wirtualnej, konieczne będzie kontynuować ta opcja służy do szyfrowania maszyny Wirtualnej. Nie można użyć [usługi Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) na tej zaszyfrowanej maszyny Wirtualnej, ponieważ nie jest to obsługiwany scenariusz znaczenie przełączania się aplikacja usługi AAD dla to zaszyfrowanych maszyn wirtualnych nie jest jeszcze obsługiwane.
  > - Usługa Azure Disk Encryption musi znajdować się w tym samym regionie usługi Key Vault i maszyn wirtualnych. Tworzenie i używanie usługi Key Vault, który znajduje się w tym samym regionie co maszyna wirtualna do zaszyfrowania.
-> - W przypadku szyfrowania woluminów systemu operacyjnego Linux, proces może potrwać kilka godzin. Jest to normalny trwać dłużej niż woluminów danych na potrzeby szyfrowania woluminów systemu operacyjnego Linux. 
+> - W przypadku szyfrowania woluminów systemu operacyjnego Linux, maszyny Wirtualnej będzie niedostępny i SSH zostanie wyłączona. Aby sprawdzić postęp, [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) lub [vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) polecenia mogą być używane. Ten proces można spodziewać się zająć kilka godzin, 30GB woluminu systemu operacyjnego, a także dodatkowego czasu na szyfrowanie woluminów danych. Czas szyfrowania woluminu danych będzie proporcjonalny do rozmiaru, a ilość ilości danych, chyba że Szyfruj formatowania all-opcja jest używana. 
 > - Wyłączenie szyfrowania na maszynach wirtualnych z systemem Linux jest obsługiwana tylko dla woluminów danych. Go nie jest obsługiwana na woluminach systemu operacyjnego i danych, jeśli wolumin systemu operacyjnego został zaszyfrowany.  
 
 

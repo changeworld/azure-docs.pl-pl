@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 0a0a5a046bd1afefe3f4c72e713a0dafe0c856e4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390391"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453931"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure SQL
 
@@ -162,7 +162,7 @@ Obecnie istnieją dwa sposoby włączania inspekcji usługi SQL Database. Inspek
 
 ### <a name="impact-on-data-sync"></a>Wpływ na synchronizowanie danych
 
-Usługa Azure SQL Database ma funkcji Data Sync, który nawiązuje połączenie z baz danych przy użyciu adresów IP usługi Azure. Korzystając z punktów końcowych usługi, prawdopodobnie spowoduje wyłączenie **Zezwalaj na usługi platformy Azure na dostęp do serwera** dostęp do serwera logicznego. Spowoduje to przerwanie funkcji Data Sync.
+Usługa Azure SQL Database ma funkcji Data Sync, który nawiązuje połączenie z baz danych przy użyciu adresów IP usługi Azure. Korzystając z punktów końcowych usługi, prawdopodobnie spowoduje wyłączenie **Zezwalaj na usługi platformy Azure na dostęp do serwera** dostęp do serwera usługi SQL Database. Spowoduje to przerwanie funkcji Data Sync.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage
 
@@ -173,17 +173,18 @@ Usługa Azure Storage została zaimplementowana w tej samej funkcji, która pozw
 Program PolyBase jest najczęściej używany do ładowania danych do usługi Azure SQL Data Warehouse przy użyciu kont usługi Azure Storage. Jeśli konto usługi Azure Storage, które są ładowane dane z ogranicza dostęp tylko do zestawu z podsieci sieci wirtualnej, spowoduje przerwanie połączenia z poziomu programu PolyBase do konta. Włączania zarówno PolyBase importowanie i eksportowanie scenariuszy za pomocą usługi Azure SQL Data Warehouse nawiązywania połączenia z usługi Azure Storage, która jest zabezpieczony z siecią wirtualną, wykonaj wymienione poniżej kroki:
 
 #### <a name="prerequisites"></a>Wymagania wstępne
+
 1.  Zainstaluj program Azure PowerShell za pomocą tego [przewodnik](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, należy najpierw uaktualnić do ogólnego przeznaczenia w wersji 2 za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Konieczne jest posiadanie **dozwolonych zaufanych usług firmy Microsoft dostęp do tego konta magazynu** włączone w ramach konta usługi Azure Storage **zapory i sieci wirtualne** menu Ustawienia. Zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Aby uzyskać więcej informacji.
  
 #### <a name="steps"></a>Kroki
-1.  W programie PowerShell **zarejestrować z serwerem logicznym SQL** za pomocą usługi Azure Active Directory (AAD):
+1.  W programie PowerShell **zarejestrować serwer bazy danych SQL** za pomocą usługi Azure Active Directory (AAD):
 
     ```powershell
     Add-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. Tworzenie **ogólnego przeznaczenia w wersji 2, konto magazynu** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
@@ -192,7 +193,7 @@ Program PolyBase jest najczęściej używany do ładowania danych do usługi Azu
     > - Jeśli masz konto ogólnego przeznaczenia w wersji 1 lub usługi blob storage, musisz najpierw **najpierw przeprowadzić uaktualnienie do wersji 2** za pomocą tego [przewodnik](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
     > - Znane problemy związane z usługi Azure Data Lake Storage Gen2, można znaleźć na stronie to [przewodnik](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
-1.  W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** rolę RBAC z serwerem logicznym SQL.
+1.  W ramach konta magazynu, przejdź do **kontrola dostępu (IAM)** i kliknij przycisk **Dodaj przypisanie roli**. Przypisz **Współautor danych obiektu Blob Storage (wersja zapoznawcza)** rolę RBAC do serwera usługi SQL Database.
 
     > [!NOTE] 
     > Tylko elementy członkowskie z uprawnieniami właściciela można wykonać ten krok. Dla różnych ról wbudowanych dla zasobów platformy Azure, zapoznaj się z tym [przewodnik](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).

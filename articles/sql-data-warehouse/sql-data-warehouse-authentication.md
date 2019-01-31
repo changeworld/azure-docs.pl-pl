@@ -2,20 +2,20 @@
 title: Uwierzytelnianie w usłudze Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak do uwierzytelniania usługi Azure SQL Data Warehouse przy użyciu uwierzytelniania usługi Azure Active Directory (AAD) lub SQL Server.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/12/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7f26ded5fae1bde5b2e6485ae2a2f99eebb17563
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307874"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463332"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Uwierzytelnianie w usłudze Azure SQL Data Warehouse
 Dowiedz się, jak do uwierzytelniania usługi Azure SQL Data Warehouse przy użyciu uwierzytelniania usługi Azure Active Directory (AAD) lub SQL Server.
@@ -67,7 +67,7 @@ Usługa Azure Active Directory korzyści:
 Wykonaj następujące kroki, aby skonfigurować uwierzytelnianie usługi Azure Active Directory.
 
 1. Utworzyć i wypełnić usługi Azure Active Directory
-2. Opcjonalnie: Skojarzyć lub zmienić usługi active directory, która jest aktualnie skojarzona z subskrypcją platformy Azure
+2. Opcjonalnie: Skojarz lub zmienić usługi active directory, która jest aktualnie skojarzona z subskrypcją platformy Azure
 3. Utwórz administratora usługi Azure Active Directory dla usługi Azure SQL Data Warehouse.
 4. Konfigurowanie komputerów klienckich
 5. Tworzenie użytkowników zawartej bazy danych w bazie danych mapowany do tożsamości usługi Azure AD

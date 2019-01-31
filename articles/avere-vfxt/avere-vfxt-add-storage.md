@@ -4,29 +4,23 @@ description: Jak dodać system magazynu zaplecza do usługi vFXT Avere dla platf
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: procedural
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a7036f6fbab771dc090e97034a6191cf82b707a7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8cd9bece53cd7fb961c5d81ae0c709dc89300ab9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190855"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299456"
 ---
 # <a name="configure-storage"></a>Konfigurowanie magazynu
 
-W tym kroku konfiguruje system magazynu zaplecza dla vFXT klastra.
+W tym kroku konfiguruje system magazynu zaplecza vFXT klastra.
 
 > [!TIP]
-> Jeśli użyto `create-cloudbacked-cluster` prototypu skrypt, aby utworzyć nowy kontener obiektów Blob, wraz z klastrem vFXT Avere, czy kontener jest już skonfigurowany do użycia i nie trzeba dodać magazyn.
->
-> Jednak jeśli nowego kontenera obiektu Blob została zaszyfrowana przy użyciu domyślnego klucza szyfrowania, należy pobrać plik klucza odzyskiwania z klastra lub zastąpić domyślny klucz przy użyciu nowego klucza przed zapisaniem danych. Domyślny klucz są zapisywane tylko w klastrze i nie można pobrać, jeśli klaster zostanie utracony lub jest niedostępna.
->
-> Po nawiązaniu połączenia do panelu sterowania Avere kliknij **ustawienia** kartę, a następnie wybierz **filtr Core** > **ustawienia szyfrowania w chmurze**. W **Store klucza lokalnego** sekcji, wybierz jedną z następujących opcji: 
-> * Użyj **Pobierz ponownie odzyskiwanie pliku** przycisk, aby uzyskać plik odzyskiwania dla istniejącego klucza. Plik odzyskiwania jest szyfrowana za pomocą hasło administracyjne klastra. Upewnij się zapisać plik w miejscu, niezawodne. 
-> * Postępuj zgodnie z instrukcjami w **wygenerować nowy klucz główny** części strony Aby utworzyć nowy klucz szyfrowania, które możesz kontrolować. Ta opcja pozwala określić unikatowe hasło. Ponadto wymaga ona przekazywanie i ponownie Pobierz plik odzyskiwania, aby zweryfikować pary pliku hasła.
+> Jeśli utworzono nowy kontener obiektów Blob platformy Azure wraz z klastrem vFXT Avere tego kontenera jest już skonfigurowany do użycia i nie trzeba dodać magazyn.
 
-Wykonaj te instrukcje, jeśli użyto `create-minimal-cluster` skryptu prototypu dla klastra, lub jeśli chcesz dodać dodatkowego sprzętu lub systemu magazynu w chmurze.
+Wykonaj te instrukcje, jeśli nie utworzono nowy kontener obiektów Blob na potrzeby klastra lub jeśli chcesz dodać dodatkowego sprzętu ani system magazynu w chmurze.
 
 Istnieją dwa główne zadania:
 
@@ -43,12 +37,11 @@ Te kroki odnoszą się Avere Panelu sterowania. Odczyt [dostęp do klastra vFXT]
 Aby dodać filtr core, wybierz jedną z dwa główne rodzaje filtrach core:
 
   * [NAS podstawowe filtr](#nas-core-filer) — w tym artykule opisano sposób dodawania filtr core NAS 
-  * [Azure Storage konta chmury core filtr](#azure-storage-account-cloud-core-filer) — w tym artykule opisano sposób dodawania konta usługi Azure Storage jako filtr core chmury
+  * [Filtr core chmury w usłudze Azure magazynu](#azure-storage-cloud-core-filer) — w tym artykule opisano sposób dodawania konta usługi Azure Storage jako filtr core chmury
 
 ### <a name="nas-core-filer"></a>Filtr core NAS
 
-Filtr core NAS może być NetApp lokalnych Isilon i/lub punkt końcowy NAS w chmurze.  
-System magazynu musi mieć niezawodnego połączenia o dużej szybkości do klastra vFXT Avere — na przykład 1GBps połączenia ExpressRoute (nie sieć VPN) — i wywozu NAS używany musi udzielić dostępu do katalogu głównego klastra.
+Filtr core NAS może być NetApp lokalnych Isilon i/lub punkt końcowy NAS w chmurze. System magazynu musi mieć niezawodnego połączenia o dużej szybkości do klastra vFXT Avere — na przykład 1GBps połączenia ExpressRoute (nie sieć VPN) — i wywozu NAS używany musi udzielić dostępu do katalogu głównego klastra.
 
 Poniższe kroki należy dodać filtr core NAS:
 
@@ -79,7 +72,7 @@ Następnie przejdź do [utworzyć Rozgałęzienie](#create-a-junction).
 Aby użyć usługi Azure Blob storage jako magazynu zaplecza w klastrze vFXT, należy pustego kontenera do dodania jako filtr core.
 
 > [!TIP] 
-> ``create-cloudbacked-cluster`` Przykładowy skrypt tworzy kontener magazynu, definiuje ją jako filtr podstawowych i tworzy połączenie przestrzeni nazw jako część tworzenia klastra vFXT. ``create-minimal-cluster`` Przykładowy skrypt nie powoduje utworzenia kontenera usługi Azure storage. Aby uniknąć konieczności tworzenia i konfigurowania usługi Azure Storage core filtr po utworzeniu klastra, należy użyć ``create-cloudbacked-cluster`` skrypt w celu wdrożenia klastra vFXT.
+> Jeśli zdecydujesz się utworzyć kontenera obiektów blob w tym samym czasie, możesz utworzyć klaster vFXT Avere, Szablon wdrożenia lub skrypt tworzy kontener magazynu, definiuje ją jako filtr podstawowych i tworzy połączenie przestrzeni nazw jako część tworzenia klastra vFXT. 
 
 Dodawanie magazynu obiektów Blob do klastra wymaga tych zadań:
 

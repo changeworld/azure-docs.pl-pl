@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: b7c21566916c9728900e69dc6480098fadae7622
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5aa26aeb27d962e6e6289a754ef57b49158b68db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301212"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456293"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Użycie pętli języka T-SQL w usłudze SQL Data Warehouse
 Porady dotyczące przy użyciu języka T-SQL, pętli i zastępowanie kursory w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.
@@ -25,7 +25,7 @@ Porady dotyczące przy użyciu języka T-SQL, pętli i zastępowanie kursory w u
 Usługa SQL Data Warehouse obsługuje [podczas](/sql/t-sql/language-elements/while-transact-sql) pętli wielokrotnego wykonania bloków instrukcji. Ta pętla WHILE składa się z tak długo, jak określone warunki zostały specjalnie wartość PRAWDA lub do momentu kod kończy pętli za pomocą słowa kluczowego podziału. Pętle są przydatne do zastępowania kursory zdefiniowany w języku SQL. Na szczęście prawie wszystkie kursorów, które zostały napisane w języku SQL są różne do przodu, tylko do odczytu. W związku z tym [a] pętli to doskonała alternatywa dla zastępowanie kursorów.
 
 ## <a name="replacing-cursors-in-sql-data-warehouse"></a>Zastępowanie kursory w usłudze SQL Data Warehouse
-Jednak przed zagłębieniem się w head należy zapytać samodzielnie następujące pytanie: "można dopasować ten kursor do użycia na podstawie zestawu operations?." W wielu przypadkach odpowiedź jest tak i często najlepszym rozwiązaniem. Na podstawie zestawu często są wykonywane szybciej niż podejście iteracyjną, wiersz po wierszu.
+Jednak przed zagłębieniem się w head należy zapytać samodzielnie następujące pytania: "Można dopasować ten kursor do użycia na podstawie zestawu operations?." W wielu przypadkach odpowiedź jest tak i często najlepszym rozwiązaniem. Na podstawie zestawu często są wykonywane szybciej niż podejście iteracyjną, wiersz po wierszu.
 
 Do przodu kursory tylko do odczytu można łatwo zastąpić z konstrukcji pętli. Poniżej przedstawiono prosty przykład. Ten przykładowy kod aktualizuje statystyki dla każdej tabeli w bazie danych. Przez Iterowanie tabel w pętli, każde polecenie wykonuje w sekwencji.
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 14cb821152e6a380de1be4fddef76aa2edec4a8f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042261"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454219"
 ---
-# <a name="working-with-azure-cosmos-db-stored-procedures-triggers-and-user-defined-functions"></a>Pracę z usługą Azure Cosmos DB procedur przechowywanych, wyzwalaczy i funkcji zdefiniowanych przez użytkownika
+# <a name="stored-procedures-triggers-and-user-defined-functions"></a>Procedury składowane, wyzwalacze i funkcje zdefiniowane przez użytkownika
 
 Usługa Azure Cosmos DB zapewnia języku zintegrowanym, transakcyjne wykonywanie kodu JavaScript. Korzystając z interfejsu API SQL w usłudze Azure Cosmos DB, można napisać **procedur składowanych**, **wyzwalaczy**, i **funkcje zdefiniowane przez użytkownika (UDF)** w języku JavaScript. Można napisać logikę w języku JavaScript, który wykonywany w aparacie bazy danych. Można tworzyć i uruchamiać wyzwalaczy, procedury składowane i funkcje zdefiniowane przez użytkownika przy użyciu [witryny Azure portal](https://portal.azure.com/), [języka JavaScript zintegrowany interfejs API zapytań w usłudze Azure Cosmos DB](javascript-query-api.md) lub [klienta interfejsu API SQL usługi Cosmos DB Zestawy SDK](how-to-use-stored-procedures-triggers-udfs.md).
 

@@ -12,12 +12,12 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 01/29/2019
-ms.openlocfilehash: 2f52cbaf5d50eca13a87ff8e745b0f8baefbe23e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4c9700344ca5b973b8dad9fd1505d15f58c06126
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210379"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451720"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń w usłudze Azure SQL Database
 
@@ -27,7 +27,6 @@ Wykrywanie zagrożeń jest częścią [zaawansowane zabezpieczenia danych SQL](s
 
 > [!NOTE]
 > Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
-
 
 ## <a name="what-is-threat-detection"></a>Co to jest wykrywanie zagrożeń
 
@@ -78,7 +77,7 @@ Kliknij przycisk **alert wykrycia zagrożeń** można uruchomić usługi Azure S
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [wykrywanie zagrożeń w pojedynczej bazy danych](sql-database-threat-detection.md).
+- Dowiedz się więcej o [wykrywanie zagrożeń w autonomicznych i bazy danych w puli](sql-database-threat-detection.md).
 - Dowiedz się więcej o [wykrywania zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).
 - Dowiedz się więcej o [danych zaawansowanych SQL](sql-advanced-threat-protection.md).
 - Dowiedz się więcej o [inspekcji usługi Azure SQL Database](sql-database-auditing.md)

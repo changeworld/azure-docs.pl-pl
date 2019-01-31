@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
-ms.component: files
-ms.openlocfilehash: 273d6b730f4b92da83e43a8fec3c1188e8111313
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.subservice: files
+ms.openlocfilehash: 6c8a0a0db419546a49670b1f34e58ead7cebeaa1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224466"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459506"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.

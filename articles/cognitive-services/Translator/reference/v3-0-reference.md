@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4d1c33480e408f892517cde6d42e103b34218f26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870407"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459094"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
@@ -33,7 +33,7 @@ Interfejs API tekstu usługi Translator w wersji 3 zapewnia nowoczesnych opartyc
 
 Usługa Microsoft Translator jest obsługiwany z wielu lokalizacji centrów danych. Obecnie znajdują się one w 6 [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
-* **Rozwiązanie to przyniosło im:** zachodnie stany USA 2 i środkowe stany USA zachodnie 
+* **Rozwiązanie to przyniosło im:** Zachodnie stany USA 2 i środkowe stany USA zachodnie 
 * **Azja i Pacyfik:** Azja południowo-wschodnia i Korea Południowa
 * **Europa:** Europa Północna i Europa Zachodnia
 
@@ -43,10 +43,10 @@ Aby wymusić żądania, które mają być obsługiwane przez określone centrum 
 
 |Opis|Region|Podstawowy adres URL|
 |:--|:--|:--|
-|Azure|Globalny|  API.cognitive.microsofttranslator.com|
-|Azure|Ameryka Północna|   nam.cognitive.microsofttranslator.com interfejsu API|
-|Azure|Europa|  eur.cognitive.microsofttranslator.com interfejsu API|
-|Azure|Azja i Pacyfik|    apc.cognitive.microsofttranslator.com interfejsu API|
+|Azure|Globalny|  api.cognitive.microsofttranslator.com|
+|Azure|Ameryka Północna|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
+|Azure|Azja i Pacyfik|    api-apc.cognitive.microsofttranslator.com|
 
 
 ## <a name="authentication"></a>Authentication
@@ -59,7 +59,7 @@ Istnieją trzy nagłówków, których można użyć do uwierzytelnienia Twojej s
 |:----|:----|
 |OCP-Apim-Subscription-Key|*Używane z subskrypcją usług Cognitive Services, jeśli przekazujesz klucz tajny*.<br/>Wartość jest platformy Azure klucz tajny dla Twojej subskrypcji do interfejsu API tłumaczenia tekstu.|
 |Autoryzacja|*Jeśli przekazujesz tokenu uwierzytelniania za pomocą subskrypcji usług Cognitive Services.*<br/>Wartość tokenu elementu nośnego: `Bearer <token>`.|
-|OCP-Apim subskrypcji — Region|*Jeśli przekazujesz klucz tajny w jednym za pomocą usług Cognitive Services w jednym subskrypcji.*<br/>Wartość jest subskrypcji w jednym regionie. Ta wartość jest opcjonalna, bez korzystania z subskrypcji w jednym.|
+|Ocp-Apim-Subscription-Region|*Jeśli przekazujesz klucz tajny w jednym za pomocą usług Cognitive Services w jednym subskrypcji.*<br/>Wartość jest subskrypcji w jednym regionie. Ta wartość jest opcjonalna, bez korzystania z subskrypcji w jednym.|
 
 ###  <a name="secret-key"></a>Klucz tajny
 Pierwszym z nich jest uwierzytelnianie przy użyciu `Ocp-Apim-Subscription-Key` nagłówka. Po prostu Dodaj `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` nagłówek na żądanie.
@@ -109,7 +109,7 @@ Region jest wymagane dla subskrypcji interfejsu API tłumaczenia tekstu w jednym
 
 Odpowiedzi błędu standardowego jest obiekt JSON z pary nazwa/wartość o nazwie `error`. Wartość jest także obiekt JSON z właściwościami:
 
-  * `code`Kod błędu zdefiniowany przez serwer.
+  * `code`: Kod błędu zdefiniowany przez serwer.
 
   * `message`: Ciąg, zapewniając czytelny dla człowieka reprezentację błędu.
 

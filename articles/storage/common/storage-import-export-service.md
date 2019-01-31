@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 480d67917abf3a8aaca64aa9aae30be5acf55e11
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528560"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453386"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
 
@@ -27,18 +27,18 @@ Jeśli chcesz przesyłać dane przy użyciu dysków twardych, dostarczone przez 
 
 Należy wziąć pod uwagę przy użyciu usługi Azure Import/Export, gdy przekazanie lub pobranie danych za pośrednictwem sieci jest zbyt wolno lub pobieranie dodatkową przepustowość jest kosztowne. Korzystać z tej usługi, w następujących scenariuszach:
 
-* **Migracja danych do chmury**: przenoszenie dużych ilości danych na platformę Azure szybko i ekonomiczne.
-* **Dystrybucja zawartości**: szybko wysyłać dane do lokacji klientów.
-* **Kopia zapasowa**: twórz kopie zapasowe danych lokalnych do przechowywania w usłudze Azure Storage.
-* **Odzyskiwanie danych**: odzyskać dużą ilość danych przechowywanych w magazynie i z łatwością dostarczyć do Twojej lokalizacji lokalnej.
+* **Migracja danych do chmury**: Przenoszenie dużych ilości danych na platformę Azure szybko i ekonomiczne.
+* **Dystrybucja zawartości**: Szybko wysyłać dane do lokacji klientów.
+* **Kopia zapasowa**: Twórz kopie zapasowe danych lokalnych, można przechowywać w usłudze Azure Storage.
+* **Odzyskiwanie danych**: Odzyskaj dużą ilość danych przechowywanych w magazynie i z łatwością dostarczyć do Twojej lokalizacji lokalnej.
 
 ## <a name="importexport-components"></a>Import/Export składników
 
 Usługa Import/Export używa następujących składników:
 
-- **Usługa Import/Export**: tej usługi, które są dostępne w witrynie Azure portal pozwala użytkownikom na tworzenie i importowanie (przekazywanie) i eksportowanie zadań (Pobieranie) danych śledzenia.  
+- **Usługa Import/Export**: Ta usługa, które są dostępne w witrynie Azure portal ułatwia użytkownikom tworzenie i śledzenie importu danych (przekazywanie) i eksportowanie zadań (Pobieranie).  
 
-- **Narzędzie WAImportExport**: to narzędzie wiersza polecenia, które wykonuje następujące czynności: 
+- **Narzędzie WAImportExport**: To narzędzie wiersza polecenia, które wykonuje następujące czynności: 
     - Przygotowuje dysków twardych, które są dostarczane do importu.
     - Umożliwia kopiowanie danych na dysku.
     - Szyfruje dane na dysku za pomocą funkcji BitLocker.
@@ -52,7 +52,7 @@ Usługa Import/Export używa następujących składników:
 >
 > Narzędzie WAImportExport jest zgodna tylko z 64-bitowym systemie operacyjnym Windows. Aby uzyskać konkretne obsługiwane wersje systemu operacyjnego, przejdź do [wymagania dotyczące usługi Azure Import/Export](storage-import-export-requirements.md#supported-operating-systems).
 
-- **Stacje dysków**: mogą być dysków półprzewodnikowych (SSD) lub stacje dysków twardych (HDD) centrach danych platformy Azure. Podczas tworzenia zadania importu, są dostarczane dysków z danymi. Podczas tworzenia zadania eksportu, dostarczasz pustych dysków do centrum danych platformy Azure. Dla typów określonego dysku, przejdź do [obsługiwanych typów dysków](storage-import-export-requirements.md#supported-hardware).
+- **Stacje dysków**: Możesz przesłać dysków półprzewodnikowych (SSD) lub z stacje dysków twardych (HDD) w centrach danych platformy Azure. Podczas tworzenia zadania importu, są dostarczane dysków z danymi. Podczas tworzenia zadania eksportu, dostarczasz pustych dysków do centrum danych platformy Azure. Dla typów określonego dysku, przejdź do [obsługiwanych typów dysków](storage-import-export-requirements.md#supported-hardware).
 
 ## <a name="how-does-importexport-work"></a>Jak działa importu/eksportu?
 

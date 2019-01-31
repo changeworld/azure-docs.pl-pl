@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: a87f3861a74bbc7a482423d5f2a2f1b859f83a10
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1f3aaf34283f4e7c81f97b8e2ec4987749f3935c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604433"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465286"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Monitorowanie wydajności usługi Azure SQL Database przy użyciu dynamicznych widoków zarządzania
 
@@ -549,7 +549,7 @@ Pozostałe typy aplikacji może interpretować tego samego wykresu. Na przykład
 Usługa Azure SQL Database udostępnia używane informacje o zasobach dla każdej bazy danych dla aktywnej w **sys.resource_stats** widoku **wzorca** bazy danych na każdym serwerze. Dane w tabeli są agregowane dla 5-minutowych interwałach. Przy użyciu warstwy usług podstawowa, standardowa i Premium danych może zająć więcej niż 5 minut, aby są wyświetlane w tabeli, dzięki czemu te dane są bardziej użyteczna w przypadku analizy historycznej, a nie analizy prawie w czasie rzeczywistym. Zapytanie **sys.resource_stats** wyświetlania, aby wyświetlić najnowszą historię bazy danych i do sprawdzania, czy rezerwacja została wybrana opcja dostarczonych wydajności, chcesz, aby w razie.
 
 > [!NOTE]
-> Musi być podłączony do **wzorca** bazy danych serwera logicznego bazy danych SQL do wykonywania zapytań **sys.resource_stats** w poniższych przykładach.
+> Musi być podłączony do **wzorca** bazy danych serwera usługi SQL Database, aby wykonać zapytanie **sys.resource_stats** w poniższych przykładach.
 
 Ten przykład pokazuje, jak dane w tym widoku jest uwidaczniany:
 

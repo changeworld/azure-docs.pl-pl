@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.date: 01/25/2019
+ms.openlocfilehash: d02e552ede4480ee0c4977dc32bbe347ca7db393
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259141"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459489"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością bazy danych Azure SQL i pul baz danych w aplikacji SaaS z wieloma dzierżawami
 
 W tym samouczku zbadano kilka podstawowych scenariuszy zarządzania wydajnością używanych w aplikacjach SaaS. Przy użyciu generator obciążenia, aby symulować działanie we wszystkich bazach danych dzierżaw, wbudowane funkcje monitorowania i alertów bazy danych SQL i pule elastyczne są przedstawione w artykule.
 
-Aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy używa modelu danych do pojedynczej dzierżawy, którym każde miejsce (dzierżawca) ma swoją własną bazę danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby jak najlepiej wykorzystać ten typowy wzorzec korzystania z bazy danych, bazy danych dzierżaw zostały wdrożone w elastycznych pulach baz danych. Elastyczne pule umożliwiają optymalizację kosztu rozwiązania dzięki udostępnieniu zasobów pomiędzy wieloma bazami danych. W przypadku tego typu wzorca ważne jest, aby monitorować użycie zasobów bazy danych i puli, co ma na celu rozsądne równoważenie obciążenia między pulami. Należy także upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, i że pule nie zbliżają się do swoich limitów liczby jednostek [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model). W tym samouczku przedstawiono metody monitorowania baz danych i pul oraz zarządzania nimi, a także wykonywanie akcji naprawczych w odpowiedzi na wahania obciążenia.
+Aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy używa modelu danych do pojedynczej dzierżawy, którym każde miejsce (dzierżawca) ma swoją własną bazę danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby móc korzystać z tego wzorca użycia typowych bazy danych, baz danych dzierżaw są wdrażane do pul elastycznych. Elastyczne pule umożliwiają optymalizację kosztu rozwiązania dzięki udostępnieniu zasobów pomiędzy wieloma bazami danych. W przypadku tego typu wzorca ważne jest, aby monitorować użycie zasobów bazy danych i puli, co ma na celu rozsądne równoważenie obciążenia między pulami. Należy także upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, i że pule nie zbliżają się do swoich limitów liczby jednostek [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model). W tym samouczku przedstawiono metody monitorowania baz danych i pul oraz zarządzania nimi, a także wykonywanie akcji naprawczych w odpowiedzi na wahania obciążenia.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -42,7 +42,7 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>Wprowadzenie do wzorców zarządzania wydajnością SaaS
 
-Zarządzanie wydajnością bazy danych polega na zbieraniu danych dotyczących wydajności i analizowaniu ich, a następnie reagowaniu na te dane przez dostosowanie parametrów w celu zachowania akceptowalnego czasu odpowiedzi aplikacji. W przypadku hostowania wielu dzierżaw elastyczne pule baz danych stanowią ekonomiczny sposób udostępniania zasobów i zarządzania nimi dla grupy baz danych obciążanych w nieprzewidywalny sposób. Przy pewnych wzorcach obciążenia korzyści mogą się pojawić przy zarządzaniu w puli zaledwie dwoma bazami danych S3.
+Zarządzanie wydajnością bazy danych polega na zbieraniu danych dotyczących wydajności i analizowaniu ich, a następnie reagowaniu na te dane przez dostosowanie parametrów w celu zachowania akceptowalnego czasu odpowiedzi aplikacji. W przypadku hostowania wielu dzierżaw, pule elastyczne są ekonomiczny sposób zapewnienia zasobów i zarządzanie nimi dla grupy baz danych obciążanych w nieprzewidywalny. Przy pewnych wzorcach obciążenia korzyści mogą się pojawić przy zarządzaniu w puli zaledwie dwoma bazami danych S3.
 
 ![Diagram aplikacji](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
@@ -169,7 +169,7 @@ Alternatywnym rozwiązaniem w stosunku do skalowania puli w górę jest utworzen
 
 1. W [witryny Azure portal](https://portal.azure.com), otwórz **tenants1-dpt -&lt;użytkownika&gt;**  serwera.
 1. Kliknij przycisk **+ nowa pula** Aby utworzyć pulę na bieżącym serwerze.
-1. Na **elastycznej puli baz danych** szablonu:
+1. Na **puli elastycznej** szablonu:
 
     1. Ustaw **nazwa** do *Pool2*.
     1. Pozostaw warstwę cenową **Pula Standardowa**.
@@ -189,9 +189,9 @@ Przejdź do **Pool2** (na *tenants1-dpt -\<użytkownika\>*  serwera) do otwieran
 
 Teraz widać to użycie zasobów na *Pool1* została obniżona i *Pool2* teraz jest podobnie obciążona.
 
-## <a name="manage-performance-of-a-single-database"></a>Zarządzanie wydajnością pojedynczej bazy danych
+## <a name="manage-performance-of-an-individual-database"></a>Zarządzanie wydajnością poszczególnych baz danych
 
-Jeśli stałe zwiększone obciążenie dotyczy pojedynczej bazy danych w puli, to w zależności od konfiguracji puli może ona zdominować zasoby w puli i wpływać na pozostałe bazy danych. W przypadku prawdopodobnie przez pewien czas działanie bazy danych można tymczasowo przeniesiony z puli. Dzięki temu bazy danych do dodatkowych zasobów wymaga, a jednocześnie zostanie odizolowana od innych baz danych.
+Jeśli obciążenie, w zależności od konfiguracji puli poszczególne bazy danych w puli jego zwykle zdominować zasoby w puli i wpływać na inne bazy danych. W przypadku prawdopodobnie przez pewien czas działanie bazy danych można tymczasowo przeniesiony z puli. Dzięki temu bazy danych do dodatkowych zasobów wymaga, a jednocześnie zostanie odizolowana od innych baz danych.
 
 W tym ćwiczeniu zostanie zasymulowane zwiększone obciążenie dotyczące miejsca Contoso Concert Hall wywołane wzmożonym pobytem na bilety na popularny koncert.
 
@@ -203,7 +203,7 @@ W tym ćwiczeniu zostanie zasymulowane zwiększone obciążenie dotyczące miejs
 
 1. W [witryny Azure portal](https://portal.azure.com), przejdź do listy baz danych na *tenants1-dpt -\<użytkownika\>*  serwera. 
 1. Kliknij pozycję **contosoconcerthall** bazy danych.
-1. Kliknij pulę, **contosoconcerthall** trwa. Znajdź puli w **elastycznej puli baz danych** sekcji.
+1. Kliknij pulę, **contosoconcerthall** trwa. Znajdź puli w **puli elastycznej** sekcji.
 
 1. Sprawdzanie **monitorowanie pul elastycznych** wykresów i poszukaj puli o zwiększonym użycie jednostek eDTU. Po minucie lub dwóch powinno być widoczne wyższe obciążenie, które wkrótce osiągnie poziom 100% wykorzystania puli.
 2. Sprawdzanie **monitorowanie elastycznych baz danych** wyświetlania, które wyświetla najbardziej aktywnych baz danych w ciągu ostatniej godziny. *Contosoconcerthall* bazy danych wkrótce powinna zostać wyświetlona jako jednego z pięciu najbardziej aktywnych baz danych.
@@ -242,7 +242,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 [Samouczek przywracania pojedynczej dzierżawy](saas-dbpertenant-restore-single-tenant.md)
 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * Dodatkowe [samouczki nawiązujące do wdrożenia aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Pule elastyczne SQL](sql-database-elastic-pool.md)

@@ -1,23 +1,23 @@
 ---
-title: Interfejs API tekstu usługi Translator wykryć — metoda
+title: Translator Text API Detect Method
 titlesuffix: Azure Cognitive Services
 description: Metoda Translator tekstu interfejsu API wykrywania.
 services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6698960cca39fb49fe8ba6e79b957be469ea7c50
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 892a029c3a51aa3574d92b838a51359438a6bdb6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126126"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464997"
 ---
-# <a name="translator-text-api-30-detect"></a>API 3.0 tekstu usługi Translator: wykrywanie
+# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
 Określa język fragmentu tekstu.
 
@@ -60,7 +60,7 @@ Nagłówki żądania obejmują:
     <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
-    <td>X ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Należy pamiętać, że można pominąć tego pliku nagłówkowego, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
@@ -87,11 +87,11 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
   * `language`: Kod wykryty język.
 
-  * `score`: Float wartość wskazująca pewność dotyczącą wyników. Wynik jest między zero a, oraz niskim wynikiem wskazuje niski zaufania.
+  * `score`: Wartość zmiennoprzecinkowa wskazująca pewność dotyczącą wyników. Wynik jest między zero a, oraz niskim wynikiem wskazuje niski zaufania.
 
-  * `isTranslationSupported`Wartość logiczna, która ma wartość true, jeśli wykryty język jest jednym z języków obsługiwanych na potrzeby tłumaczenia tekstu.
+  * `isTranslationSupported`: Wartość logiczna, która ma wartość true, jeśli wykryty język jest jednym z języków obsługiwanych na potrzeby tłumaczenia tekstu.
 
-  * `isTransliterationSupported`Wartość logiczna, która ma wartość true, jeśli wykryty język jest jednym z języków obsługiwanych dla transliterację.
+  * `isTransliterationSupported`: Wartość logiczna, która ma wartość true, jeśli wykryty język jest jednym z języków obsługiwanych dla transliterację.
   
   * `alternatives`: Tablica inne języki możliwe. Każdy element tablicy jest inny obiekt z tymi samymi właściwościami wymienionych powyżej: `language`, `score`, `isTranslationSupported` i `isTransliterationSupported`.
 
@@ -128,7 +128,7 @@ Przykład odpowiedź JSON to:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>Identyfikator żądania X</td>
+    <td>X-RequestId</td>
     <td>Wartość generowane przez usługę w celu zidentyfikowania żądania. Jest on używany na potrzeby rozwiązywania problemów.</td>
   </tr>
 </table> 
@@ -174,7 +174,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
 
 Poniższy przykład pokazuje, jak pobrać języki obsługiwane w przypadku tłumaczenie tekstu.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"
