@@ -11,14 +11,14 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: 22c783574897076b697b4b2bb3e8fc1da284dcae
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6e518f644e8fc43db58ef481312f44b2071a0dc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724676"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55194308"
 ---
-# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Szybki start: korzystanie z narzędzia Node.js do wykonywania zapytań w bazie danych Azure SQL
+# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z narzędzia Node.js do wykonywania zapytań w bazie danych Azure SQL
 
 W tym artykule przedstawiono sposób nawiązywania połączeń z bazą danych Azure SQL za pomocą języka [Node.js](https://nodejs.org). Następnie można użyć instrukcji języka T-SQL w celu wykonywania zapytań o dane.
 
@@ -27,8 +27,6 @@ W tym artykule przedstawiono sposób nawiązywania połączeń z bazą danych Az
 Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elementami:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-- [Reguła zapory poziomu serwera](sql-database-get-started-portal-firewall.md) dla publicznego adresu IP używanego przez Ciebie komputera
 
 - Oprogramowanie związane z narzędziem Node.js dla Twojego systemu operacyjnego:
 

@@ -7,25 +7,25 @@ manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 047c2af2626c9efca05dc3d3e554d57b4d559add
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3a52610365c4e18333084e81a0f69e302fb5c191
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809109"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55192047"
 ---
 # <a name="two-step-verification-overview"></a>Omówienie weryfikacji dwuetapowej
-
->[!Important]
->Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Dotarła do Ciebie wiadomość e-mail z działu IT lub przełożonego z informacją, że organizacja dodała dodatkową weryfikację zabezpieczeń do Twojego konta. Co to oznacza? Oznacza to, że Twoja organizacja podejmuje dodatkowe kroki, aby upewnić się, że jesteś osobą, za którą podajesz się podczas logowania. Ta dodatkowa weryfikacja, znana również jako weryfikacja dwuetapowa, odbywa się przy użyciu kombinacji nazwy użytkownika, hasła i urządzenia przenośnego lub telefonu.
 
 Weryfikacja dwuetapowa jest bezpieczniejsza niż użycie tylko hasła, ponieważ opiera się na dwóch metodach uwierzytelniania: czymś, co znasz, i czymś, co masz. Coś, co znasz, to hasło. Coś, co masz, to telefon lub urządzenie, które często masz przy sobie. Weryfikacja dwuetapowa ułatwia zatrzymanie złośliwych hakerów udających, że są Tobą, ponieważ nawet jeśli znają hasło, prawdopodobnie nie mają Twojego urządzenia.
+
+>[!Important]
+>Ta zawartość jest przeznaczona dla użytkowników. Jeśli jesteś administratorem, więcej informacji na temat konfigurowania i zarządzania środowiskiem usługi Azure Active Directory (Azure AD) możesz znaleźć w [dokumentacji usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 |Artykuł |Opis |
 |------|------------|

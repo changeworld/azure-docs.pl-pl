@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: e3791c897722c9bbf50f58c126d7e4e573b2096f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2e974acb1a7583fbd1a961eda4daa3732fbeff7c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465818"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55218177"
 ---
 # <a name="what-is-project-url-preview"></a>Czym jest projektu podglądu adresu URL?
 Punkt końcowy laboratorium URL Preview pobiera parametr zapytania adresu URL i zwraca odpowiedź JSON z nazwą zasobu docelowego, krótkim opisem i linkiem do obrazu, czyli treściami, które mają zostać wyświetlone w podglądzie. Odpowiedź zawiera także flagę [isFamilyFriendly](url-preview-reference.md#query-parameters), która wskazuje na to, czy adres URL zawiera treści pirackie, dla dorosłych lub inną nielegalną zawartość. 
@@ -26,7 +26,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 
 ```
 Odpowiedź: 
-````
+```
 HTTP Headers:
 BingAPIs-TraceId: 3CC74C94769440C0851D9DF0869FCE7F
 BingAPIs-SessionId: 52219085A6364692958C9C83983A0DBA
@@ -44,7 +44,7 @@ X-MSEdge-Ref: Ref A: 3CC74C94769440C0851D9DF0869FCE7F Ref B: CO1EDGE0315 Ref C: 
   }
 }
 
-````
+```
 ## <a name="scenarios"></a>Scenariusze 
 
 Interfejs URL Preview API obsługuje krótkie opisy zasobów internetowych. Deweloperzy używają go do tworzenia zaawansowanych podglądów.  Użytkownicy mogą udostępniać lub oznaczać zakładkami strony internetowe, grupy dyskusyjne, blogi, fora itp. Ten interfejs API może również służyć do moderowania zawartości.    
