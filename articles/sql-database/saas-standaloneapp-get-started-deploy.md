@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 85c5ff33fbf5979dd07ab27ccf5993149151b38a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7941938b089034565307b0104034589ee44c24bf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252415"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470404"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i eksplorowanie oddzielną aplikację pojedynczej dzierżawy, który używa usługi Azure SQL Database
 
@@ -44,9 +44,9 @@ Dodatkowe samouczki zostaną wydane. Pozwoli ich do eksplorowania szeroką gamę
 Wdróż aplikację dla trzech podana dzierżaw:
 
 1. Kliknij każdy niebieski **Wdróż na platformie Azure** przycisk, aby otworzyć szablon wdrożenia w [witryny Azure portal](https://portal.azure.com). Każdy szablon wymaga dwóch wartości parametru. Nazwa nowej grupy zasobów, a nazwę użytkownika, która odróżnia to wdrożenie, od innych wdrożeń aplikacji. Następnym krokiem zawiera szczegółowe informacje, do ustawiania tych wartości.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Firmy Contoso Concert Hall**
+    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
 <br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dojo dereń**
+    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
 <br><br>
     <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
 
@@ -76,16 +76,16 @@ Aplikacja prezentuje miejsca, które obsługują zdarzenia.  Lokalizacje są dzi
 
 1. Otwórz stronę wydarzenia dla każdego z trzech dzierżaw w osobnych kartach przeglądarki:
 
-    - http://events.contosoconcerthall.&lt; użytkownika&gt;. trafficmanager.net
-    - http://events.dogwooddojo.&lt; użytkownika&gt;. trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt; użytkownika&gt;. trafficmanager.net
+    - http://events.contosoconcerthall.&lt;user&gt;.trafficmanager.net
+    - http://events.dogwooddojo.&lt;user&gt;.trafficmanager.net
+    - http://events.fabrikamjazzclub.&lt;user&gt;.trafficmanager.net
 
     (W przypadku każdego adresu URL, Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia.)
 
    ![Zdarzenia](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 Aby kontrolować dystrybucję żądań przychodzących, ta aplikacja używa [ *usługi Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md). Każde wystąpienie aplikacji specyficznym dla dzierżawy zawiera nazwę dzierżawy jako część nazwy domeny w adresie URL. Wszystkie dzierżawy adresów URL zawierają **użytkownika** wartość. Adresy URL należy wykonać następujący format:
-- http://events.&lt; venuename&gt;.&lt; Użytkownik&gt;. trafficmanager.net
+- http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
 Bazy danych z każdej dzierżawy **lokalizacji** znajduje się w ustawieniach aplikacji odpowiednie wdrożonej aplikacji.
 
@@ -102,12 +102,12 @@ Spójrzmy na niektóre zasoby, które zostały wdrożone:
 
 Każda baza danych dzierżawy jest 50 jednostek DTU *autonomiczny* bazy danych.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 <!--
-* Additional [tutorials that build on the Wingtip SaaS application](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
-* To learn about elastic pools, see [*What is an Azure SQL elastic pool*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
-* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)
+* Additional [tutorials that build on the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* To learn about elastic pools, see [*What is an Azure SQL elastic pool*](sql-database-elastic-pool.md)
+* To learn about elastic jobs, see [*Managing scaled-out cloud databases*](sql-database-elastic-jobs-overview.md)
 -->
 
 - Aby dowiedzieć się więcej o wielodostępnych aplikacji SaaS, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS](saas-tenancy-app-design-patterns.md).

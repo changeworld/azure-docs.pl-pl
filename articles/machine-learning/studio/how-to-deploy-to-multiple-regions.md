@@ -1,6 +1,6 @@
 ---
-Tytuł: Wdrażanie usługi sieci web Studio do wielu regionów titleSuffix: Opis usługi Azure Machine Learning Studio: Kroki umożliwiające wdrożenie (kopiowanie) nową usługę sieci Web do innych regionów. Łatwe wdrażanie usługi sieci web do wielu regionów, bez konieczności używania wielu subskrypcje i obszary robocze.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Wdrażanie usługi sieci web Studio do wielu regionów titleSuffix: Opis usługi Azure Machine Learning Studio: Kroki umożliwiające wdrożenie (kopiowanie) nową usługę sieci Web do innych regionów. Łatwe wdrażanie usługi sieci web do wielu regionów, bez konieczności używania wielu subskrypcje i obszary robocze.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

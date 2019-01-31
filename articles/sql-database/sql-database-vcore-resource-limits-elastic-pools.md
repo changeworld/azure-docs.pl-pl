@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/09/2019
-ms.openlocfilehash: 818dbf84f7b706d6f4a89354291775f091bb1afc
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.date: 01/30/2019
+ms.openlocfilehash: 48cdd064155bfbdfa2fef2ce5a8410e4c95e4c3b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215477"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461070"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych
 
@@ -53,7 +53,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) * |210|420|630|840|1050|1260|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|100|200|300|500|500|500|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Liczba replik|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
@@ -79,7 +79,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1470|1680|1890|2100|3360|5040|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|200|500|500|500|500|500|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Liczba replik|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
@@ -105,7 +105,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|1470|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|200|500|500|500|500|500|500|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Liczba replik|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|
@@ -130,7 +130,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Docelowy operacji We/Wy (64 KB)|4000|4500|5000|6000|7000|7000|7000|
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1680|1890|2100|2520|33600|4200|8400|
 |Maksymalna liczba baz danych na pulę|500|500|500|500|500|500|500|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |Liczba replik|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|
@@ -158,7 +158,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...3|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...5|0, 0.25, 0.5, 1...6|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -174,7 +174,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Rdzenie wirtualne|7|8|9|10|16|24|
 |Pamięć (GB)|81.6|91.8|102|122.4|163.2|204|408|
 |Obsługa magazynu kolumn|ND|ND|ND|ND|ND|ND|
-|Pojemność magazynu OLTP w pamięci (GB)|7|8|9,5|11|20|36|
+|Pojemność magazynu OLTP w pamięci (GB)|7|8|9.5|11|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|307|307|307|
@@ -184,7 +184,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1470|1680|1890|2100|3360|5040|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...7|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...9|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...10, 16|0, 0.25, 0.5, 1...10, 16, 24|
 |Liczba replik|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -200,7 +200,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Rdzenie wirtualne|2|4|6|8|10|12|14|
 |Pamięć (GB)|11|22|33|44|55|66|77|
 |Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Pojemność magazynu OLTP w pamięci (GB)|1.571|3,142|4.713|6.284|8.655|11.026|13.397|
+|Pojemność magazynu OLTP w pamięci (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1536|1536|1536|1536|
 |Maksymalny rozmiar dziennika (GB)|307|307|307|461|461|461|461|
 |Rozmiar bazy danych TempDB (GB)|64|128|192|256|320|384|384|
@@ -210,7 +210,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|210|420|630|840|1050|1260|1470|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|100|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |Liczba replik|4|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -236,7 +236,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Maksymalna liczba współbieżnych procesów roboczych na pulę (żądań) *|1680|1890|2100|2520|3360|4200|8400|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|
 |Maksymalna liczba baz danych na pulę|100|100|100|100|100|100|100|
-|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...20, 24, 32, 40|0, 0.25, 0.5, 1...20, 24, 32, 40, 80|
 |Liczba replik|4|4|4|4|4|4|4|
 |Multi-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -260,5 +260,5 @@ W poniższej tabeli opisano właściwości dla bazy danych w puli.
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
+- Zobacz [Przegląd zasobów limity na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).

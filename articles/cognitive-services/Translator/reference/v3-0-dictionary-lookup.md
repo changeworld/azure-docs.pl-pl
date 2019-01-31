@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: b51067b9e854566991d49aeb1ff2b1ad13999a51
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b6178c4e9c197539359058347b2409210d976569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957746"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458928"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>API 3.0 tekstu usługi Translator: Wyszukiwanie słownika
+# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Wyszukiwanie w słowniku
 
 Dostarcza alternatywnych tłumaczeń dla programów word i małą liczbą wyrażenia idiomatyczne. Każde tłumaczenie części mowy i ma listę wstecz tłumaczenia. Tłumaczenia wstecz umożliwić użytkownikowi zrozumieć tłumaczenie w kontekście. [Przykład słownika](./v3-0-dictionary-examples.md) operacja umożliwia dalsze do przechodzenia do szczegółów Zobacz przykład użycia każdej pary tłumaczenia.
 
@@ -68,7 +68,7 @@ Nagłówki żądania obejmują:
     <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
-    <td>X ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
@@ -94,27 +94,27 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
   * `normalizedSource`: Ciąg, zapewniając znormalizowana postać okresu źródła. Na przykład jeśli żądanie jest "JOHN", znormalizowana postać będzie "john". Zawartość tego pola staje się dane wejściowe [Przykłady wyszukiwania](./v3-0-dictionary-examples.md).
     
-  * `displaySource`: Ciąg, dzięki czemu termin źródłowy w postaci najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Na przykład, jeśli dane wejściowe są "JOHN", Wyświetl formularz zostanie naliczona zwykle pisownię nazwy: "John". 
+  * `displaySource`: Ciąg, dzięki czemu termin źródłowy w postaci najlepiej dostosowane do wyświetlenia przez użytkownika końcowego. Na przykład jeśli dane wejściowe są "JOHN", Wyświetl formularz zostanie naliczona zwykle pisownię nazwy: "John". 
 
   * `translations`: Lista tłumaczeń termin źródła. Każdy element listy jest obiektem z następującymi właściwościami:
 
     * `normalizedTarget`: Ciąg, dzięki czemu znormalizowana postać tego warunku w języku docelowym. Ta wartość będzie używana jako dane wejściowe [Przykłady wyszukiwania](./v3-0-dictionary-examples.md).
 
-    * `displayTarget`: Ciąg, podając wyrażenie w języku docelowym oraz w formie najlepiej nadaje się do wyświetlania przez użytkownika końcowego. Ogólnie rzecz biorąc, to będzie tylko różnią się od `normalizedTarget` pod względem wielkości liter. Na przykład stoi takie jak "Juan" będą mieć `normalizedTarget = "juan"` i `displayTarget = "Juan"`.
+    * `displayTarget`: Ciąg, podając wyrażenie w języku docelowym oraz w formie najlepiej dostosowane do wyświetlenia przez użytkownika końcowego. Ogólnie rzecz biorąc, to będzie tylko różnią się od `normalizedTarget` pod względem wielkości liter. Na przykład stoi takie jak "Juan" będą mieć `normalizedTarget = "juan"` i `displayTarget = "Juan"`.
 
     * `posTag`: Ciąg skojarzenie tego terminu za pomocą tagów części mowy.
 
         | Nazwa tagu | Opis  |
         |----------|--------------|
-        | PR      | Określeniem   |
-        | ZAAWANSOWANA      | Parametrów      |
+        | ADJ      | Określeniem   |
+        | ADV      | Parametrów      |
         | CONJ     | Spójniki |
         | DET      | Determiners  |
-        | MODALNE    | Zlecenia        |
+        | MODAL    | Zlecenia        |
         | RZECZOWNIK     | Rzeczowniki        |
         | PRZYGOTOWYWANIE     | Przyimkami |
         | PRON     | Zaimki     |
-        | ZLECENIA     | Zlecenia        |
+        | VERB     | Zlecenia        |
         | INNE    | Inne        |
 
         Jako notatka implementacji te znaczniki zostały określone przez części mowy znakowanie angielskim po stronie, a następnie wykonywanie najczęściej tagu dla każdej pary źródło i cel. Dlatego jeśli ludzie często tłumaczenie hiszpańskim słowem do różnych tagów części mowy w języku angielskim, znaczniki może pozostać problemy (względem hiszpańskim słowem).
@@ -140,7 +140,7 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
 W tym przykładzie pokazano, jak wyszukać alternatywnych tłumaczeń w języku hiszpańskim okresu angielskiej `fly` .
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -191,7 +191,7 @@ Treść odpowiedzi (skrót dla jasności) to:
 
 Ten przykład pokazuje, co się stanie, gdy termin są wyszukiwane nie istnieje dla pary prawidłowe słownika.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"

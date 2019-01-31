@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 680a47dae057b68957c58bbaab1ec35407d67952
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 291872ca25b8674528b47e695c0d5135296e3451
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268639"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472749"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Przenoszenie danych do usługi Azure SQL Database dla usługi Azure Machine Learning
 
@@ -26,7 +26,7 @@ Temat, który przedstawia opcje przenoszenia danych do lokalnego programu SQL Se
 
 Poniższa tabela podsumowuje Opcje przenoszenia danych do usługi Azure SQL Database.
 
-| <b>ŹRÓDŁO</b> | <b>MIEJSCE DOCELOWE: Usługa Azure SQL Database</b> |
+| <b>ŹRÓDŁO</b> | <b>MIEJSCE DOCELOWE: Azure SQL Database</b> |
 | --- | --- |
 | <b>Plik prosty (pliku CSV lub TSV sformatowane)</b> |[Zapytanie SQL wstawiania zbiorczego](#bulk-insert-sql-query) |
 | <b>Na lokalnym serwerze SQL Server</b> |1.[wyeksportować do pliku prostego](#export-flat-file)<br> 2. [Kreator migracji bazy danych SQL](#insert-tables-bcp)<br> 3. [Baza danych kopii zapasowej i przywracanie](#db-migration)<br> 4. [Azure Data Factory](#adf) |

@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 6793fba1476595918ac20c0484a661e3af7897d7
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: e1d209828313068e61b4acec3c4f92b7d643e1b6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247304"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458419"
 ---
 # <a name="dynamic-sql-in-sql-data-warehouse"></a>Dynamiczny język SQL w usłudze SQL Data Warehouse
 Porady dotyczące używania dynamiczny język SQL w usłudze Azure SQL Data Warehouse do opracowywania rozwiązań.

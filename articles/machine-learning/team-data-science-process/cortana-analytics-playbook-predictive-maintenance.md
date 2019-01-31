@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135692"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466833"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -88,16 +88,16 @@ Ta sekcja koncentruje się na zbiór przypadki użycia program PdM w branżach, 
 |:-----------------|-------------------|
 |**Lotnictwa**      |                   |
 |_We wdrożeniu pakietu testowego opóźnienia i anulowanych rezerwacjach_ ze względu na problemy mechanicznych. Błędy, które nie można naprawić w czasie mogą spowodować lotów zostaną anulowane i zakłócić planowania i operacji. |Rozwiązania menedżerów PdM przewidzieć prawdopodobieństwo samolotu są opóźnione lub zostało anulowane z powodu awarii mechanicznych.|
-|_Niepowodzenie części aparatu samolotu_: wymiana części silnika samolotu znajdują się wśród najbardziej typowych zadań konserwacji w branży lotniczej. Konserwacja rozwiązania wymagają staranne zarządzanie dostępność podstawowych składników, dostarczania i planowania|Możliwość zebrania analizy na niezawodność składnika prowadzi do znacznej redukcji kosztów inwestycyjnych.|
+|_Niepowodzenie części aparatu samolotu_: Wymiana części silnika samolotu znajdują się wśród najbardziej typowych zadań konserwacji w branży lotniczej. Konserwacja rozwiązania wymagają staranne zarządzanie dostępność podstawowych składników, dostarczania i planowania|Możliwość zebrania analizy na niezawodność składnika prowadzi do znacznej redukcji kosztów inwestycyjnych.|
 |**Finanse** |                         |
 |_Uszkodzenie_ jest to powszechny problem w branży bankowości. Problem polega na tym zgłoszenia prawdopodobieństwo, że ATM środków pieniężnych wycofania transakcji zostanie przerwane z powodu błędu zakleszczenie lub części dokument rozdzielacz środków pieniężnych. Oparte na prognozy błędów transakcji, bankomatami może być obsługiwany aktywnie aby zapobiec występowaniu błędów.| A nie zezwolić na maszynę aby zakończyć się niepowodzeniem przy użyciu transakcji w połowie drogi, pożądane alternatywą jest program maszyny do odmowy usługi oparte na prognozowania.|
 |**Energii** |                          |
-|_Błędy turbiny wiatru_: turbiny wiatru są źródłem główny energii w krajach przyjazne i może dotyczyć wysokich kosztów kapitałowych. Kluczowym czynnikiem wiatru turbiny jest mechanicznych generator. jego uszkodzenia renderuje turbiny nieefektywne. Jest również bardzo drogie do naprawienia.|Prognozowanie kluczowe wskaźniki wydajności, takich jak MTTF (średniego czasu awarii) może pomóc firmom energetycznym zapobiec błędom turbiny i upewnij się, minimalnym czasem przestojów. Prawdopodobieństwa niepowodzeń informuje pracowników technicznych, aby monitorować turbiny, które mogą wkrótce się nie powieść i planowanie systemów opartych na czas konserwacji. Modele predykcyjne zapewniają wgląd w różne czynniki wpływające na błędy, co pomaga techników lepiej zrozumieć głównych przyczyn problemów.|
-|_Błędy wyłącznik_: dystrybucja energii elektrycznej do odporności domów i firm wymaga linie zasilania mają działać przez cały czas, aby zagwarantować dostarczanie energii. Wyłączniki pomóc ograniczyć lub uniknąć uszkodzenia power warunki pogodowe wierszy podczas przeciążenie lub niepożądane. W tym miejscu problem biznesowy jest przewiduje awarie wyłącznika.| Program PdM rozwiązania pomagają obniżenie kosztów napraw i zwiększenie cyklem życia urządzeń, takich jak wyłączniki. Pomagają poprawić jakość sieci zasilania, zmniejszając nieoczekiwanych awarii i przerw w działaniu usług.|
+|_Błędy turbiny wiatru_: Turbiny wiatru są źródłem główny energii w krajach przyjazne i obejmują wysokich kosztów kapitałowych. Kluczowym czynnikiem wiatru turbiny jest mechanicznych generator. jego uszkodzenia renderuje turbiny nieefektywne. Jest również bardzo drogie do naprawienia.|Prognozowanie kluczowe wskaźniki wydajności, takich jak MTTF (średniego czasu awarii) może pomóc firmom energetycznym zapobiec błędom turbiny i upewnij się, minimalnym czasem przestojów. Prawdopodobieństwa niepowodzeń informuje pracowników technicznych, aby monitorować turbiny, które mogą wkrótce się nie powieść i planowanie systemów opartych na czas konserwacji. Modele predykcyjne zapewniają wgląd w różne czynniki wpływające na błędy, co pomaga techników lepiej zrozumieć głównych przyczyn problemów.|
+|_Błędy wyłącznik_: Dystrybucja energii elektrycznej do odporności domów i firm wymaga linie zasilania mają działać przez cały czas, aby zagwarantować dostarczanie energii. Wyłączniki pomóc ograniczyć lub uniknąć uszkodzenia power warunki pogodowe wierszy podczas przeciążenie lub niepożądane. W tym miejscu problem biznesowy jest przewiduje awarie wyłącznika.| Program PdM rozwiązania pomagają obniżenie kosztów napraw i zwiększenie cyklem życia urządzeń, takich jak wyłączniki. Pomagają poprawić jakość sieci zasilania, zmniejszając nieoczekiwanych awarii i przerw w działaniu usług.|
 |**Transport i logistyka** |    |
-|_Błędy drzwi elevator_: windy dużych firm oferuje usługi pełnego stosu dla milionów funkcjonalności windy na całym świecie. Windy bezpieczeństwa, niezawodności i czas pracy to główne kwestie dla swoich klientów. Te firmy śledzić te i różnych innych atrybutów za pośrednictwem czujników, aby pomóc im dzięki naprawcze i prewencyjnej konserwacji. W elevator najczęściej występujący problem klienta działa poprawnie drzwi elevator. Problem biznesowy w tym przypadku jest zapewnienie bazy wiedzy knowledge base predykcyjna aplikacja która przewiduje się, że powoduje, że ryzyko błędów drzwi biblioteki.| Windy są inwestycji kapitałowych dla potencjalnie czas 20 – 30 roku. Dlatego może być wysoce konkurencyjnych; każdej potencjalnej sprzedaży Dlatego do obsługi i pomocy technicznej oczekują. Konserwacji predykcyjnej można zapewnić tym firmom z przewagę nad ich konkurentów w swoich produktach i oferty usług.|
-|_Kółka błędy_: kółka konta błędy połowę wszystkich szkolenie derailments i koszt miliardów w branży globalnego szyny. Błędy kółka również powodować rails się pogarszać, czasami powodując szyny włamanie się przedwcześnie. Podziały szyny prowadzić do katastrofami, takich jak derailments. Aby uniknąć tych wystąpień, kolei monitorować wydajność koła i zastąpić je w sposób prewencyjnej. Problem biznesowy w tym miejscu jest przewidywanie awarii koła.| Konserwacja predykcyjna kół pomoże just-in-time zastąpienie plików w formacie Wheel |
-|_Błędy drzwi train całość_: główną przyczyną opóźnienia w operacjach całość jest błędy drzwi train samochodów. Problem biznesowy w tym miejscu jest przewiduje awarie drzwi pociągu.|Wczesne świadomości awarii drzwi lub liczba dni do awarii drzwi może pomóc w optymalizacji biznesowej szkolenie drzwi obsługi harmonogramy.|
+|_Błędy drzwi elevator_: Windy dużych firm obsługi pełnego stosu dla milionów funkcjonalności windy na całym świecie. Windy bezpieczeństwa, niezawodności i czas pracy to główne kwestie dla swoich klientów. Te firmy śledzić te i różnych innych atrybutów za pośrednictwem czujników, aby pomóc im dzięki naprawcze i prewencyjnej konserwacji. W elevator najczęściej występujący problem klienta działa poprawnie drzwi elevator. Problem biznesowy w tym przypadku jest zapewnienie bazy wiedzy knowledge base predykcyjna aplikacja która przewiduje się, że powoduje, że ryzyko błędów drzwi biblioteki.| Windy są inwestycji kapitałowych dla potencjalnie czas 20 – 30 roku. Dlatego może być wysoce konkurencyjnych; każdej potencjalnej sprzedaży Dlatego do obsługi i pomocy technicznej oczekują. Konserwacji predykcyjnej można zapewnić tym firmom z przewagę nad ich konkurentów w swoich produktach i oferty usług.|
+|_Kółka błędy_: Koło konto błędy połowę wszystkich szkolenie derailments i kosztów miliardów w branży globalnego szyny. Błędy kółka również powodować rails się pogarszać, czasami powodując szyny włamanie się przedwcześnie. Podziały szyny prowadzić do katastrofami, takich jak derailments. Aby uniknąć tych wystąpień, kolei monitorować wydajność koła i zastąpić je w sposób prewencyjnej. Problem biznesowy w tym miejscu jest przewidywanie awarii koła.| Konserwacja predykcyjna kół pomoże just-in-time zastąpienie plików w formacie Wheel |
+|_Błędy drzwi train całość_: Główną przyczyną opóźnienia w operacjach całość jest błędy drzwi train samochodów. Problem biznesowy w tym miejscu jest przewiduje awarie drzwi pociągu.|Wczesne świadomości awarii drzwi lub liczba dni do awarii drzwi może pomóc w optymalizacji biznesowej szkolenie drzwi obsługi harmonogramy.|
 
 Następna sekcja pobiera Szczegóły sposobu osiągnięcia korzyści menedżerów PdM omówione powyżej.
 
@@ -117,7 +117,7 @@ Powodzenie wszelkie learning zależy od tego, czego dotyczy przykład, (jakość
 Po pierwsze, dane muszą być _dotyczą problem_. Należy wziąć pod uwagę _kółka błąd_ omówione przypadek użycia powyżej - danych szkoleniowych powinna zawierać funkcje związane z operacjami koła. Jeśli ten problem był przewidywanie awarii _system rozwinięty_, ma dane szkoleniowe w celu objęcia wszystkich składników systemu rozwinięty. Pierwszy przypadek jest przeznaczony dla określonego składnika, natomiast w drugim przypadku jest przeznaczony dla awarii większych podsystemu. Ogólnie zalecane jest projektowanie systemów prognozy dotyczące określonych składników, a nie z większych podsystemów, od momentu jego będzie mieć więcej rozproszonych danych. Eksperta domeny (zobacz [kwalifikujących się problemów pod kątem konserwacji predykcyjnej](#Qualifying-problems-for-predictive-maintenance)) powinny pomóc w wyborze najbardziej istotnych podzbiór danych do analizy. Źródła danych zostały omówione bardziej szczegółowo w [przygotowywania danych pod kątem konserwacji predykcyjnej](#Data-preparation-for-predictive-maintenance).
 
 ### <a name="sufficient-data"></a>Ilością danych
-Często zadawane pytania dwa w odniesieniu do danych historii błąd: (1) "ile zdarzenia błędów są wymagane do nauczenia modelu?" [2] "liczbę rekordów jest uznawany za"wystarczająco dużo,"?" Nie istnieją żadne ostateczne odpowiedzi, ale tylko reguły akceptacji. (1), aby uzyskać bardziej liczba zdarzeń błędów lepiej modelu. (2) i dokładna liczba zdarzeń błędów jest zależny od danych i kontekście problem jest rozwiązany. Ale na drugiej strony, jeśli maszyna zbyt często nie powiedzie się następnie firmy spowoduje zastąpienie, któremu zostanie obniżony wystąpienia awarii. W tym miejscu ponownie wskazówki od ekspertów domeny jest ważne. Jednak istnieją metody radzenia sobie z problemem z _rzadkich zdarzenia_. Zostały one omówione w sekcji [postępowania z danymi imbalanced](#Handling-imbalanced-data).
+Często zadawane pytania dwa w odniesieniu do danych historii awarii: (1) "ile zdarzenia błędów są wymagane do nauczenia modelu"? [2] "liczbę rekordów jest uznawany za"wystarczająco dużo,"?" Nie istnieją żadne ostateczne odpowiedzi, ale tylko reguły akceptacji. (1), aby uzyskać bardziej liczba zdarzeń błędów lepiej modelu. (2) i dokładna liczba zdarzeń błędów jest zależny od danych i kontekście problem jest rozwiązany. Ale na drugiej strony, jeśli maszyna zbyt często nie powiedzie się następnie firmy spowoduje zastąpienie, któremu zostanie obniżony wystąpienia awarii. W tym miejscu ponownie wskazówki od ekspertów domeny jest ważne. Jednak istnieją metody radzenia sobie z problemem z _rzadkich zdarzenia_. Zostały one omówione w sekcji [postępowania z danymi imbalanced](#Handling-imbalanced-data).
 
 ### <a name="quality-data"></a>Dane dotyczące jakości
 Jakość danych ma kluczowe znaczenie — każdy predykcyjne wartość atrybutu musi być _dokładne_ w połączeniu z wartością zawiera zmienną docelową. Dobrą jakość danych jest dobrze przebadanych obszar w statystyk i zarządzanie danymi i tym samym poziomie zakresu, w tym przewodniku.
@@ -167,8 +167,8 @@ Przykładowe dane istotne dla [menedżerów PdM przykładowe przypadki użycia](
 ### <a name="data-types"></a>Typy danych
 Dwa typy danych głównego obserwowane w przypadku menedżerów PdM domeny, biorąc pod uwagę powyższe źródeł danych, są:
 
-- _Dane czasowe_: telemetrii operacyjnej, warunki maszyny, kolejność roboczych kody priorytetu, które mają sygnatury czasowe w czasie rejestrowania. Błąd, konserwacji lub naprawy i historyczne dane użycia będą również mają sygnatury czasowe, skojarzone z każdym zdarzeniem.
-- _Dane statyczne_: maszyny i funkcje operatora ogólnie rzecz biorąc są statyczne ponieważ opisują one specyfikacje techniczne maszyn lub operator atrybutów. Jeśli te funkcje można zmienić z czasem, powinni mieć także sygnatury czasowe skojarzonych z nimi.
+- _Dane czasowe_: Operational telemetrii, warunki maszyny, kolejność roboczych kody priorytetu, które mają sygnatury czasowe w czasie rejestrowania. Błąd, konserwacji lub naprawy i historyczne dane użycia będą również mają sygnatury czasowe, skojarzone z każdym zdarzeniem.
+- _Dane statyczne_: Maszyny i funkcje operatora ogólnie rzecz biorąc są statyczne ponieważ opisują one specyfikacje techniczne maszyn lub operator atrybutów. Jeśli te funkcje można zmienić z czasem, powinni mieć także sygnatury czasowe skojarzonych z nimi.
 
 Zmienne predykcyjnych i docelowy powinien być wstępnie przetworzonych/przekształcane [typy danych liczbowych, podzielone na kategorie i inne](https://www.statsdirect.com/help/basics/measurement_scales.htm) w zależności od algorytm.
 
@@ -178,11 +178,11 @@ Jako warunek wstępny do _Inżynieria funkcji_, przygotowania danych z różnych
 W przypadku danych czasowych podzielić czas trwania danych z czujników na jednostki czasu. Każdy rekord powinien należeć do jednostka czasu dla zasobu, _i powinno oferować różne informacje_. Jednostki czasu są definiowane w zależności od potrzeb biznesowych wielokrotności sekundy, minuty, godziny, dni, miesięcy, i tak dalej. Jednostka czasu _nie musi być taka sama jak częstotliwość zbierania danych_. W przypadku wysokiej częstotliwości dane nie mogą być wyświetlane istotną różnicą z jednej jednostki do drugiego. Na przykład załóżmy, że temperatury otoczenia został zebrany co 10 sekund. Tylko przy użyciu tego samego interwału danych szkoleniowych zwiększa liczbę przykłady nie oferuje żadnych dodatkowych informacji. Dla tego przypadku lepszą strategię byłoby użyć średniej ponad 10 minut lub godzinę dane oparte na uzasadnienie biznesowe.
 
 W przypadku danych statycznych
-- _Rekordy konserwacji_: dane pierwotne konserwacji ma identyfikator zasobu i sygnaturę czasową z informacji na temat czynności konserwacyjnych, które zostały wykonane w danym punkcie w czasie. Przekształcanie czynności konserwacyjnych na _podzielonych na kategorie_ kolumn, w którym jednoznacznie mapuje akcja konserwacji określonego deskryptora każdej kategorii. Schemat dla rekordów konserwacji obejmuje identyfikator zasobu, czasu i akcja konserwacji.
+- _Rekordy konserwacji_: Dane pierwotne konserwacji ma identyfikator zasobu i sygnaturę czasową z informacji na temat czynności konserwacyjnych, które zostały wykonane w danym punkcie w czasie. Przekształcanie czynności konserwacyjnych na _podzielonych na kategorie_ kolumn, w którym jednoznacznie mapuje akcja konserwacji określonego deskryptora każdej kategorii. Schemat dla rekordów konserwacji obejmuje identyfikator zasobu, czasu i akcja konserwacji.
 
-- _Rejestruje błąd_: błędy lub przyczyny niepowodzenia może zostać zarejestrowana jako konkretnych kodach błędów lub zdarzenia błędów zdefiniowanych przez warunki firmy. W przypadkach, gdy urządzenie ma wiele kodów błędu eksperta domeny powinna pomagać w identyfikacji te, które są odpowiednie do zawiera zmienną docelową. Konstruowania za pomocą pozostałych kodów błędów i warunki _predykcyjne_ funkcje, które odnoszą się tych błędów. Schemat dla rekordów błędów obejmuje identyfikator zasobu, czasu, Niepowodzenie lub Przyczyna niepowodzenia — Jeśli jest dostępny.
+- _Rejestruje błąd_: Awarie lub przyczyny niepowodzenia może zostać zarejestrowana jako konkretnych kodach błędów lub zdarzenia błędów zdefiniowanych przez warunki firmy. W przypadkach, gdy urządzenie ma wiele kodów błędu eksperta domeny powinna pomagać w identyfikacji te, które są odpowiednie do zawiera zmienną docelową. Konstruowania za pomocą pozostałych kodów błędów i warunki _predykcyjne_ funkcje, które odnoszą się tych błędów. Schemat dla rekordów błędów obejmuje identyfikator zasobu, czasu, Niepowodzenie lub Przyczyna niepowodzenia — Jeśli jest dostępny.
 
-- _Metadane maszyny i operator_: scalania danych maszyn i operator w jeden schemat do kojarzenia środka trwałego operatorem wraz z ich odpowiednich atrybutów. Identyfikator zasobu, funkcje zasobów, identyfikator — operator i operator funkcji obejmuje schematu dla warunków maszyny.
+- _Metadane maszyny i operator_: Scal dane maszyny i operator w jeden schemat do kojarzenia środka trwałego operatorem wraz z ich odpowiednich atrybutów. Identyfikator zasobu, funkcje zasobów, identyfikator — operator i operator funkcji obejmuje schematu dla warunków maszyny.
 
 Inne dane, przetwarzanie wstępne kroki obejmują _obsługi brakujące wartości_ i _normalizacji_ wartości atrybutów. Szczegółowe omówienie wykracza poza zakres tego podręcznika — w następnej sekcji niektóre przydatne dane.
 
@@ -209,8 +209,8 @@ Przykłady stopniowe agregacje w przedziale czasu to liczba, średnia, środki C
 - _We wdrożeniu pakietu testowego opóźnienie_: liczba kodów błędów przez ostatni dzień/tydzień.
 - _Niepowodzenie część aparatu samolotu_: stopniowe oznacza, że, odchylenie standardowe i sumy w ciągu ostatniego dnia, tygodnia itp. Ta metryka powinna zostać określona wraz z eksperta domeny biznesowej.
 - _Błędy ATM_: stopniowe oznacza, że mediana, zakres, odchyleń standardowych, liczby wartości odstających ponad trzech odchyleń standardowych, górny i dolny CUMESUM.
-- _Błędy drzwi train całość_: liczba zdarzeń w ciągu doby tydzień, dwa tygodnie itp.
-- _Błędy wyłącznik_: błąd zlicza ciągu ostatniego tygodnia, rok, trzech lat itd.
+- _Błędy drzwi train całość_: Liczba zdarzeń w ciągu doby tydzień, dwa tygodnie itp.
+- _Błędy wyłącznik_: Błąd zlicza ciągu ostatniego tygodnia, rok, trzech lat itd.
 
 Inną przydatną techniką w menedżerów PdM jest Przechwytywanie zmian trendów, wzrostów i zmiany na poziomie przy użyciu algorytmów, wykrywanie anomalii w danych.
 
@@ -241,7 +241,7 @@ Ostatnim krokiem w technicznego opracowywania funkcji jest **etykietowania** zmi
 > [!IMPORTANT]
 > Przygotowywanie danych i technicznego opracowywania funkcji są tak ważna jak modelowanie technik znalezienie pomyślne rozwiązania menedżerów PdM. Eksperta domeny i praktyki inwestycji znaczną ilość czasu w celu uzyskania odpowiednie funkcje i dane dla modelu. Poniżej wymieniono niewielką próbkę z wielu książki na temat technicznego opracowywania funkcji:
 > - Pyle, przygotowania danych D. dla danych wyszukiwania (Morgan Kaufmann serie danych systemów zarządzania), 1999 r.
-> - Casari Zheng, A., technicznego opracowywania funkcji A. dla usługi Machine Learning: zasad i technik dla analityków danych, O'Reilly, 2018 r.
+> - Zheng, inżynieria funkcji A. A., Casari, dla usługi Machine Learning: Zasady i technik dla analityków danych, O'Reilly, 2018 r.
 > - Dong G. Liu H. (Edytory), wyposażone w inżynierii uczenia maszynowego i analizy danych (Chapman & Hall/CRC wyszukiwania danych i Knowledge Discovery serii), naciśnij CRC 2018 r.
 
 ## <a name="modeling-techniques-for-predictive-maintenance"></a>Technik modelowania pod kątem konserwacji predykcyjnej
@@ -260,22 +260,22 @@ Klasyfikacja binarna jest używana do _przewidzieć prawdopodobieństwo, że urz
 W tej metodzie są identyfikowane dwa typy przykładów szkoleniowych. Przykład dodatnią _co oznacza błąd_, z etykietą = 1. Ujemna przykładu, który oznacza normalną pracę, przy użyciu etykiety = 0. Zmienna docelowa, i dlatego są wartości etykiet _podzielonych na kategorie_. Model, należy zidentyfikować każdy nowy przykład jako może zakończyć się niepowodzeniem lub normalną pracę w ciągu kolejnych X jednostki czasu.
 
 #### <a name="label-construction-for-binary-classification"></a>Konstrukcja etykiety klasyfikacji binarne
-Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu?" Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "o do odrzucaj" (Etykieta = 1) i oznaczać wszystkie rekordy jako "normal" (Etykieta = 0). (patrz rysunek 3).
+To pytanie, w tym miejscu: "Co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu?" Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "o do odrzucaj" (Etykieta = 1) i oznaczać wszystkie rekordy jako "normal" (Etykieta = 0). (patrz rysunek 3).
 
 ![Rysunek 3. Etykietowania dla klasyfikacji binarnej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) rysunek 3. Klasyfikacja binarna etykietowania
 
 Poniżej przedstawiono przykłady etykietowania strategii dla niektórych przypadków użycia.
-- _We wdrożeniu pakietu testowego opóźnienia_: X może zostać wybrany jako 1 dzień do prognozowania opóźnień w ciągu 24 godzin. Następnie wszystkie loty znajdujących się w ciągu 24 godzin zanim błędy są oznaczone jako 1.
-- _Środków pieniężnych ATM rozdzielić błędy_: celem może być ustalenie prawdopodobieństwo awarii transakcji w ciągu jednej godziny. W takim przypadku wszystkie transakcje, które wystąpiły w ciągu ostatniej godziny błędu są oznaczone jako 1. Aby przewidzieć prawdopodobieństwo awarii za pośrednictwem dalej waluty N uwagi zbędne, wszystkie informacje o pominięte w ciągu ostatnich uwagi N awarii są oznaczone jako 1.
-- _Błędy wyłącznik_: celem może być do prognozowania następny błąd polecenia wyłącznika. W takim przypadku X jest wybierany jako jednego polecenia w przyszłości.
-- _Szkolenie błędy drzwi_: X może być wybrana jako dwa dni.
+- _We wdrożeniu pakietu testowego opóźnienia_: X można wybrać jako 1 dzień do prognozowania opóźnień w ciągu 24 godzin. Następnie wszystkie loty znajdujących się w ciągu 24 godzin zanim błędy są oznaczone jako 1.
+- _Środków pieniężnych ATM rozdzielić błędy_: Celem może być ustalenie prawdopodobieństwo awarii transakcji w ciągu jednej godziny. W takim przypadku wszystkie transakcje, które wystąpiły w ciągu ostatniej godziny błędu są oznaczone jako 1. Aby przewidzieć prawdopodobieństwo awarii za pośrednictwem dalej waluty N uwagi zbędne, wszystkie informacje o pominięte w ciągu ostatnich uwagi N awarii są oznaczone jako 1.
+- _Błędy wyłącznik_: Celem może być do prognozowania następny błąd polecenia wyłącznika. W takim przypadku X jest wybierany jako jednego polecenia w przyszłości.
+- _Szkolenie błędy drzwi_: X można wybrać jako dwa dni.
 - _Błędy turbiny wiatru_: X może być wybrana jako dwa miesiące.
 
 ### <a name="regression-for-predictive-maintenance"></a>Regresja pod kątem konserwacji predykcyjnej
 Modele regresji są używane do _obliczenia pozostałego okresu eksploatacji (RUL) środka trwałego_. Wartość pozostałego czasu eksploatacji jest zdefiniowany jako czas, który zasobu jest operacyjnej zanim nastąpi następny błąd. Każdy przykład szkolenia jest rekordem, której należy jednostka czasu _nY_ dla zasobu, gdzie _n_ jest wielokrotnością. Model należy obliczyć wartość pozostałego czasu eksploatacji, każdy nowy przykładu jako _numer kolejny_. Liczba ta wskazuje, że czas pozostały przed awarią.
 
 #### <a name="label-construction-for-regression"></a>Konstrukcja etykiety dla regresji
-Pytanie, w tym miejscu jest: "Co to jest pozostałego okresu eksploatacji (RUL) urządzeń?" Dla każdego rekordu przed awarią obliczyć etykiety jako liczba jednostek czasu pozostały następny błąd. W przypadku tej metody etykiety są ciągłe zmiennych. (Zobacz rysunek 4)
+To pytanie, w tym miejscu: "Co to jest pozostałego okresu eksploatacji (RUL) urządzeń?" Dla każdego rekordu przed awarią obliczyć etykiety jako liczba jednostek czasu pozostały następny błąd. W przypadku tej metody etykiety są ciągłe zmiennych. (Zobacz rysunek 4)
 
 ![Rysunek 4. Etykietowania regresji](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) rysunek 4. Etykietowania regresji
 
@@ -283,21 +283,21 @@ Aby uzyskać regresji etykietowania odbywa się z odniesieniem do punktu awarii.
 
 ### <a name="multi-class-classification-for-predictive-maintenance"></a>Klasyfikacji wieloklasowej pod kątem konserwacji predykcyjnej
 Technik klasyfikacji wieloklasowej może służyć w rozwiązaniach program PdM w przypadku dwóch scenariuszy:
-- Przewidywanie _dwóch przyszłych wyników_: pierwszy wynik jest _zakres czasu do awarii_ dla zasobu. Element zawartości jest przypisany do jednego z wielu możliwych okresach czasu. Drugi wynik jest prawdopodobieństwo wystąpienia błędu w przyszłości ze względu na _jeden z kilku głównych powoduje, że_. Ta prognozowania umożliwia załogi konserwacji do obserwacji objawy i harmonogramy konserwacji planu.
+- Przewidywanie _dwóch przyszłych wyników_: Pierwszy wynik jest _zakres czasu do awarii_ dla zasobu. Element zawartości jest przypisany do jednego z wielu możliwych okresach czasu. Drugi wynik jest prawdopodobieństwo wystąpienia błędu w przyszłości ze względu na _jeden z kilku głównych powoduje, że_. Ta prognozowania umożliwia załogi konserwacji do obserwacji objawy i harmonogramy konserwacji planu.
 - Przewidywanie _najbardziej prawdopodobne przyczyny_ danego błędu. Ten wynik zaleca odpowiedniego zestawu działań konserwacyjnych, aby naprawić błąd. Uporządkowaną listę głównych przyczyn i zalecane naprawy może pomóc techników priorytety swoich akcji naprawy po awarii.
 
 #### <a name="label-construction-for-multi-class-classification"></a>Konstrukcja etykiety klasyfikacji wieloklasowej
-Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób usługi zakończy się niepowodzeniem w ciągu następnych _nZ_ jednostki czasu, gdy _n_ to liczba okresów?" Aby odpowiedzieć na to pytanie, etykiety rekordów nZ przed awarią zasobów przy użyciu przedziały czasu (3Z 2Z-Z). Wszystkie inne etykiety rejestruje "normal" (Etykieta = 0). W przypadku tej metody zawiera zmienną docelową _podzielonych na kategorie_ wartości. (Zobacz rysunek 5).
+To pytanie, w tym miejscu: "Co to jest prawdopodobieństwo, że zasób usługi zakończy się niepowodzeniem w ciągu następnych _nZ_ jednostki czasu, gdy _n_ to liczba okresów?" Aby odpowiedzieć na to pytanie, etykiety rekordów nZ przed awarią zasobów przy użyciu przedziały czasu (3Z 2Z-Z). Wszystkie inne etykiety rejestruje "normal" (Etykieta = 0). W przypadku tej metody zawiera zmienną docelową _podzielonych na kategorie_ wartości. (Zobacz rysunek 5).
 
 ![Rysunek 5. Błąd czasu prognoz etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) rysunek 5. Etykiety klasyfikacji wieloklasowej dla błędu czasu prognoz
 
-Pytanie, w tym miejscu jest: "co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu z powodu problemu z/głównej przyczyny _P<sub>i</sub>_?" gdzie _i_ jest liczba możliwych przyczyn. Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "wkrótce się niepowodzeniem z powodu przyczyny _P<sub>i</sub>_" (etykieta = _P<sub>i</sub>_). Etykieta wszystkie rekordy jako "normal" (Etykieta = 0). W przypadku tej metody etykiety są również podzielone na kategorie (zobacz rysunek 6).
+To pytanie, w tym miejscu: "Co to jest prawdopodobieństwo, że zasób zakończy się niepowodzeniem w ciągu następnych X jednostki czasu z powodu problemu z/głównej przyczyny _P<sub>i</sub>_?" gdzie _i_ jest liczba możliwych przyczyn. Odpowiedzi na to pytanie, rekordy Etykieta X przed awarią zasobu jako "wkrótce się niepowodzeniem z powodu przyczyny _P<sub>i</sub>_" (etykieta = _P<sub>i</sub>_). Etykieta wszystkie rekordy jako "normal" (Etykieta = 0). W przypadku tej metody etykiety są również podzielone na kategorie (zobacz rysunek 6).
 
 ![Rysunek 6. Główna przyczyna prognozowania etykiety klasyfikacji wieloklasowej](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) rysunek 6. Etykiety klasyfikacji wieloklasowej dla głównej przyczyny prognoz
 
 Model przypisuje prawdopodobieństwo awarii, ze względu na każdym _P<sub>i</sub>_  oraz prawdopodobieństwo bez błędów. Tych prawdopodobieństw może zostać określona przez wielkość umożliwia prognozowanie problemy, które z największym prawdopodobieństwem mogą wystąpić w przyszłości.
 
-Pytanie, w tym miejscu jest: "jakie akcje konserwacji polecisz po awarii?" Aby odpowiedzieć na to pytanie etykietowania _nie wymaga przyszłych horizon, które mają zostać pobrane_, ponieważ model nie jest prognozowanie błędu w przyszłości. Jego jest po prostu Prognozowanie najbardziej prawdopodobne przyczyny _po awarii zostało już przeprowadzone_.
+To pytanie, w tym miejscu: "Jakie akcje konserwacji polecisz po awarii?" Aby odpowiedzieć na to pytanie etykietowania _nie wymaga przyszłych horizon, które mają zostać pobrane_, ponieważ model nie jest prognozowanie błędu w przyszłości. Jego jest po prostu Prognozowanie najbardziej prawdopodobne przyczyny _po awarii zostało już przeprowadzone_.
 
 ## <a name="training-validation-and-testing-methods-for-predictive-maintenance"></a>Szkolenia, weryfikacji i testowania metod pod kątem konserwacji predykcyjnej
 [Zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) zapewnia pełne cyklu train testów sprawdzania poprawności modelu. W tej sekcji opisano aspekty unikatowe dla menedżerów PdM.
@@ -399,7 +399,7 @@ Proces powyżej podano na wiele sposobów w literaturze akademickich i branży. 
 - _Wdrażanie_ modelu
 - _Uruchomić model_ odniesieniu do nowych danych
 
-Jak wspomniano wcześniej, operacjonalizacja modelu dla menedżerów PdM różni się od jego elementów równorzędnych. Implementowanie scenariuszy obejmujących wykrywanie anomalii i wykrywanie awarii zazwyczaj _online oceniania_ (nazywane również _oceniania w czasie rzeczywistym_). Tutaj, model _wyniki_ każdy rekord przychodzących i zwraca prognozę. Wykrywanie anomalii prognozowania jest wskazanie, że wystąpił anomalii (przykład: SVM jednej klasy). Do wykrywania awarii byłoby, typ lub klasa awarii.
+Jak wspomniano wcześniej, operacjonalizacja modelu dla menedżerów PdM różni się od jego elementów równorzędnych. Implementowanie scenariuszy obejmujących wykrywanie anomalii i wykrywanie awarii zazwyczaj _online oceniania_ (nazywane również _oceniania w czasie rzeczywistym_). Tutaj, model _wyniki_ każdy rekord przychodzących i zwraca prognozę. Wykrywanie anomalii prognozowania jest wskazanie, że wystąpił anomalii (przykład: One-Class SVM). Do wykrywania awarii byłoby, typ lub klasa awarii.
 
 Z kolei obejmuje menedżerów PdM _wsadowe ocenianie przez_. Aby jest zgodny z podpisu modelu, funkcji w nowych danych muszą zostać uwzględnione w taki sam sposób, jak dane szkoleniowe. Dla dużych zestawach danych, które są typowe dla nowych danych funkcje są agregowane przez czas systemu windows i ocenione w ramach usługi batch. Wsadowe ocenianie przez odbywa się zwykle w systemach rozproszonych, takich jak [Spark](http://spark.apache.org/) lub [usługi Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics). Istnieje kilka rozwiązań alternatywnych — zarówno nieoptymalne:
 - Aparatów danych przesyłania strumieniowego obsługuje agregacji za pośrednictwem systemu windows w pamięci. Dlatego można utrzymywał, czy obsługują one oceniania online. Jednak te systemy są odpowiednie na potrzeby gęstą dane w oknach wąskie czasu lub rozrzedzone elementów za pośrednictwem szersze systemu windows. One może nie skalować dobrze sprawdza się w danych gęstą szersze czas systemu windows, jak pokazano w scenariuszach menedżerów PdM.

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5af305a2e0d4754cf4fad8557db9d367c828ecc5
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 044fe3de265d298ecd366a50b9db77eeea32bbb7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389101"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457942"
 ---
-# <a name="database-transactions-and-optimistic-concurrency-control"></a>Transakcje bazy danych i mechanizmu kontroli optymistycznej współbieżności
+# <a name="transactions-and-optimistic-concurrency-control"></a>Transakcje i mechanizmu kontroli optymistycznej współbieżności
 
 Transakcje bazy danych zapewniają bezpieczny i przewidywalne model programowania do czynienia z równoczesnych zmian danych. Tradycyjnych relacyjnych baz danych, takich jak program SQL Server umożliwiają zapisanie logiki biznesowej przy użyciu procedur składowanych i/lub wyzwalacze, wysłać ją do serwera w celu wykonania bezpośrednio wewnątrz aparatu bazy danych. Przy użyciu tradycyjnych relacyjnych baz danych jest wymagane do czynienia z dwóch różnych programowania języków - programowania języka, takich jak JavaScript, Python, aplikacji (nietransakcyjnej) C#, Java itp. oraz transakcyjnego języka programowania (T-SQL) jest natywnie wykonywane przez bazę danych.
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 920f350ab5ba1e9e1703ffcc32dc8c7153624c0b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525158"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463246"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Format pliku manifestu usługi w usłudze Azure Import/Export
 Plik manifestu dysku opisuje mapowanie między obiektów blob w usłudze Azure Blob storage i plików na dysku wchodzących w skład zadania importu lub eksportu. Dla operacji importowania pliku manifestu jest tworzony jako część procesu przygotowywania dysku i są przechowywane na dysku przed wysłaniem dysk do centrum danych platformy Azure. Podczas operacji eksportowania manifest jest tworzone i przechowywane na dysku przez usługę Azure Import/Export.  
@@ -37,9 +37,9 @@ Poniżej opisano ogólny format pliku manifestu dysku:
         Hash="md5-hash">global-properties-file-path</PropertiesPath>]  
   
       <!-- First Blob -->  
-      <Blob>  
-        <BlobPath>blob-path-relative-to-account</BlobPath>  
-        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
+      <Blob>  
+        <BlobPath>blob-path-relative-to-account</BlobPath>  
+        <FilePath>file-path-relative-to-transfer-disk</FilePath>  
         [<ClientData>client-data</ClientData>]  
         [<Snapshot>snapshot</Snapshot>]  
         <Length>content-length</Length>  
@@ -47,7 +47,7 @@ Poniżej opisano ogólny format pliku manifestu dysku:
         page-range-list-or-block-list          
         [<MetadataPath Hash="md5-hash">metadata-file-path</MetadataPath>]  
         [<PropertiesPath Hash="md5-hash">properties-file-path</PropertiesPath>]  
-      </Blob>  
+      </Blob>  
   
       <!-- Second Blob -->  
       <Blob>  
@@ -72,7 +72,7 @@ page-range-list ::=
     <PageRangeList>  
       [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
-      [<PageRange Offset="page-range-offset" Length="page-range-length"   
+      [<PageRange Offset="page-range-offset" Length="page-range-length"   
        Hash="md5-hash"/>]  
     </PageRangeList>  
   
@@ -80,7 +80,7 @@ block-list ::=
     <BlockList>  
       [<Block Offset="block-offset" Length="block-length" [Id="block-id"]  
        Hash="md5-hash"/>]  
-      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
+      [<Block Offset="block-offset" Length="block-length" [Id="block-id"]   
        Hash="md5-hash"/>]  
     </BlockList>  
 
@@ -90,27 +90,27 @@ block-list ::=
 
 W poniższej tabeli podano elementów danych i atrybuty format XML manifestu dysku.  
   
-|— Element XML|Typ|Opis|  
+|XML Element|Type|Opis|  
 |-----------------|----------|-----------------|  
 |`DriveManifest`|Element główny|Element główny pliku manifestu. Wszystkie inne elementy w pliku są poniżej tego elementu.|  
 |`Version`|Atrybut ciągu|Wersja pliku manifestu.|  
 |`Drive`|Zagnieżdżone — element XML|Zawiera manifest dla każdego dysku.|  
-|`DriveId`|Ciąg|Identyfikator unikatowy dysku dla dysku. Identyfikator dysku zostanie znaleziony, badając dysku jego numeru seryjnego. Numer seryjny dysku jest zazwyczaj wydrukowany na zewnątrz dysku, jak również. `DriveID` Elementów musi występować przed każdą `BlobList` elementu w pliku manifestu.|  
-|`StorageAccountKey`|Ciąg|Wymagane dla zadania importu, jeśli i tylko wtedy, gdy `ContainerSas` nie zostanie określony. Klucz konta dla konta magazynu platformy Azure skojarzone z zadaniem.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  
-|`ContainerSas`|Ciąg|Wymagane dla zadania importu, jeśli i tylko wtedy, gdy `StorageAccountKey` nie zostanie określony. Sygnatury dostępu Współdzielonego kontenera do uzyskiwania dostępu do obiektów blob, skojarzone z zadaniem. Zobacz [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) dla jego format. Ten element jest pomijany z manifestu dla operacji eksportu.|  
-|`ClientCreator`|Ciąg|Określa klienta, która utworzyła plik XML. Ta wartość nie jest interpretowany przez usługę Import/Export.|  
+|`DriveId`|String|Identyfikator unikatowy dysku dla dysku. Identyfikator dysku zostanie znaleziony, badając dysku jego numeru seryjnego. Numer seryjny dysku jest zazwyczaj wydrukowany na zewnątrz dysku, jak również. `DriveID` Elementów musi występować przed każdą `BlobList` elementu w pliku manifestu.|  
+|`StorageAccountKey`|String|Wymagane dla zadania importu, jeśli i tylko wtedy, gdy `ContainerSas` nie zostanie określony. Klucz konta dla konta magazynu platformy Azure skojarzone z zadaniem.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  
+|`ContainerSas`|String|Wymagane dla zadania importu, jeśli i tylko wtedy, gdy `StorageAccountKey` nie zostanie określony. Sygnatury dostępu Współdzielonego kontenera do uzyskiwania dostępu do obiektów blob, skojarzone z zadaniem. Zobacz [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) dla jego format. Ten element jest pomijany z manifestu dla operacji eksportu.|  
+|`ClientCreator`|String|Określa klienta, która utworzyła plik XML. Ta wartość nie jest interpretowany przez usługę Import/Export.|  
 |`BlobList`|Zagnieżdżone — element XML|Zawiera listę obiektów blob, które są dostępne w ramach importowania lub eksportowania zadania. Każdy obiekt blob z listy obiektów blob udostępnia te same właściwości i metadanych.|  
-|`BlobList/MetadataPath`|Ciąg|Opcjonalny. Określa ścieżkę względną w pliku na dysku, który zawiera metadane domyślne, które zostaną ustawione dla obiektów blob do listy obiektów blob dla operacji importowania. Te metadane można opcjonalnie zastąpić na podstawie obiektu blob przez obiekt blob.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  
+|`BlobList/MetadataPath`|String|Opcjonalny. Określa ścieżkę względną w pliku na dysku, który zawiera metadane domyślne, które zostaną ustawione dla obiektów blob do listy obiektów blob dla operacji importowania. Te metadane można opcjonalnie zastąpić na podstawie obiektu blob przez obiekt blob.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  
 |`BlobList/MetadataPath/@Hash`|Atrybut ciągu|Określa wartość skrótu MD5 zakodowane w formacie Base16 dla pliku metadanych.|  
-|`BlobList/PropertiesPath`|Ciąg|Opcjonalny. Określa ścieżkę względną w pliku na dysku, który zawiera właściwości domyślne, które zostaną ustawione dla obiektów blob do listy obiektów blob dla operacji importowania. Te właściwości można opcjonalnie zastąpić na podstawie obiektu blob przez obiekt blob.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  
+|`BlobList/PropertiesPath`|String|Opcjonalny. Określa ścieżkę względną w pliku na dysku, który zawiera właściwości domyślne, które zostaną ustawione dla obiektów blob do listy obiektów blob dla operacji importowania. Te właściwości można opcjonalnie zastąpić na podstawie obiektu blob przez obiekt blob.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  
 |`BlobList/PropertiesPath/@Hash`|Atrybut ciągu|Określa wartość skrótu MD5 Base16 algorytmem Base64 pliku właściwości.|  
 |`Blob`|Zagnieżdżone — element XML|Zawiera informacje o poszczególnych obiektów blob na wszystkich listach obiektów blob.|  
-|`Blob/BlobPath`|Ciąg|Względny identyfikator URI do obiektu blob, począwszy od nazwy kontenera. Jeśli obiekt blob w kontenerze głównego musi zaczynać się `$root`.|  
-|`Blob/FilePath`|Ciąg|Określa ścieżkę względną do pliku na dysku. Dla zadań eksportowania ścieżka obiektu blob stosowanych w odniesieniu do ścieżki pliku, jeśli jest to możliwe. *np.*, `pictures/bob/wild/desert.jpg` zostaną wyeksportowane do `\pictures\bob\wild\desert.jpg`. Jednak ze względu na ograniczenia nazw systemu plików NTFS, obiekt blob może być eksportowany do pliku ze ścieżką, która nie przypominają ścieżka obiektu blob.|  
-|`Blob/ClientData`|Ciąg|Opcjonalny. Zawiera komentarze od klienta. Ta wartość nie jest interpretowany przez usługę Import/Export.|  
+|`Blob/BlobPath`|String|Względny identyfikator URI do obiektu blob, począwszy od nazwy kontenera. Jeśli obiekt blob w kontenerze głównego musi zaczynać się `$root`.|  
+|`Blob/FilePath`|String|Określa ścieżkę względną do pliku na dysku. Dla zadań eksportowania ścieżka obiektu blob stosowanych w odniesieniu do ścieżki pliku, jeśli jest to możliwe. *np.*, `pictures/bob/wild/desert.jpg` zostaną wyeksportowane do `\pictures\bob\wild\desert.jpg`. Jednak ze względu na ograniczenia nazw systemu plików NTFS, obiekt blob może być eksportowany do pliku ze ścieżką, która nie przypominają ścieżka obiektu blob.|  
+|`Blob/ClientData`|String|Opcjonalny. Zawiera komentarze od klienta. Ta wartość nie jest interpretowany przez usługę Import/Export.|  
 |`Blob/Snapshot`|DateTime|Opcjonalnie na potrzeby zadań eksportu. Określa identyfikator migawki migawki eksportowanego obiektu blob.|  
 |`Blob/Length`|Liczba całkowita|Łączna długość obiektu blob określa w bajtach. Wartość może być maksymalnie 200 GB dla blokowych obiektów blob i do 1 TB dla stronicowych obiektów blob. Dla stronicowych obiektów blob ta wartość musi być wielokrotnością liczby 512.|  
-|`Blob/ImportDisposition`|Ciąg|Opcjonalnie na potrzeby zadań importu, pominąć w przypadku zadań eksportu. To ustawienie określa, jak usługa Import/Export powinna obsługiwać w przypadku zadania importu gdy obiekt blob z tej samej nazwie już istnieje. Jeśli ta wartość zostanie pominięty z manifestu importu, wartość domyślna to `rename`.<br /><br /> Wartości dla tego elementu:<br /><br /> -   `no-overwrite`: Jeśli docelowy obiekt blob znajduje się już o takiej samej nazwie, operacja importowania zostanie pominięta, importowania tego pliku.<br />-   `overwrite`: Każdy istniejący docelowy obiekt blob zostanie całkowicie zastąpiona nowo zaimportowany plik.<br />-   `rename`Nowy obiekt blob zostaną przekazane o nazwie zmodyfikowane.<br /><br /> Zmiana nazwy reguły jest następująca:<br /><br /> — Jeśli nazwę obiektu blob nie zawiera kropkę, Nowa nazwa jest generowany przez dołączenie `(2)` na oryginalną nazwę obiektu blob; Jeśli jest to nowa nazwa również powoduje konflikt z istniejącą nazwą obiektu blob, następnie `(3)` jest dołączany zamiast `(2)`; i tak dalej.<br />— Jeśli nazwę obiektu blob zawiera kropkę, część po ostatniej kropka jest uważany za Nazwa rozszerzenia. Podobne do powyższej procedury `(2)` jest wstawiany przed próbą ostatniego kropkę, aby wygenerować nową nazwę; Jeśli nowa nazwa nadal powoduje konflikt z istniejącym blob nazwę, a następnie usługa `(3)`, `(4)`i tak dalej, aż do znalezienia bezkonfliktowe nazwę.<br /><br /> Oto niektóre przykłady:<br /><br /> Obiekt blob `BlobNameWithoutDot` zostanie zmieniona na:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Obiekt blob `Seattle.jpg` zostanie zmieniona na:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
+|`Blob/ImportDisposition`|String|Opcjonalnie na potrzeby zadań importu, pominąć w przypadku zadań eksportu. To ustawienie określa, jak usługa Import/Export powinna obsługiwać w przypadku zadania importu gdy obiekt blob z tej samej nazwie już istnieje. Jeśli ta wartość zostanie pominięty z manifestu importu, wartość domyślna to `rename`.<br /><br /> Wartości dla tego elementu:<br /><br /> -   `no-overwrite`: Jeśli docelowy obiekt blob znajduje się już o takiej samej nazwie, operacja importowania zostanie pominięta, importowania tego pliku.<br />-   `overwrite`: Wszelkie istniejący docelowy obiekt blob jest całkowicie zastąpiona przez nowo zaimportowany plik.<br />-   `rename`: Nowy obiekt blob zostaną przekazane o nazwie zmodyfikowane.<br /><br /> Zmiana nazwy reguły jest następująca:<br /><br /> — Jeśli nazwę obiektu blob nie zawiera kropkę, Nowa nazwa jest generowany przez dołączenie `(2)` na oryginalną nazwę obiektu blob; Jeśli jest to nowa nazwa również powoduje konflikt z istniejącą nazwą obiektu blob, następnie `(3)` jest dołączany zamiast `(2)`; i tak dalej.<br />— Jeśli nazwę obiektu blob zawiera kropkę, część po ostatniej kropka jest uważany za Nazwa rozszerzenia. Podobne do powyższej procedury `(2)` jest wstawiany przed próbą ostatniego kropkę, aby wygenerować nową nazwę; Jeśli nowa nazwa nadal powoduje konflikt z istniejącym blob nazwę, a następnie usługa `(3)`, `(4)`i tak dalej, aż do znalezienia bezkonfliktowe nazwę.<br /><br /> Oto niektóre przykłady:<br /><br /> Obiekt blob `BlobNameWithoutDot` zostanie zmieniona na:<br /><br /> `BlobNameWithoutDot (2)  // if BlobNameWithoutDot exists`<br /><br /> `BlobNameWithoutDot (3)  // if both BlobNameWithoutDot and BlobNameWithoutDot (2) exist`<br /><br /> Obiekt blob `Seattle.jpg` zostanie zmieniona na:<br /><br /> `Seattle (2).jpg  // if Seattle.jpg exists`<br /><br /> `Seattle (3).jpg  // if both Seattle.jpg and Seattle (2).jpg exist`|  
 |`PageRangeList`|Zagnieżdżone — element XML|Wymagana w przypadku stronicowych obiektów blob.<br /><br /> Do zaimportowania operacji określa listę zakresów bajtów w pliku do zaimportowania. Każdy z zakresów stron jest opisana przez przesunięcia i długości w pliku źródłowego, który opisuje zakres stron, wraz z Skrót MD5 regionu. `Hash` Atrybut zakres stron jest wymagany. Usługa zostanie przeprowadzona Weryfikacja, czy skrót danych w obiekcie blob odpowiada obliczony Skrót MD5 z zakresu stron. Dowolną liczbę zakresów stron może służyć do opisywania plik do zaimportowania, za pomocą łączny rozmiar do 1 TB. Wszystkie zakresy stron musi zostać określona przez przesunięcie i mogą nie nakładają się.<br /><br /> Eksportu usługi operacji określa zestaw zakresów bajtów obiektu blob, które zostały wyeksportowane do dysku.<br /><br /> Zakresy stron razem może obejmować tylko zakresy podrzędne obiektu blob lub pliku.  Oczekuje się, pozostała część pliku nie pasuje do żadnego dowolny zakres strony i jego zawartość może być niezdefiniowana.|  
 |`PageRange`|— Element XML|Reprezentuje zakres stron.|  
 |`PageRange/@Offset`|Atrybut, liczba całkowita|Określa przesunięcie w pliku transferu i obiektów blob, gdzie rozpoczyna się w zakresie określonej strony. Ta wartość musi być wielokrotnością liczby 512.|  
@@ -122,9 +122,9 @@ W poniższej tabeli podano elementów danych i atrybuty format XML manifestu dys
 |`Block/@Length`|Atrybut, liczba całkowita|Określa liczbę bajtów w bloku; Ta wartość musi być nie więcej niż 4MB.|  
 |`Block/@Id`|Atrybut ciągu|Określa ciąg reprezentujący identyfikator bloku dla bloku.|  
 |`Block/@Hash`|Atrybut ciągu|Określa Skrót MD5 zakodowane w formacie Base16 bloku.|  
-|`Blob/MetadataPath`|Ciąg|Opcjonalny. Określa ścieżkę względną w pliku metadanych. Podczas importowania metadanych jest ustawiona na docelowego obiektu blob. Podczas operacji eksportowania metadanych obiektu blob są przechowywane w pliku metadanych na dysku.|  
+|`Blob/MetadataPath`|String|Opcjonalny. Określa ścieżkę względną w pliku metadanych. Podczas importowania metadanych jest ustawiona na docelowego obiektu blob. Podczas operacji eksportowania metadanych obiektu blob są przechowywane w pliku metadanych na dysku.|  
 |`Blob/MetadataPath/@Hash`|Atrybut ciągu|Określa Skrót MD5 Base16 algorytmem Base64 pliku metadanych obiektu blob.|  
-|`Blob/PropertiesPath`|Ciąg|Opcjonalny. Określa względną ścieżkę do pliku właściwości. Podczas importowania właściwości są ustawione na docelowego obiektu blob. Podczas operacji eksportowania właściwości obiektu blob są przechowywane w pliku właściwości na dysku.|  
+|`Blob/PropertiesPath`|String|Opcjonalny. Określa względną ścieżkę do pliku właściwości. Podczas importowania właściwości są ustawione na docelowego obiektu blob. Podczas operacji eksportowania właściwości obiektu blob są przechowywane w pliku właściwości na dysku.|  
 |`Blob/PropertiesPath/@Hash`|Atrybut ciągu|Określa Skrót MD5 Base16 algorytmem Base64 pliku właściwości obiektu blob.|  
   
 ## <a name="next-steps"></a>Kolejne kroki

@@ -12,16 +12,16 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: acc1b9e9561b9468a4638c7073a066e4cb34d911
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d430a9f1ddec785d236f2501178bd3c7d493f716
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264754"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470601"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Funkcja przywracania geograficznego umożliwia odzyskiwanie wielodostępnych aplikacji SaaS z kopii zapasowych bazy danych
 
-W tym samouczku przedstawiono scenariusza odzyskiwania awaryjnego pełny dla wielodostępnych aplikacji SaaS implementowana przy użyciu bazy danych dla każdego modelu dzierżawy. Możesz użyć [geoprzywracanie](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups) do odzyskania bazy danych wykazu i dzierżawy z automatycznego zapewnienia geograficznie nadmiarowych kopii zapasowych w region odzyskiwanie do alternatywnej. Po awarii nie zostanie rozwiązany, należy użyć [geografickou replikaci](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) wycofywania zmienione baz danych do ich oryginalnej regionu do.
+W tym samouczku przedstawiono scenariusza odzyskiwania awaryjnego pełny dla wielodostępnych aplikacji SaaS implementowana przy użyciu bazy danych dla każdego modelu dzierżawy. Możesz użyć [geoprzywracanie](sql-database-recovery-using-backups.md) do odzyskania bazy danych wykazu i dzierżawy z automatycznego zapewnienia geograficznie nadmiarowych kopii zapasowych w region odzyskiwanie do alternatywnej. Po awarii nie zostanie rozwiązany, należy użyć [geografickou replikaci](sql-database-geo-replication-overview.md) wycofywania zmienione baz danych do ich oryginalnej regionu do.
 
 ![Architektura w przypadku przywracania geograficznego](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
@@ -63,12 +63,12 @@ Odzyskiwanie po awarii (DR) jest ważną kwestią w przypadku wielu aplikacji dl
 W tym samouczku używa funkcji usługi Azure SQL Database i platforma Azure, aby rozwiązać te problemy:
 
 * [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), aby wszystkie potrzebne wydajność rezerwowa w możliwie jak najszybciej. Szablony usługi Azure Resource Manager są używane do obsługi administracyjnej obraz lustrzany oryginalnego serwerów i pul elastycznych w regionie odzyskiwania. Oddzielenie serwera i puli, również są tworzone dla aprowizację nowych dzierżaw.
-* [Biblioteka kliencka elastic Database](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) EDCL (), aby tworzyć i obsługiwać wykaz baz danych dzierżawy. Wykaz rozszerzonych obejmuje okresowo odświeżane informacje o konfiguracji puli i bazy danych.
-* [Funkcje odzyskiwania zarządzania fragmentami](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager) z biblioteki EDCL, aby zachować wpisy lokalizacji bazy danych w katalogu podczas odzyskiwania i repatriacji.  
-* [Przywracanie geograficzne](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery), aby odzyskać bazy danych wykazu i dzierżawy z automatycznego zapewnienia geograficznie nadmiarowych kopii zapasowych. 
+* [Biblioteka kliencka elastic Database](sql-database-elastic-database-client-library.md) EDCL (), aby tworzyć i obsługiwać wykaz baz danych dzierżawy. Wykaz rozszerzonych obejmuje okresowo odświeżane informacje o konfiguracji puli i bazy danych.
+* [Funkcje odzyskiwania zarządzania fragmentami](sql-database-elastic-database-recovery-manager.md) z biblioteki EDCL, aby zachować wpisy lokalizacji bazy danych w katalogu podczas odzyskiwania i repatriacji.  
+* [Przywracanie geograficzne](sql-database-disaster-recovery.md), aby odzyskać bazy danych wykazu i dzierżawy z automatycznego zapewnienia geograficznie nadmiarowych kopii zapasowych. 
 * [Operacje asynchroniczne przywracania](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), wysyłane w kolejności priorytetu dzierżawy, są umieszczane w kolejce dla każdej puli przez system i przetwarzane w partiach, więc puli nie jest przeciążona. Te operacje mogą zostać anulowane, przed lub w trakcie wykonywania, jeśli to konieczne.   
-* [Replikacja geograficzna](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), aby wycofywania baz danych do oryginalnej regionu po awarii. Istnieje nie utraty danych i minimalny wpływ na dzierżawy podczas replikacji geograficznej.
-* [Aliasów DNS serwera SQL](https://docs.microsoft.com/azure/sql-database/dns-alias-overview), aby zezwolić procesu synchronizacji katalogu active wykazem niezależnie od jego lokalizacji.  
+* [Replikacja geograficzna](sql-database-geo-replication-overview.md), aby wycofywania baz danych do oryginalnej regionu po awarii. Istnieje nie utraty danych i minimalny wpływ na dzierżawy podczas replikacji geograficznej.
+* [Aliasów DNS serwera SQL](dns-alias-overview.md), aby zezwolić procesu synchronizacji katalogu active wykazem niezależnie od jego lokalizacji.  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Pobierz skrypty odzyskiwania po awarii
 
@@ -378,4 +378,4 @@ Spróbuj [odzyskiwania po awarii dla wielodostępnych aplikacji SaaS przy użyci
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-[Dodatkowe samouczki nawiązujące do aplikacji Wingtip SaaS](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+[Dodatkowe samouczki nawiązujące do aplikacji Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

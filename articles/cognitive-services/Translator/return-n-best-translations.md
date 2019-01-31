@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a0f4e4dd5cea9c3ea7b682e6372d2ffa8726e6ef
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ea409a4295cb07800e3f48ab408135071d0faea6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646477"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464827"
 ---
 # <a name="how-to-return-n-best-translations"></a>Sposób zwracania N najlepszych tłumaczenia
 
@@ -40,17 +40,17 @@ Podpis jest:
 | appId | **Wymagane** Jeśli nagłówek autoryzacji jest używany, pozostaw to pole puste appid przeciwnym razie Określ ciąg zawierający "Bearer" + "" + tokenu dostępu.|
 | tekst | **Wymagane** ciąg reprezentujący tekstu do przetłumaczenia. Rozmiar tekstu nie może przekraczać 10 000 znaków.|
 | z | **Wymagane** ciąg reprezentujący kod języka tekstu do przetłumaczenia. |
-| do | **Wymagane** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w. |
+| na | **Wymagane** ciąg reprezentujący kod języka umożliwia tłumaczenie tekstu w. |
 | maxTranslations | **Wymagane** wartość int reprezentująca maksymalną liczbę tłumaczeń do zwrócenia. |
 | opcje | **Opcjonalnie** obiekt TranslateOptions, który zawiera wartości wymienione poniżej. Są wszystkie opcjonalny i domyślnie najczęściej używane ustawienia.
 
-* Kategoria: Jedyny obsługiwany, a wartość domyślna opcja to "general".
-* Obsługiwana jest tylko typ zawartości:, A wartość domyślna opcja to "text/plain".
-* Stan: Stan użytkownika ułatwia korelowanie żądań i odpowiedzi. Tę samą zawartość, zostaną zwrócone w odpowiedzi.
+* Kategoria: Obsługiwana jest tylko, a wartość domyślna opcja to "general".
+* Typ zawartości: Obsługiwana jest tylko, a wartość domyślna opcja to "text/plain".
+* Stan: Stan użytkownika, który ułatwia korelowanie żądań i odpowiedzi. Tę samą zawartość, zostaną zwrócone w odpowiedzi.
 * IncludeMultipleMTAlternatives: Oznacz flagą, aby określić, czy należy zwrócić więcej niż jedno alternatywne z aparatu MT. Domyślny ma wartość FAŁSZ i zawiera tylko 1 alternatywą.
 
 ## <a name="ratings"></a>Klasyfikacje
-Klasyfikacje są stosowane w następujący sposób: najlepsze automatycznego tłumaczenia ma klasyfikację od 5.
+Klasyfikacje są stosowane w następujący sposób: Najlepsze automatycznego tłumaczenia ma klasyfikację od 5.
 Automatycznie generowane alternatywy tłumaczenia (N najlepszych) mają ma klasyfikację od 0 i stopnia dopasowania 100.
 
 ## <a name="number-of-alternatives"></a>Liczba alternatywy

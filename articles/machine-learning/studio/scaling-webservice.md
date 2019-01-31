@@ -1,6 +1,6 @@
 ---
-Tytuł: Skalowanie titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak zwiększyć współbieżność usługi sieci web Azure Machine Learning Studio, dodając dodatkowe punkty końcowe.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Skalowanie titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak zwiększyć współbieżność usługi sieci web Azure Machine Learning Studio, dodając dodatkowe punkty końcowe.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 01/23/2017
 ---

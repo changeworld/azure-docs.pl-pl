@@ -1,19 +1,19 @@
 ---
-title: Aprowizowanie przepływności usługi Azure Cosmos DB
+title: Aprowizowanie przepływności na kontenerach Azure Cosmos i bazy danych
 description: Dowiedz się, jak ustawić aprowizowanej przepływności baz danych i kontenerów usługi Azure Cosmos DB.
 author: aliuy
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 3e992dd8ab24e4e60b81c6565ea4ec3971a9336b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbcfaab7dc1b716b3978f1b19870d945e0eabf89
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036434"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459105"
 ---
-# <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Aprowizowanie przepływności na kontenerach Azure Cosmos i bazy danych
+# <a name="provision-throughput-on-containers-and-databases"></a>Aprowizacja przepływności kontenerów i baz danych
 
 Bazy danych Azure Cosmos jest jednostką zarządzania w usłudze zestaw kontenerów. Bazy danych zawiera zestaw kontenerów niezależnej od schematu. Kontener usługi Azure Cosmos jest jednostką skalowalności, zarówno dla przepływności i magazynu. Kontener w poziomie jest podzielona na partycje w zestawie maszyn w obrębie regionu platformy Azure i są rozproszone we wszystkich regionach platformy Azure skojarzony z Twoim kontem usługi Azure Cosmos.
 
