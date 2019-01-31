@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/10/2018
+ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 186e5ed062be8210f4efa0bdaf134f3af51d268b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.lastreviewed: 12/10/2018
+ms.openlocfilehash: 8c699f8b3241694f36b73ae75b25754e551c91f6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094142"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470709"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
@@ -167,7 +168,13 @@ Istnieją dwie części do tego scenariusza:
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -armendpoint "Environment Arm Endpoint" -AzsCredential $credential
    ```
+
+   `-origin` Parametr określa folder najwyższego poziomu, który zawiera wszystkie produkty pobrane; na przykład `"D:\downloadfolder"`.
+
    `-AzsCredential` Parametr jest opcjonalny. Służy do odnowienia tokenu dostępu, jeśli wygasł. Jeśli `-AzsCredential` nie określono parametru i token jest ważny, zostanie wyświetlony monit o podanie poświadczeń operatora.
+
+    > [!Note]  
+    > Usługi AD FS obsługuje tylko uwierzytelnianie interakcyjne przy użyciu tożsamości użytkowników. Jeśli wymagany jest obiekt poświadczeń należy użyć nazwy głównej usługi (SPN). Aby uzyskać więcej informacji na temat konfigurowania jednostki usługi przy użyciu usługi Azure Stack i usług AD FS, co usługa zarządzania tożsamościami, zobacz [nazwy głównej usługi zarządzania dla usług AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
 4. Po pomyślnym ukończeniu działania skryptu pole powinno być dostępne w witrynie Azure Marketplace stosu.
 

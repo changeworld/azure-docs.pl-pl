@@ -1,6 +1,6 @@
 ---
-Tytuł: Tworzenie wielu modeli z jednego titleSuffix eksperymentów w Studio: Opis usługi Azure Machine Learning Studio: Tworzenie wielu modeli usługi Machine Learning i sieci web punkty końcowe usługi z tego samego algorytmu, ale szkolenia różnych zestawów danych przy użyciu programu PowerShell.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Tworzenie wielu modeli z jednego titleSuffix eksperymentów w Studio: Opis usługi Azure Machine Learning Studio: Tworzenie wielu modeli usługi Machine Learning i sieci web punkty końcowe usługi z tego samego algorytmu, ale szkolenia różnych zestawów danych przy użyciu programu PowerShell.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/04/2017
 ---
