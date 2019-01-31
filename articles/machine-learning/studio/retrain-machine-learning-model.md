@@ -1,6 +1,6 @@
 ---
-Tytuł: Ponowne szkolenie titleSuffix modelu usługi Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci Web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Ponowne szkolenie titleSuffix modelu usługi Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci Web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

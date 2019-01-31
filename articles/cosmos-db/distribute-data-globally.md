@@ -6,16 +6,16 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.openlocfilehash: 3599875f96c6bd79ecace1d59c3580027fab3168
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 28c945223d225d7e91df1041bcbe02ee87b93c6a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040357"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475061"
 ---
-# <a name="global-data-distribution-with-azure-cosmos-db"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB
+# <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB — omówienie
 
-Dzisiejsze aplikacje muszą być wysoce elastyczny i zawsze w trybie online. Uzyskanie z małymi opóźnieniami i wysoką dostępność, wystąpień te aplikacje muszą zostać wdrożone w centrach danych, które znajdują się blisko ich użytkowników. Te aplikacje są zazwyczaj wdrożone w wielu centrach danych i są nazywane globalnie rozproszonych. Globalnie dystrybuowane aplikacje muszą globalnie rozproszonej bazy danych, w sposób niewidoczny dla użytkownika można replikować dane w dowolnym miejscu na świecie aplikacji do działania na kopii danych, który znajduje się w pobliżu użytkowników. 
+Dzisiejsze aplikacje muszą być bardzo dynamiczne i zawsze w trybie online. Aby zapewnić małe opóźnienia i wysoką dostępność, wystąpienia tych aplikacji powinny być wdrażane w centrach danych, które są blisko ich użytkowników. Te aplikacje są zazwyczaj wdrożone w wielu centrach danych i są nazywane globalnie rozproszonych. Globalnie dystrybuowane aplikacje muszą globalnie rozproszonej bazy danych, w sposób niewidoczny dla użytkownika można replikować dane w dowolnym miejscu na świecie aplikacji do działania na kopii danych, który znajduje się w pobliżu użytkowników. 
 
 Usługa Azure Cosmos DB to usługa globalnie rozproszonej bazy danych, która została zaprojektowana w celu zapewnienia małe opóźnienia, elastyczną skalowalność przepływności, semantyka dobrze zdefiniowanych wyjaśnienie pojęcia spójności danych i wysoką dostępność. Krótko mówiąc Jeśli aplikacja wymaga gwarantowane krótki czas reakcji dowolnym miejscu na świecie, jeśli są wymagane, aby zawsze być w trybie online, a elastycznych i nieograniczonej skalowalności przepływność oraz Magazyn, należy wziąć pod uwagę tworzenia aplikacji za pomocą usługi Azure Cosmos DB.
 

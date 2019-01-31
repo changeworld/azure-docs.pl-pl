@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: de8070906f7b2470378fb631f2e94a96b4a2960d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138657"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473312"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Wybór funkcji w zespołowym przetwarzaniu danych dla celów naukowych
 W tym artykule wyjaśniono celów wybór funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Te przykłady są pobierane z usługi Azure Machine Learning Studio. 
@@ -25,8 +25,8 @@ W tym artykule wyjaśniono celów wybór funkcji i zawiera przykłady swojej rol
 
 Inżynieria i wybór funkcji jest jedną z części z zespołu Data Science naukowych opisane w artykule [co to jest zespołu danych dla celów naukowych?](overview.md). Funkcja inżynieria i wybór są częściami **opracowywanie funkcji** krok przetwarzania TDSP.
 
-* **Inżynieria funkcji**: ten proces próbuje utworzyć dodatkowe funkcje odpowiednie na podstawie istniejących funkcji nieprzetworzonych danych i zwiększyć możliwości predykcyjnych do algorytmu uczenia.
-* **Wybór funkcji**: ten proces wybiera klucza podzbiór funkcji, oryginalnym danych w celu podjęcia próby zmniejszenia wymiarach problemu szkolenia.
+* **inżynieria cech**: Ten proces próbuje utworzyć dodatkowe funkcje odpowiednie na podstawie istniejących funkcji nieprzetworzonych danych i zwiększyć możliwości predykcyjnych do algorytmu uczenia.
+* **Wybór funkcji**: Ten proces wybiera klucza podzbiór funkcji, oryginalnym danych w celu podjęcia próby zmniejszenia wymiarach problemu szkolenia.
 
 Zwykle **Inżynieria funkcji** najpierw stosowany jest do generowania dodatkowe funkcje, a następnie **wybór funkcji** kroku jest przeprowadzana w celu wyeliminowania funkcji nie ma znaczenia, nadmiarowe lub bardzo skorelowany.
 

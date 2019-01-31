@@ -6,21 +6,19 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.subservice: text-analytics
+ms.subservice: computer-vision
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 01/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: eb586a71747bb1708b069f30a86421c691cb3d46
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e7f62d35e9850202b7d55c3c3440ff88413931d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186403"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473497"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów rozpoznawanie tekstu
-
-Konteneryzacji to podejście do dystrybucji oprogramowania, w której aplikacja lub usługa jest dostarczana w postaci obrazu kontenera. Konfiguracja i zależności dla aplikacji lub usługi są objęte obrazu kontenera. Następnie można wdrożyć obraz kontenera na hoście kontenera, z niewielkich modyfikacji. Kontenery są odizolowane od siebie nawzajem i zasadniczego systemu operacyjnego za pomocą mniejszy wyświetlacz niż maszyny wirtualnej. Kontenery mogą utworzonych na podstawie obrazów kontenera do krótkoterminowych zadań i usuwane, gdy nie będą już potrzebne.
 
 Rozpoznaj tekst część przetwarzania obrazów jest również dostępny jako kontener platformy Docker. Umożliwia ona wykrywanie i wyodrębnianie tekstu drukowanego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody oraz plakaty i wizytówki.  
 > [!IMPORTANT]
@@ -28,108 +26,101 @@ Rozpoznaj tekst część przetwarzania obrazów jest również dostępny jako ko
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="preparation"></a>Przygotowanie
+## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem korzystania z kontenerów rozpoznawanie tekstu, musi spełniać następujące wymagania wstępne:
 
-**Aparat platformy docker**: Konieczne jest posiadanie aparat platformy Docker zainstalowany lokalnie. Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Linux](https://docs.docker.com/engine/installation/#supported-platforms), i [Windows](https://docs.docker.com/docker-for-windows/). W Windows platformy Docker musi być skonfigurowany do obsługi kontenerów systemu Linux. Kontenery platformy docker — można również wdrożyć bezpośrednio do [usługi Azure Kubernetes Service](../../aks/index.yml), [usługi Azure Container Instances](../../container-instances/index.yml), lub [Kubernetes](https://kubernetes.io/) klastra wdrożone [Usługi azure Stack](../../azure-stack/index.yml). Aby uzyskać więcej informacji na temat wdrażania rozwiązania Kubernetes do usługi Azure Stack, zobacz [wdrażanie platformy Kubernetes w usłudze Azure Stack](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md).
+|Wymagane|Przeznaczenie|
+|--|--|
+|Aparat platformy docker| Aparat platformy Docker zainstalowany na musisz [komputerze-hoście](#the-host-computer). Środowisko docker zawiera pakiety, które konfigurują środowisko platformy Docker na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), i [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).<br><br> Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure. <br><br> **Na Windows**, platformy Docker musi być również skonfigurowany do obsługi kontenerów systemu Linux.<br><br>|
+|Znajomość platformy Docker | Należy mieć podstawową wiedzę na temat pojęć usługi Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.| 
+|Rozpoznawanie tekstu zasobów |Aby można było używać kontenera, musisz mieć:<br><br>A [ _Rozpoznaj tekst_ ](vision-api-how-to-topics/howtosubscribe.md) zasobów platformy Azure, aby uzyskać skojarzonego klucza rozliczenia i rozliczeń identyfikator URI punktu końcowego. Obie wartości są dostępne na stronach witryny Azure portal rozpoznaje Przegląd tekstu i klucze i są wymagane do uruchomienia kontenera.<br><br>**{BILLING_KEY}** : klucz zasobu<br><br>**{BILLING_ENDPOINT_URI}** : przykład identyfikatora URI punktu końcowego: `https://westus.api.cognitive.microsoft.com/vision/v2.0`|
 
-Docker należy skonfigurować w taki sposób, aby umożliwić kontenerów, aby nawiązać połączenie z, a następnie wysyłać danych dotyczących rozliczeń do platformy Azure.
-
-**Znajomość Microsoft Container Registry i Docker**: Należy mieć podstawową wiedzę na temat koncepcji Microsoft Container Registry i Docker, takich jak rejestry, repozytoria, kontenery i obrazów kontenerów, a także wiedzę na temat basic `docker` poleceń.  
-
-Aby uzyskać podstawowe informacje na temat platformy Docker i kontenerów, zobacz [Docker — omówienie](https://docs.docker.com/engine/docker-overview/).
-
-### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
-
-Kontener rozpoznawanie tekstu wymaga co najmniej 1 rdzenia Procesora, co najmniej 2,6 gigaherc (GHz) lub szybszy i 8 gigabajtów (GB) pamięci ilość przydzielonej pamięci, ale firma Microsoft zaleca, aby co najmniej 2 rdzeni Procesora i 8 GB pamięci przydzielonych.
 
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
 
-Najpierw należy wypełnić oraz przesłać [formularz żądania kontenerów przetwarzania w usłudze Cognitive Services](https://aka.ms/VisionContainersPreview) Aby zażądać dostępu do kontenera rozpoznawanie tekstu. Formularz żądania informacji o Tobie, firmy i Scenariusz użytkownika, dla którego będzie używać kontenera. Po przesłaniu, zespół usług Azure Cognitive Services przegląda formularza, aby upewnić się, że spełniają kryteria, aby uzyskać dostęp do prywatnego rejestru kontenerów.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
 
-> [!IMPORTANT]
-> Należy użyć adresu e-mail skojarzonego z kontem Microsoft (MSA) lub Azure Active Directory kontem (Azure AD) w formularzu.
+### <a name="the-host-computer"></a>Komputer-host
 
-Jeśli Twoje żądanie zostanie zatwierdzone, następnie otrzymasz wiadomość e-mail z instrukcjami opisujących sposób uzyskać poświadczenia i dostęp do prywatnego rejestru kontenerów.
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
-## <a name="create-a-computer-vision-resource-on-azure"></a>Tworzenie zasobów przetwarzania obrazów na platformie Azure
 
-Jeśli chcesz użyć kontenera rozpoznawanie tekstu, należy utworzyć zasób przetwarzania obrazów na platformie Azure. Po utworzeniu zasobu, następnie należy użyć subskrypcji klucz i punkt końcowy adres URL z zasobu do utworzenia wystąpienia kontenera. Aby uzyskać więcej informacji na temat tworzenia wystąpienia kontenera, zobacz [wystąpienia kontenera za pomocą obrazu kontenera pobrany](#instantiate-a-container-from-a-downloaded-container-image).
+### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
-Wykonaj poniższe kroki, aby utworzyć i pobierania informacji z zasobów platformy Azure:
+W poniższej tabeli opisano minimalne i zalecane rdzeni procesora CPU i pamięci do przydzielenia dla każdego kontenera rozpoznawanie tekstu.
 
-1. Tworzenie zasobu platformy Azure w witrynie Azure portal.  
-   Jeśli chcesz użyć kontenera rozpoznawanie tekstu, należy najpierw utworzyć odpowiadający jej zasób przetwarzania obrazów w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal](../cognitive-services-apis-create-account.md).
+| Kontener | Minimalne | Zalecane |
+|-----------|---------|-------------|
+|Rozpoznawanie tekstu|1 core, 8 GB memory, 0.5 TPS|2 rdzenie, 8 GB pamięci 1 TPS|
 
-1. Pobieranie klucza punktu końcowego adresu URL i subskrypcji dla zasobów platformy Azure.  
-   Po utworzeniu zasobu platformy Azure musi być wystąpienia odpowiedniego kontenera Rozpoznaj tekst klucza punktu końcowego adresu URL i subskrypcji z tego zasobu. Można skopiować klucza punktu końcowego adresu URL i subskrypcji z odpowiednio strony Szybki Start i klucze zasobu przetwarzania obrazów w witrynie Azure portal.
+Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
 
-## <a name="log-in-to-the-private-container-registry"></a>Zaloguj się do prywatnego rejestru kontenerów
+Rdzeni i pamięci odpowiadają `--cpus` i `--memory` ustawienia, które są używane jako część `docker run` polecenia.
 
-Istnieje kilka sposobów uwierzytelniania za pomocą prywatnego rejestru kontenera dla kontenerów usługi Cognitive Services, ale zalecana metoda w wierszu polecenia jest za pomocą [interfejsu wiersza polecenia Docker](https://docs.docker.com/engine/reference/commandline/cli/).
 
-Użyj [docker login](https://docs.docker.com/engine/reference/commandline/login/) polecenia, jak pokazano w poniższym przykładzie, aby zalogować się do `containerpreview.azurecr.io`, prywatnego rejestru kontenera dla kontenerów usługi Cognitive Services. Zastąp *\<username\>* z nazwą użytkownika i *\<hasło\>* przy użyciu hasła podanego poświadczenia otrzymane od platformy Azure Zespół usługi cognitive Services.
+## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera przy użyciu `docker pull`
 
-```docker
-docker login containerpreview.azurecr.io -u <username> -p <password>
-```
+Dostępne są obrazy kontenerów dla rozpoznawanie tekstu. 
 
-Jeśli objęta swoje poświadczenia w pliku tekstowym, można łączyć ze sobą zawartość ten tekst pliku, przy użyciu `cat` polecenia do `docker login` polecenia, jak pokazano w poniższym przykładzie. Zastąp *\<wartości passwordFile\>* ze ścieżką i nazwą pliku tekstowego zawierającego hasło i *\<username\>* z nazwą użytkownika podać swoje poświadczenia.
+| Kontener | Repozytorium |
+|-----------|------------|
+|Rozpoznawanie tekstu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-```docker
-cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
-```
+Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera.
 
-## <a name="download-container-images-from-the-private-container-registry"></a>Pobieranie obrazów kontenerów z prywatnego rejestru kontenerów
 
-Obraz kontenera dla kontenera rozpoznawanie tekstu jest dostępna z prywatnego rejestru kontenerów platformy Docker, o nazwie `containerpreview.azurecr.io`, w usłudze Azure Container Registry. Obraz kontenera dla kontenera rozpoznawanie tekstu musi zostać pobrany z repozytorium w celu uruchomienia kontenera lokalnie.
-
-Użyj [polecenie docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z repozytorium. Na przykład można pobrać najnowsze rozpoznawanie tekstu obrazu kontenera z repozytorium, użyj następującego polecenia:
+### <a name="docker-pull-for-the-recognize-text-container"></a>Polecenie docker pull dla kontenera rozpoznawanie tekstu
 
 ```Docker
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-rocognize-text:latest
 ```
 
-Pełny opis tagów dostępnych w kontenerze rozpoznawanie tekstu, zobacz [Rozpoznaj tekst](https://go.microsoft.com/fwlink/?linkid=2018655) w usłudze Docker Hub.
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-> [!TIP]
-> Możesz użyć [obrazów platformy docker](https://docs.docker.com/engine/reference/commandline/images/) polecenie, aby wyświetlić listę obrazów kontenerów pobrany. Na przykład następujące polecenie wyświetla identyfikator, repozytorium i tag każdy obraz kontenera pobrany, sformatowane jako tabela:
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->  ```
->
+## <a name="how-to-use-the-container"></a>Jak używać kontenera
 
-## <a name="instantiate-a-container-from-a-downloaded-container-image"></a>Utwórz wystąpienie kontenera z obrazu kontenera pobrany
+Gdy kontener będzie na [komputerze-hoście](#the-host-computer), użyj następującego procesu do pracy z kontenerem.
 
-Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenie, aby utworzyć wystąpienie kontenera z obrazu kontenera pobrany. Na przykład następujące polecenie:
+1. [Uruchom kontener](#run-the-container-with-docker-run), za pomocą wymaganych rozliczeń ustawienia. Więcej [przykłady](computer-vision-resource-container-config.md) z `docker run` polecenia są dostępne. 
+1. [Zapytanie do endpoint prognoz kontenera](#query-the-containers-prediction-endpoint). 
 
-* Tworzy wystąpienie kontenera z obrazu kontenera rozpoznawanie tekstu
-* Przydziela dwa rdzenie Procesora i 8 gigabajtów (GB) pamięci
+## <a name="run-the-container-with-docker-run"></a>Uruchom kontener za pomocą `docker run`
+
+Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/commandline/run/) polecenie do uruchomienia kontenera. Polecenie używa następujących parametrów:
+
+| Symbol zastępczy | Wartość |
+|-------------|-------|
+|{BILLING_KEY} | Ten klucz jest używany do uruchamiania kontenera i jest dostępny na stronie rozpoznawanie tekstu klucze w witrynie Azure portal.  |
+|{BILLING_ENDPOINT_URI} | Rozliczeń punkt końcowy wartość identyfikatora URI.|
+
+Zastąp parametry te wartości w poniższym przykładzie `docker run` polecenia.
+
+```bash
+docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+Eula=accept \
+Billing={BILLING_ENDPOINT_URI} \
+ApiKey={BILLING_KEY}
+```
+
+To polecenie:
+
+* Uruchamia kontener rozpoznawaj z obrazu kontenera
+* Przydziela jeden rdzeń procesora CPU i 4 gigabajty (GB) pamięci
 * Uwidacznia TCP port 5000 i przydziela pseudo-TTY kontenera
-* Po wychodzi są automatycznie usuwane kontenera
+* Automatycznie usuwa kontener po jej zakończenia. Obraz kontenera jest nadal dostępna na komputerze-hoście. 
 
-```docker
-docker run --rm -it -p 5000:5000 --memory 8g --cpus 2 containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text Eula=accept Billing=https://westus.api.cognitive.microsoft.com/vision/v2.0 ApiKey=0123456789
-```
-
-Po utworzeniu można wywołać operacji z kontenera za pomocą kontenera hosta identyfikatora URI. Na przykład następujący host identyfikatora URI reprezentuje kontener Rozpoznaj tekst, który został utworzony w poprzednim przykładzie:
-
-```http
-http://localhost:5000/
-```
+Więcej [przykłady](./computer-vision-resource-container-config.md#example-docker-run-commands) z `docker run` polecenia są dostępne. 
 
 > [!IMPORTANT]
-> Możesz uzyskać dostęp [specyfikacji interfejsu OpenAPI](https://swagger.io/docs/specification/about/) (dawniej specyfikacją struktury Swagger), opisujący operacje obsługiwane przez kontener wystąpień z `/swagger` względny identyfikator URI dla tego kontenera. Na przykład następujący identyfikator URI zapewnia dostęp do specyfikacji interfejsu OpenAPI dla kontenera Rozpoznaj tekst, który został uruchomiony w poprzednim przykładzie:
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+> `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
 
-Możesz albo [wywoływanie operacji interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi) dostępne z kontenera dla asynchronicznego lub synchronicznego rozpoznawanie tekstu, lub użyj [Cognitive Services komputera przetwarzania zestawu SDK usługi Azure](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) klienta Biblioteka do wywołania tych operacji.  
-> [!IMPORTANT]
-> Konieczne jest posiadanie Azure Cognitive Services komputera przetwarzania zestawu SDK w wersji 3.2.0 lub nowszej, aby za pomocą kontenera za pomocą biblioteki klienta.
+## <a name="query-the-containers-prediction-endpoint"></a>Zapytanie do endpoint prognoz kontenera
+
+Kontener udostępnia punkt końcowy usługi oparte na protokole REST zapytania prognozowania interfejsów API. 
+
+Użyj hosta, https://localhost:5000, dla kontenera interfejsów API.
 
 ### <a name="asynchronous-text-recognition"></a>Rozpoznawanie tekstu asynchroniczne
 
@@ -139,33 +130,49 @@ Możesz użyć `POST /vision/v2.0/recognizeText` i `GET /vision/v2.0/textOperati
 
 Możesz użyć `POST /vision/v2.0/recognizeTextDirect` operacji synchronicznie, rozpoznawał drukowanego tekstu w obrazie. Ponieważ ta operacja jest synchroniczne, treść żądania dla tej operacji jest taka sama, jak dla `POST /vision/v2.0/recognizeText` operacja, ale odpowiedź treści dla tej operacji jest taka sama jak zwracany przez `GET /vision/v2.0/textOperations/*{id}*` operacji.
 
-### <a name="billing"></a>Rozliczenia
+## <a name="stop-the-container"></a>Zastavit kontejner
 
-Kontener Rozpoznaj tekst wysyła informacje rozliczeniowe na platformie Azure, przy użyciu odpowiedniego zasobu przetwarzania obrazów na Twoim koncie platformy Azure. Poniższe opcje są używane przez kontener Rozpoznaj tekst na potrzeby rozliczeń:
+[!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](./computer-vision-resource-container-config.md#mount-settings) i Rejestrowanie włączone, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów, które wystąpiło podczas uruchamianie kontenera. 
+
+## <a name="containers-api-documentation"></a>Dokumentacja interfejsu API kontenera
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+## <a name="billing"></a>Rozliczenia
+
+Wyślij kontenery Rozpoznaj tekst rozliczeń informacje na platformie Azure, przy użyciu _Rozpoznaj tekst_ zasobów dla konta systemu Azure. 
+
+Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta do firmy Microsoft. 
+
+`docker run` Polecenie używa następujących argumentów na potrzeby rozliczeń:
 
 | Opcja | Opis |
 |--------|-------------|
-| `ApiKey` | Klucz interfejsu API zasobów przetwarzania obrazów, używane do śledzenia informacji dotyczących rozliczeń.<br/>Wartość tej opcji, musi być równa klucza interfejsu API dla aprowizowanego zasobu komputera przetwarzania w usłudze Azure określone w `Billing`. |
-| `Billing` | Punkt końcowy zasobu przetwarzania obrazów, używane do śledzenia informacji dotyczących rozliczeń.<br/>Wartość ta opcja musi być równa punkt końcowy identyfikatora URI zasobu Azure przetwarzania komputera elastycznie.|
-| `Eula` | Wskazuje, zaakceptowane licencji dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
+| `ApiKey` | Klucz interfejsu API _Rozpoznaj tekst_ zasoby używane do śledzenia informacji dotyczących rozliczeń. |
+| `Billing` | Punkt końcowy _Rozpoznaj tekst_ zasoby używane do śledzenia informacji dotyczących rozliczeń.|
+| `Eula` | Wskazuje, że zaakceptowano licencję dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
 
 > [!IMPORTANT]
 > Prawidłowe wartości należy określić wszystkie trzy opcje, lub uruchomić kontenera.
 
-Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](computer-vision-resource-container-config.md).
+Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](./computer-vision-resource-container-config.md).
 
 ## <a name="summary"></a>Podsumowanie
 
-W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, instalowania i uruchamiania przetwarzania obrazów kontenerów. Podsumowanie:
+W tym artykule przedstawiono pojęcia i przepływ pracy na potrzeby pobierania, instalowania i uruchamiania kontenerów rozpoznawanie tekstu. Podsumowanie:
 
-* Przetwarzania obrazów udostępnia kontenerów systemu Linux dla platformy Docker, aby wykrywanie i wyodrębnianie drukowanych tekstu.
-* Obrazy kontenerów są pobierane z prywatnego rejestru kontenerów na platformie Azure.
+* Rozpoznawanie tekstu zapewnia kontener systemu Linux dla platformy Docker, zawieranie rozpoznawanie tekstu.
+* Obrazy kontenerów są pobierane z rejestru kontenerów firmy Microsoft (MCR) na platformie Azure.
 * Obrazy kontenera Uruchom na platformie Docker.
-* Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach przetwarzania obrazów, określając host identyfikatora URI kontenera.
+* Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach rozpoznawanie tekstu, określając host identyfikatora URI kontenera.
 * Należy określić informacje rozliczeniowe, podczas tworzenia wystąpienia kontenera.
 
 > [!IMPORTANT]
-> Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft.
+> Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta (na przykład obraz lub tekst, który jest analizowana) do firmy Microsoft.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527292"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459056"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Przykładowy przepływ pracy przygotowywania dysków twardych do zadania importu
 W tym temacie przedstawiono pełny proces przygotowywania dysków do zadania importu.  
@@ -67,7 +67,7 @@ Na przykład dwa 3 TB, dyski twarde powinny być wystarczające. Jednak poniewa�
   
 Ponadto można ustawić następujące metadane dla wszystkich plików:  
   
--   **UploadMethod:** usługi Windows Azure Import/Export  
+-   **UploadMethod:** Usługa Windows Azure Import/Export  
   
 -   **DataSetName:** SampleData  
   
@@ -88,7 +88,7 @@ Można również ustawić niektóre właściwości `FavoriteMovie.ISO` obiektów
   
 -   **Content-Type:** application/octet-stream.  
   
--   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ ==  
+-   **Content-MD5:** Q2hlY2sgSW50ZWdyaXR5IQ==  
   
 -   **Cache-Control:** no-cache  
   
@@ -169,4 +169,4 @@ Po sesji kopiowania została ukończona, można odłączyć dwa dyski z komputer
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Przygotowywanie dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [Krótki przewodnik dotyczący często używanych poleceń](../storage-import-export-tool-quick-reference-v1.md) 
+* [Krótki przewodnik dotyczący często używanych poleceń](../storage-import-export-tool-quick-reference-v1.md) 

@@ -1,6 +1,6 @@
 ---
-Tytuł: Interpretacja wyników modelu w usłudze Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Jak wybrać optymalną parametrem ustawionym dla algorytmu przy użyciu i wizualizowanie danych wyjściowych modelu wynik.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Interpretacja wyników modelu w usłudze Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Jak wybrać optymalną parametrem ustawionym dla algorytmu przy użyciu i wizualizowanie danych wyjściowych modelu wynik.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11/29/2017
 ---

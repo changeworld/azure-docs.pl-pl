@@ -1,5 +1,5 @@
 ---
-Tytuł: TitleSuffix zarządzania cyklem życia aplikacji: Opis usługi Azure Machine Learning Studio: Stosowanie najlepszych rozwiązań zarządzania cyklem życia aplikacji w usługach Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: TitleSuffix zarządzania cyklem życia aplikacji: Opis usługi Azure Machine Learning Studio: Stosowanie najlepszych rozwiązań zarządzania cyklem życia aplikacji w usługach Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 10/27/2016
 ---

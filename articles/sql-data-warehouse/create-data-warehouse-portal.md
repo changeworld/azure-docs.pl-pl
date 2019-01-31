@@ -1,23 +1,23 @@
 ---
-title: 'Szybki Start: Tworzenie i wysyłanie zapytań usługi Azure SQL Data Warehouse — Azure Portal | Dokumentacja firmy Microsoft'
+title: 'Szybki start: Tworzenie i wysyłanie zapytań usługi Azure SQL Data Warehouse — Azure Portal | Dokumentacja firmy Microsoft'
 description: Tworzenie i wysyłanie zapytań hurtowni danych przy użyciu usługi Azure SQL Data Warehouse w witrynie Azure portal.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/01/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 004ae5c8c171f731a244e926dd51d677300630f1
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 317756f8684088b9df52856ce4f10c5401485e86
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248080"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461869"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: tworzenie magazynu danych Azure SQL Data Warehouse w witrynie Azure Portal i wykonywanie zapytania skierowanego do niego
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Tworzenie magazynu danych Azure SQL Data Warehouse w witrynie Azure Portal i wykonywanie zapytania skierowanego do niego
 
 Szybko utwórz magazyn danych Azure SQL Data Warehouse i wykonaj zapytania skierowanego do niego w witrynie Azure Portal.
 

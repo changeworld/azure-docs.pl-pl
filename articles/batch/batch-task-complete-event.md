@@ -1,8 +1,8 @@
 ---
-title: Azure zdarzenie ukończenia zadania wsadowego | Dokumentacja firmy Microsoft
-description: Dokumentacja dotycząca zdarzenie ukończenia zadania wsadowego.
+title: Usługa Azure zdarzenie ukończenia zadania usługi Batch | Dokumentacja firmy Microsoft
+description: Dokumentacja zdarzenie ukończenia zadania usługi Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,20 +11,20 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 9f25d9cbdc70282afd71b1a4b9ac72250922d163
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: b5fd1a8020c8e95323bc2333c0583dafe58e8456
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315313"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459251"
 ---
 # <a name="task-complete-event"></a>Zdarzenie ukończenia zadania
 
- To zdarzenie jest emitowany po zakończeniu zadania, niezależnie od kodu zakończenia. To zdarzenie można określić czas trwania zadania, w przypadku, gdy uruchomiono zadanie i czy został on ponowione.
+ To zdarzenie jest emitowane, gdy zadanie jest ukończone, niezależnie od tego, kod zakończenia. To zdarzenie może służyć do ustalenia czasu trwania zadania, w przypadku, gdy uruchomiono zadanie podrzędne i czy jej prób ponownego wykonania.
 
 
- W poniższym przykładzie przedstawiono treści zdarzenie ukończenia zadania.
+ Poniższy przykład pokazuje treści zdarzenie ukończenia zadania.
 
 ```
 {
@@ -52,42 +52,42 @@ ms.locfileid: "30315313"
 }
 ```
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|jobId|Ciąg|Identyfikator zadania zawierającego zadanie.|
-|id|Ciąg|Identyfikator zadania.|
-|taskType|Ciąg|Typ zadania. Może to być "JobManager" i wskazujący, że jest to zadanie Menedżer zadania lub "User" i wskazujący, że nie jest zadanie Menedżer zadania. To zdarzenie nie jest emitowany zadanie przygotowanie zadania, zadania wersji lub uruchomienia zadania.|
-|systemTaskVersion|Int32|Jest to licznik ponownych prób wewnętrzny dla zadania. Wewnętrznie usługa partia zadań. Spróbuj ponownie zadania konta dla przejściowych problemów. Te problemy mogą zawierać błędy wewnętrzne planowania lub próbuje odzyskać z węzłami w złym stanie przetwarzania.|
-|[nodeInfo](#nodeInfo)|Typ złożony|Zawiera informacje o węźle obliczeń, na którym uruchomiono zadanie.|
-|[multiInstanceSettings](#multiInstanceSettings)|Typ złożony|Określa, że zadanie jest wiele wystąpień zadania wymagające wielu węzłów obliczeniowych.  Zobacz [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) szczegółowe informacje.|
-|[Ograniczenia](#constraints)|Typ złożony|Ograniczenia wykonanie, które są stosowane do tego zadania.|
-|[executionInfo](#executionInfo)|Typ złożony|Zawiera informacje dotyczące wykonywania tego zadania.|
+|jobId|String|Identyfikator zadania zawierającego zadanie.|
+|id|String|Identyfikator zadania.|
+|taskType|String|Typ zadania. Może to być "JobManager" wskazujący, że to zadanie podrzędne Menedżera zadań lub w obszarze "User", wskazująca, że nie jest to zadanie podrzędne Menedżera zadań. To zdarzenie nie jest emitowane dla zadania przygotowania zadania, zadania podrzędne zwolnienia zadania lub zadania uruchamiania.|
+|systemTaskVersion|Int32|Jest to licznik wewnętrzny ponownych prób dla zadania. Wewnętrznie usługa Batch ponowić zadanie, aby uwzględnić problemy przejściowe. Te problemy mogą zawierać błędy wewnętrzne planowania lub próbuje odzyskać z węzłów obliczeniowych w złym stanie.|
+|[nodeInfo](#nodeInfo)|Typ złożony|Zawiera informacje o węźle obliczeniowym, na którym uruchomiono zadanie podrzędne.|
+|[multiInstanceSettings](#multiInstanceSettings)|Typ złożony|Określa, czy zadanie jest zadaniem wieloma wystąpieniami wymagającym wielu węzłów obliczeniowych.  Zobacz [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) Aby uzyskać szczegółowe informacje.|
+|[Ograniczenia](#constraints)|Typ złożony|Ograniczenia wykonywania, które są stosowane do tego zadania.|
+|[executionInfo](#executionInfo)|Typ złożony|Zawiera informacje dotyczące wykonywania zadania tego typu.|
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|poolId|Ciąg|Identyfikator puli, na którym uruchomiono zadanie.|
-|nodeId|Ciąg|Identyfikator węzła, na którym uruchomiono zadanie.|
+|poolId|String|Identyfikator puli, na którym uruchomiono zadanie podrzędne.|
+|nodeId|String|Identyfikator węzła, na którym uruchomiono zadanie podrzędne.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|Liczba węzłów obliczeń wymagana przez zadanie.|
 
 ###  <a name="constraints"></a> Ograniczenia
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|maxTaskRetryCount|Int32|Maksymalna liczba powtórzeń zadania mogą być ponowiona. Usługa partia zadań ponawia zadanie, jeśli jego kod zakończenia jest różna od zera.<br /><br /> Należy pamiętać, że ta wartość określa, w szczególności liczby ponownych prób. Usługa partia zadań ponowi zadania raz i może następnie ponów próbę wykonania tego limitu. Na przykład jeśli maksymalna liczba ponowień prób partii zadanie 3 do 4 godziny (jedna próba początkowej i 3 ponowne próby).<br /><br /> Jeśli maksymalna liczba ponowień to 0, usługa partia zadań nie ponów próbę wykonania zadania.<br /><br /> Jeśli maksymalna liczba ponowień to -1, usługa partia zadań ponawia próbę zadania bez ograniczeń.<br /><br /> Wartość domyślna to 0 (brak ponownych prób).|
+|maxTaskRetryCount|Int32|Maksymalna liczba przypadków, gdy zadanie może być ponawiane. Usługa partia zadań ponawia próbę zadania, jeśli jego kod zakończenia jest różny od zera.<br /><br /> Należy pamiętać, że ta wartość określa, w szczególności liczbę ponownych prób. Usługa Batch spróbuje zadanie raz, a może następnie podjąć kolejną próbę do tego limitu. Na przykład jeśli maksymalna liczba ponowień to 3, maksymalna liczba prób partii to zadanie maksymalnie 4 razy (jedna początkowa próba i 3 ponownych prób).<br /><br /> Jeśli maksymalna liczba ponowień to 0, usługa partia zadań nie ponów próbę wykonania zadania.<br /><br /> Jeśli maksymalna liczba ponowień to -1, usługa partia zadań ponawia próbę zadania bez ograniczeń.<br /><br /> Wartość domyślna to 0 (bez ponawiania).|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|Nazwa elementu|Typ|Uwagi|
+|Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|startTime|DateTime|Czas, w którym zadanie uruchomienia. "Uruchomiona" odpowiada **systemem** stanu, więc jeśli zadanie Określa pliki zasobów lub pakiety aplikacji, następnie czas rozpoczęcia odzwierciedla godzina, o której zadanie zostanie uruchomione, pobierania lub ich wdrażania.  Jeśli zadania został ponownie uruchomiony lub ponowione, to jest ostatni czas, w którym zadanie uruchomienia.|
-|endTime|DateTime|Czas, jaką zadanie ukończone.|
-|exitCode|Int32|Kod zakończenia zadania.|
-|retryCount|Int32|Ile razy zadanie było ponawiane przez usługi partia zadań. Próba zostanie ponowiona zadania, jeśli kończy działanie z kodem zakończenia różną od zera, do określonego MaxTaskRetryCount.|
-|requeueCount|Int32|Liczba powtórzeń zadania ma zostać umieszczony w kolejce przez usługi partia zadań w wyniku żądania użytkownika.<br /><br /> Gdy węzły Usuwa użytkownika z pulę (przy zmianie rozmiaru lub zmniejszanie puli) lub gdy zadanie jest wyłączone, użytkownik może określić, że uruchomienie zadań na węzłach być umieszczony w kolejce do wykonania. Licznik ten uwzględnia śledzi, ile razy zadanie ma zostać umieszczony w kolejce z tego względu.|
+|startTime|DateTime|Czas, w którym zadania został uruchomiony. "Uruchomiona" odnosi się do **systemem** stanu, więc jeśli zadanie Określa pliki zasobów lub pakiety aplikacji, następnie czas rozpoczęcia uwzględnia czas, w którym zadanie zostanie uruchomione, pobierania lub ich wdrażania.  Jeśli zadanie został ponownie uruchomiony lub ponowione, to jest ostatni czas, w którym zadania został uruchomiony.|
+|endTime|DateTime|Czas, w którym zadanie jest ukończone.|
+|ExitCode|Int32|Kod zakończenia zadania.|
+|retryCount|Int32|Liczba przypadków, gdy zadanie było ponawiane przez usługę Batch. Zadanie zostanie ponowiony, jeśli kończy działanie z kodem zakończenia różny od zera, aż określony MaxTaskRetryCount.|
+|requeueCount|Int32|Liczba przypadków, gdy zadanie ma zostać ponownie umieszczone w kolejce przez usługę Batch w wyniku żądania użytkownika.<br /><br /> Gdy węzły Usuwa użytkownika z puli (przez zmianę rozmiaru lub zmniejszania puli) lub gdy zadanie jest wyłączone, użytkownik może określić, czy uruchamianie zadań w węzłach można ponownie umieszczone w kolejce do wykonania. Ta liczba śledzi, ile razy zadanie ma zostać ponownie umieszczone w kolejce z tych powodów.|

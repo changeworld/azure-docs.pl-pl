@@ -1,5 +1,5 @@
 ---
-title: Typy rozwiązywania konfliktów i zasad rozpoznawania w usłudze Azure Cosmos DB
+title: Typy rozwiązywania konfliktów i zasad rozpoznawania z wieloma zapisu regionów w usłudze Azure Cosmos DB
 description: W tym artykule opisano kategorie konfliktu i zasady rozwiązywania konfliktów w usłudze Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4af3f4c60f186c34d0f5522461ba70c68b59d1ab
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 31e6fa596bb053ee8cd19f641349f02ee169b6eb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033897"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472341"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Typy konfliktów i zasady ich rozwiązywania
 
@@ -39,7 +39,7 @@ Usługa Azure Cosmos DB oferuje elastyczny mechanizm opartych na zasadach rozwi�
 
   Aby dowiedzieć się więcej, zobacz [zasad rozpoznawania w konflikcie przykłady z zastosowaniem LWW](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
 
-- **Niestandardowe**: Te zasady rozwiązania jest przeznaczona dla semantyki zdefiniowanych przez aplikację do uzgodnienia konflikty. Gdy ta zasada jest ustawiona na kontenera usługi Azure Cosmos DB, należy zarejestrować procedury przechowywane scalania. Ta procedura jest wywoływana automatycznie, gdy wykryto konflikty w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
+- **Niestandardowy**: Te zasady rozwiązania jest przeznaczona dla semantyki zdefiniowanych przez aplikację do uzgodnienia konflikty. Gdy ta zasada jest ustawiona na kontenera usługi Azure Cosmos DB, należy zarejestrować procedury przechowywane scalania. Ta procedura jest wywoływana automatycznie, gdy wykryto konflikty w ramach transakcji bazy danych na serwerze. System zawiera dokładnie raz gwarantuje do wykonania procedury scalania w ramach protokołu zobowiązania.  
 
   Istnieją dwa punkty do zapamiętania, jeśli skonfigurować kontenera przy użyciu opcji niestandardowych rozwiązywania konfliktów. Jeśli Licencjobiorca nie można zarejestrować procedury scalania w kontenerze lub procedury scalania zgłasza wyjątek w czasie wykonywania, konflikty są zapisywane do konfliktów, źródła danych. Następnie aplikacja musi ręcznie rozwiązać konflikty w konflikcie, źródła danych. Aby dowiedzieć się więcej, zobacz [przykłady za pomocą zasad niestandardowych rozwiązania i sposobu używania konflikty kanału informacyjnego](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
 

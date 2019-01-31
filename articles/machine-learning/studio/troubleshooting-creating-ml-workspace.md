@@ -1,6 +1,6 @@
 ---
-Tytuł: "Rozwiązywanie problemów: Tworzenie, łączenie do obszaru roboczego usługi Machine Learning Studio' titleSuffix: Opis usługi Azure Machine Learning Studio: Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning Studio.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: "Rozwiązywanie problemów: Tworzenie, łączenie do obszaru roboczego usługi Machine Learning Studio' titleSuffix: Opis usługi Azure Machine Learning Studio: Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

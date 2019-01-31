@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fbc23d53687b908245ffe25bdd418cbe64af080b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 7c87a0f478b6efbe7ae9ff07def8b4d0d730b111
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136192"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478495"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Przenoszenie danych do programu SQL Server na maszynie wirtualnej platformy Azure
 
@@ -26,7 +26,7 @@ Temat, który przedstawia opcje przenoszenia danych do usługi Azure SQL Databas
 
 Poniższa tabela podsumowuje Opcje przenoszenia danych do programu SQL Server na maszynie wirtualnej platformy Azure.
 
-| <b>ŹRÓDŁO</b> | <b>Miejsce docelowe: SQL Server na maszynie Wirtualnej platformy Azure</b> |
+| <b>ŹRÓDŁO</b> | <b>MIEJSCE DOCELOWE: Program SQL Server na maszynie Wirtualnej platformy Azure</b> |
 | --- | --- |
 | <b>Plik prosty</b> |1. <a href="#insert-tables-bcp">Narzędzie wiersza polecenia zbiorczego kopiowania (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">Zapytanie SQL wstawiania zbiorczego </a><br> 3. <a href="#sql-builtin-utilities">Graficznych narzędzi wbudowanych w programie SQL Server</a> |
 | <b>Na lokalnym serwerze SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">Wdrażanie bazy danych programu SQL Server do kreatora Microsoft Azure VM</a><br> 2. <a href="#export-flat-file">Eksportuj do pliku prostego </a><br> 3. <a href="#sql-migration">Kreator migracji bazy danych SQL </a> <br> 4. <a href="#sql-backup">Baza danych kopii zapasowej i przywracanie </a><br> |
@@ -64,20 +64,23 @@ Narzędzie BCP jest narzędziem wiersza polecenia, zainstalowane z programem SQL
 
 1. Upewnij się, że bazy danych i tabele są tworzone w docelowej bazie danych programu SQL Server. Oto przykład sposobu wykonania tego za pomocą `Create Database` i `Create Table` poleceń:
 
-        CREATE DATABASE <database_name>
+```sql
+CREATE DATABASE <database_name>
 
-        CREATE TABLE <tablename>
-        (
-            <columnname1> <datatype> <constraint>,
-            <columnname2> <datatype> <constraint>,
-            <columnname3> <datatype> <constraint>
-        )
+CREATE TABLE <tablename>
+(
+    <columnname1> <datatype> <constraint>,
+    <columnname2> <datatype> <constraint>,
+    <columnname3> <datatype> <constraint>
+)
+```
+
 2. Wygeneruj plik formatu, opisujący schematu dla tabeli, wydając polecenie z wiersza polecenia maszyny zainstalowanym bcp.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
 3. Wstawianie danych do bazy danych za pomocą polecenia bcp w następujący sposób. Powinno to działać z wiersza polecenia, przy założeniu, że serwer SQL jest zainstalowany na tym samym komputerze:
 
-    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attemp -t \t -r \n`
+    `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
 > **Optymalizacja wstawia BCP** zapoznaj się z następującym artykułem [dotyczących optymalizacji importu zbiorczego](https://technet.microsoft.com/library/ms177445%28v=sql.105%29.aspx) zoptymalizować takie operacje wstawiania.
 >
@@ -87,46 +90,47 @@ Narzędzie BCP jest narzędziem wiersza polecenia, zainstalowane z programem SQL
 Jeśli dane, które są przenoszone jest duża, można przyspieszyć rzeczy przez jednoczesne wykonywanie wielu poleceń narzędzia BCP równolegle w skrypcie programu PowerShell.
 
 > [!NOTE]
-> **Pozyskiwanie danych big data** w celu zoptymalizowania danych ładowania dla dużych i bardzo dużych zestawów danych, Partycjonowanie tabel bazy danych logicznych i fizycznych przy użyciu wielu tabel grup plików i partycji. Aby uzyskać więcej informacji na temat tworzenia i ładowanie danych do tabel partycji SQL, zobacz [równoległe tabel partycji SQL obciążenia](parallel-load-sql-partitioned-tables.md).
+> **Pozyskiwanie danych big data** w celu zoptymalizowania danych ładowania dla dużych i bardzo dużych zestawów danych, Partycjonowanie tabel bazy danych logicznych i fizycznych przy użyciu wielu grup plików i tabel partycji. Aby uzyskać więcej informacji na temat tworzenia i ładowanie danych do tabel partycji SQL, zobacz [równoległe tabel partycji SQL obciążenia](parallel-load-sql-partitioned-tables.md).
 >
 >
 
-Poniższy przykładowy skrypt programu PowerShell pokazują wstawia równoległych, przy użyciu narzędzia bcp:
+Przykładowy skrypt programu PowerShell pokazuje wstawia równoległych, przy użyciu narzędzia bcp:
 
-    $NO_OF_PARALLEL_JOBS=2
+```powershell
+$NO_OF_PARALLEL_JOBS=2
 
-     Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
-     # Define what each job does
-       $ScriptBlock = {
-           param($partitionnumber)
+Set-ExecutionPolicy RemoteSigned #set execution policy for the script to execute
+# Define what each job does
+$ScriptBlock = {
+    param($partitionnumber)
 
-           #Explictly using SQL username password
-           bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
+    #Explicitly using SQL username password
+    bcp database..tablename in datafile_path.csv -F 2 -f format_file_path.xml -U username@servername -S tcp:servername -P password -b block_size_to_move_in_single_attempt -t "," -r \n -o path_to_outputfile.$partitionnumber.txt
 
-            #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
-            #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
-      }
-
-
-    # Background processing of all partitions
-    for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
-    {
-      Write-Debug "Submit loading partition # $i"
-      Start-Job $ScriptBlock -Arg $i      
-    }
+    #Trusted connection w.o username password (if you are using windows auth and are signed in with that credentials)
+    #bcp database..tablename in datafile_path.csv -o path_to_outputfile.$partitionnumber.txt -h "TABLOCK" -F 2 -f format_file_path.xml  -T -b block_size_to_move_in_single_attempt -t "," -r \n
+}
 
 
-    # Wait for it all to complete
-    While (Get-Job -State "Running")
-    {
-      Start-Sleep 10
-      Get-Job
-    }
+# Background processing of all partitions
+for ($i=1; $i -le $NO_OF_PARALLEL_JOBS; $i++)
+{
+    Write-Debug "Submit loading partition # $i"
+    Start-Job $ScriptBlock -Arg $i      
+}
 
-    # Getting the information back from the jobs
-    Get-Job | Receive-Job
-    Set-ExecutionPolicy Restricted #reset the execution policy
 
+# Wait for it all to complete
+While (Get-Job -State "Running")
+{
+    Start-Sleep 10
+    Get-Job
+}
+
+# Getting the information back from the jobs
+Get-Job | Receive-Job
+Set-ExecutionPolicy Restricted #reset the execution policy
+```
 
 ### <a name="insert-tables-bulkquery"></a>Zapytanie SQL wstawiania zbiorczego
 [Zbiorcze Wstawianie zapytania SQL](https://msdn.microsoft.com/library/ms188365) może służyć do importowania danych do bazy danych z plików na podstawie wiersza/kolumny (obsługiwane typy są objęte[przygotowania danych dla zbiorczego eksportu lub importu (SQL Server)](https://msdn.microsoft.com/library/ms188609)) tematu.
@@ -135,18 +139,22 @@ Poniżej przedstawiono niektóre przykładowe polecenia dla Bulk Insert są tak 
 
 1. Analizowanie danych i ustaw opcje niestandardowych przed zaimportowaniem, aby upewnić się, że bazy danych programu SQL Server przyjęto założenie, tego samego formatu dla wszystkich pól specjalnych, takich jak daty. Poniżej przedstawiono przykładowy sposób ustawić format daty jako rok, miesiąc, dzień, (Jeśli dane zawierają datę w formacie rok, miesiąc, dzień):
 
-        SET DATEFORMAT ymd;    
+```sql
+SET DATEFORMAT ymd;
+```
 2. Importowanie danych przy użyciu instrukcji importowania zbiorczego:
 
-        BULK INSERT <tablename>
-        FROM    
-        '<datafilename>'
-        WITH
-        (
-        FirstRow=2,
-        FIELDTERMINATOR =',', --this should be column separator in your data
-        ROWTERMINATOR ='\n'   --this should be the row separator in your data
-        )
+```sql
+BULK INSERT <tablename>
+FROM
+'<datafilename>'
+WITH
+(
+    FirstRow = 2,
+    FIELDTERMINATOR = ',', --this should be column separator in your data
+    ROWTERMINATOR = '\n'   --this should be the row separator in your data
+)
+```
 
 ### <a name="sql-builtin-utilities"></a>Wbudowane narzędzia w programie SQL Server
 SQL Server integracji Services (SSIS) służy do importowania danych do maszyny Wirtualnej z programu SQL Server na platformie Azure z pliku prostego.

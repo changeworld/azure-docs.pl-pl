@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 1c83ebd0153e7a28365317b02d3debbe43d976f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 49743130966589cceedb7756540c723a6f3276ff
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601580"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471671"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamiczne skalowanie zasobów bazy danych, przy minimalnych przestojach
 
@@ -54,9 +54,9 @@ Możesz zmienić [warstwy usługi jednostki DTU](sql-database-service-tiers-dtu.
 
 Wszystkich trzech wersjach usługi Azure SQL Database oferuje możliwość ich dynamicznie skalować bazy danych:
 
-- W [pojedynczej bazy danych SQL Azure](sql-database-single-database-scale.md), można użyć dowolnego [jednostek DTU](sql-database-dtu-resource-limits-single-databases.md) lub [— rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) modele, aby określić maksymalną ilość zasobów, które zostaną przypisane do każdej bazy danych.
-- [Wystąpienie zarządzane SQL Azure](sql-database-managed-instance.md) używa [rdzeni wirtualnych](sql-database-managed-instance.md#vcore-based-purchasing-model) tryb i pozwala na zdefiniowanie maksymalna liczba rdzeni procesora CPU i maksymalnej pamięci przydzielonej do wystąpienia. Wszystkie bazy danych w ramach wystąpienia będą współdzielić zasobów przydzielonych dla wystąpienia.
-- [Pule elastyczne usługi Azure SQL](sql-database-elastic-pool-scale.md) umożliwiają zdefiniowanie limit maksymalny zasobów dla grupy baz danych w puli.
+- Za pomocą [pojedynczej bazy danych](sql-database-single-database-scale.md), można użyć dowolnego [jednostek DTU](sql-database-dtu-resource-limits-single-databases.md) lub [— rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md) modele, aby określić maksymalną ilość zasobów, które zostaną przypisane do każdej bazy danych.
+- A [wystąpienia zarządzanego](sql-database-managed-instance.md) używa [rdzeni wirtualnych](sql-database-managed-instance.md#vcore-based-purchasing-model) tryb i pozwala na zdefiniowanie maksymalna liczba rdzeni procesora CPU i maksymalnej pamięci przydzielonej do wystąpienia. Wszystkie bazy danych w ramach wystąpienia będą współdzielić zasobów przydzielonych dla wystąpienia.
+- [Pule elastyczne](sql-database-elastic-pool-scale.md) umożliwiają zdefiniowanie limit maksymalny zasobów dla grupy baz danych w puli.
 
 ## <a name="alternative-scale-methods"></a>Skala alternatywnych metod
 

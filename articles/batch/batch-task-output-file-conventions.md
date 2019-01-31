@@ -3,7 +3,7 @@ title: Utrwalanie zadań i zadań danych wyjściowych do usługi Azure Storage z
 description: Dowiedz się, jak używać biblioteki Konwencji plików usługi Batch Azure dla platformy .NET umożliwia utrwalanie partii zadań i zadań danych wyjściowych do usługi Azure Storage i wyświetlanie utrwalonych danych wyjściowych w witrynie Azure portal.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f6ac523d7944f80da1b75993bfd05d617eb8f85
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706606"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472987"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET
 
@@ -115,7 +115,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 Te typy danych wyjściowych umożliwiają określenie typu danych wyjściowych, aby wyświetlić listę później zapytania usługi Batch dla utrwalonych danych wyjściowych dla danego zadania. Innymi słowy po wyświetleniu listy danych wyjściowych dla zadania, będzie można filtrować listę na jednym z typów danych wyjściowych. Na przykład "Proszę *Podgląd* danych wyjściowych dla zadania *109*." Więcej informacji o ofercie i pobieranie danych wyjściowych zostanie wyświetlony w [pobrać dane wyjściowe](#retrieve-output) w dalszej części artykułu.
 
 > [!TIP]
-> Rodzaj wyjścia Określa, gdzie w witrynie Azure portal danego pliku pojawia się: *TaskOutput*-skategoryzowane plików są wyświetlane w obszarze **plików wyjściowych zadania**, i *TaskLog* pliki są wyświetlane w obszarze **zadań dzienniki**.
+> Rodzaj wyjścia określa również, gdzie w witrynie Azure portal danego pliku pojawia się: *TaskOutput*-skategoryzowane plików są wyświetlane w obszarze **plików wyjściowych zadania**, i *TaskLog* plików są wyświetlane w obszarze **zadań dzienniki**.
 
 ### <a name="store-job-outputs"></a>Dane wyjściowe zadania Store
 

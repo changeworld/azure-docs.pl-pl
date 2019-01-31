@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 63a7602deee402bed056937c8465fd87c8256cd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d442d09c8c8ded3aa50faf74e28c8d95ded24a5e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962850"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300204"
 ---
-# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Szybkie kroki: tworzenie i używanie pary kluczy publiczny prywatny SSH dla maszyn wirtualnych systemu Linux na platformie Azure
+# <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Szybkie kroki: Tworzenie i używanie pary kluczy publiczny prywatny SSH dla maszyn wirtualnych systemu Linux na platformie Azure
 
-Para kluczy Secure Shell (SSH) umożliwia tworzenie na platformie Azure maszyn wirtualnych, które używają kluczy SSH do uwierzytelniania, eliminując konieczność logowania przy użyciu haseł. W tym artykule przedstawiono sposób szybkiego generowania i używania pary plików kluczy publiczny prywatny SSH dla maszyn wirtualnych systemu Linux. Można wykonać te czynności przy użyciu usługi Azure Cloud Shell, macOS lub Linux hosta, podsystem Windows dla systemu Linux i innych narzędzi, które obsługują OpenSSH. 
+Przy użyciu protokołu secure shell (SSH) pary kluczy można utworzyć maszyny wirtualne (VM) na platformie Azure, które używają kluczy SSH do uwierzytelniania, eliminując konieczność łączenia się haseł do logowania. W tym artykule przedstawiono sposób szybkiego generowania i używania pary plików kluczy publiczny prywatny SSH dla maszyn wirtualnych systemu Linux. Można wykonać te czynności przy użyciu usługi Azure Cloud Shell, macOS lub Linux hosta, podsystem Windows dla systemu Linux i innych narzędzi, które obsługują OpenSSH. 
 
 > [!NOTE]
 > Maszyny wirtualne utworzone przy użyciu kluczy SSH są domyślnie skonfigurowane przy użyciu haseł wyłączone, co znacznie zwiększa trudności odgadnięcia ataków siłowych. 
@@ -88,6 +88,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 Jeśli hasło jest określony, podczas tworzenia pary kluczy, wprowadź hasło, że po wyświetleniu monitu podczas procesu logowania. Maszyna wirtualna zostanie dodany do Twojego pliku ~/.ssh/known_hosts i nie będzie trzeba podawać połączyć się ponownie do czasu albo klucza publicznego w zmiany maszyny Wirtualnej platformy Azure lub nazwa serwera jest usuwana z ~/.ssh/known_hosts.
+
+Jeśli maszyna wirtualna używa zasad dostępu just in time, należy zażądać dostępu, aby nawiązać połączenie z maszyną wirtualną. Aby uzyskać więcej informacji na temat zasad just-in-time, zobacz [zarządzanie dostępem maszyny wirtualnej przy użyciu tylko w zasadach czasu](../../security-center/security-center-just-in-time.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

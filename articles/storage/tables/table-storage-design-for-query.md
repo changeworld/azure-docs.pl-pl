@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: 8b4ae066edc1c62c25762b5c6feebce1ecfff5a2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: tables
+ms.openlocfilehash: 97373f6f0138d3ed8028ed4327b7e6cf90ad76a7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521544"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470743"
 ---
 # <a name="design-for-querying"></a>Projektowanie pod kątem wykonywania zapytań
 Rozwiązania usługi tabeli mogą być odczytywane znaczne wykorzystanie mocy, intensywnie zapisu lub zmieszanie dwóch. Ten artykuł koncentruje się na tym, co można mieć na uwadze podczas projektowania usługi Table service, aby efektywnie obsługiwać operacje odczytu. Zazwyczaj projekt, że obsługuje operacje odczytu efektywnie również jest wydajne dla operacji zapisu. Jednak istnieją pewne dodatkowe zagadnienia dotyczące pamiętać podczas projektowania, aby obsługiwać operacje zapisu w magazynie, omówionych w artykule [projektowanie pod kątem modyfikacji danych](table-storage-design-for-modification.md).
@@ -42,7 +42,7 @@ W poniższych przykładach założono, usłudze table service zapisuje jednostek
 | **Imię** |Ciąg |
 | **Nazwisko** |Ciąg |
 | **Wiek** |Liczba całkowita |
-| **EmailAddress** |Ciąg |
+| **EmailAddress** |String |
 
 Artykuł [Omówienie usługi Azure Table storage](table-storage-overview.md) opisano niektóre z kluczowymi funkcjami usługi Azure Table service, które mają bezpośredni wpływ na projektowanie pod kątem zapytań. Wynikiem tych ogólne wytyczne dotyczące projektowania zapytań usługi tabeli. Należy zauważyć, że składnia filtru użyte w poniższych przykładach z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://docs.microsoft.com/rest/api/storageservices/Query-Entities).  
 

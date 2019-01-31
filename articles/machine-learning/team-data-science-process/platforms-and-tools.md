@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a37c200e52e1d2786690a8a0e669af57312294d
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139182"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471015"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy i narzędzia dla projektów do nauki o danych
 
@@ -59,7 +59,7 @@ Apache Spark to równoległego typu open source platforma, która obsługuje prz
 
 Tworząc klaster Spark w usłudze HDInsight, tworzysz zasoby obliczeniowe systemu Azure z zainstalowaną i skonfigurowaną platformą Spark. Tworzenie klastra Spark w HDInsight trwa około 10 minut. Store dane, które mają być przetwarzane w usłudze Azure Blob storage. Aby uzyskać informacje na temat korzystania z usługi Azure Blob Storage z klastrem, zobacz [używanie zgodnego systemem plików HDFS usługi Azure Blob storage z usługą Hadoop w HDInsight](../../hdinsight/hdinsight-hadoop-use-blob-storage.md).
 
-Przetwarzanie TDSP zespołu firmy Microsoft został opublikowany dwóch end-to-end — wskazówki dotyczące sposobu używania klastrów usługi Azure HDInsight Spark do tworzenia rozwiązań do nauki o danych, co przy użyciu języka Python i innych Scala. Aby uzyskać więcej informacji na temat usługi Azure HDInsight **klastry Spark**, zobacz [Przegląd: platforma Apache Spark w systemie HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Python** klastrze Azure HDInsight Spark, zobacz [Omówienie programu do nauki o danych przy użyciu platformy Spark w usłudze Azure HDInsight](spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Scala** klastrze Azure HDInsight Spark, zobacz [do nauki o danych przy użyciu języka Scala i aparatu Spark na platformie Azure](scala-walkthrough.md). 
+Przetwarzanie TDSP zespołu firmy Microsoft został opublikowany dwóch end-to-end — wskazówki dotyczące sposobu używania klastrów usługi Azure HDInsight Spark do tworzenia rozwiązań do nauki o danych, co przy użyciu języka Python i innych Scala. Aby uzyskać więcej informacji na temat usługi Azure HDInsight **klastry Spark**, zobacz [omówienie: Platforma Apache Spark w systemie HDInsight Linux](../../hdinsight/spark/apache-spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Python** klastrze Azure HDInsight Spark, zobacz [Omówienie programu do nauki o danych przy użyciu platformy Spark w usłudze Azure HDInsight](spark-overview.md). Aby dowiedzieć się, jak tworzyć, używając rozwiązania do nauki o danych **Scala** klastrze Azure HDInsight Spark, zobacz [do nauki o danych przy użyciu języka Scala i aparatu Spark na platformie Azure](scala-walkthrough.md). 
 
 
 ##  <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
@@ -73,7 +73,7 @@ Aby uzyskać więcej informacji na temat usługi Azure SQL Data Warehouse, zobac
 
 Usługi Azure data lake jest jako repozytorium całego przedsiębiorstwa każdego typu danych zebranych w jednej lokalizacji, przed wszelkie wymagania formalne lub schematu, które są narzucone. Ta elastyczność umożliwia wszystkich typów danych, które mają być przechowywane w usłudze data lake, niezależnie od jego rozmiaru i struktury lub szybkość ich przetwarzania. Organizacje mogą następnie korzystanie z usługi Hadoop lub zaawansowanych analiz, aby znaleźć wzorce w tych danych, jeziora. Data Lake może również służyć jako repozytorium w celu przygotowania danych tańszych przed curating dane i przenosić je do magazynu danych.
 
-Aby uzyskać więcej informacji na temat usługi Azure Data Lake, zobacz [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Aby dowiedzieć się, jak tworzyć rozwiązania do analizy skalowalnych danych end-to-end z usługą Azure Data Lake, zobacz [skalowalna analiza danych w usłudze Azure Data Lake: Instruktaż end-to-end](data-lake-walkthrough.md)
+Aby uzyskać więcej informacji na temat usługi Azure Data Lake, zobacz [Introducing Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Aby dowiedzieć się, jak tworzyć rozwiązania do analizy skalowalnych danych end-to-end z usługą Azure Data Lake, zobacz [skalowalna analiza danych w usłudze Azure Data Lake: Przewodnik end-to-end](data-lake-walkthrough.md)
 
 
 ## <a name="azure-hdinsight-hive-hadoop-clusters"></a>Klastry usługi Azure HDInsight Hive (Hadoop)
@@ -103,7 +103,7 @@ Usługi R Services (In-database) obsługuje języka R typu open source dzięki k
 Przetwarzanie TDSP zespół firmy Microsoft został opublikowany dwa przewodniki end-to-end, które pokazują, jak tworzyć rozwiązania do analizy danych w SQL Server 2016 R Services: jeden dla programistów języka R i jeden dla deweloperów programu SQL. Aby uzyskać **programistom języka R**, zobacz [wskazówki End-to-End do nauki o danych](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough). Aby uzyskać **deweloperów SQL**, zobacz [Advanced Analytics w bazie danych dla deweloperów programu SQL (samouczek)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers).
 
 
-## <a name="appendix"></a>Dodatek: Narzędzia do skonfigurowania projekty do nauki o danych
+## <a name="appendix"></a>Dodatek: Narzędzia umożliwiające konfigurowanie projektów do nauki o danych
 
 ### <a name="install-git-credential-manager-on-windows"></a>Zainstaluj program Git Credential Manager na Windows
 

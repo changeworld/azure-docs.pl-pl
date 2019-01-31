@@ -3,19 +3,19 @@ title: Jak udostępniać usługi Azure Dev miejsca do magazynowania | Dokumentac
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 57ca0f7b7704b179a55ac75fea99d35e1024ee8e
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 86a9400aca099bb79ca95dfc1c4ac2c4c241a6b2
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706419"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466425"
 ---
 # <a name="share-azure-dev-spaces"></a>Miejsca do magazynowania udziału usługi Azure Dev
 
@@ -27,7 +27,7 @@ Za pomocą usługi Azure Dev miejsca do magazynowania można udostępnić obszar
 1. Skonfiguruj miejsce Azure Dev na **grupy zasobów** do [przyznać prawa współautora](/azure/active-directory/role-based-access-control-configure) dla każdego członka zespołu. Miejsce na deweloperów grupy zasobów można sprawdzić, uruchamiając następujące polecenie: `azds list-up`
 1. Poproś członków zespołu, aby **wybierz miejsce dev** aby tworzyć w nim.
      * **Wiersz polecenia lub programu VS Code**: Aby wyświetlić istniejące usługi Azure Dev miejsca do magazynowania ma dostęp do: `azds space list`. Aby wybrać miejsce dev: `azds space select`.
-     * **Środowiska IDE programu Visual Studio**: Otwórz projekt w programie Visual Studio, wybierz **miejsca do magazynowania Azure Dev** z uruchamiania ustawienia listy rozwijanej. W wyświetlonym oknie dialogowym Wybierz istniejący klaster.
+     * **Visual Studio IDE**: Otwórz projekt w programie Visual Studio, wybierz **miejsca do magazynowania Azure Dev** z uruchamiania ustawienia listy rozwijanej. W wyświetlonym oknie dialogowym Wybierz istniejący klaster.
 
     ![Visual Studio Uruchom ustawień listy rozwijanej](../media/get-started-netcore-visualstudio/LaunchSettings.png)
 

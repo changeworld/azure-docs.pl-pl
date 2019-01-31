@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: hrasheed
-ms.openlocfilehash: fd2d9bd325d79a1fd8aa0da74da64f6ba98decda
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bd1ffcfd915fe9ece683ec88d27f54b3a9214621
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101060"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475685"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów Azure HDInsight (wersja zapoznawcza)
 
@@ -27,17 +27,17 @@ Klaster usługi Azure HDInsight automatycznie skaluje liczbę węzłów procesu 
 > [!Note]
 > Automatyczne skalowanie jest obecnie obsługiwana tylko w przypadku usługi Azure HDInsight Hive, MapReduce i platformy Spark klastrów w wersji 3.6.
 
-Kroki tworzenia klastra HDInsight w kompletny przy użyciu witryny Azure Portal znajduje się w temacie [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).  Włączanie automatycznego skalowania podczas procesu tworzenia wymaga kilku odchyleń od kroki zwykle instalacji.  
+Aby włączyć funkcję automatycznego skalowania, należy wykonać następujące czynności w ramach procesu tworzenia klastra normalne:
 
 1. Wybierz **niestandardowe (rozmiar, ustawienia, aplikacje)** zamiast **szybkie tworzenie**.
-2. Krok 5 — niestandardowe **rozmiar klastra**, sprawdź **automatyczne skalowanie węzłów procesu roboczego** pole wyboru.
+2. Na **niestandardowe** kroku 5 (**rozmiar klastra**) sprawdź **automatyczne skalowanie węzłów procesu roboczego** pola wyboru.
 3. Wprowadź odpowiednie wartości dla:  
-  &#8226;Początkowa **węzłów liczba procesów roboczych**.  
-  &#8226;**Minimum** liczba węzłów procesu roboczego.  
-  &#8226;**Maksymalna** liczby węzłów procesu roboczego.  
+
+    * Początkowa **węzłów liczba procesów roboczych**.  
+    * **Co najmniej** liczby węzłów procesu roboczego.  
+    * **Maksymalna** liczby węzłów procesu roboczego.  
 
 ![Włącz opcję automatycznego skalowania węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
-
 
 Początkowa liczba węzłów procesu roboczego musi przypadać między minimalną i maksymalną, włącznie. Ta wartość Określa początkowy rozmiar klastra podczas jego tworzenia. Minimalna liczba węzłów procesu roboczego musi być większa niż zero.
 
@@ -48,9 +48,11 @@ Twoja subskrypcja ma limit przydziału pojemności dla każdego regionu. Łączn
 > [!Note]  
 > Jeśli przekroczysz limit przydziału rdzeni całkowity, otrzymasz komunikat o błędzie informujący o tym, "maksymalna węzła przekroczyła dostępnych rdzeni w tym regionie, wybierz inny region lub skontaktuj się z pomocą techniczną, aby zwiększyć limit przydziału."
 
+Aby uzyskać więcej informacji na temat tworzenia klastra HDInsight w witrynie Azure portal, zobacz [opartych na systemie Linux z Tworzenie klastrów w HDInsight przy użyciu witryny Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md).  
+
 ### <a name="create-a-cluster-with-a-resource-manager-template"></a>Tworzenie klastra przy użyciu szablonu usługi Resource Manager
 
-Kroki tworzenia klastra HDInsight w kompletny przy użyciu szablonów usługi Resource Manager znajduje się w temacie [tworzenie technologii Apache Hadoop clusters w HDInsight przy użyciu szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  Podczas tworzenia klastra usługi HDInsight przy użyciu szablonu usługi Azure Resource Manager, należy dodać następujące ustawienia w sekcji "workernode" "computeProfile" i odpowiednio ją edytować:
+Aby utworzyć klaster usługi HDInsight przy użyciu szablonu usługi Azure Resource Manager, należy dodać `autoscale` węzeł `computeProfile`  >  `workernode` sekcji z właściwościami `minInstanceCount` i `maxInstanceCount` pokazany na poniższy fragment kodu json.
 
 ```json
 {                            
@@ -73,6 +75,8 @@ Kroki tworzenia klastra HDInsight w kompletny przy użyciu szablonów usługi Re
     "scriptActions": []
 }
 ```
+
+Aby uzyskać więcej informacji na temat tworzenia klastrów przy użyciu szablonów usługi Resource Manager, zobacz [tworzenie technologii Apache Hadoop clusters w HDInsight przy użyciu szablonów usługi Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).  
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Włączanie i wyłączanie skalowania automatycznego dla działającego klastra
 
@@ -106,7 +110,7 @@ Po wykryciu następujące warunki skalowania automatycznego wystawi skalowania w
 * Całkowita liczba oczekujących procesora CPU jest większy niż łączny czas Procesora bezpłatne więcej niż 1 minuty.
 * Całkowita liczba oczekujących pamięci jest większa od całkowitej ilości wolnej pamięci ponad 1 minuty.
 
-Firma Microsoft będzie obliczać czy N nowych węzłów procesu roboczego są wymagane do spełnić bieżące wymagania dotyczące procesora CPU i pamięci, a następnie wystawiania skalowania w górę żądania przez zażądanie N nowych węzłach procesów roboczych.
+Firma Microsoft będzie obliczać, ilu nowych węzłów procesu roboczego są wymagane do spełnić bieżące wymagania dotyczące procesora CPU i pamięci, a następnie wystawiania skalowania w górę żądania, który dodaje tę liczbę nowych węzłach procesów roboczych.
 
 ### <a name="cluster-scale-down"></a>Skalowanie klastra w dół
 
@@ -115,7 +119,7 @@ Po wykryciu następujące warunki skalowania automatycznego wystawi skalowania w
 * Całkowita liczba oczekujących procesora CPU jest mniejsza niż łączny czas Procesora bezpłatne przez więcej niż 10 minut.
 * Całkowita liczba oczekujących pamięci jest mniejsza od całkowitej ilości wolnej pamięci na więcej niż 10 minut.
 
-Na podstawie liczby kontenerów AM na węzeł, a także bieżące wymagania dotyczące procesora CPU i pamięci, automatycznego skalowania będzie wystawiać wniosek o usunięcie węzłów N, określając węzły, które są potencjalnymi kandydatami do usunięcia. Domyślnie zostanie usunięty z uwzględnieniem dwóch węzłów w jednym cyklu.
+Na podstawie liczby kontenerów AM na węzeł, a także bieżące wymagania dotyczące procesora CPU i pamięci, automatycznego skalowania będzie wystawiać wniosek o usunięcie niektórych liczbę węzłów, określając węzły, które są potencjalnymi kandydatami do usunięcia. Domyślnie zostanie usunięty z uwzględnieniem dwóch węzłów w jednym cyklu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

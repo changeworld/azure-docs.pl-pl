@@ -3,7 +3,7 @@ title: Użyj zadania obejmujące wiele wystąpień do uruchamiania aplikacji MPI
 description: Dowiedz się, jak wykonać interfejsu przekazywania komunikatów (MPI) applications za pomocą typu zadania obejmujące wiele wystąpień w usłudze Azure Batch.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.date: 06/12/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a443dd7ed4f95b3e283603fa8938a08c2c177827
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: f2c7d6f75b9f2d6932ae3c8de863ad277fea8ffe
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174423"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55460543"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Zadania obejmujące wiele wystąpień umożliwiają uruchamianie aplikacji interfejsu przekazywania komunikatów (MPI) w usłudze Batch
 
@@ -286,7 +286,7 @@ await subtasks.ForEachAsync(async (subtask) =>
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
 3. Wprowadź poświadczenia konta usługi Batch i Storage w `AccountSettings.settings` w **Microsoft.Azure.Batch.Samples.Common** projektu.
 4. **Kompilowanie i uruchamianie** rozwiązania MultiInstanceTasks do wykonania MPI przykładowej aplikacji w węzłach obliczeniowych w puli usługi Batch.
-5. *Opcjonalnie*: Użyj [witryny Azure portal] [ portal] lub [programu Batch Explorer] [ batch_labs] zbadanie przykładową pulę, zadania i zadania (" MultiInstanceSamplePool","MultiInstanceSampleJob","MultiInstanceSampleTask") przed usunięciem zasobów.
+5. *Opcjonalnie*: Użyj [witryny Azure portal] [ portal] lub [programu Batch Explorer] [ batch_labs] zbadanie przykładową pulę, zadania i zadania ("MultiInstanceSamplePool"," MultiInstanceSampleJob","MultiInstanceSampleTask") przed usunięciem zasobów.
 
 > [!TIP]
 > Możesz pobrać [programu Visual Studio Community] [ visual_studio] za darmo, jeśli nie masz programu Visual Studio.

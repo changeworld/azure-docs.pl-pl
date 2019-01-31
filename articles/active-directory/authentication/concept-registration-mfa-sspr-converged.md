@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: fd56d8e0500b80bcce743a8865b6ca90ca8658a6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 4080fe07f6624c96f6385492268042f6401f3694
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080552"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472681"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Osiągnięcia zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication (publiczna wersja zapoznawcza)
 
@@ -74,8 +74,6 @@ Na tej stronie użytkownicy widzą metody uwierzytelniania wcześniej zarejestro
 Dzienniki inspekcji dla tego nowego środowiska istnieje w kategorii metod uwierzytelniania w dzienniku inspekcji.  
 
 ## <a name="known-issues"></a>Znane problemy
-
-Zidentyfikowaliśmy usterkę z rejestracją osiągnięcia zbieżności, gdzie użytkowników-gości B2B, którzy są włączone dla rejestracji konwergentnej nie będą mogli zarejestrować usługi MFA. Kiedy nastąpi przekierowanie do strony rejestracji błędów strony out. Nasi deweloperzy zdawali sobie sprawę z tego problemu i pracujemy nad rozwiązaniem. Na razie zaleca się tworzenie grupy i wykluczyć użytkowników B2B z tej grupy.
 
 **Po użytkownik rejestruje telefonie za pomocą wiadomości SMS, domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiony na połączenie telefoniczne**
 

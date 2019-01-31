@@ -6,14 +6,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 20e869d30f9e7b8102b723870f0102e041e064d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d9bd1bec6d1df6fab634c5d929cb778abbd3d13d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478410"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Partycjonowanie w usłudze Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db---overview"></a>Partycjonowanie w usłudze Azure Cosmos DB — omówienie
 
 Partycjonowanie to technika używana przez usługi Cosmos DB do skalowania poszczególnych kontenerów w bazie danych w celu spełnienia potrzeb dotyczących wydajności aplikacji. Za pomocą partycjonowania, elementy w kontenerze są podzielone na różne podzbiory, o nazwie partycjami logicznymi. Partycje logiczne są tworzone na podstawie wartości właściwości klucza partycji, związane z każdym elementem.
 

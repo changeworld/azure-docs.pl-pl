@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 03e1974a91a8c3cceacab777e28e8e4a01ccb313
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/25/2019
+ms.openlocfilehash: 8449462f144590e4fe7048366a21090c95a303cb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251597"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455596"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrowanie istniejących baz danych do skalowania w poziomie
 Łatwe zarządzanie istniejących skalowanych w poziomie podzielonych na fragmenty baz danych przy użyciu narzędzia graficzne bazy danych Azure SQL Database (takie jak [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)). Najpierw przekonwertuj istniejącego zestawu baz danych do użycia [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md). 
@@ -69,11 +69,11 @@ W przypadku modelu jednej dzierżawy, utworzyć **mapowanie list** mapowania fra
 
 ![Mapowanie list][1]
 
-Modelu wielodostępnym przypisuje kilka dzierżaw w jednej bazie danych (i grup dzierżawców można rozpowszechniać w wielu bazach danych). Jeśli oczekujesz, że każdego dzierżawcy, aby korzystać z danych w małych, należy użyć tego modelu. W tym modelu należy przypisać określonego zakresu dzierżaw, bazę danych za pomocą **mapowania zakresu**. 
+Modelu wielodostępnym przypisuje kilka dzierżaw poszczególnych baz danych (i grup dzierżawców można rozpowszechniać w wielu bazach danych). Jeśli oczekujesz, że każdego dzierżawcy, aby korzystać z danych w małych, należy użyć tego modelu. W tym modelu należy przypisać określonego zakresu dzierżaw, bazę danych za pomocą **mapowania zakresu**. 
 
 ![Mapowanie zakresu][2]
 
-Lub możesz zaimplementować modelu wielodostępną bazą danych przy użyciu *mapowanie list* można przypisać wielu dzierżaw w jednej bazie danych. Na przykład DB1 służy do przechowywania informacji o dzierżawie ID 1 i 5, a bazy danych DB2 przechowuje dane dla dzierżawy 7 i dzierżawy 10. 
+Lub możesz zaimplementować modelu wielodostępną bazą danych przy użyciu *mapowanie list* można przypisać wielu dzierżaw do poszczególnych baz danych. Na przykład DB1 służy do przechowywania informacji o dzierżawie ID 1 i 5, a bazy danych DB2 przechowuje dane dla dzierżawy 7 i dzierżawy 10. 
 
 ![Wielu dzierżaw w pojedynczej bazy danych][3] 
 
@@ -98,7 +98,7 @@ Korzystanie z tego wzorca mapowania, wartości Identyfikatora dzierżawy musi by
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>Opcja 3: Wyświetlić listę mapowań pojedynczej bazy danych
+### <a name="option-3-list-mappings-on-an-individual-database"></a>Opcja 3: Lista mapowań na poszczególnych baz danych
 Konfigurowanie ten wzorzec wymaga również tworzenie mapowania w postaci listy jak pokazano w kroku 2, opcja 1.
 
 ## <a name="step-3-prepare-individual-shards"></a>Krok 3: Przygotowanie poszczególne fragmenty.
@@ -111,7 +111,7 @@ Dodaj każdego fragmentu (baza danych) do Menedżera mapowań fragmentów. Wykon
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>Krok 4. Dodawanie mapowania
+## <a name="step-4-add-mappings"></a>Krok 4: Dodaj mapowanie
 Dodanie mapowań zależy od rodzaju mapy fragmentów, który został utworzony. Jeśli utworzono mapowania w postaci listy, możesz dodać listę mapowań. Jeśli utworzono mapę zakresu, możesz dodać mapowania zakresu.
 
 ### <a name="option-1-map-the-data-for-a-list-mapping"></a>Opcja 1: mapowanie danych dla mapowania list
@@ -138,7 +138,7 @@ Dodaj mapowania zakresu dla wszystkich dzierżawy identyfikator zakresu - skojar
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>Krok 4 — opcja 3: mapowania danych dla wielu dzierżaw w pojedynczej bazy danych
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-an-individual-database"></a>Krok 4 — opcja 3: mapowania danych dla wielu dzierżaw w poszczególnych baz danych
 Dla każdej dzierżawy Uruchom ListMapping Dodaj (opcja 1). 
 
 ## <a name="checking-the-mappings"></a>Sprawdzanie mapowania
@@ -154,11 +154,11 @@ Po zakończeniu instalacji możesz rozpocząć używać biblioteki klienckiej El
 ## <a name="next-steps"></a>Kolejne kroki
 Pobierz skrypty programu PowerShell z [usługi Azure SQL DB Elastic Database narzędzi skryptów](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-Narzędzia są również w witrynie GitHub: [Azure/elastyczne db-tools](https://github.com/Azure/elastic-db-tools).
+Narzędzia są również w witrynie GitHub: [Narzędzia platformy Azure/elastyczne db](https://github.com/Azure/elastic-db-tools).
 
 Narzędzie dzielenia i scalania do przenoszenia danych do lub z modelu wielu dzierżaw do modelu jednej dzierżawy. Zobacz [narzędzie do scalania podziału](sql-database-elastic-scale-get-started.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 Aby uzyskać informacje na temat typowych wzorców architektury danych w aplikacjach baz danych typu oprogramowanie jako usługa (SaaS), zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).
 
 ## <a name="questions-and-feature-requests"></a>Pytania i sugestie funkcji

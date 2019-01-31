@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8ad5b167977059f0749da4221effd427427920e9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 308e5f829425741b4fbef3eff6738f8c95dca97f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040221"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471270"
 ---
-# <a name="azure-cosmos-db-database-encryption-at-rest"></a>Azure Cosmos DB szyfrowania bazy danych w spoczynku
+# <a name="data-encryption-in-azure-cosmos-db"></a>Szyfrowanie danych w usłudze Azure Cosmos DB 
 
 Szyfrowanie w spoczynku jest frazę, która często odnosi się do szyfrowania danych na urządzeniach nieulotnej pamięci masowej, takich jak dyski półprzewodnikowe (SSD) i dysków twardych (HDD). Usługa cosmos DB przechowuje jego podstawowych baz danych na dyskach SSD. Jego załączniki nośników i kopii zapasowych są przechowywane w usłudze Azure Blob storage, zazwyczaj kopia zapasowa jest tworzona dysków twardych. Wraz z wydaniem szyfrowanie danych magazynowanych na potrzeby usługi Cosmos DB wszystkie bazy danych, załączniki nośników i kopii zapasowych są szyfrowane. Dane są teraz szyfrowane podczas przesyłania (za pośrednictwem sieci) i magazynowanych (składnik pamięci nieulotnej), umożliwiając end-to-end szyfrowania.
 
@@ -37,25 +37,25 @@ Podstawowy przepływ żądania użytkownika jest następująca:
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
 ### <a name="q-how-much-more-does-azure-storage-cost-if-storage-service-encryption-is-enabled"></a>PYT.: O ile bardziej kosztuje się usługa Azure Storage, jeśli włączono szyfrowanie usługi Storage?
-ODP.: Nie ma żadnych dodatkowych kosztów.
+Odp.: Nie ma żadnych dodatkowych kosztów.
 
 ### <a name="q-who-manages-the-encryption-keys"></a>PYT.: Kto zarządza kluczami szyfrowania?
-ODP.: Klucze są zarządzane przez firmę Microsoft.
+Odp.: Klucze są zarządzane przez firmę Microsoft.
 
 ### <a name="q-how-often-are-encryption-keys-rotated"></a>PYT.: Jak często są obracane klucze szyfrowania
-ODP.: Firma Microsoft ma zbiór wewnętrzne wytyczne dla wymiany kluczy szyfrowania, który jest zgodny z usługi Cosmos DB. Konkretne wskazówki nie są publikowane. Publikowanie Microsoft [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/default.aspx), który jest widoczny jako część wewnętrzne wskazówki i zawiera przydatne wskazówki dla deweloperów.
+Odp.: Firma Microsoft ma zbiór wewnętrzne wytyczne dla wymiany kluczy szyfrowania, który jest zgodny z usługi Cosmos DB. Konkretne wskazówki nie są publikowane. Publikowanie Microsoft [cykl projektowania zabezpieczeń (SDL)](https://www.microsoft.com/sdl/default.aspx), który jest widoczny jako część wewnętrzne wskazówki i zawiera przydatne wskazówki dla deweloperów.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>PYT.: Można użyć własnych kluczy szyfrowania?
-ODP.: Usługa cosmos DB to usługa PaaS i możemy włożyła wiele wysiłku, zachować usługi jest łatwa w użyciu. Zauważyliśmy, że to pytanie jest często zadawane jako serwer proxy pytanie odnośnie do spełniające wymagania zgodności, takie jak PCI-DSS. W ramach tworzenia tej funkcji wspólnie ze audytorów zgodności, aby upewnić się, że klienci, którzy korzystają z usługi Cosmos DB spełnienie rządowych wymagań dotyczących bez konieczności zarządzania kluczami, samodzielnie.
+Odp.: Usługa cosmos DB to usługa PaaS i możemy włożyła wiele wysiłku, zachować usługi jest łatwa w użyciu. Zauważyliśmy, że to pytanie jest często zadawane jako serwer proxy pytanie odnośnie do spełniające wymagania zgodności, takie jak PCI-DSS. W ramach tworzenia tej funkcji wspólnie ze audytorów zgodności, aby upewnić się, że klienci, którzy korzystają z usługi Cosmos DB spełnienie rządowych wymagań dotyczących bez konieczności zarządzania kluczami, samodzielnie.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>PYT.: Jakie regiony z włączonym szyfrowaniem?
-ODP.: Regiony usługi Azure Cosmos DB z szyfrowania włączone dla wszystkich danych użytkownika.
+Odp.: Regiony usługi Azure Cosmos DB z szyfrowania włączone dla wszystkich danych użytkownika.
 
 ### <a name="q-does-encryption-affect-the-performance-latency-and-throughput-slas"></a>PYT.: Szyfrowanie wpływa na wydajność opóźnienia i przepływności umów SLA?
-ODP.: Nie ma wpływu na lub zmiany wydajności umowy SLA, skoro szyfrowanie w spoczynku jest włączona dla wszystkich istniejących i nowych kont. Więcej informacji o [umowa SLA dla usługi Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) strony, aby zobaczyć najnowsze gwarancji.
+Odp.: Nie ma wpływu na lub zmiany wydajności umowy SLA, skoro szyfrowanie w spoczynku jest włączona dla wszystkich istniejących i nowych kont. Więcej informacji o [umowa SLA dla usługi Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db) strony, aby zobaczyć najnowsze gwarancji.
 
 ### <a name="q-does-the-local-emulator-support-encryption-at-rest"></a>PYT.: Lokalne emulator obsługuje szyfrowanie w spoczynku?
-ODP.: Emulator to autonomiczne narzędzie tworzenia i testowania i nie używa usługi zarządzania kluczami, które używa zarządzanej usługi Cosmos DB. Nasze zalecenie, jest włączenie funkcji BitLocker na dyskach, gdzie będą przechowywane dane testowe poufnych emulatora. [Emulator obsługuje zmiana domyślnego katalogu danych](local-emulator.md) oraz przy użyciu dobrze znanej lokalizacji.
+Odp.: Emulator to autonomiczne narzędzie tworzenia i testowania i nie używa usługi zarządzania kluczami, które używa zarządzanej usługi Cosmos DB. Nasze zalecenie, jest włączenie funkcji BitLocker na dyskach, gdzie będą przechowywane dane testowe poufnych emulatora. [Emulator obsługuje zmiana domyślnego katalogu danych](local-emulator.md) oraz przy użyciu dobrze znanej lokalizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

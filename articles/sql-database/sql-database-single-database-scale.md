@@ -11,13 +11,13 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: a3a4e2c109541effdac01e0c9c03ee91cfdb30bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.date: 01/25/2019
+ms.openlocfilehash: b3ee256072e5c0b5b92daac07eae5b41b194ae8a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812254"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475962"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database
 
@@ -35,7 +35,7 @@ W tym artykule opisano, jak skalować zasoby obliczeniowe i magazynowe, które m
 
 ## <a name="vcore-based-purchasing-model-change-compute-resources"></a>modelu zakupu opartego na rdzeniach wirtualnych: Zasoby obliczeniowe zmiany
 
-Po początkowym wybraniu liczba rdzeni wirtualnych, należy można pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistego użycia za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server), [języka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [programuPowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
+Po początkowym wybraniu liczba rdzeni wirtualnych, należy można pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistego użycia za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [języka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [programuPowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 Zmiana usługi warstwy i/lub obliczyć rozmiar bazy danych powoduje utworzenie repliki oryginalnej bazy danych na nowy rozmiar obliczeń, a następnie przełączenie połączeń do repliki. Podczas tego procesu nie zostaną utracone żadne dane, ale podczas przełączania do repliki połączenia do bazy danych są chwilowo wyłączane, dlatego niektóre bieżące transakcje mogą zostać wycofane. Długość czasu na przejście różni się jednak ogólnie jest mniej niż 30 sekund 99% czasu. W przypadku dużej liczby transakcji w locie w chwili połączenia są wyłączone, długość czasu na przejście może być dłuższy.
 

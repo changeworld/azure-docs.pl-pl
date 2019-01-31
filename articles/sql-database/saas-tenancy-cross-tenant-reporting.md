@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240992"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476251"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Raportowanie przy użyciu międzydzierżawowe rozproszonych zapytań
 
@@ -128,7 +128,7 @@ To ćwiczenie dodaje schematu (zewnętrznego źródła danych i definicje tabeli
 
     ![Tworzenie zewnętrznego źródła danych](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   Tabele zewnętrzne, które odwołują się widoki globalne opisanego w poprzedniej sekcji, a zdefiniowane za pomocą **dystrybucji = SHARDED(VenueId)**. Ponieważ każdy *VenueId* mapy w jednej bazie danych, poprawia to wydajność obsługę wielu scenariuszy, jak pokazano w następnej sekcji.
+   Tabele zewnętrzne, które odwołują się widoki globalne opisanego w poprzedniej sekcji, a zdefiniowane za pomocą **dystrybucji = SHARDED(VenueId)**. Ponieważ każdy *VenueId* mapuje do poszczególnych baz danych, zwiększa to wydajność w wielu scenariuszach, jak pokazano w następnej sekcji.
 
     ![Tworzenie tabel zewnętrznych](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
@@ -148,7 +148,7 @@ Teraz, gdy *adhocreporting* bazy danych jest skonfigurowany, przejdź dalej i ur
 
 Podczas sprawdzania plan wykonywania, umieść kursor nad ikony planu, aby uzyskać szczegółowe informacje. 
 
-Ważne, aby pamiętać, jest to ustawienie **dystrybucji = SHARDED(VenueId)** Jeśli jest zdefiniowana z zewnętrznym źródłem danych zwiększa wydajność w wielu scenariuszach. Ponieważ do każdego *VenueId* mapy w jednej bazie danych, filtrowania można łatwo przeprowadzić zdalnie, zwracając tylko potrzebne dane.
+Ważne, aby pamiętać, jest to ustawienie **dystrybucji = SHARDED(VenueId)** Jeśli jest zdefiniowana z zewnętrznym źródłem danych zwiększa wydajność w wielu scenariuszach. Ponieważ do każdego *VenueId* mapuje do poszczególnych baz danych, filtrowania można łatwo przeprowadzić zdalnie, zwracając tylko potrzebne dane.
 
 1. Otwórz... \\Learning Modules\\Operational Analytics\\raportowania ad hoc\\*AdhocReportingQueries.sql pokaz* w programie SSMS.
 2. Upewnij się, nawiązano **adhocreporting** bazy danych.
@@ -188,7 +188,7 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 
 Wypróbuj teraz [samouczek analitycznych](saas-tenancy-tenant-analytics.md) do eksplorowania wyodrębniania danych do oddzielnej analitycznej bazy danych, aby uzyskać bardziej złożone przetwarzanie analizy.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * Dodatkowe [samouczki nawiązujące aplikacji Wingtip Tickets SaaS bazy danych dla dzierżawy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Elastyczne zapytanie](sql-database-elastic-query-overview.md)

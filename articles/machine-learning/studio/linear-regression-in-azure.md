@@ -1,5 +1,5 @@
 ---
-Tytuł: Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Porównanie modele regresji liniowej w programach Excel i usługi Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Porównanie modele regresji liniowej w programach Excel i usługi Azure Machine Learning Studio: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/20/2017
 ---

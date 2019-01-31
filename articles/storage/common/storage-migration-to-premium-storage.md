@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.component: common
-ms.openlocfilehash: c9e9dd0eab127fcb0deb3085915bd51eeb309089
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: d42183e1db49850afc115fcb5645baf7290cf3c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632844"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477606"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
 
@@ -81,7 +81,7 @@ Wybierz lokalizację, w których usługi Azure Premium Storage jest dostępna. Z
 Podczas tworzenia maszyny Wirtualnej platformy Azure, poprosimy Cię o Konfigurowanie niektórych ustawień maszyny Wirtualnej. Należy pamiętać, że kilka ustawień zostały naprawione dla okresu istnienia maszyny wirtualnej, podczas gdy można zmodyfikować lub dodać inne później. Przejrzyj te ustawienia konfiguracji maszyny Wirtualnej platformy Azure i upewnij się, że te są skonfigurowane odpowiednio do wymagań obciążenia.
 
 ### <a name="optimization"></a>Optymalizacja
-[Usługi Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności](../../virtual-machines/windows/premium-storage-performance.md) zawiera wytyczne dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Możesz wykonać wytycznych w połączeniu z najlepsze rozwiązania w zakresie wydajności mające zastosowanie do technologii wykorzystywanych przez aplikację.
+[Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności](../../virtual-machines/windows/premium-storage-performance.md) zawiera wytyczne dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Możesz wykonać wytycznych w połączeniu z najlepsze rozwiązania w zakresie wydajności mające zastosowanie do technologii wykorzystywanych przez aplikację.
 
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Przygotowywanie, a następnie skopiuj wirtualne dyski twarde (VHD) do usługi Premium Storage
 W poniższej sekcji przedstawiono wskazówki dotyczące przygotowywania wirtualnych dysków twardych na podstawie maszyny Wirtualnej i kopiowanie wirtualnych dysków twardych do usługi Azure Storage.
@@ -765,7 +765,7 @@ Zobacz też następujące zasoby, aby dowiedzieć się więcej na temat usługi 
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Usługa Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../../virtual-machines/windows/premium-storage.md)
+* [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads (Usługa Storage w wersji Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure)](../../virtual-machines/windows/premium-storage.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

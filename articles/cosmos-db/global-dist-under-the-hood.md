@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Cosmos DB globalną dystrybucję - kulisy
+title: Dystrybucji globalnej przy użyciu usługi Azure Cosmos DB — kulisy
 description: Ten artykuł zawiera szczegółowe informacje techniczne dotyczące dystrybucji globalnej usługi Azure Cosmos DB
 author: dharmas-cosmos
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e1c84bb28747cf1799b39c70b6df3dc0cb9f8d78
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 86e4441174fa89fc688fa4e411ead0a7b3ebc8ee
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038946"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475384"
 ---
-# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Usługa Azure Cosmos DB globalną dystrybucję - kulisy
+# <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Rozkład danych globalnych za pomocą usługi Azure Cosmos DB — kulisy
 
 Usługa Azure Cosmos DB to podstawowe usługi platformy Azure, dzięki czemu jest wdrażana we wszystkich regionach platformy Azure na całym świecie, w tym publiczny, suwerennych, Departament Obrony (DoD) i chmury dla instytucji rządowych. W ramach centrum danych, firma Microsoft wdrażanie i zarządzanie Azure Cosmos DB na ogromną sygnaturą czasową maszyny, każdy z dedykowanych dla magazynu lokalnego. W centrum danych usługi Azure Cosmos DB jest wdrażana w wielu klastrach, każdy potencjalnie uruchamianie wielu generacji sprzętu. Maszyny w ramach klastra są rozmieszczone na 10-20 domen błędów. Na poniższej ilustracji przedstawiono topologię systemu dystrybucji globalnej usługi Cosmos DB:
 

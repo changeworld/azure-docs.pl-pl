@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 01/25/2019
+ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052721"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478478"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -83,7 +83,7 @@ Istnieją [dwóch metod uwierzytelniania](sql-database-control-access.md#authent
 - [Uwierzytelnianie usługi Azure Active Directory](sql-database-aad-authentication.md)
 - Uwierzytelnianie SQL
 
-Uwierzytelnianie tradycyjnego systemu windows nie jest obsługiwana. Usługa Azure Active Directory (AD) to scentralizowany Usługa zarządzania tożsamościami i dostępem. Dzięki temu można bardzo łatwo udostępnić pojedynczego logowania jednokrotnego dostępu rejestracji jednokrotnej (SSO) wszystkich pracowników w Twojej organizacji. Oznacza to, że poświadczenia są współużytkowane przez wszystkich usług platformy Azure do uwierzytelniania prostsze. Obsługuje usługi AAD [uwierzytelniania Wieloskładnikowego (uwierzytelniania współczynnik Multi)](sql-database-ssms-mfa-authentication.md) i [kilkoma kliknięciami](../active-directory/hybrid/how-to-connect-install-express.md) AAD można zintegrować z usługą Active Directory systemu Windows Server. Uwierzytelnianie SQL działa dokładnie tak, jak używasz go w przeszłości. Podaj nazwę użytkownika/hasło, i mogą uwierzytelniać użytkowników do dowolnej bazy danych na danym serwerze logicznym. Umożliwia także bazy danych SQL Database i SQL Data Warehouse, która oferuje uwierzytelnianie wieloskładnikowe kont gości i użytkowników w domenie usługi Azure AD. Jeśli masz już usługi Active Directory w środowisku lokalnym, może tworzyć federacje katalogu z usługą Azure Active Directory do rozszerzenia katalogu usługi Azure.
+Uwierzytelnianie tradycyjnego systemu windows nie jest obsługiwana. Usługa Azure Active Directory (AD) to scentralizowany Usługa zarządzania tożsamościami i dostępem. Dzięki temu można bardzo łatwo udostępnić pojedynczego logowania jednokrotnego dostępu rejestracji jednokrotnej (SSO) wszystkich pracowników w Twojej organizacji. Oznacza to, że poświadczenia są współużytkowane przez wszystkich usług platformy Azure do uwierzytelniania prostsze. Obsługuje usługi AAD [uwierzytelniania Wieloskładnikowego (uwierzytelniania współczynnik Multi)](sql-database-ssms-mfa-authentication.md) i [kilkoma kliknięciami](../active-directory/hybrid/how-to-connect-install-express.md) AAD można zintegrować z usługą Active Directory systemu Windows Server. Uwierzytelnianie SQL działa dokładnie tak, jak używasz go w przeszłości. Podaj nazwę użytkownika/hasło, i mogą uwierzytelniać użytkowników do dowolnej bazy danych na danym serwerze bazy danych SQL. Umożliwia także bazy danych SQL Database i SQL Data Warehouse, która oferuje uwierzytelnianie wieloskładnikowe kont gości i użytkowników w domenie usługi Azure AD. Jeśli masz już usługi Active Directory w środowisku lokalnym, może tworzyć federacje katalogu z usługą Azure Active Directory do rozszerzenia katalogu usługi Azure.
 
 |**Jeśli użytkownik...**|**Baza danych SQL / SQL Data Warehouse**|
 |---|---|
@@ -106,7 +106,7 @@ Istnieje kilka technik do dyspozycji, którego można użyć do osiągnięcia or
 
 #### <a name="firewall"></a>Zapora
 
-Zapora uniemożliwia dostęp do serwera z zewnętrznej jednostki, zezwalając tylko określonych jednostek dostęp do serwera logicznego. Domyślnie wszystkie połączenia i baz danych w ramach serwera logicznego jest niedozwolone, z wyjątkiem połączeń z innymi usługami platformy Azure. Za pomocą reguły zapory można otworzyć dostępu do serwera tylko dla jednostek (na przykład maszyny dewelopera), które należy zatwierdzić, zezwalając na adres IP tego komputera przez zaporę. Umożliwia on również określić zakres adresów IP, który chcesz zezwolić na dostęp do serwera logicznego. Na przykład adresy IP maszyn dla deweloperów w Twojej organizacji można dodać tylko raz, określając zakres na stronie ustawień zapory.
+Zapora uniemożliwia dostęp do serwera z zewnętrznej jednostki, zezwalając tylko określonych jednostek dostęp do serwera usługi SQL Database. Domyślnie wszystkie połączenia i bazami danych serwera SQL Database są niedozwolone, z wyjątkiem połączeń z innymi usługami platformy Azure. Za pomocą reguły zapory można otworzyć dostępu do serwera tylko dla jednostek (na przykład maszyny dewelopera), które należy zatwierdzić, zezwalając na adres IP tego komputera przez zaporę. W tym obszarze pozwala także określić zakres adresów IP, który chcesz zezwolić na dostęp do serwera bazy danych SQL. Na przykład adresy IP maszyn dla deweloperów w Twojej organizacji można dodać tylko raz, określając zakres na stronie ustawień zapory.
 
 Można utworzyć reguły zapory na poziomie serwera lub na poziomie bazy danych. Albo można utworzyć reguły zapory na poziomie serwera przy użyciu usługi Azure portal lub za pomocą programu SSMS. Aby uzyskać więcej informacji na temat sposobu konfigurowania serwera oraz reguły zapory na poziomie bazy danych, zobacz: [Tworzenie reguł zapory w bazie danych SQL](sql-database-security-tutorial.md#create-firewall-rules).
 
@@ -240,7 +240,7 @@ W usłudze SQL Database można skorzystać z inteligentnego szczegółowe inform
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Witryny Azure portal pokazuje wykorzystanie pojedynczej bazy danych, wybierając bazę danych, a następnie klikając na wykresie w okienku przeglądu. Można zmodyfikować wykres, aby wyświetlić wiele metryk, takich jak procent użycia procesora CPU, procentowa wartość jednostki DTU, procent we/wy danych, procent sesji i jako procent rozmiaru bazy danych.
+Witryny Azure portal pokazuje wykorzystanie bazy danych, wybierając bazę danych, a następnie klikając na wykresie w okienku przeglądu. Można zmodyfikować wykres, aby wyświetlić wiele metryk, takich jak procent użycia procesora CPU, procentowa wartość jednostki DTU, procent we/wy danych, procent sesji i jako procent rozmiaru bazy danych.
 
 ![Wykres monitorowania](./media/sql-database-manage-after-migration/monitoring-chart.png)
 

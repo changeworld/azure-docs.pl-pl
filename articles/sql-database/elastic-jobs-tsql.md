@@ -11,13 +11,13 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: e00722259abaa02d3dce6ca26c8cd0ea7c42db29
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: bb7908c5ed72bf58f1bd8920983d76cb674286a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449405"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458095"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 
@@ -75,9 +75,9 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 ```
 
 
-## <a name="exclude-a-single-database"></a>Wyklucz pojedynczej bazy danych
+## <a name="exclude-an-individual-database"></a>Wyklucz poszczególnych baz danych
 
-Poniższy przykład przedstawia sposób wykonania zadania dla wszystkich baz danych na serwerze, z wyjątkiem bazy danych o nazwie *MappingDB*.  
+Poniższy przykład przedstawia sposób wykonania zadania dla wszystkich baz danych na serwerze bazy danych SQL, z wyjątkiem bazy danych o nazwie *MappingDB*.  
 Połączyć się z [ *bazy danych zadania* ](sql-database-job-automation-overview.md#job-database) i uruchom następujące polecenie:
 
 ```sql
@@ -103,7 +103,7 @@ EXEC [jobs].sp_add_target_group_member
 @server_name='server2.database.windows.net'
 GO
 
---Excude a database target member from the server target group
+--Exclude a database target member from the server target group
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @membership_type = N'Exclude',
@@ -1032,10 +1032,10 @@ Określa, jeśli docelowy element członkowski grupy zostaną dołączone lub wy
 Typ docelowej bazy danych lub kolekcji baz danych w tym wszystkich baz danych na serwerze, wszystkie bazy danych w puli elastycznej, wszystkie bazy danych w mapowania fragmentów w postaci lub poszczególnych baz danych. target_type — jest nvarchar(128) bez wartości domyślnej. Prawidłowe wartości dla target_type — są 'SqlServer', "SqlElasticPool", "Baza danych SQL" lub "SqlShardMap". 
 
 [  **@refresh_credential_name =** ] "refresh_credential_name"  
-Nazwa serwera logicznego. refresh_credential_name jest nvarchar(128) bez wartości domyślnej.
+Nazwa serwera bazy danych SQL. refresh_credential_name jest nvarchar(128) bez wartości domyślnej.
 
 [  **@server_name =** ] "nazwa_serwera"  
-Nazwa serwera logicznego, która powinna być dodana do określoną grupę docelową. nazwa_serwera powinna być określona, gdy target_type — jest "SqlServer". nazwa_serwera jest nvarchar(128) bez wartości domyślnej.
+Nazwa serwera bazy danych SQL, która powinna być dodana do określoną grupę docelową. nazwa_serwera powinna być określona, gdy target_type — jest "SqlServer". nazwa_serwera jest nvarchar(128) bez wartości domyślnej.
 
 [  **@database_name =** ] "database_name"  
 Nazwa bazy danych, która powinna być dodana do określoną grupę docelową. należy określić database_name po target_type — "Baza danych SQL". database_name jest nvarchar(128) bez wartości domyślnej.
@@ -1051,7 +1051,7 @@ Numer identyfikacyjny docelowego, które są przypisane do członka grupy docelo
 Wartości zwracane kod 0 (Powodzenie) lub 1 (niepowodzenie)
 
 #### <a name="remarks"></a>Uwagi
-Dla wszystkich baz danych w ramach serwera wykonuje zadania lub puli elastycznej w czasie wykonywania, gdy serwer logiczny lub puli elastycznej jest uwzględniona w grupie docelowej.
+Dla wszystkich pojedynczych baz danych w ramach serwera usługi SQL Database lub w puli elastycznej wykonuje zadania w czasie wykonywania, gdy serwer bazy danych SQL lub puli elastycznej jest uwzględniona w grupie docelowej.
 
 #### <a name="permissions"></a>Uprawnienia
 Domyślnie członkowie stałej roli serwera sysadmin mogą wykonać tę procedurę składowaną. Mogą ograniczyć użytkownikowi tylko można monitorować zadania, można przyznać użytkownikowi należeć następującej roli bazy danych w bazie danych agenta zadań, które zostały określone podczas tworzenia zadania agenta:
@@ -1229,7 +1229,7 @@ Pokazano zadań historii wykonywania.
 |**target_type**|   nvarchar(128)   |Typ docelowej bazy danych lub kolekcji baz danych, uwzględniający wszystkie bazy danych w serwera i wszystkich baz danych w puli elastycznej bazy danych. Prawidłowe wartości dla target_type — to 'SqlServer', "SqlElasticPool" lub "Baza danych SQL". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**target_id**  |uniqueidentifier|  Unikatowy identyfikator elementu członkowskiego grupy docelowej.  Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**target_group_name**  |nvarchar(128)  |Nazwa grupy docelowej. Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
-|**target_server_name**|    nvarchar(256)|  Nazwa serwera logicznego znajdujących się w grupie docelowej. Tylko należy określić, czy target_type — "SqlServer". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
+|**target_server_name**|    nvarchar(256)|  Nazwa serwera bazy danych SQL, znajdujących się w grupie docelowej. Tylko należy określić, czy target_type — "SqlServer". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 |**target_database_name**   |nvarchar(128)| Nazwa bazy danych znajdujących się w grupie docelowej. Określona, tylko wtedy, gdy target_type — jest "Baza danych SQL". Wartość NULL oznacza, że jest to wykonywania zadania nadrzędnego.
 
 
@@ -1253,7 +1253,7 @@ Pokazuje wszystkie zadania.
 
 ### <a name="jobversions-view"></a>Widok job_versions
 
-[zadania]. [job_verions]
+[zadania]. [job_versions]
 
 Przedstawia wszystkie wersje zadania.
 
@@ -1332,7 +1332,7 @@ Przedstawia wszystkie elementy członkowskie wszystkich grup docelowych.
 |**refresh_credential_name**    |nvarchar(128)  |Nazwa bazy danych o określonym zakresie poświadczenia używane do łączenia z członka grupy docelowej.|
 |**subscription_id**    |uniqueidentifier|  Unikatowy identyfikator subskrypcji.|
 |**resource_group_name**    |nvarchar(128)| Nazwa grupy zasobów, w której znajduje się docelowy element członkowski grupy.|
-|**nazwa_serwera**    |nvarchar(128)  |Nazwa serwera logicznego znajdujących się w grupie docelowej. Tylko należy określić, czy target_type — "SqlServer". |
+|**nazwa_serwera**    |nvarchar(128)  |Nazwa serwera bazy danych SQL, znajdujących się w grupie docelowej. Tylko należy określić, czy target_type — "SqlServer". |
 |**database_name**  |nvarchar(128)  |Nazwa bazy danych znajdujących się w grupie docelowej. Określona, tylko wtedy, gdy target_type — jest "Baza danych SQL".|
 |**elastic_pool_name**  |nvarchar(128)| Nazwa puli elastycznej, znajdujących się w grupie docelowej. Określona, tylko wtedy, gdy target_type — jest "SqlElasticPool".|
 |**shard_map_name** |nvarchar(128)| Nazwa mapy fragmentów znajdujących się w grupie docelowej. Określona, tylko wtedy, gdy target_type — jest "SqlShardMap".|

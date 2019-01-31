@@ -6,16 +6,16 @@ author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: d861e1d4cd891e1f1e1be3209ae4dfdbf4420165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4a45d00559a84c178ab760acf8616f97ce7bb57c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718303"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466289"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Najlepsze rozwiązania dotyczące dostępu do danych w usłudze Azure SQL Data Warehouse przy użyciu zapytania elastycznego usługi Azure SQL Database
 Poznaj najlepsze rozwiązania dotyczące przy użyciu zapytania elastycznego dostępu do danych w usłudze Azure SQL Data Warehouse z usługi Azure SQL Database. 
@@ -61,7 +61,7 @@ Użyj tych najlepszych rozwiązań skutecznie użycie elastycznego zapytania.
 ### <a name="general"></a>Ogólne
 
 - Podczas korzystania z zapytania zdalnego wykonania, upewnij się, jest tylko wybranie wymaganych kolumn i stosowanie filtrów prawo. Nie tylko jest to zwiększenie niezbędne zasoby obliczeniowe, ale też zwiększa rozmiar zestawu wyników, i w związku z tym ilość danych, które mają zostać przeniesione między dwoma wystąpieniami.
-- Obsługa danych w celach analitycznych do bazy danych SQL Database i SQL Data Warehouse w klastrowanego magazynu kolumn dla analytiIcal wydajności.
+- Obsługa danych w celach analitycznych do bazy danych SQL Database i SQL Data Warehouse w klastrowanego magazynu kolumn dla wydajności przetwarzania.
 - Upewnij się, że tabel źródłowych są podzielone na partycje w przypadku przenoszenia zapytań i danych.
 - Upewnij się, używane jako pamięci podręcznej wystąpienia bazy danych SQL są podzielone na partycje umożliwia bardziej szczegółową aktualizacje i łatwiejsze zarządzanie. 
 - Najlepiej używać PremiumRS baz danych, ponieważ zapewniają one analitycznych korzyści wynikające z klastrowanego magazynu kolumn, indeksowanie, ze szczególnym uwzględnieniem obciążeń intensywnie korzystających z operacji We/Wy w obniżonej cenie z bazy danych Premium.
@@ -125,29 +125,29 @@ Korzystanie z usługi Azure SQL bazy danych, gdy:
 
 ## <a name="faq"></a>Często zadawane pytania
 
-P: czy mogę używać baz danych w puli elastycznej przy użyciu zapytania elastycznego?
+PYT.: W ramach puli elastycznej przy użyciu zapytania elastycznego można używać baz danych?
 
-Odp. Tak. Bazy danych SQL w ramach puli elastycznej za pomocą elastycznych kwerendy. 
+Odp.: Tak. Bazy danych SQL w ramach puli elastycznej za pomocą elastycznych kwerendy. 
 
-P: czy istnieje limit liczby baz danych można używać dla zapytania elastyczne?
+PYT.: Czy istnieje limit liczby baz danych można używać dla zapytania elastyczne?
 
-Odp.: nie jest brak twardych limit liczby baz danych może służyć do zapytań elastycznych. Jednak każde zapytanie elastyczne (zapytania, które trafień SQL Data Warehouse) będą przekładać limitów współbieżności normalny.
+Odp.: Nie jest brak twardych limit liczby baz danych może służyć do zapytań elastycznych. Jednak każde zapytanie elastyczne (zapytania, które trafień SQL Data Warehouse) będą przekładać limitów współbieżności normalny.
 
-P: czy istnieją limity liczby jednostek DTU związane z elastycznego zapytania?
+PYT.: Istnieją limity liczby jednostek DTU związane z zapytanie elastyczne?
 
-A: limity liczby jednostek DTU nie są nakładane na dowolny inny sposób przy użyciu zapytania elastycznego. Standardowa zasada jest taka, że serwerami logicznymi mają limity liczby jednostek DTU w miejscu, aby zapobiec przypadkowemu przekraczają założeń budżetowych klientów. Jeśli włączasz kilka baz danych dla zapytania elastycznego wraz z wystąpieniem programu SQL Data Warehouse można napotkać zakończenie nieoczekiwanie. W takiej sytuacji należy przesłać żądanie, aby zwiększyć limit liczby jednostek DTU na serwerze logicznym. Możesz zwiększyć limit przydziału przez [utworzeniem biletu pomocy technicznej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i wybierając polecenie *przydziału* jako typ żądania
+Odp.: Limity liczby jednostek DTU są nakładane na dowolny inny sposób przy użyciu zapytania elastycznego. Standardowa zasada jest taka, że serwerami logicznymi mają limity liczby jednostek DTU w miejscu, aby zapobiec przypadkowemu przekraczają założeń budżetowych klientów. Jeśli włączasz kilka baz danych dla zapytania elastycznego wraz z wystąpieniem programu SQL Data Warehouse można napotkać zakończenie nieoczekiwanie. W takiej sytuacji należy przesłać żądanie, aby zwiększyć limit liczby jednostek DTU na serwerze logicznym. Możesz zwiększyć limit przydziału przez [utworzeniem biletu pomocy technicznej](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) i wybierając polecenie *przydziału* jako typ żądania
 
-P: czy mogę używać wiersza poziomu zabezpieczeń/dynamiczne dane maskowanie przy użyciu zapytania elastycznego?
+PYT.: Można użyć wiersza poziomu zabezpieczeń/dynamiczne dane maskowanie przy użyciu zapytania elastycznego?
 
-Odp.: klientów, którzy chcą korzystać z bardziej zaawansowane funkcje zabezpieczeń w usłudze SQL Database to zrobić pierwszy przenosząc i przechowywanie danych w bazie danych SQL. Nie można obecnie stosować zabezpieczenia na poziomie wiersza lub DDM, na danych pobieranych za pośrednictwem tabel zewnętrznych. 
+Odp.: Klienci, którzy chcą korzystać z bardziej zaawansowane funkcje zabezpieczeń w usłudze SQL Database to zrobić pierwszy przenosząc i przechowywanie danych w bazie danych SQL. Nie można obecnie stosować zabezpieczenia na poziomie wiersza lub DDM, na danych pobieranych za pośrednictwem tabel zewnętrznych. 
 
-P: czy można napisać z Moje wystąpienia bazy danych SQL do wystąpienia usługi data warehouse?
+PYT.: Można napisać z Moje wystąpienia bazy danych SQL do wystąpienia usługi data warehouse?
 
-Odp.: obecnie ta funkcja nie jest obsługiwana. Odwiedź nasze [strona opinii o] [ Feedback page] do tworzenia/głosu dla tej funkcji, jeśli jest to funkcja ma się pojawić w przyszłości. 
+Odp.: Obecnie ta funkcja nie jest obsługiwana. Odwiedź nasze [strona opinii o] [ Feedback page] do tworzenia/głosu dla tej funkcji, jeśli jest to funkcja ma się pojawić w przyszłości. 
 
-P: czy można używać typów przestrzennych, takie jak Geometria/lokalizacji geograficznej?
+PYT.: Czy można używać typów przestrzennych, takie jak Geometria/lokalizacji geograficznej?
 
-Odp.: można przechowywać typów przestrzennych w usłudze SQL Data Warehouse jako wartości varbinary(max). Kiedy wykonujesz zapytanie o tych kolumn przy użyciu zapytania elastycznego, należy przekonwertować je na odpowiednich typów w czasie wykonywania.
+Odp.: Typów przestrzennych można przechowywać w usłudze SQL Data Warehouse jako wartości varbinary(max). Kiedy wykonujesz zapytanie o tych kolumn przy użyciu zapytania elastycznego, należy przekonwertować je na odpowiednich typów w czasie wykonywania.
 
 ![typów przestrzennych](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 

@@ -3,7 +3,7 @@ title: Jak używać niestandardowego NuGet kanału informacyjnego w usłudze Azu
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: johnsta
 ms.author: johnsta
 ms.date: 05/11/2018
@@ -11,12 +11,12 @@ ms.topic: article
 description: Za pomocą NuGet niestandardowego źródła danych do uzyskiwania dostępu i korzystania z pakietów NuGet przestrzeni deweloperów platformy Azure.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
 manager: ghogen
-ms.openlocfilehash: 04b89f6d12c58e2f4915a84d3e0a7988d0e3192f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 21a70100fe186e176dfe8eb7c247d83a5d4705bd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579219"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466408"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Użyj niestandardowych NuGet kanału informacyjnego przestrzeni deweloperów platformy Azure
 

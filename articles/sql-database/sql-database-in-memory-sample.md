@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 51cf04509608435117e0368b25952a58f7fc3557
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a394c0dff74ec5f926356a3d700c5bbba4c0e4f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609667"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478291"
 ---
 # <a name="in-memory-sample"></a>Przykładowe w pamięci
 
@@ -41,7 +41,7 @@ Można utworzyć przykładowej bazy danych AdventureWorksLT za pomocą kilku kli
 
 Aby uzyskać bardziej uproszczony, ale bardziej atrakcyjne wizualnie demonstrację wydajności OLTP w pamięci Zobacz:
 
-- Wersja: [w — pamięci — oltp-demo-wersja 1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
+- Release: [in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
 - Kod źródłowy: [in-memory-oltp-demo-source-code](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/in-memory/ticket-reservations)
 
 #### <a name="installation-steps"></a>Kroki instalacji
@@ -55,7 +55,7 @@ Aby uzyskać bardziej uproszczony, ale bardziej atrakcyjne wizualnie demonstracj
 4. Wklej skryptu T-SQL w programie SSMS, a następnie uruchom skrypt. `MEMORY_OPTIMIZED = ON` Instrukcji CREATE TABLE klauzuli są niezwykle istotne. Na przykład:
 
 
-```
+```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
     [SalesOrderID] int IDENTITY NOT NULL PRIMARY KEY NONCLUSTERED ...,
     ...
@@ -69,7 +69,7 @@ CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
 Jeśli wystąpi błąd 40536 po uruchomieniu skryptu T-SQL, uruchom następujący skrypt języka T-SQL, aby sprawdzić, czy baza danych obsługuje w pamięci:
 
 
-```
+```sql
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
@@ -94,7 +94,7 @@ Można sprawdzić tabele zoptymalizowane pod kątem pamięci, za pośrednictwem 
 Lub możesz zbadać widoków katalogów, takich jak:
 
 
-```
+```sql
 SELECT is_memory_optimized, name, type_desc, durability_desc
     FROM sys.tables
     WHERE is_memory_optimized = 1;
@@ -104,7 +104,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
 **Skompilowane w sposób macierzysty procedura składowana**: SalesLT.usp_InsertSalesOrder_inmem można sprawdzić za pomocą widoku wykazu kwerendy:
 
 
-```
+```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
     FROM sys.sql_modules
     WHERE uses_native_compilation = 1;
@@ -145,7 +145,7 @@ Poniższy skrypt wstawia przykładowe zamówienie sprzedaży z pięcioma element
 - SalesLT.SalesOrderDetail_inmem
 
 
-```
+```sql
 DECLARE
     @i int = 0,
     @od SalesLT.SalesOrderDetailType_inmem,
@@ -244,7 +244,7 @@ Po utworzeniu wynik *_inmem* uruchamiania, wykonaj następujące kroki, aby uzys
 
 
 1. Resetuj bazy danych, uruchamiając następujące polecenie w programie SSMS umożliwia usunięcie wszystkich danych, który został wstawiony przez poprzedniego uruchomienia:
-```
+```sql
 EXECUTE Demo.usp_DemoReset;
 ```
 
@@ -315,7 +315,7 @@ Klastrowany indeks magazynu kolumn jest FactResellerSalesXL\_tabeli z indeksem C
 Poniższy fragment skryptu T-SQL wyświetla statystyki dla operacji We/Wy i czasu dla zapytania w każdej tabeli.
 
 
-```
+```sql
 /*********************************************************************
 Step 2 -- Overview
 -- Page Compressed BTree table v/s Columnstore table performance differences

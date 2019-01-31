@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 2bb3665f0d0ab15f212741a6ce032fcd7ac2620d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7cc8e46c841b6e385d1a3b442fdb63d465486af8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358117"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477730"
 ---
-# <a name="ip-firewall-for-azure-cosmos-accounts"></a>Zapory adresów IP dla konta usługi Azure Cosmos
+# <a name="ip-firewall-in-azure-cosmos-db"></a>Zapory adresów IP w usłudze Azure Cosmos DB
 
 Aby zabezpieczyć dane przechowywane na koncie, Azure Cosmos DB obsługuje modelu autoryzacji na podstawie klucza tajnego, który korzysta z silną bazujących na skrótach komunikatów uwierzytelniania kodu (HMAC). Ponadto usługa Azure Cosmos DB obsługuje kontroli dostępu opartych na protokole IP obsługę zapory dla ruchu przychodzącego. Ten model jest podobne do reguł zapory systemu tradycyjnych baz danych i zapewnia dodatkowy poziom zabezpieczeń do Twojego konta. Za pomocą zapory można skonfigurować swoje konto usługi Azure Cosmos, aby były dostępne tylko z zatwierdzonego zestawu maszyn i/lub usług w chmurze. Dostęp do danych przechowywanych w bazie danych Azure Cosmos z tych zestawów zatwierdzonych maszyn i usługi nadal będzie wymagać obiekt wywołujący, aby przedstawić prawidłowy token autoryzacji.
 

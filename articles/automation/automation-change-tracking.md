@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/04/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c2ea1e28ebbc6859db135b743d579d3c632133
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901143"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301445"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -62,7 +62,7 @@ Aby rozpocząć śledzenie zmian, należy włączyć rozwiązanie śledzenia zmi
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurowanie śledzenia zmian i spisu
 
-Aby dowiedzieć się, jak do dołączania komputerów do rozwiązania można znaleźć: [Automatyzacji dołączania rozwiązań](automation-onboard-solutions-from-automation-account.md). Po utworzeniu dołączania maszyny, za pomocą rozwiązania śledzenia zmian i spisu można skonfigurować elementy do śledzenia. Po włączeniu nowy plik lub klucz rejestru, aby śledzić włączono śledzenie zmian i spisu.
+Aby dowiedzieć się, jak do dołączania komputerów do rozwiązania można znaleźć: [Automatyzacji dołączania rozwiązań](automation-onboard-solutions-from-automation-account.md). Po utworzeniu dołączania maszyny, za pomocą rozwiązania śledzenia zmian i spisu, można skonfigurować elementy do śledzenia. Po włączeniu nowy plik lub klucz rejestru, aby śledzić włączono śledzenie zmian i spisu.
 
 Aby śledzić zmiany w plikach w systemach Windows i Linux, skróty MD5 plików są używane. Te skróty są następnie używane do wykrywania, jeśli wprowadzono zmiany od ostatniej inwentaryzacji.
 
@@ -83,7 +83,7 @@ Poniższe kroki umożliwiają konfigurowanie śledzenia plików na komputerach z
 |Typ ścieżki     | Typ elementu ma być monitorowany; możliwe wartości to plików i katalogów.        |
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
-|Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie obejmuje pliki/katalogi, do których odwołuje się.<br>**Postępuj zgodnie z** — śledzi linki symboliczne podczas rekursji i zawiera również pliki/katalogi, do których odwołuje się.<br>**Zarządzanie** — śledzi linki symboliczne i umożliwia zmienianie zwracanej zawartości.     |
+|Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których odwołuje się.<br>**Postępuj zgodnie z** — śledzi linki symboliczne podczas rekursji i zawiera również pliki/katalogi, do których odwołuje się.<br>**Zarządzanie** — śledzi linki symboliczne i umożliwia zmienianie zwracanej zawartości.     |
 |Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Aby skonfigurować plików śledzenia na komputerach z Windows, wykonaj następu
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Ustawienia symboli wieloznacznych, rekursji i środowiska
 
-Rekursja można określić symbole wieloznaczne ułatwiają śledzenie katalogów i zmiennych środowiskowych, które umożliwiają śledzenie plików w środowiskach z wieloma lub dynamicznych dysków nazwy. Oto lista typowych informacji, które należy wiedzieć podczas konfigurowania rekursji:
+Rekursja można określić symbole wieloznaczne ułatwiają śledzenie katalogów i zmiennych środowiskowych, które umożliwiają śledzenie plików w środowiskach z wieloma lub dynamicznych dysków nazwy. Na poniższej liście przedstawiono typowe informacje, które należy wiedzieć podczas konfigurowania rekursji:
 
 * Symbole wieloznaczne są wymagane do śledzenia wielu plików
 * Jeśli przy użyciu symboli wieloznacznych, ich można używać tylko w ostatnim segmencie ścieżki. (np. C:\folder\\**pliku** lub /etc/*.conf)
@@ -154,7 +154,7 @@ Pozostałe ograniczenia:
 
 Rozwiązanie Change Tracking jest obecnie następujące problemy:
 
-* Poprawki, aktualizacje nie są zbierane dla systemu Windows 10 Creators Update i Windows Server 2016 Core RS3 maszyny.
+* Poprawki, aktualizacje nie są zbierane na komputerach z systemem Windows Server 2016 Core RS3.
 
 ## <a name="change-tracking-data-collection-details"></a>Zmiana szczegółów kolekcji danych śledzenia
 
@@ -176,18 +176,18 @@ W poniższej tabeli przedstawiono limity elementu śledzonych dla poszczególnyc
 |---|---|---|
 |Plik|500||
 |Rejestr|250||
-|Oprogramowanie Windows|250|Nie ma aktualizacji oprogramowania|
+|Oprogramowanie Windows|250|Nie zawiera aktualizacji oprogramowania|
 |Pakiety systemu Linux|1250||
 |Usługi|250||
 |Demon|250||
 
 ### <a name="windows-service-tracking"></a>Śledzenie usługi Windows
 
-Domyślna częstotliwość zbierania dla usług Windows to 30 minut. Aby skonfigurować częstotliwość przejdź do **Change Tracking**. W obszarze **edytowanie ustawień** na **usług Windows** karcie znajduje się suwak, który pozwala zmienić częstotliwość zbierania dla usług Windows z tak szybko, jak 10 sekund na tak długo, jak 30 minut. Przesuń suwak częstotliwości, który ma i go automatycznie zapisuje.
+Domyślna częstotliwość zbierania dla usług Windows to 30 minut. Aby skonfigurować częstotliwość, przejdź do **Change Tracking**. W obszarze **edytowanie ustawień** na **usług Windows** karcie znajduje się suwak, który pozwala zmienić częstotliwość zbierania dla usług Windows z tak szybko, jak 10 sekund na tak długo, jak 30 minut. Przesuń suwak częstotliwości, który ma i go automatycznie zapisuje.
 
 ![Suwak usług Windows](./media/automation-change-tracking/windowservices.png)
 
-Agent tylko śledzi zmiany, powoduje to zoptymalizowanie wydajności agenta. Przez ustawienie zbyt wysoki próg zmiany mogą zostać pominięci, jeśli usługa przywrócony oryginalny stan. Ustawienie częstotliwości mniejszej wartości pozwala przechwytywać zmiany, które mogą zostać pominięci w przeciwnym razie.
+Agent tylko śledzi zmiany, powoduje to zoptymalizowanie wydajności agenta. Ustawienia wysokiej wartości progowej może brakować zmian, jeśli usługa przywrócony oryginalny stan. Ustawienie częstotliwości mniejszej wartości pozwala przechwytywać zmiany, które mogą zostać pominięci w przeciwnym razie.
 
 > [!NOTE]
 > Gdy agent może śledzenie zmian w dół do 10 Drugi interwał, dane nadal zajmuje kilka minut, które mają być wyświetlane w portalu. Zmiany w czasie, aby wyświetlić w portalu nadal są śledzone i rejestrowane.
@@ -269,6 +269,41 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla zmiany rekord
 |---------|---------|
 |ConfigurationData<br>&#124;gdzie ConfigDataType == "WindowsServices" i SvcStartupType == "Auto"<br>&#124;gdzie SvcState == "Zatrzymana"<br>&#124;Podsumowanie arg_max(TimeGenerated, *) według typu SoftwareName, komputer         | Pokazuje ostatnich rekordów spisu dla usług Windows, które zostały ustawione na Auto, ale zostały zgłoszone jako zatrzymania<br>Wyniki są ograniczone do ostatnich rekord dla tego typu SoftwareName i Computer      |
 |ConfigurationChange<br>&#124;gdzie ConfigChangeType == "Oprogramowanie" i ChangeCategory == "Usunięte"<br>&#124;kolejność według malejącej TimeGenerated|Pokazuje rekordy zmian oprogramowania usunięto|
+
+## <a name="alert-on-changes"></a>Alert po wystąpieniu zmian
+
+To kluczowa możliwość śledzenia zmian i spisu jest możliwość alert po wystąpieniu stanu konfiguracji i wszelkie zmiany w stan konfiguracji w środowisku hybrydowym.  
+
+W poniższym przykładzie zrzut ekranu pokazuje, że plik `C:\windows\system32\drivers\etc\hosts` został zmodyfikowany na maszynie. Ten plik jest ważne, ponieważ w pliku Hosts jest używany przez Windows, do rozpoznawania nazw hostów IP adresów, a nawet DNS, który może powodować problemy z łącznością lub przekierowywanie ruchu do złośliwych lub w przeciwnym razie niebezpiecznych witryn sieci Web ma pierwszeństwo przed.
+
+![Wykres przedstawiający hosty zmian plików](./media/automation-change-tracking/changes.png)
+
+W celu analizy dalsze tę zmianę, przejdź do wyszukiwania w dziennikach od kliknięcia **usługi Log Analytics**. Raz podczas wyszukiwania dziennika Wyszukaj zmiany zawartości w pliku Hosts z zapytaniem `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. To zapytanie wyszukuje zmiany, które uwzględnione zmiany zawartości pliku dla plików, których w pełni kwalifikowana ścieżka zawiera wyraz "hosts". Możesz również poprosić określonych plików, zmieniając jego w pełni kwalifikowany składnik path (takie jak `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+
+Po zapytanie zwraca zakładanych wyników, kliknij przycisk **Nowa reguła alertu** przycisku środowisko wyszukiwania dziennika, aby otworzyć stronę tworzenia alertu. Można również przejściu do tego środowiska za pomocą **usługi Azure Monitor** w witrynie Azure portal. W środowisku tworzenia alertu Sprawdź ponownie zapytanie i zmodyfikuj alert Logic Apps. W tym przypadku chcesz alert, aby zostać wyzwolony, jeśli nie nastąpiła zmiana nawet wykryte na wszystkich maszynach w środowisku.
+
+![Obraz przedstawiający zapytania zmiany, śledzić zmiany w pliku hosts](./media/automation-change-tracking/change-query.png)
+
+Przypisywanie grup akcji do wykonania akcji w odpowiedzi na alert jest wyzwalany, po ustawieniu logiki warunkowej. W tym przypadku masz skonfigurować wiadomości e-mail do wysłania i bilet ITSM ma zostać utworzony.  Wielu innych czynności przydatne może być również uwzględniony, takie jak wyzwolenie funkcji platformy Azure, element runbook usługi Automation, element Webhook lub aplikację logiki.
+
+![Obraz konfigurowania grupy akcji alert w przypadku zmiany](./media/automation-change-tracking/action-groups.png)
+
+Po ustawieniu wszystkich parametrów oraz Logic Apps możemy zastosować alertu do środowiska.
+
+### <a name="alert-suggestions"></a>Sugestie dotyczące alertów
+
+Alerty na temat zmian w pliku Hosts jest jeden z dobrą aplikacją alertów dla danych śledzenia zmian i spisu, istnieje wiele scenariuszy więcej alertów, w tym przypadku zdefiniowany wraz z ich przykładowych zapytań w dalszej części tego artykułu.
+
+|Zapytanie  |Opis  |
+|---------|---------|
+|ConfigurationChange <br>&#124;gdzie ConfigChangeType == "Pliki" i FileSystemPath zawiera "c:\\windows\\system32\\sterowniki\\"|Przydatne do śledzenia zmian krytycznych plików systemowych|
+|ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|Używane do śledzenia zmian w plikach konfiguracji klucza|
+|ConfigurationChange <br>&#124; where ConfigChangeType == "WindowsServices" and SvcName contains "w3svc" and SvcState == "Stopped"|Przydatne do śledzenia zmian systemu krytycznych usług|
+|ConfigurationChange <br>&#124;gdzie ConfigChangeType == "Demonów" i SvcName zawiera "ssh" oraz SvcState! = "Uruchomiona"|Przydatne do śledzenia zmian systemu krytycznych usług|
+|ConfigurationChange <br>&#124;gdzie ConfigChangeType == "Oprogramowanie" i ChangeCategory == "Dodaje"|Przydatne w przypadku środowisk wymagających zablokowana konfiguracji oprogramowania|
+|ConfigurationData <br>&#124;gdy SoftwareName zawiera "Monitoring Agent" i CurrentVersion! = "8.0.11081.0"|Przydatne przy przeglądaniu, które maszyny mają zainstalowaną wersję oprogramowania nieaktualne lub braku zgodności. Ostatni stan konfiguracji zgłoszone, zmiany nie wysyła raporty.|
+|ConfigurationChange <br>&#124;gdzie element RegistryKey == "HKEY_LOCAL_MACHINE\\oprogramowania\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Przydatne do śledzenia zmian do ważnych kluczy oprogramowanie antywirusowe|
+|ConfigurationChange <br>&#124;gdy zawiera element RegistryKey "HKEY_LOCAL_MACHINE\\systemu\\CurrentControlSet\\usług\\SharedAccess\\parametry\\FirewallPolicy"| Przydatne do śledzenia zmian w ustawieniach zapory|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

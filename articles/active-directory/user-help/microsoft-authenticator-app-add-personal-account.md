@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 7eada7015af86b774d75709379804e3fa1a96d5b
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: d3fa60dedb3d8319e80eebf5d29ea1defa509bdb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904784"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468550"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>Dodawanie osobistych kont Microsoft
 Dodaj osobistych kont Microsoft, takich jak Outlook.com, i Xbox LIVE w aplikacji Microsoft Authenticator dla procesu standardowa two-Factor Authentication weryfikacji i metodę logowania bez hasła telefonu.

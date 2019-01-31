@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.component: common
-ms.openlocfilehash: e451fd2c2dad5c411d0a8faa8e9c044648759001
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: common
+ms.openlocfilehash: 6b40741545ff286bc1b8e696d28c61b197605247
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121740"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474007"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -471,12 +471,12 @@ Jeśli Twoja aplikacja kliencka jest zgłaszania błędów HTTP 403 (zabronione)
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab-… |Trwa uruchamianie operacji z lokalizacji podstawowej dla trybu lokalizacji PrimaryOnly. |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Uruchamianie synchroniczne żądanie https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp; sr = c&amp;si = mypolicy&amp;sig = 2BmcR6zbudIH2F5Ikm % 2FyhNYZEmJNQ OFnd4Rd7z01fIvh % 3D&amp;parametru api-version = 2014-02-14. |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Oczekiwanie na odpowiedź. |
-| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (403) zabroniony. |
+| Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Wyjątek podczas oczekiwania na odpowiedź: Serwer zdalny zwrócił błąd: (403) Zabronione. |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Odebrano odpowiedź. Kod stanu 403, identyfikator żądania = = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, zawartość MD5 = element ETag =. |
 | Microsoft.WindowsAzure.Storage |Ostrzeżenie |2 |85d077ab -… |Zgłoszono wyjątek podczas operacji: Serwer zdalny zwrócił błąd: (403) zabroniony... |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Sprawdzanie, jeśli należy wykonać ponownie operację. Liczba ponownych prób = 0, kod stanu HTTP 403 i wyjątek = = Serwer zdalny zwrócił błąd: (403) zabroniony... |
 | Microsoft.WindowsAzure.Storage |Informacje |3 |85d077ab -… |Ustawiono podstawowego, w oparciu o trybu lokalizacji w następnej lokalizacji. |
-| Microsoft.WindowsAzure.Storage |Błąd |1 |85d077ab -… |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: (403) zabroniony. |
+| Microsoft.WindowsAzure.Storage |Błąd |1 |85d077ab -… |Zasady ponawiania nie zezwolił na potrzeby ponawiania. Niepowodzenie z serwera zdalnego zwróciło błąd: (403) Zabronione. |
 
 W tym scenariuszu należy zbadać, dlaczego tokenu sygnatury dostępu Współdzielonego wygaśnie, zanim klient wysyła ten token do serwera:
 

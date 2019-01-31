@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531559"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473769"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Cross-Origin Resource Sharing (CORS) obsługę usług Azure Storage
 Począwszy od wersji 2013-08-15, usług Azure storage obsługuje udostępniania zasobów między źródłami (CORS) dla usług obiektów Blob, tabela, kolejka i pliku. CORS to funkcja protokołu HTTP, który umożliwia aplikacji sieci web uruchomionej w jednej domenie dostęp do zasobów w innej domenie. Przeglądarki sieci Web wdrażają ograniczenie bezpieczeństwa nazywane [zasadami tego samego źródła](http://www.w3.org/Security/wiki/Same_Origin_Policy) która zapobiega wywoływaniu interfejsów API w innej domenie; strony sieci web Mechanizm CORS zapewnia bezpieczną metodę umożliwiania jednej domenie (domenie źródłowej) wywoływania interfejsów API z innej domeny. Zobacz [specyfikacji CORS](http://www.w3.org/TR/cors/) szczegółowe informacje na mechanizmu CORS.
@@ -67,11 +67,11 @@ Oto przykład jednej reguły CORS określona za pomocą operacji ustawiania wła
 
 Poniżej opisano każdy element do reguły CORS:
 
-* **AllowedOrigins**: domeny pochodzenia, które są dozwolone, aby utworzyć żądanie względem usługi storage przy użyciu mechanizmu CORS. Domena pochodzenia jest domeny, z której pochodzi żądanie. Należy pamiętać, że punkt początkowy musi być uwzględniana wielkość liter dokładnych źródło, które wieku użytkownika wysyła do usługi. Można również użyć znaku wieloznacznego "*" Aby zezwolić na wszystkie domeny pochodzenia żądań za pośrednictwem mechanizmu CORS. W przykładzie powyżej domen [ http://www.contoso.com ](http://www.contoso.com) i [ http://www.fabrikam.com ](http://www.fabrikam.com) mogą wysyłać żądania usługi przy użyciu mechanizmu CORS.
-* **AllowedMethods**: metody (polecenia żądań protokołu HTTP), które domena pochodzenia może używać do żądania CORS. W powyższym przykładzie są dozwolone tylko żądania PUT i GET.
-* **AllowedHeaders**: nagłówki żądania, które określić domenę pochodzenia dla żądania CORS. W powyższym przykładzie są dozwolone wszystkie nagłówki metadanych, począwszy od x-ms-meta-data, x-ms-meta-target i x-ms-meta-abc. Należy pamiętać, że symbol wieloznaczny "*" wskazuje, czy jest dozwolone dowolnego nagłówka rozpoczynający się od określonego prefiksu.
-* **ExposedHeaders**: nagłówki odpowiedzi, które mogą być wysyłany w odpowiedzi na żądanie CORS i ujawniane wydawcy żądania. W powyższym przykładzie przeglądarki jest zobowiązany do udostępnienia dowolnego nagłówka rozpoczynający się od x-ms-meta.
-* **Atrybut MaxAgeInSeconds**: maksymalną ilość czasu przeglądarki powinien buforowania przez opcje wstępnego żądania.
+* **AllowedOrigins**: Domeny pochodzenia, które są dozwolone, aby utworzyć żądanie względem usługi storage przy użyciu mechanizmu CORS. Domena pochodzenia jest domeny, z której pochodzi żądanie. Należy pamiętać, że punkt początkowy musi być uwzględniana wielkość liter dokładnych źródło, które wieku użytkownika wysyła do usługi. Można również użyć znaku wieloznacznego "*" Aby zezwolić na wszystkie domeny pochodzenia żądań za pośrednictwem mechanizmu CORS. W przykładzie powyżej domen [ http://www.contoso.com ](http://www.contoso.com) i [ http://www.fabrikam.com ](http://www.fabrikam.com) mogą wysyłać żądania usługi przy użyciu mechanizmu CORS.
+* **AllowedMethods**: Metody (polecenia żądań protokołu HTTP), które domena pochodzenia może używać do żądania CORS. W powyższym przykładzie są dozwolone tylko żądania PUT i GET.
+* **AllowedHeaders**: Nagłówki żądania, które określić domenę pochodzenia dla żądania CORS. W powyższym przykładzie są dozwolone wszystkie nagłówki metadanych, począwszy od x-ms-meta-data, x-ms-meta-target i x-ms-meta-abc. Należy pamiętać, że symbol wieloznaczny "*" wskazuje, czy jest dozwolone dowolnego nagłówka rozpoczynający się od określonego prefiksu.
+* **ExposedHeaders**: Nagłówki odpowiedzi, które mogą być wysyłany w odpowiedzi na żądanie CORS i ujawniane wydawcy żądania. W powyższym przykładzie przeglądarki jest zobowiązany do udostępnienia dowolnego nagłówka rozpoczynający się od x-ms-meta.
+* **MaxAgeInSeconds**: Maksymalny czas że przeglądarki powinien buforować żądania wstępnego OPTIONS.
 
 Do usług Azure storage obsługuje określanie nagłówki z prefiksami dla obu **AllowedHeaders** i **ExposedHeaders** elementów. Aby zezwolić na kategorię nagłówków, można określić Wspólny prefiks do tej kategorii. Na przykład określenie *x-ms-meta** zgodnie z prefiksem nagłówka ustanawia regułę, która będzie odpowiadała wszystkie nagłówki, które zaczynają się od x-ms-meta.
 
@@ -129,7 +129,7 @@ Następnie należy wziąć pod uwagę następujące żądania CORS:
 
 | Żądanie |  |  | Odpowiedź |  |
 | --- | --- | --- | --- | --- |
-| **— Metoda** |**Origin** |**Nagłówki żądania** |**Rule Match** |**wynik** |
+| **Metoda** |**Origin** |**Nagłówki żądania** |**Rule Match** |**wynik** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |Pierwsza reguła |Powodzenie |
 | **GET** |http://www.contoso.com |x-ms-blob-content-type |Druga reguła |Powodzenie |
 | **GET** |http://www.contoso.com |x-ms-client-request-id |Druga reguła |Niepowodzenie |

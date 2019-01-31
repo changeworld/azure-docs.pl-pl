@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6684cc9a0166df9c6d230f6b2a8c05acec5f91b3
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6a52907fa6c0e2483479031fbb3d1ad68a121d95
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136765"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475562"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Zadania dla poszczególnych współautora w procesie nauki o danych zespołu
 
@@ -37,15 +37,15 @@ Aby uzyskać instrukcje na temat sposobu wykonywania projektu nauki o danych, w 
 
 Ten samouczek używa skrócone nazwy dla repozytoriów i katalogów. Nazwy te ułatwiają wykonaj operacje między repozytoria i katalogi. Ten zapis (**R** dla repozytoriów Git i **D** dla katalogi lokalne na maszyny wirtualnej DSVM) jest używany w następujących sekcjach:
 
-- **R2**: GroupUtilities repozytorium w usłudze Git, który Menedżer grupy został skonfigurowany na serwerze grupy DevOps platformy Azure.
-- **R4**: TeamUtilities repozytorium w usłudze Git, który skonfigurował Twoje lider zespołu.
-- **R5**: repozytorium projektu w usłudze Git, który został skonfigurowany przez użytkownika kierownika projektu.
-- **D2**: katalog lokalny sklonować z R2.
-- **D4**: katalog lokalny sklonować z R4.
-- **D5**: katalog lokalny sklonować z R5.
+- **R2**: Repozytorium GroupUtilities w usłudze Git, który Menedżer grupy został skonfigurowany na serwerze grupy DevOps platformy Azure.
+- **R4**: Repozytorium TeamUtilities w usłudze Git, który skonfigurował Twoje lider zespołu.
+- **R5**: Repozytorium projektu w usłudze Git, który został skonfigurowany przez użytkownika kierownika projektu.
+- **D2**: Sklonowany katalog lokalny z R2.
+- **D4**: Sklonowany katalog lokalny z R4.
+- **D5**: Sklonowany katalog lokalny z R5.
 
 
-## <a name="step-0-prerequisites"></a>Krok-0: wymagania wstępne
+## <a name="step-0-prerequisites"></a>Step-0: Wymagania wstępne
 
 Wymagania wstępne są spełnione, wykonując zadania przydzielone do swojego przełożonego grupy opisane w temacie [menedżera grupy zadań dla zespołu do nauki o danych](group-manager-tasks.md). Aby podsumować zapotrzebowanie w tym miejscu, następujące wymagania muszą zostać spełnione przed przystąpieniem do wykonywania zadań kierownik zespołu: 
 - Menedżer grupy został skonfigurowany **GroupUtilities** repozytorium (jeśli istnieje). 
@@ -60,7 +60,7 @@ Druga Strona, **TeamUtilities** repozytorium, wymagań wstępnych jest opcjonaln
 - Jeśli używasz **Linux maszyny wirtualnej DSVM**, utworzyć klucz publiczny SSH na maszyny wirtualnej DSVM i dodać go do grupy usług DevOps platformy Azure. Aby uzyskać więcej informacji na temat protokołu SSH, zobacz **utworzyć publiczny klucz SSH** sekcji [dodatku platformami i narzędziami](platforms-and-tools.md#appendix). 
 - Jeśli potencjalny klient projekt i/lub zespół utworzył niektóre usługi Azure file storage, który chcesz zainstalować maszyny wirtualnej DSVM, należy uzyskać informacje o magazynu plików platformy Azure z nich. 
 
-## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>Krok 1-3: klonowanie repozytoriów projektu na komputerze lokalnym, zespołu i grupy
+## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>Krok 1-3: Grupa klonów, zespół i repozytoria projektu na komputerze lokalnym
 
 Ta sekcja zawiera instrukcje dotyczące kończenia zadań pierwszych trzech poszczególnych uczestników projektu: 
 

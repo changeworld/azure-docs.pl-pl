@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 457b9668efd0c2857fcf3dde56ec4ef06738ef8b
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 2c07e6a007d8bc5ea283727f5e58a1c8583177f1
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904812"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478104"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ręcznie dodaj konto do aplikacji
 Jeśli aparat fotograficzny nie może przechwytywać kod QR, można ręcznie dodawać informacje o Twoim koncie do aplikacji Microsoft Authenticator podczas weryfikacji two-Factor Authentication. Działa to w przypadku pracy lub kont służbowych i osobistych kont innych niż Microsoft.

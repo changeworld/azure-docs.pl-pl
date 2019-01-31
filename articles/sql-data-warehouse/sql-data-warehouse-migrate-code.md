@@ -6,16 +6,16 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f16f9448da2dab9670908f74935bb5fb31a0547
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: f36ee3ce6a8d678cdd846474576fc049df0b4f88
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301375"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472307"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrowanie kodu SQL w usłudze SQL Data Warehouse
 W tym artykule opisano zmiany kodu, które mają być upewnij się, migrując kodu z innej bazy danych SQL Data Warehouse. Niektóre funkcje SQL Data Warehouse może znacznie poprawić wydajność, ponieważ są one przeznaczone do pracy w sposób rozproszonych. Jednak aby zachować wydajność i skalę, niektóre funkcje są również dostępne.
@@ -28,7 +28,7 @@ Poniższa lista zawiera podsumowanie najbardziej typowych funkcji, które nie ob
 * [Instrukcja merge][merge statement]
 * sprzężeń między bazami danych
 * [Kursory][cursors]
-* [WSTAW... EXEC][INSERT..EXEC]
+* [INSERT..EXEC][INSERT..EXEC]
 * klauzuli OUTPUT
 * wbudowane funkcje zdefiniowane przez użytkownika
 * wieloinstrukcyjnych funkcji

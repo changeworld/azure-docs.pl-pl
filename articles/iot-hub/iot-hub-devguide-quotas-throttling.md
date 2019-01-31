@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 23dbc8d935e46fc4fb12257f360371d4cc61235a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d75a2cef96eaafb606c66d469b0e27fed8bb3573
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827384"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466816"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Odwołanie — IoT Hub przydziałów i dławienia
 
@@ -85,7 +85,7 @@ Usługa IoT Hub wymusza inne limity operacyjne:
 <sup>1</sup>ta funkcja nie jest dostępne w warstwie podstawowa usługi IoT Hub. Aby uzyskać więcej informacji, zobacz [jak wybrać we właściwym Centrum IoT](iot-hub-scaling.md).
 
 > [!NOTE]
-> Obecnie maksymalna liczba urządzeń, którymi można nawiązać połączenie w jednym centrum IoT to 500 000. Jeśli chcesz zwiększyć ten limit, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
+> Obecnie maksymalna liczba urządzeń, którymi można nawiązać połączenie w jednym centrum IoT jest 1 000 000. Jeśli chcesz zwiększyć ten limit, skontaktuj się z [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="latency"></a>Opóźnienie
 Usługi IoT Hub dokłada starań, aby zapewnić małe opóźnienia dla wszystkich operacji. Jednak ze względu na warunki sieciowe i inne czynniki nieprzewidziany nie może zagwarantować maksymalny czas oczekiwania. Podczas projektowania rozwiązania, należy:

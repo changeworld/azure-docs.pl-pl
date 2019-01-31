@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: vinagara
-ms.component: alerts
-ms.openlocfilehash: 8e123705443c44373734a81936459a56bbb259cc
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.subservice: alerts
+ms.openlocfilehash: e4e935a9c78950517623acdf8196d51793fff18a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55106005"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462464"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Przełącz preferencji interfejsu API dla dziennika alertów
 

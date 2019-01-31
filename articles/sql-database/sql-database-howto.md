@@ -3,7 +3,7 @@ title: Jak skonfigurować usługi Azure SQL Database | Dokumentacja firmy Micros
 description: Dowiedz się, jak skonfigurować i zarządzać usługi Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: howto
@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 12/14/2018
-ms.openlocfilehash: b4dd21324591075d7625a82fbbb661c4a8e84b1d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 01/25/2019
+ms.openlocfilehash: f63f929f21d4df06e409784e2ccab611e951a1bc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53440506"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477713"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Jak używać usługi Azure SQL Database
 
@@ -25,75 +25,76 @@ W tej sekcji można znaleźć różne przewodniki, skrypty i wyjaśnieniami, kt�
 
 ## <a name="load-data"></a>Ładowanie danych
 
-- [Skopiuj pojedynczej bazy danych w obrębie platformy Azure](https://docs.microsoft.com/azure/sql-database/sql-database-copy)
-- [Importowanie bazy danych z pliku BACPAC](https://docs.microsoft.com/azure/sql-database/sql-database-import)
-- [Eksportowanie bazy danych do pliku BACPAC](https://docs.microsoft.com/azure/sql-database/sql-database-export)
-- [Ładowanie danych za pomocą narzędzia BCP](https://docs.microsoft.com/azure/sql-database/sql-database-load-from-csv-with-bcp)
-- [Load data with ADF](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database?toc=/azure/sql-database/toc.json) (Ładowanie danych za pomocą usługi ADF)
+- [Kopiowanie pojedynczej bazy danych lub baza danych w puli w obrębie platformy Azure](sql-database-copy.md)
+- [Importowanie bazy danych z pliku BACPAC](sql-database-import.md)
+- [Eksportowanie bazy danych do pliku BACPAC](sql-database-export.md)
+- [Ładowanie danych za pomocą narzędzia BCP](sql-database-load-from-csv-with-bcp.md)
+- [Load data with ADF](../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json) (Ładowanie danych za pomocą usługi ADF)
 
 ### <a name="data-sync"></a>Synchronizacja danych
 
-- [SQL Data Sync](https://docs.microsoft.com/azure/sql-database/sql-database-sync-data)
-- [Agent synchronizacji danych](https://docs.microsoft.com/azure/sql-database/sql-database-data-sync-agent)
-- [Replikowanie zmian schematu](https://docs.microsoft.com/azure/sql-database/sql-database-update-sync-schema)
-- [Monitorowanie za pomocą pakietu OMS](https://docs.microsoft.com/azure/sql-database/sql-database-sync-monitor-oms)
-- [Najlepsze rozwiązania dotyczące synchronizacji danych](https://docs.microsoft.com/azure/sql-database/sql-database-best-practices-data-sync)
-- [Rozwiązywanie problemów z synchronizacji danych](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-data-sync)
+- [SQL Data Sync](sql-database-sync-data.md)
+- [Agent synchronizacji danych](sql-database-data-sync-agent.md)
+- [Replikowanie zmian schematu](sql-database-update-sync-schema.md)
+- [Monitorowanie za pomocą pakietu OMS](sql-database-sync-monitor-oms.md)
+- [Najlepsze rozwiązania dotyczące synchronizacji danych](sql-database-best-practices-data-sync.md)
+- [Rozwiązywanie problemów z synchronizacji danych](sql-database-troubleshoot-data-sync.md)
 
 ## <a name="monitoring-and-tuning"></a>Monitorowanie i dostrajanie
 
--  [Ręczne dostrajanie](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)
-- [Korzystanie z widoków DMV do monitorowania wydajności](https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-with-dmvs)
-- [Korzystanie z magazynu zapytań do monitorowania wydajności](https://docs.microsoft.com/azure/sql-database/sql-database-operate-query-store)
-- [Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance)
-- [Użyj dziennik diagnostyczny Intelligent Insights](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-use-diagnostics-log)
-- [Monitorowanie miejsca OLTP w pamięci](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring)
+- [Ręczne dostrajanie](sql-database-performance-guidance.md)
+- [Korzystanie z widoków DMV do monitorowania wydajności](sql-database-monitoring-with-dmvs.md)
+- [Korzystanie z magazynu zapytań do monitorowania wydajności](sql-database-operate-query-store.md)
+- [Rozwiązywanie problemów z wydajnością dzięki inteligentnej analizie](sql-database-intelligent-insights-troubleshoot-performance.md)
+- [Użyj dziennik diagnostyczny Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md)
+- [Monitorowanie miejsca OLTP w pamięci](sql-database-in-memory-oltp-monitoring.md)
 
 ### <a name="extended-events"></a>Zdarzenia rozszerzone
 
-- [Zdarzenia rozszerzone](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr)
-- [Store zdarzeń rozszerzonych do pliku zdarzenia](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-code-event-file)
-- [Store zdarzeń rozszerzonych do bufor cykliczny](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-code-ring-buffer)
+- [Zdarzenia rozszerzone](sql-database-xevent-db-diff-from-svr.md)
+- [Store zdarzeń rozszerzonych do pliku zdarzenia](sql-database-xevent-code-event-file.md)
+- [Store zdarzeń rozszerzonych do bufor cykliczny](sql-database-xevent-code-ring-buffer.md)
 
 ## <a name="configure-features"></a>Konfigurowanie funkcji
 
-- [Konfigurowanie uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
-- [Konfigurowanie dostępu warunkowego](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
-- [Uwierzytelnianie wieloskładnikowe dla usługi AAD](https://docs.microsoft.com/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [Konfigurowanie uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/azure/sql-database/sql-database-ssms-mfa-authentication-configure)
-- [Skonfiguruj zasady przechowywania danych czasowych](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables-retention-policy)
-- [Konfigurowanie funkcji TDE przy użyciu funkcji BYOK](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql-configure)
-- [Obróć klucze TDE BYOK](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql-key-rotation)
-- [Usuwanie ochrony TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql-remove-tde-protector)
-- [Konfigurowanie przetwarzania OLTP w pamięci](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-migration)
-- [Konfigurowanie usługi Azure Automation](https://docs.microsoft.com/azure/sql-database/sql-database-manage-automation)
+- [Konfigurowanie uwierzytelniania usługi Azure AD](sql-database-aad-authentication-configure.md)
+- [Konfigurowanie dostępu warunkowego](sql-database-conditional-access.md)
+- [Uwierzytelnianie wieloskładnikowe dla usługi AAD](sql-database-ssms-mfa-authentication.md)
+- [Konfigurowanie uwierzytelniania wieloskładnikowego](sql-database-ssms-mfa-authentication-configure.md)
+- [Skonfiguruj zasady przechowywania danych czasowych](sql-database-temporal-tables-retention-policy.md)
+- [Konfigurowanie funkcji TDE przy użyciu funkcji BYOK](transparent-data-encryption-byok-azure-sql-configure.md)
+- [Obróć klucze TDE BYOK](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- [Usuwanie ochrony TDE](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
+- [Konfigurowanie przetwarzania OLTP w pamięci](sql-database-in-memory-oltp-migration.md)
+- [Konfigurowanie usługi Azure Automation](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>Tworzenie aplikacji
 
-- [Łączność](https://docs.microsoft.com/azure/sql-database/sql-database-libraries)
-- [Korzystanie z łącznika Spark](https://docs.microsoft.com/azure/sql-database/sql-database-spark-connector)
-- [Uwierzytelnianie aplikacji](https://docs.microsoft.com/azure/sql-database/sql-database-client-id-keys)
-- [Komunikaty o błędach](https://docs.microsoft.com/azure/sql-database/sql-database-develop-error-messages)
-- [Użyj, przetwarzanie wsadowe w celu zapewnienia lepszej wydajności](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance)
-- [Wskazówki dotyczące łączności](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)
-- [Aliasy DNS](https://docs.microsoft.com/azure/sql-database/dns-alias-overview)
-- [Konfiguracja DNS alias programu PowerShell](https://docs.microsoft.com/azure/sql-database/dns-alias-powershell)
-- [Ports - ADO.NET](https://docs.microsoft.com/azure/sql-database/sql-database-develop-direct-route-ports-adonet-v12) (Porty — ADO.NET)
-- [C i C++](https://docs.microsoft.com/azure/sql-database/sql-database-develop-cplusplus-simple)
-- [Excel](https://docs.microsoft.com/azure/sql-database/sql-database-connect-excel)
+- [Łączność](sql-database-libraries.md)
+- [Korzystanie z łącznika Spark](sql-database-spark-connector.md)
+- [Uwierzytelnianie aplikacji](sql-database-client-id-keys.md)
+- [Komunikaty o błędach](sql-database-develop-error-messages.md)
+- [Użyj, przetwarzanie wsadowe w celu zapewnienia lepszej wydajności](sql-database-use-batching-to-improve-performance.md)
+- [Wskazówki dotyczące łączności](sql-database-connectivity-issues.md)
+- [Aliasy DNS](dns-alias-overview.md)
+- [Konfiguracja DNS alias programu PowerShell](dns-alias-powershell.md)
+- [Ports - ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md) (Porty — ADO.NET)
+- [C i C++](sql-database-develop-cplusplus-simple.md)
+- [Excel](sql-database-connect-excel.md)
 
 ## <a name="design-applications"></a>Projektowanie aplikacji
 
-- [Projektowanie pod kątem odzyskiwania po awarii](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery)
-- [Projektowanie pod kątem pul elastycznych](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool)
-- [Projektowanie pod kątem uaktualnienia aplikacji](https://docs.microsoft.com/azure/sql-database/sql-database-manage-application-rolling-upgrade)
+- [Projektowanie po kątem odzyskiwania po awarii](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [Projektowanie pod kątem pul elastycznych](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+- [Projektowanie pod kątem uaktualnienia aplikacji](sql-database-manage-application-rolling-upgrade.md)
 
 ### <a name="design-multi-tenant-saas-applications"></a>Projektowanie wielodostępnych aplikacji SaaS
 
-- [Wzorce projektowe SaaS](https://docs.microsoft.com/azure/sql-database/saas-tenancy-app-design-patterns)
-- [Indeksator wideo SaaS](https://docs.microsoft.com/azure/sql-database/saas-tenancy-video-index-wingtip-brk3120-20171011)
-- [Zabezpieczenia aplikacji SaaS](https://docs.microsoft.com/azure/sql-database/saas-tenancy-elastic-tools-multi-tenant-row-level-security)
+- [Wzorce projektowe SaaS](saas-tenancy-app-design-patterns.md)
+- [Indeksator wideo SaaS](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
+- [Zabezpieczenia aplikacji SaaS](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [instrukcje przeprowadza w wystąpieniu zarządzanym](sql-database-howto-managed-instance.md).
-- Dowiedz się więcej o [instrukcje przeprowadza w pojedynczej bazy danych](sql-database-howto-single-database.md).
+
+- Dowiedz się więcej o [instrukcje przewodników dotyczących zarządzanych wystąpień przez](sql-database-howto-managed-instance.md).
+- Dowiedz się więcej o [instrukcje prowadzi dla pojedynczych baz danych](sql-database-howto-single-database.md).

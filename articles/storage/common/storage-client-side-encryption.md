@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 857ab3ad9870407b91b0fdc9c552a89fd1f4ccd4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.subservice: common
+ms.openlocfilehash: 2f646df3cab0320b574023cd543015921c640cab
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140523"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478325"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta i usługi Azure Key Vault dla usługi Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -60,7 +60,7 @@ Podczas szyfrowania biblioteki klienta wygeneruje losowy inicjowania wektora (IV
 > 
 > 
 
-Pobieranie obiektu blob zaszyfrowanego polega na pobraniu zawartości całego obiektu blob przy użyciu **DownloadTo** / **BlobReadStream**\* wygodne metody. Opakowana CEK jest nieopakowanych i używany razem z IV (przechowywanych jako metadane obiektu blob w tym przypadku), aby zwrócić odszyfrowane dane do użytkowników.
+Pobieranie obiektu blob zaszyfrowanego polega na pobraniu zawartości całego obiektu blob przy użyciu **DownloadTo *** /** BlobReadStream ** wygodne metody. Opakowana CEK jest nieopakowanych i używany razem z IV (przechowywanych jako metadane obiektu blob w tym przypadku), aby zwrócić odszyfrowane dane do użytkowników.
 
 Pobranie dowolnego zakresu (**DownloadRange*** metody) w obiekcie blob zaszyfrowanego obejmuje, dostosowując zakres dostarczone przez użytkowników w celu uzyskania niewielką ilość dodatkowych danych, które można pomyślnie odszyfrować żądany zakres.
 
@@ -241,7 +241,7 @@ Jak wspomniano powyżej, jeśli jednostka implementuje TableEntity, następnie w
 Należy pamiętać, że szyfrowanie usługi magazynu danych spowoduje zmniejszenie wydajności. Klucz zawartości i IV musi zostać wygenerowany samej zawartości, które muszą być szyfrowane i musi być sformatowany i przekazać dodatkowe metadane. Ten narzut różnią się zależnie od ilości danych, są szyfrowane. Firma Microsoft zaleca, aby klienci zawsze testują wydajności podczas tworzenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Samouczek: Szyfrowanie i odszyfrowywanie obiektów blob w magazynie platformy Microsoft za pomocą usługi Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* [Samouczek: Szyfrowanie i odszyfrowywanie obiektów blob w Microsoft Azure Storage przy użyciu usługi Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * Pobierz [biblioteki klienta usługi Azure Storage dla pakietu NuGet programu .NET](https://www.nuget.org/packages/WindowsAzure.Storage)
 * Pobierz NuGet magazynu usługi Azure Key [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [klienta](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/), i [rozszerzenia](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) pakietów  
 * Odwiedź stronę [dokumentacji usługi Azure Key Vault](../../key-vault/key-vault-whatis.md)

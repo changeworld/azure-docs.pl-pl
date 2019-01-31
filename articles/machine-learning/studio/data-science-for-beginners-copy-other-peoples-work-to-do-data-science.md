@@ -1,6 +1,6 @@
 ---
-Tytuł: Skopiuj innych danych do analizy przykłady titleSuffix: Opis usługi Azure Machine Learning Studio: "Tajemnice handlowe do nauki o danych: Uzyskaj innych do pracy za Ciebie. Pobieranie przykładów uczenia maszynowego w galerii sztucznej Inteligencji platformy Azure. "
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Skopiuj innych danych do analizy przykłady titleSuffix: Opis usługi Azure Machine Learning Studio: "Tajemnice handlowe do nauki o danych: Uzyskaj innych do pracy za Ciebie. Pobieranie przykładów uczenia maszynowego w galerii sztucznej Inteligencji platformy Azure. "
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/05/2018
 ---

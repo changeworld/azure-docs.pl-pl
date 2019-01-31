@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: eff6859dda771bfc2ca2e709578983b6113c6057
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.date: 01/25/2019
+ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227490"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471202"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS baza danych dzierżawy wzorców
 
@@ -33,8 +33,8 @@ Poinformowanie płacenia nadrzędne, każda dzierżawa uzyskuje dostęp do skła
 
 Termin *modelu dzierżawy* odwołuje się do organizowania dzierżawców przechowywanych danych:
 
-- *Dzierżawy pojedynczego:* &nbsp; każda baza danych przechowuje dane z tylko jedną dzierżawą.
-- *Wielodostępność:* &nbsp; każda baza danych przechowuje dane z wielu oddzielnych dzierżaw (z mechanizmy ochrony prywatności danych).
+- *Jednym dzierżawy:*&nbsp; Każda baza danych przechowuje dane z tylko jedną dzierżawą.
+- *Wielodostępność:*&nbsp; Każda baza danych przechowuje dane z wielu oddzielnych dzierżaw (z mechanizmy ochrony prywatności danych).
 - Dostępne są również modele dzierżawy hybrydowej.
 
 ## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Jak wybrać model odpowiednich dzierżawców
@@ -47,9 +47,9 @@ Ogólnie rzecz biorąc model dzierżawy nie ma wpływu na funkcji aplikacji, ale
     - Magazyn w agregacji.
     - Obciążenie.
 
-- **Odizolowania dzierżawców:** &nbsp; izolację danych i wydajności (czy obciążenie jednej dzierżawy ma wpływ na inne osoby).
+- **Izolacja dzierżawy:**&nbsp; Izolacja danych i wydajności (czy obciążenie jednej dzierżawy ma wpływ na inne osoby).
 
-- **Koszt dzierżawy:** &nbsp; bazy danych kosztów.
+- **Koszt dla dzierżawcy:**&nbsp; Koszty bazy danych.
 
 - **Złożoność programowania:**
     - Zmiany schematu.
@@ -61,7 +61,7 @@ Ogólnie rzecz biorąc model dzierżawy nie ma wpływu na funkcji aplikacji, ale
     - Przywracanie dzierżawy.
     - Odzyskiwanie sprawności systemu po awarii.
 
-- **Dostosowywalności:** &nbsp; łatwość obsługi dostosowania schematu, które są specyficzne dla dzierżawy lub swoiste dla klas dzierżawy.
+- **Dostosowywalności:**&nbsp; Łatwość obsługi dostosowania schematu, które są specyficzne dla dzierżawy lub swoiste dla klas dzierżawy.
 
 Omówienie dzierżawy koncentruje się na *danych* warstwy.  Jednak należy wziąć pod uwagę na chwilę *aplikacji* warstwy.  Warstwa aplikacji jest traktowane jako monolityczny jednostki.  Jeśli dzielisz aplikacji na wiele małych składników wybranych przez siebie model dzierżawy mogą ulec zmianie.  Niektóre składniki można traktować inaczej niż inne, zarówno dzierżawy, jak i technologii magazynowania lub platforma używana.
 
@@ -95,7 +95,7 @@ Z bazy danych dla dzierżawcy Dostosowywanie schematu dla co najmniej jednego dz
 
 #### <a name="elastic-pools"></a>Pule elastyczne
 
-Bazy danych są wdrażane w tej samej grupie zasobów, mogą być grupowane w pulach elastycznych baz danych.  Pule oferują ekonomiczny sposób udostępniania zasobów między bazami danych.  Ta opcja puli jest tańsze niż wymaganie każdej bazy danych do być wystarczająco duży, aby obsłużyć szczytowe użycie, które napotyka go.  Mimo że bazy danych współużytkują dostęp do zasobów można nadal osiągnąć wysokiego stopnia izolacji wydajności.
+Bazy danych są wdrażane w tej samej grupie zasobów, mogą być grupowane w pulach elastycznych.  Pule oferują ekonomiczny sposób udostępniania zasobów między bazami danych.  Ta opcja puli jest tańsze niż wymaganie każdej bazy danych do być wystarczająco duży, aby obsłużyć szczytowe użycie, które napotyka go.  Mimo że bazy danych współużytkują dostęp do zasobów można nadal osiągnąć wysokiego stopnia izolacji wydajności.
 
 ![Projekt aplikacji wielodostępnej za pomocą bazy danych — dla dzierżawcy, używając puli elastycznej.][image-mt-app-db-per-tenant-pool-153p]
 
@@ -126,9 +126,9 @@ Inny wzorzec dostępne jest przechowywanie wielu dzierżaw w wielodostępnej baz
 
 #### <a name="tenant-isolation-is-sacrificed"></a>Jest to konieczne izolacji dzierżawcy
 
-*Dane:* &nbsp; wielodostępną bazą danych zawsze zwiększa izolacji dzierżawy.  Dane z wielu dzierżaw jest przechowywane razem w jednej bazie danych.  Podczas tworzenia aplikacji upewnij się, że zapytania nigdy nie uwidocznić dane z więcej niż jednej dzierżawy.  Usługa SQL Database obsługuje [zabezpieczenia][docu-sql-svr-db-row-level-security-947w], które mogą zostać wymuszone te dane zwrócone przez zapytanie zakresu do pojedynczej dzierżawy.
+*Dane:*&nbsp; Wielodostępną bazą danych zawsze zwiększa izolacji dzierżawy.  Dane z wielu dzierżaw jest przechowywane razem w jednej bazie danych.  Podczas tworzenia aplikacji upewnij się, że zapytania nigdy nie uwidocznić dane z więcej niż jednej dzierżawy.  Usługa SQL Database obsługuje [zabezpieczenia][docu-sql-svr-db-row-level-security-947w], które mogą zostać wymuszone te dane zwrócone przez zapytanie zakresu do pojedynczej dzierżawy.
 
-*Przetwarzanie:* &nbsp; wielodostępną bazą danych udostępnia zasoby obliczeniowe i magazynowe dla wszystkich swoich dzierżaw.  Baza danych jako całość można monitorować w taki sposób, aby upewnić się, że jest akceptowalne.  Jednak Azure system nie ma wbudowanej możliwości monitorowania lub zarządzania wykorzystaniem tych zasobów przez pojedynczą dzierżawę.  W związku z tym wielodostępną bazą danych niesie ze sobą zwiększone ryzyko napotkania sąsiadów generujące dużo alertów, gdy obciążenie jednej dzierżawy overactive ma wpływ na środowisko wydajność innych dzierżawców w tej samej bazy danych.  Dodatkowe monitorowanie na poziomie aplikacji można monitorować wydajność na poziomie dzierżawy.
+*Przetwarzanie:*&nbsp; Wielodostępną bazą danych współużytkuje zasobów obliczeniowych i magazynu dla wszystkich swoich dzierżaw.  Baza danych jako całość można monitorować w taki sposób, aby upewnić się, że jest akceptowalne.  Jednak Azure system nie ma wbudowanej możliwości monitorowania lub zarządzania wykorzystaniem tych zasobów przez pojedynczą dzierżawę.  W związku z tym wielodostępną bazą danych niesie ze sobą zwiększone ryzyko napotkania sąsiadów generujące dużo alertów, gdy obciążenie jednej dzierżawy overactive ma wpływ na środowisko wydajność innych dzierżawców w tej samej bazy danych.  Dodatkowe monitorowanie na poziomie aplikacji można monitorować wydajność na poziomie dzierżawy.
 
 #### <a name="lower-cost"></a>Niższe koszty
 

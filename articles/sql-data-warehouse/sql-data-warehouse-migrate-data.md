@@ -6,16 +6,16 @@ author: jrowlandjones
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: fc7bf4eaeb073b0337be68632e5057bfce96e06a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307873"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474177"
 ---
 # <a name="migrate-your-data"></a>Migrowanie danych
 Dane mogą zostać przeniesione z różnych źródeł do usługi SQL Data Warehouse za pomocą różnych narzędzi.  Kopiuj ADF, SSIS i bcp wszystkie można na osiągnięcie tego celu. Jak ilość danych zwiększa należy myśleć o potężne proces migracji danych do kroków. Zapewnia możliwość optymalizacji każdego kroku na wydajność i odporność upewnić się, migrację danych smooth.
@@ -157,7 +157,7 @@ Podsumowanie wysokiego poziomu procesu może być:
 3. Narzędzie AZCopy dane w kontenerze usługi Azure Blob Storage
 4. Ładowanie danych do usługi SQL Data Warehouse przy użyciu technologii PolyBase
 
-Pełna dokumentacja: [narzędzie azcopy][narzędzie azcopy].
+Pełną dokumentację dostępnych: [Narzędzie AZCopy][narzędzie azcopy].
 
 ## <a name="optimizing-data-export"></a>Optymalizacja Eksport danych
 Oprócz zapewniania, że Eksport jest zgodny z wymogami rozmieszczony w programie PolyBase można również wyszukać zoptymalizować eksportowania danych do usprawniania procesu dalsze.

@@ -1,6 +1,6 @@
 ---
-Tytuł: Rozwiązywanie problemów z ponownego trenowania titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zidentyfikować i rozwiązać typowe problemy występujące podczas są ponowne trenowanie modeli usługi sieci web Azure Machine Learning Studio.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Rozwiązywanie problemów z ponownego trenowania titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zidentyfikować i rozwiązać typowe problemy występujące podczas są ponowne trenowanie modeli usługi sieci web Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 11/01/2017
 ---

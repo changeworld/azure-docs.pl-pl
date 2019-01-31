@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 06/13/2018
 ms.author: mausher
 ms.reviewer: igorstan
-ms.openlocfilehash: d40861650f479f8ef840c5150b2153f461871331
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d88d1390f590a86c83273f2170f3854a7972a24b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307758"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466227"
 ---
 # <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy języka T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse
 Zawiera łącza do dokumentacji elementy języka T-SQL obsługiwanych w usłudze Azure SQL Data Warehouse.
@@ -29,7 +29,7 @@ Zawiera łącza do dokumentacji elementy języka T-SQL obsługiwanych w usłudze
 * [Stałe](https://msdn.microsoft.com/library/ms179899.aspx)
 * [typy danych](https://msdn.microsoft.com/library/ms187752.aspx)
 * [WYKONYWANIE](https://msdn.microsoft.com/library/ms188332.aspx)
-* [Wyrażenia](https://msdn.microsoft.com/library/ms190286.aspx)
+* [expressions](https://msdn.microsoft.com/library/ms190286.aspx)
 * [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
 * [Obejście właściwości tożsamości](https://msdn.microsoft.com/library/ms186775.aspx)
 * [DRUKUJ](https://msdn.microsoft.com/library/ms176047.aspx)
@@ -74,7 +74,7 @@ Zawiera łącza do dokumentacji elementy języka T-SQL obsługiwanych w usłudze
 
 ### <a name="bitwise-operators"></a>Operatory bitowe
 * [& (Iloczynu bitowego AND)](https://msdn.microsoft.com/library/ms174965.aspx)
-* [| (Lub bitowego)](https://msdn.microsoft.com/library/ms186714.aspx)
+* [| (Bitwise OR)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (Bitowe or wykluczające OR)](https://msdn.microsoft.com/library/ms190277.aspx)
 * [~ (Bitowego NOT)](https://msdn.microsoft.com/library/ms173468.aspx)
 * [^ = (Wyłączny sumy bitowej OR EQUALS)](https://msdn.microsoft.com/library/cc627413.aspx)
@@ -115,7 +115,7 @@ Zawiera łącza do dokumentacji elementy języka T-SQL obsługiwanych w usłudze
 * [DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx)
 * [DŁUGOŚĆ_DANYCH](https://msdn.microsoft.com/library/ms173486.aspx)
 * [DATEADD](https://msdn.microsoft.com/library/ms186819.aspx)
-* [FUNKCJA DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
+* [DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
 * [DATEFROMPARTS](https://msdn.microsoft.com/library/hh213228.aspx)
 * [DATENAME](https://msdn.microsoft.com/library/ms174395.aspx)
 * [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)
@@ -256,21 +256,21 @@ Zawiera łącza do dokumentacji elementy języka T-SQL obsługiwanych w usłudze
 
 ## <a name="set-statements"></a>Instrukcje SET
 * [ZESTAW ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
-* [ZESTAW ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
-* [ANSI_NULL_DFLT_ON ZESTAWU](https://msdn.microsoft.com/library/ms187375.aspx)
-* [USTAWIENIA ZESTAWU](https://msdn.microsoft.com/library/ms188048.aspx)
-* [ZESTAW ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
+* [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
+* [SET ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
+* [SET ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx)
+* [SET ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
 * [ANSI_WARNINGS ZESTAWU](https://msdn.microsoft.com/library/ms190368.aspx)
 * [ZESTAW ARITHABORT](https://msdn.microsoft.com/library/ms190306.aspx)
 * [ZESTAW ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
-* [INSTRUKCJA SET CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
+* [SET CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
 * [SET DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx)
 * [SET DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx)
 * [SET FMTONLY](https://msdn.microsoft.com/library/ms173839.aspx)
 * [ZESTAW IMPLICIT_TRANSACITONS](https://msdn.microsoft.com/library/ms187807.aspx)
 * [ZESTAW LOCK_TIMEOUT](https://msdn.microsoft.com/library/ms189470.aspx)
 * [ZESTAW NUMBERIC_ROUNDABORT](https://msdn.microsoft.com/library/ms188791.aspx)
-* [ZESTAW QUOTED_IDENTIFIER](https://msdn.microsoft.com/library/ms174393.aspx)
+* [SET QUOTED_IDENTIFIER](https://msdn.microsoft.com/library/ms174393.aspx)
 * [SET ROWCOUNT](https://msdn.microsoft.com/library/ms188774.aspx)
 * [USTAW WARTOŚĆ PARAMETRU TEXTSIZE](https://msdn.microsoft.com/library/ms186238.aspx)
 * [USTAW POZIOM IZOLACJI TRANSAKCJI](https://msdn.microsoft.com/library/ms173763.aspx)

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: b4c873e319dd611221c81deb948db3a64062631e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032605"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457653"
 ---
-# <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Optymalizowanie kosztów dla wdrożeń w wielu regionach w usłudze Azure Cosmos DB
+# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Optymalizuj koszt wielu regionów w usłudze Azure Cosmos DB
 
 Można dodać i usunąć regiony z kontem usługi Azure Cosmos w dowolnym momencie. Przepływność, którą można skonfigurować dla różnych baz danych Azure Cosmos i kontenerów jest zarezerwowana w każdym z regionów skojarzonych z Twoim kontem. Jeśli aprowizowana przepływność na godzinę, to Suma jednostek RU/s jest skonfigurowany we wszystkich bazach danych i kontenerów, jest kontem usługi Azure Cosmos `T` a liczbą regionów platformy Azure skojarzony z Twoim kontem bazy danych jest `N`, następnie łącznie aprowizowana przepływność dla Twojego konta usługi Cosmos, dla danej godziny wynosi:
 
@@ -35,8 +35,8 @@ Należy wziąć pod uwagę w masz kontener w regionie zachodnie stany USA aprowi
 |----|----|----|----|
 |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (zapisu wielu regionów) |10 K jednostek RU/s * 24 * 31 |0,016; $ na 100 jednostek RU/s za godzinę |$1,190.40 |
 |Rachunek za przepływność dla 3 dodatkowych regionów — wschodnie stany USA, Europa Północna i Azja Wschodnia (zapisu wielu regionów) |(3 + 1) * 10 K jednostek RU/s * 24 * 31 |0,016; $ na 100 jednostek RU/s za godzinę |$4,761.60 |
-|Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA |100 GB |0,25 USD/GB |25 USD |
-|Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia |3 * 1 TB POJEMNOŚCI |0,25 USD/GB |75 zł |
+|Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA |100 GB |0,25 USD/GB |$25 |
+|Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia |3 * 1 TB |0,25 USD/GB |$75 |
 |**Łączna liczba**|||**$6,052** |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Poprawić wykorzystanie przepływności na poszczególnych regionów

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 5a886244b43ad006a95e9be0350d9c69fd987ad9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 2066d4a2ed6db97285d92d15e14dbd21629dbdfa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526236"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457007"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Usługa Azure Import/Export właściwości i metadanych format pliku usługi
 Można określić właściwości dla co najmniej jednego obiektu blob i metadanych jako część zadania importu lub eksportu. Aby ustawić metadanych lub właściwości dla obiektów blob jest tworzona jako część zadania importu, możesz podać właściwości lub metadanych pliku na dysku twardym, zawierający dane do zaimportowania. Przez zadanie eksportu metadanych i właściwości są zapisywane do pliku metadanych lub właściwości, który znajduje się na dysku twardym, zwrócona do Ciebie.  
@@ -30,10 +30,10 @@ Format pliku metadanych jest następująca:
 </Metadata>  
 ```
   
-|— Element XML|Typ|Opis|  
+|XML Element|Type|Opis|  
 |-----------------|----------|-----------------|  
 |`Metadata`|Element główny|Element główny plik metadanych.|  
-|`metadata-name`|Ciąg|Opcjonalny. XML element Określa nazwę metadanych dla obiektu blob, a jego wartość określa wartość ustawienia metadanych.|  
+|`metadata-name`|String|Opcjonalny. XML element Określa nazwę metadanych dla obiektu blob, a jego wartość określa wartość ustawienia metadanych.|  
   
 ## <a name="properties-file-format"></a>Format pliku właściwości  
 Format pliku właściwości jest następująca:  
@@ -52,17 +52,17 @@ Format pliku właściwości jest następująca:
 </Properties>  
 ```
   
-|— Element XML|Typ|Opis|  
+|XML Element|Type|Opis|  
 |-----------------|----------|-----------------|  
 |`Properties`|Element główny|Element główny pliku właściwości.|  
-|`Last-Modified`|Ciąg|Opcjonalny. Czas ostatniej modyfikacji dla obiektu blob. Aby uzyskać tylko zadania eksportu.|  
-|`Etag`|Ciąg|Opcjonalny. Wartość elementu ETag obiektu blob. Aby uzyskać tylko zadania eksportu.|  
-|`Content-Length`|Ciąg|Opcjonalny. Rozmiar obiektu blob w bajtach. Aby uzyskać tylko zadania eksportu.|  
-|`Content-Type`|Ciąg|Opcjonalny. Typ zawartości obiektu blob.|  
-|`Content-MD5`|Ciąg|Opcjonalny. Skrót MD5 obiektu blob.|  
-|`Content-Encoding`|Ciąg|Opcjonalny. Zawartość obiektu blob kodowania.|  
-|`Content-Language`|Ciąg|Opcjonalny. Język zawartości obiektu blob.|  
-|`Cache-Control`|Ciąg|Opcjonalny. Ciąg kontroli pamięci podręcznej dla obiektu blob.|  
+|`Last-Modified`|String|Opcjonalny. Czas ostatniej modyfikacji dla obiektu blob. Aby uzyskać tylko zadania eksportu.|  
+|`Etag`|String|Opcjonalny. Wartość elementu ETag obiektu blob. Aby uzyskać tylko zadania eksportu.|  
+|`Content-Length`|String|Opcjonalny. Rozmiar obiektu blob w bajtach. Aby uzyskać tylko zadania eksportu.|  
+|`Content-Type`|String|Opcjonalny. Typ zawartości obiektu blob.|  
+|`Content-MD5`|String|Opcjonalny. Skrót MD5 obiektu blob.|  
+|`Content-Encoding`|String|Opcjonalny. Zawartość obiektu blob kodowania.|  
+|`Content-Language`|String|Opcjonalny. Język zawartości obiektu blob.|  
+|`Cache-Control`|String|Opcjonalny. Ciąg kontroli pamięci podręcznej dla obiektu blob.|  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 1bc93b083b0f6f0d813f209c9371ce38e8a9daa6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 7b5f4db51fca97f79f2b43bfcd5ce8dead3ba50b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228814"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470352"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Używanie sygnatur dostępu współdzielonego (SAS)
 
@@ -44,7 +44,7 @@ Typowy scenariusz, w których jest użyteczny sygnatury dostępu Współdzielone
 
 1. Usługi LDS uwierzytelnia klienta, zgodnie z potrzebami, a następnie generuje sygnaturę dostępu Współdzielonego. Gdy klient odbierze sygnatury dostępu Współdzielonego, ich dostęp do zasobów konta magazynu bezpośrednio z uprawnienia zdefiniowane przez sygnatury dostępu Współdzielonego i interwał dozwolone przez sygnatury dostępu Współdzielonego. Sygnatura dostępu Współdzielonego zmniejsza potrzebę routingu wszystkich danych za pośrednictwem usługi Serwer proxy frontonu.
 
-  ![Diagram scenariusza: usługa dostawcy sygnatury dostępu Współdzielonego](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
+  ![Diagram scenariusza: Sygnatury dostępu Współdzielonego usługi dostawcy](./media/storage-dotnet-shared-access-signature-part-1/sas-storage-provider-service.png)   
 
 Wiele usług w rzeczywistych warunkach może użyć hybrydowego rozwiązania łączącego dwóm metodom. Na przykład niektóre dane mogą przetwarzane i zweryfikować za pomocą frontonu serwera proxy, podczas gdy inne dane zapisane lub odczytać bezpośrednio za pomocą sygnatury dostępu Współdzielonego.
 
@@ -140,8 +140,8 @@ Biorąc pod uwagę, że uprawnienia są ograniczone do poziomu usługi, są dost
 ## <a name="controlling-a-sas-with-a-stored-access-policy"></a>Kontrolowanie sygnatury dostępu Współdzielonego przy użyciu przechowywanych zasad dostępu
 Sygnatury dostępu współdzielonego można wykonać jedną z dwóch formach:
 
-* **Ad hoc sygnatury dostępu Współdzielonego:** po utworzeniu ad-hoc sygnatury dostępu Współdzielonego, czas rozpoczęcia, czas wygaśnięcia i uprawnienia dla sygnatury dostępu Współdzielonego są wszystkie określony w identyfikatorze URI sygnatury dostępu Współdzielonego (bezpośrednich ani dorozumianych, w przypadku, gdy czas rozpoczęcia jest pominięty). Ten typ sygnatury dostępu Współdzielonego można utworzyć sygnatury dostępu Współdzielonego konta lub sygnatury dostępu Współdzielonego usługi.
-* **Sygnatury dostępu Współdzielonego przy użyciu przechowywanych zasad dostępu:** przechowywanych zasad dostępu jest zdefiniowany w kontenerze zasobów — kontener obiektów blob, tabeli, kolejki, lub udziału--plików i może służyć do zarządzania ograniczeniami dla jednego lub więcej sygnatur dostępu współdzielonego. Jeśli sygnatury dostępu Współdzielonego jest kojarzony z przechowywanych zasad dostępu, sygnatury dostępu Współdzielonego dziedziczy ograniczeń — godzina rozpoczęcia, czas wygaśnięcia i uprawnienia — zdefiniowane dla przechowywanych zasad dostępu.
+* **Skojarzenia zabezpieczeń ad hoc:** Podczas tworzenia sygnatury dostępu Współdzielonego ad-hoc, czas rozpoczęcia, czas wygaśnięcia i uprawnienia dla sygnatury dostępu Współdzielonego są wszystkie określone w identyfikatorze URI sygnatury dostępu Współdzielonego (lub domniemanych, w przypadku, gdy czas rozpoczęcia jest pominięty). Ten typ sygnatury dostępu Współdzielonego można utworzyć sygnatury dostępu Współdzielonego konta lub sygnatury dostępu Współdzielonego usługi.
+* **Sygnatury dostępu Współdzielonego przy użyciu przechowywanych zasad dostępu:** Przechowywanych zasad dostępu jest zdefiniowany w kontenerze zasobów — kontener obiektów blob, tabeli, kolejki, lub udziału--plików i może służyć do zarządzania ograniczeniami dla jednego lub więcej sygnatury dostępu współdzielonego. Jeśli sygnatury dostępu Współdzielonego jest kojarzony z przechowywanych zasad dostępu, sygnatury dostępu Współdzielonego dziedziczy ograniczeń — godzina rozpoczęcia, czas wygaśnięcia i uprawnienia — zdefiniowane dla przechowywanych zasad dostępu.
 
 > [!NOTE]
 > Obecnie sygnatury dostępu Współdzielonego konta musi być ad-hoc sygnatury dostępu Współdzielonego. Przechowywane dostępu, zasady nie są jeszcze obsługiwane dla sygnatury dostępu Współdzielonego konta.
@@ -302,7 +302,7 @@ static void UseAccountSAS(string sasToken)
 }
 ```
 
-### <a name="example-create-a-stored-access-policy"></a>Przykład: Tworzenie przechowywanych zasad dostępu
+### <a name="example-create-a-stored-access-policy"></a>Przykład: Utwórz przechowywanych zasad dostępu
 Poniższy kod tworzy przechowywanych zasad dostępu do kontenera. Aby określić ograniczenia dla sygnatury dostępu Współdzielonego usługi kontenera lub jego obiektów blob, można użyć zasad dostępu.
 
 ```csharp
@@ -421,7 +421,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 Sygnatury dostępu współdzielonego są przydatne do prezentowania ograniczonych uprawnień do konta magazynu dla klientów, którzy nie powinni mieć klucz konta. W efekcie są to ważna część model zabezpieczeń dla każdej aplikacji za pomocą usługi Azure Storage. Jeśli stosujesz najlepsze rozwiązania wymienione w tym miejscu, można użyć sygnatury dostępu Współdzielonego, aby zapewnić większą elastyczność dostępu do zasobów w ramach konta magazynu bez uszczerbku dla zabezpieczeń aplikacji.
 
 ## <a name="next-steps"></a>Następne kroki
-* [Udostępnione sygnatur dostępu, część 2: Tworzenie i sygnatury dostępu Współdzielonego za pomocą magazynu obiektów Blob](../blobs/storage-dotnet-shared-access-signature-part-2.md)
+* [Udostępnione sygnatur dostępu, część 2: Tworzenie i używanie sygnatury dostępu Współdzielonego z usługą Blob storage](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [Zarządzanie dostępem anonimowym odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md)
 * [Delegowanie dostępu za pomocą sygnatury dostępu współdzielonego](https://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [Wprowadzenie do tabel i token SAS kolejki](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

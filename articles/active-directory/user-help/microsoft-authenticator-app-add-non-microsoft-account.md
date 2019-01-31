@@ -6,17 +6,17 @@ author: eross-msft
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 62ab28c484575a59d25d9601b92b9b89fad71d6d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: db59d3d2795b8cfa3fc7682f4486d968f39ab6ab
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904854"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459149"
 ---
 # <a name="add-your-personal-non-microsoft-accounts"></a>Dodawanie osobistych kont innych niż Microsoft
 Dodawanie osobistych kont innych niż Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication.

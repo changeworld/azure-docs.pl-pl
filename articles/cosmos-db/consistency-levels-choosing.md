@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: c4523b5028aae5de565e517fea61c62e29a4e7a3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044080"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468873"
 ---
-# <a name="choose-the-right-consistency-level-for-your-application"></a>Wybierz poziom spójności odpowiednie dla twojej aplikacji
+# <a name="choose-the-right-consistency-level"></a>Wybierz poziom spójności w prawo 
 
 Rozproszonych baz danych, opierając się na replikację, wysoką dostępność, małych opóźnień, czy oba rodzaje, wprowadzić podstawowe zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej. Usługa Azure Cosmos DB umożliwia deweloperom wybranie jednego z pięciu dobrze zdefiniowanych modeli spójności: silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Każda z tych modeli spójności jest dobrze zdefiniowany i intuicyjny i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każda z pięcioma modelami spójności oferuje [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA. Następujące kwestie proste ułatwi właściwym wyborem w wielu typowych scenariuszy.
 

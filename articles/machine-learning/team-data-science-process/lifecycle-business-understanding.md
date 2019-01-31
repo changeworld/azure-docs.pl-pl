@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f45d8a83c323689272313314d0f9ac9b79edecd7
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141666"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477458"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Na etapie opis firm cyklu życia zespołowego danych dla celów naukowych
 
@@ -41,7 +41,7 @@ Oto wizualnej reprezentacji cyklu przetwarzania TDSP:
 Istnieją dwa główne zadania, które zostały rozwiązane podczas tego etapu: 
 
    * **Zdefiniuj cele**: Praca z klientów i innych zainteresowanych stron, aby zrozumieć i zidentyfikować problemy biznesowe. Formułowanie pytania, które definiują cele biznesowe, przeznaczonych dla metody do nauki o danych.
-   * **Identyfikowanie źródeł danych**: Znajdź odpowiednie dane, które pomoże Ci odpowiadać na pytania, definiujące cele projektu.
+   * **Identyfikowanie źródeł danych**: Znajdź odpowiednie dane, które pomaga w uzyskaniu odpowiedzi na pytania, które definiują cele projektu.
 
 ### <a name="define-objectives"></a>Zdefiniuj cele
 1. Głównym celem tego kroku jest do identyfikowania zmienne klucza biznesowych, które niezbędne do analizy do prognozowania. Będziemy odwoływać się do tych zmiennych jako *modelu obiektów docelowych*, i używamy metryki skojarzonych z nimi do ustalenia powodzenia projektu. Dwa przykłady takich celów są prognoz sprzedaży lub prawdopodobieństwo, że kolejność jest fałszywe.
@@ -77,9 +77,9 @@ Może na przykład, okaże się, że istniejące systemy trzeba zbierać i rejes
 ## <a name="artifacts"></a>Artefakty
 Oto elementy dostarczane podczas tego etapu:
 
-   * [Karty dokumentów](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): standardowy szablon znajduje się w definicji struktury przetwarzania TDSP projektu. Dokument karty jest życia. Należy zaktualizować szablon w całym projekcie, wprowadzić nowe operacje odnajdywania, a jako firma zmienią się wymagania. Klucz jest do iteracji na tego dokumentu, dodając więcej szczegółów, w czasie wykonywania procesu odnajdywania. Zachowaj klienta i innych uczestników projektu w wprowadzania zmian oraz wyraźnego powiadomienia powody zmiany do nich.  
-   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **źródeł danych pierwotnych** części **definicje danych** raport, który znajduje się w projekcie środowiska TDSP **raport danych** folder zawiera dane źródła. W tej sekcji Określa lokalizacje oryginału i docelowego dla nieprzetworzonych danych. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty, aby przenieść dane do środowiska analityczne.  
-   * [Słowniki danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): ten dokument zawiera opis danych, które są dostarczane przez klienta. Opisy te obejmują informacje schematu (typy danych i informacji na temat reguł sprawdzania poprawności, jeśli istnieje) i diagramy relacji jednostki, jeśli jest dostępny.
+   * [Karty dokumentów](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md): Standardowy szablon znajduje się w definicji struktury przetwarzania TDSP projektu. Dokument karty jest życia. Należy zaktualizować szablon w całym projekcie, wprowadzić nowe operacje odnajdywania, a jako firma zmienią się wymagania. Klucz jest do iteracji na tego dokumentu, dodając więcej szczegółów, w czasie wykonywania procesu odnajdywania. Zachowaj klienta i innych uczestników projektu w wprowadzania zmian oraz wyraźnego powiadomienia powody zmiany do nich.  
+   * [Źródła danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources): **Źródeł danych pierwotnych** części **definicje danych** raport, który znajduje się w projekcie środowiska TDSP **raport danych** folder zawiera źródła danych. W tej sekcji Określa lokalizacje oryginału i docelowego dla nieprzetworzonych danych. W późniejszym etapie należy wypełnić dodatkowe szczegóły, takie jak skrypty, aby przenieść dane do środowiska analityczne.  
+   * [Słowniki danych](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): Ten dokument zawiera opis danych, które są dostarczane przez klienta. Opisy te obejmują informacje schematu (typy danych i informacji na temat reguł sprawdzania poprawności, jeśli istnieje) i diagramy relacji jednostki, jeśli jest dostępny.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

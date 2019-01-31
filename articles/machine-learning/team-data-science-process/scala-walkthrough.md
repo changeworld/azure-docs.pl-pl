@@ -6,23 +6,23 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf4e65b95211fc03ea4a319fd4e503396b893522
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3109c4e6190cd8e485ae9b28117c4688836dfc26
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135151"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470318"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Analiza danych przy użyciu języka Scala i platformy Spark na platformie Azure
 W tym artykule pokazano, jak korzystać z języka Scala dla zadania uczenia maszynowego nadzorowanych za pomocą platformy Spark skalowalne MLlib i Spark ML pakietów w klastrze usługi Azure HDInsight Spark. Przeprowadzi Cię on zadania, które stanowią [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): pozyskiwanie danych i eksploracji, wizualizacji, technicznego opracowywania funkcji, modelowania i użycie modelu. Modele w artykule obejmują regresji logistycznej liniowego i liniowa, losowych lasów i wzmocnione gradientu drzew (GBTs), oprócz dwie typowe zadania uczenia maszynowego nadzorowanego:
 
-* Problem regresji: przewidywanie kwota tip ($), komunikacji dwustronnej taksówek
-* Klasyfikacja binarna: prognozowanie porady lub brak porady komunikacji dwustronnej taksówek (1/0)
+* Problem regresji: Prognozowanie kwota tip ($), komunikacji dwustronnej taksówek
+* Klasyfikacja binarna: Prognozowanie porady lub brak porady komunikacji dwustronnej taksówek (1/0)
 
 Proces modelowania wymaga uczenie i Ewaluacja testowego zestawu danych i dokładność istotne metryki. W tym artykule nauczysz się sposobu przechowywania tych modeli usługi Azure Blob Storage oraz jak ocena i oceny wydajności predykcyjne. W tym artykule opisano również bardziej zaawansowanych tematów dotyczących sposobu optymalizacji modeli za pomocą zaczynają krzyżowego sprawdzania poprawności i parametrów. Dane używane jest przykładem 2013 NYC taksówek podróży i klasie zestawu danych dostępne w serwisie GitHub.
 
@@ -41,7 +41,7 @@ Kroki instalacji i kodu w tym artykule dotyczą usługi Azure HDInsight 3.4 Spar
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Wymagana jest subskrypcja platformy Azure. Jeśli nie masz już jeden, [uzyskać bezpłatna wersja próbna platformy](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Potrzebujesz klastra Azure HDInsight 3.4 Spark 1.6 do wykonania poniższych procedur. Aby utworzyć klaster, zobacz instrukcje w [wprowadzenie: tworzenie platformy Apache Spark w usłudze Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Ustaw typ klastra i wersji na **wybierz typ klastra** menu.
+* Potrzebujesz klastra Azure HDInsight 3.4 Spark 1.6 do wykonania poniższych procedur. Aby utworzyć klaster, zobacz instrukcje w [rozpocząć pracę: Tworzenie platformy Apache Spark w usłudze Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Ustaw typ klastra i wersji na **wybierz typ klastra** menu.
 
 ![Konfiguracja typu klastra HDInsight](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ Możesz przekazać Notes bezpośrednio z serwisu GitHub, aby serwer notesu Jupyt
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Instalacji: Konteksty ustawienie wstępne Spark i Hive, poleceń magicznych platformy Spark i biblioteki Spark
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Konfiguracja: Wstępnie zdefiniowane konteksty Spark i Hive, poleceń magicznych platformy Spark i bibliotek platformy Spark
 ### <a name="preset-spark-and-hive-contexts"></a>Wstępnie zdefiniowane konteksty Spark i Hive
     # SET THE START TIME
     import java.util.Calendar
@@ -532,7 +532,7 @@ Poniżej przedstawiono kod dla tych dwóch zadań.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Model Klasyfikacja binarna: prognozowanie, czy należy zwrócić Porada
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binarny model klasyfikacji: Przewidywania, czy należy zwrócić Porada
 W tej sekcji utworzysz trzy typy modeli klasyfikacji binarnej w celu przewidywania, czy należy zwrócić Porada:
 
 * A **modelu regresji logistycznej** przy użyciu Spark ML `LogisticRegression()` — funkcja
@@ -723,9 +723,9 @@ Następnie utwórz model klasyfikacji GBT przy użyciu MLlib firmy `GradientBoos
 
 **Dane wyjściowe:**
 
-Powierzchni pod krzywą ROC: 0.9846895479241554
+Obszar pod krzywą ROC: 0.9846895479241554
 
-## <a name="regression-model-predict-tip-amount"></a>Model regresji: przewidywanie kwota Porada
+## <a name="regression-model-predict-tip-amount"></a>Model regresji: Przewidywanie kwota Porada
 W tej sekcji utworzysz dwa rodzaje modele regresji, by kwota Porada:
 
 * A **uczenia modelu regresji liniowej umorzyć** przy użyciu Spark ML `LinearRegression()` funkcji. Będzie zapisać model i ocenę modelu na danych testowych.
@@ -848,7 +848,7 @@ Tworzenie wykresów przy użyciu języka Python matplotlib.
 
 **Dane wyjściowe:**
 
-![Porada kwota: rzeczywiste a przewidywane](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Kwota Porada: Rzeczywiste a przewidywane](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Utworzyć model regresji GBT
 Utworzyć model regresji GBT przy użyciu Spark ML `GBTRegressor()` funkcji, a następnie ocenę modelu na danych testowych.
@@ -881,7 +881,7 @@ Utworzyć model regresji GBT przy użyciu Spark ML `GBTRegressor()` funkcji, a n
 
 **Dane wyjściowe:**
 
-Jest test R-sqr: 0.7655383534596654
+Test R-sqr jest: 0.7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>Narzędzia zaawansowane modelowanie optymalizacji
 W tej sekcji użyjesz machine learning narzędzia, które deweloperzy często korzystają z modelu optymalizacji. W szczególności można zoptymalizować modeli uczenia maszynowego trzy różne sposoby, za pomocą parametru zaczynają i krzyżowego sprawdzania poprawności:
@@ -938,7 +938,7 @@ Następnie Podziel dane na szkolenie i sprawdzanie poprawności zestawów, użyj
 
 **Dane wyjściowe:**
 
-Jest test R-sqr: 0.6226484708501209
+Test R-sqr jest: 0.6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optymalizuj model klasyfikacji binarnej za pomocą zaczynają krzyżowego sprawdzania poprawności i parametrów
 W tej sekcji dowiesz się, jak optymalizować model klasyfikacji binarnej przy użyciu zaczynają krzyżowego sprawdzania poprawności i parametrów. Ta metoda korzysta z uczenia Maszynowego platformy Spark `CrossValidator` funkcji.

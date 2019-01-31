@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1202d49688bfd6aee50d1fa21c10423c071c6d92
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2a97c55c7caa7b0b2c4aa10b01abd2714b8ace7a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124987"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458537"
 ---
-# <a name="translator-text-api-30-breaksentence"></a>API 3.0 tekstu usługi Translator: BreakSentence
+# <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
 Identyfikuje pozycjonowanie granic zdanie w fragment tekstu.
 
@@ -41,7 +41,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>*Wymagany parametr zapytania*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>język</td>
+    <td>language</td>
     <td>*Parametr opcjonalny zapytania*.<br/>Tag języka, który identyfikuje język tekstu wejściowego. Jeśli kod nie zostanie określony, zostaną zastosowane automatyczne wykrywanie języka.</td>
   </tr>
   <tr>
@@ -68,7 +68,7 @@ Nagłówki żądania obejmują:
     <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
-    <td>X ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Należy pamiętać, że można pominąć tego pliku nagłówkowego, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
@@ -100,7 +100,7 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
      * `language`: Kod wykryty język.
 
-     * `score`: Float wartość wskazująca pewność dotyczącą wyników. Wynik jest między zero a, oraz niskim wynikiem wskazuje niski zaufania.
+     * `score`: Wartość zmiennoprzecinkowa wskazująca pewność dotyczącą wyników. Wynik jest między zero a, oraz niskim wynikiem wskazuje niski zaufania.
      
     Należy pamiętać, że `detectedLanguage` właściwość jest obecny w obiekcie wynikowym tylko, gdy automatyczne wykrywanie języka.
 
@@ -124,7 +124,7 @@ Przykład odpowiedź JSON to:
   <th width="20%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>Identyfikator żądania X</td>
+    <td>X-RequestId</td>
     <td>Wartość generowane przez usługę w celu zidentyfikowania żądania. Jest on używany na potrzeby rozwiązywania problemów.</td>
   </tr>
 </table> 
@@ -170,7 +170,7 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
 
 Poniższy przykład pokazuje, jak uzyskać zdania granice jednym zdaniu. Język zdanie jest wykrywany automatycznie przez usługę.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

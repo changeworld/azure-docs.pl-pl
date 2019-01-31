@@ -1,6 +1,6 @@
 ---
-Tytuł: Ponownego próbkowania Machine Learning Studio modeli titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu przy użyciu C# i usługa Machine Learning Batch Execution.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Ponownego próbkowania Machine Learning Studio modeli titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu przy użyciu C# i usługa Machine Learning Batch Execution.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
 ---

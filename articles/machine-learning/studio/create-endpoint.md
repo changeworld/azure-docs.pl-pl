@@ -1,5 +1,5 @@
 ---
-Tytuł: Tworzenie titleSuffix punkty końcowe usługi sieci Web: Opis usługi Azure Machine Learning Studio: Tworzenie punktów końcowych usługi sieci Web Azure Machine Learning. Każdy punkt końcowy usługi sieci Web niezależnie rozwiązane, ograniczenia i zarządzane.
+Tytuł: Tworzenie titleSuffix punkty końcowe usługi sieci Web: Opis usługi Azure Machine Learning Studio: Tworzenie punktów końcowych usługi sieci Web Azure Machine Learning. Każdy punkt końcowy usługi sieci Web niezależnie rozwiązane, ograniczenia i zarządzane.
 usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 10/04/2016

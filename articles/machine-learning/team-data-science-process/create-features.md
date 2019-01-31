@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5767399189e4ed5168fbcc083ef9b4830cac1421
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138980"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478053"
 ---
 # <a name="feature-engineering-in-data-science"></a>Inżynieria funkcji w zakresie analizy danych
 W tym artykule wyjaśniono celów technicznego opracowywania funkcji i zawiera przykłady swojej roli w procesie rozszerzenia danych, uczenia maszynowego. Przykłady umożliwiają zilustrowanie tego procesu są pobierane z usługi Azure Machine Learning Studio. 
@@ -25,8 +25,8 @@ To zadanie jest to krok w [Team Data Science naukowych](https://docs.microsoft.c
 
 Funkcja inżynierów próby zwiększają możliwości predykcyjnych algorytmów uczenia, tworząc funkcje z nieprzetworzone dane, które pomagają w wykonywaniu procesu uczenia. Inżynieria i wybór funkcji jest częścią środowiska TDSP opisane w temacie [co to jest cykl życia zespołowego danych dla celów naukowych?](overview.md) Funkcja inżynieria i wybór są częściami **opracowywanie funkcji** krok przetwarzania TDSP. 
 
-* **Inżynieria funkcji**: ten proces próbuje utworzyć dodatkowe funkcje odpowiednie na podstawie istniejących funkcji nieprzetworzonych danych i zwiększają możliwości predykcyjnych algorytmu uczenia.
-* **Wybór funkcji**: ten proces wybiera klucza podzbiór funkcji, oryginalnym danych w celu podjęcia próby zmniejszenia wymiarach problemu szkolenia.
+* **inżynieria cech**: Ten proces próbuje utworzyć dodatkowe funkcje odpowiednie na podstawie istniejących funkcji nieprzetworzonych danych i zwiększają możliwości predykcyjnych algorytmu uczenia.
+* **Wybór funkcji**: Ten proces wybiera klucza podzbiór funkcji, oryginalnym danych w celu podjęcia próby zmniejszenia wymiarach problemu szkolenia.
 
 Zwykle **Inżynieria funkcji** najpierw stosowany jest do generowania dodatkowe funkcje, a następnie **wybór funkcji** kroku jest przeprowadzana w celu wyeliminowania funkcji nie ma znaczenia, nadmiarowe lub bardzo skorelowany.
 
@@ -49,7 +49,7 @@ Począwszy od usługi Azure Machine Learning, najłatwiej zapoznanie się z nim 
 * Przykład regresji [prognozowania liczby wypożyczenia rowerów](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) w eksperymencie nadzorowane, gdy wiadomo, że wartości docelowej
 * Using przykład klasyfikacji wyszukiwania tekstu [Tworzenie skrótu funkcji](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
-## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Przykład 1: Dodaj funkcje danych czasowych dla modelu regresji
+## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Przykład 1: Dodawanie funkcji danych czasowych dla modelu regresji
 Użyjmy eksperymentu "prognozowaniu popytu rowerów" w usłudze Azure Machine Learning Studio na pokazują, jak projektować funkcje dla zadania regresji. Celem tego eksperymentu jest przewidzieć zapotrzebowanie na rowerów, czyli liczbę wypożyczenia rowerów w ramach określonego miesiąc/dzień/godz. Zestaw danych "wypożyczeń rowerów UCI zestawu danych" jest używany jako nieprzetworzone dane wejściowe. Ten zestaw danych jest oparty na prawdziwe dane pochodzące z firmy Bikeshare wielkiej litery, która obsługuje sieci wypożyczeń rowerów w Waszyngton w Stanach Zjednoczonych. Zestaw danych reprezentuje liczbę wypożyczenia rowerów w ramach określonej godziny dziennie w ciągu lat i 2011 roku 2012 i zawiera 17379 wierszy i kolumn 17. Zestaw funkcji pierwotne zawiera warunki pogodowe (temperatury/wilgotności/wiatru) i typ dnia (dzień wolny/dzień tygodnia). Pole do prognozowania jest liczba "cnt", która reprezentuje wypożyczenia rowerów w ciągu godziny określonej i który zakresu od 1 do 977.
 
 W celu konstruowania skuteczne funkcje w danych szkoleniowych, cztery regresji, który modeli są tworzone przy użyciu tego samego algorytmu, ale z czterech różnych szkolenia zestawami danych. Cztery zestawy danych reprezentują ten sam nieprzetworzone dane wejściowe, ale z coraz większą liczbę funkcji należy ustawić. Te funkcje są pogrupowane w cztery kategorie:

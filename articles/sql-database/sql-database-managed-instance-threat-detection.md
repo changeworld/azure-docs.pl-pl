@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 12/06/2018
-ms.openlocfilehash: f87b7093a732639db8a53ebec68fcae8f29735f3
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.date: 01/25/2019
+ms.openlocfilehash: 59a3b4a4e1b08a9a9985836a9f9be44d1eff9c71
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158673"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472069"
 ---
 # <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Konfigurowanie wykrywania zagrożeń (wersja zapoznawcza) w wystąpieniu zarządzanym bazy danych Azure SQL
 
@@ -25,7 +25,7 @@ Usługi Azure SQL [wykrywania zagrożeń](sql-database-threat-detection-overview
 
 Możesz otrzymywać powiadomienia o wykrytych zagrożeniach, za pośrednictwem [wiadomości e-mail z powiadomieniami](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) lub [witryny Azure portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 
-[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) jest częścią [SQL Zaawansowana ochrona przed zagrożeniami](sql-advanced-threat-protection.md) oferty (ATP), która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem centralnej portal SQL ATP. Usługa wykrywania zagrożeń są naliczane opłaty 15$ / miesiąc na wystąpieniu zarządzanym przy użyciu ciągu pierwszych 30 dni wolne od opłat.
+[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) jest częścią [zaawansowane zabezpieczenia danych SQL](sql-advanced-threat-protection.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL. Usługa wykrywania zagrożeń są naliczane opłaty 15$ / miesiąc na wystąpieniu zarządzanym przy użyciu ciągu pierwszych 30 dni wolne od opłat.
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Konfigurowanie wykrywania zagrożeń wystąpienia zarządzanego w witrynie Azure portal
 
@@ -41,8 +41,8 @@ Możesz otrzymywać powiadomienia o wykrytych zagrożeniach, za pośrednictwem [
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [wykrywania zagrożeń](sql-database-threat-detection-overview.md).
+- Dowiedz się więcej o [wykrywanie zagrożeń](sql-database-threat-detection-overview.md).
 - Dowiedz się więcej o wystąpieniu zarządzanym, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md).
-- Dowiedz się więcej o [wykrywania zagrożeń dla pojedynczej bazy danych](sql-database-threat-detection.md).
-- Dowiedz się więcej o [inspekcji wystąpienie zarządzane](https://go.microsoft.com/fwlink/?linkid=869430).
+- Dowiedz się więcej o [zagrożeń wykrywania dla pojedynczej bazy danych](sql-database-threat-detection.md).
+- Dowiedz się więcej o [inspekcji wystąpienia zarządzanego](https://go.microsoft.com/fwlink/?linkid=869430).
 - Dowiedz się więcej o [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).

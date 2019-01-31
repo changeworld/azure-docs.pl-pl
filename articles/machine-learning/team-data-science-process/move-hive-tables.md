@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be257b49e5ad5acc47a6daeec203e8513995e52e
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390936"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477863"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Tworzenie tabel programu Hive i ładowanie danych z usługi Azure Blob Storage
 
@@ -25,12 +25,12 @@ W tym artykule przedstawiono ogólny zapytań programu Hive, które umożliwiaj�
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że masz:
 
-* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [kontach magazynu Azure o](../../storage/common/storage-create-storage-account.md).
-* Zainicjowano obsługę administracyjną dostosowane klaster Hadoop w usłudze HDInsight.  Aby uzyskać instrukcje, zobacz [dostosować Azure HDInsight Hadoop clusters zaawansowanych funkcji analizy](customize-hadoop-cluster.md).
-* Włączony zdalny dostęp do klastra, zalogowany, a następnie otworzyć konsolę wiersza polecenia usługi Hadoop. Aby uzyskać instrukcje, zobacz [dostęp węzeł główny klastra Hadoop](customize-hadoop-cluster.md).
+* Utworzone konto magazynu platformy Azure. Aby uzyskać instrukcje, zobacz [kontach magazynu Azure o](../../storage/common/storage-introduction.md).
+* Zainicjowano obsługę administracyjną dostosowane klaster Hadoop w usłudze HDInsight.  Aby uzyskać instrukcje, zobacz [Instalatora Clusters in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
+* Włączony zdalny dostęp do klastra, zalogowany, a następnie otworzyć konsolę wiersza polecenia usługi Hadoop. Aby uzyskać instrukcje, zobacz [klastrów zarządzania Apache Hadoop](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Przekazywanie danych do usługi Azure blob storage
-Jeśli utworzono maszynę wirtualną platformy Azure, postępując zgodnie z instrukcjami podanymi w [skonfigurować maszynę wirtualną platformy Azure, aby uzyskać zaawansowane funkcje analityczne](../data-science-virtual-machine/setup-virtual-machine.md), tego pliku skryptu powinny pobierane do *C:\\użytkowników \\ \<nazwa_użytkownika\>\\dokumenty\\skryptów do nauki o danych* katalog na maszynie wirtualnej. Te zapytania programu Hive wymagają tylko należy podłączyć własny schemat danych i konfiguracji magazynu obiektów blob platformy Azure w odpowiednich polach jest gotowy do przesłania.
+Jeśli utworzono maszynę wirtualną platformy Azure, postępując zgodnie z instrukcjami podanymi w [skonfigurować maszynę wirtualną platformy Azure, aby uzyskać zaawansowane funkcje analityczne](../../machine-learning/data-science-virtual-machine/overview.md), tego pliku skryptu powinny pobierane do *C:\\użytkowników \\ \<nazwa_użytkownika\>\\dokumenty\\skryptów do nauki o danych* katalog na maszynie wirtualnej. Te zapytania programu Hive wymagają tylko należy podłączyć własny schemat danych i konfiguracji magazynu obiektów blob platformy Azure w odpowiednich polach jest gotowy do przesłania.
 
 Przyjęto założenie, że dane dla tabel programu Hive jest w **nieskompresowanych** formacie tabelarycznym, a także czy danych został przekazany do domyślnego (lub dodatkowego) kontenera konta magazynu używanego przez klaster usługi Hadoop.
 
@@ -38,7 +38,7 @@ Jeśli chcesz rozwiązanie polegające na **danych podróży taksówek NYC**, mu
 
 * **Pobierz** 24 [danych podróży taksówek NYC](http://www.andresmh.com/nyctaxitrips) plików (12 pliki podróży i 12 taryfy plików)
 * **Rozpakuj** wszystkich plików w plikach CSV, a następnie
-* **Przekaż** je do domyślnych (lub odpowiedniego kontenera) konto usługi Azure storage, która została utworzona przez procedury opisanej w [dostosować Azure HDInsight Hadoop clusters for Advanced Analytics Process and Technology](customize-hadoop-cluster.md)tematu. Proces, aby przekazać pliki CSV do domyślnego kontenera na koncie magazynu można znaleźć w tym [strony](hive-walkthrough.md#upload).
+* **Przekaż** je do domyślnej (lub odpowiedniego kontenera) usługi Azure storage account; opcje dla tego konta są wyświetlane w [użycia usługi Azure storage z klastrami HDInsight Azure](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) tematu. Proces, aby przekazać pliki CSV do domyślnego kontenera na koncie magazynu można znaleźć w tym [strony](hive-walkthrough.md#upload).
 
 ## <a name="submit"></a>Jak przesłać zapytania programu Hive
 Zapytania programu hive można przesyłać za pomocą:

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 6f17cb4540feea6400c60c8032d071d6a922c871
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: ec5949438ef179ecef17c65e91138ed4dcde9906
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633065"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467088"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Wymaganie bezpiecznego transferu w usłudze Azure Storage
 
@@ -50,10 +50,10 @@ Można włączyć "bezpieczny transfer wymagane" ustawienie podczas tworzenia ko
 Aby programowo Wymaganie bezpiecznego transferu, użyj ustawienia _supportsHttpsTrafficOnly_ we właściwościach konta magazynu przy użyciu interfejsu API REST, narzędzi i bibliotek:
 
 * [Interfejs API REST](https://docs.microsoft.com/rest/api/storagerp/storageaccounts) (wersja: 2016-12-01)
-* [Program PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) (wersja: 0,7)
+* [Program PowerShell](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) (wersja: 0.7)
 * [Interfejs wiersza polecenia](https://pypi.python.org/pypi/azure-cli-storage/2.0.11) (wersja: 2.0.11)
 * [NodeJS](https://www.npmjs.com/package/azure-arm-storage/) (wersja: 1.1.0)
-* [Zestaw SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (wersja: wersji 6.3.0)
+* [Zestaw SDK platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview) (wersja: 6.3.0)
 * [Zestaw SDK języka Python](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (wersja: 1.1.0)
 * [Zestaw Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (wersja: 0.11.0)
 

@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: e63dd0a6feaedf95bb4845a3c5eded89e6585e36
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318847"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463501"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Lipiec 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w lipca 2018 r.
@@ -24,11 +24,11 @@ Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisan
 [Usługa Azure SQL Data Warehouse](https://aka.ms/sqldw) Ustawia nowe testy porównawcze wydajności wraz z wprowadzeniem natychmiastowy dostęp do danych, który ulepsza operacji mieszania. Natychmiastowy dostęp do danych zmniejsza obciążenie związane z operacje przenoszenia danych za pomocą bezpośredniego programu SQL Server do obsługi operacji danych natywnych programu SQL Server. Integracja z aparatem programu SQL Server bezpośrednio w przypadku przenoszenia danych oznacza, że usługa SQL Data Warehouse teraz **67% szybsze niż usługi Amazon Redshift** przy użyciu obciążenia pochodną standardem branżowym dobrze rozpoznawalnemu [TPC Benchmark™ H (TPC-H)](http://www.tpc.org/tpch/).
 
 ![Usługa Azure SQL Data Warehouse jest szybsze i tańsze niż usługi Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/eb3b908a-464d-4847-b384-9f296083a737.png)
-<sub>źródło: [raport analityka badawczy Joego: Data Warehouse za pomocą testu wydajności chmury](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>źródła: [Raport analityka badawczy Joego: Data Warehouse za pomocą testu wydajności chmury](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 Poza wydajność środowiska uruchomieniowego [badań Joego](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/) raportu także zmierzony stosunek ceny do wydajności określenie koszt USD konkretnych obciążeń. Usługa SQL Data Warehouse została **co najmniej 23% tańsza** niż Redshift pojemności 30 TB obciążeń. Z funkcją SQL Data Warehouse elastycznie skalować zasoby obliczeniowe oraz wstrzymywanie i wznawianie obciążeń klienci płacą tylko wtedy, gdy usługa jest w użyciu, dalsze zmniejszenie kosztów.
 ![Usługa Azure SQL Data Warehouse jest szybsze i tańsze niż usługi Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
-<sub>źródło: [raport analityka badawczy Joego: Data Warehouse za pomocą testu wydajności chmury](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
+<sub>źródła: [Raport analityka badawczy Joego: Data Warehouse za pomocą testu wydajności chmury](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
 ### <a name="query-concurrency"></a>Zapytanie współbieżności
 Usługa SQL Data Warehouse gwarantuje również, że dane są dostępne w Twojej organizacji. Microsoft oferuje ulepszone usługi dotyczące obsługi nawet 128 zapytań jednoczesnych, dzięki czemu większej liczby użytkowników mogą wysyłać zapytania tej samej bazy danych i nie zablokowane przez innych żądań. W odróżnieniu od usługi Amazon Redshift ogranicza maksymalna liczba jednoczesnych kwerend do 50, ograniczanie dostępu do danych w organizacji.
@@ -73,7 +73,7 @@ parameter_ordinal | name | suggested_system_type_id | suggested_system_type_name
 --------------------------------------------------------------------------------
 1                 | @id  | 56                       | int
 ```
-## <a name="sprefreshsqlmodule"></a>POLECENIA SP_REFRESHSQLMODULE
+## <a name="sprefreshsqlmodule"></a>SP_REFRESHSQLMODULE
 [Polecenia sp_refreshsqlmodule](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-refreshsqlmodule-transact-sql) procedury składowanej aktualizacji metadanych dla obiektu bazy danych, jeśli odpowiednie metadane stał się nieaktualne z powodu zmian obiektów. Może to wystąpić, jeśli są modyfikowane tabel podstawowych w celu wyświetlenia i widoku nie zostały utworzone ponownie. Zapisuje dany krok porzucenie i ponowne utworzenie obiektów zależnych.
 
 W poniższym przykładzie pokazano widok, który staje się nieaktualne z powodu zmiany tabeli podstawowej. Można zauważyć, że dane są poprawne dla pierwszego zmiany kolumn (1-Mollie), ale nazwa kolumny jest nieprawidłowa i druga kolumna nie jest obecny. 

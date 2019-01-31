@@ -8,13 +8,13 @@ ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.component: disks
-ms.openlocfilehash: b1127475b873c5679946121e570ef2bb51f25be1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: disks
+ms.openlocfilehash: 968c8aa74a35bf753d92e7c417aaec2a1361f425
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234718"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467972"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Magazyn dysków dla maszyn wirtualnych Windows Azure — informacje
 
@@ -55,7 +55,7 @@ Można dodać dysków z danymi do maszyny wirtualnej w dowolnym momencie przez *
 
 Rozmiary (wersja zapoznawcza), zobacz nasze [— często zadawane pytania](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) Aby dowiedzieć się, jakie regiony są one dostępne w.
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedno zalecenie ostatniego: Użyj TRIM z niezarządzanych dysków w warstwie standardowa
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedno zalecenie ostatnich: TRIM za pomocą niezarządzanych dysków w warstwie standardowa
 
 Jeśli używasz niezarządzanych dysków w warstwie standardowa (HDD), należy włączyć PRZYCINANIE. TRIM odrzuca nieużywanych bloków na dysku, dzięki czemu możesz naliczana tylko za rzeczywiście używasz magazynu. To zmniejszyć koszty Jeśli utworzysz dużych plików, a następnie je usunąć.
 

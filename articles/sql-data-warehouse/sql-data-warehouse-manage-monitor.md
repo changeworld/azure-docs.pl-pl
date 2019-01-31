@@ -6,16 +6,16 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fe989a1693d73dbbea7ed0e3e91ed7aaf6fc37c4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301086"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466987"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 W tym artykule opisano, jak używać dynamicznych widoków zarządzania (DMV) do monitorowania obciążenia. Dotyczy to również badanie wykonywania zapytań w usłudze Azure SQL Data Warehouse.
@@ -45,7 +45,7 @@ Wszystkie zapytania wykonywane w usłudze SQL Data Warehouse są rejestrowane w 
 
 Poniżej przedstawiono kroki, aby wykonać, aby zbadać plany wykonywania zapytań i godziny dla określonej kwerendy.
 
-### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>: Krok 1 zapytanie, które chcesz zbadać
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>KROK 1: Identyfikować zapytania, które chcesz zbadać
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -80,7 +80,7 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-the-query-plan"></a>Krok 2: Badanie w planie zapytania
+### <a name="step-2-investigate-the-query-plan"></a>KROK 2: Badanie w planie zapytania
 Identyfikator żądania umożliwia pobieranie zapytania rozproszonego plan SQL (DSQL) z [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
@@ -96,10 +96,10 @@ Gdy DSQL plan trwa dłużej niż oczekiwano, przyczyną może być planu złożo
 
 Zmuszony do dalszego badania szczegółowe informacje o jednym kroku *operation_type* kolumny długotrwałych krok zapytania i zwróć uwagę, **indeks kroku**:
 
-* Wykonaj krok 3a dla **operacji SQL**: ReturnOperation OnOperation, RemoteOperation,.
+* Wykonaj krok 3a dla **operacji SQL**: ReturnOperation OnOperation, RemoteOperation.
 * Wykonaj krok 3b dla **operacje przenoszenia danych**: ShuffleMoveOperation BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>KROK 3a: badanie SQL w rozproszonych bazach danych
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>KROK 3a: Badanie SQL w rozproszonych bazach danych
 Użyj Identyfikatora żądania i indeks kroku można pobrać szczegółów z [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], który zawiera informacje o wykonaniu tego kroku zapytania na wszystkich rozproszonych baz danych.
 
 ```sql
@@ -119,7 +119,7 @@ Gdy krok zapytania jest uruchomiona, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHO
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>KROK 3b: badanie przenoszenia danych w rozproszonych bazach danych
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>KROK 3b: Badanie przenoszenia danych w rozproszonych bazach danych
 Umożliwia pobieranie informacji o kroku przepływu danych, uruchomione na każdym dystrybucji z identyfikator żądania i indeks kroku [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql

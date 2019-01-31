@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: 593388c143c31bb4736aa317522ed4c52a8a5296
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 01/25/2019
+ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388338"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469121"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -34,7 +34,7 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 >
 > Nadal może mieć wpływ na użytkowników punktu końcowego usługi w następujących scenariuszach:
 > - Aplikacja łączy się z istniejącego serwera rzadko, nasza telemetria nie przechwyciła informacji o tych aplikacjach
-> - Logika automatycznego wdrażania tworzy serwer logiczny przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy`
+> - Logika automatycznego wdrażania tworzy serwer bazy danych SQL, przy założeniu, że to domyślne zachowanie dla połączeń punkt końcowy usługi `Proxy`
 >
 > Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 12000. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
 > [!NOTE]

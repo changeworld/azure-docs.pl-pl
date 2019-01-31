@@ -1,6 +1,6 @@
 ---
 Tytuł: Analiza danych dla początkujących titleSuffix: Opis usługi Azure Machine Learning Studio: Do nauki o danych dla początkujących jest omawia podstawowe pojęcia związane z 5 krótkie filmy wideo, począwszy od 5 pytań analiza danych daje odpowiedzi. Z usługi Azure Machine Learning.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/14/2018
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 0edb90ca7324d47beaa5133d423928e615ff33a9
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.subservice: queues
+ms.openlocfilehash: ea508c04660df4ba103a2a0da39b7cd914cd629c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742817"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471253"
 ---
 # <a name="how-to-use-queue-storage-from-python"></a>Jak używać Magazynu kolejek w języku Python
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -51,7 +51,7 @@ Do wyświetlania i uruchamiania aplikacji przykładowej, który pokazuje, jak u�
 
 Aby uruchomić przykładową aplikację, upewnij się, zainstalowano zarówno `azure-storage-queue` i `azure-storage-common` pakietów.
 
-## <a name="how-to-create-a-queue"></a>Jak: Tworzenie kolejki
+## <a name="how-to-create-a-queue"></a>Instrukcje: Tworzenie kolejki
 
 **QueueService** obiekt umożliwia pracę z kolejki. Poniższy kod tworzy **QueueService** obiektu. Dodaj następujący kod w górnej części każdego pliku Python, w której chcesz uzyskać programowy dostęp do usługi Azure Storage:
 
@@ -67,14 +67,14 @@ queue_service = QueueService(account_name='myaccount', account_key='mykey')
 queue_service.create_queue('taskqueue')
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Jak: Wstawianie komunikatu do kolejki
+## <a name="how-to-insert-a-message-into-a-queue"></a>Instrukcje: Wstawianie komunikatu do kolejki
 Aby wstawić komunikat do kolejki, należy użyć **umieścić\_komunikat** metodę, aby utworzyć nową wiadomość i dodać go do kolejki.
 
 ```python
 queue_service.put_message('taskqueue', u'Hello World')
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Jak: Podgląd kolejnego komunikatu
+## <a name="how-to-peek-at-the-next-message"></a>Instrukcje: Podgląd kolejnego komunikatu
 Można wglądu do wiadomości uzyskać kolejki, bez usuwania go z kolejki, wywołując **podglądu\_wiadomości** metody. Domyślnie **podglądu\_wiadomości** wglądu w pojedynczym komunikacie.
 
 ```python
@@ -83,7 +83,7 @@ for message in messages:
     print(message.content)
 ```
 
-## <a name="how-to-dequeue-messages"></a>Jak: Usuń z kolejki komunikatów
+## <a name="how-to-dequeue-messages"></a>Instrukcje: Usuń z kolejki komunikatów
 Twój kod usuwa komunikat z kolejki w dwóch etapach. Gdy wywołujesz **uzyskać\_wiadomości**, uzyskasz następny komunikat w kolejce domyślnie. Komunikat zwrócony z **uzyskać\_wiadomości** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund. Aby zakończyć usuwanie komunikatu z kolejki, musisz również wywołać **Usuń\_komunikat**. Ten dwuetapowy proces usuwania komunikatów gwarantuje, że gdy kodu nie może przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu można uzyskać ten sam komunikat i spróbuj ponownie. Twój kod wywołuje **Usuń\_komunikat** natychmiast po przetworzeniu komunikatu.
 
 ```python
@@ -103,7 +103,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)        
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Jak: Zmień zawartość komunikatu w kolejce
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Instrukcje: Zmień zawartość komunikatu w kolejce
 Możesz zmienić zawartość komunikatu w kolejce. Jeśli komunikat reprezentuje zadanie robocze, możesz użyć tej funkcji, aby zaktualizować stan zadania. Kod poniżej został użyty **aktualizacji\_komunikat** metodę, aby zaktualizować wiadomości. Limit czasu widoczności jest równa 0, co oznacza, natychmiast pojawi się komunikat, a zawartość jest aktualizowana.
 
 ```python
@@ -112,7 +112,7 @@ for message in messages:
     queue_service.update_message('taskqueue', message.id, message.pop_receipt, 0, u'Hello World Again')
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Jak: Pobieranie długości kolejki
+## <a name="how-to-get-the-queue-length"></a>Instrukcje: Pobieranie długości kolejki
 Możesz uzyskać szacunkową liczbę komunikatów w kolejce. **Uzyskać\_kolejki\_metadanych** metoda prosi usługę kolejki do zwracania metadanych dotyczących tej kolejki, a **approximate_message_count**. Wynik jest przybliżona tylko w przypadku, ponieważ komunikaty mogą dodany lub usunięty, gdy usługa kolejki odpowiada na żądania.
 
 ```python
@@ -120,7 +120,7 @@ metadata = queue_service.get_queue_metadata('taskqueue')
 count = metadata.approximate_message_count
 ```
 
-## <a name="how-to-delete-a-queue"></a>Jak: Usuwanie kolejki
+## <a name="how-to-delete-a-queue"></a>Instrukcje: Usuwanie kolejki
 Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **Usuń\_kolejki** metody.
 
 ```python

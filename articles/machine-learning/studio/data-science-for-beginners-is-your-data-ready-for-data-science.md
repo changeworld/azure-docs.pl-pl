@@ -1,6 +1,6 @@
 ---
-Tytuł: Data evaluation titleSuffix: Opis usługi Azure Machine Learning Studio: Cztery kryteria dane muszą spełnić, aby przystąpić do analizy danych. To wideo zawiera konkretne przykłady ułatwiające wykonywanie podstawowych danych oceny.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Data evaluation titleSuffix: Opis usługi Azure Machine Learning Studio: Cztery kryteria dane muszą spełnić, aby przystąpić do analizy danych. To wideo zawiera konkretne przykłady ułatwiające wykonywanie podstawowych danych oceny.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
 ---

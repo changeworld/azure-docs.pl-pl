@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: bace951141ea1d437d102b11ac4f548beaf5c75e
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: d99149f8112c19a07208523a1ee26ba1c36e5362
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329416"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474228"
 ---
 # <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Tworzenie potoku ciągłej integracji na platformie Azure za pomocą aplikacji platformy Docker, Kubernetes i Python Flask
 Dla aplikacji sztucznej Inteligencji są często dwóch strumieni pracy analityków danych, tworzenie modeli uczenia maszynowego i deweloperów aplikacji, tworzenie aplikacji i ujawnienie go użytkownikom końcowym z. W tym artykule pokażemy, jak do zaimplementowania ciągłej integracji (CI) / ciągłe dostarczanie (CD) potoku dla aplikacji sztucznej Inteligencji. Aplikacji sztucznej Inteligencji składa się z kodu aplikacji, wbudowane z modelu uczenia (ML) wstępnie przetrenowane maszyny. W tym artykule firma Microsoft pobiera pretrained modelu z konta magazynu prywatnego obiektu blob platformy Azure, może to być także konta usług AWS S3. Będziemy używać aplikacji internetowej platformy flask prostego języka python do tego artykułu.

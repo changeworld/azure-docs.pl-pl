@@ -1,6 +1,6 @@
 ---
-Tytuł: Ponowne szkolenie nowej usługi sieci web Machine Learning Studio, za pomocą programu PowerShell titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning, za pomocą poleceń cmdlet programu PowerShell usługi Machine Learning Management.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Ponowne szkolenie nowej usługi sieci web Machine Learning Studio, za pomocą programu PowerShell titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning, za pomocą poleceń cmdlet programu PowerShell usługi Machine Learning Management.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/28/2017
 ---

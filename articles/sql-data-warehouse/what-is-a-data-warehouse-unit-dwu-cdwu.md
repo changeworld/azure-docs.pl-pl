@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 6fc3aa3810fa79e0995fd94708d03310cc5cef53
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244984"
+ms.locfileid: "55299898"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (dwu) i moc obliczeniową jednostek magazynu danych (cDWUs)
 Zalecenia dotyczące wybierania idealne liczbę jednostek magazynu danych (jednostki dwu, cDWUs), aby zoptymalizować cenę i wydajność i jak zmienić liczbę jednostek. 
@@ -62,7 +62,7 @@ WITH
 Każda warstwa wydajności używa nieco jednostkę miary dla ich liczbę jednostek magazynu danych. Różnica ta jest uwzględnione na fakturze, jako jednostka skalowania bezpośrednio przekłada się na rozliczanie.
 
 - Magazyny danych Gen1 są mierzone w jednostki magazynu danych (dwu).
-- Gen2 danych warehousesr są mierzone w obliczeniowej jednostek magazynu danych (cDWUs). 
+- Gen2 — data, magazyny są mierzone w jednostek obliczeniowych magazynu danych (cDWUs). 
 
 Zarówno jednostki dwu, jak i cDWUs obsługują skalowanie w usłudze compute w górę lub w dół oraz wstrzymywania obliczeń, gdy nie jest konieczne korzystanie z magazynu danych. Te operacje są wszystkie na żądanie. Gen2 używa lokalnej pamięci podręcznej opartej na dyskach w węzłach obliczeniowych, aby zwiększyć wydajność. Podczas skalowania lub wstrzymać systemu unieważnienia pamięci podręcznej, a więc okres ciepły pamięci podręcznej jest wymagany, zanim optymalna wydajność jest osiągana.  
 

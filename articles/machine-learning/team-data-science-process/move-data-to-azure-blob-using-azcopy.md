@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6a204c68a05cec827fa8e432889cc60296132d4e
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 3165aad326ad476eb5064f0b99acd8c3f5a036d8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140584"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474704"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>Przenoszenie danych do i z usługi Azure Blob Storage przy użyciu narzędzia AzCopy
 AzCopy to narzędzie wiersza polecenia, zaprojektowana pod kątem przekazywanie, pobieranie i kopiowanie danych do i z obiektów blob, plików i usługi table storage Microsoft Azure.

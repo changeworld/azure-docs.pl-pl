@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 85d69db2f94e4bddf1258233c34c64dcf78a3eeb
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.subservice: common
+ms.openlocfilehash: 8ffd3c34628f96888145a3639ddfe4a190dffc7f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219226"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467071"
 ---
-# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn geograficznie nadmiarowy (GRS): replikacji między regionami dla usługi Azure Storage
+# <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn geograficznie nadmiarowy (GRS): Replikacji między regionami dla usługi Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
 
 ## <a name="read-access-geo-redundant-storage"></a>Magazyn geograficznie nadmiarowy z dostępem do odczytu
@@ -34,9 +34,9 @@ Niektóre kwestie należy pamiętać, korzystając z RA-GRS:
 * Aby uzyskać sugestie dotyczące projektowania w celu zapewnienia wysokiej dostępności przy użyciu RA-GRS, zobacz [projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md).
 
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>Co to jest cel punktu odzyskiwania i cel czasu odzyskiwania w przypadku magazynu GRS?
-**Cel punktu odzyskiwania (RPO):** GRS i RA-GRS, magazyn usługi asynchronicznie geograficznej są replikowane dane z podstawowej do dodatkowej lokalizacji. W przypadku regionalnej awarii w regionie podstawowym firma Microsoft wykona przejściu w tryb failover do regionu pomocniczego. W przypadku przejścia w tryb failover ostatnie zmiany, które nie zostały jeszcze replikacją geograficzną mogą zostać utracone. Liczba minut na potencjalne danych, który utracił jest określany jako cel punktu odzyskiwania. Cel punktu odzyskiwania wskazuje punkt w czasie, do którego można odzyskać dane. Usługa Azure Storage zazwyczaj ma RPO mniej niż 15 minut, mimo, że obecnie nie ma umowy SLA na jak długo geografickou replikaci przyjmuje.
+**Cel punktu odzyskiwania (RPO):** GRS i RA-GRS magazyn usługi asynchronicznie geograficznej są replikowane dane z podstawowej do dodatkowej lokalizacji. W przypadku regionalnej awarii w regionie podstawowym firma Microsoft wykona przejściu w tryb failover do regionu pomocniczego. W przypadku przejścia w tryb failover ostatnie zmiany, które nie zostały jeszcze replikacją geograficzną mogą zostać utracone. Liczba minut na potencjalne danych, który utracił jest określany jako cel punktu odzyskiwania. Cel punktu odzyskiwania wskazuje punkt w czasie, do którego można odzyskać dane. Usługa Azure Storage zazwyczaj ma RPO mniej niż 15 minut, mimo, że obecnie nie ma umowy SLA na jak długo geografickou replikaci przyjmuje.
 
-**Cel czasu odzyskiwania (RTO):** czas RTO jest mierzony czas wykonywania pracy w trybie failover i pobrać konta magazynu z powrotem do trybu online. Moment na wykonanie pracy w trybie failover obejmuje następujące czynności:
+**Cel czasu odzyskiwania (RTO):** Cel czasu odzyskiwania jest miarą jak długo trwa Przejdź w tryb failover i pobrać konta magazynu z powrotem do trybu online. Moment na wykonanie pracy w trybie failover obejmuje następujące czynności:
 
    * Czas firma Microsoft wymaga, aby określić, czy dane można odzyskać w głównej lokalizacji lub jeśli konieczne jest użycie trybu failover
    * Czas do wykonania pracy w trybie failover na koncie magazynu, zmieniając głównej wpisy DNS, aby wskazywały do lokalizacji dodatkowej
@@ -44,9 +44,9 @@ Niektóre kwestie należy pamiętać, korzystając z RA-GRS:
 Firma Microsoft podejmuje odpowiedzialność naszych użytkowników bardzo poważnie zachowania danych. W przypadku każdej okazji odzyskanie danych w regionie podstawowym, firma Microsoft opóźnia przełączenie w tryb failover i koncentruje się na odzyskanie danych. 
 
 ## <a name="paired-regions"></a>Sparowane regiony 
-Podczas tworzenia konta magazynu, możesz wybrać region podstawowy dla konta. Sparowanym regionie pomocniczym jest określana na podstawie podstawowego regionu i nie można jej zmienić. Aby uzyskać aktualne informacje na temat regionów obsługiwanych przez platformę Azure, zobacz [firm ciągłości działania i odzyskiwania po awarii (BCDR): sparowanych regionów platformy Azure](../../best-practices-availability-paired-regions.md).
+Podczas tworzenia konta magazynu, możesz wybrać region podstawowy dla konta. Sparowanym regionie pomocniczym jest określana na podstawie podstawowego regionu i nie można jej zmienić. Aby uzyskać aktualne informacje na temat regionów obsługiwanych przez platformę Azure, zobacz [firm ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure](../../best-practices-availability-paired-regions.md).
 
 ## <a name="see-also"></a>Zobacz także
 - [Replikacja usługi Azure Storage](storage-redundancy.md)
-- [Magazyn lokalnie nadmiarowy (LRS): nadmiarowość danych niedrogiej usługi Azure Storage](storage-redundancy-lrs.md)
-- [Magazyn strefowo nadmiarowy (ZRS): wysoko dostępnych aplikacji usługi Azure Storage](storage-redundancy-zrs.md)
+- [Magazyn lokalnie nadmiarowy (LRS): Nadmiarowość danych niedrogiej usługi Azure Storage](storage-redundancy-lrs.md)
+- [Magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md)

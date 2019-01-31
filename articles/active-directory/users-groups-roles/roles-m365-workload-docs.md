@@ -8,18 +8,18 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8408d620ba78fed07c44feae74c607a555d5563b
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9ef400a5c7b42f6782fefa28e2351b09d8667861
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910589"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470250"
 ---
 # <a name="administrator-roles-for-microsoft-365-workloads"></a>Role administratorów dla obciążeń Microsoft 365
 
@@ -35,7 +35,7 @@ Exchange Online| [Kontrola dostępu oparta na rolach programu Exchange](https://
 SharePoint Online | [Role administratora usługi Azure AD](directory-assign-admin-roles.md)<br>Również [rolę administratora dotyczące programu SharePoint w usłudze Office 365](https://docs.microsoft.com/sharepoint/sharepoint-admin-role) | [Interfejs API programu Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Pobranie przypisania roli](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Zespoły/Skype dla firm | [Role administratora usługi Azure AD](directory-assign-admin-roles.md) | [Interfejs API programu Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Pobranie przypisania roli](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Centrum zabezpieczeń i zgodności (Office 365 zaawansowaną ochronę przed zagrożeniami ochrony, Exchange Online Protection Information) | [Role administratora usługi Office 365](https://docs.microsoft.com/office365/SecurityCompliance/permissions-in-the-security-and-compliance-center) | [PowerShell programu Exchange](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/add-managementroleentry?view=exchange-ps)<br>[Pobranie przypisania roli](https://docs.microsoft.com/powershell/module/exchange/role-based-access-control/get-rolegroup?view=exchange-ps)
-Secure Score | [Role administratora usługi Azure AD](directory-assign-admin-roles.md) | [Interfejs API programu Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Pobranie przypisania roli](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
+Zabezpieczanie wynik | [Role administratora usługi Azure AD](directory-assign-admin-roles.md) | [Interfejs API programu Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Pobranie przypisania roli](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Menedżer zgodności | [Role menedżera zgodności](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud#permissions-and-role-based-access-control) | Niedostępne
 Azure Information Protection | [Role administratora usługi Azure AD](directory-assign-admin-roles.md) | [Interfejs API programu Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)<br>[Pobranie przypisania roli](https://docs.microsoft.com/graph/api/directoryrole-list?view=graph-rest-1.0)
 Microsoft Cloud App Security | [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/cloud-app-security/manage-admins) | [Dokumentacja interfejsu API](https://docs.microsoft.com/cloud-app-security/api-tokens) 

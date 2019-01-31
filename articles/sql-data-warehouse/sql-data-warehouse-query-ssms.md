@@ -2,20 +2,20 @@
 title: Nawiązać połączenie z usługi Azure SQL Data Warehouse — SSMS | Dokumentacja firmy Microsoft
 description: Użyj programu SQL Server Management Studio (SSMS), aby nawiązać połączenie i wykonywania zapytań względem usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6079c3064699da38fad20468517eb97d6ab107f8
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 809802bc34a6cdc45f4b018d35895939e4b8f667
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307204"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471950"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Łączenie z usługą SQL Data Warehouse przy użyciu programu SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]

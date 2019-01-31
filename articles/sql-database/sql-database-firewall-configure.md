@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: e4079a4dcaadab8e9cea0cc1b30a609a091e5937
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 01/25/2019
+ms.openlocfilehash: 0579746bc4dc554fd7e082f6258f2c13ce22f69b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035274"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477679"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse
 
@@ -47,11 +47,11 @@ Próby połączenia z Internetu i platformy Azure muszą najpierw przejść prze
 
 - **Reguły zapory na poziomie serwera:**
 
-  Te reguły umożliwiają klientom dostęp do całego serwera Azure SQL, oznacza to, że wszystkie bazy danych na tym samym serwerze logicznym. Reguły te są przechowywane w **głównej** bazie danych. Reguły zapory na poziomie serwera można skonfigurować za pomocą portalu lub za pomocą instrukcji języka Transact-SQL. Aby utworzyć reguły zapory na poziomie serwera przy użyciu witryny Azure Portal lub programu PowerShell, musisz być właścicielem bądź współautorem subskrypcji. Aby utworzyć regułę zapory na poziomie serwera przy użyciu języka Transact-SQL, musisz połączyć się z wystąpieniem usługi SQL Database za pomocą identyfikatora logowania podmiotu zabezpieczeń na poziomie serwera lub jako administrator usługi Azure Active Directory (co oznacza, że reguła zapory na poziomie serwera musi zostać pierwotnie utworzona przez użytkownika mającego uprawnienia na poziomie platformy Azure).
+  Te reguły umożliwiają klientom dostęp do całego serwera Azure SQL, oznacza to, że wszystkie bazy danych na tym samym serwerze bazy danych SQL. Reguły te są przechowywane w **głównej** bazie danych. Reguły zapory na poziomie serwera można skonfigurować za pomocą portalu lub za pomocą instrukcji języka Transact-SQL. Aby utworzyć reguły zapory na poziomie serwera przy użyciu witryny Azure Portal lub programu PowerShell, musisz być właścicielem bądź współautorem subskrypcji. Aby utworzyć regułę zapory na poziomie serwera przy użyciu języka Transact-SQL, musisz połączyć się z wystąpieniem usługi SQL Database za pomocą identyfikatora logowania podmiotu zabezpieczeń na poziomie serwera lub jako administrator usługi Azure Active Directory (co oznacza, że reguła zapory na poziomie serwera musi zostać pierwotnie utworzona przez użytkownika mającego uprawnienia na poziomie platformy Azure).
 
 - **Reguły zapory na poziomie bazy danych:**
 
-  Te reguły umożliwiają klientom dostęp do niektórych (bezpiecznych) baz danych na tym samym serwerze logicznym. Możesz utworzyć te reguły dla każdej bazy danych (w tym **wzorca** bazy danych) i są przechowywane w poszczególnych bazach danych. Reguły zapory na poziomie bazy danych dla baz danych master i użytkownika tylko mogą być tworzone i zarządzane za pomocą instrukcji języka Transact-SQL i tylko w przypadku, po skonfigurowaniu pierwszej zapory poziomu serwera. Jeśli zakres adresów IP określony w regule zapory na poziomie bazy danych znajduje się poza zakresem określonym w regule zapory na poziomie serwera, dostęp do bazy danych mogą uzyskać tylko ci klienci, którzy mają adresy IP z zakresu ustalonego na poziomie bazy danych. Dla bazy danych można określić maksymalnie 128 reguł zapory na poziomie bazy danych. Aby uzyskać więcej informacji na temat konfigurowania reguł zapory na poziomie bazy danych, zobacz przykład później w tym artykuł i zobacz [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
+  Te reguły umożliwiają klientom dostęp do niektórych (bezpiecznych) baz danych na tym samym serwerze bazy danych SQL. Możesz utworzyć te reguły dla każdej bazy danych (w tym **wzorca** bazy danych) i są przechowywane w poszczególnych bazach danych. Reguły zapory na poziomie bazy danych dla baz danych master i użytkownika tylko mogą być tworzone i zarządzane za pomocą instrukcji języka Transact-SQL i tylko w przypadku, po skonfigurowaniu pierwszej zapory poziomu serwera. Jeśli zakres adresów IP określony w regule zapory na poziomie bazy danych znajduje się poza zakresem określonym w regule zapory na poziomie serwera, dostęp do bazy danych mogą uzyskać tylko ci klienci, którzy mają adresy IP z zakresu ustalonego na poziomie bazy danych. Dla bazy danych można określić maksymalnie 128 reguł zapory na poziomie bazy danych. Aby uzyskać więcej informacji na temat konfigurowania reguł zapory na poziomie bazy danych, zobacz przykład później w tym artykuł i zobacz [sp_set_database_firewall_rule (Azure SQL Database)](https://msdn.microsoft.com/library/dn270010.aspx).
 
 ### <a name="recommendation"></a>Zalecenie
 
@@ -94,7 +94,7 @@ Aby poprawić wydajność, reguły zapory na poziomie serwera są tymczasowo prz
 
 ## <a name="manage-firewall-rules-using-the-azure-portal"></a>Zarządzanie regułami zapory za pomocą witryny Azure portal
 
-Aby ustawić regułę zapory na poziomie serwera w witrynie Azure portal, możesz albo przejść do strony Przegląd dla bazy danych Azure SQL lub na stronie Przegląd serwera logicznego usługi Azure Database.
+Aby ustawić regułę zapory na poziomie serwera w witrynie Azure portal, możesz albo przejść do strony Przegląd dla bazy danych Azure SQL lub na stronie Przegląd dla serwera usługi SQL Database.
 
 > [!TIP]
 > Aby zapoznać się z samouczkiem, zobacz [utworzyć BAZĘ danych przy użyciu witryny Azure portal](sql-database-get-started-portal.md).
@@ -165,7 +165,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> Przykłady programu PowerShell w kontekście z przewodnika Szybki start, zobacz [tworzenie bazy danych — PowerShell](sql-database-powershell-samples.md) i [tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory przy użyciu programu PowerShell](scripts/sql-database-create-and-configure-database-powershell.md)
+> Przykłady programu PowerShell w kontekście z przewodnika Szybki start, zobacz [tworzenie bazy danych — PowerShell](sql-database-powershell-samples.md) i [tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory bazy danych SQL przy użyciu programu PowerShell](scripts/sql-database-create-and-configure-database-powershell.md)
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Zarządzanie regułami zapory za pomocą wiersza polecenia platformy Azure
 
@@ -185,7 +185,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ```
 
 > [!TIP]
-> Aby uzyskać przykład wiersza polecenia platformy Azure w ramach przewodnika Szybki start, zobacz [tworzenie bazy danych — interfejs wiersza polecenia platformy Azure](sql-database-cli-samples.md) i [tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory przy użyciu wiersza polecenia platformy Azure](scripts/sql-database-create-and-configure-database-cli.md)
+> Aby uzyskać przykład wiersza polecenia platformy Azure w ramach przewodnika Szybki start, zobacz [tworzenie bazy danych — interfejs wiersza polecenia platformy Azure](sql-database-cli-samples.md) i [tworzenie pojedynczej bazy danych i konfigurowanie reguły zapory bazy danych SQL przy użyciu wiersza polecenia platformy Azure](scripts/sql-database-create-and-configure-database-cli.md)
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>Zarządzanie regułami zapory za pomocą interfejsu API REST
 

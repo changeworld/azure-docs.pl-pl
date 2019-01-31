@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: c5f5b43a96d5fad5d5f7737ef82585593cd05a7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.date: 01/25/2019
+ms.openlocfilehash: 470a00e62aba4baf5dd13a9c80a0c72df04a81c8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240662"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478342"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -75,9 +75,9 @@ Warstwy usług na dużą skalę jest przeznaczone głównie dla klientów, któr
 
 Na dużą skalę jest obecnie dostępna dla pojedynczych baz danych w następujących regionach:  US1 Zachodnia, zachodnie stany USA 2, wschodnie US1, środkowe stany USA, Europa Zachodnia, Europa Północna, zachodnie Zjednoczone Królestwo, Azja południowo-wschodnia, Japonia Wschodnia, Korea środkowa, Australia Południowo-Wschodnia i Australia Wschodnia.
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-logical-server"></a>Można tworzyć wiele Hiperskali baz danych na każdym serwerze logicznym
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Można tworzyć wiele Hiperskali baz danych na serwerze bazy danych SQL
 
-Tak. Aby uzyskać więcej informacji i ograniczenia dotyczące liczby baz danych na dużą skalę, na każdym serwerze logicznym, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych na serwerze logicznym](sql-database-resource-limits-logical-server.md).
+Tak. Aby uzyskać więcej informacji i limity liczby baz danych na dużą skalę w jednej bazy danych programu SQL server, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md).
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Co to są Charakterystyka wydajności bazy danych na dużą skalę
 
@@ -98,7 +98,7 @@ Bazy danych SQL na dużą skalę oferuje szybką skalowalność, zależnie od po
 
 ## <a name="deep-dive-questions"></a>Szczegółowe omówienie pytania
 
-### <a name="can-i-mix-hyperscale-and-single-databases-on-my-logical-server"></a>Na serwerze w sieci logicznej można łączyć w Hiperskali i pojedynczych baz danych
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Czy można mieszać w Hiperskali i pojedynczych baz danych Mój serwer bazy danych SQL
 
 Tak, możesz.
 
@@ -235,7 +235,7 @@ Nie są jeszcze znane (nadal w wersji zapoznawczej)
 
 Można odczytać danych z usługi Azure Storage i załadować ładowania danych do bazy danych na dużą skalę (podobnie można zrobić za pomocą regularnego pojedynczej bazy danych). Program Polybase nie jest obecnie obsługiwane w usłudze Azure SQL Database. Możesz zrobić przy użyciu technologii Polybase [usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) lub uruchamianie zadania Spark w [usługi Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) z [łącznika usługi Spark SQL](sql-database-spark-connector.md). Łącznik platformy Spark SQL obsługuje wstawiania zbiorczego.
 
-Odzyskiwania prostego lub modelu rejestrowanie zbiorcze nie jest obsługiwana w Hiperskali. Model odzyskiwania pełnego jest wymagany w celu zapewnienia wysokiej dostępności. Jednak w Hiperskali zapewnia lepsze pozyskiwanie stawki ze względu na nowej architekturze dziennika w porównaniu do pojedynczej bazy danych Azure SQL.
+Odzyskiwania prostego lub modelu rejestrowanie zbiorcze nie jest obsługiwana w Hiperskali. Model odzyskiwania pełnego jest wymagany w celu zapewnienia wysokiej dostępności. Jednak w Hiperskali zapewnia lepsze pozyskiwanie szybkości w porównaniu do pojedynczej bazy danych ze względu na nowej architekturze dziennika.
 
 ### <a name="does-sql-database-hyperscale-allow-provisioning-multiple-nodes-for-ingesting-large-amounts-of-data"></a>Baza danych SQL na dużą skalę zezwala na inicjowanie obsługi administracyjnej wielu węzłów do wprowadzania dużych ilości danych
 

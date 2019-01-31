@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: ce884b95daf8c02e51c79068c360ffe4a4fe0d07
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634511"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473208"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Rozwiązywanie problemów z end-to-end, przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -201,8 +201,8 @@ Analizator komunikatów obejmuje zasoby dla usługi Azure Storage, które ułatw
 3. Z **narzędzia** menu, wybierz opcję **Menedżer zasobów**. W **Menedżer zasobów** okno dialogowe, wybierz opcję **pliki do pobrania**, następnie filtrowanie według **usługi Azure Storage**. Widoczne są zasoby magazynu platformy Azure, jak pokazano na poniższej ilustracji.
 4. Kliknij przycisk **wszystkie elementy wyświetlane synchronizacji** zainstalował zasoby magazynu platformy Azure. Dostępne zasoby obejmują:
    * **Usługa Azure Storage reguły koloru:** Reguły kolorów w usłudze Azure Storage umożliwiają definiowanie specjalne filtry, które umożliwia wyróżnianie komunikatów, które zawierają szczegółowe informacje w śladzie kolorów, tekst i style czcionek.
-   * **Wykresy usługi Azure Storage:** Usługa Azure wykresy magazynu są wstępnie zdefiniowane wykresów, które wykresu danych dziennika serwera. Należy pamiętać, aby korzystać z usługi Azure Storage wykresy w tej chwili, może być tylko załadowanie dziennika serwera na siatkę analizy.
-   * **Usługa Azure Storage analizatory składni:** Parsery usługi Azure Storage przeanalizować klienta usługi Azure Storage, server i dzienniki HTTP, aby można było je wyświetlić w siatce analizy.
+   * **Azure Storage Charts:** Usługa Azure wykresy magazynu są wstępnie zdefiniowane wykresów, które wykresu danych dziennika serwera. Należy pamiętać, aby korzystać z usługi Azure Storage wykresy w tej chwili, może być tylko załadowanie dziennika serwera na siatkę analizy.
+   * **Azure Storage Parsers:** Parsery usługi Azure Storage przeanalizować klienta usługi Azure Storage, server i dzienniki HTTP, aby można było je wyświetlić w siatce analizy.
    * **Filtry usługi Azure Storage:** Usługa Azure filtry magazynu są wstępnie zdefiniowane kryteria, które umożliwia wyszukiwanie danych w siatce analizy.
    * **Usługa Azure Storage układów widoku:** Układów widoku w usłudze Azure Storage są układów wstępnie zdefiniowanych kolumn i grupowania w siatce analizy.
 5. Po zainstalowaniu zasoby, należy ponownie uruchomić analizatora komunikatów.
@@ -348,15 +348,15 @@ Teraz, po zapoznaniu się z używaniem analizatora komunikatów na potrzeby anal
 | Wzrost wartości PercentTimeoutError |HTTP.Response.StatusCode   == 500 |Sieć |
 | Wzrost wartości PercentTimeoutError (wszystko) |*StatusCode   == 500 |Wszyscy |
 | Wzrost wartości PercentNetworkError |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Klient |
-| Komunikaty HTTP 403 (zabroniony) |PROTOKÓŁ HTTP. Response.StatusCode == 403 |Sieć |
-| HTTP 404 (nie znaleziono) wiadomości |PROTOKÓŁ HTTP. Response.StatusCode == 404 |Sieć |
+| Komunikaty HTTP 403 (zabroniony) |HTTP.Response.StatusCode   == 403 |Sieć |
+| HTTP 404 (nie znaleziono) wiadomości |HTTP.Response.StatusCode   == 404 |Sieć |
 | 404 (wszystko) |* StatusCode == 404 |Wszyscy |
 | Udostępnione problem autoryzacji sygnatury dostępu Współdzielonego |AzureStorageLog.RequestStatus == "SASAuthorizationError" |Sieć |
-| HTTP 409 (konflikt) wiadomości |PROTOKÓŁ HTTP. Response.StatusCode == 409 |Sieć |
+| HTTP 409 (konflikt) wiadomości |HTTP.Response.StatusCode   == 409 |Sieć |
 | 409 (wszystko) |* StatusCode == 409 |Wszyscy |
 | Wpisy dziennika PercentSuccess niski lub analizy mają operacji ze stanem transakcji ClientOtherErrors |AzureStorageLog.RequestStatus == "ClientOtherError" |Serwer |
 | Ostrzeżenie Nagle'a |((AzureStorageLog.EndToEndLatencyMS-AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) i (AzureStorageLog.RequestPacketSize < 1460) i (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS > = 200) |Serwer |
-| Rejestruje przedział czasu w serwera i sieci |#Timestamp > = 2014-10-20T16:36:38 i #Timestamp < = 2014-10-20T16:36:39 |Serwera i sieci |
+| Rejestruje przedział czasu w serwera i sieci |#Timestamp > = 2014-10-20T16:36:38 i #Timestamp < = 2014-10-20T16:36:39 |Server, Network |
 | Przedział czasu, dzienniki serwera |AzureStorageLog.Timestamp > = 2014-10-20T16:36:38 i AzureStorageLog.Timestamp < = 2014-10-20T16:36:39 |Serwer |
 
 ## <a name="next-steps"></a>Kolejne kroki

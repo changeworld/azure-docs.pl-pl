@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238900"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469196"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
 W tym artykule opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe omówione w innych artykułach projektowania magazynu tabeli. Poniższy diagram przedstawia relacje między różnych wzorców:  
@@ -201,7 +201,7 @@ Umożliwia wyszukiwanie według nazwiska ze strukturą entity powyżej, musisz u
 
 Pierwszej opcji Tworzenie obiektu blob dla każdego unikatowy nazwisko i w każdym magazynie obiektów blob listę **PartitionKey** (dział) i **RowKey** (identyfikator pracownika) wartości dla pracowników, które mają ten nazwisko. Po dodaniu lub usunięciu pracownika należy się upewnić, że zawartości odpowiedniego obiektu blob jest ostatecznie spójny z jednostkami pracownika.  
 
-<u>Opcja #2:</u> tworzenia indeksu jednostek w tej samej partycji  
+<u>Opcja #2.</u> Tworzenie jednostek indeksu w jednej partycji  
 
 Druga opcja można użyć jednostki indeksu, zawierające następujące dane:  
 
@@ -223,7 +223,7 @@ Poniższe kroki opisują proces, który należy wykonać w przypadku koniecznoś
 2. Przeanalizować listy identyfikatorów w polu EmployeeIDs pracowników.  
 3. Aby uzyskać dodatkowe informacje na temat każdego z tych pracowników (na przykład ich adresów e-mail), pobrać każdej jednostki pracowników przy użyciu **PartitionKey** wartość "Sprzedaż" i **RowKey** wartości z kolekcji Lista pracowników, który został uzyskany w kroku 2.  
 
-<u>Opcja #3:</u> tworzenia indeksu jednostek w oddzielnej partycji lub tabeli  
+<u>Opcja #3:</u> Tworzenie indeksu jednostek w oddzielnej partycji lub tabeli  
 
 Trzecia opcja można użyć jednostki indeksu, zawierające następujące dane:  
 
@@ -916,7 +916,7 @@ W pozostałej części tej sekcji opisano niektóre z funkcji w bibliotece klien
 ### <a name="retrieving-heterogeneous-entity-types"></a>Trwa pobieranie typów jednostek heterogenicznych
 Jeśli używasz biblioteki klienta usługi Storage są trzy opcje do pracy z wieloma typami encji.  
 
-Jeśli jest znany typ jednostki przechowywane z określonym **RowKey** i **PartitionKey** wartości, a następnie po pobraniu jednostki, jak pokazano w poprzednich dwóch przykładach, można określić typu jednostki, Pobieranie jednostki typu **EmployeeEntity**: [wykonywania kwerendy punktu, przy użyciu biblioteki klienta magazynu](#executing-a-point-query-using-the-storage-client-library) i [Pobieranie wielu jednostek za pomocą LINQ](#retrieving-multiple-entities-using-linq).  
+Jeśli jest znany typ jednostki przechowywane z określonym **RowKey** i **PartitionKey** wartości, a następnie po pobraniu jednostki, jak pokazano w poprzednich dwóch przykładach, można określić typu jednostki, Pobieranie jednostki typu **EmployeeEntity**: [Wykonywanie kwerendy punktu, przy użyciu biblioteki klienta magazynu](#executing-a-point-query-using-the-storage-client-library) i [Pobieranie wielu jednostek za pomocą LINQ](#retrieving-multiple-entities-using-linq).  
 
 Drugą opcją jest użycie **DynamicTableEntity** typu (zbiór właściwości) zamiast konkretny typ jednostki POCO (Ta opcja może również zwiększyć wydajność, ponieważ nie ma potrzeby do serializacji i deserializacji jednostki do typów .NET). Poniższy kod C# potencjalnie pobiera wielu jednostek o różnych typach z tabeli, ale zwraca wszystkie jednostki jako **DynamicTableEntity** wystąpień. Następnie używa **EntityType** właściwości, aby określić typ każdego obiektu:  
 

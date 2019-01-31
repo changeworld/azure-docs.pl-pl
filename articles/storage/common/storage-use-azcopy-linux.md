@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 79aa9cd3e634238702419d01650c7ef29c4dbb95
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 1059dec80dcca80380b58aa8057162679496adc6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242029"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467377"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Transferowanie danych za pomocą narzędzia AzCopy w systemie Linux
 
@@ -92,7 +92,7 @@ azcopy --source <source> --destination <destination> [Options]
 
 W poniższych przykładach pokazano różne scenariusze do kopiowania danych z obiektów blob systemu Azure firmy Microsoft i plików. Zapoznaj się `azcopy --help` menu, aby uzyskać szczegółowy opis parametrów użytych w każdym przykładzie.
 
-## <a name="blob-download"></a>Obiekt blob: pobieranie
+## <a name="blob-download"></a>Blob: Do pobrania
 ### <a name="download-single-blob"></a>Pobieranie pojedynczego obiektu blob
 
 ```azcopy
@@ -211,7 +211,7 @@ azcopy \
     --exclude-older
 ```
 
-## <a name="blob-upload"></a>Obiekt blob: przekazywanie
+## <a name="blob-upload"></a>Blob: Upload
 ### <a name="upload-single-file"></a>Przekaż pojedynczy plik
 
 ```azcopy
@@ -346,7 +346,7 @@ azcopy \
 ### <a name="customizing-the-mime-content-type-mapping"></a>Dostosowywanie mapowania typ zawartości MIME
 Narzędzie AzCopy używa pliku konfiguracji, który zawiera mapowanie rozszerzenia pliku, typu zawartości. Można dostosować to mapowanie i dodać nowe pary, zgodnie z potrzebami. Mapowanie znajduje się w  ```/usr/lib/azcopy/AzCopyConfig.json```
 
-## <a name="blob-copy"></a>Obiekt blob: kopiowania
+## <a name="blob-copy"></a>Blob: Copy
 ### <a name="copy-single-blob-within-storage-account"></a>Skopiuj jeden obiekt blob w ramach konta magazynu
 
 ```azcopy
@@ -420,7 +420,7 @@ azcopy \
 
 `--sync-copy` może generować koszty dodatkowe ruchu wychodzącego w porównaniu z kopiowania asynchronicznego. Zalecanym podejściem jest użycie tej opcji w Maszynie wirtualnej platformy Azure, który znajduje się w tym samym regionie, co źródłowego konta magazynu w celu uniknięcia koszty ruchu wychodzącego.
 
-## <a name="file-download"></a>Plik: pobieranie
+## <a name="file-download"></a>Plik: Do pobrania
 ### <a name="download-single-file"></a>Pobierz jeden plik
 
 ```azcopy
@@ -444,7 +444,7 @@ azcopy \
 
 Należy zauważyć, że wszelkie puste foldery nie są pobierane.
 
-## <a name="file-upload"></a>Plik: przekazywanie
+## <a name="file-upload"></a>Plik: Upload
 ### <a name="upload-single-file"></a>Przekaż pojedynczy plik
 
 ```azcopy
@@ -477,7 +477,7 @@ azcopy \
     --recursive
 ```
 
-## <a name="file-copy"></a>Plik: kopiowania
+## <a name="file-copy"></a>Plik: Copy
 ### <a name="copy-across-file-shares"></a>Kopiowanie między udziałami plików
 
 ```azcopy
@@ -715,10 +715,10 @@ Aby uzyskać więcej informacji na temat usługi Azure Storage i narzędzia AzCo
 ### <a name="azure-storage-blog-posts"></a>Wpisy blogu magazynu platformy Azure:
 * [Ogłoszenie narzędzie AzCopy w systemie Linux (wersja zapoznawcza)](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Wprowadzenie do usługi Azure Storage Data przenoszenia Library w wersji zapoznawczej](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
-* [Narzędzia AzCopy: Wprowadzenie kopia synchroniczna i dostosowanego typu zawartości](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
-* [Narzędzia AzCopy: Przedstawienie ogólna dostępność 3.0 narzędzie AzCopy oraz wersję zapoznawczą 4.0 narzędzia AzCopy z obsługą tabela i plik](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
-* [Narzędzia AzCopy: Zoptymalizowane pod kątem scenariuszy kopiowania na dużą skalę](https://go.microsoft.com/fwlink/?LinkId=507682)
-* [Narzędzia AzCopy: Obsługa magazyn geograficznie nadmiarowy z dostępem do odczytu](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
-* [Narzędzia AzCopy: Transfer danych za pomocą trybie ponownego uruchamiania i tokenu sygnatury dostępu Współdzielonego](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
-* [Narzędzia AzCopy: Przy użyciu obiektu Blob kopiowania między konta](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
-* [Narzędzia AzCopy: Trwa przekazywanie/pobieranie plików obiektów blob platformy Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
+* [AzCopy: Wprowadzenie do kopii synchroniczne i dostosowanego typu zawartości](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
+* [AzCopy: Ogłoszenie ogólnego dostępności 3.0 narzędzie AzCopy oraz wersję narzędzia AzCopy 4.0, tabela i plik pomocy technicznej w wersji zapoznawczej](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)
+* [AzCopy: Zoptymalizowane pod kątem scenariuszy kopiowania na dużą skalę](https://go.microsoft.com/fwlink/?LinkId=507682)
+* [AzCopy: Obsługa magazynu geograficznie nadmiarowego do odczytu](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/04/07/azcopy-support-for-read-access-geo-redundant-account.aspx)
+* [AzCopy: Transferowanie danych za pomocą trybie ponownego uruchamiania i tokenu sygnatury dostępu Współdzielonego](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
+* [AzCopy: Przy użyciu obiektu Blob kopiowania między konta](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
+* [AzCopy: Trwa przekazywanie/pobieranie plików obiektów blob platformy Azure](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)

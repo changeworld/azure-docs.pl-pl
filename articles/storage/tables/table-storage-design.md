@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: c5b18bce9d0cf78569d0c2fa02ad14c96ad09bd1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237778"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472562"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Projektowanie skalowalnych i wydajnych tabel
 
@@ -132,7 +132,7 @@ Nazwa konta, nazwę tabeli i **PartitionKey** razem identyfikują partycji w ram
 
 W usłudze Table service oddzielnego węzła usługi jeden lub więcej zakończą się partycji i skali usługi przez dynamiczne równoważenie obciążenia partycji na węzłach. Jeśli węzeł ma pod obciążeniem, usłudze table service można *podziału* zakresu partycji obsługiwanych przez ten węzeł na różnych węzłach; gdy zmniejszenia ruchu, usługa może *scalania* zakresu partycji z węzłów cichy na jednym węźle.  
 
-Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: A o wysokiej dostępności usługi magazynu w chmurze with Strong Consistency](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Aby uzyskać więcej informacji na temat szczegółami wewnętrznymi usługi Table service, a w szczególności w jaki sposób usługa zarządza partycjami, zobacz dokument [usługi Microsoft Azure Storage: Usługi magazynu w chmurze o wysokiej dostępności przy użyciu silnej spójności](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Transakcje grupy jednostek
 W usłudze Table service transakcji grup jednostek (EGTs) są tylko wbudowanego mechanizmu do wykonywania niepodzielnych aktualizacje w wielu jednostkach. EGTs są również czasami nazywane *partii transakcji*. EGTs może działać tylko na jednostek przechowywanych w tej samej partycji (czyli udział w tym samym kluczem partycji w danej tabeli). Aby w dowolnym momencie atomic transakcyjnych zachowanie jest wymagana w wielu jednostkach, upewnij się, że te jednostki są w tej samej partycji. Jest to często Przyczyna zachowaniem typów jednostek w tej samej tabeli (i partycji), a nie przy użyciu wielu tabel dla jednostek różnych typów. Pojedynczy EGT może operować na co najwyżej 100 jednostek.  Jeśli prześlesz wielu jednoczesnych EGTs do przetwarzania, jest ważne, aby upewnić się, że te EGTs nie działają na jednostkach, które są wspólne dla EGTs; w przeciwnym razie przetwarzania może być opóźnione.

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278461"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472656"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Tworzenie i zarządzanie nimi zadania elastyczne bazy danych SQL przy użyciu programu PowerShell (wersja zapoznawcza)
 
@@ -69,7 +69,7 @@ W poniższej tabeli wymieniono się wszystkie typy obiektów z **zadania Elastic
   </tr>
 
   <tr>
-    <td>PLIK DACPAC</td>
+    <td>DACPAC</td>
     <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Aplikacja warstwy danych </a> pakietu, które mają być stosowane w bazach danych.
     </td>
     <td>
@@ -106,7 +106,7 @@ W poniższej tabeli wymieniono się wszystkie typy obiektów z **zadania Elastic
     </td>
   </tr>
 <tr>
-    <td>Kolekcja niestandardowa podrzędnego Target</td>
+    <td>Custom Collection Child Target</td>
     <td>Obiekt docelowy bazy danych, który jest wywoływany przez kolekcję niestandardową.</td>
     <td>
     <p>Add-AzureSqlJobChildTarget</p>
@@ -189,7 +189,7 @@ W poniższej tabeli wymieniono się wszystkie typy obiektów z **zadania Elastic
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>Obsługiwane zadania Elastic Database grupować typy
-Zadanie wykonuje skrypty języka Transact-SQL (T-SQL) lub aplikacji DACPACs między grupą baz danych. Po przesłaniu zadania do wykonania w grupie baz danych zadania "rozwija" do zadania podrzędne, w których każdy wykonuje żądane wykonywania względem pojedynczej bazy danych w grupie. 
+Zadanie wykonuje skrypty języka Transact-SQL (T-SQL) lub aplikacji DACPACs między grupą baz danych. Po przesłaniu zadania do wykonania w grupie baz danych zadania "rozwija" do zadania podrzędne, w których każdy wykonuje żądane wykonywanie kodu na poszczególnych baz danych w grupie. 
 
 Istnieją dwa typy grup, które można utworzyć: 
 

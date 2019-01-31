@@ -11,22 +11,24 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 9d566c0f95325635c5ce5030f4d3b22dba7ceb08
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/25/2019
+ms.openlocfilehash: 719e8c605dfc91b1d9c358158aa3dca248173f90
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726035"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472018"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
 Usługa Azure SQL Database umożliwia łatwy zakup w pełni zarządzany aparat bazy danych PaaS, który spełnia Twoje potrzeby wydajności i kosztów. W zależności od modelu wdrażania usługi Azure SQL Database można wybrać model zakupu, która spełnia Twoje potrzeby:
+
 - [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) (zalecane), pozwala wybrać dokładne zalecenia dotyczące ilości pojemność magazynu i obliczeń potrzebne dla danego obciążenia.
 - [Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) , aby wybrać powiązany obliczeniowych i magazynu pakiety ze zrównoważonym dla typowych obciążeń.
 
 Różne modele zakupu są dostępne w modelach wdrażania usługi Azure SQL Database:
-- [Serwerami logicznymi](sql-database-logical-servers.md) w [usługi Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Ten model zakupu, można wybrać [pojedyncze bazy danych](sql-database-single-databases-manage.md) lub [pul elastycznych](sql-database-elastic-pool.md).
+
+- [Pojedyncze bazy danych](sql-database-single-databases-manage.md) i [pul elastycznych](sql-database-elastic-pool.md) w [usługi Azure SQL Database](sql-database-technical-overview.md) oferują zarówno [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [oparty na rdzeniach wirtualnych model zakupu](sql-database-service-tiers-vcore.md). 
 - [Wystąpienia zarządzane](sql-database-managed-instance.md) w usłudze Azure SQL Database tylko w ramach oferty [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
@@ -64,7 +66,7 @@ Jednostki transakcji bazy danych (DTU) reprezentuje mieszany pomiar procesora CP
 
 ### <a name="database-transaction-units-dtus"></a>Jednostki transakcji bazy danych (Dtu)
 
-Dla pojedynczej bazy danych Azure SQL na określonym obliczenia rozmiaru na [warstwy usług](sql-database-single-database-scale.md), firma Microsoft gwarantuje więc pewnego poziomu zasobów dla tej bazy danych (niezależnie od innej bazy danych w chmurze platformy Azure), zapewniając przewidywalne poziom wydajności. Ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub liczby jednostek Dtu i jest miarą powiązane obliczeń, magazynu i zasobów we/wy. Współczynnik obejmujący te zasoby był pierwotnie określany za [obciążenia porównawczego OLTP](sql-database-benchmark-overview.md), jest przeznaczona do typowym, rzeczywistym obciążeniom OLTP. Gdy obciążenie przekracza ilość dowolnego z następujących zasobów, przepływność jest ograniczone — wynikowy niska wydajność i przekroczenia limitu czasu. Zasoby używane przez obciążenie nie miało wpływu na zasoby dostępne dla innych baz danych SQL w chmurze platformy Azure, a zasoby używane przez inne obciążenia nie miało wpływu na zasoby dostępne dla usługi SQL database.
+Dla pojedynczej bazy danych na określonym obliczenia rozmiaru na [warstwy usług](sql-database-single-database-scale.md), firma Microsoft gwarantuje więc pewnego poziomu zasobów dla tej bazy danych (niezależnie od innej bazy danych w chmurze platformy Azure), zapewniając przewidywalne poziom wydajność. Ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub liczby jednostek Dtu i jest miarą powiązane obliczeń, magazynu i zasobów we/wy. Współczynnik obejmujący te zasoby był pierwotnie określany za [obciążenia porównawczego OLTP](sql-database-benchmark-overview.md), jest przeznaczona do typowym, rzeczywistym obciążeniom OLTP. Gdy obciążenie przekracza ilość dowolnego z następujących zasobów, przepływność jest ograniczone — wynikowy niska wydajność i przekroczenia limitu czasu. Zasoby używane przez obciążenie nie miało wpływu na zasoby dostępne dla innych baz danych SQL w chmurze platformy Azure, a zasoby używane przez inne obciążenia nie miało wpływu na zasoby dostępne dla usługi SQL database.
 
 ![obwiedni](./media/sql-database-what-is-a-dtu/bounding-box.png)
 

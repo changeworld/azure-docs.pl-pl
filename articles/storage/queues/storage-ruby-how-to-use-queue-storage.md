@@ -9,13 +9,13 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.component: queues
-ms.openlocfilehash: 67a5dc0eddb6deb51ec69c68c48d5edf308cf43e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: queues
+ms.openlocfilehash: 7ebb4326a8ec8a3382a5488ce3b966526bef446a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231570"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456276"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Jak używać Magazynu kolejek w języku Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -80,14 +80,14 @@ rescue
 end
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Porady: Wstawianie komunikatu do kolejki
+## <a name="how-to-insert-a-message-into-a-queue"></a>Instrukcje: Wstawianie komunikatu do kolejki
 Aby wstawić komunikat do kolejki, należy użyć **create_message()** metodę, aby utworzyć nową wiadomość i dodać go do kolejki.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Porady: Podgląd kolejnego komunikatu
+## <a name="how-to-peek-at-the-next-message"></a>Instrukcje: Podgląd kolejnego komunikatu
 Użytkownik może wglądu do wiadomości uzyskać kolejki bez jego usuwania z kolejki, wywołując **podglądu\_messages()** metody. Domyślnie **podglądu\_messages()** wglądu w pojedynczym komunikacie. Można również określić, ile komunikatów, które chcesz wglądu.
 
 ```ruby
@@ -109,7 +109,7 @@ azure_queue_service.delete_message("test-queue",
   messages[0].id, messages[0].pop_receipt)
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Porady: Zmiana zawartości komunikatu w kolejce
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Instrukcje: Zmień zawartość komunikatu w kolejce
 Możesz zmienić zawartość komunikatu w kolejce. Kod poniżej został użyty **update_message()** metodę, aby zaktualizować wiadomości. Metoda zwraca spójną kolekcję zawierającą pop otrzymywania komunikatu w kolejce i czasem UTC wartość daty i godziny reprezentujące komunikat będzie widoczny w kolejce.
 
 ```ruby
@@ -119,7 +119,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Instrukcje: Dodatkowych opcji usuwania z kolejki komunikatów
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Instrukcje: Dodatkowe opcje usuwania z kolejki komunikatów
 Istnieją dwa sposoby dostosowania pobierania komunikatów z kolejki.
 
 1. Możesz uzyskać partię komunikatów.
@@ -143,7 +143,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
   "test-queue")
 ```
 
-## <a name="how-to-delete-a-queue"></a>Porady: Usuwanie kolejki
+## <a name="how-to-delete-a-queue"></a>Instrukcje: Usuwanie kolejki
 Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **Usuń\_queue()** metody na obiekcie kolejki.
 
 ```ruby

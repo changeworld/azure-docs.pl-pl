@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 24df1cb5b7a9cc1209940bbaaa1217a80ea74918
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c99b22a5dad1e64525b2b2ebcd214c3dc5bfb28f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259652"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473599"
 ---
-# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Zarządzanie zasobami usługi Azure Cosmos DB przy użyciu Eksploratora usługi Azure Storage
+# <a name="work-with-data-using-azure-storage-explorer"></a>Praca z danymi za pomocą Eksploratora usługi Azure Storage
 
 Korzystanie z usługi Azure Cosmos DB w Eksploratorze usługi Azure Storage pozwala użytkownikom zarządzać jednostkami usługi Azure Cosmos DB, wykonywać operacje na danych oraz aktualizować procedury składowane i wyzwalacze, a także inne jednostki platformy Azure, takie jak obiekty blob i kolejki usługi Storage. Za pomocą jednego narzędzia można teraz centralnie zarządzać różnymi jednostkami platformy Azure. W tej chwili Eksploratora usługi Azure Storage obsługuje konta usługi Cosmos skonfigurowane dla programu SQL, MongoDB, wykresów i interfejsy API tabel.
 
