@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 74f187cff5abd54780d064e9e74c33901aa9fb82
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 6ad90c2d13ebeaa077dc6264f84a4ebd8a340a8c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410748"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159088"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Przywracanie serwera usługi Azure Database for MySQL za pomocą interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia przywraca pojedynczy serwer usługi Azure Database for MySQL do wcześniejszego punktu w czasie.
@@ -35,8 +35,8 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 
 | **Polecenie** | **Uwagi** |
 |---|---|
-| [az group create](/cli/azure/group#create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az mysql server create](/cli/azure/mysql/server#create) | Tworzy serwer MySQL hostujący bazy danych. |
+| [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az mysql server create](/cli/azure/mysql/server) | Tworzy serwer MySQL hostujący bazy danych. |
 | [az mysql server restore](/cli/azure/mysql/server#restore) | Przywraca serwer z kopii zapasowej. |
 | [az group delete](/cli/azure/group) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 

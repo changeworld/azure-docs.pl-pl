@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 636adcf15479fe8e072b833b59ddc78b5f820550
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 23f2d32b2323821155467bd1ad12e9baf8c33074
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745078"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150754"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych SQL Azure
 
@@ -29,8 +29,6 @@ W tym przewodniku Szybki start nawiążesz połączenie z bazą danych SQL na pl
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
-
-* Skonfigurowana reguła zapory na poziomie serwera. Aby uzyskać więcej informacji, zobacz temat [Tworzenie reguły zapory na poziomie serwera](sql-database-get-started-portal-firewall.md).
 
 #### <a name="install-the-latest-ssms"></a>Instalowanie najnowszej wersji środowiska SSMS
 

@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: da4fda3d0cfa6cb33d2dd8bb3bb844f18654c30a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b2a9c6c31771be1316038d794d1c15ff9fa45916
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54851899"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166734"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(PRZESTARZAŁE) Konfigurowanie jednostki usługi Azure AD dla klastra Kubernetes w usłudze Container Service
 
@@ -26,7 +26,7 @@ ms.locfileid: "54851899"
 W usłudze Azure Container Service klaster Kubernetes wymaga [jednostki usługi Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) do współpracy z interfejsami API platformy Azure. Nazwa główna usługi jest potrzebna do dynamicznego zarządzania zasobami, takimi jak [trasy zdefiniowane przez użytkownika](../../virtual-network/virtual-networks-udr-overview.md) i narzędzie [Azure Load Balancer dla warstwy 4](../../load-balancer/load-balancer-overview.md).
 
 
-W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dla klastra Kubernetes. Przykładowo, jeśli zainstalowano i skonfigurowano [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2), można uruchomić polecenie [`az acs create`](/cli/azure/acs#az_acs_create), aby jednocześnie utworzyć klaster Kubernetes i jednostkę usługi.
+W tym artykule przedstawiono różne sposoby konfigurowania jednostki usługi dla klastra Kubernetes. Przykładowo, jeśli zainstalowano i skonfigurowano [interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2), można uruchomić polecenie [`az acs create`](/cli/azure/acs), aby jednocześnie utworzyć klaster Kubernetes i jednostkę usługi.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Wymagania dotyczące nazwy głównej usługi
