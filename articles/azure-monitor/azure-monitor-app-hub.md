@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 6cdcea65fd91e7914bd868ad2472de11986916fa
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f2c6475d67958e8ccd3e46598a46cc8bfee9ef54
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913278"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300680"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -220,7 +220,7 @@ ms.locfileid: "54913278"
                                                         <h3>Ochrona prywatności, zabezpieczeń, użycie &amp; kosztów</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Postępowania z danymi osobowymi</a><br>
-                                                            <a href="./app/data-retention-privacy.md">Zbieranie danych, utrzymania, &amp; magazynu</a><br>
+                                                            <a href="./app/data-retention-privacy.md">Zbieranie danych, przechowywania, &amp; magazynu</a><br>
                                                             <a href="./app/resources-roles-access-control.md">Dostępu opartego na rolach</a><br>
                                                             <a href="./app/ip-addresses.md">Adres IP &amp; wyjątków zapory</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Użycie i szacunkowe koszty</a>

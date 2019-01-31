@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma,carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: d8ff07d43d1efbadf1ddd397b6690c93c54c4f27
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 5100ef307bc125b21e1c42c87856492a4a496065
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603552"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455642"
 ---
 # <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurowanie długoterminowego przechowywania kopii zapasowych przy użyciu magazynu usługi Azure Recovery Services
 
@@ -71,7 +71,7 @@ Skonfiguruj magazyn usługi Azure Recovery Services do [przechowywania automatyc
    ![Tworzenie magazynu](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
    > [!IMPORTANT]
-   > Magazyn musi znajdować się w tym samym regionie co serwer logiczny Azure SQL i musi używać tej samej grupy zasobów co serwer logiczny.
+   > Magazyn musi znajdować się w tym samym regionie co serwer bazy danych SQL i musi używać tej samej grupie zasobów co serwer bazy danych SQL.
 
 10. Po utworzeniu nowego magazynu wykonaj niezbędne kroki, aby powrócić do **magazyn usługi Recovery services** strony.
 
@@ -154,7 +154,7 @@ Poniższe sekcje pokazują, jak skonfigurować magazyn usługi Azure Recovery Se
 Użyj [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) do utworzenia magazynu usługi recovery services.
 
 > [!IMPORTANT]
-> Magazyn musi znajdować się w tym samym regionie co serwer logiczny Azure SQL i musi używać tej samej grupy zasobów co serwer logiczny.
+> Magazyn musi znajdować się w tym samym regionie co serwer bazy danych SQL i musi używać tej samej grupie zasobów co serwer bazy danych SQL.
 
 ```PowerShell
 # Create a recovery services vault

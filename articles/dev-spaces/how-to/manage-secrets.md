@@ -3,7 +3,7 @@ title: Jak do zarządzania wpisami tajnymi, podczas pracy z usługą Azure Dev m
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 05/11/2018
@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: e155b4151a3b974e9ccc56a88028a89c35896522
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7081412172b617632073cad4e76d7c8fc4e81519
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014005"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466561"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Jak do zarządzania wpisami tajnymi, pracując z przestrzenią deweloperów platformy Azure
 
@@ -67,7 +67,7 @@ Usługa Azure Dev do magazynowania zapewnia zaleca się dwie opcje przechowywani
 7. Upewnij się, że dodano _values.dev.yaml_ do _.gitignore_ plik, aby unikać zatwierdzania wpisów tajnych w kontroli źródła.
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>Metoda 2: Wbudowane bezpośrednio w azds.yaml
+## <a name="method-2-inline-directly-in-azdsyaml"></a>Metoda 2. Wbudowane bezpośrednio w azds.yaml
 1.  W _azds.yaml_, ustaw wpisami tajnymi w ramach yaml sekcji konfiguracji/tworzenie/instalację. Chociaż możesz wprowadzać hasło wartości bezpośrednio, nie zaleca się ponieważ _azds.yaml_ jest ewidencjonowany w kontroli źródła. Zamiast tego dodać symbole zastępcze przy użyciu składni "$PLACEHOLDER".
 
     ```yaml

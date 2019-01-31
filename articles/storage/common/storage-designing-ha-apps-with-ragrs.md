@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 718a8fb82c3d85baf94e2e9c316f40b964749912
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231367"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454947"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
 
@@ -24,12 +24,12 @@ Wspólną cechą infrastruktury opartej na chmurze, takich jak Azure Storage jes
 
 Ten artykuł koncentruje się na GRS i RA-GRS. W przypadku magazynu GRS trzy kopie danych są przechowywane w regionie podstawowym, które zostały wybrane podczas konfigurowania konta magazynu. Trzy dodatkowe kopie są obsługiwane asynchronicznie w regionie pomocniczym oddalonym o określony przez platformę Azure. RA-GRS zapewnia magazyn geograficznie nadmiarowy z dostępem do odczytu kopię pomocniczą.
 
-Aby uzyskać informacje o tym, które regiony podstawowego są skojarzone z jakich dodatkowych regionach zobacz [firm ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Aby uzyskać informacje o tym, które głównej regionów są skojarzone z jakich dodatkowych regionach zobacz [firm ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Brak fragmentów kodu zawartych w tym artykule oraz link do pełny przykład na końcu, które można pobierać i uruchamiać.
 
 > [!NOTE]
-> Usługa Azure Storage obsługuje teraz magazyn strefowo nadmiarowy (ZRS) do tworzenia wysoko dostępnych aplikacji. Magazyn ZRS zapewnia proste rozwiązanie dla wielu aplikacji na potrzeby nadmiarowości. Magazyn ZRS zapewnia ochronę przed awariami sprzętu lub poważnej awarii wpływających na jednym centrum danych. Aby uzyskać więcej informacji, zobacz [magazyn strefowo nadmiarowy (ZRS): wysoko dostępnych aplikacji usługi Azure Storage](storage-redundancy-zrs.md).
+> Usługa Azure Storage obsługuje teraz magazyn strefowo nadmiarowy (ZRS) do tworzenia wysoko dostępnych aplikacji. Magazyn ZRS zapewnia proste rozwiązanie dla wielu aplikacji na potrzeby nadmiarowości. Magazyn ZRS zapewnia ochronę przed awariami sprzętu lub poważnej awarii wpływających na jednym centrum danych. Aby uzyskać więcej informacji, zobacz [magazyn strefowo nadmiarowy (ZRS): Aplikacje usługi Azure Storage o wysokiej dostępności](storage-redundancy-zrs.md).
 
 ## <a name="key-features-of-ra-grs"></a>Najważniejsze funkcje RA-GRS
 
@@ -200,7 +200,7 @@ Działanie magazynu RA-GRS polega na replikowaniu transakcji z regionu podstawow
 
 W poniższej tabeli przedstawiono przykład co może się zdarzyć, gdy aktualizujesz Szczegóły pracownika, aby upewnić się, jej członkiem *Administratorzy* roli. Ze względu na tym przykładzie ta migracja wymaga aktualizacji **pracowników** jednostki i zaktualizuj **roli administrator** jednostki wraz z liczbą całkowitą liczbę administratorów. Zwróć uwagę, jak aktualizacje są stosowane poza kolejnością w regionie pomocniczym.
 
-| **czas** | **Transakcji**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **wynik** |
+| **czas** | **Transakcja**                                            | **Replikacja**                       | **Czas ostatniej synchronizacji** | **wynik** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Odp.: transakcji <br> Wstaw pracownika <br> jednostki w podstawowej |                                   |                    | Transakcja wstawione do głównej, A<br> nie jeszcze zreplikowane. |
 | T1       |                                                            | Transakcja A <br> replikowane do<br> pomocnicze | T1 | Replikowane do dodatkowej A transakcji. <br>Czas ostatniej synchronizacji aktualizacji.    |

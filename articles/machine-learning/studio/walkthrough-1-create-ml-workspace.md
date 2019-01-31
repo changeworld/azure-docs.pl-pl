@@ -1,6 +1,6 @@
 ---
-Tytuł: "Krok 1: Tworzenie obszaru roboczego "titleSuffix: Opis usługi Azure Machine Learning Studio: "Krok 1 programowanie przewodnik rozwiązania do analizy predykcyjnej: Dowiedz się, jak skonfigurować nowy obszar roboczy usługi Azure Machine Learning Studio. "
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: "Krok 1: Tworzenie obszaru roboczego "titleSuffix: Opis usługi Azure Machine Learning Studio: "Krok 1 programowanie przewodnik rozwiązania do analizy predykcyjnej: Dowiedz się, jak skonfigurować nowy obszar roboczy usługi Azure Machine Learning Studio. "
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/23/2017
 ---

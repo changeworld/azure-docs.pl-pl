@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a8a229beab03dd8cb26d9cfb9c3b945059d6f70
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 835ba407fb72a8cb512425e59cf56ba1a1cc8a4b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164949"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301275"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -243,11 +243,15 @@ Sugerujemy, wykonaj następujące kroki, aby dostosować wydajność usługi Dat
 
 2. **Diagnozowanie i zoptymalizować wydajność**. Jeśli wydajność, której możesz obserwować nie spełniają Twoich oczekiwań, musisz określić wąskie gardła wydajności. Następnie zoptymalizować wydajność, aby usunąć lub zmniejszają efekt wąskich gardeł. 
 
-    W niektórych scenariuszach, pojawi się także "**porady dotyczące dostrajania wydajności**" sekcji w górnej części [działanie monitorowania strony kopiowania](copy-activity-overview.md#monitor-visually), która informuje identyfikowany wąskie gardło i przeprowadzi Cię o tym, jak zwiększyć kopiowania Przepływność dla takiej sytuacji kopiowania.
+    W niektórych przypadkach po wykonaniu działania kopiowania w usłudze ADF, bezpośrednio zobaczysz "**porady dotyczące dostrajania wydajności**" w górnej części [działanie monitorowania strony kopiowania](copy-activity-overview.md#monitor-visually) jak pokazano w poniższym przykładzie. Go nie pozwalają określić wąskie gardło do wykonywania kopii danej tylko przeprowadzi Cię w celu zmiany w taki sposób, aby zwiększyć przepływność kopiowania. Wydajność, której porady dotyczące dostrajania aktualnie zawierają sugestie, takich jak przy użyciu technologii PolyBase podczas kopiowania danych do usługi Azure SQL Data Warehouse, aby zwiększyć liczbę usługi Azure Cosmos DB RU lub jednostek DTU bazy danych SQL Azure, gdy zasobu na dane przechowywane po stronie jest wąskie gardło, aby usunąć niepotrzebne przygotowane kopiowania, itd. Dostrajanie reguł wydajności będą stopniowo wzbogacone także.
 
-    **Przykład: Skopiuj do bazy danych SQL Azure za pomocą wskazówki dotyczące dostrajania wydajności** ![skopiuj monitorowanie za pomocą wskazówki dotyczące dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+    **Przykład: kopiowania do bazy danych SQL Azure, za pomocą wskazówki dotyczące dostrajania wydajności**
 
-    Pełny opis Diagnostyka wydajności wykracza poza zakres tego artykułu, ale poniżej przedstawiono niektóre typowe kwestie dotyczące:
+    W tym przykładzie podczas kopiowania Uruchom ADF Zauważ, że ujścia Azure SQL DB osiągnie wysokie wykorzystanie jednostek DTU, której spowalnia operacje zapisu, dlatego sugestię jest zwiększenie warstwy bazy danych SQL Azure za pomocą więcej jednostek DTU. 
+
+    ![Skopiuj monitorowanie za pomocą wskazówki dotyczące dostrajania wydajności](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    Ponadto poniżej przedstawiono niektóre typowe kwestie dotyczące. Pełny opis Diagnostyka wydajności wykracza poza zakres tego artykułu.
 
    * Funkcje wydajności:
      * [Kopiuj równoległe](#parallel-copy)

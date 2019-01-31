@@ -1,6 +1,6 @@
 ---
-title: Replikacja transakcyjna z serwerem logicznym SQL platformy Azure i wystąpienia zarządzanego Azure SQL | Dokumentacja firmy Microsoft"
-description: Informacje o używaniu replikację transakcyjną programu SQL Server z serwerami logicznymi usługi Azure SQL Database i wystąpienia zarządzanego SQL.
+title: Replikacja transakcyjna, za pomocą usługi Azure SQL Database | Dokumentacja firmy Microsoft"
+description: Informacje o używaniu replikację transakcyjną programu SQL Server przy użyciu autonomicznej, puli i wystąpienie bazy danych w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,32 +11,35 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/08/2019
-ms.openlocfilehash: d94173f9b1940613c26451658b90c956c71876fb
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 01/25/2019
+ms.openlocfilehash: 548bc9afb37f8c4a1c6c208a8741d1e3da0a784c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353247"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469400"
 ---
-# <a name="transactional-replication-with-azure-sql-logical-server-and-azure-sql-managed-instance"></a>Replikacja transakcyjna z serwerem logicznym SQL platformy Azure i wystąpienia zarządzanego Azure SQL
+# <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacji transakcyjnej przy użyciu autonomicznej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
 Replikacja transakcyjna to funkcja usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server, która pozwala na replikowanie danych z tabeli w usłudze Azure SQL Database lub SQL Server do tabel umieszczone na zdalne bazy danych. Ta funkcja służy do synchronizowania wielu tabel w różnych bazach danych.
 
 ## <a name="when-to-use-transactional-replication"></a>Kiedy należy używać replikacji transakcyjnej
 
 Replikacja transakcyjna jest przydatne w następujących scenariuszach:
+
 - Opublikuj zmiany wprowadzone w co najmniej jedną tabelę w bazie danych, a następnie dystrybuować je do jednej lub wielu programu SQL Server lub Azure SQL baz danych, które subskrybuje zmiany.
 - Zachowaj kilka rozproszonych baz danych w stanie zsynchronizowane.
 - Migrowanie baz danych z jednego programu SQL Server lub wystąpienia zarządzanego do innej bazy danych, stale publikując zmiany.
 
-## <a name="overview"></a>Przegląd 
+## <a name="overview"></a>Przegląd
+
 Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustracji:  
 
 ![Replikacja za pomocą bazy danych SQL](media/replication-to-sql-database/replication-to-sql-database.png)
 
 
 **Wydawcy** to wystąpienie lub serwer, który publikuje zmiany wprowadzone na niektórych tabel (artykuły), wysyłając aktualizacje z dystrybutorem. Publikowanie do usługi Azure SQL Database z lokalnego programu SQL Server jest obsługiwana w następujących wersjach programu SQL Server:
+
     - 2019 r programu SQL Server (wersja zapoznawcza)
     - SQL Server 2016 do programu SQL 2017
     - SQL Server 2014 SP1 CU3 lub większa (12.00.4427)
@@ -47,9 +50,9 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 
 **Dystrybutora** to wystąpienie lub serwer, który zbiera zmian w artykułach z wydawcą i przesyła je do subskrybentów. Dystrybutor może być wystąpienia zarządzanego Azure SQL Database lub SQL Server (dowolna wersja, jak długie go równą lub większą niż wersja, wydawca). 
 
-**Subskrybenta** to wystąpienie lub serwerze, który odbiera zmiany wprowadzone na wydawcy. Subskrybenci mogą być Azure SQL Database logiczne serwera/wystąpienia zarządzanego lub SQL Server. Subskrybent na serwerze logicznym musi być skonfigurowany jako subskrybent wypychania. 
+**Subskrybenta** to wystąpienie lub serwerze, który odbiera zmiany wprowadzone na wydawcy. Subskrybentów można osobno, puli i wystąpienia bazy danych w bazach danych Azure SQL Database lub SQL Server. Subskrybent w przypadku autonomicznych lub próbkowania bazy danych musi być skonfigurowany jako subskrybenta wypychania. 
 
-| Rola | Serwer logiczny | Wystąpienie zarządzane |
+| Rola | Autonomiczne i bazy danych w puli | Wystąpienie bazy danych |
 | :----| :------------- | :--------------- |
 | **Wydawca** | Nie | Yes | 
 | **Dystrybutor** | Nie | Yes|
@@ -60,7 +63,7 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
 
 
-| Replikacja | Serwer logiczny | Wystąpienie zarządzane |
+| Replikacja | Autonomiczne i bazy danych w puli | Wystąpienie bazy danych|
 | :----| :------------- | :--------------- |
 | [**transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Yes | 
 | [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Yes|
@@ -72,27 +75,29 @@ Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-da
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > - Próba skonfigurowania replikacji za pomocą starszej wersji może spowodować błąd, numer MSSQL_REPL20084 (ten proces nie może połączyć się subskrybenta.) i MSSQ_REPL40532 (nie można otworzyć serwera <name> żądanego podczas logowania. Logowanie nie powiodło się.)
+  > - Próba skonfigurowania replikacji za pomocą starszej wersji może spowodować błąd, numer MSSQL_REPL20084 (ten proces nie może połączyć się subskrybenta.) i MSSQ_REPL40532 (nie można otworzyć serwera \<name > żądanego podczas logowania. Logowanie nie powiodło się.)
   > - Aby korzystać ze wszystkich funkcji usługi Azure SQL Database, należy używać najnowszej wersji [programu SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) i [programu SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017).
 
 ## <a name="requirements"></a>Wymagania
+
 - Połączenie korzysta z uwierzytelniania programu SQL między uczestnikami replikacji. 
 - Udział konta usługi Azure Storage katalog roboczy używany przez funkcję replikacji. 
 - Port 445 (ruch wychodzący protokołu TCP) musi być otwarte w regułach zabezpieczeń w podsieci wystąpienia zarządzanego dostępu do udziału plików platformy Azure. 
 - Port 1433 (ruch wychodzący protokołu TCP) musi zostać otwarte w przypadku wydawcy/dystrybutora znajdują się na wystąpienie zarządzane, a subskrybent działa lokalnie. 
 
 ## <a name="common-configurations"></a>Typowe konfiguracje
+
 Ogólnie rzecz biorąc wydawcy i dystrybutora musi być w chmurze lub lokalnie. Obsługiwane są następujące konfiguracje: 
 
 ### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Wydawcy o dystrybutor lokalny na wystąpienie zarządzane
 
 ![Pojedyncze wystąpienie jako wydawcą i dystrybutorem ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-Wydawcą i dystrybutorem są skonfigurowane w ramach jednego wystąpienia zarządzanego i dystrybucja zmian do innego wystąpienia zarządzanego, pojedynczej bazy danych lub program SQL Server w środowisku lokalnym. W tej konfiguracji wydawcy/dystrybutora wystąpienia zarządzanego nie można skonfigurować za pomocą [replikacji geograficznej i automatycznie grupy trybu failover](sql-database-auto-failover-group.md).
+Wydawcą i dystrybutorem są skonfigurowane w ramach jednego wystąpienia zarządzanego i rozproszone zmiany do innego wystąpienia zarządzanego, pojedynczej bazy danych, baza danych w puli lub programu SQL Server w środowisku lokalnym. W tej konfiguracji wydawcy/dystrybutora wystąpienia zarządzanego nie można skonfigurować za pomocą [replikacji geograficznej i automatycznie grupy trybu failover](sql-database-auto-failover-group.md).
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Wydawcy o dystrybutorze zdalnym na wystąpienie zarządzane
 
-W tej konfiguracji jednego wystąpienia zarządzanego publikuje zmiany dystrybutora umieszczone na inne wystąpienie zarządzane, który może obsługiwać wiele wystąpień zarządzanych źródła i dystrybucję zmian do jednej lub wielu obiektów docelowych na wystąpieniu zarządzanym, pojedynczą bazę danych lub SQL Server.
+W tej konfiguracji jednego wystąpienia zarządzanego publikuje zmiany dystrybutora umieszczone w innym wystąpieniu zarządzanym, który może obsługiwać wiele wystąpień zarządzanych źródła i dystrybucję zmian do jednej lub wielu elementów docelowych w wystąpieniu zarządzanym, pojedynczą bazę danych, baza danych w puli, lub Program SQL Server.
 
 ![Oddzielne wystąpienia dla wydawcy i dystrybucji](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
@@ -102,16 +107,17 @@ Wydawcą i dystrybutorem są konfigurowane na dwa wystąpienia zarządzanego. W 
 - Oba wystąpienia zarządzane przez usługę znajdują się w tej samej lokalizacji.
 - Wystąpienia zarządzane, które hostują opublikowane i baz danych dystrybutora nie może być [replikacją geograficzną za pomocą grupy trybu failover automatycznie](sql-database-auto-failover-group.md).
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-managed-instance-or-logical-server"></a>Wydawcą i dystrybutorem lokalnie przy użyciu subskrybenta na wystąpieniu zarządzanym usługi lub serwera logicznego 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-standalone-pooled-and-instance-database"></a>Wydawcą i dystrybutorem lokalnie przy użyciu subskrybenta w autonomicznym, puli i wystąpienie bazy danych 
 
 ![Usługa Azure SQL DB subskrybenta](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-W tej konfiguracji usługi Azure SQL Database (wystąpienie zarządzane usługi lub serwera logicznego) jest subskrybentem. Ta konfiguracja obsługuje migracji ze środowiska lokalnego na platformę Azure. Jeśli subskrybent znajduje się na serwerze logicznym, musi być w trybie wypychania.  
+W tej konfiguracji usługi Azure SQL Database (autonomicznej, puli i wystąpienia bazy danych) jest subskrybentem. Ta konfiguracja obsługuje migracji ze środowiska lokalnego na platformę Azure. Jeśli subskrybent znajduje się w przypadku autonomicznych lub baza danych w puli, wartość musi być w trybie wypychania.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-1. [Konfigurowanie replikacji transakcyjnej dla wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance#configure-publishing-and-distribution-example). 
+
+1. [Konfigurowanie replikacji transakcyjnej dla wystąpienia zarządzanego](replication-with-sql-database-managed-instance.md#configure-publishing-and-distribution-example). 
 1. [Utwórz publikację](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-1. [Tworzenie subskrypcji wypychanej](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) przy użyciu nazwy serwera logicznego usługi Azure SQL Database jako subskrybenta (na przykład `N'azuresqldbdns.database.windows.net` i nazwę bazy danych SQL Azure jako docelowej bazy danych (na przykład **Adventureworks**. )
+1. [Tworzenie subskrypcji wypychanej](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) przy użyciu nazwy serwera Azure SQL Database jako subskrybenta (na przykład `N'azuresqldbdns.database.windows.net` i nazwę bazy danych SQL Azure jako docelowej bazy danych (na przykład **Adventureworks**. )
 
 
 ## <a name="see-also"></a>Zobacz też  

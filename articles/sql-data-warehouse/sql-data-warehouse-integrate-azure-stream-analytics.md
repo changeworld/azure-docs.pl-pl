@@ -2,20 +2,20 @@
 title: Użyj usługi Azure Stream Analytics z usługą SQL Data Warehouse | Dokumentacja firmy Microsoft
 description: Porady dotyczące korzystania z usługi Azure Stream Analytics za pomocą usługi Azure SQL Data Warehouse do opracowywania rozwiązań.
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3aca356b9caadc3a4ffee98ca7dc330eb1c520d8
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7c940b10e88e50988b574dbc1fa365dc9d8fd7d5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962949"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452400"
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Użyj usługi Azure Stream Analytics z usługą SQL Data Warehouse
 Usługa Azure Stream Analytics jest w pełni zarządzaną usługę, zapewniając przetwarzanie złożonych zdarzeń o małych opóźnieniach, wysokiej dostępności i skalowalności za pośrednictwem przesyłania strumieniowego danych w chmurze. Dowiedz się podstawowe informacje, zapoznając [wprowadzenie do usługi Azure Stream Analytics][Introduction to Azure Stream Analytics]. Można następnie dowiesz się, jak utworzyć rozwiązanie end-to-end za pomocą usługi Stream Analytics, postępując zgodnie z [rozpoczęcie korzystania z usługi Azure Stream Analytics] [ Get started using Azure Stream Analytics] samouczka.
@@ -32,7 +32,7 @@ Po pierwsze, wykonaj następujące kroki w [rozpoczęcie korzystania z usługi A
 
 Następnie utwórz bazę danych Azure SQL Data Warehouse
 
-## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Określ dane wyjściowe zadania: baza danych Azure SQL Data Warehouse
+## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Określ dane wyjściowe zadania: Usługa Azure SQL Data Warehouse bazy danych.
 ### <a name="step-1"></a>Krok 1
 W ramach zadania usługi Stream Analytics kliknij **dane wyjściowe** w górnej części strony, a następnie kliknij przycisk **Dodaj dane wyjściowe**.
 
@@ -48,12 +48,12 @@ Na następnej stronie, wprowadź następujące wartości:
 * *Subskrypcja*:
   * Jeśli baza danych SQL Data Warehouse znajduje się w tej samej subskrypcji co zadanie usługi Stream Analytics, należy wybrać korzystaj z bazy danych SQL z bieżącej subskrypcji.
   * Jeśli baza danych znajduje się w innej subskrypcji, wybierz Korzystaj z bazy danych SQL z innej subskrypcji.
-* *Baza danych*: Określ nazwę docelowej bazy danych.
-* *Nazwa serwera*: Określ nazwę serwera bazy danych, właśnie zostało określone. Można użyć witryny Azure portal, aby ją znaleźć.
+* *Baza danych*: Podaj nazwę docelowej bazy danych.
+* *Nazwa serwera*: Określ nazwę serwera bazy danych, która właśnie została określona. Można użyć witryny Azure portal, aby ją znaleźć.
 
 ![][server-name]
 
-* *Nazwa użytkownika*: Określ nazwę użytkownika konta, które ma uprawnienia do zapisu dla bazy danych.
+* *Nazwa użytkownika*: Określ nazwę użytkownika konta które ma uprawnienia do bazy danych zapisu.
 * *Hasło*: Podaj hasło dla określonego konta użytkownika.
 * *Tabela*: Określ nazwę docelowej tabeli w bazie danych.
 

@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
 ms.author: ramankum
-ms.component: disks
-ms.openlocfilehash: 11ffba34fff10d488cb3c9d81b7853f99b2ed138
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.subservice: disks
+ms.openlocfilehash: cc8813b0ac90ded1c777f9b1200f4e26737168b9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475156"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459702"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Znajdowanie i usuwanie niedołączonych Azure dyski zarządzane i niezarządzane
 Jeśli usuniesz maszynę wirtualną (VM) na platformie Azure, domyślnie wszystkie dyski, które są dołączone do maszyny Wirtualnej nie są usuwane. Ta funkcja pomaga zapobiegać utracie danych z powodu niezamierzonego usunięcia maszyn wirtualnych. Po usunięciu maszyny Wirtualnej, będziesz płacić za niedołączone dyski. W tym artykule pokazano, jak znaleźć i usunąć wszelkie niedołączone dyski i zredukowanie niepotrzebnych kosztów. 

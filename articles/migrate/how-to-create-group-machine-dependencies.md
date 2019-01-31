@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: a345b410dcf256e8cd07e7708906f5582b5f1828
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: e62a792e7503e65ebe008a52430f86f1f3a00006
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077391"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456021"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Grupowanie maszyn za pomocą mapowania zależności maszyn
 
@@ -73,6 +73,11 @@ Aby zainstalować agenta na maszynie z systemem Linux:
 
 [Dowiedz się więcej](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) dotyczące listy obsługiwane systemy operacyjne Linux przez MMA.
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-scom"></a>Zainstaluj agenta na komputerze, na monitorowanych przez programu SCOM
+
+Dla maszyn monitorowane przez program System Center Operations Manager 2012 R2 lub nowszym nie ma potrzeby instalowania agenta MMA. Mapa usługi jest zintegrowana z programem SCOM, który wykorzystuje MMA SCOM na zbieranie danych niezbędnych zależności. Można włączyć integracji, korzystając ze wskazówek [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Należy jednak pamiętać, że agenta zależności należy zainstalować na tych maszynach.
+
+
 ### <a name="install-the-dependency-agent"></a>Instalowanie agenta zależności
 1. Aby zainstalować agenta zależności na komputerze Windows, kliknij dwukrotnie plik instalacyjny i wykonaj instrukcje kreatora.
 2. Aby zainstalować agenta zależności na maszynę z systemem Linux, zainstaluj jako użytkownik główny, używając następującego polecenia:
@@ -82,6 +87,7 @@ Aby zainstalować agenta na maszynie z systemem Linux:
 Dowiedz się więcej o obsłudze agenta zależności [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) systemów operacyjnych.
 
 [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) dotyczące wykorzystania skryptów do zainstalowania agenta zależności.
+
 
 ## <a name="create-a-group"></a>Tworzenie grupy
 
@@ -115,7 +121,7 @@ Po utworzeniu grupy zaleca się instalowanie agentów na wszystkich komputerach 
 
 ## <a name="query-dependency-data-from-log-analytics"></a>Wykonywanie zapytań dotyczących danych w zależności od usługi Log Analytics
 
-Zależność dane przechwycone przez rozwiązania Service Map są dostępne do wykonywania zapytań w usłudze Log Analytics. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) o tabele danych mapy usługi do wykonywania zapytań w usłudze Log Analytics. 
+Zależność dane przechwycone przez rozwiązania Service Map są dostępne do wykonywania zapytań w obszarze roboczym usługi Log Analytics skojarzonych z projektu Azure Migrate. [Dowiedz się więcej](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) o tabele danych mapy usługi do wykonywania zapytań w usłudze Log Analytics. 
 
 Aby uruchamiać zapytania usługi Log Analytics:
 

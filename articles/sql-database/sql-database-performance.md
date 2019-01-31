@@ -10,15 +10,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 3629215dc1f6dfcb28194c487358adb058af3e8e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602923"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453012"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorowania i poprawiania wydajności
+
 Usługa Azure SQL Database znajduje potencjalne problemy w bazie danych i zaleca akcje, które może poprawić wydajność przetwarzania obciążenia, zapewniając inteligentne akcje dostrajania i zalecenia.
 
 Aby zapoznać się z wydajność bazy danych, należy użyć **wydajności** kafelków na stronie Przegląd lub przejdź do "Pomoc techniczna i rozwiązywanie problemów" sekcji:
@@ -34,6 +35,7 @@ W "Pomoc techniczna i rozwiązywanie problemów" sekcji, można użyć następuj
 4. [Automatyczne dostrajanie](#automatic-tuning) aby umożliwić usłudze Azure SQL Database automatycznie Zoptymalizuj bazę danych.
 
 ## <a name="performance-overview"></a>Przegląd wydajności
+
 Ten widok zawiera podsumowanie informacji o wydajności bazy danych i pomaga dostosowywania wydajności i rozwiązywania problemów. 
 
 ![Wydajność](./media/sql-database-performance/performance.png)
@@ -44,6 +46,7 @@ Ten widok zawiera podsumowanie informacji o wydajności bazy danych i pomaga dos
 * **Zapytań bazy danych** Kafelek pokazuje, podsumowania wydajność zapytań dla bazy danych (Ogólne jednostek DTU użycia i od góry zasobu zapytań zużywających najwięcej zasobów). Kliknięcie tego kafelka spowoduje przejście do  **[Query Performance Insight](#query-performance-insight)**.
 
 ## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
+
 Ta strona zawiera inteligentne [zalecenia dotyczące dostrajania](sql-database-advisor.md) , może poprawić wydajność bazy danych. Następujące rodzaje zalecenia są wyświetlane na tej stronie:
 
 * Zalecenia dotyczące indeksów, które można utworzyć lub usunąć.
@@ -57,9 +60,11 @@ Można również znaleźć pełną historię dostrajania akcje, które zostały 
 Dowiedz się, jak znaleźć Zastosuj zalecenia dotyczące wydajności w [Znajdowanie i stosowanie zaleceń dotyczących wydajności](sql-database-advisor-portal.md) artykułu.
 
 ## <a name="automatic-tuning"></a>Automatyczne dostrajanie
+
 Bazy danych SQL platformy Azure może automatycznie dostrajania wydajności bazy danych, stosując [zalecenia dotyczące wydajności](sql-database-advisor.md). Aby dowiedzieć się więcej, przeczytaj [automatycznego dostrajania artykułu](sql-database-automatic-tuning.md). Aby ją włączyć, przeczytaj [jak włączanie automatycznego dostrajania](sql-database-automatic-tuning-enable.md).
 
 ## <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań
+
 [Szczegółowe informacje o wydajności zapytań](sql-database-query-performance.md) pozwala poświęcać mniej czasu na rozwiązywanie problemów z wydajnością bazy danych, zapewniając:
 
 * Lepszy wgląd w swoje użycie zasobów (DTU) baz danych. 
@@ -71,6 +76,7 @@ Bazy danych SQL platformy Azure może automatycznie dostrajania wydajności bazy
 Więcej informacji o tej stronie można znaleźć w artykule  **[sposób używania Query Performance Insight](sql-database-query-performance.md)**.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
+
 * [Usługa Azure wskazówki dotyczące wydajności bazy danych SQL Database dla pojedynczych baz danych](sql-database-performance-guidance.md)
 * [Kiedy należy użyć puli elastycznej?](sql-database-elastic-pool-guidance.md)
 

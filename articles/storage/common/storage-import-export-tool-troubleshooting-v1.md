@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: 58ba44488e8ef211e7c318fc9ba6497a5b1b69bb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 9a4e47143515c7f9c21d701809c35d61853d91ec
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471916"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Rozwiązywanie problemów z narzędziem Azure Import/Export
 Narzędzie importu/eksportu platformy Microsoft Azure zwraca komunikaty o błędach, jeśli działa problemy. Ten temat zawiera listę typowych problemów, które użytkownicy mogą uruchamiać w.  
@@ -24,7 +24,7 @@ Narzędzie importu/eksportu platformy Microsoft Azure zwraca komunikaty o błęd
  Jeśli błąd umożliwiający ponowienie próby, na przykład jeśli udział sieciowy była w trybie offline przez krótki okres, a teraz jest wróci do trybu online, można wznowić sesji kopiowania. Jeśli ten błąd nie jest powtarzający operację, na przykład, jeśli określono nieprawidłowe źródło pliku katalogu za pomocą parametrów wiersza polecenia, musisz przerwać sesję kopiowania. Zobacz [przygotowywania dysków twardych do zadania importu](../storage-import-export-tool-preparing-hard-drives-import-v1.md) Aby uzyskać więcej informacji na temat wznawianie i przerywanie sesji kopiowania.  
   
 ## <a name="i-cant-resume-or-abort-a-copy-session"></a>Nie można wznowić lub Przerwij sesję kopiowania.  
- Jeśli sesja kopiowania jest pierwsza sesja kopiowania dla dysku, a następnie powinien podać komunikat o błędzie: "Pierwsza sesja kopiowania nie może być wznowione lub zostało przerwane". W takim przypadku można usunąć starego pliku dziennika i ponownie uruchom polecenie.  
+ Jeśli sesja kopiowania jest pierwsza sesja kopiowania dla dysku, powinien podać komunikat o błędzie: "Pierwsza sesja kopiowania nie może być wznowione lub zostało przerwane". W takim przypadku można usunąć starego pliku dziennika i ponownie uruchom polecenie.  
   
  Jeśli sesja kopiowania nie jest pierwszy z nich dla dysku, można go zawsze wznowione lub zostało przerwane.  
   

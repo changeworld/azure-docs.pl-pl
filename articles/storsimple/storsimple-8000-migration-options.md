@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/30/2018
+ms.date: 01/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 5166e154e1a67cea777933b6bf8757661a9c3ad5
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: bbf1eb623232332ed025fa0806e942e638c39974
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242963"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456055"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Opcje migracji danych z usługi StorSimple serii 5000 – 7000 
 
@@ -41,15 +41,17 @@ Korzystający z serii StorSimple 5000 – 7000 są następujące opcje:
 
     Aby uzyskać więcej informacji na temat migrowania danych do usługi Azure File Sync, przejdź do [migracji danych z rozwiązania StorSimple serii 5000 – 7000 do usługi Azure File Sync](https://aka.ms/StorSimpleMigrationAFS).
 
-- **Opcje strony trzeciej**:
+- **Opcje firm**:
 
     - **Migrowanie do NAS swobodę Panzura** — StorSimple 5000 – 7000 klienci mogą wybrać opcję migracji do Panzura swobodę NAS, aby zachować swoje dane na platformie Azure. Swoboda Panzura rozwiązanie zapewnia rozwiązanie NAS obejmującej centrów danych, oddziałów, chmur prywatnych i publicznych. To rozwiązanie umożliwia lokalnych, hybrydowych i przepływy pracy danych w chmurze dla systemu plików NFS, SMB i klientów mobilnych. Ta migracja jest obsługiwana przez Panzura i klienci mogą zacząć żądając Obsługa migracji z [Panzura witryny sieci Web](https://panzura.com/storsimple-migration/).
+
+    - **Migrowanie do Cohesity** -Cohesity umożliwia migrację danych z bieżącego rozwiązania StorSimple 5000 – 7000 do platformy Cohesity danych na platformie Azure. Cohesity Data Platform jest rozwiązaniem skali sieci web zdefiniowanych przez oprogramowanie, która konsoliduje plików, tworzenie kopii zapasowych, obiektów i maszyn wirtualnych na jedno rozwiązanie natywnych dla chmury. Po zakończeniu migracji do platformy danych można zarządzać, ochronę i udostępniania danych i aplikacji z chmury do core za pomocą jedną taflę szkła. Dzięki firmie Cohesity Uruchom mających co najmniej trzy węzły. Dowiedz się więcej o [migracji Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
 
 ## <a name="migration---frequently-asked-questions"></a>Migracja — często zadawane pytania
 
 ### <a name="q-when-do-the-storsimple-5000-and-7000-series-devices-reach-end-of-service"></a>PYTANIE: Kiedy StorSimple 5000 i 7000 series urządzeń Easy usługi? 
 
-A. StorSimple serii 5000 – 7000 osiągnąć [koniec usługi](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) w lipcu 2019 r. Koniec usługi oznacza, że Microsoft nie będzie możliwość zapewnienia pomocy technicznej dla sprzętu i oprogramowania, te urządzenia po 2019 lipca. Zdecydowanie zaleca się rozpoczęcie opracowywania planu migracji danych z urządzeń, teraz.
+A. StorSimple serii 5000 – 7000 osiągnąć [koniec usługi](https://support.microsoft.com/lifecycle/search?alpha=StorSimple%205000%2F7000%20Series) w lipcu 2019 r. Koniec usługi oznacza, że Microsoft nie będzie możliwość zapewnienia pomocy technicznej dla sprzętu i oprogramowania z tych urządzeń po 2019 lipca. Zdecydowanie zaleca się rozpoczęcie opracowywania planu migracji danych z urządzeń, teraz.
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>PYTANIE: Co się stanie z danymi, które mogę być przechowywane na platformie Azure?  
 

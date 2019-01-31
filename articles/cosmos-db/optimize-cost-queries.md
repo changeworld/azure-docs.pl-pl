@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e2cb1a76bfde5bea7707cf3cc6658e3fc82163c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043094"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457670"
 ---
-# <a name="optimize-the-cost-required-to-run-queries-in-azure-cosmos-db"></a>Optymalizowanie kosztów, wymagane do uruchamiania zapytań w usłudze Azure Cosmos DB
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optymalizuj koszt zapytania w usłudze Azure Cosmos DB
 
 Usługa Azure Cosmos DB oferuje bogaty zestaw operacji bazy danych, takich jak relacyjne i hierarchiczne zapytania, które działają na elementy w kontenerze. Koszt związany z każdą z tych operacji zależy od procesora CPU, we/wy i pamięci wymaganej do ukończenia tej operacji. Zamiast myśleć o zasobach i zarządzaniu nimi sprzętu można traktować jednostek żądań (RU) jako pojedynczej mierze zasobów wymaganych do wykonywania różnych operacji bazy danych ma obsługiwać żądania. W tym artykule opisano, jak do opłat za jednostki żądań dla zapytania, oceny i optymalizowania zapytań pod względem wydajności i kosztów. 
 

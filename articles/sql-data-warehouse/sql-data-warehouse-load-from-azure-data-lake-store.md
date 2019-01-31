@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: c3902061264b75ba177ba150176d784ad5384a9f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 32ac5b0841365acfc0a52e343eafc4f3760dffaa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297200"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472235"
 ---
 # <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Ładowanie danych z usługi Azure Data Lake Storage Gen1 do usługi SQL Data Warehouse
 Tabele zewnętrzne technologii PolyBase umożliwia ładowanie danych z usługi Azure Data Lake Storage Gen1 do usługi Azure SQL Data Warehouse. Mimo że można uruchomić zapytania ad hoc dotyczących danych przechowywanych w Data Lake Storage Gen1, zaleca się importowanie danych do magazynu danych SQL, aby uzyskać najlepszą wydajność.
@@ -23,7 +23,7 @@ Tabele zewnętrzne technologii PolyBase umożliwia ładowanie danych z usługi A
 > [!div class="checklist"]
 > * Tworzenie obiektów bazy danych, wymagane do załadowania z Data Lake Storage Gen1.
 > * Podłącz do katalogu Data Lake Storage Gen1.
-> * Załaduj dane do usługi Azure SQL Data Warehouse.
+> * Ładowanie danych do usługi Azure SQL Data Warehouse.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 

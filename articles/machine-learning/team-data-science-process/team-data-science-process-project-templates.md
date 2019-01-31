@@ -6,17 +6,17 @@ manager: cgronlun
 editor: cgronlun
 services: machine-learning
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3675d3cd8959d78270a491aeb443cb8e458d2472
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: bbedaa554e9c97a24e26c7927c1bf9c94d5cd507
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137915"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474466"
 ---
 # <a name="team-data-science-process-project-planning"></a>Zespół, planowanie projektu danych dla celów naukowych
 
@@ -35,7 +35,7 @@ Aby uzyskać opis każdego z tych etapów, zobacz [cykl życia zespołowego dany
  
 ## <a name="microsoft-project-template"></a>Szablon programu Microsoft Project
 
-Szablon programu Microsoft Project do zespołu danych dla celów naukowych jest dostępny w tym miejscu: [szablon programu Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
+Szablon programu Microsoft Project do zespołu danych dla celów naukowych jest dostępny w tym miejscu: [Szablon programu Microsoft Project](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp) 
 
 Po otwarciu planu, kliknij link w lewo dla przetwarzania TDSP. Zmień nazwę i opis, a następnie dodaj w innych zasobów zespołu, których potrzebujesz. Oszacuj daty wymaganej od środowiska.
 
@@ -48,7 +48,7 @@ Każde zadanie ma notatki. Otwórz te zadania, aby zobaczyć, jakie zasoby zosta
 
 ## <a name="excel-template"></a>Szablon programu Excel
 
-Jeśli nie masz dostępu do programu Microsoft Project, arkusza programu Excel przy użyciu tych samych danych są także dostępne do pobrania w tym miejscu: [szablon programu Excel](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) ściąganie do narzędzi, który lubisz wolą używać.
+Jeśli nie masz dostępu do programu Microsoft Project, arkusza programu Excel przy użyciu tych samych danych są także dostępne do pobrania w tym miejscu: [Szablon programu Excel](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) ściąganie do narzędzi, który lubisz wolą używać.
 
 Za pomocą tych szablonów na własne ryzyko. [Zwykle zastrzeżenia](https://www.gnu.org/licenses/gpl-3.0.en.html) zastosowania.
 

@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: a05a8ad495e33734a531405902ce34e3591bfe15
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: b27877e25dd3bdd4711d1c036e2f203e1b8c0e7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056322"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462145"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Aplikacja SaaS o nazwie Wingtip Tickets
 
@@ -46,7 +46,7 @@ Zapoznaj się z [samouczki] [ docs-tutorials-for-wingtip-dpt] i kodu w serwisie 
 
 ## <a name="sharded-multi-tenant-database-pattern"></a>Wzorzec podzielonej na fragmenty wielodostępną bazą danych.
 
-Wielodostępne bazy danych są skuteczne dla dostawców usług szukasz niższy koszt za dzierżawy i OK izolacji dzierżawy mniejsze. Ten wzorzec umożliwia użycie pakowania dużej liczby dzierżawców do pojedynczej bazy danych, obniżenie kosztów na dla dzierżawcy. Prawie nieskończone możliwości skalowania jest możliwe poprzez fragmentowania dzierżaw w wielu bazach danych. Baza danych wykazu mapuje baz danych dzierżaw.  
+Wielodostępne bazy danych są skuteczne dla dostawców usług szukasz niższy koszt za dzierżawy i OK izolacji dzierżawy mniejsze. Ten wzorzec umożliwia użycie pakowania dużej liczby dzierżawców do poszczególnych baz danych, obniżenie kosztów na dla dzierżawcy. Prawie nieskończone możliwości skalowania jest możliwe poprzez fragmentowania dzierżaw w wielu bazach danych. Baza danych wykazu mapuje baz danych dzierżaw.  
 
 Ten wzorzec umożliwia także *hybrydowego* modelu, w którym można zoptymalizować koszty dzięki wielu dzierżaw w bazie danych lub Optymalizacja pod kątem izolacji z pojedynczej dzierżawy w swoją własną bazę danych. Wybór można wprowadzić, na podstawie dzierżawy przez dzierżawy, albo gdy dzierżawa nie zostanie aprowizowane lub nowszej, bez wpływu na aplikację.  Ten model można efektywnie używać, gdy grupy dzierżaw muszą być traktowane inaczej. Na przykład dzierżaw niskie koszty można przypisać do udostępnionej bazy danych, podczas gdy dzierżawy w warstwie premium mogą być przypisane do ich własnych baz danych. 
 

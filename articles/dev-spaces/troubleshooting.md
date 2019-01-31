@@ -3,19 +3,19 @@ title: Rozwiązywanie problemów z | Dokumentacja firmy Microsoft
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 9973635593f7a8143ac1f3980b6e09caba44710b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 37ee9fec8940231a01b0014b020ca3f0dffb53bf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413612"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467105"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -184,7 +184,7 @@ Port kontenera nie jest dostępna. Ten problem może wystąpić, ponieważ:
 ### <a name="try"></a>Wypróbuj:
 1. Jeśli kontener jest właśnie utworzone/wdrażane, możesz odczekaj 2 – 3 sekund, a następnie spróbuj ponownie uzyskać dostęp do usługi. 
 1. Sprawdź konfigurację portu. Numery określony port powinien być **identyczne** w poniższych zasobów:
-    * **Plik Dockerfile:** Określony przez `EXPOSE` instrukcji.
+    * **Dockerfile:** Określony przez `EXPOSE` instrukcji.
     * **[Narzędzia Helm](https://docs.helm.sh):** Określony przez `externalPort` i `internalPort` wartości dla usługi (często znajduje się w `values.yml` pliku),
     * Wszystkie porty są otwarte w kodzie aplikacji, na przykład w środowisku Node.js: `var server = app.listen(80, function () {...}`
 

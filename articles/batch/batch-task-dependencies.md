@@ -3,7 +3,7 @@ title: Zależności zadań umożliwiają uruchamianie zadań w oparciu o ukończ
 description: Utwórz zadania, które są zależne od ukończenia innych zadań przetwarzania styl MapReduce i podobne dane big Data obciążeń w usłudze Azure Batch.
 services: batch
 documentationcenter: .net
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: b8d12db5-ca30-4c7d-993a-a05af9257210
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40e925fff9d87d8590ea3a83be9e7d93a84d6e26
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5fe8cbbaa16e4a3de0744f98ff9394d198805cca
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266658"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475605"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tworzenie zależności zadań podrzędnych do uruchomienia zadania, które są zależne od innych zadań
 

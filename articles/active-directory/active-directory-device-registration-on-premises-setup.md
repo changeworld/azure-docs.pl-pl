@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: abdeeacc22d2709a3107c9e9e05bd982705d7dea
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 00921fd82463a75e81e1279d436a576461e02f78
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079073"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301649"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Azure Active Directory rejestracji urządzenia
 
@@ -109,9 +109,9 @@ Wdrożenie jest teraz ukończona i możesz wypróbować niektóre scenariusze. U
 
 | Zadanie | Informacje ogólne |
 | --- | --- |
-| Dołącz do niektórych urządzeń do miejsca pracy przy użyciu usługi rejestracji urządzeń w usłudze Azure Active Directory. Możesz dołączyć systemów iOS, Windows i urządzeń z systemem Android. |[Dołączać urządzenia do miejsca pracy przy użyciu usługi rejestracji urządzeń w usłudze Azure Active Directory](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
+| Dołącz do niektórych urządzeń do miejsca pracy przy użyciu usługi rejestracji urządzeń w usłudze Azure Active Directory. Możesz dołączyć systemów iOS, Windows i urządzeń z systemem Android. |[Dołączać urządzenia do miejsca pracy przy użyciu usługi rejestracji urządzeń w usłudze Azure Active Directory](#join-devices-to-your-workplace-by-using-azure-active-directory-device-registration-service) |
 | Wyświetlanie i włączyć lub wyłączyć zarejestrowanych urządzeń, korzystając z portalu administratora. W ramach tego zadania możesz wyświetlić niektórych urządzeń zarejestrowanych za pomocą portalu administratora. |[Usługa Azure Active Directory urządzenia rejestracji Omówienie usługi](active-directory-device-registration-get-started.md) |
-| Sprawdź, czy obiekty urządzeń są zapisywane z usługi Azure Active Directory do usługi Active Directory systemu Windows Server. |[Upewnij się, że zarejestrowane urządzenia będą zwrotnie zapisywane w usłudze Active Directory](#verify-registered-devices-are-written-back-to-active-directory) |
+| Sprawdź, czy obiekty urządzeń są zapisywane z usługi Azure Active Directory do usługi Active Directory systemu Windows Server. |[Upewnij się, że zarejestrowane urządzenia będą zwrotnie zapisywane w usłudze Active Directory](#verify-that-registered-devices-are-written-back-to-active-directory) |
 | Teraz, gdy użytkownicy mogą rejestrować swoje urządzenia, aplikację można utworzyć zasady dostępu w usługach AD FS, dzięki czemu tylko zarejestrowanym urządzeniom. To zadanie służy do tworzenia reguł dostępu do aplikacji i niestandardowy komunikat Odmowa dostępu. |[Tworzenie zasad dostępu do aplikacji i niestandardowy komunikat odmowy dostępu](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 ## <a name="integrate-azure-active-directory-with-on-premises-active-directory"></a>Integrowanie usługi Azure Active Directory z usługą Active Directory w środowisku lokalnym

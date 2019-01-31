@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2d5cc846b6ca2eadacfcc8223e4ba3932e961ece
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d4105aab80add8556bcbe79c9c6e8dd7743b25b7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173602"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298743"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Wprowadzenie do zasad niestandardowych w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Zasady niestandardowe](active-directory-b2c-overview-custom.md) są pliki konfiguracji definiujące zachowanie Twojej dzierżawy usługi Azure Active Directory (Azure AD) B2C. W tym artykule można utworzyć zasad niestandardowych, który obsługuje konta lokalnego, zarejestruj się lub zaloguj się przy użyciu adresu e-mail i hasła. Możesz również przygotować środowisko do dodawania dostawców tożsamości, takich jak Facebook.
+[Zasady niestandardowe](active-directory-b2c-overview-custom.md) są pliki konfiguracji definiujące zachowanie Twojej dzierżawy usługi Azure Active Directory (Azure AD) B2C. W tym artykule można utworzyć zasad niestandardowych, który obsługuje konta lokalnego, zarejestruj się lub zaloguj się przy użyciu adresu e-mail i hasła. Należy również przygotować środowisko do dodawania dostawcy tożsamości.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,17 +63,32 @@ Jeśli masz już [klucz tajny aplikacji Facebook](active-directory-b2c-setup-fb-
 5. Aby uzyskać **użycie klucza**, wybierz opcję **podpisu**.
 6. Kliknij pozycję **Utwórz**.
 
-## <a name="register-an-application"></a>Rejestrowanie aplikacji
+## <a name="register-applications"></a>Rejestrowanie aplikacji
 
-Aplikacja jest zarejestrowana w usługi Azure Active Directory (Azure AD) B2C, aby użytkownik mógł zarejestrować się i zaloguj się przy użyciu konta lokalnego, która istnieje w dzierżawie. Użytkownicy Zarejestruj się przy użyciu unikatowego adresu e-mail i hasła, aby uzyskiwać dostęp do zarejestrowanych aplikacji.
+Usługa Azure AD B2C wymaga zarejestrowania dwóch aplikacji, które umożliwiają rejestrowanie i logowanie użytkowników: IdentityExperienceFramework (aplikacji sieci web), a ProxyIdentityExperienceFramework (aplikacja natywna) przy użyciu delegowanych uprawnień z aplikacji IdentityExperienceFramework. Konta lokalne istnieje tylko w Twojej dzierżawie. Użytkownicy Zarejestruj się przy użyciu kombinacji adresu lub nieprawidłowego hasła unikatowego adresu e-mail, aby dostęp do aplikacji zarejestrowana dzierżawa.
+
+### <a name="register-the-identityexperienceframework-application"></a>Rejestrowanie aplikacji IdentityExperienceFramework
 
 1. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal Wyszukaj i wybierz pozycję **rejestracje aplikacji**.
 2. Wybierz pozycję **Rejestrowanie nowej aplikacji**.
-3. Aby uzyskać **nazwa**, wprowadź `ProxyIdentityExperienceFramework`.
-4. Aby uzyskać **typ aplikacji**, wybierz **natywnych**.
-5. Aby uzyskać **identyfikator URI przekierowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `your-tenant-name` to nazwa dzierżawy usługi Azure AD B2C.
-6. Kliknij pozycję **Utwórz**. Po jego utworzeniu, skopiuj identyfikator aplikacji i zapisz go do późniejszego użycia.
-7. Wybierz **Udziel uprawnień**, a następnie upewnij się, wybierając **tak**.
+3. Aby uzyskać **nazwa**, wprowadź `IdentityExperienceFramework`.
+4. Aby uzyskać **typ aplikacji**, wybierz **aplikacji/interfejs API sieci Web**.
+5. Aby uzyskać **adres URL logowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `your-tenant-name` to nazwa domeny dzierżawy usługi Azure AD B2C.
+6. Kliknij pozycję **Utwórz**. 
+7. Po jego utworzeniu, skopiuj identyfikator aplikacji i zapisz go do późniejszego użycia.
+
+### <a name="register-the-proxyidentityexperienceframework-application"></a>Rejestrowanie aplikacji ProxyIdentityExperienceFramework
+
+1. Wybierz **rejestracje aplikacji**, a następnie wybierz pozycję **rejestrowanie nowej aplikacji**.
+2. Aby uzyskać **nazwa**, wprowadź `ProxyIdentityExperienceFramework`.
+3. Aby uzyskać **typ aplikacji**, wybierz **natywnych**.
+4. Aby uzyskać **identyfikator URI przekierowania**, wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, gdzie `yourtenant` jest Twoja dzierżawa usługi Azure AD B2C.
+5. Kliknij pozycję **Utwórz**. Po jego utworzeniu, skopiuj identyfikator aplikacji i zapisz go do późniejszego użycia.
+6. Na stronie ustawień wybierz **wymagane uprawnienia**, a następnie wybierz pozycję **Dodaj**.
+7. Wybierz pozycję **Wybierz interfejs API**.
+8. Wyszukaj i wybierz pozycję **IdentityExperienceFramework**, a następnie kliknij przycisk **wybierz**.
+9. Zaznacz pole wyboru obok pozycji **IdentityExperienceFramework dostępu**, kliknij przycisk **wybierz**, a następnie kliknij przycisk **gotowe**.
+10. Wybierz **Udziel uprawnień**, a następnie upewnij się, wybierając **tak**.
 
 ## <a name="download-starter-pack-and-modify-policies"></a>Pobierz pakiet startowy i modyfikować zasady
 
@@ -87,8 +102,8 @@ Zasady niestandardowe są zestawem plików XML, które muszą być przekazywane 
 Każdy pakiet startowy zawiera:
 
 - Pliku podstawowego. Kilka zmian są wymagane do podstawowego.
-* Rozszerzenie pliku.  Ten plik jest, gdzie większość zmiany konfiguracji zostały wprowadzone.
-* Pliki strony jednostki uzależnionej. Pliki specyficzne dla zadania o nazwie przez aplikację.
+- Rozszerzenie pliku.  Ten plik jest, gdzie większość zmiany konfiguracji zostały wprowadzone.
+- Pliki strony jednostki uzależnionej. Pliki specyficzne dla zadania o nazwie przez aplikację.
 
 >[!NOTE]
 >Jeśli edytora XML obsługuje walidację, sprawdź pliki względem schematu TrustFrameworkPolicy_0.3.0.0.xsd XML, który znajduje się w katalogu głównym pakietu startowego. Sprawdzanie poprawności schematu XML, identyfikuje błędy przed przekazaniem.
@@ -103,10 +118,10 @@ Każdy pakiet startowy zawiera:
 
 ### <a name="add-application-ids-to-the-custom-policy"></a>Dodawanie identyfikatorów aplikacji do zasad niestandardowych
 
-Dodaj identyfikator aplikacji do pliku rozszerzenia *TrustFrameworkExtensions.xml*.
+Dodaj identyfikatory aplikacji do pliku rozszerzenia *TrustFrameworkExtensions.xml*.
 
 1. Otwórz *TrustFrameworkExtensions.xml* plików i Znajdź element `<TechnicalProfile Id="login-NonInteractive">`.
-2. Zastąp wartość z `client_id` i `resource_id` z Identyfikatorem aplikacji w aplikacji ProxyIdentityExperienceFramework, która została utworzona wcześniej.
+2. Zastąp oba wystąpienia elementu `IdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości, która została utworzona wcześniej. Zastąp oba wystąpienia elementu `ProxyIdentityExperienceFrameworkAppId` z Identyfikatorem aplikacji w aplikacji platformy środowiska tożsamości serwera Proxy, która została utworzona wcześniej.
 3. Zapisz plik rozszerzenia.
 
 ## <a name="upload-the-policies"></a>Przekazywanie zasad

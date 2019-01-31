@@ -1,6 +1,6 @@
 ---
-Tytuł: Importowanie danych do usługi Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Jak zaimportować dane do usługi Azure Machine Learning Studio z różnych źródeł danych. Dowiedz się, jakie typy danych i formatów danych są obsługiwane.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Importowanie danych do usługi Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Jak zaimportować dane do usługi Azure Machine Learning Studio z różnych źródeł danych. Dowiedz się, jakie typy danych i formatów danych są obsługiwane.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11/29/2017
 ---
@@ -53,12 +53,12 @@ Można jawnie określ lub zmień nagłówki i typy danych dla kolumn przy użyci
 
 Następujące **typy danych** są rozpoznawane przez usługi Machine Learning Studio:
 
-* Ciąg
+* String
 * Liczba całkowita
-* Podwójne
+* Double
 * Wartość logiczna
 * DateTime
-* Przedział czasu
+* TimeSpan
 
 Wewnętrzny typ danych o nazwie korzysta z usługi Machine Learning Studio ***tabeli danych*** do przekazywania danych między modułami. Można jawnie przekonwertować danych w tabeli danych, używając formatu [przekonwertować zestawu danych] [ convert-to-dataset] modułu.
 

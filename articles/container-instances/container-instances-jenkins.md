@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 85b67fb4fa474bb00b5b7ca66580273671081cdf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354193"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478199"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Użyj usługi Azure Container Instances jako Jenkins agenta kompilacji
 
@@ -29,17 +29,17 @@ Aby uzyskać więcej informacji na temat usługi Azure Container Instances, zoba
    - **Nazwa**: Wprowadź nazwę dla wdrożenia serwera Jenkins.
    - **Nazwa użytkownika**: Wprowadź nazwę użytkownika administratora maszyny wirtualnej usługi Jenkins.
    - **Typ uwierzytelniania**: Firma Microsoft zaleca klucza publicznego SSH do uwierzytelniania. Jeśli wybierzesz tę opcję, Wklej klucz publiczny SSH ma być używany do zalogowania się do maszyny wirtualnej usługi Jenkins.
-   - **Subskrypcja**: wybierz subskrypcję platformy Azure.
-   - **Grupa zasobów**: utwórz grupę zasobów lub wybierz istniejącą.
+   - **Subskrypcja**: Wybierz subskrypcję platformy Azure.
+   - **Grupa zasobów**: Utwórz grupę zasobów lub wybierz istniejącą grupę.
    - **Lokalizacja**: Wybierz lokalizację dla serwera Jenkins.
 
    ![Podstawowe ustawienia dla wdrażania w portalu narzędzia Jenkins](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. Na **dodatkowe ustawienia** formularza, wykonaj następujące elementy:
 
-   - **Rozmiar**: wybierz opcję odpowiedniego rozmiaru maszyny wirtualnej usługi Jenkins.
-   - **Typ dysku maszyny Wirtualnej**: Określ **HDD** (dysk twardy) lub **SSD** (SSD) dla serwera Jenkins.
-   - **Sieć wirtualna**: Wybierz strzałkę zmodyfikować domyślne ustawienia.
+   - **Rozmiar**: Wybierz opcję odpowiedniego rozmiaru maszyny wirtualnej usługi Jenkins.
+   - **Typ dysku maszyny wirtualnej**: Wybierz opcję **HDD** (dysk twardy) lub **SSD** (SSD) dla serwera Jenkins.
+   - **Sieć wirtualna**: Wybierz strzałkę, aby zmodyfikować domyślne ustawienia.
    - **Podsieci**: Wybierz strzałkę, sprawdź informacje, a następnie wybierz **OK**.
    - **Publiczny adres IP**: Wybierz strzałkę, aby podać niestandardową nazwę publicznego adresu IP, konfigurowanie jednostki SKU i set, Metoda przypisania.
    - **Etykieta nazwy domeny**: Określ wartość do utworzenia w pełni kwalifikowany adres URL z maszyną wirtualną serwera Jenkins.
@@ -47,7 +47,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Container Instances, zoba
 
    ![Dodatkowe ustawienia wdrażania w portalu narzędzia Jenkins](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Integracja nazwy głównej usługi, wybierz **Auto(MSI)** mają [Zarządzanie tożsamościami dla zasobów platformy Azure] [zarządzanych tożsamości azure zasobów] automatycznie utworzyć tożsamością uwierzytelniania dla wystąpienia usługi Jenkins. Wybierz **ręczne** zapewnienie własne poświadczenia nazwy głównej usługi.
+4. Integracja nazwy głównej usługi, wybierz **Auto(MSI)** mieć [zarządzanych tożsamości dla zasobów platformy Azure] [ managed-identities-azure-resources] automatycznie utworzyć tożsamością uwierzytelniania dla Wystąpienie narzędzia Jenkins. Wybierz **ręczne** zapewnienie własne poświadczenia nazwy głównej usługi.
 
 5. Agentów w chmurze skonfiguruj platformy z opartych na chmurze dla zadań kompilacji usługi Jenkins. Dla tego artykułu, wybierz **ACI**. W agencie chmury ACI każdego zadania kompilacji usługi Jenkins jest uruchamiane w wystąpienia kontenera.
 
@@ -138,4 +138,4 @@ Aby dowiedzieć się więcej na temat usługi Jenkins na platformie Azure, zobac
 <!-- LINKS - internal -->
 [about-aci]: ./container-instances-overview.md
 [jenkins-azure]: ../jenkins/overview.md
-[managed-service-identity]: ../active-directory/managed-service-identity/overview.md
+[managed-identities-azure-resources]: ../active-directory/managed-identities-azure-resources/overview.md

@@ -12,12 +12,12 @@ ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 225c8093816c5186cbc084f74bc6e0591107ec00
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: f658afa1a08a6b8779c2f1e18944eec40abdc465
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586261"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300000"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i tworzenia prototypów
 
@@ -44,7 +44,7 @@ Przeglądaj tej listy publicznych zestawach danych dla danych, które umożliwia
 | [Microsoft Research zestawów danych — "Data Science Research"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Zestawy wielu danych, obejmujące interakcji-komputer, audio/wideo, danych wyszukiwania/pobieranie informacji dotyczących, dane geograficzne/lokalizacji, przetwarzanie języka naturalnego i związane z robotyką/komputerowej. | Zestawy danych są w różnych formatach, zip do pobrania. |
 | [Danych dotyczących genomu publiczne](http://www.completegenomics.com/public-data/) | "Zróżnicowany zestaw danych ludzkiej genomów są dostępne bezpłatnie do użytku publicznego zwiększyć wszelkich badań dotyczących genomu..." Dostawca, pełną Genomics jest prywatny corporation nastawionym na osiąganie zysku. | Zestawy danych, po wyodrębniania, są w formacie tekstowym systemu UNIX. Dostępne są również narzędzia do analizy. |
 | [Otwórz dane do analizy danych w chmurze](https://www.opensciencedatacloud.org/) | "Otwórz danych do analizy w chmurze zapewnia środowiska nauki z zasobami na potrzeby przechowywania, udostępnianie i analizowanie zestawów terabajtów i petabajtów danych naukowych".| Zestawy danych są w różnych formatach. |
-| [Dane globalne klimatu — WorldcLIM](http://worldclim.org/) | "WorldClim to zbiór klimatycznych warstwy (gridded klimatu danych) z przestrzenny km2 około 1. Tych danych może służyć do mapowania i modelowanie przestrzennych." | Te pliki zawierają dane geograficzne. Aby uzyskać więcej informacji, zobacz [format danych](http://worldclim.org/formats1). |
+| [Global climate data - WorldClim](http://worldclim.org/) | "WorldClim to zbiór klimatycznych warstwy (gridded klimatu danych) z przestrzenny km2 około 1. Tych danych może służyć do mapowania i modelowanie przestrzennych." | Te pliki zawierają dane geograficzne. Aby uzyskać więcej informacji, zobacz [format danych](http://worldclim.org/formats1). |
 | [Dane dotyczące społeczności ludzkiej - GDELT projektu](http://www.gdeltproject.org/data.html) | "Projekt GDELT jest największy, najbardziej kompleksowy i najwyższą rozkład otworzyć bazy danych społeczeństwa ludzi, jakie kiedykolwiek było". | Pliki nieprzetworzone dane są w formacie CSV. |
 | [Reklamy kliknij danymi przewidywań uczenia maszynowego z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Największą kiedykolwiek publicznie wydana ML zestawu danych." Aby uzyskać więcej informacji, zobacz [firmy Criteo 1 TB kliknij prognozowania Dataset](https://blogs.technet.microsoft.com/machinelearning/2015/04/01/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
 | [Zestaw danych ClueWeb09 tekst wyszukiwania z projektu Lemur](http://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 zestawu danych został utworzony w celu obsługi badań pobierania informacji i technologii pokrewnych języka ludzi. Składa się z około 1 miliard stron sieci web w 10 językach, które zostały zebrane w styczniu i lutego 2009." | Zobacz [informacji zestawu danych](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
@@ -53,6 +53,6 @@ Przeglądaj tej listy publicznych zestawach danych dla danych, które umożliwia
 
 | Źródło danych | Informacje o danych | Informacje o plikach |
 |---|---|---|
-| [Archiwum usługi GitHub](https://www.githubarchive.org/) | "GitHub archiwum jest projekt do rejestrowania publicznych GitHub oś czasu [zdarzenia], archiwizować i był łatwy dostęp do dalszej analizy". | Pobierz JSON encloded archiwa zdarzenia w formacie .gz (Gzip) z klienta sieci web. |
-| [Dane o aktywności usługi GitHub z GHTorrent projektu](http://ghtorrent.org/) | "Projekt GHTorrent [jest] starań, aby utworzyć duplikat skalowalne, możliwością tworzenia zapytań w trybie offline danych oferowana za pośrednictwem interfejsu API REST usługi GitHub. GHTorrent monitoruje oś czasu zdarzenie publiczne usługi GitHub. Dla każdego zdarzenia pobiera jego zawartość i ich zależności wyczerpująco." | Zrzuty bazy danych MySQL, są w formacie CSV. |
+| [Archiwum usługi GitHub](https://www.githubarchive.org/) | "GitHub archiwum jest projekt do rejestrowania publicznych GitHub oś czasu [zdarzenia], archiwizować i był łatwy dostęp do dalszej analizy". | Pobierz archiwa zakodowane w formacie JSON zdarzenia w formacie .gz (Gzip) z klienta sieci web. |
+| [Dane o aktywności usługi GitHub z GHTorrent projektu](http://ghtorrent.org/) | "Projekt GHTorrent [jest] starań, aby utworzyć duplikat skalowalne, obsługą zapytań w trybie offline danych oferowana za pośrednictwem interfejsu API REST usługi GitHub. GHTorrent monitoruje oś czasu zdarzenie publiczne usługi GitHub. Dla każdego zdarzenia pobiera jego zawartość i ich zależności wyczerpująco." | Zrzuty bazy danych MySQL, są w formacie CSV. |
 | [Zrzut danych przepełnienie stosu](https://archive.org/details/stackexchange) | "Jest anonimowe zrzutu całą zawartość zamieszczaną przez użytkownika w sieci Stack Exchange [tym Stack Overflow]". | "Każdej lokacji [przykład przepełnienie stosu] sformatowane jako osobne archiwum, składający się z plikami XML zip za pośrednictwem przy użyciu bzip2 kompresji zip 7. Archiwum w każdej lokacji zawiera: wpisów, użytkownicy, głosy, komentarze, PostHistory i PostLinks." |

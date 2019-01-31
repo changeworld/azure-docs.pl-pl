@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4b6e6cf3fb030f5f9706ded19f85575baed69b39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471824"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467445"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -108,7 +108,7 @@ Przesunięcie fokus do najczęściej używanych warstwy standardowa, **S1 S3** p
 
 |  | S1 | S2 | S3 |  |  |  |  |
 |--|----|----|----|--|--|--|--|
-| Rozmiar partycji|  25 GB | 100 GB | 250 GB |  |  |  |  |
+| Rozmiar partycji|  25 GB | 100 GB | 200 GB |  |  |  |  |
 | limity indeksu i indeksatora| 50 | 200 | 200 |  |  |  |  |
 
 **S1** jest wspólnego rozwiązaniem, gdy dedykowanych zasobów i wielu partycjach stają się koniecznością. Wraz z partycjami 25 GB do 12 partycjami, usługa na limit **S1** to całkowita liczba 300 GB Jeśli zmaksymalizować partycji za pośrednictwem replik (zobacz [przydzielić partycje i repliki](search-capacity-planning.md#chart) dla bardziej równoważenia — kompozycje.)

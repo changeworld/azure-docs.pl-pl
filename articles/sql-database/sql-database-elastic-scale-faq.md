@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: f3192aafb6f19695bc99310dd980382510bc633b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 01/25/2019
+ms.openlocfilehash: b5ba5fadd229fa7119f9af791f7eaedbc984c92a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188118"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457194"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>Narzędzia elastycznych baz danych — często zadawane pytania (FAQ)
 
@@ -43,13 +43,13 @@ Nie — tworzenie Menedżera mapowań fragmentów (na przykład [ShardMapManager
 
 ## <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Mam pytania dotyczące korzystania z narzędzi elastycznych baz danych, jak je odpowiedzi uzyskać
 
-Skontaktuj się z nami na [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+Skontaktuj się z nami na [forum bazy danych SQL](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
 
 ## <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Gdy pojawia się połączenie z bazą danych przy użyciu klucza fragmentowania, nadal można zapytania o dane dla innych kluczy fragmentowania na tym samym fragmencie.  Jest to celowe
 
 Interfejsy API elastycznego skalowania umożliwiają połączenie z odpowiednią bazą danych dla swojego klucza fragmentowania, ale nie zapewniają filtrowanie klucza fragmentowania.  Dodaj **gdzie** klauzule zapytania w taki sposób, aby ograniczyć zakres klucz fragmentowania podany, jeśli to konieczne.
 
-## <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Czy można użyć innej wersji usługi Azure Database dla każdego fragmentu w Mój zestaw fragmentów
+## <a name="can-i-use-a-different-sql-database-edition-for-each-shard-in-my-shard-set"></a>Czy można użyć innej wersji bazy danych SQL dla każdego fragmentu w Mój zestaw fragmentów
 
 Tak, fragment jest poszczególnych baz danych, a zatem jednego fragmentu może być w wersji Premium, choć innej wersji standardowej. Ponadto wersja fragmentu skalować w górę lub w dół wiele razy w okresie istnienia fragmentu.
 

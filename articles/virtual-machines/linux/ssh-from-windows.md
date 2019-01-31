@@ -3,7 +3,7 @@ title: Używanie kluczy SSH z Windows maszyn wirtualnych systemu Linux | Dokumen
 description: Dowiedz się, jak generować i używania kluczy SSH na komputerze Windows, aby nawiązać połączenie z maszyną wirtualną systemu Linux na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: danlep
-ms.openlocfilehash: abb0ba6eace2e837ea2f74a0d919097f8801101e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 11/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407420"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298657"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Jak używanie kluczy SSH w systemie Windows na platformie Azure
 
@@ -37,7 +37,7 @@ Windows komputery nie zawsze mają porównywalne polecenia SSH zainstalowane. Na
 
 Inne typowe Windows SSH klienci instalowanej lokalnie znajdują się w następujących pakietów:
 
-* [Programu puTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git Pro Windows](https://git-for-windows.github.io/)
 * [MobaXterm](http://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
@@ -72,7 +72,7 @@ Aby utworzyć parę kluczy RSA protokołu SSH za pomocą programu PuTTYgen:
 
 4. Poruszaj myszą w pustym obszarze w celu zapewnienia losowości dla klucza.
 
-5. Po wygenerowaniu klucza publicznego, opcjonalnie wprowadź i Potwierdź hasło. Użytkownik jest monitowany o wpisanie hasła podczas uwierzytelniania przy użyciu klucza prywatnego SSH z maszyną wirtualną. Bez hasła Jeśli ktoś uzyskania klucza prywatnego, mogą zalogować się do dowolnej maszyny Wirtualnej lub usługi, która używa tego klucza. Firma Microsoft zaleca się utworzenie hasła. Jeśli zapomnisz hasła, jego odzyskanie nie będzie możliwe.
+5. Po wygenerowaniu klucza publicznego, opcjonalnie wprowadź i Potwierdź hasło. Użytkownik jest monitowany o wpisanie hasła podczas uwierzytelniania przy użyciu klucza prywatnego SSH z maszyną wirtualną. Bez hasła Jeśli ktoś uzyskania klucza prywatnego, zalogować się do dowolnej maszyny Wirtualnej lub usługi, która używa tego klucza. Firma Microsoft zaleca się utworzenie hasła. Jeśli zapomnisz hasła, jego odzyskanie nie będzie możliwe.
 
 6. Klucz publiczny jest wyświetlany w górnej części okna. Można skopiować cały klucz publiczny i wklej go do witryny Azure portal lub szablonu usługi Azure Resource Manager podczas tworzenia maszyny Wirtualnej z systemem Linux. Możesz również wybrać **Zapisz klucz publiczny** można zapisać kopię na komputerze:
 
@@ -105,6 +105,8 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
 Jeśli hasło jest skonfigurowana, podczas tworzenia pary kluczy, wprowadź hasło po wyświetleniu monitu podczas procesu logowania.
+
+Jeśli maszyna wirtualna używa zasad dostępu just in time, należy zażądać dostępu, aby nawiązać połączenie z maszyną wirtualną. Aby uzyskać więcej informacji na temat zasad just-in-time, zobacz [zarządzanie dostępem maszyny wirtualnej przy użyciu tylko w zasadach czasu](../../security-center/security-center-just-in-time.md).
 
 ### <a name="connect-with-putty"></a>Połącz przy użyciu programu PuTTY
 

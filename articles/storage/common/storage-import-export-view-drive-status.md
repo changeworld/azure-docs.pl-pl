@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
-ms.component: common
-ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.subservice: common
+ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584676"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467751"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Wyświetlanie stanu zadania usługi Azure Import/Export
 

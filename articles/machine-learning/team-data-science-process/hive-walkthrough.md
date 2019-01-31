@@ -6,19 +6,19 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 57f20a6b3a8d2845b0459f05e7b9d9ccd8d44424
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139626"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463297"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Zespół danych dla celów naukowych w działaniu: klastry użycia usługi Azure HDInsight Hadoop
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z klastrów Azure HDInsight Hadoop
 W tym przewodniku używamy [Team Data Science naukowych](overview.md) w scenariuszu end-to-end. Używamy [klastra Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) przechowywać, eksplorować, inżynier ds. funkcji dane i z publicznie dostępnych [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych i obniżenie częstotliwości próbkowania danych. Aby obsłużyć binarne i wieloklasowej klasyfikacji i regresji predykcyjnego zadań, firma Microsoft tworzy modele danych przy użyciu usługi Azure Machine Learning. 
 
 Aby uzyskać wskazówki, który pokazuje, jak obsłużyć większy zestaw danych, zobacz [zespołu danych dla celów naukowych — przy użyciu usługi Azure HDInsight klastrów Hadoop w zestawie 1 TB](hive-criteo-walkthrough.md).
@@ -50,18 +50,18 @@ Unikatowy klucz, aby dołączyć podróży\_danych i podróży\_taryfy składa s
 ## <a name="mltasks"></a>Przykłady zadań prognoz
 Określa rodzaj prognoz, które mają być oparty na analizie danych. Dzięki temu można wyjaśnić zadania, które należy uwzględnić w procesie. Poniżej przedstawiono trzy przykłady problemów prognoz, które można rozwiązać w tym przewodniku. Są one oparte na *Porada\_kwota*:
 
-- **Klasyfikacja binarna**: przewidywania, czy porady zapłacono komunikacji dwustronnej. Oznacza to *Porada\_kwota* większą niż 0 zł jest przykładem dodatnią, podczas gdy *Porada\_kwota* wynosi 0 zł jest przykładem ujemna.
+- **Klasyfikacja binarna**: Przewidywania, czy porady zapłacono komunikacji dwustronnej. Oznacza to *Porada\_kwota* większą niż 0 zł jest przykładem dodatnią, podczas gdy *Porada\_kwota* wynosi 0 zł jest przykładem ujemna.
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Klasyfikacji wieloklasowej**: przewidywanie zakres kwoty Porada opłacony wyzwolenie. Możemy podzielić *Porada\_kwota* na pięć klasy:
+- **Klasyfikacji wieloklasowej**: Przewidywanie zakres kwoty Porada opłacony podróż. Możemy podzielić *Porada\_kwota* na pięć klasy:
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **Zadanie regresji**: przewidywanie kwotę napiwku płatnych komunikacji dwustronnej.  
+- **Zadanie regresji**: Przewidywanie kwotę napiwku płatnych komunikacji dwustronnej.  
 
 ## <a name="setup"></a>Konfigurowanie klastra usługi HDInsight Hadoop, zaawansowanej analizy
 > [!NOTE]
@@ -71,12 +71,12 @@ Określa rodzaj prognoz, które mają być oparty na analizie danych. Dzięki te
 
 Możesz skonfigurować środowisko platformy Azure na potrzeby zaawansowanej analizy, korzystającej z klastra usługi HDInsight w trzech krokach:
 
-1. [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md): to konto magazynu jest używane do przechowywania danych w usłudze Azure Blob storage. Dane używane w klastrach HDInsight znajduje się także w tym miejscu.
+1. [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md): To konto magazynu jest używane do przechowywania danych w usłudze Azure Blob storage. Dane używane w klastrach HDInsight znajduje się także w tym miejscu.
 2. [Dostosowywanie klastrów usługi Azure HDInsight Hadoop dla Advanced Analytics Process and Technology](customize-hadoop-cluster.md). Ten krok umożliwia utworzenie klastra usługi HDInsight Hadoop za pomocą 64-bitowego pakietu Anaconda Python 2.7 zainstalowane we wszystkich węzłach. Istnieją dwie ważne czynności, należy pamiętać podczas dostosowywania klastra usługi HDInsight.
    
    * Pamiętaj, aby połączyć konto usługi storage utworzonego w kroku 1 z klastrem usługi HDInsight, podczas jego tworzenia. To konto magazynu ma dostęp do danych, które są przetwarzane w klastrze.
    * Po utworzeniu klastra, należy włączyć dostęp zdalny z węzłem głównym klastra. Przejdź do **konfiguracji** , a następnie wybierz pozycję **Włączanie zdalnego**. Ten krok Określa poświadczenia użytkownika służące do logowania zdalnego.
-3. [Tworzenie obszaru roboczego usługi Azure Machine Learning](../studio/create-workspace.md): Użyj tego obszaru roboczego do tworzenia modeli uczenia maszynowego. To zadanie jest skierowana po wypełnieniu eksploracji danych początkowych i w dół — w przypadku próbkowania przy użyciu klastra HDInsight.
+3. [Tworzenie obszaru roboczego usługi Azure Machine Learning](../studio/create-workspace.md): Ten obszar roboczy służy do tworzenia modeli uczenia maszynowego. To zadanie jest skierowana po wypełnieniu eksploracji danych początkowych i w dół — w przypadku próbkowania przy użyciu klastra HDInsight.
 
 ## <a name="getdata"></a>Pobierz dane ze źródła publiczne
 > [!NOTE]
@@ -376,7 +376,7 @@ Daje to:
 
 Całkowita liczba rekordów w obu tabelach jest również. Zapewnia to drugi weryfikacji, czy dane zostały załadowane prawidłowo.
 
-### <a name="exploration-trip-distribution-by-medallion"></a>Eksploracja: Podróży rozkład według Medalionu
+### <a name="exploration-trip-distribution-by-medallion"></a>Eksploracja: Dystrybucja podróży według Medalionu
 > [!NOTE]
 > Zazwyczaj jest to zadanie naukowego przetwarzania danych.
 > 
@@ -410,7 +410,7 @@ W wierszu polecenia katalogu programu Hive uruchom następujące polecenie:
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Eksploracja: Podróży rozkład według Medalionu i hack licencji
+### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Eksploracja: Dystrybucja podróży według Medalionu i hack licencji
 > [!NOTE]
 > Zazwyczaj jest to zadanie naukowego przetwarzania danych.
 > 
@@ -435,7 +435,7 @@ W wierszu polecenia katalogu programu Hive Uruchom polecenie:
 
 Wyniki zapytania są zapisywane w pliku lokalnym **C:\temp\queryoutput.tsv**.
 
-### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>Eksploracja: Oceny jakości danych przez sprawdzenie, czy rekordy szerokości geograficznej lub nieprawidłową długość geograficzną
+### <a name="exploration-assessing-data-quality-by-checking-for-invalid-longitude-or-latitude-records"></a>Eksploracja: Ocena jakości danych przez sprawdzenie, czy nieprawidłowe rekordy współrzędnych geograficznych
 > [!NOTE]
 > Zazwyczaj jest to zadanie naukowego przetwarzania danych.
 > 
@@ -459,7 +459,7 @@ W wierszu polecenia katalogu programu Hive Uruchom polecenie:
 
 *-S:* argument zawarte w tym poleceniu pomija wydruk ekranu stanu zadań Hive Map/Reduce. Jest to przydatne, ponieważ sprawia, że ekran wydruku danych wyjściowych zapytania programu Hive bardziej czytelne.
 
-### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Eksploracja: Binarny klasy dystrybucje porad podróży
+### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Eksploracja: Klasa binarne dystrybucje porad podróży
 > [!NOTE]
 > Zazwyczaj jest to zadanie naukowego przetwarzania danych.
 > 
@@ -723,15 +723,15 @@ Poniżej przedstawiono niektóre szczegóły dotyczące [importu danych] [ impor
 
 **Identyfikator URI serwera HCatalog**: Jeśli nazwa klastra jest **abc123**, to po prostu: https://abc123.azurehdinsight.net.
 
-**Nazwa konta użytkownika usługi Hadoop**: nazwa użytkownika, wybrany dla klastra (nie nazwa użytkownika dostępu zdalnego).
+**Nazwa konta użytkownika usługi Hadoop**: Nazwa użytkownika, wybrany dla klastra (nie nazwa użytkownika dostępu zdalnego).
 
-**Hasło konta użytkownika usługi Hadoop**: hasło wybrane dla klastra (a nie hasło dostępu zdalnego).
+**Hasło konta użytkownika usługi Hadoop**: Hasło dla klastra (a nie hasło dostępu zdalnego).
 
-**Lokalizacja danych wyjściowych**: to jest wybierany jako platformy Azure.
+**Lokalizacja danych wyjściowych**: To jest wybierany jako platformy Azure.
 
 **Nazwa konta usługi Azure storage**: Nazwa domyślnego konta magazynu skojarzonego z klastrem.
 
-**Nazwa kontenera platformy Azure**: to jest domyślna nazwa kontenera dla klastra i jest zwykle taka sama jak nazwa klastra. W przypadku klastra o nazwie **abc123**, to wartości abc123.
+**Nazwa kontenera platformy Azure**: To jest domyślna nazwa kontenera dla klastra i jest zwykle taka sama jak nazwa klastra. W przypadku klastra o nazwie **abc123**, to wartości abc123.
 
 > [!IMPORTANT]
 > Wszystkie tabele, firma Microsoft chce wykonywać zapytania za pomocą [importu danych] [ import-data] modułu w usłudze Machine Learning musi być wewnętrznej tabeli.
@@ -757,9 +757,9 @@ Zestaw danych może teraz służyć jako punktu wyjścia do tworzenia modeli us�
 ### <a name="mlmodel"></a>Tworzenie modeli w usłudze Machine Learning
 Teraz można przystąpić do konstruowania modelu i wdrażania modelu w [uczenia maszynowego](https://studio.azureml.net). Danych jest gotowa do użycia w zakresie rozwiązywania problemów prognozowania wymienionych wcześniej:
 
-- **Klasyfikacja binarna**: przewidywanie czy Porada zapłacono komunikacji dwustronnej.
+- **Klasyfikacja binarna**: Przewidywanie czy Porada zapłacono komunikacji dwustronnej.
 
-  **Uczeń używane:** regresji logistycznej Two-class
+  **Uczeń używane:** Regresja logistyczna dwuklasowych
 
   a. W przypadku tego problemu jest etykieta docelowego (lub klasy) **Przechylony**. Oryginalnego zestawu danych próbkowana w dół ma kilka kolumn, które są przecieki docelowego w tym eksperymencie klasyfikacji. W szczególności **Porada\_klasy**, **Porada\_kwota**, i **całkowita\_kwota** ujawniania informacji o docelowej etykiety, która nie jest dostępny na czas testowania. Możemy usunąć następujące kolumny pod uwagę przy użyciu [Select Columns in Dataset] [ select-columns] modułu.
 
@@ -777,13 +777,13 @@ Teraz można przystąpić do konstruowania modelu i wdrażania modelu w [uczenia
 
   ![Wykres przedstawiający AUC wartość](./media/hive-walkthrough/8JDT0F8.png)
 
-- **Klasyfikacji wieloklasowej**: przewidywanie zakres kwoty Porada opłacony podróży, przy użyciu uprzednio zdefiniowany klas.
+- **Klasyfikacji wieloklasowej**: Do prognozowania zakresu Porada kwoty wypłacane komunikacji dwustronnej, przy użyciu uprzednio zdefiniowany klas.
 
   **Uczeń używane:** Wieloklasowej regresji logistycznej
 
   a. W przypadku tego problemu jest naszą etykietę docelowego (lub klasy) **Porada\_klasy**, które można wykonać jedną z pięciu wartości (0,1,2,3,4). Tak jak w przypadku klasyfikacji binarnej mamy kilka kolumn, które są przecieki docelowego w tym eksperymencie. W szczególności **Przechylony**, **Porada\_kwota**, i **całkowita\_kwota** ujawnić informacji na temat etykietą docelową, która nie jest dostępna w czas testowania. Możemy usunąć następujące kolumny przy użyciu [Select Columns in Dataset] [ select-columns] modułu.
 
-  Na poniższym diagramie przedstawiono eksperymentu w celu przewidywania, w których bin Porada jest mogącego wchodzić. Pojemniki to: klasy 0: Porada = 0 zł, klasy 1: Porada > 0 USD i Porada < = 5 USD; klasy 2: Porada > 5 USD i Porada < = 10 USD, klasy 3: Porada > w wysokości 10 USD i Porada < = 20 USD i klasy 4: Porada > 20 USD.
+  Na poniższym diagramie przedstawiono eksperymentu w celu przewidywania, w których bin Porada jest mogącego wchodzić. Pojemniki to: Klasa 0: Porada = 0 zł, klasy 1: Porada > 0 USD i Porada < = 5 USD; klasy 2: Porada > 5 USD i Porada < = 10 USD, klasy 3: Porada > w wysokości 10 USD i Porada < = 20 USD i klasy 4: Porada > 20 USD.
 
   ![Diagram przedstawiający eksperymentu do prognozowania pojemnika dla wskazówki](./media/hive-walkthrough/5ztv0n0.png)
 
@@ -797,9 +797,9 @@ Teraz można przystąpić do konstruowania modelu i wdrażania modelu w [uczenia
 
   Należy pamiętać, że dokładności klasy na klasy powszechnie znane są bardzo dobre, model nie działa Dobra robota "usługi" w klasach rzadkich.
 
-- **Zadanie regresji**: przewidywanie ilość Porada płatnych komunikacji dwustronnej.
+- **Zadanie regresji**: Przewidywanie ilość Porada płatne komunikacji dwustronnej.
 
-  **Uczeń używane:** Boosted drzewa decyzyjnego
+  **Uczeń używane:** wzmocnione drzewo decyzyjnego
 
   a. W przypadku tego problemu jest etykieta docelowego (lub klasy) **Porada\_kwota**. Przecieki docelowego w tym przypadku są: **Przechylony**, **Porada\_klasy**, i **całkowita\_kwota**. Te zmienne ujawniać informacje o ilości porady, które są zwykle niedostępne na czas testowania. Możemy usunąć następujące kolumny przy użyciu [Select Columns in Dataset] [ select-columns] modułu.
 

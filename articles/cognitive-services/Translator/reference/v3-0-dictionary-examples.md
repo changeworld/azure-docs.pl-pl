@@ -6,18 +6,18 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4b24ba4b4d83ac3f0c8291308debb6317efa4a55
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b12b9d56f42911da606e3bdcfedbe3f789d2c4e8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968001"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466941"
 ---
-# <a name="translator-text-api-30-dictionary-examples"></a>API 3.0 tekstu usługi Translator: Przykłady słowników
+# <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Przykłady słowników
 
 Przykłady pokazujące, jak terminy w słowniku są używane w kontekście. Ta operacja jest używana w połączeniu z sekcją [wyszukiwania słownika](./v3-0-dictionary-lookup.md).
 
@@ -68,7 +68,7 @@ Nagłówki żądania obejmują:
     <td>*Nagłówek żądania wymagane*.<br/>Długość treści żądania.</td>
   </tr>
   <tr>
-    <td>X ClientTraceId</td>
+    <td>X-ClientTraceId</td>
     <td>*Opcjonalnie*.<br/>Generowane przez klienta identyfikator GUID do unikatowego identyfikowania żądania. Możesz pominąć ten nagłówek, jeśli zawierają identyfikator śledzenia w ciągu zapytania za pomocą parametru zapytania o nazwie `ClientTraceId`.</td>
   </tr>
 </table> 
@@ -102,19 +102,19 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
     
   * `normalizedTarget`: Ciąg, zapewniając znormalizowana postać warunku docelowego. Ogólnie rzecz biorąc, powinna to być taka sama jak wartość `Translation` pole pod indeksem listy dopasowywania w treści żądania.
   
-  * `examples`: Listy przykłady (warunek źródła, terminu docelowego) pary. Każdy element listy jest obiektem z następującymi właściwościami:
+  * `examples`: Lista przykłady (warunek źródła, terminu docelowego) pary. Każdy element listy jest obiektem z następującymi właściwościami:
 
     * `sourcePrefix`: Ciąg do łączenia _przed_ wartość `sourceTerm` w celu utworzenia kompletny przykład. Nie należy dodawać znak spacji, ponieważ jest już istnieje w przypadku powinien być. Ta wartość może być ciągiem pustym.
 
-    * `sourceTerm`Ciąg równa rzeczywiste termin wyszukiwać. Ten ciąg jest dodawana z `sourcePrefix` i `sourceSuffix` w celu utworzenia kompletny przykład. Jego wartość jest oddzielona, dzięki czemu może być oznaczony w interfejsie użytkownika, np. przez pogrubienie go.
+    * `sourceTerm`: Wyszukiwane ciągu równa rzeczywisty okres. Ten ciąg jest dodawana z `sourcePrefix` i `sourceSuffix` w celu utworzenia kompletny przykład. Jego wartość jest oddzielona, dzięki czemu może być oznaczony w interfejsie użytkownika, np. przez pogrubienie go.
 
     * `sourceSuffix`: Ciąg do łączenia _po_ wartość `sourceTerm` w celu utworzenia kompletny przykład. Nie należy dodawać znak spacji, ponieważ jest już istnieje w przypadku powinien być. Ta wartość może być ciągiem pustym.
 
-    * `targetPrefix`Ciąg podobny do następującego `sourcePrefix` , ale dla obiektu docelowego.
+    * `targetPrefix`: Ciąg podobny do następującego `sourcePrefix` , ale dla obiektu docelowego.
 
-    * `targetTerm`Ciąg podobny do następującego `sourceTerm` , ale dla obiektu docelowego.
+    * `targetTerm`: Ciąg podobny do następującego `sourceTerm` , ale dla obiektu docelowego.
 
-    * `targetSuffix`Ciąg podobny do następującego `sourceSuffix` , ale dla obiektu docelowego.
+    * `targetSuffix`: Ciąg podobny do następującego `sourceSuffix` , ale dla obiektu docelowego.
 
     > [!NOTE]
     > W przypadku żadnych przykładów w słowniku, odpowiedzi to 200 (OK), ale `examples` lista jest pusta lista.
@@ -123,7 +123,7 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
 W tym przykładzie przedstawiono przykłady dla pary składające się z angielskiego termin wyszukiwania `fly` hiszpański tłumaczenie `volar`.
 
-# <a name="curltabcurl"></a>[Curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

@@ -1,6 +1,6 @@
 ---
-Tytuł: Importowanie danych do usługi Machine Learning Studio z innego eksperymentu titleSuffix: Opis usługi Azure Machine Learning Studio: Jak zapisać dane szkoleniowe w usłudze Azure Machine Learning Studio i używać go w innym eksperymencie.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Importowanie danych do usługi Machine Learning Studio z innego eksperymentu titleSuffix: Opis usługi Azure Machine Learning Studio: Jak zapisać dane szkoleniowe w usłudze Azure Machine Learning Studio i używać go w innym eksperymencie.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=deguhath, previous-author=deguhath ms.date: 03/20/2017
 ---

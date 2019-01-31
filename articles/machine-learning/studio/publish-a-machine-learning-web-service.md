@@ -1,6 +1,6 @@
 ---
-Tytuł: Wdróż titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Jak konwertowanie eksperymentu szkolenia na eksperyment predykcyjny, przygotowywania ich do wdrożenia, a następnie wdrożyć go jako usługi sieci web Azure Machine Learning Studio.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Wdróż titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Jak konwertowanie eksperymentu szkolenia na eksperyment predykcyjny, przygotowywania ich do wdrożenia, a następnie wdrożyć go jako usługi sieci web Azure Machine Learning Studio.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 01/06/2017
 ---

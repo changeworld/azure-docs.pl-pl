@@ -1,8 +1,8 @@
 ---
-title: Azure zdarzenia rozpoczęcia delete puli partii | Dokumentacja firmy Microsoft
-description: Odwołanie do usunięcia puli partii rozpoczęcia zdarzenia.
+title: Zdarzenie rozpoczęcia usuwania puli Azure Batch | Dokumentacja firmy Microsoft
+description: Dokumentacja zdarzenie rozpoczęcia usuwania puli usługi Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
@@ -11,19 +11,19 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: danlep
-ms.openlocfilehash: 8737b9ff6452730ff5a55fa7324e37f0fe715433
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: lahugh
+ms.openlocfilehash: 2352971af3844b56f93c16ebaf6cb23bd5fd8a5a
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30312063"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474296"
 ---
 # <a name="pool-delete-start-event"></a>Zdarzenie rozpoczęcia usuwania puli
 
- To zdarzenie jest emitowany, gdy rozpoczęto operację usuwania puli. Usuwanie puli jest zdarzenie asynchroniczne, można oczekiwać, że zdarzenie ukończenia usuwania puli być emitowane po ukończeniu operacji usuwania.
+ To zdarzenie jest emitowane po rozpoczęciu operacji usuwania puli. Usuwanie puli jest zdarzenie asynchroniczne, można oczekiwać, że zdarzenie zakończenia usuwania puli być emitowane po ukończeniu operacji usuwania.
 
- W poniższym przykładzie przedstawiono treści zdarzenia rozpoczęcia delete puli.
+ Poniższy przykład pokazuje treści zdarzenie rozpoczęcia usuwania puli.
 
 ```
 {
@@ -31,6 +31,6 @@ ms.locfileid: "30312063"
 }
 ```
 
-|Element|Typ|Uwagi|
+|Element|Type|Uwagi|
 |-------------|----------|-----------|
-|id|Ciąg|Identyfikator puli.|
+|id|String|Identyfikator puli.|

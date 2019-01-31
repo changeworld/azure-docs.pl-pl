@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 25a05df42029fe444b8d5ceddb2972f779f1b232
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 199e1dda3e4629c0298d4aae1cb5d09e20e4b3b8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358732"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452045"
 ---
-# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>Dostęp do zasobów usługi Azure Cosmos DB z sieciami wirtualnymi
+# <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Dostęp do usługi Azure Cosmos DB z sieciami wirtualnymi (VNet)
 
-Można skonfigurować konto usługi Azure Cosmos, aby zezwolić na dostęp tylko z określonej podsieci sieci wirtualnej (VNET). Po włączeniu [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) dostęp do usługi Azure Cosmos DB w podsieci sieci wirtualnej, ruch z tej podsieci są wysyłane do usługi Azure Cosmos DB przy użyciu tożsamości, podsieci i sieci wirtualnej. Po włączeniu punktu końcowego usługi Azure Cosmos DB można ograniczyć dostęp do podsieci, dodając ją do swojego konta usługi Azure Cosmos.
+Można skonfigurować konto usługi Azure Cosmos, aby zezwolić na dostęp tylko z określonej podsieci sieci wirtualnej (VNet). Po włączeniu [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) dostęp do usługi Azure Cosmos DB w podsieci sieci wirtualnej, ruch z tej podsieci są wysyłane do usługi Azure Cosmos DB przy użyciu tożsamości, podsieci i sieci wirtualnej. Po włączeniu punktu końcowego usługi Azure Cosmos DB można ograniczyć dostęp do podsieci, dodając ją do swojego konta usługi Azure Cosmos.
 
 Domyślnie konta usługi Azure Cosmos jest dostępny z dowolnego źródła, jeśli żądania dołączono prawidłowy token autoryzacji. Podczas dodawania co najmniej jednej podsieci w ramach sieci wirtualnych tylko żądania pochodzące z tych podsieci otrzyma prawidłowej odpowiedzi. Żądania pochodzące z dowolnego innego źródła otrzyma odpowiedź 403 (zabronione). 
 

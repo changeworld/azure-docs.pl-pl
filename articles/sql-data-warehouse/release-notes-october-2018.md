@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 9160a5f4e3a452682787ff500199e43e7fad0c77
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 81096eeb1edcd6681bdc887d267ee477d78a8578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213693"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472086"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Październik 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w października 2018 roku.
@@ -26,7 +26,7 @@ Wysoce żądanej funkcji usługi SQL Data Warehouse (SQL data Warehouse) jest te
 ## <a name="row-level-security-generally-available"></a>Zabezpieczenia na poziomie wiersza jest ogólnie dostępna
 Usługa Azure SQL Data Warehouse (usługi SQL DW) obsługuje teraz zabezpieczenia na poziomie wiersza (RLS) dodawanie zaawansowanych możliwości, aby zabezpieczyć poufne dane. Wraz z wprowadzeniem zabezpieczenia na poziomie wiersza możesz wdrożyć zasady zabezpieczeń do kontrolowania dostępu do wierszy w tabelach, podobnie jak w, którzy mogą uzyskiwać dostęp do jakich wierszy. Zabezpieczenia na poziomie wiersza Umożliwia to bardziej precyzyjnej kontroli dostępu, bez konieczności zmiany projektu magazynu danych. Zabezpieczenia na poziomie wiersza upraszcza ogólnym modelu zabezpieczeń, ponieważ logika ograniczeń dostępu znajduje się w warstwie bazy danych sam, a nie od danych w innej aplikacji. Zabezpieczenia na poziomie wiersza eliminuje również potrzebę wprowadzenia widoków, aby odfiltrować do wierszy dla zarządzania kontrolą dostępu. Nie ma żadnych dodatkowych kosztów, dla tej funkcji zabezpieczeń przeznaczonych dla przedsiębiorstw dla naszych klientów.
 
-## <a name="advanced-advisors"></a>Zaawansowane doradców
+## <a name="advanced-advisors"></a>Advanced Advisors
 Zaawansowane automatycznego dostrajania dla usługi Azure SQL Data Warehouse (usługi SQL DW) po prostu o wiele prostsze przy użyciu zalecenia dotyczące magazynu dodatkowych danych i metryk. Istnieją dodatkowe zaawansowane zaleceń za pośrednictwem usługi Azure Advisor do dyspozycji użytkownika, w tym:
 1.  Adaptacyjne pamięci podręcznej — należy pamiętać podczas skalowania do optymalizacji wykorzystania pamięci podręcznej.
 2.  Dystrybucja tabel — umożliwia określenie, kiedy należy replikować tabele, aby zmniejszyć przenoszenia danych i zwiększyć wydajność obciążeń. 
@@ -57,7 +57,7 @@ Usługa Azure SQL Data Warehouse (usługi SQL DW) ma teraz natywnej integracji z
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 
-| Stanowisko | Opis |
+| Tytuł | Opis |
 |:---|:---|
 | **CETAS Parquet błędy w klasach zasobów małych na magazyny danych DW2000 i nie tylko** | Ta poprawka poprawnie identyfikuje odwołanie o wartości null w tworzenie zewnętrznej tabeli jako ścieżkę kodu Parquet. |
 |**Wartości kolumny tożsamości może spowodować utratę niektórych operacji CTAS** | Wartość kolumny identyfikowanie mogą nie zostać zachowane podczas CTASed do innej tabeli. Zgłoszone w blogu: [ https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/ ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |

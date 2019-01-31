@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 2e71cf90c6e894946a2f3a1c8bfce2179f214a29
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141411"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453658"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Zespół danych dla celów naukowych w działaniu: przy użyciu programu SQL Server
 W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.
@@ -46,15 +46,15 @@ Unikatowy klucz, aby dołączyć podróży\_danych i podróży\_taryfy składa s
 ## <a name="mltasks"></a>Przykłady zadań prognoz
 Firma Microsoft będzie sformułować trzy problemów prognozowania na podstawie *Porada\_kwota*, to znaczy:
 
-1. Klasyfikacja binarna: przewidywania, czy porady zapłacono w podróży, tj *Porada\_kwota* większą niż 0 zł jest przykładem dodatnią, podczas gdy *Porada\_kwota* wynosi 0 zł jest przykład ujemna.
-2. Klasyfikacji wieloklasowej: przewidywanie zakres Porada opłacony wyzwolenie. Możemy podzielić *Porada\_kwota* do pięciu pojemniki lub klasy:
+1. Klasyfikacja binarna: Przewidywania, czy porady zapłacono podróży, czyli *Porada\_kwota* większą niż 0 zł jest przykładem dodatnią, podczas gdy *Porada\_kwota* wynosi 0 zł jest ujemna przykład.
+2. Wieloklasowej klasyfikacji: Do prognozowania zakresu Porada opłacony podróż. Możemy podzielić *Porada\_kwota* do pięciu pojemniki lub klasy:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. Zadanie regresji: przewidywanie ilość Porada płatnych komunikacji dwustronnej.  
+3. Zadanie regresji. Przewidywanie ilość Porada płatne komunikacji dwustronnej.  
 
 ## <a name="setup"></a>Ustawienie zapasowej platformy Azure środowiska nauki o danych zaawansowanej analizy
 Jak widać na [Planowanie środowiska](plan-your-environment.md) przewodnik, dostępnych jest kilka opcji do pracy z zestawem danych podróży taksówek NYC na platformie Azure:
@@ -79,7 +79,7 @@ Aby skonfigurować środowisko nauki o danych platformy Azure:
    > 
    > 
 
-Na podstawie rozmiaru zestawu danych, lokalizacja źródła danych i środowiska wybranego obiektu docelowego platformy Azure, ten scenariusz jest podobny do [scenariusza \#5: duży zestaw danych w lokalnych plikach docelowych programu SQL Server na maszynie Wirtualnej platformy Azure](plan-sample-scenarios.md#largelocaltodb).
+Na podstawie rozmiaru zestawu danych, lokalizacja źródła danych i środowiska wybranego obiektu docelowego platformy Azure, ten scenariusz jest podobny do [scenariusza \#5: Duży zestaw danych w lokalnych plikach docelowych programu SQL Server na maszynie Wirtualnej platformy Azure](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Pobierz dane ze źródła publiczne
 Aby uzyskać [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych w lokalizacji publicznej, możesz użyć dowolnej z metod opisanych w [przenoszenie danych do i z usługi Azure Blob Storage](move-azure-blob.md) Aby skopiować dane do nowej maszyny wirtualnej.
@@ -87,7 +87,7 @@ Aby uzyskać [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu
 Aby skopiować dane za pomocą narzędzia AzCopy:
 
 1. Zaloguj się do maszyny wirtualnej (VM)
-2. Utwórz nowy katalog w dysku danych maszyny Wirtualnej (Uwaga: nie należy używać dysku tymczasowego, który jest dostarczany z maszyny Wirtualnej jako dysk danych).
+2. Utwórz nowy katalog w dysku danych maszyny Wirtualnej (Uwaga: Nie należy używać dysku tymczasowego, który jest dostarczany z maszyny Wirtualnej jako dysk danych).
 3. W oknie wiersza polecenia Uruchom następujący wiersz polecenia narzędzia Azcopy, zastępując < path_to_data_folder > folderu danych utworzonych w (2):
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -137,7 +137,7 @@ Można zwiększyć wydajność ładowania/przesyłania dużych ilości danych do
 12. Dane podróży taksówek NYC są ładowane w dwóch oddzielnych tabelach. Aby poprawić operacji łączenia, zaleca indeksu w tabelach. Przykładowy skrypt **tworzenie\_partycjonowane\_index.sql** tworzy indeksy podzielone na partycje na klucza złożonego łączenia **Medalionu hakowanie\_licencji i odbiór\_ Data i godzina**.
 
 ## <a name="dbexplore"></a>Eksplorowanie danych i inżynieria funkcji w programie SQL Server
-W tej sekcji zostaną wykonane Generowanie funkcji i eksploracji danych, uruchamiając zapytania SQL bezpośrednio w **SQL Server Management Studio** przy użyciu bazy danych programu SQL Server utworzonej wcześniej. Przykładowy skrypt o nazwie **przykładowe\_queries.sql** znajduje się w **przykładowe skrypty** folderu. Zmodyfikuj skrypt, aby zmienić nazwę bazy danych, jeśli jest inny niż domyślny: **TaxiNYC**.
+W tej sekcji zostaną wykonane Generowanie funkcji i eksploracji danych, uruchamiając zapytania SQL bezpośrednio w **SQL Server Management Studio** przy użyciu bazy danych programu SQL Server utworzonej wcześniej. Przykładowy skrypt o nazwie **przykładowe\_queries.sql** znajduje się w **przykładowe skrypty** folderu. Jeśli jest inny niż domyślny, należy zmodyfikować skrypt, aby zmienić nazwę bazy danych: **TaxiNYC**.
 
 W tym ćwiczeniu obejmuje następujące czynności:
 
@@ -163,7 +163,7 @@ Szybkie weryfikacji liczby wierszy i kolumn w tabelach wypełniać wcześniej pr
     -- Report number of columns in table nyctaxi_trip
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
-#### <a name="exploration-trip-distribution-by-medallion"></a>Eksploracja: Podróży rozkład według Medalionu
+#### <a name="exploration-trip-distribution-by-medallion"></a>Eksploracja: Dystrybucja podróży według Medalionu
 W tym przykładzie identyfikuje Medalionu (numery taksówek) z więcej niż 100 podróży w danym okresie czasu. Zapytania będą korzystać z dostępu do tabeli partycjonowanej, ponieważ w schemacie partycji należy przygotować **odbioru\_daty/godziny**. Wykonywanie zapytań pełnego zestawu danych spowoduje również, że użycie tabeli partycjonowanej i/lub indeksu skanowania.
 
     SELECT medallion, COUNT(*)
@@ -172,14 +172,14 @@ W tym przykładzie identyfikuje Medalionu (numery taksówek) z więcej niż 100 
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Eksploracja: Podróży rozkład według Medalionu i hack_license
+#### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Eksploracja: Dystrybucja podróży Medalionu i hack_license
     SELECT medallion, hack_license, COUNT(*)
     FROM nyctaxi_fare
     WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
     GROUP BY medallion, hack_license
     HAVING COUNT(*) > 100
 
-#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Ocena jakości danych: Sprawdź rekordy o długości geograficznej niepoprawne i/lub szerokości geograficznej
+#### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Ocena jakości danych: Weryfikowanie rekordów za pomocą współrzędnych niepoprawne i/lub szerokość geograficzną
 W tym przykładzie bada, jeśli żadnego pola geograficzne i/lub szerokość geograficzną albo zawiera nieprawidłową wartość (stopnie radianach powinna być od-90 do 90), lub (0, 0) współrzędnych.
 
     SELECT COUNT(*) FROM nyctaxi_trip
@@ -215,7 +215,7 @@ W tym przykładzie oblicza rozkład Porada zakresów w danym okresie czasu (lub 
     WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
     GROUP BY tip_class
 
-#### <a name="exploration-compute-and-compare-trip-distance"></a>Eksploracji: Obliczeń i porównywanie odległość podróży
+#### <a name="exploration-compute-and-compare-trip-distance"></a>Eksploracja: Obliczeń i porównywanie odległość podróży
 Ten przykład konwertuje odbiór i dropoff długości geograficznej i szerokości geograficznej do lokalizacji geograficznej SQL punktów oblicza odległość podróży za pomocą różnicę punktów lokalizacji geograficznej SQL i zwraca losowej próbki wyniki porównania. Przykład ogranicza wyniki do prawidłowe współrzędne wyłącznie przy użyciu zapytania oceny jakości danych omówione wcześniej.
 
     SELECT
@@ -407,7 +407,7 @@ W tej sekcji, firma Microsoft sprzężenia **nyctaxi\_podróży** i **nyctaxi\_t
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Eksplorowanie danych za pomocą zapytań SQL w IPython Notebook
 W tej sekcji omówimy dystrybucji danych przy użyciu danych % 1, próbkowania, który jest utrwalony w nowej tabeli, którą utworzyliśmy powyżej. Należy pamiętać, że podobne eksploracji mogą być wykonywane przy użyciu oryginalnego tabel, opcjonalnie używając **TABLESAMPLE** ograniczyć eksploracji przykładowe lub ograniczając wyniki w danym momencie okresu przy użyciu **odbioru\_daty/godziny** dzieli na partycje, jak pokazano w [eksplorację danych inżynieryjnych i związanych z funkcji w programie SQL Server](#dbexplore) sekcji.
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Eksploracji: Codzienne rozkład rund
+#### <a name="exploration-daily-distribution-of-trips"></a>Eksploracja: Codzienne dystrybucji podróży
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM nyctaxi_one_percent
@@ -416,7 +416,7 @@ W tej sekcji omówimy dystrybucji danych przy użyciu danych % 1, próbkowania, 
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-per-medallion"></a>Eksploracja: Podróży dystrybucji na Medalionu
+#### <a name="exploration-trip-distribution-per-medallion"></a>Eksploracja: Dystrybucja podróży na Medalionu
     query = '''
         SELECT medallion,count(*) AS c
         FROM nyctaxi_one_percent
@@ -428,7 +428,7 @@ W tej sekcji omówimy dystrybucji danych przy użyciu danych % 1, próbkowania, 
 ### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>Generowanie funkcji, za pomocą zapytań SQL w IPython Notebook
 W tej sekcji wygenerujemy nowe etykiety i funkcje bezpośrednio przy użyciu zapytań SQL, wykonywanie operacji na tabeli 1%, przykładowe utworzonego w poprzedniej sekcji.
 
-#### <a name="label-generation-generate-class-labels"></a>Generowanie etykiety: Generuj klasy etykiety
+#### <a name="label-generation-generate-class-labels"></a>Generowanie etykiety: Generowanie klasy etykiet
 W poniższym przykładzie możemy wygenerować dwa zestawy etykiety na potrzeby modelowania:
 
 1. Binarny etykiety klasy **Przechylony** (przewidywania, jeśli będzie miał Porada)
@@ -456,7 +456,7 @@ W poniższym przykładzie możemy wygenerować dwa zestawy etykiety na potrzeby 
         cursor.execute(nyctaxi_one_percent_update_col)
         cursor.commit()
 
-#### <a name="feature-engineering-count-features-for-categorical-columns"></a>Technicznego opracowywania funkcji: Funkcje Count podzielone na kategorie kolumny
+#### <a name="feature-engineering-count-features-for-categorical-columns"></a>Inżynieria funkcji: Liczba funkcji podzielone na kategorie kolumny
 W tym przykładzie przekształca pole kategorii w pole liczbowe, zastępując każdej kategorii, liczba jego wystąpień, w danych.
 
     nyctaxi_one_percent_insert_col = '''
@@ -486,7 +486,7 @@ W tym przykładzie przekształca pole kategorii w pole liczbowe, zastępując ka
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>Technicznego opracowywania funkcji: Funkcje Bin kolumny liczbowe
+#### <a name="feature-engineering-bin-features-for-numerical-columns"></a>Inżynieria funkcji: Funkcje pojemnika dla kolumny liczbowe
 W tym przykładzie przekształca ciągłego pola liczbowego w zakresach wstępnie zdefiniowanych kategorii, czyli przekształcania pole liczbowe na pole kategorii.
 
     nyctaxi_one_percent_insert_col = '''
@@ -514,7 +514,7 @@ W tym przykładzie przekształca ciągłego pola liczbowego w zakresach wstępni
     cursor.execute(nyctaxi_one_percent_update_col)
     cursor.commit()
 
-#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Inżynieria funkcji: Prowadzenie dziesiętna szerokości/długości geograficznej lokalizacji funkcji
+#### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Inżynieria funkcji: Wyodrębnianie funkcji z lokalizacji z dziesiętna szerokości/długości geograficznej
 W tym przykładzie dzieli pola szerokości i/lub długość geograficzną w formie dziesiętnej na wielu pól region inny poziom szczegółowości, takich jak kraju, miasta, miejscowości, blok itp. Należy zwrócić uwagę na to, czy nowe pola geograficzne nie są zamapowane do rzeczywistej lokalizacji. Informacje na temat mapowania geocode lokalizacji można zobaczyć [usług REST mapy usługi Bing](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
@@ -546,9 +546,9 @@ W tym przykładzie dzieli pola szerokości i/lub długość geograficzną w form
 
 Teraz jesteśmy gotowi przejść do konstruowania modelu i wdrażania modelu w [usługi Azure Machine Learning](https://studio.azureml.net). Dane są gotowe jakichkolwiek problemów prognozowania wymienionych wcześniej, to znaczy:
 
-1. Klasyfikacja binarna: przewidywanie czy Porada zapłacono komunikacji dwustronnej.
-2. Klasyfikacji wieloklasowej: przewidywanie zakres Porada płatnej zgodnie z wcześniej zdefiniowanych klas.
-3. Zadanie regresji: przewidywanie ilość Porada płatnych komunikacji dwustronnej.  
+1. Klasyfikacja binarna: Przewidywanie czy Porada zapłacono komunikacji dwustronnej.
+2. Wieloklasowej klasyfikacji: Do prognozowania zakresu Porada płatną zgodnie z wcześniej zdefiniowanych klas.
+3. Zadanie regresji. Przewidywanie ilość Porada płatne komunikacji dwustronnej.  
 
 ## <a name="mlmodel"></a>Tworzenie modeli w usłudze Azure Machine Learning
 Aby rozpocząć wykonywania modelowania, zaloguj się do swojego obszaru roboczego usługi Azure Machine Learning. Jeśli jeszcze nie utworzono obszaru roboczego uczenia maszynowego, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](../studio/create-workspace.md).

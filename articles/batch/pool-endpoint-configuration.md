@@ -1,39 +1,39 @@
 ---
-title: Skonfiguruj punkty końcowe węzła w puli partii zadań Azure | Dokumentacja firmy Microsoft
-description: Jak skonfigurować lub wyłączyć dostępu do portów SSH lub RDP na węzłach obliczeniowych w puli partii zadań Azure.
+title: Konfigurowanie punktów końcowych węzeł w puli Azure Batch | Dokumentacja firmy Microsoft
+description: Jak skonfigurować lub wyłączyć dostęp do portów SSH lub RDP w węzłach obliczeniowych w puli usługi Azure Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: danlep
-ms.openlocfilehash: 5898206761e5029f94b6d1f1b48223481ae2ca13
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: lahugh
+ms.openlocfilehash: a6c2c343b13b77048c772cb1e5c2ba06cf8add50
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358731"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457619"
 ---
-# <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurowanie lub wyłączanie dostępu zdalnego do wyliczenia węzłów w puli partii zadań Azure
+# <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurowanie lub wyłączanie dostępu zdalnego do węzłów obliczeniowych w puli usługi Azure Batch
 
-Domyślnie Umożliwia wsadowe [użytkownika węzła](/rest/api/batchservice/computenode/adduser) z łącznością sieciową nawiązać zewnętrznie węźle obliczeń w puli partii. Na przykład użytkownik może łączyć przez RDP (Remote Desktop) na portu 3389 na węźle obliczeń w puli systemu Windows. Podobnie Domyślnie użytkownik może łączyć przez Secure Shell (SSH) w węźle obliczeń w puli Linux port 22. 
+Domyślnie usługa Batch umożliwia [użytkownika węzła](/rest/api/batchservice/computenode/adduser) z łącznością sieciową, do łączenia z zewnątrz do węzła obliczeniowego w puli usługi Batch. Na przykład użytkownik może połączyć się przez RDP (Remote Desktop) na porcie 3389 do węzła obliczeniowego w puli Windows. Podobnie domyślnie, użytkownik może łączyć przez Secure Shell (SSH) na porcie 22 do węzła obliczeniowego w puli systemu Linux. 
 
-W danym środowisku konieczne może być ograniczenia lub wyłączyć te ustawienia domyślne dostępu zewnętrznego. Te ustawienia można modyfikować za pomocą interfejsów API partii ustawić [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) właściwości. 
+W danym środowisku konieczne może być ograniczyć lub wyłączyć te domyślne ustawienia dostępu zewnętrznego. Te ustawienia można modyfikować za pomocą interfejsów API usługi Batch można ustawić [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) właściwości. 
 
-## <a name="about-the-pool-endpoint-configuration"></a>Konfiguracja punktu końcowego puli — informacje
-Konfiguracja punktu końcowego, który składa się z co najmniej jeden [pule adresów translatora adresów sieciowych](/rest/api/batchservice/pool/add#inboundnatpool) portów frontonu. (Nie należy mylić z puli partii węzłów obliczeniowych pulą translatora adresów Sieciowych). Skonfigurowaniu każda pula NAT na zastąpienie domyślnych ustawień połączenia w węzłach obliczeń puli. 
+## <a name="about-the-pool-endpoint-configuration"></a>Temat pul konfiguracji punktu końcowego
+Konfiguracja punktu końcowego, który składa się z co najmniej jeden [pule translatora (NAT) adres sieci](/rest/api/batchservice/pool/add#inboundnatpool) portów frontonu. (Nie należy mylić z puli usługi Batch, węzłów obliczeniowych puli translatora adresów Sieciowych). Konfigurowanie każdej puli translatora adresów Sieciowych w celu zastąpienia domyślnych ustawień połączenia w węzłach obliczeniowych w puli. 
 
-Każdej konfiguracji puli NAT zawiera co najmniej jedną [sieci reguł zabezpieczeń grupy (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Każdej reguły NSG zezwala lub nie zezwala na przesyłanie konkretnego ruchu sieciowego do punktu końcowego. Można akceptować lub odrzucać cały ruch, ruch identyfikowane przez [usługi tag](../virtual-network/security-overview.md#service-tags) (na przykład "Internet"), lub ruch z określonych adresów IP lub podsieci.
+Każda Konfiguracja puli translatora adresów Sieciowych zawiera co najmniej jedną [reguł Sieciowej grupy zabezpieczeń sieciowych](/rest/api/batchservice/pool/add#networksecuritygrouprule). Każda reguła sieciowej grupy zabezpieczeń zezwala lub nie konkretnego ruchu sieciowego do punktu końcowego. Można wybrać udzielić lub odmówić cały ruch, ruch identyfikowane przez [tag usługi](../virtual-network/security-overview.md#service-tags) (na przykład "Internet"), lub ruchu z określonych adresów IP lub podsieci.
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
-* Konfiguracja punktu końcowego pula jest częścią puli [konfiguracji sieci](/rest/api/batchservice/pool/add#NetworkConfiguration). Konfigurację sieci można opcjonalnie dołączyć ustawienia puli, aby dołączyć do [sieci wirtualnej platformy Azure](batch-virtual-network.md). Jeśli skonfigurowano puli w sieci wirtualnej można utworzyć reguły NSG, które używają ustawień adresu w sieci wirtualnej.
-* Po skonfigurowaniu puli translacji adresów Sieciowych, można skonfigurować wiele reguł NSG. Reguły są sprawdzane według ważności. Gdy reguła ma zastosowanie, żadne inne reguły nie są sprawdzane pod kątem dopasowania.
+* Konfiguracja punktu końcowego puli jest częścią puli [konfiguracji sieci](/rest/api/batchservice/pool/add#NetworkConfiguration). Konfiguracja sieci może opcjonalnie obejmować ustawienia do dołączenia do puli aby [sieci wirtualnej platformy Azure](batch-virtual-network.md). Po skonfigurowaniu puli w sieci wirtualnej można utworzyć reguły sieciowej grupy zabezpieczeń, które używają ustawień adresów w sieci wirtualnej.
+* Po skonfigurowaniu puli translatora adresów Sieciowych, można skonfigurować wiele reguł sieciowej grupy zabezpieczeń. Reguły są sprawdzane według ważności. Gdy reguła ma zastosowanie, żadne inne reguły nie są sprawdzane pod kątem dopasowania.
 
 
-## <a name="example-deny-all-rdp-traffic"></a>Przykład: Odmowa cały ruch RDP
+## <a name="example-deny-all-rdp-traffic"></a>Przykład: Odmów cały ruch RDP
 
-Poniższy fragment kodu C# przedstawiono sposób konfigurowania punktu końcowego protokołu RDP w węzłach obliczeń w puli systemu Windows, aby zablokować cały ruch sieciowy. Punkt końcowy korzysta z puli frontonu porty w zakresie *60000 60099*. 
+Następujące C# fragment kodu przedstawia sposób konfigurowania punktu końcowego protokołu RDP w węzłach obliczeniowych w puli Windows, aby zablokować cały ruch sieciowy. Punkt końcowy korzysta z puli frontonu portów z zakresu *60000 60099*. 
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -48,9 +48,9 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Przykład: Odmowa cały ruch SSH z Internetu
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Przykład: Odmów cały ruch SSH z Internetu
 
-Poniższy fragment kodu języka Python pokazano, jak skonfigurować punkt końcowy SSH w węzłach obliczeń w puli systemu Linux, aby zablokować cały ruch internetowy. Punkt końcowy korzysta z puli frontonu porty w zakresie *4000 4100*. 
+Poniższy fragment kodu języka Python pokazuje, jak skonfigurować punkt końcowy SSH w węzłach obliczeniowych w puli systemu Linux, aby zablokować cały ruch z Internetu. Punkt końcowy korzysta z puli frontonu portów z zakresu *4000 4100*. 
 
 ```python
 pool.network_configuration=batchmodels.NetworkConfiguration(
@@ -76,7 +76,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Przykład: Zezwalaj na ruch RDP z określonego adresu IP
 
-Poniższy fragment kodu C# przedstawiono sposób konfigurowania punktu końcowego protokołu RDP w węzłach obliczeń w puli systemu Windows, aby zezwolić na dostęp RDP tylko z adresu IP *198.51.100.7*. Drugi reguły NSG nie zezwala na ruch, który jest niezgodny z adresu IP.
+Następujące C# fragment kodu przedstawia sposób konfigurowania punktu końcowego protokołu RDP w węzłach obliczeniowych w puli Windows, aby umożliwić dostęp RDP tylko z adresu IP *198.51.100.7*. Druga reguła sieciowej grupy zabezpieczeń nie zezwala na ruch, który nie jest zgodny z adresem IP.
 
 ```csharp
 pool.NetworkConfiguration = new NetworkConfiguration
@@ -92,9 +92,9 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Przykład: Zezwalać na ruch protokołu SSH z określonej podsieci
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Przykład: Zezwalaj na ruch SSH z określonej podsieci
 
-Poniższy fragment kodu języka Python pokazano, jak skonfigurować punkt końcowy SSH w węzłach obliczeń w puli systemu Linux, aby zezwolić na dostęp tylko z podsieci *192.168.1.0/24*. Drugi reguły NSG nie zezwala na ruch, który jest niezgodny z podsiecią.
+Poniższy fragment kodu języka Python pokazuje, jak skonfigurować punkt końcowy SSH w węzłach obliczeniowych w puli systemu Linux, aby zezwolić na dostęp tylko z podsieci *192.168.1.0/24*. Druga reguła sieciowej grupy zabezpieczeń nie zezwala na ruch, który nie jest zgodny z podsieci.
 
 ```python
 pool.network_configuration=batchmodels.NetworkConfiguration(
@@ -125,7 +125,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać więcej informacji dotyczących reguły NSG na platformie Azure, zobacz [filtrowania ruchu sieciowego z grup zabezpieczeń sieci](../virtual-network/security-overview.md).
+- Aby uzyskać więcej informacji na temat reguł sieciowej grupy zabezpieczeń na platformie Azure, zobacz [filtrowanie ruchu sieciowego przy użyciu sieciowych grup zabezpieczeń](../virtual-network/security-overview.md).
 
-- Aby uzyskać szczegółowe informacje o partii, zobacz [Programowanie równoległe na dużą skalę obliczeniowe rozwiązań w partii](batch-api-basics.md).
+- Aby uzyskać szczegółowe omówienie usługi Batch, zobacz [tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch](batch-api-basics.md).
 

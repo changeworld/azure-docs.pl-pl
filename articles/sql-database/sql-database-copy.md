@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: fa76762fc9a2eb178e2edce2de254894bde1934c
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: 6066ca586ce9923158026fbeaa405de16681de9b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651422"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461343"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Skopiuj spójnej transakcyjnie kopii bazy danych Azure SQL
 
@@ -32,11 +32,11 @@ Kopiowanie bazy danych jest migawką źródłowej bazy danych od czasu żądanie
 
 ## <a name="logins-in-the-database-copy"></a>Nazwy logowania w kopii bazy danych
 
-Podczas kopiowania bazy danych na tym samym serwerze logicznym, tego samego logowania może służyć w obu bazach danych. Podmiot, służy do kopiowania bazy danych zabezpieczeń staje się właścicielem bazy danych na nowej bazy danych. Wszyscy użytkownicy bazy danych, uprawnienia i ich identyfikatory zabezpieczeń (SID) są kopiowane do kopii bazy danych.  
+Podczas kopiowania bazy danych do tego samego serwera bazy danych SQL, tego samego logowania może służyć w obu bazach danych. Podmiot, służy do kopiowania bazy danych zabezpieczeń staje się właścicielem bazy danych na nowej bazy danych. Wszyscy użytkownicy bazy danych, uprawnienia i ich identyfikatory zabezpieczeń (SID) są kopiowane do kopii bazy danych.  
 
-Podczas kopiowania bazy danych na inny serwer logiczny, podmiot na nowym serwerze zabezpieczeń staje się właścicielem bazy danych na nowej bazy danych. Jeśli używasz [zawartych użytkowników bazy danych](sql-database-manage-logins.md) dostępu do danych, upewnij się, że podstawowe i pomocnicze bazy danych zawsze używały tych samych poświadczeń użytkownika, aby po zakończeniu kopiowania możesz od razu do niego dostęp przy użyciu tych samych poświadczeń . 
+Podczas kopiowania bazy danych na inny serwer bazy danych SQL, podmiot na nowym serwerze zabezpieczeń staje się właścicielem bazy danych na nowej bazy danych. Jeśli używasz [zawartych użytkowników bazy danych](sql-database-manage-logins.md) dostępu do danych, upewnij się, że podstawowe i pomocnicze bazy danych zawsze używały tych samych poświadczeń użytkownika, aby po zakończeniu kopiowania możesz od razu do niego dostęp przy użyciu tych samych poświadczeń . 
 
-Jeśli używasz [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), możesz całkowicie wyeliminować potrzebę zarządzania poświadczeniami w kopii. Jednak podczas kopiowania bazy danych do nowego serwera, dostępu opartego na nazwie logowania mogą nie działać, ponieważ dane logowania nie istnieje na nowym serwerze. Aby dowiedzieć się więcej o zarządzaniu nazwy logowania podczas kopiowania bazy danych do innego serwera logicznego, zobacz [jak zarządzanie zabezpieczeniami bazy danych Azure SQL po odzyskaniu po awarii](sql-database-geo-replication-security-config.md). 
+Jeśli używasz [usługi Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), możesz całkowicie wyeliminować potrzebę zarządzania poświadczeniami w kopii. Jednak podczas kopiowania bazy danych do nowego serwera, dostępu opartego na nazwie logowania mogą nie działać, ponieważ dane logowania nie istnieje na nowym serwerze. Aby dowiedzieć się więcej o zarządzaniu nazwy logowania podczas kopiowania bazy danych na inny serwer bazy danych SQL, zobacz [jak zarządzanie zabezpieczeniami bazy danych Azure SQL po odzyskaniu po awarii](sql-database-geo-replication-security-config.md). 
 
 Po pomyślnym kopiowanie i przed innymi użytkownikami są mapowane ponownie, logowania, która zainicjowała, kopiowanie, właściciel bazy danych może zalogować się do nowej bazy danych. Aby rozwiązać nazwy logowania, po zakończeniu operacji kopiowania, zobacz [rozwiązać logowania](#resolve-logins).
 
@@ -78,7 +78,7 @@ To polecenie kopiuje bazadanych1 do nowej bazy danych o nazwie bazy danych 2 na 
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>Kopiowanie bazy danych SQL na innym serwerze
 
-Zaloguj się z główną bazą danych serwera docelowego, serwer bazy danych SQL, gdzie nowa baza danych ma zostać utworzony. Użyj nazwy logowania, która ma taką samą nazwę i hasło jako właściciel bazy danych źródłowej bazy danych na serwerze bazy danych SQL źródła. Zaloguj się na serwerze docelowym musi również należeć do roli dbmanager lub być głównego identyfikatora logowania poziomu serwera.
+Zaloguj się z główną bazą danych serwera docelowego, serwera bazy danych SQL, gdzie nowa baza danych ma zostać utworzony. Użyj nazwy logowania, która ma taką samą nazwę i hasło jako właściciel bazy danych źródłowej bazy danych na źródłowym serwerze bazy danych SQL. Zaloguj się na serwerze docelowym musi również należeć do roli dbmanager lub być głównego identyfikatora logowania poziomu serwera.
 
 To polecenie kopiuje bazadanych1 na serwerze1 do nowej bazy danych o nazwie bazy danych 2 na serwerze Serwer2. W zależności od rozmiaru bazy danych operacji kopiowania może zająć trochę czasu.
 
@@ -104,7 +104,7 @@ Po Nowa baza danych jest w trybie online, na serwerze docelowym, użyj [ALTER US
 
 Wszyscy użytkownicy w nowej bazy danych zachowuje uprawnienia, które miały do źródłowej bazy danych. Użytkownik, który zainicjował kopii bazy danych staje się właścicielem bazy danych w nowej bazy danych i ma przypisany nowy identyfikator zabezpieczeń (SID). Po pomyślnym kopiowanie i przed innymi użytkownikami są mapowane ponownie, logowania, która zainicjowała, kopiowanie, właściciel bazy danych może zalogować się do nowej bazy danych.
 
-Aby dowiedzieć się więcej o zarządzaniu użytkownicy i logowania podczas kopiowania bazy danych do innego serwera logicznego, zobacz [jak zarządzanie zabezpieczeniami bazy danych Azure SQL po odzyskaniu po awarii](sql-database-geo-replication-security-config.md).
+Aby dowiedzieć się więcej o zarządzaniu użytkownicy i logowania podczas kopiowania bazy danych na inny serwer bazy danych SQL, zobacz [jak zarządzanie zabezpieczeniami bazy danych Azure SQL po odzyskaniu po awarii](sql-database-geo-replication-security-config.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

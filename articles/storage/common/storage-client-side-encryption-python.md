@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 6a6508393fe935b456cde815d35f2fd4447cd2d4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: dfff159d7e0204a752935458a2b4845499c0d652
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528126"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453403"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Szyfrowanie po stronie klienta za pomocą języka Python dla usługi Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -125,12 +125,12 @@ Po utworzeniu obiektu usługi storage (tj. blockblobservice), użytkownik może 
 
 Klucza KEK należy zaimplementować następujące metody umożliwiające pomyślnie szyfrowania danych:
 
-* wrap_key(cek): Opakowuje CEK określonego (w bajtach), korzystając z algorytmu wybrany przez użytkownika. Zwraca klucz opakowana.
-* get_key_wrap_algorithm(): zwraca algorytm stosowanego do opakowywania kluczy.
-* get_kid(): zwraca identyfikator klucza ciągu dla tego klucza KEK.
+* wrap_key(cek): Opakowuje określony CEK (w bajtach), korzystając z algorytmu wybrany przez użytkownika. Zwraca klucz opakowana.
+* get_key_wrap_algorithm(): Zwraca algorytm stosowanego do opakowywania kluczy.
+* get_kid(): Zwraca identyfikator klucza ciągu dla tego klucza KEK.
   Klucza KEK należy zaimplementować następujące metody umożliwiające pomyślnie odszyfrować danych:
-* unwrap_key (cek, algorytm): zwraca nieopakowane formularz CEK określony, przy użyciu algorytmu określony ciąg.
-* get_kid(): zwraca ciąg identyfikatora klucza dla tego klucza KEK.
+* unwrap_key (cek, algorytm): Zwraca nieopakowane formularza CEK określony, przy użyciu algorytmu określony ciąg.
+* get_kid(): Zwraca ciąg identyfikatora klucza dla tego klucza KEK.
 
 Program rozpoznawania nazw kluczy co najmniej musi implementować metodę zwracającą, biorąc pod uwagę identyfikator klucza, odpowiedniego klucza KEK implementującej interfejs powyżej. Jest tylko ta metoda ma być przypisane do właściwości key_resolver_function obiektu usługi.
 

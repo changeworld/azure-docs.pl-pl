@@ -9,13 +9,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.component: queues
-ms.openlocfilehash: 594407ac5f5dc012ab542cedc6393b702fa31804
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: queues
+ms.openlocfilehash: bec1632199e59994831efe4af583617b01374c53
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525403"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473803"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Jak używać Magazynu kolejek w języku Java
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "39525403"
 ## <a name="overview"></a>Przegląd
 W przewodniku opisano, jak realizować typowe scenariusze za pomocą usługi Azure Queue storage. Przykłady zostały napisane w języku Java i wymagają użycia [zestawu SDK usługi Azure Storage dla języka Java][Azure Storage SDK for Java]. Omówione scenariusze obejmują **wstawianie**, **wgląd do**, **wprowadzenie**, i **usuwanie** kolejki komunikatów, a także  **Tworzenie** i **usuwanie** kolejek. Aby uzyskać więcej informacji na temat kolejek, zobacz [następne kroki](#Next-Steps) sekcji.
 
-Uwaga: Zestaw SDK jest dostępna dla deweloperów, którzy używają usługi Azure Storage na urządzeniach z systemem Android. Aby uzyskać więcej informacji, zobacz [zestaw SDK usługi Azure Storage dla systemu Android][Azure Storage SDK for Android].
+Uwaga: Jest dostępny zestaw SDK dla deweloperów korzystających z usługi Azure Storage na urządzeniach z systemem Android. Aby uzyskać więcej informacji, zobacz [zestaw SDK usługi Azure Storage dla systemu Android][Azure Storage SDK for Android].
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -66,8 +66,8 @@ String storageConnectionString =
 
 W poniższych przykładach założono, że uzyskano parametry połączenia za pomocą jednej z tych dwóch metod.
 
-## <a name="how-to-create-a-queue"></a>Porady: Tworzenie kolejki
-A **CloudQueueClient** obiektu pozwala uzyskać obiekty odwołanie do kolejki. Poniższy kod tworzy **CloudQueueClient** obiektu. (Uwaga: istnieją dodatkowe sposoby tworzenia **CloudStorageAccount** obiektów; Aby uzyskać więcej informacji, zobacz **CloudStorageAccount** w [dokumentacja zestawu SDK klienta usługi Azure Storage].)
+## <a name="how-to-create-a-queue"></a>Instrukcje: Tworzenie kolejki
+A **CloudQueueClient** obiektu pozwala uzyskać obiekty odwołanie do kolejki. Poniższy kod tworzy **CloudQueueClient** obiektu. (Uwaga: Istnieją dodatkowe sposoby tworzenia **CloudStorageAccount** obiektów; Aby uzyskać więcej informacji, zobacz **CloudStorageAccount** w [Dokumentacja zestawu SDK klienta usługi Azure Storage].)
 
 Użyj **CloudQueueClient** obiektu, aby pobrać odwołanie do kolejki, w której chcesz użyć. Można utworzyć kolejkę, jeśli nie istnieje.
 
@@ -94,7 +94,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-add-a-message-to-a-queue"></a>Porady: Dodawanie komunikatu do kolejki
+## <a name="how-to-add-a-message-to-a-queue"></a>Instrukcje: Dodawanie komunikatu do kolejki
 Aby wstawić komunikat do istniejącej kolejki, najpierw utwórz nową klasę **CloudQueueMessage**. Następnie wywołaj **addMessage** metody. A **CloudQueueMessage** można tworzyć na podstawie ciągu (w formacie UTF-8) lub tablicą bajtów. Oto kod, który tworzy kolejkę (Jeśli nie istnieje) i wstawia komunikat "Hello, World".
 
 ```java
@@ -124,7 +124,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Porady: Podgląd kolejnego komunikatu
+## <a name="how-to-peek-at-the-next-message"></a>Instrukcje: Podgląd kolejnego komunikatu
 Użytkownik może wglądu do wiadomości uzyskać kolejki bez jego usuwania z kolejki, wywołując **peekMessage**.
 
 ```java
@@ -156,7 +156,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Porady: zmiana zawartości komunikatu w kolejce
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Instrukcje: Zmiana zawartości komunikatu w kolejce
 Możesz zmienić zawartość komunikatu w kolejce. Jeśli komunikat reprezentuje zadanie robocze, możesz użyć tej funkcji, aby zaktualizować stan zadania. Poniższy kod aktualizuje komunikat kolejki o nową zawartość i ustawia rozszerzenie limitu czasu widoczności o kolejne 60 sekund. Operacja ta zapisuje stan pracy powiązanej z komunikatem i daje klientowi kolejną minutę na kontynuowanie pracy nad komunikatem. Możesz użyć tej metody do śledzenia wieloetapowych przepływów pracy związanych z komunikatami kolejek, bez konieczności rozpoczynania od nowa, gdy dany etap nie powiedzie się ze względu na awarię sprzętu lub oprogramowania. Zazwyczaj stosuje się również liczbę ponownych prób. Jeśli komunikat zostanie ponowiony więcej niż *n* razy, zostanie usunięty. Jest to zabezpieczenie przed komunikatami, które wyzwalają błąd aplikacji zawsze, gdy są przetwarzane.
 
 Następujące przykładowe wyszukiwania kodu za pośrednictwem kolejki komunikatów, lokalizuje pierwszy komunikat, który pasuje do "Hello, World" w przypadku zawartości, a następnie modyfikuje zawartość wiadomości i kończy działanie.
@@ -239,7 +239,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Porady: pobieranie długości kolejki
+## <a name="how-to-get-the-queue-length"></a>Instrukcje: Pobieranie długości kolejki
 Możesz uzyskać szacunkową liczbę komunikatów w kolejce. **DownloadAttributes** metoda prosi usługę kolejki dla kilku wartości bieżące, w tym liczbę liczbę komunikatów w kolejce. Wartość licznika jest przybliżona tylko w przypadku, ponieważ komunikaty mogą dodany lub usunięty, gdy usługa kolejki odpowiada na żądania. **GetApproximateMessageCount** metoda zwraca ostatnią wartość pobraną przez wywołanie **downloadAttributes**, bez wywoływania usługi kolejki.
 
 ```java
@@ -271,7 +271,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Porady: Usuń następny komunikat z kolejki
+## <a name="how-to-dequeue-the-next-message"></a>Instrukcje: Usuń następny komunikat z kolejki
 Kod dequeues komunikatu z kolejki w dwóch etapach. Gdy wywołujesz **retrieveMessage**, uzyskasz następny komunikat w kolejce. Komunikat zwrócony z **retrieveMessage** staje się niewidoczny dla innego kodu odczytującego komunikaty z tej kolejki. Domyślnie komunikat pozostanie niewidoczny przez 30 sekund. Aby zakończyć usuwanie komunikatu z kolejki, musisz również wywołać **deleteMessage**. Ten dwuetapowy proces usuwania komunikatów gwarantuje, że jeśli kod nie będzie w stanie przetworzyć komunikatu z powodu awarii sprzętu lub oprogramowania, inne wystąpienie kodu będzie w stanie uzyskać ten sam komunikat i ponowić próbę. Twój kod wywołuje **deleteMessage** natychmiast po przetworzeniu komunikatu.
 
 ```java
@@ -335,7 +335,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-queues"></a>Porady: Lista kolejek
+## <a name="how-to-list-the-queues"></a>Instrukcje: Lista kolejek
 Aby uzyskać listę kolejek bieżącej, należy wywołać **CloudQueueClient.listQueues()** metody, która zwróci zbiór **CloudQueue** obiektów.
 
 ```java
@@ -363,7 +363,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-a-queue"></a>Porady: Usuwanie kolejki
+## <a name="how-to-delete-a-queue"></a>Instrukcje: Usuwanie kolejki
 Aby usunąć kolejkę i wszystkie zawarte w niej komunikaty, wywołaj **deleteIfExists** metody **CloudQueue** obiektu.
 
 ```java

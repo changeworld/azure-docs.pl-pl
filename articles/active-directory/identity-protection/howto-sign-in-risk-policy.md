@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 81796e30ea9f1277f9265e86a712fbefea5adee3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ff346f9c842672b426a75eadaa278ca91de5d9c6
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55160402"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297501"
 ---
-# <a name="how-to-configure-the-sign-in-risk-policy"></a>Jak: Konfigurowanie zasad ryzyka logowania
+# <a name="how-to-configure-the-sign-in-risk-policy"></a>Instrukcje: Konfigurowanie zasad ryzyka logowania
 
 Usługa Azure Active Directory wykrywa [typy zdarzeń ryzyka](../reports-monitoring/concept-risk-events.md#risk-event-types) w czasie rzeczywistym, jak i offline. Każdego zdarzenia o podwyższonym ryzyku, która została wykryta podczas logowania użytkownika przyczynia się do logiczne koncepcji o nazwie ryzykowne logowania. Ryzykowne logowanie jest wskaźnikiem próby logowania, które nie mogły zostać wykonane przez prawowitym właścicielem konta użytkownika.
 
@@ -77,7 +77,7 @@ Jednak ze względu na bezpieczeństwo, to ustawienie działa tylko dla użytkown
 
 Jeśli chcesz pozyskać usługę MFA dla ryzykownych logowań, należy:
 
-1. Włącz [zasady rejestracji uwierzytelniania wieloskładnikowego](#multi-factor-authentication-registration-policy) dla użytkowników, których to dotyczy.
+1. Włącz [zasady rejestracji uwierzytelniania wieloskładnikowego](howto-mfa-policy.md) dla użytkowników, których to dotyczy.
 
 2. Wymaga odpowiednich użytkowników, aby logowanie się — ryzykowne sesji w celu przeprowadzenia rejestracji usługi MFA.
 

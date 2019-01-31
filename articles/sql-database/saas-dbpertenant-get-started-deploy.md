@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 10/29/2018
-ms.openlocfilehash: 6a5ee991ca21e60e6c2b14d5e3be560183eae4fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/25/2019
+ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232906"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453675"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i eksplorowanie wielodostępną aplikację SaaS, która używa wzorca bazy danych dla dzierżawcy z usługą SQL Database
 
@@ -65,9 +65,9 @@ Teraz wybierz nazwy i zanotuj je.
 
     - **Grupa zasobów**: Wybierz **Utwórz nową**i Podaj unikatową nazwę wybranej wcześniej dla grupy zasobów.
     - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej.
-    - **Użytkownik**: Użyj wartość Nazwa użytkownika, którą wybrano wcześniej.
+    - **Użytkownik**: Użyj wartości nazwy użytkownika, wybrana wcześniej.
 
-1. Wdróż aplikację.
+1. Wdrażanie aplikacji.
 
     a. Zaznacz, aby zaakceptować warunki i postanowienia.
 
@@ -123,13 +123,13 @@ Centralna **Centrum zdarzeń** strona zawiera listę linków do dzierżawców w 
 
 Aplikacja Wingtip używa [*usługi Azure Traffic Manager* ](../traffic-manager/traffic-manager-overview.md) do sterowania dystrybucją żądań przychodzących. Adres URL, aby uzyskać dostęp do strony zdarzenia do określonej dzierżawy posługuje się następującym formatem:
 
-- http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     W poniższej tabeli opisano części poprzedniego formatu.
 
     | Część adresu URL        | Opis       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Zdarzenia części aplikacji Wingtip.<br /><br /> *-dpt* wyróżnia *bazy danych dla dzierżawcy* wdrożenia aplikacji Wingtip Tickets z innych implementacji. Należą do nich *autonomiczny* aplikacji dla dzierżawcy (*-sa*) lub *wielodostępnej bazie danych* (*- mt*) implementacji. |
+    | http://events.wingtip-dpt | Zdarzenia części aplikacji Wingtip.<br /><br /> *-dpt* wyróżnia *bazy danych dla dzierżawcy* wdrożenia aplikacji Wingtip Tickets z innych implementacji. Należą do nich *pojedynczego* aplikacji dla dzierżawcy (*-sa*) lub *wielodostępnej bazie danych* (*- mt*) implementacji. |
     | .  *&lt;użytkownika&gt;* | *af1* w przykładzie. |
     | .trafficmanager.net/ | Usługi Traffic Manager bazowy adres URL. |
     | fabrikamjazzclub | Identyfikuje dzierżawy o nazwie firmy Fabrikam Jazz Club. |
@@ -248,9 +248,9 @@ Przejdź do serwera **tenants1-dpt -&lt;użytkownika&gt;** i wybierz **Pool1**�
 - Pierwszy wykres, etykietą **wykorzystanie zasobów**, pokazuje użycie jednostek eDTU w puli.
 - Drugi wykres przedstawia użycie jednostek eDTU pięciu najbardziej aktywnych baz danych w puli.
 
-Dwa wykresy pokazują, że elastyczne pule i bazy danych SQL są dobrze nadaje się do nieprzewidywalnych obciążeń aplikacji SaaS. Wykresy pokazują, że każdy przenoszenie obsługi dużego ruchu do możliwie jak 40 jednostek Edtu są cztery bazy danych, a jeszcze wszystkich baz danych wygodnie są obsługiwane przez pulę 50 eDTU. 50 eDTU puli mogą obsługiwać nawet większych obciążeń. Jeśli bazy danych są aprowizowane jako pojedynczych baz danych, każdy z nich musi być S2 (50 jednostek DTU) do obsługi chwilowego. Koszt cztery autonomicznych baz danych S2 jest prawie trzykrotnie przekraczałby koszt puli. W rzeczywistych warunkach klienci bazy danych SQL, uruchamiać do 500 baz danych w pulach 200 jednostek eDTU. Aby uzyskać więcej informacji, zobacz [samouczek monitorowania wydajności](saas-dbpertenant-performance-monitoring.md).
+Dwa wykresy pokazują, że elastyczne pule i bazy danych SQL są dobrze nadaje się do nieprzewidywalnych obciążeń aplikacji SaaS. Wykresy pokazują, że każdy przenoszenie obsługi dużego ruchu do możliwie jak 40 jednostek Edtu są cztery bazy danych, a jeszcze wszystkich baz danych wygodnie są obsługiwane przez pulę 50 eDTU. 50 eDTU puli mogą obsługiwać nawet większych obciążeń. Jeśli bazy danych są aprowizowane jako pojedynczych baz danych, każdy z nich musi być S2 (50 jednostek DTU) do obsługi chwilowego. Koszt cztery pojedynczych baz danych S2 jest prawie trzykrotnie przekraczałby koszt puli. W rzeczywistych warunkach klienci bazy danych SQL, uruchamiać do 500 baz danych w pulach 200 jednostek eDTU. Aby uzyskać więcej informacji, zobacz [samouczek monitorowania wydajności](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - Aby uzyskać więcej informacji, zobacz dodatkowe [samouczków, które są kompilowane w aplikacji SaaS o nazwie Wingtip Tickets bazy danych dla dzierżawcy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - Aby dowiedzieć się więcej o elastycznych pulach, zobacz [co to jest pula elastyczna Azure SQL?](sql-database-elastic-pool.md).

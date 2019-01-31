@@ -5,17 +5,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: faf0e06a0649c31cec840a5043a11af601ba5c47
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139643"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465269"
 ---
 # <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Zadania dla zespołu prowadzić w zespole procesu do nauki o danych zespołu
 
@@ -46,11 +46,11 @@ Po kilku wymagań wstępnych dotyczących zadania określone w poniższej sekcji
 W tym temacie używany skrócone nazwy dla repozytoriów i katalogów. Nazwy te ułatwiają wykonaj operacje między repozytoria i katalogi. Ten zapis (**R** dla repozytoriów Git i **D** dla katalogi lokalne na maszyny wirtualnej DSVM) jest używany w następujących sekcjach:
 
 - **R1**: **GroupProjectTemplate** repozytorium w usłudze Git, który Menedżer grupy skonfigurowany na serwerze grupy DevOps platformy Azure.
-- **R3**: zespół **ProjectTemplate** repozytorium w usłudze Git, możesz skonfigurować.
+- **R3**: Zespół **ProjectTemplate** repozytorium w usłudze Git, możesz skonfigurować.
 - **R4**: **TeamUtilities** repozytorium w usłudze Git, możesz skonfigurować.
-- **D1**: katalog lokalny sklonować z R1 i kopiowane do D3.
-- **D3**: katalog lokalny sklonować z R3, dostosowywanie i kopiowane z powrotem do R3.
-- **D4**: katalog lokalny sklonować z R4, dostosowywanie i kopiowane z powrotem do R4.
+- **D1**: Katalog lokalny sklonować z R1 i skopiować D3.
+- **D3**: Katalog lokalny sklonować z R3, dostosowywanie i kopiowane z powrotem do R3.
+- **D4**: Katalog lokalny sklonować z R4, dostosowywanie i kopiowane z powrotem do R4.
 
 Nazwy określone dla repozytoriów i katalogi, w tym samouczku zostały dołączone przy założeniu, że Twoje celem jest ustanowienie oddzielnego projektu zespołu w obrębie większej grupy do nauki o danych. Jednak inne opcje są otwarte dla Ciebie jako lider zespołu:
 
@@ -140,9 +140,9 @@ Procedura rozmieszczania używa katalogów w lokalnej maszyny wirtualnej DSVM ja
 
 - Klonuj repozytorium grupy do katalogu lokalnego: team R1 - sklonowany do -> lokalne D1
 - Sklonuj swoje repozytoria zespołu w katalogach lokalnych: team R3 & R4 - sklonowany do -> lokalne D3 & D4
-- Skopiuj zawartość szablonu projektu grupy do folderu lokalnego zespołu: D1 - zawartość jest kopiowana do -> D3
+- Skopiuj zawartość szablonu projektu grupy do folderu lokalnego zespołu:  D1 - zawartość jest kopiowana do -> D3
 - (Opcjonalnie) Dostosowywanie lokalnego D3 & D4
-- Wypchnij zawartość katalogu lokalnego do zespołu repozytoriów: D3 & D4 — zawartość, Dodaj do -> zespół R3 & R4
+- Przenieś lokalny katalog zawartości do zespołu repozytoriów: D3 & D4 — zawartość, Dodaj do -> zespół R3 & R4
 
 
 ### <a name="initialize-the-team-repositories"></a>Inicjowanie repozytoriami zespołu
@@ -355,7 +355,7 @@ Upewnij się, że nowy dysk F został pomyślnie zainstalowany na komputerze.
 
 ![34](./media/team-lead-tasks/team-leads-34-attach-s3.png)
 
-**Jak ręcznie wprowadzić informacje magazynu plików platformy Azure:** Jeśli nie masz dane magazynu plików platformy Azure w pliku tekstowym, możesz postępuj zgodnie z instrukcjami na kolejnym ekranie wpisać wymagane subskrypcji, konto magazynu i platformy Azure informacje o pliku magazynu:
+**Jak ręcznie wprowadzić informacje magazynu plików platformy Azure:** Jeśli nie masz dane magazynu plików platformy Azure w pliku tekstowym, możesz postępuj zgodnie z instrukcjami na kolejnym ekranie wpisać wymagane subskrypcji, konto magazynu oraz informacje dotyczące magazynu plików platformy Azure:
 
 ![35](./media/team-lead-tasks/team-leads-35-attach-s4.png)
 
@@ -384,7 +384,7 @@ Upewnij się, że nowy dysk F został pomyślnie zainstalowany na komputerze.
 
 ![40](./media/team-lead-tasks/team-leads-40-attach-s4-linux.png)
 
-**Jak ręcznie wprowadzić informacje magazynu plików platformy Azure:** Jeśli nie masz dane magazynu plików platformy Azure w pliku tekstowym, możesz postępuj zgodnie z instrukcjami na kolejnym ekranie wpisać wymagane subskrypcji, konto magazynu i platformy Azure informacje o pliku magazynu:
+**Jak ręcznie wprowadzić informacje magazynu plików platformy Azure:** Jeśli nie masz dane magazynu plików platformy Azure w pliku tekstowym, możesz postępuj zgodnie z instrukcjami na kolejnym ekranie wpisać wymagane subskrypcji, konto magazynu oraz informacje dotyczące magazynu plików platformy Azure:
 
 - Dane wejściowe **n**.
 - Wybierz indeks nazwę subskrypcji, w której usługi Azure file storage został utworzony w poprzednim kroku:

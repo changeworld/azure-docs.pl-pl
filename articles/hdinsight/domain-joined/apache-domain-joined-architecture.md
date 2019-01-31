@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 3237932c66c77f979c4e95798163621e65735bed
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3e58c22048c9b71b00cffb0657fc924277304662
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247157"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462436"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Użyj pakiet Enterprise Security w HDInsight
 
@@ -71,24 +71,24 @@ Jeśli federacyjnej jest używana i skróty haseł są zsynchronizowane correcty
 
  2. ```Connect-AzureAD``` przy użyciu poświadczeń administratora globalnego (administratora dzierżawy)
 
- 3. Sprawdź, jeśli została już utworzona jednostka usługi "Azure powershell"
+ 3. Sprawdź, jeśli została już utworzona nazwa główna usługi "Microsoft Azure Powershell"
 
 ```
- Get-AzureADServicePrincipal -SearchString "1950a258-227b-4e31-a9cf-717495945fc2"
+ $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
 ```
 
- 4. Jeśli nie istnieje utworzenia jednostki usługi
+ 4. Jeśli nie istnieje (np. w przypadku ($powershellSPN - q $null)) następnie utworzyć nazwę główną usługi
 
 ```
- New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+ $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
 ```
 
- 5. Dołącz zasady do tej jednostki usługi: 
+ 5. Utwórz i Dołącz zasady do tej jednostki usługi: 
 
 ```
- $policy = New-AzureADPolicy -Definition @("{"HomeRealmDiscoveryPolicy":{"AllowCloudPasswordValidation":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+ $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
- Add-AzureADServicePrincipalPolicy -Id <Service Principal ID> -refObjectID $policy.ID
+ Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

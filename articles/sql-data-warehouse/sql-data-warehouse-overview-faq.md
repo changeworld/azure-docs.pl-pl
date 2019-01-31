@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 35252b4d262833daef330a89f1874cc0835c480a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306744"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462549"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse często zadawane pytania
 
@@ -27,7 +27,7 @@ A. SQL data Warehouse oferuje kilka rozwiązań do ochrony danych, takich jak fu
 
 PYTANIE: Gdzie mogę znaleźć się, jakie normy prawnych lub biznesowych SQL DW zgodne z?
 
-A. Odwiedź stronę [Zgodność firmy Microsoft] strony dla różnych ofert zgodności według produktu, takich jak SOC i ISO. Najpierw wybierz według tytułu zgodności, a następnie rozwiń węzeł platformy Azure w sekcji Microsoft cloud w zakresie usług z prawej strony, aby zobaczyć, jakie usługi są usługi Azure services są zgodne.
+A. Odwiedź stronę [Microsoft Compliance] strony dla różnych ofert zgodności według produktu, takich jak SOC i ISO. Najpierw wybierz według tytułu zgodności, a następnie rozwiń węzeł platformy Azure w sekcji Microsoft cloud w zakresie usług z prawej strony, aby zobaczyć, jakie usługi są usługi Azure services są zgodne.
 
 PYTANIE: Czy można połączyć usługi Power BI?
 
@@ -82,21 +82,21 @@ PYTANIE: Jakie sterowniki klienta są obsługiwane?
 
 A. Sterownik obsługujący magazyn danych znajduje się na [Parametry połączeń] strony
 
-P: jakie formaty plików są obsługiwane przez aparat PolyBase w usłudze SQL Data Warehouse?
+PYT.: Jakie formaty plików są obsługiwane przez aparat PolyBase w usłudze SQL Data Warehouse?
 
-A: Orc, RC, Parquet i prostego tekstu rozdzielanego
+Odp.: Orc, RC, Parquet i prostego tekstu rozdzielanego
 
-P: co można podłączyć do z magazynu danych SQL przy użyciu technologii PolyBase? 
+PYT.: Co można podłączyć do z magazynu danych SQL przy użyciu technologii PolyBase? 
 
-Odp.: [Azure Data Lake Store] i [usługi Azure Storage blob]
+Odp.: [Azure Data Lake Store] i [Azure Storage Blobs]
 
-P: czy przekazywanie obliczeń możliwe podczas nawiązywania połączenia z obiektów blob usługi Azure Storage lub Azure Data Lake Store? 
+PYT.: Nawiązywanie połączenia z obiektów blob usługi Azure Storage lub Azure Data Lake Store jest możliwe obliczenie przekazywania? 
 
-Odp.: nie PolyBase magazynu danych SQL interakcja składników magazynu. 
+Odp.: Nie, PolyBase magazynu danych SQL interakcja składników magazynu. 
 
-P: czy można połączyć z usługą HDI?
+PYT.: Można podłączyć do usługi HDI?
 
-Odp.: HDI służy WASB lub ADLS warstwy system plików HDFS. Jeśli masz jako warstwa systemu plików HDFS, można załadować tych danych do usługi SQL DW. Jednak nie można wygenerować obliczeń przekazywania do wystąpienia usługi HDI. 
+Odp.: HDI służy jako warstwa systemu plików HDFS WASB lub ADLS. Jeśli masz jako warstwa systemu plików HDFS, można załadować tych danych do usługi SQL DW. Jednak nie można wygenerować obliczeń przekazywania do wystąpienia usługi HDI. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać więcej informacji w usłudze SQL Data Warehouse jako całości, zobacz nasze [Omówienie] strony.
@@ -108,12 +108,12 @@ Aby uzyskać więcej informacji w usłudze SQL Data Warehouse jako całości, zo
 [Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
 [Biletami pomocy technicznej]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [Bezpieczeństwo]: ./sql-data-warehouse-overview-manage-security.md
-[Zgodność firmy Microsoft]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
+[Microsoft Compliance]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings
 [limitów pojemności]: ./sql-data-warehouse-service-capacity-limits.md
 [typy danych]: ./sql-data-warehouse-tables-data-types.md
 [Funkcje nieobsługiwaną tabelę]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
-[Usługi Azure Storage blob]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+[Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
 [Żądania funkcji projektów bazy danych]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [Omówienie]: ./sql-data-warehouse-overview-faq.md

@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/30/2019
 ms.author: markvi
-ms.openlocfilehash: 6698aa7e16b351190f9a5cdde62766cf5d7e1809
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ff607ed44f19e915b6ba94c1d217367d1012f062
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095995"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300238"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Informacje dotyczące ustawień roamingu w systemie Windows 10
 Oto Pełna lista wszystkich ustawień, które będą korzystania z roamingu lub kopii zapasowej w systemie Windows 10. 
@@ -50,15 +50,15 @@ Następujące grupy ustawienia są dostępne dla użytkowników końcowych włą
 * Inne ustawienia Windows: Zobacz szczegóły ustawień Windows
 * Ustawienia przeglądarki Microsoft Edge: Ulubione Microsoft Edge, przeczytania i inne ustawienia
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
+![Synchronizowanie ustawień z](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 Trwa synchronizowanie grupy (Ulubione, przeczytania) ustawienia przeglądarki Microsoft Edge można włączać lub wyłączać przez użytkowników końcowych za pośrednictwem przeglądarki Microsoft Edge opcji menu Ustawienia.
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
+![Konto](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
 Dla systemu Windows 10 w wersji 1803 lub nowszego, programu Internet Explorer ustawienie grupy (Ulubione, wpisane adresy URL) synchronizacji można włączać lub wyłączać przez użytkowników końcowych za pomocą opcji menu ustawień programu Internet Explorer. 
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
+![Ustawienia](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Szczegóły ustawień Windows
 W poniższej tabeli, pozostałe wpisy w kolumnie grupa ustawień odwołuje się do ustawień, które można wyłączyć, wybierając pozycję Ustawienia > konta > synchronizować ustawienia > Windows inne ustawienia. 

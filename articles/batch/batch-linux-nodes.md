@@ -3,7 +3,7 @@ title: Uruchom systemu Linux na maszynie wirtualnej obliczeń węzłów — Azur
 description: Dowiedz się, jak do przetwarzania obciążeń przetwarzania równoległego w pulach maszyn wirtualnych systemu Linux w usłudze Azure Batch.
 services: batch
 documentationcenter: python
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45407fb2eca5527c8b24f199c9470311a0e5d6a9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: a841fae791648d179975c2a5330bb41d48d388dd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976761"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55453556"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Aprowizowanie węzłów obliczeniowych systemu Linux w pulach usługi Batch
 
@@ -32,7 +32,7 @@ Azure Batch umożliwia uruchamianie obciążeń przetwarzania równoległego na 
 >
 
 ## <a name="virtual-machine-configuration"></a>Konfiguracja maszyny wirtualnej
-Podczas tworzenia puli węzłów obliczeniowych w usłudze Batch masz dwie opcje, z którego można wybrać rozmiar węzła i systemu operacyjnego: Konfiguracja usług Cloud Services i konfiguracji maszyny wirtualnej.
+Podczas tworzenia puli węzłów obliczeniowych w usłudze Batch dostępne są dwie opcje, z którego można wybrać rozmiar węzła i systemu operacyjnego: Konfiguracja usług cloud Services i konfiguracji maszyny wirtualnej.
 
 **Konfiguracja usług Cloud Services** oferuje *tylko* węzły obliczeniowe systemu Windows. Rozmiary węzłów obliczeniowych dostępne są wymienione w [rozmiary usług Cloud Services](../cloud-services/cloud-services-sizes-specs.md), i dostępnych systemów operacyjnych są wymienione w [wersji systemu operacyjnego gościa platformy Azure i zgodności zestawów SDK](../cloud-services/cloud-services-guestos-update-matrix.md). Podczas tworzenia puli, która zawiera węzły usług Azure Cloud Services, określ rozmiar węzła i rodziny systemów operacyjnych, które są opisane w artykułach z wymienionych wcześniej. Dla węzłów obliczeniowych w pulach systemu Windows, usług w chmurze jest najczęściej używana.
 
@@ -59,7 +59,7 @@ Podczas konfigurowania odwołanie do obrazu maszyny wirtualnej, należy określi
 Agent węzłów usługi Batch to program, który jest uruchamiany w każdym węźle w puli i udostępnia interfejs poleceń i kontroli między węzłem, a usługa Batch. Istnieją różne implementacje agenta węzła, znane jako jednostek SKU, dla różnych systemów operacyjnych. Zasadniczo podczas tworzenia konfiguracji maszyny wirtualnej należy najpierw określić odwołanie do obrazu maszyny wirtualnej, a następnie określ węzła agenta, aby zainstalować w obrazie. Zazwyczaj każdego agenta w węźle, jednostka SKU jest zgodny z wielu obrazów maszyn wirtualnych. Poniżej przedstawiono kilka przykładów jednostki SKU agenta węzła:
 
 * batch.node.ubuntu 14.04
-* Batch.node.centos 7
+* batch.node.centos 7
 * Batch.node.Windows amd64
 
 > [!IMPORTANT]
@@ -67,7 +67,7 @@ Agent węzłów usługi Batch to program, który jest uruchamiany w każdym wę�
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>Tworzenie puli systemu Linux: języka Python usługi Batch
+## <a name="create-a-linux-pool-batch-python"></a>Tworzenie puli systemu Linux: Batch Python
 Poniższy fragment kodu przedstawia przykład sposobu użycia [biblioteki klienta usługi Microsoft Azure Batch dla środowiska Python] [ py_batch_package] tworzenie puli systemu Ubuntu Server węzłów obliczeniowych. Dokumentacja dotycząca modułów języka Python usługi Batch, można znaleźć w folderze [pakietu azure.batch] [ py_batch_docs] przy odczycie dokumentów.
 
 Ten fragment kodu tworzy [ImageReference] [ py_imagereference] jawnie i określa każdego z jego właściwości (wydawcy, oferty, jednostki SKU i wersji). W kodzie produkcyjnym, jednak firma Microsoft zaleca użycie [list_node_agent_skus] [ py_list_skus] metodę, aby określić, a następnie wybierz z dostępnych obrazów i języka node agenta jednostki SKU kombinacje w czasie wykonywania.
@@ -145,7 +145,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id = ubuntu1404agent.id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>Tworzenie puli systemu Linux: platforma .NET usługi Batch
+## <a name="create-a-linux-pool-batch-net"></a>Tworzenie puli systemu Linux: Batch .NET
 Poniższy fragment kodu przedstawia przykład sposobu użycia [platformy .NET usługi Batch] [ nuget_batch_net] biblioteki klienta, aby utworzyć pulę Ubuntu Server węzłów obliczeniowych. Możesz znaleźć [dokumentacja platformy .NET usługi Batch] [ api_net] w witrynie docs.microsoft.com.
 
 Poniższy kod używa fragment [PoolOperations][net_pool_ops].[ ListNodeAgentSkus] [ net_list_skus] metodę, aby wybrać z listy aktualnie obsługiwane portalu Marketplace obrazu i języka node agenta jednostki SKU kombinacje. Ta technika jest pożądane, ponieważ lista obsługiwane kombinacje mogą ulec zmianie od czasu do czasu. Najczęściej obsługiwane kombinacje są dodawane.
@@ -216,18 +216,18 @@ Poniższa tabela zawiera listę obrazów maszyn wirtualnych portalu Marketplace,
 
 | **Wydawca** | **Oferta** | **Jednostka SKU obrazu** | **Wersja** | **Agenta węzła identyfikator jednostki SKU** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| partia | Renderowanie centos73 | Renderowanie | najnowsza | Batch.node.centos 7 |
-| partia | Renderowanie windows2016 | Renderowanie | najnowsza | Batch.node.Windows amd64 |
+| partia | rendering-centos73 | Renderowanie | najnowsza | batch.node.centos 7 |
+| partia | rendering-windows2016 | Renderowanie | najnowsza | Batch.node.Windows amd64 |
 | Canonical | UbuntuServer | 16.04-LTS | najnowsza | batch.node.ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | najnowsza | batch.node.ubuntu 14.04 |
-| credativ | Debian | 9 | najnowsza | Batch.node.debian 9 |
-| credativ | Debian | 8 | najnowsza | Batch.node.debian 8 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | najnowsza | Batch.node.centos 7 |
-| microsoft-ads | Standard — — — maszyna wirtualna analizy danych | Standard — — — maszyna wirtualna analizy danych | najnowsza | Batch.node.Windows amd64 |
-| Microsoft azure batch | centos kontenera | 7-4 | najnowsza | Batch.node.centos 7 |
-| Microsoft azure batch | centos-container-rdma | 7-4 | najnowsza | Batch.node.centos 7 |
-| Microsoft azure batch | ubuntu server kontenera | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
-| Microsoft azure batch | ubuntu-server kontenera — rdma | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
+| credativ | Debian | 9 | najnowsza | batch.node.debian 9 |
+| credativ | Debian | 8 | najnowsza | batch.node.debian 8 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | najnowsza | batch.node.centos 7 |
+| microsoft-ads | standard-data-science-vm | standard-data-science-vm | najnowsza | Batch.node.Windows amd64 |
+| microsoft-azure-batch | centos-container | 7-4 | najnowsza | batch.node.centos 7 |
+| microsoft-azure-batch | centos-container-rdma | 7-4 | najnowsza | batch.node.centos 7 |
+| microsoft-azure-batch | ubuntu-server-container | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
+| microsoft-azure-batch | ubuntu-server-container-rdma | 16-04-lts | najnowsza | batch.node.ubuntu 16.04 |
 | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2016 centrum danych za pomocą kontenerów | najnowsza | Batch.node.Windows amd64 |
@@ -235,14 +235,14 @@ Poniższa tabela zawiera listę obrazów maszyn wirtualnych portalu Marketplace,
 | MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | najnowsza | Batch.node.Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008 R2 SP1 | najnowsza | Batch.node.Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | najnowsza | Batch.node.Windows amd64 |
 | MicrosoftWindowsServer | WindowsServer | Z dodatkiem SP1 smalldisk, 2008 R2 w- | najnowsza | Batch.node.Windows amd64 |
-| OpenLogic | CentOS | 7.4 | najnowsza | Batch.node.centos 7 |
-| OpenLogic | CentOS HPC | 7.4 | najnowsza | Batch.node.centos 7 |
-| OpenLogic | CentOS HPC | 7.3 | najnowsza | Batch.node.centos 7 |
-| OpenLogic | CentOS HPC | 7.1 | najnowsza | Batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.4 | najnowsza | Batch.node.centos 7 |
-| SUSE | SLES-HPC | 12 Z DODATKIEM SP2 | najnowsza | batch.node.opensuse 42.1 |
+| OpenLogic | CentOS | 7.4 | najnowsza | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.4 | najnowsza | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.3 | najnowsza | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7.1 | najnowsza | batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7.4 | najnowsza | batch.node.centos 7 |
+| SUSE | SLES-HPC | 12-SP2 | najnowsza | batch.node.opensuse 42.1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Łączenie z węzłami systemu Linux przy użyciu protokołu SSH
 Podczas tworzenia lub podczas rozwiązywania problemów może okazać się konieczne, zaloguj się do węzłów w puli. W przeciwieństwie do węzłów obliczeniowych Windows nie można użyć protokołu RDP (Remote Desktop), połączyć się z węzłów systemu Linux. Zamiast tego usługa Batch umożliwia dostęp protokołu SSH w każdym węźle połączenia zdalnego.

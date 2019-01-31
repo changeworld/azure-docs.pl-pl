@@ -2,18 +2,18 @@
 title: Usługa Azure Backup dla obciążeń SQL Server przy użyciu programu DPM
 description: Wprowadzenie do tworzenia kopii zapasowych baz danych programu SQL Server za pomocą usługi Azure Backup
 services: backup
-author: adigan
-manager: Nkolli
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/18/2018
-ms.author: adigan
-ms.openlocfilehash: 232885398c996d0c744ac55b6c6967fd398eec0b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 01/30/2019
+ms.author: kasinh
+ms.openlocfilehash: d7d94c7b238f8d413d8837c3c34468c6cd653fe3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945658"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300697"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Twórz kopie zapasowe programu SQL Server na platformie Azure jako obciążenia programu DPM
 W tym artykule poprowadzi Cię przez kroki konfiguracyjne do wykonania kopii zapasowej bazy danych programu SQL Server za pomocą usługi Azure Backup.
@@ -68,7 +68,7 @@ Przed rozpoczęciem upewnij się, że wszystkie [wymagania wstępne](backup-azur
 
     ![Metoda replikacji początkowej](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Początkowa kopia zapasowa wymaga przesyłanie całego źródła danych (bazy danych programu SQL Server) z serwera produkcyjnego (SQL Server machine) do serwera programu DPM. Te dane mogą być duże, a przepustowość przesyłania danych za pośrednictwem sieci może przekroczyć. Z tego powodu, Administratorzy mogą wybrać opcję transferu początkowa kopia zapasowa: **ręcznie** (przy użyciu nośnika wymiennego) aby uniknąć przeciążenia przepustowość lub **automatycznie przez sieć** (o określonej godzinie).
+    Początkowa kopia zapasowa wymaga przesyłanie całego źródła danych (bazy danych programu SQL Server) z serwera produkcyjnego (SQL Server machine) do serwera programu DPM. Te dane mogą być duże, a przepustowość przesyłania danych za pośrednictwem sieci może przekroczyć. Z tego powodu administratorzy mogą wybrać opcję transferu tworzenia początkowej kopii zapasowej: **Ręcznie** (przy użyciu nośnika wymiennego) aby uniknąć przeciążenia przepustowość lub **automatycznie przez sieć** (o określonej godzinie).
 
     Po zakończeniu tworzenia początkowej kopii zapasowej, pozostałe kopie zapasowe są przyrostowych kopii zapasowych w początkowej kopii zapasowej. Przyrostowe kopie zapasowe są małe i łatwo są przesyłane przez sieć.
 10. Wybierz, kiedy chcesz kontrolę spójności, aby uruchomić, a następnie kliknij przycisk **dalej**.

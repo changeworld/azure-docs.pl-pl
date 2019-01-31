@@ -1,6 +1,6 @@
 ---
-Tytuł: Ponowne szkolenie titleSuffix usługi sieci web klasyczne: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Ponowne szkolenie titleSuffix usługi sieci web klasyczne: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 04/19/2017
 ---

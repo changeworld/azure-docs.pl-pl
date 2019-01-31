@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 17e0cf170197b99037e2892d1b74a699a3a9eef5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a91778f1646807a092a3c8cda66bd3bd104ff8b5
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275333"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301887"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -326,7 +326,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 
 ### <a name="configure-the-trace-level-for-console-logging"></a>Skonfiguruj poziom śledzenia dla rejestrowania konsoli
 
-Funkcje pozwala zdefiniować próg poziom śledzenia dla zapisu do konsoli, co ułatwia formant, który sposób śledzenia są zapisywane w konsoli funkcji. Aby ustawić próg wszystkie ślady wyświetlony w konsoli, należy użyć `tracing.consoleLevel` właściwości w pliku host.json. To ustawienie ma zastosowanie do wszystkich funkcji w aplikacji funkcji. W poniższym przykładzie ustawiono wartość progową śledzenia, aby włączyć pełne rejestrowanie:
+Funkcje 1.x pozwala zdefiniować próg poziom śledzenia dla pisania w konsoli, która ułatwia kontrolować sposób, w jaki dane śledzenia są zapisywane w konsoli funkcji. Aby ustawić próg wszystkie ślady wyświetlony w konsoli, należy użyć `tracing.consoleLevel` właściwości w pliku host.json. To ustawienie ma zastosowanie do wszystkich funkcji w aplikacji funkcji. W poniższym przykładzie ustawiono wartość progową śledzenia, aby włączyć pełne rejestrowanie:
 
 ```json
 {
@@ -336,7 +336,7 @@ Funkcje pozwala zdefiniować próg poziom śledzenia dla zapisu do konsoli, co u
 }  
 ```
 
-Wartości typu **consoleLevel** odnoszą się do nazw `context.log` metody. Aby wyłączyć wszystkie rejestrowanie śledzenia do konsoli, należy ustawić **consoleLevel** do _poza_. Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON](functions-host-json.md).
+Wartości typu **consoleLevel** odnoszą się do nazw `context.log` metody. Aby wyłączyć wszystkie rejestrowanie śledzenia do konsoli, należy ustawić **consoleLevel** do _poza_. Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON](functions-host-json-v1.md).
 
 ## <a name="http-triggers-and-bindings"></a>HTTP wyzwalaczy i powiązań
 
@@ -349,7 +349,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 | Właściwość      | Opis                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | Obiekt, który zawiera treść żądania.               |
-| _Nagłówki_     | Obiekt, który zawiera nagłówki żądania.                   |
+| _headers_     | Obiekt, który zawiera nagłówki żądania.                   |
 | _— Metoda_      | Metoda HTTP żądania.                                |
 | _originalUrl_ | Adres URL żądania.                                        |
 | _params_      | Obiekt zawierający parametry routingu żądania. |
@@ -364,7 +364,7 @@ HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania repr
 | Właściwość  | Opis                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | Obiekt, który zawiera treści odpowiedzi.         |
-| _Nagłówki_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
+| _headers_ | Obiekt, który zawiera nagłówki odpowiedzi.             |
 | _isRaw_   | Wskazuje, że formatowanie jest pomijana dla odpowiedzi.    |
 | _status_  | Kod stanu HTTP odpowiedzi.                     |
 

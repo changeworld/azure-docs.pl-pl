@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a910b0537234d1653be93eb406fe3b2261305ee5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3c1896dc756675b838b97d978cec40b4650760fe
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461981"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55298972"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Ujednolicone alerty i monitorowanie w usłudze Azure Monitor zastępuje klasycznego alerty i monitorowanie
 
@@ -36,9 +36,9 @@ Nowe ujednolicone monitorowanie i alerty dla usługi Application Insights będzi
 - **Metryki niestandardowe Insights aplikacji** — które pozwala określić i wyemituj własnych metryk monitorowania i alertów. Aby uzyskać więcej informacji znajduje się w artykule na temat korzystania z [metryki niestandardowe dla usługi Application Insights na nowej usługi Azure Monitor](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
 - **Application Insights anomalie w zakresie błędów (część wykrywania inteligentnego)** — które automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań HTTP lub wywołania zależności aplikacji sieci web. Application Insights anomalie w zakresie błędów (część wykrywania inteligentnego) jako część nowej usługi Azure Monitor będzie wkrótce dostępna, a następnie zaktualizujemy ten dokument wraz z łączami w następnej iteracji zgodnie z jego jest przedstawiana w poziomie w najbliższych miesiącach.
 
-## <a name="unified-metrics--alerts-for-other-azure-resources"></a>Ujednolicone metryki i alerty dotyczące innych zasobów platformy Azure
+## <a name="unified-metrics-and-alerts-for-other-azure-resources"></a>Ujednolicone metryki i alerty dotyczące innych zasobów platformy Azure
 
-Od marca 2018 r. następna generacja wielowymiarowych monitorowania zasobów platformy Azure i generowania alertów zostały w dostępności. Nowsze platformy metryk i alertów jest teraz szybciej dzięki możliwości niemal w czasie rzeczywistym. Co ważniejsze nowszych alertów metryk platformy zapewnić większą szczegółowość, jak platforma nowszej obejmuje opcję wymiarów, które umożliwiają wycinka i Filtruj operację kombinacji określonej wartości lub warunek. Podobnie jak wszystkie alerty w nowej usłudze Azure Monitor nowszych alertów metryk są bardziej extensible przy użyciu ActionGroups — dzięki czemu powiadomienia rozwinąć poza wiadomości e-mail lub element webhook programu SMS, głos, funkcji platformy Azure, element Runbook usługi Automation i nie tylko.
+Od marca 2018 r. następna generacja wielowymiarowych monitorowania zasobów platformy Azure i generowania alertów zostały w dostępności. Nowsze platformy metryk i alertów jest teraz szybciej dzięki możliwości niemal w czasie rzeczywistym. Co ważniejsze nowszych alertów metryk platformy zapewnić większą szczegółowość, jak platforma nowszej obejmuje opcję wymiarów, które umożliwiają wycinka i Filtruj operację kombinacji określonej wartości lub warunek. Podobnie jak wszystkie alerty w nowej usłudze Azure Monitor nowszych alertów metryk są bardziej extensible przy użyciu ActionGroups — dzięki czemu powiadomienia rozwinąć poza wiadomości e-mail lub element webhook programu SMS, głos, funkcji platformy Azure, element Runbook usługi Automation i nie tylko. Aby uzyskać więcej informacji, zobacz [tworzenie, wyświetlanie i zarządzanie nimi za pomocą usługi Azure Monitor alertów dotyczących metryk](../../azure-monitor/platform/alerts-metric.md).
 Nowsze metryki dla zasobów platformy Azure są dostępne jako:
 
 - **Usługa Azure Monitor standardowych metryk platformy** — która generuje dane pomiarowe popularnych wstępnie wypełnione z różnych usług platformy Azure i produktów. Aby uzyskać więcej informacji znajduje się w artykule na [metryki są obsługiwane w usłudze Azure Monitor](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) i [obsługuje alertów dotyczących metryk w usłudze Azure Monitor](../../azure-monitor/platform/alerts-metric-overview.md#supported-resource-types-for-metric-alerts).
@@ -60,6 +60,10 @@ Na koniec czerwca 2019 r, w usłudze Azure Monitor:
 - Klasyczne usługi monitorowania i alerty zostaną wycofane i nie są już dostępne na potrzeby tworzenia nowych reguł alertów
 - Reguły alertów, które nadal istnieją w alerty (klasyczne) poza 2019 czerwca w dalszym ciągu wykonywania i wyzwalać powiadomienia, ale nie są dostępne do modyfikacji.
 - Począwszy od lipca 2019 r, wszystkie reguły alertów w klasycznym monitorowanie i alerty zostaną automatycznie przeniesione przez firmę Microsoft na ich odpowiedniki w nowej platformie usługi Azure monitor. Ten proces będzie bezproblemowe bez żadnych przestojów, a klienci będą mogli korzystać bez utraty monitorowania pokrycia.
+- Alert reguły migracji do nowego alerty platformy zapewni monitorowania pokrycia, tak jak poprzednio, ale uruchomienie nastąpi powiadomienia o nowych ładunków. Dowolny adres e-mail, element webhook punkt końcowy lub logic app link skojarzony z klasycznej reguły alertu zostanie przekazane dalej podczas migracji, ale może nie działać poprawnie jako ładunek alert będzie się różnił w nowej platformie
+
+> [!IMPORTANT]
+> Firma Microsoft, będzie usługa Azure Monitor udostępnia narzędzia w przypadku klientów, które automatycznie wkrótce migracji ich klasyczne reguły alertów na nową platformę. I uruchom go w życie dla wszystkich reguł alertów klasycznych, które nadal istnieją, od lipca 2019 r. Klienci będą musieli upewnić się, automatyzacji konsumencki ładunku klasycznej reguły alertu jest przystosowany do obsługi nowych ładunku z [Unified metryk i alertów w usłudze Application Insights](#unified-metrics-and-alerts-in-application-insights) lub [Unified metryk i alertów dla innych platformy Azure zasoby](#unified-metrics-and-alerts-for-other-azure-resources), po migracji z klasycznej reguły alertu. 
 
 Wkrótce udostępnimy narzędzia, aby możliwe było dobrowolnie migracji alerty z [alerty (klasyczne) sekcji](../../azure-monitor/platform/alerts-classic.overview.md) z witryny Azure portal do nowych alertów platformy Azure. Wszystkie reguły skonfigurowanych w alertach (model klasyczny), które są migrowane do nowej usługi Azure Monitor pozostaną bezpłatne ale nie opłatami. Zmigrowane z klasycznego reguł alertów będzie mieć nie opłatami wypychanie powiadomień pocztą e-mail, element webhook lub aplikacji LogicApp. Jednak użycie nowszej typów powiadomień lub akcję (np. wiadomości SMS, połączenie głosowe, integracji z rozwiązaniami ITSM itd.) będą naliczane czy dodane do migracji lub nowego alertu. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
@@ -70,7 +74,7 @@ Ponadto następujące będą naliczane w ramach mieszczący [cennik usługi Azur
 - Wszystkie testy wielu testów w sieci web, wykonywane przez usługę Application Insights
 - Wszystkie metryki niestandardowe przechowywany dłużej niż bezpłatny limit jednostek w usłudze Azure Monitor
 
-Ten artykuł będzie będzie stale zaktualizowane łącza i szczegóły dotyczące nowego monitorowania platformy Azure i alerty, funkcje, jak również dostępność narzędzi, aby ułatwić użytkownikom przyjmując na nową platformę Azure Monitor.
+Ten artykuł będzie stale aktualizowana przy użyciu łącza i szczegóły dotyczące nowa platforma Azure monitorowanie i alerty, funkcje, jak również dostępność narzędzia do świadczenia użytkownikom pomocy w przyjmowaniu na nową platformę Azure Monitor.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

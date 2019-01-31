@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e8a849fdc6674a0c6ab801bd8f26a01f89fb8857
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969587"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458061"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Wdrażanie usługi dzielenia i scalania do przenoszenia danych między bazami danych podzielonych na fragmenty
 
@@ -143,7 +143,7 @@ Jeśli swojej roli procesu roboczego nie przechodzi do trybu online, ale roli si
    ```
 
 * Upewnij się, że nazwa serwera nie zaczyna się od **https://**.
-* Upewnij się, że serwer bazy danych SQL Azure pozwala nawiązać z nim usług systemu Azure. Aby to zrobić, Otwórz swoją bazę danych w portalu i upewnij się, że **zezwolić na dostęp do usług platformy Azure** jest ustawiana **na**\*\*.
+* Upewnij się, że serwer bazy danych SQL Azure pozwala nawiązać z nim usług systemu Azure. Aby to zrobić, Otwórz swoją bazę danych w portalu i upewnij się, że **zezwolić na dostęp do usług platformy Azure** jest ustawiana ** na ***.
 
 ## <a name="test-the-service-deployment"></a>Testowanie wdrażania usługi
 ### <a name="connect-with-a-web-browser"></a>Łączenie z przeglądarką sieci web
@@ -204,7 +204,7 @@ Uwzględnione pliki skryptów są:
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>Aby zweryfikować wdrożenie przy użyciu programu PowerShell
 1. Otwórz nowe okno programu PowerShell i przejdź do katalogu, w której pobrano pakiet w dzielenia i scalania, a następnie przejdź do katalogu "powershell".
-2. Tworzenie serwera usługi Azure SQL database (lub wybierz istniejący serwer) Menedżera mapowań fragmentów i fragmentów tworzona.
+2. Tworzenie serwera usługi Azure SQL Database (lub wybierz istniejący serwer) Menedżera mapowań fragmentów i fragmentów tworzona.
    
    > [!NOTE]
    > Domyślnie w celu uproszczenia skrypt skrypt SetupSampleSplitMergeEnvironment.ps1 tworzy tych baz danych na tym samym serwerze. To nie jest ograniczeniem usługi dzielenia i łączenia się.

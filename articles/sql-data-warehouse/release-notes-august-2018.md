@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 08/13/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 11125fb1c78852a048787e99d78bf4cb941184fa
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 492bdd30a656a37196cf4d27a2510dbc3a79807d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320365"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463569"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-august-2018"></a>Co nowego w usłudze Azure SQL Data Warehouse? Sierpień 2018 r.
 Usługa Azure SQL Data Warehouse odbiera ulepszenia stale. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w sierpnia 2018.
@@ -30,9 +30,9 @@ Możesz przejść do szczegółów każdej kategorii, aby wyświetlić zalecenia
 
 ## <a name="bug-fixes"></a>Poprawki błędów
 
-| Stanowisko | Opis |
+| Tytuł | Opis |
 |:---|:---|
-| **Potencjalnych awarii zapytania, gdy liczba podziałów przekracza maksymalny limit** |Po przekroczeniu limitu pliku podziału 1 milion górną granicę nieobsługiwany wyjątek spowodowany aparatu SQL do porzucenia i wszystkie zapytania nie powiodło się. Tej poprawki adresem problem, Obsługa wyjątku poprawnie i zwróci błąd bez powodowania zapytania, aby zakończyć się niepowodzeniem. |
+| **Potencjalnych awarii zapytania, gdy liczba podziałów przekracza maksymalny limit** |Po przekroczeniu limitu pliku podziału 1 milion górną granicę nieobsługiwany wyjątek spowodowany aparatu SQL do porzucenia i wszystkie zapytania nie powiodło się. Ta poprawka rozwiązany problem poprawnie Obsługa wyjątku i zwróci błąd bez powodowania zapytania, aby zakończyć się niepowodzeniem. |
 | **Zwiększona wartość domyślną ExternalMoveReadersPerNode, aby zwiększyć wydajność obciążeń** |Ten problem został spowodowany przez ustawienie właściwości ExternalMoveReadersPerNode są zsynchronizowane z usługą Service fabric, ustawienie. Ta regresji spowodowała pogorszenie wydajności obciążenia Gen2. Poprawka zapewnia wydajność ładowania Gen2 wróć tutaj parametry zoptymalizowane projektu.|
 
 

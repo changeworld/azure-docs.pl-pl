@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0ed7d868f0e46e16224e15caaefd2d819c923f29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d15e229595ded0f814ebc4048d428f044b59e16d
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200755"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295733"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Zarządzanie danymi referencyjnymi w środowisku usługi Azure Time Series Insights przy użyciu języka C#
 
 W tym artykule opisano przykładowy projekt języka C# można skompilować do zarządzania danymi referencyjnymi w środowisku usługi Azure Time Series Insights.
 
-## <a name="prerequistes"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 Wykonaj następujące kroki, aby skompilować i uruchomić przykładowy kod:
 1. [Tworzenie zestawu danych referencyjnych](time-series-insights-add-reference-data-set.md).
 

@@ -1,9 +1,9 @@
 ---
-title: Udział plików na platformę Azure dla pul partii zadań Azure | Dokumentacja firmy Microsoft
-description: Jak zainstalować udział plików Azure z węzłów obliczeniowych w puli partii zadań Azure Linux lub Windows.
+title: Udział plików platformy Azure dla pul usługi Azure Batch | Dokumentacja firmy Microsoft
+description: Jak zainstalować udział plików platformy Azure z węzłów obliczeniowych w puli systemu Linux lub Windows w usłudze Azure Batch.
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,72 +13,72 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/24/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 88d7c0d033d7b517a396df27468de8be7ae20be9
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 13ed2caa5ae547747707c368246ea23486dbed72
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34811739"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469570"
 ---
-# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Użyj udziału plików na platformę Azure przy użyciu puli partii
+# <a name="use-an-azure-file-share-with-a-batch-pool"></a>Udział plików platformy Azure za pomocą puli usługi Batch
 
-[Usługa pliki Azure](../storage/files/storage-files-introduction.md) oferuje pełni zarządzanych udziałów plików w chmurze, które są dostępne za pośrednictwem protokołu bloku komunikatów serwera (SMB). Ten artykuł zawiera informacje i kod przykłady dotyczące instalowania i używania udziału plików na platformę Azure w węzłach obliczeń puli. Przykłady kodu używać partiami platformy .NET i zestawy SDK Python, ale można wykonywać operacje podobne przy użyciu innych partii zestawy SDK i narzędzia.
+[Usługa Azure Files](../storage/files/storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem protokołu bloku komunikatów serwera (SMB). Ten artykuł zawiera informacje i przykłady kodów do instalowania i korzystania z udziału plików platformy Azure w węzłach obliczeniowych puli. Przykłady kodu używać platformy .NET usługi Batch i języka Python SDK, ale można wykonywać operacje podobne, korzystając z innych zestawów SDK usługi Batch i narzędzi.
 
-Wsadowe zapewnia macierzystą obsługę interfejsu API przy użyciu obiektów blob magazynu Azure do odczytywania i zapisywania danych. Jednak w niektórych przypadkach można uzyskać dostępu do udziału plików na platformę Azure z puli węzłów obliczeniowych. Na przykład masz starszych obciążeń, do których jest zależna od udziału plików SMB lub zadań muszą uzyskać dostęp do udostępnionych danych lub generowania danych wyjściowych udostępnionego. 
+Usługi Batch zapewnia macierzystą obsługę interfejsu API, która pozwala na odczytywanie i zapisywanie danych przy użyciu obiektów blob usługi Azure Storage. Jednak w niektórych przypadkach można uzyskać dostęp do udziału plików platformy Azure z węzłów obliczeniowych puli. Na przykład obciążenie starszej wersji, który zależy od udziału plików SMB ma lub zadań muszą uzyskiwać dostęp do udostępnionych danych i generuje udostępnionych danych wyjściowych. 
 
-## <a name="considerations-for-use-with-batch"></a>Zagadnienia dotyczące użycia z partii
+## <a name="considerations-for-use-with-batch"></a>Uwagi dotyczące użycia z usługą Batch
 
-* Należy rozważyć użycie udziału plików na platformę Azure, jeśli masz pule systemem małą liczbę równoległych zadań. Przegląd [cele wydajności i skalowania](../storage/files/storage-files-scale-targets.md) ustalenie, jeśli usługi pliki Azure (który używa konta usługi Azure Storage) powinny być używane z puli oczekiwanego rozmiaru i liczbie plików zasobów. 
+* Należy rozważyć użycie udziału plików platformy Azure, w przypadku pul systemem małą liczbę równoległych zadań podrzędnych. Przegląd [cele dotyczące wydajności i skali](../storage/files/storage-files-scale-targets.md) ustalenie, jeśli należy użyć usługi Azure Files, (która korzysta z konta usługi Azure Storage), Twoja rozmiar oczekiwany puli i liczbie plików zasobów. 
 
-* Udziały plików platformy Azure są [ekonomiczne](https://azure.microsoft.com/pricing/details/storage/files/) i można je skonfigurować danych replikacji do innego regionu są tak globalnie nadmiarowe. 
+* Udziały plików platformy Azure są [efektywny kosztowo sposób](https://azure.microsoft.com/pricing/details/storage/files/) i może być konfigurowana przy użyciu danych replikacji do innego regionu są więc globalnie nadmiarowy. 
 
-* Można zainstalować udział plików na platformę Azure jednocześnie z komputera lokalnego.
+* Można zainstalować udział plików platformy Azure, jednocześnie z komputera lokalnego.
 
-* Zobacz też ogólne [zagadnienia związane z planowaniem](../storage/files/storage-files-planning.md) udziały plików platformy Azure.
+* Zobacz również ogólne [zagadnienia związane z planowaniem](../storage/files/storage-files-planning.md) udziałów plików platformy Azure.
 
 
 ## <a name="create-a-file-share"></a>Tworzenie udziału plików
 
-[Tworzenie udziału plików](../storage/files/storage-how-to-create-file-share.md) konta magazynu, który jest połączony z kontem usługi partia zadań lub oddzielnego konta magazynu.
+[Utwórz udział plików](../storage/files/storage-how-to-create-file-share.md) na koncie magazynu, który jest połączony z kontem usługi Batch lub oddzielnego konta magazynu.
 
-## <a name="mount-a-share-on-a-windows-pool"></a>Instalowanie udziału w puli systemu Windows
+## <a name="mount-a-share-on-a-windows-pool"></a>Instalowanie udziału w puli Windows
 
-Ta sekcja zawiera kroki i przykłady kodu, aby zainstalować i używać plików na platformę Azure udziału w puli węzłów z systemem Windows. Aby uzyskać dodatkowe, zobacz [dokumentacji](../storage/files/storage-how-to-use-files-windows.md) dla platformy Azure instalowanie udziału plików w systemie Windows. 
+Ta sekcja zawiera instrukcje i przykłady kodu, aby zainstalować i używać plików platformy Azure, Udostępnij w puli węzłów Windows. Do dodatkowych informacji uzupełniających, zobacz [dokumentacji](../storage/files/storage-how-to-use-files-windows.md) montażu Azure udziału plików w Windows. 
 
-W zadaniu wsadowym musisz zainstalować udział zawsze zadanie jest uruchamiane w węźle systemu Windows. Obecnie nie jest możliwy do utrwalenia połączenie sieciowe między zadaniami w węzłach systemu Windows.
+W usłudze Batch należy zainstalować ten udział każdorazowo zadanie jest uruchamiane w węźle Windows. Obecnie nie jest możliwe zachować połączenie sieciowe między zadaniami w węzłach Windows.
 
-Na przykład obejmować `net use` polecenie, aby zainstalować udział plików w ramach każdego zadania wiersza polecenia. Aby zainstalować udział plików, potrzebne są następujące:
+Na przykład zawierać `net use` polecenie, aby zainstalować udział plików w ramach każdego wiersza polecenia zadania. Aby zainstalować udział plików, potrzebne są następujące poświadczenia:
 
 * **Nazwa użytkownika**: AZURE\\\<storageaccountname\>, na przykład AZURE\\*mystorageaccountname*
 * **Hasło**: < StorageAccountKeyWhichEnds w == >, na przykład *XXXXXXXXXXXXXXXXXXXXX ==*
 
-Następujące polecenie na komputerze instalująca udział pliku *myfileshare* na koncie magazynu *mystorageaccountname* jako *S:* dysku:
+Poniższe polecenie instaluje udziału plików *myfileshare* na koncie magazynu *mystorageaccountname* jako *S:* dysku:
 
 ```
 net use S: \\mystorageaccountname.file.core.windows.net\myfileshare /user:AZURE\mystorageaccountname XXXXXXXXXXXXXXXXXXXXX==
 ```
 
-Dla uproszczenia przykłady w tym miejscu, należy przekazać poświadczenia bezpośrednio w tekście. W praktyce zdecydowanie zaleca się zarządzanie poświadczeń przy użyciu zmiennych środowiskowych, certyfikatów i rozwiązania, takie jak usługi Azure Key Vault.
+Dla uproszczenia poświadczenia są przekazywane podane tutaj przykłady bezpośrednio w tekście. W praktyce zdecydowanie zaleca się zarządzanie poświadczeń przy użyciu zmiennych środowiskowych, certyfikatów i rozwiązań, takich jak usługi Azure Key Vault.
 
-Aby uprościć operacji instalowania, opcjonalnie utrwalić poświadczenia w węzłach. Następnie mogą zainstalować udziały bez poświadczeń. Wykonaj poniższe dwa kroki:
+Aby uprościć operację instalowania, opcjonalnie utrwalić poświadczenia w węzłach. Następnie możesz zainstalować ten udział bez poświadczeń. Wykonaj następujące dwa kroki:
 
-1. Uruchom `cmdkey` w konfiguracji puli za pomocą zadania uruchamiania narzędzia wiersza polecenia. Ta sytuacja będzie trwać poświadczeń w każdym węźle systemu Windows. Wiersz polecenia zadania uruchamiania jest podobny do:
+1. Uruchom `cmdkey` narzędzie wiersza polecenia za pomocą zadania uruchamiania w konfiguracji puli. Będzie się powtarzał poświadczenia w każdym węźle Windows. Wiersza polecenia zadania uruchamiania są podobne do:
 
   ```
   cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
   ```
 
-2. Instalowanie udziału w każdym węźle w ramach poszczególnych zadań za pomocą `net use`. Na przykład następujące polecenie w wierszu zadań instaluje udziału plików jako *S:* dysku. To może następować polecenia lub skryptu, który odwołuje się do udziału. Buforowane poświadczenia są używane w wywołaniu `net use`. W tym kroku przyjęto założenie, że używasz tej samej tożsamości użytkownika dla zadań, które są używane w zadaniu start w puli, która nie jest odpowiednia dla wszystkich scenariuszy.
+2. Instalowanie udziału w każdym węźle w ramach każdego zadania przy użyciu `net use`. Na przykład następujący wiersz polecenia zadania instalowania udziału plików jako *S:* dysku. To może następować polecenia lub skryptu, który odwołuje się do udziału. Buforowane poświadczenia są używane w wywołaniu `net use`. W tym kroku przyjęto założenie, że używasz tej samej tożsamości użytkownika dla zadania, które są używane w zadanie podrzędne uruchamiania w puli, która nie jest odpowiednie w przypadku wszystkich scenariuszy.
 
   ```
   cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
   ```
 
-### <a name="c-example"></a>Przykład C#
-W poniższym przykładzie C# pokazano, jak można utrwalić poświadczenia w puli systemu Windows za pomocą zadania uruchamiania. Nazwa usługi Magazyn plików i magazynu poświadczeń są przekazywane jako zdefiniowanych stałych. W tym miejscu start zadanie jest uruchamiane (z systemem innym niż administrator) auto-konta użytkownika standardowego w zakresie puli.
+### <a name="c-example"></a>Przykład w języku C#
+Następujące C# przykład pokazuje, jak można utrwalić poświadczenia w ramach puli Windows za pomocą zadania uruchamiania. Nazwa usługi pliku magazynu i poświadczenia magazynu są przekazywane jako zdefiniowanych stałych. W tym miejscu zadanie podrzędne uruchamiania jest uruchamiana (inni niż administrator) auto-konta użytkownika standardowego o zakresie puli.
 
 ```csharp
 ...
@@ -102,7 +102,7 @@ pool.StartTask = new StartTask
 pool.Commit();
 ```
 
-Po przechowywane poświadczenia, należy użyć programu wierszy polecenia zadania instalowanie udziału i odwołać udział w odczytu lub operacje zapisu. Jako przykład basic, używa zadania wiersza polecenia w następujący fragment kodu `dir` polecenia, aby wyświetlić listę plików w udziale plików. Upewnij się, że do uruchamiania każdego zadanie korzystającej z tego samego [tożsamości użytkownika](batch-user-accounts.md) używane do uruchamiania zadania uruchamiania w puli. 
+Po zapisaniu poświadczenia umożliwia Twojej wiersze poleceń podzadań zainstalować ten udział i odwoływać się do udziału w odczytu lub operacji zapisu. Jako przykład basic, korzysta z wiersza polecenia zadania do następującego fragmentu kodu `dir` polecenia, aby wyświetlić listę plików w udziale plików. Pamiętaj uruchomić zadanie każdego zadania, korzystając z tych samych [tożsamość użytkownika](batch-user-accounts.md) używane do uruchomienia zadania podrzędnego uruchamiania w puli. 
 
 ```csharp
 ...
@@ -118,32 +118,32 @@ tasks.Add(task);
 
 ## <a name="mount-a-share-on-a-linux-pool"></a>Instalowanie udziału w puli systemu Linux
 
-Udziały plików platformy Azure można zainstalować w dystrybucje systemu Linux przy użyciu [CIFS jądra klienta](https://wiki.samba.org/index.php/LinuxCIFS). Poniższy przykład przedstawia sposób instalacji udziału plików w puli Ubuntu 16.04 LTS węzłów obliczeniowych. Jeśli używasz innej dystrybucji systemu Linux, ogólne kroki są podobne, ale użyj Menedżera pakietów odpowiednie do dystrybucji. Aby uzyskać szczegóły i dodatkowe przykłady, zobacz [używanych plików Azure z systemem Linux](../storage/files/storage-how-to-use-files-linux.md).
+Udziały plików platformy Azure można instalować w dystrybucjach systemu Linux przy użyciu [klient jądra CIFS](https://wiki.samba.org/index.php/LinuxCIFS). Poniższy przykład pokazuje sposób instalacji udziału plików w puli węzłów obliczeniowych systemu Ubuntu 16.04 LTS. Jeśli używasz różnych dystrybucji systemu Linux, ogólne kroki są podobne, ale użyj Menedżera pakietów odpowiednich dla dystrybucji. Aby uzyskać szczegóły i dodatkowe przykłady, zobacz [użycia usługi Azure Files z systemem Linux](../storage/files/storage-how-to-use-files-linux.md).
 
-Najpierw należy w ramach tożsamości użytkownika administrator, należy zainstalować `cifs-utils` pakietu, a następnie utworzyć punkt instalacji (na przykład */mnt/MyAzureFileShare*) w lokalnym systemie plików. Folder punktu instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typowe Konwencji, aby je utworzyć w obszarze `/mnt` folderu. Należy pamiętać, aby nie utworzyć punkt instalacji bezpośrednio na `/mnt` (na Ubuntu) lub `/mnt/resource` (na inne dystrybucji).
+Najpierw, przy użyciu tożsamości użytkownika administratora należy zainstalować `cifs-utils` pakietu i utworzyć punkt instalacji (na przykład *wolumin/mnt/MyAzureFileShare*) w lokalnym systemie plików. Folder dla punktu instalacji można utworzyć dowolne miejsce w systemie plików, ale jest typową Konwencją do utworzenia w obszarze `/mnt` folderu. Pamiętaj, aby nie utworzyć punkt instalacji bezpośrednio w `/mnt` (w systemie Ubuntu) lub `/mnt/resource` (na inne dystrybucje).
 
 ```
 apt-get update && apt-get install cifs-utils && sudo mkdir -p /mnt/MyAzureFileShare
 ```
 
-Następnie uruchom `mount` polecenie, aby zainstalować udział plików, podając te poświadczenia:
+Następnie uruchom `mount` polecenie, aby zainstalować udział plików, podając następujące poświadczenia:
 
 * **Nazwa użytkownika**: \<storageaccountname\>, na przykład *mystorageaccountname*
 * **Hasło**: < StorageAccountKeyWhichEnds w == >, na przykład *XXXXXXXXXXXXXXXXXXXXX ==*
 
-Następujące polecenie na komputerze instalująca udział pliku *myfileshare* na koncie magazynu *mystorageaccountname* w */mnt/MyAzureFileShare*: 
+Poniższe polecenie instaluje udziału plików *myfileshare* na koncie magazynu *mystorageaccountname* na *wolumin/mnt/MyAzureFileShare*: 
 
 ```
 mount -t cifs //mystorageaccountname.file.core.windows.net/myfileshare /mnt/MyAzureFileShare -o vers=3.0,username=mystorageaccountname,password=XXXXXXXXXXXXXXXXXXXXX==,dir_mode=0777,file_mode=0777,serverino && ls /mnt/MyAzureFileShare
 ```
 
-Dla uproszczenia przykłady w tym miejscu, należy przekazać poświadczenia bezpośrednio w tekście. W praktyce zdecydowanie zaleca się zarządzanie poświadczeń przy użyciu zmiennych środowiskowych, certyfikatów i rozwiązania, takie jak usługi Azure Key Vault.
+Dla uproszczenia poświadczenia są przekazywane podane tutaj przykłady bezpośrednio w tekście. W praktyce zdecydowanie zaleca się zarządzanie poświadczeń przy użyciu zmiennych środowiskowych, certyfikatów i rozwiązań, takich jak usługi Azure Key Vault.
 
-W puli Linux połączyć wszystkie te kroki w zadaniu pojedynczego uruchomienia lub uruchamiać je w skrypcie. Uruchom zadanie uruchamiania jako użytkownika administrator w puli. Ustaw zadanie start oczekiwania do pomyślnego wykonania przed uruchomieniem kolejne zadania w puli, odwołujący się do udziału.
+W ramach puli systemu Linux możesz połączyć wszystkie te czynności, zadanie podrzędne uruchamiania jednego lub uruchamiać je w skrypcie. Uruchom zadanie podrzędne uruchamiania jako użytkownika administrator w puli. Ustaw zadanie podrzędne uruchamiania oczekiwania do pomyślnego ukończenia przed uruchomieniem kolejne zadania w puli, odwołujący się do tego udziału.
 
-### <a name="python-example"></a>Przykład Python
+### <a name="python-example"></a>Przykładem w języku Python
 
-W poniższym przykładzie Python pokazuje, jak skonfigurować pulę Ubuntu, aby zainstalować udział w zadania uruchamiania. Punkt instalacji, punkt końcowy udziału plików i magazynu poświadczeń są przekazywane jako zdefiniowanych stałych. Zadania uruchamiania jest uruchamiana automatycznie — konta administratora z zakresem puli.
+W poniższym przykładzie Python pokazano, jak skonfigurować pulę Ubuntu, aby zainstalować udział w zadanie podrzędne uruchamiania. Punkt instalacji, punkt końcowy udziału plików i poświadczenia magazynu są przekazywane jako zdefiniowanych stałych. Zadanie podrzędne uruchamiania jest uruchamiana automatycznie — konta administratora o zakresie puli.
 
 ```python
 pool = batch.models.PoolAddParameter(
@@ -169,7 +169,7 @@ pool = batch.models.PoolAddParameter(
 batch_service_client.pool.add(pool)
 ```
 
-Po instalowanie udziału i definiowanie zadania, należy użyć udziału w sieci wierszy polecenia zadania. Na przykład następujące polecenie podstawowe używa `ls` do listy plików w udziale plików.
+Po instalowania udziału i definiując zadania, korzystają z udziału w swojej wierszach polecenia zadań podrzędnych. Na przykład następujące polecenie podstawowe używa `ls` Aby wyświetlić listę plików w udziale plików.
 
 ```python
 ...
@@ -183,6 +183,6 @@ batch_service_client.task.add(job_id, task)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Inne opcje do odczytywania i zapisywania danych w partii, zobacz [Przegląd funkcji partii](batch-api-basics.md) i [utrwalić danych wyjściowych i zadań](batch-task-output.md).
+* Aby uzyskać inne opcje odczytywać i zapisywać dane w usłudze Batch, zobacz [omówienie funkcji usługi Batch](batch-api-basics.md) i [utrwalanie danych wyjściowych zadań i zadań podrzędnych](batch-task-output.md).
 
-* Zobacz też [stoczni partii](https://github.com/Azure/batch-shipyard) zestawu narzędzi, w tym [przepisami stoczni](https://github.com/Azure/batch-shipyard/tree/master/recipes) do wdrażania systemów plików dla obciążeń kontenera partii.
+* Zobacz też [usługa Batch Shipyard](https://github.com/Azure/batch-shipyard) toolkit, który zawiera [przepisy usługa Shipyard](https://github.com/Azure/batch-shipyard/tree/master/recipes) do wdrażania systemów plików dla obciążeń kontenerów usługi Batch.

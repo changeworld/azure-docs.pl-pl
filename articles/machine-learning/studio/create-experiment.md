@@ -1,5 +1,5 @@
 ---
-Tytuł: Prosty eksperyment titleSuffix: Opis usługi Azure Machine Learning Studio: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
+Tytuł: Prosty eksperyment titleSuffix: Opis usługi Azure Machine Learning Studio: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
 usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: samouczek
 
 author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017

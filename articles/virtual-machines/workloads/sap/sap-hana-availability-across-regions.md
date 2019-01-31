@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae03e1498d948e7d044561c3e6bea8c343d7b165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 95ada2cb146bdbc972afee883a1d174c95aa67d7
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713973"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297586"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Dostępność platformy SAP HANA w regionach platformy Azure
 
@@ -39,7 +39,7 @@ Usługa Azure Virtual Network używa różnych zakresów adresów IP. Adresy IP 
 
 ## <a name="simple-availability-between-two-azure-regions"></a>Proste dostępności między dwoma regionami platformy Azure
 
-Może nie chcesz umieścić konfiguracji wszelkie dostępności w miejscu w obrębie jednego regionu, ale nadal mają żądanie ma obciążenia obsługiwane w przypadku wystąpienia awarii. Typowe przypadki dla systemów, takich jak ta to systemy obniżenia. Mimo że system w dół do połowy lub nawet jeden dzień to zrównoważone, nie może dopuścić system będzie dostępny przez 48 godzin lub dłużej. Aby ułatwić instalację mniej kosztowne, należy uruchomić inny system, który jest nawet mniej ważne w maszynie Wirtualnej. Inny system działa jako miejsce docelowe. Można również rozmiaru maszyny Wirtualnej w regionie pomocniczym, może być mniejszy i nie chcesz wstępnego ładowania danych. Dodatkowy czas zamykania maszyny Wirtualnej, zmień jego rozmiar i ponownie uruchom maszynę Wirtualną jest dopuszczalne, ponieważ tryb failover jest ręcznie i pociąga za sobą wiele więcej kroków do trybu failover stosu kompletnej aplikacji.
+Może nie chcesz umieścić konfiguracji wszelkie dostępności w miejscu w obrębie jednego regionu, ale nadal mają żądanie ma obciążenia obsługiwane w przypadku wystąpienia awarii. Typowe przypadki, w przypadku takich scenariuszy to systemy obniżenia. Mimo że system w dół do połowy lub nawet jeden dzień to zrównoważone, nie może dopuścić system będzie dostępny przez 48 godzin lub dłużej. Aby ułatwić instalację mniej kosztowne, należy uruchomić inny system, który jest nawet mniej ważne w maszynie Wirtualnej. Inny system działa jako miejsce docelowe. Można również rozmiaru maszyny Wirtualnej w regionie pomocniczym, może być mniejszy i nie chcesz wstępnego ładowania danych. Dodatkowy czas zamykania maszyny Wirtualnej, zmień jego rozmiar i ponownie uruchom maszynę Wirtualną jest dopuszczalne, ponieważ tryb failover jest ręcznie i pociąga za sobą wiele więcej kroków do trybu failover stosu kompletnej aplikacji.
 
 Jeśli używasz scenariusza udostępniania docelowym odzyskiwania po awarii w systemie odpowiedzi na pytania w jednej maszyny Wirtualnej, należy wykonać te zagadnienia pod uwagę:
 
@@ -64,14 +64,24 @@ Kombinacja dostępność oferowaną w wielu regionach mogą opierać się przez 
 - Organizacja nie zechce lub mogą mieć globalne operacje wpływ głównych klęskami fizycznych, który wpływa na większych region. Jest to w przypadku niektórych hurricanes, które trafień Karaiby w ciągu ostatnich kilku lat.
 - Przepisy żądanie odległości od lokacji głównych i dodatkowych, które są wyraźnie, poza jakie dostępności platformy Azure może zapewnić strefy.
 
-W takich przypadkach można ustawić jakie wywołania SAP [konfiguracji replikacji wielowarstwowa systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) za pomocą replikacji systemu HANA. Architektura będzie wyglądać następująco:
+W takich przypadkach można ustawić jakie wywołania SAP [konfiguracji replikacji wielowarstwowa systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/ca6f4c62c45b4c85a109c7faf62881fc.html) za pomocą replikacji systemu HANA. Architektura będzie wyglądać:
 
 ![Diagram przedstawiający trzy maszyny wirtualne za pośrednictwem dwóch regionach](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
+
+SAP wprowadzone [replikacji systemu docelowego wielu](https://help.sap.com/viewer/42668af650f84f9384a3337bcd373692/2.0.03/en-US/0b2c70836865414a8c65463180d18fec.html) z SPS3 2.0 platformy HANA. Replikacji systemu docelowego wielu oferuje kilka zalet w scenariuszach aktualizacji. Na przykład lokacji odzyskiwania po awarii (Region 2) nie ulega zmianie podczas dodatkowej lokacji o wysokiej dostępności nie działa z powodu konserwacji lub aktualizacji. Możesz dowiedzieć się więcej na temat replikacji systemu docelowego wielu HANA [tutaj](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/ba457510958241889a459e606bbcf3d3.html).
+Przykładową architekturę z replikacją wielu docelowy będzie wyglądać:
+
+![Diagram przedstawiający trzy maszyny wirtualne za pośrednictwem milti dwa regiony docelowe](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_3VMs.PNG)
+
+Jeśli organizacja korzysta z wymagania dotyczące wysokiej dostępności gotowości w second(DR) region platformy Azure, takich jak powinien wyglądać architektura:
+
+![Diagram przedstawiający trzy maszyny wirtualne za pośrednictwem milti dwa regiony docelowe](./media/sap-hana-availability-two-region/saphanaavailability_hana_system_2region_HA_and_DR_multitarget_4VMs.PNG)
+
 
 Przy użyciu logreplay jako tryb działania, ta konfiguracja zapewnia cel punktu odzyskiwania = 0, z niską wartość, w regionie podstawowym. Konfiguracja także znośnego cel punktu odzyskiwania, jeśli chodzi o przeniesienie do drugiego regionu. Czasy RTO, w drugim regionie są zależne od tego, czy dane są wstępnie ładowane. Wielu klientów używa maszyny Wirtualnej w regionie pomocniczym, aby uruchomić system testowy. W tym przypadku użycia, nie może zostać wstępnie załadowane dane.
 
 > [!IMPORTANT]
-> Tryby działania między różne warstwy trzeba jednolite. Możesz **nie** Użyj logreply jako tryb operacji między warstwami 1 i 2 oraz delta_datashipping umożliwiają określanie wartości warstwy 3. Można wybrać tylko jeden lub inny tryb operacji, która musi być spójny dla wszystkich warstw. Ponieważ delta_datashipping nie nadaje się umożliwiają cel punktu odzyskiwania = 0, tryb tylko uzasadnione działania, dla takiej konfiguracji warstwy multi pozostaje logreplay. Aby uzyskać szczegółowe informacje o trybach operacji i pewne ograniczenia, zobacz artykuł SAP [tryby operacji replikacji systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
+> Tryby działania między różne warstwy trzeba jednolite. Możesz **nie** Użyj logreply jako tryb operacji między warstwami 1 i 2 oraz delta_datashipping umożliwiają określanie wartości warstwy 3. Można wybrać tylko jeden lub inny tryb operacji, która musi być spójny dla wszystkich warstw. Ponieważ delta_datashipping nie nadaje się umożliwiają cel punktu odzyskiwania = 0, tryb tylko uzasadnione działania, dla konfiguracji wielowarstwowych pozostaje logreplay. Aby uzyskać szczegółowe informacje o trybach operacji i pewne ograniczenia, zobacz artykuł SAP [tryby operacji replikacji systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

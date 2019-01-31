@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7a00f18a8ae51d5118275e904e2ca76fc167d987
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 91d645e6120040870c7c1696c7bfd8f68509cb35
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53132622"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451907"
 ---
 # <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Klient akceptacji etap cyklu życia zespołowego danych dla celów naukowych
 
@@ -40,7 +40,7 @@ Oto wizualnej reprezentacji cyklu przetwarzania TDSP:
 Istnieją dwa główne zadania, które zostały rozwiązane podczas tego etapu:
 
    * **Sprawdzanie poprawności systemu**: Upewnij się, że wdrożony model i potoku potrzeb klienta.
-   * **Projekt ręcznie wyłączyć**: przekazują projektu do jednostki, która ma wejść do zapewnienia działania systemu w środowisku produkcyjnym.
+   * **Projekt ręcznie wyłączyć**: Przekazują projektu do jednostki, która ma wejść do zapewnienia działania systemu w środowisku produkcyjnym.
 
 Klienta należy zweryfikować, czy system spełnia ich potrzeby biznesowe i odpowiedzi pytania, z dokładnością dopuszczalne do wdrożenia systemu do środowiska produkcyjnego do użycia przez aplikację swoich klientów. Cała dokumentacja sfinalizowana, a przeglądane. Projekt jest przekazywane wyłączenia go z jednostką odpowiedzialny za operacje. Ta jednostka może być na przykład IT lub zespół do nauki o danych klientów lub agenta klienta, który jest odpowiedzialny za działanie systemu w środowisku produkcyjnym. 
 

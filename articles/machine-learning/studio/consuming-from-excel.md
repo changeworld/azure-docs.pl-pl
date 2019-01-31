@@ -1,5 +1,5 @@
 ---
-Tytuł: Używanie usługi sieci web w programie Excel titleSuffix: Opis usługi Azure Machine Learning Studio: Usługa Azure Machine Learning Studio ułatwia wywołują usługi sieci web bezpośrednio z programu Excel, bez konieczności pisania kodu.
+Tytuł: Używanie usługi sieci web w programie Excel titleSuffix: Opis usługi Azure Machine Learning Studio: Usługa Azure Machine Learning Studio ułatwia wywołują usługi sieci web bezpośrednio z programu Excel, bez konieczności pisania kodu.
 usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 02/01/2018

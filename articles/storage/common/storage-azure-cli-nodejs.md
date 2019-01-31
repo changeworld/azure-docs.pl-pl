@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 28c9e342aec3eb3ba61b46f4f80c7d097b0653b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 211051254e08d69c06afd4242599c909048e7e17
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258718"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464844"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Za pomocą klasycznego wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -35,7 +35,7 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia dotyczące usłu
 ## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Rozpoczynanie pracy z usługą Azure Storage i Azure klasyczny interfejs wiersza polecenia w ciągu 5 minut
 W tym przewodniku używane Ubuntu przykłady, ale innych platform systemów operacyjnych należy wykonać w podobny sposób.
 
-**Jesteś nowym użytkownikiem platformy Azure:** subskrypcji Microsoft Azure i konta Microsoft skojarzonego z posiadaną subskrypcją. Aby uzyskać informacje na temat opcji zakupu platformy Azure, zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/), [opcjami zakupu](https://azure.microsoft.com/pricing/purchase-options/), i [oferty dla subskrybentów](https://azure.microsoft.com/pricing/member-offers/) (dla uczestników programu MSDN, Microsoft Partner Network czy BizSpark, i inne programy firmy Microsoft).
+**Jesteś nowym użytkownikiem platformy Azure:** Skorzystaj z subskrypcji Microsoft Azure i konta Microsoft skojarzonego z posiadaną subskrypcją. Aby uzyskać informacje na temat opcji zakupu platformy Azure, zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/), [opcjami zakupu](https://azure.microsoft.com/pricing/purchase-options/), i [oferty dla subskrybentów](https://azure.microsoft.com/pricing/member-offers/) (dla uczestników programu MSDN, Microsoft Partner Network czy BizSpark, i inne programy firmy Microsoft).
 
 Zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) Aby uzyskać więcej informacji na temat subskrypcji platformy Azure.
 
@@ -78,7 +78,7 @@ Zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory (A
 5. Na komputerze lokalnym otwórz preferowanym edytorze tekstu (vim, na przykład). Wpisz powyższy skrypt do edytora tekstu.
 6. Teraz musisz zaktualizować zmienne skryptu na podstawie własnych ustawień konfiguracji.
 
-   * **< Nazwa_konta_magazynu >** użyć nazwy podanej w skrypcie lub wprowadź nazwę nowego konta magazynu. **Ważne:** nazwą konta magazynu musi być unikatowa na platformie Azure. Musi być pisana małymi literami i zbyt!
+   * **< Nazwa_konta_magazynu >** użyć nazwy podanej w skrypcie lub wprowadź nazwę nowego konta magazynu. **Ważne:** Nazwa konta magazynu musi być unikatowa na platformie Azure. Musi być pisana małymi literami i zbyt!
    * **< Klucz_konta_magazynu >** klucz dostępu konta magazynu.
    * **< Container_name >** użyć nazwy podanej w skrypcie lub wprowadź nową nazwę kontenera.
    * **< Image_to_upload >** wprowadź ścieżkę do obrazu na komputerze lokalnym, takich jak: "~ / images/HelloWorld.png".
@@ -132,7 +132,7 @@ azure storage container create mycontainer
 ```
 
 > [!NOTE]
-> Istnieją trzy poziomy anonimowy dostęp do odczytu: **poza**, **Blob**, i **kontenera**. Aby uniemożliwić dostęp anonimowy do obiektów blob, należy ustawić parametr uprawnień na **poza**. Domyślnie nowy kontener jest prywatny i są dostępne tylko dla właściciela konta. Aby zezwolić na anonimowy publicznego dostępu do odczytu do zasobów obiektów blob, ale nie metadanych kontenera lub listy obiektów blob w kontenerze, ustawić uprawnienia dla parametru **Blob**. Aby zezwolić na pełne publicznego dostępu do odczytu do obiektów blob, zasobów, metadanych kontenera i listy obiektów blob w kontenerze, należy ustawić parametr uprawnień na **kontenera**. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).
+> Istnieją trzy poziomy anonimowy dostęp do odczytu: **Wyłącz**, **Blob**, i **kontenera**. Aby uniemożliwić dostęp anonimowy do obiektów blob, należy ustawić parametr uprawnień na **poza**. Domyślnie nowy kontener jest prywatny i są dostępne tylko dla właściciela konta. Aby zezwolić na anonimowy publicznego dostępu do odczytu do zasobów obiektów blob, ale nie metadanych kontenera lub listy obiektów blob w kontenerze, ustawić uprawnienia dla parametru **Blob**. Aby zezwolić na pełne publicznego dostępu do odczytu do obiektów blob, zasobów, metadanych kontenera i listy obiektów blob w kontenerze, należy ustawić parametr uprawnień na **kontenera**. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob](../blobs/storage-manage-access-to-resources.md).
 >
 >
 

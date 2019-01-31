@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 88c3be12647bd73296c214390d3d2fb1fe79ccb4
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 514242eb759a2349d96b38ebe54bb98cf0e83423
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468822"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Scenariusze zaawansowanej analizy w usłudze Azure Machine Learning
 W tym artykule przedstawiono różne źródła danych przykładowych i scenariusze docelowe, które są obsługiwane przez [Team Data Science naukowych](overview.md). Przetwarzania TDSP zapewnia to systematyczne podejście dla zespołów usługi umożliwiające wspólną pracę nad tworzeniem inteligentnych aplikacji. Scenariusze przedstawione w tym miejscu przedstawiono opcje dostępne w przepływie pracy przetwarzania danych, które są zależne od właściwości danych, lokalizacji źródłowych i docelowych repozytoriów na platformie Azure.
@@ -39,7 +39,7 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 > 
 > 
 
-## <a name="smalllocal"></a>Scenariusz \#1: małych i średnich tabelaryczny zestaw danych w lokalnych plikach
+## <a name="smalllocal"></a>Scenariusz \#1: Małe i średnie tabelaryczny zestaw danych w lokalnych plikach
 ![Małych i średnich plików lokalnych][1]
 
 #### <a name="additional-azure-resources-none"></a>Dodatkowe zasoby platformy Azure: Brak
@@ -47,10 +47,10 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Przekaż zestaw danych.
 1. Tworzenie przepływu eksperymentu usługi Azure Machine Learning, począwszy od przekazanych w zestawach danych.
 
-## <a name="smalllocalprocess"></a>Scenariusz \#2: małych i średnich zestawu danych lokalnych plików, które wymagają przetworzenia
+## <a name="smalllocalprocess"></a>Scenariusz \#2: Małe i średnie zestawu danych lokalnych plików, które wymagają przetworzenia
 ![Małe i średnie pliki lokalne z przetwarzaniem][2]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: maszyna wirtualna platformy Azure (serwera IPython Notebook)
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Maszyna wirtualna platformy Azure (serwera IPython Notebook)
 1. Utwórz maszynę wirtualną platformy Azure z systemem IPython Notebook.
 1. Przekazywanie danych do kontenera usługi Azure storage.
 1. Wstępne przetwarzanie i czyszczenie danych w IPython Notebook, uzyskiwanie dostępu do danych z kontenera usługi Azure storage.
@@ -60,10 +60,10 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Odczytywanie danych z obiektów blob platformy Azure przy użyciu [importu danych] [ import-data] modułu.
 1. Tworzenie przepływu eksperymentu usługi Azure Machine Learning, począwszy od dwóch zestawów danych.
 
-## <a name="largelocal"></a>Scenariusz \#3: duży zestaw danych z plików lokalnych przeznaczonych dla obiektów blob platformy Azure
+## <a name="largelocal"></a>Scenariusz \#3: Duży zestaw danych z plików lokalnych przeznaczonych dla obiektów blob platformy Azure
 ![Duże pliki lokalne][3]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: maszyna wirtualna platformy Azure (serwera IPython Notebook)
+#### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Maszyna wirtualna platformy Azure (serwera IPython Notebook)
 1. Utwórz maszynę wirtualną platformy Azure z systemem IPython Notebook.
 1. Przekazywanie danych do kontenera usługi Azure storage.
 1. Wstępne przetwarzanie i czyszczenie danych w IPython Notebook, dostępu do danych w obiektach blob platformy Azure.
@@ -75,10 +75,10 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Odczytywanie danych z obiektów blob platformy Azure przy użyciu [importu danych] [ import-data] modułu.
 1. Tworzenie przepływu eksperymentu usługi Azure Machine Learning, począwszy od dwóch zestawów danych.
 
-## <a name="smalllocaltodb"></a>Scenariusz \#4: małych i średnich zestaw plików lokalnych przeznaczonych dla programu SQL Server w maszynie wirtualnej platformy Azure
+## <a name="smalllocaltodb"></a>Scenariusz \#4: Małe i średnie zestaw plików lokalnych przeznaczonych dla programu SQL Server w maszynie wirtualnej platformy Azure
 ![Małych i średnich plików lokalnych do bazy danych SQL na platformie Azure][4]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
 1. Utwórz maszynę wirtualną platformy Azure, uruchamiania programu SQL Server i IPython Notebook.
 1. Przekazywanie danych do kontenera usługi Azure storage.
 1. Wstępne przetwarzanie i czyszczenie danych w kontenerze usługi Azure storage przy użyciu IPython Notebook.
@@ -86,14 +86,14 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Zapisywanie danych do plików lokalnych maszyn wirtualnych (IPython Notebook jest uruchomiona na maszynie Wirtualnej, można znaleźć dyski lokalne dyski maszyny Wirtualnej).
 1. Ładowanie danych do bazy danych programu SQL Server uruchomiony na Maszynie wirtualnej platformy Azure.
    
-   Opcja \#1: przy użyciu programu SQL Server Management Studio.
+   Opcja \#1: Przy użyciu programu SQL Server Management Studio.
    
    * Zaloguj się do programu SQL Server w maszynie Wirtualnej
    * Uruchom program SQL Server Management Studio.
    * Tworzenie tabel bazy danych i docelowej.
    * Użyj jednej ze zbiorczego zaimportować metody, aby załadować dane z plików lokalnej maszyny Wirtualnej.
    
-   Opcja \#2: za pomocą IPython Notebook — nie zaleca się włączenie dla średnich i większych zestawów danych
+   Opcja \#2: Za pomocą IPython Notebook — nie zaleca się włączenie dla średnich i większych zestawów danych
    
    <!-- -->    
    * Ciąg połączenia ODBC umożliwia dostęp do serwera SQL na maszynie Wirtualnej.
@@ -105,10 +105,10 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Odczytywanie danych bezpośrednio za pomocą programu SQL Server [importu danych] [ import-data] modułu. Wklej zapytanie to konieczne, który wyodrębnia pola i tworzy funkcje oraz próbkuje dane, w razie potrzeby bezpośrednio w [importu danych] [ import-data] zapytania.
 1. Tworzenie przepływu eksperymentu usługi Azure Machine Learning, począwszy od dwóch zestawów danych.
 
-## <a name="largelocaltodb"></a>Scenariusz \#5: duży zestaw danych w lokalnych plikach docelowych programu SQL Server na maszynie Wirtualnej platformy Azure
+## <a name="largelocaltodb"></a>Scenariusz \#5: Duży zestaw danych w lokalnych plikach docelowych programu SQL Server na maszynie Wirtualnej platformy Azure
 ![Duże pliki lokalne do bazy danych SQL na platformie Azure][5]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
 1. Utwórz maszynę wirtualną platformy Azure z programem SQL Server i serwera IPython Notebook.
 1. Przekazywanie danych do kontenera usługi Azure storage.
 1. (Opcjonalnie) Wstępne przetwarzanie i czyszczenie danych.
@@ -146,10 +146,10 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 1. Odczytywanie danych bezpośrednio za pomocą programu SQL Server [importu danych] [ import-data] modułu. Wklej zapytanie to konieczne, który wyodrębnia pola i tworzy funkcje oraz próbkuje dane, w razie potrzeby bezpośrednio w [importu danych] [ import-data] zapytania.
 1. Prosty przepływ eksperymentu usługi Azure Machine Learning, począwszy od przekazano zestaw danych
 
-## <a name="largedbtodb"></a>Scenariusz \#6: duży zestaw danych w programie SQL Server bazy danych lokalnych, przeznaczonych dla programu SQL Server w maszynie wirtualnej platformy Azure
+## <a name="largedbtodb"></a>Scenariusz \#6: Duży zestaw danych w programie SQL Server bazy danych lokalnych, przeznaczonych dla programu SQL Server w maszynie wirtualnej platformy Azure
 ![Duże SQL DB środowiska lokalnego do bazy danych SQL na platformie Azure][6]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
 1. Utwórz maszynę wirtualną platformy Azure z programem SQL Server i serwera IPython Notebook.
 1. Użyj jednego z danych eksportowania metod, aby wyeksportować dane z programu SQL Server do plików zrzutu.
    
@@ -185,7 +185,7 @@ Każdy z poniższych sekcjach przedstawiono przykładowy scenariusz. W każdym s
 ### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Metoda alternatywna do skopiowania pełnej bazy danych na lokalnym serwerze SQL Server do usługi Azure SQL Database
 ![Odłączanie lokalnej bazy danych i dołączyć do bazy danych SQL na platformie Azure][7]
 
-#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
+#### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Maszyna wirtualna platformy Azure (SQL Server / serwera IPython Notebook)
 Aby replikować całą bazę danych programu SQL Server na maszynie Wirtualnej programu SQL Server, należy skopiować bazę danych z jednej lokalizacji/serwera do innego, przy założeniu, że bazy danych mogą być podejmowane tymczasowo w trybie offline. Można to zrobić w Eksploratorze obiektów SQL Server Management Studio lub za pomocą równoważne polecenia języka Transact-SQL.
 
 1. Odłącz bazę danych w lokalizacji źródłowej. Aby uzyskać więcej informacji, zobacz [Odłącz bazę danych](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
@@ -194,10 +194,10 @@ Aby replikować całą bazę danych programu SQL Server na maszynie Wirtualnej p
 
 [Przenieś bazę danych za pomocą odłączyć, a następnie dołączyć (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="largedbtohive"></a>Scenariusz \#7: dane Big data w lokalnych plikach docelowej bazy danych Hive w klastrach usługi Azure HDInsight Hadoop
+## <a name="largedbtohive"></a>Scenariusz \#7: Dane big data w lokalnych plikach docelowa baza danych programu Hive w klastrach usługi Azure HDInsight Hadoop
 ![Dane big data w celu lokalnej gałęzi][9]
 
-#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: klaster usługi Hadoop w usłudze Azure HDInsight i maszyny wirtualnej platformy Azure (serwera IPython Notebook)
+#### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Dodatkowe zasoby platformy Azure: Usługi Azure HDInsight, klaster Hadoop i maszyny wirtualnej platformy Azure (serwera IPython Notebook)
 1. Utwórz maszynę wirtualną platformy Azure z systemem serwera IPython Notebook.
 1. Tworzenie klastra usługi Azure HDInsight Hadoop.
 1. (Opcjonalnie) Wstępne przetwarzanie i czyszczenie danych.

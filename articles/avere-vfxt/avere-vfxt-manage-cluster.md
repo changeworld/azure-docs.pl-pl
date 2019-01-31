@@ -4,20 +4,20 @@ description: Zarządzanie klastrem Avere — Dodawanie lub usuwanie węzłów, p
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189613"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55300188"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Zarządzanie klastrem Avere vFXT
 
 Po utworzeniu klastra, konieczne może być dodawanie węzłów klastra, zatrzymywanie lub ponowne uruchomienie klastra. A po zakończeniu projektu, trzeba znać sposób zatrzymywania i trwale usunąć klaster. 
 
-W zależności od zadania zarządzania klastrem może być konieczne użycie Avere Panelu sterowania, skrypt tworzenia klastra vfxt.py lub witryny Azure portal, aby to zrobić. 
+W zależności od zadania zarządzania klastrem może być konieczne użycie Avere Panelu sterowania, skrypt tworzenia klastra vfxt.py wiersza polecenia lub witryny Azure portal, aby to zrobić. 
 
 Ta tabela zawiera omówienie z których narzędzi może służyć do każdego zadania. 
 
@@ -71,7 +71,11 @@ Odczyt [klaster > węzły FXT](<https://azure.github.io/Avere/legacy/ops_guide/4
 
 Gdy klaster jest zamykana, publikuje komunikaty o stanie do **pulpit nawigacyjny** kartę na początku. Po kilku chwilach sesji Panelu sterowania Avere przestanie odpowiadać, co oznacza, że klaster został zamknięty.
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>Zarządzanie klastrem przy użyciu vfxt.py 
+## <a name="manage-the-cluster-with-vfxtpy"></a>Zarządzanie klastrem przy użyciu vfxt.py
+
+vfxt.PY jest narzędziem wiersza polecenia do tworzenia klastra i zarządzania. 
+
+vfxt.PY jest preinstalowany na kontrolerze klastra maszyny Wirtualnej. Jeśli chcesz zainstalować je na innym systemie, zapoznaj się z dokumentacją w <https://github.com/Azure/AvereSDK>.
 
 Skrypt vfxt.py może służyć do tych zadań zarządzania klastrem:
 
@@ -80,8 +84,6 @@ Skrypt vfxt.py może służyć do tych zadań zarządzania klastrem:
 * Zniszczyć klaster
 
 Podobnie jak Avere Panelu sterowania operacje vfxt.py spróbuj upewnij się, że zmienione dane są przechowywane trwale magazynu zaplecza przed zamknięciem lub niszczenie klastra lub węzła. Dzięki temu bezpieczniejsze niż Avere portal.
-
-vfxt.PY jest preinstalowany na kontrolerze klastra maszyny Wirtualnej. <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 Podręcznik użycia pełną vfxt.py jest dostępna w witrynie GitHub: [Klaster zarządzania chmurą vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)
 

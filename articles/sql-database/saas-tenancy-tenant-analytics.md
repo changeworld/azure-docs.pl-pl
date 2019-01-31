@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: bd766dfb712921a57dd23c4fdecc25dd623eb833
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f63a42afd9dc629bd87dfb23e07e14737ea42a2f
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393268"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55299847"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-tenant analytics przy użyciu wyodrębnione dane — aplikacja jednej dzierżawy
  
-W tym samouczku opisano scenariusz pełną analizę implementatoin pojedynczej dzierżawy. Scenariusz pokazuje, jak włączyć analytics przedsiębiorstwom podejmować inteligentne decyzje. Przy użyciu danych wyodrębnionych z każdej bazy danych dzierżawy, umożliwia analizę wgląd w zachowanie dzierżawy, w tym korzystanie z przykładowej aplikacji SaaS o nazwie Wingtip Tickets. Ten scenariusz obejmuje trzy kroki: 
+W tym samouczku opisano scenariusz pełną analizę dla implementacji pojedynczej dzierżawy. Scenariusz pokazuje, jak włączyć analytics przedsiębiorstwom podejmować inteligentne decyzje. Przy użyciu danych wyodrębnionych z każdej bazy danych dzierżawy, umożliwia analizę wgląd w zachowanie dzierżawy, w tym korzystanie z przykładowej aplikacji SaaS o nazwie Wingtip Tickets. Ten scenariusz obejmuje trzy kroki: 
 
 1.  **Wyodrębnij** danych z każdej bazy danych dzierżawy i **obciążenia** do magazynu usługi analytics.
 2.  **Przekształcanie danych wyodrębnionych** przetwarzania analizy.
@@ -238,7 +238,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 
 Gratulacje!
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - Dodatkowe [samouczki nawiązujące do aplikacji SaaS o nazwie Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - [Zadania elastyczne](sql-database-elastic-jobs-overview.md).

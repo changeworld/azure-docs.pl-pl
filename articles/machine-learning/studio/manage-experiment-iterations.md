@@ -1,6 +1,6 @@
 ---
-Tytuł: Zarządzanie iteracjami eksperymentów w usłudze Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Jak zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio. Możesz przejrzeć poprzednich przebiegów eksperymenty, w dowolnym momencie, aby wyzwanie, ponownie oraz ostatecznie upewnij się lub Popraw poprzednie założeń.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: artykuł
+Tytuł: Zarządzanie iteracjami eksperymentów w usłudze Machine Learning Studio titleSuffix: Opis usługi Azure Machine Learning Studio: Jak zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio. Możesz przejrzeć poprzednich przebiegów eksperymenty, w dowolnym momencie, aby wyzwanie, ponownie oraz ostatecznie upewnij się lub Popraw poprzednie założeń.
+usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
 
 author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/20/2017
 ---

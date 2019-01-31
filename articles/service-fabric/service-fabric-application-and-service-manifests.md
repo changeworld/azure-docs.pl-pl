@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: fa3c94854f8f67da9caa2955f5c62581843e39c8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9e8ca50970ff4a845174d7061b60a88a8f5ce578
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156109"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465627"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifesty aplikacji usługi Service Fabric i usługi
 W tym artykule opisano, jak aplikacje usługi Service Fabric i usługi są zdefiniowane i kontrolą wersji, przy użyciu plików ApplicationManifest.xml i ServiceManifest.xml.  Aby uzyskać bardziej szczegółowe przykłady, zobacz [aplikacji i usługi manifestu przykłady](service-fabric-manifest-examples.md).  Schemat XML dla tych plików manifestu jest udokumentowany w [dokumentacja schematu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).
@@ -96,7 +96,7 @@ Aby uzyskać więcej informacji na temat konfigurowania SetupEntryPoint, zobacz 
 </Settings>
 ```
 
-**Zasoby**, takich jak punkty końcowe, które są używane przez usługę być zadeklarowane/zmienić bez konieczności zmieniania kodu skompilowanego.  Dostęp do zasobów, które są określone w manifeście usługi mogą być kontrolowane za pośrednictwem **SecurityGroup** w manifeście aplikacji.  Gdy **punktu końcowego** zasób jest zdefiniowany w manifeście usługi, usługi Service Fabric przypisuje porty z zakresu portów zarezerwowanych aplikacji, jeśli port nie jest jawnie określona.  Przeczytaj więcej na temat [określenie lub punkt końcowy zasoby przesłaniające](service-fabric-service-manifest-resources.md).
+Usługa Service Fabric **punktu końcowego** znajduje się przykład w przypadku zasobów sieci szkieletowej usług; Zasób usługi Service Fabric może być zadeklarowana/zmienić bez konieczności zmieniania kodu skompilowanego. Dostęp do zasobów usługi Service Fabric, które są określone w manifeście usługi mogą być kontrolowane za pośrednictwem **SecurityGroup** w manifeście aplikacji. Gdy zasób punktu końcowego jest zdefiniowany w manifeście usługi, usługi Service Fabric przypisuje porty z zakresu portów zarezerwowanych aplikacji, jeśli port nie jest jawnie określona. Przeczytaj więcej na temat [określenie lub punkt końcowy zasoby przesłaniające](service-fabric-service-manifest-resources.md).
 
 
 <!--

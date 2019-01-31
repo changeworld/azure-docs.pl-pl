@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 804202149234a55de4f7f99b18dc40b8136463a3
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 01/25/2019
+ms.openlocfilehash: e980ec81f66e1045a4d9df33b3392589f5c1a668
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651049"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463756"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Eksportuj bazę danych Azure SQL database do pliku BACPAC
 
@@ -47,7 +47,7 @@ Aby wyeksportować bazę danych za pomocą [witryny Azure portal](https://portal
 
 ![Eksportowanie bazy danych](./media/sql-database-export/database-export.png)
 
-Aby monitorować postęp operacji eksportowania, otwórz stronę serwera logicznego zawierającym bazę danych, eksportowania. Przewiń w dół do **operacji** a następnie kliknij przycisk **Import/Export** historii.
+Aby monitorować postęp operacji eksportowania, otwórz stronę dla serwera bazy danych SQL zawierającym bazę danych, eksportowania. Przewiń w dół do **operacji** a następnie kliknij przycisk **Import/Export** historii.
 
 ![Eksportowanie historii](./media/sql-database-export/export-history.png)
 ![eksportowanie historii stanu](./media/sql-database-export/export-history2.png)
@@ -78,7 +78,7 @@ $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupN
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-Aby sprawdzić stan żądania eksportu, należy użyć [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) polecenia cmdlet. Uruchomiony natychmiast po wykonaniu żądania zwykle zwraca **stanu: W toku**. Po wyświetleniu **stanu: Pomyślnie** Eksportowanie zostało ukończone.
+Aby sprawdzić stan żądania eksportu, należy użyć [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) polecenia cmdlet. Uruchomiony natychmiast po wykonaniu żądania zwykle zwraca **stanu: InProgress**. Po wyświetleniu **stanu: Pomyślnie** Eksportowanie zostało ukończone.
 
 ```powershell
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -97,7 +97,7 @@ $exportStatus
 
 - Informacje na temat długoterminowego przechowywania kopii zapasowych z kopii zapasowej usługi Azure SQL database jako alternatywa wyeksportować bazę danych dla celów archiwizacji, zobacz [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md).
 - Aby poczytać o migracji za pomocą plików BACPAC na blogu SQL Server Customer Advisory Team, zobacz [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migrowanie z programu SQL Server do usługi Azure SQL Database za pomocą plików BACPAC).
-- Aby dowiedzieć się więcej na temat Importowanie pliku BACPAC do bazy danych programu SQL Server, zobacz [zaimportować BACPCAC do bazy danych programu SQL Server](https://msdn.microsoft.com/library/hh710052.aspx).
+- Aby dowiedzieć się więcej na temat Importowanie pliku BACPAC do bazy danych programu SQL Server, zobacz [Importowanie pliku BACPAC do bazy danych programu SQL Server](https://msdn.microsoft.com/library/hh710052.aspx).
 - Aby dowiedzieć się więcej na temat Eksportowanie pliku BACPAC z bazy danych programu SQL Server, zobacz [eksportowania aplikacji warstwy danych](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 - Aby dowiedzieć się więcej o korzystaniu z usługi migracji danych do migracji bazy danych, zobacz [migracji programu SQL Server do usługi Azure SQL Database w trybie offline przy użyciu usługi DMS](../dms/tutorial-sql-server-to-azure-sql.md).
 - Jeśli eksportujesz z programu SQL Server jako prelude do migracji do usługi Azure SQL Database, zobacz [migracji bazy danych programu SQL Server do usługi Azure SQL Database](sql-database-cloud-migrate.md).

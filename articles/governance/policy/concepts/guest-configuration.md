@@ -4,17 +4,17 @@ description: Dowiedz się, jak korzysta z usługi Azure Policy konfiguracji goś
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0a571084819c5dfed3f8d6891b59032ef2eecdd6
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 77d99c90e65647a1f4a4efb07ff5520596fa54cf
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856404"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55295172"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -63,6 +63,16 @@ W poniższej tabeli przedstawiono listę narzędzi lokalnego, używane we wszyst
 |Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
 |Linux|[Program chef InSpec](https://www.chef.io/inspec/)| Język Ruby i Python są instalowane przez rozszerzenie konfiguracji gościa. |
 
+### <a name="validation-frequency"></a>Częstotliwość sprawdzania poprawności
+
+Klient Configuration Gość sprawdza nowej zawartości co 5 minut.
+Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach.
+Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji.
+Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji.
+To powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager.
+Ocena zasad na żądanie pobiera najnowszą wartość z konfiguracji gościa dostawcy zasobów.
+Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
+
 ### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
 W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych na obrazach platformy Azure:
@@ -90,7 +100,7 @@ W poniższej tabeli wymieniono systemy operacyjne, które nie są obsługiwane:
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 
-Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjami zasad **DeployIfNotExists** i **AuditIfNotExists**. **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej za pomocą agenta gościa, konfiguracji i inne składniki do obsługi [narzędzia do sprawdzania poprawności](#validation-tools).
+Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjami zasad **DeployIfNotExists** i **inspekcji**. **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej za pomocą agenta gościa, konfiguracji i inne składniki do obsługi [narzędzia do sprawdzania poprawności](#validation-tools).
 
 **DeployIfNotExists** definicji zasad sprawdza i naprawia następujące elementy:
 
@@ -99,14 +109,14 @@ Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjam
   - Instalowanie najnowszej wersji **Microsoft.GuestConfiguration** rozszerzenia
   - Instalowanie [narzędzia do sprawdzania poprawności](#validation-tools) i zależności, jeśli to konieczne
 
-Gdy **DeployIfNotExists** jest zgodne, **AuditIfNotExists** definicji zasad używa lokalna Weryfikacja narzędzi w celu ustalenia, czy przypisanie przypisanej konfiguracji jest zgodne lub Niezgodne. Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa. Klient przesyła wyniki z rozszerzeniem gościa i udostępnia je za pośrednictwem dostawcy zasobów gościa konfiguracji.
+Gdy **DeployIfNotExists** jest zgodne, **inspekcji** definicji zasad używa lokalna Weryfikacja narzędzi w celu ustalenia, czy przypisanie przypisanej konfiguracji zgodne lub niezgodne. Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa. Klient przesyła wyniki z rozszerzeniem gościa i udostępnia je za pośrednictwem dostawcy zasobów gościa konfiguracji.
 
 Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **complianceStatus** właściwości raportu zgodności w **zgodności** węzła. Aby uzyskać więcej informacji, zobacz [pobierania danych zgodności](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Dla każdej definicji konfiguracji gościa zarówno **DeployIfNotExists** i **AuditIfNotExists** definicje zasad, musi istnieć.
+> Dla każdej definicji konfiguracji gościa zarówno **DeployIfNotExists** i **inspekcji** definicje zasad, musi istnieć.
 
-Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **AuditIfNotExists** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
+Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

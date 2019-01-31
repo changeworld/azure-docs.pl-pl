@@ -9,19 +9,19 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d8c607b5f1d338ca3a2bd3844b26ef51d801c720
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086074"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55473350"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Narzędzia do analizy nauki i dane maszyny
 Maszyn wirtualnych do nauki o danych zawiera bogaty zestaw narzędzi i biblioteki dla usługi machine learning (ML) dostępna w popularnych języków, takich jak Python, R i Julia. 
@@ -32,7 +32,7 @@ Poniżej przedstawiono niektóre narzędzia ML i bibliotek na maszynach wirtualn
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   |   Usługa Azure Machine Learning to usługa w chmurze, który służy do opracowywania i wdrażania modeli uczenia Maszynowego. Możesz śledzić swoje modele, jak tworzenie, szkolenie, skalowanie i zarządzać nimi za pomocą zestawu SDK języka Python. Wdrażanie modeli jako kontenery i uruchamiać je w chmurze, lokalnie lub w usłudze Azure IoT Edge.   |
-| Obsługiwane wersje     | Windows (środowiska conda: usługi Azure ml), systemu Linux (środowiska conda: py36)    |
+| Obsługiwane wersje     | Windows (środowiska conda: Usługi Azure ml), systemu Linux (środowiska conda: py36)    |
 | Typowe zastosowania      | Ogólne platformy uczenia Maszynowego      |
 | Jak jest ona skonfigurowana lub zainstalowane?      |  Zainstalowano z obsługą procesorów GPU   |
 | Jak za pomocą lub uruchomić go      | Jak dla języka Python SDK i platformą Azure. Aktywuj, aby środowiska conda `AzureML` w wersji Windows *lub* do `py36` w wersji systemu Linux.      |

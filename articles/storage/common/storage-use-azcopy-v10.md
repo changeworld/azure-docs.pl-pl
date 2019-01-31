@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
-ms.component: common
-ms.openlocfilehash: 2d0f3292a12505249ebc8594c58234a0c6e81a8a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.subservice: common
+ms.openlocfilehash: a4e115194d7e903edae4b4713c4f65eef9895cbf
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212502"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467122"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Transferowanie danych za pomocą AzCopy v10 (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Narzędzie AzCopy v10 (wersja zapoznawcza) to narzędzie wiersza polecenia nast�
 Pobierz najnowszą wersję zapoznawczą narzędzia AzCopy:
 - [Windows](https://aka.ms/downloadazcopy-v10-windows)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux)
-- [Z systemem MacOS](https://aka.ms/downloadazcopy-v10-mac)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac)
 
 ### <a name="latest-production-version-v81"></a>Najnowsza wersja produkcyjna (w wersji 8.1)
 

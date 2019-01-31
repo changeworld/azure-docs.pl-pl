@@ -6,16 +6,16 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: dea32146c1e00869de43b50823e81853e6543411
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e1796b2cb3efee6ff610f9dade7a10b2c2637bba
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259430"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466187"
 ---
 # <a name="translator-speech-api"></a>Interfejs API tłumaczenia mowy w usłudze Translator
 
@@ -71,18 +71,18 @@ Dane wejściowe audio jest w formacie pliku Audio fali (WAVE lub więcej powszec
 
 |Przesunięcie|Wartość|
 |:---|:---|
-|0 – 3|"RIFF"|
-|4 – 7|0|
-|8 – 11|"WAVE"|
-|12 – 15|"fmt"|
-|16 – 19|16|
+|0 - 3|"RIFF"|
+|4 - 7|0|
+|8 - 11|"WAVE"|
+|12 - 15|"fmt"|
+|16 - 19|16|
 |20 - 21|1|
-|22 – 23|1|
+|22 - 23|1|
 |24 - 27|16000|
-|28 – 31|32000|
+|28 - 31|32000|
 |32 - 33|2|
-|34 – 35|16|
-|36 - 39|"dane"|
+|34 - 35|16|
+|36 - 39|"data"|
 |40 - 43|0|
 
 Należy zauważyć, że rozmiar pliku (w bajtach 4 – 7) i rozmiar "data" (w bajtach 40-43) są ustawione na zero. Scenariusz transmisji strumieniowej, których łączny rozmiar jest nie zawsze są znane z wyprzedzeniem to OK.
@@ -178,17 +178,17 @@ Jeśli aplikacja kliencka zostało zakończone, przesyłanie strumieniowe audio,
 |Autoryzacja|(puste)  |Określa wartość klienta tokenu elementu nośnego. Użyj prefiksu `Bearer` następuje wartość `access_token` wartości zwracanej przez usługę tokenu uwierzytelniania.|nagłówek   |ciąg|
 |OCP-Apim-Subscription-Key|(puste)|Jeśli wymagane `Authorization` nagłówka nie jest określony.|nagłówek|ciąg|
 |access_token|(puste)   |Alternatywny sposób przekazania prawidłowy token dostępu OAuth. Token elementu nośnego znajduje się zwykle z nagłówkiem `Authorization`. Niektóre biblioteki websocket nie zezwalają na kod klienta, aby ustawić nagłówki. W takim przypadku klient może używać `access_token` parametr do przekazania prawidłowy token zapytania. Podczas używania tokenu dostępu na potrzeby uwierzytelniania, jeśli `Authorization` nagłówka nie ustawiono, następnie `access_token` musi być ustawiona. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany. Aby przekazać token klientów należy używać tylko jednej metody.|query|ciąg|
-|klucz subskrypcji|(puste)   |Alternatywny sposób polega na przekazaniu klucza subskrypcji. Niektóre biblioteki websocket nie zezwalają na kod klienta, aby ustawić nagłówki. W takim przypadku klient może używać `subscription-key` zapytania parametr do przekazania klucza ważnej subskrypcji. Jeśli klucz subskrypcji w celu uwierzytelnienia `Ocp-Apim-Subscription-Key` nie ustawiono nagłówka, a następnie należy ustawić klucz subskrypcji. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany. Klientów do przekazania należy używać tylko jedna metoda `subscription key`.|query|ciąg|
-|X ClientTraceId    |(puste)    |Identyfikator GUID generowany przez klienta umożliwia śledzenie żądań. Aby odpowiednie informacje o rozwiązywaniu problemów, klientów należy podać nową wartość z każdym żądaniem i ją.<br/>Zamiast korzystać z nagłówkiem, ta wartość może być przekazywany przy użyciu parametru zapytania `X-ClientTraceId`. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany.|nagłówek|ciąg|
-|Identyfikator korelacji X|(puste)    |Generowane przez klienta identyfikator korelacji wielu kanałów komunikacji. Aby umożliwić rozmowy między użytkownikami można tworzyć wiele sesji tłumaczenia mowy. W taki scenariusz wszystkie sesje tłumaczenia mowy, należy użyć tego samego Identyfikatora korelacji powiązanie kanałów. To ułatwia śledzenie i Diagnostyka. Identyfikator powinna być zgodna: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Zamiast korzystać z nagłówkiem, ta wartość może być przekazywany przy użyciu parametru zapytania `X-CorrelationId`. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany.|nagłówek|ciąg|
+|subscription-key|(puste)   |Alternatywny sposób polega na przekazaniu klucza subskrypcji. Niektóre biblioteki websocket nie zezwalają na kod klienta, aby ustawić nagłówki. W takim przypadku klient może używać `subscription-key` zapytania parametr do przekazania klucza ważnej subskrypcji. Jeśli klucz subskrypcji w celu uwierzytelnienia `Ocp-Apim-Subscription-Key` nie ustawiono nagłówka, a następnie należy ustawić klucz subskrypcji. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany. Klientów do przekazania należy używać tylko jedna metoda `subscription key`.|query|ciąg|
+|X-ClientTraceId    |(puste)    |Identyfikator GUID generowany przez klienta umożliwia śledzenie żądań. Aby odpowiednie informacje o rozwiązywaniu problemów, klientów należy podać nową wartość z każdym żądaniem i ją.<br/>Zamiast korzystać z nagłówkiem, ta wartość może być przekazywany przy użyciu parametru zapytania `X-ClientTraceId`. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany.|nagłówek|ciąg|
+|X-CorrelationId|(puste)    |Generowane przez klienta identyfikator korelacji wielu kanałów komunikacji. Aby umożliwić rozmowy między użytkownikami można tworzyć wiele sesji tłumaczenia mowy. W taki scenariusz wszystkie sesje tłumaczenia mowy, należy użyć tego samego Identyfikatora korelacji powiązanie kanałów. To ułatwia śledzenie i Diagnostyka. Identyfikator powinna być zgodna: `^[a-zA-Z0-9-_.]{1,64}$`<br/>Zamiast korzystać z nagłówkiem, ta wartość może być przekazywany przy użyciu parametru zapytania `X-CorrelationId`. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany.|nagłówek|ciąg|
 |X ClientVersion|(puste)    |Identyfikuje wersję aplikacji klienckiej. Przykład: "2.1.0.123".<br/>Zamiast korzystać z nagłówkiem, ta wartość może być przekazywany przy użyciu parametru zapytania `X-ClientVersion`. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany.|nagłówek|ciąg|
-|X OsPlatform|(puste)   |Określa nazwę i wersję systemu operacyjnego, który aplikacja kliencka jest uruchomiona na. Przykłady: "Android 5.0", "iOs 8.1.3", "Windows 8.1".<br/>Zamiast korzystać z nagłówkiem, ta wartość może być przekazywany przy użyciu parametru zapytania `X-OsPlatform`. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany.|nagłówek|ciąg|
+|X-OsPlatform|(puste)   |Określa nazwę i wersję systemu operacyjnego, który aplikacja kliencka jest uruchomiona na. Przykłady: "Android 5.0", "iOs 8.1.3", "Windows 8.1".<br/>Zamiast korzystać z nagłówkiem, ta wartość może być przekazywany przy użyciu parametru zapytania `X-OsPlatform`. Jeśli parametr zapytania i nagłówków są skonfigurowane, parametr zapytania jest ignorowany.|nagłówek|ciąg|
 
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
-|Kod stanu HTTP|Przyczyna|Model odpowiedzi|Nagłówki|
+|Kod stanu HTTP|Przyczyna|Response Model|Nagłówki|
 |:--|:--|:--|:--|
-|101    |Uaktualnianie protokołu WebSocket.|Model Przykładowa wartość <br/> obiekt {}|Identyfikator żądania X<br/>Wartość identyfikowanie żądania na potrzeby rozwiązywania problemów.<br/>ciąg|
+|101    |Uaktualnianie protokołu WebSocket.|Model Przykładowa wartość <br/> obiekt {}|X-RequestId<br/>Wartość identyfikowanie żądania na potrzeby rozwiązywania problemów.<br/>ciąg|
 |400    |Nieprawidłowe żądanie. Sprawdź parametry wejściowe, aby upewnić się, że są one prawidłowe. Obiekt odpowiedzi zawiera bardziej szczegółowy opis błędu.|||
 |401    |Bez autoryzacji. Upewnij się, że poświadczenia są, czy są prawidłowe i czy subskrypcja Azure rynek danych jest w dobrym stanie, za pomocą dostępnego salda.|||
 |500    |Wystąpił błąd. Jeśli błąd będzie się powtarzać, raportowania identyfikator śledzenia klienta (X-ClientTraceId) lub identyfikator (identyfikator żądania X) żądania.|||

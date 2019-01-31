@@ -9,18 +9,22 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 12/06/2018
+ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 59af9bef586393726222e8d4d306ea806e31efe3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a9c26a2a0eaf9c2669a71cdca729a6e64fe5cd5c
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252085"
+ms.locfileid: "55301309"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Wdrażanie modelu jako usługi sieci web na FPGA za pomocą usługi Azure Machine Learning
 
-Model można wdrożyć jako usługę sieci web, na [pola Tablice bramek programowane (układów FPGA)](concept-accelerate-with-fpgas.md).  Za pomocą układów FPGA zapewnia wnioskowania niezwykle małych opóźnień, nawet w przypadku rozmiar jednej partii.   
+Model można wdrożyć jako usługę sieci web, na [pola Tablice bramek programowane (układów FPGA)](concept-accelerate-with-fpgas.md).  Za pomocą układów FPGA zapewnia wnioskowania niezwykle małych opóźnień, nawet w przypadku rozmiar jednej partii.  Obecnie dostępne są następujące modele:
+  - ResNet 50
+  - ResNet 152
+  - DenseNet-121
+  - VGG-16   
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -34,10 +38,20 @@ Model można wdrożyć jako usługę sieci web, na [pola Tablice bramek programo
 
     ```shell
     pip install --upgrade azureml-sdk[contrib]
-    ```  
+    ```
+
+  - Obecnie tylko tensorflow wersji < = 1.10 jest obsługiwany, więc go zainstalować po zakończeniu wszystkich innych instalacji:
+
+    ```shell
+    pip install "tensorflow==1.10"
+    ```
+
+### <a name="get-the-notebook"></a>Pobieranie notesu
+
+Dla Twojej wygody ten samouczek jest dostępny jako notes Jupyter. Wykonaj kod tutaj lub wykonywania [notesu szybkiego startu](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb).
 
 ## <a name="create-and-deploy-your-model"></a>Tworzenie i wdrażanie modelu
-Tworzenie potoku w celu wstępnego przetworzenia obrazu wejściowego cechowanie go za pomocą siecią ResNet-50 na FPGA, a następnie uruchom funkcji, za pośrednictwem classifer skonfigurowanych pod kątem w zestawie danych sieci ImageNet.
+Tworzenie potoku w celu wstępnego przetworzenia obrazu wejściowego cechowanie go za pomocą siecią ResNet-50 na FPGA, a następnie uruchom funkcji, za pomocą skonfigurowanych pod kątem w zestawie danych sieci ImageNet klasyfikatora.
 
 Postępuj zgodnie z instrukcjami, aby:
 
@@ -69,7 +83,7 @@ print(image_tensors.shape)
 Inicjowanie modelu i Pobierz punkt kontrolny TensorFlow wykonywanie kwantyzowanych wersji ResNet50 ma być używany jako featurized.
 
 ```python
-from azureml.contrib.brainwave.models import QuantizedResnet50, Resnet50
+from azureml.contrib.brainwave.models import QuantizedResnet50
 model_path = os.path.expanduser('~/models')
 model = QuantizedResnet50(model_path, is_frozen = True)
 feature_tensor = model.import_graph_def(image_tensors)
@@ -82,11 +96,11 @@ print(feature_tensor.shape)
 Po zapoznaniu to klasyfikatora na zestawie danych sieci ImageNet.
 
 ```python
-classifier_input, classifier_output = Resnet50.get_default_classifier(feature_tensor, model_path)
+classifier_output = model.get_default_classifier(feature_tensor)
 ```
 
 ### <a name="create-service-definition"></a>Tworzenie definicji usługi
-Teraz, gdy masz zdefiniowanego wstępnego przetwarzania obrazu, featurized i klasyfikatora, który jest uruchamiany w usłudze, można utworzyć definicji usługi. Definicja usługi to zbiór plików wygenerowany na podstawie modelu, który jest wdrożony w usłudze FPGA. Definicja usługi składa się z potoku. Potok jest serię etapów, które są uruchamiane w kolejności.  Etapy TensorFlow, Keras etapów i etapy BrainWave są obsługiwane.  Etapy są uruchamiane w kolejności od usługi, z danymi wyjściowymi wprowadzania danych wejściowych każdego etapu w kolejnym etapie.
+Skoro zdefiniowano wstępnego przetwarzania obrazu, featurized i klasyfikatora, który jest uruchamiany w usłudze, można utworzyć definicji usługi. Definicja usługi to zbiór plików wygenerowany na podstawie modelu, który jest wdrożony w usłudze FPGA. Definicja usługi składa się z potoku. Potok jest serię etapów, które są uruchamiane w kolejności.  Etapy TensorFlow, Keras etapów i etapy BrainWave są obsługiwane.  Etapy są uruchamiane w kolejności od usługi, z danymi wyjściowymi każdy z etapów staje się dane wejściowe w kolejnym etapie.
 
 Aby utworzyć etapu TensorFlow, określ sesję zawierający wykres (w tym przypadku wykres domyślne są używane) i dane wejściowe i wyjściowe tensors na tym etapie.  Te informacje jest używany, aby zapisać wykres, dzięki czemu mogą być uruchamiane w usłudze.
 
@@ -94,13 +108,13 @@ Aby utworzyć etapu TensorFlow, określ sesję zawierający wykres (w tym przypa
 from azureml.contrib.brainwave.pipeline import ModelDefinition, TensorflowStage, BrainWaveStage
 
 save_path = os.path.expanduser('~/models/save')
-model_def_path = os.path.join(save_path, 'service_def.zip')
+model_def_path = os.path.join(save_path, 'model_def.zip')
 
 model_def = ModelDefinition()
 with tf.Session() as sess:
     model_def.pipeline.append(TensorflowStage(sess, in_images, image_tensors))
     model_def.pipeline.append(BrainWaveStage(sess, model))
-    model_def.pipeline.append(TensorflowStage(sess, classifier_input, classifier_output))
+    model_def.pipeline.append(TensorflowStage(sess, feature_tensor, classifier_output))
     model_def.save(model_def_path)
     print(model_def_path)
 ```
@@ -129,7 +143,7 @@ except WebserviceException:
     image_config = BrainwaveImage.image_configuration()
     deployment_config = BrainwaveWebservice.deploy_configuration()
     service = Webservice.deploy_from_model(ws, service_name, [registered_model], image_config, deployment_config)
-    service.wait_for_deployment(true)
+    service.wait_for_deployment(True)
 ```
 
 ### <a name="test-the-service"></a>Testowanie usługi

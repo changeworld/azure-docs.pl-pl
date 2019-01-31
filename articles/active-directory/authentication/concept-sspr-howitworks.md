@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: c2b2ba0e238887531297f6ac2a486d42d885794d
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 41bdc2497ff19f0033a5253814771072b47eef62
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079090"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475190"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -50,7 +50,7 @@ Strona resetowania odczytu przez następujące kroki, aby dowiedzieć się więc
        * Jeśli nie skonfigurowano metod uwierzytelniania, użytkownik jest zalecana do kontaktowania się z do zresetowania swojego hasła administratora.
      * Jeśli zasady są wymagane dwie metody, następnie gwarantuje, że użytkownik ma odpowiednie dane, które są zdefiniowane dla co najmniej dwóch metod uwierzytelniania, korzystając z zasadami administratora.
        * Jeśli nie skonfigurowano metod uwierzytelniania, użytkownik jest zalecana do kontaktowania się z do zresetowania swojego hasła administratora.
-     * Jeśli roli administratora platformy Azure jest przypisany do użytkownika silnego hasła bramy dwie zasady są wymuszane. Więcej informacji na temat tych zasad można znaleźć w sekcji [Administrator zresetować różnice zasad](concept-sspr-policy.md#administrator-reset-policy-differences).
+     * Jeśli roli administratora platformy Azure jest przypisany do użytkownika, silnego hasła bramy dwie zasady są wymuszane. Więcej informacji na temat tych zasad można znaleźć w sekcji [Administrator zresetować różnice zasad](concept-sspr-policy.md#administrator-reset-policy-differences).
    * Sprawdza, czy hasło użytkownika jest zarządzane lokalnie (federacyjnych, przekazywanego uwierzytelniania lub skrótu hasła synchronizowane).
      * Jeśli wdrożono zapisywanie zwrotne hasła są zarządzane lokalnie, następnie użytkownik będzie mógł przejść do uwierzytelniania i zresetować swoje hasło.
      * Jeśli nie wdrożono zapisywanie zwrotne hasła są zarządzane lokalnie, użytkownik jest proszony o administratora do zresetowania swojego hasła.
@@ -84,7 +84,7 @@ Jeśli użytkownik nie ma zarejestrowanych metod wymagane minimalne, zobaczy str
 
 #### <a name="mobile-app-and-sspr-preview"></a>Aplikacja mobilna i samoobsługowego resetowania HASEŁ (wersja zapoznawcza)
 
-Korzystając z aplikacji mobilnych, takie jak aplikacja Microsoft Authenticator jako metodę do resetowania hasła, należy pamiętać o następujących czynności:
+Korzystając z aplikacji mobilnych, takie jak aplikacja Microsoft Authenticator jako metodę do resetowania haseł, których trzeba wiedzieć, z następującymi zastrzeżeniami:
 
 * Gdy administratorzy wymagają jedną z metod można użyć do resetowania hasła, kod weryfikacyjny jest jedyną dostępną opcją.
 * W przypadku administratorów wymagają dwóch metod być używane, aby zresetować hasło, użytkownicy będą mogli korzystać **albo** powiadomień **lub** kod weryfikacyjny, oprócz innych włączone metody.
@@ -119,7 +119,7 @@ Przykład:
 
 ### <a name="require-users-to-register-when-they-sign-in"></a>Wymagaj od użytkowników rejestrowania się podczas logowania
 
-Włączenie tej opcji wymaga od użytkownika ukończyć rejestracji resetowania hasła, po zalogowaniu się do wszystkich aplikacji korzystających z usługi Azure AD. Obejmuje to następujące aplikacje:
+Włączenie tej opcji wymaga od użytkownika ukończyć rejestracji resetowania hasła, po zalogowaniu się do wszystkich aplikacji korzystających z usługi Azure AD. Ten przepływ pracy zawiera następujące aplikacje:
 
 * Office 365
 * Azure Portal
@@ -132,7 +132,7 @@ Gdy wymagają rejestracji jest wyłączone, użytkownicy będą mogli ręcznie z
 > [!NOTE]
 > Użytkownicy mogą odrzucić portalu rejestracji resetowania haseł, wybierając **anulować** lub przez zamknięcie okna. Jednak użytkownicy są monitowani o rejestru, każdym logowaniu do czasu zakończenia rejestracji.
 >
-> Nie przerywa połączenie użytkownika, jeśli nastąpiło już zalogowanie w.
+> Jeśli nastąpiło już zalogowanie w tym przerwania nie zostanie przerwane połączenie użytkownika.
 
 ### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Ustaw liczbę dni, zanim użytkownicy zostaną poproszeni o ponowne potwierdzenie swoich informacji uwierzytelniania
 
@@ -169,7 +169,7 @@ Ta strona zawiera szybkie stan lokalnego klienta zapisywania zwrotnego, wyświet
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Zapisywać zwrotnie hasła do katalogu lokalnego
 
-Ten formant określa, czy funkcja zapisywania zwrotnego haseł jest włączony dla tego katalogu. Jeśli funkcję zapisywania zwrotnego jest włączona, wskazuje stan usługi zapisywania zwrotnego w środowisku lokalnym. Jest to przydatne, jeśli chcesz tymczasowo wyłączyć funkcję zapisywania zwrotnego haseł, bez konieczności ponownie skonfigurować program Azure AD Connect.
+Ten formant określa, czy funkcja zapisywania zwrotnego haseł jest włączony dla tego katalogu. Jeśli funkcję zapisywania zwrotnego jest włączona, wskazuje stan usługi zapisywania zwrotnego w środowisku lokalnym. Ten formant jest przydatne, jeśli chcesz tymczasowo wyłączyć funkcję zapisywania zwrotnego haseł, bez konieczności ponownie skonfigurować program Azure AD Connect.
 
 * Jeśli przełącznik jest równa **tak**, następnie włączone zapisywanie zwrotne, i federacyjnych, przekazywanego uwierzytelniania lub użytkownicy synchronizację skrótów haseł mogą resetować swoje hasła.
 * Jeśli przełącznik jest równa **nie**, zapisywania zwrotnego jest wyłączone i nie będą mogli resetować swoje hasła uwierzytelniania federacyjnego, przekazywania lub użytkownikom synchronizację skrótów haseł.
@@ -180,6 +180,10 @@ Ten formant wskazuje, czy użytkownicy odwiedzający portal resetowania haseł n
 
 * Jeśli ustawiona na **tak**, a następnie użytkownicy otrzymują możliwość zresetowania swojego hasła i odblokowania konta lub odblokowania konta bez resetowania hasła.
 * Jeśli ustawiono **nie**, następnie użytkownicy są tylko mogli przeprowadzić resetowanie hasła połączone i operacji odblokowania konta.
+
+### <a name="on-premises-active-directory-password-filters"></a>Filtry hasła usługi Active Directory w środowisku lokalnym
+
+Samoobsługowe haseł usługi Azure AD resetowania wykonuje odpowiednik inicjowanych przez administratora resetowania haseł w usłudze Active Directory. Jeśli używasz filtru haseł innych firm do wymuszania reguł niestandardowych hasła i wymagają, że ten filtr haseł jest sprawdzany w trakcie usługi Azure AD, Samoobsługowe resetowanie haseł, upewnij się, że rozwiązanie filtr hasło innej firmy jest skonfigurowany do zastosowania w hasło administratora zresetować scenariusz. [Usługa Azure AD ochrona za pomocą hasła usługi Active Directory systemu Windows Server](concept-password-ban-bad-on-premises.md) jest domyślnie obsługiwany.
 
 ## <a name="password-reset-for-b2b-users"></a>Resetowanie haseł dla użytkowników B2B
 
