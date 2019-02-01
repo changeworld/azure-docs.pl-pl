@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: f4f35156f9b2b356e3e47695725351562af9796f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55501178"
+documentType: LandingData
+title: Dokumentacja usługi Azure Advisor
+metadata:
+  title: Dokumentacja usługi Azure Advisor | Microsoft Docs
+  description: 
+  services: advisor
+  author: rboucher
+  layout: LandingPage
+  ms.service: advisor
+  ms.tgt_pltfrm: na
+  ms.topic: landing-page
+  ms.date: 02/01/2019
+  ms.author: robb
+abstract:
+  description: Azure Advisor to spersonalizowany konsultant w zakresie chmury ułatwiający stosowanie najlepszych rozwiązań w celu zoptymalizowania wdrożeń platformy Azure. Analizuje on konfigurację zasobów i dane telemetryczne użycia. Następnie zaleca rozwiązania ułatwiające zwiększenie wydajności, poprawę bezpieczeństwa oraz zwiększenie wysokiej dostępności zasobów, a także szuka możliwości zmniejszenia ogólnych wydatków związanych z platformą Azure.
+sections:
+- title: 
+  items:
+  - type: paragraph
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/advisor.svg
+      text: Informacje o usłudze Azure Advisor
+      href: /azure/advisor/advisor-overview
+    - image:
+        src: media/index/get-started.svg
+      text: Wprowadzenie do usługi Azure Advisor
+      href: /azure/advisor/advisor-get-started
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/rest/api/advisor/">Dokumentacja interfejsu API REST</a></p>
+    - title: Wiersz polecenia
+      html: <p><a href="https://docs.microsoft.com/cli/azure/advisor?view=azure-cli-latest">Wspólny interfejs języka (CLI)</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/az.advisor/?view=azps-1.2.0">Azure PowerShell</a></p>

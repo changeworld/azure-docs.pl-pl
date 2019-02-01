@@ -98,7 +98,7 @@ items:
     items:
     - name: Omówienie
       href: partitioning-overview.md
-    - name: Partycje logiczne
+    - name: Partycjonowanie i skalowanie w poziomie
       href: partition-data.md
     - name: Tworzenie syntetycznego klucza partycji
       href: synthetic-partition-keys.md
@@ -122,7 +122,7 @@ items:
       items:
       - name: Omówienie
         href: index-overview.md
-      - name: Zasady indeksowania
+      - name: Zasady indeksów
         href: index-policy.md
       - name: Typy indeksów
         href: index-types.md
@@ -136,13 +136,13 @@ items:
         href: read-change-feed.md
       - name: Procesor zestawienia zmian
         href: change-feed-processor.md
-      - name: Zestawienie zmian w usłudze Azure Functions
+      - name: Wyzwalanie funkcji usługi Azure Functions
         href: change-feed-functions.md
     - name: Czas wygaśnięcia
       href: time-to-live.md
     - name: Ograniczenia unikatowych kluczy
       href: unique-keys.md
-    - name: Transakcje i optymistyczna współbieżność
+    - name: Transakcje i optymistyczna kontrola współbieżności
       href: database-transactions-optimistic-concurrency.md
   - name: Programowanie po stronie serwera
     items:
@@ -168,9 +168,9 @@ items:
       href: optimize-cost-reads-writes.md
     - name: Optymalizacja kosztów korzystania z wielu regionów
       href: optimize-cost-regions.md
-    - name: Optymalizacja obciążeń tworzenia i testowania
+    - name: Optymalizacja kosztów projektowania i testowania
       href: optimize-dev-test.md
-    - name: Optymalizacja z użyciem pojemności zarezerwowanej
+    - name: Optymalizacja kosztów z użyciem pojemności zarezerwowanej
       href: cosmos-db-reserved-capacity.md
   - name: Bezpieczeństwo
     items:
@@ -186,7 +186,7 @@ items:
       href: vnet-service-endpoint.md
   - name: Gotowość przedsiębiorstwa
     items:
-    - name: Tworzenie i przywracanie kopii zapasowych w trybie online
+    - name: Tworzenie kopii zapasowych w trybie online i ich przywracanie na żądanie
       href: online-backup-and-restore.md
     - name: Zgodność
       href: compliance.md
@@ -467,19 +467,19 @@ items:
   expanded: true
 - name: Przewodniki z instrukcjami
   items:
-  - name: Zarządzanie kontem bazy danych
+  - name: Zarządzanie kontem usługi Azure Cosmos
     href: how-to-manage-database-account.md
   - name: Dystrybucja globalna
     items:
-    - name: Zarządzanie spójnością
+    - name: Zarządzanie poziomami spójności
       href: how-to-manage-consistency.md
-    - name: Zarządzanie konfliktami
+    - name: Konfigurowanie zasad rozwiązywania konfliktów
       href: how-to-manage-conflicts.md
   - name: Aprowizowana przepływność
     items:
-    - name: Aprowizacja przepływności kontenera
+    - name: Aprowizowanie przepływności w kontenerze
       href: how-to-provision-container-throughput.md
-    - name: Aprowizacja przepływności bazy danych
+    - name: Aprowizowanie przepływności w bazie danych
       href: how-to-provision-database-throughput.md
   - name: Praca z kontenerami i elementami
     items:
@@ -489,9 +489,13 @@ items:
       href: how-to-query-container.md
     - name: Konfigurowanie czasu wygaśnięcia
       href: how-to-time-to-live.md
+    - name: Praca z danymi za pomocą Eksploratora usługi Azure Storage
+      href: storage-explorer.md
+    - name: Praca z danymi za pomocą eksploratora usługi Azure Cosmos
+      href: data-explorer.md
     - name: Indeksowanie
       items:
-      - name: Konfigurowanie indeksowania
+      - name: Zarządzanie indeksowaniem
         href: how-to-manage-indexing-policy.md
   - name: Bezpieczeństwo
     items:
@@ -501,22 +505,18 @@ items:
       href: how-to-configure-vnet-service-endpoint.md
     - name: Konfigurowanie współużytkowania zasobów między źródłami (CORS, Cross Origin Resource Sharing)
       href: how-to-configure-cross-origin-resource-sharing.md
-    - name: Zabezpieczanie za pomocą usługi Key Vault
+    - name: Zabezpieczanie kluczy usługi Azure Cosmos przy użyciu usługi Key Vault
       href: access-secrets-from-keyvault.md
   - name: Gotowość przedsiębiorstwa
     items:
     - name: Przywracanie danych z kopii zapasowej
       href: how-to-backup-and-restore.md
-  - name: Zarządzanie
+  - name: Zarządzanie zasobami usługi Azure Cosmos DB
     items:
     - name: Zarządzanie przy użyciu programu PowerShell
       href: manage-account-with-powershell.md
     - name: Zarządzanie przy użyciu interfejsu wiersza polecenia platformy Azure
       href: manage-with-cli.md
-    - name: Zarządzanie przy użyciu Eksploratora usługi Storage
-      href: storage-explorer.md
-    - name: Zarządzanie za pomocą Eksploratora danych
-      href: data-explorer.md
   - name: Rejestrowanie
     items:
     - name: Rejestrowanie diagnostyczne
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 72d6169090749f81025dabed2b919e6c0a1dc70f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094482"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464878"

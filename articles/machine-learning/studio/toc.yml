@@ -15,8 +15,6 @@ items:
   - name: Często zadawane pytania
     displayName: FAQ
     href: faq.md
-  - name: Co nowego?
-    href: whats-new.md
   expanded: true
 - name: Samouczki
   items:
@@ -41,8 +39,6 @@ items:
     - name: 6 — Uzyskiwanie dostępu do usługi internetowej
       displayName: consume
       href: walkthrough-6-access-web-service.md
-  - name: Wprowadzenie do języka R
-    href: r-quickstart.md
 - name: Przykłady
   items:
   - name: Dostępne zestawy danych
@@ -120,6 +116,8 @@ items:
         href: debug-models.md
     - name: Używanie języków R i Python
       items:
+      - name: Wprowadzenie do języka R
+        href: r-quickstart.md
       - name: Wykonywanie skryptów w języku R
         href: extend-your-experiment-with-r.md
       - name: Tworzenie niestandardowych modułów języka R
@@ -208,21 +206,25 @@ items:
     href: /rest/api/machinelearning
 - name: Zasoby
   items:
+  - name: Aktualizacje usług
+    href: https://azure.microsoft.com/updates/?product=machine-learning-studio
+  - name: Uzyskiwanie pomocy technicznej
+    href: support-aml-studio.md
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
+  - name: Dostępność regionalna
+    href: https://azure.microsoft.com/regions/services/
   - name: Cennik
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Przewodnik dewelopera języka R
     href: ../r-developers-guide.md
-  - name: Niestandardowe sieci neuronowe w języku Net#
+  - name: Niestandardowe sieci neuronowe (Net#)
     href: azure-ml-netsharp-reference-guide.md
-  - name: Uzyskiwanie pomocy technicznej
-    href: support-aml-studio.md
   - name: Porównanie naszych produktów do uczenia maszynowego
     href: ../service/overview-more-machine-learning.md
-ms.openlocfilehash: 12fa71315c1cb43570505d2428804f4a5348a266
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 27cd57a52b80006482f50f96120e8eaf8a8cb00e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156092"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512197"

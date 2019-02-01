@@ -5,6 +5,9 @@ items:
   items:
   - name: Czym jest funkcja wyszukiwania obrazów Bing?
     href: overview.md
+  - name: Porównanie interfejsów API wyszukiwania Bing
+    href: ../Bing-Web-Search/bing-api-comparison.md
+    maintainContext: true
   expanded: true
 - name: Przewodniki Szybki start
   items:
@@ -84,6 +87,9 @@ items:
       href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/imagesearch?view=azure-node-latest
     - name: Przejdź
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/imagesearch
+  - name: Wymagania dotyczące użycia i wyświetlania Bing
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: Zasoby
   items:
   - name: Często zadawane pytania
@@ -108,13 +114,11 @@ items:
     href: image-search-endpoint.md
   - name: Obsługa języków i regionów
     href: language-support.md
-  - name: Wymagania dotyczące użycia i wyświetlania
-    href: UseAndDisplayRequirements.md
   - name: Dane analityczne na potrzeby interfejsu API wyszukiwania obrazów Bing
     href: bing-image-stats.md
-ms.openlocfilehash: d3c8f0ec2c3c4578138a7acbc2a8708ffd86040f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0dce6494fb86f32e86e280d7e9faf701d532cf32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791017"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509732"

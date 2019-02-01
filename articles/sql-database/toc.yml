@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: Usługa SQL Database
   items:
-  - name: Co to jest SQL DB
+  - name: Co to jest SQL Database
     href: sql-database-technical-overview.md
   - name: Wybierz wersję języka SQL dla platformy Azure
     href: sql-database-paas-vs-sql-server-iaas.md
@@ -21,7 +21,7 @@ items:
       href: sql-database-managed-instance-get-started.md
   - name: Konfigurowanie
     items:
-    - name: Reguła zapory serwera logicznego
+    - name: Reguły zapory serwera usługi SQL Database
       href: sql-database-get-started-portal-firewall.md
     - name: Połączenie maszyny wirtualnej klienta z wystąpieniem zarządzanym
       href: sql-database-managed-instance-configure-vm.md
@@ -75,7 +75,7 @@ items:
       href: sql-database-design-first-database-csharp.md
   - name: Migrowanie do usługi Azure SQL Database
     items:
-    - name: Migrowanie do pojedynczej bazy danych przy użyciu usługi DMS
+    - name: Migrowanie do pojedynczej bazy danych lub bazy danych w puli przy użyciu usługi DMS
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: Migrowanie do wystąpienia zarządzanego przy użyciu usługi DMS
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
@@ -115,11 +115,11 @@ items:
     items:
     - name: Omówienie
       href: sql-database-service-tiers-general-purpose-business-critical.md
-    - name: Ogólne przeznaczenie/Standardowa
+    - name: Warstwy usług Ogólnego przeznaczenia/Standardowa
       href: sql-database-service-tier-general-purpose.md
-    - name: Krytyczne dla działania firmy/Premium
+    - name: Warstwy usług Krytyczne dla działania firmy/Premium
       href: sql-database-service-tier-business-critical.md
-    - name: Hiperskalowanie
+    - name: Warstwa usługi hiperskalowania
       href: sql-database-service-tier-hyperscale.md
     - name: Często zadawane pytania o hiperskalowanie
       href: sql-database-service-tier-hyperscale-faq.md
@@ -127,36 +127,40 @@ items:
     items:
     - name: Omówienie pojedynczych baz danych
       href: sql-database-single-index.yml
-    - name: Dokumentacja interfejsu API zarządzania
+    - name: Serwery usługi SQL Database
+      items:
+      - name: Omówienie serwera bazy danych
+        href: sql-database-servers.md
+      - name: Limity zasobów serwera bazy danych
+        href: sql-database-resource-limits-database-server.md
+    - name: Zasoby pojedynczej bazy danych
+      items:
+      - name: Limity zasobów na podstawie rdzeni wirtualnych
+        href: sql-database-vcore-resource-limits-single-databases.md
+      - name: Limity zasobów na podstawie jednostek DTU
+        href: sql-database-dtu-resource-limits-single-databases.md
+      - name: Skalowanie zasobów
+        href: sql-database-single-database-scale.md
+    - name: Tworzenie serwerów i baz danych oraz zarządzanie nimi
       href: sql-database-single-databases-manage.md
-    - name: Serwery logiczne
-      items:
-      - name: Tworzenie i zarządzanie
-        href: sql-database-logical-servers.md
-      - name: Limity zasobów
-        href: sql-database-resource-limits-logical-server.md
-      - name: Architektura łączności
-        href: sql-database-connectivity-architecture.md
+    - name: Architektura łączności
+      href: sql-database-connectivity-architecture.md
+    - name: Różnice w języku T-SQL
+      href: sql-database-transact-sql-information.md
+  - name: Pule elastyczne
+    items:
     - name: Pule elastyczne
+      href: sql-database-elastic-pool.md
+    - name: Zasoby elastycznej puli
       items:
-      - name: Pule elastyczne
-        href: sql-database-elastic-pool.md
-      - name: Tworzenie i zarządzanie
-        href: sql-database-elastic-pool-manage.md
       - name: Limity zasobów na podstawie rdzeni wirtualnych
         href: sql-database-vcore-resource-limits-elastic-pools.md
       - name: Limity zasobów na podstawie jednostek DTU
         href: sql-database-dtu-resource-limits-elastic-pools.md
       - name: Skalowanie zasobów
         href: sql-database-elastic-pool-scale.md
-    - name: Limity zasobów na podstawie rdzeni wirtualnych
-      href: sql-database-vcore-resource-limits-single-databases.md
-    - name: Limity zasobów na podstawie jednostek DTU
-      href: sql-database-dtu-resource-limits-single-databases.md
-    - name: Skalowanie zasobów
-      href: sql-database-single-database-scale.md
-    - name: Różnice w języku T-SQL
-      href: sql-database-transact-sql-information.md
+    - name: Tworzenie i zarządzanie
+      href: sql-database-elastic-pool-manage.md
   - name: Wystąpienia zarządzane
     items:
     - name: Omówienie wystąpień zarządzanych
@@ -209,9 +213,9 @@ items:
       href: sql-database-security-index.yml
     - name: Możliwości zabezpieczeń
       href: sql-database-security-overview.md
-    - name: Zaawansowana ochrona przed zagrożeniami
+    - name: Advanced Data Security
       items:
-      - name: Zaawansowana ochrona przed zagrożeniami
+      - name: Advanced Data Security
         href: sql-advanced-threat-protection.md
       - name: Odnajdowanie i klasyfikacja danych
         href: sql-database-data-discovery-and-classification.md
@@ -561,7 +565,7 @@ items:
           href: saas-tenancy-welcome-wingtip-tickets-app.md
         - name: Wskazówki ogólne
           href: saas-tenancy-wingtip-app-guidance-tips.md
-        - name: Aplikacja autonomiczna
+        - name: Pojedyncza aplikacja
           items:
           - name: Wdrażanie aplikacji przykładowej
             href: saas-standaloneapp-get-started-deploy.md
@@ -696,9 +700,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalowywanie zadania elastycznego (przestarzałe)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: b69adc5f54e2566f62049225ccb0fc438a33ca6e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226812"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471032"

@@ -5,6 +5,9 @@ items:
   items:
   - name: Co to jest interfejs API wyszukiwania wiadomości Bing?
     href: search-the-web.md
+    maintainContext: true
+  - name: Porównanie interfejsów API wyszukiwania Bing
+    href: ../Bing-Web-Search/bing-api-comparison.md
   expanded: true
 - name: Przewodniki Szybki start
   items:
@@ -42,8 +45,6 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search
 - name: Przewodniki z instrukcjami
   items:
-  - name: Wymagania dotyczące użycia i wyświetlania
-    href: UseAndDisplayRequirements.md
   - name: Obsługa wyróżniania trafień
     href: hit-highlighting.md
   - name: Dzielenie wiadomości na strony
@@ -80,6 +81,9 @@ items:
       href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest
     - name: Przejdź
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch
+  - name: Wymagania dotyczące użycia i wyświetlania
+    href: ../Bing-Web-Search/use-display-requirements.md
+    maintainContext: true
 - name: Zasoby
   items:
   - name: Cennik
@@ -104,9 +108,9 @@ items:
     href: language-support.md
   - name: Dane analityczne na potrzeby interfejsu API wyszukiwania wiadomości Bing
     href: bing-news-stats.md
-ms.openlocfilehash: ed425db68d5c617f6442e9757531f02b0ab1cd38
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 01abbc899166a578f03a778956627c656eea445f
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266216"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506111"
