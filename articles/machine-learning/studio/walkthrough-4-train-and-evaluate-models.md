@@ -1,8 +1,21 @@
 ---
-Tytuł: "Krok 4: Szkolenie modeli do analizy predykcyjnej titleSuffix: Opis usługi Azure Machine Learning Studio: "Krok 4 programowanie przewodnik rozwiązania do analizy predykcyjnej: Nauczanie, ocena i ocena wielu modeli w usłudze Azure Machine Learning Studio. "
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 03/23/2017
+title: 'Krok 4: Szkolenie modeli do analizy predykcyjnej'
+titleSuffix: Azure Machine Learning Studio
+description: 'Krok 4 programowanie przewodnik rozwiązania do analizy predykcyjnej: Szkolenie, ocena i ocenianie wielu modeli w usłudze Azure Machine Learning Studio.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 03/23/2017
+ms.openlocfilehash: 50b0a6276d34567651da2cb3e76f0686e8b10fea
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511568"
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Przewodnik, krok 4 Nauczanie i ocena modeli do analizy predykcyjnej w usłudze Machine Learning Studio
 Ten temat zawiera czwartym kroku tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)

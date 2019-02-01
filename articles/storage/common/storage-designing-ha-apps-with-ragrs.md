@@ -1,20 +1,20 @@
 ---
-title: Projektowanie wysoko dostępnych aplikacji przy użyciu usługi Azure Storage geograficznie nadmiarowy dostęp do odczytu (RA-GRS) | Dokumentacja firmy Microsoft
+title: Projektowanie Aaplications o wysokiej dostępności przy użyciu magazynu geograficznie nadmiarowego dostęp do odczytu (RA-GRS) | Dokumentacja firmy Microsoft
 description: Jak używać magazynu Azure RA-GRS architektury wystarczająco elastyczny, aby obsłużyć awarie aplikacji o wysokiej dostępności.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454947"
+ms.locfileid: "55512248"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS
 
@@ -43,9 +43,7 @@ Pamiętać o tych kluczowych zagadnieniach podczas projektowania aplikacji w prz
 
 * Biblioteki klienta usługi Storage służy do interakcji z danymi w regionie podstawowym lub pomocniczym. Można również wykonać przekierowanie liczbę żądań odczytu automatycznie do regionu pomocniczego, jeśli upłynie limit czasu odczytu żądania do regionu podstawowego.
 
-* W przypadku poważnym problemem wpływu na dostępność danych w regionie podstawowym, zespół platformy Azure może wywołać geo-przejściu w tryb failover, w tym momencie wpisy DNS, wskazując do regionu podstawowego zostaną zmienione aby wskazywały do regionu pomocniczego.
-
-* W sytuacji geograficznej trybu failover Azure będzie wybierz nową lokalizację dodatkowej replikuje dane do tej lokalizacji, a następnie wskaż dodatkowej wpisy DNS. Pomocniczy punkt końcowy będzie niedostępna do momentu zakończenia na koncie magazynu replikacji. Aby uzyskać więcej informacji, zobacz [co należy zrobić po wystąpieniu awarii usługi Azure Storage](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance).
+* Jeśli region podstawowy staje się niedostępny, należy zainicjować trybu failover konta. Przechodzenia w tryb failover do regionu pomocniczego, wpisy DNS, wskazując do regionu podstawowego zostaną zmienione aby wskazywały do regionu pomocniczego. Po zakończeniu pracy w trybie failover, po przywróceniu dostęp do zapisu dla kont GRS i RA-GRS. Aby uzyskać więcej informacji, zobacz [awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage](storage-disaster-recovery-guidance.md).
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>Zagadnienia dotyczące projektowania aplikacji przy użyciu RA-GRS
 

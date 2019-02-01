@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 095c592e53f44cb674994c440258bcca1bfa760c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77963377d322a1c70226ceb772273127bec380de
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467174"
+ms.locfileid: "55506809"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Często zadawane pytania dotyczące migracji usługi Azure Storage
 
@@ -272,7 +272,7 @@ Aby umożliwić innym osobom dostęp do zasobów magazynu:
 
 **Konto replikowanego magazynu (na przykład magazyn strefowo nadmiarowy, Magazyn geograficznie nadmiarowy lub magazyn geograficznie nadmiarowy z dostępem do odczytu) jak uzyskać dostęp do danych przechowywanych w regionie pomocniczym?**
 
--   Jeśli używasz magazynu strefowo nadmiarowego lub magazynu geograficznie nadmiarowego, nie możesz uzyskać dostępu danych z regionu pomocniczego, chyba że przejścia do trybu failover. Aby uzyskać więcej informacji na temat procesu pracy awaryjnej, zobacz [czego można oczekiwać, jeśli magazyn awaryjnej](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs).
+-   Jeśli używasz magazynu strefowo nadmiarowego lub magazynu geograficznie nadmiarowego, nie możesz uzyskać dostępu danych z regionu pomocniczego, chyba że Zainicjuj tryb failover do tego regionu. Aby uzyskać więcej informacji na temat procesu pracy awaryjnej, zobacz [awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage](storage-disaster-recovery-guidance.md).
 
 -   Jeśli używasz magazynu geograficznie nadmiarowego do odczytu, w dowolnym momencie za dostępne dane z regionu pomocniczego. Użyj jednej z następujących metod:  
       

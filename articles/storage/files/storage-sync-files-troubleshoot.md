@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 315a51f847920d4751d100f147bb5218676015c6
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471406"
+ms.locfileid: "55495670"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -370,7 +370,7 @@ Ten błąd występuje, gdy limit magazynu udziału plików platformy Azure zosta
 
 5. Wybierz **pliki** do wyświetlania listy udziałów plików.
 6. Kliknij trzy kropki na końcu wiersza dla udziału plików platformy Azure, odwołuje się punkt końcowy w chmurze.
-7. Upewnij się, że **użycia** znajduje się poniżej **przydziału**. Należy pamiętać o ile nie określono alternatywnego przydziału limit przydziału będzie odpowiadał [maksymalna rozmiar udziału plików platformy Azure](storage-files-scale-targets.md).
+7. Upewnij się, że **użycia** znajduje się poniżej **przydziału**. Należy pamiętać o ile nie określono alternatywnego przydziału limit przydziału będzie odpowiadał [maksymalny rozmiar udziału plików platformy Azure](storage-files-scale-targets.md).
 
     ![Zrzut ekranu przedstawiający właściwości udziału plików platformy Azure.](media/storage-sync-files-troubleshoot/file-share-limit-reached-1.png)
 

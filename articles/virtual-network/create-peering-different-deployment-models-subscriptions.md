@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 45dd31ecca4f09a595fbf1dae5fe61623fb2be3c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 6a652b3fa834c2f29f5063f9ba72a3e3d4e75f58
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025865"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512452"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Utworzyć komunikację równorzędną sieci wirtualnej — różne modele wdrażania i subskrypcje
 
@@ -71,7 +71,7 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
     - **Lokalizacja**: *Wschodnie stany USA*
 
 14. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetB*. Kliknij przycisk **myVnetB** , gdy pojawia się w wynikach wyszukiwania. Zostanie wyświetlony blok **myVnetB** sieci wirtualnej.
-15. W **myVnetB** bloku, które zostanie wyświetlone, kliknij przycisk **właściwości** z pionowy listy opcji po lewej stronie bloku. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
+15. W **myVnetB** bloku, które zostanie wyświetlone, kliknij przycisk **właściwości** z pionowy listy opcji po lewej stronie bloku. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
 16. Wykonaj kroki 5 – 9 dla myVnetB, wprowadzając **Użytkownik_a** w kroku 8.
 17. Wyloguj się z portalu jako UżytkownikB, a następnie zaloguj się jako użytkownik a.
 18. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Kliknij przycisk **myVnetA** , gdy pojawia się w wynikach wyszukiwania. Zostanie wyświetlony blok **myVnet** sieci wirtualnej.

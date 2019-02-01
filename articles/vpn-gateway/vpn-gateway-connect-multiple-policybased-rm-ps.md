@@ -1,5 +1,5 @@
 ---
-title: 'Połączenie bramy sieci VPN platformy Azure do wielu lokalnych na podstawie zasad urządzeń sieci VPN: Usługa Azure Resource Manager: Program PowerShell | Dokumentacja firmy Microsoft'
+title: 'Połączenie bramy sieci VPN platformy Azure do wielu lokalnych na podstawie zasad urządzeń sieci VPN: Azure Resource Manager: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Konfigurowanie sieci VPN bramy oparte na trasach platformy Azure do wielu oparte na zasadach urządzeń sieci VPN przy użyciu usługi Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
 ms.openlocfilehash: 4996fa23e28b4ba840cc8c97e167484be08a0573
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199464"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509290"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Łączenie bramy sieci VPN platformy Azure do wielu lokalnych na podstawie zasad urządzeń sieci VPN przy użyciu programu PowerShell
 
@@ -37,7 +37,7 @@ Następujące diagramy zaznacz dwa modele:
 ### <a name="azure-support-for-policy-based-vpn"></a>Pomoc techniczna platformy Azure dla sieci VPN opartej na zasadach
 Obecnie platforma Azure obsługuje oba tryby bram sieci VPN: oparta na trasach bram sieci VPN i bramami sieci VPN oparte na zasadach. Zostały one utworzone na różnych platformach wewnętrznych, które powodują różne specyfikacje:
 
-|                          | **PolicyBased VPN Gateway** | **Brama sieci VPN typu RouteBased**               |
+|                          | **PolicyBased VPN Gateway** | **RouteBased VPN Gateway**               |
 | ---                      | ---                         | ---                                      |
 | **Jednostka SKU bramy platformy Azure**    | Podstawowa                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2 i VpnGw3 |
 | **Wersja IKE**          | IKEv1                       | IKEv2                                    |
@@ -147,8 +147,8 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 > Należy utworzyć zasad protokołu IPsec/IKE, aby włączyć opcję "UsePolicyBasedTrafficSelectors" w połączeniu.
 
 Poniższy przykład tworzy zasady protokołu IPsec/IKE za pomocą tych algorytmów i parametrów:
-* Protokół IKEv2: DHGroup24 AES256, SHA384
-* Protokół IPsec: AES256, SHA256, PFS24, 2048KB & s 3600 okres istnienia skojarzeń zabezpieczeń
+* IKEv2: AES256, SHA384, DHGroup24
+* IPsec: AES256, SHA256, PFS24, 2048KB & s 3600 okres istnienia skojarzeń zabezpieczeń
 
 ```azurepowershell-interactive
 $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048
@@ -190,7 +190,7 @@ Jeśli wiersz zwraca "**True**", następnie opartych na zasadach selektorów ruc
 ### <a name="3-enabledisable-the-policy-based-traffic-selectors-on-a-connection"></a>3. Włącz/Wyłącz selektory ruchu na podstawie zasad połączenia
 Po uzyskaniu zasobu połączenia, można włączyć lub wyłączyć opcję.
 
-#### <a name="to-enable-usepolicybasedtrafficselectors"></a>Aby włączyć UsePolicyBasedTrafficSelectors
+#### <a name="to-enable-usepolicybasedtrafficselectors"></a>To Enable UsePolicyBasedTrafficSelectors
 Poniższy przykład włącza opcję selektory ruchu na podstawie zasad, ale pozostawia zasad protokołu IPsec/IKE, bez zmian:
 
 ```azurepowershell-interactive
@@ -201,7 +201,7 @@ $connection6  = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
 ```
 
-#### <a name="to-disable-usepolicybasedtrafficselectors"></a>Aby wyłączyć UsePolicyBasedTrafficSelectors
+#### <a name="to-disable-usepolicybasedtrafficselectors"></a>To Disable UsePolicyBasedTrafficSelectors
 Poniższy przykład wyłącza opcję selektory ruchu na podstawie zasad, ale pozostawia zasad protokołu IPsec/IKE, bez zmian:
 
 ```azurepowershell-interactive

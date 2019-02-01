@@ -1,5 +1,5 @@
 ---
-title: Właściwości usługi Azure Active Directory dzierżawy interakcji | Dokumentacja firmy Microsoft
+title: Właściwości wielu dzierżawców interakcji — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Zarządzanie dzierżawcy dzierżawy usługi Azure Active dzięki zrozumieniu dzierżawcy jako całkowicie niezależne zasoby
 services: active-tenant
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 10/10/2017
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: H1Hack27Feb2017;it-pro
-ms.reviewer: piotrci
-ms.openlocfilehash: a1022bcc3c81ef22d1ba9f6c4905e1bb4c515fa5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.custom: it-pro
+ms.reviewer: sumitp
+ms.openlocfilehash: 6dcc02d8d4c1f0629d69460be28a70c470704d75
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150380"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511381"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Zrozumieć interakcję wielu dzierżaw usługi Azure Active Directory
 

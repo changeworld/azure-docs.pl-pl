@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 704aa488d40a18d7be0b64c9fc9a1bd33f8a3d96
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e87ff83470ac8d375b4eee3b69f8793e3e11c0f5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184546"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497421"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Rozwiązywanie błędów dla rejestracji dostawcy zasobów
 
 W tym artykule opisano błędy, które można napotkać podczas używania dostawcy zasobów, które wcześniej nie były używane w ramach subskrypcji.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Objaw
 
@@ -53,28 +55,28 @@ Te błędy są jednego z trzech powodów:
 
 ## <a name="solution-1---powershell"></a>Rozwiązanie 1 — PowerShell
 
-W przypadku programu PowerShell, użyj **Get-AzureRmResourceProvider** wyświetlić Twój status rejestracji.
+W przypadku programu PowerShell, użyj **Get AzResourceProvider** wyświetlić Twój status rejestracji.
 
 ```powershell
-Get-AzureRmResourceProvider -ListAvailable
+Get-AzResourceProvider -ListAvailable
 ```
 
-Aby zarejestrować dostawcę, należy użyć **Register-AzureRmResourceProvider** i podaj nazwę dostawcy zasobów, które chcesz zarejestrować.
+Aby zarejestrować dostawcę, należy użyć **AzResourceProvider rejestru** i podaj nazwę dostawcy zasobów, które chcesz zarejestrować.
 
 ```powershell
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
+Register-AzResourceProvider -ProviderNamespace Microsoft.Cdn
 ```
 
 Aby uzyskać obsługiwane lokalizacje dla określonego typu zasobów, należy użyć:
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
 Aby uzyskać obsługiwanych wersji interfejsu API dla danego typu zasobu, należy użyć:
 
 ```powershell
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
 ## <a name="solution-2---azure-cli"></a>Rozwiązanie 2 — interfejs wiersza polecenia Azure

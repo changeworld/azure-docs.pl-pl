@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 138c5ee54d175c4bd5f727acc3375405850f86a0
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3b41f975b484083dab79f16984e84018b2e830a1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301598"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497302"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -186,7 +186,7 @@ Dysk danych — konto magazynu w warstwie standardowa | Obsługiwane |
 Dysk danych — konto magazynu premium storage | Obsługiwane | Maszyna wirtualna ma dyski rozkładają się na konta magazynu w warstwie standardowa i premium, po wybraniu innego docelowego konta magazynu dla każdego dysku, aby upewnić się, że mają taką samą konfigurację magazynu w regionie docelowym.
 Dysk zarządzany — standardowa | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
 Dysk zarządzany — premium | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
-Standardowa, SSD | Nieobsługiwane |
+Standardowa, SSD | Obsługiwane |
 Nadmiarowość | Usługi LRS i GRS są obsługiwane.<br/><br/> Magazyn ZRS nie jest obsługiwane.
 Chłodnej i gorącej magazynu. | Nieobsługiwane | Dyski maszyny Wirtualnej nie są obsługiwane w chłodnej i gorącej magazynu.
 Miejsca do magazynowania | Obsługiwane |
@@ -195,8 +195,8 @@ Usługa Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Włączon
 Usługa Azure Disk Encryption (ADE) dla systemu Linux, systemu operacyjnego | Nieobsługiwane |
 Dodaj lub usuń gorąco dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
 Wykluczanie dysku | Nieobsługiwane|   Dysk tymczasowy jest domyślnie wykluczony.
-Bezpośrednie miejsca do magazynowania  | Nieobsługiwane|
-Serwer plików skalowalny w poziomie  | Nieobsługiwane|
+Bezpośrednie miejsca do magazynowania  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
+Serwer plików skalowalny w poziomie  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
 LRS | Obsługiwane |
 GRS | Obsługiwane |
 RA-GRS | Obsługiwane |

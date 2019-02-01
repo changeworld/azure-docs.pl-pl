@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 8626dcb5b5c8eb7e83123eaeadb601e65d52f2c8
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 23fab567fc2fdd5c5c8f3c5d173a5201d3322f81
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081232"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512554"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 [Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
@@ -149,8 +149,8 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | * | Tworzenie i zarządzanie zasobami wszystkich typów |
 > | **notActions** |  |
-> | Microsoft.Authorization/*/Delete | Nie można usunąć ról i przypisań ról |
-> | Microsoft.Authorization/*/Write | Nie można utworzyć ról i przypisań ról |
+> | Microsoft.Authorization/*/Delete | Usuwanie ról i przypisań ról |
+> | Microsoft.Authorization/*/Write | Tworzenie ról i przypisań ról |
 > | Microsoft.Authorization/elevateAccess/Action | Przyznaje osobie wywołującej uprawnienia administratora dostępu użytkowników w zakresie dzierżawy |
 > | Microsoft.Blueprint/blueprintAssignments/write | Utwórz lub zaktualizuj wszelkie artefakty strategii |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Usuń wszelkie artefakty strategii |
@@ -1600,15 +1600,15 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **notActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | Nie można edytować zasad inspekcji |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | Nie można edytować ustawienia inspekcji |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | Edytowanie zasad inspekcji |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | Edytuj ustawienia inspekcji |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Pobieranie rekordów inspekcji obiektów blob bazy danych |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | Nie można edytować zasad połączenia |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Nie można edytować zasad maskowania danych |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | Edytowanie zasad połączenia |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Edytuj zasady maskowania danych |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Nie można edytować zasady alertu zabezpieczeń |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | Nie można edytować metryki zabezpieczeń |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Edytowanie zasad alertów zabezpieczeń |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | Edytowanie danych dotyczących bezpieczeństwa |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
@@ -1676,23 +1676,23 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **notActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/auditingPolicies/* | Nie można edytować zasady inspekcji usługi SQL server |
-> | Microsoft.Sql/servers/auditingSettings/* | Nie można edytować ustawień inspekcji serwera SQL |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | Nie można edytować zasady inspekcji bazy danych programu SQL server |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | Nie można edytować ustawienia inspekcji bazy danych programu SQL server |
-> | Microsoft.Sql/servers/databases/auditRecords/read | Nie można odczytać rekordów inspekcji |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | Nie można edytować zasad połączenia bazy danych serwera SQL |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Nie można edytować danych bazy danych programu SQL server maskowania zasad |
+> | Microsoft.Sql/servers/auditingPolicies/* | Edytuj zasady inspekcji usługi SQL server |
+> | Microsoft.Sql/servers/auditingSettings/* | Edytowanie ustawień inspekcji serwera SQL |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | Edytuj zasady inspekcji bazy danych programu SQL server |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | Edytuj ustawienia inspekcji bazy danych programu SQL server |
+> | Microsoft.Sql/servers/databases/auditRecords/read | Odczytaj rekordy inspekcji |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | Edytowanie zasad połączenia bazy danych serwera SQL |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Edytowanie danych bazy danych programu SQL server maskowania zasad |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Nie można edytować zasad alertów zabezpieczeń bazy danych serwera SQL |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | Nie można edytować metryki zabezpieczeń bazy danych programu SQL server |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Edytowanie zasad alertów zabezpieczeń bazy danych serwera SQL |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | Edytuj metryki zabezpieczeń bazy danych programu SQL server |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
-> | Microsoft.Sql/servers/securityAlertPolicies/* | Nie można edytować zasady alertu zabezpieczeń serwera SQL |
+> | Microsoft.Sql/servers/securityAlertPolicies/* | Edytuj zasady alertu zabezpieczeń serwera SQL |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 
 ## <a name="storage-account-contributor"></a>Współautor konta magazynu

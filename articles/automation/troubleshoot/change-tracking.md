@@ -6,25 +6,25 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/24/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 63dc7148904089a31ff95764898a8dac72c37049
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2a6610b5cb3f01fc70b1737fc4492e09d9a7637b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421340"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507338"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>Rozwiązywanie problemów z Change Tracking and Inventory
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Scenariusz: Rekordy śledzenia zmian nie są wyświetlane w witrynie Azure portal
+### <a name="records-not-showing-windows"></a>Scenariusz: Rekordy śledzenia zmian nie są wyświetlane w przypadku komputerów Windows
 
 #### <a name="issue"></a>Problem
 
-Nie widzisz żadnych wyników spisu lub śledzenia zmian dla maszyn, które są dołączone do śledzenia zmian.
+Nie widzisz żadnych wyników spisu lub śledzenia zmian dla maszyn Windows, które są dołączone do śledzenia zmian.
 
 #### <a name="cause"></a>Przyczyna
 
@@ -38,12 +38,13 @@ Ten błąd może być spowodowany przez następujących przyczyn:
 #### <a name="resolution"></a>Rozwiązanie
 
 1. Sprawdź **Microsoft Monitoring Agent** (HealthService.exe) działa na maszynie.
-2. Odwiedź stronę, [Planowanie sieci](../automation-hybrid-runbook-worker.md#network-planning) Aby dowiedzieć się więcej o tym, jakie adresy i porty muszą być dozwolone dla śledzenia zmian do pracy.
-3. Sprawdź, czy istnieją następujące pakiety administracyjne śledzenia zmian i spisu lokalnie:
+1. Sprawdź **Podgląd zdarzeń** na komputerze i zwróć uwagę na wszelkie zdarzenia, które zawierają wyraz `changetracking` w nich.
+1. Odwiedź stronę, [Planowanie sieci](../automation-hybrid-runbook-worker.md#network-planning) Aby dowiedzieć się więcej o tym, jakie adresy i porty muszą być dozwolone dla śledzenia zmian do pracy.
+1. Sprawdź, czy istnieją następujące pakiety administracyjne śledzenia zmian i spisu lokalnie:
     * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
     * Microsoft.IntelligencePacks.InventoryChangeTracking.*
     * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
-4. Jeśli przy użyciu klonowanego obrazu, program sysprep obrazu najpierw, a następnie zainstaluj agenta Microsoft Monitoring Agent w późniejszym czasie.
+1. Jeśli przy użyciu klonowanego obrazu, program sysprep obrazu najpierw, a następnie zainstaluj agenta Microsoft Monitoring Agent w późniejszym czasie.
 
 Jeśli te rozwiązania nie rozwiążą problemu, skontaktuj się z działem pomocy technicznej można uruchomić następujące polecenia, aby zbieranie diagnostyki agenta
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: 901de2ac3d80b3ee529d89a22afae7e823437b9b
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685212"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506876"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Omówienie konfiguracji urządzeń sieci VPN partnera
 Ten artykuł zawiera omówienie konfigurowania lokalnego urządzenia sieci VPN do łączenia się z bramami Azure VPN Gateway. A przykładowy sieci wirtualnej platformy Azure i konfigurowania bramy sieci VPN jest używana do pokazują, jak połączyć się z konfiguracji urządzenia sieci VPN różnych lokalnych przy użyciu tych samych parametrów.
@@ -41,7 +41,7 @@ Ta sekcja zawiera listę parametrów dla przykładów, które są opisane w popr
 | **Parametr**                | **Wartość**                    |
 | ---                          | ---                          |
 | Prefiksy adresów sieci wirtualnej        | 10.11.0.0/16<br>10.12.0.0/16 |
-| Adres IP bramy sieci VPN platformy Azure         | Azure VPN Gateway adresu IP         |
+| Adres IP bramy sieci VPN platformy Azure         | Azure VPN Gateway IP         |
 | Prefiksy adresów lokalnych | 10.51.0.0/16<br>10.52.0.0/16 |
 | Adres IP urządzenia sieci VPN w środowisku lokalnym    | Adres IP urządzenia sieci VPN w środowisku lokalnym    |
 | * Virtual network numer ASN protokołu BGP                | 65010                        |
@@ -126,7 +126,7 @@ Jeśli Twoje urządzenia sieci VPN nie obsługują selektorów dowolna dowolna r
 
 Przykładowy skrypt tworzy zasady protokołu IPsec/IKE za pomocą następujących algorytmów i parametrów:
 * IKEv2: AES256, SHA384, DHGroup24
-* Protokół IPsec: AES256 SHA1, PFS24, sekund 7200 okres istnienia skojarzeń zabezpieczeń i 20,480,000 KB (20 GB)
+* IPsec: Algorytm SHA1 AES256, PFS24, sekund 7200 okres istnienia skojarzeń zabezpieczeń i 20,480,000 KB (20 GB)
 
 Skrypt stosuje zasady protokołu IPsec/IKE oraz umożliwia **UsePolicyBasedTrafficSelectors** opcji w połączeniu.
 

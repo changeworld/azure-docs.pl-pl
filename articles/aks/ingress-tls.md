@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: fd2d18ea2d129729c5c3835e39a94df7166c3f11
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: cfc99074c0f8347611d805ce18a656a7a22a5f5e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402034"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512027"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących HTTPS w usłudze Azure Kubernetes Service (AKS)
 
@@ -138,53 +138,6 @@ $ kubectl apply -f cluster-issuer.yaml
 clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 ```
 
-## <a name="create-a-certificate-object"></a>Utwórz obiekt certyfikatu
-
-Następnie można utworzyć zasobu certyfikatu. Zasób certyfikatu definiuje żądany certyfikat X.509. Aby uzyskać więcej informacji, zobacz [certyfikaty Menedżera certyfikatów][cert-manager-certificates].
-
-Tworzenie zasobu certyfikatu, takich jak `certificates.yaml`, z manifestem poniższy przykład. Aktualizacja *dnsNames* i *domen* na nazwę DNS utworzonego w poprzednim kroku. Jeśli używasz kontrolera danych przychodzących wyłącznie wewnętrznym, należy określić wewnętrzna nazwa DNS usługi.
-
-```yaml
-apiVersion: certmanager.k8s.io/v1alpha1
-kind: Certificate
-metadata:
-  name: tls-secret
-spec:
-  secretName: tls-secret
-  dnsNames:
-  - demo-aks-ingress.eastus.cloudapp.azure.com
-  acme:
-    config:
-    - http01:
-        ingressClass: nginx
-      domains:
-      - demo-aks-ingress.eastus.cloudapp.azure.com
-  issuerRef:
-    name: letsencrypt-staging
-    kind: ClusterIssuer
-```
-
-Aby utworzyć zasób certyfikatu, użyj `kubectl apply -f certificates.yaml` polecenia.
-
-```
-$ kubectl apply -f certificates.yaml
-
-certificate.certmanager.k8s.io/tls-secret created
-```
-
-Aby sprawdzić, czy certyfikat został pomyślnie utworzony, użyj `kubectl describe certificate tls-secret` polecenia.
-
-Jeśli certyfikat został wystawiony, zobaczysz dane wyjściowe podobne do następujących:
-```
-Type    Reason          Age   From          Message
-----    ------          ----  ----          -------
-  Normal  CreateOrder     11m   cert-manager  Created new ACME order, attempting validation...
-  Normal  DomainVerified  10m   cert-manager  Domain "demo-aks-ingress.eastus.cloudapp.azure.com" verified with "http-01" validation
-  Normal  IssueCert       10m   cert-manager  Issuing certificate...
-  Normal  CertObtained    10m   cert-manager  Obtained certificate from ACME server
-  Normal  CertIssued      10m   cert-manager  Certificate issued successfully
-```
-
 ## <a name="run-demo-applications"></a>Uruchamianie aplikacji demonstracyjnych
 
 Skonfigurowano kontroler danych przychodzących i rozwiązania do zarządzania certyfikatu. Teraz sklonujemy wykonywania dwóch pokaz aplikacji w klastrze AKS. W tym przykładzie Helm służy do wdrażania dwa wystąpienia aplikacji proste "Hello world".
@@ -249,6 +202,55 @@ Tworzenie przy użyciu zasobów ruch przychodzący `kubectl apply -f hello-world
 $ kubectl apply -f hello-world-ingress.yaml
 
 ingress.extensions/hello-world-ingress created
+```
+
+## <a name="create-a-certificate-object"></a>Utwórz obiekt certyfikatu
+
+Następnie można utworzyć zasobu certyfikatu. Zasób certyfikatu definiuje żądany certyfikat X.509. Aby uzyskać więcej informacji, zobacz [certyfikaty Menedżera certyfikatów][cert-manager-certificates].
+
+Menedżer certyfikatów prawdopodobnie automatycznie utworzył obiekt certyfikatu przy użyciu transferu danych przychodzących — podkładki, który jest automatycznie wdrażane za pomocą Menedżera certyfikatów od v0.2.2. Aby uzyskać więcej informacji, zobacz [dokumentacji podkładki ruch przychodzący][ingress-shim].
+
+Aby sprawdzić, czy certyfikat został pomyślnie utworzony, użyj `kubectl describe certificate tls-secret` polecenia.
+
+Jeśli certyfikat został wystawiony, zobaczysz dane wyjściowe podobne do następujących:
+```
+Type    Reason          Age   From          Message
+----    ------          ----  ----          -------
+  Normal  CreateOrder     11m   cert-manager  Created new ACME order, attempting validation...
+  Normal  DomainVerified  10m   cert-manager  Domain "demo-aks-ingress.eastus.cloudapp.azure.com" verified with "http-01" validation
+  Normal  IssueCert       10m   cert-manager  Issuing certificate...
+  Normal  CertObtained    10m   cert-manager  Obtained certificate from ACME server
+  Normal  CertIssued      10m   cert-manager  Certificate issued successfully
+```
+
+Jeśli musisz utworzyć zasób dodatkowy certyfikat, możesz to zrobić z manifestem poniższy przykład. Aktualizacja *dnsNames* i *domen* na nazwę DNS utworzonego w poprzednim kroku. Jeśli używasz kontrolera danych przychodzących wyłącznie wewnętrznym, należy określić wewnętrzna nazwa DNS usługi.
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tls-secret
+spec:
+  secretName: tls-secret
+  dnsNames:
+  - demo-aks-ingress.eastus.cloudapp.azure.com
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - demo-aks-ingress.eastus.cloudapp.azure.com
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer
+```
+
+Aby utworzyć zasób certyfikatu, użyj `kubectl apply -f certificates.yaml` polecenia.
+
+```
+$ kubectl apply -f certificates.yaml
+
+certificate.certmanager.k8s.io/tls-secret created
 ```
 
 ## <a name="test-the-ingress-configuration"></a>Testowanie konfiguracji transferu danych przychodzących
@@ -335,6 +337,7 @@ Możesz również wykonać następujące czynności:
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
+[ingress-shim]: http://docs.cert-manager.io/en/latest/reference/ingress-shim.html
 [cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
 [cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
 [lets-encrypt]: https://letsencrypt.org/

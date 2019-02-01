@@ -8,15 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 01/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1bc70e5c8243c50506cea871220412a4941cbe35
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7e7e362a2536f7adf2a7d68b096ab76d73f15a61
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213113"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496231"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu środowiska Node.js 
 <a name="HOLTop"></a>
@@ -57,7 +57,7 @@ Poniższy kod tworzy nową bazę wiedzy przy użyciu metody [Create](https://wes
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -253,7 +253,7 @@ Poniższy kod aktualizuje istniejącą bazę wiedzy za pomocą metody [Update](h
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -454,7 +454,7 @@ Poniższy kod publikuje istniejącą bazę wiedzy za pomocą metody [Publish](ht
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -566,7 +566,7 @@ Poniższy kod zastępuje zawartość określonej bazy wiedzy za pomocą metody [
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -699,7 +699,7 @@ Poniższy kod pobiera zawartość określonej bazy wiedzy za pomocą metody [Dow
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -832,7 +832,7 @@ Poniższy kod pobiera odpowiedzi na pytanie za pomocą określonej bazy wiedzy z
 1. Zastąp wartość `kb` identyfikatorem bazy wiedzy, do której chcesz wysłać zapytanie o odpowiedzi. Pamiętaj, że ta baza wiedzy musiała już zostać opublikowana za pomocą metody [Publish](#Publish).
 1. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -961,7 +961,7 @@ Poniższy kod pobiera informacje o określonej bazie wiedzy za pomocą metody [G
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1076,7 +1076,7 @@ Poniższy kod pobiera informacje o wszystkich bazach wiedzy dla określonego uż
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1204,7 +1204,7 @@ Poniższy kod usuwa określoną bazę wiedzy za pomocą metody [Delete knowledge
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1316,7 +1316,7 @@ Poniższy kod pobiera bieżące klucze punktu końcowego za pomocą metody [Get 
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1417,7 +1417,7 @@ Poniższy kod ponownie generuje bieżące klucze punktu końcowego przy użyciu 
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1543,7 +1543,7 @@ Poniższy kod pobiera bieżące zmiany słów za pomocą metody [Download altera
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');
@@ -1650,7 +1650,7 @@ Poniższy kod zastępuje bieżące zmiany słów za pomocą metody [Replace alte
 3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
-```nodejs
+```javascript
 'use strict';
 
 let fs = require ('fs');

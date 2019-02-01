@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie klasycznych sieci wirtualnych do sieci wirtualnych Menedżera zasobów platformy Azure: Portal | Dokumentacja firmy Microsoft'
+title: 'Łączenie klasycznych sieci wirtualnych do sieci wirtualnych Menedżera zasobów platformy Azure: Portal | Microsoft Docs'
 description: Kroki, aby połączyć z klasycznymi sieciami wirtualnymi z sieciami wirtualnymi usługi Resource Manager przy użyciu bramy sieci VPN i portalu
 services: vpn-gateway
 author: cherylmc
@@ -9,11 +9,11 @@ ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405008"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508338"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Łączenie sieci wirtualnych z różnych modeli wdrażania za pomocą portalu
 
@@ -171,7 +171,7 @@ Przed utworzeniem bramy sieci wirtualnej, należy najpierw utworzyć podsieć br
 
 ### <a name="createlng"></a>4. Tworzenie bramy sieci lokalnej
 
-**Przykładowe wartości:** bramy sieci lokalnej = ClassicVNetLocal
+**Przykładowe wartości:** Brama sieci lokalnej = ClassicVNetLocal
 
 | Virtual Network | Przestrzeń adresowa | Region | Nawiązanie połączenia z lokacją sieci lokalnej |Adres publiczny adres IP bramy|
 |:--- |:--- |:--- |:--- |:--- |
@@ -261,7 +261,7 @@ Select-AzureSubscription -SubscriptionName "Name of subscription"
 
 ### <a name="2-view-the-network-configuration-file-values"></a>2. Wyświetl wartości w pliku konfiguracji sieci
 
-Po utworzeniu sieci wirtualnej w witrynie Azure portal, pełna nazwa, która używa usługi Azure nie jest widoczna w witrynie Azure portal. Na przykład sieci wirtualnej, który wydaje się być o nazwie "ClassicVNet" w witrynie Azure portal może mieć wiele dłuższej nazwy w pliku konfiguracji sieci. Nazwa może wyglądać mniej więcej tak: "Grupa ClassicRG ClassicVNet". W tych krokach, Pobierz plik konfiguracji sieci i służy do wyświetlania wartości.
+Po utworzeniu sieci wirtualnej w witrynie Azure portal, pełna nazwa, która używa usługi Azure nie jest widoczna w witrynie Azure portal. Na przykład sieci wirtualnej, który wydaje się być o nazwie "ClassicVNet" w witrynie Azure portal może mieć wiele dłuższej nazwy w pliku konfiguracji sieci. Nazwa może wyglądać mniej więcej tak: "Group ClassicRG ClassicVNet". W tych krokach, Pobierz plik konfiguracji sieci i służy do wyświetlania wartości.
 
 Utwórz katalog na komputerze, a następnie wyeksportuj plik konfiguracji sieci do tego katalogu. W tym przykładzie plik konfiguracji sieci zostanie wyeksportowany do katalogu C:\AzureNet.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597638"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55513950"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -48,6 +48,7 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Serwery DNS na sieć wirtualną |20 |
 | Prywatne adresy IP na sieć wirtualną |65536 |
 | Prywatne adresy IP na interfejs sieciowy |256 |
+| Prywatne adresy IP na maszynie wirtualnej |256 |
 | Współbieżne TCP lub UDP przepływy dla karty Sieciowej maszyny wirtualnej lub wystąpienia roli |500 000 |
 | Interfejsy sieciowe (karta sieciowa) |65536 |
 | Sieciowe grupy zabezpieczeń (NSG) |5000 |
@@ -67,8 +68,9 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Publiczne adresy IP — dynamiczny |1000 (podstawowe) |kontakt z pomocą techniczną |
-| Publiczne adresy IP — statyczny |200 (podstawowe) |kontakt z pomocą techniczną |
-| Publiczne adresy IP — statyczny |200 (standardowa) |kontakt z pomocą techniczną |
+| Publiczne adresy IP — statyczny |(Basic) 200 |kontakt z pomocą techniczną |
+| Publiczne adresy IP — statyczny |(Standard) 200 |kontakt z pomocą techniczną |
+| Rozmiar publicznego prefiksu adresu IP (wersja zapoznawcza) | /28 | /28 |
 
 #### <a name="load-balancer"></a>Limity usługi równoważenia obciążenia
 Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu usługi Azure Resource Manager, które przypadają na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md)

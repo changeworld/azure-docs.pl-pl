@@ -4,17 +4,17 @@ description: W tym artykule opisano proces programowego tworzenia i zarządzanie
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/26/2019
+ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 575e2974131a09bdbdbc96d3ad252365ac9da86e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: afdd6a238671bf41252eae8b55f1b6e61f358336
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101791"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510837"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programowe tworzenie zasad i wyświetlić dane na temat zgodności
 
@@ -30,7 +30,7 @@ Przed rozpoczęciem upewnij się, że są spełnione następujące wymagania wst
 
 1. Jeśli ta czynność nie została jeszcze wykonana, zainstaluj klienta [ARMClient](https://github.com/projectkudu/ARMClient). Jest to narzędzie, które wysyła żądania HTTP do interfejsów API opartych na usłudze Azure Resource Manager.
 
-1. Aktualizowanie modułu Azure PowerShell do najnowszej wersji. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps) Aby uzyskać szczegółowe informacje. Aby uzyskać więcej informacji na temat najnowszej wersji, zobacz [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
+1. Aktualizowanie modułu Azure PowerShell do najnowszej wersji. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps), aby uzyskać szczegółowe informacje. Aby uzyskać więcej informacji na temat najnowszej wersji, zobacz [programu Azure PowerShell](https://github.com/Azure/azure-powershell/releases).
 
 1. Zarejestruj dostawcę zasobów usługi Policy Insights przy użyciu programu Azure PowerShell w celu zweryfikowania, że Twoja subskrypcja współpracuje z dostawcą zasobów. Aby zarejestrować dostawcę zasobów, musi mieć uprawnienia do uruchamiania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
 
@@ -96,8 +96,9 @@ Pierwszym krokiem procesu lepszą widoczność zasobów jest tworzenie i przypis
    Zastąp _ContosoRG_ nazwą grupy zasobów przeznaczone.
 
    **Zakres** parametru `New-AzPolicyAssignment` działa także w przypadku subskrypcji i grup zarządzania. Parametr używa ścieżki wszystkich zasobów, które **ResourceId** właściwość `Get-AzResourceGroup` zwraca. Wzorzec **zakres** dla każdego kontenera jest w następujący sposób.
-   Zastąp `{rgName}`, `{subId}`, i `{mgName}` z zasobem usługi grupy odpowiednio na nazwę, identyfikator subskrypcji i nazwa grupy zarządzania.
+   Zastąp `{rName}`, `{rgName}`, `{subId}`, i `{mgName}` nazwą zasobu, grupa zasobów nazwa, identyfikator subskrypcji i nazwę grupy zarządzania, odpowiednio. `{rType}` zostanie zamienione **typ zasobu** z zasobów, takich jak `Microsoft.Compute/virtualMachines` dla maszyny Wirtualnej.
 
+   - Zasób — `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Grupa zasobów- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Subskrypcja — `/subscriptions/{subId}/`
    - Grupa zarządzania- `/providers/Microsoft.Management/managementGroups/{mgName}`

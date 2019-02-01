@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci wirtualnej platformy Azure z inną siecią wirtualną za pomocą połączenia sieć wirtualna-sieć wirtualna: program PowerShell | Microsoft Docs'
+title: 'Łączenie sieci wirtualnych platformy Azure z inną siecią wirtualną przy użyciu połączenia sieć wirtualna-sieć wirtualna: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Łączenie sieci wirtualnych przy użyciu połączenia sieć wirtualna-sieć wirtualna oraz programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: d890aabd6b0acad324ef4b632daaed1db6452ac5
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686963"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510559"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu programu PowerShell
 
@@ -68,11 +68,11 @@ Zasadnicza różnica między nimi polega na tym, że podczas konfigurowania poł
 
 W tym ćwiczeniu możesz łączyć konfiguracje lub po prostu wybrać tę, której chcesz używać. Wszystkie konfiguracje używają typu połączenia sieć wirtualna-sieć wirtualna. Ruch sieciowy przepływa między bezpośrednio połączonymi sieciami wirtualnymi. W tym ćwiczeniu ruch z sieci TestVNet4 nie jest kierowany do sieci TestVNet5.
 
-* [Sieci wirtualne znajdujące się w tej samej subskrypcji:](#samesub) w ramach tej konfiguracji są używane sieci TestVNet1 i TestVNet4.
+* [Sieci wirtualne znajdujące się w tej samej subskrypcji](#samesub): W krokach dla tej konfiguracji używane są sieci TestVNet1 i TestVNet4.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Sieci wirtualne znajdujące się w różnych subskrypcjach:](#difsub) w ramach tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
+* [Sieci wirtualne znajdujące się w różnych subskrypcjach](#difsub): W krokach dla tej konfiguracji są używane sieci TestVNet1 i TestVNet5.
 
   ![Diagram połączenia między sieciami wirtualnymi (v2v)](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -93,7 +93,7 @@ W przykładach stosujemy następujące wartości:
 * Nazwa sieci wirtualnej: TestVNet1
 * Grupa zasobów: TestRG1
 * Lokalizacja: Wschodnie stany USA
-* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
+* TestVNet1: 10.11.0.0/16 i 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
@@ -107,12 +107,12 @@ W przykładach stosujemy następujące wartości:
 **Wartości dla sieci TestVNet4:**
 
 * Nazwa sieci wirtualnej: TestVNet4
-* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
+* TestVNet2: 10.41.0.0/16 i 10.42.0.0/16
 * FrontEnd: 10.41.0.0/24
 * BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
 * Grupa zasobów: TestRG4
-* Lokalizacja: West US
+* Lokalizacja: Zachodnie stany USA
 * GatewayName: VNet4GW
 * Publiczny adres IP: VNet4GWIP
 * VPNType: RouteBased
@@ -305,8 +305,8 @@ Należy upewnić się, że przestrzeń adresów IP nowej sieci wirtualnej o nazw
 
 * Nazwa sieci wirtualnej: TestVNet5
 * Grupa zasobów: TestRG5
-* Lokalizacja: Japan East
-* TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
+* Lokalizacja: Japonia Wschodnia
+* TestVNet5: 10.51.0.0/16 i 10.52.0.0/16
 * FrontEnd: 10.51.0.0/24
 * BackEnd: 10.52.0.0/24
 * GatewaySubnet: 10.52.255.0.0/27

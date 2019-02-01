@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099904"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507828"
 ---
 # <a name="time-series-model"></a>Model szeregów czasowych
 
@@ -152,9 +152,11 @@ W powyższym przykładzie ID1 i ID4 pokazuje jako część hierarchii H1 w Ekspl
 
 Wystąpienia są szeregów czasowych, samodzielnie. W większości przypadków *deviceId* lub *assetId* jest unikatowym identyfikatorem zasobów w środowisku. Wystąpienia zostały skojarzone z nimi informacje opisowe o nazwie właściwości wystąpienia. Co najmniej właściwości wystąpienia obejmują informacje o hierarchii. Mogą również zawierać przydatne, opisowe danych, takich jak producenta, operator lub Data ostatniego usługi.
 
-Wystąpienia są definiowane przez *timeSeriesId*, *typeId*, *hierarchyId*, i *instanceFields*. Każde wystąpienie jest mapowany na tylko jeden *typu*oraz jednej lub wielu hierarchii. Wystąpienia dziedziczyć wszystkie właściwości z hierarchii wraz z dodatkowymi *instanceFields* można dodać więcej definicji właściwości wystąpienia.
+Wystąpienia są definiowane przez *typeId*, *timeSeriesId*, *nazwa*, *opis*, *hierarchyIds* , a *instanceFields*. Każde wystąpienie jest mapowany na tylko jeden *typu*oraz jednej lub wielu hierarchii. Wystąpienia dziedziczyć wszystkie właściwości z hierarchii wraz z dodatkowymi *instanceFields* można dodać więcej definicji właściwości wystąpienia.
 
 *instanceFields* są właściwości wystąpienia i danych statycznych, który definiuje wystąpienie. Wartości właściwości hierarchia lub hierarchia nie mogą określać jednocześnie obsługując indeksowanie w celu wykonywania operacji wyszukiwania.
+
+*Nazwa* właściwość jest opcjonalna i z uwzględnieniem wielkości liter. Jeśli *nazwa* jest niedostępne, zostaną domyślnie nazwę serii czasu. Jeśli *nazwa* zostanie podana, identyfikator serii czasu będą nadal dostępne w źródle (siatka poniżej wykresów w Eksploratorze). 
 
 ## <a name="time-series-model-instance-json-example"></a>Przykład kodu JSON wystąpienia modelu serii czasu
 
@@ -164,6 +166,7 @@ Przykład:
 {
     "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
     "timeSeriesId": ["sampleTimeSeriesId"],
+    "name": "sampleName",
     "description": "Sample Instance",
     "hierarchyIds": [
         "1643004c-0a84-48a5-80e5-7688c5ae9295"

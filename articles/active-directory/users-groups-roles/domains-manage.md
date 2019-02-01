@@ -1,24 +1,24 @@
 ---
-title: Zarządzanie niestandardowymi nazwami domen w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Dodać i zweryfikować niestandardowe nazwy domen — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Zarządzanie pojęcia i kwestie dotyczące zarządzania nazwę domeny w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 12c8b80b76c721962ca6180e531578b037997553
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.custom: it-pro
+ms.openlocfilehash: 198fb3376d44123d39a0b3ca2fb1edbd070f1f09
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55294169"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510990"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w usłudze Azure Active Directory
 

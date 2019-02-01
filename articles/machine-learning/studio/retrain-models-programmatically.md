@@ -1,8 +1,21 @@
 ---
-Tytuł: Ponownego próbkowania Machine Learning Studio modeli titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu przy użyciu C# i usługa Machine Learning Batch Execution.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04/19/2017
+title: Programowe ponowne trenowanie modeli usługi Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: Dowiedz się, jak programowe ponowne trenowanie modelu przy użyciu C# i usługa Machine Learning Batch Execution.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 04/19/2017
+ms.openlocfilehash: fe7825922d9333d058d9a33d5643850c368d3457
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511398"
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programowe ponowne trenowanie modeli usługi Azure Machine Learning Studio
 W tym instruktażu będą nauczysz się programowe ponowne trenowanie korzystając usługi sieci web Azure Machine Learning Studio C# i usługa Machine Learning Batch Execution.

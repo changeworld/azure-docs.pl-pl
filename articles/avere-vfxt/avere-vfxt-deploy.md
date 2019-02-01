@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f6d847e9042341f47a06fde0f9aa4a70f2549a07
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296379"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512163"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Wdrażanie klastra vFXT
 
@@ -39,11 +39,11 @@ Aby uzyskać więcej informacji na temat kroków wdrażania klastra i planowania
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Tworzenie Avere vFXT dla platformy Azure
 
-Dostęp do szablonu tworzenia w witrynie Azure portal, wyszukując Avere i wybierając pozycję "Avere vFXT wdrożenia platformy Azure". <!-- xxx update if that name changes xxx --> 
+Dostęp do szablonu tworzenia w witrynie Azure portal, wyszukując Avere i wybierając pozycję "Avere vFXT ARM wdrożenia". 
 
-<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
+![Okno przeglądarki, przedstawiające witryny Azure portal za pomocą chleb smutek, "Nowe > Marketplace > wszystko". W stronie wszystko, pole wyszukiwania ma "avere", a drugi element wyniku, "Avere vFXT ARM wdrożenia" jest opisany w kolorze czerwonym, aby go zaznaczyć.](media/avere-vfxt-template-choose.png)
 
-Kliknij przycisk **Utwórz** do rozpoczęcia. 
+Po przeczytaniu szczegółowe informacje na stronie Avere vFXT wdrożenia ARM, kliknij przycisk **Utwórz** do rozpoczęcia. 
 
 ![Portal Azure marketplace z pierwszej strony przedstawiający Szablon wdrożenia](media/avere-vfxt-deploy-first.png)
 
@@ -123,9 +123,11 @@ Na drugiej stronie Szablon wdrożenia umożliwia ustawianie rozmiaru klastra, ty
 
 * **Podsieci** — Wybierz podsieć w istniejącej sieci wirtualnej lub utworzyć nową. 
 
-* **Używać magazynu obiektów blob** — wybierz, czy należy utworzyć nowy kontener obiektów Blob platformy Azure i skonfigurować go jako magazynu zaplecza dla nowego klastra vFXT Avere. Jeśli zdecydujesz się utworzyć nowy kontener, musisz podać konto magazynu dla tego kontenera. Jeśli wybierzesz nie utworzyć nowy kontener obiektów blob, należy dołączyć magazynu po utworzeniu klastra (odczyt [skonfigurować magazyn](avere-vfxt-add-storage.md) instrukcje). Ustaw to pole **false** Jeśli nie chcesz utworzyć nowy kontener.
+* **Używać magazynu obiektów blob** — wybierz **true** Aby utworzyć nowy kontener obiektów Blob platformy Azure i skonfigurować go jako magazynu zaplecza dla nowego klastra vFXT Avere. Powoduje także utworzenie nowego konta magazynu w ramach tej samej grupie zasobów co klaster. 
 
-* **Konto magazynu** — w przypadku utworzenia nowego kontenera obiektów Blob platformy Azure, wprowadź nazwę konta magazynu. Konto magazynu musi być standardowe konto ogólnego przeznaczenia V2 skonfigurowane przy użyciu magazynu lokalnie nadmiarowego i warstwy dostępu gorąca. [Skonfigurować magazyn](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer) artykuł zawiera szczegółowe informacje o wymaganiach dotyczących konta magazynu.
+  Ustaw to pole **false** Jeśli nie chcesz utworzyć nowy kontener. W takim przypadku należy dołączyć i skonfigurować Magazyn po utworzeniu klastra. Odczyt [skonfigurować magazyn](avere-vfxt-add-storage.md) instrukcje. 
+
+* **Konto magazynu** — w przypadku utworzenia nowego kontenera obiektów Blob platformy Azure, wprowadź nazwę dla nowego konta magazynu. 
 
 ## <a name="validation-and-purchase"></a>Sprawdzanie poprawności i możliwości zakupu
 
@@ -161,7 +163,7 @@ Aby znaleźć te informacje, wykonaj poniższą procedurę:
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Tworzenie punktu końcowego magazynu (w przypadku korzystania z obiektów Blob platformy Azure)
 
-Jeśli używasz usługi Azure Blob storage do obsługi magazynu danych zaplecza, należy utworzyć punkt końcowy usługi magazynu w sieci wirtualnej. To [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) utrzymuje ruchu w usłudze Azure Blob lokalnego zamiast przesyłać go przez internet.
+Jeśli używasz usługi Azure Blob storage do obsługi magazynu danych zaplecza, należy utworzyć punkt końcowy usługi magazynu w sieci wirtualnej. To [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) utrzymuje lokalnego zamiast przesyłać go poza siecią wirtualną ruchu obiektu Blob platformy Azure.
 
 1. Z poziomu portalu, kliknij przycisk **sieci wirtualne** po lewej stronie.
 1. Wybierz sieć wirtualną dla kontrolera. 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: jeking
 ms.subservice: common
-ms.openlocfilehash: 8ffd3c34628f96888145a3639ddfe4a190dffc7f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2dc409743ce94ecb73e351b839a5a2fb09eadab2
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467071"
+ms.locfileid: "55512112"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn geograficznie nadmiarowy (GRS): Replikacji między regionami dla usługi Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -28,20 +28,18 @@ Niektóre kwestie należy pamiętać, korzystając z RA-GRS:
 * Twoja aplikacja ma zarządzać punktu końcowego, który prowadzi interakcję z, korzystając z RA-GRS.
 * Ponieważ wiąże się opóźnienie replikacji asynchronicznej, zmian, które nie zostały jeszcze zreplikowane do regionu pomocniczego mogą zostać utracone, jeśli nie można odzyskać danych z regionu podstawowego.
 * Możesz sprawdzić czas ostatniej synchronizacji konta magazynu. Czas ostatniej synchronizacji jest wartością daty/godziny GMT. Wszystkie zapisy głównej przed czas ostatniej synchronizacji zostały pomyślnie zapisane w lokalizacji dodatkowej, co oznacza, że są one dostępne do odczytu z lokalizacji pomocniczej. Podstawowy zapisuje po czas ostatniej synchronizacji może być lub może nie być dostępne dla odczytów jeszcze. Można tworzyć zapytania przy użyciu tej wartości [witryny Azure portal](https://portal.azure.com/), [programu Azure PowerShell](storage-powershell-guide-full.md), albo z jednego z biblioteki klienta usługi Azure Storage.
-* Jeśli firma Microsoft zainicjuje tryb failover do regionu pomocniczego, użytkownik będzie po ich przeczytaniu i do zapisu danych po pracy w trybie failover zostało ukończone. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące odzyskiwania po awarii](storage-disaster-recovery-guidance.md).
-* Aby uzyskać informacje na temat przełączyć się do regionu pomocniczego, zobacz [co należy zrobić po wystąpieniu awarii usługi Azure Storage](storage-disaster-recovery-guidance.md).
+* Jeśli zainicjujesz konta pracy w trybie failover (wersja zapoznawcza) konta GRS lub RA-GRS w regionie pomocniczym, dostęp do zapisu do tego konta zostanie przywrócony po zakończeniu pracy w trybie failover. Aby uzyskać więcej informacji, zobacz [awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza)](storage-disaster-recovery-guidance.md).
 * RA-GRS jest przeznaczona na potrzeby wysokiej dostępności. Aby uzyskać wskazówki dotyczące skalowalności, przejrzyj [Lista kontrolna dotycząca wydajności](storage-performance-checklist.md).
 * Aby uzyskać sugestie dotyczące projektowania w celu zapewnienia wysokiej dostępności przy użyciu RA-GRS, zobacz [projektowanie wysoko dostępnych aplikacji przy użyciu magazynu RA-GRS](storage-designing-ha-apps-with-ragrs.md).
 
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>Co to jest cel punktu odzyskiwania i cel czasu odzyskiwania w przypadku magazynu GRS?
-**Cel punktu odzyskiwania (RPO):** GRS i RA-GRS magazyn usługi asynchronicznie geograficznej są replikowane dane z podstawowej do dodatkowej lokalizacji. W przypadku regionalnej awarii w regionie podstawowym firma Microsoft wykona przejściu w tryb failover do regionu pomocniczego. W przypadku przejścia w tryb failover ostatnie zmiany, które nie zostały jeszcze replikacją geograficzną mogą zostać utracone. Liczba minut na potencjalne danych, który utracił jest określany jako cel punktu odzyskiwania. Cel punktu odzyskiwania wskazuje punkt w czasie, do którego można odzyskać dane. Usługa Azure Storage zazwyczaj ma RPO mniej niż 15 minut, mimo, że obecnie nie ma umowy SLA na jak długo geografickou replikaci przyjmuje.
+
+**Cel punktu odzyskiwania (RPO):** GRS i RA-GRS magazyn usługi asynchronicznie geograficznej są replikowane dane z podstawowej do dodatkowej lokalizacji. W przypadku, gdy region podstawowy staje się niedostępny, można wykonać failover konta (wersja zapoznawcza) do regionu pomocniczego. Po zainicjowaniu przejścia w tryb failover ostatnie zmiany, które nie zostały jeszcze replikacją geograficzną mogą zostać utracone. Liczba minut na potencjalne danych, który utracił jest określany jako cel punktu odzyskiwania. Cel punktu odzyskiwania wskazuje punkt w czasie, do którego można odzyskać dane. Usługa Azure Storage zazwyczaj ma RPO mniej niż 15 minut, mimo, że obecnie nie ma umowy SLA na jak długo geografickou replikaci przyjmuje.
 
 **Cel czasu odzyskiwania (RTO):** Cel czasu odzyskiwania jest miarą jak długo trwa Przejdź w tryb failover i pobrać konta magazynu z powrotem do trybu online. Moment na wykonanie pracy w trybie failover obejmuje następujące czynności:
 
-   * Czas firma Microsoft wymaga, aby określić, czy dane można odzyskać w głównej lokalizacji lub jeśli konieczne jest użycie trybu failover
-   * Czas do wykonania pracy w trybie failover na koncie magazynu, zmieniając głównej wpisy DNS, aby wskazywały do lokalizacji dodatkowej
-
-Firma Microsoft podejmuje odpowiedzialność naszych użytkowników bardzo poważnie zachowania danych. W przypadku każdej okazji odzyskanie danych w regionie podstawowym, firma Microsoft opóźnia przełączenie w tryb failover i koncentruje się na odzyskanie danych. 
+   * Czas do momentu klienta przełączenia w tryb failover konta magazynu z serwera podstawowego do regionu pomocniczego.
+   * Czas wymagany przez platformę Azure do wykonania pracy w trybie failover, zmieniając głównej wpisy DNS, aby wskazywały do lokalizacji dodatkowej.
 
 ## <a name="paired-regions"></a>Sparowane regiony 
 Podczas tworzenia konta magazynu, możesz wybrać region podstawowy dla konta. Sparowanym regionie pomocniczym jest określana na podstawie podstawowego regionu i nie można jej zmienić. Aby uzyskać aktualne informacje na temat regionów obsługiwanych przez platformę Azure, zobacz [firm ciągłości działania i odzyskiwania po awarii (BCDR): Sparowanych regionów platformy Azure](../../best-practices-availability-paired-regions.md).

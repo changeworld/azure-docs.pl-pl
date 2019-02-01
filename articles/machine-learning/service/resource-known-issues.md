@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c327d973170a4556471663c3bea9dcae9b5794fb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 706d8986eb25d2d67e3099ae5b0bfc6e55f94ad3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238615"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507372"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
@@ -27,6 +27,7 @@ Ten artykuł ułatwia znajdowanie i poprawić błędy lub błędów napotkanych 
 **Komunikat o błędzie: Nie można odinstalować "PyYAML"**
 
 Środowisko Azure Machine Learning zestawu SDK dla języka Python: PyYAML jest projektem zainstalowanych distutils. W związku z tym firma Microsoft nie można dokładnie określić pliki, które należą do niej w przypadku częściowej dezinstalacji. Aby kontynuować instalację zestawu SDK podczas ignorowanie tego błędu, należy użyć:
+
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
@@ -41,7 +42,7 @@ Obraz tworzenia niepowodzenia podczas wdrażania usługi sieci web. Obejście po
 
 ## <a name="deployment-failure"></a>Wdrożenie zakończyło się niepowodzeniem
 
-Jeśli zauważysz "DaskOnBatch:context_managers. DaskOnBatch ","pliku setup.py"]" zostało przerwane z < Signals.SIGKILL: 9 > — Zmień jednostkę SKU dla maszyn wirtualnych używanych we wdrożeniu, aby te o większej ilości pamięci.
+Jeśli zauważysz `'DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, zmiana jednostki SKU dla maszyn wirtualnych używanych we wdrożeniu na taki, który ma więcej pamięci.
 
 ## <a name="fpgas"></a>Układy FPGA
 Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
@@ -50,7 +51,7 @@ Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają w
 
 Problemy z usługi Databricks i Azure Machine Learning.
 
-1. Po zainstalowaniu dodatkowych pakietów, błąd w usłudze Databricks instalacji zestawu SDK AML.
+1. Błędy instalacji usługi Azure Machine Learning w zestawie SDK w usłudze Databricks, podczas instalowania dodatkowych pakietów.
 
    Niektóre pakiety, takich jak `psutil`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety zamrożenia wersji lib. Ten problem jest związany z Databricks i Azure Machine Learning Usługa SDK — użytkownik może prawdzie z innymi bibliotekami zbyt. Przykład:
    ```python
@@ -60,7 +61,7 @@ Problemy z usługi Databricks i Azure Machine Learning.
 
 2. Korzystając z automatycznych uczenia maszynowego w usłudze Databricks, jeśli chcesz anulować przebieg i uruchom nowy eksperyment Uruchom, uruchom ponownie usługi Azure Databricks w klastrze.
 
-3. W ustawieniach ml automatyczna, gdy masz > 10 iteracji Ustaw show_output jako FAŁSZ podczas przesyłania przebieg.
+3. W ustawieniach ml automatyczne, jeśli masz więcej niż 10 iteracji, ustaw `show_output` do `False` momentu przesłania przebiegu.
 
 
 ## <a name="azure-portal"></a>Azure Portal
@@ -73,6 +74,20 @@ Oto, miejsca zamieszkania pliki dziennika:
 ## <a name="resource-quotas"></a>Limity przydziałów zasobów
 
 Dowiedz się więcej o [limity przydziałów zasobów](how-to-manage-quotas.md) można napotkać podczas pracy z usługą Azure Machine Learning.
+
+## <a name="authentication-errors"></a>Błędy uwierzytelniania
+
+Jeśli operacja zarządzania w celu obliczeń z zadania zdalne, zostanie wyświetlony jeden z następujących błędów:
+
+```json
+{"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
+```
+
+```json
+{"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
+```
+
+Na przykład zostanie wyświetlony błąd, jeśli zostanie podjęta próba Utwórz lub Dołącz obliczeniowego elementu docelowego z potoku uczenia Maszynowego, który jest przesyłany w celu wykonania zdalnego.
 
 ## <a name="get-more-support"></a>Uzyskaj więcej obsługę
 

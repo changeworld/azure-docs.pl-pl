@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: 86eec87d0c466b9172834fa9dbe7dfcb3702ea55
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094108"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508712"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Tworzenie modułu C# usługi IoT Edge, aby przenieść pliki na krawędzi pola danych (wersja zapoznawcza)
 
@@ -266,6 +266,13 @@ W poprzedniej sekcji utworzyliśmy rozwiązanie IoT Edge i dodać kod do FileCop
     ![Kompilowanie i wypychanie rozwiązania usługi IoT Edge](./media/data-box-edge-create-iot-edge-module/build-iot-edge-solution-2.png)
  
     Gdy wiadomo, Visual Studio Code, aby utworzyć swoje rozwiązanie, jest ono wykonywane dwa polecenia w zintegrowanym terminalu: kompilacji platformy docker i wypychania platformy docker. Te dwa polecenia kompilują kod, konteneryzują plik CSharpModule.dll i wypychają go do rejestru kontenerów określonego podczas inicjowania rozwiązania.
+
+    Zostanie wyświetlony monit wybierz platformę modułu. Wybierz *amd64* odpowiadający systemu Linux.
+
+    ![Wybierz platformę](./media/data-box-edge-create-iot-edge-module/select-platform.png)
+
+    > [!IMPORTANT] 
+    > Obsługiwane są tylko moduły systemu Linux.
 
     Zobaczysz poniższe ostrzeżenie, który można zignorować:
 

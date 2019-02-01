@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1671a068611d9f5842c2cb09f3b83b18dd483921
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d61b39eb0a7b6a35330e0cde2142029b8eb7ce03
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820686"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512214"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -51,13 +51,13 @@ Przegląd [informacje dotyczące planowania sieci](#network-planning) przed rozp
 Co najmniej jeden hybrydowych procesów roboczych Runbook bankowym można usunąć z grupy, lub możesz usunąć grupę, w zależności od wymagań. Aby usunąć hybrydowy proces roboczy elementu Runbook na komputerze lokalnym, użyj następujące czynności:
 
 1. W witrynie Azure portal przejdź do konta usługi Automation.
-2. W obszarze **ustawienia**, wybierz opcję **klucze** i zwróć uwagę na wartości dla **adresu URL** i **podstawowy klucz dostępu**. Ta informacja będzie potrzebna do kolejnego kroku.
+2. W obszarze **ustawienia konta**, wybierz opcję **klucze** i zwróć uwagę na wartości dla **adresu URL** i **podstawowy klucz dostępu**. Ta informacja będzie potrzebna do kolejnego kroku.
 
 ### <a name="windows"></a>Windows
 
 Otwórz sesję programu PowerShell w trybie administratora i uruchom następujące polecenie. Użyj **-Verbose** przełącznika, aby uzyskać szczegółowy dziennik proces usuwania.
 
-```powershell
+```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
 ```
 
@@ -68,6 +68,8 @@ Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <Comp
 ```
 
 ### <a name="linux"></a>Linux
+
+Możesz użyć polecenia `ls /var/opt/microsoft/omsagent` na hybrydowy proces roboczy elementu Runbook można pobrać identyfikator obszaru roboczego. Istnieje folder w katalogu, w którym nazwa folderu jest obszarem roboczym identyfikatora.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
@@ -81,11 +83,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 Aby usunąć grupę, należy najpierw usunąć hybrydowy proces roboczy elementu Runbook z każdego komputera, który jest członkiem grupy za pomocą procedury przedstawionej wcześniej. Następnie użyj następujące kroki, aby usunąć grupę:
 
 1. Otwórz konto usługi Automation w witrynie Azure portal.
-1. W obszarze **automatyzacji procesów**, wybierz opcję **grupy hybrydowych procesów roboczych**. Wybierz grupę, która ma zostać usunięty. Zostanie wyświetlona strona właściwości dla tej grupy.
+2. W obszarze **automatyzacji procesów**, wybierz opcję **grupy hybrydowych procesów roboczych**. Wybierz grupę, która ma zostać usunięty. Zostanie wyświetlona strona właściwości dla tej grupy.
 
    ![Strona właściwości](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
-1. Na stronie właściwości dla wybranej grupy wybierz **Usuń**. Komunikat jest wyświetlany monit o potwierdzenie tej akcji. Wybierz **tak** Jeśli wiesz, czy chcesz kontynuować.
+3. Na stronie właściwości dla wybranej grupy wybierz **Usuń**. Komunikat jest wyświetlany monit o potwierdzenie tej akcji. Wybierz **tak** Jeśli wiesz, czy chcesz kontynuować.
 
    ![Komunikat z potwierdzeniem](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
 

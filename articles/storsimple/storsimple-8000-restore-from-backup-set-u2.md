@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 55a4b150471b87289cdd67dc8fbce92336850364
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 57290971185d1fd64b3b5ca6ac37535070ddab9e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568822"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496486"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Przywracanie woluminu StorSimple z zestawu kopii zapasowych
 
@@ -71,7 +71,7 @@ W aktualizacji Update 4 poleceń cmdlet programu Windows PowerShell może służ
 
 Aby uzyskać więcej informacji na temat poleceń cmdlet ponownego wypełniania, przejdź do [Dokumentacja poleceń cmdlet programu Windows PowerShell dla usługi StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-Za pomocą automatycznego rehdyration zwykle wyższa wydajność odczytu przejściowe jest oczekiwany. Rzeczywiste magniutde ulepszeń zależy od różnych czynników, takich jak wzorcu dostępu, współczynnik zmian danych i typ danych. 
+Za pomocą automatycznego ponownego wypełniania zwykle wyższa wydajność odczytu przejściowy jest oczekiwany. Wielkość rzeczywistej ulepszenia zależy od różnych czynników, takich jak wzorcu dostępu, współczynnik zmian danych i typ danych. 
 
 Aby anulować zadanie ponownego wypełniania, używając polecenia cmdlet programu PowerShell. Jeśli chcesz trwale wyłączyć zadania ponownego wypełniania dla wszystkich przyszłych przywraca [skontaktuj się z Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 

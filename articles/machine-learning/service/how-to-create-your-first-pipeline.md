@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 074184d1465236fadebb5afa229a5b7f8689bbc9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b1098622ad96ccdcd1941466c6e32255b4415820
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251660"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508015"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -103,6 +103,9 @@ output_data1 = PipelineData(
 ## <a name="set-up-compute-target"></a>Konfigurowanie obliczeniowego elementu docelowego
 
 W usłudze Azure Machine Learning termin __obliczenia__ (lub __obliczeniowego elementu docelowego__) odwołuje się do maszyny i klastry, które wykonują etapów obliczeniowych w potoku, machine learning.   Zobacz [celów obliczeń dla szkoleń modelowych](how-to-set-up-training-targets.md) poznania pełnej listy celów obliczeń oraz jak utworzyć i dołączyć je do obszaru roboczego.  Proces tworzenia i/lub dołączanie obliczeniowego elementu docelowego jest taki sam niezależnie od tego, czy podczas uczenia modelu lub etap potoku. Po utworzeniu i dołączyć obliczeniowego elementu docelowego, użyj `ComputeTarget` obiektu w swojej [etap potoku](#steps).
+
+> [!IMPORTANT]
+> Wykonywanie operacji zarządzania na obliczeniowych elementów docelowych nie jest obsługiwane wewnątrz zdalnej obsługi zadań. Przesłaniu potokach uczenia maszynowego jako zdalnego zadania nie używaj operacji zarządzania w celów obliczeń z wewnątrz potoku.
 
 Poniżej przedstawiono przykłady tworzenie i dołączanie obliczeniowych elementów docelowych dla:
 

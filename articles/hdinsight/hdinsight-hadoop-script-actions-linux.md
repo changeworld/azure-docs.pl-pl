@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b0eae86a4927f716c974086411e1098f2e9a190d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718932"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498033"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
 
@@ -72,10 +72,10 @@ Wersja systemu operacyjnego można sprawdzić za pomocą `lsb_release`. Poniższ
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ...
@@ -278,7 +278,7 @@ Skrypty służące do dostosowywania klastra musi być przechowywany w jednym z 
 
 * A __publicznie do odczytu URI__. Na przykład adres URL do danych przechowywanych w usłudze OneDrive, Dropbox lub inny plik innej usługi hostingu.
 
-* __Konta usługi Azure Data Lake Storage__ skojarzonym z klastrem HDInsight. Aby uzyskać więcej informacji dotyczących korzystania z usługi Azure Data Lake Storage z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+* __Konta usługi Azure Data Lake Storage__ skojarzonym z klastrem HDInsight. Aby uzyskać więcej informacji dotyczących korzystania z usługi Azure Data Lake Storage z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     > [!NOTE]  
     > Nazwa główna usługi HDInsight używane do dostępu do usługi Data Lake Storage przez musi mieć dostęp do odczytu do skryptu.
@@ -299,10 +299,10 @@ Aby sprawdzić wersję systemu operacyjnego, należy użyć `lsb_release`. Na pr
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ```
@@ -346,7 +346,7 @@ Błędy, które mogą wystąpić, gdy za pomocą skryptów, które zostały opra
 
 Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku Windows CRLF jest linii Kończenie dla wielu edytorów tekstu na Windows.
 
-*Rozpoznawanie*: Jest to opcja w edytorze tekstu, na koniec wiersza wybierz format systemu Unix lub LF. Aby zmienić CRLF LF można także użyć następujących poleceń w systemie Unix:
+*Rozwiązanie*: Jest to opcja w edytorze tekstu, na koniec wiersza wybierz format systemu Unix lub LF. Aby zmienić CRLF LF można także użyć następujących poleceń w systemie Unix:
 
 > [!NOTE]  
 > Następujące polecenia są mniej więcej odpowiednikami, w tym, że ich należy zmienić CRLF końce wierszy na LF. Wybierz jedną, w oparciu o narzędzi dostępnych w systemie.
@@ -362,7 +362,7 @@ Ten problem najczęściej występuje, gdy skrypt został utworzony w środowisku
 
 *Przyczyna*: Ten błąd występuje, gdy skrypt został zapisany w formacie UTF-8 za pomocą znacznika kolejności bajtów (BOM).
 
-*Rozpoznawanie*: Zapisz plik w formacie ASCII lub jako UTF-8 bez BOM. Aby utworzyć plik bez BOM można także użyć następującego polecenia w systemie Linux lub Unix:
+*Rozwiązanie*: Zapisz plik w formacie ASCII lub jako UTF-8 bez BOM. Aby utworzyć plik bez BOM można także użyć następującego polecenia w systemie Linux lub Unix:
 
     awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' INFILE > OUTFILE
 

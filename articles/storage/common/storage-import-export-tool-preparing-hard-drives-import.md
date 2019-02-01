@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cdcb7dbe726582e525b401bfa765ccc423928610
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454406"
+ms.locfileid: "55510140"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Przygotowywanie dysków twardych do zadania importu
 
@@ -81,7 +81,7 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 | BasePath | **[Wymagane]**<br/>Wartość tego parametru reprezentuje źródła, w którym znajduje się dane do zaimportowania. Narzędzie będzie cyklicznie kopii wszystkich danych znajdujących się w tej ścieżce.<br><br/>**Dozwolone wartości**: To musi być prawidłową ścieżką na komputerze lokalnym lub prawidłową ścieżkę udziału i powinna być dostępna przez użytkownika. Ścieżka katalogu musi być ścieżką bezwzględną (nie ścieżkę względną). Jeśli ścieżka kończy się ciągiem "\\", reprezentuje ścieżkę, kończenie bez katalogu else"\\" reprezentuje plik.<br/>Nie wyrażenia regularnego jest dozwolone w tym polu. Jeśli ścieżka zawiera spacje, umieść ją w "".<br><br/>**Przykład**: "c:\Directory\c\Directory\File.txt"<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
 | DstBlobPathOrPrefix | **[Wymagane]**<br/> Ścieżka do katalogu wirtualnego docelowym w ramach konta magazynu platformy Windows Azure. Katalog wirtualny może lub nie może już istnieć. Jeśli nie istnieje, zostanie utworzyć usługi Import/Export.<br/><br/>Pamiętaj używać nazw prawidłowego kontenera, określając docelowy katalogi wirtualne czy za obiekty BLOB. Należy pamiętać, że nazwy kontenerów muszą być małymi literami. Reguły nazewnictwa kontenerów, zobacz [nazewnictwo i odwoływanie się do kontenerów, obiektów blob i metadanych](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata). Jeśli tylko katalogu głównego jest określony, struktura katalogów źródła jest replikowany w docelowy kontener obiektów blob. Jeśli pożądane jest struktura innego katalogu niż w źródle, wiele wierszy mapowania w woluminie CSV<br/><br/>Można określić kontener lub prefiks obiektu blob, takich jak utworów muzycznych/70s /. Katalog docelowy musi zaczynać się od nazwy kontenera, następuje ukośnik "/" i opcjonalnie może zawierać katalogu wirtualnego obiektów blob, który kończy się ciągiem "/".<br/><br/>Gdy kontenera docelowego jest nadrzędny kontener, należy jawnie określić kontener głównego, łącznie z ukośnikiem jako $root /. Ponieważ nie może zawierać obiekty BLOB w kontenerze katalogu głównego "/" w nazwach podkatalogów w katalogu źródłowym nie zostaną skopiowane, gdy katalog docelowy jest nadrzędny kontener.<br/><br/>**Przykład**<br/>Jeśli ścieżka docelowa obiektu blob jest https://mystorageaccount.blob.core.windows.net/video, wartość tego pola może być wideo /  |
 | BlobType | **[Opcjonalnie]**  bloku &#124; strony<br/>Obecnie usługa Import/Export obsługuje 2 typy obiektów blob. Strona, obiekty BLOB i domyślne BlobsBy bloku, wszystkie pliki zostaną zaimportowane jako blokowe obiekty BLOB. I \*VHD i \*vhdx zostaną zaimportowane, jak BlobsThere strony jest ograniczenie blokowych obiektów blob i — obiekt blob typu page dozwolony rozmiar. Zobacz [cele usługi Storage dotyczące skalowalności](storage-scalability-targets.md) Aby uzyskać więcej informacji.  |
-| Dyspozycja | **[Opcjonalnie]**  Zmień nazwę &#124; zastąpić nie &#124; zastępowania <br/> To pole określa zachowania dotyczącego kopiowania podczas importowania tj gdy data jest przekazywany do konta magazynu z dysku. Dostępne są następujące opcje: zmiana nazwy&#124;czy chcesz go zastąpić&#124;zastąpić nie. Wartość domyślna to "Zmień nazwę" Jeśli niczego nie określono. <br/><br/>**Zmień nazwę**: Jeśli obiekt o takiej samej nazwie jest obecny, tworzona jest kopia w miejscu docelowym.<br/>Zastąpienie: zastępuje plik nowszy plik. Plik z ostatniej modyfikacji usługi wins.<br/>**Zastąpienie nie**: Pomija zapisywania pliku, jeśli już istnieje.|
+| Dyspozycja | **[Opcjonalnie]**  Zmień nazwę &#124; zastąpić nie &#124; zastępowania <br/> To pole określa zachowania dotyczącego kopiowania podczas importowania tj gdy data jest przekazywany do konta magazynu z dysku. Dostępne są następujące opcje: zmiana nazwy&#124;zastąpić&#124;zastąpić nie. Wartość domyślna to "Zmień nazwę" Jeśli niczego nie określono. <br/><br/>**Zmień nazwę**: Jeśli obiekt o takiej samej nazwie jest obecny, tworzona jest kopia w miejscu docelowym.<br/>Zastąpienie: zastępuje plik nowszy plik. Plik z ostatniej modyfikacji usługi wins.<br/>**Zastąpienie nie**: Pomija zapisywania pliku, jeśli już istnieje.|
 | MetadataFile | **[Opcjonalnie]** <br/>Wartość do tego pola jest plik metadanych, które mogą być dostarczone, jeśli ten musi zachować metadane obiektów lub niestandardowych metadanych. Ścieżka do pliku metadanych dla obiektów blob docelowego. Zobacz [metadanych i Format pliku właściwości usługi Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Aby uzyskać więcej informacji |
 | PropertiesFile | **[Opcjonalnie]** <br/>Ścieżka do pliku właściwości dla obiektów blob docelowego. Zobacz [metadanych i Format pliku właściwości usługi Import/Export](../storage-import-export-file-format-metadata-and-properties.md) Aby uzyskać więcej informacji. |
 
@@ -319,7 +319,7 @@ Jednak tej samej sesji kopiowania nie umożliwia importowanie danych do różnyc
 
 Podczas kopiowania sesji nazwa jest taka sama wielu uruchomień narzędzia pliku dziennika (/ logdir) i klucz konta magazynu (/ sk) również powinien być taki sam.
 
-SessionId może zawierać litery, 0 ~ 9, understore (\_), kreski (-) lub skrótu (#), a jego długość musi być 3 ~ 30.
+SessionId może zawierać litery, 0 ~ 9, podkreślenie (\_), myślnik (-) lub skrótu (#), a jego długość musi być 3 ~ 30.
 
 np. 1 sesji lub sesji #1 lub sesji\_1
 
@@ -388,7 +388,7 @@ Mimo, że dane są rozproszone na dyskach, danych, gdy przekazywane do konta mag
 
 #### <a name="how-many-of-the-input-disks-will-have-active-io-in-parallel-when-copy-is-in-progress"></a>Ile danych wejściowych z dysków będzie miał aktywnych we/wy w sposób równoległy, gdy Trwa kopiowanie?
 
-Narzędzie rozkłada dane na dyskach danych wejściowych, na podstawie rozmiaru plików wejściowych. Inaczej mówiąc, liczba aktywnych dysków w sposób równoległy całkowicie delends od charakteru danych wejściowych. W zależności od rozmiaru poszczególnych plików w zestawie danych wejściowych co najmniej jednego dysku mogą być wyświetlane aktywnych we/wy równolegle. Zobacz następne pytanie, aby uzyskać więcej informacji.
+Narzędzie rozkłada dane na dyskach danych wejściowych, na podstawie rozmiaru plików wejściowych. Inaczej mówiąc, liczba aktywnych dysków w sposób równoległy całkowicie jest zależna od charakteru danych wejściowych. W zależności od rozmiaru poszczególnych plików w zestawie danych wejściowych co najmniej jednego dysku mogą być wyświetlane aktywnych we/wy równolegle. Zobacz następne pytanie, aby uzyskać więcej informacji.
 
 #### <a name="how-does-the-tool-distribute-the-files-across-the-disks"></a>Jak narzędzie rozdystrybuować pliki dyski?
 

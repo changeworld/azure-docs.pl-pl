@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5a0774c69c074698383e9c6f7f7cf9331e8939f2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5068692d5f12b5b6c8b0476a789123ef9fd1dc75
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164439"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508814"
 ---
-# <a name="claimsproviders"></a>ClaimsProviders 
+# <a name="claimsproviders"></a>ClaimsProviders
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -35,7 +35,6 @@ Dostawcy oświadczeń zawiera zbiór [profile techniczne](technicalprofiles.md).
         ...
     </TechnicalProfiles>
   </ClaimsProvider>
-</ClaimsProvider>
   ...
 </ClaimsProviders>
 ```
@@ -56,7 +55,7 @@ Dostawcy oświadczeń zawiera zbiór [profile techniczne](technicalprofiles.md).
 | Nazwa wyświetlana | 0:1 | Ciąg, który zawiera nazwę dostawcy oświadczeń, które mogą być wyświetlane użytkownikom. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Zbiór profilów Technical Preview obsługiwana przez dostawcę oświadczeń |
 
-**ClaimsProvider** organizuje Twoje technical profile odnoszą się do dostawcy oświadczeń. Poniższy przykład pokazuje usługi Azure Active Directory dostawcy oświadczeń przy użyciu profilów techniczne usługi Azure Active Directory: 
+**ClaimsProvider** organizuje Twoje technical profile odnoszą się do dostawcy oświadczeń. Poniższy przykład pokazuje usługi Azure Active Directory dostawcy oświadczeń przy użyciu profilów techniczne usługi Azure Active Directory:
 
 ```XML
 <ClaimsProvider>
@@ -82,7 +81,7 @@ Dostawcy oświadczeń zawiera zbiór [profile techniczne](technicalprofiles.md).
       ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
-      ...    
+      ...
     </TechnicalProfile>
     <TechnicalProfile Id="AAD-UserReadUsingObjectId">
       ...
@@ -109,4 +108,3 @@ Poniższy przykład pokazuje usługi Facebook dostawcy oświadczeń przy użyciu
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
- 

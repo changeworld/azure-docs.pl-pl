@@ -3,7 +3,7 @@ title: Usługa Azure SQL Database zakupu modeli | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat model zakupu modeli, które są dostępne bazy danych w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 719e8c605dfc91b1d9c358158aa3dca248173f90
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f2e330f37c823b0815558bbc8ea10fb58439e043
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472018"
+ms.locfileid: "55509307"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 

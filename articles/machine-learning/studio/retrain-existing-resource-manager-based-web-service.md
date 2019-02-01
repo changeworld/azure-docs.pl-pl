@@ -1,8 +1,21 @@
 ---
-Tytuł: Ponowne szkolenie istniejącej predykcyjne Studio web service titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning Studio.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 11/07/2017
+title: Ponowne szkolenie istniejącej usługi internetowej Studio predykcyjne
+titleSuffix: Azure Machine Learning Studio
+description: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning Studio.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 11/07/2017
+ms.openlocfilehash: cb33b32be276c2deb61a1a718a609612c6a4989e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511959"
 ---
 # <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>Ponowne szkolenie istniejącej predykcyjne usługi sieci web Azure Machine Learning Studio
 

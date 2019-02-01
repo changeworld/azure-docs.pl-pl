@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 248624cc31fab0138eb8a45b5479cc8d2da6ef53
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7a645669d273e0ca0017e28ef539c2143151d25
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467649"
+ms.locfileid: "55509707"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -401,6 +401,10 @@ W przypadku wymiarów pomocnicze metryki należy określić wartości wymiaru, a
 Starsze metryki są dostępne równolegle za pomocą metryk usługi Azure Monitor zarządzane. Wsparcie przechowuje takie same, do czasu usługi Azure Storage zakończenia usługę w starszych metryki.
 
 ## <a name="faq"></a>Często zadawane pytania
+
+**Nowe metryki obsługuje klasycznego konta magazynu?**
+
+Nie, nowe metryki w ramach kont magazynu usługi Azure Resource Manager tylko pomocy technicznej usługi Azure Monitor. Jeśli chcesz przy użyciu metryk dotyczących kont magazynu, należy przeprowadzić migrację do konta magazynu usługi Resource Manager platformy Azure. Zobacz [migrację do usługi Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
 
 **Usługi Azure Storage obsługuje metryki dla dysków zarządzanych lub dysków niezarządzanych?**
 

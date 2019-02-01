@@ -1,8 +1,21 @@
 ---
-Tytuł: Użyj przykładowych titleSuffix zestawy danych: Opis usługi Azure Machine Learning Studio: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowe zestawy danych można użyć do eksperymentów.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/19/2018
+title: Korzystanie z przykładowych zestawów danych
+titleSuffix: Azure Machine Learning Studio
+description: Opisy zestawów danych użytych w Przykładowe modele uwzględnione w usłudze Machine Learning Studio. Te przykładowe zestawy danych można użyć do eksperymentów.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/19/2018
+ms.openlocfilehash: de809ef1455e4c8c4c2284c2139e962f1829770b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510174"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/15/2018
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: e78b1f94338f177601b1e93fcc7974a228be062b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 08d51b1b6a09bb4df3986bd8c4c44d3834882def
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239999"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506129"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Nietrwałe usuwanie obiektów blob usługi Azure Storage
 Usługa Azure Storage oferuje teraz usuwania nietrwałego dla obiektów blob, tak, aby łatwiej można odzyskać dane, gdy jest błędnie zmodyfikowany lub usunięty przez aplikację lub innego użytkownika do konta magazynu.
@@ -322,4 +322,4 @@ Użytkownik może korzystać z zalet usuwania nietrwałego, niezależnie od wers
 * [Interfejs API REST usługi blob](/rest/api/storageservices/blob-service-rest-api)
 * [Replikacja usługi Azure Storage](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [Projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Co należy zrobić po wystąpieniu awarii usługi Azure Storage](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

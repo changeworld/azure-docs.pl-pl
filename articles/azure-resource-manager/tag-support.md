@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884949"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509919"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-tags.md).
@@ -666,6 +666,7 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 | logDefinitions | Nie | 
 | logprofiles | Nie | 
 | dzienniki | Nie | 
+| metricAlerts | Yes |
 | migrateToNewPricingModel | Nie | 
 | myWorkbooks | Nie | 
 | — zapytania | Nie | 
@@ -1108,7 +1109,7 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
 | managedInstances | Yes |
-| managedInstances/baz danych | Yes |
+| managedInstances/baz danych | Tak (zobacz uwaga poniżej) |
 | managedInstances/databases/backupShortTermRetentionPolicies | Nie |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nie |
 | managedInstances/databases/vulnerabilityAssessments | Nie |
@@ -1120,12 +1121,16 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 | serwerów | Yes | 
 | serwery/administratorów | Nie | 
 | serwery/communicationLinks | Nie | 
-| serwery/baz danych | Yes | 
+| serwery/baz danych | Tak (zobacz uwaga poniżej) | 
 | servers/encryptionProtector | Nie | 
 | serwery/kluczy | Nie | 
 | servers/restorableDroppedDatabases | Nie | 
 | serwery/serviceobjectives | Nie | 
 | serwery/tdeCertificates | Nie | 
+
+> [!NOTE]
+> Wzorzec bazy danych nie obsługuje tagi, ale innych baz danych obsługuje tagi.
+
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Typ zasobu | Obsługa tagów |
@@ -1163,8 +1168,11 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Typ zasobu | Obsługa tagów |
 | ------------- | ----------- |
-| streamingjobs | Yes | 
+| streamingjobs | Tak (zobacz uwaga poniżej) | 
 | streamingjobs/diagnosticSettings | Nie | 
+
+> [!NOTE]
+> Nie można dodać tag, gdy streamingjobs jest uruchomiony. Zatrzymaj zasobów, aby dodać tag.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 | Typ zasobu | Obsługa tagów |

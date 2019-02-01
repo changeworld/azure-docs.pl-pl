@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/28/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: adc780577e8c83411e173a5bfad75c3555119f11
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 94171da3c60de3efc4e2a234494816899c3d2f05
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093521"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511857"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -216,7 +216,7 @@ Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktual
 
 | Właściwość | Opis |
 | --- | --- |
-| Name |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
+| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
 |System operacyjny| System Linux lub Windows|
 | Grupy można zaktualizować (wersja zapoznawcza)|Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
 | Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie bądź zaimportowaną grupę lub wybierz maszynę z listy rozwijanej, a następnie wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md) |
@@ -239,9 +239,9 @@ $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$sched = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName <automationAccountName> -Schedule $sched -Windows -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="view-missing-updates"></a>Wyświetl brakujące aktualizacje
