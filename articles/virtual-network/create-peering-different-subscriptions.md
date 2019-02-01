@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: f06f0b5392ebb60cd852d3c2eb201478b31ae167
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3b929c3f85bab4319fe2fef1b5c0575f0d1d972a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014970"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511680"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Tworzenie, wirtualne sieci równorzędne — różne subskrypcje usługa Resource Manager
 
@@ -72,7 +72,7 @@ Poniższe kroki używanie różnych kont, dla każdej subskrypcji. Jeśli używa
     - **Lokalizacja**: *Wschodnie stany USA*
 
 13. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetB*. Wybierz **myVnetB** , gdy pojawia się w wynikach wyszukiwania.
-14. W obszarze **myVnetB**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+14. W obszarze **myVnetB**, wybierz opcję **właściwości** z pionowy listy opcji po lewej stronie. Kopiuj **identyfikator ZASOBU**, która zostanie użyta w późniejszym kroku. Identyfikator zasobu jest podobny do poniższego przykładu: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
 15. Wybierz **kontrola dostępu (IAM)** w obszarze **myVnetB**, a następnie wykonaj kroki 5 – 10 myVnetB, wprowadzając **Użytkownik_a** w kroku 8.
 16. Wyloguj się z portalu jako UżytkownikB, a następnie zaloguj się jako użytkownik a.
 17. W **Wyszukaj zasoby** polu w górnej części portalu wpisz *myVnetA*. Wybierz **myVnetA** , gdy pojawia się w wynikach wyszukiwania.

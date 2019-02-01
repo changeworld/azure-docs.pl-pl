@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54022295"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopiowanie danych z rozwiązania SAP Business Warehouse przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Bieżąca wersja](connector-sap-business-warehouse.md)
 
@@ -171,20 +171,20 @@ Podczas kopiowania danych z systemu SAP BW, następujące mapowania są używane
 | CLNT | String |
 | CURR | Decimal |
 | CUKY | String |
-| DEC | Decimal |
+| GRU | Decimal |
 | FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | Int |
-| LANG | String |
+| JĘZYK | String |
 | LCHR | String |
 | LRAW | Byte[] |
 | PREC | Int16 |
 | QUAN | Decimal |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | String |
-| UNIT | String |
+| CIĄG | String |
+| JEDNOSTKA | String |
 | DATS | String |
 | NUMC | String |
 | TIMS | String |

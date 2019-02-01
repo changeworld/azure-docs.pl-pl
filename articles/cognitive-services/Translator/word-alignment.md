@@ -6,17 +6,17 @@ services: cognitive-services
 author: Jann-Skotdal
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: v-jansko
 ms.custom: seodec18
-ms.openlocfilehash: 74e26d4bb9b9c901524a85248dbf7f9d6ead5e95
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0a373a61a26411c204cedccec8fbf0beac73e02e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091479"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461835"
 ---
 # <a name="how-to-receive-word-alignment-information"></a>Jak otrzymywać informacje wyrównanie programu word
 
@@ -28,7 +28,7 @@ Wyrównanie jest zwracana jako wartość ciągu następujący format dla każdeg
 
 [[SourceTextStartIndex]:[SourceTextEndIndex]—[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
-Parametrów wyrównanie przykład: "0:0-7:10 1:2-11:20 0 3:4:3, 3:4-4:5:5-21 6:21".
+Przykład parametrów wyrównanie: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
 Innymi słowy dwukropek oddziela start końcowego indeksu, kreska oddziela językach i spacja oddziela słowa. O jeden wyraz może być dostosowanie zero, jeden lub wiele słów w innym języku, a wyrównany wyrażenie może być nieciągłe. Po udostępnieniu żadnych informacji wyrównanie elementu wyrównania jest pusta. Metoda zwraca błąd braku w takiej sytuacji.
 

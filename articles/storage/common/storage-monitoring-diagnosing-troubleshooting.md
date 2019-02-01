@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: 6b40741545ff286bc1b8e696d28c61b197605247
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 25ec52b44f8d5a36868cc609c42b6db5ab939fa4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474007"
+ms.locfileid: "55490268"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -637,7 +637,7 @@ Kod w aplikacji klienckiej, usuwa i od razu ponownie utworzy w kontenerze obiekt
 Aplikacja kliencka należy używać nazwy unikatowe kontenerów, zawsze wtedy, gdy tworzy nowe kontenery, jeśli wzorzec Usuń/ponownie utwórz jest wspólne.
 
 ### <a name="metrics-show-low-percent-success"></a>Metryki wskazują PercentSuccess niski lub wpisy dziennika analytics ma operacji ze stanem transakcji ClientOtherErrors
-**PercentSuccess** metryki przechwytuje procent operacje, które zakończyły się pomyślnie w oparciu o ich kod stanu HTTP. Operacje przy użyciu kody stanu 2XX liczone jako operacja się powiedzie, natomiast operacji przy użyciu kodów stanu w zakresach 3XX, 4XX i 5XX są liczone jako powiodło się i niższych **PercentSucess** wartość metryki. W plikach dziennika magazynu po stronie serwera, te operacje są rejestrowane ze stanem transakcji **ClientOtherErrors**.
+**PercentSuccess** metryki przechwytuje procent operacje, które zakończyły się pomyślnie w oparciu o ich kod stanu HTTP. Operacje przy użyciu kody stanu 2XX liczone jako operacja się powiedzie, natomiast operacji przy użyciu kodów stanu w zakresach 3XX, 4XX i 5XX są liczone jako powiodło się i niższych **PercentSuccess** wartość metryki. W plikach dziennika magazynu po stronie serwera, te operacje są rejestrowane ze stanem transakcji **ClientOtherErrors**.
 
 Należy pamiętać, że te operacje zostały zakończone powodzeniem i w związku z tym nie ma wpływu na inne metryki, takie jak dostępność. Niektóre operacje, wykonana pomyślnie, ale która może skutkować niepowodzeniem kodów stanu HTTP należą:
 

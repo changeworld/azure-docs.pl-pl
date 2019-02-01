@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5df11eb4e1b759d66200c09cabc8752532d0873c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5c3da9a69204d7229ddcbbf39ec389684258e389
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042159"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470692"
 ---
-# <a name="understanding-your-azure-cosmos-db-bill"></a>Informacje o rachunku Azure Cosmos DB
+# <a name="understand-your-azure-cosmos-db-bill"></a>Informacje o rachunku Azure Cosmos DB
 
 Jako usługę w pełni zarządzana baza danych natywnych dla chmury Azure Cosmos DB upraszcza rozliczenia opłat tylko za aprowizowaną przepływność i używane magazynu. Brak opłat za dodatkowe licencje, sprzętu, kosztów narzędzie lub funkcji koszty w porównaniu do środowiska lokalnego i hostowanych IaaS alternatyw. Po zastanowieniu się nad wielu regionów możliwości usługi Azure Cosmos DB, usługa bazy danych zapewnia znaczną redukcję kosztów w porównaniu do istniejącego środowiska lokalnego lub rozwiązań IaaS.
 
@@ -96,8 +96,8 @@ Załóżmy, że masz kontener usługi Azure Cosmos w regionie zachodnie stany US
 
 |**Element** |**Użycie (miesiąc)** |**Kurs** |**Koszt miesięczny** |
 |---------|---------|---------|-------|
-|Rachunek za przepływność dla kontenera w regionie Zachodnie stany USA      | 10 K jednostek żądań na sekundę * 24 * 30    |$0.008 na 100 jednostek żądań na sekundę na godzinę   |576 $|
-|Rachunek za przepływność dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia       | K 3 * 10 jednostek żądań na sekundę * 24 * 30    |$0.008 na 100 jednostek żądań na sekundę na godzinę  |$1728|
+|Rachunek za przepływność dla kontenera w regionie Zachodnie stany USA      | 10 K jednostek żądań na sekundę * 24 * 30    |$0.008 na 100 jednostek żądań na sekundę na godzinę   |$576|
+|Rachunek za przepływność dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia       | K 3 * 10 jednostek żądań na sekundę * 24 * 30    |$0.008 na 100 jednostek żądań na sekundę na godzinę  |$1,728|
 |Rachunek za przestrzeń dyskową dla kontenera w regionie Zachodnie stany USA      | 250 GB    |0,25 USD/GB  |$62.50|
 |Rachunek za przestrzeń dyskową dla 3 dodatkowych regionów — Wschodnie stany USA, Europa Północna i Azja Wschodnia      | 3 * 250 GB    |0,25 USD/GB  |$187.50|
 |**Łączna liczba**     |     |  |**$2,554**|
@@ -178,21 +178,21 @@ Wizualnie zmiany łączna aprowizowana przepływność podczas 720 godzin na mie
 
 Łączna kwota rachunku miesięcznego, będzie można (przy założeniu 30 dni/720 godziny w miesiącu) będą obliczane w następujący sposób:
 
-|**godz.**  |**Jednostek RU/s** |**Element** |**Użycie (co godzinę)** |**Koszty** |
+|**godz.**  |**RU/s** |**Element** |**Użycie (co godzinę)** |**Koszty** |
 |---------|---------|---------|-------|-------|
-|[0-100] |D1:10K <br/>D2:30K <br/>C1:20K |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |960 $  |
+|[0-100] |D1:10K <br/>D2:30K <br/>C1:20K |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2,880  |
-|[101 – 200] |D1:50K <br/>D2:70K <br/>C1:-- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |$1920  |
+|[101-200] |D1:50K <br/>D2:70K <br/>C1: -- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` |$1920  |
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(2 + 1) * (120 K RU/sec /100 * $0.016) * 100 hours = $5,760`  |$5,760  |
-|[201-300]  |D1:50K <br/>D2:70K <br/>C1:20K |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>"C1: 20 K RU/s/100 * godzin 0,016; * 100 USD = 320 $ |2,240 $"  |
+|[201-300]  |D1:50K <br/>D2:70K <br/>C1:20K |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 50 K RU/sec/100 * $0.016 * 100 hours = $800` <br/>`D2: 70 K RU/sec/100 * $0.016 * 100 hours = $1,120` <br/>`C1: 20 K RU/s/100 * godzin 0,016; * 100 USD = 320 $ |$2,240`  |
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(2 + 1) * (140 K RU/sec /100 * $0.016-) * 100 hours = $6,720` |$6,720 |
-|[301 400] |D1:10K <br/>D2:80K <br/>C1:-- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |$1440   |
+|[301-400] |D1:10K <br/>D2:80K <br/>C1: -- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 80 K RU/sec/100 * $0.016 * 100 hours = $1,280`  |$1,440   |
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (90 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2,880  |
-|[401-500] |D1:10K <br>D2:10K <br>C1:20K |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`D2: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |640 $  |
-| | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (40 K RU/sec /100 * $0.016) * 100 hours = $1,280`  |$1280  |
-|[501-700] |D1:20K <br>D2:100K <br>C1:-- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |$3,840  |
-| | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |$7680  |
-|[701 720] |D1:20K <br/>D2:50K <br/>C1:-- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
+|[401-500] |D1:10K <br>D2:10K <br>C1:20K |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`D2: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$640  |
+| | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (40 K RU/sec /100 * $0.016) * 100 hours = $1,280`  |$1,280  |
+|[501-700] |D1:20K <br>D2:100K <br>C1: -- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 20 K RU/sec/100 * $0.016 * 200 hours = $640` <br>`D2: 100 K RU/sec/100 * $0.016 * 200 hours = $3,200` |$3,840  |
+| | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (120 K RU/sec /100 * $0.016) * 200 hours = $1,280`  |$7,680  |
+|[701-720] |D1:20K <br/>D2:50K <br/>C1: -- |Rachunek za przepływność dla kontenera w regionie zachodnie stany USA (we wszystkich regionach są zapisywalne)  |`D1: 20 K RU/sec/100 *$0.016 * 20 hours = $64` <br/>`D2: 50 K RU/sec/100 *$0.016 * 20 hours = $160` |$224  |
 | | |Rachunek za przepływność dla 2 dodatkowych regionach: Wschodnie stany USA, Europa Północna (we wszystkich regionach są zapisywalne)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**Łączny koszt miesięczny**  | |**$38,688**   |
 
@@ -203,16 +203,16 @@ Rozważmy inny przykład, w którym ma być aktywnie Szacowanie wysokości rachu
 |**Koszt usługi Storage** | |
 |----|----|
 |Rekord średni rozmiar (KB) |1 |
-|Liczba rekordów  |100 000 000  |
+|Liczba rekordów  |100,000,000  |
 |Całkowita ilość miejsca (GB)  |100 |
-|Miesięczny koszt za GB  |0,25 USD  |
-|Oczekiwany koszt miesięczny magazynu   |25,00  |
+|Miesięczny koszt za GB  |$0.25  |
+|Oczekiwany koszt miesięczny magazynu   |$25.00  |
 
 <br>
 
 |**Koszt przepływności** | | | |
 |----|----|----|----|
-|Typ operacji| Żądań na sekundę| Średni RU/żądania| Wymagane (RUS)|
+|Typ operacji| Żądań na sekundę| Średni RU/request| Wymagane (RUS)|
 |Zapisywanie| 100 | 5 | 500|
 |Odczyt| 400| 1| 400|
 
@@ -236,9 +236,9 @@ Pojemność na platformie Azure Cosmos DB zastrzeżone umożliwia zakup przepły
 
 |**Region**| **Cena za godzinę dla 100 jednostek RU/s**|**Jednostki (RU/s)**|**Naliczona opłata (co godzinę)**| **Naliczona opłata (miesięcznie)**|
 |----|----|----|----|----|
-|Wschodnie stany USA|$0.008 |50 TYS.|4 USD|$2,880 |
-|Japonia Wschodnia|$0.009 |50 TYS.| $4.50 |$3,240 |
-|Łącznie|||$8,50|$6,120 |
+|Wschodnie stany USA|$0.008 |50 K|$4|$2,880 |
+|Japonia Wschodnia|$0.009 |50 K| $4.50 |$3,240 |
+|Łącznie|||$8.50|$6,120 |
 
 Zastanówmy się, że zakupiono rezerwowanie pojemności zamiast tego. Możesz kupić rezerwowanie pojemności dla 100 tysięcy jednostek RU na sekundę w cenie 56,064 $ przez jeden rok (20% rabatem) lub 6.40 $ / godz. Zobacz cennik rezerwowanie pojemności [stronę z cennikiem](https://azure.microsoft.com/pricing/details/cosmos-db/)).  
 
@@ -250,11 +250,11 @@ Co skutecznie zakupione jest środki w wysokości 8 USD za godzinę dla 100 tysi
 
 |**Region**| **Cena za godzinę dla 100 jednostek RU/s**|**Jednostki (RU/s)**| **Naliczona opłata (co godzinę)**| **Naliczona opłata (miesięcznie)**|
 |----|----|----|----|----|
-|Wschodnie stany USA|$0.008 |50 TYS.|4 USD|$2,880 |
-|Japonia Wschodnia|$0.009 |50 TYS.| $4.50 |$3,240 |
-|||Płatność zgodnie z rzeczywistym użyciem|$8,50|6120 $|
-|Zakupiona pojemność zarezerwowana|$0.0064 (20% rabatu) |100 jednostek żądań na sekundę lub wstępnie nabyte miejsce w 8 USD |-8 USD|-5,760 $ |
-|Rachunek netto|||0,50 USD |$360 |
+|Wschodnie stany USA|$0.008 |50 K|$4|$2,880 |
+|Japonia Wschodnia|$0.009 |50 K| $4.50 |$3,240 |
+|||Płatność zgodnie z rzeczywistym użyciem|$8.50|$6120|
+|Zakupiona pojemność zarezerwowana|$0.0064 (20% rabatu) |100 jednostek żądań na sekundę lub wstępnie nabyte miejsce w 8 USD |-$8|-$5,760 |
+|Rachunek netto|||$0.50 |$360 |
 
 ## <a name="next-steps"></a>Następne kroki
 

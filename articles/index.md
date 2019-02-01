@@ -6,12 +6,12 @@ description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nim
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 6ff3aa57ceedbf9cfe4920cc8c3ca2327a1f882c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3ed8c9b12bbccd0e31df4874a3798f0244666e62
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246817"
+ms.locfileid: "55301632"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1012,7 +1012,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                         </li>
                                         <li>
                                             <a href="/azure/cost-management/">
-                                                <img src="media/index/billing.svg" alt="" />
+                                                <img src="media/index/cost-management.svg" alt="" />
                                                 <p>Cost Management</p>
                                             </a>
                                         </li>
@@ -1755,7 +1755,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                         </li>
                                         <li>
                                             <a href="/azure/cost-management/">
-                                                <img src="media/index/billing.svg" alt="" />
+                                                <img src="media/index/cost-management.svg" alt="" />
                                                 <p>Cost Management</p>
                                             </a>
                                         </li>
@@ -5408,7 +5408,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/billing.svg" alt="" />
+                                                        <img src="media/index/cost-management.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -5646,7 +5646,7 @@ Automatyzowanie zadań platformy Azure za pomocą skryptów programu PowerShell 
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/billing.svg" alt="" />
+                                                        <img src="media/index/cost-management.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
