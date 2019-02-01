@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a59a7610a067a292d9b5dd7bb1a611b4bade05e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8ac8f2fe62898cdeb386fd3a8275fec1712c1728
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193815"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491556"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizacja programu Azure AD Connect: Omówienie aprowizacji deklaratywnej
 W tym temacie opisano model konfiguracji w programie Azure AD Connect. Model jest wywoływana, Aprowizacja Deklaratywna i umożliwia zapewnienie zmiany z łatwością konfiguracji. Wiele rzeczy, które opisano w tym temacie są zaawansowane i nie jest wymagana dla większości scenariuszy.
@@ -158,9 +158,9 @@ W tym scenariuszu należy zmienić zakres reguły synchronizacji, więc obiekty 
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 
 **Tematy odwołań**
 
-* [Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
+* [Synchronizacja w programie Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)

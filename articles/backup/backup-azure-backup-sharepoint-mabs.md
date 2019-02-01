@@ -2,18 +2,18 @@
 title: Użyj usługi Azure Backup server do tworzenia kopii zapasowych farmy programu SharePoint na platformie Azure
 description: Usługi Azure Backup Server umożliwia tworzenie kopii zapasowej i przywracanie danych programu SharePoint. Ten artykuł zawiera informacje, aby skonfigurować farmę programu SharePoint, więc, że żądane dane mogą być przechowywane na platformie Azure. Chronione dane SharePoint można przywrócić z dysku lub na platformie Azure.
 services: backup
-author: pvrk
-manager: shivamg
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
-ms.author: pullabhk
-ms.openlocfilehash: e7407341d7b85c101531c5a005cfd8db0eac2021
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.author: kasinh
+ms.openlocfilehash: b75c9093a983ba3e4ac4050379efbb091b363ff7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423028"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491970"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Wykonywania kopii zapasowych farmy programu SharePoint w systemie Microsoft Azure za pomocą Microsoft Azure Backup Server (MABS) w podobny sposób, należy utworzyć kopię zapasową innych źródeł danych. Usługa Azure Backup zapewnia elastyczność harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięczny lub roczny kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Umożliwia także przechowywać kopie dysk lokalny dla szybkiego cele czasu odzyskiwania (RTO), a następnie do przechowywania kopii na platformie Azure, ekonomiczne, długoterminowego przechowywania.
@@ -23,7 +23,7 @@ Usługa Azure Backup, program DPM obsługuje następujące scenariusze:
 
 | Obciążenie | Wersja | Wdrażanie programu SharePoint | Ochrona i odzyskiwanie |
 | --- | --- | --- | --- | --- | --- |
-| Sharepoint |SharePoint 2016, program SharePoint 2013, SharePoint 2010, SharePoint 2007, program SharePoint 3.0 |Program SharePoint jest wdrożony jako serwer fizyczny lub maszyna wirtualna funkcji Hyper-V/VMware <br> -------------- <br> Funkcji SQL AlwaysOn | Ochrona opcje odzyskiwania farmy programu SharePoint: farmy odzyskiwania bazy danych i plik lub element listy z punktów odzyskiwania na dysku.  Farmy i odzyskiwanie bazy danych z punktów odzyskiwania platformy Azure. |
+| Sharepoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3.0 |Program SharePoint jest wdrożony jako serwer fizyczny lub maszyna wirtualna funkcji Hyper-V/VMware <br> -------------- <br> Funkcji SQL AlwaysOn | Ochrona farmy programu SharePoint do odzyskania: Farmy odzyskiwania bazy danych i plik lub element listy z punktów odzyskiwania na dysku.  Farmy i odzyskiwanie bazy danych z punktów odzyskiwania platformy Azure. |
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 Istnieje kilka kwestii, czego potrzebujesz, aby upewnić się, zanim wykona kopii zapasowej farmy programu SharePoint na platformie Azure.
@@ -221,15 +221,15 @@ W poniższym przykładzie *element odzyskiwanie programu SharePoint* został prz
     ![SharePoint Protection12 serwera usługi Mab](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection14.png)
 4. Kliknij obiekt SharePoint objętego serwera usługi Mab **odzyskiwania** kartę, aby pobrać struktury bazy danych zawartości. Kliknij prawym przyciskiem myszy element, a następnie kliknij przycisk **odzyskać**.
 
-    ![SharePoint Protection13 serwera usługi Mab](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
+    ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. W tym momencie należy wykonać [opisane we wcześniejszej części tego artykułu](#restore-a-sharepoint-item-from-disk-using-dpm) odzyskać bazę danych zawartości programu SharePoint z dysku.
 
 ## <a name="faqs"></a>Często zadawane pytania
-P: czy można odzyskać dane element programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn (Ochrona na dysku)?<br>
-Odp. tak, element można odzyskać do oryginalnej witryny programu SharePoint.
+PYT.: Czy można odzyskać element programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn (Ochrona na dysku)?<br>
+Odp.: Tak, element można odzyskać do oryginalnej witryny programu SharePoint.
 
-P: czy można odzyskać dane bazy danych programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn?<br>
-Odp.: ponieważ bazy danych programu SharePoint są konfigurowane w funkcji SQL AlwaysOn, nie można modyfikować, chyba że zostanie usunięta grupa dostępności. W rezultacie serwera usługi Mab, nie można przywrócić bazę danych do oryginalnej lokalizacji. Może odzyskać bazę danych programu SQL Server do innego wystąpienia programu SQL Server.
+PYT.: Czy można odzyskać bazy danych programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn?<br>
+Odp.: Bazy danych programu SharePoint są skonfigurowane w funkcji SQL AlwaysOn, nie można modyfikować, chyba że grupa dostępności zostanie usunięta. W rezultacie serwera usługi Mab, nie można przywrócić bazę danych do oryginalnej lokalizacji. Może odzyskać bazę danych programu SQL Server do innego wystąpienia programu SQL Server.
 
 ## <a name="next-steps"></a>Następne kroki
 

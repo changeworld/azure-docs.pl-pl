@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0f15915d7c515387658ee132fcc1217958728c8a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a18b80677a67960a0b0c323280264bff2ffa8371
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166751"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489482"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning-expressions"></a>Synchronizacja programu Azure AD Connect: Opis wyrażeń związanych z aprowizacją deklaratywną
 Synchronizacja programu Azure AD Connect opiera się na aprowizacja deklaratywna po raz pierwszy wprowadzone w programie Forefront Identity Manager 2010. Dzięki temu można zaimplementować logikę biznesową pełną tożsamość integracji bez konieczności pisania kodu skompilowanego.
@@ -93,10 +93,10 @@ Na przykład:
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 
 **Tematy odwołań**
 
-* [Synchronizacja programu Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
+* [Synchronizacja w programie Azure AD Connect: Informacje ogólne o funkcjach](reference-connect-sync-functions-reference.md)
 

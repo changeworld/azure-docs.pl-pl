@@ -2,19 +2,18 @@
 title: Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych przy użyciu usługi Azure Backup
 description: Ten artykuł zawiera informacje o kopii zapasowej i przywracania środowiska dla maszyny wirtualne szyfrowane przy użyciu usługi Azure Disk Encryption.
 services: backup
-author: sogup
+author: geetha
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
-ms.author: sogup
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3a059e8edc286b2c1433c9b414dc275a433e2fd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: geetha
+ms.openlocfilehash: a5b0e6d700ce64a25c20b23738508d2796fc6caa
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217683"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487561"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup
 Ten artykuł zawiera informacje o kroki tworzenia kopii zapasowej i przywracanie maszyn wirtualnych (VM) przy użyciu usługi Azure Backup. Zapewnia także szczegółowe informacje o obsługiwanych scenariuszach, wymagania wstępne i kroki rozwiązywania problemów w przypadku wystąpienia błędów.

@@ -1,26 +1,21 @@
 ---
-title: Usługa Azure zalecenia dotyczące wydajności usługi Advisor | Dokumentacja firmy Microsoft
+title: Poprawianie wydajności aplikacji Azure za pomocą usługi Azure Advisor | Dokumentacja firmy Microsoft
 description: Używaj usługi Advisor w celu zoptymalizowania wydajności wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/16/2016
+ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 3caf838fec3a5c0ab847ded85b269df7a66859e0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f3c6e39203fb0d864ecf952e0468959d66931e1f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266749"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491590"
 ---
-# <a name="advisor-performance-recommendations"></a>Zalecenia dotyczące wydajności usługi Advisor
+# <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Poprawianie wydajności aplikacji Azure za pomocą usługi Azure Advisor
 
 Zalecenia dotyczące wydajności usługi Azure Advisor zwiększyć szybkość i czas odpowiedzi aplikacji krytyczne dla prowadzonej działalności. Możesz uzyskać zalecenia dotyczące wydajności usługi Advisor na **wydajności** karty Pulpit nawigacyjny usługi Advisor.
 
@@ -49,7 +44,7 @@ Aby uzyskać więcej informacji o zaleceniach App Services, zobacz [najlepsze ro
 
 ## <a name="use-managed-disks-to-prevent-disk-io-throttling"></a>Użycie usługi Managed Disks, aby zapobiegać ograniczaniu przepływności dysków operacji We/Wy
 
-Klasyfikator zidentyfikuje maszyny wirtualne, które należą do konta magazynu, która wkrótce osiągnie docelową wartość skalowalności. Dzięki temu narażone na ograniczenia wydajności operacji We/Wy. Advisor zaleci, że te maszyny wirtualne używać dysków Managed Disks, zapobiegając obniżeniu wydajności.
+Klasyfikator zidentyfikuje maszyny wirtualne, które należą do konta magazynu, która wkrótce osiągnie docelową wartość skalowalności. Ten warunek sprawia, że te maszyny wirtualne narażone na ograniczenia wydajności operacji We/Wy. Klasyfikator zaleci, którego używają dysków zarządzanych, zapobiegając obniżeniu wydajności.
 
 ## <a name="improve-the-performance-and-reliability-of-virtual-machine-disks-by-using-premium-storage"></a>Aby zwiększyć wydajność i niezawodność dysków maszyny wirtualnej za pomocą usługi Premium Storage
 
@@ -63,11 +58,11 @@ Niesymetryczność danych może spowodować wąskie gardła przenoszenia lub zas
 
 ## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Utwórz lub zaktualizuj nieaktualnych tabela statystyk dotyczących tabeli magazynu danych SQL, tak aby zwiększyć wydajność zapytań
 
-Klasyfikator identyfikuje tabele, które nie mają aktualnych [Statystyka tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) i zaleca tworzenia lub aktualizowania tabeli statystyk. Zapytanie, że optymalizator używa aktualnych danych statycznych do szacowania kardynalności lub liczbę wierszy w wyniku zapytania, co umożliwia Optymalizator zapytań utworzyć planu zapytania o wysokiej jakości największą wydajność magazynu danych SQL.
+Klasyfikator identyfikuje tabele, które nie mają aktualnych [Statystyka tabeli](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) i zaleca tworzenia lub aktualizowania tabeli statystyk. Zapytanie, że optymalizator używa aktualnych danych statycznych do szacowania kardynalności lub liczbę wierszy w wyniku zapytania, który umożliwia Optymalizator zapytań utworzyć plan zapytania wysokiej jakości największą wydajność magazynu danych SQL.
 
 ## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>Skalowanie w górę do optymalizacji wykorzystania pamięci podręcznej w tabelach usługi SQL Data Warehouse, aby zwiększyć wydajność zapytań
 
-Usługa Azure Advisor wykrywa, jeśli usługi SQL Data Warehouse ma wysoki pamięć podręczna używana wartość procentowa i niskiej trafień procent. Oznacza to, eksmisji wysokiej pamięci podręcznej, który może mieć wpływ na wydajność usługi SQL Data Warehouse. Klasyfikator sugeruje, skalowanie usługi SQL Data Warehouse, aby upewnić się, że zostało przydzielone wystarczająco dużo pojemności pamięci podręcznej dla danego obciążenia.
+Usługa Azure Advisor wykrywa, jeśli usługi SQL Data Warehouse ma wysoki pamięć podręczna używana wartość procentowa i niskiej trafień procent. Ten stan wskazuje eksmisji wysokiej pamięci podręcznej, który może mieć wpływ na wydajność usługi SQL Data Warehouse. Klasyfikator sugeruje, skalowanie usługi SQL Data Warehouse, aby upewnić się, że zostało przydzielone wystarczająco dużo pojemności pamięci podręcznej dla danego obciążenia.
 
 ## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>Konwertowanie tabel SQL Data Warehouse na zreplikowanych tabel w celu zwiększenia wydajności zapytań
 
@@ -75,10 +70,10 @@ Klasyfikator identyfikuje tabele, które nie są zreplikowane tabele, ale będą
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-all-of-the-latest-azure-features"></a>Migrację konta magazynu usługi Azure Resource Manager do wszystkich najnowszych funkcji platformy Azure
 
-Przeprowadź migrację do usługi Azure Resource Manager (ARM) było czerpanie korzyści z wdrożenia szablonu, dodatkowe opcje zabezpieczeń i możliwość podniesienia poziomu do konta GPv2 w celu wykorzystania najnowszych funkcji usługi Azure Storage modelu wdrażania konta magazynu. Klasyfikatora określi, że wszystkie konta magazynu autonomicznych, które korzystają z klasycznego modelu wdrażania i zaleca się migrację do modelu wdrażania ARM.
+Przeprowadź migrację konta magazynu modelu wdrażania do usługi Azure Resource Manager (Menedżer zasobów) może korzystać z wdrożeń szablonu, dodatkowe opcje zabezpieczeń i możliwość podniesienia poziomu do konta GPv2 w celu wykorzystania najnowszych funkcji usługi Azure Storage. Klasyfikatora określi, że wszystkie konta magazynu autonomicznych, które korzystają z klasycznego modelu wdrażania i zaleca się migrację do modelu wdrażania usługi Resource Manager.
 
 > [!NOTE]
-> Alertów klasycznych w usłudze Azure Monitor jest ogłaszany wycofywania w czerwcu 2019, zalecane jest, Uaktualnij swoje konto klasycznego magazynu do ARM, aby zachować funkcje alertów z nową platformę. Aby uzyskać więcej informacji, zobacz [klasycznego wycofanie alerty](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+> Alertów klasycznych w usłudze Azure Monitor są planowane do wycofania w czerwcu 2019 r. Firma Microsoft zaleca się uaktualnienie konta klasycznego magazynu, zachować funkcje alertów z nową platformę przy użyciu usługi Resource Manager. Aby uzyskać więcej informacji, zobacz [klasycznego wycofanie alerty](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Jak uzyskać dostęp zalecenia dotyczące wydajności w usługi Advisor
 

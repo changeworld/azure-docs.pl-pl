@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie ustawień grupy przy użyciu programu PowerShell w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Konfigurowanie ustawień grupy przy użyciu programu PowerShell — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak zarządzać ustawieniami grup przy użyciu poleceń cmdlet usługi Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 29c46c3987a6adff4ef2492a60b4e6a4b022e3e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e838af0ac8e9cfd1d42b768fa68ec7d9f46386c6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168843"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512231"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 Ten artykuł zawiera instrukcje dotyczące korzystania z poleceń cmdlet programu PowerShell usługi Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko do grup usługi Office 365 (czasami nazywany grupy ujednolicone). 
@@ -95,19 +95,19 @@ Poniżej przedstawiono ustawienia zdefiniowane w Group.Unified SettingsTemplate.
 | **Ustawienie** | **Opis** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>Wpisz: Wartość logiczna<li>Domyślne: True |Flaga wskazująca, czy tworzenie grupy usługi Office 365 jest dozwolone w katalogu przez użytkowników bez uprawnień administratora. To ustawienie nie wymaga licencji usługi Azure Active Directory Premium P1.|
-|  <ul><li>GroupCreationAllowedGroupId<li>Wpisz: Ciąg<li>Wartość domyślna: "" |Identyfikator GUID grupy zabezpieczeń, dla której członkowie mogą tworzyć grupy usługi Office 365, nawet wtedy, gdy EnableGroupCreation == false. |
-|  <ul><li>UsageGuidelinesUrl<li>Wpisz: Ciąg<li>Wartość domyślna: "" |Łącze do wytyczne dotyczące grupowego użycia. |
-|  <ul><li>ClassificationDescriptions<li>Wpisz: Ciąg<li>Wartość domyślna: "" | Rozdzielana przecinkami lista Opisy klasyfikacji. Wartość ClassificationDescriptions jest prawidłowy tylko w następującym formacie:
+|  <ul><li>GroupCreationAllowedGroupId<li>Wpisz: String<li>Wartość domyślna: "" |Identyfikator GUID grupy zabezpieczeń, dla której członkowie mogą tworzyć grupy usługi Office 365, nawet wtedy, gdy EnableGroupCreation == false. |
+|  <ul><li>UsageGuidelinesUrl<li>Wpisz: String<li>Wartość domyślna: "" |Łącze do wytyczne dotyczące grupowego użycia. |
+|  <ul><li>ClassificationDescriptions<li>Wpisz: String<li>Wartość domyślna: "" | Rozdzielana przecinkami lista Opisy klasyfikacji. Wartość ClassificationDescriptions jest prawidłowy tylko w następującym formacie:
   $setting ["ClassificationDescriptions"] = "Klasyfikacji: opis, Klasyfikacja: Description", gdy klasyfikacja odpowiada ciągów w ClassificationList.|
-|  <ul><li>DefaultClassification<li>Wpisz: Ciąg<li>Wartość domyślna: "" | Klasyfikacja, który ma być używana jako domyślna klasyfikacja dla grupy, jeśli żaden nie został określony.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Wpisz: Ciąg<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencji nazewnictwa skonfigurowane dla grup usługi Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Wpisz: Ciąg<li>Wartość domyślna: "" | Ciąg rozdzielony przecinkami wyrażeń, które użytkownicy mogą nie używać w grupie nazw ani aliasów. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |
+|  <ul><li>DefaultClassification<li>Wpisz: String<li>Wartość domyślna: "" | Klasyfikacja, który ma być używana jako domyślna klasyfikacja dla grupy, jeśli żaden nie został określony.|
+|  <ul><li>PrefixSuffixNamingRequirement<li>Wpisz: String<li>Wartość domyślna: "" | Ciąg o maksymalnej długości 64 znaków, który definiuje konwencji nazewnictwa skonfigurowane dla grup usługi Office 365. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Wpisz: String<li>Wartość domyślna: "" | Ciąg rozdzielony przecinkami wyrażeń, które użytkownicy mogą nie używać w grupie nazw ani aliasów. Aby uzyskać więcej informacji, zobacz [wymuszanie zasad nazewnictwa dla grup usługi Office 365](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Wpisz: Wartość logiczna<li>Domyślne: "False" | Nie używaj
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Wpisz: Wartość logiczna<li>Domyślne: False | Wartość logiczna wskazująca, czy użytkownik-Gość może być właścicielem grupy. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Wpisz: Wartość logiczna<li>Domyślne: True | Wartość logiczna wskazująca, czy użytkownik-Gość może mieć dostęp do zawartości grup usługi Office 365.  To ustawienie nie wymaga licencji usługi Azure Active Directory Premium P1.|
-|  <ul><li>GuestUsageGuidelinesUrl<li>Wpisz: Ciąg<li>Wartość domyślna: "" | Adres url linku z wytycznymi dotyczącymi użycia gościa. |
+|  <ul><li>GuestUsageGuidelinesUrl<li>Wpisz: String<li>Wartość domyślna: "" | Adres url linku z wytycznymi dotyczącymi użycia gościa. |
 |  <ul><li>AllowToAddGuests<li>Wpisz: Wartość logiczna<li>Domyślne: True | Wartość logiczna wskazująca, czy można dodawać gości do tego katalogu.|
-|  <ul><li>ClassificationList<li>Wpisz: Ciąg<li>Wartość domyślna: "" |Rozdzielana przecinkami lista wartości prawidłowe klasyfikacji, które mogą być stosowane do grup usługi Office 365. |
+|  <ul><li>ClassificationList<li>Wpisz: String<li>Wartość domyślna: "" |Rozdzielana przecinkami lista wartości prawidłowe klasyfikacji, które mogą być stosowane do grup usługi Office 365. |
 
 ## <a name="read-settings-at-the-directory-level"></a>Odczytaj ustawienia na poziomie katalogu
 Te kroki odczytać ustawienia na poziomie katalogu, które mają zastosowanie do wszystkich grup Office w katalogu.

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 70cc6210a0c047867980de67ac24701df29ce8bf
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232128"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485181"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -45,7 +45,7 @@ Za pomocą platformy .NET standard funkcje zdefiniowane przez użytkownika może
 
 ## <a name="private-previews"></a>Prywatnych wersji zapoznawczych
 
-Następujące funkcje są w prywatnej wersji zapoznawczej. Aby uzyskać dostęp do tych wersji zapoznawczych, odwiedź stronę prywatnej wersji zapoznawczej usługi Azure Stream Analytics [Zarejestruj](https://aka.ms/ASApreview1) strony.
+Następujące funkcje są w prywatnej wersji zapoznawczej.
 
 ### <a name="anomaly-detection"></a>Wykrywanie anomalii
 
@@ -59,7 +59,7 @@ Deweloperzy teraz wdrożyć deserializers niestandardowych w języku C# do deser
 
 Teraz jest możliwa do partycjonowania danych wyjściowych usługi Azure Stream Analytics do magazynu obiektów Blob opartego na dowolną kolumnę w zapytaniu.
 
-### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure do usługi Azure Data Lake Storage
+### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure do usługi Azure Data Lake Storage
 
 Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu zarządzanych tożsamości do uwierzytelniania na podstawie zasobów platformy Azure podczas zapisywania do usługi Azure Data Lake Storage Gen1 umożliwia programowe tworzenie zadań. Aby uzyskać więcej informacji, odwiedź stronę [używaj zarządzanych tożsamości dla zasobów platformy Azure do uwierzytelniania usługi Azure Stream Analytics zadania, aby dane wyjściowe usługi Azure Data Lake Storage Gen1](stream-analytics-managed-identities-adls.md).
 
@@ -67,4 +67,4 @@ Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu zar
 
 * [Osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)
 
-* [4 nowe najbardziej pożądanych funkcji dostępnych w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)
+* [Cztery nowe najbardziej pożądanych funkcji dostępnych w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/4-new-features-now-available-in-azure-stream-analytics/)

@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 37ee9fec8940231a01b0014b020ca3f0dffb53bf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5be6f99067f1209fcd131dfc33c46995b2a537f8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467105"
+ms.locfileid: "55498305"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -23,19 +23,19 @@ Ten przewodnik zawiera informacje o typowych problemów, które mogą mieć w pr
 
 ## <a name="enabling-detailed-logging"></a>Włączanie rejestrowania szczegółowe
 
-Aby bardziej efektywnie rozwiązać problemy, może pomóc tworzyć bardziej szczegółowych dzienników do przeglądu.
+Do rozwiązywania problemów z bardziej efektywne, może pomóc tworzyć bardziej szczegółowych dzienników do przeglądu.
 
-Rozszerzenie programu Visual Studio można ustawić `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` zmiennej środowiskowej 1. Pamiętaj ponownie uruchomić program Visual Studio dla zmiennej środowiskowej zaczęły obowiązywać. Po włączeniu szczegółowe dzienniki będą zapisywane w swojej `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` katalogu.
+Rozszerzenie programu Visual Studio można ustawić `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` zmiennej środowiskowej 1. Pamiętaj ponownie uruchomić program Visual Studio dla zmiennej środowiskowej zaczęły obowiązywać. Po włączeniu szczegółowe dzienniki są zapisywane w swojej `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` katalogu.
 
 W interfejsie wiersza polecenia, użytkownik może zapewniać dane wyjściowe informacji podczas wykonywania polecenia przy użyciu `--verbose` przełącznika. Można również przeglądać szczegółowe dzienniki w `%TEMP%\Azure Dev Spaces`. Na komputerze Mac, można znaleźć katalogu TEMP, uruchamiając `echo $TMPDIR` z okna terminalu. Na komputerze z systemem Linux katalogu TEMP jest zazwyczaj `/tmp`.
 
 ## <a name="debugging-services-with-multiple-instances"></a>Debugowanie usług z wieloma wystąpieniami
 
-W tej chwili usługi Azure Dev miejsca do magazynowania działa najlepiej, gdy debugowanie jednego wystąpienia (pod). Plik azds.yaml zawiera ustawienie, replicaCount, wskazującą liczbę zasobników, które będą uruchamiane dla Twojej usługi. Jeśli zmienisz replicaCount skonfigurować aplikację do uruchamiania wielu zasobnikach dla danej usługi, debuger będzie połączyć się pierwszy zasobnika (w przypadku alfabetycznym). Jeśli tego zasobnika jest odtwarzany jakiegokolwiek powodu, debuger będzie dołączyć do różnych zasobnik, przez co nieoczekiwane zachowanie.
+Obecnie działa usługa Azure Dev miejsca do magazynowania najlepsze podczas debugowania pojedynczego wystąpienia lub zasobników. Plik azds.yaml zawiera ustawienie, *replicaCount*, który wskazuje liczbę zasobników, uruchomieniami Kubernetes dla usługi. Jeśli zmienisz replicaCount skonfigurować aplikację do uruchamiania wielu zasobnikach dla danej usługi, debuger dołącza do pierwszego zasobnik, gdy alfabetycznym. Debuger dołącza do różnych pod podczas odtwarzania oryginalnego zasobników, przez co nieoczekiwane zachowanie.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Błąd "Nie można utworzyć kontroler Azure Dev miejsca do magazynowania"
 
-Można napotkać ten błąd, gdy coś pójdzie nie tak z tworzeniem kontrolera. Jeśli jest to błąd przejściowy, usunięcie i ponowne utworzenie kontrolera naprawi go.
+Można napotkać ten błąd, gdy coś pójdzie nie tak z tworzeniem kontrolera. Jeśli jest to błąd przejściowy, Usuń i Utwórz ponownie kontrolera, aby rozwiązać ten problem.
 
 ### <a name="try"></a>Wypróbuj:
 
@@ -76,10 +76,10 @@ W programie Visual Studio:
     ![Zrzut ekranu opcji narzędzi okna dialogowego](media/common/VerbositySetting.PNG)
     
 ### <a name="multi-stage-dockerfiles"></a>Wieloetapowe pliki Dockerfile:
-Ten błąd może zostać wyświetlony podczas próby użycia wieloetapowych pliku Dockerfile. Pełne dane wyjściowe będą wyglądać następująco:
+Pojawi się *nie można uruchomić usługi* błąd podczas korzystania z pliku Dockerfile wieloetapowych. W takiej sytuacji pełne dane wyjściowe zawiera następujący tekst:
 
 ```cmd
-$ azds up
+$ azds up -v
 Using dev space 'default' with target 'AksClusterName'
 Synchronizing files...6s
 Installing Helm chart...2s
@@ -91,10 +91,10 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Jest to spowodowane węzłów AKS uruchomić starszej wersji platformy docker, który nie obsługuje wieloetapowych kompilacji. Konieczne będzie ponowne zapisywanie adresów z pliku Dockerfile, aby uniknąć wieloetapowych kompilacji.
+Ten błąd występuje, ponieważ węzłów AKS uruchomić starszej wersji platformy docker, który nie obsługuje wieloetapowych kompilacji. Aby uniknąć wieloetapowych kompilacji, należy zmodyfikować z pliku Dockerfile.
 
-### <a name="re-running-a-service-after-controller-re-creation"></a>Ponowne uruchomienie usługi po ponownego utworzenia kontrolera
-Ten błąd może zostać wyświetlony podczas próby ponownego uruchomienia usługi po usunięte i tworzony ponownie kontroler Azure Dev miejsca do magazynowania, skojarzone z tym klastrem. Pełne dane wyjściowe będą wyglądać następująco:
+### <a name="rerunning-a-service-after-controller-re-creation"></a>Ponowne uruchomienie usługi po ponownego utworzenia kontrolera
+Pojawi się *nie można uruchomić usługi* wystąpił błąd podczas próby ponownego uruchomienia usługi po usunięte i tworzony ponownie kontroler Azure Dev miejsca do magazynowania, skojarzone z tym klastrem. W takiej sytuacji pełne dane wyjściowe zawiera następujący tekst:
 
 ```cmd
 Installing Helm chart...
@@ -104,13 +104,13 @@ Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" do
 Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
 ```
 
-Jest to spowodowane usunięcie kontrolera Dev miejsca do magazynowania nie powoduje usunięcia usług zainstalowanych wcześniej przez tego kontrolera. Ponowne tworzenie kontrolera, a następnie próbując do uruchamiania usług przy użyciu nowego kontrolera nie działa, ponieważ stare usługi wciąż znajdują się w miejscu.
+Ten błąd występuje, ponieważ usunięcie kontrolera Dev miejsca do magazynowania nie powoduje usunięcia usług zainstalowanych wcześniej przez tego kontrolera. Ponowne tworzenie kontrolera, a następnie próbując do uruchamiania usług przy użyciu nowego kontrolera nie działa, ponieważ stare usługi wciąż znajdują się w miejscu.
 
-Aby rozwiązać ten problem, należy użyć `kubectl delete` polecenie, aby ręcznie usunąć stary usługi z klastrem, a następnie ponownie uruchom Dev miejsca do magazynowania, aby zainstalować nowych usług.
+Aby rozwiązać ten problem, należy użyć `kubectl delete` polecenie, aby ręcznie usunąć stary usługi z klastrem, należy ponownie uruchomić Dev miejsca do magazynowania, aby zainstalować nowych usług.
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Rozpoznawanie nazw DNS nie powiedzie się publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania
 
-Podczas rozpoznawania nazw DNS zakończy się niepowodzeniem, może zostać wyświetlony "Nie można wyświetlić strony" lub "tej witryny nie można nawiązać połączenia" Błąd w przeglądarce sieci web podczas próby połączenia z publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania.
+Można skonfigurować publiczny punkt końcowy adres URL usługi, określając `--public` przełączyć się do `azds prep` polecenia albo zaznaczyć `Publicly Accessible` pole wyboru w programie Visual Studio. Publiczna nazwa DNS jest automatycznie rejestrowane po uruchomieniu usługi w Dev miejsca do magazynowania. Jeśli ta nazwa DNS nie jest zarejestrowany, zostanie wyświetlony *nie można wyświetlić strony* lub *nie można nawiązać połączenia z witryny* błędu w przeglądarce sieci web podczas nawiązywania połączenia publicznego adresu URL.
 
 ### <a name="try"></a>Wypróbuj:
 
@@ -122,7 +122,7 @@ azds list-uris
 
 Jeśli adres URL znajduje się w *oczekujące* stanu, oznacza to, czy Dev miejsca do magazynowania nadal oczekuje na rejestrację DNS do wykonania. Czasami zajmuje kilka minut, zanim rejestracji w celu ukończenia. Miejsca do magazynowania dev otwiera również tunel localhost dla każdej usługi, którego można użyć podczas oczekiwania na rejestrację serwera DNS.
 
-Jeśli adres URL pozostaje w *oczekujące* stanu na więcej niż 5 minut, może to oznaczać problem z zewnętrznego zasobnika DNS, który tworzy publiczny punkt końcowy i/lub zasobnika kontrolera ruch przychodzący serwera nginx, który uzyskuje publiczny punkt końcowy. Można użyć następujących poleceń, można usunąć tych zasobników. Zostaną one zostać odtworzone automatycznie.
+Jeśli adres URL pozostaje w *oczekujące* stanu na więcej niż 5 minut, może to oznaczać problem z zewnętrznego zasobnika DNS, który tworzy publiczny punkt końcowy lub zasobnika kontrolera ruch przychodzący serwera nginx, który uzyskuje publiczny punkt końcowy. Można użyć następujących poleceń, można usunąć tych zasobników. AKS odtworzy automatycznie usunięte zasobników.
 
 ```cmd
 kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
@@ -140,7 +140,7 @@ Uruchom program VS Code z poziomu wiersza polecenia, w którym zmiennej środowi
 
 ## <a name="error-required-tools-to-build-and-debug-projectname-are-out-of-date"></a>Błąd "wymagane narzędzia do tworzenia i debugowania"projectname"są nieaktualne".
 
-Zostanie wyświetlony ten błąd w programie Visual Studio Code, jeśli ma nowszą wersję rozszerzeń programu VS Code dla usługi Azure Dev miejsca do magazynowania, ale starszą wersję interfejsu wiersza polecenia Azure Dev miejsca do magazynowania.
+Zostanie wyświetlony ten błąd, w programie Visual Studio Code, jeśli ma nowszą wersję rozszerzeń programu VS Code dla usługi Azure Dev miejsca do magazynowania, ale starszą wersję interfejsu wiersza polecenia Azure Dev miejsca do magazynowania.
 
 ### <a name="try"></a>Spróbuj
 
@@ -166,10 +166,10 @@ Można napotkać ten błąd, jeśli azds.exe nie jest zainstalowane lub prawidł
 ## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Ostrzeżenie "pliku Dockerfile nie można wygenerować z powodu nieobsługiwany język"
 Usługa Azure Dev do magazynowania zapewnia macierzystą obsługę języka C# i Node.js. Po uruchomieniu *azds prep* w katalogu, zawierającego kod napisany w jednym z tych języków, Azure Dev miejsca do magazynowania automatycznie utworzy odpowiedni plik Dockerfile za Ciebie.
 
-Można nadal używać usługi Azure Dev miejsca do magazynowania przy użyciu kodu napisanego w innych językach, ale musisz utworzyć plik Dockerfile, samodzielnie przed uruchomieniem polecenia *azds się* po raz pierwszy.
+Można nadal używać usługi Azure Dev miejsca do magazynowania przy użyciu kodu napisanego w innych językach, ale należy ręcznie utworzyć plik Dockerfile przed uruchomieniem *azds się* po raz pierwszy.
 
 ### <a name="try"></a>Wypróbuj:
-Jeśli aplikacji został napisany w języku, że usługi Azure Dev miejsca do magazynowania nie obsługuje natywnie, należy podać odpowiednie Dockerfile, aby utworzyć obraz kontenera uruchomienia kodu. Środowisko docker zawiera [listę najlepsze rozwiązania dotyczące zapisywania plików Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , a także [odwołanie do pliku Dockerfile](https://docs.docker.com/engine/reference/builder/) napisać plik Dockerfile, który odpowiada Twoim potrzebom, może pomóc.
+Jeśli aplikacja został napisany w języku, że Azure Dev miejsca do magazynowania nie obsługuje natywnie, musisz podać odpowiednie Dockerfile, aby utworzyć obraz kontenera uruchomienia kodu. Środowisko docker zawiera [listę najlepsze rozwiązania dotyczące zapisywania plików Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) i [odwołanie do pliku Dockerfile](https://docs.docker.com/engine/reference/builder/) napisać plik Dockerfile, który odpowiada Twoim potrzebom, może pomóc.
 
 Po utworzeniu odpowiedni plik Dockerfile w miejscu, możesz kontynuować uruchamianie *azds się* do uruchamiania aplikacji w usłudze Azure Dev spacjach.
 
@@ -183,7 +183,7 @@ Port kontenera nie jest dostępna. Ten problem może wystąpić, ponieważ:
 
 ### <a name="try"></a>Wypróbuj:
 1. Jeśli kontener jest właśnie utworzone/wdrażane, możesz odczekaj 2 – 3 sekund, a następnie spróbuj ponownie uzyskać dostęp do usługi. 
-1. Sprawdź konfigurację portu. Numery określony port powinien być **identyczne** w poniższych zasobów:
+1. Sprawdź konfigurację portu. Numery określony port powinien być **identyczne** we wszystkich następujące zasoby:
     * **Dockerfile:** Określony przez `EXPOSE` instrukcji.
     * **[Narzędzia Helm](https://docs.helm.sh):** Określony przez `externalPort` i `internalPort` wartości dla usługi (często znajduje się w `values.yml` pliku),
     * Wszystkie porty są otwarte w kodzie aplikacji, na przykład w środowisku Node.js: `var server = app.listen(80, function () {...}`
@@ -236,7 +236,7 @@ Aktualizacja `launch.json` plik `.vscode` podkatalogu w folderze projektu. Zmian
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Nie można odnaleźć nazwy typu lub przestrzeni nazw "MojaBiblioteka"
 
 ### <a name="reason"></a>Przyczyna 
-Kontekst kompilacji jest domyślnie na poziomie projektu/usługi, w związku z tym projektu biblioteki, którego używasz nie będzie można znaleźć.
+Kontekst kompilacji jest domyślnie na poziomie projektu/usługi, w związku z tym projektu biblioteki, którego używasz nie można odnaleźć.
 
 ### <a name="try"></a>Wypróbuj:
 Co trzeba zrobić:
@@ -247,7 +247,7 @@ Co trzeba zrobić:
 Na przykład można znaleźć https://github.com/sgreenmsft/buildcontextsample
 
 ## <a name="microsoftdevspacesregisteraction-authorization-error"></a>Błąd autoryzacji "Microsoft.DevSpaces/register/action"
-Może być wyświetlony następujący błąd, gdy są zarządzanie przestrzenią deweloperów platformy Azure i pracy z subskrypcją platformy Azure, dla której nie masz dostęp współautora lub właściciela.
+Potrzebujesz *właściciela* lub *Współautor* dostępu w Twojej subskrypcji platformy Azure do zarządzania usługi Azure Dev miejsca do magazynowania. Może zostać wyświetlony ten błąd, jeśli próbujesz Zarządzanie Dev miejsca do magazynowania, a nie masz *właściciela* lub *Współautor* dostęp do skojarzonej subskrypcji platformy Azure.
 `The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.`
 
 ### <a name="reason"></a>Przyczyna
@@ -260,6 +260,28 @@ Dostęp właściciela lub współautora do subskrypcji platformy Azure można ur
 az provider register --namespace Microsoft.DevSpaces
 ```
 
+## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Limit czasu tworzenia miejsca do magazynowania w *oczekiwania na kompilację obrazu kontenera...*  kroku przy użyciu wirtualnych węzłów AKS
+
+### <a name="reason"></a>Przyczyna
+Ten błąd występuje podczas próby użycia miejsca do magazynowania Dev do uruchamiania usługi, który jest skonfigurowany do uruchamiania na [AKS wirtualnego węzła](https://docs.microsoft.com/azure/aks/virtual-nodes-portal). Miejsca do magazynowania dev aktualnie nie obsługuje kompilowania lub debugowania usług wirtualnych węzłów.
+
+Jeśli uruchamiasz `azds up` z `--verbose` przełącznika lub Włącz pełne rejestrowanie w programie Visual Studio, zobacz dodatkowe szczegóły:
+
+```cmd
+Installed chart in 2s
+Waiting for container image build...
+pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
+Streaming build container logs for service 'mywebapi' failed with: Timed out after 601.3037572 seconds trying to start build logs streaming operation. 10m 1s
+Container image build failed
+```
+
+Pokazuje to, że zasobnika usługi został przypisany do *wirtualnego node-aci-linux*, który jest węzłem wirtualnym.
+
+### <a name="try"></a>Wypróbuj:
+Aktualizowanie wykresu Helm dla usługi usunąć wszystkie *nodeSelector* i/lub *tolerations* wartości, które usługa do uruchamiania na wirtualny węzeł. Te wartości są zazwyczaj zdefiniowane na wykresie `values.yaml` pliku.
+
+Można nadal używać klastra usługi AKS z funkcją wirtualnych węzłów włączone, jeśli usługa, którą chcesz kompilacji/debug za pośrednictwem standardowego miejsca do magazynowania działa w węźle maszyny Wirtualnej. To jest domyślna konfiguracja.
+
 ## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>"Błąd: nie można znaleźć pod tiller gotowe" podczas uruchamiania Dev miejsca do magazynowania
 
 ### <a name="reason"></a>Przyczyna
@@ -271,20 +293,18 @@ Ponowne uruchamianie węzłów agenta w klastrze zwykle rozwiązuje ten problem.
 ## <a name="azure-dev-spaces-proxy-can-interfere-with-other-pods-running-in-a-dev-space"></a>Serwer proxy usługi Azure Dev miejsca do magazynowania może zakłócać innych zasobników w miejsce dev
 
 ### <a name="reason"></a>Przyczyna
-Po włączeniu Dev miejsca do magazynowania w przestrzeni nazw w klastrze AKS dodatkowy kontener o nazwie _mindaro proxy_ jest instalowany na każdym zasobników działającym wewnątrz tego obszaru nazw. Ten kontener przechwytuje wywołania usług pod, który jest dołączony do funkcji tworzenia zespołu miejsca do magazynowania deweloperów.
-
-Niestety może to zakłócać pewne usługi działające w tych zasobników. W szczególności koliduje z zasobników systemem pamięć podręczna systemu Azure dla usługi Redis, powodując błędy połączeń i błędów w komunikacie główny/podrzędny.
+Po włączeniu Dev miejsca do magazynowania w przestrzeni nazw w klastrze AKS dodatkowy kontener o nazwie _mindaro proxy_ jest instalowany na każdym zasobników działającym wewnątrz tego obszaru nazw. Ten kontener przechwytuje wywołania usług pod, który jest dołączony do funkcji tworzenia zespołu miejsca do magazynowania Dev; jednak może to zakłócać pewne usługi działające w tych zasobników. Jest on znany kolidować z zasobników systemem pamięć podręczna systemu Azure dla usługi Redis, powodując błędy połączeń i błędów w komunikacie główny/podrzędny.
 
 ### <a name="try"></a>Wypróbuj:
-Dotyczy pod(s) można przenieść do przestrzeni nazw w ramach klastra, który wykonuje _nie_ zawierać spacji deweloperów podczas uruchomienia pozostałej części aplikacji wewnątrz przestrzeni nazw z obsługą tworzenia miejsca do magazynowania w dalszym ciągu włączona. Dev miejsca do magazynowania nie spowoduje zainstalowania _mindaro proxy_ kontenerów wewnątrz spacje innych deweloperów włączone obszary nazw.
+Dotyczy zasobników można przenieść do przestrzeni nazw w ramach klastra, który wykonuje _nie_ zawierać spacji Dev włączone. Pozostała część aplikacji, mogą w dalszym ciągu uruchamiać wewnątrz przestrzeni nazw z obsługą tworzenia miejsca do magazynowania. Dev miejsca do magazynowania nie spowoduje zainstalowania _mindaro proxy_ kontenerów wewnątrz spacje innych deweloperów włączone obszary nazw.
 
-## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Usługa Azure Dev spacje wydają się użyć Mój istniejący plik Dockerfile do utworzenia kontenera 
+## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Usługa Azure Dev spacje wydają się użyć Mój istniejący plik Dockerfile do utworzenia kontenera
 
 ### <a name="reason"></a>Przyczyna
-Azure Dev do magazynowania można skonfigurować, aby wskazać konkretną _pliku Dockerfile_ w projekcie. Jeśli wydaje się nie używa usługi Azure Dev miejsca do magazynowania _pliku Dockerfile_ oczekujesz, że tworzenie kontenerów, konieczne może poinformować usługi Azure Dev miejsca do magazynowania, gdzie jest jawnie. 
+Azure Dev do magazynowania można skonfigurować, aby wskazać konkretną _pliku Dockerfile_ w projekcie. Jeśli wydaje się nie używa usługi Azure Dev miejsca do magazynowania _pliku Dockerfile_ oczekujesz, że tworzenie kontenerów, konieczne może być jawnie Poinformuj miejsca do magazynowania Azure Dev które pliku Dockerfile do użycia. 
 
 ### <a name="try"></a>Wypróbuj:
-Otwórz _azds.yaml_ pliku, który został wygenerowany przez usługi Azure Dev miejsca do magazynowania w projekcie. Użyj `configurations->develop->build->dockerfile` dyrektywy wskaż plik Dockerfile, którego chcesz użyć:
+Otwórz _azds.yaml_ pliku tego Dev Azure miejsca do magazynowania wygenerowanymi w projekcie. Użyj *konfiguracje -> opracowywanie -> kompilacja -> plik dockerfile* dyrektywy wskaż plik Dockerfile, którego chcesz użyć:
 
 ```
 ...

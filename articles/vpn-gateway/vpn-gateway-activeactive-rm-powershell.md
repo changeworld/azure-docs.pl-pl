@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie połączeń sieci VPN S2S aktywne aktywne dla bram sieci VPN: usługi Azure Resource Manager: PowerShell | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie połączeń sieci VPN S2S aktywne aktywne dla bram sieci VPN: Azure Resource Manager: Program PowerShell | Dokumentacja firmy Microsoft'
 description: W tym artykule przedstawiono konfigurowanie połączeń typu aktywne aktywne przy użyciu bram Azure VPN Gateway przy użyciu usługi Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2018
 ms.author: yushwang, cherylmc
-ms.openlocfilehash: 01f25df117eddaaf640a8bd2ef184fe685c5bc75
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 05c4a01f4317f311e1ba78a5bf45baa969dc8351
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258997"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507863"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurowanie połączenia sieci VPN S2S aktywne aktywne przy użyciu bram Azure VPN Gateway
 
@@ -277,7 +277,7 @@ Podobnie poniżej listy parametrów zawrzesz drugiego urządzenia sieci VPN:
 
 Po ustanowiono połączenia (tunele), będziesz mieć dwa nadmiarowe urządzenia sieci VPN i tunele, połączenie z siecią lokalną i platformą Azure:
 
-![Dual redundancji crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
+![dual-redundancy-crossprem](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
 ## <a name ="aav2v"></a>Część 3 — nawiązania połączenia sieć wirtualna-sieć wirtualna aktywny aktywny
 W tej sekcji tworzy aktywne aktywne połączenie sieć wirtualna-sieć wirtualna za pomocą protokołu BGP. 

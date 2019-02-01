@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fbd00a79ba02a8907d8f8ccfb222787877e2ee9c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9b7199f337f32d785093d3102ef081fd161b2e58
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183887"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494599"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Obsługa wielu domen do federowania w usłudze Azure AD
 Poniższa dokumentacja zawiera wskazówki dotyczące sposobu używania wiele domen najwyższego poziomu i poddomeny, gdy federowania w usłudze Office 365 lub domeny usługi Azure AD.
@@ -168,7 +168,7 @@ Wykonaj następujące kroki, aby dodać niestandardowe oświadczenia do obsługi
 ## <a name="next-steps"></a>Kolejne kroki
 Po zainstalowaniu programu Azure AD Connect możesz [zweryfikować instalację i przypisać licencje](how-to-connect-post-installation.md).
 
-Dowiedz się więcej o tych funkcjach, które zostały włączone w ramach instalacji: [Automatyczne uaktualnianie](how-to-connect-install-automatic-upgrade.md), [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md), i [programu Azure AD Connect Health](how-to-connect-health-sync.md).
+Dowiedz się więcej na temat funkcji, które zostały włączone w ramach instalacji: [Automatyczne uaktualnianie](how-to-connect-install-automatic-upgrade.md), [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) i [Azure AD Connect Health](how-to-connect-health-sync.md).
 
 Dowiedz się więcej na te popularne tematy: [harmonogram i sposób włączania synchronizacji](how-to-connect-sync-feature-scheduler.md).
 

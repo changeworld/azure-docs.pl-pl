@@ -12,16 +12,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d485a0c120a8da80f404541e3090e4c76389302d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6f69031ad2e681cd49a610ef81505ae3c1f21559
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162263"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490650"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Synchronizacja programu Azure AD Connect: Uruchamianie kreatora instalacji po raz drugi
 Podczas pierwszego uruchomienia Kreatora instalacji usługi Azure AD Connect, przeprowadzi Cię on sposób skonfigurowania instalacji. Jeśli ponownie uruchom Kreatora instalacji, oferuje opcje w celu przeprowadzenia konserwacji.
@@ -90,5 +90,5 @@ Aby uzyskać więcej informacji na temat tej opcji, zobacz [logowania użytkowni
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

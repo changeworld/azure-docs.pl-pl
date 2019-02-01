@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/23/2019
-ms.openlocfilehash: eca67cb70756dd1184bd3a66c2582743c8baa8fd
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 1/30/2019
+ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903761"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493052"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Odczytu replik w usłudze Azure Database for MySQL
 
@@ -20,7 +20,7 @@ ms.locfileid: "54903761"
 
 Funkcja odczytu replik pozwala na replikowanie danych z serwera Azure Database for MySQL (master) na maksymalnie pięciu tylko do odczytu serwerów (repliki) w tym samym regionie platformy Azure. Tylko do odczytu replik asynchronicznie są aktualizowane przy użyciu technologii replikacji na podstawie położenia pliku natywnych dziennik binarny (binlog) aparatu MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji usługi MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Repliki utworzone w usługa Azure Database for MySQL są nowe serwery, którymi można zarządzać w taki sam sposób jak normalne/autonomicznych serwerów MySQL. Dla każdej odczytu repliki są rozliczane dla zainicjowanych zasobów obliczeniowych w rdzeni wirtualnych i zainicjowanego magazynu w GB/miesiąc. 
+Repliki utworzone w usługa Azure Database for MySQL są nowe serwery, którymi można zarządzać w taki sam sposób jak normalne/autonomicznych serwerów MySQL. W przypadku każdej repliki do odczytu są naliczane opłaty za zaaprowizowane środowisko obliczeniowe (rozliczane w rdzeniach wirtualnych) i zaaprowizowany magazyn (rozliczany w GB/miesiąc). 
 
 
 Aby dowiedzieć się więcej na temat funkcji replikacji MySQL i problemów, zobacz [dokumentacji replikacji MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
@@ -86,6 +86,7 @@ Użytkownicy na serwerze głównym są replikowane do odczytu replik. Tekst moż
 - Tworzenie repliki repliki nie jest obsługiwane.
 - Tabele w pamięci, może spowodować replik zsynchronizowany. Jest to ograniczenie technologii replikacji MySQL. Dowiedz się więcej w [dokumentację referencyjną MySQL](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html) Aby uzyskać więcej informacji.
 - Dostrajanie [ `innodb_file_per_table` ](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) parametru na serwerze głównym po tworzeniu serwera repliki może spowodować, że repliki będzie zsynchronizowany. Serwer repliki nie ma informacji o różnych obszary tabel.
+- Upewnij się, że tabele serwera głównego kluczy podstawowych. Brak kluczy podstawowych może spowodować opóźnienie replikacji między węzłem głównym i repliki.
 - Zapoznaj się z pełną listą programu MySQL ograniczenia replikacji w [MySQL — dokumentacja](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)
 
 

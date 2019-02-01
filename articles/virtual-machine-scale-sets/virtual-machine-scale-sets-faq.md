@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 6b470bfbb97cb14ccb1f63b34218575b64e686de
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cd8bb2bf83d71fb874b3912e98bf3790acc9d915
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812594"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493664"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Często zadawane pytania dotyczące zestawów skalowania maszyn wirtualnych platformy Azure
 
@@ -61,7 +61,7 @@ Uzyskaj odpowiedzi na często zadawane pytania dotyczące zestawów skalowania m
 
 **PYTANIE** Czy mogę wymusić sekwencję wykonywania w przypadku korzystania z wielu rozszerzeń w zestawie skalowania?
 
-**ODPOWIEDŹ** Nie można tego zrobić bezpośrednio, ale w przypadku rozszerzenia customScript skrypt może poczekać na ukończenie działania innego rozszerzenia. Dodatkowe wytyczne dotyczące sekwencjonowania rozszerzeń można znaleźć we wpisie w blogu: [Extension Sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/) (Sekwencjonowanie rozszerzeń w zestawach skalowania maszyn wirtualnych platformy Azure).
+**ODPOWIEDŹ** Tak, można użyć zestawu skalowania [sekwencjonowania rozszerzeń](virtual-machine-scale-sets-extension-sequencing.md).
 
 **PYTANIE** Czy zestawy skalowania współdziałają z zestawami dostępności platformy Azure?
 
@@ -230,6 +230,7 @@ Można podać publicznymi kluczami SSH w postaci zwykłego tekstu, podczas tworz
             }
         ]
     }
+}
 ```
 
 Nazwa elementu linuxConfiguration | Wymagane | Typ | Opis
@@ -392,13 +393,13 @@ Istnieją dwa główne sposoby, aby zmienić hasło dla maszyn wirtualnych w zes
 - Zresetuj hasło przy użyciu rozszerzeń dostępu do maszyny Wirtualnej.
 
     Użyj poniższego przykładu z programu PowerShell:
-    
+
     ```powershell
     $vmssName = "myvmss"
     $vmssResourceGroup = "myvmssrg"
     $publicConfig = @{"UserName" = "newuser"}
     $privateConfig = @{"Password" = "********"}
-    
+
     $extName = "VMAccessAgent"
     $publisher = "Microsoft.Compute"
     $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
@@ -630,7 +631,9 @@ Masz pewną swobodę określania w sposób obsługi alertów dla określonej war
                     }
                 ]
             }
-        ],
+        ]
+    }
+}
 ```
 
 W tym przykładzie alert przechodzi do Pagerduty.com po osiągnięciu wartości progowej.

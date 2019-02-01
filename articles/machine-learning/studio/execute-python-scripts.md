@@ -1,8 +1,21 @@
 ---
-Tytuł: Wykonaj języka Python usługi machine learning titleSuffix skrypty: Opis usługi Azure Machine Learning Studio: Wskazano projektowania zasad podstawowych Obsługa skryptów języka Python w usłudze Azure Machine Learning Studio i scenariusze użycia podstawowego, możliwości i ograniczenia.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 11/29/2017
+title: Wykonywanie skryptów uczenia maszynowego w języku Python
+titleSuffix: Azure Machine Learning Studio
+description: Wskazano projektowania zasad podstawowych Obsługa skryptów języka Python w usłudze Azure Machine Learning Studio i scenariusze użycia podstawowego, możliwości i ograniczenia.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 11/29/2017
+ms.openlocfilehash: a040991ca4b3a08dec90f4fc6944b006ebea2135
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487850"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Wykonywanie skryptów uczenia maszynowego w języku Python w usłudze Azure Machine Learning Studio
 

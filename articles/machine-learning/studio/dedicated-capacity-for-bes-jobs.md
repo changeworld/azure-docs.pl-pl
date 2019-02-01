@@ -1,8 +1,21 @@
 ---
-Tytuł: Usługa Azure Batch dla usługi Machine Learning Studio zadania titleSuffix: Opis usługi Azure Machine Learning Studio: Omówienie usługi Azure Batch dla zadania uczenia maszynowego. Przetwarzanie puli usługi Batch pozwala na tworzenie pul, na których można przesłać zadania usługi batch.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, poprzednie title = "dedykowaną pojemność dla zadań usługi wykonywania wsadowego - Azure Machine Learning Studio | Dokumentacja firmy Microsoft ms.date: 04/19/2017
+title: Usługa Azure Batch dla zadań usługi Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: Omówienie usługi Azure Batch dla zadania uczenia maszynowego. Przetwarzanie puli usługi Batch pozwala na tworzenie pul, na których można przesłać zadania usługi batch.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
+ms.date: 04/19/2017
+ms.openlocfilehash: 923ce9b5840ec8d99234b9a3b869005ff59848e3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494622"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Usługa Azure Batch dla zadań usługi Azure Machine Learning Studio
 

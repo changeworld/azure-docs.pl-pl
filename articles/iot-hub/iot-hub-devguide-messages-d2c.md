@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 8424fa721d87467de70b4365578d196b3145b4b0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: cabfe4381f7f941f2a5e049eed73be546902f6ae
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024277"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485351"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Umożliwia routing komunikatów wysyłać komunikaty urządzenie chmura do różnych punktów końcowych
 
@@ -21,13 +21,13 @@ ms.locfileid: "50024277"
 
 Routing komunikatów umożliwia wysyłanie komunikatów z urządzenia do usług w chmurze w sposób zautomatyzowanych, skalowalnych i niezawodnych. Routing komunikatów może służyć do: 
 
-* **Wysyłanie messsages telemetrii urządzenia, a także zdarzenia** , zdarzenia cyklu życia urządzenia i zdarzenia zmian do wbudowanych-endpoint i niestandardowych punktów końcowych bliźniaczej reprezentacji urządzenia. Dowiedz się więcej o [routingu punktów końcowych](#routing-endpoints).
+* **Wysyłanie komunikatów z urządzeń danych telemetrycznych, a także zdarzenia** , zdarzenia cyklu życia urządzenia i zdarzenia zmian do wbudowanych-endpoint i niestandardowych punktów końcowych bliźniaczej reprezentacji urządzenia. Dowiedz się więcej o [routingu punktów końcowych](#routing-endpoints).
 
 * **Filtrowanie danych przed przesłaniem go do różnych punktów końcowych** przez zastosowanie zaawansowanych zapytań. Routing komunikatów umożliwia zapytania właściwości wiadomości oraz treść wiadomości, a także tagów bliźniaczych reprezentacji urządzeń i właściwości bliźniaczych reprezentacji urządzeń. Dowiedz się więcej o korzystaniu z [zapytania w routingu komunikatów](iot-hub-devguide-routing-query-syntax.md).
 
 Usługa IoT Hub wymaga dostępu do tych punktów końcowych usługi zapisu do rozsyłania wiadomości do pracy. Jeśli skonfigurujesz punktów końcowych za pośrednictwem witryny Azure portal, niezbędne uprawnienia są dodawane. Upewnij się, że konfigurowanie usługi do obsługi oczekiwanej przepływności. Podczas pierwszej konfiguracji rozwiązania IoT, może być konieczne monitorowanie dodatkowych punktów końcowych i wprowadź wymagane zmiany dotyczące rzeczywistego obciążenia.
 
-Definiuje usługę IoT Hub [typowego formatu](iot-hub-devguide-messages-construct.md) dla wszystkich urządzeń do chmury, obsługi wiadomości dla interoperatbility różnych protokołów. Jeśli komunikat pasuje wiele tras, które wskazują na ten sam punkt końcowy, IoT Hub dostarczy komunikatu do określonego punktu końcowego tylko raz. W związku z tym nie trzeba polecenia Konfiguruj deduplikację na tematu lub kolejki usługi Service Bus. Partycjonowane kolejki koligacji partycji gwarantuje, kolejność komunikatów. Użyj tego samouczka, aby dowiedzieć się, jak [skonfigurować routing komunikatów](tutorial-routing.md).
+Definiuje usługę IoT Hub [typowego formatu](iot-hub-devguide-messages-construct.md) dla wszystkich urządzeń z chmurą messaging współdziałania w ramach różnych protokołów. Jeśli komunikat pasuje wiele tras, które wskazują na ten sam punkt końcowy, IoT Hub dostarczy komunikatu do określonego punktu końcowego tylko raz. W związku z tym nie trzeba polecenia Konfiguruj deduplikację na tematu lub kolejki usługi Service Bus. Partycjonowane kolejki koligacji partycji gwarantuje, kolejność komunikatów. Użyj tego samouczka, aby dowiedzieć się, jak [skonfigurować routing komunikatów](tutorial-routing.md).
 
 ## <a name="routing-endpoints"></a>Punkty końcowe routingu
 

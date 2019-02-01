@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3ba1f9afda1b4f7f227c996615cc17a8c604d5fb
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 33f96c67e7179104d1895cf62f834d3b592bee04
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138229"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487629"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiaj skrypty programu PowerShell na maszynie wirtualnej Windows za pomocą polecenia Uruchom
 
@@ -65,14 +65,14 @@ Ta tabela zawiera listę dostępnych poleceń dla maszyn wirtualnych Windows. **
 |**RunPowerShellScript**|Uruchamia skrypt programu PowerShell|
 |**EnableRemotePS**|Konfiguruje maszynę, aby włączyć zdalne programu PowerShell.|
 |**EnableAdminAccount**|Sprawdza, czy jeśli konta administratora lokalnego jest wyłączona, a jeśli tak włączy ją.|
-|**Polecenie IPConfig**| Przedstawia szczegółowe informacje dla adresu IP adres bramy domyślne i maski podsieci dla każdej karty sieciowej, powiązany z protokołem TCP/IP.|
+|**IPConfig**| Przedstawia szczegółowe informacje dla adresu IP adres bramy domyślne i maski podsieci dla każdej karty sieciowej, powiązany z protokołem TCP/IP.|
 |**RDPSettings**|Umożliwia sprawdzenie ustawień rejestru i ustawienia zasad domeny. Sugeruje akcje zasad, jeśli komputer jest częścią domeny lub modyfikuje ustawienia do wartości domyślnych.|
 |**ResetRDPCert**|Usuwa certyfikat SSL powiązany odbiornik protokołu RDP i przywraca zabezpieczeń listerner protokołu RDP do ustawień domyślnych. Użyj tego skryptu, jeśli napotkasz jakiekolwiek problemy z certyfikatem.|
 |**SetRDPPort**|Ustawia domyślną lub użytkownika określony numer portu dla połączeń usług pulpitu zdalnego. Włącza reguły zapory dla dostępu przychodzącego do portu.|
 
 ## <a name="powershell"></a>PowerShell
 
-Poniżej przedstawiono przykład za pomocą [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) polecenia cmdlet, aby uruchomić skrypt programu PowerShell na Maszynie wirtualnej platformy Azure.
+Poniżej przedstawiono przykład za pomocą [Invoke-AzureRmVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) polecenia cmdlet, aby uruchomić skrypt programu PowerShell w Maszynie wirtualnej platformy Azure. Polecenie cmdlet oczekuje skryptu, do którego odwołuje się `ScriptPath` zmienną lokalną, do której jest polecenie cmdlet został uruchomiony.
 
 ```azurepowershell-interactive
 Invoke-AzureRmVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}

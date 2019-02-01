@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 371751f2eb643c3699e5462fe44380d7792243ef
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388304"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490451"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia
 W tym artykule opisano, jak dodać użytkowników do laboratorium, Uzyskaj je zarejestrowane w usłudze laboratorium, kontrolować liczbę godzin, które mogą używać maszyny Wirtualnej i nie tylko. 
@@ -71,6 +71,9 @@ Można ustawić limity przydziału dla poszczególnych użytkowników wykonując
 5. Teraz wyświetlić liczbę godzin na pasku narzędzi: **Limit przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;**. 
 
     ![Limit przydziału dla poszczególnych użytkowników](../media/how-to-configure-student-usage/quota-per-user.png)
+
+> [!IMPORTANT]
+> [Zaplanowany czas maszyny wirtualne działania](how-to-create-schedules.md) nie uwzględniane w limicie przydziału przydzielony do użytkownika. Limit przydziału jest czas poza godzinami harmonogramu, które student spędza na maszynach wirtualnych. 
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Aby dodać użytkowników, przekazywanie pliku CSV
 Możesz również dodać użytkowników, przekazując plik CSV z adresów e-mail użytkowników.

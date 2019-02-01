@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: b3329f591d8478499b8270eb8a211d311465b020
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 273039ec271d5d81329ab475ffd2eda82dca7b58
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457024"
+ms.locfileid: "55511008"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -104,7 +104,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="afs-storage-redundancy"></a>
 **Magazyn geograficznie nadmiarowy jest obsługiwane dla usługi Azure File Sync?**  
-    Tak, usługi Azure Files obsługuje zarówno magazyn lokalnie nadmiarowy (LRS) i Magazyn geograficznie nadmiarowy (GRS). Występuje GRS pracę awaryjną między sparowane regiony, zaleca się traktowanie nowy region do przechowywania kopii zapasowych danych tylko. Usługa Azure File Sync nie automatycznie rozpocznie się synchronizowanie przy użyciu nowego regionu podstawowego. 
+    Tak, usługi Azure Files obsługuje zarówno magazyn lokalnie nadmiarowy (LRS) i Magazyn geograficznie nadmiarowy (GRS). Jeśli zainicjujesz magazynu konta przejściu w tryb failover między sparowane regiony z konta skonfigurowane w przypadku usługi GRS, firma Microsoft zaleca nowy region można traktować jako kopia zapasowa tylko danych. Usługa Azure File Sync nie automatycznie rozpocznie się synchronizowanie przy użyciu nowego regionu podstawowego. 
 
 * <a id="sizeondisk-versus-size"></a>
 **Dlaczego nie *rozmiar na dysku* właściwość dopasowania plików *rozmiar* właściwości po zakończeniu korzystania z usługi Azure File Sync?**  
@@ -116,7 +116,6 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="afs-recall-file"></a>**Plik, który ma być użyty został warstwowego. Jak można odwołać pliku na dysku, aby używać go lokalnie?**  
  Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-recall-file).
-
 
 * <a id="afs-force-tiering"></a>
 **Jak wymusić, plik lub katalog do umieszczane?**  
@@ -149,7 +148,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **Dlaczego pliki warstwowe są dostępne poza przestrzeni nazw punktu końcowego serwera**  
-    Przed wersją agenta usługi Azure File Sync 3 usługi Azure File Sync zablokowane przeniesienie plików warstwowych, poza punkt końcowy serwera, ale w tym samym woluminie jako punkt końcowy serwera. Operacje kopiowania, przenosi plików warstwowy i przesuwa z warstwowego na inne woluminy nie miała wpływu. Przyczyna tego zachowania była niejawna zakładając, że Eksplorator plików i innych interfejsów API Windows, przeniesienia operacji na tym samym woluminie czy (prawie) instanenous Zmień nazwę operacji. Oznacza to, przenosi spowoduje Eksploratorze plików lub innych metod przenoszenia (na przykład wiersza polecenia lub programu PowerShell) są wyświetlane odpowiadać, podczas gdy usługi Azure File Sync odwołuje dane z chmury. Począwszy od [wersja agenta usługi Azure File Sync 3.0.12.0](storage-files-release-notes.md#supported-versions), usługi Azure File Sync pozwala przenieść plik warstwowy poza punktu końcowego serwera. Firma Microsoft należy unikać negatywnego wpływu, wcześniej wspomniano, dzięki czemu plikami warstwowym istnieje jako plik warstwowy poza punkt końcowy serwera, a następnie odwołująca plik w tle. Oznacza to, że przenosi na tym samym woluminie są instaneous i robimy całą pracę, przywołanie pliku na dysku, po ukończeniu przenoszenia. 
+    Przed wersją agenta usługi Azure File Sync 3 usługi Azure File Sync zablokowane przeniesienie plików warstwowych, poza punkt końcowy serwera, ale w tym samym woluminie jako punkt końcowy serwera. Operacje kopiowania, przenosi plików warstwowy i przesuwa z warstwowego na inne woluminy nie miała wpływu. Przyczyna to zachowanie jest domyślne założenie, że Eksplorator plików i innych interfejsów API Windows mają (prawie) natychmiastowe czy operacji przenoszenia na tym samym woluminie, Zmień nazwę operacji. Oznacza to, przenosi spowoduje Eksploratorze plików lub innych metod przenoszenia (na przykład wiersza polecenia lub programu PowerShell) są wyświetlane odpowiadać, podczas gdy usługi Azure File Sync odwołuje dane z chmury. Począwszy od [wersja agenta usługi Azure File Sync 3.0.12.0](storage-files-release-notes.md#supported-versions), usługi Azure File Sync pozwala przenieść plik warstwowy poza punktu końcowego serwera. Firma Microsoft należy unikać negatywnego wpływu, wcześniej wspomniano, dzięki czemu plikami warstwowym istnieje jako plik warstwowy poza punkt końcowy serwera, a następnie odwołująca plik w tle. Oznacza to, że przenosi na tym samym woluminie są natychmiastowe i robimy całą pracę, przywołanie pliku na dysku, po ukończeniu przenoszenia. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **Mam problem z usługi Azure File Sync na serwerze (synchronizacja chmury warstw itp). Należy I usunięcie i ponowne utworzenie Mój punkt końcowy serwera?**  
@@ -202,7 +201,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 * <a id="ad-vm-subscription"></a>
 **Można uzyskać dostęp do usługi Azure Files przy użyciu poświadczeń usługi Azure AD z maszyny Wirtualnej w ramach różnych subskrypcji?**
 
-    Jeśli subskrypcji w ramach której jest wdrażany w udziale plików jest skojarzony z tą samą dzierżawą usługi Azure AD jako deploymnet usług domenowych Azure AD, do której należy maszyna wirtualna jest przyłączony do domeny, a następnie mogą uzyskiwać dostęp do usługi Azure Files przy użyciu tych samych poświadczeń usługi Azure AD. Ograniczenia są nakładane na nie w ramach subskrypcji, ale na skojarzone usługi Azure AD dzierżawy.    
+    Jeśli subskrypcji w ramach której jest wdrażany w udziale plików jest skojarzony z tą samą dzierżawą usługi Azure AD jako wdrożenie usług domenowych Azure AD, do której należy maszyna wirtualna jest przyłączony do domeny, a następnie mogą uzyskiwać dostęp do usługi Azure Files przy użyciu tych samych poświadczeń usługi Azure AD. Ograniczenia są nakładane na nie w ramach subskrypcji, ale na skojarzone usługi Azure AD dzierżawy.    
     
 * <a id="ad-support-subscription"></a>
 **Można włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB dla usługi Azure Files za pomocą dzierżawy usługi Azure AD, który różni się od dzierżawy podstawowej, z którym jest skojarzona udziału plików?**

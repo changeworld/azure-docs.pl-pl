@@ -8,19 +8,17 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c8f27c9b5b9c13cd6cb722bafb23dd19b944d27
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77c4377afaff20e77e76c0a7389c79dfdce703ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474687"
+ms.locfileid: "55509137"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
-
 Microsoft Azure oferuje kilka funkcji w usłudze Azure Storage do przechowywania i uzyskiwania dostępu do danych w chmurze. Ten artykuł dotyczy usługi Azure Files, obiekty BLOB i dyski i zaprojektowano, aby ułatwić wybór między tymi funkcjami.
 
 ## <a name="scenarios"></a>Scenariusze
-
 Poniższa tabela porównuje pliki, obiekty BLOB i dyski oraz przedstawiono przykładowe scenariusze odpowiednie dla każdego.
 
 | Cecha | Opis | Kiedy stosować |
@@ -30,7 +28,6 @@ Poniższa tabela porównuje pliki, obiekty BLOB i dyski oraz przedstawiono przyk
 | **Dyski platformy Azure** | Zawiera biblioteki klienckie i [interfejsu REST](/rest/api/compute/manageddisks/disks/disks-rest-api) , umożliwia danych można trwale przechowywane i udostępniane z dołączonego wirtualnego dysku twardego. | Chcesz lift- and -shift aplikacje, które używają interfejsów API systemu plików natywnej do odczytu i zapisu danych na stałych dyskach.<br/><br/>Chcesz przechowywać dane, które nie są wymagane były dostępne z zewnątrz maszyny wirtualnej, do której jest dołączony dysk. |
 
 ## <a name="comparison-files-and-blobs"></a>Porównania: Pliki i obiekty BLOB
-
 W poniższej tabeli porównano usługi Azure Files za pomocą obiektów blob platformy Azure.  
   
 ||||  
@@ -49,7 +46,6 @@ W poniższej tabeli porównano usługi Azure Files za pomocą obiektów blob pla
 |Biblioteki klienta|Wiele języków|Wiele języków|  
   
 ## <a name="comparison-files-and-disks"></a>Porównania: Pliki i dyski
-
 Usługa Azure Files uzupełniają dysków platformy Azure. Dysk może być dołączony tylko do jednej maszyny wirtualnej platformy Azure w danym momencie. Dyski są wirtualnymi dyskami twardymi stałym formacie przechowywane jako stronicowe obiekty BLOB w usłudze Azure Storage i są używane przez maszynę wirtualną do przechowywania danych trwałych. Udziały plików w usłudze Azure Files jest możliwy w taki sam sposób, zgodnie z dysku lokalnego odbywa się (przy użyciu systemu plików natywnych interfejsów API) i mogą być współużytkowane przez wiele maszyn wirtualnych.  
  
 W poniższej tabeli porównano usługi Azure Files z usługi Azure Disks.  
@@ -61,14 +57,12 @@ W poniższej tabeli porównano usługi Azure Files z usługi Azure Disks.
 |Migawki i skopiuj|Yes|Yes|  
 |Konfigurowanie|Połączony podczas uruchamiania maszyny wirtualnej|Połączone po przejściu maszyny wirtualnej została uruchomiona.|  
 |Authentication|Wbudowane|Konfigurowanie przy użyciu netto|  
-|Czyszczenie|Automatyczny|Ręczne|  
 |Dostęp przy użyciu usługi REST|Nie można uzyskać dostępu do plików w ramach dysku VHD|Przechowywana w udziale plików jest możliwy|  
 |Maksymalny rozmiar|4 TiB dysków|Udziału plików w usłudze 5 TiB i plików w udziale: 1 TiB|  
 |Maksymalna liczba operacji We/Wy|500 operacji We/Wy|1000 operacji We/Wy|  
 |Przepływność|Maksymalnie 60 MiB/s na dysk|Element docelowy jest 60 MiB/s na jeden udział plików (można uzyskać wyższy wyższe rozmiarów We/Wy)|  
 
 ## <a name="next-steps"></a>Kolejne kroki
-
 Podczas podejmowania decyzji dotyczących jak Twoje dane są przechowywane i udostępniane, należy również rozważyć koszty związane. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
   
 Niektóre funkcje protokołu SMB nie mają zastosowania do chmury. Aby uzyskać więcej informacji, zobacz [funkcji nie są obsługiwane przez usługę Azure File](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).

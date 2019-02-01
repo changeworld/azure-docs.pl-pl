@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: d7beab66bdaed312f32adef74ceb4b2944e6853e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498254"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
-## <a name="introduction"></a>Wprowadzenie
+
 Jeśli jesteś programistą, kto chce utworzyć aplikację, która zarządza zasobami platformy Azure dla klientów, w tym artykule pokazano, jak przy użyciu interfejsów API usługi Azure Resource Manager i uzyskać dostęp do zasobów w innych subskrypcjach.
 
 Twoja aplikacja może uzyskiwać dostęp z interfejsów API usługi Resource Manager, kilka sposobów:
@@ -32,7 +32,10 @@ Twoja aplikacja może uzyskiwać dostęp z interfejsów API usługi Resource Man
 
 Ten artykuł zawiera instrukcje krok po kroku, aby utworzyć aplikację, która stosuje oba te metody autoryzacji. Widoczny jest sposób wykonać każdy krok za pomocą interfejsu API REST lub C#. Kompletna aplikacja platformy ASP.NET MVC znajduje się w temacie [ https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense ](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="what-the-web-app-does"></a>Jak działa aplikacja sieci web
+
 Aplikacja sieci web:
 
 1. Logowania użytkownikiem platformy Azure.
@@ -74,7 +77,7 @@ Ponieważ aplikacja uzyskuje dostęp do innej subskrypcji, należy go skonfiguro
 Poniższy przykład pokazuje, jak zarejestrować aplikację przy użyciu programu Azure PowerShell. Konieczne jest posiadanie najnowszej wersji programu Azure PowerShell na potrzeby to polecenie mogło działać (sierpnia 2016 r.).
 
 ```azurepowershell-interactive
-$app = New-AzureRmADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
+$app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true
 ```
 
 Aby zalogować się jako aplikacji usługi AD, potrzebujesz Identyfikatora aplikacji i hasło. Aby wyświetlić identyfikator aplikacji, która jest zwracana z poprzedniego polecenia, użyj:
@@ -306,12 +309,12 @@ Poniżej przedstawiono identyfikatory powszechnie używane wbudowanych ról:
 | Czytelnik |acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 | Współautor |b24988ac-6180-42a0-ab88-20f7382dd24c |
 | Współautor maszyny wirtualnej |d73bb868-a0df-4d4d-bd69-98a00b01fccb |
-| Współautor sieci wirtualnej |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
+| Virtual Network Contributor |b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 | Współautor konta magazynu |86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 | Współautor witryny sieci Web |de139f84-1756-47ae-9be6-808fbbe84772 |
 | Współautor planów sieci Web |2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 | Współautor serwera SQL Server |6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
-| Współautor bazy danych SQL |9b7fa17d-e63e-47B0-bb0a-15c516ac86ec |
+| Współautor bazy danych SQL |9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 
 ### <a name="assign-rbac-role-to-application"></a>Przypisz rolę RBAC do aplikacji
 Masz wszystko, czego potrzebujesz do przypisania odpowiednich ról RBAC do jednostki usługi przy użyciu [usługi Resource Manager, Utwórz przypisanie roli](https://docs.microsoft.com/rest/api/authorization/roleassignments) interfejsu API.
@@ -330,7 +333,7 @@ Przykładowe żądanie przypisać rolę RBAC do aplikacji:
 
 W żądaniu używane są następujące wartości:
 
-| Identyfikator GUID | Opis |
+| Guid | Opis |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |Identyfikator subskrypcji |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |Identyfikator obiektu nazwy głównej usługi aplikacji |

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/16/2019
 ms.author: victorh
-ms.openlocfilehash: 1d4182f491dae9597add4b688b89faa9dd291429
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352929"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511976"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -34,7 +34,7 @@ Aby uzyskać więcej informacji, zobacz [stronę z cennikiem usługi system DNS 
 
 ### <a name="what-is-the-sla-for-azure-dns"></a>Jaka jest umowa SLA dla usługi Azure DNS?
 
-Platforma Azure gwarantuje, że prawidłowe zapytania DNS odbierania odpowiedzi z co najmniej jeden serwer nazw DNS platformy Azure co najmniej 99,99% czasu.
+Platforma Azure gwarantuje, że prawidłowe zapytania DNS odpowiedzi zwracane z co najmniej jeden serwer nazw DNS platformy Azure 100% czasu.
 
 Aby uzyskać więcej informacji, zobacz [strony umowy SLA platformy Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
 

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 493dc834319d8f5842a7f9f5c4ca568742264df9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ed32cbabe5f80e131f467a87378eda8912b9a65e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180470"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496265"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Opis konfiguracji domyślnej
 W tym artykule wyjaśniono reguły konfiguracji out-of-box. Dokumentują reguł i wpływie na te reguły konfiguracji. On również przeprowadzi Cię przez domyślną konfigurację synchronizacji programu Azure AD Connect. Celem jest, że czytnik rozumie, jak działa model konfiguracji o nazwie aprowizacja deklaratywna w przykładzie rzeczywistych. W tym artykule założono, że masz już zainstalowany i Konfigurowanie synchronizacji usługi Azure AD Connect przy użyciu Kreatora instalacji.
@@ -236,6 +236,6 @@ Teraz wiemy wystarczająco o reguły synchronizacji, aby móc zrozumieć, jak dz
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)
 

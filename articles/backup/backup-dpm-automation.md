@@ -2,18 +2,18 @@
 title: Usługa Azure Backup — Użyj programu PowerShell do tworzenia kopii zapasowych obciążeń programu DPM
 description: Dowiedz się, jak wdrażać i zarządzać nimi dla Data Protection Manager (DPM) przy użyciu programu PowerShell usługi Azure Backup
 services: backup
-author: NKolli1
-manager: shreeshd
+author: kasinh
+manager: vvithal
 ms.service: backup
 ms.topic: conceptual
 ms.date: 1/23/2017
 ms.author: adigan
-ms.openlocfilehash: d8241385cde61647222f85c29f45bdaabd621610
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ef9d61e880d3252eae2d8ef924ff39a5d2f6acf
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242929"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497914"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Wdrażanie kopii zapasowych serwerów Data Protection Manager (DPM) na platformie Azure i zarządzanie nimi przy użyciu programu PowerShell
 W tym artykule przedstawiono sposób instalacji usługi Azure Backup na serwerze programu DPM przy użyciu programu PowerShell, a do zarządzania i przywracania kopii zapasowych.
@@ -128,15 +128,15 @@ Dostępne opcje to:
 | Opcja | Szczegóły | Domyślne |
 | --- | --- | --- |
 | /q |Instalację cichą |- |
-| / p: "Lokalizacja" |Ścieżka do folderu instalacji agenta usługi Azure Backup. |Agent usług C:\Program Files\Microsoft Azure Recovery Services |
-| / s: "Lokalizacja" |Ścieżka do folderu pamięci podręcznej dla agenta usługi Kopia zapasowa Azure. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /p:"location" |Ścieżka do folderu instalacji agenta usługi Azure Backup. |Agent usług C:\Program Files\Microsoft Azure Recovery Services |
+| /s:"location" |Ścieżka do folderu pamięci podręcznej dla agenta usługi Kopia zapasowa Azure. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Zoptymalizowany pod kątem w usłudze Microsoft Update |- |
 | /nu |Nie sprawdzaj aktualizacje po ukończeniu instalacji |- |
 | /d |Odinstalowuje agenta usług odzyskiwania Microsoft Azure |- |
-| /pH |Adres hosta proxy |- |
-| /Po |Numer portu hosta serwera proxy |- |
+| /ph |Adres hosta proxy |- |
+| /po |Numer portu hosta serwera proxy |- |
 | /pu |Nazwa użytkownika hosta serwera proxy |- |
-| /PW |Hasło serwera proxy |- |
+| /pw |Hasło serwera proxy |- |
 
 ## <a name="registering-dpm-to-a-recovery-services-vault"></a>Rejestrowanie programu DPM do odzyskiwania usług magazynu
 Po utworzeniu magazynu usługi Recovery Services, Pobierz najnowszą wersję agenta i poświadczenia magazynu i zapisz go w dogodnym miejscu, takich jak C:\Downloads.
@@ -318,7 +318,7 @@ Podczas tworzenia kopii zapasowej źródła danych po raz pierwszy, program DPM 
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Zmiana rozmiaru repliki programu DPM i wolumin punktu odzyskiwania
-Możesz również zmienić rozmiar woluminu repliki programu DPM i kopii w tle woluminu za pomocą [DPMDatasourceDiskAllocation zestaw](https://technet.microsoft.com/library/hh881618.aspx) jak w poniższym przykładzie polecenie cmdlet: Get-DatasourceDiskAllocation - Datasource $DS Set-DatasourceDiskAllocation - Źródło danych $DS - ProtectionGroup $MPG — ręczne - ReplicaArea (2 gb) — ShadowCopyArea (2 gb)
+Możesz również zmienić rozmiar woluminu repliki programu DPM i kopii w tle woluminu za pomocą [DPMDatasourceDiskAllocation zestaw](https://technet.microsoft.com/library/hh881618.aspx) polecenia cmdlet, jak w poniższym przykładzie: Get-DatasourceDiskAllocation -Datasource $DS Set-DatasourceDiskAllocation -Datasource $DS -ProtectionGroup $MPG -manual -ReplicaArea (2gb) -ShadowCopyArea (2gb)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>Zatwierdzanie zmian do grupy ochrony
 Na koniec zmiany muszą zostać zatwierdzone, zanim program DPM może potrwać kopii zapasowych na nową konfigurację grupy ochrony. Można to osiągnąć przy użyciu [Set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) polecenia cmdlet.

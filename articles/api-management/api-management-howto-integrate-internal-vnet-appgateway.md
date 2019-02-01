@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 6356d930b5bf909f1b209272e7367f5e2dcd5a13
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: da195f414da032b5274a9dc1a184b66094f245f2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444619"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493465"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integracja usługi API Management w wewnętrznej sieci Wirtualnej z usługą Application Gateway
 
@@ -59,13 +59,13 @@ W pierwszym przykładzie konfiguracji wszystkie interfejsy API są zarządzane t
 
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Co to jest wymagane do utworzenia integrację usługi API Management i Application Gateway?
 
-* **Pula serwerów zaplecza:** wewnętrznego wirtualny adres IP usługi API Management.
+* **Pula serwerów zaplecza:** Jest to wewnętrzny wirtualny adres IP usługi API Management.
 * **Ustawienia puli serwerów zaplecza:** każda pula ma ustawienia, takie jak port, protokół i koligacja oparta na plikach cookie. Te ustawienia są stosowane do wszystkich serwerów w puli.
-* **Port frontonu:** to port publiczny, który jest otwierany w bramie aplikacji. Ruch osiągnięcia go jest przekierowywany do jednego z serwerów zaplecza.
+* **Port frontonu:** Jest to port publiczny, który jest otwierany w bramie aplikacji. Ruch osiągnięcia go jest przekierowywany do jednego z serwerów zaplecza.
 * **Odbiornik:** odbiornik ma port frontonu, protokół (Http lub Https, z uwzględnieniem wielkości liter) oraz nazwę certyfikatu SSL (w przypadku konfigurowania odciążania protokołu SSL).
-* **Reguła:** reguła wiąże odbiornik z pulą serwerów zaplecza.
-* **Niestandardowe sondy kondycji:** Application Gateway, domyślnie używa sondy na podstawie adresów IP, aby zorientować się w BackendAddressPool serwerów, które są aktywne. API Management, którego usługa będzie odpowiadać tylko na żądania z nagłówkiem właściwy host, dlatego sondy domyślne zakończyć się niepowodzeniem. Sonda kondycji niestandardowy musi można zdefiniować, aby ułatwić usługa application gateway, sprawdzić, czy usługa jest aktywny i należy go przekazywania żądań.
-* **Certyfikaty domeny niestandardowej:** dostęp do usługi API Management z Internetu, należy utworzyć mapowanie rekordu CNAME jego nazwy hosta na nazwę DNS frontonu bramy aplikacji. To zapewnia, że nagłówek nazwy hosta i certyfikatu wysłanego do usługi Application Gateway, który jest przekazywany do usługi API Management jest jedna APIM rozpoznać jako prawidłowy. W tym przykładzie użyjemy dwóch certyfikatów — dla wewnętrznej bazy danych i portalu dla deweloperów.  
+* **Reguła:** Reguła wiąże odbiornik z pulą serwerów zaplecza.
+* **Sonda kondycji niestandardowe:** Application Gateway, domyślnie używa sondy na podstawie adresów IP do zorientować się w BackendAddressPool serwerów, które są aktywne. API Management, którego usługa będzie odpowiadać tylko na żądania z nagłówkiem właściwy host, dlatego sondy domyślne zakończyć się niepowodzeniem. Sonda kondycji niestandardowy musi można zdefiniować, aby ułatwić usługa application gateway, sprawdzić, czy usługa jest aktywny i należy go przekazywania żądań.
+* **Certyfikaty domeny niestandardowej:** Dostęp do usługi API Management z Internetu, należy utworzyć mapowanie rekordu CNAME jego nazwy hosta na nazwę DNS frontonu bramy aplikacji. To zapewnia, że nagłówek nazwy hosta i certyfikatu wysłanego do usługi Application Gateway, który jest przekazywany do usługi API Management jest jedna APIM rozpoznać jako prawidłowy. W tym przykładzie użyjemy dwóch certyfikatów — dla wewnętrznej bazy danych i portalu dla deweloperów.  
 
 ## <a name="overview-steps"> </a> Kroki wymagane do integrowania usługi API Management i usługa Application Gateway
 
@@ -82,7 +82,7 @@ W pierwszym przykładzie konfiguracji wszystkie interfejsy API są zarządzane t
 W tym przewodniku możemy także udostępni **portalu dla deweloperów** do zewnętrznego liczby odbiorców za pośrednictwem bramy aplikacji. Wymaga dodatkowych czynności w celu tworzenia odbiornika portalu dla deweloperów, sondy, ustawienia i zasady. Wszystkie szczegółowe informacje znajdują się w odpowiednich kroków.
 
 > [!WARNING]
-> W ustawieniach opisanych w portalu dla deweloperów, które są dostępne za pośrednictwem bramy Application Gateway mogą wystąpić problemy z uwierzytelnianiem usługi AAD i innych firm.
+> Jeśli używasz usługi Azure AD lub uwierzytelniania innych firm, Włącz [koligacji sesji na podstawie pliku cookie](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) funkcji w usłudze Application Gateway.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Tworzenie grupy zasobów dla usługi Resource Manager
 
@@ -332,7 +332,7 @@ Konfigurowanie zapory aplikacji sieci Web, aby być w trybie "Zapobieganie".
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-## <a name="create-application-gateway"></a>Tworzenie bramy aplikacji
+## <a name="create-application-gateway"></a>Create Application Gateway
 
 Tworzenie bramy aplikacji przy użyciu obiektów konfiguracji z poprzednich kroków.
 

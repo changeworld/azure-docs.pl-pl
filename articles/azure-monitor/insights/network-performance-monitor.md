@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1ba1f11029e98f6bf324466627c465507829dc4d
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 0a364724c72a7bd6dd75dd9720e2e966d07ff297
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229850"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496351"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -37,7 +37,7 @@ Rozwiązanie Network Performance Monitor oferuje trzy szerokie możliwości:
 
     Ta funkcja umożliwia wykonywanie testu w zależności od protokołu HTTP, HTTPS, TCP i ICMP, do monitorowania w czasie rzeczywistym i historycznie dostępność i czas odpowiedzi usługi. Można również monitorować udziału sieci w utracie pakietów i opóźnienia. Za pomocą mapy topologii sieci można izolować spowolnienie sieci. Można zidentyfikować problem punkty, występujących na ścieżce sieciowej z węzła do usługi z danymi opóźnienie każdego przeskoku. Za pomocą wbudowanych testów możesz monitorować łączność sieciową do usługi Office 365 i Dynamics CRM, bez żadnych Konfiguracja wstępna. Dzięki tej możliwości możesz monitorować łączność sieciową do dowolnego punktu końcowego TCP możliwością, takich jak witryny sieci Web, aplikacji SaaS, PaaS aplikacji i baz danych SQL.
 
-* [Monitor usługi ExpressRoute](network-performance-monitor-expressroute.md): Monitoruj łączność przez usługę Azure ExpressRoute między oddziałami firmy i platformą Azure oraz jej wydajność.  
+* [ExpressRoute Monitor](network-performance-monitor-expressroute.md): Monitoruj łączność przez usługę Azure ExpressRoute między oddziałami firmy i platformą Azure oraz jej wydajność.  
 
 Więcej informacji na temat różnych funkcji obsługiwanych przez [rozwiązania Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jest dostępna w trybie online.
  
@@ -59,7 +59,7 @@ Lista obsługiwanych regionów dla Monitor usługi ExpressRoute jest dostępna w
 
 ### <a name="install-and-configure-agents"></a>Instalacja i konfiguracja agentów 
 
-Użyj podstawowych procesów, aby zainstalować agentów na [komputerów Windows połączyć z usługą Azure Log Analytics](../../azure-monitor/platform/om-agents.md) i [łączenie programu Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md).
+Użyj podstawowych procesów, aby zainstalować agentów na [komputerów Windows połączyć z usługą Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) i [łączenie programu Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ### <a name="where-to-install-the-agents"></a>Gdzie można zainstalować agentów 
 
@@ -69,7 +69,7 @@ Użyj podstawowych procesów, aby zainstalować agentów na [komputerów Windows
 
 * **Monitor łączności usługi**: Zainstaluj agenta usługi Log Analytics w każdym węźle, z którego chcesz monitorować łączność sieciową z punktem końcowym usługi. Przykładem jest, jeśli chcesz monitorować łączność sieciową do usługi Office 365 z etykietą O1, O2 i O3 Lokacje pakietu office. Zainstaluj agenta usługi Log Analytics na co najmniej jeden węzeł w O1, O2 i O3. 
 
-* **Monitor usługi ExpressRoute**: Zainstaluj co najmniej jednego agenta usługi Log Analytics w usłudze Azure virtual network. Co najmniej jednego agenta należy również zainstalować w podsieci lokalnej, która jest połączona za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute.  
+* **ExpressRoute Monitor**: Zainstaluj co najmniej jednego agenta usługi Log Analytics w usłudze Azure virtual network. Co najmniej jednego agenta należy również zainstalować w podsieci lokalnej, która jest połączona za pośrednictwem prywatnej komunikacji równorzędnej usługi ExpressRoute.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Konfigurowanie agentów usługi Log Analytics do monitorowania 
 
@@ -117,7 +117,7 @@ Rozwiązanie Network Performance Monitor używa transakcji syntetycznych do moni
 
    ![Widok monitorowania punktu końcowego usługi](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
-   **Monitor usługi ExpressRoute**: Wybierz **odnajdywanie teraz** do odnajdywania wszystkich ExpressRoute prywatnej komunikacji równorzędnej, które są połączone z sieciami wirtualnymi w subskrypcji platformy Azure są połączone z tym obszarem roboczym usługi Log Analytics. 
+   **ExpressRoute Monitor**: Wybierz **odnajdywanie teraz** do odnajdywania wszystkich ExpressRoute prywatnej komunikacji równorzędnej, które są połączone z sieciami wirtualnymi w subskrypcji platformy Azure są połączone z tym obszarem roboczym usługi Log Analytics. 
 
    >[!NOTE] 
    > Rozwiązania aktualnie odnajduje tylko prywatne komunikacje równorzędne usługi ExpressRoute. 
@@ -193,7 +193,7 @@ Po włączeniu rozwiązania Network Performance Monitor, Kafelek rozwiązania **
 
 * **Najważniejsze zdarzenia kondycji sieci**: Ta strona zawiera listę najnowszych zdarzeń, kondycji i alertów w systemie oraz czasu, ponieważ zdarzenia byli aktywni. Zdarzenie kondycji lub alert jest generowany zawsze wtedy, gdy wartość wybranej metryki (utraty, czas oczekiwania, czas odpowiedzi lub wykorzystanie przepustowości) dla reguły monitorowania przekracza wartość progową. 
 
-* **Monitor usługi ExpressRoute**: Ta strona zawiera podsumowania kondycji dla różnych połączeń komunikacji równorzędnej usługi ExpressRoute z rozwiązania monitorów. **Topologii** Kafelek zawiera liczbę ścieżek sieciowych za pośrednictwem obwodów usługi ExpressRoute, które są monitorowane w sieci. Wybierz ten Kafelek, aby przejść do **topologii** widoku.
+* **ExpressRoute Monitor**: Ta strona zawiera podsumowania kondycji dla różnych połączeń komunikacji równorzędnej usługi ExpressRoute z rozwiązania monitorów. **Topologii** Kafelek zawiera liczbę ścieżek sieciowych za pośrednictwem obwodów usługi ExpressRoute, które są monitorowane w sieci. Wybierz ten Kafelek, aby przejść do **topologii** widoku.
 
 * **Monitor łączności usługi**: Ta strona zawiera podsumowania kondycji dla różnych testów, które utworzono. **Topologii** Kafelek pokazuje liczbę punktów końcowych, które są monitorowane. Wybierz ten Kafelek, aby przejść do **topologii** widoku.
 
@@ -217,7 +217,7 @@ Wybierz **wyświetlanie topologii** Aby wyświetlić topologię przeskoku pr
 
 Każdy widok zawiera migawkę kondycję swojej sieci w określonym punkcie czasu. Domyślnie jest wyświetlany stan najnowszej. Na pasku w górnej części strony zawiera punkt w czasie, dla którego stan jest wyświetlany. Zaznacz, aby wyświetlić migawkę kondycję swojej sieci w danym momencie poprzedniego **akcje**. Możesz również można włączyć lub wyłączyć automatyczne odświeżanie dla dowolnej strony podczas wyświetlić najnowszy stan. 
 
- ![Stan sieci rejestratora](media/network-performance-monitor/network-state-recorder.png)
+ ![Network State Recorder](media/network-performance-monitor/network-state-recorder.png)
 
  
 

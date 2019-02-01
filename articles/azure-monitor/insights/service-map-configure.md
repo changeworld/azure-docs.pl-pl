@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 808fe41928a99ffc797c96a02305d81765318780
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: dde618de12bf23e754d2516f3b8ef27b3df5bc4e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381668"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495687"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -387,7 +387,7 @@ Jeśli instalację agenta zależności zakończyła się pomyślnie, ale nie wid
 
 * To Twoje wysyłania dziennika serwera i danych o wydajności do usługi Log Analytics? Przejdź do wyszukiwania w dziennikach i uruchom następujące zapytanie dla danego komputera: 
 
-    Sposób użycia | gdy komputer == "admdemo appsvr" | Podsumowanie sum(Quantity), any(QuantityUnit) przez typ danych
+    Sposób użycia | gdy komputer == "Nazwa komputera" | Podsumowanie sum(Quantity), any(QuantityUnit) przez typ danych
 
 Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, usługi Log Analytics Agent jest prawidłowo i komunikacji z usługą Log Analytics. W przeciwnym razie sprawdź agenta na serwerze: [Agent analizy dziennika do rozwiązywania problemów Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) lub [agenta usługi Log Analytics na potrzeby rozwiązywania problemów w systemie Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 

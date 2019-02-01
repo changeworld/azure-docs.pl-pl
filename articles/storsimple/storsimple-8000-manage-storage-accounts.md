@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: afaa4c090508ee5a2306c2be1515076e6bd4f100
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225729"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486830"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Usługa Menedżer urządzeń StorSimple do zarządzania poświadczeń konta magazynu
 
@@ -165,7 +165,7 @@ Poinformować usługi Menedżer urządzeń StorSimple zmiany, możesz będzie po
       
       ![Synchronizuj klucze](./media/storsimple-8000-manage-storage-accounts/syncaccesskey3.png)
 
-Użytkownik będzie powiadamiany, gdy klucz jest pomyślnie sycnhronized.
+Otrzymasz powiadomienie po klucza jest pomyślnie zsynchronizowane.
 
 #### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>Można zsynchronizować kluczy konta magazynu poza subskrypcji usługi
 1. Na **usług** kliknij **Konfiguruj** kartę.

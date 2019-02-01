@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 01/31/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9890f68ff61d822f505c4403eb2f1f61e396fd01
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262612"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488717"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -32,7 +32,7 @@ Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migr
 - Ten model nie są zależne od ustawienia statystyk serwera vCenter, tak aby zbierać dane dotyczące wydajności.
 - Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
 
-**Natychmiastowa gratyfikacja:** Przy użyciu urządzenia odnajdywania ciągłe, po zakończeniu odnajdywania (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbieranie danych o wydajności rozpoczyna się wraz z rozpoczęciem odnajdywania, jeśli potrzebujesz natychmiastowych wyników, wybierz w ocenie kryterium ustalania rozmiaru *zgodnie ze środowiskiem lokalnym*. W przypadku ocen na podstawie wydajności zaleca się poczekanie przez co najmniej jeden dzień po rozpoczęciu odnajdywania, aby uzyskać miarodajne zalecenia dotyczące rozmiaru.
+**Szybkie oceny:** Przy użyciu urządzenia odnajdywania ciągłe, po zakończeniu odnajdywania (zajmuje kilka godzin w zależności od liczby maszyn wirtualnych), możesz od razu utworzyć oceny. Ponieważ zbierania danych o wydajności rozpoczyna się, gdy jest rozpoczynane odnajdywania, jeśli szukasz szybkiego ocen, należy wybrać kryterium ustalania rozmiaru w ocenie jako *jako lokalne*. W przypadku ocen na podstawie wydajności zaleca się poczekanie przez co najmniej jeden dzień po rozpoczęciu odnajdywania, aby uzyskać miarodajne zalecenia dotyczące rozmiaru.
 
 Urządzenie ciągle tylko zbiera dane wydajności, nie wykrywa zmiany konfiguracji w środowisku lokalnym, (tj. Dodawanie maszyny Wirtualnej, usuwania, dodawania dysku itp.). W przypadku zmiany konfiguracji w środowisku lokalnym możesz wykonać następujące działania, aby odzwierciedlić zmiany w portalu:
 

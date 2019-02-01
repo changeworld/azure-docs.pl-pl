@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 110b909106f5b9eae639639adf418647e3e8bea9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c5bd40741ec0fe047f98b4b4431819d90e188385
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022346"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491471"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkcje wdrażania dla szablonów usługi Azure Resource Manager 
 
@@ -30,6 +30,8 @@ Pobieranie wartości z części szablonu i wartości związane z wdrażaniem us�
 Aby uzyskać wartości z zasobów, grup zasobów lub subskrypcji, zobacz [funkcje Resource](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>wdrożenie
 `deployment()`
@@ -149,10 +151,10 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
 ```
 
-Dla szablonu poziom subskrypcji, który używa funkcji wdrażania, zobacz [subskrypcji wdrażania funkcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Jest wdrażany z jedną `az deployment create` lub `New-AzureRmDeployment` poleceń.
+Dla szablonu poziom subskrypcji, który używa funkcji wdrażania, zobacz [subskrypcji wdrażania funkcji](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Jest wdrażany z jedną `az deployment create` lub `New-AzDeployment` poleceń.
 
 <a id="parameters" />
 
@@ -165,7 +167,7 @@ Zwraca wartość parametru. Określona nazwa parametru musi być zdefiniowany w 
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Nazwa parametru |Yes |ciąg |Nazwa parametru do zwrócenia. |
+| parameterName |Yes |ciąg |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -252,11 +254,11 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| stringOutput | Ciąg | Opcja 1 |
+| stringOutput | String | Opcja 1 |
 | intOutput | Int | 1 |
 | objectOutput | Obiekt | {"jeden": "", "dwóch": "b"} |
 | arrayOutput | Tablica | [1, 2, 3] |
-| crossOutput | Ciąg | Opcja 1 |
+| crossOutput | String | Opcja 1 |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -267,7 +269,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
 ```
 
 <a id="variables" />
@@ -281,7 +283,7 @@ Zwraca wartość zmiennej. Określona nazwa zmiennej musi być zdefiniowany w se
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| nazwa_zmiennej |Yes |Ciąg |Nazwa zmiennej, do zwrócenia. |
+| nazwa_zmiennej |Yes |String |Nazwa zmiennej, do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -355,9 +357,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| exampleOutput1 | Ciąg | Moja_zmienna |
+| exampleOutput1 | String | Moja_zmienna |
 | exampleOutput2 | Tablica | [1, 2, 3, 4] |
-| exampleOutput3 | Ciąg | Moja_zmienna |
+| exampleOutput3 | String | Moja_zmienna |
 | exampleOutput4 |  Obiekt | {"właściwość1": "wartość1", "property2": "wartość2"} |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
@@ -369,7 +371,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

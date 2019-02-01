@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 6c8a0a0db419546a49670b1f34e58ead7cebeaa1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c0a1d2bf1d7a103ad473cadb1528bd9b9a4c90de
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459506"
+ms.locfileid: "55488020"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.
@@ -111,7 +111,7 @@ Ciągłość prowadzenia działalności biznesowej po awarii (BCDR) odzyskiwania
 
 | Region | Adres URL podstawowego punktu końcowego | Region sparowany | Adres URL odnajdywania |
 |--------|---------------------------------------|--------|---------------------------------------|
-| Australia Wschodnia | https://kailani-aue.one.microsoft.com | Australia Souteast | https://kailani-aue.one.microsoft.com |
+| Australia Wschodnia | https://kailani-aue.one.microsoft.com | Australia Południowo-Wschodnia | https://kailani-aue.one.microsoft.com |
 | Australia Południowo-Wschodnia | https://kailani-aus.one.microsoft.com | Australia Wschodnia | https://tm-kailani-aus.one.microsoft.com |
 | Kanada Środkowa | https://kailani-cac.one.microsoft.com | Kanada Wschodnia | https://tm-kailani-cac.one.microsoft.com |
 | Kanada Wschodnia | https://kailani-cae.one.microsoft.com | Kanada Środkowa | https://tm-kailani.cae.one.microsoft.com |

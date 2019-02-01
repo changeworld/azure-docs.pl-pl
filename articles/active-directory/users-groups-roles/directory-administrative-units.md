@@ -1,5 +1,5 @@
 ---
-title: W usłudze Azure Active Directory w wersji zapoznawczej Zarządzanie jednostkami administracyjnymi
+title: Zarządzanie jednostkami administracyjnymi (wersja zapoznawcza) — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Za pomocą jednostek administracyjnych dla bardziej szczegółowego delegowania uprawnień w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -10,19 +10,20 @@ ms.service: active-directory
 ms.topic: article
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 08/17/2017
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: fe3f41e95cc3aa4f22ff2cdea24388f7e9974755
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 52b71e557ade54cdefd349b8981100210833185a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181201"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508457"
 ---
-# <a name="administrative-units-management-in-azure-ad---public-preview"></a>Zarządzanie jednostkami administracyjnymi w usłudze Azure AD — publiczna wersja zapoznawcza
-W tym artykule opisano jednostki administracyjne — nowy kontener usługi Azure Active Directory, zasobów, które mogą służyć do delegowania uprawnień administracyjnych za pośrednictwem podzbiorów użytkowników i stosowanie zasad do podzbioru użytkowników. W usłudze Azure Active Directory jednostek administracyjnych, Włącz Administratorzy central, aby delegować uprawnienia do administratorów regionalnych oraz ustawiania zasad na poziomie szczegółowym.
+# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Zarządzanie jednostkami administracyjnymi w usłudze Azure Active Directory (publiczna wersja zapoznawcza)
+
+W tym artykule opisano jednostki administracyjne — nowy kontener usługi Azure Active Directory (Azure AD), zasobów, które mogą służyć do delegowania uprawnień administracyjnych za pośrednictwem podzbiór użytkowników i stosowanie zasad do podzbioru użytkowników. W usłudze Azure Active Directory jednostek administracyjnych, Włącz Administratorzy central, aby delegować uprawnienia do administratorów regionalnych oraz ustawiania zasad na poziomie szczegółowym.
 
 Jest to przydatne w przypadku organizacji z niezależnych działy, na przykład university dużych, który składa się z wielu szkół autonomicznego (firmy, szkoły, służbowych inżynierii i tak dalej), niezależne od siebie nawzajem. Takie przegrody ma własnych administratorów IT, którzy kontroli dostępu, zarządzanie użytkownikami i ustawić zasady dla ich podział. Chcesz Administratorzy Central, aby można było udzielić tych oddziałów uprawnienia administratorów przez użytkowników w ich określonego działów. Dokładniej korzystając z tego przykładu, głównym administratorem można, na przykład tworzenie jednostki administracyjnej dla konkretnego szkoły (Business szkoły) i wypełnianie jej tylko użytkownicy biznesowi szkoły. Oznacza to, głównym administratorem można dodać służbowego firmy pracowników wsparcia informatycznego roli o określonym zakresie, następnie przyznać pracowników wsparcia informatycznego uprawnień administracyjnych school firm tylko za pośrednictwem jednostki administracyjne school biznesowej.
 

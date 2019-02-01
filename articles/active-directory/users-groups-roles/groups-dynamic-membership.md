@@ -1,25 +1,24 @@
 ---
-title: Reguły członkostwa dynamicznego w grupach automatyczne odwoływać się do usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Reguły członkostwa grupy dynamicznej automatyczne — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak utworzyć reguły członkostwa, aby automatycznie wypełnić grupy i odwołanie do reguły.
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 309e686d563798c34d2ab40af0ac1a6e6368b4e7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172327"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509120"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -61,7 +60,7 @@ Nawiasy są opcjonalne dla pojedynczego wyrażenia. Całkowita długość treśc
 Istnieją trzy typy, właściwości, które mogą służyć do tworzenia reguły członkostwa.
 
 * Wartość logiczna
-* Ciąg
+* String
 * Kolekcji ciągów
 
 Poniżej przedstawiono właściwości użytkownika, które można użyć do utworzenia pojedynczego wyrażenia.

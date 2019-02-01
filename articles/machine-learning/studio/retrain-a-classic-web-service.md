@@ -1,8 +1,21 @@
 ---
-Tytuł: Ponowne szkolenie titleSuffix usługi sieci web klasyczne: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 04/19/2017
+title: Ponowne szkolenie klasycznej usługi internetowej
+titleSuffix: Azure Machine Learning Studio
+description: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 04/19/2017
+ms.openlocfilehash: 04dac55feaa6826e1b8b591df61e8ad413f24dad
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509409"
 ---
 # <a name="retrain-a-classic-azure-machine-learning-studio-web-service"></a>Ponowne szkolenie klasycznej usługi Azure Machine Learning Studio usługi sieci web
 Predykcyjne wdrożonej usługi sieci Web jest domyślnego punktu końcowego oceniania. Domyślne punkty końcowe są synchronizowane z oryginalnego szkolenia i oceniania eksperymentów, a w związku z tym nie można zastąpić uczonego modelu dla domyślnego punktu końcowego. Doskonalenie usługi sieci web, należy dodać nowy punkt końcowy usługi sieci web.

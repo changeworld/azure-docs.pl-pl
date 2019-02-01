@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
 ms.openlocfilehash: 0b0a7ce63fa2d0154300dd2e8f9cf88d985a8a0a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200531"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507694"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Pobieranie skryptów konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S
 
 Ten artykuł przeprowadzi pobieranie skryptów konfiguracji urządzenia sieci VPN dla połączeń sieci VPN S2S z bramami sieci VPN Azure przy użyciu usługi Azure Resource Manager. Na poniższym diagramie przedstawiono ogólny przepływ pracy.
 
-![Pobierz skrypt](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+![download-script](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
 
 Następujące urządzenia mają dostępnych skryptów:
 
@@ -64,7 +64,7 @@ Po utworzeniu zasobu połączenia postępuj zgodnie z poniższymi instrukcjami, 
 
 4. Kliknij link "Pobierz konfiguracji", jak podkreślono na czerwono na stronie Przegląd połączenia; Spowoduje to otwarcie strony "Pobierania konfiguracji".
 
-    ![Pobierz skrypt 1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
+    ![download-script-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
 
 5. Wybierz wersję modelu rodziny i oprogramowania układowego urządzenia sieci VPN, a następnie kliknij przycisk "Pobierz configuration".
 

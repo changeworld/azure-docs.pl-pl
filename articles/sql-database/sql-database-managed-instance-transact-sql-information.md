@@ -11,27 +11,27 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 01/31/2019
+ms.openlocfilehash: 80da1058f17b69d82d851bb38482afa0b31daac1
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472787"
+ms.locfileid: "55508872"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
-Wystąpienie usługi Azure SQL Database Managed zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcji aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym. Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artykuł zawiera podsumowanie i opisano te różnice.
-
-- [Różnice w języku T-SQL i nieobsługiwane funkcje](#Differences)
+Wystąpienie usługi Azure SQL Database Managed zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcji aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym. Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artykuł zawiera podsumowanie i opisano te różnice. <a name="Differences"></a>
+- [Dostępność](#availability) włącznie z różnicami w [zawsze włączonej](#always-on-availability) i [kopie zapasowe](#backup),
+- [Zabezpieczenia](#security) włącznie z różnicami w [inspekcji](#auditing), [certyfikaty](#certificates), [poświadczenia](#credentials), [dostawcy usług kryptograficznych](#cryptographic-providers), [Logowania / użytkownicy](#logins--users), [klucza oraz klucza głównego usługi](#service-key-and-service-master-key),
+- [Konfiguracja](#configuration) włącznie z różnicami w [buforu rozszerzenia puli](#buffer-pool-extension), [sortowania](#collation), [poziomy zgodności](#compatibility-levels),[bazy danych dublowanie](#database-mirroring), [opcje bazy danych](#database-options), [programu SQL Server Agent](#sql-server-agent), [Opcje tabeli](#tables),
+- [Funkcje](#functionalities) tym [ZBIORCZEGO WSTAWIANIA/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcje rozproszone](#distributed-transactions), [ Rozszerzone zdarzenia](#extended-events), [zewnętrznych bibliotekach](#external-libraries), [Filestream i Filetable](#filestream-and-filetable), [pełnotekstowe wyszukiwanie semantyczne](#full-text-semantic-search), [połączonej serwery](#linked-servers), [Polybase](#polybase), [replikacji](#replication), [PRZYWRÓCIĆ](#restore-statement), [programu Service Broker](#service-broker), [ Procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-triggers),
 - [Funkcje, które mają różne zachowanie w wystąpieniu zarządzanym](#Changes)
 - [Tymczasowe ograniczenia i znane problemy](#Issues)
 
-## <a name="Differences"></a> Różnice języka T-SQL z programu SQL Server
+## <a name="availability"></a>Dostępność
 
-Ta sekcja zawiera podsumowanie podstawowych różnic w składni języka T-SQL i zachowanie między wystąpienia zarządzanego i aparatu bazy danych serwera SQL w środowisku lokalnym, a także nieobsługiwanych funkcji.
-
-### <a name="always-on-availability"></a>Dostępność zawsze włączona
+### <a name="always-on-availability"></a>Zawsze włączone
 
 [Wysoka dostępność](sql-database-high-availability.md) jest wbudowana w wystąpieniu zarządzanym i nie mogą być kontrolowane przez użytkowników. Poniższe instrukcje nie są obsługiwane:
 
@@ -40,27 +40,6 @@ Ta sekcja zawiera podsumowanie podstawowych różnic w składni języka T-SQL i 
 - [POLECENIA ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
 - [GRUPA DOSTĘPNOŚCI LISTY](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) klauzuli [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) — instrukcja
-
-### <a name="auditing"></a>Inspekcja
-
-Podstawowe różnice między inspekcji SQL w wystąpieniu zarządzanym, Azure SQL Database i SQL Server w środowisku lokalnym są:
-
-- W wystąpieniu zarządzanym inspekcji SQL działa na poziomie serwera i magazyny `.xel` konta magazynu obiektów blob plików na platformie Azure.  
-- W usłudze Azure SQL Database inspekcji SQL, działa na poziomie bazy danych.
-- W programie SQL Server w środowisku lokalnym / maszyny wirtualnej, inspekcji SQL, który działa na poziomie serwera, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.  
-  
-Inspekcji systemu XEvent, w wystąpieniu zarządzanym obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows nie są obsługiwane.
-
-Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure blob storage są:
-
-- Nowa składnia `TO URL` jest dostarczany i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure gdzie `.xel` zostaną umieszczone pliki
-- Składnia `TO FILE` nie jest obsługiwana, ponieważ wystąpienia zarządzanego nie można uzyskać dostępu do udziałów plików w Windows.
-
-Aby uzyskać więcej informacji, zobacz:  
-
-- [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
-- [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Inspekcja](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="backup"></a>Backup
 
@@ -85,17 +64,28 @@ Ograniczenia:
 
 Aby uzyskać informacji na temat kopii zapasowych przy użyciu języka T-SQL, zobacz [kopii zapasowej](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
-### <a name="buffer-pool-extension"></a>Rozszerzenie puli buforów
+## <a name="security"></a>Bezpieczeństwo
 
-- [Rozszerzenie puli bufora](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) nie jest obsługiwane.
-- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` nie jest obsługiwane. Zobacz [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+### <a name="auditing"></a>Inspekcja
 
-### <a name="bulk-insert--openrowset"></a>Wstawianie zbiorcze / openrowset
+Podstawowe różnice między inspekcji SQL w wystąpieniu zarządzanym, Azure SQL Database i SQL Server w środowisku lokalnym są:
 
-Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc należy importować pliki z usługi Azure blob storage:
+- W wystąpieniu zarządzanym inspekcji SQL działa na poziomie serwera i magazyny `.xel` konta magazynu obiektów blob plików na platformie Azure.  
+- W usłudze Azure SQL Database inspekcji SQL, działa na poziomie bazy danych.
+- W programie SQL Server w środowisku lokalnym / maszyny wirtualnej, inspekcji SQL, który działa na poziomie serwera, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.  
+  
+Inspekcji systemu XEvent, w wystąpieniu zarządzanym obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows nie są obsługiwane.
 
-- `DATASOURCE` jest wymagany w `BULK INSERT` polecenia podczas importowania plików z magazynu obiektów blob platformy Azure. Zobacz [WSTAWIANIA ZBIORCZEGO](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE` jest wymagany w `OPENROWSET` działają w przypadku odczytać zawartość pliku z usługi Azure blob storage. Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure blob storage są:
+
+- Nowa składnia `TO URL` jest dostarczany i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure gdzie `.xel` zostaną umieszczone pliki
+- Składnia `TO FILE` nie jest obsługiwana, ponieważ wystąpienia zarządzanego nie można uzyskać dostępu do udziałów plików w Windows.
+
+Aby uzyskać więcej informacji, zobacz:  
+
+- [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
+- [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Inspekcja](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Certyfikaty
 
@@ -114,22 +104,6 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="clr"></a>CLR
-
-Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i folderów systemu Windows, dlatego obowiązują następujące ograniczenia:
-
-- Tylko `CREATE ASSEMBLY FROM BINARY` jest obsługiwana. Zobacz [tworzenia zestawu z danych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
-- `CREATE ASSEMBLY FROM FILE` nie jest obsługiwane. Zobacz [tworzenie zestawów z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
-- `ALTER ASSEMBLY` Nie można odwoływać się do plików. Zobacz [zmiana zestawu](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
-
-### <a name="compatibility-levels"></a>Poziomy zgodności
-
-- Poziomy zgodności obsługiwane są następujące: 100, 110, 120, 130, 140  
-- Poziomy zgodności poniżej 100 nie są obsługiwane.
-- Domyślny poziom zgodności dla nowych baz danych jest 140. W przypadku przywróconych baz danych poziom zgodności pozostanie niezmieniona Jeśli był 100 lub nowszym.
-
-Zobacz [poziom zgodności bazy danych ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
-
 ### <a name="credential"></a>Poświadczenie
 
 Tylko usługi Azure Key Vault i `SHARED ACCESS SIGNATURE` tożsamości są obsługiwane. Windows, użytkownicy nie są obsługiwane.
@@ -143,9 +117,48 @@ Wystąpienia zarządzanego nie można uzyskać dostęp do plików, więc nie mo�
 - `CREATE CRYPTOGRAPHIC PROVIDER` nie jest obsługiwane. Zobacz [dostawcy usług KRYPTOGRAFICZNYCH Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` nie jest obsługiwane. Zobacz [dostawcy usług KRYPTOGRAFICZNYCH ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
+### <a name="logins--users"></a>Identyfikatory logowania / użytkownicy
+
+- Utworzone nazw logowania SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, i `FROM SID` są obsługiwane. Zobacz [logowania Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
+- Usługa Azure Active Directory (AAD) logowania do utworzonych za pomocą [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) składni lub [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) składni są obsługiwane (**publicznej wersji zapoznawczej**).
+- Logowania Windows utworzonych za pomocą `CREATE LOGIN ... FROM WINDOWS` składni nie są obsługiwane. Za pomocą usługi Azure Active Directory, logowania i użytkowników.
+- Azure użytkownik usługi Active Directory (Azure AD), który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](sql-database-manage-logins.md#non-administrator-users)
+
+### <a name="service-key-and-service-master-key"></a>Usługa klucza głównego klucza i usługi
+
+- [Kopię zapasową klucza głównego](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
+- [Przywróć klucz główny](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
+- [Kopię zapasową klucza głównego usługi](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
+- [Przywróć klucz główny usługi](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
+
+## <a name="configuration"></a>Konfigurowanie
+
+### <a name="buffer-pool-extension"></a>Rozszerzenie puli buforów
+
+- [Rozszerzenie puli bufora](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) nie jest obsługiwane.
+- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` nie jest obsługiwane. Zobacz [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+
 ### <a name="collation"></a>Sortowanie
 
 Domyślnym sortowaniem wystąpienia jest `SQL_Latin1_General_CP1_CI_AS` i może być określony jako parametr tworzenia. Zobacz [sortowania](https://docs.microsoft.com/sql/t-sql/statements/collations).
+
+### <a name="compatibility-levels"></a>Poziomy zgodności
+
+- Poziomy zgodności obsługiwane są następujące: 100, 110, 120, 130, 140  
+- Poziomy zgodności poniżej 100 nie są obsługiwane.
+- Domyślny poziom zgodności dla nowych baz danych jest 140. W przypadku przywróconych baz danych poziom zgodności pozostanie niezmieniona Jeśli był 100 lub nowszym.
+
+Zobacz [poziom zgodności bazy danych ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
+
+### <a name="database-mirroring"></a>Dublowanie bazy danych
+
+Funkcja dublowania bazy danych nie jest obsługiwane.
+
+- `ALTER DATABASE SET PARTNER` i `SET WITNESS` opcje nie są obsługiwane.
+- `CREATE ENDPOINT … FOR DATABASE_MIRRORING` nie jest obsługiwane.
+
+Aby uzyskać więcej informacji, zobacz [ALTER DATABASE SET PARTNER i SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) i [CREATE ENDPOINT... Aby UZYSKAĆ DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
 
 ### <a name="database-options"></a>Opcje bazy danych
 
@@ -209,14 +222,68 @@ Modyfikowanie nazwa nie jest obsługiwana.
 
 Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
-### <a name="database-mirroring"></a>Dublowanie bazy danych
+### <a name="sql-server-agent"></a>Program SQL Server Agent
 
-Funkcja dublowania bazy danych nie jest obsługiwane.
+- Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym.  
+- Stanowiska
+  - Kroki w zadaniu języka T-SQL są obsługiwane.
+  - Obsługiwane są następujące zadania replikacji:
+    - Czytnik dziennika transakcji.  
+    - Migawka.
+    - Dystrybutor
+  - Kroki zadania SSIS są obsługiwane.
+  - Inne typy kroków zadania nie są obecnie obsługiwane, w tym:
+    - Krok zadania replikacji scalającej nie jest obsługiwany.  
+    - Czytnik danych kolejki nie jest obsługiwany.  
+    - Powłoka poleceń nie jest jeszcze obsługiwana.
+  - Wystąpienia zarządzanego nie można uzyskać dostępu zewnętrznych zasobów (np. udziały sieciowe za pośrednictwem robocopy).  
+  - Program PowerShell nie jest jeszcze obsługiwana.
+  - Usługi Analysis Services nie są obsługiwane.
+- Powiadomienia są obsługiwane częściowo.
+- Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile` w publicznej wersji zapoznawczej (tymczasowe ograniczenie).  
+  - Pager nie jest obsługiwany.  
+  - Polecenie NetSend nie jest obsługiwane.
+  - Alerty nie są jeszcze nie obsługiwane.
+  - Serwery proxy nie są obsługiwane.  
+- Dziennik zdarzeń nie jest obsługiwany.
 
-- `ALTER DATABASE SET PARTNER` i `SET WITNESS` opcje nie są obsługiwane.
-- `CREATE ENDPOINT … FOR DATABASE_MIRRORING` nie jest obsługiwane.
+Następujące funkcje nie są obecnie obsługiwane, ale zostaną włączone w przyszłości:
 
-Aby uzyskać więcej informacji, zobacz [ALTER DATABASE SET PARTNER i SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) i [CREATE ENDPOINT... Aby UZYSKAĆ DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
+- Serwery proxy
+- Planowanie zadań w stanie bezczynności procesora CPU
+- Włączanie/wyłączanie agenta
+- Alerty
+
+Aby uzyskać informacje na temat agenta programu SQL Server, zobacz [SQL Server Agent (Agent programu SQL Server)](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+
+### <a name="tables"></a>Tabele
+
+Obsługiwane są następujące funkcje nie:
+
+- `FILESTREAM`
+- `FILETABLE`
+- `EXTERNAL TABLE`
+- `MEMORY_OPTIMIZED`  
+
+Aby uzyskać informacji na temat tworzenia i modyfikowania tabel, zobacz [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) i [instrukcji ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
+
+## <a name="functionalities"></a>Funkcje
+
+### <a name="bulk-insert--openrowset"></a>Wstawianie zbiorcze / openrowset
+
+Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc należy importować pliki z usługi Azure blob storage:
+
+- `DATASOURCE` jest wymagany w `BULK INSERT` polecenia podczas importowania plików z magazynu obiektów blob platformy Azure. Zobacz [WSTAWIANIA ZBIORCZEGO](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
+- `DATASOURCE` jest wymagany w `OPENROWSET` działają w przypadku odczytać zawartość pliku z usługi Azure blob storage. Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+
+### <a name="clr"></a>CLR
+
+Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i folderów systemu Windows, dlatego obowiązują następujące ograniczenia:
+
+- Tylko `CREATE ASSEMBLY FROM BINARY` jest obsługiwana. Zobacz [tworzenia zestawu z danych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
+- `CREATE ASSEMBLY FROM FILE` nie jest obsługiwane. Zobacz [tworzenie zestawów z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
+- `ALTER ASSEMBLY` Nie można odwoływać się do plików. Zobacz [zmiana zestawu](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
+
 
 ### <a name="dbcc"></a>DBCC
 
@@ -274,14 +341,6 @@ Operacje
 - `OPENROWSET` funkcja może służyć do wykonywania zapytań tylko w wystąpieniach programu SQL Server (albo zarządzane lokalnie lub na maszynach wirtualnych). Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE` funkcja może służyć do wykonywania zapytań tylko w wystąpieniach programu SQL Server (albo zarządzane lokalnie lub na maszynach wirtualnych). Tylko `SQLNCLI`, `SQLNCLI11`, i `SQLOLEDB` wartości są obsługiwane jako dostawca. Na przykład: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Zobacz [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 
-### <a name="logins--users"></a>Identyfikatory logowania / użytkownicy
-
-- Utworzone nazw logowania SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, i `FROM SID` są obsługiwane. Zobacz [logowania Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Usługa Azure Active Directory (AAD) logowania do utworzonych za pomocą [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) składni lub [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) składni są obsługiwane (**publicznej wersji zapoznawczej**).
-- Logowania Windows utworzonych za pomocą `CREATE LOGIN ... FROM WINDOWS` składni nie są obsługiwane. Za pomocą usługi Azure Active Directory, logowania i użytkowników.
-- Azure użytkownik usługi Active Directory (Azure AD), który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](sql-database-manage-logins.md#non-administrator-users)
-
 ### <a name="polybase"></a>Program Polybase
 
 Tabele zewnętrzne odwołujące się do plików w systemie plików HDFS lub Azure blob storage nie są obsługiwane. Aby uzyskać informacji na temat technologii Polybase, zobacz [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
@@ -337,13 +396,6 @@ Broker usług dla wielu wystąpień nie jest obsługiwana:
 - `CREATE ROUTE` -Nie można użyć `CREATE ROUTE` z `ADDRESS` innych niż `LOCAL`. Zobacz [Utwórz trasy](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE` Nie można `ALTER ROUTE` z `ADDRESS` innych niż `LOCAL`. Zobacz [trasy ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql).  
 
-### <a name="service-key-and-service-master-key"></a>Usługa klucza głównego klucza i usługi
-
-- [Kopię zapasową klucza głównego](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
-- [Przywróć klucz główny](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
-- [Kopię zapasową klucza głównego usługi](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
-- [Przywróć klucz główny usługi](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) nie jest obsługiwane (zarządzane przez usługę SQL Database)
-
 ### <a name="stored-procedures-functions-triggers"></a>Procedury składowane, funkcje, wyzwalaczy
 
 - `NATIVE_COMPILATION` obecnie nie jest obsługiwana.
@@ -359,51 +411,6 @@ Broker usług dla wielu wystąpień nie jest obsługiwana:
 - `Extended stored procedures` nie są obsługiwane, w tym `sp_addextendedproc`  i `sp_dropextendedproc`. Zobacz [rozszerzonych procedur składowanych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - `sp_attach_db`, `sp_attach_single_file_db`, i `sp_detach_db` nie są obsługiwane. Zobacz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), i [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` nie jest obsługiwane. Zobacz [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
-
-### <a name="sql-server-agent"></a>Program SQL Server Agent
-
-- Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym.  
-- Stanowiska
-  - Kroki w zadaniu języka T-SQL są obsługiwane.
-  - Obsługiwane są następujące zadania replikacji:
-    - Czytnik dziennika transakcji.  
-    - Migawka.
-    - Dystrybutor
-  - Kroki zadania SSIS są obsługiwane.
-  - Inne typy kroków zadania nie są obecnie obsługiwane, w tym:
-    - Krok zadania replikacji scalającej nie jest obsługiwany.  
-    - Czytnik danych kolejki nie jest obsługiwany.  
-    - Powłoka poleceń nie jest jeszcze obsługiwana.
-  - Wystąpienia zarządzanego nie można uzyskać dostępu zewnętrznych zasobów (np. udziały sieciowe za pośrednictwem robocopy).  
-  - Program PowerShell nie jest jeszcze obsługiwana.
-  - Usługi Analysis Services nie są obsługiwane.
-- Powiadomienia są obsługiwane częściowo.
-- Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile` w publicznej wersji zapoznawczej (tymczasowe ograniczenie).  
-  - Pager nie jest obsługiwany.  
-  - Polecenie NetSend nie jest obsługiwane.
-  - Alerty nie są jeszcze nie obsługiwane.
-  - Serwery proxy nie są obsługiwane.  
-- Dziennik zdarzeń nie jest obsługiwany.
-
-Następujące funkcje nie są obecnie obsługiwane, ale zostaną włączone w przyszłości:
-
-- Serwery proxy
-- Planowanie zadań w stanie bezczynności procesora CPU
-- Włączanie/wyłączanie agenta
-- Alerty
-
-Aby uzyskać informacje na temat agenta programu SQL Server, zobacz [SQL Server Agent (Agent programu SQL Server)](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
-
-### <a name="tables"></a>Tabele
-
-Obsługiwane są następujące funkcje nie:
-
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED`  
-
-Aby uzyskać informacji na temat tworzenia i modyfikowania tabel, zobacz [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) i [instrukcji ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
 
 ## <a name="Changes"></a> Zmiany zachowania
 

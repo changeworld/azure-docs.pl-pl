@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 38852e80948f9937ce2711ee3d29d6a37e1da5c3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 6e62e923b6e983dfff8eb72c9526708a3b360930
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428583"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494752"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Używanie usługi Azure Automation do wyzwalania zadania
 
@@ -106,7 +106,7 @@ Wykonaj poniższe kroki, aby zaimportować, publikowanie i uruchamianie elementu
 
     ![Dodaj element runbook 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. Podaj parametry, takie jak nazwa usługi StorSimple Data Manager, grupy skojarzone reource i Nazwa definicji zadania. **Rozpocznij** testu. Raport jest generowany, gdy uruchomienie zostanie zakończone. Aby uzyskać więcej informacji, przejdź do sposobu [przetestować element runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
+6. Podaj parametry, takie jak nazwa usługi StorSimple Data Manager, skojarzonej grupy zasobów i Nazwa definicji zadania. **Rozpocznij** testu. Raport jest generowany, gdy uruchomienie zostanie zakończone. Aby uzyskać więcej informacji, przejdź do sposobu [przetestować element runbook](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 
     ![Dodaj element runbook 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 

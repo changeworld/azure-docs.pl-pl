@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7951044f850d93659ca458d3bcc46376e7e6b34a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2720d239c31a0cbfab215c7e297627c9f0d8c781
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077365"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510242"
 ---
 # <a name="what-are-authentication-methods"></a>Jakie są metody uwierzytelniania?
 
@@ -171,6 +171,8 @@ Raz niepoprawnie sformatowany jako plik CSV, administrator może, a następnie z
 W zależności od rozmiaru pliku CSV może upłynąć kilka minut, aby przetworzyć. Kliknij przycisk **Odśwież** przycisk, aby wyświetlić bieżący stan. Jeśli występują błędy w pliku, masz możliwość pobrania plik CSV z listą wszelkie błędy, które należy rozwiązać.
 
 Gdy zostały rozwiązane wszystkie błędy, administrator następnie można uruchomić każdy klucz klikając **Aktywuj** token zostanie uaktywniony i wprowadzanie kodu OTP jest wyświetlany w tokenie.
+
+Użytkownicy mogą mieć kombinację tokenów OATH do 5 w sprzętu lub aplikacji wystawcy uwierzytelnienia, takich jak aplikacja Microsoft Authenticator skonfigurowany do użycia w dowolnym momencie.
 
 ## <a name="mobile-phone"></a>Telefon komórkowy
 

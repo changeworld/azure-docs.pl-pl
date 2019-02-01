@@ -3,23 +3,24 @@ title: Użyj usługi Azure Key Vault z aplikacji zarządzanych | Dokumentacja fi
 description: Ilustruje sposób używania wpisów tajnych dostępu w usłudze Azure Key Vault, wdrażając Managed Applications
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcfbb7f3b1d110d4c1fdf22863d795c85152ec35
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 55410250ccd4dfceac8ac9ae5b81d4736de0d91a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725016"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492680"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Dostęp do klucza tajnego usługi Key Vault, podczas wdrażania usługi Azure Managed Applications
 
-Gdy potrzebujesz przekazać wartość bezpieczną (na przykład hasło) jako parametr podczas wdrażania można pobrać wartości z [usługi Azure Key Vault](../key-vault/key-vault-whatis.md). Aby uzyskać dostęp do usługi Key Vault, podczas wdrażania aplikacji zarządzanych, musi udzielić dostępu do **dostawcy zasobów urządzenia** nazwy głównej usługi. W tym artykule opisano sposób konfigurowania usługi Key Vault do pracy z aplikacji zarządzanych.
+Gdy potrzebujesz przekazać wartość bezpieczną (na przykład hasło) jako parametr podczas wdrażania można pobrać wartości z [usługi Azure Key Vault](../key-vault/key-vault-whatis.md). Aby uzyskać dostęp do usługi Key Vault, podczas wdrażania aplikacji zarządzanych, musi udzielić dostępu do **dostawcy zasobów urządzenia** nazwy głównej usługi. Usługa Managed Applications używa tej tożsamości do uruchamiania operacji. Aby pomyślnie pobrać wartość z usługi Key Vault podczas wdrażania, nazwa główna usługi musi być mogli korzystać z usługi Key Vault.
+
+W tym artykule opisano sposób konfigurowania usługi Key Vault do pracy z aplikacji zarządzanych.
 
 ## <a name="enable-template-deployment"></a>Włącz wdrożenie szablonu
 

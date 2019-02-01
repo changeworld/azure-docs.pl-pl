@@ -1,8 +1,21 @@
 ---
-Tytuł: Ponowne szkolenie nowej usługi sieci web Machine Learning Studio, za pomocą programu PowerShell titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning, za pomocą poleceń cmdlet programu PowerShell usługi Machine Learning Management.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 03/28/2017
+title: Ponowne szkolenie nowej usługi sieci web Machine Learning Studio, za pomocą programu PowerShell
+titleSuffix: Azure Machine Learning Studio
+description: Dowiedz się, jak programowe ponowne trenowanie modelu i zaktualizować usługę sieci web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning, za pomocą poleceń cmdlet programu PowerShell usługi Machine Learning Management.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/28/2017
+ms.openlocfilehash: cad38d47b1fe154da9c3967e1e34ed87b9bc8988
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507794"
 ---
 # <a name="retrain-a-new-resource-manager-based-studio-web-service-using-powershell"></a>Ponowne szkolenie nowej usługi sieci web opartych na usłudze Resource Manager Studio przy użyciu programu Powershell
 Gdy retrain się nowej usługi sieci web, należy zaktualizować definicji usługi predykcyjne sieci web, aby odwoływać się do nowego modelu uczonego.

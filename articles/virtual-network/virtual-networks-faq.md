@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 769dcd3be33ec5dfecf0607ab3e45a11486c48d4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: eba703e454e02e5b83efae2de01003a2efc1f764
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412873"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493252"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -230,7 +230,7 @@ Tak. Dowiedz się więcej o korzystaniu z:
 Komunikacji równorzędnej sieci wirtualnej (lub komunikacji równorzędnej sieci wirtualnych) umożliwia łączenie sieci wirtualnych. Połączenia komunikacji równorzędnej sieci wirtualnej między sieciami wirtualnymi umożliwia kierowanie ruchu między nimi prywatnie przy użyciu adresów IPv4. Tak, jakby leżą one w tej samej sieci maszyn wirtualnych w wirtualnych sieciach równorzędnych mogą komunikować się ze sobą. Te sieci wirtualne można w tym samym regionie lub w różnych regionach (znany także jako globalnych wirtualnych sieci równorzędnych). Można również tworzyć połączenia komunikacji równorzędnej sieci wirtualnej między subskrypcjami platformy Azure.
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>W innym regionie można utworzyć połączenie komunikacji równorzędnej z siecią wirtualną?
-Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych regionach. Globalne wirtualne sieci równorzędne jest dostępna we wszystkich publicznych regionach platformy Azure. Nie można globalnie komunikacji równorzędnej z publicznych regionach platformy Azure do chmur krajowych. Globalnej komunikacji równorzędnej nie ma obecnie w chmurach krajowych.
+Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych regionach. Globalne wirtualne sieci równorzędne jest dostępna we wszystkich publicznych regionach platformy Azure i regionów chmury w Chinach. Nie można globalnie komunikacji równorzędnej z publicznych regionach platformy Azure w regionach chmury krajowe. Globalnej komunikacji równorzędnej nie ma obecnie w chmurze dla instytucji rządowych.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Można włączyć komunikację równorzędną sieci wirtualnej Jeśli Moje sieci wirtualne należą do subskrypcji w ramach różnych dzierżaw usługi Azure Active Directory?
 Tak. Jest możliwe ustalenie, komunikacja równorzędna sieci wirtualnych (czy lokalnych lub globalnych), jeśli Twoje subskrypcje należą do różnych dzierżaw usługi Azure Active Directory. Można to zrobić za pomocą programu PowerShell lub interfejsu wiersza polecenia. Portal nie jest jeszcze obsługiwana.
@@ -374,7 +374,7 @@ Nie ma żadnego limitu całkowitej liczby punktów końcowych usługi sieci wirt
 |Azure SQL Data Warehouse|  128|
 |Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
-|Azure Event Hub|   128|
+|Centrum zdarzeń Azure|   128|
 |Azure Service Bus| 128|
 |Azure Data Lake Store V1|  100|
  

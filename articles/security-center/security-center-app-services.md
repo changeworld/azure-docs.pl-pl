@@ -3,7 +3,7 @@ title: Ochrona usług App Service w usłudze Azure Security Center | Dokumentacj
 description: Ten artykuł ułatwia rozpoczęcie pracy, chroni Twoje usługi App Services w usłudze Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: mbaldwin
 editor: ''
 ms.assetid: e8518710-fcf9-44a8-ae4b-8200dfcded1a
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/9/2018
-ms.author: rkarlin
-ms.openlocfilehash: b38ba140a1e2b853c07e1ffe53405b58663653b5
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: bf3ceb0d5f12783957e127b3596ab07b7531ad5a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343874"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491947"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Ochrona usługi App Service z usługą Azure Security Center
 Ten artykuł ułatwia monitorowanie oraz chronić Twoich aplikacji uruchomionych na podstawie usługi App Service przy użyciu usługi Azure Security Center.
@@ -65,6 +65,7 @@ W tym artykule przedstawiono sposób korzystania z funkcji monitorowania w usłu
 
 * [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](tutorial-security-policy.md): Informacje o sposobie konfigurowania ustawień zabezpieczeń w usłudze Azure Security Center.
 * [Reagowanie na alerty zabezpieczeń w Centrum zabezpieczeń Azure i zarządzanie nimi](security-center-managing-and-responding-alerts.md): Informacje na temat sposobu zarządzania alertami zabezpieczeń i reagowania na nie.
+* [Usługi aplikacji](security-center-virtual-machine-protection.md#app-services):  Wyświetl listę usługi App service Environment z podsumowania kondycji.
 * [Monitorowanie rozwiązań partnerskich w usłudze Azure Security Center](security-center-partner-solutions.md): Informacje na temat sposobu monitorowania stanu kondycji rozwiązań partnerskich.
 * [Usługa Azure Security Center — często zadawane pytania](security-center-faq.md): Odpowiedzi na często zadawane pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](http://blogs.msdn.com/b/azuresecurity/): Wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

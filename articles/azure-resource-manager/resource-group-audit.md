@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: b702b6de5c9f33058e9b486547530d071969bd97
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 70f6f8a7837b9e87b2720a866f14983356d23691
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855394"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487680"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Wyświetlanie dzienników aktywności, aby przeprowadzić inspekcję działań na zasoby
 
@@ -35,7 +35,10 @@ Dzienniki aktywności są przechowywane przez 90 dni. Można wyszukać dowolny z
 
 Można pobrać informacji z dzienników aktywności w portalu, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST usługi Insights lub [Insights — Biblioteka .NET](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
 
-## <a name="portal"></a>Portal
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="the-azure-portal"></a>Witryna Azure Portal
 
 1. Aby wyświetlić dzienniki aktywności w portalu, wybierz **Monitor**.
 
@@ -71,52 +74,52 @@ Można pobrać informacji z dzienników aktywności w portalu, programu PowerShe
 
 ## <a name="powershell"></a>PowerShell
 
-* Uruchom, aby pobrać Wpisy dziennika **Get-AzureRmLog** polecenia. Możesz podać dodatkowe parametry, aby filtrować listę wpisów. Jeśli nie określisz godzinę rozpoczęcia i zakończenia są zwracane wpisy z ostatnich siedmiu dni.
+* Uruchom, aby pobrać Wpisy dziennika **Get AzLog** polecenia. Możesz podać dodatkowe parametry, aby filtrować listę wpisów. Jeśli nie określisz godzinę rozpoczęcia i zakończenia są zwracane wpisy z ostatnich siedmiu dni.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup
+  Get-AzLog -ResourceGroup ExampleGroup
   ```
 
     Poniższy przykład pokazuje, jak korzystać z dziennika aktywności do badań operacje wykonywane w czasie. Daty rozpoczęcia i zakończenia są określone w formacie daty.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
+  Get-AzLog -ResourceGroup ExampleGroup -StartTime 2019-01-09T06:00 -EndTime 2019-01-15T06:00
   ```
 
     Alternatywnie można użyć funkcji daty, aby określić zakres dat, takich jak ostatnich 14 dni.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
+  Get-AzLog -ResourceGroup ExampleGroup -StartTime (Get-Date).AddDays(-14)
   ```
 
 * Możesz wyszukać akcje wykonywane przez określonego użytkownika, nawet w przypadku grupy zasobów, który już nie istnieje.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
+  Get-AzLog -ResourceGroup deletedgroup -StartTime (Get-Date).AddDays(-14) -Caller someone@contoso.com
   ```
 
 * Można filtrować operacje zakończone niepowodzeniem.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed
+  Get-AzLog -ResourceGroup ExampleGroup -Status Failed
   ```
 
 * Można skoncentrować się na jeden błąd, analizując komunikat o stanie dla tego wpisu.
 
   ```azurepowershell-interactive
-  ((Get-AzureRmLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
+  ((Get-AzLog -ResourceGroup ExampleGroup -Status Failed).Properties[0].Content.statusMessage | ConvertFrom-Json).error
   ```
 
 * Możesz wybrać określone wartości, aby ograniczyć ilość danych, która jest zwracana.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
+  Get-AzLog -ResourceGroupName ExampleGroup | Format-table EventTimeStamp, Caller, @{n='Operation'; e={$_.OperationName.value}}, @{n='Status'; e={$_.Status.value}}, @{n='SubStatus'; e={$_.SubStatus.LocalizedValue}}
   ```
 
 * W zależności od godziny rozpoczęcia, które określisz poprzednie polecenia może zwracać długą listę operacji dla grupy zasobów. Możesz filtrować wyniki do czego szukasz, zapewniając kryteria wyszukiwania. Na przykład można filtrować według typu działania.
 
   ```azurepowershell-interactive
-  Get-AzureRmLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
+  Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq "Microsoft.Resources/deployments/write"}
   ```
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure

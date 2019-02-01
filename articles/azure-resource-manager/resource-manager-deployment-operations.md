@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8fee1e29ab3a267d77e4e43beb2c42587da5314d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 6801ed86f15820473e6aaa694b0fea091586a222
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103863"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486779"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Wyświetlanie operacji wdrażania przy użyciu usługi Azure Resource Manager
 
@@ -26,7 +26,10 @@ Można wyświetlić operacje wdrażania w witrynie Azure portal. Może być najb
 
 Wdrożenia można rozwiązać, analizując dzienniki inspekcji lub operacje wdrażania. W tym artykule przedstawiono obie metody. Aby uzyskać pomoc dotyczącą Rozwiązywanie błędów danego wdrożenia, zobacz [Rozwiązywanie typowych problemów podczas wdrażania zasobów na platformie Azure przy użyciu usługi Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="portal"></a>Portal
+
 Aby wyświetlić operacje wdrażania, użyj następujących kroków:
 
 1. Dla grupy zasobów jest zaangażowane we wdrożeniu Zwróć uwagę, stan ostatniego wdrożenia. Możesz wybrać ten stan, aby uzyskać więcej szczegółów.
@@ -53,28 +56,28 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
     ![Zobacz zdarzenia](./media/resource-manager-deployment-operations/see-all-events.png)
 
 ## <a name="powershell"></a>PowerShell
-1. Aby uzyskać ogólny stan wdrożenia, użyj **Get-AzureRmResourceGroupDeployment** polecenia. 
+1. Aby uzyskać ogólny stan wdrożenia, użyj **Get AzResourceGroupDeployment** polecenia. 
 
   ```powershell
-  Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup
+  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
   ```
 
    Alternatywnie można filtrować wyniki tych wdrożeń, które nie powiodło się.
 
   ```powershell
-  Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
+  Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
 1. Aby uzyskać identyfikator korelacji, należy użyć:
 
   ```powershell
-  (Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
+  (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. Każde wdrożenie obejmuje wiele operacji. Każda operacja stanowi krok w procesie wdrażania. Aby dowiedzieć się, czym jest problem z wdrożeniem, zazwyczaj chcesz zobaczyć szczegółowe informacje o operacji wdrażania. Można wyświetlić stan operacji przy użyciu **Get AzureRmResourceGroupDeploymentOperation**.
+1. Każde wdrożenie obejmuje wiele operacji. Każda operacja stanowi krok w procesie wdrażania. Aby dowiedzieć się, czym jest problem z wdrożeniem, zazwyczaj chcesz zobaczyć szczegółowe informacje o operacji wdrażania. Można wyświetlić stan operacji przy użyciu **Get AzResourceGroupDeploymentOperation**.
 
   ```powershell 
-  Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
+  Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
     Zwraca wiele operacji z każdą z nich w następującym formacie:
@@ -92,7 +95,7 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
 1. Aby uzyskać więcej informacji na temat operacji nie powiodło się, można pobrać właściwości dla operacji o **stanu**.
 
   ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
     Zwraca wszystkie operacje zakończone niepowodzeniem z każdą z nich w następującym formacie:
@@ -115,7 +118,7 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
 1. Aby uzyskać komunikat o stanie określonej operacji nie powiodło się, użyj następującego polecenia:
 
   ```powershell
-  ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
+  ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
   ```
 
     Zwraca:
@@ -130,9 +133,9 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
   Pobieranie informacji z dziennika, a następnie zapisz go lokalnie, używając następujących poleceń programu PowerShell:
 
   ```powershell
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
 
-  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
+  (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
   ```
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure

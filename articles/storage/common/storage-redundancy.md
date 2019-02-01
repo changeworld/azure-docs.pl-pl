@@ -1,29 +1,29 @@
 ---
-title: Replikacja danych w usłudze Azure Storage | Dokumentacja firmy Microsoft
-description: Dane na Twoim koncie usługi Microsoft Azure Storage są replikowane w celu zapewnienia trwałości i wysokiej dostępności. Opcje replikacji obejmują magazyn lokalnie nadmiarowy (LRS), Magazyn strefowo nadmiarowy (ZRS), Magazyn geograficznie nadmiarowy (GRS) i dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS).
+title: Nadmiarowość danych w usłudze Azure Storage | Dokumentacja firmy Microsoft
+description: Dane na Twoim koncie usługi Microsoft Azure Storage są replikowane w celu zapewnienia trwałości i wysokiej dostępności. Opcje nadmiarowości obejmują magazyn lokalnie nadmiarowy (LRS), Magazyn strefowo nadmiarowy (ZRS), Magazyn geograficznie nadmiarowy (GRS) i dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455511"
+ms.locfileid: "55506791"
 ---
-# <a name="azure-storage-replication"></a>Replikacja usługi Azure Storage
+# <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
-Dane konta usługi Microsoft Azure Storage są zawsze replikowane w celu zapewnienia trwałości i wysokiej dostępności. Replikacja usługi Azure Storage dane są kopiowane, aby jest chroniony z planowanych i nieplanowanych zdarzeń od przejściowych awarii sprzętu, sieci lub awarii zasilania, ogromną klęskami żywiołowymi i tak dalej. Można replikować dane w tym samym centrum danych, w centrach danych strefowych, w tym samym regionie, a nawet między regionami.
+Dane konta usługi Microsoft Azure Storage są zawsze replikowane w celu zapewnienia trwałości i wysokiej dostępności. Usługa Azure Storage dane są kopiowane, aby jest chroniony z planowanych i nieplanowanych zdarzeń wraz ze przejściowych awarii sprzętu, sieci lub awarii zasilania i ogromnych klęskami żywiołowymi. Można replikować dane w tym samym centrum danych, w centrach danych strefowych, w tym samym regionie lub w regionach podstawowemu.
 
 Replikacja gwarantuje, że Twoje konto magazynu spełnia warunki [Umowy dotyczącej poziomu usług (SLA) dla Magazynu](https://azure.microsoft.com/support/legal/sla/storage/) nawet w przypadku wystąpienia błędów. Zobacz umowę SLA, aby uzyskać informacje o gwarancjach usługi Azure Storage dotyczących trwałości i dostępności.
 
-## <a name="choosing-a-replication-option"></a>Wybranie opcji replikacji
+## <a name="choosing-a-redundancy-option"></a>Wybranie opcji nadmiarowości
 
-Podczas tworzenia konta magazynu można wybrać jedną z następujących opcji replikacji:
+Podczas tworzenia konta magazynu można wybrać jedną z następujących opcji nadmiarowości:
 
 * [Magazyn lokalnie nadmiarowy (LRS)](storage-redundancy-lrs.md)
 * [Magazyn strefowo nadmiarowy (ZRS)](storage-redundancy-zrs.md)

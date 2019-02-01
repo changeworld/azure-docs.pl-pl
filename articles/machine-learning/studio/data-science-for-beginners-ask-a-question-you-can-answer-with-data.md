@@ -1,8 +1,21 @@
 ---
-Tytuł: ASK może odpowiadać na dane pytanie titleSuffix: Opis usługi Azure Machine Learning Studio: Dowiedz się, jak sformułować pytanie do nauki o danych sharp przetwarzanie danych dla początkujących 3 wideo. Zawiera porównanie pytania dotyczące klasyfikacji i regresji.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: garyericson ms.author: garye ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 01/03/2018
+title: Zadaj pytanie, na które pozwala uzyskać odpowiedzi na dane
+titleSuffix: Azure Machine Learning Studio
+description: Dowiedz się, jak sformułować pytanie do nauki o danych sharp przetwarzanie danych dla początkujących 3 wideo. Zawiera porównanie pytania dotyczące klasyfikacji i regresji.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/03/2018
+ms.openlocfilehash: bddb97083bd1d1538b9f60ec3c0798cf1e964b1e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498152"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 ## <a name="video-3-data-science-for-beginners-series"></a>Wideo 3: Analiza danych dla początkujących serii

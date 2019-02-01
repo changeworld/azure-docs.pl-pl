@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 59562d0571486a4bcbc96be4cb7dcddb4dfb0a44
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 39f23cd0b0b6081d8e54524a0eedc9cce1fd4571
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095723"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493459"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu do usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -512,7 +512,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |header-name|Nazwa nagłówka HTTP zawierający tokenu.|Albo `header-name` lub `query-parameter-name` musi być wybrany; ale nie oba.|ND|  
 |id|`id` Atrybutu na `key` element można określić ciąg, który dopasowywane `kid` oświadczenia w tokenie (jeśli istnieje) dowiedzieć się, odpowiedni klucz do użycia w celu weryfikacji podpisu.|Nie|ND|  
 |dopasowanie|`match` Atrybutu na `claim` element określa, czy każda wartość oświadczenia w ramach zasad musi być obecne w tokenie do weryfikacji została wykonana pomyślnie. Możliwe wartości:<br /><br /> -                          `all` — Każda wartość oświadczenia w zasadach musi być obecne w tokenie do weryfikacji została wykonana pomyślnie.<br /><br /> -                          `any` -wartość co najmniej jedno oświadczenie musi być obecne w tokenie do weryfikacji została wykonana pomyślnie.|Nie|all|  
-|nazwa_zapytania paremeter|Nazwa parametru zapytania, zawierający tokenu.|Albo `header-name` lub `query-paremeter-name` musi być wybrany; ale nie oba.|ND|  
+|query-parameter-name|Nazwa parametru zapytania, zawierający tokenu.|Albo `header-name` lub `query-parameter-name` musi być wybrany; ale nie oba.|ND|  
 |require-expiration-time|Wartość logiczna. Określa, czy oświadczeniu wygaśnięcia jest wymagany w tokenie.|Nie|true|
 |require-scheme|Nazwa tokenu schemat, np. "Bearer". Gdy ten atrybut jest ustawiony, zasady zapewni, że określony schemat jest obecny w wartości nagłówka autoryzacji.|Nie|ND|
 |Wymagaj podpisane — tokeny zabezpieczające|Wartość logiczna. Określa, czy token jest wymagany do podpisania.|Nie|true|  

@@ -3,7 +3,7 @@ title: Warstwa biznesowa krytyczne — usługa Azure SQL Database | Dokumentacja
 description: Więcej informacji na temat warstwy usługi Azure SQL Database krytyczne dla działania firmy
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: aecbc9415fc7fe93b5df355c97a1a51a74f01e97
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: ca907e145067043b41dd6000248d44ecc1e3434f
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883170"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510446"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Warstwa biznesowa krytyczne — usługi Azure SQL Database
 
@@ -26,7 +26,7 @@ ms.locfileid: "52883170"
 
 Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych programu SQL Server, która jest uwzględniany w środowisku chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy modele architektury, które są używane w usłudze Azure SQL Database:
 - Ogólnego przeznaczenia/Standard 
-- Krytyczne biznesowych/Premium
+- Business Critical/Premium
 - Hiperskalowanie
 
 Premium/krytyczne modelu warstwy usług opiera się na klastrze procesy aparatu bazy danych. Ten model architektury opiera się na fakt, że jest zawsze kworum węzłów aparatu bazy danych dostępności i ma negatywny wpływ na wydajność minimalne obciążenie nawet w trakcie czynności konserwacyjnych.

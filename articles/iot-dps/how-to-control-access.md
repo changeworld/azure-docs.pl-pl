@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 0258a37b0614ca7505a90f88afaaaee1a6d5c04e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818514"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496974"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Kontrola dostępu do usługi Azure IoT Hub Device Provisioning Service
 
@@ -34,7 +34,7 @@ Możesz nadawać [uprawnienia](#device-provisioning-service-permissions) w nast�
 
 * **Udostępnione zasady autoryzacji dostępu**. Zasady dostępu współdzielonego może nadać dowolną kombinację [uprawnienia](#device-provisioning-service-permissions). Można zdefiniować zasady w [witryny Azure portal][lnk-management-portal], lub programowo przy użyciu [interfejsów API REST usługi urządzenia aprowizacji][lnk-resource-provider-apis]. Nowo utworzonej usługi aprowizacji ma następujące domyślne zasady:
 
-* **provisioningserviceowner**: zasada o wszystkie uprawnienia.
+* **provisioningserviceowner**: Zasady z wszystkie uprawnienia.
 
 > [!NOTE]
 > Zobacz [uprawnienia](#device-provisioning-service-permissions) Aby uzyskać szczegółowe informacje.
@@ -77,16 +77,16 @@ Oto oczekiwane wartości:
 
 | Wartość | Opis |
 | --- | --- |
-| {Sygnatura} |Ciąg sygnatury HMAC SHA256 w postaci: `{URL-encoded-resourceURI} + "\n" + expiry`. **Ważne**: klucz jest zdekodować z formatu base64 i użyć go jako klucza do wykonywania obliczeń HMAC SHA256.|
+| {Sygnatura} |Ciąg sygnatury HMAC SHA256 w postaci: `{URL-encoded-resourceURI} + "\n" + expiry`. **Ważne**: Klucz jest zdekodować z formatu base64 i użyć go jako klucza do wykonywania obliczeń HMAC SHA256.|
 | {expiry} |Ciągi UTF8 liczba sekund od epoki 00:00:00 czasu UTC na 1 stycznia 1970. |
-| {Adres URL — zakodowane resourceURI} | Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami. Prefiks identyfikatora URI (według segmentu) punktów końcowych, które mogą być udostępniane z tym tokenem, rozpoczynając od nazwy hosta IoT Device Provisioning Service (nie protocol). Na przykład `mydps.azure-devices-provisioning.net`. |
+| {URL-encoded-resourceURI} | Małe zamierzone, Zapisz kodowania adresu URL identyfikator URI zasobu małymi literami. Prefiks identyfikatora URI (według segmentu) punktów końcowych, które mogą być udostępniane z tym tokenem, rozpoczynając od nazwy hosta IoT Device Provisioning Service (nie protocol). Na przykład `mydps.azure-devices-provisioning.net`. |
 | {policyName} |Nazwa zasad dostępu współdzielonego, do którego odwołuje się ten token. |
 
-**Uwaga dotycząca prefiks**: prefiks identyfikatora URI jest obliczany według segmentu i nie według znaków. Na przykład `/a/b` był prefiksem dla `/a/b/c` , ale nie dla `/a/bc`.
+**Uwaga dotycząca prefiks**: Prefiks identyfikatora URI jest obliczany według segmentu i nie według znaków. Na przykład `/a/b` był prefiksem dla `/a/b/c` , ale nie dla `/a/bc`.
 
 Poniższy fragment kodu Node.js zawiera funkcję o nazwie **generateSasToken** , oblicza token z danych wejściowych `resourceUri, signingKey, policyName, expiresInMins`. Kolejne sekcje zawierają szczegółowe instrukcje dotyczące inicjowanie różne dane wejściowe dla różnych zastosowań tokenu.
 
-```nodejs
+```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
     resourceUri = encodeURIComponent(resourceUri);
 
@@ -157,7 +157,7 @@ Na przykład usługa wygenerowany za pomocą wstępnie utworzonych współużytk
 
 ![Tworzenie zasad dostępu współdzielonego danego wystąpienia usługi Device Provisioning w witrynie portal][img-add-shared-access-policy]
 
-```nodejs
+```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";
 var policyName = 'enrollmentread'; 
 var policyKey = '...';

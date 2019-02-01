@@ -4,17 +4,17 @@ description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, ja
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cc5d59d523f87cac6ec8533d6af1342c58ba45f7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7925bc8a9f7cb65d0e92c943aa0a54d48611e286
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853633"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509000"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych dotyczących zgodności
 
@@ -45,6 +45,8 @@ Wersje ewaluacyjne przypisane zasady oraz inicjatyw się zdarzyć w wyniku róż
 - Zasób jest wdrażany w zakresie z przydziałem przy użyciu usługi Resource Manager, REST, wiersza polecenia platformy Azure lub programu Azure PowerShell. W tym scenariuszu zdarzeń efekt (Dołącz, inspekcji, Odmów, wdrażania) i informacje o stanie zgodności dla poszczególnych zasobów stają się dostępne w portalu i zestawy SDK około 15 minut. To zdarzenie nie powoduje oceny innych zasobów.
 
 - Cykl oceny zgodności standardowych. Co 24 godziny, przydziały są automatycznie ponownie oceniane. Duże zasad lub inicjatywy wiele zasobów może potrwać, więc ma nie wstępnie zdefiniowanych oczekiwania podczas cyklu oceny zakończy. Po zakończeniu wyniki sprawdzania zgodności zaktualizowane są dostępne w portalu i zestawów SDK.
+
+- [Konfiguracji gościa](../concepts/guest-configuration.md) dostawcy zasobów jest aktualizowana szczegóły zgodności przez zasobów zarządzanych.
 
 - Skanowanie na żądanie
 

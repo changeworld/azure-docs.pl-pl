@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 01/31/2019
 ms.author: magoedte
-ms.openlocfilehash: 58da86140b97c5292d390b6f91502b7f0622986a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 90cd6f640188408771b3a64a31aadf89cfefcaae
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476846"
+ms.locfileid: "55487867"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Chociaż można monitorować różne warunki przy użyciu usługi Log Analytics lub Azure Monitor, nie zostało zaprojektowane do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
@@ -30,11 +30,11 @@ Ten artykuł pomoże Ci zrozumieć, jak można szybko ocenić, badania i rozwią
 Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](vminsights-onboard.md).
 
 >[!NOTE]
->Od 15 lutego 2019 roku firma Microsoft rozpocznie migrowany bieżący model kondycji w usłudze Azure Monitor funkcję kondycji maszyn wirtualnych, która jest widoczna, gdy jesteś w środowisku Diagnostyka kondycji obecnie do nowej wersji modelu kondycji. Ta aktualizacja zapewnia lepszą wydajność przetwarzania zbiorczy kondycji i zawiera model kondycji dostosowany prezentowane w widoku Diagnostyka kondycji. 
+>Od 11 lutego 2019 roku firma Microsoft rozpocznie migrowany bieżący model kondycji w usłudze Azure Monitor funkcję kondycji maszyn wirtualnych, która jest widoczna, gdy jesteś w środowisku Diagnostyka kondycji obecnie do nowej wersji modelu kondycji. Ta aktualizacja zapewnia lepszą wydajność przetwarzania zbiorczy kondycji i zawiera model kondycji dostosowany prezentowane w widoku Diagnostyka kondycji. 
 >
 >Nowy model kondycji zbiorczy kryteria kondycji podrzędnych kryteria kondycji z poziomu nadrzędnego na jednostkę będzie szybciej, a w rezultacie, stan kondycji aktualizacji nadrzędnego stan żądaną lub docelowego zapewnia mniejsze opóźnienie. Nadal można filtrować kryteria kondycji, w obszarze **wydajności** i **dostępności** kategorii, w przeciwieństwie do poprzednich metody opartej na karcie do wybrania jednej z kategorii w widoku.
 >
->Aby uzyskać szczegółowe informacje na temat nowego środowiska Diagnostyka kondycji, można znaleźć diagnostyki kondycji [sekcji](#health-diagnostics) w tym artykule. 
+>Aby uzyskać więcej informacji na temat doświadczeń Diagnostyka kondycji można znaleźć diagnostyki kondycji [sekcji](#health-diagnostics) w tym artykule. 
 >
 >Ta aktualizacja spowoduje zwiększenie następujące czynności: 
 >
@@ -106,14 +106,16 @@ Aby wyświetlić kondycję maszyn wirtualnych platformy Azure, wybierz **Insight
 
 ![Usługa Azure Monitor, aby uzyskać przegląd kondycji maszyn wirtualnych z wybranych maszyn wirtualnych](./media/vminsights-health/vminsights-directvm-health.png)
 
-Na **kondycji** kartę w sekcji **kondycji maszyny Wirtualnej gościa**, w tabeli przedstawiono bieżący stan kondycji maszyny wirtualnej i całkowita liczba alertów dotyczących kondycji maszyny Wirtualnej zgłoszone przez składnik w złej kondycji. Zapoznaj się [alerty i Zarządzanie alertami](#alerting-and-alert-management) Aby uzyskać więcej informacji.  
+Na **kondycji** kartę w sekcji **kondycji maszyny Wirtualnej gościa**, w tabeli przedstawiono bieżący stan kondycji maszyny wirtualnej i całkowita liczba alertów dotyczących kondycji maszyny Wirtualnej zgłoszone przez składnik w złej kondycji. Zapoznaj się [alerty](#alerting-and-alert-management) sekcji, aby uzyskać więcej informacji na temat środowiska alertów.  
 
-Stany kondycji zdefiniowane dla maszyny Wirtualnej są następujące: 
+Stany kondycji zdefiniowane dla maszyny Wirtualnej zostały opisane w poniższej tabeli: 
 
-* **Dobra** — wykryte nie problemy dla maszyny Wirtualnej i czy działa on zgodnie z potrzebami.  
-* **Krytyczne** — co najmniej jeden problem krytyczny, są wykrywane, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności, zgodnie z oczekiwaniami. 
-* **Ostrzeżenie** — co najmniej jeden problem, są wykrywane, które muszą być kierowane lub stan kondycji może stać się krytyczna.  
-* **Nieznany** — Jeśli usługa nie był w stanie nawiązać połączenie z maszyną Wirtualną, a jego stan zmieni się stan nieznany.  
+|Ikona |Stan kondycji |Znaczenie |
+|-----|-------------|------------|
+| |W dobrej kondycji |Stan kondycji jest w dobrej kondycji, jeśli znajduje się on w zdefiniowanych zdrowotnych, wskazując nie wykryto dla maszyny Wirtualnej problemów i działa zgodnie z potrzebami. W przypadku zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
+| |Krytyczny |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. W przypadku zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
+| |Ostrzeżenie |Stan kondycji jest ostrzeżenie, jeśli jest między dwiema wartościami progowymi kondycji zdefiniowany warunek, gdzie jeden wskazuje *ostrzeżenie* wskazuje stan, a druga *krytyczny* stanu (trzy wartości progowe stanu kondycji może można skonfigurować), gdy problem niekrytyczne wykrycia lub co może spowodować problemy krytyczne, jeśli nie uda się rozwiązać. W przypadku nadrzędnym pakiet zbiorczy monitor, jeśli jeden lub więcej podrzędnych jest w stanie ostrzeżenia, a następnie element nadrzędny będzie odzwierciedlać *ostrzeżenie* stanu. Jeśli jest elementem podrzędnym, który znajduje się w *krytyczny* i inny podrzędny w *ostrzeżenie* stanu zbiorczego nadrzędnego wyświetli stan kondycji *krytyczny*.|
+| |Nieznane |Stan kondycji jest *nieznany* stan, gdy stan kondycji nie można obliczyć z kilku powodów, takich jak nie może zbierać dane, usługa niezainicjowana itp. Ten stan kondycji jest niemożliwe.| 
 
 Wybieranie **Wyświetl diagnostykę kondycji** spowoduje otwarcie strony, przedstawiający wszystkie składniki maszyny Wirtualnej, kryteriów skojarzonej kondycji, zmian stanu i innych istotnych problemów napotykanych przez monitorowanie składników powiązane z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz [Diagnostyka kondycji](#health-diagnostics). 
 
@@ -191,16 +193,7 @@ Diagnostyka kondycji porządkuje informacje o kondycji na następujące kategori
  
 Wszystkie kryteria kondycji zdefiniowane dla określonego składnika, takich jak dysk logiczny procesor CPU, itp. Ponadto kategoria monitora są widoczne obok niego w **kryteria kondycji** kolumny.  
 
-Stan kryteria kondycji jest zdefiniowana za pomocą jednej z czterech stanów — *krytyczny*, *ostrzeżenie*, *dobra kondycja*, i *nieznany*. Pierwsze trzy są konfigurowane, co oznacza, można zmodyfikować wartości progowe monitorów za pomocą [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Nieznany* nie jest konfigurowalne i zarezerwowane dla konkretnych scenariuszy, zgodnie z opisem w poniższej tabeli.  
-
-Poniższa tabela zawiera szczegółowe informacje o stanach kondycji reprezentowane w diagnostyce kondycji.
-
-|Ikona |Stan kondycji |Znaczenie |
-|-----|-------------|------------|
-| |W dobrej kondycji |Stan kondycji jest w dobrej kondycji, jeśli znajduje się w zdefiniowanych zdrowotnych, wskazując nie wykryto dla maszyny Wirtualnej w taki sposób, że działa on zgodnie z wymaganiami problemów. W przypadku zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
-| |Krytyczny |Stan kondycji jest krytyczny, jeśli nie znajduje się w stanie kondycji zdefiniowanych, wskazujący, że co najmniej jeden krytyczne wykryto problemy, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności. W przypadku zbiorczego monitora nadrzędnego telefoniczny ustala kondycję i odzwierciedla najlepszego przypadku lub najgorszy stan elementu podrzędnego.|
-| |Ostrzeżenie |Stan kondycji jest ostrzeżenie, jeśli jest między dwiema wartościami progowymi kondycji zdefiniowany warunek, gdzie jeden wskazuje *ostrzeżenie* wskazuje stan, a druga *krytyczny* stanu (trzy stany kontrolowanego przez użytkownika są jest to możliwe), gdy problem niekrytyczne wykrycia lub co może spowodować problemy krytyczne, jeśli nie uda się rozwiązać. W przypadku nadrzędnym pakiet zbiorczy monitor, jeśli jeden lub więcej podrzędnych jest w stanie ostrzeżenia, a następnie element nadrzędny będzie odzwierciedlać *ostrzeżenie* stanu. Jeśli jest elementem podrzędnym, który znajduje się w *krytyczny* i inny podrzędny w *ostrzeżenie* stanu zbiorczego nadrzędnego wyświetli stan kondycji *krytyczny*.|
-| |Nieznane |Stan kondycji jest *nieznany* stan, gdy stan kondycji nie można obliczyć z kilku powodów, takich jak nie może zbierać dane usługi niezainicjowanej itp. Nie jest to stan kontrolowanego przez użytkownika.| 
+Stan kryteria kondycji jest zdefiniowana za pomocą jednej z czterech stanów — *krytyczny*, *ostrzeżenie*, *dobra kondycja*, i *nieznany*. Pierwsze trzy są konfigurowane, co oznacza, można zmodyfikować wartości progowe monitorów za pomocą [API Monitor obciążenia](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update). *Nieznany* nie jest konfigurowalne i zarezerwowane dla konkretnych scenariuszy.  
 
 Strona Diagnostyka kondycji zawiera trzema głównymi sekcjami:
 
@@ -230,10 +223,10 @@ Ogólna kondycja obiektu docelowego jest określany przez kondycji każdego z je
 
 ![Konfigurowanie przykładu kryteria kondycji](./media/vminsights-health/health-diagnostics-vm-example-02.png)
 
-W okienku Konfiguracja kondycji wybranych kryteriów, korzystając z przykładu **średni sekund na zapisu dysku**, przekroczyła wartość progową, może być skonfigurowany z inną wartością liczbową. Monitor dwustanowy, czyli jedynie zmian wprowadzonych w dobrej kondycji na ostrzeżenie jest. Innego kryterium kondycji mogą być trzy stanu, w którym można skonfigurować wartość próg ostrzegawczy i krytyczny stan kondycji.  
+W okienku Konfiguracja kondycji wybranych kryteriów, korzystając z przykładu **średni sekund na zapisu dysku**, przekroczyła wartość progową, może być skonfigurowany z inną wartością liczbową. Monitor dwustanowy, czyli jedynie zmian wprowadzonych w dobrej kondycji na ostrzeżenie jest. Innego kryterium kondycji mogą być trzy stany, w którym można skonfigurować wartość próg ostrzegawczy i krytyczny stan kondycji.  
 
 >[!NOTE]
->Trwa stosowanie zmian konfiguracji kryteria kondycji do jednego wystąpienia jest stosowany do wszystkich monitorowanych wystąpień.  Na przykład w przypadku wybrania **dysk fizyczny -1 D:** i modyfikować **średni sekund na zapisu dysku** próg, nie dotyczy tylko tego wystąpienia, ale wszystkie wystąpienia dysku odnalezione i monitorowane w Maszyna wirtualna.
+>Trwa stosowanie zmian konfiguracji kryteria kondycji do jednego wystąpienia jest stosowany do wszystkich monitorowanych wystąpień.  Na przykład w przypadku wybrania **dysku D:-1** i modyfikować **średni sekund na zapisu dysku** próg, nie dotyczy tylko tego wystąpienia, ale wszystkie wystąpienia dysku odnalezione i monitorowane na maszynie Wirtualnej.
 >
 
 ![Konfigurowanie kryteria kondycji w przykładzie monitora jednostki](./media/vminsights-health/health-diagnostics-criteria-config-01.png)
@@ -252,7 +245,7 @@ Trzy kolumny są powiązane ze sobą. Po wybraniu odnalezione wystąpienia w **s
 
 ![Przykład wybierania monitorowanych wystąpień i wyniki](./media/vminsights-health/health-diagnostics-vm-example-01.png)
 
-W powyższym przykładzie po wybraniu **dysk fizyczny - 1 D:**, drzewa kryteria kondycji jest filtrowana w celu **dysk fizyczny - 1 D:**. **Zmiany stanu** kolumna pokazuje zmiany stanu, w oparciu o dostępności **dysk fizyczny - 1 D:**. 
+W powyższym przykładzie po wybraniu **dysk — 1 D:**, drzewa kryteria kondycji jest filtrowana w celu **dysk — 1 D:**. **Zmiany stanu** kolumna pokazuje zmiany stanu, w oparciu o dostępności **dysk — 1 D:**. 
 
 Aby wyświetlić stan kondycji zaktualizowane, można odświeżyć stronę diagnostyki kondycji, klikając **Odśwież** łącza.  W przypadku aktualizacji do stanu kondycji kryterium kondycji na podstawie wstępnie zdefiniowanych interwału sondowania, to zadanie pozwala uniknąć oczekiwania i odzwierciedla najnowszy stan kondycji.  **Kryteria kondycji** filtr zezwala na do zakresu wyniki oparte na stanie kondycji wybranego - *dobra kondycja*, *ostrzeżenie*, *krytyczne*, *Nieznany*, i *wszystkich*.  **Ostatniej aktualizacji** czasu w prawym górnym rogu reprezentuje czas ostatniego po stronie Diagnostyka kondycji została odświeżona.  
 

@@ -3,7 +3,7 @@ title: Ochrona maszyn i aplikacji w usłudze Azure Security Center | Dokumentacj
 description: Tym dokumencie przedstawiono zalecenia w usłudze Security Center, które ułatwiają ochronę maszyn wirtualnych i komputerów i aplikacji sieci web i środowisk usługi App Service.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 411fc025f5a25e961f69f5e6f66a9f6d115689a7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181473"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487747"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -42,7 +42,7 @@ W obszarze **obliczenia i aplikacje**, istnieją następujące karty:
 - **Omówienie**: monitorowanie i zalecenia zidentyfikowane przez usługę Security Center.
 - **Maszyny wirtualne i komputery**: lista maszyn wirtualnych i komputerów oraz ich bieżący stan zabezpieczeń.
 - **Usługi w chmurze**: lista ról internetowych i procesów roboczych monitorowanych przez usługę Security Center.
-- **Usługi App services (wersja zapoznawcza)**: Lista środowisk usługi App service i bieżący stan zabezpieczeń każdego z nich.
+- **Usługi aplikacji**: Lista środowisk usługi App service i bieżący stan zabezpieczeń każdego z nich.
 - **Kontenery (wersja zapoznawcza)**: Lista kontenerów hostowanych na maszynach z systemem IaaS Linux i ocenę zabezpieczeń ich konfiguracji platformy Docker.
 - **(Wersja zapoznawcza) zasoby obliczeniowe**: listę zaleceń dotyczących zasobów obliczeniowych, takich jak klastry usługi Service Fabric i usługi Event hubs.
 
@@ -124,12 +124,11 @@ Aby zobaczyć więcej normatywnych wyjaśnień dotyczących tego zalecenia, klik
 
 ![Aktualizacja wersji systemu operacyjnego](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
-### <a name="app-services-preview"></a>App Services (wersja zapoznawcza)
+### <a name="app-services"></a>Usługi aplikacji
+Należy włączyć usługi App Service w ramach subskrypcji, aby wyświetlić informacje o usłudze App Service. Aby uzyskać instrukcje dotyczące włączania tej funkcji, zobacz [ochrony usługi App Service z usługą Azure Security Center](security-center-app-services.md).
+[!NOTE]
+> Monitorowanie usługi App Service jest dostępna w wersji zapoznawczej i jest dostępna tylko w warstwie standardowa usługi Security Center.
 
-> [!NOTE]
-> Monitorowanie usługi App Service jest dostępna w wersji zapoznawczej i jest dostępna tylko w warstwie standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
->
->
 
 W obszarze **usług App services**Znajdź listę środowisk App service Environment i wykonywane podsumowanie kondycji opartego na ocenie usługi Security Center.
 
@@ -171,19 +170,9 @@ Istnieją trzy typy ikon przedstawianych na tej liście:
 |App Service|10|Zdalne debugowanie powinno zostać wyłączone dla aplikacji sieci Web|Wyłącz opcję debugowania dla aplikacji sieci Web, jeśli nie potrzebujesz już go używać. Zdalne debugowanie wymaga porty wejściowe były otwarte w aplikacji funkcji.|
 |App Service|10|Zdalne debugowanie powinno zostać wyłączone dla aplikacji funkcji|Wyłącz opcję debugowania dla aplikacji funkcji, jeśli nie potrzebujesz już go używać. Zdalne debugowanie wymaga porty wejściowe były otwarte w aplikacji funkcji.|
 |App Service|10|Konfiguruj ograniczenia adresów IP dla aplikacji sieci Web|Definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji. Użyj ograniczeń adresów IP chroni aplikację internetową przed typowymi atakami.|
-|App Service|10|Konfiguruj ograniczenia adresów IP dla aplikacji funkcji| Definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji. Użyj ograniczeń adresów IP chroni aplikację funkcji przed typowymi atakami.|
 |App Service|10|Nie zezwalaj na wszystkie ("*") zasobów uzyskiwanie dostępu do aplikacji| Nie zezwalaj na zestaw parametru WEBSITE_LOAD_CERTIFICATES na "". Ustawienie dla parametru "oznacza, że wszystkie certyfikaty są ładowane do magazynu certyfikatów osobiste aplikacje sieci web. Może to prowadzić do naruszenia zasady najmniejszych uprawnień, ponieważ jest mało prawdopodobne, że witryna musi mieć dostęp do wszystkich certyfikatów w czasie wykonywania.|
-|App Service|5|Gniazda sieci Web powinny być wyłączone dla aplikacji sieci Web|Przejrzyj użycie gniazda sieci Web w aplikacjach sieci web. Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa.|
-|App Service|5|Gniazda sieci Web powinny być wyłączone dla aplikacji funkcji|Przejrzyj użycie gniazda sieci Web w obrębie aplikacji funkcji. Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa.|
-|App Service|5|Użyj domen niestandardowych dla aplikacji sieci Web|Użyj domen niestandardowych, aby zabezpieczyć aplikację sieci web przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS.|
-|App Service|5|Użyj domen niestandardowych dla aplikacji funkcji|Użyj domen niestandardowych, aby chronić aplikacji funkcji przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS.|
 |App Service|20|Mechanizm CORS nie powinien zezwalać na każdy zasób dostęp do aplikacji sieci Web|Zezwala na tylko wymagane domen do interakcji z aplikacją sieci web. Krzyżowe pochodzenia zasobów między źródłami (cors) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do sieci web aplikacji.|
 |App Service|20|Mechanizm CORS nie powinien zezwalać na każdy zasób, dostęp do aplikacji funkcji| Zezwala na tylko wymagane domen do interakcji z aplikacją funkcji. Krzyżowe origin resource sharing (CORS) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do funkcji aplikacji.|
-|App Service|10|Użyj najnowszej obsługiwanej wersji systemu .NET Framework dla aplikacji sieci Web|Użyj najnowszej wersji .NET Framework dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację.|
-|App Service|10|Użyj najnowszej obsługiwanej wersji środowiska Java dla aplikacji sieci Web|Użyj najnowszej wersji języka Java dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację.|
-|App Service|10|Użyj najnowszej obsługiwanej wersji środowiska PHP dla aplikacji sieci Web|Użyj najnowszej wersji języka PHP do najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację.|
-|App Service|10|Użyj najnowszej obsługiwanej wersji środowiska Node.js dla aplikacji sieci Web|Użyj najnowszej wersji środowiska Node.js dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację.|
-|App Service|10|Użyj najnowszej obsługiwanej wersji środowiska Python dla aplikacji sieci Web|Użyj najnowszej wersji języka Python dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację.|
 |Obliczenia zasobów (wsadowe)|1|Konfigurowanie reguł alertów dotyczących metryk na koncie usługi Batch|Konfigurowanie reguł alertów dotyczących metryk na koncie usługi Batch i włączyć metryki puli Usuń zakończenie zdarzenia i puli Usuń Start|
 |(Usługa Service fabric) zasobów obliczeniowych|10|Usługa Azure Active Directory do uwierzytelniania klientów w usłudze Service Fabric|W usłudze Service Fabric, należy wykonać uwierzytelnianie klientów tylko przy użyciu usługi Azure Active Directory.|
 |(Konto usługi automation) zasobów obliczeniowych|5| Włącz szyfrowanie konta usługi Automation|W przypadku przechowywania poufnych danych, należy włączyć szyfrowanie zmiennych elementów zawartości konta usługi Automation.|

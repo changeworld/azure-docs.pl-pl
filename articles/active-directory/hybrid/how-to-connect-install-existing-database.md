@@ -12,16 +12,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4d450a36d1d2eef662f88fe8d8fc08873d701aa1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f863c4b115616ff709634f3c68955c3be3241707
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164592"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494191"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Zainstaluj program Azure AD Connect przy użyciu istniejącej bazy danych ADSync
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowane za pomocą usługi Azure AD Connect lub użyć pełnej wersji programu SQL Server. Wcześniej Jeśli zainstalowano program Azure AD Connect, nową bazę danych o nazwie ADSync zawsze został utworzony. Za pomocą usługi Azure AD Connect w wersji 1.1.613.0 (lub po) masz możliwość zainstalowania Azure AD Connect, wskazując je do istniejącej bazy danych ADSync.
@@ -100,6 +100,6 @@ Użyj poniższej tabeli, aby sprawdzić dodatkowe czynności, które są wymagan
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Po zainstalowaniu programu Azure AD Connect możesz [zweryfikować instalację i przypisać licencje](how-to-connect-post-installation.md).
-- Dowiedz się więcej o tych funkcjach, które zostały włączone w ramach instalacji: [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) i [programu Azure AD Connect Health](how-to-connect-health-sync.md).
+- Dowiedz się więcej na temat funkcji, które zostały włączone w ramach instalacji: [Zapobieganie przypadkowemu usuwaniu](how-to-connect-sync-feature-prevent-accidental-deletes.md) i [Azure AD Connect Health](how-to-connect-health-sync.md).
 - Dowiedz się więcej na te popularne tematy: [harmonogram i sposób włączania synchronizacji](how-to-connect-sync-feature-scheduler.md).
 - Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

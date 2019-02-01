@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
 ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51252012"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510157"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN, uwierzytelnianie usługi RADIUS P2S
 
@@ -267,7 +267,7 @@ Aby użyć innego typu uwierzytelniania (na przykład OTP) lub użyć innego pro
 3. **GenenericDevice** folder zawiera plik XML o nazwie **VpnSettings**. Ten plik zawiera wszystkie wymagane informacje:
 
    * **VpnServer**: Nazwa FQDN bramy sieci VPN platformy Azure. Jest to adres, który łączy się z klienta.
-   * **Typ VpnType**: Typ tunelu, który umożliwia łączenie.
+   * **VpnType**: Typ tunelu, który umożliwia łączenie.
    * **Trasy**: Trasy, które należy skonfigurować w profilu, tak aby tylko ruch, który jest powiązany dla sieci wirtualnej platformy Azure są wysyłane za pośrednictwem tunelu P2S.
    
    **GenenericDevice** folder zawiera także plik cer o nazwie **VpnServerRoot**. Ten plik zawiera certyfikat główny, który jest wymagany do sprawdzania poprawności bramy sieci VPN platformy Azure podczas konfigurowania połączenia P2S. Zainstaluj certyfikat na wszystkich urządzeniach, które będą łączyć z siecią wirtualną platformy Azure.

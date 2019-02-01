@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: e0f305d8200a6b78eb138d5a3c6d9cd99a095dbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265213"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486525"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wiele zasobów usługi Azure Monitor Application Insights 
 W tym artykule opisano, jak wykonywać zapytania i wyświetlić wszystkie usługi Application Insights dziennika danych aplikacji w jednym miejscu, nawet wtedy, gdy są one w różnych subskrypcjach platformy Azure, jako zamiennika amortyzacja łącznik usługi Application Insights.  
@@ -51,7 +51,20 @@ app('Contoso-app5').requests
 >
 >Operator analiza jest opcjonalny w tym przykładzie, wyodrębnia nazwę aplikacji z SourceApp właściwości. 
 
-Teraz można przystąpić do użycia funkcja applicationsScoping zapytania obejmujące wiele zasobów. Alias funkcji zwraca złożenie żądania z określonych aplikacji. Zapytanie, a następnie filtruje dla żądań zakończonych niepowodzeniem i umożliwia wizualizowanie trendów przez aplikację. ![Przykład zapytania dla wielu wyników](media/unify-app-resource-data/app-insights-query-results.png)
+Teraz można przystąpić do użycia funkcja applicationsScoping zapytania obejmujące wiele zasobów:  
+
+```
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| render timechart
+```
+
+Alias funkcji zwraca złożenie żądania z określonych aplikacji. Zapytanie, a następnie filtruje dla żądań zakończonych niepowodzeniem i umożliwia wizualizowanie trendów przez aplikację.
+
+![Przykład zapytania dla wielu wyników](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Wykonywanie zapytań dotyczących zasobów usługi Application Insights i obszar roboczy danych 
 Po zatrzymaniu łącznika i potrzeb dotyczących wykonywania zapytań w zakresie czasu, który został przycięty za przechowywanie danych usługi Application Insights (90 dni), należy wykonać [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) na obszar roboczy i usługi Application Insights zasoby dla pośredniego. Jest to, aż danych aplikacji gromadzi na nowe przechowywanie danych usługi Application Insights wymienionych powyżej. Zapytanie wymaga niektóre operacje, ponieważ różnią się schematów w usłudze Application Insights i obszaru roboczego. Zobacz tabelę w dalszej części tej sekcji szczególnym uwzględnieniem różnic schematu. 

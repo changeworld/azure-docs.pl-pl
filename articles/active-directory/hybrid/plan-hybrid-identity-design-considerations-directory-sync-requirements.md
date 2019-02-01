@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 593eaa71-17eb-4c16-8c98-43cc62987e65
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 44d33e687d64c7e226a20edf3fdcbbf7bcf859b3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d3ded429e960679b6bb252bdcec67c5a1d833ac1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169267"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496010"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Określić wymagania dotyczące synchronizacji katalogu
 Synchronizacja jest udostępnianie użytkownikom tożsamość w chmurze, na podstawie ich tożsamości w środowisku lokalnym. Czy używają zsynchronizowane konta do uwierzytelniania lub uwierzytelnianie federacyjne, użytkownicy nadal będą musieli miał tożsamość w chmurze.  Tej tożsamości, musisz być utrzymywane i okresowo aktualizowana.  Aktualizacje mogą mieć wiele form, od zmian tytuł do zmiany hasła.  

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 8552a22db1518fe41be78d67f91d74f0370abd93
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d880615d0d132403c935fe39e8478d7b3fc48dbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479306"
+ms.locfileid: "55490077"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Aktualizowanie lub zamiana poświadczeń dla jednostki usługi w usłudze Azure Kubernetes Service (AKS)
 
@@ -44,7 +44,7 @@ SP_ID=$(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalP
 Przy użyciu zestawu zmiennej, która zawiera identyfikator jednostki usługi, zresetuj poświadczeń przy użyciu [resetowania az ad sp poświadczeń][az-ad-sp-credential-reset]. Poniższy przykład pozwala wygenerować nowy wpis tajny bezpieczny dla jednostki usługi platformy Azure. Ten nowy wpis tajny bezpieczne jest również przechowywane jako zmienną.
 
 ```azurecli-interactive
-SP_SECRET=$(az ad sp credential reset --name $AKS_SP --query password -o tsv)
+SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
 Teraz przejdź do [klastra AKS aktualizacji za pomocą nowych poświadczeń](#update-aks-cluster-with-new-credentials).

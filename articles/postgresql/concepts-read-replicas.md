@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 017abd72b3aa1547844f977c3efda69e59901a6f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904016"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487952"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Przeczytaj repliki w bazie danych Azure database for PostgreSQL
 
@@ -20,7 +20,7 @@ ms.locfileid: "54904016"
 
 Funkcja odczytu replik umożliwia replikowanie danych z usługi Azure Database for postgresql w warstwie serwera (master) serwerom maksymalnie pięć tylko do odczytu (repliki do odczytu) w tym samym regionie platformy Azure. Odczytu replik asynchronicznie są aktualizowane przy użyciu technologii replikacji natywnego aparatu PostgreSQL.
 
-Repliki są nowe serwery, które mogą być zarządzane w podobny sposób jak normalne autonomicznej bazy danych Azure Database dla serwerów MySQL. Dla każdej odczytu repliki są rozliczane dla zainicjowanych zasobów obliczeniowych w rdzeni wirtualnych i zainicjowanego magazynu w GB/miesiąc.
+Repliki są nowe serwery, które mogą być zarządzane w podobny sposób jak normalne autonomicznej bazy danych Azure Database dla serwerów MySQL. W przypadku każdej repliki do odczytu są naliczane opłaty za zaaprowizowane środowisko obliczeniowe (rozliczane w rdzeniach wirtualnych) i zaaprowizowany magazyn (rozliczany w GB/miesiąc).
 
 ## <a name="when-to-use-read-replicas"></a>Kiedy należy używać odczytu replik
 Funkcja odczytu repliki jest przeznaczona dla ułatwienia zwiększenia wydajności i skalowalności intensywnie odczytujących obciążeń. Na przykład obciążeniami odczytu może być izolowane do replik, podczas obciążenia zapisu może zostać skierowany do poziomu głównego.
@@ -101,7 +101,7 @@ Możesz [Dowiedz się, jak zatrzymać repliki w dokumentację zawierającą inst
 **Azure.replication_support** musi być równa REPLIKI na serwerze głównym można było utworzyć replikę. Zmiana ten parametr wymaga ponownego uruchomienia serwera, aby zastosować zmiany. Ten parametr dotyczy tylko warstw ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
 ### <a name="stopped-replicas"></a>Zatrzymano repliki
-W przypadku zatrzymania replikacji między głównego i repliką replika zostanie uruchomiony ponownie, aby zastosować te zmiany. Później nie może on na replikę ponownie.
+Jeśli chcesz zatrzymać replikację między głównego i repliką replika zostanie uruchomiony ponownie, aby zastosować tę zmianę. Replika stanie się serwerem odczytu i zapisu. Później nie może on na replikę ponownie.
 
 ### <a name="replicas-are-new-servers"></a>Repliki są nowe serwery
 Repliki są tworzone jako nowe — Azure Database for postgresql w warstwie serwerów. Nie można dokonać istniejących serwerów do replik.

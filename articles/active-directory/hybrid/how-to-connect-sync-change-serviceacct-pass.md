@@ -12,16 +12,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/31/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a413b82f352613031446cd3eec1c13610b73155c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4c12675f28664da07aeebf8302b196d372c1f1d2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186301"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495415"
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Zmienianie hasła konta usługi synchronizacji Azure AD Connect
 Jeśli zmienisz hasło do konta usługi Azure AD Connect sync, usługa synchronizacji nie będzie możliwe start poprawnie dopiero po przeprowadzeniu zostały porzucone klucza szyfrowania i ponownie zainicjować hasło do konta usługi Azure AD Connect sync. 
@@ -121,6 +121,6 @@ Skoro Usługa synchronizacji ma dostęp do klucza szyfrowania i hasła, które s
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

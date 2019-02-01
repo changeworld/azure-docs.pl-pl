@@ -1,8 +1,21 @@
 ---
-Tytuł: Data evaluation titleSuffix: Opis usługi Azure Machine Learning Studio: Cztery kryteria dane muszą spełnić, aby przystąpić do analizy danych. To wideo zawiera konkretne przykłady ułatwiające wykonywanie podstawowych danych oceny.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/03/2018
+title: Ocena danych
+titleSuffix: Azure Machine Learning Studio
+description: Cztery kryteria dane muszą spełnić, aby przystąpić do analizy danych. To wideo zawiera konkretne przykłady ułatwiające wykonywanie podstawowych danych oceny.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/03/2018
+ms.openlocfilehash: f57f6bf93fce2526bdc478558551616ba1fa3c4c
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496027"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Czy Twoje dane są gotowe na analizę danych?
 ## <a name="video-2-data-science-for-beginners-series"></a>Wideo 2: Analiza danych dla początkujących serii

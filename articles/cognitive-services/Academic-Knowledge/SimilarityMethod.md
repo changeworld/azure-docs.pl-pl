@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 7484b570784f5f058ebd23b1e3c225c5d858a274
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0e42d5e05268d4a572376f2bdf25d0ce6f8f4be7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183343"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490128"
 ---
 # <a name="similarity-method"></a>Metoda podobieństwa
 
@@ -28,14 +28,14 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>Parametry żądania
-Parametr        |Typ danych      |Wymagany | Opis
+Parametr        |Typ danych      |Wymagane | Opis
 ----------|----------|----------|------------
-**s1**        |Ciąg   |Yes  |Ciąg * do porównania
-**s2**        |Ciąg   |Yes  |Ciąg * do porównania
-<sub> * Ciągi do porównania ma długość maksymalna to 1MB. </sub>
+**s1**        |String   |Yes  |Ciąg * do porównania
+**s2**        |String   |Yes  |Ciąg * do porównania
+<sub> * Ciągi do porównania ma maksymalną długość 1MB. </sub>
 <br>
 ## <a name="response"></a>Odpowiedź
-Name | Opis
+Name (Nazwa) | Opis
 --------|---------
 **SimilarityScore**        |Zmiennoprzecinkowa wartość reprezentującą podobieństwa cosinus w wersjach s1 i s2, za pomocą wartości bliższe 1.0 znaczenia więcej podobne i wartości bliżej od – 1,0 oznacza mniej
 <br>

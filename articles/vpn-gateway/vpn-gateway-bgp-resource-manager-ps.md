@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie protokołu BGP w bramach sieci VPN platformy Azure: usługi Resource Manager: PowerShell | Dokumentacja firmy Microsoft'
+title: 'Skonfiguruj protokół BGP dla bram Azure VPN Gateway: Menedżer zasobów: Program PowerShell | Dokumentacja firmy Microsoft'
 description: W tym artykule przedstawiono konfigurowanie protokołu BGP z bramami sieci VPN Azure przy użyciu usługi Azure Resource Manager i programu PowerShell.
 services: vpn-gateway
 documentationcenter: na
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632589"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508406"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak skonfigurować protokół BGP w bramach sieci VPN Azure przy użyciu programu PowerShell
 W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączenia sieci VPN typu lokacja-lokacja (S2S) między środowiskami lokalnymi i połączenia sieć wirtualna-sieć wirtualna za pomocą modelu wdrażania usługi Resource Manager i programu PowerShell.
@@ -47,7 +47,7 @@ Można połączyć części ze sobą, aby tworzyć bardziej złożone, z wieloma
 ## <a name ="enablebgp"></a>Część 1 — Konfigurowanie protokołu BGP bramy sieci VPN platformy Azure
 Kroki konfiguracji Skonfiguruj parametry protokołu BGP bramy sieci VPN platformy Azure, jak pokazano na poniższym diagramie:
 
-![Brama BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
+![BGP Gateway](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
 ### <a name="before-you-begin"></a>Przed rozpoczęciem
 * Sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
@@ -174,7 +174,7 @@ Przed kontynuowaniem upewnij się, że nadal masz połączenie z subskrypcją 1.
 
 #### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Utwórz bramę sieci lokalnej dla Site5
 
-Pamiętaj utworzyć grupę zasobów, jeśli nie został utworzony, przed utworzeniem bramy sieci lokalnej. Zwróć uwagę, dwa dodatkowe parametry dla bramy sieci lokalnej: numer Asn i BgpPeerAddress.
+Pamiętaj utworzyć grupę zasobów, jeśli nie został utworzony, przed utworzeniem bramy sieci lokalnej. Zwróć uwagę, dwa dodatkowe parametry dla bramy sieci lokalnej: Numer ASN i BgpPeerAddress.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5

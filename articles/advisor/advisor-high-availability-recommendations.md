@@ -1,26 +1,21 @@
 ---
-title: Usługa Azure Advisor zaleceń dotyczących wysokiej dostępności | Dokumentacja firmy Microsoft
+title: Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor | Dokumentacja firmy Microsoft
 description: Użyj usługi Azure Advisor, aby poprawić wysoką dostępność wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
 author: kasparks
-manager: carmonm
-editor: ''
-ms.assetid: ''
+ms.author: kasparks
 ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 11/16/2016
-ms.author: kasparks
-ms.openlocfilehash: 928fb5421297fedbffabc45db35a89a74026477e
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.date: 01/29/2019
+ms.openlocfilehash: 6ffe051c019184d5ce1a32af50dbf3e7faa06675
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305075"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490315"
 ---
-# <a name="advisor-high-availability-recommendations"></a>Zalecenia dotyczące wysokiej dostępności usługi Advisor
+# <a name="improve-availability-of-your-application-with-azure-advisor"></a>Poprawienie dostępności aplikacji za pomocą usługi Azure Advisor
 
 Usługa Azure Advisor ułatwia upewnij się, a ciągłość aplikacje krytyczne dla prowadzonej działalności. Można uzyskać zaleceń dotyczących wysokiej dostępności przez usługę Advisor z **wysokiej dostępności** karty Pulpit nawigacyjny usługi Advisor.
 
@@ -31,16 +26,17 @@ Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch m
 > [!NOTE]
 > Jeśli zdecydujesz się utworzyć zestaw dostępności, należy dodać co najmniej jedną maszynę wirtualną do niego. Firma Microsoft zaleca tego należy co najmniej dwóch maszyn wirtualnych w dostępności zestawu grup aby upewnić się, że co najmniej jedna maszyna jest dostępny podczas awarii.
 
-## <a name="ensure-availability-set-fault-tolerance"></a>Upewnij się, że zestaw dostępności, odporności na uszkodzenia 
+## <a name="ensure-availability-set-fault-tolerance"></a>Upewnij się, że zestaw dostępności, odporności na uszkodzenia
 
 Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Advisor ustala zestawów dostępności, które zawierają pojedynczą maszynę wirtualną i zaleca dodanie co najmniej jednej maszyny wirtualnej do niego. Ta konfiguracja gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia warunki umowy SLA maszyn wirtualnych platformy Azure. Możesz wybrać do utworzenia maszyny wirtualnej, lub można dodać istniejącej maszyny wirtualnej do zestawu dostępności.  
 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Skorzystaj z usługi Managed Disks, aby zwiększyć niezawodność danych
+
 Maszyny wirtualne, które znajdują się w zestaw dostępności z dyskami współużytkującymi konta magazynu lub jednostki skali magazynu nie są odporne na błędy jednostki skali magazynu jednego podczas awarii. Klasyfikator zidentyfikuje te zestawy dostępności i zaleca się migrację do usługi Azure Managed Disks. Pozwoli to zagwarantować, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco izolowane pod kątem uniknięcia pojedynczego punktu awarii. 
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Upewnij się, odporność na uszkodzenia bramy aplikacji
 
-W celu zapewnienia ciągłości biznesowej aplikacji o kluczowym znaczeniu, które są obsługiwane przez bramy application Gateway Advisor identyfikuje wystąpienia bramy aplikacji, które nie są skonfigurowane dla odporności na uszkodzenia i sugerują one akcji korygowania, które należy wykonać. Klasyfikator identyfikuje średnich i dużych aplikacja o pojedynczym wystąpieniu bramy i zaleca się dodanie co najmniej jedno wystąpienie więcej. Ponadto identyfikuje instance jednego lub wielu małych bramach aplikacji i zaleca się migrację do średnich i dużych jednostek SKU. Klasyfikator zaleca tych akcji, aby upewnić się, że Twoje wystąpienia bramy aplikacji są skonfigurowane do spełnić bieżące wymagania umowy SLA dla tych zasobów.
+To zalecenie zapewnia ciągłość działania aplikacji o kluczowym znaczeniu, które są obsługiwane przez bramy application Gateway. Klasyfikator identyfikuje wystąpienia bramy aplikacji, które nie są skonfigurowane dla odporności na uszkodzenia i sugerują one akcji korygowania, które należy wykonać. Klasyfikator identyfikuje średnich i dużych aplikacja o pojedynczym wystąpieniu bramy i zaleca się dodanie co najmniej jedno wystąpienie więcej. Ponadto identyfikuje instance jednego lub wielu małych bramach aplikacji i zaleca się migrację do średnich i dużych jednostek SKU. Klasyfikator zaleca tych akcji, aby upewnić się, że Twoje wystąpienia bramy aplikacji są skonfigurowane do spełnić bieżące wymagania umowy SLA dla tych zasobów.
 
 ## <a name="protect-your-virtual-machine-data-from-accidental-deletion"></a>Chronić dane maszyny wirtualnej przed przypadkowym usunięciem
 
@@ -58,13 +54,13 @@ Firma Microsoft zaleca skonfigurowanie alerty dotyczące kondycji usługi platfo
 
 Profile usługi Traffic Manager z więcej niż jednym punktem końcowym środowiska wyższą dostępność, jeśli dowolnego danego punktu końcowego nie powiedzie się. Wprowadzenie do punktów końcowych w różnych regionach dalsze zwiększa niezawodność usług. Advisor identyfikuje profile Menedżer ruchu, gdy istnieje tylko jeden punkt końcowy i zaleca dodanie co najmniej jeden punkt końcowy więcej w innym regionie.
 
-W przypadku wszystkich punktów końcowych w profilu usługi Traffic Manager, który jest skonfigurowany dla routingu odległości między elementami w tym samym regionie, użytkownicy z innych regionów, mogą wystąpić opóźnienia w połączeniu. Dodanie lub usunięcie punktu końcowego w innym regionie spowoduje zwiększenia ogólnej wydajności i zapewnienie wyższej dostępności, jeśli wszystkie punkty końcowe w jednym regionie nie powiedzie się. Advisor ustala profile usługi Traffic Manager skonfigurowany dla odległości routingu, gdy wszystkie punkty końcowe są w tym samym regionie i zaleca się dodanie lub usunięcie punktu końcowego w innym regionie platformy Azure.
+W przypadku wszystkich punktów końcowych w profilu usługi Traffic Manager, który jest skonfigurowany dla routingu odległości między elementami w tym samym regionie, użytkownicy z innych regionów, mogą wystąpić opóźnienia w połączeniu. Dodanie lub usunięcie punktu końcowego w innym regionie spowoduje zwiększenia ogólnej wydajności i zapewnienie wyższej dostępności, jeśli wszystkie punkty końcowe w jednym regionie nie powiedzie się. Klasyfikator identyfikuje profile usługi Traffic Manager skonfigurowany dla odległości routingu, gdy wszystkie punkty końcowe są w tym samym regionie. Zaleca się dodanie lub usunięcie punktu końcowego w innym regionie platformy Azure.
 
-Jeśli profil usługi Traffic Manager jest skonfigurowany dla geograficznego routingu, ruch jest kierowany do punktów końcowych na podstawie określonych regionów. Region nie powiedzie się, czy wstępnie zdefiniowane trybu failover. O punkt końcowy, w której grupowanie regionalne jest skonfigurowana pod kątem "Wszystkie (World)" uniknąć ruchu sieciowego pomijanego i zwiększyć dostępność usług. Klasyfikator identyfikuje skonfigurowano geograficznego routingu, gdy nie ma punktu końcowego skonfigurowaną grupowanie regionalne jako "Wszystkie (World)" i zaleca zastosowanie tej zmiany konfiguracji profilów usługi Traffic Manager.
+Jeśli profil usługi Traffic Manager jest skonfigurowany dla geograficznego routingu, ruch jest kierowany do punktów końcowych na podstawie określonych regionów. Region nie powiedzie się, czy wstępnie zdefiniowane trybu failover. O punkt końcowy, w której grupowanie regionalne jest skonfigurowana pod kątem "Wszystkie (World)" uniknąć ruchu sieciowego pomijanego i zwiększyć dostępność usług. Klasyfikator identyfikuje profile usługi Traffic Manager skonfigurowane dla geograficznego routingu w przypadku, gdy istnieje żaden punkt końcowy skonfigurowaną grupowanie regionalne jako "Wszystkie (World)". Zaleca się zmiany konfiguracji, aby punkt końcowy "wszystkie (świat).
 
-## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Użyj nietrwałego usuwania na swoim koncie magazynu platformy Azure, aby zapisać i odzyskiwanie danych w razie przypadkowego zastępowania lub usuwania
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>Użyj usuwania nietrwałego na swoim koncie magazynu platformy Azure w celu zapisania i odzyskiwanie danych po przypadkowym zastępowania lub usuwania
 
-Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na swoim koncie magazynu, aby usunąć obiekty BLOB przejście do stanu usunięcia nietrwałego zamiast trwale usunięte. Gdy dane są zastępowane, nietrwałe Usunięto migawkę jest generowany ma być zapisany stan zastąpione danych. To umożliwia odzyskanie danych w razie przypadkowego usunięcia lub zastąpienie. Advisor ustala kontach magazynu Azure, które nie mają włączone usuwanie nietrwałe i sugeruje, że można ją włączyć.
+Włącz [usuwania nietrwałego](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na swoim koncie magazynu, aby usunąć obiekty BLOB przejście do stanu usunięcia nietrwałego zamiast trwale usunięte. Gdy dane są zastępowane, nietrwałe Usunięto migawkę jest generowany ma być zapisany stan zastąpione danych. Korzystanie z miękkiego usuwania umożliwia odzyskiwanie w przypadku przypadkowym lub zastępuje. Advisor ustala kont usługi Azure Storage, które nie mają włączone usuwanie nietrwałe i sugeruje, że można ją włączyć.
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurowanie bramy sieci VPN w taki sposób, aby aktywne aktywne dla połączeń
 

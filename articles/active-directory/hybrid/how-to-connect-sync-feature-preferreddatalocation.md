@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f03fc201c1bce3187fdbd25c1de3567170478d30
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167091"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488452"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -123,9 +123,9 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu mogą
 3. Aby utworzyć nową regułę dla ruchu przychodzącego, wybierz **Dodaj nową regułę**.
 4. W obszarze **opis** kartę, należy zapewnić następującą konfigurację:
 
-    | Atrybut | Value | Szczegóły |
+    | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Name | *Podaj nazwę* | Na przykład "w z usługi AD — preferredDataLocation użytkownika" |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład "w z usługi AD — preferredDataLocation użytkownika" |
     | Opis | *Podaj opis niestandardowego* |  |
     | Połączonego systemu | *Wybierz łącznik usługi Active Directory w środowisku lokalnym* |  |
     | Połączony System typu obiektu | **Użytkownik** |  |
@@ -152,9 +152,9 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 3. Wybierz **Dodaj nową regułę**.
 4. W obszarze **opis** kartę, należy zapewnić następującą konfigurację:
 
-    | Atrybut | Value | Szczegóły |
+    | Atrybut | Wartość | Szczegóły |
     | ----- | ------ | --- |
-    | Name | *Podaj nazwę* | Na przykład "poziomie w celu preferredDataLocation użytkownika z usługi Azure AD" |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład "poziomie w celu preferredDataLocation użytkownika z usługi Azure AD" |
     | Opis | *Podaj opis* ||
     | Połączonego systemu | *Wybierz łącznik usługi Azure AD* ||
     | Połączony System typu obiektu | **Użytkownik** ||
@@ -164,7 +164,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
 5. Przejdź do **filtru Scoping** karta i Dodaj pojedynczą grupę filtrów określania zakresu przy użyciu dwóch klauzul:
 
-    | Atrybut | Operator | Value |
+    | Atrybut | Operator | Wartość |
     | --- | --- | --- |
     | sourceObjectType | RÓWNA SIĘ | Użytkownik |
     | cloudMastered | NOTEQUAL | True |
@@ -261,5 +261,5 @@ Dowiedz się więcej na temat modelu konfiguracji w aparacie synchronizacji:
 
 Tematy poglądowe:
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

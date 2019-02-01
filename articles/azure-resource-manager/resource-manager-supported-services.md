@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: fafc16bdf00f947d4ba8ffe56d7cf2ae3e0bc489
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 109c740ee92e82b6d18879da6839ce6341353cba
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344947"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495517"
 ---
 # <a name="resource-providers-and-types"></a>Dostawcy zasobów i ich typy
 
@@ -34,12 +34,14 @@ Podczas wdrażania zasobów, często jest potrzebne do pobierania informacji o d
 
 Można wykonywać następujące czynności za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy Azure.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="powershell"></a>PowerShell
 
 Aby wyświetlić wszystkich dostawców zasobów na platformie Azure i stanu rejestracji dla Twojej subskrypcji, użyj:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
 ```
 
 Która zwróci wyniki podobne do:
@@ -57,7 +59,7 @@ Microsoft.CognitiveServices      Registered
 Rejestrowanie dostawcy zasobów służy do konfigurowania subskrypcji do pracy za pomocą dostawcy zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie są automatycznie rejestrowane wielu dostawców zasobów. Jednak należy ręcznie zarejestrować niektórzy dostawcy zasobów. Aby zarejestrować dostawcę zasobów, musi mieć uprawnienia do wykonania `/register/action` operacji dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel.
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
 Która zwróci wyniki podobne do:
@@ -74,7 +76,7 @@ Nie można wyrejestrować dostawcy zasobów, jeśli nadal masz typy zasobów poc
 Aby wyświetlić informacje o dostawcy określonego zasobu, należy użyć:
 
 ```azurepowershell-interactive
-Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+Get-AzResourceProvider -ProviderNamespace Microsoft.Batch
 ```
 
 Która zwróci wyniki podobne do:
@@ -91,7 +93,7 @@ Locations         : {West Europe, East US, East US 2, West US...}
 Aby wyświetlić typy zasobów dla dostawcy zasobów, użyj:
 
 ```azurepowershell-interactive
-(Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
+(Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes.ResourceTypeName
 ```
 
 Zwraca:
@@ -108,7 +110,7 @@ Wersja interfejsu API odpowiada wersji operacji interfejsu API REST, które są 
 Aby uzyskać dostępne wersje interfejsu API dla typu zasobu, należy użyć:
 
 ```azurepowershell-interactive
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).ApiVersions
 ```
 
 Zwraca:
@@ -126,7 +128,7 @@ Menedżer zasobów jest obsługiwane we wszystkich regionach, ale zasoby, które
 Aby uzyskać obsługiwane lokalizacje dla typu zasobu, należy użyć.
 
 ```azurepowershell-interactive
-((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
+((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
 Zwraca:

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1d6808f17116df033c2b001eff05bd83bc5f1d3d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38ae2ebccdb5164a582ebe78f7c85175747d085f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196535"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493358"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Synchronizacja programu Azure AD Connect: Atrybuty synchronizowane z usługą Azure Active Directory
 Ten temat zawiera listę atrybutów, które są synchronizowane przez program Azure AD Connect sync.  

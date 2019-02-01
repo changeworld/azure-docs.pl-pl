@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 64af946c3f8f58808f1bca06f1ef21d92da8cda8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 600b79ec0b34d6b79b1b56719dd800bbe8ec803a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223565"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487153"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
 W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i zawiera informacje, aby naprawić błędy. Jeśli nie możesz znaleźć kod błędu dla błędu wdrożenia, zobacz [znaleźć kod błędu:](#find-error-code).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="error-codes"></a>Kody błędów
 

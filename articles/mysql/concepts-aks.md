@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.openlocfilehash: 624689fd6b9d8f364b0caf7e96b79b2773ce6171
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d9f2e26a2bc89329ca9038c666c0d960289e2670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538178"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55485453"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Łączenie usługi Azure Kubernetes Service i Azure Database for MySQL
 
@@ -32,6 +32,14 @@ Można sprawdzić, czy klaster AKS jest przyspieszoną sieć:
 6. Przejdź do maszyny Wirtualnej **sieć** kartę.
 7. Upewnij się, czy **funkcji przyspieszonej łączności sieciowej** ma wartość "włączona."
 
+Lub za pośrednictwem wiersza polecenia platformy Azure przy użyciu dwóch następujących poleceń:
+```azurecli
+az aks show --resource-group myResourceGroup --name myAKSCluster --query "nodeResourceGroup"
+```
+Dane wyjściowe będą grupy zasobów wygenerowanego, że AKS tworzy zawierający interfejs sieciowy. Przyjmuje nazwę "nodeResourceGroup" i używać go w następnego polecenia. **EnableAcceleratedNetworking** będzie mieć wartość true lub false:
+```azurecli
+az network nic list --resource-group nodeResourceGroup -o table
+```
 
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Otwórz Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) umożliwia udostępniania usług platformy Azure bezpośrednio z klastrem Kubernetes lub Cloud Foundry. Jest [interfejsu Open Service Broker API](https://www.openservicebrokerapi.org/) wdrożenia na platformie Azure.

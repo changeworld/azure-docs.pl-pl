@@ -1,25 +1,25 @@
 ---
-title: Przypisywanie licencji do grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Przypisywanie licencji do grupy - usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak przypisać licencje do użytkowników za pomocą licencjonowania grupy usługi Azure Active Directory
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 423842d3e2485334a916423e997c12669a126adb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.reviewer: sumitp
+ms.custom: it-pro
+ms.openlocfilehash: ea243fd0dea2fe0c6afe325be2756330af47dba9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155072"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510310"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Przypisywanie licencji do użytkowników, członkostwa w grupach w usłudze Azure Active Directory
 

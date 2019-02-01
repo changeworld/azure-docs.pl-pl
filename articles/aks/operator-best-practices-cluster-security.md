@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 0c12136fb0c866ceebf83f6352a33b7e2791ad0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d9ce2661fbdca0a28f917e27e27a3e3f954a9999
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717215"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488390"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń klastra i uaktualnień w usłudze Azure Kubernetes Service (AKS)
 
@@ -51,6 +51,9 @@ Aby uzyskać więcej informacji na temat integracji z usługą Azure AD i RBAC z
 W ten sam sposób, że należy udzielić użytkownikom lub grupom najmniejszej liczby uprawnienia wymagane, kontenery również powinny być ograniczone tylko do akcji i procesów, które są im niezbędne. Aby zminimalizować ryzyko ataku, nie należy konfigurować aplikacje i kontenery, które wymagają z podniesionymi uprawnieniami lub głównych dostępu. Na przykład ustawić `allowPrivilegeEscalation: false` w manifeście zasobników. Te *zasobnika konteksty zabezpieczeń* są wbudowane w platformę Kubernetes, dzięki czemu można zdefiniować dodatkowe uprawnienia, takie jak użytkownika lub grupy, aby Uruchom jako, lub jakie funkcje systemu Linux do udostępnienia. Aby uzyskać więcej o najlepszych praktykach, zobacz [zasobnika bezpiecznego dostępu do zasobów][pod-security-contexts].
 
 Aby uzyskać większą kontrolę nad akcji kontenerów, umożliwia również wbudowane funkcje zabezpieczeń systemu Linux takie jak *AppArmor* i *funkcję seccomp*. Te funkcje są definiowane na poziomie węzła, a następnie wdrażane za pośrednictwem manifestu pod.
+
+> [!NOTE]
+> Środowisk Kubernetes w usłudze AKS, lub w innych miejscach, nie są całkowicie bezpieczne dla szkodliwy użycie wielu obcych dzierżaw. Funkcje dodatkowe zabezpieczenia, takie jak *AppArmor*, *funkcję seccomp*, *zasad zabezpieczeń zasobnika*, lub więcej kontroli dostępu w zakresie opartej na rolach (RBAC) dla węzłów luki w zabezpieczeniach trudniejsze. Wartość true, zabezpieczeń przy uruchamianiu obciążeń liczonych w szkodliwy wielodostępne, funkcja hypervisor to tylko poziom zabezpieczeń, które należy ufać. Domeny zabezpieczeń dla rozwiązania Kubernetes staje się całego klastra, a nie oddzielnego węzła. Dla tych typów szkodliwy obciążenia z wieloma dzierżawami należy użyć fizycznie izolowane klastrów.
 
 ### <a name="app-armor"></a>Moto aplikacji
 

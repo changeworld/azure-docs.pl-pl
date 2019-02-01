@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 208ef56f05eb8f9c6730e2390e428e6b8bda0592
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4ebc0357c2a0af29aa6c91bae69d45f808d6fe7d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182085"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488678"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Program Azure AD Connect: Automatycznie uaktualnianie
 Ta funkcja została wprowadzona z kompilacją [1.1.105.0 (wydane w lutym 2016 r.)](reference-connect-version-history.md#111050).  Ta funkcja została zaktualizowana w [kompilacji 1.1.561](reference-connect-version-history.md#115610) i teraz obsługuje dodatkowe scenariusze, które wcześniej nie są obsługiwani.

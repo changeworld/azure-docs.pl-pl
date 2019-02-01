@@ -3,7 +3,7 @@ title: Warstwie przeznaczenie ogólne — usługa Azure SQL Database | Dokumenta
 description: Dowiedz się więcej o warstwie przeznaczenie ogólne bazy danych SQL Azure
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 8b708818584be6cdb84530ce008295ccee080d94
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 943982b056a83488426c48763deac14fd5347b8e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883129"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509008"
 ---
 # <a name="general-purpose-tier---azure-sql-database"></a>Warstwie przeznaczenie ogólne — usługi Azure SQL Database
 

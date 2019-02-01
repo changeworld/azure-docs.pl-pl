@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331813"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493596"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Tworzenie i konfigurowanie własnego środowiska integration runtime
 Środowisko integration runtime (IR) to infrastruktura obliczeniowa, która używa usługi Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration runtime](concepts-integration-runtime.md).
@@ -141,6 +141,9 @@ Poniżej przedstawiono wymagania dotyczące certyfikatu TLS/SSL, używany do zab
 - Nie zaleca certyfikatów alternatywnej nazwy podmiotu (SAN), ponieważ będzie służyć tylko ostatni element sieci SAN, a wszystkie pozostałe zostaną zignorowane ze względu na bieżące ograniczenia Na przykład, jeśli masz certyfikat SAN sieci SAN, które **node1.domain.contoso.com** i **node2.domain.contoso.com**, możesz użyć tego certyfikatu tylko na komputerze, którego nazwa FQDN jest  **Node2.domain.contoso.com**.
 - Certyfikat obsługuje wszystkie rozmiar klucza obsługiwana przez system Windows Server 2012 R2 dla certyfikatów SSL.
 - Certyfikaty, które używają kluczy CNG nie są obsługiwane.  
+
+> [!NOTE]
+> Ten certyfikat jest używany do szyfrowania portów w węźle Self-Hosted IR, umożliwiający **komunikacji między węzłami** (w przypadku synchronizacji stanu) i podczas **przy użyciu programu PowerShell polecenia cmdlet dla połączonej usługi poświadczeń ustawienie**z w obrębie sieci lokalnej. Zalecane jest używanie tego certyfikatu, jeśli prywatnego środowiska sieciowego nie jest bezpieczna lub jeśli chcesz do zabezpieczenia komunikacji między węzłami w ramach sieci prywatnej, jak również. Przenoszenie danych przesyłanych z własne środowisko IR w innych magazynach danych występuje zawsze, przy użyciu szyfrowanego kanału, niezależnie od tego certyfikatu, lub nie. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Udostępnianie własnego środowiska integration runtime z różnych fabryk danych
 

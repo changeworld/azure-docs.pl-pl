@@ -1,5 +1,5 @@
 ---
-title: Udostępnianie kont za pomocą usługi Azure AD | Dokumentacja firmy Microsoft
+title: Udostępnianie kont i poświadczeń — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak usługi Azure Active Directory umożliwia organizacjom bezpieczne udostępnianie kont lokalnych aplikacji i usług w chmurze konsumenta.
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: f928061942782fe287c621728d04836d0fdce2da
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5e9e5844d80e9f3fce0edb90dae210d3e16fee61
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194134"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509494"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Udostępnianie kont w usłudze Azure AD
 ## <a name="overview"></a>Przegląd

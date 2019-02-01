@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 101070dab80c69ea1d24dd11fe5e067947505d19
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 8364d09aa2d068e347199d104c069047aa24d7a4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077968"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511908"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Usługa Azure Active Directory, inteligentnej blokady
 
@@ -23,7 +23,7 @@ Blokada Smart pomocna, jeśli chcesz blokowanie złośliwych podmiotów, którzy
 
 Domyślnie inteligentnej blokady blokady z konta prób logowania przez minutę po 10 nieudanych prób. Blokady konta po każdej kolejne nieudane próby logowania, jedną minutę przy pierwszym i dłuższy w przypadku kolejnych prób.
 
-Blokada Smart śledzi ostatnie trzy skróty nieprawidłowe hasło, aby uniknąć reincrementing licznik blokady. Jeśli ktoś wprowadzi nieprawidłowe hasło wiele razy, to zachowanie nie spowoduje konta do blokady.
+Blokada Smart śledzi ostatnie trzy skróty nieprawidłowego hasła, aby uniknąć zwiększenie licznika blokady dla tego samego hasła. Jeśli ktoś wprowadzi nieprawidłowe hasło wiele razy, to zachowanie nie spowoduje konta do blokady.
 
  > [!NOTE]
  > Skrót śledzenia funkcji nie jest dostępna dla klientów przy użyciu uwierzytelniania przekazywanego, włączone, ponieważ uwierzytelnianie odbywa się w środowisku lokalnym nie znajduje się w chmurze.

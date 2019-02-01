@@ -8,13 +8,13 @@ keywords: odzyskiwanie na poziomie elementu; odzyskiwanie plików z kopii zapaso
 ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
-ms.author: pullabhk
-ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.author: pvrk
+ms.openlocfilehash: c267b3a8289d87402647a399376161cf18716112
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638311"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488496"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Odzyskiwanie plików z kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -87,7 +87,7 @@ Podczas uruchamiania pliku wykonywalnego systemu operacyjnego na komputerze inst
 
    ![Menu odzyskiwania plików](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-#### <a name="for-linux"></a>For Linux
+#### <a name="for-linux"></a>W przypadku systemu Linux
 
 W systemie Linux woluminy punktu odzyskiwania są instalowane w folderze, w którym skrypt jest uruchamiany. W związku z tym są wyświetlane dołączonych dysków, woluminów i odpowiadające im ścieżki instalacji. Zainstaluj te ścieżki są widoczne dla użytkowników mających dostęp na poziomie głównym. Przeglądaj woluminy wymienionych w danych wyjściowych skryptu.
 
@@ -206,7 +206,7 @@ Skrypt wymaga również składników języka Python i bash wykonanie i bezpieczn
 | --------------- | ---- |
 | Bash | 4 i nowsze wersje |
 | python | 2.6.6 i nowsze wersje  |
-| TLS | 1.2 powinna być obsługiwana.  |
+| Protokół TLS | 1.2 powinna być obsługiwana.  |
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -214,10 +214,10 @@ Jeśli masz problemy podczas odzyskiwania pliki z maszyn wirtualnych, sprawdź p
 
 | Komunikat o błędzie / scenariusz | Prawdopodobna przyczyna | Zalecana akcja |
 | ------------------------ | -------------- | ------------------ |
-| Dane wyjściowe pliku exe: *wyjątek nawiązywania połączenia z docelowym* |Skrypt nie jest w stanie uzyskać dostępu do punktu odzyskiwania    | Sprawdź, czy komputer spełnia poprzednie wymagania dostępu. |  
-| Dane wyjściowe pliku exe: *element docelowy został już zalogowany za pośrednictwem sesji iSCSI.* | Skrypt została już wykonana na tym samym komputerze, a dyski zostały dołączone | Zostały już dołączone woluminy punktu odzyskiwania. Mogą one nie można zainstalować przy użyciu tych samych liter dysków w pierwotnej maszyny wirtualnej. Przeglądaj dostępne woluminy w Eksploratorze plików w pliku |
-| Dane wyjściowe pliku exe: *ten skrypt jest nieprawidłowy, ponieważ dyski mają został odinstalowany za pośrednictwem portalu/przekracza 12-godzinnego limitu. Pobierz nowy skrypt z witryny portal.* |    Dyski mają został odinstalowany z portalu lub przekroczono limit 12 godz. | Tego konkretnego pliku exe teraz jest nieprawidłowy i nie można go uruchomić. Jeśli chcesz uzyskać dostęp do plików w tym odzyskiwania punktu w czasie, odwiedź portal dla nowego pliku exe|
-| Na komputerze, na którym jest uruchamiane plik exe: nowe woluminy nie są odinstalowane, po kliknięciu przycisku odinstalowywanie | Inicjator iSCSI na maszynie nie odpowiada/odświeżania połączenia z docelowym i nie obsługi pamięci podręcznej. |  Po kliknięciu przycisku **odinstalować**, poczekaj kilka minut. Nowe woluminy nie są odinstalowane, przejrzyj wszystkie woluminy. Przeglądanie wszystkich woluminów wymusza inicjatora można odświeżyć połączenia, a ten wolumin został odinstalowany z komunikatem o błędzie, że dysk nie jest dostępna.|
-| Dane wyjściowe pliku exe: skrypt jest uruchamiany pomyślnie, ale "Nowe woluminy dołączony" nie jest wyświetlany w danych wyjściowych skryptu |    Jest to błąd przejściowy    | Woluminy będą zostały już dołączone. Otwórz Eksploratora, aby przeglądać. Jeśli do uruchamiania skryptów za każdym razem, gdy używane są tym samym komputerze, należy rozważyć ponowne uruchomienie komputera i lista powinna być wyświetlana w uruchamia kolejne exe. |
-| Określonych w systemie Linux: nie można wyświetlić żądanego woluminy | Maszyny, na którym skrypt jest uruchamiany system operacyjny nie może rozpoznać bazowego systemu plików chronionych maszyn wirtualnych | Sprawdź, czy punkt odzyskiwania jest awarii zgodne lub spójna na poziomie plików. Jeśli plik spójne, uruchom skrypt na innej maszyny którego OS rozpoznaje chronionej maszyny Wirtualnej w systemie plików |
-| Windows określonego: nie można wyświetlić żądanego woluminy | Dyski zostały dołączone, ale nie skonfigurowano woluminów | Na ekranie zarządzania dyskami zidentyfikować dodatkowe dyski powiązane z punktem odzyskiwania. Jeśli dowolny z tych dysków znajdują się w trybie offline stan spróbuj, dzięki czemu ich w trybie online, klikając prawym przyciskiem myszy na dysku, a następnie kliknij przycisk "Online"|
+| Dane wyjściowe pliku exe: *Nawiązywanie połączenia z docelowym wyjątku* |Skrypt nie jest w stanie uzyskać dostępu do punktu odzyskiwania    | Sprawdź, czy komputer spełnia poprzednie wymagania dostępu. |  
+| Dane wyjściowe pliku exe: *Element docelowy został już zalogowany za pośrednictwem sesji iSCSI.* | Skrypt została już wykonana na tym samym komputerze, a dyski zostały dołączone | Zostały już dołączone woluminy punktu odzyskiwania. Mogą one nie można zainstalować przy użyciu tych samych liter dysków w pierwotnej maszyny wirtualnej. Przeglądaj dostępne woluminy w Eksploratorze plików w pliku |
+| Dane wyjściowe pliku exe: *Ten skrypt jest nieprawidłowe, ponieważ dyski mają został odinstalowany za pośrednictwem portalu/przekracza 12-godzinnego limitu. Pobierz nowy skrypt z witryny portal.* |    Dyski mają został odinstalowany z portalu lub przekroczono limit 12 godz. | Tego konkretnego pliku exe teraz jest nieprawidłowy i nie można go uruchomić. Jeśli chcesz uzyskać dostęp do plików w tym odzyskiwania punktu w czasie, odwiedź portal dla nowego pliku exe|
+| Na komputerze, na którym jest uruchamiane plik exe: Nowe woluminy nie są odinstalowane, po kliknięciu przycisku odinstalowywanie | Inicjator iSCSI na maszynie nie odpowiada/odświeżania połączenia z docelowym i nie obsługi pamięci podręcznej. |  Po kliknięciu przycisku **odinstalować**, poczekaj kilka minut. Nowe woluminy nie są odinstalowane, przejrzyj wszystkie woluminy. Przeglądanie wszystkich woluminów wymusza inicjatora można odświeżyć połączenia, a ten wolumin został odinstalowany z komunikatem o błędzie, że dysk nie jest dostępna.|
+| Dane wyjściowe pliku exe: Skrypt jest uruchamiany pomyślnie, ale "Nowe woluminy dołączony" nie jest wyświetlany w danych wyjściowych skryptu |    Jest to błąd przejściowy    | Woluminy będą zostały już dołączone. Otwórz Eksploratora, aby przeglądać. Jeśli do uruchamiania skryptów za każdym razem, gdy używane są tym samym komputerze, należy rozważyć ponowne uruchomienie komputera i lista powinna być wyświetlana w uruchamia kolejne exe. |
+| Systemu Linux jest szczególne: Nie można wyświetlić żądanego woluminy | Maszyny, na którym skrypt jest uruchamiany system operacyjny nie może rozpoznać bazowego systemu plików chronionych maszyn wirtualnych | Sprawdź, czy punkt odzyskiwania jest awarii zgodne lub spójna na poziomie plików. Jeśli plik spójne, uruchom skrypt na innej maszyny którego OS rozpoznaje chronionej maszyny Wirtualnej w systemie plików |
+| Windows jest szczególne: Nie można wyświetlić żądanego woluminy | Dyski zostały dołączone, ale nie skonfigurowano woluminów | Na ekranie zarządzania dyskami zidentyfikować dodatkowe dyski powiązane z punktem odzyskiwania. Jeśli dowolny z tych dysków znajdują się w trybie offline stan spróbuj, dzięki czemu ich w trybie online, klikając prawym przyciskiem myszy na dysku, a następnie kliknij przycisk "Online"|

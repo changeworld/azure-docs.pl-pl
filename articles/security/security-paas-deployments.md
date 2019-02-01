@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6bc1df7acf7ce711e106983f8084f168152fc51e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728486"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488411"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -109,7 +109,7 @@ Microsoft [cyklu projektowania zabezpieczeń](https://www.microsoft.com/en-us/sd
 
 Poniższa lista zagrożeń STRIDE i zapewnia niektóre przykład środki zaradcze, które korzystają z funkcji platformy Azure. Te czynniki nie będą działać w każdej sytuacji.
 
-| Przed zagrożeniami | Właściwości zabezpieczeń | Potencjalne migracji platformy Azure |
+| Przed zagrożeniami | Właściwości zabezpieczeń | Potencjalne środki zaradcze platformy Azure |
 | --- | --- | --- |
 | Fałszowanie zawartości | Authentication | Wymaga połączenia HTTPS. |
 | Manipulowanie | Integralność | Sprawdzanie poprawności certyfikatów SSL. |

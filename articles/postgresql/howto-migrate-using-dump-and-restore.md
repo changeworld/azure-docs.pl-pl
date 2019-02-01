@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 41a5f2eab78d68bdb1f51b423955cfefa5a541b8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 366a38951363d52df3d52d3a670943dc41211c8a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538599"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494004"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie przy użyciu zrzutu i przywracania bazy danych PostgreSQL
 Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) przywrócenie bazy danych PostgreSQL z pliku archiwum, utworzone przez pg_dump.
@@ -69,7 +69,9 @@ Jednym ze sposobów migracji istniejącej bazy danych postgresql w warstwie do u
 
 ### <a name="for-the-restore"></a>Dla przywracania
 - Zalecamy przenoszenia pliku kopii zapasowej na maszynie Wirtualnej platformy Azure, w tym samym regionie, co usługi Azure Database for postgresql w warstwie serwera podczas migrowania do usługi i czy pg_restore z tej maszyny Wirtualnej w celu zmniejszenia opóźnienia sieci. Zalecamy również utworzeniu maszyny Wirtualnej za pomocą [przyspieszoną sieć](../virtual-network/create-vm-accelerated-networking-powershell.md) włączone.
+
 - Należy przeprowadzić już domyślnie, ale Otwieranie pliku zrzutu, aby sprawdzić, czy instrukcje tworzenia indeksu po wstawieniu danych. Jeśli nie jest wymagane, należy przenieść instrukcje tworzenia indeksu po wstawieniu danych.
+
 - Przywróć z przełącznikami -Fc i -j *#* równoległe przetwarzanie przywracania. *#* jest to liczba rdzeni na serwerze docelowym. Możesz też spróbować z *#* równa dwa razy liczbę rdzeni serwera docelowego, aby zobaczyć wpływ. Na przykład:
 
     ```
@@ -77,6 +79,13 @@ Jednym ze sposobów migracji istniejącej bazy danych postgresql w warstwie do u
     ```
 
 - Można również edytować plik zrzutu, dodając polecenie *Ustaw synchronous_commit = wyłączone;* na początku i polecenia *Ustaw synchronous_commit = on;* na końcu. Nie włączanie go na końcu, przed aplikacje zmiany danych, może spowodować utratę danych w kolejnych.
+
+- W elemencie docelowym — Azure Database dla serwera PostgreSQL należy rozważyć wykonanie następujących czynności przed przywróceniem:
+    - Wyłącz zapytania śledzenia wydajności, ponieważ te statystyki nie są wymagane podczas migracji. You can do this by setting pg_stat_statements.track, pg_qs.query_capture_mode, and pgms_wait_sampling.query_capture_mode to NONE.
+
+    - Wysoka zasobów obliczeniowych i pamięci jednostki sku, takich jak 32 — zoptymalizowane pod kątem pamięci rdzeń wirtualny umożliwia przyspieszenie migracji. Możesz łatwo skalować wróci ponownie do preferowanego jednostki sku po zakończeniu przywracania. Im większa jednostki sku, więcej paralellism można osiągnąć przez zwiększenie odpowiedniego `-j` parametr w poleceniu pg_restore. 
+
+    - Więcej operacji We/Wy na serwerze docelowym może poprawić wydajność odzyskiwania. Możesz aprowizować więcej operacji We/Wy przez zwiększenie rozmiaru magazynu serwera. To ustawienie jest nieodwracalna, ale należy wziąć pod uwagę, czy nowszej operacje We/Wy będą w przyszłości korzystać rzeczywistego obciążenia.
 
 Należy pamiętać, testować i weryfikować tych poleceń w środowisku testowym przed ich użyciem w środowisku produkcyjnym.
 

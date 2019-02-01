@@ -1,8 +1,21 @@
 ---
-Tytuł: Rozwiązywanie problemów z ponownego trenowania titleSuffix usługi sieci web Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Zidentyfikować i rozwiązać typowe problemy występujące podczas są ponowne trenowanie modeli usługi sieci web Azure Machine Learning Studio.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: poprzednie ms.author=yahajiza, poprzedniego autora = YasinMSFT ms.date: 11/01/2017
+title: Rozwiązywanie problemów z ponownego trenowania w usłudze Machine Learning Studio klasyczne usługi sieci web
+titleSuffix: Azure Machine Learning Studio
+description: Zidentyfikować i rozwiązać typowe problemy występujące podczas są ponowne trenowanie modeli usługi sieci web Azure Machine Learning Studio.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 11/01/2017
+ms.openlocfilehash: 6cde9d929c52984c95669554aa1153c2bdf21131
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512156"
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Rozwiązywanie problemów z ponownym szkoleniem usługi sieci web Azure Machine Learning Studio
 ## <a name="retraining-overview"></a>Ponowne szkolenie — omówienie

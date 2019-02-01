@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8c6fe9952beb8daeb9b96cf9244cccf85d9c2203
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ebc32f59539e4e4e94f7f68d5d164cf2b04cc4c2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165459"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488530"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Zmiany w konfiguracji domyślnej
 Ten artykuł ma na celu objaśniono sposób wprowadzania zmian w domyślnej konfiguracji synchronizacji usługi Azure Active Directory (Azure AD) Connect. Zapewnia on kroki kilka typowych scenariuszy. Za pomocą tej wiedzy można wszechstronną własnych konfiguracji na podstawie własnych reguł biznesowych.
@@ -265,9 +265,9 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
 3. Kliknij przycisk **Dodaj nową regułę** przycisk, aby utworzyć nową regułę dla ruchu przychodzącego.
 4. W obszarze **opis** kartę, należy zapewnić następującą konfigurację:
 
-    | Atrybut | Value | Szczegóły |
+    | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Name | *Podaj nazwę* | Na przykład *w z usługi AD — UserType użytkownika* |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład *w z usługi AD — UserType użytkownika* |
     | Opis | *Podaj opis* |  |
     | Połączonego systemu | *Wybierz lokalny łącznik usługi AD* |  |
     | Połączony System typu obiektu | **Użytkownik** |  |
@@ -277,7 +277,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na wartość atrybutu, któ
 
 5. Przejdź do **filtru Scoping** karta i Dodaj **pojedynczą grupę filtrów określania zakresu** z następującą klauzulę:
 
-    | Atrybut | Operator | Value |
+    | Atrybut | Operator | Wartość |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Użytkownik\_ |
 
@@ -307,9 +307,9 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 3. Kliknij przycisk **Dodaj nową regułę** przycisku.
 4. W obszarze **opis** kartę, należy zapewnić następującą konfigurację:
 
-    | Atrybut | Value | Szczegóły |
+    | Atrybut | Wartość | Szczegóły |
     | ----- | ------ | --- |
-    | Name | *Podaj nazwę* | Na przykład *Out do usługi AAD — UserType użytkownika* |
+    | Name (Nazwa) | *Podaj nazwę* | Na przykład *Out do usługi AAD — UserType użytkownika* |
     | Opis | *Podaj opis* ||
     | Połączonego systemu | *Wybierz łącznik usługi AAD* ||
     | Połączony System typu obiektu | **Użytkownik** ||
@@ -319,7 +319,7 @@ Reguła synchronizacji ruchu wychodzącego zezwala na wartość atrybutu mogą p
 
 5. Przejdź do **filtru Scoping** karta i Dodaj **pojedynczą grupę filtrów określania zakresu** z dwóch klauzul:
 
-    | Atrybut | Operator | Value |
+    | Atrybut | Operator | Wartość |
     | --- | --- | --- |
     | sourceObjectType | RÓWNA SIĘ | Użytkownik |
     | cloudMastered | NOTEQUAL | True |
@@ -401,5 +401,5 @@ Ponownie włączyć harmonogram synchronizacji wbudowane:
 
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/05/2018
 ms.author: adpick
-ms.openlocfilehash: 86e457cf553c84386937c35bab1ab0fd20518bed
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3577edff19788ed9f0925876e3de737eb749b90e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369058"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490927"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Udzielanie dostępu do utworzenia subskrypcji Azure Enterprise (wersja zapoznawcza)
 
@@ -42,6 +42,7 @@ PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
   }
 }
 ```
+
 Pomyślnie przypisano rolę właściciela w zakresie konta rejestracji, Azure odpowie informacje przypisania roli:
 
 ```json
@@ -63,10 +64,10 @@ Pomyślnie przypisano rolę właściciela w zakresie konta rejestracji, Azure od
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
 
-Użyj [New-AzureRmRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) oferowanie innemu użytkownikowi dostęp właściciela konta rejestracji.
+Użyj [New AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) oferowanie innemu użytkownikowi dostęp właściciela konta rejestracji.
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
@@ -85,7 +86,7 @@ Po użytkownik staje się właścicielem RBAC dla konta usługi rejestracji, mo�
 
 Aby śledzić subskrypcje utworzone za pomocą tego interfejsu API, należy użyć [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs). Obecnie nie jest możliwe użycie programu PowerShell, interfejsu wiersza polecenia lub witryny Azure portal do śledzenia tworzenia subskrypcji.
 
-1. Jako Administrator dzierżawy z dzierżawy usługi Azure AD [podniesienie poziomu dostępu](../active-directory/role-based-access-control-tenant-admin-access.md) przypisywane roli Czytelnik użytkownikowi inspekcji w zakresie `/providers/microsoft.insights/eventtypes/management`.
+1. Jako administrator dzierżawy usługi Azure Active Directory [podnieś poziom dostępu](../active-directory/role-based-access-control-tenant-admin-access.md), a następnie przypisz rolę Czytelnika dla zakresu `/providers/microsoft.insights/eventtypes/management` do użytkownika wykonującego inspekcję.
 1. Jako użytkownik inspekcji, należy wywołać [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs) wyświetlone działania tworzenia subskrypcji. Przykład:
 
 ```
@@ -93,7 +94,7 @@ GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015
 ```
 
 > [!NOTE]
-> Aby wygodnie wywołać ten interfejs API z poziomu wiersza polecenia, wypróbuj [ARMClient](https://github.com/projectkudu/ARMClient).
+> Aby wygodnie wywołać ten interfejs API z poziomu wiersza polecenia, wypróbuj narzędzie [ARMClient](https://github.com/projectkudu/ARMClient).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

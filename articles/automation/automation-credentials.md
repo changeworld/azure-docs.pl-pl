@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9884138127d62e2dc524dc1b6d9e827d1ee0fac8
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0454bc211d2ae8497babc808f9794fae4d22c47e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439191"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498169"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Zasoby poświadczeń w usłudze Azure Automation
 
@@ -73,10 +73,9 @@ Funkcja w poniższej tabeli umożliwia dostęp do poświadczeń w element runboo
 
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>Aby utworzyć nowy zasób poświadczeń przy użyciu witryny Azure portal
 
-1. Na koncie usługi automation kliknij **zasoby** , aby otworzyć **zasoby** bloku.
-2. Kliknij przycisk **poświadczenia** , aby otworzyć **poświadczenia** bloku.
-3. Kliknij przycisk **Dodawanie poświadczeń** w górnej części bloku.
-4. Wypełnij formularz, a następnie kliknij przycisk **Utwórz** można zapisać nowe poświadczenie.
+1. Z poziomu konta usługi automation wybierz **poświadczenia** w obszarze **zasoby udostępnione**.
+1. Kliknij przycisk **+ Dodaj poświadczenie**.
+1. Wypełnij formularz, a następnie kliknij przycisk **Utwórz** można zapisać nowe poświadczenie.
 
 > [!NOTE]
 > Konta użytkowników, które korzystają z uwierzytelniania Multi-Factor Authentication nie są obsługiwane do użytku w usłudze Azure Automation.

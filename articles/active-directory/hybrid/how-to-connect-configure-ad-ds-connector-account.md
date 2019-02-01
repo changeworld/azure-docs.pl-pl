@@ -6,16 +6,16 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 531ba32125479528b1a847b32d711049e699dda0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d58751bc9379d6d9a5a492bee35e349c36087c7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191665"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497897"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
@@ -129,7 +129,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
  
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy| 
+|Type |Name (Nazwa) |Dostęp |Dotyczy| 
 |-----|-----|-----|-----|
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne urządzeń| 
 |Zezwalaj |Łącznik usługi AD DS Account|Odczyt wszystkich właściwości |Obiekty zależne InetOrgPerson| 
@@ -155,7 +155,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj|Łącznik usługi AD DS Account|Właściwości odczytu/zapisu|MS-DS-spójności — identyfikator Guid|Obiekty zależne użytkownika|
 
@@ -175,7 +175,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów |Tylko ten obiekt (katalog główny domeny)| 
 |Zezwalaj |Łącznik usługi AD DS Account |Replikowanie zmian katalogów wszystkie |Tylko ten obiekt (katalog główny domeny)| 
@@ -195,7 +195,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Resetowanie hasła |Obiekty zależne użytkownika| 
 |Zezwalaj |Łącznik usługi AD DS Account |Zapis właściwości lockoutTime |Obiekty zależne użytkownika| 
@@ -215,7 +215,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Ogólny odczytu/zapisu |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
 |Zezwalaj |Łącznik usługi AD DS Account |Tworzenie/usuwanie obiektu podrzędnego |Wszystkie atrybuty grupy typów obiektu i podobiektów| 
@@ -238,7 +238,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 To polecenie cmdlet będzie ustawić następujące uprawnienia:  
  
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne użytkownika| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt/zapis wszystkich właściwości |Obiekty zależne InetOrgPerson| 
@@ -260,7 +260,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |Łącznik usługi AD DS Account |Odczyt wszystkich właściwości |Obiekty zależne PublicFolder| 
 
@@ -285,7 +285,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 To polecenie cmdlet będzie ustawić następujące uprawnienia: 
 
-|Typ |Name (Nazwa) |Dostęp |Dotyczy|
+|Type |Name (Nazwa) |Dostęp |Dotyczy|
 |-----|-----|-----|-----| 
 |Zezwalaj |SYSTEM |Pełna kontrola |Ten obiekt 
 |Zezwalaj |Enterprise Admins |Pełna kontrola |Ten obiekt 

@@ -1,6 +1,6 @@
 ---
 title: Zapytanie dotyczące routing komunikatów usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — synxtax zapytania do rozsyłania wiadomości w usłudze Azure IoT Hub.
+description: Przewodnik dewelopera — składnia zapytania do rozsyłania wiadomości w usłudze Azure IoT Hub.
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 3967a1e2317bac76785d534ba04a93de552c1a40
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: da95bd3832ee647c371c7beabb55b974dcb97740
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018540"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496571"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Kierowanie Składnia kwerendy komunikatów usługi IoT Hub
 
@@ -25,7 +25,7 @@ Routing komunikatów umożliwia zapytania właściwości wiadomości oraz treś�
 
 ## <a name="message-routing-query-based-on-message-properties"></a>Routing zapytania o komunikat o, na podstawie właściwości wiadomości 
 
-Definiuje usługę IoT Hub [typowego formatu](iot-hub-devguide-messages-construct.md) dla wszystkich urządzeń do chmury, obsługi wiadomości dla interoperatbility różnych protokołów. Komunikat usługi IoT Hub zakłada następującą reprezentację JSON w wiadomości. Właściwości systemu są dodawane dla wszystkich użytkowników i Identyfikuj zawartość wiadomości. Selektywnie użytkownicy mogą dodawać właściwości aplikacji, do wiadomości. Zalecamy używanie nazw unikatowych właściwości komunikatów urządzenia do chmury usługi IoT Hub nie jest rozróżniana wielkość liter. Na przykład jeśli masz wiele właściwości o takiej samej nazwie, usługi IoT Hub wysyła jedna z właściwości.  
+Definiuje usługę IoT Hub [typowego formatu](iot-hub-devguide-messages-construct.md) dla wszystkich urządzeń z chmurą messaging współdziałania w ramach różnych protokołów. Komunikat usługi IoT Hub zakłada następującą reprezentację JSON w wiadomości. Właściwości systemu są dodawane dla wszystkich użytkowników i Identyfikuj zawartość wiadomości. Selektywnie użytkownicy mogą dodawać właściwości aplikacji, do wiadomości. Zalecamy używanie nazw unikatowych właściwości komunikatów urządzenia do chmury usługi IoT Hub nie jest rozróżniana wielkość liter. Na przykład jeśli masz wiele właściwości o takiej samej nazwie, usługi IoT Hub wysyła jedna z właściwości.  
 
 ```json
 { 
@@ -53,9 +53,9 @@ Właściwości systemu pomagać w identyfikacji zawartości i źródła wiadomo�
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| Typ zawartości | ciąg | Użytkownik określa typ zawartości komunikatu. Aby zezwolić na zapytania w treści wiadomości, ta wartość musi być ustawiona application/JSON. |
+| contentType | ciąg | Użytkownik określa typ zawartości komunikatu. Aby zezwolić na zapytania w treści wiadomości, ta wartość musi być ustawiona application/JSON. |
 | contentEncoding | ciąg | Użytkownik określa typ kodowania komunikatu. Dozwolone wartości to UTF-8, UTF-16 i UTF-32, jeśli ustawiono typ zawartości application/JSON. |
-| ConnectionDeviceId | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i identyfikuje źródło wiadomości. Może to być komunikaty telemetryczne z urządzeń, powiadomienia o zmianie bliźniaczej reprezentacji urządzenia lub zdarzenia cyklu życia urządzenia. Nie można zbadać. |
+| connectionDeviceId | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i identyfikuje źródło wiadomości. Może to być komunikaty telemetryczne z urządzeń, powiadomienia o zmianie bliźniaczej reprezentacji urządzenia lub zdarzenia cyklu życia urządzenia. Nie można zbadać. |
 | iothub enqueuedtime | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i reprezentuje rzeczywisty czas enqueuing komunikat w formacie UTC. Aby wysłać zapytanie, użyj `enqueuedTime`. |
 
 Zgodnie z opisem w [IoT Hub komunikatów](iot-hub-devguide-messages-construct.md), istnieją dodatkowe systemu właściwości w komunikacie. Oprócz **contentType**, **contentEncoding**, i **enqueuedTime**, **connectionDeviceId** i  **connectionModuleId** również mogą być przeszukiwane.

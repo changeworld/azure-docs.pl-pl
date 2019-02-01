@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ae57fc5366e1ed99febcd9a9d08e7f95f3bbf196
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247677"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487357"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Łączność urządzeń w usłudze Azure IoT Central
 
@@ -56,7 +56,7 @@ Oparte na Twoje użycie przypadków postępuj zgodnie z instrukcjami, aby połą
 
     *   **Język C:** Jeśli używasz języka C, postępuj zgodnie z [tego klienta urządzenia przykładowe C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) połączenia z urządzeniem próbki. Użyj następujących ustawień w próbce.   
 
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -118,7 +118,7 @@ Jeśli używasz **zestawu deweloperskiego** urządzeniu łączenie wykonaj [szcz
 Poniżej przedstawiono odwołania do innych języków, których możesz chcieć użyć.
 
    *   **Język C:** Jeśli używasz języka C, wykonaj [tego klienta urządzenia przykładowe C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) połączenia z urządzeniem próbki. Użyj następujących ustawień w próbce.   
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -163,7 +163,7 @@ Aby połączyć urządzenia IoT Central przy użyciu X509 certyfikaty są zaanga
 
     Program urządzenia przy użyciu inicjowania obsługi informacji o usłudze Włączanie go, aby jego szczegóły połączenia i IoT Central po przełączeniu potrzeby przypisywania aplikacji.    
 
-    **Dalsze referene** 
+    **Dalszych odwołań** 
     *   Przykładowe zastosowanie dla [RaspberryPi.](https://aka.ms/iotcentral-docs-Raspi-releases)  
 
     *   [Przykładowy klient urządzenia w C.](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
@@ -186,7 +186,7 @@ Postępuj zgodnie z instrukcjami na podstawie wybranego schematu uwierzytelniani
 
 1. **Ustawienia połączenia** 
     * **X509 certyfikatów:** [Dodanie i zweryfikowanie certyfikatu głównego/pośredni](#connect-devices-using-x509-certificates) i używać go w celu wygenerowania certyfikatów urządzeń w następnym kroku.
-    * **SYGNATURY DOSTĘPU WSPÓŁDZIELONEGO:** Skopiuj klucz podstawowy (ten klucz jest kluczem sygnatury dostępu Współdzielonego grupy dla tej aplikacji IoT Central) i używać go do wygenerowania kluczy sygnatury dostępu Współdzielonego urządzenia w następnym kroku. 
+    * **SAS:** Skopiuj klucz podstawowy (ten klucz jest kluczem sygnatury dostępu Współdzielonego grupy dla tej aplikacji IoT Central) i używać go do wygenerowania kluczy sygnatury dostępu Współdzielonego urządzenia w następnym kroku. 
 ![Ustawienia połączenia sygnatury dostępu Współdzielonego](media/concepts-connectivity/connection-settings-sas.png)
 
 1. **Generuj poświadczenia urządzenia** 
@@ -211,12 +211,12 @@ Postępuj zgodnie z instrukcjami na podstawie wybranego schematu uwierzytelniani
 
 1. **Podłącz urządzenie do IoT Central:** Po przełączeniu urządzenia z usługi DPS/IoT Central w celu rejestracji.
 
-1. **Skojarz urządzenia do szablonu:** Podłączone urządzenie pojawi się w obszarze **urządzenia nieskojarzone** w **Device Explorer**. Na urządzeniu, stan aprowizacji **zarejestrowanej**. **Skojarz** urządzenia do szablonu odpowiedniego urządzenia i zatwierdzić urządzenia, aby nawiązać połączenie aplikacji IoT Central. Urządzenie pobiera szczegóły połączeń aplikacji IoT Central, nawiązuje połączenie, a rozpoczyna wysyłanie danych. Provioning urządzenie jest teraz gotowy i *stan aprowizacji* przechodzi **Aprowizowana**.
+1. **Skojarz urządzenia do szablonu:** Podłączone urządzenie pojawi się w obszarze **urządzenia nieskojarzone** w **Device Explorer**. Na urządzeniu, stan aprowizacji **zarejestrowanej**. **Skojarz** urządzenia do szablonu odpowiedniego urządzenia i zatwierdzić urządzenia, aby nawiązać połączenie aplikacji IoT Central. Urządzenie pobiera szczegóły połączenia dla aplikacji IoT Central, a następnie łączy się i rozpoczyna wysyłanie danych. Inicjowanie obsługi administracyjnej urządzeń jest teraz gotowy i *stan aprowizacji* przechodzi **Aprowizowana**.
 
 ## <a name="device-provisioning-status"></a>Stan aprowizacji urządzenia
 Istnieją pewne czynności związane gdy rzeczywistego urządzenia jest podłączony do usługi Azure IoT Central 
 1. **Zarejestrowany**: Urządzenie jest pierwszym **zarejestrowanej**, co oznacza, urządzenie zostanie utworzony w IoT Central i zawiera identyfikator urządzenia dla urządzenia.
-Urządzenie jest Registeretd po  
+Urządzenie zostało zarejestrowane po  
     *   Nowe rzeczywistego urządzenia są dodawane na **Explorer**
     *   Zbiór urządzeń zostanie dodany przy użyciu **importu** na **Explorer**
     *   Urządzenie nie zostało zarejestrowane, ale połączy się z prawidłowymi poświadczeniami i jest widoczny w obszarze **nieskojarzonych** urządzeń. 
@@ -233,7 +233,7 @@ Możesz uzyskać parametry połączenia Centrum Iot hub urządzenia do usługi A
 
     ![Szczegóły połączenia](media/concepts-connectivity/device-connect.PNG)
 
-1. Pobierz parametry połączenia urządzenia przy użyciu narzędzia wiersza commnd poniżej.
+1. Pobierz parametry połączenia urządzenia przy użyciu narzędzia wiersza polecenia poniżej.
     Użyj poniższych instrukcji, aby uzyskać parametry połączenia urządzenia  
 
     ```cmd/sh

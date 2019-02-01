@@ -1,8 +1,21 @@
 ---
-Tytuł: Skopiuj innych danych do analizy przykłady titleSuffix: Opis usługi Azure Machine Learning Studio: "Tajemnice handlowe do nauki o danych: Uzyskaj innych do pracy za Ciebie. Pobieranie przykładów uczenia maszynowego w galerii sztucznej Inteligencji platformy Azure. "
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 01/05/2018
+title: Skopiuj innych nauki przykładów danych
+titleSuffix: Azure Machine Learning Studio
+description: 'Tajemnice handlowe do nauki o danych: Uzyskaj innych do pracy za Ciebie. Pobieranie przykładów uczenia maszynowego w galerii sztucznej Inteligencji platformy Azure.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/05/2018
+ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493001"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych
 ## <a name="video-5-data-science-for-beginners-series"></a>Wideo 5: Analiza danych dla początkujących serii

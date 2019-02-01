@@ -10,12 +10,12 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301445"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487238"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -111,7 +111,7 @@ Aby skonfigurować plików śledzenia na komputerach z Windows, wykonaj następu
 Rekursja można określić symbole wieloznaczne ułatwiają śledzenie katalogów i zmiennych środowiskowych, które umożliwiają śledzenie plików w środowiskach z wieloma lub dynamicznych dysków nazwy. Na poniższej liście przedstawiono typowe informacje, które należy wiedzieć podczas konfigurowania rekursji:
 
 * Symbole wieloznaczne są wymagane do śledzenia wielu plików
-* Jeśli przy użyciu symboli wieloznacznych, ich można używać tylko w ostatnim segmencie ścieżki. (np. C:\folder\\**pliku** lub /etc/*.conf)
+* Jeśli przy użyciu symboli wieloznacznych, ich można używać tylko w ostatnim segmencie ścieżki. (takie jak `c:\folder\*file*` lub `/etc/*.conf`)
 * Jeśli zmienna środowiskowa zawiera nieprawidłową ścieżkę, weryfikacja zakończy się powodzeniem, ale tej ścieżki nie powiedzie się po uruchomieniu spisu.
 * Takie jak uniknąć ogólne ścieżki `c:\*.*` podczas ustawiania ścieżki, ponieważ spowodowałoby to zbyt wiele folderów-są przenoszone.
 
@@ -132,9 +132,9 @@ Wykonaj następujące kroki, aby skonfigurować śledzenie kluczy rejestru na ko
 |Właściwość  |Opis  |
 |---------|---------|
 |Enabled (Włączony)     | Określa, czy ustawienia została zastosowana.        |
-|Nazwa elementu     | Przyjazna nazwa pliku, który ma być śledzony.        |
-|Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Klucz rejestru systemu Windows   | Ścieżka do sprawdzania pliku. Na przykład: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
+|Nazwa elementu     | Przyjazna nazwa klucza rejestru, które mają być śledzone.        |
+|Grupa     | Nazwa grupy do logicznego grupowania kluczy rejestru.        |
+|Klucz rejestru systemu Windows   | Ścieżka do sprawdzania dla klucza rejestru. Na przykład: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ## <a name="limitations"></a>Ograniczenia
 
@@ -278,13 +278,13 @@ W poniższym przykładzie zrzut ekranu pokazuje, że plik `C:\windows\system32\d
 
 ![Wykres przedstawiający hosty zmian plików](./media/automation-change-tracking/changes.png)
 
-W celu analizy dalsze tę zmianę, przejdź do wyszukiwania w dziennikach od kliknięcia **usługi Log Analytics**. Raz podczas wyszukiwania dziennika Wyszukaj zmiany zawartości w pliku Hosts z zapytaniem `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. To zapytanie wyszukuje zmiany, które uwzględnione zmiany zawartości pliku dla plików, których w pełni kwalifikowana ścieżka zawiera wyraz "hosts". Możesz również poprosić określonych plików, zmieniając jego w pełni kwalifikowany składnik path (takie jak `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+W celu analizy dalsze tę zmianę, przejdź do wyszukiwania w dziennikach od kliknięcia **usługi Log Analytics**. Raz podczas wyszukiwania dziennika Wyszukaj zmiany zawartości w pliku Hosts z zapytaniem `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. To zapytanie wyszukuje zmiany, które uwzględnione zmiany zawartości pliku dla plików, których w pełni kwalifikowana ścieżka zawiera wyraz "hosts". Możesz również poprosić określonych plików, zmieniając jego w pełni kwalifikowany składnik path (takie jak `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
 Po zapytanie zwraca zakładanych wyników, kliknij przycisk **Nowa reguła alertu** przycisku środowisko wyszukiwania dziennika, aby otworzyć stronę tworzenia alertu. Można również przejściu do tego środowiska za pomocą **usługi Azure Monitor** w witrynie Azure portal. W środowisku tworzenia alertu Sprawdź ponownie zapytanie i zmodyfikuj alert Logic Apps. W tym przypadku chcesz alert, aby zostać wyzwolony, jeśli nie nastąpiła zmiana nawet wykryte na wszystkich maszynach w środowisku.
 
 ![Obraz przedstawiający zapytania zmiany, śledzić zmiany w pliku hosts](./media/automation-change-tracking/change-query.png)
 
-Przypisywanie grup akcji do wykonania akcji w odpowiedzi na alert jest wyzwalany, po ustawieniu logiki warunkowej. W tym przypadku masz skonfigurować wiadomości e-mail do wysłania i bilet ITSM ma zostać utworzony.  Wielu innych czynności przydatne może być również uwzględniony, takie jak wyzwolenie funkcji platformy Azure, element runbook usługi Automation, element Webhook lub aplikację logiki.
+Przypisywanie grup akcji do wykonania akcji w odpowiedzi na alert jest wyzwalany, po ustawieniu logiki warunkowej. W tym przypadku masz skonfigurować wiadomości e-mail do wysłania i bilet ITSM ma zostać utworzony.  Wielu innych czynności przydatne może być również uwzględniony, takie jak wyzwolenie funkcji platformy Azure, automatyzacji elementu runbook, element webhook lub aplikacji logiki.
 
 ![Obraz konfigurowania grupy akcji alert w przypadku zmiany](./media/automation-change-tracking/action-groups.png)
 

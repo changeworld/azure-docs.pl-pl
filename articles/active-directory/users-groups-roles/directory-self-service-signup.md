@@ -1,5 +1,5 @@
 ---
-title: Rejestracja samoobsługi lub wersji próbnej usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Dodaj użytkowników za pośrednictwem rejestracji samoobsługowego lub wersja próbna — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Użyj Samoobsługowe tworzenie konta w dzierżawie usługi Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,19 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/16/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 63ddff08b93ffa072add0e8f093e1d4e0f1aa01e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f02a628a55969dfbb883f53f005733482499a42b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195821"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506774"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co to jest Samoobsługowe tworzenie konta usługi Azure Active Directory?
+
 W tym artykule wyjaśniono, Samoobsługowe tworzenie konta i sposobu jego obsługi w usłudze Azure Active Directory (Azure AD). Jeśli chcesz przejąć nazwę domeny z niezarządzanych do usługi Azure AD dzierżawy, zobacz [przejmowanie katalogu niezarządzanego, jako administrator](domains-admin-takeover.md).
 
 ## <a name="why-use-self-service-signup"></a>Dlaczego warto używać Samoobsługowe tworzenie konta?

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f24930d31e8435a00fec6a449445ea4682deea8f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 517288f257dcd4e397db5cc432d0168b136fe265
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169352"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488679"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Techniczne
 W tym artykule przedstawiono omówienie, jak działa uwierzytelniania przekazywanego usługi Azure Active directory (Azure AD). Głębokie techniczne i informacje o zabezpieczeniach, zobacz [zagłębia zabezpieczeń](how-to-connect-pta-security-deep-dive.md) artykułu.
@@ -51,7 +51,7 @@ Na poniższym diagramie przedstawiono wszystkie składniki i kroki do wykonania:
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Bieżące ograniczenia](how-to-connect-pta-current-limitations.md): Dowiedz się, jakie scenariusze są obsługiwane i te, które nie są.
-- [Przewodnik Szybki Start](how-to-connect-pta-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
+- [Szybki start](how-to-connect-pta-quick-start.md): Rozpocznij pracę na uwierzytelnianie przekazywane usługi AD platformy Azure.
 - [Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/adfstoPTADP) — szczegółowy przewodnik dotyczący migracji z usług AD FS (lub inne technologie federacyjnych) do uwierzytelniania przekazywanego.
 - [Blokada Smart](../authentication/howto-password-smart-lockout.md): Konfigurowanie funkcji inteligentnej blokady na swoją dzierżawę, aby chronić kont użytkowników.
 - [Często zadawane pytania dotyczące](how-to-connect-pta-faq.md): Znajdź odpowiedzi na często zadawane pytania.

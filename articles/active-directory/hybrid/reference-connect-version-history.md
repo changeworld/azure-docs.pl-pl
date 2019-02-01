@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c42abf043c528f86db7af164c21c45b21e7bf1ac
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bf21b03463733f6613cfa515a6faf7c5ab1f33e8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196280"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55498135"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Program Azure AD Connect: Historia wersji
 Zespół usługi Azure Active Directory (Azure AD) regularnie aktualizuje program Azure AD Connect z nowych funkcji i funkcji. Nie wszystkie dodatki mają zastosowanie do wszystkich odbiorców.
@@ -333,7 +333,7 @@ Blokowanie dostępu do konta usługi AD DS, implementując następujące zmiany 
 *   Usuń wszystkie wpisy kontroli dostępu dla określonego obiektu, z wyjątkiem ACE specyficzne dla siebie. Chcemy zachować uprawnienia domyślne, jeśli chodzi o SAMODZIELNIE.
 *   Przypisz te określone uprawnienia:
 
-Type     | Name                          | Dostęp               | Dotyczy
+Type     | Name (Nazwa)                          | Dostęp               | Dotyczy
 ---------|-------------------------------|----------------------|--------------|
 Zezwalaj    | SYSTEM                        | Pełna kontrola         | Ten obiekt  |
 Zezwalaj    | Enterprise Admins             | Pełna kontrola         | Ten obiekt  |
@@ -752,7 +752,7 @@ Synchronizacja programu Azure AD Connect
   * Dodano **preferredDataLocation** schematu Metaverse i schemat łącznika usługi AAD. Klienci, którzy chcą, aby zaktualizować obu atrybutów w usłudze Azure AD można zaimplementować reguły synchronizacji niestandardowych, aby to zrobić. 
   * Dodano **userType** schematu Metaverse i schemat łącznika usługi AAD. Klienci, którzy chcą, aby zaktualizować obu atrybutów w usłudze Azure AD można zaimplementować reguły synchronizacji niestandardowych, aby to zrobić.
 
-* Program Azure AD Connect automatycznie umożliwia obecnie korzystanie z atrybutu ConsistencyGuid jako atrybutu zakotwiczenia źródła dla lokalnego obiektami usługi AD. Dalsze, Azure AD Connect wypełnia atrybut ConsistencyGuid z wartością atrybutu objectGuid, jeśli jest on pusty. Ta funkcja dotyczy tylko nowe wdrożenie. Aby dowiedzieć się więcej na temat tej funkcji, można znaleźć w sekcji artykułu [program Azure AD Connect: Projektowanie pojęcia — przy użyciu ms-DS-ConsistencyGuid jako sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor).
+* Program Azure AD Connect automatycznie umożliwia obecnie korzystanie z atrybutu ConsistencyGuid jako atrybutu zakotwiczenia źródła dla lokalnego obiektami usługi AD. Dalsze, Azure AD Connect wypełnia atrybut ConsistencyGuid z wartością atrybutu objectGuid, jeśli jest on pusty. Ta funkcja dotyczy tylko nowe wdrożenie. Aby dowiedzieć się więcej na temat tej funkcji, można znaleźć w sekcji artykułu [program Azure AD Connect: Design concepts - Using msDS-ConsistencyGuid as sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) (Azure AD Connect: zagadnienia dotyczące projektowania — korzystanie z atrybutu msDS-ConsistencyGuid jako atrybutu sourceAnchor).
 * Rozwiązywania problemów polecenia cmdlet Invoke-ADSyncDiagnostics została dodana do zdiagnozowania synchronizacji skrótów haseł problemy związane z usługą. Aby dowiedzieć się, jak za pomocą polecenia cmdlet, można znaleźć w artykule [Rozwiązywanie problemów z synchronizacją skrótów haseł z usługą Azure AD Connect sync](tshoot-connect-password-hash-synchronization.md).
 * Program Azure AD Connect, teraz obsługuje folderu publicznego z włączoną obsługą poczty Synchronizowanie obiektów z lokalnej usługi AD z usługą Azure AD. Można włączyć funkcję przy użyciu Kreatora Azure AD Connect w obszarze funkcje opcjonalne. Aby dowiedzieć się więcej na temat tej funkcji, można znaleźć w artykule [Office 365 katalogu na podstawie blokowanie na serwerze granicznym na obsługę lokalną włączone foldery publiczne poczty](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders).
 * Azure AD Connect wymaga przy użyciu usług AD DS konto do synchronizacji z lokalnej usługi AD. Wcześniej Jeśli zainstalowano program Azure AD Connect przy użyciu trybu Express można podajesz poświadczenia konta administratora przedsiębiorstwa i Azure AD Connect utworzyłoby wymagane jest konto usług AD DS. Do instalacji niestandardowej i dodawanie lasów do istniejącego wdrożenia były wymagane zamiast tego podać konto usług AD DS. Teraz masz również opcję, aby podać poświadczenia konta administratora przedsiębiorstwa podczas instalacji niestandardowej i pozwól program Azure AD Connect, utworzyć wymagane jest konto usług AD DS.

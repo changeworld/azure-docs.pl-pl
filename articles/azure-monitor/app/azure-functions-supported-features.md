@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 06feece050835b2b9188eb702210770b44a6b49c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185818"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510327"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Usługa Application Insights dla usługi Azure Functions obsługiwane funkcje
 
@@ -32,6 +32,7 @@ Platforma Azure oferuje funkcje [wbudowana integracja](https://docs.microsoft.co
 | **Automatyczne zbieranie**        |                 |                   |               
 | &bull; Żądania                     | Yes             | Yes               | 
 | &bull; Wyjątki                   | Yes             | Yes               | 
+| &bull; Liczniki wydajności         | Yes             |                   |
 | &bull; Zależności                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Yes               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Yes               | 
@@ -50,6 +51,11 @@ Platforma Azure oferuje funkcje [wbudowana integracja](https://docs.microsoft.co
 | | | | 
 | **Można konfigurować**                      |                   |                   |           
 | &bull;W pełni konfigurowalne.<br/>Zobacz [usługi Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) instrukcje.<br/>Zobacz [platformy Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) dla wszystkich opcji.               |                   | Yes                   | 
+
+
+## <a name="performance-counters"></a>Liczniki wydajności
+
+Automatyczne zbieranie liczników wydajności działają tylko Windows maszyn.
 
 
 ## <a name="live-metrics--secure-control-channel"></a>Metryki na żywo i bezpiecznego kanału kontroli

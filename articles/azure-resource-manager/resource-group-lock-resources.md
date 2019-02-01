@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 20810c3b32274129ce82f4efeca9efb31016189c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 209a5a9c213a48920452230b1d684fdf0738e87d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079763"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55496911"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
 
@@ -27,6 +27,8 @@ Jako administrator może być konieczne zablokowania subskrypcji, grupy zasobów
 
 * **CanNotDelete** oznacza, że autoryzowani użytkownicy nadal może odczytywać i modyfikować zasobu, ale ich nie można usunąć zasobu. 
 * **Tylko do odczytu** oznacza, że autoryzowani użytkownicy mogą odczytywać zasobu, ale nie mogą usunąć ani zaktualizować zasobu. Zastosowanie Ta blokada jest podobny do ograniczania wszystkim uprawnionym użytkownikom uprawnienia przyznane przez **czytnika** roli. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="how-locks-are-applied"></a>Jak są stosowane blokady
 

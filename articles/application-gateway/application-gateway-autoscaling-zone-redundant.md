@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/31/2019
 ms.author: victorh
-ms.openlocfilehash: 0c8a600342e0240d435999b1b5ddabc0234c142f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d680634231b90e5d1cc036f43b96e05d66899e34
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461444"
+ms.locfileid: "55487051"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostęp
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Automatyczne skalowanie jednostek SKU jest dostępna w następujących regionach: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, eastus, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, eastus (BL) centralus (DM) japanwest (system operacyjny ).
+Automatyczne skalowanie jednostek SKU jest dostępna w następujących regionach: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, eastus, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, eastus, centralus, japanwest.
 
 ## <a name="pricing"></a>Cennik
 

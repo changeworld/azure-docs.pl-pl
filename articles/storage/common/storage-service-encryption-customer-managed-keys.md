@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: c749a9dedef3970002c4f0672ffcc67aeaea422a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2718c5f06bb64ccd99844e402ac69237f30c310a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457432"
+ms.locfileid: "55497795"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 
@@ -40,7 +40,7 @@ Najpierw utwórz konto magazynu, jeśli nie masz jeszcze takiego. Aby uzyskać w
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Włącz SSE dla magazynu obiektów Blob i plików
 
-Aby włączyć SSE przy użyciu kluczy zarządzanych przez klienta, dwie funkcje ochrony kluczy: usuwanie nietrwałe i przeczyszczanie, musi być także włączona w usłudze Azure Key Vault. Tych ustawień upewnij się, że klucze nie może być przypadkowo lub celowo usuniętymi. Maksymalny okres przechowywania kluczy wynosi 90 dni, chronić użytkowników przed uczestników złośliwych działań lub oprogramowania wymuszającego okup.
+Aby włączyć SSE przy użyciu kluczy zarządzanych przez klienta, dwie funkcje ochrony kluczy: usuwanie nietrwałe i przeczyszczanie, musi być także włączona w usłudze Azure Key Vault. Tych ustawień upewnij się, że klucze nie może przypadkowo lub celowo usunięte. Maksymalny okres przechowywania kluczy wynosi 90 dni, chronić użytkowników przed uczestników złośliwych działań lub oprogramowania wymuszającego okup.
 
 Jeśli chcesz programowo włączyć kluczy zarządzanych przez klienta dla SSE, można użyć [interfejsu API REST dostawcy zasobów magazynu Azure](https://docs.microsoft.com/rest/api/storagerp), [Biblioteka klienta dostawcy zasobów usługi Storage dla platformy .NET](https://docs.microsoft.com/dotnet/api), [ Program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview), lub [wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/storage/storage-azure-cli).
 
@@ -174,7 +174,7 @@ Funkcja SSE jest włączona dla wszystkich kont magazynu i usługi Azure Blob st
 Czy konto magazynu usługi Azure Resource Manager? Klasyczne konta magazynu nie są obsługiwane za pomocą kluczy zarządzanych przez klienta. Usługa SSE za pomocą kluczy zarządzanych przez klienta można włączyć tylko na kontach magazynu usługi Resource Manager.
 
 **Co to jest usuwanie nietrwałe i przeczyszczanie? Należy włączyć to ustawienie, aby SSE za pomocą kluczy zarządzanych przez klienta?**  
-Usuwanie nietrwałe i przeczyszczanie musi być włączona funkcja SSE za pomocą kluczy zarządzanych przez klienta. Tych ustawień upewnij się, że klucz nie jest przypadkowo lub celowo usuniętymi. Maksymalny okres przechowywania kluczy wynosi 90 dni, chronić użytkowników przed atakami przed oprogramowaniem wymuszającym okup i uczestników złośliwych działań. Nie można wyłączyć to ustawienie.
+Usuwanie nietrwałe i przeczyszczanie musi być włączona funkcja SSE za pomocą kluczy zarządzanych przez klienta. Tych ustawień upewnij się, że klucz nie zostanie przypadkowo lub celowo usunięta. Maksymalny okres przechowywania kluczy wynosi 90 dni, chronić użytkowników przed atakami przed oprogramowaniem wymuszającym okup i uczestników złośliwych działań. Nie można wyłączyć to ustawienie.
 
 **Jest SSE za pomocą kluczy zarządzanych przez klienta dozwolone tylko w określonych regionach?**  
 Usługa SSE za pomocą kluczy zarządzanych przez klienta jest dostępna we wszystkich regionach świadczenia usługi Azure Blob storage i Azure Files.

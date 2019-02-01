@@ -1,8 +1,21 @@
 ---
-Tytuł: "Krok 1: Tworzenie obszaru roboczego "titleSuffix: Opis usługi Azure Machine Learning Studio: "Krok 1 programowanie przewodnik rozwiązania do analizy predykcyjnej: Dowiedz się, jak skonfigurować nowy obszar roboczy usługi Azure Machine Learning Studio. "
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: artykuł
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/23/2017
+title: 'Krok 1: Tworzenie obszaru roboczego'
+titleSuffix: Azure Machine Learning Studio
+description: 'Krok 1 programowanie przewodnik rozwiązania do analizy predykcyjnej: Dowiedz się, jak skonfigurować nowy obszar roboczy usługi Azure Machine Learning Studio.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/23/2017
+ms.openlocfilehash: c018988eb36e395372b3d927732a1acbcb5c2fa9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509515"
 ---
 # <a name="walkthrough-step-1-create-an-azure-machine-learning-studio-workspace"></a>Przewodnik, krok 1 Tworzenie obszaru roboczego usługi Azure Machine Learning Studio
 Jest to pierwszy krok tego przewodnika, [tworzenia rozwiązania analizy predykcyjnej w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).

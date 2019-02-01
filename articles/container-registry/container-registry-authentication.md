@@ -9,20 +9,18 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66f9c41e2551dffc32932f1cfa53fa444251b303
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2c1a03d164462da0bc9143399dbcb1e76302433b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301054"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507896"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Uwierzytelnianie przy użyciu prywatnego rejestru kontenerów platformy Docker
 
 Istnieje kilka sposobów uwierzytelniania za pomocą usługi Azure container registry, z których każdy ma zastosowanie do jednego lub więcej scenariuszy użycia rejestru.
 
 Możesz zalogować się do rejestru bezpośrednio za pośrednictwem [poszczególnych logowania](#individual-login-with-azure-ad), lub aplikacje i koordynatorów kontenerów, można wykonać instalacji nienadzorowanej lub "bezobsługowe" uwierzytelnianie przy użyciu usługi Azure Active Directory (Azure AD) [ Nazwa główna usługi](#service-principal).
-
-Usługa Azure Container Registry nie obsługuje nieuwierzytelnione operacje platformy Docker lub dostęp anonimowy. Obrazy publiczne, możesz użyć [usługi Docker Hub](https://docs.docker.com/docker-hub/).
 
 ## <a name="individual-login-with-azure-ad"></a>Poszczególne Zaloguj się przy użyciu usługi Azure AD
 

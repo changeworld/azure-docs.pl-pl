@@ -2,19 +2,18 @@
 title: Możliwości platformy Azure, natychmiastowe Przywracanie
 description: Błyskawiczne możliwości przywracania i często zadawane pytania dotyczące maszyn wirtualnych Azure utworzyć kopię zapasową stosu i modelu wdrażania usługi Resource Manager
 services: backup
-author: trinadhk
+author: sogup
 manager: vijayts
-tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: trinadhk
-ms.openlocfilehash: a5afdd0dca55a5df075acb99e488c932196d95c5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: sogup
+ms.openlocfilehash: cc4f559efecec3f024ce995dcf8f8757eb9cb4fb
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092304"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489698"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 

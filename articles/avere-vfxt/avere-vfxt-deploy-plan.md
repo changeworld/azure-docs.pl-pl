@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: e60c92c22382112558307062afdeb87e08075765
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c0304e290d18e6569e3fcc2efbab8af15727b80c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298929"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508165"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planowanie systemu Avere vFXT
 
@@ -83,7 +83,7 @@ Upewnij się, że Twoja subskrypcja ma możliwość obsługi klastra vFXT Avere,
 
 ## <a name="back-end-data-storage"></a>Magazyn danych zaplecza
 
-Gdzie należy do klastra vFXT Avere przechowywania danych podczas nie znajduje się w pamięci podręcznej? Zdecydować, czy zestaw roboczy będą przechowywane długoterminowych na nowy kontener obiektów Blob lub w istniejącej chmurze lub system magazynowania sprzętu. 
+Gdzie należy do klastra vFXT Avere przechowywania danych podczas nie znajduje się w pamięci podręcznej? Zdecyduj, czy zestaw roboczy będzie przechowywane długoterminowych na nowy kontener obiektów Blob lub w istniejącej chmurze lub system magazynowania sprzętu. 
 
 Jeśli chcesz użyć usługi Azure Blob storage dla wewnętrznej, należy utworzyć nowy kontener w ramach tworzenia klastra vFXT. Ta opcja tworzy i konfiguruje nowy kontener, aby była gotowa do użycia jak klaster będzie gotowy. 
 
@@ -109,7 +109,7 @@ Dostęp do opcji należą:
 
 * Wirtualnej sieci prywatnej (VPN) — Konfigurowanie sieci VPN punkt lokacja i lokacja lokacja z siecią prywatną.
 
-* Usługa ExpressRoute systemu Azure — Konfigurowanie prywatnego połączenia za pośrednictwem i partnerów usługi ExpressRoute. 
+* Usługa ExpressRoute systemu Azure — Konfigurowanie prywatnego połączenia za pośrednictwem partnera usługi ExpressRoute. 
 
 Aby uzyskać szczegółowe informacje na temat tych opcji, przeczytaj [dokumentacji usługi Azure Virtual Network o komunikację z Internetem](../virtual-network/virtual-networks-overview.md#communicate-with-the-internet).
 
@@ -117,7 +117,7 @@ Aby uzyskać szczegółowe informacje na temat tych opcji, przeczytaj [dokumenta
 
 Jeśli publiczny adres IP jest ustawiony na kontrolerze klastra, można użyć go jako hosta szybkie, nawiązać połączenia z klastrem vFXT Avere z poza podsieci prywatnej. Jednak ponieważ kontroler ma uprawnienia dostępu do modyfikowania węzłów klastra, powoduje to utworzenie małej zagrożenie bezpieczeństwa.  
 
-Ze względów bezpieczeństwa z publicznym adresem IP należy użyć sieciowej grupy zabezpieczeń w celu umożliwienia dostępu przychodzącego wyłącznie za pośrednictwem portu 22.
+Ze względów bezpieczeństwa z publicznym adresem IP należy użyć sieciowej grupy zabezpieczeń w celu umożliwienia dostępu przychodzącego wyłącznie za pośrednictwem portu 22. Opcjonalnie można dodatkowo zabezpieczyć systemu przez blokowanie szczegółów dostępu do sieci zakres adresów IP, źródłowy — oznacza to, Zezwalaj na połączenia tylko z komputerów, które mają być używane dla dostępu do klastra.
 
 Podczas tworzenia klastra, można wybrać, czy należy utworzyć publiczny adres IP na kontrolerze klastra. 
 

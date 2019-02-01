@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a816542860a96a8b0dbbeaa63202b6cba4d24acc
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ff67474566737ca75206cd1237c89f873cb173a8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55294982"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489856"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)
 
@@ -26,6 +26,9 @@ W tym artykule wyjaśniono, jak używać programu Azure PowerShell przy użyciu 
 Szablon usługi Resource Manager możesz wdrożyć, mogą być plikiem lokalnym na komputerze lub zewnętrznego pliku, który znajduje się w repozytorium, takich jak GitHub. Szablon wdrożenia w tym artykule jest dostępny jako [szablon konta magazynu w usłudze GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
 W razie potrzeby zainstaluj moduł Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 <a id="deploy-local-template" />
 

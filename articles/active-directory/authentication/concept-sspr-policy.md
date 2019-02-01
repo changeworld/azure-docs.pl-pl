@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 45cd9188b420f9c6db3f1adaa4244b30cce0ccc6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 735bc2569436b99d3366d1ce5ff01f40ab7f587a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081895"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510463"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
 
@@ -86,7 +86,7 @@ W poniższej tabeli opisano ustawienia zasad haseł dostępne, które mogą być
 | Wygaśnięcia hasła |<ul><li>Wartość domyślna: **false** dni (wskazuje, że wygaśnięcie hasła jest włączona).</li><li>Wartość można skonfigurować dla poszczególnych kont użytkowników przy użyciu `Set-MsolUser` polecenia cmdlet.</li></ul> |
 | Historię zmian haseł |Ostatnie hasło *nie* można użyć ponownie, gdy użytkownik zmieni hasło. |
 | Historia resetowania hasła | Ostatnie hasło *można* można użyć ponownie, gdy użytkownik resetuje zapomniane hasło. |
-| Blokada konta |Po 10 nieudanych prób logowania przy użyciu nieprawidłowego hasła użytkownik jest zablokowany przez jedną minutę. Dodatkowo nieprawidłowe próby logowania blokady użytkownika dla zwiększenia czasów trwania czasu. |
+| Blokada konta |Po 10 nieudanych prób logowania przy użyciu nieprawidłowego hasła użytkownik jest zablokowany przez jedną minutę. Dodatkowo nieprawidłowe próby logowania blokady użytkownika dla zwiększenia czasów trwania czasu. [Blokada Smart](howto-password-smart-lockout.md) śledzi ostatnie trzy skróty nieprawidłowego hasła, aby uniknąć zwiększenie licznika blokady dla tego samego hasła. Jeśli ktoś wprowadzi nieprawidłowe hasło wiele razy, to zachowanie nie spowoduje konta do blokady. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Konfigurowanie zasad wygasania haseł w usłudze Azure AD
 

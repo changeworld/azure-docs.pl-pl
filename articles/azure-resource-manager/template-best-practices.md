@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0736ed32fa6f17cc840d6b144503409365c33d84
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077947"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490384"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Usługa Azure Resource Manager szablon najlepszych rozwiązań
 
@@ -25,6 +25,8 @@ Ten artykuł zawiera zalecenia dotyczące sposobu tworzenia szablonu usługi Res
 Aby uzyskać zalecenia dotyczące sposobu zarządzania subskrypcjami platformy Azure, zobacz [szkieletu przedsiębiorstw na platformie Azure: Narzucony nadzór subskrypcji](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
 
 Aby uzyskać zalecenia dotyczące sposobu tworzenia szablonów, które działają we wszystkich środowiskach w chmurze platformy Azure, zobacz [szablony Tworzenie usługi Azure Resource Manager w celu zachowania spójności chmury](templates-cloud-consistency.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="parameters"></a>Parametry
 Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [parametry](resource-manager-templates-parameters.md).

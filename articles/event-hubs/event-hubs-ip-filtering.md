@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507539"
 ---
 # <a name="use-firewall-rules"></a>Użyj reguł zapory
 
@@ -24,7 +24,7 @@ W przypadku scenariuszy, w których usługa Azure Event Hubs powinny być tylko 
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
-Jeśli chcesz skonfigurować przestrzeni nazw usługi Event Hubs takie, które klient powinien otrzymać ruchu z tylko określony zakres adresów IP i odrzucić wszystkie inne elementy, a następnie można wykorzystać *reguły zapory* blokowanie punktów końcowych Centrum zdarzeń, z inne adresy IP. Na przykład używasz usługi Event Hubs za pomocą [Azure Express Route] [ express-route] na tworzenie prywatnych połączeń w infrastrukturze lokalnej.
+Jeśli chcesz skonfigurować przestrzeni nazw usługi Event Hubs takie, które klient powinien otrzymać ruchu z tylko określony zakres adresów IP i odrzucić wszystkie inne elementy, a następnie można wykorzystać *reguły zapory* blokowanie punktów końcowych Centrum zdarzeń, z inne adresy IP. Na przykład, jeśli korzystasz z usługi Event Hubs za pomocą [Azure Express Route][express-route], możesz utworzyć *reguły zapory* do ograniczania ruchu z lokalnej infrastruktury IP adresy.
 
 ## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
 
@@ -49,7 +49,7 @@ Reguły filtrowania adresów IP są stosowane w kolejności, a pierwszej reguły
 > - Azure Monitor
 > - Usługa Azure Stream Analytics
 > - Integracja z usługą Azure Event Grid
-> - Usługa Azure IoT Hub tras
+> - Azure IoT Hub Routes
 > - Usługa Azure IoT Device Explorer
 > - Azure Data Explorer
 >
@@ -60,7 +60,7 @@ Reguły filtrowania adresów IP są stosowane w kolejności, a pierwszej reguły
 ### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły zapory przy użyciu szablonów usługi Azure Resource Manager
 
 > [!IMPORTANT]
-> Reguły zapory są obsługiwane w **standardowa** i **dedykowanych** warstw usługi Event Hubs. Nie jest obsługiwana w warstwie podstawowa.
+> Reguły zapory są obsługiwane w **standardowa** i **dedykowanych** warstw usługi Event Hubs. Nie są obsługiwane w warstwie Podstawowa.
 
 Następujący szablon usługi Resource Manager umożliwia dodawanie reguły filtrowania adresów IP do istniejącej przestrzeni nazw usługi Event Hubs.
 

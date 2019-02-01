@@ -1,5 +1,5 @@
 ---
-title: Wygaśnięcie dla usługi Office 365 grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Ustawienia wygasania grup usługi Office 365 — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak skonfigurować wygaśnięcie dla grup usługi Office 365 w usłudze Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 98ed7ce3eb58aa870a3cb06864631cd108410195
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166173"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508746"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 3a4b62fb16745a3b226bda6c0574812278a34456
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 94aaa72497a8a5f171d6b42f59a3c5b507c71492
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428732"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55495007"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące izolacji klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -43,6 +43,8 @@ Za pomocą izolacji logicznej pojedynczy klaster AKS może służyć do wielu ob
 ![Izolacji logicznej klastra Kubernetes w usłudze AKS](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
 Separacji logicznej klastrów zwykle zapewnia zwiększenie gęstości zasobnika niż fizycznie izolowane klastrów. Mniej nadmiarowe moc obliczeniową, która jest bezczynny w klastrze. W połączeniu z skalowanie klastra usługi Kubernetes, możesz skalować liczbę węzłów w górę lub w dół, aby spełniać wymagania. Tego najlepszego podejścia praktycznego do automatycznego skalowania pozwala na uruchamianie tylko liczbę węzłów, wymagane i minimalizuje koszty.
+
+Środowisk Kubernetes w usłudze AKS, lub w innych miejscach, nie są całkowicie bezpieczne dla szkodliwy użycie wielu obcych dzierżaw. Funkcje dodatkowe zabezpieczenia, takie jak *zasady zabezpieczeń zasobnika* i więcej kontroli dostępu w zakresie opartej na rolach (RBAC) dla węzłów utrudniają luki w zabezpieczeniach. Wartość true, zabezpieczeń przy uruchamianiu obciążeń liczonych w szkodliwy wielodostępne, funkcja hypervisor to tylko poziom zabezpieczeń, które należy ufać. Domeny zabezpieczeń dla rozwiązania Kubernetes staje się całego klastra, a nie oddzielnego węzła. Dla tych typów szkodliwy obciążenia z wieloma dzierżawami należy użyć fizycznie izolowane klastrów.
 
 ## <a name="physically-isolate-clusters"></a>Fizycznie izolowanie klastrów
 

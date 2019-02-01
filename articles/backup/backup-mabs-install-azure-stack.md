@@ -2,23 +2,20 @@
 title: Instalowanie usługi Azure Backup Server w usłudze Azure Stack | Dokumentacja firmy Microsoft
 description: Użyj usługi Azure Backup Server do ochrony lub tworzenia kopii zapasowych obciążeń w usłudze Azure Stack.
 services: backup
-documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: Usługa Azure backup server; można chronić obciążenia; Tworzenie kopii zapasowych obciążeń
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 6/5/2018
+ms.topic: conceptual
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 31052276f06c5afdf78bf094637b7f60be4acbec
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262731"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497931"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 

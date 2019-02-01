@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/6/2018
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d7617ce96181a0708dfa4731c07d581e332bdff4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873108"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492287"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 
-W tym artykule wyjaśniono, jak usunąć wszystkie elementy z magazynu usługi Recovery Services, a następnie usuń ją. Nie można usunąć magazynu usługi Recovery Services, jeśli jest zarejestrowany na serwerze i przechowuje dane kopii zapasowej. Jeśli spróbuj usunąć magazynu, ale nie magazyn jest nadal skonfigurować do odbierania danych kopii zapasowej.
+W tym artykule opisano, jak można usunąć wszystkich elementów z magazynu usługi Recovery Services, a następnie usuń ją. Nie można usunąć magazynu usługi Recovery Services, jeśli jest zarejestrowany na serwerze i przechowuje dane kopii zapasowej. Jeśli spróbuj usunąć magazynu, ale nie magazyn jest nadal skonfigurować do odbierania danych kopii zapasowej.
 
 Aby dowiedzieć się, jak usunąć magazyn, zobacz sekcję [usuwanie magazynu w witrynie Azure portal](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal). Jeśli nie chcesz przechowywać żadnych danych w magazynie usługi Recovery Services i zechcesz usunąć magazynu, zobacz sekcję [usunąć magazyn przy wymuszonego](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force). Jeśli nie masz pewności, co znajduje się w magazynie, a następnie należy upewnić się, że można usunąć magazynu, zobacz sekcję [Usuń magazyn zależności i usuwania magazynu](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault).
 

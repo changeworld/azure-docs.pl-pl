@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.openlocfilehash: f688c0e277f807ff27731c103ca407807052c9d3
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199752"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508321"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurowanie połączenia punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure native: PowerShell
 
@@ -39,11 +39,11 @@ Sprawdź, czy masz subskrypcję platformy Azure. Jeśli nie masz jeszcze subskry
 
 Wartości przykładowych możesz użyć do tworzenia środowiska testowego lub odwoływać się do tych wartości, aby lepiej zrozumieć przykłady w niniejszym artykule. Zmienne są ustawiane w sekcji [1](#declare) artykułu. Można postępować zgodnie z opisanymi krokami i użyć przedstawionych wartości bez ich zmieniania lub zmienić je, aby odzwierciedlały dane środowisko.
 
-* **Nazwa: Sieć VNet1**
+* **Nazwa: VNet1**
 * **Przestrzeń adresowa: 192.168.0.0/16** i **10.254.0.0/16**<br>W tym przykładzie jest używana więcej niż jedna przestrzeń adresowa, aby zilustrować, że ta konfiguracja współpracuje z wieloma przestrzeniami adresowymi. Jednak ta konfiguracja nie wymaga wielu przestrzeni adresowych.
 * **Nazwa podsieci: Frontonu**
   * **Zakres adresów podsieci: 192.168.1.0/24**
-* **Nazwa podsieci: Wewnętrznej bazy danych**
+* **Nazwa podsieci: BackEnd**
   * **Zakres adresów podsieci: 10.254.1.0/24**
 * **Nazwa podsieci: GatewaySubnet**<br>Nazwa podsieci *GatewaySubnet* jest obowiązkowa, aby brama VPN mogła działać.
   * **Zakres adresów podsieci: 192.168.200.0/24** 
@@ -54,7 +54,7 @@ Wartości przykładowych możesz użyć do tworzenia środowiska testowego lub o
 * **Serwer DNS: Adres IP** serwera DNS, który ma być używany do rozpoznawania nazw. (opcjonalnie)
 * **Nazwa GW: Vnet1GW**
 * **Publiczna nazwa adresu IP: VNet1GWPIP**
-* **Typ VpnType: RouteBased** 
+* **VpnType: RouteBased** 
 
 ## <a name="declare"></a>1. Zaloguj się i Ustawianie zmiennych
 

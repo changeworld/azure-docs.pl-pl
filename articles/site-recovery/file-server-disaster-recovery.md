@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c6db0b9dda9f383ddc062c41bae0be0b56f7e69d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794094"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508372"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrona serwera plików za pomocą usługi Azure Site Recovery 
 
@@ -76,7 +76,7 @@ Ponieważ replikacja usługi Site Recovery jest niezależna od aplikacji, te rek
 
 **Połączenie lokacja lokacja**: Bezpośrednie połączenie między lokacją lokalną i siecią platformy Azure należy ustanowić, aby umożliwić komunikację między serwerami. Użyj bezpiecznego połączenia sieci VPN typu lokacja-lokacja z siecią wirtualną platformy Azure, która jest używana jako lokacja odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [Establish a site-to-site VPN connection between an on-premises site and an Azure virtual network](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) (Nawiązywanie połączenia VPN typu lokacja-lokacja między lokacją lokalną i siecią wirtualną platformy Azure).
 
-**Usługi Active Directory**: DFSR zależy od usługi Active Directory. Oznacza to, że las usługi Active Directory z lokalnymi kontrolerami domeny jest rozszerzony do lokacji odzyskiwania po awarii na platformie Azure. Nawet jeśli nie używasz replikacji DFSR, jeśli odpowiednim użytkownikom należy przyznać dostęp lub sprawdzić pod kątem dostępu, musisz wykonać następujące kroki. Aby uzyskać więcej informacji, zobacz [Extend on-premises Active Directory to Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory) (Rozszerzenie lokalnej usługi Active Directory na platformę Azure).
+**Active Directory**: DFSR zależy od usługi Active Directory. Oznacza to, że las usługi Active Directory z lokalnymi kontrolerami domeny jest rozszerzony do lokacji odzyskiwania po awarii na platformie Azure. Nawet jeśli nie używasz replikacji DFSR, jeśli odpowiednim użytkownikom należy przyznać dostęp lub sprawdzić pod kątem dostępu, musisz wykonać następujące kroki. Aby uzyskać więcej informacji, zobacz [Extend on-premises Active Directory to Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory) (Rozszerzenie lokalnej usługi Active Directory na platformę Azure).
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Zalecenie odzyskiwania po awarii dla maszyn wirtualnych usługi IaaS platformy Azure
 
@@ -94,7 +94,7 @@ Usługi Azure Files można użyć w celu całkowitego zastąpienia lub uzupełni
 
 W poniższych krokach skrótowo opisano sposób używania usługi File Sync:
 
-1. [Utwórz konto magazynu na platformie Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Jeśli dla swoich kont magazynu wybierzesz magazyn geograficznie nadmiarowy z dostępem do odczytu, w razie awarii otrzymasz dostęp do odczytu do swoich danych z regionu pomocniczego. Aby uzyskać więcej informacji, zobacz [Azure file share disaster recovery strategies](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Strategie odzyskiwania po awarii udziału plików platformy Azure).
+1. [Utwórz konto magazynu na platformie Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Jeśli dla swoich kont magazynu wybierzesz magazyn geograficznie nadmiarowy z dostępem do odczytu, w razie awarii otrzymasz dostęp do odczytu do swoich danych z regionu pomocniczego. Aby uzyskać więcej informacji, zobacz [odzyskiwania po awarii i wymuszenie trybu failover (wersja zapoznawcza) w usłudze Azure Storage](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
 2. [Utwórz udział plików](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Uruchom usługę File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) na swoim serwerze plików platformy Azure.
 4. Utwórz grupę synchronizacji. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Grupa synchronizacji musi zawierać co najmniej jeden punkt końcowy w chmurze, który reprezentuje udział plików platformy Azure. Grupa synchronizacji musi również zawierać jeden punkt końcowy serwera, który reprezentuje ścieżkę na serwerze z systemem Windows.
@@ -143,7 +143,7 @@ Aby zintegrować usługę File Sync z usługą Site Recovery:
 
 Wykonaj następujące kroki, aby użyć usługi File Sync:
 
-1. [Utwórz konto magazynu na platformie Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Jeśli dla swoich kont magazynu wybierzesz magazyn geograficznie nadmiarowy z dostępem do odczytu (zalecany), w razie awarii masz dostęp do odczytu do swoich danych z regionu pomocniczego. Aby uzyskać więcej informacji, zobacz [Azure file share disaster recovery strategies](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Strategie odzyskiwania po awarii udziału plików platformy Azure).
+1. [Utwórz konto magazynu na platformie Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Jeśli dla swoich kont magazynu wybierzesz magazyn geograficznie nadmiarowy z dostępem do odczytu (zalecany), w razie awarii masz dostęp do odczytu do swoich danych z regionu pomocniczego. Aby uzyskać więcej informacji, zobacz [odzyskiwania po awarii i wymuszenie trybu failover (wersja zapoznawcza) w usłudze Azure Storage](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)...
 2. [Utwórz udział plików](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Wdróż usługę File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) na lokalnym serwerze plików.
 4. Utwórz grupę synchronizacji. Punkty końcowe w ramach grupy synchronizacji są synchronizowane ze sobą. Grupa synchronizacji musi zawierać co najmniej jeden punkt końcowy w chmurze, który reprezentuje udział plików platformy Azure. Grupa synchronizacji musi również zawierać jeden punkt końcowy serwera, który reprezentuje ścieżkę na lokalnym serwerze z systemem Windows.

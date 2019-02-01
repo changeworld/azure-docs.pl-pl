@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 8850ef68c665efcf9e66315af20b7d1e8492fc5f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164791"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493766"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów usługi Azure Resource Manager
 
@@ -30,6 +30,8 @@ Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
 * [if](#if)
 * [not](#not)
 * [lub](#or)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="and"></a>i
 `and(arg1, arg2)`
@@ -77,9 +79,9 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | wartość logiczna | False |
-| orExampleOutput | wartość logiczna | True |
-| notExampleOutput | wartość logiczna | False |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -90,7 +92,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="bool"></a>wartość logiczna
@@ -141,10 +143,10 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| trueString | wartość logiczna | True |
-| falseString | wartość logiczna | False |
-| trueInt | wartość logiczna | True |
-| falseInt | wartość logiczna | False |
+| trueString | Bool | True |
+| falseString | Bool | False |
+| trueInt | Bool | True |
+| falseInt | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -155,10 +157,10 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
 ```
 
-## <a name="if"></a>Jeśli
+## <a name="if"></a>if
 `if(condition, trueValue, falseValue)`
 
 Zwraca wartość, na podstawie warunku jest wartość PRAWDA lub FAŁSZ.
@@ -252,9 +254,9 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| yesOutput | Ciąg | tak |
-| noOutput | Ciąg | nie |
-| objectOutput | Obiekt | {"test": "wartość1"} |
+| yesOutput | String | tak |
+| noOutput | String | nie |
+| objectOutput | Obiekt | { "test": "value1" } |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -265,7 +267,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
 ```
 
 ## <a name="not"></a>nie
@@ -313,9 +315,9 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | wartość logiczna | False |
-| orExampleOutput | wartość logiczna | True |
-| notExampleOutput | wartość logiczna | False |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -326,7 +328,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) używa **nie** z [jest równa](resource-group-template-functions-comparison.md#equals).
@@ -349,7 +351,7 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| checkNotEquals | wartość logiczna | True |
+| checkNotEquals | Bool | True |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -360,7 +362,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
 ## <a name="or"></a>lub
@@ -409,9 +411,9 @@ Dane wyjściowe z poprzedniego przykładu są:
 
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
-| andExampleOutput | wartość logiczna | False |
-| orExampleOutput | wartość logiczna | True |
-| notExampleOutput | wartość logiczna | False |
+| andExampleOutput | Bool | False |
+| orExampleOutput | Bool | True |
+| notExampleOutput | Bool | False |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -422,7 +424,7 @@ az group deployment create -g functionexamplegroup --template-uri https://raw.gi
 Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

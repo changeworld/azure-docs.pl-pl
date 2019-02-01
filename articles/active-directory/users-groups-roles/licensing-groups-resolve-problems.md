@@ -1,25 +1,25 @@
 ---
-title: Rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z licencją przypisania grupy — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak identyfikowanie i rozwiązywanie problemów z licencją przydziału podczas korzystania z usługi Azure Active Directory na podstawie grupy licencji
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a238b6b8ad64dec443110d922e2684ebde507d7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.reviewer: sumitp
+ms.custom: it-pro
+ms.openlocfilehash: 2d12f07f8c65d3559f88de2c38c418ce4cc54188
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198116"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510191"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identyfikowanie i rozwiązywanie problemów z przypisania licencji dla grupy w usłudze Azure Active Directory
 

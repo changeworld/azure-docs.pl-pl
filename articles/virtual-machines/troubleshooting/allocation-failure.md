@@ -6,18 +6,18 @@ documentationcenter: ''
 author: JiangChen79
 manager: felixwu
 editor: ''
-tags: top-support-issue,azure-resourece-manager,azure-service-management
+tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: 1ef41144-6dd6-4a56-b180-9d8b3d05eae7
 ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: d8c0afa159bb8f932c42077868d5134e6486e8c3
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 10c5dc5614731b247b917b68307f6a2d11663461
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413828"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510480"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Rozwiązywanie problemów z błędami alokacji występującymi podczas tworzenia lub ponownego uruchomienia lub zmienianie rozmiaru maszyn wirtualnych na platformie Azure
 
@@ -25,7 +25,7 @@ Utwórz maszynę wirtualną (VM), ponowne uruchamianie zatrzymano (cofnięto prz
 
 **Kod błędu:**: AllocationFailed lub ZonalAllocationFailed
 
-**Komunikat o błędzie**: "alokacja nie powiodła się. Nie mamy wystarczającej pojemności dla żądanego rozmiaru maszyny Wirtualnej w tym regionie. Przeczytaj więcej na temat zwiększania prawdopodobieństwa pomyślnej alokacji sukcesu w http://aka.ms/allocation-guidance"
+**Komunikat o błędzie**: "Niepowodzenie alokacji. Nie mamy wystarczającej pojemności dla żądanego rozmiaru maszyny Wirtualnej w tym regionie. Przeczytaj więcej na temat zwiększania prawdopodobieństwa pomyślnej alokacji sukcesu w http://aka.ms/allocation-guidance"
 
 W tym artykule opisano przyczyny niektórych typowych błędów alokacji i sugeruje możliwe środki zaradcze.
 
@@ -36,7 +36,7 @@ Do momentu preferowany typ maszyny Wirtualnej jest dostępna w Twoim regionie pr
 Identyfikowanie scenariusza, który najlepiej odpowiada tej sprawy, a następnie ponów próbę wykonania żądania alokacji przy użyciu odpowiedniego rozwiązania sugerowane, aby zwiększyć prawdopodobieństwo powodzenia alokacji. Alternatywnie możesz zawsze ponowić próbę później. Jest to spowodowane za mało zasobów zostały zwolnione w klastrze, regionu lub strefy, aby obsłużyć Twojego żądania. 
 
 
-## <a name="resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Zmienianie rozmiaru maszyny Wirtualnej lub maszyny wirtualne dodane do istniejącego zestawu dostępności
+## <a name="resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Zmiana rozmiaru maszyny wirtualnej lub dodanie maszyn wirtualnych do istniejącego zestawu dostępności
 
 ### <a name="cause"></a>Przyczyna
 
@@ -47,11 +47,11 @@ Identyfikowanie scenariusza, który najlepiej odpowiada tej sprawy, a następnie
 Jeśli maszyna wirtualna może być częścią zestawu dostępności różnych, Utwórz Maszynę wirtualną w innej zestaw dostępności (w tym samym regionie). Następnie można dodać tej nowej maszyny Wirtualnej do tej samej sieci wirtualnej.
 
 Zatrzymaj (Cofnij ich przydział) wszystkich maszyn wirtualnych w tym samym dostępności zestawu, a następnie ponownie uruchom każdy z nich.
-Aby zatrzymać: kliknij grupy zasobów > [grupy zasobów] > zasobów > [zestawie dostępności] > maszyn wirtualnych > [maszyny wirtualnej] > Zatrzymaj.
+Aby zatrzymać: Kliknij opcję grupy zasobów > [grupy zasobów] > Zasoby > [zestawie dostępności] > maszyny wirtualne > [maszyny wirtualnej] > Zatrzymaj.
 Po zatrzymania wszystkich maszyn wirtualnych, wybierz pierwszą maszynę Wirtualną, a następnie kliknij przycisk Uruchom.
 Ten krok zapewnia, że uruchomieniu nowej próba alokacji i że nowy klaster można wybrać z wystarczającą pojemnością.
 
-## <a name="restart-partially-stopped-deallocated-vms"></a>Ponowne uruchamianie częściowo zatrzymano (cofnięto przydział) maszyn wirtualnych
+## <a name="restart-partially-stopped-deallocated-vms"></a>Ponowne uruchomienie częściowo zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 
 ### <a name="cause"></a>Przyczyna
 
@@ -60,11 +60,11 @@ Częściowe cofania alokacji oznacza, że zatrzymana (przydział zostanie cofni�
 ### <a name="workaround"></a>Obejście
 
 Zatrzymaj (Cofnij ich przydział) wszystkich maszyn wirtualnych w tym samym dostępności zestawu, a następnie ponownie uruchom każdy z nich.
-Aby zatrzymać: kliknij grupy zasobów > [grupy zasobów] > zasobów > [zestawie dostępności] > maszyn wirtualnych > [maszyny wirtualnej] > Zatrzymaj.
+Aby zatrzymać: Kliknij opcję grupy zasobów > [grupy zasobów] > Zasoby > [zestawie dostępności] > maszyny wirtualne > [maszyny wirtualnej] > Zatrzymaj.
 Po zatrzymania wszystkich maszyn wirtualnych, wybierz pierwszą maszynę Wirtualną, a następnie kliknij przycisk Uruchom.
 Spowoduje to się, że uruchomieniu nowej próba alokacji i że nowy klaster można wybrać z wystarczającą pojemnością.
 
-## <a name="restart-fully-stopped-deallocated-vms"></a>Ponowne uruchamianie pełni zatrzymano (cofnięto przydział) maszyn wirtualnych
+## <a name="restart-fully-stopped-deallocated-vms"></a>Ponowne uruchomienie w pełni zatrzymanych maszyn wirtualnych (z cofniętą alokacją)
 
 ### <a name="cause"></a>Przyczyna
 
@@ -81,7 +81,7 @@ Jeśli żądania alokacji jest duży (ponad 500 rdzeni), zobacz wskazówki zawar
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Błędy alokacji starsze rozmiarów maszyn wirtualnych (Av1, Dv1, DSv1, D15v2, DS15v2 itp.)
 
-W miarę rozwijania infrastruktury platformy Azure, możemy wdrożyć sprzęt nowszej generacji, która jest przeznaczona do obsługi najnowszych typów maszyn wirtualnych. Niektóre starsze maszyny wirtualne z serii nie uruchamiaj w infrastrukturze najnowszej generacji. Z tego powodu klienci od czasu do czasu mogą występować błędy alokacji tych starszych jednostek SKU. Aby uniknąć tego problemu, firma Microsoft zachęca klientów korzystających z maszyn wirtualnych z serii starszych rozważ przeniesienie na równoważne nowsze maszyny wirtualne na poniższe zalecenia: te maszyny wirtualne są zoptymalizowane pod kątem najnowszego sprzętu i będzie można korzystać z zalet lepiej ceny i wydajności. 
+W miarę rozwijania infrastruktury platformy Azure, możemy wdrożyć sprzęt nowszej generacji, która jest przeznaczona do obsługi najnowszych typów maszyn wirtualnych. Niektóre starsze maszyny wirtualne z serii nie uruchamiaj w infrastrukturze najnowszej generacji. Z tego powodu klienci od czasu do czasu mogą występować błędy alokacji tych starszych jednostek SKU. Aby uniknąć tego problemu, firma Microsoft zachęca klientów korzystających z maszyn wirtualnych z serii starszych rozważ przeniesienie na równoważne nowsze maszyny wirtualne na poniższe zalecenia: Te maszyny wirtualne są zoptymalizowane pod kątem najnowszego sprzętu i będzie można korzystać z zalet lepsze ceny i wydajności. 
 
 |Starsze maszyny Wirtualnej serii/wielkości|Zalecany nowszej rozmiar maszyny Wirtualnej — seria /|Więcej informacji|
 |----------------------|----------------------------|--------------------|

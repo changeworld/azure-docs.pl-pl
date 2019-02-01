@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e29b94f270b295725400103f288f3d3bd0c2a2eb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 7f031bf6fed57857f38d989fb72f99dd93f04de5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381072"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55489227"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ W tym artykule przedstawiono podstawowe pojęcia, z których zabezpieczania apli
 
 ## <a name="master-security"></a>Zabezpieczenia głównego
 
-W usłudze AKS składniki rozwiązania Kubernetes są częścią zarządzanych usług mojej firmy Microsoft. Każdy klaster AKS jest własne wzorzec Kubernetes gośćmi jednego, przeznaczonego do zapewnienia serwera interfejsu API, harmonogram itp. Ten wzorzec jest zarządzana i obsługiwana przez firmę Microsoft
+W usłudze AKS składniki rozwiązania Kubernetes są częścią usług zarządzanych przez firmę Microsoft. Każdy klaster AKS jest własne wzorzec Kubernetes gośćmi jednego, przeznaczonego do zapewnienia serwera interfejsu API, harmonogram itp. Ten wzorzec jest zarządzana i obsługiwana przez firmę Microsoft
 
 Domyślnie serwer interfejsu API rozwiązania Kubernetes używa publicznego adresu IP i za pomocą w pełni kwalifikowaną nazwę (FQDN). Można kontrolować dostęp do serwera interfejsu API przy użyciu kontroli dostępu opartej na rolach platformy Kubernetes i usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [integracji z usługą Azure AD za pomocą usługi AKS][aks-aad].
 
@@ -41,6 +41,8 @@ Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjneg
 Węzły są wdrażane w podsieci prywatnej sieci wirtualnej przy użyciu nie publiczne adresy IP, które są przypisane. Do celów zarządzania i rozwiązywania problemów protokół SSH jest domyślnie włączona. Ten dostęp SSH jest dostępna tylko przy użyciu wewnętrznego adresu IP. Reguły grupy zabezpieczeń sieci platformy Azure może służyć do bardziej ograniczyć dostęp do zakresu adresów IP dla węzłów AKS. Usunięcie reguły protokołu SSH grupy zabezpieczeń sieci domyślnego i wyłączenie usługi SSH w węzłach uniemożliwia wykonywanie zadań konserwacji platformy Azure.
 
 Aby udostępnić magazyn, węzły używają usługi Azure Managed Disks. Dla większości rozmiarów maszyn wirtualnych węzła są obsługiwane przez dyski SSD o wysokiej wydajności dysków w warstwie Premium. Dane przechowywane na dyskach zarządzanych są automatycznie szyfrowane w stanie spoczynku na platformie Azure. W celu zapewnienia nadmiarowości te dyski jednocześnie możliwość bezpiecznego są replikowane w obrębie centrum danych platformy Azure.
+
+Środowisk Kubernetes w usłudze AKS, lub w innych miejscach, obecnie nie są całkowicie bezpieczne dla szkodliwy użycie wielu obcych dzierżaw. Funkcje dodatkowe zabezpieczenia, takie jak *zasad zabezpieczeń zasobnika* lub więcej kontroli dostępu w zakresie opartej na rolach (RBAC) dla węzłów utrudniają luki w zabezpieczeniach. Wartość true, zabezpieczeń przy uruchamianiu obciążeń liczonych w szkodliwy wielodostępne, funkcja hypervisor to tylko poziom zabezpieczeń, które należy ufać. Domeny zabezpieczeń dla rozwiązania Kubernetes staje się całego klastra, a nie oddzielnego węzła. Dla tych typów szkodliwy obciążenia z wieloma dzierżawami należy użyć fizycznie izolowane klastrów. Aby uzyskać więcej informacji na temat sposobów izolowania obciążeń, zobacz [najlepsze rozwiązania dotyczące izolacji klastra w usłudze AKS][cluster-isolation],
 
 ## <a name="cluster-upgrades"></a>Uaktualnianie klastra
 
@@ -65,7 +67,7 @@ Dla łączności i zabezpieczeń w sieciach lokalnych można wdrożyć klaster A
 
 Aby filtrować przepływu ruchu w sieciach wirtualnych, platforma Azure stosuje reguły sieciowej grupy zabezpieczeń. Te reguły określają źródło i docelowe zakresy adresów IP, portów i protokołów, które są dozwolone lub odmowa dostępu do zasobów. Aby zezwolić na ruch protokołu TLS do serwera interfejsu API platformy Kubernetes oraz dostęp SSH do węzłów tworzone są reguły domyślnej. Podczas tworzenia usługi przy użyciu usługi równoważenia obciążenia, mapowania portów lub ruch przychodzący trasy, AKS automatycznie modyfikuje sieciowej grupy zabezpieczeń dla ruchu odpowiedni przepływ.
 
-## <a name="kubernetes-secrets"></a>Wpisy tajne usługi Kubernetes
+## <a name="kubernetes-secrets"></a>Kubernetes Secrets
 
 Kubernetes *klucz tajny* służy do wstrzyknąć poufne dane do zasobników, takich jak dostęp do poświadczeń ani kluczy. Należy najpierw utworzyć wpis tajny przy użyciu interfejsu API rozwiązania Kubernetes. Podczas definiowania wdrożenia lub zasobników, można żądać określonego klucza tajnego. Klucze tajne są udostępniane tylko węzły, które mają zaplanowane zasobnik, który go wymaga i klucz tajny jest przechowywany w *tmpfs*robaków napisanych nie na dysku. Po usunięciu ostatniego zasobnik w węźle, który wymaga klucza tajnego klucza tajnego został usunięty z tmpfs węzła. Klucze tajne są przechowywane w ramach danego obszaru nazw i może zostać oceniony jedynie przez zasobników w tej samej przestrzeni nazw.
 
@@ -96,3 +98,4 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[cluster-isolation]: operator-best-practices-cluster-isolation.md

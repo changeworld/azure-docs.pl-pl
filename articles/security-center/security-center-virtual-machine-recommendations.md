@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: b77e814f9f339dff4539a04ab8b492e9777abe0d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 32ca3fc87c91deba26e63a5938536d488e7dc5a8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537651"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488751"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Omówienie zaleceń dotyczących zasobów usługi Azure Security Center
 
@@ -43,7 +43,7 @@ Użyj poniższe tabele jako źródła, aby lepiej zrozumieć dostępne zasoby ob
 | [Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana](security-center-vulnerability-assessment-recommendations.md) |Zaleca się zainstalowanie na maszynie wirtualnej rozwiązania do oceny luk w zabezpieczeniach. |
 | [Korygowanie luk w zabezpieczeniach](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Umożliwia wyświetlenie luk w zabezpieczeniach systemu i aplikacji wykrytych przez rozwiązanie do oceny luk w zabezpieczeniach zainstalowane na maszynie wirtualnej. |
 
-### <a name="app-services"></a>Usługi aplikacji
+### Usługi aplikacji <a name="app-services"></a>
 | Zalecenie | Opis |
 | --- | --- |
 | Usługa App Service powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się ograniczenie dostępu do usługi App Service przy użyciu protokołu HTTPS tylko. |
@@ -60,7 +60,7 @@ Użyj poniższe tabele jako źródła, aby lepiej zrozumieć dostępne zasoby ob
 | Użyj najnowszej obsługiwanej wersji środowiska Node.js dla aplikacji sieci Web | Zaleca się, że używasz najnowszej wersji środowiska Node.js dla najnowszych klas zabezpieczeń. Używanie starszych klas i typów może narazić aplikację. |
 | Mechanizm CORS nie powinien zezwalać na każdy zasób, dostęp do aplikacji funkcji | Zaleca się, aby zezwolić tylko wymagane domen do interakcji z aplikacją sieci web. Krzyżowe origin resource sharing (CORS) nie powinien zezwalać na wszystkie domeny uzyskiwanie dostępu do funkcji aplikacji. |
 | Użyj domen niestandardowych dla aplikacji funkcji | Zaleca się, użyj domen niestandardowych do ochrony aplikacji funkcji przed typowymi atakami, takimi jak wyłudzanie informacji i inne ataki związane z usługą DNS. |
-| Konfiguruj ograniczenia adresów IP dla aplikacji funkcji | Zaleca się, że definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji. Użyj ograniczeń adresów IP chroni aplikację funkcji przed typowymi atakami. |
+| Skonfiguruj ograniczenia adresów IP dla aplikacji funkcji | Zaleca się, że definiowanie listy adresów IP, które mogą uzyskać dostęp do Twojej aplikacji. Użyj ograniczeń adresów IP chroni aplikację funkcji przed typowymi atakami. |
 | Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS | Zaleca się ograniczenie dostępu do aplikacji funkcji przy użyciu protokołu HTTPS tylko. |
 | Zdalne debugowanie powinno zostać wyłączone dla aplikacji funkcji | Zaleca się wyłączyć debugowania dla aplikacji funkcji, jeśli nie potrzebujesz już go używać. Zdalne debugowanie wymaga porty wejściowe były otwarte w aplikacji funkcji. |
 | Gniazda sieci Web powinny być wyłączone dla aplikacji funkcji | Zaleca się dokładnie przejrzyj użycie gniazda sieci Web w obrębie aplikacji funkcji. Protokół Websocket jest narażony na różnego rodzaju zagrożenia bezpieczeństwa. |

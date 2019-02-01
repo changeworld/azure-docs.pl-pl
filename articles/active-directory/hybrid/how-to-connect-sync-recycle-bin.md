@@ -12,16 +12,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/17/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: be6c5ccea6bf923b408319baf4bc1743978169c7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8580d1c938908d5dd5c962d42d4edb2673ae4f5f
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203814"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494378"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Synchronizacja programu Azure AD Connect: Włączanie kosza usługi AD
 Zalecane jest, Włącz funkcję Kosz usługi AD dla katalogów Active w środowisku lokalnym, które są synchronizowane z usługą Azure AD. 
@@ -43,6 +43,6 @@ Ta funkcja pomaga z przywracaniem obiekty użytkownika usługi Azure AD, wykonuj
 ## <a name="next-steps"></a>Kolejne kroki
 **Tematy poglądowe**
 
-* [Synchronizacja programu Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
+* [Synchronizacja w programie Azure AD Connect: Zrozumienie i dostosowywanie synchronizacji](how-to-connect-sync-whatis.md)
 
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md)

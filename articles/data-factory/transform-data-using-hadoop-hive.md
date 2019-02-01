@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: d9a649e3b49c71a24d06656e0667765ef9cc5508
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e77b8c89954064fb143f04f0f901d1512d4fc50d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321339"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491012"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania programu Hive w usłudze Hadoop w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z 
         "defines": {
             "param1": "param1Value"
         }
-    }   
+    }
 }
 ```
 ## <a name="syntax-details"></a>Szczegóły składni
@@ -67,7 +67,7 @@ Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z 
 | getDebugInfo        | Określa, kiedy pliki dziennika są kopiowane do usługi Azure Storage używanego przez klaster HDInsight (lub) określonej za pomocą elementu scriptLinkedService. Dozwolone wartości: Brak zawsze lub niepowodzenie. Wartość domyślna: Brak. | Nie       |
 | argumenty           | Określa tablicę argumentów dla zadania usługi Hadoop. Argumenty są przekazywane jako argumenty wiersza polecenia w odniesieniu do każdego zadania. | Nie       |
 | Definiuje             | Określ parametry jako pary klucz/wartość do odwoływania się do skryptu programu Hive. | Nie       |
-| queryTimeout        | Zapytania wartość limitu czasu (w minutach).  Zastosowanie w przypadku klastra HDInsight z pakietem Enterprise Security włączone. | Nie       |
+| queryTimeout        | Zapytania wartość limitu czasu (w minutach). Zastosowanie w przypadku klastra HDInsight z pakietem Enterprise Security włączone. | Nie       |
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w inny sposób: 
@@ -80,4 +80,3 @@ Zobacz następujące artykuły, które wyjaśniają, jak przekształcać dane w 
 * [Niestandardowe działanie platformy .NET](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning Batch Execution działania](transform-data-using-machine-learning.md)
 * [Działania procedur składowanych](transform-data-using-stored-procedure.md)
-
