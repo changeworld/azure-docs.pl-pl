@@ -6,16 +6,16 @@ author: acomet
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
-ms.component: design
+ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: 4ef64b9d4e4e5c7f5a628359a8512dcb61b9c941
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: cede105f0bff9a65f88e06467e4d13419d389f04
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245897"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461563"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Ściągawka dotycząca usługi Azure SQL Data Warehouse
 Ta ściągawka zawiera przydatne porady i wskazówki dotyczące kompilowania rozwiązań usługi Azure SQL Data Warehouse. Przed rozpoczęciem pracy zapoznaj się ze szczegółowymi informacjami na temat poszczególnych kroków w artykule [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns (Wzorce i antywzorce obciążeń usługi Azure SQL Data Warehouse)](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns). Opisano w nim elementy wchodzące i niewchodzące w skład usługi SQL Data Warehouse.

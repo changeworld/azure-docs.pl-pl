@@ -254,14 +254,6 @@ items:
       items:
       - name: Dostosowywanie wydajności zapytań
         href: sql-api-query-metrics.md
-      - name: Programowanie po stronie serwera
-        items:
-        - name: Zapisywanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)
-          href: how-to-write-stored-procedures-triggers-udfs.md
-        - name: Zapisywanie procedur składowanych i wyzwalaczy za pomocą interfejsu API zapytań JavaScript
-          href: how-to-write-javascript-query-api.md
-        - name: Używanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)
-          href: how-to-use-stored-procedures-triggers-udfs.md
       - name: Typy danych
         items:
         - name: DateTime
@@ -337,7 +329,7 @@ items:
         - name: Aplikacja Node.js i React
           href: tutorial-develop-mongodb-react.md
       - name: 2 — Migrowanie danych
-        href: mongodb-migrate.md
+        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3 — Wykonywanie zapytania o dane
         href: tutorial-query-mongodb.md
       - name: 4 — Globalne dystrybuowanie danych
@@ -497,6 +489,14 @@ items:
       items:
       - name: Zarządzanie indeksowaniem
         href: how-to-manage-indexing-policy.md
+  - name: Programowanie po stronie serwera
+    items:
+    - name: Zapisywanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)
+      href: how-to-write-stored-procedures-triggers-udfs.md
+    - name: Zapisywanie procedur składowanych i wyzwalaczy za pomocą interfejsu API zapytań JavaScript
+      href: how-to-write-javascript-query-api.md
+    - name: Używanie procedur składowanych, wyzwalaczy i funkcji definiowanych przez użytkownika (UDF)
+      href: how-to-use-stored-procedures-triggers-udfs.md
   - name: Bezpieczeństwo
     items:
     - name: Konfigurowanie zapory IP
@@ -627,9 +627,9 @@ items:
       href: use-cases.md
     - name: Aplikacje mediów społecznościowych
       href: social-media-apps.md
-ms.openlocfilehash: 93d8abe428305ce62fb95afabc6ab71dfc8f67b4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2fdf08837bc239ba10da85fad7b81c819b9f26fc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464878"
+ms.locfileid: "55511925"
