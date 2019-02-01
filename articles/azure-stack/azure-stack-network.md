@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 9b1eb6878dcafba68c230255f3b3f43e005421ab
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.lastreviewed: 08/30/2018
+ms.openlocfilehash: a4e04bc9071f4f677230d112a7baa708e9e8dc34
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340192"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243236"
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
 Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby ułatwić podjęcie decyzji o sposobie najlepiej Zintegruj usługę Azure Stack z istniejącym środowiskiem sieci. 
@@ -29,7 +30,7 @@ Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby u�
 > Aby rozwiązać zewnętrzne nazwy DNS z usługi Azure Stack (na przykład www.bing.com), musisz podać serwery DNS do przesyłania żądań DNS. Aby uzyskać więcej informacji na temat wymagań dotyczących usługi Azure Stack DNS Zobacz [Integracja z centrum danych usługi Azure Stack — DNS](azure-stack-integrate-dns.md).
 
 ## <a name="physical-network-design"></a>Projekt sieci fizycznej
-Rozwiązanie usługi Azure Stack wymaga odporne i o wysokiej dostępności infrastruktury fizycznej do obsługi jej działania i usług. Łącza nadrzędne z sieci ToR do przełączników obramowania są ograniczone do SFP + lub SFP28 nośnika i 1 GB, 10 GB lub szybkości 25 GB. Skontaktuj się z dostawcą sprzętu producenta sprzętu (OEM) dla dostępności. Na poniższym diagramie przedstawiono naszych zalecany projekt:
+Rozwiązanie usługi Azure Stack wymaga odpornej i wysoce dostępnej infrastruktury fizycznej do obsługi jego działania i usług. Łącza nadrzędne z sieci ToR do przełączników obramowania są ograniczone do SFP + lub SFP28 nośnika i 1 GB, 10 GB lub szybkości 25 GB. Skontaktuj się z dostawcą sprzętu producenta sprzętu (OEM) dla dostępności. Na poniższym diagramie przedstawiono naszych zalecany projekt:
 
 ![Zalecany projekt sieci usługi Azure Stack](media/azure-stack-network/recommended-design.png)
 
@@ -44,7 +45,7 @@ W poniższej tabeli przedstawiono sieci logiczne i skojarzone podsieci zakresy a
 | Publicznych adresów VIP | Korzysta z usługi Azure Stack daje w sumie 31 adresów z tą siecią. Osiem publiczne adresy IP są używane dla małej grupy usługi Azure Stack, a pozostałe są używane przez maszyny wirtualne dzierżawcy. Jeśli planujesz używać usługi App Service i dostawców zasobów SQL 7 większej liczby adresów są używane. Pozostałe 15 adresy IP są zastrzeżone dla przyszłych usług platformy Azure. | / 26 (62 hostów) - /22 (1022 hostów)<br><br>Zalecane = prefiksie/24 (254 hostów) | 
 | Przełącznik infrastruktury | Point-to-Point adresów IP dla celów routingu dedykowanego przełącznika/interfejsów zarządzania i adresy sprzężenia zwrotnego przypisany do przełącznika. | /26 | 
 | Infrastruktura | Używane przez usługę Azure Stack wewnętrznych składników do komunikacji. | /24 |
-| Prywatne | Używane dla sieci magazynu i prywatnych adresów VIP. | /24 | 
+| Private | Używane dla sieci magazynu i prywatnych adresów VIP. | /24 | 
 | BMC | Używany do komunikacji ze składnikami bmc na hostach fizycznych. | /26 | 
 | | | |
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 1edb4818ff7fda170d123ea8b81e6df9d620f354
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 80cca629ea49d8843580c23f74d1d2076aa623e3
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713577"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246715"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odwołanie do usługi Kopia zapasowa infrastruktury
 

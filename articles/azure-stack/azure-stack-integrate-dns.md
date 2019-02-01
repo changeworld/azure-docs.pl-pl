@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
+ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: bf412809f9d10296ad600e64abb6d870dbb88d3e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339682"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252323"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Usługa Azure Stack Integracja z centrum danych — DNS
 Aby móc uzyskiwać dostęp punktów końcowych usługi Azure Stack (**portal**, **adminportal**, **zarządzania**, **adminmanagement**itp.)  z zewnętrznej usługi Azure Stack konieczna Integracja usługi Azure Stack DNS przy użyciu serwerów DNS, które hostuje stref DNS, którego chcesz użyć w usłudze Azure Stack.
@@ -29,7 +30,7 @@ Jest wymagane podanie pewnych informacji ważnych związane z usługą DNS podcz
 |Region|Geograficzna lokalizacja wdrożenia usługi Azure Stack.|`east`|
 |Nazwa domeny zewnętrznej|Nazwa strefy, w której chcesz użyć dla wdrożenia usługi Azure Stack.|`cloud.fabrikam.com`|
 |Nazwa domeny wewnętrznej|Nazwa wewnętrznego strefy, który jest używany dla usług infrastruktury w usłudze Azure Stack.  Jest zintegrowany z usługą katalogową i prywatne (nie jest dostępny z zewnątrz wdrożenia usługi Azure Stack).|`azurestack.local`|
-|Usługa przesyłania dalej DNS|Serwery DNS, które są używane do przesyłania zapytań DNS, strefy i rekordy DNS, które znajdują się poza usługi Azure Stack w intranecie firmy lub publicznego Internetu.|`10.57.175.34`<br>`8.8.8.8`|
+|DNS Forwarder|Serwery DNS, które są używane do przesyłania zapytań DNS, strefy i rekordy DNS, które znajdują się poza usługi Azure Stack w intranecie firmy lub publicznego Internetu.|`10.57.175.34`<br>`8.8.8.8`|
 |Prefiks nazwy (opcjonalnie)|Prefiks nazw, które mają nazwy maszyny wystąpienia roli infrastruktury Azure Stack mieć.  Jeśli nie zostanie podana, wartość domyślna to `azs`.|`azs`|
 
 W pełni kwalifikowana nazwa domeny (FQDN) punktów końcowych czy wdrożenia usługi Azure Stack jest kombinacją Region i parametru zewnętrznej nazwy domeny. Używając wartości z przykładów w poprzedniej tabeli, nazwy FQDN dla tego wdrożenia usługi Azure Stack będą następującą nazwę:
@@ -121,7 +122,7 @@ Jeśli wdrożenie maszyny wirtualnej nie jest już dostępny lub jest niedostęp
 
 Najprostszy i najbezpieczniejszy sposób integracji usługi Azure Stack z infrastruktury DNS jest przesyłanie warunkowe strefy z serwera, który obsługuje strefę nadrzędną. Takie podejście jest zalecane, jeśli masz bezpośrednią kontrolę nad serwerów DNS obsługujących strefę nadrzędną dla usługi Azure Stack zewnętrzny obszar nazw DNS.
 
-Jeśli nie znasz dobrze jak to zrobić warunkowego przesyłania dalej z serwerem DNS, zobacz następujący artykuł w witrynie TechNet: [przypisać warunkowego przesyłania dalej dla nazwy domeny](https://technet.microsoft.com/library/cc794735), lub z dokumentacją specyficzną dla rozwiązania DNS.
+Jeśli nie znasz dobrze jak to zrobić, warunkowego przesyłania dalej z serwerem DNS, zobacz następujący artykuł w witrynie TechNet: [Przypisz warunkowego przesyłania dalej dla nazwy domeny](https://technet.microsoft.com/library/cc794735), lub z dokumentacją specyficzną dla rozwiązania DNS.
 
 W scenariuszach, gdzie określone zewnętrznych strefy DNS stosu Azure wyglądać domeny podrzędnej z nazwą domeny firmowej warunkowego przesyłania dalej nie można użyć. Należy skonfigurować delegowanie usługi DNS.
 

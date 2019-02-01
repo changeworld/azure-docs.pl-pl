@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e0f51306ab17e88db9d28da14faab9de0b445f74
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 491bdf121729d690784324051ff701f3ed2d2b7a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037910"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243185"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Wdrożenie za pomocą połączonej usługi Azure planowanie decyzji dla usługi Azure Stack zintegrowane systemy
 Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), następnie można zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
@@ -30,7 +31,7 @@ Wdrażanie usługi Azure Stack połączony z platformą Azure oznacza, że dla m
 ## <a name="choose-an-identity-store"></a>Wybierz magazyn tożsamości
 Za pomocą połączonych wdrożenia można wybrać usługi Azure AD lub AD FS dla magazynu tożsamości. Rozłączona wdrożenia bez łączności z Internetem, można używać tylko usług AD FS.
 
-Wybór magazynu tożsamości nie ma żadnego wpływu na maszyny wirtualne dzierżawcy (VM). Maszyny wirtualne dzierżawy mogą wybrać magazyn tożsamości, które chcą łączenie z usługą, w zależności od tego, jak zostaną skonfigurowane: usługi Azure AD, przyłączone do domeny usługi Active Directory systemu Windows Server w grupie roboczej, itp. To nie jest powiązana decyzji dostawcy tożsamości usługi Azure Stack. 
+Wybór magazynu tożsamości nie ma żadnego wpływu na maszyny wirtualne dzierżawcy (VM). Maszyny wirtualne dzierżawy mogą wybrać magazyn tożsamości, które chcą łączenie z usługą, w zależności od tego, jak zostaną skonfigurowane: Usługa Azure AD, przyłączone do domeny usługi Active Directory systemu Windows Server w grupie roboczej, itp. To nie jest powiązana decyzji dostawcy tożsamości usługi Azure Stack. 
 
 Na przykład jeśli wdrożenia IaaS dzierżawy maszyn wirtualnych na podstawie usługi Azure Stack i chcesz, aby dołączyć firmowej domeny usługi Active Directory i używanie kont z tego miejsca możesz nadal to zrobić. Nie należy używać magazynu tożsamości usługi Azure AD, tutaj dla tych kont.
 
@@ -68,7 +69,7 @@ Rozliczenia pojemności wymaga umowy Enterprise Agreement (EA) subskrypcji platf
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 - Aby uzyskać informacji dotyczących przypadków użycia, zakupów, partnerami i dostawcami sprzętu OEM, zobacz [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stronę produktu.
-- Uzyskać informacje na temat planu i udostępnienia georegionu dla usługi Azure Stack zintegrowanych systemów, zobacz oficjalny dokument: [usługi Azure Stack: stanowi rozszerzenie platformy Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Uzyskać informacje na temat planu i udostępnienia georegionu dla usługi Azure Stack zintegrowanych systemów, zobacz oficjalny dokument: [Azure Stack: Rozszerzenie platformy Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 - Aby dowiedzieć się więcej o Microsoft Azure Stack, pakowania i ceny [Pobierz PDF](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf). 
 
 ## <a name="next-steps"></a>Kolejne kroki

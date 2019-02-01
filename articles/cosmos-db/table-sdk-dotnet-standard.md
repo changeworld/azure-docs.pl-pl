@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: 7ccc9793bd1c4a345098892e66be15228efcc265
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: ce7cc489b107ce4bd95270b9a7f8cb560a2d2398
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844572"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249650"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB tabel standardowego interfejsu API platformy .NET: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -33,15 +33,18 @@ ms.locfileid: "54844572"
 
 ### <a name="a-name0101-preview0101-preview"></a><a name="0.10.1-preview"/>0.10.1-Preview
 * Dodano obsługę tokenu sygnatury dostępu Współdzielonego, operacje TablePermissions, ServiceProperties i ServiceStats względem punktów końcowych usługi Azure Table Storage. 
-   > [!NOTE] Niektóre funkcje w poprzednim SDK tabeli magazynu platformy Azure nie są jeszcze obsługiwane, takich jak szyfrowanie po stronie klienta.
+   > [!NOTE]
+   > Niektóre funkcje w poprzednim SDK tabeli magazynu platformy Azure nie są jeszcze obsługiwane, takich jak szyfrowanie po stronie klienta.
 
 ### <a name="a-name0100-preview0100-preview"></a><a name="0.10.0-preview"/>0.10.0-Preview
 * Dodanie obsługi podstawowych operacji CRUD, partii i operacje zapytań względem punktów końcowych usługi Azure Table Storage. 
-   > [!NOTE] Niektóre funkcje w poprzednim SDK tabeli magazynu platformy Azure nie są jeszcze obsługiwane, takich jak szyfrowanie po stronie klienta.
+   > [!NOTE]
+   > Niektóre funkcje w poprzednim SDK tabeli magazynu platformy Azure nie są jeszcze obsługiwane, takich jak szyfrowanie po stronie klienta.
 
 ### <a name="a-name091-preview091-preview"></a><a name="0.9.1-preview"/>0.9.1-Preview
 * Usługa Azure Cosmos DB Table .NET Standard SDK jest biblioteki .NET dla wielu platform, która umożliwia efektywne dostęp do tabeli modelu danych usługi Cosmos DB. Ta początkowa wersja obsługuje pełny zestaw tabeli i CRUD jednostki + funkcje zapytania podobne interfejsy API jako [Cosmos DB Table zestawu SDK dla .NET Framework](table-sdk-dotnet.md). 
-   > [!NOTE] Punkty końcowe platformy Azure Storage Table nie są jeszcze obsługiwane w wersji 0.9.1-preview.
+   > [!NOTE]
+   >  Punkty końcowe platformy Azure Storage Table nie są jeszcze obsługiwane w wersji 0.9.1-preview.
 
 ## <a name="release-and-retirement-dates"></a>Daty wydania i wycofania
 Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** ewentualnej wycofanie zestawu SDK w celu złagodzenia przejścia do nowszych/obsługiwanych wersji.
