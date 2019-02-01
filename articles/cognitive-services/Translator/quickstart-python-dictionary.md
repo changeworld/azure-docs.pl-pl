@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 52820a9162a20b680b85d07f8c49ac5305d4979a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 8dcde1231d5e2d73b868411cb22b8420843197be
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158015"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458275"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Python
 
