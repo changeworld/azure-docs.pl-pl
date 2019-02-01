@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: a769bb4cce84fe78f442cce8440e6e828ed7f76d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 03d29b7f072aaab09b0677031ee34bd61d876ce6
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354142"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242845"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Planowanie pojemności dla ról serwera usługi Azure App Service w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Aby skonfigurować wdrożenie produkcyjne gotowości usługi Azure App Service w usłudze Azure Stack, należy zaplanować pojemność oczekujesz, że system do obsługi.  
 
@@ -43,31 +44,31 @@ Możesz zaplanować swoją strategię pojemność usługi App Service przy użyc
 
 ## <a name="controller-role"></a>Rola kontrolera
 
-**Minimalna zalecana**: dwa wystąpienia Standard A1
+**Zalecana minimalna**: Dwa wystąpienia Standard A1
 
 Kontroler usługi Azure App Service jest zazwyczaj środowisk niskie użycie procesora CPU, pamięci i zasobów sieciowych. Jednak wysokiej dostępności, musi mieć dwa kontrolery. Dwa kontrolery są również maksymalną liczbę dozwolonych kontrolerów. Możesz utworzyć drugi kontroler witryn sieci web bezpośredniego z poziomu Instalatora podczas wdrażania.
 
 ## <a name="front-end-role"></a>Rola frontonu
 
-**Minimalna zalecana**: dwa wystąpienia Standard A1
+**Zalecana minimalna**: Dwa wystąpienia Standard A1
 
 Fronton kieruje żądania do internetowych procesów roboczych w zależności od dostępności procesów roboczych w sieci web. Wysoką dostępność powinny mieć więcej niż jeden serwer sieci Web i może mieć więcej niż dwóch. Dla celów planowania pojemności należy wziąć pod uwagę że każdego rdzenia może obsługiwać około 100 żądań na sekundę.
 
 ## <a name="management-role"></a>Rola zarządzania
 
-**Minimalna zalecana**: dwa wystąpienia Standard A3
+**Zalecana minimalna**: Dwa wystąpienia Standard A3
 
 Rola zarządzania usługi Azure App Service jest odpowiedzialny za aplikację usługi Azure Resource Manager i punkty końcowe interfejsu API, rozszerzenia portalu (administratora, dzierżawcy, portalu funkcji) i usługi danych. Rola serwera zarządzania, która jest zwykle wymaga tylko o 4 GB pamięci RAM w środowisku produkcyjnym. Jednak gdy wykonywane są wiele zadań zarządzania (takich jak tworzenie witryny sieci web) może ulegać wysoki poziom użycia Procesora. Wysoką dostępność powinny mieć więcej niż jeden serwer przypisany do tej roli, i co najmniej dwa rdzenie na serwer.
 
 ## <a name="publisher-role"></a>Rola wydawcy
 
-**Minimalna zalecana**: dwa wystąpienia Standard A1
+**Zalecana minimalna**: Dwa wystąpienia Standard A1
 
 Jeśli jednoczesne publikowanie wielu użytkowników w roli wydawcy mogą występować duże użycie procesora CPU. Wysoką dostępność upewnij się, że dostępnych jest więcej niż jednej roli wydawcy. Wydawcy obsługuje tylko ruch FTP/FTPS.
 
 ## <a name="web-worker-role"></a>Rola procesu roboczego w sieci Web
 
-**Minimalna zalecana**: dwa wystąpienia Standard A1
+**Zalecana minimalna**: Dwa wystąpienia Standard A1
 
 Wysoka dostępność powinny mieć co najmniej cztery ról procesów roboczych w sieci web, tryb udostępnione witryny sieci web i dla każdej warstwy dedykowanych procesów roboczych, które mają do zaoferowania. Udostępnione i dedykowane obliczeniowe tryby zapewnia różne poziomy usług dzierżawcom. Możesz potrzebować więcej pracowników w sieci web, jeśli wielu klientów są:
 
@@ -80,9 +81,9 @@ Aby zapewnić usłudze Azure Functions dla użytkowników w modelu planu zużyci
 
 Podczas podejmowania decyzji o liczby ról procesów roboczych udostępniony w sieci web do używania, przejrzyj następujące zagadnienia:
 
-- **Pamięć**: pamięć jest najbardziej krytycznym zasobem dla roli procesu roboczego w sieci web. Za mało pamięci ma wpływ na wydajność witryny sieci web, gdy pamięć wirtualna jest wymieniany z dysku. Każdy serwer wymaga około 1,2 GB pamięci RAM dla systemu operacyjnego. Pamięć RAM powyżej tego progu może służyć do uruchomienia witryny sieci web.
-- **Odsetek aktywnych witryn sieci web**: zazwyczaj o około 5 procent aplikacji w usłudze Azure App Service w usłudze Azure Stack wdrożenia są aktywne. Jednak procent aplikacji, które są aktywne w danym momencie może być wyższe lub niższe. O częstotliwości 5 procent aktywnej aplikacji maksymalną liczbę aplikacji do umieszczenia w usłudze Azure App Service na wdrożenie usługi Azure Stack powinny być mniej niż 20 razy liczba aktywnych witryn sieci web (5 x 20 = 100).
-- **Zużycie pamięci średni**: średnia ilość pamięci zajmowaną dla aplikacji w środowiskach produkcyjnych wynosi około 70 MB. Korzystając z tego miejsca, ilość pamięci przydzielonej dla wszystkich komputerów roli procesu roboczego internetowych lub maszyn wirtualnych można obliczyć w następujący sposób:
+- **Pamięć**: Pamięć jest najbardziej krytycznym zasobem dla roli procesu roboczego w sieci web. Za mało pamięci ma wpływ na wydajność witryny sieci web, gdy pamięć wirtualna jest wymieniany z dysku. Każdy serwer wymaga około 1,2 GB pamięci RAM dla systemu operacyjnego. Pamięć RAM powyżej tego progu może służyć do uruchomienia witryny sieci web.
+- **Odsetek aktywnych witryn sieci web**: Zazwyczaj o około 5 procent aplikacji w usłudze Azure App Service w usłudze Azure Stack wdrożenia są aktywne. Jednak procent aplikacji, które są aktywne w danym momencie może być wyższe lub niższe. O częstotliwości 5 procent aktywnej aplikacji maksymalną liczbę aplikacji do umieszczenia w usłudze Azure App Service na wdrożenie usługi Azure Stack powinny być mniej niż 20 razy liczba aktywnych witryn sieci web (5 x 20 = 100).
+- **Zużycie pamięci średni**: Średnia ilość pamięci zajmowaną dla aplikacji w środowiskach produkcyjnych wynosi około 70 MB. Korzystając z tego miejsca, ilość pamięci przydzielonej dla wszystkich komputerów roli procesu roboczego internetowych lub maszyn wirtualnych można obliczyć w następujący sposób:
 
    `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
 

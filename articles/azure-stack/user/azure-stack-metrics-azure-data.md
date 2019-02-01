@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: mabrigg
-ms.openlocfilehash: cfeb1ce7791db463dc0ac39376baa8228dd96daf
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 12/01/2018
+ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106294"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239115"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Usługa Azure Monitor w usłudze Azure Stack
 
@@ -122,7 +123,7 @@ Kilka metod wizualizacji obejmuje:
 
 Ogólnie rzecz biorąc, można manipulować śledzeniem, kierowaniem i pobieraniem danych przy użyciu jednej z poniższych metod. Nie wszystkie metody są dostępne dla wszystkich akcji lub typów danych.
 
- - [Portal usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-use-portal)
+ - [Azure Stack Portal](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-use-portal)
  - [Program PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Interface(CLI) wiersza polecenia dla wielu platform](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [Interfejs API REST](https://docs.microsoft.com/rest/api/monitor)

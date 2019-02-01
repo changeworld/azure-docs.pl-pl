@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: W tym przewodniku opisano różne przydziały dla zasobów usługi Azure Machine Learning i sposób wyświetlania i zażądać zwiększenia przydziału.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2f7eeab8f9d2265cf0f6cfa28499a078ba9cb108
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b735df4e245d6e3ceebd847e91ed7dfdb255c267
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077373"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245994"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Zarządzanie i zażądać przydziały dla zasobów platformy Azure
 

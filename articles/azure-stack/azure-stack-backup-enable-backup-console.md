@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: f5610f03cb613c7da2f89da1a38b6bf058a4e0cc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: db2c55ec30e766496b98ef66b584df26f2dfe116
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714410"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239285"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączanie tworzenia kopii zapasowej z portalu administratora usługi Azure Stack
 Włącz usługi Backup infrastrukturę, za pośrednictwem portalu administracyjnego usługi Azure Stack mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska za pomocą odzyskiwania w chmurze w przypadku powstania [poważnej awarii](./azure-stack-backup-recover-data.md). Cel odzyskiwania w chmurze jest zapewnienie, że Twoje operatory i użytkownicy mogą Zaloguj się do portalu po ukończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnym planów, ofert i obliczeń wcześniej zdefiniowane, magazynu i limitów przydziałów sieci.

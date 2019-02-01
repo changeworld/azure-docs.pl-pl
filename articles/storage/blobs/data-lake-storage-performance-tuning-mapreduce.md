@@ -3,17 +3,17 @@ title: Wytyczne dotyczące dostosowywania usługi Azure Data Lake Storage Gen2 M
 description: Wytyczne dotyczące dostosowywania usługi Azure Data Lake Storage Gen2 MapReduce wydajności
 services: storage
 author: swums
-ms.component: data-lake-storage-gen2
+ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 4ba683bc75ed841fc92eb2c9fcc908e419b716d6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0cd7ecdc6ee7b6ccd66c9d0d88ebef0a1220a40a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975298"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249116"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Wskazówki dotyczące technologii MapReduce, HDInsight i Azure Data Lake Storage Gen2 dostrajania wydajności
 
@@ -45,15 +45,15 @@ Podczas uruchamiania zadania MapReduce, poniżej przedstawiono parametry, które
 > [!NOTE]
 > Wskazówki zawarte w tym dokumencie przyjęto założenie, że aplikacja jest tylko aplikacja działająca w klastrze.
 
-**Krok 1: Określanie liczby zadań uruchamiania**
+**Krok 1. Określenie liczby zadań uruchamiania**
 
 Domyślnie MapReduce użyje całego klastra dla zadania.  Używając mniej klastra przy użyciu mniejszej liczby maperów niż jest dostępnych kontenerów.        
 
-**Krok 2. Ustawianie mapreduce.map.memory/mapreduce.reduce.memory**
+**Krok 2. Ustaw mapreduce.map.memory/mapreduce.reduce.memory**
 
 Rozmiar pamięci dla mapy i zredukować zadania będzie zależeć od określonego zadania.  Można zmniejszyć rozmiar pamięci, jeśli chcesz zwiększyć współbieżność.  Liczba równolegle wykonywanych zadań zależy od liczbę kontenerów.  Przez zmniejszenie ilości pamięci dla mapowania lub reduktor, można utworzyć większej liczbie kontenerów, umożliwiają one więcej liczby maperów i reduktorów można uruchamiać jednocześnie.  Za dużo zmniejsza ilość pamięci może spowodować niektóre procesy przekroczyć dostępną ilość pamięci.  Jeśli wystąpi błąd stosu podczas uruchamiania zadania, należy zwiększyć ilość pamięci na mapowania lub reduktor.  Należy rozważyć, czy dodanie większej liczbie kontenerów spowoduje dodanie dodatkowych obciążenie dla każdego kontenera dodatkowe, które potencjalnie mogą obniżyć wydajność.  Innym sposobem jest uzyskanie większej ilości pamięci za pomocą klastra, który ma większej ilości pamięci lub zwiększenie liczby węzłów w klastrze.  Większa ilość pamięci spowoduje włączenie większej liczbie kontenerów, które ma być używany, co oznacza, że uzyskać większą współbieżność.  
 
-**Krok 3: Określania YARN całkowitej ilości pamięci**
+**Krok 3. Określania YARN całkowitej ilości pamięci**
 
 Należy dostosować mapreduce.job.maps/mapreduce.job.reduces, należy rozważyć ilość całkowitej ilości pamięci usługi YARN dostępne do użycia.  Te informacje są dostępne w Ambari.  Przejdź do usługi YARN i wyświetlić kartę konfiguracje.  W tym oknie wyświetlane jest pamięci usługi YARN.  Należy pomnożyć pamięci usługi YARN z liczbą węzłów w klastrze, aby pobrać całkowitej ilości pamięci usługi YARN.
 
@@ -61,13 +61,13 @@ Należy dostosować mapreduce.job.maps/mapreduce.job.reduces, należy rozważyć
 
 Jeśli używasz klastra pusty pamięć może być całkowitej ilości pamięci usługi YARN dla klastra.  Jeśli inne aplikacje używają pamięci, można wybrać do użycia tylko część klastra, pamięci, zmniejszając liczbę liczby maperów i reduktorów do liczby kontenerów, do których chcesz użyć.  
 
-**Krok 4: Oblicz liczbę kontenery usługi YARN**
+**Krok 4. Oblicz liczbę kontenery usługi YARN**
 
 Kontenery usługi YARN określają ilość współbieżności dostępny dla zadania.  Pobrać całkowity rozmiar pamięci usługi YARN i przez mapreduce.map.memory.  
 
     # of YARN containers = total YARN memory / mapreduce.map.memory
 
-**Krok 5. Ustawianie mapreduce.job.maps/mapreduce.job.reduces**
+**Krok 5. Ustaw mapreduce.job.maps/mapreduce.job.reduces**
 
 Ustaw mapreduce.job.maps/mapreduce.job.reduces do co najmniej liczby dostępnych kontenerów.  Możesz eksperymentować jeszcze bardziej przez zwiększenie liczby maperów i reduktorów, aby zobaczyć, jeśli możesz uzyskać lepszą wydajność.  Należy pamiętać o tym, czy więcej liczby maperów będzie miała dodatkowe obciążenie, dlatego masz zbyt wiele liczby maperów może obniżyć wydajność.  
 
@@ -77,24 +77,24 @@ Planowanie procesora CPU i procesora CPU izolacji są domyślnie wyłączone, li
 
 Załóżmy, że istnieje klastra składa się z 8 węzłów D14, i chcemy uruchomić zadanie intensywnie korzystających z operacji We/Wy.  Poniżej przedstawiono obliczenia, które należy wykonać:
 
-**Krok 1: Określanie liczby zadań uruchamiania**
+**Krok 1. Określenie liczby zadań uruchamiania**
 
 W tym przykładzie załóżmy, że nasze zadania jest tylko zadanie, które działa.  
 
-**Krok 2. Ustawianie mapreduce.map.memory/mapreduce.reduce.memory**
+**Krok 2. Ustaw mapreduce.map.memory/mapreduce.reduce.memory**
 
 W tym przykładzie będziemy działają zadania intensywnie korzystających z operacji We/Wy i zdecydować, że 3GB pamięci dla zadań mapy okażą się wystarczające.
 
     mapreduce.map.memory = 3GB
 
-**Krok 3: Określania YARN całkowitej ilości pamięci**
+**Krok 3. Określania YARN całkowitej ilości pamięci**
 
     Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**Krok 4. obliczanie # kontenery usługi YARN**
+**Krok 4. Oblicz # kontenery usługi YARN**
 
     # of YARN containers = 768GB of available memory / 3 GB of memory =   256
 
-**Krok 5. Ustawianie mapreduce.job.maps/mapreduce.job.reduces**
+**Krok 5. Ustaw mapreduce.job.maps/mapreduce.job.reduces**
 
     mapreduce.map.jobs = 256
 

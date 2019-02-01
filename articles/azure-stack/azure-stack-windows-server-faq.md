@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 11/12/2018
+ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613099"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249684"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>System Windows Server w usłudze Azure Stack Portal Marketplace — często zadawane pytania
 
@@ -37,10 +38,10 @@ Następnie, jeśli wszystkie zestawy skalowania maszyn wirtualnych odwołują si
 
 Firma Microsoft oferuje dwie wersje obrazów systemu Windows Server w portalu Azure Marketplace stosu:
 
-- **Płatność proporcjonalna używasz**: te obrazy Uruchom liczniki Windows pełną cenę. 
+- **Płatność proporcjonalna używasz**: Te obrazy Uruchom liczniki Windows pełną cenę. 
    Kto powinien używać: Klienci z umową Enterprise Agreement (EA), którzy korzystają *model rozliczeń za użycie*; Dostawcy usług kryptograficznych, którzy nie chcą korzystanie z licencjonowania w ramach umowy SPLA.
-- **Bring Your Own License (BYOL)**: tych obrazów uruchamiania podstawowe liczniki.
-   Kto powinien używać: umową EA z licencji systemu Windows Server; Dostawcy usług kryptograficznych, którzy korzystają z licencji w ramach umowy SPLA.
+- **Model dostarczania własnej licencji (BYOL)**: Te obrazy Uruchom liczniki podstawowe.
+   Kto powinien używać: Umową EA z licencji systemu Windows Server; Dostawcy usług kryptograficznych, którzy korzystają z licencji w ramach umowy SPLA.
 
 Azure hybrydowego użycia korzyści (AHUB) nie jest obsługiwane w usłudze Azure Stack. Klienci, którzy licencji za pośrednictwem modelu "Pojemność" należy użyć obrazu BYOL. W przypadku testowania przy użyciu usługi Azure Stack Development Kit (ASDK), można użyć jednej z tych opcji.
 

@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: sethm
-ms.openlocfilehash: b0236a790200feec7f1d16724f351882056b2cd5
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.lastreviewed: 11/29/2018
+ms.openlocfilehash: 2e1b7257e7ffc4460d86018a6318e33f95e01700
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678529"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246268"
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Zarządzanie zasadami platformy Azure przy użyciu modułu zasad usługi Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Moduł usługi Azure Stack zasad umożliwia skonfigurowanie subskrypcji platformy Azure przy użyciu tej samej wersji i dostępności usługi jako usługi Azure Stack. Moduł używa [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition) polecenia cmdlet, aby utworzyć zasady platformy Azure, co ogranicza typy zasobów i usług dostępnych w ramach subskrypcji. Następnie utworzysz przypisanie zasad w ramach wybranego zakresu przy użyciu [New-AzureRmPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) polecenia cmdlet. Po skonfigurowaniu zasad, można użyć subskrypcji platformy Azure, tworzyć aplikacje przeznaczone dla usługi Azure Stack.
 
-## <a name="install-the-module"></a>Zainstaluj moduł
+## <a name="install-the-module"></a>Instalowanie modułu
 
 1. Zainstaluj wymaganą wersję modułu AzureRM PowerShell, zgodnie z opisem w kroku 1 [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
 2. [Pobierz narzędzia usługi Azure Stack z serwisu GitHub](azure-stack-powershell-download.md).

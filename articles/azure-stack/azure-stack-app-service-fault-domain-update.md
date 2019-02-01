@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 249e4b466e9be567111aaa22b40ca3e5dadb6cac
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267219"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246385"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak wykonać ponowną dystrybucję usługi Azure App Service w usłudze Azure Stack w domenach błędów
 
-*Dotyczy: zintegrowane systemy usługi Azure Stack*
+*Dotyczy: Zintegrowane systemy usługi Azure Stack*
 
 Dzięki aktualizacji 1802 usługi Azure Stack obsługuje teraz dystrybucji obciążeń w domenach błędów, funkcji, który ma kluczowe znaczenie w celu zapewnienia wysokiej dostępności.
 

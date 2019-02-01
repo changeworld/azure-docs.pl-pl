@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972392"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239676"
 ---
 # <a name="azure-stack-administration-basics"></a>Podstawy administracji w usłudze Azure Stack
 Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack administracji. Niniejsze wskazówki zawiera omówienie Twojej roli jako operatorów usługi Azure Stack i co jest potrzebne do Poinformuj użytkowników dla nich, aby szybko stać się produktywności.
@@ -63,7 +64,7 @@ Usługi te wymagają dodatkowej konfiguracji przed można udostępnić je użytk
 
 **Plan usługi**
 
-Usługa Azure Stack będą w dalszym ciągu dodano obsługę usług platformy Azure. Przewidywany plan, można zobaczyć [usługi Azure Stack: stanowi rozszerzenie platformy Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) oficjalny dokument. Można również monitorować [wpisów w blogu usługi Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) dla nowych anonsów.
+Usługa Azure Stack będą w dalszym ciągu dodano obsługę usług platformy Azure. Przewidywany plan, można zobaczyć [usługi Azure Stack: Rozszerzenie platformy Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) oficjalny dokument. Można również monitorować [wpisów w blogu usługi Azure Stack](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) dla nowych anonsów.
 
 ## <a name="what-account-should-i-use"></a>Z jakiego konta mam korzystać?
 Istnieje kilka istotnych kwestii konta, których należy wiedzieć podczas zarządzania usługi Azure Stack. Szczególnie w przypadku wdrożeń przy użyciu systemu Windows Server Active Directory Federation Services (AD FS) jako dostawcy tożsamości, a nie usługi Azure Active Directory (Azure AD). Obowiązują następujące zastrzeżenia konta do usługi Azure Stack zintegrowane systemy i ASDK wdrożeń:
@@ -108,7 +109,7 @@ Musisz poinformować użytkowników, sposób pracy z usługami w usłudze Azure 
 
 Ma informacji, które użytkownicy muszą zrozumieć, zanim będą oni używać usług i twórz aplikacje w usłudze Azure Stack. Na przykład istnieją określone wymagania wersji programu PowerShell i interfejsu API. Ponadto istnieją pewne różnice funkcji między usługą na platformie Azure i usługę równoważne w usłudze Azure Stack. Upewnij się, że użytkownicy przejrzeć następujące artykuły:
 
-- [Zagadnienia dotyczące klucza: przy użyciu usług lub tworzenia aplikacji dla usługi Azure Stack](user/azure-stack-considerations.md)
+- [Najważniejsze kwestie: Za pomocą usług lub tworzenia aplikacji dla usługi Azure Stack](user/azure-stack-considerations.md)
 - [Uwagi dotyczące maszyn wirtualnych w usłudze Azure Stack](user/azure-stack-vm-considerations.md)
 - [Miejsca do magazynowania: różnice i zagadnienia dotyczące](user/azure-stack-acs-differences.md)
 

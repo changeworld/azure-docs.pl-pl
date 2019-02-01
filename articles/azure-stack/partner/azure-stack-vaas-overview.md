@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 12/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0461e33f8154d3d9004860737a844af0f9df258c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: c0694a3839ae6b843abd1ddc8b67d1f3e3322e0e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245363"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246045"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Co to jest weryfikacja jako usługa dla usługi Azure Stack?
 
@@ -62,7 +63,7 @@ Aby uzyskać więcej informacji, zobacz temat [Szybki start: Użyj weryfikacji j
 
 | Sprawdzanie poprawności przepływu pracy | Wymagane testy |
 |----|------------|
-| [Nowe rozwiązanie sprawdzania poprawności.](azure-stack-vaas-validate-solution-new.md) | Aparat symulacji w chmurze<br>Obliczenia operacyjnej zestaw SDK<br>Test identyfikator dysku<br>Pakiet operacyjnej zestaw SDK rozszerzenia usługi KeyVault<br>Operacyjnej zestaw SDK magazynu kluczy<br>Pakiet operacyjnej zestaw SDK sieci<br>Pakiet operacyjnej zestaw SDK konta magazynu<br> |
+| [Nowe rozwiązanie sprawdzania poprawności.](azure-stack-vaas-validate-solution-new.md) | Aparat symulacji w chmurze<br>Obliczenia operacyjnej zestaw SDK<br>Test identyfikator dysku<br>Pakiet operacyjnej zestaw SDK rozszerzenia usługi KeyVault<br>Operacyjnej zestaw SDK magazynu kluczy<br>Network SDK Operational Suite<br>Pakiet operacyjnej zestaw SDK konta magazynu<br> |
 | [Sprawdzanie poprawności pakietu producenta OEM](azure-stack-vaas-validate-oem-package.md) | Weryfikacja pakietu rozszerzenia producenta OEM<br>Aparat symulacji w chmurze |
 | [Miesięczne weryfikacji operacji update.](azure-stack-vaas-validate-microsoft-updates.md) | Miesięczne Weryfikacja AzureStack aktualizacji<br>Aparat symulacji w chmurze<br> |
 

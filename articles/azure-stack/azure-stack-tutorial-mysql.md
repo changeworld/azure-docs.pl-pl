@@ -15,14 +15,15 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: 8587b40bf6963d57fd510aefc17de4385b871590
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993835"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55249041"
 ---
-# <a name="tutorial-offer-highly-available-mysql-databases"></a>Samouczek: Oferują baz danych MySQL o wysokiej dostępności
+# <a name="tutorial-offer-highly-available-mysql-databases"></a>Samouczek: Oferty baz danych MySQL o wysokiej dostępności
 
 Operator usługi Azure Stack można skonfigurować maszyny wirtualne server do hostowania baz danych z serwera MySQL. MySQL klastra po pomyślnie tworzone i zarządzane przez usługę Azure Stack, użytkownicy, którzy subskrybuje usługi MySQL można łatwo utworzyć baz danych MySQL o wysokiej dostępności.
 

@@ -5,19 +5,19 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 38cccf17980f5a6a2cf162cdecdc6aad40d4f38e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5717074d53e267018b7697aeed21ea00d246592e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432561"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252221"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
-Grupy akcji to zbiór preferencje powiadamiania zdefiniowane przez właściciela subskrypcji platformy Azure. Alerty monitorowania i kondycji usług platformy Azure umożliwia powiadomienie użytkowników, czy alert został wywołany grup akcji. Różne alerty może używać tej samej grupy akcji lub grupy inną akcję w zależności od wymagań użytkownika.
+Grupy akcji to zbiór preferencje powiadamiania zdefiniowane przez właściciela subskrypcji platformy Azure. Alerty monitorowania i kondycji usług platformy Azure umożliwia powiadomienie użytkowników, czy alert został wywołany grup akcji. Różne alerty może używać tej samej grupy akcji lub grupy inną akcję w zależności od wymagań użytkownika. Można skonfigurować maksymalnie 2000 grup akcji w ramach subskrypcji.
 
 Gdy akcji jest skonfigurowana do wysyłania powiadomień osoby za pośrednictwem poczty e-mail lub SMS osoba otrzyma potwierdzenie wskazujący on / użytkownik został dodany do grupy akcji.
 
@@ -88,15 +88,18 @@ Może mieć maksymalnie 1000 akcji poczty e-mail do grupy akcji. Zobacz [ogranic
 **Głos** — może mieć maksymalnie 10 akcje głosu w grupy akcji</dd>
 Zobacz [ograniczania informacje o szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) artykułu</dd>
 
-**Element Webhook** — może mieć maksymalnie 10 Akcje elementu Webhook w grupy akcji. Logika ponawiania próby — limit czasu dla odpowiedzi to 10 sekund. Wywołanie elementu webhook zostanie ponowiona maksymalnie 2 godziny po następujące kody stanu HTTP są zwracane: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwszym ponowieniem próby odbywa się po 10 sekundach. Drugi i ostatniego ponownych prób odbywa się po 100 sekund.
+**Element Webhook** — może mieć maksymalnie 10 Akcje elementu Webhook w grupy akcji.
+Logika ponawiania próby — limit czasu dla odpowiedzi to 10 sekund. Wywołanie elementu webhook zostanie ponowiona maksymalnie 2 godziny po następujące kody stanu HTTP są zwracane: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwszym ponowieniem próby odbywa się po 10 sekundach. Drugi ponawiania odbywa się po 100 sekund. Po awarii dwóch węzłów punkt końcowy nie zostanie wywołana przez 30 minut od żadnej grupy akcji.
 
 Zakresy adresów IP źródła
+    - 13.72.19.232
     - 13.106.57.181
     - 13.106.54.3
     - 13.106.54.19
     - 13.106.38.142
     - 13.106.38.148
     - 13.106.57.196
+    - 52.244.68.117
 
 Aby otrzymywać aktualizacje o zmianach na te adresy IP, zaleca się konfigurowania [alertów dotyczących kondycji usługi](./../../azure-monitor/platform/service-notifications.md) który monitoruje informacyjny powiadomień dotyczących usługi grupy akcji.
 

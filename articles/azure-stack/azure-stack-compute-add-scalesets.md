@@ -10,16 +10,17 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: 2c615dd781b40c3ebb78ae291453c5b4b2d2ef4d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: 3f1c84961f2ad6bd15612917d33982ec96824257
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971831"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252272"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Udostępnianie zestawów skalowania maszyn wirtualnych w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
   
 Zestawy skalowania maszyn wirtualnych to zasób obliczeniowych usługi Azure Stack. Umożliwia ich wdrożenie zestawu identycznych maszyn wirtualnych oraz zarządzanie. Za pomocą wszystkie maszyny wirtualne skonfigurowane w taki sam sposób zestawów skalowania nie wymagają wstępna aprowizacja maszyn wirtualnych. Jest łatwiejsze tworzenie wielkoskalowych usług, przeznaczonych dla dużych wystąpień obliczeniowych, danych big data i obciążenia konteneryzowane.
 
@@ -33,8 +34,8 @@ Zestawy skalowania maszyn wirtualnych nie obsługują automatyczne skalowanie w 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Portal Marketplace:** rejestru usługi Azure Stack z globalnej platformy Azure, aby włączyć dostępność elementów w portalu Marketplace. Postępuj zgodnie z instrukcjami w [zarejestrować w usłudze Azure Stack z platformą Azure](azure-stack-registration.md).
-- **Obraz systemu operacyjnego:** przed utworzeniem zestawu skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych), należy pobrać obrazów maszyn wirtualnych do użycia w zestawu skalowania maszyn wirtualnych z [usługi Azure Stack w portalu Marketplace](azure-stack-download-azure-marketplace-item.md). Obrazy muszą być już dostępne, zanim użytkownik może utworzyć nowego zestawu skalowania maszyn wirtualnych. 
+- **Portal Marketplace:** Zarejestruj usługę Azure Stack globalnej platformy Azure, aby włączyć dostępność elementów w portalu Marketplace. Postępuj zgodnie z instrukcjami w [zarejestrować w usłudze Azure Stack z platformą Azure](azure-stack-registration.md).
+- **Obraz systemu operacyjnego:** Przed utworzeniem zestawu skalowania maszyn wirtualnych (zestawu skalowania maszyn wirtualnych), należy pobrać obrazów maszyn wirtualnych do użycia w zestawu skalowania maszyn wirtualnych z [usługi Azure Stack w portalu Marketplace](azure-stack-download-azure-marketplace-item.md). Obrazy muszą być już dostępne, zanim użytkownik może utworzyć nowego zestawu skalowania maszyn wirtualnych. 
 
 ## <a name="use-the-azure-stack-portal"></a>Używaj portalu Azure Stack 
 

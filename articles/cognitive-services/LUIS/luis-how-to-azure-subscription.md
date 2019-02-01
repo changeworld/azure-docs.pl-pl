@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2e5ecf32782c86b236c4947d5d2793be9c3883d8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 26954c8f839ff0bfb2da484e4fb535f33d4e07ed
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223684"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55239183"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Używanie kluczy subskrypcji z aplikacją usługi LUIS
 
@@ -32,7 +32,7 @@ Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku s
 
 Ta procedura powoduje utworzenie **Language Understanding** zasobów. Jeśli chcesz, aby zasób, który można stosować w przypadku usług Cognitive Services, Utwórz klucz w jednym **[usługi cognitive Services](../cognitive-services-apis-create-account.md)** zamiast zasobów Language Understanding. 
 
-Ten klucz stosuje się tylko do endpoint prognoz zapytania. Nie masz pewności do tego klucza zmian do modelu lub aplikacji. 
+Ten klucz stosuje się tylko do endpoint prognoz zapytania. Nie należy używać tego klucza dla zmian do modelu lub aplikacji. 
 
 1. Zaloguj się do  **[witryny Azure portal](https://ms.portal.azure.com/)**. 
 1. Zaznacz zielony **+** Zaloguj się w prawym górnym panelu po lewej stronie i wyszukaj `Language Understanding` w witrynie marketplace, a następnie zaznacz na **Language Understanding** i postępuj zgodnie z  **Utwórz środowisko** utworzyć konto subskrypcji usługi LUIS. 
@@ -43,7 +43,7 @@ Ten klucz stosuje się tylko do endpoint prognoz zapytania. Nie masz pewności d
 
     ![Usługa Azure wybranego interfejsu API](./media/luis-azure-subscription/azure-api-choice.png) 
 
-1. Po utworzeniu zasobu interpretacji języka, możesz wyświetlić klucze dostępu wygenerowanych w **zarządzania zasobami -> klucze**. Czy nie kluczy. Następnej sekcji opisano, jak połączyć tego nowego zasobu z aplikacją usługi LUIS w portalu usługi LUIS. Potrzebna jest nazwa zasobu usługi LUIS z kroku 3.
+1. Po utworzeniu zasobu interpretacji języka, możesz wyświetlić klucze dostępu wygenerowanych w **zarządzania zasobami -> klucze**. Następnej sekcji opisano, jak połączyć tego nowego zasobu z aplikacją usługi LUIS w portalu usługi LUIS. Potrzebna jest nazwa zasobu usługi LUIS z kroku 3.
 
     ![Klucze Azure](./media/luis-azure-subscription/azure-keys.png)
 
@@ -71,7 +71,7 @@ Ten klucz stosuje się tylko do endpoint prognoz zapytania. Nie masz pewności d
 
     ![Przydziel zasób do aplikacji](./media/luis-manage-keys/assign-key.png)
 
-1. Wybierz dzierżawę w oknie dialogowym skojarzone z adresem e-mail, logowanie za pomocą witryny sieci Web usługi LUIS.  
+1. Wybierz dzierżawę w oknie dialogowym skojarzonych z wiadomością e-mail adres usługi, które są używane do logowania do witryny sieci Web usługi LUIS.  
 
 1. Wybierz **Nazwa subskrypcji** skojarzone z zasobów platformy Azure, które chcesz dodać.
 
@@ -122,7 +122,7 @@ Intencji i ich wyniki są również uwzględnione w dziennikach punktu końcoweg
 ### <a name="enable-bing-spell-checker"></a>Włączanie sprawdzania pisowni Bing 
 W **ustawienia adresu url punktu końcowego**, **sprawdzania pisowni Bing** przełącznik umożliwia usługi LUIS do poprawianie błędnie napisanych wyrazów przed prognozy. Tworzenie  **[klucz sprawdzania pisowni Bing](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. 
 
-Dodaj **sprawdzania pisowni = true** parametr querystring i **bing pisowni wyboru subscription-key = {YOUR_BING_KEY_HERE}** . Zastąp `{YOUR_BING_KEY_HERE}` kluczem moduł sprawdzania pisowni Bing.
+Dodaj **sprawdzania pisowni = true** parametr querystring i **bing pisowni wyboru subscription-key = {YOUR_BING_KEY_HERE}**. Zastąp `{YOUR_BING_KEY_HERE}` kluczem moduł sprawdzania pisowni Bing.
 
 ```JSON
 {
@@ -142,7 +142,7 @@ Dowiedz się więcej o publikowaniu [regionów](luis-reference-regions.md) publi
 
 ## <a name="assign-resource-without-luis-portal"></a>Przydziel zasób bez portal usługi LUIS
 
-Do celów usługi automation, takich jak potok ciągłej integracji/ciągłego wdrażania można automatycznie przypisywać zasobem usługi LUIS z aplikacją usługi LUIS. Do tego, należy wykonać następujące czynności:
+Do celów usługi automation, takich jak potok ciągłej integracji/ciągłego wdrażania można automatycznie przypisywać zasobem usługi LUIS z aplikacją usługi LUIS. Aby to zrobić, należy wykonać następujące czynności:
 
 1. Pobierz token do usługi Azure Resource Manager z tego [witryny sieci Web](https://resources.azure.com/api/token?plaintext=true). Ten token wygaśnie więc natychmiast zastosować go. Żądanie zwraca tokenu usługi Azure Resource Manager.
 

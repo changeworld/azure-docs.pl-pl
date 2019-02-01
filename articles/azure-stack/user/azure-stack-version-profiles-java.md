@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.lastreviewed: 09/28/2018
+ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886828"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246368"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Java w usłudze Azure Stack
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Zestaw SDK Java usługi Azure Stack Resource Manager oferuje narzędzia ułatwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci, magazynu, usługi aplikacji i [KeyVault](../../key-vault/key-vault-whatis.md). Zestaw Java SDK zawiera profilami interfejsu API przez dołączenie zależności w pliku Pom.xml, który ładuje prawidłowe moduły w początku pliku. Jednakże, można dodać wiele profilów jako zależności, takie jak **2018-03-01-hybrydowego**, lub **najnowsze** jako profil platformy Azure. Za pomocą tych zależności, ładuje prawidłowy moduł, dzięki czemu podczas tworzenia danego typu zasobu, można wybrać wersję interfejsu API z tych profilów, które chcesz użyć. Dzięki temu można używać najnowszej wersji na platformie Azure podczas tworzenia oprogramowania dla najnowszej wersji interfejsu API dla usługi Azure Stack. Przy użyciu zestawu SDK Java włącza środowisko programistyczne chmury hybrydowej. Profile interfejsu API zestawu SDK Java Włącz projektowania aplikacji w chmurze hybrydowej, która ułatwia przełączanie między zasobami w usłudze Azure Stack i globalnych zasobów platformy Azure.
 
@@ -77,8 +78,8 @@ Aby zainstalować zestaw SDK języka Java, wykonaj następujące kroki:
 
 4.  Pakiety, które muszą być zainstalowane, zależy od wersji profilu, którego chcesz użyć. Nazwy pakietu dla wersji profilu są:
     
-   - **COM.microsoft.Azure.profile\_2018\_03\_01\_hybrydowe**
-   - **COM.microsoft.Azure**
+   - **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**
+   - **com.microsoft.azure**
       - **latest**
 
 5.  Jeśli nie jest dostępny, Utwórz subskrypcję i Zapisz identyfikator subskrypcji do późniejszego użycia. Aby uzyskać instrukcje dotyczące sposobu tworzenia subskrypcji, zobacz [Tworzenie subskrypcji ofert w usłudze Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
@@ -149,9 +150,9 @@ Przykładowy plik JSON:
 
 ## <a name="existing-api-profiles"></a>Istniejące profile interfejsu API
 
-1.  **COM.microsoft.Azure.profile\_2018\_03\_01\_hybrydowego**: najnowsze profilu stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi najbardziej zgodnych z usługą Azure Stack, tak długo, jak korzystasz z sygnatury 1808 lub więcej.
+1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Profil najnowsze stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi najbardziej zgodnych z usługą Azure Stack, tak długo, jak korzystasz z sygnatury 1808 lub więcej.
 
-2.  **COM.microsoft.Azure**: profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług.
+2.  **com.microsoft.azure**: Profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług.
 
 Aby uzyskać więcej informacji na temat profilów Azure Stack i interfejsu API, zobacz [profilami podsumowanie interfejsu API](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 

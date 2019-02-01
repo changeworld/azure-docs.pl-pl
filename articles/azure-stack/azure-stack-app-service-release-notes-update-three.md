@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 3e88e0a3337eafdd25c9c0cc655912a4cdbd3b68
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.lastreviewed: 08/20/2018
+ms.openlocfilehash: a7e8b1471e056fd789cda5258dd088e623c3cebd
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079535"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248507"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>Usługa App Service w usłudze Azure Stack update 3 — informacje o wersji
 
-*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
+*Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 Te informacje o wersji opisano ulepszeń i poprawek w usłudze Azure App Service w usłudze Azure Stack Update 3 i znanych problemach. Znane problemy są podzielone na problemy z bezpośrednio do wdrożenia, proces aktualizacji i problemy z kompilacją (po instalacji).
 
@@ -58,9 +59,9 @@ Usługa Azure App Service w usłudze Azure Stack Update 3 obejmuje następujące
 - Aktualizacje do podstawowej usługi, aby zwiększyć niezawodność i komunikatów o włączenie łatwiejsze Diagnostyka typowe problemy.
 
 - **Aktualizacje do narzędzi i struktur aplikacji na następujących**:
-  - Dodano platformy ASP.Net Core 2.1.2
+  - Added ASP.Net Core 2.1.2
   - Dodano NodeJS 10.0.0
-  - Dodano OpenJDK Zulu 8.30.0.1
+  - Added Zulu OpenJDK 8.30.0.1
   - Dodano Tomcat 8.5.31 i 9.0.8
   - Dodano PHP wersje:
     - 5.6.36
@@ -184,10 +185,10 @@ Walidacja
 - Pracownicy są nie można nawiązać połączenia z serwerem plików po wdrożeniu usługi App Service w istniejącej sieci wirtualnej i serwer plików jest dostępna tylko w sieci prywatnej.  Jest to również nazywane w usłudze Azure App Service w dokumentacji wdrażania usługi Azure Stack.
 
 Jeśli wybierzesz do wdrożenia w istniejącej sieci wirtualnej i wewnętrzny adres IP, aby nawiązać połączenie z serwerem plików, należy dodać regułę zabezpieczeń dla ruchu wychodzącego włączanie ruchu SMB między podsieci procesów roboczych i serwera plików. Aby to zrobić, przejdź do WorkersNsg w portalu administracyjnym i dodawanie reguły zabezpieczeń dla ruchu wychodzącego z następującymi właściwościami:
- * Źródło: wszystkie
+ * Źródło: Dowolne
  * Zakres portów źródłowych: *
  * Miejsce docelowe: Adresy IP
- * Docelowy zakres adresów IP: zakres adresów IP dla serwera plików
+ * Docelowy zakres adresów IP: Zakres adresów IP dla serwera plików
  * Zakres portów docelowych: 445
  * Protokół: TCP
  * Akcja: Zezwalaj
