@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/22/2017
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 60dd0bdd529b4ee8fc8377093d49b8a27fb9b3f1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016652"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661245"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store poświadczeń w usłudze Azure Key Vault
 
@@ -27,9 +27,6 @@ Obecnie wszystkie typy działań, z wyjątkiem działań niestandardowych obsłu
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Ta funkcja opiera się na tożsamość usługi fabryki danych. Dowiedz się, jak to działa z [tożsamość usługi fabryki danych](data-factory-service-identity.md) i upewnij się, fabryki danych skojarzony jeden.
-
->[!TIP]
->W usłudze Azure Key Vault, po utworzeniu wpisu tajnego **put całą wartość właściwości wpisu tajnego, że ADF połączoną usługę poprosi o podanie (np. połączenia usługi ciąg/hasła jednostki klucz/itp.)**. Na przykład w przypadku usługi Azure Storage połączonej usługi, umieść `DefaultEndpointsProtocol=http;AccountName=myAccount;AccountKey=myKey;` jako klucz tajny AKV, a następnie można się odwołać w polu "connectionString" z usługi ADF; dla połączonej usługi Dynamics, umieść `myPassword` jako klucz tajny AKV, następnie odwoływać się do pola "password" ADF. Można znaleźć w artykule każdego łącznika/obliczeniowe, w szczegółach obsługiwanych właściwości.
 
 ## <a name="steps"></a>Kroki
 

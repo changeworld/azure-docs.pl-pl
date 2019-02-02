@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b2b247b50eff446776edfbf3a552e92af3c7dfff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fe98caa2a78722d621c43f1ef708e24add0efb56
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228801"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664118"
 ---
 # <a name="azure-advanced-threat-detection"></a>Usługa Azure zaawansowane wykrywanie zagrożeń
 
@@ -29,7 +29,7 @@ System Azure oferuje szeroką gamę opcji, aby skonfigurować i dostosować zabe
 
 ## <a name="azure-active-directory-identity-protection"></a>Ochrona tożsamości w usłudze Azure Active Directory
 
-[Usługa Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) jest [usługi Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) funkcja w wersji, która zapewnia Przegląd zdarzeń o podwyższonym ryzyku i potencjalnych luk w zabezpieczeniach, które mogą mieć wpływ na tożsamości w organizacji. Usługa Identity Protection używa istniejące możliwości wykrywania anomalii w usłudze Azure AD, które są dostępne za pośrednictwem [usługi Azure AD, nietypowe raporty aktywności](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)i wprowadza nowe typy zdarzeń o podwyższonym ryzyku, które mogą wykrywać anomalie w czasie rzeczywistym.
+[Usługa Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) jest [usługi Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) funkcja w wersji, która zapewnia Przegląd zdarzeń o podwyższonym ryzyku i potencjalnych luk w zabezpieczeniach, które mogą mieć wpływ na tożsamości w organizacji. Usługa Identity Protection używa istniejące możliwości wykrywania anomalii w usłudze Azure AD, które są dostępne za pośrednictwem [usługi Azure AD, nietypowe raporty aktywności](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports)i wprowadza nowe typy zdarzeń o podwyższonym ryzyku, które mogą wykrywać anomalie w czasie rzeczywistym.
 
 ![Diagram usługi Azure AD Identity Protection](./media/azure-threat-detection/azure-threat-detection-fig1.png)
 

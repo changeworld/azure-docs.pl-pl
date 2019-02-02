@@ -11,22 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 496a6c45c9f8930f77b3a3dab2f81db1b24c1801
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247208"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656723"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>Przygotowywanie certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack do użycia w wdrożenia lub obrotu
+
 Pliki certyfikatów [uzyskany z urzędu certyfikacji wybór](azure-stack-get-pki-certs.md) musi być importowane i wyeksportowane z właściwościami dopasowania wymagania dotyczące certyfikatu usługi Azure Stack.
 
-
 ## <a name="prepare-certificates-for-deployment"></a>Przygotowywanie certyfikatów do wdrożenia
+
 Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack, które będą używane do wdrożenia nowego środowiska usługi Azure Stack lub związany z rotacją kluczy tajnych w istniejącym środowisku usługi Azure Stack: 
 
 ### <a name="import-the-certificate"></a>Zaimportuj certyfikat
@@ -83,7 +84,9 @@ Otwórz konsolę menedżera certyfikatów konsoli MMC i nawiązać połączenie 
     
     ![Kreator eksportu certyfikatów przy użyciu wybrane opcje](./media/prepare-pki-certs\azure-stack-save-cert.png)
 
-1. Wybierz **hasło** i podaj hasło dla certyfikatów. Zapamiętaj to hasło, ponieważ jest używany jako parametr wdrożenia. Wybierz opcję **Dalej**.
+1. Wybierz **hasło** i podaj hasło dla certyfikatów. Utwórz hasło, które spełnia następujące wymagania dotyczące złożoności hasła. Długość co najmniej osiem znaków. Hasło zawiera co najmniej trzech spośród następujących: wielkie litery, małe litery, cyfry od 0 do 9, znaków specjalnych, alfabetycznym znak, który nie jest wielką ani małe litery. Zanotuj hasło. Użyjesz go jako parametr wdrożenia.
+
+1. Wybierz opcję **Dalej**.
 
 1. Wybierz nazwę pliku i lokalizację pliku pfx można wyeksportować. Wybierz opcję **Dalej**.
 

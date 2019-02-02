@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 9d542f7c2cdeb20806a2db98005ffc03cf72144c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c96fdbfb56fe5274de941c0f9ab1a12cbcc241b6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238020"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658423"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
-> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
+> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony platformę Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą.
 
 Możesz wykonać kroki opisane w tym artykule, aby wdrożyć i skonfigurować zasoby dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. W krokach używany szablon rozwiązania usługi Azure Resource Manager. Można będzie konieczne do zbierania wymaganych informacji o instalacji programu Azure Stack Generowanie szablonu, a następnie wdrożyć z Twoją chmurą. Szablon usługi Azure Stack nie używa tego samego zarządzanych usług AKS oferowanych na platformie Azure globalnego.
 

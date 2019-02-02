@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402051"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567285"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -102,6 +102,10 @@ Każda osoba, która zawiera link do zawartości wideo lub audio i jego szczegó
 
 Na [warunki dotyczące usług Online Azure](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST), całkowicie właścicielem zawartości, a firma Microsoft będzie tylko dostępu do zawartości i metadanych i szczegółowe informacje, które Video Indexer wyodrębnia z zawartości zgodnie z pliku OST i firmy Microsoft Zasady zachowania poufności.
 
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Należą modele niestandardowe, które mogę kompilować Moje konto usługi Video Indexer dostępne dla innych kont?
+
+ Nie, niestandardowe modele, tworzonych w ramach Twojego konta nie są dostępne na inne konto. Usługa Video Indexer umożliwia obecnie Tworzenie niestandardowego [marek](customize-brands-model-overview.md), [języka](customize-language-model-overview.md), i [osoby](customize-person-model-overview.md) modeli w ramach Twojego konta. Modele te są dostępne tylko w ramach konta, w którym zostały utworzone modele.
+  
 ### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Zawartość jest indeksowane przez indeksator wideo, przechowywane w regionie platformy Azure, której używam Video Indexer?
 
 Tak, zawartość i jego szczegółowe informacje są przechowywane w obrębie regionu świadczenia usługi Azure, chyba że masz ręcznej konfiguracji w ramach subskrypcji Azure, który używa wielu regionach platformy Azure. 

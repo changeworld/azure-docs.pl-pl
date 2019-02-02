@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 3fb9f98e94191c019b78c5666d2ff5336cc895eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fdbae70718ad62f96dda85e2d9574c7ec2d5ef23
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021870"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561097"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Utwórz wyzwalacz, który uruchamia potok w odpowiedzi na zdarzenie
 
@@ -30,7 +30,7 @@ Wprowadzenie 10 minutowy i pokaz działania tej funkcji Obejrzyj poniższy film 
 
 
 > [!NOTE]
-> Integracja opisanych w tym artykule jest zależna od [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Upewnij się, że Twoja subskrypcja jest zarejestrowana za pomocą dostawcy zasobów usługi Event Grid. Aby uzyskać więcej informacji, zobacz [dostawcy zasobów i ich typy](../azure-resource-manager/resource-manager-supported-services.md#portal).
+> Integracja opisanych w tym artykule jest zależna od [usługi Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Upewnij się, że Twoja subskrypcja jest zarejestrowana za pomocą dostawcy zasobów usługi Event Grid. Aby uzyskać więcej informacji, zobacz [dostawcy zasobów i ich typy](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>Interfejs użytkownika usługi Data Factory
 
@@ -69,10 +69,10 @@ Poniższa tabela zawiera omówienie elementów schematu that are related to Wyzw
 
 | **JSON Element** | **Opis** | **Typ** | **Dozwolone wartości** | **Wymagane** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **Zakres** | Identyfikator zasobu usługi Azure Resource Manager na koncie magazynu. | Ciąg | Identyfikator usługi Azure Resource Manager | Yes |
+| **Zakres** | Identyfikator zasobu usługi Azure Resource Manager na koncie magazynu. | String | Identyfikator usługi Azure Resource Manager | Yes |
 | **Zdarzenia** | Typ zdarzenia, które powodują uruchomienie tego wyzwalacza. | Tablica    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Tak, dowolnej kombinacji tych wartości. |
-| **blobPathBeginsWith** | Ścieżka obiektu blob musi zaczynać się od wzorca parametru Aby uruchomić wyzwalacz. Na przykład `/records/blobs/december/` tylko uruchamia wyzwalacz dla obiektów blob w `december` folderze `records` kontenera. | Ciąg   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |
-| **blobPathEndsWith** | Ścieżka obiektu blob musi kończyć się przy użyciu wzorca parametru Aby uruchomić wyzwalacz. Na przykład `december/boxes.csv` tylko uruchamia wyzwalacz dla obiektów blob o nazwie `boxes` w `december` folderu. | Ciąg   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |
+| **blobPathBeginsWith** | Ścieżka obiektu blob musi zaczynać się od wzorca parametru Aby uruchomić wyzwalacz. Na przykład `/records/blobs/december/` tylko uruchamia wyzwalacz dla obiektów blob w `december` folderze `records` kontenera. | String   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |
+| **blobPathEndsWith** | Ścieżka obiektu blob musi kończyć się przy użyciu wzorca parametru Aby uruchomić wyzwalacz. Na przykład `december/boxes.csv` tylko uruchamia wyzwalacz dla obiektów blob o nazwie `boxes` w `december` folderu. | String   | | Należy podać wartość dla co najmniej jednej z tych właściwości: `blobPathBeginsWith` lub `blobPathEndsWith`. |
 
 ## <a name="examples-of-event-based-triggers"></a>Przykłady Wyzwalacze oparte na zdarzeniach
 

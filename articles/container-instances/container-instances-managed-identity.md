@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: b46539758d88fe7a0e27799b5da581255fa5f075
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: bf807a4d24b72c948707ade28f06c4eb2a54c0a0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229336"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657029"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Jak używać zarządzanych tożsamości z usługi Azure Container Instances
 
@@ -134,7 +134,7 @@ az container show --resource-group myResourceGroup --name mycontainer
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Udzielanie tożsamości przypisanych przez użytkownika dostępu do usługi Key Vault
 
-Uruchom następujące polecenie [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) polecenie, aby ustawić zasady dostępu w usłudze Key Vault. Poniższy przykład umożliwia skonfigurowanie tożsamości przypisanych przez użytkownika do pobrania wpisów tajnych z usługi Key Vault:
+Uruchom następujące polecenie [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) polecenie, aby ustawić zasady dostępu w usłudze Key Vault. Poniższy przykład umożliwia skonfigurowanie tożsamości przypisanych przez użytkownika do pobrania wpisów tajnych z usługi Key Vault:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
@@ -216,7 +216,7 @@ spID=$(az container show --resource-group myResourceGroup --name mycontainer --q
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Udzielanie dostępu do kontenera grupy do usługi Key Vault
 
-Uruchom następujące polecenie [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) polecenie, aby ustawić zasady dostępu w usłudze Key Vault. Poniższy przykład umożliwia skonfigurowanie tożsamości zarządzanych przez system do pobrania wpisów tajnych z usługi Key Vault:
+Uruchom następujące polecenie [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) polecenie, aby ustawić zasady dostępu w usłudze Key Vault. Poniższy przykład umożliwia skonfigurowanie tożsamości zarządzanych przez system do pobrania wpisów tajnych z usługi Key Vault:
 
 ```azurecli-interactive
  az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get

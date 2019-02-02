@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2019
+ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 90cd6f640188408771b3a64a31aadf89cfefcaae
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f61f420b6a738a410deed2d68acc06862600104f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487867"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563341"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Chociaż można monitorować różne warunki przy użyciu usługi Log Analytics lub Azure Monitor, nie zostało zaprojektowane do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
@@ -142,13 +142,6 @@ W tym miejscu można szybko zidentyfikować najważniejsze problemy krytyczne, w
 **Dystrybucji maszyny Wirtualnej przez system operacyjny** lista maszyn wirtualnych w rozbiciu na wersję Windows lub dystrybucja systemu Linux, wraz z ich wersji. W każdej kategorii systemu operacyjnego maszyny wirtualne są podzielone dalsze na podstawie kondycji maszyny Wirtualnej. 
 
 ![Szczegółowe informacje z maszyny Wirtualnej maszyny wirtualnej dystrybucji perspektywy](./media/vminsights-health/vminsights-vmdistribution-by-os.png)
-
-Stany kondycji zdefiniowane dla maszyny Wirtualnej są następujące: 
-
-* **Dobra** — wykryte nie problemy dla maszyny Wirtualnej i czy działa on zgodnie z potrzebami.  
-* **Krytyczne** — co najmniej jeden problem krytyczny, są wykrywane, które należy uwzględnić w celu przywrócenia normalnej funkcjonalności, zgodnie z oczekiwaniami. 
-* **Ostrzeżenie** — co najmniej jeden problem, są wykrywane, które muszą być kierowane lub stan kondycji może stać się krytyczna.  
-* **Nieznany** — Jeśli usługa nie był w stanie nawiązać połączenie z maszyną Wirtualną, a jego stan zmieni się stan nieznany.  
 
 Możesz kliknąć dowolny element kolumny — **liczba maszyn wirtualnych**, **krytyczny**, **ostrzeżenie**, **dobra kondycja** lub **nieznany** do Przechodzenie do szczegółów w **maszyn wirtualnych** strony wyświetlenie listy filtrowane wyniki pasujące kolumny wybranej. Na przykład, jeśli chcemy przejrzeć wszystkie uruchomione maszyny wirtualne **Red Hat Enterprise Linux w wersji 7.5**, kliknij pozycję **liczba maszyn wirtualnych** wartość dla tego systemu operacyjnego i otworzy następującą stronę, wyświetlanie listy maszyn wirtualnych zgodnych Ten filtr i ich stan kondycji obecnie znane.  
 

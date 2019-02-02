@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c8d34ecb46721a8dd8dc1b1ad9f73c9f2ca2b3a2
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507403"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564446"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Rozwiązywanie problemów z usługą Azure Files w Windows
 
@@ -265,11 +265,11 @@ Można na przykład, ustaw ją na 0x100000 i sprawdzić, czy wydajność stają 
 
 ### <a name="cause"></a>Przyczyna
 
-Błąd AadDsTenantNotFound się dzieje, gdy użytkownik próbuje [Włącz uwierzytelnianie usługi Azure Active Directory (AAD) dla usługi Azure Files](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-active-directory-enable) na koncie magazynu gdzie [AAD Domain Service(AAD DS)](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-overview) nie jest tworzony w usłudze AAD dzierżawy skojarzonej subskrypcji.  
+Błąd AadDsTenantNotFound się dzieje, gdy użytkownik próbuje [Włącz uwierzytelnianie usługi Azure Active Directory (AAD) dla usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) na koncie magazynu gdzie [AAD Domain Service(AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nie jest tworzony w usłudze AAD dzierżawy skojarzonej subskrypcji.  
 
 ### <a name="solution"></a>Rozwiązanie
 
-Włącz DS usługi AAD w dzierżawie usługi AAD, subskrypcji, wdrożoną konta magazynu. Niezbędne są uprawnienia administratora dzierżawy usługi AAD, aby utworzyć domeny zarządzanej. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie z szczegółowymi wskazówkami dotyczącymi [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Włącz DS usługi AAD w dzierżawie usługi AAD, subskrypcji, wdrożoną konta magazynu. Niezbędne są uprawnienia administratora dzierżawy usługi AAD, aby utworzyć domeny zarządzanej. Jeśli nie jesteś administratorem dzierżawy usługi Azure AD, skontaktuj się z administratorem i postępuj zgodnie z szczegółowymi wskazówkami dotyczącymi [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybko rozwiązać problem.

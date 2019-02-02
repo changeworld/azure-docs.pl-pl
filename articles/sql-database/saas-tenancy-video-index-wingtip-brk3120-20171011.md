@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
-ms.date: 05/14/2018
-ms.openlocfilehash: ad1ae537038c84aac7bebe40a1db124521933f3d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: bbe220780a3c21e7bfb15d0568904af4ed47f765
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608906"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567557"
 ---
 # <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Film wideo indeksowane i adnotację dla wielodostępnych aplikacji SaaS wykorzystujących usługę Azure SQL Database
 
@@ -77,7 +77,7 @@ Poniższe sekcje są łącza do ich odpowiednimi sekcjami adnotacjami w dalszej 
 - [31. Zarządzanie schematami na dużą skalę, 1:10:33](#anchor-image-wtip-min11033)
 - [32. Zapytanie rozproszone w bazach danych dzierżawy, 1:12:21](#anchor-image-wtip-min11221)
 - [33. Pokaz Generowanie biletów, 1:12:32](#anchor-image-wtip-min11232)
-- [34. Analiza w programie SSMS ad hoc, 1:12:46](#anchor-image-wtip-min11246)
+- [34. SSMS adhoc analytics, 1:12:46](#anchor-image-wtip-min11246)
 - [35. Wyodrębnianie danych dzierżawy do usługi SQL DW, 1:16:32](#anchor-image-wtip-min11632)
 - [36. Wykres rozkładu codzienne sprzedaży, 1:16:48](#anchor-image-wtip-min11648)
 - [37. Podsumowanie i wezwań do działania, 1:19:52](#anchor-image-wtip-min11952)
@@ -269,8 +269,8 @@ Kliknięcie dowolnego obrazu zrzutu ekranu spowoduje przejście do lokalizacji d
 
 
 &nbsp; <a name="anchor-image-wtip-min11246"/>
-#### <a name="34-ssms-adhoc-analytics-11235"></a>34. Analiza w programie SSMS ad hoc, 1:12:35
-[![Analizy ad hoc w programie SSMS][image-wtip-min11246-ssms-adhoc-analytics]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4355)
+#### <a name="34-ssms-adhoc-analytics-11235"></a>34. SSMS adhoc analytics, 1:12:35
+[![SSMS adhoc analytics][image-wtip-min11246-ssms-adhoc-analytics]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=4355)
 
 
 &nbsp; <a name="anchor-image-wtip-min11632"/>

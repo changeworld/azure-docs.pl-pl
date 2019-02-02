@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: ebd374cc8792545d1db57f624a5831dc9ded272f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 12c71086509b0c7017b8326c46ed4a31270ef261
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102128"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657386"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -117,7 +117,7 @@ Jeśli używane są wszystkie opartego na adresach URL serwera proxy zapory do s
 
 **Moduł zbierający nie może połączyć się z Internetem z powodu niepowodzenia weryfikacji certyfikatu**
 
-Może to nastąpić, jeśli używasz przechwytujący serwer proxy do łączenia się z Internetem, a certyfikat serwera proxy na maszynie Wirtualnej modułu zbierającego nie została zaimportowana. Można zaimportować certyfikat serwera proxy wykonując kroki szczegółowe [tutaj](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity).
+Może to nastąpić, jeśli używasz przechwytujący serwer proxy do łączenia się z Internetem, a certyfikat serwera proxy na maszynie Wirtualnej modułu zbierającego nie została zaimportowana. Można zaimportować certyfikat serwera proxy wykonując kroki szczegółowe [tutaj](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 **Moduł zbierający nie można połączyć z projektu przy użyciu Identyfikatora projektu i kluczy I skopiowane z portalu.**
 

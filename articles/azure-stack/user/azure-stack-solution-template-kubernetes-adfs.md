@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b032dea67bba6f78b8172e772ab2f8fe492f39f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fa95915615efdd8832a983d03a600beec23d1247
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250439"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658950"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack przy użyciu usługi Active Directory Federation Services
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
-> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
+> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony platformę Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą.
 
 Możesz wykonać kroki opisane w tym artykule, aby wdrożyć i skonfigurować zasoby dla rozwiązania Kubernetes. Wykonaj następujące kroki federacyjnych są usługi Active Directory (AD FS) usługi zarządzania tożsamościami.
 
@@ -66,7 +66,7 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
 
     - Potrzebujesz następujących rodzajów informacji:
 
-        | Value | Opis |
+        | Wartość | Opis |
         | ---   | ---         |
         | Punkt końcowy usługi Azure Resource Manager | Menedżer zasobów platformy Azure to platforma zarządzania, która umożliwia administratorom wdrażanie, zarządzanie i monitorowanie zasobów platformy Azure. Usługa Azure Resource Manager może obsługiwać te zadania jako grupę, a nie indywidualnie, w ramach jednej operacji.<br>Punkt końcowy w usłudze Azure Stack Development Kit (ASDK) to: `https://management.local.azurestack.external/`<br>Punktu końcowego w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Identyfikator subskrypcji | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |
@@ -107,7 +107,7 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
 
     - Potrzebujesz następujących rodzajów informacji:
 
-        | Value | Opis |
+        | Wartość | Opis |
         | ---   | ---         |
         | Ścieżka do certyfikatu | Ścieżka pliku lub nazwa FQDN certyfikatu. |
         | Hasło certyfikatu | Hasło certyfikatu. |

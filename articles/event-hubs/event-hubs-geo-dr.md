@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091350"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562206"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Usługa Azure Event Hubs — odzyskiwanie po awarii geograficznie 
 
@@ -43,11 +43,11 @@ W tym artykule są używane następujące terminy:
 
 -  *Alias*: Nazwa konfiguracji odzyskiwania po awarii, który został ustawiony. Alias zapewnia pojedynczy ciąg stabilne połączenie w pełni kwalifikowanej domeny nazwę (FQDN). Aplikacje za pomocą te parametry połączenia aliasu połączyć z przestrzeni nazw. 
 
--  *Przestrzeń nazw podstawowy/pomocniczy*: przestrzenie nazw, które odnoszą się do aliasu. Podstawowa przestrzeń nazw jest "aktywny" i odbiera komunikaty (może to być istniejącej lub nowej przestrzeni nazw). Pomocnicza przestrzeń nazw jest "pasywny" i nie otrzymywać wiadomości. Metadanych między obiema jest zsynchronizowany, więc zarówno bezproblemowo może akceptować komunikaty bez wprowadzania żadnych zmian parametry aplikacji, jak połączenie lub kod. Aby upewnić się, że tylko aktywnej przestrzeni nazw odbiera komunikaty, musisz użyć tego aliasu. 
+-  *Przestrzeń nazw podstawowy/pomocniczy*: Przestrzenie nazw, które odnoszą się do aliasu. Podstawowa przestrzeń nazw jest "aktywny" i odbiera komunikaty (może to być istniejącej lub nowej przestrzeni nazw). Pomocnicza przestrzeń nazw jest "pasywny" i nie otrzymywać wiadomości. Metadanych między obiema jest zsynchronizowany, więc zarówno bezproblemowo może akceptować komunikaty bez wprowadzania żadnych zmian parametry aplikacji, jak połączenie lub kod. Aby upewnić się, że tylko aktywnej przestrzeni nazw odbiera komunikaty, musisz użyć tego aliasu. 
 
--  *Metadane*: jednostki, takie jak usługa event hubs i grupy konsumentów; i ich właściwości usługi, które są skojarzone z przestrzenią nazw. Należy pamiętać, że tylko jednostek i ich ustawienia są replikowane automatycznie. Komunikaty i zdarzenia nie są replikowane. 
+-  *metadane*: Jednostki, takie jak usługa event hubs i grupy konsumentów; i ich właściwości usługi, które są skojarzone z przestrzenią nazw. Należy pamiętać, że tylko jednostek i ich ustawienia są replikowane automatycznie. Komunikaty i zdarzenia nie są replikowane. 
 
--  *Tryb failover*: proces aktywacji pomocniczej przestrzeni nazw.
+-  *Tryb failover*: Proces aktywowanie pomocniczej przestrzeni nazw.
 
 ## <a name="setup-and-failover-flow"></a>Przepływ instalacji i trybu failover
 
@@ -102,12 +102,12 @@ Należy zwrócić uwagę następujące kwestie, które należy uwzględnić w te
 
 4. Synchronizowanie jednostek może zająć trochę czasu około 50 – 100 jednostek na minutę.
 
-## <a name="availability-zones-preview"></a>Strefy dostępności (wersja zapoznawcza)
+## <a name="availability-zones"></a>Strefy dostępności 
 
-Event Hubs standardowej jednostki SKU obsługuje również [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure. 
+Obsługuje zdarzenie Hubs standardowej jednostki SKU [strefy dostępności](../availability-zones/az-overview.md), zapewniając izolowane od usterek lokalizacje w regionie platformy Azure. 
 
 > [!NOTE]
-> Strefy dostępności w wersji zapoznawczej jest obsługiwana tylko w programie **środkowe stany USA**, **wschodnie stany USA 2**, i **Francja środkowa** regionów.
+> Obsługa stref dostępności platformy Azure Event Hubs w warstwie standardowa jest dostępna tylko w [regionów świadczenia usługi Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones) gdzie strefy dostępności są obecne.
 
 Strefy dostępności można włączyć na nowe przestrzenie nazw, przy użyciu witryny Azure portal. Usługa Event Hubs nie obsługuje migracji istniejącej przestrzeni nazw. Nie można wyłączyć nadmiarowości strefy po jej włączeniu, w ramach przestrzeni nazw.
 

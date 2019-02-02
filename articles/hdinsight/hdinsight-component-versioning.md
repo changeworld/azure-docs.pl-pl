@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4b9c57785b9b3176def495af6bc5956d70fa5c35
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971124"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657913"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?
 
@@ -49,7 +49,7 @@ Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poni�
 | Apache Mahout |-|0.9.0+ |0.9.0+ |0.9.0+ |0.9.0+ |0.9.0 |0.9.0 |-|
 | Apache Phoenix |5 |4.7.0 |4.7.0 |4.4.0 |4.4.0 |4.2.0 |4.0.0.2.1.7.0-2162 |-|
 | Apache Spark |2.3.1 |2.3.0, 2.2.0, 2.1.0 |1.6.2, 2.0 |1.6.0 |1.5.2 |1.3.1 (tylko Windows) |-|-|
-| Apache, usługi Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
+| Apache Livy |0,5 |0.4 |0.3 |0.3 |0.2 |-|-|-|
 | Apache Kafka | 1.1 |1.1, 1.0, 0.10.1 | 0.10.0 | 0.9.0 |-|-|-|-|
 | Apache Ambari | 2.7.0 |2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 |-|-|-|
 | Apache Zeppelin | 0.8.0 |0.7.0 |-|-|-|-|-|-|
@@ -98,7 +98,7 @@ W poniższej tabeli wymieniono wersje HDInsight, które są **nie** dostępne w 
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2 grudnia 2015 r. |27 czerwca 2016 r. |Do 31 lipca 2017 r. |Yes |Nie |
 | HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS lub Windows Server 2012 R2 |18 luty 2015 r. |1 marca 2016 r. |1 kwietnia 2017 r. |Yes |Nie |
 | HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |24 czerwca 2014 r. |18 maja 2015 r. |30 czerwca 2016 r. |Yes |Nie |
-| HDInsight 3.0 |HDP W WERSJI 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Yes |Nie |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |11 lutego 2014 r. |17 września 2014 r. |Do 30 czerwca 2015 |Yes |Nie |
 | HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |28 października 2013 |12 maja 2014 r. |Do 31 maja 2015 r. |Yes |Nie |
 | HDInsight w wersji 1.6 |HDP 1.1 | |28 października 2013 |26 kwietnia 2014 r. |Do 31 maja 2015 r. |Nie |Nie |
 
@@ -162,7 +162,7 @@ Po wycofaniu HDInsight na Windows nie można utworzyć nowy klaster HDInsight Wi
 ### <a name="which-versions-of-hdinsight-on-windows-are-affected"></a>Które wersje HDInsight na Windows dotyczy problem?
 Usługa Azure HDInsight w wersji 3.3 jest ostatnią wersję HDInsight for Windows. Zanim HDInsight na Windows została wycofana, wszystkie wersje klastrów HDInsight Windows 3.3 lub starszym muszą być migrowane do HDInsight w systemie Linux w wersji 3.5 lub nowszej. Migrowanie klastrów do HDInsight w systemie Linux, można zachować możliwość tworzenia nowych klastrów lub zmienianie jej rozmiaru istniejących klastrów. 
 
-### <a name="what-do-i-need-to-do"></a>Co należy zrobić?
+### <a name="what-do-i-need-to-do"></a>Co muszę zrobić?
 Migrowanie klastry usługi HDInsight Windows do obsługiwanych klastra HDInsight w systemie Linux przed 31 lipca 2018 r. Dowiedz się więcej w [dokumentu migrace HDInsight](hdinsight-migrate-from-windows-to-linux.md). Aby uzyskać szczegółowe informacje o wersji usługi Azure HDInsight, zobacz listę [obsługiwane wersje](hdinsight-component-versioning.md#supported-hdinsight-versions). 
 
 ### <a name="where-do-i-find-the-cluster-os-type"></a>Gdzie znaleźć typ systemu operacyjnego klastra?
@@ -228,16 +228,46 @@ W poniższej tabeli wymieniono domyślne rozmiary maszyny wirtualnej (VM) w przy
 
 * Wszystkie obsługiwane regiony z wyjątkiem Brazylii Południowej i Japonia, część zachodnia:
 
-  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne | Storm | platforma Spark  | ML Server |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Główny: domyślny rozmiar maszyny Wirtualnej |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
-  | Główny: zalecane rozmiary maszyn wirtualnych |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2 |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2  | D13,<br/> D14 |A4, wersja 2,<br/> A8, wersja 2,<br/> A2m v2 |D12 v2<br/> D13 v2<br/> D14 v2 |D12 v2<br/> D13 v2<br/> D14 v2 |
-  | Proces roboczy: domyślny rozmiar maszyny Wirtualnej |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
-  | Proces roboczy: zalecane rozmiary maszyn wirtualnych |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2 |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2  | D13,<br/> D14 |D3, wersja 2,<br/> Typów D4 v2<br/> D12 v2 |Typów D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |Typów D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
-  | Dozorcy: domyślny rozmiar maszyny Wirtualnej | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
-  | Dozorcy: zalecane rozmiary maszyn wirtualnych | |A4, wersja 2,<br/> A8, wersja 2,<br/> A2m v2 | | A2 v2<br/> A4, wersja 2,<br/> A8 v2 | | |
-  | Edge: domyślny rozmiar maszyny Wirtualnej | | | | | |D4 v2 |
-  | Edge: zalecany rozmiar maszyny Wirtualnej | | | | | |Typów D4 v2<br/> D12 v2<br/> D13 v2<br/> D14 v2 |
+<html><body><table width="100%">
+<tr align="left"><th>Typ klastra</th><th>Hadoop</th><th>HBase&nbsp;&nbsp;</th><th>Zapytanie interakcyjne</th><th>System STORM&nbsp;&nbsp;</th><th>Platforma Spark&nbsp;&nbsp;</th><th>ML Server&nbsp;</th><th>Kafka&nbsp;</th></tr>
+
+<tr><td>Główny: domyślny rozmiar maszyny Wirtualnej</td><td>D12 v2</td><td>D12 v2</td><td>D13 v2</td><td>A3</td><td>D12 v2</td><td>D12 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="4" valign="top">Główny: zalecane rozmiary maszyn wirtualnych</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>A4 v2</td><td>D12 v2</td><td>D12 v2</td><td>A2M, wersja 2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>A8 v2</td><td>D13 v2</td><td>D13 v2</td><td>D3 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>A2m v2</td><td>D14 v2</td><td>D14 v2</td><td>D4 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E32 v3</td><td>E4 v3</td><td>E4 v3</td><td>E4 v3</td><td>D12 v2</td></tr>
+
+<tr><td>Proces roboczy: domyślny rozmiar maszyny Wirtualnej</td><td>D4 v2</td><td>D4 v2</td><td>D14 v2</td><td>D3 v2</td><td>D13 v2</td><td>D4 v2</td><td>4 D12v2 z 2 dyski S30 dla każdego brokera</td></tr>
+
+<tr><td rowspan="8" valign="top">Proces roboczy: zalecane rozmiary maszyn wirtualnych</td><td>D3 v2</td><td>D3 v2</td><td>D13</td><td>D3 v2</td><td>D4 v2</td><td>D4 v2</td><td>D13 v2</td></tr>
+<tr><td>D4 v2</td><td>D4 v2</td><td>D14</td><td>D4 v2</td><td>D12 v2</td><td>D12 v2</td><td>DS12 v2</td></tr>
+<tr><td>D12 v2</td><td>D12 v2</td><td>E16 v3</td><td>D12 v2</td><td>D13 v2</td><td>D13 v2</td><td>DS13 v2</td></tr>
+<tr><td>E4 v3</td><td>E4 v3</td><td>E20 v3</td><td>E4 v3</td><td>D14 v2</td><td>D14 v2</td><td>E4 v3</td></tr>
+<tr><td></td><td></td><td>E32 v3</td><td></td><td>E16 v3</td><td>E16 v3</td><td>ES4 v3</td></tr>
+<tr><td></td><td></td><td>E64 v3</td><td></td><td>E20 v3</td><td>E20 v3</td><td>E8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E32 v3</td><td>E32 v3</td><td>ES8 v3</td></tr>
+<tr><td></td><td></td><td></td><td></td><td>E64 v3</td><td>E64 v3</td><td></td></tr>
+
+<tr><td>Dozorcy: domyślny rozmiar maszyny Wirtualnej</td><td></td><td>A4 v2</td><td>A4 v2</td><td>A4 v2</td><td></td><td>A2 v2</td><td>D3v2</td></tr>
+
+<tr><td rowspan="3" valign="top">Dozorcy: zalecane rozmiary maszyn wirtualnych</td><td></td><td>A4 v2</td><td></td><td>A2 v2</td><td></td><td></td><td>A2M, wersja 2</td></tr>
+<tr><td></td><td>A8 v2</td><td></td><td>A4 v2</td><td></td><td></td><td>D3 v2</td></tr>
+<tr><td></td><td>A2m v2</td><td></td><td>A8 v2</td><td></td><td></td><td>E8 v3</td></tr>
+
+<tr align="left"><td>Edge: domyślny rozmiar maszyny Wirtualnej</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+
+<tr><td rowspan="8" valign="top">Edge: zalecany rozmiar maszyny Wirtualnej</td><td></td><td></td><td></td><td></td><td></td><td>D4 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D12 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D13 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>D14 v2</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E16 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E20 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E32 v3</td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td>E64 v3</td><td></td></tr>
+
+</table></body></html>
+
 * Brazylia Południowa i Japonia, część zachodnia tylko (nie rozmiary v2):
 
   | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne |Storm | platforma Spark | Usługi ML |

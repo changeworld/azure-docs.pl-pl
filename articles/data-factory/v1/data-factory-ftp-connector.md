@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 52c89804c87348843bb7a4006ab38e4d417740ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adca66b46fad1220b49af327797cc4f91d216091
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025440"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564667"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Przenoszenie danych z serwera FTP za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Da
 Możesz skopiować dane z serwera FTP do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Usługa Data Factory obsługuje obecnie tylko przenosi dane z serwera FTP do innych magazynów danych, ale nie przenosi dane z innych danych są przechowywane na serwerze FTP. Obsługuje ona zarówno lokalnie i w chmurze serwerów FTP.
 
 > [!NOTE]
-> Działanie kopiowania nie powoduje usunięcia pliku źródłowego, po pomyślnym są kopiowane do lokalizacji docelowej. Jeśli zachodzi potrzeba usunięcia pliku źródłowego po kopiowania zakończonego powodzeniem, Utwórz niestandardowe działanie, aby usunąć ten plik, a następnie użyć działania w potoku. 
+> Działanie kopiowania nie powoduje usunięcia pliku źródłowego, po pomyślnym są kopiowane do lokalizacji docelowej. Jeśli zachodzi potrzeba usunięcia pliku źródłowego po kopiowania zakończonego powodzeniem, Utwórz niestandardowe działanie, aby usunąć ten plik, a następnie użyć działania w potoku.
 
 ## <a name="enable-connectivity"></a>Włącz połączenia
 Jeśli chcesz przenieść dane z **lokalnych** serwera FTP do chmury dane magazynu (na przykład do magazynu obiektów Blob platformy Azure), zainstalować i używać bramy zarządzania danymi. Brama zarządzania danymi to agent klienta, który jest zainstalowany na maszynie lokalnej i umożliwia usług cloud services, połączyć się z zasobami lokalnymi. Aby uzyskać więcej informacji, zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md). Instrukcje krok po kroku na temat ustawień dotyczących Konfigurowanie bramy i korzystania z niego, zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md). Aby nawiązać połączenie z serwerem FTP będą używać bramy, nawet jeśli serwer znajduje się na infrastrukturę platformy Azure jako usługa (IaaS) maszyny wirtualnej (VM).
@@ -86,7 +86,7 @@ W poniższej tabeli opisano specyficzne dla usługi FTP, połączone elementy JS
     "name": "FTPLinkedService",
     "properties": {
         "type": "FtpServer",
-        "typeProperties": {        
+        "typeProperties": {
             "authenticationType": "Anonymous",
               "host": "myftpserver.com"
         }
@@ -99,7 +99,7 @@ W poniższej tabeli opisano specyficzne dla usługi FTP, połączone elementy JS
 ```JSON
 {
     "name": "FTPLinkedService",
-      "properties": {
+    "properties": {
     "type": "FtpServer",
         "typeProperties": {
             "host": "myftpserver.com",
@@ -107,7 +107,7 @@ W poniższej tabeli opisano specyficzne dla usługi FTP, połączone elementy JS
             "username": "Admin",
             "password": "123456"
         }
-      }
+    }
 }
 ```
 
@@ -120,7 +120,7 @@ W poniższej tabeli opisano specyficzne dla usługi FTP, połączone elementy JS
         "type": "FtpServer",
         "typeProperties": {
             "host": "myftpserver.com",
-            "authenticationType": "Basic",    
+            "authenticationType": "Basic",
             "username": "Admin",
             "password": "123456",
             "port": "21",
@@ -144,7 +144,7 @@ W poniższej tabeli opisano specyficzne dla usługi FTP, połączone elementy JS
             "encryptedCredential": "xxxxxxxxxxxxxxxxx",
             "gatewayName": "mygateway"
         }
-      }
+    }
 }
 ```
 
@@ -156,12 +156,12 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zesta
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
 | folderPath |Podrzędną do folderu. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mają ścieżki folderu oparte na początku wycinka i zakończenia daty i godziny. |Yes |
-| fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych, nazwę wygenerowanego pliku znajduje się w następującym formacie: <br/><br/>Dane. <Guid>.txt (przykład: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt) |Nie |
-| obiektu fileFilter |Określ filtr, który ma być używany do Wybierz podzbiór plików w **folderPath**, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **obiektu fileFilter** jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu pliku System (HDFS, Hadoop Distributed). |Nie |
+| fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych, nazwę wygenerowanego pliku znajduje się w następującym formacie: <br/><br/>Dane. <Guid>.txt (przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
+| fileFilter |Określ filtr, który ma być używany do Wybierz podzbiór plików w **folderPath**, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **obiektu fileFilter** jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu pliku System (HDFS, Hadoop Distributed). |Nie |
 | partitionedBy |Można określić dynamiczny **folderPath** i **fileName** danych szeregów czasowych. Na przykład można określić **folderPath** , jest sparametryzowane za każdą godzinę danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz skopiować pliki, ponieważ są one między magazynami oparte na plikach (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**, i są obsługiwane poziomy **optymalna** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
-| useBinaryTransfer |Określ, czy do używania trybu binarnego transferu. Wartości są względem niego spełnione w trybie binarnym (jest to wartość domyślna), a wartość false dla ASCII. Tej właściwości należy używać tylko przypadku typu skojarzonej połączonej usługi typu: SerwerFTP. |Nie |
+| useBinaryTransfer |Określ, czy do używania trybu binarnego transferu. Wartości są względem niego spełnione w trybie binarnym (jest to wartość domyślna), a wartość false dla ASCII. Tej właściwości należy używać tylko przypadku typu skojarzonej połączonej usługi typu: FtpServer. |Nie |
 
 > [!NOTE]
 > **Nazwa pliku** i **obiektu fileFilter** nie mogą być używane jednocześnie.
@@ -188,7 +188,7 @@ W tym przykładzie {wycinek} jest zastępowana wartością zmiennej systemowej u
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
@@ -209,7 +209,7 @@ W działaniu kopiowania, gdy źródłem jest typu **FileSystemSource**, następu
 | cykliczne |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z serwera FTP do obiektu Blob platformy Azure
-Ten przykład pokazuje, jak skopiować dane z serwera FTP do usługi Azure Blob storage. Jednak możesz skopiować dane bezpośrednio do ujścia, o których wspomniano w [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats), za pomocą działania kopiowania w fabryce danych.  
+Ten przykład pokazuje, jak skopiować dane z serwera FTP do usługi Azure Blob storage. Jednak możesz skopiować dane bezpośrednio do ujścia, o których wspomniano w [obsługiwane magazyny danych i formatów](data-factory-data-movement-activities.md#supported-data-stores-and-formats), za pomocą działania kopiowania w fabryce danych.
 
 W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), lub [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md):
 
@@ -235,14 +235,14 @@ Zobacz [FTP połączoną usługę](#linked-service-properties) sekcji dla różn
 {
     "name": "FTPLinkedService",
     "properties": {
-    "type": "FtpServer",
-    "typeProperties": {
-        "host": "myftpserver.com",           
-        "authenticationType": "Basic",
-        "username": "Admin",
-        "password": "123456"
+        "type": "FtpServer",
+        "typeProperties": {
+            "host": "myftpserver.com",
+            "authenticationType": "Basic",
+            "username": "Admin",
+            "password": "123456"
+        }
     }
-  }
 }
 ```
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage

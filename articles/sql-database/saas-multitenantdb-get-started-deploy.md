@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
-ms.date: 04/02/2018
-ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/16/2018
+ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352215"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567387"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Wdrażanie i eksplorowanie aplikacji z wieloma dzierżawami podzielonej na fragmenty
 
@@ -137,7 +137,7 @@ Centralna **Centrum zdarzeń** strony sieci Web zawiera listę linków dla dzier
 
 Aby kontrolować dystrybucję żądań przychodzących, aplikacja Wingtip używa [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Na stronie zdarzenia dla każdej dzierżawy zawiera nazwę dzierżawy w jego adresie URL. Każdy adres URL zawiera również wartość określonego użytkownika. Każdy adres URL przestrzegają pokazano format wykonując następujące kroki:
 
-- http://events.wingtip-mt.&lt; użytkownika&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Aplikacja zdarzeń analizuje nazwę dzierżawy w adresie URL. Nazwa dzierżawy jest *fabrikamjazzclub* w poprzednim przykładowego adresu URL.
 2. Aplikacja następnie tworzy skrót nazwy dzierżawy, aby utworzyć klucz w celu uzyskania dostępu do wykazu przy użyciu [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md).
@@ -244,7 +244,7 @@ Czasami wielodostępną bazą danych wymaga więcej zasobów na dobrą wydajnoś
 
 Obciążeń generowanych przez skryptu generatora obciążenia są wyłącznie w celach ilustracyjnych.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - Aby dowiedzieć się więcej o wielodostępnych aplikacji SaaS, zobacz [wzorce projektowe dla wielodostępnych aplikacji SaaS](saas-tenancy-app-design-patterns.md).
 

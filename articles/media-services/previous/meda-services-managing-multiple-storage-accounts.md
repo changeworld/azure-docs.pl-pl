@@ -1,27 +1,28 @@
 ---
-title: Zarządzanie nośnikiem usług zasobów na wielu kontach magazynu | Dokumentacja firmy Microsoft
-description: W tym artykule zawierają wytyczne dotyczące zarządzania zasobami usługi multimediów na wielu kontach magazynu.
+title: Zarządzanie zasobami usługi Media Services na wielu kontach magazynu | Dokumentacja firmy Microsoft
+description: W tym artykule zawierają wytyczne dotyczące zarządzania zasobami usługi Media Services na wielu kontach magazynu.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 01/31/2018
 ms.author: juliako
-ms.openlocfilehash: 8c67ce4fd9597c66e795269972d2048ddd5a60c1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d43adf7009fcd668299f018b6308765bb115b237
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886343"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565908"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie nośnikiem usług zasobów na wielu kontach magazynu
-Począwszy od programu Microsoft Azure Media Services 2.2, można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Możliwość dołączenia wielu kont magazynu do konta usługi Media Services zapewnia następujące korzyści:
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie zasobami usługi Media Services na wielu kontach magazynu
+
+Można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Możliwość dołączenia wielu kont magazynu do konta usługi Media Services zapewnia następujące korzyści:
 
 * Obciążenia równoważenia zasobów na wielu kontach magazynu.
 * Skalowanie usługi Media Services obsługi dużej ilości zawartości przetwarzania (zgodnie z aktualnie w ramach pojedynczego konta magazynu ma maksymalny limit 500 TB). 
@@ -29,12 +30,13 @@ Począwszy od programu Microsoft Azure Media Services 2.2, można dołączyć wi
 W tym artykule pokazano, jak można dołączyć wiele kont magazynu do konta usługi Media Services przy użyciu [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](/powershell/module/azurerm.media). Pokazano również, jak określić różnych kont magazynu, podczas tworzenia zasobów przy użyciu zestawu SDK usługi multimediów. 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
+
 Podczas podłączania wielu kont magazynu do konta usługi Media Services, obowiązują następujące zastrzeżenia:
 
-* Wszystkie konta magazynu dołączone do konta usługi Media Services musi być w tym samym centrum danych jako konto usługi Media Services.
-* Obecnie gdy konto magazynu jest dołączony do określonego konta usługi Media Services, go nie można odłączyć.
+* Konto usługi Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Zalecane jest korzystanie z kont magazynu w tej samej lokalizacji co konto usługi Media Services.
+* Gdy konto magazynu jest dołączony do określonego konta usługi Media Services, nie można odłączyć.
 * Konto magazynu podstawowego jest ta wskazana w czasie tworzenia konta usługi Media Services. Obecnie nie można zmienić domyślne konto magazynu. 
-* Obecnie Jeśli chcesz dodać konto magazynu chłodnego na konto AMS, konto magazynu musi być typem obiektów Blob i ustawiona na innych niż podstawowe.
+* Jeśli chcesz dodać konto magazynu chłodnego na konto AMS, konto magazynu musi być typem obiektów Blob i równa innych niż podstawowe.
 
 Inne zagadnienia:
 

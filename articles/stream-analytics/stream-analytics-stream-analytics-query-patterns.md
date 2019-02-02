@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: ffcf81ee8637c2ce01b3a7822d179609bd9dbfaa
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2aba399a45a4118dcc80e188b2d03b62b7fcbfac
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794536"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663506"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Przykłady dla typowych wzorców użycia usługi Stream Analytics zapytania
 
@@ -59,7 +59,7 @@ Na przykład wagi samochodu pochodzi na strumień wejściowy jako ciągi znaków
         TumblingWindow(second, 10)
 ```
 
-**Wyjaśnienie**: Użyj **RZUTOWANIA** instrukcji w **wagi** pola, aby określić typ jej danych. Zobacz listę obsługiwanych typów danych w [typy danych (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
+**Explanation**: Użyj **RZUTOWANIA** instrukcji w **wagi** pola, aby określić typ jej danych. Zobacz listę obsługiwanych typów danych w [typy danych (Azure Stream Analytics)](https://msdn.microsoft.com/library/azure/dn835065.aspx).
 
 ## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Przykład zapytania: Użyj Like/Not, takie jak dopasowanie wzorca
 **Opis**: Sprawdź, czy wartość pola w zdarzeniu ze wzorcem niektórych.
@@ -91,7 +91,7 @@ Na przykład Sprawdź, czy wynik zwraca talerzy licencji A zaczynać się i koń
         LicensePlate LIKE 'A%9'
 ```
 
-**Wyjaśnienie**: Użyj **takich jak** instrukcję, aby sprawdzić **LicensePlate** polu wartość. Jego powinna zaczynać A, a następnie mają dowolny ciąg zawierający zero lub więcej znaków i następnie kończyć 9. 
+**Explanation**: Użyj **takich jak** instrukcję, aby sprawdzić **LicensePlate** polu wartość. Jego powinna zaczynać A, a następnie mają dowolny ciąg zawierający zero lub więcej znaków i następnie kończyć 9. 
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Przykład zapytania: Określ logiki dla różnych przypadków/wartości (instrukcji CASE)
 **Opis**: Podaj inną obliczeń dla pola, na podstawie określonego kryterium.
@@ -128,7 +128,7 @@ Na przykład można podać, że przekazany ciąg opisu ile samochodów tego same
         TumblingWindow(second, 10)
 ```
 
-**Wyjaśnienie**: **Przypadek** wyrażenie porównuje wyrażenie zbiór proste wyrażenia do obliczenia wyniku. W tym przykładzie pojazdu sprawia, że wraz z liczbą 1 zwrócił opis ciągu innego niż pojazdu sprawia, że wraz z liczbą inna niż 1. 
+**Explanation**: **Przypadek** wyrażenie porównuje wyrażenie zbiór proste wyrażenia do obliczenia wyniku. W tym przykładzie pojazdu sprawia, że wraz z liczbą 1 zwrócił opis ciągu innego niż pojazdu sprawia, że wraz z liczbą inna niż 1. 
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Przykład zapytania: Wysyłanie danych do wielu danych wyjściowych
 **Opis**: Wysłać dane do wielu celów dane wyjściowe z jednego zadania.
@@ -185,7 +185,7 @@ Na przykład analizować dane oparte na wartościach progowych alertu i archiwiz
         [Count] >= 3
 ```
 
-**Wyjaśnienie**: **INTO** klauzuli informuje usługi Stream Analytics której dane wyjściowe do zapisywania danych do tej instrukcji.
+**Explanation**: **INTO** klauzuli informuje usługi Stream Analytics której dane wyjściowe do zapisywania danych do tej instrukcji.
 Pierwszego zapytania jest przekazywanie danych otrzymanych do pliku wyjściowego o nazwie **ArchiveOutput**.
 Drugie zapytanie jest kilka prostych agregacji i filtrowanie i przesyła wyniki do podrzędnego systemu zgłaszania alertów.
 
@@ -270,7 +270,7 @@ Na przykład jest poprzedniego samochodu na drodze płatny wykonującego ten sam
         LAG(Make, 1) OVER (LIMIT DURATION(minute, 1)) <> Make
 ```
 
-**Wyjaśnienie**: Użyj **LAG** wgląd do strumienia wejściowego jednego zdarzenia Wstecz i uzyskanie **wprowadzić** wartość. Następnie porównaj ją do **wprowadzić** wartość bieżącego zdarzenia i dane wyjściowe zdarzenia są różne.
+**Explanation**: Użyj **LAG** wgląd do strumienia wejściowego jednego zdarzenia Wstecz i uzyskanie **wprowadzić** wartość. Następnie porównaj ją do **wprowadzić** wartość bieżącego zdarzenia i dane wyjściowe zdarzenia są różne.
 
 ## <a name="query-example-find-the-first-event-in-a-window"></a>Przykład zapytania: Znajdź pierwsze zdarzenie w oknie
 **Opis**: Znajdź pierwszy samochodu co 10-minutowych interwałach.
@@ -375,7 +375,7 @@ Teraz możemy zmienić problemu i Znajdź pierwszego samochodu określonego upew
         AND Input.Time = LastInWindow.LastEventTime
 ```
 
-**Wyjaśnienie**: Istnieją dwa kroki w zapytaniu. Pierwszy z nich umożliwia znalezienie najnowszych sygnatura czasowa w systemie windows 10 minut. Drugi etap łączy wyniki pierwszego zapytania przy użyciu oryginalnego strumienia, aby znaleźć zdarzenia, które odpowiadają ostatniego sygnatury czasowe każdego okna. 
+**Explanation**: Istnieją dwa kroki w zapytaniu. Pierwszy z nich umożliwia znalezienie najnowszych sygnatura czasowa w systemie windows 10 minut. Drugi etap łączy wyniki pierwszego zapytania przy użyciu oryginalnego strumienia, aby znaleźć zdarzenia, które odpowiadają ostatniego sygnatury czasowe każdego okna. 
 
 ## <a name="query-example-detect-the-absence-of-events"></a>Przykład zapytania: Wykrywanie braku zdarzeń
 **Opis**: Sprawdź, czy strumień nie ma żadnej wartości, która spełnia określone kryterium.
@@ -411,7 +411,7 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
         LAG(Make, 1) OVER (LIMIT DURATION(second, 90)) = Make
 ```
 
-**Wyjaśnienie**: Użyj **LAG** wgląd do strumienia wejściowego jednego zdarzenia Wstecz i uzyskanie **wprowadzić** wartość. Aby porównać **upewnij** wartość w bieżącym zdarzeniu, a następnie dane wyjściowe zdarzenia, jeśli są takie same. Można również użyć **LAG** można pobrać danych dotyczących samochodów poprzedniego.
+**Explanation**: Użyj **LAG** wgląd do strumienia wejściowego jednego zdarzenia Wstecz i uzyskanie **wprowadzić** wartość. Aby porównać **upewnij** wartość w bieżącym zdarzeniu, a następnie dane wyjściowe zdarzenia, jeśli są takie same. Można również użyć **LAG** można pobrać danych dotyczących samochodów poprzedniego.
 
 ## <a name="query-example-detect-the-duration-between-events"></a>Przykład zapytania: Wykrywanie czas trwania między zdarzeniami
 **Opis**: Znajdź czas trwania podanego zdarzenia. Na przykład biorąc pod uwagę kliknięć w sieci web, określ czas spędzony na danej funkcji.
@@ -439,7 +439,7 @@ Na przykład 2 samochodów następujących po sobie z tym samym upewnij wprowadz
         Event = 'end'
 ```
 
-**Wyjaśnienie**: Użyj **ostatniego** funkcję, aby pobrać ostatniego **czasu** wartości w przypadku typu zdarzenia **Start**. **Ostatniego** używa funkcji **PARTITION BY [użytkownik]** do wskazania, że wynik jest obliczana na unikatowych użytkowników. Zapytanie ma 1-godzinnego próg Maksymalny odstęp czasu między **Start** i **zatrzymać** zdarzeń, ale można skonfigurować zgodnie z potrzebami **(LIMIT DURATION(hour, 1)**.
+**Explanation**: Użyj **ostatniego** funkcję, aby pobrać ostatniego **czasu** wartości w przypadku typu zdarzenia **Start**. **Ostatniego** używa funkcji **PARTITION BY [użytkownik]** do wskazania, że wynik jest obliczana na unikatowych użytkowników. Zapytanie ma 1-godzinnego próg Maksymalny odstęp czasu między **Start** i **zatrzymać** zdarzeń, ale można skonfigurować zgodnie z potrzebami **(LIMIT DURATION(hour, 1)**.
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Przykład zapytania: Wykrywanie warunku czas trwania
 **Opis**: Sprawdzanie, ile warunku wystąpił.
@@ -485,7 +485,7 @@ Na przykład załóżmy, że usterka spowodowała wszystkich samochodów niepopr
         AND previousWeight > 20000
 ```
 
-**Wyjaśnienie**: Użyj **LAG** Aby wyświetlić strumień wejściowy przez 24 godziny i poszukaj wystąpień gdzie **StartFault** i **StopFault** są objęte wagi < 20000.
+**Explanation**: Użyj **LAG** Aby wyświetlić strumień wejściowy przez 24 godziny i poszukaj wystąpień gdzie **StartFault** i **StopFault** są objęte wagi < 20000.
 
 ## <a name="query-example-fill-missing-values"></a>Przykład zapytania: Wypełnienie brakujących wartości
 **Opis**: Dla strumienia zdarzeń, które nie mają wartości należy utworzyć strumień zdarzeń z regularnych odstępach czasu.
@@ -528,7 +528,7 @@ Na przykład generują zdarzenie co 5 sekund, któremu podlega najbardziej nieda
     GROUP BY HOPPINGWINDOW(second, 300, 5)
 ```
 
-**Wyjaśnienie**: To zapytanie generuje zdarzenia co 5 sekund, a także generuje ostatniego zdarzenia, która została otrzymana wcześniej. [Okna Hopping](https://msdn.microsoft.com/library/dn835041.aspx "Hopping okna — usługi Azure Stream Analytics") czas trwania określa, jak daleko wstecz wygląda zapytanie można znaleźć najnowsze zdarzenie (300 sekund w tym przykładzie).
+**Explanation**: To zapytanie generuje zdarzenia co 5 sekund, a także generuje ostatniego zdarzenia, która została otrzymana wcześniej. [Okna Hopping](https://msdn.microsoft.com/library/dn835041.aspx "Hopping okna — usługi Azure Stream Analytics") czas trwania określa, jak daleko wstecz wygląda zapytanie można znaleźć najnowsze zdarzenie (300 sekund w tym przykładzie).
 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Przykład zapytania: Korelowanie dwa typy zdarzeń w ramach tego samego strumienia
@@ -558,7 +558,7 @@ Na przykład w scenariuszu IoT dla głównego piekarników alert musi zostać wy
 
 **Dane wyjściowe**:
 
-| eventTime | deviceId | Temp | komunikat alarmu | maxPowerDuringLast3mins |
+| eventTime | deviceId | Temp | alertMessage | maxPowerDuringLast3mins |
 | --- | --- | --- | --- | --- | 
 | "2018-01-01T16:05:00" | "Oven1" |30 | "Short circuit ogrzewania elementów" |15 |
 | "2018-01-01T16:06:00" | "Oven1" |20 | "Short circuit ogrzewania elementów" |15 |
@@ -602,7 +602,7 @@ WHERE
     AND t2.maxPower > 10
 ```
 
-**Wyjaśnienie**: Pierwsze zapytanie `max_power_during_last_3_mins`, używa [okna ruchomej](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) można znaleźć maksymalną wartość czujnik zasilania dla każdego urządzenia w ciągu ostatnich 3 minut. Drugie zapytanie jest dołączony do pierwszego zapytania do odnalezienia wartości zasilania w oknie najnowszych istotne dla bieżącego zdarzenia. A następnie, pod warunkiem warunki są spełnione, alert jest generowany dla tego urządzenia.
+**Explanation**: Pierwsze zapytanie `max_power_during_last_3_mins`, używa [okna ruchomej](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) można znaleźć maksymalną wartość czujnik zasilania dla każdego urządzenia w ciągu ostatnich 3 minut. Drugie zapytanie jest dołączony do pierwszego zapytania do odnalezienia wartości zasilania w oknie najnowszych istotne dla bieżącego zdarzenia. A następnie, pod warunkiem warunki są spełnione, alert jest generowany dla tego urządzenia.
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Przykład zapytania: Przetwarzanie zdarzeń niezależnie od urządzenia zegara pochylanie (substreams)
 **Opis**: Zdarzenia mogą pojawić się opóźnienia lub poza kolejnością z powodu wynikających z przesunięcia czasowego zegara między producentami zdarzeń, pochyla zegara między partycjami lub opóźnienia sieci. W poniższym przykładzie zegara urządzenia TollID 2 to dziesięć sekund za TollID 1 i zegara urządzenia dla TollID 3 wynosi pięć sekund za TollID 1. 
@@ -641,7 +641,7 @@ FROM input
 GROUP BY TUMBLINGWINDOW(second, 5), TollId
 ```
 
-**Wyjaśnienie**: [TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) klauzuli patrzy na osi czasu każdego urządzenia, osobno przy użyciu substreams. Zdarzenia danych wyjściowych dla każdej TollID są generowane, ponieważ są one obliczane, co oznacza, że zdarzenia w kolejności, w odniesieniu do każdego TollID zamiast jest zmieniana tak, jakby wszystkie urządzenia były na tej samej zegara.
+**Explanation**: [TIMESTAMP BY OVER](https://msdn.microsoft.com/azure/stream-analytics/reference/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) klauzuli patrzy na osi czasu każdego urządzenia, osobno przy użyciu substreams. Zdarzenia danych wyjściowych dla każdej TollID są generowane, ponieważ są one obliczane, co oznacza, że zdarzenia w kolejności, w odniesieniu do każdego TollID zamiast jest zmieniana tak, jakby wszystkie urządzenia były na tej samej zegara.
 
 ## <a name="query-example-remove-duplicate-events-in-a-window"></a>Przykład zapytania: Usuń zduplikowane zdarzenia w oknie
 **Opis**: Podczas wykonywania operacji takich jak obliczanie wartości średnie zdarzeń w danym przedziale czasowym, zduplikowane zdarzenia powinny być filtrowane.
@@ -687,7 +687,7 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**Wyjaśnienie**: [COUNT (DISTINCT czasu)](https://docs.microsoft.com/en-us/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie czas w przedziale czasu. Dane wyjściowe tego kroku można następnie użyć do obliczenia średniej na urządzeniu przez odrzucenie duplikatów.
+**Explanation**: [COUNT (DISTINCT czasu)](https://docs.microsoft.com/stream-analytics-query/count-azure-stream-analytics) zwraca liczbę unikatowych wartości w kolumnie czas w przedziale czasu. Dane wyjściowe tego kroku można następnie użyć do obliczenia średniej na urządzeniu przez odrzucenie duplikatów.
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 Aby uzyskać dalszą pomoc, Wypróbuj nasz [forum usługi Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).

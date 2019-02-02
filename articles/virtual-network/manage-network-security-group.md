@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 7505715641462f4a07d999ea419632bd91e925fb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 28b73a70ef9ffd4e73117d599448434823747eca
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438919"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567404"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -66,7 +66,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpi
 2. Wybierz grupy zabezpieczeń sieci na liście, który chcesz wyświetlić szczegóły. W obszarze **ustawienia** można wyświetlić **reguły zabezpieczeń dla ruchu przychodzącego** i **reguły zabezpieczeń dla ruchu wychodzącego**, **interfejsy sieciowe** i  **Podsieci** sieciowa grupa zabezpieczeń jest skojarzona z. Można również włączyć lub wyłączyć **dzienniki diagnostyczne** i widok **obowiązujących reguł zabezpieczeń**. Aby dowiedzieć się więcej, zobacz [dzienniki diagnostyczne](virtual-network-nsg-manage-log.md) i [wyświetlanie obowiązujących reguł zabezpieczeń](diagnose-network-traffic-filter-problem.md).
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, na liście, zobacz następujące artykuły:
     *   [Dziennik aktywności](../azure-monitor/platform/activity-logs-overview.md)
-    *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [Kontrola dostępu (IAM)](../role-based-access-control/overview.md)
     *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)

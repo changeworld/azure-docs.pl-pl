@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0937ad12ad74209e84ee1316a090af8a6469a044
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f74dc441016a0064aca388ce4881eeae9e7bc6d0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151621"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657862"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Zagadnienia dotyczące zabezpieczeń do uzyskiwania dostępu do aplikacji, które zdalnie za pomocą serwera Proxy aplikacji usługi Azure AD
 
@@ -48,7 +48,7 @@ Zastosować bardziej rozbudowane kontroli zasad, aby umożliwić nawiązywane s�
 
 Za pomocą [dostępu warunkowego](../conditional-access/overview.md), można zdefiniować ograniczenia, w jaki ruch jest dozwolony dostęp do Twojej aplikacji zaplecza. Można utworzyć zasady, które ograniczają logowania na podstawie lokalizacji, siły uwierzytelniania i profil ryzyka użytkownika.
 
-Dostęp warunkowy umożliwia również konfigurowanie zasad uwierzytelniania wieloskładnikowego, dodając kolejną warstwę zabezpieczeń do Twojej uwierzytelnienia użytkownika. Ponadto aplikacje też mogą być kierowane usługą Microsoft Cloud App Security za pośrednictwem dostępu warunkowego usługi Azure AD, aby zapewnić monitorowanie w czasie rzeczywistym i kontrolek przy użyciu [dostępu](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad) i [sesji](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad) zasad
+Dostęp warunkowy umożliwia również konfigurowanie zasad uwierzytelniania wieloskładnikowego, dodając kolejną warstwę zabezpieczeń do Twojej uwierzytelnienia użytkownika. Ponadto aplikacje też mogą być kierowane usługą Microsoft Cloud App Security za pośrednictwem dostępu warunkowego usługi Azure AD, aby zapewnić monitorowanie w czasie rzeczywistym i kontrolek przy użyciu [dostępu](https://docs.microsoft.com/cloud-app-security/access-policy-aad) i [sesji](https://docs.microsoft.com/cloud-app-security/session-policy-aad) zasad
 
 ### <a name="traffic-termination"></a>Zakończenie ruchu
 

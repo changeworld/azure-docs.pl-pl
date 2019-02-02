@@ -5,19 +5,19 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 01/25/2019
+ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: b335cf996de41f4eea15af1899a0c6654c2f679f
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 06651b06ae84934c16e9f1ac9f604abda8b65615
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104987"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55648577"
 ---
 ## <a name="open-cli-shell"></a>Otwórz interfejs wiersza polecenia powłoki
 
-Zalecane jest użycie [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) do wykonywania poleceń interfejsu wiersza polecenia. **Cloud Shell** jest bezpłatna, interaktywne powłoce, która służy do wykonywania kroków opisanych w tym artykule. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta. Wystarczy wybrać przycisk kopiowania, aby skopiować kod, wklej go w usłudze Cloud Shell, a następnie naciśnij Enter, aby go uruchomić. Usługę Cloud Shell można otworzyć na kilka sposobów:
+Zalecane jest użycie [usługi Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) do wykonywania poleceń interfejsu wiersza polecenia. **Cloud Shell** jest bezpłatna, interaktywne powłoce, która służy do wykonywania kroków opisanych w tym artykule. Typowe narzędzia platformy Azure są wstępnie zainstalowane i skonfigurowane w usłudze Cloud Shell na potrzeby użycia z poziomu konta. Zapewnia elastyczność wyboru powłoki, która najlepiej pasuje do sposobu, w jaki pracujesz. Użytkownicy systemu Linux mogą wybrać korzystanie z powłoki Bash, zaś użytkownicy systemu Windows mogą wybrać środowisko PowerShell.
 
 Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
@@ -29,13 +29,21 @@ Jeśli interfejs wiersza polecenia może otworzyć Twoją domyślną przeglądar
 
 ### <a name="specify-location-of-files"></a>Określ lokalizację plików
 
-Wiele poleceń interfejsu wiersza polecenia Media Services umożliwia przekazanie parametru o nazwie pliku. 
-
-Jeśli używasz **usługi Azure Cloud Shell**, Przekaż plik programu do **usługi Azure Cloud Shell**. Możesz znaleźć przycisk pobierania/przekazywania plików w górnej części okna powłoki. Następnie Odwołaj się do pliku następująco: `@{FileName}.` 
+Wiele poleceń interfejsu wiersza polecenia Media Services umożliwia przekazanie parametru o nazwie pliku. Jeśli używasz **Cloud Shell**, możesz przekazać plik do usługi clouddrive (przy użyciu powłoki Bash lub programu PowerShell). 
 
 ![Przekazywanie plików]
 
-Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, należy określić ścieżkę całego pliku. Na przykład `@c:\tracks.json`.
+Czy używasz lokalnej interfejsu wiersza polecenia lub **Cloud Shell**, należy określić ścieżkę pliku, zgodnie z systemu operacyjnego lub w usłudze Cloud Shell (powłoki Bash lub programu PowerShell), którego używasz. Poniżej znajduje się kilka przykładów:
+
+Względna ścieżka do pliku (wszystkie OS)
+
+* `@"mytestfile.json"`
+* `@"../mytestfile.json"`
+
+Ścieżka bezwzględna do pliku w systemach operacyjnych Windows i Linux lub Mac
+
+* `@ "/usr/home/mytestfile.json"`
+*   `@"c:\tmp\user\mytestfile.json"`
 
 
 [Przekazywanie plików]: ./media/media-services-cli/upload-download-files.png

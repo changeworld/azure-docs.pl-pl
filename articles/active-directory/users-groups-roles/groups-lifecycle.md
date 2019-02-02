@@ -14,12 +14,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 98ed7ce3eb58aa870a3cb06864631cd108410195
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 12b23b8a062859da111a067b2655425a611b6c20
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508746"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658253"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurowanie zasad wygasania grup usługi Office 365
 
@@ -53,15 +53,16 @@ Aby uzyskać więcej informacji na temat uprawnień, aby przywrócić usunięte 
   
   ![Blok wygaśnięcia](./media/groups-lifecycle/expiration-settings.png)
 
-4. Na **wygaśnięcia** bloku, możesz:
+3. Na **wygaśnięcia** bloku, możesz:
 
   * Ustaw okres istnienia grupy w dniach. Można wybrać jeden z wstępnie zdefiniowanych wartości lub niestandardową wartość (powinien mieć co najmniej 31 dni). 
   * Określ adres e-mail, w którym mają być wysyłane powiadomienia odnowienia i wygaśnięcia gdy grupa nie ma właściciela. 
   * Wybierz grupy usługi Office 365, które wygasną. Możesz włączyć wygaśnięcie dla **wszystkich** grup usługi Office 365, możesz włączyć tylko **wybrane** grup usługi Office 365, lub wybierz **Brak**  wyłączyć wygaśnięcia dla wszystkich grup.
   * Zapisz ustawienia w przypadku, gdy wszystko będzie gotowe, wybierając **Zapisz**.
 
+## <a name="email-notifications"></a>Powiadomienia e-mail
 
-Taką jak ta są wysyłane powiadomienia e-mail właścicielom grup usługi Office 365 30 dni, 15 dni i 1 dzień przed wygaśnięciem grupy.
+Taką jak ta są wysyłane powiadomienia e-mail właścicielom grup usługi Office 365 30 dni, 15 dni i 1 dzień przed wygaśnięciem grupy. Język wiadomości e-mail jest określana przez właściciela grupy preferowanego języka lub języku dzierżawy. Jeśli właściciel grupy zdefiniował preferowanego języka lub wielu właścicielom mają ten sam język preferowany, używany jest ten język. W pozostałych przypadkach jest używany język dzierżawy.
 
 ![Powiadomienie o wygaśnięciu wiadomości e-mail](./media/groups-lifecycle/expiration-notification.png)
 

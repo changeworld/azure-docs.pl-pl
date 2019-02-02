@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 35c0d9190a11ad76ef44b43ef5160d2b39bee1fc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 64f348880bf8872c61a1d1c90930c25ce9551bbf
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016916"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658033"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do oprogramowania Oracle przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-onprem-oracle-connector.md)
 > * [Bieżąca wersja](connector-oracle.md)
 
@@ -58,7 +58,7 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej b
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa **Oracle**. | Yes |
-| Parametry połączenia | Określa informacje wymagane do nawiązania połączenia z wystąpieniem bazy danych Oracle. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Obsługiwany typ połączenia**: Możesz użyć **identyfikator SID programu Oracle** lub **nazwa usługi Oracle** Aby zidentyfikować bazy danych:<br>— Jeśli używasz identyfikatora SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwa usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Yes |
+| Parametry połączenia | Określa informacje wymagane do nawiązania połączenia z wystąpieniem bazy danych Oracle. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault i ściągania `password` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. <br><br>**Obsługiwany typ połączenia**: Możesz użyć **identyfikator SID programu Oracle** lub **nazwa usługi Oracle** Aby zidentyfikować bazy danych:<br>— Jeśli używasz identyfikatora SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>— Jeśli używasz nazwa usługi: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 >[!TIP]
@@ -126,6 +126,34 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej b
 }
 ```
 
+**Przykład: przechowywanie haseł w usłudze Azure Key Vault**
+
+```json
+{
+    "name": "OracleLinkedService",
+    "properties": {
+        "type": "Oracle",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu Oracle.
@@ -252,26 +280,26 @@ Podczas kopiowania danych z i do oprogramowania Oracle, następujące mapowania 
 | Typ danych Oracle | Typ danych tymczasowych fabryki danych |
 |:--- |:--- |
 | BPLIK |Byte[] |
-| OBIEKT BLOB |Byte[]<br/>(obsługiwane tylko w bazie danych Oracle 10g lub nowszy) |
-| CHAR |Ciąg |
-| CLOB |Ciąg |
+| BLOB |Byte[]<br/>(obsługiwane tylko w bazie danych Oracle 10g lub nowszy) |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
 | FLOAT |Decimal, ciąg (jeśli dokładności > 28) |
-| LICZBA CAŁKOWITA |Decimal, ciąg (jeśli dokładności > 28) |
-| DŁUGI |Ciąg |
+| INTEGER |Decimal, ciąg (jeśli dokładności > 28) |
+| DŁUGI |String |
 | DŁUGI NIEPRZETWORZONE |Byte[] |
-| NCHAR |Ciąg |
-| NCLOB |Ciąg |
+| NCHAR |String |
+| NCLOB |String |
 | NUMER |Decimal, ciąg (jeśli dokładności > 28) |
-| NVARCHAR2 |Ciąg |
-| NIEPRZETWORZONE |Byte[] |
-| ROWID |Ciąg |
+| NVARCHAR2 |String |
+| RAW |Byte[] |
+| ROWID |String |
 | ZNACZNIK CZASU: |DateTime |
-| SYGNATURA CZASOWA PRZY UŻYCIU LOKALNEJ STREFY CZASOWEJ |Ciąg |
-| SYGNATURA CZASOWA ZE STREFĄ CZASOWĄ |Ciąg |
+| SYGNATURA CZASOWA PRZY UŻYCIU LOKALNEJ STREFY CZASOWEJ |String |
+| SYGNATURA CZASOWA ZE STREFĄ CZASOWĄ |String |
 | LICZBA CAŁKOWITA BEZ ZNAKU |Liczba |
-| VARCHAR2 |Ciąg |
-| XML |Ciąg |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Po drugie INTERWAŁU roku do miesiąca i INTERWAŁU dnia na typy danych nie są obsługiwane.

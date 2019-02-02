@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: cc322f44760ddf0a7cd28751c895a7c4938dbbc0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: fb405d40458461fbdff8a7720425ff352bfc61de
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867244"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565483"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Instalowanie Przegląd zadań elastycznej bazy danych
 
@@ -51,7 +51,7 @@ Jeśli zainstalowano już **zadania Elastic Database** za pośrednictwem portalu
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
 ## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>Zainstaluj składniki zadań elastycznych baz danych przy użyciu programu PowerShell
-1. Uruchom okno poleceń programu Microsoft Azure PowerShell i przejdź do podkatalogu \tools w folderze Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x: wpisz \tools dysku cd
+1. Uruchom okno poleceń programu Microsoft Azure PowerShell i przejdź do podkatalogu \tools w folderze Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x: Typ dysku cd \tools
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 

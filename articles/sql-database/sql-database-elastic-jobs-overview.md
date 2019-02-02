@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 9647522f4b3990d065f292f05934b8d19c691454
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 396e8a487feb2f7a7cb45f3713e641b5ebc6abcd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865526"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565245"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Zarządzanie bazami danych w chmurze skalowanych w poziomie
 
@@ -81,8 +81,8 @@ Definiowanie niestandardowych grup baz danych Azure SQL Database oraz określani
 2. Dostęp więcej funkcji, na przykład tworzenia niestandardowej bazy danych kolekcji, dodawania harmonogramów i/lub zbieranie zestawów wyników przy użyciu interfejsów API programu PowerShell. Korzystanie z portalu prostą instalację i tworzenia/monitorowania zadań ograniczone do wykonywania względem **puli elastycznej**.
 3. Utwórz zaszyfrowane poświadczenia do wykonywania zadań i [Dodaj użytkownika (lub rolach) do każdej bazy danych w grupie](sql-database-security-overview.md).
 4. Utwórz idempotentne skryptu T-SQL, które mogą być uruchamiane względem każdej bazy danych w grupie.
-5. Wykonaj następujące kroki, aby tworzyć zadania w witrynie Azure portal: [tworzenie i zarządzanie nimi zadania Elastic Database](sql-database-elastic-jobs-create-and-manage.md).
-6. Lub za pomocą skryptów programu PowerShell: [tworzenie zadań elastycznych baz danych SQL Database przy użyciu programu PowerShell (wersja zapoznawcza) i zarządzanie nimi](sql-database-elastic-jobs-powershell.md).
+5. Wykonaj następujące kroki, aby tworzyć zadania w witrynie Azure portal: [Tworzenie i zarządzanie nimi zadania Elastic Database](sql-database-elastic-jobs-create-and-manage.md).
+6. Lub za pomocą skryptów programu PowerShell: [Tworzenie i zarządzanie nimi zadań elastycznej bazy danych SQL Database przy użyciu programu PowerShell (wersja zapoznawcza)](sql-database-elastic-jobs-powershell.md).
 
 ## <a name="idempotent-scripts"></a>Skrypty idempotentne
 
@@ -116,7 +116,7 @@ Niestandardowe grupy z drugiej strony, sztywno zdefiniowano. Należy jawnie doda
 
 Następujące składniki współpracują ze sobą, aby utworzyć to usługa w chmurze platformy Azure, która umożliwia wykonywanie zapytań ad-hoc zadań administracyjnych. Składniki są instalowane i konfigurowane automatycznie podczas instalacji, w ramach subskrypcji. Usługi można zidentyfikować, ponieważ wszystkie one mają taką samą nazwę wygenerowany automatycznie. Nazwa jest unikatowa i składa się z prefiksu "edj" następują znaki losowo generowany 21.
 
-- Usługa w chmurze platformy Azure
+- Azure Cloud Service
 
   Zadania elastic database (wersja zapoznawcza) są dostarczane jako usługa w chmurze platformy Azure obsługiwane przez klienta do wykonywania żądanych zadań do wykonania. Z poziomu portalu usługa jest wdrożona i hostowanych w ramach subskrypcji Microsoft Azure. Wartość domyślna wdrożona usługa działa z co najmniej dwie role procesów roboczych w celu zapewnienia wysokiej dostępności. Domyślny rozmiar każdej roli proces roboczy (ElasticDatabaseJobWorker) uruchomionej na wystąpieniu A0. Aby poznać ceny, zobacz [cennika usług Cloud services](https://azure.microsoft.com/pricing/details/cloud-services/).
 
@@ -156,7 +156,7 @@ Istnieje wiele typów zadań, wykonujących wykonywanie zadań:
 - ScriptExecution
 
   Wykonuje skrypt dla konkretnej bazy danych przy użyciu określonych poświadczeń
-- Plik Dacpac
+- Dacpac
 
   Dotyczy określonej bazy danych przy użyciu poświadczeń określonego pliku DACPAC
 

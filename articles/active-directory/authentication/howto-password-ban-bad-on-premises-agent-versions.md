@@ -1,28 +1,66 @@
 ---
-title: Historia wersji wersji agenta usługi Azure AD hasło ochrony lokalnych
+title: W środowisku lokalnym Historia wersji agenta ochrony haseł usługi Azure AD
 description: W wersji dokumentów i zachowania historii zmian
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: ccfe62e0002e3420303130840f1a0d393efb3420
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bcf5176728b520cae5d31750384f316efe244b7e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078767"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663625"
 ---
-# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Wersja zapoznawcza:  Azure historię wersji agenta ochrony AD haseł
+# <a name="preview--azure-ad-password-protection-agent-version-history"></a>Wersja zapoznawcza:  Historia wersji agenta w usłudze Azure ochrona za pomocą hasła usługi AD
 
 |     |
 | --- |
 | Ochrony hasłem w usłudze Azure AD jest funkcją publicznej wersji zapoznawczej usługi Azure Active Directory. Aby uzyskać więcej informacji na temat wersji zapoznawczych, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych usług Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
+
+## <a name="12650"></a>1.2.65.0
+
+Data wydania: 2/1/2019
+
+Changes:
+
+* Kontroler domeny usługi agenta i serwer proxy są teraz obsługiwane w instalacji Server Core. Wymagania systemu operacyjnego minimalna są bez zmian od przed: Windows Server 2012 dla agentów DC i Windows Server 2012 R2 dla serwerów proxy.
+* Polecenia cmdlet Register-AzureADPasswordProtectionProxy i zarejestruj AzureADPasswordProtectionForest obsługują teraz tryby uwierzytelniania platformy Azure na podstawie kodu urządzeń.
+* Polecenie cmdlet Get-AzureADPasswordProtectionDCAgent będzie ignorować punktów połączenia usługi zniekształcone i/lub nieprawidłowy. To naprawia usterki, w których kontrolery domeny będą czasami wyświetlane wiele razy w danych wyjściowych.
+* Polecenie cmdlet Get-AzureADPasswordProtectionSummaryReport będzie ignorować punktów połączenia usługi zniekształcone i/lub nieprawidłowy. To naprawia usterki, w których kontrolery domeny będą czasami wyświetlane wiele razy w danych wyjściowych.
+* Moduł programu powershell serwera Proxy jest obecnie zarejestrowany z % ProgramFiles%\WindowsPowerShell\Modules. Zmienna środowiskowa PSModulePath komputera nie jest modyfikowany.
+* Nowe polecenie cmdlet Get-AzureADPasswordProtectionProxy dołączonym do pomocy w odnajdywanie zarejestrowanych serwerów proxy w domenie lub lesie.
+* Agent kontrolera domeny używa nowego folderu w udziale sysvol dla replikacji zasad haseł i innych plików.
+
+   Stary lokalizacja folderu:
+
+   `\\<domain>\sysvol\<domain fqdn>\Policies\{4A9AB66B-4365-4C2A-996C-58ED9927332D}`
+
+   Nowa lokalizacja folderu:
+
+   `\\<domain>\sysvol\<domain fqdn>\AzureADPasswordProtection`
+
+   (Ta zmiana została wprowadzona w celu uniknięcia wyników fałszywie dodatnich "oddzielonych obiektów zasad grupy" ostrzeżenia).
+
+   > [!NOTE]
+   > Migracja nie jest lub udostępniania danych, zostanie wykonane między folderem stary i nowy folder. Starsze wersje agenta kontrolera domeny będzie w dalszym ciągu używać starej lokalizacji do momentu uaktualnienia do tej wersji lub nowszej. Gdy wszyscy agenci kontroler domeny jest uruchomiona wersja 1.2.65.0 lub później, stary folder sysvol może usunąć ją ręcznie.
+
+* Usługa agent i serwer proxy kontrolera domeny teraz wykryć i usunąć zniekształcone kopie ich odpowiednich punkty połączeń.
+* Każdy agent DC okresowo spowoduje usunięcie punktów połączenia usługi zniekształcone i stałe w jego domenie dla obu kontrolera domeny i agent proxy punktów połączenia usługi. Zarówno kontroler domeny i agent proxy punktów połączenia usługi, są traktowane jako nieaktualne, jeśli jego sygnatury czasowej pulsu jest starsza niż 7 dni.
+* Agent kontrolera domeny będzie teraz Odnów certyfikat lasu, zgodnie z potrzebami.
+* Usługa serwera Proxy zostanie teraz Odnów certyfikat serwera proxy, zgodnie z potrzebami.
+* Aktualizacje algorytmu weryfikacji hasła: listy zakazanych haseł w globalnych i specyficznych dla klienta listy zakazanych haseł (jeśli jest skonfigurowane), które są połączone przed sprawdzania poprawności hasła. Teraz mogą zostać odrzucone podanym hasłem (się nie powieść lub tylko do inspekcji) zawiera tokenów z list globalnych i specyficznych dla klienta. Dokumentacja dziennik zdarzeń został zaktualizowany w celu przedstawienia tej; zobacz [ochrony haseł usługi Azure AD Monitor](howto-password-ban-bad-on-premises-monitor.md).
+* Wydajność i niezawodność poprawki
+* Ulepszone rejestrowanie
+
+> [!WARNING]
+> Czas ograniczoną funkcjonalność: Usługa agenta kontrolera domeny w tej wersji (1.2.65.0) zostanie zatrzymane przetwarzanie żądania weryfikacji hasła od 2019 1 września.  Usługi agenta kontrolera domeny w poprzednich wersjach (patrz lista poniżej) spowoduje zatrzymanie przetwarzania od 2019 1 lipca. Usługa agenta DC we wszystkich wersjach będzie rejestrować 10021 zdarzenia w dzienniku zdarzeń administratora w ciągu dwóch miesięcy prowadzących do tych terminów. Wszystkie ograniczenia limitu czasu zostanie usunięta w przyszłych wersji ogólnie dostępnej. Usługa agenta serwera Proxy nie jest ograniczony czasowo w dowolnej wersji, ale nadal powinny zostać uaktualnione do najnowszej wersji, aby można było korzystać z kolejnych poprawki i inne ulepszenia.
 
 ## <a name="12250"></a>1.2.25.0
 
@@ -39,6 +77,7 @@ Poprawki:
 Changes:
 
 * Minimalny wymagany poziom systemu operacyjnego dla usługi serwera Proxy jest teraz systemu Windows Server 2012 R2. Minimalny wymagany poziom systemu operacyjnego dla usługi agenta DC pozostaje w systemie Windows Server 2012.
+* Usługa Serwer Proxy wymaga teraz platformy .NET w wersji 4.6.2.
 * Algorytm sprawdzania poprawności hasła używa tabeli normalizacji rozwiniętej znaków. Może to spowodować, że hasła są odrzucane, które zostały zaakceptowane w poprzednich wersjach.
 
 ## <a name="12100"></a>1.2.10.0
@@ -73,4 +112,4 @@ Początkowa publicznej wersji zapoznawczej
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie ochrony haseł w usłudze Azure AD](howto-password-ban-bad-on-premises-deploy.md)
+[Wdrażanie ochrony haseł usługi Azure AD](howto-password-ban-bad-on-premises-deploy.md)

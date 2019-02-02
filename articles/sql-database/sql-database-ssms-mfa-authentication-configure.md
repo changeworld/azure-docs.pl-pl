@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 06/13/2018
-ms.openlocfilehash: 1761c7040becf0bfe63caf12d8f5ea7b15e9b88b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/25/2018
+ms.openlocfilehash: 98d48659225d89f476ca1e3cc437245bc9e9f753
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162937"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564820"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurowanie uwierzytelniania wieloskładnikowego dla programu SQL Server Management Studio i usługi Azure AD
 
@@ -63,7 +63,7 @@ Po zakończeniu weryfikacji SSMS łączy, zwykle przy założeniu prawidłowe po
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Omówienie uwierzytelniania wieloskładnikowego w usłudze Azure SQL Database, zobacz uniwersalne uwierzytelnianie dzięki [bazy danych SQL Database i SQL Data Warehouse (Obsługa programu SSMS dla usługi MFA)](sql-database-ssms-mfa-authentication.md).  
-- Udziel osobom dostęp do bazy danych: [bazy danych uwierzytelnianie i autoryzacja SQL: udzielanie dostępu](sql-database-manage-logins.md)  
+- Udziel osobom dostęp do bazy danych: [Bazy danych uwierzytelnianie i autoryzacja SQL: Udzielanie dostępu](sql-database-manage-logins.md)  
 - Upewnij się, że inne osoby mogły nawiązywać połączenia przez zaporę: [Skonfiguruj regułę zapory na poziomie serwera usługi Azure SQL Database przy użyciu witryny Azure portal](sql-database-configure-firewall-settings.md)  
 - Korzystając z **Active Directory Universal za pomocą usługi MFA** uwierzytelniania ADAL śledzenia jest dostępna począwszy [17,3 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). Wyłączone domyślnie, można włączyć śledzenie biblioteki ADAL przy użyciu **narzędzia**, **opcje** menu, w obszarze **usług platformy Azure**, **w chmurze platformy Azure**,  **Biblioteki ADAL poziom śledzenia okno danych wyjściowych**, a następnie włączenie **dane wyjściowe** w **widoku** menu. Ślady są dostępne w oknie danych wyjściowych po wybraniu **opcji usługi Azure Active Directory**.   
 

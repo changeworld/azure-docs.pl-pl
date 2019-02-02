@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d6879c6b9be06af4bb289761cc8f26b7e56d18e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca4979188830fcb53732750a3eaadfc2009c4f9a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355852"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658712"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Platforma Azure i oferty w witrynie Marketplace usługi AppSource
 
@@ -47,6 +47,7 @@ W poniższej tabeli wymieniono bieżącego typów ofert objęte [portalu Cloud P
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Pakiet, który rozszerza ten klient systemu zarządzania (CRM) zasobu, za pośrednictwem sprzedaży, usługi, usługi projektu i modułów usługi pola.  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Pakiet, który rozszerza ten zasób przedsiębiorstwa (ERP), usługa planowania tego Finanse obsługuje zaawansowane operacje, produkcji i zarządzania łańcuchem dostaw. |
 | [Moduł usługi IoT Edge](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Kontener zgodnego z platformą Docker, która jest uruchamiana na urządzeniu usługi IoT Edge.  Zawiera ona modułów małych obliczeniowych korzystających z kombinacji niestandardowego kodu, innych usług platformy Azure i usługi innych firm 3. |
+| [Aplikacja Power BI](./power-bi/cpp-power-bi-offer.md) | AppSource | Pakiet, który używa przepływów danych do łączenia z raportów i pulpitów nawigacyjnych z danymi w wspólnego magazynu danych. |
 | [Aplikacja SaaS](./saas-app/cpp-saas-offer.md) | Azure | Rozwiązanie jest subskrypcją oprogramowanie jako usługa zarządzana przez wydawcę, w których użytkownicy logują się za pośrednictwem dostosowanego interfejsu, który korzysta z usługi Azure Active Directory. |
 | [Maszyna wirtualna](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Rozwiązanie znajduje się w obrębie jednej maszyny wirtualnej wdrożone w subskrypcji klienta.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |

@@ -1,6 +1,6 @@
 ---
 title: Jak zablokować starsze uwierzytelnianie w usłudze Azure Active Directory (Azure AD) przy użyciu dostępu warunkowego | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować zasady dostępu warunkowego w usłudze Azure Active Directory (Azure AD) podczas podejmowania prób dostępu z niezaufanymi sieciami.
+description: Dowiedz się, jak zwiększyć poziom bezpieczeństwa przez blokowanie starsze uwierzytelnianie przy użyciu dostępu warunkowego usługi Azure AD.
 services: active-directory
 keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5ff4861c288b82d6ce90d85c38ef3f92eb299ea4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076847"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562984"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Instrukcje: Blokuj starsze uwierzytelnianie do usługi Azure AD przy użyciu dostępu warunkowego   
 
 Aby dać użytkownikom łatwy dostęp do aplikacji w chmurze, Azure Active Directory (Azure AD) obsługuje szerokiej gamy protokołów uwierzytelniania, w tym starsze uwierzytelnianie. Uwierzytelnianie wieloskładnikowe (MFA) nie obsługuje jednak starszych protokołów. Uwierzytelnianie wieloskładnikowe w wielu środowiskach jest typowym wymogiem na kradzież tożsamości adresu. 
+
 
 Jeśli Twoje środowisko jest gotowe do bloku starszych uwierzytelniania w celu zwiększenia ochrony Twojej dzierżawy, można osiągnąć ten cel przy użyciu dostępu warunkowego. W tym artykule opisano sposób konfigurowania zasad dostępu warunkowego bloku starszych uwierzytelniania dla dzierżawy.
 
@@ -119,8 +120,7 @@ Może upłynąć do 24 godzin, aż zasady zaczną obowiązywać.
 
 Można wybrać wszystkie formanty grant dostępne dla innych klientów warunku; jednak środowisko użytkownika końcowego jest zawsze taki sam - dostęp jest zablokowany.
 
-Można skonfigurować inne warunki obok innych warunków klientów.
-Jeśli chcesz zablokować starsze uwierzytelnianie dla urządzeń przenośnych, na przykład ustawić **platform urządzeń** warunku, wybierając pozycję:
+Jeśli zablokujesz starsze uwierzytelnianie przy użyciu innych warunków klientów, można również ustawić warunek platformy i lokalizacji urządzenia. Jeśli chcesz zablokować starsze uwierzytelnianie dla urządzeń przenośnych, na przykład ustawić **platform urządzeń** warunku, wybierając pozycję:
 
 - Android
 

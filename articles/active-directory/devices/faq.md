@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cc0521f1f27ddfc1fc44b9f24212393d11177d70
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296179"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660973"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
 **Pyt.: Czy ostatnio zarejestrowane urządzenia. Dlaczego nie widzę urządzenia w obszarze Moje informacje o użytkowniku w witrynie Azure portal? Lub dlaczego jest właściciel urządzenia oznaczony jako urządzenia przyłączone do n/d dla hybrydowych usługi Azure Active Directory (Azure AD)?**
 
 **ODP.:** Urządzenia z systemem Windows 10, które są hybrydowe przyłączone do usługi Azure AD nie pojawiają się w **urządzenia użytkowników**.
-Użyj **urządzeniom** widok w witrynie Azure portal. Możesz również użyć programu PowerShell [Get MsolDevice](https://docs.microsoft.com/en-us/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
+Użyj **urządzeniom** widok w witrynie Azure portal. Możesz również użyć programu PowerShell [Get MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) polecenia cmdlet.
 
 Następujące urządzenia są wyświetlane w obszarze **urządzenia użytkowników**:
 
@@ -176,7 +176,7 @@ To zachowanie nie ma zastosowania do żadnego innego użytkownika, który loguje
 
 **Pyt.: Dlaczego widzę *Niestety... Wystąpił błąd!* okna dialogowego, gdy próbuję z usługą Azure AD join moim komputerze?**
 
-**ODP.:** Ten błąd występuje podczas konfigurowania usługi Azure Active Directory rejestracji w usłudze Intune. Upewnij się, że użytkownik, który próbuje dołączania do usługi Azure AD ma przypisaną odpowiednią licencję usługi Intune. Aby uzyskać więcej informacji, zobacz [konfigurowania rejestracji dla urządzeń Windows](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment).  
+**ODP.:** Ten błąd występuje podczas konfigurowania usługi Azure Active Directory rejestracji w usłudze Intune. Upewnij się, że użytkownik, który próbuje dołączania do usługi Azure AD ma przypisaną odpowiednią licencję usługi Intune. Aby uzyskać więcej informacji, zobacz [konfigurowania rejestracji dla urządzeń Windows](https://docs.microsoft.com/intune/windows-enroll).  
 
 ---
 

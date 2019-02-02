@@ -11,15 +11,16 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 594d181a5452317267157415bdaf68f572f0f0af
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260027"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560893"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty inne niż 1433 dla platformy ADO.NET 4.5
+
 W tym temacie opisano zachowanie połączenia usługi Azure SQL Database dla klientów korzystających z platformy ADO.NET 4.5 lub nowszej wersji. 
 
 > [!IMPORTANT]
@@ -27,12 +28,15 @@ W tym temacie opisano zachowanie połączenia usługi Azure SQL Database dla kli
 >
 
 ## <a name="outside-vs-inside"></a>Poza programem vs wewnątrz
+
 Dla połączeń z usługi Azure SQL Database, należy najpierw poprosimy czy jest uruchamiany program kliencki *poza* lub *wewnątrz* granic chmury Azure. Podsekcje omówiono dwa typowe scenariusze.
 
-#### <a name="outside-client-runs-on-your-desktop-computer"></a>*Poza:* kliencki jest uruchomiony na komputerze stacjonarnym
+#### <a name="outside-client-runs-on-your-desktop-computer"></a>*Poza:* Klient uruchamia się na Twoim komputerze stacjonarnym
+
 Port 1433 jest tylko port, który musi być otwarty na Twoim komputerze stacjonarnym, który hostuje aplikację kliencką bazy danych SQL.
 
-#### <a name="inside-client-runs-on-azure"></a>*Wewnątrz:* klienta działa na platformie Azure
+#### <a name="inside-client-runs-on-azure"></a>*Wewnątrz:* Klient działa na platformie Azure
+
 Po uruchomieniu klienta wewnątrz granic chmury Azure używa co możemy wywołać *Generowanie trasy bezpośredniej* do interakcji z serwerem usługi SQL Database. Po nawiązaniu połączenia dalszej interakcji między klientem i bazy danych obejmują brak bramy bazy danych SQL Azure.
 
 Sekwencja jest w następujący sposób:
@@ -76,6 +80,6 @@ W tej sekcji wyjaśnia monikerów, które odwołują się do wersji produktu. Za
 * [Lista wersji protokołu TDS](http://www.freetds.org/userguide/tdshistory.htm)
 * [Omówienie tworzenia bazy danych SQL](sql-database-develop-overview.md)
 * [Zapora usługi SQL Database platformy Azure](sql-database-firewall-configure.md)
-* [Porady: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md)
+* [Instrukcje: Konfigurowanie ustawień zapory w bazie danych SQL](sql-database-configure-firewall-settings.md)
 
 

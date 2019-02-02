@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 8db944de93313915926a6fe48a554d00327b1c94
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 18e786ba45e476df2ab223a47f1b77ef6b778d7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486206"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657777"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurowanie aktywnej replikacji geograficznej dla usługi Azure SQL Database w witrynie Azure portal i zainicjuj tryb failover
 
@@ -32,7 +32,7 @@ Aby skonfigurować aktywną replikację geograficzną za pomocą witryny Azure p
 * Azure SQL database: Podstawowej bazy danych, którą chcesz zreplikować do innego regionu geograficznego.
 
 > [!Note]
-Przy użyciu witryny Azure portal, można tylko utworzyć pomocniczą bazę danych w ramach tej samej subskrypcji, jako podstawowy. Jeśli pomocnicza baza danych musi znajdować się w innej subskrypcji, użyj [tworzenie bazy danych interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) lub [ALTER DATABASE języka Transact-SQL API](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql).
+Przy użyciu witryny Azure portal, można tylko utworzyć pomocniczą bazę danych w ramach tej samej subskrypcji, jako podstawowy. Jeśli pomocnicza baza danych musi znajdować się w innej subskrypcji, użyj [tworzenie bazy danych interfejsu API REST](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) lub [ALTER DATABASE języka Transact-SQL API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
 
 ## <a name="add-a-secondary-database"></a>Dodawanie dodatkowej bazy danych
 

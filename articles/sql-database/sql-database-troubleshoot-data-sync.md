@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 87f3b9de2ff86016f11a0996cbe448651ee6844f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723896"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563188"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z usługą SQL Data Sync
 
@@ -26,7 +26,7 @@ W tym artykule opisano, jak rozwiązywać problemy z znanych problemów z usług
 Omówienie usługi SQL Data Sync zawiera temat [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)](sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Usługa Azure SQL Data Sync jest **nie** obsługują wystąpienia zarządzanego Azure SQL Database w tej chwili.
+> Usługa Azure SQL Data Sync **nie** obsługuje obecnie wystąpienia zarządzanego usługi Azure SQL Database.
 
 ## <a name="sync-issues"></a>Problemy z synchronizacją
 
@@ -60,14 +60,14 @@ Dowolne z następujących warunków może prowadzić do grupy synchronizacji jes
 
 - **Przyczyna**. Agent klienta jest w trybie offline
 
-- **Rozpoznawanie**. Pamiętaj, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
+- **Rozpoznawanie**. Upewnij się, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
 
-- **Przyczyna**. Agent klienta jest niezainstalowana lub jego brak.
+- **Przyczyna**. Brak agenta klienta lub został on odinstalowany.
 
-- **Rozpoznawanie**. Jeśli agent klienta jest niezainstalowana lub w inny sposób, Brak:
+- **Rozpoznawanie**. Jeśli agent klienta został odinstalowany lub brakuje go z innego powodu:
 
-    1. Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji SQL Data Sync.
-    1. Zainstaluj agenta na komputerze lokalnym (może być tym samym lub innym komputerze). Następnie prześlij klucz agenta, który został wygenerowany w portalu dla agenta, który jest wyświetlany w trybie offline.
+    1. Usuń plik XML agenta z folderu instalacji usługi SQL Data Sync, jeśli plik istnieje.
+    1. Zainstaluj agenta na komputerze lokalnym (może to być ten sam lub inny komputer). Następnie prześlij klucz agenta wygenerowany w portalu dla agenta, który jest widoczny jako będący w trybie offline.
 
 - **Przyczyna**. Usługa SQL Data Sync jest zatrzymana.
 
@@ -152,11 +152,11 @@ Próba usunięcia grupy synchronizacji kończy się niepowodzeniem. Dowolne z po
 
 - **Rozpoznawanie**. Upewnij się, że agent klienta jest w trybie online, a następnie spróbuj ponownie.
 
-- **Przyczyna**. Agent klienta jest niezainstalowana lub jego brak.
+- **Przyczyna**. Brak agenta klienta lub został on odinstalowany.
 
-- **Rozpoznawanie**. Jeśli agent klienta jest niezainstalowana lub w inny sposób, Brak:  
-    a. Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji SQL Data Sync.  
-    b. Zainstaluj agenta na komputerze lokalnym (może być tym samym lub innym komputerze). Następnie prześlij klucz agenta, który został wygenerowany w portalu dla agenta, który jest wyświetlany w trybie offline.
+- **Rozpoznawanie**. Jeśli agent klienta został odinstalowany lub brakuje go z innego powodu:  
+    a. Usuń plik XML agenta z folderu instalacji usługi SQL Data Sync, jeśli plik istnieje.  
+    b. Zainstaluj agenta na komputerze lokalnym (może to być ten sam lub inny komputer). Następnie prześlij klucz agenta wygenerowany w portalu dla agenta, który jest widoczny jako będący w trybie offline.
 
 - **Przyczyna**. Baza danych jest w trybie offline.
 
@@ -231,8 +231,8 @@ Nie można usunąć grupy synchronizacji, w ciągu trzech minut odinstalowanie l
   1. Usuń grupy synchronizacji, gdy agenci synchronizacji skojarzone są w trybie online (zalecane).
   1. Jeśli agent jest w trybie offline, ale jest zainstalowany, przenieś ją w trybie online na komputerze lokalnym. Poczekaj, aż stan agenta, aby pojawiało się jako **Online** w portalu usługi SQL Data Sync. Następnie można usunąć grupy synchronizacji.
   1. Jeśli agent jest w trybie offline, ponieważ zostało odinstalowane:  
-    a.  Jeśli plik istnieje, usuń plik XML agenta z folderu instalacji SQL Data Sync.  
-    b.  Zainstaluj agenta na komputerze lokalnym (może być tym samym lub innym komputerze). Następnie prześlij klucz agenta, który został wygenerowany w portalu dla agenta, który jest wyświetlany w trybie offline.  
+    a.  Usuń plik XML agenta z folderu instalacji usługi SQL Data Sync, jeśli plik istnieje.  
+    b.  Zainstaluj agenta na komputerze lokalnym (może to być ten sam lub inny komputer). Następnie prześlij klucz agenta wygenerowany w portalu dla agenta, który jest widoczny jako będący w trybie offline.  
     c. Spróbuj usunąć grupę synchronizacji.
 
 ### <a name="setup-restore"></a> Co się stanie, gdy przywrócić utracony lub uszkodzony bazy danych?
@@ -244,7 +244,7 @@ Aby uzyskać więcej informacji na temat SQL Data Sync zobacz:
 
 -   Omówienie — [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync](sql-database-sync-data.md) (Synchronizowanie danych między wieloma bazami danych w chmurze i lokalnie za pomocą usługi Azure SQL Data Sync)
 -   Konfigurowanie synchronizacji danych
-    - W portalu — [samouczka: Skonfiguruj SQL Data Sync na synchronizowanie danych między Azure SQL Database i programu SQL Server w środowisku lokalnym](sql-database-get-started-sql-data-sync.md)
+    - W portalu — [Tutorial: Set up SQL Data Sync to sync data between Azure SQL Database and SQL Server on-premises](sql-database-get-started-sql-data-sync.md) (Samouczek: konfigurowanie usługi SQL Data Sync w celu synchronizowania danych między usługą Azure SQL Database i lokalnym programem SQL Server)
     - Z programem PowerShell
         -  [Użycie programu PowerShell do synchronizowania wielu baz danych Azure SQL Database](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [Use PowerShell to sync between an Azure SQL Database and a SQL Server on-premises database (Synchronizacja bazy danych usługi Azure SQL i lokalnej bazy danych programu SQL Server przy użyciu programu PowerShell)](scripts/sql-database-sync-data-between-azure-onprem.md)

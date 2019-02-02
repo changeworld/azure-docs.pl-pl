@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5361b93d24c66ef6ccb2f117e6e3a68de4c5f459
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e0d5e466da8804e89ffecd38dd2db6e37a3cb334
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195610"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663642"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: Obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
 
@@ -33,7 +33,7 @@ Błąd LargeObject może być spowodowany przez inne atrybuty usługi AD. Aby up
 
 Aby uzyskać listę obiektów w dzierżawie, z błędami LargeObject, użyj jednej z następujących metod:
 
- * Jeśli włączono dzierżawy usługi Azure AD Connect Health do celów synchronizacji, możesz zapoznać się z [raport o błędach synchronizacji](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync#object-level-synchronization-error-report-preview) podane.
+ * Jeśli włączono dzierżawy usługi Azure AD Connect Health do celów synchronizacji, możesz zapoznać się z [raport o błędach synchronizacji](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) podane.
  
  * Powiadomienia e-mail dla błędów synchronizacji katalogu wysyłanym na końcu każdego cyklu synchronizacji zawiera listę obiektów z błędami LargeObject. 
  * [Karcie operacje Menedżera usługi synchronizacji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) Wyświetla listę obiektów z błędami LargeObject po kliknięciu najnowsze eksportu do operacji usługi Azure AD.
@@ -89,7 +89,7 @@ Powinna to być istniejącą regułę synchronizacji, która jest włączone i s
 
 2. Konfigurowanie filtrów wyszukiwania, z następującymi wartościami:
 
-    | Atrybut | Value |
+    | Atrybut | Wartość |
     | --- | --- |
     | Kierunek |**Wychodzące** |
     | Typ obiektu MV |**Osoby** |
@@ -104,7 +104,7 @@ Powinna to być istniejącą regułę synchronizacji, która jest włączone i s
 7. Na ekranie edycji wybierz **filtru Scoping** kartę.
 8. Zanotuj wartości zakresu konfiguracji filtru. Jeśli używane są reguły synchronizacji OOB, powinien dokładnie istnieć **jedna grupa filtrów określania zakresu zawierające dwóch klauzul**, w tym:
 
-    | Atrybut | Operator | Value |
+    | Atrybut | Operator | Wartość |
     | --- | --- | --- |
     | sourceObjectType | RÓWNA SIĘ | Użytkownik |
     | cloudMastered | NOTEQUAL | True |
@@ -114,9 +114,9 @@ Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu*
 1. Za pomocą edytora reguł synchronizacji, kliknij przycisk **Dodaj nową regułę** przycisku.
 2. W obszarze **kartę opis**, podaj następującą konfigurację:
 
-    | Atrybut | Value | Szczegóły |
+    | Atrybut | Wartość | Szczegóły |
     | --- | --- | --- |
-    | Name | *Podaj nazwę* | Np. *"Się do usługi AAD — niestandardowe przesłonięcia dla certyfikatu użytkownika"* |
+    | Name (Nazwa) | *Podaj nazwę* | Np. *"Się do usługi AAD — niestandardowe przesłonięcia dla certyfikatu użytkownika"* |
     | Opis | *Podaj opis* | Np. *"Jeśli atrybut userCertificate ma więcej niż 15 wartości, Eksportuj NULL".* |
     | Połączonego systemu | *Wybierz łącznik usługi Azure AD* |
     | Połączony System typu obiektu | **Użytkownik** | |
@@ -128,7 +128,7 @@ Nowa reguła synchronizacji musi mieć taką samą **filtru określania zakresu*
 4. Pomiń **Dołącz zasady** kartę.
 5. Przejdź do **przekształcenia** kartę, aby dodać nowe przekształcenia przy użyciu następujących konfiguracji:
 
-    | Atrybut | Value |
+    | Atrybut | Wartość |
     | --- | --- |
     | Typ przepływu |**Expression** |
     | Atrybut docelowy |**userCertificate** |

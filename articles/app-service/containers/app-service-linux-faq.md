@@ -1,7 +1,7 @@
 ---
 title: Usługi App Service w systemie Linux — często zadawane pytania — Azure | Dokumentacja firmy Microsoft
 description: Usługa Azure App Service w systemie Linux — często zadawane pytania.
-keywords: Usługa Azure app service, aplikacji sieci web, — często zadawane pytania, linux, oss, usługi web app for containers, obsługującej wiele kontenerów, multicontainer
+keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
 services: app-service
 documentationCenter: ''
 author: yili
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: cdda4b0951edd0d1471113c48a4082dfa7407211
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f2fe9efd7d75c95d6cd13cb65e196723c9953716
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719086"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658831"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -77,7 +77,7 @@ W przypadku niepowodzenia wdrożenia narzędzia Git do aplikacji sieci web w sys
 
 - Użyj funkcji ciągłego dostarczania (wersja zapoznawcza): Kod źródłowy aplikacji można przechowywać w repozytorium DevOps Git platformy Azure lub w repozytorium GitHub do używania ciągłego dostarczania platformy Azure. Aby uzyskać więcej informacji, zobacz [jak skonfigurować ciągłe dostarczanie dla aplikacji sieci web w systemie Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH w aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) i przejdź do folderu, w której chcesz wdrożyć swój kod. Uruchom następujący kod:
+- Użyj [ZIP wdrażania interfejsu API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Aby użyć tego interfejsu API [SSH w aplikacji sieci web](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) i przejdź do folderu, w której chcesz wdrożyć swój kod. Uruchom następujący kod:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy

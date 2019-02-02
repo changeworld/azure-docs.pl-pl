@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 1/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: ef7b4377da541068cef7cdd2de5a98d33c3b80ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 88ffa70f7ac21a2c28af994f1e2ed3b6939f6ad9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199104"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567421"
 ---
 # <a name="azure-marketplace-participation-policies"></a>Azure Marketplace — zasady udziału
 
@@ -35,7 +35,7 @@ Niniejsze zasady dotyczą wszystkich wydawców i ofert w portalu Microsoft Azure
 
 1. Siedziba wydawcy musi znajdować się w kraju obsługiwanym przez portal Azure Marketplace. Obecnie portal Azure Marketplace obsługuje sprzedawców z siedzibą w następujących krajach:  Afganistan, Albania, Algieria, Angola, Antigua i Barbuda, Argentyna, Armenia, Australia, Austria, Azerbejdżan, Bahrajn, Bangladesz, Białoruś, Belgia, Benin, Boliwia, Bośnia i Hercegowina, Botswana, Brazylia, Bułgaria, Burkina Faso, Burundi, Kambodża, Kamerun, Kanada, Republika Środkowoafrykańska, Czad, Chile, Kolumbia, Komory, Kongo (Demokratyczna Republika Konga), Kongo, Kostaryka, Wybrzeże Kości Słoniowej (Côte d’Ivoire), Chorwacja, Cypr, Czechy, Dania, Dominika, Dominikana, Ekwador, Egipt, Salwador, Erytrea, Estonia, Etiopia, Fidżi, Finlandia, Francja, Georgia, Niemcy, Ghana, Grecja, Gwatemala, Gwinea, Haiti, Honduras, Hongkong SAR, Węgry, Islandia, Indie, Indonezja, Irak, Irlandia, Izrael, Włochy, Jamajka, Japonia, Jordania, Kazachstan, Kenia, Korea Południowa, Kuwejt, Laos, Łotwa, Liban, Liberia, Liechtenstein, Litwa, Luksemburg, Madagascar, Malawi, Malaysia, Mali, Malta, Mauritius, Meksyk, Monako, Mongolia, Czarnogóra, Maroko, Mozambik, Nepal, Holandia, Nowa Zelandia, Nikaragua, Niger, Nigeria, Norwegia, Oman, Pakistan, Panama, Paragwaj, Peru, Filipiny, Polska, Portugalia, Katar, Rumunia, Rosja, Rwanda, Arabia Saudyjska, Senegal, Serbia, Sierra Leone, Singapur, Słowacja, Słowenia, Somalia, Republika Południowej Afryki, Hiszpania, Sri Lanka, Szwecja, Szwajcaria, Tadżykistan, Tanzania, Tajlandia, Timor-Leste, Togo, Tonga, Trynidad i Tobago, Tunezja, Turcja, Turkmenistan, Uganda, Ukraina, Zjednoczone Emiraty Arabskie, Zjednoczone Królestwo, Stany Zjednoczone, Urugwaj, Uzbekistan, Wenezuela, Wietnam, Zambia, Zimbabwe.
 
-1. Wydawca musi udostępnić ofertę co najmniej w jednym kraju, w którym można nabywać oprogramowanie i usługi w portalu Azure Marketplace. Obecnie portal Azure Marketplace obsługuje nabywców z siedzibą w następujących krajach:  Algieria, Arabia Saudyjska, Argentyna, Australia, Austria, Bahrajn, Belgia, Białoruś, Brazylia, Bułgaria, Chile, Chorwacja, Cypr, Czarnogóra, Czechy, Dania, Dominikana, Egipt, Ekwador, Estonia, Filipiny, Finlandia, Francja, Grecja, Gwatemala, Hiszpania, Holandia, Hongkong SAR, Indie, Indonezja, Irlandia, Islandia, Izrael, Japonia, Jordania, Kanada, Katar, Kazachstan, Kenia, Kolumbia, Korea Południowa, Kostaryka, Kuwejt, Liechtenstein, Litwa, Luksemburg, Łotwa, Macedonia (BJRM), Malezja, Malta, Maroko, Meksyk, Niemcy, Nigeria, Norwegia, Nowa Zelandia, Oman, Pakistan, Panama, Paragwaj, Peru, Polska, Portoryko, Portugalia, Republika Południowej Afryki, Rosja, Rumunia, Salwador, Serbia, Singapur, Słowacja, Słowenia, Sri Lanka, Stany Zjednoczone, Szwajcaria, Szwecja, Tajlandia, Tajwan, Trynidad i Tobago, Tunezja, Turcja, Ukraina, Urugwaj, Wenezuela, Węgry, Włochy, Zjednoczone Emiraty Arabskie i Zjednoczone Królestwo 
+1. Wydawca musi udostępnić ofertę co najmniej w jednym kraju, w którym można nabywać oprogramowanie i usługi w portalu Azure Marketplace. Obecnie portal Azure Marketplace obsługuje nabywców z siedzibą w następujących krajach: Algieria, Arabia Saudyjska, Argentyna, Australia, Austria, Bahrajn, Belgia, Białoruś, Brazylia, Bułgaria, Chile, Chorwacja, Cypr, Czarnogóra, Czechy, Dania, Dominikana, Egipt, Ekwador, Estonia, Filipiny, Finlandia, Francja, Grecja, Gwatemala, Hiszpania, Holandia, Hongkong SAR, Indie, Indonezja, Irlandia, Islandia, Izrael, Japonia, Jordania, Kanada, Katar, Kazachstan, Kenia, Kolumbia, Korea Południowa, Kostaryka, Kuwejt, Liechtenstein, Litwa, Luksemburg, Łotwa, Macedonia (BJRM), Malezja, Malta, Maroko, Meksyk, Niemcy, Nigeria, Norwegia, Nowa Zelandia, Oman, Pakistan, Panama, Paragwaj, Peru, Polska, Portoryko, Portugalia, Republika Południowej Afryki, Rosja, Rumunia, Salwador, Serbia, Singapur, Słowacja, Słowenia, Sri Lanka, Stany Zjednoczone, Szwajcaria, Szwecja, Tajlandia, Tajwan, Trynidad i Tobago, Tunezja, Turcja, Ukraina, Urugwaj, Wenezuela, Węgry, Włochy, Zjednoczone Emiraty Arabskie i Zjednoczone Królestwo
 
 1. Wydawca musi pozostawać w dobrej sytuacji materialnej.
 
@@ -47,7 +47,7 @@ Niniejsze zasady dotyczą wszystkich wydawców i ofert w portalu Microsoft Azure
 
 1. Wydawca musi poinformować o udostępnieniu oferty w portalu Azure Marketplace na swojej publicznej witrynie internetowej i może zawierać hiperlinki do swojej oferty stron na [ https://azuremarketplace.microsoft.com/marketplace/ ](https://azuremarketplace.microsoft.com/marketplace/).
 
-1. Wydawca musi sklasyfikować każdą ofertę, oparte na jednej lub kilku taksonomii klasyfikacji, dostarczone przez firmę Microsoft z uwzględnieniem kategorii opisanych w sekcji 4 w tym dokumencie. Jeśli Microsoft uzna, klasyfikację wydawcę zostanie uznana, zastrzega sobie prawo podzielić każdą ofertę.
+1. Wydawca musi sklasyfikować każdą ofertę na jeden lub więcej taksonomii klasyfikacji udostępnionych przez firmę Microsoft z uwzględnieniem kategorii opisanych w podstawie **oferty definicje na potrzeby klasyfikacji** części tego dokumentu. Jeśli Microsoft uzna, klasyfikację wydawcę zostanie uznana, zastrzega sobie prawo podzielić każdą ofertę.
 
 1. Jeśli dana oferta ma certyfikat platformy Microsoft Azure i nie działa przede wszystkim na Microsoft Azure, wydawca musi utworzyć płatną wersję oferty dostępne w witrynie Marketplace, w ciągu 90 dni od opublikowania bezpłatne lub BYOL wersji oferty.
 
@@ -122,7 +122,7 @@ Po opublikowaniu oferty usług w witrynie Marketplace, wydawcy muszą przechowyw
     * Często wystawiają ofercie liczbę zgłoszeń pomocy technicznej lub
     * Wydawca nie dotrzymał postanowień zawartych w niniejszym dokumencie, Wskazówkach dotyczących publikowania w portalu Marketplace albo Umowie wydawcy portalu Microsoft Marketplace.
 
-1. Z różnych przyczyn możesz zdecydować o usunięciu oferty z witryny Marketplace. Po usunięciu oferty nowi klienci nie będą już mogli jej kupować ani wdrażać, ale nie ma to wpływu na istniejących klientów. Zakończenie oferty to proces zakończenia świadczenia usługi i/lub rozwiązania umowy licencjonowania między Tobą i Twoimi obecnymi klientami. Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają pod Umowę wydawcy portalu Microsoft Marketplace (zobacz sekcję 7). Żądanie usunięcia lub zakończenia można przekazać w zgłoszeniu pomocy technicznej.
+1. Z różnych przyczyn możesz zdecydować o usunięciu oferty z witryny Marketplace. Po usunięciu oferty nowi klienci nie będą już mogli jej kupować ani wdrażać, ale nie ma to wpływu na istniejących klientów. Zakończenie oferty to proces zakończenia świadczenia usługi i/lub rozwiązania umowy licencjonowania między Tobą i Twoimi obecnymi klientami. Wskazówki i zasady dotyczące usuwania i kończenia oferty podlegają umowie wydawcy portalu Microsoft Marketplace (zobacz sekcję "Warunki płatności"). Żądanie usunięcia lub zakończenia można przekazać w zgłoszeniu pomocy technicznej.
 
 ## <a name="payment-terms"></a>Warunki płatności
 
@@ -138,19 +138,35 @@ Firma Microsoft zezwala wydawcom na dołączanie następujących produktów tej 
 
 ## <a name="taxes"></a>Podatki
 
-1. **Kraje rozliczeń podatkowych firmy Microsoft.**
+1. **Odpowiedzialność za podatki od sprzedaży klientów końcowych.**
 
-    1. Następujące kraje to kraje rozliczeń podatkowych firmy Microsoft zgodnie z definicją w umowie wydawcy portalu Microsoft Marketplace: Unii Europejskiej, Kanada, Indie, Irlandia, Liechtenstein, Monako, Nowej Zelandii, Norwegia, Portoryko, Korea Południowa, Szwajcaria, Stany Zjednoczone. Australia, Arabia Saudyjska, Tajwan i Zjednoczone Emiraty Arabskie są krajach Remittance Microsoft tylko dla bezpośrednich klientów internetowych sprzedaży.
+    1. Ogólnie rzecz biorąc każdy z obowiązków firmy Microsoft i wydawcy dla podatków od sprzedaży klientów końcowych zależą od kraju i scenariusz zakupu, w której oferty są sprzedawane.
 
-    1. Na terenie Irlandii firma Microsoft nalicza irlandzki podatek VAT wszystkim irlandzkim klientom (chyba że taki klient dostarczy prawidłowy certyfikat VAT 56B). W przypadku klientów biznesowych z terenu Unii Europejskiej i Norwegii (znajdujących się poza Irlandią) firma Microsoft stosuje zerową stawkę podatku VAT, jeśli klient poda prawidłowy numer VAT. Jeśli prawidłowy numer VAT nie zostanie podany, klientom zostanie naliczony podatek VAT zgodnie ze stawką kraju/obszaru, w którym mają siedzibę.
+    1. W przypadku pewnych krajów (**krajów zarządzanych Microsoft**) firmy Microsoft przyjmuje odpowiedzialność za zarządzanie opodatkowania klienta końcowego, który może obejmować, sprawdzanie poprawności stanu firm klientów dzięki uzyskaniu numerów identyfikacji podatkowej lub Certyfikaty wykluczenie, lepiej zarządzać relacje z klientami i obliczanie, zbieranie i/lub przekazanych podatków.  W przypadkach, gdzie sprzedaż odbywa się za pośrednictwem partnerów firmy Microsoft zakłada, wszyscy partnerzy to firmy i są odpowiednio wykonującej zobowiązań podatkowych.  Dodatkowe informacje można znaleźć w [— często zadawane pytania](https://automaticbillingspec.blob.core.windows.net/spec/FAQ%20for%20ISV%20Azure%20Marketplace%20Updates%20March%202019.pdf).
 
-    1. Microsoft nalicza szwajcarski podatek VAT wszystkim klientom w Szwajcarii lub Liechtensteinie.
+    1. Dla wszystkich krajów, które nie są krajów zarządzanych firmy Microsoft (**niezależnego dostawcy oprogramowania zarządzanego krajów**), wydawców, użytkownik potwierdza i uzgadniają wydawców, spoczywa wyłączny obowiązek określenia i zarządzanie nimi opodatkowania klientów końcowych, takich jak rejestracja, podatku, obliczenia, kolekcji i wpłat i sprawdzania poprawności stanu firm klientów i dostarczenie faktur klientom, dla wszystkich ofert z wybranym przez takie wydawców do udostępnienia w krajach zarządzane niezależnego dostawcy oprogramowania.  Wydawcy potwierdza, że względem sprzedaż w kraju z zarządzanego niezależnych dostawców oprogramowania, Microsoft aktualnie może nie mieć możliwość zapewnienia.
 
-1. **Kraje rozliczeń podatkowych niezależnych dostawców oprogramowania.**
+    1. Klientów końcowych zakupić oferty bezpośrednio od firmy Microsoft lub od partnerów firmy Microsoft, w którym wydawca licencji produktu.  Ponadto istnieje kilka różnych programów licencjonowania.  W niektórych przypadkach krajów zarządzanych firmy Microsoft mogą stać się krajów zarządzane niezależnego dostawcy oprogramowania i na odwrót (zobacz sekcję dotyczącą **krajów zarządzanych Microsoft**poniżej). Informacje dotyczące zakupu scenariuszy można znaleźć w [— często zadawane pytania w usłudze Azure Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide).
 
-    1. Kraje rozliczeń podatkowych niezależnych dostawców oprogramowania obejmują wszystkie kraje nabywców zgodnie z definicją w sekcji 1 (3) niniejszych zasad, który nie jest kraje rozliczeń podatkowych firmy Microsoft. Ponadto sprzedaż dla Australii, Arabia Saudyjska, Tajwan i Zjednoczone Emiraty Arabskie, za pośrednictwem kanału Enterprise jest traktowana jako sprzedaż do kraju rozliczeń podatkowych niezależnych dostawców oprogramowania. Jednak w odniesieniu do wydawców na Tajwanie, Microsoft nie może potwierdzić, że takie tajwański wydawców są zbieranie i przekazanych obowiązujących podatków.
+1. **Kraje jest zarządzany przez firmę Microsoft.**
 
-    1. Jeśli wydawca udostępnianie ofert w kraju wpłat niezależnych dostawców oprogramowania, takie wydawcom spoczywa wyłączny obowiązek określenia zobowiązań podatkowych w tym kraju wpłat niezależnych dostawców oprogramowania, jeśli istnieje.  One należy potwierdzić, że Microsoft nie obecnie możliwość udostępnienia szczegółów transakcji wymaganych dla wydawców zapewnić klientom faktur.
+    1. Następujące kraje to kraje zarządzanych firmy Microsoft, dla sprzedaży za pośrednictwem wszystkich scenariuszach zakupu: Armenia, Białoruś, Unii Europejskiej, Kanada, Indie, Irlandia, Liechtenstein, Monako, Nowej Zelandii, Norwegia, Portoryko, Rosja, Arabia Saudyjska, Serbia, Korea Południowa, Szwajcaria, Tajwan, Turcja, Zjednoczone Emiraty Arabskie i Stanów Zjednoczonych. 
+
+    1. Australia stanowi Microsoft kraj zarządzane sprzedaż wszystkie scenariusze zakupu klientów z wyjątkiem scenariusz zakupu Enterprise Agreement klienta.
+
+    1. Firma Microsoft zarządza opodatkowania klientów końcowych dla wydawcy jako udogodnienie i ma zakłada, że najbardziej typowych scenariuszy określania krajach i strategii zarządzania opodatkowania klientów końcowych.
+
+    1. Microsoft nie udziela żadnych gwarancji działania firmy Microsoft całkowicie odpowiada zobowiązań wydawców w krajach zarządzanych firmy Microsoft.  Dla wszystkich Microsoft krajów zarządzane, firma Microsoft zaleca wydawców pracy z własnych doradców podatku ustalić, czy Microsoft Managed przekazywaniu podatku wystarczająco adresy wymagań dotyczących zgodności tych wydawców.  Jest to szczególnie istotne, wszelkie Microsoft zarządzane krajów, z którego wydawcy sprzedawanie ich produktów.  Na przykład wydawca ustanowionych w i sprzedaży ofert w Arabia Saudyjska mogą określić, że jednostki uzależnionej w firmie Microsoft Zarządzanie podatku może nie być wystarczające, aby spełnić zobowiązań zgodności wydawcy.
+
+1. **Niezależny dostawca oprogramowania zarządzanego krajach.**
+
+    1. Kraje zarządzane niezależnych dostawców oprogramowania obejmują Australia, dla wszystkich sprzedaż klient posiadający umowę Enterprise zakupu scenariusza i wszystkie kraje, nie jest przywoływany w sekcji na **krajów zarządzanych Microsoft**.
+
+1. **Szczególnych przypadkach.**
+
+    1. *Brazylia*.  Sprzedaż w regionie Brazylia wszystkich klientów można kupić w scenariuszach z wyjątkiem dostawcy usług Kryptograficznych, Brazylia jest kraj zarządzanych firmy Microsoft i Microsoft działa jak odsprzedawcy, a nie agenta wydawców.  Sprzedaż w regionie Brazylia klienta dostawcy usług Kryptograficznych można kupić w scenariuszu, Microsoft działa jako agent wydawców i sprzedaży z jednostki Brazylii do brazylijski dostawców usług kryptograficznych Microsoft przyjmuje, są podatkowe zgodne. 
+
+    1. *Meksyk*.  Dla sprzedaży w Meksyku za pośrednictwem scenariusz zakupu klienta umowy Enterprise Agreement Meksyk jest kraj zarządzanych firmy Microsoft, a Microsoft działa jak odsprzedawcy, a nie agenta wydawców.  Dla sprzedaży w Meksyku przez wszystkie scenariusze zakupu klientów z wyjątkiem umowy Enterprise Agreement Meksyk jest kraju z zarządzanego niezależnych dostawców oprogramowania i Microsoft działa jako agent wydawców.
 
 ## <a name="security-events"></a>Zdarzenia zabezpieczeń
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 017abd72b3aa1547844f977c3efda69e59901a6f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/01/2019
+ms.openlocfilehash: 270231b2ad7d94789595cfa4e681cf6c2b0f0541
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487952"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657879"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Przeczytaj repliki w bazie danych Azure database for PostgreSQL
 
@@ -21,6 +21,8 @@ ms.locfileid: "55487952"
 Funkcja odczytu replik umożliwia replikowanie danych z usługi Azure Database for postgresql w warstwie serwera (master) serwerom maksymalnie pięć tylko do odczytu (repliki do odczytu) w tym samym regionie platformy Azure. Odczytu replik asynchronicznie są aktualizowane przy użyciu technologii replikacji natywnego aparatu PostgreSQL.
 
 Repliki są nowe serwery, które mogą być zarządzane w podobny sposób jak normalne autonomicznej bazy danych Azure Database dla serwerów MySQL. W przypadku każdej repliki do odczytu są naliczane opłaty za zaaprowizowane środowisko obliczeniowe (rozliczane w rdzeniach wirtualnych) i zaaprowizowany magazyn (rozliczany w GB/miesiąc).
+
+Odwiedź stronę [porad strony, aby dowiedzieć się, jak tworzyć i zarządzać nimi replik](howto-read-replicas-portal.md).
 
 ## <a name="when-to-use-read-replicas"></a>Kiedy należy używać odczytu replik
 Funkcja odczytu repliki jest przeznaczona dla ułatwienia zwiększenia wydajności i skalowalności intensywnie odczytujących obciążeń. Na przykład obciążeniami odczytu może być izolowane do replik, podczas obciążenia zapisu może zostać skierowany do poziomu głównego.
@@ -56,7 +58,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 i w wierszu wprowadź hasło dla konta użytkownika.
 
 ## <a name="monitoring-replication"></a>Monitorowanie replikacji
-Brak **maksymalna zwłoka między replikami** metryk dostępnych w usłudze Azure Monitor. Ta metryka jest dostępna na serwerze głównym tylko. Metryka pokazuje czas opóźnienia między główną i większość repliką opóźnione. 
+Brak **maksymalna zwłoka między replikami** metryk dostępnych w usłudze Azure Monitor. Ta metryka jest dostępna na serwerze głównym tylko. Metryka przedstawia opóźnienie w bajtach między główną i najbardziej opóźnione repliką. 
 
 Firma Microsoft udostępnia również **Lag repliki** metryki w usłudze Azure Monitor. Ta metryka jest dostępna tylko replik. 
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 0cf301b98e5fa530b234dbd5953746241c0021ee
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244243"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661704"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Konfigurowanie alertów dotyczących metryk usługi Azure Database dla serwera MariaDB za pomocą witryny Azure portal
 
@@ -27,7 +27,7 @@ Można skonfigurować alert, aby po jego wyzwoleniu, wykonaj następujące czynn
 Można skonfigurować i uzyskać informacje na temat reguł alertów za pomocą:
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Interfejs wiersza polecenia platformy Azure](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Interfejs API REST usługi Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts)
+* [Interfejs API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>Tworzenie reguły alertu na metrykę
 1. W [witryny Azure portal](https://portal.azure.com/), wybierz bazę danych Azure dla serwera MariaDB, którą chcesz monitorować.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 4945978fdc27a298daf4de0604b894c53ba51dbe
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 78746324c240e0a1bfab81ca1e45f231909328c0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321422"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661194"
 ---
 # <a name="application-architecture-on-azure"></a>Architektura aplikacji na platformie Azure
 Aby zabezpieczyć swoje rozwiązania oparte na chmurze w systemie Microsoft Azure solidne podstawy architektury ma krytyczne znaczenie. Architekci, projektantów i konsultantów korzystać z silnej znajomości architektury aplikacji i usług. Ta podstawowe wiedza ułatwi Ci zrozumienie wszystkie składniki rozwiązań opartych na chmurze i ułatwiają integrowanie zabezpieczeń wszystkich aspektów projektowania i implementacji.
@@ -42,10 +42,10 @@ Każdy plan zawiera:
 [Wyświetl Visio i symbole szkolenia wideo](https://aka.ms/CnESymbolsVideo) a następnie [Pobierz chmury i ustaw Enterprise Symbol](https://aka.ms/CnESymbols) pomocnych przy tworzeniu techniczne materiały, które opisują platformy Azure, Windows Server, SQL Server i nie tylko. Można użyć symboli w diagramów architektury, materiałów szkoleniowych, prezentacje, arkusze danych, grafika informacyjna o systemie, oficjalne dokumenty i nawet książki innych firm, jeśli książki szkolenie modeli osobom korzystanie z produktów firmy Microsoft. Jednak nie są przeznaczone do użytku w interfejsie użytkownika.
 
 ## <a name="3d-blueprint-visio-template"></a>Szablon programu Visio schemat 3D
-Wersje 3D [schematy architektury Microsoft](https://aka.ms/azblueprints) początkowo zostały utworzone w narzędziu innej firmy niż Microsoft. Nowy szablon programu Visio 2013 (lub nowszym) dostarczany 5 sierpnia 2015 roku jako część [kurs certyfikacji Microsoft Architecture rozproszone na EDX.ORG](https://docs.microsoft.com/azure/architecture/#microsoft-architecture-certification-course).
+Wersje 3D [schematy architektury Microsoft](https://aka.ms/azblueprints) początkowo zostały utworzone w narzędziu innej firmy niż Microsoft. Nowy szablon programu Visio 2013 (lub nowszym) dostarczany 5 sierpnia 2015 roku jako część [kurs certyfikacji Microsoft Architecture rozproszone na EDX.ORG](https://docs.microsoft.com/azure/architecture/).
 
 Szablon jest również dostępne poza kursu.
 
 * [Obejrzyj film szkolenia](https://aka.ms/3dBlueprintTemplateVideo) pierwszy, aby było wiadomo, co można zrobić
 * Pobierz [Microsoft szablony planu 3d w programie Visio](https://aka.ms/3DBlueprintTemplate)
-* Pobierz [Cloud i Enterprise symbole](https://docs.microsoft.com/azure/architecture/#drawing-symbol-and-icon-sets) za pomocą szablonu 3D
+* Pobierz [Cloud i Enterprise symbole](https://docs.microsoft.com/azure/architecture/) za pomocą szablonu 3D

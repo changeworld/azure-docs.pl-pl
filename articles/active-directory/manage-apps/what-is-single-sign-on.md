@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 9e06e53f83dd05d53b76a2a07e465133f052dba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157707"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664033"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 Logowanie jednokrotne (SSO) dodaje zabezpieczenia i wygodę gdy użytkownicy logują się do aplikacji w usłudze Azure Active Directory (Azure AD). W tym artykule opisano pojedynczej metody logowania jednokrotnego i pomaga w wyborze najbardziej odpowiedniej metody logowania jednokrotnego, podczas konfigurowania aplikacji.
@@ -49,9 +49,7 @@ Poniższa tabela zawiera podsumowanie pojedynczej metody logowania jednokrotnego
 | [Na podstawie nagłówka](#header-based-sso) | tylko lokalnie | Jeśli aplikacja używa nagłówków do uwierzytelniania, należy użyć opartej na nagłówkach logowania jednokrotnego. Opartej na nagłówkach logowanie jednokrotne wymaga oprogramowanie PingAccess dla usługi Azure AD. Serwer Proxy aplikacji używa usługi Azure AD można uwierzytelnić użytkownika, a następnie przekazuje ruch za pośrednictwem usługi łącznika.  | 
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect i OAuth
-Za pomocą protokołu OAuth i OpenID Connect, możesz włączyć logowanie jednokrotne, upraszczającej proces dodawania aplikacji przedsiębiorstwa do usługi Azure AD. Administrator aplikacji nie trzeba skonfigurować logowanie jednokrotne. Zamiast tego dodaje aplikację w usłudze Azure AD podczas administrator [przyznaje zgody użytkownika](configure-user-consent.md). 
-
-[Zestawów SDK](../develop/reference-v2-libraries.md) OpenID Connect i OAuth są łatwe do przyjęcia, a Twoja aplikacja będzie gotowa do użycia MS Graph. 
+Podczas tworzenia nowych aplikacji, należy użyć nowoczesnych protokołów, takich jak OpenID Connect i OAuth, aby osiągnąć najlepsze logowania jednokrotnego dla aplikacji na wielu platformach urządzeń. OAuth pozwala użytkownikom lub administratorom [wyrazić zgody](configure-user-consent.md) dla chronionych zasobów, takich jak [MS Graph](/graph/overview). Firma Microsoft zapewnia proste ustalenie [zestawów SDK](../develop/reference-v2-libraries.md) dla aplikacji, a ponadto aplikacja nie będzie gotowe do użycia [MS Graph](/graph/overview).
 
 Aby uzyskać więcej informacji, zobacz:
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 021876306c435d3d15996c69ab3613c1d82e6993
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f9ffbebee06ab7b9e010c7e6c84fee533611fb38
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468890"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567659"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Instrukcje: Konfigurowanie zasad usługi o podwyższonym ryzyku ochronę tożsamości usługi Azure Active Directory (odświeżyć)
 
@@ -129,7 +129,7 @@ Zasady ryzyka użytkownika znajduje się w **Konfiguruj** sekcji na [strony usł
 
 ## <a name="user-risk-policy-settings"></a>Ustawienia zasad ryzyka dla użytkownika
 
-Po skonfigurowaniu zasad ryzyka logowania, należy ustawić:
+Po skonfigurowaniu zasad ryzyka użytkownika, musisz ustawić:
 
 - Użytkownicy i grupy, które zostaną zastosowane zasady:
 

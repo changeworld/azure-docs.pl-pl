@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 2523db3d817b4281b6435374ef0cca4e1d2da695
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 432f2495dd1b4c8aeb761d12904adf26f3c24c0b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005861"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660701"
 ---
 # <a name="available-event-hubs-apis"></a>Zdarzenie dostępne koncentratory API
 
@@ -43,13 +43,13 @@ Aby uzyskać więcej informacji o bieżącym statusie każdej biblioteki środow
 
 #### <a name="net"></a>.NET
 
-Ekosystem platformy .NET ma wielu modułów wykonawczych, istnieje więc wiele bibliotek platformy .NET dla usługi Event Hubs. Biblioteki .NET Standard mogą być uruchamiane przy użyciu platformy .NET Core lub .NET Framework, natomiast biblioteka .NET Framework można uruchomić tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat wersji programu .NET Framework, zobacz [framework w wersji](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions).
+Ekosystem platformy .NET ma wielu modułów wykonawczych, istnieje więc wiele bibliotek platformy .NET dla usługi Event Hubs. Biblioteki .NET Standard mogą być uruchamiane przy użyciu platformy .NET Core lub .NET Framework, natomiast biblioteka .NET Framework można uruchomić tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat wersji programu .NET Framework, zobacz [framework w wersji](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
 
 #### <a name="node"></a>Węzeł
 
 [Biblioteka języka Node.js](https://github.com/Azure/azure-event-hubs-node) jest obecnie dostępna w wersji zapoznawczej i jest obsługiwane jako projekt po stronie przez pracowników firmy Microsoft i współautorów zewnętrznych. Wszystkie współtworzone elementy, łącznie z kodem źródłowym Zapraszamy i zostanie przejrzana.
 
-## <a name="management-apis"></a>Interfejsy API Management
+## <a name="management-apis"></a>Interfejsy API zarządzania
 
 Poniższa tabela zawiera listę wszystkich aktualnie dostępnych bibliotek specyficznych dla zarządzania. Żadna z tych bibliotek zawierają operacji środowiska uruchomieniowego i są wyłącznie w celu zarządzania jednostkami usługi Event Hubs.
 

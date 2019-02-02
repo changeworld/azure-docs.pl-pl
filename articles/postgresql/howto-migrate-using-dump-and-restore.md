@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 366a38951363d52df3d52d3a670943dc41211c8a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494004"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564208"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie przy użyciu zrzutu i przywracania bazy danych PostgreSQL
 Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) przywrócenie bazy danych PostgreSQL z pliku archiwum, utworzone przez pg_dump.
@@ -83,7 +83,7 @@ Jednym ze sposobów migracji istniejącej bazy danych postgresql w warstwie do u
 - W elemencie docelowym — Azure Database dla serwera PostgreSQL należy rozważyć wykonanie następujących czynności przed przywróceniem:
     - Wyłącz zapytania śledzenia wydajności, ponieważ te statystyki nie są wymagane podczas migracji. You can do this by setting pg_stat_statements.track, pg_qs.query_capture_mode, and pgms_wait_sampling.query_capture_mode to NONE.
 
-    - Wysoka zasobów obliczeniowych i pamięci jednostki sku, takich jak 32 — zoptymalizowane pod kątem pamięci rdzeń wirtualny umożliwia przyspieszenie migracji. Możesz łatwo skalować wróci ponownie do preferowanego jednostki sku po zakończeniu przywracania. Im większa jednostki sku, więcej paralellism można osiągnąć przez zwiększenie odpowiedniego `-j` parametr w poleceniu pg_restore. 
+    - Aby przyspieszyć proces migracji, należy użyć dużą mocą obliczeniową i jednostki sku dużą ilość pamięci, takich jak 32 — zoptymalizowane pod kątem pamięci rdzeń wirtualny. Możesz łatwo skalować wróci ponownie do preferowanego jednostki sku po zakończeniu przywracania. Im większa jednostki sku, więcej równoległości można osiągnąć przez zwiększenie odpowiedniego `-j` parametr w poleceniu pg_restore. 
 
     - Więcej operacji We/Wy na serwerze docelowym może poprawić wydajność odzyskiwania. Możesz aprowizować więcej operacji We/Wy przez zwiększenie rozmiaru magazynu serwera. To ustawienie jest nieodwracalna, ale należy wziąć pod uwagę, czy nowszej operacje We/Wy będą w przyszłości korzystać rzeczywistego obciążenia.
 

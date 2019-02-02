@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: deb72bcc41e20057b6e7b214c6a8c93655894a12
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fe575a79fe2f47729e7c7fe039989b2c08af1282
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628276"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657828"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak dodać umiejętności niestandardowe do potoku wyszukiwania kognitywnego
 
@@ -27,7 +27,14 @@ Budowanie umiejętności niestandardowe daje możliwość wstawiania przekształ
 
 ## <a name="web-api-custom-skill-interface"></a>Interfejs umiejętności niestandardowego interfejsu API sieci Web
 
-Niestandardowe punkty końcowe umiejętności WebAPI musi zwracać odpowiedzi w okresie 5 minut. Potokiem indeksowania jest synchroniczne i indeksowanie powoduje wygenerowanie błąd upływu limitu czasu, jeśli odpowiedź nie została odebrana w tym oknie".
+Niestandardowe WebAPI umiejętności punkty końcowe przez domyślny limit czasu, jeśli nie zwracają odpowiedzi w ciągu 30 drugie okno. Potokiem indeksowania jest synchroniczne, a indeksowanie powoduje wygenerowanie błąd upływu limitu czasu, jeśli odpowiedź nie została odebrana w tym oknie.  Istnieje możliwość Konfigurowanie limitu czasu na maksymalnie 90 sekund, ustawiając parametr limitu czasu:
+
+```json
+        "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+        "description": "This skill has a 90 second timeout",
+        "uri": "https://[your custom skill uri goes here]",
+        "timeout": "PT90S",
+```
 
 Obecnie tylko mechanizm do interakcji z umiejętności niestandardowe jest za pomocą interfejsu API sieci Web. Wymaga interfejsu API sieci Web musi spełniać wymagania opisane w tej sekcji.
 

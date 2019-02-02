@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: 7e31f4f229e722d51f5de6b133e70dfb1c013533
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888162"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563987"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 
@@ -80,7 +80,7 @@ Zestawy SDK serwera są dostępne dla platformy .NET, Java, Node.js, PHP i Pytho
 
 ### <a name="which-client-platforms-do-you-support"></a>Platformach klienckich, które są obsługiwane?
 
-Powiadomienia wypychane są obsługiwane w przypadku [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-gcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android — Chiny (przy użyciu usługi Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) i [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)), [aplikacji dla programu Chrome](notification-hubs-chrome-push-notifications-get-started.md)i [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Aby uzyskać więcej informacji, przejdź do [Samouczki wprowadzenie centra powiadomień] strony.
+Powiadomienia wypychane są obsługiwane w przypadku [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Kindle](notification-hubs-kindle-amazon-adm-push-notification.md), [Android — Chiny (przy użyciu usługi Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) i Android, [aplikacji dla programu Chrome](notification-hubs-chrome-push-notifications-get-started.md), i [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Aby uzyskać więcej informacji, przejdź do [Samouczki wprowadzenie centra powiadomień] strony.
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Są obsługiwane wiadomość SMS, wiadomości e-mail lub powiadomienia w sieci web?
 
@@ -144,7 +144,7 @@ Przestrzenie nazw może służyć do grupowania wdrożenia. Mogą one również 
 
 #### <a name="geo-distribution"></a>Dystrybucja geograficzna
 
-Rozkład geograficzny nie zawsze jest szczególnie ważne w scenariusze dotyczące powiadomień wypychanych. Różne PNSes (na przykład usługi APNS lub usługi GCM), dostarczanie powiadomień wypychanych do urządzeń, które nie są dystrybuowane równomiernie.
+Rozkład geograficzny nie zawsze jest szczególnie ważne w scenariusze dotyczące powiadomień wypychanych. Różne PNSes (na przykład usługi APNS lub FCM), dostarczanie powiadomień wypychanych do urządzeń, które nie są dystrybuowane równomiernie.
 
 W przypadku aplikacji, która jest używana jako globalnie centrów w różnych obszarach nazw można utworzyć przy użyciu usługi Notification Hubs w różnych regionach platformy Azure na całym świecie.
 
@@ -207,7 +207,7 @@ Usługa Azure Notification Hubs udostępnia kilka funkcji do rozwiązywania prob
 Usługa Azure Notification Hubs umożliwia, wyświetlanie danych telemetrycznych w [Azure Portal]. Szczegóły metryki są dostępne na [Notification Hubs metryki] strony.
 
 > [!NOTE]
-> Powiadomienia zakończone powodzeniem po prostu oznacza, że powiadomienia wypychane zostaną dostarczone do zewnętrznego systemu powiadomień platformy (na przykład APNS dla firmy Apple) lub usługi GCM dla usług Google. Jest odpowiedzialny za system powiadomień platformy w celu dostarczania powiadomień na urządzenia docelowe. Zazwyczaj system powiadomień platformy nie ujawnia dostarczanie metryk do podmiotów trzecich.  
+> Powiadomienia zakończone powodzeniem po prostu oznacza, że powiadomienia wypychane zostaną dostarczone do zewnętrznego systemu powiadomień platformy (na przykład APNS dla firmy Apple) lub usługi FCM dla usług Google. Jest odpowiedzialny za system powiadomień platformy w celu dostarczania powiadomień na urządzenia docelowe. Zazwyczaj system powiadomień platformy nie ujawnia dostarczanie metryk do podmiotów trzecich.  
 
 Oferujemy również możliwość eksportowania danych telemetrycznych programowo (w warstwie standardowa). Aby uzyskać więcej informacji, zobacz [Przykładowe metryki centra powiadomień].
 

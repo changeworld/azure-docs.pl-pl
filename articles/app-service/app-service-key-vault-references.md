@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: c47de9fbe1b9923ff8ce1c38a9a9695af4311858
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 662260c3cf37f8f8a675c522f3d3dea41153e485
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723148"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663575"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj odwołania do usługi Key Vault dla usługi App Service i Azure Functions (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Aby przeczytać wpisy tajne z magazynu Key Vault, musisz mieć utworzony magazyn
    > [!NOTE] 
    > Usługa Key Vault odwołuje się do aktualnie tylko przypisana przez system obsługi tożsamości zarządzanej. Nie można używać tożsamości przypisanych przez użytkownika.
 
-1. Tworzenie [zasady w usłudze Key Vault dostępu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) tożsamości aplikacji została utworzona wcześniej. Włącz uprawnienie wpisu tajnego "Get" te zasady.
+1. Tworzenie [zasady w usłudze Key Vault dostępu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) tożsamości aplikacji została utworzona wcześniej. Włącz uprawnienie wpisu tajnego "Get" te zasady. Nie należy konfigurować "uprawnienia aplikacji" lub `appliationId` ustawienia, ponieważ nie jest zgodny z tożsamości zarządzanej.
 
 ## <a name="reference-syntax"></a>Składnia odwołania
 
@@ -46,8 +46,8 @@ Dokumentacja usługi Key Vault ma postać `@Microsoft.KeyVault({referenceString}
 > [!div class="mx-tdBreakAll"]
 > | Ciąg odwołania                                                            | Opis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_secretUri_                                                       | **SecretUri** powinien być identyfikator URI danych płaszczyzna klucz tajny w usłudze Key Vault, łącznie z wersją, np. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_vaultName_; SecretName =_secretName_; SecretVersion =_secretVersion_ | **VaultName** powinien nazwę zasobu usługi Key Vault. **SecretName** powinien zawierać nazwę docelowego wpisu tajnego. **SecretVersion** powinna mieć taką wersję wpisu tajnego do użycia. |
+> | SecretUri=_secretUri_                                                       | **SecretUri** powinien być identyfikator URI danych płaszczyzna klucz tajny w usłudze Key Vault, łącznie z wersją, np. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** powinien nazwę zasobu usługi Key Vault. **SecretName** powinien zawierać nazwę docelowego wpisu tajnego. **SecretVersion** powinna mieć taką wersję wpisu tajnego do użycia. |
 
 > [!NOTE] 
 > W bieżącej wersji zapoznawczej wersje są wymagane. W przypadku rotacji kluczy tajnych, należy zaktualizować wersję w konfiguracji aplikacji.

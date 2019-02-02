@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2dd02e50ecde19b3affd26a024c4734e99fc4978
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9fa0a1eb590d99b48e737794352625848f3d3dc8
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017331"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661296"
 ---
 # <a name="copy-data-from-drill-using-azure-data-factory-preview"></a>Kopiowanie danych z testowania odzyskiwania po awarii przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -45,7 +45,7 @@ Następujące właściwości są obsługiwane w przypadku testowania odzyskiwani
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość type musi być równa: **Przechodzenie do szczegółów** | Yes |
-| Parametry połączenia | Ciąg połączenia ODBC, aby nawiązać połączenie testowania odzyskiwania po awarii. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| Parametry połączenia | Ciąg połączenia ODBC, aby nawiązać połączenie testowania odzyskiwania po awarii. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Można również wprowadzić hasło w usłudze Azure Key Vault i ściągania `pwd` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 **Przykład:**
@@ -57,8 +57,8 @@ Następujące właściwości są obsługiwane w przypadku testowania odzyskiwani
         "type": "Drill",
         "typeProperties": {
             "connectionString": {
-                 "type": "SecureString",
-                 "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
+                "type": "SecureString",
+                "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;PWD=<password>"
             }
         },
         "connectVia": {
@@ -68,6 +68,36 @@ Następujące właściwości są obsługiwane w przypadku testowania odzyskiwani
     }
 }
 ```
+
+**Przykład: przechowywanie haseł w usłudze Azure Key Vault**
+
+```json
+{
+    "name": "DrillLinkedService",
+    "properties": {
+        "type": "Drill",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "ConnectionType=Direct;Host=<host>;Port=<port>;AuthenticationType=Plain;UID=<user name>;"
+            },
+            "pwd": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 

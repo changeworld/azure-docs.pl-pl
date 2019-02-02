@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0609a653327640c542457822e41143b9b39dd6d4
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: dc2b38f8e8065b8d8763365bf0cbad56ae00cd4b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462203"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565432"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Dostosowywanie akceleratora rozwiązań zdalnego monitorowania
 
@@ -84,7 +84,7 @@ Ponieważ zespoły zarządzać swoimi układ i zmiany rozmiaru, można łatwo mo
 * Zamień pozycje paneli mapy i dane telemetryczne.
 * Zmienić względną szerokość kontrolki mapy i analizy paneli.
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -156,7 +156,7 @@ Ponieważ zespoły zarządzać swoimi układ i zmiany rozmiaru, można łatwo mo
 
 Można również dodać kilka wystąpień tego samego panel lub różne wersje Jeśli możesz [zduplikowane i Dostosowywanie panelu](#duplicate-and-customize-an-existing-control). Poniższy przykład pokazuje, jak dodać dwa wystąpienia w panelu dane telemetryczne. Aby wprowadzić te zmiany, należy edytować `src/components/pages/dashboard/dashboard.js` pliku:
 
-```nodejs
+```javascript
 <PageContent className="dashboard-container">
   <Grid>
     <Cell className="col-1 devices-overview-cell">
@@ -247,19 +247,19 @@ Następujące kroki przedstawiają sposób Duplikowanie istniejącego panelu, zm
 
 1. W **alertsPanel.js** w pliku **cust_alerts** folderu, Zmień nazwę klasy, która ma być **CustAlertsPanel**:
 
-    ```nodejs
+    ```javascript
     export class CustAlertsPanel extends Component {
     ```
 
 1. Dodaj następujący wiersz do `src/components/pages/dashboard/panels/index.js` pliku:
 
-    ```nodejs
+    ```javascript
     export * from './cust_alerts';
     ```
 
 1. Zastąp `alertsPanel` z `CustAlertsPanel` w `src/components/pages/dashboard/dashboard.js` pliku:
 
-    ```nodejs
+    ```javascript
     import {
       OverviewPanel,
       CustAlertsPanel,
@@ -287,7 +287,7 @@ Została obecnie zastąpiona oryginalna **alerty** panelu kopią o nazwie **Cust
 
 1. Zmień definicje kolumn, jak pokazano w poniższym fragmencie kodu:
 
-    ```nodejs
+    ```javascript
     this.columnDefs = [
       rulesColumnDefs.severity,
       {
@@ -312,7 +312,7 @@ Pliki w `src/components/pages/dashboard/panels/telemtry` folderu zdefiniować wy
 
 1. W `src/services/telemetryService.js` plików, zlokalizować funkcji o nazwie **getTelemetryByDeviceIdP15M**. Utwórz kopię tej funkcji i modyfikować, kopiować w następujący sposób:
 
-    ```nodejs
+    ```javascript
     static getTelemetryByDeviceIdP5M(devices = []) {
       return TelemetryService.getTelemetryByMessages({
         from: 'NOW-PT5M',
@@ -325,7 +325,7 @@ Pliki w `src/components/pages/dashboard/panels/telemtry` folderu zdefiniować wy
 
 1. Aby użyć tej nowej funkcji do wypełnienia wykresu telemetrii, otwórz `src/components/pages/dashboard/dashboard.js` pliku. Znajdź wiersz, który inicjuje strumień danych telemetrycznych i zmodyfikować go w następujący sposób:
 
-    ```node.js
+    ```javascript
     const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
@@ -339,7 +339,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
 
 1. Otwórz plik `src/components/pages/dashboard/dashboard.js`. Modyfikowanie **stan początkowy** obiektu, aby uwzględnić **warningAlertsChange** właściwości w następujący sposób:
 
-    ```nodejs
+    ```javascript
     const initialState = {
       ...
 
@@ -359,7 +359,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
 
 1. Modyfikowanie **currentAlertsStats** obiektu, aby uwzględnić **totalWarningCount** jako właściwość:
 
-    ```nodejs
+    ```javascript
     return {
       openWarningCount: (acc.openWarningCount || 0) + (isWarning && isOpen ? 1 : 0),
       openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
@@ -371,7 +371,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
 
 1. Oblicz nowy kluczowy wskaźnik wydajności. Znajdź obliczania liczby alertów krytycznych. Zduplikowany kod i modyfikować, kopiować w następujący sposób:
 
-    ```nodejs
+    ```javascript
     // ================== Warning Alerts Count - START
     const currentWarningAlerts = currentAlertsStats.totalWarningCount;
     const previousWarningAlerts = previousAlerts.reduce(
@@ -384,7 +384,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
 
 1. Nowe **warningAlertsChange** kluczowego wskaźnika wydajności w usłudze stream kluczowy wskaźnik wydajności:
 
-    ```nodejs
+    ```javascript
     return ({
       analyticsIsPending: false,
       analyticsVersion: this.state.analyticsVersion + 1,
@@ -402,7 +402,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
 
 1. Nowe **warningAlertsChange** kluczowy wskaźnik wydajności w danych o stanie używany do renderowania interfejsu użytkownika:
 
-    ```nodejs
+    ```javascript
     const {
       ...
 
@@ -421,7 +421,7 @@ Wykres danych telemetrycznych zawiera teraz pięć minut danych telemetrycznych:
 
 1. Aktualizuj dane przekazywane do panelu kluczowe wskaźniki wydajności:
 
-    ```node.js
+    ```javascript
     <AnalyticsPanel
       timeSeriesExplorerUrl={timeSeriesParamUrl}
       topAlerts={topAlertsWithName}
@@ -439,13 +439,13 @@ Zmiany w został zakończony `src/components/pages/dashboard/dashboard.js` pliku
 
 1. Zmodyfikuj następujący wiersz kodu w celu pobrania nowej wartości wskaźnika KPI w następujący sposób:
 
-    ```nodejs
+    ```javascript
     const { t, isPending, criticalAlertsChange, warningAlertsChange, alertsPerDeviceId, topAlerts, timeSeriesExplorerUrl, error } = this.props;
     ```
 
 1. Zmodyfikuj kod znaczników, aby wyświetlić nową wartość wskaźnika KPI w następujący sposób:
 
-    ```nodejs
+    ```javascript
     <div className="analytics-cell">
       <div className="analytics-header">{t('dashboard.panels.analytics.criticalAlerts')}</div>
       <div className="critical-alerts">

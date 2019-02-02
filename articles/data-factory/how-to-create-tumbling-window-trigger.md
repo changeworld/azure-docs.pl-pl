@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: 6efccdb3034bb25e60904c858f346ff9a5695fc0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e5910d08cf7ea5e1da094a0313513123d7c7813c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019728"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567040"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Utwórz wyzwalacz, który uruchamia potok okna wirowania
 Ten artykuł zawiera kroki umożliwiające tworzenie, uruchamianie i monitorowanie wyzwalacza okna wirowania. Aby uzyskać ogólne informacje na temat wyzwalaczy i obsługiwanych typów, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
@@ -33,7 +33,7 @@ Aby utworzyć wyzwalacz okna wirowania w witrynie Azure portal, wybierz **wyzwal
 ## <a name="tumbling-window-trigger-type-properties"></a>Właściwości typu wyzwalacza okna wirowania
 Okno wirowania ma następujące właściwości typu wyzwalacza:
 
-```  
+```
 {
     "name": "MyTriggerName",
     "properties": {
@@ -47,39 +47,38 @@ Okno wirowania ma następujące właściwości typu wyzwalacza:
             "delay": "<<timespan – optional>>",
             “maxConcurrency”: <<int>> (required, max allowed: 50),
             "retryPolicy": {
-                "count":  <<int - optional, default: 0>>,
+                "count": <<int - optional, default: 0>>,
                 “intervalInSeconds”: <<int>>,
             }
         },
-        "pipeline":
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "MyPipelineName"
+        "pipeline": {
+            "pipelineReference": {
+                "type": "PipelineReference",
+                "referenceName": "MyPipelineName"
+            },
+            "parameters": {
+                "parameter1": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 },
-                "parameters": {
-                    "parameter1": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "parameter2": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "parameter3": "https://mydemo.azurewebsites.net/api/demoapi"
-                }
+                "parameter2": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
+                },
+                "parameter3": "https://mydemo.azurewebsites.net/api/demoapi"
             }
-      }    
+        }
+    }
 }
-```  
+```
 
 Poniższa tabela zawiera ogólne omówienie głównych elementów JSON, które są powiązane do powtarzania i planowania wyzwalacza okna wirowania:
 
-| Element JSON | Opis | Typ | Dozwolone wartości | Wymagane |
+| Element JSON | Opis | Type | Dozwolone wartości | Wymagane |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Typ wyzwalacza. Typ jest wartością stałą "TumblingWindowTrigger." | Ciąg | "TumblingWindowTrigger" | Yes |
-| **runtimeState** | Bieżący stan wyzwalacza czasu wykonywania.<br/>**Uwaga**: Ten element jest \<tylko do odczytu >. | Ciąg | "Started", "zatrzymana," "Wyłączone" | Yes |
-| **frequency** | Ciąg, który reprezentuje jednostkę częstotliwość (minuty lub godziny) powtarzania wyzwalacza. Jeśli **startTime** wartości daty są bardziej szczegółowe niż **częstotliwość** wartość **startTime** daty są traktowane jako, gdy są obliczane w granicach okna. Na przykład jeśli **częstotliwość** wartość to co godzinę i **startTime** wartość 2017 — 09 — 01T10:10:10Z, pierwsze okno jest (2017-09 — 01T10:10:10Z, 2017-09 — 01T11:10:10Z). | Ciąg | "minute", "hour"  | Yes |
+| **type** | Typ wyzwalacza. Typ jest wartością stałą "TumblingWindowTrigger." | String | "TumblingWindowTrigger" | Yes |
+| **runtimeState** | Bieżący stan wyzwalacza czasu wykonywania.<br/>**Uwaga**: Ten element jest \<tylko do odczytu >. | String | "Started", "zatrzymana," "Wyłączone" | Yes |
+| **frequency** | Ciąg, który reprezentuje jednostkę częstotliwość (minuty lub godziny) powtarzania wyzwalacza. Jeśli **startTime** wartości daty są bardziej szczegółowe niż **częstotliwość** wartość **startTime** daty są traktowane jako, gdy są obliczane w granicach okna. Na przykład jeśli **częstotliwość** wartość to co godzinę i **startTime** wartość 2017 — 09 — 01T10:10:10Z, pierwsze okno jest (2017-09 — 01T10:10:10Z, 2017-09 — 01T11:10:10Z). | String | "minute", "hour"  | Yes |
 | **interval** | Dodatnia liczba całkowita oznaczająca interwał wartości właściwości **frequency**, która określa częstotliwość uruchamiania wyzwalacza. Na przykład jeśli **interwał** 3 i **częstotliwość** jest "hour" wyzwalacz jest powtarzany co 3 godziny. | Liczba całkowita | Dodatnia liczba całkowita. | Yes |
 | **startTime**| Pierwsze wystąpienie, które mogą znajdować się w przeszłości. Pierwszy interwał wyzwalacza (**startTime**, **startTime** + **interwał**). | DateTime | Wartość daty/godziny. | Yes |
 | **endTime**| Ostatnie wystąpienie, które mogą znajdować się w przeszłości. | DateTime | Wartość daty/godziny. | Yes |
@@ -92,32 +91,31 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów JSON, które s
 
 Możesz użyć **WindowStart** i **WindowEnd** zmiennych systemu wyzwalacza okna wirowania w swojej **potoku** definicji (oznacza to, dla części zapytania). Przekazać zmienne systemowe jako parametry do potoku w **wyzwalacza** definicji. Poniższy przykład pokazuje, jak przekazać te zmienne jako parametry:
 
-```  
+```
 {
     "name": "MyTriggerName",
     "properties": {
         "type": "TumblingWindowTrigger",
             ...
-        "pipeline":
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "MyPipelineName"
+        "pipeline": {
+            "pipelineReference": {
+                "type": "PipelineReference",
+                "referenceName": "MyPipelineName"
+            },
+            "parameters": {
+                "MyWindowStart": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 },
-                "parameters": {
-                    "MyWindowStart": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowStartTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    },
-                    "MyWindowEnd": {
-                        "type": "Expression",
-                        "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
-                    }
+                "MyWindowEnd": {
+                    "type": "Expression",
+                    "value": "@{concat('output',formatDateTime(trigger().outputs.windowEndTime,'-dd-MM-yyyy-HH-mm-ss-ffff'))}"
                 }
             }
-      }    
+        }
+    }
 }
-```  
+```
 
 Aby użyć **WindowStart** i **WindowEnd** odpowiednio parametry "MyWindowStart" i "MyWindowEnd", użyj wartości zmiennych systemowych w definicji potoku.
 
@@ -135,10 +133,10 @@ W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz
 
 1. Utwórz plik JSON o nazwie **MyTrigger.json** w folderze C:\ADFv2QuickStartPSH\ o następującej zawartości:
 
-   > [!IMPORTANT]
-   > Przed zapisaniem pliku JSON, ustaw wartość **startTime** element do bieżącego czasu UTC. Ustaw wartość **endTime** element na jedną godzinę w przeszłości bieżący czas UTC.
+    > [!IMPORTANT]
+    > Przed zapisaniem pliku JSON, ustaw wartość **startTime** element do bieżącego czasu UTC. Ustaw wartość **endTime** element na jedną godzinę w przeszłości bieżący czas UTC.
 
-    ```json   
+    ```json
     {
       "name": "PerfTWTrigger",
       "properties": {
@@ -167,7 +165,7 @@ W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz
         "runtimeState": "Started"
       }
     }
-    ```  
+    ```
 
 2. Tworzenie wyzwalacza za pomocą **Set-AzureRmDataFactoryV2Trigger** polecenia cmdlet:
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/01/2019
+ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546916"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660735"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
 
@@ -83,7 +83,7 @@ Po włączeniu Query Store zapisuje dane w systemie windows agregacji 15 minut, 
 Następujące opcje są dostępne w celu konfigurowania parametrów Query Store.
 | **Parametr** | **Opis** | **Domyślne** | **Range**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Zestawy instrukcji, które są śledzone. | top | Brak, top, wszystkie |
+| pg_qs.query_capture_mode | Zestawy instrukcji, które są śledzone. | brak | Brak, top, wszystkie |
 | pg_qs.max_query_text_length | Ustawia długość maksymalna zapytania, który może zostać zapisany. Dłużej zapytań zostanie obcięta. | 6000 | 100 - 10 TYS. |
 | pg_qs.retention_period_in_days | Ustawia okres przechowywania. | 7 | 1 - 30 |
 | pg_qs.track_utility | Określa, czy polecenia narzędzia są śledzone. | włączone | włączony wyłączony |
@@ -92,10 +92,10 @@ Poniższe opcje są stosowane specjalnie w celu oczekiwania statystyk.
 | **Parametr** | **Opis** | **Domyślne** | **Range**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | Zestawy, które są śledzone instrukcji poczekaj statystyki. | brak | Brak, wszystkie|
-| Pgms_wait_sampling.history_period | Ustaw częstotliwość (w milisekundach), w których oczekiwania są próbkowane zdarzenia. | 100 | 1 600000 |
+| Pgms_wait_sampling.history_period | Ustaw częstotliwość (w milisekundach), w których oczekiwania są próbkowane zdarzenia. | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** zastępuje **pgms_wait_sampling.query_capture_mode**. W przypadku pg_qs.query_capture_mode NONE, ustawienie pgms_wait_sampling.query_capture_mode nie ma wpływu.
+> **pg_qs.query_capture_mode** supersedes **pgms_wait_sampling.query_capture_mode**. W przypadku pg_qs.query_capture_mode NONE, ustawienie pgms_wait_sampling.query_capture_mode nie ma wpływu.
 
 
 Użyj [witryny Azure portal](howto-configure-server-parameters-using-portal.md) lub [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md) można pobrać lub ustawić inną wartość dla parametru.
@@ -111,8 +111,8 @@ Ten widok zwraca wszystkie dane w Query Store. Istnieje jeden wiersz dla każdej
 |**Nazwa**   |**Typ** | **Odwołania**  | **Opis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | Identyfikator z tabeli runtime_stats_entries|
-|Definiując pole user_id    |Identyfikator OID    |pg_authid.OID  |Identyfikator OID użytkownika, który wykonał instrukcji|
-|db_id  |Identyfikator OID    |pg_database.OID    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
+|user_id    |Identyfikator OID    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcji|
+|db_id  |Identyfikator OID    |pg_database.oid    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
 |query_id   |bigint  || Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
 |query_sql_text |Varchar(10000)  || Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu jeszcze odpowiadający to zapytanie nie jest dostępna|
@@ -151,8 +151,8 @@ Ten widok zwraca oczekiwać dane zdarzeń w Query Store. Istnieje jeden wiersz d
 
 |**Nazwa**|  **Typ**|   **Odwołania**| **Opis**|
 |---|---|---|---|
-|Definiując pole user_id    |Identyfikator OID    |pg_authid.OID  |Identyfikator OID użytkownika, który wykonał instrukcji|
-|db_id  |Identyfikator OID    |pg_database.OID    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
+|user_id    |Identyfikator OID    |pg_authid.oid  |Identyfikator OID użytkownika, który wykonał instrukcji|
+|db_id  |Identyfikator OID    |pg_database.oid    |Identyfikator OID bazy danych, w którym została wykonana instrukcja|
 |query_id   |bigint     ||Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
 |event_type |tekst       ||Typ zdarzenia, dla którego oczekuje wewnętrznej bazy danych|
 |event  |tekst       ||Nazwa zdarzenia oczekiwania, jeśli oczekiwaniem wewnętrznej bazy danych|
@@ -160,7 +160,7 @@ Ten widok zwraca oczekiwać dane zdarzeń w Query Store. Istnieje jeden wiersz d
 
 
 ### <a name="functions"></a>Funkcje
-Query_store.qs_reset() zwraca wartość void
+Query_store.qs_reset() returns void
 
 `qs_reset` odrzuca wszystkie dane statystyczne zebrane do tej pory przez Query Store. Tę funkcję można wykonać tylko przez rolę administratora serwera.
 

@@ -11,33 +11,38 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599836"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563222"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
+
 Aby użyć usługi dzielenia i scalania, należy poprawnie skonfigurować zabezpieczenia. Usługa jest częścią funkcji elastyczne skalowanie systemu Microsoft Azure SQL Database. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scalić samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 
 ## <a name="configuring-certificates"></a>Konfigurowanie certyfikatów
+
 Certyfikaty są skonfigurowane na dwa sposoby. 
 
 1. [Aby skonfigurować certyfikat SSL](#to-configure-the-ssl-certificate)
 2. [Aby skonfigurować certyfikaty klienta](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Uzyskiwanie certyfikatów
+
 Certyfikaty można uzyskać od publicznych urzędów certyfikacji (CA) lub z [Windows certyfikatu usługi](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Są to preferowane metody służące do uzyskania certyfikatów.
 
 Jeśli te opcje nie są dostępne, można wygenerować **certyfikaty z podpisem własnym**.
 
 ## <a name="tools-to-generate-certificates"></a>Narzędzia do generowania certyfikatów
+
 * [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Aby uruchomić narzędzia
+
 * W wierszu polecenia dla deweloperów programu Visual Studio, zobacz [wiersza polecenia programu Visual Studio](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     Jeśli zainstalowano, przejdź do:
@@ -46,9 +51,11 @@ Jeśli te opcje nie są dostępne, można wygenerować **certyfikaty z podpisem 
 * Pobierz WDK z [Windows 8.1: Pobieranie zestawów i narzędzi](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Aby skonfigurować certyfikat SSL
+
 Certyfikat SSL jest wymagany do szyfrowania komunikacji i uwierzytelniania serwera. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy, a wykonywanie wszystkich jej kroków:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Utwórz nowy certyfikat z podpisem własnym
+
 1. [Utwórz certyfikat z podpisem własnym](#create-a-self-signed-certificate)
 2. [Utwórz plik PFX dla certyfikatu SSL z podpisem własnym](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [Przekaż certyfikat SSL do usługi w chmurze](#upload-ssl-certificate-to-cloud-service)
@@ -183,7 +190,7 @@ Należy wykonać:
 
 Aby dostosować:
 
-* -n za pomocą adresu URL usługi. Symbole wieloznaczne ("CN = * .cloudapp .net") i alternatywnych nazw ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") są obsługiwane.
+* -n za pomocą adresu URL usługi. Wildcards ("CN=*.cloudapp.net") and alternative names ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") are supported.
 * -e z datą wygaśnięcia certyfikatu Utwórz silne hasło i określ go po wyświetleniu monitu.
 
 ## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>Tworzenie pliku PFX certyfikatu SSL z podpisem własnym

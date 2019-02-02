@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c197ead3a7b0f61b9dd5f1e3ea0bd197c23a2778
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180776"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568179"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -97,7 +97,7 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 | OutputClaimsTransformations | 0:1 | Lista uprzednio zdefiniowany odwołania do przekształceń oświadczeń, które mają zostać wykonane po otrzymaniu oświadczenia od dostawcy oświadczeń. |
 | ValidationTechnicalProfiles | 0: n | Lista odwołania do innych techniczne profilów, które korzysta z profilu technicznego do celów sprawdzania poprawności. Aby uzyskać więcej informacji, zobacz [profilu technicznego sprawdzania poprawności](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | Steruje produkcji nazwę podmiotu w tokeny, których nazwa podmiotu jest określane osobno z oświadczeń. Na przykład uwierzytelniania OAuth lub SAML.  |
-| IncludeClaimsFromTechnicalProfile | 0:1 | Identyfikator profilu technicznego, z którego będą wszystkie oświadczenia przychodzące i wychodzące ma zostać dodany do tego profilu technicznego. Profil techniczny odwołania musi być zdefiniowany w tym samym pliku zasad. | 
+| IncludeClaimsFromTechnicalProfile | 0:1 | Identyfikator profilu technicznego, z którego będą wszystkie oświadczenia przychodzące i wychodzące ma zostać dodany do tego profilu technicznego. Profil techniczny odwołania musi być zdefiniowany w tym samym pliku zasad. |
 | IncludeTechnicalProfile |0:1 | Identyfikator profilu technicznego, z którego ma wszystkie dane, które mają zostać dodane do tego profilu technicznego. Profil techniczny odwołania musi istnieć w tym samym pliku zasad. |
 | UseTechnicalProfileForSessionManagement | 0:1 | Inny profil techniczny służący do zarządzania sesjami. |
 |EnabledForUserJourneys| 0:1 |Kontroluje, czy profil techniczny jest wykonywany w podróży użytkownika.  |
@@ -108,7 +108,7 @@ A **profili Technicalprofile** element zawiera zbiór profilów Technical Previe
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Nazwa | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, lub `None`. |
+| Name | Yes | Nazwa prawidłowe protokołu obsługiwanego przez usługę Azure AD B2C, która jest używana jako część profilu technicznego. Możliwe wartości: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `WsFed`, `WsTrust`, `Proprietary`, `session management`, `self-asserted`, lub `None`. |
 | Program obsługi | Nie | Jeśli nazwa protokołu jest równa `Proprietary`, określ w pełni kwalifikowana nazwa zestawu, który jest używany przez usługę Azure AD B2C do określenia programu obsługi protokołu. |
 
 ### <a name="metadata"></a>Metadane
@@ -168,7 +168,7 @@ A **metadanych** element zawiera następujące elementy:
 | ------- | ----------- | ----------- |
 | Oświadczenie InputClaim | 1: n | Typ oświadczenia oczekiwanych danych wejściowych. |
 
-#### <a name="inputclaim"></a>Oświadczenie InputClaim 
+#### <a name="inputclaim"></a>Oświadczenie InputClaim
 
 **Oświadczenie InputClaim** element zawiera następujące atrybuty:
 
@@ -186,7 +186,7 @@ A **metadanych** element zawiera następujące elementy:
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Typ oświadczenia do innej witryny. |
 
-#### <a name="persistedclaim"></a>PersistedClaim 
+#### <a name="persistedclaim"></a>PersistedClaim
 
 **PersistedClaim** element zawiera następujące atrybuty:
 
@@ -204,7 +204,7 @@ A **metadanych** element zawiera następujące elementy:
 | ------- | ----------- | ----------- |
 | oświadczenie outputClaim | 1: n | Typ oświadczenia oczekiwanych danych wyjściowych. |
 
-#### <a name="outputclaim"></a>oświadczenie outputClaim 
+#### <a name="outputclaim"></a>oświadczenie outputClaim
 
 **Oświadczenie OutputClaim** element zawiera następujące atrybuty:
 
@@ -275,9 +275,9 @@ A **metadanych** element zawiera następujące elementy:
 **ClaimsProviderSelections** podróży użytkownika definiuje listę opcji do wyboru dostawcy oświadczeń i ich kolejność. Za pomocą **EnabledForUserJourneys** elementu, można filtrować dostawcy oświadczeń, które jest dostępne dla użytkownika. **EnabledForUserJourneys** element zawiera jedną z następujących wartości:
 
 - **Zawsze**, wykonaj profilu technicznego.
-- **Nigdy nie**, Pomiń profilu technicznego. 
-- **OnClaimsExistence** wykonać tylko wtedy, gdy istnieje pewne oświadczenia, określona w profilu technicznym. 
-- **OnItemExistenceInStringCollectionClaim**, wykonywanie, gdy element istnieje tylko w oświadczenie kolekcji parametrów. 
+- **Nigdy nie**, Pomiń profilu technicznego.
+- **OnClaimsExistence** wykonać tylko wtedy, gdy istnieje pewne oświadczenia, określona w profilu technicznym.
+- **OnItemExistenceInStringCollectionClaim**, wykonywanie, gdy element istnieje tylko w oświadczenie kolekcji parametrów.
 - **OnItemAbsenceInStringCollectionClaim** wykonać, tylko jeśli element nie istnieje oświadczenia kolekcji ciągów.
 
 Za pomocą **OnClaimsExistence**, **OnItemExistenceInStringCollectionClaim** lub **OnItemAbsenceInStringCollectionClaim**, wymaga podania następujących metadane: **ClaimTypeOnWhichToEnable** Określa typ oświadczenia, który ma zostać obliczone **ClaimValueOnWhichToEnable** określa wartość do porównania.
@@ -289,22 +289,10 @@ Następujące profilu technicznego jest wykonywany tylko wtedy, gdy **identityPr
   <DisplayName>Unlink Facebook</DisplayName>
 ...
     <Metadata>
-        <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
-        <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
-    </Metadata>        
+      <Item Key="ClaimTypeOnWhichToEnable">identityProviders</Item>
+      <Item Key="ClaimValueOnWhichToEnable">facebook.com</Item>
+    </Metadata>
 ...
   <EnabledForUserJourneys>OnItemExistenceInStringCollectionClaim</EnabledForUserJourneys>
-</TechnicalProfile>  
+</TechnicalProfile>
 ```
-
-
-
-
-
-
-
-
-
-
-
-

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e45cf028740a05fa35bcf933f727053ab82bdcfa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 04cac492fd044471a646444afc21bc70f92537d2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195074"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656855"
 ---
 # <a name="new-offer-menu"></a>Nowe menu oferty
 
@@ -34,6 +34,7 @@ ms.locfileid: "55195074"
 | ![Dynamics 365 Customer Engagement elementu menu](./media/new-offer-menu5.png) | [Oferta Dynamics 365 for Customer Engagement](./../../cloud-partner-portal-orig/cpp-customer-engagement-offer.md) |
 | ![Dynamics 365 dla elementu menu operacji](./media/new-offer-menu6.png) | [Oferta Dynamics 365 for Operations](./../../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) |
 | ![Element menu moduły usługi IoT Edge](./media/new-offer-menu7.png) | [Oferta modułu usługi IoT Edge](./../iot-edge-module/cpp-offer-process-parts.md) |
+| ![Element menu w aplikacji Power BI zasilania](./media/new-offer-pbi.png)   |  [Usługa Power BI aplikacji oferty](../power-bi/cpp-power-bi-offer.md)  |
 | ![ Element menu aplikacji sasS](./media/new-offer-menu8.png) | [Oferty aplikacji sasS](../saas-app/cpp-saas-offer.md) |
 | ![ Element menu maszyn wirtualnych](./media/new-offer-menu9.png) | [Oferta maszyny wirtualnej](./../virtual-machine/cpp-virtual-machine-offer.md) |
 |  |  |

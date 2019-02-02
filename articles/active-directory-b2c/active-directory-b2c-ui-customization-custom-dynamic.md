@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7e0064495cfb3d82c349a23d914195c5f211dc19
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7c17b873daf3cf77760f934b6c8a591f232b0c7b
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187083"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658202"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurowanie interfejsu użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych
 
@@ -155,7 +155,7 @@ Znajdź `<img>` element, który zawiera `ID` wartość *background_background_im
     **Tworzenie usługi App Service** zostanie otwarte okno. W nim można rozpocząć tworzenie wszystkich zasobów platformy Azure niezbędnych do uruchomienia aplikacji internetowej ASP.NET na platformie Azure.
 
     > [!NOTE]
-    > Aby uzyskać więcej informacji na temat publikowania zobacz [tworzenie aplikacji internetowej ASP.NET na platformie Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    > Aby uzyskać więcej informacji na temat publikowania zobacz [tworzenie aplikacji internetowej ASP.NET na platformie Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
 3. W **Nazwa aplikacji sieci Web** wpisz unikatową nazwę aplikacji (prawidłowe znaki to a-z, A-Z, 0 – 9 oraz łącznik (-). Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.NET`, gdzie `<app_name>` to nazwa aplikacji internetowej. Możesz zaakceptować automatycznie wygenerowaną nazwę, która jest unikatowa.
 

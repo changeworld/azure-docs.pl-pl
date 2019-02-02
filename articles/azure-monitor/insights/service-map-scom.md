@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 19e842fc3674536972327c3bc6d31641560e38db
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187215"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659188"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Mapa usługi integracji programu System Center Operations Manager
-  > [!NOTE]
-  > Ta funkcja jest dostępna w publicznej wersji zapoznawczej.
-  > 
-  
+
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Mapa usługi umożliwia wyświetlenie Twoich serwerów w ten sposób możesz traktować je jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji oprócz instalacji agenta. Aby uzyskać więcej informacji, zobacz [dokumentacji rozwiązania Service Map]( service-map.md).
 
 Dzięki tej integracji między mapy usługi i System Center Operations Manager może automatycznie tworzyć diagramy aplikacji rozproszonych w programie Operations Manager, które są oparte na mapach dynamiczne zależności na mapie usługi.
@@ -40,10 +37,10 @@ Umożliwia integrację między programem Operations Manager i Service Map, impor
 * Widoki aplikacji mapy usługi firmy Microsoft
 * Microsoft System Center Service Map wewnętrznego
 * Zastąpienia mapy usługi programu Microsoft System Center
-* Mapa usługi programu Microsoft System Center
+* Microsoft System Center Service Map
 
 ## <a name="configure-the-service-map-integration"></a>Konfigurowanie integracji rozwiązania Service Map
-Po zainstalowaniu pakietu administracyjnego rozwiązania Service Map, nowy węzeł **rozwiązania Service Map**, jest wyświetlany w obszarze **pakietu Operations Management Suite** w **administracji** okienka. 
+Po zainstalowaniu pakietu administracyjnego rozwiązania Service Map, nowy węzeł **rozwiązania Service Map**, jest wyświetlany w obszarze **pakietu Operations Management Suite** w **administracji** okienka.
 
 >[!NOTE]
 >[Pakiet Operations Management Suite została kolekcja usług](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) włączone, usługa Log Analytics, który jest obecnie częścią programu [usługi Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md).
@@ -63,11 +60,11 @@ Aby skonfigurować integrację rozwiązania Service Map, wykonaj następujące c
     ![Obszar roboczy programu Operations Manager konfiguracji](media/service-map-scom/scom-config-workspace.png)
 
 4. W **wybór grupy maszyny** okna, możesz wybrać grupy maszyny mapy usługi mają być synchronizowane z programem Operations Manager. Kliknij przycisk **grupy maszyn Dodaj/Usuń**, wybierz grupy z listy **dostępne grupy maszyn**i kliknij przycisk **Dodaj**.  Po wybraniu grup kliknij **Ok** na zakończenie.
-    
+
     ![Grupy maszyn konfiguracji menedżera operacji](media/service-map-scom/scom-config-machine-groups.png)
-    
+
 5. W **wybór dotyczący serwera** okna, skonfigurowaniu grupy serwerów mapy usługi przy użyciu serwerów, które mają być synchronizowane między programem Operations Manager i Service Map. Kliknij przycisk **Dodaj/Usuń serwery**.   
-    
+
     Integracji do tworzenia diagramu aplikacji rozproszonej dla serwera serwer musi mieć:
 
     * Zarządzane przez program Operations Manager
@@ -91,7 +88,7 @@ Po połączeniu obszaru roboczego usługi Log Analytics nowego folderu, mapa us�
 ![W okienku Monitoring programu Operations Manager](media/service-map-scom/scom-monitoring.png)
 
 Folder rozwiązania Service Map ma cztery węzły:
-* **Aktywne alerty**: Wyświetla listę wszystkich aktywnych alertów dotyczących komunikacji między programem Operations Manager i Service Map.  Należy zauważyć, że te alerty nie są usługi Log Analytics alerty synchronizowany z usługą Operations Manager. 
+* **Aktywne alerty**: Wyświetla listę wszystkich aktywnych alertów dotyczących komunikacji między programem Operations Manager i Service Map.  Należy zauważyć, że te alerty nie są usługi Log Analytics alerty synchronizowany z usługą Operations Manager.
 
 * **Serwery**: Wyświetla listę monitorowanych serwerów, które są skonfigurowane do synchronizacji z mapy usługi.
 
@@ -120,9 +117,9 @@ Reguła _Microsoft.SystemCenter.ServiceMapImport.Rule_, zostanie utworzona okres
 
 ![W oknie właściwości zastępuje programu Operations Manager](media/service-map-scom/scom-overrides.png)
 
-* **Włączone**: Włącz lub wyłącz automatyczne aktualizacje. 
+* **Włączone**: Włącz lub wyłącz automatyczne aktualizacje.
 * **IntervalMinutes**: Resetowanie czasu między aktualizacjami. Domyślny interwał to jedna godzina. Jeśli chcesz zsynchronizować serwera mapy częściej, możesz zmienić wartość.
-* **TimeoutSeconds**: Resetuj czas, zanim upłynie limit czasu żądania. 
+* **TimeoutSeconds**: Resetuj czas, zanim upłynie limit czasu żądania.
 * **TimeWindowMinutes**: Resetuj przedział czasu na wykonywanie zapytań o dane. Domyślna to 60-minutowe okna. Maksymalna wartość dozwolona przez rozwiązania Service Map jest 60 minut.
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia

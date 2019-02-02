@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 12ff4fef5e04819e967a39fe65845b89790e22d6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b3afbeb5a3fa2cda6ec5eaabe368163a370352d1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234453"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568196"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub
 
@@ -69,7 +69,7 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
 
 1. Dodaj następujące instrukcje ```require``` na początku pliku **SimulatedDevice.js**:
 
-    ```nodejs
+    ```javascript
     'use strict';
     
     var fs = require('fs');
@@ -79,7 +79,7 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
 
 1. Dodaj zmienną ```deviceconnectionstring``` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp ```{deviceconnectionstring}``` nazwą urządzenia utworzonego w _Tworzenie Centrum IoT_ sekcji:
 
-    ```nodejs
+    ```javascript
     var connectionString = '{deviceconnectionstring}';
     var filename = 'myimage.png';
     ```
@@ -89,14 +89,14 @@ W tej sekcji opisano tworzenie aplikacji urządzenia, aby przekazać plik do us�
 
 1. Dodaj następujący kod do połączenia klienta:
 
-    ```nodejs
+    ```javascript
     var client = clientFromConnectionString(connectionString);
     console.log('Client connected');
     ```
 
 1. Utwórz wywołanie zwrotne i użyj **uploadToBlob** funkcję, aby przekazać plik.
 
-    ```nodejs
+    ```javascript
     fs.stat(filename, function (err, stats) {
         const rr = fs.createReadStream(filename);
     
@@ -136,7 +136,7 @@ Możesz użyć **iothubowner** parametry połączenia z Centrum IoT Hub do ukoń
 
 1. Dodaj następujący kod ```require``` instrukcji na początku **FileUploadNotification.js** pliku:
 
-    ```nodejs
+    ```javascript
     'use strict';
     
     var Client = require('azure-iothub').Client;
@@ -144,7 +144,7 @@ Możesz użyć **iothubowner** parametry połączenia z Centrum IoT Hub do ukoń
 
 1. Dodaj zmienną ```iothubconnectionstring``` i użyj jej do utworzenia wystąpienia **Client**.  Zastąp ```{iothubconnectionstring}``` przy użyciu parametrów połączenia Centrum IoT utworzonego w _Tworzenie Centrum IoT_ sekcji:
 
-    ```nodejs
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     ```
 
@@ -153,13 +153,13 @@ Możesz użyć **iothubowner** parametry połączenia z Centrum IoT Hub do ukoń
 
 1. Dodaj następujący kod do połączenia klienta:
 
-    ```nodejs
+    ```javascript
     var serviceClient = Client.fromConnectionString(connectionString);
     ```
 
 1. Otwórz klienta i użyj **getFileNotificationReceiver** funkcję, aby otrzymywać aktualizacje stanu.
 
-    ```nodejs
+    ```javascript
     serviceClient.open(function (err) {
       if (err) {
         console.error('Could not connect: ' + err.message);

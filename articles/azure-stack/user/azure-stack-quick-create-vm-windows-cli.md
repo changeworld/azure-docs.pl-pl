@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 1ba612a90ffb4c767ca333faee4b7d97180a2025
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d2e29e183ab898635f550290b6ebd6eddd42c4d2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249024"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659205"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Szybki Start: tworzenie maszyny wirtualnej systemu Windows Server przy użyciu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -72,7 +72,7 @@ Po utworzeniu maszyny Wirtualnej **publicznego adresu IP** parametr w danych wyj
 
 Ponieważ ta maszyna wirtualna do uruchomienia serwera sieci web usług IIS, należy otworzyć port 80 dla ruchu internetowego.
 
-Użyj [az vm open-port](/cli/azure/vm#open-port) polecenie, aby otworzyć port 80.
+Użyj [az vm open-port](/cli/azure/vm) polecenie, aby otworzyć port 80.
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

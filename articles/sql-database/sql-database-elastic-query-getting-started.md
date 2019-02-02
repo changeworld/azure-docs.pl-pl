@@ -11,15 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: da876152b55ee626025b6192a5004648a29545dc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a73938c98ebaea310875f0db8b665d0f1aed55e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604188"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561998"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Raportowanie w bazach danych w chmurze skalowanych w poziomie (wersja zapoznawcza)
+
 Możesz tworzyć raporty z wielu baz danych Azure SQL z punktu pojedynczego połączenia przy użyciu [zapytania elastycznego](sql-database-elastic-query-overview.md). Bazy danych muszą być partycjonowane w poziomie, (określana także jako "podzielonej na fragmenty").
 
 Jeśli masz istniejącą bazę danych, zobacz [Migrowanie istniejących baz danych do baz danych skalowanych w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md).
@@ -27,6 +28,7 @@ Jeśli masz istniejącą bazę danych, zobacz [Migrowanie istniejących baz dany
 Aby dowiedzieć się obiekty SQL, wymagane do wykonywania zapytań, zobacz [zapytań w bazach danych partycjonowanej w poziomie](sql-database-elastic-query-horizontal-partitioning.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Pobierz i uruchom [wprowadzenie do przykładowej narzędzi elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Tworzenie fragmentu manager mapy za pomocą przykładowej aplikacji

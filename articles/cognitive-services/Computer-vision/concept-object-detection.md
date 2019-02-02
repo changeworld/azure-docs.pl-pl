@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3468f9341e0a8406733877a05798e427dd454fff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167567"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567166"
 ---
 # <a name="object-detection"></a>Wykrywanie obiektów
 
@@ -87,6 +87,15 @@ Następującą odpowiedź JSON przedstawiono, jakie przetwarzania obrazów zwrac
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="limitations"></a>Ograniczenia
 
-Pojęcia dotyczące [kategoryzowanie obrazów](concept-categorizing-images.md) i [opisujące obrazów](concept-describing-images.md).
+Jest to należy zwrócić uwagę ograniczenia funkcji wykrywania obiektów, co pozwala uniknąć lub łagodzenia skutków fałszywych wyników negatywnych (brakujących obiektów) i szczegóły ograniczone.
+* Obiekty zazwyczaj nie są wykrywane, jeśli są one bardzo mały (mniej niż 5% obrazu).
+* Obiekty zazwyczaj nie są wykrywane, jeśli są rozmieszczone ściśle ze sobą (stos talerzy, na przykład).
+* Obiekty nie są zróżnicowane według marki lub produktu nazwy (różnego rodzaju sodas na półce magazynu, na przykład). Jednak można uzyskać informacji na marki z obrazu za pomocą [oznaczyć wykrywania](concept-brand-detection.md) funkcji.
+
+## <a name="use-the-api"></a>Za pomocą interfejsu API
+Funkcja wykrywania obiektu jest częścią [analizowanie obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) interfejsu API. Można wywołać tego interfejsu API za pomocą natywnego zestawu SDK lub wywołania REST. Po otrzymaniu pełną odpowiedź JSON po prostu przeanalizować składni ciągu zawartości `"objects"` sekcji.
+
+* [Szybki start: Analizowanie obrazu (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Szybki start: Analizowanie obrazu (interfejs API REST)](./quickstarts/csharp-analyze.md)

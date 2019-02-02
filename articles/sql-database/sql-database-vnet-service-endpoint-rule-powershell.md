@@ -11,15 +11,15 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 10/23/2018
+ms.openlocfilehash: ae29fcfe39b5844ab948eb55ca314ae51dcae174
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945930"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566299"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Tworzenie punktu końcowego usługi wirtualnego i regułę sieci wirtualnej dla programu SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>Program PowerShell:  Tworzenie punktu końcowego usługi wirtualnego i regułę sieci wirtualnej dla programu SQL
 
 Usługa Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) obsługują punkty końcowe usługi wirtualnego.
 
@@ -31,7 +31,7 @@ Ten artykuł zawiera oraz wyjaśniono skrypt programu PowerShell, który wykonuj
 1. Microsoft Azure tworzy *punktu końcowego usługi wirtualne* na podsieci.
 2. Dodaje punkt końcowy do zapory serwera Azure SQL Database, aby utworzyć *reguły sieci wirtualnej*.
 
-Twoje zresztą tworzenia reguły są szczegółowo opisane: [punkty końcowe usługi wirtualnej dla usługi Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
+Twoje zresztą tworzenia reguły są wyjaśnione w: [Punkty końcowe usługi wirtualnej dla usługi Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
 > Jeśli wszystko, czego potrzebujesz do oceny, lub Dodaj punkt końcowy usługi wirtualnych *nazwy typu* usługi SQL Database do podsieci, możesz przejść od razu do naszych więcej [bezpośrednie skrypt programu PowerShell](#a-verify-subnet-is-endpoint-ps-100).
@@ -42,11 +42,11 @@ W tym artykule kładzie nacisk **New-AzureRmSqlServerVirtualNetworkRule** polece
 
 Na poniższej liście przedstawiono sekwencję innych *głównych* poleceń cmdlet, które należy uruchomić, aby przygotować się do wywołania do **New-AzureRmSqlServerVirtualNetworkRule**. W tym artykule te wywołania występują w [skryptu 3 "reguły sieci wirtualnej"](#a-script-30):
 
-1. [Nowy-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): tworzy obiekt podsieci.
-2. [Nowy-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): utworzenie sieci wirtualnej, nadając mu podsieci.
-3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): przypisanie wirtualnego punktu końcowego do podsieci.
-4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): będzie się powtarzał aktualizacje wprowadzone w Twojej sieci wirtualnej.
-5. [Nowy-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): po podsieci jest punktem końcowym, dodaje podsieć jako regułę sieci wirtualnej do listy kontroli dostępu serwera usługi Azure SQL Database.
+1. [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): Tworzy obiekt podsieci.
+2. [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): Powoduje utworzenie sieci wirtualnej, nadając mu podsieci.
+3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): Przypisuje wirtualne punktu końcowego do podsieci.
+4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): Utrzymuje aktualizacje wprowadzone w Twojej sieci wirtualnej.
+5. [New-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Po podsieci jest punktem końcowym, dodanie podsieci jako regułę sieci wirtualnej, do listy kontroli dostępu serwera usługi Azure SQL Database.
    - To polecenie cmdlet oferuje parametr **- IgnoreMissingVNetServiceEndpoint**, począwszy od usługi Azure RM PowerShell modułu wersji 5.1.1.
 
 ## <a name="prerequisites-for-running-powershell"></a>Wymagania wstępne dotyczące uruchamiania programu PowerShell
@@ -63,7 +63,7 @@ Nasz pokaz skryptu programu PowerShell jest podzielony na sekwencję mniejszych 
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Skrypt 1: zmienne
+### <a name="script-1-variables"></a>Skrypt 1: Zmienne
 
 Ten pierwszy skrypt programu PowerShell przypisuje wartości do zmiennych. Kolejne skrypty są zależne od tych zmiennych.
 
@@ -112,7 +112,7 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Skrypt 2: wymagania wstępne
+### <a name="script-2-prerequisites"></a>Skrypt 2: Wymagania wstępne
 
 Ten skrypt przygotowuje się do następnego skrypt, gdzie jest akcja punktu końcowego. Ten skrypt tworzy następujące wymienionych elementów, ale tylko wtedy, jeśli jeszcze nie istnieje. Jeśli masz pewność, że te elementy już istnieje, możesz pominąć skryptu 2:
 
@@ -289,7 +289,7 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Skrypt 4: Oczyszczanie
+## <a name="script-4-clean-up"></a>Skrypt 4: Wyczyść
 
 Ten skrypt końcowy usuwa zasoby, utworzonych przez wcześniejsze skrypty demonstracyjne. Jednak skrypt prosi o potwierdzenie przed usunięciem następujące czynności:
 

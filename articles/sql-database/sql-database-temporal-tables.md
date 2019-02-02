@@ -11,18 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/21/2018
-ms.openlocfilehash: ce489bae3a59da47ad6f3677ef493618d01fd6b6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 09/25/2018
+ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196654"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567132"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Wprowadzenie do tabel danych czasowych w bazie danych Azure SQL
+
 Tabele danych czasowych są nową funkcją programowalności usługi Azure SQL Database, która pozwala śledzić i analizować pełną historię zmian w danych, bez konieczności pisania kodu niestandardowego. Tabele danych czasowych Zachowaj dane ściśle powiązane z kontekstu czasu, tak aby przechowywanych fakty, które mogą być interpretowane w jako prawidłowa tylko w obrębie określonego okresu. Ta właściwość tabele danych czasowych umożliwia wydajne analizy na podstawie czasu i uzyskiwania szczegółowych informacji z ewolucji danych.
 
 ## <a name="temporal-scenario"></a>Scenariusz danych czasowych
+
 W tym artykule przedstawiono kroki umożliwiające korzystanie z tabel danych czasowych w scenariuszu aplikacji. Załóżmy, że chcesz śledzić aktywność użytkowników na nową witrynę sieci Web, która jest obecnie sporządzana od podstaw lub na istniejącej witryny sieci Web, którą chcesz rozszerzyć z analizą aktywności użytkownika. W tym przykładzie uproszczona przyjęto założenie, że liczba odwiedzanych stron sieci web w przedziale czasu jest wskaźnik, który musi być przechwytywane i monitorowane w bazie danych witryny sieci Web, która jest hostowana w usłudze Azure SQL Database. Celem analizy historycznej aktywności użytkownika jest pobrać dane wejściowe do przeprojektowania witryny sieci Web i zapewnić lepsze środowisko dla użytkowników zewnętrznych.
 
 Model bazy danych dla tego scenariusza jest bardzo proste — pomiar aktywności użytkownika jest reprezentowana z polem pojedyncze liczby całkowite **PageVisited**i są przechwytywane oraz podstawowe informacje na temat profilu użytkownika. Ponadto na potrzeby analiz na podstawie czasu Zachowaj serii wierszy dla każdego użytkownika, gdzie każdy wiersz reprezentuje liczbę stron, dany użytkownik odwiedzi w określonym okresie czasu.

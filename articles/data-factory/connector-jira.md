@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 8a2e8b3cb841c18d337a610284bfb31862b0c63f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: cbb18212f70343d8b9933bd2c787ce6aae8b145d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015869"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563392"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Kopiowanie danych z programu Jira przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -65,8 +65,8 @@ Następujące właściwości są obsługiwane w przypadku programu Jira połącz
             "port" : "<port>",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             }
         }
     }

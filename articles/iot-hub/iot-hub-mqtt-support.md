@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: 2fbc155afc3fd5280f2baf4eccabb895c158b89f
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 534d1785336c68a771722f0f464eae278551ffc0
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913577"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660242"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikować się z Centrum IoT hub przy użyciu protokołu MQTT
 
@@ -60,17 +60,17 @@ Po wykonaniu tej czynności upewnij się sprawdzić następujące elementy:
 * Protokół AMQP zwraca informacje o błędach dla wielu warunków, gdy MQTT przerywa połączenie. W rezultacie logika obsługi wyjątku może wymagać pewnych zmian.
 * Nie obsługuje protokołu MQTT *Odrzuć* operacje podczas odbierania [komunikatów z chmury do urządzeń][lnk-messaging]. Jeśli serwer zaplecza w aplikacji musi czekać na odpowiedź z aplikacji urządzenia, należy wziąć pod uwagę przy użyciu [metody bezpośrednie][lnk-methods].
 
-## <a name="using-the-mqtt-protocol-directly"></a>Bezpośrednio przy użyciu protokołu MQTT
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Przy użyciu protokołu MQTT bezpośrednio (jako urządzenie)
 
 Jeśli urządzenia nie można użyć zestawów SDK urządzeń, nadal można połączyć do urządzeń publicznych punktów końcowych przy użyciu protokołu MQTT na porcie 8883. W **CONNECT** pakietu urządzenia należy użyć następujących wartości:
 
 * Aby uzyskać **ClientId** pola, użyj **deviceId**.
 
-* Aby uzyskać **Username** pola, użyj `{iothubhostname}/{device_id}/api-version=2018-06-30`, gdzie `{iothubhostname}` jest pełny rekord CName usługi IoT hub.
+* Aby uzyskać **Username** pola, użyj `{iothubhostname}/{device_id}/?api-version=2018-06-30`, gdzie `{iothubhostname}` jest pełny rekord CName usługi IoT hub.
 
     Na przykład jeśli nazwą Centrum IoT hub jest **contoso.azure-devices.net** i jeśli nazwa urządzenia jest **MyDevice01**, pełną **Username** pole powinno zawierać:
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
+    `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
 * Aby uzyskać **hasło** pola, użyj tokenu sygnatury dostępu Współdzielonego. Format tokenu sygnatury dostępu Współdzielonego jest taka sama, jak w przypadku protokołów HTTPS i AMQP:
 
@@ -108,6 +108,16 @@ Aby uzyskać Device Explorer:
 Dla protokołu MQTT połączenia i odłączyć pakietów, usługi IoT Hub wysyła zdarzenia w **monitorowanie operacji** kanału. To zdarzenie zawiera dodatkowe informacje, które mogą ułatwić rozwiązywanie problemów z łącznością.
 
 Można określić aplikacji urządzenia **będzie** wiadomość **CONNECT** pakietów. Skorzystaj z aplikacji urządzenia `devices/{device_id}/messages/events/` lub `devices/{device_id}/messages/events/{property_bag}` jako **będzie** nazwy tematu, aby zdefiniować **będzie** mają być przekazywane jako komunikaty telemetryczne wiadomości. W tym przypadku Jeśli zamknięto połączenie sieciowe, ale **ROZŁĄCZENIA** pakietów nie otrzymano wcześniej z urządzenia, a następnie wysyła usługi IoT Hub **będzie** wiadomości podano w **CONNECT** pakietów do kanału danych telemetrycznych. Kanał danych telemetrycznych można albo domyślnie **zdarzenia** punkt końcowy lub niestandardowy punkt końcowy zdefiniowany przez usługę IoT Hub routingu. Komunikat ma **iothub MessageType** właściwość z wartością **będzie** do niej przypisany.
+
+## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Przy użyciu protokołu MQTT bezpośrednio (jako moduł)
+
+Połączenie z Centrum IoT Hub za pośrednictwem protokołu MQTT za pomocą tożsamości modułu jest podobny do urządzenia (opisane [powyżej](#using-the-mqtt-protocol-directly-as-a-device)), ale należy użyć następującej składni:
+* Ustaw identyfikator klienta `{device_id}/{module_id}`.
+* Jeśli uwierzytelnianie przy użyciu nazwy użytkownika i hasła, węzła username ustaw `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` i używają tokenu sygnatury dostępu Współdzielonego, skojarzone z tożsamością modułu jako hasło.
+* Użyj `devices/{device_id}/modules/{module_id}/messages/events/` jako temat do publikowania danych telemetrycznych.
+* Użyj `devices/{device_id}/modules/{module_id}/messages/events/` jako temat będzie.
+* Bliźniaczego elementu GET i tematy poprawki są identyczne dla modułów i urządzeń.
+* Temat stan bliźniaczej reprezentacji jest takie samo dla modułów i urządzeń.
 
 ### <a name="tlsssl-configuration"></a>Konfiguracja protokołu TLS/SSL
 

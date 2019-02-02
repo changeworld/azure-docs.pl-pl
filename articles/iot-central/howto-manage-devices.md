@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004888"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658118"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Zarządzanie urządzeniami w usłudze Azure IoT Central aplikacji
 
@@ -23,6 +23,8 @@ W tym artykule opisano jak operator, aby zarządzać urządzeniami w usłudze Az
 - Prowadź rejestr aktualności urządzeń.
 - Aktualizuj metadane urządzenia, zmieniając wartości przechowywane we właściwościach urządzenia.
 - Sterowanie zachowaniem urządzeń, aktualizując ustawienia na konkretnym urządzeniu z **ustawienia** strony.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="view-your-devices"></a>Wyświetlanie urządzeń
 
@@ -106,7 +108,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
 1. Wybierz urządzenia, które chcesz wyeksportować, a następnie kliknij przycisk **wyeksportować** akcji.
 
-    [![Eksportuj](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+    [![Export](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
 
 1. Rozpocznie się proces eksportu i można śledzić stan u góry strony siatki. 
 
@@ -116,7 +118,7 @@ Aby zbiorczo eksportu urządzenia z poziomu aplikacji:
 
     [![Powodzenie eksportu](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. Wyeksportowany plik CSV będzie zawierał następujące informacje kolumn: **identyfikator urządzenia, nazwę urządzenia, klucze Priamry/pomocniczy urządzeń i podstawowy/pomocniczy certyfikat thumbrpints**
+1. Wyeksportowany plik CSV będzie zawierał następujące informacje kolumn: **Identyfikator urządzenia, nazwę urządzenia, klucze Priamry/pomocniczy urządzeń i podstawowy/pomocniczy thumbrpints certyfikatu**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

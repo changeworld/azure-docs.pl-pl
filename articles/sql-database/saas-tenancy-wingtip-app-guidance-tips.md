@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 42fd1c19a9cda0aa3d5d62bd265467327250a784
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: af0e642a1f8ec34e654295ae7dcf2960c8664d91
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606031"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565568"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Ogólne wskazówki dotyczące pracy z Wingtip Tickets przykładowe aplikacje SaaS
 
@@ -87,7 +87,7 @@ W celu zapewnienia połączenia pokaz pomyślne, wszystkie serwery mają [reguł
 
 
 1. Otwórz *SSMS* i nawiąż połączenie z dzierżawcami. Nazwa serwera zależy od wzorca dzierżawy bazy danych, wybranych (patrz pod kątem specyfiki):
-    - **Aplikacja autonomiczna:** serwerów poszczególnych dzierżaw (np.) *contosoconcerthall -&lt;użytkownika&gt;. database.windows.net*) 
+    - **Aplikacja autonomiczna:** serwerów poszczególnych dzierżaw (np.) *contosoconcerthall-&lt;User&gt;.database.windows.net*) 
     - **Bazy danych dla każdego dzierżawcy:** *tenants1-dpt -&lt;użytkownika&gt;. database.windows.net*
     - **Wielodostępną bazą danych:** *tenants1-mt -&lt;użytkownika&gt;. database.windows.net* 
 2. Kliknij kolejno opcje **Połącz** > **Aparat bazy danych...** :

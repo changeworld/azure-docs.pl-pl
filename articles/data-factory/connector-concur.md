@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 287f399d9c30da75972503abf71f9937f99c8842
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f57a83fb83152055692e6f614b7958d099b6c70d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022091"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561233"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopiowanie danych z Concur przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -66,8 +66,8 @@ Następujące właściwości są obsługiwane w przypadku Concur połączone us�
             "clientId" : "<clientId>",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             }
         }
     }

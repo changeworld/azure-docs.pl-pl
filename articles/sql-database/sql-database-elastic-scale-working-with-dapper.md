@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 14eb92141a9d27d9f8978abb6d5c9a738c821ead
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 8de155eb0c53a07c88d996e2545be9da3159653f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866308"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565585"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Za pomocą biblioteki klienckiej elastycznej bazy danych z programem Dapper
 Ten dokument stanowi dla deweloperów, które zależą od programem Dapper do tworzenia aplikacji, ale także wykorzystywać [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md) do tworzenia aplikacji fragmentowania tej implementacji, aby skalować warstwę danych.  Ten dokument przedstawia zmiany w aplikacji opartych na programem Dapper, które są niezbędne w celu integracji z narzędziami elastycznej bazy danych. Naszym głównym celem jest tworzenie zarządzania fragmentami elastycznych baz danych i routingu zależnego od danych z programem Dapper. 
 
-**Przykładowy kod**: [narzędzi elastycznej bazy danych usługi Azure SQL Database — Integracja z programem Dapper](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
+**Przykładowy kod**: [Narzędzia elastycznych baz danych usługi Azure SQL Database — Integracja z programem Dapper](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-e19fc77f).
 
 Integrowanie **programem Dapper** i **DapperExtensions** za pomocą elastycznej bazy danych biblioteki klienta usługi Azure SQL Database jest proste. Twoje aplikacje mogą używać routingu zależnego od danych przez zmianę tworzenia i otwierania nowych [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection.aspx) obiektów pod kątem [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) wywołać z [biblioteki klienckiej ](https://msdn.microsoft.com/library/azure/dn765902.aspx). Ogranicza to zmian w aplikacji tylko w przypadku, gdy nowe połączenia są tworzone i otwierane. 
 
@@ -49,9 +49,9 @@ Zamiast korzystać z tradycyjnego pod kątem tworzenia połączeń dla programem
 ### <a name="requirements-for-dapper-integration"></a>Wymagania dotyczące integracji z programem Dapper
 Podczas pracy z programem Dapper interfejsów API i Biblioteka kliencka elastic database, chcesz zachować następujące właściwości:
 
-* **Skalowanie w poziomie**: chcemy dodać lub usunąć bazy danych z warstwy danych aplikacji podzielonej na fragmenty, stosownie do potrzeb pojemność aplikacji. 
-* **Spójność**: ponieważ aplikacja będzie skalowana w poziomie za pomocą fragmentowania, należy wykonać, routing zależny od danych. Chcemy użyć możliwości routingu zależnego od danych biblioteki, aby to zrobić. W szczególności, aby zachować sprawdzanie poprawności i spójności gwarantuje dostarczone przez połączeń, które są obsługiwane przez brokera za pośrednictwem Menedżera mapowań fragmentów w celu uniknięcia uszkodzenia lub wyniki kwerendy problem. Daje to gwarancję, że połączenia z danym podfragmentu są odrzucone lub zatrzymany, jeśli (na przykład) podfragmentu aktualnie jest przenoszony w innym fragmencie, za pomocą interfejsów API dzielenia i scalania.
-* **Mapowanie obiektów**: chcemy zachować wygody mapowania, dostarczone przez programem Dapper tłumaczenie z klas w aplikacji i podstawowe struktury bazy danych. 
+* **Skalowanie w poziomie**: Chcemy dodać lub usunąć bazy danych z warstwy danych aplikacji podzielonej na fragmenty, stosownie do potrzeb pojemność aplikacji. 
+* **Spójność**: Ponieważ aplikacja będzie skalowana w poziomie za pomocą fragmentowania, należy przeprowadzić routing zależny od danych. Chcemy użyć możliwości routingu zależnego od danych biblioteki, aby to zrobić. W szczególności, aby zachować sprawdzanie poprawności i spójności gwarantuje dostarczone przez połączeń, które są obsługiwane przez brokera za pośrednictwem Menedżera mapowań fragmentów w celu uniknięcia uszkodzenia lub wyniki kwerendy problem. Daje to gwarancję, że połączenia z danym podfragmentu są odrzucone lub zatrzymany, jeśli (na przykład) podfragmentu aktualnie jest przenoszony w innym fragmencie, za pomocą interfejsów API dzielenia i scalania.
+* **Obiekt mapowanie**: Chcemy zachować wygody mapowania, dostarczone przez programem Dapper tłumaczenie z klas w aplikacji i podstawowe struktury bazy danych. 
 
 W poniższej sekcji przedstawiono wskazówki dotyczące tych wymagań dla aplikacji na podstawie **programem Dapper** i **DapperExtensions**.
 
@@ -137,7 +137,7 @@ A Oto przykład kodu służącego do kwerendy:
     }
 
 ### <a name="handling-transient-faults"></a>Obsługa błędów przejściowych
-Opublikowane przez zespół Microsoft Patterns i praktyki [blok aplikacji obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680934.aspx) pomagające deweloperom aplikacji rozwiązać typowe warunki błędów przejściowych podczas uruchamiania w chmurze. Aby uzyskać więcej informacji, zobacz [Perseverance, klucza tajnego wszystkie sukcesy: przy użyciu bloku przejściowy aplikacji obsługi błędów](https://msdn.microsoft.com/library/dn440719.aspx).
+Opublikowane przez zespół Microsoft Patterns i praktyki [blok aplikacji obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680934.aspx) pomagające deweloperom aplikacji rozwiązać typowe warunki błędów przejściowych podczas uruchamiania w chmurze. Aby uzyskać więcej informacji, zobacz [Perseverance, klucza tajnego sukcesy wszystkich: Przy użyciu bloku aplikacji obsługi błędów przejściowych](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Przykładowy kod zależy od biblioteki błędów przejściowych, aby zapewnić ochronę przed błędów przejściowych. 
 

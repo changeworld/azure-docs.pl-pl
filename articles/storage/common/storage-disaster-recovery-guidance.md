@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b203acefb962d5b3a782ba0ce1e667b6f18b7951
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: bc79379d1b893beffc085e79b7643fcb6e1dc26f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508933"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657318"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -104,7 +104,7 @@ Konto magazynu jest konfigurowana ponownie nadmiarowości geograficznej, po moż
 
 Aby uniknąć utraty danych głównych, należy sprawdzić wartość **czas ostatniej synchronizacji** właściwości przed powrotem. Porównania czas ostatniej synchronizacji ostatni czasach te dane zostały zapisane do nowej podstawowej, można obliczyć utratę oczekiwanych danych. 
 
-## <a name="initiate-an-account-failover"></a>Zainicjuj tryb failover konta
+## <a name="initiate-an-account-failover"></a>Inicjowanie trybu failover konta
 
 Możesz zainicjować trybu failover konta, z witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejs API dostawcy zasobów usługi Azure Storage. Aby uzyskać więcej informacji na temat sposobu inicjowania przejścia w tryb failover, zobacz [zainicjowania trybu failover konta (wersja zapoznawcza)](storage-initiate-account-failover.md).
 
@@ -152,6 +152,7 @@ Niezarządzane dyski są przechowywane jako stronicowe obiekty BLOB w usłudze A
 4. Poczekaj, aż **czas ostatniej synchronizacji** został zaktualizowany i jest późniejsza niż godzina, na którym są usuwane maszyny Wirtualnej. Ten krok jest ważny, ponieważ jeśli pomocniczy punkt końcowy nie został w pełni zaktualizowany przy użyciu plików wirtualnego dysku twardego po przejściu do trybu failover, następnie maszyna wirtualna może nie działać poprawnie w nowym regionie podstawowym.
 5. Zainicjuj tryb failover konta.
 6. Poczekaj, aż konta przełączenie w tryb failover została ukończona, a w regionie pomocniczym stał się nowego regionu podstawowego.
+6. Tworzenie konta magazynu w nowym regionie podstawowym, a następnie skopiuj dysk niezarządzany do niego.
 7. Tworzenie maszyny Wirtualnej w nowym regionie podstawowym, a następnie ponownie Dołącz wirtualne dyski twarde.
 8. Uruchom nową maszynę Wirtualną.
 

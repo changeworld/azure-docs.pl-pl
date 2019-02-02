@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: e6fb14fc901b5ae5ad11d94c1e71453c2852239c
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 93370b927f825752b8ce2b5e9d4ca94b3a4e0536
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306254"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664186"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -194,7 +194,7 @@ Usługa Storage Analytics rejestruje następujące typy żądań uwierzytelniony
 
 Sieci, rejestrowanie i monitorowanie na platformie Azure to kompleksowe i obejmuje dwie szerokie kategorie:
 
-* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-watcher): Monitorowanie sieci opartych na scenariuszach jest dostarczana z funkcji usługi Network Watcher. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
+* [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Monitorowanie sieci opartych na scenariuszach jest dostarczana z funkcji usługi Network Watcher. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 
 * [Monitorowanie zasobów](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Monitorowanie na poziomie zasobów składa się z czterech funkcji, dzienniki diagnostyczne, metryki, rozwiązywanie problemów i kondycji zasobów. Wszystkie te funkcje są tworzone na poziomie zasobów sieciowych.
 
@@ -336,7 +336,7 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 |Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       Diagnostyka|||
 |Azure Data Lake Analytics| Microsoft.DataLakeAnalytics/<br>accounts|   Diagnostyka|||
 |Azure Data Lake Store| Microsoft.DataLakeStore/<br>accounts|   Diagnostyka|||
-|Przestrzeń nazw Centrum zdarzeń platformy Azure| Microsoft.EventHub/<br>Przestrzenie nazw|  Diagnostyka|    Diagnostyka||
+|Przestrzeń nazw Centrum zdarzeń platformy Azure| Microsoft.EventHub/<br>przestrzenie nazw|  Diagnostyka|    Diagnostyka||
 |Azure IoT Hub| Microsoft.Devices/<br>IotHubs||     Diagnostyka||
 |W usłudze Azure Key Vault|   Microsoft.KeyVault/<br>Magazyny|  Diagnostyka  || [Analiza usługi Key Vault](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |Azure Load Balancer|   Microsoft.Network/<br>loadBalancers|    Diagnostyka|||
@@ -345,7 +345,7 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 |Grupy zabezpieczeń sieci|   Microsoft.Network/<br>networksecuritygroups|Diagnostyka||   [Analiza sieciowej grupy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
 |Magazyny usługi Recovery|   Microsoft.RecoveryServices/<br>Magazyny|||[Usługa Azure Recovery Services — analiza (Podgląd)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 |Usługi wyszukiwania|   Microsoft.Search/<br>searchServices|    Diagnostyka|    Diagnostyka||
-|Przestrzeń nazw magistrali usług| Microsoft.ServiceBus/<br>Przestrzenie nazw|    Diagnostyka|Diagnostyka|    [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+|Przestrzeń nazw magistrali usług| Microsoft.ServiceBus/<br>przestrzenie nazw|    Diagnostyka|Diagnostyka|    [Usługa Service Bus analiza (Podgląd)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Magazyn||    [Analiza usługi Service Fabric (wersja zapoznawcza)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
 |SQL (v12)| Microsoft.Sql/<br>serwery /<br>bazy danych||       Diagnostyka||
 ||Microsoft.Sql/<br>serwery /<br>elasticPools||||

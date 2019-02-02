@@ -1,27 +1,31 @@
 ---
-title: Wyszukiwanie w sieci web dla popularnych klipów wideo — wyszukiwania wideo Bing
+title: Wyszukiwanie w sieci web dla popularnych klipów wideo przy użyciu interfejsu API wyszukiwania wideo Bing
 titlesuffix: Azure Cognitive Services
-description: Pokazuje, jak używać interfejsu API wyszukiwania wideo Bing do wyszukiwania popularnych klipów wideo w sieci web.
+description: Dowiedz się, jak używać interfejsu API wyszukiwania wideo Bing do wyszukiwania popularnych klipów wideo w sieci web.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
-ms.date: 04/15/2017
+ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 71dd888199e9e630835c4916d35f6308431bab62
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55f29a31a9574c7c32e6708565e961950520593f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203559"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566104"
 ---
-# <a name="get-trending-videos"></a>Pobieranie popularnych wideo  
+# <a name="get-trending-videos-with-the-bing-video-search-api"></a>Pobierz popularne wideo za pomocą interfejsu API wyszukiwania wideo Bing 
 
-Aby uzyskać bieżącą popularnych klipów wideo, Wyślij następujące żądanie GET:  
+Interfejs API wyszukiwania wideo Bing umożliwia znalezienie współczesnych popularnych klipów wideo z, w sieci Web i w różnych kategoriach. 
+
+## <a name="get-request"></a>Pobieranie żądania
+
+Aby uzyskać bieżącą popularnych klipów wideo z interfejsu API wyszukiwania wideo Bing, wysyłanie następujące żądanie GET:  
   
-```
+```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 User-Agent: Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 822)  
@@ -30,6 +34,8 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
 ```
+
+## <a name="market-support"></a>Obsługa obrotu
 
 Następujące rynki obsługuje popularne wideo.  
  
@@ -47,10 +53,11 @@ Następujące rynki obsługuje popularne wideo.
 -   ZA en (angielski, Republika Południowej Afryki)  
 -   nazwy zh-CN (chińskim, Chiny)
 
-  
-Poniższy przykład przedstawia odpowiedź, która zawiera popularnych klipów wideo.  
+## <a name="example-json-response"></a>Przykładowa odpowiedź JSON  
 
-```  
+Poniższy przykład przedstawia odpowiedź interfejsu API, który zawiera popularnych klipów wideo, które są wymienione według kategorii i podkategorii. Odpowiedź zawiera również Baner wideo, które są najbardziej popularne popularnych klipów wideo i mogą pochodzić z jednej lub więcej kategorii.  
+
+```json
 {  
     "_type" : "TrendingVideos",  
     "bannerTiles" : [
@@ -112,8 +119,9 @@ Poniższy przykład przedstawia odpowiedź, która zawiera popularnych klipów w
     ]  
 }  
   
-```  
-Odpowiedź zawiera listę wideo według kategorii i podkategorii. Na przykład jeśli jeden z jej podkategorie był górnej kategorii Muzyka, filmy wideo znajdujących się na liście kategorii, można utworzyć kategorii górnej muzyczne, filmy wideo w środowiska użytkownika. Następnie można użyć `thumbnailUrl`, `displayText`, i `webSearchUrl` pól w celu utworzenia możesz klikać kafelka w każdej kategorii (na przykład pierwszych muzyczne filmy wideo). Po kliknięciu kafelka one nastąpi przekierowanie do przeglądarki wideo Bing gdzie jest odtwarzany film wideo.
+```
 
-Odpowiedź zawiera również Baner wideo, które są najbardziej popularne popularnych klipów wideo. Transparent filmy wideo mogą pochodzić z jednego lub więcej kategorii.  
-  
+## <a name="next-steps"></a>Kolejne kroki
+
+> [!div class="nextstepaction"]
+[Uzyskaj szczegółowe dane wideo](video-insights.md)

@@ -4,17 +4,17 @@ description: Definicja zasad platformy Azure ma różne efekty, określające sp
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912513"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562304"
 ---
 # <a name="understand-policy-effects"></a>Interpretacja efektów działania zasad
 
@@ -50,7 +50,7 @@ Dołącz służy do dodania kolejnych pól do żądanego zasobu podczas jej twor
 
 ### <a name="append-evaluation"></a>Dołącz oceny
 
-Dołącz ocenia przed żądania przetwarzane przez dostawcę zasobów podczas tworzenia lub aktualizowania zasobu. Dołącz dodaje pola do zasobu podczas **Jeśli** warunek reguły jest spełniony. Jeśli efekt Dołącz przesłonić wartość oryginalne żądanie, podając inną wartość, następnie go działa jako efektu odrzucenia i odrzuca żądanie.
+Dołącz ocenia przed żądania przetwarzane przez dostawcę zasobów podczas tworzenia lub aktualizowania zasobu. Dołącz dodaje pola do zasobu podczas **Jeśli** warunek reguły jest spełniony. Jeśli efekt Dołącz przesłonić wartość oryginalne żądanie, podając inną wartość, następnie go działa jako efektu odrzucenia i odrzuca żądanie. Aby dołączyć nową wartość do istniejącej tablicy, należy użyć **[\*]** wersji aliasu.
 
 Po uruchomieniu definicji zasad przy użyciu efektu dołączania w ramach cyklu oceny go nie zmieniać zasoby, które już istnieją. Zamiast tego oznacza dowolnego zasobu, który spełnia **Jeśli** warunek jako niezgodne.
 
@@ -89,7 +89,8 @@ Przykład 2: Dwa **pól i wartości** pary do dołączenia zestawu tagów.
 }
 ```
 
-Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu [alias](definition-structure.md#aliases) z tablicą **wartość** do konfigurowania reguł adresów IP na koncie magazynu.
+Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu innej niż **[\*]**
+[alias](definition-structure.md#aliases) z tablicą **wartość** konfigurowania reguł adresów IP dla Konto magazynu. Gdy non -**[\*]** aliasu jest tablicą, dołącza efekt **wartość** jako macierz w całości. Jeśli tablica już istnieje, Odmów zdarzeniu z konflikt.
 
 ```json
 "then": {
@@ -100,6 +101,21 @@ Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu [alias](definit
             "action": "Allow",
             "value": "134.5.0.0/21"
         }]
+    }]
+}
+```
+
+Przykład 4: Pojedynczy **pól i wartości** Sparuj przy użyciu **[\*]** [alias](definition-structure.md#aliases) z tablicą **wartość** do konfigurowania reguł adresów IP na koncie magazynu. Za pomocą **[\*]** dołącza efekt alias **wartość** potencjalnie wcześniej istniejącej tablicy. Jeśli tablica nie istnieje, zostanie utworzony.
+
+```json
+"then": {
+    "effect": "append",
+    "details": [{
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "value": {
+            "value": "40.40.40.40",
+            "action": "Allow"
+        }
     }]
 }
 ```
@@ -259,7 +275,7 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
   - Ta właściwość musi zawierać tablicę ciągów, które jest zgodny z Identyfikatorem roli kontroli dostępu opartej na rolach dostępna w subskrypcji. Aby uzyskać więcej informacji, zobacz [korygowania — konfigurowanie definicji zasad](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (opcjonalnie)
   - Dozwolone wartości to _subskrypcji_ i _ResourceGroup_.
-  - Ustawia typ wdrożenia, które należy wykonać. _Subskrypcja_ wskazuje [wdrażania na poziomie subskrypcji](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ oznacza wdrożenie w grupie zasobów.
+  - Ustawia typ wdrożenia wyzwolenie. _Subskrypcja_ wskazuje [wdrażania na poziomie subskrypcji](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ oznacza wdrożenie w grupie zasobów.
   - A _lokalizacji_ musi zostać określona właściwość _wdrożenia_ przy użyciu wdrożeń poziomu subskrypcji.
   - Wartość domyślna to _ResourceGroup_.
 - **Wdrożenie** [wymagane]

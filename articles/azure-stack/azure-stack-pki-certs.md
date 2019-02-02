@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/02/2019
-ms.openlocfilehash: 93e6345ba50bab21e03fb7a30148ea51c52a10f2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 01/30/2019
+ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244253"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660123"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure Stack infrastruktury kluczy publicznych certyfikatów
 
@@ -49,7 +49,7 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Plik pfx certyfikatu musi mieć wartość "Uwierzytelnianie serwera (1.3.6.1.5.5.7.3.1)" i "Uwierzytelnianie klienta (1.3.6.1.5.5.7.3.2)" w polu "Ulepszone użycie klucza".
 - Certyfikat "wystawiony dla:" pole nie może być taka sama jak jego "wystawiony przez:" pole.
 - Hasła do wszystkich plików pfx certyfikatów musi być taka sama w czasie wdrażania
-- Hasło do pliku pfx certyfikatu musi być złożone hasło.
+- Hasło do pliku pfx certyfikatu musi być złożone hasło. Utwórz hasło, które spełnia następujące wymagania dotyczące złożoności hasła. Długość co najmniej osiem znaków. Hasło zawiera co najmniej trzech spośród następujących: wielkie litery, małe litery, cyfry od 0 do 9, znaków specjalnych, alfabetycznym znak, który nie jest wielką ani małe litery. Zanotuj hasło. Użyjesz go jako parametr wdrożenia.
 - Upewnij się, że nazwy podmiotu i alternatywnych nazw podmiotu dopasowania rozszerzenia (x509v3_config) alternatywnej nazwy podmiotu. Pole alternatywna nazwa podmiotu umożliwia określenie nazwy hostów dodatkowe (witryn sieci Web, adresy IP, nazwy pospolite) mają być chronione przy użyciu pojedynczego certyfikatu SSL.
 
 > [!NOTE]  

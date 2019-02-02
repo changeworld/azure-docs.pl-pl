@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e7386e2f926132f5657bdb17011dafe1e1c7b101
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 09/24/2018
+ms.openlocfilehash: 95103ec7438a01e73617587bf919404e2bdcc686
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063085"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567200"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) przy użyciu usługi Azure SQL Database i Data Warehouse  
 
@@ -41,7 +41,7 @@ Poniższe kroki pokazują sposób konfigurowania bazy danych SQL do wymuszania z
   ![Wybierz użytkowników i grupy](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
 4.  Wybierz **aplikacje w chmurze**, kliknij przycisk **Wybierz aplikacje**. Możesz wyświetlać wszystkie aplikacje dostępne dla dostępu warunkowego. Wybierz **usługi Azure SQL Database**, kliknij u dołu **wybierz**, a następnie kliknij przycisk **gotowe**.  
-  ![Wybierz bazę danych SQL](./media/sql-database-conditional-access/select-sql-database.png)  
+  ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
   Jeśli nie możesz znaleźć **usługi Azure SQL Database** wymienione w poniższym zrzucie ekranu trzeci, wykonaj następujące czynności:   
   - Zaloguj się do swojego wystąpienia bazy danych/magazyn danych SQL Azure przy użyciu narzędzia SSMS przy użyciu konta administratora usługi AAD.  
   - Wykonaj `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  

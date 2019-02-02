@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c242d8dd64dc58b0c20b6fb15747f201f85cc482
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 8a54ab9e45838a81a2ea4e2e425114e19a65ba76
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320941"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563851"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -105,7 +105,7 @@ Usługa Azure policy kontroli dostępu opartej na rolach (RBAC) określa, kto mo
 > [!NOTE]
 > Aby umożliwić użytkownikowi logowanie się do maszyny Wirtualnej za pomocą protokołu SSH, należy przypisać jedną *Logowanie administratora maszyny wirtualnej* lub *logowanie użytkownika maszyny wirtualnej* roli. Użytkownikiem platformy Azure z *właściciela* lub *Współautor* ról przypisanych do maszyny Wirtualnej automatycznie nie mają uprawnień do logowania się do maszyny Wirtualnej za pomocą protokołu SSH.
 
-W poniższym przykładzie użyto [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create) można przypisać *Logowanie administratora maszyny wirtualnej* roli maszyny Wirtualnej dla bieżącego użytkownika platformy Azure. Nazwa aktywnego konta platformy Azure są uzyskiwane z [Pokaż konta az](/cli/azure/account#az-account-show)i *zakres* ustawiono maszyny Wirtualnej utworzonej w poprzednim kroku przy użyciu [az vm show](/cli/azure/vm#az-vm-show). Na poziomie grupy lub subskrypcji zasobów można także przypisać zakres i stosować normalny RBAC dziedziczenie uprawnień. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach](../../azure-resource-manager/resource-group-overview.md#access-control)
+W poniższym przykładzie użyto [utworzenia przypisania roli az](/cli/azure/role/assignment#az-role-assignment-create) można przypisać *Logowanie administratora maszyny wirtualnej* roli maszyny Wirtualnej dla bieżącego użytkownika platformy Azure. Nazwa aktywnego konta platformy Azure są uzyskiwane z [Pokaż konta az](/cli/azure/account#az-account-show)i *zakres* ustawiono maszyny Wirtualnej utworzonej w poprzednim kroku przy użyciu [az vm show](/cli/azure/vm#az-vm-show). Na poziomie grupy lub subskrypcji zasobów można także przypisać zakres i stosować normalny RBAC dziedziczenie uprawnień. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)

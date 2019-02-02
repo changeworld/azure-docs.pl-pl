@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/15/2018
-ms.openlocfilehash: cd7c4014752fb5fa014fd8b5204206cd4efbfdce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 230c5a50efe762b8f27e6a0a84c36c74403b8ecc
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818527"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663880"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Użyj usługi Azure HDInsight Tools for Visual Studio Code
 
@@ -31,6 +31,7 @@ Wymagane do ukończenia kroków opisanych w tym artykule są następujące eleme
 - Klaster HDInsight. Aby utworzyć klaster, zobacz [Rozpoczynanie pracy z usługą HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 - [Program Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 - [Narzędzie mono](https://www.mono-project.com/docs/getting-started/install/). Narzędzie mono jest tylko wymagane dla systemów Linux i macOS.
+- VSCode [rozszerzenie Azure Account](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ## <a name="install-the-hdinsight-tools"></a>Instalowanie narzędzi HDInsight
    
@@ -331,7 +332,7 @@ Możesz również przesłać plik, ogłoszenie folderu .vscode jest automatyczni
     | name | description | type | 
     | :- | :- | :- | 
     | id | Identyfikator sesji | int | 
-    | appId | Identyfikator aplikacji dla tej sesji |  Ciąg |
+    | appId | Identyfikator aplikacji dla tej sesji |  String |
     | appInfo | Informacje o szczegółowe aplikacji | Mapa klucza = val |
     | log | Wiersze dziennika | Lista ciągów |
     | state |   Stan usługi batch | ciąg |

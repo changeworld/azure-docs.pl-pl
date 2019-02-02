@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 93b1b0c8288fb408e4af6aba2eb2267ce650208c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247123"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658338"
 ---
 # <a name="marketplace-faqs"></a>Portal Marketplace — często zadawane pytania
 
@@ -358,7 +358,7 @@ Wydawcy, którzy publikują Transact typów: Maszyna wirtualna, aplikacje platfo
 
 **Jakie są potencjalnymi klientami i dlaczego są one ważne do mnie jako wydawcę w portalu Marketplace?**
 
-Potencjalni klienci to klientów, którzy wdrażają produkty z witryny Marketplace. Czy produktu znajduje się na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) lub [AppSource](https://appsource.microsoft.com), jesteś w stanie odbierać potencjalnych klientów z klientów, którzy są zainteresowani produktu.  Docelowy potencjalnych klientów można skonfigurować w ofercie. Aby dowiedzieć się więcej, zobacz [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher).
+Potencjalni klienci to klientów, którzy wdrażają produkty z witryny Marketplace. Czy produktu znajduje się na [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) lub [AppSource](https://appsource.microsoft.com), jesteś w stanie odbierać potencjalnych klientów z klientów, którzy są zainteresowani produktu.  Docelowy potencjalnych klientów można skonfigurować w ofercie. Aby dowiedzieć się więcej, zobacz [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
 **Gdzie można uzyskać pomoc w konfigurowaniu Moje docelowego potencjalnego klienta**
 

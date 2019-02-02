@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.subservice: files
-ms.openlocfilehash: ee56f77ef6ed3c759573a5a96d854c54f297b2ac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77b7e6aef4d0d38fa3ea9f9b9a740ffc25aff7f9
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462362"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660021"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File storage na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB
 
@@ -58,7 +58,7 @@ STORAGEACCT=$(az storage account create \
 
 Podczas tworzenia konta magazynu, klucze konta są tworzone w parach, dzięki czemu można obracać bez żadnych zakłóceń. Po przełączeniu się do drugiego klucza w parze, utworzysz nową parę kluczy. Nowe klucze konta magazynu są zawsze tworzone w parach, dzięki czemu zawsze mieć co najmniej jeden klucz konta magazynu nieużywane gotowe przełączyć się do.
 
-Wyświetl klucze konta magazynu przy użyciu [listy kluczy kont magazynu az](/cli/azure/storage/account/keys#list). W tym przykładzie przechowuje wartość klucz 1 w **atrybutu STORAGEKEY** zmiennej.
+Wyświetl klucze konta magazynu przy użyciu [listy kluczy kont magazynu az](/cli/azure/storage/account/keys). W tym przykładzie przechowuje wartość klucz 1 w **atrybutu STORAGEKEY** zmiennej.
 
 ```bash
 STORAGEKEY=$(az storage account keys list \

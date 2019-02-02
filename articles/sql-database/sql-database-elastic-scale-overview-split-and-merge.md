@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868467"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564939"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
 
@@ -158,7 +158,7 @@ Pakiet usługi dzielenia i scalania obejmuje rolę procesu roboczego oraz roli s
 
   Scal podfragmentów przenoszenia operacji do istniejących fragmentu. Możesz zidentyfikować istniejące fragmentów, zapewniając granice zakresu istniejącego zakresu, który ma zostać scalony z.
 
-- **Rozmiar partii**
+- **Batch Size**
 
   Wielkość partii określa liczbę podfragmentów, który będzie przejdą w tryb offline w momencie podczas przenoszenia danych. Jest wartością całkowitą z zakresu, gdzie można użyć mniejszej wartości, gdy wszystko jest wrażliwa na długie okresy przestojów podfragmentów. Większe wartości spowoduje zwiększenie czasu, która jest dany podfragment w trybie offline, ale może zwiększyć wydajność.
 
@@ -186,11 +186,11 @@ Usługi dzielenia i scalania działa jako usługa w chmurze w Twojej subskrypcji
 
 Udostępnia usługi dzielenia i scalania **stanem żądania** tabeli w bazie danych magazynu metadanych do monitorowania ukończone i bieżących żądań. W tabeli podano wierszy dla każdego żądania dzielenia i scalania, który został przesłany do tego wystąpienia usługi dzielenia i scalania. Daje ona następujące informacje dla każdego żądania:
 
-- **Znacznik czasu:**
+- **Sygnatura czasowa**
 
   Data i godzina rozpoczęcia żądania.
 
-- **operationId**
+- **OperationId**
 
   Identyfikator GUID, który unikatowo identyfikuje żądanie. To żądanie może również anulować operację, gdy są one postępujące.
 
@@ -212,7 +212,7 @@ Udostępnia usługi dzielenia i scalania **stanem żądania** tabeli w bazie dan
 
 ### <a name="azure-diagnostics"></a>Diagnostyka Azure
 
-Usługi dzielenia i scalania korzysta z usługi Azure Diagnostics opartego na platformie Azure SDK 2.5 dla monitorowania i diagnostyki. Zgodnie z opisem w tym miejscu możesz kontrolować konfiguracji diagnostyki: [Włączanie diagnostyki w usługach Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Pakiet pobierania zawiera dwie konfiguracje Diagnostyka — jeden dla roli sieci web i jeden dla roli procesu roboczego. Zawiera definicje służące do logowania, liczniki wydajności, dzienniki usług IIS, Windows, dzienniki zdarzeń i dzienniki zdarzeń aplikacji dzielenia i scalania.
+Usługi dzielenia i scalania korzysta z usługi Azure Diagnostics opartego na platformie Azure SDK 2.5 dla monitorowania i diagnostyki. Konfiguracja diagnostyki możesz kontrolować, jak wyjaśniono poniżej: [Włączanie diagnostyki w usług Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Pakiet pobierania zawiera dwie konfiguracje Diagnostyka — jeden dla roli sieci web i jeden dla roli procesu roboczego. Zawiera definicje służące do logowania, liczniki wydajności, dzienniki usług IIS, Windows, dzienniki zdarzeń i dzienniki zdarzeń aplikacji dzielenia i scalania.
 
 ## <a name="deploy-diagnostics"></a>Wdrażanie diagnostyki
 
@@ -230,7 +230,7 @@ Aby włączyć monitorowania i diagnostyki przy użyciu konfiguracji diagnostycz
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
 ```
 
-Można znaleźć więcej informacji na temat sposobu konfigurowania i wdrażania ustawień diagnostyki, w tym miejscu: [Włączanie diagnostyki w usługach Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Można znaleźć więcej informacji na temat sposobu konfigurowania i wdrażania ustawień diagnostyki, w tym miejscu: [Włączanie diagnostyki w usług Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Pobieranie diagnostyki
 

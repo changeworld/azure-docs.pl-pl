@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 8f3cdf366830549c3ebb9c5680ecf36d1053d1d9
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df6330827a4fb8bb8e80af89855c3ea104584295
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075298"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662306"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpiecznie zapisać ustawienia klucza tajnego aplikacji dla aplikacji sieci web
 
@@ -32,7 +32,7 @@ Aby upewnić się, że proces tworzenia aplikacji jest bezpieczna, narzędzia i 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET i .NET core z aplikacji
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Zapisuj ustawień tajnych w magazynie tajemnicy użytkownika, który znajduje się poza folder kontroli źródła
-Jeśli macie szybkiego prototypu lub nie masz dostępu do Internetu, rozpoczynać przenoszenie ustawień klucza tajnego poza folder kontroli źródła do magazynu tajemnicy użytkownika. Magazynu wpisów tajnych użytkownika jest plikiem, który został zapisany w folderze Program profilujący użytkownika, więc klucze tajne nie zostały zaewidencjonowane do kontroli źródła. Poniższy diagram przedstawia sposób [tajemnicy użytkownika](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) działa.
+Jeśli macie szybkiego prototypu lub nie masz dostępu do Internetu, rozpoczynać przenoszenie ustawień klucza tajnego poza folder kontroli źródła do magazynu tajemnicy użytkownika. Magazynu wpisów tajnych użytkownika jest plikiem, który został zapisany w folderze Program profilujący użytkownika, więc klucze tajne nie zostały zaewidencjonowane do kontroli źródła. Poniższy diagram przedstawia sposób [tajemnicy użytkownika](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) działa.
 
 ![Tajemnicy użytkownika utrzymuje ustawień tajnych poza kontrolą źródła](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 

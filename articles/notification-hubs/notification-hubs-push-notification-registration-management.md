@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/23/2019
-ms.openlocfilehash: 1ace7ecd42ac36be1c38e52dcef6663439b7db4c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d87cd174e3fca7ce2088ad270a74b08de4ac7cb5
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817837"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566164"
 ---
 # <a name="registration-management"></a>Zarządzanie rejestracją
 
@@ -33,7 +33,7 @@ Rejestracja urządzenia w Centrum powiadomień odbywa się przy użyciu **rejest
 
 ### <a name="registrations"></a>Rejestracje
 
-Rejestracji kojarzy uchwyt usług powiadomień platformy (PNS, Domain Name System) dla urządzenia przy użyciu tagów i ewentualnie szablonu. Identyfikator ChannelURI, token urządzenia lub identyfikator rejestracji usługi GCM, może być dojściem systemu powiadomień platformy. Znaczniki są używane do kierowania powiadomień do odpowiednich zestawów uchwyty urządzenia. Aby uzyskać więcej informacji, zobacz [routingu i wyrażenia tagu](notification-hubs-tags-segment-push-message.md). Szablony są używane do implementowania przekształcenia na rejestracji. Aby uzyskać więcej informacji, zobacz [Szablony](notification-hubs-templates-cross-platform-push-messages.md).
+Rejestracji kojarzy uchwyt usług powiadomień platformy (PNS, Domain Name System) dla urządzenia przy użyciu tagów i ewentualnie szablonu. Identyfikator ChannelURI, token urządzenia lub identyfikator rejestracji usługi FCM, może być dojściem systemu powiadomień platformy. Znaczniki są używane do kierowania powiadomień do odpowiednich zestawów uchwyty urządzenia. Aby uzyskać więcej informacji, zobacz [routingu i wyrażenia tagu](notification-hubs-tags-segment-push-message.md). Szablony są używane do implementowania przekształcenia na rejestracji. Aby uzyskać więcej informacji, zobacz [Szablony](notification-hubs-templates-cross-platform-push-messages.md).
 
 > [!NOTE]
 > Usługa Azure Notification Hubs obsługuje maksymalnie 60 tagów na rejestracji.
@@ -295,8 +295,8 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
         case "apns":
             installation.Platform = NotificationPlatform.Apns;
             break;
-        case "gcm":
-            installation.Platform = NotificationPlatform.Gcm;
+        case "fcm":
+            installation.Platform = NotificationPlatform.Fcm;
             break;
         default:
             throw new HttpResponseException(HttpStatusCode.BadRequest);

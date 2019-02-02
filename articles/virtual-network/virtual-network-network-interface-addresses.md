@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 64aa936dc1dbb1d2a700a31253cf7a3caee6b66f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4fae4486e6cf47892ba2133885ec864969f66001
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436778"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663608"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie lub usuwanie adresów IP dla interfejsu sieci platformy Azure
 
@@ -52,7 +52,7 @@ Można dodać tyle [prywatnej](#private) i [publicznych](#public) [IPv4](#ipv4) 
     |Ustawienie|Wymagana?|Szczegóły|
     |---|---|---|
     |Name (Nazwa)|Yes|Musi być unikatowa dla interfejsu sieciowego|
-    |Typ|Yes|Ponieważ dodajesz konfigurację adresu IP do istniejącego interfejsu sieciowego, a każdy interfejs sieciowy musi mieć [podstawowego](#primary) jest jedynym rozwiązaniem Konfiguracja protokołu IP **dodatkowej**.|
+    |Type|Yes|Ponieważ dodajesz konfigurację adresu IP do istniejącego interfejsu sieciowego, a każdy interfejs sieciowy musi mieć [podstawowego](#primary) jest jedynym rozwiązaniem Konfiguracja protokołu IP **dodatkowej**.|
     |Metoda przypisania adresu prywatnego adresu IP|Yes|[**Dynamic**](#dynamic): Platforma Azure przypisuje następny dostępny adres dla zakresu adresów podsieci, wdrożonej w interfejsie sieciowym. [**Statyczne**](#static): Możesz przypisać nieużywany adres dla zakresu adresów podsieci, wdrożonej w interfejsie sieciowym.|
     |Publiczny adres IP|Nie|**Wyłączone:** Nie zasobu publicznego adresu IP jest obecnie skojarzony z konfiguracją adresów IP. **Włączone:** Wybierz istniejący adres IPv4 publiczny adres IP lub Utwórz nową. Aby dowiedzieć się, jak utworzyć publiczny adres IP, przeczytaj [publiczne adresy IP](virtual-network-public-ip-address.md#create-a-public-ip-address) artykułu.|
 6. Ręcznie dodaj pomocnicze prywatne adresy IP do systemu operacyjnego maszyny wirtualnej, wykonując instrukcje [przypisać wiele adresów IP do maszyn wirtualnych systemów operacyjnych](virtual-network-multiple-ip-addresses-portal.md#os-config) artykułu. Zobacz [prywatnej](#private) adresów IP dla szczególnych kwestii przed ręcznego dodawania adresów IP do systemu operacyjnego maszyny wirtualnej. Nie należy dodawać żadnych publicznych adresów IP do systemu operacyjnego maszyny wirtualnej.
@@ -61,7 +61,7 @@ Można dodać tyle [prywatnej](#private) i [publicznych](#public) [IPv4](#ipv4) 
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create)|
+|Interfejs wiersza polecenia|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Zmień ustawienia adresu IP
@@ -82,7 +82,7 @@ Może potrzebujesz zmienić metodę przypisywania adresu IPv4 zmień statyczny a
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[AZ sieci nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|Interfejs wiersza polecenia|[AZ sieci nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Usuń adresy IP
@@ -98,7 +98,7 @@ Możesz usunąć [prywatnej](#private) i [publicznych](#public) adresy IP z inte
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[AZ sieci nic ip-config delete](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_delete)|
+|Interfejs wiersza polecenia|[AZ sieci nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfiguracje adresów IP
@@ -144,7 +144,7 @@ Istnieją scenariusze, w którym należy ręcznie ustawić adres IP interfejsu s
 4. Uruchamia maszynę wirtualną.
 5. [Ręczne konfigurowanie](virtual-network-multiple-ip-addresses-portal.md#os-config) pomocniczych adresów IP w ramach systemu operacyjnego (a także podstawowego adresu IP w obrębie Windows) do dopasowania, ustaw w obrębie platformy Azure.
 
-Postępując zgodnie z poprzednich kroków, prywatny adres IP przypisany do interfejsu sieciowego w systemie Azure i w ramach systemu operacyjnego maszyny wirtualnej, pozostają takie same. Aby śledzić maszyn wirtualnych w ramach subskrypcji, który został ręcznie ustawić adresy IP w ramach systemu operacyjnego, należy rozważyć dodanie platformy Azure [tag](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags) do maszyn wirtualnych. Można na przykład "przypisywanie adresów IP: Statyczne", na przykład. Dzięki temu możesz łatwo odnaleźć maszyn wirtualnych w ramach subskrypcji, który został ręcznie ustawić adres IP w ramach systemu operacyjnego.
+Postępując zgodnie z poprzednich kroków, prywatny adres IP przypisany do interfejsu sieciowego w systemie Azure i w ramach systemu operacyjnego maszyny wirtualnej, pozostają takie same. Aby śledzić maszyn wirtualnych w ramach subskrypcji, który został ręcznie ustawić adresy IP w ramach systemu operacyjnego, należy rozważyć dodanie platformy Azure [tag](../azure-resource-manager/resource-group-using-tags.md) do maszyn wirtualnych. Można na przykład "przypisywanie adresów IP: Statyczne", na przykład. Dzięki temu możesz łatwo odnaleźć maszyn wirtualnych w ramach subskrypcji, który został ręcznie ustawić adres IP w ramach systemu operacyjnego.
 
 Oprócz włączenia maszyny wirtualnej do komunikowania się z innymi zasobami w ramach tej samej lub połączone sieci wirtualne, prywatny adres IP umożliwia również maszynę wirtualną do komunikacji z Internetem. Połączenia wychodzące są tłumaczone przez usługę Azure nieprzewidywalne publiczny adres IP adres sieci źródłowej. Aby dowiedzieć się więcej na temat platformy Azure wychodzące połączenie z Internetem, przeczytaj [Azure wychodzące połączenie z Internetem](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) artykułu. Użytkownik nie może komunikować się ruchu przychodzącego na prywatny adres IP maszyny wirtualnej z Internetu. Jeśli połączeń wychodzących wymagają przewidywalne publiczny adres IP, należy skojarzyć zasób publicznego adresu IP do interfejsu sieciowego.
 

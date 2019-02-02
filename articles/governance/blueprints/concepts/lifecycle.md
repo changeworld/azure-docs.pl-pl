@@ -4,17 +4,17 @@ description: Informacje o cyklu życia, które przechodzi planu i szczegółowe 
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309810"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563715"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Informacje o cyklu życia planu platformy Azure
 
@@ -33,8 +33,7 @@ Aby w pełni zrozumieć planu i etapów, omówimy standardowego cyklu życia:
 
 ## <a name="creating-and-editing-a-blueprint"></a>Tworzenie i edytowanie planu
 
-Podczas tworzenia planu, Dodaj artefakty do niego, Zapisz z grupą zarządzania i podać unikatową nazwę i wersję unikatowy. Planu jest teraz w **projekt** tryb i jeszcze nie można przypisać.
-W **projekt** tryb, nadal można go aktualizować i zmienić.
+Podczas tworzenia planu dodawania artefaktów, Zapisz do grupy zarządzania lub subskrypcji, a następnie podać unikatową nazwę i wersję unikatowy. Planu jest teraz w **projekt** tryb i jeszcze nie można przypisać. W **projekt** tryb, nadal można go aktualizować i zmienić.
 
 Element nigdy nie opublikowane planu w **projekt** tryb Wyświetla inną ikonę na **definicji planu** strony niż te, które zostały **opublikowano**. **Najnowszej wersji** także jest wyświetlana jako **projekt** podczas nigdy nie są publikowane schematy.
 

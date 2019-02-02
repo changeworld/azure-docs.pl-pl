@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 43badaada3de352ec7bafeb422965a047261a1e4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753969"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656838"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace i AppSource Podręcznik publikowania
 
 Podręcznik publikowania w portalu Marketplace ułatwia nowych i istniejących wydawców Dowiedz się, jak używać sklepów w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com) i [Microsoft AppSource](https://appsource.microsoft.com) rozwijania działalności w ramach partnerstwa z firmą Microsoft, wyświetlając listę aplikacji i usług.
 
 >[!Note]
->Marketplace, w której odnosi się do portalu Azure Marketplace i AppSource.  Zobacz [Marketplace jednego, dwóch witryn sklepów](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace) Aby uzyskać więcej informacji.
+>Marketplace, w której odnosi się do portalu Azure Marketplace i AppSource.  Zobacz [Marketplace jednego, dwóch witryn sklepów](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) Aby uzyskać więcej informacji.
 
 Ten przewodnik obejmuje następujące tematy: 
 *   Co to jest Portal Marketplace i jak to działa 

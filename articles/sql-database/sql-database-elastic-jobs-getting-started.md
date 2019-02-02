@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863537"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567013"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Wprowadzenie do zadań elastycznych baz danych
 
@@ -259,20 +259,20 @@ Zadania elastic Database obsługuje tworzenie zasad wykonywania niestandardowych
 Zezwalaj na aktualnie zasad wykonywania do definiowania:
 
 * Nazwa: Identyfikator zasad wykonywania programu.
-* Limit czasu zadania: Całkowity czas przed anulowaniem zadania przez zadania Elastic Database.
-* Początkowa interwał ponawiania prób: Interwał oczekiwania przed pierwszym ponowieniem próby.
-* Maksymalny interwał ponawiania prób: Limit interwałów ponawiania do użycia.
-* Ponów próbę interwał wycofywania współczynnik: Współczynnik używany do obliczania kolejny odstęp czasu między kolejnymi próbami.  Używana jest następująca formuła: (początkowa interwał ponawiania próby) * Math.Pow — ((interwał wycofywania współczynnik) (liczba prób) - 2).
-* Maksymalna liczba prób: Maksymalna liczba ponownych prób próbuje wykonać w ramach danego zadania.
+* Limit czasu zadania: Łączny czas przed anulowaniem zadania przez zadania Elastic Database.
+* Interwał ponawiania początkowa: Interwał oczekiwania przed pierwszym ponowieniem próby.
+* Interwał maksymalną liczbę ponownych prób: Limit interwałów ponawiania do użycia.
+* Ponów próbę interwał wycofywania współczynnik: Współczynnik używany do obliczania kolejny odstęp czasu między kolejnymi próbami.  Używana jest następująca formuła: (Początkowej interwał ponawiania) * Math.Pow — ((interwał wycofywania współczynnik) (liczba ponownych prób) - 2).
+* Maksymalna liczba prób: Maksymalna liczba ponownych prób do wykonania w ramach danego zadania.
 
 Domyślne zasady wykonywania korzysta z następujących wartości:
 
 * Nazwa: Domyślne zasady wykonywania
 * Limit czasu zadania: 1 tydzień
-* Początkowej interwał ponawiania prób: 100 milisekund
-* Maksymalny interwał ponawiania prób: 30 minut
-* Ponów próbę wykonania współczynnik interwał: 2
-* Maksymalna liczba prób: 2 147 483 647
+* Interwał ponawiania początkowa:  100 MS
+* Interwał maksymalną liczbę ponownych prób: 30 minut
+* Ponów próbę współczynnik interwału: 2
+* Maksymalna liczba prób: 2,147,483,647
 
 Utwórz zasady wykonywania żądanego:
 
@@ -307,8 +307,8 @@ Zadania elastic Database obsługuje żądania anulowania zadania.  Zadania Elast
 
 Istnieją dwa różne sposoby, że zadania Elastic Database może wykonywać anulowania:
 
-1. Trwa anulowanie aktualnie wykonywanych zadań: Jeśli anulowania zostanie wykryte, gdy zadanie jest obecnie uruchomiony, w aktualnie wykonywanej aspekcie zadania jest podejmowana próba anulowania.  Na przykład: w przypadku obecnie jest wykonywana, gdy podejmowana jest próba anulowania wolno działające zapytanie jest próba anulować wykonywanie zapytania.
-2. Anulowanie ponownych prób wykonania zadania: W przypadku anulowania wykrycia przez wątek kontroli przed uruchomiono zadanie do wykonania, wątek kontroli pozwala uniknąć uruchamiania zadania i deklaruje żądania, ponieważ zostało anulowane.
+1. Trwa anulowanie aktualnie wykonywanych zadań: W przypadku wykrycia anulowania, gdy zadanie jest obecnie uruchomiony, anulowanie zostanie podjęta w ramach aktualnie wykonywanej aspekt zadania.  Na przykład: W przypadku obecnie jest wykonywana, gdy podejmowana jest próba anulowania wolno działające zapytanie ma próba anulować wykonywanie zapytania.
+2. Anulowanie zadań ponawia próbę: W przypadku anulowania wykrycia przez wątek kontroli przed uruchomiono zadanie do wykonania, wątek kontroli pozwala uniknąć uruchamiania zadania i deklaruje żądania, ponieważ zostało anulowane.
 
 W przypadku anulowania zadania jest wymagany dla zadania nadrzędnego, żądanie anulowania zostanie uznane dla zadania nadrzędnego i wszystkich jego zadań podrzędnych.
 

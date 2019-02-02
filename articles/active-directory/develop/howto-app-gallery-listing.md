@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2018
+ms.date: 01/30/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fd02c2d10d072f33fdc265feaadf9776e9c1d679
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f4caf0cde7225e2c93723f412c53259a5f5646a4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102038"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663285"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -45,7 +45,7 @@ ms.locfileid: "55102038"
 
 - Hasło logowania jednokrotnego upewnij się, obsługuje uwierzytelnianie przy użyciu formularza w aplikacji, więc haseł może odbywać się uzyskać pracy rejestracji jednokrotnej, zgodnie z oczekiwaniami.
 
-- Automatyczne inicjowanie obsługi użytkowników żądań aplikacji powinny figurować w galerii przy użyciu pojedynczego logowania jednokrotnego włączoną funkcję przy użyciu dowolnego protokołu federation opisanych powyżej. Możesz poprosić potrzeby logowania jednokrotnego i Inicjowanie obsługi administracyjnej ze sobą w portalu, jeśli go jeszcze nie znajduje się użytkownik.
+- Automatyczne inicjowanie obsługi użytkowników żądań aplikacji powinny figurować w galerii z funkcją logowania jednokrotnego pojedynczego włączane przy użyciu protokołu SAML 2.0/WS-Fed. Możesz poprosić potrzeby logowania jednokrotnego i Inicjowanie obsługi administracyjnej ze sobą w portalu, jeśli go jeszcze nie znajduje się użytkownik.
 
 ## <a name="submit-the-request-in-the-portal"></a>Przesyłanie żądania w portalu
 

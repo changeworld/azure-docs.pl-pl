@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476400"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658390"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -136,7 +136,7 @@ W środowisku zawierającym co najmniej dwóch składników na wielu maszynach w
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Docelowy akcji uruchamianie i zatrzymywanie przez listy maszyn wirtualnych
 
-1. Dodaj **sequencestart** i **sequencestop** tag z dodatnią liczbą całkowitą na maszyny wirtualne mają zostać dodane do **VMList** zmiennej. 
+1. Dodaj **sequencestart** i **sequencestop** tag z dodatnią liczbą całkowitą na maszyny wirtualne mają zostać dodane do **VMList** parametru.
 1. Uruchom **SequencedStartStop_Parent** runbook za pomocą parametru akcji równa **start**, Dodaj rozdzielaną przecinkami listę maszyn wirtualnych w *VMList* parametru, a następnie ustaw Parametr WHATIF **True**. Przejrzyj wprowadzone zmiany.
 1. Konfigurowanie **External_ExcludeVMNames** parametrem rozdzielana przecinkami lista maszyn wirtualnych (maszyny VM1, VM2, VM3).
 1. W tym scenariuszu nie uznaje **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupnames** zmiennych. W tym scenariuszu musisz utworzyć swój własny harmonogram automatyzacji. Aby uzyskać więcej informacji, zobacz [Planowanie elementu runbook w usłudze Azure Automation](../automation/automation-schedules.md).
@@ -285,8 +285,8 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów dzi
 
 |Zapytanie | Opis|
 |----------|----------|
-|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | gdzie (RunbookName_s == "ScheduledStartStop_Parent") | gdzie (typ ResultType == "Ukończone")  | Podsumowanie |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
-|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | gdzie (RunbookName_s == "SequencedStartStop_Parent") | gdzie (typ ResultType == "Ukończone") | Podsumowanie |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Znajdź zadania dla elementu runbook ScheduledStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Znajdź zadania dla elementu runbook SequencedStartStop_Parent, która została zakończona pomyślnie | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
 
 ## <a name="viewing-the-solution"></a>Wyświetlanie rozwiązania
 
@@ -319,13 +319,29 @@ Poniżej przedstawiono przykładową wiadomością e-mail, która jest wysyłana
 
 ![Strona rozwiązania Update Management Automation](media/automation-solution-vm-management/email.png)
 
+## <a name="add-exclude-vms"></a>Dodaj/wykluczania maszyn wirtualnych
+
+Rozwiązanie udostępnia możliwość dodawania maszyny wirtualne mają być obiektem docelowym dla rozwiązania lub wykluczyć komputery z rozwiązania.
+
+### <a name="add-a-vm"></a>Dodawanie maszyny Wirtualnej
+
+Istnieje kilka opcji, których można użyć, aby upewnić się, czy maszyny Wirtualnej znajduje się w rozwiązaniu uruchomień/zatrzymań, po jego uruchomieniu.
+
+* Każdy element nadrzędny [elementów runbook](#runbooks) rozwiązania mają **VMList** parametru. Rozdzielana przecinkami lista nazw maszyn wirtualnych można przekazywać do tego parametru, podczas planowania elementu nadrzędnego elementu runbook dla tych maszyn wirtualnych i sytuacji będzie uwzględniony po rozwiązaniu jest uruchamiany.
+
+* Aby wybrać wiele maszyn wirtualnych, należy ustawić **External_Start_ResourceGroupNames** i **External_Stop_ResourceGroupNames** przy użyciu nazwy grup zasobów zawierających maszyny wirtualne, aby rozpocząć lub zatrzymać. Można również ustawić tę wartość, `*`, aby rozwiązanie do uruchomienia wszystkich grup zasobów w subskrypcji.
+
+### <a name="exclude-a-vm"></a>Wyklucz Maszynę wirtualną
+
+Aby wykluczyć Maszynę wirtualną z rozwiązania, należy dodać go do **External_ExcludeVMNames** zmiennej. Ta zmienna jest rozdzielana przecinkami lista wybranych maszyn wirtualnych, które mają zostać wykluczone z rozwiązania uruchomień/zatrzymań.
+
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Modyfikuj harmonogramy uruchamiania i zamykania
 
-Harmonogramy uruchamiania i zamykania w tym rozwiązaniu Zarządzanie przedstawiono te same kroki, co zostało opisane w [Planowanie elementu runbook w usłudze Azure Automation](automation-schedules.md).
+Harmonogramy uruchamiania i zamykania w tym rozwiązaniu Zarządzanie przedstawiono te same kroki, co zostało opisane w [Planowanie elementu runbook w usłudze Azure Automation](automation-schedules.md). Musi istnieć oddzielne harmonogramu, aby uruchomić i zatrzymać maszyn wirtualnych.
 
-Konfigurowanie rozwiązania do właśnie zatrzymywania maszyn wirtualnych w określonym czasie jest obsługiwane. W tym celu należy:
+Konfigurowanie rozwiązania do właśnie zatrzymywania maszyn wirtualnych w określonym czasie jest obsługiwane. W tym scenariuszu możesz po prostu utworzyć **zatrzymać** harmonogram i bez odpowiedniej **Start** zaplanowane. W tym celu należy:
 
-1. Upewnij się, dodano grupy zasobów dla maszyn wirtualnych zamknąć w **External_Start_ResourceGroupNames** zmiennej.
+1. Upewnij się, dodano grupy zasobów dla maszyn wirtualnych zamknąć w **External_Stop_ResourceGroupNames** zmiennej.
 2. Utwórz swój własny harmonogram, czas, który chcesz zamknąć maszyny wirtualne.
 3. Przejdź do **ScheduledStartStop_Parent** elementu runbook i kliknij przycisk **harmonogram**. Dzięki temu można zaznaczyć harmonogram, który został utworzony w poprzednim kroku.
 4. Wybierz **parametry i ustawienia uruchamiania** i ustaw parametr akcji "Stop".

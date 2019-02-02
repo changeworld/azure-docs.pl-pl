@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: fdf426d9f4c8744570d0b9c6cc30bea63b06dd6c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 035d2731a78ad6216f56255fb87e32444366ea97
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600691"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563495"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Kod docelowy pliku zdarzenia dla rozszerzonych zdarzeń w bazie danych SQL
 
@@ -30,7 +30,7 @@ W programie Microsoft SQL Server [element docelowy pliku zdarzenia](https://msdn
 W tym temacie przedstawiono przykładowy kod dwufazowe:
 
 * Program PowerShell do utworzenia kontenera usługi Azure Storage w chmurze.
-* Języka Transact-SQL:
+* Transact-SQL:
   
   * Aby przypisać kontenera usługi Azure Storage do celu pliku zdarzenia.
   * Aby utworzyć i uruchomić sesji zdarzenia i tak dalej.

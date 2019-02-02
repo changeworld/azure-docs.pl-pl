@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
-ms.openlocfilehash: 45bf76696269e1224250b834b67acb2a68c10d7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cbe6d04dfcf9174b15cde71f7becbb371eaee4b2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189463"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662486"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Często zadawane pytania i znane problemy związane z zarządzanych tożsamości dla zasobów platformy Azure
 
@@ -154,8 +154,8 @@ Jako obejście po przeniesieniu subskrypcji można wyłączyć przypisany system
 
 ## <a name="known-issues-with-user-assigned-managed-identities"></a>Znane problemy związane z zarządzanych tożsamości przypisanych przez użytkownika
 
-- Tworzenie tożsamości zarządzanej przypisanych przez użytkownika przy użyciu znaków specjalnych (np. podkreślenie) w nazwie, nie jest obsługiwane.
-- Nazwy tożsamości przypisanych przez użytkownika są ograniczone do 24 znaków. Jeśli nazwa jest dłuższa niż 24 znaki, tożsamość zakończy się niepowodzeniem, ma być przypisane do zasobów (np. maszyna wirtualna.)
+- Nazwy tożsamości przypisanych przez użytkownika są ograniczone do co najmniej 3 znaków i maksymalnie 128 znaków. Jeśli nazwa jest dłuższa niż 128 znaków, tożsamość zakończy się niepowodzeniem, ma być przypisane do zasobów (np. maszyna wirtualna.)
+- Nazwy tożsamości przypisanych przez użytkownika mogą zawierać następujących znaków: a-z, – Z,-, \_, 0-9. Tworzenie tożsamości zarządzanej przypisanych przez użytkownika za pomocą znaki spoza tego zestawu znaków (tj. gwiazdka) w nazwie, nie jest obsługiwana.
 - W przypadku korzystania z tożsamości zarządzanej rozszerzenia maszyny wirtualnej (zaplanowane do wycofania z użycia w styczniu 2019) obsługiwany limit jest 32 przypisanych do użytkowników zarządzanych tożsamości. Bez rozszerzenia tożsamości zarządzanej maszyny wirtualnej i obsługiwany limit to 512.  
 - Przenoszenie tożsamości zarządzanej użytkownik przypisany do innej grupy zasobów spowoduje, że tożsamości można przerwać. W rezultacie nie będzie do żądania tokenów dla tej tożsamości. 
 - Przeniesienie subskrypcji do innego katalogu spowoduje przerwanie wszelkich istniejących tożsamości zarządzanej przypisanych przez użytkownika. 

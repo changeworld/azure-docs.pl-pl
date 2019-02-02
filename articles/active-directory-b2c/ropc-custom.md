@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7dffa1480be73f1dbf5e99d11fd8d33eb2ab9038
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 816d25473bfe5f9dc61d6d6f2e50d6cd82ace50c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196416"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562200"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurowanie zasobów przepływ poświadczeń hasła właściciela w usłudze Azure Active Directory B2C za pomocą zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W usłudze Azure Active Directory (Azure AD) B2C zasobów przepływ poświadczeń hasła właściciela (ROPC) jest przepływ standardowego uwierzytelniania OAuth. W tym przepływie aplikacji, znany także jako podmiotu zależnego wymienia prawidłowe poświadczenia dla tokenów. Poświadczenia obejmują nazwę użytkownika i hasło. Tokeny, zwracane są tokenu identyfikator, token dostępu i token odświeżania. 
+W usłudze Azure Active Directory (Azure AD) B2C zasobów przepływ poświadczeń hasła właściciela (ROPC) jest przepływ standardowego uwierzytelniania OAuth. W tym przepływie aplikacji, znany także jako podmiotu zależnego wymienia prawidłowe poświadczenia dla tokenów. Poświadczenia obejmują nazwę użytkownika i hasło. Tokeny, zwracane są tokenu identyfikator, token dostępu i token odświeżania.
 
 W usłudze flow ROPC obsługiwane są następujące opcje:
 
 - **Natywny klient** -interakcji z użytkownikiem podczas uwierzytelniania się dzieje, gdy kod jest uruchamiany na urządzeniu po stronie użytkownika.
 - **Przepływ klienta publicznego** — tylko poświadczenia użytkownika, które są zbierane przez aplikację są wysyłane w wywołaniu interfejsu API. Poświadczenia aplikacji nie są wysyłane.
-- **Dodawanie nowych oświadczeń** — do dodawania nowych oświadczeń, można zmienić identyfikator zawartości tokenu. 
+- **Dodawanie nowych oświadczeń** — do dodawania nowych oświadczeń, można zmienić identyfikator zawartości tokenu.
 
 Następujące przepływy nie są obsługiwane:
 
@@ -43,7 +43,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w usłudze Azure Active Di
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**. 
+3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
 4. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
 5. Wprowadź nazwę aplikacji, taką jak *ROPC_Auth_app*.
 6. Wybierz **nie** dla **interfejsu API sieci Web i aplikacji sieci Web**, a następnie wybierz pozycję **tak** dla **Native client**.
@@ -193,7 +193,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w usłudze Azure Active Di
           </Metadata>
         </TechnicalProfile>
       </TechnicalProfiles>
-    </ClaimsProvider>    
+    </ClaimsProvider>
     ```
 
 6. Dodaj **podróży użytkowników** elementu i jego elementów podrzędnych do **elementu TrustFrameworkPolicy** elementu:
@@ -201,7 +201,7 @@ Wykonaj kroki [wprowadzenie do zasad niestandardowych w usłudze Azure Active Di
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
-        <OrchestrationSteps>
+      <OrchestrationSteps>
         <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="ResourceOwnerFlow" TechnicalProfileReferenceId="ResourceOwnerPasswordCredentials-OAUTH2" />
@@ -267,7 +267,7 @@ Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplik
 - Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasady poświadczeń hasła właściciela zasobu.
 
-| Klucz | Value |
+| Klucz | Wartość |
 | --- | ----- |
 | nazwa użytkownika | `user-account` |
 | hasło | `password1` |
@@ -278,7 +278,7 @@ Generowanie wywołanie interfejsu API za pomocą ulubionego interfejsu API aplik
 
 - Zastąp `user-account` o nazwie konta użytkownika w dzierżawie.
 - Zastąp `password1` przy użyciu hasła konta użytkownika.
-- Zastąp `application-id` identyfikatorem aplikacji z *ROPC_Auth_app* rejestracji. 
+- Zastąp `application-id` identyfikatorem aplikacji z *ROPC_Auth_app* rejestracji.
 - *Offline_access* jest opcjonalne, jeśli chcesz otrzymywać token odświeżania.
 
 Rzeczywiste żądanie POST wygląda następująco:
@@ -291,17 +291,16 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-
 Pomyślnej odpowiedzi z dostęp w trybie offline będzie wyglądać następująco:
 
 ```JSON
-{ 
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...", 
-    "token_type": "Bearer", 
-    "expires_in": "3600", 
-    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...", 
-    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..." 
-} 
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..."
+}
 ```
 
 ## <a name="redeem-a-refresh-token"></a>Realizowanie tokenu odświeżania
@@ -313,7 +312,7 @@ Skonstruuj wywołanie metody POST, tak jak pokazano poniżej. Użyj informacji w
 - Zastąp `your-tenant-name` nazwą dzierżawy usługi Azure AD B2C.
 - Zastąp `B2C_1A_ROPC_Auth` pełną nazwą zasady poświadczeń hasła właściciela zasobu.
 
-| Klucz | Value |
+| Klucz | Wartość |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -322,7 +321,7 @@ Skonstruuj wywołanie metody POST, tak jak pokazano poniżej. Użyj informacji w
 | refresh_token | `refresh-token` |
 
 - Zastąp `application-id` identyfikatorem aplikacji z *ROPC_Auth_app* rejestracji.
-- Zastąp `refresh-token` z **refresh_token** który została wysłana w poprzedniej odpowiedzi. 
+- Zastąp `refresh-token` z **refresh_token** który została wysłana w poprzedniej odpowiedzi.
 
 Odpowiedź oznaczająca Powodzenie będzie wyglądać następująco:
 
@@ -350,5 +349,3 @@ Usługa Azure AD B2C spełnia standardy poświadczenia hasła właściciela zaso
 
 - Zobacz pełny przykład tego scenariusza w [pakiet startowy niestandardowe zasady usługi Azure Active Directory B2C](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
 - Dowiedz się więcej o tokenów, które są używane przez usługi Azure Active Directory B2C w [Token odwołania](active-directory-b2c-reference-tokens.md).
-
-

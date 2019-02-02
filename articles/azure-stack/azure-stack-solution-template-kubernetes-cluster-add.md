@@ -11,23 +11,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b7e293018f2dc248fae8de8bd9e82943606f4ead
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9d2d7297ea5978687ef6dc791d5a333016060da7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239506"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659936"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Dodaj rozwiązanie Kubernetes w portalu Marketplace usługi Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
 > [!note]  
-> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
+> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Odłączony platformę Azure Stack nie jest obecnie obsługiwane przez wersję zapoznawczą.
 
 Rozwiązania Kubernetes jako elementu portalu Marketplace możesz zaoferować użytkownikom. Użytkownicy mogą następnie można wdrożyć rozwiązania Kubernetes w jednej, skoordynowanej operacji.
 
@@ -69,7 +69,7 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
 
     - Potrzebujesz następujących rodzajów informacji:
 
-       | Value | Opis |
+       | Wartość | Opis |
        | ---   | ---         |
        | Hasło | Hasło certyfikatu. |
        | Ścieżka do lokalnego certyfikatu | Ścieżka i nazwa pliku certyfikatu. Na przykład: `path\certfilename.pfx` |
@@ -109,7 +109,7 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
 
     - Potrzebujesz następujących rodzajów informacji:
 
-       | Value | Opis                     |
+       | Wartość | Opis                     |
        | ---   | ---                             |
        | ERCS IP | W ASDK uprzywilejowanych punkt końcowy jest zwykle `AzS-ERCS01`. |
        | Nazwa aplikacji | Prosta nazwa dla nazwy głównej usługi aplikacji. |

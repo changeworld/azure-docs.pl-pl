@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 109c740ee92e82b6d18879da6839ce6341353cba
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: aa61b88bb0a944a048bc4b2db9c542efe3e30ddf
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495517"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564123"
 ---
-# <a name="resource-providers-and-types"></a>Dostawcy zasobów i ich typy
+# <a name="azure-resource-providers-and-types"></a>Dostawcy zasobów platformy Azure i ich typy
 
-Podczas wdrażania zasobów, często jest potrzebne do pobierania informacji o dostawcy zasobów i typów. W tym artykule przedstawiono sposób:
+Podczas wdrażania zasobów, często jest potrzebne do pobierania informacji o dostawcy zasobów i typów. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 * Wyświetlanie wszystkich dostawców zasobów na platformie Azure
 * Sprawdzanie stanu rejestracji dostawcy zasobów
@@ -32,11 +32,53 @@ Podczas wdrażania zasobów, często jest potrzebne do pobierania informacji o d
 * Wyświetl prawidłowe lokalizacje dla typu zasobu
 * Wyświetl prawidłowych wersji interfejsu API dla typu zasobu
 
-Można wykonywać następujące czynności za pomocą witryny portal, programu PowerShell lub wiersza polecenia platformy Azure.
+Można wykonać następujące kroki, za pośrednictwem witryny Azure portal, programu Azure PowerShell lub wiersza polecenia platformy Azure.
+
+## <a name="azure-portal"></a>Azure Portal
+
+Aby wyświetlić wszystkich dostawców zasobów, a stan rejestracji subskrypcji:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz pozycję **Wszystkie usługi**.
+
+    ![Wybierz subskrypcje](./media/resource-manager-supported-services/select-subscriptions.png)
+3. W **wszystkich usług** wprowadź **subskrypcji**, a następnie wybierz pozycję **subskrypcje**.
+4. Wybierz subskrypcję z listy subskrypcję, aby wyświetlić.
+5. Wybierz **dostawców zasobów** i wyświetlić listę dostępnych dostawców zasobów.
+
+    ![Pokaż dostawców zasobów](./media/resource-manager-supported-services/show-resource-providers.png)
+
+6. Rejestrowanie dostawcy zasobów służy do konfigurowania subskrypcji do pracy za pomocą dostawcy zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie są automatycznie rejestrowane wielu dostawców zasobów. Jednak należy ręcznie zarejestrować niektórzy dostawcy zasobów. Aby zarejestrować dostawcę zasobów, musi mieć uprawnienia do wykonania `/register/action` operacji dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Aby zarejestrować dostawcę zasobów, wybierz **zarejestrować**. Na poprzednim zrzucie ekranu **zarejestrować** łącza zostanie wyróżniona do **Microsoft.Blueprint**.
+
+    Nie można wyrejestrować dostawcy zasobów, jeśli nadal masz typy zasobów pochodzące od tego dostawcy zasobów w ramach subskrypcji.
+
+Aby wyświetlić informacje o dostawcy określonego zasobu:
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz **wszystkich usług**...
+
+    ![Wybierz wszystkie usługi](./media/resource-manager-supported-services/more-services.png)
+
+3. W **wszystkich usług** wprowadź **Eksploratora zasobów**, a następnie wybierz pozycję **Eksploratora zasobów**.
+4. Rozwiń **dostawców** , wybierając strzałkę w prawo.
+
+    ![Wybierz dostawców](./media/resource-manager-supported-services/select-providers.png)
+
+5. Rozwiń węzeł dostawcy zasobów i typ zasobu, który chcesz wyświetlić.
+
+    ![Wybierz typ zasobu](./media/resource-manager-supported-services/select-resource-type.png)
+
+6. Menedżer zasobów jest obsługiwane we wszystkich regionach, ale zasoby, które możesz wdrożyć mogą nie być obsługiwane we wszystkich regionach. Ponadto może być ograniczeń w ramach subskrypcji, które uniemożliwiają użycie w niektórych regionach, które obsługują zasobu. Eksplorator zasobów Wyświetla prawidłowe lokalizacje dla typu zasobu.
+
+    ![Pokaż lokalizacje](./media/resource-manager-supported-services/show-locations.png)
+
+7. Wersja interfejsu API odpowiada wersji operacji interfejsu API REST, które są wydawane przez dostawcę zasobów. Jako dostawca zasobów zapewnia nowe funkcje, wydaje nową wersję interfejsu API REST. Eksplorator zasobów przedstawia prawidłowych wersji interfejsu API dla typu zasobu.
+
+    ![Pokaż wersje interfejsu API](./media/resource-manager-supported-services/show-api-versions.png)
+
+## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="powershell"></a>PowerShell
 
 Aby wyświetlić wszystkich dostawców zasobów na platformie Azure i stanu rejestracji dla Twojej subskrypcji, użyj:
 
@@ -247,52 +289,9 @@ West US
 ...
 ```
 
-## <a name="portal"></a>Portal
-
-Aby wyświetlić wszystkich dostawców zasobów na platformie Azure i stanu rejestracji dla Twojej subskrypcji, wybierz **subskrypcje**.
-
-![Wybierz subskrypcje](./media/resource-manager-supported-services/select-subscriptions.png)
-
-Wybierz subskrypcję, aby wyświetlić.
-
-![Określ subskrypcję](./media/resource-manager-supported-services/subscription.png)
-
-Wybierz **dostawców zasobów** i wyświetlić listę dostępnych dostawców zasobów.
-
-![Pokaż dostawców zasobów](./media/resource-manager-supported-services/show-resource-providers.png)
-
-Rejestrowanie dostawcy zasobów służy do konfigurowania subskrypcji do pracy za pomocą dostawcy zasobów. Zakres do rejestracji jest zawsze subskrypcji. Domyślnie są automatycznie rejestrowane wielu dostawców zasobów. Jednak należy ręcznie zarejestrować niektórzy dostawcy zasobów. Aby zarejestrować dostawcę zasobów, musi mieć uprawnienia do wykonania `/register/action` operacji dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Aby zarejestrować dostawcę zasobów, wybierz **zarejestrować**.
-
-![Procedura Rejestruj dostawcę zasobów](./media/resource-manager-supported-services/register-provider.png)
-
-Nie można wyrejestrować dostawcy zasobów, jeśli nadal masz typy zasobów pochodzące od tego dostawcy zasobów w ramach subskrypcji.
-
-Aby wyświetlić informacje o dostawcy określonego zasobu, wybierz **wszystkich usług**.
-
-![Wybierz wszystkie usługi](./media/resource-manager-supported-services/more-services.png)
-
-Wyszukaj **Eksploratora zasobów** i wybierz ją z listy dostępnych opcji.
-
-![Wybierz pozycję Eksplorator zasobów](./media/resource-manager-supported-services/select-resource-explorer.png)
-
-Wybierz pozycję **Dostawcy**.
-
-![Wybierz dostawców](./media/resource-manager-supported-services/select-providers.png)
-
-Wybierz dostawcę zasobów i typu zasobu, który chcesz wyświetlić.
-
-![Wybierz typ zasobu](./media/resource-manager-supported-services/select-resource-type.png)
-
-Menedżer zasobów jest obsługiwane we wszystkich regionach, ale zasoby, które możesz wdrożyć mogą nie być obsługiwane we wszystkich regionach. Ponadto może być ograniczeń w ramach subskrypcji, które uniemożliwiają użycie w niektórych regionach, które obsługują zasobu. Eksplorator zasobów Wyświetla prawidłowe lokalizacje dla typu zasobu.
-
-![Pokaż lokalizacje](./media/resource-manager-supported-services/show-locations.png)
-
-Wersja interfejsu API odpowiada wersji operacji interfejsu API REST, które są wydawane przez dostawcę zasobów. Jako dostawca zasobów zapewnia nowe funkcje, wydaje nową wersję interfejsu API REST. Eksplorator zasobów przedstawia prawidłowych wersji interfejsu API dla typu zasobu.
-
-![Pokaż wersje interfejsu API](./media/resource-manager-supported-services/show-api-versions.png)
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat tworzenia szablonów usługi Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
+* Aby dowiedzieć się więcej na temat tworzenia szablonów usługi Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md). 
+* Aby wyświetlić schematy szablonów dostawcy zasobów, zobacz [odwołanie do szablonu](/azure/templates/).
 * Aby dowiedzieć się więcej na temat wdrażania zasobów, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
 * Aby wyświetlić operacje dla dostawcy zasobów, zobacz [interfejsu API REST usługi Azure](/rest/api/).

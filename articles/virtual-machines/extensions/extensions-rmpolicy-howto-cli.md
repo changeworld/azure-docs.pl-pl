@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 529758a7b9fe4c8b669ade72273335389020fb65
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 5054fdc08c7a0a1b3833ed95784f6018ac5c697e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451207"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659256"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Ograniczanie instalacji rozszerzeń na maszynach wirtualnych z systemem Linux za pomocą usługi Azure Policy
 
@@ -115,7 +115,7 @@ az policy definition create \
 
 ## <a name="assign-the-policy"></a>Przypisz zasady
 
-W tym przykładzie przypisuje grupę zasobów za pomocą zasad [utworzenia przypisania zasad az](/cli/azure/policy/assignment#az_policy_assignment_create). Wszystkie maszyny Wirtualnej utworzonej w **myResourceGroup** grupy zasobów nie będzie można zainstalować dostęp do maszyny Wirtualnej systemu Linux lub rozszerzenia niestandardowego skryptu dla systemu Linux. Grupa zasobów musi istnieć przed przypisaniem zasad.
+W tym przykładzie przypisuje grupę zasobów za pomocą zasad [utworzenia przypisania zasad az](/cli/azure/policy/assignment). Wszystkie maszyny Wirtualnej utworzonej w **myResourceGroup** grupy zasobów nie będzie można zainstalować dostęp do maszyny Wirtualnej systemu Linux lub rozszerzenia niestandardowego skryptu dla systemu Linux. Grupa zasobów musi istnieć przed przypisaniem zasad.
 
 Użyj [listy kont az](/cli/azure/account?view=azure-cli-latest#az_account_list) można pobrać Identyfikatora subskrypcji należy użyć zamiast co w przykładzie.
 

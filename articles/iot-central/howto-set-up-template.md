@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 61bc9da45ac420e5683be1ea3ad253eae9c0ba5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fc18262326a8474cac417b67a37df35d91d75439
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158945"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657743"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -39,6 +39,8 @@ Za pomocą tego szablonu urządzenia można tworzyć i łączenie urządzeń rze
 
 > [!NOTE]
 > Tylko twórcy i Administratorzy mogą tworzyć, edytować i usuwanie szablonów urządzenia. Każdy użytkownik może utworzyć urządzenia na **Device Explorer** strony z istniejących szablonów urządzenia.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="create-a-device-template"></a>Tworzenie szablonu urządzenia
 
@@ -84,7 +86,7 @@ Po wybraniu **gotowe**, **temperatury** miary, który pojawia się na liście po
 ### <a name="create-an-event-measurement"></a>Tworzenie miary zdarzeń
 Aby dodać nowe miary zdarzenia, wybierz **Edytuj szablon**, a następnie kliknij przycisk **+ nowej miary** przycisku. Wybierz **zdarzeń** jako wartość typu, a następnie wprowadź szczegóły **Utwórz zdarzenie** formularza.
 
-Podaj **nazwę wyświetlaną**, **nazwę pola**, i **ważność** szczegóły zdarzenia. Możesz wybrać spośród trzech dostępnych poziomów ważności: **błąd**, **ostrzeżenie**, i **informacji**.  
+Podaj **nazwę wyświetlaną**, **nazwę pola**, i **ważność** szczegóły zdarzenia. Możesz wybrać z trzech dostępnych poziomów ważności: **Błąd**, **ostrzeżenie**, i **informacji**.  
 
 Na przykład można dodać nowego **błąd Motor wentylator** zdarzeń.
 
@@ -134,11 +136,11 @@ Ustawienia określają urządzenia. Umożliwiają one operatory aplikacji w celu
 
 Ustawienia mogą być w jednym z trzech stanów. Urządzenie raportuje tych stanów.
 
-- **Zsynchronizowano**: urządzenie ma zmodyfikowane w celu odzwierciedlenia wartości ustawienia.
+- **Zsynchronizowano**: Urządzenie ma zmienione w celu uwzględnienia wartości ustawienia.
 
-- **Oczekujące**: urządzenie jest obecnie zmiana wartości ustawień.
+- **Oczekujące**: Urządzenie jest obecnie zmiana wartości ustawień.
 
-- **Błąd**: urządzenie zwróciło błąd.
+- **Błąd**: Urządzenie zwróciło błąd.
 
 Na przykład można dodać nowe ustawienie szybkość wentylator wybierając **Edytuj szablon** i wprowadzając w nowym **numer** ustawienia:
 
@@ -165,9 +167,9 @@ Są dostępne dwie kategorie właściwości:
 
 Na przykład można dodać lokalizacji urządzenia jako nowy **tekstu** właściwością (aplikacji), wybierając **Edytuj szablon** i wprowadzając w nowej właściwości:
 
-| Nazwa wyświetlana  | Nazwa pola | Przyciąć spacje wiodące  | Przytnij końcowe spacje  | Rozróżnianie wielkości liter| Minimalna długość | Maksymalna długość |
+| Nazwa wyświetlana  | Nazwa pola | Przytnij początkowe spacje  | Przytnij końcowe spacje  | Rozróżnianie wielkości liter| Minimalna długość | Maksymalna długość |
 | --------------| -----------|---------| ---------|---- |----|----|
-| Lokalizacja      | Lokalizacja        | Wyłączone     |  Wyłączone     | Mieszane  | 0 | 100|
+| Lokalizacja      | loc        | Wyłączone     |  Wyłączone     | Mieszane  | 0 | 100|
 
 !["Configure tekst" formularza na karcie "Właściwości"](./media/howto-set-up-template/propertiesform.png)
 
@@ -234,9 +236,9 @@ Polecenia są używane do zdalnego zarządzania urządzeniem. Umożliwiają one 
 
 Czym różni się polecenie z ustawienia? 
 
-* **Ustawienie**: to ustawienie jest konfiguracji, który chcesz zastosować do urządzenia, i chcesz, aby urządzenia, aby zachować tę konfigurację, dopóki nie zostanie zmieniony. Na przykład chcesz ustawić temperatura swoje zamrażalni i ma ustawienie nawet wtedy, gdy zamrażarce powoduje ponowne uruchomienie. 
+* **Ustawienie**: To ustawienie jest konfiguracji, który chcesz zastosować do urządzenia, a urządzenie, aby zachować tę konfigurację, dopóki nie zostanie zmieniony. Na przykład chcesz ustawić temperatura swoje zamrażalni i ma ustawienie nawet wtedy, gdy zamrażarce powoduje ponowne uruchomienie. 
 
-* **Polecenie**: Użyj poleceń, aby natychmiast uruchomić polecenie na urządzeniu zdalnie z IoT Central. Jeśli urządzenie nie jest połączony, polecenie upłynie limit czasu i kończy się niepowodzeniem. Na przykład chcesz ponownie uruchomić urządzenie.  
+* **Polecenie**: Polecenia aby natychmiast uruchomić polecenie na urządzeniu zdalnie z IoT Central. Jeśli urządzenie nie jest połączony, polecenie upłynie limit czasu i kończy się niepowodzeniem. Na przykład chcesz ponownie uruchomić urządzenie.  
 
 
 Na przykład można dodać nowego **Echo** polecenia, wybierając **edycji szablonu**, klikając **+ nowe polecenie**i wprowadzając w nowe polecenie:

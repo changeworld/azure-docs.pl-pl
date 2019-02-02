@@ -10,14 +10,14 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6dd7707c489bbbad7a97a0ec0a76e7c631bd1465
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b969743c13e541c491b56066061464f40a6d2d9e
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359259"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657115"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Cosmos DB (interfejs API SQL) lub za pomocą usługi Azure Data Factory
 
@@ -28,7 +28,7 @@ ms.locfileid: "54359259"
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z i do usługi Azure Cosmos DB (interfejs API SQL). Artykuł opiera się na [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md), który ma ogólne omówienie działania kopiowania.
 
 >[!NOTE]
->Ten łącznik jest obsługiwany tylko kopiowanie danych z interfejsu API SQL usługi Cosmos DB. Bazy danych MongoDB, można znaleźć [łącznik dla interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](connector-azure-cosmos-db-mongodb-api.md). Inne typy interfejsu API nie są teraz obsługiwane.
+>Ten łącznik jest obsługiwany tylko kopiowanie danych z interfejsu API SQL usługi Cosmos DB. W przypadku interfejsu API usługi MongoDB można znaleźć [łącznik dla interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB](connector-azure-cosmos-db-mongodb-api.md). Inne typy interfejsu API nie są teraz obsługiwane.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -58,7 +58,7 @@ Następujące właściwości są obsługiwane przez usługę Azure Cosmos DB (in
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** właściwość musi być równa **CosmosDb**. | Yes |
-| Parametry połączenia |Określ informacje, które są wymagane do połączenia z bazą danych Azure Cosmos DB.<br /><br />**Uwaga**: W parametrach połączenia, jak pokazano w przykładach, które należy wykonać, należy określić informacje o bazie danych. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| Parametry połączenia |Określ informacje, które są wymagane do połączenia z bazą danych Azure Cosmos DB.<br />**Uwaga**: W parametrach połączenia, jak pokazano w przykładach, które należy wykonać, należy określić informacje o bazie danych. <br/>Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również umieścić klucz konta w usłudze Azure Key Vault i ściągania `accountKey` konfiguracji poza parametry połączenia. Zobacz poniższe przykłady i [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md) artykułu z bardziej szczegółowymi informacjami. |Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub własnego środowiska integration runtime. Jeśli ta właściwość nie jest określona, używana jest domyślna Azure Integration Runtime. |Nie |
 
 **Przykład**
@@ -72,6 +72,35 @@ Następujące właściwości są obsługiwane przez usługę Azure Cosmos DB (in
             "connectionString": {
                 "type": "SecureString",
                 "value": "AccountEndpoint=<EndpointUrl>;AccountKey=<AccessKey>;Database=<Database>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Przykład: przechowywanie klucza konta w usłudze Azure Key Vault**
+
+```json
+{
+    "name": "CosmosDbSQLAPILinkedService",
+    "properties": {
+        "type": "CosmosDb",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "AccountEndpoint=<EndpointUrl>;Database=<Database>"
+            },
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {

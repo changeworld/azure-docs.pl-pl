@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e37bc5f46a1a56357e3dff9d1f67de7dcc2537b0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055309"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562899"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Aprowizacji i wykazu nowych dzierżaw w aplikacji SaaS, używa podzielonej na fragmenty bazy danych Azure SQL wielodostępnych
 
@@ -28,7 +28,7 @@ W tym artykule znajdują się dwie główne części:
 - [Omówienie koncepcyjne](#goto_2_conceptual) aprowizacji i katalogowanie nowych dzierżaw.
 
 - [Samouczek](#goto_1_tutorial) który wyróżnia wykonująca aprowizacji i katalogowanie kod skryptu programu PowerShell.
-    - W tym samouczku użyto aplikacji SaaS o nazwie Wingtip Tickets, dostosowane do wzorca wielodostępną bazą danych podzielonych na fragmenty.
+  - W tym samouczku użyto aplikacji SaaS o nazwie Wingtip Tickets, dostosowane do wzorca wielodostępną bazą danych podzielonych na fragmenty.
 
 <a name="goto_2_conceptual"/>
 
@@ -143,10 +143,10 @@ W tej sekcji możesz wyświetlić listę głównych akcji aprowizacji, wykonywan
 
 Poniżej przedstawiono kluczowe elementy przepływu pracy aprowizacji, przechodzić krok po kroku przez:
 
-- **Oblicz nowy klucz dzierżawy**: funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
-- **Sprawdź, czy klucz dzierżawy już istnieje**: wykaz jest sprawdzany, aby upewnić się, klucz nie został już zarejestrowany.
-- **Inicjowanie dzierżawy w domyślna baza danych dzierżawy**: baza danych dzierżawy jest zaktualizowano w celu dodania nowych informacji o dzierżawie.  
-- **Zarejestrować dzierżawy w wykazie**: mapowanie między nowego klucza dzierżawy i istniejącej bazy danych tenants1 zostanie dodany do katalogu. 
+- **Oblicz nowy klucz dzierżawy**: Funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
+- **Sprawdź, czy klucz dzierżawy już istnieje**: Wykaz jest sprawdzany w celu zapewnienia, że klucz nie został już zarejestrowany.
+- **Inicjowanie dzierżawy w domyślna baza danych dzierżawy**: Baza danych dzierżawy jest zaktualizowano w celu dodania nowych informacji o dzierżawie.  
+- **Zarejestrować dzierżawy w wykazie**: Mapowanie między nowego klucza dzierżawy i istniejącej bazy danych tenants1 zostanie dodany do katalogu. 
 - **Dodaj nazwę dzierżawcy do tabeli rozszerzenia katalogu**: Nazwa właściwości została dodana do tabeli dzierżaw w wykazie.  To dodawanie pokazuje, jak baza danych wykazu, można rozszerzyć do obsługi dodatkowych danych specyficznych dla aplikacji.
 - **Otwórz stronę zdarzenia dla nowej dzierżawy**: *Bushwillow Blues* stronie zdarzeń jest otwarty w przeglądarce.
 
@@ -161,7 +161,7 @@ Aby dowiedzieć się, jak aplikacja Wingtip implementuje nową dzierżawę, apro
    - **$VenueType** = **blues**, jeden z wstępnie zdefiniowanych typów miejsca: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (małe, bez spacji).
    - **$DemoScenario** = **1**, aby aprowizować dzierżawy w udostępnionej bazy danych z innych dzierżaw.
 
-2. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 38 wiersz, który jest wyświetlany komunikat: *New-Tenant "*, a następnie naciśnij klawisz **F9**.
+2. Dodaj punkt przerwania, umieszczając kursor w dowolnym miejscu w wierszu 38 wiersz, który jest wyświetlany komunikat: *Nowa dzierżawa "*, a następnie naciśnij klawisz **F9**.
 
    ![punkt przerwania](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -181,12 +181,12 @@ Aby uzyskać więcej informacji na temat debugowania skryptów programu PowerShe
 
 Poniżej przedstawiono kluczowe elementy przepływu pracy, który krok po kroku przez podczas śledzenia skryptu:
 
-- **Oblicz nowy klucz dzierżawy**: funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
-- **Sprawdź, czy klucz dzierżawy już istnieje**: wykaz jest sprawdzany, aby upewnić się, klucz nie został już zarejestrowany.
-- **Utwórz nową bazę danych dzierżawy**: baza danych jest tworzony przez skopiowanie *basetenantdb* bazy danych przy użyciu szablonu usługi Resource Manager.  Nowa nazwa bazy danych zależy od nazwy dzierżawy.
+- **Oblicz nowy klucz dzierżawy**: Funkcja skrótu służy do tworzenia klucza dzierżawy na podstawie nazwy dzierżawy.
+- **Sprawdź, czy klucz dzierżawy już istnieje**: Wykaz jest sprawdzany w celu zapewnienia, że klucz nie został już zarejestrowany.
+- **Utwórz nową bazę danych dzierżawy**: Baza danych jest tworzony przez skopiowanie *basetenantdb* bazy danych przy użyciu szablonu usługi Resource Manager.  Nowa nazwa bazy danych zależy od nazwy dzierżawy.
 - **Dodaj bazę danych do katalogu**: Nowa baza danych dzierżawy jest zarejestrowana jako fragmentów w wykazie.
-- **Inicjowanie dzierżawy w domyślna baza danych dzierżawy**: baza danych dzierżawy jest zaktualizowano w celu dodania nowych informacji o dzierżawie.  
-- **Zarejestrować dzierżawy w wykazie**: mapowanie między nowego klucza dzierżawy i *sequoiasoccer* bazy danych zostanie dodany do katalogu.
+- **Inicjowanie dzierżawy w domyślna baza danych dzierżawy**: Baza danych dzierżawy jest zaktualizowano w celu dodania nowych informacji o dzierżawie.  
+- **Zarejestrować dzierżawy w wykazie**: Mapowanie między nowego klucza dzierżawy i *sequoiasoccer* bazy danych zostanie dodany do katalogu.
 - **Nazwa dzierżawy została dodana do wykazu**: Nazwa właściwości została dodana do tabeli rozszerzenia dzierżawy w wykazie.
 - **Otwórz stronę zdarzenia dla nowej dzierżawy**: *Sequoia Soccer* stronie zdarzeń jest otwarty w przeglądarce.
 
@@ -261,7 +261,7 @@ We wzorcu automatycznej aprowizacji dedykowana usługa aprowizacji jest używany
 
 Tego rodzaju automatycznych usługa może być proste lub złożone. Na przykład usługi automation może obsługiwać Inicjowanie obsługi administracyjnej w wielu regionach i można skonfigurować replikację geograficzną dla odzyskiwania po awarii. Za pomocą wzorca automatycznej aprowizacji aplikacja klienta lub skrypt może przesłać żądanie inicjowania obsługi administracyjnej do kolejki do przetworzenia przez usługę aprowizacji. Następnie mogą sondować skryptu do wykrywania ukończenia. Jeśli używana jest wstępna aprowizacja, żądania będzie szybko, obsługiwane, gdy usługa w tle będzie zarządzać aprowizacji zastępczej bazy danych.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)

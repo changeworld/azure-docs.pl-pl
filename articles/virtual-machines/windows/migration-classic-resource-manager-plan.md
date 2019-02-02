@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 6d84c83efa194543ed10aaed82362021b7053476
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576208"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566241"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele wspaniałych nowych funkcji, ważne jest zaplanowanie podróż migracyjną Postaramy się bezproblemowym przejściu. Poświęcania czasu na temat planowania będą upewnij się, czy nie występują problemy podczas wykonywania działania migracji.
@@ -88,7 +88,7 @@ Klienci pomyślnie szczegółowych planów, gdzie poprzedniego pytania są omów
 
 Poniżej zostały problemów znalezionych w wielu większych migracji. To nie jest kompletną listą i powinni zapoznać się z [nieobsługiwane funkcje oraz konfiguracje](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations) Aby uzyskać więcej szczegółów.  Może lub nie mogą wystąpić następujące problemy techniczne, ale po wykonaniu rozwiązywania tych przed próbą wykonania migracji zapewnia płynne.
 
-- **Czy uruchomienia próbnego Prepare/Validate/przerwania** — jest to prawdopodobnie wykonuję Najważniejszy krok, aby upewnić się klasyczne, tak aby wskazywał Powodzenie migracji usługi Azure Resource Manager. Migracja interfejsu API ma trzy podstawowe kroki: Sprawdzanie poprawności, przygotowanie i zatwierdzania. Sprawdzanie poprawności będzie odczyt stanu klasycznego środowiska i zwracają wynik o wszystkich problemów. Jednak ponieważ niektóre problemy, może istnieć w stosie usługi Azure Resource Manager, sprawdzania poprawności nie będzie przechwytywać wszystko. Następnym krokiem w procesie migracji, przygotowanie ułatwia udostępnianie tych problemów. Przygotowanie będzie przenoszenie metadanych z wersji klasycznej do usługi Azure Resource Manager, ale będzie nie zatwierdzić przenoszenia i będzie nie Usuń lub Zmień elementy na stronie klasycznego. Uruchomienia próbnego obejmuje przygotowanie migracji, a następnie zostanie przerwany (**nie zatwierdzanie**) przygotowanie migracji. Celem przebiegu weryfikacji/przygotowanie/przerwania jest zobaczyć wszystkie metadane w stosie usługi Azure Resource Manager, należy go sprawdzić (*programowo, albo w portalu*), sprawdź, czy wszystko jest migrowana poprawnie i trzymać się kolejności technicznych problemy.  Jej będzie również dać Ci przedsmak czasu trwania migracji, należy odpowiednio zaplanować przestojów.  Sprawdź poprawność/przygotowanie/przerwania nie powoduje żadnych przestojów użytkownika; Dlatego jest przeznaczone do użycia aplikacji.
+- **Czy uruchomienia próbnego Prepare/Validate/przerwania** — jest to prawdopodobnie wykonuję Najważniejszy krok, aby upewnić się klasyczne, tak aby wskazywał Powodzenie migracji usługi Azure Resource Manager. Migracja interfejsu API ma trzy podstawowe kroki: Sprawdź poprawność, przygotowanie i zatwierdzania. Sprawdzanie poprawności będzie odczyt stanu klasycznego środowiska i zwracają wynik o wszystkich problemów. Jednak ponieważ niektóre problemy, może istnieć w stosie usługi Azure Resource Manager, sprawdzania poprawności nie będzie przechwytywać wszystko. Następnym krokiem w procesie migracji, przygotowanie ułatwia udostępnianie tych problemów. Przygotowanie będzie przenoszenie metadanych z wersji klasycznej do usługi Azure Resource Manager, ale będzie nie zatwierdzić przenoszenia i będzie nie Usuń lub Zmień elementy na stronie klasycznego. Uruchomienia próbnego obejmuje przygotowanie migracji, a następnie zostanie przerwany (**nie zatwierdzanie**) przygotowanie migracji. Celem przebiegu weryfikacji/przygotowanie/przerwania jest zobaczyć wszystkie metadane w stosie usługi Azure Resource Manager, należy go sprawdzić (*programowo, albo w portalu*), sprawdź, czy wszystko jest migrowana poprawnie i trzymać się kolejności technicznych problemy.  Jej będzie również dać Ci przedsmak czasu trwania migracji, należy odpowiednio zaplanować przestojów.  Sprawdź poprawność/przygotowanie/przerwania nie powoduje żadnych przestojów użytkownika; Dlatego jest przeznaczone do użycia aplikacji.
   - Poniższe elementy będzie musiał zostać rozwiązane przed uruchomienia próbnego, ale te kroki przygotowania przebiegu testu zostanie również bezpiecznie opróżnienia, jeśli zostaną one pominięte. Podczas migracji enterprise Odkryliśmy uruchomienia próbnego za bezpieczne i bezcenne sposobem zapewnienia gotowości do migracji.
   - Kiedy przygotowania działa formant płaszczyzny (operacje zarządzania platformy Azure) zostanie zablokowane dla całej sieci wirtualnej, a więc nie zmian do metadanych maszyny Wirtualnej podczas sprawdzania poprawności/przygotowanie/przerwania.  Ale w przeciwnym razie dowolnej funkcji aplikacji (usług pulpitu zdalnego, maszyna wirtualna użycia, itp.) będzie to miało wpływu.  Użytkownicy maszyn wirtualnych nie będzie wiadomo, jest wykonywane uruchomienia próbnego.
 
@@ -201,7 +201,7 @@ Co należy wziąć pod uwagę:
 
 Być znaczącej usług, które chcesz włączyć usługi Azure Resource Manager.  Wielu klientów uważa poniżej atrakcyjne dla swoich środowisk platformy Azure:
 
-- [Kontrola dostępu oparta na rolach](../../azure-resource-manager/resource-group-overview.md#access-control).
+- [Kontrola dostępu oparta na rolach](../../role-based-access-control/overview.md).
 - [Szablony usługi Azure Resource Manager dla wdrożenia łatwiejsze i bardziej kontrolowanego](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [Tagi](../../azure-resource-manager/resource-group-using-tags.md).
 - [Działania sterowania](../../azure-resource-manager/resource-group-audit.md)

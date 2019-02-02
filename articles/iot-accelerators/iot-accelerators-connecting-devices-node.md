@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 13a762e9262bacc6c4d87b8be56eb286491ba75f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: e7a9659a7796777cabb6dc73a41e3a361fd1733c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197695"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567974"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Podłączanie urządzenia do akceleratora rozwiązań zdalnego monitorowania (Node.js)
 
@@ -40,7 +40,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. W **remote_monitoring.js** plików, Dodaj następujący kod `require` instrukcji:
 
-    ```nodejs
+    ```javascript
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
@@ -49,13 +49,13 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następujące deklaracje zmiennych po instrukcji `require`. Zastąp wartość symbolu zastępczego `{device connection string}` wartością zanotowaną urządzenia aprowizowanej w rozwiązaniu monitorowania zdalnego:
 
-    ```nodejs
+    ```javascript
     var connectionString = '{device connection string}';
     ```
 
 1. Aby zdefiniować niektórych danych telemetrycznych podstawowej, Dodaj następujące zmienne:
 
-    ```nodejs
+    ```javascript
     var temperature = 50;
     var temperatureUnit = 'F';
     var humidity = 50;
@@ -66,7 +66,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Aby zdefiniować niektóre wartości właściwości, Dodaj następujące zmienne:
 
-    ```nodejs
+    ```javascript
     var schema = "real-chiller;v1";
     var deviceType = "RealChiller";
     var deviceFirmware = "1.0.0";
@@ -79,7 +79,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następującą zmienną do definiowania zgłaszanych właściwości do wysłania do rozwiązania. Te właściwości obejmują metadanych do wyświetlania w Interfejsie użytkownika sieci Web:
 
-    ```nodejs
+    ```javascript
     var reportedProperties = {
       "SupportedMethods": "Reboot,FirmwareUpdate,EmergencyValveRelease,IncreasePressure",
       "Telemetry": {
@@ -97,7 +97,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Aby wydrukować wyniki operacji, dodaj następującą funkcję pomocnika:
 
-    ```nodejs
+    ```javascript
     function printErrorFor(op) {
         return function printError(err) {
             if (err) console.log(op + ' error: ' + err.toString());
@@ -107,7 +107,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następującą funkcję pomocnika na potrzeby losowe wartości telemetryczne:
 
-    ```nodejs
+    ```javascript
     function generateRandomIncrement() {
         return ((Math.random() * 2) - 1);
     }
@@ -115,7 +115,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następującą funkcję ogólnego, aby obsłużyć wywołania metody bezpośredniej z rozwiązania. Funkcja wyświetla informacje o bezpośrednie metody, która została wywołana, ale w tym przykładzie nie powoduje modyfikacji urządzenia w dowolny sposób. Rozwiązanie używa metod bezpośrednich do działania na urządzeniach:
 
-    ```nodejs
+    ```javascript
     function onDirectMethod(request, response) {
       // Implement logic asynchronously here.
       console.log('Simulated ' + request.methodName);
@@ -130,7 +130,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następującą funkcję, aby obsłużyć **FirmwareUpdate** bezpośrednie wywołania metody z rozwiązania. Funkcja sprawdza parametrów przekazanych w ładunku metody bezpośredniej, a następnie asynchronicznie uruchamia symulacji aktualizacji oprogramowania układowego:
 
-    ```nodejs
+    ```javascript
     function onFirmwareUpdate(request, response) {
       // Get the requested firmware version from the JSON request body
       var firmwareVersion = request.payload.Firmware;
@@ -159,7 +159,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następującą funkcję, aby symulować przepływ aktualizacji oprogramowania układowego długotrwałych, który zgłasza postępy pracy powrót do rozwiązania:
 
-    ```nodejs
+    ```javascript
     // Simulated firmwareUpdate flow
     function runFirmwareUpdateFlow(firmwareVersion, firmwareUri) {
       console.log('Simulating firmware update flow...');
@@ -237,7 +237,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następujący kod do wysyłania danych telemetrycznych do rozwiązania. Aplikacja kliencka dodaje właściwości w oknie komunikatu identyfikowanie schematów komunikatów:
 
-    ```nodejs
+    ```javascript
     function sendTelemetry(data, schema) {
       if (deviceOnline) {
         var d = new Date();
@@ -256,7 +256,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
 
 1. Dodaj następujący kod, aby utworzyć wystąpienie klienta:
 
-    ```nodejs
+    ```javascript
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
@@ -268,7 +268,7 @@ Upewnij się, że [Node.js](https://nodejs.org/) wersji 4.0.0 lub nowszy jest za
     * Zarejestruj procedury obsługi dla metod bezpośrednich. W przykładzie użyto oddzielny program obsługi dla metody bezpośredniej aktualizacji oprogramowania układowego.
     * Rozpoczęcie wysyłania danych telemetrycznych.
 
-    ```nodejs
+    ```javascript
     client.open(function (err) {
       if (err) {
         printErrorFor('open')(err);

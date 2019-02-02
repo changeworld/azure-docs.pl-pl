@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: a51664144d0dba8eeb82999b212beaf79b4503b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 125c3a925bf6eff04035bb755a07f19367d1abd2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236934"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661092"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Uwierzytelnianie i autoryzowanie za pomocą kolekcji obszarów roboczych usługi Power BI
 
@@ -44,7 +44,7 @@ Twój token aplikacji może zawierać następujących oświadczeń:
 | **AUD** |Adresat tokenu. Aby użyć kolekcji obszarów roboczych usługi Power BI: *https:\//analysis.windows.net/powerbi/api*. |
 | **iss** |Ciąg wskazujący aplikacji, który wystawił token. |
 | **type** |Typ tokenu aplikacji, która jest tworzona. Bieżący jest jedynym obsługiwanym typem **osadzić**. |
-| **WCN** |Nazwa kolekcji obszarów roboczych token zostało wystawione. |
+| **wcn** |Nazwa kolekcji obszarów roboczych token zostało wystawione. |
 | **bazy danych WID** |Identyfikator obszaru roboczego token zostało wystawione. |
 | **Identyfikator RID** |Identyfikator raportu token zostało wystawione. |
 | **Nazwa użytkownika** (opcjonalnie) |Używane z zabezpieczeń na poziomie wiersza, nazwa użytkownika jest ciąg, który może ułatwić identyfikację użytkownika podczas stosowania reguł zabezpieczeń na poziomie wiersza. |
@@ -84,7 +84,7 @@ Body
 
 ```
 
-Metody są dostępne w ramach zestawów SDK, które ułatwiają tworzenie tokenów aplikacji. Na przykład dla platformy .NET można sprawdzić [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) klasy i [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metody.
+Metody są dostępne w ramach zestawów SDK, które ułatwiają tworzenie tokenów aplikacji. Na przykład dla platformy .NET można sprawdzić [Microsoft.PowerBI.Security.PowerBIToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken) klasy i [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody.
 
 Dla zestawu .NET SDK mogą odwoływać się do [zakresy](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.scopes).
 
@@ -176,7 +176,7 @@ Po **kolekcji obszarów roboczych usługi Power BI** wysyła raport do użytkown
 
 ## <a name="see-also"></a>Zobacz też
 
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [Rozpoczęcie pracy z przykładem kolekcji obszarów roboczych pakietu Microsoft Power BI](get-started-sample.md)  
 [Typowe scenariusze kolekcji obszarów roboczych pakietu Microsoft Power BI](scenarios.md)  
 [Rozpoczynanie pracy z kolekcji obszarów roboczych pakietu Microsoft Power BI](get-started.md)  

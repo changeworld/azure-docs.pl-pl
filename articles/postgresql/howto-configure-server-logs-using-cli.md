@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 938aadaa1d17135808cbeb34adac5139bd61f833
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2ebba9a66e55cf82f42773276e36a952264eeee2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545026"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656315"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników serwera przy użyciu wiersza polecenia platformy Azure
 Możesz pobrać dzienniki błędów serwera PostgreSQL za pomocą interfejsu wiersza polecenia (CLI platformy Azure). Jednak dostęp do dzienników transakcji nie jest obsługiwane. 
@@ -38,7 +38,7 @@ Możesz wyświetlić listę plików dziennika dla serwera **mydemoserver.postgre
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>Pobierz dzienniki lokalnie z serwera
-Za pomocą [Pobierz az postgres server-logs](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) polecenia, możesz pobrać osobnych plikach dziennika dla serwera. 
+Za pomocą [Pobierz az postgres server-logs](/cli/azure/postgres/server-logs) polecenia, możesz pobrać osobnych plikach dziennika dla serwera. 
 
 Skorzystaj z następującego przykładu, aby pobrać określonego pliku dziennika dla serwera **mydemoserver.postgres.database.azure.com** w grupie zasobów **myresourcegroup** do środowiska lokalnego.
 ```azurecli-interactive

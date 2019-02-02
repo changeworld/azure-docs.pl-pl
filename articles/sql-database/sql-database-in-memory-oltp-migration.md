@@ -11,15 +11,16 @@ author: jodebrui
 ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: fbe05186b317d3c24dca55197c2989155b5543bd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228049"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565925"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Użyj OLTP w pamięci, aby poprawić wydajność aplikacji w usłudze SQL Database
+
 [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) pozwala zwiększyć wydajność przetwarzania transakcji, pozyskiwania danych i scenariuszy danych przejściowych w [w warstwie Premium i krytyczne dla działania firmy](sql-database-service-tiers-vcore.md) baz danych bez zwiększania warstwę cenową. 
 
 > [!NOTE] 
@@ -29,6 +30,7 @@ ms.locfileid: "51228049"
 Wykonaj następujące kroki, aby wdrażanie przetwarzania OLTP w pamięci w istniejącej bazy danych.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Krok 1: Upewnij się, że używasz bazę danych warstwy Premium i krytyczne dla działania firmy
+
 Przetwarzanie OLTP danych w pamięci jest obsługiwana tylko w przypadku baz danych w warstwie Premium i krytyczne dla działania firmy. W pamięci jest obsługiwany, jeśli zwrócony wynik wyniesie 1 (nie 0):
 
 ```
@@ -49,7 +51,7 @@ W programie SSMS podczas generowania raportu:
 
 Aby uzyskać więcej informacji, zobacz [Określanie, czy tabela przechowywane procedury powinno być przenoszone do OLTP w pamięci](https://msdn.microsoft.com/library/dn205133.aspx).
 
-## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Tworzenie bazy danych testów porównywalnych
+## <a name="step-3-create-a-comparable-test-database"></a>Krok 3: Utwórz bazę danych porównywalne testu
 Załóżmy, że raport wskazuje, że baza danych zawiera tabelę, która używającym konwertowane do tabeli zoptymalizowanej pod kątem pamięci. Firma Microsoft zaleca, należy najpierw przetestować potwierdzenia wskazanie przez testowanie.
 
 Należy kopię produkcyjnej bazy danych. Bazy danych testu powinien być na tym samym poziomie warstwy usługi jako produkcyjnej bazy danych.
@@ -149,7 +151,7 @@ Procedura migracji jest następująca:
 4. Zmień nazwę starego procedury składowanej przy użyciu SP_RENAME. Lub po prostu usunąć ją.
 5. Uruchom skrypt edytowanych Tworzenie procedury języka T-SQL.
 
-## <a name="step-6-run-your-workload-in-test"></a>Krok 6. uruchamianie obciążenia w teście
+## <a name="step-6-run-your-workload-in-test"></a>Krok 6: Uruchamianie obciążenia w teście
 Uruchamianie obciążenia w bazie danych testowych podobne do obciążenia, które jest uruchamiane w produkcyjnej bazie danych. To powinno ujawnić, przyrost wydajności realizowane za korzystanie z funkcji w pamięci dla tabel i procedur składowanych.
 
 Atrybuty głównych obciążenia to:
@@ -161,7 +163,7 @@ Aby dostosować i uruchomić test obciążenia, należy wziąć pod uwagę przy 
 
 Aby zminimalizować opóźnienie sieci, należy uruchomić test w tym samym regionie platformy Azure geograficznym, gdy baza danych istnieje.
 
-## <a name="step-7-post-implementation-monitoring"></a>Kroku 7: Monitorowanie po wdrożeniu
+## <a name="step-7-post-implementation-monitoring"></a>Krok 7: Po wdrożeniu monitorowania
 Należy rozważyć monitorowanie wydajności efekty swojej implementacji w pamięci w środowisku produkcyjnym:
 
 * [Monitorowanie magazynu w pamięci](sql-database-in-memory-oltp-monitoring.md).

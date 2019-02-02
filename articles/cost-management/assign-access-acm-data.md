@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 50f048dc36b0248cdbbd85d91c00b7947f9ddc1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: a64a1e35811b8bcdf721425580fe66641cb8ebe2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052142"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661007"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Przypisywanie dostępu do danych rozwiązania Cost Management
 
@@ -43,6 +43,10 @@ Aby wyświetlić dane kosztów, użytkownik musi mieć co najmniej odczytu dost�
 Na poniższym diagramie przedstawiono relację między zakresami Cost Management przy użyciu ról i ustawienia portalu EA.
 
 ![Diagram przedstawiający relację między zakresami Cost Management przy użyciu ról i ustawienia portalu EA](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
+
+Gdy **DA Wyświetl opłaty** są wyłączone w witrynie EA portal zostanie wyświetlony komunikat z informacją *kosztów są wyłączone przez Twoją organizację* podczas próby wyświetlenia koszty dla kont i działów.
+
+Podobnie, gdy **AO Wyświetl opłaty** są wyłączone w witrynie EA portal zostanie wyświetlony komunikat z informacją *kosztów są wyłączone przez Twoją organizację* podczas próby wyświetlenia koszty dla kont rejestracji, grupy zarządzania subskrypcji i grupy zasobów.
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Zapewnianie dostępu do kosztów w witrynie EA portal
 

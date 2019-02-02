@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ad494a3a1ce657951a0afab4d5ca838821927ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158829"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660922"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -28,7 +28,7 @@ W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu E
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD DS
 
 > [!NOTE]  
-> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Storage (ADLS) Gen1 lub Gen2 tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra przy użyciu uwierzytelnienia Kerberose podstawowe, należy wyłączyć uwierzytelnianie wieloskładnikowe (MFA). Możesz użyć [zaufane adresy IP](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) lub [dostępu warunkowego](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/overview) wyłączania uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy gdy uzyskują dostęp do klastra HDInsight zakres adresów IP w sieci Wirtualnej. Jeśli używasz warunkowego dostępu upewnij się, ten punkt końcowy usługi AD w włączone w sieci Wirtualnej HDInsight.
+> Tylko Administratorzy dzierżawy mają uprawnienia do włączenia usług AD DS Azure. Czy za pomocą magazynu klastra usługi Azure Data Lake Storage (ADLS) Gen1 lub Gen2 tylko dla użytkowników, którzy chcą uzyskać dostęp do klastra przy użyciu uwierzytelnienia Kerberose podstawowe, należy wyłączyć uwierzytelnianie wieloskładnikowe (MFA). Możesz użyć [zaufane adresy IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings#trusted-ips) lub [dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) wyłączania uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy gdy uzyskują dostęp do klastra HDInsight zakres adresów IP w sieci Wirtualnej. Jeśli używasz warunkowego dostępu upewnij się, ten punkt końcowy usługi AD w włączone w sieci Wirtualnej HDInsight.
 >
 >Jeśli magazyn klastra usługi Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 
@@ -87,7 +87,7 @@ Po nawiązaniu komunikacji równorzędnej między sieciami wirtualnymi, należy 
 
 ![Konfigurowanie serwerów DNS niestandardowe dla wirtualnej sieci równorzędnej](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Jeśli używasz reguł sieciowych grup zabezpieczeń w podsieci usługi HDInsight, należy umożliwić [wymaganych adresów IP](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) dla ruchu przychodzącego i ruchu wychodzącego. 
+Jeśli używasz reguł sieciowych grup zabezpieczeń w podsieci usługi HDInsight, należy umożliwić [wymaganych adresów IP](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network#hdinsight-ip-1) dla ruchu przychodzącego i ruchu wychodzącego. 
 
 **Aby przetestować** Jeśli sieci są poprawnie skonfigurowane, Dołącz do HDInsight sieci Wirtualnej/podsieci maszyny Wirtualnej systemu windows i zbadaj nazwy domeny (jego powinien rozwiązać adres IP), a następnie uruchom **ldp.exe** uzyskać dostępu do domeny usług AD DS platformy Azure. Następnie **przyłączanie maszyny Wirtualnej systemu windows do domeny, aby potwierdzić** się wszystkie wymagane wywołania RPC sukcesem między klientem i serwerem. Można również użyć **nslookup** o potwierdzenie sieci dostępu do konta magazynu lub dowolnego zewnętrzne bazy danych można użyć (na przykład zewnętrzny Magazyn metadanych Hive lub Ranger bazy danych).
 Upewnij się, że wszystkie [wymagane porty](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) dozwolonych elementów znajdują się w podsieci usługi AAD DS reguły sieciowej grupy zabezpieczeń, jeśli DS usługi AAD jest zabezpieczony przez sieciową grupę zabezpieczeń. Jeśli maszyna wirtualna przyłączenie do domeny systemu windows to się powiedzie, można przejść do następnego kroku i utworzyć klastry z ESP.

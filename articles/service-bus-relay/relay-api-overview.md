@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c7aec700a1077bc1a1b56afb5d8d07f47f4c6e8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700376"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663098"
 ---
 # <a name="available-relay-apis"></a>Interfejsy API dostępne usługi Relay
 
@@ -39,7 +39,7 @@ Poniższa tabela zawiera listę wszystkich dostępnych klientów środowiska uru
 
 #### <a name="net"></a>.NET
 
-Ekosystem platformy .NET ma wielu modułów wykonawczych, więc istnieje wiele bibliotek platformy .NET dla usługi Relay. Biblioteki .NET Standard mogą być uruchamiane przy użyciu platformy .NET Core lub .NET Framework, natomiast biblioteka .NET Framework można uruchomić tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat platformy .NET, zobacz [framework w wersji](/dotnet/articles/standard/frameworks#framework-versions).
+Ekosystem platformy .NET ma wielu modułów wykonawczych, więc istnieje wiele bibliotek platformy .NET dla usługi Relay. Biblioteki .NET Standard mogą być uruchamiane przy użyciu platformy .NET Core lub .NET Framework, natomiast biblioteka .NET Framework można uruchomić tylko w środowisku .NET Framework. Aby uzyskać więcej informacji na temat platformy .NET, zobacz [framework w wersji](/dotnet/articles/standard/frameworks).
 
 Biblioteka programu .NET Framework tylko obsługuje model programowania usług WCF i zależy od własności protokołu binarne oparte na WCF `net.tcp` transportu. Ten protokół i biblioteka jest zachowywana na potrzeby zapewnienia zgodności z istniejącymi aplikacjami.
 

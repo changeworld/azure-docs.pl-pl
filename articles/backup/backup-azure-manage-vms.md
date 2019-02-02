@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: b51cf5611bf00c133378a7d90d1693e50b27f7b0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491583"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564140"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Zarządzanie kopiami zapasowymi maszyny wirtualnej platformy Azure
 
@@ -137,10 +137,12 @@ Aby wyzwolić kopii zapasowej na żądanie maszyny wirtualnej:
 ## <a name="stop-protecting-virtual-machines"></a>Zatrzymaj ochronę maszyn wirtualnych
 Jeśli zdecydujesz się na zatrzymanie ochrony maszyny wirtualnej, zostanie wyświetlony monit, jeśli chcesz zachować punkty odzyskiwania. Istnieją dwa sposoby na zatrzymanie ochrony maszyn wirtualnych:
 
-* zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowej i Usuń wszystkie punkty odzyskiwania, lub
-* zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowej, ale pozostawienie punktów odzyskiwania
+* Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowych i usunięcie wszystkich punktów odzyskiwania lub
+* Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowych, ale pozostawienie punktów odzyskiwania
 
 Istnieje koszt związany z pozostawienia punktów odzyskiwania w magazynie. Jednak zaletą pozostawienia punktów odzyskiwania jest później, można przywrócić maszynę wirtualną w razie potrzeby. Aby uzyskać informacje o koszcie pozostawienia punktów odzyskiwania, zobacz [cennik](https://azure.microsoft.com/pricing/details/backup/). Jeśli zdecydujesz się usunąć wszystkie punkty odzyskiwania, nie można przywrócić maszyny wirtualnej.
+
+Zawsze, gdy zatrzymasz tworzenie kopii zapasowych na przechowywanie danych, wygaśnie zgodnie z zasadami przechowywania punktów odzyskiwania, ale kopia zapasowa Azure zawsze przechowuje jeden ostatni punkt odzyskiwania do momentu jawnie usuniesz dane kopii zapasowej. Podobnie po usunięciu źródła danych bez przeprowadzenia Zatrzymaj tworzenie kopii zapasowej, nowych kopii zapasowych będzie kończyć się niepowodzeniem i wygaśnie stare punkty odzyskiwania zgodnie z zasadami przechowywania, ale jeden z ostatniego punktu odzyskiwania zawsze będą przechowywane do momentu wykonania Zatrzymaj tworzenie kopii zapasowej za pomocą usunięcie danych.
 
 Aby zatrzymać ochronę dla maszyny wirtualnej:
 

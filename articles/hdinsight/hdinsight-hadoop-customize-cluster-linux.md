@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 20894a74bf0cc3911272385721da74871df95ade
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ea83d061f7160db04c847be66e79da60da78634d
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913235"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662911"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux przy użyciu akcji skryptu
 
@@ -224,7 +224,7 @@ Uzyskaj więcej informacji na temat sposobu wdrażania szablonu:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Za pomocą akcji skryptu, podczas tworzenia klastra za pomocą programu Azure PowerShell
 
-W tej sekcji użyjesz [AzureRmHDInsightScriptAction Dodaj](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) polecenia cmdlet, wywoływanie skryptów, aby dostosować klastra. Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+W tej sekcji użyjesz [AzureRmHDInsightScriptAction Dodaj](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction) polecenia cmdlet, wywoływanie skryptów, aby dostosować klastra. Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Poniższy skrypt pokazuje, jak zastosować akcji skryptu, podczas tworzenia klastra przy użyciu programu PowerShell:
 
@@ -276,7 +276,7 @@ Przejdź do [witryny Azure portal](https://portal.azure.com):
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Dotyczą akcji skryptu działającego klastra za pomocą programu Azure PowerShell
 
-Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Przed rozpoczęciem upewnij się, instalowanie i konfigurowanie programu Azure PowerShell. Aby uzyskać informacji na temat konfigurowania stacji roboczej do uruchamiania poleceń cmdlet programu HDInsight PowerShell, zobacz [Omówienie programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
 
 Poniższy przykład przedstawia sposób stosowania akcji skryptu do działającego klastra:
 

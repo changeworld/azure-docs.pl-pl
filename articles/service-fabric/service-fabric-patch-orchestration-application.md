@@ -3,7 +3,7 @@ title: Aplikacja aranżacji poprawki w usłudze Azure Service Fabric | Dokumenta
 description: Aplikacja do Automatyzowanie stosowania poprawek systemu operacyjnego w klastrze usługi Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: novino
+author: khandelwalbrijeshiitr
 manager: timlt
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/22/2018
-ms.author: nachandr
-ms.openlocfilehash: 43133a1666dc3551e0f935ceb2af4cf1297d44a7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 2/01/2019
+ms.author: brkhande
+ms.openlocfilehash: 646a64435ba02877d2588b8debbb3920a32a5cf1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155310"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563086"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -413,3 +413,6 @@ Administrator musi interweniować i ustalić, dlaczego aplikacji lub klastra sta
 - Naprawianie regresji, w którym POA 1.3.0 nie będzie działać w systemie Windows Server 2012 R2 lub niższą z powodu błędu podczas wyłączania automatycznej aktualizacji. 
 - Naprawianie błędów gdzie InstallWindowsOSOnlyUpdates konfiguracji zawsze jest wybrany jako wartość True.
 - Zmiana wartości domyślnej InstallWindowsOSOnlyUpdates na wartość False.
+
+### <a name="version-132"></a>W wersji 1.3.2
+- Naprawia problem, który dokonane poprawianie lifecyle w węźle, w przypadku, gdy istnieją węzły z nazwą, która jest podzbiorem nazwę bieżącego węzła. Dla tych węzłów, jego możliwe, stosowanie poprawek brakuje lub Trwa oczekiwanie na ponowne. 

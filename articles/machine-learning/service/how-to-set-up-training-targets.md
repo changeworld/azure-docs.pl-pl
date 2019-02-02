@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: f7b71b2bae540f4ef6b1e9c637c601d6f7b303ae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 75caad2c183ba2d3c5442a3620705c6af8070755
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250711"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55659596"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -159,7 +159,7 @@ Można użyć środowiska conda tworzonym przez system, już istniejące środow
 
 Użyj usługi Azure Data Science Virtual Machine (dsvm dystrybucji) jako maszyny Wirtualnej platformy Azure wybranym dla tego scenariusza. Ta maszyna wirtualna jest do nauki o danych wstępnie skonfigurowanych i Środowisko deweloperskie sztucznej Inteligencji na platformie Azure. Maszyna wirtualna oferuje zestaw wyselekcjonowanych narzędzi i platform, dla pełnego cyklu życia usługi machine learning rozwoju. Aby uzyskać więcej informacji na temat maszyny DSVM za pomocą usługi Azure Machine Learning, zobacz [skonfigurować środowisko programowania](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
-1. **Utwórz**: Przed użyciem w celu nauczenia modelu, należy utworzyć maszyny wirtualnej DSVM. Aby utworzyć ten zasób, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
+1. **Utwórz**: Przed użyciem w celu nauczenia modelu, należy utworzyć maszyny wirtualnej DSVM. Aby utworzyć ten zasób, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro).
 
     > [!WARNING]
     > Usługa Azure Machine Learning obsługuje tylko maszyny wirtualne z systemami Ubuntu. Podczas tworzenia maszyny Wirtualnej lub wybierz istniejącą maszynę Wirtualną, należy wybrać maszynę Wirtualną, która korzysta z systemem Ubuntu.
@@ -384,5 +384,5 @@ Zobacz te notesy przykłady szkolenie przy użyciu różnych celów obliczeń:
 
 * [Samouczek: Uczenie modelu](tutorial-train-models-with-aml.md) używa zarządzanych obliczeniowego elementu docelowego w celu nauczenia modelu.
 * Dowiedz się, gdy masz trenowanego modelu, [jak i gdzie można wdrażać modele](how-to-deploy-and-where.md).
-* Widok [klasy RunConfiguration](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) odwołanie do zestawu SDK.
+* Widok [klasy RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) odwołanie do zestawu SDK.
 * [Usługa Azure Machine Learning za pomocą usługi Azure Virtual Networks](how-to-enable-virtual-network.md)

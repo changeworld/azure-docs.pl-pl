@@ -11,13 +11,13 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 4b2c9f17bc9c6e9bbc280116d074bd0f1e3d3e38
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: 7d4748ced196abdb4f3f0bcb70ad6fe254b24bf7
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606048"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657592"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Poznaj analizy SaaS przy użyciu usługi Azure SQL Database, SQL Data Warehouse, Data Factory i Power BI
 
@@ -120,7 +120,7 @@ W Eksploratorze obiektów:
 1. Kliknij kontener **configfile**
 1. Upewnij się, że **configfile** zawiera plik JSON o nazwie **TableConfig.json**. Ten plik zawiera nazw tabel źródłowych i docelowych, nazwy kolumn i nazwę kolumny śledzenia.
 
-#### <a name="azure-data-factory-adf"></a>Usługi Azure Data Factory (ADF)
+#### <a name="azure-data-factory-adf"></a>Azure Data Factory (ADF)
 W [witryny Azure Portal](https://ms.portal.azure.com) w grupie zasobów, sprawdź, czy fabryki danych Azure o nazwie _dbtodwload -\<użytkownika\>_  został dodany. 
 
  ![adf_portal](media/saas-tenancy-tenant-analytics/adf-data-factory-portal.png)
@@ -197,7 +197,7 @@ Aby połączyć usługę Power BI i zaimportować widoków, która została utwo
 
 5. Wybierz **bazy danych** w okienku po lewej stronie, a następnie wprowadź nazwę użytkownika = *developer*, a następnie wprowadź hasło = *P@ssword1*. Kliknij przycisk **Połącz**.  
 
-    ![bazy danych sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
+    ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
 6. W **Nawigator** okienku w obszarze analitycznej bazy danych, wybierz tabele schematu gwiazdy: **fact_Tickets**, **dim_Events**, **dim_Venues**, **dim_Customers** i **dim_Dates**. Następnie wybierz pozycję **obciążenia**. 
 

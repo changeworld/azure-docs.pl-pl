@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f5b128306389a87c432b869b4756a6d232dc903c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249272"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566044"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Zautomatyzowane rozwiązanie odzyskiwania po awarii przy użyciu usługi Azure Site Recovery dla udziałów plików w serwisie StorSimple
 ## <a name="overview"></a>Przegląd
@@ -167,17 +167,17 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
    
 1. Na koncie usługi automation kliknij **zmienne** &gt; **Dodaj zmienną** i dodaj następujące zmienne. Można zaszyfrować te zasoby. Te zmienne są określonego planu odzyskiwania. Plan odzyskiwania, który zostanie utworzony w następnym kroku, nazwa będzie plan testu, a następnie zmiennych powinny być StorSimRegKey plan testu, AzureSubscriptionName plan testu i tak dalej.
 
-   - **BaseUrl**: adres url Menedżera zasobów w chmurze platformy Azure. Pobieranie przy użyciu **Get-AzureRmEnvironment | Nazwa Select-Object, ResourceManagerUrl** polecenia cmdlet.
-   - *RecoveryPlanName* **- ResourceGroupName**: grupy Resource Manager, która ma zasobu usługi StorSimple.
-   - *RecoveryPlanName* **- ManagerName**: StorSimple zasobu urządzenia StorSimple.
-   - *RecoveryPlanName* **- DeviceName**: urządzenia StorSimple, który ma być przełączone w tryb failover.
-   - *RecoveryPlanName* **- DeviceIpAddress**: adres IP urządzenia (ten znajduje się w **urządzeń** kartę sekcji Menedżer urządzeń StorSimple &gt; **ustawienia** &gt; **Sieci** &gt; **ustawienia DNS** grupy).
-   - *RecoveryPlanName* **- VolumeContainers**: ciąg rozdzielony przecinkami, kontenerów woluminów na urządzeniu, które muszą być przełączane ponad; na przykład: volcon1 volcon2, volcon3.
-   - *RecoveryPlanName* **- TargetDeviceName**: urządzenie StorSimple w chmurze na którym kontenery znajdują się w tryb failover.
-   - *RecoveryPlanName* **- TargetDeviceIpAddress**: adres IP urządzenia docelowego (ten znajduje się w **maszyny wirtualnej** sekcji &gt; **ustawienia** Grupa &gt; **sieć** karty).
-   - *RecoveryPlanName* **- StorageAccountName**: Nazwa konta magazynu, w którym przechowywane będą skryptu (który ma do uruchamiania na nieudane przez maszynę Wirtualną). Może to być konto magazynu, które ma miejsce do przechowywania skryptu tymczasowo.
-   - *RecoveryPlanName* **- StorageAccountKey**: klucz dostępu dla powyższego konta magazynu.
-   - *RecoveryPlanName* **- VMGUIDS**: podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
+   - **BaseUrl**: Adres url usługi Resource Manager dla chmury platformy Azure. Pobieranie przy użyciu **Get-AzureRmEnvironment | Nazwa Select-Object, ResourceManagerUrl** polecenia cmdlet.
+   - *RecoveryPlanName***-ResourceGroupName**: Grupa usługi Resource Manager, zawierającej zasób usługi StorSimple.
+   - * RecoveryPlanName ***- ManagerName**: Zasób usługi StorSimple, który ma urządzenia StorSimple.
+   - *RecoveryPlanName***-DeviceName**: Urządzenie StorSimple, który ma być przełączone w tryb failover.
+   - *RecoveryPlanName***-DeviceIpAddress**: Adres IP urządzenia (ten znajduje się w **urządzeń** kartę sekcji Menedżer urządzeń StorSimple &gt; **ustawienia** &gt; **sieci** &gt; **Ustawienia DNS** grupy).
+   - *RecoveryPlanName***-VolumeContainers**: Ciąg rozdzielony przecinkami, kontenerów woluminów na urządzeniu, które muszą zostać przełączone w tryb failover; na przykład: volcon1 volcon2, volcon3.
+   - *RecoveryPlanName***-TargetDeviceName**: Urządzenie StorSimple w chmurze na którym kontenery znajdują się w tryb failover.
+   - *RecoveryPlanName***-TargetDeviceIpAddress**: Adres IP urządzenia docelowego (ten znajduje się w **maszyny wirtualnej** sekcji &gt; **ustawienia** grupy &gt; **sieć** karty).
+   - *RecoveryPlanName***-StorageAccountName**: Nazwa konta magazynu, w którym przechowywane będą skryptu (który ma do uruchamiania na nieudane przez maszynę Wirtualną). Może to być konto magazynu, które ma miejsce do przechowywania skryptu tymczasowo.
+   - *RecoveryPlanName***-StorageAccountKey**: Klucz dostępu dla powyższego konta magazynu.
+   - * RecoveryPlanName ***- VMGUIDS**: Podczas ochrony maszyn wirtualnych, usługi Azure Site Recovery przypisuje każda maszyna wirtualna Unikatowy identyfikator, który zawiera szczegółowe informacje o trybie tryb failover maszyny Wirtualnej. Aby uzyskać VMGUID, wybierz **usługi Recovery Services** kartę, a następnie kliknij przycisk **chronionego elementu** &gt; **grup ochrony** &gt;  **Maszyny** &gt; **właściwości**. Jeśli masz wiele maszyn wirtualnych, Dodaj identyfikator GUID w faktycznej jako ciąg rozdzielonych przecinkami.
 
     Na przykład, jeśli nazwa planu odzyskiwania jest fileServerpredayRP wówczas **zmienne**, **połączeń** i **certyfikaty** karta powinna wyglądać następująco, po dodaniu wszystkie zasoby.
 
@@ -208,7 +208,7 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
       
    1. Utwórz moduł usługi Azure Automation Runbook do zarządzania urządzeniami StorSimple 8000 Series. Użyj poniższych poleceń, aby utworzyć plik zip modułu usługi Automation.
          
-      ```
+      ```powershell
             # set path variables
             $downloadDir = "C:\scripts\StorSimpleSDKTools"
             $moduleDir = "$downloadDir\AutomationModule\Microsoft.Azure.Management.StorSimple8000Series"
@@ -250,23 +250,23 @@ W usłudze ASR w celu zautomatyzowania procesu pracy awaryjnej udziałów plikó
    
    - Otwiera Wstaw blok akcję, wprowadź nazwę, wybierz **strona podstawowa** opcji podczas uruchamiania opcji, wybierz konto usługi Automation (w którym dodano elementy runbook), a następnie wybierz **trybu Failover — StorSimple — — kontenery woluminów**  elementu runbook.
    
-   - Kliknij prawym przyciskiem myszy **Grupa 1: Start** i kliknij przycisk **Dodaj chronione elementy** opcji, a następnie wybierz maszyny wirtualne, które mają być chronione w planie odzyskiwania i kliknij **Ok** przycisku. Opcjonalnie, jeśli jest on już wybrane maszyny wirtualne.
+   - Kliknij prawym przyciskiem myszy **Grupa 1: Rozpocznij** i kliknij przycisk **Dodaj chronione elementy** opcji, a następnie wybierz maszyny wirtualne, które mają być chronione w planie odzyskiwania i kliknij **Ok** przycisku. Opcjonalnie, jeśli jest on już wybrane maszyny wirtualne.
    
-   - Kliknij prawym przyciskiem myszy **Grupa 1: Start** i kliknij przycisk **wpis akcji** opcji, a następnie dodaj następujące skrypty:  
+   - Kliknij prawym przyciskiem myszy **Grupa 1: Rozpocznij** i kliknij przycisk **wpis akcji** opcji, a następnie dodaj następujące skrypty:  
       
       - Start--urządzenie wirtualne StorSimple — elementu runbook  
       - Niepowodzenie elementu runbook przez — StorSimple — — kontenery woluminów  
       - Element runbook instalacji woluminów po failover  
       - Odinstaluj — — rozszerzenia niestandardowego skryptu — elementu runbook  
         
-   - Dodawanie akcji ręcznej po powyżej 4 skrypty w tym samym **Grupa 1: kroki po operacji** sekcji. Ta akcja jest punkt, w którym możesz sprawdzić, czy wszystko działa poprawnie. Ta akcja musi zostać dodany tylko jako część testu trybu failover (dlatego tylko wybrane **testowy tryb Failover** wyboru).
+   - Dodawanie akcji ręcznej po powyżej 4 skrypty w tym samym **Grupa 1: Kroki po operacji** sekcji. Ta akcja jest punkt, w którym możesz sprawdzić, czy wszystko działa poprawnie. Ta akcja musi zostać dodany tylko jako część testu trybu failover (dlatego tylko wybrane **testowy tryb Failover** wyboru).
     
    - Po wykonaniu akcji ręcznej, Dodaj **oczyszczania** skryptu, używając tej samej procedury, który był używany przez inne elementy runbook. **Zapisz** planu odzyskiwania.
     
    > [!NOTE]
    > Podczas uruchamiania testu trybu failover, należy sprawdzić wszystko na etapie akcji ręcznej, ponieważ woluminów StorSimple, które ma zostać sklonowany na urządzeniu docelowym zostaną usunięte w ramach procesu czyszczenia po wykonaniu akcji ręcznej.
        
-      ![Recoery plan](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
+      ![Plan odzyskiwania](./media/storsimple-disaster-recovery-using-azure-site-recovery/image7.png)
 
 ## <a name="perform-a-test-failover"></a>Wykonaj test trybu failover
 Zapoznaj się [rozwiązanie odzyskiwania po awarii Active Directory](../site-recovery/site-recovery-active-directory.md) Przewodnik uzupełniający po dla określonego zagadnienia dotyczące usługi Active Directory podczas testowania trybu failover. Instalator lokalnej nie zakłócony na wszystkich, po wystąpieniu test trybu failover. Woluminy StorSimple, które zostały dołączone do lokalnej maszyny Wirtualnej są klonowane do urządzenia StorSimple w chmurze na platformie Azure. Maszyny Wirtualnej do celów testowych zostaną podwyższone na platformie Azure i sklonowany woluminy są dołączone do maszyny Wirtualnej.
@@ -340,19 +340,19 @@ Planowanie pojemności składa się z co najmniej dwie ważne procesy:
    - Jeśli planowane lub nieplanowane trybu failover nie powiedzie się i maszyny wirtualne są tworzone na platformie Azure, następnie nie usuwaj maszyny wirtualne. Zamiast tego podczas powrotu po awarii. Jeśli usuniesz maszyny wirtualne następnie lokalnych maszyn wirtualnych nie można włączyć ponownie.
    - Po przejściu w tryb failover Jeśli nie jest możliwe zobaczyć woluminy, przejdź do maszyn wirtualnych, otwórz przystawkę Zarządzanie dyskami, ponownie przeskanować dyski, a następnie przełącz je online.
    - W niektórych przypadkach litery dysku w lokacji odzyskiwania po awarii może być różni się od litery w środowisku lokalnym. W takiej sytuacji należy ręcznie rozwiązać ten problem, po zakończeniu pracy w trybie failover.
-   - Limit czasu zadania trybu failover: skrypt StorSimple przekroczy limit czasu, jeśli tryb failover kontenery woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
-   - Limit czasu zadania tworzenia kopii zapasowej: StorSimple limit czasu w przypadku wykonywania kopii zapasowych woluminów jest bardziej czasochłonne niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
+   - Limit czasu zadania trybu failover: Skrypt StorSimple przekroczy limit czasu, jeśli tryb failover kontenery woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
+   - Limit czasu zadania tworzenia kopii zapasowej: Limit czasu skryptu StorSimple, jeśli tworzenie kopii zapasowych woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
    
    > [!IMPORTANT]
    > Ręcznie uruchomić tworzenie kopii zapasowej w witrynie Azure portal, a następnie ponownie uruchom planu odzyskiwania.
    
-   - Klonowanie limit czasu zadania: Jeśli Klonowanie woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut) limitu czasu skryptu StorSimple.
-   - Błąd synchronizacji czasu: StorSimple skrypty występuje informujący o tym, że kopie zapasowe zakończyły się niepowodzeniem, mimo że kopii zapasowej zakończy się w portalu. Możliwą przyczyną tego może być, że urządzenie StorSimple czas może być zsynchronizowany z aktualną godziną w strefie czasowej.
+   - Sklonuj limit czasu zadania: Limit czasu skryptu StorSimple, jeśli Klonowanie woluminów zajmuje więcej czasu niż limit usługi Azure Site Recovery dla skryptu (obecnie 120 minut).
+   - Błąd synchronizacji: StorSimple skrypty występuje informujący o tym, że kopie zapasowe zakończyły się niepowodzeniem, mimo że kopii zapasowej zakończy się w portalu. Możliwą przyczyną tego może być, że urządzenie StorSimple czas może być zsynchronizowany z aktualną godziną w strefie czasowej.
    
    > [!IMPORTANT]
    > Synchronizacja czasu urządzenia z aktualną godziną w strefie czasowej.
    
-   - Błąd trybu failover urządzenia: StorSimple skrypt może zakończyć się niepowodzeniem w przypadku urządzenia w tryb failover, gdy działa w planie odzyskiwania.
+   - Błąd trybu failover urządzenia: Skrypt StorSimple może zakończyć się niepowodzeniem, jeśli istnieje urządzenie w tryb failover, gdy działa w planie odzyskiwania.
    
    > [!IMPORTANT]
    > Po zakończeniu pracy w trybie failover urządzenia, należy ponownie uruchomić planu odzyskiwania.

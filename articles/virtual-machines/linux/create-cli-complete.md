@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: ec520e7d06f6c5a560af56e6616eeed8481520fe
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 75853d0fa35d1cb5fe593ad92a88d054d2ed77f6
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180368"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662299"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Utwórz pełną maszyny wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure
 Aby szybko utworzyć maszynę wirtualną (VM) na platformie Azure, można użyć jednego polecenia wiersza polecenia platformy Azure, która używa domyślnych wartości, aby utworzyć wszystkie wymagane zasoby pomocnicze. Zasoby, takie jak sieć wirtualną, publiczny adres IP i reguły sieciowej grupy zabezpieczeń są tworzone automatycznie. Aby uzyskać większą kontrolę środowiska w środowisku produkcyjnym należy użyć, możesz utworzyć te zasoby, które wcześniej i następnie dodać maszyny wirtualne do nich. Ten artykuł przeprowadzi Cię przez tworzenie maszyny Wirtualnej, a każdy z pomocnicze zasoby pojedynczo.
@@ -51,7 +51,7 @@ Domyślnie dane wyjściowe poleceń interfejsu wiersza polecenia platformy Azure
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
-Dalej utworzonej sieci wirtualnej na platformie Azure i podsieć, w którym można utworzyć maszyny wirtualne. Użyj [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create) Aby utworzyć sieć wirtualną o nazwie *myVnet* z *192.168.0.0/16* prefiksu adresu. Możesz również dodać podsieć o nazwie *mySubnet* z prefiksem adresu *192.168.1.0/24*:
+Dalej utworzonej sieci wirtualnej na platformie Azure i podsieć, w którym można utworzyć maszyny wirtualne. Użyj [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet) Aby utworzyć sieć wirtualną o nazwie *myVnet* z *192.168.0.0/16* prefiksu adresu. Możesz również dodać podsieć o nazwie *mySubnet* z prefiksem adresu *192.168.1.0/24*:
 
 ```azurecli
 az network vnet create \

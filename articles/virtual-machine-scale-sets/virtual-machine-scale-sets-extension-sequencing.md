@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: aa6ba07168e86b2163324c62f8bb32ca330551f3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55501382"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564004"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Ustawia sekwencji aprowizacja rozszerzenia w skali maszyny wirtualnej
 Rozszerzenia maszyny wirtualnej platformy Azure zapewniają możliwości, takie jak konfiguracji po wdrożeniu i zarządzania, monitorowania, zabezpieczeń i więcej. Wdrożenia produkcyjne zazwyczaj korzystają z kombinacją wielu rozszerzeń skonfigurowane dla wystąpień maszyn wirtualnych do osiągnięcia zakładanych wyników.
@@ -29,7 +29,7 @@ Podczas korzystania z wielu rozszerzeń w maszynie wirtualnej jest istotne dla z
 
 Ten artykuł szczegółowo opisuje sposób zakończeniu sekwencjonowania rozszerzeń można skonfigurować dla wystąpień maszyn wirtualnych w zestawach skalowania maszyn wirtualnych.
 
-## <a name="pre-requisites"></a>Wymagania wstępne
+## <a name="prerequisites"></a>Wymagania wstępne
 W tym artykule założono, że znasz:
 -   Maszyna wirtualna platformy Azure [rozszerzenia](../virtual-machines/extensions/overview.md)
 -   [Modyfikowanie](virtual-machine-scale-sets-upgrade-scale-set.md) zestawy skalowania maszyn wirtualnych

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 1f2539ed7ea407e2a1931ab2eb5951e61e4c7b03
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056271"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565222"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Dowiedz się, jak aprowizowanie nowych dzierżaw i rejestrowanie ich w wykazie
 
@@ -155,9 +155,9 @@ Skrypt wdroży partię dodatkowych dzierżaw. Używa ona [szablonu usługi Azure
 
 Inne wzorce aprowizacji nie są uwzględnione w tym samouczku:
 
-**Wstępne aprowizowanie baz danych**: wstępne aprowizowanie wzorzec wykorzystuje fakt, że bazy danych w puli elastycznej nie należy dodawać dodatkowych kosztów. Rozliczanie jest dla puli elastycznej nie baz danych. Bezczynna baza danych korzysta z żadnych zasobów. Przez wstępne aprowizowanie baz danych w puli i przydzielanie ich w razie potrzeby można zmniejszyć czas, aby dodać dzierżaw. Liczbę wstępnie aprowizowanych baz danych można dostosować do własnych potrzeb, aby zachować bufor odpowiedni dla oczekiwanego wskaźnika aprowizacji.
+**Wstępne aprowizowanie baz danych**: Wstępne aprowizowanie wzorzec wykorzystuje fakt, że bazy danych w puli elastycznej nie należy dodawać dodatkowych kosztów. Rozliczanie jest dla puli elastycznej nie baz danych. Bezczynna baza danych korzysta z żadnych zasobów. Przez wstępne aprowizowanie baz danych w puli i przydzielanie ich w razie potrzeby można zmniejszyć czas, aby dodać dzierżaw. Liczbę wstępnie aprowizowanych baz danych można dostosować do własnych potrzeb, aby zachować bufor odpowiedni dla oczekiwanego wskaźnika aprowizacji.
 
-**Automatycznej aprowizacji**: we wzorcu automatycznej aprowizacji usługi aprowizacji aprowizację serwerów, pul i baz danych automatycznie, zgodnie z potrzebami. Jeśli chcesz, może zawierać wstępne aprowizowanie baz danych w elastycznej puli. Jeśli bazy danych są zamknięta, a następnie usunięty, luki w elastycznych pulach mogą zostać uzupełnione przez usługę aprowizacji. Usługa może być proste lub złożone, takie jak obsługa inicjowania obsługi administracyjnej w wielu regionach i Konfigurowanie replikacji geograficznej dla odzyskiwania po awarii. 
+**Automatycznej aprowizacji**: We wzorcu automatycznej aprowizacji usługi aprowizacji Inicjuje obsługę serwerów, pul i baz danych automatycznie, zgodnie z potrzebami. Jeśli chcesz, może zawierać wstępne aprowizowanie baz danych w elastycznej puli. Jeśli bazy danych są zamknięta, a następnie usunięty, luki w elastycznych pulach mogą zostać uzupełnione przez usługę aprowizacji. Usługa może być proste lub złożone, takie jak obsługa inicjowania obsługi administracyjnej w wielu regionach i Konfigurowanie replikacji geograficznej dla odzyskiwania po awarii. 
 
 Za pomocą wzorca automatycznej aprowizacji aplikacja klienta lub skrypt przesyła żądanie inicjowania obsługi administracyjnej do kolejki do przetworzenia przez usługę aprowizacji. Następnie sonduje usługę w celu wykrycia ukończenia zadania. Jeśli używana jest wstępna aprowizacja, żądania są obsługiwane szybko. Usługa aprowizuje zastępczej bazy danych w tle.
 
@@ -174,7 +174,7 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 
 Spróbuj [samouczek monitorowania wydajności](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * Dodatkowe [samouczków, które są kompilowane w aplikacji SaaS o nazwie Wingtip Tickets bazy danych dla dzierżawcy](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)

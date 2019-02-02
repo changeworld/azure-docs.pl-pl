@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: cf06be778fb1bd251b55adcc503db63a2adf3f8b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197929"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658270"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Protokołu AMQP 1.0 w przewodnik dotyczący protokołu usługi Azure Service Bus i Event Hubs
 
@@ -134,7 +134,7 @@ Wywołanie "otrzymywać" na poziomie interfejsu API przekłada się na *przepły
 
 Blokadę komunikatu jest zwalniany, gdy transfer jest rozliczany jako jeden z terminala stany *zaakceptowane*, *odrzucone*, lub *wydane*. Komunikat zostanie usunięty z usługi Service Bus, gdy stan końcowy jest *zaakceptowane*. Pozostaje w usłudze Service Bus i są dostarczane do następnego odbiorcy, gdy transfer osiągnie innych Państw. Usługa Service Bus automatycznie przenosi wiadomość do kolejki utraconych wiadomości jednostki po osiągnięciu maksymalna liczba prób dostarczenia dozwoloną dla jednostki z powodu odrzucenia powtarzanych lub wersji.
 
-Mimo że interfejsów API usługi Service Bus nie ujawniaj bezpośrednio takiej opcji już dziś, klienta protokołu AMQP niższego poziomu, można użyć danego modelu środki łącze włączyć interakcji "pull-style" wystawiających jedną jednostkę kredytu na każde żądanie odbioru do modelu "push-style" wystawianie dużej liczby połączyć środki na korzystanie z, a następnie komunikaty, gdy tylko staną się dostępne bez dalszej interakcji. Wypychania jest świadczona za pośrednictwem [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) lub [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_PrefetchCount) ustawienia właściwości. Gdy są one różna od zera, klienta protokołu AMQP używa go jako środków łącza.
+Mimo że interfejsów API usługi Service Bus nie ujawniaj bezpośrednio takiej opcji już dziś, klienta protokołu AMQP niższego poziomu, można użyć danego modelu środki łącze włączyć interakcji "pull-style" wystawiających jedną jednostkę kredytu na każde żądanie odbioru do modelu "push-style" wystawianie dużej liczby połączyć środki na korzystanie z, a następnie komunikaty, gdy tylko staną się dostępne bez dalszej interakcji. Wypychania jest świadczona za pośrednictwem [MessagingFactory.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) lub [MessageReceiver.PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) ustawienia właściwości. Gdy są one różna od zera, klienta protokołu AMQP używa go jako środków łącza.
 
 W tym kontekście jest ważne dowiedzieć się, że zegar wygasania blokadę komunikatu w jednostki rozpoczyna się, gdy komunikat jest pobierana z obiektu, nie po umieszczeniu komunikatu w sieci. Zawsze wtedy, gdy klient wskazuje gotowości do odbierania komunikatów przez wysłanie linku środków, dlatego należy się spodziewać się aktywnie ściąganie wiadomości w sieci i gotowe do obsługi tych. W przeciwnym razie blokadę komunikatu mogło wygasnąć przed nawet świadczy wiadomości. Użyj linku środki kontroli przepływu bezpośrednio powinny odzwierciedlać natychmiastowego gotowości do czynienia z dostępnych komunikatów wysłanych do odbiorcy.
 
@@ -214,7 +214,7 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 | --- | --- | --- |
 | trwałe |- |- |
 | priority |- |- |
-| czas wygaśnięcia |Czas wygaśnięcia dla tego komunikatu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) |
+| czas wygaśnięcia |Czas wygaśnięcia dla tego komunikatu |[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | pierwszy przejmująca |- |- |
 | Liczba prób dostarczenia |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
@@ -222,17 +222,17 @@ Wszystkie właściwości, która aplikacja ma definiuje powinno zostać zamapowa
 
 | Nazwa pola | Sposób użycia | Nazwa interfejsu API |
 | --- | --- | --- |
-| message-id |Zdefiniowane przez aplikację, dowolny identyfikator dla tego komunikatu. Używane do wykrywania duplikatów. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
+| message-id |Zdefiniowane przez aplikację, dowolny identyfikator dla tego komunikatu. Używane do wykrywania duplikatów. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Identyfikator użytkownika zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| na |Identyfikator docelowego zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
-| temat |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
-| Odpowiedz do |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
+| na |Identyfikator docelowego zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[Do](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| temat |Identyfikator celu wiadomości zdefiniowanych przez aplikację, nie są interpretowane przez usługę Service Bus. |[Etykieta](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| Odpowiedz do |Wskaźnik ścieżki odpowiedzi zdefiniowany przez aplikację nie są interpretowane przez usługę Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Identyfikator korelacji zdefiniowanych przez aplikację nie są interpretowane przez usługę Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Typ zawartości |Zdefiniowane przez aplikację wskaźnik typu zawartości dla treści nie interpretowane przez usługę Service Bus. |[Typ zawartości](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | content-encoding |Zdefiniowane przez aplikację kodowanie zawartości wskaźnik dla treści nie interpretowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| czas w przypadku wygaśnięcia bezwzględne |Deklaruje, w których bezwzględną błyskawicznych komunikat wygasa. Ignorowane na dane wejściowe (nagłówek stwierdzamy TTL), autorytatywny w danych wyjściowych. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ExpiresAtUtc) |
+| czas w przypadku wygaśnięcia bezwzględne |Deklaruje, w których bezwzględną błyskawicznych komunikat wygasa. Ignorowane na dane wejściowe (nagłówek stwierdzamy TTL), autorytatywny w danych wyjściowych. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Godzina utworzenia |Deklaruje co wiadomość została utworzona. Nie są używane przez usługę Service Bus |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
-| Identyfikator grupy |Zdefiniowane przez aplikację identyfikator powiązany zestaw komunikatów. Używane dla sesji magistrali usług. |[Identyfikator sesji](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) |
+| Identyfikator grupy |Zdefiniowane przez aplikację identyfikator powiązany zestaw komunikatów. Używane dla sesji magistrali usług. |[Identyfikator sesji](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | group-sequence |Licznik identyfikowanie numer sekwencji względne wiadomości wewnątrz sesji. Ignorowane przez usługę Service Bus. |Nie jest dostępny za pośrednictwem interfejsu API usługi Service Bus. |
 | Odpowiedz na grupy identyfikator |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 

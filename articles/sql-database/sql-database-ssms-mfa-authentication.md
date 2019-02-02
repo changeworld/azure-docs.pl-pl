@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 9837316cab503e6ade623e91a41176e6f4bfc84a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/08/2018
+ms.openlocfilehash: 1f26fb101c9940a51ffb4fb7e1b48a51b943599a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867673"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663744"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>Uniwersalne uwierzytelnianie przy użyciu bazy danych SQL Database i SQL Data Warehouse (Obsługa programu SSMS dla usługi MFA)
 Azure SQL Database i Azure SQL Data Warehouse obsługują połączenia z SQL Server Management Studio (SSMS) przy użyciu *Active Directory Universal Authentication*. 
-**Pobieranie najnowszej wersji środowiska SSMS** — na komputerze klienckim, aby pobrać najnowszą wersję programu SSMS, [Pobierz SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). W przypadku wszystkich funkcji w tym artykule Użyj co najmniej lipca 2017, wersja 17.2.  Okno dialogowe połączenia najnowszej wygląda następująco: ![połączenia uniwersalnego 1mfa](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "kończy pole nazwy użytkownika.")  
+**Pobieranie najnowszej wersji środowiska SSMS** — na komputerze klienckim, aby pobrać najnowszą wersję programu SSMS, [Pobierz SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). W przypadku wszystkich funkcji w tym artykule Użyj co najmniej lipca 2017, wersja 17.2.  Okno dialogowe połączenia najnowszej wygląda następująco: ![Połącz uniwersalnego 1mfa](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "kończy pole nazwy użytkownika.")  
 
 ## <a name="the-five-authentication-options"></a>Opcje uwierzytelniania pięć  
 - Uniwersalne uwierzytelnianie usługi Active Directory obsługuje dwie metody nieinterakcyjnych authentication (`Active Directory - Password` uwierzytelniania i `Active Directory - Integrated` uwierzytelniania). Nieinterakcyjne `Active Directory - Password` i `Active Directory - Integrated` metody uwierzytelniania mogą być używane w wielu różnych aplikacji (ADO.NET, JDBC, ODBC, itp.). Te dwie metody nigdy nie powoduje wyskakujących okien dialogowych.
@@ -52,7 +52,7 @@ Użytkownicy usługi Azure AD obsługiwane dla scenariuszy B2B usługi Azure AD 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Kroki konfiguracji opisane w artykule [uwierzytelnianie wieloskładnikowe Konfigurowanie usługi Azure SQL Database, SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).
-- Udziel osobom dostęp do bazy danych: [bazy danych uwierzytelnianie i autoryzacja SQL: udzielanie dostępu](sql-database-manage-logins.md)  
+- Udziel osobom dostęp do bazy danych: [Bazy danych uwierzytelnianie i autoryzacja SQL: Udzielanie dostępu](sql-database-manage-logins.md)  
 - Upewnij się, że inne osoby mogły nawiązywać połączenia przez zaporę: [Skonfiguruj regułę zapory na poziomie serwera usługi Azure SQL Database przy użyciu witryny Azure portal](sql-database-configure-firewall-settings.md)  
 - [Konfigurowanie i zarządzanie uwierzytelnianiem usługi Azure Active Directory przy użyciu usługi SQL Database lub SQL Data Warehouse](sql-database-aad-authentication-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  

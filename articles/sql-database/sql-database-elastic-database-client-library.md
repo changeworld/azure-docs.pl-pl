@@ -11,22 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 15a16201f83cc9e7244eb0be9d4e185d5e1e3922
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/25/2018
+ms.openlocfilehash: 065b2511da568ee2cdc0a989b34905b4010ea32e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165163"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562491"
 ---
 # <a name="building-scalable-cloud-databases"></a>Tworzenie skalowalnych baz danych w chmurze
+
 Skalowanie w poziomie bazy danych można łatwo osiągnąć za pomocą skalowalnej narzędzi i funkcji usługi Azure SQL Database. W szczególności można użyć **Biblioteka kliencka Elastic Database** tworzenie i zarządzanie nimi baz danych skalowanych w poziomie. Ta funkcja umożliwia łatwe tworzenie aplikacji podzielonej na fragmenty, za pomocą setki — lub nawet tysięcy — baz danych Azure SQL. [Zadania elastyczne](sql-database-elastic-jobs-powershell.md) następnie może służyć do pomocy ułatwiają zarządzanie tymi bazami danych.
 
 Aby pobrać:
+
 * Wersja języka Java, biblioteki, zobacz [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
 * .NET w wersji biblioteki, zobacz [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 ## <a name="documentation"></a>Dokumentacja
+
 1. [Wprowadzenie do narzędzi elastycznej bazy danych](sql-database-elastic-scale-get-started.md)
 2. [Funkcje elastycznej bazy danych](sql-database-elastic-scale-introduction.md)
 3. [Zarządzanie mapami fragmentów](sql-database-elastic-scale-shard-map-management.md)
@@ -45,12 +48,13 @@ Aby pobrać:
 16. [Często zadawane pytania dotyczące narzędzi elastycznej bazy danych](sql-database-elastic-scale-faq.md)
 
 ## <a name="client-capabilities"></a>Możliwości klienta
+
 Skalowanie aplikacji przy użyciu *fragmentowania* przedstawia wyzwania zarówno projektanta, a także administrator. Biblioteki klienta upraszcza zadania zarządzania, udostępniając narzędzia, które umożliwiają zarówno deweloperom i administratorom zarządzanie skalowanymi bazami danych. W typowym przykładem są wiele baz danych, nazywane "fragmentów," do zarządzania. Klienci wspólnie znajdują się w tej samej bazy danych i ma jedną bazę danych na klienta (schemat jednej dzierżawy). Biblioteka klienta zawiera następujące funkcje:
 
-- **Zarządzanie mapami fragmentów**: utworzeniu specjalne bazy danych o nazwie "Menedżera mapowań fragmentów". Zarządzanie mapami fragmentów jest możliwość dla aplikacji do zarządzania metadane dotyczące jego fragmentów. Deweloperzy mogą używać tej funkcji do rejestrowania bazy danych jako fragmentów, opisz mapowania fragmentowania poszczególnych kluczy lub kluczy zakresach tych baz danych i Obsługa metadanych jako numer i kompozycji baz danych rozwoju w celu odzwierciedlenia zmian pojemności. Bez Biblioteka klienta elastycznej bazy danych należy poświęcić dużo czasu na pisanie kodu zarządzania przy implementowaniu fragmentowania. Aby uzyskać więcej informacji, zobacz [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md).
+- **Zarządzanie mapami fragmentów**: Specjalne bazy danych o nazwie "Menedżera mapowań fragmentów" jest tworzony. Zarządzanie mapami fragmentów jest możliwość dla aplikacji do zarządzania metadane dotyczące jego fragmentów. Deweloperzy mogą używać tej funkcji do rejestrowania bazy danych jako fragmentów, opisz mapowania fragmentowania poszczególnych kluczy lub kluczy zakresach tych baz danych i Obsługa metadanych jako numer i kompozycji baz danych rozwoju w celu odzwierciedlenia zmian pojemności. Bez Biblioteka klienta elastycznej bazy danych należy poświęcić dużo czasu na pisanie kodu zarządzania przy implementowaniu fragmentowania. Aby uzyskać więcej informacji, zobacz [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md).
 
-- **Routing zależny od danych**: Imagine żądania do aplikacji. Oparte na wartości klucza fragmentowania żądania, aplikację Aby określić prawidłową bazę danych na podstawie wartości klucza. Otwiera połączenie z bazą danych, aby przetworzyć żądanie. Routing zależny od danych zapewnia możliwość otwierania połączenia za pomocą pojedynczego wywołania łatwy do mapowania fragmentów w aplikacji. Routing zależny od danych była inna część kodu infrastruktury, który jest teraz objęta funkcji w bibliotece klienckiej elastycznej bazy danych. Aby uzyskać więcej informacji, zobacz [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md).
-- **Zapytania z wieloma fragmentami (MSQ)**: zapytania z wieloma fragmentami działa, gdy żądanie obejmuje kilka (lub wszystkie) fragmentów. Zapytania wielu fragmentów wykonuje ten sam kod języka T-SQL na wszystkich fragmentów lub zestaw fragmentów. Wyniki z uczestniczących w programie fragmentów są scalane w ogólny wynik, można ustawić przy użyciu semantyki UNION ALL. Funkcji dostępnych za pośrednictwem biblioteki klienta obsługuje wiele zadań, takich jak: Zarządzanie połączeniami, zarządzanie wątkami, obsługi błędów i przetwarzanie wyników pośrednich. MSQ mogą wysyłać zapytania do setek fragmentów. Aby uzyskać więcej informacji, zobacz [zapytań z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md).
+- **Routing zależny od danych**: Wyobraź sobie żądania do aplikacji. Oparte na wartości klucza fragmentowania żądania, aplikację Aby określić prawidłową bazę danych na podstawie wartości klucza. Otwiera połączenie z bazą danych, aby przetworzyć żądanie. Routing zależny od danych zapewnia możliwość otwierania połączenia za pomocą pojedynczego wywołania łatwy do mapowania fragmentów w aplikacji. Routing zależny od danych była inna część kodu infrastruktury, który jest teraz objęta funkcji w bibliotece klienckiej elastycznej bazy danych. Aby uzyskać więcej informacji, zobacz [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md).
+- **Zapytania z wieloma fragmentami (MSQ)**: Wykonywanie zapytań w wielu fragmentów działa, gdy żądanie obejmuje kilka (lub wszystkie) fragmentów. Zapytania wielu fragmentów wykonuje ten sam kod języka T-SQL na wszystkich fragmentów lub zestaw fragmentów. Wyniki z uczestniczących w programie fragmentów są scalane w ogólny wynik, można ustawić przy użyciu semantyki UNION ALL. Funkcji dostępnych za pośrednictwem biblioteki klienta obsługuje wiele zadań, takich jak: Zarządzanie połączeniami, zarządzanie wątkami, obsługi błędów i przetwarzanie wyników pośrednich. MSQ mogą wysyłać zapytania do setek fragmentów. Aby uzyskać więcej informacji, zobacz [zapytań z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md).
 
 Ogólnie rzecz biorąc klienci korzystający z narzędzi elastycznych baz danych mogą oczekiwać uzyskanie pełnej funkcjonalności języka T-SQL podczas przesyłania operacje lokalnego fragmentu w przeciwieństwie do operacji obejmujących wiele fragmentów, które mają własne semantyki.
 

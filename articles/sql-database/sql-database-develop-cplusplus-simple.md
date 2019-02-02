@@ -11,18 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: f1aa037afd0fa1cbe37add24a354e4dc62c13b9a
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.date: 12/12/2018
+ms.openlocfilehash: 6ebef74cee6f919fe6b8cf666db06e0ab22cec73
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310134"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566928"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Nawiązać połączenie z bazą danych SQL przy użyciu języka C i C++
+
 Ten wpis jest przeznaczony dla deweloperów C i C++ podejmuje próbę nawiązania połączenia bazy danych SQL Azure. Jego dzieli się na sekcje, możesz przejść do sekcji, która najlepiej przechwytuje zainteresowanie.
 
 ## <a name="prerequisites-for-the-cc-tutorial"></a>Wymagania wstępne dla samouczka języka C/C++
+
 Upewnij się, że masz:
 
 * Aktywne konto platformy Azure. Jeśli go nie masz, możesz zarejestrować się w celu uzyskania [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -37,10 +39,10 @@ Platforma Azure ma obecnie dwie opcje do obsługi obciążeń programu SQL serve
 ## <a id="ODBC"></a>Technologie dostępu do danych: ODBC i OLE DB
 Łączenie z usługą Azure SQL DB nie różni się i aktualnie nie istnieją dwa sposoby nawiązywania połączenia z bazami danych: ODBC (Open Database connectivity) i OLE DB (łączenie i osadzanie obiektów bazy danych). W ostatnich latach Microsoft została powiązana z [ODBC uzyskać dostęp do natywnych danych relacyjnych](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC jest stosunkowo proste, a także znacznie szybsze niż OLE DB. W tym miejscu tylko ostrzeżenie jest ODBC starego interfejsu API w stylu języka C.
 
-## <a id="Create"></a>Krok 1:  Tworzenie usługi Azure SQL Database
+## <a id="Create"></a>Krok 1.  Tworzenie usługi Azure SQL Database
 Zobacz [stronę wprowadzenia](sql-database-get-started-portal.md) informacje na temat Tworzenie przykładowej bazy danych.  Alternatywnie, możesz skorzystać z tego [krótki film dwie minuty](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) do utworzenia usługi Azure SQL database przy użyciu witryny Azure portal.
 
-## <a id="ConnectionString"></a>Krok 2:  Pobieranie parametrów połączenia
+## <a id="ConnectionString"></a>Krok 2.  Pobieranie parametrów połączenia
 Po zainicjowaniu obsługi usługi Azure SQL database należy wykonać następujące kroki, aby określić informacje o połączeniu i Dodaj adres IP klienta, aby uzyskać dostęp przez zaporę.
 
 W [witryny Azure portal](https://portal.azure.com/), przejdź do usługi Azure SQL database ciąg połączenia ODBC za pomocą **Pokaż parametry połączenia bazy danych** wyświetlany jako część sekcji Przegląd bazy danych:
@@ -51,14 +53,14 @@ W [witryny Azure portal](https://portal.azure.com/), przejdź do usługi Azure S
 
 Skopiuj zawartość **ODBC (obejmuje środowisko Node.js) [uwierzytelniania SQL]** ciągu. Aby połączyć się z naszym interpretera wiersza polecenia języka C++ ODBC możemy użyć tego ciągu później. Ten ciąg zawiera szczegółowe informacje, takie jak sterownik, serwera i inne parametry połączenia bazy danych.
 
-## <a id="Firewall"></a>Krok 3:  Dodaj adres IP zapory
+## <a id="Firewall"></a>Krok 3.  Dodaj adres IP zapory
 Przejdź do sekcji zapory dla serwera bazy danych i dodać Twojego [adres IP klienta do zapory, wykonując następujące kroki](sql-database-configure-firewall-settings.md) się upewnić, że firma Microsoft może nawiązać połączenia:
 
 ![AddyourIPWindow](./media/sql-database-develop-cplusplus-simple/ip.png)
 
 W tym momencie skonfigurowano bazy danych SQL Azure i są gotowe połączyć się z kodu C++.
 
-## <a id="Windows"></a>Krok 4: Nawiązywanie połączenia z aplikacji Windows C/C++
+## <a id="Windows"></a>Krok 4. Nawiązywanie połączenia z aplikacji Windows C/C++
 Można łatwo nawiązać połączenie z [bazy danych SQL Azure przy użyciu interfejsu ODBC w Windows, używając w tym przykładzie](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29) opiera się z programem Visual Studio. Przykład implementuje ODBC interpretera wiersza polecenia, którego można połączyć się z naszym bazy danych SQL Azure. W tym przykładzie pobiera bazy danych źródłowy plik o nazwie pliku (DSN) jako argument wiersza polecenia albo parametry połączenia pełne, które firma Microsoft skopiowany wcześniej z witryny Azure portal. Wyświetlenie strony właściwości dla tego projektu, a następnie wklej parametry połączenia jako argument polecenia, jak pokazano poniżej:
 
 ![DSN Propsfile](./media/sql-database-develop-cplusplus-simple/props.png)
@@ -75,7 +77,7 @@ Alternatywnie można utworzyć pliku DSN przy użyciu kreatora, który jest uruc
 
 Gratulacje! Teraz pomyślnie podłączono się do usługi Azure SQL przy użyciu języka C++ i ODBC na Windows. Możesz kontynuować odczytywanie to samo dla platformy Linux, jak również.
 
-## <a id="Linux"></a>Krok 5: Nawiązywanie połączenia z aplikacji w języku Linux C/C++
+## <a id="Linux"></a>Krok 5. Nawiązywanie połączenia z aplikacji w języku Linux C/C++
 W przypadku, gdy jeszcze nie wiesz jeszcze wiadomości, Visual Studio umożliwia teraz tworzenie aplikacji systemu Linux w języku C++, a także. Informacje o tym nowy scenariusz w [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) blogu. Aby utworzyć dla systemu Linux, należy komputer zdalny, w którym jest uruchomiona Twoja dystrybucja systemu Linux. Jeśli nie jest jeszcze dostępny, można ustawić jeden szybko przy użyciu [maszyn wirtualnych platformy Azure z systemem Linux](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 W tym samouczku Daj nam założono, że dystrybucji Ubuntu 16.04 Linux Konfigurowanie. Opisane w tym miejscu dotyczą również Ubuntu 15.10, Red Hat 6 i Red Hat 7.
@@ -112,7 +114,7 @@ Ostatnią czynnością, jaką zrobić przed kompilacji jest dodanie **odbc** jak
 
 Aby uruchomić aplikację, Wywołaj konsolę systemu Linux z **debugowania** menu:
 
-![Konsola systemu Linux](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
+![Linux Console](./media/sql-database-develop-cplusplus-simple/linuxconsole.png)
 
 Połączenie zakończyło się pomyślnie, powinien zostać wyświetlony nazwa bieżącej bazy danych na konsoli systemu Linux:
 
@@ -130,7 +132,7 @@ Możesz znaleźć rozwiązania GetStarted, które zawiera wszystkie przykłady w
 * Przegląd [omówienie tworzenia bazy danych SQL](sql-database-develop-overview.md)
 * Więcej informacji na temat [dokumentacja interfejsu API ODBC](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Wzorce projektowe dla wielodostępnych aplikacji SaaS wykorzystujących usługę Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Poznaj wszystkie [możliwości usługi SQL Database](https://azure.microsoft.com/services/sql-database/)
 

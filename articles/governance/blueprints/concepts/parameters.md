@@ -4,17 +4,17 @@ description: Więcej informacji na temat parametrów statyczne i dynamiczne i ja
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eef85fe92682eb3a6fd1dbc036cf547b163db97
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310321"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567489"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
 
@@ -58,7 +58,7 @@ Wartość parametru określone w definicji planu jest nazywany **parametru staty
 
 1. Kliknij istniejący plan, a następnie kliknij przycisk **edytować planu** lub kliknij przycisk **+ Utwórz plan** i Wypełnij informacje w **podstawy** kartę.
 
-1. Kliknij przycisk **dalej: Artefakty** lub kliknąć **artefaktów** kartę.
+1. Kliknij pozycję **Next: Artefakty** lub kliknąć **artefaktów** kartę.
 
 1. Artefakty dodane do planu, które mają parametr opcje wyświetlania **parametry X z Y wypełnione** w **parametry** kolumny. Kliknij wiersz artefaktu, aby edytować parametry artefaktu.
 
@@ -82,7 +82,7 @@ Podczas tworzenia planu za pośrednictwem interfejsu API REST, jest możliwe utw
 - Identyfikator URI interfejsu API REST
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
 - Treść żądania
@@ -115,7 +115,7 @@ W poniższym przykładzie interfejs API REST tworzy artefaktu przypisania roli n
 - Identyfikator URI interfejsu API REST
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
   ```
 
 - Treść żądania
@@ -140,7 +140,7 @@ Tworzenie **parametry statyczne** na artefakt jest podobny, ale przyjmuje warto�
 - Identyfikator URI interfejsu API REST
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
   ```
 
 - Treść żądania
@@ -188,7 +188,7 @@ Artefakty dla grupy zasobów są definiowane za pomocą "Nazwa szablonu," **nazw
 - Identyfikator URI interfejsu API REST
 
   ```http
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2017-11-11-preview
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
 - Treść żądania

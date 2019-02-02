@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 72f85761db08652f0dff7f36fbcb2ef90654e078
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 73f2e7a37e1e51bf215cbac782b454d909f275dc
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334401"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568536"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Rozwiązywanie problemów z & ograniczenia dotyczące usługi Azure Cloud Shell
 
@@ -29,57 +29,57 @@ Następujące rozwiązania znanych problemów w usłudze Azure Cloud Shell:
 
 ### <a name="early-timeouts-in-firefox"></a>Wczesne przekroczeń limitu czasu w przeglądarce FireFox
 
-- **Szczegóły**: usługi Cloud Shell korzysta z otwartych websocket, przekazać dane wejściowe i wyjściowe do przeglądarki. FireFox ma wstępnie zdefiniowanych zasad, które można zamknąć websocket przedwcześnie powoduje wczesne przekroczeń limitu czasu w usłudze Cloud Shell.
-- **Rozpoznawanie**: Otwórz przeglądarkę FireFox i przejdź do "o: config" w polu adres URL. Wyszukaj "network.websocket.timeout.ping.request" i zmień wartość z zakresu od 0 do 10.
+- **Szczegóły**: Usługa cloud Shell korzysta z otwartych websocket, przekazać dane wejściowe i wyjściowe do przeglądarki. FireFox ma wstępnie zdefiniowanych zasad, które można zamknąć websocket przedwcześnie powoduje wczesne przekroczeń limitu czasu w usłudze Cloud Shell.
+- **Rozwiązanie**: Otwórz przeglądarkę FireFox i przejdź do "o: config" w polu adres URL. Wyszukaj "network.websocket.timeout.ping.request" i zmień wartość z zakresu od 0 do 10.
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Wyłączanie usługi Cloud Shell w sieci zablokowane w środowisku
 
 - **Szczegóły**: Administratorzy mogą chcieć wyłączyć dostęp do usługi Cloud Shell dla swoich użytkowników. Usługa cloud Shell korzysta z uprawnieniami do `ux.console.azure.com` domeny, która może nastąpić odmowa, zatrzymanie dostęp do usługi Cloud Shell punkty wejścia, m.in. portal.azure.com shell.azure.com, Visual Studio rozszerzenie Azure Account Code i witryny docs.microsoft.com.
-- **Rozpoznawanie**: ograniczanie dostępu do `ux.console.azure.com` za pośrednictwem ustawień sieci do danego środowiska. Ikona usługi Cloud Shell będą nadal istnieć w witrynie portal.azure.com, ale nie zostanie pomyślnie połączyć się z usługą.
+- **Rozwiązanie**: Ograniczanie dostępu do `ux.console.azure.com` za pośrednictwem ustawień sieci do danego środowiska. Ikona usługi Cloud Shell będą nadal istnieć w witrynie portal.azure.com, ale nie zostanie pomyślnie połączyć się z usługą.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Okno dialogowe magazynu — błąd: 403 RequestDisallowedByPolicy
 
-- **Szczegóły**: podczas tworzenia konta magazynu w usłudze Cloud Shell jest niepowodzeniem z powodu usługa Azure policy, umieszczone przez administratora. Komunikat o błędzie będzie obejmować: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Rozpoznawanie**: Skontaktuj się z administratorem platformy Azure, aby usunąć lub zaktualizować zasady platformy Azure, odmawianie tworzenia magazynu.
+- **Szczegóły**: Podczas tworzenia konta magazynu w usłudze Cloud Shell jest niepowodzeniem z powodu usługa Azure policy, umieszczone przez administratora. Komunikat o błędzie będzie obejmować: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Rozwiązanie**: Skontaktuj się z administratorem platformy Azure, aby usunąć lub zaktualizować zasad platformy Azure, odmawianie tworzenia magazynu.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Okno dialogowe magazynu — błąd: 400 DisallowedOperation
 
-- **Szczegóły**: korzystając z subskrypcji usługi Azure Active Directory, nie można utworzyć magazynu.
-- **Rozpoznawanie**: Korzystanie z subskrypcji platformy Azure umożliwia tworzenie zasobów magazynu. Subskrypcje usługi Azure AD nie są możliwe do tworzenia zasobów platformy Azure.
+- **Szczegóły**: Korzystając z subskrypcji usługi Azure Active Directory, nie można utworzyć magazynu.
+- **Rozwiązanie**: Użyj subskrypcji platformy Azure umożliwia tworzenie zasobów magazynu. Subskrypcje usługi Azure AD nie są możliwe do tworzenia zasobów platformy Azure.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminal dane wyjściowe — błąd: nie można połączyć z terminalu: nie może zostać ustanowione protokołu websocket. Naciśnij klawisz `Enter` celu ponownego nawiązania połączenia.
-- **Szczegóły**: usługi Cloud Shell wymaga możliwości nawiązania połączenia protokołu websocket w infrastrukturze Cloud Shell.
-- **Rozpoznawanie**: Sprawdź zostały skonfigurowane ustawienia sieciowe umożliwiające wysyłanie żądań protokołu https i żądań protokołu websocket z domenami w *. console.azure.com.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminal dane wyjściowe — błąd: Nie można połączyć z terminalu: nie można ustanowić protokołu websocket. Naciśnij klawisz `Enter` celu ponownego nawiązania połączenia.
+- **Szczegóły**: Usługa cloud Shell wymaga możliwość nawiązania połączenia protokołu websocket w infrastrukturze Cloud Shell.
+- **Rozwiązanie**: Sprawdź zostały skonfigurowane ustawienia sieciowe umożliwiające wysyłanie żądań protokołu https i żądań protokołu websocket z domenami w *. console.azure.com.
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>Ustaw połączenie usługi Cloud Shell umożliwiającą używanie protokołu TLS 1.2
- - **Szczegóły**: Definiowanie wersji protokołu TLS dla połączenia do usługi Cloud Shell, należy ustawić określone ustawienia przeglądarki.
- - **Rozpoznawanie**: Przejdź do ustawień zabezpieczeń przeglądarki, a następnie zaznacz pole wyboru "Użyj TLS 1.2".
+ - **Szczegóły**: Aby określić wersję protokołu TLS dla połączenia do usługi Cloud Shell, należy ustawić określone ustawienia przeglądarki.
+ - **Rozwiązanie**: Przejdź do ustawień zabezpieczeń przeglądarki i zaznacz pole wyboru "Użyj TLS 1.2".
 
 ## <a name="bash-troubleshooting"></a>Rozwiązywanie problemów z programu bash
 
 ### <a name="cannot-run-the-docker-daemon"></a>Nie można uruchomić demona platformy docker
 
-- **Szczegóły**: usługi Cloud Shell korzysta z kontenera hostowania środowiska powłoki, w wyniku uruchamianie demona jest niedozwolone.
-- **Rozpoznawanie**: Korzystanie z [maszyny platformy docker](https://docs.docker.com/machine/overview/), która jest instalowana domyślnie do zarządzania kontenerami platformy docker ze zdalnym hoście platformy Docker.
+- **Szczegóły**: Usługa cloud Shell korzysta z kontenera hostowania środowiska powłoki, w wyniku uruchamianie demona jest niedozwolone.
+- **Rozwiązanie**: Korzystanie z [maszyny platformy docker](https://docs.docker.com/machine/overview/), która jest instalowana domyślnie do zarządzania kontenerami platformy docker ze zdalnym hoście platformy Docker.
 
 ## <a name="powershell-troubleshooting"></a>Rozwiązywanie problemów z programu PowerShell
 
 ### <a name="gui-applications-are-not-supported"></a>Aplikacje graficznego interfejsu użytkownika nie są obsługiwane.
 
 - **Szczegóły**: Jeśli użytkownik uruchamia aplikację graficznego interfejsu użytkownika, monit nie zwraca. Na przykład gdy jeden sklonować prywatne repozytorium GitHub, które ma włączone uwierzytelnianie dwuskładnikowe, ukończenia uwierzytelniania dwuskładnikowego zostanie wyświetlone okno dialogowe.
-- **Rozpoznawanie**: Zamknij i otwórz ponownie powłoki.
+- **Rozwiązanie**: Zamknij i Otwórz powłokę.
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Rozwiązywanie problemów z zdalnego zarządzania maszynami wirtualnymi platformy Azure
 > [!NOTE]
 > Maszyny wirtualne platformy Azure musi mieć publiczny połączonego z adresu IP.
 
-- **Szczegóły**: ze względu na domyślne ustawienia zapory Windows w przypadku usługi WinRM, użytkownik może zostać wyświetlony następujący błąd: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Rozpoznawanie**: Uruchom `Enable-AzureRmVMPSRemoting` włączyć wszystkie aspekty komunikacji zdalnej programu PowerShell na komputerze docelowym.
+- **Szczegóły**: Ze względu na domyślne ustawienia zapory Windows w przypadku usługi WinRM, użytkownik może zostać wyświetlony następujący błąd: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Rozwiązanie**:  Uruchom `Enable-AzureRmVMPSRemoting` włączyć wszystkie aspekty komunikacji zdalnej programu PowerShell na komputerze docelowym.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` nie wpływa na wynik na dysku platformy Azure
 
 - **Szczegóły**: Domyślnie, aby zoptymalizować środowisko użytkownika, wyniki `dir` jest buforowana na dysku platformy Azure.
-- **Rozpoznawanie**: po utworzenia, aktualizacji lub usunięcia zasobu platformy Azure Uruchom `dir -force` niezaktualizowanie na dysku platformy Azure.
+- **Rozwiązanie**: Po utworzenia, aktualizacji lub usunięcia zasobu platformy Azure Uruchom `dir -force` niezaktualizowanie na dysku platformy Azure.
 
 ## <a name="general-limitations"></a>Ogólne ograniczenia
 
@@ -143,7 +143,7 @@ Za pomocą poleceń cmdlet programu PowerShell, użytkownicy nie mogą tworzyć 
 
 ### <a name="commands-that-create-gui-pop-ups-are-not-supported"></a>Polecenia, utworzyć wyskakujące okienka graficznego interfejsu użytkownika, które nie są obsługiwane.
 
-Jeśli użytkownik uruchamia polecenia, które mogą utworzyć okno dialogowe Windows, takich jak `Connect-AzureAD` lub `Connect-AzureRmAccount`, takich jak jedną zobaczy komunikat o błędzie: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Jeśli użytkownik uruchamia polecenia, które mogą utworzyć okno dialogowe Windows, takich jak `Connect-AzureAD`, `Connect-AzureRmAccount`, lub `Connect-AzAccount`, takich jak jedną zobaczy komunikat o błędzie: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>Uzupełnianie po naciśnięciu tabulatora może zgłosić wyjątek PSReadline
 
