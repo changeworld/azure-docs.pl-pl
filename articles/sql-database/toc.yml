@@ -11,7 +11,7 @@ items:
   items:
   - name: Przewodnik Szybki start dotyczący pojedynczej bazy danych
     href: sql-database-quickstart-guide.md
-  - name: Wystąpienie zarządzane — podręcznik Szybki start
+  - name: Przewodnik Szybki start dotyczący wystąpienia zarządzanego
     href: sql-database-managed-instance-quickstart-guide.md
   - name: Przycisk Utwórz
     items:
@@ -21,7 +21,7 @@ items:
       href: sql-database-managed-instance-get-started.md
   - name: Konfigurowanie
     items:
-    - name: Reguły zapory serwera usługi SQL Database
+    - name: Reguły zapory serwera bazy danych
       href: sql-database-get-started-portal-firewall.md
     - name: Połączenie maszyny wirtualnej klienta z wystąpieniem zarządzanym
       href: sql-database-managed-instance-configure-vm.md
@@ -127,12 +127,20 @@ items:
     items:
     - name: Omówienie pojedynczych baz danych
       href: sql-database-single-index.yml
-    - name: Serwery usługi SQL Database
+    - name: Funkcje pojedynczej bazy danych
+      href: sql-database-single-database.md
+    - name: Dokumentacja interfejsu API zarządzania
+      href: sql-database-single-databases-manage.md
+    - name: Różnice w języku T-SQL
+      href: sql-database-transact-sql-information.md
+    - name: Serwery baz danych i zasoby
       items:
       - name: Omówienie serwera bazy danych
         href: sql-database-servers.md
       - name: Limity zasobów serwera bazy danych
         href: sql-database-resource-limits-database-server.md
+      - name: Architektura łączności
+        href: sql-database-connectivity-architecture.md
     - name: Zasoby pojedynczej bazy danych
       items:
       - name: Limity zasobów na podstawie rdzeni wirtualnych
@@ -141,12 +149,6 @@ items:
         href: sql-database-dtu-resource-limits-single-databases.md
       - name: Skalowanie zasobów
         href: sql-database-single-database-scale.md
-    - name: Tworzenie serwerów i baz danych oraz zarządzanie nimi
-      href: sql-database-single-databases-manage.md
-    - name: Architektura łączności
-      href: sql-database-connectivity-architecture.md
-    - name: Różnice w języku T-SQL
-      href: sql-database-transact-sql-information.md
   - name: Pule elastyczne
     items:
     - name: Pule elastyczne
@@ -223,7 +225,7 @@ items:
         href: sql-vulnerability-assessment.md
       - name: Wykrywanie zagrożeń
         href: sql-database-threat-detection-overview.md
-    - name: Reguły zapory
+    - name: Reguły zapory dotyczące adresu IP serwera bazy danych
       items:
       - name: Tworzenie i zarządzanie
         href: sql-database-firewall-configure.md
@@ -241,7 +243,7 @@ items:
       href: sql-database-aad-authentication.md
     - name: Inspekcja
       items:
-      - name: Inspekcja — serwery, pule adresów i bazy danych
+      - name: Inspekcja — pojedyncze bazy danych i elastyczne pule
         href: sql-database-auditing.md
       - name: Inspekcja — wystąpienie zarządzane
         href: sql-database-managed-instance-auditing.md
@@ -662,6 +664,8 @@ items:
       href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
 - name: Zasoby
   items:
+  - name: Słownik
+    href: sql-database-glossary-terms.md
   - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     href: /learn/browse/?products=azure-sql-database
   - name: Harmonogram działania dla platformy Azure
@@ -700,9 +704,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalowywanie zadania elastycznego (przestarzałe)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 0c34894ea3a09a4cd630938a045e0ab78681c10f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7530d0926cca2b89e532407d32e394e0b3018a60
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471032"
+ms.locfileid: "55512418"
