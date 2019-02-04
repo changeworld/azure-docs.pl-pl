@@ -211,22 +211,22 @@ W przypadku usługi ArcGIS Online aprowizacja jest zadaniem ręcznym.
 
 2. Kliknij przycisk **INVITE MEMBERS** (ZAPROŚ CZŁONKÓW).
    
-    ![Invite Members](Zaproś członków)(./media/arcgis-tutorial/ic784747.png "Invite Members")(Zaproś członków)
+    ![Zaproś członków](./media/arcgis-tutorial/ic784747.png "Zaproś członków")
 
 3. Wybierz opcję **Add members automatically without sending an email** (Dodaj członków automatycznie bez wysyłania wiadomości e-mail), a następnie kliknij przycisk **NEXT** (DALEJ).
    
-    ![Add Members Automatically](Dodaj członków automatycznie)(./media/arcgis-tutorial/ic784748.png "Add Members Automatically")(Dodaj członków automatycznie)
+    ![Dodaj członków automatycznie](./media/arcgis-tutorial/ic784748.png "Dodaj członków automatycznie")
 
 4. Na stronie okna dialogowego **Members** (Członkowie) wykonaj następujące czynności:
    
-     ![Add and review](Dodaj i przejrzyj)(./media/arcgis-tutorial/ic784749.png "Add and review")(Dodaj i przejrzyj)
+     ![Dodaj i przejrzyj](./media/arcgis-tutorial/ic784749.png "Dodaj i przejrzyj")
     
      a. Wprowadź **Email** (Adres e-mail), **First Name** (Imię) i **Last Name** (Nazwisko) prawidłowego konta usługi AAD, które chcesz aprowizować.
   
      b. Kliknij przycisk **ADD AND REVIEW** (DODAJ I PRZEJRZYJ).
 5. Przejrzyj wprowadzone dane, a następnie kliknij przycisk **ADD MEMBERS** (DODAJ CZŁONKÓW).
    
-    ![Add member](Dodaj członka)(./media/arcgis-tutorial/ic784750.png "Add member")(Dodaj członka)
+    ![Dodaj członka](./media/arcgis-tutorial/ic784750.png "Dodaj członka")
         
     > [!NOTE]
     > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z linkiem, którego użyje w celu potwierdzenia konta, zanim stanie się ono aktywne.

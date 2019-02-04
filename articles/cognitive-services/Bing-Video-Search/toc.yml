@@ -1,48 +1,45 @@
 items:
-- name: Dokumentacja funkcji wyszukiwania wideo Bing
+- name: Dokumentacja interfejsu API wyszukiwania wideo Bing
   href: index.yml
 - name: Omówienie
   items:
-  - name: Czym jest funkcja wyszukiwania wideo Bing?
-    href: search-the-web.md
+  - name: Co to jest interfejs API wyszukiwania wideo Bing?
+    href: overview.md
   - name: Porównanie interfejsów API wyszukiwania Bing
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
+  expanded: true
 - name: Interfejs API REST — przewodniki Szybki start
   items:
-  - name: Rozpoczęcie pracy
-    href: quick-start.md
-  - name: C#
-    href: csharp.md
-  - name: Java
-    href: java.md
-  - name: Node.js
-    href: nodejs.md
-  - name: PHP
-    href: php.md
-  - name: Python
-    href: python.md
-  - name: Ruby
-    href: ruby.md
+  - name: Interfejs API REST
+    items:
+    - name: Przy użyciu języka C#
+      href: quickstarts/csharp.md
+    - name: Korzystanie z języka Java
+      href: quickstarts/java.md
+    - name: Używanie środowiska Node.js
+      href: quickstarts/nodejs.md
+    - name: Korzystanie z języka PHP
+      href: quickstarts/php.md
+    - name: Korzystanie z języka Python
+      href: quickstarts/python.md
+    - name: Korzystanie z języka Ruby
+      href: quickstarts/ruby.md
+  - name: SDK
+    items:
+    - name: Przy użyciu języka C#
+      href: quickstarts/sdk-csharp-quickstart.md
+    - name: Używanie środowiska Node.js
+      href: quickstarts/sdk-node-quickstart.md
+    - name: Korzystanie z języka Python
+      href: quickstarts/sdk-python-quickstart.md
+    - name: Korzystanie z języka Java
+      href: quickstarts/sdk-java-quickstart.md
   expanded: true
-- name: Zestaw SDK — przewodniki Szybki start
-  items:
-  - name: Omówienie przykładów dotyczących zestawu SDK
-    href: sdk.md
-  - name: Zestaw SDK funkcji wyszukiwania wideo w języku C# — Szybki start
-    href: video-search-sdk-quickstart.md
-  - name: Zestaw SDK funkcji wyszukiwania wideo w środowisku Node — Szybki start
-    href: video-search-sdk-node-quickstart.md
-  - name: Zestaw SDK funkcji wyszukiwania wideo w języku Python — Szybki start
-    href: video-sdk-python-quickstart.md
-  - name: Zestaw SDK funkcji wyszukiwania wideo w języku Java — Szybki start
-    href: video-sdk-java-quickstart.md
 - name: Samouczki
   items:
-  - name: Jednostronicowa aplikacja internetowa
+  - name: Tworzenie jednostronicowej aplikacji internetowej
     href: tutorial-bing-video-search-single-page-app.md
-  - name: Jednostronicowa aplikacja internetowa (kod źródłowy)
-    href: tutorial-bing-video-search-single-page-app-source.md
 - name: Przykłady
   items:
   - name: Przykłady kodu
@@ -59,6 +56,12 @@ items:
     href: resize-and-crop-thumbnails.md
   - name: Uaktualnienie z wersji v5 do v7
     href: bing-video-upgrade-guide-v5-to-v7.md
+- name: Pojęcia
+  items:
+  - name: Uzyskiwanie wideo z Internetu
+    href: concepts/get-videos.md
+  - name: Wysyłanie żądań wyszukiwania
+    href: concepts/sending-requests.md
 - name: Dokumentacja
   items:
   - name: Interfejs API wyszukiwania wideo Bing v7
@@ -98,13 +101,11 @@ items:
     href: https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api
   - name: Wypróbuj!
     href: https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8
-  - name: Punkty końcowe wyszukiwania wideo Bing
-    href: video-search-endpoints.md
   - name: Dane analityczne na potrzeby interfejsu API wyszukiwania wideo Bing
     href: bing-video-stats.md
-ms.openlocfilehash: e8f0e84b405232ff7145f0a8fed4ab42d03a4c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9192f6aaa94d2aff310e8d12a66ac8ab75f772e2
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509725"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568039"
