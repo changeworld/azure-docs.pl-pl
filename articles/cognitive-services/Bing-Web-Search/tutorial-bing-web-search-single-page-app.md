@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: tworzenie jednostronicowej aplikacji internetowej — interfejs AP do wyszukiwania w sieci Web Bing'
+title: 'Samouczek: Tworzenie jednostronicowej aplikacji internetowej — interfejs API wyszukiwania w Internecie Bing'
 titleSuffix: Azure Cognitive Services
 description: Ta aplikacja jednostronicowa pokazuje, jak można używać interfejsu API wyszukiwania w sieci Web Bing do pobierania, analizowania i wyświetlania odpowiednich wyników w aplikacji jednostronicowej.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: aahi
-ms.openlocfilehash: b94e6f70d4a28dc59ddaa62cfad55c6c8383b761
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 13040cf7f75b8bf2c0bf898dc4f3b16c99a80560
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161926"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55172481"
 ---
-# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w sieci Web Bing
+# <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Samouczek: Tworzenie aplikacji jednostronicowej przy użyciu interfejsu API wyszukiwania w Internecie Bing
 
 Ta aplikacja jednostronicowa pokazuje, jak pobierać, analizować i wyświetlać wyniki wyszukiwania z interfejsu API wyszukiwania w sieci Web Bing. W samouczku użyto standardowego kodu HTML i CSS i skoncentrowano się na kodzie JavaScript. Pliki w formatach HTML, CSS i JS są dostępne w serwisie [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) razem z instrukcjami przewodnika Szybki start.
 

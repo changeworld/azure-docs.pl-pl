@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 3422219e33c04d7cb130e064790896f5da28649a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 855adccf036f731de12810fe0f5287186048ddb0
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025049"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095961"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Samouczek: Kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem witryny Azure Portal
 
@@ -281,7 +281,7 @@ Maszynę wirtualną *myVmPrivate* możesz utworzyć w czasie, gdy platforma Azur
 
 1. Wybierz pozycję **Tak**, aby nawiązać połączenie z maszyną wirtualną.
 
-### <a name="enable-icpm-through-the-windows-firewall"></a>Włączanie protokołu ICPM za pomocą Zapory systemu Windows
+### <a name="enable-icmp-through-the-windows-firewall"></a>Włączanie komunikacji protokołu ICMP przez Zaporę systemu Windows
 
 W kolejnym kroku przetestujesz routing przy użyciu narzędzia śledzenia trasy. Narzędzie śledzenia trasy używa protokołu ICMP (Internet Control Message Protocol), którego ruch jest domyślnie blokowany przez Zaporę systemu Windows. Włącz protokół ICMP za pomocą Zapory systemu Windows.
 

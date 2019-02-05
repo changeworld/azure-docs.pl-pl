@@ -6,16 +6,16 @@ services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e8bbf78da84ddb77ce956e37f91be46e96144991
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9289f7178a6e285b447041937f191d283fc2f2f0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123083"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222902"
 ---
 # <a name="example-how-to-use-the-large-scale-feature"></a>Przykład: jak używać funkcji na dużą skalę
 
@@ -40,12 +40,12 @@ Jednak wadą jest to, że nowo dodane osoby/twarze nie będą pojawiać się w w
 Jeśli nie znasz poniższych pojęć z tego przewodnika, możesz wyszukać ich definicje w [słowniku](../Glossary.md):
 
 - LargePersonGroup: kolekcja osób o pojemności do 1 000 000.
-- LargePersonGroup: kolekcja twarzy o pojemności do 1 000 000.
-- Szkolenie: przetwarzanie wstępne, które zapewnia wydajność operacji Identification/FindSimilar.
+- LargeFaceList: kolekcja twarzy o pojemności do 1 000 000.
+- Train: przetwarzanie wstępne, które zapewnia wydajność operacji Identification/FindSimilar.
 - Identification: identyfikowanie co najmniej jednej twarzy w grupie PersonGroup lub LargePersonGroup.
 - FindSimilar: wyszukiwanie podobnych twarzy na liście FaceList lub LargeFaceList.
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1. Autoryzowanie wywołania interfejsu API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autoryzowanie wywołania interfejsu API
 
 Jeśli korzystasz z biblioteki klienta interfejsu API rozpoznawania twarzy, klucz subskrypcji i punkt końcowy subskrypcji są przekazywane w konstruktorze klasy FaceServiceClient. Na przykład:
 
@@ -59,7 +59,7 @@ FaceServiceClient FaceServiceClient = new FaceServiceClient(SubscriptionKey, Sub
 Klucz subskrypcji z odpowiadającym mu punktem końcowym można uzyskać na stronie portalu Marketplace witryny Azure Portal.
 Zobacz [Subskrypcje](https://azure.microsoft.com/services/cognitive-services/directory/vision/).
 
-## <a name="step-2-code-migration-in-action"></a>Krok 2. Przeprowadzanie migracji kodu
+## <a name="step-2-code-migration-in-action"></a>Krok 2: Przeprowadzanie migracji kodu
 
 W tej sekcji skupiono się tylko na migrowaniu implementacji kolekcji PersonGroup/FaceList do kolekcji LargePersonGroup/LargeFaceList.
 Mimo że projekt i wewnętrzna implementacja kolekcji LargePersonGroup/LargeFaceList różnią się od kolekcji PersonGroup/FaceList, interfejsy API są podobne w celu zachowania zgodności ze starszymi wersjami.
@@ -212,7 +212,7 @@ using (Stream stream = File.OpenRead(QueryImagePath))
 Jak pokazano powyżej, zarządzanie danymi i część FindSimilar są prawie takie same.
 Jedynym wyjątkiem jest to, że nową operację przetwarzania wstępnego Szkolenie należy ukończyć w kolekcji LargeFaceList, aby funkcja FindSimilar mogła działać.
 
-## <a name="step-3-train-suggestions"></a>Krok 3. Sugestie dotyczące szkolenia
+## <a name="step-3-train-suggestions"></a>Krok 3: Sugestie dotyczące szkolenia
 
 Mimo że operacja szkolenia przyspiesza działanie funkcji [FindSimilar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) i [Identification](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), czas szkolenia wydłuża się, szczególnie w przypadku pracy na dużą skalę.
 Szacowany czas szkolenia w różnych skalach został przedstawiony w poniższej tabeli:

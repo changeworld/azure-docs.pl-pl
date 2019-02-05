@@ -5,18 +5,18 @@ services: cognitive-services
 author: PanosPeriorellis
 manager: onano
 ms.service: cognitive-services
-ms.component: custom-speech
+ms.subservice: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0e4c21a064cdb0a60aef49482eee4b768112b899
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344578"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216425"
 ---
-# <a name="tutorial-create-a-custom-acoustic-model"></a>Samouczek: tworzenie niestandardowego modelu akustycznego
+# <a name="tutorial-create-a-custom-acoustic-model"></a>Samouczek: Tworzenie niestandardowego modelu akustycznego
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
@@ -48,7 +48,7 @@ Na przykład:
 <a name="Preparing data to customize the acoustic model"></a>
 *   Jeżeli przykładowo chcesz zoptymalizować wydajność pod kątem jednej osoby mówiącej, należy transkrybować wszystkie rozmowy Fireside FDR, a pliki dźwiękowe powinny zawierać wiele przykładów tylko tej osoby mówiącej.
 
-Zestaw danych akustycznych na potrzeby dostosowania modelu akustycznego składa się z dwóch części: (1) zestawu plików dźwiękowych zawierającego dane mowy oraz (2) pliku zawierającego transkrypcje wszystkich plików dźwiękowych.
+Zestaw danych akustycznych na potrzeby dostosowywania modelu akustycznego składa się z dwóch części: (1) to zestaw plików audio zawierających dane mowy i (2) to plik zawierający transkrypcje wszystkich plików audio.
 
 ### <a name="audio-data-recommendations"></a>Zalecenia dotyczące danych dźwiękowych
 

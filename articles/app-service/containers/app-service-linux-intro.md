@@ -16,16 +16,16 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu;yili
 ms.custom: seodec18
-ms.openlocfilehash: 898d663f3ef9a71944d96b0978947d10a3e26b06
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 2e75ff08acdda03c0080f49c6616274a4b031075
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232791"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903727"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
-[Web App](../overview.md) to w pełni zarządzana platforma obliczeniowa zoptymalizowana pod kątem hostowania witryn i aplikacji internetowych. Klienci mogą używać usługi App Service w systemie Linux do natywnego hostowania aplikacji internetowych w systemie Linux dla obsługiwanych stosów aplikacji. W poniższych sekcjach wymieniono stosy aplikacji, które są obecnie obsługiwane.
+[Azure App Service](../overview.md) to w pełni zarządzana platforma obliczeniowa zoptymalizowana pod kątem hostowania witryn i aplikacji internetowych. Klienci mogą używać usługi App Service w systemie Linux do natywnego hostowania aplikacji internetowych w systemie Linux dla obsługiwanych stosów aplikacji. W sekcji [Języki](#languages) wymieniono stosy aplikacji, które są obecnie obsługiwane.
 
 ## <a name="languages"></a>Języki
 
@@ -39,8 +39,6 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 | Python (wersja zapoznawcza) | 2.7, 3.6, 3.7 |
 | .NET Core | 1.0, 1.1, 2.0, 2.1 |
 | Ruby | 2.3 |
-
-Więcej szczegółów można znaleźć w temacie [Tworzenie aplikacji internetowej w języku Java w usłudze App Service w systemie Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-java).
 
 ## <a name="deployments"></a>Wdrożenia
 
@@ -75,7 +73,9 @@ Witryna Azure Portal wyświetla tylko te funkcje, które obecnie działają dla 
 
 Niektóre funkcje, takie jak integracja sieci wirtualnej, uwierzytelnianie w usłudze Azure Active Directory/innej firmy lub rozszerzenia lokacji usługi Kudu, nie są jeszcze dostępne. Po udostępnieniu tych funkcji zaktualizujemy naszą dokumentację i powiadomimy w blogu o zmianach.
 
-Usługa App Service w systemie Linux jest obsługiwana tylko w planach usługi App Service [Podstawowa, Standardowa oraz Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma warstwy [Bezpłatna lub Współdzielona](https://azure.microsoft.com/pricing/details/app-service/plans/). Nie można utworzyć usługi Web App for Containers w planie usługi App Service już hostującym usługę Web Apps w systemie innym niż Linux. Istnieje również bieżące ograniczenie, które nie pozwala na łączenie aplikacji dla systemu Windows i Linux w tej samej grupie zasobów.
+Usługa App Service w systemie Linux jest obsługiwana tylko w planach usługi App Service [Podstawowa, Standardowa oraz Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma warstwy [Bezpłatna lub Współdzielona](https://azure.microsoft.com/pricing/details/app-service/plans/). Nie można utworzyć usługi Web App for Containers w planie usługi App Service już hostującym usługę Web Apps w systemie innym niż Linux. 
+
+Ponadto, ze względu na aktualne ograniczenia, nie należy umieszczać aplikacji dla systemów Windows i Linux w tej samej grupie zasobów.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -84,9 +84,11 @@ Aby rejestrować `stdout` i `stderr` z kontenera, musisz włączyć **Rejestrowa
 
 ![Włączanie rejestrowania][2]
 
-![Wyświetlanie dzienników platformy Docker przy użyciu narzędzia Kudu][1]
+To ustawienie jest stosowane od razu. Usługa App Service wykrywa zmianę ustawienia i automatycznie ponownie uruchamia kontener.
 
 Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowane** w menu **Narzędzia programistyczne**.
+
+![Wyświetlanie dzienników platformy Docker przy użyciu narzędzia Kudu][1]
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -101,7 +103,7 @@ Następujące artykuły ułatwią rozpoczęcie pracy z usługą App Service w sy
 * [Go](quickstart-docker-go.md)
 * [Aplikacje z wieloma kontenerami](quickstart-multi-container.md)
 
-Zobacz też następujące artykuły, aby uzyskać więcej informacji o usłudze App Service w systemie Linux:
+Aby uzyskać więcej informacji na temat usługi App Service dla systemu Linux, zobacz:
 
 * [Usługa App Service dla systemu Linux — często zadawane pytania](app-service-linux-faq.md)
 * [Obsługa protokołu SSH dla usługi App Service w systemie Linux](app-service-linux-ssh-support.md)

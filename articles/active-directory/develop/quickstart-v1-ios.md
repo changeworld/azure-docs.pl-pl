@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 42303177-9566-48ed-8abb-279fcf1e6ddb
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: brandwe
-ms.openlocfilehash: 89f2a4058006687fbe64ec64d98659e38f93f618
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 801da78de493b55655819ac16a9184d04a356786
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980580"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095978"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Szybki start: logowanie użytkowników i wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Szybki start: Logowanie użytkowników i wywołanie interfejsu API programu Microsoft Graph z aplikacji systemu iOS
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -82,7 +82,7 @@ Aby skonfigurować aplikację do uzyskiwania tokenów, należy zarejestrować ap
 6. Gdy zakończysz rejestrację, usługa Azure AD przypisze aplikacji unikatowy identyfikator. Ta wartość będzie potrzebna w kolejnych sekcjach, a więc należy skopiować ją z karty aplikacji.
 7. Na stronie **Ustawienia** wybierz pozycję **Wymagane uprawnienia > Dodaj >Microsoft Graph**, a następnie w obszarze **Uprawnienia delegowane** dodaj ustawienie **Odczytuj dane katalogu**. To uprawnienie skonfiguruje aplikację do wykonywania zapytań względem interfejsu API programu Graph usługi Azure AD dotyczących użytkowników.
 
-## <a name="step-3-install-and-configure-adal"></a>Krok 3. Instalowanie i konfigurowanie biblioteki ADAL
+## <a name="step-3-install-and-configure-adal"></a>Krok 3: Instalowanie i konfigurowanie biblioteki ADAL
 
 Gdy masz już aplikację w usłudze Azure AD, możesz zainstalować bibliotekę ADAL i napisać kod dotyczący tożsamości. Aby biblioteka ADAL mogła komunikować się z usługą Azure AD, należy podać niektóre informacje dotyczące rejestracji aplikacji.
 
@@ -115,7 +115,7 @@ Gdy masz już aplikację w usłudze Azure AD, możesz zainstalować bibliotekę 
     * `clientId` to identyfikator klienta Twojej aplikacji skopiowany z portalu.
     * `redirectUri` to adres URL przekierowania, który zarejestrowano w portalu.
 
-## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Uzyskanie tokenów z usługi Azure AD przy użyciu biblioteki ADAL
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Krok 4: Uzyskiwanie tokenów z usługi Azure AD przy użyciu biblioteki ADAL
 
 Podstawowa zasada działania biblioteki ADAL polega na tym, że za każdym razem, gdy aplikacja potrzebuje tokenu dostępu, po prostu wywołuje ona element completionBlock `+(void) getToken : `, a biblioteka ADAL zajmuje się resztą.
 
@@ -240,7 +240,7 @@ Podstawowa zasada działania biblioteki ADAL polega na tym, że za każdym razem
 > [!NOTE]
 > Obiekt `AuthenticationResult` zawiera obiekt `tokenCacheStoreItem`, przy użyciu którego możesz zebrać informacje potrzebne aplikacji. W przewodniku Szybki Start obiekt `tokenCacheStoreItem` służy do określania, czy przeprowadzono już uwierzytelnianie.
 
-## <a name="step-5-build-and-run-the-application"></a>Krok5: Kompilowanie i uruchamianie aplikacji
+## <a name="step-5-build-and-run-the-application"></a>Krok 5. Kompilowanie i uruchamianie aplikacji
 
 Gratulacje! Masz teraz działającą aplikację systemu iOS, która może uwierzytelniać użytkowników, bezpiecznie wywoływać internetowe interfejsy API przy użyciu protokołu OAuth 2.0 oraz uzyskiwać podstawowe informacje o użytkowniku.
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 67e74774-1748-43ea-8130-55275a18320f
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 239c0d0adbe89dd3d1d7bc7244a52ab079a36ad4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f44955e13cb5774119dc083f4a3220b432d9cd9e
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952549"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098068"
 ---
-# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Przewodnik Szybki start: Tworzenie internetowego interfejsu API platformy .NET, który integruje się z usługą Azure AD w celu uwierzytelniania i autoryzacji
+# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Szybki start: Tworzenie internetowego interfejsu API platformy .NET, który integruje się z usługą Azure AD w celu uwierzytelniania i autoryzacji
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -48,7 +48,7 @@ Aby rozpocząć pracę, należy spełnić poniższe następujące wstępne:
 * [Pobranie szkieletu aplikacji](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) lub [pobranie pełnego przykładu](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Każdy z tych elementów jest rozwiązaniem programu Visual Studio 2013.
 * Uzyskanie dzierżawy usługi Azure AD, w którym zostanie zarejestrowana aplikacja. Jeśli nie masz jeszcze takiej dzierżawy, [dowiedz się, jak ją uzyskać](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1. Rejestrowanie aplikacji w usłudze Azure AD
+## <a name="step-1-register-an-application-with-azure-ad"></a>Krok 1: Rejestrowanie aplikacji w usłudze Azure AD
 
 Aby ułatwić zabezpieczanie aplikacji, należy najpierw utworzyć aplikację w ramach dzierżawy i podać w usłudze Azure AD kilka kluczowych informacji.
 
@@ -65,7 +65,7 @@ Aby ułatwić zabezpieczanie aplikacji, należy najpierw utworzyć aplikację w 
 6. Na stronie **Ustawienia > Właściwości** zaktualizuj identyfikator URI aplikacji. Wprowadź identyfikator specyficzny dla dzierżawy. Na przykład wprowadź wartość `https://contoso.onmicrosoft.com/TodoListService`.
 7. Zapisz konfigurację. Pozostaw portal otwarty, ponieważ wkrótce konieczne będzie również zarejestrowanie aplikacji klienckiej.
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2. Konfigurowanie aplikacji pod kątem korzystania z potoku uwierzytelniania OWIN
+## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Krok 2: Konfigurowanie aplikacji pod kątem korzystania z potoku uwierzytelniania OWIN
 
 Aby zweryfikować przychodzące żądania i tokeny, należy skonfigurować aplikację pod kątem komunikacji z usługą Azure AD.
 
@@ -135,7 +135,7 @@ Aby zweryfikować przychodzące żądania i tokeny, należy skonfigurować aplik
     * `ida:Tenant` to nazwa dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
     * `ida:Audience` to identyfikator URI aplikacji, który wprowadzono w witrynie Azure Portal.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3. Konfigurowanie aplikacji klienckiej i uruchamianie usługi
+## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Krok 3: Konfigurowanie aplikacji klienckiej i uruchamianie usługi
 
 Zanim usługa Lista zadań do wykonania zacznie działać, należy skonfigurować klienta Lista zadań do wykonania, aby mógł on pobierać tokeny z usługi Azure AD i wykonywać wywołania usługi.
 

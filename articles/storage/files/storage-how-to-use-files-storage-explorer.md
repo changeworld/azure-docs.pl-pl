@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: f86a86fd9858fcc6f0b78256da1e96effbcbe68c
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.subservice: files
+ms.openlocfilehash: 931098d688e39490aa0aadaa8ade8405e5ba8a12
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944222"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452247"
 ---
-# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą Eksploratora usługi Azure Storage
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Szybki start: Tworzenie udziałów plików platformy Azure i zarządzanie nimi za pomocą Eksploratora usługi Azure Storage
 W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z [udziałami plików platformy Azure](storage-files-introduction.md) przy użyciu Eksploratora usługi Azure Storage. Udziały plików platformy Azure są podobne do innych udziałów plików, ale są przechowywane w chmurze i obsługiwane przez platformę Azure. Udziały plików platformy Azure obsługują standardowy w branży protokół SMB i umożliwiają udostępnianie plików między wieloma maszynami, aplikacjami i wystąpieniami. 
 
 Eksplorator usługi Azure Storage to popularne narzędzie klienckie dostępne dla systemów Windows, macOS i Linux. Eksplorator usługi Storage służy do zarządzania udziałami plików platformy Azure i innymi zasobami magazynu.
@@ -34,8 +34,8 @@ Nie możesz używać Eksploratora usługi Storage do tworzenia nowych zasobów. 
 Przy pierwszym uruchomieniu Eksploratora usługi Storage jest wyświetlane okno **Eksplorator usługi Microsoft Azure Storage — nawiązywanie połączenia**. Eksplorator usługi Storage oferuje kilka sposobów nawiązywania połączenia z kontami magazynu: 
 
 - **Logowanie za pomocą konta platformy Azure**: możesz zalogować się przy użyciu poświadczeń użytkownika organizacji lub konta Microsoft. 
-- **Łączenie z określonym kontem magazynu za pomocą parametrów połączenia lub tokenu sygnatury dostępu współdzielonego**: parametry połączenia to specjalny ciąg zawierający nazwę konta magazynu oraz klucz konta magazynu lub token sygnatury dostępu współdzielonego. Dzięki tokenowi Eksplorator usługi Storage uzyskuje dostęp do konta magazynu bezpośrednio (zamiast wyświetlania wszystkich kont magazynu na koncie platformy Azure). Aby dowiedzieć się więcej na temat parametrów połączenia, zobacz [Konfiguracja parametrów połączenia usługi Azure Storage](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-- **Nawiązywanie połączenia z konkretnym kontem magazynu za pomocą nazwy i klucza konta magazynu**: użyj nazwy i klucza konta magazynu do nawiązania połączenia z usługą Azure Storage.
+- **Łączenie z konkretnym kontem magazynu przy użyciu parametrów połączenia lub tokenu SAS**: Parametry połączenia to specjalny ciąg zawierający nazwę konta magazynu i klucz konta magazynu/token SAS. Dzięki tokenowi Eksplorator usługi Storage uzyskuje dostęp do konta magazynu bezpośrednio (zamiast wyświetlania wszystkich kont magazynu na koncie platformy Azure). Aby dowiedzieć się więcej na temat parametrów połączenia, zobacz [Konfiguracja parametrów połączenia usługi Azure Storage](../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+- **Łączenie z konkretnym kontem magazynu przy użyciu nazwy i klucza konta magazynu**: Użyj nazwy i klucza konta magazynu do nawiązania połączenia z magazynem Azure Storage.
 
 Na potrzeby tego przewodnika Szybki start zaloguj się przy użyciu konta platformy Azure. Wybierz pozycję **Dodaj konto platformy Azure**, a następnie wybierz pozycję **Zaloguj się**. Postępuj zgodnie z monitami, aby zalogować się na koncie platformy Azure.
 

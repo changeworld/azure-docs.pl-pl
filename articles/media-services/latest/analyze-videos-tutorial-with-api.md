@@ -1,5 +1,5 @@
 ---
-title: Analizowanie plików wideo za pomocą usługi Media Services na platformie Azure | Microsoft Docs
+title: Analizowanie wideo za pomocą usługi Media Services przy użyciu platformy .NET — Azure | Microsoft Docs
 description: Wykonaj kroki tego samouczka, aby przeanalizować wideo przy użyciu usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,26 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 12/08/2018
+ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 42ffecec896265f99a8f1f0b43b47c1988a493d6
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 191a6c9dc1cc5a24c1a46af21c5b63e3ff27a290
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133897"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55150397"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Samouczek: Analizowanie plików wideo za pomocą usługi Media Services w wersji 3 przy użyciu interfejsów API
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>Samouczek: Analizowanie wideo za pomocą usługi Media Services w wersji 3 przy użyciu platformy .NET
 
 W tym samouczku przedstawiono sposób analizowania wideo za pomocą usługi Azure Media Services. Istnieje wiele scenariuszy, w przypadku których głęboka analiza zarejestrowanego wideo lub dźwięku może być przydatna. Na przykład organizacje mogą zamieniać mowę na tekst w celu przekształcenia nagrań rozmów działu obsługi klienta w katalog z możliwością wyszukiwania, indeksami i pulpitami nawigacyjnymi — aby dzięki jego wykorzystaniu zwiększyć zadowolenie klientów. Następnie mogą analizować swoją działalność, uzyskując na przykład listę typowych skarg, przyczyn takich skarg i inne przydatne informacje.
 
 Ten samouczek przedstawia sposób wykonania następujących czynności:    
 
 > [!div class="checklist"]
-> * Tworzenie konta usługi Media Services
-> * Uzyskiwanie dostępu do interfejsu API usługi Media Services
-> * Konfigurowanie przykładowej aplikacji
+> * Pobieranie przykładowej aplikacji opisanej w temacie
 > * Badanie kodu do analizy wybranego wideo
 > * Uruchamianie aplikacji
 > * Sprawdzanie danych wyjściowych
@@ -39,15 +37,10 @@ Ten samouczek przedstawia sposób wykonania następujących czynności:
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli nie masz zainstalowanego programu Visual Studio, możesz pobrać program [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
-- Zainstaluj interfejs wiersza polecenia i korzystaj z niego lokalnie. Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+- [Utwórz konto usługi Media Services](create-account-cli-how-to.md).<br/>Koniecznie zapamiętaj wartości, które zostały użyte jako nazwa grupy zasobów i nazwa konta usługi Media Services.
+- Postępuj zgodnie z instrukcjami zawartymi w temacie [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Uzyskiwanie dostępu do interfejsu API usług Azure Media Services za pomocą interfejsu wiersza polecenia platformy Azure) i zapisz poświadczenia. Będą one potrzebne w celu uzyskania dostępu do interfejsu API.
 
-    Obecnie nie wszystkie polecenia [interfejsu wiersza polecenia usługi Media Services w wersji 3](https://aka.ms/ams-v3-cli-ref) działają w usłudze Azure Cloud Shell. Zaleca się używanie interfejsu wiersza polecenia lokalnie.
-
-- [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
-
-    Koniecznie zapamiętaj wartości, które zostały użyte jako nazwa grupy zasobów i nazwa konta usługi Media Services.
-
-## <a name="download-the-sample"></a>Pobierz przykład
+## <a name="download-and-configure-the-sample"></a>Pobieranie i konfigurowanie przykładu
 
 Sklonuj repozytorium GitHub zawierające przykład dla platformy .NET na swoją maszynę za pomocą następującego polecenia:  
 
@@ -57,7 +50,7 @@ Sklonuj repozytorium GitHub zawierające przykład dla platformy .NET na swoją 
 
 Przykład znajduje się w folderze [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+Otwórz plik [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) z pobranego projektu. Zastąp wartości przy użyciu poświadczeń uzyskanych w sekcji z opisem [uzyskiwania dostępu do interfejsów API](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Badanie kodu do analizy wybranego wideo
 
@@ -65,8 +58,8 @@ W tej sekcji są analizowane funkcje zdefiniowane w pliku [Program.cs](https://g
 
 W przykładzie są wykonywane następujące akcje:
 
-1. Tworzy przekształcenie i zadanie analizujące wideo.
-2. Tworzy zasób wejściowy i przekazuje do niego wideo. Zasób jest używany jako dane wejściowe zadania.
+1. Tworzy **przekształcenie** i **zadanie** analizujące wideo.
+2. Tworzy **zasób** wejściowy i przekazuje do niego wideo. Zasób jest używany jako dane wejściowe zadania.
 3. Tworzy zasób wyjściowy, w którym są przechowywane dane wyjściowe zadania. 
 4. Przesyła zadanie.
 5. Sprawdza stan zadania.
@@ -172,4 +165,4 @@ Zestawy SDK usługi Azure Media Services 3 nie są bezpieczne wątkowo. Podczas 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md)
+> [Samouczek: przekazywanie, kodowanie i przesyłanie strumieniowe plików](stream-files-tutorial-with-api.md)

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: bb2f701f-3bc3-4759-94a5-8b9d53a8a0b6
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,14 +17,14 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: c0bf5bbdf496a23a5ed66a149933f25a059984a9
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 20e19664963f66954f9d46a1b596a34b7d744f48
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913282"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093228"
 ---
-# <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Szybki start: rejestrowanie aplikacji przy użyciu punktu końcowego usługi Azure Active Directory w wersji 2.0
+# <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Szybki start: Rejestrowanie aplikacji z punktem końcowym usługi Azure Active Directory w wersji 2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -35,16 +35,16 @@ Nie wszystkie scenariusze i funkcje usługi Azure AD są obsługiwane przez punk
 > [!NOTE]
 > Rejestrujesz nową aplikację? Wypróbuj nowe środowisko **Rejestracje aplikacji (wersja zapoznawcza)** w witrynie Azure Portal. Aby rozpocząć pracę, zobacz [Rejestrowanie aplikacji (wersja zapoznawcza)](quickstart-register-app.md).
 
-## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>Krok 1. Logowanie do portalu rejestracji aplikacji firmy Microsoft
+## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>Krok 1: Logowanie do portalu rejestracji aplikacji firmy Microsoft
 
 1. Przejdź do portalu rejestracji aplikacji firmy Microsoft pod adresem [https://apps.dev.microsoft.com/](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList).
 1. Zaloguj się, używając osobistego lub służbowego konta Microsoft. Jeśli nie masz żadnego z nich, załóż nowe konto osobiste.
 1. Gotowe? Powinna być teraz widoczna lista aplikacji firmy Microsoft, prawdopodobnie pusta. Zmienimy to teraz.
 
-## <a name="step-2-register-an-app"></a>Krok 2. Rejestrowanie aplikacji
+## <a name="step-2-register-an-app"></a>Krok 2: Rejestracja aplikacji
 
 1. Wybierz pozycję **Dodaj aplikację** i wprowadź nazwę aplikacji.
-    W portalu do aplikacji zostanie przypisany globalnie unikatowy identyfikator aplikacji, który będzie później używany w kodzie. Jeśli aplikacja zawiera składnik po stronie serwera, wymagający tokenów dostępu do wywoływania interfejsów API (na przykład usługi Office, platformy Azure czy Twoich własnych internetowych interfejsów API), należy tu utworzyć również **Klucz tajny aplikacji**.
+    W portalu do aplikacji zostanie przypisany globalnie unikatowy identyfikator aplikacji, który będzie później używany w kodzie. Jeśli aplikacja zawiera składnik po stronie serwera, który wymaga tokenów dostępu w celu wywoływania interfejsów API (np.: pakiet Office, platforma Azure lub Twój własny internetowy interfejs API), w tym miejscu należy również utworzyć **klucz tajny aplikacji**.
 1. Następnie dodaj **Platformy** używane przez aplikację.
     * W przypadku aplikacji internetowych podaj **Identyfikator URI przekierowania**, do którego mogą być wysyłane komunikaty dotyczące logowania.
     * W przypadku aplikacji mobilnych skopiuj automatycznie utworzony domyślny identyfikator URI przekierowania.

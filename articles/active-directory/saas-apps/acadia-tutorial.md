@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: a43db3eba5bec9bef0aacc51d246414d54d222bf
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: dc36e66e9dae62fdfede3a82146cd218ca5eb489
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813447"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55458180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Acadia
 
@@ -71,10 +71,10 @@ Aby skonfigurować integrację aplikacji Acadia w usłudze Azure AD, należy dod
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją [Application name] w oparciu o użytkownika testowego o nazwie **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację łącza między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji [Application name].
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Acadia, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Acadia.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją [Application name], należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji Acadia, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Acadia](#configure-acadia-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
@@ -87,7 +87,7 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z apli
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Application name], wykonaj następujące czynności:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Acadia, wykonaj następujące kroki:
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Acadia** wybierz pozycję **Logowanie jednokrotne**.
 
@@ -116,7 +116,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<CUSTOMER>.acadia.sysalli.com/Shibboleth.sso/Login`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Acadia](https://www.systemsalliance.com/contact-us/) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartości dla kroków 4 i 5 zostaną udostępnione przez zespół aplikacji Acadia w postaci pliku metadanych, który można zaimportować, klikając pozycję **Przekaż plik metadanych** w sekcji **Podstawowa konfiguracja protokołu SAML**. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Korzystając ze wzorców przedstawionych w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal, można również potwierdzić poprawność wartości metadanych. Jeśli podane wartości są niepoprawne, skontaktuj się z [zespołem pomocy technicznej klienta Acadia](mailto:support@systemsalliance.com).
 
 6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
@@ -134,7 +134,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją [Applicat
 
 ### <a name="configure-acadia-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Acadia
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Acadia**, musisz wysłać pobrany **kod XML metadanych** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Acadia](https://www.systemsalliance.com/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Acadia**, musisz wysłać pobrany **plik XML metadanych**, **adres URL metadanych federacyjnych aplikacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Acadia](mailto:support@systemsalliance.com). Ustawi on to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

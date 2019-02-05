@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: tworzenie jednostronicowej aplikacji wyszukiwania wideo Bing'
+title: 'Samouczek: Tworzenie jednostronicowej aplikacji wyszukiwania wideo Bing'
 titlesuffix: Azure Cognitive Services
 description: Objaśnia sposób użycia interfejsu API wyszukiwania wideo Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-video-search
+ms.subservice: bing-video-search
 ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: rosh
-ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5661cab24d3c5ada401f416a3d39b1a787094b5c
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226606"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175115"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Samouczek: jednostronicowa aplikacja wyszukiwania wideo
+# <a name="tutorial-single-page-video-search-app"></a>Samouczek: Jednostronicowa aplikacja wyszukiwania wideo
 Interfejs API wyszukiwania wideo Bing umożliwia wyszukiwanie w Internecie i uzyskiwanie wyników wideo odpowiadających zapytaniu wyszukiwania. W tym samouczku utworzymy jednostronicową aplikację internetową, która wyświetla wyniki wyszukiwania na stronie przy użyciu interfejsu API wyszukiwania Bing. Aplikacja zawiera składniki HTML, CSS i JavaScript.
 
 <!-- Remove until it can be replaced with a sanitized version.
@@ -310,7 +310,7 @@ Interfejs API wyszukiwania wiadomości Bing zwraca maksymalnie cztery różne ro
 
 |Relacja|Opis|
 |-|-|
-|`pivotSuggestions`|Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwania na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”.|
+|`pivotSuggestions`|Zapytania, które zamieniają wyraz przestawny w oryginalnym wyszukiwaniu na inny. Jeśli na przykład wyszukujesz frazę „czerwone kwiaty”, wyrazem przestawnym może być „czerwone” i sugestia przestawna może brzmieć „żółte kwiaty”.|
 |`queryExpansions`|Zapytania, które zawężają oryginalne wyszukiwanie, dodając więcej terminów. Jeśli na przykład wyszukujesz frazę „Microsoft Surface”, rozszerzeniem zapytania może być fraza „Microsoft Surface Pro”.|
 |`relatedSearches`|Zapytania, które również zostały wprowadzone przez innych użytkowników, którzy wprowadzili oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz frazę „Mount Rainier”, powiązanym wyszukiwaniem może być fraza „Mt. Saint Helens”.|
 |`similarTerms`|Zapytania, które mają podobne znaczenie, co oryginalne wyszukiwanie. Jeśli na przykład wyszukujesz wyraz „szkoły”, podobnym terminem może być „edukacja”.|

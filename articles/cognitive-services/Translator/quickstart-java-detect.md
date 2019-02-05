@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wykrywanie języka tekstu, Java — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: Wykrywanie języka tekstu, Java — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak wykryć język dostarczonego tekstu przy użyciu języka Java i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: d810b282936db1a31cdeb0133ce3c5bf0059850b
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 00ffb0eef5b7452894b27a00328dae4546d45c6f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890788"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208441"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka Java
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu przy użyciu języka Java
 
 W tym przewodniku Szybki start dowiesz się, jak wykryć język dostarczonego tekstu przy użyciu języka Java i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 

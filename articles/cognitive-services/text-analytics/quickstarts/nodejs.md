@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wywoływanie interfejsu API analizy tekstu przy użyciu środowiska Node.js'
+title: 'Szybki start: Wywoływanie interfejsu API analizy tekstu przy użyciu środowiska Node.js'
 titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu, które umożliwią Ci szybkie rozpoczęcie korzystania z interfejsu API analizy tekstu w usłudze Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 1bc7bc80eaf530f80732f3f73d9027e1933b645e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: fe8fac4e9f5b0badfc7db2f29423facadae8ef22
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284070"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228767"
 ---
-# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu środowiska Node.js  
+# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu środowiska Node.js  
 <a name="HOLTop"></a>
 
 W tym artykule przedstawiono, jak [wykrywać język](#Detect), [analizować tonację](#SentimentAnalysis), [wyodrębniać kluczowe frazy](#KeyPhraseExtraction) i [identyfikować połączone jednostki](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i środowiska Node.js.

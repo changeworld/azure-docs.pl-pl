@@ -10,27 +10,27 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 3a84f9ed35bac7f56d4a6aa2af94d1c28e335b74
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4b8e7f429cbe9ff8e71432ac8038c8ad15114711
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53093203"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55080910"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager
 
-Dowiedz się, jak pobrać wartości wpisu tajnego z usługi Azure Key Vault i przekazać te wartości jako parametry podczas wdrażania usługi Resource Manager. Wartość nigdy nie jest uwidoczniana, ponieważ używane jest tylko odwołanie do jej identyfikatora magazynu Key Vault. Aby uzyskać więcej informacji, zobacz [Use Azure Key Vault to pass secure parameter value during deployment (Bezpieczne przekazywanie wartości parametru za pomocą usługi Azure Key Vault podczas wdrażania)](./resource-manager-keyvault-parameter.md)
+Dowiedz się, jak pobrać wpisy tajne z usługi Azure Key Vault i przekazać te wpisy jako parametry podczas wdrażania usługi Resource Manager. Wartość nigdy nie jest uwidoczniana, ponieważ używane jest tylko odwołanie do jej identyfikatora magazynu kluczy. Aby uzyskać więcej informacji, zobacz [Use Azure Key Vault to pass secure parameter value during deployment (Bezpieczne przekazywanie wartości parametru za pomocą usługi Azure Key Vault podczas wdrażania)](./resource-manager-keyvault-parameter.md)
 
-W samouczku [Ustawianie kolejności wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md) utworzono maszynę wirtualną, sieć wirtualną i kilka innych zasobów zależnych. W tym samouczku dostosujesz szablon, aby pobrać hasło administratora maszyny wirtualnej z usługi Azure Key Vault.
+W samouczku [Ustawianie kolejności wdrażania zasobów](./resource-manager-tutorial-create-templates-with-dependent-resources.md) utworzono maszynę wirtualną, sieć wirtualną i kilka innych zasobów zależnych. W tym samouczku dostosujesz szablon, aby pobrać hasło administratora maszyny wirtualnej z magazynu kluczy.
 
 Ten samouczek obejmuje następujące zadania:
 
 > [!div class="checklist"]
-> * Przygotowanie magazynu Key Vault
+> * Przygotowanie magazynu kluczy
 > * Otwieranie szablonu szybkiego startu
 > * Edytowanie pliku parametrów
 > * Wdrożenie szablonu
@@ -49,38 +49,35 @@ Aby ukończyć pracę z tym artykułem, potrzebne są następujące zasoby:
     ```azurecli-interactive
     openssl rand -base64 32
     ```
-    Usługa Azure Key Vault została zaprojektowana w celu ochrony kluczy kryptograficznych i innych wpisów tajnych. Aby uzyskać więcej informacji, zobacz [Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager](./resource-manager-tutorial-use-key-vault.md). Zalecamy również aktualizowanie hasła co trzy miesiące.
+    Sprawdź, czy wygenerowane hasło spełnia wymagania maszyny wirtualnej. Każda usługa platformy Azure ma określone wymagania dotyczące hasła. Aby sprawdzić wymagania maszyn wirtualnych dotyczące haseł, zobacz [What are the password requirements when creating a VM? (Jakie są wymagania dotyczące hasła podczas tworzenia maszyny wirtualnej?)](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-## <a name="prepare-the-key-vault"></a>Przygotowanie magazynu Key Vault
+## <a name="prepare-a-key-vault"></a>Przygotowanie magazynu kluczy
 
-W tej sekcji użyjesz szablonu usługi Resource Manager do utworzenia magazynu Key Vault oraz wpisu tajnego. Ten szablon umożliwia wykonanie następujących czynności:
+W tej sekcji użyjesz szablonu usługi Resource Manager do utworzenia magazynu kluczy oraz wpisu tajnego. Ten szablon umożliwia wykonanie następujących czynności:
 
-* Utworzenie magazynu Key Vault z włączoną właściwością `enabledForTemplateDeployment`. Ta właściwość musi mieć wartość „true”, aby w procesie wdrażania szablonu można było uzyskać dostęp do wpisów tajnych zdefiniowanych w tym magazynie Key Vault.
-* Dodaj wpis tajny do magazynu Key Vault.  Wpis tajny zawiera hasło administratora maszyny wirtualnej.
+* Utworzenie magazynu kluczy z włączoną właściwością `enabledForTemplateDeployment`. Ta właściwość musi mieć wartość „true”, aby w procesie wdrażania szablonu można było uzyskać dostęp do wpisów tajnych zdefiniowanych w tym magazynie kluczy.
+* Dodawanie wpisu tajnego do magazynu kluczy.  Wpis tajny zawiera hasło administratora maszyny wirtualnej.
 
-Jeśli użytkownik wdrażający szablon maszyny wirtualnej nie jest właścicielem ani współautorem magazynu Key Vault, właściciel lub współautor magazynu Key Vault musi przyznać mu uprawnienie Microsoft.KeyVault/vaults/deploy/action do tego magazynu kluczy. Aby uzyskać więcej informacji, zobacz [Use Azure Key Vault to pass secure parameter value during deployment (Bezpieczne przekazywanie wartości parametru za pomocą usługi Azure Key Vault podczas wdrażania)](./resource-manager-keyvault-parameter.md)
+Jeśli użytkownik wdrażający szablon maszyny wirtualnej nie jest właścicielem ani współautorem magazynu kluczy, właściciel lub współautor magazynu kluczy musi przyznać mu uprawnienie Microsoft.KeyVault/vaults/deploy/action do tego magazynu kluczy. Aby uzyskać więcej informacji, zobacz [Use Azure Key Vault to pass secure parameter value during deployment (Bezpieczne przekazywanie wartości parametru za pomocą usługi Azure Key Vault podczas wdrażania)](./resource-manager-keyvault-parameter.md)
 
-Szablon wymaga Twojego identyfikatora obiektu użytkownika z usługi Azure Active Directory w celu skonfigurowania uprawnień. Poniższa procedura pobiera identyfikator obiektu (identyfikator GUID) i generuje hasło administratora. W celu zapewnienia ochrony przed atakiem rozproszonym na hasła zalecamy korzystanie z haseł generowanych.
+Szablon wymaga Twojego identyfikatora obiektu użytkownika z usługi Azure Active Directory w celu skonfigurowania uprawnień. Poniższa procedura pozwala pobrać identyfikator obiektu (GUID).
 
-1. Uruchom następujące polecenie programu Azure PowerShell lub wiersza polecenia platformy Azure.  
+1. Uruchom następujące polecenie programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.  
 
     ```azurecli-interactive
     echo "Enter your email address that is associated with your Azure subscription):" &&
     read upn &&
     az ad user show --upn-or-object-id $upn --query "objectId" &&
-    openssl rand -base64 32
     ```
     ```azurepowershell-interactive
     $upn = Read-Host -Prompt "Input your user principal name (email address) used to sign in to Azure"
-    (Get-AzureADUser -ObjectId $upn).ObjectId
-    openssl rand -base64 32
+    (Get-AzADUser -UserPrincipalName $upn).Id
     ```
-2. Zanotuj identyfikator obiektu oraz wygenerowane hasło. Będą one potrzebne później.
-3. Sprawdź, czy wygenerowane hasło spełnia wymagania maszyny wirtualnej. Każda usługa platformy Azure ma określone wymagania dotyczące hasła. Aby sprawdzić wymagania maszyn wirtualnych dotyczące haseł, zobacz [What are the password requirements when creating a VM? (Jakie są wymagania dotyczące hasła podczas tworzenia maszyny wirtualnej?)](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+2. Zanotuj identyfikator obiektu. Będzie on potrzebny w dalszej części tego samouczka.
 
-Aby utworzyć magazyn Key Vault:
+Aby utworzyć magazyn kluczy:
 
-1. Wybierz poniższy obraz, aby zalogować się na platformie Azure i otworzyć szablon. Ten szablon umożliwia utworzenie magazynu Key Vault oraz wpisu tajnego.
+1. Wybierz poniższy obraz, aby zalogować się na platformie Azure i otworzyć szablon. Ten szablon umożliwia utworzenie magazynu kluczy oraz wpisu tajnego.
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Farmtutorials.blob.core.windows.net%2Fcreatekeyvault%2FCreateKeyVault.json"><img src="./media/resource-manager-tutorial-use-key-vault/deploy-to-azure.png" alt="deploy to azure"/></a>
 
@@ -89,7 +86,7 @@ Aby utworzyć magazyn Key Vault:
     ![Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager w portalu](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-key-vault-portal.png)
 
     * **Subskrypcja**: wybierz subskrypcję platformy Azure.
-    * **Grupa zasobów**: przypisz unikatową nazwę. Zanotuj tę nazwę, ponieważ ta sama grupa zasobów będzie używana do wdrożenia maszyny wirtualnej w kolejnej sesji. Umieszczenie magazynu Key Vault oraz maszyny wirtualnej w tej samej grupie zasobów ułatwia oczyszczanie zasobów po zakończeniu pracy z samouczkiem.
+    * **Grupa zasobów**: przypisz unikatową nazwę. Zanotuj tę nazwę, ponieważ ta sama grupa zasobów będzie używana do wdrożenia maszyny wirtualnej w kolejnej sesji. Umieszczenie magazynu kluczy oraz maszyny wirtualnej w tej samej grupie zasobów ułatwia oczyszczanie zasobów po zakończeniu pracy z samouczkiem.
     * **Lokalizacja**: wybierz lokalizację.  Domyślna lokalizacja to **Środkowe stany USA**.
     * **Nazwa usługi Key Vault**: przypisz unikatową nazwę. 
     * **Identyfikator dzierżawy**: funkcja szablonu automatycznie pobiera identyfikator dzierżawy.  Nie zmieniaj wartości domyślnej
@@ -98,25 +95,26 @@ Aby utworzyć magazyn Key Vault:
     * **Wartość wpisu tajnego**: Wprowadź wpis tajny.  Wpis tajny to hasło używane do logowania na maszynie wirtualnej. Zaleca się używanie hasła wygenerowanego w poprzedniej procedurze.
     * **Wyrażam zgodę na powyższe warunki i postanowienia**: Zaznacz.
 3. Wybierz pozycję **Edytuj parametry** w górnej części, aby zapoznać się z szablonem.
-4. Przejdź do wiersza 28 pliku szablonu w formacie JSON. Jest to definicja zasobu usługi Key Vault.
+4. Przejdź do wiersza 28 pliku szablonu w formacie JSON. Jest to definicja zasobu magazynu kluczy.
 5. Przejdź do wiersza 35:
 
     ```json
     "enabledForTemplateDeployment": true,
     ```
-    `enabledForTemplateDeployment` to właściwość usługi Key Vault. Ta właściwość musi mieć wartość „true”, aby podczas wdrażania było możliwe pobieranie wpisów tajnych z tego magazynu Key Vault.
+    `enabledForTemplateDeployment` to właściwość usługi Key Vault. Ta właściwość musi mieć wartość „true”, aby podczas wdrażania było możliwe pobieranie wpisów tajnych z tego magazynu kluczy.
 6. Przejdź do wiersza 89. Jest to definicja wpisu tajnego usługi Key Vault.
 7. Wybierz pozycję **Odrzuć** w dolnej części strony. Nie wprowadzono żadnych zmian.
 8. Sprawdź, czy wszystkie wartości zostały podane tak, jak na powyższym zrzucie ekranu, a następnie kliknij przycisk **Kup** w dolnej części strony.
 9. Wybierz ikonę dzwonka (powiadomienia) w górnej części strony, aby otworzyć okienko **Powiadomienia**. Zaczekaj na pomyślne wdrożenie zasobu.
 10. W okienku **Powiadomienia** wybierz pozycję **Przejdź do grupy zasobów**. 
-11. Wybierz nazwę magazynu Key Vault, aby go otworzyć.
-12. W okienku po lewej stronie wybierz pozycję **Zasady dostępu**. Powinna być tam widoczna Twoja nazwa (z usługi Active Directory) — jeśli jej nie ma, nie masz uprawnień dostępu do tego magazynu kluczy.
-13. Wybierz pozycję **Kliknij, aby wyświetlić zaawansowane zasady dostępu**. Zwróć uwagę, że pole **Włącz dostęp do usługi Azure Resource Manager na potrzeby wdrożenia szablonu** jest zaznaczone. To kolejny warunek, który musi być spełniony, aby umożliwić integrację z usługą Key Vault.
+11. Wybierz nazwę magazynu kluczy, aby go otworzyć.
+12. Wybierz pozycję **Wpisy tajne** w okienku po lewej stronie. Powinien być tam wymieniony wpis **vmAdminPassword**.
+13. W okienku po lewej stronie wybierz pozycję **Zasady dostępu**. Powinna być tam widoczna Twoja nazwa (z usługi Active Directory) — jeśli jej nie ma, nie masz uprawnień dostępu do tego magazynu kluczy.
+14. Wybierz pozycję **Kliknij, aby wyświetlić zaawansowane zasady dostępu**. Zwróć uwagę, że pole **Włącz dostęp do usługi Azure Resource Manager na potrzeby wdrożenia szablonu** jest zaznaczone. To ustawienie to kolejny warunek, który musi być spełniony, aby umożliwić integrację z usługą Key Vault.
 
     ![Zasady dostępu na potrzeby integracji szablonu usługi Resource Manager z usługą Key Vault](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-key-vault-access-policies.png)
-14. Wybierz pozycję **Właściwości** w okienku po lewej stronie.
-15. Skopiuj **Identyfikator zasobu**. Ten identyfikator będzie potrzebny podczas wdrażania maszyny wirtualnej.  Format identyfikatora zasobu jest następujący:
+15. Wybierz pozycję **Właściwości** w okienku po lewej stronie.
+16. Skopiuj **Identyfikator zasobu**. Ten identyfikator będzie potrzebny podczas wdrażania maszyny wirtualnej.  Format identyfikatora zasobu jest następujący:
 
     ```json
     /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -166,7 +164,7 @@ Nie musisz wprowadzać żadnych zmian w pliku szablonu.
         }
     },
     ```
-    Zastąp wartość **id** identyfikatorem zasobu magazynu Key Vault utworzonego w poprzedniej procedurze.  
+    Zastąp wartość **id** identyfikatorem zasobu magazynu kluczy utworzonym w poprzedniej procedurze.  
 
     ![Integracja usługi Key Vault podczas wdrażania maszyny wirtualnej z szablonu usługi Resource Manager — plik parametrów](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 3. Podaj następujące wartości:
@@ -180,22 +178,27 @@ Nie musisz wprowadzać żadnych zmian w pliku szablonu.
 Postępuj zgodnie z instrukcjami przedstawionymi w sekcji [Wdrożenie szablonu](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), aby wdrożyć szablon. Przekaż pliki **azuredeploy.json** i **azuredeploy.parameters.json** do usługi Cloud Shell, a następnie wdróż szablon za pomocą następującego skryptu programu PowerShell:
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name of the Key Vault"
 $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
-New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $resourceGroupName `
-    -TemplateFile azuredeploy.json -TemplateParameterFile azuredeploy.parameters.json
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+New-AzureRmResourceGroupDeployment -Name $deploymentName `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile azuredeploy.json `
+    -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-Podczas wdrażania szablonu należy użyć tej samej grupy zasobów, która została użyta na potrzeby magazynu Key Vault. Ułatwia to oczyszczanie zasobów. Wystarczy wówczas usunąć jedną grupę zasobów, a nie dwie.
+Podczas wdrażania szablonu należy użyć tej samej grupy zasobów, która została użyta na potrzeby magazynu kluczy. Ułatwia to oczyszczanie zasobów. Wystarczy wówczas usunąć jedną grupę zasobów, a nie dwie.
 
 ## <a name="valid-the-deployment"></a>Weryfikacja wdrożenia
 
-Po pomyślnym wdrożeniu maszyny wirtualnej przetestuj logowanie przy użyciu hasła przechowywanego w usłudze Key Vault.
+Po pomyślnym wdrożeniu maszyny wirtualnej przetestuj logowanie przy użyciu hasła przechowywanego w magazynie kluczy.
 
 1. Otwórz [portal Azure](https://portal.azure.com).
 2. Wybierz pozycję **Grupy zasobów**/**Nazwa_grupy_zasobów>**/**simpleWinVM**
 3. Wybierz pozycję **Połącz** na górze strony.
-4. Wybierz pozycję **Pobierz plik RDP**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na maszynie wirtualnej za pomocą hasła przechowywanego w magazynie Key Vault.
+4. Wybierz pozycję **Pobierz plik RDP**, a następnie postępuj zgodnie z instrukcjami, aby zalogować się na maszynie wirtualnej za pomocą hasła przechowywanego w magazynie kluczy.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

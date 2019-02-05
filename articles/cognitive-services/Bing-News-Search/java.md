@@ -6,17 +6,17 @@ services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f8a98133d68cb73958664dd04bb2d959c97195cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 71f0ece2ff06ef000092485b8e7e11c5eedb38dd
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263853"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174503"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Szybki start: wyszukiwanie wiadomości przy użyciu języka Java i interfejsu API REST wyszukiwania wiadomości Bing
 
@@ -64,7 +64,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
     }
     ```
 
-## <a name="construct-the-search-request-and-recieve-a-json-response"></a>Konstruowanie żądania wyszukiwania i odbieranie odpowiedzi JSON
+## <a name="construct-the-search-request-and-receive-a-json-response"></a>Konstruowanie żądania wyszukiwania i odbieranie odpowiedzi JSON
 
 1. Użyj zmiennych utworzonych w ostatnim kroku, aby sformatować adres URL wyszukiwania dla żądania interfejsu API. Należy pamiętać, że termin wyszukiwania musi zostać zakodowany w adresie URL przed dołączeniem go do żądania.
 

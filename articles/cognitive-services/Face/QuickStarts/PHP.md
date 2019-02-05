@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP'
+title: 'Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem PHP.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: pafarley
-ms.openlocfilehash: be322cafc381dbc6e8b7cf03cd65e1dd5f9c9ad4
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 63484f4dcb47aeecbb33c84b7924b2a7e471d3cd
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954905"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55223421"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka PHP
 
 W tym przewodniku Szybki start wykryjesz ludzką twarz na obrazie za pomocą interfejsu API rozpoznawania twarzy.
 
@@ -30,7 +30,7 @@ Do uruchomienia przykładu potrzebny jest klucz subskrypcji. Klucze subskrypcji 
 Użyj metody [Face — Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby wykryć twarze na obrazie i zwrócić atrybuty twarzy, w tym:
 
 * Identyfikator Face ID: unikatowy identyfikator używany w kilku scenariuszach dotyczących interfejsu API rozpoznawania twarzy.
-* Obrys twarzy: lewy górny róg oraz szerokość i wysokość wskazujące na lokalizację twarzy na obrazie.
+* Obrys twarzy: lewy górny róg oraz szerokość i wysokość wskazujące lokalizację twarzy na obrazie.
 * Charakterystyczne punkty twarzy: układ 27 charakterystycznych punktów twarzy wskazujący położenie istotnych części twarzy.
 * Atrybuty twarzy, takie jak wiek, płeć, intensywność uśmiechu, położenie głowy i zarost.
 

@@ -3,7 +3,7 @@ title: Samouczek — tworzenie zestawu skalowania maszyn wirtualnych platformy A
 description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć zestaw skalowania maszyn wirtualnych oraz wykonywać niektóre typowe zadania zarządzania, takie jak uruchamianie i zatrzymywanie wystąpienia lub zmienianie pojemności zestawu skalowania.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 263a2ddd1cf42348678488a02ed0b97a7ed1304c
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466141"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55179484"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: tworzenie zestawu skalowania maszyn wirtualnych i zarządzanie nim przy użyciu interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: Tworzenie zestawu skalowania maszyn wirtualnych i zarządzanie nim przy użyciu interfejsu wiersza polecenia platformy Azure
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -51,7 +51,7 @@ Nazwa grupy zasobów jest podawana podczas tworzenia lub modyfikowania zestawu s
 
 
 ## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
-Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss#az_vmss_create). W poniższym przykładzie pokazano tworzenie zestawu skalowania o nazwie *myScaleSet* i generowanie kluczy SSH, jeśli nie istnieją:
+Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss). W poniższym przykładzie pokazano tworzenie zestawu skalowania o nazwie *myScaleSet* i generowanie kluczy SSH, jeśli nie istnieją:
 
 ```azurecli-interactive
 az vmss create \
@@ -98,7 +98,7 @@ az vmss get-instance-view \
 ## <a name="list-connection-information"></a>Wyświetlanie informacji o połączeniu
 Do modułu równoważenia obciążenia, który kieruje ruch do poszczególnych wystąpień maszyn wirtualnych, jest przypisany publiczny adres IP. Domyślnie do modułu równoważenia obciążenia platformy Azure, który przesyła dalej ruch połączenia zdalnego na danym porcie do poszczególnych maszyn wirtualnych, są dodawane reguły translatora adresów sieciowych (NAT). Aby nawiązać połączenie z wystąpieniami maszyn wirtualnych w zestawie skalowania, musisz utworzyć połączenie zdalne z przypisanym publicznym adresem IP za pośrednictwem określonego numeru portu.
 
-Za pomocą polecenia [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) podaj listę adresów i portów służących do nawiązania połączenia z wystąpieniami maszyn wirtualnych w zestawie skalowania:
+Za pomocą polecenia [az vmss list-instance-connection-info](/cli/azure/vmss) podaj listę adresów i portów służących do nawiązania połączenia z wystąpieniami maszyn wirtualnych w zestawie skalowania:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -202,7 +202,7 @@ W poniższej tabeli przedstawiono typowe kategorie rozmiarów maszyn wirtualnych
 | [Wysoka wydajność](../virtual-machines/linux/sizes-hpc.md) | H, A8-11          | Maszyny wirtualne z najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). 
 
 ### <a name="find-available-vm-instance-sizes"></a>Znajdowanie dostępnych rozmiarów wystąpień maszyn wirtualnych
-Aby wyświetlić listę dostępnych rozmiarów wystąpień maszyn wirtualnych w danym regionie, użyj polecenia [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes).
+Aby wyświetlić listę dostępnych rozmiarów wystąpień maszyn wirtualnych w danym regionie, użyj polecenia [az vm list-sizes](/cli/azure/vm).
 
 ```azurecli-interactive
 az vm list-sizes --location eastus --output table
@@ -227,7 +227,7 @@ Rezultat jest podobny do poniższego, skróconego przykładu, który pokazuje za
 ```
 
 ### <a name="create-a-scale-set-with-a-specific-vm-instance-size"></a>Tworzenie zestawu skalowania o określonym rozmiarze wystąpienia maszyny wirtualnej
-Podczas tworzenia zestawu skalowania na początku tego samouczka dla wystąpień maszyn wirtualnych została użyta domyślna jednostka SKU maszyny wirtualnej *Standard_D1_v2*. Można wskazać inny rozmiar wystąpienia maszyny wirtualnej na podstawie danych wyjściowych polecenia [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes). W poniższym przykładzie zostanie utworzony zestaw skalowania z parametrem `--vm-sku` umożliwiającym wskazanie rozmiaru wystąpienia maszyny wirtualnej *Standard_F1*. Nie trzeba wdrażać następującego zestawu skalowania, ponieważ utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania oraz wystąpień maszyn wirtualnych trwa kilka minut:
+Podczas tworzenia zestawu skalowania na początku tego samouczka dla wystąpień maszyn wirtualnych została użyta domyślna jednostka SKU maszyny wirtualnej *Standard_D1_v2*. Można wskazać inny rozmiar wystąpienia maszyny wirtualnej na podstawie danych wyjściowych polecenia [az vm list-sizes](/cli/azure/vm). W poniższym przykładzie zostanie utworzony zestaw skalowania z parametrem `--vm-sku` umożliwiającym wskazanie rozmiaru wystąpienia maszyny wirtualnej *Standard_F1*. Nie trzeba wdrażać następującego zestawu skalowania, ponieważ utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania oraz wystąpień maszyn wirtualnych trwa kilka minut:
 
 ```azurecli-interactive
 az vmss create \
@@ -241,7 +241,7 @@ az vmss create \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Zmienianie pojemności zestawu skalowania
-Podczas tworzenia zestawu skalowania na początku tego samouczka domyślnie zostały wdrożone dwa wystąpienia maszyn wirtualnych. Polecenie [az vmss create](/cli/azure/vmss#az_vmss_create) przyjmuje parametr `--instance-count`, który pozwala zmienić liczbę wystąpień tworzonych w zestawie skalowania. Aby zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych w istniejącym zestawie skalowania, można ręcznie zmienić pojemność. Zestaw skalowania tworzy lub usuwa wymaganą liczbę wystąpień maszyn wirtualnych, a następnie konfiguruje moduł równoważenia obciążenia w celu dystrybucji ruchu.
+Podczas tworzenia zestawu skalowania na początku tego samouczka domyślnie zostały wdrożone dwa wystąpienia maszyn wirtualnych. Polecenie [az vmss create](/cli/azure/vmss) przyjmuje parametr `--instance-count`, który pozwala zmienić liczbę wystąpień tworzonych w zestawie skalowania. Aby zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych w istniejącym zestawie skalowania, można ręcznie zmienić pojemność. Zestaw skalowania tworzy lub usuwa wymaganą liczbę wystąpień maszyn wirtualnych, a następnie konfiguruje moduł równoważenia obciążenia w celu dystrybucji ruchu.
 
 Aby ręcznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych w zestawie skalowania, użyj polecenia [az vmss scale](/cli/azure/vmss#az_vmss_scale). W poniższym przykładzie liczba wystąpień maszyn wirtualnych w zestawie skalowania jest ustawiana na *3*:
 

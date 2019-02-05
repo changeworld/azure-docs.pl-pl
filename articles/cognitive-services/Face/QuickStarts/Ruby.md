@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby'
+title: 'Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start omówiono wykrywanie twarzy na obrazie przy użyciu interfejsu API rozpoznawania twarzy z językiem Ruby.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 8b47c845e8523e1c35dee8a5732cb15fed09e030
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 6320e05172673abf809ac7fdbfea544ed74b0019
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955448"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221083"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu interfejsu API REST i języka Ruby
 
 W tym przewodniku Szybki start wykryjesz ludzką twarz na obrazie za pomocą interfejsu API rozpoznawania twarzy.
 
@@ -30,7 +30,7 @@ Do uruchomienia przykładu potrzebny jest klucz subskrypcji. Klucze subskrypcji 
 Użyj metody [Face — Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), aby wykryć twarze na obrazie i zwrócić atrybuty twarzy, w tym:
 
 * Identyfikator Face ID: unikatowy identyfikator używany w kilku scenariuszach dotyczących interfejsu API rozpoznawania twarzy.
-* Obrys twarzy: lewy górny róg oraz szerokość i wysokość wskazujące na lokalizację twarzy na obrazie.
+* Obrys twarzy: lewy górny róg oraz szerokość i wysokość wskazujące lokalizację twarzy na obrazie.
 * Charakterystyczne punkty twarzy: układ 27 charakterystycznych punktów twarzy wskazujący położenie istotnych części twarzy.
 * Atrybuty twarzy, takie jak wiek, płeć, intensywność uśmiechu, położenie głowy i zarost.
 

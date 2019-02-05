@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS | Microsoft Docs'
+title: 'Samouczek: projektowanie pierwszej pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu programu SSMS | Microsoft Docs'
 description: Dowiedz się, jak zaprojektować pierwszą bazę danych Azure SQL Database za pomocą programu SQL Server Management Studio (SSMS).
 services: sql-database
 ms.service: sql-database
@@ -9,13 +9,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 9fa36b9b87a8e9591b0c863826cd2278a29ba28e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 01/25/2019
+ms.openlocfilehash: e7229a0816cf74fed08397a68dd34e305bf8c0ea
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956061"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459540"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Samouczek: Projektowanie pierwszej bazy danych Azure SQL Database przy użyciu programu SSMS
 
@@ -47,7 +47,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-database"></a>Tworzenie pustej bazy danych
 
-Baza danych Azure SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych i przechowywania](sql-database-service-tiers-dtu.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze logicznym bazy danych Azure SQL Database](sql-database-features.md).
+Baza danych Azure SQL jest tworzona ze zdefiniowanym zestawem [zasobów obliczeniowych i przechowywania](sql-database-service-tiers-dtu.md). Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) oraz na [serwerze usługi Azure SQL Database](sql-database-features.md).
 
 Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
 
@@ -96,7 +96,7 @@ Wykonaj poniższe czynności, aby utworzyć pustą bazę danych SQL.
 
 ## <a name="create-a-firewall-rule"></a>Tworzenie reguły zapory
 
-Usługa SQL Database tworzy zaporę na poziomie serwera. Zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze. Aby umożliwić zewnętrzną łączność z bazą danych, najpierw dodaj do zapory regułę dla adresu IP. Wykonaj procedurę tworzenia [reguły zapory na poziomie serwera bazy danych SQL Database](sql-database-firewall-configure.md).
+Usługa SQL Database tworzy zaporę na poziomie serwera. Zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze. Aby umożliwić zewnętrzną łączność z bazą danych, najpierw dodaj do zapory regułę dla adresu IP. Wykonaj procedurę tworzenia [reguły zapory na poziomie serwera usługi SQL Database](sql-database-firewall-configure.md).
 
 > [!NOTE]
 > Usługa SQL Database nawiązuje komunikację na porcie 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być zablokowany przez firmową zaporę. Jeśli wystąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że administrator otworzy port 1433.
@@ -113,7 +113,7 @@ Usługa SQL Database tworzy zaporę na poziomie serwera. Zapora uniemożliwia ze
 
    1. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory. Reguła zapory może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
 
-   1. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
+   1. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
 
    1. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
 

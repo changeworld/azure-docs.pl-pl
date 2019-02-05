@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
@@ -17,14 +17,14 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 23912f9d004d051c422f93e8b10f1aa6cb8b2626
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a39fc2d0e1a57322f3cce63fa298657c1f938e55
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959499"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55100737"
 ---
-# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Szybki start: tworzenie aplikacji jednostronicowej AngularJS służącej do logowania w usłudze Azure Active Directory i wylogowywania się z niej
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Szybki start: Tworzenie aplikacji jednostronicowej AngularJS służącej do logowania w usłudze Azure Active Directory i wylogowywania się z niej
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
@@ -52,7 +52,7 @@ Aby rozpocząć pracę, należy spełnić poniższe następujące wstępne:
 * [Pobranie szkieletu aplikacji](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) lub [pobranie pełnego przykładu](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
 * Dzierżawa usługi Azure AD, w której można utworzyć użytkowników i zarejestrować aplikację. Jeśli nie masz jeszcze dzierżawy, [dowiedz się, jak ją uzyskać](quickstart-create-new-tenant.md).
 
-## <a name="step-1-register-the-directorysearcher-application"></a>Krok 1. Rejestrowanie aplikacji DirectorySearcher
+## <a name="step-1-register-the-directorysearcher-application"></a>Krok 1: Rejestrowanie aplikacji DirectorySearcher
 
 Aby umożliwić aplikacji uwierzytelnianie użytkowników i uzyskiwanie tokenów, należy najpierw zarejestrować ją w dzierżawie usługi Azure AD:
 
@@ -75,7 +75,7 @@ Aby umożliwić aplikacji uwierzytelnianie użytkowników i uzyskiwanie tokenów
 1. Udziel uprawnień w całej dzierżawie dla swojej aplikacji. Przejdź kolejno do pozycji **Ustawienia > Wymagane uprawnienia** i wybierz przycisk **Udziel uprawnień** na pasku u góry strony.
 1. Wybierz pozycję **Tak**, aby potwierdzić.
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2. Instalowanie biblioteki ADAL i konfigurowanie aplikacji jednostronicowej
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Krok 2: Instalowanie biblioteki ADAL i konfigurowanie aplikacji jednostronicowej
 
 Gdy masz już aplikację w usłudze Azure AD, możesz zainstalować bibliotekę adal.js i napisać kod dotyczący tożsamości.
 
@@ -101,7 +101,7 @@ Aby interfejs API listy zadań zaplecza aplikacji jednostronicowej akceptował t
    * `ida:Tenant` to domena dzierżawy usługi Azure AD — na przykład contoso.onmicrosoft.com.
    * `ida:Audience` to identyfikator klienta Twojej aplikacji skopiowany z portalu.
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Krok 3. Używanie biblioteki ADAL do zabezpieczania stron w aplikacji jednostronicowej
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Krok 3: Używanie biblioteki ADAL do zabezpieczenia stron w aplikacji jednostronicowej
 
 Biblioteka adal.js integruje się z trasą AngularJS i dostawcami protokołu HTTP, co umożliwia zabezpieczenie indywidualnych widoków w aplikacji jednostronicowej.
 

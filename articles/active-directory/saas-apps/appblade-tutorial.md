@@ -1,231 +1,205 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą AppBlade | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i AppBlade.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją AppBlade | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją AppBlade.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 3360d7aa-6518-4f99-88bd-b7f7258183e8
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/09/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 2efe0cd50e894ad76ab3b40b17970091870f9711
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: c78c7211bf0dc09a57604bd2728a940fe1633379
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178056"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475504"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą AppBlade
+# <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją AppBlade
 
-W tym samouczku dowiesz się, jak zintegrować AppBlade w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację AppBlade z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji AppBlade z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie AppBlade z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji AppBlade.
+* Swoim użytkownikom możesz zezwolić na automatyczne logowanie się do aplikacji AppBlade (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do AppBlade
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do AppBlade (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą AppBlade, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją AppBlade, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Logowania jednokrotnego AppBlade włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji AppBlade z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie AppBlade z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-appblade-from-the-gallery"></a>Dodawanie AppBlade z galerii
-Aby skonfigurować integrację AppBlade w usłudze Azure AD, należy dodać AppBlade z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja AppBlade obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
+* Aplikacja AppBlade obsługuje aprowizowanie użytkowników typu **just in time**
 
-**Aby dodać AppBlade z galerii, wykonaj następujące czynności:**
+## <a name="adding-appblade-from-the-gallery"></a>Dodawanie aplikacji AppBlade z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji AppBlade z usługą Azure AD, musisz dodać aplikację AppBlade z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać aplikację AppBlade z galerii, wykonaj następujące kroki:**
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
+
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
 3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Aplikacje][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **AppBlade**.
+4. W polu wyszukiwania wpisz nazwę **AppBlade**, wybierz pozycję **AppBlade** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/appblade-tutorial/tutorial_appblade_search.png)
+     ![Aplikacja AppBlade na liście wyników](common/search-new-app.png)
 
-5. W panelu wyników wybierz **AppBlade**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/appblade-tutorial/tutorial_appblade_addfromgallery.png)
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w aplikacji AppBlade, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji AppBlade.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą AppBlade w oparciu o użytkownika testu o nazwie "Britta Simon."
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji AppBlade, należy ukończyć poniższe bloki konstrukcyjne:
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w AppBlade do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w AppBlade musi można ustanowić.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji AppBlade](#configure-appblade-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji AppBlade](#create-appblade-test-user)** — aby mieć w aplikacji AppBlade odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-W AppBlade, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą AppBlade, należy wykonać poniższe bloki konstrukcyjne:
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego AppBlade](#creating-an-appblade-test-user)**  — aby odpowiednikiem Britta Simon w AppBlade połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji AppBlade, wykonaj następujące kroki:
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **AppBlade** wybierz pozycję **Logowanie jednokrotne**.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji AppBlade.
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z AppBlade, wykonaj następujące czynności:**
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. W witrynie Azure portal na **AppBlade** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/appblade-tutorial/tutorial_appblade_samlbase.png)
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-3. Na **AppBlade domena i adresy URL** sekcji, wykonaj następujące czynności:
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/appblade-tutorial/tutorial_appblade_url.png)
+    ![Domena i adresy URL aplikacji AppBlade — informacje dotyczące logowania jednokrotnego](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.appblade.com/saml/<tenantid>`
 
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta AppBlade](mailto:support@appblade.com) można uzyskać wartość. 
- 
-4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta AppBlade](mailto:support@appblade.com), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/appblade-tutorial/tutorial_appblade_certificate.png) 
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-5. Kliknij przycisk **Save** (Zapisz).
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/appblade-tutorial/tutorial_general_400.png)
+6. W sekcji **Konfigurowanie aplikacji AppBlade** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-6. Aby skonfigurować logowanie jednokrotne na **AppBlade** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej AppBlade](mailto:support@appblade.com). Ponadto, poproś go o skonfigurowanie **adres URL wystawcy logowania jednokrotnego** jako `https://appblade.com/saml`. To ustawienie jest wymagane do logowania jednokrotnego do pracy.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
+    a. Adres URL logowania
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
- 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-appblade-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji AppBlade
+
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **AppBlade**, musisz wysłać pobrany **plik XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji AppBlade](mailto:support@appblade.com). Ponadto poproś go o skonfigurowanie **adresu URL wystawcy logowania jednokrotnego** `https://appblade.com/saml`. To ustawienie jest wymagane, aby logowanie jednokrotne działało.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/appblade-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/appblade-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/appblade-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-4. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/appblade-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-an-appblade-test-user"></a>Tworzenie użytkownika testowego AppBlade
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w AppBlade. AppBlade obsługę just-in-time, który jest domyślnie włączona. **Upewnij się, że nazwa domeny jest skonfigurowany z AppBlade do inicjowania obsługi użytkowników. Po dokonaniu tylko just-in-time aprowizacja działa.**
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-Jeśli użytkownik ma adresu e-mail kończącego się z domeną, skonfigurowane przez AppBlade dla swojego konta, a następnie użytkownika zostaną automatycznie dołączone jako członka z poziomem uprawnień, które określisz konto, które jest jednym z "Basic" (podstawowe użytkownika, który można zainstalować tylko na aplikacje) , "Członek zespołu" (użytkownika, który można przekazać nowe wersje aplikacji i zarządzanie projektami), lub "Administrator" (pełna Administracja uprawnienia do konta). Zwykle jeden czy wybierz pozycję podstawowy i promować użytkownicy ręcznie za pomocą identyfikatora logowania administratora (wymaga AppBlade wcześniej skonfigurować logowanie bazujące na poczcie e-mail administratora, lub podwyższanie poziomu użytkownika w imieniu klienta po zalogowaniu).
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji AppBlade.
 
-W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu AppBlade, jeśli go jeszcze nie istnieje. 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw** i **Wszystkie aplikacje**, a następnie pozycję **AppBlade**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz pozycję **AppBlade**.
+
+    ![Link aplikacji AppBlade na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-appblade-test-user"></a>Tworzenie użytkownika testowego aplikacji AppBlade
+
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji AppBlade. Aplikacja AppBlade obsługuje aprowizację typu just in time, która jest domyślnie włączona. **Upewnij się, że Twoja nazwa domeny została skonfigurowana w aplikacji AppBlade na potrzeby aprowizowania użytkowników. Wtedy będzie działać tylko aprowizacja użytkowników just in time.**
+
+Jeśli użytkownik ma adres e-mail kończący się domeną skonfigurowaną przez aplikację AppBlade dla Twojego konta, wówczas zostanie automatycznie dołączony do konta jako członek z określonym przez Ciebie poziomem uprawnień: „Podstawowy” (podstawowy użytkownik, który może tylko instalować aplikacje), „Członek zespołu" (użytkownik, który może przekazywać nowe wersje aplikacji i zarządzać projektami) lub „Administrator” (pełne uprawnienia administratora do konta). Zwykle wybiera się poziom uprawnień Podstawowy, a następnie podwyższa poziom uprawnień użytkowników ręcznie (firma AppBlade musi z wyprzedzeniem skonfigurować logowanie administratora bazujące na poczcie e-mail lub podwyższyć poziom użytkownika w imieniu klienta po zalogowaniu).
+
+W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje, nowy użytkownik zostanie utworzony podczas próby uzyskania dostępu do aplikacji AppBlade.
 
 > [!NOTE]
-> Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej AppBlade](mailto:support@appblade.com).
+> Jeśli konieczne jest ręczne utworzenie użytkownika, skontaktuj się z [zespołem pomocy technicznej aplikacji AppBlade](mailto:support@appblade.com).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do AppBlade.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon AppBlade, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-2. Na liście aplikacji wybierz **AppBlade**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/appblade-tutorial/tutorial_appblade_app.png) 
-
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.  
-Po kliknięciu kafelka AppBlade w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji AppBlade. 
+Po kliknięciu kafelka AppBlade na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji AppBlade, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/appblade-tutorial/tutorial_general_01.png
-[2]: ./media/appblade-tutorial/tutorial_general_02.png
-[3]: ./media/appblade-tutorial/tutorial_general_03.png
-[4]: ./media/appblade-tutorial/tutorial_general_04.png
-
-[100]: ./media/appblade-tutorial/tutorial_general_100.png
-
-[200]: ./media/appblade-tutorial/tutorial_general_200.png
-[201]: ./media/appblade-tutorial/tutorial_general_201.png
-[202]: ./media/appblade-tutorial/tutorial_general_202.png
-[203]: ./media/appblade-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

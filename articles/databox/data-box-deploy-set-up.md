@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 460a05ac25ca4af56b81fb2025e0886c7bda3070
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391163"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902169"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Samouczek: Podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia
 
@@ -50,7 +50,7 @@ Wykonaj poniższe kroki, aby podłączyć kable do urządzenia.
 
 1. Sprawdź, czy urządzenie nie ma śladów naruszenia ani innych widocznych uszkodzeń. Jeśli urządzenie jest naruszone lub poważnie uszkodzone, nie kontynuuj. Od razu skontaktuj się z pracownikiem pomocy technicznej firmy Microsoft, który pomoże Ci ocenić, czy urządzenie jest w dobrym stanie, czy konieczne jest wysłanie nowego.
 2. Dostarcz urządzenie do lokalizacji, w której chcesz je włączyć. Umieść je na płaskiej powierzchni. Urządzenie można także umieścić na standardowej półce na stojaku.
-3. Podłącz kabel zasilający i sieciowy. Poniżej przedstawiono płytę montażową z podłączonym urządzeniem dla typowej konfiguracji. 
+3. Podłącz kabel zasilający i sieciowy. Poniżej przedstawiono płytę montażową z podłączonym urządzeniem dla typowej konfiguracji. W zależności od środowiska można wybrać inne [opcje okablowania](data-box-cable-options.md).
     
     ![Płyta montażowa urządzenia Data Box z podłączonymi kablami](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)
 

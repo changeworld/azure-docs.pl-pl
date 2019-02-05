@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: tworzenie aplikacji do łączenia jednostek w języku C#'
+title: 'Samouczek: Tworzenie aplikacji do łączenia jednostek — C#'
 titlesuffix: Azure Cognitive Services
 description: Interfejs API Entity Linking służy do analizowania tekstu i łączenia mających nazwę jednostek z odpowiadającymi im pozycjami w bazie wiedzy.
 services: cognitive-services
 author: DavidLiCIG
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: entity-linking-intelligence
+ms.subservice: entity-linking-intelligence
 ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 883d566fd3a6089eb9e72498089f995697a318f1
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365642"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216816"
 ---
-# <a name="tutorial-build-an-entity-linking-app-with-c"></a>Samouczek: tworzenie aplikacji do łączenia jednostek w języku C#
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>Samouczek: Tworzenie aplikacji do łączenia jednostek w języku C#
 
 Microsoft Entity Linking to narzędzie do przetwarzania języka naturalnego, które służy do analizowania tekstu i łączenia mających nazwę jednostek z odpowiadającymi im pozycjami bazy wiedzy. 
 
@@ -32,16 +32,16 @@ Ten samouczek prezentuje łączenie jednostek przy użyciu biblioteki klienta En
 
 Bibliotekę klienta interfejsu API Entity Linking Intelligence Service możesz pobrać za pomocą [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows). Pobrany plik zip trzeba rozpakować do dowolnego folderu; wielu użytkowników wybiera folder Visual Studio 2015.
 
-### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">Krok 1: Zasubskrybowanie usługi Entity Linking Intelligence Service i uzyskanie klucza</a>
-Przed rozpoczęciem korzystania z Entity Linking Intelligence Service musisz się zarejestrować, aby uzyskać klucz interfejsu API. Zobacz temat [Subskrypcje](https://www.microsoft.com/cognitive-services/en-us/sign-up). W tym samouczku można używać zarówno klucza podstawowego, jak i dodatkowego.
+### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">Krok 1. Zasubskrybowanie usługi Entity Linking Intelligence Service i uzyskanie klucza</a>
+Przed rozpoczęciem korzystania z Entity Linking Intelligence Service musisz się zarejestrować, aby uzyskać klucz interfejsu API. Zobacz temat [Subskrypcje](https://www.microsoft.com/cognitive-services/en-us/sign-up). W tym samouczku można używać zarówno klucza podstawowego, jak i pomocniczego.
 
-### <a name="step-2-create-a-new-project-in-visual-studio"> Krok 2: Utworzenie nowego projektu w Visual Studio</a>
+### <a name="step-2-create-a-new-project-in-visual-studio">Krok 2. Utworzenie nowego projektu w Visual Studio</a>
 
 Na początek utworzymy nowy projekt w Visual Studio. Uruchom Visual Studio 2015 za pomocą menu Start. Następnie utwórz nowy projekt, wybierając jako szablon projektu **Zainstalowane → Szablony → Visual C# → Projekt uniwersalny systemu Windows → Pusta aplikacja**:
 
  ![Tworzenie uniwersalnej aplikacji](./Images/CreateUWP.png)
 
-### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">Krok 3: Dodanie do projektu pakietu NuGet Entity Linking</a>
+### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">Krok 3. Dodanie do projektu pakietu NuGet Entity Linking</a>
 
 Funkcja Entity Linking usług Cognitive Services została opublikowana jako pakiet NuGet.org. Przed użyciem musisz go zainstalować.
 Aby dodać go do projektu, przejdź na kartę **Eksplorator rozwiązań**, kliknij projekt prawym przyciskiem myszy i wybierz polecenie **Zarządzaj pakietami NuGet**.
@@ -54,7 +54,7 @@ Pakiet Entity Linking jest teraz zainstalowany jako część aplikacji. Możesz 
 
  ![Biblioteka NuGet dołączona do projektu](./Images/NugetLibraryInProject.png)
  
-### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Krok 4: Dodanie pola wprowadzania tekstu i bloku tekstu wyjściowego do pliku XAML aplikacji</a>
+### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">Krok 4. Dodanie pola wprowadzania tekstu i bloku tekstu wyjściowego do pliku XAML aplikacji</a>
 Znajdź plik ** MainPage.xaml ** w **Eksploratorze rozwiązań** i kliknij go dwukrotnie. Zostanie otwarty w nowym oknie. Dla wygody możesz kliknąć dwukrotnie przycisk **XAML** na karcie **Projektant**, aby ukryć **Wizualnego projektanta**, powiększając widok kodu.
 
  ![Biblioteka NuGet dołączona do projektu](./Images/UWPMainPage.png)
@@ -74,7 +74,7 @@ Ponieważ używamy usługi przetwarzającej tekst, najlepszym sposobem wizualiza
 </Grid>
  ```
  
-### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">Krok 5: Dodanie usługi Entity Linking Intelligence Service</a>
+### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">Krok 5. Dodanie usługi Entity Linking Intelligence Service</a>
  
 Interfejs użytkownika został utworzony. Przed użyciem usługi Entity Linking musimy dodać procedurę obsługi kliknięcia przycisku. Otwórz plik **MainPage.xaml** z poziomu **Eksploratora rozwiązań**. Dodaj procedurę obsługi button_Click na końcu przycisku.
  

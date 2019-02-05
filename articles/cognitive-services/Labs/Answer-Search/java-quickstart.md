@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: laboratorium Project Answer Search, Java'
+title: 'Szybki start: Laboratorium Project Answer Search, Java'
 titlesuffix: Azure Cognitive Services
 description: Rozpocznij korzystanie z laboratorium Project Answer Search w języku Java.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 66d5488fa0e8f542327b4150d50e4351af6ade55
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0353736b3b66c58288dbd3d351b3b3dd53f467d6
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469099"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226880"
 ---
-# <a name="quickstart-project-answer-search-query-in-java"></a>Szybki start: laboratorium Project Answer Search — zapytanie w języku Java
+# <a name="quickstart-project-answer-search-query-in-java"></a>Szybki start: Laboratorium Project Answer Search — zapytanie w języku Java
 W tym artykule użyto języka Java w celu zademonstrowania możliwości interfejsu API wyszukiwania odpowiedzi Bing, który jest częścią usług Microsoft Cognitive Services na platformie Azure. Ten interfejs API jest usługą internetową w architekturze REST zgodną z dowolnym językiem programowania, który może wykonywać żądania HTTP i analizować format JSON.
  
 Przykładowy kod używa języka Java z minimalnym zależnościami zewnętrznymi.  Można go również uruchomić w systemie Linux lub Mac OS X przy użyciu oprogramowania Mono.
@@ -30,7 +30,7 @@ Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Servic
 
 Poniższy kod tworzy obiekt `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania „Gibraltar”.  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
 
-````
+```
     static String host = "https://api.labs.cognitive.microsoft.com";
     static String path = "/answerSearch/v7.0/search";
 
@@ -46,7 +46,7 @@ Poniższy kod tworzy obiekt `WebRequest`, ustawia nagłówek klucza dostępu i d
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>Kompletny kod
 
@@ -57,7 +57,7 @@ Interfejs API wyszukiwania odpowiedzi Bing zwraca wyniki z wyszukiwarki Bing.
 4. Zastąp wartość subscriptionKey kluczem dostępu właściwym dla Twojej subskrypcji.
 5. Uruchom program.
 
-````
+```
 package knowledgeAPI;
 import java.io.InputStream;
 import java.net.*;
@@ -148,7 +148,7 @@ public class KnowledgeSrch {
         }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)

@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wywoływanie interfejsu API analizy tekstu przy użyciu języka Ruby'
+title: 'Szybki start: Wywoływanie interfejsu API analizy tekstu przy użyciu języka Ruby'
 titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu, które umożliwią Ci szybkie rozpoczęcie korzystania z interfejsu API analizy tekstu w usłudze Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 8495d003113b2ba607dada7b8f5624d8281d3583
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: d757569f666f6a512b4f20b6c5753d65f1e65baf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284408"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55205971"
 ---
-# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Ruby
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Ruby
 <a name="HOLTop"></a>
 
 W tym artykule przedstawiono, jak [wykrywać język](#Detect), [analizować tonację](#SentimentAnalysis), [wyodrębniać kluczowe frazy](#KeyPhraseExtraction) i [identyfikować połączone jednostki](#Entities) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka Ruby.

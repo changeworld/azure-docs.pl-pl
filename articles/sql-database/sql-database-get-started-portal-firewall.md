@@ -1,5 +1,5 @@
 ---
-title: 'Witryna Azure Portal: tworzenie reguły zapory bazy danych SQL Database | Microsoft Docs'
+title: 'Azure Portal: Tworzenie reguły zapory usługi SQL Database | Microsoft Docs'
 description: Tworzenie reguły zapory na poziomie serwera bazy danych SQL Database
 services: sql-database
 ms.service: sql-database
@@ -11,15 +11,15 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/01/2018
-ms.openlocfilehash: cab92539b5019d4807ddefb2b84279c844f53016
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/25/2019
+ms.openlocfilehash: 589d3fa8c0ee8c8f374cd4f34f17401caa46d265
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721905"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462260"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>Szybki start: tworzenie reguły zapory na poziomie serwera dla bazy danych SQL Database za pomocą witryny Azure Portal
+# <a name="quickstart-create-a-server-level-firewall-rule-for-your-sql-database-using-the-azure-portal"></a>Szybki start: Tworzenie reguły zapory na poziomie serwera dla bazy danych SQL Database za pomocą witryny Azure Portal
 
 Ten przewodnik Szybki start przeprowadzi Cię przez sposób tworzenia reguły zapory na poziomie serwera dla bazy danych Azure SQL Database tak, aby umożliwić łączenie z nią z zasobu lokalnego.
 
@@ -57,7 +57,7 @@ Wykonaj następujące kroki, aby utworzyć regułę zapory na poziomie serwera d
    > Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure. Wybierz przycisk **WYŁ.** na tej stronie, aby wyłączyć tę opcję dla wszystkich usług platformy Azure.
    >
 
-5. Wybierz pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze logicznym.
+5. Wybierz pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
 
 6. Zamknij stronę **Ustawienia zapory**.
 
@@ -66,7 +66,6 @@ Teraz można połączyć się z serwerem usługi SQL Database i jego bazami dany
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Zapisz te zasoby, jeśli chcesz przejść do sekcji [Następne kroki](#next-steps) i dowiedzieć się, jak połączyć bazę danych i wykonywać w niej zapytania przy użyciu różnych metod. Jeśli jednak chcesz usunąć zasoby utworzone w tym przewodniku Szybki start, wykonaj poniższe czynności.
-
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal wybierz pozycję **Grupy zasobów**, a następnie wybierz pozycję **myResourceGroup**.
 2. Na stronie grupy zasobów wybierz pozycję **Usuń**, wpisz w polu tekstowym nazwę **myResourceGroup**, a następnie wybierz pozycję **Usuń**.

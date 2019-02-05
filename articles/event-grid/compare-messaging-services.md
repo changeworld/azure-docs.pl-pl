@@ -6,15 +6,15 @@ author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 12/07/2018
+ms.date: 01/30/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 80a2f9aa07f67c4d149a1ef8245f5e3269a751b3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0a71b88f6ad85cbd76f9bc789e87ad5b032418c9
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469852"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297110"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Wybór usługi do obsługi wiadomości na platformie Azure — Event Grid, Event Hubs i Service Bus
 
@@ -97,9 +97,10 @@ W innych przypadkach można je połączyć ze sobą w celu utworzenia potoku zda
 ![Omówienie przesyłania strumieniowego danych](./media/compare-messaging-services/overview.png)
 
 ## <a name="next-steps"></a>Następne kroki
+Zobacz następujące artykuły: 
 
-* Aby uzyskać więcej informacji na temat usług obsługi komunikatów platformy Azure, zobacz wpis w blogu [Events, Data Points, and Messages - Choosing the right Azure messaging service for your data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/) (Zdarzenia, punkty danych i komunikaty — wybieranie odpowiedniej usługi obsługi komunikatów platformy Azure dla Twoich danych).
-* Aby zapoznać się z wprowadzeniem do usługi Event Grid, zobacz [Wprowadzenie do usługi Azure Event Grid](overview.md).
-* Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
-* Aby rozpocząć pracę z usługą Event Hubs, zobacz [Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń za pomocą witryny Azure Portal](../event-hubs/event-hubs-create.md).
-* Aby rozpocząć pracę z usługą Service Bus, zobacz [Tworzenie przestrzeni nazw usługi Service Bus za pomocą witryny Azure Portal](../service-bus-messaging/service-bus-create-namespace-portal.md).
+- [Zdarzenia, punkty danych i komunikaty — wybieranie usługi platformy Azure do obsługi wiadomości właściwej dla Twoich danych](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
+- [Porównanie kolejek magazynu i kolejek usługi Service Bus](../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+- Aby rozpocząć pracę z usługą Event Grid, zobacz [Tworzenie i kierowanie zdarzeń niestandardowych za pomocą usługi Azure Event Grid](custom-event-quickstart.md).
+- Aby rozpocząć pracę z usługą Event Hubs, zobacz [Tworzenie przestrzeni nazw usługi Event Hubs i centrum zdarzeń za pomocą witryny Azure Portal](../event-hubs/event-hubs-create.md).
+- Aby rozpocząć pracę z usługą Service Bus, zobacz [Tworzenie przestrzeni nazw usługi Service Bus za pomocą witryny Azure Portal](../service-bus-messaging/service-bus-create-namespace-portal.md).

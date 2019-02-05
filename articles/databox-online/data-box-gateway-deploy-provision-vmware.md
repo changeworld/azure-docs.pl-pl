@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167158"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55099162"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Samouczek: aprowizowanie usługi Azure Data Box Gateway w programie VMware (wersja zapoznawcza)
 
 ## <a name="overview"></a>Omówienie
 
-W tym samouczku opisano sposób aprowizacji usługi Data Box Gateway w systemie hosta, w którym działa program VMware ESXi 6.0 lub 6.5. 
+W tym samouczku opisano sposób aprowizacji usługi Data Box Gateway w systemie hosta, w którym działa program VMware ESXi 6.0, 6.5 lub 6.7. 
 
 Do aprowizowania urządzenia wirtualnego i nawiązania z nim połączenia wymagane są uprawnienia administratora. Aprowizacja i wstępna konfiguracja może zająć około 10 minut.
 
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wymagania wstępne, które muszą być spełnione, aby można było aprowizować urządzenie wirtualne na systemie hosta z programem VMware ESXi 6.0 lub 6.5 są następujące.
+Wymagania wstępne, które muszą być spełnione, aby można było aprowizować urządzenie wirtualne na systemie hosta z programem VMware ESXi 6.0, 6.5 lub 6.7 są następujące.
 
 ### <a name="for-the-data-box-gateway-resource"></a>Zasób usługi Data Box Gateway
 
@@ -53,7 +53,7 @@ Przed rozpoczęciem upewnij się, że:
 
 Przed wdrożeniem urządzenia wirtualnego upewnij się, że są spełnione następujące warunki:
 
-* Masz dostęp do systemu hosta z programem VMware (ESXi 6.0 lub 6.5), którego można użyć do aprowizacji urządzenia.
+* Masz dostęp do systemu hosta z programem VMware (ESXi 6.0, 6.5 lub 6.7), którego można użyć do aprowizacji urządzenia.
 * System hosta może przeznaczyć następujące zasoby wyłącznie na potrzeby aprowizacji urządzenia wirtualnego:
 
   * Co najmniej 4 rdzenie.
@@ -73,7 +73,7 @@ Przed rozpoczęciem:
 
 Do utworzenia urządzenia wirtualnego potrzebne są następujące elementy:
 
-* Dostęp do systemu hosta z programem VMware ESXi Server 6.0 lub 6.5. System hosta może przeznaczyć następujące zasoby wyłącznie na potrzeby urządzenia wirtualnego:
+* Dostęp do systemu hosta z programem VMware ESXi Server 6.0, 6.5 lub 6.7. System hosta może przeznaczyć następujące zasoby wyłącznie na potrzeby urządzenia wirtualnego:
  
   * Co najmniej 4 rdzenie.
   * Co najmniej 8 GB pamięci RAM. 
@@ -192,7 +192,7 @@ Wykonaj poniższe kroki, aby uruchomić urządzenie wirtualne i nawiązać z nim
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. Kroki od 5 do 7 mają zastosowanie tylko w przypadku uruchamiania w środowisku bez protokołu DHCP. W przypadku środowiska z protokołem DHCP pomiń te kroki i przejdź do kroku 8. Jeśli urządzenie zostało uruchomione w środowisku bez protokołu DHCP, zostanie wyświetlony komunikat podobny do następującego: **Use the Set-HcsIPAddress cmdlet to configure the network** (Skonfiguruj sieć za pomocą polecenia cmdlet Set-HcsIPAddress). 
+6. Kroki od 5 do 7 mają zastosowanie tylko w przypadku uruchamiania w środowisku bez protokołu DHCP. W przypadku środowiska z protokołem DHCP pomiń te kroki i przejdź do kroku 8. Jeśli urządzenie zostało uruchomione w środowisku bez protokołu DHCP, zostanie wyświetlony komunikat z taką informacją: **Skonfiguruj sieć za pomocą polecenia cmdlet Set-HcsIPAddress**. 
    
 7. Aby skonfigurować sieć, w wierszu polecenia wydaj polecenie `Get-HcsIpAddress` w celu wyświetlenia listy interfejsów sieciowych włączonych na urządzeniu wirtualnym. Jeśli urządzenie ma włączony jeden interfejs sieciowy, jego domyślną nazwą jest `Ethernet`.
 

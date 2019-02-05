@@ -12,26 +12,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/11/2018
+ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 1ce85c18b93f22e9078e551deda74c6e6ff0b28b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: d841c0b62092cb58142a52eed52dc0c32d04c500
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614926"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55095531"
 ---
-# <a name="cli-example-publish-an-asset"></a>Przykład interfejsu wiersza polecenia: publikowanie elementu zawartości
+# <a name="cli-example-publish-an-asset"></a>Przykład użycia interfejsu wiersza polecenia: Publikowanie elementu zawartości
 
 Skrypt interfejsu wiersza polecenia platformy Azure w tym artykule pokazuje sposób tworzenia lokalizatora przesyłania strumieniowego i uzyskiwania z powrotem adresów URL przesyłania strumieniowego. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-- Zainstaluj interfejs wiersza polecenia i korzystaj z niego lokalnie. Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+[Utwórz konto usługi Media Services](../create-account-cli-how-to.md).
 
-    Obecnie nie wszystkie polecenia [interfejsu wiersza polecenia usługi Media Services w wersji 3](https://aka.ms/ams-v3-cli-ref) działają w usłudze Azure Cloud Shell. Zaleca się używanie interfejsu wiersza polecenia lokalnie.
-
-- [Utwórz konto usługi Media Services](../create-account-cli-how-to.md).
+[!INCLUDE [media-services-cli-instructions.md](../../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Przykładowy skrypt
 

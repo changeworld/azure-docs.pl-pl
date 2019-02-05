@@ -1,23 +1,23 @@
 ---
-title: 'Przykład: wykrywanie twarzy na obrazach — interfejs API rozpoznawania twarzy'
+title: 'Przykład: Wykrywanie twarzy na obrazach — interfejs API rozpoznawania twarzy'
 titleSuffix: Azure Cognitive Services
 description: Interfejs API rozpoznawania twarzy umożliwia wykrywanie twarzy na obrazach.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a4c74ff70a4426abf97562bf997479a91afbf17a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8c89a43910a5e98286a82de8626870d3aec55b94
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124052"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214215"
 ---
-# <a name="example-how-to-detect-faces-in-image"></a>Przykład: jak wykrywać twarze na obrazie
+# <a name="example-how-to-detect-faces-in-image"></a>Przykład: Jak wykrywać twarze na obrazie
 
 Ten przewodnik pokazuje, jak wykrywać twarze na obrazie przy użyciu atrybutów twarzy, takich jak płeć, wiek lub przyjęta postawa. Przykłady są zapisywane w języku C# przy użyciu biblioteki klienta interfejsu API rozpoznawania twarzy. 
 
@@ -40,21 +40,21 @@ W tym przykładzie zostaną przedstawione następujące funkcje:
 
 Aby użyć tych funkcji, należy przygotować obraz z co najmniej jedną czytelną twarzą. 
 
-## <a name="step-1-authorize-the-api-call"></a>Krok 1. Autoryzowanie wywołania interfejsu API
+## <a name="step-1-authorize-the-api-call"></a>Krok 1: Autoryzowanie wywołania interfejsu API
 
-Każde wywołanie do interfejsu API rozpoznawania twarzy wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania. Aby przekazać klucz subskrypcji w ciągu zapytania, użyj jako przykładu adresu URL funkcji [Twarz — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
+Każde wywołanie do interfejsu API rozpoznawania twarzy wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania. Aby przekazać klucz subskrypcji w ciągu zapytania, użyj jako przykładu adresu URL żądania [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236):
 
 ```
 https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes]
 &subscription-key=<Subscription Key>
 ```
 
-Alternatywnie klucz subskrypcji można również określić w nagłówku żądania HTTP: **ocp-apim-subscription-key: &lt;klucz subskrypcji&gt;**. W przypadku korzystania z biblioteki klienckiej klucz subskrypcji jest przekazywany klucz za pomocą konstruktora klasy FaceServiceClient. Na przykład:
+Klucz subskrypcji możesz też określić w nagłówku żądania HTTP: **ocp-apim-subscription-key: &lt;klucz subskrypcji&gt;** Jeśli korzystasz z biblioteki klienta, klucz subskrypcji jest przekazywany w konstruktorze klasy FaceServiceClient. Na przykład:
 ```CSharp
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>Krok 2. Przekazywanie obrazu do usługi i wykonywanie wykrywania twarzy
+## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>Krok 2: Przekazywanie obrazu do usługi i wykonywanie wykrywania twarzy
 
 Najprostszym sposobem wykrywania twarzy jest bezpośrednie przekazywanie obrazu. Odbywa się to przez wysłanie żądania „POST” z typem zawartości application/octet-stream z danymi odczytanymi z obrazu JPEG. Maksymalny rozmiar obrazu to 4 MB.
 
@@ -90,7 +90,7 @@ foreach (var face in faces)
 
 Właściwość FaceRectangle zwracana z wykrytymi twarzami to w zasadzie lokalizacje na twarzy w pikselach. Zazwyczaj ten prostokąt zawiera oczy, brwi, nos i usta — górna część głowy, uszy i podbródek nie są uwzględniane. Jeśli przycinasz cały portret głowy lub portret od pasa w górę (obraz typu zdjęcie do dokumentu tożsamości), możesz rozszerzyć obszar prostokątnej ramki twarzy, ponieważ obszar twarzy może być za mały dla niektórych aplikacji. Aby dokładniej zlokalizować twarz, warto użyć jej punktów charakterystycznych (mechanizmów lokalizowania rysów twarzy lub kierunku twarzy) w sposób opisany w następnej sekcji.
 
-## <a name="step-3-understanding-and-using-face-landmarks"></a>Krok 3. Opis punktów charakterystycznych twarzy i korzystanie z nich
+## <a name="step-3-understanding-and-using-face-landmarks"></a>Krok 3: Opis punktów charakterystycznych twarzy i korzystanie z nich
 
 Punkty charakterystyczne twarzy to zbiór szczegółowych punktów na twarzy. Są to zazwyczaj elementy, takie jak źrenice, kąciki oczu i nos. Punkty charakterystyczne to opcjonalne atrybuty, które można analizować podczas wykrywania twarzy. Można przekazać wartość „true” jako wartość logiczną do parametru zapytania returnFaceLandmarks podczas wywoływania elementu [Twarz — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) lub użyć opcjonalnego parametru returnFaceLandmarks dla metody DetectAsync klasy FaceServiceClient, aby uwzględnić punkty charakterystyczne w wynikach wykrywania.
 
@@ -145,7 +145,7 @@ Vector faceDirection = new Vector(
 
 Po zidentyfikowaniu kierunku twarzy można obrócić prostokątną ramkę twarzy, aby wyrównać ją z twarzą. Jest oczywiste, że korzystanie z punktów charakterystycznych twarzy oferuje większą szczegółowość i użyteczność.
 
-## <a name="step-4-using-other-face-attributes"></a>Krok 4. Korzystanie z innych atrybutów twarzy
+## <a name="step-4-using-other-face-attributes"></a>Krok 4: Korzystanie z innych atrybutów twarzy
 
 Poza punktami charakterystycznymi interfejs API wykrywania twarzy może również analizować inne atrybuty twarzy. Są to następujące elementy:
 

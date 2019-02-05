@@ -3,7 +3,7 @@ title: Przykładowy skrypt interfejsu wiersza polecenia — tworzenie bazy danyc
 description: Ten przykładowy skrypt interfejsu wiersza polecenia platformy Azure umożliwia utworzenie bazy danych SQL.
 services: sql-database
 ms.service: sql-database
-ms.subservice: single-database
+ms.subservice: standalone-database
 ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,13 +11,13 @@ author: CarlRabeler
 manager: craigg
 ms.author: carlrab
 ms.reviewer: ''
-ms.date: 09/20/2018
-ms.openlocfilehash: d239236e9e6f7133aa57eb617c3cc9e8626fc178
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: 24f45ea22a50e471a2947b926b817f06aefa9aa8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055479"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451788"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Tworzenie jednej bazy danych Azure SQL Database i konfigurowanie reguły zapory przy użyciu interfejsu wiersza polecenia
 
@@ -48,9 +48,9 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | Polecenie | Uwagi |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer logiczny hostujący bazę danych SQL. |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Tworzy regułę zapory zezwalającą na dostęp do wszystkich baz danych SQL na serwerze z adresów IP należących do podanego zakresu. |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Tworzy bazę danych SQL na serwerze logicznym. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Tworzy serwer usługi SQL Database, który hostuje pojedynczą bazę danych lub elastyczną pulę. |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Tworzy regułę zapory zezwalającą na dostęp do wszystkich pojedynczych baz danych i elastycznych pul na serwerze usługi SQL Database z adresów IP należących do wprowadzonego zakresu. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Tworzy pojedynczą bazę danych lub elastyczną pulę. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki

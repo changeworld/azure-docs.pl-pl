@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: ee338e2011a7b86a069bd42a028d65b23a123037
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: db3333aa52782ceb949ef3f46a903b618f6e3f2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427101"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693028"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Jak używać usługi E-mail SendGrid za pomocą języka PHP
 
@@ -46,11 +46,11 @@ Aby uzyskać więcej informacji, zobacz [ https://sendgrid.com ] [ https://sendg
 
 Za pomocą usługi SendGrid w aplikacji PHP na platformie Azure wymaga żadnych specjalnych konfiguracji lub kodowania. Ponieważ usługi SendGrid, uzyskiwania w taki sam sposób, z aplikacji w chmurze możliwie najszybsza z aplikacji w środowisku lokalnym.
 
-## <a name="how-to-send-an-email"></a>Porady: Wyślij wiadomość E-mail
+## <a name="how-to-send-an-email"></a>Instrukcje: Wyślij wiadomość E-mail
 
 Możesz wysłać wiadomość e-mail przy użyciu SMTP lub interfejsu API sieci Web udostępniane przez usługi SendGrid.
 
-### <a name="smtp-api"></a>INTERFEJS API SMTP
+### <a name="smtp-api"></a>SMTP API
 
 Aby wysłać wiadomość e-mail przy użyciu interfejsu API usługi SendGrid SMTP, należy użyć *Swift Mailer*, oparty na komponentach biblioteki do wysyłania wiadomości e-mail z aplikacji PHP. Możesz pobrać [biblioteki Swift Mailer](https://swiftmailer.symfony.com/) v5.3.0 (Użyj [Program Composer] do zainstalowania języka Swift masowo wiadomości E-mail). Wysyłanie wiadomości e-mail z biblioteką wymaga utworzenia instancji `Swift\_SmtpTransport`, `Swift\_Mailer`, i `Swift\_Message` klasy, ustawienie odpowiednie właściwości i wywoływania `Swift\_Mailer::send` metody.
 
@@ -161,9 +161,9 @@ Korzystanie z języka PHP firmy [curl funkcja] [ curl function] do wysyłania wi
 
 Interfejs API sieci Web usługi SendGrid jest bardzo podobny do interfejsu API REST, chociaż nie jest naprawdę interfejsu API RESTful, że większość wywołań zarówno i jak WPIS zlecenia, które mogą być używane zamiennie.
 
-## <a name="how-to-add-an-attachment"></a>Porady: Dodawanie załącznika
+## <a name="how-to-add-an-attachment"></a>Instrukcje: Dodaj załącznik
 
-### <a name="smtp-api"></a>INTERFEJS API SMTP
+### <a name="smtp-api"></a>SMTP API
 
 Wysyłanie załącznika przy użyciu interfejsu API SMTP polega na jeden wiersz dodatkowy kod przykładowy skrypt do wysyłania wiadomości e-mail przy użyciu języka Swift masowo wiadomości E-mail.
 
@@ -296,7 +296,7 @@ Wysyłanie załącznika przy użyciu interfejsu API sieci Web jest bardzo podobn
  print_r($response);
 ```
 
-## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Porady: Użyj filtrów, aby umożliwić stopki, śledzenia i analizy
+## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Instrukcje: Użyj filtrów, aby umożliwić stopki, śledzenia i analizy
 
 Usługa SendGrid umożliwia funkcje dodatkowe poczty e-mail za pośrednictwem *filtry*. Są to ustawienia, które można dodać do wiadomości e-mail, aby włączyć określonych funkcji, takich jak umożliwianie śledzenie kliknięć, usługi Google analytics, subskrypcji, śledzenia i tak dalej.
 
@@ -349,7 +349,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  // support@yourcompany.com, info@yourcompany.com
  $from = 'someone@example.com';
 
- // If you do not specify a sender list above, you can specifiy the user here. If
+ // If you do not specify a sender list above, you can specify the user here. If
  // a sender list IS specified above, this email address becomes irrelevant.
  $to = 'john@contoso.com';
 

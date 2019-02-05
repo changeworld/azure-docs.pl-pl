@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wykrywanie języka tekstu, C# — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: Wykrywanie języka tekstu, C# — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak wykryć język dostarczonego tekstu przy użyciu platformy .NET Core i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: de5088a012a7f5fd210a5aa66805fe865cc09bbe
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 33c192009088aff3313bb970a319fa49bfca6e0e
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889263"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55220301"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka C#
+# <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-c"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu z użyciem języka C#
 
 W tym przewodniku Szybki start dowiesz się, jak wykryć język dostarczonego tekstu przy użyciu platformy .NET Core i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 

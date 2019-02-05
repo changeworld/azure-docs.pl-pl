@@ -8,20 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/28/2018
+ms.date: 1/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3e5e364e9c3327e9d666a9a3096573267d0e1983
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0aa15c34e6fd6c7952a457d36e072bc91d4d5dab
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727612"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55102176"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji konsolowej za pomocą tożsamości aplikacji
 
@@ -107,7 +107,7 @@ Ten przewodnik Szybki start wymaga platformy [.NET Core 2.1](https://www.microso
     
 #### <a name="step-4-admin-consent"></a>Krok 4: zgoda administratora
 
-Wszelkie *uprawnienia dotyczące tylko aplikacji* wymagają zgody administratora. Oznacza to, że administrator globalny katalogu musi wyrazić zgodę na użytkowanie aplikacji. Wybierz jedną z poniższych opcji w zależności od swojej roli:
+Jeśli na tym etapie zostanie podjęta próba uruchomienia aplikacji, subskrybent zobaczy komunikat *HTTP 403 — Dostęp zabroniony* błąd: `Insufficient privileges to complete the operation`. Dzieje się tak, ponieważ wszelkie *uprawnienia dotyczące tylko aplikacji* wymagają zgody administratora. Oznacza to, że administrator globalny katalogu musi wyrazić zgodę na użytkowanie aplikacji. Wybierz jedną z poniższych opcji w zależności od swojej roli:
 
 ##### <a name="global-tenant-administrator"></a>Administrator globalny dzierżawy
 
@@ -149,6 +149,9 @@ dotnet run
 
 Powinna pojawić się lista użytkowników w katalogu usługi Azure AD.
 
+> [!IMPORTANT]
+> Aplikacja w tym przewodniku Szybki start używa klucza tajnego klienta do identyfikowania się jako klienta poufnego. Ponieważ klucz tajny klienta jest dodawany jako zwykły tekst w plikach projektu, ze względów bezpieczeństwa zaleca się używanie certyfikatu zamiast klucza tajnego klienta, zanim będzie można uznać aplikację za produkcyjną. Aby uzyskać więcej informacji na temat sposobu używania certyfikatu, zobacz [te instrukcje](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates) w repozytorium GitHub na potrzeby tego przykładu.
+
 ## <a name="more-information"></a>Więcej informacji
 
 ### <a name="msalnet"></a>MSAL.NET
@@ -158,7 +161,13 @@ Biblioteka MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Micr
  Platformę MSAL.NET można zainstalować, uruchamiając następujące polecenie w **konsoli menedżera pakietów** programu Visual Studio:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
+```
+
+Jeśli nie używasz programu Visual Studio, możesz również uruchomić następujące polecenie, aby dodać bibliotekę MSAL do projektu:
+
+```console
+dotnet add package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>Inicjowanie biblioteki MSAL

@@ -1,24 +1,24 @@
 ---
-title: 'Przykład: wywoływanie interfejsu API rozpoznawania emocji dla wideo'
+title: 'Przykład: Wywoływanie interfejsu API rozpoznawania emocji dla wideo'
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak wywoływać interfejs API rozpoznawania emocji dla wideo w usługach Cognitive Services.
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: emotion-api
+ms.subservice: emotion-api
 ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: dd2df32ed43fd540a0516b7d5c1debc6a4f49f4f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026266"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55211172"
 ---
-# <a name="example-call-emotion-api-for-video"></a>Przykład: wywoływanie interfejsu API rozpoznawania emocji dla wideo
+# <a name="example-call-emotion-api-for-video"></a>Przykład: Wywoływanie interfejsu API rozpoznawania emocji dla wideo
 
 > [!IMPORTANT]
 > Interfejs API rozpoznawania emocji zostanie wycofany w dniu 15 lutego 2019 r. Rozpoznawanie emocji jest teraz ogólnie dostępne jako część [interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/). 
@@ -28,7 +28,7 @@ W tym przewodniku pokazano, jak wywołać interfejs API rozpoznawania emocji dla
 ### <a name="Prep">Przygotowywanie</a>
 Aby można było użyć interfejsu API rozpoznawania emocji dla wideo, konieczne będzie wideo z zarejestrowanymi osobami, najlepiej z twarzami zwróconymi w stronę kamery.
 
-### <a name="Step1">Krok 1. Autoryzacja wywołania interfejsu API</a>
+### <a name="Step1">Krok 1. Autoryzowanie wywołania interfejsu API</a>
 Każde wywołanie interfejsu API rozpoznawania emocji dla wideo wymaga klucza subskrypcji. Ten klucz musi zostać albo przekazany przez parametr ciągu zapytania, albo określony w nagłówku żądania. Aby przekazać klucz subskrypcji w ciągu zapytania, użyj jako przykładu adresu URL żądania do interfejsu API rozpoznawania emocji dla wideo:
 
 ```

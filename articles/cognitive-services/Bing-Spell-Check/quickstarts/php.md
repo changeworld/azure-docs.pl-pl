@@ -1,21 +1,21 @@
 ---
-title: 'Szybki start: interfejs API sprawdzania pisowni Bing, PHP'
+title: 'Szybki start: Interfejs API sprawdzania pisowni Bing, PHP'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API sprawdzania pisowni Bing.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: aahi
-ms.openlocfilehash: 97332b063a649795cffd7ff0bf00829a554d98ac
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 156c4414bbf7bda13e61c065e7b7100f6ae773b1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312837"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55166190"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-php"></a>Szybki start: interfejs API sprawdzania pisowni Bing w środowisku PHP 
 

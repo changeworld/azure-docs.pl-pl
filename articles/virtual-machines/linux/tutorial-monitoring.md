@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/06/2018
+ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868552"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55092798"
 ---
-# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Samouczek: monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure
+# <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Samouczek: Monitorowanie i aktualizowanie maszyny wirtualnej z systemem Linux na platformie Azure
 
 Aby upewnić się, że maszyny wirtualne na platformie Azure działają prawidłowo, możesz sprawdzić diagnostykę rozruchu i metryki wydajności oraz zarządzać aktualizacjami pakietów. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -153,7 +153,7 @@ Poniższy przykład tworzy alert dotyczący średniego użycia procesora.
 5. Opcjonalnie zaznacz pole pozycji *Wyślij wiadomość e-mail do właścicieli, współautorów i czytelników*, aby wysłać powiadomienie w wiadomości e-mail. Domyślne działanie to prezentowanie powiadomienia w portalu.
 6. Wybierz przycisk **OK**.
 
-## <a name="manage-package-updates"></a>Zarządzanie aktualizacjami pakietów
+## <a name="manage-software-updates"></a>Zarządzanie aktualizacjami oprogramowania
 
 Rozwiązanie Update Management pozwala zarządzać aktualizacjami i poprawkami dla maszyn wirtualnych platformy Azure z systemem Linux.
 Bezpośrednio z poziomu maszyny wirtualnej możesz szybko ocenić stan dostępnych aktualizacji, zaplanować instalację wymaganych aktualizacji i przejrzeć wyniki wdrażania, aby sprawdzić, czy aktualizacje zostały zastosowane pomyślnie do maszyny wirtualnej.
@@ -175,15 +175,14 @@ Obszar roboczy usługi [Log Analytics](../../log-analytics/log-analytics-overvie
 Obszar roboczy zawiera pojedynczą lokalizację do przeglądania i analizowania danych z wielu źródeł.
 Aby wykonać dodatkowe akcje na maszynach wirtualnych, które wymagają aktualizacji, usługa Azure Automation pozwala na uruchamianie elementów Runbook dla maszyn wirtualnych, takich jak pobieranie i stosowanie aktualizacji.
 
-Proces walidacji sprawdza również, czy maszyna wirtualna jest aprowizowana za pomocą programu Microsoft Monitoring Agent (MMA) i hybrydowego procesu roboczego elementu Runbook usługi Automation.
-Ten agent jest używany do komunikacji z maszyną wirtualną i uzyskiwania informacji dotyczących stanu aktualizacji.
+Proces walidacji sprawdza również, czy maszyna wirtualna jest aprowizowana za pomocą agenta usługi Log Analytics i hybrydowego procesu roboczego runbook usługi Automation. Ten agent jest używany do komunikacji z maszyną wirtualną i uzyskiwania informacji dotyczących stanu aktualizacji.
 
 Wybierz obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij przycisk **Włącz**, aby włączyć to rozwiązanie. Włączanie rozwiązania może trwać do 15 minut.
 
 Jeśli którekolwiek z następujących wymagań wstępnych nie będzie występować podczas dołączania, zostanie ono automatycznie dołączone:
 
 * Obszar roboczy usługi [Log Analytics](../../log-analytics/log-analytics-overview.md)
-* [Automatyzacja](../../automation/automation-offering-get-started.md)
+* [Konto usługi Automation](../../automation/automation-offering-get-started.md)
 * [Hybrydowy proces roboczy elementu Runbook](../../automation/automation-hybrid-runbook-worker.md) jest włączony na maszynie wirtualnej
 
 Zostanie otwarty ekran **Rozwiązanie Update Management**. Skonfiguruj lokalizację, obszar roboczy usługi Log Analytics i konto usługi Automation, a następnie kliknij opcję **Włącz**. Jeśli pola są wygaszone, oznacza to, że inne rozwiązanie automatyzacji jest włączone dla maszyny wirtualnej, a tym samym należy użyć tego samego obszaru roboczego i konta automatyzacji.
@@ -291,22 +290,9 @@ Wykres pokazuje zmiany, które wystąpiły w czasie. Po dodaniu połączenia dzi
 
 ## <a name="advanced-monitoring"></a>Zaawansowane monitorowanie
 
-Aby przeprowadzać bardziej zaawansowane monitorowanie maszyny wirtualnej, można korzystać z rozwiązań oferowanych przez usługę [Azure Automation](../../automation/automation-intro.md), takich jak Update Management i Change and Inventory.
+Możesz wykonywać bardziej zaawansowane monitorowanie swojej maszyny wirtualnej, używając rozwiązania takiego jak usługa [Azure Monitor dla maszyn wirtualnych](../../azure-monitor/insights/vminsights-overview.md), która monitoruje maszyny wirtualne platformy Azure na dużą skalę, analizując wydajność i kondycję maszyn wirtualnych z systemami Windows i Linux, w tym ich różne procesy i sprzężone zależności od innych zasobów oraz procesów zewnętrznych. Zarządzanie konfiguracją maszyn wirtualnych platformy Azure jest realizowane za pomocą rozwiązania Change Tracking and Inventory [usługi Azure Automation](../../automation/automation-intro.md), co pozwala na łatwe identyfikowanie zmian w środowisku. Zarządzania zgodnością aktualizacji jest realizowane za pomocą rozwiązania Update Management usługi Azure Automation.   
 
-Jeśli masz dostęp do obszaru roboczego usługi Log Analytics, możesz znaleźć klucz i identyfikator obszaru roboczego, wybierając pozycję **Ustawienia zaawansowane** w obszarze **USTAWIENIA**. Zastąp fragmenty \<workspace-key\> i \<workspace-id\> wartościami dotyczącymi obszaru roboczego usługi Log Analytics, a następnie użyj polecenia **az vm extension set**, aby dodać rozszerzenie do maszyny wirtualnej:
-
-```azurecli-interactive
-az vm extension set \
-  --resource-group myResourceGroupMonitor \
-  --vm-name myVM \
-  --name OmsAgentForLinux \
-  --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.3 \
-  --protected-settings '{"workspaceKey": "<workspace-key>"}' \
-  --settings '{"workspaceId": "<workspace-id>"}'
-```
-
-Po kilku minutach nowa maszyna wirtualna powinna pojawić się w obszarze roboczym usługi Log Analytics.
+Z poziomu obszaru roboczego usługi Log Analytics, z którym jest połączona maszyna wirtualna, możesz także pobierać, konsolidować i analizować zebrane dane za pomocą [zaawansowanego języka zapytań](../../azure-monitor/log-query/log-query-overview.md). 
 
 ![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 

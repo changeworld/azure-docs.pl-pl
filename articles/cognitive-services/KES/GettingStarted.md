@@ -6,22 +6,22 @@ services: cognitive-services
 author: bojunehsu
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: knowledge-exploration
+ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124019"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208146"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Wprowadzenie do usługi Knowledge Exploration Service
 
 W tym przewodniku użyjesz usługi Knowledge Exploration Service (KES) do utworzenia aparatu dla środowiska interaktywnego wyszukiwania publikacji akademickich. Narzędzie wiersza polecenia [`kes.exe`](CommandLine.md) i wszystkie pliki przykładowe możesz zainstalować z zestawu [Knowledge Exploration Service SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488).
 
-Przykład dotyczący publikacji akademickich zawiera 1000 przykładowych publikacji naukowych opublikowanych przez pracowników naukowo-badawczych firmy Microsoft.  Każdy dokument jest skojarzony z tytułem, rokiem publikacji, autorami i słowami kluczowymi. Każdy autor jest reprezentowany przez identyfikator, nazwę i przynależność w momencie publikacji. Każde słowo kluczowe można skojarzyć z zestawem synonimów (na przykład słowo kluczowe „support vector machine” można skojarzyć z synonimem „svm”).
+Przykład dotyczący publikacji akademickich zawiera 1000 przykładowych publikacji naukowych opublikowanych przez pracowników naukowo-badawczych firmy Microsoft.  Do każdego dokumentu jest przypisany tytuł, rok publikacji, autorzy i słowa kluczowe. Każdy autor jest reprezentowany przez identyfikator, nazwę i przynależność w momencie publikacji. Każde słowo kluczowe można skojarzyć z zestawem synonimów (na przykład słowo kluczowe „support vector machine” można skojarzyć z synonimem „svm”).
 
 ## <a name="define-the-schema"></a>Definiowanie schematu
 
@@ -45,7 +45,7 @@ Tutaj definiuje się atrybuty *Title*, *Year* i *Keyword* jako, odpowiednio, ci�
 
 Domyślnie atrybuty obsługują wszystkie operacje dostępne dla ich typów danych, w tym *equals*, *starts_with* i *is_between*. Ponieważ identyfikator autora jest używany tylko wewnętrznie jako identyfikator, zastąp wartość domyślną i określ operację *equals* jako jedyną operację indeksowaną.
 
-Za pomocą atrybutu *Keyword* zezwól, aby synonimy pasowały do wartości kanonicznych słowa kluczowego, określając plik synonimów *Keyword.syn* w definicji atrybutu. Ten plik zawiera listę par „wartość kanoniczna-synonim”:
+Dla atrybutu *Keyword* zezwól, aby synonimy pasowały do wartości kanonicznych słowa kluczowego, określając plik synonimów *Keyword.syn* w definicji atrybutu. Ten plik zawiera listę par „wartość kanoniczna-synonim”:
 
 ```json
 ...
@@ -88,7 +88,7 @@ Plik danych opisuje listę publikacji do zaindeksowania, przy czym każdy wiersz
 ...
 ```
 
-W tym fragmencie kodu należy określić atrybuty *Title* i *Year* publikacji jako wartości JSON odpowiednio typu ciąg i liczba. Wiele wartości jest reprezentowanych za pomocą tablic JSON. Ponieważ atrybut *Author* to atrybut złożony, każda wartość jest reprezentowane za pomocą obiektu JSON składającego się z jego atrybutów podrzędnych. Atrybuty z brakującymi wartościami, w tym przypadku takie jak *Keyword*, można wykluczyć z reprezentacji JSON.
+W tym fragmencie kodu należy określić atrybuty *Title* i *Year* publikacji jako wartości JSON odpowiednio typu ciąg i liczba. Wiele wartości jest reprezentowanych za pomocą tablic JSON. Ponieważ *Author* to atrybut złożony, każda wartość jest reprezentowana przez obiekt JSON składający się z jego atrybutów podrzędnych. Atrybuty z brakującymi wartościami, w tym przypadku takie jak *Keyword*, można wykluczyć z reprezentacji JSON.
 
 Aby rozróżnić prawdopodobieństwo dla różnych publikacji, określ względne logarytmy prawdopodobieństwa przy użyciu wbudowanego atrybutu *logprob*. Przy danym prawdopodobieństwie *p* z przedziału od 0 do 1 logarytm prawdopodobieństwa wynosi log(*p*), gdzie log() to funkcja logarytmu naturalnego.
 
@@ -110,7 +110,7 @@ Gramatyka określa zbiór zapytań w języku naturalnym, które usługa może in
 <grammar root="GetPapers">
 
   <!-- Import academic data schema-->
-  <import schema="Academic.schema" name="academic"/>
+  <import schema="Academic.schema" name="academic"/>
 
   <!-- Define root rule-->
   <rule id="GetPapers">
@@ -230,7 +230,7 @@ Aby umożliwić poleceniu `kes.exe` dostęp do konta platformy Azure, [pobierz p
 
 Istnieją dwa sposoby tworzenia i hostowania dużych indeksów. Pierwszy to przygotowanie schematu i plików danych na maszynie wirtualnej platformy Azure z systemem Windows. Następnie należy uruchomić polecenie [`kes.exe build_index`](#building-index), aby utworzyć indeks lokalnie na maszynie wirtualnej bez żadnych ograniczeń rozmiaru. Wynikowy indeks można hostować lokalnie na maszynie wirtualnej za pomocą polecenia [`kes.exe host_service`](#hosting-service) na potrzeby szybkiego prototypowania — ponownie, bez żadnych ograniczeń. Aby uzyskać szczegółowe instrukcje, zobacz [samouczek dotyczący maszyn wirtualnych platformy Azure](../../../articles/virtual-machines/windows/quick-create-portal.md).
 
-Druga metoda to wykonanie zdalnego tworzenia na platformie Azure przy użyciu polecenia [`kes.exe build_index`](CommandLine.md#build_index-command) z parametrem `--remote`. W ten sposób określa się rozmiar maszyny wirtualnej platformy Azure. Jeśli parametr `--remote` jest określony, polecenie tworzy tymczasową maszynę wirtualną platformy Azure o danym rozmiarze. Następnie tworzy indeks na maszynie wirtualnej, przekazuje indeks do docelowego magazynu obiektów blob i usuwa maszynę wirtualną po zakończeniu. Opłata dla subskrypcji platformy Azure jest naliczana za koszt maszyny wirtualnej podczas tworzenia indeksu.
+Druga metoda to przeprowadzenie zdalnego budowania na platformie Azure przy użyciu polecenia [`kes.exe build_index`](CommandLine.md#build_index-command) z parametrem `--remote`. W ten sposób określa się rozmiar maszyny wirtualnej platformy Azure. Jeśli parametr `--remote` jest określony, polecenie tworzy tymczasową maszynę wirtualną platformy Azure o danym rozmiarze. Następnie tworzy indeks na maszynie wirtualnej, przekazuje indeks do docelowego magazynu obiektów blob i usuwa maszynę wirtualną po zakończeniu. Opłata dla subskrypcji platformy Azure jest naliczana za koszt maszyny wirtualnej podczas tworzenia indeksu.
 
 Możliwość budowania zdalnego na platformie Azure pozwala na uruchomienie polecenia [`kes.exe build_index`](CommandLine.md#build_index-command) w każdym środowisku. Podczas budowania zdalnego schemat wejściowy i argumenty danych mogą być lokalnymi ścieżkami plików lub adresami URL [magazynu obiektów blob platformy Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md). Argument indeksu wyjściowego musi być adresem URL magazynu obiektów blob. Aby utworzyć konto magazynu platformy Azure, zobacz [Informacje o kontach magazynu Azure](../../storage/common/storage-create-storage-account.md). Aby wydajnie kopiować pliki z magazynu obiektów blob i do niego, należy użyć narzędzia [AzCopy](../../storage/common/storage-use-azcopy.md).
 

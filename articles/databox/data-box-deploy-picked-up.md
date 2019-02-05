@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: b948616aa21d390cedc877b0a09e272815abc82a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 158c2a8919bccea03f5c7b67aef23cd07022c259
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358562"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900514"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Samouczek: wysyłka zwrotna urządzenia Azure Data Box i weryfikowanie przekazania danych na platformę Azure
 
@@ -22,18 +22,27 @@ W tym samouczku opisano sposób zwrotu urządzenia Azure Data Box i weryfikacji 
 Ten samouczek zawiera informacje na następujące tematy:
 
 > [!div class="checklist"]
+> * Wymagania wstępne
+> * Przygotowanie do wysłania
 > * Wysyłanie urządzenia Data Box do firmy Microsoft
 > * Weryfikowanie przekazania danych na platformę Azure
 > * Wymazywanie danych z urządzenia Data Box
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-deploy-copy-data.md).
+Przed rozpoczęciem upewnij się, że spełniono następujące warunki:
+
+- Ukończenie tematu [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-deploy-copy-data.md). 
+- Zadania kopiowania zostały wykonane. Przygotowanie do wysłania nie będzie działać, jeśli zadania kopiowania są w toku.
+
+## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
+
+[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
 
 ## <a name="ship-data-box-back"></a>Wysyłka zwrotna urządzenia Data Box
 
 1. Upewnij się, że wyłączono zasilanie urządzenia, a kable zostały odłączone. Zwiń przewód zasilający dostarczony wraz z urządzeniem i umieść go bezpiecznie z tyłu urządzenia.
-2. Jeśli urządzenie jest wysyłane w Stanach Zjednoczonych, upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. W przypadku utraty lub zniszczenia etykiety albo braku etykiety na wyświetlaczu E-ink pobierz etykietę wysyłkową z witryny Azure Portal i przyklej ją do przesyłki. Przejdź do pozycji **Przegląd > Pobierz etykietę wysyłkową**. 
+2. Jeśli urządzenie jest wysyłane w Stanach Zjednoczonych, upewnij się, że na wyświetlaczu E-ink jest widoczna etykieta wysyłkowa, i umów się na odbiór przesyłki z przewoźnikiem. W przypadku utraty lub zniszczenia etykiety albo braku etykiety na wyświetlaczu E-ink wybierz pozycję **Przegląd > Pobierz etykietę wysyłkową** w witrynie Azure Portal. Pobierz etykietę wysyłkową i dołącz ją do urządzenia.
 
     Jeśli urządzenie jest wysyłane w Europie, na wyświetlaczu E-ink nie jest wyświetlana etykieta wysyłkowa. Zamiast tego jest dołączona zwrotna etykieta wysyłkowa w przezroczystej kieszeni pod etykietą wysyłkową. Usuń starą etykietę wysyłkową i upewnij się, że etykieta wysyłkowa jest dobrze widoczna.
     
@@ -43,7 +52,7 @@ Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule
 
 ## <a name="verify-data-upload-to-azure"></a>Weryfikowanie przekazania danych na platformę Azure
 
-Gdy firma Microsoft odbierze i zeskanuje urządzenie, stan zamówienia zmieni się na **Odebrane**. Następnie urządzenie zostanie poddane fizycznej weryfikacji pod kątem uszkodzeń lub śladów naruszenia. 
+Gdy firma Microsoft odbierze i zeskanuje urządzenie, stan zamówienia zmieni się na **Odebrane**. Następnie urządzenie zostanie poddane fizycznej weryfikacji pod kątem uszkodzeń lub śladów naruszenia.
 
 Po zakończeniu tej weryfikacji urządzenie Data Box zostanie podłączone do sieci w centrum danych platformy Azure. Kopiowanie danych rozpocznie się automatycznie. W zależności od rozmiaru danych operacja kopiowania może potrwać od kilku godzin do kilku dni. Postęp kopiowania możesz monitorować w portalu.
 
@@ -65,6 +74,8 @@ Po zakończeniu przekazywania danych na platformę Azure dane z dysków urządze
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 
 > [!div class="checklist"]
+> * Wymagania wstępne
+> * Przygotowanie do wysłania
 > * Wysyłanie urządzenia Data Box do firmy Microsoft
 > * Weryfikowanie przekazania danych na platformę Azure
 > * Wymazywanie danych z urządzenia Data Box

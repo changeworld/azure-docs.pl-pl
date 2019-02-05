@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b1fa723863e6485e977e075986c3779efed1e689
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: cb3a60995a4edfe5eb00f1a5e88812146816806a
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360651"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54883708"
 ---
 # <a name="azure-backup-support-matrix"></a>Tabela obsługi usługi Azure Backup
 
@@ -30,13 +30,13 @@ Liczba magazynów | Do 500 magazynów usługi Recovery Services w ramach jednej 
 Maszyny w magazynie | Maksymalnie 1000 maszyn wirtualnych platformy Azure w jednym magazynie.<br/><br/> W jednym magazynie można zarejestrować maksymalnie 50 maszyn lokalnych z agentem usługi Azure Backup (agentem usługi Microsoft Azure Recovery Services, MABS).
 Źródło danych w pamięci magazynów | Maksymalnie 54 400 GB. Nie ma limitu kopii zapasowych maszyn wirtualnych platformy Azure.
 Wykonywanie kopii zapasowych w magazynie | Maszyny wirtualne platformy Azure: raz dziennie; maszyny chronione przez oprogramowanie DPM/MABS: dwa razy dziennie; maszyny, których kopie zapasowe są wykonywane bezpośrednio za pomocą agenta usługi MARS: trzy razy dziennie.  
-Przenoszenie magazynu | Możesz przenosić magazyny usługi Recovery Services między subskrypcjami i grupami zasobów. [Dowiedz się więcej](backup-azure-move-recovery-services-vault.md).
+Przenoszenie magazynu | Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się w prywatnej wersji zapoznawczej. Aby ją wypróbować, napisz na adres AskAzureBackupTeam@microsoft.com.
 Przenoszenie danych między magazynami | Przenoszenie kopii zapasowych danych między magazynami nie jest obsługiwane.
 Typ replikacji magazynu | Możesz zmodyfikować typ replikacji magazynu (magazyn geograficznie nadmiarowy/magazyn lokalnie nadmiarowy) można zmodyfikować zanim zaczniesz przechowywać kopie zapasowe. Po rozpoczęciu wykonywania kopii zapasowych w magazynie nie można zmienić typu replikacji.
 
 
 
-## <a name="on-premises-backup-support"></a>Obsługa lokalnych kopii zapasowych 
+## <a name="on-premises-backup-support"></a>Obsługa lokalnych kopii zapasowych
 
 W przypadku kopii zapasowych maszyn lokalnych są obsługiwane poniższe elementy.
 
@@ -77,8 +77,8 @@ W przypadku kopii zapasowych maszyn wirtualnych platformy Azure są obsługiwane
 W przypadku kopii zapasowych maszyn z systemem Linux są obsługiwane poniższe elementy.
 
 **Tworzenie kopii zapasowych** | **Linux (zatwierdzony przez Azure)**
---- | --- 
-**Maszyna lokalna z systemem Linux (bez programu DPM lub usługi MABS)**. | Nie. Agenta usługi MARS można zainstalować tylko na maszynach z systemem Windows. 
+--- | ---
+**Maszyna lokalna z systemem Linux (bez programu DPM lub usługi MABS)**. | Nie. Agenta usługi MARS można zainstalować tylko na maszynach z systemem Windows.
 **Maszyna wirtualna platformy Azure (bez programu DPM lub usługi MABS)** | Spójna na poziomie aplikacji kopia zapasowa wykonywana przy użyciu [skryptów niestandardowych](backup-azure-linux-app-consistent.md).<br/><br/> Odzyskiwanie na poziomie plików.<br/><br/> Przywracanie przez utworzenie maszyny wirtualnej z punktu odzyskiwania lub dysku.
 **Maszyna lokalna/maszyna wirtualna platformy Azure z programem DPM** | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure
 **Maszyna lokalna/maszyna wirtualna platformy Azure z usługą MABS** | Spójna na poziomie plików kopia zapasowa maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare<br/><br/> Przywracanie maszyn wirtualnych gościa z systemem Linux dla funkcji Hyper-V i programu VMWare</br></br> Spójna na poziomie plików kopia zapasowa niedostępna dla maszyn wirtualnych platformy Azure.
@@ -110,7 +110,7 @@ Bezpieczeństwo danych:
 **Maszyna** | **Przesyłanie** | **Magazynowanie**
 --- | --- | ---
 Lokalne maszyny z systemem Windows bez programu DPM/usługi MABS | ![Yes][green] | ![Yes][green]
-Maszyny wirtualne platformy Azure | ![Yes][green] | ![Yes][green] 
+Maszyny wirtualne platformy Azure | ![Yes][green] | ![Yes][green]
 Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z programem DPM | ![Yes][green] | ![Yes][green]
 Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![Yes][green] | ![Yes][green]
 
@@ -121,7 +121,7 @@ Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![
 Usługa Backup obsługuje kompresję ruchu związanego z wykonywaniem kopii zapasowych zgodnie z opisem w poniższej tabeli. Należy pamiętać, że:
 
 - W przypadku maszyn wirtualnych platformy Azure rozszerzenie maszyny wirtualnej odczytuje dane bezpośrednio z konta magazynu na platformie Azure w sieci magazynowania, więc kompresja tego ruchu nie jest konieczna.
-- Jeśli używasz programu DPM lub usługi MABS, możesz skompresować dane przed wykonaniem ich kopii zapasowej w programie DPM/usłudze MABS, aby oszczędzić przepustowość. 
+- Jeśli używasz programu DPM lub usługi MABS, możesz skompresować dane przed wykonaniem ich kopii zapasowej w programie DPM/usłudze MABS, aby oszczędzić przepustowość.
 
 **Maszyna** | **Kompresja do usługi MABS/programu DPM (TCP)** | **Kompresja (HTTPS) do magazynu**
 --- | --- | ---
@@ -134,8 +134,8 @@ Lokalne maszyny wirtualne/maszyny wirtualne platformy Azure z usługą MABS | ![
 
 ## <a name="retention-limits"></a>Limity przechowywania
 
-**Ustawienie** | **Limity** 
---- | --- 
+**Ustawienie** | **Limity**
+--- | ---
 Maksymalna liczba punktów odzyskiwania na chronione wystąpienie (maszyna/obciążenie) | 9999
 Maksymalny czas wygaśnięcia punktu odzyskiwania | Bez ograniczeń
 Maksymalna częstotliwość wykonywania kopii zapasowych w programie DPM/usłudze MABS | Co 15 minut dla programu SQL Server<br/><br/> Co godzinę w przypadku innych obciążeń.

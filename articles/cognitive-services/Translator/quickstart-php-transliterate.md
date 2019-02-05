@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: konwertowanie skryptu tekstowego, PHP — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: Konwertowanie skryptu tekstowego, PHP — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i języka PHP.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: erhopf
-ms.openlocfilehash: e858e33864ddec211f2424c7380b5b421a3db0f5
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: becc73438762efb4b8cdda2be32e59feebc7dd20
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649479"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208198"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-php"></a>Szybki start: transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (PHP)
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-php"></a>Szybki start: Transliteracja tekstu przy użyciu interfejsu API REST tłumaczenia tekstu w usłudze Translator (PHP)
 
 W tym przewodniku Szybki start przekonwertujesz tekst w jednym języku z danego systemu zapisu na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 

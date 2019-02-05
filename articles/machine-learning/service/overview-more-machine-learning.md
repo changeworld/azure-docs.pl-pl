@@ -1,21 +1,20 @@
 ---
-title: Porównanie produktów z zakresu uczenia maszynowego
-titleSuffix: Microsoft
-description: Porównanie różnych produktów firmy Microsoft do tworzenia i wdrażania modeli uczenia maszynowego oraz zarządzania nimi. Zdecyduj, które produkty wybrać dla danego rozwiązania.
+title: Wybieranie technologii uczenia maszynowego firmy Microsoft
+description: Porównaj opcje tworzenia i wdrażania modeli uczenia maszynowego oraz zarządzania nimi. Zdecyduj, które produkty firmy Microsoft wybrać dla swojego rozwiązania.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 1/17/2019
-ms.openlocfilehash: d5660d1a4d5d2a26af57e2a2411552e3f6267379
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.date: 1/30/2019
+ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389143"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55451873"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Jakie produkty z zakresu uczenia maszynowego oferuje firma Microsoft?
 

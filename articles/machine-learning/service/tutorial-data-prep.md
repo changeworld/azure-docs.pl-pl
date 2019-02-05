@@ -4,23 +4,23 @@ titleSuffix: Azure Machine Learning service
 description: Z pierwszej części tego samouczka dowiesz się, jak przygotować dane w języku Python do modelowania regresji z użyciem zestawu Azure Machine Learning SDK.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: tutorial
 author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: eb4d94d93a72844cfa869bd74aef6eeb34b0f8e9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: c199a403e65bd084428fd45e8dc67cca214f5f9f
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817507"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251286"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
-Z tego samouczka dowiesz się, jak przygotować dane do modelowania regresji z użyciem zestawu Azure Machine Learning Data Prep SDK. Wykonasz różne przekształcenia, aby przefiltrować i połączyć dwa różne zestawy danych dotyczących nowojorskich taksówek.  
+Z tego samouczka dowiesz się, jak przygotować dane do modelowania regresji z użyciem zestawu Azure Machine Learning Data Prep SDK. Wykonasz różne przekształcenia, aby przefiltrować i połączyć dwa różne zestawy danych dotyczących nowojorskich taksówek.
 
 Ten samouczek jest **pierwszą częścią dwuczęściowej serii**. Po ukończeniu tej serii samouczków będziesz w stanie przewidzieć koszt przejazdu taksówką przez wytrenowanie modelu z użyciem funkcji związanych z danymi. Te funkcje obejmują dzień i godzinę rozpoczęcia podróży, liczbę pasażerów i lokalizację rozpoczęcia podróży.
 
@@ -45,9 +45,14 @@ Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://gith
 
 Najpierw zaimportuj zestaw SDK.
 
-
 ```python
 import azureml.dataprep as dprep
+```
+
+Jeśli korzystasz z tego samouczka we własnym środowisku języka Python, zainstaluj wymagane pakiety za pomocą następującego polecenia.
+
+```shell
+pip install azureml-dataprep
 ```
 
 ## <a name="load-data"></a>Ładowanie danych
@@ -61,13 +66,15 @@ dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 green_path = "/".join([dataset_root, "green-small/*"])
 yellow_path = "/".join([dataset_root, "yellow-small/*"])
 
-green_df = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
+green_df_raw = dprep.read_csv(path=green_path, header=dprep.PromoteHeadersMode.GROUPED)
 # auto_read_file automatically identifies and parses the file type, which is useful when you don't know the file type.
-yellow_df = dprep.auto_read_file(path=yellow_path)
+yellow_df_raw = dprep.auto_read_file(path=yellow_path)
 
-display(green_df.head(5))
-display(yellow_df.head(5))
+display(green_df_raw.head(5))
+display(yellow_df_raw.head(5))
 ```
+
+Obiekt `Dataflow` jest podobny do ramki danych i zawiera serię ocenianych z opóźnieniem, niemożliwych do zmodyfikowania operacji na danych. Operacje można dodawać, wywołując różne dostępne metody przekształcania i filtrowania. Wynik dodawania operacji do obiektu `Dataflow` to zawsze nowy obiekt `Dataflow`.
 
 ## <a name="cleanse-data"></a>Oczyszczanie danych
 
@@ -82,11 +89,11 @@ useful_columns = [
 ]
 ```
 
-Najpierw będziesz pracować z danymi zielonych taksówek i nadasz im kształt, który pozwoli na połączenie ich z danymi żółtych taksówek. Utwórz tymczasowy przepływ danych o nazwie `tmp_df`. Wywołaj funkcje `replace_na()`, `drop_nulls()` i `keep_columns()`, używając utworzonych przez siebie zmiennych skrótowego przekształcenia. Dodatkowo zmień nazwy wszystkich kolumn w ramce danych, aby pasowały do nazw w zmiennej `useful_columns`.
+Najpierw będziesz pracować z danymi zielonych taksówek i nadasz im kształt, który pozwoli na połączenie ich z danymi żółtych taksówek. Wywołaj funkcje `replace_na()`, `drop_nulls()` i `keep_columns()`, używając utworzonych przez siebie zmiennych skrótowego przekształcenia. Dodatkowo zmień nazwy wszystkich kolumn w ramce danych, aby pasowały do nazw w zmiennej `useful_columns`.
 
 
 ```python
-tmp_df = (green_df
+green_df = (green_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -105,7 +112,7 @@ tmp_df = (green_df
         "Trip_distance": "distance"
      })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+green_df.head(5)
 ```
 
 <div>
@@ -211,17 +218,10 @@ tmp_df.head(5)
 </table>
 </div>
 
-Zastąp zmienną `green_df` przekształceniami wykonanymi na przepływie danych `tmp_df` w poprzednim kroku.
+Wykonaj te same kroki przekształcania danych względem danych żółtych taksówek. Te funkcje gwarantują, że dane o wartości null są usuwane z zestawu danych, co pomaga zwiększyć dokładność modelu uczenia maszynowego.
 
 ```python
-green_df = tmp_df
-```
-
-Wykonaj te same kroki przekształcania danych względem danych żółtych taksówek.
-
-
-```python
-tmp_df = (yellow_df
+yellow_df = (yellow_df_raw
     .replace_na(columns=all_columns)
     .drop_nulls(*drop_if_all_null)
     .rename_columns(column_pairs={
@@ -246,20 +246,18 @@ tmp_df = (yellow_df
         "trip_distance": "distance"
     })
     .keep_columns(columns=useful_columns))
-tmp_df.head(5)
+yellow_df.head(5)
 ```
 
-Ponownie zastąp przepływ danych `yellow_df` przepływem danych `tmp_df`. Następnie wywołaj funkcję `append_rows()` względem danych dotyczących zielonych taksówek, aby dołączyć dane żółtych taksówek. Zostanie utworzona nowa połączona ramka danych.
-
+Wywołaj funkcję `append_rows()` względem danych dotyczących zielonych taksówek, aby dołączyć dane żółtych taksówek. Zostanie utworzona nowa połączona ramka danych.
 
 ```python
-yellow_df = tmp_df
 combined_df = green_df.append_rows([yellow_df])
 ```
 
-### <a name="convert-types-and-filter"></a>Konwersja typów i filtrowanie 
+### <a name="convert-types-and-filter"></a>Konwersja typów i filtrowanie
 
-Przyjrzyj się zbiorczym statystykom współrzędnych rozpoczęcia i zakończenia podróży, aby zobaczyć rozkład danych. Najpierw zdefiniuj obiekt `TypeConverter`, aby zmienić pola długości i szerokości geograficznej na typ dziesiętny. Następnie wywołaj funkcję `keep_columns()`, aby ograniczyć dane wyjściowe tylko do pól długości i szerokości geograficznej, po czym wywołaj funkcję `get_profile()`.
+Przyjrzyj się zbiorczym statystykom współrzędnych rozpoczęcia i zakończenia podróży, aby zobaczyć rozkład danych. Najpierw zdefiniuj obiekt `TypeConverter`, aby zmienić pola długości i szerokości geograficznej na typ dziesiętny. Następnie wywołaj funkcję `keep_columns()`, aby ograniczyć dane wyjściowe tylko do pól długości i szerokości geograficznej, po czym wywołaj funkcję `get_profile()`. Te wywołania funkcji tworzą skrócony widok przepływu danych, tak aby przedstawić tylko pola długości/szerokości, dzięki czemu łatwiej jest ocenić współrzędne, których brakuje lub które są poza zakresem.
 
 
 ```python
@@ -271,7 +269,7 @@ combined_df = combined_df.set_column_types(type_conversions={
     "dropoff_latitude": decimal_type
 })
 combined_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -403,15 +401,15 @@ combined_df.keep_columns(columns=[
 
 
 
-Z danych wyjściowych zbiorczych statystyk wynika, że brakuje niektórych współrzędnych oraz że istnieją współrzędne, które wskazują na miejsca poza Nowym Jorkiem. Odfiltruj współrzędne lokalizacji, które wykraczają poza granice miasta. Zbuduj łańcuch poleceń filtrów kolumn w ramach funkcji `filter()` i zdefiniuj minimalną i maksymalną granicą dla każdego pola. Następnie ponownie wywołaj funkcję `get_profile()` w celu zweryfikowania przekształcenia.
+Z danych wyjściowych zbiorczych statystyk wynika, że brakuje niektórych współrzędnych oraz że istnieją współrzędne, które wskazują na miejsca poza Nowym Jorkiem (to jest określane na podstawie analizy subiektywnej). Odfiltruj współrzędne lokalizacji, które wykraczają poza granice miasta. Zbuduj łańcuch poleceń filtrów kolumn w ramach funkcji `filter()` i zdefiniuj minimalną i maksymalną granicą dla każdego pola. Następnie ponownie wywołaj funkcję `get_profile()` w celu zweryfikowania przekształcenia.
 
 
 ```python
-tmp_df = (combined_df
+latlong_filtered_df = (combined_df
     .drop_nulls(
         columns=["pickup_longitude", "pickup_latitude", "dropoff_longitude", "dropoff_latitude"],
         column_relationship=dprep.ColumnRelationship(dprep.ColumnRelationship.ANY)
-    ) 
+    )
     .filter(dprep.f_and(
         dprep.col("pickup_longitude") <= -73.72,
         dprep.col("pickup_longitude") >= -74.09,
@@ -422,8 +420,8 @@ tmp_df = (combined_df
         dprep.col("dropoff_latitude") <= 40.88,
         dprep.col("dropoff_latitude") >= 40.53
     )))
-tmp_df.keep_columns(columns=[
-    "pickup_longitude", "pickup_latitude", 
+latlong_filtered_df.keep_columns(columns=[
+    "pickup_longitude", "pickup_latitude",
     "dropoff_longitude", "dropoff_latitude"
 ]).get_profile()
 ```
@@ -553,22 +551,13 @@ tmp_df.keep_columns(columns=[
   </tbody>
 </table>
 
-
-
-Zastąp przepływ danych `combined_df` przekształceniami dokonanymi względem przepływu danych `tmp_df`.
-
-
-```python
-combined_df = tmp_df
-```
-
 ### <a name="split-and-rename-columns"></a>Dzielenie kolumn i zmienianie ich nazw
 
-Spójrz na profil danych dla kolumny `store_forward`.
+Spójrz na profil danych dla kolumny `store_forward`. To pole to flaga logiczna, która ma wartość `Y`, gdy taksówka nie ma połączenia z serwerem po podróży, w związku z czym musi przechowywać dane podróży w pamięci i później przekazywać je do serwera, gdy połączenie zostanie nawiązane.
 
 
 ```python
-combined_df.keep_columns(columns='store_forward').get_profile()
+latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
 ```
 
 
@@ -633,25 +622,25 @@ Zwróć uwagę, że w danych wyjściowych profilu danych w kolumnie `store_forwa
 
 
 ```python
-combined_df = combined_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
+replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-Wykonaj funkcję `replace` względem pola `distance`. Ta funkcja ponownie formatuje wartości odległości, które zostały niepoprawnie oznaczone jako `.00`, oraz wypełnia wszystkie wartości null zerami. Przekonwertuj pole `distance` na format numeryczny.
+Wykonaj funkcję `replace` względem pola `distance`. Ta funkcja ponownie formatuje wartości odległości, które zostały niepoprawnie oznaczone jako `.00`, oraz wypełnia wszystkie wartości null zerami. Przekonwertuj pole `distance` na format numeryczny. Te niepoprawne punkty danych to prawdopodobne anomalie w systemie zbierania danych dotyczących taksówek.
 
 
 ```python
-combined_df = combined_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
-combined_df = combined_df.to_number(["distance"])
+replaced_distance_vals_df = replaced_stfor_vals_df.replace(columns="distance", find=".00", replace_with=0).fill_nulls("distance", 0)
+replaced_distance_vals_df = replaced_distance_vals_df.to_number(["distance"])
 ```
 
 Podziel wartości czasu rozpoczęcia i zakończenia podróży na odpowiednie kolumny daty i godziny. W celu dokonania podziału użyj funkcji `split_column_by_example()`. W tym przypadku opcjonalny parametr `example` funkcji `split_column_by_example()` jest pomijany. W związku z tym funkcja automatycznie określa, gdzie dokonać podziału, bazując na danych.
 
 
 ```python
-tmp_df = (combined_df
+time_split_df = (replaced_distance_vals_df
     .split_column_by_example(source_column="pickup_datetime")
     .split_column_by_example(source_column="dropoff_datetime"))
-tmp_df.head(5)
+time_split_df.head(5)
 ```
 
 <div>
@@ -781,27 +770,23 @@ tmp_df.head(5)
 </table>
 </div>
 
-
 Zmień nazwy kolumn wygenerowanych przez funkcję `split_column_by_example()` na opisowe.
 
-
 ```python
-tmp_df_renamed = (tmp_df
+renamed_col_df = (time_split_df
     .rename_columns(column_pairs={
         "pickup_datetime_1": "pickup_date",
         "pickup_datetime_2": "pickup_time",
         "dropoff_datetime_1": "dropoff_date",
         "dropoff_datetime_2": "dropoff_time"
     }))
-tmp_df_renamed.head(5)
+renamed_col_df.head(5)
 ```
 
-Zastąp przepływ danych `combined_df` wykonanymi przekształceniami. Następnie wywołaj funkcję `get_profile()`, aby wyświetlić pełne zbiorcze statystyki po wszystkich przekształceniach.
-
+Wywołaj funkcję `get_profile()`, aby wyświetlić pełne zbiorcze statystyki po krokach czyszczenia.
 
 ```python
-combined_df = tmp_df_renamed
-combined_df.get_profile()
+renamed_col_df.get_profile()
 ```
 
 ## <a name="transform-data"></a>Przekształcanie danych
@@ -810,12 +795,14 @@ Jeszcze bardziej podziel datę rozpoczęcia i zakończenia podróży na wartośc
 
 Po wygenerowaniu nowych cech użyj funkcji `drop_columns()`, aby usunąć oryginalne pola, ponieważ nowo wygenerowane cechy są preferowane. Zmień nazwy pozostałych pól na opisowe.
 
+Przekształcenie danych w ten sposób, aby utworzyć nowe funkcje na podstawie jednostek czasu, poprawi dokładność modelu uczenia maszynowego. Na przykład generowanie nowej funkcji dla dnia tygodnia pomoże ustalić związek pomiędzy dniem tygodnia a taryfą taksówki, która jest często wyższa w określone dni tygodnia z uwagi na zwiększony popyt.
+
 
 ```python
-tmp_df = (combined_df
+transformed_features_df = (renamed_col_df
     .derive_column_by_example(
-        source_columns="pickup_date", 
-        new_column_name="pickup_weekday", 
+        source_columns="pickup_date",
+        new_column_name="pickup_weekday",
         example_data=[("2009-01-04", "Sunday"), ("2013-08-22", "Thursday")]
     )
     .derive_column_by_example(
@@ -823,17 +810,17 @@ tmp_df = (combined_df
         new_column_name="dropoff_weekday",
         example_data=[("2013-08-22", "Thursday"), ("2013-11-03", "Sunday")]
     )
-          
+
     .split_column_by_example(source_column="pickup_time")
     .split_column_by_example(source_column="dropoff_time")
     # The following two calls to split_column_by_example reference the column names generated from the previous two calls.
     .split_column_by_example(source_column="pickup_time_1")
     .split_column_by_example(source_column="dropoff_time_1")
     .drop_columns(columns=[
-        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time", 
+        "pickup_date", "pickup_time", "dropoff_date", "dropoff_time",
         "pickup_date_1", "dropoff_date_1", "pickup_time_1", "dropoff_time_1"
     ])
-          
+
     .rename_columns(column_pairs={
         "pickup_date_2": "pickup_month",
         "pickup_date_3": "pickup_monthday",
@@ -847,7 +834,7 @@ tmp_df = (combined_df
         "dropoff_time_2": "dropoff_second"
     }))
 
-tmp_df.head(5)
+transformed_features_df.head(5)
 ```
 
 <div>
@@ -1001,21 +988,23 @@ tmp_df.head(5)
 </table>
 </div>
 
-Zwróć uwagę, że w danych widać, że składniki dat i godzin rozpoczęcia oraz zakończenia podróży wygenerowane przez wyprowadzone przekształcenia są prawidłowe. Usuń kolumny `pickup_datetime` i `dropoff_datetime`, ponieważ nie są już potrzebne.
+Zwróć uwagę, że w danych widać, że składniki dat i godzin rozpoczęcia oraz zakończenia podróży wygenerowane przez wyprowadzone przekształcenia są prawidłowe. Usuń kolumny `pickup_datetime` i `dropoff_datetime`, ponieważ nie są już potrzebne (podczas szkolenia modelu bardziej przydatne są szczegółowe funkcje czasowe, takie jak godzina, minuta i sekunda).
 
 
 ```python
-tmp_df = tmp_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
+processed_df = transformed_features_df.drop_columns(columns=["pickup_datetime", "dropoff_datetime"])
 ```
 
 Użyj funkcji wnioskowania o typie, aby automatycznie sprawdzić typ danych w każdym z pól i wyświetlić wyniki wnioskowania.
 
 
 ```python
-type_infer = tmp_df.builders.set_column_types()
+type_infer = processed_df.builders.set_column_types()
 type_infer.learn()
 type_infer
 ```
+
+Dane wyjściowe funkcji `type_infer` są następujące.
 
     Column types conversion candidates:
     'pickup_weekday': [FieldType.STRING],
@@ -1040,25 +1029,24 @@ Bazując na danych, wyniki wnioskowania wyglądają na prawidłowe. Teraz zastos
 
 
 ```python
-tmp_df = type_infer.to_dataflow()
-tmp_df.get_profile()
+type_converted_df = type_infer.to_dataflow()
+type_converted_df.get_profile()
 ```
 
-Przed spakowaniem przepływu danych uruchom dwa ostatnie filtry w zestawie danych. Aby wyeliminować nieprawidłowe punkty danych, odfiltruj przepływ danych w rekordach, w których obydwie wartości zmiennych, `cost` i `distance`, są większe od zera.
+Przed spakowaniem przepływu danych uruchom dwa ostatnie filtry w zestawie danych. Aby wyeliminować nieprawidłowo zapisane punkty danych, odfiltruj przepływ danych w rekordach, w których obydwie wartości zmiennych, `cost` i `distance`, są większe od zera. Ten krok znacząco poprawi dokładność modelu uczenia maszynowego, ponieważ punkty danych z zerowym kosztem lub dystansem stanowią główne elementy odstające, które zaburzają dokładność przewidywania.
 
 ```python
-tmp_df = tmp_df.filter(dprep.col("distance") > 0)
-tmp_df = tmp_df.filter(dprep.col("cost") > 0)
+final_df = type_converted_df.filter(dprep.col("distance") > 0)
+final_df = final_df.filter(dprep.col("cost") > 0)
 ```
 
-Teraz masz w pełni przekształcony i przygotowany obiekt przepływu danych, który można zastosować w modelu uczenia maszynowego. Zestaw SDK zawiera funkcję serializacji obiektów, która jest używana w sposób przedstawiony w poniższym fragmencie kodu.
+Teraz masz w pełni przekształcony i przygotowany obiekt przepływu danych, który można zastosować w modelu uczenia maszynowego. Zestaw SDK zawiera funkcję serializacji obiektów, która jest używana w sposób przedstawiony w poniższym kodzie.
 
 ```python
 import os
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-dflow_prepared = tmp_df
-package = dprep.Package([dflow_prepared])
+package = dprep.Package([final_df])
 package.save(file_path)
 ```
 

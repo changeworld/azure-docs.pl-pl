@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: jednostronicowa aplikacja internetowa korzystająca z wyszukiwania jednostek Bing'
+title: 'Samouczek: Jednostronicowa aplikacja internetowa korzystająca z wyszukiwania jednostek Bing'
 titlesuffix: Azure Cognitive Services
 description: Pokazuje sposób użycia interfejsu API wyszukiwania jednostek Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: aahi
-ms.openlocfilehash: 6bf3944017075ee04fe6ed3472a0cbe12d7f8ba0
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f8aa6733748bbdf9ffff069126f6481c8b6788c8
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162011"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55197436"
 ---
-# <a name="tutorial-single-page-web-app"></a>Samouczek: jednostronicowa aplikacja internetowa
+# <a name="tutorial-single-page-web-app"></a>Samouczek: Jednostronicowa aplikacja internetowa
 
 Interfejs API wyszukiwania jednostek Bing umożliwia wyszukiwanie w Internecie informacji o *jednostkach* i *miejscach.* W danym zapytaniu można zażądać dowolnego z tych dwóch rodzajów wyników lub obu. Poniżej znajdują się definicje miejsc i jednostek.
 

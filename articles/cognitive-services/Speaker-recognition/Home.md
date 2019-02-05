@@ -6,16 +6,16 @@ services: cognitive-services
 author: dwlin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speaker-recognition
+ms.subservice: speaker-recognition
 ms.topic: overview
 ms.date: 10/01/2018
 ms.author: dwlin
-ms.openlocfilehash: c9193a51c677b327e7d799412e389467ac5cc1c0
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 7267663bae71b793923bc10a3b52ab54c12168af
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48016861"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55216765"
 ---
 # <a name="speaker-recognition-api"></a>Interfejs API rozpoznawania osoby mówiącej
 
@@ -38,7 +38,7 @@ Podczas rejestracji jest nagrywany głos osoby mówiącej w trakcie wypowiadania
 
 Podczas weryfikacji głos i fraza wejściowa są porównywane z podpisem głosowym i frazą z rejestracji — aby zweryfikować, czy pochodzą od tej samej osoby i czy zawierają prawidłową frazę.
 
-Aby uzyskać więcej informacji na temat weryfikacji osoby mówiącej, zapoznaj się z artykułem dotyczącym interfejsu API [weryfikacji osoby mówiącej](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
+Aby uzyskać więcej informacji na temat weryfikacji osoby mówiącej, zapoznaj się z artykułem dotyczącym interfejsu API  [weryfikacji osoby mówiącej](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
 
 ## <a name="speaker-identification"></a>Identyfikacja osoby mówiącej
 
@@ -56,4 +56,4 @@ Rejestracja w celu identyfikacji osoby mówiącej jest niezależna od tekstu, co
 
 Podczas rozpoznawania należy dostarczyć nagranie dźwiękowe nieznanej osoby mówiącej oraz potencjalną grupę osób mówiących. Głos wejściowy jest porównywany ze wszystkimi osobami mówiącymi w celu ustalenia, do kogo należy głos, a po znalezieniu dopasowania zostaje zwrócona tożsamość osoby mówiącej.
 
-Aby uzyskać więcej informacji na temat identyfikacji osoby mówiącej, zapoznaj się z artykułem dotyczącym interfejsu API [identyfikacji osoby mówiącej](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).
+Aby uzyskać więcej informacji na temat identyfikacji osoby mówiącej, zapoznaj się z artykułem dotyczącym interfejsu API  [identyfikacji osoby mówiącej](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).

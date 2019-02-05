@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: tłumaczenie tekstu w usłudze Translator, Node.js — interfejs API tłumaczenia tekstu w usłudze Translator'
+title: 'Szybki start: Tłumaczenie tekstu w usłudze Translator, Node.js — interfejs API tłumaczenia tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start przetłumaczysz tekst z jednego języka na inny przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator i oprogramowania Node.js.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: 68c38d289e4095bd602e681171d8409b21920142
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 40b38fdf2773bd58cf1635d089aec7340b04ce07
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246545"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214025"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do tłumaczenia ciągu z użyciem środowiska Node.js
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-with-nodejs"></a>Szybki start: Korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do tłumaczenia ciągu z użyciem środowiska Node.js
 
 W tym przewodniku Szybki start dowiesz się, jak przetłumaczyć ciąg tekstowy z języka angielskiego na włoski i niemiecki przy użyciu środowiska Node.js i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 

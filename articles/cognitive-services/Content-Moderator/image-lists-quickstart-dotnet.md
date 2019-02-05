@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: sprawdzanie obrazów pod kątem niestandardowych list w języku C# — usługa Content Moderator'
+title: 'Szybki start: Sprawdzanie obrazów pod kątem niestandardowych list w języku C# — usługa Content Moderator'
 titlesuffix: Azure Cognitive Services
 description: Sposób moderowania obrazów przy użyciu niestandardowych list obrazów za pomocą zestawu Content Moderator SDK dla języka C#.
 services: cognitive-services
 author: sanjeev3
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 7165bdc4aebec886a57990281bc35c83b1d7bf04
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: f7894fa54b634df450d3f7eb90d594cf0315970c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309403"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228189"
 ---
-# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Szybki start: moderowanie przy użyciu niestandardowych list obrazów w języku C#
+# <a name="quickstart-moderate-with-custom-image-lists-in-c"></a>Szybki start: Moderowanie przy użyciu niestandardowych list obrazów w języku C#
 
 Ten artykuł zawiera informacje i przykłady kodu, które pomogą Ci rozpocząć korzystanie z zestawu [SDK Content Moderator dla platformy .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) do następujących zastosowań:
 - Tworzenie niestandardowych list obrazów

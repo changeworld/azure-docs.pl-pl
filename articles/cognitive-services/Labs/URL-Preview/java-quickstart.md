@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: laboratorium Project URL Preview, Java'
+title: 'Szybki start: Projekt Podgląd adresu URL, Java'
 titlesuffix: Azure Cognitive Services
 description: Przykładowy skrypt umożliwiający rozpoczęcie pracy z laboratorium Project URL Preview w języku Java.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: cdbed473af04b7a0ba0fd2bba56219d43bf72537
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: cfc0cd690c040ed912281be081daffd26566bd4d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465716"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209128"
 ---
-# <a name="quickstart-url-preview-with-java"></a>Szybki start: podgląd adresu URL w języku Java
+# <a name="quickstart-url-preview-with-java"></a>Szybki start: Podgląd adresu URL w języku Java
 
 Poniższy przykład w języku Java tworzy podgląd adresu URL witryny internetowej SwiftKey: https://swiftkey.com/en.
 
@@ -29,7 +29,7 @@ Pobierz klucz dostępu dla bezpłatnej wersji próbnej zestawu [Cognitive Servic
 
 Poniższy kod tworzy obiekt `WebRequest`, ustawia nagłówek klucza dostępu i dodaje ciąg zapytania dla adresu „https://swiftkey.com/en”.  Następnie wysyła żądanie i przypisuje odpowiedź do ciągu zawierającego tekst w formacie JSON.
 
-````
+```
     // construct URL of search request (endpoint + query string)
 
     static String host = "https://api.labs.cognitive.microsoft.com";
@@ -47,7 +47,7 @@ Poniższy kod tworzy obiekt `WebRequest`, ustawia nagłówek klucza dostępu i d
 
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
-````
+```
 
 ## <a name="complete-code"></a>Kompletny kod
 
@@ -58,7 +58,7 @@ Interfejs API wyszukiwania odpowiedzi Bing zwraca wyniki z wyszukiwarki Bing.
 4. Zastąp wartość subscriptionKey kluczem dostępu właściwym dla Twojej subskrypcji.
 5. Uruchom program.
 
-````
+```
 package UrlPreviewpkg;
 
 import java.net.*;
@@ -165,7 +165,7 @@ class SearchResults{
  }
 }
 
-````
+```
 
 ## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](csharp.md)

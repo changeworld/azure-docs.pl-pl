@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7434407c7d1afe197a560d9ed9c4f1e7e94b6c2b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 183f596c213f833a2ca633398d1102e86f328912
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033540"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468856"
 ---
-# <a name="create-a-container-in-azure-cosmos-db"></a>Tworzenie kontenera w usłudze Azure Cosmos DB
+# <a name="create-an-azure-cosmos-container"></a>Tworzenie kontenera usługi Azure Cosmos
 
 W tym artykule omówiono różne sposoby tworzenia kontenera (kolekcja, tabela, graf). Kontener można utworzyć za pomocą witryny Azure Portal, interfejsu wiersza polecenia platformy Azure bądź obsługiwanych zestawów SDK. W tym artykule pokazano, jak utworzyć kontener, określić klucz partycji i aprowizować przepływność.
 

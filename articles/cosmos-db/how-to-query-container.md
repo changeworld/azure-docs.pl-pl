@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 647c4dfd6038a04d4d55516ab816bf7701542075
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 08d9978134ce214a468691ec367fb1797f6e86fc
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040425"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457755"
 ---
-# <a name="query-containers-in-azure-cosmos-db"></a>Wykonywanie zapytań dla kontenerów w usłudze Azure Cosmos DB
+# <a name="query-an-azure-cosmos-container"></a>Wykonywanie zapytania dotyczącego kontenera usługi Azure Cosmos
 
 W tym artykule wyjaśniono, jak wykonywać zapytania dla kontenera (kolekcji, grafu, tabeli) w usłudze Azure Cosmos DB.
 

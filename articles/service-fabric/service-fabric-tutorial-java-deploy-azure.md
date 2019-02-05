@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 53ad780ff0b199764c354327439fa69c360e7cb5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: db0b1cd9d61e498430bff417573b63f99c0ae7e4
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996812"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301734"
 ---
-# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Samouczek: wdrażanie aplikacji Java w klastrze usługi Service Fabric na platformie Azure
+# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Samouczek: Wdrażanie aplikacji Java w klastrze usługi Service Fabric na platformie Azure
 
 Niniejszy samouczek jest trzecią częścią serii. Przedstawiono w nim sposób wdrażania aplikacji usługi Service Fabric w klastrze na platformie Azure.
 
@@ -45,7 +45,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 
 Przed rozpoczęciem tego samouczka:
 
-* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Zainstalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Zainstaluj zestaw SDK usługi Service Fabric dla komputera [Mac](service-fabric-get-started-mac.md) lub [systemu Linux](service-fabric-get-started-linux.md)
 * [Zainstaluj język Python 3](https://wiki.python.org/moin/BeginnersGuide/Download)
@@ -247,7 +247,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > [!div class="checklist"]
 > * Tworzenie bezpiecznego klastra z systemem Linux na platformie Azure
 > * Tworzenie zasobów niezbędnych do monitorowania za pomocą rozwiązania ELK
-> * Opcjonalnie: jak używać klastrów testowych w celu wypróbowania usługi Service Fabric
 
 Przejdź do następnego samouczka:
 > [!div class="nextstepaction"]

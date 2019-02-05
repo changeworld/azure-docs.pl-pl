@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7c253141e0e6e76f845d08e68a1d79949fe811e8
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c648522e689c64de8e7e09b85ca3b6eb26b6945b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034237"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477203"
 ---
-# <a name="provision-throughput-for-a-database-in-azure-cosmos-db"></a>Aprowizowanie przepływności dla bazy danych w usłudze Azure Cosmos DB
+# <a name="provision-throughput-on-an-azure-cosmos-database"></a>Aprowizowanie przepływności dla bazy danych usługi Azure Cosmos DB
 
 W tym artykule wyjaśniono, jak aprowizować przepływność dla bazy danych w usłudze Azure Cosmos DB. Przepływność możesz aprowizować dla jednego [kontenera](how-to-provision-container-throughput.md) lub dla bazy danych i udostępniać ją dla kontenerów w tej bazie danych. Przepływność na poziomie bazy danych możesz aprowizować za pomocą witryny Azure Portal lub zestawów SDK usługi Cosmos DB.
 

@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: tworzenie modelu akustycznego za pomocą usługi Mowa'
+title: 'Samouczek: Tworzenie modelu akustycznego za pomocą usługi Speech Service'
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak utworzyć model akustyczny za pomocą usługi Speech Service w ramach usługi Azure Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 70fc9c34599f27eb5d67b79ef823f8037ae55ba9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 8bee93c4bb932730000a06cc2bc3fe5a3e330a1f
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215246"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217632"
 ---
-# <a name="tutorial-create-a-custom-acoustic-model"></a>Samouczek: tworzenie niestandardowego modelu akustycznego
+# <a name="tutorial-create-a-custom-acoustic-model"></a>Samouczek: Tworzenie niestandardowego modelu akustycznego
 
 Tworzenie niestandardowego modelu akustycznego jest pomocne, jeśli aplikacja została zaprojektowana do użycia w konkretnym środowisku, np. w samochodzie, wraz z określonymi urządzeniami, w określonych warunkach rejestrowania bądź pod kątem konkretnej populacji użytkowników. Przykłady obejmują akcentowaną mowę, specyficzne szumy w tle lub użycie konkretnego mikrofonu na potrzeby rejestrowania.
 
@@ -46,7 +46,7 @@ Na przykład:
 * Jeżeli chcesz lepiej rozpoznawać mowę w głośnym środowisku fabryki, pliki dźwiękowe powinny zawierać mowę osób rozmawiających w głośnej fabryce.
 * Jeżeli chcesz zoptymalizować wydajność pod kątem jednej osoby mówiącej, &mdash;na przykład aby transkrybować wszystkie audycje z cyklu „fireside chats” (rozmowy przy kominku) Franklina D. Roosevelta&mdash;, pliki dźwiękowe powinny zawierać wiele przykładów tylko tej osoby mówiącej.
 
-Zestaw danych akustycznych na potrzeby dostosowania modelu akustycznego składa się z dwóch części: (1) zestawu plików dźwiękowych zawierających dane mowy oraz (2) pliku zawierającego transkrypcje wszystkich plików dźwiękowych.
+Zestaw danych akustycznych na potrzeby dostosowywania modelu akustycznego składa się z dwóch części: (1) to zestaw plików audio zawierających dane mowy i (2) to plik zawierający transkrypcje wszystkich plików audio.
 
 ### <a name="audio-data-recommendations"></a>Zalecenia dotyczące danych dźwiękowych
 
@@ -112,7 +112,7 @@ W polach **Name** (Nazwa) i **Description** (Opis) podaj odpowiednie informacje.
 
 W polach **Transcriptions file (.txt)** (Plik transkrypcji — txt) i **Audio files (.zip)** (Pliki dźwiękowe — zip) wybierz polecenie **Browse** (Przeglądaj), a następnie wybierz plik transkrypcji ze zwykłym tekstem i archiwum zip z plikami WAV. Po zakończeniu przygotowania wybierz pozycję **Import** (Importuj), aby przekazać dane. Dane zostaną przekazane. W przypadku większych zestawów danych proces importowania może potrwać kilka minut.
 
-Po zakończeniu przekazywania wróć do tabeli **Acoustic Datasets** (Zestawy danych akustycznych). Zostanie wyświetlona pozycja odpowiadająca zestawowi danych akustycznych. Zwróć uwagę, że przypisano mu unikatowy identyfikator (identyfikator GUID). Będzie wyświetlony bieżący stan danych: *NotStarted* (Nie rozpoczęto) podczas umieszczania danych w kolejce do przetwarzania, *Running* (Uruchomiono) podczas ich weryfikacji i *Complete* (Zakończono), gdy są gotowe do użycia.
+Po zakończeniu przekazywania wróć do tabeli **Acoustic Datasets** (Zestawy danych akustycznych). Zostanie wyświetlona pozycja odpowiadająca zestawowi danych akustycznych. Zwróć uwagę, że przypisano mu unikatowy identyfikator (identyfikator GUID). Zostanie wyświetlony bieżący stan danych: *NotStarted* (Nie rozpoczęto) podczas umieszczania danych w kolejce do przetwarzania, *Running* (Uruchomiono) podczas ich weryfikacji i *Complete* (Zakończono), gdy są gotowe do użycia.
 
 Sprawdzanie poprawności danych obejmuje serię kontroli plików dźwiękowych na potrzeby weryfikacji formatu pliku, długości i częstotliwości próbkowania, a także kontroli plików transkrypcji na potrzeby weryfikacji formatu pliku i wykonania pewnych zadań z zakresu normalizacji tekstu.
 
@@ -141,7 +141,7 @@ Następnie z listy rozwijanej **Acoustic Data** (Dane akustyczne) wybierz dane a
 
 ![Strona Create Acoustic Model (Tworzenie modelu akustycznego)](media/stt/speech-acoustic-models-create2.png)
 
-Po zakończeniu przetwarzania możesz opcjonalnie wybrać przeprowadzenie testowania dokładności nowego modelu. Spowoduje to uruchomienie oceny zamiany mowy na tekst dla wybranego zestawu danych akustycznych przy użyciu niestandardowego modelu akustycznego oraz zwrócenie wyników w formie raportu. Aby wykonać ten test, zaznacz pole wyboru **Accuracy Testing** (Test dokładności). Następnie z listy rozwijanej wybierz model językowy. Jeśli nie utworzono żadnych niestandardowych modeli językowych, na liście rozwijanej będą dostępne tylko podstawowe modele językowe. Aby wybrać najbardziej odpowiedni model językowy, zobacz [Samouczek: tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md).
+Po zakończeniu przetwarzania możesz opcjonalnie wybrać przeprowadzenie testowania dokładności nowego modelu. Spowoduje to uruchomienie oceny zamiany mowy na tekst dla wybranego zestawu danych akustycznych przy użyciu niestandardowego modelu akustycznego oraz zwrócenie wyników w formie raportu. Aby wykonać ten test, zaznacz pole wyboru **Accuracy Testing** (Test dokładności). Następnie z listy rozwijanej wybierz model językowy. Jeśli nie utworzono żadnych niestandardowych modeli językowych, na liście rozwijanej będą dostępne tylko podstawowe modele językowe. Aby wybrać najbardziej odpowiedni model językowy, zobacz [Samouczek: Tworzenie niestandardowego modelu językowego](how-to-customize-language-model.md).
 
 Na koniec wybierz zestaw danych akustycznych, którego chcesz użyć do oceny modelu niestandardowego. Jeśli wykonujesz test dokładności, ważne jest wybranie danych akustycznych, które będą różnić się od tych, które zostały użyte do utworzenia modelu, aby uzyskać realistyczną ocenę wydajności modelu. Testowanie dokładności na danych uczenia nie umożliwia oceny wydajności dostosowanego modelu w rzeczywistych warunkach. Wyniki będą zbyt optymistyczne. Należy również zauważyć, że test dokładności jest ograniczony do 1000 wypowiedzi. W przypadku większych zestawów danych akustycznych podczas testu zostanie ocenione tylko pierwsze 1000 wypowiedzi.
 

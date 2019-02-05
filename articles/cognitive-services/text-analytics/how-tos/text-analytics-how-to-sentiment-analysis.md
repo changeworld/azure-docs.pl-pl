@@ -5,16 +5,16 @@ services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e5ceb6208229baf3e07e4030992d5de85309789c
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632870"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212498"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Przykład: Jak wykrywać opinię przy użyciu analizy tekstu
 
@@ -95,7 +95,7 @@ Analiza jest wykonywana po odebraniu żądania. Usługa akceptuje maksymalnie 10
 Pamiętaj, że usługa jest bezstanowa. Żadne dane nie są przechowywane na koncie. Wyniki są zwracane natychmiast w odpowiedzi.
 
 
-## <a name="step-3-view-results"></a>Krok 3: Wyświetlenie wyników
+## <a name="step-3-view-results"></a>Krok 3. Wyświetlanie wyników
 
 Gdy analizator opinii sklasyfikuje tekst jako przeważnie pozytywny lub negatywny, przypisze mu wartość z zakresu od 0 do 1. Wartości zbliżone do 0,5 oznaczają opinię neutralną lub brak opinii. Wynik 0,5 oznacza opinię neutralną. Jeśli ciągu nie można przeanalizować pod kątem opinii lub nie zawiera on opinii, wynik zawsze wynosi dokładnie 0,5. Na przykład jeśli przekażesz ciąg w języku hiszpańskim z kodem języka angielskiego, wynik będzie wynosić 0,5.
 

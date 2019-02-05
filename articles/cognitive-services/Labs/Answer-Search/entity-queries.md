@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: laboratorium Project Answer Search — zapytanie o jednostki'
+title: 'Szybki start: Laboratorium Project Answer Search — zapytanie o jednostki'
 titlesuffix: Azure Cognitive Services
 description: Wykonywanie zapytań dotyczących jednostek przy użyciu laboratorium Project Answer Search
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 09af064a1c072996171e6afa4f043e84f18612b4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 2ec11412b5b0e713742029f05c91a6ecbe78c344
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467416"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210696"
 ---
-# <a name="quickstart-query-for-entities"></a>Szybki start: wykonywanie zapytań dotyczących jednostek
+# <a name="quickstart-query-for-entities"></a>Szybki start: Wykonywanie zapytań o jednostki
 
 Jeśli zapytanie żąda informacji na temat osoby, miejsca lub rzeczy, w odpowiedzi mogą znaleźć się obiekty `entities`.  Zapytania zawsze zwracają strony internetowe, [fakty](fact-queries.md) i/lub [jednostki](entity-queries.md). Jest to zależne od zapytania.
 
@@ -33,7 +33,7 @@ Aby określić scenariusz zapytania, użyj pola `queryScenario` obiektu `entitie
 -   Attraction (Atrakcja) 
  
 Aby określić typ jednostki, jaką zawiera odpowiedź, użyj pola `entityTypeHints`, jak pokazano w zapytaniu „Bill Gates”.
-````
+```
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
         "entityPresentationInfo": {
@@ -44,13 +44,13 @@ Aby określić typ jednostki, jaką zawiera odpowiedź, użyj pola `entityTypeHi
         },
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
-````
+```
 Poniżej zamieszczono zapytanie o „Space Needle”:
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
-````
+```
 Odpowiedź zawiera element `entities`. Zwróć uwagę na pola `entityScenario` i `entityTypeHints`. 
-````
+```
   "entities": {
     "value": [
       {
@@ -108,19 +108,19 @@ Odpowiedź zawiera element `entities`. Zwróć uwagę na pola `entityScenario` i
       }
     ]
   },
-````
+```
 
 W odpowiednich sytuacjach zapytanie może zwrócić listę.
 
 **Zapytanie:** poniższe zapytanie wyszukuje listę zagrożonych gatunków:
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
-````
+```
 
 **Odpowiedź:** odpowiedź zawiera listę sformatowaną pod kątem wyświetlania w formie wartości w tabeli:
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -217,7 +217,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
     ]
   },
 
-````
+```
 
 
 ## <a name="next-steps"></a>Następne kroki

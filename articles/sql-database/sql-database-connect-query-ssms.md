@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 23f2d32b2323821155467bd1ad12e9baf8c33074
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 01/25/2019
+ms.openlocfilehash: 2b510accb2a30250a2855cfa22dbf45546a77569
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150754"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461750"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Szybki start: używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych SQL Azure
 
@@ -30,7 +30,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-#### <a name="install-the-latest-ssms"></a>Instalowanie najnowszej wersji środowiska SSMS
+* Skonfigurowana reguła zapory na poziomie serwera. Aby uzyskać więcej informacji, zobacz temat [Tworzenie reguły zapory na poziomie serwera](sql-database-get-started-portal-firewall.md).
+
+## <a name="install-the-latest-ssms"></a>Instalowanie najnowszej wersji środowiska SSMS
 
 Przed rozpoczęciem upewnij się, że zainstalowano najnowszą wersję środowiska [SSMS][ssms-install-latest-84g]. 
 
@@ -43,7 +45,7 @@ Przed rozpoczęciem upewnij się, że zainstalowano najnowszą wersję środowis
 W środowisku SMSS połącz się z serwerem usługi Azure SQL Database. 
 
 > [!IMPORTANT]
-> Serwer logiczny usługi Azure SQL Database nasłuchuje na porcie 1433. Aby można było nawiązać połączenie z serwerem logicznym spoza firmowej zapory, ten port w zaporze musi być otwarty.
+> Serwer usługi Azure SQL Database nasłuchuje na porcie 1433. Aby można było nawiązać połączenie z serwerem usługi SQL Database spoza firmowej zapory, ten port w zaporze musi być otwarty.
 >
 
 1. Otwórz program SSMS. Zostanie wyświetlone okno dialogowe **Nawiązywanie połączenia z serwerem**.

@@ -1,8 +1,21 @@
 ---
-Tytuł: Diagram przeglądowy titleSuffix możliwości usługi Machine Learning Studio: Opis usługi Azure Machine Learning Studio: Diagram w wersji do wydruku przedstawiający możliwości usługi Azure Machine Learning Studio. Pokazuje sposób użycia Studia w celu opracowania eksperymentu analizy predykcyjnej i operacjonalizacji go w chmurze Azure.
-usługi: uczenie maszynowe ms.service: ms.component uczenia maszynowego: studio ms.topic: omówienie
-
-author: garyericson ms.author: garye ms.custom: previous-ms.author=haining, previous-author=hning86 ms.date: 04/04/2017
+title: Diagram przeglądowy możliwości usługi Machine Learning Studio
+titleSuffix: Azure Machine Learning Studio
+description: Diagram w wersji do wydruku przedstawiający możliwości usługi Azure Machine Learning Studio. Pokazuje sposób użycia Studia w celu opracowania eksperymentu analizy predykcyjnej i operacjonalizacji go w chmurze Azure.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: overview
+author: garyericson
+ms.author: garye
+ms.custom: previous-ms.author=haining, previous-author=hning86
+ms.date: 04/04/2017
+ms.openlocfilehash: 01f1931b9b1f8e52f87e4f8f862bc7038f953085
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465677"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Diagram przeglądowy możliwości usługi Azure Machine Learning Studio
 Diagram **Przegląd możliwości usługi Microsoft Azure Machine Learning Studio** przedstawia ogólny przegląd sposobu użycia usługi Machine Learning Studio w celu opracowania modelu analizy predykcyjnej i operacjonalizacji go w chmurze Azure.

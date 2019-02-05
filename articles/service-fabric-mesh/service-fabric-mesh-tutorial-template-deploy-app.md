@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 97b1efbcb02277028782764ca1018b195ab21277
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246368"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158846"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Samouczek: Wdrażanie aplikacji w usłudze Service Fabric Mesh przy użyciu szablonu
 
@@ -109,7 +109,7 @@ Po utworzeniu rejestru zostaną wyświetlone dane wyjściowe podobne do następu
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Wypychanie obrazów do usługi Azure Container Registry
 
-W tym samouczku używamy przykładowej aplikacji To Do List (lista zadań do wykonania).  Obrazy kontenera dla usług [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) i [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) można znaleźć w usłudze Docker Hub. Zobacz [Tworzenie aplikacji internetowej usługi Servic Fabric Mesh](service-fabric-mesh-tutorial-create-dotnetcore.md), aby uzyskać informacje na temat tworzenia aplikacji w programie Visual Studio. W usłudze Service Fabric Mesh można uruchamiać kontenery Docker systemu Windows i systemu Linux.  Jeśli pracujesz z kontenerami systemu Linux, wybierz pozycję **Przełącz na kontenery systemu Linux** na platformie Docker.  Jeśli pracujesz z kontenerami systemu Windows, wybierz pozycję **Przełącz na kontenery systemu Windows** na platformie Docker.
+W tym samouczku używamy przykładowej aplikacji To Do List (lista zadań do wykonania).  Obrazy kontenera dla usług [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) i [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) można znaleźć w usłudze Docker Hub. Zobacz [Tworzenie aplikacji internetowej usługi Service Fabric Mesh](service-fabric-mesh-tutorial-create-dotnetcore.md), aby uzyskać informacje na temat tworzenia aplikacji w programie Visual Studio. W usłudze Service Fabric Mesh można uruchamiać kontenery Docker systemu Windows i systemu Linux.  Jeśli pracujesz z kontenerami systemu Linux, wybierz pozycję **Przełącz na kontenery systemu Linux** na platformie Docker.  Jeśli pracujesz z kontenerami systemu Windows, wybierz pozycję **Przełącz na kontenery systemu Windows** na platformie Docker.
 
 Aby wypchnąć obraz do wystąpienia usługi ACR, najpierw musisz mieć ten obraz kontenera. Jeśli nie masz jeszcze żadnych lokalnych obrazów kontenerów, użyj polecenia [docker pull](https://docs.docker.com/engine/reference/commandline/pull/), aby ściągnąć obrazy [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) i [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) z usługi Docker Hub.
 

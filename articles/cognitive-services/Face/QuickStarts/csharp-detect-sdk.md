@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wykrywanie twarzy na obrazie przy użyciu zestawu .NET SDK interfejsu API rozpoznawania twarzy platformy Azure'
+title: 'Szybki start: Wykrywanie twarzy na obrazie przy użyciu zestawu .NET SDK interfejsu API rozpoznawania twarzy platformy Azure'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start użyjesz zestawu SDK interfejsu API rozpoznawania twarzy platformy Azure i języka C# do wykrywania twarzy na obrazie.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: pafarley
-ms.openlocfilehash: 4fbbde167a8c895a71ab3614e8c3ecbce26604a9
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: caaef0f7fdbfc3ad639deddb328c98334ad3e99d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578165"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213324"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Szybki start: wykrywanie twarzy na obrazie przy użyciu zestawu .NET SDK interfejsu API rozpoznawania twarzy
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Szybki start: Wykrywanie twarzy na obrazie przy użyciu zestawu .NET SDK rozpoznawania twarzy
 
 W tym przewodniku Szybki start użyjesz zestawu SDK interfejsu API rozpoznawania twarzy i języka C# do wykrywania ludzkich twarzy na obrazie. Działający przykład kodu w tym przewodniku Szybki Start znajduje się w projekcie interfejsu API rozpoznawania twarzy w repozytorium [przewodników języka C# przetwarzania obrazów usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) w serwisie GitHub.
 
@@ -97,4 +97,4 @@ Male 37   Female 56
 W tym przewodniku Szybki Start utworzono prostą aplikację konsolową .NET, która używa interfejsu API rozpoznawania twarzy do wykrywania twarzy na obrazach lokalnych i zdalnych. Następnie postępuj zgodnie z informacjami zawartymi w bardziej szczegółowym samouczku, aby dowiedzieć się, jak w intuicyjny sposób prezentować informacje o twarzy użytkownikom.
 
 > [!div class="nextstepaction"]
-> [Samouczek: tworzenie aplikacji WPF wykrywającej i analizującej twarze na zdjęciach](../Tutorials/FaceAPIinCSharpTutorial.md)
+> [Samouczek: Tworzenie aplikacji WPF wykrywającej i analizującej twarze na zdjęciach](../Tutorials/FaceAPIinCSharpTutorial.md)

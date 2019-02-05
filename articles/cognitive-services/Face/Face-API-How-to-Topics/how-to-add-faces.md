@@ -1,23 +1,23 @@
 ---
-title: 'Przykład: Dodawanie twarzy — interfejs API rozpoznawania twarzy'
+title: 'Przykład: dodawanie twarzy — interfejs API rozpoznawania twarzy'
 titleSuffix: Azure Cognitive Services
 description: Dodawanie twarzy na obrazach za pomocą interfejsu API rozpoznawania twarzy.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f443eb13650483bc3ee63dad59cc40b8042bc35b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125106"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222818"
 ---
-# <a name="example-how-to-add-faces"></a>Przykład: Jak dodawać twarze
+# <a name="example-how-to-add-faces"></a>Przykład: jak dodawać twarze
 
 Ten przewodnik prezentuje najlepsze rozwiązanie w zakresie dodawania dużej liczby osób i twarzy do obiektu PersonGroup.
 Ta sama strategia dotyczy także obiektów FaceList i LargePersonGroup.
@@ -68,9 +68,9 @@ Jeśli korzystasz z biblioteki klienta, klucz subskrypcji jest przekazywany w ko
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Klucz subskrypcji można uzyskać na stronie portalu Marketplace witryny Azure Portal. Zobacz [Subskrypcje](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+Klucz subskrypcji można uzyskać na stronie Marketplace witryny Azure Portal. Zobacz [Subskrypcje](https://www.microsoft.com/cognitive-services/en-us/sign-up).
 
-## <a name="step-3-create-the-persongroup"></a>Krok 3: Tworzenie obiektu PersonGroup
+## <a name="step-3-create-the-persongroup"></a>Krok 3: Tworzenie elementu PersonGroup
 
 Tworzony jest obiekt PersonGroup o nazwie „MyPersonGroup” w celu zapisania osób.
 Czas żądania jest umieszczany w kolejce `_timeStampQueue` w celu zapewnienia ogólnej walidacji.
@@ -97,7 +97,7 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step-5-add-faces-to-the-persons"></a>Krok 5: Dodawanie twarzy do osób
+## <a name="step-5-add-faces-to-the-persons"></a>Krok 5. Dodawanie twarzy do osób
 
 Operacje dodawania twarzy do różnych osób są przetwarzane współbieżnie, natomiast w przypadku jednej określonej osoby jest to operacja sekwencyjna.
 Ponownie wywoływana jest funkcja `await WaitCallLimitPerSecondAsync()` w celu zapewnienia, że częstotliwość żądań znajduje się w zakresie ograniczenia.

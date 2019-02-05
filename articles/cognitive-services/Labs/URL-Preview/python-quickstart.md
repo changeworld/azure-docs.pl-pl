@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: laboratorium Project URL Preview, Python'
+title: 'Szybki start: Projekt Podgląd adresu URL, Python'
 titlesuffix: Azure Cognitive Services
 description: Przykładowy skrypt umożliwiający szybkie rozpoczęcie pracy z laboratorium Project URL Preview w języku Python.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: url-preview
+ms.subservice: url-preview
 ms.topic: quickstart
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: ecf98803e5313812a074442b70bb376ab67e7366
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fc684e4c17c437a6f2713628f35e3a2ab7aba241
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470000"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213655"
 ---
-# <a name="quickstart-url-preview-with-python"></a>Szybki start: podgląd adresu URL w języku Python
+# <a name="quickstart-url-preview-with-python"></a>Szybki start: Podgląd adresu URL za pomocą języka Python
 
 Poniższy przykład w języku Python tworzy podgląd adresu URL witryny internetowej SwiftKey: https://swiftkey.com/en.
 
@@ -41,7 +41,7 @@ W celu zaimplementowania kodu wykonaj następujące kroki:
 
 Pełny kod tej wersji demonstracyjnej wygląda następująco:
 
-````
+```
 import http.client, urllib.parse
 import json
 
@@ -64,7 +64,7 @@ def get_preview ():
 
 result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
-````
+```
 ## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](csharp.md)
 - [Przewodnik Szybki start dla języka Java](java-quickstart.md)

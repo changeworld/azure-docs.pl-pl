@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: laboratorium Project Answer Search — zapytania dotyczące faktów'
+title: 'Szybki start: Laboratorium Project Answer Search — zapytania dotyczące faktów'
 titlesuffix: Azure Cognitive Services
 description: Wykonywanie zapytań dotyczących faktów przy użyciu laboratorium Project Answer Search
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: answer-search
+ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 7e8a793362e51a05a73c0b42346e2e8fafb3f44d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469405"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210951"
 ---
-# <a name="quickstart-query-for-facts"></a>Szybki start: wykonywanie zapytań dotyczących powszechnie znanych faktów
+# <a name="quickstart-query-for-facts"></a>Szybki start: Wykonywanie zapytań dotyczących faktów
 
 Jeśli zapytanie dotyczy powszechnie znanego faktu, np. daty lub możliwej do zidentyfikowania informacji, zwracanym typem odpowiedzi może być `facts`. Odpowiedzi dotyczące faktów zawierają odpowiednie wyniki wyodrębnione z akapitów w dokumentach internetowych.  Te zapytania zawsze zwracają strony internetowe, [fakty](fact-queries.md) i/lub [jednostki](entity-queries.md). Jest to zależne od zapytania.
 
@@ -26,14 +26,14 @@ Zapytania, takie jak valentines+2016 (walentynki+2016) i when+is+ramadan (kiedy+
 Poniższy przykład dotyczy odpowiedzi typu `facts` związanej z datą. 
 
 **Zapytanie:**
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 
-````
+```
 
 **Odpowiedź:** Pole `subjectName` zawiera wyświetlaną wersję zapytania użytkownika, które może posłużyć jako etykieta podczas wyświetlania faktu. Jeśli ciąg zapytania to valentines+2016 (walentynki+2016), usługa Bing może zmienić jego brzmienie na Valentine's Day 2016 (Walentynki 2016). Pole opisu zawiera stwierdzenie faktu.
 
-````
+```
 {   
     "_type" : "SearchResponse",   
     "queryContext" : {   
@@ -57,20 +57,20 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
     }   
 }   
 
-````
+```
 
 Zapytanie „Why is the sky blue?” (Dlaczego niebo jest niebieskie?) zwraca przykład odpowiedzi opartej na powszechnie obowiązującej wiedzy.
 
 **Zapytanie:**
 
-````
+```
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+sky+blue
 
-````
+```
 
 **Odpowiedź:** Pole `value/description` zawiera odpowiedź opartą na wiedzy lub informację żądaną przez wysłane zapytanie.
 
-````
+```
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
     "contractualRules": [
@@ -112,17 +112,17 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
     ]
   },
 
-````
+```
 
 ## <a name="tabular-data"></a>Dane tabelaryczne
 W niektórych przypadkach fakty mogą być zwracane w postaci `_type: StructuredValue/TabularData`. Następujące zapytanie pobiera dane tabelaryczne z kontrastującymi ze sobą informacjami na temat kawy i herbaty.
 
-````
+```
 https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
 
-````
+```
 Wyniki dla odpowiedzi typu `facts` obejmują następujące wiersze i komórki:
-````
+```
     "value": [
       {
         "subjectName": "Coffee vs. Tea",
@@ -196,7 +196,7 @@ Wyniki dla odpowiedzi typu `facts` obejmują następujące wiersze i komórki:
     ]
   },
 
-````
+```
 
 ## <a name="next-steps"></a>Następne kroki
 - [Przewodnik Szybki start dla języka C#](c-sharp-quickstart.md)

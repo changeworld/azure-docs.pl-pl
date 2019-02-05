@@ -1,6 +1,6 @@
 ---
 title: Tworzenie bazy danych SQL platformy Azure przy użyciu portalu | Microsoft Docs
-description: Utwórz serwer logiczny i bazę danych usługi Azure SQL Database w witrynie Azure Portal, a następnie wykonuj w niej zapytania.
+description: Utwórz serwer i bazę danych usługi Azure SQL Database w witrynie Azure Portal, a następnie wykonuj w niej zapytania.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 1/9/2019
-ms.openlocfilehash: b11eb08a960e81ab938a9b15a1153c44706231c5
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.date: 1/25/2019
+ms.openlocfilehash: 0148ef1b54bc3f74631ad44e9b8ded96caef7bbb
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198291"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452213"
 ---
 # <a name="quickstart-create-an-azure-sql-database-in-the-azure-portal"></a>Szybki start: Tworzenia bazy danych SQL platformy Azure w witrynie Azure Portal
 
@@ -29,59 +29,53 @@ W przypadku wszystkich kroków z tego przewodnika Szybki start musisz zalogować
 
 ## <a name="create-a-sql-database"></a>Tworzenie bazy danych SQL
 
-Baza danych Azure SQL zawiera zdefiniowany zestaw [zasobów obliczeniowych i magazynowych](sql-database-service-tiers-dtu.md). Baza danych jest tworzona na [serwerze logicznym usługi Azure SQL Database](sql-database-features.md) w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md).
+Baza danych Azure SQL zawiera zdefiniowany zestaw [zasobów obliczeniowych i magazynowych](sql-database-service-tiers-dtu.md). Baza danych jest tworzona na [serwerze usługi SQL Database](sql-database-features.md) w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md).
 
 Aby utworzyć bazę danych SQL zawierającą przykładowe dane firmy Adventure Works LT:
 
 1. W lewym górnym rogu witryny Azure Portal wybierz pozycję **Utwórz zasób**.
-   
-1. Wybierz pozycję **Bazy danych**, a następnie wybierz opcję **SQL Database**.
-   
-1. W formularzu **Utwórz bazę danych SQL Database** wpisz lub wybierz następujące wartości: 
-   
+2. Wybierz pozycję **Bazy danych**, a następnie wybierz opcję **SQL Database**.
+3. W formularzu **Utwórz bazę danych SQL Database** wpisz lub wybierz następujące wartości: 
+
    - **Nazwa bazy danych**: Wprowadź ciąg *mySampleDatabase*.
    - **Subskrypcja**: otwórz listę rozwijaną i wybierz poprawną subskrypcję, jeśli nie została wyświetlona.
    - **Grupa zasobów**: wybierz pozycję **Utwórz nową**, wpisz *myResourceGroup*, a następnie wybierz przycisk **OK**. 
    - **Wybierz źródło**: otwórz listę rozwijaną i wybierz pozycję **Przykład (AdventureWorksLT)**.
-    
+
     >[!IMPORTANT]
     >Pamiętaj, aby wybrać dane **Przykład (AdventureWorksLT)**, co umożliwi wykonanie tego i innych przewodników Szybki start usługi Azure SQL Database korzystających z tych danych.
   
    ![Tworzenie bazy danych SQL Azure](./media/sql-database-get-started-portal/create-database-1.png)
-   
-1. W obszarze **Serwer** wybierz pozycję **Utwórz nowy**. 
-   
-1. W formularzu **Nowy serwer** wpisz lub wybierz następujące wartości: 
-   
+
+4. W obszarze **Serwer** wybierz pozycję **Utwórz nowy**. 
+5. W formularzu **Nowy serwer** wpisz lub wybierz następujące wartości: 
+
    - **Nazwa serwera**: Wprowadź nazwę *mysqlserver*.
    - **Identyfikator logowania administratora serwera**: wpisz *azureuser*. 
    - **Hasło**: Wprowadź ciąg *Azure1234567*. 
    - **Potwierdź hasło**: wpisz ponownie hasło.
    - **Lokalizacja**: otwórz listę rozwijaną, a następnie wybierz dowolną prawidłową lokalizację.  
-   
+
    >[!IMPORTANT]
    >Pamiętaj, aby zapisać identyfikator logowania administratora serwera i hasło, aby logować się do serwera i baz danych dla tego przewodnika Szybki start oraz pozostałych. Jeśli zapomnisz swój identyfikator logowania lub hasło, możesz uzyskać identyfikator logowania lub zresetować hasło na stronie **serwera SQL**. Aby otworzyć stronę **serwera SQL**, wybierz nazwę serwera na stronie **Przegląd** po utworzeniu bazy danych.
-   
+
     ![Tworzenie serwera](./media/sql-database-get-started-portal/create-database-server.png)
 
-1. Wybierz pozycję **Wybierz**.
-   
-1. W formularzu **SQL Database** wybierz opcję **Warstwa cenowa**. Sprawdź liczbę jednostek DTU i wielkość miejsca do magazynowania dostępne dla poszczególnych warstw usługi.
-   
+6. Wybierz pozycję **Wybierz**.
+7. W formularzu **SQL Database** wybierz opcję **Warstwa cenowa**. Sprawdź liczbę jednostek DTU i wielkość miejsca do magazynowania dostępne dla poszczególnych warstw usługi.
+
    >[!NOTE]
    >W tym przewodniku Szybki start jest używany [model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md), ale dostępny jest także [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md).
-   
-   >[!NOTE]
+   >[!IMPORTANT]
    >Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Północne Zjednoczone Królestwo, Zachodnio-środkowe stany USA, Południowe Zjednoczone Królestwo2, Chiny Wschodnie, USDoDCentral, Niemcy Środkowe, USDoDEast, Południowo-Zachodnie Stany USA US Gov, Południowo-środkowe stany USA US Gov, Niemcy Północno-Wschodnie, Chiny Północne oraz Wschodnie stany US Gov. W tych regionach maksymalna wielkość magazynu w warstwie Premium jest ograniczona do 1 TB. Aby uzyskać więcej informacji, zobacz [bieżące ograniczenia poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   
-1. Na potrzeby tego przewodnika Szybki start wybierz warstwę usługi **Standardowa**, a następnie wybierz za pomocą suwaka **10 jednostek DTU (S0)** i **1** GB miejsca do magazynowania.
-   
-1. Wybierz przycisk **Zastosuj**.  
-   
+
+8. Na potrzeby tego przewodnika Szybki start wybierz warstwę usługi **Standardowa**, a następnie wybierz za pomocą suwaka **10 jednostek DTU (S0)** i **1** GB miejsca do magazynowania.
+9. Wybierz przycisk **Zastosuj**.  
+
    ![Wybieranie cennika](./media/sql-database-get-started-portal/create-database-s1.png)
-   
-1. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych. 
-   
+
+10. W formularzu **SQL Database** wybierz opcję **Utwórz**, aby wdrożyć i aprowizować grupę zasobów, serwer i bazę danych. 
+
    Wdrożenie zajmuje kilka minut. Aby monitorować postęp wdrożenia, wybierz pozycję **Powiadomienia** na pasku narzędzi.
 
    ![Powiadomienie](./media/sql-database-get-started-portal/notification.png)
@@ -91,25 +85,24 @@ Aby utworzyć bazę danych SQL zawierającą przykładowe dane firmy Adventure W
 Teraz, po utworzeniu bazy danych SQL na platformie Azure, użyjemy wbudowanego narzędzia do obsługi zapytań w witrynie Azure Portal, aby nawiązać połączenie z bazą danych i wysłać zapytanie dotyczące danych.
 
 1. Na stronie **SQL Database** dla używanej bazy danych wybierz pozycję **Edytor zapytań (wersja zapoznawcza)** w menu po lewej stronie. 
-   
+
    ![Logowanie w Edytorze zapytań](./media/sql-database-get-started-portal/query-editor-login.png)
-   
-1. Wprowadź informacje dotyczące logowania, a następnie wybierz przycisk **OK**.
-   
-1. Wprowadź następujące zapytanie w okienku **Edytora zapytań**.
-   
+
+2. Wprowadź informacje dotyczące logowania, a następnie wybierz przycisk **OK**.
+3. Wprowadź następujące zapytanie w okienku **Edytora zapytań**.
+
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
    FROM SalesLT.ProductCategory pc
    JOIN SalesLT.Product p
    ON pc.productcategoryid = p.productcategoryid;
    ```
-   
-1. Wybierz opcję **Uruchom**, a następnie przejrzyj wyniki zapytania w okienku **Wyniki**.
+
+4. Wybierz opcję **Uruchom**, a następnie przejrzyj wyniki zapytania w okienku **Wyniki**.
 
    ![Wyniki Edytora zapytań](./media/sql-database-get-started-portal/query-editor-results.png)
-   
-1. Zamknij stronę **Edytor zapytań**, a następnie kliknij przycisk **OK** po wyświetleniu monitu o odrzucenie niezapisanych zmian.
+
+5. Zamknij stronę **Edytor zapytań**, a następnie kliknij przycisk **OK** po wyświetleniu monitu o odrzucenie niezapisanych zmian.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -118,8 +111,8 @@ Zachowaj tę grupę zasobów, serwer SQL i bazę danych SQL, jeśli chcesz przej
 Po zakończeniu korzystania z tych zasobów możesz je usunąć w następujący sposób:
 
 1. W menu znajdującym się po lewej stronie w witrynie Azure Portal wybierz pozycję **Grupy zasobów**, a następnie wybierz pozycję **myResourceGroup**.
-1. Na stronie grupy zasobów wybierz pozycję **Usuń grupę zasobów**. 
-1. Wprowadź w polu ciąg *myResourceGroup*, a następnie wybierz opcję **Usuń**.
+2. Na stronie grupy zasobów wybierz pozycję **Usuń grupę zasobów**. 
+3. Wprowadź w polu ciąg *myResourceGroup*, a następnie wybierz opcję **Usuń**.
 
 ## <a name="next-steps"></a>Następne kroki
 

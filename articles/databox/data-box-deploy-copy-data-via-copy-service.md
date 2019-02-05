@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/10/2019
+ms.date: 01/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a71635abd036bb89546dd3421af97cd9b88f4327
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9d271642a432d8a149fbe468087a0598c91e7c36
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440050"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902383"
 ---
 # <a name="tutorial-use-data-copy-service-to-directly-ingest-data-into-azure-data-box-preview"></a>Samouczek: korzystanie z usługi kopiowania danych w celu bezpośredniego pozyskiwania danych na urządzenie Azure Data Box (wersja zapoznawcza)
 
@@ -24,11 +24,12 @@ Z usługi kopiowania danych można korzystać w następujących scenariuszach:
 - W środowiskach magazynu dołączonego do sieci (NAS), w których pośredniczące hosty mogą być niedostępne.
 - W przypadku korzystania z małych plików, dla których pozyskanie i przekazanie danych trwałoby tygodniami. Ta usługa znacznie skraca czas pozyskiwania i przekazywania danych.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Ten samouczek zawiera informacje dotyczące:
 
 > [!div class="checklist"]
+> * Wymagania wstępne
 > * Kopiowanie danych na urządzenie Data Box
-> * Przygotowywanie do wysłania urządzenia Data Box.
+
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -60,13 +61,13 @@ Aby skopiować dane za pomocą usługi kopiowania danych, należy utworzyć zada
     |-------------------------------|---------|
     |Nazwa zadania                       |Unikatową nazwę zadania składającą się z mniej niż 230 znaków. W nazwach zadań nie wolno używać następujących znaków — \<, \>, \|, \?, \*, \\, \:, \/ ani \\\.         |
     |Lokalizacja źródła                |Podaj ścieżkę SMB do źródła danych w formacie: `\\<ServerIPAddress>\<ShareName>` lub `\\<ServerName>\<ShareName>`.        |
-    |Nazwa użytkownika                       |Nazwa użytkownika używana do uzyskiwania dostępu do źródła danych.        |
+    |Nazwa użytkownika                       |Nazwa użytkownika w formacie `\\<DomainName><UserName>` używana do uzyskiwania dostępu do źródła danych.        |
     |Hasło                       |Hasło używane do uzyskiwania dostępu do źródła danych.           |
     |Docelowe konto magazynu    |Z listy rozwijanej wybierz docelowe konto magazynu, do którego będą przekazywane dane.         |
     |Docelowy typ magazynu       |Wybierz docelowy typ magazynu: blokowy obiekt blob, stronicowy obiekt blob lub Azure Files.        |
     |Docelowy kontener/udział    |Wprowadź nazwę kontenera lub udziału, do którego będą przekazywane dane w ramach docelowego konta magazynu. Może to być nazwa udziału lub kontenera. Na przykład: `myshare` lub `mycontainer`. Nazwę możesz wprowadzić również w formacie `sharename\directory_name` lub `containername\virtual_directory_name` w chmurze.        |
     |Kopiowanie plików pasujących do wzorca    | Wprowadź nazwę pliku pasującą do wzorca na następujące dwa sposoby.<ul><li>**Użycie wyrażenia z symbolami wieloznacznymi** — w wyrażeniach z symbolami wieloznacznymi są obsługiwane tylko znaki `*` i `?`. Na przykład do wyrażenia `*.vhd` będą pasowały wszystkie pliki z rozszerzeniem .vhd. Podobnie do wyrażenia `*.dl?` będą pasowały wszystkie pliki z rozszerzeniami `.dl` i `.dll`. Wyrażenie `*foo` będzie pasowało do wszystkich plików, których nazwy kończą się na `foo`.<br>Wyrażenie z symbolami wieloznacznymi można wprowadzić bezpośrednio w polu. Domyślnie wartość wprowadzona w polu jest traktowana jako wyrażenie z symbolami wieloznacznymi.</li><li>**Użycie wyrażeń regularnych** — obsługiwane są wyrażenia regularne oparte na modelu POSIX. Na przykład wyrażenie regularne `.*\.vhd` będzie zgodne ze wszystkimi plikami z rozszerzeniem `.vhd`. Dla wyrażenia regularnego podaj `<pattern>` bezpośrednio jako `regex(<pattern>)`. <li>Aby uzyskać więcej informacji na temat wyrażeń regularnych, przejdź do [Regular expression language - a quick reference](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) (Język wyrażeń regularnych — krótki przewodnik).</li><ul>|
-    |Optymalizacja pliku              |Po włączeniu tej opcji pliki są pakowane podczas pozyskiwania. Przyspiesza to kopiowania danych w przypadku małych plików.        |
+    |Optymalizacja pliku              |Po włączeniu tej opcji pliki mniejsze niż 1 MB są pakowane podczas pozyskiwania. Przyspiesza to kopiowania danych w przypadku małych plików. Kiedy liczba plików znacznie przekracza liczbę katalogów, można zauważyć dużą oszczędność czasu.        |
  
 4. Kliknij przycisk **Uruchom**. Dane wejściowe są weryfikowane i jeśli ten proces zakończy się pomyślnie, zadanie zostaje uruchomione. Uruchomienie zadania może potrwać kilka minut.
 
@@ -106,9 +107,7 @@ Aby skopiować dane za pomocą usługi kopiowania danych, należy utworzyć zada
     - W tej wersji nie można usunąć zadania.
     
     - Można utworzyć nieograniczoną liczbę zadań, ale równolegle może działać maksymalnie 10 zadań jednocześnie.
-    - Jeśli włączono optymalizację plików, małe pliki są pakowane podczas pozyskiwania w celu zwiększenia wydajności kopiowania. W tych przypadkach widoczny będzie spakowany plik (z nazwą w postaci identyfikatora GUID) jak pokazano na poniższym zrzucie ekranu.
-
-        ![Przykład spakowanego pliku](media/data-box-deploy-copy-data-via-copy-service/packed-file-on-ingest.png)
+    - Jeśli włączono optymalizację plików, małe pliki są pakowane podczas pozyskiwania w celu zwiększenia wydajności kopiowania. W tych przypadkach widoczny będzie spakowany plik (z nazwą w postaci identyfikatora GUID). Nie należy usuwać tego pliku, ponieważ zostanie on rozpakowany podczas przekazywania.
 
 6. Podczas przetwarzania zadania na stronie **Kopiowanie danych** można zauważyć następujące elementy:
 
@@ -139,18 +138,14 @@ Po zakończeniu zadania kopiowania możesz przejść do sekcji **Przygotowanie d
 >[!NOTE]
 > Przygotowanie do wysłania nie będzie działać, jeśli zadania kopiowania są w toku.
 
-## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
-
-[!INCLUDE [data-box-prepare-to-ship](../../includes/data-box-prepare-to-ship.md)]
-
-
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 
 > [!div class="checklist"]
+> * Wymagania wstępne
 > * Kopiowanie danych na urządzenie Data Box
-> * Przygotowywanie do wysłania urządzenia Data Box
+
 
 Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzenie Data Box do firmy Microsoft.
 

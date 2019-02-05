@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 01/16/2019
+ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ad52427263c4bbd2effb373b00ef8ff37b8f5b67
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449575"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55077459"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -36,7 +36,7 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 A.  Usługa Azure Data Box jest przeznaczona do pozyskiwania danych w trybie offline. Ta usługa zarządza szeregiem produktów dla różnych pojemności magazynu, dostosowanych do transportu danych. 
 
 ### <a name="q-what-is-azure-data-box"></a>PYTANIE: Co to jest usługa Azure Data Box?
-A. Usługa Azure Data Box umożliwia szybki, niedrogi i bezpieczny transfer terabajtów danych do i z platformy Azure. Urządzenie Data Box można zamówić w witrynie Azure Portal. Firma Microsoft dostarcza urządzenie magazynujące o 80 TB pojemności do wykorzystania za pośrednictwem regionalnego przewoźnika. 
+A. Usługa Azure Data Box umożliwia szybki, niedrogi i bezpieczny transfer terabajtów danych do i z platformy Azure. Urządzenie Data Box można zamówić w witrynie Azure Portal. Firma Microsoft dostarcza urządzenie magazynujące o pojemności 80 TB za pośrednictwem regionalnego przewoźnika. 
 
 Po otrzymaniu urządzenia możesz szybko je skonfigurować przy użyciu lokalnego internetowego interfejsu użytkownika. Skopiuj dane z serwerów na urządzenie, a następnie wyślij urządzenie z powrotem do centrum danych platformy Azure. W centrum danych platformy Azure Twoje dane są automatycznie przekazywane z urządzenia na platformę Azure. Cały proces można śledzić przez usługę Data Box w witrynie Azure Portal.
 
@@ -58,6 +58,9 @@ A. Usługa Data Box jest obsługiwana we wszystkich regionach Stanów Zjednoczon
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z usługą Data Box?
 A. Jeśli napotkasz jakiekolwiek problemy z usługą Data Box, [skontaktuj się z działem pomocy technicznej firmy Microsoft](data-box-disk-contact-microsoft-support.md).
 
+### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>PYTANIE: Moje urządzenie Data Box zostało zgubione. Czy jest opłata za utracone urządzenie?
+A. Tak. Istnieje opłata za utracone lub uszkodzone urządzenie. Wysokość tej opłaty można znaleźć na [stronie z cennikiem](https://azure.microsoft.com/pricing/details/storage/databox/) oraz w [warunkach użytkowania usługi dla tego produktu](https://www.microsoft.com/licensing/product-licensing/products).
+
 
 ## <a name="order-device"></a>Zamawianie urządzenia
 
@@ -72,16 +75,16 @@ Sprawdź swoją subskrypcję. Urządzenie Data Box jest dostępne wyłącznie dl
 Jeśli masz obsługiwany typ oferty subskrypcji, sprawdź poziom dostępu swojej subskrypcji. Musisz być współautorem lub właścicielem subskrypcji, aby utworzyć zamówienie.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>PYTANIE: Zamawiam kilka urządzeń Data Box. Nie mogę utworzyć kolejnego zamówienia. Co może być powodem?
-A. Zezwalamy na maksymalnie 5 aktywnych zamówień na subskrypcję w granicy handlowej (kombinacja wybranego regionu i kraju). Jeśli chcesz zamówić dodatkowe urządzenie, skontaktuj się z działem pomocy technicznej firmy Microsoft, aby zwiększyć limit swojej subskrypcji.
+A. Zezwalamy na maksymalnie pięć aktywnych zamówień na subskrypcję w granicy handlowej (kombinacja wybranego regionu i kraju). Jeśli chcesz zamówić dodatkowe urządzenie, skontaktuj się z działem pomocy technicznej firmy Microsoft, aby zwiększyć limit swojej subskrypcji.
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>PYTANIE: Podczas próby utworzenia zamówienia otrzymuję powiadomienie, że usługa Data Box jest niedostępna. Co to oznacza?
 A. Oznacza to, że usługa Data Box jest niedostępna dla kombinacji wybranego regionu i kraju. Zmiana tej kombinacji prawdopodobnie umożliwi skorzystanie z usługi Data Box. Aby uzyskać listę regionów, w których usługa jest dostępna, przejdź do tematu [Dostępność regionalna urządzeń Data Box](data-box-overview.md#region-availability).
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>PYTANIE: Moje zamówienie na urządzenie Data Box zostało złożone kilka dni temu. Kiedy otrzymam urządzenie Data Box?
-A. Po złożeniu zamówienia sprawdzamy, czy urządzenie dla zamówienia jest dostępne. Jeśli urządzenie jest dostępne, firma Microsoft dostarcza je w ciągu 10 dni. Możliwe, że będą występować pewne okresy dużego zapotrzebowania. W takiej sytuacji Twoje zamówienie zostanie umieszczone w kolejce, a w witrynie Azure Portal będzie można śledzić zmiany stanu. Jeśli zamówienie nie zostanie zrealizowane w ciągu 90 dni, zostanie automatycznie anulowane. 
+A. Po złożeniu zamówienia sprawdzamy, czy urządzenie dla zamówienia jest dostępne. Jeśli urządzenie jest dostępne, firma Microsoft dostarcza je w ciągu 10 dni. Możliwe, że będą występować pewne okresy dużego zapotrzebowania. W takiej sytuacji Twoje zamówienie zostanie umieszczone w kolejce, a w witrynie Azure Portal będzie można śledzić zmiany stanu. Jeśli zamówienie nie zostanie zrealizowane w ciągu 90 dni, zostanie automatycznie anulowane.
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>PYTANIE: Urządzenie Data Box zostało zapełnione danymi i muszę zamówić kolejne. Czy można szybko złożyć zamówienie?
-A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworzy takie samo zamówienie i możliwe jest edytowanie jego szczegółów bez konieczności wpisywania adresu, danych kontaktowych i danych dotyczących powiadomień. 
+A. W takim przypadku możesz sklonować poprzednie zamówienie. Klonowanie tworzy takie samo zamówienie i możliwe jest edytowanie jego szczegółów bez konieczności wpisywania adresu, danych kontaktowych i danych dotyczących powiadomień.
 
 ## <a name="configure-and-connect"></a>Konfigurowanie i łączenie
 
@@ -96,6 +99,9 @@ A.  Zamówienie można anulować tylko po złożeniu zamówienia na urządzenie 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>PYTANIE: Czy mogę podłączyć urządzenie Data Box jednocześnie do wielu komputerów-hostów w celu transferu danych?
 A. Tak. Urządzenie Data Box można podłączyć do wielu komputerów-hostów na potrzeby transferu danych i można równolegle wykonywać wiele zadań kopiowania. Aby uzyskać więcej informacji, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box](data-box-deploy-copy-data.md).
+
+### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>PYTANIE: Czy mogę połączyć się obydwoma interfejsami 10 GbE na urządzeniu Data Box w celu przesyłania danych?
+A. Tak. Można jednocześnie podłączyć obydwa interfejsy 10 GbE na urządzeniu Data Box w celu kopiowania danych. Aby uzyskać więcej informacji na temat sposobu kopiowania danych, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -209,12 +215,12 @@ A.  Po skopiowaniu danych na urządzenie Data Box, w zależności od tego, czy d
  Możesz też przejść do swojego konta usługi Azure Storage w witrynie Azure Portal i nawigować z poziomu tej witryny.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>PYTANIE: Nazwy moich kontenerów nie są zgodne z wymaganiami dotyczącymi nazewnictwa platformy Azure. Czy przekazywanie moich danych na platformę Azure nie powiedzie się?
-A.  Jeśli nazwy kontenerów zawierają wielkie litery, zostaną one automatycznie przekonwertowane w małe litery. Jeśli nazwy nie są zgodne w inny sposób (znaki specjalne, inne języki itd.), przekazywanie zakończy się niepowodzeniem. Aby uzyskać więcej informacji na temat najlepszych rozwiązań dotyczących nazewnictwa udziałów, kontenerów i plików, przejdź do tematów: 
+A.  Jeśli nazwy kontenerów zawierają wielkie litery, zostaną one automatycznie przekonwertowane na małe litery. Jeśli nazwy nie są zgodne w inny sposób (znaki specjalne, inne języki itd.), przekazywanie zakończy się niepowodzeniem. Aby uzyskać więcej informacji na temat najlepszych rozwiązań dotyczących nazewnictwa udziałów, kontenerów i plików, przejdź do tematów:
 - [Nazywanie i przywoływanie udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Konwencje stronicowych i blokowych obiektów blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>PYTANIE: Jak mogę zweryfikować dane skopiowane na urządzenie Data Box?
-A.  Dane są weryfikowane po zakończeniu kopiowania danych i uruchomieniu opcji **Przygotuj do wysłania**. Urządzenie Data Box generuje listę plików i sum kontrolnych dla danych w trakcie procesu weryfikacji. Listę plików można pobrać i porównać ją z plikami w danych źródłowych. Aby uzyskać więcej informacji, przejdź do tematu [Przygotowywanie do wysłania](data-box-deploy-copy-data.md#prepare-to-ship).
+A.  Dane są weryfikowane po zakończeniu kopiowania danych i uruchomieniu opcji **Przygotuj do wysłania**. Urządzenie Data Box generuje listę plików i sum kontrolnych dla danych w trakcie procesu weryfikacji. Listę plików można pobrać i porównać ją z plikami w danych źródłowych. Aby uzyskać więcej informacji, przejdź do tematu [Przygotowywanie do wysłania](data-box-deploy-picked-up.md#prepare-to-ship).
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>PYTANIE: Co się stanie z moimi danymi po zwróceniu urządzenia Data Box?
 A.  Po zakończeniu kopiowania danych na platformę Azure dane z dysków urządzenia Data Box są bezpiecznie wymazywane zgodnie z wytycznymi NIST SP 800-88 Revision 1. Aby uzyskać więcej informacji, przejdź do tematu [Wymazywanie danych z urządzenia Data Box](data-box-deploy-picked-up.md#erasure-of-data-from-data-box).

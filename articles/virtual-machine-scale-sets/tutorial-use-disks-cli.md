@@ -3,7 +3,7 @@ title: Samouczek — tworzenie dysków dla zestawów skalowania za pomocą inter
 description: Dowiedz się, jak za pomocą interfejsu wiersza polecenia platformy Azure utworzyć usługę Managed Disks i używać jej razem z zestawem skalowania maszyn wirtualnych, na przykład dodawać, przygotowywać, wyświetlać i odłączać dyski.
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35256a22265ca544975b2fead40b1a2be0d73ff1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469388"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55163062"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: Tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure
 Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy operacyjne wystąpień maszyn wirtualnych na dyskach. Ważne jest, aby podczas tworzenia zestawu skalowania i zarządzania nim wybrać taki rozmiar dysku i konfigurację, które odpowiadają oczekiwanemu obciążeniu. W tym samouczku omówiono tworzenie dysków maszyn wirtualnych i zarządzanie nimi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -132,7 +132,7 @@ Utworzone dyski, które zostały dołączone do wystąpień maszyn wirtualnych w
 
 Aby zautomatyzować ten proces w wielu wystąpieniach maszyn wirtualnych w zestawie skalowania, możesz użyć rozszerzenia niestandardowego skryptu platformy Azure. To rozszerzenie może wykonywać skrypty lokalnie na poszczególnych wystąpieniach maszyn wirtualnych, na przykład w celu przygotowania dołączonych dysków z danymi. Aby uzyskać więcej informacji, zobacz [Omówienie niestandardowego rozszerzenia skryptu](../virtual-machines/linux/extensions-customscript.md).
 
-W poniższym przykładzie za pomocą polecenia [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) na każdym wystąpieniu maszyny wirtualnej jest wykonywany skrypt z przykładowego repozytorium GitHub, który przygotowuje wszystkie dołączone, niesformatowane dyski z danymi:
+W poniższym przykładzie za pomocą polecenia [az vmss extension set](/cli/azure/vmss/extension) na każdym wystąpieniu maszyny wirtualnej jest wykonywany skrypt z przykładowego repozytorium GitHub, który przygotowuje wszystkie dołączone, niesformatowane dyski z danymi:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -279,7 +279,7 @@ Wyświetlane informacje obejmują rozmiar dysku, warstwę magazynowania i numer 
 
 
 ## <a name="detach-a-disk"></a>Odłączanie dysku
-Jeśli dany dysk nie jest już potrzebny, można go odłączyć od zestawu skalowania. Dysk jest usuwany ze wszystkich wystąpień maszyn wirtualnych w zestawie skalowania. Aby odłączyć dysk od zestawu skalowania, użyj polecenia [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) i podaj numer LUN dysku. Numery LUN są widoczne w danych wyjściowych polecenia [az vmss show](/cli/azure/vmss#az_vmss_show) w poprzedniej sekcji. W poniższym przykładzie przedstawiono odłączanie dysku o numerze LUN *2* od zestawu skalowania:
+Jeśli dany dysk nie jest już potrzebny, można go odłączyć od zestawu skalowania. Dysk jest usuwany ze wszystkich wystąpień maszyn wirtualnych w zestawie skalowania. Aby odłączyć dysk od zestawu skalowania, użyj polecenia [az vmss disk detach](/cli/azure/vmss/disk) i podaj numer LUN dysku. Numery LUN są widoczne w danych wyjściowych polecenia [az vmss show](/cli/azure/vmss#az_vmss_show) w poprzedniej sekcji. W poniższym przykładzie przedstawiono odłączanie dysku o numerze LUN *2* od zestawu skalowania:
 
 ```azurecli-interactive
 az vmss disk detach \

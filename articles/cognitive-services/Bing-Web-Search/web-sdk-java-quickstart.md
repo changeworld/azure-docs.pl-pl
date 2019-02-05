@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java'
+title: 'Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java'
 titleSuffix: Azure Cognitive Services
 description: Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją Java. Z tego przewodnika Szybki start dowiesz się, jak wysłać żądanie, odebrać odpowiedź JSON oraz filtrować i analizować wyniki.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: aahi
-ms.openlocfilehash: 8883a312bf6da4167936e844e75047ae40cac9f3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f73856d77c2d3c6d8d4006d4654d2aa836c6c4cc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309309"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55158217"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Szybki start: Używanie zestawu SDK wyszukiwania w Internecie Bing dla języka Java
 
 Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją Java. Z tego przewodnika Szybki start dowiesz się, jak wysłać żądanie, odebrać odpowiedź JSON oraz filtrować i analizować wyniki.
 

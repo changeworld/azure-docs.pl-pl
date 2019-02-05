@@ -1,25 +1,25 @@
 ---
-title: 'Szybki start: interfejs API automatycznego sugerowania, Node.js'
+title: 'Szybki start: Interfejs API automatycznego sugerowania Bing, Node.js'
 titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API automatycznego sugerowania Bing.
 services: cognitive-services
 author: v-jaswel
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 498953625907aad85d8ea5999905cad21bf245da
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 4fc2fc93adbd4620a05c4d248ada45ded278021b
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829991"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55196586"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-nodejs"></a>Przewodnik Szybki start dotyczący interfejsu API automatycznego sugerowania w środowisku Node.js
 
-W tym artykule pokazano, w jaki sposób używać [interfejsu API automatycznego sugerowania](https://azure.microsoft.com/services/cognitive-services/autosuggest/) w środowisku Node.js. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania wprowadzanego przez użytkownika w polu wyszukiwania. Ten interfejs API jest zwykle wywoływany za każdym razem, kiedy użytkownik wpisuje nowy znak w polu wyszukiwania, a następnie wyświetla sugestie na liście rozwijanej pola wyszukiwania. W tym artykule pokazano, w jaki sposób przesłać żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
+W tym artykule pokazano, w jaki sposób używać [interfejsu API automatycznego sugerowania](https://azure.microsoft.com/services/cognitive-services/autosuggest/) w środowisku Node.js. Interfejs API automatycznego sugerowania Bing zwraca listę proponowanych zapytań na podstawie częściowego ciągu zapytania wprowadzanego przez użytkownika w polu wyszukiwania. Ten interfejs API jest zwykle wywoływany za każdym razem, kiedy użytkownik wpisuje nowy znak w polu wyszukiwania, a następnie wyświetla sugestie na liście rozwijanej pola wyszukiwania. W tym artykule pokazano, w jaki sposób przesłać żądanie, które zwraca sugerowane ciągi zapytania dla terminu *sail*.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: noellelacharite
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: c15af0dcebdfcbe984d47b5c06f213e516ae3914
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345712"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55149775"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Czym jest interfejs API sprawdzania pisowni Bing?
 
@@ -39,7 +39,7 @@ To narzędzie może obsłużyć dowolny scenariusz dotyczący edytora tekstów:
 Interfejs API obsługuje dwa tryby sprawdzania: `Proof` i `Spell`.  Wypróbuj przykłady [tutaj](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 ### <a name="proof---for-documents-scenario"></a>Proof — scenariusze dotyczące dokumentów
 `Proof` to tryb domyślny. Tryb sprawdzania pisowni `Proof` zapewnia najbardziej kompleksowe testy, dodaje wielkie litery i podstawowe znaki interpunkcyjne oraz oferuje inne funkcje pomocne w tworzeniu dokumentu. Jest jednak dostępny tylko w wersji en-US (angielski — Stany Zjednoczone), es-ES (hiszpański) i pt-BR (portugalski). Uwaga: w przypadku języka hiszpańskiego i portugalskiego dostępna jest tylko wersja beta. W przypadku wszystkich pozostałych rynków należy ustawić wartość Spell w parametrze mode w zapytaniu. 
-<br /><br/>**UWAGA:** jeśli długość tekstu zapytania przekracza 4096 znaków, tekst zostanie obcięty do 4096 znaków przed przetworzeniem zapytania. 
+<br /><br/>**UWAGA:**   jeśli długość tekstu zapytania przekracza 4096 znaków, tekst zostanie obcięty do 4096 znaków przed przetworzeniem zapytania. 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell — scenariusze dotyczące wyszukiwania w Internecie lub zapytań
 Tryb `Spell` jest bardziej agresywny i umożliwia zwrócenie lepszych wyników wyszukiwania. Tryb `Spell` odnajduje większość błędów pisowni, ale nie odnajduje części błędów gramatycznych, które wyłapuje tryb `Proof`, na przykład błędów użycia wielkiej litery i powtarzających się słów.
 

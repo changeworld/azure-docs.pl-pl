@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 50085336c59f2284f357e32b875eae08ff90d30f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790178"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55224245"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -483,7 +483,14 @@ Ta procedura przeprowadza Cię przez przywracanie danych do lokalizacji alternat
 > Można przywrócić bazę danych do wystąpienia programu SQL Server w tym samym regionie platformy Azure. Serwer docelowy musi zostać zarejestrowany w magazynie usługi Recovery Services.
 >
 
-W menu **Konfiguracja przywracania** w polu listy rozwijanej **Serwer** znajdują się tylko wystąpienia programu SQL Server, które zostały zarejestrowane w magazynie usługi Recovery Services. Jeśli lista nie zawiera potrzebnego serwera, zapoznaj się z sekcją [Odnajdywanie baz danych programu SQL Server](backup-azure-sql-database.md#discover-sql-server-databases), aby znaleźć serwer. Podczas procesu odnajdywania nowe serwery są rejestrowane w magazynie usługi Recovery Services.
+W menu **Konfiguracja przywracania** w polu listy rozwijanej **Serwer** znajdują się tylko wystąpienia programu SQL Server, które zostały zarejestrowane w magazynie usługi Recovery Services. Jeśli lista nie zawiera potrzebnego serwera, zapoznaj się z sekcją [Odnajdywanie baz danych programu SQL Server](backup-azure-sql-database.md#discover-sql-server-databases), aby znaleźć serwer. Podczas procesu odnajdywania nowe serwery są rejestrowane w magazynie usługi Recovery Services.<br>
+Aby przywrócić bazę danych SQL, musisz mieć następujące uprawnienia:
+
+* Uprawnienia **Operator kopii zapasowych** w **magazynie** usług Recovery Services, w którym odbywa się przywracanie.
+* Dostęp **Współautor (zapis)** do **źródłowej maszyny wirtualnej SQL** (maszyny wirtualnej, której kopia zapasowa została wykonana i z której próbujesz przywrócić dane).
+* Dostęp **Współautor (zapis)** do docelowej maszyny wirtualnej SQL (maszyny wirtualnej, do której przywracasz dane; w przypadku przywracania w oryginalnej lokalizacji (OLR) będzie to ta sama maszyna wirtualna co źródłowa).
+
+Aby przywrócić do lokalizacji alternatywnej:
 
 1. W menu **Konfiguracja przywracania**:
 

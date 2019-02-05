@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1e27fb26b00502b63d6023b41b6a26b179b453be
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a1d4af695807a6e2c5ef4ee74527083002bc6015
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094046"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54900770"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Tworzenie aplikacji funkcji przy użyciu witryny Azure Portal
 
@@ -35,7 +35,7 @@ Po utworzeniu aplikacji funkcji możesz utworzyć indywidualne funkcje w jednym 
 
 ## <a name="service-plans"></a>Plany usługi
 
-Usługa Azure Functions ma dwa różne plany usługi: plan Zużycie i plan usługi App Service. W planie Zużycie moc obliczeniowa jest automatycznie alokowana, gdy uruchomiony jest Twój kod, oraz jest skalowana w poziomie na potrzeby obsługi obciążenia, a następnie skalowana w pionie, gdy kod nie jest uruchomiony. Plan usługi App Service daje aplikacji funkcji dostęp do wszystkich funkcji usługi App Service. Musisz wybrać plan podczas tworzenia aplikacji funkcji i obecnie nie można go zmienić. Aby uzyskać więcej informacji, zobacz [Wybieranie planu hostingu usługi Azure Functions](functions-scale.md).
+Usługa Azure Functions oferuje dwa różne plany usługi: Plan zużycia i plan usługi App Service. W planie Zużycie moc obliczeniowa jest automatycznie alokowana, gdy uruchomiony jest Twój kod, oraz jest skalowana w poziomie na potrzeby obsługi obciążenia, a następnie skalowana w pionie, gdy kod nie jest uruchomiony. Plan usługi App Service daje aplikacji funkcji dostęp do wszystkich funkcji usługi App Service. Musisz wybrać plan podczas tworzenia aplikacji funkcji i obecnie nie można go zmienić. Aby uzyskać więcej informacji, zobacz [Wybieranie planu hostingu usługi Azure Functions](functions-scale.md).
 
 Jeśli zamierzasz uruchamiać funkcje w języku JavaScript w planie usługi App Service, wybierz plan z mniejszą liczbą rdzeni. Aby uzyskać więcej informacji, zobacz [Dokumentacja języka JavaScript dla usługi Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
@@ -53,6 +53,3 @@ Aby dowiedzieć się więcej na temat typów kont magazynu, zobacz [Wprowadzenie
 ## <a name="next-steps"></a>Następne kroki
 
 [!INCLUDE [Functions quickstart next steps](../../includes/functions-quickstart-next-steps.md)]
-
-
-

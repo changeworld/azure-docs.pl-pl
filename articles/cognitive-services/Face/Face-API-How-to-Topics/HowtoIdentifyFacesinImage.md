@@ -1,25 +1,25 @@
 ---
-title: 'Przykład: identyfikowanie twarzy na obrazach — interfejs API rozpoznawania twarzy'
+title: 'Przykład: Identyfikowanie twarzy na obrazach — interfejs API rozpoznawania twarzy'
 titleSuffix: Azure Cognitive Services
 description: Identyfikowanie twarzy na obrazach za pomocą interfejsu API rozpoznawania twarzy.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a26f7d6057f92fd3ab92405ecca6965dbd6e37ad
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c61852763353189321b8f98711928e0e8b3a389d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129075"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55208095"
 ---
-# <a name="example-how-to-identify-faces-in-images"></a>Przykład: jak identyfikować twarze na obrazach
+# <a name="example-how-to-identify-faces-in-images"></a>Przykład: Jak identyfikować twarze na obrazie
 
-Ten przewodnik pokazuje sposób identyfikowania nieznanych twarzy przy użyciu elementów PersonGroup, które należy utworzyć wcześniej na podstawie zdjęć znanych osób. Przykłady są napisane w języku C# z użyciem biblioteki klienta interfejsu API rozpoznawania twarzy.
+Ten przewodnik pokazuje sposób identyfikowania nieznanych twarzy przy użyciu elementów PersonGroup, które należy utworzyć wcześniej na podstawie zdjęć znanych osób. Przykłady są zapisywane w języku C# przy użyciu biblioteki klienta interfejsu API rozpoznawania twarzy.
 
 ## <a name="concepts"></a>Pojęcia
 
@@ -49,7 +49,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-Alternatywnym sposobem jest podanie klucza subskrypcji w nagłówku żądania HTTP: **ocp-apim-subscription-key: &lt;klucz subskrypcji&gt;** W przypadku używania biblioteki klienta, klucz subskrypcji jest przekazywany za pomocą konstruktora klasy FaceServiceClient. Na przykład:
+Klucz subskrypcji możesz też określić w nagłówku żądania HTTP: **ocp-apim-subscription-key: &lt;klucz subskrypcji&gt;** Jeśli korzystasz z biblioteki klienta, klucz subskrypcji jest przekazywany w konstruktorze klasy FaceServiceClient. Na przykład:
  
 ```CSharp 
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
@@ -170,7 +170,7 @@ Po wykonaniu tych kroków możesz spróbować zidentyfikować różne twarze i s
 
 ![JakIdentyfikować2](../Images/identificationResult.1.jpg )
 
-## <a name="step-5-request-for-large-scale"></a>Krok 5: Dostęp wersji działającej na większych zbiorach
+## <a name="step-5-request-for-large-scale"></a>Krok 5. Dostęp wersji działającej na większych zbiorach
 
 Element PersonGroup może zawierać maksymalnie 10 000 osób z powodu ograniczeń wcześniejszego projektu usługi.
 Aby uzyskać informacje o zastosowaniach obejmujących nawet miliony osób, zobacz [Jak używać funkcji na dużą skalę](how-to-use-large-scale.md).

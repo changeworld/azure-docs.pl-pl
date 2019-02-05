@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 63a6daa7c409aeb77b07e98cc0108b727f263d4c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.date: 01/25/2019
+ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453278"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457211"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatyzowanie zadań zarządzania za pomocą zadań bazy danych
 
@@ -26,6 +26,7 @@ Można określić docelową bazę danych lub grupy baz danych Azure SQL Database
 Zadanie obsługuje zadanie rejestrowania w docelowej bazie danych. Możesz również definiować, obsługiwać i utrwalać skrypty języka Transact-SQL do wykonania w ramach grupy baz danych Azure SQL Database.
 
 Istnieje kilka scenariuszy, w których można używać funkcji automatyzacji zadań:
+
 - Automatyzowanie zadań zarządzania i planowanie ich wykonywania codziennie, po godzinach pracy itp.
   - Wdrażanie zmian schematu, zarządzanie poświadczeniami i zbieranie danych o wydajności lub danych telemetrycznych dotyczących dzierżaw (klientów).
   - Aktualizowanie danych referencyjnych (informacje wspólne dla wszystkich baz danych) i ładowanie danych z usługi Azure Blob Storage.
@@ -39,14 +40,15 @@ Istnieje kilka scenariuszy, w których można używać funkcji automatyzacji zad
  - Tworzenie zadań polegających na ładowaniu zadań z lub do baz danych przy użyciu usług SQL Server Integration Services (SSIS).
 
 W usłudze Azure SQL Database są dostępne następujące technologie planowania zadań:
+
 - **Zadania agenta SQL** to klasyczny i przetestowany w wielu sytuacjach składnik służący do planowania zadań programu SQL Server, który jest dostępny w wystąpieniu zarządzanym. Zadania agenta SQL nie są dostępne w pojedynczych bazach danych.
 - **Zadania usługi Elastic Database** to usługa planowania zadań, która wykonuje niestandardowe zadania w jednej lub wielu bazach danych Azure SQL Database.
 
-Warto zauważyć kilka różnic między agentem SQL (dostępnym lokalnie i w ramach wystąpienia zarządzanego usługi SQL Database) i agentem zadań elastycznej bazy danych (dostępnym na potrzeby pojedynczej bazy danych SQL Database i usługi SQL Data Warehouse).
+Warto zauważyć kilka różnic między agentem SQL (dostępnym lokalnie i w ramach wystąpienia zarządzanego usługi SQL Database) i agentem zadań elastycznej bazy danych (dostępnym na potrzeby pojedynczych baz danych w usłudze Azure SQL Database i baz danych w usłudze SQL Data Warehouse).
 
 |  |Zadania elastyczne  |Agent SQL |
 |---------|---------|---------|
-|Zakres     |  Dowolna liczba baz danych Azure SQL Database i/lub magazynów danych w tej samej chmurze platformy Azure jako agent zadań. Elementy docelowe mogą znajdować się w ramach różnych serwerów logicznych, subskrypcji i/lub regionów. <br><br>Grupy docelowe mogą składać się z pojedynczych baz danych lub hurtowni danych albo wszystkich baz danych na serwerze, w puli lub w mapie fragmentów (wyliczanych dynamicznie w czasie wykonywania zadania). | Dowolna pojedyncza baza danych w tym samym wystąpieniu programu SQL Server jako agent SQL. |
+|Zakres     |  Dowolna liczba baz danych Azure SQL Database i/lub magazynów danych w tej samej chmurze platformy Azure jako agent zadań. Elementy docelowe mogą znajdować się na różnych serwerach usługi SQL Database oraz w różnych subskrypcjach i/lub regionach. <br><br>Grupy docelowe mogą składać się z pojedynczych baz danych lub hurtowni danych albo wszystkich baz danych na serwerze, w puli lub w mapie fragmentów (wyliczanych dynamicznie w czasie wykonywania zadania). | Dowolna pojedyncza baza danych w tym samym wystąpieniu programu SQL Server jako agent SQL. |
 |Obsługiwane interfejsy API i narzędzia     |  Witryna Azure Portal, program PowerShell, język T-SQL, usługa Azure Resource Manager      |   Język T-SQL, program SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>Zadania agenta SQL
@@ -54,6 +56,7 @@ Warto zauważyć kilka różnic między agentem SQL (dostępnym lokalnie i w ram
 Zadania agenta SQL to określona seria skryptów T-SQL wykonywanych względem bazy danych. Zadania pozwalają na zdefiniowanie zadania administracyjnego, które można uruchomić jeden lub więcej razy i monitorować pod kątem powodzenia lub niepowodzenia.
 Zadanie można uruchomić na jednym serwerze lokalnym lub na wielu serwerach zdalnych. Zadanie agenta SQL to wewnętrzny składnik aparatu bazy danych, który jest wykonywany w ramach usługi wystąpienia zarządzanego.
 Istnieje kilka podstawowych pojęć dotyczących zadań agenta SQL:
+
 - **Kroki zadania** ustawiają co najmniej jeden krok, który ma zostać wykonany w ramach zadania. Dla każdego kroku zadania można zdefiniować strategię ponawiania próby i akcję do wykonania, gdy krok zadania zakończy się powodzeniem lub niepowodzeniem.
 - **Harmonogramy** definiują, kiedy należy wykonać zadanie.
 - **Powiadomienia** umożliwiają definiowanie reguł, które będą używane do powiadamiania operatorów za pośrednictwem wiadomości e-mail po zakończeniu zadania.
@@ -64,11 +67,13 @@ Kroki zadania agenta SQL to sekwencje akcji, które mają być wykonywane przez 
 Agent SQL umożliwia tworzenie różnych typów kroków zadania, takich jak krok zadania języka Transact-SQL wykonywany w jednej partii języka Transact-SQL w bazie danych albo kroki polecenia systemu operacyjnego/programu PowerShell, które mogą wykonać niestandardowy skrypt systemu operacyjnego, kroki zadania usług SSIS umożliwiające ładowanie danych w środowisku uruchomieniowym usług SSIS lub kroki [replikacji](sql-database-managed-instance-transactional-replication.md), które pozwalają na publikowanie zmian z bazy danych do innych baz danych.
 
 [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) to funkcja aparatu bazy danych, która umożliwia publikowanie zmian wprowadzonych w jednej lub wielu tabelach w jednej bazie danych oraz publikowanie/dystrybuowanie ich do zestawu baz danych subskrybenta. Publikowanie zmian jest implementowane za pomocą następujących typów kroków zadania agenta SQL:
+
 - Czytnik dziennika transakcji.
 - Migawka.
 - Dystrybutor.
 
 Inne typy kroków zadania nie są obecnie obsługiwane, w tym:
+
 - Krok zadania replikacji scalającej nie jest obsługiwany.
 - Czytnik danych kolejki nie jest obsługiwany.
 - Usługi Analysis Services nie są obsługiwane.
@@ -77,6 +82,7 @@ Inne typy kroków zadania nie są obecnie obsługiwane, w tym:
 
 Harmonogram określa moment uruchomienia zadania. W ramach tego samego harmonogramu można uruchomić więcej niż jedno zadanie, a do tego samego zadania można zastosować więcej niż jeden harmonogram.
 W harmonogramie można zdefiniować następujące warunki związane z czasem wykonywania zadania:
+
 - Po każdym ponownym uruchomieniu wystąpienia (lub po uruchomieniu agenta programu SQL Server). Zadanie jest aktywowane po każdym przejściu w tryb failover.
 - Jeden raz w określonym dniu i o określonej godzinie — ta opcja jest przydatna w przypadku opóźnionego wykonywania zadania.
 - Zgodnie z harmonogramem cyklicznym.
@@ -215,7 +221,7 @@ Podczas tworzenia agenta zadań ma miejsce tworzenie schematu, tabel i roli o na
 
 *Grupa docelowa* definiuje zestaw baz danych, względem którego będzie wykonywany krok zadania. Grupa docelowa może zawierać dowolną liczbę i kombinację następujących elementów:
 
-- **Serwer Azure SQL** — jeśli serwer jest określony, wszystkie bazy danych istniejące na nim w czasie wykonywania zadania są częścią grupy. Konieczne jest podanie poświadczeń bazy danych master, aby możliwe było wyliczenie i zaktualizowanie grupy przed wykonaniem zadania.
+- **Serwer usługi SQL Database** — jeśli serwer jest określony, wszystkie bazy danych istniejące na nim w czasie wykonywania zadania są częścią grupy. Konieczne jest podanie poświadczeń bazy danych master, aby możliwe było wyliczenie i zaktualizowanie grupy przed wykonaniem zadania.
 - **Elastyczna pula** — jeśli elastyczna pula jest określona, wszystkie bazy danych istniejące w niej w czasie wykonywania zadania są częścią grupy. Podobnie jak w przypadku serwera, konieczne jest podanie poświadczeń bazy danych master, aby możliwe było wyliczenie i zaktualizowanie grupy przed wykonaniem zadania.
 - **Pojedyncza baza danych** — określ co najmniej jedną pojedynczą bazę danych, która będzie należeć do grupy.
 - **Mapa fragmentów** — bazy danych mapy fragmentów.
@@ -258,6 +264,7 @@ Wyniki wykonywania kroków zadania w każdej docelowej bazie danych są szczegó
 #### <a name="job-history"></a>Historia zadania
 
 Historia wykonywania zadań jest przechowywana w *bazie danych zadań*. Zadanie oczyszczania systemu czyści historię wykonywania, która jest starsza niż 45 dni. Aby usunąć historię, która ma mniej niż 45 dni, wywołaj procedurę składowaną **sp_purge_history** w *bazie danych zadań*.
+
 ### <a name="agent-performance-capacity-and-limitations"></a>Wydajność agenta, pojemność i ograniczenia
 
 Zadania elastyczne używają minimalnych zasobów obliczeniowych podczas oczekiwania na zakończenie długotrwałych zadań.

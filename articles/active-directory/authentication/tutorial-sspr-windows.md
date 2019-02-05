@@ -3,19 +3,19 @@ title: Samoobsługowe resetowanie hasła usługi Azure AD z ekranu logowania sys
 description: W tym samouczku włączysz resetowanie hasła z ekranu logowania systemu Windows 10, aby zmniejszyć liczbę zgłoszeń do działu pomocy technicznej.
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 640f03cd35ac74df9c7b25352ab294c35c4ec0ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430676"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474874"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: Resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -28,11 +28,11 @@ W tym samouczku umożliwisz użytkownikom resetowanie swoich haseł z ekranu log
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klient systemu Windows 10 z aktualizacją z kwietnia 2018 lub nowszą będący urządzeniem:
-   * [Maszyna dołączona do usługi Azure AD](../device-management-azure-portal.md) lub
-   * [Maszyna dołączona do hybrydowej usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) z łącznością sieciową z kontrolerem domeny.
-* Włączona funkcja samoobsługowego resetowania haseł w usłudze Azure AD.
-* Jeśli Twoje maszyny z systemem Windows 10 znajdują się za serwerem proxy lub zaporą, ruch HTTPS (443) na adresy `passwordreset.microsoftonline.com` i `ajax.aspnetcdn.com` powinien być dozwolony.
+* Musisz mieć co najmniej system Windows 10 z aktualizacją z kwietnia 2018 r., a urządzenie musi być:
+   * [dołączone do usługi Azure AD](../device-management-azure-portal.md) lub
+   * [dołączone do hybrydowej usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) z łącznością sieciową z kontrolerem domeny.
+* Musisz włączyć funkcję samoobsługowego resetowania haseł w usłudze Azure AD.
+* Jeśli urządzenia z systemem Windows 10 są za serwerem proxy lub zaporą, musisz dodać adresy URL `passwordreset.microsoftonline.com` oraz `ajax.aspnetcdn.com` do listy Dozwolone adresy URL ruchu protokołu HTTPS (port 443).
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurowanie linku resetowania hasła przy użyciu usługi Intune
 

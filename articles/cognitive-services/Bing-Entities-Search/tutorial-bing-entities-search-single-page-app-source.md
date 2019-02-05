@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: jednostronicowa aplikacja internetowa korzystająca z interfejsu API wyszukiwania jednostek Bing (kod źródłowy)'
+title: 'Samouczek: Jednostronicowa aplikacja internetowa korzystająca z interfejsu API wyszukiwania jednostek Bing (kod źródłowy)'
 titlesuffix: Azure Cognitive Services
 description: Kod źródłowy do samouczka przedstawiającego sposób użycia interfejsu API wyszukiwania jednostek Bing w jednostronicowej aplikacji internetowej.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-entity-search
+ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: 774c61f3a089b2ee54f60d654bb1ef7c251cbdb7
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 6165bca1eff248f15cfce4638a6f9817db550c04
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165037"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55156262"
 ---
-# <a name="tutorial-single-page-web-app-source"></a>Samouczek: jednostronicowa aplikacja internetowa — kod źródłowy
+# <a name="tutorial-single-page-web-app-source"></a>Samouczek: Kod źródłowy jednostronicowej aplikacji internetowej
 
 Jest to pełen kod źródłowy omówiony w [samouczku dotyczącym aplikacji jednostronicowej](tutorial-bing-entities-search-single-page-app.md) do wyszukiwania jednostek Bing. Aby uruchomić aplikację, skopiuj kod źródłowy do Notatnika lub innego edytora tekstu, a następnie zapisz go jako plik `bing.html`. Następnie otwórz zapisany plik w programie Microsoft Edge lub w innej popularnej przeglądarce.
 

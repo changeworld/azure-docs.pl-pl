@@ -1,21 +1,21 @@
 ---
-title: 'Przykład: akustyka projektu'
+title: 'Przykład: Akustyka projektu'
 titlesuffix: Azure Cognitive Services
 description: Ten przewodnik opisuje przykładową scenę Unity na potrzeby akustyki projektu, wraz z wdrożeniem na komputery i VR.
 services: cognitive-services
 author: kegodin
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7d8ba2f25bd53b407ab6860bc57163a79b7d228a
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901162"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55174265"
 ---
 # <a name="unity-sample-walkthrough"></a>Przewodnik po przykładzie Unity
 Jest to przewodnik po przykładzie Akustyka projektu. Aby uzyskać więcej informacji o tym, czym jest akustyka projektu, zobacz [Wprowadzenie do akustyki projektu](what-is-acoustics.md). Aby uzyskać pomoc w dodawaniu pakietu akustyki projektu do już istniejącego projektu środowiska Unity, użyj [przewodnika Wprowadzenie](getting-started.md).
@@ -36,7 +36,7 @@ Przykład obejmuje scenę pokazową **Assets/AcousticsDemo/ProjectAcousticsDemo.
 
 Scena została już utworzona i ma plik ACE skojarzony z obiektem **MicrosoftAcoustics** w **hierarchii**. 
 
-Posłuchaj brzmienia sceny, klikając przycisk odtwarzania w edytorze Unity. Na komputerze użyj klawiszy W, A, S, D oraz myszy, aby się poruszać. Aby porównać, jak brzmi scena z akustyką i bez niej, naciśnij przycisk **R** do momentu, w którym tekst nakładki zmieni się na czerwony i będzie wyświetlany komunikat „Akustyka: wyłączona”. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Wszystkich kontrolek można również użyć poprzez kliknięcie prawym przyciskiem myszy akcji do wykonania, a następnie kliknięcie lewym przyciskiem myszy w celu wykonania akcji.
+Posłuchaj brzmienia sceny, klikając przycisk odtwarzania w edytorze Unity. Na komputerze użyj klawiszy W, A, S, D oraz myszy, aby się poruszać. Aby porównać, jak brzmi scena z akustyką i bez niej, naciskaj przycisk **R** do momentu, w którym tekst nakładki zmieni się na czerwony i będzie wyświetlany komunikat „Akustyka: wyłączona”. Aby wyświetlić skróty klawiaturowe zapewniające większą liczbę kontrolek, naciśnij klawisz **F1**. Wszystkich kontrolek można również użyć poprzez kliknięcie prawym przyciskiem myszy akcji do wykonania, a następnie kliknięcie lewym przyciskiem myszy w celu wykonania akcji.
 
 ## <a name="targeting-other-platforms"></a>Określanie celu na innych platformach
 Przykład zawiera ustawienia do uruchamiania na następujących platformach: komputery z systemem Windows, platforma uniwersalna systemu Windows, rzeczywistość mieszana systemu Windows, urządzenia z systemem Android oraz Oculus Go. Domyślnie projekt został skonfigurowany pod kątem komputerów z systemem Windows Desktop. Aby użyć platformy VR, przejdź do ustawień odtwarzacza (**Edytuj > Ustawienia projektu > Odtwarzacz**), znajdź pozycję **Ustawienia XR**, a następnie zaznacz pole wyboru **Obsługiwana rzeczywistość wirtualna**.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: f1c2cd037539b3cf33f6c58c4ac8a3a1e8c304ce
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d0fc8d68b3412c2c43a88e3a9484dab3a150b811
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830529"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54886275"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>Szybki start: Obsługa protokołu SSH/RDP w strumieniach urządzeń usługi IoT Hub za pomocą aplikacji serwera proxy C (wersja zapoznawcza)
 
@@ -95,7 +95,7 @@ W tym przewodniku Szybki start będziesz używać [zestawu SDK urządzeń Azure 
 
 ```
     # In Linux
-    cmake -Denable_streaming=ON ..
+    cmake ..
     make -j
 ```
 
@@ -104,10 +104,10 @@ W systemie Windows uruchom następujące polecenia w wierszu polecenia dla dewel
 ```
     # In Windows
     # For VS2015
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2015"
+    $ cmake .. -G "Visual Studio 15 2015"
     
     # Or for VS2017
-    $ cmake -Denable_streaming=ON .. -G "Visual Studio 15 2017
+    $ cmake .. -G "Visual Studio 15 2017
 
     # Then build the project
     cmake --build . -- /m /p:Configuration=Release
@@ -179,7 +179,6 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
     # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     $ ./iothub_client_c2d_streaming_proxy_sample
 
-
     # In Windows
     # Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
@@ -194,14 +193,14 @@ Zgodnie z [powyższym](#how-it-works) opisem utworzenie pełnego strumienia tune
 
 Przy założeniu, że serwery proxy urządzenia lokalnego i usługi lokalnej są uruchomione, użyj programu klienta SSH i nawiąż połączenie z serwerem proxy usługi lokalnej na porcie 2222 (zamiast bezpośrednio z demonem SSH). 
 
-```azurecli-interactive
+```
 ssh <username>@localhost -p 2222
 ```
 
 W tym momencie zostanie wyświetlony monit logowania protokołu SSH o wprowadzenie poświadczeń.
 
 
-Dane wyjściowe konsoli na serwerze proxy urządzenia lokalnego, który łączy się z demonem SSH pod adresem <code>IP_address:22</code>: ![Tekst alternatywny](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "Dane wyjściowe serwera proxy urządzenia lokalnego")
+Dane wyjściowe konsoli na serwerze proxy urządzenia lokalnego, który łączy się z demonem SSH pod adresem `IP_address:22`: ![Tekst alternatywny](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "Dane wyjściowe serwera proxy urządzenia lokalnego")
 
 Dane wyjściowe konsoli programu klienta SSH (klient SSH komunikuje się z demonem SSH przez połączenie z portem 22, na którym nasłuchuje serwer proxy usługi lokalnej): ![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "Dane wyjściowe klienta SSH")
 

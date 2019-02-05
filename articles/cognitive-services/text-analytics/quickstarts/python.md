@@ -1,23 +1,23 @@
 ---
-title: 'Szybki start: wywoływanie interfejsu API analizy tekstu przy użyciu języka Python'
+title: 'Szybki start: Wywoływanie interfejsu API analizy tekstu przy użyciu języka Python'
 titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu, które umożliwią Ci szybkie rozpoczęcie korzystania z interfejsu API analizy tekstu w usłudze Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 5169f6c7ff3d34d90f3f2e4b37b01733384966ff
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: cd8a895bef1580b10f50f1c5d31c35f36b6806ce
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283591"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55214589"
 ---
-# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Szybki start: wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Python 
+# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Wywoływanie analizy tekstu usługi Cognitive Service przy użyciu języka Python 
 <a name="HOLTop"></a>
 
 W tym przewodniku opisano, jak [wykrywać język](#Detect), [analizować tonację](#SentimentAnalysis) i [wyodrębniać kluczowe frazy](#KeyPhraseExtraction) przy użyciu [interfejsów API analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759711) i języka Python.
