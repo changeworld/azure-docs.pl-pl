@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f37873fdbc26e1c82b6c1d9e6be8132641d94773
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4705bb8c93381a2487ba94f9dfe3a7e8820f2fd9
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809177"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54902469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Samouczek: Integracja usługi Azure Active Directory z usługą G Suite
 
@@ -75,11 +75,11 @@ Aby przetestować czynności opisane w tym samouczku, należy postępować zgodn
 
     Odp.: W przypadku tej konfiguracji atrybut adresu e-mail jest wymagany, aby możliwe było zalogowanie się użytkowników. Tego atrybutu nie można ustawić ręcznie.
 
-    Atrybut adresu e-mail jest wypełniany automatycznie dla każdego użytkownika z ważną licencją programu Exchange. Jeśli dla użytkownika nie włączono poczty e-mail, ten błąd będzie występował, ponieważ aplikacja musi pobrać ten atrybut w celu udzielenia dostępu.
+    Atrybut adresu e-mail jest wypełniany automatycznie dla każdego użytkownika z ważną licencją programu Exchange. Jeśli dla użytkownika nie włączono poczty, ten błąd będzie występował, ponieważ aplikacja musi pobrać ten atrybut w celu udzielenia dostępu.
 
-    Możesz przejść do witryny portal.office.com, korzystając z konta administratora, w obszarze centrum administracyjnego kliknąć pozycję Rozliczenia, kliknąć pozycję Subskrypcje, wybrać subskrypcję usługi Office 365, kliknąć pozycję Przypisz do użytkowników, wybrać użytkowników, dla których chcesz sprawdzić subskrypcje, a następnie w okienku po prawej stronie kliknąć pozycję Edytuj licencje.
+    W celu przypisania licencji programu Exchange możesz przejść do witryny portal.office.com, korzystając z konta administratora, w obszarze centrum administracyjnego kliknąć pozycję Rozliczenia, kliknąć pozycję Subskrypcje, wybrać subskrypcję usługi Office 365, kliknąć pozycję Przypisz do użytkowników, wybrać użytkowników, dla których chcesz sprawdzić subskrypcje, a następnie w okienku po prawej stronie kliknąć pozycję Edytuj licencje.
 
-    Po przypisaniu licencji usługi O365 może upłynąć kilka minut, zanim odniesie to skutek. Po tym czasie atrybut user.mail będzie automatycznie wypełniany, co powinno spowodować rozwiązanie problemu.
+    Po przypisaniu licencji programu Exchange może upłynąć kilka minut, zanim odniesie to skutek. Po tym czasie atrybut user.mail będzie automatycznie wypełniany, co powinno spowodować rozwiązanie problemu.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 

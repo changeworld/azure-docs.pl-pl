@@ -10,20 +10,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7a6a9a96bbde24fa8340714a8078e015a83d8cfb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e7cb8b2d699418b4d70d60f19a3a60ce0c7b8d38
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830789"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54888672"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>Szybki start: Obsługa protokołu SSH/RDP w strumieniach urządzeń usługi IoT Hub za pomocą aplikacji serwera proxy C# (wersja zapoznawcza)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
-[Strumienie urządzeń usługi IoT Hub](./iot-hub-device-streams-overview.md) umożliwiają aplikacjom usług i urządzeń bezpieczną komunikację w sposób przyjazny dla zapory. Ten przewodnik Szybki start obejmuje dwa programy C#, które umożliwiają wysyłanie ruchu SSH i RDP w strumieniu urządzenia utworzonym za pomocą usługi IoT Hub. Omówienie konfiguracji można znaleźć na [tej stronie](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
+[Strumienie urządzeń usługi IoT Hub](./iot-hub-device-streams-overview.md) umożliwiają aplikacjom usług i urządzeń bezpieczną komunikację w sposób przyjazny dla zapory. Ten przewodnik Szybki start obejmuje dwa programy C#, które umożliwiają wysyłanie ruchu klient/serwer aplikacji (takiego jak SSH i RDP) w strumieniu urządzenia utworzonym za pomocą usługi IoT Hub. Omówienie konfiguracji można znaleźć [tutaj](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
-Najpierw opisano konfigurację protokołu SSH (za pomocą portu 22). Następnie opisano sposób modyfikowania skonfigurowanego portu dla protokołu RDP. Strumienie urządzeń nie wymagają protokołu i aplikacji, dlatego można zmodyfikować ten sam przykład (zwykle przez zmianę portów komunikacyjnych) w celu obsługi innych typów ruchu aplikacji.
+Najpierw opisano konfigurację protokołu SSH (za pomocą portu 22). Następnie opisano sposób modyfikowania portu konfiguracji dla protokołu RDP. Strumienie urządzeń nie wymagają protokołu i aplikacji, dlatego można zmodyfikować ten sam przykład w celu obsługi innych typów ruchu aplikacji. Zazwyczaj wiąże się to tylko ze zmianą portu komunikacyjnego na port używany przez aplikację docelową.
+
 
 ## <a name="how-it-works"></a>Jak to działa?
 
@@ -31,13 +32,13 @@ Na poniższej ilustracji pokazano, jak skonfigurować programy serwera proxy urz
 
 ![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "Konfiguracja lokalnego serwera proxy")
 
-1. Serwer proxy usługi lokalnej łączy się z usługą IoT Hub i inicjuje strumień urządzenia do urządzenia docelowego.
+1. Serwer proxy usługi lokalnej łączy się z usługą IoT Hub i inicjuje strumień urządzenia do urządzenia docelowego przy użyciu identyfikatora urządzenia.
 
 2. Serwer proxy urządzenia lokalnego kończy uzgadnianie inicjowania strumienia i tworzy pełny tunel przesyłania strumieniowego przez punkt końcowy przesyłania strumieniowego usługi IoT Hub do usługi.
 
-3. Serwer proxy urządzenia lokalnego łączy się z demonem SSH (SSHD), który nasłuchuje na porcie 22 w urządzeniu (można to skonfigurować zgodnie z opisem [poniżej](#run-the-device-side-application)).
+3. Serwer proxy urządzenia lokalnego łączy się z demonem SSH (SSHD), który nasłuchuje na porcie 22 w urządzeniu (ten port można skonfigurować zgodnie z opisem [poniżej](#run-the-device-side-application)).
 
-4. Serwer proxy usługi lokalnej czeka na nowe połączenia SSH od użytkownika przez nasłuchiwanie na wyznaczonym porcie — w tym przypadku jest to port `2222` (również można to skonfigurować zgodnie z opisem [poniżej](#run-the-service-side-application)). Gdy użytkownik nawiązuje połączenie za pośrednictwem klienta SSH, tunel umożliwia wymianę ruchu aplikacji między programami klienta i serwera SSH.
+4. Serwer proxy usługi lokalnej czeka na nowe połączenia SSH od użytkownika przez nasłuchiwanie na wyznaczonym porcie — w tym przypadku jest to port 2222 (również można to skonfigurować zgodnie z opisem [poniżej](#run-the-service-side-application)). Gdy użytkownik nawiązuje połączenie za pośrednictwem klienta SSH, tunel umożliwia wymianę ruchu aplikacji między programami klienta i serwera SSH.
 
 > [!NOTE]
 > Ruch SSH wysyłany w strumieniu będzie tunelowany za pośrednictwem punktu końcowego przesyłania strumieniowego usługi IoT Hub, a nie wysyłany bezpośrednio z usługi do urządzenia. Daje to [następujące korzyści](./iot-hub-device-streams-overview.md#benefits).
@@ -115,9 +116,9 @@ Przejdź do elementu `device-streams-proxy/service` w folderze rozpakowanego pro
 
 | Nazwa parametru | Wartość parametru |
 |----------------|-----------------|
-| `IotHubConnectionString` | Parametry połączenia usługi IoT Hub. |
-| `DeviceId` | Utworzony wcześniej identyfikator urządzenia. |
-| `Port` | Port lokalny, z którym łączy się klient SSH. W tym przykładzie użyto portu `2222`, ale można go zmienić na inny. |
+| `iotHubConnectionString` | Parametry połączenia usługi IoT Hub. |
+| `deviceId` | Utworzony wcześniej identyfikator urządzenia. |
+| `localPortNumber` | Port lokalny, z którym łączy się klient SSH. W tym przykładzie użyto portu 2222, ale można go zmienić na inny. |
 
 Skompiluj i uruchom kod w następujący sposób:
 
@@ -139,11 +140,11 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 Przejdź do elementu `device-streams-proxy/device` w folderze rozpakowanego projektu. Przydatne będą następujące informacje:
 
-| Nazwa parametru | Wartość parametru |
+| Nazwa argumentu | Wartość argumentu |
 |----------------|-----------------|
-| `DeviceConnectionString` | Utworzone wcześniej parametry połączenia urządzenia. |
-| `RemoteHostName` | Adres IP serwera SSH (`localhost`, jeśli jest to ten sam adres IP, pod którym działa serwer proxy urządzenia lokalnego). |
-| `RemotePort` | Port używany przez protokół aplikacji (domyślnie jest to port 22 dla protokołu SSH).  |
+| `deviceConnectionString` | Utworzone wcześniej parametry połączenia urządzenia. |
+| `targetServiceHostName` | Adres IP, na którym nasłuchuje serwer SSH (`localhost`, jeśli jest to ten sam adres IP, pod którym działa serwer proxy urządzenia lokalnego). |
+| `targetServicePort` | Port używany przez protokół aplikacji (domyślnie jest to port 22 dla protokołu SSH).  |
 
 Skompiluj i uruchom kod w następujący sposób:
 
@@ -155,13 +156,13 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $DeviceConnectionString localhost 22
+dotnet run $deviceConnectionString localhost 22
 
 # In Windows
-dotnet run %DeviceConnectionString% localhost 22
+dotnet run %deviceConnectionString% localhost 22
 ```
 
-Teraz użyj programu klienckiego SSH i nawiąż połączenie z serwerem proxy usługi lokalnej na porcie `2222` (zamiast bezpośrednio z demonem SSH). 
+Teraz użyj programu klienckiego SSH i nawiąż połączenie z serwerem proxy usługi lokalnej na porcie 2222 (zamiast bezpośrednio z demonem SSH). 
 
 ```
 ssh <username>@localhost -p 2222
@@ -169,11 +170,17 @@ ssh <username>@localhost -p 2222
 
 W tym momencie zostanie wyświetlony monit logowania protokołu SSH o wprowadzenie poświadczeń.
 
-Dane wyjściowe konsoli po stronie usługi (serwer proxy usługi lokalnej nasłuchuje na porcie 2222): ![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "Dane wyjściowe serwera proxy usługi lokalnej")
+Dane wyjściowe konsoli po stronie usługi (serwer proxy usługi lokalnej nasłuchuje na porcie 2222):
 
-Dane wyjściowe konsoli na serwerze proxy urządzenia lokalnego, który łączy się z demonem SSH pod adresem <code>IP_address:22</code>: ![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "Dane wyjściowe serwera proxy urządzenia lokalnego")
+![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/service-console-output.png "Dane wyjściowe serwera proxy usługi lokalnej")
 
-Dane wyjściowe konsoli programu klienta SSH (klient SSH komunikuje się z demonem SSH przez połączenie z portem 22, na którym nasłuchuje serwer proxy usługi lokalnej): ![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "Dane wyjściowe programu klienta SSH")
+Dane wyjściowe konsoli na serwerze proxy urządzenia lokalnego, który łączy się z demonem SSH pod adresem `IP_address:22`:
+
+]Tekst alternatywny(./media/quickstart-device-streams-proxy-csharp/device-console-output.png "")Dane wyjściowe serwera proxy urządzenia lokalnego")
+
+Dane wyjściowe konsoli programu klienta SSH (klient SSH komunikuje się z demonem SSH przez połączenie z portem 22, na którym nasłuchuje serwer proxy usługi lokalnej):
+
+![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png "Dane wyjściowe programu klienta SSH")
 
 ## <a name="rdp-to-a-device-via-device-streams"></a>Połączenie RDP z urządzeniem za pośrednictwem strumieni urządzeń
 
@@ -185,9 +192,9 @@ Przejdź do elementu `device-streams-proxy/service` w folderze rozpakowanego pro
 
 | Nazwa parametru | Wartość parametru |
 |----------------|-----------------|
-| `IotHubConnectionString` | Parametry połączenia usługi IoT Hub. |
-| `DeviceId` | Utworzony wcześniej identyfikator urządzenia. |
-| `Port` | Port lokalny, z którym łączy się klient SSH. W tym przykładzie użyto portu `2222`, ale można go zmienić na inny. |
+| `iotHubConnectionString` | Parametry połączenia usługi IoT Hub. |
+| `deviceId` | Utworzony wcześniej identyfikator urządzenia. |
+| `localPortNumber` | Port lokalny, z którym łączy się klient SSH. W tym przykładzie użyto portu 2222, ale można go zmienić na inny. |
 
 Skompiluj i uruchom kod w następujący sposób:
 
@@ -209,11 +216,11 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 Przejdź do elementu `device-streams-proxy/device` w folderze rozpakowanego projektu. Przydatne będą następujące informacje:
 
-| Nazwa parametru | Wartość parametru |
+| Nazwa argumentu | Wartość argumentu |
 |----------------|-----------------|
 | `DeviceConnectionString` | Utworzone wcześniej parametry połączenia urządzenia. |
-| `RemoteHostName` | Adres IP serwera RDP (`localhost`, jeśli jest to ten sam adres IP, pod którym działa serwer proxy urządzenia lokalnego). |
-| `RemotePort` | Port używany przez protokół aplikacji (domyślnie jest to port 3389 dla protokołu RDP).  |
+| `targetServiceHostName` | Nazwa hosta lub adres IP, gdzie działa serwer RDP (`localhost`, jeśli jest to ten sam adres IP, pod którym działa serwer proxy urządzenia lokalnego). |
+| `targetServicePort` | Port używany przez protokół aplikacji (domyślnie jest to port 3389 dla protokołu RDP).  |
 
 Skompiluj i uruchom kod w następujący sposób:
 
@@ -228,7 +235,7 @@ dotnet run $DeviceConnectionString localhost 3389
 dotnet run %DeviceConnectionString% localhost 3389
 ```
 
-Teraz użyj programu klienta RDP i nawiąż połączenie z serwerem proxy usługi lokalnej na porcie `2222` (jest to port wybrany wcześniej).
+Teraz użyj programu klienta RDP i nawiąż połączenie z serwerem proxy lokalnym dla usługi na porcie 2222 (jest to port wybrany wcześniej).
 
 ![Tekst alternatywny](./media/quickstart-device-streams-proxy-csharp/rdp-screen-capture.PNG "Połączenie RDP z serwerem proxy usługi lokalnej")
 

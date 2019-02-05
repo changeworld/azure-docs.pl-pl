@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c2b8b205229ec1ef180e52372f75d06c83f1cc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: ff0cb82e3f1ddedf8dabebadf7a0309d08b2c4e3
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716416"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55297093"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Samouczek: Kompleksowe uwierzytelnianie i autoryzacja użytkowników w usłudze Azure App Service
 
@@ -293,7 +293,7 @@ Zapisz ustawienia, klikając pozycję **PUT**.
 
 Aplikacje są teraz skonfigurowane. Fronton może teraz uzyskiwać dostęp do zaplecza za pomocą odpowiedniego tokenu dostępu.
 
-Aby uzyskać informacje na temat sposobu przeprowadzenia tej konfiguracji w przypadku innych dostawców, zobacz [Odświeżanie tokenów dostępu](app-service-authentication-how-to.md#refresh-access-tokens).
+Aby uzyskać informacje na temat sposobu przeprowadzenia tej konfiguracji w przypadku innych dostawców, zobacz [Odświeżanie tokenów dostawców tożsamości](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="call-api-securely-from-server-code"></a>Bezpieczne wywoływanie interfejsu API z poziomu kodu serwera
 
@@ -417,7 +417,7 @@ Gratulacje! Kod klienta uzyskuje teraz dostęp do danych zaplecza w imieniu uwie
 
 ## <a name="when-access-tokens-expire"></a>Wygasanie tokenów dostępu
 
-Token dostępu wygasa po pewnym czasie. Aby uzyskać informacje na temat odświeżania tokenów dostępu bez konieczności ponownego uwierzytelniania użytkowników w aplikacji, zobacz [Odświeżanie tokenów dostępu](app-service-authentication-how-to.md#refresh-access-tokens).
+Token dostępu wygasa po pewnym czasie. Aby uzyskać informacje na temat odświeżania tokenów dostępu bez konieczności ponownego uwierzytelniania użytkowników w aplikacji, zobacz [Odświeżanie tokenów dostawców tożsamości](app-service-authentication-how-to.md#refresh-identity-provider-tokens).
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

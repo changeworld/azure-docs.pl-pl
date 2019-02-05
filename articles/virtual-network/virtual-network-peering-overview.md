@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1085be57583762e8f1d419e2aacc699032340d90
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054558"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55169318"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -72,6 +72,8 @@ W przypadku połączenia za pomocą komunikacji równorzędnej sieci wirtualnych
 Aby potwierdzić komunikację równorzędną w sieci wirtualnej, możesz [sprawdzić efektywne trasy](diagnose-network-routing-problem.md) dla interfejsu sieciowego w dowolnej podsieci w sieci wirtualnej. Jeśli istnieje komunikacja równorzędna w sieci wirtualnej, wszystkie podsieci w tej sieci wirtualnej mają trasy z typem następnego przeskoku *Komunikacja równorzędna sieci wirtualnych* dla każdej przestrzeni adresowej w każdej równorzędnej sieci wirtualnej.
 
 Problemy dotyczące łączności z maszyną wirtualną w równorzędnej sieci wirtualnej można również rozwiązywać przy użyciu funkcji [monitorowania połączeń](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) usługi Network Watcher. Funkcja monitorowania połączeń pozwala zobaczyć, jak ruch jest przekierowywany z interfejsu sieciowego źródłowej maszyny wirtualnej do interfejsu sieciowego docelowej maszyny wirtualnej.
+
+Informacje na ten temat zawiera również artykuł [Troubleshooter for virtual network peering issues](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues) (Narzędzie do rozwiązywania problemów komunikacji równorzędnej sieci wirtualnej).
 
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia
 
