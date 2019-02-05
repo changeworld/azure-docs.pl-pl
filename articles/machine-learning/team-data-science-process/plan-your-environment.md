@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0cf9ffddffe7f97008e69c9c4fb7945faeb779da
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8af2398246fac4c8cb1d097e22147bbf695e43a6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469604"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728934"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Identyfikowanie scenariuszy i planowanie zaawansowanego przetwarzania danych analizy
 Jakie zasoby należy zaplanować do uwzględnienia podczas konfigurowania środowiska do zaawansowanej analizy, przetwarzanie w zestawie danych? W tym artykule sugeruje szereg pytań do zadania ułatwiające identyfikowanie własnego scenariusza zadania i odpowiednie zasoby. Kolejność etapów wysokiego poziomu do analizy predykcyjnej jest opisany w [co to jest Team Data Science naukowych?](overview.md). Każdy z tych kroków wymaga określonych zasobów dla zadania, które są odpowiednie dla danego scenariusza. Kluczowe pytania do identyfikowanie własnego scenariusza dotyczą danych logistycznych, właściwości, jakości zestawy danych, narzędzia i języki, aby wykonać analizy.
@@ -71,7 +71,7 @@ Te pytania są kluczem do planowania sieci magazynowania i przetwarzania środow
 
 Na przykład wykonać środowisko Azure Machine Learning Studio:
 
-* Aby uzyskać listę formatów danych i typy obsługiwanych przez usługi Azure Machine Learning Studio, zobacz [formatów danych i typy danych obsługiwane](../studio/import-data.md#data-formats-and-data-types-supported) sekcji.
+* Aby uzyskać listę formatów danych i typy obsługiwanych przez usługi Azure Machine Learning Studio, zobacz [formatów danych i typy danych obsługiwane](../studio/import-data.md#supported-data-formats-and-data-types) sekcji.
 
 
 Aby uzyskać informacji na temat ograniczeń innych usług platformy Azure używane w procesie analytics, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../../azure-subscription-service-limits.md).

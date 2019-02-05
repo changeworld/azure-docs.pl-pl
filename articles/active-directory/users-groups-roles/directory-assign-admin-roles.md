@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 64b8ca0412461ae1001eecce335f94d9f2f0825f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6fc85bd96294650eb2bbf9495642851ade7c7868
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659069"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731516"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -39,6 +39,20 @@ Dostępne są następujące role administratora:
   <b>Ważne</b>: Ta rola umożliwia zarządzanie poświadczeniami aplikacji. Użytkownicy przypisani do tej roli można dodać poświadczeń do aplikacji i spersonifikować tożsamości aplikacji przy użyciu tych poświadczeń. Jeśli tożsamości aplikacji udzielono dostępu do usługi Azure Active Directory, takie jak możliwość utworzenia lub zaktualizowania użytkownika lub inne obiekty, przypisani do tej roli użytkownika może wykonać te czynności podczas personifikacji aplikacji. Ta możliwość spersonifikować tożsamości aplikacji może być podniesienie uprawnień za pośrednictwem co użytkownik może wykonać za pomocą swoje przypisania roli w usłudze Azure AD. Jest ważne dowiedzieć się, że przypisanie użytkownika do roli administratora aplikacji daje im możliwość personifikacji tożsamość aplikacji.
 
 * **[Deweloper aplikacji](#application-developer)**: Użytkownicy w tej roli mogą tworzyć rejestracje aplikacji po "Użytkownicy mogą rejestrować aplikacje" został ustawiony na nie. Ta rola pozwala również elementy członkowskie do wyrażenia zgody we własnym imieniu po "Użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu" został ustawiony na nie. Członkowie tej roli są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
+
+* **[Administrator uwierzytelniania](#authentication-administrator)**: Użytkownicy z tą rolą wyświetlić bieżące informacje o metodzie uwierzytelniania i ustawieniem lub zresetowaniem hasła bez poświadczeń. Administratorzy uwierzytelniania umożliwia wymuszenie użytkowników ponownej rejestracji dla istniejących poświadczeń-password (np. uwierzytelnianie wieloskładnikowe, FIDO) i odwołać "uwierzytelnianie wieloskładnikowe na urządzeniu" należy pamiętać, że monitowania o MFA podczas następnego logowania w innych użytkowników, którzy są użytkowników niebędących administratorami lub elementy członkowskie programu tylko następujące role:
+  * Administrator uwierzytelniania
+  * Odczytywanie katalogów
+  * Osoba zapraszająca gościa
+  * Czytelnik Centrum wiadomości
+  * Czytnik raportów
+  
+  <b>Ważne</b>: Użytkownicy z tą rolą mogą zmienić poświadczenia dla osób, które mogą uzyskiwać dostęp do informacje poufne lub prywatne lub krytyczne konfiguracji i spoza usługi Azure Active Directory. Zmiana poświadczeń użytkownika, może oznaczać, że możliwość przyjęcia tożsamości i uprawnienia tego użytkownika. Na przykład:
+  * Rejestrowanie aplikacji i aplikacji przedsiębiorstwa właścicieli, którzy mogą zarządzać poświadczeniami aplikacje, które są właścicielami. Te aplikacje mogą mieć uprzywilejowany uprawnień w usłudze Azure AD i gdzie indziej nie są przyznawane administratorom uwierzytelniania. Za pomocą tej ścieżki, które Administrator uwierzytelniania może przyjąć tożsamość właściciela aplikacji, a następnie dalej przyjąć tożsamość uprzywilejowanych aplikacji przez zaktualizowanie poświadczeń dla aplikacji.
+  * Właścicieli subskrypcji platformy Azure, którzy mogą uzyskiwać dostęp do informacje poufne lub prywatne lub krytyczne konfiguracji na platformie Azure.
+  * Grupy zabezpieczeń i grupy usługi Office 365 właścicieli, którzy mogą zarządzać członkostwem. Te grupy mogą udzielać dostępu do informacje poufne lub prywatne lub krytyczne konfiguracji w usłudze Azure AD i w innych miejscach.
+  * Administratorzy w innych usługach poza usługi Azure AD, takich jak Exchange Online, zabezpieczenia pakietu Office i Centrum zgodności i zarządzania zasobami ludzkimi systemów.
+  * Kierownicy doradcą prawnym i pracownicy działu kadr, którzy mogą uzyskiwać dostęp do poufne lub prywatne informacje, takie jak użytkownicy niebędący administratorami.
 
 * **[Administrator rozliczeń](#billing-administrator)**: Dokonuje zakupów, zarządza subskrypcjami, zarządza biletami pomocy technicznej i monitoruje kondycję usługi.
 
@@ -274,6 +288,19 @@ Rejestracje aplikacji można tworzyć niezależnie od "Użytkownicy mogą rejest
 | microsoft.aad.directory/appRoleAssignments/createAsOwner | Tworzenie elementu appRoleAssignments w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | Tworzenie elementu oAuth2PermissionGrants w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Tworzenie elementu servicePrincipals w usłudze Azure Active Directory. Twórca nie zostanie dodany jako pierwszy właściciela, a utworzony obiekt zmniejsza limit przydziału 250 utworzonych obiektów twórcy. |
+
+### <a name="authentication-administrator"></a>Administrator uwierzytelniania
+Można wyświetlić, wartości i zresetować informacje dotyczące metody uwierzytelniania dla dowolnego użytkownika bez uprawnień administratora.
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | Unieważnianie wszystkich tokenów odświeżania użytkowników w usłudze Azure Active Directory. |
+| microsoft.aad.directory/users/strongAuthentication/update | Aktualizowanie właściwości silnego uwierzytelniania, takich jak informacje o poświadczeniach MFA. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie usługi Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie biletów pomocy technicznej platformy Azure i zarządzanie nimi. |
+| microsoft.office365.webPortal/allEntities/basic/read | Odczytywanie podstawowych właściwości we wszystkich zasobach w elemencie microsoft.office365.webPortal. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
 
 ### <a name="billing-administrator"></a>Administrator rozliczeń
 Może wykonywać typowe zadania związane z rozliczeniami, takie jak aktualizowanie informacji o płatności.

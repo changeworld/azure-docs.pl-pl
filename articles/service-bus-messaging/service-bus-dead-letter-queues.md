@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: aaeebb200197ba6ef15fbcfe02f262a3840197b5
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 0364304a203e03faf69868174a45cb41850ce112
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856129"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733318"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Omówienie usługi Service Bus, kolejki utraconych wiadomości
 
@@ -60,13 +60,13 @@ Nie można wyłączyć tego zachowania, ale możesz ustawić [MaxDeliveryCount](
 
 ## <a name="exceeding-timetolive"></a>Przekroczenie TimeToLive
 
-Gdy [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) lub [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) właściwość jest ustawiona na **true** (wartość domyślna to **false**), wszystkie komunikaty wygasające zostaną przeniesione do DLQ, określając `TTLExpiredException` kod przyczyny.
+Gdy [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) lub [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) właściwość jest ustawiona na **true** (wartość domyślna to **false**), wszystkie komunikaty wygasające zostaną przeniesione do DLQ, określając `TTLExpiredException` kod przyczyny.
 
 Pamiętaj, że wygasłe wiadomości tylko przeczyszczania i przeniesione do DLQ, gdy istnieje co najmniej jeden aktywny odbiornik ściąganie z głównym kolejki lub subskrypcji; to zachowanie jest celowe.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Błędy podczas przetwarzania reguły subskrypcji
 
-Gdy [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) właściwość jest włączona dla subskrypcji, wszelkie błędy, które wystąpiły w trakcie wykonuje regułę filtru SQL subskrypcji są przechwytywane DLQ wzdłuż komunikatem powodujący problemy.
+Gdy [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) właściwość jest włączona dla subskrypcji, wszelkie błędy, które wystąpiły w trakcie wykonuje regułę filtru SQL subskrypcji są przechwytywane DLQ wzdłuż komunikatem powodujący problemy.
 
 ## <a name="application-level-dead-lettering"></a>Obsługa utraconych komunikatów dodatku poziomu aplikacji
 
@@ -84,7 +84,7 @@ Aby pobrać te lettered Obsługa utraconych komunikatów, można utworzyć odbio
 
 ## <a name="example"></a>Przykład
 
-Poniższy fragment kodu tworzy odbiorcom wiadomości. W pętli receive kolejka główna kod pobiera wiadomość z [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_), która prosi brokera, aby natychmiast przywrócić wszystkie komunikaty, które są łatwo dostępne lub zostać zwrócone wraz z żadnego wyniku. Jeśli kod otrzymuje komunikat, ją od razu porzuca go, które zwiększa `DeliveryCount`. Po system przenosi wiadomość do DLQ, kolejka główna jest pusta, i kończy działanie pętli, jak [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) zwraca **null**.
+Poniższy fragment kodu tworzy odbiorcom wiadomości. W pętli receive kolejka główna kod pobiera wiadomość z [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver), która prosi brokera, aby natychmiast przywrócić wszystkie komunikaty, które są łatwo dostępne lub zostać zwrócone wraz z żadnego wyniku. Jeśli kod otrzymuje komunikat, ją od razu porzuca go, które zwiększa `DeliveryCount`. Po system przenosi wiadomość do DLQ, kolejka główna jest pusta, i kończy działanie pętli, jak [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) zwraca **null**.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

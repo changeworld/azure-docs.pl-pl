@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: cbd58c0873a4a46d175c6d7cbdf2d004da304c06
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5677649b8f002490900ec32bee954348b2f444e6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247242"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731550"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Ten artykuł zawiera znane problemy i ograniczenia tymczasowych za pomocą usłu
 
 Interfejsy API usługi blob Storage i interfejsów API usługi Azure Data Lake Gen2 — nie są współpracujący ze sobą.
 
-Jeśli potrzebujesz używać tego samego narzędzia do pracy z całej zawartości, który przekaże do swojego konta, nie włączysz hierarchicznej przestrzeni nazw na konta usługi Blob storage do momentu te interfejsy API zostają współpracujący ze sobą. Przy użyciu konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do określonych funkcji Data Lake Storage Gen2, takich jak katalog i system plików następnie listy kontroli dostępu.
+Jeśli masz niestandardowe narzędzia, aplikacje lub skrypty, które używają interfejsów API usługi Blob, a chcesz ich używać do pracy z całej zawartości, który przekaże do swojego konta, nie włączysz hierarchicznej przestrzeni nazw na konta usługi Blob storage do momentu interfejsów API usługi Blob stają się międzyoperacyjnych za pomocą usługi Azure Data Lake Gen2 z interfejsów API. Przy użyciu konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do określonych funkcji Data Lake Storage Gen2, takich jak katalog i system plików następnie listy kontroli dostępu.
 
 ## <a name="blob-storage-apis"></a>Magazyn obiektów blob interfejsów API
 
@@ -79,16 +79,14 @@ Wszystkie funkcje wersji, w tym [migawek](https://docs.microsoft.com/rest/api/st
 
 ## <a name="object-level-storage-tiers"></a>Warstwy magazynowania poziomu obiektu
 
-Obiekt magazynu poziomu warstwy (gorąca, zimnego i archiwalna) nie są jeszcze dostępne dla kont usługi Azure Data Lake Storage Gen 2, ale są one dostępne dla kont magazynu, które nie mają hierarchiczne miejsca do magazynowania, które są włączone.
+Obiekt magazynu poziomu warstwy (gorąca, zimnego i archiwalna) nie są jeszcze dostępne dla kont usługi Azure Data Lake Storage Gen 2, ale są one dostępne dla kont magazynu, które nie mają włączonych hierarchicznej przestrzeni nazw.
 
 ## <a name="azure-blob-storage-lifecycle-management-preview-policies"></a>Zasady zarządzania (wersja zapoznawcza) cyklu życia w usłudze Azure Blob Storage
 
 Zasady zarządzania (wersja zapoznawcza) cyklu życia w usłudze Azure Blob Storage nie są jeszcze dostępne dla kont usługi Azure Data Lake Storage Gen2.
 
-Te zasady są dostępne dla kont magazynu, które nie mają hierarchiczne miejsca do magazynowania, które są włączone.
+Te zasady są dostępne dla kont magazynu, które nie mają włączonych hierarchicznej przestrzeni nazw.
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
 
 Dzienniki diagnostyczne nie są dostępne dla kont usługi Azure Data Lake Storage Gen2.
-
-Aby zażądać dziennika diagnostycznego, skontaktuj się z działem pomocy technicznej systemu Azure. Udostępniaj im swojej nazwy konta i okres, dla którego wymagane dzienniki.

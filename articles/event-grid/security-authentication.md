@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 1761dafd04a4b8d27a16af4a5e1b0034b90c51a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ec34b9c5f78b4d0ea59382f616fab88e0e1dedc9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656876"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730938"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -50,7 +50,7 @@ Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na po
 * Treść zdarzeń ma ten sam schemat, jak inne zdarzenia usługi Event Grid.
 * Typ zdarzenia właściwości zdarzenia `Microsoft.EventGrid.SubscriptionValidationEvent`.
 * Właściwości danych zdarzenia zawiera `validationCode` właściwości z ciągiem generowanym losowo. Na przykład "validationCode: acb13...".
-* Jeśli używasz interfejsu API w wersji 2018-05-01-preview dane zdarzenia obejmowały `validationUrl` właściwość adres URL ręcznej weryfikacji subskrypcji.
+* Dane zdarzenia zawierają również `validationUrl` właściwość adres URL ręcznej weryfikacji subskrypcji.
 * Tablica zawiera tylko zdarzenia sprawdzania poprawności. Inne zdarzenia są wysyłane w oddzielnym żądaniu po odsyłania kod sprawdzania poprawności.
 * Zestawy SDK płaszczyzny danych EventGrid mają klas odpowiadających danych zdarzeń sprawdzania poprawności subskrypcji i odpowiedź weryfikacji subskrypcji.
 

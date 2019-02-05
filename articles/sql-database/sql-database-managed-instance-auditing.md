@@ -1,6 +1,6 @@
 ---
-title: Usługi Azure SQL Database Managed inspekcji wystąpienia | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozpocząć pracę z platformy Azure zarządzanego wystąpienia inspekcji usługi SQL Database przy użyciu języka T-SQL
+title: Usługa Azure SQL Database managed inspekcji wystąpienia | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozpocząć pracę z usługi Azure SQL Database, zarządzanego wystąpienia inspekcji przy użyciu języka T-SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,24 +13,24 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/15/2019
-ms.openlocfilehash: 3a445fbc135e0d7dc19907339506fd0c32bffb45
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456038"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729001"
 ---
-# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z usługą Azure Managed wystąpienia inspekcji usługi SQL Database
+# <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z inspekcją wystąpienie zarządzane bazy danych SQL Azure
 
-[Wystąpienie usługi Azure SQL Database Managed](sql-database-managed-instance.md) inspekcji śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure. Inspekcja również:
+[Wystąpienie zarządzane](sql-database-managed-instance.md) inspekcji śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie magazynu platformy Azure. Inspekcja również:
 
 - Pomaga zachować zgodność z przepisami, analizować aktywność bazy danych i uzyskać wgląd w odchylenia i anomalie, które mogą oznaczać problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
 - Włącza i ułatwia zgodności ze standardami zgodności, ale nie gwarantuje zgodności. Aby uzyskać więcej informacji na temat usługi Azure programy zgodność ze standardami tej pomocy technicznej, zobacz [Centrum zaufania systemu Azure](https://azure.microsoft.com/support/trust-center/compliance/).
 
-## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Inspekcja serwera do usługi Azure Storage
+## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Inspekcja serwera do usługi Azure storage
 
-W poniższej sekcji opisano konfigurację inspekcji dla wystąpienia zarządzanego.
+W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarządzanego.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 1. Tworzenie usługi Azure Storage **kontenera** przechowywania dzienników inspekcji.
@@ -38,7 +38,7 @@ W poniższej sekcji opisano konfigurację inspekcji dla wystąpienia zarządzane
    1. Przejdź do usługi Azure Storage, w którym chcesz przechowywać dzienniki inspekcji.
 
       > [!IMPORTANT]
-      > Użyj konta magazynu w tym samym regionie co serwer wystąpienia zarządzanego, aby uniknąć operacji odczytu/zapisu między regionami.
+      > Użyj konta magazynu w tym samym regionie co zarządzane wystąpienie, aby uniknąć operacji odczytu/zapisu między regionami.
 
    1. Na koncie magazynu, przejdź do **Przegląd** i kliknij przycisk **obiektów blob**.
 
@@ -64,7 +64,7 @@ W poniższej sekcji opisano konfigurację inspekcji dla wystąpienia zarządzane
 
         ![Adres URL kopiowania kontenera obiektów blob](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
-     1. Generowanie usługi Azure Storage **tokenu sygnatury dostępu Współdzielonego** udzielenia inspekcji wystąpienie zarządzane prawa dostępu do konta magazynu:
+     1. Generowanie usługi Azure Storage **tokenu sygnatury dostępu Współdzielonego** udzielenia wystąpienia zarządzanego inspekcji prawa dostępu do konta magazynu:
 
         - Przejdź do konta usługi Azure Storage, w której utworzono kontener w poprzednim kroku.
 
@@ -94,7 +94,7 @@ W poniższej sekcji opisano konfigurację inspekcji dla wystąpienia zarządzane
           > [!IMPORTANT]
           > Usuń znak zapytania ("?") znaku od początku tokenu.
 
-     1. Połączyć się z wystąpieniem zarządzanym przy użyciu programu SQL Server Management Studio (SSMS) lub innemu narzędziu obsługiwane.
+     1. Podłącz do wystąpienia zarządzanego przy użyciu programu SQL Server Management Studio (SSMS) lub innemu narzędziu obsługiwane.
 
      1. Wykonaj następującą instrukcję języka T-SQL, aby **utworzyć nowe poświadczenie** przy użyciu adresu URL kontenera i tokenu sygnatury dostępu Współdzielonego utworzony w poprzednich krokach:
 
@@ -154,7 +154,7 @@ W poniższej sekcji opisano konfigurację inspekcji dla wystąpienia zarządzane
 
 Dodatkowe informacje:
 
-- [Inspekcja różnice między wystąpienia zarządzanego, bazy danych SQL Azure i programu SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Inspekcja różnice między pojedynczych baz danych, pul elastycznych, s i wystąpienia zarządzanego Azure SQL Database i baz danych programu SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
 - [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -162,7 +162,7 @@ Dodatkowe informacje:
 
 Dzienniki inspekcji z wystąpienia zarządzanego, mogą być wysyłane do nawet Hubs lub usługi Log Analytics przy użyciu usługi Azure Monitor. W tej sekcji opisano sposób konfigurowania to:
 
-1. Nawigowanie w [witryny Azure Portal](https://portal.azure.com/) wystąpienie zarządzane SQL.
+1. Nawigowanie w [witryny Azure Portal](https://portal.azure.com/) do wystąpienia zarządzanego.
 
 2. Kliknij pozycję **ustawień diagnostycznych**.
 
@@ -209,9 +209,6 @@ Istnieje kilka metod, których można użyć, aby wyświetlić dzienniki inspekc
 
 - Aby uzyskać pełną listę metod użycie dziennika inspekcji, zobacz [Rozpoczynanie pracy z inspekcją bazy danych SQL](sql-database-auditing.md).
 
-  > [!IMPORTANT]
-  > Wyświetlanie rekordów inspekcji w witrynie Azure portal (w okienku "Rekordy inspekcji") jest obecnie niedostępna dla wystąpienia zarządzanego.
-
 ### <a name="consume-logs-stored-in-event-hub"></a>Korzystanie z dzienników przechowywanych w Centrum zdarzeń
 
 Korzystanie z danych dzienników inspekcji z Centrum zdarzeń, należy skonfigurować strumienia na korzystanie ze zdarzeń i zapisywać je do obiektu docelowego. Aby uzyskać więcej informacji zobacz dokumentacja usługi Azure Event Hubs.
@@ -222,21 +219,21 @@ Jeśli dzienniki inspekcji są zapisywane do usługi Log Analytics, są one dost
 
 Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
-## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>Inspekcja różnice między wystąpienia zarządzanego usługi Azure SQL Database i programu SQL Server
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Inspekcja różnice między bazami danych w usłudze Azure SQL Database i baz danych programu SQL Server
 
-Podstawowe różnice między inspekcji SQL w wystąpieniu zarządzanym, Azure SQL Database i SQL Server w środowisku lokalnym są:
+Podstawowe różnice między inspekcji w bazach danych Azure SQL Database i baz danych programu SQL Server są:
 
-- W wystąpieniu zarządzanym inspekcji SQL działa na poziomie serwera i magazyny `.xel` dzienniki na koncie magazynu obiektów blob platformy Azure.
-- W usłudze Azure SQL Database inspekcji SQL, działa na poziomie bazy danych.
-- W programie SQL Server w środowisku lokalnym / wirtualnych maszyn, działania inspekcji SQL na serwerze poziomu, ale zdarzenia magazyny plików system i windows dzienniki zdarzeń.
+- Za pomocą opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database, inspekcja działa na poziomie serwera i magazyny `.xel` dzienniki na koncie magazynu obiektów blob platformy Azure.
+- Korzystając z pojedynczą bazę danych i pul elastycznych opcji wdrażania w usłudze Azure SQL Database inspekcja działa na poziomie bazy danych.
+- W programie SQL Server w środowisku lokalnym / wirtualnej maszyny, inspekcji działa na serwerze poziomu, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.
 
-Inspekcji systemu XEvent, w wystąpieniu zarządzanym obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows są **nieobsługiwane**.
+Przeprowadzanie inspekcji w zarządzanym wystąpieniu systemu XEvent obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows są **nieobsługiwane**.
 
-Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure blob storage są:
+Klucz różnice w `CREATE AUDIT` składnia inspekcji w usłudze Azure blob storage są:
 
 - Nowa składnia `TO URL` jest dostarczany i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure gdzie `.xel` pliki zostaną umieszczone.
 - Nowa składnia `TO EXTERNAL MONITOR` jest dostarczana, aby umożliwić cele nawet Centrum i usługi Log Analytics.
-- Składnia `TO FILE` jest **nieobsługiwane** ponieważ wystąpienia zarządzanego nie można uzyskać dostępu do udziałów plików w Windows.
+- Składnia `TO FILE` jest **nieobsługiwane** ponieważ bazy danych SQL nie może uzyskać dostępu do udziałów plików w Windows.
 - Opcja zamknięcie jest **nieobsługiwane**.
 - `queue_delay` 0 jest **nieobsługiwane**.
 

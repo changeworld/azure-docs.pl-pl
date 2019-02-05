@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: aschhab
-ms.openlocfilehash: 6b03b1eb773c40a81c9efd76ac26b40936dca2cc
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3158f0255810c66605d28856133112181c2916db
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849366"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733930"
 ---
 # <a name="messages-payloads-and-serialization"></a>Komunikaty, ładunki i serializacja
 
@@ -28,7 +28,7 @@ Model obiektu oficjalne klienci usługi Service Bus dla platformy .NET i Java od
  
 Komunikat usługi Service Bus składa się z sekcją ładunek danych binarnych, obsługujący usługi Service Bus nigdy nie w dowolnej formie po stronie usługi, a dwa zestawy właściwości. *Brokera właściwości* są wstępnie zdefiniowane przez system. Te wstępnie zdefiniowane właściwości albo kontrolować funkcjonalność poziom komunikatu brokera lub mapują do elementów metadanych typowe i standardowy. *Właściwości użytkownika* to zbiór par klucz wartość, które mogą być definiowane i ustawiane przez aplikację.
  
-Właściwości brokera wstępnie zdefiniowane są wymienione w poniższej tabeli. Nazwy są używane z wszystkie oficjalne interfejsów API klienta oraz w [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Properties_) obiekt JSON mapowanie protokołu HTTP.
+Właściwości brokera wstępnie zdefiniowane są wymienione w poniższej tabeli. Nazwy są używane z wszystkie oficjalne interfejsów API klienta oraz w [BrokerProperties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) obiekt JSON mapowanie protokołu HTTP.
  
 Równoważne nazwy stosowane na poziomie protokołu AMQP podano w nawiasach. 
 

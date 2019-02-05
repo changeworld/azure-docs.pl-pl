@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 8a9b14423566e631ddb41b42048104c8ee085486
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: cc786b97c38c115fb288a5b9a0f73f566777e7df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886700"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734423"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak zainstalować i skonfigurować bazy danych MongoDB na maszynie Wirtualnej systemu Linux
 
@@ -39,7 +39,7 @@ Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group)
 az group create --name myResourceGroup --location eastus
 ```
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* użytkownikowi o nazwie *azureuser* przy użyciu uwierzytelniania klucza publicznego SSH
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* użytkownikowi o nazwie *azureuser* przy użyciu uwierzytelniania klucza publicznego SSH
 
 ```azurecli
 az vm create \
@@ -127,7 +127,7 @@ Do utworzenia tego środowiska, potrzebujesz najnowszej [wiersza polecenia platf
 az group create --name myResourceGroup --location eastus
 ```
 
-Następnie Wdróż szablon bazy danych MongoDB z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create). Po wyświetleniu monitu wprowadź swoje własne unikatowe wartości *newStorageAccountName*, *dnsNameForPublicIP*oraz nazwę i hasło administratora:
+Następnie Wdróż szablon bazy danych MongoDB z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment). Po wyświetleniu monitu wprowadź swoje własne unikatowe wartości *newStorageAccountName*, *dnsNameForPublicIP*oraz nazwę i hasło administratora:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -178,7 +178,7 @@ Do utworzenia tego środowiska, potrzebujesz najnowszej [wiersza polecenia platf
 az group create --name myResourceGroup --location eastus
 ```
 
-Następnie Wdróż szablon bazy danych MongoDB z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create). Definiowanie własnych zasobów nazw i rozmiarach, w razie potrzeby, takie jak w przypadku *mongoAdminUsername*, *sizeOfDataDiskInGB*, i *configNodeVmSize*:
+Następnie Wdróż szablon bazy danych MongoDB z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment). Definiowanie własnych zasobów nazw i rozmiarach, w razie potrzeby, takie jak w przypadku *mongoAdminUsername*, *sizeOfDataDiskInGB*, i *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -200,7 +200,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-To wdrożenie może potrwać ponad godzinę można wdrożyć i skonfigurować wszystkie wystąpienia maszyn wirtualnych. `--no-wait` Flaga jest używana na końcu poprzedniego polecenia, aby powrócić do wiersza polecenia kontroli, po wdrożeniu szablonu zostało zaakceptowane przez platformę Azure. Można wyświetlić stan wdrożenia za pomocą [az grupy wdrożenia show](/cli/azure/group/deployment#az_group_deployment_show). Poniższy przykład wyświetla stan *myMongoDBCluster* wdrożenia w *myResourceGroup* grupy zasobów:
+To wdrożenie może potrwać ponad godzinę można wdrożyć i skonfigurować wszystkie wystąpienia maszyn wirtualnych. `--no-wait` Flaga jest używana na końcu poprzedniego polecenia, aby powrócić do wiersza polecenia kontroli, po wdrożeniu szablonu zostało zaakceptowane przez platformę Azure. Można wyświetlić stan wdrożenia za pomocą [az grupy wdrożenia show](/cli/azure/group/deployment). Poniższy przykład wyświetla stan *myMongoDBCluster* wdrożenia w *myResourceGroup* grupy zasobów:
 
 ```azurecli
 az group deployment show \

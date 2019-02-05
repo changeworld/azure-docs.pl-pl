@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 443bf5694515720b1b865c310e70ca9c45add262
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465592"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733138"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optymalizuj koszt aprowizowanej przepływności w usłudze Azure Cosmos DB
 
@@ -79,7 +79,7 @@ Niejawnie natywnych zestawów SDK (.NET/.NET Core, Java, Node.js i Python) catch
 
 Jeśli masz więcej niż jeden klient łącznie operacyjnego stale powyżej żądań zakończonych, domyślną liczbę ponownych prób aktualnie jest ustawiony do 9, może nie być wystarczające. W takim przypadku klient zgłasza `DocumentClientException` ze stanem kodu 429 do aplikacji. Domyślna liczba ponownych prób może zostać zmieniona przez ustawienie `RetryOptions` wystąpieniu ConnectionPolicy. Domyślnie DocumentClientException z kodem stanu 429 po skumulowany czas oczekiwania równej 30 sekund jest zwracany, jeśli żądanie będzie kontynuował pracę nad liczba żądań. Dzieje się tak nawet gdy aktualna liczba ponownych prób jest mniejsza niż liczba ponowień max, są to domyślne 9 lub wartości zdefiniowane przez użytkownika. 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryAtte) jest ustawiony na 3, więc w tym przypadku jeśli operację żądania ma prędkość ograniczoną przez przekraczające zarezerwowanej przepływności dla kolekcji, operację żądania ponawia próbę trzykrotnie przed zgłaszanie wyjątek do aplikacji.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) jest ustawiony na 60, w tym przypadku jeśli zbiorczą ponawiania czeka czas w kilka sekund na pierwsze żądanie przekracza 60 sekund, jest wyjątek.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) jest ustawiony na 3, więc w tym przypadku jeśli operację żądania ma prędkość ograniczoną przez przekraczające zarezerwowanej przepływności dla kolekcji, operację żądania ponawia próbę trzykrotnie przed zgłaszanie wyjątek do aplikacji.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) jest ustawiony na 60, w tym przypadku jeśli zbiorczą ponawiania czeka czas w kilka sekund na pierwsze żądanie przekracza 60 sekund, jest wyjątek.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 

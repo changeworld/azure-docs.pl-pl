@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6c6f2890cf9bd3c8cb412b3fa2f28d8ea3b6f72
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827588"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734321"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Dostosuj model marek przy użyciu interfejsu API indeksatora wideo
 
@@ -26,17 +26,17 @@ Za pomocą interfejsów API klipów wideo indeksator do tworzenia, użycia i Edy
 
 ## <a name="create-a-brand"></a>Tworzenie witryn zbiorczych
 
-Tworzy nowy, niestandardowy marki i dodaje go do niestandardowego modelu marki dla określonego konta. 
+Tworzy nowy, niestandardowy marki i dodaje go do niestandardowego modelu marki dla określonego konta.
 
 ### <a name="request-url"></a>Adres URL żądania
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand).
 
-### <a name="request-parameters"></a>Parametry żądania 
+### <a name="request-parameters"></a>Parametry żądania
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
@@ -95,7 +95,7 @@ Usuwa witryn zbiorczych z modelu marek niestandardowego dla określonego konta. 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?).
 
 ### <a name="request-parameters"></a>Parametry żądania
@@ -117,17 +117,17 @@ Brak zawartości zwracane, gdy produkt został pomyślnie usunięty.
 
 ## <a name="get-a-specific-brand"></a>Pobierz konkretną markę
 
-Dzięki temu można wyszukiwać szczegółowe informacje o marki w niestandardowy model marki dla określonego konta, przy użyciu identyfikatora marki. 
+Dzięki temu można wyszukiwać szczegółowe informacje o marki w niestandardowy model marki dla określonego konta, przy użyciu identyfikatora marki.
 
 ### <a name="request-url"></a>Adres URL żądania
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?).
 
-### <a name="request-parameters"></a>Parametry żądania 
+### <a name="request-parameters"></a>Parametry żądania
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|
@@ -167,14 +167,14 @@ Odpowiedź informacje na marki przeszukiwane (przy użyciu Identyfikatora marki)
 
 ## <a name="update-a-specific-brand"></a>Aktualizacja konkretną markę
 
-Dzięki temu można wyszukiwać szczegółowe informacje o marki w niestandardowy model marki dla określonego konta, przy użyciu identyfikatora marki. 
+Dzięki temu można wyszukiwać szczegółowe informacje o marki w niestandardowy model marki dla określonego konta, przy użyciu identyfikatora marki.
 
 ### <a name="request-url"></a>Adres URL żądania
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?).
 
 ### <a name="request-parameters"></a>Parametry żądania
@@ -237,7 +237,7 @@ Spowoduje to zwrócenie wszystkich produktów w niestandardowy model marki dla o
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?).
 
 ### <a name="request-parameters"></a>Parametry żądania
@@ -270,7 +270,7 @@ Odpowiedź zawiera listę wszystkich marek na Twoim koncie, a każdy z ich szcze
         "description": "This is an example",
         "tags": ["Tag1", "Tag2"]
     },
-        {
+    {
         "ReferenceUrl": null,
         "id": 97975,
         "name": "Example2",
@@ -297,7 +297,7 @@ Spowoduje to zwrócenie ustawienia modelu marek na określonym koncie. Ustawieni
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands).
 
 ### <a name="request-parameters"></a>Parametry żądania
@@ -330,14 +330,14 @@ Odpowiedź wskazuje, czy marek Bing są włączone następujące format w poniż
 
 Spowoduje to zaktualizowanie ustawień modelu marek na określonym koncie. Ustawienia modelu marek pokazują, czy włączono wykrywanie z bazy danych marek Bing, czy nie. Marek Bing nie są włączone, Video Indexer tylko wykryć marek z niestandardowego modelu marek określonego konta.
 
-### <a name="request-url"></a>Adres URL żądania: 
+### <a name="request-url"></a>Adres URL żądania:
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
- 
+
 [Zobacz wymagane parametry i przetestowania przy użyciu portalu dla deweloperów indeksatora wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?).
 
-### <a name="request-parameters"></a>Parametry żądania 
+### <a name="request-parameters"></a>Parametry żądania
 
 |**Nazwa**|**Typ**|**Wymagane**|**Opis**|
 |---|---|---|---|

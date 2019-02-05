@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 98a4d0ace2113c3936e13d357d0d8b641982d7c4
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567948"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694639"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data jako dane wejściowe do usługi Stream Analytics
 
@@ -26,7 +26,7 @@ Stream Analytics ma najwyższej jakości Integracja ze strumieniami danych na pl
 Te zasoby danych wejściowych może znajdować się w tej samej subskrypcji platformy Azure jako zadania usługi Stream Analytics lub w innej subskrypcji.
 
 ### <a name="compression"></a>Kompresja
-Stream Analytics obsługuje kompresję dla wszystkich źródeł danych wejściowych strumienia danych. Odwołanie do aktualnie obsługiwane typy to: Brak GZip i kompresji Deflate. Obsługa kompresji nie jest dostępna dla danych referencyjnych. Jeśli format wejściowy to dane Avro jest skompresowany, zapewniona jest obsługa sposób niewidoczny dla użytkownika. Nie musisz określić typ kompresji serializacji Avro. 
+Stream Analytics obsługuje kompresję dla wszystkich źródeł danych wejściowych strumienia danych. Kompresja obecnie obsługiwane typy to: Brak GZip i kompresji Deflate. Obsługa kompresji nie jest dostępna dla danych referencyjnych. Jeśli format wejściowy to dane Avro jest skompresowany, zapewniona jest obsługa sposób niewidoczny dla użytkownika. Nie musisz określić typ kompresji serializacji Avro. 
 
 ## <a name="create-edit-or-test-inputs"></a>Tworzenie, edytowanie i testowanie danych wejściowych
 Możesz użyć [witryny Azure portal](https://portal.azure.com) do [Utwórz nowe dane wejściowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) i Wyświetl lub Edytuj istniejące dane wejściowe zadania przesyłania strumieniowego. Można również Testuj połączenia wejściowe i [zapytania testowe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query) z przykładowymi danymi. Podczas pisywania zapytania spowoduje wyświetlenie listy danych wejściowych w klauzuli FROM. Można uzyskać listę dostępnych danych wejściowych z **zapytania** strony w portalu. Jeśli użytkownik chce używać wielu danych wejściowych, możesz to zrobić `JOIN` je lub zapisać wiele `SELECT` zapytania.

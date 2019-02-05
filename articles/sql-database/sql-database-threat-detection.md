@@ -11,21 +11,21 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 032146742c1a49fc8cdbda24d5c732add3cc5ea7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 64302a04050196b4299be45d910f7136f3ecaaa6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465354"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734270"
 ---
-# <a name="azure-sql-database-threat-detection-for-standalone-or-pooled-database"></a>Wykrywania zagrożeń bazy danych SQL platformy Azure na autonomicznych lub baza danych w puli
+# <a name="azure-sql-database-threat-detection-for-standalone-or-pooled-databases"></a>Wykrywania zagrożeń usługi Azure SQL Database dla autonomicznych lub bazy danych w puli
 
-Usługi Azure SQL [wykrywania zagrożeń](sql-database-threat-detection-overview.md) autonomiczne i bazy danych w puli wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych. Wykrywanie zagrożeń można zidentyfikować **wstrzyknięcie kodu SQL potencjalne**, **dostęp z nietypowej lokalizacji lub danych Centrum**, **dostępu z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwe aplikacji**, i **siłowe poświadczenia SQL** — Zobacz więcej szczegółów w [alerty związane z wykrywaniem zagrożeń](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts).
+[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) autonomiczne i bazy danych w puli wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych. Wykrywanie zagrożeń można zidentyfikować **wstrzyknięcie kodu SQL potencjalne**, **dostęp z nietypowej lokalizacji lub danych Centrum**, **dostępu z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwe aplikacji**, i **siłowe poświadczenia SQL** — Zobacz więcej szczegółów w [alerty związane z wykrywaniem zagrożeń](sql-database-threat-detection-overview.md#threat-detection-alerts).
 
 Możesz otrzymywać powiadomienia o wykrytych zagrożeniach, za pośrednictwem [wiadomości e-mail z powiadomieniami](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) lub [witryny Azure portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 
-[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) jest częścią [zaawansowane zabezpieczenia danych SQL](sql-advanced-threat-protection.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL. Pakiet zaawansowanych zabezpieczeń danych są naliczane opłaty 15$ / miesiąc na każdym serwerze logicznym z pierwszych 30 dni wolne od opłat.
+[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) jest częścią [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Wykrywanie zagrożeń można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL. Pakiet zabezpieczeń zaawansowanych danych są naliczane opłaty 15$ / miesiąc na każdym serwerze logicznym z pierwszych 30 dni wolne od opłat.
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Konfigurowanie wykrywania zagrożeń dla bazy danych w witrynie Azure portal
 
@@ -33,7 +33,7 @@ Możesz otrzymywać powiadomienia o wykrytych zagrożeniach, za pośrednictwem [
 2. Przejdź do strony konfiguracji serwera usługi Azure SQL Database, które chcesz chronić. W ustawieniach zabezpieczeń wybierz **zaawansowanych danych**.
 3. Na **zaawansowanych danych** strony konfiguracji:
 
-   - Włącz zaawansowane zabezpieczenia danych na serwerze.
+   - Włącz zabezpieczenia zaawansowanych danych na serwerze.
    - W **ustawień wykrywania zagrożeń**w **Wyślij alerty do** tekstu Podaj listę adresów e-mail, aby otrzymywać alerty zabezpieczeń po wykryciu nietypowych działań bazy danych.
   
    ![Konfigurowanie wykrywania zagrożeń](./media/sql-database-threat-detection/set_up_threat_detection.png)
@@ -44,9 +44,9 @@ Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [wykrywania zagrożeń](sql-database-threat-detection-overview.md).
-- Dowiedz się więcej o [wykrywania zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).  
-- Dowiedz się więcej o [danych zaawansowanych SQL](sql-advanced-threat-protection.md).
-- Dowiedz się więcej o [inspekcji usługi Azure SQL Database](sql-database-auditing.md)
-- Dowiedz się więcej o [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
-- Aby uzyskać więcej informacji na temat cen, zobacz [stronę cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/)  
+- Dowiedz się więcej o [wykrywanie zagrożeń](sql-database-threat-detection-overview.md).
+- Dowiedz się więcej o [wykrywanie zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).  
+- Dowiedz się więcej o [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md).
+- Dowiedz się więcej o [inspekcji](sql-database-auditing.md)
+- Dowiedz się więcej o [Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Aby uzyskać więcej informacji na temat cen, zobacz [stronę cennika usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/)  

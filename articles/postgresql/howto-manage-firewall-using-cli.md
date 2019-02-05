@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 05/4/2018
-ms.openlocfilehash: d450b8d154e920bfc9a82314d34f20a52af71dab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bde43a02b844d0dc0be8b6a270ac94e0b1422b69
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182000"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733284"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Tworzenie i zarządzanie nimi — Azure Database for postgresql w warstwie reguł zapory przy użyciu wiersza polecenia platformy Azure
 Reguły zapory na poziomie serwera umożliwiają administratorom zarządzanie dostępem do usługi Azure Database dla serwera PostgreSQL z określonego adresu IP lub zakres adresów IP. Przy użyciu wygodne poleceń interfejsu wiersza polecenia platformy Azure, możesz utworzyć, zaktualizować, Usuń listę i Pokaż reguły zapory, aby zarządzać serwerem. Omówienie usługi Azure Database dla PostgreSQL reguł zapory, zobacz [— Azure Database for reguły zapory serwera PostgreSQL](concepts-firewall-rules.md)
@@ -26,7 +26,7 @@ Do wykonania kroków w tym przewodniku, potrzebne są:
 [Az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule) polecenia są używane do konfigurowania reguł zapory.
 
 ## <a name="list-firewall-rules"></a>Lista reguł zapory 
-Aby wyświetlić listę istniejących reguł zapory serwera, uruchom [az postgres server reguły zapory na liście](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_list) polecenia.
+Aby wyświetlić listę istniejących reguł zapory serwera, uruchom [az postgres server reguły zapory na liście](/cli/azure/postgres/server/firewall-rule) polecenia.
 ```azurecli-interactive
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver
 ```
@@ -35,7 +35,7 @@ Dane wyjściowe wyświetla reguł zapory, formatowanie dowolnej domyślnie w for
 az postgres server firewall-rule list --resource-group myresourcegroup --server-name mydemoserver --output table
 ```
 ## <a name="create-firewall-rule"></a>Tworzenie reguły zapory
-Aby utworzyć nową regułę zapory na serwerze, uruchom [tworzenie az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_create) polecenia. 
+Aby utworzyć nową regułę zapory na serwerze, uruchom [tworzenie az postgres server-reguły zapory](/cli/azure/postgres/server/firewall-rule) polecenia. 
 
 ```
 To allow access to a singular IP address, provide the same address in the `--start-ip-address` and `--end-ip-address`, as in this example, replacing the IP shown here with your specific IP.
@@ -54,7 +54,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 W razie powodzenia dane wyjściowe polecenia Wyświetla szczegóły reguły zapory, które zostały utworzone domyślnie w formacie JSON. W przypadku awarii dane wyjściowe pokazują komunikat o błędzie zamiast tego.
 
 ## <a name="update-firewall-rule"></a>Aktualizuj reguły zapory 
-Aktualizuj istniejącą regułę zapory na serwerze za pomocą [az postgres server reguły zapory na aktualizację](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_update) polecenia. Podaj nazwę istniejącej reguły zapory jako dane wejściowe, a początkiem adresów IP i końcowy atrybutów adresu IP do aktualizacji.
+Aktualizuj istniejącą regułę zapory na serwerze za pomocą [az postgres server reguły zapory na aktualizację](/cli/azure/postgres/server/firewall-rule) polecenia. Podaj nazwę istniejącej reguły zapory jako dane wejściowe, a początkiem adresów IP i końcowy atrybutów adresu IP do aktualizacji.
 ```azurecli-interactive
 az postgres server firewall-rule update --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.0
 ```
@@ -63,7 +63,7 @@ W razie powodzenia dane wyjściowe polecenia Wyświetla szczegóły reguły zapo
 > Jeśli nie ma reguły zapory, tworzony przez polecenie aktualizacji.
 
 ## <a name="show-firewall-rule-details"></a>Pokaż szczegóły reguły zapory
-Można również wyświetlić szczegółowe informacje o istniejącą regułę zapory na poziomie serwera, uruchamiając [az postgres server reguły zapory show](/cli/azure/postgres/server/firewall-rule#az_postgres_server_firewall_rule_show) polecenia.
+Można również wyświetlić szczegółowe informacje o istniejącą regułę zapory na poziomie serwera, uruchamiając [az postgres server reguły zapory show](/cli/azure/postgres/server/firewall-rule) polecenia.
 ```azurecli-interactive
 az postgres server firewall-rule show --resource-group myresourcegroup --server-name mydemoserver --name AllowIpRange
 ```

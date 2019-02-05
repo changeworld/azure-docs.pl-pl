@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9f6e5dab5059086efc1e00c78b85296ff2b7a48c
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 490ac613adac968cc323c2d8351b59aece181b68
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139156"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734389"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Tworzenie bazy danych Oracle na Maszynie wirtualnej platformy Azure
 
@@ -34,7 +34,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Aby utworzyć maszynę wirtualną (VM), użyj [tworzenie az vm](/cli/azure/vm#az_vm_create) polecenia. 
+Aby utworzyć maszynę wirtualną (VM), użyj [tworzenie az vm](/cli/azure/vm) polecenia. 
 
 W poniższym przykładzie utworzono maszynę wirtualną o nazwie `myVM`. Tworzy również klucze SSH, jeśli ich jeszcze nie istnieją w domyślnej lokalizacji kluczy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.  
 
@@ -271,7 +271,7 @@ Baza danych programu Oracle domyślnie automatycznie nie zaczyna się po ponowny
 
 Ostatnim zadaniem jest skonfigurować niektóre zewnętrzne punkty końcowe. Aby skonfigurować sieciowej grupy zabezpieczeń platformy Azure chroni maszynę Wirtualną, najpierw zamknij sesję SSH na maszynie Wirtualnej (powinien mieć zostało uruchomione z protokołu SSH po ponownym uruchomieniu komputera w poprzednim kroku). 
 
-1.  Aby otworzyć punkt końcowy, który umożliwia zdalny dostęp do bazy danych Oracle, Utwórz regułę sieciowej grupy zabezpieczeń za pomocą [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) w następujący sposób: 
+1.  Aby otworzyć punkt końcowy, który umożliwia zdalny dostęp do bazy danych Oracle, Utwórz regułę sieciowej grupy zabezpieczeń za pomocą [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule) w następujący sposób: 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -283,7 +283,7 @@ Ostatnim zadaniem jest skonfigurować niektóre zewnętrzne punkty końcowe. Aby
         --destination-port-range 1521
     ```
 
-2.  Aby otworzyć punkt końcowy, który umożliwia zdalny dostęp Oracle EM Express, Utwórz regułę sieciowej grupy zabezpieczeń za pomocą [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) w następujący sposób:
+2.  Aby otworzyć punkt końcowy, który umożliwia zdalny dostęp Oracle EM Express, Utwórz regułę sieciowej grupy zabezpieczeń za pomocą [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule) w następujący sposób:
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -295,7 +295,7 @@ Ostatnim zadaniem jest skonfigurować niektóre zewnętrzne punkty końcowe. Aby
         --destination-port-range 5502
     ```
 
-3. Jeśli to konieczne, Uzyskaj publiczny adres IP swojej maszyny wirtualnej ponownie, używając [az sieci public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) w następujący sposób:
+3. Jeśli to konieczne, Uzyskaj publiczny adres IP swojej maszyny wirtualnej ponownie, używając [az sieci public-ip show](/cli/azure/network/public-ip) w następujący sposób:
 
     ```azurecli-interactive
     az network public-ip show \
@@ -317,7 +317,7 @@ Możesz zalogować się przy użyciu **SYS** konta, a następnie sprawdź **jako
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Po zakończeniu eksplorowania pierwszej bazy danych Oracle na platformie Azure i maszyna wirtualna nie jest już potrzebny, można użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) polecenia, aby usunąć grupę zasobów maszyny Wirtualnej i wszystkie pokrewne zasoby.
+Po zakończeniu eksplorowania pierwszej bazy danych Oracle na platformie Azure i maszyna wirtualna nie jest już potrzebny, można użyć [usunięcie grupy az](/cli/azure/group) polecenia, aby usunąć grupę zasobów maszyny Wirtualnej i wszystkie pokrewne zasoby.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

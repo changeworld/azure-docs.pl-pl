@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 9d0f814428a4d7bc57b4f0a01ff5adc658af1d91
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466989"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730904"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorowanie usług platformy Azure w narzędzia Grafana
 Teraz możesz monitorować usługi systemu Azure i aplikacji w [Grafana](https://grafana.com/) przy użyciu [wtyczki źródła danych usługi Azure Monitor](https://grafana.com/plugins/grafana-azure-monitor-datasource). Wtyczka zbiera dane dotyczące wydajności aplikacji zbieranych przez usługi Azure Monitor, łącznie z różnych dzienników i metryk. Następnie można wyświetlić te dane na pulpicie nawigacyjnym Grafana.
@@ -66,7 +66,7 @@ Po pomyślnym zalogowaniu powinien pojawić się, że dodatek źródła danych u
 
 3. Tworzenie jednostki usługi — Grafana używa nazwy głównej usługi Azure Active Directory, aby nawiązać połączenie z interfejsów API usługi Azure Monitor i zbieranie danych. Należy utworzyć lub użyć istniejącej nazwy głównej usługi do zarządzania dostępem do zasobów platformy Azure.
     * Zobacz [w instrukcjach](../../azure-resource-manager/resource-group-create-service-principal-portal.md) do utworzenia jednostki usługi. Skopiuj i Zapisz dzierżawy, identyfikator (identyfikator katalogu), identyfikator klienta (identyfikator aplikacji) oraz klucz tajny klienta (wartość klucza aplikacji).
-    * Zobacz [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) do przypisywania roli Czytelnik do aplikacji Azure Active Directory w ramach subskrypcji, grupy zasobów lub zasobu mają być monitorowane. 
+    * Zobacz [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) do przypisywania roli Czytelnik do aplikacji Azure Active Directory w ramach subskrypcji, grupy zasobów lub zasobu mają być monitorowane. 
     Interfejsu API programu Log Analytics wymaga [roli Czytelnik usługi Log Analytics](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), który obejmuje uprawnienia roli Czytelnik i dodaje do niego.
 
 4. Podaj szczegóły połączenia z interfejsami API, czy chcesz użyć. Możesz połączyć wszystkie lub niektóre z nich. 

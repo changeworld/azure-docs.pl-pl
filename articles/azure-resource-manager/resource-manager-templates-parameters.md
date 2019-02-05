@@ -4,21 +4,19 @@ description: W tym artykule opisano w sekcji parametrów szablonów usługi Azur
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: fd6fcff6ac556abe3b2d34c7e8b1b0290208f5b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: dc817302ab39d12ccd1d1a20d4dd72f94352c796
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722146"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695674"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Sekcji parametrów szablonów usługi Azure Resource Manager
 W sekcji parametrów szablonu należy określić wartości, które należy wprowadzić podczas wdrażania zasobów. Te wartości parametrów umożliwiają dostosowanie wdrożenia, podając wartości, które są dostosowane do określonego środowiska (na przykład deweloperskim, testowym i produkcyjnym). Nie musisz podać parametry w szablonie, ale bez parametrów szablonu będzie zawsze wdrażać te same zasoby z tej samej nazwy, lokalizacji i właściwości.
@@ -85,7 +83,7 @@ Poprzedni przykład wykazało, że tylko niektóre właściwości, które można
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| Nazwa parametru |Yes |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
+| parameterName |Yes |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
 | type |Yes |Typ wartości parametru. Dozwolone typy i wartości są **ciąg**, **securestring**, **int**, **bool**, **obiektu**, **secureObject**, i **tablicy**. |
 | defaultValue |Nie |Wartość domyślna parametru, jeśli podano żadnej wartości dla parametru. |
 | allowedValues |Nie |Tablica dozwolonych wartości dla parametru upewnić się, że podano odpowiednie wartości. |
@@ -93,7 +91,7 @@ Poprzedni przykład wykazało, że tylko niektóre właściwości, które można
 | maxValue |Nie |Maksymalna wartość dla parametrów typu int, ta wartość jest włącznie. |
 | Element minLength |Nie |Minimalna długość ciągu, bezpieczny ciąg i Tablica parametrów typu, ta wartość jest włącznie. |
 | Element maxLength |Nie |Maksymalna długość ciągu, bezpieczny ciąg i Tablica parametrów typu, ta wartość jest włącznie. |
-| description |Nie |Opis parametru, który jest widoczny dla użytkowników za pośrednictwem portalu. |
+| description |Nie |Opis parametru, który jest widoczny dla użytkowników za pośrednictwem portalu. Aby uzyskać więcej informacji, zobacz [komentarzy w szablonach](resource-group-authoring-templates.md#comments). |
 
 ## <a name="template-functions-with-parameters"></a>Funkcje szablonu z parametrami
 

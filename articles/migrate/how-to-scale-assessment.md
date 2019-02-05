@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6b74c81f44ee747cdd80a1106b669d89c8c7fbc3
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 89b18d71e864c198b7efafcff09777da21930b6c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297144"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733641"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Odnajdź i oceń duże środowisko programu VMware
 
@@ -22,7 +22,7 @@ Usługa Azure Migrate ma limit 1500 maszyn według projektu, w tym artykule opis
 - **VMware**: Maszyny wirtualne, które mają być poddane migracji, musi być zarządzany przez program vCenter Server w wersji 5.5, 6.0, 6.5 lub 6.7. Ponadto należy jeden host ESXi z wersją 5.5 lub nowszej, aby wdrożyć maszyny Wirtualnej modułu zbierającego.
 - **Konto vCenter**: Potrzebujesz konta tylko do odczytu do dostępu do serwera vCenter. To konto jest używane w usłudze Azure Migrate do odnajdowania lokalnych maszyn wirtualnych.
 - **Uprawnienia**: W programie vCenter Server, musisz mieć uprawnienia do tworzenia maszyny Wirtualnej, importując plik w formacie OVA.
-- **Ustawienia statystyk**: To wymaganie dotyczy tylko [modelu jednorazowe](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods) które jest obecnie przestarzałe. W przypadku modelu jednorazowe ustawieniach statystyk programu vCenter Server powinna być równa poziom 3 przed rozpoczęciem wdrażania. Poziom statystyki jest należy ustawić na 3 dla każdego dnia, tygodnia i interwału zbierania miesiąca. Jeśli poziom jest niższy niż 3 dla każdego interwału zbierania trzy, ocena będzie działać, ale nie będą zbierane dane wydajności dotyczące magazynu i sieci. Zalecenia dotyczące rozmiaru, następnie będzie zależeć od dane wydajności dotyczące procesora CPU i pamięci, a dane konfiguracji dla dysku i kart sieciowych.
+- **Ustawienia statystyk**: To wymaganie dotyczy tylko [modelu jednorazowe](https://docs.microsoft.com/azure/migrate/concepts-collector) które jest obecnie przestarzałe. W przypadku modelu jednorazowe ustawieniach statystyk programu vCenter Server powinna być równa poziom 3 przed rozpoczęciem wdrażania. Poziom statystyki jest należy ustawić na 3 dla każdego dnia, tygodnia i interwału zbierania miesiąca. Jeśli poziom jest niższy niż 3 dla każdego interwału zbierania trzy, ocena będzie działać, ale nie będą zbierane dane wydajności dotyczące magazynu i sieci. Zalecenia dotyczące rozmiaru, następnie będzie zależeć od dane wydajności dotyczące procesora CPU i pamięci, a dane konfiguracji dla dysku i kart sieciowych.
 
 > [!NOTE]
 > Urządzenie jednorazowego odnajdywania jest już przestarzałe, ponieważ ta metoda opierała się na ustawieniach statystyk programu vCenter Server w zakresie dostępności punktów danych wydajności i zbierała średnią liczników wydajności, co powodowało określanie zbyt małego rozmiaru maszyn wirtualnych na potrzeby migracji na platformę Azure.

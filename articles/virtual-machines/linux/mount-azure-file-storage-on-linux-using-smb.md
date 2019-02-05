@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.subservice: files
-ms.openlocfilehash: 77b7e6aef4d0d38fa3ea9f9b9a740ffc25aff7f9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0aa291c3334af35ec90648cfbcbb7de7015deb99
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660021"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731448"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File storage na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Utwórz nowe konto magazynu w grupie zasobów, które zostały utworzone za pomocą [Tworzenie konta magazynu az](/cli/azure/storage/account#create). W tym przykładzie tworzone jest konto magazynu o nazwie *mySTORAGEACCT<random number>*  i umieszczenie nazwy tego konta magazynu w zmiennej **STORAGEACCT**. Nazwy kont magazynu muszą być unikatowe, za pomocą `$RANDOM` dołącza numer-to-end, aby była unikatowa.
+Utwórz nowe konto magazynu w grupie zasobów, które zostały utworzone za pomocą [Tworzenie konta magazynu az](/cli/azure/storage/account). W tym przykładzie tworzone jest konto magazynu o nazwie *mySTORAGEACCT<random number>*  i umieszczenie nazwy tego konta magazynu w zmiennej **STORAGEACCT**. Nazwy kont magazynu muszą być unikatowe, za pomocą `$RANDOM` dołącza numer-to-end, aby była unikatowa.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -69,7 +69,7 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-file-share"></a>Tworzenie udziału plików
 
-Utwórz plik magazynu udziału za pomocą [Utwórz udział magazynu az](/cli/azure/storage/share#create). 
+Utwórz plik magazynu udziału za pomocą [Utwórz udział magazynu az](/cli/azure/storage/share). 
 
 Nazwy udziałów muszą być małe litery, cyfry i pojedyncze łączniki, ale nie może zaczynać się łącznikiem. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 

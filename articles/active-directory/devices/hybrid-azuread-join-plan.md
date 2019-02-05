@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ab268a27d8ce2f91c52dd5b5df0c22a564831e56
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 4c5742f8133b5915b7c838888f9887482ac5627e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663693"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695359"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -145,7 +145,7 @@ Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia kreator umożl
 - [Konfigurowanie hybrydowego dołączania do usługi Azure Active Directory dla domen zarządzanych](hybrid-azuread-join-managed-domains.md)
 
 
- Jeśli zainstalowanie wymaganej wersji programu Azure AD Connect nie jest dostępną opcją w, zobacz [jak ręcznie skonfigurować rejestrację urządzeń](../device-management-hybrid-azuread-joined-devices-setup.md). 
+ Jeśli zainstalowanie wymaganej wersji programu Azure AD Connect nie jest dostępną opcją w, zobacz [jak ręcznie skonfigurować rejestrację urządzeń](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual). 
 
 
 ## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Obsługa Identyfikatora alternatywnej nazwy logowania w dołączenie do hybrydowej usługi Azure AD

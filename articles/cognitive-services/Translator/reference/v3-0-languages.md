@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 7489c4298abe91755a2bf9edd8335061ed42d6d2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1f7590b07ccb0af867680ce86bd1c3b042f8f7dd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470930"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694673"
 ---
 # <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
@@ -274,6 +274,8 @@ Poniżej przedstawiono możliwe kody stanu HTTP, które zwraca żądanie.
     <td>Serwer jest tymczasowo niedostępny. Ponów żądanie. Jeśli błąd będzie się powtarzać, zgłoś go: Data i godzina awarii, identyfikator żądania z nagłówka odpowiedzi `X-RequestId`oraz identyfikator klienta z nagłówka żądania `X-ClientTraceId`.</td>
   </tr>
 </table> 
+
+Jeśli wystąpi błąd, żądanie zwróci błąd odpowiedź w formacie JSON. Kod błędu to łączenie liczb 6-cyfrowym, 3-cyfrowy kod stanu HTTP następuje 3-cyfrowy numer do dalszego kategoryzowanie błędu. Typowe kody błędów można znaleźć na [strona referencyjna interfejsu API tłumaczenia tekstu w wersji 3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Przykłady
 

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8fcf409db471a458fb3e2e743a19661c9f601328
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 18834357651e5fb72dd849a8d8e2e7687f0a8141
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663523"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730360"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Tworzenie sieci wirtualnej z wykorzystaniem połączenia sieci VPN typu lokacja-lokacja przy użyciu interfejsu wiersza polecenia
 
@@ -101,7 +101,7 @@ az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefi
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
-Użyj polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create), aby utworzyć podsieć bramy.
+Użyj polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet), aby utworzyć podsieć bramy.
 
 ```azurecli-interactive
 az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
@@ -128,7 +128,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 --name Site2 
 
 Brama sieci VPN musi mieć publiczny adres IP. Najpierw żąda się zasobu adresu IP, a następnie odwołuje do niego podczas tworzenia bramy sieci wirtualnej. Adres IP jest dynamicznie przypisywany do zasobu podczas tworzenia bramy sieci VPN. Brama sieci VPN aktualnie obsługuje tylko *dynamiczne* przypisywanie publicznych adresów IP. Nie można zażądać przypisania statycznego publicznego adresu IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
 
-Użyj polecenia [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create), aby zażądać dynamicznego publicznego adresu IP.
+Użyj polecenia [az network public-ip create](/cli/azure/network/public-ip), aby zażądać dynamicznego publicznego adresu IP.
 
 ```azurecli-interactive
 az network public-ip create --name VNet1GWIP --resource-group TestRG1 --allocation-method Dynamic
@@ -144,7 +144,7 @@ Wprowadź następujące wartości:
 * Dla pozycji *-vpn-type* określającej typ sieci VPN można wybrać opcję *RouteBased* (oparta na trasach; w dokumentacji używa się czasem określenia „brama dynamiczna”) lub *PolicyBased* (oparta na zasadach; w dokumentacji używa się czasem określenia „brama statyczna”). To ustawienie zależy od wymagań urządzenia, z którym nawiązujesz połączenie. Aby uzyskać więcej informacji o typach bram sieci VPN, zobacz [About VPN Gateway configuration settings](vpn-gateway-about-vpn-gateway-settings.md#vpntype) (Informacje o ustawieniach konfiguracji bramy sieci VPN).
 * Wybierz jednostkę SKU bramy, która ma być używana. Dla niektórych jednostek SKU istnieją ograniczenia konfiguracji. Aby uzyskać więcej informacji, zobacz [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy).
 
-Utwórz bramę sieci VPN za pomocą polecenia [az network vnet-gateway create](/cli/azure/network/vnet-gateway#az_network_vnet_gateway_create). Jeśli to polecenie zostanie uruchomione z parametrem „--no-wait”, nie będą widoczne żadne informacje zwrotne ani dane wyjściowe. Ten parametr umożliwia utworzenie bramy w tle. Utworzenie bramy trwa około 45 minut.
+Utwórz bramę sieci VPN za pomocą polecenia [az network vnet-gateway create](/cli/azure/network/vnet-gateway). Jeśli to polecenie zostanie uruchomione z parametrem „--no-wait”, nie będą widoczne żadne informacje zwrotne ani dane wyjściowe. Ten parametr umożliwia utworzenie bramy w tle. Utworzenie bramy trwa około 45 minut.
 
 ```azurecli-interactive
 az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWIP --resource-group TestRG1 --vnet TestVNet1 --gateway-type Vpn --vpn-type RouteBased --sku VpnGw1 --no-wait 
@@ -169,10 +169,10 @@ Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci
 
 Utwórz połączenie sieci VPN typu lokacja-lokacja między bramą sieci wirtualnej a lokalnym urządzeniem sieci VPN. Zwróć szczególną uwagę na wartość udostępnionego klucza, która musi być zgodna ze skonfigurowaną wartością klucza współużytkowanego dla Twojego urządzenia sieci VPN.
 
-Utwórz połączenie za pomocą polecenia [az network vpn-connection create](/cli/azure/network/vpn-connection#az_network_vpn_connection_create).
+Utwórz połączenie za pomocą polecenia [az network vpn-connection create](/cli/azure/network/vpn-connection).
 
 ```azurecli-interactive
-az network vpn-connection create --name VNet1toSite2 -resource-group TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 Site2
+az network vpn-connection create --name VNet1toSite2 --resource-group TestRG1 --vnet-gateway1 VNet1GW -l eastus --shared-key abc123 --local-gateway2 Site2
 ```
 
 Po chwili zostanie nawiązane połączenie.
@@ -195,7 +195,7 @@ Ta sekcja zawiera typowe polecenia, które są przydatne przy pracy z konfigurac
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) (Maszyny wirtualne).
+* Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/) (Maszyny wirtualne).
 * Informacje na temat protokołu BGP można znaleźć w artykułach [BGP Overview](vpn-gateway-bgp-overview.md) (Omówienie protokołu BGP) i [How to configure BGP](vpn-gateway-bgp-resource-manager-ps.md) (Konfigurowanie protokołu BGP).
 * Aby uzyskać informacje o wymuszonym tunelowaniu, zobacz [Informacje o wymuszonym tunelowaniu](vpn-gateway-forced-tunneling-rm.md).
 * Aby uzyskać informacje o połączeniach o wysokiej dostępności typu aktywne-aktywne, zobacz [Połączenia obejmujące wiele lokalizacji i połączenia między sieciami wirtualnymi o wysokiej dostępności](vpn-gateway-highlyavailable.md).

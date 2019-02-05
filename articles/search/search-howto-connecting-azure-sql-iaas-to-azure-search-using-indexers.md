@@ -6,20 +6,23 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f04c98e1337c2b65c9e0bc8401dd6045a84021e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2efc0b76c8556894119ed3f6dd216234414cf313
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312035"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732366"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurowanie połączenia z indeksator usługi Azure Search do programu SQL Server na Maszynie wirtualnej platformy Azure
 Jak wspomniano w [łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenia indeksatorów względem **programu SQL Server na maszynach wirtualnych Azure** (lub **maszyn wirtualnych platformy Azure SQL** w skrócie) jest obsługiwana przez usługę Azure Search ale istnieje kilka powiązanych z zabezpieczeniami wymagania wstępne dotyczące zajmie się w pierwszej kolejności. 
 
-**Czas trwania zadania:** Około 30 minut, zakładając, że można już zainstalować certyfikat na maszynie Wirtualnej.
+Połączenia z usługi Azure Search do programu SQL Server na maszynie Wirtualnej jest publicznego połączenia internetowego. Wszystkie środki ochrony, które zwykle należy wykonać w przypadku tych połączeń zgłosić się tutaj również:
+
++ Uzyskiwanie certyfikatu z [dostawcy urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority#Providers) dla w pełni kwalifikowana nazwa domeny maszyny wirtualnej platformy Azure.
++ Zainstaluj certyfikat na maszynie Wirtualnej, a następnie, Włącz i skonfiguruj połączeń szyfrowanych na maszynie Wirtualnej, korzystając z instrukcji w tym artykule.
 
 ## <a name="enable-encrypted-connections"></a>Włączanie połączeń szyfrowanych
 Usługa Azure Search wymaga szyfrowanego kanału dla wszystkich żądań indeksatora za pośrednictwem publicznego połączenia internetowego. W tej sekcji przedstawiono kroki, aby umożliwić.

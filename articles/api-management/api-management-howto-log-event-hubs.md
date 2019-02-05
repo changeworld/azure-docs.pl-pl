@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: a8cda04ccc39e53962ec8c4b57d24df539f38825
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 77ada606412506e3d3d23189d8a5267e1f58a8f7
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233902"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733080"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak rejestrowanie zdarzeń w usłudze Azure Event Hubs w usłudze Azure API Management
 Azure Event Hubs to wysoce skalowalna usługa transferu danych przychodzących, która może obsługiwać miliony zdarzeń na sekundę, dzięki czemu możliwe jest przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Usługa Event Hubs działa jako "drzwi wejściowe" dla potoku zdarzeń i zebrane dane do Centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analiz w czasie rzeczywistym lub adapterów przetwarzania wsadowego/magazynowania. Usługa Event Hubs oddziela wytwarzanie strumienia zdarzeń od użycia tych zdarzeń, dzięki czemu odbiorcy zdarzeń mogą uzyskiwać dostęp do zdarzeń zgodnie z własnym harmonogramem.
@@ -33,7 +33,7 @@ Aby uzyskać szczegółowe instrukcje dotyczące sposobu tworzenia Centrum zdarz
 ## <a name="create-an-api-management-logger"></a>Tworzenie usługi API Management rejestratora
 Teraz, gdy Centrum zdarzeń, następnym krokiem jest skonfigurowanie [rejestratora](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity) w usługi API Management service, aby zarejestrować zdarzenia do Centrum zdarzeń.
 
-Rejestratory usługi API Management są skonfigurowane przy użyciu [interfejsu API REST zarządzania interfejsu API](https://aka.ms/smapi). Przed rozpoczęciem korzystania z interfejsu API REST, po raz pierwszy, przejrzyj [wymagania wstępne](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#Prerequisites) i upewnij się, że masz [włączono dostęp do interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
+Rejestratory usługi API Management są skonfigurowane przy użyciu [interfejsu API REST zarządzania interfejsu API](https://aka.ms/smapi). Przed rozpoczęciem korzystania z interfejsu API REST, po raz pierwszy, przejrzyj [wymagania wstępne](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest) i upewnij się, że masz [włączono dostęp do interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest#EnableRESTAPI).
 
 Aby utworzyć rejestratora, należy żądanie HTTP PUT, korzystając z poniższego szablonu adresu URL:
 
@@ -44,7 +44,7 @@ Aby utworzyć rejestratora, należy żądanie HTTP PUT, korzystając z poniższe
 
 Dodaj następujące nagłówki żądania:
 
-* Content-Type: application/json
+* Content-Type : application/json
 * Autoryzacja: SharedAccessSignature 58...
   * Aby uzyskać instrukcje dotyczące generowania `SharedAccessSignature` zobacz [uwierzytelniania interfejsu API REST zarządzania interfejsu API Azure](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication).
 

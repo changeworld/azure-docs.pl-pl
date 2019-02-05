@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 61cfc458ed965fd4f1446ff8cfb5e9a6e244f246
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332391"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731720"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Zagadnienia dotyczące zabezpieczeń programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -54,7 +54,7 @@ Wybrane opcje w witrynie portal użyć reguły zabezpieczeń ruchu przychodzące
 
 Oprócz reguły sieciowej grupy zabezpieczeń umożliwiają ograniczanie ruchu sieciowego można również użyć Zapory Windows na maszynie wirtualnej.
 
-Jeśli używasz punktów końcowych przy użyciu klasycznego modelu wdrażania, Usuń wszystkie punkty końcowe na maszynie wirtualnej, jeśli nie należy ich używać. Aby uzyskać instrukcje na temat korzystania z listy ACL z punktami końcowymi, zobacz [listy ACL punktu końcowego zarządzania](../classic/setup-endpoints.md#manage-the-acl-on-an-endpoint). Nie jest to konieczne w przypadku maszyn wirtualnych, które używają Menedżera zasobów.
+Jeśli używasz punktów końcowych przy użyciu klasycznego modelu wdrażania, Usuń wszystkie punkty końcowe na maszynie wirtualnej, jeśli nie należy ich używać. Aby uzyskać instrukcje na temat korzystania z listy ACL z punktami końcowymi, zobacz [listy ACL punktu końcowego zarządzania](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). Nie jest to konieczne w przypadku maszyn wirtualnych, które używają Menedżera zasobów.
 
 Na koniec należy wziąć pod uwagę Włączanie połączeń szyfrowanych wystąpienia aparatu bazy danych programu SQL Server na maszynie wirtualnej platformy Azure. Wystąpienie programu SQL server należy skonfigurować przy użyciu certyfikatu z podpisem. Aby uzyskać więcej informacji, zobacz [Włącz zaszyfrowane połączenia z aparatem bazy danych](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) i [składnia ciągu połączenia](https://msdn.microsoft.com/library/ms254500.aspx).
 

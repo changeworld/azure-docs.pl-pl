@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 473cc855e2667f0e87d79b99786c879c17dc6363
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3eb5b0d84186eb06af6f99695fee9419f25a91db
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101161"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730955"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak wybrać uprawnienia dla danego interfejsu API 
 
 ## <a name="recommended-documents"></a>Zalecane dokumenty
 
 - Dowiedz się więcej na temat sposobu użycia aplikacji klienckich [żądań dotyczących uprawnień delegowanych i aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) uzyskują dostęp do zasobów.
-- Zobacz instrukcje krok po kroku dotyczące sposobu [skonfigurować żądań dotyczących uprawnień aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#configuring-a-client-application-to-access-web-apis)
+- Zobacz instrukcje krok po kroku dotyczące sposobu [skonfigurować żądań dotyczących uprawnień aplikacji klienckiej](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 - Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, jak udostępnianie zasobów aplikacji [zakresy](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) i [ról aplikacji](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) aplikacje klienckie, które pojawiają się, jak delegować i uprawnienia odpowiednio na platformie Azure Portal. 
 
 ## <a name="next-steps"></a>Kolejne kroki

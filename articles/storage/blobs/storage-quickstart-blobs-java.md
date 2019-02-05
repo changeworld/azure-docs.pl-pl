@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: be994c9b3c9ee4f3c6ccd5c01e762c05f740be09
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 18ba3d70951cd59f59b566c8bfff2403a32e4874
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469648"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730463"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu zestawu SDK języka Java w wersji 7
 
@@ -130,7 +130,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>Przekazywanie obiektów blob do kontenera
 
-Aby przekazać plik do blokowego obiektu blob, Pobierz odwołanie do obiektu blob w kontenerze docelowym. Po uzyskaniu odwołania do obiektu blob możesz przekazać do niego dane przy użyciu polecenia [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload#com_microsoft_azure_storage_blob__cloud_block_blob_upload_final_InputStream_final_long). Ta operacja tworzy obiekt blob, jeśli jeszcze nie istnieje, lub zastępuje obiekt blob, jeśli już istnieje.
+Aby przekazać plik do blokowego obiektu blob, Pobierz odwołanie do obiektu blob w kontenerze docelowym. Po uzyskaniu odwołania do obiektu blob możesz przekazać do niego dane przy użyciu polecenia [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload). Ta operacja tworzy obiekt blob, jeśli jeszcze nie istnieje, lub zastępuje obiekt blob, jeśli już istnieje.
 
 Przykładowy kod tworzy plik lokalny do zastosowania w przypadku przekazywania i pobierania, przechowujący plik do przekazania jako **source** i nazwę obiektu blob w elemencie **blob**. Następujący kod przykładowy przekazuje plik do kontenera o nazwie **quickstartcontainer**.
 
@@ -156,7 +156,7 @@ Blokowe obiekty blob mogą mieć formę dowolnego typu pliku tekstowego lub bina
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Możesz uzyskać listę plików w kontenerze za pomocą polecenia [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs#com_microsoft_azure_storage_blob__cloud_blob_container_listBlobs). Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając identyfikatory URI odnalezionych obiektów blob. Możesz skopiować identyfikator URI z okna polecenia i wkleić go do przeglądarki, aby wyświetlić plik.
+Możesz uzyskać listę plików w kontenerze za pomocą polecenia [CloudBlobContainer.ListBlobs](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobs). Poniższy kod umożliwia pobranie listy obiektów blob, a następnie przetwarza je w pętli, wyświetlając identyfikatory URI odnalezionych obiektów blob. Możesz skopiować identyfikator URI z okna polecenia i wkleić go do przeglądarki, aby wyświetlić plik.
 
 ```java
 //Listing contents of container
@@ -182,7 +182,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już obiektów blob, które zostały przekazane, możesz usunąć cały kontener, korzystając [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists#com_microsoft_azure_storage_blob__cloud_blob_container_deleteIfExists). Ta metoda spowoduje również usunięcie plików w kontenerze.
+Jeśli nie potrzebujesz już obiektów blob, które zostały przekazane, możesz usunąć cały kontener, korzystając [CloudBlobContainer.DeleteIfExists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.deleteifexists). Ta metoda spowoduje również usunięcie plików w kontenerze.
 
 ```java
 try {

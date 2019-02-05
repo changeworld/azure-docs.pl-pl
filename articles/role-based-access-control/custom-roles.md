@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 494826701431ee397b468c6ddfcef664c015861d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661484"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697137"
 ---
 # <a name="custom-roles-in-azure"></a>Role niestandardowe na platformie Azure
 
@@ -48,15 +48,9 @@ Poniżej przedstawiono, jak rolę niestandardową wygląda jak wyświetlane w fo
     "Microsoft.Insights/diagnosticSettings/*",
     "Microsoft.Support/*"
   ],
-  "NotActions": [
-
-  ],
-  "DataActions": [
-
-  ],
-  "NotDataActions": [
-
-  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
   "AssignableScopes": [
     "/subscriptions/{subscriptionId1}",
     "/subscriptions/{subscriptionId2}",
@@ -73,12 +67,12 @@ Podczas tworzenia roli niestandardowej pojawia się w witrynie Azure portal za p
 
 1. Określ uprawnienia, których potrzebujesz
 
-    Podczas tworzenia roli niestandardowej, musisz wiedzieć zasobu operacji dostawcy, które są dostępne do definiowania uprawnień. Aby wyświetlić listę operacji, można użyć [polecenia Get](/powershell/module/azurerm.resources/get-azurermprovideroperation) lub [lista operacji dostawcy az](/cli/azure/provider/operation#az-provider-operation-list) poleceń.
+    Podczas tworzenia roli niestandardowej, musisz wiedzieć zasobu operacji dostawcy, które są dostępne do definiowania uprawnień. Aby wyświetlić listę operacji, można użyć [Get AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) lub [lista operacji dostawcy az](/cli/azure/provider/operation#az-provider-operation-list) poleceń.
     Aby określić uprawnienia dla swojej roli niestandardowej, należy dodać operacje do `Actions` lub `NotActions` właściwości [definicji roli](role-definitions.md). Jeśli masz operacje na danych, należy dodać tych, które mają `DataActions` lub `NotDataActions` właściwości.
 
 2. Tworzenie roli niestandardowej
 
-    Aby utworzyć rolę niestandardową, można użyć programu Azure PowerShell lub wiersza polecenia platformy Azure. Zazwyczaj rozpoczynać istniejącą rolę wbudowaną, a następnie zmodyfikuj ją do własnych potrzeb. Następnie możesz użyć [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) lub [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create) polecenia, aby utworzyć rolę niestandardową. Aby utworzyć rolę niestandardową, konieczne jest posiadanie `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `AssignableScopes`, takich jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
+    Aby utworzyć rolę niestandardową, można użyć programu Azure PowerShell lub wiersza polecenia platformy Azure. Zazwyczaj rozpoczynać istniejącą rolę wbudowaną, a następnie zmodyfikuj ją do własnych potrzeb. Następnie możesz użyć [New AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) lub [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create) polecenia, aby utworzyć rolę niestandardową. Aby utworzyć rolę niestandardową, konieczne jest posiadanie `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `AssignableScopes`, takich jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
 
 3. Testowanie roli niestandardowej
 

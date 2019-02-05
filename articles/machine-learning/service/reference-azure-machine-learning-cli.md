@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9f605374e4f1c6f0724c9cff730ecbbfde8921a3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 65936348dcb40c6ceb71ebf735da8bb2120af654
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511264"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694520"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Na użytek rozszerzenie interfejsu wiersza polecenia usługi Azure Machine Learning
 
@@ -52,7 +52,7 @@ Interfejs wiersza polecenia nie jest zamiennikiem dla zestawu SDK usługi Azure 
 Aby zainstalować rozszerzenie interfejsu wiersza polecenia Machine Learning, użyj następującego polecenia:
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.6-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.10-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 Po wyświetleniu monitu wybierz `y` można zainstalować rozszerzenia.

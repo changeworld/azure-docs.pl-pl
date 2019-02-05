@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: a4e5440a9b8b6ce36d8472463b35201f39d3ac5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d2d1ca3e41de36d423de24fdbade8c17507642b5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192791"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734304"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Zmiany cennika dla usługi Azure Network Performance Monitor
 
@@ -27,7 +27,7 @@ Firma Microsoft ma wysłuchaliśmy opinii użytkowników i niedawno wprowadziła
 
 Rozwiązanie Network Performance Monitor obejmuje trzy składniki:
 * [Monitor wydajności](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [Monitor punktu końcowego usługi](https://docs.microsoft.com/azure/networking/network-monitoring-overview#service-endpoint-monitor)
+* [Monitor punktu końcowego usługi](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
 * [ExpressRoute Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 W poniższych sekcjach opisano zmiany cen dla składników programu NPM.

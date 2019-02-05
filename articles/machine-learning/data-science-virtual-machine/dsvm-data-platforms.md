@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 744c8d6488b9b0688126d305426f90647a89d4be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 27e0deae9c35ad8fa00659e3e3e505cace6e9014
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478087"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733437"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Obsługiwane na maszynie wirtualnej do nauki o danych platformy danych
 
@@ -105,5 +105,5 @@ Hadoop można zatrzymać związane z usług, kiedy nie potrzebują, uruchamiają
 |Linux   | /dsvm/tools/spark-X.X.X-bin-hadoopX.X|
 
 
-Biblioteki, aby uzyskać dostęp do danych z obiektów Blob platformy Azure lub usługi Azure Data Lake storage (ADLS) i za pomocą biblioteki MMLSpark uczenia maszynowego firmy Microsoft są wstępnie zainstalowane w plikach SPARK_HOME $/ JAR. Tych plikach JAR są ładowane automatycznie podczas uruchamiania aparatu Spark. Domyślnie platforma Spark korzysta z danych na dysku lokalnym. Aby wystąpienie platformy Spark na DSVM dostępu do danych przechowywanych w usłudze Azure blob lub Azure Data Lake Store należy utworzyć skonfigurować `core-site.xml` pliku na podstawie szablonu w $SPARK_HOME/conf/core-site.xml.template (tam, gdzie jest symboli zastępczych dla obiektów Blob i Azure Data Lake Store konfiguracje) przy użyciu odpowiednich poświadczeń do obiektów blob platformy Azure i usługi Azure Data Lake Storage. Możesz znaleźć bardziej szczegółowe instrukcje dotyczące tworzenia poświadczeń usługi Azure Data Lake store [tutaj](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application). Po wprowadzeniu poświadczeń dla obiektów blob platformy Azure lub usługi ADLS w pliku core-site.xml możesz odwoływać się do danych przechowywanych w tych źródłach z prefiksem identyfikatora URI wasb: / / lub systemu plików adl: / /. 
+Biblioteki, aby uzyskać dostęp do danych z obiektów Blob platformy Azure lub usługi Azure Data Lake storage (ADLS) i za pomocą biblioteki MMLSpark uczenia maszynowego firmy Microsoft są wstępnie zainstalowane w plikach SPARK_HOME $/ JAR. Tych plikach JAR są ładowane automatycznie podczas uruchamiania aparatu Spark. Domyślnie platforma Spark korzysta z danych na dysku lokalnym. Aby wystąpienie platformy Spark na DSVM dostępu do danych przechowywanych w usłudze Azure blob lub Azure Data Lake Store należy utworzyć skonfigurować `core-site.xml` pliku na podstawie szablonu w $SPARK_HOME/conf/core-site.xml.template (tam, gdzie jest symboli zastępczych dla obiektów Blob i Azure Data Lake Store konfiguracje) przy użyciu odpowiednich poświadczeń do obiektów blob platformy Azure i usługi Azure Data Lake Storage. Możesz znaleźć bardziej szczegółowe instrukcje dotyczące tworzenia poświadczeń usługi Azure Data Lake store [tutaj](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory). Po wprowadzeniu poświadczeń dla obiektów blob platformy Azure lub usługi ADLS w pliku core-site.xml możesz odwoływać się do danych przechowywanych w tych źródłach z prefiksem identyfikatora URI wasb: / / lub systemu plików adl: / /. 
 

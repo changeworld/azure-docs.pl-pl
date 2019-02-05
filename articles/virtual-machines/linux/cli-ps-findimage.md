@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5076c662390c9a28682930e8c5f06cfc79f7134b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 443020bd6ca024cb5a04b2a8be5b7cbe7122efac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169695"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734143"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Znajdowanie obrazów maszyny Wirtualnej systemu Linux w witrynie Azure Marketplace przy użyciu wiersza polecenia platformy Azure
 
@@ -35,7 +35,7 @@ Upewnij się, że jest zainstalowana najnowsza wersja [wiersza polecenia platfor
 
 ## <a name="list-popular-images"></a>Listę popularnych obrazów
 
-Uruchom [listy obrazów maszyn wirtualnych az](/cli/azure/vm/image#az_vm_image_list) polecenia bez `--all` opcję, aby wyświetlić listę popularnych obrazów maszyn wirtualnych w witrynie Azure Marketplace. Na przykład uruchom następujące polecenie, aby wyświetlić pamięci podręcznej listę popularnych obrazów w formacie tabeli:
+Uruchom [listy obrazów maszyn wirtualnych az](/cli/azure/vm/image) polecenia bez `--all` opcję, aby wyświetlić listę popularnych obrazów maszyn wirtualnych w witrynie Azure Marketplace. Na przykład uruchom następujące polecenie, aby wyświetlić pamięci podręcznej listę popularnych obrazów w formacie tabeli:
 
 ```azurecli
 az vm image list --output table
@@ -152,7 +152,7 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201901221        
 
 ## <a name="navigate-the-images"></a>Nawigować po obrazach
  
-Innym sposobem, aby znaleźć obraz w lokalizacji jest uruchomienie [obrazu maszyny wirtualnej az list wydawców](/cli/azure/vm/image#az_vm_image_list_publishers), [obrazu maszyny wirtualnej az list-offers](/cli/azure/vm/image), i [az vm list-jednostki SKU obrazów](/cli/azure/vm/image#az_vm_image_list_skus) poleceń w sekwencji. Za pomocą poniższych poleceń należy określić następujące wartości:
+Innym sposobem, aby znaleźć obraz w lokalizacji jest uruchomienie [obrazu maszyny wirtualnej az list wydawców](/cli/azure/vm/image), [obrazu maszyny wirtualnej az list-offers](/cli/azure/vm/image), i [az vm list-jednostki SKU obrazów](/cli/azure/vm/image) poleceń w sekwencji. Za pomocą poniższych poleceń należy określić następujące wartości:
 
 1. Wyświetl listę wydawców obrazów.
 2. Dla danego wydawcy wyświetl listę ofert.
@@ -278,7 +278,7 @@ UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201
 ...
 ```
 
-Teraz można dokładnie obrazu, którego chcesz użyć, biorąc pod uwagę na wartość URN. Przekazuje tę wartość za pomocą `--image` parametru podczas tworzenia maszyny Wirtualnej z [tworzenie az vm](/cli/azure/vm#az_vm_create) polecenia. Należy pamiętać, że można opcjonalnie zastąpić numer wersji w URN "najnowszej"wersji. Ta wersja jest zawsze najnowszą wersję obrazu. 
+Teraz można dokładnie obrazu, którego chcesz użyć, biorąc pod uwagę na wartość URN. Przekazuje tę wartość za pomocą `--image` parametru podczas tworzenia maszyny Wirtualnej z [tworzenie az vm](/cli/azure/vm) polecenia. Należy pamiętać, że można opcjonalnie zastąpić numer wersji w URN "najnowszej"wersji. Ta wersja jest zawsze najnowszą wersję obrazu. 
 
 Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Manager, parametry obrazu należy ustawić indywidualnie w `imageReference` właściwości. Zobacz [dokumentację szablonu](/azure/templates/microsoft.compute/virtualmachines).
 
@@ -337,7 +337,7 @@ Dane wyjściowe:
 
 ### <a name="accept-the-terms"></a>Zaakceptuj warunki
 
-Aby wyświetlić i zaakceptować postanowienia licencyjne, należy użyć [az vm obraz zaakceptować terms](/cli/azure/vm/image?#az_vm_image_accept_terms) polecenia. Jeśli akceptujesz jej warunki, możesz włączyć wdrożenia programowe w ramach subskrypcji. Musisz zaakceptować warunki raz na subskrypcję dla obrazu. Na przykład:
+Aby wyświetlić i zaakceptować postanowienia licencyjne, należy użyć [az vm obraz zaakceptować terms](/cli/azure/vm/image?) polecenia. Jeśli akceptujesz jej warunki, możesz włączyć wdrożenia programowe w ramach subskrypcji. Musisz zaakceptować warunki raz na subskrypcję dla obrazu. Na przykład:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest

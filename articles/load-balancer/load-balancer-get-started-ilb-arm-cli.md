@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: 746d0f51a876f24afc731486412eca0277b76d22
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: da8433e6c03aec5c5b2ff5d290065804816ac724
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659800"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732094"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia w celu równoważenia obciążenia maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -128,7 +128,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
 ### <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
 
-Utwórz zestaw dostępności za pomocą polecenia [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create).
+Utwórz zestaw dostępności za pomocą polecenia [az vm availabilityset create](/cli/azure/network/nic).
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -215,7 +215,7 @@ Aby przetestować moduł równoważenia obciążenia, utwórz maszynę wirtualn�
 
 Aby przetestować moduł równoważenia obciążenia, najpierw uzyskaj prywatny adres IP tego modułu. Następnie zaloguj się do maszyny wirtualnej myVMTest i wpisz ten prywatny adres IP na pasku adresu przeglądarki internetowej.
 
-Aby uzyskać prywatny adres IP modułu równoważenia obciążenia, użyj polecenia [az network lb show](/cli/azure/network/public-ip##az-network-lb-show). Skopiuj prywatny adres IP, a następnie wklej go na pasku adresu przeglądarki internetowej maszyny wirtualnej — *myVMTest*.
+Aby uzyskać prywatny adres IP modułu równoważenia obciążenia, użyj polecenia [az network lb show](/cli/azure/network/public-ip). Skopiuj prywatny adres IP, a następnie wklej go na pasku adresu przeglądarki internetowej maszyny wirtualnej — *myVMTest*.
 
 ```azurecli-interactive
   az network lb show \

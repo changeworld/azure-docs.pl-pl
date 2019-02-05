@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 2448d941db7f27a87fbb5e2267847165f84ede3d
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881702"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733148"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji na zestawach skalowania maszyn wirtualnych
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby tworzenia niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skalowania zestawu lub skryptów instalacji automatycznie są uruchamiane w istniejących wystąpieniach maszyn wirtualnych. Poznasz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego w zestawie skalowania.
@@ -97,7 +97,7 @@ Pakiet cloud-init działa również w różnych dystrybucjach. Przykładowo nie 
 
 Aby uzyskać więcej informacji, w tym przykładzie *cloud-init.txt* plików, zobacz [używać pakietu cloud-init do dostosowywania maszyn wirtualnych platformy Azure](../virtual-machines/linux/using-cloud-init.md).
 
-Aby utworzyć zestaw skalowania i przy użyciu pliku cloud-init, Dodaj `--custom-data` parametr [tworzenie az vmss](/cli/azure/vmss#az_vmss_create) polecenia i podaj nazwę pliku cloud-init. Poniższy przykład tworzy zestaw skalowania o nazwie *myScaleSet* w *myResourceGroup* i konfiguruje wystąpień maszyn wirtualnych przy użyciu pliku o nazwie *cloud-init.txt*. Wprowadź własne nazwy w następujący sposób:
+Aby utworzyć zestaw skalowania i przy użyciu pliku cloud-init, Dodaj `--custom-data` parametr [tworzenie az vmss](/cli/azure/vmss) polecenia i podaj nazwę pliku cloud-init. Poniższy przykład tworzy zestaw skalowania o nazwie *myScaleSet* w *myResourceGroup* i konfiguruje wystąpień maszyn wirtualnych przy użyciu pliku o nazwie *cloud-init.txt*. Wprowadź własne nazwy w następujący sposób:
 
 ```azurecli
 az vmss create \

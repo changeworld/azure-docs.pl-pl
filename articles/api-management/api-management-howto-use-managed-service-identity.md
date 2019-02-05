@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: b7208943a27bcd184100ae426721a2fe8f6e1c72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 54c4d58dc881ffc7c1f5ecc2242b64e5b61fa68f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970488"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730751"
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Użyj tożsamości usług zarządzanych platformy Azure w usłudze Azure API Management
 
@@ -38,7 +38,7 @@ Aby skonfigurować tożsamości usługi zarządzanej w portalu, możesz najpierw
 
 ### <a name="using-the-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Azure Resource Manager
 
-Można utworzyć wystąpienia usługi API Management przy użyciu tożsamości, umieszczając następujące właściwości w definicji zasobu: 
+Można utworzyć wystąpienia usługi API Management przy użyciu tożsamości, umieszczając następujące właściwości w definicji zasobu:
 
 ```json
 "identity" : {
@@ -46,7 +46,7 @@ Można utworzyć wystąpienia usługi API Management przy użyciu tożsamości, 
 }
 ```
 
-Oznacza to, Azure do tworzenia i zarządzania tożsamościami dla swojego wystąpienia usługi API Management. 
+Oznacza to, Azure do tworzenia i zarządzania tożsamościami dla swojego wystąpienia usługi API Management.
 
 Na przykład kompletny szablon usługi Azure Resource Manager może wyglądać następująco:
 
@@ -70,8 +70,8 @@ Na przykład kompletny szablon usługi Azure Resource Manager może wyglądać n
                 "publisherEmail": "admin@contoso.com",
                 "publisherName": "Contoso"
             },
-            "identity": { 
-                "type": "systemAssigned" 
+            "identity": {
+                "type": "systemAssigned"
             }
         }
     ]
@@ -81,14 +81,14 @@ Na przykład kompletny szablon usługi Azure Resource Manager może wyglądać n
 
 > [!NOTE]
 > Tożsamość usługi zarządzanej można obecnie uzyskać certyfikaty z usługi Azure Key Vault dla usługi API Management niestandardowych nazw domen. Wkrótce będą obsługiwane dalszych scenariuszach.
-> 
+>
 >
 
 
 ### <a name="obtain-a-certificate-from-azure-key-vault"></a>Uzyskaj certyfikat z usługi Azure Key Vault
 
 #### <a name="prerequisites"></a>Wymagania wstępne
-1. Key Vault zawierające certyfikat pfx musi być w tej samej subskrypcji platformy Azure i tej samej grupie zasobów co usługa API Management. Jest to wymagane szablonu usługi Azure Resource Manager. 
+1. Key Vault zawierające certyfikat pfx musi być w tej samej subskrypcji platformy Azure i tej samej grupie zasobów co usługa API Management. Jest to wymagane szablonu usługi Azure Resource Manager.
 2. Typ zawartości klucz tajny musi być *application/x-pkcs12*. Poniższy skrypt służy do przekazywania certyfikatu:
 
 ```powershell
@@ -106,7 +106,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 ```
 
 > [!Important]
-> Jeśli wersja obiektu certyfikatu nie zostanie podany, usługa API Management automatycznie uzyskać nowszą wersję certyfikatu przekazane do usługi Key Vault. 
+> Jeśli wersja obiektu certyfikatu nie zostanie podany, usługa API Management automatycznie uzyskać nowszą wersję certyfikatu przekazane do usługi Key Vault.
 
 Poniższy przykład przedstawia szablon usługi Azure Resource Manager, który zawiera następujące czynności:
 
@@ -180,7 +180,6 @@ Poniższy przykład przedstawia szablon usługi Azure Resource Manager, który z
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
         "tags": {
-            
         },
         "sku": {
             "name": "[parameters('sku')]",
@@ -197,10 +196,10 @@ Poniższy przykład przedstawia szablon usługi Azure Resource Manager, który z
     {
         "type": "Microsoft.KeyVault/vaults/accessPolicies",
         "name": "[concat(parameters('keyVaultName'), '/add')]",
-        "apiVersion": "2015-06-01",        
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
+        "apiVersion": "2015-06-01",
+        "dependsOn": [
+            "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
+        ],
         "properties": {
             "accessPolicies": [{
                 "tenantId": "[reference(variables('apimServiceIdentityResourceId'), '2015-08-31-PREVIEW').tenantId]",
@@ -211,28 +210,28 @@ Poniższy przykład przedstawia szablon usługi Azure Resource Manager, który z
             }]
         }
     },
-    { 
-      "apiVersion": "2017-05-10", 
-      "name": "apimWithKeyVault", 
-      "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
+    {
+        "apiVersion": "2017-05-10",
+        "name": "apimWithKeyVault",
+        "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
-      "properties": { 
-        "mode": "incremental", 
-        "templateLink": {
-          "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
-          "contentVersion": "1.0.0.0"
-        }, 
-        "parameters": {
-            "publisherEmail": { "value": "[parameters('publisherEmail')]"},
-            "publisherName": { "value": "[parameters('publisherName')]"},
-            "sku": { "value": "[parameters('sku')]"},
-            "skuCount": { "value": "[parameters('skuCount')]"},
-            "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
-            "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+        ],
+        "properties": {
+            "mode": "incremental",
+            "templateLink": {
+                "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
+                "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+                "publisherEmail": { "value": "[parameters('publisherEmail')]"},
+                "publisherName": { "value": "[parameters('publisherName')]"},
+                "sku": { "value": "[parameters('sku')]"},
+                "skuCount": { "value": "[parameters('skuCount')]"},
+                "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
+                "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+            }
         }
-      } 
     }]
 }
 ```
@@ -243,4 +242,3 @@ Dowiedz się więcej na temat tożsamości usługi zarządzanej platformy Azure:
 
 * [Tożsamość usługi zarządzanej dla zasobów platformy Azure](../active-directory/msi-overview.md)
 * [Szablony usługi Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates)
-

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: pullabhk
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 7d1a4e6b1093344d1217e8577a56f34cd3c1f52c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 4f18b10ee3f4148badc8e53a9660c9f5c998aef7
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289701"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734338"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Tworzenie usługi Azure magazyn usługi Recovery Services za pomocą interfejsu API REST
 
@@ -29,7 +29,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Utwórz żądanie
 
-Aby utworzyć *umieścić* żądania `{subscription-id}` parametr jest wymagany. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). Należy zdefiniować `{resourceGroupName}` i `{vaultName}` dla zasobów, wraz z `api-version` parametru. W tym artykule wykorzystano `api-version=2016-06-01`.
+Aby utworzyć *umieścić* żądania `{subscription-id}` parametr jest wymagany. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). Należy zdefiniować `{resourceGroupName}` i `{vaultName}` dla zasobów, wraz z `api-version` parametru. W tym artykule wykorzystano `api-version=2016-06-01`.
 
 Wymagane są następujące nagłówki:
 
@@ -46,8 +46,8 @@ Następujące typowe definicje są używane do tworzenia treści żądania:
 
 |Name (Nazwa)  |Wymagane  |Typ  |Opis  |
 |---------|---------|---------|---------|
-|Element eTag     |         |   Ciąg      |  Opcjonalny element eTag.       |
-|location     |  true       |Ciąg         |   Lokalizacja zasobu      |
+|eTag     |         |   String      |  Opcjonalny element eTag.       |
+|location     |  true       |String         |   Lokalizacja zasobu      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Właściwości magazynu       |
 |jednostka SKU     |         |  [Jednostka SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Określa unikatowy identyfikator systemowy dla poszczególnych zasobów platformy Azure     |
 |tags     |         | Obiekt        |     Tagi zasobów    |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 772070b73f1d2dcf83d15283f6be70ab4fef148b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e05e26c944dac2fb18508e73c6d35c6875d26548
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155670"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729442"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -299,8 +299,8 @@ subscriptionId | Subskrypcja platformy Azure dla maszyny wirtualnej | 2017-08-01
 tags | [Tagi](../../azure-resource-manager/resource-group-using-tags.md) dla maszyny wirtualnej  | 2017-08-01
 resourceGroupName | [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) dla maszyny wirtualnej | 2017-08-01
 placementGroupId | [Grupy umieszczania](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) zestawu skalowania maszyn wirtualnych | 2017-08-01
-Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) dla maszyny Wirtualnej w niej jest obraz z witryny Marketplace usługi Azure, zawiera nazwę, produktu i wydawcy | 2017-04-02
-publicKeys | Kolekcja kluczy publicznych [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey] przypisane do maszyny Wirtualnej i ścieżek | 2017-04-02
+Plan | [Planowanie](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) dla maszyny Wirtualnej w niej jest obraz z witryny Marketplace usługi Azure, zawiera nazwę, produktu i wydawcy | 2018-04-02
+publicKeys | Kolekcja kluczy publicznych [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey] przypisane do maszyny Wirtualnej i ścieżek | 2018-04-02
 vmScaleSetName | [Nazwa zestawu skalowania maszyny wirtualnej](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) zestawu skalowania maszyn wirtualnych | 2017-12-01
 strefa | [Strefa dostępności](../../availability-zones/az-overview.md) maszyny wirtualnej | 2017-12-01 
 ipv4/privateIpAddress | Lokalny adres IPv4 maszyny wirtualnej | 2017-04-02

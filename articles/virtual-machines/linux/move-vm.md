@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: c451377d6274c50f22e3b1d4cd32fb0f3edd9d9e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d2d3f36c9b4ee0557f9e060bec762877a94ea637
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220404"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734185"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Przenieś Maszynę wirtualną systemu Linux do innej subskrypcji lub grupy zasobów
 W tym artykule przedstawiono sposób przenoszenia maszyny wirtualnej systemu Linux (VM) między grupami zasobów lub subskrypcji. Przenoszenie maszyny Wirtualnej między subskrypcjami może być przydatna, jeśli maszyna wirtualna została utworzona w ramach subskrypcji osobistych i teraz chcesz przenieść je do subskrypcji Twojej firmy.
@@ -35,7 +35,7 @@ W tym artykule przedstawiono sposób przenoszenia maszyny wirtualnej systemu Lin
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Użyj wiersza polecenia platformy Azure, aby przenieść Maszynę wirtualną
 
 
-Przed można przenieść maszynę Wirtualną przy użyciu wiersza polecenia platformy Azure, należy się upewnić, że istnieją subskrypcje źródłowe i docelowe, w ramach tej samej dzierżawy. Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, użyj [Pokaż konta az](/cli/azure/account#az_account_show).
+Przed można przenieść maszynę Wirtualną przy użyciu wiersza polecenia platformy Azure, należy się upewnić, że istnieją subskrypcje źródłowe i docelowe, w ramach tej samej dzierżawy. Aby sprawdzić, czy obie subskrypcje mają ten sam identyfikator dzierżawy, użyj [Pokaż konta az](/cli/azure/account).
 
 ```azurecli-interactive
 az account show --subscription mySourceSubscription --query tenantId
@@ -43,13 +43,13 @@ az account show --subscription myDestinationSubscription --query tenantId
 ```
 Jeśli identyfikatorów dzierżawy subskrypcje źródłowe i docelowe nie są takie same, należy skontaktować się [obsługuje](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) przeniesienie zasobów do nowej dzierżawy.
 
-Aby pomyślnie przenieść Maszynę wirtualną, musisz przenieść maszynę Wirtualną i wszystkie jej zasoby pomocnicze. Użyj [az resource list](/cli/azure/resource#az_resource_list) polecenie, aby wyświetlić listę wszystkich zasobów w grupie zasobów i ich identyfikatorów. Pomaga przekazać dane wyjściowe tego polecenia do pliku, dzięki czemu możesz skopiować i wkleić identyfikatorów do nowszego polecenia.
+Aby pomyślnie przenieść Maszynę wirtualną, musisz przenieść maszynę Wirtualną i wszystkie jej zasoby pomocnicze. Użyj [az resource list](/cli/azure/resource) polecenie, aby wyświetlić listę wszystkich zasobów w grupie zasobów i ich identyfikatorów. Pomaga przekazać dane wyjściowe tego polecenia do pliku, dzięki czemu możesz skopiować i wkleić identyfikatorów do nowszego polecenia.
 
 ```azurecli-interactive
 az resource list --resource-group "mySourceResourceGroup" --query "[].{Id:id}" --output table
 ```
 
-Aby przenieść Maszynę wirtualną i jej zasobów do innej grupy zasobów, użyj [przenoszenia zasobów az](/cli/azure/resource#az_resource_move). Poniższy przykład pokazuje, jak przenieść maszyny Wirtualnej i najbardziej typowych zasobów, których potrzebuje. Użyj **— identyfikatory** parametru i przekaż listę rozdzielanych przecinkami (bez spacji) identyfikatorów zasobów, aby przenieść.
+Aby przenieść Maszynę wirtualną i jej zasobów do innej grupy zasobów, użyj [przenoszenia zasobów az](/cli/azure/resource). Poniższy przykład pokazuje, jak przenieść maszyny Wirtualnej i najbardziej typowych zasobów, których potrzebuje. Użyj **— identyfikatory** parametru i przekaż listę rozdzielanych przecinkami (bez spacji) identyfikatorów zasobów, aby przenieść.
 
 ```azurecli-interactive
 vm=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM

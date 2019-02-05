@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 9992d93f689663e859315dd55d248866d88b4a25
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 67cfa45d602b6bf9de27a0b559c58e28b79d1c84
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903604"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732825"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli"></a>Jak utworzyć i zarządzać nimi odczytu replik w usłudze Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure
 
@@ -67,7 +67,7 @@ az mysql server replica stop --name mydemoreplicaserver --resource-group myresou
 
 ## <a name="delete-a-replica-server"></a>Usuwanie serwera repliki
 
-Usuwanie serwera repliki odczytu może odbywać się przez uruchomienie **[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** polecenia.
+Usuwanie serwera repliki odczytu może odbywać się przez uruchomienie **[az mysql server delete](/cli/azure/mysql/server)** polecenia.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -78,7 +78,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserv
 > [!IMPORTANT]
 > Usuwanie serwera głównego zatrzymanie replikacji na wszystkich serwerach repliki i usuwa samego serwera głównego. Serwer funkcji replica stają się autonomicznymi serwerami, które obsługują teraz zarówno odczytu i zapisu.
 
-Aby usunąć serwer główny, możesz uruchomić **[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** polecenia.
+Aby usunąć serwer główny, możesz uruchomić **[az mysql server delete](/cli/azure/mysql/server)** polecenia.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver

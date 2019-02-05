@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462022"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728406"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Omówienie funkcji zabezpieczeń usługi Azure SQL Database
 
@@ -37,10 +37,10 @@ Reguły zapory IP udzielić dostępu do bazy danych na podstawie źródłowego a
 
 [Punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) rozszerzanie łączność z siecią wirtualną za pośrednictwem sieci szkieletowej platformy Azure i włączyć usługi Azure SQL Database zidentyfikować podsieci sieci wirtualnej, z którego pochodzi ruch. Aby zezwolić na ruch do usługi Azure SQL Database, należy użyć SQL [tagów usług](../virtual-network/security-overview.md) zezwalająca na ruch wychodzący za pomocą sieciowych grup zabezpieczeń.
 
-[Reguł sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) włączyć usługi Azure SQL Database, aby akceptowane były tylko łączności, które są wysyłane z wybranej podsieci w sieci wirtualnej.
+[Reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md) włączyć usługi Azure SQL Database, aby akceptowane były tylko łączności, które są wysyłane z wybranej podsieci w sieci wirtualnej.
 
 > [!NOTE]
-> Kontrola dostępu za pomocą reguł zapory jest *nie* dotyczą **wystąpienia zarządzanego Azure SQL Database**. Aby dowiedzieć się więcej o konfiguracji sieci potrzebne zobacz [połączenie do wystąpienia zarządzanego](sql-database-managed-instance-connect-app.md)
+> Kontrola dostępu za pomocą reguł zapory jest *nie* dotyczą **wystąpienia zarządzanego**. Aby dowiedzieć się więcej o konfiguracji sieci potrzebne zobacz [nawiązywania połączenia z wystąpienia zarządzanego](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>Zarządzanie dostępem
 
@@ -55,7 +55,7 @@ Uwierzytelnianie jest to proces potwierdzania użytkownika, który podaje. Usłu
 
     Uwierzytelnianie bazy danych SQL odwołuje się do uwierzytelniania użytkownika podczas łączenia się z [usługi Azure SQL Database](sql-database-technical-overview.md) przy użyciu nazwy użytkownika i hasła. Podczas tworzenia serwera bazy danych dla bazy danych można określić identyfikatora logowania "Server admin" przy użyciu nazwy użytkownika i hasła. Przy użyciu tych poświadczeń, "server admin" może uwierzytelniać się do dowolnej bazy danych na tym serwerze bazy danych jako właściciel bazy danych. Po tym dodatkowych kont logowania SQL i użytkownicy mogą być tworzone przez administratora serwera, które umożliwiają użytkownikom nawiązywanie połączeń za pomocą nazwy użytkownika i hasła.
 
-- **Usługa Azure Active Directory Authentication**:
+- **Uwierzytelnianie usługi Azure Active Directory**:
 
     Uwierzytelnianie usługi Azure Active Directory jest mechanizmem nawiązywania połączenia z usługą [usługi Azure SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) przy użyciu tożsamości w usłudze Azure Active Directory (Azure AD). Uwierzytelnianie usługi Azure AD umożliwia administratorom centralne zarządzanie tożsamościami i uprawnieniami użytkowników bazy danych wraz z innymi usługami firmy Microsoft w jednej centralnej lokalizacji. Obejmuje minimalizacji zapisywania haseł i umożliwia zasady dotyczące haseł scentralizowane obrotu.
 
@@ -64,7 +64,7 @@ Uwierzytelnianie jest to proces potwierdzania użytkownika, który podaje. Usłu
     Dodatkowe są dostępne opcje uwierzytelniania usługi Azure AD [uniwersalne uwierzytelnianie usługi Active Directory dla programu SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) połączeń w tym [uwierzytelnianie wieloskładnikowe](../active-directory/authentication/concept-mfa-howitworks.md) i [ Dostęp warunkowy](sql-database-conditional-access.md).
 
 > [!IMPORTANT]
-> Zarządzanie bazami danych i serwerów w ramach platformy Azure jest kontrolowane przez przypisania ról konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [kontroli dostępu opartej na rolach w witrynie Azure portal](../role-based-access-control/overview.md). Kontrola dostępu za pomocą reguł zapory jest *nie* dotyczą **wystąpienia zarządzanego Azure SQL Database**. Zobacz następujący artykuł w [połączenie do wystąpienia zarządzanego](sql-database-managed-instance-connect-app.md) uzyskać więcej informacji o konfiguracji sieci niezbędnej.
+> Zarządzanie bazami danych i serwerów w ramach platformy Azure jest kontrolowane przez przypisania ról konta użytkownika portalu. Aby uzyskać więcej informacji na temat tego artykułu, zobacz [kontroli dostępu opartej na rolach w witrynie Azure portal](../role-based-access-control/overview.md). Kontrola dostępu za pomocą reguł zapory jest *nie* dotyczą **wystąpienia zarządzanego**. Zobacz następujący artykuł w [nawiązywania połączenia z wystąpieniem zarządzanym](sql-database-managed-instance-connect-app.md) uzyskać więcej informacji o konfiguracji sieci niezbędnej.
 
 Autoryzacja odwołuje się do uprawnienia przypisane do użytkownika w ramach usługi Azure SQL Database i określa, jakie użytkownik może wykonywać. Uprawnienia są kontrolowane przez dodawanie kont użytkowników do [ról bazy danych](/sql/relational-databases/security/authentication-access/database-level-roles) definiują uprawnienia na poziomie bazy danych lub przyznawanie użytkownikowi niektórych [uprawnienia na poziomie obiektu](/sql/relational-databases/security/permissions-database-engine). Aby uzyskać więcej informacji, zobacz [identyfikatory logowania i użytkowników](sql-database-manage-logins.md)
 
@@ -86,11 +86,11 @@ Usługa SQL Database zabezpiecza dane klientów, zapewniając możliwości wykry
 
 ### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>Inspekcja SQL w usłudze Log Analytics i centrów zdarzeń
 
-SQL Database Auditing śledzi działania bazy danych i pomaga zachować zgodność ze standardami zabezpieczeń, rejestrując zdarzenia bazy danych inspekcji logowania na koncie magazynu platformy Azure należącej do klienta. Inspekcja umożliwia monitorowanie trwających działań bazy danych, a także analizowanie i badanie działań historycznych w celu zidentyfikowania potencjalnych zagrożeń, podejrzanych nadużyć i naruszeń zabezpieczeń. Aby uzyskać więcej informacji, zobacz wprowadzenie do [inspekcji usługi SQL Database](sql-database-auditing.md).  
+Inspekcji usługi SQL Database śledzi działania bazy danych i pomaga zachować zgodność ze standardami zabezpieczeń, rejestrując zdarzenia bazy danych inspekcji logowania na koncie magazynu platformy Azure należącej do klienta. Inspekcja umożliwia monitorowanie trwających działań bazy danych, a także analizowanie i badanie działań historycznych w celu zidentyfikowania potencjalnych zagrożeń, podejrzanych nadużyć i naruszeń zabezpieczeń. Aby uzyskać więcej informacji, zobacz wprowadzenie do [inspekcji usługi SQL Database](sql-database-auditing.md).  
 
-### <a name="sql-threat-detection"></a>Funkcja wykrywania zagrożeń SQL
+### <a name="threat-detection"></a>Wykrywanie zagrożeń
 
-Ochronę przed zagrożeniami wykrywania rozszerza możliwości inspekcji, analizując dzienniki inspekcji dla nietypowe zachowanie i potencjalnie szkodliwe próby dostępu lub wykorzystania baz danych. Alerty są tworzone dla podejrzanych działań lub wzorce nietypowego dostępu, takich jak ataki przez wstrzyknięcie kodu SQL, potencjalne przeniknięciu danych i siłowego złamania hasła. Alerty wykrywania zagrożeń są wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), gdzie znajdują się szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalsze badanie podane wraz z akcji ograniczenia zagrożenia. Koszt wykrywania zagrożeń to 15 USD/serwera/miesiąc. Jest to bezpłatne przez pierwsze 60 dni. Aby uzyskać więcej informacji, zobacz artykuł [Get started with SQL Database Threat Detection](sql-database-threat-detection.md) (Wprowadzenie do usługi SQL Database Threat Detection).
+Ochronę przed zagrożeniami wykrywania rozszerza możliwości inspekcji, analizując dzienniki inspekcji dla nietypowe zachowanie i potencjalnie szkodliwe próby dostępu lub wykorzystania baz danych. Alerty są tworzone dla podejrzanych działań lub wzorce nietypowego dostępu, takich jak ataki przez wstrzyknięcie kodu SQL, potencjalne przeniknięciu danych i siłowego złamania hasła. Alerty wykrywania zagrożeń są wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), gdzie znajdują się szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalsze badanie podane wraz z akcji ograniczenia zagrożenia. Koszt wykrywania zagrożeń to 15 USD/serwera/miesiąc. Jest to bezpłatne przez pierwsze 60 dni. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą SQL Database Threat detection](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -137,11 +137,11 @@ Baza danych SQL dynamiczne maskowanie danych ogranicza ujawnianie poufnych danyc
 
 ## <a name="security-management"></a>Zarządzanie zabezpieczeniami
 
-### <a name="sql-vulnerability-assessment"></a>Ocena luk w zabezpieczeniach SQL
+### <a name="vulnerability-assessment"></a>Ocena luk w zabezpieczeniach
 
-[Ocena luk w zabezpieczeniach SQL](sql-vulnerability-assessment.md) można łatwo skonfigurować usługę, która może odnajdywać, śledzenie i ułatwić korygowanie potencjalnych luk w zabezpieczeniach bazy danych z celem aktywnie poprawy ogólnego stanu zabezpieczeń bazy danych. Ocena luk w zabezpieczeniach (VA) jest częścią oferty SQL zaawansowanych danych zabezpieczeń (AD) to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Ocena luk w zabezpieczeniach można uzyskać dostępu do i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
+[Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) można łatwo skonfigurować usługę, która może odnajdywać, śledzenie i ułatwić korygowanie potencjalnych luk w zabezpieczeniach bazy danych z celem aktywnie poprawy ogólnego stanu zabezpieczeń bazy danych. Ocena luk w zabezpieczeniach (oceny luk w zabezpieczeniach) jest częścią oferty zabezpieczeń (ADS) zaawansowanych danych, która jest ujednoliconego pakietu dla zaawansowane funkcje zabezpieczeń programu SQL. Ocena luk w zabezpieczeniach można uzyskać dostępu do i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
 
-### <a name="data-discovery--classification"></a>Odnajdywanie i klasyfikacja danych
+### <a name="data-discovery--classification"></a>Odnajdowanie i klasyfikacja danych
 
 Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaawansowane możliwości wbudowane w usłudze Azure SQL Database na potrzeby odnajdywania, klasyfikowania, etykietowania i ochrony poufnych danych w bazach danych. Odnajdywanie i klasyfikacja priorytetowe poufne dane (biznesowe i finansowe, opieki zdrowotnej, dane osobowe, itp.), można odtwarzać zasadniczą rolę w Twojej organizacji stature ochrony informacji. Może służyć jako infrastruktury:
 
@@ -149,7 +149,7 @@ Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaaw
 - Kontrolowanie dostępu do i wzmacniania ochrony bezpieczeństwa, baz danych zawierających poufne dane.
 - Pomaga zaspokoić potrzeby dotyczące standardów ochrony prywatności danych i wymagania dotyczące zgodności z przepisami.
 
-Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą SQL DB odnajdywanie i klasyfikacja danych](sql-database-data-discovery-and-classification.md).
+Aby uzyskać więcej informacji, zobacz [wprowadzenie odnajdywanie i klasyfikacja danych](sql-database-data-discovery-and-classification.md).
 
 ### <a name="compliance"></a>Zgodność
 

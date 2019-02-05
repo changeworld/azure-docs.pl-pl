@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c6b4ed787fa9e8881990801bdee77550a1a0bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473633"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699180"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
@@ -241,7 +241,7 @@ Każde konto magazynu obsługuje maksymalnie 100 adresów IP sieci zasad, które
 
 Aby udzielić dostępu z sieci lokalnej do swojego konta magazynu przy użyciu reguły sieci IP, należy określić adresy IP używane przez sieć z Internetem. Aby uzyskać pomoc, skontaktuj się z administratorem sieci.
 
-Możesz użyć [ExpressRoute](/azure/expressroute/expressroute-introduction) Aby połączyć sieć z siecią platformy Azure. W tym miejscu każdy obwód skonfigurowaną dwa publiczne adresy IP. Znajduje się w temacie Microsoft Edge i użyj [publicznej komunikacji równorzędnej Azure](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) nawiązać połączenia z programem Microsoft Services takich jak Azure Storage. Aby umożliwić komunikację z usługą Azure Storage, tworzenie reguł sieci IP za publiczne adresy IP obwodów usługi. Aby znaleźć publiczne adresy IP obwodów usługi ExpressRoute [Otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) za pośrednictwem witryny Azure portal.
+Możesz użyć [ExpressRoute](/azure/expressroute/expressroute-introduction) Aby połączyć sieć z siecią platformy Azure. W tym miejscu każdy obwód skonfigurowaną dwa publiczne adresy IP. Znajduje się w temacie Microsoft Edge i użyj [publicznej komunikacji równorzędnej Azure](/azure/expressroute/expressroute-circuit-peerings) nawiązać połączenia z programem Microsoft Services takich jak Azure Storage. Aby umożliwić komunikację z usługą Azure Storage, tworzenie reguł sieci IP za publiczne adresy IP obwodów usługi. Aby znaleźć publiczne adresy IP obwodów usługi ExpressRoute [Otwórz bilet pomocy technicznej przy użyciu usługi ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) za pośrednictwem witryny Azure portal.
 
 ### <a name="managing-ip-network-rules"></a>Zarządzanie regułami sieci IP
 
@@ -355,7 +355,7 @@ Po włączeniu **dozwolonych zaufanych usług firmy Microsoft...**  wyjątku, na
 |Azure Event Grid|Microsoft.EventGrid|Włączanie publikowania zdarzeń usługi Blob Storage i umożliwiają usługi Event Grid opublikować w kolejkach usługi storage. Dowiedz się więcej o [zdarzenia usługi blob storage](/azure/event-grid/event-sources) i [publikowania w kolejkach](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archiwizowanie danych za pomocą usługi Event Hubs Capture. [Dowiedz się więcej](/azure/event-hubs/event-hubs-capture-overview).|
 |Sieci systemu Azure|Microsoft.Networking|Store i analizowanie dzienników ruchu sieciowego. [Dowiedz się więcej](/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure Monitor|Microsoft.Insights|Umożliwia zapisywanie danych do konta magazynu zabezpieczone monitorowania [więcej](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|Azure Monitor|Microsoft.Insights|Umożliwia zapisywanie danych do konta magazynu zabezpieczone monitorowania [więcej](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security).|
 |Azure SQL Data Warehouse|Microsoft.Sql|Umożliwia importowanie i eksportowanie scenariuszy przy użyciu technologii PolyBase. [Dowiedz się więcej](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).|
 
 ### <a name="storage-analytics-data-access"></a>Dostęp do danych analizy magazynu

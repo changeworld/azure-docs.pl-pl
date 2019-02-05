@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 9fc6bd6e7196d442f46e364a9d5816c5056f34f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f0f4d160b9e9d5e556813115aa39c60ea8f4edb2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184380"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733335"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować hasło logowania jednokrotnego dla aplikacji spoza galerii
 
@@ -23,7 +23,7 @@ Oprócz opcji można znaleźć w galerii aplikacji usługi Azure AD, masz także
 
 Po dodaniu aplikacji spoza galerii, można skonfigurować pojedynczej metody logowania jednokrotnego ta aplikacja używa, wybierając **logowania jednokrotnego** element nawigacji w aplikacji dla przedsiębiorstw w [witrynyAzureportal](https://portal.azure.com/).
 
-Jedną z dostępnych metod logowania jednokrotnego jest [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) opcji. Za pomocą **dodawania aplikacji spoza galerii** środowiska, można zintegrować z dowolnej aplikacji, która renderuje nazwa_użytkownika oparty na języku HTML oraz hasło wprowadź pola, nawet jeśli nie znajduje się w naszym zestawie wstępnie zintegrowanych aplikacji.
+Jedną z dostępnych metod logowania jednokrotnego jest [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) opcji. Za pomocą **dodawania aplikacji spoza galerii** środowiska, można zintegrować z dowolnej aplikacji, która renderuje nazwa_użytkownika oparty na języku HTML oraz hasło wprowadź pola, nawet jeśli nie znajduje się w naszym zestawie wstępnie zintegrowanych aplikacji.
 
 To działania jest stroną oskrobaniu technologia, która jest częścią rozszerzenie panelu dostępu, które pozwala nam na automatyczne wykrywanie pól danych wejściowych użytkownika i hasło, przechowuj je bezpiecznie wystąpienia określonej aplikacji. Następnie bezpiecznie odtworzenia nazwy użytkowników i hasłami do tych pól, gdy użytkownik przechodzi do tej aplikacji na panelu dostępu do aplikacji.
 
@@ -47,7 +47,7 @@ Jest doskonałym sposobem na rozpoczęcie pracy, szybkie integrowanie każdego r
 
 -   Zezwalaj na **administratora** do określenia udostępnionego nazwy użytkownika i hasło używane przez grupę osób przy użyciu poświadczeń aktualizacji funkcji podczas [przypisanie grupy do aplikacji](#assign-an-application-to-a-group-directly)
 
-W poniższej sekcji opisano, jak umożliwić [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) żadnych aplikacji, które możesz dodać za pomocą **dodawania aplikacji spoza galerii** środowiska.
+W poniższej sekcji opisano, jak umożliwić [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) żadnych aplikacji, które możesz dodać za pomocą **dodawania aplikacji spoza galerii** środowiska.
 
 ## <a name="overview-of-steps-required"></a>Omówienie kroków wymaganych
 

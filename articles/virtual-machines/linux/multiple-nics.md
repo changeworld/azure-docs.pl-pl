@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 02b70909e701dbeffaec0aa6bdc39e449bdfad08
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: b77ed879375cff8d45f7d532283647e70252bdab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660361"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732842"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu
 
@@ -27,7 +27,7 @@ ms.locfileid: "55660361"
 Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi przy użyciu wiersza polecenia platformy Azure.
 
 ## <a name="create-supporting-resources"></a>Utwórz zasoby pomocnicze
-Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index#az_login).
+Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione *myResourceGroup*, *mystorageaccount*, i *myVM*.
 
@@ -48,7 +48,7 @@ az network vnet create \
     --subnet-prefix 10.0.1.0/24
 ```
 
-Utwórz podsieć dla ruchu zaplecza przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). Poniższy przykład tworzy podsieć o nazwie *mySubnetBackEnd*:
+Utwórz podsieć dla ruchu zaplecza przy użyciu [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet). Poniższy przykład tworzy podsieć o nazwie *mySubnetBackEnd*:
 
 ```azurecli
 az network vnet subnet create \
@@ -116,14 +116,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-Aby dodać kartę Sieciową do istniejącej maszyny Wirtualnej, najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM*:
+Aby dodać kartę Sieciową do istniejącej maszyny Wirtualnej, najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM*:
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Dodawanie karty Sieciowej z [az vm nic dodawać](/cli/azure/vm/nic#az_vm_nic_add). W poniższym przykładzie dodano *myNic3* do *myVM*:
+Dodawanie karty Sieciowej z [az vm nic dodawać](/cli/azure/vm/nic). W poniższym przykładzie dodano *myNic3* do *myVM*:
 
 ```azurecli
 az vm nic add \
@@ -141,13 +141,13 @@ az vm start --resource-group myResourceGroup --name myVM
 Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
 
 ## <a name="remove-a-nic-from-a-vm"></a>Usuń kartę Sieciową z maszyny Wirtualnej
-Aby usunąć kartę Sieciową z istniejącej maszyny Wirtualnej, najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM*:
+Aby usunąć kartę Sieciową z istniejącej maszyny Wirtualnej, najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM*:
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Usuń z kartą Sieciową o [Usuń az vm nic](/cli/azure/vm/nic#az_vm_nic_remove). Poniższy przykład usuwa *myNic3* z *myVM*:
+Usuń z kartą Sieciową o [Usuń az vm nic](/cli/azure/vm/nic). Poniższy przykład usuwa *myNic3* z *myVM*:
 
 ```azurecli
 az vm nic remove \

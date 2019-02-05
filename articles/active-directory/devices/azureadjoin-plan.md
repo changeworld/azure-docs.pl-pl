@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bb8ab22db18bbe170a20d253e601eb78855aafa7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 88a1405a55432b6f5932f2675260540a8aea46aa
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102740"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697703"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania do usługi Azure AD
 
@@ -126,6 +126,8 @@ Funkcja Azure AD join:
 - Dotyczy tylko urządzeń z systemem Windows 10. 
 
 - Nie ma zastosowania do poprzednich wersji systemu Windows lub innych systemów operacyjnych. Jeśli masz urządzenia z systemem Windows 7/8.1, należy uaktualnić do systemu Windows 10 do wdrożenia usługi Azure AD join.
+
+- Nie jest obsługiwana na urządzeniach przy użyciu modułu TPM w trybie FIPS.
  
 **Zalecenie:** Zawsze używaj najnowszej wersji systemu Windows 10, aby korzystać ze zaktualizowanych funkcji.
 

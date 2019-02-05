@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 0b3b3cd1c9c0410c4cc0ffda8887b40123c1ac7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718514"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700982"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -73,7 +73,7 @@ W poniższej sekcji przedstawiono elementy wdrożenia i implementacji.
 
 #### <a name="identity-and-authentication"></a>Uwierzytelnianie i tożsamość
 
-Ten plan zapewnia, że dostęp do zasobów są chronione przy użyciu usług zarządzania katalogami i tożsamościami. Ta architektura umożliwia pełne wykorzystanie [tożsamość jako zabezpieczeń obwodowych](https://docs.microsoft.com/azure/security/security-paas-deployments#identity-as-the-primary-security-perimeter). 
+Ten plan zapewnia, że dostęp do zasobów są chronione przy użyciu usług zarządzania katalogami i tożsamościami. Ta architektura umożliwia pełne wykorzystanie [tożsamość jako zabezpieczeń obwodowych](https://docs.microsoft.com/azure/security/security-paas-deployments). 
 
 Następujące technologie zapewniają tożsamość możliwości zarządzania w środowisku platformy Azure:
 
@@ -240,7 +240,7 @@ Trzy metody zostały przewidziane w wdrożenia; Proste "express" [2 interfejsu w
 
 [Usługa Azure API Management](https://azure.microsoft.com/services/api-management/) może służyć przed interfejsu API usługi App Service w celu zapewnienia dodatkowych warstw zabezpieczeń, ograniczania i kontroli w celu udostępnienia serwera proxy i ochrona interfejsów API.
 
-### <a name="azure-b2c"></a>Usługa Azure B2C
+### <a name="azure-b2c"></a>Azure B2C
 
 [Usługa Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) mogą być wdrożone jako formant, aby umożliwić użytkownikom rejestrowanie, utworzenie tożsamości i włączyć autoryzacji i kontroli aplikacji sieci web publicznego dostępu.
 

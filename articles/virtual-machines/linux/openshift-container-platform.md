@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 21eebb6c27a83b939f321d38026da7d4c39b7071
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 82dd448bb408e7c4bb3576feee17aef66ee6d01d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085890"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730717"
 ---
 # <a name="deploy-openshift-container-platform-in-azure"></a>Wdrażanie rozwiązania OpenShift Container Platform na platformie Azure
 
@@ -264,15 +264,15 @@ Najprostszym sposobem wdrażania OpenShift Container Platform na platformie Azur
 
 Jest to najprostsza opcja, ale również ma ona ograniczone możliwości dostosowywania. Oferty w portalu Marketplace obejmuje następujące opcje konfiguracji:
 
-- **Węzły główne**: wzorzec węzłów trzy (3) z możliwością konfiguracji typu wystąpienia.
-- **Węzły infra**: trzy (3) Infra węzłów z typem wystąpienia można konfigurować.
-- **Węzły**: liczba węzłów jest konfigurowany (zakresu od 2 do 9) oraz typu wystąpienia.
-- **Typ dysku**: dyski Managed Disks są używane.
+- **Węzły główne**: Wzorzec węzłów trzech (3) z możliwością konfiguracji wystąpieniem typu.
+- **Infra węzłów**: Trzy (3) Infra węzłów za pomocą konfigurowalnych wystąpienie typu.
+- **Węzły**: Liczba węzłów jest konfigurowany (zakresu od 2 do 9) oraz typu wystąpienia.
+- **Typ dysku**: Dyski zarządzane są używane.
 - **Sieć**: Obsługa nowej lub istniejącej sieci, a także niestandardowy zakres CIDR.
-- **CNS**: CNS można ją włączyć.
-- **Metryki**: metryki można ją włączyć.
-- **Rejestrowanie**: Rejestrowanie można włączyć.
-- **Dostawca usług w chmurze Azure**: można ją włączyć.
+- **CNS**: Można włączyć CNS.
+- **Metryki**: Można włączyć metryki.
+- **Rejestrowanie**: Można włączyć rejestrowanie.
+- **Dostawca usług w chmurze Azure**: Można ją włączyć.
 
 ## <a name="connect-to-the-openshift-cluster"></a>Nawiąż połączenie z klastrem platformy OpenShift
 
@@ -284,7 +284,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Użyj [usunięcie grupy az](/cli/azure/group#az_group_delete) polecenia, aby usunąć grupę zasobów, klaster OpenShift i wszystkie pokrewne zasoby, gdy nie są już potrzebne.
+Użyj [usunięcie grupy az](/cli/azure/group) polecenia, aby usunąć grupę zasobów, klaster OpenShift i wszystkie pokrewne zasoby, gdy nie są już potrzebne.
 
 ```azurecli 
 az group delete --name openshiftrg

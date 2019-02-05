@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: f2fe9efd7d75c95d6cd13cb65e196723c9953716
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658831"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729323"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Usługa Azure App Service w systemie Linux — często zadawane pytania
 
@@ -132,7 +132,7 @@ Obecnie obsługujemy udostępnianie więcej niż jeden port.
 
 **Czy mogę przenieść mój własny magazyn**
 
-Obecnie obsługujemy przeniesienie własny magazyn.
+Tak, [model dostarczania własnego magazynu](https://docs.microsoft.com/azure/app-service/containers/how-to-serve-content-from-azure-storage) jest w wersji zapoznawczej.
 
 **Dlaczego nie można przeglądać Moje niestandardowego kontenera pliku systemu lub uruchamianie procesów z witryny SCM?**
 

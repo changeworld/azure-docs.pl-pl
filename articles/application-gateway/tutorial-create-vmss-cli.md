@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 4c9dbdd499d747a67187ae59d0ebbca762dd27fa
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 792d6da36851f74429d97a9779aff1727e8f64db
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850471"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700047"
 ---
 # <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az-net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -68,7 +68,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Tworzenie bramy aplikacji
 
-Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myPublicIPAddress*. 
+Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -128,7 +128,7 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>Testowanie bramy aplikacji
 
-Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
+Aby uzyskać publiczny adres IP bramy aplikacji, możesz użyć polecenia [az network public-ip show](/cli/azure/network/public-ip). Skopiuj publiczny adres IP, a następnie wklej go na pasku adresu przeglądarki.
 
 ```azurepowershell-interactive
 az network public-ip show \

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 875240b779f05c1b13f71bf2133b9abfaa209239
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f8861b581c0e02bb78d80817cb2242a38e8aac40
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223361"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733471"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Pobieranie usług Cognitive Services Speech Devices SDK
 
@@ -46,7 +46,7 @@ Subject: You're invited to the Microsoft organization
 
 Wykonaj poniższe kroki, aby sprzężenia Azure AD za pomocą adresu e-mail, podany podczas rejestracji. Ten proces daje dostęp do zestawu Speech Devices SDK [witryny pobierania plików](https://shares.datatransfer.microsoft.com/).
 
-1. W wiadomości e-mail, otrzymasz, wybierz **wprowadzenie**. Jeśli Twoja organizacja jest już klientów usługi Office 365, zostanie wyświetlony monit o Zaloguj się i możesz przejść od razu do kroku 8.
+1. W wiadomości e-mail, otrzymasz, wybierz **wprowadzenie**. Jeśli Twoja organizacja jest już klientów usługi Office 365, zostanie wyświetlony monit o Zaloguj się i możesz przejść od razu do kroku 7.
 
 2. W oknie przeglądarki, zaznacz **dalej**.
 

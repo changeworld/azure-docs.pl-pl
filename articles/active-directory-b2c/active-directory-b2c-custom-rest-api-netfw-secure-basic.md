@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 061987105eac976e40a003a8108921ed0008630d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71a5ca62dc5d21e30a4944f8be57a77040f4f204
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169165"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733692"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpieczanie usługi RESTful za pomocą podstawowego uwierzytelniania protokołu HTTP
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-W [powiązanym artykule usługi Azure AD B2C](active-directory-b2c-custom-rest-api-netfw.md), tworzenia usługi RESTful (interfejsu API sieci web), zintegrowane z usługą Azure Active Directory B2C w podróży użytkownika (usługa Azure AD B2C) bez uwierzytelniania. 
+W [powiązanym artykule usługi Azure AD B2C](active-directory-b2c-custom-rest-api-netfw.md), tworzenia usługi RESTful (interfejsu API sieci web), zintegrowane z usługą Azure Active Directory B2C w podróży użytkownika (usługa Azure AD B2C) bez uwierzytelniania.
 
-W tym artykule należy dodać podstawowe uwierzytelnianie HTTP usługi RESTful, tak, aby tylko użytkowników zweryfikowanych, w tym B2C, mogą uzyskiwać dostęp do interfejsu API. W zasadach niestandardowych, za pomocą podstawowego uwierzytelniania protokołu HTTP, Ustaw poświadczenia użytkownika (identyfikator aplikacji i klucz tajny aplikacji). 
+W tym artykule należy dodać podstawowe uwierzytelnianie HTTP usługi RESTful, tak, aby tylko użytkowników zweryfikowanych, w tym B2C, mogą uzyskiwać dostęp do interfejsu API. W zasadach niestandardowych, za pomocą podstawowego uwierzytelniania protokołu HTTP, Ustaw poświadczenia użytkownika (identyfikator aplikacji i klucz tajny aplikacji).
 
 Aby uzyskać więcej informacji, zobacz [uwierzytelniania podstawowego we wzorcu ASP.NET web API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
@@ -33,7 +33,7 @@ Wykonaj kroki [integracja interfejsu API REST oświadczeń wymianą swoją podr�
 ## <a name="step-1-add-authentication-support"></a>Krok 1: Dodaj obsługę uwierzytelniania
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>Krok 1.1: Dodawanie ustawień aplikacji do pliku web.config projektu
-1. Otwórz projekt programu Visual Studio, która została utworzona wcześniej. 
+1. Otwórz projekt programu Visual Studio, która została utworzona wcześniej.
 
 2. Dodaj poniższe ustawienia aplikacji do pliku web.config w obszarze `appSettings` elementu:
 
@@ -205,7 +205,7 @@ Dodaj klasę początkową OWIN o nazwie `Startup.cs` do interfejsu API. W tym ce
         {
             public void Configuration(IAppBuilder app)
             {
-                    app.Use<ClientAuthMiddleware>();
+                app.Use<ClientAuthMiddleware>();
             }
         }
     }
@@ -220,7 +220,7 @@ Otwórz Controllers\IdentityController.cs i Dodaj `[Authorize]` tag do klasy kon
 Aby opublikować projekt, w Eksploratorze rozwiązań, kliknij prawym przyciskiem myszy **Contoso.AADB2C.API** projektu, a następnie wybierz **Publikuj**.
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>Krok 3: Dodawanie usług RESTful identyfikator i aplikacji klucz tajny aplikacji do usługi Azure AD B2C
-Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa użytkownika) i klucz tajny, poświadczenia muszą być przechowywane w dzierżawie usługi Azure AD B2C. Niestandardowe zasady dostarcza poświadczenia, gdy wywołuje usługi RESTful. 
+Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa użytkownika) i klucz tajny, poświadczenia muszą być przechowywane w dzierżawie usługi Azure AD B2C. Niestandardowe zasady dostarcza poświadczenia, gdy wywołuje usługi RESTful.
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>Krok 3.1 Dodaj identyfikator klienta usługi RESTful
 1. W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C** > **struktura środowiska tożsamości**.
@@ -275,7 +275,7 @@ Po włączeniu ochrony usługi RESTful według Identyfikatora klienta (nazwa uż
     <Item Key="AuthenticationType">Basic</Item>
     ```
 
-5. Natychmiast po zamykającym `<Metadata>` elementu, Dodaj następujący fragment kodu XML: 
+5. Natychmiast po zamykającym `<Metadata>` elementu, Dodaj następujący fragment kodu XML:
 
     ```xml
     <CryptographicKeys>

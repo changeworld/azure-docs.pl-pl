@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e5c81a172c99ea6e2591a25f53705ab9cd30fd83
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 97c7af9eb86b1c2e904e2253933b2b01c9e38cf5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660633"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729340"
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Wyjątki obsługi komunikatów w usłudze Event Hubs
 
@@ -38,8 +38,8 @@ W poniższej tabeli wymieniono komunikatów typów wyjątków i powoduje, że or
 
 | Typ wyjątku | Opis elementu/Przyczyna/przykłady | Sugerowanej akcji | Należy zwrócić uwagę na automatyczne/natychmiastowe ponowienie próby |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Serwer nie odpowiedział na żądanej operacji w określonym czasie, które są kontrolowane przez [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings#Microsoft_ServiceBus_Messaging_MessagingFactorySettings_OperationTimeout). Serwer ukończyć żądanej operacji. Ten wyjątek może się zdarzyć z powodu sieci lub innych infrastruktury opóźnienia. |Stan systemu w celu zachowania spójności i spróbuj ponownie, jeśli to konieczne.<br /> Zobacz [TimeoutException](#timeoutexception). | Ponów próbę, może pomóc w niektórych przypadkach; Dodaj logikę ponawiania próby do kodu. |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |Operacja żądanego użytkownika nie jest dozwolona w ramach serwera lub usługi. Wyświetlony komunikat o wyjątku, aby uzyskać szczegółowe informacje. Na przykład [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Complete) generuje ten wyjątek, jeśli wiadomość została odebrana w [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) trybu. | Sprawdź kod i dokumentację. Upewnij się, że żądana operacja jest nieprawidłowa. | Nie pomoże ponownych prób. |
+| [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |Serwer nie odpowiedział na żądanej operacji w określonym czasie, które są kontrolowane przez [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings). Serwer ukończyć żądanej operacji. Ten wyjątek może się zdarzyć z powodu sieci lub innych infrastruktury opóźnienia. |Stan systemu w celu zachowania spójności i spróbuj ponownie, jeśli to konieczne.<br /> Zobacz [TimeoutException](#timeoutexception). | Ponów próbę, może pomóc w niektórych przypadkach; Dodaj logikę ponawiania próby do kodu. |
+| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |Operacja żądanego użytkownika nie jest dozwolona w ramach serwera lub usługi. Wyświetlony komunikat o wyjątku, aby uzyskać szczegółowe informacje. Na przykład [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) generuje ten wyjątek, jeśli wiadomość została odebrana w [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) trybu. | Sprawdź kod i dokumentację. Upewnij się, że żądana operacja jest nieprawidłowa. | Nie pomoże ponownych prób. |
 | [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | Zostanie podjęta próba wywołania operacji na obiekcie, który już został zamknięty, przerwane lub usunięte. W rzadkich przypadkach otoczenia transakcji został już usunięty. | Sprawdź kod i upewnij się, że nie wywołuje operacje na zlikwidowanego obiektu. | Nie pomoże ponownych prób. |
 | [Unauthorizedaccessexception —](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) obiektu nie można uzyskać tokenu, token jest nieprawidłowy lub token zawiera oświadczenia, wymagane do wykonania tej operacji. | Upewnij się, że dostawcy tokenu, który jest tworzony przy użyciu prawidłowych wartości. Sprawdź konfigurację usługi kontroli dostępu. | Ponów próbę, może pomóc w niektórych przypadkach; Dodaj logikę ponawiania próby do kodu. |
 | [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[Trwa wyjątku ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | Jeden lub więcej argumentów przekazana do metody są nieprawidłowe. Identyfikator URI dostarczane do [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) lub [Utwórz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) zawiera ścieżkę i jej ewentualny związek. Dostarczony schemat identyfikatora URI, do [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) lub [Utwórz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) jest nieprawidłowy. Wartość właściwości jest większa niż 32 KB. | Sprawdź kod wywołujący i upewnij się, że argumenty są poprawne. | Nie pomoże ponownych prób. |
@@ -81,7 +81,7 @@ Ten błąd może wystąpić jeden z dwóch powodów:
 
 1. Obciążenie nie jest równomiernie rozłożona na wszystkie partycje w tym Centrum zdarzeń i ograniczenia dotyczące jednostek przepływności lokalnego uderza w jednej partycji.
     
-    Rozwiązanie: Poprawianie strategią dystrybucji partycji lub podjęcie próby [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) może pomóc.
+    Rozwiązanie: Poprawianie strategią dystrybucji partycji lub podjęcie próby [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) może pomóc.
 
 2. Przestrzeń nazw usługi Event Hubs nie ma wystarczających jednostek przepływności (można sprawdzić **metryki** ekranu w zdarzeniu koncentratory okno przestrzeni nazw w [witryny Azure portal](https://portal.azure.com) o potwierdzenie). Portal zawiera informacje zagregowanych (1 minuta), ale mierzymy przepływność w czasie rzeczywistym —, więc tylko szacowania.
 

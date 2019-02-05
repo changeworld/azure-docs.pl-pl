@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 90084f6c4fb270c34165bf12763109d9be2398aa
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446963"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733063"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Dostosowywanie portalu dla deweloperów usługi Azure API Management przy użyciu szablonów
 
@@ -45,15 +45,15 @@ Na liście szablony zostaną wyświetlone różne kategorie szablonów obejmują
 
 ![Szablonów portalu dla deweloperów][api-management-templates-menu]
 
-Kliknij szablon spowoduje przejście do strony portalu dla deweloperów, który można dostosować za pomocą tego szablonu. W tym przykładzie **lista produktów** szablon jest wyświetlany. **Lista produktów** szablon określa obszar ekranu wskazywanym przez czerwony prostokąt. 
+Kliknij szablon spowoduje przejście do strony portalu dla deweloperów, który można dostosować za pomocą tego szablonu. W tym przykładzie **lista produktów** szablon jest wyświetlany. **Lista produktów** szablon określa obszar ekranu wskazywanym przez czerwony prostokąt.
 
 ![Szablon listy produktów][api-management-developer-portal-templates-overview]
 
-Niektóre szablony, takie jak **profilu użytkownika** szablonów, dostosować różnych części tej samej stronie. 
+Niektóre szablony, takie jak **profilu użytkownika** szablonów, dostosować różnych części tej samej stronie.
 
 ![Szablony profilu użytkownika][api-management-user-profile-templates]
 
-Edytor dla każdego szablonu portalu dla deweloperów zawiera dwie sekcje wyświetlane u dołu strony. Lewa strona wyświetla okienka edycji szablonu, a po prawej stronie zawiera model danych dla szablonu. 
+Edytor dla każdego szablonu portalu dla deweloperów zawiera dwie sekcje wyświetlane u dołu strony. Lewa strona wyświetla okienka edycji szablonu, a po prawej stronie zawiera model danych dla szablonu.
 
 Szablon do edycji okienko zawiera kod znaczników, który kontroluje wygląd i zachowanie odpowiadającej mu stronie w portalu dla deweloperów. Używa znaczników w szablonie [DotLiquid](http://dotliquidmarkup.org/) składni. Jeden z popularnych edytorem DotLiquid jest [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Wszelkie zmiany wprowadzone podczas edycji szablonu są wyświetlane w czasie rzeczywistym w przeglądarce, ale nie są widoczne dla klientów do momentu [Zapisz](#to-save-a-template) i [publikowania](#to-publish-a-template) szablonu.
 
@@ -118,7 +118,7 @@ Kod znaczników w **lista produktów** szablonu przetwarza dane w celu dostarcza
         <li>
             <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
             {{product.description}}
-        </li>    
+        </li>
     {% endfor %}
     </ul>
     <paging-control></paging-control>
@@ -209,10 +209,3 @@ Aby uzyskać informacje referencyjne dotyczące szablonów portalu dla deweloper
 [api-management-reset-template]: ./media/api-management-developer-portal-templates/api-management-reset-template.png
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
-
-
-
-
-
-
-

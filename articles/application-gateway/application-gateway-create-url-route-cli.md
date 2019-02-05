@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 2ec679196e0ed71de76e110fadeb394dfb3234f7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a1fadb098fdb4262ee73725ec96c3c9602b1b68d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661993"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734236"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pomocą opartego na ścieżkach reguł routingu adresów URL przy użyciu wiersza polecenia platformy Azure
 
@@ -38,7 +38,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#create).
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group).
 
 W poniższym przykładzie pokazano sposób tworzenia grupy zasobów o nazwie *myResourceGroupAG* w lokalizacji *eastus*.
 
@@ -48,7 +48,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Tworzenie zasobów sieciowych 
 
-Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet#az-net). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create).
+Utwórz sieć wirtualną o nazwie *myVNet* i podsieć o nazwie *myAGSubnet* przy użyciu polecenia [az network vnet create](/cli/azure/network/vnet). Następnie możesz dodać podsieć o nazwie *myBackendSubnet* wymaganą przez serwery zaplecza przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet). Utwórz publiczny adres IP o nazwie *myAGPublicIPAddress* przy użyciu polecenia [az network public-ip create](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -70,7 +70,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway-with-url-map"></a>Tworzenie bramy aplikacji z mapą adresów URL
 
-Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway#create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myAGPublicIPAddress*. 
+Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myAGPublicIPAddress*. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -99,7 +99,7 @@ az network application-gateway create \
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Dodawanie pul zaplecza i portu na potrzeby obsługi obrazów i wideo
 
-Możesz dodać pule zaplecza o nazwie *imagesBackendPool* i *videoBackendPool* do Twojej bramy application gateway przy użyciu [az bramy application gateway puli adresów sieciowych — tworzenie](/cli/azure/network/application-gateway#az-network_application_gateway_address-pool_create). Port frontonu możesz dodać do pul za pomocą polecenia [az network application-gateway frontend-port create](/cli/azure/network/application-gateway#az-network_application_gateway_frontend_port_create). 
+Możesz dodać pule zaplecza o nazwie *imagesBackendPool* i *videoBackendPool* do Twojej bramy application gateway przy użyciu [az bramy application gateway puli adresów sieciowych — tworzenie](/cli/azure/network/application-gatewaywork_application_gateway_address-pool_create). Port frontonu możesz dodać do pul za pomocą polecenia [az network application-gateway frontend-port create](/cli/azure/network/application-gatewaywork_application_gateway_frontend_port_create). 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -133,7 +133,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-url-path-map"></a>Dodawanie mapy ścieżek URL
 
-Mapy ścieżek URL zapewniają kierowanie określonych adresów URL do określonych pul zaplecza. Możesz utworzyć mapy ścieżek URL o nazwach *imagePathRule* i *videoPathRule* przy użyciu poleceń [az network application-gateway url-path-map create](/cli/azure/network/application-gateway) i [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway#az-network_application_gateway_url_path_map_rule_create)
+Mapy ścieżek URL zapewniają kierowanie określonych adresów URL do określonych pul zaplecza. Możesz utworzyć mapy ścieżek URL o nazwach *imagePathRule* i *videoPathRule* przy użyciu poleceń [az network application-gateway url-path-map create](/cli/azure/network/application-gateway) i [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway)
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -157,7 +157,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-routing-rule"></a>Dodawanie reguły routingu
 
-Reguła routingu kojarzy mapę adresów URL z utworzonym odbiornikiem. Można dodać reguły o nazwie *reguły rule2* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create).
+Reguła routingu kojarzy mapę adresów URL z utworzonym odbiornikiem. Można dodać reguły o nazwie *reguły rule2* przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gatewaywork_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \

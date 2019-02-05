@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: f7a645669d273e0ca0017e28ef539c2143151d25
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 4b71c5818ee6eade526134ab1b2508ed55f0c400
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509707"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699945"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -391,7 +391,7 @@ Usługa Azure Storage obsługuje następujące wymiary metryk w usłudze Azure M
 | BlobType | Typ obiektu blob na potrzeby tylko metryki obiektów Blob. Obsługiwane wartości to **BlockBlob** i **PageBlob**. Dołącz obiekt Blob znajduje się w BlockBlob. |
 | ResponseType | Typ odpowiedzi transakcji. Dostępne wartości to: <br/><br/> <li>ServerOtherError: Inne błędy po stronie serwera, z wyjątkiem opisano te </li> <li> ServerBusyError: Uwierzytelnione żądanie spowodowało zwrócenie kodu stanu HTTP 503. </li> <li> ServerTimeoutError: Upłynął limit czasu żądania uwierzytelnionego zwrócił kod stanu HTTP 500. Przekroczono limit czasu z powodu błędu serwera. </li> <li> AuthorizationError: Uwierzytelnione żądanie nie powiodło się z powodu nieautoryzowanego dostępu do danych lub wystąpił błąd autoryzacji. </li> <li> NetworkError: Uwierzytelnione żądanie nie powiodło się z powodu błędów sieci. Najczęściej występuje, gdy klient zamyka przedwcześnie połączenie przed jego wygaśnięciem limitu czasu. </li> <li>    ClientThrottlingError: Błąd ograniczania przepływności po stronie klienta. </li> <li> ClientTimeoutError: Upłynął limit czasu żądania uwierzytelnionego zwrócił kod stanu HTTP 500. Jeśli limit czasu sieci klienta lub limit czasu żądania jest ustawiony na mniejszą wartość niż oczekiwano, usługi magazynu, jest oczekiwany limitu czasu. W przeciwnym razie zostanie zgłoszone jako ServerTimeoutError. </li> <li> ClientOtherError: Inne błędy po stronie klienta, z wyjątkiem tych opisane. </li> <li> Powodzenie: Żądanie zakończone powodzeniem|
 | GeoType | Transakcja z podstawowy lub pomocniczy klastra. Dostępne wartości obejmują podstawowe i pomocnicze. Dotyczy ona dostęp do odczytu geograficznie nadmiarowy Storage(RA-GRS) podczas odczytywania obiektów ze dodatkowej dzierżawy. |
-| ApiName | Nazwa operacji. Na przykład: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Aby uzyskać wszystkie nazwy operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
+| ApiName | Nazwa operacji. Na przykład: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> Aby uzyskać wszystkie nazwy operacji, zobacz [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 | Authentication | Typ uwierzytelniania używany w transakcji. Dostępne wartości to: <br/> <li>AccountKey: Transakcja jest uwierzytelniana przy użyciu klucza konta magazynu.</li> <li>SAS: Transakcja jest uwierzytelniana przy użyciu sygnatury dostępu współdzielonego.</li> <li>Uwierzytelnianie OAuth: Transakcja jest uwierzytelniana przy użyciu tokenów dostępu protokołu OAuth.</li> <li>Anonimowy: Transakcja jest proszony anonimowo. Nie zawiera żądania wstępnego.</li> <li>AnonymousPreflight: Transakcja została żądania wstępnego.</li> |
 
 W przypadku wymiarów pomocnicze metryki należy określić wartości wymiaru, aby wyświetlić odpowiednie wartości metryk. Na przykład, jeśli przyjrzymy się **transakcji** wartość dla pomyślnej odpowiedzi, trzeba filtrować **ResponseType** wymiaru przy użyciu **Powodzenie**. Lub jeśli przyjrzymy się **BlobCount** wartość dla blokowych obiektów Blob, trzeba filtrować **BlobType** wymiaru przy użyciu **BlockBlob**.

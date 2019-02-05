@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d6778e1749493a04a73d0ac210c1557b89343d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437474"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695584"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Podniesienie poziomu dostępu, aby zarządzać wszystkimi subskrypcjami platformy Azure i grup zarządzania
 
@@ -83,12 +83,14 @@ Wykonaj następujące kroki w celu podniesienie poziomu dostępu administratora 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 ### <a name="list-role-assignment-at-the-root-scope-"></a>Przypisanie roli listy w zakresie głównym (/)
 
-Aby wyświetlić listę przypisania roli Administrator dostępu użytkowników dla użytkownika w zakresie głównym (`/`), użyj [polecenia Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) polecenia.
+Aby wyświetlić listę przypisania roli Administrator dostępu użytkowników dla użytkownika w zakresie głównym (`/`), użyj [Get AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) polecenia.
 
 ```azurepowershell
-Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
+Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
   -and $_.SignInName -eq "<username@example.com>" -and $_.Scope -eq "/"}
 ```
 
@@ -111,10 +113,10 @@ Aby usunąć przypisania roli Administrator dostępu użytkowników dla użytkow
 1. Zaloguj się jako użytkownik, który można usunąć podwyższonego poziomu dostępu. Może to być ten sam użytkownik, który został użyty do podniesienia poziomu dostępu lub innego administratora globalnego z dostępem z podwyższonym poziomem uprawnień w zakresie głównym.
 
 
-1. Użyj [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) polecenie, aby usunąć przypisania roli Administrator dostępu użytkowników.
+1. Użyj [AzRoleAssignment Usuń](/powershell/module/az.resources/remove-azroleassignment) polecenie, aby usunąć przypisania roli Administrator dostępu użytkowników.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+    Remove-AzRoleAssignment -SignInName <username@example.com> `
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
